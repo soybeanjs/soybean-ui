@@ -17,12 +17,7 @@ const toggleDemoPreset = () => {
 </script>
 
 <template>
-  <SButton
-    class="fixed top-20 right-4 z-10"
-    size="sm"
-    variant="outline"
-    @click="toggleDemoPreset"
-  >
+  <SButton class="fixed top-20 right-4 z-10" size="sm" variant="outline" @click="toggleDemoPreset">
     {{ appliedPresetName ? 'Reset demo preset' : 'Save & apply demo preset' }}
   </SButton>
 </template>

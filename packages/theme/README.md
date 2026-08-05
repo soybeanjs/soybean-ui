@@ -105,13 +105,13 @@ createTheme({
 
 ### 主入口 `@soybeanjs/theme`
 
-| 导出             | 说明                                             |
-| ---------------- | ------------------------------------------------ |
-| `createTheme`    | 根据 `ThemeOptions` 生成 CSS 字符串（核心函数）  |
-| `DEFAULT_PRESET_OPTIONS` | 默认主题选项（zinc / indigo / md / md） |
-| `THEME_SIZE` / `themeSizeKeys` | 尺寸枚举与合法键列表（xs…2xl） |
-| `THEME_RADIUS` / `themeRadiusKeys` | 圆角枚举与合法键列表（2xs…2xl） |
-| `builtinBasePresetKeys` / `builtinPrimaryPresetKeys` | 内置 base / primary 色板键列表 |
+| 导出                                                 | 说明                                            |
+| ---------------------------------------------------- | ----------------------------------------------- |
+| `createTheme`                                        | 根据 `ThemeOptions` 生成 CSS 字符串（核心函数） |
+| `DEFAULT_PRESET_OPTIONS`                             | 默认主题选项（zinc / indigo / md / md）         |
+| `THEME_SIZE` / `themeSizeKeys`                       | 尺寸枚举与合法键列表（xs…2xl）                  |
+| `THEME_RADIUS` / `themeRadiusKeys`                   | 圆角枚举与合法键列表（2xs…2xl）                 |
+| `builtinBasePresetKeys` / `builtinPrimaryPresetKeys` | 内置 base / primary 色板键列表                  |
 
 类型：`ThemeOptions`、`ThemeConfigState`、`ThemeColor`、`ThemeSize`、`ThemeRadius`、`MenuColor`、`MenuAccent`、`CustomThemeColorPreset`、`StoredThemePreset`、`ThemePresetRef`、`ThemePresetInput`、`ThemeStore`、`ThemeStoreOptions` … 等。
 
@@ -119,29 +119,29 @@ createTheme({
 
 本地存储与 cookie 持久化。
 
-| 导出                          | 说明                                             |
-| ----------------------------- | ------------------------------------------------ |
-| `THEME_STORAGE_KEY`           | 默认主题 localStorage 键（`soybean-theme`）      |
-| `THEME_COOKIE_KEY`            | 默认主题 cookie 名（`soybean-theme`）            |
-| `stringifyThemeConfig` / `parseThemeConfig` | 主题配置序列化 / 反序列化（带校验） |
-| `getStoredThemeConfig` / `setStoredThemeConfig` / `removeStoredThemeConfig` | 主题配置读写 |
-| `setThemeCookie`              | 将主题配置镜像到 cookie（SSR 端 no-op）          |
-| `THEME_PRESETS_STORAGE_KEY`   | 自定义 preset 表 localStorage 键                  |
-| `getStoredThemePresets`       | 读取 preset 表                                   |
-| `setStoredThemePreset` / `removeStoredThemePreset` | 增删单个 preset |
+| 导出                                                                        | 说明                                        |
+| --------------------------------------------------------------------------- | ------------------------------------------- |
+| `THEME_STORAGE_KEY`                                                         | 默认主题 localStorage 键（`soybean-theme`） |
+| `THEME_COOKIE_KEY`                                                          | 默认主题 cookie 名（`soybean-theme`）       |
+| `stringifyThemeConfig` / `parseThemeConfig`                                 | 主题配置序列化 / 反序列化（带校验）         |
+| `getStoredThemeConfig` / `setStoredThemeConfig` / `removeStoredThemeConfig` | 主题配置读写                                |
+| `setThemeCookie`                                                            | 将主题配置镜像到 cookie（SSR 端 no-op）     |
+| `THEME_PRESETS_STORAGE_KEY`                                                 | 自定义 preset 表 localStorage 键            |
+| `getStoredThemePresets`                                                     | 读取 preset 表                              |
+| `setStoredThemePreset` / `removeStoredThemePreset`                          | 增删单个 preset                             |
 
 ### 子路径 `@soybeanjs/theme/ssr`
 
 SSR/SSG 兼容工具。
 
-| 导出                          | 说明                                             |
-| ----------------------------- | ------------------------------------------------ |
-| `isServerRuntime`             | 运行时检测服务端（`window`/`document` 缺失）     |
-| `getCookieValue`              | 从 cookie 原文读取指定键的值                      |
-| `getThemeConfigFromCookie`    | 从 cookie 解析出主题配置（服务端 SSR 用）        |
-| `createThemeInitScript`       | 生成首帧前内联脚本，避免主题闪烁（FOUC）         |
-| `createThemeStore`            | 环境感知的主题存储门面（`ThemeStore`，见下）      |
-| `APPLIED_PRESET_COOKIE_KEY`   | 已应用 preset 名的 cookie 键                      |
+| 导出                        | 说明                                         |
+| --------------------------- | -------------------------------------------- |
+| `isServerRuntime`           | 运行时检测服务端（`window`/`document` 缺失） |
+| `getCookieValue`            | 从 cookie 原文读取指定键的值                 |
+| `getThemeConfigFromCookie`  | 从 cookie 解析出主题配置（服务端 SSR 用）    |
+| `createThemeInitScript`     | 生成首帧前内联脚本，避免主题闪烁（FOUC）     |
+| `createThemeStore`          | 环境感知的主题存储门面（`ThemeStore`，见下） |
+| `APPLIED_PRESET_COOKIE_KEY` | 已应用 preset 名的 cookie 键                 |
 
 `ThemeStore` 接口：
 

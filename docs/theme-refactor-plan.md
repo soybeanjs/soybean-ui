@@ -119,7 +119,7 @@
 
 - 自定义配置覆盖优先级最高：`preset: CustomThemeColorPreset` 保留，可覆盖任意键（含 chart/border 等派生键）；
 - CSS 变量契约（[COLOR_VARIABLES 39 键](src/constants.ts)）与 unocss-shadcn 映射均不修改；
-- `BuiltinBasePresetKey` / `BuiltinPrimaryPresetKey` 联合类型保留，`BuiltinFeedbackPresetKey` 进入废弃期。
+- `BaseColorKey` / `PrimaryColorKey` 联合类型保留，`FeedbackPresetKey` 进入废弃期。
 
 ---
 

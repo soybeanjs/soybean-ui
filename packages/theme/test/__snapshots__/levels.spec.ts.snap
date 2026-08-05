@@ -86,6 +86,11 @@ exports[`level offset snapshots - 3×4 combos > lightLevel=0 darkLevel=0 1`] = `
     "warning": "amber.500",
     "warningForeground": "zinc.50",
   },
+  "menuAccent": "subtle",
+  "menuColor": "default",
+  "name": "zinc-indigo",
+  "radius": "md",
+  "size": "md",
 }
 `;
 
@@ -175,6 +180,11 @@ exports[`level offset snapshots - 3×4 combos > lightLevel=0 darkLevel=1 1`] = `
     "warning": "amber.500",
     "warningForeground": "zinc.50",
   },
+  "menuAccent": "subtle",
+  "menuColor": "default",
+  "name": "zinc-indigo",
+  "radius": "md",
+  "size": "md",
 }
 `;
 
@@ -264,6 +274,11 @@ exports[`level offset snapshots - 3×4 combos > lightLevel=0 darkLevel=2 1`] = `
     "warning": "amber.500",
     "warningForeground": "zinc.50",
   },
+  "menuAccent": "subtle",
+  "menuColor": "default",
+  "name": "zinc-indigo",
+  "radius": "md",
+  "size": "md",
 }
 `;
 
@@ -353,6 +368,11 @@ exports[`level offset snapshots - 3×4 combos > lightLevel=0 darkLevel=3 1`] = `
     "warning": "amber.500",
     "warningForeground": "zinc.50",
   },
+  "menuAccent": "subtle",
+  "menuColor": "default",
+  "name": "zinc-indigo",
+  "radius": "md",
+  "size": "md",
 }
 `;
 
@@ -442,6 +462,11 @@ exports[`level offset snapshots - 3×4 combos > lightLevel=1 darkLevel=0 1`] = `
     "warning": "amber.500",
     "warningForeground": "zinc.50",
   },
+  "menuAccent": "subtle",
+  "menuColor": "default",
+  "name": "zinc-indigo",
+  "radius": "md",
+  "size": "md",
 }
 `;
 
@@ -531,6 +556,11 @@ exports[`level offset snapshots - 3×4 combos > lightLevel=1 darkLevel=1 1`] = `
     "warning": "amber.500",
     "warningForeground": "zinc.50",
   },
+  "menuAccent": "subtle",
+  "menuColor": "default",
+  "name": "zinc-indigo",
+  "radius": "md",
+  "size": "md",
 }
 `;
 
@@ -620,6 +650,11 @@ exports[`level offset snapshots - 3×4 combos > lightLevel=1 darkLevel=2 1`] = `
     "warning": "amber.500",
     "warningForeground": "zinc.50",
   },
+  "menuAccent": "subtle",
+  "menuColor": "default",
+  "name": "zinc-indigo",
+  "radius": "md",
+  "size": "md",
 }
 `;
 
@@ -709,6 +744,11 @@ exports[`level offset snapshots - 3×4 combos > lightLevel=1 darkLevel=3 1`] = `
     "warning": "amber.500",
     "warningForeground": "zinc.50",
   },
+  "menuAccent": "subtle",
+  "menuColor": "default",
+  "name": "zinc-indigo",
+  "radius": "md",
+  "size": "md",
 }
 `;
 
@@ -798,6 +838,11 @@ exports[`level offset snapshots - 3×4 combos > lightLevel=2 darkLevel=0 1`] = `
     "warning": "amber.500",
     "warningForeground": "zinc.50",
   },
+  "menuAccent": "subtle",
+  "menuColor": "default",
+  "name": "zinc-indigo",
+  "radius": "md",
+  "size": "md",
 }
 `;
 
@@ -887,6 +932,11 @@ exports[`level offset snapshots - 3×4 combos > lightLevel=2 darkLevel=1 1`] = `
     "warning": "amber.500",
     "warningForeground": "zinc.50",
   },
+  "menuAccent": "subtle",
+  "menuColor": "default",
+  "name": "zinc-indigo",
+  "radius": "md",
+  "size": "md",
 }
 `;
 
@@ -976,6 +1026,11 @@ exports[`level offset snapshots - 3×4 combos > lightLevel=2 darkLevel=2 1`] = `
     "warning": "amber.500",
     "warningForeground": "zinc.50",
   },
+  "menuAccent": "subtle",
+  "menuColor": "default",
+  "name": "zinc-indigo",
+  "radius": "md",
+  "size": "md",
 }
 `;
 
@@ -1065,5 +1120,10 @@ exports[`level offset snapshots - 3×4 combos > lightLevel=2 darkLevel=3 1`] = `
     "warning": "amber.500",
     "warningForeground": "zinc.50",
   },
+  "menuAccent": "subtle",
+  "menuColor": "default",
+  "name": "zinc-indigo",
+  "radius": "md",
+  "size": "md",
 }
 `;

@@ -14,7 +14,7 @@ import {
   THEME_PRESETS_STORAGE_KEY,
   THEME_STORAGE_KEY
 } from '../src/storage';
-import type { StoredThemePreset, ThemeConfigState } from '../src/types';
+import type { StoredThemePreset, ThemeConfigState } from '../src/storage';
 
 const sampleConfig: ThemeConfigState = {
   base: 'slate',

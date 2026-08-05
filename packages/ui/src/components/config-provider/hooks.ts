@@ -1,7 +1,7 @@
 import { computed, defineComponent, h, onMounted, onUnmounted } from 'vue';
 import { createTheme } from '@soybeanjs/theme';
-import type { ThemeConfigState } from '@soybeanjs/theme';
 import { THEME_PRESETS_STORAGE_KEY } from '@soybeanjs/theme/storage';
+import type { ThemeConfigState } from '@soybeanjs/theme/storage';
 import type { ConfigProviderProps } from './types';
 import { createThemeContext, provideThemeContext } from './use-theme';
 

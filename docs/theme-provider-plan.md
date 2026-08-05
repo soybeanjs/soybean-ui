@@ -173,9 +173,9 @@ export interface ThemeGeneratorOverrides {
 ```ts
 export interface ThemeGeneratorProps extends Omit<ThemeProviderProps, 'tokens'> {
   /** 中性 base 预设键。默认 `'zinc'`。 */
-  base?: BuiltinBasePresetKey;
+  base?: BaseColorKey;
   /** 主色 primary 预设键。默认 `'indigo'`。 */
-  primary?: BuiltinPrimaryPresetKey;
+  primary?: PrimaryColorKey;
   /** 按 token 分类的覆盖，优先级最高。 */
   overrides?: ThemeGeneratorOverrides;
   /** 亮色调暗档位（0-2）。默认 0。 */
@@ -189,8 +189,8 @@ export interface ThemeGeneratorProps extends Omit<ThemeProviderProps, 'tokens'> 
 
 ```ts
 export interface UseThemeGeneratorOptions {
-  base?: BuiltinBasePresetKey;
-  primary?: BuiltinPrimaryPresetKey;
+  base?: BaseColorKey;
+  primary?: PrimaryColorKey;
   overrides?: ThemeGeneratorOverrides;
   lightLevel?: LightLevelOffset;
   darkLevel?: DarkLevelOffset;

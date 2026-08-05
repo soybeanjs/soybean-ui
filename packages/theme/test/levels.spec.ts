@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { generateThemePreset } from '../src/preset';
-import type { ThemeColorPreset } from '../src/types';
+import type { FullThemePreset } from '../src/types';
 
 const LIGHT_LEVELS = [0, 1, 2] as const;
 const DARK_LEVELS = [0, 1, 2, 3] as const;
@@ -15,10 +15,10 @@ describe('level offset snapshots - 3×4 combos', () => {
   for (const lightLevel of LIGHT_LEVELS) {
     for (const darkLevel of DARK_LEVELS) {
       it(`lightLevel=${lightLevel} darkLevel=${darkLevel}`, () => {
-        const preset: ThemeColorPreset = generateThemePreset(
-          { base: 'zinc', primary: 'indigo' },
-          { lightLevel, darkLevel }
-        );
+        const preset: FullThemePreset = generateThemePreset({ base: 'zinc', primary: 'indigo' }, undefined, {
+          lightLevel,
+          darkLevel
+        });
 
         expect(preset).toMatchSnapshot();
       });

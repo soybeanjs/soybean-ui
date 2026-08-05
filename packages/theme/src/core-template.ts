@@ -1,9 +1,9 @@
-import type { BuiltinBasePresetKey, BuiltinPrimaryPresetKey, ChartColors, ColorValue } from './types';
+import type { BaseColorKey, ColorValue, PrimaryColorKey } from './types';
 
 /**
  * the base core keys (§3.1)
  *
- * explicit per-palette core tokens; every other base key is derived (§3.2)
+ * explicit per-palette core tokens; every other base key is derived (§3.2).
  */
 export type BaseCoreKey =
   | 'background'
@@ -25,14 +25,14 @@ export type BaseCore = {
 /**
  * the primary core keys (§3.1)
  *
- * `primary` + `ring` per palette; charts use the fixed templates below (D7)
+ * `primary` + `ring` per palette; charts use the fixed templates below (D7).
  */
 export type PrimaryCore = {
   light: { primary: ColorValue; ring: ColorValue };
   dark: { primary: ColorValue; ring: ColorValue };
 };
 
-const NEUTRAL_FAMILY: readonly BuiltinPrimaryPresetKey[] = [
+const NEUTRAL_FAMILY: readonly PrimaryColorKey[] = [
   'slate',
   'mist',
   'gray',
@@ -44,7 +44,7 @@ const NEUTRAL_FAMILY: readonly BuiltinPrimaryPresetKey[] = [
   'mauve'
 ];
 
-const CHROMATIC_FAMILY: readonly BuiltinPrimaryPresetKey[] = [
+const CHROMATIC_FAMILY: readonly PrimaryColorKey[] = [
   'red',
   'orange',
   'amber',
@@ -64,7 +64,7 @@ const CHROMATIC_FAMILY: readonly BuiltinPrimaryPresetKey[] = [
   'rose'
 ];
 
-const createBaseCore = (p: BuiltinBasePresetKey): BaseCore => ({
+const createBaseCore = (p: BaseColorKey): BaseCore => ({
   light: {
     background: 'white',
     foreground: `${p}.950`,
@@ -95,9 +95,9 @@ const createBaseCore = (p: BuiltinBasePresetKey): BaseCore => ({
  * core templates for the 9 built-in base palettes
  *
  * values are the explicit "core 10 keys" from §3.1; the factory only
- * substitutes the palette prefix (identical structure across neutrals)
+ * substitutes the palette prefix (identical structure across neutrals).
  */
-export const builtinBaseCoreTemplate: Record<BuiltinBasePresetKey, BaseCore> = {
+export const builtinBaseCoreTemplate: Record<BaseColorKey, BaseCore> = {
   slate: createBaseCore('slate'),
   mist: createBaseCore('mist'),
   gray: createBaseCore('gray'),
@@ -109,9 +109,9 @@ export const builtinBaseCoreTemplate: Record<BuiltinBasePresetKey, BaseCore> = {
   mauve: createBaseCore('mauve')
 };
 
-export const builtinBasePresetKeys = Object.keys(builtinBaseCoreTemplate) as BuiltinBasePresetKey[];
+export const builtinBasePresetKeys = Object.keys(builtinBaseCoreTemplate) as BaseColorKey[];
 
-const createNeutralPrimaryCore = (p: BuiltinPrimaryPresetKey): PrimaryCore => ({
+const createNeutralPrimaryCore = (p: PrimaryColorKey): PrimaryCore => ({
   light: { primary: `${p}.800`, ring: `${p}.400` },
   dark: { primary: `${p}.200`, ring: `${p}.500` }
 });
@@ -121,11 +121,11 @@ const createNeutralPrimaryCore = (p: BuiltinPrimaryPresetKey): PrimaryCore => ({
  *
  * baseline template keeps `{p}.500` in dark mode for every chromatic palette,
  * except the light-green family (lime/green/emerald) where `{p}.600` is used
- * to preserve contrast against the dark primaryForeground
+ * to preserve contrast against the dark primaryForeground.
  */
-const DARK_PRIMARY_600: ReadonlySet<BuiltinPrimaryPresetKey> = new Set(['lime', 'green', 'emerald']);
+const DARK_PRIMARY_600: ReadonlySet<PrimaryColorKey> = new Set(['lime', 'green', 'emerald']);
 
-const createChromaticPrimaryCore = (p: BuiltinPrimaryPresetKey): PrimaryCore => ({
+const createChromaticPrimaryCore = (p: PrimaryColorKey): PrimaryCore => ({
   light: { primary: `${p}.500`, ring: `${p}.400` },
   dark: { primary: DARK_PRIMARY_600.has(p) ? `${p}.600` : `${p}.500`, ring: `${p}.900` }
 });
@@ -141,18 +141,18 @@ export const builtinPrimaryCoreTemplate = Object.fromEntries(
     p,
     NEUTRAL_FAMILY.includes(p) ? createNeutralPrimaryCore(p) : createChromaticPrimaryCore(p)
   ])
-) as Record<BuiltinPrimaryPresetKey, PrimaryCore>;
+) as Record<PrimaryColorKey, PrimaryCore>;
 
-export const builtinPrimaryPresetKeys = Object.keys(builtinPrimaryCoreTemplate) as BuiltinPrimaryPresetKey[];
+export const builtinPrimaryPresetKeys = Object.keys(builtinPrimaryCoreTemplate) as PrimaryColorKey[];
 
 /**
  * fixed chart templates (D7)
  *
- * reused for every primary palette; light/dark differ only by lightness
+ * reused for every primary palette; light/dark differ only by lightness.
  */
 export const CHART_TEMPLATE: {
-  light: Record<keyof ChartColors, ColorValue>;
-  dark: Record<keyof ChartColors, ColorValue>;
+  light: Record<'chart1' | 'chart2' | 'chart3' | 'chart4' | 'chart5', ColorValue>;
+  dark: Record<'chart1' | 'chart2' | 'chart3' | 'chart4' | 'chart5', ColorValue>;
 } = {
   light: {
     chart1: 'orange.600',
@@ -169,3 +169,5 @@ export const CHART_TEMPLATE: {
     chart5: 'rose.500'
   }
 };
+
+export { NEUTRAL_FAMILY, CHROMATIC_FAMILY, DARK_PRIMARY_600 };

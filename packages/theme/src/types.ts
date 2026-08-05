@@ -1,42 +1,118 @@
 import type {
-  TailwindPaletteKey,
-  TailwindNeutralPaletteKey,
+  TailwindNeutralPaletteKey as BaseColorKey,
+  TailwindPaletteKey as PrimaryColorKey,
   TailwindPaletteLevelColorKey,
   SimplePaletteKey
 } from '@soybeanjs/colord/palette';
 
+/**
+ * HSL color
+ *
+ * @example
+ * - hsl(240 50% 30% 50%)
+ * - hsl(240 50% 30% / 0.5)
+ */
 export type HSLColor = `hsl(${number} ${number}% ${number}%)` | `hsl(${number} ${number}% ${number}% / ${number})`;
 
+/**
+ * OKLCH color
+ *
+ * @example
+ * - oklch(50% 50 50)
+ * - oklch(50% 50 50 / 0.5)
+ */
 export type OKLCHColor = `oklch(${number}% ${number} ${number})` | `oklch(${number}% ${number} ${number} / ${number})`;
 
+/**
+ * Color value
+ *
+ * - HSL color: hsl(240 50% 30% 50%)
+ * - OKLCH color: oklch(50% 50 50)
+ * - Simple palette key: 'white
+ * - Tailwind palette level color key: 'blue.200
+ */
 export type ColorValue = HSLColor | OKLCHColor | SimplePaletteKey | TailwindPaletteLevelColorKey;
 
-export interface ShadcnColors {
-  background?: ColorValue;
-  foreground?: ColorValue;
-  card?: ColorValue;
-  cardForeground?: ColorValue;
-  popover?: ColorValue;
-  popoverForeground?: ColorValue;
-  primary?: ColorValue;
-  primaryForeground?: ColorValue;
-  secondary?: ColorValue;
-  secondaryForeground?: ColorValue;
-  muted?: ColorValue;
-  mutedForeground?: ColorValue;
-  accent?: ColorValue;
-  accentForeground?: ColorValue;
-  destructive?: ColorValue;
-  destructiveForeground?: ColorValue;
-  border?: ColorValue;
-  input?: ColorValue;
-  ring?: ColorValue;
-}
-
 /**
- * sidebar colors
+ * shadcn colors
  */
-export interface SidebarColors {
+export interface ColorTokens {
+  /**
+   * background color
+   */
+  background?: ColorValue;
+  /**
+   * foreground color
+   */
+  foreground?: ColorValue;
+  /**
+   * card color
+   */
+  card?: ColorValue;
+  /**
+   * card foreground color
+   */
+  cardForeground?: ColorValue;
+  /**
+   * popover color
+   */
+  popover?: ColorValue;
+  /**
+   * popover foreground color
+   */
+  popoverForeground?: ColorValue;
+  /**
+   * primary color
+   */
+  primary?: ColorValue;
+  /**
+   * primary foreground color
+   */
+  primaryForeground?: ColorValue;
+  /**
+   * secondary color
+   */
+  secondary?: ColorValue;
+  /**
+   * secondary foreground color
+   */
+  secondaryForeground?: ColorValue;
+  /**
+   * muted color
+   */
+  muted?: ColorValue;
+  /**
+   * muted foreground color
+   */
+  mutedForeground?: ColorValue;
+  /**
+   * accent color
+   */
+  accent?: ColorValue;
+  /**
+   * accent foreground color
+   */
+  accentForeground?: ColorValue;
+  /**
+   * destructive color
+   */
+  destructive?: ColorValue;
+  /**
+   * destructive foreground color
+   */
+  destructiveForeground?: ColorValue;
+  /**
+   * border color
+   */
+  border?: ColorValue;
+  /**
+   * input color
+   */
+  input?: ColorValue;
+  /**
+   * ring color
+   */
+  ring?: ColorValue;
   /**
    * the sidebar background color
    *
@@ -85,210 +161,72 @@ export interface SidebarColors {
    * if not set, will use the theme ring color
    */
   sidebarRing?: ColorValue;
-}
-
-/**
- * chart colors
- */
-export interface ChartColors {
+  /**
+   * the chart1 color
+   */
   chart1?: ColorValue;
+  /**
+   * the chart2 color
+   */
   chart2?: ColorValue;
+  /**
+   * the chart3 color
+   */
   chart3?: ColorValue;
+  /**
+   * the chart4 color
+   */
   chart4?: ColorValue;
+  /**
+   * the chart5 color
+   */
   chart5?: ColorValue;
-}
-
-export interface ExtendedColors {
+  /**
+   * success color
+   */
   success?: ColorValue;
+  /**
+   * success foreground color
+   */
   successForeground?: ColorValue;
+  /**
+   * warning color
+   */
   warning?: ColorValue;
+  /**
+   * warning foreground color
+   */
   warningForeground?: ColorValue;
+  /**
+   * info color
+   */
   info?: ColorValue;
+  /**
+   * info foreground color
+   */
   infoForeground?: ColorValue;
+  /**
+   * carbon color
+   */
   carbon?: ColorValue;
+  /**
+   * carbon foreground color
+   */
   carbonForeground?: ColorValue;
 }
 
-export interface ThemeColors extends ShadcnColors, ExtendedColors, SidebarColors, ChartColors {}
-
-export type ThemeColorKey = keyof ThemeColors;
-export type ThemeColorWithAlphaKey = keyof Pick<ThemeColors, 'border' | 'input' | 'sidebarBorder'>;
+/**
+ * Color key
+ */
+export type ColorKey = keyof ColorTokens;
 
 /**
- * the built-in base color preset key
+ * Theme color
  */
-export type BuiltinBasePresetKey = TailwindNeutralPaletteKey;
-
-/**
- * the built-in primary color preset key
- */
-export type BuiltinPrimaryPresetKey = TailwindPaletteKey;
-
-export type BasePresetColorKey = Extract<
-  ThemeColorKey,
-  | 'background'
-  | 'foreground'
-  | 'card'
-  | 'cardForeground'
-  | 'popover'
-  | 'popoverForeground'
-  | 'primaryForeground'
-  | 'secondary'
-  | 'secondaryForeground'
-  | 'muted'
-  | 'mutedForeground'
-  | 'accent'
-  | 'accentForeground'
-  | 'border'
-  | 'input'
-  | 'destructiveForeground'
-  | 'successForeground'
-  | 'warningForeground'
-  | 'infoForeground'
-  | 'carbon'
-  | 'carbonForeground'
->;
-
-export type PrimaryPresetColorKey = Extract<ThemeColorKey, 'primary' | 'ring'> | keyof ChartColors;
-
-export type SidebarPresetColorKey = keyof SidebarColors;
-
-export type SidebarExtendedColorKey = Extract<
-  ThemeColorKey,
-  | 'background'
-  | 'foreground'
-  | 'card'
-  | 'primary'
-  | 'primaryForeground'
-  | 'accent'
-  | 'accentForeground'
-  | 'border'
-  | 'ring'
->;
-
-export type Preset<K extends string> = {
-  light: {
-    [key in K]: ColorValue;
-  };
-  dark: {
-    [key in K]: ColorValue;
-  };
-};
-
-export type BasePreset = Preset<BasePresetColorKey>;
-export type PrimaryPreset = Preset<PrimaryPresetColorKey>;
-export type SidebarPreset = Preset<SidebarPresetColorKey>;
-export type SidebarExtendedPreset = Preset<SidebarExtendedColorKey>;
-export type ThemeColorPreset = Preset<ThemeColorKey>;
-export type CustomThemeColorPreset = {
-  light: Partial<ThemeColors>;
-  dark?: Partial<ThemeColors>;
-};
-
-/**
- * a reference to a stored custom theme preset by name
- *
- * the preset definition is resolved from the persisted presets table
- * (localStorage on the client, or an injected provider on the server)
- * when `persistTheme` is enabled on the ConfigProvider.
- */
-export type ThemePresetRef = { presetName: string };
-
-/**
- * theme preset input: either an inline custom preset or a reference to a stored one
- */
-export type ThemePresetInput = CustomThemeColorPreset | ThemePresetRef;
-
-/**
- * a persisted custom theme preset entry
- */
-export interface StoredThemePreset extends CustomThemeColorPreset {
-  /**
-   * the preset unique name (also the storage object key)
-   */
-  name: string;
-  /**
-   * the preset data version (semver, used for display and update decisions)
-   */
-  version: string;
-}
-
-/**
- * the persisted custom theme presets table
- */
-export interface StoredThemePresets {
-  /**
-   * the storage schema version
-   *
-   * @defaultValue 1
-   */
-  version: number;
-  presets: Record<string, StoredThemePreset>;
-}
-
-export type StyleTarget = 'html' | ':root';
-
-export type DarkSelector = 'class' | 'media';
-
-export type ColorFormat = 'hsl' | 'oklch';
-
-/**
- * the preset config
- */
-export interface PresetKeyConfig {
-  /**
-   * the base color key
-   *
-   * @default 'zinc'
-   */
-  base?: BuiltinBasePresetKey;
-  /**
-   * the primary color key
-   *
-   * @default 'indigo'
-   */
-  primary?: BuiltinPrimaryPresetKey;
-}
-
-export interface PresetConfig extends PresetKeyConfig {
-  /**
-   * custom preset colors that override built-in preset values.
-   * When provided, matching keys are replaced in the final theme.
-   *
-   * Accepts either an inline `CustomThemeColorPreset` or a `{ presetName }`
-   * reference resolved from the persisted presets table (see
-   * `getStoredThemePresets`). A reference is only resolved when
-   * `persistTheme` is enabled on the ConfigProvider.
-   */
-  preset?: ThemePresetInput;
-}
-
 export type ThemeColor = Extract<
-  ThemeColorKey,
+  ColorKey,
   'primary' | 'secondary' | 'accent' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon'
 >;
-
-/**
- * the theme radius
- *
- * - 2xs: 0.25rem
- * - xs: 0.375rem
- * - sm: 0.5rem
- * - md: 0.625rem
- * - lg: 0.75rem
- * - xl: 0.875rem
- * - 2xl: 1rem
- */
-export type ThemeRadius = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
-
-export interface ThemeRadiusConfig {
-  /**
-   * the border radius
-   *
-   * @default 'md'
-   */
-  radius?: ThemeRadius | (string & {});
-}
 
 /**
  * the theme size key
@@ -304,16 +242,28 @@ export interface ThemeRadiusConfig {
  */
 export type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
-export interface ThemeSizeConfig {
-  /**
-   * the component size / density
-   *
-   * Controls the root font-size (`<html>`), scaling all rem-based sizes.
-   *
-   * @default 'md'
-   */
-  size?: ThemeSize | (string & {});
-}
+/**
+ * the theme size value
+ */
+export type ThemeSizeValue = ThemeSize | `${number}px` | `${number}rem`;
+
+/**
+ * the theme radius
+ *
+ * - 2xs: 0.25rem
+ * - xs: 0.375rem
+ * - sm: 0.5rem
+ * - md: 0.625rem
+ * - lg: 0.75rem
+ * - xl: 0.875rem
+ * - 2xl: 1rem
+ */
+export type ThemeRadius = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+
+/**
+ * the theme radius value
+ */
+export type ThemeRadiusValue = ThemeRadius | `${number}px` | `${number}rem`;
 
 /**
  * the menu color preset key
@@ -329,23 +279,55 @@ export type MenuColor = 'default' | 'inverted' | 'default-translucent' | 'invert
  */
 export type MenuAccent = 'subtle' | 'bold';
 
-export interface ThemeMenuConfig {
+/**
+ * light mode surface darkening offset
+ *
+ * - 0: unchanged
+ * - 1: surfaces {p}.white → {p}.50, {p}.50 → {p}.100
+ * - 2: surfaces {p}.50 → {p}.100, {p}.100 → {p}.200
+ *
+ * Only shiftable surface tokens are affected; text/foreground/border values
+ * never shift (D8).
+ */
+export type LightLevelOffset = 0 | 1 | 2;
+
+/**
+ * dark mode surface brightening offset
+ *
+ * - 0: unchanged
+ * - 1: background {p}.950 → {p}.900
+ * - 2: background {p}.900 → {p}.800
+ * - 3: background {p}.800 → {p}.700
+ *
+ * Only shiftable surface tokens are affected; text/foreground/border values
+ * never shift (D8).
+ */
+export type DarkLevelOffset = 0 | 1 | 2 | 3;
+
+/**
+ * Base tokens
+ */
+export interface BaseTokens {
   /**
-   * the menu color style
+   * the component size / density
    *
-   * - default: normal popover background
-   * - inverted: dark card background
-   * - default-translucent: popover with backdrop blur
-   * - inverted-translucent: dark card with backdrop blur
+   * @default 'md'
+   */
+  size?: ThemeSizeValue;
+  /**
+   * the border radius
+   *
+   * @default 'md'
+   */
+  radius?: ThemeRadiusValue;
+  /**
+   * the menu color preset key
    *
    * @default 'default'
    */
   menuColor?: MenuColor;
   /**
-   * the menu accent style
-   *
-   * - subtle: muted foreground highlight
-   * - bold: primary color highlight
+   * the menu accent preset key
    *
    * @default 'subtle'
    */
@@ -353,28 +335,75 @@ export interface ThemeMenuConfig {
 }
 
 /**
- * light mode darkening offset
- *
- * - 0: unchanged
- * - 1: surfaces white → {p}.50
- * - 2: surfaces {p}.50 → {p}.100
+ * Theme mode
  */
-export type LightLevelOffset = 0 | 1 | 2;
+export type ThemeMode = 'light' | 'dark';
 
 /**
- * dark mode brightening offset
- *
- * - 0: unchanged
- * - 1: background {p}.950 → {p}.900
- * - 2: background {p}.900 → {p}.800
- * - 3: background {p}.800 → {p}.700
+ * Theme tokens
  */
-export type DarkLevelOffset = 0 | 1 | 2 | 3;
+export interface ThemeTokens extends BaseTokens, ColorTokens {}
 
 /**
- * theme options
+ * Theme preset
  */
-export interface ThemeOptions extends ThemeSizeConfig, ThemeRadiusConfig, ThemeMenuConfig, PresetConfig {
+export interface ThemePreset extends BaseTokens {
+  /**
+   * the theme name
+   */
+  name?: string;
+  /**
+   * the light mode tokens
+   */
+  light: Partial<ColorTokens>;
+  /**
+   * the dark mode tokens
+   */
+  dark?: Partial<ColorTokens>;
+}
+
+/**
+ * Full theme preset
+ */
+export interface FullThemePreset extends Required<BaseTokens> {
+  /**
+   * the theme name
+   */
+  name: string;
+  /**
+   * the light mode tokens
+   */
+  light: ColorTokens;
+  /**
+   * the dark mode tokens
+   */
+  dark: Partial<ColorTokens>;
+}
+
+/**
+ * Style target
+ */
+export type StyleTarget = 'html' | ':root';
+
+/**
+ * Dark selector
+ */
+export type DarkSelector = 'class' | 'media';
+
+/**
+ * Dark selector value
+ */
+export type DarkSelectorValue = DarkSelector | (string & {});
+
+/**
+ * Color format
+ */
+export type ColorFormat = 'hsl' | 'oklch';
+
+/**
+ * Base generate CSS options
+ */
+export interface BaseGenerateCSSOptions {
   /**
    * the style target
    *
@@ -390,7 +419,7 @@ export interface ThemeOptions extends ThemeSizeConfig, ThemeRadiusConfig, ThemeM
    *
    * @default 'class'
    */
-  darkSelector?: DarkSelector | (string & {});
+  darkSelector?: DarkSelectorValue;
   /**
    * color output format
    *
@@ -400,226 +429,50 @@ export interface ThemeOptions extends ThemeSizeConfig, ThemeRadiusConfig, ThemeM
    * @default 'hsl'
    */
   format?: ColorFormat;
+}
+
+/**
+ * Generate CSS options
+ */
+export interface GenerateCSSOptions extends BaseGenerateCSSOptions {
   /**
-   * light mode darkening offset
+   * theme preset
+   */
+  preset: FullThemePreset;
+}
+
+/**
+ * Theme options
+ */
+export interface ThemeOptions extends BaseGenerateCSSOptions {
+  /**
+   * the base color preset key
+   *
+   * @default 'zinc'
+   */
+  base?: BaseColorKey;
+  /**
+   * the primary color preset key
+   *
+   * @default 'zinc'
+   */
+  primary?: PrimaryColorKey;
+  /**
+   * the theme preset
+   */
+  preset?: ThemePreset | ThemeTokens;
+  /**
+   * light mode surface darkening offset
    *
    * @default 0
    */
   lightLevel?: LightLevelOffset;
   /**
-   * dark mode brightening offset
+   * dark mode surface brightening offset
    *
    * @default 0
    */
   darkLevel?: DarkLevelOffset;
 }
 
-export interface RequiredThemeOptions extends Required<Omit<ThemeOptions, 'preset'>>, Pick<ThemeOptions, 'preset'> {}
-
-export interface BaseThemeOptions extends Omit<ThemeOptions, 'styleTarget' | 'darkSelector' | 'format' | 'preset'> {}
-
-/**
- * the persistable theme config state
- *
- * a subset of `ThemeOptions` that can be safely stored in localStorage /
- * cookies, plus the `mode` preference used to toggle the dark mode class
- * before first paint. Custom `preset` colors are intentionally not persisted.
- */
-export interface ThemeConfigState extends ThemeSizeConfig, ThemeRadiusConfig, ThemeMenuConfig, PresetKeyConfig {
-  /**
-   * the color scheme preference
-   *
-   * applied as a class on `<html>` (default `'dark'`)
-   */
-  mode?: 'light' | 'dark';
-  /**
-   * color output format
-   *
-   * @default 'hsl'
-   */
-  format?: ColorFormat;
-  /**
-   * light mode darkening offset
-   *
-   * @default 0
-   */
-  lightLevel?: LightLevelOffset;
-  /**
-   * dark mode brightening offset
-   *
-   * @default 0
-   */
-  darkLevel?: DarkLevelOffset;
-}
-
-/**
- * options for `setThemeCookie`
- */
-export interface ThemeCookieOptions {
-  /**
-   * the cookie name
-   *
-   * @defaultValue 'soybean-ui-theme'
-   */
-  key?: string;
-  /**
-   * the cookie lifetime in seconds
-   *
-   * @defaultValue 365 days
-   */
-  maxAge?: number;
-  /**
-   * the cookie path
-   *
-   * @defaultValue '/'
-   */
-  path?: string;
-}
-
-/**
- * options for `createThemeInitScript`
- */
-export interface ThemeInitScriptOptions {
-  /**
-   * the localStorage key to read
-   *
-   * @defaultValue 'soybean-ui-theme'
-   */
-  storageKey?: string;
-  /**
-   * the cookie key to sync the config into
-   *
-   * @defaultValue 'soybean-ui-theme'
-   */
-  cookieKey?: string;
-  /**
-   * the dark mode class toggled on `<html>`
-   *
-   * @defaultValue 'dark'
-   */
-  darkClass?: string;
-  /**
-   * whether to set the `data-theme="<base>-<primary>"` attribute on `<html>`
-   *
-   * @defaultValue true
-   */
-  setDataTheme?: boolean;
-  /**
-   * whether to mirror the stored config into a cookie so the next SSR request
-   * can render the same theme
-   *
-   * @defaultValue true
-   */
-  syncCookie?: boolean;
-}
-
-/**
- * options for `createThemeStore`
- */
-export interface ThemeStoreOptions {
-  /**
-   * the localStorage key of the persisted theme config
-   *
-   * @defaultValue THEME_STORAGE_KEY ('soybean-ui-theme')
-   */
-  storageKey?: string;
-  /**
-   * the cookie name carrying the theme config for SSR resolution
-   *
-   * @defaultValue THEME_COOKIE_KEY ('soybean-ui-theme')
-   */
-  cookieKey?: string;
-  /**
-   * the localStorage key of the custom presets table
-   *
-   * @defaultValue THEME_PRESETS_STORAGE_KEY ('soybean-ui-theme-presets')
-   */
-  presetsKey?: string;
-  /**
-   * the cookie name carrying the currently applied custom preset name
-   *
-   * @defaultValue 'soybean-ui-applied-preset'
-   */
-  appliedPresetCookieKey?: string;
-  /**
-   * the explicit runtime environment.
-   *
-   * The theme library is pre-built, so `import.meta.env.SSR` is baked at build
-   * time and cannot detect the consumer's runtime. Pass the app's own flag
-   * (e.g. Nuxt's `import.meta.server`) to drive the SSR-specific storage paths.
-   *
-   * @defaultValue isServerRuntime() — runtime detection of `window`/`document`
-   */
-  isServer?: boolean;
-  /**
-   * the raw cookie header for SSR resolution, e.g. Nuxt's
-   * `useRequestHeaders(['cookie']).cookie`. Only used when `isServer` is true.
-   */
-  cookieHeader?: string | null;
-  /**
-   * the server-side custom preset registry resolver: maps a preset name to its
-   * definition so SSR can render custom presets without localStorage access.
-   * Only used when `isServer` is true.
-   */
-  presetProvider?: (name: string) => CustomThemeColorPreset | undefined;
-}
-
-/**
- * a cohesive, environment-aware theme storage facade.
- *
- * Bundles the persisted theme config, the custom presets table, and the
- * currently applied custom preset into one object. All reads and writes are
- * routed to the correct transport based on the runtime environment:
- *
- * - server: reads come from the injected `cookieHeader`; writes are no-ops;
- * - client: reads/writes go to localStorage and `document.cookie`.
- *
- * The cookie is the cross-environment sync channel, so the config and the
- * applied preset name are resolvable on the server and stay consistent with
- * the client's localStorage.
- */
-export interface ThemeStore {
-  /**
-   * whether this store is running in the server environment
-   */
-  readonly isServer: boolean;
-  /**
-   * read the persisted theme config from the appropriate source
-   * (cookie on the server, localStorage on the client).
-   */
-  readConfig(): ThemeConfigState | null;
-  /**
-   * persist the theme config to localStorage and mirror it into a cookie so the
-   * next SSR request renders the same theme. Client-only; no-op on the server.
-   */
-  commitConfig(config: ThemeConfigState): void;
-  /**
-   * resolve a named custom preset to its definition
-   * (server via `presetProvider`, client via the presets table).
-   */
-  resolvePreset(name: string): CustomThemeColorPreset | undefined;
-  /**
-   * persist a custom preset into the presets table. Client-only; returns
-   * `false` on the server.
-   */
-  savePreset(preset: StoredThemePreset): boolean;
-  /**
-   * remove a custom preset from the presets table. Client-only; returns
-   * `false` on the server.
-   */
-  removePreset(name: string): boolean;
-  /**
-   * read the currently applied custom preset name (from the cookie on both
-   * environments) so SSR can render the applied preset on first paint.
-   */
-  readAppliedPreset(): string | null;
-  /**
-   * apply a custom preset by name and persist its reference to the cookie.
-   * Client-only; no-op on the server.
-   */
-  applyPreset(name: string): void;
-  /**
-   * clear the applied custom preset reference. Client-only; no-op on the server.
-   */
-  resetPreset(): void;
-}
+export type { BaseColorKey, PrimaryColorKey };

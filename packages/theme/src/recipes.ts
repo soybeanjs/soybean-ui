@@ -1,6 +1,9 @@
 import type { MenuAccent, MenuColor } from './types';
 import { COLOR_VARIABLES, MENU_VARIABLES } from './variables';
 
+/**
+ * menu surface variables per `menuColor` preset
+ */
 export const menuColorCss: Record<MenuColor, Record<string, string>> = {
   default: {
     [MENU_VARIABLES.bg]: `var(${COLOR_VARIABLES.popover})`,
@@ -28,6 +31,9 @@ export const menuColorCss: Record<MenuColor, Record<string, string>> = {
   }
 };
 
+/**
+ * menu item highlight variables per `menuAccent` preset
+ */
 export const menuAccentCss: Record<MenuAccent, Record<string, string>> = {
   subtle: {
     [MENU_VARIABLES.itemAccentBackground]: `hsl(var(${COLOR_VARIABLES.foreground}) / 0.05)`,

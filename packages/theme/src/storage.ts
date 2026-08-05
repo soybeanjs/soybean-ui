@@ -3,16 +3,146 @@ import { tailwindPalette } from '@soybeanjs/colord/palette';
 import type { TailwindPaletteKey } from '@soybeanjs/colord/palette';
 import { builtinBasePresetKeys, builtinPrimaryPresetKeys } from './core-template';
 import type {
-  BuiltinBasePresetKey,
-  BuiltinPrimaryPresetKey,
+  BaseColorKey,
+  ColorTokens,
   ColorValue,
   MenuColor,
-  StoredThemePreset,
-  StoredThemePresets,
-  ThemeConfigState,
-  ThemeCookieOptions
+  MenuAccent,
+  PrimaryColorKey,
+  ThemeRadiusValue,
+  ThemeSizeValue,
+  ColorFormat,
+  LightLevelOffset,
+  DarkLevelOffset
 } from './types';
 import { COLOR_VARIABLES } from './variables';
+
+/**
+ * a custom theme color preset (light/dark color token overrides)
+ */
+export type CustomThemeColorPreset = {
+  light: Partial<ColorTokens>;
+  dark?: Partial<ColorTokens>;
+};
+
+/**
+ * a reference to a stored custom theme preset by name
+ */
+export type ThemePresetRef = { presetName: string };
+
+/**
+ * theme preset input: either an inline custom preset or a reference to a stored one
+ */
+export type ThemePresetInput = CustomThemeColorPreset | ThemePresetRef;
+
+/**
+ * a persisted custom theme preset entry
+ */
+export interface StoredThemePreset extends CustomThemeColorPreset {
+  /**
+   * the preset unique name (also the storage object key)
+   */
+  name: string;
+  /**
+   * the preset data version (semver, used for display and update decisions)
+   */
+  version: string;
+}
+
+/**
+ * the persisted custom theme presets table
+ */
+export interface StoredThemePresets {
+  /**
+   * the storage schema version
+   *
+   * @defaultValue 1
+   */
+  version: number;
+  presets: Record<string, StoredThemePreset>;
+}
+
+/**
+ * the persistable theme config state
+ *
+ * a subset of `ThemeOptions` that can be safely stored in localStorage /
+ * cookies, plus the `mode` preference used to toggle the dark mode class
+ * before first paint. Custom `preset` colors are intentionally not persisted.
+ */
+export interface ThemeConfigState {
+  /**
+   * the base color preset key
+   */
+  base?: BaseColorKey;
+  /**
+   * the primary color preset key
+   */
+  primary?: PrimaryColorKey;
+  /**
+   * the component size / density
+   */
+  size?: ThemeSizeValue;
+  /**
+   * the border radius
+   */
+  radius?: ThemeRadiusValue;
+  /**
+   * the menu color preset key
+   */
+  menuColor?: MenuColor;
+  /**
+   * the menu accent preset key
+   */
+  menuAccent?: MenuAccent;
+  /**
+   * the color scheme preference
+   *
+   * applied as a class on `<html>` (default `'dark'`)
+   */
+  mode?: 'light' | 'dark';
+  /**
+   * color output format
+   *
+   * @default 'hsl'
+   */
+  format?: ColorFormat;
+  /**
+   * light mode darkening offset
+   *
+   * @default 0
+   */
+  lightLevel?: LightLevelOffset;
+  /**
+   * dark mode brightening offset
+   *
+   * @default 0
+   */
+  darkLevel?: DarkLevelOffset;
+}
+
+/**
+ * options for `setThemeCookie`
+ */
+export interface ThemeCookieOptions {
+  /**
+   * the cookie name
+   *
+   * @defaultValue 'soybean-ui-theme'
+   */
+  key?: string;
+  /**
+   * the cookie lifetime in seconds
+   *
+   * @defaultValue 365 days
+   */
+  maxAge?: number;
+  /**
+   * the cookie path
+   *
+   * @defaultValue '/'
+   */
+  path?: string;
+}
 
 /**
  * the default localStorage key for the persisted theme config
@@ -26,10 +156,10 @@ export const THEME_COOKIE_KEY = 'soybean-theme';
 
 const MENU_COLORS: readonly MenuColor[] = ['default', 'inverted', 'default-translucent', 'inverted-translucent'];
 
-const isBaseKey = (value: unknown): value is BuiltinBasePresetKey =>
+const isBaseKey = (value: unknown): value is BaseColorKey =>
   typeof value === 'string' && (builtinBasePresetKeys as readonly string[]).includes(value);
 
-const isPrimaryKey = (value: unknown): value is BuiltinPrimaryPresetKey =>
+const isPrimaryKey = (value: unknown): value is PrimaryColorKey =>
   typeof value === 'string' && (builtinPrimaryPresetKeys as readonly string[]).includes(value);
 
 const isMode = (value: unknown): value is ThemeConfigState['mode'] => value === 'light' || value === 'dark';
@@ -100,10 +230,10 @@ export function parseThemeConfig(raw: string | null | undefined): ThemeConfigSta
     config.mode = mode;
   }
   if (typeof size === 'string') {
-    config.size = size;
+    config.size = size as ThemeSizeValue;
   }
   if (typeof radius === 'string') {
-    config.radius = radius;
+    config.radius = radius as ThemeRadiusValue;
   }
   if (isMenuColor(menuColor)) {
     config.menuColor = menuColor;
@@ -364,5 +494,3 @@ export function removeStoredThemePreset(name: string, key: string = THEME_PRESET
 
   return true;
 }
-
-export type { StoredThemePreset, StoredThemePresets, ThemeConfigState, ThemeCookieOptions } from './types';

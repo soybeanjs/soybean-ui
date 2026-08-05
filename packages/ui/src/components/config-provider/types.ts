@@ -1,9 +1,22 @@
 import type { ConfigProviderProps as _ConfigProviderProps } from '@soybeanjs/headless/config-provider';
 import type { ProgressProviderProps } from '@soybeanjs/headless/progress';
 import type { PropsToContext } from '@soybeanjs/headless/types';
-import type { CustomThemeColorPreset, ThemeConfigState, ThemeOptions } from '@soybeanjs/theme';
+import type { ThemeOptions } from '@soybeanjs/theme';
+import type { CustomThemeColorPreset, ThemeConfigState, ThemePresetInput } from '@soybeanjs/theme/storage';
 import type { ThemeSize } from '@/theme';
 import type { ToastProviderProps } from '../toast/types';
+
+/**
+ * UI-level theme options accepted by `SConfigProvider`.
+ *
+ * Unlike the engine's `ThemeOptions`, the `preset` may be either an inline
+ * color preset or a `{ presetName }` reference to a stored preset. The provider
+ * resolves named references to their colors before calling `createTheme`, so
+ * the engine only ever receives a materialized preset.
+ */
+export type ConfigProviderThemeOptions = Omit<ThemeOptions, 'preset'> & {
+  preset?: ThemePresetInput;
+};
 
 export interface IconifyOptions {
   /**
@@ -25,7 +38,7 @@ export interface IconifyOptions {
  */
 export interface ConfigProviderProps extends _ConfigProviderProps {
   /** The theme options. */
-  theme?: ThemeOptions;
+  theme?: ConfigProviderThemeOptions;
   /**
    * The size options.
    *

@@ -1,9 +1,12 @@
-import type { ThemeColorKey, DarkSelector } from './types';
+import type { ColorKey, DarkSelector } from './types';
 
 export const SIZE_VARIABLE = '--size';
 
 export const RADIUS_VARIABLE = '--radius';
 
+/**
+ * CSS custom property name for every color token
+ */
 export const COLOR_VARIABLES = {
   // base colors
   background: '--background',
@@ -52,14 +55,20 @@ export const COLOR_VARIABLES = {
   chart3: '--chart-3',
   chart4: '--chart-4',
   chart5: '--chart-5'
-} as const satisfies Record<ThemeColorKey, string>;
+} as const satisfies Record<ColorKey, string>;
 
+/**
+ * derived alpha variables for tokens that carry a translucent alpha channel
+ */
 export const EXTENDED_THEME_VARIABLES = {
   borderAlpha: '--border-alpha',
   inputAlpha: '--input-alpha',
   sidebarBorderAlpha: '--sidebar-border-alpha'
 } as const;
 
+/**
+ * menu surface / accent variables consumed by the layout
+ */
 export const MENU_VARIABLES = {
   bg: '--menu-bg',
   bgAlpha: '--menu-bg-alpha',

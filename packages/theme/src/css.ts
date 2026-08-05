@@ -1,53 +1,49 @@
 import { generatePalette } from '@soybeanjs/colord/palette';
-import {
-  getColorValue,
-  isUnTransformedColor,
-  keysOf,
-  removeHslBrackets,
-  resolveRadiusValue,
-  resolveSizeValue
-} from './shared';
+import { keysOf } from '@soybeanjs/utils';
+import { getColorValue, isUnTransformedColor, removeHslBrackets, resolveRadiusValue, resolveSizeValue } from './shared';
 import { menuAccentCss, menuColorCss } from './recipes';
 import type {
+  BaseGenerateCSSOptions,
   ColorFormat,
+  ColorKey,
+  ColorTokens,
   ColorValue,
   DarkSelector,
-  ThemeColor,
-  ThemeColorKey,
-  ThemeColorPreset,
-  ThemeColorWithAlphaKey,
-  ThemeOptions
+  FullThemePreset,
+  StyleTarget,
+  ThemeColor
 } from './types';
 import { COLOR_VARIABLES, DARK_SELECTOR, EXTENDED_THEME_VARIABLES, RADIUS_VARIABLE, SIZE_VARIABLE } from './variables';
 
-export function generateCss(
-  preset: ThemeColorPreset,
-  options: Required<
-    Pick<ThemeOptions, 'styleTarget' | 'darkSelector' | 'format' | 'size' | 'radius' | 'menuColor' | 'menuAccent'>
-  >
-) {
-  const baseCss = generateBaseCss(options);
+/**
+ * the alpha-bearing tokens whose alpha channel is exposed as a separate
+ * variable for runtime opacity tuning
+ */
+const ALPHA_KEYS: ReadonlyArray<'border' | 'input' | 'sidebarBorder'> = ['border', 'input', 'sidebarBorder'];
+
+/**
+ * generate the full theme CSS (base tokens + light/dark color tokens) from a
+ * resolved `FullThemePreset`.
+ */
+export function generateCss(preset: FullThemePreset, options: Required<BaseGenerateCSSOptions>) {
+  const baseCss = generateBaseCss(preset, options.styleTarget);
   const colorCss = generateColorCss(preset, options);
 
   return `${baseCss}\n\n${colorCss}`;
 }
 
-function generateBaseCss(
-  options: Required<Pick<ThemeOptions, 'styleTarget' | 'size' | 'radius' | 'menuColor' | 'menuAccent'>>
-) {
-  const { styleTarget, size, radius, menuColor, menuAccent } = options;
-
+function generateBaseCss(preset: FullThemePreset, styleTarget: StyleTarget) {
   let css = '';
   css += `${styleTarget} {\n`;
-  css += `  ${SIZE_VARIABLE}: ${resolveSizeValue(size)};\n`;
-  css += `  ${RADIUS_VARIABLE}: ${resolveRadiusValue(radius)};\n`;
+  css += `  ${SIZE_VARIABLE}: ${resolveSizeValue(preset.size)};\n`;
+  css += `  ${RADIUS_VARIABLE}: ${resolveRadiusValue(preset.radius)};\n`;
 
-  const mCVars = menuColorCss[menuColor];
+  const mCVars = menuColorCss[preset.menuColor];
   keysOf(mCVars).forEach(varKey => {
     css += `  ${varKey}: ${mCVars[varKey]};\n`;
   });
 
-  const aCVars = menuAccentCss[menuAccent];
+  const aCVars = menuAccentCss[preset.menuAccent];
   keysOf(aCVars).forEach(varKey => {
     css += `  ${varKey}: ${aCVars[varKey]};\n`;
   });
@@ -57,10 +53,14 @@ function generateBaseCss(
   return css;
 }
 
-export function generateColorCss(
-  preset: ThemeColorPreset,
-  options: Required<Pick<ThemeOptions, 'styleTarget' | 'darkSelector' | 'format'>>
-) {
+/**
+ * generate the color token CSS (light layer + dark layer).
+ *
+ * The dark layer only emits a token when its value differs from the light
+ * value, so a derived dark that equals light produces no override and the
+ * dark mode naturally inherits the light token.
+ */
+export function generateColorCss(preset: FullThemePreset, options: Required<BaseGenerateCSSOptions>) {
   const { light, dark } = preset;
   const { format, styleTarget } = options;
 
@@ -103,7 +103,7 @@ export function generateColorCss(
   return css;
 }
 
-function getItemColorCss(key: ThemeColorKey, format: ColorFormat, preset: Partial<Record<ThemeColorKey, ColorValue>>) {
+function getItemColorCss(key: ColorKey, format: ColorFormat, preset: Partial<ColorTokens>) {
   const value = preset[key];
   if (!value) return '';
 
@@ -122,16 +122,14 @@ function getItemColorCss(key: ThemeColorKey, format: ColorFormat, preset: Partia
 }
 
 /**
- *
- * @param colorValue format is hsl without brackets: "hue, saturation, lightness / alpha"
- * @param format
+ * extract the alpha channel of an hsl color and expose it as a dedicated
+ * variable for `border`/`input`/`sidebarBorder` so runtime overlays can tune
+ * opacity independently of the color channels.
  */
 function getAlphaCss(colorValue: string, format: ColorFormat, key: string) {
-  const alphaKeys: ThemeColorWithAlphaKey[] = ['border', 'input', 'sidebarBorder'];
-
   const untransformed = isUnTransformedColor(colorValue as ColorValue);
 
-  if (untransformed || format === 'oklch' || !alphaKeys.includes(key as ThemeColorWithAlphaKey)) {
+  if (untransformed || format === 'oklch' || !ALPHA_KEYS.includes(key as (typeof ALPHA_KEYS)[number])) {
     return {
       color: colorValue,
       alphaCss: ''
@@ -168,7 +166,11 @@ function getAlphaCss(colorValue: string, format: ColorFormat, key: string) {
   };
 }
 
-function generatePaletteItemCss(color: ColorValue, paletteKey: ThemeColor, format: ColorFormat) {
+function generatePaletteItemCss(color: ColorValue | undefined, paletteKey: ThemeColor, format: ColorFormat) {
+  if (!color) {
+    return '';
+  }
+
   let css = '';
   const colorValue = getColorValue(color, format);
   const palette = generatePalette(colorValue, format === 'hsl' ? 'hslString' : 'oklchString');

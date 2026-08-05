@@ -361,8 +361,12 @@ describe('SConfigProvider', () => {
         attachTo: document.body
       });
 
-      // 内联 preset 直接使用，不经过存储解析
-      expect(createThemeMock.mock.calls.at(-1)?.[0]?.preset).toEqual({ light: { primary: 'blue.600' } });
+      // 内联 preset 直接使用，不经过存储解析；base tokens 取默认值进入 preset
+      expect(createThemeMock.mock.calls.at(-1)?.[0]?.preset).toEqual({
+        size: 'md',
+        radius: 'md',
+        light: { primary: 'blue.600' }
+      });
 
       wrapper.unmount();
     });

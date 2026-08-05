@@ -1,40 +1,15 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import {
   createThemeInitScript,
-  createThemeStore,
   getCookieValue,
   getThemeConfigFromCookie,
-  isServerRuntime
+  isServerRuntime,
+  parseThemeConfig
 } from '../src/ssr';
-import {
-  THEME_COOKIE_KEY,
-  THEME_PRESETS_STORAGE_KEY,
-  THEME_STORAGE_KEY,
-  setStoredThemeConfig,
-  setStoredThemePreset,
-  stringifyThemeConfig
-} from '../src/storage';
-import type { StoredThemePreset, ThemeConfigState } from '../src/types';
-
-const sampleConfig: ThemeConfigState = {
-  base: 'slate',
-  primary: 'violet',
-  mode: 'dark',
-  radius: 'lg',
-  size: 'md'
-};
-
-const samplePreset: StoredThemePreset = {
-  name: 'brand',
-  version: '1.0.0',
-  light: { primary: 'blue.600', ring: 'blue.500' },
-  dark: { primary: 'blue.300', ring: 'blue.700' }
-};
 
 const cookieHeader = (key: string, value: string): string => `other=1; ${key}=${value}; next=2`;
 
 afterEach(() => {
-  window.localStorage.clear();
   // happy-dom 不会用 `Max-Age=0` 从 document.cookie 中移除 cookie，而是留下
   // `name=` 空值；改用 `expires` 属性才能可靠删除，避免测试间状态泄漏。
   document.cookie.split(';').forEach(cookie => {
@@ -53,13 +28,12 @@ describe('isServerRuntime', () => {
   it('returns true when window is absent', () => {
     const original = globalThis.window;
 
-    // @ts-expect-error simulate a server runtime without window
-    delete globalThis.window;
+    Object.defineProperty(globalThis, 'window', { value: undefined, configurable: true });
 
     try {
       expect(isServerRuntime()).toBe(true);
     } finally {
-      globalThis.window = original;
+      Object.defineProperty(globalThis, 'window', { value: original, configurable: true });
     }
   });
 });
@@ -76,17 +50,41 @@ describe('getCookieValue', () => {
   });
 });
 
-describe('getThemeConfigFromCookie', () => {
-  it('resolves the config from a raw cookie header', () => {
-    const header = cookieHeader(THEME_COOKIE_KEY, encodeURIComponent(stringifyThemeConfig(sampleConfig)));
+describe('parseThemeConfig', () => {
+  it('parses a JSON config payload', () => {
+    expect(parseThemeConfig(JSON.stringify({ base: 'zinc', primary: 'indigo', mode: 'dark' }))).toEqual({
+      base: 'zinc',
+      primary: 'indigo',
+      mode: 'dark'
+    });
+  });
 
-    expect(getThemeConfigFromCookie(header)).toEqual(sampleConfig);
+  it('parses the compact "<base>-<primary>" form as light mode', () => {
+    expect(parseThemeConfig('zinc-indigo')).toEqual({ base: 'zinc', primary: 'indigo', mode: 'light' });
+  });
+
+  it('returns null for missing or malformed payloads', () => {
+    expect(parseThemeConfig('')).toBeNull();
+    expect(parseThemeConfig('nodash')).toBeNull();
+    expect(parseThemeConfig('{bad json')).toBeNull();
+    expect(parseThemeConfig(JSON.stringify({ primary: 'indigo' }))).toBeNull();
+  });
+});
+
+describe('getThemeConfigFromCookie', () => {
+  it('parses only base/primary/mode from a raw cookie header', () => {
+    const header = cookieHeader(
+      'soybean-theme',
+      encodeURIComponent(JSON.stringify({ base: 'slate', primary: 'violet', mode: 'dark', radius: 'lg' }))
+    );
+
+    expect(getThemeConfigFromCookie(header)).toEqual({ base: 'slate', primary: 'violet', mode: 'dark' });
   });
 
   it('returns null for a missing header, missing key, or malformed value', () => {
     expect(getThemeConfigFromCookie(null)).toBeNull();
     expect(getThemeConfigFromCookie('other=1')).toBeNull();
-    expect(getThemeConfigFromCookie(`${THEME_COOKIE_KEY}=%E0%A4%A`)).toBeNull();
+    expect(getThemeConfigFromCookie(`${'soybean-theme'}=%E0%A4%A`)).toBeNull();
   });
 });
 
@@ -97,38 +95,49 @@ describe('createThemeInitScript', () => {
     expect(script).toContain('(function () {');
     expect(script).toContain('try {');
     expect(script).toContain('catch (e) {}');
-    expect(script).toContain(`localStorage.getItem(${JSON.stringify(THEME_STORAGE_KEY)})`);
   });
 
-  it('sets data-theme from base and primary by default', () => {
+  it('is a no-op when no config is provided', () => {
     const script = createThemeInitScript();
 
+    expect(script).not.toContain('setAttribute');
+    expect(script).not.toContain('classList');
+  });
+
+  it('sets data-theme from base and primary when a config is provided', () => {
+    const script = createThemeInitScript({ config: { base: 'slate', primary: 'violet', mode: 'light' } });
+
     expect(script).toContain("doc.setAttribute('data-theme', themeKey)");
+    expect(script).toContain('"slate"');
+    expect(script).toContain('"violet"');
   });
 
   it('toggles the dark class from config.mode', () => {
-    const script = createThemeInitScript();
+    const script = createThemeInitScript({ config: { base: 'slate', primary: 'violet', mode: 'dark' } });
 
-    expect(script).toContain("config.mode === 'dark'");
+    expect(script).toContain('classList.toggle("dark", true)');
   });
 
-  it('mirrors the config into the cookie by default', () => {
-    const script = createThemeInitScript();
+  it('skips the class toggle when the media selector is used', () => {
+    const script = createThemeInitScript({
+      config: { base: 'slate', primary: 'violet', mode: 'dark' },
+      darkSelector: 'media'
+    });
 
-    expect(script).toContain(`"${THEME_COOKIE_KEY}" + '=' + encodeURIComponent(raw)`);
+    expect(script).not.toContain('classList');
   });
 
-  it('respects options to disable data-theme and cookie sync', () => {
-    const script = createThemeInitScript({ setDataTheme: false, syncCookie: false });
+  it('respects setDataTheme=false to skip the data-theme attribute', () => {
+    const script = createThemeInitScript({
+      config: { base: 'slate', primary: 'violet', mode: 'light' },
+      setDataTheme: false
+    });
 
     expect(script).not.toContain('setAttribute');
-    expect(script).not.toContain('document.cookie');
   });
 
-  it('emits a runnable script that applies the stored theme', () => {
-    window.localStorage.setItem(THEME_STORAGE_KEY, stringifyThemeConfig(sampleConfig));
-
-    const script = createThemeInitScript({ syncCookie: false });
+  it('emits a runnable script that applies the resolved theme', () => {
+    const script = createThemeInitScript({ config: { base: 'slate', primary: 'violet', mode: 'dark' } });
     // eslint-disable-next-line @typescript-eslint/no-implied-eval
     const run = new Function(script);
 
@@ -136,144 +145,5 @@ describe('createThemeInitScript', () => {
 
     expect(document.documentElement.getAttribute('data-theme')).toBe('slate-violet');
     expect(document.documentElement.classList.contains('dark')).toBe(true);
-  });
-});
-
-describe('createThemeStore (client / CSR)', () => {
-  it('routes to a client store (isServer=false)', () => {
-    const store = createThemeStore({ isServer: false });
-
-    expect(store.isServer).toBe(false);
-  });
-
-  it('reads the config from localStorage', () => {
-    setStoredThemeConfig(sampleConfig);
-
-    const store = createThemeStore({ isServer: false });
-
-    expect(store.readConfig()).toEqual(sampleConfig);
-  });
-
-  it('commitConfig writes localStorage and mirrors the cookie', () => {
-    const store = createThemeStore({ isServer: false });
-
-    store.commitConfig(sampleConfig);
-
-    expect(window.localStorage.getItem(THEME_STORAGE_KEY)).toBe(stringifyThemeConfig(sampleConfig));
-    expect(document.cookie).toContain(THEME_COOKIE_KEY);
-    expect(store.readConfig()).toEqual(sampleConfig);
-  });
-
-  it('resolves a preset from the localStorage presets table', () => {
-    setStoredThemePreset(samplePreset);
-
-    const store = createThemeStore({ isServer: false });
-
-    expect(store.resolvePreset('brand')).toEqual({ light: samplePreset.light, dark: samplePreset.dark });
-    expect(store.resolvePreset('missing')).toBeUndefined();
-  });
-
-  it('saves and removes presets through the client store', () => {
-    const store = createThemeStore({ isServer: false });
-
-    expect(store.savePreset(samplePreset)).toBe(true);
-    expect(store.resolvePreset('brand')).toBeDefined();
-    expect(store.removePreset('brand')).toBe(true);
-    expect(store.resolvePreset('brand')).toBeUndefined();
-  });
-
-  it('applies and resets a preset reference through the cookie', () => {
-    const store = createThemeStore({ isServer: false });
-
-    expect(store.readAppliedPreset()).toBeNull();
-
-    store.applyPreset('brand-demo');
-    expect(store.readAppliedPreset()).toBe('brand-demo');
-
-    store.resetPreset();
-    expect(store.readAppliedPreset()).toBeNull();
-  });
-});
-
-describe('createThemeStore (server / SSR)', () => {
-  it('routes to a server store (isServer=true)', () => {
-    const store = createThemeStore({ isServer: true });
-
-    expect(store.isServer).toBe(true);
-  });
-
-  it('reads the config from the injected cookie header', () => {
-    const store = createThemeStore({
-      isServer: true,
-      cookieHeader: cookieHeader(THEME_COOKIE_KEY, encodeURIComponent(stringifyThemeConfig(sampleConfig)))
-    });
-
-    expect(store.readConfig()).toEqual(sampleConfig);
-  });
-
-  it('returns null when the cookie header is empty or malformed', () => {
-    const store = createThemeStore({ isServer: true, cookieHeader: null });
-
-    expect(store.readConfig()).toBeNull();
-  });
-
-  it('commitConfig is a no-op on the server', () => {
-    const store = createThemeStore({ isServer: true });
-
-    store.commitConfig(sampleConfig);
-
-    expect(window.localStorage.getItem(THEME_STORAGE_KEY)).toBeNull();
-  });
-
-  it('resolves a preset through the injected presetProvider', () => {
-    const store = createThemeStore({
-      isServer: true,
-      presetProvider: name => (name === samplePreset.name ? { light: samplePreset.light } : undefined)
-    });
-
-    expect(store.resolvePreset('brand')).toEqual({ light: samplePreset.light });
-    expect(store.resolvePreset('missing')).toBeUndefined();
-  });
-
-  it('savePreset / removePreset are no-ops on the server', () => {
-    const store = createThemeStore({ isServer: true });
-
-    expect(store.savePreset(samplePreset)).toBe(false);
-    expect(store.removePreset('brand')).toBe(false);
-    expect(window.localStorage.getItem(THEME_PRESETS_STORAGE_KEY)).toBeNull();
-  });
-
-  it('reads the applied preset name from the cookie header', () => {
-    const store = createThemeStore({
-      isServer: true,
-      cookieHeader: cookieHeader('soybean-ui-applied-preset', 'brand-demo')
-    });
-
-    expect(store.readAppliedPreset()).toBe('brand-demo');
-  });
-
-  it('applyPreset / resetPreset are no-ops on the server', () => {
-    const store = createThemeStore({ isServer: true });
-
-    store.applyPreset('brand-demo');
-    store.resetPreset();
-
-    expect(document.cookie).not.toContain('soybean-ui-applied-preset');
-  });
-});
-
-describe('createThemeStore (cross-environment consistency)', () => {
-  it('keeps the applied preset name resolvable across server and client', () => {
-    // 客户端应用 preset 并持久化到 cookie
-    const clientStore = createThemeStore({ isServer: false });
-    clientStore.applyPreset('brand-demo');
-
-    // 服务端从同一 cookie 读到一致的应用引用
-    const serverStore = createThemeStore({
-      isServer: true,
-      cookieHeader: cookieHeader('soybean-ui-applied-preset', 'brand-demo')
-    });
-
-    expect(serverStore.readAppliedPreset()).toBe(clientStore.readAppliedPreset());
   });
 });

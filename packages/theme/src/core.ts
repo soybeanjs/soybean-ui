@@ -1,40 +1,28 @@
-import { mergeObjects, getDarkSelector } from './shared';
+import { defu } from 'defu';
+import { getDarkSelector } from './shared';
 import { generateCss } from './css';
 import { DEFAULT_PRESET_OPTIONS } from './defaults';
 import { generateThemePreset } from './preset';
-import type { CustomThemeColorPreset, ThemeOptions, ThemePresetInput, RequiredThemeOptions } from './types';
+import type { ThemeOptions } from './types';
 
 /**
- * the engine only consumes inline `CustomThemeColorPreset` values; a
- * `{ presetName }` reference is resolved by the ConfigProvider before calling
- * `createTheme`, so any reference reaching the engine directly falls back to
- * the built-in colors.
+ * generate the full theme CSS from base/primary palette keys and an optional
+ * custom preset override.
+ *
+ * The pipeline is: resolve the preset (`generateThemePreset`) → emit CSS
+ * (`generateCss`). It is a pure string function with no side effects and no
+ * DOM access, so it is safe to invoke on the server during SSR.
  */
-const isInlinePreset = (preset: ThemePresetInput): preset is CustomThemeColorPreset => !('presetName' in preset);
+export function createTheme(options?: ThemeOptions): string {
+  // `defu(source, ...defaults)`: user options override the engine defaults,
+  // and `undefined` values fall through to the defaults.
+  const merged = defu(options ?? ({} as Required<ThemeOptions>), DEFAULT_PRESET_OPTIONS);
 
-export function createTheme(options?: ThemeOptions) {
-  const {
-    size,
-    radius,
-    base,
-    primary,
-    menuColor,
-    menuAccent,
-    styleTarget,
-    darkSelector: rawDarkSelector,
-    format,
-    lightLevel,
-    darkLevel,
-    preset
-  } = mergeObjects<RequiredThemeOptions>(DEFAULT_PRESET_OPTIONS, options ?? {});
+  const { base, primary, styleTarget, format, preset, lightLevel, darkLevel } = merged;
 
-  const darkSelector = getDarkSelector(rawDarkSelector);
+  const darkSelector = getDarkSelector(merged.darkSelector);
 
-  const themePreset = generateThemePreset(
-    { base, primary },
-    { lightLevel, darkLevel },
-    preset && isInlinePreset(preset) ? preset : undefined
-  );
+  const themePreset = generateThemePreset({ base, primary }, preset, { lightLevel, darkLevel });
 
-  return generateCss(themePreset, { styleTarget, darkSelector, format, size, radius, menuColor, menuAccent });
+  return generateCss(themePreset, { styleTarget, darkSelector, format });
 }

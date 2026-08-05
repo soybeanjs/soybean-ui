@@ -3,7 +3,7 @@ import { computed, ref } from 'vue';
 import { useMediaQuery } from '@vueuse/core';
 import { tailwindPalette } from '@soybeanjs/colord/palette';
 import { builtinBasePresetKeys, builtinPrimaryPresetKeys, THEME_RADIUS } from '@soybeanjs/theme';
-import type { BuiltinBasePresetKey, BuiltinPrimaryPresetKey, ThemeRadius } from '@soybeanjs/theme';
+import type { ThemeRadius, BaseColorKey, PrimaryColorKey } from '@soybeanjs/theme';
 import { SButton, SButtonIcon, SLabel, SPopover, SSelect, useTheme } from '@soybeanjs/ui';
 import type { SelectOptionData, ThemeSize } from '@soybeanjs/ui';
 
@@ -27,12 +27,12 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 const radiuses = Object.keys(THEME_RADIUS) as ThemeRadius[];
 
-const baseOptions: SelectOptionData<BuiltinBasePresetKey>[] = builtinBasePresetKeys.map(key => ({
+const baseOptions: SelectOptionData<BaseColorKey>[] = builtinBasePresetKeys.map(key => ({
   label: key,
   value: key
 }));
 
-const primaryOptions: SelectOptionData<BuiltinPrimaryPresetKey>[] = builtinPrimaryPresetKeys.map(key => ({
+const primaryOptions: SelectOptionData<PrimaryColorKey>[] = builtinPrimaryPresetKeys.map(key => ({
   label: key,
   value: key
 }));

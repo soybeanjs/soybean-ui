@@ -2,28 +2,38 @@ import { computed, onMounted, reactive, ref, watch } from 'vue';
 import type { ComputedRef, Ref } from 'vue';
 import { useContext } from '@soybeanjs/headless/composables';
 import type {
-  BuiltinBasePresetKey,
-  BuiltinPrimaryPresetKey,
-  CustomThemeColorPreset,
-  ThemeConfigState,
+  BaseTokens,
+  DarkSelectorValue,
   ThemeOptions,
-  ThemeRadius
+  ThemePreset,
+  ThemeRadius,
+  ThemeRadiusValue,
+  ThemeSizeValue,
+  BaseColorKey,
+  PrimaryColorKey
 } from '@soybeanjs/theme';
-import { getCookieValue, getThemeConfigFromCookie, isServerRuntime } from '@soybeanjs/theme/ssr';
+import { getCookieValue, isServerRuntime } from '@soybeanjs/theme/ssr';
 import {
+  THEME_COOKIE_KEY,
   getStoredThemeConfig,
   getStoredThemePresets,
+  parseThemeConfig,
   removeStoredThemePreset,
   setStoredThemeConfig,
   setStoredThemePreset,
   setThemeCookie
 } from '@soybeanjs/theme/storage';
-import type { StoredThemePreset } from '@soybeanjs/theme/storage';
+import type {
+  CustomThemeColorPreset,
+  StoredThemePreset,
+  ThemeConfigState,
+  ThemePresetInput
+} from '@soybeanjs/theme/storage';
 import type { ThemeSize } from '@/theme';
 import type { ConfigProviderProps } from './types';
 
-const DEFAULT_BASE: BuiltinBasePresetKey = 'zinc';
-const DEFAULT_PRIMARY: BuiltinPrimaryPresetKey = 'indigo';
+const DEFAULT_BASE: BaseColorKey = 'zinc';
+const DEFAULT_PRIMARY: PrimaryColorKey = 'indigo';
 const DEFAULT_RADIUS: ThemeRadius = 'md';
 const DEFAULT_SIZE: ThemeSize = 'md';
 const DEFAULT_MODE: 'light' | 'dark' = 'light';
@@ -41,9 +51,9 @@ const APPLIED_PRESET_KEY = 'soybean-ui-applied-preset';
  */
 export interface ThemeContext {
   /** The base color preset key. */
-  base: Ref<BuiltinBasePresetKey>;
+  base: Ref<BaseColorKey>;
   /** The primary color preset key. */
-  primary: Ref<BuiltinPrimaryPresetKey>;
+  primary: Ref<PrimaryColorKey>;
   /** The border radius. */
   radius: Ref<ThemeRadius | (string & {})>;
   /** The component size / density. */
@@ -103,6 +113,29 @@ const setAppliedPresetCookie = (name: string | null): void => {
 };
 
 /**
+ * resolve the dark mode class name from a `darkSelector` value.
+ *
+ * - 'class' → 'dark'
+ * - 'media' → `null` (media queries follow the OS preference, no class toggled)
+ * - any other string is a custom class selector used verbatim (dot stripped).
+ */
+const getDarkClass = (selector: DarkSelectorValue): string | null => {
+  if (selector === 'media') {
+    return null;
+  }
+
+  if (selector === 'class') {
+    return 'dark';
+  }
+
+  return selector.replace(/^\./, '');
+};
+
+/** whether a preset input is an inline color preset (mode-split, carries `light`). */
+const isInlineColorPreset = (preset: ThemePresetInput | undefined): preset is CustomThemeColorPreset =>
+  !!preset && 'light' in preset;
+
+/**
  * Create the theme context for a `SConfigProvider` instance.
  *
  * The persistable theme state is initialized once from the persisted source
@@ -123,7 +156,15 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
       // 显式注入的 themeConfig（SSR）优先，避免读取 localStorage
       persisted = props.themeConfig;
     } else if (isServer) {
-      persisted = getThemeConfigFromCookie(cookieHeader, props.themeCookieKey);
+      const rawCookie = getCookieValue(cookieHeader, props.themeCookieKey ?? THEME_COOKIE_KEY);
+
+      if (rawCookie) {
+        try {
+          persisted = parseThemeConfig(decodeURIComponent(rawCookie));
+        } catch {
+          persisted = null;
+        }
+      }
     } else {
       persisted = getStoredThemeConfig(props.themeStorageKey);
     }
@@ -138,13 +179,13 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
     mode: persisted?.mode ?? DEFAULT_MODE
   });
 
-  const base = computed<BuiltinBasePresetKey>({
+  const base = computed<BaseColorKey>({
     get: () => themeState.base ?? DEFAULT_BASE,
     set: value => {
       themeState.base = value;
     }
   });
-  const primary = computed<BuiltinPrimaryPresetKey>({
+  const primary = computed<PrimaryColorKey>({
     get: () => themeState.primary ?? DEFAULT_PRIMARY,
     set: value => {
       themeState.primary = value;
@@ -153,13 +194,13 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
   const radius = computed<ThemeRadius | (string & {})>({
     get: () => themeState.radius ?? DEFAULT_RADIUS,
     set: value => {
-      themeState.radius = value;
+      themeState.radius = value as ThemeRadiusValue;
     }
   });
   const size = computed<ThemeSize | (string & {})>({
     get: () => themeState.size ?? DEFAULT_SIZE,
     set: value => {
-      themeState.size = value;
+      themeState.size = value as ThemeSizeValue;
     }
   });
   const mode = computed<'light' | 'dark'>({
@@ -184,11 +225,18 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
   );
 
   // —— 暗色模式 class 同步（首帧前由 createThemeInitScript 应用，此处幂等并负责运行中切换）——
+  // class 名与新的 darkSelector 机制保持一致：'media' 不切换任何 class。
   watch(
     mode,
     value => {
-      if (typeof document !== 'undefined') {
-        document.documentElement.classList.toggle('dark', value === 'dark');
+      if (typeof document === 'undefined') {
+        return;
+      }
+
+      const darkClass = getDarkClass(props.theme?.darkSelector ?? 'class');
+
+      if (darkClass) {
+        document.documentElement.classList.toggle(darkClass, value === 'dark');
       }
     },
     { immediate: true }
@@ -289,14 +337,15 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
   const resolvePreset = (): CustomThemeColorPreset | undefined => {
     const input = props.theme?.preset;
 
-    // 内联 preset（自定义颜色）直接使用，不受 persistTheme 限制
-    if (input && !('presetName' in input)) {
+    // 内联 mode-split preset（自定义颜色）直接使用，不受 persistTheme 限制
+    if (isInlineColorPreset(input)) {
       return input;
     }
 
-    const name = appliedPresetName.value ?? (input && 'presetName' in input ? input.presetName : undefined);
+    // 具名 preset 引用（{ presetName }）或当前应用的 preset
+    const presetName = input && 'presetName' in input ? input.presetName : appliedPresetName.value;
 
-    if (!name) {
+    if (!presetName) {
       return undefined;
     }
 
@@ -305,10 +354,10 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
     }
 
     // SSR：走注入的 presetProvider（应用层注册表）；客户端：读本地 presets 表。
-    const preset = isServer ? (props.presetProvider?.(name) ?? undefined) : getStoredPresetColors(name);
+    const preset = isServer ? (props.presetProvider?.(presetName) ?? undefined) : getStoredPresetColors(presetName);
 
     if (!preset && isServer) {
-      console.warn(`[SConfigProvider] theme preset "${name}" not found, falling back to built-in colors.`);
+      console.warn(`[SConfigProvider] theme preset "${presetName}" not found, falling back to built-in colors.`);
     }
 
     return preset;
@@ -320,19 +369,32 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
 
     const t = props.theme ?? {};
 
+    // size/radius/menuColor/menuAccent 进入 preset（BaseTokens），与新的
+    // createTheme 签名保持一致：来源为持久化状态 → size prop。
+    const baseTokens: BaseTokens = {
+      size: themeState.size ?? props.size ?? DEFAULT_SIZE,
+      radius: themeState.radius ?? DEFAULT_RADIUS,
+      menuColor: themeState.menuColor,
+      menuAccent: themeState.menuAccent
+    };
+
+    const colorPreset = resolvePreset();
+
+    const preset: ThemePreset = {
+      ...baseTokens,
+      light: colorPreset?.light ?? {},
+      ...(colorPreset?.dark ? { dark: colorPreset.dark } : {})
+    };
+
     return {
-      size: t.size ?? themeState.size ?? props.size ?? DEFAULT_SIZE,
-      radius: t.radius ?? themeState.radius ?? DEFAULT_RADIUS,
       base: t.base ?? themeState.base ?? DEFAULT_BASE,
       primary: t.primary ?? themeState.primary ?? DEFAULT_PRIMARY,
-      menuColor: t.menuColor ?? themeState.menuColor,
-      menuAccent: t.menuAccent ?? themeState.menuAccent,
+      preset,
       format: t.format ?? themeState.format,
       lightLevel: t.lightLevel ?? themeState.lightLevel,
       darkLevel: t.darkLevel ?? themeState.darkLevel,
       styleTarget: t.styleTarget,
-      darkSelector: t.darkSelector,
-      preset: resolvePreset()
+      darkSelector: t.darkSelector
     };
   });
 

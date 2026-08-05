@@ -205,17 +205,13 @@ describe('custom preset override (ADR-5)', () => {
   it('overrides derived values with the highest priority', () => {
     const preset = generateThemePreset(
       { base: 'zinc', primary: 'indigo' },
-      {},
-      {
-        light: { primary: 'red.600', chart1: 'purple.400' },
-        dark: { primary: 'red.400' }
-      }
+      { light: { primary: 'red.600', chart1: 'purple.400' }, dark: { primary: 'red.400' } }
     );
 
     expect(preset.light.primary).toBe('red.600');
     expect(preset.light.chart1).toBe('purple.400');
     expect(preset.dark.primary).toBe('red.400');
-    expect(preset.dark.chart1).toBe(CHART_TEMPLATE.dark.chart1);
+    expect(preset.dark.chart1).toBe('purple.400');
   });
 });
 
