@@ -1,7 +1,7 @@
 # CONTEXT
 
 > 主题体系领域术语表。仅收录术语与精确定义，不含实现细节。
-> 相关实现方案见 [docs/theme-refactor-plan.md](docs/theme-refactor-plan.md)、[docs/theme-presets-plan.md](docs/theme-presets-plan.md) 与 [docs/config-provider-theme-persist-plan.md](docs/config-provider-theme-persist-plan.md)。
+> 相关实现方案见 [docs/theme-refactor-plan.md](docs/theme-refactor-plan.md)、[docs/theme-presets-plan.md](docs/theme-presets-plan.md)、[docs/config-provider-theme-persist-plan.md](docs/config-provider-theme-persist-plan.md) 与 [docs/theme-provider-plan.md](docs/theme-provider-plan.md)。
 
 ## 主题（theme）
 
@@ -78,3 +78,23 @@ ConfigProvider 上控制「存储读取结果记忆化」的属性，默认开�
 ## 运行时环境判断（isServerRuntime）
 
 `isServerRuntime()` 在调用时检测全局对象（`window`/`document` 是否存在）判断服务端运行。由于 `@soybeanjs/theme` 与 UI 库为预构建产物，`import.meta.env.SSR` 在构建时被固化而无法反映消费方运行时；应用应显式传 `isServer`（如 Nuxt 的 `import.meta.server`）驱动 SSR 专用存储路径。
+
+## 主题提供者（ThemeProvider）
+
+`@soybeanjs/ui` 的完整主题渲染组件。接收 `tokens`（light/dark 语义 token 集合）与 `styleTarget` / `darkSelector` / `format` / `size` / `radius` / `menuColor` / `menuAccent`，将 tokens 与内置默认主题合并为完整 `ThemeColorPreset` 后经 `generateCss` 输出 CSS，并以内联 `<style>` 注入（服务端与客户端都渲染以保证水合一致）。
+
+## 主题 token（tokens）
+
+`ThemeProvider` 的输入，`{ light: Partial<ThemeColors>; dark?: Partial<ThemeColors> }`（即 `CustomThemeColorPreset`）。字段全可选，缺失键回退内置默认主题。可为内联 token 集合，也可为按名引用的持久化 preset（`{ presetName }`）。
+
+## 主题生成器（ThemeGenerator）
+
+`@soybeanjs/ui` 的预设驱动主题生成器。按 `base` / `primary` 预设 + 按分类 `overrides` + `lightLevel` / `darkLevel` 计算完整 tokens，内部渲染 `ThemeProvider`，并以插槽作用域暴露完整 tokens。
+
+## 主题生成组合式函数（useThemeGenerator）
+
+`@soybeanjs/headless` 的纯计算组合式函数：输入 `base` / `primary` / `overrides` / `lightLevel` / `darkLevel`，返回响应式完整 tokens。无 DOM 依赖，可单测。
+
+## token 分类（ThemeTokenGroup）
+
+主题 token 的组织维度：`base` / `primary` / `feedback` / `sidebar` / `chart`。仅用于组织覆盖与文档，不改变 `ThemeColors` 扁平键契约。feedback 为固定 classic 规则，不提供预设选择器，仅可按组覆盖。
