@@ -63,6 +63,28 @@ import { SConfigProvider } from '@soybeanjs/ui';
 }
 ```
 
+### Complete preset
+
+When `preset.light` provides **every** color token (each key of `ColorTokens`), the preset is considered a "complete preset". You can then enable the `complete` option to skip the built-in base style derivation (base / primary / feedback / sidebar) and apply the provided tokens as the final theme directly.
+
+```ts
+createTheme({
+  preset: {
+    light: {/* all 40 color tokens */},
+    dark: {/* optional; missing keys are derived from light */}
+  },
+  complete: true
+});
+```
+
+**Notes and caveats:**
+
+- **Detection**: `complete` only takes effect when `preset` is mode-split (has `light` / `dark` layers) and `light` defines every color token. A flat `ThemeTokens` or a partial `light` never triggers the skip.
+- **Optimization only**: for a complete `light`, the resolved tokens are identical whether or not the derivation is skipped — `complete` just avoids redundant computation.
+- **`lightLevel` / `darkLevel` are ignored**: once the base derivation is skipped, these offsets no longer affect the result.
+- **Dark is still derived**: keys missing from `dark` are still derived from `light` via `deriveDarkFromLight`, so you don't have to fill them manually.
+- The `isCompleteThemePreset` helper reports whether a preset is complete.
+
 ### Colors
 
 The theme system uses tailwindcss color presets.

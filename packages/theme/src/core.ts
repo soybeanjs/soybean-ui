@@ -18,11 +18,11 @@ export function createTheme(options?: ThemeOptions): string {
   // and `undefined` values fall through to the defaults.
   const merged = defu(options ?? ({} as Required<ThemeOptions>), DEFAULT_PRESET_OPTIONS);
 
-  const { base, primary, styleTarget, format, preset, lightLevel, darkLevel } = merged;
+  const { base, primary, styleTarget, format, preset, lightLevel, darkLevel, complete } = merged;
 
   const darkSelector = getDarkSelector(merged.darkSelector);
 
-  const themePreset = generateThemePreset({ base, primary }, preset, { lightLevel, darkLevel });
+  const themePreset = generateThemePreset({ base, primary, preset, lightLevel, darkLevel, complete });
 
   return generateCss(themePreset, { styleTarget, darkSelector, format });
 }

@@ -15,10 +15,7 @@ describe('level offset snapshots - 3×4 combos', () => {
   for (const lightLevel of LIGHT_LEVELS) {
     for (const darkLevel of DARK_LEVELS) {
       it(`lightLevel=${lightLevel} darkLevel=${darkLevel}`, () => {
-        const preset: FullThemePreset = generateThemePreset({ base: 'zinc', primary: 'indigo' }, undefined, {
-          lightLevel,
-          darkLevel
-        });
+        const preset: FullThemePreset = generateThemePreset({ base: 'zinc', primary: 'indigo', lightLevel, darkLevel });
 
         expect(preset).toMatchSnapshot();
       });

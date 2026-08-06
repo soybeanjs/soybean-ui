@@ -2,8 +2,7 @@ export { createTheme } from './core';
 export { DEFAULT_PRESET_OPTIONS } from './defaults';
 export { THEME_SIZE, themeSizeKeys, THEME_RADIUS, themeRadiusKeys } from './tokens';
 export { builtinBasePresetKeys, builtinPrimaryPresetKeys } from './core-template';
-export { generateThemePreset } from './preset';
-export type { LevelOffsets } from './preset';
+export { generateThemePreset, isCompleteThemePreset } from './preset';
 
 export type {
   HSLColor,

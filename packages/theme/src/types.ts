@@ -473,6 +473,19 @@ export interface ThemeOptions extends BaseGenerateCSSOptions {
    * @default 0
    */
   darkLevel?: DarkLevelOffset;
+  /**
+   * when `true` and the provided `preset` is a complete preset (every color
+   * token present in `light`), the built-in base style derivation
+   * (base/primary/feedback/sidebar from the palette keys) is skipped and the
+   * preset's tokens are applied as-is. `lightLevel` / `darkLevel` are ignored
+   * in this case.
+   *
+   * This is a pure optimization: for a complete `light`, the resolved tokens
+   * are identical whether or not the derivation is skipped.
+   *
+   * @default false
+   */
+  complete?: boolean;
 }
 
 export type { BaseColorKey, PrimaryColorKey };

@@ -19,14 +19,12 @@ import type {
   ThemePreset,
   ThemeTokens
 } from './types';
+import { COLOR_VARIABLES } from './variables';
 
 /**
- * the built-in preset keys (base + primary) that seed the default theme
+ * the authoritative color token key set (mirrors `ColorTokens`).
  */
-export interface PresetKeyConfig {
-  base: BaseColorKey;
-  primary: PrimaryColorKey;
-}
+const COLOR_TOKEN_KEYS = keysOf(COLOR_VARIABLES);
 
 /**
  * distinguish a mode-split `ThemePreset` from a flat `ThemeTokens` override.
@@ -36,9 +34,26 @@ const isThemePreset = (preset: ThemePreset | ThemeTokens | undefined): preset is
   !!preset && 'light' in preset;
 
 /**
- * the light/dark surface level offsets (§4.2)
+ * a preset is "complete" when it is a mode-split `ThemePreset` whose `light`
+ * layer defines every color token. A flat `ThemeTokens` override (no
+ * `light`/`dark` layers) or a partial `light` is never complete.
  */
-export interface LevelOffsets {
+export function isCompleteThemePreset(preset: ThemePreset | ThemeTokens | undefined): boolean {
+  if (!isThemePreset(preset) || !preset.light) {
+    return false;
+  }
+
+  return COLOR_TOKEN_KEYS.every(key => preset.light[key] !== undefined);
+}
+
+/**
+ * the single options object for `generateThemePreset`, combining the preset
+ * keys, the light/dark level offsets, the skip-derivation flag and the custom
+ * preset override.
+ */
+export interface GenerateThemePresetOptions {
+  base: BaseColorKey;
+  primary: PrimaryColorKey;
   /**
    * light mode surface darkening offset
    *
@@ -51,6 +66,19 @@ export interface LevelOffsets {
    * @default 0
    */
   darkLevel?: DarkLevelOffset;
+  /**
+   * when `true`, and the provided `preset` is a complete preset (every color
+   * token present in `light`), the built-in base/primary/feedback/sidebar
+   * derivation from the palette keys is skipped and the preset's tokens are
+   * applied as-is. `lightLevel` / `darkLevel` are ignored in this case.
+   *
+   * @default false
+   */
+  complete?: boolean;
+  /**
+   * the custom preset override.
+   */
+  preset?: ThemePreset | ThemeTokens;
 }
 
 /**
@@ -65,14 +93,17 @@ export interface LevelOffsets {
  * - base tokens (`size`/`radius`/`menuColor`/`menuAccent`) come from a
  *   `ThemePreset`, falling back to the engine defaults.
  */
-export function generateThemePreset(
-  config: PresetKeyConfig,
-  preset?: ThemePreset | ThemeTokens,
-  levels: LevelOffsets = {}
-): FullThemePreset {
-  const { base, primary } = config;
+export function generateThemePreset(options: GenerateThemePresetOptions): FullThemePreset {
+  const { base, primary, preset, lightLevel, darkLevel, complete } = options;
 
-  const builtin = getBuiltinPreset(base, primary, levels.lightLevel ?? 0, levels.darkLevel ?? 0);
+  // When `complete` is enabled and the preset already supplies every color
+  // token, the built-in base/primary/feedback/sidebar derivation is skipped
+  // and the layers are seeded directly from the provided tokens.
+  const skipBaseDerivation = complete === true && isCompleteThemePreset(preset);
+
+  const builtin = skipBaseDerivation
+    ? { light: {} as ColorTokens, dark: {} as Partial<ColorTokens> }
+    : getBuiltinPreset({ base, primary, lightLevel: lightLevel ?? 0, darkLevel: darkLevel ?? 0 });
 
   const customLight: Partial<ColorTokens> | undefined = preset
     ? isThemePreset(preset)
@@ -123,15 +154,22 @@ export function generateThemePreset(
 }
 
 /**
+ * the resolve inputs for the built-in light + dark token sets.
+ */
+interface BuiltinPresetOptions {
+  base: BaseColorKey;
+  primary: PrimaryColorKey;
+  lightLevel: LightLevelOffset;
+  darkLevel: DarkLevelOffset;
+}
+
+/**
  * build the built-in light + dark token sets from the base ⊕ primary palettes
  * (sidebar and fixed feedback colors included).
  */
-function getBuiltinPreset(
-  base: BaseColorKey,
-  primary: PrimaryColorKey,
-  lightLevel: LightLevelOffset,
-  darkLevel: DarkLevelOffset
-): { light: ColorTokens; dark: ColorTokens } {
+function getBuiltinPreset(options: BuiltinPresetOptions): { light: ColorTokens; dark: ColorTokens } {
+  const { base, primary, lightLevel, darkLevel } = options;
+
   const basePreset = deriveBasePreset(base, lightLevel, darkLevel);
   const primaryPreset = derivePrimaryPreset(primary);
   const feedbackPreset = deriveFeedbackColors();
