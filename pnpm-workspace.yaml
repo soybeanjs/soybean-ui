@@ -5,11 +5,11 @@ packages:
   - 'skills'
 catalog:
   vite: npm:@voidzero-dev/vite-plus-core@latest
-  vite-plus: ^0.2.7
+  vite-plus: ^0.2.8
   typescript: ^7.0.2
 overrides:
   vite: 'catalog:'
-  vue: ^3.5.40
+  vue: ^3.5.41
   vite-ssg>jsdom: 27.0.1
   markdown-exit: 1.1.0-beta.2
   typescript: 6.0.3
@@ -22,7 +22,4 @@ allowBuilds:
   esbuild: false
   simple-git-hooks: false
 minimumReleaseAgeExclude:
-  - '@soybeanjs/cli@1.8.2'
-  - npm-check-updates@23.0.1
-  - tsx@4.23.5
-  - unplugin-auto-import@21.1.0
+  - tsx@4.23.9

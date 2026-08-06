@@ -53,10 +53,10 @@
     "@soybeanjs/oxc-config": "^0.2.3",
     "@types/node": "^26.1.2",
     "eslint": "^10.8.0",
-    "tsx": "^4.23.5",
+    "tsx": "^4.23.9",
     "typedoc": "^0.28.20",
     "typescript": "7.0.2",
     "vite-plus": "catalog:"
   },
-  "packageManager": "pnpm@11.18.0"
+  "packageManager": "pnpm@11.20.0"
 }

@@ -13,8 +13,8 @@
     "@nuxtjs/i18n": "10.6.0",
     "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
-    "nuxt": "^4.5.1",
-    "vue": "^3.5.40",
+    "nuxt": "^4.5.2",
+    "vue": "^3.5.41",
     "vue-router": "^5.2.0"
   },
   "devDependencies": {

@@ -172,8 +172,8 @@ app.mount('#app')
     '@soybeanjs/hooks': `^0.3.0`,
     '@soybeanjs/theme': `^${SOYBEAN_VERSION}`,
     '@soybeanjs/utils': `^0.1.1`,
-    vue: '^3.5.38',
-    'vue-router': '^5.1.0'
+    vue: '^3.5.41',
+    'vue-router': '^5.2.0'
   },
   devDependencies: {
     '@soybeanjs/ui-unocss': `^${SOYBEAN_VERSION}`,
@@ -181,7 +181,7 @@ app.mount('#app')
     typescript: '^6.0.3',
     unocss: '^66.7.2',
     'unplugin-vue-components': '^32.1.0',
-    'vite-plus': '^0.1.24',
+    'vite-plus': '^0.2.8',
     'vue-tsc': '^3.3.5'
   }
 };
