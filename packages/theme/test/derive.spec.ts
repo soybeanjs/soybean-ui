@@ -211,8 +211,10 @@ describe('custom preset override (ADR-5)', () => {
 
     expect(preset.light.primary).toBe('red.600');
     expect(preset.light.chart1).toBe('purple.400');
+    // explicit dark override differs from light → kept
     expect(preset.dark.primary).toBe('red.400');
-    expect(preset.dark.chart1).toBe('purple.400');
+    // derived dark equals its light counterpart → pruned (dark only carries diffs)
+    expect(preset.dark.chart1).toBeUndefined();
   });
 });
 

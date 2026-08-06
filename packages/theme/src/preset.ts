@@ -142,6 +142,17 @@ export function generateThemePreset(options: GenerateThemePresetOptions): FullTh
     }
   }
 
+  // Prune dark tokens that resolve to the same value as their light
+  // counterpart. A dark layer only needs to carry explicit overrides, so
+  // identical values are redundant and can be dropped from the preset. This
+  // keeps the `dark` layer minimal and lets the CSS generator skip emitting
+  // no-op dark rules (dark `<selector>` inherits the light token naturally).
+  for (const key of keysOf(dark)) {
+    if (dark[key] === light[key]) {
+      delete dark[key];
+    }
+  }
+
   const baseTokens = resolveBaseTokens(preset);
   const name = (isThemePreset(preset) && preset.name) || `${base}-${primary}`;
 
