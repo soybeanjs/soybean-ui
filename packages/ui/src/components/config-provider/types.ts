@@ -10,7 +10,7 @@ import type { ToastProviderProps } from '../toast/types';
  * UI-level theme options accepted by `SConfigProvider`.
  *
  * Unlike the engine's `ThemeOptions`, the `preset` may be either an inline
- * color preset or a `{ presetName }` reference to a stored preset. The provider
+ * color preset or a `{ name }` reference to a stored preset. The provider
  * resolves named references to their colors before calling `createTheme`, so
  * the engine only ever receives a materialized preset.
  */

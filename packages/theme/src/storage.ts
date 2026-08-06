@@ -11,6 +11,7 @@ import type {
   PrimaryColorKey,
   ThemeRadiusValue,
   ThemeSizeValue,
+  ThemePreset,
   ColorFormat,
   LightLevelOffset,
   DarkLevelOffset
@@ -26,14 +27,17 @@ export type CustomThemeColorPreset = {
 };
 
 /**
- * a reference to a stored custom theme preset by name
+ * theme preset input: reuses the engine's `ThemePreset`, so a name-carrying
+ * preset is a first-class citizen instead of a parallel `{ presetName }` type.
+ *
+ * - an inline color preset is a full `ThemePreset` (`light` present);
+ * - a reference to a stored preset is a `ThemePreset` carrying only `name`.
+ *
+ * Consumers distinguish the two by checking whether `light` is present. The
+ * same `name` field aligns with `ThemePreset` / `FullThemePreset` / stored
+ * preset entries.
  */
-export type ThemePresetRef = { presetName: string };
-
-/**
- * theme preset input: either an inline custom preset or a reference to a stored one
- */
-export type ThemePresetInput = CustomThemeColorPreset | ThemePresetRef;
+export type ThemePresetInput = ThemePreset | Pick<ThemePreset, 'name'>;
 
 /**
  * a persisted custom theme preset entry

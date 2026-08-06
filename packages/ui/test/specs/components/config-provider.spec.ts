@@ -341,7 +341,7 @@ describe('SConfigProvider', () => {
       wrapper.unmount();
     });
 
-    it('prefers an inline preset over a stored { presetName } reference', () => {
+    it('prefers an inline preset over a stored { name } reference', () => {
       window.localStorage.setItem(
         'soybean-ui-theme-presets',
         JSON.stringify({
@@ -379,7 +379,7 @@ describe('SConfigProvider', () => {
           persistTheme: true,
           // SSR 语义：preset 缺失是真实问题（会与客户端产生主题闪烁），故告警
           isServer: true,
-          theme: { preset: { presetName: 'missing' } }
+          theme: { preset: { name: 'missing' } }
         },
         slots: { default: '<div />' },
         attachTo: document.body

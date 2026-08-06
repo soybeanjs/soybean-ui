@@ -9,7 +9,7 @@ Soybean UI 的轻量主题引擎：**最小核心 token → 确定性派生 → 
 - **最小核心 token**：只需 `base`（中性色）+ `primary`（主色）两个 Seed，即可派生出完整色板。
 - **确定性派生**：亮色 / 暗色模式、`lightLevel` / `darkLevel` 偏移、`menuColor` / `menuAccent` 均由同一套纯函数生成，结果可复现、可快照测试。
 - **多种输出格式**：`hsl` 与 `oklch`，适配不同设计体系。
-- **自定义 preset**：既支持内联写入自定义颜色，也支持 `{ presetName }` 引用持久化表。
+- **自定义 preset**：既支持内联写入自定义颜色，也支持 `{ name }` 引用持久化表。
 - **SSR 友好**：`/ssr` 子路径提供 cookie 解析、`createThemeInitScript`、`createThemeStore`，保证服务端与客户端首帧一致、无闪烁（FOUC）。
 - **零 UI 依赖**：纯逻辑 + 单依赖 `@soybeanjs/colord`，可独立使用。
 
@@ -93,11 +93,11 @@ createTheme({
 });
 
 // 2) 引用持久化 preset（需配合 ConfigProvider 的 persistTheme）
-//    引擎内部只消费内联值；{ presetName } 由 ConfigProvider 解析后再传入。
+//    引擎内部只消费内联值；{ name } 由 ConfigProvider 解析后再传入。
 createTheme({
   base: 'zinc',
   primary: 'indigo',
-  preset: { presetName: 'my-brand' }
+  preset: { name: 'my-brand' }
 });
 ```
 
@@ -113,7 +113,7 @@ createTheme({
 | `THEME_RADIUS` / `themeRadiusKeys`                   | 圆角枚举与合法键列表（2xs…2xl）                 |
 | `builtinBasePresetKeys` / `builtinPrimaryPresetKeys` | 内置 base / primary 色板键列表                  |
 
-类型：`ThemeOptions`、`ThemeConfigState`、`ThemeColor`、`ThemeSize`、`ThemeRadius`、`MenuColor`、`MenuAccent`、`CustomThemeColorPreset`、`StoredThemePreset`、`ThemePresetRef`、`ThemePresetInput`、`ThemeStore`、`ThemeStoreOptions` … 等。
+类型：`ThemeOptions`、`ThemeConfigState`、`ThemeColor`、`ThemeSize`、`ThemeRadius`、`MenuColor`、`MenuAccent`、`CustomThemeColorPreset`、`StoredThemePreset`、`ThemePresetInput`、`ThemeStore`、`ThemeStoreOptions` … 等。
 
 ### 子路径 `@soybeanjs/theme/storage`
 
@@ -204,7 +204,7 @@ const css = createTheme({ base: config?.base, primary: config?.primary, ... });
 ## 与 `@soybeanjs/ui` 集成
 
 - 运行时主题注入入口：`SConfigProvider`（唯一入口，不额外提供独立 `ThemeProvider`）。
-- 持久化：设置 `persist-theme` 后，主题状态写入 localStorage + cookie；`{ presetName }` 引用解析依赖 `persistTheme`。
+- 持久化：设置 `persist-theme` 后，主题状态写入 localStorage + cookie；`{ name }` 引用解析依赖 `persistTheme`。
 - 主题 UI 消费：在 `SConfigProvider` 后代中使用 `useTheme`（来自 `@soybeanjs/ui`）读取/修改 `base` / `primary` / `radius` / `size` / `mode` 与 preset，无需 prop drilling。
 
 ## 目录结构

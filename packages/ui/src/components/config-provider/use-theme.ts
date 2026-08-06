@@ -1,12 +1,11 @@
 import { computed, onMounted, reactive, ref, watch } from 'vue';
-import type { ComputedRef, Ref } from 'vue';
+import type { ComputedRef, Ref, ShallowRef } from 'vue';
 import { useContext } from '@soybeanjs/headless/composables';
 import type {
   BaseTokens,
   DarkSelectorValue,
   ThemeOptions,
   ThemePreset,
-  ThemeRadius,
   ThemeRadiusValue,
   ThemeSizeValue,
   BaseColorKey,
@@ -29,13 +28,12 @@ import type {
   ThemeConfigState,
   ThemePresetInput
 } from '@soybeanjs/theme/storage';
-import type { ThemeSize } from '@/theme';
 import type { ConfigProviderProps } from './types';
 
 const DEFAULT_BASE: BaseColorKey = 'zinc';
 const DEFAULT_PRIMARY: PrimaryColorKey = 'indigo';
-const DEFAULT_RADIUS: ThemeRadius = 'md';
-const DEFAULT_SIZE: ThemeSize = 'md';
+const DEFAULT_RADIUS: ThemeRadiusValue = 'md';
+const DEFAULT_SIZE: ThemeSizeValue = 'md';
 const DEFAULT_MODE: 'light' | 'dark' = 'light';
 
 /** the cookie / localStorage key carrying the currently applied custom preset name */
@@ -51,25 +49,25 @@ const APPLIED_PRESET_KEY = 'soybean-ui-applied-preset';
  */
 export interface ThemeContext {
   /** The base color preset key. */
-  base: Ref<BaseColorKey>;
+  base: ShallowRef<BaseColorKey>;
   /** The primary color preset key. */
-  primary: Ref<PrimaryColorKey>;
+  primary: ShallowRef<PrimaryColorKey>;
   /** The border radius. */
-  radius: Ref<ThemeRadius | (string & {})>;
+  radius: ShallowRef<ThemeRadiusValue>;
   /** The component size / density. */
-  size: Ref<ThemeSize | (string & {})>;
+  size: ShallowRef<ThemeSizeValue>;
   /** The color scheme preference (`light` / `dark`). */
-  mode: Ref<'light' | 'dark'>;
+  mode: ShallowRef<'light' | 'dark'>;
   /** Set the border radius. */
-  setRadius: (value: ThemeRadius) => void;
+  setRadius: (value: ThemeRadiusValue) => void;
   /** Set the component size / density. */
-  setSize: (value: ThemeSize) => void;
+  setSize: (value: ThemeSizeValue) => void;
   /** Set the color scheme preference. */
   setMode: (value: 'light' | 'dark') => void;
   /** The persisted custom theme presets table. */
   customPresets: Ref<Record<string, StoredThemePreset>>;
   /** The currently applied custom preset name, if any. */
-  appliedPresetName: Ref<string | null>;
+  appliedPresetName: ShallowRef<string | null>;
   /** Save the current primary color as a custom preset. */
   savePreset: (name: string) => boolean;
   /** Remove a custom preset. */
@@ -131,8 +129,11 @@ const getDarkClass = (selector: DarkSelectorValue): string | null => {
   return selector.replace(/^\./, '');
 };
 
-/** whether a preset input is an inline color preset (mode-split, carries `light`). */
-const isInlineColorPreset = (preset: ThemePresetInput | undefined): preset is CustomThemeColorPreset =>
+/**
+ * whether a preset input is an inline color preset (mode-split, carries
+ * `light`). A reference-only input carries just `name` and no `light`.
+ */
+const isInlineColorPreset = (preset: ThemePresetInput | undefined): preset is ThemePreset =>
   !!preset && 'light' in preset;
 
 /**
@@ -191,13 +192,13 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
       themeState.primary = value;
     }
   });
-  const radius = computed<ThemeRadius | (string & {})>({
+  const radius = computed<ThemeRadiusValue>({
     get: () => themeState.radius ?? DEFAULT_RADIUS,
     set: value => {
       themeState.radius = value as ThemeRadiusValue;
     }
   });
-  const size = computed<ThemeSize | (string & {})>({
+  const size = computed<ThemeSizeValue>({
     get: () => themeState.size ?? DEFAULT_SIZE,
     set: value => {
       themeState.size = value as ThemeSizeValue;
@@ -360,8 +361,8 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
       return input;
     }
 
-    // 具名 preset 引用（{ presetName }）或当前应用的 preset
-    const presetName = input && 'presetName' in input ? input.presetName : appliedPresetName.value;
+    // 具名 preset 引用（{ name }，复用引擎 ThemePreset.name）或当前应用的 preset
+    const presetName = input?.name ?? appliedPresetName.value;
 
     if (!presetName) {
       return undefined;
