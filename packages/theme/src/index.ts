@@ -3,6 +3,7 @@ export { DEFAULT_PRESET_OPTIONS } from './defaults';
 export { THEME_SIZE, themeSizeKeys, THEME_RADIUS, themeRadiusKeys } from './tokens';
 export { builtinBasePresetKeys, builtinPrimaryPresetKeys } from './core-template';
 export { generateThemePreset, isCompleteThemePreset } from './preset';
+export { getDarkSelector } from './shared';
 
 export type {
   HSLColor,
