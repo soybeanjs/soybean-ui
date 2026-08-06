@@ -226,6 +226,10 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
 
   // —— 暗色模式 class 同步（首帧前由 createThemeInitScript 应用，此处幂等并负责运行中切换）——
   // class 名与新的 darkSelector 机制保持一致：'media' 不切换任何 class。
+  //
+  // 切换时临时禁用 CSS 过渡（复刻 @vueuse/core useColorMode 的 disableTransition
+  // 手法）：注入 `*{transition:none!important}` → 切换 class → 强制 reflow → 移除。
+  // 否则带 `transition-all` 的组件（如按钮）会相对无过渡的页面背景延迟 150ms 才变色。
   watch(
     mode,
     value => {
@@ -235,9 +239,23 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
 
       const darkClass = getDarkClass(props.theme?.darkSelector ?? 'class');
 
-      if (darkClass) {
-        document.documentElement.classList.toggle(darkClass, value === 'dark');
+      if (!darkClass) {
+        return;
       }
+
+      const disableTransitionsStyle = document.createElement('style');
+      disableTransitionsStyle.appendChild(
+        document.createTextNode(
+          '*,*::before,*::after{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}'
+        )
+      );
+      document.head.appendChild(disableTransitionsStyle);
+
+      document.documentElement.classList.toggle(darkClass, value === 'dark');
+
+      // 强制浏览器同步重算样式，确保禁用过渡的规则在 class 切换前生效
+      void window.getComputedStyle(disableTransitionsStyle).opacity;
+      document.head.removeChild(disableTransitionsStyle);
     },
     { immediate: true }
   );
