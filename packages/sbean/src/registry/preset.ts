@@ -9,13 +9,7 @@
  *   4. Stay under 53 bits total (JS safe integer limit).
  */
 
-import {
-  PRESET_BASE_COLORS,
-  PRESET_PRIMARY_COLORS,
-  PRESET_RADII,
-  PRESET_ICON_LIBRARIES,
-  PRESET_FEEDBACK_COLORS
-} from '../registry/config';
+import { PRESET_BASE_COLORS, PRESET_PRIMARY_COLORS, PRESET_RADII, PRESET_ICON_LIBRARIES } from '../registry/config';
 
 // ---------------------------------------------------------------------------
 // Value arrays — order matters for backward compat. Never reorder, only append.
@@ -31,14 +25,12 @@ export const PRESET_FIELDS = [
   { key: 'radius', values: PRESET_RADII as readonly string[] },
   { key: 'iconLibrary', values: PRESET_ICON_LIBRARIES as readonly string[] },
   { key: 'primary', values: PRESET_PRIMARY_COLORS as readonly string[] },
-  { key: 'base', values: PRESET_BASE_COLORS as readonly string[] },
-  { key: 'feedback', values: PRESET_FEEDBACK_COLORS as readonly string[] }
+  { key: 'base', values: PRESET_BASE_COLORS as readonly string[] }
 ] as const;
 
 export interface PresetConfig {
   base: string;
   primary: string;
-  feedback?: string;
   iconLibrary: string;
   radius: string;
   menuAccent: string;

@@ -29,8 +29,8 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@soybeanjs/ui-unocss": "workspace:^",
     "@soybeanjs/unocss-preset": "^0.2.0",
-    "@soybeanjs/unocss-shadcn": "workspace:^",
     "@vitejs/plugin-vue": "^6.0.8",
     "@vitejs/plugin-vue-jsx": "^5.1.6",
     "typescript": "7.0.2",

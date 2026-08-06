@@ -1,8 +1,8 @@
 import { defineConfig, presetWind3, transformerDirectives, transformerVariantGroup } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
 import { presetAnimations } from 'unocss-preset-animations';
+import { presetUiUnocss } from '@soybeanjs/ui-unocss';
 import { presetSoybean } from '@soybeanjs/unocss-preset';
-import { presetShadcn } from '@soybeanjs/unocss-shadcn';
 
 export default defineConfig<Theme>({
   content: {
@@ -15,10 +15,10 @@ export default defineConfig<Theme>({
     presetWind3({ dark: 'class' }),
     presetAnimations(),
     presetSoybean(),
-    presetShadcn({
-      generated: {
-        ui: true
-      }
+    presetUiUnocss({
+      resetCSS: true,
+      globalCSS: true,
+      uiCSS: true
     })
   ],
   shortcuts: {

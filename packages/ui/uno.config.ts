@@ -1,16 +1,16 @@
 import { defineConfig, presetWind3 } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
 import { presetAnimations } from 'unocss-preset-animations';
-import { presetShadcn } from '@soybeanjs/unocss-shadcn';
+import { presetUiUnocss } from '@soybeanjs/ui-unocss';
 
 export default defineConfig<Theme>({
   presets: [
     presetWind3({ dark: 'class' }),
     presetAnimations(),
-    presetShadcn({
-      generated: {
-        ui: true
-      }
+    presetUiUnocss({
+      resetCSS: true,
+      globalCSS: true,
+      uiCSS: true
     })
   ]
 });

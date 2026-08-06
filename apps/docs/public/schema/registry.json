@@ -278,26 +278,6 @@
                         ],
                         "type": "string"
                       },
-                      "feedback": {
-                        "enum": [
-                          "classic",
-                          "vivid",
-                          "subtle",
-                          "warm",
-                          "cool",
-                          "nature",
-                          "modern",
-                          "vibrant",
-                          "professional",
-                          "soft",
-                          "bold",
-                          "calm",
-                          "candy",
-                          "deep",
-                          "light"
-                        ],
-                        "type": "string"
-                      },
                       "size": {
                         "enum": ["xs", "sm", "md", "lg", "xl", "2xl"],
                         "type": "string"

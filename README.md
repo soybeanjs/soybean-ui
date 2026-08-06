@@ -23,10 +23,10 @@ diagram below, arrows mean “depends on”:
 ```
 Consumer ──> @soybeanjs/ui ──> @soybeanjs/headless
                     │
-                    └───────> @soybeanjs/shadcn-theme
+                    └───────> @soybeanjs/theme
 
-UnoCSS config ──> @soybeanjs/unocss-shadcn
-                    └───────> @soybeanjs/shadcn-theme
+UnoCSS config ──> @soybeanjs/ui-unocss
+                    └───────> @soybeanjs/theme
 ```
 
 ### Packages
@@ -51,8 +51,8 @@ Current Compact-style coverage also includes flows such as card, date-field, dia
 
 ### Workspace Overview
 
-The monorepo also publishes `@soybeanjs/shadcn-theme`,
-`@soybeanjs/unocss-shadcn`, the `sbean` source-distribution CLI, and
+The monorepo also publishes `@soybeanjs/theme`,
+`@soybeanjs/ui-unocss`, the `sbean` source-distribution CLI, and
 `@soybeanjs/ui-skills`. Private apps provide the documentation site,
 playground, and Nuxt integration fixture.
 

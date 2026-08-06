@@ -16,9 +16,9 @@ Terms are grouped by domain. Each entry is grounded in the sbean codebase unless
 
 **`@soybeanjs/headless`** — Headless logic package (state, a11y, zero styles). The universal dependency declared by every component in sbean's `registry.json` (90+ components). Data flow: headless → ui, never reverse.
 
-**`@soybeanjs/shadcn-theme`** — Theme token package for the SoybeanUI stack. Imported by sbean ([registry/config.ts:7](../src/registry/config.ts#L7)). Per ADR-003, owns all rich token modeling (recursive css, Google-font provider, theme-scoped cssVars); sbean references it but does not replicate it.
+**`@soybeanjs/theme`** — Theme token package for the SoybeanUI stack. Imported by sbean ([registry/config.ts:7](../src/registry/config.ts#L7)). Per ADR-003, owns all rich token modeling (recursive css, Google-font provider, theme-scoped cssVars); sbean references it but does not replicate it.
 
-**`@soybeanjs/unocss-shadcn`** — UnoCSS preset providing the shadcn-style token system for UnoCSS. Wired by sbean `init`/`templates` ([templates.ts:45](../src/templates/templates.ts#L45)) via `presetSbean`. Recognized by `sbean scan` ([scan.ts:35](../src/commands/scan.ts#L35)).
+**`@soybeanjs/ui-unocss`** — UnoCSS preset providing the shadcn-style token system for UnoCSS. Wired by sbean `init`/`templates` ([templates.ts:45](../src/templates/templates.ts#L45)) via `presetSbean`. Recognized by `sbean scan` ([scan.ts:35](../src/commands/scan.ts#L35)).
 
 **`@soybeanjs/ui`** — Styled-wrapper package. S-prefixed components built on `@soybeanjs/headless` + UnoCSS + `cv()`/`scv()`. sbean templates rewrite `from: '@soybeanjs/ui'` to the local ui directory ([index.ts:253-254](../src/templates/index.ts#L253-L254)).
 
@@ -30,7 +30,7 @@ Terms are grouped by domain. Each entry is grounded in the sbean codebase unless
 
 **Iconify-component icon** — SoybeanUI's icon model: the `Icon` component (`packages/headless/src/components/_icon/`) uses `@iconify/vue` directly, accepting arbitrary Iconify collections as component props — **not** CSS class-based icons. The `Icon` registry entry declares `["@iconify/vue", "@soybeanjs/headless"]` ([registry.json:863](../registry.json#L863)). Per ADR-007, this makes shadcn's `icons` subsystem structurally inapplicable.
 
-**`init`** — Command that scaffolds a new SoybeanUI project: generates `uno.config.ts`, Vite config, resolver, and installs `@soybeanjs/cva`/`headless`/`shadcn-theme`/`unocss-shadcn`/`unocss`. See [`src/commands/init.ts`](../src/commands/init.ts).
+**`init`** — Command that scaffolds a new SoybeanUI project: generates `uno.config.ts`, Vite config, resolver, and installs `@soybeanjs/cva`/`headless`/`theme`/`ui-unocss`/`unocss`. See [`src/commands/init.ts`](../src/commands/init.ts).
 
 ## M–R
 
@@ -48,7 +48,7 @@ Terms are grouped by domain. Each entry is grounded in the sbean codebase unless
 
 ## S–U
 
-**`scan`** — sbean-only command that detects the project's stack by recognizing `unocss`/`@unocss/core`/`@soybeanjs/unocss-shadcn` and `uno.config.{ts,js,mjs}` ([scan.ts:31-35](../src/commands/scan.ts#L31-L35), [get-project-info.ts:61-78](../src/utils/get-project-info.ts#L61-L78)).
+**`scan`** — sbean-only command that detects the project's stack by recognizing `unocss`/`@unocss/core`/`@soybeanjs/ui-unocss` and `uno.config.{ts,js,mjs}` ([scan.ts:31-35](../src/commands/scan.ts#L31-L35), [get-project-info.ts:61-78](../src/utils/get-project-info.ts#L61-L78)).
 
 **schema (valibot)** — sbean uses valibot (not zod) for all runtime validation. `registryItemSchema`, `registrySchema`, `registryItemFileSchema` live in [`src/registry/schema.ts`](../src/registry/schema.ts). Per ADR-008, sbean keeps valibot and emits JSON Schemas for IDE validation.
 
@@ -56,11 +56,11 @@ Terms are grouped by domain. Each entry is grounded in the sbean codebase unless
 
 **`template`** — sbean-only command that generates project scaffolding (`uno.config.ts`, Vite config, resolver). Currently Vite-only; per ADR-010, gains a `--framework nuxt|vite` flag with a Nuxt variant wiring `@soybeanjs/ui/nuxt`.
 
-**`uno` field (registry item)** — Currently opaque `{config: v.optional(v.object({}))}` ([schema.ts:72-76](../src/registry/schema.ts#L72-L76)). Per ADR-005, restructured to `{presets, rules, shortcuts, theme, safelist}` mirroring UnoCSS's `UserConfig`. Distinct from the project-config `uno` (in `sbean.json`), which is already structured (`base`/`primary`/`feedback`/`size`/`radius`).
+**`uno` field (registry item)** — Currently opaque `{config: v.optional(v.object({}))}` ([schema.ts:72-76](../src/registry/schema.ts#L72-L76)). Per ADR-005, restructured to `{presets, rules, shortcuts, theme, safelist}` mirroring UnoCSS's `UserConfig`. Distinct from the project-config `uno` (in `sbean.json`), which is already structured (`base`/`primary`/`size`/`radius`).
 
-**`uno` field (project config)** — The structured UnoCSS theme settings in `sbean.json`: `base`, `primary`, `feedback`, `size`, `radius`. Printed by `sbean info` ([info.ts:77-82](../src/commands/info.ts#L77-L82)). See ADR-009.
+**`uno` field (project config)** — The structured UnoCSS theme settings in `sbean.json`: `base`, `primary`, `size`, `radius`. Printed by `sbean info` ([info.ts:77-82](../src/commands/info.ts#L77-L82)). See ADR-009.
 
-**UnoCSS** — Atomic CSS engine (superset of Tailwind) used by the SoybeanUI stack. sbean is UnoCSS-first, in contrast to shadcn-vue's Tailwind-first stance. Configured via `uno.config.ts` with `presetSbean` from `@soybeanjs/unocss-shadcn`.
+**UnoCSS** — Atomic CSS engine (superset of Tailwind) used by the SoybeanUI stack. sbean is UnoCSS-first, in contrast to shadcn-vue's Tailwind-first stance. Configured via `uno.config.ts` with `presetSbean` from `@soybeanjs/ui-unocss`.
 
 ## V–Z
 

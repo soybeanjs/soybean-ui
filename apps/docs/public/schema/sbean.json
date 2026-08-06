@@ -55,28 +55,6 @@
           "description": "Primary brand color for buttons, links, and accents.",
           "default": "indigo"
         },
-        "feedback": {
-          "enum": [
-            "classic",
-            "vivid",
-            "subtle",
-            "warm",
-            "cool",
-            "nature",
-            "modern",
-            "vibrant",
-            "professional",
-            "soft",
-            "bold",
-            "calm",
-            "candy",
-            "deep",
-            "light"
-          ],
-          "type": "string",
-          "description": "Feedback color preset for success, warning, error, and info states.",
-          "default": "classic"
-        },
         "size": {
           "enum": ["xs", "sm", "md", "lg", "xl", "2xl"],
           "type": "string",
@@ -91,7 +69,7 @@
         }
       },
       "required": ["base", "primary", "radius"],
-      "description": "UnoCSS theme configuration. Controls the CSS variable system via @soybeanjs/unocss-shadcn."
+      "description": "UnoCSS theme configuration. Controls the CSS variable system via @soybeanjs/ui-unocss."
     },
     "font": {
       "type": "object",

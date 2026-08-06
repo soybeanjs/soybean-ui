@@ -53,7 +53,6 @@
     "defu": "^6.1.7"
   },
   "devDependencies": {
-    "@soybeanjs/shadcn-theme": "workspace:^",
     "happy-dom": "^20.11.1",
     "typescript": "7.0.2",
     "vite-plus": "catalog:",

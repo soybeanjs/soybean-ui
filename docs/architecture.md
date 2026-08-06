@@ -18,7 +18,7 @@ index.
 - Repository scope: 2,730 tracked files. Markdown, JSON, CSS, assets, and other
   files outside the graph were checked directly.
 - Symbol-impact checks confirmed two important high-fanout seams:
-  `useUiContext` affects 68 symbols, while `createShadcnTheme` affects 10 symbols
+  `useUiContext` affects 68 symbols, while `createTheme` affects 10 symbols
   across runtime UI and UnoCSS configuration.
 
 Package manifests are the source of truth for declared package dependencies.
@@ -35,8 +35,8 @@ six publishable packages and three private applications.
 | -------------------- | -------------------------- | ------------------------------------------------------------------------------------ |
 | Component logic      | `@soybeanjs/headless`      | State, behavior, a11y, focus, keyboard interaction, locale, and unstyled composition |
 | Styled components    | `@soybeanjs/ui`            | `S`-prefixed wrappers, UnoCSS recipes, theme-facing props, Nuxt module, and resolver |
-| Theme engine         | `@soybeanjs/shadcn-theme`  | Theme option normalization and CSS-variable generation                               |
-| UnoCSS integration   | `@soybeanjs/unocss-shadcn` | UnoCSS preset, preflights, animations, fonts, and generated theme CSS                |
+| Theme engine         | `@soybeanjs/theme`         | Theme option normalization, CSS-variable generation, dark derivation, SSR/storage    |
+| UnoCSS integration   | `@soybeanjs/ui-unocss`     | UnoCSS preset, preflights, animations, fonts, and generated theme CSS                |
 | Source distribution  | `sbean`                    | CLI, registry, schemas, templates, and MCP tools for copy-source delivery            |
 | Agent distribution   | `@soybeanjs/ui-skills`     | Generated, publishable SoybeanUI and Headless agent skills                           |
 | Documentation        | `@soybeanjs/ui-docs`       | Vite SSG documentation, API reference, changelog, and embedded demos                 |
@@ -74,9 +74,9 @@ soybean-ui/
 │   ├── _shared/             # Build helpers; not a workspace package
 │   ├── headless/            # @soybeanjs/headless
 │   ├── sbean/               # sbean CLI and registry system
-│   ├── shadcn-theme/        # @soybeanjs/shadcn-theme
+│   ├── theme/               # @soybeanjs/theme
 │   ├── ui/                  # @soybeanjs/ui
-│   └── unocss-shadcn/       # @soybeanjs/unocss-shadcn
+│   └── ui-unocss/           # @soybeanjs/ui-unocss
 ├── scripts/                 # Metadata, API, changelog, locale, and skill generators
 ├── skills/                  # Generated @soybeanjs/ui-skills package
 ├── typings/                 # Root tool declarations
@@ -98,8 +98,8 @@ flowchart LR
   Consumer[Consumer application]
   Headless["@soybeanjs/headless"]
   UI["@soybeanjs/ui"]
-  Theme["@soybeanjs/shadcn-theme"]
-  Uno["@soybeanjs/unocss-shadcn"]
+  Theme["@soybeanjs/theme"]
+  Uno["@soybeanjs/ui-unocss"]
   Sbean["sbean"]
   Docs["apps/docs"]
   Playground["apps/playground"]
@@ -129,8 +129,8 @@ flowchart LR
 - `@soybeanjs/headless` must never import `@soybeanjs/ui`.
 - `@soybeanjs/ui` imports public headless entry points; it must not depend on
   headless implementation paths.
-- `@soybeanjs/shadcn-theme` owns token-to-CSS generation.
-- `@soybeanjs/unocss-shadcn` adapts the theme engine to UnoCSS and must not
+- `@soybeanjs/theme` owns token-to-CSS generation.
+- `@soybeanjs/ui-unocss` adapts the theme engine to UnoCSS and must not
   become a second token authority.
 - `sbean` is a source-delivery system. It owns registry resolution, templates,
   schemas, and file updates, not component runtime behavior.
@@ -217,18 +217,18 @@ The theme system has one core generator and two delivery paths:
 
 ```mermaid
 flowchart LR
-  Options[Theme options] --> Generator[createShadcnTheme]
+  Options[Theme options] --> Generator[createTheme]
   Generator --> Runtime[SConfigProvider runtime style tag]
-  Generator --> Preset[presetShadcn UnoCSS preflight]
+  Generator --> Preset[presetUiUnocss preflight]
   Preset --> CSS["@soybeanjs/ui/styles.css and app uno.css"]
 ```
 
-- `createShadcnTheme` normalizes theme options and returns `getCss()`.
+- `createTheme` normalizes theme options and returns the generated CSS string.
 - `SConfigProvider` calls it at runtime and manages the generated style tag.
-- `presetShadcn` calls it at build time when generated UI CSS is enabled.
+- `presetUiUnocss` calls it at build time when generated UI CSS is enabled.
 - Apps and the UI CSS build share the same UnoCSS preset stack.
 
-CodeGraph reports ten affected symbols for `createShadcnTheme`, including the
+CodeGraph reports ten affected symbols for `createTheme`, including the
 UI config provider, the UnoCSS adapter, and all four repository UnoCSS configs.
 
 ## 7. Documentation, examples, and generated data
@@ -303,7 +303,7 @@ compiler until the manifests and override are aligned.
 ### 8.2 Root commands
 
 - `pnpm build`: headless → UI → sbean.
-- `pnpm build:libs`: shadcn-theme → unocss-shadcn.
+- `pnpm build:libs`: theme → ui-unocss.
 - `pnpm build:docs`: root build, registry generation, then docs SSG.
 - `pnpm typecheck`: recursive workspace type checks.
 - `pnpm test`: recursive tests for workspaces that define a test script.

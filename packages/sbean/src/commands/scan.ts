@@ -32,7 +32,7 @@ const IGNORE_PACKAGES = new Set([
   'vite',
   'unocss',
   '@unocss/core',
-  '@soybeanjs/unocss-shadcn'
+  '@soybeanjs/ui-unocss'
 ]);
 
 export const scan = new Command()

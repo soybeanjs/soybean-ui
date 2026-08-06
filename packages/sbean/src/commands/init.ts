@@ -7,7 +7,6 @@ import {
   PRESET_PRIMARY_COLORS,
   PRESET_RADII,
   PRESET_ICON_LIBRARIES,
-  PRESET_FEEDBACK_COLORS,
   PRESET_SIZES,
   PRESET_FONTS
 } from '../registry/config';
@@ -26,7 +25,6 @@ export const initOptionsSchema = v.object({
   size: v.optional(v.picklist(PRESET_SIZES)),
   base: v.optional(v.picklist(PRESET_BASE_COLORS)),
   primary: v.optional(v.picklist(PRESET_PRIMARY_COLORS)),
-  feedback: v.optional(v.picklist(PRESET_FEEDBACK_COLORS)),
   radius: v.optional(v.picklist(PRESET_RADII)),
   iconLibrary: v.optional(v.picklist(PRESET_ICON_LIBRARIES)),
   fontSans: v.optional(v.picklist(PRESET_FONTS)),
@@ -54,7 +52,6 @@ export const init = new Command()
   .option('--size <size>', `component size: ${PRESET_SIZES.join('/')}`)
   .option('-b, --base <base>', `base color: ${PRESET_BASE_COLORS.join('/')}`)
   .option('--primary <primary>', `primary color: ${PRESET_PRIMARY_COLORS.join('/')}`)
-  .option('--feedback <feedback>', `feedback colors: ${PRESET_FEEDBACK_COLORS.join('/')}`)
   .option('--radius <radius>', `border radius: ${PRESET_RADII.join('/')}`)
   .option('-p, --preset <code>', 'preset code (base62 encoded config)')
   .option('--icon-library <library>', `icon library: ${PRESET_ICON_LIBRARIES.join('/')}`)
@@ -77,7 +74,6 @@ type InitActionOptions = {
   size?: string;
   base?: string;
   primary?: string;
-  feedback?: string;
   radius?: string;
   iconLibrary?: string;
   fontSans?: string;
@@ -121,7 +117,6 @@ export async function runInit(opts: InitActionOptions) {
     }
     opts.base = opts.base || preset.base;
     opts.primary = opts.primary || preset.primary;
-    opts.feedback = opts.feedback || preset.feedback;
     opts.radius = opts.radius || preset.radius;
     opts.iconLibrary = opts.iconLibrary || preset.iconLibrary;
     opts.fontSans = opts.fontSans || preset.fontSans;
@@ -153,7 +148,6 @@ export async function runInit(opts: InitActionOptions) {
     uno: {
       base: (opts.base || 'zinc') as (typeof PRESET_BASE_COLORS)[number],
       primary: (opts.primary || 'indigo') as (typeof PRESET_PRIMARY_COLORS)[number],
-      feedback: (opts.feedback || 'classic') as (typeof PRESET_FEEDBACK_COLORS)[number],
       size: (opts.size || 'md') as (typeof PRESET_SIZES)[number],
       radius: (opts.radius || 'md') as (typeof PRESET_RADII)[number]
     },
@@ -182,8 +176,7 @@ export async function runInit(opts: InitActionOptions) {
 async function promptConfig(opts: InitActionOptions) {
   const recommended = {
     base: 'zinc',
-    primary: 'indigo',
-    feedback: 'classic'
+    primary: 'indigo'
   } as const;
 
   const answers = await prompts([
@@ -223,16 +216,6 @@ async function promptConfig(opts: InitActionOptions) {
     },
     {
       type: 'select',
-      name: 'feedback',
-      message: 'Which feedback color preset?',
-      choices: [recommended.feedback, ...PRESET_FEEDBACK_COLORS.filter(f => f !== recommended.feedback)].map(f => ({
-        title: f === recommended.feedback ? `${f} (recommended)` : f,
-        value: f
-      })),
-      initial: 0
-    },
-    {
-      type: 'select',
       name: 'fontSans',
       message: 'Which sans-serif font? (skip for system default)',
       choices: [
@@ -263,7 +246,6 @@ async function promptConfig(opts: InitActionOptions) {
   if (answers.size) opts.size = answers.size as (typeof PRESET_SIZES)[number];
   if (answers.base) opts.base = answers.base as (typeof PRESET_BASE_COLORS)[number];
   if (answers.primary) opts.primary = answers.primary as (typeof PRESET_PRIMARY_COLORS)[number];
-  if (answers.feedback) opts.feedback = answers.feedback as (typeof PRESET_FEEDBACK_COLORS)[number];
   if (answers.fontSans !== undefined && answers.fontSans !== '') {
     opts.fontSans = answers.fontSans as (typeof PRESET_FONTS)[number];
   }

@@ -65,7 +65,7 @@ import { SConfigProvider } from '@soybeanjs/ui';
 
 ### Complete preset
 
-When `preset.light` provides **every** color token (each key of `ColorTokens`), the preset is considered a "complete preset". You can then enable the `complete` option to skip the built-in base style derivation (base / primary / feedback / sidebar) and apply the provided tokens as the final theme directly.
+When `preset.light` provides **every** color token (each key of `ColorTokens`), the preset is considered a "complete preset". You can then enable the `complete` option to skip the built-in base style derivation (base / primary / sidebar) and apply the provided tokens as the final theme directly.
 
 ```ts
 createTheme({

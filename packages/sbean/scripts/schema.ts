@@ -62,7 +62,7 @@ const SBEAN_ENRICHMENT: SchemaEnrichment = {
       default: 'lucide'
     },
     uno: {
-      description: 'UnoCSS theme configuration. Controls the CSS variable system via @soybeanjs/unocss-shadcn.',
+      description: 'UnoCSS theme configuration. Controls the CSS variable system via @soybeanjs/ui-unocss.',
       properties: {
         base: {
           description: 'Base color palette for backgrounds, borders, and muted elements.',
@@ -71,10 +71,6 @@ const SBEAN_ENRICHMENT: SchemaEnrichment = {
         primary: {
           description: 'Primary brand color for buttons, links, and accents.',
           default: 'indigo'
-        },
-        feedback: {
-          description: 'Feedback color preset for success, warning, error, and info states.',
-          default: 'classic'
         },
         size: {
           description: 'Component size/density preset. Controls the base font size and spacing.',
@@ -183,7 +179,7 @@ const REGISTRY_ITEM_ENRICHMENT: SchemaEnrichment = {
         'UnoCSS config fragment (ADR-005). A JSON-serializable slice of UnoCSS UserConfig — presets, rules, shortcuts, theme, safelist — that ships declaratively with the item and merges during `sbean add`.',
       properties: {
         presets: {
-          description: 'Preset module specifiers to load (e.g. "@soybeanjs/unocss-shadcn").'
+          description: 'Preset module specifiers to load (e.g. "@soybeanjs/ui-unocss").'
         },
         rules: {
           description:
@@ -205,11 +201,10 @@ const REGISTRY_ITEM_ENRICHMENT: SchemaEnrichment = {
         'Typed SoybeanUI base config (ADR-009). Only present on `registry:base` items. Deep-partial of sbeanBaseConfigSchema — any subset of the SoybeanUI project shape (uno palette, aliases, themePackage, resolver, iconLibrary, rtl, pointer) can be declared.',
       properties: {
         uno: {
-          description: 'UnoCSS theme palette — base/primary/feedback/size/radius picklists.',
+          description: 'UnoCSS theme palette — base/primary/size/radius picklists.',
           properties: {
             base: { description: 'Base color palette for backgrounds and borders.' },
             primary: { description: 'Primary brand color for accents and actions.' },
-            feedback: { description: 'Feedback color preset for status states.' },
             size: { description: 'Component size/density preset.' },
             radius: { description: 'Default border radius for components.' }
           }
@@ -225,7 +220,7 @@ const REGISTRY_ITEM_ENRICHMENT: SchemaEnrichment = {
           }
         },
         themePackage: {
-          description: 'Theme token package, e.g. "@soybeanjs/shadcn-theme".'
+          description: 'Theme token package, e.g. "@soybeanjs/theme".'
         },
         resolver: {
           description: 'Resolver module path (relative to project root), e.g. "./src/ui/resolver".'

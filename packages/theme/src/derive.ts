@@ -88,7 +88,7 @@ function splitColor(color: ColorValue): { palette: string | null; level: string 
 
 /**
  * derive the dark-mode value for a single color token from its light-mode
- * value, following the shadcn-theme preset rules (§4).
+ * value, following the theme engine dark-token derivation rules.
  *
  * - the palette is taken from the light value itself when it is a
  *   `palette.level` reference, so feedback/chart/primary overrides resolve on

@@ -99,7 +99,7 @@
               "items": {
                 "type": "string"
               },
-              "description": "Preset module specifiers to load (e.g. \"@soybeanjs/unocss-shadcn\")."
+              "description": "Preset module specifiers to load (e.g. \"@soybeanjs/ui-unocss\")."
             },
             "rules": {
               "type": "array",
@@ -276,27 +276,6 @@
                   "type": "string",
                   "description": "Primary brand color for accents and actions."
                 },
-                "feedback": {
-                  "enum": [
-                    "classic",
-                    "vivid",
-                    "subtle",
-                    "warm",
-                    "cool",
-                    "nature",
-                    "modern",
-                    "vibrant",
-                    "professional",
-                    "soft",
-                    "bold",
-                    "calm",
-                    "candy",
-                    "deep",
-                    "light"
-                  ],
-                  "type": "string",
-                  "description": "Feedback color preset for status states."
-                },
                 "size": {
                   "enum": ["xs", "sm", "md", "lg", "xl", "2xl"],
                   "type": "string",
@@ -309,7 +288,7 @@
                 }
               },
               "required": [],
-              "description": "UnoCSS theme palette — base/primary/feedback/size/radius picklists."
+              "description": "UnoCSS theme palette — base/primary/size/radius picklists."
             },
             "aliases": {
               "type": "object",
@@ -340,7 +319,7 @@
             },
             "themePackage": {
               "type": "string",
-              "description": "Theme token package, e.g. \"@soybeanjs/shadcn-theme\"."
+              "description": "Theme token package, e.g. \"@soybeanjs/theme\"."
             },
             "resolver": {
               "type": "string",
@@ -465,7 +444,7 @@
               "items": {
                 "type": "string"
               },
-              "description": "Preset module specifiers to load (e.g. \"@soybeanjs/unocss-shadcn\")."
+              "description": "Preset module specifiers to load (e.g. \"@soybeanjs/ui-unocss\")."
             },
             "rules": {
               "type": "array",
@@ -721,7 +700,7 @@
               "items": {
                 "type": "string"
               },
-              "description": "Preset module specifiers to load (e.g. \"@soybeanjs/unocss-shadcn\")."
+              "description": "Preset module specifiers to load (e.g. \"@soybeanjs/ui-unocss\")."
             },
             "rules": {
               "type": "array",
@@ -960,7 +939,7 @@
               "items": {
                 "type": "string"
               },
-              "description": "Preset module specifiers to load (e.g. \"@soybeanjs/unocss-shadcn\")."
+              "description": "Preset module specifiers to load (e.g. \"@soybeanjs/ui-unocss\")."
             },
             "rules": {
               "type": "array",

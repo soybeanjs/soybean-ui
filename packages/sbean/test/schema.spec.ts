@@ -3,7 +3,6 @@ import * as v from 'valibot';
 import {
   rawConfigSchema,
   PRESET_BASE_COLORS,
-  PRESET_FEEDBACK_COLORS,
   PRESET_ICON_LIBRARIES,
   PRESET_PRIMARY_COLORS,
   PRESET_RADII,
@@ -170,7 +169,7 @@ describe('registry item uno field (ADR-005)', () => {
       type: 'registry:style',
       name: 'rich-uno',
       uno: {
-        presets: ['@soybeanjs/unocss-shadcn', 'presetIcons'],
+        presets: ['@soybeanjs/ui-unocss', 'presetIcons'],
         rules: [['^btn-(.+)$', 'btn-$1']],
         shortcuts: { 'btn-primary': 'bg-primary text-primary-foreground' },
         theme: { colors: { brand: '#3b82f6' } },
@@ -196,7 +195,7 @@ describe('registry item uno field (ADR-005)', () => {
       type: 'registry:base',
       name: 'starter-base',
       uno: {
-        presets: ['@soybeanjs/unocss-shadcn'],
+        presets: ['@soybeanjs/ui-unocss'],
         safelist: ['sr-only']
       },
       config: {},
@@ -236,7 +235,6 @@ describe('sbeanBaseConfigSchema (ADR-009)', () => {
       uno: {
         base: 'zinc',
         primary: 'indigo',
-        feedback: 'classic',
         size: 'md',
         radius: 'md'
       },
@@ -247,7 +245,7 @@ describe('sbeanBaseConfigSchema (ADR-009)', () => {
         components: '@/components',
         composables: '@/composables'
       },
-      themePackage: '@soybeanjs/shadcn-theme',
+      themePackage: '@soybeanjs/theme',
       resolver: './src/ui/resolver',
       iconLibrary: 'lucide',
       rtl: false,
@@ -266,7 +264,7 @@ describe('sbeanBaseConfigSchema (ADR-009)', () => {
         components: '@/components',
         composables: '@/composables'
       },
-      themePackage: '@soybeanjs/shadcn-theme',
+      themePackage: '@soybeanjs/theme',
       resolver: './src/ui/resolver',
       iconLibrary: 'lucide',
       rtl: false,
@@ -285,7 +283,7 @@ describe('sbeanBaseConfigSchema (ADR-009)', () => {
         components: '@/components',
         composables: '@/composables'
       },
-      themePackage: '@soybeanjs/shadcn-theme',
+      themePackage: '@soybeanjs/theme',
       resolver: './src/ui/resolver',
       iconLibrary: 'lucide',
       rtl: false,
@@ -294,11 +292,11 @@ describe('sbeanBaseConfigSchema (ADR-009)', () => {
     expect(v.safeParse(sbeanBaseConfigSchema, config).success).toBe(false);
   });
 
-  it('accepts every PRESET_BASE_COLORS / PRIMARY / FEEDBACK / SIZE / RADIUS / ICON value', () => {
+  it('accepts every PRESET_BASE_COLORS / PRIMARY / SIZE / RADIUS / ICON value', () => {
     for (const base of PRESET_BASE_COLORS) {
       for (const primary of PRESET_PRIMARY_COLORS) {
         const config = {
-          uno: { base, primary, feedback: PRESET_FEEDBACK_COLORS[0], size: PRESET_SIZES[2], radius: PRESET_RADII[3] },
+          uno: { base, primary, size: PRESET_SIZES[2], radius: PRESET_RADII[3] },
           aliases: {
             ui: '@/ui',
             theme: '@/theme',
@@ -306,7 +304,7 @@ describe('sbeanBaseConfigSchema (ADR-009)', () => {
             components: '@/components',
             composables: '@/composables'
           },
-          themePackage: '@soybeanjs/shadcn-theme',
+          themePackage: '@soybeanjs/theme',
           resolver: './src/ui/resolver',
           iconLibrary: PRESET_ICON_LIBRARIES[0],
           rtl: false,
@@ -334,7 +332,7 @@ describe('registry:base config deep-partial (ADR-009)', () => {
   it('sbeanBaseItemConfigSchema accepts only themePackage + resolver', () => {
     expect(
       v.safeParse(sbeanBaseItemConfigSchema, {
-        themePackage: '@soybeanjs/shadcn-theme',
+        themePackage: '@soybeanjs/theme',
         resolver: './src/ui/resolver'
       }).success
     ).toBe(true);
@@ -358,7 +356,7 @@ describe('registry:base config deep-partial (ADR-009)', () => {
       type: 'registry:base',
       name: 'full-base',
       config: {
-        uno: { base: 'zinc', primary: 'indigo', feedback: 'classic', size: 'md', radius: 'md' },
+        uno: { base: 'zinc', primary: 'indigo', size: 'md', radius: 'md' },
         aliases: {
           ui: '@/ui',
           theme: '@/theme',
@@ -366,7 +364,7 @@ describe('registry:base config deep-partial (ADR-009)', () => {
           components: '@/components',
           composables: '@/composables'
         },
-        themePackage: '@soybeanjs/shadcn-theme',
+        themePackage: '@soybeanjs/theme',
         resolver: './src/ui/resolver',
         iconLibrary: 'lucide',
         rtl: false,

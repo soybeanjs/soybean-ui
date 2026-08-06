@@ -157,12 +157,12 @@
 
 ## 四、重点检查项结论
 
-| 检查项                 | 结论 | 证据                                                                                                                                                                         |
-| :--------------------- | :--: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **D1-05** 上下文响应式 |  ✅  | `dir` 为 `computed`；`transformPropsToContext(props)` 将所有 prop 包装为 `ComputedRef`；`iconRender` 为函数引用，类型上显式排除于 `PropsToContext`                           |
-| **D2-07** 暗色模式     |  ✅  | `theme.darkSelector`（默认 `'class'` → `.dark`，或 `'media'` / 自定义）控制暗色 CSS 作用域；`createShadcnTheme` 始终生成浅色+暗色两套变量；测试验证主题 CSS 注入与响应式更新 |
-| **D2-08** i18n 与 RTL  |  ✅  | `locale` + `messages` 覆盖；`resolveLocaleDirection` 已注册优先、未注册按 RTL 前缀兜底；4 项 dir 测试覆盖 ar/en/显式覆盖/未知 locale                                         |
-| **D7-18** 主题集成     |  ✅  | `createShadcnTheme` + `useStyleTag` 注入 `__SoybeanUI_theme`；`ThemeSize`/`ThemeOptions` 复用；主题 prop 变化测试通过                                                        |
+| 检查项                 | 结论 | 证据                                                                                                                                                                   |
+| :--------------------- | :--: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **D1-05** 上下文响应式 |  ✅  | `dir` 为 `computed`；`transformPropsToContext(props)` 将所有 prop 包装为 `ComputedRef`；`iconRender` 为函数引用，类型上显式排除于 `PropsToContext`                     |
+| **D2-07** 暗色模式     |  ✅  | `theme.darkSelector`（默认 `'class'` → `.dark`，或 `'media'` / 自定义）控制暗色 CSS 作用域；`createTheme` 始终生成浅色+暗色两套变量；测试验证主题 CSS 注入与响应式更新 |
+| **D2-08** i18n 与 RTL  |  ✅  | `locale` + `messages` 覆盖；`resolveLocaleDirection` 已注册优先、未注册按 RTL 前缀兜底；4 项 dir 测试覆盖 ar/en/显式覆盖/未知 locale                                   |
+| **D7-18** 主题集成     |  ✅  | `createTheme` + `useStyleTag` 注入 `__SoybeanUI_theme`；`ThemeSize`/`ThemeOptions` 复用；主题 prop 变化测试通过                                                        |
 
 ---
 

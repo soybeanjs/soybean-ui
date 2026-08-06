@@ -49,23 +49,23 @@
 
 ---
 
-## ADR-003 — Responsibility split: sbean = delivery system; `@soybeanjs/shadcn-theme` = token owner
+## ADR-003 — Responsibility split: sbean = delivery system; `@soybeanjs/theme` = token owner
 
 **Status:** Accepted
 
-**Context.** shadcn-vue's registry schema carries rich token modeling: recursive `css` object, `theme`-scoped `cssVars`, `envVars`, Google-font `provider/import/variable/subsets`. sbean's `css` is a plain `string`, `cssVars` has only `light`/`dark`, no `envVars`, lean font schema. The SoybeanUI stack has a dedicated theme package (`@soybeanjs/shadcn-theme`) already imported by sbean ([registry/config.ts:7](../src/registry/config.ts#L7)).
+**Context.** shadcn-vue's registry schema carries rich token modeling: recursive `css` object, `theme`-scoped `cssVars`, `envVars`, Google-font `provider/import/variable/subsets`. sbean's `css` is a plain `string`, `cssVars` has only `light`/`dark`, no `envVars`, lean font schema. The SoybeanUI stack has a dedicated theme package (`@soybeanjs/theme`) already imported by sbean ([registry/config.ts:7](../src/registry/config.ts#L7)).
 
-**Decision.** sbean stays a **delivery system** — `css` stays `string`, `cssVars` stays `{light, dark}`, no `envVars`, lean `registry:font` schema. All rich token modeling (recursive css, Google-font provider, theme-scoped cssVars, envVars) lives in `@soybeanjs/shadcn-theme`. sbean references the theme package; it does not replicate its responsibilities.
+**Decision.** sbean stays a **delivery system** — `css` stays `string`, `cssVars` stays `{light, dark}`, no `envVars`, lean `registry:font` schema. All rich token modeling (recursive css, Google-font provider, theme-scoped cssVars, envVars) lives in `@soybeanjs/theme`. sbean references the theme package; it does not replicate its responsibilities.
 
 **Consequences.**
 
 - (+) Clear single-responsibility: sbean moves files; theme pkg owns tokens.
 - (+) No schema duplication between sbean and the theme package.
-- (−) registry items cannot self-contain rich theme fragments — they depend on the theme package being installed. Acceptable given `sbean init` wires `@soybeanjs/shadcn-theme` by default.
+- (−) registry items cannot self-contain rich theme fragments — they depend on the theme package being installed. Acceptable given `sbean init` wires `@soybeanjs/theme` by default.
 
 **Alternatives considered.**
 
-- sbean adopts shadcn's full theme schema — rejected: duplicates `@soybeanjs/shadcn-theme` responsibilities; risk of drift.
+- sbean adopts shadcn's full theme schema — rejected: duplicates `@soybeanjs/theme` responsibilities; risk of drift.
 - Split (font+cssVars in sbean, recursive css in theme pkg) — rejected: font provider modeling is genuinely theme-package territory; partial adoption creates two sources of truth for fonts.
 
 ---
@@ -95,7 +95,7 @@
 
 **Status:** Accepted
 
-**Context.** The registry-item `uno` field is **opaque** `{config: v.optional(v.object({}))}` ([schema.ts:72-76](../src/registry/schema.ts#L72-L76)), while the project-config `uno` (in `sbean.json` / `registry/config.ts:61`) is **structured** (`base/primary/feedback/size/radius`). This split-identity means `registry:base`/`registry:style` items cannot declaratively ship UnoCSS config fragments. shadcn's `tailwind` field is structured `{content, theme, plugins}`.
+**Context.** The registry-item `uno` field is **opaque** `{config: v.optional(v.object({}))}` ([schema.ts:72-76](../src/registry/schema.ts#L72-L76)), while the project-config `uno` (in `sbean.json` / `registry/config.ts:61`) is **structured** (`base/primary/size/radius`). This split-identity means `registry:base`/`registry:style` items cannot declaratively ship UnoCSS config fragments. shadcn's `tailwind` field is structured `{content, theme, plugins}`.
 
 **Decision.** Replace the opaque `uno` field with a typed shape mirroring UnoCSS's `UserConfig`: `{presets, rules, shortcuts, theme, safelist}`. Enables registry items to ship real UnoCSS config fragments that merge deterministically during `sbean add`.
 
@@ -182,7 +182,7 @@
 
 **Context.** shadcn's `registry:base` carries `rawConfigSchema.deepPartial()` (full project config: style, font, tailwind, iconLibrary, rtl, aliases, registries). sbean's `registry:base` has opaque `config: v.optional(v.object({}))` ([schema.ts:123-128](../src/registry/schema.ts#L123-L128)). The opaque shape means base items cannot declaratively represent project variants.
 
-**Decision.** Define a typed `sbeanBaseConfigSchema` mirroring SoybeanUI's actual project shape: `uno` (base/primary/feedback/size/radius), `aliases` (ui/theme/styles/components/composables), `themePackage` (`@soybeanjs/shadcn-theme`), `resolver`, `iconLibrary`, `rtl`, `pointer`. `registry:base` items carry `.deepPartial()` of this schema — enabling full project bootstrapping via a base item.
+**Decision.** Define a typed `sbeanBaseConfigSchema` mirroring SoybeanUI's actual project shape: `uno` (base/primary/size/radius), `aliases` (ui/theme/styles/components/composables), `themePackage` (`@soybeanjs/theme`), `resolver`, `iconLibrary`, `rtl`, `pointer`. `registry:base` items carry `.deepPartial()` of this schema — enabling full project bootstrapping via a base item.
 
 **Consequences.**
 

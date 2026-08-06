@@ -1,12 +1,5 @@
 import * as v from 'valibot';
-import {
-  PRESET_BASE_COLORS,
-  PRESET_FEEDBACK_COLORS,
-  PRESET_ICON_LIBRARIES,
-  PRESET_PRIMARY_COLORS,
-  PRESET_RADII,
-  PRESET_SIZES
-} from './config';
+import { PRESET_BASE_COLORS, PRESET_ICON_LIBRARIES, PRESET_PRIMARY_COLORS, PRESET_RADII, PRESET_SIZES } from './config';
 
 // ---------------------------------------------------------------------------
 // Registry item file schema
@@ -102,7 +95,7 @@ export type RegistryItemMeta = v.InferOutput<typeof registryItemMetaSchema>;
 
 export const registryItemUnoSchema = v.optional(
   v.object({
-    /** Preset module specifiers (e.g. `"@soybeanjs/unocss-shadcn"`). */
+    /** Preset module specifiers (e.g. `"@soybeanjs/ui-unocss"`). */
     presets: v.optional(v.array(v.string())),
     /** Declarative `[pattern, class]` rules; pattern is a regex source string. */
     rules: v.optional(v.array(v.tuple([v.string(), v.string()]))),
@@ -174,7 +167,6 @@ export const sbeanBaseConfigSchema = v.object({
   uno: v.object({
     base: v.picklist(PRESET_BASE_COLORS),
     primary: v.picklist(PRESET_PRIMARY_COLORS),
-    feedback: v.picklist(PRESET_FEEDBACK_COLORS),
     size: v.picklist(PRESET_SIZES),
     radius: v.picklist(PRESET_RADII)
   }),

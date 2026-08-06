@@ -36,17 +36,17 @@
 
 ### 技术栈映射
 
-| 功能层     | shadcn-ui                  | SBean                                      |
-| ---------- | -------------------------- | ------------------------------------------ |
-| CLI 框架   | Commander                  | Commander                                  |
-| 配置文件   | `components.json`          | `sbean.json`                               |
-| 基础组件库 | `radix-ui` / `base-ui`     | `@soybeanjs/headless`                      |
-| 样式系统   | `tailwindcss`              | UnoCSS (`@soybeanjs/unocss-shadcn` preset) |
-| 变体系统   | `class-variance-authority` | `@soybeanjs/cva`                           |
-| 样式合并   | `tailwind-merge` + `clsx`  | UnoCSS 原生处理                            |
-| 验证库     | `zod`                      | **valibot**（更轻量，tree-shakable）       |
-| 构建工具   | `tsup`                     | **vite-plus pack**（复用项目现有构建链）   |
-| 框架支持   | React / Next.js            | Vue 3 / Nuxt                               |
+| 功能层     | shadcn-ui                  | SBean                                    |
+| ---------- | -------------------------- | ---------------------------------------- |
+| CLI 框架   | Commander                  | Commander                                |
+| 配置文件   | `components.json`          | `sbean.json`                             |
+| 基础组件库 | `radix-ui` / `base-ui`     | `@soybeanjs/headless`                    |
+| 样式系统   | `tailwindcss`              | UnoCSS (`@soybeanjs/ui-unocss` preset)   |
+| 变体系统   | `class-variance-authority` | `@soybeanjs/cva`                         |
+| 样式合并   | `tailwind-merge` + `clsx`  | UnoCSS 原生处理                          |
+| 验证库     | `zod`                      | **valibot**（更轻量，tree-shakable）     |
+| 构建工具   | `tsup`                     | **vite-plus pack**（复用项目现有构建链） |
+| 框架支持   | React / Next.js            | Vue 3 / Nuxt                             |
 
 ### 设计哲学
 
@@ -145,7 +145,7 @@ packages/sbean/
 | **组件缓存** | 内存缓存       | TTL-based 本地缓存 (~/.sbean/cache) | ⬆️     |
 | **搜索能力** | 基础名称搜索   | Levenshtein 模糊匹配 + 相关性排序   | ⬆️     |
 | **配置验证** | Zod            | Valibot (更轻量)                    | ↔️     |
-| **样式系统** | Tailwind CSS   | UnoCSS + @soybeanjs/unocss-shadcn   | ↔️     |
+| **样式系统** | Tailwind CSS   | UnoCSS + @soybeanjs/ui-unocss       | ↔️     |
 | **框架支持** | React/Next     | Vue 3/Nuxt                          | ↔️     |
 | **项目模板** | 单一 (Next.js) | 4 种框架 (Vue Vite, Nuxt, Library)  | ⬆️     |
 
@@ -369,7 +369,7 @@ const results = searchRegistry(items, {
 
 **原因**:
 
-- `@soybeanjs/unocss-shadcn` 预设自动提供 CSS 变量和 RTL 支持
+- `@soybeanjs/ui-unocss` 预设自动提供 CSS 变量和 RTL 支持
 - 遵循 shadcn-ui "最小化工具"哲学
 - 降低学习成本，避免重复实现
 
@@ -505,17 +505,19 @@ export default defineConfig({
 
 ```typescript
 // uno.config.ts
-import { defineConfig, presetWind3 } from 'unocss';
-import { presetShadcn } from '@soybeanjs/unocss-shadcn';
+import { defineConfig } from 'unocss';
+import { presetUiUnocss } from '@soybeanjs/ui-unocss';
 
 export default defineConfig({
   presets: [
-    presetWind3({ dark: 'class' }),
-    presetShadcn({
+    presetUiUnocss({
       base: 'zinc',
       primary: 'indigo',
       radius: 'md',
-      darkSelector: 'class'
+      darkSelector: 'class',
+      resetCSS: true,
+      globalCSS: true,
+      uiCSS: true
     })
   ]
 });

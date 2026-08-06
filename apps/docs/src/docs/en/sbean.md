@@ -37,7 +37,6 @@ sbean init [options]
 | `--style <style>`       | Style preset: soybean / clean / dense                                       | `soybean`                                    |
 | `-b, --base <base>`     | Base color: zinc / neutral / stone / slate / gray                           | `zinc`                                       |
 | `--primary <primary>`   | Primary color: indigo / blue / green / ...                                  | `indigo`                                     |
-| `--feedback <feedback>` | Feedback color preset: classic / vivid / subtle / ...                       | `classic`                                    |
 | `--radius <radius>`     | Border radius: none / xs / sm / md / lg / xl / 2xl                          | `md`                                         |
 | `-p, --preset <code>`   | Preset code (base62 encoded config)                                         | —                                            |
 | `--icon-library <lib>`  | Icon library: lucide / material-symbols / ph / tabler / solar / radix-icons | `lucide`                                     |
@@ -150,7 +149,6 @@ The `sbean.json` file stores your project configuration:
   "uno": {
     "base": "zinc",
     "primary": "indigo",
-    "feedback": "classic",
     "size": "md",
     "radius": "md"
   },
@@ -174,7 +172,6 @@ The `sbean.json` file stores your project configuration:
 | `iconLibrary`  | `string`  | Icon library prefix                                 |
 | `uno.base`     | `string`  | Base (neutral) color                                |
 | `uno.primary`  | `string`  | Primary (brand) color                               |
-| `uno.feedback` | `string`  | Feedback color preset                               |
 | `uno.size`     | `string`  | Base component size                                 |
 | `uno.radius`   | `string`  | Border radius                                       |
 | `font.sans`    | `string`  | Sans-serif font name                                |

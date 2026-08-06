@@ -202,7 +202,7 @@ Run these after the corresponding source changes. Never hand-edit generated outp
 pnpm dev:playground   # Playground (Vite)
 pnpm dev:docs         # Documentation site (Vite SSG)
 pnpm build            # headless -> ui -> sbean via Vite Plus pack
-pnpm build:libs       # shadcn-theme -> unocss-shadcn
+pnpm build:libs       # theme -> ui-unocss
 pnpm lint             # vp lint --fix && package Vue lint
 pnpm fmt              # vp fmt
 pnpm test             # recursive UI/headless and sbean tests

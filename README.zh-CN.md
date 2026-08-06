@@ -22,10 +22,10 @@ SoybeanUI 的组件运行时采用严格的**双层分离**设计。下图中的
 ```
 应用 ──> @soybeanjs/ui ──> @soybeanjs/headless
                   │
-                  └─────> @soybeanjs/shadcn-theme
+                  └─────> @soybeanjs/theme
 
-UnoCSS 配置 ──> @soybeanjs/unocss-shadcn
-                  └─────> @soybeanjs/shadcn-theme
+UnoCSS 配置 ──> @soybeanjs/ui-unocss
+                  └─────> @soybeanjs/theme
 ```
 
 ### 包结构
@@ -49,8 +49,8 @@ UnoCSS 配置 ──> @soybeanjs/unocss-shadcn
 
 ### Workspace 总览
 
-Monorepo 还发布 `@soybeanjs/shadcn-theme`、
-`@soybeanjs/unocss-shadcn`、源码分发 CLI `sbean` 与
+Monorepo 还发布 `@soybeanjs/theme`、
+`@soybeanjs/ui-unocss`、源码分发 CLI `sbean` 与
 `@soybeanjs/ui-skills`。三个私有应用分别承担文档站、playground 与 Nuxt 集成
 验证。
 

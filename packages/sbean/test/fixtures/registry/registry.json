@@ -78,7 +78,7 @@
         }
       },
       "uno": {
-        "presets": ["@soybeanjs/unocss-shadcn"],
+        "presets": ["@soybeanjs/ui-unocss"],
         "shortcuts": {
           "focus-ring": "outline-none ring-2 ring-offset-2"
         },
@@ -109,7 +109,7 @@
           "components": "@/components",
           "composables": "@/composables"
         },
-        "themePackage": "@soybeanjs/shadcn-theme",
+        "themePackage": "@soybeanjs/theme",
         "resolver": "./src/ui/resolver",
         "iconLibrary": "lucide",
         "rtl": false,

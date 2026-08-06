@@ -1,10 +1,4 @@
-import {
-  themeSizeKeys,
-  themeRadiusKeys,
-  builtinBasePresetKeys,
-  builtinPrimaryPresetKeys,
-  builtinFeedbackPresetKeys
-} from '@soybeanjs/shadcn-theme';
+import { themeSizeKeys, themeRadiusKeys, builtinBasePresetKeys, builtinPrimaryPresetKeys } from '@soybeanjs/theme';
 import * as v from 'valibot';
 
 // ---------------------------------------------------------------------------
@@ -18,8 +12,6 @@ export const PRESET_RADII = themeRadiusKeys;
 export const PRESET_BASE_COLORS = builtinBasePresetKeys;
 
 export const PRESET_PRIMARY_COLORS = builtinPrimaryPresetKeys;
-
-export const PRESET_FEEDBACK_COLORS = builtinFeedbackPresetKeys;
 
 export const PRESET_SIZES = themeSizeKeys;
 
@@ -61,7 +53,6 @@ export const rawConfigSchema = v.object({
   uno: v.object({
     base: v.picklist(PRESET_BASE_COLORS),
     primary: v.picklist(PRESET_PRIMARY_COLORS),
-    feedback: v.optional(v.picklist(PRESET_FEEDBACK_COLORS)),
     size: v.optional(v.picklist(PRESET_SIZES)),
     radius: v.picklist(PRESET_RADII)
   }),

@@ -65,7 +65,7 @@ SoybeanUI 的组件运行时采用严格的 **双层分离** 架构模型。下�
                   │
                   └─────> @soybeanjs/theme
 
-UnoCSS 配置 ──> @soybeanjs/unocss-shadcn
+UnoCSS 配置 ──> @soybeanjs/ui-unocss
                   └─────> @soybeanjs/theme
 ```
 

@@ -37,7 +37,6 @@ sbean init [options]
 | `--style <style>`       | 样式预设：soybean / clean / dense                                     | `soybean`                                     |
 | `-b, --base <base>`     | 基础色：zinc / neutral / stone / slate / gray                         | `zinc`                                        |
 | `--primary <primary>`   | 主色：indigo / blue / green / ...                                     | `indigo`                                      |
-| `--feedback <feedback>` | 反馈色预设：classic / vivid / subtle / ...                            | `classic`                                     |
 | `--radius <radius>`     | 圆角：none / xs / sm / md / lg / xl / 2xl                             | `md`                                          |
 | `-p, --preset <code>`   | 预设编码（base62 编码的配置）                                         | —                                             |
 | `--icon-library <lib>`  | 图标库：lucide / material-symbols / ph / tabler / solar / radix-icons | `lucide`                                      |
@@ -150,7 +149,6 @@ sbean preset <preset>
   "uno": {
     "base": "zinc",
     "primary": "indigo",
-    "feedback": "classic",
     "size": "md",
     "radius": "md"
   },
@@ -175,7 +173,6 @@ sbean preset <preset>
 | `uno.size`     | `string`  | 基础组件尺寸                     |
 | `uno.base`     | `string`  | 基础（中性）色                   |
 | `uno.primary`  | `string`  | 主（品牌）色                     |
-| `uno.feedback` | `string`  | 反馈色预设                       |
 | `uno.radius`   | `string`  | 圆角大小                         |
 | `font.sans`    | `string`  | 无衬线字体名称                   |
 | `font.heading` | `string`  | 标题字体或 `"inherit"`           |

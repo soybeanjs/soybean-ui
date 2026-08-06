@@ -65,7 +65,7 @@ import { SConfigProvider } from '@soybeanjs/ui';
 
 ### 完整预设（complete）
 
-当 `preset.light` 提供**全部**颜色 token（对应 `ColorTokens` 的每个键）时，该 preset 即视为"完整预设"。此时可开启 `complete` 选项，跳过内置基础样式（base / primary / feedback / sidebar）的派生流程，直接将提供的 token 作为最终主题。
+当 `preset.light` 提供**全部**颜色 token（对应 `ColorTokens` 的每个键）时，该 preset 即视为"完整预设"。此时可开启 `complete` 选项，跳过内置基础样式（base / primary / sidebar）的派生流程，直接将提供的 token 作为最终主题。
 
 ```ts
 createTheme({

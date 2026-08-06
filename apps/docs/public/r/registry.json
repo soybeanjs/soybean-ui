@@ -562,7 +562,7 @@
     {
       "name": "config-provider",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless", "@soybeanjs/shadcn-theme"],
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/theme"],
       "registryDependencies": ["dialog", "icon", "progress", "toast"],
       "files": [
         {

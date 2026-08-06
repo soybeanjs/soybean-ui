@@ -15,7 +15,7 @@
 - Headless 与 Styled 两层职责清楚，编译期依赖保持为
   `@soybeanjs/ui → @soybeanjs/headless`。
 - `useUiContext` 把视觉 token 注入与行为实现隔离，是高杠杆的深模块。
-- `createShadcnTheme` 同时服务运行时主题和 UnoCSS 构建，避免两套 token
+- `createTheme` 同时服务运行时主题和 UnoCSS 构建，避免两套 token
   生成逻辑。
 - `sbean`、组件包、文档站、playground、生成脚本均有明确用途。
 - TypeScript 严格模式、106 个 UI/headless 单测文件、15 个 sbean 测试文件及
@@ -79,8 +79,8 @@
 
 ### 3.2 主题只有一个生成核心
 
-**事实：** `createShadcnTheme` 同时被 UI `ConfigProvider` 与
-`presetShadcn` 使用；CodeGraph 影响范围为 10 个符号，覆盖四份 UnoCSS 配置。
+**事实：** `createTheme` 同时被 UI `ConfigProvider` 与
+`presetUiUnocss` 使用；CodeGraph 影响范围为 10 个符号，覆盖四份 UnoCSS 配置。
 
 **判断：** 运行时与构建时共享生成器能降低 token 漂移。应补测试而非建立第二套
 主题适配层。
@@ -113,12 +113,12 @@ utils 分开，并有 15 个测试文件及 ADR。
 - `pnpm-workspace.yaml` 设置了 `shamefullyHoist: true`。
 - `packages/ui` 的运行时代码直接导入 `@vueuse/core`，但 UI manifest 未声明。
 - `packages/sbean/src/registry/config.ts` 运行时导入
-  `@soybeanjs/shadcn-theme`，但 sbean manifest 未声明。
-- `packages/unocss-shadcn/src/index.ts` 导入 `lightningcss`；manifest 将其放在
+  `@soybeanjs/theme`，但 sbean manifest 未声明。
+- `packages/ui-unocss/src/index.ts` 导入 `lightningcss`；manifest 将其放在
   `devDependencies`，而 pack 配置又将 dev dependency 列入 `neverBundle`。
 - `apps/docs` 直接使用 `@soybeanjs/utils`、`@soybeanjs/colord`、
   `@vueuse/core`、`unocss`、`unocss-preset-animations`、
-  `@soybeanjs/unocss-preset` 和 `@soybeanjs/unocss-shadcn`，其中多项未在
+  `@soybeanjs/unocss-preset` 和 `@soybeanjs/ui-unocss`，其中多项未在
   docs manifest 声明。
 - `apps/nuxt` 的 UnoCSS 配置直接使用三项未声明 preset 依赖。
 - `scripts/stub.ts` 使用 `execa`，根 manifest 未声明。
@@ -324,8 +324,8 @@ filtered build 与独立测试。
 
 **事实：**
 
-- `createShadcnTheme` 影响 10 个符号，CodeGraph 找不到受影响测试。
-- `packages/shadcn-theme` 和 `packages/unocss-shadcn` 无测试目录。
+- `createTheme` 影响 10 个符号，CodeGraph 找不到受影响测试。
+- `packages/theme` 和 `packages/ui-unocss` 无测试目录。
 - `useUiContext` 影响 68 个符号；CodeGraph 能关联 7 个下游测试，但没有
   `use-ui-context` 的直接单测。
 - Browser e2e 当前只有 button、dialog、select 三个 spec；`docs/check.md`
@@ -335,10 +335,10 @@ filtered build 与独立测试。
 
 **建议：**
 
-- 为 `createShadcnTheme` 增加 CSS 合约测试：light/dark selector、size/radius、
+- 为 `createTheme` 增加 CSS 合约测试：light/dark selector、size/radius、
   preset override、菜单/feedback token 和格式输出。
-- 为 `presetShadcn` 增加 preflight/preset 组合测试，并覆盖
-  `generated: false|true|object`。
+- 为 `presetUiUnocss` 增加 preflight/preset 组合测试，并覆盖
+  `resetCSS/globalCSS/uiCSS` 开关。
 - 为 `useUiContext` 增加 slot/full-map、响应式更新、默认空值和 provider
   缺失行为测试。
 - 为 headless 增加独立 `vue-tsc` 门禁，为 Nuxt 增加 `nuxt typecheck` 或等价
@@ -360,9 +360,9 @@ filtered build 与独立测试。
 **事实：**
 
 - 根 `pnpm build` 只执行 headless → UI → sbean。
-- shadcn-theme → unocss-shadcn 由独立 `build:libs` 和 install-time `prepare`
+- theme → ui-unocss 由独立 `build:libs` 和 install-time `prepare`
   负责。
-- UI CSS 构建依赖 unocss-shadcn；UI runtime 又依赖 shadcn-theme。
+- UI CSS 构建依赖 ui-unocss；UI runtime 又依赖 theme。
 - 根 `vite.config.ts` 已有部分 Vite Plus task dependency，但 package scripts
   未统一通过该图执行。
 - `pnpm-workspace.yaml` 保留 `shared/**` pattern，但当前没有 workspace project

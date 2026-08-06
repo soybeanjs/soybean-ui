@@ -42,7 +42,7 @@ export interface TemplateVariables {
 // ---------------------------------------------------------------------------
 
 const UNO_CONFIG_CONTENT = `import { defineConfig } from 'unocss'
-import { presetSbean } from '@soybeanjs/unocss-shadcn'
+import { presetSbean } from '@soybeanjs/ui-unocss'
 
 export default defineConfig({
   presets: [presetSbean()]
@@ -59,8 +59,7 @@ const SBEAN_JSON_CONTENT = `{
     "size": "md",
     "radius": "md",
     "base": "zinc",
-    "primary": "indigo",
-    "feedback": "classic"
+    "primary": "indigo"
   },
   "font": {},
   "menu": {
@@ -171,13 +170,13 @@ app.mount('#app')
     '@soybeanjs/cva': `^0.0.9`,
     '@soybeanjs/headless': `^${SOYBEAN_VERSION}`,
     '@soybeanjs/hooks': `^0.3.0`,
-    '@soybeanjs/shadcn-theme': `^${SOYBEAN_VERSION}`,
+    '@soybeanjs/theme': `^${SOYBEAN_VERSION}`,
     '@soybeanjs/utils': `^0.1.1`,
     vue: '^3.5.38',
     'vue-router': '^5.1.0'
   },
   devDependencies: {
-    '@soybeanjs/unocss-shadcn': `^${SOYBEAN_VERSION}`,
+    '@soybeanjs/ui-unocss': `^${SOYBEAN_VERSION}`,
     '@vitejs/plugin-vue': '^6.0.7',
     typescript: '^6.0.3',
     unocss: '^66.7.2',
@@ -241,7 +240,7 @@ export default defineNuxtConfig({
     '@soybeanjs/cva': `^0.0.9`,
     '@soybeanjs/headless': `^${SOYBEAN_VERSION}`,
     '@soybeanjs/hooks': `^0.3.0`,
-    '@soybeanjs/shadcn-theme': `^${SOYBEAN_VERSION}`,
+    '@soybeanjs/theme': `^${SOYBEAN_VERSION}`,
     '@soybeanjs/utils': '^0.1.1',
     nuxt: '^4.4.8'
   },
