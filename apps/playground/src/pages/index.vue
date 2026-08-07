@@ -99,6 +99,7 @@ onMounted(() => {
         </SLink>
         <DirectionToggler />
         <ThemeConfigurator />
+        <ThemeGenerator />
         <ThemeSchemaToggler />
         <LocaleToggler />
       </div>
