@@ -7,7 +7,11 @@ import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import DirectionToggler from '../components/direction-toggler.vue';
 import LocaleToggler from '../components/locale-toggler.vue';
 import ThemeConfigurator from '../components/theme-configurator.vue';
+import ThemeGenerator from '../components/theme-generator/index.vue';
 import ThemeSchemaToggler from '../components/theme-schema-toggler.vue';
+import { useTheme } from '../theme';
+
+const { themeOverride } = useTheme('IndexPage');
 
 const activeTab = shallowRef('');
 
@@ -99,7 +103,7 @@ onMounted(() => {
         </SLink>
         <DirectionToggler />
         <ThemeConfigurator />
-        <ThemeGenerator />
+        <ThemeGenerator v-model:theme="themeOverride" />
         <ThemeSchemaToggler />
         <LocaleToggler />
       </div>

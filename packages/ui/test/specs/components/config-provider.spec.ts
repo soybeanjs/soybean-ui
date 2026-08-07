@@ -248,7 +248,7 @@ describe('SConfigProvider', () => {
       window.localStorage.clear();
     });
 
-    it('reuses the derived theme when props stay stable (cacheThemeConfig=true)', async () => {
+    it('reuses the derived theme when props stay stable', async () => {
       const wrapper = mount(SConfigProvider, {
         props: { persistTheme: true, theme: { base: 'gray' } },
         slots: { default: '<div />' },
@@ -283,7 +283,7 @@ describe('SConfigProvider', () => {
 
     it('invalidates the cache on a storage event for the theme key', async () => {
       const wrapper = mount(SConfigProvider, {
-        props: { persistTheme: true, cacheThemeConfig: true, theme: { base: 'gray' } },
+        props: { persistTheme: true, theme: { base: 'gray' } },
         slots: { default: '<div />' },
         attachTo: document.body
       });
@@ -296,25 +296,6 @@ describe('SConfigProvider', () => {
       await nextTick();
 
       expect(createThemeMock).toHaveBeenCalledTimes(2);
-
-      wrapper.unmount();
-    });
-
-    it('does not watch storage when cacheThemeConfig=false', async () => {
-      const wrapper = mount(SConfigProvider, {
-        props: { persistTheme: true, cacheThemeConfig: false, theme: { base: 'gray' } },
-        slots: { default: '<div />' },
-        attachTo: document.body
-      });
-
-      expect(createThemeMock).toHaveBeenCalledTimes(1);
-
-      window.dispatchEvent(new StorageEvent('storage', { key: THEME_STORAGE_KEY }));
-
-      await nextTick();
-
-      // 关闭缓存时不注册 storage 监听，主题不重派生
-      expect(createThemeMock).toHaveBeenCalledTimes(1);
 
       wrapper.unmount();
     });

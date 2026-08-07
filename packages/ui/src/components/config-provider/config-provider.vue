@@ -4,7 +4,6 @@ import { useOmitProps } from '@soybeanjs/headless/composables';
 import { ConfigProvider } from '@soybeanjs/headless/config-provider';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { isServerRuntime } from '@soybeanjs/theme/ssr';
-import { THEME_COOKIE_KEY, THEME_STORAGE_KEY } from '@soybeanjs/theme/storage';
 import DialogProvider from '../dialog/dialog-provider.vue';
 import IconComponent from '../icon/icon.vue';
 import type { IconValue } from '../icon/types';
@@ -26,9 +25,6 @@ const props = withDefaults(defineProps<ConfigProviderProps>(), {
     height: '1.25em'
   }),
   persistTheme: false,
-  cacheThemeConfig: true,
-  themeStorageKey: THEME_STORAGE_KEY,
-  themeCookieKey: THEME_COOKIE_KEY,
   isServer: isServerRuntime
 });
 
@@ -41,9 +37,6 @@ const forwardedProps = useOmitProps(props, [
   'toast',
   'customToast',
   'persistTheme',
-  'cacheThemeConfig',
-  'themeStorageKey',
-  'themeCookieKey',
   'themeConfig',
   'cookieHeader',
   'presetProvider',

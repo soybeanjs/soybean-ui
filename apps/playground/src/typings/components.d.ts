@@ -12,6 +12,8 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ColorDecorate: typeof import('../components/theme-generator/color-decoration.vue')['default']
+    ColorDecoration: typeof import('./../components/theme-generator/color-decoration.vue')['default']
     DirectionToggler: typeof import('./../components/direction-toggler.vue')['default']
     LocaleToggler: typeof import('./../components/locale-toggler.vue')['default']
     PlaygroundGallery: typeof import('./../components/playground-gallery.vue')['default']
@@ -21,25 +23,24 @@ declare module 'vue' {
     SAlert: typeof import('@soybeanjs/ui')['SAlert']
     SBacktop: typeof import('@soybeanjs/ui')['SBacktop']
     SButton: typeof import('@soybeanjs/ui')['SButton']
-    SButtonIcon: typeof import('@soybeanjs/ui')['SButtonIcon']
     SCard: typeof import('@soybeanjs/ui')['SCard']
     SEditable: typeof import('@soybeanjs/ui')['SEditable']
-    SPopover: typeof import('@soybeanjs/ui')['SPopover']
     SSplitterGroup: typeof import('@soybeanjs/ui')['SSplitterGroup']
     SSplitterPanel: typeof import('@soybeanjs/ui')['SSplitterPanel']
     SSplitterResizeHandle: typeof import('@soybeanjs/ui')['SSplitterResizeHandle']
     SSwitch: typeof import('@soybeanjs/ui')['SSwitch']
-    STabs: typeof import('@soybeanjs/ui')['STabs']
     SToggle: typeof import('@soybeanjs/ui')['SToggle']
     SWatermark: typeof import('@soybeanjs/ui')['SWatermark']
     ThemeConfigurator: typeof import('./../components/theme-configurator.vue')['default']
-    ThemeGenerator: typeof import('./../components/theme-generator.vue')['default']
+    ThemeGenerator: typeof import('./../components/theme-generator/index.vue')['default']
     ThemeSchemaToggler: typeof import('./../components/theme-schema-toggler.vue')['default']
   }
 }
 
 // For TSX support
 declare global {
+  const ColorDecorate: typeof import('../components/theme-generator/color-decoration.vue')['default']
+  const ColorDecoration: typeof import('./../components/theme-generator/color-decoration.vue')['default']
   const DirectionToggler: typeof import('./../components/direction-toggler.vue')['default']
   const LocaleToggler: typeof import('./../components/locale-toggler.vue')['default']
   const PlaygroundGallery: typeof import('./../components/playground-gallery.vue')['default']
@@ -49,18 +50,15 @@ declare global {
   const SAlert: typeof import('@soybeanjs/ui')['SAlert']
   const SBacktop: typeof import('@soybeanjs/ui')['SBacktop']
   const SButton: typeof import('@soybeanjs/ui')['SButton']
-  const SButtonIcon: typeof import('@soybeanjs/ui')['SButtonIcon']
   const SCard: typeof import('@soybeanjs/ui')['SCard']
   const SEditable: typeof import('@soybeanjs/ui')['SEditable']
-  const SPopover: typeof import('@soybeanjs/ui')['SPopover']
   const SSplitterGroup: typeof import('@soybeanjs/ui')['SSplitterGroup']
   const SSplitterPanel: typeof import('@soybeanjs/ui')['SSplitterPanel']
   const SSplitterResizeHandle: typeof import('@soybeanjs/ui')['SSplitterResizeHandle']
   const SSwitch: typeof import('@soybeanjs/ui')['SSwitch']
-  const STabs: typeof import('@soybeanjs/ui')['STabs']
   const SToggle: typeof import('@soybeanjs/ui')['SToggle']
   const SWatermark: typeof import('@soybeanjs/ui')['SWatermark']
   const ThemeConfigurator: typeof import('./../components/theme-configurator.vue')['default']
-  const ThemeGenerator: typeof import('./../components/theme-generator.vue')['default']
+  const ThemeGenerator: typeof import('./../components/theme-generator/index.vue')['default']
   const ThemeSchemaToggler: typeof import('./../components/theme-schema-toggler.vue')['default']
 }

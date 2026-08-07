@@ -311,6 +311,12 @@ export interface SelectCompactProps<
    */
   triggerIconProps?: SelectTriggerIconProps;
   /**
+   * Whether to show the trigger icon.
+   *
+   * @default true
+   */
+  showTriggerIcon?: boolean;
+  /**
    * Placeholder.
    */
   placeholder?: string;

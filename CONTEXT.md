@@ -53,11 +53,7 @@
 
 ## 持久化主题（persistTheme）
 
-ConfigProvider 上控制是否启用持久化主题读取（localStorage / cookie）的属性，默认关闭。关闭时只消费显式 `theme` props；开启后按「显式 props > 存储配置 > 内置默认」的解析管道合并存储配置，且为 `{ presetName }` 引用解析提供前提。
-
-## 存储态内存缓存（cacheThemeConfig）
-
-ConfigProvider 上控制「存储读取结果记忆化」的属性，默认开启。开启后在组件实例生命周期内只解析一次存储并缓存，由相关 prop 变化或跨标签页 `storage` 事件失效；仅在 `persistTheme` 开启时生效。
+ConfigProvider 上控制是否启用持久化主题读取（localStorage / cookie）的属性，默认关闭。关闭时只消费显式 `theme` props；开启后按「显式 props > 存储配置 > 内置默认」的解析管道合并存储配置，且为 `{ presetName }` 引用解析提供前提。存储读取在组件实例初始化时解析一次并写入内存状态，后续渲染复用该状态，无需额外缓存开关。
 
 ## SSR 主题配置（themeConfig）
 
@@ -69,7 +65,7 @@ ConfigProvider 上控制「存储读取结果记忆化」的属性，默认开�
 
 ## 持久化预设条目（StoredThemePreset）
 
-持久化 presets 表中的最小单位：`CustomThemeColorPreset` + `name`（唯一标识，同为存储对象键）+ `version`（semver）。整体以 `StoredThemePresets`（schema `version` + 条目表）存入 `soybean-ui-theme-presets`（localStorage，不入 cookie）。
+持久化 presets 表中的最小单位：`CustomThemeColorPreset` + `name`（唯一标识，同为存储对象键）+ `version`（semver）。整体以 `StoredThemePresets`（schema `version` + 条目表）存入 `__SOYBEAN_THEME_PRESETS`（localStorage，不入 cookie）。
 
 ## 主题存储门面（ThemeStore）
 
@@ -98,3 +94,7 @@ ConfigProvider 上控制「存储读取结果记忆化」的属性，默认开�
 ## token 分类（ThemeTokenGroup）
 
 主题 token 的组织维度：`base` / `primary` / `feedback` / `sidebar` / `chart`。仅用于组织覆盖与文档，不改变 `ThemeColors` 扁平键契约。feedback 为固定 classic 规则，不提供预设选择器，仅可按组覆盖。
+
+## playground 主题生成器（playground ThemeGenerator）
+
+playground 侧的可视化主题编辑组件（`apps/playground/src/components/theme-generator.vue`），**自包含 + 只输出 raw css**：`v-model:theme` 类型仍为 `ConfigProviderThemeOptions`，但每次改动只 emit `{ css: { base, light, dark } }`（即新增的 `css` 属性类型），由内部状态经 `createTheme` 派生完整 CSS 后拆分而来，写回 `SConfigProvider` 直接消费，实时生效。方向复刻 shadcnthemes 生成器的控制面板，双 tab（`Generate Theme` 可视化生成器 + `Edit Variables` 完整 ColorTokens 编辑）。与库内计划中的「主题生成器（ThemeGenerator）」不同：后者是 `@soybeanjs/ui` 的预设驱动渲染组件，前者是 playground 的编辑器，二者无代码关联。

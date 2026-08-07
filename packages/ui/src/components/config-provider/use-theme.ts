@@ -37,7 +37,7 @@ const DEFAULT_SIZE: ThemeSizeValue = 'md';
 const DEFAULT_MODE: 'light' | 'dark' = 'light';
 
 /** the cookie / localStorage key carrying the currently applied custom preset name */
-const APPLIED_PRESET_KEY = 'soybean-ui-applied-preset';
+const APPLIED_PRESET_KEY = '__SOYBEAN_THEME_APPLIED_PRESET';
 
 /**
  * The reactive theme context exposed by `SConfigProvider`.
@@ -157,7 +157,7 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
       // 显式注入的 themeConfig（SSR）优先，避免读取 localStorage
       persisted = props.themeConfig;
     } else if (isServer) {
-      const rawCookie = getCookieValue(cookieHeader, props.themeCookieKey ?? THEME_COOKIE_KEY);
+      const rawCookie = getCookieValue(cookieHeader, THEME_COOKIE_KEY);
 
       if (rawCookie) {
         try {
@@ -167,7 +167,7 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
         }
       }
     } else {
-      persisted = getStoredThemeConfig(props.themeStorageKey);
+      persisted = getStoredThemeConfig();
     }
   }
 
@@ -219,8 +219,8 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
         return;
       }
 
-      setStoredThemeConfig(value, props.themeStorageKey);
-      setThemeCookie(value, { key: props.themeCookieKey });
+      setStoredThemeConfig(value);
+      setThemeCookie(value);
     },
     { deep: true }
   );
@@ -287,7 +287,7 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
       return;
     }
 
-    const stored = getStoredThemeConfig(props.themeStorageKey);
+    const stored = getStoredThemeConfig();
 
     if (stored) {
       Object.assign(themeState, stored);
@@ -413,7 +413,8 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
       lightLevel: t.lightLevel ?? themeState.lightLevel,
       darkLevel: t.darkLevel ?? themeState.darkLevel,
       styleTarget: t.styleTarget,
-      darkSelector: t.darkSelector
+      darkSelector: t.darkSelector,
+      ...(t.css ? { css: t.css } : {})
     };
   });
 

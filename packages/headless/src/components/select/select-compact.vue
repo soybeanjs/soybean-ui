@@ -36,6 +36,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<SelectCompactProps<T, M>>(), {
   open: undefined,
+  showTriggerIcon: true,
   clearable: true
 });
 
@@ -48,6 +49,7 @@ const forwardedProps = useOmitProps(props, [
   'showArrow',
   'triggerProps',
   'triggerIconProps',
+  'showTriggerIcon',
   'placeholder',
   'valueProps',
   'portalProps',
@@ -145,7 +147,7 @@ const handleSelect = (event: SelectItemEvent<DefinedValue>) => {
         </slot>
       </SelectValue>
       <slot name="trigger-trailing" />
-      <SelectTriggerIcon v-bind="triggerIconProps">
+      <SelectTriggerIcon v-if="showTriggerIcon" v-bind="triggerIconProps">
         <slot name="trigger-icon">
           <Icon icon="lucide:chevrons-up-down" />
         </slot>

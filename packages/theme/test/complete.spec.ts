@@ -155,3 +155,48 @@ describe('createTheme — complete preset + complete enabled', () => {
     expect(shifted).toBe(css);
   });
 });
+
+describe('createTheme — raw css override', () => {
+  it('emits the base + light variables on the style target and dark on the dark selector', () => {
+    const css = createTheme({
+      css: {
+        base: '  --size: 0.875rem;\n',
+        light: '  --background: 0 0% 100%;\n',
+        dark: '  --background: 0 0% 3.9%;\n'
+      }
+    });
+
+    expect(css).toContain(':root {\n  --size: 0.875rem;\n  --background: 0 0% 100%;\n}');
+    expect(css).toContain('.dark {\n  --background: 0 0% 3.9%;\n}');
+    // no derived palette tokens are emitted
+    expect(css).not.toContain('--primary-');
+  });
+
+  it('skips the token derivation entirely (base/primary/preset are ignored)', () => {
+    const css = createTheme({
+      base: 'slate',
+      primary: 'indigo',
+      preset: { light: { primary: 'violet.700' } },
+      css: { light: '--primary: 0 0% 100%;' }
+    });
+
+    expect(css).toContain('--primary: 0 0% 100%;');
+    expect(css).not.toContain('--primary-50');
+  });
+
+  it('supports a custom dark selector', () => {
+    const css = createTheme({
+      darkSelector: '.custom-dark',
+      css: { dark: '  --background: 0 0% 3.9%;\n' }
+    });
+
+    expect(css).toContain('.custom-dark {\n  --background: 0 0% 3.9%;\n}');
+  });
+
+  it('omits the root block when only dark variables are provided', () => {
+    const css = createTheme({ css: { dark: '  --background: 0 0% 3.9%;\n' } });
+
+    expect(css).not.toContain(':root');
+    expect(css).toContain('.dark {\n  --background: 0 0% 3.9%;\n}');
+  });
+});

@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import {
+  THEME_COOKIE_KEY,
   createThemeInitScript,
   getCookieValue,
   getThemeConfigFromCookie,
@@ -74,7 +75,7 @@ describe('parseThemeConfig', () => {
 describe('getThemeConfigFromCookie', () => {
   it('parses only base/primary/mode from a raw cookie header', () => {
     const header = cookieHeader(
-      'soybean-theme',
+      THEME_COOKIE_KEY,
       encodeURIComponent(JSON.stringify({ base: 'slate', primary: 'violet', mode: 'dark', radius: 'lg' }))
     );
 
@@ -84,7 +85,7 @@ describe('getThemeConfigFromCookie', () => {
   it('returns null for a missing header, missing key, or malformed value', () => {
     expect(getThemeConfigFromCookie(null)).toBeNull();
     expect(getThemeConfigFromCookie('other=1')).toBeNull();
-    expect(getThemeConfigFromCookie(`${'soybean-theme'}=%E0%A4%A`)).toBeNull();
+    expect(getThemeConfigFromCookie(`${THEME_COOKIE_KEY}=%E0%A4%A`)).toBeNull();
   });
 });
 

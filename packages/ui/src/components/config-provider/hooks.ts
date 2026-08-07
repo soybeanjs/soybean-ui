@@ -1,6 +1,6 @@
 import { computed, defineComponent, h, onMounted, onUnmounted } from 'vue';
 import { createTheme } from '@soybeanjs/theme';
-import { THEME_PRESETS_STORAGE_KEY } from '@soybeanjs/theme/storage';
+import { THEME_PRESETS_STORAGE_KEY, THEME_STORAGE_KEY } from '@soybeanjs/theme/storage';
 import type { ThemeConfigState } from '@soybeanjs/theme/storage';
 import type { ConfigProviderProps } from './types';
 import { createThemeContext, provideThemeContext } from './use-theme';
@@ -49,10 +49,9 @@ export function useConfigProviderTheme(props: ConfigProviderProps) {
 
   // 跨标签页同步：storage 事件（其他标签页写入）使缓存失效并触发重读。
   // 主题配置走 `refreshThemeConfig`（重读 + 强制重派生）；自定义 preset 表走
-  // `refreshPresetsSnapshot`。仅当 `persistTheme` 且 `cacheThemeConfig` 开启时
-  // 才注册监听（cacheThemeConfig=false 表示不缓存，也不监听 storage 失效）。
+  // `refreshPresetsSnapshot`。仅当 `persistTheme` 开启时才注册监听。
   const handleStorage = (event: StorageEvent): void => {
-    if (event.key === props.themeStorageKey) {
+    if (event.key === THEME_STORAGE_KEY) {
       themeContext.refreshThemeConfig();
     } else if (event.key === THEME_PRESETS_STORAGE_KEY) {
       themeContext.refreshPresetsSnapshot?.();
@@ -60,7 +59,7 @@ export function useConfigProviderTheme(props: ConfigProviderProps) {
   };
 
   onMounted(() => {
-    if (props.persistTheme && props.cacheThemeConfig) {
+    if (props.persistTheme) {
       window.addEventListener('storage', handleStorage);
     }
   });

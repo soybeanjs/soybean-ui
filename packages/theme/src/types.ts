@@ -442,6 +442,33 @@ export interface GenerateCSSOptions extends BaseGenerateCSSOptions {
 }
 
 /**
+ * raw CSS variable overrides
+ *
+ * Bypasses the token derivation pipeline entirely: each string is emitted
+ * verbatim into the matching CSS layer, so consumers can fully own their CSS
+ * variables (e.g. hand-written shadcn-style tokens) without going through the
+ * palette derivation.
+ *
+ * - `base`: base tokens (size / radius / menu), emitted on the style target
+ * - `light`: light color tokens, emitted on the style target
+ * - `dark`: dark color tokens, emitted under the dark selector
+ */
+export interface ThemeCssVariables {
+  /**
+   * raw CSS custom-property declarations for the base layer
+   */
+  base: string;
+  /**
+   * raw CSS custom-property declarations for the light layer
+   */
+  light?: string;
+  /**
+   * raw CSS custom-property declarations for the dark layer
+   */
+  dark?: string;
+}
+
+/**
  * Theme options
  */
 export interface ThemeOptions extends BaseGenerateCSSOptions {
@@ -486,6 +513,15 @@ export interface ThemeOptions extends BaseGenerateCSSOptions {
    * @default false
    */
   complete?: boolean;
+  /**
+   * raw CSS variable overrides.
+   *
+   * When provided, the token derivation pipeline (`generateThemePreset`) is
+   * skipped entirely and the given CSS strings are emitted verbatim. All other
+   * theme options (`base` / `primary` / `preset` / `lightLevel` / `darkLevel` /
+   * `complete`) are ignored in this case.
+   */
+  css?: ThemeCssVariables;
 }
 
 export type { BaseColorKey, PrimaryColorKey };

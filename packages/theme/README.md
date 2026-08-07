@@ -119,16 +119,16 @@ createTheme({
 
 本地存储与 cookie 持久化。
 
-| 导出                                                                        | 说明                                        |
-| --------------------------------------------------------------------------- | ------------------------------------------- |
-| `THEME_STORAGE_KEY`                                                         | 默认主题 localStorage 键（`soybean-theme`） |
-| `THEME_COOKIE_KEY`                                                          | 默认主题 cookie 名（`soybean-theme`）       |
-| `stringifyThemeConfig` / `parseThemeConfig`                                 | 主题配置序列化 / 反序列化（带校验）         |
-| `getStoredThemeConfig` / `setStoredThemeConfig` / `removeStoredThemeConfig` | 主题配置读写                                |
-| `setThemeCookie`                                                            | 将主题配置镜像到 cookie（SSR 端 no-op）     |
-| `THEME_PRESETS_STORAGE_KEY`                                                 | 自定义 preset 表 localStorage 键            |
-| `getStoredThemePresets`                                                     | 读取 preset 表                              |
-| `setStoredThemePreset` / `removeStoredThemePreset`                          | 增删单个 preset                             |
+| 导出                                                                        | 说明                                          |
+| --------------------------------------------------------------------------- | --------------------------------------------- |
+| `THEME_STORAGE_KEY`                                                         | 默认主题 localStorage 键（`__SOYBEAN_THEME`） |
+| `THEME_COOKIE_KEY`                                                          | 默认主题 cookie 名（`__SOYBEAN_THEME`）       |
+| `stringifyThemeConfig` / `parseThemeConfig`                                 | 主题配置序列化 / 反序列化（带校验）           |
+| `getStoredThemeConfig` / `setStoredThemeConfig` / `removeStoredThemeConfig` | 主题配置读写                                  |
+| `setThemeCookie`                                                            | 将主题配置镜像到 cookie（SSR 端 no-op）       |
+| `THEME_PRESETS_STORAGE_KEY`                                                 | 自定义 preset 表 localStorage 键              |
+| `getStoredThemePresets`                                                     | 读取 preset 表                                |
+| `setStoredThemePreset` / `removeStoredThemePreset`                          | 增删单个 preset                               |
 
 ### 子路径 `@soybeanjs/theme/ssr`
 

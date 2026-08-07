@@ -31,6 +31,7 @@ export type {
   ColorFormat,
   GenerateCSSOptions,
   ThemeOptions,
+  ThemeCssVariables,
   BaseColorKey,
   PrimaryColorKey
 } from './types';

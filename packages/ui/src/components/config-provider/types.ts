@@ -69,35 +69,6 @@ export interface ConfigProviderProps extends _ConfigProviderProps {
    */
   persistTheme?: boolean;
   /**
-   * Whether to enable the in-memory cache of the storage-derived theme config.
-   *
-   * When enabled (default), the theme config read from storage is parsed once
-   * per component instance and reused on later renders, avoiding repeated JSON
-   * deserialization and storage I/O. When disabled, the storage is re-read on
-   * every render.
-   *
-   * Only takes effect when `persistTheme` is enabled; otherwise it is ignored.
-   *
-   * @defaultValue true
-   */
-  cacheThemeConfig?: boolean;
-  /**
-   * The localStorage key of the persisted theme config.
-   *
-   * Only takes effect when `persistTheme` is enabled.
-   *
-   * @defaultValue THEME_STORAGE_KEY ('soybean-ui-theme')
-   */
-  themeStorageKey?: string;
-  /**
-   * The cookie key of the persisted theme config.
-   *
-   * Only takes effect when `persistTheme` is enabled.
-   *
-   * @defaultValue THEME_COOKIE_KEY ('soybean-ui-theme')
-   */
-  themeCookieKey?: string;
-  /**
    * The persisted theme config injected from the server (already resolved from
    * the cookie by the app layer, e.g. via `useRequestHeaders` in Nuxt).
    *
@@ -150,15 +121,7 @@ export interface ConfigProviderContext
     PropsToContext<
       Omit<
         ConfigProviderProps,
-        | 'iconRender'
-        | 'presetProvider'
-        | 'persistTheme'
-        | 'cacheThemeConfig'
-        | 'themeStorageKey'
-        | 'themeCookieKey'
-        | 'themeConfig'
-        | 'cookieHeader'
-        | 'isServer'
+        'iconRender' | 'presetProvider' | 'persistTheme' | 'themeConfig' | 'cookieHeader' | 'isServer'
       >
     >,
     Pick<ConfigProviderProps, 'iconRender'> {}

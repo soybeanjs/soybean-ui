@@ -1,6 +1,6 @@
 import { defu } from 'defu';
 import { getDarkSelector } from './shared';
-import { generateCss } from './css';
+import { generateCss, generateRawCss } from './css';
 import { DEFAULT_PRESET_OPTIONS } from './defaults';
 import { generateThemePreset } from './preset';
 import type { ThemeOptions } from './types';
@@ -18,9 +18,15 @@ export function createTheme(options?: ThemeOptions): string {
   // and `undefined` values fall through to the defaults.
   const merged = defu(options ?? ({} as Required<ThemeOptions>), DEFAULT_PRESET_OPTIONS);
 
-  const { base, primary, styleTarget, format, preset, lightLevel, darkLevel, complete } = merged;
+  const { base, primary, styleTarget, format, preset, lightLevel, darkLevel, complete, css } = merged;
 
   const darkSelector = getDarkSelector(merged.darkSelector);
+
+  // When the consumer supplies raw CSS variables, skip the token derivation
+  // pipeline entirely and emit the given CSS verbatim.
+  if (css) {
+    return generateRawCss(css, { styleTarget, darkSelector, format });
+  }
 
   const themePreset = generateThemePreset({ base, primary, preset, lightLevel, darkLevel, complete });
 

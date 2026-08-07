@@ -141,7 +141,7 @@ export function parseThemeConfig(raw: string): ThemeConfigState | null {
 /**
  * the default cookie key carrying the current theme config
  */
-export const THEME_COOKIE_KEY = 'soybean-theme';
+export const THEME_COOKIE_KEY = '__SOYBEAN_THEME';
 
 /**
  * resolve the theme config from a raw cookie header.

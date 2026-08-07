@@ -151,12 +151,12 @@ export interface ThemeCookieOptions {
 /**
  * the default localStorage key for the persisted theme config
  */
-export const THEME_STORAGE_KEY = 'soybean-theme';
+export const THEME_STORAGE_KEY = '__SOYBEAN_THEME';
 
 /**
  * the default cookie name carrying the theme config for server-side SSR resolution
  */
-export const THEME_COOKIE_KEY = 'soybean-theme';
+export const THEME_COOKIE_KEY = '__SOYBEAN_THEME';
 
 const MENU_COLORS: readonly MenuColor[] = ['default', 'inverted', 'default-translucent', 'inverted-translucent'];
 
@@ -305,7 +305,7 @@ export function setThemeCookie(config: ThemeConfigState, options: ThemeCookieOpt
 /**
  * the default localStorage key for the persisted custom theme presets table
  */
-export const THEME_PRESETS_STORAGE_KEY = 'soybean-theme-presets';
+export const THEME_PRESETS_STORAGE_KEY = '__SOYBEAN_THEME_PRESETS';
 
 /**
  * the current storage schema version for the persisted presets table
