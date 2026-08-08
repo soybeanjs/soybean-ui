@@ -216,6 +216,10 @@ const shadeColor = (shade: ShadeValue): string => {
   return tailwindPalette[base.value][shade].hsl;
 };
 
+const chatColor = (palette: TailwindPaletteKey, level: PaletteColorLevel): string => {
+  return tailwindPalette[palette][level].hsl;
+};
+
 const setSurface = (key: SurfaceKey, shade: ShadeValue): void => {
   patchColors({ [key]: shadeToColor(shade) });
 };
@@ -419,7 +423,7 @@ watch(rawCss, css => {
             </div>
 
             <div class="space-y-1.5">
-              <SLabel class="text-xs">Primary</SLabel>
+              <SLabel class="text-xs">Primary Color</SLabel>
               <SSelect v-model="primary" :items="primaryOptions" class="w-full">
                 <template #trigger-leading>
                   <ColorDecoration :palette="primary" />
@@ -431,7 +435,14 @@ watch(rawCss, css => {
             </div>
 
             <div class="space-y-1.5">
-              <SLabel class="text-xs">Size</SLabel>
+              <div class="flex gap-2">
+                <SLabel class="text-xs">Size</SLabel>
+                <STooltip content="Root element size, affects 'rem' unit.">
+                  <template #trigger>
+                    <SIcon icon="lucide:info" />
+                  </template>
+                </STooltip>
+              </div>
               <div class="flex items-center gap-3 pt-1">
                 <SSlider
                   :model-value="[sizeIndex(size)]"
@@ -460,7 +471,7 @@ watch(rawCss, css => {
               </div>
             </div>
 
-            <div class="space-y-1.5">
+            <div v-if="activeMode === 'light'" class="space-y-1.5">
               <SLabel class="text-xs">Light Level</SLabel>
               <div class="grid grid-cols-3 gap-2 py-1.5">
                 <SButton
@@ -475,7 +486,7 @@ watch(rawCss, css => {
               </div>
             </div>
 
-            <div class="space-y-1.5">
+            <div v-if="activeMode === 'dark'" class="space-y-1.5">
               <SLabel class="text-xs">Dark Level</SLabel>
               <div class="grid grid-cols-4 gap-2 py-1.5">
                 <SButton
@@ -494,13 +505,7 @@ watch(rawCss, css => {
               <SLabel class="text-xs">Background Shades</SLabel>
               <div v-for="s in surfaces" :key="s.key" class="flex-y-center justify-between gap-4 pt-1">
                 <span class="text-xs text-muted-foreground">{{ s.label }}</span>
-                <div class="flex items-center gap-1">
-                  <SButtonIcon
-                    icon="lucide:minus"
-                    size="sm"
-                    :disabled="shadeIndex(s.key) <= 0"
-                    @click="stepSurface(s.key, -1)"
-                  />
+                <SButtonGroup variant="pure">
                   <SSelect
                     :model-value="surfaceValue(s.key)"
                     :items="
@@ -520,13 +525,13 @@ watch(rawCss, css => {
                       <SColorSwatch :color="shadeColor(item.value)" shape="circle" size="xs" />
                     </template>
                   </SSelect>
-                  <SButtonIcon
-                    icon="lucide:plus"
-                    size="sm"
-                    :disabled="shadeIndex(s.key) >= shadeValues.length - 1"
-                    @click="stepSurface(s.key, 1)"
-                  />
-                </div>
+                  <SButton :disabled="shadeIndex(s.key) <= 0" @click="stepSurface(s.key, -1)">
+                    <SIcon icon="lucide:minus" />
+                  </SButton>
+                  <SButton :disabled="shadeIndex(s.key) >= shadeValues.length - 1" @click="stepSurface(s.key, 1)">
+                    <SIcon icon="lucide:plus" />
+                  </SButton>
+                </SButtonGroup>
               </div>
             </div>
 
@@ -568,9 +573,21 @@ watch(rawCss, css => {
                   <SSelect
                     :model-value="chartLevel(index)"
                     :items="paletteLevels.map(level => ({ label: String(level), value: level }))"
+                    :show-trigger-icon="false"
                     class="w-24"
                     @update:model-value="value => setChart(index, chartPalette(index), value)"
-                  />
+                  >
+                    <template #trigger-leading>
+                      <SColorSwatch
+                        :color="chatColor(chartPalette(index), chartLevel(index))"
+                        shape="circle"
+                        size="xs"
+                      />
+                    </template>
+                    <template #item-leading="{ item }">
+                      <SColorSwatch :color="chatColor(chartPalette(index), item.value)" shape="circle" size="xs" />
+                    </template>
+                  </SSelect>
                 </div>
               </div>
             </div>
