@@ -1,8 +1,21 @@
-export { createTheme } from './core';
+export { createTheme, resolveTheme } from './core';
 export { DEFAULT_PRESET_OPTIONS } from './defaults';
 export { THEME_SIZE, themeSizeKeys, THEME_RADIUS, themeRadiusKeys } from './tokens';
-export { builtinBasePresetKeys, builtinPrimaryPresetKeys } from './core-template';
-export { generateThemePreset, isCompleteThemePreset } from './preset';
+export {
+  registerThemePresets,
+  getRegistry,
+  isBaseKey,
+  isPrimaryKey,
+  isFeedbackScheme,
+  isChartScheme,
+  isSidebarScheme,
+  builtinBasePresetKeys,
+  builtinPrimaryPresetKeys,
+  builtinFeedbackSchemeKeys,
+  builtinChartSchemeKeys,
+  builtinSidebarSchemeKeys
+} from './registry';
+export { generateThemePreset } from './preset';
 export { getDarkSelector } from './shared';
 
 export type {
@@ -31,7 +44,16 @@ export type {
   ColorFormat,
   GenerateCSSOptions,
   ThemeOptions,
-  ThemeCssVariables,
   BaseColorKey,
-  PrimaryColorKey
+  PrimaryColorKey,
+  FeedbackSchemeKey,
+  ChartSchemeKey,
+  SidebarColorKey,
+  SidebarTokenRef,
+  SidebarColorValue,
+  SidebarSchemeKey,
+  SemanticScheme,
+  ThemePalette,
+  ThemePresetRegistry,
+  ThemeOverrides
 } from './types';

@@ -1,3 +1,4 @@
+import { CHROMATIC_FAMILY, NEUTRAL_FAMILY } from './registry';
 import type { BaseColorKey, ColorValue, PrimaryColorKey } from './types';
 
 /**
@@ -32,64 +33,33 @@ export type PrimaryCore = {
   dark: { primary: ColorValue; ring: ColorValue };
 };
 
-const NEUTRAL_FAMILY: readonly PrimaryColorKey[] = [
-  'slate',
-  'mist',
-  'gray',
-  'zinc',
-  'neutral',
-  'stone',
-  'taupe',
-  'olive',
-  'mauve'
-];
-
-const CHROMATIC_FAMILY: readonly PrimaryColorKey[] = [
-  'red',
-  'orange',
-  'amber',
-  'yellow',
-  'lime',
-  'green',
-  'emerald',
-  'teal',
-  'cyan',
-  'sky',
-  'blue',
-  'indigo',
-  'violet',
-  'purple',
-  'fuchsia',
-  'pink',
-  'rose'
-];
-
-const createBaseCore = (p: BaseColorKey): BaseCore => ({
-  light: {
-    background: 'white',
-    foreground: `${p}.950`,
-    card: 'white',
-    cardForeground: `${p}.950`,
-    popover: 'white',
-    popoverForeground: `${p}.950`,
-    muted: `${p}.100`,
-    mutedForeground: `${p}.500`,
-    accent: `${p}.100`,
-    accentForeground: `${p}.900`
-  },
-  dark: {
-    background: `${p}.950`,
-    foreground: `${p}.50`,
-    card: `${p}.900`,
-    cardForeground: `${p}.50`,
-    popover: `${p}.900`,
-    popoverForeground: `${p}.50`,
-    muted: `${p}.800`,
-    mutedForeground: `${p}.400`,
-    accent: `${p}.800`,
-    accentForeground: `${p}.50`
-  }
-});
+export const createBaseCore = (p: BaseColorKey): BaseCore =>
+  ({
+    light: {
+      background: 'white',
+      foreground: `${p}.950`,
+      card: 'white',
+      cardForeground: `${p}.950`,
+      popover: 'white',
+      popoverForeground: `${p}.950`,
+      muted: `${p}.100`,
+      mutedForeground: `${p}.500`,
+      accent: `${p}.100`,
+      accentForeground: `${p}.900`
+    },
+    dark: {
+      background: `${p}.950`,
+      foreground: `${p}.50`,
+      card: `${p}.900`,
+      cardForeground: `${p}.50`,
+      popover: `${p}.900`,
+      popoverForeground: `${p}.50`,
+      muted: `${p}.800`,
+      mutedForeground: `${p}.400`,
+      accent: `${p}.800`,
+      accentForeground: `${p}.50`
+    }
+  }) as BaseCore;
 
 /**
  * core templates for the 9 built-in base palettes
@@ -109,12 +79,11 @@ export const builtinBaseCoreTemplate: Record<BaseColorKey, BaseCore> = {
   mauve: createBaseCore('mauve')
 };
 
-export const builtinBasePresetKeys = Object.keys(builtinBaseCoreTemplate) as BaseColorKey[];
-
-const createNeutralPrimaryCore = (p: PrimaryColorKey): PrimaryCore => ({
-  light: { primary: `${p}.800`, ring: `${p}.400` },
-  dark: { primary: `${p}.200`, ring: `${p}.500` }
-});
+export const createNeutralPrimaryCore = (p: PrimaryColorKey): PrimaryCore =>
+  ({
+    light: { primary: `${p}.800`, ring: `${p}.400` },
+    dark: { primary: `${p}.200`, ring: `${p}.500` }
+  }) as PrimaryCore;
 
 /**
  * chromatic palettes whose dark-mode primary is one level deeper
@@ -125,10 +94,11 @@ const createNeutralPrimaryCore = (p: PrimaryColorKey): PrimaryCore => ({
  */
 const DARK_PRIMARY_600: ReadonlySet<PrimaryColorKey> = new Set(['lime', 'green', 'emerald']);
 
-const createChromaticPrimaryCore = (p: PrimaryColorKey): PrimaryCore => ({
-  light: { primary: `${p}.500`, ring: `${p}.400` },
-  dark: { primary: DARK_PRIMARY_600.has(p) ? `${p}.600` : `${p}.500`, ring: `${p}.900` }
-});
+export const createChromaticPrimaryCore = (p: PrimaryColorKey): PrimaryCore =>
+  ({
+    light: { primary: `${p}.500`, ring: `${p}.400` },
+    dark: { primary: DARK_PRIMARY_600.has(p) ? `${p}.600` : `${p}.500`, ring: `${p}.900` }
+  }) as PrimaryCore;
 
 /**
  * core templates for the 26 built-in primary palettes
@@ -143,31 +113,5 @@ export const builtinPrimaryCoreTemplate = Object.fromEntries(
   ])
 ) as Record<PrimaryColorKey, PrimaryCore>;
 
-export const builtinPrimaryPresetKeys = Object.keys(builtinPrimaryCoreTemplate) as PrimaryColorKey[];
-
-/**
- * fixed chart templates (D7)
- *
- * reused for every primary palette; light/dark differ only by lightness.
- */
-export const CHART_TEMPLATE: {
-  light: Record<'chart1' | 'chart2' | 'chart3' | 'chart4' | 'chart5', ColorValue>;
-  dark: Record<'chart1' | 'chart2' | 'chart3' | 'chart4' | 'chart5', ColorValue>;
-} = {
-  light: {
-    chart1: 'orange.600',
-    chart2: 'teal.600',
-    chart3: 'cyan.900',
-    chart4: 'amber.400',
-    chart5: 'amber.500'
-  },
-  dark: {
-    chart1: 'blue.700',
-    chart2: 'emerald.500',
-    chart3: 'amber.500',
-    chart4: 'purple.500',
-    chart5: 'rose.500'
-  }
-};
-
-export { NEUTRAL_FAMILY, CHROMATIC_FAMILY, DARK_PRIMARY_600 };
+export { DARK_PRIMARY_600 };
+export { NEUTRAL_FAMILY, CHROMATIC_FAMILY, builtinBasePresetKeys, builtinPrimaryPresetKeys } from './registry';

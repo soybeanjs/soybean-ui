@@ -1,20 +1,30 @@
 import { colord } from '@soybeanjs/colord';
 import { tailwindPalette } from '@soybeanjs/colord/palette';
 import type { TailwindPaletteKey } from '@soybeanjs/colord/palette';
-import { builtinBasePresetKeys, builtinPrimaryPresetKeys } from './core-template';
+import {
+  isBaseKey as isRegistryBaseKey,
+  isChartScheme as isRegistryChartScheme,
+  isFeedbackScheme as isRegistryFeedbackScheme,
+  isPrimaryKey as isRegistryPrimaryKey,
+  isSidebarScheme as isRegistrySidebarScheme
+} from './registry';
 import type {
   BaseColorKey,
+  ChartSchemeKey,
   ColorTokens,
   ColorValue,
+  FeedbackSchemeKey,
   MenuColor,
   MenuAccent,
   PrimaryColorKey,
+  SidebarSchemeKey,
   ThemeRadiusValue,
   ThemeSizeValue,
   ThemePreset,
   ColorFormat,
   LightLevelOffset,
-  DarkLevelOffset
+  DarkLevelOffset,
+  ThemeOverrides
 } from './types';
 import { COLOR_VARIABLES } from './variables';
 
@@ -83,6 +93,18 @@ export interface ThemeConfigState {
    */
   primary?: PrimaryColorKey;
   /**
+   * the feedback (status) semantic scheme key
+   */
+  feedback?: FeedbackSchemeKey;
+  /**
+   * the chart (data) semantic scheme key
+   */
+  chart?: ChartSchemeKey;
+  /**
+   * the sidebar skin semantic scheme key
+   */
+  sidebar?: SidebarSchemeKey;
+  /**
    * the component size / density
    */
   size?: ThemeSizeValue;
@@ -122,6 +144,11 @@ export interface ThemeConfigState {
    * @default 0
    */
   darkLevel?: DarkLevelOffset;
+  /**
+   * inline color token overrides persisted alongside the config so a theme that
+   * differs only in `overrides` is still reconstructable during SSR.
+   */
+  overrides?: ThemeOverrides;
 }
 
 /**
@@ -160,11 +187,15 @@ export const THEME_COOKIE_KEY = '__SOYBEAN_THEME';
 
 const MENU_COLORS: readonly MenuColor[] = ['default', 'inverted', 'default-translucent', 'inverted-translucent'];
 
-const isBaseKey = (value: unknown): value is BaseColorKey =>
-  typeof value === 'string' && (builtinBasePresetKeys as readonly string[]).includes(value);
+const isBaseKey = (value: unknown): value is BaseColorKey => isRegistryBaseKey(value);
 
-const isPrimaryKey = (value: unknown): value is PrimaryColorKey =>
-  typeof value === 'string' && (builtinPrimaryPresetKeys as readonly string[]).includes(value);
+const isPrimaryKey = (value: unknown): value is PrimaryColorKey => isRegistryPrimaryKey(value);
+
+const isFeedbackScheme = (value: unknown): value is FeedbackSchemeKey => isRegistryFeedbackScheme(value);
+
+const isChartScheme = (value: unknown): value is ChartSchemeKey => isRegistryChartScheme(value);
+
+const isSidebarScheme = (value: unknown): value is SidebarSchemeKey => isRegistrySidebarScheme(value);
 
 const isMode = (value: unknown): value is ThemeConfigState['mode'] => value === 'light' || value === 'dark';
 
@@ -213,12 +244,36 @@ export function parseThemeConfig(raw: string | null | undefined): ThemeConfigSta
     return null;
   }
 
-  const { base, primary, mode, size, radius, menuColor, menuAccent, format, lightLevel, darkLevel } = data;
+  const {
+    base,
+    primary,
+    feedback,
+    chart,
+    sidebar,
+    mode,
+    size,
+    radius,
+    menuColor,
+    menuAccent,
+    format,
+    lightLevel,
+    darkLevel,
+    overrides
+  } = data;
 
   if (base !== undefined && !isBaseKey(base)) {
     return null;
   }
   if (primary !== undefined && !isPrimaryKey(primary)) {
+    return null;
+  }
+  if (feedback !== undefined && !isFeedbackScheme(feedback)) {
+    return null;
+  }
+  if (chart !== undefined && !isChartScheme(chart)) {
+    return null;
+  }
+  if (sidebar !== undefined && !isSidebarScheme(sidebar)) {
     return null;
   }
 
@@ -229,6 +284,15 @@ export function parseThemeConfig(raw: string | null | undefined): ThemeConfigSta
   }
   if (primary !== undefined) {
     config.primary = primary;
+  }
+  if (feedback !== undefined) {
+    config.feedback = feedback;
+  }
+  if (chart !== undefined) {
+    config.chart = chart;
+  }
+  if (sidebar !== undefined) {
+    config.sidebar = sidebar;
   }
   if (isMode(mode)) {
     config.mode = mode;
@@ -253,6 +317,13 @@ export function parseThemeConfig(raw: string | null | undefined): ThemeConfigSta
   }
   if (isDarkLevel(darkLevel)) {
     config.darkLevel = darkLevel;
+  }
+  if (isRecord(overrides)) {
+    const parsedOverrides = parseOverrides(overrides);
+
+    if (parsedOverrides) {
+      config.overrides = parsedOverrides;
+    }
   }
 
   return config;
@@ -354,6 +425,35 @@ const pickValidColors = (record: Record<string, unknown>): Record<string, ColorV
 
     return acc;
   }, {});
+
+/**
+ * parse and validate a persisted `ThemeOverrides` record. Only known color
+ * tokens with valid color values are kept.
+ */
+const parseOverrides = (record: Record<string, unknown>): ThemeOverrides | null => {
+  const light = isRecord(record.light) ? pickValidColors(record.light) : undefined;
+  const dark = isRecord(record.dark) ? pickValidColors(record.dark) : undefined;
+
+  if (!light && !dark) {
+    return null;
+  }
+
+  const overrides: ThemeOverrides = {};
+
+  if (light && Object.keys(light).length > 0) {
+    overrides.light = light;
+  }
+
+  if (dark && Object.keys(dark).length > 0) {
+    overrides.dark = dark;
+  }
+
+  if (!overrides.light && !overrides.dark) {
+    return null;
+  }
+
+  return overrides;
+};
 
 const parseStoredThemePreset = (name: string, raw: unknown): StoredThemePreset | null => {
   if (!isRecord(raw) || raw.name !== name || typeof raw.version !== 'string' || !raw.version) {

@@ -2,9 +2,10 @@ import { computed, onMounted, reactive, ref, watch } from 'vue';
 import type { ComputedRef, Ref, ShallowRef } from 'vue';
 import { useContext } from '@soybeanjs/headless/composables';
 import type {
-  BaseTokens,
+  ColorValue,
   DarkSelectorValue,
   ThemeOptions,
+  ThemeOverrides,
   ThemePreset,
   ThemeRadiusValue,
   ThemeSizeValue,
@@ -318,8 +319,14 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
     const preset: StoredThemePreset = {
       name,
       version: '1.0.0',
-      light: { primary: `${primary.value}.600`, ring: `${primary.value}.500` },
-      dark: { primary: `${primary.value}.400`, ring: `${primary.value}.300` }
+      light: {
+        primary: `${primary.value}.600` as ColorValue,
+        ring: `${primary.value}.500` as ColorValue
+      },
+      dark: {
+        primary: `${primary.value}.400` as ColorValue,
+        ring: `${primary.value}.300` as ColorValue
+      }
     };
 
     const saved = setStoredThemePreset(preset);
@@ -388,33 +395,37 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
 
     const t = props.theme ?? {};
 
-    // size/radius/menuColor/menuAccent 进入 preset（BaseTokens），与新的
-    // createTheme 签名保持一致：来源为持久化状态 → size prop。
-    const baseTokens: BaseTokens = {
-      size: themeState.size ?? props.size ?? DEFAULT_SIZE,
-      radius: themeState.radius ?? DEFAULT_RADIUS,
-      menuColor: themeState.menuColor,
-      menuAccent: themeState.menuAccent
-    };
-
+    // 内联颜色预设（原 preset 内联部分）→ overrides；具名 preset 引用在
+    // resolvePreset 中已解析为颜色。显式 `overrides` 优先于解析出的 preset。
     const colorPreset = resolvePreset();
 
-    const preset: ThemePreset = {
-      ...baseTokens,
-      light: colorPreset?.light ?? {},
-      ...(colorPreset?.dark ? { dark: colorPreset.dark } : {})
-    };
+    const overrides: ThemeOverrides | undefined =
+      t.overrides ??
+      (colorPreset
+        ? {
+            light: colorPreset.light,
+            ...(colorPreset.dark ? { dark: colorPreset.dark } : {})
+          }
+        : undefined);
 
     return {
       base: t.base ?? themeState.base ?? DEFAULT_BASE,
       primary: t.primary ?? themeState.primary ?? DEFAULT_PRIMARY,
-      preset,
+      feedback: t.feedback ?? themeState.feedback,
+      chart: t.chart ?? themeState.chart,
+      sidebar: t.sidebar ?? themeState.sidebar,
+      overrides,
+      // size/radius/menuColor/menuAccent 作为顶层 base tokens 传入，与新的
+      // createTheme 签名保持一致：来源为持久化状态 → size prop。
+      size: t.size ?? themeState.size ?? props.size ?? DEFAULT_SIZE,
+      radius: t.radius ?? themeState.radius ?? DEFAULT_RADIUS,
+      menuColor: t.menuColor ?? themeState.menuColor,
+      menuAccent: t.menuAccent ?? themeState.menuAccent,
       format: t.format ?? themeState.format,
       lightLevel: t.lightLevel ?? themeState.lightLevel,
       darkLevel: t.darkLevel ?? themeState.darkLevel,
       styleTarget: t.styleTarget,
-      darkSelector: t.darkSelector,
-      ...(t.css ? { css: t.css } : {})
+      darkSelector: t.darkSelector
     };
   });
 

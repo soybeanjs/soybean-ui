@@ -1,59 +1,56 @@
 import { keysOf } from '@soybeanjs/utils';
 import { defu } from 'defu';
 import { DEFAULT_PRESET_OPTIONS } from './defaults';
-import {
-  deriveBasePreset,
-  deriveDarkFromLight,
-  deriveFeedbackColors,
-  derivePrimaryPreset,
-  deriveSidebarPreset
-} from './derive';
+import { deriveBasePreset, deriveDarkFromLight, derivePrimaryPreset } from './derive';
+import { getRegistry } from './registry';
 import type {
   BaseColorKey,
   BaseTokens,
+  ChartSchemeKey,
+  ColorKey,
   ColorTokens,
+  ColorValue,
   DarkLevelOffset,
+  FeedbackSchemeKey,
   FullThemePreset,
   LightLevelOffset,
+  MenuAccent,
+  MenuColor,
   PrimaryColorKey,
-  ThemePreset,
-  ThemeTokens
+  SemanticScheme,
+  SidebarColorValue,
+  SidebarSchemeKey,
+  ThemeOverrides,
+  ThemeRadiusValue,
+  ThemeSizeValue
 } from './types';
-import { COLOR_VARIABLES } from './variables';
 
 /**
- * the authoritative color token key set (mirrors `ColorTokens`).
- */
-const COLOR_TOKEN_KEYS = keysOf(COLOR_VARIABLES);
-
-/**
- * distinguish a mode-split `ThemePreset` from a flat `ThemeTokens` override.
- * A flat token set has no `light`/`dark` layers and is applied as light-only.
- */
-const isThemePreset = (preset: ThemePreset | ThemeTokens | undefined): preset is ThemePreset =>
-  !!preset && 'light' in preset;
-
-/**
- * a preset is "complete" when it is a mode-split `ThemePreset` whose `light`
- * layer defines every color token. A flat `ThemeTokens` override (no
- * `light`/`dark` layers) or a partial `light` is never complete.
- */
-export function isCompleteThemePreset(preset: ThemePreset | ThemeTokens | undefined): boolean {
-  if (!isThemePreset(preset) || !preset.light) {
-    return false;
-  }
-
-  return COLOR_TOKEN_KEYS.every(key => preset.light[key] !== undefined);
-}
-
-/**
- * the single options object for `generateThemePreset`, combining the preset
- * keys, the light/dark level offsets, the skip-derivation flag and the custom
- * preset override.
+ * the single options object for `generateThemePreset`, combining the palette /
+ * scheme keys, the light/dark level offsets, the inline `overrides` copy and
+ * the base tokens.
  */
 export interface GenerateThemePresetOptions {
   base: BaseColorKey;
   primary: PrimaryColorKey;
+  /**
+   * the feedback (status) semantic scheme key
+   *
+   * @default 'classic'
+   */
+  feedback?: FeedbackSchemeKey;
+  /**
+   * the chart (data) semantic scheme key
+   *
+   * @default 'vivid'
+   */
+  chart?: ChartSchemeKey;
+  /**
+   * the sidebar skin semantic scheme key
+   *
+   * @default 'derived'
+   */
+  sidebar?: SidebarSchemeKey;
   /**
    * light mode surface darkening offset
    *
@@ -67,73 +64,82 @@ export interface GenerateThemePresetOptions {
    */
   darkLevel?: DarkLevelOffset;
   /**
-   * when `true`, and the provided `preset` is a complete preset (every color
-   * token present in `light`), the built-in base/primary/feedback/sidebar
-   * derivation from the palette keys is skipped and the preset's tokens are
-   * applied as-is. `lightLevel` / `darkLevel` are ignored in this case.
-   *
-   * @default false
+   * inline color token overrides applied on top of the derived tokens. Highest
+   * priority.
    */
-  complete?: boolean;
+  overrides?: ThemeOverrides;
   /**
-   * the custom preset override.
+   * the component size / density
+   *
+   * @default 'md'
    */
-  preset?: ThemePreset | ThemeTokens;
+  size?: ThemeSizeValue;
+  /**
+   * the border radius
+   *
+   * @default 'md'
+   */
+  radius?: ThemeRadiusValue;
+  /**
+   * the menu color preset key
+   *
+   * @default 'default'
+   */
+  menuColor?: MenuColor;
+  /**
+   * the menu accent preset key
+   *
+   * @default 'subtle'
+   */
+  menuAccent?: MenuAccent;
 }
 
 /**
- * resolve a full theme preset from the built-in base/primary palettes plus an
- * optional custom override.
+ * resolve a full theme preset from the built-in base/primary palettes plus the
+ * selected feedback / chart / sidebar schemes and an optional inline override.
  *
- * - `light` is the built-in light tokens overridden by the custom `light`
- *   (or the flat `ThemeTokens`) values;
- * - `dark` starts from the built-in dark tokens, then any explicit `dark`
- *   override wins, and every custom light key without an explicit dark value
+ * - `light` is the built-in light tokens overridden by the `overrides.light`
+ *   values;
+ * - `dark` starts from the built-in dark tokens, then any explicit `overrides.dark`
+ *   value wins, and every `overrides.light` key without an explicit dark value
  *   is derived from its light value via `deriveDarkFromLight`;
- * - base tokens (`size`/`radius`/`menuColor`/`menuAccent`) come from a
- *   `ThemePreset`, falling back to the engine defaults.
+ * - base tokens (`size`/`radius`/`menuColor`/`menuAccent`) come from the options,
+ *   falling back to the engine defaults.
  */
 export function generateThemePreset(options: GenerateThemePresetOptions): FullThemePreset {
-  const { base, primary, preset, lightLevel, darkLevel, complete } = options;
+  const { base, primary, overrides, lightLevel, darkLevel } = options;
 
-  // When `complete` is enabled and the preset already supplies every color
-  // token, the built-in base/primary/feedback/sidebar derivation is skipped
-  // and the layers are seeded directly from the provided tokens.
-  const skipBaseDerivation = complete === true && isCompleteThemePreset(preset);
+  const builtin = getBuiltinPreset({
+    base,
+    primary,
+    feedback: options.feedback,
+    chart: options.chart,
+    sidebar: options.sidebar,
+    lightLevel: lightLevel ?? 0,
+    darkLevel: darkLevel ?? 0
+  });
 
-  const builtin = skipBaseDerivation
-    ? { light: {} as ColorTokens, dark: {} as Partial<ColorTokens> }
-    : getBuiltinPreset({ base, primary, lightLevel: lightLevel ?? 0, darkLevel: darkLevel ?? 0 });
+  const customLight: Partial<ColorTokens> = overrides?.light ?? {};
+  const customDark: Partial<ColorTokens> = overrides?.dark ?? {};
 
-  const customLight: Partial<ColorTokens> | undefined = preset
-    ? isThemePreset(preset)
-      ? preset.light
-      : (preset as ThemeTokens)
-    : undefined;
-  const customDark: Partial<ColorTokens> | undefined = isThemePreset(preset) ? preset.dark : undefined;
-
-  // `defu(source, ...defaults)`: the custom light tokens override the built-in
+  // `defu(source, ...defaults)`: the override light tokens win over the built-in
   // light tokens, and `undefined` values fall through to the built-ins.
-  const light = defu(customLight ?? {}, builtin.light);
+  const light = defu(customLight, builtin.light);
 
   const dark: Partial<ColorTokens> = { ...builtin.dark };
 
-  if (customLight) {
+  if (Object.keys(customLight).length > 0) {
     for (const key of keysOf(customLight)) {
       const lightValue = customLight[key];
       if (lightValue === undefined) {
         continue;
       }
 
-      if (customDark?.[key] !== undefined) {
-        dark[key] = customDark[key];
-      } else {
-        dark[key] = deriveDarkFromLight(key, lightValue, base);
-      }
+      dark[key] = customDark[key] ?? deriveDarkFromLight(key, lightValue, base);
     }
   }
 
-  if (customDark) {
+  if (Object.keys(customDark).length > 0) {
     for (const key of keysOf(customDark)) {
       const value = customDark[key];
       if (value !== undefined) {
@@ -153,11 +159,10 @@ export function generateThemePreset(options: GenerateThemePresetOptions): FullTh
     }
   }
 
-  const baseTokens = resolveBaseTokens(preset);
-  const name = (isThemePreset(preset) && preset.name) || `${base}-${primary}`;
+  const baseTokens = resolveBaseTokens(options);
 
   return {
-    name,
+    name: `${base}-${primary}`,
     ...baseTokens,
     light,
     dark
@@ -170,53 +175,103 @@ export function generateThemePreset(options: GenerateThemePresetOptions): FullTh
 interface BuiltinPresetOptions {
   base: BaseColorKey;
   primary: PrimaryColorKey;
+  feedback?: FeedbackSchemeKey;
+  chart?: ChartSchemeKey;
+  sidebar?: SidebarSchemeKey;
   lightLevel: LightLevelOffset;
   darkLevel: DarkLevelOffset;
 }
 
 /**
- * build the built-in light + dark token sets from the base ⊕ primary palettes
- * (sidebar and fixed feedback colors included).
+ * the sidebar token references a sidebar scheme value may point to.
  */
-function getBuiltinPreset(options: BuiltinPresetOptions): { light: ColorTokens; dark: ColorTokens } {
-  const { base, primary, lightLevel, darkLevel } = options;
+const SIDEBAR_TOKEN_REFS = new Set([
+  'background',
+  'foreground',
+  'card',
+  'primary',
+  'primaryForeground',
+  'accent',
+  'accentForeground',
+  'border',
+  'ring'
+]);
 
-  const basePreset = deriveBasePreset(base, lightLevel, darkLevel);
-  const primaryPreset = derivePrimaryPreset(primary);
-  const feedbackPreset = deriveFeedbackColors();
-  const sidebarPreset = deriveSidebarPreset({
-    light: { ...basePreset.light, ...primaryPreset.light },
-    dark: { ...basePreset.dark, ...primaryPreset.dark }
-  });
+/**
+ * resolve a sidebar scheme value: a token reference resolves to the
+ * corresponding derived token; a literal color passes through.
+ */
+function resolveSidebarValue(value: SidebarColorValue, tokens: Partial<ColorTokens>): ColorValue {
+  if (typeof value === 'string' && SIDEBAR_TOKEN_REFS.has(value) && tokens[value as ColorKey]) {
+    return tokens[value as ColorKey] as ColorValue;
+  }
 
+  return value as ColorValue;
+}
+
+/**
+ * resolve a sidebar scheme into token partials, substituting token references
+ * with the already-derived base⊕primary tokens.
+ */
+function resolveSidebarScheme(
+  scheme: SemanticScheme<SidebarColorValue>,
+  sources: { light: ColorTokens; dark: ColorTokens }
+): { light: Partial<ColorTokens>; dark: Partial<ColorTokens> } {
   return {
-    light: {
-      ...basePreset.light,
-      ...primaryPreset.light,
-      ...feedbackPreset.light,
-      ...sidebarPreset.light
-    },
-    dark: {
-      ...basePreset.dark,
-      ...primaryPreset.dark,
-      ...feedbackPreset.dark,
-      ...sidebarPreset.dark
-    }
+    light: Object.fromEntries(
+      Object.entries(scheme.light).map(([key, value]) => [key, resolveSidebarValue(value, sources.light)])
+    ) as Partial<ColorTokens>,
+    dark: Object.fromEntries(
+      Object.entries(scheme.dark).map(([key, value]) => [key, resolveSidebarValue(value, sources.dark)])
+    ) as Partial<ColorTokens>
   };
 }
 
 /**
- * resolve the base tokens of the preset. Only a mode-split `ThemePreset`
- * carries them; a flat `ThemeTokens` override is treated as light-only and
- * therefore does not affect size/radius/menu settings.
+ * build the built-in light + dark token sets from the base ⊕ primary palettes
+ * plus the selected feedback / chart / sidebar schemes.
  */
-function resolveBaseTokens(preset?: ThemePreset | ThemeTokens): Required<BaseTokens> {
-  const p = isThemePreset(preset) ? preset : undefined;
+function getBuiltinPreset(options: BuiltinPresetOptions): { light: ColorTokens; dark: ColorTokens } {
+  const { base, primary, lightLevel, darkLevel } = options;
+  const registry = getRegistry();
+
+  const feedbackScheme = registry.feedback[options.feedback ?? 'classic'] ?? registry.feedback.classic;
+  const chartScheme = registry.chart[options.chart ?? 'vivid'] ?? registry.chart.vivid;
+  const sidebarScheme = registry.sidebar[options.sidebar ?? 'derived'] ?? registry.sidebar.derived;
+
+  const basePreset = deriveBasePreset(base, lightLevel, darkLevel);
+  const primaryPreset = derivePrimaryPreset(primary);
+  const mergedLight: ColorTokens = { ...basePreset.light, ...primaryPreset.light };
+  const mergedDark: ColorTokens = { ...basePreset.dark, ...primaryPreset.dark };
+
+  const sidebarPreset = resolveSidebarScheme(sidebarScheme, { light: mergedLight, dark: mergedDark });
 
   return {
-    size: p?.size ?? DEFAULT_PRESET_OPTIONS.size,
-    radius: p?.radius ?? DEFAULT_PRESET_OPTIONS.radius,
-    menuColor: p?.menuColor ?? DEFAULT_PRESET_OPTIONS.menuColor,
-    menuAccent: p?.menuAccent ?? DEFAULT_PRESET_OPTIONS.menuAccent
+    light: { ...mergedLight, ...feedbackScheme.light, ...chartScheme.light, ...sidebarPreset.light },
+    dark: { ...mergedDark, ...feedbackScheme.dark, ...chartScheme.dark, ...sidebarPreset.dark }
   };
+}
+
+/**
+ * resolve the base tokens of the preset from the options, falling back to the
+ * engine defaults.
+ */
+function resolveBaseTokens(options: GenerateThemePresetOptions): Required<BaseTokens> {
+  return {
+    size: options.size ?? DEFAULT_PRESET_OPTIONS.size,
+    radius: options.radius ?? DEFAULT_PRESET_OPTIONS.radius,
+    menuColor: options.menuColor ?? DEFAULT_PRESET_OPTIONS.menuColor,
+    menuAccent: options.menuAccent ?? DEFAULT_PRESET_OPTIONS.menuAccent
+  };
+}
+
+/**
+ * resolve a full theme preset (with auto-generated name) from the theme
+ * options, without generating any CSS.
+ *
+ * Convenience wrapper over `generateThemePreset` exposing the resolution stage
+ * so callers (e.g. SSR, theme store) can inspect the resolved tokens.
+ */
+export function resolveTheme(options: GenerateThemePresetOptions): FullThemePreset {
+  return generateThemePreset(options);
 }

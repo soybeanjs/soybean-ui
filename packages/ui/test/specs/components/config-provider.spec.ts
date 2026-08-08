@@ -342,11 +342,13 @@ describe('SConfigProvider', () => {
         attachTo: document.body
       });
 
-      // 内联 preset 直接使用，不经过存储解析；base tokens 取默认值进入 preset
-      expect(createThemeMock.mock.calls.at(-1)?.[0]?.preset).toEqual({
+      // 内联 preset 直接使用，解析为 overrides；base tokens 取默认值回落到顶层字段
+      expect(createThemeMock.mock.calls.at(-1)?.[0]).toMatchObject({
+        base: 'zinc',
+        primary: 'indigo',
         size: 'md',
         radius: 'md',
-        light: { primary: 'blue.600' }
+        overrides: { light: { primary: 'blue.600' } }
       });
 
       wrapper.unmount();

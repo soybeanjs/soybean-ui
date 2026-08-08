@@ -2,7 +2,6 @@ import { computed, ref, watch } from 'vue';
 import { colord } from '@soybeanjs/colord';
 import { tailwindPalette } from '@soybeanjs/colord/palette';
 import type { PaletteColorLevel, TailwindPaletteKey } from '@soybeanjs/colord/palette';
-import { createTheme } from '@soybeanjs/theme';
 import type {
   BaseColorKey,
   ColorKey,
@@ -13,13 +12,12 @@ import type {
   MenuAccent,
   MenuColor,
   PrimaryColorKey,
-  ThemeCssVariables,
-  ThemeOptions,
-  ThemePreset,
+  ThemeOverrides,
   ThemeRadius,
   ThemeSize
 } from '@soybeanjs/theme';
 import { useTheme } from '@soybeanjs/ui';
+import type { ConfigProviderThemeOptions } from '@soybeanjs/ui';
 import {
   chartKeys,
   paletteLevels,
@@ -27,41 +25,45 @@ import {
   parsePaletteKey,
   shadeToColor,
   shadeValues,
-  splitThemeCss,
   surfaceLevelTables
 } from './shared';
 import type { ShadeValue, SurfaceKey } from './shared';
 
-type UseThemeGeneratorEmits = {
-  (e: 'getCss', value: ThemeCssVariables): void;
-};
+export interface ThemeGeneratorProps {
+  theme?: ConfigProviderThemeOptions;
+}
 
-export function useThemeGenerator(emit: UseThemeGeneratorEmits) {
+export function useThemeGenerator(
+  props: ThemeGeneratorProps,
+  emit: (e: 'update:theme', value: ConfigProviderThemeOptions | undefined) => void
+) {
   // —— 可编辑状态（自包含）：初始值取自 provider 派生主题，此后完全由内部状态驱动 ——
   const fallbackTheme = useTheme('ThemeGenerator').theme;
-  const fallbackPreset = (fallbackTheme.value.preset ?? {}) as ThemePreset;
+  const fallbackOverrides = (fallbackTheme.value.overrides ?? {}) as ThemeOverrides;
 
-  const base = ref<BaseColorKey>(fallbackTheme.value.base ?? 'zinc');
-  const primary = ref<PrimaryColorKey>(fallbackTheme.value.primary ?? 'indigo');
-  const radius = ref<ThemeRadius>((fallbackPreset.radius as ThemeRadius) ?? 'md');
-  const size = ref<ThemeSize>((fallbackPreset.size as ThemeSize) ?? 'md');
-  const lightLevel = ref<LightLevelOffset>(fallbackTheme.value.lightLevel ?? 0);
-  const darkLevel = ref<DarkLevelOffset>(fallbackTheme.value.darkLevel ?? 0);
-  const menuColor = ref<MenuColor>(fallbackPreset.menuColor ?? 'default');
-  const menuAccent = ref<MenuAccent>(fallbackPreset.menuAccent ?? 'subtle');
-  const lightTokens = ref<Partial<ColorTokens>>({ ...(fallbackPreset.light as Partial<ColorTokens>) });
-  const darkTokens = ref<Partial<ColorTokens>>({ ...(fallbackPreset.dark as Partial<ColorTokens>) });
+  const base = ref<BaseColorKey>(props.theme?.base ?? fallbackTheme.value.base ?? 'zinc');
+  const primary = ref<PrimaryColorKey>(props.theme?.primary ?? fallbackTheme.value.primary ?? 'indigo');
+  const radius = ref<ThemeRadius>((props.theme?.radius ?? fallbackTheme.value.radius ?? 'md') as ThemeRadius);
+  const size = ref<ThemeSize>((props.theme?.size ?? fallbackTheme.value.size ?? 'md') as ThemeSize);
+  const lightLevel = ref<LightLevelOffset>(props.theme?.lightLevel ?? fallbackTheme.value.lightLevel ?? 0);
+  const darkLevel = ref<DarkLevelOffset>(props.theme?.darkLevel ?? fallbackTheme.value.darkLevel ?? 0);
+  const menuColor = ref<MenuColor>(props.theme?.menuColor ?? fallbackTheme.value.menuColor ?? 'default');
+  const menuAccent = ref<MenuAccent>(props.theme?.menuAccent ?? fallbackTheme.value.menuAccent ?? 'subtle');
+  const lightTokens = ref<Partial<ColorTokens>>({ ...(props.theme?.overrides?.light ?? fallbackOverrides.light) });
+  const darkTokens = ref<Partial<ColorTokens>>({ ...(props.theme?.overrides?.dark ?? fallbackOverrides.dark) });
 
   // —— 编辑分片（light / dark），决定 Surfaces / Border / Charts / token 写哪个分片 ——
   const activeMode = ref<'light' | 'dark'>('light');
 
-  // —— emit helpers（直接改内部状态，输出由 rawCss 统一派生）——
-  const patchTopLevel = (patch: Partial<Pick<ThemeOptions, 'lightLevel' | 'darkLevel'>>): void => {
+  // —— emit helpers（直接改内部状态，输出由 themeOptions 统一派生）——
+  const patchTopLevel = (patch: Partial<Pick<ConfigProviderThemeOptions, 'lightLevel' | 'darkLevel'>>): void => {
     if (patch.lightLevel !== undefined) lightLevel.value = patch.lightLevel;
     if (patch.darkLevel !== undefined) darkLevel.value = patch.darkLevel;
   };
 
-  const patchPreset = (patch: Partial<Pick<ThemePreset, 'radius' | 'size' | 'menuColor' | 'menuAccent'>>): void => {
+  const patchBase = (
+    patch: Partial<Pick<ConfigProviderThemeOptions, 'radius' | 'size' | 'menuColor' | 'menuAccent'>>
+  ): void => {
     if (patch.radius !== undefined) radius.value = patch.radius as ThemeRadius;
     if (patch.size !== undefined) size.value = patch.size as ThemeSize;
     if (patch.menuColor !== undefined) menuColor.value = patch.menuColor;
@@ -150,18 +152,20 @@ export function useThemeGenerator(emit: UseThemeGeneratorEmits) {
   const setBorderOpacity = (opacity: number): void => {
     const alpha = opacity / 100;
     const level: PaletteColorLevel = activeMode.value === 'light' ? 950 : 50;
-    const color = colord(tailwindPalette[base.value][level].hsl).alpha(alpha).toHslString() as ColorValue;
+    const color = colord(tailwindPalette[base.value as TailwindPaletteKey][level].hsl)
+      .alpha(alpha)
+      .toHslString() as ColorValue;
 
     patchColors({ border: color, input: color });
   };
 
   // —— Charts（palette + level）——
   const chartPalette = (index: number): TailwindPaletteKey =>
-    parsePaletteKey(tokenValue(chartKeys[index]))?.key ?? primary.value;
+    parsePaletteKey(tokenValue(chartKeys[index]))?.key ?? (primary.value as TailwindPaletteKey);
   const chartLevel = (index: number): PaletteColorLevel => parsePaletteKey(tokenValue(chartKeys[index]))?.level ?? 300;
 
-  const setChart = (index: number, key: TailwindPaletteKey, level: PaletteColorLevel): void => {
-    patchColors({ [chartKeys[index]]: `${key}.${level}` });
+  const setChart = (index: number, key: PrimaryColorKey, level: PaletteColorLevel): void => {
+    patchColors({ [chartKeys[index]]: `${key}.${level}` as ColorValue });
   };
 
   // —— Edit Variables：token 输入 ——
@@ -169,16 +173,16 @@ export function useThemeGenerator(emit: UseThemeGeneratorEmits) {
     patchColors({ [key]: value.trim() as ColorValue });
   };
 
-  // —— 输出：仅 raw css（`{ base, light, dark }`，即新增的 `css` 属性类型）——
-  // 由内部状态派生完整主题 CSS，再拆分为三个原始片段，供 ConfigProvider 直接消费。
-  const themeOptions = computed<ThemeOptions>(() => ({
+  // —— 输出：完整 ThemeOptions（overrides + 顶层 base tokens），
+  //    由内部状态派生，供 ConfigProvider 通过 `theme` prop 直接消费 ——
+  const themeOptions = computed<ConfigProviderThemeOptions>(() => ({
     base: base.value,
     primary: primary.value,
-    preset: {
-      radius: radius.value,
-      size: size.value,
-      menuColor: menuColor.value,
-      menuAccent: menuAccent.value,
+    radius: radius.value,
+    size: size.value,
+    menuColor: menuColor.value,
+    menuAccent: menuAccent.value,
+    overrides: {
       light: lightTokens.value,
       dark: darkTokens.value
     },
@@ -187,11 +191,9 @@ export function useThemeGenerator(emit: UseThemeGeneratorEmits) {
     darkLevel: darkLevel.value
   }));
 
-  const rawCss = computed<ThemeCssVariables>(() => splitThemeCss(createTheme(themeOptions.value)));
-
-  // 状态变化时以 `{ base, light, dark }` 形式输出，ConfigProvider 收到后直接使用 raw css。
-  watch(rawCss, css => {
-    emit('getCss', css);
+  // 状态变化时以完整 ThemeOptions 形式输出，父组件经 `v-model:theme` 消费。
+  watch(themeOptions, value => {
+    emit('update:theme', value);
   });
 
   return {
@@ -206,7 +208,7 @@ export function useThemeGenerator(emit: UseThemeGeneratorEmits) {
     menuAccent,
     borderOpacity,
     patchTopLevel,
-    patchPreset,
+    patchBase,
     tokenValue,
     onTokenInput,
     surfaceValue,

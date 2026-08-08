@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { createTheme } from '../src/core';
-import { CHART_TEMPLATE, builtinPrimaryPresetKeys } from '../src/core-template';
-import { deriveBasePreset, deriveFeedbackColors, derivePrimaryPreset } from '../src/derive';
+import { deriveBasePreset, derivePrimaryPreset } from '../src/derive';
 import { generateThemePreset } from '../src/preset';
 import { DARK_BORDER, DARK_INPUT } from '../src/tokens';
 
@@ -147,40 +146,10 @@ describe('derivePrimaryPreset (§3.2 / D7)', () => {
     }
   });
 
-  it('chart colors reuse the fixed template for every palette (D7)', () => {
-    for (const key of builtinPrimaryPresetKeys) {
-      const primary = derivePrimaryPreset(key);
+  it('does not carry chart colors (they come from the chart scheme)', () => {
+    const primary = derivePrimaryPreset('indigo');
 
-      expect(primary.light.chart1).toBe(CHART_TEMPLATE.light.chart1);
-      expect(primary.light.chart2).toBe(CHART_TEMPLATE.light.chart2);
-      expect(primary.light.chart3).toBe(CHART_TEMPLATE.light.chart3);
-      expect(primary.light.chart4).toBe(CHART_TEMPLATE.light.chart4);
-      expect(primary.light.chart5).toBe(CHART_TEMPLATE.light.chart5);
-      expect(primary.dark.chart1).toBe(CHART_TEMPLATE.dark.chart1);
-      expect(primary.dark.chart2).toBe(CHART_TEMPLATE.dark.chart2);
-      expect(primary.dark.chart3).toBe(CHART_TEMPLATE.dark.chart3);
-      expect(primary.dark.chart4).toBe(CHART_TEMPLATE.dark.chart4);
-      expect(primary.dark.chart5).toBe(CHART_TEMPLATE.dark.chart5);
-    }
-  });
-});
-
-describe('deriveFeedbackColors (ADR-6 / D9)', () => {
-  it('uses fixed classic values', () => {
-    const feedback = deriveFeedbackColors();
-
-    expect(feedback.light).toEqual({
-      destructive: 'red.500',
-      success: 'green.500',
-      warning: 'amber.500',
-      info: 'blue.500'
-    });
-    expect(feedback.dark).toEqual({
-      destructive: 'red.400',
-      success: 'green.400',
-      warning: 'amber.400',
-      info: 'blue.400'
-    });
+    expect(primary.light.chart1).toBeUndefined();
   });
 });
 
@@ -201,12 +170,12 @@ describe('sidebar derivation (§3.2)', () => {
   });
 });
 
-describe('custom preset override (ADR-5)', () => {
+describe('custom overrides (ADR-5)', () => {
   it('overrides derived values with the highest priority', () => {
     const preset = generateThemePreset({
       base: 'zinc',
       primary: 'indigo',
-      preset: { light: { primary: 'red.600', chart1: 'purple.400' }, dark: { primary: 'red.400' } }
+      overrides: { light: { primary: 'red.600', chart1: 'purple.400' }, dark: { primary: 'red.400' } }
     });
 
     expect(preset.light.primary).toBe('red.600');
@@ -215,6 +184,35 @@ describe('custom preset override (ADR-5)', () => {
     expect(preset.dark.primary).toBe('red.400');
     // derived dark equals its light counterpart → pruned (dark only carries diffs)
     expect(preset.dark.chart1).toBeUndefined();
+  });
+
+  it('a light override without an explicit dark value is derived for dark', () => {
+    const preset = generateThemePreset({
+      base: 'zinc',
+      primary: 'indigo',
+      overrides: { light: { primary: 'green.500' } }
+    });
+
+    // green is chromatic + in DARK_PRIMARY_600 → dark derives to green.600
+    expect(preset.dark.primary).toBe('green.600');
+  });
+});
+
+describe('scheme selection', () => {
+  it('feedback scheme drives the status colors', () => {
+    const preset = generateThemePreset({ base: 'zinc', primary: 'indigo', feedback: 'classic' });
+
+    expect(preset.light.destructive).toBe('red.500');
+    expect(preset.light.success).toBe('green.500');
+    expect(preset.light.warning).toBe('amber.500');
+    expect(preset.light.info).toBe('blue.500');
+  });
+
+  it('chart scheme drives the chart colors', () => {
+    const preset = generateThemePreset({ base: 'zinc', primary: 'indigo', chart: 'vivid' });
+
+    expect(preset.light.chart1).toBe('orange.600');
+    expect(preset.light.chart2).toBe('teal.600');
   });
 });
 

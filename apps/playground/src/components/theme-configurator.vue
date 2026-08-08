@@ -66,13 +66,13 @@ const handleSavePreset = () => {
           <template #trigger-leading>
             <span
               class="size-4 flex shrink-0 items-center justify-center rounded-full"
-              :style="{ backgroundColor: tailwindPalette[base][500].hsl }"
+              :style="{ backgroundColor: tailwindPalette[base as keyof typeof tailwindPalette][500].hsl }"
             />
           </template>
           <template #item-leading="{ item }">
             <span
               class="size-4 flex shrink-0 items-center justify-center rounded-full"
-              :style="{ backgroundColor: tailwindPalette[item.value][500].hsl }"
+              :style="{ backgroundColor: tailwindPalette[item.value as keyof typeof tailwindPalette][500].hsl }"
             />
           </template>
         </SSelect>
@@ -83,13 +83,13 @@ const handleSavePreset = () => {
           <template #trigger-leading>
             <span
               class="size-4 flex shrink-0 items-center justify-center rounded-full"
-              :style="{ backgroundColor: tailwindPalette[primary][500].hsl }"
+              :style="{ backgroundColor: tailwindPalette[primary as keyof typeof tailwindPalette][500].hsl }"
             />
           </template>
           <template #item-leading="{ item }">
             <span
               class="size-4 flex shrink-0 items-center justify-center rounded-full"
-              :style="{ backgroundColor: tailwindPalette[item.value][500].hsl }"
+              :style="{ backgroundColor: tailwindPalette[item.value as keyof typeof tailwindPalette][500].hsl }"
             />
           </template>
         </SSelect>

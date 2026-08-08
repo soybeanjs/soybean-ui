@@ -5,7 +5,7 @@ import type { Preflight, Preset } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
 import { presetAnimations } from 'unocss-preset-animations';
 import { createTheme } from '@soybeanjs/theme';
-import type { BaseTokens, MenuAccent, MenuColor, ThemeOptions, ThemePreset, ThemeTokens } from '@soybeanjs/theme';
+import type { BaseTokens, MenuAccent, MenuColor, ThemeOptions } from '@soybeanjs/theme';
 import { transform } from 'lightningcss';
 import globalStyle from './global.css?raw';
 import resetStyle from './reset.css?raw';
@@ -15,9 +15,8 @@ import resetStyle from './reset.css?raw';
  *
  * Extends the theme options (`base`/`primary`/`lightLevel`/`darkLevel`/etc.)
  * with the base tokens (`size`/`radius`/`menuColor`/`menuAccent`) so a single
- * options object can fully drive the generated theme. The base tokens are
- * forwarded to `createTheme` wrapped in a theme preset (see
- * {@link buildThemePreset}).
+ * options object can fully drive the generated theme. Base tokens are top-level
+ * `ThemeOptions` fields that `createTheme` reads directly.
  */
 export interface UiUnocssOptions extends ThemeOptions, BaseTokens {
   /**
@@ -104,9 +103,10 @@ export function presetUiUnocss(options?: UiUnocssOptions): Preset<Theme>[] {
         }
 
         if (uiCSS) {
-          // The base tokens (`size`/`radius`/`menuColor`/`menuAccent`) travel
-          // inside a theme preset so `createTheme` can apply them.
-          css += createTheme({ ...options, preset: buildUiThemePreset(options) });
+          // The base tokens (`size`/`radius`/`menuColor`/`menuAccent`) are
+          // top-level `ThemeOptions` fields, so `createTheme` reads them
+          // directly from the options.
+          css += createTheme(options);
         }
 
         const r = transform({
@@ -308,43 +308,6 @@ export function presetUiUnocss(options?: UiUnocssOptions): Preset<Theme>[] {
   return presets as Preset<Theme>[];
 }
 
-/**
- * Build the `preset` option for `createTheme` from the base tokens the caller
- * provided at the top level of {@link UiUnocssOptions}.
- *
- * `createTheme` only reads `base`/`primary`/`lightLevel`/`darkLevel`/`complete`
- * directly from its options; the base tokens (`size`/`radius`/`menuColor`/
- * `menuAccent`) must travel inside a theme preset object for `generateThemePreset`
- * to resolve them. This helper:
- *
- * - merges the top-level base tokens into a user-supplied `preset` when one is
- *   given (caller tokens still win via spread order);
- * - otherwise builds a minimal mode-split preset whose `light` is empty, so the
- *   built-in color derivation from `base`/`primary` still runs while the base
- *   tokens are picked up by `resolveBaseTokens`.
- */
-function buildUiThemePreset(options: UiUnocssOptions | undefined): ThemePreset | ThemeTokens | undefined {
-  const { size, radius, menuColor, menuAccent, preset: userPreset } = options ?? {};
-
-  const baseTokens: BaseTokens = {};
-  if (size !== undefined) baseTokens.size = size;
-  if (radius !== undefined) baseTokens.radius = radius;
-  if (menuColor !== undefined) baseTokens.menuColor = menuColor;
-  if (menuAccent !== undefined) baseTokens.menuAccent = menuAccent;
-
-  // A user-supplied preset is preserved and only extended with the base tokens.
-  if (userPreset) {
-    return { ...userPreset, ...baseTokens };
-  }
-
-  // No base tokens to apply — let `createTheme` fall back to its defaults.
-  if (Object.keys(baseTokens).length === 0) {
-    return undefined;
-  }
-
-  return { light: {}, ...baseTokens };
-}
-
 // ---------------------------------------------------------------------------
 // SBean config → UnoCSS preset bridge
 // ---------------------------------------------------------------------------
@@ -460,8 +423,8 @@ export function presetSbean(options?: SbeanPresetOptions): Preset<Theme>[] {
 
   // ---- 2. `menu` block → menu base tokens -------------------------------
   // `sbean.json` stores the menu surface under `menu`; map `color`/`accent`
-  // onto the `menuColor`/`menuAccent` base tokens so `buildUiThemePreset` can
-  // apply them to the generated CSS.
+  // onto the `menuColor`/`menuAccent` base tokens so `createTheme` can apply
+  // them to the generated CSS.
   if (config?.menu) {
     if (config.menu.color) {
       uiUnocssOptions.menuColor = config.menu.color;

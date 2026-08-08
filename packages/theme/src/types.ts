@@ -1,9 +1,30 @@
 import type {
-  TailwindNeutralPaletteKey as BaseColorKey,
-  TailwindPaletteKey as PrimaryColorKey,
+  PaletteColorLevel,
+  TailwindNeutralPaletteKey,
+  TailwindPaletteKey,
   TailwindPaletteLevelColorKey,
   SimplePaletteKey
 } from '@soybeanjs/colord/palette';
+
+/**
+ * base color palette key
+ *
+ * a neutral-family palette key (e.g. `slate`/`zinc`/`neutral`), extended with
+ * arbitrary strings supplied through the runtime registry. Built-in keys keep
+ * literal autocomplete; custom keys are validated against the registry at
+ * runtime.
+ */
+export type BaseColorKey = TailwindNeutralPaletteKey | (string & {});
+
+/**
+ * primary color palette key
+ *
+ * any palette key (neutral or chromatic, e.g. `indigo`/`blue`), extended with
+ * arbitrary strings supplied through the runtime registry. Built-in keys keep
+ * literal autocomplete; custom keys are validated against the registry at
+ * runtime.
+ */
+export type PrimaryColorKey = TailwindPaletteKey | (string & {});
 
 /**
  * HSL color
@@ -442,52 +463,67 @@ export interface GenerateCSSOptions extends BaseGenerateCSSOptions {
 }
 
 /**
- * raw CSS variable overrides
- *
- * Bypasses the token derivation pipeline entirely: each string is emitted
- * verbatim into the matching CSS layer, so consumers can fully own their CSS
- * variables (e.g. hand-written shadcn-style tokens) without going through the
- * palette derivation.
- *
- * - `base`: base tokens (size / radius / menu), emitted on the style target
- * - `light`: light color tokens, emitted on the style target
- * - `dark`: dark color tokens, emitted under the dark selector
- */
-export interface ThemeCssVariables {
-  /**
-   * raw CSS custom-property declarations for the base layer
-   */
-  base: string;
-  /**
-   * raw CSS custom-property declarations for the light layer
-   */
-  light?: string;
-  /**
-   * raw CSS custom-property declarations for the dark layer
-   */
-  dark?: string;
-}
-
-/**
  * Theme options
  */
 export interface ThemeOptions extends BaseGenerateCSSOptions {
   /**
-   * the base color preset key
+   * the base color palette key
    *
    * @default 'zinc'
    */
   base?: BaseColorKey;
   /**
-   * the primary color preset key
+   * the primary color palette key
    *
-   * @default 'zinc'
+   * @default 'indigo'
    */
   primary?: PrimaryColorKey;
   /**
-   * the theme preset
+   * the feedback (status) semantic scheme key
+   *
+   * @default 'classic'
    */
-  preset?: ThemePreset | ThemeTokens;
+  feedback?: FeedbackSchemeKey;
+  /**
+   * the chart (data) semantic scheme key
+   *
+   * @default 'vivid'
+   */
+  chart?: ChartSchemeKey;
+  /**
+   * the sidebar skin semantic scheme key
+   *
+   * @default 'derived'
+   */
+  sidebar?: SidebarSchemeKey;
+  /**
+   * inline color token overrides applied on top of the derived tokens
+   */
+  overrides?: ThemeOverrides;
+  /**
+   * the component size / density
+   *
+   * @default 'md'
+   */
+  size?: ThemeSizeValue;
+  /**
+   * the border radius
+   *
+   * @default 'md'
+   */
+  radius?: ThemeRadiusValue;
+  /**
+   * the menu color preset key
+   *
+   * @default 'default'
+   */
+  menuColor?: MenuColor;
+  /**
+   * the menu accent preset key
+   *
+   * @default 'subtle'
+   */
+  menuAccent?: MenuAccent;
   /**
    * light mode surface darkening offset
    *
@@ -500,28 +536,109 @@ export interface ThemeOptions extends BaseGenerateCSSOptions {
    * @default 0
    */
   darkLevel?: DarkLevelOffset;
-  /**
-   * when `true` and the provided `preset` is a complete preset (every color
-   * token present in `light`), the built-in base style derivation
-   * (base/primary/feedback/sidebar from the palette keys) is skipped and the
-   * preset's tokens are applied as-is. `lightLevel` / `darkLevel` are ignored
-   * in this case.
-   *
-   * This is a pure optimization: for a complete `light`, the resolved tokens
-   * are identical whether or not the derivation is skipped.
-   *
-   * @default false
-   */
-  complete?: boolean;
-  /**
-   * raw CSS variable overrides.
-   *
-   * When provided, the token derivation pipeline (`generateThemePreset`) is
-   * skipped entirely and the given CSS strings are emitted verbatim. All other
-   * theme options (`base` / `primary` / `preset` / `lightLevel` / `darkLevel` /
-   * `complete`) are ignored in this case.
-   */
-  css?: ThemeCssVariables;
 }
 
-export type { BaseColorKey, PrimaryColorKey };
+/**
+ * feedback semantic scheme key
+ *
+ * selects a named status-color scheme (destructive / success / warning / info /
+ * carbon). Extends the built-in `classic` key with arbitrary strings supplied
+ * through the runtime registry.
+ */
+export type FeedbackSchemeKey = 'classic' | (string & {});
+
+/**
+ * chart semantic scheme key
+ *
+ * selects a named data-viz color scheme (chart1–chart5). Extends the built-in
+ * `vivid` key with arbitrary strings supplied through the runtime registry.
+ */
+export type ChartSchemeKey = 'vivid' | (string & {});
+
+/**
+ * sidebar color key
+ */
+export type SidebarColorKey =
+  | 'sidebar'
+  | 'sidebarForeground'
+  | 'sidebarPrimary'
+  | 'sidebarPrimaryForeground'
+  | 'sidebarAccent'
+  | 'sidebarAccentForeground'
+  | 'sidebarBorder'
+  | 'sidebarRing';
+
+/**
+ * a sidebar scheme value may reference an already-derived token instead of a
+ * literal color, letting a scheme reuse the base⊕primary surface/brand tokens.
+ */
+export type SidebarTokenRef =
+  | 'background'
+  | 'foreground'
+  | 'card'
+  | 'primary'
+  | 'primaryForeground'
+  | 'accent'
+  | 'accentForeground'
+  | 'border'
+  | 'ring';
+
+/**
+ * the value slot of a sidebar scheme
+ */
+export type SidebarColorValue = ColorValue | SidebarTokenRef;
+
+/**
+ * sidebar semantic scheme key
+ *
+ * selects a named sidebar skin scheme. Extends the built-in `derived` key with
+ * arbitrary strings supplied through the runtime registry.
+ */
+export type SidebarSchemeKey = 'derived' | (string & {});
+
+/**
+ * a semantic color scheme: a named mapping of role keys to colors (light/dark).
+ *
+ * Used for the `feedback` (status) and `chart` (data) dimensions.
+ */
+export interface SemanticScheme<V = ColorValue> {
+  light: Record<string, V>;
+  dark: Record<string, V>;
+}
+
+/**
+ * a theme palette: a named family metadata + a 10-level ramp of colors.
+ *
+ * `family` drives which base/primary core template and dark derivation apply;
+ * `colors` is normally produced by `generatePalette` from a single seed color.
+ */
+export interface ThemePalette {
+  name: string;
+  family: 'neutral' | 'chromatic';
+  colors: Record<PaletteColorLevel, { hsl: string; oklch: string }>;
+}
+
+/**
+ * the runtime theme preset registry.
+ *
+ * Built-in entries are the defaults; user entries are merged in by
+ * `registerThemePresets`.
+ */
+export interface ThemePresetRegistry {
+  base: Record<string, ThemePalette>;
+  primary: Record<string, ThemePalette>;
+  feedback: Record<string, SemanticScheme<ColorValue>>;
+  chart: Record<string, SemanticScheme<ColorValue>>;
+  sidebar: Record<string, SemanticScheme<SidebarColorValue>>;
+}
+
+/**
+ * inline color overrides applied on top of the derived tokens.
+ *
+ * Unlike a named preset, `overrides` is a lightweight per-token override with
+ * no identity and no `name`.
+ */
+export interface ThemeOverrides {
+  light?: Partial<ColorTokens>;
+  dark?: Partial<ColorTokens>;
+}

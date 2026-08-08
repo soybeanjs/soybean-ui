@@ -2,6 +2,7 @@ import { colord } from '@soybeanjs/colord';
 import { tailwindPalette, simplePalette } from '@soybeanjs/colord/palette';
 import type { PaletteColorLevel, TailwindPaletteKey, TailwindPaletteLevelColorKey } from '@soybeanjs/colord/palette';
 import { DEFAULT_PRESET_OPTIONS } from './defaults';
+import { getRegistry } from './registry';
 import { THEME_SIZE, THEME_RADIUS } from './tokens';
 import type { ColorFormat, ColorValue, DarkSelector, DarkSelectorValue } from './types';
 import { DARK_SELECTOR } from './variables';
@@ -63,9 +64,18 @@ export function getColorValue(colorValue: ColorValue, format: ColorFormat) {
   }
 
   if (isTailwindPaletteLevelColorKey(colorValue)) {
-    const [paletteKey, level] = colorValue.split('.') as [TailwindPaletteKey, PaletteColorLevel];
+    const [paletteKey, level] = colorValue.split('.') as [string, PaletteColorLevel];
 
-    return tailwindPalette[paletteKey][level][format];
+    // custom palettes registered via `registerThemePresets` resolve from the
+    // runtime registry first; built-in palettes fall back to the colord table.
+    const custom = getRegistry().base[paletteKey] ?? getRegistry().primary[paletteKey];
+    const customColor = custom?.colors[level];
+
+    if (customColor) {
+      return customColor[format];
+    }
+
+    return tailwindPalette[paletteKey as TailwindPaletteKey][level][format];
   }
 
   let color: string = colorValue;

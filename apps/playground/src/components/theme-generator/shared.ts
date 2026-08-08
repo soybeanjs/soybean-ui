@@ -17,7 +17,6 @@ import type {
   MenuAccent,
   MenuColor,
   PrimaryColorKey,
-  ThemeCssVariables,
   ThemeRadius,
   ThemeSize
 } from '@soybeanjs/theme';
@@ -153,17 +152,7 @@ export const parsePaletteKey = (value: string): { key: TailwindPaletteKey; level
   return undefined;
 };
 
-/** 把 `createTheme` 的完整 CSS 拆分为 base / light / dark 三个原始片段 */
-export const splitThemeCss = (css: string): ThemeCssVariables => {
-  const blocks = [...css.matchAll(/\{([\s\S]*?)\}/g)].map(match => match[1].trim());
-
-  return {
-    base: blocks[0] ?? '',
-    light: blocks[1] ?? '',
-    dark: blocks[2] ?? ''
-  };
-};
-
+/** palette + level → 具体色值，用于 swatch / 预览 */
 export const chatColor = (palette: TailwindPaletteKey, level: PaletteColorLevel): string =>
   tailwindPalette[palette][level].hsl;
 
@@ -177,7 +166,7 @@ export const shadeColor = (shade: ShadeValue, base: BaseColorKey): string => {
     return '#000000';
   }
 
-  return tailwindPalette[base][shade].hsl;
+  return tailwindPalette[base as TailwindPaletteKey][shade].hsl;
 };
 
 export const shadeToColor = (shade: ShadeValue, base: BaseColorKey): ColorValue => {
@@ -185,7 +174,7 @@ export const shadeToColor = (shade: ShadeValue, base: BaseColorKey): ColorValue 
     return shade;
   }
 
-  return `${base}.${shade}`;
+  return `${base}.${shade}` as ColorValue;
 };
 
 export const swatchColor = (value: string): string => {

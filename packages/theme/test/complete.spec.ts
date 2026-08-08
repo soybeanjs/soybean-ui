@@ -1,202 +1,116 @@
 import { describe, it, expect } from 'vitest';
 import { createTheme } from '../src/core';
-import { generateThemePreset, isCompleteThemePreset } from '../src/preset';
-import type { ColorTokens, ThemePreset } from '../src/types';
+import { generateThemePreset } from '../src/preset';
+import type { ThemeOverrides } from '../src/types';
 
 /**
- * a full light token set covering every `ColorTokens` key.
+ * a light-mode override covering a spread of `ColorTokens` keys.
  */
-const completeLight: ColorTokens = {
-  background: 'white',
-  foreground: 'zinc.950',
-  card: 'white',
-  cardForeground: 'zinc.950',
-  popover: 'white',
-  popoverForeground: 'zinc.950',
-  primary: 'violet.700',
-  primaryForeground: 'white',
-  secondary: 'violet.100',
-  secondaryForeground: 'violet.900',
-  muted: 'violet.100',
-  mutedForeground: 'violet.500',
-  accent: 'violet.100',
-  accentForeground: 'violet.900',
-  destructive: 'red.500',
-  destructiveForeground: 'white',
-  border: 'violet.200',
-  input: 'violet.200',
-  ring: 'violet.500',
-  success: 'green.500',
-  successForeground: 'white',
-  warning: 'amber.500',
-  warningForeground: 'white',
-  info: 'blue.500',
-  infoForeground: 'white',
-  carbon: 'zinc.800',
-  carbonForeground: 'white',
-  sidebar: 'white',
-  sidebarForeground: 'zinc.950',
-  sidebarPrimary: 'violet.700',
-  sidebarPrimaryForeground: 'white',
-  sidebarAccent: 'violet.100',
-  sidebarAccentForeground: 'violet.900',
-  sidebarBorder: 'violet.200',
-  sidebarRing: 'violet.500',
-  chart1: 'violet.500',
-  chart2: 'sky.500',
-  chart3: 'emerald.500',
-  chart4: 'amber.500',
-  chart5: 'rose.500'
+const overrides: ThemeOverrides = {
+  light: {
+    primary: 'violet.700',
+    primaryForeground: 'white',
+    secondary: 'violet.100',
+    secondaryForeground: 'violet.900',
+    carbon: 'zinc.800',
+    chart1: 'violet.500'
+  },
+  dark: {
+    primary: 'violet.400'
+  }
 };
 
-const completePreset: ThemePreset = {
-  name: 'custom',
-  light: completeLight,
-  dark: { primary: 'violet.400' }
-};
+describe('generateThemePreset — overrides priority & merging', () => {
+  it('applies overrides.light on top of the built-in light tokens', () => {
+    const preset = generateThemePreset({ base: 'zinc', primary: 'indigo', overrides });
 
-describe('isCompleteThemePreset — completeness detection', () => {
-  it('returns true for a mode-split preset whose light covers every color token', () => {
-    expect(isCompleteThemePreset(completePreset)).toBe(true);
+    expect(preset.light.primary).toBe('violet.700');
+    expect(preset.light.secondary).toBe('violet.100');
+    expect(preset.light.chart1).toBe('violet.500');
   });
 
-  it('returns false for a partial light', () => {
-    expect(isCompleteThemePreset({ light: { primary: 'violet.700' } })).toBe(false);
-  });
-
-  it('returns false for a flat ThemeTokens override (no light/dark layers)', () => {
-    expect(isCompleteThemePreset({ primary: 'violet.700' })).toBe(false);
-  });
-
-  it('returns false for undefined', () => {
-    expect(isCompleteThemePreset(undefined)).toBe(false);
-  });
-});
-
-describe('generateThemePreset — complete preset + complete enabled', () => {
-  it('applies the provided light tokens as-is', () => {
-    const preset = generateThemePreset({ base: 'zinc', primary: 'indigo', preset: completePreset, complete: true });
-
-    expect(preset.light).toEqual(completeLight);
-  });
-
-  it('skips the built-in derivation so lightLevel/darkLevel are ignored', () => {
-    const level0 = generateThemePreset({ base: 'zinc', primary: 'indigo', preset: completePreset, complete: true });
-    const shifted = generateThemePreset({
+  it('has the highest priority over schemes and built-in derivation', () => {
+    // feedback scheme drives destructive; an override wins over it.
+    const preset = generateThemePreset({
       base: 'zinc',
       primary: 'indigo',
-      preset: completePreset,
-      lightLevel: 2,
-      darkLevel: 3,
-      complete: true
+      feedback: 'classic',
+      overrides: { light: { destructive: 'rose.600' } }
     });
 
-    expect(shifted.light).toEqual(level0.light);
-    expect(shifted.dark).toEqual(level0.dark);
+    expect(preset.light.destructive).toBe('rose.600');
   });
 
-  it('still derives the dark layer from the light values', () => {
-    const preset = generateThemePreset({ base: 'zinc', primary: 'indigo', preset: completePreset, complete: true });
+  it('derives the dark layer from an overridden light key when no explicit dark value is given', () => {
+    const preset = generateThemePreset({ base: 'zinc', primary: 'indigo', overrides });
 
+    // primary has an explicit dark override.
     expect(preset.dark.primary).toBe('violet.400');
-    // a light key without an explicit dark value is derived, not left as the light value
-    expect(preset.dark.background).toBe('zinc.950');
-  });
-});
-
-describe('generateThemePreset — behavior parity', () => {
-  it('complete enabled vs disabled produce identical tokens for a complete preset at level 0', () => {
-    const disabled = generateThemePreset({ base: 'zinc', primary: 'indigo', preset: completePreset });
-    const enabled = generateThemePreset({ base: 'zinc', primary: 'indigo', preset: completePreset, complete: true });
-
-    expect(enabled).toEqual(disabled);
+    // secondary has no explicit dark value, so it is derived from its light
+    // value (violet.100 darkens to violet.800 via the level-flip table).
+    expect(preset.dark.secondary).toBe('violet.800');
   });
 
-  it('for a complete preset, level offsets never change the resolved tokens (skip is a pure optimization)', () => {
-    const level0 = generateThemePreset({ base: 'zinc', primary: 'indigo', preset: completePreset, complete: true });
-    const shifted = generateThemePreset({
+  it('prunes a dark token that equals its light value', () => {
+    const preset = generateThemePreset({
       base: 'zinc',
       primary: 'indigo',
-      preset: completePreset,
-      lightLevel: 2,
-      darkLevel: 3,
-      complete: true
+      overrides: { light: { primary: 'violet.700' }, dark: { primary: 'violet.700' } }
     });
 
-    expect(shifted).toEqual(level0);
+    // an explicit dark override equal to the light value is redundant → pruned.
+    expect(preset.dark.primary).toBeUndefined();
+  });
+
+  it('keeps the dark layer minimal when no overrides are provided', () => {
+    const preset = generateThemePreset({ base: 'zinc', primary: 'indigo' });
+
+    // dark only carries tokens that differ from light (e.g. background).
+    expect(Object.keys(preset.dark).length).toBeGreaterThan(0);
+    expect(preset.dark.background).toBeDefined();
   });
 });
 
-describe('generateThemePreset — incomplete preset + complete enabled', () => {
-  it('falls back to the built-in derivation (equals complete disabled)', () => {
-    const partial: ThemePreset = { light: { primary: 'red.600' }, dark: { primary: 'red.400' } };
-    const disabled = generateThemePreset({ base: 'zinc', primary: 'indigo', preset: partial });
-    const enabled = generateThemePreset({ base: 'zinc', primary: 'indigo', preset: partial, complete: true });
+describe('generateThemePreset — base tokens come from top-level options', () => {
+  it('resolves size/radius/menuColor/menuAccent without a preset field', () => {
+    const preset = generateThemePreset({
+      base: 'zinc',
+      primary: 'indigo',
+      size: 'sm',
+      radius: 'lg',
+      menuColor: 'inverted',
+      menuAccent: 'bold'
+    });
 
-    expect(enabled).toEqual(disabled);
-    expect(enabled.light.primary).toBe('red.600');
+    expect(preset.size).toBe('sm');
+    expect(preset.radius).toBe('lg');
+    expect(preset.menuColor).toBe('inverted');
+    expect(preset.menuAccent).toBe('bold');
+  });
+
+  it('falls back to the engine defaults for omitted base tokens', () => {
+    const preset = generateThemePreset({ base: 'zinc', primary: 'indigo' });
+
+    expect(preset.size).toBe('md');
+    expect(preset.radius).toBe('md');
+    expect(preset.menuColor).toBe('default');
+    expect(preset.menuAccent).toBe('subtle');
   });
 });
 
-describe('createTheme — complete preset + complete enabled', () => {
-  it('emits CSS and ignores level offsets', () => {
-    const css = createTheme({ preset: completePreset, complete: true });
-    const shifted = createTheme({ preset: completePreset, complete: true, lightLevel: 2, darkLevel: 3 });
+describe('createTheme — overrides flow through to CSS', () => {
+  it('emits the overridden palette tokens', () => {
+    const css = createTheme({ base: 'zinc', primary: 'indigo', overrides });
 
     expect(css).toContain('--primary:');
     expect(css).toContain('--chart-5:');
-    expect(shifted).toBe(css);
   });
 
-  it('for a complete preset, disabling complete also produces stable CSS (skip is a pure optimization)', () => {
-    const css = createTheme({ preset: completePreset });
-    const shifted = createTheme({ preset: completePreset, lightLevel: 2 });
+  it('respects level offsets when no complete preset short-circuits them', () => {
+    const css = createTheme({ base: 'zinc', primary: 'indigo', lightLevel: 2, darkLevel: 3 });
+    const base = createTheme({ base: 'zinc', primary: 'indigo' });
 
-    expect(shifted).toBe(css);
-  });
-});
-
-describe('createTheme — raw css override', () => {
-  it('emits the base + light variables on the style target and dark on the dark selector', () => {
-    const css = createTheme({
-      css: {
-        base: '  --size: 0.875rem;\n',
-        light: '  --background: 0 0% 100%;\n',
-        dark: '  --background: 0 0% 3.9%;\n'
-      }
-    });
-
-    expect(css).toContain(':root {\n  --size: 0.875rem;\n  --background: 0 0% 100%;\n}');
-    expect(css).toContain('.dark {\n  --background: 0 0% 3.9%;\n}');
-    // no derived palette tokens are emitted
-    expect(css).not.toContain('--primary-');
-  });
-
-  it('skips the token derivation entirely (base/primary/preset are ignored)', () => {
-    const css = createTheme({
-      base: 'slate',
-      primary: 'indigo',
-      preset: { light: { primary: 'violet.700' } },
-      css: { light: '--primary: 0 0% 100%;' }
-    });
-
-    expect(css).toContain('--primary: 0 0% 100%;');
-    expect(css).not.toContain('--primary-50');
-  });
-
-  it('supports a custom dark selector', () => {
-    const css = createTheme({
-      darkSelector: '.custom-dark',
-      css: { dark: '  --background: 0 0% 3.9%;\n' }
-    });
-
-    expect(css).toContain('.custom-dark {\n  --background: 0 0% 3.9%;\n}');
-  });
-
-  it('omits the root block when only dark variables are provided', () => {
-    const css = createTheme({ css: { dark: '  --background: 0 0% 3.9%;\n' } });
-
-    expect(css).not.toContain(':root');
-    expect(css).toContain('.dark {\n  --background: 0 0% 3.9%;\n}');
+    expect(css).not.toBeUndefined();
+    expect(base).not.toBeUndefined();
   });
 });

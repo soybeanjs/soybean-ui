@@ -9,12 +9,19 @@ import type { ToastProviderProps } from '../toast/types';
 /**
  * UI-level theme options accepted by `SConfigProvider`.
  *
- * Unlike the engine's `ThemeOptions`, the `preset` may be either an inline
- * color preset or a `{ name }` reference to a stored preset. The provider
- * resolves named references to their colors before calling `createTheme`, so
- * the engine only ever receives a materialized preset.
+ * The engine's `ThemeOptions` now carries `overrides` for inline token
+ * overrides. The provider additionally accepts a legacy `preset` input — either
+ * an inline mode-split override or a `{ name }` reference to a stored preset.
+ * The provider resolves named references to their colors and materializes the
+ * result as `overrides` before calling `createTheme`, so the engine only ever
+ * receives resolved options.
  */
-export type ConfigProviderThemeOptions = Omit<ThemeOptions, 'preset'> & {
+export type ConfigProviderThemeOptions = ThemeOptions & {
+  /**
+   * A custom color preset: either an inline mode-split override (light/dark
+   * partial tokens) or a `{ name }` reference to a stored preset. Resolved to
+   * `overrides` before `createTheme`.
+   */
   preset?: ThemePresetInput;
 };
 

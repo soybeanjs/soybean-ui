@@ -1,11 +1,11 @@
 import type { PaletteColorLevel } from '@soybeanjs/colord/palette';
 import {
-  builtinBaseCoreTemplate,
-  builtinPrimaryCoreTemplate,
-  CHART_TEMPLATE,
-  DARK_PRIMARY_600,
-  NEUTRAL_FAMILY
+  createBaseCore,
+  createChromaticPrimaryCore,
+  createNeutralPrimaryCore,
+  DARK_PRIMARY_600
 } from './core-template';
+import { getRegistry, NEUTRAL_FAMILY } from './registry';
 import {
   DARK_BORDER,
   DARK_CARD,
@@ -170,7 +170,7 @@ export function deriveBasePreset(
   lightLevel: LightLevelOffset = 0,
   darkLevel: DarkLevelOffset = 0
 ): { light: ColorTokens; dark: ColorTokens } {
-  const core = builtinBaseCoreTemplate[palette];
+  const core = createBaseCore(palette);
 
   const lightMuted = shiftToken(palette, core.light.muted, LIGHT_WEAK, lightLevel);
   const darkMuted = shiftToken(palette, core.dark.muted, DARK_WEAK, darkLevel);
@@ -222,85 +222,35 @@ export function deriveBasePreset(
       border: DARK_BORDER,
       input: DARK_INPUT
     }
-  };
+  } as { light: ColorTokens; dark: ColorTokens };
 }
 
 /**
- * derive the built-in primary preset (primary + ring + chart) from the core 2
- * keys + the fixed chart template (D7).
+ * resolve the family of a primary palette (neutral vs chromatic) from the
+ * runtime registry, falling back to the built-in family sets.
  */
-export function derivePrimaryPreset(palette: PrimaryColorKey): { light: ColorTokens; dark: ColorTokens } {
-  const core = builtinPrimaryCoreTemplate[palette];
+function resolvePrimaryFamily(palette: PrimaryColorKey): 'neutral' | 'chromatic' {
+  const registered = getRegistry().primary[palette];
 
-  return {
-    light: {
-      ...core.light,
-      ...CHART_TEMPLATE.light
-    },
-    dark: {
-      ...core.dark,
-      ...CHART_TEMPLATE.dark
-    }
-  };
-}
+  if (registered) {
+    return registered.family;
+  }
 
-export type FeedbackColors = {
-  light: Record<'destructive' | 'success' | 'warning' | 'info', ColorValue>;
-  dark: Record<'destructive' | 'success' | 'warning' | 'info', ColorValue>;
-};
-
-/**
- * feedback colors follow the fixed classic rule (ADR-6 / D9)
- *
- * red/green/amber/blue at .500 (light) and .400 (dark).
- */
-export function deriveFeedbackColors(): FeedbackColors {
-  return {
-    light: {
-      destructive: 'red.500',
-      success: 'green.500',
-      warning: 'amber.500',
-      info: 'blue.500'
-    },
-    dark: {
-      destructive: 'red.400',
-      success: 'green.400',
-      warning: 'amber.400',
-      info: 'blue.400'
-    }
-  };
+  return (NEUTRAL_FAMILY as readonly string[]).includes(palette) ? 'neutral' : 'chromatic';
 }
 
 /**
- * derive the sidebar colors from base ⊕ primary (extended preset).
- * light: sidebar = background; dark: sidebar = card.
+ * derive the primary preset (primary + ring) from the core 2 keys. Chart colors
+ * are no longer merged here; they come from the chart scheme (D7 → scheme).
  */
-export function deriveSidebarPreset(extendedPreset: { light: ColorTokens; dark: ColorTokens }): {
-  light: ColorTokens;
-  dark: ColorTokens;
-} {
-  const { light, dark } = extendedPreset;
+export function derivePrimaryPreset(
+  palette: PrimaryColorKey,
+  family: 'neutral' | 'chromatic' = resolvePrimaryFamily(palette)
+): { light: ColorTokens; dark: ColorTokens } {
+  const core = family === 'neutral' ? createNeutralPrimaryCore(palette) : createChromaticPrimaryCore(palette);
 
   return {
-    light: {
-      sidebar: light.background,
-      sidebarForeground: light.foreground,
-      sidebarPrimary: light.primary,
-      sidebarPrimaryForeground: light.primaryForeground,
-      sidebarAccent: light.accent,
-      sidebarAccentForeground: light.accentForeground,
-      sidebarBorder: light.border,
-      sidebarRing: light.ring
-    },
-    dark: {
-      sidebar: dark.card,
-      sidebarForeground: dark.foreground,
-      sidebarPrimary: dark.primary,
-      sidebarPrimaryForeground: dark.primaryForeground,
-      sidebarAccent: dark.accent,
-      sidebarAccentForeground: dark.accentForeground,
-      sidebarBorder: dark.border,
-      sidebarRing: dark.ring
-    }
+    light: { ...core.light },
+    dark: { ...core.dark }
   };
 }

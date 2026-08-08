@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useMediaQuery } from '@vueuse/core';
 import { themeRadiusKeys, themeSizeKeys } from '@soybeanjs/theme';
-import type { ThemeCssVariables } from '@soybeanjs/theme';
 import {
   SButton,
   SButtonIcon,
@@ -14,7 +13,7 @@ import {
   SSlider,
   STabs
 } from '@soybeanjs/ui';
-import type { SelectOptionData } from '@soybeanjs/ui';
+import type { ConfigProviderThemeOptions, SelectOptionData } from '@soybeanjs/ui';
 import {
   baseOptions,
   chartKeys,
@@ -43,10 +42,15 @@ import type { ShadeValue } from './shared';
 import { useThemeGenerator } from './hooks';
 import ColorDecoration from './color-decoration.vue';
 
-type Emits = {
-  (e: 'getCss', value: ThemeCssVariables): void;
+type Props = {
+  theme?: ConfigProviderThemeOptions;
 };
 
+type Emits = {
+  (e: 'update:theme', value: ConfigProviderThemeOptions | undefined): void;
+};
+
+const props = defineProps<Props>();
 const emit = defineEmits<Emits>();
 
 const isMobile = useMediaQuery('(max-width: 768px)');
@@ -63,7 +67,7 @@ const {
   menuAccent,
   borderOpacity,
   patchTopLevel,
-  patchPreset,
+  patchBase,
   tokenValue,
   onTokenInput,
   surfaceValue,
@@ -74,7 +78,7 @@ const {
   chartLevel,
   setChart,
   setBorderOpacity
-} = useThemeGenerator(emit);
+} = useThemeGenerator(props, emit);
 </script>
 
 <template>
@@ -136,7 +140,7 @@ const {
                   :max="themeSizeKeys.length - 1"
                   :step="1"
                   class="w-full"
-                  @update:model-value="value => patchPreset({ size: sizeFromIndex(value[0]) })"
+                  @update:model-value="value => patchBase({ size: sizeFromIndex(value[0]) })"
                 />
                 <span class="w-15 shrink-0 text-right text-xs text-muted-foreground">{{ sizeLabel(size) }}</span>
               </div>
@@ -151,7 +155,7 @@ const {
                   :max="themeRadiusKeys.length - 1"
                   :step="1"
                   class="w-full"
-                  @update:model-value="value => patchPreset({ radius: radiusFromIndex(value[0]) })"
+                  @update:model-value="value => patchBase({ radius: radiusFromIndex(value[0]) })"
                 />
                 <span class="w-15 shrink-0 text-right text-xs text-muted-foreground">{{ radiusLabel(radius) }}</span>
               </div>

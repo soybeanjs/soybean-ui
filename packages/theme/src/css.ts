@@ -11,8 +11,7 @@ import type {
   DarkSelector,
   FullThemePreset,
   StyleTarget,
-  ThemeColor,
-  ThemeCssVariables
+  ThemeColor
 } from './types';
 import { COLOR_VARIABLES, DARK_SELECTOR, EXTENDED_THEME_VARIABLES, RADIUS_VARIABLE, SIZE_VARIABLE } from './variables';
 
@@ -31,37 +30,6 @@ export function generateCss(preset: FullThemePreset, options: Required<BaseGener
   const colorCss = generateColorCss(preset, options);
 
   return `${baseCss}\n\n${colorCss}`;
-}
-
-/**
- * generate the raw CSS from user-provided variables, bypassing the token
- * derivation pipeline entirely.
- *
- * `base` + `light` are emitted together on the style target, and `dark` is
- * emitted under the resolved dark selector. The `format` option is accepted for
- * signature parity but has no effect on raw CSS.
- */
-export function generateRawCss(css: ThemeCssVariables, options: Required<BaseGenerateCSSOptions>) {
-  const { styleTarget, darkSelector } = options;
-
-  // trim each segment so multi-line strings ending with `\n` don't produce a
-  // stray blank line before the closing brace; leading indentation is kept.
-  const baseCss = css.base?.trimEnd() ?? '';
-  const lightCss = css.light?.trimEnd() ?? '';
-  const darkCss = css.dark?.trimEnd() ?? '';
-
-  let output = '';
-
-  const rootContent = [baseCss, lightCss].filter(Boolean).join('\n');
-  if (rootContent) {
-    output += `${styleTarget} {\n${rootContent}\n}`;
-  }
-
-  if (darkCss) {
-    output += `${output ? '\n\n' : ''}${darkSelector} {\n${darkCss}\n}`;
-  }
-
-  return output;
 }
 
 function generateBaseCss(preset: FullThemePreset, styleTarget: StyleTarget) {
