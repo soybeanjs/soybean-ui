@@ -270,6 +270,7 @@ export function presetUiUnocss(options?: UiUnocssOptions): Preset<Theme>[] {
         'chart-5': 'hsl(var(--chart-5))'
       },
       borderRadius: {
+        '2xl': 'calc(var(--radius) + 8px)',
         xl: 'calc(var(--radius) + 4px)',
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
@@ -278,7 +279,8 @@ export function presetUiUnocss(options?: UiUnocssOptions): Preset<Theme>[] {
       fontSize: {
         '4xs': ['0.375rem', '0.5rem'],
         '3xs': ['0.5rem', '0.625rem'],
-        '2xs': ['0.625rem', '0.75rem']
+        '2xs': ['0.625rem', '0.75rem'],
+        root: 'var(--size)'
       }
     }
   };

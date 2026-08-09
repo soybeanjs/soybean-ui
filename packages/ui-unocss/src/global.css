@@ -1,6 +1,9 @@
 * {
   border-color: hsl(var(--border) / var(--border-alpha, 1));
 }
+html {
+  font-size: var(--size);
+}
 body {
   color: hsl(var(--foreground));
   background: hsl(var(--background));
