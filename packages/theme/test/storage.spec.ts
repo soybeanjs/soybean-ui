@@ -8,9 +8,7 @@ import {
   removeStoredThemePreset,
   setStoredThemeConfig,
   setStoredThemePreset,
-  setThemeCookie,
   stringifyThemeConfig,
-  THEME_COOKIE_KEY,
   THEME_PRESETS_STORAGE_KEY,
   THEME_STORAGE_KEY
 } from '../src/storage';
@@ -107,14 +105,6 @@ describe('getStoredThemeConfig / setStoredThemeConfig / removeStoredThemeConfig'
 
   it('returns null when nothing is stored', () => {
     expect(getStoredThemeConfig()).toBeNull();
-  });
-});
-
-describe('setThemeCookie', () => {
-  it('writes the config into document.cookie', () => {
-    setThemeCookie(sampleConfig);
-
-    expect(document.cookie).toContain(THEME_COOKIE_KEY);
   });
 });
 

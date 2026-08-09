@@ -269,12 +269,12 @@ export interface ThemeConfigState {
   format?: ColorFormat;
   lightLevel?: LightLevelOffset;
   darkLevel?: DarkLevelOffset;
-  /** overrides 随配置持久化，保证"只 overrides 不同"也能重建（见 §7.3） */
+  /** overrides 随配置持久化于 localStorage（体积约束，不进 cookie），见 §7.3 */
   overrides?: ThemeOverrides;
 }
 ```
 
-> `ThemeConfigState` 是**可重建的完整构建输入**：命名 key（base/primary/feedback/chart/sidebar/levels）+ `overrides` 一起持久化，`resolveTheme({ ...state, overrides })` 即可完整还原。
+> `ThemeConfigState` 是**可重建的完整构建输入**：命名 key（base/primary/feedback/chart/sidebar/levels）+ `overrides` 一起持久化于 **localStorage**，`resolveTheme({ ...state, overrides })` 即可完整还原。命名 key 同时镜像到 cookie 供服务端首帧预置 `<html>` 的 `dark` class / `data-theme`；`overrides` 因体积约束**不进 cookie**（见 §7.3）。
 
 ### 7.2 命名预设表（store 层，独立于 ThemeOptions）
 
@@ -299,19 +299,28 @@ SSR 恢复流程：`createThemeStore` 读到已注册的自定义 palette/scheme
 | B    | overrides 键集不同  | ① `{ primary }` ② `{ primary, ring }`                                          |
 | C    | overrides 值不同    | ① `{ primary: 'blue.600' }` ② `{ primary: 'blue.700' }`                        |
 
+**硬约束（与主流方案一致）**：主题**不通过 cookie 传递**。cookie 有 ~4KB 体积上限且随每次请求自动传送，而 `overrides` 是任意大小的 `Partial<ColorTokens>`，既不进 cookie、也不作为跨环境通道。主流做法（next-themes / shadcn-theme-provider / VueUse `useColorMode` 等）已证明：颜色 CSS 由客户端注入即可防 FOUC，主题只存 **localStorage**、由内联脚本在首帧前应用。因此本设计采用**单一存储**：
+
+| 层           | 承载内容                              | 是否含 overrides | 用途                               |
+| ------------ | ------------------------------------- | ---------------- | ---------------------------------- |
+| localStorage | 完整 `ThemeConfigState` + `overrides` | 含               | 客户端重建主题（容量大，仅浏览器） |
+
 **处理策略**（分层，不互斥）：
 
-- **策略 X（推荐基准）**：`overrides` 并入 `ThemeConfigState`（§7.1），作为**未命名/临时变体**的完整承载。`overrides` 不同 → 序列化字符串不同 → 可区分、可 SSR 重建。`parseThemeConfig` 需新增 `overrides` 逐键校验（复用 `pickValidColors` 的颜色合法性校验）。
-- **策略 Y（补充）**：`overrides` 不随 `ThemeConfigState` 持久化，而是把"仅 overrides 不同"的变体**固化为命名预设**（`StoredThemePreset`），应用态只存 `name`。适用于**用户主动保存、想跨项目分享**的可复用主题。
+- **策略 X（推荐基准，未命名/临时变体）**：`overrides` 并入 `ThemeConfigState`（§7.1），**持久化于 localStorage**。`overrides` 不同 → 序列化字符串不同 → 可区分、可重建。客户端首帧由内联脚本（`createThemeInitScript`）读 localStorage 应用，**无需 SSR 参与**。`parseThemeConfig` 需新增 `overrides` 逐键校验（复用 `pickValidColors` 的颜色合法性校验）。
+- **策略 Y（补充，已命名可复用预设）**：`overrides` 固化为 `StoredThemePreset`，应用态只存 `name`（同样存 localStorage）。适用于**用户主动保存、想跨项目分享**的可复用主题。
 
 **两者分工**：
 
-| 变体类别                            | 承载方式                               | 重建路径                                |
-| ----------------------------------- | -------------------------------------- | --------------------------------------- |
-| 未命名/临时变体（随手调色、未起名） | `ThemeConfigState.overrides`（策略 X） | `resolveTheme({ ...state, overrides })` |
-| 已命名可复用预设（主动保存/分享）   | `StoredThemePreset`（策略 Y）          | 查表取 `overrides` + `resolveTheme`     |
+| 变体类别                            | 承载方式                                               | 重建路径                                |
+| ----------------------------------- | ------------------------------------------------------ | --------------------------------------- |
+| 未命名/临时变体（随手调色、未起名） | localStorage 的 `ThemeConfigState.overrides`（策略 X） | `resolveTheme({ ...state, overrides })` |
+| 已命名可复用预设（主动保存/分享）   | `StoredThemePreset`（策略 Y），应用态只存 `name`       | 查表取 `overrides` + `resolveTheme`     |
 
-**对 SSR 的影响**：采用策略 X 后，cookie 里解析出的 `ThemeConfigState` 含 `overrides`，服务端首帧能据此渲染出与客户端一致的主题 CSS（无 FOUC）；"只有 overrides 不同"的主题在 cookie 中内容不同，SSR 可正确区分并各自渲染。
+**对 SSR 的影响**：
+
+- 颜色 CSS 由客户端 `createTheme` 注入（现状如此），SSR 首帧渲染默认主题；`createThemeInitScript()` 内联脚本在客户端首帧前读 localStorage，设置 `dark` class / `data-theme`——**不涉及 overrides、不依赖 cookie**。
+- "仅 overrides 不同的未命名主题"首帧用命名默认值渲染，overrides 在 hydrate 后由 localStorage 接管（接受首帧轻微不一致）；若要求首帧精确一致，则固化为命名预设（策略 Y）。
 
 ---
 

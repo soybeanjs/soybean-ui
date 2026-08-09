@@ -7,50 +7,37 @@
  * hydrate on the client without flicker:
  *
  * - runtime detection (`isServerRuntime`)
- * - cookie parsing (`getCookieValue` / `getThemeConfigFromCookie`)
- * - an inline init script that applies a resolved theme before first paint
- *   (`createThemeInitScript`)
+ * - an inline init script that applies the persisted theme (from localStorage)
+ *   before first paint (`createThemeInitScript`)
  *
- * Storage is intentionally out of scope: the config is passed into the init
- * script explicitly rather than read back from `localStorage`.
+ * The theme is persisted in localStorage only (no cookie). On the server the
+ * first paint uses the default theme; the inline init script reads the
+ * persisted preference from localStorage and applies data-theme / the dark
+ * mode class before the browser paints, so there is no theme flash.
  */
 
 import { getDarkSelector } from './shared';
+import { THEME_STORAGE_KEY } from './storage';
 import type { DarkSelectorValue } from './types';
-
-/**
- * the minimal theme config that drives SSR rendering and the init script
- */
-export interface ThemeConfigState {
-  /**
-   * the base palette key
-   */
-  base: string;
-  /**
-   * the primary palette key
-   */
-  primary: string;
-  /**
-   * the active color mode
-   */
-  mode: 'light' | 'dark';
-}
 
 /**
  * options for `createThemeInitScript`
  */
 export interface ThemeInitScriptOptions {
   /**
-   * the resolved theme config to apply before first paint.
+   * the localStorage key the persisted theme config is read from.
    *
-   * When omitted the script is a no-op (no storage to read from).
+   * Must match the key used by `setStoredThemeConfig` (default
+   * `THEME_STORAGE_KEY`).
+   *
+   * @defaultValue THEME_STORAGE_KEY
    */
-  config?: ThemeConfigState;
+  storageKey?: string;
   /**
    * how dark mode is applied in the generated CSS.
    *
    * - `class`: dark tokens live under `.dark`, so the init script toggles the
-   *   `.dark` class on `<html>` from `config.mode`.
+   *   `.dark` class on `<html>` from the persisted `mode`.
    * - `media`: dark tokens live under `@media (prefers-color-scheme: dark)`
    *   and follow the OS preference automatically, so the init script skips the
    *   class toggle entirely.
@@ -80,138 +67,44 @@ export function isServerRuntime(): boolean {
 }
 
 /**
- * read a plain cookie value from a raw cookie string (e.g. a server request
- * header or `document.cookie`). Returns `null` when the key is absent.
- */
-export function getCookieValue(rawCookie: string | null | undefined, key: string): string | null {
-  if (!rawCookie) {
-    return null;
-  }
-
-  const entry = rawCookie
-    .split(';')
-    .map(part => part.trim())
-    .find(part => part.startsWith(`${key}=`));
-
-  if (!entry) {
-    return null;
-  }
-
-  const value = entry.slice(key.length + 1);
-
-  // 空值（例如 cookie 被清除后残留的 `key=`）视为未设置
-  return value || null;
-}
-
-/**
- * parse a serialized theme config string into a `ThemeConfigState`.
- *
- * Accepts a JSON payload (`{"base":"zinc","primary":"indigo","mode":"dark"}`)
- * or the compact `"<base>-<primary>"` form. Returns `null` on malformed input.
- */
-export function parseThemeConfig(raw: string): ThemeConfigState | null {
-  if (!raw) {
-    return null;
-  }
-
-  // compact "<base>-<primary>" form
-  if (!raw.startsWith('{')) {
-    const [base, primary] = raw.split('-');
-    if (!base || !primary) {
-      return null;
-    }
-    return { base, primary, mode: 'light' };
-  }
-
-  try {
-    const parsed = JSON.parse(raw) as Partial<ThemeConfigState>;
-    if (!parsed.base || !parsed.primary) {
-      return null;
-    }
-    return {
-      base: parsed.base,
-      primary: parsed.primary,
-      mode: parsed.mode === 'dark' ? 'dark' : 'light'
-    };
-  } catch {
-    return null;
-  }
-}
-
-/**
- * the default cookie key carrying the current theme config
- */
-export const THEME_COOKIE_KEY = '__SOYBEAN_THEME';
-
-/**
- * resolve the theme config from a raw cookie header.
- *
- * Suitable for both the server (`useRequestHeaders(['cookie'])` in Nuxt) and
- * the client (`document.cookie`). Returns `null` when the cookie is missing or
- * malformed.
- */
-export function getThemeConfigFromCookie(
-  rawCookie: string | null | undefined,
-  key: string = THEME_COOKIE_KEY
-): ThemeConfigState | null {
-  if (!rawCookie) {
-    return null;
-  }
-
-  const entry = rawCookie
-    .split(';')
-    .map(part => part.trim())
-    .find(part => part.startsWith(`${key}=`));
-
-  if (!entry) {
-    return null;
-  }
-
-  let value: string;
-  try {
-    value = decodeURIComponent(entry.slice(key.length + 1));
-  } catch {
-    return null;
-  }
-
-  return parseThemeConfig(value);
-}
-
-/**
- * generate the inline `<head>` script that applies a resolved theme before
+ * generate the inline `<head>` script that applies the persisted theme before
  * first paint to avoid theme flash on refresh (FOUC):
  *
+ * - reads the theme config previously persisted to localStorage
  * - sets `data-theme="<base>-<primary>"` on `<html>`
- * - toggles the dark mode class from `config.mode`
+ * - toggles the dark mode class from the persisted `mode`
  *
- * No storage is involved: the config is passed explicitly so the same script
- * works identically in SSR and client-only setups.
+ * The script runs in the browser before first paint and reads localStorage
+ * directly, so it works identically in SSR and client-only setups.
  */
 export function createThemeInitScript(options: ThemeInitScriptOptions = {}): string {
-  const { config, darkSelector = 'class', setDataTheme = true } = options;
+  const { storageKey = THEME_STORAGE_KEY, darkSelector = 'class', setDataTheme = true } = options;
+
+  const resolvedSelector = getDarkSelector(darkSelector);
 
   const statements = ['(function () {', '  try {', '    var doc = document.documentElement;'];
 
-  if (config) {
-    if (setDataTheme) {
-      statements.push(
-        `    var themeKey = [${JSON.stringify(config.base)}, ${JSON.stringify(config.primary)}].filter(Boolean).join('-');`,
-        "    if (themeKey) doc.setAttribute('data-theme', themeKey);"
-      );
-    }
+  statements.push(
+    `    var raw = localStorage.getItem(${JSON.stringify(storageKey)});`,
+    '    if (!raw) return;',
+    '    var cfg = JSON.parse(raw);'
+  );
 
-    const resolvedSelector = getDarkSelector(darkSelector);
+  if (setDataTheme) {
+    statements.push(
+      "    var themeKey = [cfg.base, cfg.primary].filter(Boolean).join('-');",
+      "    if (themeKey) doc.setAttribute('data-theme', themeKey);"
+    );
+  }
 
-    // media mode follows the OS preference via `@media (prefers-color-scheme)`.
-    // toggling a class would be a no-op at best and could misfire other `.dark`
-    // rules at worst, so skip the class toggle whenever that selector is used.
-    if (!resolvedSelector.startsWith('@media')) {
-      // class and custom selectors are `.foo`; the class name is the selector
-      // without the leading dot.
-      const darkClass = resolvedSelector.replace(/^\./, '');
-      const isDark = config.mode === 'dark';
-      statements.push(`    doc.classList.toggle(${JSON.stringify(darkClass)}, ${JSON.stringify(isDark)});`);
-    }
+  // media mode follows the OS preference via `@media (prefers-color-scheme)`.
+  // toggling a class would be a no-op at best and could misfire other `.dark`
+  // rules at worst, so skip the class toggle whenever that selector is used.
+  if (!resolvedSelector.startsWith('@media')) {
+    // class and custom selectors are `.foo`; the class name is the selector
+    // without the leading dot.
+    const darkClass = resolvedSelector.replace(/^\./, '');
+    statements.push(`    doc.classList.toggle(${JSON.stringify(darkClass)}, cfg.mode === 'dark');`);
   }
 
   statements.push('  } catch (e) {}', '})();');

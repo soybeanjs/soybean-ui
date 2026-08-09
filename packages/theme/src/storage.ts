@@ -79,9 +79,9 @@ export interface StoredThemePresets {
 /**
  * the persistable theme config state
  *
- * a subset of `ThemeOptions` that can be safely stored in localStorage /
- * cookies, plus the `mode` preference used to toggle the dark mode class
- * before first paint. Custom `preset` colors are intentionally not persisted.
+ * a subset of `ThemeOptions` that can be safely stored in localStorage, plus
+ * the `mode` preference used to toggle the dark mode class before first paint.
+ * Custom `preset` colors are intentionally not persisted.
  */
 export interface ThemeConfigState {
   /**
@@ -152,38 +152,9 @@ export interface ThemeConfigState {
 }
 
 /**
- * options for `setThemeCookie`
- */
-export interface ThemeCookieOptions {
-  /**
-   * the cookie name
-   *
-   * @defaultValue 'soybean-ui-theme'
-   */
-  key?: string;
-  /**
-   * the cookie lifetime in seconds
-   *
-   * @defaultValue 365 days
-   */
-  maxAge?: number;
-  /**
-   * the cookie path
-   *
-   * @defaultValue '/'
-   */
-  path?: string;
-}
-
-/**
  * the default localStorage key for the persisted theme config
  */
 export const THEME_STORAGE_KEY = '__SOYBEAN_THEME';
-
-/**
- * the default cookie name carrying the theme config for server-side SSR resolution
- */
-export const THEME_COOKIE_KEY = '__SOYBEAN_THEME';
 
 const MENU_COLORS: readonly MenuColor[] = ['default', 'inverted', 'default-translucent', 'inverted-translucent'];
 
@@ -356,21 +327,6 @@ export function setStoredThemeConfig(config: ThemeConfigState, key: string = THE
  */
 export function removeStoredThemeConfig(key: string = THEME_STORAGE_KEY): void {
   getStorage()?.removeItem(key);
-}
-
-/**
- * mirror the theme config into a cookie so the server can resolve the same
- * theme during SSR and render the matching CSS in the initial HTML.
- */
-export function setThemeCookie(config: ThemeConfigState, options: ThemeCookieOptions = {}): void {
-  if (typeof document === 'undefined') {
-    return;
-  }
-
-  const { key = THEME_COOKIE_KEY, maxAge = 365 * 24 * 60 * 60, path = '/' } = options;
-  const value = encodeURIComponent(stringifyThemeConfig(config));
-
-  document.cookie = `${key}=${value}; Max-Age=${maxAge}; Path=${path}; SameSite=Lax`;
 }
 
 /**

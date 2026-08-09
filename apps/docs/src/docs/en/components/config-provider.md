@@ -229,20 +229,19 @@ SoybeanUI splits `ConfigProvider` into a headless layer (`@soybeanjs/headless/co
 
 ### SSR theme consistency (no flash on refresh)
 
-When the theme is persisted in `localStorage`, a client-only style injection would apply the saved theme only after hydration, flashing the default theme on refresh. `@soybeanjs/theme` ships SSR-safe helpers (under the `@soybeanjs/theme/ssr` subpath) that make the server render the exact saved theme:
+The theme is persisted in `localStorage` only (no cookie). A client-only style injection would apply the saved theme only after hydration, flashing the default theme on refresh. `@soybeanjs/theme` ships an SSR-safe init script (under the `@soybeanjs/theme/ssr` subpath) that applies the saved theme before first paint:
 
-- **`createThemeInitScript()`** — returns a small IIFE to inline in `<head>`. Before first paint it reads the stored config from `localStorage`, sets `data-theme="<base>-<primary>"` and the dark-mode class on `<html>`, and mirrors the config into a cookie (`soybean-ui-theme` by default) so the next SSR request can resolve it.
-- **`getThemeConfigFromCookie(cookieHeader)`** — parses that cookie into a `ThemeConfigState` on the server (works with `useRequestHeaders(['cookie']).cookie` in Nuxt).
-- **`setThemeCookie(config)` / `getStoredThemeConfig()` / `setStoredThemeConfig()` / `removeStoredThemeConfig()`** — explicit persistence helpers (under the `@soybeanjs/theme/storage` subpath) for client and server.
+- **`createThemeInitScript()`** — returns a small IIFE to inline in `<head>`. Before first paint it reads the stored config from `localStorage`, sets `data-theme="<base>-<primary>"` and the dark-mode class on `<html>`. The server renders the default theme; the script corrects it before the browser paints, so there is no flash.
+- **`getStoredThemeConfig()` / `setStoredThemeConfig()` / `removeStoredThemeConfig()`** — explicit persistence helpers (under the `@soybeanjs/theme/storage` subpath).
 
-In Nuxt the wiring is minimal — pass the environment params to `SConfigProvider` and let it resolve the persisted config itself:
+In Nuxt the wiring is minimal:
 
 ```ts
 // nuxt.config.ts
 export default defineNuxtConfig({
   app: {
     head: {
-      // apply the saved theme before first paint and sync it into a cookie
+      // apply the saved theme before first paint
       script: [{ innerHTML: createThemeInitScript(), tagPosition: 'head' }]
     }
   }
@@ -250,24 +249,21 @@ export default defineNuxtConfig({
 ```
 
 ```vue
-// app.vue — pass only the environment params (isServer + cookieHeader)
+// app.vue — pass only the environment flag
 <script setup lang="ts">
 import { SConfigProvider } from '@soybeanjs/ui';
 
 const isServer = import.meta.server;
-const cookieHeader = isServer ? useRequestHeaders(['cookie']).cookie : undefined;
 </script>
 
 <template>
-  <SConfigProvider :is-server="isServer" :cookie-header="cookieHeader" persist-theme>
+  <SConfigProvider :is-server="isServer" persist-theme>
     <slot />
   </SConfigProvider>
 </template>
 ```
 
-`SConfigProvider` resolves the persisted config from the cookie on the server, and from `localStorage` on the client, so the app no longer needs a `useThemeStore` or a manual `createThemeStore`. Theme state (base / primary / radius / size / mode) and custom presets are managed inside the provider and exposed to descendants via `useTheme()` from `@soybeanjs/ui` — no prop drilling, no app-level store.
-
-Because `SConfigProvider` inlines the theme CSS into the SSR HTML and resolves the persisted config from `cookieHeader` on the server, the first paint already carries the saved theme — no flash, no inconsistency.
+`SConfigProvider` reads the persisted theme from `localStorage` on the client; on the server it starts from the default and the inline script corrects it before first paint. Theme state (base / primary / radius / size / mode) and custom presets are managed inside the provider and exposed to descendants via `useTheme()` from `@soybeanjs/ui` — no prop drilling, no app-level store.
 
 ### FAQ
 

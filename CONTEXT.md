@@ -53,11 +53,11 @@
 
 ## 持久化主题（persistTheme）
 
-ConfigProvider 上控制是否启用持久化主题读取（localStorage / cookie）的属性，默认关闭。关闭时只消费显式 `theme` props；开启后按「显式 props > 存储配置 > 内置默认」的解析管道合并存储配置，且为 `{ presetName }` 引用解析提供前提。存储读取在组件实例初始化时解析一次并写入内存状态，后续渲染复用该状态，无需额外缓存开关。
+ConfigProvider 上控制是否启用持久化主题读取（localStorage）的属性，默认关闭。关闭时只消费显式 `theme` props；开启后按「显式 props > 存储配置 > 内置默认」的解析管道合并存储配置，且为 `{ presetName }` 引用解析提供前提。存储读取在组件实例初始化时解析一次并写入内存状态，后续渲染复用该状态，无需额外缓存开关。
 
 ## SSR 主题配置（themeConfig）
 
-由应用层（如 Nuxt 的 `useRequestHeaders` + `getThemeConfigFromCookie`）从 cookie 解析后注入 ConfigProvider 的持久化配置。SSR 时作为存储配置参与合并（仅补位未显式声明的键），客户端以 localStorage 为权威源。
+由应用层解析后注入 ConfigProvider 的持久化配置。SSR 时作为存储配置参与合并（仅补位未显式声明的键），客户端以 localStorage 为权威源。主题不通过 cookie 传输：服务端首帧渲染默认主题，由 `createThemeInitScript()` 内联脚本在客户端首帧前从 localStorage 应用持久化主题，避免闪烁。
 
 ## 预设注册表（presetProvider）
 
@@ -65,11 +65,7 @@ ConfigProvider 上控制是否启用持久化主题读取（localStorage / cooki
 
 ## 持久化预设条目（StoredThemePreset）
 
-持久化 presets 表中的最小单位：`CustomThemeColorPreset` + `name`（唯一标识，同为存储对象键）+ `version`（semver）。整体以 `StoredThemePresets`（schema `version` + 条目表）存入 `__SOYBEAN_THEME_PRESETS`（localStorage，不入 cookie）。
-
-## 主题存储门面（ThemeStore）
-
-`createThemeStore` 返回的统一、环境感知的主题存储门面，把持久化主题配置、自定义 presets 表、当前已应用 preset 汇聚为一个对象。所有读写按运行时环境路由：服务端读注入的 `cookieHeader`（写为 no-op），客户端读写 localStorage 与 `document.cookie`。cookie 作为跨环境同步通道，保证服务端与客户端读取一致。
+持久化 presets 表中的最小单位：`CustomThemeColorPreset` + `name`（唯一标识，同为存储对象键）+ `version`（semver）。整体以 `StoredThemePresets`（schema `version` + 条目表）存入 `__SOYBEAN_THEME_PRESETS`（localStorage）。
 
 ## 运行时环境判断（isServerRuntime）
 

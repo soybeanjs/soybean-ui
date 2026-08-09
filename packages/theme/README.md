@@ -113,19 +113,17 @@ createTheme({
 | `THEME_RADIUS` / `themeRadiusKeys`                   | 圆角枚举与合法键列表（2xs…2xl）                 |
 | `builtinBasePresetKeys` / `builtinPrimaryPresetKeys` | 内置 base / primary 色板键列表                  |
 
-类型：`ThemeOptions`、`ThemeConfigState`、`ThemeColor`、`ThemeSize`、`ThemeRadius`、`MenuColor`、`MenuAccent`、`CustomThemeColorPreset`、`StoredThemePreset`、`ThemePresetInput`、`ThemeStore`、`ThemeStoreOptions` … 等。
+类型：`ThemeOptions`、`ThemeConfigState`、`ThemeColor`、`ThemeSize`、`ThemeRadius`、`MenuColor`、`MenuAccent`、`CustomThemeColorPreset`、`StoredThemePreset`、`ThemePresetInput` … 等。
 
 ### 子路径 `@soybeanjs/theme/storage`
 
-本地存储与 cookie 持久化。
+本地存储持久化（localStorage，SSR-safe）。
 
 | 导出                                                                        | 说明                                          |
 | --------------------------------------------------------------------------- | --------------------------------------------- |
 | `THEME_STORAGE_KEY`                                                         | 默认主题 localStorage 键（`__SOYBEAN_THEME`） |
-| `THEME_COOKIE_KEY`                                                          | 默认主题 cookie 名（`__SOYBEAN_THEME`）       |
 | `stringifyThemeConfig` / `parseThemeConfig`                                 | 主题配置序列化 / 反序列化（带校验）           |
 | `getStoredThemeConfig` / `setStoredThemeConfig` / `removeStoredThemeConfig` | 主题配置读写                                  |
-| `setThemeCookie`                                                            | 将主题配置镜像到 cookie（SSR 端 no-op）       |
 | `THEME_PRESETS_STORAGE_KEY`                                                 | 自定义 preset 表 localStorage 键              |
 | `getStoredThemePresets`                                                     | 读取 preset 表                                |
 | `setStoredThemePreset` / `removeStoredThemePreset`                          | 增删单个 preset                               |
@@ -134,77 +132,42 @@ createTheme({
 
 SSR/SSG 兼容工具。
 
-| 导出                        | 说明                                         |
-| --------------------------- | -------------------------------------------- |
-| `isServerRuntime`           | 运行时检测服务端（`window`/`document` 缺失） |
-| `getCookieValue`            | 从 cookie 原文读取指定键的值                 |
-| `getThemeConfigFromCookie`  | 从 cookie 解析出主题配置（服务端 SSR 用）    |
-| `createThemeInitScript`     | 生成首帧前内联脚本，避免主题闪烁（FOUC）     |
-| `createThemeStore`          | 环境感知的主题存储门面（`ThemeStore`，见下） |
-| `APPLIED_PRESET_COOKIE_KEY` | 已应用 preset 名的 cookie 键                 |
-
-`ThemeStore` 接口：
-
-```ts
-interface ThemeStore {
-  readonly isServer: boolean;
-  readConfig(): ThemeConfigState | null;
-  commitConfig(config: ThemeConfigState): void;
-  resolvePreset(name: string): CustomThemeColorPreset | undefined;
-  savePreset(preset: StoredThemePreset): boolean;
-  removePreset(name: string): boolean;
-  readAppliedPreset(): string | null;
-  applyPreset(name: string): void;
-  resetPreset(): void;
-}
-```
-
-> 库是预构建的，`import.meta.env.SSR` 在构建时被固化，无法感知消费方运行环境。请通过 `createThemeStore({ isServer })` 或 `SConfigProvider` 的 `isServer` prop 显式传入应用自己的环境标志（如 Nuxt 的 `import.meta.server`）。
+| 导出                    | 说明                                         |
+| ----------------------- | -------------------------------------------- |
+| `isServerRuntime`       | 运行时检测服务端（`window`/`document` 缺失） |
+| `createThemeInitScript` | 生成首帧前内联脚本，避免主题闪烁（FOUC）     |
 
 ## SSR 指南
 
-### 1. 服务端首帧生成主题
+### 1. 客户端首帧前避免闪烁
 
-```ts
-// server 端
-import { createTheme } from '@soybeanjs/theme';
-import { getThemeConfigFromCookie } from '@soybeanjs/theme/ssr';
-
-const config = getThemeConfigFromCookie(cookieHeader); // 从请求 cookie 解析
-const css = createTheme({ base: config?.base, primary: config?.primary, ... });
-// 把 css 注入到 <style id="__SoybeanUI_theme"> 输出到 HTML
-```
-
-### 2. 客户端首帧前避免闪烁
+主题只持久化在 **localStorage**（不下发 cookie）。服务端首帧渲染默认主题，随后由内联脚本在浏览器首帧前读取 localStorage 并应用，因此无主题闪烁：
 
 ```html
 <script>
   // 由 createThemeInitScript() 生成，放在 <head> 最前
-  // 读取 localStorage + cookie，第一时间把 .dark 类与 data-theme 应用到 <html>
+  // 读取 localStorage 中持久化的主题，把 .dark 类与 data-theme 应用到 <html>
 </script>
 ```
 
-### 3. 推荐：直接交给 `SConfigProvider`
+### 2. 推荐：直接交给 `SConfigProvider`
 
-上述逻辑在 `@soybeanjs/ui` 的 `SConfigProvider` 中已全部封装。应用只需传入两个环境参数：
+上述逻辑在 `@soybeanjs/ui` 的 `SConfigProvider` 中已全部封装。应用只需传入环境标志：
 
 ```vue
 <template>
-  <SConfigProvider
-    :is-server="import.meta.server"
-    :cookie-header="import.meta.server ? useRequestHeaders(['cookie']).cookie : undefined"
-  >
+  <SConfigProvider :is-server="import.meta.server" persist-theme>
     <slot />
   </SConfigProvider>
 </template>
 ```
 
-设置持久化、CSS 注入、cookie 同步、暗色 class 切换均由内部完成，无需手写 `createThemeStore` 或 `createThemeInitScript`。
+设置持久化、CSS 注入、暗色 class 切换均由内部完成；如需首帧应用持久化主题，可在 `<head>` 内联 `createThemeInitScript()`。
 
 ## 与 `@soybeanjs/ui` 集成
 
 - 运行时主题注入入口：`SConfigProvider`（唯一入口，不额外提供独立 `ThemeProvider`）。
-- 持久化：设置 `persist-theme` 后，主题状态写入 localStorage + cookie；`{ name }` 引用解析依赖 `persistTheme`。
+- 持久化：设置 `persist-theme` 后，主题状态写入 localStorage；`{ name }` 引用解析依赖 `persistTheme`。
 - 主题 UI 消费：在 `SConfigProvider` 后代中使用 `useTheme`（来自 `@soybeanjs/ui`）读取/修改 `base` / `primary` / `radius` / `size` / `mode` 与 preset，无需 prop drilling。
 
 ## 目录结构
@@ -220,8 +183,8 @@ packages/theme/src/
   tokens.ts       # 尺寸 / 圆角枚举
   variables.ts    # CSS 变量集合
   types.ts        # 全部公开类型
-  storage.ts      # /storage：localStorage + cookie 持久化
-  ssr.ts          # /ssr：服务端工具 + ThemeStore
+  storage.ts      # /storage：localStorage 持久化
+  ssr.ts          # /ssr：服务端工具 + 首帧内联脚本
   shared.ts       # 内部工具（merge / darkSelector）
 ```
 

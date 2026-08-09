@@ -12,16 +12,13 @@ import type {
   BaseColorKey,
   PrimaryColorKey
 } from '@soybeanjs/theme';
-import { getCookieValue, isServerRuntime } from '@soybeanjs/theme/ssr';
+import { isServerRuntime } from '@soybeanjs/theme/ssr';
 import {
-  THEME_COOKIE_KEY,
   getStoredThemeConfig,
   getStoredThemePresets,
-  parseThemeConfig,
   removeStoredThemePreset,
   setStoredThemeConfig,
-  setStoredThemePreset,
-  setThemeCookie
+  setStoredThemePreset
 } from '@soybeanjs/theme/storage';
 import type {
   CustomThemeColorPreset,
@@ -37,7 +34,7 @@ const DEFAULT_RADIUS: ThemeRadiusValue = 'md';
 const DEFAULT_SIZE: ThemeSizeValue = 'md';
 const DEFAULT_MODE: 'light' | 'dark' = 'light';
 
-/** the cookie / localStorage key carrying the currently applied custom preset name */
+/** the localStorage key carrying the currently applied custom preset name */
 const APPLIED_PRESET_KEY = '__SOYBEAN_THEME_APPLIED_PRESET';
 
 /**
@@ -99,18 +96,6 @@ const getStoredPresetColors = (presetName: string): CustomThemeColorPreset | und
   return preset ? { light: preset.light, ...(preset.dark ? { dark: preset.dark } : {}) } : undefined;
 };
 
-const setAppliedPresetCookie = (name: string | null): void => {
-  if (typeof document === 'undefined') {
-    return;
-  }
-
-  if (name) {
-    document.cookie = `${APPLIED_PRESET_KEY}=${name}; Max-Age=31536000; Path=/; SameSite=Lax`;
-  } else {
-    document.cookie = `${APPLIED_PRESET_KEY}=; Max-Age=0; Path=/; SameSite=Lax`;
-  }
-};
-
 /**
  * resolve the dark mode class name from a `darkSelector` value.
  *
@@ -141,33 +126,23 @@ const isInlineColorPreset = (preset: ThemePresetInput | undefined): preset is Th
  * Create the theme context for a `SConfigProvider` instance.
  *
  * The persistable theme state is initialized once from the persisted source
- * (the SSR cookie on the server, localStorage on the client) and kept in sync
- * on every change, so the theme survives across refreshes and matches between
- * server and client rendering.
+ * (the injected `themeConfig` on the server, localStorage on the client) and
+ * kept in sync on every change, so the theme survives across refreshes and
+ * matches between server and client rendering.
  */
 export function createThemeContext(props: ConfigProviderProps): ConfigProviderThemeContext {
   const isServer = props.isServer ?? isServerRuntime();
-  const cookieHeader = props.cookieHeader ?? null;
 
   // —— 初始主题状态：persistTheme 关闭时不读任何存储；开启时优先注入的
-  //    themeConfig（SSR），否则服务端从 cookie、客户端从 localStorage 解析 ——
+  //    themeConfig（SSR），否则客户端从 localStorage 解析。服务端没有
+  //    localStorage，首帧由内联脚本（createThemeInitScript）在客户端应用 ——
   let persisted: ThemeConfigState | null = null;
 
   if (props.persistTheme) {
     if (props.themeConfig) {
       // 显式注入的 themeConfig（SSR）优先，避免读取 localStorage
       persisted = props.themeConfig;
-    } else if (isServer) {
-      const rawCookie = getCookieValue(cookieHeader, THEME_COOKIE_KEY);
-
-      if (rawCookie) {
-        try {
-          persisted = parseThemeConfig(decodeURIComponent(rawCookie));
-        } catch {
-          persisted = null;
-        }
-      }
-    } else {
+    } else if (!isServer) {
       persisted = getStoredThemeConfig();
     }
   }
@@ -212,7 +187,7 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
     }
   });
 
-  // —— 持久化：state 变化时写 localStorage + cookie，保证 SSR 复用同一主题 ——
+  // —— 持久化：state 变化时写 localStorage，保证刷新后主题一致 ——
   watch(
     themeState,
     value => {
@@ -221,7 +196,6 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
       }
 
       setStoredThemeConfig(value);
-      setThemeCookie(value);
     },
     { deep: true }
   );
@@ -268,11 +242,7 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
   // —— 自定义 preset ——
   const customPresets = ref<Record<string, StoredThemePreset>>({});
   const appliedPresetName = ref<string | null>(
-    isServer
-      ? getCookieValue(cookieHeader, APPLIED_PRESET_KEY)
-      : typeof document !== 'undefined'
-        ? (localStorage.getItem(APPLIED_PRESET_KEY) ?? getCookieValue(document.cookie, APPLIED_PRESET_KEY))
-        : null
+    typeof document !== 'undefined' ? localStorage.getItem(APPLIED_PRESET_KEY) : null
   );
 
   const refreshPresets = (): void => {
@@ -305,8 +275,6 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
     if (typeof document === 'undefined') {
       return;
     }
-
-    setAppliedPresetCookie(name);
 
     if (name) {
       localStorage.setItem(APPLIED_PRESET_KEY, name);

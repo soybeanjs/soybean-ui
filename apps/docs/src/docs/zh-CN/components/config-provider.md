@@ -227,20 +227,19 @@ SoybeanUI 将 `ConfigProvider` 拆分为 headless 层（`@soybeanjs/headless/con
 
 ### SSR 主题一致性（刷新无闪烁）
 
-当主题配置持久化在 `localStorage` 时，仅客户端生效的样式注入会在水合后才应用已保存的主题，刷新时会产生默认主题闪烁。`@soybeanjs/theme` 提供了 SSR 安全的工具函数（位于 `@soybeanjs/theme/ssr` 子路径），让服务端渲染出与已保存主题完全一致的 HTML：
+主题只持久化在 `localStorage`（不下发 cookie）。仅客户端生效的样式注入会在水合后才应用已保存的主题，刷新时会产生默认主题闪烁。`@soybeanjs/theme` 提供了 SSR 安全的首帧内联脚本（位于 `@soybeanjs/theme/ssr` 子路径），在首帧绘制前应用已保存的主题：
 
-- **`createThemeInitScript()`** — 返回一段可内联到 `<head>` 的小型 IIFE。在首帧绘制前从 `localStorage` 读取已保存的配置，在 `<html>` 上设置 `data-theme="<base>-<primary>"` 与暗色模式类，并将配置镜像写入 cookie（默认 `soybean-ui-theme`），供下一次 SSR 请求解析。
-- **`getThemeConfigFromCookie(cookieHeader)`** — 在服务端将 cookie 解析为 `ThemeConfigState`（可直接配合 Nuxt 的 `useRequestHeaders(['cookie']).cookie`）。
-- **`setThemeCookie(config)` / `getStoredThemeConfig()` / `setStoredThemeConfig()` / `removeStoredThemeConfig()`** — 客户端与服务端通用的持久化辅助函数（位于 `@soybeanjs/theme/storage` 子路径）。
+- **`createThemeInitScript()`** — 返回一段可内联到 `<head>` 的小型 IIFE。在首帧绘制前从 `localStorage` 读取已保存的配置，在 `<html>` 上设置 `data-theme="<base>-<primary>"` 与暗色模式类。服务端渲染默认主题，脚本在浏览器绘制前将其纠正——无闪烁。
+- **`getStoredThemeConfig()` / `setStoredThemeConfig()` / `removeStoredThemeConfig()`** — 持久化辅助函数（位于 `@soybeanjs/theme/storage` 子路径）。
 
-Nuxt 中的接线方式非常精简——把环境参数传给 `SConfigProvider`，由它自行解析持久化配置：
+Nuxt 中的接线方式非常精简：
 
 ```ts
 // nuxt.config.ts
 export default defineNuxtConfig({
   app: {
     head: {
-      // 首帧前应用已保存的主题，并将其同步到 cookie
+      // 首帧前应用已保存的主题
       script: [{ innerHTML: createThemeInitScript(), tagPosition: 'head' }]
     }
   }
@@ -248,24 +247,21 @@ export default defineNuxtConfig({
 ```
 
 ```vue
-// app.vue —— 只需传递环境参数（isServer + cookieHeader）
+// app.vue —— 只需传递环境标志
 <script setup lang="ts">
 import { SConfigProvider } from '@soybeanjs/ui';
 
 const isServer = import.meta.server;
-const cookieHeader = isServer ? useRequestHeaders(['cookie']).cookie : undefined;
 </script>
 
 <template>
-  <SConfigProvider :is-server="isServer" :cookie-header="cookieHeader" persist-theme>
+  <SConfigProvider :is-server="isServer" persist-theme>
     <slot />
   </SConfigProvider>
 </template>
 ```
 
-`SConfigProvider` 在服务端从 cookie 解析持久化配置、在客户端从 `localStorage` 读取，应用层不再需要 `useThemeStore` 或手写 `createThemeStore`。主题状态（base / primary / radius / size / mode）与自定义 preset 由 provider 内部管理，并通过 `@soybeanjs/ui` 的 `useTheme()` 暴露给后代组件——无需 prop drilled，也无需应用层 store。
-
-由于 `SConfigProvider` 会将主题 CSS 内联进 SSR HTML，并在服务端通过 `cookieHeader` 自行解析持久化配置，首屏即携带已保存的主题——无闪烁、无不一致。
+`SConfigProvider` 在客户端从 `localStorage` 读取持久化主题；在服务端从默认主题开始，由内联脚本在首帧前纠正。主题状态（base / primary / radius / size / mode）与自定义 preset 由 provider 内部管理，并通过 `@soybeanjs/ui` 的 `useTheme()` 暴露给后代组件——无需 prop drilled，也无需应用层 store。
 
 ### 常见问题
 

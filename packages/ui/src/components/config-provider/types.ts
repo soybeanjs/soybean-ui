@@ -76,8 +76,7 @@ export interface ConfigProviderProps extends _ConfigProviderProps {
    */
   persistTheme?: boolean;
   /**
-   * The persisted theme config injected from the server (already resolved from
-   * the cookie by the app layer, e.g. via `useRequestHeaders` in Nuxt).
+   * The persisted theme config injected from the server.
    *
    * Used during SSR to render the same theme the client persisted; on the
    * client the localStorage is the source of truth.
@@ -85,16 +84,6 @@ export interface ConfigProviderProps extends _ConfigProviderProps {
    * @type ThemeConfigState
    */
   themeConfig?: ThemeConfigState;
-  /**
-   * The raw cookie header (e.g. `useRequestHeaders(['cookie']).cookie` in Nuxt)
-   * used to resolve the persisted theme config on the server.
-   *
-   * When provided on the server, the ConfigProvider resolves `themeConfig`
-   * from the cookie itself, so the app does not need to read the cookie and
-   * pass it via `themeConfig`. Only takes effect when `persistTheme` is
-   * enabled and `isServer` is `true`.
-   */
-  cookieHeader?: string;
   /**
    * The server-side custom theme preset registry resolver.
    *
@@ -126,10 +115,7 @@ export interface ConfigProviderProps extends _ConfigProviderProps {
 export interface ConfigProviderContext
   extends
     PropsToContext<
-      Omit<
-        ConfigProviderProps,
-        'iconRender' | 'presetProvider' | 'persistTheme' | 'themeConfig' | 'cookieHeader' | 'isServer'
-      >
+      Omit<ConfigProviderProps, 'iconRender' | 'presetProvider' | 'persistTheme' | 'themeConfig' | 'isServer'>
     >,
     Pick<ConfigProviderProps, 'iconRender'> {}
 

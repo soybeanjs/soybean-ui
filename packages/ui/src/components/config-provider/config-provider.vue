@@ -38,7 +38,6 @@ const forwardedProps = useOmitProps(props, [
   'customToast',
   'persistTheme',
   'themeConfig',
-  'cookieHeader',
   'presetProvider',
   'isServer'
 ]);

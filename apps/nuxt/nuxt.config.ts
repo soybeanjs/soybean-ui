@@ -8,8 +8,7 @@ export default defineNuxtConfig({
     head: {
       link: [{ rel: 'icon', type: 'image/x-icon', href: 'https://r2.soybeanjs.tech/soybeanjs/logo-soybean-ui.svg' }],
       // Applies the persisted theme (from localStorage) to <html> before first
-      // paint and mirrors it into a cookie so SSR renders the same theme on the
-      // next request — this removes the theme flash on refresh.
+      // paint — this removes the theme flash on refresh.
       script: [{ innerHTML: createThemeInitScript(), tagPosition: 'head' }]
     }
   },
