@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
+import { colord } from '@soybeanjs/colord';
 import { tailwindPalette } from '@soybeanjs/colord/palette';
 import type { TailwindPaletteKey } from '@soybeanjs/colord/palette';
 import { THEME_RADIUS, themeRadiusKeys, themeSizeKeys } from '@soybeanjs/theme';
@@ -22,10 +23,10 @@ import type { SegmentOptionData, SelectOptionData, TabsOptionData } from '@soybe
 import { useThemeSettings } from '@/theme/use-theme-settings';
 import { useThemeVariants } from '@/theme/use-theme-variants';
 import SButton from '../button/button.vue';
-import SColorField from '../color-field/color-field.vue';
-import SColorSwatch from '../color-swatch/color-swatch.vue';
 import { useTheme } from '../config-provider/use-theme';
 import SInput from '../input/input.vue';
+import SPalettePicker from '../palette-picker/palette-picker.vue';
+import SPopover from '../popover/popover.vue';
 import SSegment from '../segment/segment.vue';
 import SSelect from '../select/select.vue';
 import SSlider from '../slider/slider.vue';
@@ -204,6 +205,23 @@ const swatchColor = (value: ColorValue | undefined): string => {
   return value;
 };
 
+/** 把 ColorValue 缩短为紧凑的按钮文案：tailwind `key.level` 原样，其余转成短 hex */
+const colorLabel = (value: ColorValue | undefined): string => {
+  const str = value ?? 'transparent';
+
+  if (str === 'white' || str === 'black' || str === 'transparent' || str === 'inherit' || str === 'current') {
+    return str;
+  }
+
+  const [key, level] = str.split('.');
+
+  if (key && level && tailwindPalette[key as TailwindPaletteKey]) {
+    return `${key}.${level}`;
+  }
+
+  return colord(str).isValid() ? colord(str).toHex() : str;
+};
+
 // —— base 表面层级：lightLevel/darkLevel 由 Base 区域独立的 levelMode 分片决定 ——
 // 标签与滑块范围随分片切换：light → Lightness(0-2)，dark → Darkness(0-3)。
 const levelValue = computed<number>(() => (levelMode.value === 'light' ? lightLevelValue.value : darkLevelValue.value));
@@ -351,20 +369,26 @@ watch(
             <section v-for="group in variants.groups" :key="group.key" class="space-y-2">
               <h4 class="text-xs font-medium text-foreground">{{ resolveLabel(group.i18n) }}</h4>
               <div v-for="meta in group.tokens" :key="meta.key" class="flex-y-center justify-between gap-3">
-                <div class="flex-y-center gap-2">
-                  <SColorSwatch
-                    :color="swatchColor(variants.final.value[meta.key])"
-                    :size="size"
-                    class="size-4 rounded-full"
+                <span class="text-xs text-foreground">{{ resolveLabel(meta.i18n) }}</span>
+                <SPopover :size="size">
+                  <template #trigger>
+                    <button
+                      type="button"
+                      class="flex-y-center gap-1.5 rounded-md border border-border bg-background px-2 py-1 text-xs text-foreground transition hover:bg-accent"
+                      :aria-label="resolveLabel(meta.i18n)"
+                    >
+                      <span
+                        class="size-3.5 shrink-0 rounded-full border border-border"
+                        :style="{ backgroundColor: swatchColor(variants.final.value[meta.key]) }"
+                      />
+                      <span class="max-w-20 truncate">{{ colorLabel(variants.final.value[meta.key]) }}</span>
+                    </button>
+                  </template>
+                  <SPalettePicker
+                    :model-value="variants.final.value[meta.key]"
+                    @update:model-value="value => setVariant(meta.key, value)"
                   />
-                  <span class="text-xs text-foreground">{{ resolveLabel(meta.i18n) }}</span>
-                </div>
-                <SColorField
-                  :model-value="variants.final.value[meta.key]"
-                  :size="size"
-                  class="w-28"
-                  @update:model-value="value => setVariant(meta.key, value)"
-                />
+                </SPopover>
               </div>
             </section>
           </template>
