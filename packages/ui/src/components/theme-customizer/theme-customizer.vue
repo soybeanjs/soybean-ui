@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { colord } from '@soybeanjs/colord';
-import { tailwindPalette } from '@soybeanjs/colord/palette';
-import type { TailwindPaletteKey } from '@soybeanjs/colord/palette';
 import { THEME_RADIUS, themeRadiusKeys, themeSizeKeys } from '@soybeanjs/theme';
 import type {
   BaseColorKey,
@@ -24,9 +21,7 @@ import { useThemeSettings } from '@/theme/use-theme-settings';
 import { useThemeVariants } from '@/theme/use-theme-variants';
 import SButton from '../button/button.vue';
 import { useTheme } from '../config-provider/use-theme';
-import SInput from '../input/input.vue';
 import SPalettePicker from '../palette-picker/palette-picker.vue';
-import SPopover from '../popover/popover.vue';
 import SSegment from '../segment/segment.vue';
 import SSelect from '../select/select.vue';
 import SSlider from '../slider/slider.vue';
@@ -126,6 +121,11 @@ const darkLevelValue = computed<DarkLevelOffset>({
   set: value => settings.setState({ darkLevel: value })
 });
 
+const borderOpacityValue = computed<number>({
+  get: () => settings.state.value.borderOpacity ?? 1,
+  set: value => settings.setState({ borderOpacity: value })
+});
+
 const menuColorValue = computed<MenuColor>({
   get: () => settings.state.value.menuColor ?? 'default',
   set: value => settings.setState({ menuColor: value })
@@ -178,50 +178,6 @@ const setVariant = (key: ColorKey, value: string): void => {
   settings.setOverride(customMode.value, key, value as ColorValue);
 };
 
-/** 把 ColorValue（tailwind `palette.level` / simple / hsl）解析成可渲染的 CSS 颜色 */
-const swatchColor = (value: ColorValue | undefined): string => {
-  if (!value) {
-    return 'transparent';
-  }
-
-  if (value === 'white') {
-    return '#ffffff';
-  }
-
-  if (value === 'black') {
-    return '#000000';
-  }
-
-  const [key, level] = value.split('.');
-
-  if (key && level && tailwindPalette[key as TailwindPaletteKey]) {
-    const parsed = Number(level);
-
-    if (Number.isInteger(parsed)) {
-      return tailwindPalette[key as TailwindPaletteKey][parsed as 500].hsl;
-    }
-  }
-
-  return value;
-};
-
-/** 把 ColorValue 缩短为紧凑的按钮文案：tailwind `key.level` 原样，其余转成短 hex */
-const colorLabel = (value: ColorValue | undefined): string => {
-  const str = value ?? 'transparent';
-
-  if (str === 'white' || str === 'black' || str === 'transparent' || str === 'inherit' || str === 'current') {
-    return str;
-  }
-
-  const [key, level] = str.split('.');
-
-  if (key && level && tailwindPalette[key as TailwindPaletteKey]) {
-    return `${key}.${level}`;
-  }
-
-  return colord(str).isValid() ? colord(str).toHex() : str;
-};
-
 // —— base 表面层级：lightLevel/darkLevel 由 Base 区域独立的 levelMode 分片决定 ——
 // 标签与滑块范围随分片切换：light → Lightness(0-2)，dark → Darkness(0-3)。
 const levelValue = computed<number>(() => (levelMode.value === 'light' ? lightLevelValue.value : darkLevelValue.value));
@@ -242,21 +198,6 @@ const mainTabs = computed<TabsOptionData[]>(() => [
   { label: resolveLabel('theme'), value: 'theme' },
   { label: resolveLabel('custom'), value: 'custom' }
 ]);
-
-const newPresetName = ref('');
-const presetNames = computed(() => Object.keys(settings.presets.list.value));
-
-const handleSavePreset = (): void => {
-  const name = newPresetName.value.trim();
-
-  if (!name) {
-    return;
-  }
-
-  if (settings.presets.save(name)) {
-    newPresetName.value = '';
-  }
-};
 
 const sectionVisible = (section: ThemeCustomizerSection): boolean => props.sections.includes(section);
 
@@ -347,6 +288,23 @@ watch(
             </div>
           </SectionItem>
 
+          <!-- border opacity -->
+          <SectionItem v-if="sectionVisible('advanced')" :label="resolveLabel('borderOpacity')">
+            <div class="w-2/3 flex items-center gap-3">
+              <SSlider
+                :model-value="[borderOpacityValue * 100]"
+                :min="0"
+                :max="100"
+                :step="5"
+                class="w-full"
+                @update:model-value="value => (borderOpacityValue = value[0] / 100)"
+              />
+              <span class="w-10 shrink-0 text-right text-xs text-muted-foreground">
+                {{ Math.round(borderOpacityValue * 100) }}%
+              </span>
+            </div>
+          </SectionItem>
+
           <!-- menu settings -->
           <SectionItem v-if="sectionVisible('advanced')" :title="resolveLabel('menu')" orientation="vertical">
             <SectionItem :label="resolveLabel('menuColor')">
@@ -370,25 +328,12 @@ watch(
               <h4 class="text-xs font-medium text-foreground">{{ resolveLabel(group.i18n) }}</h4>
               <div v-for="meta in group.tokens" :key="meta.key" class="flex-y-center justify-between gap-3">
                 <span class="text-xs text-foreground">{{ resolveLabel(meta.i18n) }}</span>
-                <SPopover :size="size">
-                  <template #trigger>
-                    <button
-                      type="button"
-                      class="flex-y-center gap-1.5 rounded-md border border-border bg-background px-2 py-1 text-xs text-foreground transition hover:bg-accent"
-                      :aria-label="resolveLabel(meta.i18n)"
-                    >
-                      <span
-                        class="size-3.5 shrink-0 rounded-full border border-border"
-                        :style="{ backgroundColor: swatchColor(variants.final.value[meta.key]) }"
-                      />
-                      <span class="max-w-20 truncate">{{ colorLabel(variants.final.value[meta.key]) }}</span>
-                    </button>
-                  </template>
-                  <SPalettePicker
-                    :model-value="variants.final.value[meta.key]"
-                    @update:model-value="value => setVariant(meta.key, value)"
-                  />
-                </SPopover>
+                <SPalettePicker
+                  :size="size"
+                  :model-value="variants.final.value[meta.key]"
+                  class="w-50"
+                  @update:model-value="value => setVariant(meta.key, value)"
+                />
               </div>
             </section>
           </template>
@@ -398,25 +343,6 @@ watch(
 
     <!-- actions -->
     <section v-if="showActions" class="space-y-3 border-t pt-4">
-      <div class="flex items-center gap-2">
-        <SInput
-          v-model="newPresetName"
-          :size="size"
-          class="w-full"
-          :placeholder="resolveLabel('savePresetPlaceholder')"
-        />
-        <SButton :size="size" :disabled="!newPresetName" class="shrink-0" @click="handleSavePreset">
-          {{ resolveLabel('save') }}
-        </SButton>
-      </div>
-      <div v-if="presetNames.length" class="space-y-1">
-        <div v-for="name in presetNames" :key="name" class="flex-y-center gap-2">
-          <SButton :size="size" variant="outline" class="w-full justify-start" @click="settings.presets.apply(name)">
-            {{ name }}
-          </SButton>
-          <SButton :size="size" variant="ghost" @click="settings.presets.remove(name)">✕</SButton>
-        </div>
-      </div>
       <SButton :size="size" color="destructive" variant="outline" class="w-full" @click="settings.reset">
         {{ resolveLabel('reset') }}
       </SButton>

@@ -403,6 +403,7 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
 
     const overrides: ThemeOverrides | undefined =
       t.overrides ??
+      themeState.overrides ??
       (colorPreset
         ? {
             light: colorPreset.light,
@@ -427,6 +428,7 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
       format: t.format ?? themeState.format,
       lightLevel: t.lightLevel ?? themeState.lightLevel,
       darkLevel: t.darkLevel ?? themeState.darkLevel,
+      borderOpacity: t.borderOpacity ?? themeState.borderOpacity,
       styleTarget: t.styleTarget,
       darkSelector: t.darkSelector
     };

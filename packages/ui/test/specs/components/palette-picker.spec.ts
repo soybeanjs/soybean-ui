@@ -113,6 +113,11 @@ const mountPicker = (modelValue: string) =>
     { attachTo: document.body }
   );
 
+/** drive the parent `modelValue` externally (the data type is not inferred). */
+const setModel = (wrapper: ReturnType<typeof mount>, value: string): void => {
+  (wrapper.vm as unknown as { modelValue: string }).modelValue = value;
+};
+
 const openListbox = async (wrapper: ReturnType<typeof mount>) => {
   await wrapper.get('button').trigger('pointerdown', mousePointerDown);
   await nextTick();
@@ -348,6 +353,40 @@ describe('SPalettePicker', () => {
     // the palette re-generates from the current color; highlight resets to the main color 500
     expect(levelButtonElement(500).classList).toContain('ring-primary');
     expect(levelButtonElement(700).classList).not.toContain('ring-primary');
+    wrapper.unmount();
+  });
+
+  it('does not write back when the model changes externally (e.g. theme mode switch)', async () => {
+    // ThemeCustomizer drives the model externally when toggling the custom
+    // light/dark mode. The picker must sync its internal state but must NOT
+    // re-emit a value back (which would be persisted as a spurious override).
+    const wrapper = mountPicker('zinc.950');
+
+    setModel(wrapper, 'oklch(100% 0 0 / 0.1)');
+    await flushPromises();
+    await nextTick();
+    expect(wrapper.vm.modelValue).toBe('oklch(100% 0 0 / 0.1)');
+
+    setModel(wrapper, 'zinc.200');
+    await flushPromises();
+    await nextTick();
+    expect(wrapper.vm.modelValue).toBe('zinc.200');
+
+    wrapper.unmount();
+  });
+
+  it('preserves the derived level when the model is driven externally to a tailwind color', async () => {
+    // switching the theme mode drives the model to e.g. background 'zinc.950';
+    // the trigger must show the derived level (950), not reset to the default 500.
+    const wrapper = mountPicker('white');
+    await nextTick();
+
+    setModel(wrapper, 'zinc.950');
+    await flushPromises();
+    await nextTick();
+
+    expect(wrapper.get('button').text()).toContain('zinc.950');
+
     wrapper.unmount();
   });
 });

@@ -29,10 +29,9 @@ export interface ThemeLocaleMessages {
     levels: string;
     lightLevel: string;
     darkLevel: string;
+    borderOpacity: string;
     menuColor: string;
     menuAccent: string;
-    savePresetPlaceholder: string;
-    save: string;
     cssVars: string;
     reset: string;
   };
@@ -202,10 +201,9 @@ const themeLocaleEn: ThemeLocaleMessages = {
     levels: 'Levels',
     lightLevel: 'Light Level',
     darkLevel: 'Dark Level',
+    borderOpacity: 'Border Opacity',
     menuColor: 'Menu Color',
     menuAccent: 'Menu Accent',
-    savePresetPlaceholder: 'Enter preset name',
-    save: 'Save',
     cssVars: 'CSS Variable Theme',
     reset: 'Reset'
   },
@@ -368,10 +366,9 @@ const themeLocaleZh: ThemeLocaleMessages = {
     levels: '层级',
     lightLevel: '浅色层级',
     darkLevel: '深色层级',
+    borderOpacity: '边框透明度',
     menuColor: '菜单颜色',
     menuAccent: '菜单强调色',
-    savePresetPlaceholder: '请输入预设名称',
-    save: '保存',
     cssVars: 'CSS变量主题',
     reset: '重置'
   },

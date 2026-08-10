@@ -44,5 +44,5 @@ export function createTheme(options?: ThemeOptions): string {
     darkLevel
   });
 
-  return generateCss(themePreset, { styleTarget, darkSelector, format });
+  return generateCss(themePreset, { styleTarget, darkSelector, format }, merged.borderOpacity);
 }

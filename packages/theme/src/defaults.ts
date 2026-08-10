@@ -17,5 +17,6 @@ export const DEFAULT_PRESET_OPTIONS = {
   format: 'hsl',
   lightLevel: 0,
   darkLevel: 0,
+  borderOpacity: 1,
   sidebarDerive: true
 } as const;

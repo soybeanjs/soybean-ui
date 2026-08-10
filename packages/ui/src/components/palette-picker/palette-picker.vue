@@ -68,6 +68,9 @@ const customColor = ref<string>(isCustom.value ? String(model.value) : '#6366f1'
 const recommended = ref(false);
 const customLevel = ref<PaletteColorLevel>(DEFAULT_LEVEL);
 
+// 受控模式：外部写入 modelValue 回填内部状态期间置为 true，抑制 emitChange 回写
+const syncingFromModel = ref(false);
+
 const outputFormat = computed(() => outputFormatOf(props.format));
 const itemColorKey = computed(() => itemColorKeyOf(props.format));
 
@@ -192,13 +195,25 @@ const onToggleCustom = (isOn: boolean): void => {
 };
 
 // —— 选择内置颜色时，level 重置为 500 ——
+// 受控模式（外部 model 变化）期间跳过：此时 level 由派生值决定（如 zinc.950），
+// 不应被重置为 500。
 watch(selectValue, value => {
+  if (syncingFromModel.value) {
+    return;
+  }
+
   if (isTailwindKey(value)) {
     tailLevel.value = DEFAULT_LEVEL;
   }
 });
 
-watch([selectValue, tailLevel, customColor, recommended, customLevel], () => emitChange());
+watch([selectValue, tailLevel, customColor, recommended, customLevel], () => {
+  if (syncingFromModel.value) {
+    return;
+  }
+
+  emitChange();
+});
 
 // —— 推荐色板开关从开启切到关闭时，基于当前颜色重新生成色板（computed 自动重算），
 //     主色即当前颜色(500)，因此把高亮重置到 500 ——
@@ -254,6 +269,8 @@ const onCustomLevelClick = (level: PaletteColorLevel): void => {
 };
 
 // —— 受控模式：外部写入 modelValue 时回填内部状态 ——
+// 回填期间 `syncingFromModel` 为 true，抑制 emitChange，避免把外部同步得到的
+// 内部表示（如最近的 tailwind key / 重新序列化的颜色）回写为 override。
 watch(
   () => model.value,
   value => {
@@ -261,6 +278,7 @@ watch(
       return;
     }
 
+    syncingFromModel.value = true;
     selectValue.value = deriveSelectValue(value);
     tailLevel.value = deriveTailLevel(value);
 
@@ -268,6 +286,10 @@ watch(
       customColor.value = String(value);
       customLevel.value = deriveNearestLevel(String(value), props.format);
     }
+
+    void nextTick(() => {
+      syncingFromModel.value = false;
+    });
   }
 );
 </script>
@@ -278,6 +300,7 @@ watch(
     :items="isCustom ? [] : options"
     :size="size"
     :show-trigger-icon="false"
+    placement="bottom-end"
     :viewport-props="isCustom ? { class: '!p-0' } : undefined"
   >
     <template #trigger-leading>

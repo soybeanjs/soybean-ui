@@ -180,7 +180,9 @@ export function useThemeVariants(options: UseThemeVariantsOptions): UseThemeVari
       menuAccent: resolved.menuAccent
     });
 
-    const tokens = mode.value === 'light' ? preset.light : preset.dark;
+    // dark 层在生成时会被裁剪（与 light 相同的 token 被移除，CSS 由 light 继承），
+    // 因此 dark 模式需将 light 作为基底、dark 覆盖其上，避免裁剪 token 变为 undefined。
+    const tokens = mode.value === 'light' ? preset.light : { ...preset.light, ...preset.dark };
 
     return tokens as unknown as Record<ColorKey, ColorValue>;
   });

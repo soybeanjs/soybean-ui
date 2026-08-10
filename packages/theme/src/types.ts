@@ -553,6 +553,18 @@ export interface ThemeOptions extends BaseGenerateCSSOptions {
    * @default 0
    */
   darkLevel?: DarkLevelOffset;
+  /**
+   * the border (border / input / sidebar-border) opacity multiplier.
+   *
+   * Scales the alpha channel of the border-family tokens, driving the
+   * `--border-alpha` / `--input-alpha` / `--sidebar-border-alpha` variables
+   * (effective alpha = token alpha × borderOpacity). Defaults to `1`, so the
+   * token's own alpha is preserved.
+   *
+   * @default 1
+   * @range 0 - 1
+   */
+  borderOpacity?: number;
 }
 
 /**

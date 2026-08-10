@@ -153,6 +153,10 @@ export interface ThemeConfigState {
    */
   darkLevel?: DarkLevelOffset;
   /**
+   * the border opacity override (0 - 1)
+   */
+  borderOpacity?: number;
+  /**
    * inline color token overrides persisted alongside the config so a theme that
    * differs only in `overrides` is still reconstructable during SSR.
    */
@@ -188,6 +192,8 @@ const isLightLevel = (value: unknown): value is ThemeConfigState['lightLevel'] =
 
 const isDarkLevel = (value: unknown): value is ThemeConfigState['darkLevel'] =>
   value === 0 || value === 1 || value === 2 || value === 3;
+
+const isBorderOpacity = (value: unknown): value is number => typeof value === 'number' && value >= 0 && value <= 1;
 
 const isMenuColor = (value: unknown): value is MenuColor =>
   typeof value === 'string' && (MENU_COLORS as readonly string[]).includes(value);
@@ -241,6 +247,7 @@ export function parseThemeConfig(raw: string | null | undefined): ThemeConfigSta
     format,
     lightLevel,
     darkLevel,
+    borderOpacity,
     overrides
   } = data;
 
@@ -306,6 +313,9 @@ export function parseThemeConfig(raw: string | null | undefined): ThemeConfigSta
   }
   if (isDarkLevel(darkLevel)) {
     config.darkLevel = darkLevel;
+  }
+  if (isBorderOpacity(borderOpacity)) {
+    config.borderOpacity = borderOpacity;
   }
   if (isRecord(overrides)) {
     const parsedOverrides = parseOverrides(overrides);

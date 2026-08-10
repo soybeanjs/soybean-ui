@@ -31,9 +31,13 @@ const ALPHA_KEYS: ReadonlyArray<'border' | 'input' | 'sidebarBorder'> = ['border
  * generate the full theme CSS (base tokens + light/dark color tokens) from a
  * resolved `FullThemePreset`.
  */
-export function generateCss(preset: FullThemePreset, options: Required<BaseGenerateCSSOptions>) {
+export function generateCss(
+  preset: FullThemePreset,
+  options: Required<BaseGenerateCSSOptions>,
+  borderOpacity?: number
+) {
   const baseCss = generateBaseCss(preset, options.styleTarget);
-  const colorCss = generateColorCss(preset, options);
+  const colorCss = generateColorCss(preset, options, borderOpacity);
 
   return `${baseCss}\n\n${colorCss}`;
 }
@@ -66,7 +70,11 @@ function generateBaseCss(preset: FullThemePreset, styleTarget: StyleTarget) {
  * value, so a derived dark that equals light produces no override and the
  * dark mode naturally inherits the light token.
  */
-export function generateColorCss(preset: FullThemePreset, options: Required<BaseGenerateCSSOptions>) {
+export function generateColorCss(
+  preset: FullThemePreset,
+  options: Required<BaseGenerateCSSOptions>,
+  borderOpacity?: number
+) {
   const { light, dark } = preset;
   const { format, styleTarget } = options;
 
@@ -74,8 +82,8 @@ export function generateColorCss(preset: FullThemePreset, options: Required<Base
   let darkCss = '';
 
   keysOf(COLOR_VARIABLES).forEach(key => {
-    const lightValue = getItemColorCss(key, format, light);
-    const darkValue = getItemColorCss(key, format, dark);
+    const lightValue = getItemColorCss(key, format, light, borderOpacity);
+    const darkValue = getItemColorCss(key, format, dark, borderOpacity);
 
     lightCss += lightValue;
     if (darkValue !== lightValue) {
@@ -109,7 +117,7 @@ export function generateColorCss(preset: FullThemePreset, options: Required<Base
   return css;
 }
 
-function getItemColorCss(key: ColorKey, format: ColorFormat, preset: Partial<ColorTokens>) {
+function getItemColorCss(key: ColorKey, format: ColorFormat, preset: Partial<ColorTokens>, borderOpacity?: number) {
   const value = preset[key];
   if (!value) return '';
 
@@ -117,7 +125,7 @@ function getItemColorCss(key: ColorKey, format: ColorFormat, preset: Partial<Col
   if (format === 'hsl') {
     color = removeHslBrackets(color);
   }
-  const { color: c, alphaCss } = getAlphaCss(color, format, key);
+  const { color: c, alphaCss } = getAlphaCss(color, format, key, borderOpacity);
 
   color = c;
 
@@ -132,7 +140,7 @@ function getItemColorCss(key: ColorKey, format: ColorFormat, preset: Partial<Col
  * variable for `border`/`input`/`sidebarBorder` so runtime overlays can tune
  * opacity independently of the color channels.
  */
-function getAlphaCss(colorValue: string, format: ColorFormat, key: string) {
+function getAlphaCss(colorValue: string, format: ColorFormat, key: string, borderOpacity?: number) {
   const untransformed = isUnTransformedColor(colorValue as ColorValue);
 
   if (untransformed || format === 'oklch' || !ALPHA_KEYS.includes(key as (typeof ALPHA_KEYS)[number])) {
@@ -152,18 +160,22 @@ function getAlphaCss(colorValue: string, format: ColorFormat, key: string) {
     alpha /= 100;
   }
 
+  // `borderOpacity` scales the alpha derived from the token color for the
+  // border family (border / input / sidebar-border). Defaults to 1 (unchanged).
+  const effectiveAlpha = (borderOpacity ?? 1) * alpha;
+
   let alphaCss = '';
 
   if (key === 'border') {
-    alphaCss = `${EXTENDED_THEME_VARIABLES.borderAlpha}: ${alpha};\n`;
+    alphaCss = `${EXTENDED_THEME_VARIABLES.borderAlpha}: ${effectiveAlpha};\n`;
   }
 
   if (key === 'input') {
-    alphaCss += `${EXTENDED_THEME_VARIABLES.inputAlpha}: ${alpha};\n`;
+    alphaCss += `${EXTENDED_THEME_VARIABLES.inputAlpha}: ${effectiveAlpha};\n`;
   }
 
   if (key === 'sidebarBorder') {
-    alphaCss += `${EXTENDED_THEME_VARIABLES.sidebarBorderAlpha}: ${alpha};\n`;
+    alphaCss += `${EXTENDED_THEME_VARIABLES.sidebarBorderAlpha}: ${effectiveAlpha};\n`;
   }
 
   return {
