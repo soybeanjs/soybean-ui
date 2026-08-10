@@ -110,7 +110,7 @@
     "@formkit/auto-animate": "^0.10.0",
     "@internationalized/date": "^3.12.3",
     "@internationalized/number": "^3.6.7",
-    "@soybeanjs/colord": "^0.6.2",
+    "@soybeanjs/colord": "^0.7.1",
     "@soybeanjs/hooks": "^0.3.0",
     "@soybeanjs/utils": "^0.1.1",
     "@standard-schema/spec": "^1.1.0",

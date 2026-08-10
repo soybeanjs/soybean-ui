@@ -1,0 +1,57 @@
+{
+  "component": "theme-mode-select",
+  "symbols": {
+    "ThemeModeSelect": {
+      "props": {
+        "kind": "props",
+        "name": "ThemeModeSelectProps",
+        "type": "Interface ThemeModeSelectProps",
+        "resolvedType": "{ size?: ThemeSize; showIcon?: boolean }",
+        "description": "Properties for the ThemeModeSelect component.\n\nA context-bound dropdown bound to the active `SConfigProvider` theme. It\noffers the three `ThemeModePreference` options — `auto` (follows the OS\n`prefers-color-scheme`), `light`, and `dark`.",
+        "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_select_types.thememodeselectprops.props",
+        "sourcePath": "packages/ui/src/components/theme-mode-select/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the select trigger.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_select_types.thememodeselectprops.members.size",
+            "default": "'md'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/theme-mode-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px",
+                "descriptionKey": "api.generated.packages_theme_dist_types_bwhfmhi1_d.themesize",
+                "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "showIcon",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to render a scheme icon (monitor / sun / moon) in the trigger and\neach option.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_select_types.thememodeselectprops.members.showicon",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/theme-mode-select/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

@@ -1612,11 +1612,13 @@
             "arrowprops": "Properties forwarded to the arrow part.",
             "checkstrictly": "When `false`, only leaf nodes can be selected (single) or the parent-children check states\nare linked (multiple). When `true`, any node can be selected independently.",
             "clearable": "When `true`, the value can be cleared by the clear button.",
+            "clearlabel": "The accessible label of the clear button.",
             "contentprops": "Properties forwarded to the content part.",
             "defaultopen": "The open state of the cascader when it is initially rendered.",
             "defaultvalue": "The default value of the selected node(s).",
             "dir": "The reading direction of the component.",
             "disabled": "When `true`, prevents the user from interacting with the Cascader.",
+            "emptylabel": "The text shown in the empty state.",
             "emptyprops": "Properties forwarded to the empty part.",
             "expandtrigger": "The trigger to expand the children of a node.",
             "fieldkeys": "Field keys used to extract the option fields.",
@@ -3441,6 +3443,13 @@
           },
           "slotprops": ""
         },
+        "datepickercompactslots": {
+          "callables": {
+            "default": "Custom content for the calendar popup, receiving the open/close controls and calendar props.",
+            "leading": "Custom content rendered before the date segments."
+          },
+          "slots": "Slots for the DatePickerCompact component."
+        },
         "datepickerui": "UI class for the DatePicker component."
       },
       "packages_headless_src_components_date_range_field_types": {
@@ -3635,6 +3644,14 @@
             "open": ""
           },
           "slotprops": ""
+        },
+        "daterangepickercompactslots": {
+          "callables": {
+            "default": "Custom content for the calendar range popup, receiving the open/close controls and calendar props.",
+            "leading": "Custom content rendered before the date range segments.",
+            "separator": "Custom content rendered between the start and end segment groups."
+          },
+          "slots": "Slots for the DateRangePickerCompact component."
         },
         "daterangepickerui": "UI class for the DateRangePicker component."
       },
@@ -4722,7 +4739,7 @@
         },
         "inputotpcompactprops": {
           "members": {
-            "aria_label": "Accessible label forwarded to the native input.",
+            "arialabel": "Accessible label forwarded to the native input.",
             "autocomplete": "Autocomplete hint passed to the native input.",
             "autofocus": "Whether the input should be focused on mount.",
             "defaultvalue": "The uncontrolled default value of the OTP input.",
@@ -4773,7 +4790,7 @@
         },
         "inputotprootprops": {
           "members": {
-            "aria_label": "Accessible label forwarded to the native input.",
+            "arialabel": "Accessible label forwarded to the native input.",
             "autocomplete": "Autocomplete hint passed to the native input.",
             "autofocus": "Whether the input should be focused on mount.",
             "defaultvalue": "The uncontrolled default value of the OTP input.",
@@ -5788,7 +5805,7 @@
             "item_link_icon": "Custom content for the item link icon slot.",
             "item_trailing": "Custom content for the item trailing slot.",
             "item_trigger_icon": "Custom content for the item trigger icon slot.",
-            "trigger": "Custom content for the trigger slot."
+            "trigger": "Custom content for the trigger slot.\n\nOptional: `MenubarCompact` renders full default trigger content (icon,\nlabel, link icon, trailing slot) when the consumer does not provide it."
           },
           "slots": "Slots for the MenubarCompact component."
         },
@@ -7097,6 +7114,7 @@
             "selectionbehavior": "How multiple selection should behave in the collection.",
             "separatorprops": "Properties forwarded to the separator element.",
             "showarrow": "Whether to show an arrow.",
+            "showtriggericon": "Whether to show the trigger icon.",
             "triggericonprops": "Properties forwarded to the trigger icon element.",
             "triggerprops": "Properties forwarded to the trigger element.",
             "valueprops": "Properties forwarded to the value element.",
@@ -7285,7 +7303,7 @@
         },
         "separatorcompactslots": {
           "callables": {
-            "default": "Custom content for the label slot."
+            "label": "Custom content for the label slot."
           },
           "slots": "Slots for the SeparatorCompact component."
         },
@@ -8337,6 +8355,13 @@
           },
           "props": "Properties for the time field compact component."
         },
+        "timefieldcompactslots": {
+          "callables": {
+            "leading": "Content rendered before the time segments.",
+            "trailing": "Content rendered after the time segments."
+          },
+          "slots": "Slots for the TimeFieldCompact component."
+        },
         "timefieldrootemits": {
           "callables": {
             "update_modelvalue": "Emitted when the model value changes.",
@@ -9274,14 +9299,19 @@
             "autocomplete": "",
             "breadcrumb": "",
             "calendar": "",
+            "cascader": "",
             "clipboard": "",
             "combobox": "",
             "command": "",
             "date": "",
+            "datepicker": "",
+            "daterangepicker": "",
             "dialog": "",
             "editable": "",
+            "input": "",
             "inputnumber": "",
             "layout": "",
+            "pagetabs": "",
             "pagination": "",
             "password": "",
             "progress": "",
@@ -9290,7 +9320,9 @@
             "stepper": "",
             "table": "",
             "tagsinput": "",
-            "textarea": ""
+            "textarea": "",
+            "themecustomizer": "",
+            "treemenu": ""
           }
         }
       },
@@ -9342,21 +9374,32 @@
       "packages_headless_src_types_vue": {
         "baseprops": ""
       },
-      "packages_theme_dist_index_d": {
-        "themeoptions": {
+      "packages_theme_dist_storage_d": {
+        "customthemecolorpreset": "a custom theme color preset (light/dark color token overrides)",
+        "themeconfigstate": {
           "members": {
-            "base": "the base color key",
-            "darkselector": "dark mode selector\n\n- class: \".dark\"\n- media: \"@media (prefers-color-scheme: dark)\"\n- custom: custom dark mode selector, e.g. \".custom-dark\"",
-            "format": "color output format\n\n- hsl: \"h s l [/ alpha]\", e.g. \"0 0% 100% / 0.1\"\n- oklch: \"oklch(l c h [/ alpha])\", e.g. \"oklch(0 0 0 / 0.1)\"",
-            "menuaccent": "the menu accent style\n\n- subtle: muted foreground highlight\n- bold: primary color highlight",
-            "menucolor": "the menu color style\n\n- default: normal popover background\n- inverted: dark card background\n- default-translucent: popover with backdrop blur\n- inverted-translucent: dark card with backdrop blur",
-            "preset": "custom preset colors that override built-in preset values.\nWhen provided, matching keys are replaced in the final theme.",
-            "primary": "the primary color key",
+            "base": "the base color preset key",
+            "chart": "the chart (data) semantic scheme key",
+            "darklevel": "dark mode brightening offset",
+            "feedback": "the feedback (status) semantic scheme key",
+            "format": "color output format",
+            "lightlevel": "light mode darkening offset",
+            "menuaccent": "the menu accent preset key",
+            "menucolor": "the menu color preset key",
+            "mode": "the color scheme preference (`light` / `dark` / `auto`)\n\n`'auto'` follows the OS `prefers-color-scheme`. The effective mode is\napplied as a class on `<html>` (default `'dark'`).",
+            "overrides": "inline color token overrides persisted alongside the config so a theme that\ndiffers only in `overrides` is still reconstructable during SSR.",
+            "primary": "the primary color preset key",
             "radius": "the border radius",
-            "size": "the component size / density\n\nControls the root font-size (`<html>`), scaling all rem-based sizes.",
-            "styletarget": "the style target"
+            "sidebar": "the sidebar skin semantic scheme key",
+            "sidebarderive": "whether to apply a separate sidebar skin from the `sidebar` scheme.",
+            "size": "the component size / density"
           }
         }
+      },
+      "packages_theme_dist_types_bwhfmhi1_d": {
+        "colorformat": "Color format",
+        "themecolor": "Theme color",
+        "themesize": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px"
       },
       "packages_ui_src_components_accordion_types": {
         "accordionemits": {
@@ -9757,14 +9800,13 @@
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "class": "Additional class names applied to the root element.",
             "color": "Theme color of the component.",
-            "dir": "The direction of the button group.",
-            "disabled": "Whether the component is disabled.",
+            "dir": "The reading direction of the button group.",
+            "disabled": "Whether all descendant buttons are disabled.",
             "fitcontent": "Whether the component should fit its content width.",
             "orientation": "The orientation of the button group.",
             "shadow": "Shadow style of the component.",
             "shape": "Shape of the component.",
             "size": "Visual size of the component.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
             "variant": "Visual variant of the component."
           },
           "props": "Properties for the ButtonGroup component."
@@ -10099,11 +10141,13 @@
             "checkstrictly": "When `false`, only leaf nodes can be selected (single) or the parent-children check states\nare linked (multiple). When `true`, any node can be selected independently.",
             "class": "the class of cascader trigger",
             "clearable": "When `true`, the value can be cleared by the clear button.",
+            "clearlabel": "The accessible label of the clear button.",
             "contentprops": "Properties forwarded to the content part.",
             "defaultopen": "The open state of the cascader when it is initially rendered.",
             "defaultvalue": "The default value of the selected node(s).",
             "dir": "The reading direction of the component.",
             "disabled": "When `true`, prevents the user from interacting with the Cascader.",
+            "emptylabel": "The text shown in the empty state.",
             "emptyprops": "Properties forwarded to the empty part.",
             "expandtrigger": "The trigger to expand the children of a node.",
             "fieldkeys": "Field keys used to extract the option fields.",
@@ -10678,16 +10722,41 @@
             "dir": "The global reading direction of your application. This will be inherited by all components.\n\nWhen omitted, the direction follows the current locale and falls back to `'ltr'`.",
             "iconify": "The iconify options.",
             "iconrender": "A function to render the icon. This is useful when you want to use a custom icon library or want to wrap the icon with a custom component.",
+            "isserver": "Whether the component is running in a server environment.\n\nThe UI library is pre-built, so `import.meta.env.SSR` is baked at build\ntime and cannot detect the consumer's runtime. This defaults to runtime\ndetection (`typeof window === 'undefined'`), and can be overridden with\nthe app's own flag (e.g. Nuxt's `import.meta.server`) when the app is\nbundled for both server and client.",
             "locale": "The global locale of your application. This will be inherited by all components.",
             "messages": "Overrides for built-in component locale messages. Merged on top of the locale selected by the\n`locale` prop, so you only need to supply the keys you want to change.",
             "nonce": "The global `nonce` value of your application. This will be inherited by the related components.",
+            "persisttheme": "Whether to enable persisted theme reading from localStorage / cookie.\n\nWhen disabled (default), the ConfigProvider only consumes the explicit\n`theme` prop and never reads any storage, keeping the current behavior.\nWhen enabled, the persisted theme config fills in keys not explicitly\nprovided by `theme`.",
+            "presetprovider": "The server-side custom theme preset registry resolver.\n\nMaps a stored preset name to its definition so SSR can render custom\npresets without localStorage access. Only used when `persistTheme` is\nenabled on the server; on the client the presets table is the source of\ntruth.",
             "progress": "The global top progress configuration of your application.",
             "size": "The size options.",
             "theme": "The theme options.",
+            "themeconfig": "The persisted theme config injected from the server.\n\nUsed during SSR to render the same theme the client persisted; on the\nclient the localStorage is the source of truth.",
             "toast": "The global toast configuration of your application. This will be inherited by the related components.",
             "tooltip": "The global tooltip configuration of your application. This will be inherited by the related components."
           },
           "props": "Properties for the ConfigProvider component."
+        },
+        "configproviderthemeoptions": {
+          "members": {
+            "base": "the base color palette key",
+            "chart": "the chart (data) semantic scheme key",
+            "darklevel": "dark mode surface brightening offset",
+            "darkselector": "dark mode selector\n\n- class: \".dark\"\n- media: \"@media (prefers-color-scheme: dark)\"\n- custom: custom dark mode selector, e.g. \".custom-dark\"",
+            "feedback": "the feedback (status) semantic scheme key",
+            "format": "color output format\n\n- hsl: \"h s l [/ alpha]\", e.g. \"0 0% 100% / 0.1\"\n- oklch: \"oklch(l c h [/ alpha])\", e.g. \"oklch(0 0 0 / 0.1)\"",
+            "lightlevel": "light mode surface darkening offset",
+            "menuaccent": "the menu accent preset key",
+            "menucolor": "the menu color preset key",
+            "overrides": "inline color token overrides applied on top of the derived tokens",
+            "preset": "A custom color preset: either an inline mode-split override (light/dark\npartial tokens) or a `{ name }` reference to a stored preset. Resolved to\n`overrides` before `createTheme`.",
+            "primary": "the primary color palette key",
+            "radius": "the border radius",
+            "sidebar": "the sidebar skin semantic scheme key",
+            "sidebarderive": "whether to apply a separate sidebar skin from the `sidebar` scheme.\n\nWhen `false`, the sidebar tokens are not derived and fall back to the base\n`background`/`foreground`/`border` tokens (no dedicated sidebar skin).",
+            "size": "the component size / density",
+            "styletarget": "the style target"
+          }
         },
         "iconifyoptions": {
           "members": {
@@ -11002,6 +11071,12 @@
             "weekstartson": "Week starts on."
           },
           "props": "Properties for the DatePicker component."
+        },
+        "datepickerslots": {
+          "callables": {
+            "leading": "Custom content rendered before the date segments."
+          },
+          "slots": "Slots for the DatePicker component."
         }
       },
       "packages_ui_src_components_date_range_field_types": {
@@ -11131,6 +11206,13 @@
             "weekstartson": "Week starts on."
           },
           "props": "Properties for the DateRangePicker component."
+        },
+        "daterangepickerslots": {
+          "callables": {
+            "leading": "Custom content rendered before the date range segments.",
+            "separator": "Custom content rendered between the start and end segment groups."
+          },
+          "slots": "Slots for the DateRangePicker component."
         }
       },
       "packages_ui_src_components_dialog_types": {
@@ -11628,6 +11710,9 @@
       "packages_ui_src_components_icon_types": {
         "iconprops": {
           "members": {
+            "ariahidden": "Whether the icon is hidden from assistive technology.\n\nDefaults to `true` for decorative icons. Set to `false` or provide `ariaLabel` / `ariaLabelledby` to expose the icon.",
+            "arialabel": "Accessible label for the icon. When provided, `aria-hidden` is not set so the label is announced.",
+            "arialabelledby": "ID of an element that labels the icon. When provided, `aria-hidden` is not set so the label is announced.",
             "icon": "Icon rendered by the component."
           },
           "props": "Properties for the Icon component."
@@ -11710,7 +11795,7 @@
         "inputotpprops": {
           "members": {
             "align": "Align.",
-            "aria_label": "Accessible label forwarded to the native input.",
+            "arialabel": "Accessible label forwarded to the native input.",
             "autocomplete": "Autocomplete hint passed to the native input.",
             "autofocus": "Whether the input should be focused on mount.",
             "class": "Root class.",
@@ -12020,7 +12105,7 @@
             "item_link_icon": "Custom content for the item link icon slot.",
             "item_trailing": "Custom content for the item trailing slot.",
             "item_trigger_icon": "Custom content for the item trigger icon slot.",
-            "trigger": "Custom content for the trigger slot."
+            "trigger": "Custom content for the trigger slot.\n\nOptional: `MenubarCompact` renders full default trigger content (icon,\nlabel, link icon, trailing slot) when the consumer does not provide it."
           },
           "slots": "Slots for the Menubar component."
         }
@@ -12164,6 +12249,18 @@
             "trailing": "Custom content for the trailing slot."
           },
           "slots": "Slots for the Pagination component."
+        }
+      },
+      "packages_ui_src_components_palette_picker_types": {
+        "palettepickeremits": {
+          "emits": "Events for the PalettePicker component."
+        },
+        "palettepickerprops": {
+          "members": {
+            "format": "Output color space used to serialize the custom color into a `ColorValue`.",
+            "size": "Visual size of the component."
+          },
+          "props": "Properties for the PalettePicker component."
         }
       },
       "packages_ui_src_components_password_types": {
@@ -12587,6 +12684,7 @@
             "selectionbehavior": "How multiple selection should behave in the collection.",
             "separatorprops": "Properties forwarded to the separator element.",
             "showarrow": "Whether to show an arrow.",
+            "showtriggericon": "Whether to show the trigger icon.",
             "size": "Visual size of the component.",
             "triggericonprops": "Properties forwarded to the trigger icon element.",
             "triggerprops": "Properties forwarded to the trigger element.",
@@ -12681,6 +12779,9 @@
       "packages_ui_src_components_spinner_types": {
         "spinnerprops": {
           "members": {
+            "ariahidden": "Whether the icon is hidden from assistive technology.\n\nDefaults to `true` for decorative icons. Set to `false` or provide `ariaLabel` / `ariaLabelledby` to expose the icon.",
+            "arialabel": "Accessible label for the icon. When provided, `aria-hidden` is not set so the label is announced.",
+            "arialabelledby": "ID of an element that labels the icon. When provided, `aria-hidden` is not set so the label is announced.",
             "class": "Additional class names applied to the root element.",
             "color": "Theme color of the component.",
             "icon": "The spinner icon name from the Iconify svg-spinners collection.",
@@ -12985,6 +13086,7 @@
             "loop": "Whether keyboard navigation should loop around",
             "modelvalue": "The controlled value of the tab to activate. Can be bind as `v-model`.",
             "orientation": "The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "shape": "Shape of the component.",
             "size": "Visual size of the component.",
             "triggerprops": "Properties forwarded to the trigger element.",
             "ui": "Styled tabs ui slots, including `indicatorContent` for the compact indicator body.",
@@ -13113,6 +13215,39 @@
           "slots": "Slots for the Textarea component."
         }
       },
+      "packages_ui_src_components_theme_customizer_types": {
+        "themecustomizerprops": {
+          "members": {
+            "class": "Additional class names applied to the root element.",
+            "labelresolver": "Resolve a label key (section / group / variant token) to a display string.",
+            "persist": "Whether to persist changes to storage.",
+            "sections": "The sections to show (defaults to all).",
+            "showactions": "Whether to show the bottom action row (save preset / reset).",
+            "size": "The size forwarded to the underlying controls."
+          },
+          "props": "Properties for the ThemeCustomizer component.\n\nA real-app reusable theme settings body. It does not own any container\n(popover / drawer / sidebar) — the caller hosts it and decides the shell."
+        }
+      },
+      "packages_ui_src_components_theme_mode_select_types": {
+        "thememodeselectprops": {
+          "members": {
+            "showicon": "Whether to render a scheme icon (monitor / sun / moon) in the trigger and\neach option.",
+            "size": "Visual size of the select trigger."
+          },
+          "props": "Properties for the ThemeModeSelect component.\n\nA context-bound dropdown bound to the active `SConfigProvider` theme. It\noffers the three `ThemeModePreference` options — `auto` (follows the OS\n`prefers-color-scheme`), `light`, and `dark`."
+        }
+      },
+      "packages_ui_src_components_theme_mode_switch_types": {
+        "thememodeswitchprops": {
+          "members": {
+            "aria_label": "Accessible label for the switch control.",
+            "color": "Theme color of the switch track.",
+            "showicon": "Whether to render a sun/moon icon inside the switch thumb.",
+            "size": "Visual size of the switch."
+          },
+          "props": "Properties for the ThemeModeSwitch component.\n\nA context-bound toggle bound to the active `SConfigProvider` theme. It shows\nthe current *effective* scheme (so an `auto` preference is reflected as the\nOS-resolved light/dark) and pins an explicit `light` / `dark` preference when\ntoggled. To restore `auto`, use `SThemeModeSelect`."
+        }
+      },
       "packages_ui_src_components_time_field_types": {
         "timefieldemits": {
           "callables": {
@@ -13149,6 +13284,13 @@
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the TimeField component."
+        },
+        "timefieldslots": {
+          "callables": {
+            "leading": "Content rendered before the time segments.",
+            "trailing": "Content rendered after the time segments."
+          },
+          "slots": "Slots for the TimeField component."
         }
       },
       "packages_ui_src_components_time_range_field_types": {
@@ -13540,10 +13682,6 @@
       },
       "packages_ui_src_styles_toggle_group": {
         "togglegroupvariant": ""
-      },
-      "packages_ui_src_theme_types": {
-        "themecolor": "",
-        "themesize": ""
       }
     }
   }

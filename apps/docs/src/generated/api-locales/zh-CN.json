@@ -1612,11 +1612,13 @@
             "arrowprops": "转发至箭头部分的属性。",
             "checkstrictly": "当值为 `false` 时，仅可选择叶节点（单选），或父子检查状态\n相互关联（多选）。当值为 `true` 时，任何节点均可独立选择。",
             "clearable": "当值为 `true` 时，可通过“清除”按钮清除该值。",
+            "clearlabel": "“清除”按钮的无障碍标签。",
             "contentprops": "已将属性转发至内容部分。",
             "defaultopen": "cascader 在初始渲染时的展开状态。",
             "defaultvalue": "所选节点的默认值。",
             "dir": "组件的阅读方向。",
             "disabled": "当值为 `true` 时，禁止用户与 Cascader 进行交互。",
+            "emptylabel": "空状态下显示的文本。",
             "emptyprops": "属性已转发至空部分。",
             "expandtrigger": "用于展开节点子节点的触发器。",
             "fieldkeys": "用于提取选项字段的字段键。",
@@ -3441,6 +3443,13 @@
           },
           "slotprops": ""
         },
+        "datepickercompactslots": {
+          "callables": {
+            "default": "日历弹出窗口的自定义内容，接收展开/折叠控件和日历属性。",
+            "leading": "日期段之前渲染的自定义内容。"
+          },
+          "slots": "DatePickerCompact 组件的槽位。"
+        },
         "datepickerui": "DatePicker 组件的 UI 类。"
       },
       "packages_headless_src_components_date_range_field_types": {
@@ -3635,6 +3644,14 @@
             "open": ""
           },
           "slotprops": ""
+        },
+        "daterangepickercompactslots": {
+          "callables": {
+            "default": "为日历范围弹出窗口提供自定义内容，接收“打开/关闭”控件和日历属性。",
+            "leading": "在日期范围分段之前渲染的自定义内容。",
+            "separator": "在起始和结束分段组之间渲染的自定义内容。"
+          },
+          "slots": "DateRangePickerCompact 组件的槽位。"
         },
         "daterangepickerui": "DateRangePicker 组件的 UI 类。"
       },
@@ -4722,7 +4739,7 @@
         },
         "inputotpcompactprops": {
           "members": {
-            "aria_label": "无障碍标签转发到本地输入。",
+            "arialabel": "无障碍标签已转发至原生输入。",
             "autocomplete": "将自动完成提示传递给本地输入。",
             "autofocus": "输入是否应侧重于装载。",
             "defaultvalue": "OTP 输入不受控制的默认值。",
@@ -4773,7 +4790,7 @@
         },
         "inputotprootprops": {
           "members": {
-            "aria_label": "无障碍标签转发到本地输入。",
+            "arialabel": "无障碍标签已转发至原生输入。",
             "autocomplete": "将自动完成提示传递给本地输入。",
             "autofocus": "输入是否应侧重于装载。",
             "defaultvalue": "OTP 输入不受控制的默认值。",
@@ -5788,7 +5805,7 @@
             "item_link_icon": "自定义项目链接图标槽的内容。",
             "item_trailing": "自定义项尾部槽的内容。",
             "item_trigger_icon": "项目触发器图标槽的自定义内容。",
-            "trigger": "触发槽的自定义内容。"
+            "trigger": "触发器插槽的自定义内容。\n\n可选：当消费者未提供内容时，`MenubarCompact` 会渲染完整的默认触发器内容（图标、\n标签、链接图标、尾部插槽）。"
           },
           "slots": "MenubarCompact 组件的插槽。"
         },
@@ -7097,6 +7114,7 @@
             "selectionbehavior": "多重选择在集合中应如何表现。",
             "separatorprops": "转发到分隔符元素的属性。",
             "showarrow": "是否显示箭头",
+            "showtriggericon": "是否显示触发图标。",
             "triggericonprops": "转发到触发器图标元素的属性。",
             "triggerprops": "转发到触发器元素的属性。",
             "valueprops": "转发到值元素的属性。",
@@ -7285,7 +7303,7 @@
         },
         "separatorcompactslots": {
           "callables": {
-            "default": "标签槽的自定义内容。"
+            "label": "标签槽位的自定义内容。"
           },
           "slots": "SeparatorCompact 组件的插槽。"
         },
@@ -8337,6 +8355,13 @@
           },
           "props": "时间字段紧凑组件的属性。"
         },
+        "timefieldcompactslots": {
+          "callables": {
+            "leading": "时间段之前渲染的内容。",
+            "trailing": "时间段之后渲染的内容。"
+          },
+          "slots": "TimeFieldCompact 组件的槽位。"
+        },
         "timefieldrootemits": {
           "callables": {
             "update_modelvalue": "当模型值发生变化时发出。",
@@ -9274,14 +9299,19 @@
             "autocomplete": "",
             "breadcrumb": "",
             "calendar": "",
+            "cascader": "",
             "clipboard": "",
             "combobox": "",
             "command": "",
             "date": "",
+            "datepicker": "",
+            "daterangepicker": "",
             "dialog": "",
             "editable": "",
+            "input": "",
             "inputnumber": "",
             "layout": "",
+            "pagetabs": "",
             "pagination": "",
             "password": "",
             "progress": "",
@@ -9290,7 +9320,9 @@
             "stepper": "",
             "table": "",
             "tagsinput": "",
-            "textarea": ""
+            "textarea": "",
+            "themecustomizer": "",
+            "treemenu": ""
           }
         }
       },
@@ -9342,21 +9374,32 @@
       "packages_headless_src_types_vue": {
         "baseprops": ""
       },
-      "packages_theme_dist_index_d": {
-        "themeoptions": {
+      "packages_theme_dist_storage_d": {
+        "customthemecolorpreset": "自定义主题颜色预设（浅色/深色颜色标记覆盖）",
+        "themeconfigstate": {
           "members": {
-            "base": "基础颜色键",
-            "darkselector": "深色模式选择器\n\n- 类名：\".dark\"\n- 媒体查询：\"@media (prefers-color-scheme: dark)\"\n- 自定义：自定义深色模式选择器，例如 \".custom-dark\"",
-            "format": "颜色输出格式\n\n- hsl：\"h s l [/ alpha]\"，例如 \"0 0% 100% / 0.1\"\n- oklch：\"oklch(l c h [/ alpha])\"，例如 \"oklch(0 0 0 / 0.1)\"",
-            "menuaccent": "菜单强调样式\n\n- 微妙：低饱和度的前景色高亮\n- 粗体：主色高亮",
-            "menucolor": "菜单颜色样式\n\n- default：普通弹出框背景\n- inverted：深色卡片背景\n- default-translucent：带背景模糊效果的弹出框\n- inverted-translucent：带背景模糊效果的深色卡片",
-            "preset": "自定义预设颜色，这些颜色会覆盖内置预设值。\n若提供这些颜色，最终主题中将替换相应的键值。",
-            "primary": "主颜色键",
+            "base": "基础颜色预设键",
+            "chart": "图表（数据）语义方案键",
+            "darklevel": "深色模式亮度偏移量",
+            "feedback": "反馈（状态）语义方案键",
+            "format": "颜色输出格式",
+            "lightlevel": "浅色模式变暗偏移量",
+            "menuaccent": "菜单重音预设键",
+            "menucolor": "菜单颜色预设键",
+            "mode": "配色方案偏好（`light` / `dark` / `auto`）\n\n`'auto'` 遵循操作系统的 `prefers-color-scheme` 设置。实际模式将\n作为类应用于 `<html>`（默认值为 `'dark'`）。",
+            "overrides": "内联颜色标记的覆盖设置会与配置一同保留，因此即使主题\n仅在 `overrides` 方面有所不同，在服务器端渲染（SSR）过程中仍可重建。",
+            "primary": "主颜色预设键",
             "radius": "边框半径",
-            "size": "组件大小/密度\n\n控制根字体大小（`<html>`），并按比例调整所有基于 rem 的大小。",
-            "styletarget": "目标风格"
+            "sidebar": "侧边栏皮肤语义方案键",
+            "sidebarderive": "是否应用与 `sidebar` 样式方案不同的侧边栏样式。",
+            "size": "组件尺寸/密度"
           }
         }
+      },
+      "packages_theme_dist_types_bwhfmhi1_d": {
+        "colorformat": "颜色格式",
+        "themecolor": "主题颜色",
+        "themesize": "主题字号键\n\n控制根字体大小，并按比例缩放所有基于 rem 的值。\n\n- xs：12px\n- sm：14px\n- md：16px\n- lg：18px\n- xl：20px\n- 2xl：24px"
       },
       "packages_ui_src_components_accordion_types": {
         "accordionemits": {
@@ -9757,14 +9800,13 @@
             "aschild": "将默认渲染元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
             "class": "应用于根元素的额外类名。",
             "color": "组件的主题颜色。",
-            "dir": "按钮组的排列方向。",
-            "disabled": "该组件是否已禁用。",
+            "dir": "按钮组的阅读方向。",
+            "disabled": "所有子级按钮是否均处于禁用状态。",
             "fitcontent": "组件是否应适应其内容宽度。",
             "orientation": "按钮组的排列方向。",
             "shadow": "遵循该组件的样式规范。",
             "shape": "组件的结构。",
             "size": "组件的视觉尺寸。",
-            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。",
             "variant": "该组件的视觉变体。"
           },
           "props": "ButtonGroup 组件的属性。"
@@ -10099,11 +10141,13 @@
             "checkstrictly": "当值为 `false` 时，仅可选择叶节点（单选），或父子检查状态\n相互关联（多选）。当值为 `true` 时，任何节点均可独立选择。",
             "class": "级联触发器的类",
             "clearable": "当值为 `true` 时，可通过“清除”按钮清除该值。",
+            "clearlabel": "“清除”按钮的无障碍标签。",
             "contentprops": "已将属性转发至内容部分。",
             "defaultopen": "cascader 在初始渲染时的展开状态。",
             "defaultvalue": "所选节点的默认值。",
             "dir": "组件的阅读方向。",
             "disabled": "当值为 `true` 时，禁止用户与 Cascader 进行交互。",
+            "emptylabel": "空状态下显示的文本。",
             "emptyprops": "属性已转发至空部分。",
             "expandtrigger": "用于展开节点子节点的触发器。",
             "fieldkeys": "用于提取选项字段的字段键。",
@@ -10678,16 +10722,41 @@
             "dir": "应用程序的全局阅读方向。所有组件将继承此设置。\n\n若未指定，方向将遵循当前区域设置，并回退为 `'ltr'`。",
             "iconify": "iconify 选项。",
             "iconrender": "一个用于渲染图标的函数。当您希望使用自定义图标库，或希望用自定义组件包裹图标时，此函数非常有用。",
+            "isserver": "组件是否在服务器环境中运行。\n\n由于 UI 库是预编译的，因此 `import.meta.env.SSR` 在构建\n时已被固定，无法检测使用方的运行时环境。 默认情况下会进行运行时\n检测（`typeof window === 'undefined'`），当应用程序\n同时针对服务器和客户端进行打包时，可通过\n应用程序自身的标志（例如 Nuxt 的 `import.meta.server`）进行覆盖。",
             "locale": "应用程序的全局语言环境。所有组件将继承此设置。",
             "messages": "对内置组件语言环境消息的覆盖。这些覆盖内容将叠加在由\n`locale` 属性选定的语言环境之上，因此您只需提供需要修改的键值即可。",
             "nonce": "应用程序的全局 `nonce` 值。相关组件将继承此值。",
+            "persisttheme": "是否启用从 localStorage / cookie 读取持久化主题。\n\n当禁用时（默认），ConfigProvider 仅使用显式的\n`theme` prop，绝不会读取任何存储，从而保持当前的行为。\n当启用时，持久化主题配置会填充 `theme` 未显式\n提供的键值。",
+            "presetprovider": "服务器端自定义主题预设注册表解析器。\n\n将存储的预设名称映射到其定义，以便 SSR 能够渲染自定义\n预设，而无需访问 localStorage。仅当服务器端启用了 `persistTheme` 时\n才使用；在客户端，预设表是\n权威数据源。",
             "progress": "应用程序的全局顶层进度配置。",
             "size": "大小选项。",
             "theme": "主题选项。",
+            "themeconfig": "从服务器注入的持久化主题配置。\n\n在服务器端渲染（SSR）期间用于呈现与客户端持久化主题相同的主题；在\n客户端，localStorage 是权威数据源。",
             "toast": "应用程序的全局提示配置。相关组件将继承此配置。",
             "tooltip": "应用程序的全局工具提示配置。相关组件将继承此配置。"
           },
           "props": "ConfigProvider 组件的属性。"
+        },
+        "configproviderthemeoptions": {
+          "members": {
+            "base": "基础配色方案键",
+            "chart": "图表（数据）语义方案键",
+            "darklevel": "深色模式界面亮度偏移量",
+            "darkselector": "深色模式选择器\n\n- 类名：\".dark\"\n- 媒体查询：\"@media (prefers-color-scheme: dark)\"\n- 自定义：自定义深色模式选择器，例如 \".custom-dark\"",
+            "feedback": "反馈（状态）语义方案键",
+            "format": "颜色输出格式\n\n- hsl：\"h s l [/ alpha]\"，例如 \"0 0% 100% / 0.1\"\n- oklch：\"oklch(l c h [/ alpha])\"，例如 \"oklch(0 0 0 / 0.1)\"",
+            "lightlevel": "浅色模式表面变暗偏移量",
+            "menuaccent": "菜单重音预设键",
+            "menucolor": "菜单颜色预设键",
+            "overrides": "对派生令牌应用的内联颜色令牌覆盖规则",
+            "preset": "自定义颜色预设：可以是内联的模式分割覆盖（浅色/深色\n部分令牌），也可以是引用存储预设的 `{ name }`。在调用 `createTheme` 之前，该预设会被解析为\n`overrides`。",
+            "primary": "主配色方案键",
+            "radius": "边框半径",
+            "sidebar": "侧边栏皮肤语义方案键",
+            "sidebarderive": "是否应用与 `sidebar` 样式方案不同的侧边栏样式。\n\n当值为 `false` 时，不会生成侧边栏标记，而是回退到基础的\n`background`/`foreground`/`border` 标记（不使用专用的侧边栏样式）。",
+            "size": "组件尺寸/密度",
+            "styletarget": "目标风格"
+          }
         },
         "iconifyoptions": {
           "members": {
@@ -11002,6 +11071,12 @@
             "weekstartson": "本周开始于。"
           },
           "props": "DatePicker 组件的属性。"
+        },
+        "datepickerslots": {
+          "callables": {
+            "leading": "日期段之前渲染的自定义内容。"
+          },
+          "slots": "DatePicker 组件的槽位。"
         }
       },
       "packages_ui_src_components_date_range_field_types": {
@@ -11131,6 +11206,13 @@
             "weekstartson": "本周开始于。"
           },
           "props": "DateRangePicker 组件的属性。"
+        },
+        "daterangepickerslots": {
+          "callables": {
+            "leading": "在日期范围分段之前渲染的自定义内容。",
+            "separator": "在起始和结束分段组之间渲染的自定义内容。"
+          },
+          "slots": "DateRangePicker 组件的槽位。"
         }
       },
       "packages_ui_src_components_dialog_types": {
@@ -11628,6 +11710,9 @@
       "packages_ui_src_components_icon_types": {
         "iconprops": {
           "members": {
+            "ariahidden": "该图标是否对辅助技术隐藏。\n\n对于装饰性图标，默认值为 `true`。若要显示该图标，请将其设置为 `false` 或提供 `ariaLabel` / `ariaLabelledby`。",
+            "arialabel": "图标的无障碍标签。当提供该标签时，不会设置 `aria-hidden`，以便系统能够朗读该标签。",
+            "arialabelledby": "用于标注图标的元素 ID。当提供该属性时，不会设置 `aria-hidden`，以便朗读标签内容。",
             "icon": "由组件渲染的图标。"
           },
           "props": "Icon 组件的属性。"
@@ -11710,7 +11795,7 @@
         "inputotpprops": {
           "members": {
             "align": "对齐。",
-            "aria_label": "可访问性标签已转发至原生输入。",
+            "arialabel": "无障碍标签已转发至原生输入。",
             "autocomplete": "将自动完成提示传递给原生输入控件。",
             "autofocus": "输入是否应聚焦于挂载。",
             "class": "根类。",
@@ -12020,7 +12105,7 @@
             "item_link_icon": "为项目链接图标槽位定制内容。",
             "item_trailing": "用于项尾部插槽的自定义内容。",
             "item_trigger_icon": "用于项目触发图标槽位的自定义内容。",
-            "trigger": "触发槽的自定义内容。"
+            "trigger": "触发器插槽的自定义内容。\n\n可选：当消费者未提供内容时，`MenubarCompact` 会渲染完整的默认触发器内容（图标、\n标签、链接图标、尾部插槽）。"
           },
           "slots": "Menubar 组件的插槽。"
         }
@@ -12164,6 +12249,18 @@
             "trailing": "尾部槽位的自定义内容。"
           },
           "slots": "Pagination 组件的插槽。"
+        }
+      },
+      "packages_ui_src_components_palette_picker_types": {
+        "palettepickeremits": {
+          "emits": "PalettePicker 组件的事件。"
+        },
+        "palettepickerprops": {
+          "members": {
+            "format": "用于将自定义颜色序列化为 `ColorValue` 的输出色彩空间。",
+            "size": "组件的视觉尺寸。"
+          },
+          "props": "PalettePicker 组件的属性。"
         }
       },
       "packages_ui_src_components_password_types": {
@@ -12587,6 +12684,7 @@
             "selectionbehavior": "集合中多选功能应如何工作。",
             "separatorprops": "传递给分隔符元素的属性。",
             "showarrow": "是否显示箭头。",
+            "showtriggericon": "是否显示触发图标。",
             "size": "组件的视觉尺寸。",
             "triggericonprops": "传递给触发图标元素的属性。",
             "triggerprops": "转发给触发元素的属性。",
@@ -12681,6 +12779,9 @@
       "packages_ui_src_components_spinner_types": {
         "spinnerprops": {
           "members": {
+            "ariahidden": "该图标是否对辅助技术隐藏。\n\n对于装饰性图标，默认值为 `true`。若要显示该图标，请将其设置为 `false` 或提供 `ariaLabel` / `ariaLabelledby`。",
+            "arialabel": "图标的无障碍标签。当提供该标签时，不会设置 `aria-hidden`，以便系统能够朗读该标签。",
+            "arialabelledby": "用于标注图标的元素 ID。当提供该属性时，不会设置 `aria-hidden`，以便朗读标签内容。",
             "class": "应用于根元素的额外类名。",
             "color": "组件的主题颜色。",
             "icon": "来自 Iconify svg-spinners 集合的加载图标名称。",
@@ -12985,6 +13086,7 @@
             "loop": "键盘导航是否应循环",
             "modelvalue": "用于激活的选项卡的控制值。可作为 `v-model` 绑定。",
             "orientation": "该组的布局方向。主要是为了确保箭头导航能据此正确显示（左右方向与上下方向的区别）",
+            "shape": "组件的结构。",
             "size": "组件的视觉尺寸。",
             "triggerprops": "转发给触发元素的属性。",
             "ui": "已格式化的选项卡 UI 插槽，包括用于紧凑型指示器主体的 `indicatorContent`。",
@@ -13113,6 +13215,39 @@
           "slots": "Textarea 组件的槽位。"
         }
       },
+      "packages_ui_src_components_theme_customizer_types": {
+        "themecustomizerprops": {
+          "members": {
+            "class": "已为根元素添加了额外的类名。",
+            "labelresolver": "将标签键（章节/组/变体标记）解析为显示字符串。",
+            "persist": "是否将更改保存到存储中。",
+            "sections": "要显示的章节（默认显示全部）。",
+            "showactions": "是否显示底部操作行（保存预设/重置）。",
+            "size": "传递给底层控件的大小。"
+          },
+          "props": "ThemeCustomizer 组件的属性。\n\n一个可在真实应用中复用的主题设置主体。它不拥有任何容器\n（弹出框 / 抽屉 / 侧边栏）——调用方负责托管并决定其外壳。"
+        }
+      },
+      "packages_ui_src_components_theme_mode_select_types": {
+        "thememodeselectprops": {
+          "members": {
+            "showicon": "是否在触发器和\n每个选项中渲染模式图标（显示器 / 太阳 / 月亮）。",
+            "size": "下拉菜单触发器的视觉尺寸。"
+          },
+          "props": "ThemeModeSelect 组件的属性。\n\n一个与当前活动的 `SConfigProvider` 主题绑定的上下文下拉菜单。它\n提供三个 `ThemeModePreference` 选项——`auto`（遵循操作系统\n的 `prefers-color-scheme` 设置）、`light` 和 `dark`。"
+        }
+      },
+      "packages_ui_src_components_theme_mode_switch_types": {
+        "thememodeswitchprops": {
+          "members": {
+            "aria_label": "switch 控件的无障碍标签。",
+            "color": "开关轨道的主题颜色。",
+            "showicon": "是否在开关图标中显示太阳/月亮图标。",
+            "size": "开关的视觉尺寸。"
+          },
+          "props": "ThemeModeSwitch 组件的属性。\n\n一个与当前活动的 `SConfigProvider` 主题绑定的上下文切换控件。 它显示\n当前*实际生效*的配色方案（因此 `auto` 偏好设置将体现为\n操作系统解析的浅色/深色模式），并在\n切换时锁定显式的 `light` / `dark` 偏好设置。要恢复 `auto` 模式，请使用 `SThemeModeSelect`。"
+        }
+      },
       "packages_ui_src_components_time_field_types": {
         "timefieldemits": {
           "callables": {
@@ -13149,6 +13284,13 @@
             "ui": "针对该组件的按槽位类重写。"
           },
           "props": "TimeField 组件的属性。"
+        },
+        "timefieldslots": {
+          "callables": {
+            "leading": "时间段之前渲染的内容。",
+            "trailing": "时间段之后渲染的内容。"
+          },
+          "slots": "TimeField 组件的槽位。"
         }
       },
       "packages_ui_src_components_time_range_field_types": {
@@ -13540,10 +13682,6 @@
       },
       "packages_ui_src_styles_toggle_group": {
         "togglegroupvariant": ""
-      },
-      "packages_ui_src_theme_types": {
-        "themecolor": "",
-        "themesize": ""
       }
     }
   }

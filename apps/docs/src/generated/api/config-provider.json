@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "ConfigProviderProps",
         "type": "Interface ConfigProviderProps",
-        "resolvedType": "{ theme?: ThemeOptions; size?: ThemeSize; iconify?: IconifyOptions; progress?: Partial<ProgressProviderProps>; toast?: Partial<ToastProviderProps>; customToast?: boolean; dir?: Direction; locale?: string; nonce?: string; tooltip?: Partial<TooltipProviderProps>; iconRender?: ((icon: IconValue) => VNode); messages?: LocaleMessagesOverrides }",
+        "resolvedType": "{ theme?: ConfigProviderThemeOptions; size?: ThemeSize; iconify?: IconifyOptions; progress?: Partial<ProgressProviderProps>; toast?: Partial<ToastProviderProps>; customToast?: boolean; persistTheme?: boolean; themeConfig?: ThemeConfigState; presetProvider?: ((name: string) => CustomThemeColorPreset | null); isServer?: boolean; dir?: Direction; locale?: string; nonce?: string; tooltip?: Partial<TooltipProviderProps>; iconRender?: ((icon: IconValue) => VNode); messages?: LocaleMessagesOverrides }",
         "description": "Properties for the ConfigProvider component.",
         "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.props",
         "sourcePath": "packages/ui/src/components/config-provider/types.ts",
@@ -14,7 +14,7 @@
         "members": [
           {
             "name": "theme",
-            "type": "ThemeOptions",
+            "type": "ConfigProviderThemeOptions",
             "required": false,
             "description": "The theme options.",
             "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.theme",
@@ -23,16 +23,204 @@
             "sourcePath": "packages/ui/src/components/config-provider/types.ts",
             "referencedTypes": [
               {
-                "name": "ThemeOptions",
-                "kind": "interface",
-                "type": "ThemeOptions",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "packages/theme/dist/index.d.ts",
+                "name": "ConfigProviderThemeOptions",
+                "kind": "typeAlias",
+                "type": "ThemeOptions & { preset?: ThemePresetInput; }",
+                "resolvedType": "{ base?: BaseColorKey; primary?: PrimaryColorKey; feedback?: FeedbackSchemeKey; chart?: ChartSchemeKey; sidebar?: SidebarSchemeKey; sidebarDerive?: boolean; overrides?: ThemeOverrides; size?: ThemeSizeValue; radius?: ThemeRadiusValue; menuColor?: MenuColor; menuAccent?: MenuAccent; lightLevel?: LightLevelOffset; darkLevel?: DarkLevelOffset; styleTarget?: StyleTarget; darkSelector?: DarkSelectorValue; format?: ColorFormat; preset?: ThemePresetInput }",
+                "description": "UI-level theme options accepted by `SConfigProvider`.\n\nThe engine's `ThemeOptions` now carries `overrides` for inline token\noverrides. The provider additionally accepts a legacy `preset` input — either\nan inline mode-split override or a `{ name }` reference to a stored preset.\nThe provider resolves named references to their colors and materializes the\nresult as `overrides` before calling `createTheme`, so the engine only ever\nreceives resolved options.",
+                "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions",
+                "sourcePath": "packages/ui/src/components/config-provider/types.ts",
                 "typeParameters": [],
-                "external": true,
-                "members": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "base",
+                    "type": "BaseColorKey",
+                    "required": false,
+                    "description": "the base color palette key",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.base",
+                    "default": "'zinc'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "primary",
+                    "type": "PrimaryColorKey",
+                    "required": false,
+                    "description": "the primary color palette key",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.primary",
+                    "default": "'indigo'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "feedback",
+                    "type": "FeedbackSchemeKey",
+                    "required": false,
+                    "description": "the feedback (status) semantic scheme key",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.feedback",
+                    "default": "'classic'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "chart",
+                    "type": "ChartSchemeKey",
+                    "required": false,
+                    "description": "the chart (data) semantic scheme key",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.chart",
+                    "default": "'vivid'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sidebar",
+                    "type": "SidebarSchemeKey",
+                    "required": false,
+                    "description": "the sidebar skin semantic scheme key",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.sidebar",
+                    "default": "'derived'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sidebarDerive",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "whether to apply a separate sidebar skin from the `sidebar` scheme.\n\nWhen `false`, the sidebar tokens are not derived and fall back to the base\n`background`/`foreground`/`border` tokens (no dedicated sidebar skin).",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.sidebarderive",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "overrides",
+                    "type": "ThemeOverrides",
+                    "required": false,
+                    "description": "inline color token overrides applied on top of the derived tokens",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.overrides",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "size",
+                    "type": "ThemeSizeValue",
+                    "required": false,
+                    "description": "the component size / density",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.size",
+                    "default": "'md'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "radius",
+                    "type": "ThemeRadiusValue",
+                    "required": false,
+                    "description": "the border radius",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.radius",
+                    "default": "'md'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "menuColor",
+                    "type": "MenuColor",
+                    "required": false,
+                    "description": "the menu color preset key",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.menucolor",
+                    "default": "'default'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "menuAccent",
+                    "type": "MenuAccent",
+                    "required": false,
+                    "description": "the menu accent preset key",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.menuaccent",
+                    "default": "'subtle'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "lightLevel",
+                    "type": "LightLevelOffset",
+                    "required": false,
+                    "description": "light mode surface darkening offset",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.lightlevel",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "darkLevel",
+                    "type": "DarkLevelOffset",
+                    "required": false,
+                    "description": "dark mode surface brightening offset",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.darklevel",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "styleTarget",
+                    "type": "StyleTarget",
+                    "required": false,
+                    "description": "the style target",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.styletarget",
+                    "default": "':root'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "darkSelector",
+                    "type": "DarkSelectorValue",
+                    "required": false,
+                    "description": "dark mode selector\n\n- class: \".dark\"\n- media: \"@media (prefers-color-scheme: dark)\"\n- custom: custom dark mode selector, e.g. \".custom-dark\"",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.darkselector",
+                    "default": "'class'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "format",
+                    "type": "ColorFormat",
+                    "required": false,
+                    "description": "color output format\n\n- hsl: \"h s l [/ alpha]\", e.g. \"0 0% 100% / 0.1\"\n- oklch: \"oklch(l c h [/ alpha])\", e.g. \"oklch(0 0 0 / 0.1)\"",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.format",
+                    "default": "'hsl'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "preset",
+                    "type": "ThemePresetInput",
+                    "required": false,
+                    "description": "A custom color preset: either an inline mode-split override (light/dark\npartial tokens) or a `{ name }` reference to a stored preset. Resolved to\n`overrides` before `createTheme`.",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.preset",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/ui/src/components/config-provider/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
                 "callables": []
               }
             ]
@@ -52,9 +240,9 @@
                 "kind": "typeAlias",
                 "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
                 "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
-                "description": "",
-                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
-                "sourcePath": "packages/ui/src/theme/types.ts",
+                "description": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px",
+                "descriptionKey": "api.generated.packages_theme_dist_types_bwhfmhi1_d.themesize",
+                "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -172,6 +360,244 @@
             "referencedTypes": []
           },
           {
+            "name": "persistTheme",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to enable persisted theme reading from localStorage / cookie.\n\nWhen disabled (default), the ConfigProvider only consumes the explicit\n`theme` prop and never reads any storage, keeping the current behavior.\nWhen enabled, the persisted theme config fills in keys not explicitly\nprovided by `theme`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.persisttheme",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/config-provider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "themeConfig",
+            "type": "ThemeConfigState",
+            "required": false,
+            "description": "The persisted theme config injected from the server.\n\nUsed during SSR to render the same theme the client persisted; on the\nclient the localStorage is the source of truth.",
+            "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.themeconfig",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeConfigState",
+                "kind": "interface",
+                "type": "ThemeConfigState",
+                "resolvedType": "{ base?: BaseColorKey; primary?: PrimaryColorKey; feedback?: FeedbackSchemeKey; chart?: ChartSchemeKey; sidebar?: SidebarSchemeKey; sidebarDerive?: boolean; size?: ThemeSizeValue; radius?: ThemeRadiusValue; menuColor?: MenuColor; menuAccent?: MenuAccent; mode?: ThemeModePreference; format?: ColorFormat; lightLevel?: LightLevelOffset; darkLevel?: DarkLevelOffset; overrides?: ThemeOverrides }",
+                "description": "the persistable theme config state\n\na subset of `ThemeOptions` that can be safely stored in localStorage, plus\nthe `mode` preference used to toggle the dark mode class before first paint.\nCustom `preset` colors are intentionally not persisted.",
+                "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate",
+                "sourcePath": "packages/theme/dist/storage.d.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "base",
+                    "type": "BaseColorKey",
+                    "required": false,
+                    "description": "the base color preset key",
+                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.base",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "primary",
+                    "type": "PrimaryColorKey",
+                    "required": false,
+                    "description": "the primary color preset key",
+                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.primary",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "feedback",
+                    "type": "FeedbackSchemeKey",
+                    "required": false,
+                    "description": "the feedback (status) semantic scheme key",
+                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.feedback",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "chart",
+                    "type": "ChartSchemeKey",
+                    "required": false,
+                    "description": "the chart (data) semantic scheme key",
+                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.chart",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sidebar",
+                    "type": "SidebarSchemeKey",
+                    "required": false,
+                    "description": "the sidebar skin semantic scheme key",
+                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.sidebar",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sidebarDerive",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "whether to apply a separate sidebar skin from the `sidebar` scheme.",
+                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.sidebarderive",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "size",
+                    "type": "ThemeSizeValue",
+                    "required": false,
+                    "description": "the component size / density",
+                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.size",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "radius",
+                    "type": "ThemeRadiusValue",
+                    "required": false,
+                    "description": "the border radius",
+                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.radius",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "menuColor",
+                    "type": "MenuColor",
+                    "required": false,
+                    "description": "the menu color preset key",
+                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.menucolor",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "menuAccent",
+                    "type": "MenuAccent",
+                    "required": false,
+                    "description": "the menu accent preset key",
+                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.menuaccent",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "mode",
+                    "type": "ThemeModePreference",
+                    "required": false,
+                    "description": "the color scheme preference (`light` / `dark` / `auto`)\n\n`'auto'` follows the OS `prefers-color-scheme`. The effective mode is\napplied as a class on `<html>` (default `'dark'`).",
+                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.mode",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "format",
+                    "type": "ColorFormat",
+                    "required": false,
+                    "description": "color output format",
+                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.format",
+                    "default": "'hsl'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "lightLevel",
+                    "type": "LightLevelOffset",
+                    "required": false,
+                    "description": "light mode darkening offset",
+                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.lightlevel",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "darkLevel",
+                    "type": "DarkLevelOffset",
+                    "required": false,
+                    "description": "dark mode brightening offset",
+                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.darklevel",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "overrides",
+                    "type": "ThemeOverrides",
+                    "required": false,
+                    "description": "inline color token overrides persisted alongside the config so a theme that\ndiffers only in `overrides` is still reconstructable during SSR.",
+                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.overrides",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "presetProvider",
+            "type": "((name: string) => CustomThemeColorPreset | null)",
+            "required": false,
+            "description": "The server-side custom theme preset registry resolver.\n\nMaps a stored preset name to its definition so SSR can render custom\npresets without localStorage access. Only used when `persistTheme` is\nenabled on the server; on the client the presets table is the source of\ntruth.",
+            "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.presetprovider",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CustomThemeColorPreset",
+                "kind": "typeAlias",
+                "type": "{ light: Partial<import(\"@soybeanjs/theme\").ColorTokens>; dark?: Partial<import(\"@soybeanjs/theme\").ColorTokens>; }",
+                "resolvedType": null,
+                "description": "a custom theme color preset (light/dark color token overrides)",
+                "descriptionKey": "api.generated.packages_theme_dist_storage_d.customthemecolorpreset",
+                "sourcePath": "packages/theme/dist/storage.d.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "isServer",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is running in a server environment.\n\nThe UI library is pre-built, so `import.meta.env.SSR` is baked at build\ntime and cannot detect the consumer's runtime. This defaults to runtime\ndetection (`typeof window === 'undefined'`), and can be overridden with\nthe app's own flag (e.g. Nuxt's `import.meta.server`) when the app is\nbundled for both server and client.",
+            "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.isserver",
+            "default": "isServerRuntime()",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/config-provider/types.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "dir",
             "type": "Direction",
             "required": false,
@@ -273,7 +699,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "HostNode = RendererNode",
                   "HostElement = RendererElement",
@@ -298,8 +724,8 @@
               {
                 "name": "LocaleMessagesOverrides",
                 "kind": "typeAlias",
-                "type": "{ anchor?: Partial<import(\"../../locale/types\").LocaleAnchorMessages> | undefined; autocomplete?: Partial<import(\"../../locale/types\").LocaleAutocompleteMessages> | undefined; breadcrumb?: Partial<import(\"../../locale/types\").LocaleBreadcrumbMessages> | undefined; calendar?: Partial<import(\"../../locale/types\").LocaleCalendarMessages> | undefined; combobox?: Partial<import(\"../../locale/types\").LocaleComboboxMessages> | undefined; command?: Partial<import(\"../../locale/types\").LocaleCommandMessages> | undefined; date?: Partial<import(\"../../locale/types\").LocaleDateMessages> | undefined; dialog?: Partial<import(\"../../locale/types\").LocaleDialogMessages> | undefined; editable?: Partial<import(\"../../locale/types\").LocaleEditableMessages> | undefined; inputNumber?: Partial<import(\"../../locale/types\").LocaleInputNumberMessages> | undefined; layout?: Partial<import(\"../../locale/types\").LocaleLayoutMessages> | undefined; pagination?: Partial<import(\"../../locale/types\").LocalePaginationMessages> | undefined; password?: Partial<import(\"../../locale/types\").LocalePasswordMessages> | undefined; progress?: Partial<import(\"../../locale/types\").LocaleProgressMessages> | undefined; slider?: Partial<import(\"../../locale/types\").LocaleSliderMessages> | undefined; stepper?: Partial<import(\"../../locale/types\").LocaleStepperMessages> | undefined; table?: Partial<import(\"../../locale/types\").LocaleTableMessages> | undefined; tagsInput?: Partial<import(\"../../locale/types\").LocaleTagsInputMessages> | undefined; textarea?: Partial<import(\"../../locale/types\").LocaleTextareaMessages> | undefined; }",
-                "resolvedType": "{ anchor?: Partial<LocaleAnchorMessages>; autocomplete?: Partial<LocaleAutocompleteMessages>; breadcrumb?: Partial<LocaleBreadcrumbMessages>; calendar?: Partial<LocaleCalendarMessages>; combobox?: Partial<LocaleComboboxMessages>; command?: Partial<LocaleCommandMessages>; date?: Partial<LocaleDateMessages>; dialog?: Partial<LocaleDialogMessages>; editable?: Partial<LocaleEditableMessages>; inputNumber?: Partial<LocaleInputNumberMessages>; layout?: Partial<LocaleLayoutMessages>; pagination?: Partial<LocalePaginationMessages>; password?: Partial<LocalePasswordMessages>; progress?: Partial<LocaleProgressMessages>; slider?: Partial<LocaleSliderMessages>; stepper?: Partial<LocaleStepperMessages>; table?: Partial<LocaleTableMessages>; tagsInput?: Partial<LocaleTagsInputMessages>; textarea?: Partial<LocaleTextareaMessages> }",
+                "type": "{ anchor?: Partial<import(\"../../locale/types\").LocaleAnchorMessages> | undefined; autocomplete?: Partial<import(\"../../locale/types\").LocaleAutocompleteMessages> | undefined; breadcrumb?: Partial<import(\"../../locale/types\").LocaleBreadcrumbMessages> | undefined; calendar?: Partial<import(\"../../locale/types\").LocaleCalendarMessages> | undefined; cascader?: Partial<import(\"../../locale/types\").LocaleCascaderMessages> | undefined; clipboard?: Partial<import(\"../../locale/types\").LocaleClipboardMessages> | undefined; combobox?: Partial<import(\"../../locale/types\").LocaleComboboxMessages> | undefined; command?: Partial<import(\"../../locale/types\").LocaleCommandMessages> | undefined; date?: Partial<import(\"../../locale/types\").LocaleDateMessages> | undefined; datePicker?: Partial<import(\"../../locale/types\").LocaleDatePickerMessages> | undefined; dateRangePicker?: Partial<import(\"../../locale/types\").LocaleDateRangePickerMessages> | undefined; dialog?: Partial<import(\"../../locale/types\").LocaleDialogMessages> | undefined; editable?: Partial<import(\"../../locale/types\").LocaleEditableMessages> | undefined; input?: Partial<import(\"../../locale/types\").LocaleInputMessages> | undefined; inputNumber?: Partial<import(\"../../locale/types\").LocaleInputNumberMessages> | undefined; layout?: Partial<import(\"../../locale/types\").LocaleLayoutMessages> | undefined; pagination?: Partial<import(\"../../locale/types\").LocalePaginationMessages> | undefined; pageTabs?: Partial<import(\"../../locale/types\").LocalePageTabsMessages> | undefined; password?: Partial<import(\"../../locale/types\").LocalePasswordMessages> | undefined; progress?: Partial<import(\"../../locale/types\").LocaleProgressMessages> | undefined; rating?: Partial<import(\"../../locale/types\").LocaleRatingMessages> | undefined; slider?: Partial<import(\"../../locale/types\").LocaleSliderMessages> | undefined; stepper?: Partial<import(\"../../locale/types\").LocaleStepperMessages> | undefined; table?: Partial<import(\"../../locale/types\").LocaleTableMessages> | undefined; tagsInput?: Partial<import(\"../../locale/types\").LocaleTagsInputMessages> | undefined; textarea?: Partial<import(\"../../locale/types\").LocaleTextareaMessages> | undefined; themeCustomizer?: Partial<import(\"../..\").LocaleThemeCustomizerMessages> | undefined; treeMenu?: Partial<import(\"../../locale/types\").LocaleTreeMenuMessages> | undefined; }",
+                "resolvedType": "{ anchor?: Partial<LocaleAnchorMessages>; autocomplete?: Partial<LocaleAutocompleteMessages>; breadcrumb?: Partial<LocaleBreadcrumbMessages>; calendar?: Partial<LocaleCalendarMessages>; cascader?: Partial<LocaleCascaderMessages>; clipboard?: Partial<LocaleClipboardMessages>; combobox?: Partial<LocaleComboboxMessages>; command?: Partial<LocaleCommandMessages>; date?: Partial<LocaleDateMessages>; datePicker?: Partial<LocaleDatePickerMessages>; dateRangePicker?: Partial<LocaleDateRangePickerMessages>; dialog?: Partial<LocaleDialogMessages>; editable?: Partial<LocaleEditableMessages>; input?: Partial<LocaleInputMessages>; inputNumber?: Partial<LocaleInputNumberMessages>; layout?: Partial<LocaleLayoutMessages>; pagination?: Partial<LocalePaginationMessages>; pageTabs?: Partial<LocalePageTabsMessages>; password?: Partial<LocalePasswordMessages>; progress?: Partial<LocaleProgressMessages>; rating?: Partial<LocaleRatingMessages>; slider?: Partial<LocaleSliderMessages>; stepper?: Partial<LocaleStepperMessages>; table?: Partial<LocaleTableMessages>; tagsInput?: Partial<LocaleTagsInputMessages>; textarea?: Partial<LocaleTextareaMessages>; themeCustomizer?: Partial<LocaleThemeCustomizerMessages>; treeMenu?: Partial<LocaleTreeMenuMessages> }",
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides",
                 "sourcePath": "packages/headless/src/locale/types.ts",
@@ -351,6 +777,28 @@
                     "referencedTypes": []
                   },
                   {
+                    "name": "cascader",
+                    "type": "Partial<LocaleCascaderMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.cascader",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "clipboard",
+                    "type": "Partial<LocaleClipboardMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.clipboard",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
                     "name": "combobox",
                     "type": "Partial<LocaleComboboxMessages>",
                     "required": false,
@@ -384,6 +832,28 @@
                     "referencedTypes": []
                   },
                   {
+                    "name": "datePicker",
+                    "type": "Partial<LocaleDatePickerMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.datepicker",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "dateRangePicker",
+                    "type": "Partial<LocaleDateRangePickerMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.daterangepicker",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
                     "name": "dialog",
                     "type": "Partial<LocaleDialogMessages>",
                     "required": false,
@@ -400,6 +870,17 @@
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.editable",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "input",
+                    "type": "Partial<LocaleInputMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.input",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/locale/types.ts",
@@ -439,6 +920,17 @@
                     "referencedTypes": []
                   },
                   {
+                    "name": "pageTabs",
+                    "type": "Partial<LocalePageTabsMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.pagetabs",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
                     "name": "password",
                     "type": "Partial<LocalePasswordMessages>",
                     "required": false,
@@ -455,6 +947,17 @@
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.progress",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "rating",
+                    "type": "Partial<LocaleRatingMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.rating",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/locale/types.ts",
@@ -510,6 +1013,28 @@
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.textarea",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "themeCustomizer",
+                    "type": "Partial<LocaleThemeCustomizerMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.themecustomizer",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "treeMenu",
+                    "type": "Partial<LocaleTreeMenuMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.treemenu",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/locale/types.ts",

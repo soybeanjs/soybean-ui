@@ -1,0 +1,93 @@
+{
+  "component": "theme-mode-switch",
+  "symbols": {
+    "ThemeModeSwitch": {
+      "props": {
+        "kind": "props",
+        "name": "ThemeModeSwitchProps",
+        "type": "Interface ThemeModeSwitchProps",
+        "resolvedType": "{ size?: ThemeSize; color?: ThemeColor; showIcon?: boolean; \"aria-label\"?: string }",
+        "description": "Properties for the ThemeModeSwitch component.\n\nA context-bound toggle bound to the active `SConfigProvider` theme. It shows\nthe current *effective* scheme (so an `auto` preference is reflected as the\nOS-resolved light/dark) and pins an explicit `light` / `dark` preference when\ntoggled. To restore `auto`, use `SThemeModeSelect`.",
+        "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_switch_types.thememodeswitchprops.props",
+        "sourcePath": "packages/ui/src/components/theme-mode-switch/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the switch.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_switch_types.thememodeswitchprops.members.size",
+            "default": "'md'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/theme-mode-switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px",
+                "descriptionKey": "api.generated.packages_theme_dist_types_bwhfmhi1_d.themesize",
+                "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "type": "ThemeColor",
+            "required": false,
+            "description": "Theme color of the switch track.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_switch_types.thememodeswitchprops.members.color",
+            "default": "'accent'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/theme-mode-switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeColor",
+                "kind": "typeAlias",
+                "type": "'primary' | 'secondary' | 'accent' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon'",
+                "resolvedType": "'primary' | 'secondary' | 'accent' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon'",
+                "description": "Theme color",
+                "descriptionKey": "api.generated.packages_theme_dist_types_bwhfmhi1_d.themecolor",
+                "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "showIcon",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to render a sun/moon icon inside the switch thumb.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_switch_types.thememodeswitchprops.members.showicon",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/theme-mode-switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "aria-label",
+            "type": "string",
+            "required": false,
+            "description": "Accessible label for the switch control.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_switch_types.thememodeswitchprops.members.aria_label",
+            "default": "'Toggle color scheme'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/theme-mode-switch/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "component": "theme-customizer",
+  "symbols": {
+    "ThemeCustomizer": {
+      "props": {
+        "kind": "props",
+        "name": "ThemeCustomizerProps",
+        "type": "Interface ThemeCustomizerProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; sections?: ThemeCustomizerSection[]; size?: ThemeSize; persist?: boolean; showActions?: boolean; labelResolver?: ((key: string) => string) }",
+        "description": "Properties for the ThemeCustomizer component.\n\nA real-app reusable theme settings body. It does not own any container\n(popover / drawer / sidebar) — the caller hosts it and decides the shell.",
+        "descriptionKey": "api.generated.packages_ui_src_components_theme_customizer_types.themecustomizerprops.props",
+        "sourcePath": "packages/ui/src/components/theme-customizer/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Additional class names applied to the root element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_customizer_types.themecustomizerprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/theme-customizer/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "sections",
+            "type": "ThemeCustomizerSection[]",
+            "required": false,
+            "description": "The sections to show (defaults to all).",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_customizer_types.themecustomizerprops.members.sections",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/theme-customizer/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "The size forwarded to the underlying controls.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_customizer_types.themecustomizerprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/theme-customizer/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px",
+                "descriptionKey": "api.generated.packages_theme_dist_types_bwhfmhi1_d.themesize",
+                "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "persist",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to persist changes to storage.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_customizer_types.themecustomizerprops.members.persist",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/theme-customizer/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showActions",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show the bottom action row (save preset / reset).",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_customizer_types.themecustomizerprops.members.showactions",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/theme-customizer/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "labelResolver",
+            "type": "((key: string) => string)",
+            "required": false,
+            "description": "Resolve a label key (section / group / variant token) to a display string.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_customizer_types.themecustomizerprops.members.labelresolver",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/theme-customizer/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

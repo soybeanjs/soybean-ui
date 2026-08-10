@@ -55,6 +55,7 @@ export const components = {
   navigationMenu: ['SNavigationMenu'],
   pageTabs: ['SPageTabs'],
   pagination: ['SPagination'],
+  palettePicker: ['SPalettePicker'],
   password: ['SPassword'],
   popconfirm: ['SPopconfirm', 'SPopconfirmConfirm', 'SPopconfirmCancel'],
   popover: ['SPopover'],

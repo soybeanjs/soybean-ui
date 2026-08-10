@@ -48,7 +48,7 @@
     "typecheck": "tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
-    "@soybeanjs/colord": "^0.6.2",
+    "@soybeanjs/colord": "^0.7.1",
     "@soybeanjs/utils": "^0.1.1",
     "defu": "^6.1.7"
   },

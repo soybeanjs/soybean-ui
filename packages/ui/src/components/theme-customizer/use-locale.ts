@@ -1,5 +1,5 @@
 import { computed } from 'vue';
-import { useLocaleMessages } from '@soybeanjs/headless';
+import { useThemeLocale } from './locale';
 
 export type OptionCategory =
   | 'mode'
@@ -25,12 +25,12 @@ const toMessageKey = (category: OptionCategory, value: string): string => {
 };
 
 /**
- * ThemeCustomizer 文案解析：跟随 ConfigProvider.locale 响应式刷新。
+ * ThemeCustomizer 文案解析：跟随 ConfigProvider.locale 响应式刷新（仅 zh/en）。
  * `resolveLabel` 解析 sections / groups / variants，`resolveOption` 解析各下拉选项标签。
  */
 export function useThemeCustomizerLocale() {
-  const messages = useLocaleMessages();
-  const tc = computed(() => messages.value.themeCustomizer);
+  const messages = useThemeLocale();
+  const tc = computed(() => messages.value);
 
   const resolveLabel = (key: string): string => {
     const m = tc.value;

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useLocaleMessages } from '@soybeanjs/headless';
 import type { ThemeModePreference } from '@soybeanjs/theme';
 import { useTheme } from '../config-provider/use-theme';
 import SIcon from '../icon/icon.vue';
 import SSelect from '../select/select.vue';
 import type { SelectOptionData } from '../select/types';
+import { useThemeLocale } from '../theme-customizer/locale';
 import type { ThemeModeSelectProps } from './types';
 
 defineOptions({
@@ -19,8 +19,8 @@ withDefaults(defineProps<ThemeModeSelectProps>(), {
 
 const { mode } = useTheme('ThemeModeSelect');
 
-const messages = useLocaleMessages();
-const modeMessages = computed(() => messages.value.themeCustomizer.options.mode);
+const messages = useThemeLocale();
+const modeMessages = computed(() => messages.value.options.mode);
 
 const items = computed<SelectOptionData<ThemeModePreference>[]>(() => [
   { label: modeMessages.value.auto, value: 'auto' },
