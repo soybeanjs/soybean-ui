@@ -25,7 +25,7 @@
     "es-toolkit": "^1.50.0",
     "pinia": "^4.0.2",
     "sbean": "workspace:^",
-    "shiki": "^4.4.2",
+    "shiki": "^4.4.3",
     "valibot": "^1.4.2",
     "vue": "^3.5.41",
     "vue-i18n": "^11.4.8",
@@ -33,7 +33,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@shikijs/markdown-exit": "^4.4.2",
+    "@shikijs/markdown-exit": "^4.4.3",
     "@unhead/vue": "^3.3.1",
     "@vitejs/plugin-vue": "^6.0.8",
     "@vitejs/plugin-vue-jsx": "^5.1.6",
@@ -48,5 +48,5 @@
     "vite-ssg": "^28.3.0",
     "vite-ssg-sitemap": "^0.10.0"
   },
-  "packageManager": "pnpm@11.20.0"
+  "packageManager": "pnpm@11.21.0"
 }

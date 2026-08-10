@@ -22,5 +22,15 @@ allowBuilds:
   esbuild: false
   simple-git-hooks: false
 minimumReleaseAgeExclude:
-  - tsx@4.23.9
+  - '@nuxt/icon@2.5.0'
+  - '@shikijs/core@4.4.3'
+  - '@shikijs/engine-javascript@4.4.3'
+  - '@shikijs/engine-oniguruma@4.4.3'
+  - '@shikijs/langs@4.4.3'
+  - '@shikijs/markdown-exit@4.4.3'
+  - '@shikijs/primitive@4.4.3'
+  - '@shikijs/themes@4.4.3'
+  - '@shikijs/types@4.4.3'
   - '@soybeanjs/colord@0.7.1'
+  - shiki@4.4.3
+  - tsx@4.23.12

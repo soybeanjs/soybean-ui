@@ -53,10 +53,10 @@
     "defu": "^6.1.7"
   },
   "devDependencies": {
-    "happy-dom": "^20.11.1",
+    "happy-dom": "^20.11.2",
     "typescript": "7.0.2",
     "vite-plus": "catalog:",
     "vitest": "4.1.10"
   },
-  "packageManager": "pnpm@11.20.0"
+  "packageManager": "pnpm@11.21.0"
 }

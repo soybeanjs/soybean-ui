@@ -51,12 +51,12 @@
     "@soybeanjs/cli": "^1.8.2",
     "@soybeanjs/eslint-config-vue": "^0.1.1",
     "@soybeanjs/oxc-config": "^0.2.3",
-    "@types/node": "^26.1.2",
-    "eslint": "^10.8.0",
-    "tsx": "^4.23.9",
+    "@types/node": "^26.2.0",
+    "eslint": "^10.8.1",
+    "tsx": "^4.23.12",
     "typedoc": "^0.28.20",
     "typescript": "7.0.2",
     "vite-plus": "catalog:"
   },
-  "packageManager": "pnpm@11.20.0"
+  "packageManager": "pnpm@11.21.0"
 }
