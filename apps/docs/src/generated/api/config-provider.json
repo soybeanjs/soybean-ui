@@ -26,7 +26,7 @@
                 "name": "ConfigProviderThemeOptions",
                 "kind": "typeAlias",
                 "type": "ThemeOptions & { preset?: ThemePresetInput; }",
-                "resolvedType": "{ base?: BaseColorKey; primary?: PrimaryColorKey; feedback?: FeedbackSchemeKey; chart?: ChartSchemeKey; sidebar?: SidebarSchemeKey; sidebarDerive?: boolean; overrides?: ThemeOverrides; size?: ThemeSizeValue; radius?: ThemeRadiusValue; menuColor?: MenuColor; menuAccent?: MenuAccent; lightLevel?: LightLevelOffset; darkLevel?: DarkLevelOffset; styleTarget?: StyleTarget; darkSelector?: DarkSelectorValue; format?: ColorFormat; preset?: ThemePresetInput }",
+                "resolvedType": "{ base?: BaseColorKey; primary?: PrimaryColorKey; feedback?: FeedbackSchemeKey; chart?: ChartSchemeKey; sidebar?: SidebarSchemeKey; sidebarDerive?: boolean; overrides?: ThemeOverrides; size?: ThemeSizeValue; radius?: ThemeRadiusValue; menuColor?: MenuColor; menuAccent?: MenuAccent; lightLevel?: LightLevelOffset; darkLevel?: DarkLevelOffset; borderOpacity?: number; styleTarget?: StyleTarget; darkSelector?: DarkSelectorValue; format?: ColorFormat; preset?: ThemePresetInput }",
                 "description": "UI-level theme options accepted by `SConfigProvider`.\n\nThe engine's `ThemeOptions` now carries `overrides` for inline token\noverrides. The provider additionally accepts a legacy `preset` input — either\nan inline mode-split override or a `{ name }` reference to a stored preset.\nThe provider resolves named references to their colors and materializes the\nresult as `overrides` before calling `createTheme`, so the engine only ever\nreceives resolved options.",
                 "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions",
                 "sourcePath": "packages/ui/src/components/config-provider/types.ts",
@@ -41,7 +41,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.base",
                     "default": "'zinc'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                     "referencedTypes": []
                   },
                   {
@@ -52,7 +52,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.primary",
                     "default": "'indigo'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                     "referencedTypes": []
                   },
                   {
@@ -63,7 +63,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.feedback",
                     "default": "'classic'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                     "referencedTypes": []
                   },
                   {
@@ -74,7 +74,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.chart",
                     "default": "'vivid'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                     "referencedTypes": []
                   },
                   {
@@ -85,7 +85,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.sidebar",
                     "default": "'derived'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                     "referencedTypes": []
                   },
                   {
@@ -96,7 +96,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.sidebarderive",
                     "default": "true",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                     "referencedTypes": []
                   },
                   {
@@ -107,7 +107,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.overrides",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                     "referencedTypes": []
                   },
                   {
@@ -118,7 +118,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.size",
                     "default": "'md'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                     "referencedTypes": []
                   },
                   {
@@ -129,7 +129,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.radius",
                     "default": "'md'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                     "referencedTypes": []
                   },
                   {
@@ -140,7 +140,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.menucolor",
                     "default": "'default'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                     "referencedTypes": []
                   },
                   {
@@ -151,7 +151,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.menuaccent",
                     "default": "'subtle'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                     "referencedTypes": []
                   },
                   {
@@ -162,7 +162,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.lightlevel",
                     "default": "0",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                     "referencedTypes": []
                   },
                   {
@@ -173,7 +173,18 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.darklevel",
                     "default": "0",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "borderOpacity",
+                    "type": "number",
+                    "required": false,
+                    "description": "the border (border / input / sidebar-border) opacity multiplier.\n\nScales the alpha channel of the border-family tokens, driving the\n`--border-alpha` / `--input-alpha` / `--sidebar-border-alpha` variables\n(effective alpha = token alpha × borderOpacity). Defaults to `1`, so the\ntoken's own alpha is preserved.",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.borderopacity",
+                    "default": "1",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                     "referencedTypes": []
                   },
                   {
@@ -184,7 +195,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.styletarget",
                     "default": "':root'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                     "referencedTypes": []
                   },
                   {
@@ -195,7 +206,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.darkselector",
                     "default": "'class'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                     "referencedTypes": []
                   },
                   {
@@ -206,7 +217,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.format",
                     "default": "'hsl'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                     "referencedTypes": []
                   },
                   {
@@ -241,8 +252,8 @@
                 "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
                 "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
                 "description": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px",
-                "descriptionKey": "api.generated.packages_theme_dist_types_bwhfmhi1_d.themesize",
-                "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
+                "descriptionKey": "api.generated.packages_theme_dist_types_d_bayhuw_d.themesize",
+                "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -384,7 +395,7 @@
                 "name": "ThemeConfigState",
                 "kind": "interface",
                 "type": "ThemeConfigState",
-                "resolvedType": "{ base?: BaseColorKey; primary?: PrimaryColorKey; feedback?: FeedbackSchemeKey; chart?: ChartSchemeKey; sidebar?: SidebarSchemeKey; sidebarDerive?: boolean; size?: ThemeSizeValue; radius?: ThemeRadiusValue; menuColor?: MenuColor; menuAccent?: MenuAccent; mode?: ThemeModePreference; format?: ColorFormat; lightLevel?: LightLevelOffset; darkLevel?: DarkLevelOffset; overrides?: ThemeOverrides }",
+                "resolvedType": "{ base?: BaseColorKey; primary?: PrimaryColorKey; feedback?: FeedbackSchemeKey; chart?: ChartSchemeKey; sidebar?: SidebarSchemeKey; sidebarDerive?: boolean; size?: ThemeSizeValue; radius?: ThemeRadiusValue; menuColor?: MenuColor; menuAccent?: MenuAccent; mode?: ThemeModePreference; format?: ColorFormat; lightLevel?: LightLevelOffset; darkLevel?: DarkLevelOffset; borderOpacity?: number; overrides?: ThemeOverrides }",
                 "description": "the persistable theme config state\n\na subset of `ThemeOptions` that can be safely stored in localStorage, plus\nthe `mode` preference used to toggle the dark mode class before first paint.\nCustom `preset` colors are intentionally not persisted.",
                 "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate",
                 "sourcePath": "packages/theme/dist/storage.d.ts",
@@ -541,6 +552,17 @@
                     "description": "dark mode brightening offset",
                     "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.darklevel",
                     "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "borderOpacity",
+                    "type": "number",
+                    "required": false,
+                    "description": "the border opacity override (0 - 1)",
+                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.borderopacity",
+                    "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/theme/dist/storage.d.ts",
                     "referencedTypes": []
@@ -724,8 +746,8 @@
               {
                 "name": "LocaleMessagesOverrides",
                 "kind": "typeAlias",
-                "type": "{ anchor?: Partial<import(\"../../locale/types\").LocaleAnchorMessages> | undefined; autocomplete?: Partial<import(\"../../locale/types\").LocaleAutocompleteMessages> | undefined; breadcrumb?: Partial<import(\"../../locale/types\").LocaleBreadcrumbMessages> | undefined; calendar?: Partial<import(\"../../locale/types\").LocaleCalendarMessages> | undefined; cascader?: Partial<import(\"../../locale/types\").LocaleCascaderMessages> | undefined; clipboard?: Partial<import(\"../../locale/types\").LocaleClipboardMessages> | undefined; combobox?: Partial<import(\"../../locale/types\").LocaleComboboxMessages> | undefined; command?: Partial<import(\"../../locale/types\").LocaleCommandMessages> | undefined; date?: Partial<import(\"../../locale/types\").LocaleDateMessages> | undefined; datePicker?: Partial<import(\"../../locale/types\").LocaleDatePickerMessages> | undefined; dateRangePicker?: Partial<import(\"../../locale/types\").LocaleDateRangePickerMessages> | undefined; dialog?: Partial<import(\"../../locale/types\").LocaleDialogMessages> | undefined; editable?: Partial<import(\"../../locale/types\").LocaleEditableMessages> | undefined; input?: Partial<import(\"../../locale/types\").LocaleInputMessages> | undefined; inputNumber?: Partial<import(\"../../locale/types\").LocaleInputNumberMessages> | undefined; layout?: Partial<import(\"../../locale/types\").LocaleLayoutMessages> | undefined; pagination?: Partial<import(\"../../locale/types\").LocalePaginationMessages> | undefined; pageTabs?: Partial<import(\"../../locale/types\").LocalePageTabsMessages> | undefined; password?: Partial<import(\"../../locale/types\").LocalePasswordMessages> | undefined; progress?: Partial<import(\"../../locale/types\").LocaleProgressMessages> | undefined; rating?: Partial<import(\"../../locale/types\").LocaleRatingMessages> | undefined; slider?: Partial<import(\"../../locale/types\").LocaleSliderMessages> | undefined; stepper?: Partial<import(\"../../locale/types\").LocaleStepperMessages> | undefined; table?: Partial<import(\"../../locale/types\").LocaleTableMessages> | undefined; tagsInput?: Partial<import(\"../../locale/types\").LocaleTagsInputMessages> | undefined; textarea?: Partial<import(\"../../locale/types\").LocaleTextareaMessages> | undefined; themeCustomizer?: Partial<import(\"../..\").LocaleThemeCustomizerMessages> | undefined; treeMenu?: Partial<import(\"../../locale/types\").LocaleTreeMenuMessages> | undefined; }",
-                "resolvedType": "{ anchor?: Partial<LocaleAnchorMessages>; autocomplete?: Partial<LocaleAutocompleteMessages>; breadcrumb?: Partial<LocaleBreadcrumbMessages>; calendar?: Partial<LocaleCalendarMessages>; cascader?: Partial<LocaleCascaderMessages>; clipboard?: Partial<LocaleClipboardMessages>; combobox?: Partial<LocaleComboboxMessages>; command?: Partial<LocaleCommandMessages>; date?: Partial<LocaleDateMessages>; datePicker?: Partial<LocaleDatePickerMessages>; dateRangePicker?: Partial<LocaleDateRangePickerMessages>; dialog?: Partial<LocaleDialogMessages>; editable?: Partial<LocaleEditableMessages>; input?: Partial<LocaleInputMessages>; inputNumber?: Partial<LocaleInputNumberMessages>; layout?: Partial<LocaleLayoutMessages>; pagination?: Partial<LocalePaginationMessages>; pageTabs?: Partial<LocalePageTabsMessages>; password?: Partial<LocalePasswordMessages>; progress?: Partial<LocaleProgressMessages>; rating?: Partial<LocaleRatingMessages>; slider?: Partial<LocaleSliderMessages>; stepper?: Partial<LocaleStepperMessages>; table?: Partial<LocaleTableMessages>; tagsInput?: Partial<LocaleTagsInputMessages>; textarea?: Partial<LocaleTextareaMessages>; themeCustomizer?: Partial<LocaleThemeCustomizerMessages>; treeMenu?: Partial<LocaleTreeMenuMessages> }",
+                "type": "{ anchor?: Partial<import(\"../../locale/types\").LocaleAnchorMessages> | undefined; autocomplete?: Partial<import(\"../../locale/types\").LocaleAutocompleteMessages> | undefined; breadcrumb?: Partial<import(\"../../locale/types\").LocaleBreadcrumbMessages> | undefined; calendar?: Partial<import(\"../../locale/types\").LocaleCalendarMessages> | undefined; cascader?: Partial<import(\"../../locale/types\").LocaleCascaderMessages> | undefined; clipboard?: Partial<import(\"../../locale/types\").LocaleClipboardMessages> | undefined; combobox?: Partial<import(\"../../locale/types\").LocaleComboboxMessages> | undefined; command?: Partial<import(\"../../locale/types\").LocaleCommandMessages> | undefined; date?: Partial<import(\"../../locale/types\").LocaleDateMessages> | undefined; datePicker?: Partial<import(\"../../locale/types\").LocaleDatePickerMessages> | undefined; dateRangePicker?: Partial<import(\"../../locale/types\").LocaleDateRangePickerMessages> | undefined; dialog?: Partial<import(\"../../locale/types\").LocaleDialogMessages> | undefined; editable?: Partial<import(\"../../locale/types\").LocaleEditableMessages> | undefined; input?: Partial<import(\"../../locale/types\").LocaleInputMessages> | undefined; inputNumber?: Partial<import(\"../../locale/types\").LocaleInputNumberMessages> | undefined; layout?: Partial<import(\"../../locale/types\").LocaleLayoutMessages> | undefined; pagination?: Partial<import(\"../../locale/types\").LocalePaginationMessages> | undefined; pageTabs?: Partial<import(\"../../locale/types\").LocalePageTabsMessages> | undefined; password?: Partial<import(\"../../locale/types\").LocalePasswordMessages> | undefined; progress?: Partial<import(\"../../locale/types\").LocaleProgressMessages> | undefined; rating?: Partial<import(\"../../locale/types\").LocaleRatingMessages> | undefined; slider?: Partial<import(\"../../locale/types\").LocaleSliderMessages> | undefined; stepper?: Partial<import(\"../../locale/types\").LocaleStepperMessages> | undefined; table?: Partial<import(\"../../locale/types\").LocaleTableMessages> | undefined; tagsInput?: Partial<import(\"../../locale/types\").LocaleTagsInputMessages> | undefined; textarea?: Partial<import(\"../../locale/types\").LocaleTextareaMessages> | undefined; treeMenu?: Partial<import(\"../../locale/types\").LocaleTreeMenuMessages> | undefined; }",
+                "resolvedType": "{ anchor?: Partial<LocaleAnchorMessages>; autocomplete?: Partial<LocaleAutocompleteMessages>; breadcrumb?: Partial<LocaleBreadcrumbMessages>; calendar?: Partial<LocaleCalendarMessages>; cascader?: Partial<LocaleCascaderMessages>; clipboard?: Partial<LocaleClipboardMessages>; combobox?: Partial<LocaleComboboxMessages>; command?: Partial<LocaleCommandMessages>; date?: Partial<LocaleDateMessages>; datePicker?: Partial<LocaleDatePickerMessages>; dateRangePicker?: Partial<LocaleDateRangePickerMessages>; dialog?: Partial<LocaleDialogMessages>; editable?: Partial<LocaleEditableMessages>; input?: Partial<LocaleInputMessages>; inputNumber?: Partial<LocaleInputNumberMessages>; layout?: Partial<LocaleLayoutMessages>; pagination?: Partial<LocalePaginationMessages>; pageTabs?: Partial<LocalePageTabsMessages>; password?: Partial<LocalePasswordMessages>; progress?: Partial<LocaleProgressMessages>; rating?: Partial<LocaleRatingMessages>; slider?: Partial<LocaleSliderMessages>; stepper?: Partial<LocaleStepperMessages>; table?: Partial<LocaleTableMessages>; tagsInput?: Partial<LocaleTagsInputMessages>; textarea?: Partial<LocaleTextareaMessages>; treeMenu?: Partial<LocaleTreeMenuMessages> }",
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides",
                 "sourcePath": "packages/headless/src/locale/types.ts",
@@ -1013,17 +1035,6 @@
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.textarea",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/locale/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "themeCustomizer",
-                    "type": "Partial<LocaleThemeCustomizerMessages>",
-                    "required": false,
-                    "description": "",
-                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.themecustomizer",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/locale/types.ts",

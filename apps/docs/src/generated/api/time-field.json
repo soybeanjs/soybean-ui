@@ -52,9 +52,9 @@
                 "kind": "typeAlias",
                 "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
                 "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
-                "description": "",
-                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
-                "sourcePath": "packages/ui/src/theme/types.ts",
+                "description": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px",
+                "descriptionKey": "api.generated.packages_theme_dist_types_d_bayhuw_d.themesize",
+                "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -385,7 +385,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -706,6 +706,40 @@
             ]
           }
         ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "TimeFieldSlots",
+        "type": "TypeAlias TimeFieldSlots",
+        "resolvedType": "{ leading?: (() => any); trailing?: (() => any) }",
+        "description": "Slots for the TimeField component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_time_field_types.timefieldslots.slots",
+        "sourcePath": "packages/ui/src/components/time-field/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "leading",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Content rendered before the time segments.",
+            "descriptionKey": "api.generated.packages_ui_src_components_time_field_types.timefieldslots.callables.leading",
+            "sourcePath": "packages/ui/src/components/time-field/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trailing",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Content rendered after the time segments.",
+            "descriptionKey": "api.generated.packages_ui_src_components_time_field_types.timefieldslots.callables.trailing",
+            "sourcePath": "packages/ui/src/components/time-field/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
       }
     },
     "TimeFieldCompact": {
@@ -1017,7 +1051,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1338,6 +1372,40 @@
             ]
           }
         ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "TimeFieldCompactSlots",
+        "type": "TypeAlias TimeFieldCompactSlots",
+        "resolvedType": "{ leading?: (() => any); trailing?: (() => any) }",
+        "description": "Slots for the TimeFieldCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldcompactslots.slots",
+        "sourcePath": "packages/headless/src/components/time-field/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "leading",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Content rendered before the time segments.",
+            "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldcompactslots.callables.leading",
+            "sourcePath": "packages/headless/src/components/time-field/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trailing",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Content rendered after the time segments.",
+            "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldcompactslots.callables.trailing",
+            "sourcePath": "packages/headless/src/components/time-field/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
       }
     },
     "TimeFieldInput": {},
@@ -1591,7 +1659,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

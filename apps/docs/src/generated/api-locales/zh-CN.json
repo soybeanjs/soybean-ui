@@ -7124,6 +7124,7 @@
         },
         "selectcompactslots": {
           "callables": {
+            "bottom": "自定义内容渲染在弹出窗口底部，固定在可滚动列表下方。",
             "group_label": "组标签槽的自定义内容。",
             "item_indicator": "项目指示器插槽的自定义内容。",
             "item_leading": "自定义项目前导槽的内容。",
@@ -7131,6 +7132,7 @@
             "item_trailing": "自定义项尾部槽的内容。",
             "scroll_down_button": "下拉滚动按钮槽的自定义内容。",
             "scroll_up_button": "向上滚动按钮槽的自定义内容。",
+            "top": "弹出窗口顶部渲染的自定义内容，固定在可滚动列表上方。",
             "trigger_icon": "触发器图标槽的自定义内容。",
             "trigger_leading": "触发器前导槽的自定义内容。",
             "trigger_trailing": "触发器尾槽的自定义内容。",
@@ -9321,7 +9323,6 @@
             "table": "",
             "tagsinput": "",
             "textarea": "",
-            "themecustomizer": "",
             "treemenu": ""
           }
         }
@@ -9379,6 +9380,7 @@
         "themeconfigstate": {
           "members": {
             "base": "基础颜色预设键",
+            "borderopacity": "边框不透明度覆盖值 (0 - 1)",
             "chart": "图表（数据）语义方案键",
             "darklevel": "深色模式亮度偏移量",
             "feedback": "反馈（状态）语义方案键",
@@ -9396,7 +9398,7 @@
           }
         }
       },
-      "packages_theme_dist_types_bwhfmhi1_d": {
+      "packages_theme_dist_types_d_bayhuw_d": {
         "colorformat": "颜色格式",
         "themecolor": "主题颜色",
         "themesize": "主题字号键\n\n控制根字体大小，并按比例缩放所有基于 rem 的值。\n\n- xs：12px\n- sm：14px\n- md：16px\n- lg：18px\n- xl：20px\n- 2xl：24px"
@@ -10740,6 +10742,7 @@
         "configproviderthemeoptions": {
           "members": {
             "base": "基础配色方案键",
+            "borderopacity": "边框（border / input / sidebar-border）不透明度乘数。\n\n调整边框家族令牌的 alpha 通道，从而控制\n`--border-alpha` / `--input-alpha` / `--sidebar-border-alpha` 变量\n（实际透明度 = 令牌透明度 × borderOpacity）。默认值为 `1`，因此\n令牌本身的透明度将保持不变。",
             "chart": "图表（数据）语义方案键",
             "darklevel": "深色模式界面亮度偏移量",
             "darkselector": "深色模式选择器\n\n- 类名：\".dark\"\n- 媒体查询：\"@media (prefers-color-scheme: dark)\"\n- 自定义：自定义深色模式选择器，例如 \".custom-dark\"",
@@ -12696,6 +12699,7 @@
         },
         "selectslots": {
           "callables": {
+            "bottom": "自定义内容渲染在弹出窗口底部，固定在可滚动列表下方。",
             "group_label": "组标签槽位的自定义内容。",
             "item_indicator": "项目指示器槽位的自定义内容。",
             "item_leading": "为项目首行位置定制内容。",
@@ -12703,6 +12707,7 @@
             "item_trailing": "用于项尾部插槽的自定义内容。",
             "scroll_down_button": "为“向下滚动”按钮槽位定制内容。",
             "scroll_up_button": "为“向上滚动”按钮槽位定制内容。",
+            "top": "弹出窗口顶部渲染的自定义内容，固定在可滚动列表上方。",
             "trigger_icon": "触发图标槽位的自定义内容。",
             "trigger_leading": "为触发器引导槽位定制内容。",
             "trigger_trailing": "触发器尾部槽位的自定义内容。",

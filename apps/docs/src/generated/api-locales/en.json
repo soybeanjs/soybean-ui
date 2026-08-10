@@ -7124,6 +7124,7 @@
         },
         "selectcompactslots": {
           "callables": {
+            "bottom": "Custom content rendered at the bottom of the popup, fixed below the scrollable list.",
             "group_label": "Custom content for the group label slot.",
             "item_indicator": "Custom content for the item indicator slot.",
             "item_leading": "Custom content for the item leading slot.",
@@ -7131,6 +7132,7 @@
             "item_trailing": "Custom content for the item trailing slot.",
             "scroll_down_button": "Custom content for the scroll down button slot.",
             "scroll_up_button": "Custom content for the scroll up button slot.",
+            "top": "Custom content rendered at the top of the popup, fixed above the scrollable list.",
             "trigger_icon": "Custom content for the trigger icon slot.",
             "trigger_leading": "Custom content for the trigger leading slot.",
             "trigger_trailing": "Custom content for the trigger trailing slot.",
@@ -9321,7 +9323,6 @@
             "table": "",
             "tagsinput": "",
             "textarea": "",
-            "themecustomizer": "",
             "treemenu": ""
           }
         }
@@ -9379,6 +9380,7 @@
         "themeconfigstate": {
           "members": {
             "base": "the base color preset key",
+            "borderopacity": "the border opacity override (0 - 1)",
             "chart": "the chart (data) semantic scheme key",
             "darklevel": "dark mode brightening offset",
             "feedback": "the feedback (status) semantic scheme key",
@@ -9396,7 +9398,7 @@
           }
         }
       },
-      "packages_theme_dist_types_bwhfmhi1_d": {
+      "packages_theme_dist_types_d_bayhuw_d": {
         "colorformat": "Color format",
         "themecolor": "Theme color",
         "themesize": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px"
@@ -10740,6 +10742,7 @@
         "configproviderthemeoptions": {
           "members": {
             "base": "the base color palette key",
+            "borderopacity": "the border (border / input / sidebar-border) opacity multiplier.\n\nScales the alpha channel of the border-family tokens, driving the\n`--border-alpha` / `--input-alpha` / `--sidebar-border-alpha` variables\n(effective alpha = token alpha × borderOpacity). Defaults to `1`, so the\ntoken's own alpha is preserved.",
             "chart": "the chart (data) semantic scheme key",
             "darklevel": "dark mode surface brightening offset",
             "darkselector": "dark mode selector\n\n- class: \".dark\"\n- media: \"@media (prefers-color-scheme: dark)\"\n- custom: custom dark mode selector, e.g. \".custom-dark\"",
@@ -12696,6 +12699,7 @@
         },
         "selectslots": {
           "callables": {
+            "bottom": "Custom content rendered at the bottom of the popup, fixed below the scrollable list.",
             "group_label": "Custom content for the group label slot.",
             "item_indicator": "Custom content for the item indicator slot.",
             "item_leading": "Custom content for the item leading slot.",
@@ -12703,6 +12707,7 @@
             "item_trailing": "Custom content for the item trailing slot.",
             "scroll_down_button": "Custom content for the scroll down button slot.",
             "scroll_up_button": "Custom content for the scroll up button slot.",
+            "top": "Custom content rendered at the top of the popup, fixed above the scrollable list.",
             "trigger_icon": "Custom content for the trigger icon slot.",
             "trigger_leading": "Custom content for the trigger leading slot.",
             "trigger_trailing": "Custom content for the trigger trailing slot.",

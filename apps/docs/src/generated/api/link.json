@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "LinkProps",
         "type": "Interface LinkProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; replace?: boolean; href?: string; disabled?: boolean; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove'; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; replace?: boolean; href?: string; disabled?: boolean; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; target?: (string & {}) | '_blank' | '_parent' | '_self' | '_top' | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove'; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the Link component.",
         "descriptionKey": "api.generated.packages_ui_src_components_link_types.linkprops.props",
         "sourcePath": "packages/ui/src/components/link/types.ts",
@@ -54,7 +54,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/vue-router@5.1.0_@vue+compiler-sfc@3.5.35_pinia@3.0.4_typescript@6.0.3_vue@3.5.35_types_9bb8ebf4a906d5546f9e8c0e7db96d4f/node_modules/vue-router/dist/index-BQLwgiyK.d.ts",
+                "sourcePath": "node_modules/.pnpm/vue-router@5.2.0_@voidzero-dev+vite-plus-core@0.2.8_@types+node@26.2.0_esbuild@0.28.2_j_61c09866e733d60b60a3f09aa8c7e283/node_modules/vue-router/dist/index-BN0B0y8a.d.ts",
                 "typeParameters": ["Name extends keyof RouteMap = keyof RouteMap"],
                 "external": true,
                 "members": [],
@@ -174,7 +174,7 @@
           },
           {
             "name": "target",
-            "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+            "type": "(string & {}) | '_blank' | '_parent' | '_self' | '_top' | null",
             "required": false,
             "description": "Where to display the linked URL, as the name for a browsing context.",
             "descriptionKey": "api.generated.packages_ui_src_components_link_types.linkprops.members.target",
@@ -291,7 +291,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -317,12 +317,23 @@
         "kind": "props",
         "name": "LinkBaseProps",
         "type": "Interface LinkBaseProps",
-        "resolvedType": "{ to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; href?: string; external?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null }",
+        "resolvedType": "{ href?: string; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; external?: boolean; target?: (string & {}) | '_blank' | '_parent' | '_self' | '_top' | null }",
         "description": "Properties for the LinkBase component.",
         "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkbaseprops.props",
         "sourcePath": "packages/headless/src/components/link/types.ts",
         "typeParameters": [],
         "members": [
+          {
+            "name": "href",
+            "type": "string",
+            "required": false,
+            "description": "The URL the link should navigate to when clicked on.",
+            "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkbaseprops.members.href",
+            "default": null,
+            "inheritedFrom": "href",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
           {
             "name": "to",
             "type": "string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric",
@@ -340,24 +351,13 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/vue-router@5.1.0_@vue+compiler-sfc@3.5.35_pinia@3.0.4_typescript@6.0.3_vue@3.5.35_types_9bb8ebf4a906d5546f9e8c0e7db96d4f/node_modules/vue-router/dist/index-BQLwgiyK.d.ts",
+                "sourcePath": "node_modules/.pnpm/vue-router@5.2.0_@voidzero-dev+vite-plus-core@0.2.8_@types+node@26.2.0_esbuild@0.28.2_j_61c09866e733d60b60a3f09aa8c7e283/node_modules/vue-router/dist/index-BN0B0y8a.d.ts",
                 "typeParameters": ["Name extends keyof RouteMap = keyof RouteMap"],
                 "external": true,
                 "members": [],
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "href",
-            "type": "string",
-            "required": false,
-            "description": "The URL the link should navigate to when clicked on.",
-            "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkbaseprops.members.href",
-            "default": null,
-            "inheritedFrom": "href",
-            "sourcePath": "packages/headless/src/components/link/types.ts",
-            "referencedTypes": []
           },
           {
             "name": "external",
@@ -372,7 +372,7 @@
           },
           {
             "name": "target",
-            "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+            "type": "(string & {}) | '_blank' | '_parent' | '_self' | '_top' | null",
             "required": false,
             "description": "Where to display the linked URL, as the name for a browsing context.",
             "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkbaseprops.members.target",
@@ -447,7 +447,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

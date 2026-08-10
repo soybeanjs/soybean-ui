@@ -52,9 +52,9 @@
                 "kind": "typeAlias",
                 "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
                 "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
-                "description": "",
-                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
-                "sourcePath": "packages/ui/src/theme/types.ts",
+                "description": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px",
+                "descriptionKey": "api.generated.packages_theme_dist_types_d_bayhuw_d.themesize",
+                "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -703,7 +703,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -825,7 +825,7 @@
                 "name": "LinkProps",
                 "kind": "interface",
                 "type": "LinkProps",
-                "resolvedType": "{ to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; replace?: boolean; href?: string; disabled?: boolean; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove'; asChild?: boolean; as?: AsTag | Component }",
+                "resolvedType": "{ to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; replace?: boolean; href?: string; disabled?: boolean; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; target?: (string & {}) | '_blank' | '_parent' | '_self' | '_top' | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove'; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the Link component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkprops",
                 "sourcePath": "packages/headless/src/components/link/types.ts",
@@ -955,7 +955,7 @@
                   },
                   {
                     "name": "target",
-                    "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+                    "type": "(string & {}) | '_blank' | '_parent' | '_self' | '_top' | null",
                     "required": false,
                     "description": "Where to display the linked URL, as the name for a browsing context.",
                     "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkprops.members.target",
@@ -1262,24 +1262,13 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+                "resolvedType": "{ placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "packages/headless/src/components/menu/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
-                  {
-                    "name": "loop",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether keyboard navigation should loop around",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.loop",
-                    "default": "false",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
-                    "referencedTypes": []
-                  },
                   {
                     "name": "placement",
                     "type": "Placement",
@@ -1289,6 +1278,17 @@
                     "default": "undefined",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "loop",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether keyboard navigation should loop around",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.loop",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -1839,7 +1839,7 @@
         "kind": "slots",
         "name": "MenubarSlots",
         "type": "TypeAlias MenubarSlots<T>: MenubarCompactSlots<T>",
-        "resolvedType": "{ item?: ((props: { item: MenuOptionData<T>; isTrigger?: boolean; }) => any); \"item-leading\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trailing\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trigger-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-link-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); trigger: (data: { item: MenuOptionData<T>; }) => any }",
+        "resolvedType": "{ item?: ((props: { item: MenuOptionData<T>; isTrigger?: boolean; }) => any); \"item-leading\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trailing\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trigger-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-link-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); trigger?: ((data: { item: MenuOptionData<T>; }) => any) }",
         "description": "Slots for the Menubar component.",
         "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarslots.slots",
         "sourcePath": "packages/ui/src/components/menubar/types.ts",
@@ -1968,10 +1968,10 @@
           },
           {
             "name": "trigger",
-            "type": "(data: { item: MenuOptionData<T>; }) => any",
-            "parameters": "data: { item: MenuOptionData<T>; }",
+            "type": "((data: { item: MenuOptionData<T>; }) => any) | undefined",
+            "parameters": "((data: { item: MenuOptionData<T>; }) => any) | undefined",
             "required": false,
-            "description": "Custom content for the trigger slot.",
+            "description": "Custom content for the trigger slot.\n\nOptional: `MenubarCompact` renders full default trigger content (icon,\nlabel, link icon, trailing slot) when the consumer does not provide it.",
             "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarslots.callables.trigger",
             "sourcePath": "packages/headless/src/components/menubar/types.ts",
             "referencedTypes": [
@@ -2599,7 +2599,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -2721,7 +2721,7 @@
                 "name": "LinkProps",
                 "kind": "interface",
                 "type": "LinkProps",
-                "resolvedType": "{ to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; replace?: boolean; href?: string; disabled?: boolean; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove'; asChild?: boolean; as?: AsTag | Component }",
+                "resolvedType": "{ to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; replace?: boolean; href?: string; disabled?: boolean; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; target?: (string & {}) | '_blank' | '_parent' | '_self' | '_top' | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove'; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the Link component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkprops",
                 "sourcePath": "packages/headless/src/components/link/types.ts",
@@ -2851,7 +2851,7 @@
                   },
                   {
                     "name": "target",
-                    "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+                    "type": "(string & {}) | '_blank' | '_parent' | '_self' | '_top' | null",
                     "required": false,
                     "description": "Where to display the linked URL, as the name for a browsing context.",
                     "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkprops.members.target",
@@ -3158,24 +3158,13 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+                "resolvedType": "{ placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "packages/headless/src/components/menu/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
-                  {
-                    "name": "loop",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether keyboard navigation should loop around",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.loop",
-                    "default": "false",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
-                    "referencedTypes": []
-                  },
                   {
                     "name": "placement",
                     "type": "Placement",
@@ -3185,6 +3174,17 @@
                     "default": "undefined",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "loop",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether keyboard navigation should loop around",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.loop",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -3734,8 +3734,8 @@
       "slots": {
         "kind": "slots",
         "name": "MenubarCompactSlots",
-        "type": "TypeAlias MenubarCompactSlots<T>: MenuOptionsCompactSlots<T> & { trigger: (data: { item: MenuOptionData<T> }) => any }",
-        "resolvedType": "{ item?: ((props: { item: MenuOptionData<T>; isTrigger?: boolean; }) => any); \"item-leading\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trailing\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trigger-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-link-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); trigger: (data: { item: MenuOptionData<T>; }) => any }",
+        "type": "TypeAlias MenubarCompactSlots<T>: MenuOptionsCompactSlots<T> & { trigger?: (data: { item: MenuOptionData<T> }) => any }",
+        "resolvedType": "{ item?: ((props: { item: MenuOptionData<T>; isTrigger?: boolean; }) => any); \"item-leading\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trailing\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trigger-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-link-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); trigger?: ((data: { item: MenuOptionData<T>; }) => any) }",
         "description": "Slots for the MenubarCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactslots.slots",
         "sourcePath": "packages/headless/src/components/menubar/types.ts",
@@ -3864,10 +3864,10 @@
           },
           {
             "name": "trigger",
-            "type": "(data: { item: MenuOptionData<T>; }) => any",
-            "parameters": "data: { item: MenuOptionData<T>; }",
+            "type": "((data: { item: MenuOptionData<T>; }) => any) | undefined",
+            "parameters": "((data: { item: MenuOptionData<T>; }) => any) | undefined",
             "required": false,
-            "description": "Custom content for the trigger slot.",
+            "description": "Custom content for the trigger slot.\n\nOptional: `MenubarCompact` renders full default trigger content (icon,\nlabel, link icon, trailing slot) when the consumer does not provide it.",
             "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactslots.callables.trigger",
             "sourcePath": "packages/headless/src/components/menubar/types.ts",
             "referencedTypes": [
@@ -3968,7 +3968,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.11/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
+                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.12/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -4098,7 +4098,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.11/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
+                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.12/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -4211,7 +4211,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.7.6/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
+                "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.8.0/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -4671,7 +4671,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -4723,23 +4723,12 @@
         "kind": "props",
         "name": "MenubarSubContentProps",
         "type": "Interface MenubarSubContentProps",
-        "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+        "resolvedType": "{ placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
         "description": "Properties for the MenubarSubContent component.",
         "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarsubcontentprops.props",
         "sourcePath": "packages/headless/src/components/menubar/types.ts",
         "typeParameters": [],
         "members": [
-          {
-            "name": "loop",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether keyboard navigation should loop around",
-            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarsubcontentprops.members.loop",
-            "default": "false",
-            "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
-            "referencedTypes": []
-          },
           {
             "name": "placement",
             "type": "Placement",
@@ -4764,6 +4753,17 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarsubcontentprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
           },
           {
             "name": "sideOffset",
@@ -4909,7 +4909,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.11/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
+                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.12/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -5000,7 +5000,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.7.6/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
+                "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.8.0/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -5365,7 +5365,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -5461,7 +5461,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

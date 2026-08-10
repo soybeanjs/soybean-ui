@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-09T13:30:21.118Z",
+  "generatedAt": "2026-08-10T19:35:06.022Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -191,6 +191,29 @@
         "CarouselNext",
         "CarouselPrevious",
         "CarouselRoot"
+      ]
+    },
+    "cascader": {
+      "component": "cascader",
+      "file": "cascader.json",
+      "symbols": [
+        "Cascader",
+        "CascaderArrow",
+        "CascaderClear",
+        "CascaderCompact",
+        "CascaderCompactOption",
+        "CascaderCompactTag",
+        "CascaderCompactTriggerValue",
+        "CascaderContent",
+        "CascaderEmpty",
+        "CascaderMenu",
+        "CascaderOption",
+        "CascaderPortal",
+        "CascaderRoot",
+        "CascaderSearchInput",
+        "CascaderTags",
+        "CascaderTrigger",
+        "CascaderValue"
       ]
     },
     "checkbox": {
@@ -664,6 +687,11 @@
         "PaginationRoot"
       ]
     },
+    "palette-picker": {
+      "component": "palette-picker",
+      "file": "palette-picker.json",
+      "symbols": ["PalettePicker"]
+    },
     "password": {
       "component": "password",
       "file": "password.json",
@@ -735,6 +763,11 @@
         "RadioGroupLabel",
         "RadioGroupRoot"
       ]
+    },
+    "rating": {
+      "component": "rating",
+      "file": "rating.json",
+      "symbols": ["Rating", "RatingItem", "RatingRoot"]
     },
     "scroll-area": {
       "component": "scroll-area",
@@ -886,6 +919,21 @@
       "component": "textarea",
       "file": "textarea.json",
       "symbols": ["Textarea", "TextareaClear", "TextareaCompact", "TextareaControl", "TextareaCounter", "TextareaRoot"]
+    },
+    "theme-customizer": {
+      "component": "theme-customizer",
+      "file": "theme-customizer.json",
+      "symbols": ["ThemeCustomizer"]
+    },
+    "theme-mode-select": {
+      "component": "theme-mode-select",
+      "file": "theme-mode-select.json",
+      "symbols": ["ThemeModeSelect"]
+    },
+    "theme-mode-switch": {
+      "component": "theme-mode-switch",
+      "file": "theme-mode-switch.json",
+      "symbols": ["ThemeModeSwitch"]
     },
     "time-field": {
       "component": "time-field",

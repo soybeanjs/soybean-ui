@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "CascaderProps",
         "type": "Interface CascaderProps<T, M, P>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<CascaderUi>; size?: ThemeSize; showArrow?: boolean; placement?: import(\"@/index\").Placement; triggerProps?: CascaderTriggerProps; valueProps?: CascaderValueProps; searchInputProps?: CascaderSearchInputProps; portalProps?: PortalProps; contentProps?: CascaderContentProps; menuProps?: CascaderMenuProps; optionProps?: Partial<CascaderOptionProps<T>>; emptyProps?: CascaderEmptyProps; arrowProps?: PopperArrowProps; modelValue?: CascaderValueType<T, M, P>; defaultValue?: CascaderValueType<T, M, P>; multiple?: M; pathMode?: P; options?: CascaderOptionData<T>[]; fieldKeys?: CascaderFieldKeys; open?: boolean; defaultOpen?: boolean; disabled?: boolean; clearable?: boolean; expandTrigger?: 'click' | 'hover'; checkStrictly?: boolean; showCheckedStrategy?: 'child' | 'parent'; separator?: string; filterable?: boolean; filter?: ((pattern: string, option: CascaderOptionData<T>, path: string[]) => boolean); remote?: boolean; onSearch?: ((pattern: string) => Promise<CascaderOptionData<T>[]>); searchDelay?: number; lazy?: boolean; onLoad?: ((option: CascaderNode<T>) => Promise<CascaderOptionData<T>[]>); virtualScroll?: boolean; itemSize?: number; height?: number; dir?: Direction; placeholder?: string; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<CascaderUi>; size?: ThemeSize; showArrow?: boolean; placement?: import(\"@/index\").Placement; triggerProps?: CascaderTriggerProps; valueProps?: CascaderValueProps; searchInputProps?: CascaderSearchInputProps; portalProps?: PortalProps; contentProps?: CascaderContentProps; menuProps?: CascaderMenuProps; optionProps?: Partial<CascaderOptionProps<T>>; emptyProps?: CascaderEmptyProps; emptyLabel?: string; clearLabel?: string; arrowProps?: PopperArrowProps; modelValue?: CascaderValueType<T, M, P>; defaultValue?: CascaderValueType<T, M, P>; multiple?: M; pathMode?: P; options?: CascaderOptionData<T>[]; fieldKeys?: CascaderFieldKeys; open?: boolean; defaultOpen?: boolean; disabled?: boolean; clearable?: boolean; expandTrigger?: 'click' | 'hover'; checkStrictly?: boolean; showCheckedStrategy?: 'child' | 'parent'; separator?: string; filterable?: boolean; filter?: ((pattern: string, option: CascaderOptionData<T>, path: string[]) => boolean); remote?: boolean; onSearch?: ((pattern: string) => Promise<CascaderOptionData<T>[]>); searchDelay?: number; lazy?: boolean; onLoad?: ((option: CascaderNode<T>) => Promise<CascaderOptionData<T>[]>); virtualScroll?: boolean; itemSize?: number; height?: number; dir?: Direction; placeholder?: string; name?: string; required?: boolean }",
         "description": "Properties for the Cascader component.",
         "descriptionKey": "api.generated.packages_ui_src_components_cascader_types.cascaderprops.props",
         "sourcePath": "packages/ui/src/components/cascader/types.ts",
@@ -77,9 +77,9 @@
                 "kind": "typeAlias",
                 "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
                 "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
-                "description": "",
-                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
-                "sourcePath": "packages/ui/src/theme/types.ts",
+                "description": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px",
+                "descriptionKey": "api.generated.packages_theme_dist_types_d_bayhuw_d.themesize",
+                "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -687,6 +687,28 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "emptyLabel",
+            "type": "string",
+            "required": false,
+            "description": "The text shown in the empty state.",
+            "descriptionKey": "api.generated.packages_ui_src_components_cascader_types.cascaderprops.members.emptylabel",
+            "default": "The locale message",
+            "inheritedFrom": "emptyLabel",
+            "sourcePath": "packages/headless/src/components/cascader/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "clearLabel",
+            "type": "string",
+            "required": false,
+            "description": "The accessible label of the clear button.",
+            "descriptionKey": "api.generated.packages_ui_src_components_cascader_types.cascaderprops.members.clearlabel",
+            "default": "The locale message",
+            "inheritedFrom": "clearLabel",
+            "sourcePath": "packages/headless/src/components/cascader/types.ts",
+            "referencedTypes": []
           },
           {
             "name": "arrowProps",
@@ -1736,7 +1758,7 @@
         "kind": "props",
         "name": "CascaderCompactProps",
         "type": "Interface CascaderCompactProps<T, M, P>",
-        "resolvedType": "{ showArrow?: boolean; placement?: import(\"@/index\").Placement; triggerProps?: CascaderTriggerProps; valueProps?: CascaderValueProps; searchInputProps?: CascaderSearchInputProps; portalProps?: PortalProps; contentProps?: CascaderContentProps; menuProps?: CascaderMenuProps; optionProps?: Partial<CascaderOptionProps<T>>; emptyProps?: CascaderEmptyProps; arrowProps?: PopperArrowProps; modelValue?: CascaderValueType<T, M, P>; defaultValue?: CascaderValueType<T, M, P>; multiple?: M; pathMode?: P; options?: CascaderOptionData<T>[]; fieldKeys?: CascaderFieldKeys; open?: boolean; defaultOpen?: boolean; disabled?: boolean; clearable?: boolean; expandTrigger?: 'click' | 'hover'; checkStrictly?: boolean; showCheckedStrategy?: 'child' | 'parent'; separator?: string; filterable?: boolean; filter?: ((pattern: string, option: CascaderOptionData<T>, path: string[]) => boolean); remote?: boolean; onSearch?: ((pattern: string) => Promise<CascaderOptionData<T>[]>); searchDelay?: number; lazy?: boolean; onLoad?: ((option: CascaderNode<T>) => Promise<CascaderOptionData<T>[]>); virtualScroll?: boolean; itemSize?: number; height?: number; dir?: Direction; placeholder?: string; name?: string; required?: boolean }",
+        "resolvedType": "{ showArrow?: boolean; placement?: import(\"@/index\").Placement; triggerProps?: CascaderTriggerProps; valueProps?: CascaderValueProps; searchInputProps?: CascaderSearchInputProps; portalProps?: PortalProps; contentProps?: CascaderContentProps; menuProps?: CascaderMenuProps; optionProps?: Partial<CascaderOptionProps<T>>; emptyProps?: CascaderEmptyProps; emptyLabel?: string; clearLabel?: string; arrowProps?: PopperArrowProps; modelValue?: CascaderValueType<T, M, P>; defaultValue?: CascaderValueType<T, M, P>; multiple?: M; pathMode?: P; options?: CascaderOptionData<T>[]; fieldKeys?: CascaderFieldKeys; open?: boolean; defaultOpen?: boolean; disabled?: boolean; clearable?: boolean; expandTrigger?: 'click' | 'hover'; checkStrictly?: boolean; showCheckedStrategy?: 'child' | 'parent'; separator?: string; filterable?: boolean; filter?: ((pattern: string, option: CascaderOptionData<T>, path: string[]) => boolean); remote?: boolean; onSearch?: ((pattern: string) => Promise<CascaderOptionData<T>[]>); searchDelay?: number; lazy?: boolean; onLoad?: ((option: CascaderNode<T>) => Promise<CascaderOptionData<T>[]>); virtualScroll?: boolean; itemSize?: number; height?: number; dir?: Direction; placeholder?: string; name?: string; required?: boolean }",
         "description": "Properties for the CascaderCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercompactprops.props",
         "sourcePath": "packages/headless/src/components/cascader/types.ts",
@@ -2344,6 +2366,28 @@
             ]
           },
           {
+            "name": "emptyLabel",
+            "type": "string",
+            "required": false,
+            "description": "The text shown in the empty state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercompactprops.members.emptylabel",
+            "default": "The locale message",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/cascader/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "clearLabel",
+            "type": "string",
+            "required": false,
+            "description": "The accessible label of the clear button.",
+            "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercompactprops.members.clearlabel",
+            "default": "The locale message",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/cascader/types.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "arrowProps",
             "type": "PopperArrowProps",
             "required": false,
@@ -2943,7 +2987,7 @@
         "kind": "slotProps",
         "name": "CascaderCompactOptionSlotProps",
         "type": "Interface CascaderCompactOptionSlotProps<T>",
-        "resolvedType": "{ node: CascaderNode<T>; checked: boolean; indeterminate: boolean; highlighted: boolean; loading: boolean }",
+        "resolvedType": "{ node: CascaderNode<T>; checked: boolean; indeterminate: boolean; selected: boolean; highlighted: boolean; loading: boolean }",
         "description": "Slot properties for the CascaderCompact option.",
         "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercompactoptionslotprops.slotprops",
         "sourcePath": "packages/headless/src/components/cascader/types.ts",
@@ -3157,6 +3201,17 @@
             "required": true,
             "description": "Whether the node is in an indeterminate state.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercompactoptionslotprops.members.indeterminate",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/cascader/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "selected",
+            "type": "boolean",
+            "required": true,
+            "description": "Whether the node is the currently selected node (single-select).",
+            "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercompactoptionslotprops.members.selected",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/cascader/types.ts",
@@ -4369,7 +4424,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.40/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -5251,7 +5306,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.40/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
