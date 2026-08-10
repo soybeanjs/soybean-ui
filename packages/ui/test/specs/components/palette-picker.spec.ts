@@ -131,22 +131,90 @@ const selectOption = async (label: string) => {
   await nextTick();
 };
 
+const switchControlOf = (rootSelector: string): Element => {
+  const root = document.body.querySelector(rootSelector);
+  expect(root, `switch "${rootSelector}" should be rendered`).toBeTruthy();
+
+  const control = root?.querySelector('[data-soybean-switch-control]');
+  expect(control, `switch control "${rootSelector}" should be rendered`).toBeTruthy();
+
+  return control as Element;
+};
+
+/**
+ * Set a palette switch (`data-palette-custom-toggle` or
+ * `data-palette-recommended-switch`) to the requested on/off state, clicking it
+ * only when the current `data-state` differs.
+ */
+const setSwitch = async (rootSelector: string, on: boolean) => {
+  const root = document.body.querySelector(rootSelector);
+  expect(root, `switch "${rootSelector}" should be rendered`).toBeTruthy();
+
+  const checked = root?.getAttribute('data-state') === 'checked';
+
+  if (checked === on) {
+    return;
+  }
+
+  await new DOMWrapper(switchControlOf(rootSelector)).trigger('click');
+  await flushPromises();
+  await nextTick();
+  await nextTick();
+};
+
+const enableCustom = async (wrapper: ReturnType<typeof mount>) => {
+  await openListbox(wrapper);
+  await setSwitch('[data-palette-custom-toggle]', true);
+};
+
+const clickRecommended = async () => {
+  await setSwitch('[data-palette-recommended-switch]', true);
+};
+
+const levelButtonElement = (level: number) => {
+  const element = document.body.querySelector(`button[aria-label="level ${level}"]`);
+  expect(element, `level ${level} button should be rendered`).toBeTruthy();
+
+  return element as Element;
+};
+
+const clickLevelButton = async (level: number) => {
+  await new DOMWrapper(levelButtonElement(level)).trigger('click');
+  await flushPromises();
+  await nextTick();
+  await nextTick();
+};
+
 describe('SPalettePicker', () => {
-  it('renders a select trigger', () => {
+  it('renders a button trigger', () => {
     const wrapper = mountPicker('indigo.500');
     expect(wrapper.get('button')).toBeTruthy();
     wrapper.unmount();
   });
 
-  it('renders Custom and palette key options when opened', async () => {
+  it('shows key.level in the trigger for a built-in color', () => {
+    const wrapper = mountPicker('indigo.500');
+    expect(wrapper.get('button').text()).toContain('indigo.500');
+    wrapper.unmount();
+  });
+
+  it('shows the raw string in the trigger for a custom color', () => {
+    const wrapper = mountPicker('hsl(238.732 83.529% 66.667%)');
+    expect(wrapper.get('button').text()).toContain('hsl(238.732 83.529% 66.667%)');
+    wrapper.unmount();
+  });
+
+  it('renders palette key options and the custom toggle when opened', async () => {
     const wrapper = mountPicker('indigo.500');
     await openListbox(wrapper);
 
     const labels = Array.from(document.body.querySelectorAll('[role="option"]')).map(node => node.textContent ?? '');
 
-    expect(labels.some(text => text.includes('Custom'))).toBe(true);
     expect(labels.some(text => text.includes('Indigo'))).toBe(true);
     expect(labels.some(text => text.includes('Black'))).toBe(true);
+    // custom is a toggle switch, not a dropdown option
+    expect(labels.some(text => text.includes('Custom'))).toBe(false);
+    expect(document.body.querySelector('[data-palette-custom-toggle]')).toBeTruthy();
 
     wrapper.unmount();
   });
@@ -163,19 +231,20 @@ describe('SPalettePicker', () => {
   it('clicking a custom palette swatch re-bases it as the new main color (500)', async () => {
     const wrapper = mountPicker('hsl(238.732 83.529% 66.667%)');
     await nextTick();
+    await enableCustom(wrapper);
 
-    const levelButtons = wrapper.findAll('button[aria-label^="level"]');
+    const levelButtons = document.body.querySelectorAll('button[aria-label^="level"]');
     expect(levelButtons.length).toBe(PALETTE_LEVELS.length);
 
     // default active level is 500
-    expect(levelButtons[5].classes()).toContain('ring-primary');
+    expect(levelButtons[5].classList).toContain('ring-primary');
 
-    await levelButtons[7].trigger('click'); // level 700
+    await new DOMWrapper(levelButtons[7] as Element).trigger('click'); // level 700
     await nextTick();
 
     // the clicked color becomes the new main color, so the highlight moves to 500
-    expect(levelButtons[5].classes()).toContain('ring-primary');
-    expect(levelButtons[7].classes()).not.toContain('ring-primary');
+    expect(levelButtons[5].classList).toContain('ring-primary');
+    expect(levelButtons[7].classList).not.toContain('ring-primary');
 
     // recommended is off, so the raw color is still committed
     expect(wrapper.vm.modelValue).toMatch(/^hsl\(/);
@@ -185,16 +254,10 @@ describe('SPalettePicker', () => {
   it('with the recommended palette, picking a custom level commits key.level', async () => {
     const wrapper = mountPicker('hsl(238.732 83.529% 66.667%)');
     await nextTick();
+    await enableCustom(wrapper);
+    await clickRecommended();
 
-    const recommendedSwitch = wrapper.find('[role="switch"]');
-    await recommendedSwitch.trigger('click');
-    await flushPromises();
-    await nextTick();
-
-    const level700 = wrapper.find('button[aria-label="level 700"]');
-    await level700.trigger('click');
-    await flushPromises();
-    await nextTick();
+    await clickLevelButton(700);
 
     expect(wrapper.vm.modelValue).toMatch(/\.700$/);
     wrapper.unmount();
@@ -203,22 +266,16 @@ describe('SPalettePicker', () => {
   it('with the recommended palette, picking a swatch syncs the color picker to that level color', async () => {
     const wrapper = mountPicker('hsl(238.732 83.529% 66.667%)');
     await nextTick();
-
-    const recommendedSwitch = wrapper.find('[role="switch"]');
-    await recommendedSwitch.trigger('click');
-    await flushPromises();
-    await nextTick();
+    await enableCustom(wrapper);
+    await clickRecommended();
 
     // capture the initial color-picker value (the base color)
-    const picker = wrapper.findComponent(SColorPicker);
-    const before = picker.props('modelValue');
+    const before = wrapper.findComponent(SColorPicker).props('modelValue');
 
-    await wrapper.find('button[aria-label="level 700"]').trigger('click');
-    await flushPromises();
-    await nextTick();
+    await clickLevelButton(700);
 
     // the color picker now reflects the level-700 swatch color
-    const after = wrapper.findComponent(SColorPicker).props('modelValue');
+    const after = wrapper.findComponent(SColorPicker).props('modelValue') as string;
     expect(after).not.toBe(before);
 
     // the picker color equals the level-700 swatch color (stored as oklch)
@@ -242,26 +299,32 @@ describe('SPalettePicker', () => {
   it('clicking a custom palette swatch syncs the color picker and re-bases to 500', async () => {
     const wrapper = mountPicker('hsl(238.732 83.529% 66.667%)');
     await nextTick();
+    await enableCustom(wrapper);
 
-    const level700 = wrapper.find('button[aria-label="level 700"]');
-    await level700.trigger('click');
-    await flushPromises();
-    await nextTick();
+    await clickLevelButton(700);
 
     // the committed value is the swatch color at level 700 (still a raw hsl)
     expect(wrapper.vm.modelValue).toMatch(/^hsl\(/);
     // the clicked color becomes the new main color, so 500 is highlighted
-    expect(wrapper.find('button[aria-label="level 500"]').classes()).toContain('ring-primary');
+    expect(levelButtonElement(500).classList).toContain('ring-primary');
+    wrapper.unmount();
+  });
+
+  it('custom mode hides the dropdown options and shows the color picker', async () => {
+    const wrapper = mountPicker('hsl(238.732 83.529% 66.667%)');
+    await nextTick();
+    await enableCustom(wrapper);
+
+    expect(document.body.querySelectorAll('[role="option"]').length).toBe(0);
+    expect(wrapper.findComponent(SColorPicker).exists()).toBe(true);
+
     wrapper.unmount();
   });
 
   it('switching to custom carries over the previously selected color as the initial custom color', async () => {
     const wrapper = mountPicker('indigo.700');
     await nextTick();
-
-    await openListbox(wrapper);
-    await selectOption('Custom');
-    await nextTick();
+    await enableCustom(wrapper);
 
     // the custom color initializes from the previously selected indigo.700 color
     expect(wrapper.vm.modelValue).toBe(serializeColor(tailwindPalette.indigo['700'].hsl, 'hsl'));
@@ -271,25 +334,20 @@ describe('SPalettePicker', () => {
   it('turning the recommended palette off re-generates and resets the highlight to 500', async () => {
     const wrapper = mountPicker('hsl(238.732 83.529% 66.667%)');
     await nextTick();
+    await enableCustom(wrapper);
+    await clickRecommended();
 
-    const recommendedSwitch = wrapper.find('[role="switch"]');
-    await recommendedSwitch.trigger('click'); // on
-    await flushPromises();
-    await nextTick();
+    await clickLevelButton(700); // highlight 700 in recommended mode
+    expect(levelButtonElement(700).classList).toContain('ring-primary');
 
-    const level700 = wrapper.find('button[aria-label="level 700"]');
-    await level700.trigger('click'); // highlight 700 in recommended mode
-    await flushPromises();
-    await nextTick();
-    expect(level700.classes()).toContain('ring-primary');
-
-    await recommendedSwitch.trigger('click'); // off
+    // turn the recommended palette off
+    await setSwitch('[data-palette-recommended-switch]', false);
     await flushPromises();
     await nextTick();
 
     // the palette re-generates from the current color; highlight resets to the main color 500
-    expect(wrapper.find('button[aria-label="level 500"]').classes()).toContain('ring-primary');
-    expect(level700.classes()).not.toContain('ring-primary');
+    expect(levelButtonElement(500).classList).toContain('ring-primary');
+    expect(levelButtonElement(700).classList).not.toContain('ring-primary');
     wrapper.unmount();
   });
 });

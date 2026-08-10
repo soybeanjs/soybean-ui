@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from 'vue';
 import { generateNearestPalette, generatePalette, tailwindPalette } from '@soybeanjs/colord/palette';
-import type { PaletteColorLevel, TailwindPaletteKey } from '@soybeanjs/colord/palette';
+import type { PaletteColorLevel, SimplePaletteKey, TailwindPaletteKey } from '@soybeanjs/colord/palette';
 import type { ColorValue } from '@soybeanjs/theme';
 import SColorPicker from '../color-picker/color-picker.vue';
 import SSelect from '../select/select.vue';
@@ -17,6 +17,7 @@ import {
   deriveNearestLevel,
   deriveSelectValue,
   deriveTailLevel,
+  isSimpleKey,
   isTailwindKey,
   itemColorKeyOf,
   outputFormatOf,
@@ -46,50 +47,57 @@ const palettePickerMessages = computed(() => messages.value.palettePicker);
 const paletteLabels = computed(() => messages.value.options.palette);
 const simpleLabels = computed(() => palettePickerMessages.value.simpleKeys);
 
-// —— 顶层选择：custom / tailwind key / simple key ——
+// —— 顶层选择：custom（通过切换开关进入）或内置 key（通过下拉选项选择） ——
 const selectValue = ref<PaletteSelectValue>(deriveSelectValue(model.value));
-const tailLevel = ref<PaletteColorLevel>(deriveTailLevel(model.value));
-
-// —— custom 面板内部状态 ——
-const customColor = ref<string>(selectValue.value === 'custom' ? String(model.value) : '#6366f1');
-const recommended = ref(false);
-const customLevel = ref<PaletteColorLevel>(DEFAULT_LEVEL);
-
-const outputFormat = computed(() => outputFormatOf(props.format));
-const itemColorKey = computed(() => itemColorKeyOf(props.format));
-
 const isCustom = computed(() => selectValue.value === 'custom');
 const isTailwind = computed(() => isTailwindKey(selectValue.value));
 const selectedKey = computed<TailwindPaletteKey | null>(() =>
   isTailwindKey(selectValue.value) ? selectValue.value : null
 );
 
-// —— 选择内置颜色时，level 重置为 500；切换到自定义时，把之前选中的颜色作为自定义初始值 ——
-watch(selectValue, value => {
-  if (isTailwindKey(value)) {
-    tailLevel.value = DEFAULT_LEVEL;
-    return;
+// 退出自定义模式时恢复的内置 key；初始为 custom 时回退到 blue
+const initialSelectValue = deriveSelectValue(model.value);
+const lastKey = ref<TailwindPaletteKey | SimplePaletteKey>(
+  isTailwindKey(initialSelectValue) || isSimpleKey(initialSelectValue) ? initialSelectValue : 'blue'
+);
+
+const tailLevel = ref<PaletteColorLevel>(deriveTailLevel(model.value));
+
+// —— custom 面板内部状态 ——
+const customColor = ref<string>(isCustom.value ? String(model.value) : '#6366f1');
+const recommended = ref(false);
+const customLevel = ref<PaletteColorLevel>(DEFAULT_LEVEL);
+
+const outputFormat = computed(() => outputFormatOf(props.format));
+const itemColorKey = computed(() => itemColorKeyOf(props.format));
+
+// —— 触发器标签：内置颜色展示 key.level（无 level 时仅 key）；自定义直接展示原始字符串 ——
+const triggerLabel = computed(() => {
+  if (isCustom.value) {
+    return String(model.value);
   }
 
-  if (value === 'custom') {
-    customColor.value = toCssColor(model.value);
+  if (isTailwind.value) {
+    return `${selectValue.value}.${tailLevel.value}`;
   }
+
+  return selectValue.value;
 });
 
 const optionLabelOf = (value: PaletteSelectValue): string => {
-  if (value === 'custom') {
-    return palettePickerMessages.value.custom;
-  }
-
   if (isTailwindKey(value)) {
     return paletteLabels.value[value] ?? value;
   }
 
-  return simpleLabels.value[value] ?? value;
+  if (isSimpleKey(value)) {
+    return simpleLabels.value[value] ?? value;
+  }
+
+  return value;
 };
 
+// 下拉选项仅包含内置 key（custom 由独立开关控制，不作为选项）
 const options = computed<SelectOptionData<PaletteSelectValue>[]>(() => [
-  { label: optionLabelOf('custom'), value: 'custom' },
   ...TAILWIND_KEYS.map(key => ({ label: optionLabelOf(key), value: key })),
   ...SIMPLE_KEYS.map(key => ({ label: optionLabelOf(key), value: key }))
 ]);
@@ -160,16 +168,35 @@ const emitChange = (): void => {
 };
 
 const optionColor = (value: PaletteSelectValue): string => {
-  if (value === 'custom') {
-    return currentCss.value;
-  }
-
   if (isTailwindKey(value)) {
     return tailwindPalette[value][DEFAULT_LEVEL].hsl;
   }
 
-  return simpleCssColor(value);
+  return isSimpleKey(value) ? simpleCssColor(value) : 'transparent';
 };
+
+// —— 自定义开关：开启时记住当前内置 key 并把原色作为自定义初始值 ——
+const onToggleCustom = (isOn: boolean): void => {
+  if (!isOn) {
+    selectValue.value = lastKey.value;
+    return;
+  }
+
+  if (selectValue.value !== 'custom') {
+    lastKey.value = selectValue.value;
+  }
+
+  customColor.value = toCssColor(model.value);
+  customLevel.value = deriveNearestLevel(String(model.value), props.format);
+  selectValue.value = 'custom';
+};
+
+// —— 选择内置颜色时，level 重置为 500 ——
+watch(selectValue, value => {
+  if (isTailwindKey(value)) {
+    tailLevel.value = DEFAULT_LEVEL;
+  }
+});
 
 watch([selectValue, tailLevel, customColor, recommended, customLevel], () => emitChange());
 
@@ -246,59 +273,83 @@ watch(
 </script>
 
 <template>
-  <div class="space-y-3">
-    <SSelect v-model="selectValue" :items="options" :size="size">
-      <template #trigger-leading>
-        <span class="size-4 shrink-0 rounded-full border" :style="{ backgroundColor: currentCss }" />
-      </template>
-      <template #item-leading="{ item }">
-        <span class="size-4 shrink-0 rounded-full border" :style="{ backgroundColor: optionColor(item.value) }" />
-      </template>
-    </SSelect>
+  <SSelect
+    v-model="selectValue"
+    :items="isCustom ? [] : options"
+    :size="size"
+    :show-trigger-icon="false"
+    :viewport-props="isCustom ? { class: '!p-0' } : undefined"
+  >
+    <template #trigger-leading>
+      <span class="size-4 shrink-0 rounded-full border border-border" :style="{ backgroundColor: currentCss }" />
+    </template>
+    <template #trigger-value>
+      <span class="grow truncate text-start">{{ triggerLabel }}</span>
+    </template>
 
-    <!-- tailwind level selector -->
-    <div v-if="isTailwind" class="flex items-center gap-1">
-      <STooltip v-for="level in PALETTE_LEVELS" :key="level" :size="size">
-        <template #trigger>
-          <button
-            type="button"
-            class="size-5 rounded-full border transition"
-            :class="level === tailLevel ? 'ring-2 ring-primary ring-offset-1' : ''"
-            :style="{ backgroundColor: tailwindPalette[selectedKey as TailwindPaletteKey][level].hsl }"
-            :aria-label="`level ${level}`"
-            :aria-pressed="level === tailLevel"
-            @click="tailLevel = level"
+    <!-- top 插槽：自定义切换开关 +（非自定义时）当前主题颜色的色板 -->
+    <template #top>
+      <div class="border-b border-border px-2 py-1.5">
+        <div class="flex items-center justify-between gap-2">
+          <span class="text-xs font-medium text-muted-foreground">{{ palettePickerMessages.custom }}</span>
+          <SSwitch
+            data-palette-custom-toggle
+            :model-value="isCustom"
+            :size="size"
+            @update:model-value="onToggleCustom"
           />
-        </template>
-        <span class="text-xs">{{ level }}</span>
-      </STooltip>
-    </div>
-
-    <!-- custom panel -->
-    <div v-if="isCustom" class="space-y-3">
-      <SColorPicker v-model="customColor" :size="size" class="w-full" />
-
-      <div class="flex-y-center justify-between">
-        <span class="text-xs text-muted-foreground">{{ palettePickerMessages.recommendedPalette }}</span>
-        <SSwitch v-model="recommended" :size="size" />
+        </div>
+        <div v-if="isTailwind" class="mt-1.5 flex items-center gap-1">
+          <STooltip v-for="level in PALETTE_LEVELS" :key="level" :size="size">
+            <template #trigger>
+              <button
+                type="button"
+                class="size-4 rounded-full border border-border transition"
+                :class="level === tailLevel ? 'ring-2 ring-primary ring-offset-1' : ''"
+                :style="{ backgroundColor: tailwindPaletteLevels[level] }"
+                :aria-label="`level ${level}`"
+                :aria-pressed="level === tailLevel"
+                @click="tailLevel = level"
+              />
+            </template>
+            <span class="text-xs">{{ level }}</span>
+          </STooltip>
+        </div>
       </div>
+    </template>
 
-      <div class="flex items-center gap-1">
-        <STooltip v-for="level in PALETTE_LEVELS" :key="level" :size="size">
-          <template #trigger>
-            <button
-              type="button"
-              class="size-5 rounded-full border transition"
-              :class="level === customLevel ? 'ring-2 ring-primary ring-offset-1' : ''"
-              :style="{ backgroundColor: customPalette[level] }"
-              :aria-label="`level ${level}`"
-              :aria-pressed="level === customLevel"
-              @click="onCustomLevelClick(level)"
-            />
-          </template>
-          <span class="text-xs">{{ level }}</span>
-        </STooltip>
+    <template #item-leading="{ item }">
+      <span
+        class="size-4 shrink-0 rounded-full border border-border"
+        :style="{ backgroundColor: optionColor(item.value) }"
+      />
+    </template>
+
+    <!-- bottom 插槽：自定义模式下的颜色选择器 + 色板 -->
+    <template #bottom>
+      <div v-if="isCustom" class="space-y-1.5 border-t border-border px-2 py-1.5">
+        <SColorPicker v-model="customColor" :size="size" :modal="false" class="w-full" />
+        <div class="flex items-center justify-between gap-2">
+          <span class="text-xs text-muted-foreground">{{ palettePickerMessages.recommendedPalette }}</span>
+          <SSwitch v-model="recommended" data-palette-recommended-switch :size="size" />
+        </div>
+        <div class="flex items-center gap-1">
+          <STooltip v-for="level in PALETTE_LEVELS" :key="level" :size="size">
+            <template #trigger>
+              <button
+                type="button"
+                class="size-4 rounded-full border border-border transition"
+                :class="level === customLevel ? 'ring-2 ring-primary ring-offset-1' : ''"
+                :style="{ backgroundColor: customPalette[level] }"
+                :aria-label="`level ${level}`"
+                :aria-pressed="level === customLevel"
+                @click="onCustomLevelClick(level)"
+              />
+            </template>
+            <span class="text-xs">{{ level }}</span>
+          </STooltip>
+        </div>
       </div>
-    </div>
-  </div>
+    </template>
+  </SSelect>
 </template>
