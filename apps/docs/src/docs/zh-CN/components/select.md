@@ -17,6 +17,7 @@
 - 🧹 可清除模式（`selectionBehavior` 控制清除是切换还是重置）
 - 📍 选中项对齐定位（`position="item-aligned"`）
 - 📋 通过隐藏代理 `<select>`（`SelectBubbleSelect`）支持原生表单提交
+- 📌 `top` / `bottom` 插槽，可在浮窗内添加固定的顶部与底部内容
 - ♿ 完整无障碍支持——`role="combobox"` / `listbox` / `option`、axe 零违规
 
 ## 演示
@@ -73,3 +74,7 @@ SoybeanUI 基于完整 ComboBox 基座构建选择器：`SelectRoot` → `Select
 ### 如何让触发器显示箭头或自定义内容？
 
 使用 `trigger-icon` / `value` 插槽（及 `showArrow` 对应插槽面）；`SSelect` 会转发全部 15 个配方插槽。
+
+### 如何在浮窗内添加固定的顶部或底部内容？
+
+使用 `top` 与 `bottom` 插槽。`top` 渲染在可滚动列表上方，`bottom` 渲染在其下方；两者保持固定，仅中间的选项列表滚动。

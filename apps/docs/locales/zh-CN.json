@@ -388,7 +388,8 @@
         "group": "分组",
         "multiple": "多选",
         "separator": "分隔符",
-        "single-clearable": "单选可清空"
+        "single-clearable": "单选可清空",
+        "slots": "顶部与底部插槽"
       },
       "separator": {
         "align": "对齐",

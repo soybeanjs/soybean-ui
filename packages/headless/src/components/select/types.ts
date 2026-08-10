@@ -439,6 +439,14 @@ export interface SelectCompactItemSlotProps<T extends DefinedValue = DefinedValu
  */
 export type SelectCompactSlots<T extends DefinedValue = DefinedValue, M extends boolean = false> = {
   /**
+   * Custom content rendered at the top of the popup, fixed above the scrollable list.
+   */
+  top?: () => any;
+  /**
+   * Custom content rendered at the bottom of the popup, fixed below the scrollable list.
+   */
+  bottom?: () => any;
+  /**
    * Custom content for the trigger leading slot.
    */
   'trigger-leading'?: () => any;

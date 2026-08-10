@@ -160,6 +160,7 @@ const handleSelect = (event: SelectItemEvent<DefinedValue>) => {
         @escape-key-down="emit('escapeKeyDown', $event)"
         @pointer-down-outside="emit('pointerDownOutside', $event)"
       >
+        <slot name="top" />
         <SelectScrollUpButton v-bind="scrollUpButtonProps">
           <slot name="scroll-up-button">
             <Icon icon="lucide:chevron-up" />
@@ -228,6 +229,7 @@ const handleSelect = (event: SelectItemEvent<DefinedValue>) => {
             <Icon icon="lucide:chevron-down" />
           </slot>
         </SelectScrollDownButton>
+        <slot name="bottom" />
         <SelectArrow v-if="showArrow" v-bind="arrowProps" />
       </SelectContent>
     </Portal>

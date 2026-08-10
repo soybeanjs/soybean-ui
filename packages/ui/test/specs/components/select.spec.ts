@@ -160,6 +160,30 @@ describe('SSelect', () => {
 
       wrapper.unmount();
     });
+
+    it('renders the top and bottom slots inside the popup', async () => {
+      const wrapper = mount(
+        {
+          components: { SSelect },
+          data() {
+            return { items };
+          },
+          template: `
+            <SSelect :items="items">
+              <template #top><div data-slot="top-content">Top</div></template>
+              <template #bottom><div data-slot="bottom-content">Bottom</div></template>
+            </SSelect>
+          `
+        },
+        { attachTo: document.body }
+      );
+
+      await openListbox(wrapper);
+
+      expect(document.body.querySelector('[data-slot="top-content"]')?.textContent).toContain('Top');
+      expect(document.body.querySelector('[data-slot="bottom-content"]')?.textContent).toContain('Bottom');
+      wrapper.unmount();
+    });
   });
 
   describe('state', () => {

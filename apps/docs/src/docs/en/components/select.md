@@ -17,6 +17,7 @@ Displays a list of options for the user to pick from, triggered by a button. The
 - 🧹 Clearable mode (`selectionBehavior` controls whether clearing toggles or resets)
 - 📍 Item-aligned positioning (`position="item-aligned"`)
 - 📋 Native form submission via a hidden proxy `<select>` (`SelectBubbleSelect`)
+- 📌 `top` / `bottom` slots for fixed header and footer content inside the popup
 - ♿ Full accessibility support — `role="combobox"` / `listbox` / `option`, axe-clean
 
 ## Demos
@@ -73,3 +74,7 @@ The component renders a hidden native `<select>` (`SelectBubbleSelect`) mirrorin
 ### How do I make the trigger show an arrow or custom content?
 
 Use the `trigger-icon` / `value` slots or the `showArrow`-equivalent slot surface; all 15 recipe slots are forwarded by `SSelect`.
+
+### How do I add fixed header or footer content inside the popup?
+
+Use the `top` and `bottom` slots. `top` renders above the scrollable list and `bottom` below it; both stay fixed while only the middle option list scrolls.

@@ -388,7 +388,8 @@
         "group": "Group",
         "multiple": "Multiple",
         "separator": "Separator",
-        "single-clearable": "Single Clearable"
+        "single-clearable": "Single Clearable",
+        "slots": "Top & Bottom Slots"
       },
       "separator": {
         "align": "Align",

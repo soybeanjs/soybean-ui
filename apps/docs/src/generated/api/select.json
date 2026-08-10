@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "SelectProps",
         "type": "Interface SelectProps<T, M>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<SelectUi>; size?: ThemeSize; items: SelectOptionData<T>[]; showArrow?: boolean; triggerProps?: SelectTriggerProps; triggerIconProps?: SelectTriggerIconProps; placeholder?: string; valueProps?: SelectValueProps; portalProps?: SelectPortalProps; contentProps?: SelectContentProps; placement?: import(\"@/index\").Placement; popupProps?: SelectPopupProps; viewportProps?: SelectViewportProps; scrollDownButtonProps?: SelectScrollDownButtonProps; scrollUpButtonProps?: SelectScrollUpButtonProps; groupProps?: SelectGroupProps; groupLabelProps?: SelectGroupLabelProps; itemProps?: SelectItemProps; itemTextProps?: SelectItemTextProps; itemIndicatorProps?: SelectItemIndicatorProps; separatorProps?: SelectSeparatorProps; arrowProps?: PopperArrowProps; open?: boolean; defaultOpen?: boolean; dir?: Direction; autocomplete?: string; disabled?: boolean; modelValue?: (M extends true ? T[] : T); defaultValue?: (M extends true ? T[] : T); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<SelectUi>; size?: ThemeSize; items: SelectOptionData<T>[]; showArrow?: boolean; triggerProps?: SelectTriggerProps; triggerIconProps?: SelectTriggerIconProps; showTriggerIcon?: boolean; placeholder?: string; valueProps?: SelectValueProps; portalProps?: SelectPortalProps; contentProps?: SelectContentProps; placement?: import(\"@/index\").Placement; popupProps?: SelectPopupProps; viewportProps?: SelectViewportProps; scrollDownButtonProps?: SelectScrollDownButtonProps; scrollUpButtonProps?: SelectScrollUpButtonProps; groupProps?: SelectGroupProps; groupLabelProps?: SelectGroupLabelProps; itemProps?: SelectItemProps; itemTextProps?: SelectItemTextProps; itemIndicatorProps?: SelectItemIndicatorProps; separatorProps?: SelectSeparatorProps; arrowProps?: PopperArrowProps; open?: boolean; defaultOpen?: boolean; dir?: Direction; autocomplete?: string; disabled?: boolean; modelValue?: (M extends true ? T[] : T); defaultValue?: (M extends true ? T[] : T); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
         "description": "Properties for the Select component.",
         "descriptionKey": "api.generated.packages_ui_src_components_select_types.selectprops.props",
         "sourcePath": "packages/ui/src/components/select/types.ts",
@@ -77,9 +77,9 @@
                 "kind": "typeAlias",
                 "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
                 "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
-                "description": "",
-                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
-                "sourcePath": "packages/ui/src/theme/types.ts",
+                "description": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px",
+                "descriptionKey": "api.generated.packages_theme_dist_types_bwhfmhi1_d.themesize",
+                "sourcePath": "packages/theme/dist/types-BwHfmHi1.d.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -203,6 +203,17 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "showTriggerIcon",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show the trigger icon.",
+            "descriptionKey": "api.generated.packages_ui_src_components_select_types.selectprops.members.showtriggericon",
+            "default": "true",
+            "inheritedFrom": "showTriggerIcon",
+            "sourcePath": "packages/headless/src/components/select/types.ts",
+            "referencedTypes": []
           },
           {
             "name": "placeholder",
@@ -1377,13 +1388,33 @@
         "kind": "slots",
         "name": "SelectSlots",
         "type": "TypeAlias SelectSlots<T, M>: SelectCompactSlots<T, M>",
-        "resolvedType": "{ \"trigger-leading\"?: (() => any); \"trigger-value\"?: ((props: SelectCompactTriggerValueSlotProps<T, M>) => any); \"trigger-trailing\"?: (() => any); \"trigger-icon\"?: (() => any); \"scroll-up-button\"?: (() => any); \"scroll-down-button\"?: (() => any); \"group-label\"?: ((props: SelectCompactGroupLabelSlotProps<T>) => any); \"item-text\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-leading\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-trailing\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-indicator\"?: ((props: SelectCompactItemSlotProps<T>) => any) }",
+        "resolvedType": "{ top?: (() => any); bottom?: (() => any); \"trigger-leading\"?: (() => any); \"trigger-value\"?: ((props: SelectCompactTriggerValueSlotProps<T, M>) => any); \"trigger-trailing\"?: (() => any); \"trigger-icon\"?: (() => any); \"scroll-up-button\"?: (() => any); \"scroll-down-button\"?: (() => any); \"group-label\"?: ((props: SelectCompactGroupLabelSlotProps<T>) => any); \"item-text\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-leading\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-trailing\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-indicator\"?: ((props: SelectCompactItemSlotProps<T>) => any) }",
         "description": "Slots for the Select component.",
         "descriptionKey": "api.generated.packages_ui_src_components_select_types.selectslots.slots",
         "sourcePath": "packages/ui/src/components/select/types.ts",
         "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [],
         "callables": [
+          {
+            "name": "top",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content rendered at the top of the popup, fixed above the scrollable list.",
+            "descriptionKey": "api.generated.packages_ui_src_components_select_types.selectslots.callables.top",
+            "sourcePath": "packages/headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "bottom",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content rendered at the bottom of the popup, fixed below the scrollable list.",
+            "descriptionKey": "api.generated.packages_ui_src_components_select_types.selectslots.callables.bottom",
+            "sourcePath": "packages/headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
           {
             "name": "trigger-leading",
             "type": "(() => any) | undefined",
@@ -1588,7 +1619,7 @@
         "kind": "props",
         "name": "SelectCompactProps",
         "type": "Interface SelectCompactProps<T, M>",
-        "resolvedType": "{ items: SelectOptionData<T>[]; showArrow?: boolean; triggerProps?: SelectTriggerProps; triggerIconProps?: SelectTriggerIconProps; placeholder?: string; valueProps?: SelectValueProps; portalProps?: SelectPortalProps; contentProps?: SelectContentProps; placement?: import(\"@/index\").Placement; popupProps?: SelectPopupProps; viewportProps?: SelectViewportProps; scrollDownButtonProps?: SelectScrollDownButtonProps; scrollUpButtonProps?: SelectScrollUpButtonProps; groupProps?: SelectGroupProps; groupLabelProps?: SelectGroupLabelProps; itemProps?: SelectItemProps; itemTextProps?: SelectItemTextProps; itemIndicatorProps?: SelectItemIndicatorProps; separatorProps?: SelectSeparatorProps; arrowProps?: PopperArrowProps; open?: boolean; defaultOpen?: boolean; dir?: Direction; autocomplete?: string; disabled?: boolean; modelValue?: (M extends true ? T[] : T); defaultValue?: (M extends true ? T[] : T); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
+        "resolvedType": "{ items: SelectOptionData<T>[]; showArrow?: boolean; triggerProps?: SelectTriggerProps; triggerIconProps?: SelectTriggerIconProps; showTriggerIcon?: boolean; placeholder?: string; valueProps?: SelectValueProps; portalProps?: SelectPortalProps; contentProps?: SelectContentProps; placement?: import(\"@/index\").Placement; popupProps?: SelectPopupProps; viewportProps?: SelectViewportProps; scrollDownButtonProps?: SelectScrollDownButtonProps; scrollUpButtonProps?: SelectScrollUpButtonProps; groupProps?: SelectGroupProps; groupLabelProps?: SelectGroupLabelProps; itemProps?: SelectItemProps; itemTextProps?: SelectItemTextProps; itemIndicatorProps?: SelectItemIndicatorProps; separatorProps?: SelectSeparatorProps; arrowProps?: PopperArrowProps; open?: boolean; defaultOpen?: boolean; dir?: Direction; autocomplete?: string; disabled?: boolean; modelValue?: (M extends true ? T[] : T); defaultValue?: (M extends true ? T[] : T); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
         "description": "Properties for the SelectCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectcompactprops.props",
         "sourcePath": "packages/headless/src/components/select/types.ts",
@@ -1710,6 +1741,17 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "showTriggerIcon",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show the trigger icon.",
+            "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectcompactprops.members.showtriggericon",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/select/types.ts",
+            "referencedTypes": []
           },
           {
             "name": "placeholder",
@@ -2884,13 +2926,33 @@
         "kind": "slots",
         "name": "SelectCompactSlots",
         "type": "TypeAlias SelectCompactSlots<T, M>",
-        "resolvedType": "{ \"trigger-leading\"?: (() => any); \"trigger-value\"?: ((props: SelectCompactTriggerValueSlotProps<T, M>) => any); \"trigger-trailing\"?: (() => any); \"trigger-icon\"?: (() => any); \"scroll-up-button\"?: (() => any); \"scroll-down-button\"?: (() => any); \"group-label\"?: ((props: SelectCompactGroupLabelSlotProps<T>) => any); \"item-text\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-leading\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-trailing\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-indicator\"?: ((props: SelectCompactItemSlotProps<T>) => any) }",
+        "resolvedType": "{ top?: (() => any); bottom?: (() => any); \"trigger-leading\"?: (() => any); \"trigger-value\"?: ((props: SelectCompactTriggerValueSlotProps<T, M>) => any); \"trigger-trailing\"?: (() => any); \"trigger-icon\"?: (() => any); \"scroll-up-button\"?: (() => any); \"scroll-down-button\"?: (() => any); \"group-label\"?: ((props: SelectCompactGroupLabelSlotProps<T>) => any); \"item-text\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-leading\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-trailing\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-indicator\"?: ((props: SelectCompactItemSlotProps<T>) => any) }",
         "description": "Slots for the SelectCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectcompactslots.slots",
         "sourcePath": "packages/headless/src/components/select/types.ts",
         "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [],
         "callables": [
+          {
+            "name": "top",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content rendered at the top of the popup, fixed above the scrollable list.",
+            "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectcompactslots.callables.top",
+            "sourcePath": "packages/headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "bottom",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content rendered at the bottom of the popup, fixed below the scrollable list.",
+            "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectcompactslots.callables.bottom",
+            "sourcePath": "packages/headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
           {
             "name": "trigger-leading",
             "type": "(() => any) | undefined",
@@ -3203,7 +3265,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.11/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
+                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.12/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -3333,7 +3395,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.11/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
+                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.12/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -3446,7 +3508,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.7.6/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
+                "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.8.0/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -3728,7 +3790,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -3826,7 +3888,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -4163,7 +4225,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -4259,7 +4321,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -4334,7 +4396,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.7.6/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
+                "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.8.0/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -4370,7 +4432,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
