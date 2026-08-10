@@ -545,6 +545,9 @@
       "tooltip": {
         "basic": "Basic"
       },
+      "theme-customizer": {
+        "basic": "Basic"
+      },
       "tree": {
         "basic": "Basic",
         "virtualizer": "Virtualizer"

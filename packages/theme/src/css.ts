@@ -1,6 +1,12 @@
 import { generatePalette } from '@soybeanjs/colord/palette';
 import { keysOf } from '@soybeanjs/utils';
-import { getColorValue, isUnTransformedColor, removeHslBrackets, resolveRadiusValue, resolveSizeValue } from './shared';
+import {
+  resolveColorValue,
+  isUnTransformedColor,
+  removeHslBrackets,
+  resolveRadiusValue,
+  resolveSizeValue
+} from './shared';
 import { menuAccentCss, menuColorCss } from './recipes';
 import type {
   BaseGenerateCSSOptions,
@@ -107,7 +113,7 @@ function getItemColorCss(key: ColorKey, format: ColorFormat, preset: Partial<Col
   const value = preset[key];
   if (!value) return '';
 
-  let color = getColorValue(value, format);
+  let color = resolveColorValue(value, format);
   if (format === 'hsl') {
     color = removeHslBrackets(color);
   }
@@ -172,7 +178,7 @@ function generatePaletteItemCss(color: ColorValue | undefined, paletteKey: Theme
   }
 
   let css = '';
-  const colorValue = getColorValue(color, format);
+  const colorValue = resolveColorValue(color, format);
   const palette = generatePalette(colorValue, format === 'hsl' ? 'hslString' : 'oklchString');
 
   keysOf(palette).forEach(level => {

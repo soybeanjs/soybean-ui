@@ -50,7 +50,7 @@ export const isUnTransformedColor = (color: ColorValue) => {
  * `format`. Palette references are looked up from the colord tables; literal
  * hsl()/oklch() strings are converted across formats as needed.
  */
-export function getColorValue(colorValue: ColorValue, format: ColorFormat) {
+export function resolveColorValue(colorValue: ColorValue, format: ColorFormat) {
   if (isUnTransformedColor(colorValue)) {
     return colorValue;
   }

@@ -18,6 +18,7 @@ import type {
   MenuAccent,
   PrimaryColorKey,
   SidebarSchemeKey,
+  ThemeModePreference,
   ThemeRadiusValue,
   ThemeSizeValue,
   ThemePreset,
@@ -105,6 +106,12 @@ export interface ThemeConfigState {
    */
   sidebar?: SidebarSchemeKey;
   /**
+   * whether to apply a separate sidebar skin from the `sidebar` scheme.
+   *
+   * @default true
+   */
+  sidebarDerive?: boolean;
+  /**
    * the component size / density
    */
   size?: ThemeSizeValue;
@@ -121,11 +128,12 @@ export interface ThemeConfigState {
    */
   menuAccent?: MenuAccent;
   /**
-   * the color scheme preference
+   * the color scheme preference (`light` / `dark` / `auto`)
    *
-   * applied as a class on `<html>` (default `'dark'`)
+   * `'auto'` follows the OS `prefers-color-scheme`. The effective mode is
+   * applied as a class on `<html>` (default `'dark'`).
    */
-  mode?: 'light' | 'dark';
+  mode?: ThemeModePreference;
   /**
    * color output format
    *
@@ -168,9 +176,12 @@ const isChartScheme = (value: unknown): value is ChartSchemeKey => isRegistryCha
 
 const isSidebarScheme = (value: unknown): value is SidebarSchemeKey => isRegistrySidebarScheme(value);
 
-const isMode = (value: unknown): value is ThemeConfigState['mode'] => value === 'light' || value === 'dark';
+const isMode = (value: unknown): value is ThemeConfigState['mode'] =>
+  value === 'light' || value === 'dark' || value === 'auto';
 
 const isFormat = (value: unknown): value is ThemeConfigState['format'] => value === 'hsl' || value === 'oklch';
+
+const isSidebarDerive = (value: unknown): value is boolean => typeof value === 'boolean';
 
 const isLightLevel = (value: unknown): value is ThemeConfigState['lightLevel'] =>
   value === 0 || value === 1 || value === 2;
@@ -221,6 +232,7 @@ export function parseThemeConfig(raw: string | null | undefined): ThemeConfigSta
     feedback,
     chart,
     sidebar,
+    sidebarDerive,
     mode,
     size,
     radius,
@@ -247,6 +259,9 @@ export function parseThemeConfig(raw: string | null | undefined): ThemeConfigSta
   if (sidebar !== undefined && !isSidebarScheme(sidebar)) {
     return null;
   }
+  if (sidebarDerive !== undefined && !isSidebarDerive(sidebarDerive)) {
+    return null;
+  }
 
   const config: ThemeConfigState = {};
 
@@ -264,6 +279,9 @@ export function parseThemeConfig(raw: string | null | undefined): ThemeConfigSta
   }
   if (sidebar !== undefined) {
     config.sidebar = sidebar;
+  }
+  if (sidebarDerive !== undefined) {
+    config.sidebarDerive = sidebarDerive;
   }
   if (isMode(mode)) {
     config.mode = mode;
@@ -353,7 +371,14 @@ const isPaletteLevelColor = (value: string): boolean => {
   return levels != null && level != null && level in levels;
 };
 
-const isValidColorValue = (value: unknown): value is ColorValue => {
+/**
+ * whether a value is a valid theme color token value (`ColorValue`): a simple
+ * keyword, a `palette.level` reference, or a valid hsl()/oklch() string.
+ *
+ * Exposed so UI-layer theme composables can reuse the same validation the
+ * storage layer applies when persisting overrides.
+ */
+export function isValidColorValue(value: unknown): value is ColorValue {
   if (typeof value !== 'string' || !value) {
     return false;
   }
@@ -371,7 +396,7 @@ const isValidColorValue = (value: unknown): value is ColorValue => {
   }
 
   return false;
-};
+}
 
 const pickValidColors = (record: Record<string, unknown>): Record<string, ColorValue> =>
   Object.entries(record).reduce<Record<string, ColorValue>>((acc, [key, value]) => {

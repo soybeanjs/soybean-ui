@@ -28,16 +28,16 @@ export const treeMenuVariants = scv({
     };
   },
   slots: {
-    root: 'group flex-1 flex flex-col w-full h-full overflow-auto data-[state=collapsed]:w-[--soybean-tree-menu-collapsed-width] transition-[width,height]-200 ease-out',
+    root: 'group flex-1 flex flex-col w-full h-full overflow-auto text-sidebar-foreground data-[state=collapsed]:w-[--soybean-tree-menu-collapsed-width] transition-[width,height]-200 ease-out',
     groupRoot: 'group-data-[state=collapsed]:mb-0',
     group: 'flex flex-col m-0 p-0 list-none',
-    groupLabel: `flex items-center text-foreground/70 group-data-[state=collapsed]:size-0 group-data-[state=collapsed]:p-0 group-data-[state=collapsed]:opacity-0 group-data-[state=collapsed]:overflow-hidden transition-[height,padding,opacity]-200`,
+    groupLabel: `flex items-center text-sidebar-foreground/70 group-data-[state=collapsed]:size-0 group-data-[state=collapsed]:p-0 group-data-[state=collapsed]:opacity-0 group-data-[state=collapsed]:overflow-hidden transition-[height,padding,opacity]-200`,
     item: 'relative m-0 p-0 group-data-[state=collapsed]:hover:bg-sidebar-accent group-data-[state=collapsed]:hover:rounded-sm',
     button: [
       `group/button relative flex items-center w-full rounded-sm outline-none cursor-pointer select-none group-data-[state=collapsed]:overflow-hidden`,
-      `data-[active=true]:bg-primary/10 data-[active=true]:text-primary`,
+      `data-[active=true]:bg-sidebar-primary/10 data-[active=true]:text-sidebar-primary`,
       `data-[active=false]:hover:bg-sidebar-accent data-[active=false]:focus:bg-sidebar-accent`,
-      `data-[child-active]:text-primary`,
+      `data-[child-active]:text-sidebar-primary`,
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     collapsibleRoot: '',
@@ -46,14 +46,14 @@ export const treeMenuVariants = scv({
       'overflow-hidden transition will-change-auto',
       'data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up'
     ],
-    collapsibleIcon: `shrink-0 ms-auto text-muted-foreground transition-transform-200 group-data-[state=open]/button:rotate-90 group-data-[child-active]/button:text-primary`,
+    collapsibleIcon: `shrink-0 ms-auto text-muted-foreground transition-transform-200 group-data-[state=open]/button:rotate-90 group-data-[child-active]/button:text-sidebar-primary`,
     sub: 'flex flex-col m-0 list-none ms-[--soybean-tree-menu-indent] border-s border-sidebar-border border-solid',
     itemLabel: 'truncate',
     itemLinkIcon: `shrink-0 self-start text-muted-foreground rtl:rotate-270`,
-    itemTag: `shrink-0 ms-auto inline-flex items-center rounded-sm bg-accent/15 text-accent-foreground`,
+    itemTag: `shrink-0 ms-auto inline-flex items-center rounded-sm bg-sidebar-accent/15 text-sidebar-accent-foreground`,
     itemAction: [
       `absolute end-0 top-1/2 -translate-y-1/2 z-2 inline-flex items-center justify-center rounded-sm text-muted-foreground outline-none transition-colors`,
-      `focus-visible:bg-sidebar-accent focus-visible:text-foreground focus-visible:ring-3 focus-visible:ring-accent-foreground/20`,
+      `focus-visible:bg-sidebar-accent focus-visible:text-sidebar-foreground focus-visible:ring-3 focus-visible:ring-sidebar-accent-foreground/20`,
       `disabled:pointer-events-none disabled:opacity-50`
     ],
     itemAbsolute: `absolute inset-0 z-1 cursor-pointer`,

@@ -545,6 +545,9 @@
       "tooltip": {
         "basic": "基础"
       },
+      "theme-customizer": {
+        "basic": "基础"
+      },
       "tree": {
         "basic": "基础",
         "virtualizer": "虚拟列表"

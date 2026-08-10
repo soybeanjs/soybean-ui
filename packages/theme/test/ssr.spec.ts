@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { createThemeInitScript, isServerRuntime } from '../src/ssr';
 import { THEME_STORAGE_KEY } from '../src/storage';
 
@@ -53,7 +53,14 @@ describe('createThemeInitScript', () => {
   it('toggles the dark class from the persisted mode', () => {
     const script = createThemeInitScript();
 
-    expect(script).toContain('classList.toggle("dark", cfg.mode');
+    expect(script).toContain('classList.toggle("dark", isDark)');
+    expect(script).toContain("cfg.mode === 'dark'");
+  });
+
+  it('resolves auto mode against the OS prefers-color-scheme', () => {
+    const script = createThemeInitScript();
+
+    expect(script).toContain('(prefers-color-scheme: dark)');
   });
 
   it('skips the class toggle when the media selector is used', () => {
@@ -79,6 +86,25 @@ describe('createThemeInitScript', () => {
 
     expect(document.documentElement.getAttribute('data-theme')).toBe('slate-violet');
     expect(document.documentElement.classList.contains('dark')).toBe(true);
+  });
+
+  it('applies the dark class when auto mode follows a dark OS preference', () => {
+    window.localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify({ base: 'slate', primary: 'violet', mode: 'auto' }));
+
+    const originalMatchMedia = window.matchMedia;
+    window.matchMedia = vi.fn().mockReturnValue({ matches: true }) as unknown as typeof window.matchMedia;
+
+    try {
+      const script = createThemeInitScript();
+      // eslint-disable-next-line @typescript-eslint/no-implied-eval
+      const run = new Function(script);
+
+      run();
+
+      expect(document.documentElement.classList.contains('dark')).toBe(true);
+    } finally {
+      window.matchMedia = originalMatchMedia;
+    }
   });
 
   it('applies nothing when no theme is persisted', () => {

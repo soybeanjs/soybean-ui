@@ -350,6 +350,165 @@ export interface LocaleTextareaMessages {
   clear: string;
 }
 
+export interface LocaleThemeCustomizerMessages {
+  /** Section and control labels (mode / palette / base / radius / …). */
+  sections: {
+    mode: string;
+    palette: string;
+    base: string;
+    primary: string;
+    radius: string;
+    size: string;
+    scheme: string;
+    feedback: string;
+    chart: string;
+    sidebar: string;
+    advanced: string;
+    theme: string;
+    custom: string;
+    menu: string;
+    levels: string;
+    lightLevel: string;
+    darkLevel: string;
+    menuColor: string;
+    menuAccent: string;
+    savePresetPlaceholder: string;
+    save: string;
+    cssVars: string;
+    reset: string;
+  };
+  /** Variant group labels (surfaces / hairlines / …). */
+  groups: {
+    surfaces: string;
+    palette: string;
+    hairlines: string;
+    sidebar: string;
+    charts: string;
+    feedback: string;
+  };
+  /** Variant token labels (background / card / primary / …). */
+  variants: {
+    background: string;
+    foreground: string;
+    card: string;
+    cardForeground: string;
+    popover: string;
+    popoverForeground: string;
+    primary: string;
+    primaryForeground: string;
+    ring: string;
+    secondary: string;
+    secondaryForeground: string;
+    muted: string;
+    mutedForeground: string;
+    accent: string;
+    accentForeground: string;
+    border: string;
+    input: string;
+    sidebar: string;
+    sidebarForeground: string;
+    sidebarPrimary: string;
+    sidebarPrimaryForeground: string;
+    sidebarAccent: string;
+    sidebarAccentForeground: string;
+    sidebarBorder: string;
+    sidebarRing: string;
+    chart1: string;
+    chart2: string;
+    chart3: string;
+    chart4: string;
+    chart5: string;
+    destructive: string;
+    destructiveForeground: string;
+    success: string;
+    successForeground: string;
+    warning: string;
+    warningForeground: string;
+    info: string;
+    infoForeground: string;
+    carbon: string;
+    carbonForeground: string;
+  };
+  /** Select option labels (feedback / chart / sidebar schemes and menu settings). */
+  options: {
+    mode: {
+      auto: string;
+      light: string;
+      dark: string;
+    };
+    level: {
+      lightness: string;
+      darkness: string;
+    };
+    size: {
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+      xl2: string;
+    };
+    palette: {
+      slate: string;
+      mist: string;
+      gray: string;
+      zinc: string;
+      neutral: string;
+      stone: string;
+      taupe: string;
+      olive: string;
+      mauve: string;
+      red: string;
+      orange: string;
+      amber: string;
+      yellow: string;
+      lime: string;
+      green: string;
+      emerald: string;
+      teal: string;
+      cyan: string;
+      sky: string;
+      blue: string;
+      indigo: string;
+      violet: string;
+      purple: string;
+      fuchsia: string;
+      pink: string;
+      rose: string;
+    };
+    feedback: {
+      classic: string;
+      vivid: string;
+      subtle: string;
+      modern: string;
+      professional: string;
+    };
+    chart: {
+      vivid: string;
+      cool: string;
+      warm: string;
+      natural: string;
+      minimal: string;
+    };
+    sidebar: {
+      derived: string;
+      invertedDark: string;
+      soft: string;
+      contrast: string;
+    };
+    menuColor: {
+      default: string;
+      inverted: string;
+      defaultTranslucent: string;
+      invertedTranslucent: string;
+    };
+    menuAccent: {
+      subtle: string;
+      bold: string;
+    };
+  };
+}
+
 export interface LocaleMessages {
   anchor: LocaleAnchorMessages;
   autocomplete: LocaleAutocompleteMessages;
@@ -377,6 +536,7 @@ export interface LocaleMessages {
   table: LocaleTableMessages;
   tagsInput: LocaleTagsInputMessages;
   textarea: LocaleTextareaMessages;
+  themeCustomizer: LocaleThemeCustomizerMessages;
   treeMenu: LocaleTreeMenuMessages;
 }
 

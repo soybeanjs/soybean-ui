@@ -16,5 +16,6 @@ export const DEFAULT_PRESET_OPTIONS = {
   darkSelector: 'class',
   format: 'hsl',
   lightLevel: 0,
-  darkLevel: 0
+  darkLevel: 0,
+  sidebarDerive: true
 } as const;

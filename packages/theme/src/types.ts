@@ -356,9 +356,17 @@ export interface BaseTokens {
 }
 
 /**
- * Theme mode
+ * The effective (resolved) color scheme. Always `'light'` or `'dark'` — this is
+ * what drives CSS/token selection and the `.dark` class toggle.
  */
 export type ThemeMode = 'light' | 'dark';
+
+/**
+ * The user's color scheme preference. Extends `ThemeMode` with `'auto'`, which
+ * resolves to the OS `prefers-color-scheme` at runtime (see
+ * `ThemeContext.effectiveMode` in the UI layer).
+ */
+export type ThemeModePreference = ThemeMode | 'auto';
 
 /**
  * Theme tokens
@@ -497,6 +505,15 @@ export interface ThemeOptions extends BaseGenerateCSSOptions {
    */
   sidebar?: SidebarSchemeKey;
   /**
+   * whether to apply a separate sidebar skin from the `sidebar` scheme.
+   *
+   * When `false`, the sidebar tokens are not derived and fall back to the base
+   * `background`/`foreground`/`border` tokens (no dedicated sidebar skin).
+   *
+   * @default true
+   */
+  sidebarDerive?: boolean;
+  /**
    * inline color token overrides applied on top of the derived tokens
    */
   overrides?: ThemeOverrides;
@@ -545,7 +562,7 @@ export interface ThemeOptions extends BaseGenerateCSSOptions {
  * carbon). Extends the built-in `classic` key with arbitrary strings supplied
  * through the runtime registry.
  */
-export type FeedbackSchemeKey = 'classic' | (string & {});
+export type FeedbackSchemeKey = 'classic' | 'vivid' | 'subtle' | 'modern' | 'professional' | (string & {});
 
 /**
  * chart semantic scheme key
@@ -553,7 +570,7 @@ export type FeedbackSchemeKey = 'classic' | (string & {});
  * selects a named data-viz color scheme (chart1–chart5). Extends the built-in
  * `vivid` key with arbitrary strings supplied through the runtime registry.
  */
-export type ChartSchemeKey = 'vivid' | (string & {});
+export type ChartSchemeKey = 'vivid' | 'cool' | 'warm' | 'natural' | 'minimal' | (string & {});
 
 /**
  * sidebar color key
@@ -578,6 +595,10 @@ export type SidebarTokenRef =
   | 'card'
   | 'primary'
   | 'primaryForeground'
+  | 'secondary'
+  | 'secondaryForeground'
+  | 'muted'
+  | 'mutedForeground'
   | 'accent'
   | 'accentForeground'
   | 'border'
@@ -594,7 +615,7 @@ export type SidebarColorValue = ColorValue | SidebarTokenRef;
  * selects a named sidebar skin scheme. Extends the built-in `derived` key with
  * arbitrary strings supplied through the runtime registry.
  */
-export type SidebarSchemeKey = 'derived' | (string & {});
+export type SidebarSchemeKey = 'derived' | 'inverted-dark' | 'soft' | 'contrast' | (string & {});
 
 /**
  * a semantic color scheme: a named mapping of role keys to colors (light/dark).
@@ -625,11 +646,11 @@ export interface ThemePalette {
  * `registerThemePresets`.
  */
 export interface ThemePresetRegistry {
-  base: Record<string, ThemePalette>;
-  primary: Record<string, ThemePalette>;
-  feedback: Record<string, SemanticScheme<ColorValue>>;
-  chart: Record<string, SemanticScheme<ColorValue>>;
-  sidebar: Record<string, SemanticScheme<SidebarColorValue>>;
+  base: Record<BaseColorKey, ThemePalette>;
+  primary: Record<PrimaryColorKey, ThemePalette>;
+  feedback: Record<FeedbackSchemeKey, SemanticScheme>;
+  chart: Record<ChartSchemeKey, SemanticScheme>;
+  sidebar: Record<SidebarSchemeKey, SemanticScheme<SidebarColorValue>>;
 }
 
 /**
@@ -642,3 +663,5 @@ export interface ThemeOverrides {
   light?: Partial<ColorTokens>;
   dark?: Partial<ColorTokens>;
 }
+
+export type { PaletteColorLevel };

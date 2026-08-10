@@ -104,7 +104,11 @@ export function createThemeInitScript(options: ThemeInitScriptOptions = {}): str
     // class and custom selectors are `.foo`; the class name is the selector
     // without the leading dot.
     const darkClass = resolvedSelector.replace(/^\./, '');
-    statements.push(`    doc.classList.toggle(${JSON.stringify(darkClass)}, cfg.mode === 'dark');`);
+    // `auto` resolves against the OS preference; explicit `dark` always wins.
+    statements.push(
+      `    var isDark = cfg.mode === 'dark' || (cfg.mode === 'auto' && !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);`,
+      `    doc.classList.toggle(${JSON.stringify(darkClass)}, isDark);`
+    );
   }
 
   statements.push('  } catch (e) {}', '})();');

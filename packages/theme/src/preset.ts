@@ -52,6 +52,12 @@ export interface GenerateThemePresetOptions {
    */
   sidebar?: SidebarSchemeKey;
   /**
+   * whether to apply a separate sidebar skin from the `sidebar` scheme.
+   *
+   * @default true
+   */
+  sidebarDerive?: boolean;
+  /**
    * light mode surface darkening offset
    *
    * @default 0
@@ -115,6 +121,7 @@ export function generateThemePreset(options: GenerateThemePresetOptions): FullTh
     feedback: options.feedback,
     chart: options.chart,
     sidebar: options.sidebar,
+    sidebarDerive: options.sidebarDerive,
     lightLevel: lightLevel ?? 0,
     darkLevel: darkLevel ?? 0
   });
@@ -178,6 +185,8 @@ interface BuiltinPresetOptions {
   feedback?: FeedbackSchemeKey;
   chart?: ChartSchemeKey;
   sidebar?: SidebarSchemeKey;
+  /** whether to apply a separate sidebar skin from the `sidebar` scheme. */
+  sidebarDerive?: boolean;
   lightLevel: LightLevelOffset;
   darkLevel: DarkLevelOffset;
 }
@@ -191,6 +200,10 @@ const SIDEBAR_TOKEN_REFS = new Set([
   'card',
   'primary',
   'primaryForeground',
+  'secondary',
+  'secondaryForeground',
+  'muted',
+  'mutedForeground',
   'accent',
   'accentForeground',
   'border',
@@ -232,23 +245,32 @@ function resolveSidebarScheme(
  * plus the selected feedback / chart / sidebar schemes.
  */
 function getBuiltinPreset(options: BuiltinPresetOptions): { light: ColorTokens; dark: ColorTokens } {
-  const { base, primary, lightLevel, darkLevel } = options;
+  const { base, primary, lightLevel, darkLevel, sidebarDerive } = options;
   const registry = getRegistry();
 
   const feedbackScheme = registry.feedback[options.feedback ?? 'classic'] ?? registry.feedback.classic;
   const chartScheme = registry.chart[options.chart ?? 'vivid'] ?? registry.chart.vivid;
-  const sidebarScheme = registry.sidebar[options.sidebar ?? 'derived'] ?? registry.sidebar.derived;
 
   const basePreset = deriveBasePreset(base, lightLevel, darkLevel);
   const primaryPreset = derivePrimaryPreset(primary);
   const mergedLight: ColorTokens = { ...basePreset.light, ...primaryPreset.light };
   const mergedDark: ColorTokens = { ...basePreset.dark, ...primaryPreset.dark };
 
+  const baseResult: ColorTokens = { ...mergedLight, ...feedbackScheme.light, ...chartScheme.light };
+  const darkResult: ColorTokens = { ...mergedDark, ...feedbackScheme.dark, ...chartScheme.dark };
+
+  // sidebar 皮肤默认应用；`sidebarDerive=false` 时不派生独立 sidebar token，
+  // 直接回落到 base 的 background/foreground/border（无独立侧栏皮肤）。
+  if (sidebarDerive === false) {
+    return { light: baseResult, dark: darkResult };
+  }
+
+  const sidebarScheme = registry.sidebar[options.sidebar ?? 'derived'] ?? registry.sidebar.derived;
   const sidebarPreset = resolveSidebarScheme(sidebarScheme, { light: mergedLight, dark: mergedDark });
 
   return {
-    light: { ...mergedLight, ...feedbackScheme.light, ...chartScheme.light, ...sidebarPreset.light },
-    dark: { ...mergedDark, ...feedbackScheme.dark, ...chartScheme.dark, ...sidebarPreset.dark }
+    light: { ...baseResult, ...sidebarPreset.light },
+    dark: { ...darkResult, ...sidebarPreset.dark }
   };
 }
 

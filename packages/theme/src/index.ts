@@ -16,7 +16,7 @@ export {
   builtinSidebarSchemeKeys
 } from './registry';
 export { generateThemePreset } from './preset';
-export { getDarkSelector } from './shared';
+export { getDarkSelector, resolveColorValue } from './shared';
 
 export type {
   HSLColor,
@@ -35,6 +35,7 @@ export type {
   DarkLevelOffset,
   BaseTokens,
   ThemeMode,
+  ThemeModePreference,
   ThemeTokens,
   ThemePreset,
   FullThemePreset,
@@ -52,6 +53,7 @@ export type {
   SidebarTokenRef,
   SidebarColorValue,
   SidebarSchemeKey,
+  PaletteColorLevel,
   SemanticScheme,
   ThemePalette,
   ThemePresetRegistry,

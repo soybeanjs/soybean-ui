@@ -34,6 +34,7 @@ export function createTheme(options?: ThemeOptions): string {
     feedback: merged.feedback,
     chart: merged.chart,
     sidebar: merged.sidebar,
+    sidebarDerive: merged.sidebarDerive,
     overrides: merged.overrides,
     size: merged.size,
     radius: merged.radius,

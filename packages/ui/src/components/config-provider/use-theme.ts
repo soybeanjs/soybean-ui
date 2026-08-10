@@ -1,9 +1,11 @@
-import { computed, onMounted, reactive, ref, watch } from 'vue';
+import { computed, onMounted, onUnmounted, reactive, ref, watch } from 'vue';
 import type { ComputedRef, Ref, ShallowRef } from 'vue';
 import { useContext } from '@soybeanjs/headless/composables';
 import type {
   ColorValue,
   DarkSelectorValue,
+  ThemeMode,
+  ThemeModePreference,
   ThemeOptions,
   ThemeOverrides,
   ThemePreset,
@@ -32,7 +34,7 @@ const DEFAULT_BASE: BaseColorKey = 'zinc';
 const DEFAULT_PRIMARY: PrimaryColorKey = 'indigo';
 const DEFAULT_RADIUS: ThemeRadiusValue = 'md';
 const DEFAULT_SIZE: ThemeSizeValue = 'md';
-const DEFAULT_MODE: 'light' | 'dark' = 'light';
+const DEFAULT_MODE: ThemeModePreference = 'light';
 
 /** the localStorage key carrying the currently applied custom preset name */
 const APPLIED_PRESET_KEY = '__SOYBEAN_THEME_APPLIED_PRESET';
@@ -54,14 +56,16 @@ export interface ThemeContext {
   radius: ShallowRef<ThemeRadiusValue>;
   /** The component size / density. */
   size: ShallowRef<ThemeSizeValue>;
-  /** The color scheme preference (`light` / `dark`). */
-  mode: ShallowRef<'light' | 'dark'>;
+  /** The color scheme preference (`light` / `dark` / `auto`). */
+  mode: ShallowRef<ThemeModePreference>;
+  /** The effective (resolved) color scheme: `auto` follows the OS preference. */
+  effectiveMode: ComputedRef<ThemeMode>;
   /** Set the border radius. */
   setRadius: (value: ThemeRadiusValue) => void;
   /** Set the component size / density. */
   setSize: (value: ThemeSizeValue) => void;
   /** Set the color scheme preference. */
-  setMode: (value: 'light' | 'dark') => void;
+  setMode: (value: ThemeModePreference) => void;
   /** The persisted custom theme presets table. */
   customPresets: Ref<Record<string, StoredThemePreset>>;
   /** The currently applied custom preset name, if any. */
@@ -74,6 +78,8 @@ export interface ThemeContext {
   applyPreset: (name: string) => void;
   /** Clear the applied custom preset. */
   resetPreset: () => void;
+  /** Overwrite the full persistable theme state (base/primary/radius/size/mode/…). */
+  setThemeState: (config: ThemeConfigState) => void;
   /** The effective theme merged from the internal state and the `theme` prop. */
   theme: ComputedRef<ThemeOptions>;
 }
@@ -180,12 +186,37 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
       themeState.size = value as ThemeSizeValue;
     }
   });
-  const mode = computed<'light' | 'dark'>({
+  const mode = computed<ThemeModePreference>({
     get: () => themeState.mode ?? DEFAULT_MODE,
     set: value => {
       themeState.mode = value;
     }
   });
+
+  // —— auto 模式的系统偏好解析：跟踪 `prefers-color-scheme`，SSR 下无
+  //    matchMedia 时回退为 light，首帧由 createThemeInitScript 在浏览器处理 ——
+  const systemDark = ref(false);
+  let mql: MediaQueryList | undefined;
+
+  if (!isServer && typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+    mql = window.matchMedia('(prefers-color-scheme: dark)');
+    systemDark.value = mql.matches;
+  }
+
+  const onSystemColorChange = (event: MediaQueryListEvent): void => {
+    systemDark.value = event.matches;
+  };
+
+  mql?.addEventListener('change', onSystemColorChange);
+
+  onUnmounted(() => {
+    mql?.removeEventListener('change', onSystemColorChange);
+  });
+
+  /** `auto` 解析为系统偏好；显式 `light` / `dark` 原样返回 */
+  const effectiveMode = computed<ThemeMode>(() =>
+    mode.value === 'auto' ? (systemDark.value ? 'dark' : 'light') : mode.value
+  );
 
   // —— 持久化：state 变化时写 localStorage，保证刷新后主题一致 ——
   watch(
@@ -206,8 +237,11 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
   // 切换时临时禁用 CSS 过渡（复刻 @vueuse/core useColorMode 的 disableTransition
   // 手法）：注入 `*{transition:none!important}` → 切换 class → 强制 reflow → 移除。
   // 否则带 `transition-all` 的组件（如按钮）会相对无过渡的页面背景延迟 150ms 才变色。
+  //
+  // 监听 `effectiveMode`（而非偏好 `mode`）：`auto` 会解析为系统 `prefers-color-scheme`，
+  // 且系统偏好变化时 computed 重新求值，从而在 `auto` 下也能随 OS 明暗切换同步 class。
   watch(
-    mode,
+    effectiveMode,
     value => {
       if (typeof document === 'undefined') {
         return;
@@ -382,6 +416,7 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
       feedback: t.feedback ?? themeState.feedback,
       chart: t.chart ?? themeState.chart,
       sidebar: t.sidebar ?? themeState.sidebar,
+      sidebarDerive: t.sidebarDerive ?? themeState.sidebarDerive,
       overrides,
       // size/radius/menuColor/menuAccent 作为顶层 base tokens 传入，与新的
       // createTheme 签名保持一致：来源为持久化状态 → size prop。
@@ -403,6 +438,7 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
     radius,
     size,
     mode,
+    effectiveMode,
     setRadius: value => {
       radius.value = value;
     },
