@@ -18,43 +18,57 @@
     "directory": "packages/sbean"
   },
   "bin": {
-    "sbean": "./dist/index.js"
+    "sbean": "./src/bin.js"
   },
   "files": [
     "dist"
   ],
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
+    ".": "./src/index.ts",
+    "./registry": "./src/registry.ts",
+    "./schema": "./src/schema.ts",
+    "./preset": "./src/preset.ts",
+    "./utils": "./src/utils.ts",
+    "./mcp": "./src/mcp.ts"
+  },
+  "publishConfig": {
+    "bin": {
+      "sbean": "./dist/index.js"
     },
-    "./registry": {
-      "types": "./dist/registry/index.d.ts",
-      "import": "./dist/registry/index.js",
-      "require": "./dist/registry/index.js"
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js",
+        "require": "./dist/index.js"
+      },
+      "./registry": {
+        "types": "./dist/registry/index.d.ts",
+        "import": "./dist/registry/index.js",
+        "require": "./dist/registry/index.js"
+      },
+      "./schema": {
+        "types": "./dist/schema/index.d.ts",
+        "import": "./dist/schema/index.js",
+        "require": "./dist/schema/index.js"
+      },
+      "./preset": {
+        "types": "./dist/preset/index.d.ts",
+        "import": "./dist/preset/index.js",
+        "require": "./dist/preset/index.js"
+      },
+      "./utils": {
+        "types": "./dist/utils/index.d.ts",
+        "import": "./dist/utils/index.js",
+        "require": "./dist/utils/index.js"
+      },
+      "./mcp": {
+        "types": "./dist/mcp/index.d.ts",
+        "import": "./dist/mcp/index.js",
+        "require": "./dist/mcp/index.js"
+      }
     },
-    "./schema": {
-      "types": "./dist/schema/index.d.ts",
-      "import": "./dist/schema/index.js",
-      "require": "./dist/schema/index.js"
-    },
-    "./preset": {
-      "types": "./dist/preset/index.d.ts",
-      "import": "./dist/preset/index.js",
-      "require": "./dist/preset/index.js"
-    },
-    "./utils": {
-      "types": "./dist/utils/index.d.ts",
-      "import": "./dist/utils/index.js",
-      "require": "./dist/utils/index.js"
-    },
-    "./mcp": {
-      "types": "./dist/mcp/index.d.ts",
-      "import": "./dist/mcp/index.js",
-      "require": "./dist/mcp/index.js"
-    }
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "build": "vp pack",

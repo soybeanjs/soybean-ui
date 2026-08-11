@@ -18,7 +18,7 @@
   },
   "type": "module",
   "scripts": {
-    "build": "pnpm build:headless && pnpm build:ui && pnpm build:sbean",
+    "build": "pnpm build:libs && pnpm build:headless && pnpm build:ui && pnpm build:sbean",
     "build:docs": "pnpm build && pnpm --filter @soybeanjs/ui-docs build",
     "build:headless": "pnpm --filter @soybeanjs/headless build",
     "build:libs": "pnpm --filter @soybeanjs/theme build && pnpm --filter @soybeanjs/ui-unocss build",
@@ -32,7 +32,6 @@
     "fmt": "vp fmt",
     "lint": "vp lint --fix && pnpm lint:vue",
     "lint:vue": "eslint packages/ --ext .vue --fix",
-    "prepare": "pnpm build:libs",
     "publish-pkg": "pnpm publish -r --access public",
     "release": "soy release -e 'pnpm release-execute'",
     "release-execute": "pnpm soy changelog && pnpm sui skills && pnpm sui changelog && pnpm sui changelog-translate && pnpm sync-template-versions",

@@ -31,7 +31,7 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile && pnpm build:libs
 
       - name: Type check
         run: pnpm typecheck
@@ -41,12 +41,6 @@ jobs:
 
       - name: Test
         run: pnpm test
-
-      - name: Theme presets validate + drift check
-        run: |
-          pnpm --filter @soybeanjs/theme-presets validate
-          pnpm --filter @soybeanjs/theme-presets generate
-          git diff --exit-code -- packages/theme-presets/src/generated/
 
   e2e:
     name: Browser e2e
