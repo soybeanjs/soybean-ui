@@ -14,7 +14,7 @@ export const toolbarVariants = scv({
   slots: {
     root: [
       'inline-flex items-center rounded-md border border-border bg-background shadow-xs',
-      'data-[orientation=vertical]:h-auto data-[orientation=vertical]:w-fit data-[orientation=vertical]:flex-col'
+      'data-[orientation=vertical]:h-auto data-[orientation=vertical]:w-fit data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch'
     ],
     button: sharedButtonClasses,
     link: [...sharedButtonClasses, 'select-none no-underline'],
@@ -23,7 +23,7 @@ export const toolbarVariants = scv({
       'shrink-0 bg-border data-[orientation=vertical]:w-px',
       'data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full'
     ],
-    toggleGroup: 'inline-flex items-center data-[orientation=vertical]:flex-col',
+    toggleGroup: `inline-flex items-center data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch`,
     toggleItem: [...sharedButtonClasses, 'data-[state=on]:bg-accent data-[state=on]:text-accent-foreground']
   },
   variants: {
