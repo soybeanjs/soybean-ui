@@ -7,6 +7,12 @@
  *   2. New fields must have their default at index 0.
  *   3. Only append new fields to the end of PRESET_FIELDS.
  *   4. Stay under 53 bits total (JS safe integer limit).
+ *
+ * Version history:
+ *   - `a` (initial): menuColor, menuAccent, radius, iconLibrary, primary, base
+ *   - `b` (current): removed the menu surface system (menuColor/menuAccent).
+ *     The version bump invalidates codes generated under `a` via the
+ *     `version !== CURRENT_VERSION` check in `decodePreset`/`isPresetCode`.
  */
 
 import { PRESET_BASE_COLORS, PRESET_PRIMARY_COLORS, PRESET_RADII, PRESET_ICON_LIBRARIES } from '../registry/config';
@@ -17,11 +23,9 @@ import { PRESET_BASE_COLORS, PRESET_PRIMARY_COLORS, PRESET_RADII, PRESET_ICON_LI
 
 const BASE62 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
-const CURRENT_VERSION = 'a';
+const CURRENT_VERSION = 'b';
 
 export const PRESET_FIELDS = [
-  { key: 'menuColor', values: ['default', 'inverted', 'default-translucent', 'inverted-translucent'] as const },
-  { key: 'menuAccent', values: ['subtle', 'bold'] as const },
   { key: 'radius', values: PRESET_RADII as readonly string[] },
   { key: 'iconLibrary', values: PRESET_ICON_LIBRARIES as readonly string[] },
   { key: 'primary', values: PRESET_PRIMARY_COLORS as readonly string[] },
@@ -33,8 +37,6 @@ export interface PresetConfig {
   primary: string;
   iconLibrary: string;
   radius: string;
-  menuAccent: string;
-  menuColor: string;
   fontSans?: string;
   fontHeading?: string;
 }

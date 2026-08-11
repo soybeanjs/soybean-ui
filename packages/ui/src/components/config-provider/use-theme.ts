@@ -419,12 +419,10 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
       sidebar: t.sidebar ?? themeState.sidebar,
       sidebarDerive: t.sidebarDerive ?? themeState.sidebarDerive,
       overrides,
-      // size/radius/menuColor/menuAccent 作为顶层 base tokens 传入，与新的
-      // createTheme 签名保持一致：来源为持久化状态 → size prop。
+      // size/radius 作为顶层 base tokens 传入，与新的 createTheme 签名保持一致：
+      // 来源为持久化状态 → size prop。
       size: t.size ?? themeState.size ?? props.size ?? DEFAULT_SIZE,
       radius: t.radius ?? themeState.radius ?? DEFAULT_RADIUS,
-      menuColor: t.menuColor ?? themeState.menuColor,
-      menuAccent: t.menuAccent ?? themeState.menuAccent,
       format: t.format ?? themeState.format,
       lightLevel: t.lightLevel ?? themeState.lightLevel,
       darkLevel: t.darkLevel ?? themeState.darkLevel,

@@ -134,8 +134,6 @@ export function useThemeSettings(options: UseThemeSettingsOptions = {}): UseThem
     state.value = {
       size: DEFAULT_PRESET_OPTIONS.size,
       radius: DEFAULT_PRESET_OPTIONS.radius,
-      menuColor: DEFAULT_PRESET_OPTIONS.menuColor,
-      menuAccent: DEFAULT_PRESET_OPTIONS.menuAccent,
       base: DEFAULT_PRESET_OPTIONS.base,
       primary: DEFAULT_PRESET_OPTIONS.primary,
       format: DEFAULT_PRESET_OPTIONS.format,

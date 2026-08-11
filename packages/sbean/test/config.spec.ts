@@ -28,8 +28,6 @@ describe('config management', () => {
       expect(config.uno.base).toBe('zinc');
       expect(config.uno.primary).toBe('indigo');
       expect(config.uno.radius).toBe('md');
-      expect(config.menu.accent).toBe('subtle');
-      expect(config.menu.color).toBe('default');
     });
 
     it('creates config with resolved paths', async () => {
@@ -80,8 +78,7 @@ describe('config management', () => {
         JSON.stringify({
           iconLibrary: 'invalid-library',
           uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
-          font: {},
-          menu: { accent: 'subtle', color: 'default' }
+          font: {}
         }),
         'utf-8'
       );
@@ -103,8 +100,7 @@ describe('config management', () => {
       const resolved = await resolveConfigPaths(tmpDir, {
         iconLibrary: 'lucide',
         uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
-        font: {},
-        menu: { accent: 'subtle', color: 'default' }
+        font: {}
       });
 
       expect(resolved.resolvedPaths.ui).toBe(path.join(tmpDir, 'src', 'ui'));
@@ -116,8 +112,7 @@ describe('config schema validation', () => {
   const minimalConfig = {
     iconLibrary: 'lucide',
     uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
-    font: {},
-    menu: { accent: 'subtle', color: 'default' }
+    font: {}
   };
 
   it('validates minimal config', () => {
@@ -145,22 +140,6 @@ describe('config schema validation', () => {
     const result = v.safeParse(rawConfigSchema, {
       ...minimalConfig,
       uno: { ...minimalConfig.uno, radius: 'huge' }
-    });
-    expect(result.success).toBe(false);
-  });
-
-  it('rejects invalid menu accent', () => {
-    const result = v.safeParse(rawConfigSchema, {
-      ...minimalConfig,
-      menu: { ...minimalConfig.menu, accent: 'crazy' }
-    });
-    expect(result.success).toBe(false);
-  });
-
-  it('rejects invalid menu color', () => {
-    const result = v.safeParse(rawConfigSchema, {
-      ...minimalConfig,
-      menu: { ...minimalConfig.menu, color: 'rainbow' }
     });
     expect(result.success).toBe(false);
   });

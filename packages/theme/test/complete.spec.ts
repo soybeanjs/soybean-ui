@@ -72,20 +72,16 @@ describe('generateThemePreset — overrides priority & merging', () => {
 });
 
 describe('generateThemePreset — base tokens come from top-level options', () => {
-  it('resolves size/radius/menuColor/menuAccent without a preset field', () => {
+  it('resolves size/radius without a preset field', () => {
     const preset = generateThemePreset({
       base: 'zinc',
       primary: 'indigo',
       size: 'sm',
-      radius: 'lg',
-      menuColor: 'inverted',
-      menuAccent: 'bold'
+      radius: 'lg'
     });
 
     expect(preset.size).toBe('sm');
     expect(preset.radius).toBe('lg');
-    expect(preset.menuColor).toBe('inverted');
-    expect(preset.menuAccent).toBe('bold');
   });
 
   it('falls back to the engine defaults for omitted base tokens', () => {
@@ -93,8 +89,6 @@ describe('generateThemePreset — base tokens come from top-level options', () =
 
     expect(preset.size).toBe('md');
     expect(preset.radius).toBe('md');
-    expect(preset.menuColor).toBe('default');
-    expect(preset.menuAccent).toBe('subtle');
   });
 });
 

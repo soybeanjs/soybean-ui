@@ -67,18 +67,6 @@ export const EXTENDED_THEME_VARIABLES = {
 } as const;
 
 /**
- * menu surface / accent variables consumed by the layout
- */
-export const MENU_VARIABLES = {
-  bg: '--menu-bg',
-  bgAlpha: '--menu-bg-alpha',
-  dropBlur: '--menu-drop-blur',
-  backdropSaturate: '--menu-backdrop-saturate',
-  itemAccentBackground: '--menu-item-accent-background',
-  itemAccentForeground: '--menu-item-accent-foreground'
-} as const;
-
-/**
  * dark mode selectors
  */
 export const DARK_SELECTOR = {

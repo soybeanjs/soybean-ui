@@ -96,10 +96,6 @@ export async function createDefaultConfig(
       radius: 'md'
     },
     font: {},
-    menu: {
-      accent: 'subtle',
-      color: 'default'
-    },
     registries: {},
     ...overrides
   };

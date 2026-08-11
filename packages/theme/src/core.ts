@@ -38,8 +38,6 @@ export function createTheme(options?: ThemeOptions): string {
     overrides: merged.overrides,
     size: merged.size,
     radius: merged.radius,
-    menuColor: merged.menuColor,
-    menuAccent: merged.menuAccent,
     lightLevel,
     darkLevel
   });

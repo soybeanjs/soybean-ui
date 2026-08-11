@@ -26,7 +26,7 @@
                 "name": "ConfigProviderThemeOptions",
                 "kind": "typeAlias",
                 "type": "ThemeOptions & { preset?: ThemePresetInput; }",
-                "resolvedType": "{ base?: BaseColorKey; primary?: PrimaryColorKey; feedback?: FeedbackSchemeKey; chart?: ChartSchemeKey; sidebar?: SidebarSchemeKey; sidebarDerive?: boolean; overrides?: ThemeOverrides; size?: ThemeSizeValue; radius?: ThemeRadiusValue; menuColor?: MenuColor; menuAccent?: MenuAccent; lightLevel?: LightLevelOffset; darkLevel?: DarkLevelOffset; borderOpacity?: number; styleTarget?: StyleTarget; darkSelector?: DarkSelectorValue; format?: ColorFormat; preset?: ThemePresetInput }",
+                "resolvedType": "{ base?: BaseColorKey; primary?: PrimaryColorKey; feedback?: FeedbackSchemeKey; chart?: ChartSchemeKey; sidebar?: SidebarSchemeKey; sidebarDerive?: boolean; overrides?: ThemeOverrides; size?: ThemeSizeValue; radius?: ThemeRadiusValue; lightLevel?: LightLevelOffset; darkLevel?: DarkLevelOffset; borderOpacity?: number; styleTarget?: StyleTarget; darkSelector?: DarkSelectorValue; format?: ColorFormat; preset?: ThemePresetInput }",
                 "description": "UI-level theme options accepted by `SConfigProvider`.\n\nThe engine's `ThemeOptions` now carries `overrides` for inline token\noverrides. The provider additionally accepts a legacy `preset` input — either\nan inline mode-split override or a `{ name }` reference to a stored preset.\nThe provider resolves named references to their colors and materializes the\nresult as `overrides` before calling `createTheme`, so the engine only ever\nreceives resolved options.",
                 "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions",
                 "sourcePath": "packages/ui/src/components/config-provider/types.ts",
@@ -41,7 +41,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.base",
                     "default": "'zinc'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
+                    "sourcePath": "packages/theme/src/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -52,7 +52,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.primary",
                     "default": "'indigo'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
+                    "sourcePath": "packages/theme/src/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -63,7 +63,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.feedback",
                     "default": "'classic'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
+                    "sourcePath": "packages/theme/src/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -74,7 +74,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.chart",
                     "default": "'vivid'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
+                    "sourcePath": "packages/theme/src/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -85,7 +85,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.sidebar",
                     "default": "'derived'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
+                    "sourcePath": "packages/theme/src/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -96,7 +96,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.sidebarderive",
                     "default": "true",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
+                    "sourcePath": "packages/theme/src/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -107,7 +107,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.overrides",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
+                    "sourcePath": "packages/theme/src/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -118,7 +118,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.size",
                     "default": "'md'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
+                    "sourcePath": "packages/theme/src/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -129,29 +129,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.radius",
                     "default": "'md'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "menuColor",
-                    "type": "MenuColor",
-                    "required": false,
-                    "description": "the menu color preset key",
-                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.menucolor",
-                    "default": "'default'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "menuAccent",
-                    "type": "MenuAccent",
-                    "required": false,
-                    "description": "the menu accent preset key",
-                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.menuaccent",
-                    "default": "'subtle'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
+                    "sourcePath": "packages/theme/src/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -162,7 +140,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.lightlevel",
                     "default": "0",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
+                    "sourcePath": "packages/theme/src/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -173,7 +151,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.darklevel",
                     "default": "0",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
+                    "sourcePath": "packages/theme/src/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -182,9 +160,9 @@
                     "required": false,
                     "description": "the border (border / input / sidebar-border) opacity multiplier.\n\nScales the alpha channel of the border-family tokens, driving the\n`--border-alpha` / `--input-alpha` / `--sidebar-border-alpha` variables\n(effective alpha = token alpha × borderOpacity). Defaults to `1`, so the\ntoken's own alpha is preserved.",
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.borderopacity",
-                    "default": "1",
+                    "default": "1\nrange: 0 - 1",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
+                    "sourcePath": "packages/theme/src/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -195,7 +173,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.styletarget",
                     "default": "':root'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
+                    "sourcePath": "packages/theme/src/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -206,7 +184,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.darkselector",
                     "default": "'class'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
+                    "sourcePath": "packages/theme/src/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -217,7 +195,7 @@
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.format",
                     "default": "'hsl'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
+                    "sourcePath": "packages/theme/src/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -252,8 +230,8 @@
                 "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
                 "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
                 "description": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px",
-                "descriptionKey": "api.generated.packages_theme_dist_types_d_bayhuw_d.themesize",
-                "sourcePath": "packages/theme/dist/types-D_bAyhuw.d.ts",
+                "descriptionKey": "api.generated.packages_theme_src_types.themesize",
+                "sourcePath": "packages/theme/src/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -395,10 +373,10 @@
                 "name": "ThemeConfigState",
                 "kind": "interface",
                 "type": "ThemeConfigState",
-                "resolvedType": "{ base?: BaseColorKey; primary?: PrimaryColorKey; feedback?: FeedbackSchemeKey; chart?: ChartSchemeKey; sidebar?: SidebarSchemeKey; sidebarDerive?: boolean; size?: ThemeSizeValue; radius?: ThemeRadiusValue; menuColor?: MenuColor; menuAccent?: MenuAccent; mode?: ThemeModePreference; format?: ColorFormat; lightLevel?: LightLevelOffset; darkLevel?: DarkLevelOffset; borderOpacity?: number; overrides?: ThemeOverrides }",
+                "resolvedType": "{ base?: BaseColorKey; primary?: PrimaryColorKey; feedback?: FeedbackSchemeKey; chart?: ChartSchemeKey; sidebar?: SidebarSchemeKey; sidebarDerive?: boolean; size?: ThemeSizeValue; radius?: ThemeRadiusValue; mode?: ThemeModePreference; format?: ColorFormat; lightLevel?: LightLevelOffset; darkLevel?: DarkLevelOffset; borderOpacity?: number; overrides?: ThemeOverrides }",
                 "description": "the persistable theme config state\n\na subset of `ThemeOptions` that can be safely stored in localStorage, plus\nthe `mode` preference used to toggle the dark mode class before first paint.\nCustom `preset` colors are intentionally not persisted.",
-                "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate",
-                "sourcePath": "packages/theme/dist/storage.d.ts",
+                "descriptionKey": "api.generated.packages_theme_src_storage.themeconfigstate",
+                "sourcePath": "packages/theme/src/storage.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -407,10 +385,10 @@
                     "type": "BaseColorKey",
                     "required": false,
                     "description": "the base color preset key",
-                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.base",
+                    "descriptionKey": "api.generated.packages_theme_src_storage.themeconfigstate.members.base",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "sourcePath": "packages/theme/src/storage.ts",
                     "referencedTypes": []
                   },
                   {
@@ -418,10 +396,10 @@
                     "type": "PrimaryColorKey",
                     "required": false,
                     "description": "the primary color preset key",
-                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.primary",
+                    "descriptionKey": "api.generated.packages_theme_src_storage.themeconfigstate.members.primary",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "sourcePath": "packages/theme/src/storage.ts",
                     "referencedTypes": []
                   },
                   {
@@ -429,10 +407,10 @@
                     "type": "FeedbackSchemeKey",
                     "required": false,
                     "description": "the feedback (status) semantic scheme key",
-                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.feedback",
+                    "descriptionKey": "api.generated.packages_theme_src_storage.themeconfigstate.members.feedback",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "sourcePath": "packages/theme/src/storage.ts",
                     "referencedTypes": []
                   },
                   {
@@ -440,10 +418,10 @@
                     "type": "ChartSchemeKey",
                     "required": false,
                     "description": "the chart (data) semantic scheme key",
-                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.chart",
+                    "descriptionKey": "api.generated.packages_theme_src_storage.themeconfigstate.members.chart",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "sourcePath": "packages/theme/src/storage.ts",
                     "referencedTypes": []
                   },
                   {
@@ -451,10 +429,10 @@
                     "type": "SidebarSchemeKey",
                     "required": false,
                     "description": "the sidebar skin semantic scheme key",
-                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.sidebar",
+                    "descriptionKey": "api.generated.packages_theme_src_storage.themeconfigstate.members.sidebar",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "sourcePath": "packages/theme/src/storage.ts",
                     "referencedTypes": []
                   },
                   {
@@ -462,10 +440,10 @@
                     "type": "boolean",
                     "required": false,
                     "description": "whether to apply a separate sidebar skin from the `sidebar` scheme.",
-                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.sidebarderive",
+                    "descriptionKey": "api.generated.packages_theme_src_storage.themeconfigstate.members.sidebarderive",
                     "default": "true",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "sourcePath": "packages/theme/src/storage.ts",
                     "referencedTypes": []
                   },
                   {
@@ -473,10 +451,10 @@
                     "type": "ThemeSizeValue",
                     "required": false,
                     "description": "the component size / density",
-                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.size",
+                    "descriptionKey": "api.generated.packages_theme_src_storage.themeconfigstate.members.size",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "sourcePath": "packages/theme/src/storage.ts",
                     "referencedTypes": []
                   },
                   {
@@ -484,32 +462,10 @@
                     "type": "ThemeRadiusValue",
                     "required": false,
                     "description": "the border radius",
-                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.radius",
+                    "descriptionKey": "api.generated.packages_theme_src_storage.themeconfigstate.members.radius",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/storage.d.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "menuColor",
-                    "type": "MenuColor",
-                    "required": false,
-                    "description": "the menu color preset key",
-                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.menucolor",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/storage.d.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "menuAccent",
-                    "type": "MenuAccent",
-                    "required": false,
-                    "description": "the menu accent preset key",
-                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.menuaccent",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "sourcePath": "packages/theme/src/storage.ts",
                     "referencedTypes": []
                   },
                   {
@@ -517,10 +473,10 @@
                     "type": "ThemeModePreference",
                     "required": false,
                     "description": "the color scheme preference (`light` / `dark` / `auto`)\n\n`'auto'` follows the OS `prefers-color-scheme`. The effective mode is\napplied as a class on `<html>` (default `'dark'`).",
-                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.mode",
+                    "descriptionKey": "api.generated.packages_theme_src_storage.themeconfigstate.members.mode",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "sourcePath": "packages/theme/src/storage.ts",
                     "referencedTypes": []
                   },
                   {
@@ -528,10 +484,10 @@
                     "type": "ColorFormat",
                     "required": false,
                     "description": "color output format",
-                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.format",
+                    "descriptionKey": "api.generated.packages_theme_src_storage.themeconfigstate.members.format",
                     "default": "'hsl'",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "sourcePath": "packages/theme/src/storage.ts",
                     "referencedTypes": []
                   },
                   {
@@ -539,10 +495,10 @@
                     "type": "LightLevelOffset",
                     "required": false,
                     "description": "light mode darkening offset",
-                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.lightlevel",
+                    "descriptionKey": "api.generated.packages_theme_src_storage.themeconfigstate.members.lightlevel",
                     "default": "0",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "sourcePath": "packages/theme/src/storage.ts",
                     "referencedTypes": []
                   },
                   {
@@ -550,10 +506,10 @@
                     "type": "DarkLevelOffset",
                     "required": false,
                     "description": "dark mode brightening offset",
-                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.darklevel",
+                    "descriptionKey": "api.generated.packages_theme_src_storage.themeconfigstate.members.darklevel",
                     "default": "0",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "sourcePath": "packages/theme/src/storage.ts",
                     "referencedTypes": []
                   },
                   {
@@ -561,10 +517,10 @@
                     "type": "number",
                     "required": false,
                     "description": "the border opacity override (0 - 1)",
-                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.borderopacity",
+                    "descriptionKey": "api.generated.packages_theme_src_storage.themeconfigstate.members.borderopacity",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "sourcePath": "packages/theme/src/storage.ts",
                     "referencedTypes": []
                   },
                   {
@@ -572,10 +528,10 @@
                     "type": "ThemeOverrides",
                     "required": false,
                     "description": "inline color token overrides persisted alongside the config so a theme that\ndiffers only in `overrides` is still reconstructable during SSR.",
-                    "descriptionKey": "api.generated.packages_theme_dist_storage_d.themeconfigstate.members.overrides",
+                    "descriptionKey": "api.generated.packages_theme_src_storage.themeconfigstate.members.overrides",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "packages/theme/dist/storage.d.ts",
+                    "sourcePath": "packages/theme/src/storage.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -599,8 +555,8 @@
                 "type": "{ light: Partial<import(\"@soybeanjs/theme\").ColorTokens>; dark?: Partial<import(\"@soybeanjs/theme\").ColorTokens>; }",
                 "resolvedType": null,
                 "description": "a custom theme color preset (light/dark color token overrides)",
-                "descriptionKey": "api.generated.packages_theme_dist_storage_d.customthemecolorpreset",
-                "sourcePath": "packages/theme/dist/storage.d.ts",
+                "descriptionKey": "api.generated.packages_theme_src_storage.customthemecolorpreset",
+                "sourcePath": "packages/theme/src/storage.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],

@@ -9,8 +9,6 @@ import type {
   ColorValue,
   DarkLevelOffset,
   LightLevelOffset,
-  MenuAccent,
-  MenuColor,
   PrimaryColorKey,
   ThemeOverrides,
   ThemeRadius,
@@ -47,8 +45,6 @@ export function useThemeGenerator(
   const size = ref<ThemeSize>((props.theme?.size ?? fallbackTheme.value.size ?? 'md') as ThemeSize);
   const lightLevel = ref<LightLevelOffset>(props.theme?.lightLevel ?? fallbackTheme.value.lightLevel ?? 0);
   const darkLevel = ref<DarkLevelOffset>(props.theme?.darkLevel ?? fallbackTheme.value.darkLevel ?? 0);
-  const menuColor = ref<MenuColor>(props.theme?.menuColor ?? fallbackTheme.value.menuColor ?? 'default');
-  const menuAccent = ref<MenuAccent>(props.theme?.menuAccent ?? fallbackTheme.value.menuAccent ?? 'subtle');
   const lightTokens = ref<Partial<ColorTokens>>({ ...(props.theme?.overrides?.light ?? fallbackOverrides.light) });
   const darkTokens = ref<Partial<ColorTokens>>({ ...(props.theme?.overrides?.dark ?? fallbackOverrides.dark) });
 
@@ -61,13 +57,9 @@ export function useThemeGenerator(
     if (patch.darkLevel !== undefined) darkLevel.value = patch.darkLevel;
   };
 
-  const patchBase = (
-    patch: Partial<Pick<ConfigProviderThemeOptions, 'radius' | 'size' | 'menuColor' | 'menuAccent'>>
-  ): void => {
+  const patchBase = (patch: Partial<Pick<ConfigProviderThemeOptions, 'radius' | 'size'>>): void => {
     if (patch.radius !== undefined) radius.value = patch.radius as ThemeRadius;
     if (patch.size !== undefined) size.value = patch.size as ThemeSize;
-    if (patch.menuColor !== undefined) menuColor.value = patch.menuColor;
-    if (patch.menuAccent !== undefined) menuAccent.value = patch.menuAccent;
   };
 
   const patchColors = (patch: Partial<Record<ColorKey, ColorValue | ''>>): void => {
@@ -180,8 +172,6 @@ export function useThemeGenerator(
     primary: primary.value,
     radius: radius.value,
     size: size.value,
-    menuColor: menuColor.value,
-    menuAccent: menuAccent.value,
     overrides: {
       light: lightTokens.value,
       dark: darkTokens.value
@@ -204,8 +194,6 @@ export function useThemeGenerator(
     size,
     lightLevel,
     darkLevel,
-    menuColor,
-    menuAccent,
     borderOpacity,
     patchTopLevel,
     patchBase,

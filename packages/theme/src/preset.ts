@@ -14,8 +14,6 @@ import type {
   FeedbackSchemeKey,
   FullThemePreset,
   LightLevelOffset,
-  MenuAccent,
-  MenuColor,
   PrimaryColorKey,
   SemanticScheme,
   SidebarColorValue,
@@ -86,18 +84,6 @@ export interface GenerateThemePresetOptions {
    * @default 'md'
    */
   radius?: ThemeRadiusValue;
-  /**
-   * the menu color preset key
-   *
-   * @default 'default'
-   */
-  menuColor?: MenuColor;
-  /**
-   * the menu accent preset key
-   *
-   * @default 'subtle'
-   */
-  menuAccent?: MenuAccent;
 }
 
 /**
@@ -109,7 +95,7 @@ export interface GenerateThemePresetOptions {
  * - `dark` starts from the built-in dark tokens, then any explicit `overrides.dark`
  *   value wins, and every `overrides.light` key without an explicit dark value
  *   is derived from its light value via `deriveDarkFromLight`;
- * - base tokens (`size`/`radius`/`menuColor`/`menuAccent`) come from the options,
+ * - base tokens (`size`/`radius`) come from the options,
  *   falling back to the engine defaults.
  */
 export function generateThemePreset(options: GenerateThemePresetOptions): FullThemePreset {
@@ -281,9 +267,7 @@ function getBuiltinPreset(options: BuiltinPresetOptions): { light: ColorTokens; 
 function resolveBaseTokens(options: GenerateThemePresetOptions): Required<BaseTokens> {
   return {
     size: options.size ?? DEFAULT_PRESET_OPTIONS.size,
-    radius: options.radius ?? DEFAULT_PRESET_OPTIONS.radius,
-    menuColor: options.menuColor ?? DEFAULT_PRESET_OPTIONS.menuColor,
-    menuAccent: options.menuAccent ?? DEFAULT_PRESET_OPTIONS.menuAccent
+    radius: options.radius ?? DEFAULT_PRESET_OPTIONS.radius
   };
 }
 

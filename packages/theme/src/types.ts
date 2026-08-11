@@ -287,20 +287,6 @@ export type ThemeRadius = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 export type ThemeRadiusValue = ThemeRadius | `${number}px` | `${number}rem`;
 
 /**
- * the menu color preset key
- *
- * Controls menu background style (default, inverted, or translucent variants).
- */
-export type MenuColor = 'default' | 'inverted' | 'default-translucent' | 'inverted-translucent';
-
-/**
- * the menu accent preset key
- *
- * Controls menu item highlight style.
- */
-export type MenuAccent = 'subtle' | 'bold';
-
-/**
  * light mode surface darkening offset
  *
  * - 0: unchanged
@@ -341,18 +327,6 @@ export interface BaseTokens {
    * @default 'md'
    */
   radius?: ThemeRadiusValue;
-  /**
-   * the menu color preset key
-   *
-   * @default 'default'
-   */
-  menuColor?: MenuColor;
-  /**
-   * the menu accent preset key
-   *
-   * @default 'subtle'
-   */
-  menuAccent?: MenuAccent;
 }
 
 /**
@@ -530,18 +504,6 @@ export interface ThemeOptions extends BaseGenerateCSSOptions {
    */
   radius?: ThemeRadiusValue;
   /**
-   * the menu color preset key
-   *
-   * @default 'default'
-   */
-  menuColor?: MenuColor;
-  /**
-   * the menu accent preset key
-   *
-   * @default 'subtle'
-   */
-  menuAccent?: MenuAccent;
-  /**
    * light mode surface darkening offset
    *
    * @default 0
@@ -562,7 +524,7 @@ export interface ThemeOptions extends BaseGenerateCSSOptions {
    * token's own alpha is preserved.
    *
    * @default 1
-   * @range 0 - 1
+   * - range: 0 - 1
    */
   borderOpacity?: number;
 }

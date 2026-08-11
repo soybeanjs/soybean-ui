@@ -89,9 +89,6 @@ export const info = new Command()
         console.log(`  Font heading:   ${config.font.heading}`);
       }
 
-      console.log(`  Menu accent:    ${config.menu.accent}`);
-      console.log(`  Menu color:     ${config.menu.color}`);
-
       if (config.registries && Object.keys(config.registries).length > 0) {
         console.log();
         console.log('  Registries');

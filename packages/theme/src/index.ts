@@ -29,8 +29,6 @@ export type {
   ThemeSizeValue,
   ThemeRadius,
   ThemeRadiusValue,
-  MenuColor,
-  MenuAccent,
   LightLevelOffset,
   DarkLevelOffset,
   BaseTokens,

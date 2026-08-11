@@ -193,8 +193,8 @@ describe('command integration tests', () => {
       const config = await createDefaultConfig(tmpDir);
       await writeConfig(tmpDir, config);
 
-      // "a0" is the default preset code
-      await applyPresetToProject('a0', tmpDir);
+      // "b0" is the default preset code
+      await applyPresetToProject('b0', tmpDir);
 
       const updated = await getConfig(tmpDir);
       expect(updated).not.toBeNull();

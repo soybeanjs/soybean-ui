@@ -9375,7 +9375,7 @@
       "packages_headless_src_types_vue": {
         "baseprops": ""
       },
-      "packages_theme_dist_storage_d": {
+      "packages_theme_src_storage": {
         "customthemecolorpreset": "自定义主题颜色预设（浅色/深色颜色标记覆盖）",
         "themeconfigstate": {
           "members": {
@@ -9386,9 +9386,7 @@
             "feedback": "反馈（状态）语义方案键",
             "format": "颜色输出格式",
             "lightlevel": "浅色模式变暗偏移量",
-            "menuaccent": "菜单重音预设键",
-            "menucolor": "菜单颜色预设键",
-            "mode": "配色方案偏好（`light` / `dark` / `auto`）\n\n`'auto'` 遵循操作系统的 `prefers-color-scheme` 设置。实际模式将\n作为类应用于 `<html>`（默认值为 `'dark'`）。",
+            "mode": "配色方案首选项（`light` / `dark` / `auto`）\n\n`'auto'` 遵循操作系统的 `prefers-color-scheme` 设置。实际模式将\n作为类应用于 `<html>`（默认值为 `'dark'`）。",
             "overrides": "内联颜色标记的覆盖设置会与配置一同保留，因此即使主题\n仅在 `overrides` 方面有所不同，在服务器端渲染（SSR）过程中仍可重建。",
             "primary": "主颜色预设键",
             "radius": "边框半径",
@@ -9398,7 +9396,7 @@
           }
         }
       },
-      "packages_theme_dist_types_d_bayhuw_d": {
+      "packages_theme_src_types": {
         "colorformat": "颜色格式",
         "themecolor": "主题颜色",
         "themesize": "主题字号键\n\n控制根字体大小，并按比例缩放所有基于 rem 的值。\n\n- xs：12px\n- sm：14px\n- md：16px\n- lg：18px\n- xl：20px\n- 2xl：24px"
@@ -10749,8 +10747,6 @@
             "feedback": "反馈（状态）语义方案键",
             "format": "颜色输出格式\n\n- hsl：\"h s l [/ alpha]\"，例如 \"0 0% 100% / 0.1\"\n- oklch：\"oklch(l c h [/ alpha])\"，例如 \"oklch(0 0 0 / 0.1)\"",
             "lightlevel": "浅色模式表面变暗偏移量",
-            "menuaccent": "菜单重音预设键",
-            "menucolor": "菜单颜色预设键",
             "overrides": "对派生令牌应用的内联颜色令牌覆盖规则",
             "preset": "自定义颜色预设：可以是内联的模式分割覆盖（浅色/深色\n部分令牌），也可以是引用存储预设的 `{ name }`。在调用 `createTheme` 之前，该预设会被解析为\n`overrides`。",
             "primary": "主配色方案键",

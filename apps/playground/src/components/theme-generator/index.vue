@@ -20,8 +20,6 @@ import {
   chatColor,
   darkLevels,
   lightLevels,
-  menuAccentOptions,
-  menuColorOptions,
   modeOptions,
   paletteLevels,
   primaryOptions,
@@ -63,8 +61,6 @@ const {
   size,
   lightLevel,
   darkLevel,
-  menuColor,
-  menuAccent,
   borderOpacity,
   patchTopLevel,
   patchBase,
@@ -280,16 +276,6 @@ const {
                   </SSelect>
                 </div>
               </div>
-            </div>
-
-            <div class="space-y-1.5">
-              <SLabel class="text-xs">Menu Color</SLabel>
-              <SSelect v-model="menuColor" :items="menuColorOptions" class="w-full" />
-            </div>
-
-            <div class="space-y-1.5">
-              <SLabel class="text-xs">Menu Accent</SLabel>
-              <SSelect v-model="menuAccent" :items="menuAccentOptions" class="w-full" />
             </div>
           </div>
 

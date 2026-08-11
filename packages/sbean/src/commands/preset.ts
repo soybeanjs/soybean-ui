@@ -23,9 +23,7 @@ async function resolvePresetConfig(presetArg: string): Promise<PresetConfig | nu
       base: content.base ?? 'zinc',
       primary: content.primary ?? 'indigo',
       iconLibrary: content.iconLibrary ?? 'lucide',
-      radius: content.radius ?? 'md',
-      menuAccent: content.menuAccent ?? 'subtle',
-      menuColor: content.menuColor ?? 'default'
+      radius: content.radius ?? 'md'
     };
   } catch {
     return null;
@@ -55,10 +53,6 @@ export async function applyPresetToProject(presetArg: string, cwd: string): Prom
       base: config.base as typeof existingConfig.uno.base,
       primary: config.primary as typeof existingConfig.uno.primary,
       radius: config.radius as typeof existingConfig.uno.radius
-    },
-    menu: {
-      accent: config.menuAccent as 'subtle' | 'bold',
-      color: config.menuColor as 'default' | 'inverted' | 'default-translucent' | 'inverted-translucent'
     }
   };
 
@@ -125,8 +119,6 @@ export const preset = new Command()
         console.log(`  Primary:       ${config.primary}`);
         console.log(`  Icon Library:  ${config.iconLibrary}`);
         console.log(`  Radius:        ${config.radius}`);
-        console.log(`  Menu Accent:   ${config.menuAccent}`);
-        console.log(`  Menu Color:    ${config.menuColor}`);
         console.log();
         console.log(`  Preset code:   ${encodePreset(config)}`);
         console.log();

@@ -24,11 +24,7 @@ describe('config schema', () => {
       primary: 'indigo',
       radius: 'md'
     },
-    font: {},
-    menu: {
-      accent: 'subtle',
-      color: 'default'
-    }
+    font: {}
   };
 
   it('parses a minimal valid config', () => {

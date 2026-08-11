@@ -10,7 +10,9 @@
       "~/*": ["./src/*"],
       "@/*": ["../../packages/ui/src/*"],
       "@playground/*": ["../playground/src/*"],
-      "@soybeanjs/ui": ["../../packages/ui/src/index.ts"]
+      "@soybeanjs/ui": ["../../packages/ui/src/index.ts"],
+      "@soybeanjs/theme": ["../../packages/theme/src/index.ts"],
+      "@soybeanjs/theme/*": ["../../packages/theme/src/*"]
     },
     "types": ["node", "vite/client", "vite-plugin-vue-meta-layouts/client"],
     "resolveJsonModule": true,

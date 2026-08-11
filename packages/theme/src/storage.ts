@@ -14,8 +14,6 @@ import type {
   ColorTokens,
   ColorValue,
   FeedbackSchemeKey,
-  MenuColor,
-  MenuAccent,
   PrimaryColorKey,
   SidebarSchemeKey,
   ThemeModePreference,
@@ -120,14 +118,6 @@ export interface ThemeConfigState {
    */
   radius?: ThemeRadiusValue;
   /**
-   * the menu color preset key
-   */
-  menuColor?: MenuColor;
-  /**
-   * the menu accent preset key
-   */
-  menuAccent?: MenuAccent;
-  /**
    * the color scheme preference (`light` / `dark` / `auto`)
    *
    * `'auto'` follows the OS `prefers-color-scheme`. The effective mode is
@@ -168,8 +158,6 @@ export interface ThemeConfigState {
  */
 export const THEME_STORAGE_KEY = '__SOYBEAN_THEME';
 
-const MENU_COLORS: readonly MenuColor[] = ['default', 'inverted', 'default-translucent', 'inverted-translucent'];
-
 const isBaseKey = (value: unknown): value is BaseColorKey => isRegistryBaseKey(value);
 
 const isPrimaryKey = (value: unknown): value is PrimaryColorKey => isRegistryPrimaryKey(value);
@@ -194,11 +182,6 @@ const isDarkLevel = (value: unknown): value is ThemeConfigState['darkLevel'] =>
   value === 0 || value === 1 || value === 2 || value === 3;
 
 const isBorderOpacity = (value: unknown): value is number => typeof value === 'number' && value >= 0 && value <= 1;
-
-const isMenuColor = (value: unknown): value is MenuColor =>
-  typeof value === 'string' && (MENU_COLORS as readonly string[]).includes(value);
-
-const isMenuAccent = (value: unknown): value is 'subtle' | 'bold' => value === 'subtle' || value === 'bold';
 
 const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
 
@@ -242,8 +225,6 @@ export function parseThemeConfig(raw: string | null | undefined): ThemeConfigSta
     mode,
     size,
     radius,
-    menuColor,
-    menuAccent,
     format,
     lightLevel,
     darkLevel,
@@ -298,12 +279,6 @@ export function parseThemeConfig(raw: string | null | undefined): ThemeConfigSta
   }
   if (typeof radius === 'string') {
     config.radius = radius as ThemeRadiusValue;
-  }
-  if (isMenuColor(menuColor)) {
-    config.menuColor = menuColor;
-  }
-  if (isMenuAccent(menuAccent)) {
-    config.menuAccent = menuAccent;
   }
   if (isFormat(format)) {
     config.format = format;

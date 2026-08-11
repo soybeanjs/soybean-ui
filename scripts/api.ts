@@ -87,12 +87,14 @@ const typedocTsconfig = {
   compilerOptions: {
     paths: {
       '@/*': ['./packages/ui/src/*'],
-      '@soybeanjs/ui': ['./packages/ui/src/index.ts']
+      '@soybeanjs/ui': ['./packages/ui/src/index.ts'],
+      '@soybeanjs/theme': ['./packages/theme/src/index.ts'],
+      '@soybeanjs/theme/*': ['./packages/theme/src/*']
     },
     skipLibCheck: true,
     types: ['vite/client']
   },
-  include: ['packages/ui/src/**/*', 'packages/headless/src/**/*', 'typings/typedoc.d.ts'],
+  include: ['packages/ui/src/**/*', 'packages/headless/src/**/*', 'packages/theme/src/**/*', 'typings/typedoc.d.ts'],
   exclude: ['apps/docs/**/*', 'apps/playground/**/*', 'test/**/*']
 } as const;
 const emptyIgnoredIndexes = Object.freeze([]) satisfies readonly number[];

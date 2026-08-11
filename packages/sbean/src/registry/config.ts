@@ -60,10 +60,6 @@ export const rawConfigSchema = v.object({
     sans: v.optional(v.picklist(PRESET_FONTS)),
     heading: v.optional(v.picklist(['inherit' as const, ...PRESET_FONTS]))
   }),
-  menu: v.object({
-    accent: v.picklist(['subtle', 'bold'] as const),
-    color: v.picklist(['default', 'inverted', 'default-translucent', 'inverted-translucent'] as const)
-  }),
   registries: v.optional(v.record(v.string(), v.string()))
 });
 

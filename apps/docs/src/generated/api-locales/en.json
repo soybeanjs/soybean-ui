@@ -9375,7 +9375,7 @@
       "packages_headless_src_types_vue": {
         "baseprops": ""
       },
-      "packages_theme_dist_storage_d": {
+      "packages_theme_src_storage": {
         "customthemecolorpreset": "a custom theme color preset (light/dark color token overrides)",
         "themeconfigstate": {
           "members": {
@@ -9386,8 +9386,6 @@
             "feedback": "the feedback (status) semantic scheme key",
             "format": "color output format",
             "lightlevel": "light mode darkening offset",
-            "menuaccent": "the menu accent preset key",
-            "menucolor": "the menu color preset key",
             "mode": "the color scheme preference (`light` / `dark` / `auto`)\n\n`'auto'` follows the OS `prefers-color-scheme`. The effective mode is\napplied as a class on `<html>` (default `'dark'`).",
             "overrides": "inline color token overrides persisted alongside the config so a theme that\ndiffers only in `overrides` is still reconstructable during SSR.",
             "primary": "the primary color preset key",
@@ -9398,7 +9396,7 @@
           }
         }
       },
-      "packages_theme_dist_types_d_bayhuw_d": {
+      "packages_theme_src_types": {
         "colorformat": "Color format",
         "themecolor": "Theme color",
         "themesize": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px"
@@ -10749,8 +10747,6 @@
             "feedback": "the feedback (status) semantic scheme key",
             "format": "color output format\n\n- hsl: \"h s l [/ alpha]\", e.g. \"0 0% 100% / 0.1\"\n- oklch: \"oklch(l c h [/ alpha])\", e.g. \"oklch(0 0 0 / 0.1)\"",
             "lightlevel": "light mode surface darkening offset",
-            "menuaccent": "the menu accent preset key",
-            "menucolor": "the menu color preset key",
             "overrides": "inline color token overrides applied on top of the derived tokens",
             "preset": "A custom color preset: either an inline mode-split override (light/dark\npartial tokens) or a `{ name }` reference to a stored preset. Resolved to\n`overrides` before `createTheme`.",
             "primary": "the primary color palette key",

@@ -34,15 +34,6 @@ describe('presetUiUnocss', () => {
     expect(css).toContain('--radius:.5rem');
   });
 
-  it('applies menuColor/menuAccent base tokens to the generated theme CSS', () => {
-    const css = getThemeCss(presetUiUnocss({ uiCSS: true, menuColor: 'inverted', menuAccent: 'bold' }));
-    // menuColor inverted → menu bg resolves to --card
-    expect(css).toContain('--menu-bg:var(--card)');
-    // menuAccent bold → item accent resolves to --primary
-    expect(css).toContain('--menu-item-accent-background');
-    expect(css).toContain('var(--primary)');
-  });
-
   it('falls back to the engine defaults when no base tokens are given', () => {
     const css = getThemeCss(presetUiUnocss({ uiCSS: true }));
     expect(css).toContain('--size:16px');
@@ -57,17 +48,14 @@ describe('presetSbean', () => {
     return dir;
   }
 
-  it('reads the full uno + menu blocks and applies every SbeanUnoConfig item', () => {
+  it('reads the full uno block and applies every SbeanUnoConfig item', () => {
     const dir = withConfig({
-      uno: { base: 'zinc', primary: 'indigo', size: 'lg', radius: 'sm' },
-      menu: { accent: 'bold', color: 'inverted' }
+      uno: { base: 'zinc', primary: 'indigo', size: 'lg', radius: 'sm' }
     });
 
     const css = getThemeCss(presetSbean({ cwd: dir }));
     expect(css).toContain('--size:18px');
     expect(css).toContain('--radius:.5rem');
-    expect(css).toContain('--menu-bg:var(--card)');
-    expect(css).toContain('var(--primary)');
 
     fs.rmSync(dir, { recursive: true, force: true });
   });

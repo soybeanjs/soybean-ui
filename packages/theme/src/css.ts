@@ -7,7 +7,6 @@ import {
   resolveRadiusValue,
   resolveSizeValue
 } from './shared';
-import { menuAccentCss, menuColorCss } from './recipes';
 import type {
   BaseGenerateCSSOptions,
   ColorFormat,
@@ -47,17 +46,6 @@ function generateBaseCss(preset: FullThemePreset, styleTarget: StyleTarget) {
   css += `${styleTarget} {\n`;
   css += `  ${SIZE_VARIABLE}: ${resolveSizeValue(preset.size)};\n`;
   css += `  ${RADIUS_VARIABLE}: ${resolveRadiusValue(preset.radius)};\n`;
-
-  const mCVars = menuColorCss[preset.menuColor];
-  keysOf(mCVars).forEach(varKey => {
-    css += `  ${varKey}: ${mCVars[varKey]};\n`;
-  });
-
-  const aCVars = menuAccentCss[preset.menuAccent];
-  keysOf(aCVars).forEach(varKey => {
-    css += `  ${varKey}: ${aCVars[varKey]};\n`;
-  });
-
   css += `}\n\n`;
 
   return css;

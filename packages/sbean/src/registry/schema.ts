@@ -158,7 +158,7 @@ export const registryItemCommonSchema = v.object({
 // Mirrors the project-config concerns in `rawConfigSchema` (config.ts) but
 // focuses on fields a base item legitimately overrides at bootstrapping time:
 // the UnoCSS theme palette, path aliases, theme package, resolver location,
-// icon library, RTL, and pointer precision. `font`/`menu`/`registries` stay
+// icon library, RTL, and pointer precision. `font`/`registries` stay
 // project-config-only (they are runtime user preferences, not base-item
 // concerns). `registry:base` items carry `deepPartial(sbeanBaseConfigSchema)`
 // so any subset can be declared.

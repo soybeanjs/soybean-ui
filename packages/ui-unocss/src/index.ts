@@ -5,7 +5,7 @@ import type { Preflight, Preset } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
 import { presetAnimations } from 'unocss-preset-animations';
 import { createTheme } from '@soybeanjs/theme';
-import type { BaseTokens, MenuAccent, MenuColor, ThemeOptions } from '@soybeanjs/theme';
+import type { BaseTokens, ThemeOptions } from '@soybeanjs/theme';
 import { transform } from 'lightningcss';
 import globalStyle from './global.css?raw';
 import resetStyle from './reset.css?raw';
@@ -14,7 +14,7 @@ import resetStyle from './reset.css?raw';
  * Options for {@link presetUiUnocss}.
  *
  * Extends the theme options (`base`/`primary`/`lightLevel`/`darkLevel`/etc.)
- * with the base tokens (`size`/`radius`/`menuColor`/`menuAccent`) so a single
+ * with the base tokens (`size`/`radius`) so a single
  * options object can fully drive the generated theme. Base tokens are top-level
  * `ThemeOptions` fields that `createTheme` reads directly.
  */
@@ -103,7 +103,7 @@ export function presetUiUnocss(options?: UiUnocssOptions): Preset<Theme>[] {
         }
 
         if (uiCSS) {
-          // The base tokens (`size`/`radius`/`menuColor`/`menuAccent`) are
+          // The base tokens (`size`/`radius`) are
           // top-level `ThemeOptions` fields, so `createTheme` reads them
           // directly from the options.
           css += createTheme(options);
@@ -363,22 +363,16 @@ export interface SbeanPresetOptions {
  * carry. It is the single source of truth the preset bridge must cover:
  *
  * - theme keys: `base`, `primary`, `lightLevel`, `darkLevel`
- * - base tokens: `size`, `radius`, `menuColor`, `menuAccent`
+ * - base tokens: `size`, `radius`
  *
  * In a generated `sbean.json`, `base`/`primary`/`size`/`radius` live in the
- * `uno` block while `menuColor`/`menuAccent` are stored under the `menu` block
- * (`color`/`accent`); the bridge maps them back into this shape.
+ * `uno` block; the bridge forwards them into this shape.
  */
 interface SbeanUnoConfig extends Pick<ThemeOptions, 'base' | 'primary' | 'lightLevel' | 'darkLevel'>, BaseTokens {}
 
 interface SbeanConfig {
   style?: string;
   uno?: SbeanUnoConfig;
-  /**
-   * Menu surface configuration from `sbean.json`. `accent`/`color` map onto the
-   * `menuAccent`/`menuColor` base tokens.
-   */
-  menu?: { accent?: MenuAccent; color?: MenuColor };
   font?: { sans?: string; heading?: string };
 }
 
@@ -401,8 +395,6 @@ interface SbeanConfig {
  *
  * - `uno.base`, `uno.primary`, `uno.radius`, `uno.size` and the optional
  *   `uno.lightLevel` / `uno.darkLevel` are passed through directly;
- * - `menu.color` / `menu.accent` are mapped onto the `menuColor` / `menuAccent`
- *   base tokens;
  * - `font.*` is resolved through the web font name map.
  *
  * If `sbean.json` is missing or unreadable, it falls back to the default
@@ -423,20 +415,7 @@ export function presetSbean(options?: SbeanPresetOptions): Preset<Theme>[] {
     uiCSS: true
   };
 
-  // ---- 2. `menu` block → menu base tokens -------------------------------
-  // `sbean.json` stores the menu surface under `menu`; map `color`/`accent`
-  // onto the `menuColor`/`menuAccent` base tokens so `createTheme` can apply
-  // them to the generated CSS.
-  if (config?.menu) {
-    if (config.menu.color) {
-      uiUnocssOptions.menuColor = config.menu.color;
-    }
-    if (config.menu.accent) {
-      uiUnocssOptions.menuAccent = config.menu.accent;
-    }
-  }
-
-  // ---- 3. Fonts ---------------------------------------------------------
+  // ---- 2. Fonts ---------------------------------------------------------
   if (config?.font?.sans) {
     const sansName = WEB_FONT_NAMES[config.font.sans] ?? config.font.sans;
     const fonts: UiUnocssOptions['fonts'] = { sans: sansName };
@@ -446,7 +425,7 @@ export function presetSbean(options?: SbeanPresetOptions): Preset<Theme>[] {
     uiUnocssOptions.fonts = fonts;
   }
 
-  // ---- 4. Merge user overrides (take precedence) ------------------------
+  // ---- 3. Merge user overrides (take precedence) ------------------------
   if (options?.overrides) {
     Object.assign(uiUnocssOptions, options.overrides);
   }

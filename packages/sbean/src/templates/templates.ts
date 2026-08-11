@@ -61,11 +61,7 @@ const SBEAN_JSON_CONTENT = `{
     "base": "zinc",
     "primary": "indigo"
   },
-  "font": {},
-  "menu": {
-    "accent": "subtle",
-    "color": "default"
-  }
+  "font": {}
 }
 `;
 

@@ -175,9 +175,7 @@ export function useThemeVariants(options: UseThemeVariantsOptions): UseThemeVari
       darkLevel: resolved.darkLevel,
       overrides: resolved.overrides,
       size: resolved.size,
-      radius: resolved.radius,
-      menuColor: resolved.menuColor,
-      menuAccent: resolved.menuAccent
+      radius: resolved.radius
     });
 
     // dark 层在生成时会被裁剪（与 light 相同的 token 被移除，CSS 由 light 继承），

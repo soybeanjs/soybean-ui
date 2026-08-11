@@ -9,8 +9,6 @@ import type {
   DarkLevelOffset,
   FeedbackSchemeKey,
   LightLevelOffset,
-  MenuAccent,
-  MenuColor,
   PrimaryColorKey,
   SidebarSchemeKey,
   ThemeRadius,
@@ -126,33 +124,10 @@ const borderOpacityValue = computed<number>({
   set: value => settings.setState({ borderOpacity: value })
 });
 
-const menuColorValue = computed<MenuColor>({
-  get: () => settings.state.value.menuColor ?? 'default',
-  set: value => settings.setState({ menuColor: value })
-});
-
-const menuAccentValue = computed<MenuAccent>({
-  get: () => settings.state.value.menuAccent ?? 'subtle',
-  set: value => settings.setState({ menuAccent: value })
-});
-
 const sizeOptions = computed<SelectOptionData<ThemeSize>[]>(() =>
   themeSizeKeys.map(key => ({
     label: resolveOption('size', key),
     value: key
-  }))
-);
-
-const menuColorOptions = computed<SelectOptionData<MenuColor>[]>(() =>
-  (['default', 'inverted', 'default-translucent', 'inverted-translucent'] as MenuColor[]).map(value => ({
-    label: resolveOption('menuColor', value),
-    value
-  }))
-);
-const menuAccentOptions = computed<SelectOptionData<MenuAccent>[]>(() =>
-  (['subtle', 'bold'] as MenuAccent[]).map(value => ({
-    label: resolveOption('menuAccent', value),
-    value
   }))
 );
 
@@ -215,12 +190,20 @@ watch(
 </script>
 
 <template>
-  <div class="min-w-80 max-h-[70vh] space-y-6 p-4 overflow-y-auto">
+  <div class="min-w-80 max-h-[70vh] flex flex-col gap-3">
     <!-- 顶层 Tabs：Theme（常规设置） / Custom（高级自定义） -->
-    <STabs v-model="mainTab" :items="mainTabs" :size="size">
+    <STabs
+      v-model="mainTab"
+      :items="mainTabs"
+      :size="size"
+      :ui="{
+        root: 'grow overflow-auto',
+        content: 'overflow-auto'
+      }"
+    >
       <template #content="{ value: mainValue }">
         <!-- Theme 面板：常规设置 + levels -->
-        <div v-if="mainValue === 'theme'" class="space-y-4 pt-2">
+        <div v-if="mainValue === 'theme'" class="space-y-4 p-2">
           <!-- mode -->
           <SectionItem v-if="sectionVisible('mode')" :title="resolveLabel('mode')">
             <ThemeModeSelect class="w-35" />
@@ -304,20 +287,10 @@ watch(
               </span>
             </div>
           </SectionItem>
-
-          <!-- menu settings -->
-          <SectionItem v-if="sectionVisible('advanced')" :title="resolveLabel('menu')" orientation="vertical">
-            <SectionItem :label="resolveLabel('menuColor')">
-              <SSelect v-model="menuColorValue" :items="menuColorOptions" :size="size" class="w-40" />
-            </SectionItem>
-            <SectionItem :label="resolveLabel('menuAccent')">
-              <SSelect v-model="menuAccentValue" :items="menuAccentOptions" :size="size" class="w-40" />
-            </SectionItem>
-          </SectionItem>
         </div>
 
         <!-- Custom 面板：各 variant 分组平铺，独立选择 light/dark 分片 -->
-        <div v-else class="space-y-4 pt-2">
+        <div v-else class="space-y-4 p-2">
           <template v-if="sectionVisible('advanced')">
             <div class="flex-y-center justify-between">
               <span class="text-xs font-medium text-foreground">{{ resolveLabel('cssVars') }}</span>
@@ -342,7 +315,7 @@ watch(
     </STabs>
 
     <!-- actions -->
-    <section v-if="showActions" class="space-y-3 border-t pt-4">
+    <section v-if="showActions" class="shrink-0 space-y-3 border-t pt-4">
       <SButton :size="size" color="destructive" variant="outline" class="w-full" @click="settings.reset">
         {{ resolveLabel('reset') }}
       </SButton>

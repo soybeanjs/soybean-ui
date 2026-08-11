@@ -109,7 +109,7 @@ onMounted(() => {
       :enable-indicator="false"
       :ui="{
         root: 'md:h-full',
-        list: 'grid grid-cols-10 gap-y-1 lt-sm:grid-cols-3 lt-md:grid-cols-6 lt-lg:grid-cols-8',
+        list: 'grid grid-cols-10 gap-y-1 lt-sm:grid-cols-4 lt-md:grid-cols-5 lt-lg:grid-cols-6',
         content: 'overflow-auto'
       }"
     >

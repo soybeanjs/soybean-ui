@@ -62,8 +62,6 @@ describe('stringifyThemeConfig / parseThemeConfig', () => {
         format: 'oklch',
         lightLevel: 1,
         darkLevel: 2,
-        menuColor: 'inverted',
-        menuAccent: 'bold',
         unknown: 'ignored'
       })
     );
@@ -74,9 +72,7 @@ describe('stringifyThemeConfig / parseThemeConfig', () => {
       mode: 'dark',
       format: 'oklch',
       lightLevel: 1,
-      darkLevel: 2,
-      menuColor: 'inverted',
-      menuAccent: 'bold'
+      darkLevel: 2
     });
   });
 

@@ -14,8 +14,6 @@ import type {
   ColorValue,
   DarkLevelOffset,
   LightLevelOffset,
-  MenuAccent,
-  MenuColor,
   PrimaryColorKey,
   ThemeRadius,
   ThemeSize
@@ -29,8 +27,6 @@ export type SurfaceKey = 'background' | 'card' | 'sidebar';
 // —— 常量 ——
 export const lightLevels: LightLevelOffset[] = [0, 1, 2];
 export const darkLevels: DarkLevelOffset[] = [0, 1, 2, 3];
-export const menuColors: MenuColor[] = ['default', 'inverted', 'default-translucent', 'inverted-translucent'];
-export const menuAccents: MenuAccent[] = ['subtle', 'bold'];
 export const paletteLevels: PaletteColorLevel[] = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
 export const chartKeys: ColorKey[] = ['chart1', 'chart2', 'chart3', 'chart4', 'chart5'];
 
@@ -123,8 +119,6 @@ export const primaryOptions: SelectOptionData<PrimaryColorKey>[] = builtinPrimar
   label: key,
   value: key
 }));
-export const menuColorOptions: SelectOptionData<MenuColor>[] = menuColors.map(m => ({ label: m, value: m }));
-export const menuAccentOptions: SelectOptionData<MenuAccent>[] = menuAccents.map(a => ({ label: a, value: a }));
 
 // —— Radius / Size 离散 token 与索引、标签映射 ——
 export const radiusIndex = (v: ThemeRadius): number => themeRadiusKeys.indexOf(v);

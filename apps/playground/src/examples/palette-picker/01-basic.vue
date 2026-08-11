@@ -4,7 +4,7 @@ import type { ColorValue } from '@soybeanjs/theme';
 import { SPalettePicker } from '@soybeanjs/ui';
 import type { PaletteChangePayload } from '@soybeanjs/ui';
 
-const value = ref<ColorValue>('indigo.500');
+const value = ref<ColorValue>('white');
 const payload = ref<PaletteChangePayload | null>(null);
 </script>
 

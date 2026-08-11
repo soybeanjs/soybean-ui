@@ -30,8 +30,6 @@ export interface ThemeLocaleMessages {
     lightLevel: string;
     darkLevel: string;
     borderOpacity: string;
-    menuColor: string;
-    menuAccent: string;
     cssVars: string;
     reset: string;
   };
@@ -154,16 +152,6 @@ export interface ThemeLocaleMessages {
       soft: string;
       contrast: string;
     };
-    menuColor: {
-      default: string;
-      inverted: string;
-      defaultTranslucent: string;
-      invertedTranslucent: string;
-    };
-    menuAccent: {
-      subtle: string;
-      bold: string;
-    };
   };
   /** Labels used by the `PalettePicker` component. */
   palettePicker: {
@@ -202,8 +190,6 @@ const themeLocaleEn: ThemeLocaleMessages = {
     lightLevel: 'Light Level',
     darkLevel: 'Dark Level',
     borderOpacity: 'Border Opacity',
-    menuColor: 'Menu Color',
-    menuAccent: 'Menu Accent',
     cssVars: 'CSS Variable Theme',
     reset: 'Reset'
   },
@@ -322,16 +308,6 @@ const themeLocaleEn: ThemeLocaleMessages = {
       invertedDark: 'Inverted Dark',
       soft: 'Soft',
       contrast: 'Contrast'
-    },
-    menuColor: {
-      default: 'Default',
-      inverted: 'Inverted',
-      defaultTranslucent: 'Default Translucent',
-      invertedTranslucent: 'Inverted Translucent'
-    },
-    menuAccent: {
-      subtle: 'Subtle',
-      bold: 'Bold'
     }
   },
   palettePicker: {
@@ -367,8 +343,6 @@ const themeLocaleZh: ThemeLocaleMessages = {
     lightLevel: '浅色层级',
     darkLevel: '深色层级',
     borderOpacity: '边框透明度',
-    menuColor: '菜单颜色',
-    menuAccent: '菜单强调色',
     cssVars: 'CSS变量主题',
     reset: '重置'
   },
@@ -487,16 +461,6 @@ const themeLocaleZh: ThemeLocaleMessages = {
       invertedDark: '反转深色',
       soft: '柔和',
       contrast: '高对比'
-    },
-    menuColor: {
-      default: '默认',
-      inverted: '反转',
-      defaultTranslucent: '默认半透明',
-      invertedTranslucent: '反转半透明'
-    },
-    menuAccent: {
-      subtle: '柔和',
-      bold: '粗体'
     }
   },
   palettePicker: {
