@@ -106,7 +106,7 @@ export const { provideCollectionContext, useCollectionContext, useCollectionItem
 export const [provideSelectContentContext, useSelectContentContext] = useContext(
   'SelectContent',
   (params: SelectContentContextParams) => {
-    const { modelValue, isMultiple, popupElement } = params;
+    const { modelValue, isMultiple, popupElement, position } = params;
 
     const isPositioned = shallowRef(false);
 
@@ -157,10 +157,89 @@ export const [provideSelectContentContext, useSelectContentContext] = useContext
       popupElement.value?.focus();
     };
 
+    // Explicitly scroll the selected item fully into view.
+    // If we only rely on the browser's default scrolling behavior (block: nearest) when focusing,
+    // when the selected item is at the end of the list and the viewport is expanded during scrolling,
+    // Here we directly scroll the viewport to the actual position of the selected item.
+    const scrollSelectedItemIntoView = (): void => {
+      const viewport = viewportElement.value;
+      const item = selectedItemElement.value;
+
+      if (!viewport || !item) return;
+
+      const viewportTop = viewport.scrollTop;
+      const viewportBottom = viewportTop + viewport.clientHeight;
+      const itemTop = item.offsetTop;
+      const itemBottom = itemTop + item.offsetHeight;
+
+      if (itemTop < viewportTop) {
+        viewport.scrollTop = itemTop;
+      } else if (itemBottom > viewportBottom) {
+        viewport.scrollTop = itemBottom - viewport.clientHeight;
+      }
+    };
+
+    const isSelectedItemFullyVisible = (): boolean => {
+      const viewport = viewportElement.value;
+      const item = selectedItemElement.value;
+
+      if (!viewport || !item) return true;
+
+      return (
+        item.offsetTop >= viewport.scrollTop &&
+        item.offsetTop + item.offsetHeight <= viewport.scrollTop + viewport.clientHeight
+      );
+    };
+
     function focusSelectedItem() {
       if (!selectedItemElement.value || !popupElement.value) return;
 
       tryFocusFirst([selectedItemElement.value, popupElement.value]);
+
+      // The `item-aligned` positioner already vertically centers the selected item
+      // relative to the trigger via `position()`. Running an edge-aligned scroll here
+      // would override that centering, so only apply it in `popper` mode.
+      if (position.value !== 'popper') return;
+
+      scrollSelectedItemIntoView();
+
+      // During the opening process, the viewport height will dynamically shrink due to the maximum height constraint applied by popper
+      // and the appearance of scroll buttons (e.g., from 285 → 234).
+      // If we only correct it in one scroll, the bottom of the selected item at the end of the list.
+      // Here, we continuously scroll the selected item into view in subsequent animation frames
+      // until the viewport size is stable for several consecutive frames and the selected item is fully visible before stopping, to cover the final size after the animation ends.
+      const viewport = viewportElement.value;
+
+      if (!viewport || typeof requestAnimationFrame === 'undefined') return;
+
+      let stableFrames = 0;
+      let lastHeight = viewport.clientHeight;
+      const startTime = performance.now();
+
+      const tick = (): void => {
+        scrollSelectedItemIntoView();
+
+        const heightChanged = viewport.clientHeight !== lastHeight;
+        const fullyVisible = isSelectedItemFullyVisible();
+        lastHeight = viewport.clientHeight;
+
+        if (heightChanged) {
+          stableFrames = 0;
+        } else if (fullyVisible) {
+          stableFrames += 1;
+        } else {
+          stableFrames = 0;
+        }
+
+        // 尺寸连续 3 帧稳定且选中项完整可见，或超过 500ms 兜底，则停止。
+        if (stableFrames >= 3 || performance.now() - startTime > 500) {
+          return;
+        }
+
+        requestAnimationFrame(tick);
+      };
+
+      requestAnimationFrame(tick);
     }
 
     return {
