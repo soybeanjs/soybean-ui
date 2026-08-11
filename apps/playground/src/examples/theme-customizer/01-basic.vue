@@ -10,7 +10,7 @@ const isMobile = useMediaQuery('(max-width: 768px)');
     <template #trigger>
       <SButtonIcon icon="lucide:settings-2" size="lg" />
     </template>
-    <div class="max-h-[70vh] w-150 overflow-auto p-1">
+    <div class="max-h-[70vh] w-100 overflow-auto p-1">
       <SThemeCustomizer />
     </div>
   </SPopover>
