@@ -18,6 +18,13 @@ export interface TreeVirtualizerProps<
    * Properties forwarded to the dynamic content element.
    */
   dynamicContentProps?: VirtualizerDynamicContentProps;
+  /**
+   * When `true`, enables a smooth height transition on expand/collapse. Sets the
+   * virtualizer to dynamic mode and animates item layout via auto-animate.
+   *
+   * @defaultValue false
+   */
+  animated?: boolean;
 }
 
 /**

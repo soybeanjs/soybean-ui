@@ -69,6 +69,7 @@
 - `toggleBehavior: 'single'` 下展开行为类似手风琴——每次仅保留一个展开分支（`findParentPath` 重建路径）。
 - `loop` 默认 `true`（键盘焦点首尾循环），`STree` 与 `STreeVirtualizer` 均已在包装层镜像该默认，直接使用 headless `TreeRoot` 时无需额外处理。
 - 虚拟滚动需要设置 `height`；`STreeVirtualizer` 的 `item` 插槽额外提供 `virtualItem`（用于 `:data` 透传与绝对定位样式）。
+- `STreeVirtualizer` 提供可选的 `animated` 属性，用于展开/折叠时的平滑高度过渡（切换为 dynamic 模式并通过 auto-animate 动画布局）。默认关闭，因为动态测量对超大数据集开销更重。
 - 节点文本完全由插槽提供，组件内无硬编码文案，因此无需本地化处理。
 
 ## 常见问题

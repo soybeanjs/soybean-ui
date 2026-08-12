@@ -13555,6 +13555,7 @@
         "treevirtualizerprops": {
           "members": {
             "allowparentselect": "当值为 `true` 时，可选中父级。",
+            "animated": "当值为 `true` 时，在展开/折叠时启用平滑的高度过渡。将\nvirtualizer 设置为动态模式，并通过 auto-animate 对项目布局进行动画处理。",
             "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖",
             "aschild": "将默认渲染元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
             "bubbleselect": "当值为 `true` 时，选择子节点将更新父节点的状态。",

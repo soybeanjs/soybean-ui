@@ -68,6 +68,6 @@ provideVirtualizerContext({
     :style="style"
     tabindex="-1"
   >
-    <slot :virtual-items="virtualItems" :items="items" />
+    <slot :virtual-items="virtualItems" :total-size="totalSize" :items="items" />
   </Primitive>
 </template>

@@ -487,7 +487,7 @@
         "kind": "props",
         "name": "TreeVirtualizerProps",
         "type": "Interface TreeVirtualizerProps<T, U, M>",
-        "resolvedType": "{ contentProps?: VirtualizerContentProps; dynamicContentProps?: VirtualizerDynamicContentProps; modelValue?: U; defaultValue?: U; multiple?: IsMultiple<U, M>; items?: T[]; expanded?: string[]; defaultExpanded?: string[]; selectionBehavior?: TreeSelectBehavior; toggleBehavior?: TreeToggleBehavior; dir?: Direction; loop?: boolean; disabled?: boolean; propagateSelect?: boolean; bubbleSelect?: boolean; allowParentSelect?: boolean; asChild?: boolean; as?: AsTag | Component; height: string | number; options?: VirtualizerOptions; dynamic?: boolean }",
+        "resolvedType": "{ contentProps?: VirtualizerContentProps; dynamicContentProps?: VirtualizerDynamicContentProps; animated?: boolean; modelValue?: U; defaultValue?: U; multiple?: IsMultiple<U, M>; items?: T[]; expanded?: string[]; defaultExpanded?: string[]; selectionBehavior?: TreeSelectBehavior; toggleBehavior?: TreeToggleBehavior; dir?: Direction; loop?: boolean; disabled?: boolean; propagateSelect?: boolean; bubbleSelect?: boolean; allowParentSelect?: boolean; asChild?: boolean; as?: AsTag | Component; height: string | number; options?: VirtualizerOptions; dynamic?: boolean }",
         "description": "Properties for the TreeVirtualizer component.",
         "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.props",
         "sourcePath": "packages/ui/src/components/tree/types.ts",
@@ -576,6 +576,17 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "animated",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, enables a smooth height transition on expand/collapse. Sets the\nvirtualizer to dynamic mode and animates item layout via auto-animate.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.animated",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tree/types.ts",
+            "referencedTypes": []
           },
           {
             "name": "modelValue",

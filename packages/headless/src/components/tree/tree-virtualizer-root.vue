@@ -25,16 +25,18 @@ const listeners = useForwardListeners(emit);
 <template>
   <TreeRoot v-slot="{ flattenItems, modelValue, expanded }" v-bind="forwardedProps" as-child v-on="listeners">
     <VirtualizerRoot
-      v-slot="{ virtualItems }"
+      v-slot="{ virtualItems, totalSize }"
       :as="as"
       :as-child="asChild"
       data-soybean-tree-virtualizer-root
       :items="flattenItems"
       :options="options"
       :height="height"
+      :dynamic="dynamic"
     >
       <slot
         :virtual-items="virtualItems"
+        :total-size="totalSize"
         :flatten-items="flattenItems"
         :model-value="modelValue"
         :expanded="expanded"

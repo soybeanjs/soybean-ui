@@ -160,7 +160,7 @@
                     "required": false,
                     "description": "the border (border / input / sidebar-border) opacity multiplier.\n\nScales the alpha channel of the border-family tokens, driving the\n`--border-alpha` / `--input-alpha` / `--sidebar-border-alpha` variables\n(effective alpha = token alpha × borderOpacity). Defaults to `1`, so the\ntoken's own alpha is preserved.",
                     "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderthemeoptions.members.borderopacity",
-                    "default": "1\nrange: 0 - 1",
+                    "default": "1\n- range: 0 - 1",
                     "inheritedFrom": null,
                     "sourcePath": "packages/theme/src/types.ts",
                     "referencedTypes": []

@@ -447,4 +447,23 @@ describe('STreeVirtualizer', () => {
     wrapper.unmount();
     cleanup();
   });
+
+  it('renders virtualized items when animated enables dynamic mode', async () => {
+    const { getInstance, cleanup } = setupVirtualizerResizeObserver();
+    const wrapper = mountVirtualizer({ animated: true });
+
+    getInstance()?.trigger([
+      createMockResizeObserverEntry(wrapper.find('[data-soybean-tree-virtualizer-root]').element, {
+        width: 224,
+        height: 240
+      })
+    ]);
+    await delay(30);
+    await nextTick();
+
+    expect(wrapper.find('[data-soybean-tree-virtualizer-root]').exists()).toBe(true);
+    expect(wrapper.findAll('[data-soybean-tree-item]').length).toBeGreaterThan(0);
+    wrapper.unmount();
+    cleanup();
+  });
 });
