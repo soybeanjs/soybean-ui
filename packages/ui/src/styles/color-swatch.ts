@@ -5,11 +5,11 @@ import type { VariantProps } from '@soybeanjs/cva';
 export const colorSwatchVariants = scv({
   slots: {
     root: [
-      'relative isolate inline-flex shrink-0 overflow-hidden border border-input bg-background shadow-sm',
+      'relative isolate inline-flex shrink-0 overflow-hidden border-2 border-transparent',
       'data-[no-color]:bg-muted/40'
     ],
-    checker: `absolute inset-0 bg-[linear-gradient(45deg,rgba(0,0,0,0.08)_25%,transparent_25%,transparent_75%,rgba(0,0,0,0.08)_75%),linear-gradient(45deg,rgba(0,0,0,0.08)_25%,transparent_25%,transparent_75%,rgba(0,0,0,0.08)_75%)] bg-[length:8px_8px] bg-[position:0_0,4px_4px]`,
-    fill: 'absolute inset-0 bg-[var(--soybean-color-swatch-color)]'
+    checker: `absolute inset-0 bg-[length:8px_8px] bg-[position:0_0,4px_4px]`,
+    fill: 'absolute inset-0 bg-[--soybean-color-swatch-color]'
   },
   variants: {
     size: {

@@ -9,6 +9,7 @@ const value = ref(colors[0]);
 <template>
   <div class="flex flex-col gap-3">
     <SColorSwatchPicker v-model="value" :colors="colors" shape="circle" />
+    <SSeparator />
     <div class="flex items-center gap-2 text-sm text-muted-foreground">
       <SColorSwatch :color="value" />
       <span>{{ value }}</span>
