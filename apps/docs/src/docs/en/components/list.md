@@ -2,11 +2,31 @@
 
 ## Overview
 
-A container for displaying a list of items.
+A semantic container for displaying a vertical list of items. `SList` wraps the headless `ListRoot` (a `<ul>`) with the `listVariants` style recipe (5 slots: root/item/content/title/description; 6 sizes). `SListItem` composes the headless `ListItem`/`ListContent`/`ListTitle`/`ListDescription` primitives into a ready-made title + description row.
+
+Use it for user lists, settings/menu groups, notification feeds, or any simple vertical collection. Prefer `table` for tabular data with columns and sorting, `tree` for hierarchical data, and `select`/`combobox` for selectable option lists.
 
 ## Usage
 
 <UsageCode component="list" />
+
+## Features
+
+- 🧩 Headless/styled split — `SList`/`SListItem` wrap the headless `ListRoot`-family primitives and inject `listVariants` classes only
+- 📋 Semantic markup — renders a real `<ul>`/`<li>` with `data-soybean-list-*` hooks
+- 🏷️ Item composition — `SListItem` renders an optional `title` + `description` block via `title`/`description` props or slots
+- ↔️ Leading / trailing — `leading`/`trailing` slots on `SListItem` for icons, badges, avatars or actions
+- 🎨 6 sizes — xs–2xl `size` matching `ThemeSize`
+- 🎛️ Per-slot control — `contentProps`/`titleProps`/`descriptionProps` forwarded to each item part
+- ♿ Accessible by default — semantic list semantics and zero `axe-core` violations
+
+## Component family
+
+- `SList` (styled) — the list container; `listVariants` root slot
+- `SListItem` (styled) — the item row; composes the headless item/content/title/description parts and exposes `leading`/`trailing`/`title`/`description`/default slots
+- `ListRoot` (headless) — the `<ul>` root
+- `ListItem` (headless) — the `<li>` item
+- `ListContent` / `ListTitle` / `ListDescription` (headless) — the item's content, title and description parts
 
 ## Demos
 
@@ -15,3 +35,81 @@ A container for displaying a list of items.
 ## API
 
 <ComponentApi component="list" />
+
+## Notes
+
+### Architecture and benchmark differences
+
+`SList`/`SListItem` are thin styled wrappers over headless list primitives that keep zero styles; all styling lives in `listVariants`. This mirrors shadcn/ui's headless split, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a config-driven list (`dataSource`/`renderItem`). SoybeanUI deliberately keeps `SList` a presentational container — data iteration stays with the consumer — so very large data is handled by the standalone `virtualizer` component rather than a built-in virtual scroll.
+
+| Capability                | SoybeanUI | shadcn/ui | Ant Design List | Element Plus | Mantine List | Naive UI |
+| :------------------------ | :-------: | :-------: | :-------------: | :----------: | :----------: | :------: |
+| Headless/styled split     |    ✅     |    ✅     |        —        |      —       |      —       |    —     |
+| Semantic `ul`/`li` markup |    ✅     |    ✅     |       ✅        |      ✅      |      ✅      |    ✅    |
+| Title + description item  |    ✅     |     —     |       ✅        |      ✅      |      ✅      |    ✅    |
+| Leading / trailing slots  |    ✅     |     —     |       ✅        |      ✅      |      ✅      |    ✅    |
+| Size variants (6)         |    ✅     |     —     |       ✅        |      ✅      |      ✅      |    ✅    |
+| Built-in virtual scroll   |    ➕     |     —     |       ✅        |      —       |      ✅      |    ✅    |
+
+`—` = unsupported or a different interaction model; `➕` = valuable enhancement (delegated to `virtualizer`).
+
+### Cautions
+
+- `SList` is a presentational container: it does not own data iteration or virtual scrolling. For 1k+ items render the items directly or compose them with the standalone `virtualizer` component.
+- Items render as `<li>` inside a `<ul>`. Keep the direct children list items and avoid nesting full interactive blocks that break list semantics.
+- Use `SListItem` for a title + description row; for a plain list you can also drop raw `<li>` elements into `SList`.
+- The `title` renders as plain text inside `ListTitle` (a styled block, not a heading element); pair it with semantic headings if the content is a document outline.
+
+### Roadmap
+
+A built-in virtualized list or a `dataSource`/`renderItem` config mode is evaluated as an enhancement, delegated to the standalone `virtualizer` today (see `docs/roadmap.md`).
+
+## FAQ
+
+### How do I build a list with title and description items?
+
+Use `SListItem` with `title`/`description`:
+
+```vue
+<SList>
+  <SListItem title="Changelog" description="See what's new in v0.29" />
+  <SListItem title="Guides" description="Step-by-step tutorials" />
+</SList>
+```
+
+### How do I add an icon or avatar to an item?
+
+Use the `leading` slot (and `trailing` for actions):
+
+```vue
+<SListItem title="Jenny" description="Product designer">
+  <template #leading><SAvatar src="/jenny.png" fallback-label="J" /></template>
+  <template #trailing><SIcon icon="lucide:chevron-right" /></template>
+</SListItem>
+```
+
+### How do I change the list size?
+
+Pass `size` (xs–2xl):
+
+```vue
+<SList size="lg">
+  <SListItem title="Large list" />
+</SList>
+```
+
+### How do I render a very large list efficiently?
+
+`SList` is presentational — for 1k+ rows, render items directly or use the standalone `virtualizer` to keep only visible rows in the DOM.
+
+### How do I make an item clickable?
+
+Wrap the clickable surface yourself (a link or `SButton`), since a list item is not interactive by default:
+
+```vue
+<SList>
+  <SListItem title="Open profile">
+    <template #trailing><a href="/profile" class="text-primary">View</a></template>
+  </SListItem>
+</SList>
+```
