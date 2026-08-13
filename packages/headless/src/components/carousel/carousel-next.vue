@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
 import { useOmitProps } from '../../composables';
+import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
 import Button from '../button/button.vue';
+import { VisuallyHidden } from '../visually-hidden';
 import { useCarouselRootContext, useCarouselUi } from './context';
 import type { CarouselNextProps } from './types';
 
@@ -20,8 +22,13 @@ const cls = useCarouselUi('next');
 
 const { canScrollNext, contentId, scrollNext } = useCarouselRootContext('CarouselNext');
 
+const messages = useLocaleMessages();
+
 const disabled = computed(() => props.disabled || !canScrollNext.value);
-const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? 'Next slide');
+const ariaLabel = computed(() => {
+  const label = attrs['aria-label'];
+  return typeof label === 'string' && label.trim() ? label : messages.value.carousel.next;
+});
 
 const onNext = () => {
   scrollNext();
@@ -40,7 +47,7 @@ const onNext = () => {
   >
     <slot>
       <Icon icon="lucide:arrow-right" :aria-hidden="true" />
-      <span class="soybean-headless-sr-only">Next slide</span>
+      <VisuallyHidden feature="fully-hidden">{{ messages.carousel.next }}</VisuallyHidden>
     </slot>
   </Button>
 </template>

@@ -50,6 +50,11 @@ const messages: LocaleMessages = {
     toggle: 'Takvimi aç',
     popupLabel: 'Tarih aralığı seç'
   },
+  carousel: {
+    previous: 'Önceki slayt',
+    next: 'Sonraki slayt',
+    ariaLabel: 'Karusel'
+  },
   cascader: {
     clear: 'Temizle',
     noResults: 'Veri yok',

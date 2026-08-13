@@ -50,6 +50,11 @@ const messages: LocaleMessages = {
     toggle: '달력 열기',
     popupLabel: '날짜 범위 선택'
   },
+  carousel: {
+    previous: '이전 슬라이드',
+    next: '다음 슬라이드',
+    ariaLabel: '캐러셀'
+  },
   cascader: {
     clear: '지우기',
     noResults: '데이터 없음',

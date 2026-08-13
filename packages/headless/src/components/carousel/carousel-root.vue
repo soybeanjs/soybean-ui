@@ -2,6 +2,7 @@
 import { computed, shallowRef, watch, watchEffect, onWatcherCleanup, useAttrs } from 'vue';
 import { useDirection } from '../config-provider/context';
 import { useForwardElement } from '../../composables';
+import { useLocaleMessages } from '../../locale';
 import { provideCarouselRootContext, useCarouselUi } from './context';
 import { useEmblaCarousel } from './hooks';
 import type {
@@ -37,9 +38,16 @@ const carousel = useEmblaCarousel(carouselRef, emblaOptions, emblaPlugins);
 
 const dir = useDirection(() => props.dir);
 
-const ariaLabel = computed(() =>
-  attrs['aria-labelledby'] ? undefined : ((attrs['aria-label'] ?? 'Carousel') as string)
-);
+const messages = useLocaleMessages();
+
+const ariaLabel = computed(() => {
+  if (attrs['aria-labelledby']) {
+    return undefined;
+  }
+
+  const label = attrs['aria-label'];
+  return typeof label === 'string' && label.trim() ? label : messages.value.carousel.ariaLabel;
+});
 const resolvedTabindex = computed(() => props.tabindex ?? 0);
 const canScrollNext = shallowRef(false);
 const canScrollPrev = shallowRef(false);

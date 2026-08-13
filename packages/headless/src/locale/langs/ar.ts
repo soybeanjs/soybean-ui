@@ -50,6 +50,11 @@ const messages: LocaleMessages = {
     toggle: 'فتح التقويم',
     popupLabel: 'اختر نطاق التاريخ'
   },
+  carousel: {
+    previous: 'الشريحة السابقة',
+    next: 'الشريحة التالية',
+    ariaLabel: 'عرض شرائح'
+  },
   cascader: {
     clear: 'مسح',
     noResults: 'لا توجد بيانات',

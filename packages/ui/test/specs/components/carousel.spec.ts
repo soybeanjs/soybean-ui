@@ -135,6 +135,25 @@ describe('SCarousel', () => {
       expect(nextButton.exists()).toBe(true);
       wrapper.unmount();
     });
+
+    it('falls back to localized default labels when no aria-label is provided', async () => {
+      const wrapper = mount(SCarousel, {
+        props: {
+          slides: ['Slide 1', 'Slide 2', 'Slide 3']
+        },
+        slots: {
+          item: ({ slide }) => slide
+        },
+        attachTo: document.body
+      });
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-carousel-root]').attributes('aria-label')).toBe('Carousel');
+      expect(wrapper.find('[data-soybean-carousel-previous]').attributes('aria-label')).toBe('Previous slide');
+      expect(wrapper.find('[data-soybean-carousel-next]').attributes('aria-label')).toBe('Next slide');
+      expect(wrapper.findAll('[data-soybean-visually-hidden]')).toHaveLength(2);
+      wrapper.unmount();
+    });
   });
 
   describe('interaction state', () => {

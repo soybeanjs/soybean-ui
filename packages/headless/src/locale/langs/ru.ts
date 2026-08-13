@@ -50,6 +50,11 @@ const messages: LocaleMessages = {
     toggle: 'Открыть календарь',
     popupLabel: 'Выбрать диапазон дат'
   },
+  carousel: {
+    previous: 'Предыдущий слайд',
+    next: 'Следующий слайд',
+    ariaLabel: 'Карусель'
+  },
   cascader: {
     clear: 'Очистить',
     noResults: 'Нет данных',

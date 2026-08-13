@@ -50,6 +50,11 @@ const messages: LocaleMessages = {
     toggle: '打开日历',
     popupLabel: '选择日期范围'
   },
+  carousel: {
+    previous: '上一张幻灯片',
+    next: '下一张幻灯片',
+    ariaLabel: '轮播图'
+  },
   cascader: {
     clear: '清除',
     noResults: '暂无数据',

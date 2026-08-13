@@ -50,6 +50,11 @@ const messages: LocaleMessages = {
     toggle: 'Abrir calendario',
     popupLabel: 'Elegir rango de fechas'
   },
+  carousel: {
+    previous: 'Diapositiva anterior',
+    next: 'Diapositiva siguiente',
+    ariaLabel: 'Carrusel'
+  },
   cascader: {
     clear: 'Limpiar',
     noResults: 'Sin datos',

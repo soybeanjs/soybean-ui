@@ -32,6 +32,15 @@ export interface LocaleCalendarMessages {
   selectYear: string;
 }
 
+export interface LocaleCarouselMessages {
+  /** Aria-label and default slot content for the "previous slide" button. */
+  previous: string;
+  /** Aria-label and default slot content for the "next slide" button. */
+  next: string;
+  /** Default aria-label for the carousel region when no `aria-label` is provided. */
+  ariaLabel: string;
+}
+
 export interface LocaleCascaderMessages {
   /** Default aria-label for the clear button. */
   clear: string;
@@ -355,6 +364,7 @@ export interface LocaleMessages {
   autocomplete: LocaleAutocompleteMessages;
   breadcrumb: LocaleBreadcrumbMessages;
   calendar: LocaleCalendarMessages;
+  carousel: LocaleCarouselMessages;
   cascader: LocaleCascaderMessages;
   clipboard: LocaleClipboardMessages;
   combobox: LocaleComboboxMessages;

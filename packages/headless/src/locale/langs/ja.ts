@@ -50,6 +50,11 @@ const messages: LocaleMessages = {
     toggle: 'カレンダーを開く',
     popupLabel: '日付範囲を選択'
   },
+  carousel: {
+    previous: '前のスライド',
+    next: '次のスライド',
+    ariaLabel: 'カルーセル'
+  },
   cascader: {
     clear: 'クリア',
     noResults: 'データなし',

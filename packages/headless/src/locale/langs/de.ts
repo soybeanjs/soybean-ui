@@ -50,6 +50,11 @@ const messages: LocaleMessages = {
     toggle: 'Kalender öffnen',
     popupLabel: 'Datumsbereich auswählen'
   },
+  carousel: {
+    previous: 'Vorherige Folie',
+    next: 'Nächste Folie',
+    ariaLabel: 'Karussell'
+  },
   cascader: {
     clear: 'Leeren',
     noResults: 'Keine Daten',

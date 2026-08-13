@@ -50,6 +50,11 @@ const messages: LocaleMessages = {
     toggle: 'Buka kalender',
     popupLabel: 'Pilih rentang tanggal'
   },
+  carousel: {
+    previous: 'Slide sebelumnya',
+    next: 'Slide berikutnya',
+    ariaLabel: 'Korsel'
+  },
   cascader: {
     clear: 'Hapus',
     noResults: 'Tidak ada data',
