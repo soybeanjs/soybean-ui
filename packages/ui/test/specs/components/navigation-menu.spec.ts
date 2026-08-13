@@ -417,6 +417,26 @@ describe('SNavigationMenu', () => {
     });
   });
 
+  describe('ARIA attributes', () => {
+    it('marks triggers with aria-haspopup and reflects aria-expanded', async () => {
+      const wrapper = mount(SNavigationMenu, {
+        props: { items },
+        attachTo: document.body
+      });
+
+      const trigger = wrapper.find('[data-soybean-navigation-menu-trigger]');
+      expect(trigger.attributes('aria-haspopup')).toBe('menu');
+      expect(trigger.attributes('aria-expanded')).toBe('false');
+
+      await trigger.trigger('click');
+      await nextTick();
+
+      expect(trigger.attributes('aria-expanded')).toBe('true');
+
+      wrapper.unmount();
+    });
+  });
+
   describe('hover open/close timing (reka-ui 04799b61)', () => {
     const hoverItems = [
       {

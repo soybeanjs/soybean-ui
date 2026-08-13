@@ -146,6 +146,7 @@ const onVisuallyHiddenFocus = (event: FocusEvent) => {
     :disabled="disabled"
     :data-disabled="disabled ? '' : undefined"
     :data-state="dataState"
+    aria-haspopup="menu"
     :aria-expanded="open"
     :aria-controls="contentId"
     @pointerenter="onPointerEnter"
