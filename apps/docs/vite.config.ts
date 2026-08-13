@@ -35,7 +35,7 @@ export default defineConfig({
     Unocss(),
     AutoImport({
       include: [/\.[jt]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
-      exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /headless[\\/]dist/],
+      exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /headless[\\/]dist/, /ui[\\/]dist/],
       imports: [
         'vue',
         'vue-i18n',

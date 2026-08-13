@@ -143,23 +143,6 @@
       "required": [],
       "description": "Font family configuration for the project."
     },
-    "menu": {
-      "type": "object",
-      "properties": {
-        "accent": {
-          "enum": ["subtle", "bold"],
-          "type": "string",
-          "description": "Menu accent style. \"subtle\" is a gentle highlight; \"bold\" uses stronger colors."
-        },
-        "color": {
-          "enum": ["default", "inverted", "default-translucent", "inverted-translucent"],
-          "type": "string",
-          "description": "Menu color scheme for light/dark mode."
-        }
-      },
-      "required": ["accent", "color"],
-      "description": "Navigation / sidebar menu styling configuration."
-    },
     "registries": {
       "type": "object",
       "propertyNames": {
@@ -173,7 +156,18 @@
     "style": {
       "description": "The design style preset. \"soybean\" is the default — a balanced, modern look. \"clean\" is minimal with sharper corners. \"dense\" is compact for data-heavy interfaces.",
       "default": "soybean"
+    },
+    "menu": {
+      "description": "Navigation / sidebar menu styling configuration.",
+      "properties": {
+        "accent": {
+          "description": "Menu accent style. \"subtle\" is a gentle highlight; \"bold\" uses stronger colors."
+        },
+        "color": {
+          "description": "Menu color scheme for light/dark mode."
+        }
+      }
     }
   },
-  "required": ["iconLibrary", "uno", "font", "menu"]
+  "required": ["iconLibrary", "uno", "font"]
 }
