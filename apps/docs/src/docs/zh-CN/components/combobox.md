@@ -15,7 +15,7 @@
 - 📜 可选虚拟滚动（`ComboboxVirtualizer`）
 - 🗂 分组，支持组标签与分隔符
 - 🧹 取消/清空按钮，可选 `resetModelValueOnClear`
-- 📊 数据驱动 `ComboboxCompact` API——`items` / `labelField` / `valueField` + 分组
+- 📊 数据驱动 `ComboboxCompact` API——`items`（选项使用 `label` / `value` 字段）+ 分组
 - 🎛 受控/非受控，支持 `v-model:open` 与过滤语义（`ignoreFilter`、`resetSearchTermOnBlur`）
 - ♿ 完整无障碍支持——`role="combobox"` / `listbox` / `option`、`aria-activedescendant`、axe 零违规
 

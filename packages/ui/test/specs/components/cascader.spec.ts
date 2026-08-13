@@ -233,6 +233,39 @@ describe('SCascader', () => {
       wrapper.unmount();
     });
 
+    it('reflects the single-selected leaf with aria-selected and data-state', async () => {
+      const wrapper = mount(SCascader, {
+        props: { options },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      await new DOMWrapper(findTreeItem('浙江') as Element).trigger('click');
+      await nextTick();
+      await new DOMWrapper(findTreeItem('宁波') as Element).trigger('click');
+      await nextTick();
+
+      const district = findTreeItem('海曙区');
+      await new DOMWrapper(district as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+      await nextTick();
+
+      // Re-open to inspect the selected treeitem attributes.
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      const selected = findTreeItem('海曙区');
+      expect(selected).toBeTruthy();
+      expect(selected?.getAttribute('aria-selected')).toBe('true');
+      expect(selected?.getAttribute('data-state')).toBe('selected');
+      expect(selected?.getAttribute('data-selected')).toBeDefined();
+
+      wrapper.unmount();
+    });
+
     it('selects a node with ArrowDown + Enter in checkStrictly mode', async () => {
       const wrapper = mount(SCascader, {
         props: {

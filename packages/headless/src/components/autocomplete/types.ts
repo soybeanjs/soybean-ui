@@ -42,6 +42,8 @@ export interface AutocompleteRootProps extends FormFieldCommonProps, BaseProps {
   openOnFocus?: boolean;
   /** Whether to open the autocomplete when the input is clicked. */
   openOnClick?: boolean;
+  /** When `true`, clearing the search term also resets `modelValue` to an empty string. */
+  resetModelValueOnClear?: boolean;
 }
 
 /**

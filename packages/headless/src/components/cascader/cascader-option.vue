@@ -36,6 +36,7 @@ const isLoading = computed(() => loadingKeys.value.has(props.node.uid));
 const isExpanded = computed(() => menus.value[props.node.level + 1] === props.node.children);
 
 const dataState = computed(() => {
+  if (isSelected(props.node)) return 'selected';
   if (isChecked(props.node)) return 'checked';
   if (isIndeterminate(props.node)) return 'indeterminate';
   return 'unchecked';
@@ -94,7 +95,7 @@ function onClick(event: MouseEvent) {
     data-soybean-cascader-option
     :class="cls"
     role="treeitem"
-    :aria-selected="isChecked(node) || undefined"
+    :aria-selected="isSelected(node) || isChecked(node) || undefined"
     :aria-disabled="node.disabled || undefined"
     :aria-expanded="node.isLeaf ? undefined : isExpanded"
     :data-state="dataState"

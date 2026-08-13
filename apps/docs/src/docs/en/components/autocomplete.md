@@ -15,7 +15,7 @@ An autocomplete that filters suggestion items from text input and quickly fills 
 - 🗂 Grouping with group labels, separators, and empty states (no-match / no-data)
 - 🧹 Clearable input (`clearable` → `clearLabel` / `resetModelValueOnClear`)
 - 🎛 `openOnFocus` / `openOnClick` dual open strategy with controlled `v-model:open`
-- 📊 Data-driven `AutocompleteCompact` API — `items` / `labelField` + grouping
+- 📊 Data-driven `AutocompleteCompact` API — `items` (options use `label` / `value` fields) + grouping
 - ♿ WAI-ARIA combobox pattern — `role="combobox"` / `listbox` / `option`, `aria-activedescendant`, axe-clean when open
 - 🎨 17 recipe slots and 7 size variants via `autocompleteVariants`
 

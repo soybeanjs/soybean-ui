@@ -15,7 +15,7 @@ A combobox for searching and selecting values from an option list, with an expli
 - 📜 Optional virtual scrolling (`ComboboxVirtualizer`)
 - 🗂 Grouping with group labels and separators
 - 🧹 Cancel/clear button with optional `resetModelValueOnClear`
-- 📊 Data-driven `ComboboxCompact` API — `items` / `labelField` / `valueField` + grouping
+- 📊 Data-driven `ComboboxCompact` API — `items` (options use `label` / `value` fields) + grouping
 - 🎛 Controlled / uncontrolled with `v-model:open` and filter semantics (`ignoreFilter`, `resetSearchTermOnBlur`)
 - ♿ Full accessibility support — `role="combobox"` / `listbox` / `option`, `aria-activedescendant`, axe-clean
 

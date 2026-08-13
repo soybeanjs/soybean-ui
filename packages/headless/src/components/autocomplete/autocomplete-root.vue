@@ -22,7 +22,8 @@ const props = withDefaults(defineProps<AutocompleteRootProps>(), {
   defaultOpen: false,
   highlightOnHover: true,
   openOnFocus: false,
-  openOnClick: false
+  openOnClick: false,
+  resetModelValueOnClear: true
 });
 
 const emit = defineEmits<AutocompleteRootEmits>();
@@ -35,7 +36,7 @@ defineSlots<{
 
 const forwardedProps = useOmitProps(
   props,
-  ['modelValue', 'defaultValue', 'open', 'defaultOpen', 'openOnClick', 'openOnFocus'],
+  ['modelValue', 'defaultValue', 'open', 'defaultOpen', 'openOnClick', 'openOnFocus', 'resetModelValueOnClear'],
   attrs
 );
 
@@ -69,7 +70,7 @@ const isVirtual = shallowRef(false);
 const resetSearchTermOnBlur = computed(() => false);
 const resetSearchTermOnSelect = computed(() => false);
 const ignoreFilter = computed(() => true);
-const resetModelValueOnClear = computed(() => true);
+const resetModelValueOnClear = computed(() => props.resetModelValueOnClear ?? true);
 
 const inputElement = shallowRef<HTMLInputElement>();
 const triggerElement = shallowRef<HTMLElement>();

@@ -10,7 +10,7 @@ Displays a list of options for the user to pick from, triggered by a button. The
 
 ## Features
 
-- 📊 Data-driven `SelectCompact` API — pass `items` with `labelField` / `valueField`
+- 📊 Data-driven `SelectCompact` API — pass `items` (options use `label` / `value` fields)
 - ⌨️ Full combobox interaction — pointer/keyboard open, Arrow/Home/End navigation, typeahead search, Enter/Space select, Escape close
 - 🗂 Grouping with group labels, separators, and item indicators
 - ✅ `multiple` selection with accumulation and deduplication

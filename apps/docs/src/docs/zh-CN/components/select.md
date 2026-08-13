@@ -10,7 +10,7 @@
 
 ## 特性
 
-- 📊 数据驱动 `SelectCompact` API——传 `items`，配合 `labelField` / `valueField`
+- 📊 数据驱动 `SelectCompact` API——传 `items`（选项使用 `label` / `value` 字段）
 - ⌨️ 完整 combobox 交互——指针/键盘打开、Arrow/Home/End 导航、typeahead 搜索、Enter/Space 选择、Escape 关闭
 - 🗂 分组，支持组标签、分隔符与条目指示器
 - ✅ `multiple` 多选，累积与去重
