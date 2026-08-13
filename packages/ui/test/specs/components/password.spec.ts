@@ -209,6 +209,42 @@ describe('SPassword', () => {
 
       wrapper.unmount();
     });
+
+    it('starts visible when defaultVisible is true', () => {
+      const wrapper = mount(SPassword, {
+        props: { defaultVisible: true },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('input').attributes('type')).toBe('text');
+      expect(wrapper.find('[data-soybean-password-visible]').attributes('aria-pressed')).toBe('true');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('autocomplete', () => {
+    it('passes current-password through to the input', () => {
+      const wrapper = mount(SPassword, {
+        props: { autocomplete: 'current-password' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('input').attributes('autocomplete')).toBe('current-password');
+
+      wrapper.unmount();
+    });
+
+    it('passes new-password through to the input', () => {
+      const wrapper = mount(SPassword, {
+        props: { autocomplete: 'new-password' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('input').attributes('autocomplete')).toBe('new-password');
+
+      wrapper.unmount();
+    });
   });
 
   describe('clear trigger', () => {

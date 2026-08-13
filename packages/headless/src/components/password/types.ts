@@ -38,6 +38,12 @@ export interface PasswordCompactProps extends InputCompactProps {
    */
   visible?: boolean;
   /**
+   * The initial visibility state when it is not controlled.
+   *
+   * @defaultValue false
+   */
+  defaultVisible?: boolean;
+  /**
    * Properties forwarded to the visible element.
    */
   visibleProps?: ButtonProps;

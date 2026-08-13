@@ -15,7 +15,8 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<PasswordCompactProps>(), {
-  visible: undefined
+  visible: undefined,
+  defaultVisible: false
 });
 
 const emit = defineEmits<PasswordCompactEmits>();
@@ -38,7 +39,7 @@ const visible = useControllableState(
   value => {
     emit('update:visible', value);
   },
-  false
+  props.defaultVisible
 );
 
 const ui = usePasswordUi();

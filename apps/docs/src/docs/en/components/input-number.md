@@ -13,7 +13,7 @@ A numeric input field that only accepts numeric values, with increment/decrement
 - 📏 6 sizes: xs, sm, md, lg, xl, 2xl
 - 🎚 Step buttons with press-and-hold acceleration (400ms → 60ms loop)
 - ⌨️ Full keyboard support — Arrow keys, Page Up/Down, Home/End, Enter, wheel
-- ⚖️ `min` / `max` clamping with disabled buttons at boundaries, `step`, `precision`
+- ⚖️ `min` / `max` clamping with disabled buttons at boundaries, `step`, `formatOptions` precision
 - 🌐 Locale-aware formatting via `Intl.NumberFormat`
 - 🧹 Clearable mode with an i18n `aria-label` clear button
 - 📋 Native form submission via a proxied hidden input when `name` is set
@@ -60,7 +60,7 @@ Pass `min` and `max`. Values are clamped on change, and the increment/decrement 
 
 ### How do I control the number of decimal places?
 
-Pass `precision`. Formatting and step calculation respect the configured precision.
+Control the number of decimal places via `formatOptions.maximumFractionDigits` (for example `{ maximumFractionDigits: 2 }`). Formatting and step calculation respect the configured precision.
 
 ### How does keyboard entry work?
 

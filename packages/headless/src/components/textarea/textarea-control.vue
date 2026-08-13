@@ -22,7 +22,7 @@ const onInput = (event: Event) => {
 };
 
 watch(
-  modelValue,
+  [modelValue, autosizeOptions],
   async () => {
     if (!autosizeOptions.value) return;
 

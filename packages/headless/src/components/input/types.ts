@@ -11,9 +11,35 @@ export interface InputBaseProps {
   /** When `true`, the input is auto-focused. */
   autofocus?: boolean;
   /**
-   * The autocomplete attribute of the input
+   * The autocomplete attribute of the input.
+   *
+   * Supports the HTML autofill tokens (including password-manager values such as
+   * `current-password` / `new-password`), in addition to the `on` / `off` switches.
    */
-  autocomplete?: 'on' | 'off';
+  autocomplete?:
+    | 'on'
+    | 'off'
+    | 'username'
+    | 'current-password'
+    | 'new-password'
+    | 'one-time-code'
+    | 'email'
+    | 'tel'
+    | 'name'
+    | 'given-name'
+    | 'family-name'
+    | 'organization'
+    | 'street-address'
+    | 'address-level2'
+    | 'postal-code'
+    | 'country'
+    | 'cc-name'
+    | 'cc-number'
+    | 'cc-exp'
+    | 'cc-csc'
+    | 'transaction-amount'
+    | 'url'
+    | 'search';
   /** When `true`, prevents the user from interacting with the input. */
   disabled?: boolean;
   /** The maximum number of characters allowed in the input */
