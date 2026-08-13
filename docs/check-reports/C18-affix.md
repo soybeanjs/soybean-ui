@@ -1,10 +1,10 @@
 # C18 `affix` 检查优化报告
 
-> **组件编号：** C18
-> **组件名称：** `affix` / `SAffix`
-> **模式：** 多槽 + Compact（`scv()` 配方 `affixVariants`，3 slots：root / placeholder / content；headless `AffixCompact` 聚合 Root + Placeholder + Content）
+> **组件编号：** C18（`affix`）
+> **组件名称：** `SAffix`（headless 基座：`AffixRoot`/`AffixPlaceholder`/`AffixContent` + `AffixCompact` 聚合）
+> **模式：** 多槽（Compact 聚合）
 > **优先级：** P3
-> **检查日期：** 2026-08-02
+> **检查日期：** 2026-08-13
 > **方法论：** [audit.md](../../.agents/skills/soybean-ui-component-development/audit.md) D1–D7
 > **重点项：** D1-09、D7-04
 
@@ -12,127 +12,64 @@
 
 ## 一、执行摘要
 
-对 `SAffix` 完成全维度审计。组件架构清晰：headless 层拥有 5 个 SFC（`AffixRoot` / `AffixPlaceholder` / `AffixContent` / `AffixCompact` + `context.ts` + `shared.ts` 纯函数），`AffixRoot` 通过 `useRafFn({ immediate: false, once: true })` 帧合并节流测量，`useResizeObserver` 观察 root/content，scroll/touch 监听器经 `onWatcherCleanup` 动态绑定到解析后的目标，`isZeroRect` 零尺寸保护，`defineExpose` 暴露命令式 API。styled 层使用 `scv()` 3 槽配方（content 槽 `data-[state=fixed]:z-50`）。
+对 `affix` 完成全维度审计。组件为「多槽 + Compact」模式：headless `AffixCompact` 聚合 `AffixRoot`（状态与测量）/`AffixPlaceholder`（隐藏占位保留空间）/`AffixContent`（固定内容）；`AffixRoot` 基于 `@vueuse/core`（`useRafFn`/`useEventListener`/`useResizeObserver`）测量占位/目标 rect，计算 `top`/`bottom` 固定样式，输出 `data-state="fixed|static"` 与 `change` 事件。UI 层 `SAffix` 仅做配方（`content` class）与 `change` 事件转发。
 
-审计未发现逻辑 bug；主要问题为文档缺失（D6）与测试覆盖不足（D7）。测试从 9 项扩展到 15 项。
+**发现：无缺陷**（本次审计未发现需修复的功能/规范问题，全部维度通过）：
 
-|    维度     | 状态 | 说明                                                                                                                                                                                                 |
-| :---------: | :--: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| D1 功能合规 |  ✅  | 多槽 + Compact；`scv()` `// @unocss-include`；`useOmitProps` 含 `class`；`data-soybean-affix-*` 全覆盖；占位 `role="presentation"` + `aria-hidden`；`data-state="fixed\|static"`                     |
-| D2 行业对标 |  ✅  | offsetTop/offsetBottom 双方向固定 + 自定义 target（元素/选择器/window）+ 占位保留 + change 状态事件 + rAF 节流 + 触摸事件 + 动态目标切换 + 零尺寸保护，与 Ant Design / Element Plus 对标             |
-| D3 API 设计 |  ✅  | `offsetTop`/`offsetBottom`/`target?: AffixTarget\|null` + `placeholderProps`/`contentProps` 透传 + `change` 事件 + `defineExpose`（`affixed`/`updatePosition`）；`internalOffsetTop` 默认 0 逻辑清晰 |
-| D4 类型系统 |  ✅  | strict 通过；`AffixTarget = string \| Window \| HTMLElement`；`AffixRootContext` 全 `ShallowRef`/`ComputedRef` 类型；`AffixUiSlot` 3 槽；JSDoc 齐全                                                  |
-| D5 代码规范 |  ✅  | `useOmitProps` + `useForwardElement` + `useForwardListeners`；`shallowRef` + `computed`；`onWatcherCleanup` 监听清理；`onBeforeUnmount` 取消 rAF；`isZeroRect` 防御                                  |
-|   D6 文档   |  ✅  | 中英文统一；新增 Features（11 条）+ Notes（架构对标表 11 维度 + 运行时注意事项 6 条）+ FAQ（7 条），保留 Headless 组合章节                                                                           |
-|   D7 其他   |  ✅  | 15 项单元测试通过；性能（`useRafFn` 帧合并 + `shallowRef` + 无 deep watch）；SSR 安全（`getDefaultTarget`/`queryTargetSelector`/`measurePosition` 三重守卫，setup 无 DOM 访问）                      |
+|    维度     | 状态 |                                                                                                                                                                                     说明                                                                                                                                                                                     |
+| :---------: | :--: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| D1 功能合规 |  ✅  |                                                              多槽 + Compact 正确：Compact 聚合下沉至 headless；`offsetTop`/`offsetBottom` 固定、自定义 `target`（元素/选择器/window）、占位保留、`data-state` 反射、零尺寸保护、rAF 节流、动态目标切换、命令式 API（`affixed`/`updatePosition()`）完整（D1-09）                                                              |
+| D2 行业对标 |  ✅  |                                                                         对标 Ant Design `Affix` 与 Element Plus `Affix`：SoybeanUI 覆盖 `offsetTop`/`offsetBottom`、自定义 target、占位保留、`change` 状态切换事件、rAF 节流测量、触摸事件、动态目标切换、命令式 API；增量为零尺寸保护与 SSR 全守卫                                                                          |
+| D3 API 设计 |  ✅  |                                                        `offsetTop`/`offsetBottom`/`target`、`change` 事件与主流库命名一致；`AffixTarget = string \| Window \| HTMLElement` 灵活；`AffixCompactProps` 提供 `placeholderProps`/`contentProps` 区域透传；`AffixRootProps` 用 `Omit<BaseProps,'onChange'>` 避免与事件冲突                                                        |
+| D4 类型系统 |  ✅  |                            `AffixRootProps`/`AffixPlaceholderProps`/`AffixContentProps`/`AffixCompactProps` 层级清晰；`AffixRootContext`（`affixed`/`affixStyle`/`placeholderStyle`/`dataState`/`updatePosition`）用 `ShallowRef`+`ComputedRef` 精确刻画；`AffixUiSlot`（root/placeholder/content）用 `UiClass<T>`；JSDoc 覆盖全部 props 及默认值                            |
+| D5 代码规范 |  ✅  | `eslint` 0 errors；`useOmitProps` 含 `class`；headless 用 `shallowRef`（`affixed`/`affixStyle`/`placeholderStyle`/`resolvedTarget`）+ `computed`（`dataState`/`internalOffsetTop`）保持响应式；测量/目标解析提取为纯函数（`shared.ts`：`getDefaultTarget`/`resolveAffixTarget`/`getTargetRect`/`getFixedTop`/`getFixedBottom`/`isZeroRect`）；监听用 `onWatcherCleanup` 清理 |
+|   D6 文档   |  ✅  |                                              en/zh 文档结构完全对齐（Overview/Features/Usage/Demos/API/Notes/FAQ + Headless 组合示例）；Notes 含架构对标表（11 关注点 × 3 库）+ 6 条运行时注意 + FAQ 7 组 + 组合代码示例；`Features` 覆盖顶/底固定/自定义目标/占位/响应式/零尺寸/宽度保留/rAF/动态目标/命令式 API/SSR/headless                                               |
+|   D7 其他   |  ✅  |                                  15 项单测通过（rendering/affixed state/change 事件/placeholder/default offset/resize/unmount safety/a11y）；data 属性遵循 D1-07（`data-soybean-affix-root` + `data-state`）；SSR 无顶层 `window`/`document` 访问（`getDefaultTarget`/`queryTargetSelector`/`measurePosition` 均守卫）（D7-04）；axe 无违规                                  |
 
 ---
 
 ## 二、行业对标矩阵
 
-| 能力                  |         SoybeanUI         | Ant Design `Affix` | Element Plus `Affix` |
-| :-------------------- | :-----------------------: | :----------------: | :------------------: |
-| headless/styled 分离  |            ✅             |         —          |          —           |
-| 固定顶部 / 底部       |            ✅             |         ✅         |          ✅          |
-| 自定义 target         | ✅ 元素 / 选择器 / window |  ✅ `target` 函数  |   ✅ `target` 函数   |
-| 占位保留              |            ✅             |         ✅         |          ✅          |
-| `change` 状态切换事件 |            ✅             |         ✅         |          ✅          |
-| rAF 节流测量          |            ✅             |         ✅         |          ✅          |
-| 触摸事件              |            ✅             |         ✅         |          —           |
-| 动态目标切换          |            ✅             |         ✅         |          ✅          |
-| 零尺寸保护            |            ✅             |         —          |          —           |
-| 命令式 API            |            ✅             |         ✅         |          —           |
-| SSR 安全              |            ✅             |        部分        |         部分         |
+> `affix` 是**滚动固定容器**模式。Ant Design `Affix` 与 Element Plus `Affix` 为直接对标对象。
+
+| 能力              | SoybeanUI | Ant Design `Affix` | Element Plus `Affix` |
+| :---------------- | :-------: | :----------------: | :------------------: |
+| Headless/样式分离 |    ✅     |         ❌         |          ❌          |
+| 固定顶部 / 底部   |    ✅     |         ✅         |          ✅          |
+| 自定义 target     |    ✅     |         ✅         |          ✅          |
+| 占位保留          |    ✅     |         ✅         |          ✅          |
+| `change` 状态事件 |    ✅     |         ✅         |          ✅          |
+| rAF 节流测量      |    ✅     |         ✅         |          ✅          |
+| 触摸事件          |    ✅     |         ✅         |          —           |
+| 动态目标切换      |    ✅     |         ✅         |          ✅          |
+| 零尺寸保护        |    ✅     |         —          |          —           |
+| 命令式 API        |    ✅     |         ✅         |          —           |
+| SSR 安全          |    ✅     |        部分        |         部分         |
+
+`—` = 不支持或采用不同交互模型。
 
 ---
 
 ## 三、发现的问题与处理
 
-### 3.1 Major — 文档缺少 Features / Notes / FAQ（已修复，D6-02 / D6-03 / D6-10 / D6-11 / D6-15）
+### 3.1 核查结论（无缺陷）
 
-**问题：** 中英文文档仅有 Overview / Usage / Demos / API / Headless Composition，缺少 Features、Notes（架构对标 + 运行时注意事项）、FAQ。
+本次审计对 `affix` 未发现需修复的功能、规范或类型问题，全部 D1–D7 维度通过。核查要点：
 
-**修复：** 在中英文文档中新增：
-
-- **Features**：11 条（固定顶部或底部 / 自定义滚动目标 / 占位保留 / 响应式状态 / 零尺寸保护 / 宽度与 left 保留 / rAF 节流 / 动态目标切换 / 命令式 API / SSR 安全 / Headless 组合）
-- **Notes → 架构与对标**：11 维度对比表（含 Ant Design Affix、Element Plus Affix）
-- **Notes → 运行时注意事项**：6 条（偏移计算 / 零尺寸保护 / rAF 合并 / 监听器生命周期 / internalOffsetTop / 目标缺失）
-- **FAQ**：7 条（固定时机 / 自定义容器 / 宽度保留 / change 频率 / 占位播报 / 编程定位 / SSR）
-
-### 3.2 Minor — 测试覆盖不足（已修复，D7）
-
-**问题：** 9 项测试未覆盖 `change` 事件去重（状态不切换不触发）、占位条件渲染（静态时无占位）、默认 offsetTop=0（无 offset 固定到目标顶部）、resize 后 width 更新、卸载后监听器清理。
-
-**修复：** 新增 6 项测试套件（15 项总计）：
-
-- `change event`：状态切换去重 + 解除固定时 emit `false`
-- `placeholder`：仅 affixed 时渲染（静态时不渲染，fixed 时 `aria-hidden` + width 保留）
-- `default offset`：无 offset 时固定到目标顶部 `top: 50px`
-- `resize`：window resize 后固定宽度更新（120px → 200px）
-- `unmount safety`：卸载后目标 dispatch scroll 不抛错
+- **D1-09 功能完整性**：`getFixedTop`/`getFixedBottom` 纯函数按目标 rect 计算阈值；`change` 事件仅在状态切换时发出（`affixed.value !== nextAffixed` 判定）；`internalOffsetTop` 在未提供偏移时默认 `0`。
+- **D5 性能/健壮性**：`useRafFn({ immediate: false, once: true })` 每帧最多测量一次，避免滚动突发时布局抖动；scroll/touch 监听绑定解析后的目标并随 `target` 变化通过 `onWatcherCleanup` 解绑；`load`/`pageshow`/`resize` 绑定 `window`；卸载时全部移除。
+- **D7-04 SSR**：`getDefaultTarget`（`window` 守卫）、`queryTargetSelector`（`document` 守卫 + try/catch）、`measurePosition`（`typeof window === 'undefined'` 短路）均安全。
+- **D7 a11y**：占位节点 `role="presentation"` + `aria-hidden="true"`（对辅助技术不可见，仅保留布局空间）；axe 无违规。
 
 ---
 
-## 四、重点检查项结论
+## 四、验证
 
-| 检查项             | 结论 | 证据                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| :----------------- | :--: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **D1-09** 状态事件 |  ✅  | `measurePosition` 中 `if (affixed.value !== nextAffixed) emit('change', nextAffixed)`（仅状态切换触发，重复测量不触发）；`resetPosition` 仅在已固定时 `emit('change', false)`（初始 static 无噪音）；`data-state` computed 输出 `fixed\|static`；占位 `v-if="affixed"` 条件渲染（[affix-placeholder.vue](file:///Users/soybean/Web/Projects/SoybeanJS/soybean-ui/packages/headless/src/components/affix/affix-placeholder.vue#L18)） |
-| **D7-04** SSR 安全 |  ✅  | `getDefaultTarget()` 检查 `typeof window === 'undefined'`；`queryTargetSelector()` 检查 `typeof document === 'undefined'` 且 try/catch 包裹；`measurePosition` 开头 `typeof window === 'undefined'` 守卫；setup 中 `resolveAffixTarget` 内部全部守卫；`useEventListener` 在 target 为 null 时自动忽略（SSR 下 `getDefaultTarget` 返回 null）                                                                                         |
-| **D7-02** 性能     |  ✅  | `useRafFn({ immediate: false, once: true })` 滚动/touch/resize 帧合并（每帧最多一次 `measurePosition`）；全 `shallowRef`；`computed` 缓存派生值；无 deep watch；`onWatcherCleanup` 目标切换时清理旧监听；`onBeforeUnmount` 调用 `cancelUpdatePosition`                                                                                                                                                                               |
+- `pnpm --filter @soybeanjs/ui exec vitest run test/specs/components/affix.spec.ts`：**15 项全部通过**（rendering/affixed state/change 事件/placeholder/default offset/resize/unmount safety/a11y）。
+- 本次仅生成检查报告（`*.md`），无源码/类型/测试变更，`pnpm typecheck` 与 lint 不受影响（与既有基线一致）。
 
----
+## 五、遗留增强项（非阻塞，排期）
 
-## 五、架构亮点
-
-### 测量流程（`affix-root.vue`）
-
-1. `resolvedTarget` 通过 `resolveAffixTarget` 解析（元素 / 选择器 / window，SSR 安全）。
-2. `measurePosition` 读取占位元素 rect → `isZeroRect` 零尺寸保护 → `getFixedTop` / `getFixedBottom` 计算固定偏移 → 组装 `affixStyle`（`position: fixed` + `left` + `width` ± `top`/`bottom`）与 `placeholderStyle`（`height` + `width`）。
-3. `useRafFn` 帧合并所有触发源（scroll / touch / resize / load / pageshow / ResizeObserver）。
-4. `data-state` 与 `change` 事件仅在状态切换时更新。
-
-### 固定数学（`shared.ts`）
-
-- `getFixedTop(placeholderRect, targetRect, offsetTop)`：`targetRect.top > placeholderRect.top - offsetTop` 时返回 `offsetTop + targetRect.top`。
-- `getFixedBottom(placeholderRect, targetRect, offsetBottom)`：`targetRect.bottom < placeholderRect.bottom + offsetBottom` 时返回 `offsetBottom + (window.innerHeight - targetRect.bottom)`。
-- `isZeroRect`：rect 全零时跳过定位，避免错误固定。
-
-### 监听器生命周期
-
-- `watch(resolvedTarget)` + `onWatcherCleanup`：目标变化时解绑旧监听、绑定新监听（scroll / touchstart / touchmove / touchend）。
-- `useEventListener(getDefaultTarget, ...)`：window 级 `load` / `pageshow` / `resize` 常驻监听。
-- `useResizeObserver(rootElement / contentElement)`：占位与内容尺寸变化时重新测量。
-
----
-
-## 六、变更文件清单
-
-| 文件                                              | 变更类型                                                                                                                        |
-| :------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------ |
-| `packages/ui/test/specs/components/affix.spec.ts` | 从 9 项扩展到 15 项（change 事件去重 / 解除固定 emit false / 占位条件渲染 / 默认 offsetTop=0 / resize 宽度更新 / 卸载监听清理） |
-| `apps/docs/src/docs/en/components/affix.md`       | 新增 Features（11 条）+ Notes（架构对标表 11 维度 + 运行时注意事项 6 条）+ FAQ（7 条），保留 Headless Composition               |
-| `apps/docs/src/docs/zh-CN/components/affix.md`    | 新增功能（11 条）+ 注意事项（架构对标表 11 维度 + 运行时注意事项 6 条）+ 常见问题（7 条），保留 Headless 组合                   |
-| `docs/check.md`                                   | 标记 C18 各维度为 ✅                                                                                                            |
-
----
-
-## 七、验证命令
-
-```bash
-# 单元测试（15 项全通过）
-cd packages/ui && pnpm exec vitest run test/specs/components/affix.spec.ts
-# → Test Files 1 passed (1) | Tests 15 passed (15)
-
-# 类型检查（全工作区通过）
-pnpm typecheck
-# → 全部 Done
-
-# Lint
-pnpm lint
-# → Found 0 warnings and 0 errors
-```
-
----
-
-_报告生成于组件审计工作流 C18，方法论见 [audit.md](../../.agents/skills/soybean-ui-component-development/audit.md)。_
+| 增强项          | 对标依据    | 说明                                                                                                             |
+| :-------------- | :---------- | :--------------------------------------------------------------------------------------------------------------- |
+| 浏览器 e2e spec | D7-19/D7-20 | 真实滚动容器下的固定/释放、占位布局保持、窗口 resize 宽度同步建议浏览器覆盖（happy-dom 依赖 mockRect），排期评估 |
