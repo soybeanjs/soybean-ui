@@ -50,6 +50,78 @@ function dispatchPointerEvent(target: EventTarget, type: string, init: PointerEv
 }
 
 describe('SBottomSheet', () => {
+  const slots = {
+    trigger: '<button type="button">Open Sheet</button>',
+    default: '<div data-content>Sheet content</div>'
+  };
+
+  describe('rendering', () => {
+    it('renders sheet content when open', async () => {
+      const wrapper = mount(SBottomSheet, {
+        props: {
+          open: true,
+          title: 'Sheet Title',
+          portalProps: { disabled: true }
+        },
+        slots,
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      expect(wrapper.text()).toContain('Sheet Title');
+      expect(wrapper.text()).toContain('Sheet content');
+
+      wrapper.unmount();
+    });
+
+    it('renders the trigger slot', () => {
+      const wrapper = mount(SBottomSheet, {
+        props: { title: 'Sheet' },
+        slots,
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('button').exists()).toBe(true);
+      expect(wrapper.text()).toContain('Open Sheet');
+
+      wrapper.unmount();
+    });
+
+    it('renders a handle by default', async () => {
+      const wrapper = mount(SBottomSheet, {
+        props: { open: true, title: 'Sheet', portalProps: { disabled: true } },
+        slots,
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-handle]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+
+    it('applies custom class to popup', async () => {
+      const wrapper = mount(SBottomSheet, {
+        props: {
+          open: true,
+          class: 'my-sheet',
+          portalProps: { disabled: true },
+          title: 'Sheet'
+        },
+        slots,
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      expect(wrapper.find('.my-sheet').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+  });
+
   describe('state', () => {
     it('moves focus into the dialog when opened from the trigger', async () => {
       const wrapper = mount(SBottomSheet, {
@@ -114,6 +186,27 @@ describe('SBottomSheet', () => {
 
       await nextTick();
       await nextTick();
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('accessibility', () => {
+    it('renders with dialog role when open', async () => {
+      const wrapper = mount(SBottomSheet, {
+        props: {
+          open: true,
+          title: 'Accessible Sheet',
+          description: 'A description for screen readers',
+          portalProps: { disabled: true }
+        },
+        slots,
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      expect(wrapper.find('[role="dialog"]').exists()).toBe(true);
 
       wrapper.unmount();
     });
