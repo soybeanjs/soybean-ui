@@ -26,63 +26,70 @@ describe('SContextMenu', () => {
       wrapper.unmount();
     });
 
-    it('renders menu content when open', async () => {
+    it('opens on contextmenu and reveals the menu in the portal', async () => {
       const wrapper = mount(SContextMenu, {
-        props: {
-          open: true,
-          items,
-          portalProps: { disabled: true }
-        },
+        props: { items },
         slots,
         attachTo: document.body
       });
 
+      await wrapper.find('button').trigger('contextmenu');
       await nextTick();
 
-      // Menu content renders within the component structure
-      expect(wrapper.find('button').exists()).toBe(true);
+      // Context-menu content teleports to `document.body` via the portal.
+      expect(document.body.querySelector('[role="menu"]')).toBeTruthy();
 
       wrapper.unmount();
     });
 
-    it('mounts with custom class prop', async () => {
+    it('mounts with custom class prop', () => {
       const wrapper = mount(SContextMenu, {
         props: {
-          open: true,
           items,
-          class: 'my-context-menu',
-          portalProps: { disabled: true }
+          class: 'my-context-menu'
         },
         slots,
         attachTo: document.body
       });
 
-      await nextTick();
-
-      // Component mounts successfully with custom class
       expect(wrapper.find('button').exists()).toBe(true);
 
       wrapper.unmount();
     });
   });
 
-  describe('accessibility', () => {
-    it('renders trigger when open', async () => {
+  describe('open state', () => {
+    it('opens on a right-click of the trigger', async () => {
       const wrapper = mount(SContextMenu, {
-        props: {
-          open: true,
-          items,
-          portalProps: { disabled: true }
-        },
+        props: { items },
+        slots,
+        attachTo: document.body
+      });
+
+      await wrapper.find('button').trigger('contextmenu');
+      await nextTick();
+
+      expect(document.body.querySelector('[role="menu"]')).toBeTruthy();
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('accessibility', () => {
+    it('renders a menu role when opened', async () => {
+      const wrapper = mount(SContextMenu, {
+        props: { items },
         slots: {
           trigger: '<button type="button">Trigger</button>'
         },
         attachTo: document.body
       });
 
+      await wrapper.find('button').trigger('contextmenu');
       await nextTick();
 
       expect(wrapper.find('button').exists()).toBe(true);
+      expect(document.body.querySelector('[role="menu"]')).toBeTruthy();
 
       wrapper.unmount();
     });
