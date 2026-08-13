@@ -353,6 +353,7 @@
             "placeholder": "占位符。",
             "portalprops": "转发到门户元素的属性。",
             "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
+            "resetmodelvalueonclear": "当 `true` 时，清除搜索词也会将 `modelValue` 重置为空字符串。",
             "separatorprops": "转发到分隔符元素的属性。",
             "triggerprops": "转发到触发器元素的属性。",
             "viewportprops": "转发到视口元素的属性。"
@@ -379,7 +380,7 @@
             "inputref": "输入参考。"
           },
           "members": {
-            "autocomplete": "输入的自动完成属性",
+            "autocomplete": "输入字段的 autocomplete 属性。\n\n除 `on` / `off` 开关外，还支持 HTML 自动填充标记（包括密码管理器的值，如\n`current-password` / `new-password`）。",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "controlprops": "转发到控制元素的属性。",
             "disabled": "为 `true`时，阻止用户与输入进行交互。",
@@ -417,7 +418,8 @@
             "open": "自动完成弹出窗口的受控打开状态。",
             "openonclick": "是否在点击输入时打开自动完成功能。",
             "openonfocus": "是否在聚焦输入时打开自动完成功能。",
-            "required": "true \"时，表示用户必须在提交拥有表单前设置值。"
+            "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
+            "resetmodelvalueonclear": "当 `true` 时，清除搜索词也会将 `modelValue` 重置为空字符串。"
           },
           "props": "AutocompleteRoot 组件的属性。"
         },
@@ -2737,7 +2739,7 @@
             "inputref": "设置输入元素的函数。"
           },
           "members": {
-            "autocomplete": "输入的自动完成属性",
+            "autocomplete": "输入字段的 autocomplete 属性。\n\n除 `on` / `off` 开关外，还支持 HTML 自动填充标记（包括密码管理器的值，如\n`current-password` / `new-password`）。",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "controlprops": "输入额外的道具。",
             "defaultvalue": "输入的默认值为",
@@ -4614,7 +4616,7 @@
         },
         "inputnumbercompactprops": {
           "members": {
-            "autocomplete": "输入的自动完成属性",
+            "autocomplete": "输入字段的 autocomplete 属性。\n\n除 `on` / `off` 开关外，还支持 HTML 自动填充标记（包括密码管理器的值，如\n`current-password` / `new-password`）。",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "clearable": "是否显示清晰的触发器。",
             "clearprops": "属性转发到 clear 元素。",
@@ -4693,7 +4695,7 @@
         },
         "inputnumberrootprops": {
           "members": {
-            "autocomplete": "输入的自动完成属性",
+            "autocomplete": "输入字段的 autocomplete 属性。\n\n除 `on` / `off` 开关外，还支持 HTML 自动填充标记（包括密码管理器的值，如\n`current-password` / `new-password`）。",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "defaultvalue": "输入的默认值为",
             "disabled": "为 `true`时，阻止用户与输入进行交互。",
@@ -4858,7 +4860,7 @@
         },
         "inputcompactprops": {
           "members": {
-            "autocomplete": "输入的自动完成属性",
+            "autocomplete": "输入字段的 autocomplete 属性。\n\n除 `on` / `off` 开关外，还支持 HTML 自动填充标记（包括密码管理器的值，如\n`current-password` / `new-password`）。",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "clearable": "是否显示清晰的触发器。",
             "clearprops": "属性转发到 clear 元素。",
@@ -4906,7 +4908,7 @@
         },
         "inputrootprops": {
           "members": {
-            "autocomplete": "输入的自动完成属性",
+            "autocomplete": "输入字段的 autocomplete 属性。\n\n除 `on` / `off` 开关外，还支持 HTML 自动填充标记（包括密码管理器的值，如\n`current-password` / `new-password`）。",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "defaultvalue": "输入的默认值为",
             "disabled": "为 `true`时，阻止用户与输入进行交互。",
@@ -5221,7 +5223,7 @@
             "inputref": "设置输入元素的函数。"
           },
           "members": {
-            "autocomplete": "输入的自动完成属性",
+            "autocomplete": "输入字段的 autocomplete 属性。\n\n除 `on` / `off` 开关外，还支持 HTML 自动填充标记（包括密码管理器的值，如\n`current-password` / `new-password`）。",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "controlprops": "输入额外的道具。",
             "defaultvalue": "输入的默认值为",
@@ -6298,12 +6300,13 @@
         },
         "passwordcompactprops": {
           "members": {
-            "autocomplete": "输入的自动完成属性",
+            "autocomplete": "输入字段的 autocomplete 属性。\n\n除 `on` / `off` 开关外，还支持 HTML 自动填充标记（包括密码管理器的值，如\n`current-password` / `new-password`）。",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "clearable": "是否显示清晰的触发器。",
             "clearprops": "属性转发到 clear 元素。",
             "controlprops": "转发到控制元素的属性。",
             "defaultvalue": "输入的默认值为",
+            "defaultvisible": "未受控时的初始可见性状态。",
             "disabled": "为 `true`时，阻止用户与输入进行交互。",
             "id": "输入元素的 ID",
             "inputref": "设置输入元素的函数。",
@@ -8116,7 +8119,7 @@
             "addonblur": "是否在模糊处添加标记。",
             "addonpaste": "是否在粘贴时添加标记。",
             "addontab": "是否在标签页上添加标签",
-            "autocomplete": "输入的自动完成属性",
+            "autocomplete": "输入字段的 autocomplete 属性。\n\n除 `on` / `off` 开关外，还支持 HTML 自动填充标记（包括密码管理器的值，如\n`current-password` / `new-password`）。",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "clearable": "是否渲染清晰的触发器。",
             "clearprops": "道具转发到 clear 元素。",
@@ -8202,7 +8205,7 @@
             "addonblur": "是否在模糊处添加标记。",
             "addonpaste": "是否在粘贴时添加标记。",
             "addontab": "是否在标签页上添加标签",
-            "autocomplete": "输入的自动完成属性",
+            "autocomplete": "输入字段的 autocomplete 属性。\n\n除 `on` / `off` 开关外，还支持 HTML 自动填充标记（包括密码管理器的值，如\n`current-password` / `new-password`）。",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "defaultvalue": "输入标签的不受控制的默认值。",
             "delimiter": "用于添加标记的分隔符。",
@@ -9582,6 +9585,7 @@
             "placeholder": "占位符。",
             "portalprops": "转发至 portal 元素的属性。",
             "required": "当值为 `true` 时，表示用户必须先设置该值，所属表单才能提交。",
+            "resetmodelvalueonclear": "当 `true` 时，清除搜索词也会将 `modelValue` 重置为空字符串。",
             "separatorprops": "传递给分隔符元素的属性。",
             "size": "组件的视觉尺寸。",
             "triggerprops": "转发给触发元素的属性。",
@@ -11733,7 +11737,7 @@
         },
         "inputnumberprops": {
           "members": {
-            "autocomplete": "输入字段的 autocomplete 属性",
+            "autocomplete": "输入字段的 autocomplete 属性。\n\n除 `on` / `off` 开关外，还支持 HTML 自动填充标记（包括密码管理器的值，如\n`current-password` / `new-password`）。",
             "autofocus": "当 `true` 时，自动聚焦于输入内容。",
             "center": "是否对齐输入内容。",
             "class": "应用于根元素的额外类名。",
@@ -11839,7 +11843,7 @@
         },
         "inputprops": {
           "members": {
-            "autocomplete": "输入字段的 autocomplete 属性",
+            "autocomplete": "输入字段的 autocomplete 属性。\n\n除 `on` / `off` 开关外，还支持 HTML 自动填充标记（包括密码管理器的值，如\n`current-password` / `new-password`）。",
             "autofocus": "当 `true` 时，自动聚焦于输入内容。",
             "class": "根类",
             "clearable": "是否显示清除按钮。",
@@ -12279,13 +12283,14 @@
         },
         "passwordprops": {
           "members": {
-            "autocomplete": "输入字段的 autocomplete 属性",
+            "autocomplete": "输入字段的 autocomplete 属性。\n\n除 `on` / `off` 开关外，还支持 HTML 自动填充标记（包括密码管理器的值，如\n`current-password` / `new-password`）。",
             "autofocus": "当 `true` 时，自动聚焦于输入内容。",
             "class": "应用于根元素的额外类名。",
             "clearable": "是否显示清除按钮。",
             "clearprops": "转发给 clear 元素的属性。",
             "controlprops": "转发给控件的属性。",
             "defaultvalue": "输入的默认值",
+            "defaultvisible": "未受控时的初始可见性状态。",
             "disabled": "当值为 `true` 时，禁止用户与输入内容进行交互。",
             "id": "输入元素的 ID",
             "inputref": "用于设置输入元素的函数。",
@@ -13141,7 +13146,7 @@
             "addonblur": "是否在焦点移开时添加标签。",
             "addonpaste": "粘贴时是否添加标签。",
             "addontab": "是否在 Tab 键上添加标签。",
-            "autocomplete": "输入字段的 autocomplete 属性",
+            "autocomplete": "输入字段的 autocomplete 属性。\n\n除 `on` / `off` 开关外，还支持 HTML 自动填充标记（包括密码管理器的值，如\n`current-password` / `new-password`）。",
             "autofocus": "当 `true` 时，自动聚焦于输入内容。",
             "class": "应用于根元素的额外类名。",
             "clearable": "是否渲染“清除”触发器。",

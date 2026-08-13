@@ -4670,7 +4670,7 @@
         "kind": "props",
         "name": "MenuRadioGroupProps",
         "type": "Interface MenuRadioGroupProps<T>",
-        "resolvedType": "{ modelValue?: T; defaultValue?: T; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ modelValue?: T | null; defaultValue?: T; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the MenuRadioGroup component.",
         "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuradiogroupprops.props",
         "sourcePath": "packages/headless/src/components/menu/types.ts",
@@ -4678,7 +4678,7 @@
         "members": [
           {
             "name": "modelValue",
-            "type": "T",
+            "type": "T | null",
             "required": false,
             "description": "The controlled value of the radio item to check. Can be bound as `v-model`.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuradiogroupprops.members.modelvalue",
@@ -4761,7 +4761,7 @@
         "kind": "emits",
         "name": "MenuRadioGroupEmits",
         "type": "TypeAlias MenuRadioGroupEmits<T>",
-        "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined>] }",
+        "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined> | null] }",
         "description": "Events for the MenuRadioGroup component.",
         "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuradiogroupemits.emits",
         "sourcePath": "packages/headless/src/components/menu/types.ts",
@@ -4770,8 +4770,8 @@
         "callables": [
           {
             "name": "update:modelValue",
-            "type": "[payload: Exclude<T, undefined>]",
-            "parameters": "payload: Exclude<T, undefined>",
+            "type": "[payload: Exclude<T, undefined> | null]",
+            "parameters": "payload: Exclude<T, undefined> | null",
             "required": true,
             "description": "Event handler called when the radio group value changes",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuradiogroupemits.callables.update_modelvalue",
@@ -4957,7 +4957,7 @@
         "kind": "props",
         "name": "MenuRadioOptionsCompactProps",
         "type": "Interface MenuRadioOptionsCompactProps<T>",
-        "resolvedType": "{ items: MenuRadioOptionData<T>[]; groupLabelProps?: MenuGroupLabelProps; radioItemProps?: MenuRadioItemProps; indicatorProps?: MenuItemIndicatorProps; shortcutProps?: MenuShortcutProps; separatorProps?: MenuSeparatorProps; modelValue?: T; defaultValue?: T; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ items: MenuRadioOptionData<T>[]; groupLabelProps?: MenuGroupLabelProps; radioItemProps?: MenuRadioItemProps; indicatorProps?: MenuItemIndicatorProps; shortcutProps?: MenuShortcutProps; separatorProps?: MenuSeparatorProps; modelValue?: T | null; defaultValue?: T; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the MenuRadioOptionsCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuradiooptionscompactprops.props",
         "sourcePath": "packages/headless/src/components/menu/types.ts",
@@ -5226,7 +5226,7 @@
           },
           {
             "name": "modelValue",
-            "type": "T",
+            "type": "T | null",
             "required": false,
             "description": "The controlled value of the radio item to check. Can be bound as `v-model`.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuradiooptionscompactprops.members.modelvalue",
@@ -5309,7 +5309,7 @@
         "kind": "emits",
         "name": "MenuRadioOptionsCompactEmits",
         "type": "TypeAlias MenuRadioOptionsCompactEmits<T>: MenuRadioGroupEmits<T> & MenuRadioOptionsCompactSelectEmits<T>",
-        "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined>]; select: [item: MenuRadioOptionData<T>, event: Event] }",
+        "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined> | null]; select: [item: MenuRadioOptionData<T>, event: Event] }",
         "description": "Events for the MenuRadioOptionsCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuradiooptionscompactemits.emits",
         "sourcePath": "packages/headless/src/components/menu/types.ts",
@@ -5318,8 +5318,8 @@
         "callables": [
           {
             "name": "update:modelValue",
-            "type": "[payload: Exclude<T, undefined>]",
-            "parameters": "payload: Exclude<T, undefined>",
+            "type": "[payload: Exclude<T, undefined> | null]",
+            "parameters": "payload: Exclude<T, undefined> | null",
             "required": true,
             "description": "Event handler called when the radio group value changes",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuradiooptionscompactemits.callables.update_modelvalue",

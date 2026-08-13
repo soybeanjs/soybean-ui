@@ -9,7 +9,7 @@ Description: A window overlaid on either the primary window or another dialog wi
 
 A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
 
-`SDialog` is the declarative wrapper for inline usage. `dialog(...)` is the imperative API for creating alert-style dialogs programmatically.
+`SDialog` is the declarative wrapper for inline usage. `dialog(...)` is the imperative API for creating alert-style dialogs programmatically. It combines the `DialogRoot`/`DialogTrigger`/`DialogOverlay`/`DialogPopup`/`DialogHeader`/`DialogContent`/`DialogFooter`/`DialogTitle`/`DialogDescription`/`DialogClose`/`DialogCancel`/`DialogConfirm` headless primitive family (zero styles) with the `dialogVariants` style recipe (11 slots, 6 sizes).
 
 Mount `SDialogProvider` once near your app root before calling the imperative `dialog(...)` API.
 
@@ -41,6 +41,33 @@ function openWarningDialog() {
   <SButton color="warning" @click="openWarningDialog">Open Dialog</SButton>
 </template>
 ```
+
+## Features
+
+- 🧩 Headless/styled split — `DialogCompact` aggregates the primitives and composes the overlay/popup/header/content/footer; `SDialog` only injects styles and forwards slots/events
+- 🖱️ Declarative + imperative — inline `SDialog` with a trigger, or `dialog.*` API driven by `SDialogProvider`
+- 🎭 Modal by default — `modal` renders `aria-modal`, `useHideOthers`, outside-pointer blocking and focus trapping; toggle with `modal={false}`
+- ⚠️ Alert mode — `isAlert` switches to `role="alertdialog"`, adds the type icon and `aria-live` (`polite`/`assertive`)
+- 🏷️ Accessible title/description — `title`/`description` wire `aria-labelledby`/`aria-describedby`
+- ❌ Closable — `showClose` renders a close control; Escape, outside pointer/focus and the close button all dismiss
+- 🔘 Cancel/confirm — `showCancel`/`showConfirm` with localized `cancelText`/`confirmText` from `dialog.cancel`/`dialog.confirm`
+- 🧹 Pure mode — `pure` drops the header/footer for fully custom content
+- 📐 6 sizes — xs–2xl `size`; per-slot `ui` overrides
+- ♿ Accessible — real `role="dialog"`, focus trap + loop, focus restoration on close, `axe-core` zero violations
+
+## Component family
+
+- `SDialog` (styled) — the entry wrapper; `dialogVariants` recipe with dynamic slot forwarding
+- `SDialogProvider` (styled) — hosts the imperative `dialog(...)` API; subscribes to `DialogState`
+- `DialogRoot` (headless) — the state owner; `open` via `useControllableState`, `dir`/`modal`, `provideDialogRootContext`
+- `DialogTrigger` (headless) — a `Button` that opens the dialog
+- `DialogOverlay` (headless) — the dimmed backdrop
+- `DialogPopup` / `DialogPopupImpl` (headless) — the focus-trapped, dismissable surface hosting the dialog body
+- `DialogTitle` / `DialogDescription` (headless) — the labelled/described elements
+- `DialogClose` (headless) — the close control, toggles `open` and emits `close`
+- `DialogCancel` / `DialogConfirm` (headless) — footer actions, emit `cancel`/`confirm`
+- `DialogHeader` / `DialogContent` / `DialogFooter` (headless) — layout sections
+- `DialogCompact` (headless) — the aggregated composite; composes all primitives and exposes the per-part slots
 
 ## Demos
 
@@ -333,3 +360,78 @@ Properties for the DialogTrigger component.
 Events for the DialogTrigger component.
 
 - `click`: Event handler called when the dialog trigger is activated. (type `[event: PointerEvent]`; parameters `event: PointerEvent`)
+
+## Notes
+
+### Architecture and benchmark differences
+
+`DialogCompact` owns the overlay/popup/header/content/footer composition and the imperative `dialog(...)` state flow while every primitive stays style-free and only the UI wrapper injects the `dialogVariants` classes. This mirrors radix-ui/shadcn-ui's headless/styled split. Ant Design, Element Plus, Mantine and Naive UI ship a single styled dialog with `mask`/`closable`/`keyboard`/`width` props; SoybeanUI additionally exposes a per-slot `*Props` channel, a `size` scale, and an imperative provider API (`dialog.*`) that the single-package libraries fold into a static service.
+
+| Capability                    | SoybeanUI | shadcn/ui | Ant Design Modal | Element Plus Dialog | Mantine Modal | Naive UI Dialog |
+| :---------------------------- | :-------: | :-------: | :--------------: | :-----------------: | :-----------: | :-------------: |
+| Headless/styled split         |    ✅     |    ✅     |        —         |          —          |       —       |        —        |
+| Imperative API                |    ✅     |     —     |        ✅        |         ✅          |      ✅       |       ✅        |
+| Modal (aria-modal + trap)     |    ✅     |    ✅     |        ✅        |         ✅          |      ✅       |       ✅        |
+| Alert mode (alertdialog)      |    ✅     |    ✅     |        ✅        |          —          |       —       |       ✅        |
+| Focus return on close         |    ✅     |    ✅     |        ✅        |         ✅          |      ✅       |       ✅        |
+| Sizes (6)                     |    ✅     |     —     |        —         |          —          |       —       |        —        |
+| Localized cancel/confirm text |    ✅     |     —     |        —         |          —          |       —       |        —        |
+| Pure (no header/footer)       |    ✅     |     —     |        —         |          —          |       —       |        —        |
+
+`—` = unsupported or a different interaction model.
+
+### Cautions
+
+- `DialogCompact` defaults to `modal` (`true`); the portal teleports the popup to `document.body` and the body scroll is managed by the hide-others layer.
+- `showConfirm` defaults to `true` when the dialog is an alert; `showCancel` defaults to `'onlyWarning'` (cancel appears only for `alertType="warning"`). Pass an explicit boolean to override.
+- `cancelText`/`confirmText` default to the localized `dialog.cancel`/`dialog.confirm` messages; override per instance.
+- `isAlert` requires a `DialogTitle` for accessibility (`role="alertdialog"` must be labelled). Set `title` or the `title` slot.
+- `pure` removes the header and footer, so `title`/`description` are no longer rendered — provide your own accessible label in that mode.
+- The imperative `dialog(...)` API needs `SDialogProvider` mounted; calling it without the provider is a no-op.
+
+### Roadmap
+
+`draggable` and `fullscreen` variants for `dialog`/`drawer` are tracked in `docs/check.md` (C72/C73, P0) against Ant Design/Element Plus parity.
+
+## FAQ
+
+### How do I control the open state?
+
+Bind `open` with `v-model`, or pass `defaultOpen` for an uncontrolled dialog:
+
+```vue
+<SDialog v-model:open="open" title="Preferences">...</SDialog>
+```
+
+### How do I show an alert-style dialog?
+
+Set `is-alert` with an `alert-type`. The popup gets `role="alertdialog"` and the matching type icon:
+
+```vue
+<template #trigger><SButton>Delete</SButton></template>
+```
+
+### How do I use the imperative API?
+
+Mount `SDialogProvider` once, then call `dialog.*` from anywhere (see the Overview section for a full example):
+
+```ts
+import { dialog } from '@soybeanjs/ui';
+dialog.warning('Disk full', { description: 'Free up space.' });
+```
+
+### How do I build a fully custom dialog?
+
+Use `pure` and fill the default slot:
+
+```vue
+<div class="custom">...</div>
+```
+
+### How do I make a non-modal dialog?
+
+Set `modal={false}` to allow interacting with content outside the dialog:
+
+```vue
+<SDialog v-model:open="open" :modal="false" title="Palette">...</SDialog>
+```

@@ -3,15 +3,30 @@
 Source URL: https://ui.soybeanjs.cn/components/input
 Markdown URL: https://ui.soybeanjs.cn/components/input.md
 Category: Forms
-Description: Displays a form input field or a component that looks like an input field. It supports standard input attributes, icons, and clearable functionality.
+Description: A single-line text input that collects user input, supporting standard input attributes, prefix/suffix slots, and clearable functionality. Use it for any short free-text entry — form fields, search boxes, filters. For multi-line text use `STextarea`; for sensitive values use `SPassword`; for numeric values use `SInputNumber`.
 
 ## Overview
 
-Displays a form input field or a component that looks like an input field. It supports standard input attributes, icons, and clearable functionality.
+A single-line text input that collects user input, supporting standard input attributes, prefix/suffix slots, and clearable functionality. Use it for any short free-text entry — form fields, search boxes, filters. For multi-line text use `STextarea`; for sensitive values use `SPassword`; for numeric values use `SInputNumber`.
 
 ## Usage
 
 Usage examples for input are rendered on the site.
+
+## Features
+
+- 📏 6 sizes: xs, sm, md, lg, xl, 2xl
+- 🧹 Clearable mode with a hover/focus-revealed clear button (i18n `aria-label`)
+- 🔤 `leading` / `trailing` slots for prefix and suffix content
+- 🔒 `disabled` / `readonly` states with full interaction guards
+- 📋 Native form submission via a proxied hidden input when `name` is set
+- ♿ Full accessibility support — `aria-roledescription`, clear button naming, axe-clean
+- 🎯 TypeScript type safety with strict `type` attribute typing
+
+## Input component family
+
+- **SInput** - Base text input component
+- **SInputClear** - Clear button, shown on hover/focus when `clearable`
 
 ## Demos
 
@@ -45,7 +60,7 @@ Properties for the Input component.
 - `required`: When `true`, indicates that the user must set the value before the owning form can be submitted. (type `boolean`; optional)
 - `id`: Id of the input element (type `string`; optional)
 - `autofocus`: When `true`, the input is auto-focused. (type `boolean`; optional)
-- `autocomplete`: The autocomplete attribute of the input (type `'on' | 'off'`; optional)
+- `autocomplete`: The autocomplete attribute of the input. Supports the HTML autofill tokens (including password-manager values such as `current-password` / `new-password`), in addition to the `on` / `off` switches. (type `'search' | 'name' | 'email' | 'tel' | 'url' | 'on' | 'off' | 'username' | 'current-password' | 'new-password' | 'one-...`; optional)
 - `maxlength`: The maximum number of characters allowed in the input (type `number`; optional)
 - `minlength`: The minimum number of characters allowed in the input (type `number`; optional)
 - `pattern`: The pattern attribute of the input (type `string`; optional)
@@ -102,7 +117,7 @@ Properties for the InputCompact component.
 - `required`: When `true`, indicates that the user must set the value before the owning form can be submitted. (type `boolean`; optional)
 - `id`: Id of the input element (type `string`; optional)
 - `autofocus`: When `true`, the input is auto-focused. (type `boolean`; optional)
-- `autocomplete`: The autocomplete attribute of the input (type `'on' | 'off'`; optional)
+- `autocomplete`: The autocomplete attribute of the input. Supports the HTML autofill tokens (including password-manager values such as `current-password` / `new-password`), in addition to the `on` / `off` switches. (type `'search' | 'name' | 'email' | 'tel' | 'url' | 'on' | 'off' | 'username' | 'current-password' | 'new-password' | 'one-...`; optional)
 - `maxlength`: The maximum number of characters allowed in the input (type `number`; optional)
 - `minlength`: The minimum number of characters allowed in the input (type `number`; optional)
 - `pattern`: The pattern attribute of the input (type `string`; optional)
@@ -150,7 +165,7 @@ Properties for the InputRoot component.
 - `required`: When `true`, indicates that the user must set the value before the owning form can be submitted. (type `boolean`; optional)
 - `id`: Id of the input element (type `string`; optional)
 - `autofocus`: When `true`, the input is auto-focused. (type `boolean`; optional)
-- `autocomplete`: The autocomplete attribute of the input (type `'on' | 'off'`; optional)
+- `autocomplete`: The autocomplete attribute of the input. Supports the HTML autofill tokens (including password-manager values such as `current-password` / `new-password`), in addition to the `on` / `off` switches. (type `'search' | 'name' | 'email' | 'tel' | 'url' | 'on' | 'off' | 'username' | 'current-password' | 'new-password' | 'one-...`; optional)
 - `maxlength`: The maximum number of characters allowed in the input (type `number`; optional)
 - `minlength`: The minimum number of characters allowed in the input (type `number`; optional)
 - `pattern`: The pattern attribute of the input (type `string`; optional)
@@ -162,3 +177,45 @@ Properties for the InputRoot component.
 Events for the InputRoot component.
 
 - `update:modelValue`: Emitted when the model value changes. (type `[value: string]`; parameters `value: string`)
+
+## Notes
+
+### Architecture and benchmark differences
+
+SoybeanUI splits the input into a headless layer (`@soybeanjs/headless/input`) that owns state, form proxying, and clear-button semantics, and a styled layer (`@soybeanjs/ui`) that owns variants and UnoCSS classes. The headless `InputCompact` composes `InputRoot` / `InputControl` / `InputClear` and exposes `leading` / `clear` / `trailing` slots, mirroring the headless/styled split of Radix and differing from single-package libraries such as Ant Design and Element Plus.
+
+| Capability                     | SoybeanUI | Ant Design `Input` | Element Plus `Input` | Radix `TextField` |
+| :----------------------------- | :-------: | :----------------: | :------------------: | :---------------: |
+| headless/styled split          |    ✅     |         —          |          —           |        ✅         |
+| Controlled / uncontrolled      |    ✅     |         ✅         |          ✅          |        ✅         |
+| Clear button (hover reveal)    |    ✅     |         ✅         |          ✅          |         —         |
+| Clear button i18n `aria-label` |    ✅     |         ✅         |          —           |         —         |
+| Prefix / suffix slots          |    ✅     |         ✅         |          ✅          |        ✅         |
+| Native form proxying           |    ✅     |         —          |          —           |         —         |
+| Size variants                  |    ✅     |         ✅         |          ✅          |         —         |
+| `showCount` counter            |     —     |         ✅         |          ✅          |         —         |
+| `error` / `loading` state      |     —     |         ✅         |          ✅          |         —         |
+
+### Cautions
+
+- `showCount`, `error`, and `loading` states are not implemented; they are tracked as enhancement backlog.
+- The clear button only appears on hover or focus (desktop convention); on touch devices ensure a `leading`/`trailing` affordance if needed.
+- The root renders `role="group"` with `aria-roledescription="Input"` and `spellcheck="false"` by design.
+
+## FAQ
+
+### How do I add a prefix icon or suffix text?
+
+Use the `leading` and `trailing` slots. They receive the root context and render inside the input field frame.
+
+### Why does the clear button only show on hover?
+
+Clear visibility follows the desktop hover/focus convention (`group-hover` / `group-focus-within`). It is intentionally not always visible to keep the input compact and avoid accidental clearing.
+
+### How does the input submit its value in a native form?
+
+Pass `name` — the component renders a visually hidden proxy input carrying the current value, so native form submission and validation work without extra wiring.
+
+### How do I limit the input length?
+
+Pass `maxlength` / `minlength`; they are forwarded to the native input. A visible counter is not yet provided (tracked as enhancement backlog).

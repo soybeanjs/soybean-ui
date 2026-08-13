@@ -353,6 +353,7 @@
             "placeholder": "Placeholder.",
             "portalprops": "Properties forwarded to the portal element.",
             "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "resetmodelvalueonclear": "When `true`, clearing the search term also resets `modelValue` to an empty string.",
             "separatorprops": "Properties forwarded to the separator element.",
             "triggerprops": "Properties forwarded to the trigger element.",
             "viewportprops": "Properties forwarded to the viewport element."
@@ -379,7 +380,7 @@
             "inputref": "Input ref."
           },
           "members": {
-            "autocomplete": "The autocomplete attribute of the input",
+            "autocomplete": "The autocomplete attribute of the input.\n\nSupports the HTML autofill tokens (including password-manager values such as\n`current-password` / `new-password`), in addition to the `on` / `off` switches.",
             "autofocus": "When `true`, the input is auto-focused.",
             "controlprops": "Properties forwarded to the control element.",
             "disabled": "When `true`, prevents the user from interacting with the input.",
@@ -417,7 +418,8 @@
             "open": "The controlled open state of the autocomplete popup.",
             "openonclick": "Whether to open the autocomplete when the input is clicked.",
             "openonfocus": "Whether to open the autocomplete when the input is focused.",
-            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted."
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "resetmodelvalueonclear": "When `true`, clearing the search term also resets `modelValue` to an empty string."
           },
           "props": "Properties for the AutocompleteRoot component."
         },
@@ -2737,7 +2739,7 @@
             "inputref": "The function to set the input element."
           },
           "members": {
-            "autocomplete": "The autocomplete attribute of the input",
+            "autocomplete": "The autocomplete attribute of the input.\n\nSupports the HTML autofill tokens (including password-manager values such as\n`current-password` / `new-password`), in addition to the `on` / `off` switches.",
             "autofocus": "When `true`, the input is auto-focused.",
             "controlprops": "The props of the input extra props.",
             "defaultvalue": "The default value of the input",
@@ -4614,7 +4616,7 @@
         },
         "inputnumbercompactprops": {
           "members": {
-            "autocomplete": "The autocomplete attribute of the input",
+            "autocomplete": "The autocomplete attribute of the input.\n\nSupports the HTML autofill tokens (including password-manager values such as\n`current-password` / `new-password`), in addition to the `on` / `off` switches.",
             "autofocus": "When `true`, the input is auto-focused.",
             "clearable": "Whether to show the clear trigger.",
             "clearprops": "Properties forwarded to the clear element.",
@@ -4693,7 +4695,7 @@
         },
         "inputnumberrootprops": {
           "members": {
-            "autocomplete": "The autocomplete attribute of the input",
+            "autocomplete": "The autocomplete attribute of the input.\n\nSupports the HTML autofill tokens (including password-manager values such as\n`current-password` / `new-password`), in addition to the `on` / `off` switches.",
             "autofocus": "When `true`, the input is auto-focused.",
             "defaultvalue": "The default value of the input",
             "disabled": "When `true`, prevents the user from interacting with the input.",
@@ -4858,7 +4860,7 @@
         },
         "inputcompactprops": {
           "members": {
-            "autocomplete": "The autocomplete attribute of the input",
+            "autocomplete": "The autocomplete attribute of the input.\n\nSupports the HTML autofill tokens (including password-manager values such as\n`current-password` / `new-password`), in addition to the `on` / `off` switches.",
             "autofocus": "When `true`, the input is auto-focused.",
             "clearable": "Whether to show the clear trigger.",
             "clearprops": "Properties forwarded to the clear element.",
@@ -4906,7 +4908,7 @@
         },
         "inputrootprops": {
           "members": {
-            "autocomplete": "The autocomplete attribute of the input",
+            "autocomplete": "The autocomplete attribute of the input.\n\nSupports the HTML autofill tokens (including password-manager values such as\n`current-password` / `new-password`), in addition to the `on` / `off` switches.",
             "autofocus": "When `true`, the input is auto-focused.",
             "defaultvalue": "The default value of the input",
             "disabled": "When `true`, prevents the user from interacting with the input.",
@@ -5221,7 +5223,7 @@
             "inputref": "The function to set the input element."
           },
           "members": {
-            "autocomplete": "The autocomplete attribute of the input",
+            "autocomplete": "The autocomplete attribute of the input.\n\nSupports the HTML autofill tokens (including password-manager values such as\n`current-password` / `new-password`), in addition to the `on` / `off` switches.",
             "autofocus": "When `true`, the input is auto-focused.",
             "controlprops": "The props of the input extra props.",
             "defaultvalue": "The default value of the input",
@@ -6298,12 +6300,13 @@
         },
         "passwordcompactprops": {
           "members": {
-            "autocomplete": "The autocomplete attribute of the input",
+            "autocomplete": "The autocomplete attribute of the input.\n\nSupports the HTML autofill tokens (including password-manager values such as\n`current-password` / `new-password`), in addition to the `on` / `off` switches.",
             "autofocus": "When `true`, the input is auto-focused.",
             "clearable": "Whether to show the clear trigger.",
             "clearprops": "Properties forwarded to the clear element.",
             "controlprops": "Properties forwarded to the control element.",
             "defaultvalue": "The default value of the input",
+            "defaultvisible": "The initial visibility state when it is not controlled.",
             "disabled": "When `true`, prevents the user from interacting with the input.",
             "id": "Id of the input element",
             "inputref": "The function to set the input element.",
@@ -8116,7 +8119,7 @@
             "addonblur": "Whether to add tags on blur.",
             "addonpaste": "Whether to add tags on paste.",
             "addontab": "Whether to add tags on tab.",
-            "autocomplete": "The autocomplete attribute of the input",
+            "autocomplete": "The autocomplete attribute of the input.\n\nSupports the HTML autofill tokens (including password-manager values such as\n`current-password` / `new-password`), in addition to the `on` / `off` switches.",
             "autofocus": "When `true`, the input is auto-focused.",
             "clearable": "Whether to render the clear trigger.",
             "clearprops": "Props forwarded to the clear element.",
@@ -8202,7 +8205,7 @@
             "addonblur": "Whether to add tags on blur.",
             "addonpaste": "Whether to add tags on paste.",
             "addontab": "Whether to add tags on tab.",
-            "autocomplete": "The autocomplete attribute of the input",
+            "autocomplete": "The autocomplete attribute of the input.\n\nSupports the HTML autofill tokens (including password-manager values such as\n`current-password` / `new-password`), in addition to the `on` / `off` switches.",
             "autofocus": "When `true`, the input is auto-focused.",
             "defaultvalue": "The uncontrolled default value of the tags input.",
             "delimiter": "The delimiter used to add tags.",
@@ -9582,6 +9585,7 @@
             "placeholder": "Placeholder.",
             "portalprops": "Properties forwarded to the portal element.",
             "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "resetmodelvalueonclear": "When `true`, clearing the search term also resets `modelValue` to an empty string.",
             "separatorprops": "Properties forwarded to the separator element.",
             "size": "Visual size of the component.",
             "triggerprops": "Properties forwarded to the trigger element.",
@@ -11733,7 +11737,7 @@
         },
         "inputnumberprops": {
           "members": {
-            "autocomplete": "The autocomplete attribute of the input",
+            "autocomplete": "The autocomplete attribute of the input.\n\nSupports the HTML autofill tokens (including password-manager values such as\n`current-password` / `new-password`), in addition to the `on` / `off` switches.",
             "autofocus": "When `true`, the input is auto-focused.",
             "center": "Whether to center the input.",
             "class": "Additional class names applied to the root element.",
@@ -11839,7 +11843,7 @@
         },
         "inputprops": {
           "members": {
-            "autocomplete": "The autocomplete attribute of the input",
+            "autocomplete": "The autocomplete attribute of the input.\n\nSupports the HTML autofill tokens (including password-manager values such as\n`current-password` / `new-password`), in addition to the `on` / `off` switches.",
             "autofocus": "When `true`, the input is auto-focused.",
             "class": "root class",
             "clearable": "Whether to show the clear trigger.",
@@ -12279,13 +12283,14 @@
         },
         "passwordprops": {
           "members": {
-            "autocomplete": "The autocomplete attribute of the input",
+            "autocomplete": "The autocomplete attribute of the input.\n\nSupports the HTML autofill tokens (including password-manager values such as\n`current-password` / `new-password`), in addition to the `on` / `off` switches.",
             "autofocus": "When `true`, the input is auto-focused.",
             "class": "Additional class names applied to the root element.",
             "clearable": "Whether to show the clear trigger.",
             "clearprops": "Properties forwarded to the clear element.",
             "controlprops": "Properties forwarded to the control element.",
             "defaultvalue": "The default value of the input",
+            "defaultvisible": "The initial visibility state when it is not controlled.",
             "disabled": "When `true`, prevents the user from interacting with the input.",
             "id": "Id of the input element",
             "inputref": "The function to set the input element.",
@@ -13141,7 +13146,7 @@
             "addonblur": "Whether to add tags on blur.",
             "addonpaste": "Whether to add tags on paste.",
             "addontab": "Whether to add tags on tab.",
-            "autocomplete": "The autocomplete attribute of the input",
+            "autocomplete": "The autocomplete attribute of the input.\n\nSupports the HTML autofill tokens (including password-manager values such as\n`current-password` / `new-password`), in addition to the `on` / `off` switches.",
             "autofocus": "When `true`, the input is auto-focused.",
             "class": "Additional class names applied to the root element.",
             "clearable": "Whether to render the clear trigger.",

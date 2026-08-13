@@ -34,7 +34,6 @@ import { SConfigProvider } from '@soybeanjs/ui';
     :theme="{
       base: 'gray',
       primary: 'violet',
-      feedback: 'modern',
       radius: '0.625rem'
     }"
     :iconify="{ width: '1.25em', height: '1.25em' }"
@@ -213,15 +212,99 @@ Structured API summary generated from build-time component metadata.
 
 Properties for the ConfigProvider component.
 
-- `theme`: The theme options. (type `ThemeOptions`; optional)
+- `theme`: The theme options. (type `ConfigProviderThemeOptions`; optional)
 - `size`: The size options. (type `ThemeSize`; optional)
 - `iconify`: The iconify options. (type `IconifyOptions`; optional)
 - `progress`: The global top progress configuration of your application. (type `Partial<ProgressProviderProps>`; optional)
 - `toast`: The global toast configuration of your application. This will be inherited by the related components. (type `Partial<ToastProviderProps>`; optional)
 - `customToast`: Whether to use custom toast rendering. If set to `true`, the `ToastProvider` will not render the default toast UI, and you can import `ToastProvider` component to render custom toast UI. (type `boolean`; default `false`; optional)
+- `persistTheme`: Whether to enable persisted theme reading from localStorage / cookie. When disabled (default), the ConfigProvider only consumes the explicit `theme` prop and never reads any storage, keeping the current behavior. When enabled, the persisted theme config fills in keys not explicitly provided by `theme`. (type `boolean`; default `false`; optional)
+- `themeConfig`: The persisted theme config injected from the server. Used during SSR to render the same theme the client persisted; on the client the localStorage is the source of truth. (type `ThemeConfigState`; optional)
+- `presetProvider`: The server-side custom theme preset registry resolver. Maps a stored preset name to its definition so SSR can render custom presets without localStorage access. Only used when `persistTheme` is enabled on the server; on the client the presets table is the source of truth. (type `((name: string) => CustomThemeColorPreset | null)`; optional)
+- `isServer`: Whether the component is running in a server environment. The UI library is pre-built, so `import.meta.env.SSR` is baked at build time and cannot detect the consumer's runtime. This defaults to runtime detection (`typeof window === 'undefined'`), and can be overridden with the app's own flag (e.g. Nuxt's `import.meta.server`) when the app is bundled for both server and client. (type `boolean`; default `isServerRuntime()`; optional)
 - `dir`: The global reading direction of your application. This will be inherited by all components. When omitted, the direction follows the current locale and falls back to `'ltr'`. (type `Direction`; optional)
 - `locale`: The global locale of your application. This will be inherited by all components. (type `string`; default `'en'`; optional)
 - `nonce`: The global `nonce` value of your application. This will be inherited by the related components. (type `string`; optional)
 - `tooltip`: The global tooltip configuration of your application. This will be inherited by the related components. (type `Partial<TooltipProviderProps>`; optional)
 - `iconRender`: A function to render the icon. This is useful when you want to use a custom icon library or want to wrap the icon with a custom component. (type `((icon: IconValue) => VNode)`; optional)
 - `messages`: Overrides for built-in component locale messages. Merged on top of the locale selected by the `locale` prop, so you only need to supply the keys you want to change. (type `LocaleMessagesOverrides`; optional)
+
+## Notes
+
+### Architecture and benchmark differences
+
+SoybeanUI splits `ConfigProvider` into a headless layer (`@soybeanjs/headless/config-provider`) that owns locale, direction, tooltip, and message context, and a styled layer (`@soybeanjs/ui`) that owns theme CSS injection, icon rendering, and provider composition (toast / dialog / progress). This mirrors `shadcn/ui`'s headless/styled separation and differs from single-package providers such as Ant Design, Element Plus, MUI, Mantine, and Naive UI.
+
+| Aspect               | SoybeanUI                                                                                   | Ant Design / Element Plus / MUI / Mantine / Naive UI  |
+| :------------------- | :------------------------------------------------------------------------------------------ | :---------------------------------------------------- |
+| Architecture         | headless + styled split, dual `provide/inject` contexts                                     | single package, single ConfigProvider                 |
+| Theme injection      | `createTheme()` from `@soybeanjs/theme` inlined into a `<style id="__SoybeanUI_theme">` tag | CSS variables / theme object / `ConfigProvider.theme` |
+| Dark mode            | `theme.darkSelector` (`'class'` → `.dark`, `'media'` → OS, custom); toggle `.dark` class    | `theme.dark`, `dark-mode` class, `colorScheme`        |
+| RTL                  | `dir` prop + `useDirection`; auto-derived from `locale` with RTL prefix fallback            | `direction` prop, `dir` attribute, theme direction    |
+| i18n                 | `locale` + `messages` overrides; `registerLocale` for additional locales                    | `locale` prop / `LocalizationProvider`                |
+| Provider composition | renders `ToastProvider`, `DialogProvider`, `ProgressProvider` inside the default slot       | separate providers mounted by the user                |
+
+### Runtime cautions
+
+- **SSR**: theme CSS is computed at render time via `createTheme()` from `@soybeanjs/theme` and inlined into the SSR HTML as a `<style id="__SoybeanUI_theme">` tag (no client-only style injection), so the first paint already carries the correct theme. `SIcon` receives `ssr: import.meta.env.SSR` so icon rendering is SSR-safe.
+- **Style tag lifecycle**: the `<style id="__SoybeanUI_theme">` and `<style id="__SoybeanHeadless_Styles">` tags persist in `<head>` for the lifetime of the page. They are reactive — changing the `theme` prop updates the CSS content in place. Unmounting the provider does not remove them (they are global by design).
+- **Locale registration**: only `en` and `zh-CN` are pre-registered. For any other locale (e.g. `ar`, `ja`, `fr`), import the locale file from `@soybeanjs/headless/locale/{code}` and call `registerLocale(...)` once during app setup. Direction (`dir`) falls back to a built-in RTL prefix map (`ar`, `he`, `fa`, `ur`, …) even before a locale is registered, so `locale="ar"` resolves to `dir="rtl"` out of the box.
+- **Nesting**: `SConfigProvider` can be nested. An inner provider overrides the outer context for its subtree. The headless and UI contexts are independent injection keys, so headless-only consumers (e.g. `useDirection`) read the headless context while UI consumers (e.g. `SIcon` iconify defaults) read the UI context.
+
+### SSR theme consistency (no flash on refresh)
+
+The theme is persisted in `localStorage` only (no cookie). A client-only style injection would apply the saved theme only after hydration, flashing the default theme on refresh. `@soybeanjs/theme` ships an SSR-safe init script (under the `@soybeanjs/theme/ssr` subpath) that applies the saved theme before first paint:
+
+- **`createThemeInitScript()`** — returns a small IIFE to inline in `<head>`. Before first paint it reads the stored config from `localStorage`, sets `data-theme="<base>-<primary>"` and the dark-mode class on `<html>`. The server renders the default theme; the script corrects it before the browser paints, so there is no flash.
+- **`getStoredThemeConfig()` / `setStoredThemeConfig()` / `removeStoredThemeConfig()`** — explicit persistence helpers (under the `@soybeanjs/theme/storage` subpath).
+
+In Nuxt the wiring is minimal:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  app: {
+    head: {
+      // apply the saved theme before first paint
+      script: [{ innerHTML: createThemeInitScript(), tagPosition: 'head' }]
+    }
+  }
+});
+```
+
+```vue
+// app.vue — pass only the environment flag
+<script setup lang="ts">
+import { SConfigProvider } from '@soybeanjs/ui';
+
+const isServer = import.meta.server;
+</script>
+
+<template>
+  <SConfigProvider :is-server="isServer" persist-theme>
+    <slot />
+  </SConfigProvider>
+</template>
+```
+
+`SConfigProvider` reads the persisted theme from `localStorage` on the client; on the server it starts from the default and the inline script corrects it before first paint. Theme state (base / primary / radius / size / mode) and custom presets are managed inside the provider and exposed to descendants via `useTheme()` from `@soybeanjs/ui` — no prop drilling, no app-level store.
+
+### FAQ
+
+**Where should I place `SConfigProvider`?**
+Wrap your application root once, typically in `App.vue` or the root layout. It must be an ancestor of every component that relies on theme, locale, direction, toast, dialog, or progress context.
+
+**How do `dir` and `locale` interact?**
+`dir` takes precedence when provided explicitly. When omitted, `ConfigProvider` derives direction from `locale`: registered locales use their declared `dir`; unregistered locales fall back to a built-in RTL prefix map (e.g. `ar` → `rtl`, `en` → `ltr`). If `locale` is also unknown, the final fallback is `ltr`.
+
+**How do I add a locale that is not pre-registered?**
+Import the locale file and register it once: `registerLocale(ar)` (full registry form) or `registerLocale('custom', messages)` (shorthand form). Then pass `locale="ar"` (or your custom key) to `SConfigProvider`. See the "Loading another supported locale" section above.
+
+**How does dark mode work?**
+`createTheme` always generates both light and dark CSS variable sets. The `theme.darkSelector` option controls how the dark set is scoped: `'class'` (default) emits the dark variables under a `.dark` selector, `'media'` emits them under `@media (prefers-color-scheme: dark)`, and any custom string is used verbatim as the selector. With the default `'class'` selector, toggle a `.dark` class on `<html>` (or any ancestor) to switch to dark mode; with `'media'`, the theme follows the user's OS preference automatically.
+
+**Can I nest `SConfigProvider` instances?**
+Yes. Nesting is supported — the inner provider's context overrides the outer for its subtree. This is useful for embedding an RTL section inside an LTR app, or a differently-themed micro-frontend.
+
+**How do I render my own toast UI?**
+Pass `customToast` to opt out of the default `ToastProvider`: `<SConfigProvider customToast>`. Then import `SToastProvider` (or the headless `ToastProvider`) yourself and render custom toast content. The `toast()` imperative API still works because the headless toast state is independent of the rendered UI.

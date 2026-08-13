@@ -3,15 +3,36 @@
 Source URL: https://ui.soybeanjs.cn/components/popconfirm
 Markdown URL: https://ui.soybeanjs.cn/components/popconfirm.md
 Category: Overlay
-Description: A confirmation box component based on Popover, used for lightweight secondary confirmation operations.
+Description: A confirmation box component based on `Popover`, used for lightweight secondary confirmation operations. `SPopconfirm` combines the headless `PopconfirmCompact` (built on the popover primitives) with the `popconfirmVariants` style recipe (13 slots, 6 sizes × 4 types).
 
 ## Overview
 
-A confirmation box component based on Popover, used for lightweight secondary confirmation operations.
+A confirmation box component based on `Popover`, used for lightweight secondary confirmation operations. `SPopconfirm` combines the headless `PopconfirmCompact` (built on the popover primitives) with the `popconfirmVariants` style recipe (13 slots, 6 sizes × 4 types).
+
+Use it for a quick inline confirm (delete, destructive action) next to the trigger. For a richer blocking confirmation use `dialog`; for an unobtrusive hint use `tooltip`.
 
 ## Usage
 
 Usage examples for popconfirm are rendered on the site.
+
+## Features
+
+- 🧩 Built on `Popover` — inherits placement, arrow, portal, dismissable and focus behavior
+- 🎨 4 types — `type="error"`/`"success"`/`"warning"`/`"info"` drive the leading icon and color
+- 🏷️ Title + description + content — `title`/`description`/`content` props or the matching slots
+- 🔘 Confirm/cancel — `confirmText`/`cancelText` (localized from `dialog.confirm`/`dialog.cancel`); `showCancel` defaults to `onlyWarning`
+- 🖼️ Icon toggle — `showIcon` renders the type icon; `showArrow` renders the popper arrow
+- 📐 6 sizes — xs–2xl `size`; per-slot `ui` overrides
+- ♿ Accessible — popup exposes `role="dialog"` labelled by the trigger, focus-managed, `axe-core` clean in the browser e2e
+- 🔒 Disabled — `disabled` blocks the trigger from opening the popconfirm
+
+## Component family
+
+- `SPopconfirm` (styled) — the entry wrapper; `popconfirmVariants` recipe with dynamic slot forwarding
+- `PopconfirmCompact` (headless) — the aggregated composite built on `PopoverRoot`/`PopoverTrigger`/`PopoverPositioner`/`PopoverPopup`
+- `PopconfirmHeader` / `PopconfirmContent` / `PopconfirmFooter` (headless) — layout sections
+- `PopconfirmTitle` / `PopconfirmDescription` (headless) — the title/description
+- `PopconfirmConfirm` / `PopconfirmCancel` (headless) — footer `<button>`s, emit `confirm`/`cancel`
 
 ## Playground
 
@@ -227,3 +248,75 @@ Events for the PopconfirmConfirm component.
 ### PopconfirmTrigger
 
 - No documented props, emits, slots, or slot props were available.
+
+## Notes
+
+### Architecture and benchmark differences
+
+`PopconfirmCompact` composes the popover trigger/positioner/popup with a confirm-style header, content and footer, while every primitive stays style-free and only the UI wrapper injects the `popconfirmVariants` classes. This mirrors radix-ui/shadcn-ui's headless split. Ant Design, Element Plus, Mantine and Naive UI ship a single styled popconfirm with `title`/`description`/`okText`/`cancelText`/`onConfirm` props; SoybeanUI additionally exposes per-slot `*Props`, a `size` scale, a `type` color/icon system, and localized action labels.
+
+| Capability               | SoybeanUI | shadcn/ui | Ant Design Popconfirm | Element Plus Popconfirm | Mantine Popconfirm | Naive UI Popconfirm |
+| :----------------------- | :-------: | :-------: | :-------------------: | :---------------------: | :----------------: | :-----------------: |
+| Built on Popover         |    ✅     |    ✅     |           —           |            —            |         —          |          —          |
+| Headless/styled split    |    ✅     |    ✅     |           —           |            —            |         —          |          —          |
+| Type icon + color        |    ✅     |     —     |           —           |           ✅            |         —          |          —          |
+| Title + description      |    ✅     |    ✅     |          ✅           |           ✅            |         ✅         |         ✅          |
+| Localized confirm/cancel |    ✅     |     —     |           —           |            —            |         —          |          —          |
+| Sizes (6)                |    ✅     |     —     |           —           |            —            |         —          |          —          |
+| Placement (popper)       |    ✅     |    ✅     |          ✅           |           ✅            |         ✅         |         ✅          |
+
+`—` = unsupported or a different interaction model.
+
+### Cautions
+
+- `modal` defaults to `false` for popconfirm (unlike dialog), so it does not block outside interaction or lock body scroll.
+- `showCancel` defaults to `'onlyWarning'` — the cancel button appears only for `type="warning"`. Pass an explicit boolean to override.
+- `confirmText`/`cancelText` default to the localized `dialog.confirm`/`dialog.cancel` messages; override per instance.
+- The popup renders `role="dialog"` and is labelled by the trigger; provide a `title` so the dialog has a clear accessible name.
+- Confirm/cancel emit `confirm`/`cancel` events; the popup dismisses after either action (subject to your own `beforeClose` handling in the parent).
+
+### Roadmap
+
+N/A — popconfirm is feature-complete for the current parity set.
+
+## FAQ
+
+### How do I show a title, description and content?
+
+Pass `title`/`description`/`content` props or the matching slots:
+
+```vue
+<template #trigger><SButton danger>Delete</SButton></template>
+```
+
+### How do I set the type and icon?
+
+Use `type` (`error`/`success`/`warning`/`info`) and toggle `show-icon`:
+
+```vue
+<template #trigger><SButton>Delete</SButton></template>
+```
+
+### How do I customize the action labels?
+
+Set `confirm-text`/`cancel-text`, and control the cancel button with `show-cancel`:
+
+```vue
+<template #trigger><SButton>Delete</SButton></template>
+```
+
+### How do I control the open state?
+
+Bind `open` with `v-model` or use `defaultOpen`:
+
+```vue
+<template #trigger><SButton>Delete</SButton></template>
+```
+
+### How do I disable the trigger?
+
+Set `disabled` to block opening:
+
+```vue
+<template #trigger><SButton>Delete</SButton></template>
+```

@@ -3,17 +3,27 @@
 Source URL: https://ui.soybeanjs.cn/components/select
 Markdown URL: https://ui.soybeanjs.cn/components/select.md
 Category: Forms
-Description: Displays a list of options for the user to pick from—triggered by a button.
+Description: Displays a list of options for the user to pick from, triggered by a button. The trigger renders the selected value (or placeholder), and the popup supports keyboard navigation, typeahead, grouping, multiple selection, and clearable mode. Use it to pick one or more values from a bounded set; for free-text search over a list, use `SCombobox`; for cascading hierarchical data, use `SCascader`.
 
 ## Overview
 
-Displays a list of options for the user to pick from—triggered by a button.
+Displays a list of options for the user to pick from, triggered by a button. The trigger renders the selected value (or placeholder), and the popup supports keyboard navigation, typeahead, grouping, multiple selection, and clearable mode. Use it to pick one or more values from a bounded set; for free-text search over a list, use `SCombobox`; for cascading hierarchical data, use `SCascader`.
 
 ## Usage
 
 Usage examples for select are rendered on the site.
 
-> `SSelect` now delegates option aggregation and default item composition to headless `SelectCompact`. For unstyled, data-driven composition, import `SelectCompact` from `@soybeanjs/headless/select`.
+## Features
+
+- 📊 Data-driven `SelectCompact` API — pass `items` (options use `label` / `value` fields)
+- ⌨️ Full combobox interaction — pointer/keyboard open, Arrow/Home/End navigation, typeahead search, Enter/Space select, Escape close
+- 🗂 Grouping with group labels, separators, and item indicators
+- ✅ `multiple` selection with accumulation and deduplication
+- 🧹 Clearable mode (`selectionBehavior` controls whether clearing toggles or resets)
+- 📍 Item-aligned positioning (`position="item-aligned"`)
+- 📋 Native form submission via a hidden proxy `<select>` (`SelectBubbleSelect`)
+- 📌 `top` / `bottom` slots for fixed header and footer content inside the popup
+- ♿ Full accessibility support — `role="combobox"` / `listbox` / `option`, axe-clean
 
 ## Demos
 
@@ -38,6 +48,7 @@ Properties for the Select component.
 - `showArrow`: Whether to show an arrow. (type `boolean`; optional)
 - `triggerProps`: Properties forwarded to the trigger element. (type `SelectTriggerProps`; optional)
 - `triggerIconProps`: Properties forwarded to the trigger icon element. (type `SelectTriggerIconProps`; optional)
+- `showTriggerIcon`: Whether to show the trigger icon. (type `boolean`; default `true`; optional)
 - `placeholder`: Placeholder. (type `string`; optional)
 - `valueProps`: Properties forwarded to the value element. (type `SelectValueProps`; optional)
 - `portalProps`: Properties forwarded to the portal element. (type `SelectPortalProps`; optional)
@@ -56,6 +67,7 @@ Properties for the Select component.
 - `arrowProps`: Properties forwarded to the arrow element. (type `PopperArrowProps`; optional)
 - `open`: The controlled open state of the Select. Can be bind as `v-model:open`. (type `boolean`; optional)
 - `defaultOpen`: The open state of the select when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; optional)
+- `nullableValue`: The value of the hidden native select option when the model value is nullish. (type `string`; optional)
 - `dir`: The reading direction of the combobox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode. (type `Direction`; optional)
 - `autocomplete`: Native html input `autocomplete` attribute. (type `string`; optional)
 - `disabled`: When `true`, prevents the user from interacting with Select (type `boolean`; optional)
@@ -82,6 +94,8 @@ Events for the Select component.
 
 Slots for the Select component.
 
+- `top`: Custom content rendered at the top of the popup, fixed above the scrollable list. (type `(() => any) | undefined`)
+- `bottom`: Custom content rendered at the bottom of the popup, fixed below the scrollable list. (type `(() => any) | undefined`)
 - `trigger-leading`: Custom content for the trigger leading slot. (type `(() => any) | undefined`)
 - `trigger-value`: Custom content for the trigger value slot. (type `((props: SelectCompactTriggerValueSlotProps<T, M>) => any) | undefined`)
 - `trigger-trailing`: Custom content for the trigger trailing slot. (type `(() => any) | undefined`)
@@ -108,6 +122,7 @@ Properties for the SelectCompact component.
 - `showArrow`: Whether to show an arrow. (type `boolean`; optional)
 - `triggerProps`: Properties forwarded to the trigger element. (type `SelectTriggerProps`; optional)
 - `triggerIconProps`: Properties forwarded to the trigger icon element. (type `SelectTriggerIconProps`; optional)
+- `showTriggerIcon`: Whether to show the trigger icon. (type `boolean`; default `true`; optional)
 - `placeholder`: Placeholder. (type `string`; optional)
 - `valueProps`: Properties forwarded to the value element. (type `SelectValueProps`; optional)
 - `portalProps`: Properties forwarded to the portal element. (type `SelectPortalProps`; optional)
@@ -126,6 +141,7 @@ Properties for the SelectCompact component.
 - `arrowProps`: Properties forwarded to the arrow element. (type `PopperArrowProps`; optional)
 - `open`: The controlled open state of the Select. Can be bind as `v-model:open`. (type `boolean`; optional)
 - `defaultOpen`: The open state of the select when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; optional)
+- `nullableValue`: The value of the hidden native select option when the model value is nullish. (type `string`; optional)
 - `dir`: The reading direction of the combobox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode. (type `Direction`; optional)
 - `autocomplete`: Native html input `autocomplete` attribute. (type `string`; optional)
 - `disabled`: When `true`, prevents the user from interacting with Select (type `boolean`; optional)
@@ -152,6 +168,8 @@ Events for the SelectCompact component.
 
 Slots for the SelectCompact component.
 
+- `top`: Custom content rendered at the top of the popup, fixed above the scrollable list. (type `(() => any) | undefined`)
+- `bottom`: Custom content rendered at the bottom of the popup, fixed below the scrollable list. (type `(() => any) | undefined`)
 - `trigger-leading`: Custom content for the trigger leading slot. (type `(() => any) | undefined`)
 - `trigger-value`: Custom content for the trigger value slot. (type `((props: SelectCompactTriggerValueSlotProps<T, M>) => any) | undefined`)
 - `trigger-trailing`: Custom content for the trigger trailing slot. (type `(() => any) | undefined`)
@@ -258,6 +276,7 @@ Properties for the SelectRoot component.
 
 - `open`: The controlled open state of the Select. Can be bind as `v-model:open`. (type `boolean`; optional)
 - `defaultOpen`: The open state of the select when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; optional)
+- `nullableValue`: The value of the hidden native select option when the model value is nullish. (type `string`; optional)
 - `dir`: The reading direction of the combobox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode. (type `Direction`; optional)
 - `autocomplete`: Native html input `autocomplete` attribute. (type `string`; optional)
 - `disabled`: When `true`, prevents the user from interacting with Select (type `boolean`; optional)
@@ -332,3 +351,54 @@ Properties for the SelectValue component.
 Properties for the SelectViewport component.
 
 - `nonce`: Will add `nonce` attribute to the style tag which can be used by Content Security Policy. <br> If omitted, inherits globally from `ConfigProvider`. (type `string`; optional)
+
+## Notes
+
+### Architecture and benchmark differences
+
+SoybeanUI builds select on a full ComboBox base: `SelectRoot` → `SelectTrigger` (`role="combobox"`) → `SelectValue` (collection label lookup) → `SelectContentImpl` (DismissableLayer + FocusScope + typeahead + keyboard nav) → `SelectItem`, with `SelectBubbleSelect` proxying native form submission. The `scv()` recipe `selectVariants` declares 15 slots and 7 size variants. This mirrors reka-ui / shadcn select semantics with a data-driven `SelectCompact` aggregation as the SoybeanUI differentiator.
+
+| Capability                           | SoybeanUI | reka-ui `Select` | shadcn `Select` | Element Plus `el-select` |
+| :----------------------------------- | :-------: | :--------------: | :-------------: | :----------------------: |
+| headless/styled split                |    ✅     |        ✅        |        —        |            —             |
+| combobox role + keyboard nav         |    ✅     |        ✅        |       ✅        |            ✅            |
+| Typeahead search                     |    ✅     |        ✅        |        —        |            ✅            |
+| Controlled / uncontrolled + multiple |    ✅     |        ✅        |        —        |            ✅            |
+| Grouping + group labels              |    ✅     |        ✅        |       ✅        |            ✅            |
+| Form proxying (BubbleSelect)         |    ✅     |        ✅        |        —        |            ✅            |
+| Item-aligned positioning             |    ✅     |        ✅        |        —        |            —             |
+| Data-driven Compact API              |    ✅     |        —         |        —        |            —             |
+| Virtual scrolling                    |     —     |        —         |        —        |            ✅            |
+| axe-clean (open state)               |    ✅     |        —         |       ✅        |            —             |
+
+### Cautions
+
+- Before the popup first opens, label lookup relies on the data-driven `fallbackLabel` computed from `items` — pass `items` (not just composition children) so the trigger text renders for `defaultValue` / controlled `modelValue`.
+- `virtual` scrolling is not implemented; very large option lists may need custom virtualization.
+- `multiple` with `clearable` uses `selectionBehavior` to decide whether clearing toggles off or resets the selection.
+
+## FAQ
+
+### How do I show the selected label before the popup is opened?
+
+Pass `items` to `SSelect`. `SelectCompact` resolves the label from `items` via `fallbackLabel`, so `defaultValue` / controlled `modelValue` render on the trigger immediately.
+
+### How do I enable multiple selection?
+
+Pass `multiple`. Selections accumulate and deduplicate; `modelValue` becomes an array.
+
+### How do I group options?
+
+Pass grouped `items` — a group entry carries a `label` and a nested `items` array. Group headers render via the `group-label` slot, and separators via `separator`.
+
+### How does the select submit in a native form?
+
+The component renders a hidden native `<select>` (`SelectBubbleSelect`) mirroring the current value, so native form submission and browser autofill work.
+
+### How do I make the trigger show an arrow or custom content?
+
+Use the `trigger-icon` / `value` slots or the `showArrow`-equivalent slot surface; all 15 recipe slots are forwarded by `SSelect`.
+
+### How do I add fixed header or footer content inside the popup?
+
+Use the `top` and `bottom` slots. `top` renders above the scrollable list and `bottom` below it; both stay fixed while only the middle option list scrolls.

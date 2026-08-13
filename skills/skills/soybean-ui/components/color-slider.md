@@ -3,15 +3,36 @@
 Source URL: https://ui.soybeanjs.cn/components/color-slider
 Markdown URL: https://ui.soybeanjs.cn/components/color-slider.md
 Category: Forms
-Description: A single-channel color slider for hue, alpha, and individual RGB/HSL/HSV/OKLCH channels.
+Description: A single-channel color slider for hue, alpha, and individual RGB/HSL/HSV/OKLCH channels. `SColorSlider` combines the headless `ColorSliderRoot`/`ColorSliderTrack`/`ColorSliderThumb` primitives with the shared `sliderVariants` style recipe (via `sliderVariants`).
 
 ## Overview
 
-A single-channel color slider for hue, alpha, and individual RGB/HSL/HSV/OKLCH channels.
+A single-channel color slider for hue, alpha, and individual RGB/HSL/HSV/OKLCH channels. `SColorSlider` combines the headless `ColorSliderRoot`/`ColorSliderTrack`/`ColorSliderThumb` primitives with the shared `sliderVariants` style recipe (via `sliderVariants`).
+
+Use a color slider for a single color channel — typically the hue or alpha channel inside a color picker (paired with `color-area`).
 
 ## Usage
 
 Usage examples for color-slider are rendered on the site.
+
+## Features
+
+- 🧩 Headless/styled split — `ColorSliderCompact` composes track + thumb; `SColorSlider` only injects styles and forwards props/events
+- 🎚️ Single channel — `channel` picks `hue`/`alpha`/`saturation`/`lightness`/`red`/`green`/`blue`/… across color spaces
+- 🎨 Color spaces — `colorSpace` (e.g. `hsl`, `rgb`) with `format` for the emitted string
+- ⌨️ Keyboard — ArrowLeft/Right, PageUp/Down, Home/End adjust the channel; `role="slider"`
+- ↔️ Orientation — horizontal/vertical via the shared slider primitives
+- 📝 Form field — a hidden input via `name` for native form submission
+- 🔒 Disabled — `disabled` disables interaction
+- 📐 6 sizes + colors — xs–2xl `size`, `color` accent; per-slot `ui` overrides
+
+## Component family
+
+- `SColorSlider` (styled) — the entry wrapper; `sliderVariants` recipe with dynamic slot forwarding
+- `ColorSliderRoot` (headless) — the state owner; `modelValue`/`color`, `channel`/`colorSpace`/`format`, value + commit
+- `ColorSliderTrack` (headless) — the channel gradient track
+- `ColorSliderThumb` (headless) — the draggable position indicator
+- `ColorSliderCompact` (headless) — the aggregated composite; composes track + thumb
 
 ## Demo
 
@@ -138,3 +159,58 @@ Properties for the ColorSliderTrack component.
 
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
 - `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
+
+## Notes
+
+### Architecture and benchmark differences
+
+`ColorSliderCompact` owns the track/thumb composition while every primitive stays style-free and only the UI wrapper injects the shared `sliderVariants` classes. This mirrors radix-ui-color/shadcn-ui headless split. Ant Design, Element Plus, Mantine and Naive UI embed the hue/alpha slider inside the color-picker; SoybeanUI exposes a standalone single-channel slider with color-space/channel control, keyboard interaction, native form input and a `size` scale.
+
+| Capability               | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :----------------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
+| Headless/styled split    |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
+| Any channel (hue/alpha…) |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
+| Multiple color spaces    |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
+| Keyboard interaction     |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| Native form input        |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
+| Sizes (6)                |    ✅     |     —     |     —      |      —       |    —    |    —     |
+
+`—` = unsupported or a different interaction model.
+
+### Cautions
+
+- `modelValue` accepts a color string or `ColorValue`; `channel` selects which channel the slider edits, and `format` controls the emitted string.
+- `channel` must be valid for the chosen `colorSpace` (e.g. `hue`/`alpha` in `hsl`).
+- The component emits `update:modelValue`, `update:color`, `change` and `changeEnd`; `changeEnd` fires on pointer/keyboard commit.
+- Provide `name` to submit the channel as a hidden form field.
+- Use with `color-area` (saturation plane) inside a `color-picker` for a complete editor.
+
+### Roadmap
+
+N/A — color-slider is feature-complete for the current parity set.
+
+## FAQ
+
+### How do I use a color slider?
+
+Bind `model-value`, choose a `channel` and `format`:
+
+```vue
+
+```
+
+### How do I edit alpha?
+
+Set `channel="alpha"`:
+
+```vue
+
+```
+
+### How do I pair it with a color area?
+
+Combine with `SColorArea` for the saturation plane:
+
+```vue
+
+```
