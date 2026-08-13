@@ -31,7 +31,7 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile && pnpm build:libs
+        run: pnpm install --frozen-lockfile && pnpm build
 
       - name: Type check
         run: pnpm typecheck
@@ -58,7 +58,7 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile && pnpm build
 
       - name: Install Playwright chromium
         run: pnpm --filter @soybeanjs/ui exec playwright install --with-deps chromium
