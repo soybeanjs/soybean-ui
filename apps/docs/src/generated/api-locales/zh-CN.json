@@ -7103,6 +7103,7 @@
             "modelvalue": "所选项目的受控值。\n\n在需要控制项目状态时使用。可与 `v-model` 绑定",
             "multiple": "确定一次可以选择 \"单个 \"还是 \"多个 \"项目。\n\n该道具将覆盖从 `modelValue` 和 `defaultValue` 中推断出的类型。",
             "name": "字段名称。作为名称/值对的一部分，与其所属形式一起提交。",
+            "nullablevalue": "当模型值为 nullish 时，隐藏的原生下拉菜单选项的值。",
             "open": "选择 \"的受控打开状态。可绑定为 `v-model:open`。",
             "placeholder": "占位符。",
             "placement": "放置。",
@@ -7240,6 +7241,7 @@
             "modelvalue": "所选项目的受控值。\n\n在需要控制项目状态时使用。可与 `v-model` 绑定",
             "multiple": "确定一次可以选择 \"单个 \"还是 \"多个 \"项目。\n\n该道具将覆盖从 `modelValue` 和 `defaultValue` 中推断出的类型。",
             "name": "字段名称。作为名称/值对的一部分，与其所属形式一起提交。",
+            "nullablevalue": "当模型值为 nullish 时，隐藏的原生下拉菜单选项的值。",
             "open": "选择 \"的受控打开状态。可绑定为 `v-model:open`。",
             "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
             "selectionbehavior": "多重选择在集合中应如何表现。"
@@ -12672,6 +12674,7 @@
             "modelvalue": "所选项的受控值。\n\n当需要控制项的状态时使用此属性。可通过 `v-model` 进行绑定",
             "multiple": "决定一次可选中“单个”还是“多个”项目。\n\n此 prop 将覆盖根据 `modelValue` 和 `defaultValue` 推断出的类型。",
             "name": "字段的名称。作为名称/值对的一部分，与其所属表单一同提交。",
+            "nullablevalue": "当模型值为 nullish 时，隐藏的原生下拉菜单选项的值。",
             "open": "Select 控件的“打开”状态。可绑定为 `v-model:open`。",
             "placeholder": "占位符。",
             "placement": "位置。",

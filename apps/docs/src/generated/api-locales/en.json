@@ -7103,6 +7103,7 @@
             "modelvalue": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
             "multiple": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
             "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "nullablevalue": "The value of the hidden native select option when the model value is nullish.",
             "open": "The controlled open state of the Select. Can be bind as `v-model:open`.",
             "placeholder": "Placeholder.",
             "placement": "Placement.",
@@ -7240,6 +7241,7 @@
             "modelvalue": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
             "multiple": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
             "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "nullablevalue": "The value of the hidden native select option when the model value is nullish.",
             "open": "The controlled open state of the Select. Can be bind as `v-model:open`.",
             "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
             "selectionbehavior": "How multiple selection should behave in the collection."
@@ -12672,6 +12674,7 @@
             "modelvalue": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
             "multiple": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
             "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "nullablevalue": "The value of the hidden native select option when the model value is nullish.",
             "open": "The controlled open state of the Select. Can be bind as `v-model:open`.",
             "placeholder": "Placeholder.",
             "placement": "Placement.",
