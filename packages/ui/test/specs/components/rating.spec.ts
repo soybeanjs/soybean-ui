@@ -56,6 +56,33 @@ describe('SRating', () => {
       expect(items[3]?.attributes('data-state')).toBe('empty');
       wrapper.unmount();
     });
+
+    it('renders custom max count of items', () => {
+      const wrapper = mount(SRating, {
+        props: { max: 10 },
+        attachTo: document.body
+      });
+
+      expect(wrapper.findAll('[data-soybean-rating-item]')).toHaveLength(10);
+      wrapper.unmount();
+    });
+
+    it('applies data-orientation horizontal by default', () => {
+      const wrapper = mount(SRating, { attachTo: document.body });
+
+      expect(wrapper.find('[role="slider"]').attributes('data-orientation')).toBe('horizontal');
+      wrapper.unmount();
+    });
+
+    it('applies data-orientation vertical when set', () => {
+      const wrapper = mount(SRating, {
+        props: { orientation: 'vertical' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[role="slider"]').attributes('data-orientation')).toBe('vertical');
+      wrapper.unmount();
+    });
   });
 
   describe('hover preview', () => {
@@ -162,6 +189,78 @@ describe('SRating', () => {
       expect(wrapper.emitted('valueCommit')?.[0]?.[0]).toBe(0);
       wrapper.unmount();
     });
+
+    it('decrements by 1 on ArrowLeft', async () => {
+      const wrapper = mount(SRating, {
+        props: { modelValue: 3 },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[role="slider"]').trigger('keydown', { key: 'ArrowLeft' });
+
+      expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toBe(2);
+      wrapper.unmount();
+    });
+
+    it('decrements by 0.5 when allowHalf on ArrowLeft', async () => {
+      const wrapper = mount(SRating, {
+        props: { modelValue: 3, allowHalf: true },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[role="slider"]').trigger('keydown', { key: 'ArrowLeft' });
+
+      expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toBe(2.5);
+      wrapper.unmount();
+    });
+
+    it('does not exceed max on End', async () => {
+      const wrapper = mount(SRating, {
+        props: { modelValue: 5 },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[role="slider"]').trigger('keydown', { key: 'End' });
+
+      expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+      wrapper.unmount();
+    });
+
+    it('supports uncontrolled defaultValue', () => {
+      const wrapper = mount(SRating, {
+        props: { defaultValue: 3 },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[role="slider"]').attributes('aria-valuenow')).toBe('3');
+      wrapper.unmount();
+    });
+  });
+
+  describe('hover preview', () => {
+    it('emits hoverChange on pointermove', async () => {
+      const wrapper = mount(SRating, {
+        props: { modelValue: 0 },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[data-soybean-rating-item]').trigger('pointermove', { clientX: 5 });
+
+      expect(wrapper.emitted('hoverChange')).toBeTruthy();
+      wrapper.unmount();
+    });
+
+    it('does not emit hoverChange when disabled', async () => {
+      const wrapper = mount(SRating, {
+        props: { disabled: true },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[data-soybean-rating-item]').trigger('pointermove', { clientX: 5 });
+
+      expect(wrapper.emitted('hoverChange')).toBeFalsy();
+      wrapper.unmount();
+    });
   });
 
   describe('disabled state', () => {
@@ -175,6 +274,16 @@ describe('SRating', () => {
 
       expect(wrapper.find('[role="slider"]').attributes('aria-disabled')).toBe('true');
       expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+      wrapper.unmount();
+    });
+
+    it('renders data-disabled attribute', () => {
+      const wrapper = mount(SRating, {
+        props: { disabled: true },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[role="slider"]').attributes('data-disabled')).toBe('');
       wrapper.unmount();
     });
   });
@@ -193,6 +302,52 @@ describe('SRating', () => {
       expect(wrapper.emitted('hoverChange')).toBeFalsy();
       wrapper.unmount();
     });
+
+    it('renders data-readonly attribute', () => {
+      const wrapper = mount(SRating, {
+        props: { readonly: true },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[role="slider"]').attributes('data-readonly')).toBe('');
+      wrapper.unmount();
+    });
+  });
+
+  describe('variants', () => {
+    it('applies size class to root', () => {
+      const wrapper = mount(SRating, {
+        props: { size: 'lg' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[role="slider"]').classes()).toContain('gap-2');
+      wrapper.unmount();
+    });
+
+    it('applies color class to items', () => {
+      const wrapper = mount(SRating, {
+        props: { color: 'primary' },
+        attachTo: document.body
+      });
+
+      const item = wrapper.find('[data-soybean-rating-item]');
+
+      expect(item.classes()).toContain('data-[state=full]:text-primary');
+      wrapper.unmount();
+    });
+
+    it('applies variant class to items', () => {
+      const wrapper = mount(SRating, {
+        props: { variant: 'outline' },
+        attachTo: document.body
+      });
+
+      const item = wrapper.find('[data-soybean-rating-item]');
+
+      expect(item.classes()).toContain('text-muted-foreground/40');
+      wrapper.unmount();
+    });
   });
 
   describe('accessibility', () => {
@@ -205,6 +360,75 @@ describe('SRating', () => {
       const violations = await getA11yViolations(wrapper.element);
 
       expect(violations).toHaveLength(0);
+      wrapper.unmount();
+    });
+
+    it('provides default aria-label from locale', () => {
+      const wrapper = mount(SRating, { attachTo: document.body });
+
+      expect(wrapper.find('[role="slider"]').attributes('aria-label')).toBe('Rating');
+      wrapper.unmount();
+    });
+
+    it('reflects aria-valuetext with count and max', () => {
+      const wrapper = mount(SRating, {
+        props: { modelValue: 3 },
+        attachTo: document.body
+      });
+
+      const valuetext = wrapper.find('[role="slider"]').attributes('aria-valuetext');
+
+      expect(valuetext).toContain('3');
+      expect(valuetext).toContain('5');
+      wrapper.unmount();
+    });
+
+    it('reflects aria-valuetext empty when value is 0', () => {
+      const wrapper = mount(SRating, { attachTo: document.body });
+
+      expect(wrapper.find('[role="slider"]').attributes('aria-valuetext')).toBe('No rating');
+      wrapper.unmount();
+    });
+  });
+
+  describe('form integration', () => {
+    it('renders hidden input when name is provided', () => {
+      const wrapper = mount(SRating, {
+        props: { name: 'rating', modelValue: 3, class: 'form' },
+        attachTo: document.body
+      });
+
+      const input = wrapper.find('input[type="number"]');
+
+      expect(input.exists()).toBe(true);
+      expect(input.attributes('name')).toBe('rating');
+      expect((input.element as HTMLInputElement).value).toBe('3');
+      wrapper.unmount();
+    });
+
+    it('does not render hidden input without name', () => {
+      const wrapper = mount(SRating, {
+        props: { modelValue: 3 },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('input[type="number"]').exists()).toBe(false);
+      wrapper.unmount();
+    });
+  });
+
+  describe('slot', () => {
+    it('renders custom icon slot', () => {
+      const wrapper = mount(SRating, {
+        slots: {
+          icon: '<span class="slot-state">{{ state }}</span>'
+        },
+        attachTo: document.body
+      });
+
+      const states = wrapper.findAll('.slot-state');
+
+      expect(states[0]?.text()).toBe('empty');
       wrapper.unmount();
     });
   });
