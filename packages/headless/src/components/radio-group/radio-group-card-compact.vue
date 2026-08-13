@@ -25,7 +25,16 @@ const emit = defineEmits<RadioGroupCardCompactEmits<T['value']>>();
 
 const slots = defineSlots<RadioGroupCardCompactSlots<T>>();
 
-const forwardedProps = useOmitProps(props, ['items', 'itemProps', 'controlProps', 'indicatorProps', 'labelProps']);
+const forwardedProps = useOmitProps(props, [
+  'items',
+  'itemProps',
+  'controlProps',
+  'indicatorProps',
+  'labelProps',
+  'contentProps',
+  'textContentProps',
+  'descriptionProps'
+]);
 
 const ui = useRadioGroupCardUi();
 

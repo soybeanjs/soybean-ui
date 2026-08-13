@@ -25,6 +25,7 @@ const forwardedProps = useOmitProps(props, ['items', 'rootProps', 'controlProps'
   <CheckboxGroupRoot v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
     <CheckboxCardCompact
       v-for="item in items"
+      v-bind="rootProps"
       :key="item.value"
       :label="item.label"
       :icon="item.icon"
