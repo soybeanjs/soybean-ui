@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useForwardListeners, usePickProps, useOmitProps } from '../../composables';
+import { useControllableState, useForwardListeners, usePickProps, useOmitProps } from '../../composables';
 import type { DateValue } from '../../date';
 import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
@@ -24,6 +24,18 @@ const messages = useLocaleMessages();
 
 const listeners = useForwardListeners(emit);
 
+// The date-picker owns a single internal value shared by both the field and the
+// calendar, so that in uncontrolled mode (only `defaultValue`) a calendar selection
+// still back-fills the field (and vice versa).
+const modelValue = useControllableState<DateValue | undefined, true>(
+  () => props.modelValue,
+  value => {
+    emit('update:modelValue', value);
+  },
+  props.defaultValue,
+  true
+);
+
 const popoverProps = usePickProps(
   props,
   [
@@ -46,20 +58,22 @@ const popoverProps = usePickProps(
   })
 );
 
-const dateFieldProps = usePickProps(props, [
-  'dir',
-  'locale',
-  'modelValue',
-  'defaultValue',
-  'placeholder',
-  'defaultPlaceholder',
-  'disabled',
-  'readonly',
-  'maxValue',
-  'minValue',
-  'isDateUnavailable',
-  'dateFieldProps'
-]);
+const dateFieldProps = usePickProps(
+  props,
+  [
+    'dir',
+    'locale',
+    'placeholder',
+    'defaultPlaceholder',
+    'disabled',
+    'readonly',
+    'maxValue',
+    'minValue',
+    'isDateUnavailable',
+    'dateFieldProps'
+  ],
+  () => ({ modelValue: modelValue.value })
+);
 
 const triggerProps = computed(() => ({
   ...props.triggerProps,
@@ -67,23 +81,29 @@ const triggerProps = computed(() => ({
   'aria-label': props.triggerProps?.['aria-label'] ?? messages.value.datePicker.toggle
 }));
 
-const calendarProps = useOmitProps(props, [
-  'open',
-  'defaultOpen',
-  'modal',
-  'placement',
-  'showArrow',
-  'dateFieldProps',
-  'triggerProps',
-  'portalProps',
-  'positionerProps',
-  'popupProps',
-  'arrowProps',
-  'closeProps'
-]);
+const calendarProps = useOmitProps(
+  props,
+  [
+    'open',
+    'defaultOpen',
+    'modal',
+    'placement',
+    'showArrow',
+    'dateFieldProps',
+    'triggerProps',
+    'portalProps',
+    'positionerProps',
+    'popupProps',
+    'arrowProps',
+    'closeProps',
+    'modelValue',
+    'defaultValue'
+  ],
+  () => ({ modelValue: modelValue.value })
+);
 
 const onUpdateModelValue = (value: DateValue | undefined) => {
-  emit('update:modelValue', value);
+  modelValue.value = value;
 };
 
 const onUpdatePlaceholder = (placeholder: DateValue) => {
@@ -95,7 +115,7 @@ const onUpdatePlaceholder = (placeholder: DateValue) => {
   <DateFieldCompact
     v-bind="dateFieldProps"
     data-soybean-date-picker
-    @update:model-value="emit('update:modelValue', $event)"
+    @update:model-value="onUpdateModelValue"
     @update:placeholder="emit('update:placeholder', $event)"
   >
     <template #leading>

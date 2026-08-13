@@ -22,7 +22,7 @@ const emit = defineEmits<SegmentEmits<T['value']>>();
 
 defineSlots<SegmentSlots<T>>();
 
-const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'fill']);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'fill', 'shape']);
 
 const listeners = useForwardListeners(emit);
 

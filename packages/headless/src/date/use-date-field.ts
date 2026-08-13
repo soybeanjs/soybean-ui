@@ -142,6 +142,9 @@ const segmentBuilders = {
       ...commonSegmentAttrs(props.disabled),
       inputmode: 'text',
       'aria-label': props.messages.dayPeriodSegment,
+      'aria-valuemin': 0,
+      'aria-valuemax': 1,
+      'aria-valuenow': 'dayPeriod' in props.segmentValues ? (props.segmentValues.dayPeriod === 'PM' ? 1 : 0) : 0,
       'aria-valuetext':
         'dayPeriod' in props.segmentValues && props.segmentValues.dayPeriod === null
           ? props.messages.empty
