@@ -93,6 +93,9 @@ const messages: LocaleMessages = {
     ariaLabel: '진행',
     loading: '로딩 중'
   },
+  alert: {
+    close: '알림 닫기'
+  },
   anchor: {
     nav: '앵커 탐색'
   },

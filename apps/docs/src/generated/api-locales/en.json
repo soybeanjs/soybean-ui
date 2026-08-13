@@ -9300,6 +9300,7 @@
       "packages_headless_src_locale_types": {
         "localemessagesoverrides": {
           "members": {
+            "alert": "",
             "anchor": "",
             "autocomplete": "",
             "breadcrumb": "",

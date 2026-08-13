@@ -93,6 +93,9 @@ const messages: LocaleMessages = {
     ariaLabel: 'İlerleme',
     loading: 'Yükleniyor'
   },
+  alert: {
+    close: 'Uyarıyı kapat'
+  },
   anchor: {
     nav: 'Çapa gezinmesi'
   },

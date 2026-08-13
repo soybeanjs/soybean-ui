@@ -93,6 +93,9 @@ const messages: LocaleMessages = {
     ariaLabel: '進度',
     loading: '載入中'
   },
+  alert: {
+    close: '關閉提示'
+  },
   anchor: {
     nav: '錨點導覽'
   },

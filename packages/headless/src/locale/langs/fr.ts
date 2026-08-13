@@ -93,6 +93,9 @@ const messages: LocaleMessages = {
     ariaLabel: 'Progression',
     loading: 'Chargement'
   },
+  alert: {
+    close: "Fermer l'alerte"
+  },
   anchor: {
     nav: "Navigation d'ancrage"
   },

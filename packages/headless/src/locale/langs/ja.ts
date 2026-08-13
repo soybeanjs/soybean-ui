@@ -93,6 +93,9 @@ const messages: LocaleMessages = {
     ariaLabel: '進捗',
     loading: '読み込み中'
   },
+  alert: {
+    close: 'アラートを閉じる'
+  },
   anchor: {
     nav: 'アンカーナビゲーション'
   },

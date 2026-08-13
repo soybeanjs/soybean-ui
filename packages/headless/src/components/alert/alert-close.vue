@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
+import { useLocaleMessages } from '../../locale';
 import Button from '../button/button.vue';
 import { useAlertRootContext, useAlertUi } from './context';
 import type { AlertCloseProps, AlertCloseEmits } from './types';
@@ -14,11 +15,16 @@ const emit = defineEmits<AlertCloseEmits>();
 
 const attrs = useAttrs();
 
+const messages = useLocaleMessages();
+
 const { onOpenChange } = useAlertRootContext('AlertClose');
 
 const cls = useAlertUi('close');
 
-const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? 'Close alert');
+const ariaLabel = computed(() => {
+  const label = attrs['aria-label'];
+  return typeof label === 'string' && label.trim() ? label : messages.value.alert.close;
+});
 
 const onClose = (event: PointerEvent) => {
   emit('close', event);

@@ -93,6 +93,9 @@ const messages: LocaleMessages = {
     ariaLabel: 'Progreso',
     loading: 'Cargando'
   },
+  alert: {
+    close: 'Cerrar alerta'
+  },
   anchor: {
     nav: 'Navegación por anclas'
   },

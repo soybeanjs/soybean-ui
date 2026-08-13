@@ -93,6 +93,9 @@ const messages: LocaleMessages = {
     ariaLabel: 'Progres',
     loading: 'Memuat'
   },
+  alert: {
+    close: 'Tutup alerta'
+  },
   anchor: {
     nav: 'Navigasi jangkar'
   },

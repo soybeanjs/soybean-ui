@@ -1,5 +1,10 @@
 import type { Direction } from '../types';
 
+export interface LocaleAlertMessages {
+  /** Aria-label for the alert close button. */
+  close: string;
+}
+
 export interface LocaleAnchorMessages {
   /** Aria-label for the anchor `<nav>` landmark. */
   nav: string;
@@ -370,6 +375,7 @@ export interface LocaleTextareaMessages {
 }
 
 export interface LocaleMessages {
+  alert: LocaleAlertMessages;
   anchor: LocaleAnchorMessages;
   autocomplete: LocaleAutocompleteMessages;
   breadcrumb: LocaleBreadcrumbMessages;

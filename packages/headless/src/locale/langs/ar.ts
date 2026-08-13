@@ -93,6 +93,9 @@ const messages: LocaleMessages = {
     ariaLabel: 'التقدم',
     loading: 'جارٍ التحميل'
   },
+  alert: {
+    close: 'إغلاق التنبيه'
+  },
   anchor: {
     nav: 'المرساة'
   },
