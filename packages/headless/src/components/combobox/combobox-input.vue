@@ -99,7 +99,22 @@ const onBlur = (event: FocusEvent) => {
   const isInsideContent = document.getElementById(contentId.value)?.contains(nextFocus);
 
   if (!isInsideRoot && !isInsideContent) {
-    onOpenChange(false);
+    // Delay to let FocusScope's focus-restoration (handleFocusOut) run first.
+    // Without this, closing fires before FocusScope can pull focus back inside,
+    // causing a second combobox to immediately close when switching between two.
+    requestAnimationFrame(() => {
+      if (!open.value) {
+        return;
+      }
+
+      const active = document.activeElement;
+      const isStillOutside =
+        !parentElement.value?.contains(active) && !document.getElementById(contentId.value)?.contains(active);
+
+      if (isStillOutside) {
+        onOpenChange(false);
+      }
+    });
   }
 };
 

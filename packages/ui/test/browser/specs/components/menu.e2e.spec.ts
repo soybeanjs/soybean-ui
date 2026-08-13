@@ -80,6 +80,24 @@ describe('SMenuOptions (e2e)', () => {
     unmount();
   });
 
+  it('traps Tab inside the open menu (modal dropdown keeps focus contained)', async () => {
+    const { unmount } = renderMenu();
+
+    await userEvent.click(page.getByRole('button', { name: 'Open menu' }));
+    await expect.element(page.getByRole('menu')).toBeVisible();
+
+    // SDropdownMenuWrapper defaults to `modal: true`, so while open the menu is
+    // a focus trap: Tab cycles through the popup (via focus guards) instead of
+    // escaping to the page. If focus escaped, the dismissable layer would close
+    // the menu on focus-outside.
+    await userEvent.keyboard('{Tab}');
+
+    // The menu is still open after Tab — focus never escaped to the page.
+    await expect.element(page.getByRole('menu')).toBeVisible();
+
+    unmount();
+  });
+
   it('closes the menu on Escape and restores focus to the trigger', async () => {
     const { unmount } = renderMenu();
 

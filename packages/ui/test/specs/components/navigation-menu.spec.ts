@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import SNavigationMenu from '@/components/navigation-menu/navigation-menu.vue';
@@ -412,6 +412,89 @@ describe('SNavigationMenu', () => {
       await wrapper.find('[data-soybean-navigation-menu-trigger]').trigger('click');
 
       expect(wrapper.emitted('update:modelValue')).toBeTruthy();
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('hover open/close timing (reka-ui 04799b61)', () => {
+    const hoverItems = [
+      {
+        value: 'one',
+        label: 'One',
+        href: '/one',
+        children: [{ value: 'one-a', label: 'One A', href: '/one-a' }]
+      },
+      {
+        value: 'two',
+        label: 'Two',
+        href: '/two',
+        children: [{ value: 'two-a', label: 'Two A', href: '/two-a' }]
+      }
+    ];
+
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    it('keeps the menu open when switching between triggers while it is already open', async () => {
+      vi.useFakeTimers();
+
+      const wrapper = mount(SNavigationMenu, {
+        props: { items: hoverItems },
+        attachTo: document.body
+      });
+
+      const triggers = wrapper.findAll('[data-soybean-navigation-menu-trigger]');
+      const findContent = () => wrapper.find('[data-soybean-navigation-menu-content]');
+
+      await triggers[0].trigger('pointermove', { pointerType: 'mouse' });
+      await vi.advanceTimersByTimeAsync(200);
+      await nextTick();
+
+      expect(findContent().exists()).toBe(true);
+
+      // leaving the first trigger schedules a close; entering the second trigger while
+      // the menu is open must switch immediately and cancel the pending close
+      await triggers[0].trigger('pointerleave', { pointerType: 'mouse' });
+      await triggers[1].trigger('pointermove', { pointerType: 'mouse' });
+      await nextTick();
+
+      expect(triggers[1].attributes('data-state')).toBe('open');
+
+      // the pending close scheduled by the first trigger's leave must not fire
+      await vi.advanceTimersByTimeAsync(150);
+      await nextTick();
+
+      expect(triggers[1].attributes('data-state')).toBe('open');
+      expect(findContent().exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+
+    it('closes the menu when the pointer leaves the open content', async () => {
+      vi.useFakeTimers();
+
+      const wrapper = mount(SNavigationMenu, {
+        props: { items: hoverItems },
+        attachTo: document.body
+      });
+
+      const triggers = wrapper.findAll('[data-soybean-navigation-menu-trigger]');
+      const findContent = () => wrapper.find('[data-soybean-navigation-menu-content]');
+
+      await triggers[0].trigger('pointermove', { pointerType: 'mouse' });
+      await vi.advanceTimersByTimeAsync(200);
+      await nextTick();
+
+      expect(findContent().exists()).toBe(true);
+
+      await findContent().trigger('pointerleave', { pointerType: 'mouse' });
+      await vi.advanceTimersByTimeAsync(150);
+      await nextTick();
+
+      // the content stays mounted for the viewport exit animation, so assert the trigger state
+      expect(triggers[0].attributes('data-state')).toBe('closed');
 
       wrapper.unmount();
     });

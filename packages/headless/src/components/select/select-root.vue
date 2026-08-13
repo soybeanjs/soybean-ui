@@ -65,7 +65,7 @@ const formControl = computed(() => isFormControl(triggerElement.value));
       :disabled="disabled"
       :value="modelValue"
     >
-      <option v-if="isNullish(modelValue)" value="" />
+      <option v-if="isNullish(modelValue)" :value="nullableValue" />
       <option v-for="option in options" :key="option.value ?? ''" v-bind="option" />
     </SelectBubbleSelect>
   </PopperRoot>

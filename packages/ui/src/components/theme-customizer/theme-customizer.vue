@@ -14,16 +14,18 @@ import type {
   ThemeRadius,
   ThemeSize
 } from '@soybeanjs/theme';
-import type { SegmentOptionData, SelectOptionData, TabsOptionData } from '@soybeanjs/ui';
 import { useThemeSettings } from '@/theme/use-theme-settings';
 import { useThemeVariants } from '@/theme/use-theme-variants';
 import SButton from '../button/button.vue';
 import { useTheme } from '../config-provider/use-theme';
 import SPalettePicker from '../palette-picker/palette-picker.vue';
 import SSegment from '../segment/segment.vue';
+import type { SegmentOptionData } from '../segment/types';
 import SSelect from '../select/select.vue';
+import type { SelectOptionData } from '../select/types';
 import SSlider from '../slider/slider.vue';
 import STabs from '../tabs/tabs.vue';
+import type { TabsOptionData } from '../tabs/types';
 import ThemeModeSelect from '../theme-mode-select/theme-mode-select.vue';
 import BasePaletteSelect from './base-palette-select.vue';
 import ChartSchemaSelect from './chart-schema-select.vue';

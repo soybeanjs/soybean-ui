@@ -77,6 +77,29 @@ describe('STooltip', () => {
       expect(wrapper.emitted('update:open')![0][0]).toBe(true);
       wrapper.unmount();
     });
+
+    it('closes when another tooltip broadcasts that it opened on document', async () => {
+      const wrapper = mount(STooltip, {
+        props: { portalProps: { disabled: true } },
+        slots,
+        attachTo: document.body
+      });
+
+      await wrapper.find('button').trigger('focus');
+      await nextTick();
+      expect(wrapper.text()).toContain('Tooltip content');
+
+      // The open broadcast is emitted on `document` (see TooltipRoot),
+      // so the positioner must listen there to receive it and close itself.
+      document.dispatchEvent(new CustomEvent('tooltip.open'));
+      await nextTick();
+      // `usePresence` unmounts the positioner via a post-render watcher,
+      // so a second flush is required for the element to be removed.
+      await nextTick();
+
+      expect(wrapper.text()).not.toContain('Tooltip content');
+      wrapper.unmount();
+    });
   });
 
   describe('accessibility', () => {

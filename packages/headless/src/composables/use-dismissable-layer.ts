@@ -123,42 +123,64 @@ export function useDismissableLayer(
     }
   });
 
-  watch(layerElement, nodeVal => {
-    if (!nodeVal) return;
+  /**
+   * Use `watch` with explicit sources (instead of `watchEffect`) so this effect only re-runs when the layer element or
+   * `disableOutsidePointerEvents` change. Reading `layerContext.layersWithOutsidePointerEventsDisabled.size` inside the
+   * callback must NOT be reactive: otherwise adding/removing any other layer would re-run this effect and its cleanup
+   * could prematurely restore the body's `pointer-events` while an ancestor layer is still open.
+   */
+  watch(
+    [layerElement, () => toValue(disableOutsidePointerEvents)],
+    ([nodeVal, shouldDisableOutsidePointerEvents], _, onCleanup) => {
+      if (!nodeVal) return;
 
-    const ownerNode = ownerDocument();
+      const ownerNode = ownerDocument();
 
-    const shouldDisableOutsidePointerEvents = toValue(disableOutsidePointerEvents);
-    if (shouldDisableOutsidePointerEvents) {
-      if (layerContext.layersWithOutsidePointerEventsDisabled.size === 0) {
-        originalBodyPointerEvents = ownerNode.body.style.pointerEvents;
-        ownerNode.body.style.pointerEvents = 'none';
-      }
-      layerContext.layersWithOutsidePointerEventsDisabled.add(nodeVal);
-    }
-
-    layerContext.layers.add(nodeVal);
-
-    onWatcherCleanup(() => {
-      if (shouldDisableOutsidePointerEvents && layerContext.layersWithOutsidePointerEventsDisabled.size === 1) {
-        if (!originalBodyPointerEvents) {
-          const styles = ownerNode.body.style;
-          styles.removeProperty('pointer-events');
-        } else {
-          ownerNode.body.style.pointerEvents = originalBodyPointerEvents;
+      if (shouldDisableOutsidePointerEvents) {
+        if (layerContext.layersWithOutsidePointerEventsDisabled.size === 0) {
+          originalBodyPointerEvents = ownerNode.body.style.pointerEvents;
+          ownerNode.body.style.pointerEvents = 'none';
         }
-      }
+        layerContext.layersWithOutsidePointerEventsDisabled.add(nodeVal);
 
-      /**
-       * We purposefully prevent combining this effect with the `disableOutsidePointerEvents` effect because a change to
-       * `disableOutsidePointerEvents` would remove this layer from the stack and add it to the end again so the
-       * layering order wouldn't be _creation order_. We only want them to be removed from context stacks when
-       * unmounted.
-       */
-      layerContext.layers.delete(nodeVal);
-      layerContext.layersWithOutsidePointerEventsDisabled.delete(nodeVal);
-    });
-  });
+        // Remove this layer from the set on cleanup (re-run via prop toggle, or unmount) and restore the body's
+        // `pointer-events` only once the last disabling layer is gone. Removing here — rather than relying solely on
+        // the unmount-only effect below — keeps the set accurate when `disableOutsidePointerEvents` toggles to `false`
+        // while still mounted (e.g. a modal Menu closing). Checking `size === 0` *after* deletion makes the restore
+        // independent of cleanup ordering.
+        onCleanup(() => {
+          layerContext.layersWithOutsidePointerEventsDisabled.delete(nodeVal);
+
+          if (layerContext.layersWithOutsidePointerEventsDisabled.size === 0) {
+            if (!originalBodyPointerEvents) {
+              ownerNode.body.style.removeProperty('pointer-events');
+            } else {
+              ownerNode.body.style.pointerEvents = originalBodyPointerEvents;
+            }
+          }
+        });
+      }
+    },
+    { immediate: true }
+  );
+
+  /**
+   * Membership in the layer stack is keyed to the layer element only, so a `disableOutsidePointerEvents` toggle never
+   * re-orders the stack. Members are removed only when the layer unmounts.
+   */
+  watch(
+    layerElement,
+    (nodeVal, _, onCleanup) => {
+      if (!nodeVal) return;
+
+      layerContext.layers.add(nodeVal);
+
+      onCleanup(() => {
+        layerContext.layers.delete(nodeVal);
+      });
+    },
+    { immediate: true }
+  );
 
   return {
     pointerEvents

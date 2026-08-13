@@ -29,10 +29,11 @@ const radioItems: MenuRadioOptionData<string>[] = [
 interface MountMenuOptions {
   items?: MenuOptionData<string>[];
   menuProps?: Record<string, unknown>;
+  wrapperProps?: Record<string, unknown>;
   template?: string;
 }
 
-function mountMenu({ items: menuItems = items, menuProps = {}, template }: MountMenuOptions = {}) {
+function mountMenu({ items: menuItems = items, menuProps = {}, wrapperProps = {}, template }: MountMenuOptions = {}) {
   return mount(
     {
       emits: ['select'],
@@ -44,14 +45,15 @@ function mountMenu({ items: menuItems = items, menuProps = {}, template }: Mount
       setup() {
         return {
           items: menuItems,
-          menuProps
+          menuProps,
+          wrapperProps
         };
       },
       template:
         template ??
         `
         <SConfigProvider>
-          <SDropdownMenuWrapper :portal-props="{ disabled: true }">
+          <SDropdownMenuWrapper :portal-props="{ disabled: true }" v-bind="wrapperProps">
             <template #trigger>
               <button type="button">Open menu</button>
             </template>
@@ -317,6 +319,65 @@ describe('SMenuOptions', () => {
         }
       });
       expect(violations).toHaveLength(0);
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('Tab key behavior', () => {
+    it('lets Tab move focus out of a non-modal dropdown menu', async () => {
+      const wrapper = mountMenu({ wrapperProps: { modal: false } });
+
+      await openMenu(wrapper);
+
+      const rootMenu = wrapper.find('[role="menu"]');
+      const event = new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true });
+      rootMenu.element.dispatchEvent(event);
+      await nextTick();
+
+      // Non-modal menus must not prevent Tab so focus can move to the next
+      // focusable element on the page.
+      expect(event.defaultPrevented).toBe(false);
+
+      wrapper.unmount();
+    });
+
+    it('traps Tab inside a modal dropdown menu', async () => {
+      const wrapper = mountMenu(); // modal defaults to true
+
+      await openMenu(wrapper);
+
+      const rootMenu = wrapper.find('[role="menu"]');
+      const event = new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true });
+      rootMenu.element.dispatchEvent(event);
+      await nextTick();
+
+      expect(event.defaultPrevented).toBe(true);
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('highlight state', () => {
+    it('removes data-highlighted when the pointer leaves a menu item', async () => {
+      const wrapper = mountMenu({ wrapperProps: { modal: false } });
+
+      await openMenu(wrapper);
+
+      const item = wrapper.findAll('[role="menuitem"]')[0];
+
+      // hovering the item highlights it (focus + data-highlighted)
+      await item.trigger('pointermove', { pointerType: 'mouse' });
+      await nextTick();
+
+      expect(item.attributes('data-highlighted')).toBeDefined();
+
+      // leaving the item clears the highlight
+      await item.trigger('pointerleave', { pointerType: 'mouse' });
+      await nextTick();
+      await nextTick();
+
+      expect(item.attributes('data-highlighted')).toBeUndefined();
 
       wrapper.unmount();
     });

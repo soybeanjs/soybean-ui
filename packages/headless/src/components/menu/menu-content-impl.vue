@@ -143,8 +143,10 @@ const onKeyDown = (event: KeyboardEvent) => {
   const collectionItems = rovingFocusGroupRef.value?.getItems() ?? [];
 
   if (isKeyDownInside) {
-    // menus should not be navigated using tab key so we prevent it
-    if (event.key === 'Tab') {
+    // menus should not be navigated using the tab key; only trap it for modal
+    // menus. Non-modal menus (e.g. dropdown menus) let Tab move focus out
+    // naturally (FocusScope handles the actual trapping for modal menus).
+    if (event.key === 'Tab' && modal.value) {
       event.preventDefault();
     }
     if (!isModifierKey && isCharacterKey) {

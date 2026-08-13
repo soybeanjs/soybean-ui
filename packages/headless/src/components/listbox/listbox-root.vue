@@ -36,7 +36,9 @@ const {
   highlightSelected,
   highlightFirstItem,
   highlightItem,
-  getItems
+  getItems,
+  onLeave,
+  onFocusOut
 } = provideListboxRootContext({
   ...transformPropsToContext(props, ['orientation', 'disabled', 'highlightOnHover', 'selectionBehavior']),
   dir,
@@ -84,7 +86,7 @@ defineExpose({
     :data-disabled="disabled ? '' : undefined"
     :dir="dir"
     @pointerleave="onLeave"
-    @focusout="onFocusout"
+    @focusout="onFocusOut"
   >
     <slot :model-value="modelValue" />
 

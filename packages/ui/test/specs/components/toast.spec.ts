@@ -60,4 +60,33 @@ describe('Toaster', () => {
     await vi.runAllTimersAsync();
     wrapper.unmount();
   });
+
+  it('announces toast title and description as plain text (not JSON)', async () => {
+    vi.useFakeTimers();
+
+    const wrapper = mount(SToastProvider);
+
+    const toastId = toast('Scheduled: Catch up', {
+      description: 'A plain text description',
+      duration: Infinity
+    });
+
+    await vi.runAllTimersAsync();
+    await nextTick();
+
+    const toastNode = wrapper.find('[data-soybean-toast]');
+    expect(toastNode.exists()).toBe(true);
+
+    const text = toastNode.text();
+    expect(text).toContain('Scheduled: Catch up');
+    expect(text).toContain('A plain text description');
+
+    // The aria-live region must announce readable text, never a
+    // JSON-stringified array (e.g. `["Scheduled: Catch up"]`).
+    expect(text).not.toMatch(/[[\]"]/);
+
+    toast.dismiss(toastId);
+    await vi.runAllTimersAsync();
+    wrapper.unmount();
+  });
 });

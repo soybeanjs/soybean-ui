@@ -81,10 +81,10 @@ watchPostEffect(() => {
   };
 
   window.addEventListener('scroll', handleScroll);
-  window.addEventListener(TOOLTIP_OPEN, onClose);
+  document.addEventListener(TOOLTIP_OPEN, onClose);
   onWatcherCleanup(() => {
     window.removeEventListener('scroll', handleScroll);
-    window.removeEventListener(TOOLTIP_OPEN, onClose);
+    document.removeEventListener(TOOLTIP_OPEN, onClose);
   });
 });
 

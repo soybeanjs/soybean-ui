@@ -1,4 +1,4 @@
-import { computed, shallowRef } from 'vue';
+import { computed, ref, shallowRef } from 'vue';
 import { refAutoReset, useDebounceFn, useEventListener } from '@vueuse/core';
 import { getDisclosureState } from '../../shared';
 import { useCollection, useContext, useForwardElement, useUiContext } from '../../composables';
@@ -37,6 +37,7 @@ export const [provideNavigationMenuRootContext, useNavigationMenuRootContext] = 
     const previousValue = shallowRef<string | undefined>('');
 
     const isDelaySkipped = refAutoReset(false, skipDelayDuration.value);
+    const skipNextClose = ref(false);
     const computedDelay = computed(() => {
       const isOpen = modelValue.value !== '';
       if (isOpen || isDelaySkipped.value) {
@@ -49,17 +50,30 @@ export const [provideNavigationMenuRootContext, useNavigationMenuRootContext] = 
     const debouncedFn = useDebounceFn((val?: string) => {
       // passing `undefined` meant to reset the debounce timer
       if (typeof val === 'string') {
+        if (val === '' && skipNextClose.value) {
+          skipNextClose.value = false;
+          return;
+        }
         previousValue.value = modelValue.value;
         modelValue.value = val;
+        if (val === '') {
+          isDelaySkipped.value = true;
+        }
       }
     }, computedDelay);
 
     const onTriggerEnter = (val: string) => {
-      debouncedFn(val);
+      if (modelValue.value !== '') {
+        skipNextClose.value = true;
+        previousValue.value = modelValue.value;
+        modelValue.value = val;
+      } else {
+        debouncedFn(val);
+      }
     };
 
     const onTriggerLeave = () => {
-      isDelaySkipped.value = true;
+      skipNextClose.value = false;
       debouncedFn('');
     };
 
@@ -69,6 +83,7 @@ export const [provideNavigationMenuRootContext, useNavigationMenuRootContext] = 
 
     const onContentLeave = () => {
       if (!disablePointerLeaveClose.value) {
+        skipNextClose.value = false;
         debouncedFn('');
       }
     };

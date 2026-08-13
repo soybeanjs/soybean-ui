@@ -45,20 +45,44 @@ const {
 
 const [contentElement, setContentElement] = useExposedElement(onPopupElementChange);
 
+function isEventTargetWithinCombobox(target: EventTarget | null) {
+  const rootElement = parentElement.value;
+  // The content can be teleported (portal) out of the root, so treat both the root
+  // and the popup content as "inside the combobox".
+  const popupElement = contentElement.value;
+  const isInside = (node: EventTarget | null) =>
+    Boolean(rootElement?.contains(node as Node) || popupElement?.contains(node as Node));
+
+  if (isInside(target)) {
+    return true;
+  }
+
+  // A `<label>` associated (via `for`) with an element inside the combobox forwards its
+  // click/focus to that control, so interacting with it should not dismiss the content.
+  // Without this, clicking such a label while open dismisses on `pointerdown` and the
+  // forwarded click/focus immediately re-opens it.
+  const label = target instanceof Element ? target.closest('label') : null;
+  const control = label?.control;
+
+  return Boolean(control) && isInside(control as EventTarget);
+}
+
 const { pointerEvents } = useDismissableLayer(contentElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
   },
   onPointerDownOutside: event => {
-    if (parentElement.value?.contains(event.target as Node)) {
+    // if clicking inside the combobox (or a label tied to it), prevent dismiss
+    if (isEventTargetWithinCombobox(event.target)) {
       event.preventDefault();
     }
 
     emit('pointerDownOutside', event);
   },
   onFocusOutside: event => {
-    if (parentElement.value?.contains(event.target as Node)) {
+    // if focusing inside the combobox (or a label tied to it), prevent dismiss
+    if (isEventTargetWithinCombobox(event.target)) {
       event.preventDefault();
     }
 

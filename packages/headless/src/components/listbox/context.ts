@@ -55,11 +55,11 @@ export const [provideListboxRootContext, useListboxRootContext] = useContext(
       }, 1);
     };
 
-    const changeHighlight = (el: HTMLElement, scrollIntoView = true) => {
+    const changeHighlight = (el: HTMLElement, scrollIntoView = true, focus?: boolean) => {
       if (!el) return;
 
       highlightedElement.value = el;
-      if (focusable.value) {
+      if (focus ?? focusable.value) {
         highlightedElement.value.focus();
       }
       if (scrollIntoView) {

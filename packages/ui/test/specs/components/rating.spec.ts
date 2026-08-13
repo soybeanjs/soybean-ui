@@ -58,6 +58,43 @@ describe('SRating', () => {
     });
   });
 
+  describe('hover preview', () => {
+    it('previews the hovered item via data-state on hover', async () => {
+      const wrapper = mount(SRating, {
+        props: { modelValue: 1 },
+        attachTo: document.body
+      });
+
+      const items = wrapper.findAll('[data-soybean-rating-item]');
+
+      await items[2]?.trigger('pointerenter');
+
+      expect(items[0]?.attributes('data-state')).toBe('full');
+      expect(items[1]?.attributes('data-state')).toBe('full');
+      expect(items[2]?.attributes('data-state')).toBe('full');
+      expect(items[3]?.attributes('data-state')).toBe('empty');
+      wrapper.unmount();
+    });
+
+    it('resets the preview to the model value on pointer leave of the root', async () => {
+      const wrapper = mount(SRating, {
+        props: { modelValue: 1 },
+        attachTo: document.body
+      });
+
+      const items = wrapper.findAll('[data-soybean-rating-item]');
+
+      await items[2]?.trigger('pointerenter');
+      await wrapper.find('[role="slider"]').trigger('pointerleave');
+
+      expect(items[0]?.attributes('data-state')).toBe('full');
+      expect(items[1]?.attributes('data-state')).toBe('empty');
+      expect(items[2]?.attributes('data-state')).toBe('empty');
+      expect(items[3]?.attributes('data-state')).toBe('empty');
+      wrapper.unmount();
+    });
+  });
+
   describe('value state', () => {
     it('emits update:modelValue and valueCommit on ArrowRight', async () => {
       const wrapper = mount(SRating, {

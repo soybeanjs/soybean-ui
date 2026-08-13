@@ -416,6 +416,19 @@ describe('SStepper', () => {
       expect(wrapper.find('[data-soybean-stepper-indicator]').classes()).toContain('size-6');
       wrapper.unmount();
     });
+
+    it('renders the indicator as a <span> by default', () => {
+      const wrapper = mount(SStepper, {
+        props: { items },
+        attachTo: document.body
+      });
+
+      const indicators = wrapper.findAll('[data-soybean-stepper-indicator]');
+
+      expect(indicators.length).toBeGreaterThan(0);
+      expect(indicators[0].element.tagName).toBe('SPAN');
+      wrapper.unmount();
+    });
   });
 
   describe('localization', () => {

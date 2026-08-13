@@ -4,6 +4,7 @@ import { mount } from '@vue/test-utils';
 import type { VueWrapper } from '@vue/test-utils';
 import {
   ScrollAreaCompact,
+  ScrollAreaCorner,
   ScrollAreaRoot,
   ScrollAreaScrollbar,
   ScrollAreaThumb,
@@ -566,6 +567,53 @@ describe('SScrollArea', () => {
       expect(wrapper.find('[data-soybean-scroll-area-corner]').exists()).toBe(false);
       wrapper.unmount();
     });
+
+    it('clears the scrollbar visible registration on unmount so the corner does not stay visible', async () => {
+      // Regression guard: on scrollbar unmount the root's scrollbarX/Y visible
+      // registration must be reset, otherwise the corner (which requires both
+      // scrollbars visible) would keep rendering a stale element.
+      const showVertical = ref(true);
+      const wrapper = mount(
+        {
+          components: {
+            ScrollAreaRoot,
+            ScrollAreaViewport,
+            ScrollAreaScrollbar,
+            ScrollAreaThumb,
+            ScrollAreaCorner
+          },
+          setup() {
+            return { showVertical };
+          },
+          template: `
+            <ScrollAreaRoot type="always">
+              <ScrollAreaViewport>
+                <div>Scrollable Content</div>
+              </ScrollAreaViewport>
+              <ScrollAreaScrollbar v-if="showVertical" orientation="vertical">
+                <ScrollAreaThumb />
+              </ScrollAreaScrollbar>
+              <ScrollAreaScrollbar orientation="horizontal">
+                <ScrollAreaThumb />
+              </ScrollAreaScrollbar>
+              <ScrollAreaCorner />
+            </ScrollAreaRoot>
+          `
+        },
+        { attachTo: document.body }
+      );
+
+      mockOverflowMetrics(wrapper);
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-scroll-area-corner]').exists()).toBe(true);
+
+      showVertical.value = false;
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-scroll-area-corner]').exists()).toBe(false);
+      wrapper.unmount();
+    });
   });
 
   describe('unmount safety', () => {
@@ -591,6 +639,23 @@ describe('SScrollArea', () => {
       expect(() => vi.advanceTimersByTime(200)).not.toThrow();
 
       vi.useRealTimers();
+    });
+
+    it('removes the viewport scroll listener on unmount', () => {
+      const wrapper = mount(SScrollArea, {
+        props: { class: 'h-40 w-40' },
+        slots: { default: '<div>Scrollable Content</div>' },
+        attachTo: document.body
+      });
+
+      const viewport = wrapper.find('[data-soybean-scroll-area-viewport]').element as HTMLElement;
+      const removeListenerSpy = vi.spyOn(viewport, 'removeEventListener');
+
+      wrapper.unmount();
+
+      // The scrollbar must tear down its viewport 'scroll' listener so no stale
+      // listener (or RAF-backed update loop) survives the component's lifetime.
+      expect(removeListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function));
     });
   });
 });

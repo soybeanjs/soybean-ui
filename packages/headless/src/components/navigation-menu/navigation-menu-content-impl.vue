@@ -84,6 +84,10 @@ const { pointerEvents } = useDismissableLayer(contentElement, {
     }
   },
   onDismiss: () => {
+    // ignore dismissal of inactive content: only the currently active content
+    // may bubble the root dismiss event (multi-content + unmountOnHide=false)
+    if (modelValue.value !== value) return;
+
     const event = new Event(EVENT_ROOT_CONTENT_DISMISS, {
       bubbles: true,
       cancelable: true

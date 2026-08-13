@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
+import { RadioGroupControl, RadioGroupItem, RadioGroupRoot } from '@soybeanjs/headless/radio-group';
 import SRadioGroup from '@/components/radio-group/radio-group.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -203,6 +205,28 @@ describe('SRadioGroup', () => {
       const controlId = wrapper.findAll('[role="radio"]')[0].attributes('id');
       expect(controlId).toBeTruthy();
       expect(labels[0].attributes('for')).toBe(controlId);
+      wrapper.unmount();
+    });
+
+    it('does not fall back to the item value as the accessible name when no label is associated', async () => {
+      document.body.innerHTML = '';
+      const wrapper = mount(
+        {
+          components: { RadioGroupRoot, RadioGroupItem, RadioGroupControl },
+          template: `
+            <RadioGroupRoot>
+              <RadioGroupItem value="option-1">
+                <RadioGroupControl id="r1" />
+              </RadioGroupItem>
+            </RadioGroupRoot>
+          `
+        },
+        { attachTo: document.body }
+      );
+
+      await nextTick();
+
+      expect(wrapper.find('[role="radio"]').attributes('aria-label')).toBeUndefined();
       wrapper.unmount();
     });
   });

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch, watchPostEffect } from 'vue';
-import { useResizeObserver } from '@vueuse/core';
+import { useMounted, useResizeObserver } from '@vueuse/core';
 import { Primitive } from '../primitive';
 import { tabsCssVars } from './shared';
 import { useTabsRootContext, useTabsUi } from './context';
@@ -15,6 +15,8 @@ defineProps<TabsIndicatorProps>();
 const { listElement, modelValue, dir, orientation } = useTabsRootContext('TabsIndicator');
 
 const cls = useTabsUi('indicator');
+
+const isMounted = useMounted();
 
 interface IndicatorStyle {
   size: number | null;
@@ -83,7 +85,7 @@ watch(
 
 <template>
   <Primitive
-    v-if="typeof indicatorStyle.size === 'number'"
+    v-if="isMounted && typeof indicatorStyle.size === 'number'"
     data-soybean-tabs-indicator
     :as="as"
     :as-child="asChild"

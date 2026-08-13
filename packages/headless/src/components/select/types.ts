@@ -29,6 +29,8 @@ export interface SelectRootProps<T extends DefinedValue = DefinedValue, M extend
   open?: boolean;
   /** The open state of the select when it is initially rendered. Use when you do not need to control its open state. */
   defaultOpen?: boolean;
+  /** The value of the hidden native select option when the model value is nullish. */
+  nullableValue?: string;
   /**
    * The reading direction of the combobox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or
    * assumes LTR (left-to-right) reading mode.

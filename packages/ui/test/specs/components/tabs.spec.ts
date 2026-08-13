@@ -431,6 +431,44 @@ describe('STabs', () => {
 
       wrapper.unmount();
     });
+
+    it('only renders the indicator after mount and when a tab is active', async () => {
+      // No active tab and no default value → indicator must stay unmounted even after mount
+      const wrapper = mount(STabs, {
+        props: { items },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tabs-indicator]').exists()).toBe(false);
+
+      // Activating a tab causes the indicator to appear via a normal reactive update
+      await wrapper.findAll('[role="tab"]')[0].trigger('mousedown', { button: 0 });
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tabs-indicator]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+
+    it('defers the indicator render until after mount even with an active tab', async () => {
+      // Even though an active tab exists to measure, the indicator is not rendered
+      // synchronously at mount (isMounted is still false) — guarding against hydration mismatch.
+      const wrapper = mount(STabs, {
+        props: { items, modelValue: 'tab-1' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-tabs-indicator]').exists()).toBe(false);
+
+      // After the mounted reactive flush, the indicator pops in
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tabs-indicator]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
   });
 
   describe('variants', () => {

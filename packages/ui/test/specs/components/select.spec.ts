@@ -323,6 +323,44 @@ describe('SSelect', () => {
     });
   });
 
+  describe('nullableValue', () => {
+    it('uses nullableValue for the hidden native select option when the model value is nullish', () => {
+      const wrapper = mount(
+        {
+          components: { SSelect },
+          data() {
+            return { items };
+          },
+          template: `<form><SSelect :items="items" class="form" name="test" nullable-value="null" /></form>`
+        },
+        { attachTo: document.body }
+      );
+
+      const option = document.body.querySelector<HTMLOptionElement>('select option');
+
+      expect(option?.value).toBe('null');
+      wrapper.unmount();
+    });
+
+    it('defaults the hidden native select option value to empty when nullableValue is not set', () => {
+      const wrapper = mount(
+        {
+          components: { SSelect },
+          data() {
+            return { items };
+          },
+          template: `<form><SSelect :items="items" class="form" name="test" /></form>`
+        },
+        { attachTo: document.body }
+      );
+
+      const option = document.body.querySelector<HTMLOptionElement>('select option');
+
+      expect(option?.value).toBe('');
+      wrapper.unmount();
+    });
+  });
+
   describe('disabled state', () => {
     it('prevents opening when disabled', async () => {
       const wrapper = mount(SSelect, {

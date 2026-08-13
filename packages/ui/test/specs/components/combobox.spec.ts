@@ -444,6 +444,40 @@ describe('SCombobox', () => {
       expect(document.body.querySelector('[role="listbox"]')).not.toBeNull();
       wrapper.unmount();
     });
+
+    it('refocuses the input after selecting an item so raw input is not committed on blur', async () => {
+      const wrapper = mount(SCombobox, {
+        props: {
+          items,
+          multiple: true
+        },
+        attachTo: document.body
+      });
+
+      await openCombobox(wrapper);
+      await setSearchTerm('app');
+
+      const input = getComboboxInput();
+      expect(input).not.toBeNull();
+      expect(input?.value).toBe('app');
+
+      // In a real browser, clicking an option first blurs the input, which would
+      // let `addOnBlur` commit the raw (uncommitted) query text as a value/tag.
+      input?.blur();
+      await nextTick();
+
+      const option = document.body.querySelector('[role="option"]') as HTMLElement | null;
+      expect(option).not.toBeNull();
+
+      option?.click();
+      await nextTick();
+
+      // After selecting the item the combobox input must be refocused, so the raw
+      // query text is NOT added as an extra value on a subsequent blur.
+      expect(document.activeElement).toBe(input);
+      expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toEqual(['apple']);
+      wrapper.unmount();
+    });
   });
 
   describe('controlled open', () => {
@@ -548,6 +582,125 @@ describe('SCombobox', () => {
 
       expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual([undefined]);
       expect(wrapper.get('button').text()).toContain('Pick a fruit');
+      wrapper.unmount();
+    });
+  });
+
+  describe('associated label interaction', () => {
+    it('keeps the content open when interacting with a label tied to a control inside', async () => {
+      const wrapper = mount(SCombobox, {
+        props: { items },
+        attachTo: document.body
+      });
+
+      await openCombobox(wrapper);
+      // The document `pointerdown` listener is registered via `setTimeout(0)`.
+      await new Promise(resolve => setTimeout(resolve, 1));
+
+      const input = getComboboxInput();
+      expect(input).not.toBeNull();
+      (input as HTMLInputElement).id = 'combobox-input';
+
+      const label = document.createElement('label');
+      label.setAttribute('for', 'combobox-input');
+      label.textContent = 'Fruit';
+      document.body.appendChild(label);
+
+      label.dispatchEvent(new Event('pointerdown', { bubbles: true }));
+      // Wait as long as a real dismiss would take so a regression that fails to
+      // prevent it is caught.
+      await new Promise(resolve => setTimeout(resolve, 1));
+      await nextTick();
+
+      expect(document.body.querySelector('[role="listbox"]')).not.toBeNull();
+
+      label.remove();
+      wrapper.unmount();
+    });
+
+    it('dismisses the content when interacting with an unrelated label', async () => {
+      const wrapper = mount(SCombobox, {
+        props: { items },
+        attachTo: document.body
+      });
+
+      await openCombobox(wrapper);
+      await new Promise(resolve => setTimeout(resolve, 1));
+      expect(document.body.querySelector('[role="listbox"]')).not.toBeNull();
+
+      const externalLabel = document.createElement('label');
+      externalLabel.textContent = 'Unrelated';
+      document.body.appendChild(externalLabel);
+
+      externalLabel.dispatchEvent(new Event('pointerdown', { bubbles: true }));
+      await new Promise(resolve => setTimeout(resolve, 1));
+      await nextTick();
+
+      expect(document.body.querySelector('[role="listbox"]')).toBeNull();
+
+      externalLabel.remove();
+      wrapper.unmount();
+    });
+  });
+
+  describe('deferred blur close', () => {
+    it('keeps the content open when focus is restored inside before the deferred close fires', async () => {
+      const wrapper = mount(SCombobox, {
+        props: { items },
+        attachTo: document.body
+      });
+
+      await openCombobox(wrapper);
+
+      const input = getComboboxInput();
+      expect(input).not.toBeNull();
+      input?.focus();
+
+      const externalButton = document.createElement('button');
+      externalButton.textContent = 'External';
+      document.body.appendChild(externalButton);
+
+      // Synthetic blur with relatedTarget outside, but document.activeElement stays
+      // inside — simulates FocusScope restoring focus before the deferred close runs.
+      await new DOMWrapper(input as Element).trigger('blur', { relatedTarget: externalButton });
+
+      await new Promise(resolve => requestAnimationFrame(resolve));
+      await nextTick();
+
+      expect(document.body.querySelector('[role="listbox"]')).not.toBeNull();
+
+      externalButton.remove();
+      wrapper.unmount();
+    });
+
+    it('keeps the content open when a real focus move to an external element is restored inside before the deferred close fires', async () => {
+      const wrapper = mount(SCombobox, {
+        props: { items },
+        attachTo: document.body
+      });
+
+      await openCombobox(wrapper);
+
+      const input = getComboboxInput();
+      expect(input).not.toBeNull();
+
+      const externalButton = document.createElement('button');
+      externalButton.textContent = 'External';
+      document.body.appendChild(externalButton);
+
+      // A real focus move fires the input `blur` (relatedTarget outside), but the
+      // combobox's focus management restores focus back inside before the deferred
+      // close callback runs. The deferred re-check must skip the close.
+      input?.focus();
+      externalButton.focus();
+
+      await new Promise(resolve => requestAnimationFrame(resolve));
+      await nextTick();
+
+      expect(document.activeElement).toBe(input);
+      expect(document.body.querySelector('[role="listbox"]')).not.toBeNull();
+
+      externalButton.remove();
       wrapper.unmount();
     });
   });

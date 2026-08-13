@@ -66,7 +66,7 @@ const onPointermove = () => {
   if (isHighlighted.value || !itemElement.value) return;
 
   if (highlightOnHover.value) {
-    changeHighlight(itemElement.value, false);
+    changeHighlight(itemElement.value, false, false);
 
     return;
   }

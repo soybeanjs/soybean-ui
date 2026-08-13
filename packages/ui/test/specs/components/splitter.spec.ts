@@ -630,6 +630,43 @@ describe('Splitter', () => {
       wrapper.unmount();
     });
 
+    // Regression: a collapsed panel must reflect data-state="collapsed" even
+    // when its reported size settles at a float epsilon from collapsedSize
+    // (mirrors reka-ui fix: fuzzy-compare panelSize against collapsedSize
+    // instead of strict equality).
+    it('reflects data-state="collapsed" for a collapsed panel with a non-zero collapsed size', async () => {
+      const panelRef = ref<{ collapse: () => void } | null>(null);
+      const wrapper = mount(
+        {
+          components: { SSplitterGroup, SSplitterPanel, SSplitterResizeHandle },
+          template: `
+            <SSplitterGroup>
+              <SSplitterPanel ref="panelRef" collapsible :collapsed-size="20" :min-size="30" :default-size="60">A</SSplitterPanel>
+              <SSplitterResizeHandle aria-label="Resize" />
+              <SSplitterPanel :default-size="40">B</SSplitterPanel>
+            </SSplitterGroup>
+          `,
+          setup() {
+            return { panelRef };
+          }
+        },
+        { attachTo: document.body }
+      );
+
+      await nextTick();
+
+      const panel = wrapper.find('[data-panel]');
+
+      expect(panel.attributes('data-state')).toBe('expanded');
+
+      panelRef.value?.collapse();
+      await nextTick();
+
+      expect(panel.attributes('data-state')).toBe('collapsed');
+      expect(Number(panel.attributes('data-panel-size'))).toBeCloseTo(20, 1);
+      wrapper.unmount();
+    });
+
     it('does not set data-state on non-collapsible panel', async () => {
       const wrapper = mount(
         {
