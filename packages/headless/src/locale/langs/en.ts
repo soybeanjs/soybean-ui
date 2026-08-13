@@ -79,6 +79,9 @@ const messages: LocaleMessages = {
   textarea: {
     clear: 'Clear textarea'
   },
+  tag: {
+    remove: 'Remove {label}'
+  },
   tagsInput: {
     addTag: 'Add tag',
     clear: 'Clear tags'

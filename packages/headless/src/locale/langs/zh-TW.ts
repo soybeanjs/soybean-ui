@@ -79,6 +79,9 @@ const messages: LocaleMessages = {
   textarea: {
     clear: '清除文字區域'
   },
+  tag: {
+    remove: '移除 {label}'
+  },
   tagsInput: {
     addTag: '新增標籤',
     clear: '清除標籤'

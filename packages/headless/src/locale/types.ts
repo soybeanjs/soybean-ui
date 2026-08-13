@@ -346,6 +346,14 @@ export interface LocaleTagsInputMessages {
   clear: string;
 }
 
+export interface LocaleTagMessages {
+  /**
+   * Aria-label for the close button of a closable tag.
+   * Supports the `{label}` placeholder.
+   */
+  remove: string;
+}
+
 export interface LocaleTreeMenuMessages {
   /**
    * Aria-label template for the item actions trigger button.
@@ -385,6 +393,7 @@ export interface LocaleMessages {
   slider: LocaleSliderMessages;
   stepper: LocaleStepperMessages;
   table: LocaleTableMessages;
+  tag: LocaleTagMessages;
   tagsInput: LocaleTagsInputMessages;
   textarea: LocaleTextareaMessages;
   treeMenu: LocaleTreeMenuMessages;

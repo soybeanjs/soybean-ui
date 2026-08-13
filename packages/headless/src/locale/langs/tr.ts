@@ -79,6 +79,9 @@ const messages: LocaleMessages = {
   textarea: {
     clear: 'Metin alanını temizle'
   },
+  tag: {
+    remove: '{label} kaldır'
+  },
   tagsInput: {
     addTag: 'Etiket ekle',
     clear: 'Etiketleri temizle'

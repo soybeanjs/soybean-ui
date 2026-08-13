@@ -79,6 +79,9 @@ const messages: LocaleMessages = {
   textarea: {
     clear: 'مسح النص'
   },
+  tag: {
+    remove: 'إزالة {label}'
+  },
   tagsInput: {
     addTag: 'إضافة وسم',
     clear: 'مسح الوسوم'

@@ -79,6 +79,9 @@ const messages: LocaleMessages = {
   textarea: {
     clear: '텍스트 영역 지우기'
   },
+  tag: {
+    remove: '{label} 제거'
+  },
   tagsInput: {
     addTag: '태그 추가',
     clear: '태그 지우기'

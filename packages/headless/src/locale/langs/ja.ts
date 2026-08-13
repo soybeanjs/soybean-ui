@@ -79,6 +79,9 @@ const messages: LocaleMessages = {
   textarea: {
     clear: 'テキストエリアをクリア'
   },
+  tag: {
+    remove: '{label} を削除'
+  },
   tagsInput: {
     addTag: 'タグを追加',
     clear: 'タグをクリア'

@@ -50,6 +50,20 @@ describe('STag', () => {
       wrapper.unmount();
     });
 
+    it('renders the close control as an accessible button', () => {
+      const wrapper = mount(STag, {
+        props: { content: 'Closable', closable: true },
+        attachTo: document.body
+      });
+
+      const closeButton = wrapper.find('button[aria-label]');
+      expect(closeButton.exists()).toBe(true);
+      expect(closeButton.attributes('type')).toBe('button');
+      expect(closeButton.attributes('aria-label')).toBe('Remove Closable');
+
+      wrapper.unmount();
+    });
+
     it('renders leading and trailing slots', () => {
       const wrapper = mount(STag, {
         props: { content: 'Tag' },
@@ -109,6 +123,18 @@ describe('STag', () => {
     it('has no a11y violations', async () => {
       const wrapper = mount(STag, {
         props: { content: 'Accessible' },
+        attachTo: document.body
+      });
+
+      const violations = await getA11yViolations(wrapper.element);
+      expect(violations).toHaveLength(0);
+
+      wrapper.unmount();
+    });
+
+    it('has no a11y violations in the closable state', async () => {
+      const wrapper = mount(STag, {
+        props: { content: 'Closable', closable: true },
         attachTo: document.body
       });
 

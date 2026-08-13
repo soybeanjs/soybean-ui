@@ -79,6 +79,9 @@ const messages: LocaleMessages = {
   textarea: {
     clear: 'Hapus area teks'
   },
+  tag: {
+    remove: 'Hapus {label}'
+  },
   tagsInput: {
     addTag: 'Tambahkan tag',
     clear: 'Hapus tag'
