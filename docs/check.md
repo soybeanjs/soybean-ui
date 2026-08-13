@@ -235,7 +235,7 @@
 | C73  | `drawer`        | 多槽 + Compact | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |   P0   | D1-12, D1-16, D2-11, D7-04, D7-05, D7-19, D7-20 |
 | C74  | `popover`       | 多槽 + Compact | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |   P0   | D1-12, D1-16, D2-11, D7-05                      |
 | C75  | `popconfirm`    | 多槽 + Compact | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |   P0   | D1-12, D1-16, D2-11, D7-05                      |
-| C76  | `hover-card`    | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-16, D2-11, D7-05                      |
+| C76  | `hover-card`    | 多槽 + Compact | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |   P1   | D1-12, D1-16, D2-11, D7-05                      |
 | C77  | `bottom-sheet`  | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-16, D2-11, D7-05                      |
 | C78  | `dropdown-menu` | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D1-16, D2-11, D7-05                      |
 | C79  | `context-menu`  | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-16, D2-11, D7-05                      |
