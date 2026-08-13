@@ -31,7 +31,7 @@ provideMenuCheckboxGroupContext({
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" data-soybean-menu-checkbox-group :class="cls" role="menu-checkbox-group">
+  <Primitive :as="as" :as-child="asChild" data-soybean-menu-checkbox-group :class="cls" role="group">
     <slot :model-value="modelValue" />
   </Primitive>
 </template>

@@ -44,12 +44,6 @@ const ariaChecked = computed(() => (isIndeterminate(modelValue.value) ? 'mixed' 
 
 const dataState = computed(() => getCheckedState(modelValue.value));
 
-// const onSelect = (event: Event) => {
-//   emit('select', event);
-
-//   onModelValueChange(props.value);
-// };
-
 let isPointerDownRef = false;
 
 const onSelect = async () => {

@@ -16,13 +16,12 @@ const emit = defineEmits<MenuRadioGroupEmits<T>>();
 
 const cls = useMenuUi('radioGroup');
 
-const modelValue = useControllableState(
-  () => props.modelValue,
+const modelValue = useControllableState<T | null>(
+  () => props.modelValue ?? null,
   value => {
     emit('update:modelValue', value);
   },
-  // @ts-expect-error - The default value can be null
-  props.defaultValue ?? null
+  (props.defaultValue ?? null) as Exclude<T, undefined> | null
 );
 
 provideMenuRadioGroupContext({
@@ -32,7 +31,7 @@ provideMenuRadioGroupContext({
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" data-soybean-menu-radio-group :class="cls" role="menu-radio-group">
+  <Primitive :as="as" :as-child="asChild" data-soybean-menu-radio-group :class="cls" role="group">
     <slot :model-value="modelValue" />
   </Primitive>
 </template>

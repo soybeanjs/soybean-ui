@@ -20,7 +20,7 @@ export { default as MenuOptionsCompact } from './menu-options-compact.vue';
 export { default as MenuCheckboxOptionsCompact } from './menu-checkbox-options-compact.vue';
 export { default as MenuRadioOptionsCompact } from './menu-radio-options-compact.vue';
 
-export { provideMenuUi, useMenuUi } from './context';
+export { provideMenuUi } from './context';
 
 export type { SeparatorRootProps as MenuSeparatorProps } from '../separator/types';
 export type { PopperAnchorProps as MenuAnchorProps, PopperArrowProps as MenuArrowProps } from '../popper/types';

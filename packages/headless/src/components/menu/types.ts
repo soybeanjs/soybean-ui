@@ -209,7 +209,7 @@ export type MenuRadioItemEmits = MenuItemEmits;
  */
 export interface MenuRadioGroupProps<T = AcceptableBooleanValue> extends MenuGroupProps {
   /** The controlled value of the radio item to check. Can be bound as `v-model`. */
-  modelValue?: T;
+  modelValue?: T | null;
   /**
    * The value of the radio item that should be checked when initially rendered. Use when you do not need to control the
    * state of the radio items.
@@ -223,7 +223,7 @@ export interface MenuRadioGroupProps<T = AcceptableBooleanValue> extends MenuGro
  */
 export type MenuRadioGroupEmits<T = AcceptableBooleanValue> = {
   /** Event handler called when the radio group value changes */
-  'update:modelValue': [payload: Exclude<T, undefined>];
+  'update:modelValue': [payload: Exclude<T, undefined> | null];
 };
 
 // MenuSubTrigger
@@ -619,7 +619,7 @@ export interface MenuRadioGroupContextParams {
   /**
    * Current model value.
    */
-  modelValue: ShallowRef<AcceptableBooleanValue>;
+  modelValue: ShallowRef<AcceptableBooleanValue | null>;
   /**
    * Whether the component is disabled.
    */
