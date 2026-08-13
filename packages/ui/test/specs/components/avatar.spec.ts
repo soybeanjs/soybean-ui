@@ -155,5 +155,29 @@ describe('SAvatar', () => {
       wrapper.unmount();
       cleanupImage();
     });
+
+    it('gives the loaded image an accessible name via the fallback label', async () => {
+      const cleanupImage = setupMockImage();
+
+      const wrapper = mount(SAvatar, {
+        props: {
+          src: 'https://example.com/avatar.png',
+          fallbackLabel: 'JD'
+        },
+        attachTo: document.body
+      });
+
+      await delay(TEST_DELAYS.IMAGE_LOAD);
+      await nextTick();
+
+      const image = wrapper.find('[data-soybean-avatar-image]').element as HTMLImageElement;
+      expect(image.getAttribute('alt')).toBe('JD');
+
+      const violations = await getA11yViolations(wrapper.element);
+      expect(violations).toHaveLength(0);
+
+      wrapper.unmount();
+      cleanupImage();
+    });
   });
 });

@@ -12,6 +12,13 @@ export interface AvatarRootProps extends BaseProps {}
 export interface AvatarImageProps extends BaseProps<ImgHTMLAttributes> {
   /** The image source URL */
   src: string;
+  /**
+   * Alternate text for the image. When unset the avatar's fallback label is used so the loaded image keeps an
+   * accessible name; set to `''` to mark a purely decorative avatar.
+   *
+   * @defaultValue undefined
+   */
+  alt?: string;
   /** The referrer policy for the image */
   referrerpolicy?: ImgHTMLAttributes['referrerpolicy'];
   /** The cross-origin setting for the image */

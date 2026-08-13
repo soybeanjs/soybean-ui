@@ -37,6 +37,7 @@ watch(
     data-soybean-avatar-image
     :class="cls"
     :src="src"
+    :alt="alt"
     :referrerpolicy="referrerpolicy"
     :crossorigin="crossorigin"
     role="img"

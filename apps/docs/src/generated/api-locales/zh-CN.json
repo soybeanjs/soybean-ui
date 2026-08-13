@@ -462,6 +462,7 @@
         },
         "avatarimageprops": {
           "members": {
+            "alt": "图片的替代文本。若未设置，将使用头像的备用标签，以便加载的图片保留\n可访问的名称；设置为 `''` 表示该头像仅用于装饰。",
             "crossorigin": "图像的跨源设置",
             "referrerpolicy": "图片的引用策略",
             "src": "图片源 URL"
@@ -9303,6 +9304,7 @@
             "autocomplete": "",
             "breadcrumb": "",
             "calendar": "",
+            "carousel": "",
             "cascader": "",
             "clipboard": "",
             "combobox": "",

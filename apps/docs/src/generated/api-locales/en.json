@@ -462,6 +462,7 @@
         },
         "avatarimageprops": {
           "members": {
+            "alt": "Alternate text for the image. When unset the avatar's fallback label is used so the loaded image keeps an\naccessible name; set to `''` to mark a purely decorative avatar.",
             "crossorigin": "The cross-origin setting for the image",
             "referrerpolicy": "The referrer policy for the image",
             "src": "The image source URL"
@@ -9303,6 +9304,7 @@
             "autocomplete": "",
             "breadcrumb": "",
             "calendar": "",
+            "carousel": "",
             "cascader": "",
             "clipboard": "",
             "combobox": "",

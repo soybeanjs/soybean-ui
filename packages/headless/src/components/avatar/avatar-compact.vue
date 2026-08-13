@@ -20,7 +20,8 @@ const forwardedProps = useOmitProps(props, ['fallbackLabel', 'imageProps', 'fall
 
 const imageProps = computed(() => ({
   ...props.imageProps,
-  src: props.src ?? props.imageProps?.src
+  src: props.src ?? props.imageProps?.src,
+  alt: props.imageProps?.alt ?? props.fallbackLabel
 }));
 
 const fallbackProps = computed(() => ({
