@@ -34,6 +34,26 @@ describe('SProgress', () => {
       expect(progressbar.attributes('aria-valuenow')).toBe('45');
       wrapper.unmount();
     });
+
+    it('falls back to a localized aria-label when indeterminate', () => {
+      const wrapper = mount(
+        {
+          components: { SConfigProvider, SProgress },
+          template: `
+          <SConfigProvider>
+            <SProgress />
+          </SConfigProvider>
+        `
+        },
+        {
+          attachTo: document.body
+        }
+      );
+
+      const progressbar = wrapper.get('[role="progressbar"]');
+      expect(progressbar.attributes('aria-label')).toBe('Progress');
+      wrapper.unmount();
+    });
   });
 
   describe('accessibility', () => {

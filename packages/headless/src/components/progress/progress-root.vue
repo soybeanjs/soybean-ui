@@ -3,6 +3,7 @@ import { computed, useAttrs, watch } from 'vue';
 import { isNullish } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { useControllableState, useOmitProps } from '../../composables';
+import { useLocaleMessages } from '../../locale';
 import { Primitive } from '../primitive';
 import { DEFAULT_MAX, getValueLabel, getValidMax, getValidModelValue } from './shared';
 import { provideProgressRootContext, useProgressUi } from './context';
@@ -20,6 +21,8 @@ const props = withDefaults(defineProps<ProgressRootProps>(), {
 const emit = defineEmits<ProgressRootEmits>();
 
 const attrs = useAttrs();
+
+const messages = useLocaleMessages();
 
 const cls = useProgressUi('root');
 
@@ -86,7 +89,9 @@ function getNonEmptyString(value: unknown) {
 function getStringAttr(name: 'aria-label' | 'aria-valuetext') {
   return getNonEmptyString(attrs[name]);
 }
-const ariaLabel = computed(() => getStringAttr('aria-label') ?? getNonEmptyString(valueLabel.value) ?? 'Progress');
+const ariaLabel = computed(
+  () => getStringAttr('aria-label') ?? getNonEmptyString(valueLabel.value) ?? messages.value.progress.ariaLabel
+);
 
 const ariaValueText = computed(() => getStringAttr('aria-valuetext') ?? getNonEmptyString(valueText.value));
 

@@ -90,6 +90,7 @@ const messages: LocaleMessages = {
     openActions: '打开 {label} 的操作'
   },
   progress: {
+    ariaLabel: '进度',
     loading: '加载中'
   },
   anchor: {

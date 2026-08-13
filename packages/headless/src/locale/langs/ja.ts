@@ -90,6 +90,7 @@ const messages: LocaleMessages = {
     openActions: '{label} の操作を開く'
   },
   progress: {
+    ariaLabel: '進捗',
     loading: '読み込み中'
   },
   anchor: {

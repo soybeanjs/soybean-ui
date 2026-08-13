@@ -210,6 +210,8 @@ export interface LocalePasswordMessages {
 }
 
 export interface LocaleProgressMessages {
+  /** Default aria-label for the progress bar when no `aria-label` is provided. */
+  ariaLabel: string;
   /** Aria-label for the progress bar. */
   loading: string;
 }

@@ -90,6 +90,7 @@ const messages: LocaleMessages = {
     openActions: 'Aktionen für {label} öffnen'
   },
   progress: {
+    ariaLabel: 'Fortschritt',
     loading: 'Laden'
   },
   anchor: {

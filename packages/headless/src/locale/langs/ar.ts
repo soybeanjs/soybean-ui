@@ -90,6 +90,7 @@ const messages: LocaleMessages = {
     openActions: 'فتح إجراءات {label}'
   },
   progress: {
+    ariaLabel: 'التقدم',
     loading: 'جارٍ التحميل'
   },
   anchor: {
