@@ -61,6 +61,35 @@ describe('Toaster', () => {
     wrapper.unmount();
   });
 
+  it('renders a toast created via the imperative API and dismisses it', async () => {
+    vi.useFakeTimers();
+
+    const wrapper = mount(SToastProvider, {
+      attachTo: document.body,
+      props: { id: 'render-test' }
+    });
+
+    const toastId = toast('Hello toast', {
+      toasterId: 'render-test',
+      duration: Infinity
+    });
+
+    await vi.runAllTimersAsync();
+    await nextTick();
+
+    const toastElement = wrapper.find('[data-soybean-toast]');
+    expect(toastElement.exists()).toBe(true);
+    expect(toastElement.text()).toContain('Hello toast');
+
+    toast.dismiss(toastId);
+    await vi.runAllTimersAsync();
+    await nextTick();
+
+    expect(wrapper.find('[data-soybean-toast]').exists()).toBe(false);
+
+    wrapper.unmount();
+  });
+
   it('announces toast title and description as plain text (not JSON)', async () => {
     vi.useFakeTimers();
 
