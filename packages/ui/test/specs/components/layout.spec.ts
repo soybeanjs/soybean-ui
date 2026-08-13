@@ -239,13 +239,24 @@ describe('SLayout', () => {
         props: { defaultOpen: false },
         slots: {
           sidebar: '<div>Sidebar</div>',
+          header: () => h(LayoutTrigger),
           default: '<div>Main</div>'
         },
         attachTo: document.body
       });
 
+      await nextTick();
+
       const root = wrapper.find('[data-soybean-layout-root]');
       expect(root.attributes('data-state')).toBe('collapsed');
+
+      const trigger = wrapper.find('[data-soybean-layout-trigger]');
+      await trigger.trigger('click');
+      await nextTick();
+
+      expect(wrapper.emitted('update:open')).toBeTruthy();
+      expect(wrapper.emitted('update:open')?.at(-1)).toEqual([true]);
+      expect(root.attributes('data-state')).toBe('expanded');
 
       wrapper.unmount();
     });
