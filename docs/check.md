@@ -251,7 +251,7 @@
 | C84  | `color-field`         | 多槽 + Compact | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |   P3   | D1-12, D2-11, D3-01        |
 | C85  | `color-picker`        | 多槽 + Compact | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |   P2   | D1-12, D2-11, D3-01, D3-08 |
 | C86  | `color-slider`        | 多槽 + Compact | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |   P3   | D1-12, D1-16, D3-01        |
-| C87  | `color-swatch`        | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P3   | D1-12, D3-01               |
+| C87  | `color-swatch`        | 多槽 + Compact | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |   P3   | D1-12, D3-01               |
 | C88  | `color-swatch-picker` | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P3   | D1-12, D3-04               |
 
 > **注：** `virtualizer`（C89 见下）作为独立导出的基础原语，单独列项。
