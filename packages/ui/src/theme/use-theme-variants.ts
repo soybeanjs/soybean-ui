@@ -136,7 +136,7 @@ const feedback: VariantTokenMeta[] = [
 ];
 
 /**
- * the built-in variant groups, aligned with `docs/theme-config-components-design.md` §5.6.1.
+ * the built-in variant groups.
  */
 export const DEFAULT_VARIANT_GROUPS: VariantGroupMeta[] = [
   { key: 'surfaces', i18n: 'theme.group.surfaces', tokens: surfaces },

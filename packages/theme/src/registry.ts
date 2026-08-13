@@ -79,8 +79,8 @@ const buildPrimaryPalette = (key: PrimaryColorKey): ThemePalette => ({
  * the built-in schemes (identical to the previous hard-coded derivation).
  *
  * Five `feedback` presets, five `chart` presets and four `sidebar` presets are
- * provided as system built-ins (selected in `docs/theme-config-components-design.md`,
- * §5.8) so theme-config components can offer them without registration.
+ * provided as system built-ins so theme-config components can offer them without
+ * registration.
  */
 const builtinSchemes = {
   feedback: {

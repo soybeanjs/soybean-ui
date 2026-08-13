@@ -1,7 +1,6 @@
 # CONTEXT
 
 > 主题体系领域术语表。仅收录术语与精确定义，不含实现细节。
-> 相关实现方案见 [docs/theme-refactor-plan.md](docs/theme-refactor-plan.md)、[docs/theme-presets-plan.md](docs/theme-presets-plan.md)、[docs/config-provider-theme-persist-plan.md](docs/config-provider-theme-persist-plan.md) 与 [docs/theme-provider-plan.md](docs/theme-provider-plan.md)。
 
 ## 主题（theme）
 
