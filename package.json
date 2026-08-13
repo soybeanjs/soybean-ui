@@ -22,7 +22,7 @@
     "build:docs": "pnpm build && pnpm --filter @soybeanjs/ui-docs build",
     "build:headless": "pnpm --filter @soybeanjs/headless build",
     "build:libs": "pnpm --filter @soybeanjs/theme build && pnpm --filter @soybeanjs/ui-unocss build",
-    "build:playground": "pnpm --filter @soybeanjs/ui-playground build",
+    "build:playground": "pnpm build:libs && pnpm --filter @soybeanjs/ui-playground build",
     "build:sbean": "pnpm --filter sbean build",
     "build:ui": "pnpm --filter @soybeanjs/ui build",
     "commit": "soy git-commit",
