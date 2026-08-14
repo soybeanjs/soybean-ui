@@ -17,8 +17,9 @@
 | `AD-*`  | W3 admin          | [ecosystem/admin.md](./ecosystem/admin.md)      |
 | `CH-*`  | W4 chart          | [ecosystem/chart.md](./ecosystem/chart.md)      |
 | `PRO-*` | W5 ui-pro         | [ecosystem/ui-pro.md](./ecosystem/ui-pro.md)    |
-| `OPT-*` | W6 工程优化       | [optimize.md](./optimize.md) F1–F11             |
-| `CMP-*` | W7 核心组件       | 核心组件路线（45 个活跃组件）                   |
+| `ED-*`  | W6 editor         | [ecosystem/editor.md](./ecosystem/editor.md)    |
+| `OPT-*` | W7 工程优化       | [optimize.md](./optimize.md) F1–F11             |
+| `CMP-*` | W8 核心组件       | 核心组件路线（45 个活跃组件）                   |
 
 ### 负责人约定（与 ecosystem 分支任务清单一致）
 
@@ -206,12 +207,55 @@
 | 子任务               | 目标                                                                            |  负责人  | 工时 | 依赖        |
 | :------------------- | :------------------------------------------------------------------------------ | :------: | :--: | :---------- |
 | PRO-1.1 契约演练     | EC-G07：按接入契约清单（骨架模板 / 前缀 / registry / sui / docs）走一遍新包接入 | AI Agent |  1d  | —           |
-| PRO-1.2 需求信号收集 | 组件市场 RichTextEditor 等候选项的下载 / 引用数据                               | AI Agent | 0.5d | —           |
+| PRO-1.2 需求信号收集 | 组件市场候选项（表单设计器 / DataGrid 相关）的下载 / 引用数据                   | AI Agent | 0.5d | —           |
 | PRO-1.3 立项 ADR     | 收录判据定案、分发模式（同仓 lockstep / 独立商业 / 混合）决策、lowcode 合并决策 | Soybean  | 1.5d | PRO-1.1/1.2 |
 
 ---
 
-## W6 工程优化（OPT）
+## W6 editor（ED）
+
+> 2026-08-14 立项提案：市场调研（Tiptap 收费边界 + shadcn 生态）已完成，方案见 [ecosystem/editor.md](./ecosystem/editor.md)。建议生态首发（EC-M5）后启动。
+
+### ED-1 立项确认与包骨架
+
+**目标**：方案评审通过，`@soybeanjs/editor` 骨架接入生态契约。**负责人**：Soybean（评审）+ AI Agent（骨架）。**预计工时**：3d。**依赖条件**：EC-M5（生态首发完成，多包基础设施已固化）；ED-0 验证项（`@tiptap/extension-collaboration` 许可、Tiptap 版本兼容矩阵）。
+
+| 子任务                | 目标                                                                                     |  负责人  | 工时 | 依赖   |
+| :-------------------- | :--------------------------------------------------------------------------------------- | :------: | :--: | :----- |
+| ED-1.1 方案评审 + ADR | [editor.md](./ecosystem/editor.md) 评审；验证 Collaboration 扩展许可与兼容矩阵，输出 ADR | Soybean  |  1d  | —      |
+| ED-1.2 包骨架         | 复用 chart/admin 骨架模板；registry `packages` 元数据 + docs/playground 命名空间接线     | AI Agent |  1d  | ED-1.1 |
+| ED-1.3 内核 peer 接线 | `@tiptap/core` / `@tiptap/vue-3` peer 声明、neverBundle、依赖审计防误引入收费包          | AI Agent |  1d  | ED-1.2 |
+
+### ED-2 P0 组件（最小闭环）
+
+**目标**：`SEditor` + `SEditorContent` + `SEditorToolbar` + `SEditorBubbleMenu` + basic 预设可用。**负责人**：AI Agent。**预计工时**：12d。**依赖条件**：ED-1。
+
+| 子任务                   | 目标                                                                                    |  负责人  | 工时 | 依赖       |
+| :----------------------- | :-------------------------------------------------------------------------------------- | :------: | :--: | :--------- |
+| ED-2.1 SEditor 容器      | `useEditor` 封装 + `EditorPreset`（basic/docs/full）驱动 + Provider + 主题化 prose 样式 | AI Agent |  3d  | —          |
+| ED-2.2 SEditorContent    | ProseMirror 挂载 + SSR 只读降级（`getHTML()` 首帧）+ 亮暗联动                           | AI Agent |  2d  | ED-2.1     |
+| ED-2.3 SEditorToolbar    | 分组工具栏（复用 SButton/SIcon/SDropdownMenu），selection 状态联动                      | AI Agent |  3d  | ED-2.1     |
+| ED-2.4 SEditorBubbleMenu | 选中文本气泡（复用 SPopover 定位），含链接快捷编辑                                      | AI Agent |  2d  | ED-2.1     |
+| ED-2.5 测试与示例        | 单测 + browser e2e（键盘可达性必测）+ playground 示例 + 文档                            | AI Agent |  2d  | ED-2.1~2.4 |
+
+### ED-3 P1 能力扩展
+
+**目标**：slash 命令、图片上传、Markdown 双向。**负责人**：AI Agent。**预计工时**：10d。**依赖条件**：ED-2；ED-3.2 另依赖 CMP-1.9（核心库 `Upload`）。
+
+| 子任务                     | 目标                                                                                |  负责人  | 工时 | 依赖       |
+| :------------------------- | :---------------------------------------------------------------------------------- | :------: | :--: | :--------- |
+| ED-3.1 SEditorSlashCommand | `/` 命令菜单（复用 combobox 模式）+ FloatingMenu                                    | AI Agent |  3d  | —          |
+| ED-3.2 图片上传            | `useEditorImageUpload` + `SEditorImage`，挂接核心库 `Upload`；FileHandler 拖放/粘贴 | AI Agent |  3d  | CMP-1.9    |
+| ED-3.3 useEditorMarkdown   | Markdown ↔ HTML 双向（MIT 方案自建，覆盖 Conversion 付费场景的 90%）                | AI Agent |  2d  | —          |
+| ED-3.4 测试与示例          | 同 ED-2.5 标准                                                                      | AI Agent |  2d  | ED-3.1~3.3 |
+
+### ED-4 P2 与生态联动（按需）
+
+**目标**：表格增强、DragHandle、数学（KaTeX peer）、目录、Emoji、Details；admin 表单嵌入评估。**负责人**：AI Agent。**预计工时**：8d 起。**依赖条件**：ED-3；数学依赖 CMP-4 的 `Equation` 落地。
+
+---
+
+## W7 工程优化（OPT）
 
 > 来源 [optimize.md](./optimize.md) F1–F11。阶段 A（08-14 ~ 08-28）→ B（08-28 ~ 09-11）→ C（09-11 ~ 10-09）→ D（10-09 后）。负责人默认 AI Agent 实施、Soybean 验收。
 
@@ -303,7 +347,7 @@
 
 ---
 
-## W7 核心组件路线（CMP）
+## W8 核心组件路线（CMP）
 
 > 45 个活跃路线图组件（高 22 / 中 11 / 低 12），详见 [roadmap.md](./roadmap.md) 各详细条目。每个组件交付含：headless + UI 源码、单测、playground 示例、双语文档、API/changelog 生成、registry 条目（全交付面验收，联动 OPT-F3.2 的 `check:generated`）。负责人默认 AI Agent 实施、Soybean 验收。
 
@@ -369,9 +413,9 @@
 
 清单（工时）：`NumberFormatter` 0.5d、`Indicator` 1d、`GradientText` 1d、`Highlight` 1d、`Spoiler` 1d、`Blockquote` 1d、`Marquee` 1.5d、`Equation` 2.5d（KaTeX peer）、`Knob` 3d、`OverflowList` 3d、`Signature` 3.5d、`Terminal` 3.5d。
 
-### CMP-5 组件市场（12 个延后项）
+### CMP-5 组件市场（11 个延后项）
 
-**目标**：以 sbean registry 源码分发模式落地（Tour / TreeTable / PageHeader / Navbar / Comment / Sidebar / AppShell / Galleria / OrganizationChart / RichTextEditor / Dock / DynamicInput）。**负责人**：AI Agent + Soybean 评审。**预计工时**：每项 2–5d，视需求信号排期。**依赖条件**：EC-M2（registry 命名空间化）+ 所需原子组件就绪。
+**目标**：以 sbean registry 源码分发模式落地（Tour / TreeTable / PageHeader / Navbar / Comment / Sidebar / AppShell / Galleria / OrganizationChart / Dock / DynamicInput；RichTextEditor 已升级为独立生态包 `@soybeanjs/editor`，见 W6/ED）。**负责人**：AI Agent + Soybean 评审。**预计工时**：每项 2–5d，视需求信号排期。**依赖条件**：EC-M2（registry 命名空间化）+ 所需原子组件就绪。
 
 ---
 
@@ -384,6 +428,7 @@ EC-M1（合并） ──► UX-1 ──► UX-2
    ├─► EC-M3 ─┼──► EC-M4 ──► EC-M5（发布）
    └─► CH-0 ──► CH-1 ──► CH-2 ──► AD-2.3
 EC-M5 ──► PRO-1（Q4）
+EC-M5 ──► ED-1 ──► ED-2 ──► ED-3 ──► ED-4      CMP-1.9 ──► ED-3.2   CMP-4（Equation）──► ED-4
 OPT-F1 ──► OPT-F7        OPT-F8 ──► AD-1.2
 OPT-F3（独立）  OPT-F6 ──► OPT-F11  OPT-F9/F10（独立）
 EC-M5 ──► CMP-1 ──► CMP-2 ──► CMP-3 / CMP-4（容量穿插）

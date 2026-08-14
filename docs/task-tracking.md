@@ -30,8 +30,9 @@
 | W3 admin（AD-1~3）            |   3    |  0  |  1  |  0  |   2   | ≈ 30%  |
 | W4 chart（CH-0~2）            |   3    |  0  |  0  |  0  |   3   |   0%   |
 | W5 ui-pro（PRO-1）            |   1    |  0  |  0  |  0  |   1   |   0%   |
-| W6 工程优化（OPT-F1~F11）     |   11   |  0  |  0  |  1  |  10   |  ≈ 3%  |
-| W7 核心组件（CMP-1~5）        |   5    |  0  |  0  |  0  |   5   |   0%   |
+| W6 editor（ED-1~4）           |   4    |  0  |  0  |  0  |   4   |   0%   |
+| W7 工程优化（OPT-F1~F11）     |   11   |  0  |  0  |  1  |  10   |  ≈ 3%  |
+| W8 核心组件（CMP-1~5）        |   5    |  0  |  0  |  0  |   5   |   0%   |
 
 ## 2. 高优先级（High）
 
@@ -67,28 +68,32 @@
 
 ## 3. 中优先级（Medium）
 
-| ID     | 任务                                                   |       负责人       | 目标完成 | 状态 | 进度 | 备注                            |
-| :----- | :----------------------------------------------------- | :----------------: | :------: | :--: | :--: | :------------------------------ |
-| UX-2   | ui-x P3 组件（useRecord/AudioPlayer/StackTrace/Agent） |      AI Agent      |   择机   |  ⬜  |  0%  | 依赖 UX-1                       |
-| AD-2   | admin M3：SAppProTable + SAppProForm（≈10d）           |      AI Agent      | 2026-09  |  ⬜  |  0%  | 依赖 EC-M1.5；schema 模型已预留 |
-| CH-2   | chart 其余图元（Area/Pie/Sparkline/Heatmap，≈10d）     |      AI Agent      |  08-31   |  ⬜  |  0%  | 依赖 CH-1                       |
-| OPT-F4 | docs↔playground 依赖单向化                             |      AI Agent      |  阶段 D  |  ⬜  |  0%  | 需 docs build 基线              |
-| OPT-F5 | docs 构建图按需加载                                    |      AI Agent      |  阶段 D  |  ⬜  |  0%  | 同上                            |
-| OPT-F7 | 构建图与依赖图对齐                                     |      AI Agent      |  10-09   |  ⬜  |  0%  | 依赖 OPT-F1                     |
-| OPT-F8 | TypeScript 版本统一                                    |      Soybean       |  10-09   |  ⬜  |  0%  | **阻塞 AD-1.2**，建议提前       |
-| CMP-3  | P2 组件 11 个（≈26d）                                  |      AI Agent      |   2027   |  ⬜  |  0%  | 容量穿插                        |
-| CMP-5  | 组件市场 12 项                                         | AI Agent + Soybean |   按需   |  ⬜  |  0%  | 依赖 EC-M2 + 需求信号           |
+| ID     | 任务                                                   |       负责人       | 目标完成 | 状态 | 进度 | 备注                                                                                |
+| :----- | :----------------------------------------------------- | :----------------: | :------: | :--: | :--: | :---------------------------------------------------------------------------------- |
+| UX-2   | ui-x P3 组件（useRecord/AudioPlayer/StackTrace/Agent） |      AI Agent      |   择机   |  ⬜  |  0%  | 依赖 UX-1                                                                           |
+| AD-2   | admin M3：SAppProTable + SAppProForm（≈10d）           |      AI Agent      | 2026-09  |  ⬜  |  0%  | 依赖 EC-M1.5；schema 模型已预留                                                     |
+| CH-2   | chart 其余图元（Area/Pie/Sparkline/Heatmap，≈10d）     |      AI Agent      |  08-31   |  ⬜  |  0%  | 依赖 CH-1                                                                           |
+| ED-1   | editor 立项确认与包骨架（Tiptap peer 接线，≈3d）       | Soybean + AI Agent | 2026-09  |  ⬜  |  0%  | 依赖 EC-M5；方案见 [editor.md](./ecosystem/editor.md)，Collaboration 扩展许可待验证 |
+| ED-2   | editor P0 组件（容器/内容/工具栏/气泡，≈12d）          |      AI Agent      | 2026-10  |  ⬜  |  0%  | 依赖 ED-1                                                                           |
+| OPT-F4 | docs↔playground 依赖单向化                             |      AI Agent      |  阶段 D  |  ⬜  |  0%  | 需 docs build 基线                                                                  |
+| OPT-F5 | docs 构建图按需加载                                    |      AI Agent      |  阶段 D  |  ⬜  |  0%  | 同上                                                                                |
+| OPT-F7 | 构建图与依赖图对齐                                     |      AI Agent      |  10-09   |  ⬜  |  0%  | 依赖 OPT-F1                                                                         |
+| OPT-F8 | TypeScript 版本统一                                    |      Soybean       |  10-09   |  ⬜  |  0%  | **阻塞 AD-1.2**，建议提前                                                           |
+| CMP-3  | P2 组件 11 个（≈26d）                                  |      AI Agent      |   2027   |  ⬜  |  0%  | 容量穿插                                                                            |
+| CMP-5  | 组件市场 11 项（RichTextEditor 已转 editor 包）        | AI Agent + Soybean |   按需   |  ⬜  |  0%  | 依赖 EC-M2 + 需求信号                                                               |
 
 ## 4. 低优先级（Low）
 
-| ID      | 任务                                          |  负责人  | 目标完成 | 状态 | 进度 | 备注                                |
-| :------ | :-------------------------------------------- | :------: | :------: | :--: | :--: | :---------------------------------- |
-| PRO-1   | ui-pro 立项评估（含 ui-lowcode 合并决策）     | Soybean  | 2026 Q4  |  📋  |  0%  | 依赖 EC-M5 + 市场需求数据           |
-| AD-3    | admin M4+（MultiTab/CommandPalette 等，≈14d） | AI Agent | 2026 Q4  |  ⬜  |  0%  | 依赖 AD-2                           |
-| OPT-F9  | 类型逃逸治理                                  | AI Agent |   持续   |  ⬜  |  0%  | 先建例外清单 + 禁止新增基线         |
-| OPT-F10 | 文档单一事实源                                | AI Agent |   持续   |  🔵  | 30%  | 2026-08-02 评估轮已修正部分计数漂移 |
-| OPT-F11 | 覆盖率量化                                    | AI Agent |   持续   |  ⬜  |  0%  | 依赖 OPT-F6 基线                    |
-| CMP-4   | P3 组件 12 个（≈22d）                         | AI Agent |   择机   |  ⬜  |  0%  | 可转组件市场                        |
+| ID      | 任务                                               |  负责人  | 目标完成 | 状态 | 进度 | 备注                                                         |
+| :------ | :------------------------------------------------- | :------: | :------: | :--: | :--: | :----------------------------------------------------------- |
+| PRO-1   | ui-pro 立项评估（含 ui-lowcode 合并决策）          | Soybean  | 2026 Q4  |  📋  |  0%  | 依赖 EC-M5 + 市场需求数据；RichTextEditor 候选已转 editor 包 |
+| AD-3    | admin M4+（MultiTab/CommandPalette 等，≈14d）      | AI Agent | 2026 Q4  |  ⬜  |  0%  | 依赖 AD-2                                                    |
+| ED-3    | editor P1（slash 命令/图片上传/Markdown，≈10d）    | AI Agent |   择机   |  ⬜  |  0%  | 依赖 ED-2；图片上传另依赖 CMP-1.9（核心库 `Upload`）         |
+| ED-4    | editor P2（表格增强/DragHandle/数学/目录，≈8d 起） | AI Agent |   择机   |  ⬜  |  0%  | 依赖 ED-3；数学依赖 CMP-4 `Equation`                         |
+| OPT-F9  | 类型逃逸治理                                       | AI Agent |   持续   |  ⬜  |  0%  | 先建例外清单 + 禁止新增基线                                  |
+| OPT-F10 | 文档单一事实源                                     | AI Agent |   持续   |  🔵  | 30%  | 2026-08-02 评估轮已修正部分计数漂移                          |
+| OPT-F11 | 覆盖率量化                                         | AI Agent |   持续   |  ⬜  |  0%  | 依赖 OPT-F6 基线                                             |
+| CMP-4   | P3 组件 12 个（≈22d）                              | AI Agent |   择机   |  ⬜  |  0%  | 可转组件市场                                                 |
 
 ## 5. 阻塞与风险登记
 
@@ -102,4 +107,5 @@
 
 ## 6. 最近更新
 
+- **2026-08-14（增量）**：新增生态包 `@soybeanjs/editor`（富文本编辑器，Tiptap 内核）——市场调研与 Tiptap 收费边界核实完成，方案见 [ecosystem/editor.md](./ecosystem/editor.md)；新增工作流 W6（ED-1~4），原 W6/W7 顺延为 W7/W8；`RichTextEditor` 从组件市场候选与 ui-pro 候选中移除（CMP-5 12 项 → 11 项）。
 - **2026-08-14（基线）**：建立本跟踪系统。汇总自：ecosystem 分支任务清单（54 项，阶段 A/B 骨架已落地）、ui-x 分支（20 组件已实现待合并）、admin 分支（M1 完成、M2 待验收）、optimize.md（F1–F11）、核心组件路线图（45 个活跃组件）。任务级编号与拆解见 [tasks.md](./tasks.md)。

@@ -20,19 +20,19 @@
 
 一个能力进入 ui-pro 须**全部**满足：
 
-1. **复合且重**：体量相当于一个子领域（如 RichTextEditor 的 Tiptap 级、表单设计器级），不适合进核心库或 admin。
+1. **复合且重**：体量相当于一个子领域（如编辑器的 Tiptap 级、表单设计器级），不适合进核心库或 admin。
 2. **不适合源码分发**：需要持续安全 / 兼容维护，或依赖闭源协作，sbean registry 模式不合适。
 3. **不与现有包重叠**：不满足 admin 的 S1–S5，也不是 chart / ui-x 领域。
 4. **通用无业务语义**：不含特定行业逻辑。
 
 ### 1.3 候选范围（按判据初筛，仅供立项讨论）
 
-| 候选                                      | 现归类                       | ui-pro 可能性                                        |
-| :---------------------------------------- | :--------------------------- | :--------------------------------------------------- |
-| `RichTextEditor`（Tiptap 封装）           | 组件市场（roadmap 延后清单） | 高——体量大、持续维护重，若市场源码分发反响不佳可转入 |
-| 表单设计器 / 页面搭建                     | `ui-lowcode` 预留            | 高——与 lowcode 是同族问题，可能合并立项              |
-| 高级数据网格（虚拟滚动 + 行编辑 + 导出）  | 超出 admin ProTable 范围     | 中——若 ProTable 演化过重则拆出                       |
-| `Tour` / `Galleria` / `OrganizationChart` | 组件市场                     | 低——源码分发模式已覆盖，无须改道                     |
+| 候选                                      | 现归类                   | ui-pro 可能性                                                                                               |
+| :---------------------------------------- | :----------------------- | :---------------------------------------------------------------------------------------------------------- |
+| ~~`RichTextEditor`（Tiptap 封装）~~       | —                        | **已独立为 `@soybeanjs/editor` 生态包**（2026-08-14 立项，见 [editor.md](./editor.md)），不再是 ui-pro 候选 |
+| 表单设计器 / 页面搭建                     | `ui-lowcode` 预留        | 高——与 lowcode 是同族问题，可能合并立项                                                                     |
+| 高级数据网格（虚拟滚动 + 行编辑 + 导出）  | 超出 admin ProTable 范围 | 中——若 ProTable 演化过重则拆出                                                                              |
+| `Tour` / `Galleria` / `OrganizationChart` | 组件市场                 | 低——源码分发模式已覆盖，无须改道                                                                            |
 
 > **注意**：以上仅是边界讨论的输入，不是收录承诺。任何「组件市场 → ui-pro」的迁移都会先在市场侧验证需求信号。
 
@@ -46,17 +46,16 @@ Layer 4  @soybeanjs/ui-pro ──► @soybeanjs/{ui, headless, theme}
 
 - **单包自治**：领域逻辑与样式同居包内，不建中间 headless 层。
 - **跨包依赖白名单**：默认不依赖其他外围包；如需图表能力走 `chart`，需先在 CONTEXT.md 白名单加边并出 ADR。
-- **前缀**：候选 `Sp`（如 `SpRichTextEditor`）——`S` 系单字符已被 ui（`S`）与 ui-x（`Sx`）占用，`Sp` 表意 "soybean pro"；立项时与社区评审定案。
+- **前缀**：候选 `Sp`——`S` 系单字符已被 ui（`S`）与 ui-x（`Sx`）占用，`Sp` 表意 "soybean pro"；立项时与社区评审定案。
 - **exports**：`.`、`./nuxt`、`./resolver`、`./styles.css`、`./*`（组件子路径），与 chart/admin 一致。
 - **版本**：lockstep 同版本；**分发模式待立项评审**（开源同仓 lockstep vs 独立仓库 / 商业授权，见 §5）。
 
 ## 3. 核心功能（按候选范围展开，均为立项后事项）
 
-以最可能的先发能力为例：
+以最可能的先发能力为例（富文本编辑器原为首选候选，现已独立为 [`@soybeanjs/editor`](./editor.md)）：
 
-1. **`SpRichTextEditor`**：Tiptap 内核（peer dependency）+ 预置工具栏（复用 `SToolbar` / `SButton` / `STooltip`）+ Markdown 双向 + 图片上传挂接（依赖核心库 `Upload` 落地后）。
-2. **`SpFormDesigner` / lowcode 系**：与 `ui-lowcode` 合并评估——schema 驱动（复用 admin `AppFormSchema` 经验）、画布 + 属性面板 + 出码。
-3. **`SpDataGrid`**：虚拟滚动（复用 `virtualizer`）+ 行内编辑 + 列导出。
+1. **`SpFormDesigner` / lowcode 系**：与 `ui-lowcode` 合并评估——schema 驱动（复用 admin `AppFormSchema` 经验）、画布 + 属性面板 + 出码。
+2. **`SpDataGrid`**：虚拟滚动（复用 `virtualizer`）+ 行内编辑 + 列导出。
 
 ## 4. 实现路径
 
@@ -64,7 +63,7 @@ Layer 4  @soybeanjs/ui-pro ──► @soybeanjs/{ui, headless, theme}
 | :--: | :--------------------------------------------------------------------- | :--------------- |
 |  0   | 立项评估：收录判据评审、分发模式决策、与 ui-lowcode 合并决策，输出 ADR | 2026 Q4（M-PRO） |
 |  1   | 包骨架（复用 chart/admin 骨架模板，约 1 天）+ 构建接线                 | 立项后 1 周      |
-|  2   | 先发组件（立项评审确定，候选 RichTextEditor）                          | 立项后 1–2 月    |
+|  2   | 先发组件（立项评审确定，候选表单设计器 / DataGrid）                    | 立项后 1–2 月    |
 |  3   | 文档 / registry（`ui-pro/*` 命名空间）/ playground 接线                | 随组件           |
 
 前置依赖：EC-G07（契约清单演练）在生态首发（M-EC5）完成后启动。
@@ -73,9 +72,10 @@ Layer 4  @soybeanjs/ui-pro ──► @soybeanjs/{ui, headless, theme}
 
 | 议题         | 候选                                                                      | 备注                                                          |
 | :----------- | :------------------------------------------------------------------------ | :------------------------------------------------------------ |
-| 富文本内核   | Tiptap / ProseMirror（peer dep）                                          | roadmap 既有判断：「通常独立成包」                            |
 | 分发模式     | A. 同仓开源 lockstep；B. 独立仓库商业授权；C. 混合（核心开源 + pro 收费） | **立项核心决策**，影响仓库 / CI / registry 全链路             |
 | lowcode 内核 | 自研 schema 引导 vs 接 formily / form-create 级方案                       | 立项时对标调研（admin roadmap 已含 soybean-unify 调研可复用） |
+
+> 富文本编辑器原为本节预研议题（Tiptap / ProseMirror），2026-08-14 调研后已独立为 [`@soybeanjs/editor`](./editor.md) 生态包。
 
 ## 6. 兼容性考虑
 

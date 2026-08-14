@@ -8,13 +8,18 @@
 
 核心库（`@soybeanjs/headless` + `@soybeanjs/ui` + `@soybeanjs/theme` + `@soybeanjs/ui-unocss`）已稳定。现需围绕它构建多条领域扩展线：
 
-| 包                      | 领域                                        | 当前状态                                             |
-| ----------------------- | ------------------------------------------- | ---------------------------------------------------- |
-| `@soybeanjs/ui-x`       | AI 组件（Bubble/Sender/ThoughtChain…）      | `ui-x` 分支已初始化，含独立的 `headless-x`（待拆解） |
-| `@soybeanjs/admin`      | 后台应用壳（AppLayout/AppMenu/Breadcrumb…） | `admin` 分支已初始化，单包                           |
-| `@soybeanjs/chart`      | 图表组件（对标 shadcn charts）              | `chart` 分支，尚无包                                 |
-| `@soybeanjs/ui-pro`     | 高级/付费组件                               | 未来                                                 |
-| `@soybeanjs/ui-lowcode` | 低代码渲染组件                              | 未来                                                 |
+| 包                      | 领域                                        | 当前状态                                                    |
+| ----------------------- | ------------------------------------------- | ----------------------------------------------------------- |
+| `@soybeanjs/ui-x`       | AI 组件（Bubble/Sender/ThoughtChain…）      | `ui-x` 分支已初始化，含独立的 `headless-x`（待拆解）        |
+| `@soybeanjs/admin`      | 后台应用壳（AppLayout/AppMenu/Breadcrumb…） | `admin` 分支已初始化，单包                                  |
+| `@soybeanjs/chart`      | 图表组件（对标 shadcn charts）              | `chart` 分支，尚无包                                        |
+| `@soybeanjs/editor`     | 富文本编辑器（Tiptap 内核，MIT 边界）       | 立项提案（见 [ecosystem/editor.md](./ecosystem/editor.md)） |
+| `@soybeanjs/table`      | 高级数据网格 / ProTable                     | 立项提案（见 [ecosystem/table.md](./ecosystem/table.md)）   |
+| `@soybeanjs/form`       | Schema 驱动高级表单                         | 立项提案（见 [ecosystem/form.md](./ecosystem/form.md)）     |
+| `@soybeanjs/ui-pro`     | 高级/付费组件                               | 未来                                                        |
+| `@soybeanjs/ui-lowcode` | 低代码渲染组件                              | 未来                                                        |
+
+> 商业化：editor / table / form 三生态的方向与执行建议见 [ecosystem/commercialization.md](./ecosystem/commercialization.md)；市场调研原始结论见 [research/](./research/)。
 
 目标：在保持核心 headless/ui 分层招牌的前提下，给出一个**一致、可扩展、低耦合**的外围包架构；统一文档展示与 sbean 分发；为新包接入提供契约化清单。
 
@@ -53,15 +58,18 @@ Layer 1 · 适配层                  @soybeanjs/ui-unocss （消费 theme）
 
 ### 2.2 包清单与角色
 
-| 包                     | 层  | 运行时依赖                           | 前缀         | 独立逻辑层?      |
-| ---------------------- | --- | ------------------------------------ | ------------ | ---------------- |
-| `@soybeanjs/theme`     | 2   | —                                    | —            | —                |
-| `@soybeanjs/headless`  | 2   | —                                    | —            | 是（唯一逻辑层） |
-| `@soybeanjs/ui-unocss` | 1   | theme                                | —            | —                |
-| `@soybeanjs/ui`        | 3   | headless, theme                      | `S`          | —                |
-| `@soybeanjs/ui-x`      | 4   | headless, ui, theme                  | `Sx`         | 否（逻辑在包内） |
-| `@soybeanjs/admin`     | 4   | headless, ui, theme, **chart**(peer) | `S`+`App*`   | 否               |
-| `@soybeanjs/chart`     | 4   | headless, ui, theme                  | `S`+`Chart*` | 否               |
+| 包                     | 层  | 运行时依赖                           | 前缀          | 独立逻辑层?      |
+| ---------------------- | --- | ------------------------------------ | ------------- | ---------------- |
+| `@soybeanjs/theme`     | 2   | —                                    | —             | —                |
+| `@soybeanjs/headless`  | 2   | —                                    | —             | 是（唯一逻辑层） |
+| `@soybeanjs/ui-unocss` | 1   | theme                                | —             | —                |
+| `@soybeanjs/ui`        | 3   | headless, theme                      | `S`           | —                |
+| `@soybeanjs/ui-x`      | 4   | headless, ui, theme                  | `Sx`          | 否（逻辑在包内） |
+| `@soybeanjs/admin`     | 4   | headless, ui, theme, **chart**(peer) | `S`+`App*`    | 否               |
+| `@soybeanjs/chart`     | 4   | headless, ui, theme                  | `S`+`Chart*`  | 否               |
+| `@soybeanjs/editor`    | 4   | headless, ui, theme（Tiptap peer）   | `S`+`Editor*` | 否（提案）       |
+| `@soybeanjs/table`     | 4   | headless, ui, theme, **form**(peer)  | `S`+`Table*`  | 否（提案）       |
+| `@soybeanjs/form`      | 4   | headless, ui, theme                  | `S`+`Form*`   | 否（提案）       |
 
 ## 3. 分层模型（核心决策，详见 ADR-0001）
 
@@ -109,9 +117,10 @@ Layer 1 · 适配层                  @soybeanjs/ui-unocss （消费 theme）
 
 外围包之间允许**有向依赖、禁止环**。白名单初始条目：
 
-| 消费方             | 被依赖方           | 理由               | 声明形式           |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `@soybeanjs/admin` | `@soybeanjs/chart` | 后台仪表盘常嵌图表 | `peerDependencies` |
+| 消费方             | 被依赖方           | 理由                               | 声明形式                                                                           |
+| ------------------ | ------------------ | ---------------------------------- | ---------------------------------------------------------------------------------- |
+| `@soybeanjs/admin` | `@soybeanjs/chart` | 后台仪表盘常嵌图表                 | `peerDependencies`                                                                 |
+| `@soybeanjs/table` | `@soybeanjs/form`  | 查询表单（`STableQuery` 可选增强） | `peerDependencies`（提案，立项时出 ADR，见 [table.md](./ecosystem/table.md) §4.3） |
 
 - 其余外围包之间默认**独立**，不互相依赖。
 - 新增有向边需更新本表与 `CONTEXT.md`「跨包依赖方向白名单」。

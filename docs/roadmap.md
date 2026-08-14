@@ -10,16 +10,16 @@
 
 ## 概述
 
-| 类别                | 数量 | 说明                                                                      |
-| :------------------ | :--: | :------------------------------------------------------------------------ |
-| 已发布（shipped）   |  88  | `accordion` … `watermark`，见 `packages/ui/src/index.ts`                  |
-| 高优先级（P0 + P1） |  22  | 关键缺口与强需求，优先实现（P0 × 9 + P1 × 13）                            |
-| 中优先级（P2）      |  11  | 有用且有一定需求，按计划推进                                              |
-| 低优先级（P3）      |  12  | 小众但功能独立，择机实现                                                  |
-| 延后至组件市场      |  12  | 复合型 / 小众，将以源码形式分发                                           |
-| 范围外              | 60+  | 移动端专用、已被覆盖、图表、业务专属等                                    |
-| 生态扩展包          |  4   | ui-x（AI 组件）、admin（中后台壳）、chart（图表）、ui-pro（增值，规划中） |
-| 工程优化项          |  11  | F1–F11，见 [optimize.md](./optimize.md)，分阶段 A–D 推进                  |
+| 类别                | 数量 | 说明                                                                                                                                                          |
+| :------------------ | :--: | :------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 已发布（shipped）   |  88  | `accordion` … `watermark`，见 `packages/ui/src/index.ts`                                                                                                      |
+| 高优先级（P0 + P1） |  22  | 关键缺口与强需求，优先实现（P0 × 9 + P1 × 13）                                                                                                                |
+| 中优先级（P2）      |  11  | 有用且有一定需求，按计划推进                                                                                                                                  |
+| 低优先级（P3）      |  12  | 小众但功能独立，择机实现                                                                                                                                      |
+| 延后至组件市场      |  12  | 复合型 / 小众，将以源码形式分发                                                                                                                               |
+| 范围外              | 60+  | 移动端专用、已被覆盖、图表、业务专属等                                                                                                                        |
+| 生态扩展包          |  7   | ui-x（AI 组件）、admin（中后台壳）、chart（图表）、editor（富文本，提案）、table（高级数据网格，提案）、form（Schema 驱动表单，提案）、ui-pro（增值，规划中） |
+| 工程优化项          |  11  | F1–F11，见 [optimize.md](./optimize.md)，分阶段 A–D 推进                                                                                                      |
 
 ### 优先级映射说明
 
@@ -98,7 +98,7 @@
 
 #### 1. `Rating` — ✅ 已发布（shipped）
 
-`Rating` 已实现并发布为 `SRating`，源码位于 [packages/ui/src/components/rating](../packages/ui/src/components/rating) 与 [packages/headless/src/components/rating](../packages/headless/src/components/rating)。原路线图条目（P0、Demand 10/14、Low effort、单类 `cv()` 模式）已达成，自活跃路线图移除。审计快照见 [check.md C90](./check.md)。
+`Rating` 已实现并发布为 `SRating`，源码位于 [packages/ui/src/components/rating](../packages/ui/src/components/rating) 与 [packages/headless/src/components/rating](../packages/headless/src/components/rating)。原路线图条目（P0、Demand 10/14、Low effort、单类 `cv()` 模式）已达成，自活跃路线图移除。
 
 ---
 
@@ -1073,20 +1073,20 @@
 
 组件市场将以可复制源码形式分发组合方案，用户获得完整源码控制权，同时避免核心包膨胀。共 **12** 个组件。
 
-| 组件                | 延后原因（复合 + 小众）                                                    | 基于原子组件                                                | 需求度 |
-| :------------------ | :------------------------------------------------------------------------- | :---------------------------------------------------------- | :----: |
-| `Tour`              | 引导 walkthrough — 高亮引擎 + 步骤管理 + popover 定位，小众（引导场景）。  | `popover`, `dialog`, `button`, `icon`                       |  3/14  |
-| `TreeTable`         | 树形表格 — 扩展 table 支持展开/折叠行 + tree 状态，小众企业场景。          | `table`, `tree`, `collapsible`                              |  3/14  |
-| `PageHeader`        | 页头复合 — breadcrumb + title + actions + back button，复合布局非原子。    | `breadcrumb`, `button`, `typography`, `icon`                |  4/14  |
-| `Navbar`            | 顶部导航栏 — logo + nav links + actions + 响应式折叠，复合布局。           | `link`, `button`, `menu`, `layout`, `icon`                  |  2/14  |
-| `Comment`           | 评论块 — avatar + author + content + actions + 嵌套回复，社交域小众。      | `avatar`, `typography`, `button`, `tag`                     |  2/14  |
-| `Sidebar`           | 应用侧栏 — 可折叠导航 + 分区 + 头部 + 底部，shadcn 风格复合。              | `navigation-menu`, `collapsible`, `layout`, `link`, `icon`  |  1/14  |
-| `AppShell`          | 应用布局壳 — header + sidebar + main + footer 组合，复合布局。             | `layout`, `navbar`, `sidebar`                               |  1/14  |
-| `Galleria`          | 完整图库/灯箱 — carousel + 缩略图条 + zoom + 全屏，小众。                  | `carousel`, `image`, `dialog`, `button`                     |  2/14  |
-| `OrganizationChart` | 组织架构图 — tree + 自定义节点渲染 + 连接线，小众企业场景。                | `tree`, `card`, `icon`                                      |  2/14  |
-| `RichTextEditor`    | 所见即所得编辑器 — 工具栏 + contenteditable + 插件，体量大，通常独立成包。 | `toolbar`, `button`, `icon`, `tooltip` + Tiptap/ProseMirror |  3/14  |
-| `Dock`              | macOS 风格 Dock — 放大效果 + tooltip + 应用图标，小众平台特性。            | `tooltip`, `icon`, `popover`                                |  2/14  |
-| `DynamicInput`      | 可编辑输入列表 — 增/删/排序多行表单字段，复合表单模式。                    | `input`, `button`, `icon`, `list`                           |  1/14  |
+| 组件                | 延后原因（复合 + 小众）                                                                                                                                                                   | 基于原子组件                                                | 需求度 |
+| :------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- | :----: |
+| `Tour`              | 引导 walkthrough — 高亮引擎 + 步骤管理 + popover 定位，小众（引导场景）。                                                                                                                 | `popover`, `dialog`, `button`, `icon`                       |  3/14  |
+| `TreeTable`         | 树形表格 — 扩展 table 支持展开/折叠行 + tree 状态，小众企业场景。                                                                                                                         | `table`, `tree`, `collapsible`                              |  3/14  |
+| `PageHeader`        | 页头复合 — breadcrumb + title + actions + back button，复合布局非原子。                                                                                                                   | `breadcrumb`, `button`, `typography`, `icon`                |  4/14  |
+| `Navbar`            | 顶部导航栏 — logo + nav links + actions + 响应式折叠，复合布局。                                                                                                                          | `link`, `button`, `menu`, `layout`, `icon`                  |  2/14  |
+| `Comment`           | 评论块 — avatar + author + content + actions + 嵌套回复，社交域小众。                                                                                                                     | `avatar`, `typography`, `button`, `tag`                     |  2/14  |
+| `Sidebar`           | 应用侧栏 — 可折叠导航 + 分区 + 头部 + 底部，shadcn 风格复合。                                                                                                                             | `navigation-menu`, `collapsible`, `layout`, `link`, `icon`  |  1/14  |
+| `AppShell`          | 应用布局壳 — header + sidebar + main + footer 组合，复合布局。                                                                                                                            | `layout`, `navbar`, `sidebar`                               |  1/14  |
+| `Galleria`          | 完整图库/灯箱 — carousel + 缩略图条 + zoom + 全屏，小众。                                                                                                                                 | `carousel`, `image`, `dialog`, `button`                     |  2/14  |
+| `OrganizationChart` | 组织架构图 — tree + 自定义节点渲染 + 连接线，小众企业场景。                                                                                                                               | `tree`, `card`, `icon`                                      |  2/14  |
+| `RichTextEditor`    | 所见即所得编辑器 — 工具栏 + contenteditable + 插件，体量大，通常独立成包。**已升级为独立生态包 `@soybeanjs/editor`**（见 [ecosystem/editor.md](./ecosystem/editor.md)），不再走市场分发。 | `toolbar`, `button`, `icon`, `tooltip` + Tiptap/ProseMirror |  3/14  |
+| `Dock`              | macOS 风格 Dock — 放大效果 + tooltip + 应用图标，小众平台特性。                                                                                                                           | `tooltip`, `icon`, `popover`                                |  2/14  |
+| `DynamicInput`      | 可编辑输入列表 — 增/删/排序多行表单字段，复合表单模式。                                                                                                                                   | `input`, `button`, `icon`, `list`                           |  1/14  |
 
 ### 市场设计说明
 
@@ -1177,6 +1177,7 @@ SoybeanUI 正从单一组件库扩展为**组件生态**。外围包遵循「单
 
 ```
 Layer 4  外围包（单包自治）     @soybeanjs/ui-x · @soybeanjs/admin ──(peerDep)──► @soybeanjs/chart
+                                 @soybeanjs/editor（提案）· @soybeanjs/ui-pro（预留）
 Layer 3  样式组件层             @soybeanjs/ui（S 前缀，88 组 / 110 导出）
 Layer 2  无头逻辑层             @soybeanjs/headless（92 公共组件 / 27 composables）
 Layer 1  主题与样式引擎         @soybeanjs/theme · @soybeanjs/unocss
@@ -1187,12 +1188,17 @@ Layer 1  主题与样式引擎         @soybeanjs/theme · @soybeanjs/unocss
 
 ### 各包扩展计划概要
 
-| 包                  | 定位                                                          |     前缀     | 现状                                                                       | 技术方案                                     |
-| :------------------ | :------------------------------------------------------------ | :----------: | :------------------------------------------------------------------------- | :------------------------------------------- |
-| `@soybeanjs/ui-x`   | AI 对话交互组件（对标 Ant Design X / Element Plus X）         |     `Sx`     | `ui-x` 分支已实现 20 组件 + 9 composables，待合并与 headless-x 拆解        | [ecosystem/ui-x.md](./ecosystem/ui-x.md)     |
-| `@soybeanjs/admin`  | 中后台复合/布局层（以 soybean-admin 为蓝本，不依赖 Naive UI） |  `S`+`App*`  | `admin` 分支已实现 6 壳组件 + 6 菜单模式（M1 完成、M2 待验收），M3+ 未开始 | [ecosystem/admin.md](./ecosystem/admin.md)   |
-| `@soybeanjs/chart`  | 图表组件（对标 shadcn charts）                                | `S`+`Chart*` | `ecosystem` 分支仅落地包骨架，功能 0%；选型待定                            | [ecosystem/chart.md](./ecosystem/chart.md)   |
-| `@soybeanjs/ui-pro` | 增值 / 高级组件（探索性，与 ui-lowcode 一并预留）             |     待定     | 无代码，仅契约预留（EC-G07）                                               | [ecosystem/ui-pro.md](./ecosystem/ui-pro.md) |
+| 包                  | 定位                                                          |     前缀      | 现状                                                                       | 技术方案                                     |
+| :------------------ | :------------------------------------------------------------ | :-----------: | :------------------------------------------------------------------------- | :------------------------------------------- |
+| `@soybeanjs/ui-x`   | AI 对话交互组件（对标 Ant Design X / Element Plus X）         |     `Sx`      | `ui-x` 分支已实现 20 组件 + 9 composables，待合并与 headless-x 拆解        | [ecosystem/ui-x.md](./ecosystem/ui-x.md)     |
+| `@soybeanjs/admin`  | 中后台复合/布局层（以 soybean-admin 为蓝本，不依赖 Naive UI） |  `S`+`App*`   | `admin` 分支已实现 6 壳组件 + 6 菜单模式（M1 完成、M2 待验收），M3+ 未开始 | [ecosystem/admin.md](./ecosystem/admin.md)   |
+| `@soybeanjs/chart`  | 图表组件（对标 shadcn charts）                                | `S`+`Chart*`  | `ecosystem` 分支仅落地包骨架，功能 0%；选型待定                            | [ecosystem/chart.md](./ecosystem/chart.md)   |
+| `@soybeanjs/editor` | 富文本编辑器（Tiptap 内核，仅 MIT 免费边界，UI 层自建）       | `S`+`Editor*` | 立项提案（2026-08-14 市场调研与收费边界核实完成），建议生态首发后启动      | [ecosystem/editor.md](./ecosystem/editor.md) |
+| `@soybeanjs/table`  | 高级数据网格 / ProTable（基于核心 `STable` 自建内核）         | `S`+`Table*`  | 立项提案（2026-08-14 调研完成）：服务端数据源抽象/查询/分页/编辑/列管理    | [ecosystem/table.md](./ecosystem/table.md)   |
+| `@soybeanjs/form`   | Schema 驱动高级表单（协议驱动渲染 + 声明式联动）              |  `S`+`Form*`  | 立项提案（2026-08-14 调研完成）：ISchema 渲染层 + 组件注册表 + 查询表单    | [ecosystem/form.md](./ecosystem/form.md)     |
+| `@soybeanjs/ui-pro` | 增值 / 高级组件（探索性，与 ui-lowcode 一并预留）             |     待定      | 无代码，仅契约预留（EC-G07）                                               | [ecosystem/ui-pro.md](./ecosystem/ui-pro.md) |
+
+> 商业化：editor / table / form 三生态的分生态方向（Pro 订阅、托管服务、行业套件、AI 用量、企业定制等）与横向执行建议见 [ecosystem/commercialization.md](./ecosystem/commercialization.md)；市场调研原始结论见 [research/](./research/)（table-ecosystem / form-ecosystem / commercialization-ecosystem）。
 
 ### 分支合并计划
 
@@ -1209,7 +1215,7 @@ Layer 1  主题与样式引擎         @soybeanjs/theme · @soybeanjs/unocss
 
 ### 配套基础设施
 
-生态扩展同时带动以下横向改造（详见 [tasks.md](./tasks.md) 工作流 W7）：
+生态扩展同时带动以下横向改造（详见 [tasks.md](./tasks.md) 工作流 W1）：
 
 - **sbean registry 命名空间化**：items 迁移为 `ui/accordion` 形式，新增 `ui-x/*`、`admin/*`、`chart/*`；CLI 保留无前缀别名兼容。
 - **`pnpm sui` 多包生成**：API / changelog 生成输出迁移至 `generated/api/<pkg>/`；`<ComponentApi>` / `<PlaygroundGallery>` 按路由命名空间定位。

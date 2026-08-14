@@ -132,15 +132,18 @@
 
 ## 7. 阶段 G — 迁移、版本与发布（ecosystem.md §9/§11）
 
-| ID     | 任务描述                                                                                      | 优先级 | 负责人   | 开始       | 目标完成   | 状态      | 进度 |
-| ------ | --------------------------------------------------------------------------------------------- | :----: | -------- | ---------- | ---------- | --------- | :--: |
-| EC-G01 | 合并 `ui-x` 分支到 `main`（含 §11.2 headless-x 拆解收尾，即 EC-A04~A06 内容落地）             |   P0   | Soybean  | 2026-08-14 | 2026-08-31 | 🔵 进行中 | 20%  |
-| EC-G02 | 合并 `chart` 分支到 `main`（新建包；骨架已入 main，功能待 C3 完成）                           |   P0   | Soybean  | 2026-08-14 | 2026-08-31 | 🔵 进行中 | 15%  |
-| EC-G03 | 合并 `admin` 分支到 `main`（接入 admin→chart peerDep，即 EC-B05）                             |   P0   | Soybean  | 2026-08-14 | 2026-08-31 | 🔵 进行中 | 15%  |
-| EC-G04 | 每步合并后验证：`pnpm typecheck` + `pnpm test` + `pnpm build`                                 |   P0   | AI Agent | 2026-08-14 | 2026-09-01 | ⬜ 未开始 |  0%  |
-| EC-G05 | 合并完成后归档/删除 `ui-x` / `admin` / `chart` 临时分支；后续走短生命周期 feature branch      |   P1   | Soybean  | 2026-09-01 | 2026-09-05 | ⬜ 未开始 |  0%  |
-| EC-G06 | lockstep 版本（当前 0.29.3）与单 tag 发布流程验证：`pnpm publish -r` + `release.yml` 全包同发 |   P1   | Soybean  | 2026-09-01 | 2026-09-10 | ⬜ 未开始 |  0%  |
-| EC-G07 | 未来包预留：`@soybeanjs/ui-pro` / `@soybeanjs/ui-lowcode` 接入契约清单（§10）演练             |   P3   | Soybean  | —          | —          | 📋 待排期 |  0%  |
+| ID     | 任务描述                                                                                                 | 优先级 | 负责人   | 开始       | 目标完成   | 状态      | 进度 |
+| ------ | -------------------------------------------------------------------------------------------------------- | :----: | -------- | ---------- | ---------- | --------- | :--: |
+| EC-G01 | 合并 `ui-x` 分支到 `main`（含 §11.2 headless-x 拆解收尾，即 EC-A04~A06 内容落地）                        |   P0   | Soybean  | 2026-08-14 | 2026-08-31 | 🔵 进行中 | 20%  |
+| EC-G02 | 合并 `chart` 分支到 `main`（新建包；骨架已入 main，功能待 C3 完成）                                      |   P0   | Soybean  | 2026-08-14 | 2026-08-31 | 🔵 进行中 | 15%  |
+| EC-G03 | 合并 `admin` 分支到 `main`（接入 admin→chart peerDep，即 EC-B05）                                        |   P0   | Soybean  | 2026-08-14 | 2026-08-31 | 🔵 进行中 | 15%  |
+| EC-G04 | 每步合并后验证：`pnpm typecheck` + `pnpm test` + `pnpm build`                                            |   P0   | AI Agent | 2026-08-14 | 2026-09-01 | ⬜ 未开始 |  0%  |
+| EC-G05 | 合并完成后归档/删除 `ui-x` / `admin` / `chart` 临时分支；后续走短生命周期 feature branch                 |   P1   | Soybean  | 2026-09-01 | 2026-09-05 | ⬜ 未开始 |  0%  |
+| EC-G06 | lockstep 版本（当前 0.29.3）与单 tag 发布流程验证：`pnpm publish -r` + `release.yml` 全包同发            |   P1   | Soybean  | 2026-09-01 | 2026-09-10 | ⬜ 未开始 |  0%  |
+| EC-G07 | 未来包预留：`@soybeanjs/ui-pro` / `@soybeanjs/ui-lowcode` 接入契约清单（§10）演练                        |   P3   | Soybean  | —          | —          | 📋 待排期 |  0%  |
+| EC-G08 | `@soybeanjs/table` 立项评估：评审 [table.md](./ecosystem/table.md)；跨包白名单加边 `table → form` 出 ADR |   P3   | Soybean  | —          | —          | 📋 待排期 |  0%  |
+| EC-G09 | `@soybeanjs/form` 立项评估：评审 [form.md](./ecosystem/form.md)；ISchema 协议 v1 冻结                    |   P3   | Soybean  | —          | —          | 📋 待排期 |  0%  |
+| EC-G10 | 商业化策略跟进：editor/table/form 三生态方向验证（需求信号 → Pro 订阅 / 托管服务立项）                   |   P3   | Soybean  | —          | —          | 📋 待排期 |  0%  |
 
 ## 8. 依赖与阻塞关系
 
@@ -154,4 +157,5 @@ EC-G01/G02/G03 ──► EC-G04 (验证) ──► EC-G05 (归档分支) ──�
 
 ## 9. 最近更新
 
+- **2026-08-14（下午）**：新增三份提案文档——`docs/ecosystem/table.md`（`@soybeanjs/table` 立项提案）、`docs/ecosystem/form.md`（`@soybeanjs/form` 立项提案）、`docs/ecosystem/commercialization.md`（editor/table/form 商业化策略）；调研文档落 `docs/research/`（table-ecosystem / form-ecosystem / commercialization-ecosystem）。新增任务 EC-G08~G10（待排期）。
 - **2026-08-14（基线）**：生成本文档。核对仓库实际状态：包骨架、根脚本、registry `packages` 元数据、core examples 迁移、header 入口均已完成；功能组件、docs 内容、registry 命名空间化、sui 多包生成、分支合并均未完成或进行中。

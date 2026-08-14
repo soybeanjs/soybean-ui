@@ -1,15 +1,23 @@
 # SoybeanUI 生态扩展技术方案
 
 > 本目录存放各外围包（peripheral package）的技术方案文档，是 [roadmap.md](../roadmap.md)「生态扩展路线」的展开。基线日期：2026-08-14；基线分支：`main`（`ui-x` / `admin` / `ecosystem` 临时分支尚未合并）。
+>
+> 导航：docs 总入口见 [../README.md](../README.md)；生态任务的落地跟踪见 [../ecosystem-tasks.md](../ecosystem-tasks.md)；调研依据见 [../research/README.md](../research/README.md)；文档治理规范见 [../GOVERNANCE.md](../GOVERNANCE.md)。
 
 ## 文档索引
 
-| 文档                     | 包                  | 状态                         | 说明                |
-| :----------------------- | :------------------ | :--------------------------- | :------------------ |
-| [ui-x.md](./ui-x.md)     | `@soybeanjs/ui-x`   | 分支已实现，待合并           | AI 对话交互组件     |
-| [admin.md](./admin.md)   | `@soybeanjs/admin`  | 分支已实现 M1/M2，M3+ 未开始 | 中后台复合 / 布局层 |
-| [chart.md](./chart.md)   | `@soybeanjs/chart`  | 仅骨架，选型待定             | 图表组件            |
-| [ui-pro.md](./ui-pro.md) | `@soybeanjs/ui-pro` | 探索性预留                   | 增值 / 高级组件     |
+| 文档                                           | 包                       | 状态                         | 说明                             |
+| :--------------------------------------------- | :----------------------- | :--------------------------- | :------------------------------- |
+| [ui-x.md](./ui-x.md)                           | `@soybeanjs/ui-x`        | 分支已实现，待合并           | AI 对话交互组件                  |
+| [admin.md](./admin.md)                         | `@soybeanjs/admin`       | 分支已实现 M1/M2，M3+ 未开始 | 中后台复合 / 布局层              |
+| [chart.md](./chart.md)                         | `@soybeanjs/chart`       | 仅骨架，选型待定             | 图表组件                         |
+| [editor.md](./editor.md)                       | `@soybeanjs/editor`      | 立项提案（调研已完成）       | 富文本编辑器（Tiptap，MIT 边界） |
+| [table.md](./table.md)                         | `@soybeanjs/table`       | 立项提案（调研已完成）       | 高级数据网格 / ProTable          |
+| [form.md](./form.md)                           | `@soybeanjs/form`        | 立项提案（调研已完成）       | Schema 驱动高级表单              |
+| [ui-pro.md](./ui-pro.md)                       | `@soybeanjs/ui-pro`      | 探索性预留                   | 增值 / 高级组件                  |
+| [commercialization.md](./commercialization.md) | editor/table/form 三生态 | 策略建议（调研已完成）       | 商业化方向与执行建议             |
+
+> 包骨架接入契约见 [../ecosystem.md](../ecosystem.md) §10「新包接入清单」；每个新包立项时按 [../GOVERNANCE.md](../GOVERNANCE.md) 登记到本文档索引。
 
 ## 分层模型（ADR-0001 摘要）
 
@@ -17,6 +25,7 @@
 
 ```
 Layer 4  外围包（单包自治）     @soybeanjs/ui-x · @soybeanjs/admin ──(peerDep)──► @soybeanjs/chart
+                                 @soybeanjs/editor（提案）· @soybeanjs/ui-pro（预留）
 Layer 3  样式组件层             @soybeanjs/ui
 Layer 2  无头逻辑层             @soybeanjs/headless（唯一逻辑层）
 Layer 1  主题与样式引擎         @soybeanjs/theme · @soybeanjs/unocss
@@ -33,10 +42,10 @@ Layer 1  主题与样式引擎         @soybeanjs/theme · @soybeanjs/unocss
 
 ## 术语
 
-| 术语                            | 含义                                                                                                       |
-| :------------------------------ | :--------------------------------------------------------------------------------------------------------- |
-| 外围包（peripheral package）    | Layer 4 的领域扩展包（ui-x / admin / chart / ui-pro）                                                      |
-| 原子原语（atomic primitive）    | 无领域语义、可跨域复用的最小组合式能力（如 `use-x-stream` 的 SSE 解析）                                    |
-| 包装型组件（wrapper component） | 基于核心 `@soybeanjs/ui` 原子组件组合出的复合组件（如 `SAppBreadcrumb` = `SBreadcrumb` + `SDropdownMenu`） |
-| 组件前缀                        | 导出命名空间：ui=`S`、ui-x=`Sx`、admin=`S`+`App*`、chart=`S`+`Chart*`                                      |
-| 命名空间 registry item          | sbean registry 条目的 `package/component` 形式（如 `ui/accordion`）                                        |
+| 术语                            | 含义                                                                                                                                                                        |
+| :------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 外围包（peripheral package）    | Layer 4 的领域扩展包（ui-x / admin / chart / editor / table / form / ui-pro）                                                                                               |
+| 原子原语（atomic primitive）    | 无领域语义、可跨域复用的最小组合式能力（如 `use-x-stream` 的 SSE 解析）                                                                                                     |
+| 包装型组件（wrapper component） | 基于核心 `@soybeanjs/ui` 原子组件组合出的复合组件（如 `SAppBreadcrumb` = `SBreadcrumb` + `SDropdownMenu`）                                                                  |
+| 组件前缀                        | 导出命名空间：ui=`S`、ui-x=`Sx`、admin=`S`+`App*`、chart=`S`+`Chart*`、editor=`S`+`Editor*`、table=`S`+`Table*`（旗舰 `STablePro`）、form=`S`+`Form*`（旗舰 `SFormSchema`） |
+| 命名空间 registry item          | sbean registry 条目的 `package/component` 形式（如 `ui/accordion`）                                                                                                         |
