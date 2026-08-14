@@ -1202,7 +1202,7 @@ Layer 1  主题与样式引擎         @soybeanjs/theme · @soybeanjs/unocss
 
 ### 分支合并计划
 
-三条临时功能分支（`ui-x` / `admin` / `ecosystem`）均基于 `c96c7dfff` 切出，main 在其后将 `packages/ui-unocss` 重命名为 `packages/unocss`——**合并时所有 `@soybeanjs/ui-unocss` 引用与 pnpm-lock 均为已知冲突点**，需先将各分支重定向到新包名再合并。
+三条临时功能分支（`ui-x` / `admin` / `ecosystem`）均基于 `c96c7dfff` 切出，main 在其后将 `packages/ui-unocss` 重命名为 `packages/unocss`——**合并时所有 `@soybeanjs/ui-uno` 引用与 pnpm-lock 均为已知冲突点**，需先将各分支重定向到新包名再合并。
 
 | 顺序 | 动作                                                                            | 时间窗             |
 | :--: | :------------------------------------------------------------------------------ | :----------------- |

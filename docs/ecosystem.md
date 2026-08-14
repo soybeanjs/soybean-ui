@@ -6,7 +6,7 @@
 
 ## 1. 背景与目标
 
-核心库（`@soybeanjs/headless` + `@soybeanjs/ui` + `@soybeanjs/theme` + `@soybeanjs/ui-unocss`）已稳定。现需围绕它构建多条领域扩展线：
+核心库（`@soybeanjs/headless` + `@soybeanjs/ui` + `@soybeanjs/theme` + `@soybeanjs/ui-uno`）已稳定。现需围绕它构建多条领域扩展线：
 
 | 包                      | 领域                                        | 当前状态                                                    |
 | ----------------------- | ------------------------------------------- | ----------------------------------------------------------- |
@@ -43,7 +43,7 @@ Layer 2 · 核心逻辑层
         @soybeanjs/headless        @soybeanjs/theme
             ▲                         ▲
             │                         │
-Layer 1 · 适配层                  @soybeanjs/ui-unocss （消费 theme）
+Layer 1 · 适配层                  @soybeanjs/ui-uno （消费 theme）
 
 横切 · @soybeanjs/sbean
   CLI / registry / 文档分发 / 模板；非运行时依赖，按源码路径消费各包
@@ -58,18 +58,18 @@ Layer 1 · 适配层                  @soybeanjs/ui-unocss （消费 theme）
 
 ### 2.2 包清单与角色
 
-| 包                     | 层  | 运行时依赖                           | 前缀          | 独立逻辑层?      |
-| ---------------------- | --- | ------------------------------------ | ------------- | ---------------- |
-| `@soybeanjs/theme`     | 2   | —                                    | —             | —                |
-| `@soybeanjs/headless`  | 2   | —                                    | —             | 是（唯一逻辑层） |
-| `@soybeanjs/ui-unocss` | 1   | theme                                | —             | —                |
-| `@soybeanjs/ui`        | 3   | headless, theme                      | `S`           | —                |
-| `@soybeanjs/ui-x`      | 4   | headless, ui, theme                  | `Sx`          | 否（逻辑在包内） |
-| `@soybeanjs/admin`     | 4   | headless, ui, theme, **chart**(peer) | `S`+`App*`    | 否               |
-| `@soybeanjs/chart`     | 4   | headless, ui, theme                  | `S`+`Chart*`  | 否               |
-| `@soybeanjs/editor`    | 4   | headless, ui, theme（Tiptap peer）   | `S`+`Editor*` | 否（提案）       |
-| `@soybeanjs/table`     | 4   | headless, ui, theme, **form**(peer)  | `S`+`Table*`  | 否（提案）       |
-| `@soybeanjs/form`      | 4   | headless, ui, theme                  | `S`+`Form*`   | 否（提案）       |
+| 包                    | 层  | 运行时依赖                           | 前缀          | 独立逻辑层?      |
+| --------------------- | --- | ------------------------------------ | ------------- | ---------------- |
+| `@soybeanjs/theme`    | 2   | —                                    | —             | —                |
+| `@soybeanjs/headless` | 2   | —                                    | —             | 是（唯一逻辑层） |
+| `@soybeanjs/ui-uno`   | 1   | theme                                | —             | —                |
+| `@soybeanjs/ui`       | 3   | headless, theme                      | `S`           | —                |
+| `@soybeanjs/ui-x`     | 4   | headless, ui, theme                  | `Sx`          | 否（逻辑在包内） |
+| `@soybeanjs/admin`    | 4   | headless, ui, theme, **chart**(peer) | `S`+`App*`    | 否               |
+| `@soybeanjs/chart`    | 4   | headless, ui, theme                  | `S`+`Chart*`  | 否               |
+| `@soybeanjs/editor`   | 4   | headless, ui, theme（Tiptap peer）   | `S`+`Editor*` | 否（提案）       |
+| `@soybeanjs/table`    | 4   | headless, ui, theme, **form**(peer)  | `S`+`Table*`  | 否（提案）       |
+| `@soybeanjs/form`     | 4   | headless, ui, theme                  | `S`+`Form*`   | 否（提案）       |
 
 ## 3. 分层模型（核心决策，详见 ADR-0001）
 

@@ -40,7 +40,7 @@
 
 | 子任务                       | 目标                                                                                                                              |       负责人       | 工时 | 依赖         |
 | :--------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- | :----------------: | :--: | :----------- |
-| EC-M1.1 预处理包名冲突       | 将三分支中 `@soybeanjs/ui-unocss` / `packages/ui-unocss` 引用重定向为 `unocss`，重锁 pnpm-lock                                    |      AI Agent      | 0.5d | —            |
+| EC-M1.1 预处理包名冲突       | 将三分支中 `@soybeanjs/ui-uno` / `packages/ui-unocss` 引用重定向为 `unocss`，重锁 pnpm-lock                                       |      AI Agent      | 0.5d | —            |
 | EC-M1.2 合并 ecosystem 分支  | 三包骨架 + docs/playground 命名空间化（658 个文件迁移）+ 生成链路改造合入，冲突全消                                               | Soybean + AI Agent |  1d  | EC-M1.1      |
 | EC-M1.3 headless-x 拆解迁移  | 9 composables + 7 types + specs 迁入 `packages/ui-x/src/`，删除 `packages/headless-x/`，ui-x 补 `./composables` `./types` exports |      AI Agent      |  1d  | EC-M1.2      |
 | EC-M1.4 合并 ui-x 分支       | 20 组件 + 13 测试 + docs/playground 接线合入（除 headless-x 外全部内容）                                                          | Soybean + AI Agent |  1d  | EC-M1.3      |

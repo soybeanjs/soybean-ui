@@ -118,7 +118,7 @@ packages/admin/
 - **Nuxt**：提供 `./nuxt` module 与 resolver（optional peer）；菜单 / 面包屑依赖宿主提供 vue-router 实例。
 - **主题**：样式完全走 `@soybeanjs/theme` token + `cv()/scv()`，自动获得亮暗色与 `inverted` 反色（暗色侧栏）。
 - **版本**：lockstep 同步；对外统一 `S` 前缀（`SAppLayout`），内部 `App*`，数据模型 `App.*` 命名空间。
-- **合并风险**：main 的 `ui-unocss → unocss` 改名与分支 `@soybeanjs/ui-unocss` devDeps 冲突；合并前先重定向。
+- **合并风险**：main 的 `ui-unocss → unocss` 改名与分支 `@soybeanjs/ui-uno` devDeps 冲突；合并前先重定向。
 
 ## 7. 风险
 
