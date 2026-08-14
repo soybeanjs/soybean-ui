@@ -83,7 +83,7 @@
 
 ### 为什么未处理 `PageUp`/`PageDown`？
 
-网格导航目前覆盖方向键、`Enter`/`Space` 与跨月翻页。`PageUp`/`PageDown`/`Home`/`End`（Ant Design/Element Plus 面板具备）为已排期的增强项——实现建议见检查报告。
+网格导航目前覆盖方向键、`Enter`/`Space` 与跨月翻页。`PageUp`/`PageDown`/`Home`/`End`（Ant Design/Element Plus 面板具备）为已排期的增强项。
 
 ### 如何用此组件构建日期范围？
 

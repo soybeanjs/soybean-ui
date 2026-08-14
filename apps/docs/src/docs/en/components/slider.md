@@ -68,7 +68,7 @@ Set `minStepsBetweenThumbs` to the minimum number of steps between thumbs — st
 
 ### How do I show the current value above the thumb?
 
-Use the default slot, which receives `{ index, value, modelValue }` for each thumb, to render custom content. A built-in tooltip is a tracked enhancement (see `docs/check.md` 4.2).
+Use the default slot, which receives `{ index, value, modelValue }` for each thumb, to render custom content. A built-in tooltip is a planned enhancement.
 
 ### What keyboard shortcuts are supported?
 

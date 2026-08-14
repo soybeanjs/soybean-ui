@@ -53,7 +53,7 @@ SoybeanUI 将文本域拆分为负责状态、自动高度测量与表单代理�
 ### 注意事项
 
 - autosize 依赖真实布局（`scrollHeight` / `getComputedStyle`），相关行为通过浏览器 e2e 验证，而非 happy-dom 单测。
-- `error` 态、`loading` 态、`showCount`、IME 组合事件与 `change` 事件未实现，已列入遗留增强项统一排期。
+- `error` 态、`loading` 态、`showCount`、IME 组合事件与 `change` 事件未实现，列为增强待办。
 - 计数器本身不做 `aria-live` 播报；如需实时播报，可在 `counter` 插槽内自行添加 `aria-live` 区域。
 
 ## 常见问题

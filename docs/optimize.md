@@ -328,8 +328,7 @@ filtered build 与独立测试。
 - `packages/theme` 和 `packages/ui-unocss` 无测试目录。
 - `useUiContext` 影响 68 个符号；CodeGraph 能关联 7 个下游测试，但没有
   `use-ui-context` 的直接单测。
-- Browser e2e 当前只有 button、dialog、select 三个 spec；`docs/check.md`
-  已列出待补的浮层、键盘导航和颜色对比场景。
+- Browser e2e 当前只有 button、dialog、select 三个 spec；浮层、键盘导航和颜色对比场景待补。
 - `packages/headless` 与 `apps/nuxt` 均未定义 workspace `typecheck` script；
   递归 typecheck 不能证明它们可作为独立单元通过。
 
@@ -343,8 +342,7 @@ filtered build 与独立测试。
   缺失行为测试。
 - 为 headless 增加独立 `vue-tsc` 门禁，为 Nuxt 增加 `nuxt typecheck` 或等价
   集成检查。
-- 按 `docs/check.md` 的风险清单扩展 browser e2e，优先浮层/focus/keyboard，
-  不按组件数量平均铺测试。
+- 按浮层/focus/keyboard 风险清单扩展 browser e2e，不按组件数量平均铺测试。
 
 **验收条件：**
 
@@ -510,7 +508,7 @@ filtered build 与独立测试。
 ### 阶段 C：高影响 seam（2–4 周）
 
 1. 增加 theme、UnoCSS preset、`useUiContext` 直接测试。
-2. 按 `docs/check.md` 扩展真实浏览器场景。
+2. 扩展真实浏览器场景（浮层、键盘导航、颜色对比）。
 3. 统一 root build dependency graph。
 
 ### 阶段 D：Docs 可扩展性（需要基准数据后）

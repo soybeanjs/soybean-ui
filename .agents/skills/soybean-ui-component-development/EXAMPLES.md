@@ -97,17 +97,16 @@ Why it triggers:
 
 - This is a re-evaluation of an already-shipped component, not an implementation task.
 - It requires the seven-dimension assessment flow, not the implementation phase order.
-- It produces a graded report and feeds findings back into the project snapshot.
+- It produces a graded report of the component's current state.
 
 Expected approach:
 
 1. Load [audit.md](audit.md) for the assessment methodology, seven check dimensions (D1–D7, 105 items), severity levels, and acceptance states.
-2. Confirm the component's task id, priority, and key check items in `docs/check.md` (project snapshot).
-3. Run the eight-step assessment flow from [audit.md -> Assessment flow](audit.md#assessment-flow). Grade every finding by severity (Blocker / Major / Minor / Enhancement); do not start the next component while a Blocker is open.
-4. For D2 industry benchmarking, follow [audit.md -> D2. Industry benchmarking](audit.md#d2-industry-benchmarking) (six libraries) and record concrete findings (for example, `input` should add `showCount`) back into the component's task row in `docs/check.md`.
-5. Apply [audit.md -> Single-component acceptance checklist](audit.md#single-component-acceptance-checklist) before marking the component passed.
-6. After each category, run [audit.md -> Cross-component consistency regression](audit.md#cross-component-consistency-regression). After all components in the snapshot, run the full regression.
-7. If the audit surfaces fixes, hand off to the appropriate implementation workflow (new, migration, fix or extension, or standards alignment) — do not mix audit reporting with in-place editing in the same pass.
+2. Run the eight-step assessment flow from [audit.md -> Assessment flow](audit.md#assessment-flow). Grade every finding by severity (Blocker / Major / Minor / Enhancement); do not start the next component while a Blocker is open.
+3. For D2 industry benchmarking, follow [audit.md -> D2. Industry benchmarking](audit.md#d2-industry-benchmarking) (six libraries) and record concrete findings (for example, `input` should add `showCount`).
+4. Apply [audit.md -> Single-component acceptance checklist](audit.md#single-component-acceptance-checklist) before marking the component passed.
+5. After each category, run [audit.md -> Cross-component consistency regression](audit.md#cross-component-consistency-regression). After all components, run the full regression.
+6. If the audit surfaces fixes, hand off to the appropriate implementation workflow (new, migration, fix or extension, or standards alignment) — do not mix audit reporting with in-place editing in the same pass.
 
 ## Surface-scoped work
 

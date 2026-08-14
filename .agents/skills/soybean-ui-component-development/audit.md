@@ -2,7 +2,7 @@
 
 This file is the single source of truth for evaluating already-shipped SoybeanUI components. It owns the assessment methodology, the seven check dimensions, the 105 check items with standards and acceptance conditions, severity levels, acceptance states, single-component acceptance, cross-component consistency regression, full regression, and the industry benchmarking methodology (library selection + comparison dimensions).
 
-The companion [SKILL.md](SKILL.md) owns pattern classification, phase order, workflows, guardrails, and delivery surfaces; [layers.md](layers.md) owns implementation layer rules; [surfaces.md](surfaces.md) owns delivery surface rules; [process.md](process.md) owns the finish checklist and commit convention. Project-level snapshots — the 88-component-group list, the C01–C90 task table, current P0–P3 priority allocation, the 13-round execution order, and concrete benchmark findings per component (for example `input` should add `showCount`) — live in `docs/check.md` and reference this file as the source.
+The companion [SKILL.md](SKILL.md) owns pattern classification, phase order, workflows, guardrails, and delivery surfaces; [layers.md](layers.md) owns implementation layer rules; [surfaces.md](surfaces.md) owns delivery surface rules; [process.md](process.md) owns the finish checklist and commit convention.
 
 ## When to load
 
@@ -57,7 +57,7 @@ Seven dimensions and their item counts, sources, and benchmark mapping:
 | D6  | Documentation          |  15   | [surfaces.md](surfaces.md) Docs section + benchmark library doc structure                               |
 | D7  | Other dimensions       |  20   | Performance, a11y, browser compatibility, exception handling, test coverage (unit + e2e), extensibility |
 
-**Total:** 105 check items. Per-component task tables in `docs/check.md` track state across these dimensions.
+**Total:** 105 check items.
 
 ## Dimension details
 
@@ -268,7 +268,7 @@ After each category is complete (e.g. all "Forms" components), run a cross-compo
 
 ## Full regression
 
-After all components in the project snapshot are audited, run a full regression:
+After all components have been audited, run a full regression:
 
 - `pnpm typecheck` / `pnpm lint` / `pnpm fmt` / `pnpm test` all green
 - `pnpm build` (headless -> UI -> sbean) and `pnpm build:libs` (theme -> UnoCSS preset) succeed

@@ -48,7 +48,7 @@ SoybeanUI 将数字输入框拆分为负责状态、数字解析/格式化、边
 
 ### 注意事项
 
-- `formatter` / `parser` 钩子、`controls` 显隐开关与 `compact` 模式未实现，已列入遗留增强项统一排期。
+- `formatter` / `parser` 钩子、`controls` 显隐开关与 `compact` 模式未实现，列为增强待办。
 - 输入过程中组件接受中间状态，失焦或按 Enter 时会回弹为合法数字。
 - 清除按钮仅在悬停或聚焦时出现（桌面惯例）。
 

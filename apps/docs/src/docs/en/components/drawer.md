@@ -59,10 +59,6 @@ A panel that slides out from the edge of the screen. It reuses the declarative A
 - Left/right drawers slide in the logical direction and are mirrored under RTL (`dir`).
 - The imperative `dialog(...)` API also renders drawers if you pass the matching options — no separate drawer service is needed.
 
-### Roadmap
-
-`draggable` and `fullscreen` variants for `dialog`/`drawer` are tracked in `docs/check.md` (C72/C73, P0) against Ant Design/Element Plus parity.
-
 ## FAQ
 
 ### How do I slide the drawer from a specific edge?

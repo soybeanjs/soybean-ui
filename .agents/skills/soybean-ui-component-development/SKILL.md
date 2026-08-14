@@ -34,7 +34,7 @@ For detailed rules, see [layers.md](layers.md) (implementation layers), [surface
 
 Example: "migrate a compound widget into SoybeanUI" usually means migration scenario + multi-slot or compact pattern + full delivery surface.
 
-Example: "audit the `dialog` component against industry baselines" means audit scenario + follow [audit.md](audit.md) for the assessment flow, seven check dimensions, and regression rules; the project snapshot (component list, task table, priority, execution order, concrete benchmark findings) lives in `docs/check.md`.
+Example: "audit the `dialog` component against industry baselines" means audit scenario + follow [audit.md](audit.md) for the assessment flow, seven check dimensions, and regression rules.
 
 ## Component patterns
 
@@ -93,11 +93,10 @@ Example: "audit the `dialog` component against industry baselines" means audit s
 ### Audit and evaluation of shipped components
 
 1. Load [audit.md](audit.md) for the full assessment methodology, seven check dimensions (D1–D7, 105 items), severity levels, acceptance states, and regression rules.
-2. Confirm the project snapshot in `docs/check.md` for the component's task id (C01–C90), current priority, key check items, and any concrete benchmark findings already recorded.
-3. Run the eight-step assessment flow from [audit.md -> Assessment flow](audit.md#assessment-flow). Grade every finding by severity; do not start the next component while a Blocker is open.
-4. For D2 industry benchmarking, follow [audit.md -> Industry benchmarking](audit.md#d2-industry-benchmarking) (six libraries) and record concrete findings back into the component's task row in `docs/check.md`.
-5. Apply the [audit.md -> Single-component acceptance checklist](audit.md#single-component-acceptance-checklist) before marking the component passed.
-6. After each category, run the cross-component consistency regression from [audit.md -> Cross-component consistency regression](audit.md#cross-component-consistency-regression). After all components, run the full regression.
+2. Run the eight-step assessment flow from [audit.md -> Assessment flow](audit.md#assessment-flow). Grade every finding by severity; do not start the next component while a Blocker is open.
+3. For D2 industry benchmarking, follow [audit.md -> Industry benchmarking](audit.md#d2-industry-benchmarking) (six libraries) and record concrete findings.
+4. Apply the [audit.md -> Single-component acceptance checklist](audit.md#single-component-acceptance-checklist) before marking the component passed.
+5. After each category, run the cross-component consistency regression from [audit.md -> Cross-component consistency regression](audit.md#cross-component-consistency-regression). After all components, run the full regression.
 
 ## Phase order
 

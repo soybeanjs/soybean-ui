@@ -52,7 +52,7 @@ SoybeanUI 将 input-otp 拆分为负责透明输入叠加、选区镜像与校�
 
 - `maxlength` 为必填——它决定渲染的字符个数。
 - `aria-label` 属性以 `ariaLabel`（camelCase）声明；kebab-case 属性与 camelCase prop 均可生效，未传入时回退本地化默认文案「One-time password」。
-- locale 化默认 `aria-label` 与 `contextmenu` 处理已列入遗留增强项统一排期。
+- locale 化默认 `aria-label` 与 `contextmenu` 处理列为增强待办。
 
 ## 常见问题
 

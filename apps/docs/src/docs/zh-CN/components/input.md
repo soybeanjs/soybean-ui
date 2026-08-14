@@ -51,7 +51,7 @@ SoybeanUI 将输入框拆分为负责状态、表单代理与清除按钮语义�
 
 ### 注意事项
 
-- `showCount` 计数器、`error` 态与 `loading` 态未实现，已列入遗留增强项统一排期。
+- `showCount` 计数器、`error` 态与 `loading` 态未实现，列为增强待办。
 - 清除按钮仅在悬停或聚焦时出现（桌面惯例）；触屏场景如需清除入口，可借助 `leading` / `trailing` 插槽自行提供。
 - 根节点默认渲染 `role="group"`、`aria-roledescription="Input"` 与 `spellcheck="false"`，属设计意图。
 
@@ -71,4 +71,4 @@ SoybeanUI 将输入框拆分为负责状态、表单代理与清除按钮语义�
 
 ### 如何限制输入长度？
 
-传入 `maxlength` / `minlength`，会透传到原生 input。可见计数器暂未提供（已列入遗留增强项）。
+传入 `maxlength` / `minlength`，会透传到原生 input。可见计数器暂未提供（列为增强待办）。

@@ -83,7 +83,7 @@ Set `numberOfMonths={2}` — the calendar renders two month grids side by side a
 
 ### Why is `PageUp`/`PageDown` not handled?
 
-Grid navigation currently covers Arrow keys, `Enter`/`Space`, and cross-month paging. `PageUp`/`PageDown`/`Home`/`End` (present in Ant Design/Element Plus panels) are a scheduled enhancement — see the check report for the implementation suggestion.
+Grid navigation currently covers Arrow keys, `Enter`/`Space`, and cross-month paging. `PageUp`/`PageDown`/`Home`/`End` (present in Ant Design/Element Plus panels) are a scheduled enhancement.
 
 ### How do I build a date range with this component?
 

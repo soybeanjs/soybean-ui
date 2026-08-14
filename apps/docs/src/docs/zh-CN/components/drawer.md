@@ -59,10 +59,6 @@
 - 左右抽屉沿逻辑方向滑动，并在 RTL（`dir`）下镜像。
 - 命令式 `dialog(...)` API 在传入匹配选项时同样能渲染抽屉——无需独立的 drawer 服务。
 
-### Roadmap
-
-`dialog`/`drawer` 的 `draggable` 与 `fullscreen` 变体记录在 `docs/check.md`（C72/C73，P0），对标 Ant Design/Element Plus。
-
 ## FAQ
 
 ### 如何从特定边缘滑出抽屉？

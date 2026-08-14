@@ -67,7 +67,6 @@ soybean-ui/
 ├── docs/
 │   ├── architecture.md      # This workspace architecture reference
 │   ├── optimize.md          # Prioritized architecture/quality assessment
-│   ├── check.md             # Shipped-component audit snapshot
 │   ├── roadmap.md           # Active component roadmap
 │   └── components.md        # Detailed roadmap source material
 ├── packages/
@@ -376,7 +375,6 @@ Development and publication resolution differ:
 | UI public groups              | `packages/ui/src/index.ts`                                            |
 | Generated component inventory | each package's `src/constants/components.ts`                          |
 | Component development rules   | `.agents/skills/soybean-ui-component-development/`                    |
-| Shipped-component audit state | `docs/check.md`                                                       |
 | Unshipped-component roadmap   | `docs/roadmap.md`                                                     |
 | Workspace architecture        | this document                                                         |
 | Improvement backlog           | `docs/optimize.md`                                                    |

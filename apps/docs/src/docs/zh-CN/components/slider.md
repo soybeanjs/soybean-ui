@@ -68,7 +68,7 @@ SoybeanUI 由 headless 层 `SliderRoot`（`useControllableState` + 值规范化 
 
 ### 如何在滑块上方显示当前值？
 
-使用默认插槽，它会为每个滑块提供 `{ index, value, modelValue }` 参数，可渲染自定义内容。内置 tooltip 属于排期待增强项（见 `docs/check.md` 4.2）。
+使用默认插槽，它会为每个滑块提供 `{ index, value, modelValue }` 参数，可渲染自定义内容。内置 tooltip 属于排期待增强项。
 
 ### 支持哪些键盘快捷键？
 

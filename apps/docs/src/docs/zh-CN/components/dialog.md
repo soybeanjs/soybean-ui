@@ -100,10 +100,6 @@ function openWarningDialog() {
 - `pure` 会移除头部与底部，因此 `title`/`description` 不再渲染——该模式下请自行提供可访问的标注。
 - 命令式 `dialog(...)` API 需要挂载 `SDialogProvider`；未挂载时调用为 no-op。
 
-### Roadmap
-
-`dialog`/`drawer` 的 `draggable` 与 `fullscreen` 变体记录在 `docs/check.md`（C72/C73，P0），对标 Ant Design/Element Plus。
-
 ## FAQ
 
 ### 如何控制打开状态？

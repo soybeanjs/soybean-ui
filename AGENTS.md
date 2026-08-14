@@ -19,7 +19,7 @@ Component development rules live in the self-contained skill at `.agents/skills/
 
 Both skills are installed globally in the skills store and can be loaded from any project. They are the single source of truth for TypeScript functional style and Vue SFC structure; the component development skill does not restate their content.
 
-Load the component development skill for any task that creates, migrates, extends, standardizes, fixes, or audits a SoybeanUI component. For auditing or re-evaluating already-shipped components, load [audit.md](.agents/skills/soybean-ui-component-development/audit.md) for the assessment methodology; the project-level snapshot (component list, task table, priority, execution order, concrete benchmark findings) lives in `docs/check.md`.
+Load the component development skill for any task that creates, migrates, extends, standardizes, fixes, or audits a SoybeanUI component. For auditing or re-evaluating already-shipped components, load [audit.md](.agents/skills/soybean-ui-component-development/audit.md) for the assessment methodology.
 
 If a nearer scoped `AGENTS.md` exists for your target path, use it only to narrow which skill sections apply.
 
@@ -60,27 +60,26 @@ Private applications:
 
 ## WHERE TO LOOK
 
-| Task                     | Location                                                                  | Key Pattern                                                                                                                |
-| ------------------------ | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| New component (logic)    | `packages/headless/src/components/[name]/`                                | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts                                               |
-| New component (styled)   | `packages/ui/src/components/[name]/` + `packages/ui/src/styles/[name].ts` | style recipe → types.ts → `*.vue` → index.ts                                                                               |
-| Variant definitions      | `packages/ui/src/styles/[name].ts`                                        | `cv()` / `scv()` with `// @unocss-include` at top                                                                          |
-| Shared hooks             | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (27 total)                                                                                |
-| Theme/sizing             | `packages/ui/src/theme/`                                                  | `ThemeColor` (8), `ThemeSize` (xs…2xl)                                                                                     |
-| Theme CSS generation     | `packages/theme/`                                                         | `createTheme(options)` (returns CSS string)                                                                                |
-| UnoCSS adapter           | `packages/ui-unocss/`                                                     | `presetUiUnocss()` / `presetSbean()`                                                                                       |
-| Source-distribution CLI  | `packages/sbean/`                                                         | commands → registry/schema/templates/MCP                                                                                   |
-| Utility functions        | `packages/headless/src/shared/`                                           | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                                                                |
-| Global types             | `packages/headless/src/types/`                                            | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                                                        |
-| Generated API data       | `apps/docs/src/generated/api/`                                            | `pnpm sui api` baseline + `pnpm sui api-translate` locale descriptions                                                     |
-| Generated changelog data | `apps/docs/src/generated/changelog/`                                      | `pnpm sui changelog` baseline + `pnpm sui changelog-translate` locale summaries                                            |
-| Docs content             | `apps/docs/src/docs/[en\|zh-CN]/`                                         | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`                                                  |
-| Demo source              | `apps/playground/src/examples/[component]/`                               | Vue SFCs referenced by docs                                                                                                |
-| Browser e2e tests        | `packages/ui/test/browser/`                                               | `vitest.browser.config.ts` + `vitest-browser-vue` + `axe-core` (color-contrast on)                                         |
-| Workspace architecture   | `docs/architecture.md`                                                    | Package/app map, dependency graph, generation/build/test/release flows                                                     |
-| Architecture assessment  | `docs/optimize.md`                                                        | Evidence-ranked maintainability, scalability, and quality recommendations                                                  |
-| Component dev skill      | `.agents/skills/soybean-ui-component-development/`                        | SKILL.md + layers.md + surfaces.md + e2e.md + process.md + audit.md + EXAMPLES.md                                          |
-| Component audit snapshot | `docs/check.md`                                                           | 88-component task table (C01–C90), P0–P3 priority, 13-round order, benchmark findings; methodology sourced from `audit.md` |
+| Task                     | Location                                                                  | Key Pattern                                                                        |
+| ------------------------ | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| New component (logic)    | `packages/headless/src/components/[name]/`                                | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts       |
+| New component (styled)   | `packages/ui/src/components/[name]/` + `packages/ui/src/styles/[name].ts` | style recipe → types.ts → `*.vue` → index.ts                                       |
+| Variant definitions      | `packages/ui/src/styles/[name].ts`                                        | `cv()` / `scv()` with `// @unocss-include` at top                                  |
+| Shared hooks             | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (27 total)                                        |
+| Theme/sizing             | `packages/ui/src/theme/`                                                  | `ThemeColor` (8), `ThemeSize` (xs…2xl)                                             |
+| Theme CSS generation     | `packages/theme/`                                                         | `createTheme(options)` (returns CSS string)                                        |
+| UnoCSS adapter           | `packages/ui-unocss/`                                                     | `presetUiUnocss()` / `presetSbean()`                                               |
+| Source-distribution CLI  | `packages/sbean/`                                                         | commands → registry/schema/templates/MCP                                           |
+| Utility functions        | `packages/headless/src/shared/`                                           | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                        |
+| Global types             | `packages/headless/src/types/`                                            | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                |
+| Generated API data       | `apps/docs/src/generated/api/`                                            | `pnpm sui api` baseline + `pnpm sui api-translate` locale descriptions             |
+| Generated changelog data | `apps/docs/src/generated/changelog/`                                      | `pnpm sui changelog` baseline + `pnpm sui changelog-translate` locale summaries    |
+| Docs content             | `apps/docs/src/docs/[en\|zh-CN]/`                                         | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`          |
+| Demo source              | `apps/playground/src/examples/[component]/`                               | Vue SFCs referenced by docs                                                        |
+| Browser e2e tests        | `packages/ui/test/browser/`                                               | `vitest.browser.config.ts` + `vitest-browser-vue` + `axe-core` (color-contrast on) |
+| Workspace architecture   | `docs/architecture.md`                                                    | Package/app map, dependency graph, generation/build/test/release flows             |
+| Architecture assessment  | `docs/optimize.md`                                                        | Evidence-ranked maintainability, scalability, and quality recommendations          |
+| Component dev skill      | `.agents/skills/soybean-ui-component-development/`                        | SKILL.md + layers.md + surfaces.md + e2e.md + process.md + audit.md + EXAMPLES.md  |
 
 ## BUILD & CI
 

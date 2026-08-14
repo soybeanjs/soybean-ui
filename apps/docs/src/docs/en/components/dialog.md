@@ -100,10 +100,6 @@ function openWarningDialog() {
 - `pure` removes the header and footer, so `title`/`description` are no longer rendered — provide your own accessible label in that mode.
 - The imperative `dialog(...)` API needs `SDialogProvider` mounted; calling it without the provider is a no-op.
 
-### Roadmap
-
-`draggable` and `fullscreen` variants for `dialog`/`drawer` are tracked in `docs/check.md` (C72/C73, P0) against Ant Design/Element Plus parity.
-
 ## FAQ
 
 ### How do I control the open state?
