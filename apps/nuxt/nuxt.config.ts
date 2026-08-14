@@ -6,7 +6,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   app: {
     head: {
-      link: [{ rel: 'icon', type: 'image/x-icon', href: 'https://r2.soybeanjs.tech/soybeanjs/logo-soybean-ui.svg' }],
+      link: [
+        {
+          rel: 'icon',
+          type: 'image/x-icon',
+          href: 'https://r2.soybeanjs.tech/soybeanjs/logo-soybean-ui.svg?v=202608142043'
+        }
+      ],
       // Applies the persisted theme (from localStorage) to <html> before first
       // paint — this removes the theme flash on refresh.
       script: [{ innerHTML: createThemeInitScript(), tagPosition: 'head' }]
