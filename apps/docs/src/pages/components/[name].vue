@@ -9,7 +9,7 @@ const { t } = useI18n();
 
 const name = computed(() => route.params.name);
 
-const path = computed(() => `components/${name.value}`);
+const path = computed(() => `ui/components/${name.value}`);
 
 const componentName = computed(() => pascalCase(name.value));
 const importName = computed(() => `S${componentName.value}`);

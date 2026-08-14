@@ -326,7 +326,7 @@ function normalizeMarkdownContent(source: string, relativePath: string, apiSumma
 }
 
 function resolveGeneratedApiPath(relativePath: string): string | null {
-  if (!relativePath.startsWith('components/')) {
+  if (!relativePath.startsWith('ui/components/')) {
     return null;
   }
 
@@ -455,8 +455,8 @@ function extractDescription(source: string): string {
 function resolveRoutePath(relativePath: string): string {
   const normalizedPath = relativePath.replace(/\.md$/u, '');
 
-  if (normalizedPath.startsWith('components/')) {
-    return `${componentsPrefix}/${normalizedPath.slice('components/'.length)}`;
+  if (normalizedPath.startsWith('ui/components/')) {
+    return `${componentsPrefix}/${normalizedPath.slice('ui/components/'.length)}`;
   }
 
   return `${overviewPrefix}/${normalizedPath}`;

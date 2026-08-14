@@ -51,6 +51,9 @@ Other publishable modules:
 - **@soybeanjs/ui-uno** (`packages/unocss/`): UnoCSS preset over `@soybeanjs/theme`.
 - **sbean** (`packages/sbean/`): source-distribution CLI, registry, schemas, templates, and MCP.
 - **@soybeanjs/ui-skills** (`skills/`): generated consumer-facing agent skills.
+- **@soybeanjs/ui-x** (`packages/ui-x/`): AI conversation UI components; prefix `Sx`; exports include `./composables` `./types` sub-paths. Peripheral package (single-package: domain logic + styles coexist).
+- **@soybeanjs/admin** (`packages/admin/`): admin shell components; prefix `S` + `App*` (e.g. `SAppLayout`); peerDep `@soybeanjs/chart` (optional). Peripheral package.
+- **@soybeanjs/chart** (`packages/chart/`): chart components; prefix `S` + `Chart*` (e.g. `SChartBar`). Peripheral package.
 
 Private applications:
 

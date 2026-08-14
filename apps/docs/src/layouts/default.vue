@@ -6,7 +6,9 @@ const docOutline = useDocOutline();
 const route = useRoute();
 const hasDocOutline = computed(() => docOutline.value.length > 0);
 const shouldReserveOutlineSpace = computed(() => !['/', '/releases'].includes(route.path));
-const shouldShowSidebar = computed(() => route.path.startsWith('/overview') || route.path.startsWith('/components'));
+const shouldShowSidebar = computed(() =>
+  ['/overview', '/components', '/ui-x', '/admin', '/chart'].some(p => route.path.startsWith(p))
+);
 
 const closeDrawer = () => {
   visible.value = false;

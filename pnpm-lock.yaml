@@ -175,6 +175,12 @@ importers:
       '@iconify/vue':
         specifier: ^5.0.1
         version: 5.0.1(vue@3.5.41(typescript@6.0.3))
+      '@soybeanjs/admin':
+        specifier: workspace:^
+        version: link:../../packages/admin
+      '@soybeanjs/chart':
+        specifier: workspace:^
+        version: link:../../packages/chart
       '@soybeanjs/headless':
         specifier: workspace:^
         version: link:../../packages/headless
@@ -184,6 +190,9 @@ importers:
       '@soybeanjs/ui':
         specifier: workspace:^
         version: link:../../packages/ui
+      '@soybeanjs/ui-x':
+        specifier: workspace:^
+        version: link:../../packages/ui-x
       '@soybeanjs/utils':
         specifier: ^0.1.1
         version: 0.1.1
@@ -233,6 +242,155 @@ importers:
       vite-plus:
         specifier: 'catalog:'
         version: 0.2.9(@types/node@26.2.0)(@vitest/browser-playwright@4.1.10)(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(happy-dom@20.11.2)(jiti@2.7.0)(jsdom@27.0.1(supports-color@10.2.2))(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0)
+
+  packages/admin:
+    dependencies:
+      '@iconify/vue':
+        specifier: ^5.0.1
+        version: 5.0.1(vue@3.5.41(typescript@6.0.3))
+      '@nuxt/schema':
+        specifier: ^4.3.0
+        version: 4.5.2
+      '@soybeanjs/chart':
+        specifier: workspace:^
+        version: link:../chart
+      '@soybeanjs/cva':
+        specifier: ^0.0.9
+        version: 0.0.9
+      '@soybeanjs/headless':
+        specifier: workspace:^
+        version: link:../headless
+      '@soybeanjs/theme':
+        specifier: workspace:^
+        version: link:../theme
+      '@soybeanjs/ui':
+        specifier: workspace:^
+        version: link:../ui
+      '@soybeanjs/utils':
+        specifier: ^0.1.1
+        version: 0.1.1
+    devDependencies:
+      '@nuxt/kit':
+        specifier: ^4.5.2
+        version: 4.5.2(magic-string@1.1.1)(magicast@0.5.4)(oxc-parser@0.141.0)(rolldown@1.2.3)(unplugin@3.3.0(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(rolldown@1.2.3)(rollup@4.62.4)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)))
+      '@soybeanjs/ui-unocss':
+        specifier: workspace:^
+        version: link:../ui-unocss
+      '@types/node':
+        specifier: ^26.2.0
+        version: 26.2.0
+      '@unocss/cli':
+        specifier: ^66.7.5
+        version: 66.7.5
+      '@vue/test-utils':
+        specifier: ^2.4.11
+        version: 2.4.11(@vue/compiler-dom@3.5.41)(@vue/server-renderer@3.5.41)(vue@3.5.41(typescript@6.0.3))
+      happy-dom:
+        specifier: ^20.11.2
+        version: 20.11.2
+      nuxt:
+        specifier: ^4.5.2
+        version: 4.5.2(5281a0437fc826b62b25f29252694f94)
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
+      unocss:
+        specifier: ^66.7.5
+        version: 66.7.5(@unocss/webpack@66.7.5(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(rolldown@1.2.3)(rollup@4.62.4)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)))(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))
+      unplugin-vue:
+        specifier: ^7.2.0
+        version: 7.2.0(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(rolldown@1.2.3)(rollup@4.62.4)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(vue@3.5.41(typescript@6.0.3))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26))(yaml@2.9.0)
+      unplugin-vue-components:
+        specifier: ^32.1.0
+        version: 32.1.0(@nuxt/kit@4.5.2(magic-string@1.1.1)(magicast@0.5.4)(oxc-parser@0.141.0)(rolldown@1.2.3)(unplugin@3.3.0(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(rolldown@1.2.3)(rollup@4.62.4)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26))))(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(rolldown@1.2.3)(rollup@4.62.4)(vue@3.5.41(typescript@6.0.3))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26))
+      vite-plus:
+        specifier: 'catalog:'
+        version: 0.2.9(@types/node@26.2.0)(@vitest/browser-playwright@4.1.10)(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(happy-dom@20.11.2)(jiti@2.7.0)(jsdom@27.0.1(supports-color@10.2.2))(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0)
+      vitest:
+        specifier: 4.1.10
+        version: 4.1.10(@types/node@26.2.0)(@vitest/browser-playwright@4.1.10)(@vitest/browser-preview@4.1.10)(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(happy-dom@20.11.2)(jsdom@27.0.1(supports-color@10.2.2))
+      vue:
+        specifier: ^3.5.41
+        version: 3.5.41(typescript@6.0.3)
+      vue-router:
+        specifier: ^5.2.0
+        version: 5.2.0(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(pinia@4.0.2(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.41(typescript@6.0.3)))(rolldown@1.2.3)(rollup@4.62.4)(vue@3.5.41(typescript@6.0.3))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26))
+      vue-tsc:
+        specifier: ^3.3.9
+        version: 3.3.9(typescript@6.0.3)
+
+  packages/chart:
+    dependencies:
+      '@iconify/vue':
+        specifier: ^5.0.1
+        version: 5.0.1(vue@3.5.41(typescript@6.0.3))
+      '@nuxt/schema':
+        specifier: ^4.3.0
+        version: 4.5.2
+      '@soybeanjs/cva':
+        specifier: ^0.0.9
+        version: 0.0.9
+      '@soybeanjs/headless':
+        specifier: workspace:^
+        version: link:../headless
+      '@soybeanjs/theme':
+        specifier: workspace:^
+        version: link:../theme
+      '@soybeanjs/ui':
+        specifier: workspace:^
+        version: link:../ui
+      '@soybeanjs/utils':
+        specifier: ^0.1.1
+        version: 0.1.1
+    devDependencies:
+      '@nuxt/kit':
+        specifier: ^4.5.2
+        version: 4.5.2(magic-string@1.1.1)(magicast@0.5.4)(oxc-parser@0.141.0)(rolldown@1.2.3)(unplugin@3.3.0(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(rolldown@1.2.3)(rollup@4.62.4)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)))
+      '@soybeanjs/ui-unocss':
+        specifier: workspace:^
+        version: link:../ui-unocss
+      '@types/node':
+        specifier: ^26.2.0
+        version: 26.2.0
+      '@unocss/cli':
+        specifier: ^66.7.5
+        version: 66.7.5
+      '@vue/test-utils':
+        specifier: ^2.4.11
+        version: 2.4.11(@vue/compiler-dom@3.5.41)(@vue/server-renderer@3.5.41)(vue@3.5.41(typescript@6.0.3))
+      happy-dom:
+        specifier: ^20.11.2
+        version: 20.11.2
+      nuxt:
+        specifier: ^4.5.2
+        version: 4.5.2(5281a0437fc826b62b25f29252694f94)
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
+      unocss:
+        specifier: ^66.7.5
+        version: 66.7.5(@unocss/webpack@66.7.5(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(rolldown@1.2.3)(rollup@4.62.4)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)))(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))
+      unplugin-vue:
+        specifier: ^7.2.0
+        version: 7.2.0(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(rolldown@1.2.3)(rollup@4.62.4)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(vue@3.5.41(typescript@6.0.3))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26))(yaml@2.9.0)
+      unplugin-vue-components:
+        specifier: ^32.1.0
+        version: 32.1.0(@nuxt/kit@4.5.2(magic-string@1.1.1)(magicast@0.5.4)(oxc-parser@0.141.0)(rolldown@1.2.3)(unplugin@3.3.0(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(rolldown@1.2.3)(rollup@4.62.4)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26))))(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(rolldown@1.2.3)(rollup@4.62.4)(vue@3.5.41(typescript@6.0.3))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26))
+      vite-plus:
+        specifier: 'catalog:'
+        version: 0.2.9(@types/node@26.2.0)(@vitest/browser-playwright@4.1.10)(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(happy-dom@20.11.2)(jiti@2.7.0)(jsdom@27.0.1(supports-color@10.2.2))(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0)
+      vitest:
+        specifier: 4.1.10
+        version: 4.1.10(@types/node@26.2.0)(@vitest/browser-playwright@4.1.10)(@vitest/browser-preview@4.1.10)(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(happy-dom@20.11.2)(jsdom@27.0.1(supports-color@10.2.2))
+      vue:
+        specifier: ^3.5.41
+        version: 3.5.41(typescript@6.0.3)
+      vue-router:
+        specifier: ^5.2.0
+        version: 5.2.0(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(pinia@4.0.2(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.41(typescript@6.0.3)))(rolldown@1.2.3)(rollup@4.62.4)(vue@3.5.41(typescript@6.0.3))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26))
+      vue-tsc:
+        specifier: ^3.3.9
+        version: 3.3.9(typescript@6.0.3)
 
   packages/headless:
     dependencies:
@@ -526,6 +684,79 @@ importers:
       vitest:
         specifier: 4.1.10
         version: 4.1.10(@types/node@26.2.0)(@vitest/browser-playwright@4.1.10)(@vitest/browser-preview@4.1.10)(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(happy-dom@20.11.2)(jsdom@27.0.1(supports-color@10.2.2))
+
+  packages/ui-x:
+    dependencies:
+      '@iconify/vue':
+        specifier: ^5.0.1
+        version: 5.0.1(vue@3.5.41(typescript@6.0.3))
+      '@nuxt/schema':
+        specifier: ^4.3.0
+        version: 4.5.2
+      '@soybeanjs/cva':
+        specifier: ^0.0.9
+        version: 0.0.9
+      '@soybeanjs/headless':
+        specifier: workspace:^
+        version: link:../headless
+      '@soybeanjs/theme':
+        specifier: workspace:^
+        version: link:../theme
+      '@soybeanjs/ui':
+        specifier: workspace:^
+        version: link:../ui
+      '@soybeanjs/utils':
+        specifier: ^0.1.1
+        version: 0.1.1
+    devDependencies:
+      '@nuxt/kit':
+        specifier: ^4.5.2
+        version: 4.5.2(magic-string@1.1.1)(magicast@0.5.4)(oxc-parser@0.141.0)(rolldown@1.2.3)(unplugin@3.3.0(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(rolldown@1.2.3)(rollup@4.62.4)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)))
+      '@soybeanjs/ui-unocss':
+        specifier: workspace:^
+        version: link:../ui-unocss
+      '@types/node':
+        specifier: ^26.2.0
+        version: 26.2.0
+      '@unocss/cli':
+        specifier: ^66.7.5
+        version: 66.7.5
+      '@vue/test-utils':
+        specifier: ^2.4.11
+        version: 2.4.11(@vue/compiler-dom@3.5.41)(@vue/server-renderer@3.5.41)(vue@3.5.41(typescript@6.0.3))
+      happy-dom:
+        specifier: ^20.11.2
+        version: 20.11.2
+      nuxt:
+        specifier: ^4.5.2
+        version: 4.5.2(5281a0437fc826b62b25f29252694f94)
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
+      unocss:
+        specifier: ^66.7.5
+        version: 66.7.5(@unocss/webpack@66.7.5(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(rolldown@1.2.3)(rollup@4.62.4)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)))(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))
+      unplugin-vue:
+        specifier: ^7.2.0
+        version: 7.2.0(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(rolldown@1.2.3)(rollup@4.62.4)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(vue@3.5.41(typescript@6.0.3))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26))(yaml@2.9.0)
+      unplugin-vue-components:
+        specifier: ^32.1.0
+        version: 32.1.0(@nuxt/kit@4.5.2(magic-string@1.1.1)(magicast@0.5.4)(oxc-parser@0.141.0)(rolldown@1.2.3)(unplugin@3.3.0(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(rolldown@1.2.3)(rollup@4.62.4)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26))))(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(rolldown@1.2.3)(rollup@4.62.4)(vue@3.5.41(typescript@6.0.3))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26))
+      vite-plus:
+        specifier: 'catalog:'
+        version: 0.2.9(@types/node@26.2.0)(@vitest/browser-playwright@4.1.10)(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(happy-dom@20.11.2)(jiti@2.7.0)(jsdom@27.0.1(supports-color@10.2.2))(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0)
+      vitest:
+        specifier: 4.1.10
+        version: 4.1.10(@types/node@26.2.0)(@vitest/browser-playwright@4.1.10)(@vitest/browser-preview@4.1.10)(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(happy-dom@20.11.2)(jsdom@27.0.1(supports-color@10.2.2))
+      vue:
+        specifier: ^3.5.41
+        version: 3.5.41(typescript@6.0.3)
+      vue-router:
+        specifier: ^5.2.0
+        version: 5.2.0(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(pinia@4.0.2(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.41(typescript@6.0.3)))(rolldown@1.2.3)(rollup@4.62.4)(vue@3.5.41(typescript@6.0.3))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26))
+      vue-tsc:
+        specifier: ^3.3.9
+        version: 3.3.9(typescript@6.0.3)
 
   skills: {}
 

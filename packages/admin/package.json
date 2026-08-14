@@ -1,0 +1,111 @@
+{
+  "name": "@soybeanjs/admin",
+  "version": "0.29.3",
+  "description": "SoybeanAdmin — admin shell components built on top of SoybeanUI.",
+  "homepage": "https://github.com/soybeanjs/soybean-ui",
+  "bugs": {
+    "url": "https://github.com/soybeanjs/soybean-ui/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Soybean",
+    "email": "soybeanjs@outlook.com",
+    "url": "https://github.com/soybeanjs"
+  },
+  "repository": {
+    "url": "https://github.com/soybeanjs/soybean-ui.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./nuxt": {
+      "types": "./dist/nuxt/index.d.ts",
+      "import": "./dist/nuxt/index.js",
+      "require": "./dist/nuxt/index.js"
+    },
+    "./resolver": {
+      "types": "./dist/resolver/index.d.ts",
+      "import": "./dist/resolver/index.js",
+      "require": "./dist/resolver/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "vp pack && pnpm build:css",
+    "build:css": "unocss 'src/styles/**/*.ts' -o dist/styles.css --minify",
+    "test": "vp test run",
+    "test:coverage": "vp test run --coverage",
+    "test:ui": "vp test --ui",
+    "test:watch": "vp test watch",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck"
+  },
+  "dependencies": {
+    "@iconify/vue": "^5.0.1",
+    "@soybeanjs/cva": "^0.0.9",
+    "@soybeanjs/headless": "workspace:^",
+    "@soybeanjs/theme": "workspace:^",
+    "@soybeanjs/ui": "workspace:^",
+    "@soybeanjs/utils": "^0.1.1"
+  },
+  "devDependencies": {
+    "@nuxt/kit": "^4.5.2",
+    "@soybeanjs/ui-unocss": "workspace:^",
+    "@types/node": "^26.2.0",
+    "@unocss/cli": "^66.7.5",
+    "@vue/test-utils": "^2.4.11",
+    "happy-dom": "^20.11.2",
+    "nuxt": "^4.5.2",
+    "typescript": "7.0.2",
+    "unocss": "^66.7.5",
+    "unplugin-vue": "^7.2.0",
+    "unplugin-vue-components": "^32.1.0",
+    "vite-plus": "catalog:",
+    "vitest": "4.1.10",
+    "vue": "^3.5.41",
+    "vue-router": "^5.2.0",
+    "vue-tsc": "^3.3.9"
+  },
+  "peerDependencies": {
+    "@nuxt/kit": "^4.3.0",
+    "@nuxt/schema": "^4.3.0",
+    "@soybeanjs/chart": "workspace:^",
+    "nuxt": ">=4.0.0",
+    "unplugin-vue-components": "^31.0.0",
+    "vue": ">=3.2.0",
+    "vue-router": ">=4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@nuxt/kit": {
+      "optional": true
+    },
+    "@nuxt/schema": {
+      "optional": true
+    },
+    "nuxt": {
+      "optional": true
+    },
+    "unplugin-vue-components": {
+      "optional": true
+    },
+    "vue-router": {
+      "optional": true
+    },
+    "@soybeanjs/chart": {
+      "optional": true
+    }
+  },
+  "packageManager": "pnpm@11.21.0"
+}

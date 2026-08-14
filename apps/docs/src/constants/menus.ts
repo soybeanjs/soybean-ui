@@ -145,3 +145,34 @@ export const menuData: MenuData[] = [
     items: ['arrow', 'visuallyHidden']
   }
 ];
+
+// Peripheral package menu data — items are placeholders to be filled as components are added.
+// TODO(ui-x/admin/chart): fill items arrays when components are implemented.
+
+export const uiXNewlyComponentKeys: string[] = [];
+export const adminNewlyComponentKeys: string[] = [];
+export const chartNewlyComponentKeys: string[] = [];
+
+export const uiXMenuData: MenuData[] = [
+  {
+    value: 'general',
+    i18n: 'ui_x.sidebar.general',
+    items: []
+  }
+];
+
+export const adminMenuData: MenuData[] = [
+  {
+    value: 'shell',
+    i18n: 'admin.sidebar.shell',
+    items: []
+  }
+];
+
+export const chartMenuData: MenuData[] = [
+  {
+    value: 'charts',
+    i18n: 'chart.sidebar.charts',
+    items: []
+  }
+];

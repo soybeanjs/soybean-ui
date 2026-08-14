@@ -7,7 +7,7 @@ interface Props {
   /**
    * The path to the markdown file
    *
-   * @example 'components/button', 'quick-start'
+   * @example 'ui/components/button', 'quick-start'
    */
   path: string;
 }

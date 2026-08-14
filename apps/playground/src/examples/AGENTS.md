@@ -12,7 +12,7 @@ Use this file only as routing and local path context. Normative component rules 
 
 ## LOCAL CONTEXT
 
-- `apps/playground/src/examples/{component}/index.vue` now acts as a thin entry and should normally render only `<PlaygroundGallery component="{component}" />`
+- `apps/playground/src/examples/ui/{component}/index.vue` now acts as a thin entry and should normally render only `<PlaygroundGallery component="{component}" />`
 - Child demo filenames now use `NN-name.vue`; the gallery extracts `order` from the prefix, but resolves titles from the de-prefixed `name` via `playground.examples.{component}.{name}` locale keys
 - If the de-prefixed `name` starts with `_`, the discovery layer ignores that demo file completely
 - Child demo files should not render local `h3.playground-title` headings

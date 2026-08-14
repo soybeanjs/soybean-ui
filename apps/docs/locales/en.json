@@ -592,6 +592,9 @@
       "docs": "Docs",
       "getting_started": "Getting Started",
       "components": "Components",
+      "ui_x": "UI-X",
+      "admin": "Admin",
+      "chart": "Chart",
       "releases": "Releases",
       "version": "Version",
       "github": "GitHub",
@@ -933,6 +936,45 @@
     "related": {
       "title": "Related components",
       "desc": "If you are composing interactions in the same family, these components usually pair well together."
+    }
+  },
+  "ui_x": {
+    "sidebar": {
+      "general": "General"
+    },
+    "catalog": {
+      "title": "SoybeanUI-X",
+      "description": "AI conversation UI components built on SoybeanUI.",
+      "placeholder": {
+        "title": "Coming Soon",
+        "body": "Component catalog is being prepared."
+      }
+    }
+  },
+  "admin": {
+    "sidebar": {
+      "shell": "Shell"
+    },
+    "catalog": {
+      "title": "SoybeanAdmin",
+      "description": "Admin shell components built on SoybeanUI.",
+      "placeholder": {
+        "title": "Coming Soon",
+        "body": "Component catalog is being prepared."
+      }
+    }
+  },
+  "chart": {
+    "sidebar": {
+      "charts": "Charts"
+    },
+    "catalog": {
+      "title": "SoybeanChart",
+      "description": "Chart components built on SoybeanUI.",
+      "placeholder": {
+        "title": "Coming Soon",
+        "body": "Component catalog is being prepared."
+      }
     }
   }
 }

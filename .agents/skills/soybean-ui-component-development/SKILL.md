@@ -72,9 +72,9 @@ Example: "audit the `dialog` component against industry baselines" means audit s
    - Run `pnpm sui headless` and `pnpm sui ui`.
    - Do not hand-edit generated files.
 4. **Complete delivery surfaces** unless the user explicitly narrows scope.
-   - `apps/playground/src/examples/{component}/`
-   - `apps/docs/src/docs/en/components/{component}.md`
-   - `apps/docs/src/docs/zh-CN/components/{component}.md`
+   - `apps/playground/src/examples/ui/{component}/`
+   - `apps/docs/src/docs/en/ui/components/{component}.md`
+   - `apps/docs/src/docs/zh-CN/ui/components/{component}.md`
    - `apps/docs/src/constants/menus.ts`
    - `packages/ui/test/specs/components/{component}.spec.ts`
    - Run `pnpm sui api` when public API changes; for non-English locales run `pnpm sui api-translate -- --locale <locale>`.
@@ -177,9 +177,9 @@ New components check every entry; existing component changes sync affected entri
 - `packages/ui/src/components/{component}/`
 - `packages/headless/src/index.ts`
 - `packages/ui/src/index.ts`
-- `apps/playground/src/examples/{component}/`
-- `apps/docs/src/docs/en/components/{component}.md`
-- `apps/docs/src/docs/zh-CN/components/{component}.md`
+- `apps/playground/src/examples/ui/{component}/`
+- `apps/docs/src/docs/en/ui/components/{component}.md`
+- `apps/docs/src/docs/zh-CN/ui/components/{component}.md`
 - `apps/docs/src/constants/menus.ts`
 - `packages/ui/test/specs/components/{component}.spec.ts`
 

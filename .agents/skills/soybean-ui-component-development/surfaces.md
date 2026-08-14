@@ -10,7 +10,7 @@ Add playground only after the component body, exports, and major public capabili
 
 ### Directory structure
 
-Each component's playground lives in `apps/playground/src/examples/{component}/`.
+Each component's playground lives in `apps/playground/src/examples/ui/{component}/`.
 
 Recommended structure:
 
@@ -69,8 +69,8 @@ Add docs after the component API, exports, and playground are basically stable.
 
 ### Doc delivery surfaces
 
-- Chinese docs: `apps/docs/src/docs/zh-CN/components/{component}.md`
-- English docs: `apps/docs/src/docs/en/components/{component}.md`
+- Chinese docs: `apps/docs/src/docs/zh-CN/ui/components/{component}.md`
+- English docs: `apps/docs/src/docs/en/ui/components/{component}.md`
 
 Both files must share the same structure; only the language may differ.
 
@@ -163,7 +163,7 @@ Common groups:
 - `<ComponentApi>` `component` value matches the real API data source; the generated table remains the authoritative source for prop/event/slot type definitions, default values, and required markers.
 - Demos progress basic → advanced and cover the component's major public capabilities; no duplicate scenes.
 - Notes include the architecture/benchmark-difference table and at least one caution; FAQ has 3–6 question/answer pairs.
-- Doc demo surfaces match `apps/playground/src/examples/{component}/` real files.
+- Doc demo surfaces match `apps/playground/src/examples/ui/{component}/` real files.
 - Titles and API content do not lag behind the implementation.
 - New components default to both Chinese and English docs; do not ship single-language only.
 

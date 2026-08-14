@@ -24,7 +24,7 @@ function getTabs() {
   const demoModules = import.meta.glob('../examples/**/index.vue');
 
   for (const path in demoModules) {
-    const match = path.match(/examples\/([^/]+)\/index\.vue$/);
+    const match = path.match(/examples\/(?:[^/]+\/)?([^/]+)\/index\.vue$/);
     if (match && match[1] && !match[1].startsWith('_')) {
       const componentName = match[1];
       const label = pascalCase(componentName);

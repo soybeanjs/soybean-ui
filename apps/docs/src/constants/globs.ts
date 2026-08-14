@@ -39,7 +39,7 @@ function getAllPlaygroundComponents() {
   const components: PlaygroundComponentExamples = {};
 
   for (const key in playgroundComponents) {
-    const match = key.match(/\.\/([^/]+)\/([^/]+)\.vue$/);
+    const match = key.match(/\.\/(?:[^/]+\/)?([^/]+)\/([^/]+)\.vue$/);
     if (match) {
       const componentName = match[1];
       const rawFileName = match[2];

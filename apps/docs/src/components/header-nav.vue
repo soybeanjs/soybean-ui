@@ -32,6 +32,27 @@ const menus = computed<HeaderNavItem[]>(() => [
     isActive: route.path.startsWith('/components')
   },
   {
+    value: 'ui-x',
+    label: t('layout.header.ui_x'),
+    icon: 'lucide:sparkles',
+    to: '/ui-x',
+    isActive: route.path.startsWith('/ui-x')
+  },
+  {
+    value: 'admin',
+    label: t('layout.header.admin'),
+    icon: 'lucide:layout-dashboard',
+    to: '/admin',
+    isActive: route.path.startsWith('/admin')
+  },
+  {
+    value: 'chart',
+    label: t('layout.header.chart'),
+    icon: 'lucide:bar-chart-3',
+    to: '/chart',
+    isActive: route.path.startsWith('/chart')
+  },
+  {
     value: 'releases',
     label: t('layout.header.releases'),
     icon: 'lucide:git-commit-horizontal',

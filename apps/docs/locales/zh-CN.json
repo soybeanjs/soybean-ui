@@ -592,6 +592,9 @@
       "docs": "文档",
       "getting_started": "开始使用",
       "components": "组件",
+      "ui_x": "UI-X",
+      "admin": "后台",
+      "chart": "图表",
       "releases": "更新日志",
       "version": "版本",
       "github": "GitHub",
@@ -928,6 +931,45 @@
     "related": {
       "title": "同分类组件",
       "desc": "如果你在同一类交互里做组合，这些组件通常会一起出现。"
+    }
+  },
+  "ui_x": {
+    "sidebar": {
+      "general": "通用"
+    },
+    "catalog": {
+      "title": "SoybeanUI-X",
+      "description": "基于 SoybeanUI 的 AI 对话 UI 组件。",
+      "placeholder": {
+        "title": "即将推出",
+        "body": "组件目录正在准备中。"
+      }
+    }
+  },
+  "admin": {
+    "sidebar": {
+      "shell": "应用壳"
+    },
+    "catalog": {
+      "title": "SoybeanAdmin",
+      "description": "基于 SoybeanUI 的后台管理壳组件。",
+      "placeholder": {
+        "title": "即将推出",
+        "body": "组件目录正在准备中。"
+      }
+    }
+  },
+  "chart": {
+    "sidebar": {
+      "charts": "图表"
+    },
+    "catalog": {
+      "title": "SoybeanChart",
+      "description": "基于 SoybeanUI 的图表组件。",
+      "placeholder": {
+        "title": "即将推出",
+        "body": "组件目录正在准备中。"
+      }
     }
   }
 }

@@ -52,6 +52,62 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/admin/': RouteRecordInfo<
+      '/admin/',
+      '/admin',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/admin/[name]': RouteRecordInfo<
+      '/admin/[name]',
+      '/admin/:name',
+      { name: ParamValue<true> },
+      { name: ParamValue<false> },
+      | never
+    >,
+    '/admin/installation': RouteRecordInfo<
+      '/admin/installation',
+      '/admin/installation',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/admin/quick-start': RouteRecordInfo<
+      '/admin/quick-start',
+      '/admin/quick-start',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/chart/': RouteRecordInfo<
+      '/chart/',
+      '/chart',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/chart/[name]': RouteRecordInfo<
+      '/chart/[name]',
+      '/chart/:name',
+      { name: ParamValue<true> },
+      { name: ParamValue<false> },
+      | never
+    >,
+    '/chart/installation': RouteRecordInfo<
+      '/chart/installation',
+      '/chart/installation',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/chart/quick-start': RouteRecordInfo<
+      '/chart/quick-start',
+      '/chart/quick-start',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/components/': RouteRecordInfo<
       '/components/',
       '/components',
@@ -129,6 +185,34 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/ui-x/': RouteRecordInfo<
+      '/ui-x/',
+      '/ui-x',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/ui-x/[name]': RouteRecordInfo<
+      '/ui-x/[name]',
+      '/ui-x/:name',
+      { name: ParamValue<true> },
+      { name: ParamValue<false> },
+      | never
+    >,
+    '/ui-x/installation': RouteRecordInfo<
+      '/ui-x/installation',
+      '/ui-x/installation',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/ui-x/quick-start': RouteRecordInfo<
+      '/ui-x/quick-start',
+      '/ui-x/quick-start',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
   }
 
   /**
@@ -161,6 +245,70 @@ declare module 'vue-router/auto-routes' {
     'src/pages/about.md': {
       routes:
         | '/about'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/admin/index.vue': {
+      routes:
+        | '/admin/'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/admin/[name].vue': {
+      routes:
+        | '/admin/[name]'
+      views:
+        | never
+      pathParamNames:
+        | 'name'
+    }
+    'src/pages/admin/installation.vue': {
+      routes:
+        | '/admin/installation'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/admin/quick-start.vue': {
+      routes:
+        | '/admin/quick-start'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/chart/index.vue': {
+      routes:
+        | '/chart/'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/chart/[name].vue': {
+      routes:
+        | '/chart/[name]'
+      views:
+        | never
+      pathParamNames:
+        | 'name'
+    }
+    'src/pages/chart/installation.vue': {
+      routes:
+        | '/chart/installation'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/chart/quick-start.vue': {
+      routes:
+        | '/chart/quick-start'
       views:
         | never
       pathParamNames:
@@ -249,6 +397,38 @@ declare module 'vue-router/auto-routes' {
     'src/pages/sbean.vue': {
       routes:
         | '/sbean'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/ui-x/index.vue': {
+      routes:
+        | '/ui-x/'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/ui-x/[name].vue': {
+      routes:
+        | '/ui-x/[name]'
+      views:
+        | never
+      pathParamNames:
+        | 'name'
+    }
+    'src/pages/ui-x/installation.vue': {
+      routes:
+        | '/ui-x/installation'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/ui-x/quick-start.vue': {
+      routes:
+        | '/ui-x/quick-start'
       views:
         | never
       pathParamNames:

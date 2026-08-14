@@ -93,3 +93,23 @@ ConfigProvider 上控制是否启用持久化主题读取（localStorage）的�
 ## playground 主题生成器（playground ThemeGenerator）
 
 playground 侧的可视化主题编辑组件（`apps/playground/src/components/theme-generator.vue`），**自包含 + 只输出 raw css**：`v-model:theme` 类型仍为 `ConfigProviderThemeOptions`，但每次改动只 emit `{ css: { base, light, dark } }`（即新增的 `css` 属性类型），由内部状态经 `createTheme` 派生完整 CSS 后拆分而来，写回 `SConfigProvider` 直接消费，实时生效。方向复刻 shadcnthemes 生成器的控制面板，双 tab（`Generate Theme` 可视化生成器 + `Edit Variables` 完整 ColorTokens 编辑）。与库内计划中的「主题生成器（ThemeGenerator）」不同：后者是 `@soybeanjs/ui` 的预设驱动渲染组件，前者是 playground 的编辑器，二者无代码关联。
+
+## 外围包（peripheral package）
+
+围绕核心 `@soybeanjs/headless` + `@soybeanjs/ui` 构建的领域扩展包。当前包括 `@soybeanjs/ui-x`（AI 组件）、`@soybeanjs/admin`（后台应用壳）、`@soybeanjs/chart`（图表），未来可扩展 `@soybeanjs/ui-pro`、`@soybeanjs/ui-lowcode` 等。每个外围包为单一包（领域逻辑与样式同居），不另建"领域逻辑包"。
+
+## 原子原语（atomic primitive）
+
+具备全新原子功能（如新的无障碍模式、焦点管理变体、新交互原语）的组件。唯一允许进入核心 `@soybeanjs/headless` 的外围贡献类型。判断标准是"提供了 headless 现有 primitives 无法组合而成的新原子能力"；不满足该标准的组件一律作为包装型组件留在外围包内。
+
+## 包装型组件（wrapper component）
+
+由现有 headless primitives 组合/包装而成的外围组件，不引入新原子能力。外围包中绝大多数组件属于此类；其领域逻辑（composables/types）与样式同居于所属外围包内部，不下沉到核心 headless。
+
+## 组件前缀（component prefix）
+
+跨包组件命名规则。核心 `@soybeanjs/ui` 用 `S`；具备强领域词汇表的包用 2 字母前缀（`@soybeanjs/ui-x` 用 `Sx`）；其余包用 `S` + 领域名词前缀（`@soybeanjs/admin` 用 `S` + `App*`，`@soybeanjs/chart` 用 `S` + `Chart*`）。判据是"领域词汇表强度"：当组件名构成该领域专属词汇表（如 AI 的 Bubble/Sender/ThoughtChain）时用 2 字母前缀，否则用领域名词前缀防撞。
+
+## 命名空间 registry item（namespaced registry item）
+
+sbean registry 中的条目形式：name 以 `包名/组件名` 命名（如 `ui-x/bubble`、`admin/app-layout`、`chart/bar`），并附 `package` 字段标识归属。单一 `registry.json` 承载所有外围包条目，CLI 通过命名空间路径寻址（`sbean add ui-x/bubble`），文档站按 `package` 字段分组展示。

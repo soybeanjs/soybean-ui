@@ -1,7 +1,16 @@
 <script setup lang="ts">
 import type { TreeMenuOptionData } from '@soybeanjs/ui';
 import { kebabCase, pascalCase } from '@soybeanjs/utils';
-import { menuData, newlyComponentKeys } from '../constants/menus';
+import {
+  menuData,
+  newlyComponentKeys,
+  uiXMenuData,
+  uiXNewlyComponentKeys,
+  adminMenuData,
+  adminNewlyComponentKeys,
+  chartMenuData,
+  chartNewlyComponentKeys
+} from '../constants/menus';
 
 type Emits = {
   select: [];
@@ -29,6 +38,45 @@ const componentMenus = computed<TreeMenuOptionData[]>(() =>
       value: kebabCase(item),
       to: `/components/${kebabCase(item)}`,
       tag: newlyComponentKeys.includes(item) ? '🎉new' : undefined
+    }))
+  }))
+);
+
+const uiXComponentMenus = computed<TreeMenuOptionData[]>(() =>
+  uiXMenuData.map(group => ({
+    label: t(`${group.i18n}`),
+    value: group.value,
+    children: group.items.map(item => ({
+      label: pascalCase(item),
+      value: kebabCase(item),
+      to: `/ui-x/${kebabCase(item)}`,
+      tag: uiXNewlyComponentKeys.includes(item) ? '🎉new' : undefined
+    }))
+  }))
+);
+
+const adminComponentMenus = computed<TreeMenuOptionData[]>(() =>
+  adminMenuData.map(group => ({
+    label: t(`${group.i18n}`),
+    value: group.value,
+    children: group.items.map(item => ({
+      label: pascalCase(item),
+      value: kebabCase(item),
+      to: `/admin/${kebabCase(item)}`,
+      tag: adminNewlyComponentKeys.includes(item) ? '🎉new' : undefined
+    }))
+  }))
+);
+
+const chartComponentMenus = computed<TreeMenuOptionData[]>(() =>
+  chartMenuData.map(group => ({
+    label: t(`${group.i18n}`),
+    value: group.value,
+    children: group.items.map(item => ({
+      label: pascalCase(item),
+      value: kebabCase(item),
+      to: `/chart/${kebabCase(item)}`,
+      tag: chartNewlyComponentKeys.includes(item) ? '🎉new' : undefined
     }))
   }))
 );
@@ -96,6 +144,57 @@ const componentsMenus = computed<TreeMenuOptionData[]>(() => [
   }
 ]);
 
+const uiXMenus = computed<TreeMenuOptionData[]>(() => [
+  {
+    isGroup: true,
+    label: t('layout.header.ui_x'),
+    value: 'ui-x',
+    icon: 'lucide:sparkles',
+    children: [
+      {
+        label: t('ui_x.catalog.title'),
+        value: 'ui-x-overview',
+        to: '/ui-x'
+      },
+      ...uiXComponentMenus.value
+    ]
+  }
+]);
+
+const adminMenus = computed<TreeMenuOptionData[]>(() => [
+  {
+    isGroup: true,
+    label: t('layout.header.admin'),
+    value: 'admin',
+    icon: 'lucide:layout-dashboard',
+    children: [
+      {
+        label: t('admin.catalog.title'),
+        value: 'admin-overview',
+        to: '/admin'
+      },
+      ...adminComponentMenus.value
+    ]
+  }
+]);
+
+const chartMenus = computed<TreeMenuOptionData[]>(() => [
+  {
+    isGroup: true,
+    label: t('layout.header.chart'),
+    value: 'chart',
+    icon: 'lucide:bar-chart-3',
+    children: [
+      {
+        label: t('chart.catalog.title'),
+        value: 'chart-overview',
+        to: '/chart'
+      },
+      ...chartComponentMenus.value
+    ]
+  }
+]);
+
 const menus = computed<TreeMenuOptionData[]>(() => {
   if (section.value === 'overview') {
     return overviewMenus.value;
@@ -103,6 +202,18 @@ const menus = computed<TreeMenuOptionData[]>(() => {
 
   if (section.value === 'components') {
     return componentsMenus.value;
+  }
+
+  if (section.value === 'ui-x') {
+    return uiXMenus.value;
+  }
+
+  if (section.value === 'admin') {
+    return adminMenus.value;
+  }
+
+  if (section.value === 'chart') {
+    return chartMenus.value;
   }
 
   return [];
@@ -121,6 +232,30 @@ watchEffect(() => {
       } else {
         expanded.value = ['components'];
       }
+    } else if (dir === 'ui-x') {
+      const group = uiXMenuData.find(g => g.items.some(item => kebabCase(item) === value));
+
+      if (group) {
+        expanded.value = ['ui-x', group.value];
+      } else {
+        expanded.value = ['ui-x'];
+      }
+    } else if (dir === 'admin') {
+      const group = adminMenuData.find(g => g.items.some(item => kebabCase(item) === value));
+
+      if (group) {
+        expanded.value = ['admin', group.value];
+      } else {
+        expanded.value = ['admin'];
+      }
+    } else if (dir === 'chart') {
+      const group = chartMenuData.find(g => g.items.some(item => kebabCase(item) === value));
+
+      if (group) {
+        expanded.value = ['chart', group.value];
+      } else {
+        expanded.value = ['chart'];
+      }
     } else {
       expanded.value = [dir];
     }
@@ -128,6 +263,21 @@ watchEffect(() => {
 
   if (dir === 'components' && !value) {
     selected.value = componentsOverviewValue;
+    return;
+  }
+
+  if (dir === 'ui-x' && !value) {
+    selected.value = 'ui-x-overview';
+    return;
+  }
+
+  if (dir === 'admin' && !value) {
+    selected.value = 'admin-overview';
+    return;
+  }
+
+  if (dir === 'chart' && !value) {
+    selected.value = 'chart-overview';
     return;
   }
 

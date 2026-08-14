@@ -20,9 +20,9 @@ Markdown files in `apps/docs/src/docs/[lang]/` → auto-converted to Vue pages v
 
 ## PLAYGROUND SYSTEM
 
-Demos live in `apps/playground/src/examples/[component]/` (separate workspace). Component markdown now references them through direct Vue tags such as `<UsageCode component="button" />` and `<PlaygroundGallery component="button" />`, rather than fenced `playground` blocks.
+Demos live in `apps/playground/src/examples/ui/[component]/` (separate workspace). Component markdown now references them through direct Vue tags such as `<UsageCode component="button" />` and `<PlaygroundGallery component="button" />`, rather than fenced `playground` blocks.
 
-`apps/playground/src/examples/{component}/index.vue` is now just a `PlaygroundGallery` entry point; the gallery auto-discovers sibling demo files, prioritizes `basic`, and resolves demo titles from `playground.examples.{component}.{file}` locale keys.
+`apps/playground/src/examples/ui/{component}/index.vue` is now just a `PlaygroundGallery` entry point; the gallery auto-discovers sibling demo files, prioritizes `basic`, and resolves demo titles from `playground.examples.{component}.{file}` locale keys.
 
 API sections are rendered through `<ComponentApi component="button" />`, backed by generated json data under `apps/docs/src/generated/api/` and `apps/docs/src/generated/api-locales/`. After public API changes, run `pnpm sui api`; if only locale template data needs refresh, `pnpm sui api-locales`; then translate non-English locales with `pnpm sui api-translate -- --locale <locale>`.
 
