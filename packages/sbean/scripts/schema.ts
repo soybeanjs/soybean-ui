@@ -62,7 +62,7 @@ const SBEAN_ENRICHMENT: SchemaEnrichment = {
       default: 'lucide'
     },
     uno: {
-      description: 'UnoCSS theme configuration. Controls the CSS variable system via @soybeanjs/ui-unocss.',
+      description: 'UnoCSS theme configuration. Controls the CSS variable system via @soybeanjs/ui-uno.',
       properties: {
         base: {
           description: 'Base color palette for backgrounds, borders, and muted elements.',
@@ -179,7 +179,7 @@ const REGISTRY_ITEM_ENRICHMENT: SchemaEnrichment = {
         'UnoCSS config fragment (ADR-005). A JSON-serializable slice of UnoCSS UserConfig — presets, rules, shortcuts, theme, safelist — that ships declaratively with the item and merges during `sbean add`.',
       properties: {
         presets: {
-          description: 'Preset module specifiers to load (e.g. "@soybeanjs/ui-unocss").'
+          description: 'Preset module specifiers to load (e.g. "@soybeanjs/ui-uno").'
         },
         rules: {
           description:

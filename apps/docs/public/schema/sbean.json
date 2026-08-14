@@ -69,7 +69,7 @@
         }
       },
       "required": ["base", "primary", "radius"],
-      "description": "UnoCSS theme configuration. Controls the CSS variable system via @soybeanjs/ui-unocss."
+      "description": "UnoCSS theme configuration. Controls the CSS variable system via @soybeanjs/ui-uno."
     },
     "font": {
       "type": "object",

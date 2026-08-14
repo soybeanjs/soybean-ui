@@ -114,11 +114,11 @@ utils 分开，并有 15 个测试文件及 ADR。
 - `packages/ui` 的运行时代码直接导入 `@vueuse/core`，但 UI manifest 未声明。
 - `packages/sbean/src/registry/config.ts` 运行时导入
   `@soybeanjs/theme`，但 sbean manifest 未声明。
-- `packages/ui-unocss/src/index.ts` 导入 `lightningcss`；manifest 将其放在
+- `packages/unocss/src/index.ts` 导入 `lightningcss`；manifest 将其放在
   `devDependencies`，而 pack 配置又将 dev dependency 列入 `neverBundle`。
 - `apps/docs` 直接使用 `@soybeanjs/utils`、`@soybeanjs/colord`、
   `@vueuse/core`、`unocss`、`unocss-preset-animations`、
-  `@soybeanjs/unocss-preset` 和 `@soybeanjs/ui-unocss`，其中多项未在
+  `@soybeanjs/unocss-preset` 和 `@soybeanjs/ui-uno`，其中多项未在
   docs manifest 声明。
 - `apps/nuxt` 的 UnoCSS 配置直接使用三项未声明 preset 依赖。
 - `scripts/stub.ts` 使用 `execa`，根 manifest 未声明。
@@ -325,7 +325,7 @@ filtered build 与独立测试。
 **事实：**
 
 - `createTheme` 影响 10 个符号，CodeGraph 找不到受影响测试。
-- `packages/theme` 和 `packages/ui-unocss` 无测试目录。
+- `packages/theme` 和 `packages/unocss` 无测试目录。
 - `useUiContext` 影响 68 个符号；CodeGraph 能关联 7 个下游测试，但没有
   `use-ui-context` 的直接单测。
 - Browser e2e 当前只有 button、dialog、select 三个 spec；浮层、键盘导航和颜色对比场景待补。
@@ -358,9 +358,9 @@ filtered build 与独立测试。
 **事实：**
 
 - 根 `pnpm build` 只执行 headless → UI → sbean。
-- theme → ui-unocss 由独立 `build:libs` 和 install-time `prepare`
+- theme → ui-uno 由独立 `build:libs` 和 install-time `prepare`
   负责。
-- UI CSS 构建依赖 ui-unocss；UI runtime 又依赖 theme。
+- UI CSS 构建依赖 ui-uno；UI runtime 又依赖 theme。
 - 根 `vite.config.ts` 已有部分 Vite Plus task dependency，但 package scripts
   未统一通过该图执行。
 - `pnpm-workspace.yaml` 保留 `shared/**` pattern，但当前没有 workspace project

@@ -36,7 +36,7 @@ six publishable packages and three private applications.
 | Component logic      | `@soybeanjs/headless`      | State, behavior, a11y, focus, keyboard interaction, locale, and unstyled composition |
 | Styled components    | `@soybeanjs/ui`            | `S`-prefixed wrappers, UnoCSS recipes, theme-facing props, Nuxt module, and resolver |
 | Theme engine         | `@soybeanjs/theme`         | Theme option normalization, CSS-variable generation, dark derivation, SSR/storage    |
-| UnoCSS integration   | `@soybeanjs/ui-unocss`     | UnoCSS preset, preflights, animations, fonts, and generated theme CSS                |
+| UnoCSS integration   | `@soybeanjs/ui-uno`        | UnoCSS preset, preflights, animations, fonts, and generated theme CSS                |
 | Source distribution  | `sbean`                    | CLI, registry, schemas, templates, and MCP tools for copy-source delivery            |
 | Agent distribution   | `@soybeanjs/ui-skills`     | Generated, publishable SoybeanUI and Headless agent skills                           |
 | Documentation        | `@soybeanjs/ui-docs`       | Vite SSG documentation, API reference, changelog, and embedded demos                 |
@@ -75,7 +75,7 @@ soybean-ui/
 │   ├── sbean/               # sbean CLI and registry system
 │   ├── theme/               # @soybeanjs/theme
 │   ├── ui/                  # @soybeanjs/ui
-│   └── ui-unocss/           # @soybeanjs/ui-unocss
+│   └── unocss/              # @soybeanjs/ui-uno
 ├── scripts/                 # Metadata, API, changelog, locale, and skill generators
 ├── skills/                  # Generated @soybeanjs/ui-skills package
 ├── typings/                 # Root tool declarations
@@ -98,7 +98,7 @@ flowchart LR
   Headless["@soybeanjs/headless"]
   UI["@soybeanjs/ui"]
   Theme["@soybeanjs/theme"]
-  Uno["@soybeanjs/ui-unocss"]
+  Uno["@soybeanjs/ui-uno"]
   Sbean["sbean"]
   Docs["apps/docs"]
   Playground["apps/playground"]
@@ -129,7 +129,7 @@ flowchart LR
 - `@soybeanjs/ui` imports public headless entry points; it must not depend on
   headless implementation paths.
 - `@soybeanjs/theme` owns token-to-CSS generation.
-- `@soybeanjs/ui-unocss` adapts the theme engine to UnoCSS and must not
+- `@soybeanjs/ui-uno` adapts the theme engine to UnoCSS and must not
   become a second token authority.
 - `sbean` is a source-delivery system. It owns registry resolution, templates,
   schemas, and file updates, not component runtime behavior.
@@ -302,7 +302,7 @@ compiler until the manifests and override are aligned.
 ### 8.2 Root commands
 
 - `pnpm build`: headless → UI → sbean.
-- `pnpm build:libs`: theme → ui-unocss.
+- `pnpm build:libs`: theme → ui-uno.
 - `pnpm build:docs`: root build, registry generation, then docs SSG.
 - `pnpm typecheck`: recursive workspace type checks.
 - `pnpm test`: recursive tests for workspaces that define a test script.

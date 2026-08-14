@@ -9,12 +9,12 @@ import { presetSbean, presetUiUnocss } from '../src/index';
 /**
  * Extract the generated theme CSS out of the self preset's preflight.
  *
- * The self preset (`soybean-ui-unocss`) carries the theme layer as a preflight
+ * The self preset (`soybean-ui-uno`) carries the theme layer as a preflight
  * whose `getCSS()` returns the minified CSS string produced by `createTheme`
  * (base tokens + light/dark color tokens).
  */
 function getThemeCss(presets: Preset<Theme>[]): string {
-  const self = presets.find(p => p.name === 'soybean-ui-unocss');
+  const self = presets.find(p => p.name === 'soybean-ui-uno');
   const preflights = (self as unknown as { preflights?: { getCSS: () => string }[] })?.preflights;
   return preflights?.[0]?.getCSS() ?? '';
 }
@@ -25,7 +25,7 @@ describe('presetUiUnocss', () => {
     const names = presets.map(p => p.name);
     // wind3 + animations + self theme
     expect(presets.length).toBeGreaterThanOrEqual(3);
-    expect(names).toContain('soybean-ui-unocss');
+    expect(names).toContain('soybean-ui-uno');
   });
 
   it('applies size/radius base tokens to the generated theme CSS', () => {

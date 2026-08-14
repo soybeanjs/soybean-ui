@@ -68,7 +68,7 @@ export interface UiUnocssOptions extends ThemeOptions, BaseTokens {
  * ```ts
  * // uno.config.ts
  * import { defineConfig } from 'unocss'
- * import { presetUiUnocss } from '@soybeanjs/ui-unocss'
+ * import { presetUiUnocss } from '@soybeanjs/ui-uno'
  *
  * export default defineConfig({
  *   presets: [presetUiUnocss({ base: 'zinc', primary: 'indigo', resetCSS: true, globalCSS: true, uiCSS: true })],
@@ -80,13 +80,13 @@ export interface UiUnocssOptions extends ThemeOptions, BaseTokens {
  *     presetWind3({ dark }),
  *     presetAnimations(),
  *     presetWebFonts({ ... }),        // only when `fonts` option is provided
- *     ui-unocss-theme + preflights,
+ *     ui-uno-theme + preflights,
  *   ]
  */
 export function presetUiUnocss(options?: UiUnocssOptions): Preset<Theme>[] {
   const { resetCSS = false, globalCSS = false, uiCSS = false, fonts, fontProvider = 'fontsource' } = options || {};
 
-  // ---- ui-unocss preflights -------------------------------------------
+  // ---- ui-uno preflights --------------------------------------------
   const preflights: Preflight[] = [];
 
   if (resetCSS || globalCSS || uiCSS) {
@@ -122,7 +122,7 @@ export function presetUiUnocss(options?: UiUnocssOptions): Preset<Theme>[] {
 
   // ---- Self preset (theme layer) ----------------------------------------
   const selfPreset: Preset = {
-    name: 'soybean-ui-unocss',
+    name: 'soybean-ui-uno',
     preflights,
     theme: {
       animation: {
@@ -383,7 +383,7 @@ interface SbeanConfig {
  *
  * ```ts
  * import { defineConfig } from 'unocss'
- * import { presetSbean } from '@soybeanjs/ui-unocss'
+ * import { presetSbean } from '@soybeanjs/ui-uno'
  *
  * export default defineConfig({
  *   presets: [presetSbean()],
@@ -398,7 +398,7 @@ interface SbeanConfig {
  * - `font.*` is resolved through the web font name map.
  *
  * If `sbean.json` is missing or unreadable, it falls back to the default
- * ui-unocss theme (zinc / indigo / md).
+ * ui-uno theme (zinc / indigo / md).
  */
 export function presetSbean(options?: SbeanPresetOptions): Preset<Theme>[] {
   const cwd = options?.cwd ?? process.cwd();

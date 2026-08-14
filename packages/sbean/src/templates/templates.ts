@@ -42,7 +42,7 @@ export interface TemplateVariables {
 // ---------------------------------------------------------------------------
 
 const UNO_CONFIG_CONTENT = `import { defineConfig } from 'unocss'
-import { presetSbean } from '@soybeanjs/ui-unocss'
+import { presetSbean } from '@soybeanjs/ui-uno'
 
 export default defineConfig({
   presets: [presetSbean()]
@@ -172,7 +172,7 @@ app.mount('#app')
     'vue-router': '^5.2.0'
   },
   devDependencies: {
-    '@soybeanjs/ui-unocss': `^${SOYBEAN_VERSION}`,
+    '@soybeanjs/ui-uno': `^${SOYBEAN_VERSION}`,
     '@vitejs/plugin-vue': '^6.0.7',
     typescript: '^6.0.3',
     unocss: '^66.7.2',

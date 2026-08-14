@@ -65,7 +65,7 @@ Consumer ──> @soybeanjs/ui ──> @soybeanjs/headless
                     │
                     └───────> @soybeanjs/theme
 
-UnoCSS config ──> @soybeanjs/ui-unocss
+UnoCSS config ──> @soybeanjs/ui-uno
                     └───────> @soybeanjs/theme
 ```
 

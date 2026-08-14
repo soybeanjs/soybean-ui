@@ -206,9 +206,9 @@ importers:
         specifier: ^4.4.3
         version: 4.4.3
     devDependencies:
-      '@soybeanjs/ui-unocss':
+      '@soybeanjs/ui-uno':
         specifier: workspace:^
-        version: link:../../packages/ui-unocss
+        version: link:../../packages/unocss
       '@soybeanjs/unocss-preset':
         specifier: ^0.2.0
         version: 0.2.0(@unocss/webpack@66.7.5(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(rolldown@1.2.3)(rollup@4.62.4)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)))(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))
@@ -438,9 +438,9 @@ importers:
       '@nuxt/kit':
         specifier: ^4.5.2
         version: 4.5.2(magic-string@1.1.1)(magicast@0.5.4)(oxc-parser@0.141.0)(rolldown@1.2.3)(unplugin@3.3.0(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(esbuild@0.28.2)(rolldown@1.2.3)(rollup@4.62.4)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)))
-      '@soybeanjs/ui-unocss':
+      '@soybeanjs/ui-uno':
         specifier: workspace:^
-        version: link:../ui-unocss
+        version: link:../unocss
       '@types/node':
         specifier: ^26.2.0
         version: 26.2.0
@@ -502,7 +502,7 @@ importers:
         specifier: ^3.3.9
         version: 3.3.9(typescript@6.0.3)
 
-  packages/ui-unocss:
+  packages/unocss:
     dependencies:
       '@soybeanjs/theme':
         specifier: workspace:^

@@ -48,7 +48,7 @@ from the styled wrapper to its nested headless parts via `provideXUi(ui)` and
 Other publishable modules:
 
 - **@soybeanjs/theme** (`packages/theme/`): theme engine — core tokens, deterministic derivation, light/dark levels, SSR/storage helpers.
-- **@soybeanjs/ui-unocss** (`packages/ui-unocss/`): UnoCSS preset over `@soybeanjs/theme`.
+- **@soybeanjs/ui-uno** (`packages/unocss/`): UnoCSS preset over `@soybeanjs/theme`.
 - **sbean** (`packages/sbean/`): source-distribution CLI, registry, schemas, templates, and MCP.
 - **@soybeanjs/ui-skills** (`skills/`): generated consumer-facing agent skills.
 
@@ -68,7 +68,7 @@ Private applications:
 | Shared hooks             | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (27 total)                                        |
 | Theme/sizing             | `packages/ui/src/theme/`                                                  | `ThemeColor` (8), `ThemeSize` (xs…2xl)                                             |
 | Theme CSS generation     | `packages/theme/`                                                         | `createTheme(options)` (returns CSS string)                                        |
-| UnoCSS adapter           | `packages/ui-unocss/`                                                     | `presetUiUnocss()` / `presetSbean()`                                               |
+| UnoCSS adapter           | `packages/unocss/`                                                        | `presetUiUnocss()` / `presetSbean()`                                               |
 | Source-distribution CLI  | `packages/sbean/`                                                         | commands → registry/schema/templates/MCP                                           |
 | Utility functions        | `packages/headless/src/shared/`                                           | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                        |
 | Global types             | `packages/headless/src/types/`                                            | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                |
@@ -87,7 +87,7 @@ Private applications:
 pnpm dev:playground    # Playground (Vite)
 pnpm dev:docs         # Docs site (Vite + vite-ssg)
 pnpm build            # headless → ui → sbean via Vite Plus pack
-pnpm build:libs       # theme → ui-unocss
+pnpm build:libs       # theme → ui-uno
 pnpm build:docs       # package build → sbean registry → docs SSG
 pnpm build:playground # Playground production build
 pnpm lint             # vp lint --fix && pnpm lint:vue (uses @soybeanjs/eslint-config-vue)
@@ -137,7 +137,7 @@ pnpm sui changelog-translate -- --locale <locale>  # Translate generated English
 
 - `packages/ui` → imports public `@soybeanjs/headless` entry points
 - `packages/headless` → MUST NOT import from `@soybeanjs/ui` (would create a circular dependency)
-- `packages/ui-unocss` → imports `@soybeanjs/theme`; token ownership stays in the theme package
+- `packages/unocss` → imports `@soybeanjs/theme`; token ownership stays in the theme package
 - Components re-exported from barrel files: `packages/headless/src/index.ts`, `packages/ui/src/index.ts`
 
 ## KEY PATTERNS (verified from source)

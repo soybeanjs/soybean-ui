@@ -1,7 +1,7 @@
 import { defineConfig, presetWind3, transformerDirectives, transformerVariantGroup } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
 import { presetAnimations } from 'unocss-preset-animations';
-import { presetUiUnocss } from '@soybeanjs/ui-unocss';
+import { presetUiUnocss } from '@soybeanjs/ui-uno';
 import { presetSoybean } from '@soybeanjs/unocss-preset';
 
 export default defineConfig<Theme>({

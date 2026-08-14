@@ -165,7 +165,7 @@ describe('registry item uno field (ADR-005)', () => {
       type: 'registry:style',
       name: 'rich-uno',
       uno: {
-        presets: ['@soybeanjs/ui-unocss', 'presetIcons'],
+        presets: ['@soybeanjs/ui-uno', 'presetIcons'],
         rules: [['^btn-(.+)$', 'btn-$1']],
         shortcuts: { 'btn-primary': 'bg-primary text-primary-foreground' },
         theme: { colors: { brand: '#3b82f6' } },
@@ -191,7 +191,7 @@ describe('registry item uno field (ADR-005)', () => {
       type: 'registry:base',
       name: 'starter-base',
       uno: {
-        presets: ['@soybeanjs/ui-unocss'],
+        presets: ['@soybeanjs/ui-uno'],
         safelist: ['sr-only']
       },
       config: {},

@@ -21,7 +21,7 @@
     "build": "pnpm build:libs && pnpm build:headless && pnpm build:ui && pnpm build:sbean",
     "build:docs": "pnpm build && pnpm --filter @soybeanjs/ui-docs build",
     "build:headless": "pnpm --filter @soybeanjs/headless build",
-    "build:libs": "pnpm --filter @soybeanjs/theme build && pnpm --filter @soybeanjs/ui-unocss build",
+    "build:libs": "pnpm --filter @soybeanjs/theme build && pnpm --filter @soybeanjs/ui-uno build",
     "build:playground": "pnpm build:libs && pnpm --filter @soybeanjs/ui-playground build",
     "build:sbean": "pnpm --filter sbean build",
     "build:ui": "pnpm --filter @soybeanjs/ui build",

@@ -78,7 +78,7 @@
         }
       },
       "uno": {
-        "presets": ["@soybeanjs/ui-unocss"],
+        "presets": ["@soybeanjs/ui-uno"],
         "shortcuts": {
           "focus-ring": "outline-none ring-2 ring-offset-2"
         },

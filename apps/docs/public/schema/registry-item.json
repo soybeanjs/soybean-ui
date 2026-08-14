@@ -99,7 +99,7 @@
               "items": {
                 "type": "string"
               },
-              "description": "Preset module specifiers to load (e.g. \"@soybeanjs/ui-unocss\")."
+              "description": "Preset module specifiers to load (e.g. \"@soybeanjs/ui-uno\")."
             },
             "rules": {
               "type": "array",
@@ -444,7 +444,7 @@
               "items": {
                 "type": "string"
               },
-              "description": "Preset module specifiers to load (e.g. \"@soybeanjs/ui-unocss\")."
+              "description": "Preset module specifiers to load (e.g. \"@soybeanjs/ui-uno\")."
             },
             "rules": {
               "type": "array",
@@ -700,7 +700,7 @@
               "items": {
                 "type": "string"
               },
-              "description": "Preset module specifiers to load (e.g. \"@soybeanjs/ui-unocss\")."
+              "description": "Preset module specifiers to load (e.g. \"@soybeanjs/ui-uno\")."
             },
             "rules": {
               "type": "array",
@@ -939,7 +939,7 @@
               "items": {
                 "type": "string"
               },
-              "description": "Preset module specifiers to load (e.g. \"@soybeanjs/ui-unocss\")."
+              "description": "Preset module specifiers to load (e.g. \"@soybeanjs/ui-uno\")."
             },
             "rules": {
               "type": "array",

@@ -104,7 +104,7 @@
 | `combobox.e2e.spec.ts` _(新建)_ | 关联 label 点击后 listbox 保持打开             | 2 通过 |
 | `menu.e2e.spec.ts`              | modal 菜单 Tab 被困在菜单内                    | 5 通过 |
 
-E2E 命令：`pnpm --filter @soybeanjs/ui test:e2e test/browser/specs/components/{tooltip,combobox,menu}.e2e.spec.ts` → **3 文件 / 9 测试通过**（chromium 已安装；运行前需 `pnpm build:libs` 构建 theme + ui-unocss）。
+E2E 命令：`pnpm --filter @soybeanjs/ui test:e2e test/browser/specs/components/{tooltip,combobox,menu}.e2e.spec.ts` → **3 文件 / 9 测试通过**（chromium 已安装；运行前需 `pnpm build:libs` 构建 theme + ui-uno）。
 
 ### 5.3 类型检查
 

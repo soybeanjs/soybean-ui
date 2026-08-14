@@ -24,7 +24,7 @@ SoybeanUI 的组件运行时采用严格的**双层分离**设计。下图中的
                   │
                   └─────> @soybeanjs/theme
 
-UnoCSS 配置 ──> @soybeanjs/ui-unocss
+UnoCSS 配置 ──> @soybeanjs/ui-uno
                   └─────> @soybeanjs/theme
 ```
 
@@ -50,7 +50,7 @@ UnoCSS 配置 ──> @soybeanjs/ui-unocss
 ### Workspace 总览
 
 Monorepo 还发布 `@soybeanjs/theme`、
-`@soybeanjs/ui-unocss`、源码分发 CLI `sbean` 与
+`@soybeanjs/ui-uno`、源码分发 CLI `sbean` 与
 `@soybeanjs/ui-skills`。三个私有应用分别承担文档站、playground 与 Nuxt 集成
 验证。
 

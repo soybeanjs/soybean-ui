@@ -95,7 +95,7 @@ export type RegistryItemMeta = v.InferOutput<typeof registryItemMetaSchema>;
 
 export const registryItemUnoSchema = v.optional(
   v.object({
-    /** Preset module specifiers (e.g. `"@soybeanjs/ui-unocss"`). */
+    /** Preset module specifiers (e.g. `"@soybeanjs/ui-uno"`). */
     presets: v.optional(v.array(v.string())),
     /** Declarative `[pattern, class]` rules; pattern is a regex source string. */
     rules: v.optional(v.array(v.tuple([v.string(), v.string()]))),

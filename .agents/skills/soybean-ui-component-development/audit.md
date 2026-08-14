@@ -349,5 +349,5 @@ pnpm sui changelog-translate -- --locale <locale>
 pnpm dev:playground     # playground
 pnpm dev:docs           # documentation site
 pnpm build              # headless -> UI -> sbean
-pnpm build:libs         # theme -> ui-unocss
+pnpm build:libs         # theme -> ui-uno
 ```

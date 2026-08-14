@@ -25,7 +25,7 @@ Consumer ──> @soybeanjs/ui ──> @soybeanjs/headless
                     │
                     └───────> @soybeanjs/theme
 
-UnoCSS config ──> @soybeanjs/ui-unocss
+UnoCSS config ──> @soybeanjs/ui-uno
                     └───────> @soybeanjs/theme
 ```
 
@@ -52,7 +52,7 @@ Current Compact-style coverage also includes flows such as card, date-field, dia
 ### Workspace Overview
 
 The monorepo also publishes `@soybeanjs/theme`,
-`@soybeanjs/ui-unocss`, the `sbean` source-distribution CLI, and
+`@soybeanjs/ui-uno`, the `sbean` source-distribution CLI, and
 `@soybeanjs/ui-skills`. Private apps provide the documentation site,
 playground, and Nuxt integration fixture.
 
