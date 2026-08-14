@@ -1,18 +1,20 @@
 <script setup lang="ts">
-import { shallowRef, watch, watchPostEffect, onMounted } from 'vue';
+import { shallowRef, ref, watch, watchPostEffect, onMounted, computed } from 'vue';
 import type { Component } from 'vue';
-import { SButtonIcon, SCard, SLink, STabs } from '@soybeanjs/ui';
+import { SButtonIcon, SCard, SLink, STabs, SToggleGroup, SToggleGroupItem, STag } from '@soybeanjs/ui';
 import type { TabsOptionData } from '@soybeanjs/ui';
 import { kebabCase, pascalCase } from '@soybeanjs/utils';
+import { getComponentLibrary } from '../component-libraries';
 import DirectionToggler from '../components/direction-toggler.vue';
 import LocaleToggler from '../components/locale-toggler.vue';
 import ThemeConfigurator from '../components/theme-configurator.vue';
-// import ThemeSchemaToggler from '../components/theme-schema-toggler.vue';
 
 const activeTab = shallowRef('');
+const activeLibrary = ref('ui');
 
 interface TabConfig extends TabsOptionData<string> {
   component: () => Promise<Record<string, Component>>;
+  library: string;
 }
 
 const tabs = getTabs();
@@ -31,13 +33,23 @@ function getTabs() {
       componentTabs.push({
         label,
         value: kebabCase(componentName),
-        component: demoModules[path] as () => Promise<Record<string, Component>>
+        component: demoModules[path] as () => Promise<Record<string, Component>>,
+        library: getComponentLibrary(componentName)
       });
     }
   }
 
   return componentTabs.sort((a, b) => a.label.localeCompare(b.label));
 }
+
+const filteredTabs = computed(() => tabs.filter(tab => tab.library === activeLibrary.value));
+
+watch(activeLibrary, newLib => {
+  const firstTab = tabs.find(t => t.library === newLib);
+  if (firstTab) {
+    activeTab.value = firstTab.value;
+  }
+});
 
 // for nuxt
 function getQuery() {
@@ -70,7 +82,16 @@ function updateUrl() {
 
 function initTab() {
   const query = getQuery();
-  activeTab.value = query.tab || 'accordion';
+  if (query.tab) {
+    const tab = tabs.find(t => t.value === query.tab);
+    if (tab) {
+      activeLibrary.value = tab.library;
+      activeTab.value = query.tab;
+      return;
+    }
+  }
+  const firstTab = tabs.find(t => t.library === activeLibrary.value);
+  activeTab.value = firstTab?.value || 'accordion';
 }
 
 watchPostEffect(async () => {
@@ -94,6 +115,13 @@ onMounted(() => {
   <SCard data-soybean-bottom-sheet-scale title="SoybeanUI Playground" class="h-full bg-background">
     <template #extra>
       <div class="flex items-center gap-3">
+        <SToggleGroup v-model="activeLibrary" size="sm">
+          <SToggleGroupItem value="ui">UI</SToggleGroupItem>
+          <SToggleGroupItem value="ui-x">UI-X</SToggleGroupItem>
+        </SToggleGroup>
+        <STag :color="activeLibrary === 'ui-x' ? 'primary' : 'carbon'" variant="soft" size="sm" class="font-semibold">
+          {{ activeLibrary === 'ui-x' ? '@soybeanjs/ui-x' : '@soybeanjs/ui' }}
+        </STag>
         <SLink href="https://github.com/soybeanjs/soybean-ui">
           <SButtonIcon icon="lucide:github" size="lg" />
         </SLink>
@@ -105,7 +133,7 @@ onMounted(() => {
     </template>
     <STabs
       v-model="activeTab"
-      :items="tabs"
+      :items="filteredTabs"
       :enable-indicator="false"
       :ui="{
         root: 'md:h-full',

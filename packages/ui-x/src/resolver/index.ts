@@ -1,11 +1,26 @@
-// unplugin-vue-components resolver for @soybeanjs/ui-x.
-// TODO(ui-x): scaffold placeholder — implement resolver once components exist.
-
 import type { ComponentResolver } from 'unplugin-vue-components';
+import { components } from '../constants/components';
 
-export function uiXResolver(): ComponentResolver {
-  return {
+function createResolver() {
+  const resolver: ComponentResolver = {
     type: 'component',
-    resolve: () => undefined
+    resolve: (name: string) => {
+      const $name = name.replace(/(^\w|-\w)/g, char => char.replace('-', '').toUpperCase());
+
+      const values = Object.values(components).flat();
+
+      if (values.includes($name)) {
+        return {
+          name: $name,
+          from: '@soybeanjs/ui-x'
+        };
+      }
+
+      return null;
+    }
   };
+
+  return resolver;
 }
+
+export default createResolver;

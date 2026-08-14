@@ -1,7 +1,20 @@
-// @soybeanjs/ui-x entry barrel.
-// TODO(ui-x): scaffold placeholder — re-export components (and composables/types for ui-x) as they are added.
-
-export * from './composables';
-export * from './types';
-
-export const VERSION = '0.29.3';
+export * from './components/attachments';
+export * from './components/actions';
+export * from './components/actions-copy';
+export * from './components/actions-feedback';
+export * from './components/bubble';
+export * from './components/bubble-list';
+export * from './components/code-block';
+export * from './components/conversations';
+export * from './components/file-card';
+export * from './components/folder';
+export * from './components/markdown';
+export * from './components/mermaid';
+export * from './components/notification';
+export * from './components/sender';
+export * from './components/prompts';
+export * from './components/sources';
+export * from './components/suggestion';
+export * from './components/welcome';
+export * from './components/think';
+export * from './components/thought-chain';

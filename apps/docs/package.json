@@ -22,6 +22,7 @@
     "@soybeanjs/headless": "workspace:^",
     "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
+    "@soybeanjs/ui-x": "workspace:^",
     "es-toolkit": "^1.50.0",
     "pinia": "^4.0.2",
     "sbean": "workspace:^",

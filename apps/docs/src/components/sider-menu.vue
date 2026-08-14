@@ -220,7 +220,9 @@ const menus = computed<TreeMenuOptionData[]>(() => {
 });
 
 watchEffect(() => {
-  const [dir, value] = route.path.split('/').filter(Boolean);
+  const parts = route.path.split('/').filter(Boolean);
+  const dir = parts[0];
+  const value = parts[2];
 
   if (dir) {
     if (dir === 'components') {

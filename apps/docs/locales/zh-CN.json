@@ -575,6 +575,90 @@
         "custom-styling": "自定义样式",
         "disabled": "禁用",
         "size": "尺寸"
+      },
+      "bubble": {
+        "basic": "基础",
+        "variant": "变体",
+        "loading": "加载中",
+        "typing": "打字机效果"
+      },
+      "bubble-list": {
+        "basic": "基础",
+        "custom-item": "自定义条目"
+      },
+      "sender": {
+        "basic": "基础",
+        "loading": "加载中",
+        "with-attachments": "带附件",
+        "suggestions": "斜杠 / 提及建议"
+      },
+      "markdown": {
+        "basic": "基础",
+        "streaming": "流式渲染"
+      },
+      "attachments": {
+        "basic": "基础",
+        "custom-item": "自定义条目"
+      },
+      "file-card": {
+        "basic": "基础",
+        "clickable": "可点击"
+      },
+      "code-block": {
+        "basic": "基础",
+        "highlight": "语法高亮"
+      },
+      "conversations": {
+        "basic": "基础",
+        "custom-title": "自定义分组标题"
+      },
+      "welcome": {
+        "basic": "基础",
+        "custom-slots": "自定义插槽"
+      },
+      "prompts": {
+        "basic": "基础",
+        "select": "选择事件"
+      },
+      "sources": {
+        "basic": "基础",
+        "without-url": "无链接"
+      },
+      "suggestion": {
+        "basic": "基础",
+        "select": "选择事件"
+      },
+      "think": {
+        "basic": "基础",
+        "custom-trigger": "自定义触发器"
+      },
+      "thought-chain": {
+        "basic": "基础",
+        "custom-slots": "自定义插槽"
+      },
+      "actions": {
+        "basic": "基础",
+        "disabled": "禁用"
+      },
+      "actions-copy": {
+        "basic": "基础",
+        "custom-label": "自定义标签"
+      },
+      "actions-feedback": {
+        "basic": "基础",
+        "custom-icons": "自定义图标"
+      },
+      "folder": {
+        "basic": "基础",
+        "custom-icon": "自定义图标"
+      },
+      "notification": {
+        "basic": "基础",
+        "custom-slots": "自定义插槽"
+      },
+      "mermaid": {
+        "basic": "基础",
+        "code-mode": "代码模式"
       }
     }
   },
@@ -779,6 +863,11 @@
       }
     }
   },
+  "ui_x": {
+    "catalog": {
+      "description": "面向 AI 对话场景的组件库，提供流式 Markdown、推理链、附件、会话管理等能力。"
+    }
+  },
   "sidebar": {
     "overview": "概览",
     "introduction": "介绍",
@@ -797,7 +886,19 @@
     "overlay": "浮层",
     "utilities": "工具",
     "installation": "安装",
-    "cli": "CLI"
+    "cli": "CLI",
+    "ui_x_overview": "概览",
+    "ui_x_installation": "安装",
+    "ui_x_quick_start": "快速上手",
+    "ui_x_theming": "主题定制",
+    "ui_x_i18n": "国际化",
+    "ui_x_core": "核心",
+    "ui_x_content": "内容渲染",
+    "ui_x_attachments": "附件",
+    "ui_x_conversation": "会话管理",
+    "ui_x_reasoning": "推理",
+    "ui_x_actions": "动作",
+    "ui_x_misc": "其他"
   },
   "api": {
     "ui_layer": "UI 层",

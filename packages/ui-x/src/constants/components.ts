@@ -1,0 +1,22 @@
+export const components = {
+  actions: ['SxActions'],
+  actionsCopy: ['SxActionsCopy'],
+  actionsFeedback: ['SxActionsFeedback'],
+  attachments: ['SxAttachments'],
+  bubble: ['SxBubble'],
+  bubbleList: ['SxBubbleList'],
+  codeBlock: ['SxCodeBlock'],
+  conversations: ['SxConversations'],
+  fileCard: ['SxFileCard'],
+  folder: ['SxFolder'],
+  markdown: ['SxMarkdown'],
+  mermaid: ['SxMermaid'],
+  notification: ['SxNotification'],
+  prompts: ['SxPrompts'],
+  sender: ['SxSender'],
+  sources: ['SxSources'],
+  suggestion: ['SxSuggestion'],
+  think: ['SxThink'],
+  thoughtChain: ['SxThoughtChain'],
+  welcome: ['SxWelcome']
+};

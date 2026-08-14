@@ -575,6 +575,90 @@
         "custom-styling": "Custom Styling",
         "disabled": "Disabled",
         "size": "Size"
+      },
+      "bubble": {
+        "basic": "Basic",
+        "variant": "Variant",
+        "loading": "Loading",
+        "typing": "Typing"
+      },
+      "bubble-list": {
+        "basic": "Basic",
+        "custom-item": "Custom Item"
+      },
+      "sender": {
+        "basic": "Basic",
+        "loading": "Loading",
+        "with-attachments": "With Attachments",
+        "suggestions": "Slash & Mention Suggestions"
+      },
+      "markdown": {
+        "basic": "Basic",
+        "streaming": "Streaming"
+      },
+      "attachments": {
+        "basic": "Basic",
+        "custom-item": "Custom Item"
+      },
+      "file-card": {
+        "basic": "Basic",
+        "clickable": "Clickable"
+      },
+      "code-block": {
+        "basic": "Basic",
+        "highlight": "Highlight"
+      },
+      "conversations": {
+        "basic": "Basic",
+        "custom-title": "Custom Group Title"
+      },
+      "welcome": {
+        "basic": "Basic",
+        "custom-slots": "Custom Slots"
+      },
+      "prompts": {
+        "basic": "Basic",
+        "select": "Select Event"
+      },
+      "sources": {
+        "basic": "Basic",
+        "without-url": "Without URL"
+      },
+      "suggestion": {
+        "basic": "Basic",
+        "select": "Select Event"
+      },
+      "think": {
+        "basic": "Basic",
+        "custom-trigger": "Custom Trigger"
+      },
+      "thought-chain": {
+        "basic": "Basic",
+        "custom-slots": "Custom Slots"
+      },
+      "actions": {
+        "basic": "Basic",
+        "disabled": "Disabled"
+      },
+      "actions-copy": {
+        "basic": "Basic",
+        "custom-label": "Custom Label"
+      },
+      "actions-feedback": {
+        "basic": "Basic",
+        "custom-icons": "Custom Icons"
+      },
+      "folder": {
+        "basic": "Basic",
+        "custom-icon": "Custom Icon"
+      },
+      "notification": {
+        "basic": "Basic",
+        "custom-slots": "Custom Slots"
+      },
+      "mermaid": {
+        "basic": "Basic",
+        "code-mode": "Code Mode"
       }
     }
   },
@@ -784,6 +868,11 @@
       }
     }
   },
+  "ui_x": {
+    "catalog": {
+      "description": "AI-native component library for building conversational interfaces, with streaming markdown, thought chains, attachments, and more."
+    }
+  },
   "sidebar": {
     "overview": "Overview",
     "introduction": "Introduction",
@@ -802,7 +891,19 @@
     "overlay": "Overlay",
     "utilities": "Utilities",
     "installation": "Installation",
-    "cli": "CLI"
+    "cli": "CLI",
+    "ui_x_overview": "Overview",
+    "ui_x_installation": "Installation",
+    "ui_x_quick_start": "Quick Start",
+    "ui_x_theming": "Theming",
+    "ui_x_i18n": "Internationalization",
+    "ui_x_core": "Core",
+    "ui_x_content": "Content Rendering",
+    "ui_x_attachments": "Attachments",
+    "ui_x_conversation": "Conversation",
+    "ui_x_reasoning": "Reasoning",
+    "ui_x_actions": "Actions",
+    "ui_x_misc": "Miscellaneous"
   },
   "api": {
     "ui_layer": "UI Layer",

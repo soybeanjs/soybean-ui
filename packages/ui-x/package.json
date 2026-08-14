@@ -1,7 +1,7 @@
 {
   "name": "@soybeanjs/ui-x",
   "version": "0.29.3",
-  "description": "SoybeanUI-X — AI conversation UI components built on top of SoybeanUI.",
+  "description": "SoybeanUIX provides styled AI conversation components for Vue 3, built on top of SoybeanHeadless and SoybeanUI.",
   "homepage": "https://github.com/soybeanjs/soybean-ui",
   "bugs": {
     "url": "https://github.com/soybeanjs/soybean-ui/issues"
@@ -23,61 +23,69 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
-    },
-    "./composables": {
-      "types": "./dist/composables/index.d.ts",
-      "import": "./dist/composables/index.js",
-      "require": "./dist/composables/index.js"
-    },
-    "./types": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/types/index.js",
-      "require": "./dist/types/index.js"
-    },
-    "./nuxt": {
-      "types": "./dist/nuxt/index.d.ts",
-      "import": "./dist/nuxt/index.js",
-      "require": "./dist/nuxt/index.js"
-    },
-    "./resolver": {
-      "types": "./dist/resolver/index.d.ts",
-      "import": "./dist/resolver/index.js",
-      "require": "./dist/resolver/index.js"
-    },
-    "./styles.css": "./dist/styles.css"
+    ".": "./src/index.ts",
+    "./composables": "./src/composables/index.ts",
+    "./types": "./src/types/index.ts",
+    "./resolver": "./src/resolver/index.ts",
+    "./styles.css": "./src/styles/index.css",
+    "./*": "./src/components/*/index.ts"
   },
   "publishConfig": {
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js",
+        "require": "./dist/index.js"
+      },
+      "./composables": {
+        "types": "./dist/composables/index.d.ts",
+        "import": "./dist/composables/index.js",
+        "require": "./dist/composables/index.js"
+      },
+      "./types": {
+        "types": "./dist/types/index.d.ts",
+        "import": "./dist/types/index.js",
+        "require": "./dist/types/index.js"
+      },
+      "./resolver": {
+        "types": "./dist/resolver/index.d.ts",
+        "import": "./dist/resolver/index.js",
+        "require": "./dist/resolver/index.js"
+      },
+      "./styles.css": "./dist/styles.css",
+      "./*": {
+        "types": "./dist/components/*/index.d.ts",
+        "import": "./dist/components/*/index.js",
+        "require": "./dist/components/*/index.js"
+      }
+    },
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "build": "vp pack && pnpm build:css",
     "build:css": "unocss 'src/styles/**/*.ts' -o dist/styles.css --minify",
     "test": "vp test run",
-    "test:coverage": "vp test run --coverage",
-    "test:ui": "vp test --ui",
-    "test:watch": "vp test watch",
     "typecheck": "vue-tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
-    "@iconify/vue": "^5.0.1",
     "@soybeanjs/cva": "^0.0.9",
     "@soybeanjs/headless": "workspace:^",
     "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
-    "@soybeanjs/utils": "^0.1.1"
+    "@soybeanjs/utils": "^0.1.1",
+    "markstream-vue": "^1.0.9"
   },
   "devDependencies": {
     "@nuxt/kit": "^4.5.2",
     "@soybeanjs/ui-uno": "workspace:^",
     "@types/node": "^26.2.0",
     "@unocss/cli": "^66.7.5",
+    "@vitest/browser": "^4.1.10",
+    "@vitest/browser-playwright": "^4.1.10",
     "@vue/test-utils": "^2.4.11",
+    "axe-core": "^4.13.0",
     "happy-dom": "^20.11.2",
-    "nuxt": "^4.5.2",
+    "playwright": "^1.62.1",
     "typescript": "7.0.2",
     "unocss": "^66.7.5",
     "unplugin-vue": "^7.2.0",
@@ -91,7 +99,9 @@
   "peerDependencies": {
     "@nuxt/kit": "^4.3.0",
     "@nuxt/schema": "^4.3.0",
+    "mermaid": "^11.0.0",
     "nuxt": ">=4.0.0",
+    "shiki": ">=1.0.0",
     "unplugin-vue-components": "^31.0.0",
     "vue": ">=3.2.0",
     "vue-router": ">=4.0.0"
@@ -103,7 +113,13 @@
     "@nuxt/schema": {
       "optional": true
     },
+    "mermaid": {
+      "optional": true
+    },
     "nuxt": {
+      "optional": true
+    },
+    "shiki": {
       "optional": true
     },
     "unplugin-vue-components": {

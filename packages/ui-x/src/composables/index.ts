@@ -1,4 +1,9 @@
-// ui-x composables barrel.
-// TODO(ui-x): scaffold placeholder — re-export composables as they are added.
-
-export {};
+export * from './use-x-stream';
+export * from './use-chat';
+export * from './use-typing';
+export * from './use-bubble-list-scroll';
+export * from './use-sender';
+export * from './use-send';
+export * from './use-conversations';
+export * from './use-think';
+export * from './use-thought-chain';

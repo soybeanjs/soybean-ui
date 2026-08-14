@@ -22,14 +22,14 @@
 
 | 阶段                    | 任务数 | 已完成 | 进行中 | 未开始 | 阶段进度  |
 | ----------------------- | :----: | :----: | :----: | :----: | :-------: |
-| A 架构与命名契约        |   8    |   5    |   1    |   2    |    68%    |
+| A 架构与命名契约        |   8    |   6    |   1    |   1    |    75%    |
 | B 分包骨架与依赖        |   8    |   7    |   1    |   0    |    94%    |
 | C 功能组件实现          |   12   |   0    |   0    |   12   |    0%     |
 | D 文档站                |   7    |   0    |   3    |   4    |    24%    |
 | E sbean registry 与 CLI |   5    |   1    |   0    |   4    |    20%    |
 | F 生成与 playground     |   7    |   1    |   0    |   6    |    14%    |
 | G 迁移与发布            |   7    |   0    |   3    |   4    |    18%    |
-| **合计**                | **54** | **14** | **8**  | **32** | **≈ 34%** |
+| **合计**                | **54** | **17** | **8**  | **29** | **≈ 39%** |
 
 > 当前处于「结构骨架已落地、业务功能与文档内容未填充」阶段——即方案 §10 checklist 的前置工作已大部分完成，§3/§6/§7/§8 的功能与分发部分待推进。
 
@@ -40,13 +40,13 @@
 | EC-A01 | 确定外围包分层模型（单包自治、核心 headless 唯一逻辑层）并输出 [ADR-0001](./adr/0001-peripheral-package-layering.md)                                                                                        |   P0   | Soybean  | 2026-08-13 | 2026-08-13 | ✅ 已完成 | 100% |
 | EC-A02 | 更新 [CONTEXT.md](../CONTEXT.md) 术语表：外围包 / 原子原语 / 包装型组件 / 组件前缀 / 命名空间 registry item / 跨包依赖白名单 / lockstep 版本                                                                |   P0   | Soybean  | 2026-08-13 | 2026-08-14 | 🔵 进行中 | 70%  |
 | EC-A03 | 删除 `packages/headless-x/` 包（`ui-x` 分支上的历史产物）                                                                                                                                                   |   P0   | AI Agent | 2026-08-14 | 2026-08-14 | ✅ 已完成 | 100% |
-| EC-A04 | `headless-x` composables 迁入 `packages/ui-x/src/composables/`（use-chat / use-send / use-think / use-typing / use-x-stream / use-bubble-list-scroll / use-conversations / use-sender / use-thought-chain） |   P0   | AI Agent | 2026-08-14 | 2026-08-25 | ⬜ 未开始 |  0%  |
-| EC-A05 | `headless-x` types 迁入 `packages/ui-x/src/types/`                                                                                                                                                          |   P0   | AI Agent | 2026-08-14 | 2026-08-25 | ⬜ 未开始 |  0%  |
-| EC-A06 | `headless-x` test/specs 迁入 `packages/ui-x/test/specs/`                                                                                                                                                    |   P1   | AI Agent | 2026-08-14 | 2026-08-25 | ⬜ 未开始 |  0%  |
+| EC-A04 | `headless-x` composables 迁入 `packages/ui-x/src/composables/`（use-chat / use-send / use-think / use-typing / use-x-stream / use-bubble-list-scroll / use-conversations / use-sender / use-thought-chain） |   P0   | AI Agent | 2026-08-14 | 2026-08-25 | ✅ 已完成 | 100% |
+| EC-A05 | `headless-x` types 迁入 `packages/ui-x/src/types/`                                                                                                                                                          |   P0   | AI Agent | 2026-08-14 | 2026-08-25 | ✅ 已完成 | 100% |
+| EC-A06 | `headless-x` test/specs 迁入 `packages/ui-x/test/specs/`                                                                                                                                                    |   P1   | AI Agent | 2026-08-14 | 2026-08-25 | ✅ 已完成 | 100% |
 | EC-A07 | `packages/ui-x/package.json` 移除 `@soybeanjs/headless-x` 依赖；exports 增补 `./composables`、`./types` 子路径                                                                                              |   P0   | AI Agent | 2026-08-14 | 2026-08-14 | ✅ 已完成 | 100% |
 | EC-A08 | 评估 `use-x-stream` 是否上浮核心 `@soybeanjs/headless`（§3.1「原子原语」判据）；单域独享则留 ui-x                                                                                                           |   P1   | Soybean  | 2026-08-14 | 2026-08-25 | ⬜ 未开始 |  0%  |
 
-> 备注：EC-A04/A05/A06 的目录骨架已创建（见 `packages/ui-x/src/composables/index.ts` 占位），实际内容迁移待 `ui-x` 分支合并（EC-G01）或手工搬移后完成。
+> 备注：EC-A04/A05/A06 已在本分支手工完成——9 个 composables、7 个 types 与 `use-sender.spec` 已迁入 `packages/ui-x/src/{composables,types}/` 与 `test/specs/`，`packages/headless-x/` 已删除，ui-x 补 `./composables`、`./types` exports；组件内部与 playground/docs 引用已切换为 `@/composables`、`@/types` 与 `@soybeanjs/ui-x/types`。待 EC-G01 合并时核对。
 
 ## 2. 阶段 B — 分包骨架与依赖（ecosystem.md §2.2/§5/§10.1-10.3）
 
@@ -134,7 +134,7 @@
 
 | ID     | 任务描述                                                                                                 | 优先级 | 负责人   | 开始       | 目标完成   | 状态      | 进度 |
 | ------ | -------------------------------------------------------------------------------------------------------- | :----: | -------- | ---------- | ---------- | --------- | :--: |
-| EC-G01 | 合并 `ui-x` 分支到 `main`（含 §11.2 headless-x 拆解收尾，即 EC-A04~A06 内容落地）                        |   P0   | Soybean  | 2026-08-14 | 2026-08-31 | 🔵 进行中 | 20%  |
+| EC-G01 | 合并 `ui-x` 分支到 `main`（§11.2 headless-x 拆解已在分支完成，即 EC-A04~A06 落地）                       |   P0   | Soybean  | 2026-08-14 | 2026-08-31 | 🔵 进行中 | 40%  |
 | EC-G02 | 合并 `chart` 分支到 `main`（新建包；骨架已入 main，功能待 C3 完成）                                      |   P0   | Soybean  | 2026-08-14 | 2026-08-31 | 🔵 进行中 | 15%  |
 | EC-G03 | 合并 `admin` 分支到 `main`（接入 admin→chart peerDep，即 EC-B05）                                        |   P0   | Soybean  | 2026-08-14 | 2026-08-31 | 🔵 进行中 | 15%  |
 | EC-G04 | 每步合并后验证：`pnpm typecheck` + `pnpm test` + `pnpm build`                                            |   P0   | AI Agent | 2026-08-14 | 2026-09-01 | ⬜ 未开始 |  0%  |
@@ -157,5 +157,6 @@ EC-G01/G02/G03 ──► EC-G04 (验证) ──► EC-G05 (归档分支) ──�
 
 ## 9. 最近更新
 
+- **2026-08-14（headless-x 拆解）**：EC-A04~A06 在本分支完成——9 个 composables、7 个 types、`use-sender.spec` 迁入 `packages/ui-x/src/{composables,types}/` 与 `test/specs/`；删除 `packages/headless-x/`；ui-x 移除 `@soybeanjs/headless-x` 依赖并增补 `./composables`、`./types` exports；组件内部（`@/composables`、`@/types`）、playground/docs 消费者（`@soybeanjs/ui-x/types`）引用同步切换；ui-x typecheck/test/build、playground/docs typecheck 均通过。EC-A08（`use-x-stream` 上浮评估）仍待 Soybean 决策。
 - **2026-08-14（下午）**：新增三份提案文档——`docs/ecosystem/table.md`（`@soybeanjs/table` 立项提案）、`docs/ecosystem/form.md`（`@soybeanjs/form` 立项提案）、`docs/ecosystem/commercialization.md`（editor/table/form 商业化策略）；调研文档落 `docs/research/`（table-ecosystem / form-ecosystem / commercialization-ecosystem）。新增任务 EC-G08~G10（待排期）。
 - **2026-08-14（基线）**：生成本文档。核对仓库实际状态：包骨架、根脚本、registry `packages` 元数据、core examples 迁移、header 入口均已完成；功能组件、docs 内容、registry 命名空间化、sui 多包生成、分支合并均未完成或进行中。

@@ -199,6 +199,13 @@ declare module 'vue-router/auto-routes' {
       { name: ParamValue<false> },
       | never
     >,
+    '/ui-x/i18n': RouteRecordInfo<
+      '/ui-x/i18n',
+      '/ui-x/i18n',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/ui-x/installation': RouteRecordInfo<
       '/ui-x/installation',
       '/ui-x/installation',
@@ -209,6 +216,13 @@ declare module 'vue-router/auto-routes' {
     '/ui-x/quick-start': RouteRecordInfo<
       '/ui-x/quick-start',
       '/ui-x/quick-start',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/ui-x/theming': RouteRecordInfo<
+      '/ui-x/theming',
+      '/ui-x/theming',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -418,6 +432,14 @@ declare module 'vue-router/auto-routes' {
       pathParamNames:
         | 'name'
     }
+    'src/pages/ui-x/i18n.vue': {
+      routes:
+        | '/ui-x/i18n'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
     'src/pages/ui-x/installation.vue': {
       routes:
         | '/ui-x/installation'
@@ -429,6 +451,14 @@ declare module 'vue-router/auto-routes' {
     'src/pages/ui-x/quick-start.vue': {
       routes:
         | '/ui-x/quick-start'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/ui-x/theming.vue': {
+      routes:
+        | '/ui-x/theming'
       views:
         | never
       pathParamNames:

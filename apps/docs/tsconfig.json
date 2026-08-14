@@ -11,6 +11,7 @@
       "@/*": ["../../packages/ui/src/*"],
       "@playground/*": ["../playground/src/*"],
       "@soybeanjs/ui": ["../../packages/ui/src/index.ts"],
+      "@soybeanjs/ui-x": ["../../packages/ui-x/src/index.ts"],
       "@soybeanjs/theme": ["../../packages/theme/src/index.ts"],
       "@soybeanjs/theme/*": ["../../packages/theme/src/*"]
     },
