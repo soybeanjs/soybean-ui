@@ -52,13 +52,13 @@ This component does not emit any events (click is delivered via the `onClick` pr
 
 `SxFileCard` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless` / `@soybeanjs/ui`. It is a leaf component: it renders only the card surface from a single `Attachment` and holds no state — the kind→icon map is a pure constant and the meta line is derived with a computed. Clicking behavior is opt-in via the `onClick` prop, which also toggles the keyboard-focusable `role="button"` semantics. `SxAttachments` composes this card and adds the list-level select/remove wiring.
 
-| Capability | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| Single file preview card | ✅ | — | — | ✅ |
-| Kind-based icon mapping | ✅ | — | — | ✅ |
-| MIME + size meta line | ✅ | — | — | — |
-| Keyboard-focusable click card | ✅ | — | — | — |
-| Slots for icon/name/meta/actions | ✅ | — | — | — |
+| Capability                       | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :------------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| Single file preview card         |     ✅      |       —       |     —     |       ✅        |
+| Kind-based icon mapping          |     ✅      |       —       |     —     |       ✅        |
+| MIME + size meta line            |     ✅      |       —       |     —     |        —        |
+| Keyboard-focusable click card    |     ✅      |       —       |     —     |        —        |
+| Slots for icon/name/meta/actions |     ✅      |       —       |     —     |        —        |
 
 `—` = unsupported or handled differently.
 

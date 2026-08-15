@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { welcomeVariants } from '../../styles/welcome';
 import type { Prompt } from '../../types';
 import { SxPrompts } from '../prompts';
-import { welcomeVariants } from '../../styles/welcome';
 import type { WelcomeProps } from './types';
 
 defineOptions({

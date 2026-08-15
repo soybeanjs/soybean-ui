@@ -60,14 +60,14 @@ This component emits no events.
 
 `SxBubble` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless` / `@soybeanjs/ui`: it shares the `cv()` recipe approach, `ThemeSize` and `ClassValue` types, while the typewriter animation is delegated to the framework-agnostic `useTyping` composable from `@soybeanjs/ui-x` and base message types come from `@soybeanjs/ui-x/types`. The SFC itself stays thin — it only wires the variant recipe, prop/state forwarding and slot rendering, with no DOM or timer logic.
 
-| Capability | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| Single styled message bubble | ✅ | — | ✅ | ✅ |
-| Variants (filled / outlined / shadow) | ✅ | — | — | ✅ |
-| Typewriter typing effect | ✅ | — | — | — |
-| "Thinking…" loading state | ✅ | — | — | ✅ |
-| Headless/styled logic split | ✅ | — | — | — |
-| Renders a full `ChatMessage` object | ✅ | — | — | — |
+| Capability                            | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :------------------------------------ | :---------: | :-----------: | :-------: | :-------------: |
+| Single styled message bubble          |     ✅      |       —       |    ✅     |       ✅        |
+| Variants (filled / outlined / shadow) |     ✅      |       —       |     —     |       ✅        |
+| Typewriter typing effect              |     ✅      |       —       |     —     |        —        |
+| "Thinking…" loading state             |     ✅      |       —       |     —     |       ✅        |
+| Headless/styled logic split           |     ✅      |       —       |     —     |        —        |
+| Renders a full `ChatMessage` object   |     ✅      |       —       |     —     |        —        |
 
 `—` = unsupported or handled outside the component (the Vercel AI SDK ships headless message primitives and leaves presentation to the app).
 

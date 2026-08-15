@@ -53,14 +53,14 @@ This component does not emit any events.
 
 `SxThoughtChain` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless` / `@soybeanjs/ui`: the iteration, expansion state, and status tracking are delegated to the `useThoughtChain` composable from `@soybeanjs/ui-x`, and the SFC only wires the `thoughtChainVariants` recipe, status symbols, and slot forwarding. The `useThoughtChain` composable manages an expandable items map and provides `toggle()` and `isExpanded()` methods.
 
-| Capability | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| Structured reasoning steps | ✅ | — | — | — |
-| Four lifecycle statuses (pending/loading/success/error) | ✅ | — | — | — |
-| Expandable step content | ✅ | — | — | — |
-| Custom title/content slots | ✅ | — | — | — |
-| Accessible `<ol>` list | ✅ | — | — | — |
-| Headless composable for chain state | ✅ | — | — | — |
+| Capability                                              | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :------------------------------------------------------ | :---------: | :-----------: | :-------: | :-------------: |
+| Structured reasoning steps                              |     ✅      |       —       |     —     |        —        |
+| Four lifecycle statuses (pending/loading/success/error) |     ✅      |       —       |     —     |        —        |
+| Expandable step content                                 |     ✅      |       —       |     —     |        —        |
+| Custom title/content slots                              |     ✅      |       —       |     —     |        —        |
+| Accessible `<ol>` list                                  |     ✅      |       —       |     —     |        —        |
+| Headless composable for chain state                     |     ✅      |       —       |     —     |        —        |
 
 `—` = unsupported or handled differently.
 

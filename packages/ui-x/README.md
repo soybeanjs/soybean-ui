@@ -12,15 +12,15 @@ pnpm add @soybeanjs/ui-x
 
 ## Components
 
-| Category | Components |
-| --- | --- |
-| Core | `SxBubble`, `SxBubbleList`, `SxSender` |
-| Content | `SxMarkdown`, `SxCodeBlock`, `SxMermaid` |
-| Attachments | `SxAttachments`, `SxFileCard` |
+| Category     | Components                                                  |
+| ------------ | ----------------------------------------------------------- |
+| Core         | `SxBubble`, `SxBubbleList`, `SxSender`                      |
+| Content      | `SxMarkdown`, `SxCodeBlock`, `SxMermaid`                    |
+| Attachments  | `SxAttachments`, `SxFileCard`                               |
 | Conversation | `SxConversations`, `SxWelcome`, `SxPrompts`, `SxSuggestion` |
-| Reasoning | `SxThink`, `SxThoughtChain`, `SxSources` |
-| Actions | `SxActions`, `SxActionsCopy`, `SxActionsFeedback` |
-| Misc | `SxFolder`, `SxNotification` |
+| Reasoning    | `SxThink`, `SxThoughtChain`, `SxSources`                    |
+| Actions      | `SxActions`, `SxActionsCopy`, `SxActionsFeedback`           |
+| Misc         | `SxFolder`, `SxNotification`                                |
 
 ## Quick Start
 

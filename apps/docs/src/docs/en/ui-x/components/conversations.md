@@ -53,13 +53,13 @@ Use it as the left sidebar in a chat interface to list all user conversations. I
 
 `SxConversations` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless` / `@soybeanjs/ui`. The grouping logic is computed locally with a `Map` — there is no headless composable because the algorithm is trivial (single `group by` pass). The component only wires the grouping, the active-class toggle, and the select emit. The `ConversationItem` type is shared with `@soybeanjs/ui-x/types`.
 
-| Capability | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| Grouped conversation list | ✅ | — | — | ✅ |
-| Active item with `aria-current` | ✅ | — | — | — |
-| Custom group title slot | ✅ | — | — | — |
-| Custom item slot | ✅ | — | — | — |
-| `ConversationItem` type with `group` | ✅ | — | — | ✅ |
+| Capability                           | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :----------------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| Grouped conversation list            |     ✅      |       —       |     —     |       ✅        |
+| Active item with `aria-current`      |     ✅      |       —       |     —     |        —        |
+| Custom group title slot              |     ✅      |       —       |     —     |        —        |
+| Custom item slot                     |     ✅      |       —       |     —     |        —        |
+| `ConversationItem` type with `group` |     ✅      |       —       |     —     |       ✅        |
 
 `—` = unsupported or handled differently.
 

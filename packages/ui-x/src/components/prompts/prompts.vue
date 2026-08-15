@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { Prompt } from '../../types';
 import { promptsVariants } from '../../styles/prompts';
+import type { Prompt } from '../../types';
 import type { PromptsProps } from './types';
 
 defineOptions({

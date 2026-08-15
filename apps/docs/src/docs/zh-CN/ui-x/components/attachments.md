@@ -57,13 +57,13 @@
 
 `SxAttachments` 是 `@soybeanjs/ui-x` 中带样式、单包的 AI 组件，构建于 `@soybeanjs/headless` / `@soybeanjs/ui` 之上。它只负责列表迭代与选择/移除的接线；单项展示完全委托给同级的 `SxFileCard` 组件，使图标映射与元信息渲染集中在一处。`@soybeanjs/ui-x` 中没有对应的 headless 列表壳——它是对共享 `Attachment` 类型的轻量样式化组合。
 
-| 能力 | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| 附件预览列表 | ✅ | — | — | ✅ |
-| 点击选择附件 | ✅ | — | — | — |
-| 单项移除操作 | ✅ | — | — | ✅ |
-| 可组合插槽（item/actions） | ✅ | — | — | — |
-| 共享 `Attachment` 数据模型 | ✅ | — | — | — |
+| 能力                       | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| 附件预览列表               |     ✅      |       —       |     —     |       ✅        |
+| 点击选择附件               |     ✅      |       —       |     —     |        —        |
+| 单项移除操作               |     ✅      |       —       |     —     |       ✅        |
+| 可组合插槽（item/actions） |     ✅      |       —       |     —     |        —        |
+| 共享 `Attachment` 数据模型 |     ✅      |       —       |     —     |        —        |
 
 `—` = 不支持或以其他方式处理。
 

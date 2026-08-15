@@ -55,13 +55,13 @@ Use it to display the internal reasoning steps of an AI response, helping users 
 
 `SxThink` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless` / `@soybeanjs/ui`: the collapsible panel logic is delegated to the `useThink` composable from `@soybeanjs/ui-x`, and the SFC only wires the `thinkVariants` recipe, `defaultOpen` sync, and slot forwarding. The `useThink` composable provides a simple `open` ref with `toggle()`, `openPanel()`, and `close()` methods.
 
-| Capability | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| Collapsible thought panel | ✅ | — | ✅ | — |
-| `defaultOpen` initial state | ✅ | — | — | — |
-| Controlled open state via prop | ✅ | — | — | — |
-| Custom trigger slot | ✅ | — | — | — |
-| Headless composable for toggle logic | ✅ | — | — | — |
+| Capability                           | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :----------------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| Collapsible thought panel            |     ✅      |       —       |    ✅     |        —        |
+| `defaultOpen` initial state          |     ✅      |       —       |     —     |        —        |
+| Controlled open state via prop       |     ✅      |       —       |     —     |        —        |
+| Custom trigger slot                  |     ✅      |       —       |     —     |        —        |
+| Headless composable for toggle logic |     ✅      |       —       |     —     |        —        |
 
 `—` = unsupported or handled differently.
 

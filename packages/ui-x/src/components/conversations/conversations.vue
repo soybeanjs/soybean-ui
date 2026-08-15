@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { ConversationItem } from '../../types';
 import { conversationsVariants } from '../../styles/conversations';
+import type { ConversationItem } from '../../types';
 import type { ConversationsProps } from './types';
 
 defineOptions({

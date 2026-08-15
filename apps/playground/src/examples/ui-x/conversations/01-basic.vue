@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { ConversationItem } from '@soybeanjs/ui-x/types';
 import { SxConversations } from '@soybeanjs/ui-x';
+import type { ConversationItem } from '@soybeanjs/ui-x/types';
 
 const active = ref<string | null>('2');
 

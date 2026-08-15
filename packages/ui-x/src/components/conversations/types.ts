@@ -1,5 +1,5 @@
-import type { ConversationItem } from '../../types';
 import type { ClassValue } from '@soybeanjs/headless/types';
+import type { ConversationItem } from '../../types';
 
 /**
  * Properties for the SxConversations component.

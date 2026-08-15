@@ -31,10 +31,10 @@ import '@soybeanjs/ui/styles.css';
 
 A few components enable optional capabilities through peer dependencies, installed on demand:
 
-| Package    | Enables                                     |
-| ---------- | ------------------------------------------- |
-| `shiki`    | Syntax highlighting for `SxCodeBlock`       |
-| `mermaid`  | Diagram rendering for `SxMermaid`           |
+| Package   | Enables                               |
+| --------- | ------------------------------------- |
+| `shiki`   | Syntax highlighting for `SxCodeBlock` |
+| `mermaid` | Diagram rendering for `SxMermaid`     |
 
 ```bash
 pnpm add shiki mermaid

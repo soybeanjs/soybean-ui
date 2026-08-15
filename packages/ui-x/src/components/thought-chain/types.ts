@@ -1,5 +1,5 @@
-import type { ThoughtChainItem } from '../../types';
 import type { ClassValue } from '@soybeanjs/headless/types';
+import type { ThoughtChainItem } from '../../types';
 
 /**
  * Properties for the SxThoughtChain component.

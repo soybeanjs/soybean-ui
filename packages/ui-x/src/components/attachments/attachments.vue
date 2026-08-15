@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { attachmentsVariants } from '../../styles/attachments';
 import type { Attachment } from '../../types';
 import { SxFileCard } from '../file-card';
-import { attachmentsVariants } from '../../styles/attachments';
 import type { AttachmentsProps } from './types';
 
 defineOptions({

@@ -60,14 +60,14 @@
 
 `SxBubble` 是 `@soybeanjs/ui-x` 中带样式、单包的 AI 组件，构建于 `@soybeanjs/headless` / `@soybeanjs/ui` 之上：它复用 `cv()` 配方方式以及 `ThemeSize`、`ClassValue` 类型，同时把打字机动画委托给 `@soybeanjs/ui-x` 中与框架无关的 `useTyping` 组合式函数，基础消息类型来自 `@soybeanjs/ui-x/types`。SFC 本身保持轻量——只负责样式配方接线、属性/状态透传与插槽渲染，不含任何 DOM 或定时器逻辑。
 
-| 能力 | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| 单个带样式消息气泡 | ✅ | — | ✅ | ✅ |
-| 变体（filled / outlined / shadow） | ✅ | — | — | ✅ |
-| 打字机效果 | ✅ | — | — | — |
-| 「Thinking…」加载状态 | ✅ | — | — | ✅ |
-| Headless/样式逻辑分离 | ✅ | — | — | — |
-| 渲染完整 `ChatMessage` 对象 | ✅ | — | — | — |
+| 能力                               | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :--------------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| 单个带样式消息气泡                 |     ✅      |       —       |    ✅     |       ✅        |
+| 变体（filled / outlined / shadow） |     ✅      |       —       |     —     |       ✅        |
+| 打字机效果                         |     ✅      |       —       |     —     |        —        |
+| 「Thinking…」加载状态              |     ✅      |       —       |     —     |       ✅        |
+| Headless/样式逻辑分离              |     ✅      |       —       |     —     |        —        |
+| 渲染完整 `ChatMessage` 对象        |     ✅      |       —       |     —     |        —        |
 
 `—` = 不支持或需在组件外部处理（Vercel AI SDK 提供 headless 消息原语，展示交由应用自行实现）。
 

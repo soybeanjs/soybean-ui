@@ -10,15 +10,15 @@
 
 ## 组件
 
-| 分类 | 组件 |
-| --- | --- |
-| 核心 | `SxBubble`, `SxBubbleList`, `SxSender` |
-| 内容 | `SxMarkdown`, `SxCodeBlock`, `SxMermaid` |
-| 附件 | `SxAttachments`, `SxFileCard` |
+| 分类 | 组件                                                        |
+| ---- | ----------------------------------------------------------- |
+| 核心 | `SxBubble`, `SxBubbleList`, `SxSender`                      |
+| 内容 | `SxMarkdown`, `SxCodeBlock`, `SxMermaid`                    |
+| 附件 | `SxAttachments`, `SxFileCard`                               |
 | 对话 | `SxConversations`, `SxWelcome`, `SxPrompts`, `SxSuggestion` |
-| 推理 | `SxThink`, `SxThoughtChain`, `SxSources` |
-| 操作 | `SxActions`, `SxActionsCopy`, `SxActionsFeedback` |
-| 其他 | `SxFolder`, `SxNotification` |
+| 推理 | `SxThink`, `SxThoughtChain`, `SxSources`                    |
+| 操作 | `SxActions`, `SxActionsCopy`, `SxActionsFeedback`           |
+| 其他 | `SxFolder`, `SxNotification`                                |
 
 ## 安装
 

@@ -53,13 +53,13 @@
 
 `SxActions` 是 `@soybeanjs/ui-x` 中带样式、单包的 AI 组件，构建于 `@soybeanjs/headless` / `@soybeanjs/ui` 之上：它是纯粹的展示组件，不依赖任何 headless 组合式函数——`ActionItem` 类型与 `action` 事件构成了全部 API 面。SFC 负责 `actionsVariants` 配方接线，并遍历条目、透传插槽。
 
-| 能力 | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| 可配置操作工具栏 | ✅ | — | — | ✅ |
-| 逐条目禁用状态 | ✅ | — | — | ✅ |
-| 自定义图标/标签插槽 | ✅ | — | — | — |
-| 每个按钮的 `aria-label` | ✅ | — | — | — |
-| 类型安全的操作条目 | ✅ | — | — | — |
+| 能力                    | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :---------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| 可配置操作工具栏        |     ✅      |       —       |     —     |       ✅        |
+| 逐条目禁用状态          |     ✅      |       —       |     —     |       ✅        |
+| 自定义图标/标签插槽     |     ✅      |       —       |     —     |        —        |
+| 每个按钮的 `aria-label` |     ✅      |       —       |     —     |        —        |
+| 类型安全的操作条目      |     ✅      |       —       |     —     |        —        |
 
 `—` = 不支持或以其他方式处理。
 

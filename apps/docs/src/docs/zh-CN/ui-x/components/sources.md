@@ -51,13 +51,13 @@
 
 `SxSources` 是 `@soybeanjs/ui-x` 中带样式、单包的 AI 组件，构建于 `@soybeanjs/headless` / `@soybeanjs/ui` 之上。它是一个轻量的数据驱动渲染器：迭代 `sources`，依据 `source.url` 选择链接或 span 分支，并透传 `label` 插槽——扁平引用列表无需 headless 组合式函数。`Source` 类型（`key`、`title`、`url`、`author`）与 `@soybeanjs/ui-x/types` 共享。
 
-| 能力 | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| 引用/来源列表 | ✅ | — | — | ✅ |
-| 新标签页打开链接 | ✅ | — | — | ✅ |
-| 点击选择回调 | ✅ | — | — | — |
-| 无 URL 的纯文本回退 | ✅ | — | — | — |
-| 自定义标签插槽 | ✅ | — | — | — |
+| 能力                | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :------------------ | :---------: | :-----------: | :-------: | :-------------: |
+| 引用/来源列表       |     ✅      |       —       |     —     |       ✅        |
+| 新标签页打开链接    |     ✅      |       —       |     —     |       ✅        |
+| 点击选择回调        |     ✅      |       —       |     —     |        —        |
+| 无 URL 的纯文本回退 |     ✅      |       —       |     —     |        —        |
+| 自定义标签插槽      |     ✅      |       —       |     —     |        —        |
 
 `—` = 不支持或以其他方式处理。
 

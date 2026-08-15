@@ -12,7 +12,9 @@ import { SxNotification } from '@soybeanjs/ui-x';
         <span class="font-bold text-primary">Custom title slot</span>
       </template>
       <template #description>
-        Fully custom <code>description</code> slot content.
+        Fully custom
+        <code>description</code>
+        slot content.
       </template>
       <template #close-icon>✕</template>
     </SxNotification>

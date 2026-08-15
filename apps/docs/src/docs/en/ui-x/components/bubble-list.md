@@ -56,14 +56,14 @@ This component emits no events.
 
 `SxBubbleList` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless` / `@soybeanjs/ui`: scroll state (near-bottom detection, follow and distance measurement) is delegated to the `useBubbleListScroll` composable from `@soybeanjs/ui-x`, and default item rendering composes the sibling `SxBubble` component. The SFC itself only wires the `bubbleListVariants` recipe, the auto-pin watcher and slot forwarding. Because it composes `SxBubble` rather than re-implementing bubbles, every bubble capability (variants, typing, loading) is available in a list context for free.
 
-| Capability | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| Data-driven message list | ✅ | — | ✅ | ✅ |
-| Auto-follow while at bottom | ✅ | — | ✅ | ✅ |
-| Back-to-bottom button | ✅ | — | — | — |
-| `role="log"` live region | ✅ | — | ✅ | — |
-| Per-message content slot | ✅ | — | — | ✅ |
-| Composes the single bubble component | ✅ | — | — | — |
+| Capability                           | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :----------------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| Data-driven message list             |     ✅      |       —       |    ✅     |       ✅        |
+| Auto-follow while at bottom          |     ✅      |       —       |    ✅     |       ✅        |
+| Back-to-bottom button                |     ✅      |       —       |     —     |        —        |
+| `role="log"` live region             |     ✅      |       —       |    ✅     |        —        |
+| Per-message content slot             |     ✅      |       —       |     —     |       ✅        |
+| Composes the single bubble component |     ✅      |       —       |     —     |        —        |
 
 `—` = unsupported or handled differently.
 

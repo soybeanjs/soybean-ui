@@ -51,13 +51,13 @@
 
 `SxSuggestion` 是 `@soybeanjs/ui-x` 中带样式、单包的 AI 组件，构建于 `@soybeanjs/headless` / `@soybeanjs/ui` 之上。它在结构上与 `SxPrompts` 完全相同——迭代数据、触发 `select`、透传 `label` 插槽——但使用 `suggestionVariants` 配方实现更小的 chip 样式，并暴露 `suggestions` 属性名以契合跟进场景。它复用的 `Prompt` 类型与 `SxPrompts`、`SxWelcome` 及输入框的建议逻辑共享。
 
-| 能力 | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| 跟进建议 chip | ✅ | — | — | — |
-| 一键选择回调 | ✅ | — | — | — |
-| 每个建议的图标字形 | ✅ | — | — | — |
-| 自定义标签插槽 | ✅ | — | — | — |
-| 复用共享 `Prompt` 类型 | ✅ | — | — | — |
+| 能力                   | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :--------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| 跟进建议 chip          |     ✅      |       —       |     —     |        —        |
+| 一键选择回调           |     ✅      |       —       |     —     |        —        |
+| 每个建议的图标字形     |     ✅      |       —       |     —     |        —        |
+| 自定义标签插槽         |     ✅      |       —       |     —     |        —        |
+| 复用共享 `Prompt` 类型 |     ✅      |       —       |     —     |        —        |
 
 `—` = 不支持或以其他方式处理。
 

@@ -50,13 +50,13 @@
 
 `SxMermaid` 是 `@soybeanjs/ui-x` 中的带样式、单包 AI 组件，构建于 `@soybeanjs/headless` / `@soybeanjs/ui` 之上。它刻意将可选的 `mermaid` peer 依赖排除在核心包之外，仅在真正渲染图表时懒加载——主流 AI 聊天库要么完全不支持图表，要么急切地打包 `mermaid`。
 
-| 能力 | SoybeanUI-X `SxMermaid` | Vercel AI SDK | shadcn AI（React） | Ant Design Chat（ProChat） | React markdown 库 |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| Vue 3 原生 | ✅ | — | — | — | — |
-| Mermaid 图表渲染 | ✅ | — | — | — | — |
-| 内联 SVG 输出 | ✅ | — | — | — | — |
-| 图表 / 代码切换 | ✅ | — | — | — | — |
-| 可选 peer 依赖（懒加载） | ✅ | — | — | — | — |
+| 能力                     | SoybeanUI-X `SxMermaid` | Vercel AI SDK | shadcn AI（React） | Ant Design Chat（ProChat） | React markdown 库 |
+| :----------------------- | :---------------------: | :-----------: | :----------------: | :------------------------: | :---------------: |
+| Vue 3 原生               |           ✅            |       —       |         —          |             —              |         —         |
+| Mermaid 图表渲染         |           ✅            |       —       |         —          |             —              |         —         |
+| 内联 SVG 输出            |           ✅            |       —       |         —          |             —              |         —         |
+| 图表 / 代码切换          |           ✅            |       —       |         —          |             —              |         —         |
+| 可选 peer 依赖（懒加载） |           ✅            |       —       |         —          |             —              |         —         |
 
 `—` = 不支持或需要额外接线。
 

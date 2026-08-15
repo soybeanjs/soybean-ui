@@ -1,5 +1,5 @@
-import type { ChatMessage } from '../../types';
 import type { ClassValue } from '@soybeanjs/headless/types';
+import type { ChatMessage } from '../../types';
 
 /**
  * Properties for the SxBubbleList component.

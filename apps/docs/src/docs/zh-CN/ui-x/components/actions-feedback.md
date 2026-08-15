@@ -56,13 +56,13 @@
 
 `SxActionsFeedback` 是 `@soybeanjs/ui-x` 中带样式、单包的 AI 组件，构建于 `@soybeanjs/headless` / `@soybeanjs/ui` 之上：它是自包含的展示组件，不依赖任何 headless 组合式函数。SFC 负责 `actionsFeedbackVariants` 配方接线、应用切换语义并透传插槽。反馈极性采用无障碍友好的 `aria-pressed` 切换模式，而非单选按钮组。
 
-| 能力 | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| 点赞/点踩反馈 | ✅ | — | — | ✅ |
-| 点击切换以清除选择 | ✅ | — | — | — |
-| 带 `active` 状态的自定义图标 | ✅ | — | — | — |
-| `aria-pressed` 切换语义 | ✅ | — | — | — |
-| 受控 `value` 属性 | ✅ | — | — | — |
+| 能力                         | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :--------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| 点赞/点踩反馈                |     ✅      |       —       |     —     |       ✅        |
+| 点击切换以清除选择           |     ✅      |       —       |     —     |        —        |
+| 带 `active` 状态的自定义图标 |     ✅      |       —       |     —     |        —        |
+| `aria-pressed` 切换语义      |     ✅      |       —       |     —     |        —        |
+| 受控 `value` 属性            |     ✅      |       —       |     —     |        —        |
 
 `—` = 不支持或以其他方式处理。
 

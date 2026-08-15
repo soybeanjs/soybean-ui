@@ -55,13 +55,13 @@ This component does not emit any events — the copy result is delivered via the
 
 `SxActionsCopy` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless` / `@soybeanjs/ui`: it is a self-contained presentational component with no headless composable dependency. The SFC wires the `actionsCopyVariants` recipe, calls `navigator.clipboard.writeText`, manages the transient `copied` state, and forwards slots. The `onCopy` prop is invoked after every copy attempt — even when the clipboard write fails — so callers always get notified.
 
-| Capability | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| One-click copy to clipboard | ✅ | — | — | ✅ |
-| Copied success feedback | ✅ | — | — | ✅ |
-| Custom icon/label with `copied` state | ✅ | — | — | — |
-| `onCopy` callback on every attempt | ✅ | — | — | — |
-| Failure-safe (SSR/permissions) | ✅ | — | — | — |
+| Capability                            | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :------------------------------------ | :---------: | :-----------: | :-------: | :-------------: |
+| One-click copy to clipboard           |     ✅      |       —       |     —     |       ✅        |
+| Copied success feedback               |     ✅      |       —       |     —     |       ✅        |
+| Custom icon/label with `copied` state |     ✅      |       —       |     —     |        —        |
+| `onCopy` callback on every attempt    |     ✅      |       —       |     —     |        —        |
+| Failure-safe (SSR/permissions)        |     ✅      |       —       |     —     |        —        |
 
 `—` = unsupported or handled differently.
 

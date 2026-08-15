@@ -60,14 +60,14 @@
 
 `SxCodeBlock` 是 `@soybeanjs/ui-x` 中的带样式、单包 AI 组件，构建于 `@soybeanjs/headless` / `@soybeanjs/ui` 之上。与编辑器导向、需要完整编辑器能力的库不同，它面向只读的 AI 输出：复制与可选高亮是核心能力，头部与操作区通过插槽保持可组合。
 
-| 能力 | SoybeanUI-X `SxCodeBlock` | Vercel AI SDK（`CodeBlock`） | shadcn AI（React） | Ant Design Chat（ProChat） | React markdown 库 |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| Vue 3 原生 | ✅ | — | — | — | — |
-| 内置复制到剪贴板 | ✅ | ✅ | — | ✅ | — |
-| 语法高亮 | ✅ | — | — | ✅ | ✅ |
-| 懒加载高亮（动态导入） | ✅ | — | — | — | — |
-| 自定义头部操作插槽 | ✅ | — | — | — | — |
-| 主题感知高亮 | ✅ | — | — | ✅ | ✅ |
+| 能力                   | SoybeanUI-X `SxCodeBlock` | Vercel AI SDK（`CodeBlock`） | shadcn AI（React） | Ant Design Chat（ProChat） | React markdown 库 |
+| :--------------------- | :-----------------------: | :--------------------------: | :----------------: | :------------------------: | :---------------: |
+| Vue 3 原生             |            ✅             |              —               |         —          |             —              |         —         |
+| 内置复制到剪贴板       |            ✅             |              ✅              |         —          |             ✅             |         —         |
+| 语法高亮               |            ✅             |              —               |         —          |             ✅             |        ✅         |
+| 懒加载高亮（动态导入） |            ✅             |              —               |         —          |             —              |         —         |
+| 自定义头部操作插槽     |            ✅             |              —               |         —          |             —              |         —         |
+| 主题感知高亮           |            ✅             |              —               |         —          |             ✅             |        ✅         |
 
 `—` = 不支持或需要额外接线。
 
@@ -97,7 +97,7 @@
 监听 `copy` 事件或传入 `onCopy`：
 
 ```vue
-<SxCodeBlock :code="code" @copy="(text) => console.log(text)" />
+<SxCodeBlock :code="code" @copy="text => console.log(text)" />
 ```
 
 ### 如何在头部添加额外按钮？

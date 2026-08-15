@@ -1,5 +1,5 @@
-import type { Source } from '../../types';
 import type { ClassValue } from '@soybeanjs/headless/types';
+import type { Source } from '../../types';
 
 /**
  * Properties for the SxSources component.

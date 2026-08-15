@@ -53,14 +53,14 @@
 
 `SxThoughtChain` 是 `@soybeanjs/ui-x` 中带样式、单包的 AI 组件，构建于 `@soybeanjs/headless` / `@soybeanjs/ui` 之上：迭代、展开状态与状态跟踪委托给 `@soybeanjs/ui-x` 的 `useThoughtChain` 组合式函数，SFC 本身只负责 `thoughtChainVariants` 配方接线、状态符号与插槽透传。`useThoughtChain` 组合式函数维护一个可展开项映射，并提供 `toggle()` 与 `isExpanded()` 方法。
 
-| 能力 | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| 结构化推理步骤 | ✅ | — | — | — |
-| 四种生命周期状态（pending/loading/success/error） | ✅ | — | — | — |
-| 可展开的步骤内容 | ✅ | — | — | — |
-| 自定义标题/内容插槽 | ✅ | — | — | — |
-| 无障碍 `<ol>` 列表 | ✅ | — | — | — |
-| 链状态的 headless 组合式函数 | ✅ | — | — | — |
+| 能力                                              | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :------------------------------------------------ | :---------: | :-----------: | :-------: | :-------------: |
+| 结构化推理步骤                                    |     ✅      |       —       |     —     |        —        |
+| 四种生命周期状态（pending/loading/success/error） |     ✅      |       —       |     —     |        —        |
+| 可展开的步骤内容                                  |     ✅      |       —       |     —     |        —        |
+| 自定义标题/内容插槽                               |     ✅      |       —       |     —     |        —        |
+| 无障碍 `<ol>` 列表                                |     ✅      |       —       |     —     |        —        |
+| 链状态的 headless 组合式函数                      |     ✅      |       —       |     —     |        —        |
 
 `—` = 不支持或以其他方式处理。
 

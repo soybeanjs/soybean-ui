@@ -55,13 +55,13 @@
 
 `SxActionsCopy` 是 `@soybeanjs/ui-x` 中带样式、单包的 AI 组件，构建于 `@soybeanjs/headless` / `@soybeanjs/ui` 之上：它是自包含的展示组件，不依赖任何 headless 组合式函数。SFC 负责 `actionsCopyVariants` 配方接线、调用 `navigator.clipboard.writeText`、管理短暂的 `copied` 状态并透传插槽。`onCopy` 属性在每次复制尝试后都会调用——即使剪贴板写入失败——因此调用方总能收到通知。
 
-| 能力 | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| 一键复制到剪贴板 | ✅ | — | — | ✅ |
-| 复制成功反馈 | ✅ | — | — | ✅ |
-| 带 `copied` 状态的自定义图标/标签 | ✅ | — | — | — |
-| 每次尝试都触发 `onCopy` 回调 | ✅ | — | — | — |
-| 失败安全（SSR/权限） | ✅ | — | — | — |
+| 能力                              | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :-------------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| 一键复制到剪贴板                  |     ✅      |       —       |     —     |       ✅        |
+| 复制成功反馈                      |     ✅      |       —       |     —     |       ✅        |
+| 带 `copied` 状态的自定义图标/标签 |     ✅      |       —       |     —     |        —        |
+| 每次尝试都触发 `onCopy` 回调      |     ✅      |       —       |     —     |        —        |
+| 失败安全（SSR/权限）              |     ✅      |       —       |     —     |        —        |
 
 `—` = 不支持或以其他方式处理。
 

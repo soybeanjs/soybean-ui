@@ -62,14 +62,14 @@
 
 `SxSender` 是 `@soybeanjs/ui-x` 中带样式、单包的 AI 组件，构建于 `@soybeanjs/headless` / `@soybeanjs/ui` 之上：建议的检测、过滤与选择委托给 `@soybeanjs/ui-x` 的 `useSender` 组合式函数，附件渲染委托给同级的 `SxAttachments` 组件。SFC 本身只负责 `senderVariants` 配方接线、键盘处理（`Enter` / `Escape`）、提交守卫与插槽透传。`useSender` 只扫描输入末尾 32 个字符内、且以空白或字符串开头为前导的触发字符（`/` 或 `@`），检测快速且对 SSR 安全。
 
-| 能力 | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| 富文本域并提交 | ✅ | — | ✅ | ✅ |
-| 斜杠命令建议 | ✅ | — | — | — |
-| 提及建议 | ✅ | — | — | — |
-| 附件预览 | ✅ | — | — | ✅ |
-| `Enter` / `Ctrl+Enter` 提交 | ✅ | — | ✅ | ✅ |
-| 建议逻辑的 headless 组合式函数 | ✅ | — | — | — |
+| 能力                           | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :----------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| 富文本域并提交                 |     ✅      |       —       |    ✅     |       ✅        |
+| 斜杠命令建议                   |     ✅      |       —       |     —     |        —        |
+| 提及建议                       |     ✅      |       —       |     —     |        —        |
+| 附件预览                       |     ✅      |       —       |     —     |       ✅        |
+| `Enter` / `Ctrl+Enter` 提交    |     ✅      |       —       |    ✅     |       ✅        |
+| 建议逻辑的 headless 组合式函数 |     ✅      |       —       |     —     |        —        |
 
 `—` = 不支持或以其他方式处理。
 

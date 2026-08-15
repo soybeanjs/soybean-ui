@@ -62,14 +62,14 @@ Use it as the main input in a chat interface, paired with `SxBubbleList` (which 
 
 `SxSender` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless` / `@soybeanjs/ui`: suggestion detection, filtering and selection are delegated to the `useSender` composable from `@soybeanjs/ui-x`, and attachment rendering is delegated to the sibling `SxAttachments` component. The SFC only wires the `senderVariants` recipe, keyboard handling (`Enter` / `Escape`), the submit guard and slot forwarding. The `useSender` composable scans the last 32 characters of the input for a trigger character (`/` or `@`) preceded by whitespace or start-of-string, making detection fast and SSR-safe.
 
-| Capability | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| Rich textarea with submit | ✅ | — | ✅ | ✅ |
-| Slash command suggestions | ✅ | — | — | — |
-| Mention suggestions | ✅ | — | — | — |
-| Attachment preview | ✅ | — | — | ✅ |
-| `Enter` / `Ctrl+Enter` submit | ✅ | — | ✅ | ✅ |
-| Headless composable for suggestion logic | ✅ | — | — | — |
+| Capability                               | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :--------------------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| Rich textarea with submit                |     ✅      |       —       |    ✅     |       ✅        |
+| Slash command suggestions                |     ✅      |       —       |     —     |        —        |
+| Mention suggestions                      |     ✅      |       —       |     —     |        —        |
+| Attachment preview                       |     ✅      |       —       |     —     |       ✅        |
+| `Enter` / `Ctrl+Enter` submit            |     ✅      |       —       |    ✅     |       ✅        |
+| Headless composable for suggestion logic |     ✅      |       —       |     —     |        —        |
 
 `—` = unsupported or handled differently.
 

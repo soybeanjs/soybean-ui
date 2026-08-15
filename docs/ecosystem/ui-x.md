@@ -77,11 +77,11 @@ packages/ui-x/
 
 | 步骤 | 内容                                                                                                       | 状态 |
 | :--: | :--------------------------------------------------------------------------------------------------------- | :--: |
-|  1   | `headless-x/src/composables/*`（9 个）迁入 `packages/ui-x/src/composables/`                                | ✅   |
-|  2   | `headless-x/src/types/*`（7 个）迁入 `packages/ui-x/src/types/`                                            | ✅   |
-|  3   | `headless-x/test/specs/*` 迁入 `packages/ui-x/test/specs/`                                                 | ✅   |
-|  4   | 删除 `packages/headless-x/`，ui-x 移除 `@soybeanjs/headless-x` 依赖，补 `./composables`、`./types` exports | ✅   |
-|  5   | 评估 `use-x-stream` 是否上浮核心 headless（原子原语判据；当前单域独享则留 ui-x）                           | ⬜   |
+|  1   | `headless-x/src/composables/*`（9 个）迁入 `packages/ui-x/src/composables/`                                |  ✅  |
+|  2   | `headless-x/src/types/*`（7 个）迁入 `packages/ui-x/src/types/`                                            |  ✅  |
+|  3   | `headless-x/test/specs/*` 迁入 `packages/ui-x/test/specs/`                                                 |  ✅  |
+|  4   | 删除 `packages/headless-x/`，ui-x 移除 `@soybeanjs/headless-x` 依赖，补 `./composables`、`./types` exports |  ✅  |
+|  5   | 评估 `use-x-stream` 是否上浮核心 headless（原子原语判据；当前单域独享则留 ui-x）                           |  ⬜  |
 
 ### 4.2 分支合并（任务 EC-G01，目标 2026-08-25）
 

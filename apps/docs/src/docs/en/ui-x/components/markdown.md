@@ -59,14 +59,14 @@ All slots are forwarded dynamically to the underlying `MarkdownRender` (via `v-f
 
 `SxMarkdown` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless`/`@soybeanjs/ui`. It stays a presentation layer on purpose: rendering logic lives in `markstream-vue`, while SoybeanUI-X owns the Vue component surface, dark-mode styling, and prop ergonomics. Mainstream AI libraries either ship their own markdown pipelines or delegate to React-markdown-style libraries — none provides a Vue-3-native streaming wrapper with typewriter and smooth-streaming pacing out of the box.
 
-| Capability | SoybeanUI-X `SxMarkdown` | Vercel AI SDK (React `Markdown`) | shadcn AI (React) | Ant Design Chat (ProChat) | React markdown libs |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| Vue 3 native | ✅ | — | — | — | — |
-| Streaming markdown render | ✅ | ✅ | — | ✅ | — |
-| Typewriter animation | ✅ | — | — | — | — |
-| Smooth streaming pacing | ✅ | — | — | — | — |
-| Dark mode | ✅ | ✅ | — | ✅ | — |
-| Custom code renderer | ✅ | — | — | — | ✅ |
+| Capability                | SoybeanUI-X `SxMarkdown` | Vercel AI SDK (React `Markdown`) | shadcn AI (React) | Ant Design Chat (ProChat) | React markdown libs |
+| :------------------------ | :----------------------: | :------------------------------: | :---------------: | :-----------------------: | :-----------------: |
+| Vue 3 native              |            ✅            |                —                 |         —         |             —             |          —          |
+| Streaming markdown render |            ✅            |                ✅                |         —         |            ✅             |          —          |
+| Typewriter animation      |            ✅            |                —                 |         —         |             —             |          —          |
+| Smooth streaming pacing   |            ✅            |                —                 |         —         |             —             |          —          |
+| Dark mode                 |            ✅            |                ✅                |         —         |            ✅             |          —          |
+| Custom code renderer      |            ✅            |                —                 |         —         |             —             |         ✅          |
 
 `—` = unsupported or requires extra wiring.
 

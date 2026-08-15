@@ -51,13 +51,13 @@ Use it under an assistant `SxBubble` to show which documents, pages or internal 
 
 `SxSources` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless` / `@soybeanjs/ui`. It is a thin data-driven renderer: it iterates `sources`, picks the link or span branch based on `source.url`, and forwards the `label` slot — no headless composable is needed for a flat citation list. The `Source` type (`key`, `title`, `url`, `author`) is shared with `@soybeanjs/ui-x/types`.
 
-| Capability | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| Citation/source list | ✅ | — | — | ✅ |
-| Open-in-new-tab links | ✅ | — | — | ✅ |
-| Click selection callback | ✅ | — | — | — |
-| Plain fallback without URL | ✅ | — | — | — |
-| Custom label slot | ✅ | — | — | — |
+| Capability                 | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| Citation/source list       |     ✅      |       —       |     —     |       ✅        |
+| Open-in-new-tab links      |     ✅      |       —       |     —     |       ✅        |
+| Click selection callback   |     ✅      |       —       |     —     |        —        |
+| Plain fallback without URL |     ✅      |       —       |     —     |        —        |
+| Custom label slot          |     ✅      |       —       |     —     |        —        |
 
 `—` = unsupported or handled differently.
 

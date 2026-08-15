@@ -1,6 +1,6 @@
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { SenderSuggestion } from '../../composables';
 import type { Attachment } from '../../types';
-import type { ClassValue } from '@soybeanjs/headless/types';
 
 /**
  * Properties for the SxSender component.

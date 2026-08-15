@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { ThoughtChainItem } from '@soybeanjs/ui-x/types';
 import { SxThoughtChain } from '@soybeanjs/ui-x';
+import type { ThoughtChainItem } from '@soybeanjs/ui-x/types';
 
 const items: ThoughtChainItem[] = [
   { key: '1', title: 'Parse user query', status: 'success', content: 'Extracted keywords and intent from the input.' },

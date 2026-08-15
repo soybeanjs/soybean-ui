@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { ChatMessage } from '@soybeanjs/ui-x/types';
 import { SxBubbleList, SxMarkdown } from '@soybeanjs/ui-x';
+import type { ChatMessage } from '@soybeanjs/ui-x/types';
 
 const items: ChatMessage[] = [
   { id: '1', role: 'user', content: 'What is SoybeanUI?' },

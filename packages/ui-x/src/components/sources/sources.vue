@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { Source } from '../../types';
 import { sourcesVariants } from '../../styles/sources';
+import type { Source } from '../../types';
 import type { SourcesProps } from './types';
 
 defineOptions({

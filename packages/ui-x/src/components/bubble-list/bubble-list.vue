@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { useBubbleListScroll } from '../../composables';
-import { SxBubble } from '../bubble';
 import { bubbleListVariants } from '../../styles/bubble-list';
+import { SxBubble } from '../bubble';
 import type { BubbleListProps } from './types';
 
 defineOptions({

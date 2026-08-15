@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useSender } from '../../composables';
+import { senderVariants } from '../../styles/sender';
 import type { Attachment } from '../../types';
 import { SxAttachments } from '../attachments';
-import { senderVariants } from '../../styles/sender';
 import type { SenderProps } from './types';
 
 defineOptions({

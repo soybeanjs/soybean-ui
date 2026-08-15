@@ -54,13 +54,13 @@
 
 `SxFolder` 是 `@soybeanjs/ui-x` 中带样式、单包的 AI 组件，构建于 `@soybeanjs/headless` / `@soybeanjs/ui` 之上：它是自包含的展示组件，不依赖任何 headless 组合式函数。SFC 负责 `folderVariants` 配方接线，并管理一个由 `defaultOpen` 初始化的内部 `open` ref。与 `SxThink`（其 `defaultOpen` 会被监听以支持外部控制）不同，`SxFolder` 仅将 `defaultOpen` 视为初始值——挂载后开关状态为内部状态。
 
-| 能力 | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| 可折叠文件夹头部 | ✅ | — | — | — |
-| 条目数徽标 | ✅ | — | — | — |
-| 带 `open` 状态的自定义图标 | ✅ | — | — | — |
-| 条件内容渲染 | ✅ | — | — | — |
-| 内部开关状态（非受控） | ✅ | — | — | — |
+| 能力                       | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| 可折叠文件夹头部           |     ✅      |       —       |     —     |        —        |
+| 条目数徽标                 |     ✅      |       —       |     —     |        —        |
+| 带 `open` 状态的自定义图标 |     ✅      |       —       |     —     |        —        |
+| 条件内容渲染               |     ✅      |       —       |     —     |        —        |
+| 内部开关状态（非受控）     |     ✅      |       —       |     —     |        —        |
 
 `—` = 不支持或以其他方式处理。
 

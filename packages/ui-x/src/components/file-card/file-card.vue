@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { AttachmentKind } from '../../types';
 import { fileCardVariants } from '../../styles/file-card';
+import type { AttachmentKind } from '../../types';
 import type { FileCardProps } from './types';
 
 defineOptions({

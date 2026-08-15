@@ -1,6 +1,6 @@
-import type { ChatMessage, ChatRole } from '../../types';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@soybeanjs/ui';
+import type { ChatMessage, ChatRole } from '../../types';
 
 /**
  * Properties for the SxBubble component.

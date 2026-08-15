@@ -31,10 +31,10 @@ import '@soybeanjs/ui/styles.css';
 
 部分组件通过 peer 依赖启用可选能力，按需安装：
 
-| 包        | 启用能力                              |
-| --------- | ------------------------------------- |
-| `shiki`   | `SxCodeBlock` 语法高亮                |
-| `mermaid` | `SxMermaid` 图表渲染                  |
+| 包        | 启用能力               |
+| --------- | ---------------------- |
+| `shiki`   | `SxCodeBlock` 语法高亮 |
+| `mermaid` | `SxMermaid` 图表渲染   |
 
 ```bash
 pnpm add shiki mermaid

@@ -51,13 +51,13 @@ Use it inside an assistant `SxBubble` (typically after the message body) to offe
 
 `SxSuggestion` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless` / `@soybeanjs/ui`. It is structurally identical to `SxPrompts` — iterate data, emit `select`, forward a `label` slot — but uses the `suggestionVariants` recipe for smaller chip styling and exposes the `suggestions` prop name to fit the follow-up use case. The `Prompt` type it reuses is shared with `SxPrompts`, `SxWelcome` and the sender's suggestion logic.
 
-| Capability | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| Follow-up suggestion chips | ✅ | — | — | — |
-| One-tap selection callback | ✅ | — | — | — |
-| Icon glyph per suggestion | ✅ | — | — | — |
-| Custom label slot | ✅ | — | — | — |
-| Reuses shared `Prompt` type | ✅ | — | — | — |
+| Capability                  | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :-------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| Follow-up suggestion chips  |     ✅      |       —       |     —     |        —        |
+| One-tap selection callback  |     ✅      |       —       |     —     |        —        |
+| Icon glyph per suggestion   |     ✅      |       —       |     —     |        —        |
+| Custom label slot           |     ✅      |       —       |     —     |        —        |
+| Reuses shared `Prompt` type |     ✅      |       —       |     —     |        —        |
 
 `—` = unsupported or handled differently.
 

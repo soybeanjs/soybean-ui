@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Attachment } from '@soybeanjs/ui-x/types';
 import { SxAttachments } from '@soybeanjs/ui-x';
+import type { Attachment } from '@soybeanjs/ui-x/types';
 
 const attachments: Attachment[] = [
   { id: '1', name: 'document.pdf', kind: 'file', size: '1.2 MB', mimeType: 'application/pdf' },

@@ -1,5 +1,5 @@
-import type { Attachment } from '../../types';
 import type { ClassValue } from '@soybeanjs/headless/types';
+import type { Attachment } from '../../types';
 
 /**
  * Properties for the SxFileCard component.

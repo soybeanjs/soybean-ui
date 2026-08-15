@@ -59,14 +59,14 @@ Within `@soybeanjs/ui-x`, `SxNotification` pairs with `SxMarkdown`/`SxCodeBlock`
 
 `SxNotification` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless`/`@soybeanjs/ui`. Unlike full toast systems, it is intentionally a lightweight inline status component: it stays in the document flow (no portal, no stacking manager) and relies on `role="status"` for announcements rather than ARIA live-region queues.
 
-| Capability | SoybeanUI-X `SxNotification` | Vercel AI SDK | shadcn AI (React) | Ant Design Chat (ProChat) | Ant Design Notification |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| Vue 3 native | ✅ | — | — | — | — |
-| Inline (non-portal) display | ✅ | — | — | — | — |
-| Tone variants | ✅ | — | — | — | ✅ |
-| `role="status"` announcement | ✅ | — | — | — | — |
-| Full slot overrides | ✅ | — | — | — | — |
-| Imperative toast queue | — | — | — | ✅ | ✅ |
+| Capability                   | SoybeanUI-X `SxNotification` | Vercel AI SDK | shadcn AI (React) | Ant Design Chat (ProChat) | Ant Design Notification |
+| :--------------------------- | :--------------------------: | :-----------: | :---------------: | :-----------------------: | :---------------------: |
+| Vue 3 native                 |              ✅              |       —       |         —         |             —             |            —            |
+| Inline (non-portal) display  |              ✅              |       —       |         —         |             —             |            —            |
+| Tone variants                |              ✅              |       —       |         —         |             —             |           ✅            |
+| `role="status"` announcement |              ✅              |       —       |         —         |             —             |            —            |
+| Full slot overrides          |              ✅              |       —       |         —         |             —             |            —            |
+| Imperative toast queue       |              —               |       —       |         —         |            ✅             |           ✅            |
 
 `—` = unsupported or a different interaction model.
 

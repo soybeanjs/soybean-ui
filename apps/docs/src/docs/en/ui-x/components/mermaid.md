@@ -50,13 +50,13 @@ No slots — diagram content and the toolbar are fully internal.
 
 `SxMermaid` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless`/`@soybeanjs/ui`. It deliberately keeps the optional `mermaid` peer dependency out of the core bundle, loading it lazily only when a diagram actually renders — mainstream AI chat libraries either skip diagram support entirely or bundle `mermaid` eagerly.
 
-| Capability | SoybeanUI-X `SxMermaid` | Vercel AI SDK | shadcn AI (React) | Ant Design Chat (ProChat) | React markdown libs |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| Vue 3 native | ✅ | — | — | — | — |
-| Mermaid diagram render | ✅ | — | — | — | — |
-| Inline SVG output | ✅ | — | — | — | — |
-| Diagram / code toggle | ✅ | — | — | — | — |
-| Optional peer dep (lazy) | ✅ | — | — | — | — |
+| Capability               | SoybeanUI-X `SxMermaid` | Vercel AI SDK | shadcn AI (React) | Ant Design Chat (ProChat) | React markdown libs |
+| :----------------------- | :---------------------: | :-----------: | :---------------: | :-----------------------: | :-----------------: |
+| Vue 3 native             |           ✅            |       —       |         —         |             —             |          —          |
+| Mermaid diagram render   |           ✅            |       —       |         —         |             —             |          —          |
+| Inline SVG output        |           ✅            |       —       |         —         |             —             |          —          |
+| Diagram / code toggle    |           ✅            |       —       |         —         |             —             |          —          |
+| Optional peer dep (lazy) |           ✅            |       —       |         —         |             —             |          —          |
 
 `—` = unsupported or requires extra wiring.
 

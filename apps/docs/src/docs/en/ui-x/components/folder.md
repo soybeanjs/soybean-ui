@@ -54,13 +54,13 @@ This component does not emit any events.
 
 `SxFolder` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless` / `@soybeanjs/ui`: it is a self-contained presentational component with no headless composable dependency. The SFC wires the `folderVariants` recipe and manages a single internal `open` ref initialized from `defaultOpen`. Unlike `SxThink`, whose `defaultOpen` is watched for external control, `SxFolder` treats `defaultOpen` as an initial value only — the open state is internal after mount.
 
-| Capability | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| Collapsible folder header | ✅ | — | — | — |
-| Item-count badge | ✅ | — | — | — |
-| Custom icon with `open` state | ✅ | — | — | — |
-| Conditional content rendering | ✅ | — | — | — |
-| Internal open state (uncontrolled) | ✅ | — | — | — |
+| Capability                         | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :--------------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| Collapsible folder header          |     ✅      |       —       |     —     |        —        |
+| Item-count badge                   |     ✅      |       —       |     —     |        —        |
+| Custom icon with `open` state      |     ✅      |       —       |     —     |        —        |
+| Conditional content rendering      |     ✅      |       —       |     —     |        —        |
+| Internal open state (uncontrolled) |     ✅      |       —       |     —     |        —        |
 
 `—` = unsupported or handled differently.
 

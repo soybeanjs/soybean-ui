@@ -60,14 +60,14 @@ Within `@soybeanjs/ui-x`, `SxCodeBlock` pairs with `SxMarkdown` (as a `codeRende
 
 `SxCodeBlock` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless`/`@soybeanjs/ui`. Unlike editor-centric libraries that ship a full editor surface, it targets read-only AI output: copy-to-clipboard and optional highlighting are first-class, while the header and actions stay composable through slots.
 
-| Capability | SoybeanUI-X `SxCodeBlock` | Vercel AI SDK (`CodeBlock`) | shadcn AI (React) | Ant Design Chat (ProChat) | React markdown libs |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| Vue 3 native | ✅ | — | — | — | — |
-| Copy-to-clipboard built in | ✅ | ✅ | — | ✅ | — |
-| Syntax highlighting | ✅ | — | — | ✅ | ✅ |
-| Lazy highlight (dynamic import) | ✅ | — | — | — | — |
-| Custom header actions slot | ✅ | — | — | — | — |
-| Theme-aware highlight | ✅ | — | — | ✅ | ✅ |
+| Capability                      | SoybeanUI-X `SxCodeBlock` | Vercel AI SDK (`CodeBlock`) | shadcn AI (React) | Ant Design Chat (ProChat) | React markdown libs |
+| :------------------------------ | :-----------------------: | :-------------------------: | :---------------: | :-----------------------: | :-----------------: |
+| Vue 3 native                    |            ✅             |              —              |         —         |             —             |          —          |
+| Copy-to-clipboard built in      |            ✅             |             ✅              |         —         |            ✅             |          —          |
+| Syntax highlighting             |            ✅             |              —              |         —         |            ✅             |         ✅          |
+| Lazy highlight (dynamic import) |            ✅             |              —              |         —         |             —             |          —          |
+| Custom header actions slot      |            ✅             |              —              |         —         |             —             |          —          |
+| Theme-aware highlight           |            ✅             |              —              |         —         |            ✅             |         ✅          |
 
 `—` = unsupported or requires extra wiring.
 
@@ -97,7 +97,7 @@ Set `highlight` and make sure `shiki` is installed:
 Listen to the `copy` emit or pass `onCopy`:
 
 ```vue
-<SxCodeBlock :code="code" @copy="(text) => console.log(text)" />
+<SxCodeBlock :code="code" @copy="text => console.log(text)" />
 ```
 
 ### How do I add extra buttons to the header?

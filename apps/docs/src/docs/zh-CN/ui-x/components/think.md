@@ -55,13 +55,13 @@
 
 `SxThink` 是 `@soybeanjs/ui-x` 中带样式、单包的 AI 组件，构建于 `@soybeanjs/headless` / `@soybeanjs/ui` 之上：可折叠面板逻辑委托给 `@soybeanjs/ui-x` 的 `useThink` 组合式函数，SFC 本身只负责 `thinkVariants` 配方接线、`defaultOpen` 同步与插槽透传。`useThink` 组合式函数提供简单的 `open` ref 以及 `toggle()`、`openPanel()`、`close()` 方法。
 
-| 能力 | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| 可折叠思考面板 | ✅ | — | ✅ | — |
-| `defaultOpen` 初始状态 | ✅ | — | — | — |
-| 通过属性受控的开关状态 | ✅ | — | — | — |
-| 自定义触发器插槽 | ✅ | — | — | — |
-| 切换逻辑的 headless 组合式函数 | ✅ | — | — | — |
+| 能力                           | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :----------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| 可折叠思考面板                 |     ✅      |       —       |    ✅     |        —        |
+| `defaultOpen` 初始状态         |     ✅      |       —       |     —     |        —        |
+| 通过属性受控的开关状态         |     ✅      |       —       |     —     |        —        |
+| 自定义触发器插槽               |     ✅      |       —       |     —     |        —        |
+| 切换逻辑的 headless 组合式函数 |     ✅      |       —       |     —     |        —        |
 
 `—` = 不支持或以其他方式处理。
 

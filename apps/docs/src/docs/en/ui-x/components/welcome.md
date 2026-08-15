@@ -54,13 +54,13 @@ Use it as the empty-state of your chat app when there are no messages yet. It co
 
 `SxWelcome` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless` / `@soybeanjs/ui`. It is a pure composition shell: it renders the copy block and delegates the prompt pill list to the sibling `SxPrompts` component, re-emitting its `select` as `selectPrompt`. There is no headless counterpart — the component owns no state beyond prop passthrough and conditional rendering.
 
-| Capability | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| Greeting title + description | ✅ | — | — | — |
-| Recommended prompt pills | ✅ | — | — | ✅ |
-| Prompt selection callback | ✅ | — | — | — |
-| Custom title/description slots | ✅ | — | — | — |
-| Empty-state for chat apps | ✅ | — | — | ✅ |
+| Capability                     | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :----------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| Greeting title + description   |     ✅      |       —       |     —     |        —        |
+| Recommended prompt pills       |     ✅      |       —       |     —     |       ✅        |
+| Prompt selection callback      |     ✅      |       —       |     —     |        —        |
+| Custom title/description slots |     ✅      |       —       |     —     |        —        |
+| Empty-state for chat apps      |     ✅      |       —       |     —     |       ✅        |
 
 `—` = unsupported or handled differently.
 

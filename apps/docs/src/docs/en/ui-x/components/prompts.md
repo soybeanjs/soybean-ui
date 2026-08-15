@@ -51,13 +51,13 @@ Use it anywhere you want to suggest questions, commands or actions. Each prompt 
 
 `SxPrompts` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless` / `@soybeanjs/ui`. It is a thin data-driven renderer: it iterates `prompts`, emits `select`, and forwards the `label` slot — no headless composable is needed for a flat pill list. The `Prompt` type (`key`, `label`, `icon`, `description`) is shared with `@soybeanjs/ui-x/types` and also powers `SxWelcome`, `SxSuggestion` and the sender's suggestion logic.
 
-| Capability | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| Prompt pill row | ✅ | — | — | ✅ |
-| One-tap selection callback | ✅ | — | — | — |
-| Icon glyph per prompt | ✅ | — | — | ✅ |
-| Custom label slot | ✅ | — | — | — |
-| Shared `Prompt` type | ✅ | — | — | — |
+| Capability                 | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| Prompt pill row            |     ✅      |       —       |     —     |       ✅        |
+| One-tap selection callback |     ✅      |       —       |     —     |        —        |
+| Icon glyph per prompt      |     ✅      |       —       |     —     |       ✅        |
+| Custom label slot          |     ✅      |       —       |     —     |        —        |
+| Shared `Prompt` type       |     ✅      |       —       |     —     |        —        |
 
 `—` = unsupported or handled differently.
 

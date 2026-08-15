@@ -53,13 +53,13 @@
 
 `SxConversations` 是 `@soybeanjs/ui-x` 中带样式、单包的 AI 组件，构建于 `@soybeanjs/headless` / `@soybeanjs/ui` 之上。分组逻辑通过本地 `Map` 计算——由于算法极为简单（一次 `group by` 遍历），没有对应的 headless 组合式函数。组件只负责分组、选中类名切换与选择事件的接线。`ConversationItem` 类型与 `@soybeanjs/ui-x/types` 共享。
 
-| 能力 | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| 分组会话列表 | ✅ | — | — | ✅ |
-| 带 `aria-current` 的选中项 | ✅ | — | — | — |
-| 自定义分组标题插槽 | ✅ | — | — | — |
-| 自定义单项插槽 | ✅ | — | — | — |
-| 带 `group` 的 `ConversationItem` 类型 | ✅ | — | — | ✅ |
+| 能力                                  | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :------------------------------------ | :---------: | :-----------: | :-------: | :-------------: |
+| 分组会话列表                          |     ✅      |       —       |     —     |       ✅        |
+| 带 `aria-current` 的选中项            |     ✅      |       —       |     —     |        —        |
+| 自定义分组标题插槽                    |     ✅      |       —       |     —     |        —        |
+| 自定义单项插槽                        |     ✅      |       —       |     —     |        —        |
+| 带 `group` 的 `ConversationItem` 类型 |     ✅      |       —       |     —     |       ✅        |
 
 `—` = 不支持或以其他方式处理。
 

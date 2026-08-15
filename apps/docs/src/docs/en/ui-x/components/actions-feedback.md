@@ -56,13 +56,13 @@ Use it at the bottom of an AI message to collect thumbs-up / thumbs-down feedbac
 
 `SxActionsFeedback` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless` / `@soybeanjs/ui`: it is a self-contained presentational component with no headless composable dependency. The SFC wires the `actionsFeedbackVariants` recipe, applies toggle semantics, and forwards slots. Feedback polarity uses an ARIA-friendly `aria-pressed` toggle pattern rather than a radio group.
 
-| Capability | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| Like/dislike feedback | ✅ | — | — | ✅ |
-| Toggle to clear selection | ✅ | — | — | — |
-| Custom icons with `active` state | ✅ | — | — | — |
-| `aria-pressed` toggle semantics | ✅ | — | — | — |
-| Controlled `value` prop | ✅ | — | — | — |
+| Capability                       | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :------------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| Like/dislike feedback            |     ✅      |       —       |     —     |       ✅        |
+| Toggle to clear selection        |     ✅      |       —       |     —     |        —        |
+| Custom icons with `active` state |     ✅      |       —       |     —     |        —        |
+| `aria-pressed` toggle semantics  |     ✅      |       —       |     —     |        —        |
+| Controlled `value` prop          |     ✅      |       —       |     —     |        —        |
 
 `—` = unsupported or handled differently.
 

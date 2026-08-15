@@ -57,13 +57,13 @@ Use it above a `SxSender` to show pending attachments before a message is sent, 
 
 `SxAttachments` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless` / `@soybeanjs/ui`. It owns only the list iteration and the select/remove wiring; the per-item presentation is fully delegated to the sibling `SxFileCard` component, which keeps icon mapping and meta rendering in one place. There is no headless counterpart in `@soybeanjs/ui-x` for this list shell — it is a thin styled composition over the shared `Attachment` type.
 
-| Capability | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| Attachment preview list | ✅ | — | — | ✅ |
-| Click-to-select attachment | ✅ | — | — | — |
-| Per-item remove action | ✅ | — | — | ✅ |
-| Composable slots (item/actions) | ✅ | — | — | — |
-| Shared `Attachment` data model | ✅ | — | — | — |
+| Capability                      | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :------------------------------ | :---------: | :-----------: | :-------: | :-------------: |
+| Attachment preview list         |     ✅      |       —       |     —     |       ✅        |
+| Click-to-select attachment      |     ✅      |       —       |     —     |        —        |
+| Per-item remove action          |     ✅      |       —       |     —     |       ✅        |
+| Composable slots (item/actions) |     ✅      |       —       |     —     |        —        |
+| Shared `Attachment` data model  |     ✅      |       —       |     —     |        —        |
 
 `—` = unsupported or handled differently.
 
@@ -72,7 +72,7 @@ Use it above a `SxSender` to show pending attachments before a message is sent, 
 - The default `actions` slot renders a remove button that emits `remove` — the component does **not** mutate your `attachments` array. Filter it yourself in the handler.
 - The remove button uses `click.stop`, so clicking it never also fires `select`.
 - When you provide the `item` slot, the default `SxFileCard` (and therefore its click-to-select wiring) is replaced — wire your own click handler if you still need selection.
-- `showIcons` only hides the icon column; icon *content* is decided by `SxFileCard` based on `attachment.kind`.
+- `showIcons` only hides the icon column; icon _content_ is decided by `SxFileCard` based on `attachment.kind`.
 
 ## FAQ
 

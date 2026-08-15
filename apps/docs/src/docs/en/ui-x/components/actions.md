@@ -53,13 +53,13 @@ Use it below a chat message bubble to provide quick, inline actions. Each item i
 
 `SxActions` is a styled, single-package AI component in `@soybeanjs/ui-x` built on top of `@soybeanjs/headless` / `@soybeanjs/ui`: it is a pure presentational component with no headless composable dependency — the `ActionItem` type and the `action` emit form the entire API surface. The SFC wires the `actionsVariants` recipe and iterates over items with slot forwarding.
 
-| Capability | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
-| :--- | :---: | :---: | :---: | :---: |
-| Configurable action toolbar | ✅ | — | — | ✅ |
-| Per-item disabled state | ✅ | — | — | ✅ |
-| Custom icon/label slots | ✅ | — | — | — |
-| `aria-label` on each button | ✅ | — | — | — |
-| Type-safe action items | ✅ | — | — | — |
+| Capability                  | SoybeanUI-X | Vercel AI SDK | shadcn AI | Ant Design Chat |
+| :-------------------------- | :---------: | :-----------: | :-------: | :-------------: |
+| Configurable action toolbar |     ✅      |       —       |     —     |       ✅        |
+| Per-item disabled state     |     ✅      |       —       |     —     |       ✅        |
+| Custom icon/label slots     |     ✅      |       —       |     —     |        —        |
+| `aria-label` on each button |     ✅      |       —       |     —     |        —        |
+| Type-safe action items      |     ✅      |       —       |     —     |        —        |
 
 `—` = unsupported or handled differently.
 

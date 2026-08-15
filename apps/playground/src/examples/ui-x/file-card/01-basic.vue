@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Attachment } from '@soybeanjs/ui-x/types';
 import { SxFileCard } from '@soybeanjs/ui-x';
+import type { Attachment } from '@soybeanjs/ui-x/types';
 
 const file: Attachment = { id: '1', name: 'proposal.pdf', kind: 'file', size: '2.1 MB', mimeType: 'application/pdf' };
 const image: Attachment = {

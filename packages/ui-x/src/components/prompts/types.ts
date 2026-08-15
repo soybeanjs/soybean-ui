@@ -1,5 +1,5 @@
-import type { Prompt } from '../../types';
 import type { ClassValue } from '@soybeanjs/headless/types';
+import type { Prompt } from '../../types';
 
 /**
  * Properties for the SxPrompts component.

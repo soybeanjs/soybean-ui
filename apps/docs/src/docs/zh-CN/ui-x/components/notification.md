@@ -59,14 +59,14 @@
 
 `SxNotification` 是 `@soybeanjs/ui-x` 中的带样式、单包 AI 组件，构建于 `@soybeanjs/headless` / `@soybeanjs/ui` 之上。与完整的 toast 系统不同，它刻意设计为轻量级内联状态组件：保持在文档流中（无 portal、无堆叠管理器），并通过 `role="status"` 进行宣告，而非 ARIA live-region 队列。
 
-| 能力 | SoybeanUI-X `SxNotification` | Vercel AI SDK | shadcn AI（React） | Ant Design Chat（ProChat） | Ant Design Notification |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| Vue 3 原生 | ✅ | — | — | — | — |
-| 内联（非 portal）展示 | ✅ | — | — | — | — |
-| 风格变体 | ✅ | — | — | — | ✅ |
-| `role="status"` 宣告 | ✅ | — | — | — | — |
-| 完整插槽覆盖 | ✅ | — | — | — | — |
-| 命令式 toast 队列 | — | — | — | ✅ | ✅ |
+| 能力                  | SoybeanUI-X `SxNotification` | Vercel AI SDK | shadcn AI（React） | Ant Design Chat（ProChat） | Ant Design Notification |
+| :-------------------- | :--------------------------: | :-----------: | :----------------: | :------------------------: | :---------------------: |
+| Vue 3 原生            |              ✅              |       —       |         —          |             —              |            —            |
+| 内联（非 portal）展示 |              ✅              |       —       |         —          |             —              |            —            |
+| 风格变体              |              ✅              |       —       |         —          |             —              |           ✅            |
+| `role="status"` 宣告  |              ✅              |       —       |         —          |             —              |            —            |
+| 完整插槽覆盖          |              ✅              |       —       |         —          |             —              |            —            |
+| 命令式 toast 队列     |              —               |       —       |         —          |             ✅             |           ✅            |
 
 `—` = 不支持或采用不同的交互模型。
 

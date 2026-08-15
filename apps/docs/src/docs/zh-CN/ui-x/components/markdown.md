@@ -59,14 +59,14 @@
 
 `SxMarkdown` 是 `@soybeanjs/ui-x` 中的带样式、单包 AI 组件，构建于 `@soybeanjs/headless` / `@soybeanjs/ui` 之上。它刻意保持为纯展示层：渲染逻辑位于 `markstream-vue`，而 SoybeanUI-X 负责 Vue 组件形态、深色模式样式与 props 易用性。主流 AI 库要么自带 Markdown 渲染管线，要么委托给 React-markdown 一类库——没有任何一个开箱即用地提供 Vue 3 原生、且内置打字机与平滑流式节奏控制的流式封装。
 
-| 能力 | SoybeanUI-X `SxMarkdown` | Vercel AI SDK（React `Markdown`） | shadcn AI（React） | Ant Design Chat（ProChat） | React markdown 库 |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| Vue 3 原生 | ✅ | — | — | — | — |
-| 流式 Markdown 渲染 | ✅ | ✅ | — | ✅ | — |
-| 打字机动画 | ✅ | — | — | — | — |
-| 平滑流式节奏 | ✅ | — | — | — | — |
-| 深色模式 | ✅ | ✅ | — | ✅ | — |
-| 自定义代码渲染器 | ✅ | — | — | — | ✅ |
+| 能力               | SoybeanUI-X `SxMarkdown` | Vercel AI SDK（React `Markdown`） | shadcn AI（React） | Ant Design Chat（ProChat） | React markdown 库 |
+| :----------------- | :----------------------: | :-------------------------------: | :----------------: | :------------------------: | :---------------: |
+| Vue 3 原生         |            ✅            |                 —                 |         —          |             —              |         —         |
+| 流式 Markdown 渲染 |            ✅            |                ✅                 |         —          |             ✅             |         —         |
+| 打字机动画         |            ✅            |                 —                 |         —          |             —              |         —         |
+| 平滑流式节奏       |            ✅            |                 —                 |         —          |             —              |         —         |
+| 深色模式           |            ✅            |                ✅                 |         —          |             ✅             |         —         |
+| 自定义代码渲染器   |            ✅            |                 —                 |         —          |             —              |        ✅         |
 
 `—` = 不支持或需要额外接线。
 
