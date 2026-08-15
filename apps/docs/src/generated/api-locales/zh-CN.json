@@ -4939,61 +4939,6 @@
         }
       },
       "packages_headless_src_components_layout_types": {
-        "layoutclassiccompactemits": {
-          "callables": {
-            "update_open": "当打开状态发生变化时发出。"
-          },
-          "emits": "LayoutClassicCompact 组件的事件。"
-        },
-        "layoutclassiccompactprops": {
-          "members": {
-            "basezindex": "布局的基本 z 索引。侧边栏、页眉、标签页、页脚及其固定版本的 z-index 将根据此值计算。",
-            "collapsedsidebarwidth": "侧边栏折叠时的宽度。（px）",
-            "contentprops": "",
-            "defaultopen": "最初呈现布局时的打开状态。\n\n在不需要控制其打开状态时使用。",
-            "fixedfooter": "页脚是否固定",
-            "fixedtop": "垂直方向时，页眉和制表符是否固定在版面顶部。如果为 \"true\"，则在垂直方向时，页眉和制表符将固定在布局的顶部；在水平方向时，页眉和制表符将随内容滚动。",
-            "footerheight": "页脚的高度。(px)",
-            "footerprops": "",
-            "footervisible": "是否显示页脚。",
-            "fullcontent": "内容是否占满版面高度（包括）。",
-            "headerheight": "标题的高度。像素",
-            "headerprops": "",
-            "headervisible": "是否显示页眉。",
-            "ismobile": "布局是否为移动视图。",
-            "mainprops": "",
-            "mobileprops": "",
-            "mobilesidebarwidth": "移动视图中边栏的宽度。（px）",
-            "open": "布局的受控打开状态。可与 `v-model` 绑定。",
-            "orientation": "组件的方向。",
-            "pxtorem": "将像素转换为 rem 的函数",
-            "railprops": "",
-            "scrollbehavior": "滚动行为。",
-            "scrollid": "滚动 id。",
-            "side": "布局的侧面。",
-            "sidebarprops": "",
-            "sidebarvisible": "是否显示侧边栏。",
-            "sidebarwidth": "侧边栏的宽度。（px）",
-            "stretchfooter": "当布局方向为垂直时，页脚是否应拉伸至布局或内容的整个宽度。",
-            "tabheight": "制表符的高度。像素",
-            "tabprops": "",
-            "tabvisible": "是否显示制表符。"
-          },
-          "props": "LayoutClassicCompact 组件的属性。"
-        },
-        "layoutclassiccompactslots": {
-          "callables": {
-            "content": "为内容槽定制内容。",
-            "default": "默认插槽的自定义内容。",
-            "footer": "页脚槽的自定义内容。",
-            "header": "标题槽的自定义内容。",
-            "sidebar": "侧边栏插槽的自定义内容。",
-            "tab": "标签槽的自定义内容。"
-          },
-          "slots": "LayoutClassicCompact 组件的插槽。"
-        },
-        "layoutclassicscrollbehavior": "LayoutClassicScrollBehavior 的类型信息。",
-        "layoutclassicui": "LayoutClassic 组件的 UI 类重载。",
         "layoutcollapsible": "LayoutCollapsible 的类型信息。",
         "layoutcompactemits": {
           "callables": {
@@ -5003,10 +4948,13 @@
         },
         "layoutcompactprops": {
           "members": {
+            "basezindex": "",
             "collapsedsidebarwidth": "侧边栏折叠时的宽度。（px）",
             "collapsible": "布局的可折叠状态。",
             "contentprops": "",
             "defaultopen": "最初呈现布局时的打开状态。\n\n在不需要控制其打开状态时使用。",
+            "fixedfooter": "",
+            "fixedtop": "",
             "footerheight": "页脚的高度。(px)",
             "footerprops": "",
             "footervisible": "是否显示页脚。",
@@ -5019,12 +4967,16 @@
             "mobileprops": "",
             "mobilesidebarwidth": "移动视图中边栏的宽度。（px）",
             "open": "布局的受控打开状态。可与 `v-model` 绑定。",
+            "orientation": "",
             "pxtorem": "将像素转换为 rem 的函数",
             "railprops": "",
+            "scrollbehavior": "",
+            "scrollid": "",
             "side": "布局的侧面。",
             "sidebarprops": "",
             "sidebarvisible": "是否显示侧边栏。",
             "sidebarwidth": "侧边栏的宽度。（px）",
+            "stretchfooter": "",
             "tabheight": "制表符的高度。像素",
             "tabprops": "",
             "tabvisible": "是否显示制表符。",
@@ -5069,9 +5021,12 @@
         },
         "layoutrootprops": {
           "members": {
+            "basezindex": "",
             "collapsedsidebarwidth": "侧边栏折叠时的宽度。（px）",
             "collapsible": "布局的可折叠状态。",
             "defaultopen": "最初呈现布局时的打开状态。\n\n在不需要控制其打开状态时使用。",
+            "fixedfooter": "",
+            "fixedtop": "",
             "footerheight": "页脚的高度。(px)",
             "footervisible": "是否显示页脚。",
             "fullcontent": "内容是否占满版面高度（包括）。",
@@ -5080,16 +5035,21 @@
             "ismobile": "布局是否为移动视图。",
             "mobilesidebarwidth": "移动视图中边栏的宽度。（px）",
             "open": "布局的受控打开状态。可与 `v-model` 绑定。",
+            "orientation": "",
             "pxtorem": "将像素转换为 rem 的函数",
+            "scrollbehavior": "",
+            "scrollid": "",
             "side": "布局的侧面。",
             "sidebarvisible": "是否显示侧边栏。",
             "sidebarwidth": "侧边栏的宽度。（px）",
+            "stretchfooter": "",
             "tabheight": "制表符的高度。像素",
             "tabvisible": "是否显示制表符。",
             "variant": "布局的变体。"
           },
           "props": "LayoutRoot 组件的属性。"
         },
+        "layoutscrollbehavior": "",
         "layoutsidebarprops": {
           "props": "LayoutSidebar 组件的属性。"
         },
@@ -11901,62 +11861,6 @@
         }
       },
       "packages_ui_src_components_layout_types": {
-        "layoutclassicemits": {
-          "callables": {
-            "update_open": "在 open 状态发生变化时触发。"
-          },
-          "emits": "LayoutClassic 组件的事件。"
-        },
-        "layoutclassicprops": {
-          "members": {
-            "basezindex": "布局的基础 z-index。侧边栏、页眉、标签页、页脚及其固定版本的 z-index 将基于此值进行计算。",
-            "class": "应用于根元素的额外类名。",
-            "collapsedsidebarwidth": "侧边栏折叠时的宽度。（px）",
-            "contentprops": "",
-            "defaultopen": "布局在初始渲染时的展开状态。\n\n当您无需控制其展开状态时使用。",
-            "fixedfooter": "页脚是否固定",
-            "fixedtop": "当屏幕方向为纵向时，标题栏和标签栏是否固定在布局顶部。如果为 true，当屏幕方向为纵向时，标题栏和标签栏将固定在布局顶部；当屏幕方向为横向时，它们将随内容滚动。",
-            "footerheight": "页脚的高度。（px）",
-            "footerprops": "",
-            "footervisible": "是否显示页脚。",
-            "fullcontent": "内容是否占满布局的全部高度（包含）。",
-            "headerheight": "页眉的高度。（px）",
-            "headerprops": "",
-            "headervisible": "是否显示页眉。",
-            "ismobile": "是否处于移动端视图。",
-            "mainprops": "",
-            "mobileprops": "",
-            "mobilesidebarwidth": "移动视图中侧边栏的宽度。（px）",
-            "open": "布局的受控展开状态。可通过 `v-model` 进行绑定。",
-            "orientation": "组件的定位。",
-            "pxtorem": "将像素转换为 rem 的函数。",
-            "railprops": "",
-            "scrollbehavior": "滚动行为。",
-            "scrollid": "滚动 ID。",
-            "side": "布局的侧边栏。",
-            "sidebarprops": "",
-            "sidebarvisible": "是否显示侧边栏。",
-            "sidebarwidth": "侧边栏的宽度。（px）",
-            "size": "组件的视觉尺寸。",
-            "stretchfooter": "当布局方向为垂直时，页脚应扩展至布局的完整宽度，还是仅扩展至内容的宽度。",
-            "tabheight": "标签的高度。（px）",
-            "tabprops": "",
-            "tabvisible": "是否显示该选项卡。",
-            "ui": "针对该组件的按槽位类重写。"
-          },
-          "props": "LayoutClassic 组件的属性。"
-        },
-        "layoutclassicslots": {
-          "callables": {
-            "content": "内容插槽的自定义内容。",
-            "default": "默认插槽的自定义内容。",
-            "footer": "页脚位置的自定义内容。",
-            "header": "用于 header 插槽的自定义内容。",
-            "sidebar": "侧边栏插槽的自定义内容。",
-            "tab": "标签页槽位的自定义内容。"
-          },
-          "slots": "LayoutClassic 组件的插槽。"
-        },
         "layoutemits": {
           "callables": {
             "update_open": "在 open 状态发生变化时触发。"
@@ -11965,11 +11869,14 @@
         },
         "layoutprops": {
           "members": {
+            "basezindex": "",
             "class": "应用于根元素的额外类名。",
             "collapsedsidebarwidth": "侧边栏折叠时的宽度。（px）",
             "collapsible": "布局的可折叠状态。",
             "contentprops": "",
             "defaultopen": "布局在初始渲染时的展开状态。\n\n当您无需控制其展开状态时使用。",
+            "fixedfooter": "",
+            "fixedtop": "",
             "footerheight": "页脚的高度。（px）",
             "footerprops": "",
             "footervisible": "是否显示页脚。",
@@ -11982,13 +11889,17 @@
             "mobileprops": "",
             "mobilesidebarwidth": "移动视图中侧边栏的宽度。（px）",
             "open": "布局的受控展开状态。可通过 `v-model` 进行绑定。",
+            "orientation": "",
             "pxtorem": "将像素转换为 rem 的函数。",
             "railprops": "",
+            "scrollbehavior": "",
+            "scrollid": "",
             "side": "布局的侧边栏。",
             "sidebarprops": "",
             "sidebarvisible": "是否显示侧边栏。",
             "sidebarwidth": "侧边栏的宽度。（px）",
             "size": "组件的视觉尺寸。",
+            "stretchfooter": "",
             "tabheight": "标签的高度。（px）",
             "tabprops": "",
             "tabvisible": "是否显示该选项卡。",

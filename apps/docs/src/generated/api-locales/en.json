@@ -4939,16 +4939,18 @@
         }
       },
       "packages_headless_src_components_layout_types": {
-        "layoutclassiccompactemits": {
+        "layoutcollapsible": "Type information for LayoutCollapsible.",
+        "layoutcompactemits": {
           "callables": {
             "update_open": "Emitted when the open state changes."
           },
-          "emits": "Events for the LayoutClassicCompact component."
+          "emits": "Events for the LayoutCompact component."
         },
-        "layoutclassiccompactprops": {
+        "layoutcompactprops": {
           "members": {
             "basezindex": "The base z-index of the layout. The z-index of the sidebar, header, tab, footer, and their fixed versions will be calculated based on this value.",
             "collapsedsidebarwidth": "The width of the sidebar when it is collapsed. (px)",
+            "collapsible": "The collapsible state of the layout.",
             "contentprops": "",
             "defaultopen": "The open state of the layout when it is initially rendered.\n\nUse when you do not need to control its open state.",
             "fixedfooter": "Whether footer is fixed",
@@ -4975,56 +4977,6 @@
             "sidebarvisible": "whether to show the sidebar.",
             "sidebarwidth": "The width of the sidebar. (px)",
             "stretchfooter": "Whether the footer should stretch to the full width of the layout or the content when layout orientation is vertical.",
-            "tabheight": "The height of the tab. (px)",
-            "tabprops": "",
-            "tabvisible": "whether to show the tab."
-          },
-          "props": "Properties for the LayoutClassicCompact component."
-        },
-        "layoutclassiccompactslots": {
-          "callables": {
-            "content": "Custom content for the content slot.",
-            "default": "Custom content for the default slot.",
-            "footer": "Custom content for the footer slot.",
-            "header": "Custom content for the header slot.",
-            "sidebar": "Custom content for the sidebar slot.",
-            "tab": "Custom content for the tab slot."
-          },
-          "slots": "Slots for the LayoutClassicCompact component."
-        },
-        "layoutclassicscrollbehavior": "Type information for LayoutClassicScrollBehavior.",
-        "layoutclassicui": "UI class overrides for the LayoutClassic component.",
-        "layoutcollapsible": "Type information for LayoutCollapsible.",
-        "layoutcompactemits": {
-          "callables": {
-            "update_open": "Emitted when the open state changes."
-          },
-          "emits": "Events for the LayoutCompact component."
-        },
-        "layoutcompactprops": {
-          "members": {
-            "collapsedsidebarwidth": "The width of the sidebar when it is collapsed. (px)",
-            "collapsible": "The collapsible state of the layout.",
-            "contentprops": "",
-            "defaultopen": "The open state of the layout when it is initially rendered.\n\nUse when you do not need to control its open state.",
-            "footerheight": "The height of the footer. (px)",
-            "footerprops": "",
-            "footervisible": "whether to show the footer.",
-            "fullcontent": "whether the content takes the full height of the layout (include).",
-            "headerheight": "The height of the header. (px)",
-            "headerprops": "",
-            "headervisible": "whether to show the header.",
-            "ismobile": "Whether the layout is in mobile view.",
-            "mainprops": "",
-            "mobileprops": "",
-            "mobilesidebarwidth": "The width of the sidebar in the mobile view. (px)",
-            "open": "The controlled open state of the layout. Can be bound with `v-model`.",
-            "pxtorem": "The function to convert pixels to rem.",
-            "railprops": "",
-            "side": "The side of the layout.",
-            "sidebarprops": "",
-            "sidebarvisible": "whether to show the sidebar.",
-            "sidebarwidth": "The width of the sidebar. (px)",
             "tabheight": "The height of the tab. (px)",
             "tabprops": "",
             "tabvisible": "whether to show the tab.",
@@ -5069,9 +5021,12 @@
         },
         "layoutrootprops": {
           "members": {
+            "basezindex": "The base z-index of the layout. The z-index of the sidebar, header, tab, footer, and their fixed versions will be calculated based on this value.",
             "collapsedsidebarwidth": "The width of the sidebar when it is collapsed. (px)",
             "collapsible": "The collapsible state of the layout.",
             "defaultopen": "The open state of the layout when it is initially rendered.\n\nUse when you do not need to control its open state.",
+            "fixedfooter": "Whether footer is fixed",
+            "fixedtop": "Whether the header and tab are fixed to the top of the layout when the orientation is vertical. If true, the header and tab will be fixed to the top of the layout when the orientation is vertical, and will scroll with the content when the orientation is horizontal.",
             "footerheight": "The height of the footer. (px)",
             "footervisible": "whether to show the footer.",
             "fullcontent": "whether the content takes the full height of the layout (include).",
@@ -5080,16 +5035,21 @@
             "ismobile": "Whether the layout is in mobile view.",
             "mobilesidebarwidth": "The width of the sidebar in the mobile view. (px)",
             "open": "The controlled open state of the layout. Can be bound with `v-model`.",
+            "orientation": "Orientation of the component.",
             "pxtorem": "The function to convert pixels to rem.",
+            "scrollbehavior": "Scroll behavior.",
+            "scrollid": "Scroll id.",
             "side": "The side of the layout.",
             "sidebarvisible": "whether to show the sidebar.",
             "sidebarwidth": "The width of the sidebar. (px)",
+            "stretchfooter": "Whether the footer should stretch to the full width of the layout or the content when layout orientation is vertical.",
             "tabheight": "The height of the tab. (px)",
             "tabvisible": "whether to show the tab.",
             "variant": "The variant of the layout."
           },
           "props": "Properties for the LayoutRoot component."
         },
+        "layoutscrollbehavior": "Type information for LayoutScrollBehavior.",
         "layoutsidebarprops": {
           "props": "Properties for the LayoutSidebar component."
         },
@@ -11901,17 +11861,18 @@
         }
       },
       "packages_ui_src_components_layout_types": {
-        "layoutclassicemits": {
+        "layoutemits": {
           "callables": {
             "update_open": "Emitted when the open state changes."
           },
-          "emits": "Events for the LayoutClassic component."
+          "emits": "Events for the Layout component."
         },
-        "layoutclassicprops": {
+        "layoutprops": {
           "members": {
             "basezindex": "The base z-index of the layout. The z-index of the sidebar, header, tab, footer, and their fixed versions will be calculated based on this value.",
             "class": "Additional class names applied to the root element.",
             "collapsedsidebarwidth": "The width of the sidebar when it is collapsed. (px)",
+            "collapsible": "The collapsible state of the layout.",
             "contentprops": "",
             "defaultopen": "The open state of the layout when it is initially rendered.\n\nUse when you do not need to control its open state.",
             "fixedfooter": "Whether footer is fixed",
@@ -11939,56 +11900,6 @@
             "sidebarwidth": "The width of the sidebar. (px)",
             "size": "Visual size of the component.",
             "stretchfooter": "Whether the footer should stretch to the full width of the layout or the content when layout orientation is vertical.",
-            "tabheight": "The height of the tab. (px)",
-            "tabprops": "",
-            "tabvisible": "whether to show the tab.",
-            "ui": "Per-slot class overrides for the component."
-          },
-          "props": "Properties for the LayoutClassic component."
-        },
-        "layoutclassicslots": {
-          "callables": {
-            "content": "Custom content for the content slot.",
-            "default": "Custom content for the default slot.",
-            "footer": "Custom content for the footer slot.",
-            "header": "Custom content for the header slot.",
-            "sidebar": "Custom content for the sidebar slot.",
-            "tab": "Custom content for the tab slot."
-          },
-          "slots": "Slots for the LayoutClassic component."
-        },
-        "layoutemits": {
-          "callables": {
-            "update_open": "Emitted when the open state changes."
-          },
-          "emits": "Events for the Layout component."
-        },
-        "layoutprops": {
-          "members": {
-            "class": "Additional class names applied to the root element.",
-            "collapsedsidebarwidth": "The width of the sidebar when it is collapsed. (px)",
-            "collapsible": "The collapsible state of the layout.",
-            "contentprops": "",
-            "defaultopen": "The open state of the layout when it is initially rendered.\n\nUse when you do not need to control its open state.",
-            "footerheight": "The height of the footer. (px)",
-            "footerprops": "",
-            "footervisible": "whether to show the footer.",
-            "fullcontent": "whether the content takes the full height of the layout (include).",
-            "headerheight": "The height of the header. (px)",
-            "headerprops": "",
-            "headervisible": "whether to show the header.",
-            "ismobile": "Whether the layout is in mobile view.",
-            "mainprops": "",
-            "mobileprops": "",
-            "mobilesidebarwidth": "The width of the sidebar in the mobile view. (px)",
-            "open": "The controlled open state of the layout. Can be bound with `v-model`.",
-            "pxtorem": "The function to convert pixels to rem.",
-            "railprops": "",
-            "side": "The side of the layout.",
-            "sidebarprops": "",
-            "sidebarvisible": "whether to show the sidebar.",
-            "sidebarwidth": "The width of the sidebar. (px)",
-            "size": "Visual size of the component.",
             "tabheight": "The height of the tab. (px)",
             "tabprops": "",
             "tabvisible": "whether to show the tab.",

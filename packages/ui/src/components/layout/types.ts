@@ -2,15 +2,11 @@ import type {
   LayoutCompactProps,
   LayoutCompactEmits,
   LayoutCompactSlots,
-  LayoutClassicCompactProps,
-  LayoutClassicCompactEmits,
-  LayoutClassicCompactSlots,
   LayoutUi,
-  LayoutClassicUi,
   LayoutVariant,
   LayoutCollapsible,
   LayoutSide,
-  LayoutClassicScrollBehavior
+  LayoutScrollBehavior
 } from '@soybeanjs/headless/layout';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
@@ -43,32 +39,4 @@ export type LayoutEmits = LayoutCompactEmits;
  */
 export type LayoutSlots = LayoutCompactSlots;
 
-/**
- * Properties for the LayoutClassic component.
- */
-export interface LayoutClassicProps extends LayoutClassicCompactProps {
-  /**
-   * Additional class names applied to the root element.
-   */
-  class?: ClassValue;
-  /**
-   * Visual size of the component.
-   */
-  size?: ThemeSize;
-  /**
-   * Per-slot class overrides for the component.
-   */
-  ui?: Partial<LayoutClassicUi>;
-}
-
-/**
- * Events for the LayoutClassic component.
- */
-export type LayoutClassicEmits = LayoutClassicCompactEmits;
-
-/**
- * Slots for the LayoutClassic component.
- */
-export type LayoutClassicSlots = LayoutClassicCompactSlots;
-
-export type { LayoutVariant, LayoutCollapsible, LayoutSide, LayoutClassicScrollBehavior };
+export type { LayoutVariant, LayoutCollapsible, LayoutSide, LayoutScrollBehavior };

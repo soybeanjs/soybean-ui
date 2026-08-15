@@ -47,7 +47,7 @@ export const components = {
   inputOtp: ['SInputOtp'],
   kbd: ['SKbd'],
   label: ['SLabel'],
-  layout: ['SLayout', 'SLayoutClassic', 'SLayoutTrigger'],
+  layout: ['SLayout', 'SLayoutTrigger'],
   link: ['SLink'],
   list: ['SList', 'SListItem'],
   menu: ['SMenuOptions', 'SMenuCheckboxOptions', 'SMenuRadioOptions'],

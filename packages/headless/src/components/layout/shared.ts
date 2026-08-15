@@ -6,6 +6,7 @@ export const layoutCssVars = {
   tabHeight: '--soybean-layout-tab-height',
   footerHeight: '--soybean-layout-footer-height',
   startGap: '--soybean-layout-start-gap',
+  sidebarHeight: '--soybean-layout-sidebar-height',
   sidebarTopGap: '--soybean-layout-sidebar-top-gap',
   sidebarBottomGap: '--soybean-layout-sidebar-bottom-gap',
   headerStartGap: '--soybean-layout-header-start-gap',

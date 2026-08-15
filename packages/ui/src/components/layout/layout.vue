@@ -18,7 +18,8 @@ const props = withDefaults(defineProps<LayoutProps>(), {
   sidebarVisible: true,
   headerVisible: true,
   tabVisible: true,
-  footerVisible: true
+  footerVisible: true,
+  fixedTop: true
 });
 
 const emit = defineEmits<LayoutEmits>();

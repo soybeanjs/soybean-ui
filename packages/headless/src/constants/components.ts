@@ -284,7 +284,6 @@ export const components = {
   label: ['Label'],
   layout: [
     'LayoutCompact',
-    'LayoutClassicCompact',
     'LayoutRoot',
     'LayoutSidebar',
     'LayoutRail',

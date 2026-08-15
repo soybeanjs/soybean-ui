@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useLayoutClassicRootContext, useLayoutClassicUi } from './context';
+import { useLayoutRootContext, useLayoutUi } from './context';
 
 defineOptions({
-  name: 'LayoutClassicPlaceholder',
+  name: 'LayoutPlaceholder',
   inheritAttrs: false
 });
 
@@ -13,10 +13,9 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const cls = useLayoutClassicUi(`${props.type}Placeholder`);
+const cls = useLayoutUi(`${props.type}Placeholder`);
 
-const { fixedTop, headerVisible, tabVisible, footerVisible, fixedFooter } =
-  useLayoutClassicRootContext('LayoutClassicPlaceholder');
+const { fixedTop, headerVisible, tabVisible, footerVisible, fixedFooter } = useLayoutRootContext('LayoutPlaceholder');
 
 const fixed = computed(() => (props.type === 'footer' ? fixedFooter.value : fixedTop.value));
 

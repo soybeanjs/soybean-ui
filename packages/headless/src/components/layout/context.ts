@@ -1,10 +1,5 @@
 import { useContext, useUiContext } from '../../composables';
-import type {
-  LayoutRootContextParams,
-  LayoutCompactRootContextParams,
-  LayoutUiSlot,
-  LayoutClassicUiSlot
-} from './types';
+import type { LayoutRootContextParams, LayoutUiSlot } from './types';
 
 export const [provideLayoutRootContext, useLayoutRootContext] = useContext(
   'LayoutRoot',
@@ -36,19 +31,4 @@ export const [provideLayoutRootContext, useLayoutRootContext] = useContext(
   }
 );
 
-export const [provideLayoutClassicRootContext, useLayoutClassicRootContext] = useContext(
-  'LayoutClassicRoot',
-  (params: LayoutCompactRootContextParams) => {
-    provideLayoutRootContext(params);
-
-    return params;
-  }
-);
-
 export const [provideLayoutUi, useLayoutUi] = useUiContext<LayoutUiSlot>('LayoutUi');
-
-export const [provideLayoutClassicUi, useLayoutClassicUi] = useUiContext<LayoutClassicUiSlot>('LayoutClassicUi', ui => {
-  provideLayoutUi(ui);
-
-  return ui;
-});

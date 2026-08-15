@@ -11,15 +11,18 @@ import {
   SLayout,
   SLayoutTrigger,
   SSelect,
+  SSwitch,
   SSeparator,
   STreeMenu,
   STreeMenuStyledItem
 } from '@soybeanjs/ui';
 import type {
+  DataOrientation,
   BreadcrumbOptionData,
   LayoutCollapsible,
   LayoutSide,
   LayoutVariant,
+  LayoutScrollBehavior,
   MenuOptionData,
   SelectOptionData,
   ThemeSize
@@ -28,6 +31,19 @@ import { themeSizeOptions } from '../../../constants/theme';
 import { treeMenuItems } from '../tree-menu/data';
 
 const isMobile = useMediaQuery('(max-width: 768px)');
+
+const orientation = shallowRef<DataOrientation>('horizontal');
+
+const orientations: SelectOptionData<DataOrientation>[] = [
+  {
+    label: 'horizontal',
+    value: 'horizontal'
+  },
+  {
+    label: 'vertical',
+    value: 'vertical'
+  }
+];
 
 const side = shallowRef<LayoutSide>('left');
 
@@ -43,6 +59,25 @@ const sides: SelectOptionData<LayoutSide>[] = [
 ];
 
 const size = shallowRef<ThemeSize>('md');
+
+const scrollBehavior = shallowRef<LayoutScrollBehavior>('wrapper');
+
+const scrollBehaviors: SelectOptionData<LayoutScrollBehavior>[] = [
+  {
+    label: 'content',
+    value: 'content'
+  },
+  {
+    label: 'wrapper',
+    value: 'wrapper'
+  }
+];
+
+const fixedTop = shallowRef(true);
+
+const fixedFooter = shallowRef(false);
+
+const stretchFooter = shallowRef(true);
 
 const framework = shallowRef('soybean-unify');
 
@@ -118,7 +153,16 @@ const fullContent = shallowRef(false);
 
 <template>
   <div class="space-y-4">
-    <div class="flex-y-center flex-wrap justify-end gap-2">
+    <div class="flex-y-center flex-wrap justify-end gap-4">
+      <SButtonGroup>
+        <SButton variant="pure" class="cursor-default">orientation</SButton>
+        <SSelect
+          v-model="orientation"
+          :items="orientations"
+          placeholder="Select orientation"
+          :ui="{ trigger: 'w-30' }"
+        />
+      </SButtonGroup>
       <SButtonGroup>
         <SButton variant="pure" class="cursor-default">side</SButton>
         <SSelect v-model="side" :items="sides" placeholder="Select side" :ui="{ trigger: 'w-30' }" />
@@ -140,20 +184,47 @@ const fullContent = shallowRef(false);
         <SButton variant="pure" class="cursor-default">size</SButton>
         <SSelect v-model="size" :items="themeSizeOptions" placeholder="Select size" :ui="{ trigger: 'w-30' }" />
       </SButtonGroup>
+      <SButtonGroup>
+        <SButton variant="pure" class="cursor-default">scrollBehavior</SButton>
+        <SSelect
+          v-model="scrollBehavior"
+          :items="scrollBehaviors"
+          placeholder="Select scroll behavior"
+          :ui="{ trigger: 'w-30' }"
+        />
+      </SButtonGroup>
+      <div class="flex-y-center gap-2">
+        <span>fixedTop:</span>
+        <SSwitch v-model="fixedTop" class="items-center" />
+      </div>
+      <div class="flex-y-center gap-2">
+        <span>fixedFooter:</span>
+        <SSwitch v-model="fixedFooter" class="items-center" />
+      </div>
+      <div class="flex-y-center gap-2">
+        <span>stretchFooter:</span>
+        <SSwitch v-model="stretchFooter" class="items-center" />
+      </div>
     </div>
     <div class="h-120 w-full border border-border border-solid rounded-md">
       <SLayout
         :default-open="true"
         :size="size"
+        :orientation="orientation"
         :side="side"
         :variant="variant"
         :collapsible="collapsible"
         :full-content="fullContent"
         :is-mobile="isMobile"
+        :scroll-behavior="scrollBehavior"
+        :fixed-top="fixedTop"
+        :fixed-footer="fixedFooter"
+        :stretch-footer="stretchFooter"
         :ui="{
-          header: 'border-b border-border',
-          tab: 'bg-background',
-          content: 'px-[--soybean-layout-spacing] border-y border-border bg-background'
+          header: 'bg-background border-b border-border',
+          tab: 'bg-background border-b border-border',
+          content: 'px-[--soybean-layout-spacing] bg-background',
+          footer: 'bg-background border-t border-border'
         }"
       >
         <template #sidebar="{ open, collapsedSidebarWidth }">
@@ -164,7 +235,7 @@ const fullContent = shallowRef(false);
             :items="treeMenuItems"
             :collapsed-width="collapsedSidebarWidth"
           >
-            <template #top>
+            <template v-if="orientation === 'horizontal'" #top>
               <SDropdownMenu
                 :size="size"
                 :side="open ? 'bottom' : 'right'"
@@ -185,10 +256,26 @@ const fullContent = shallowRef(false);
         </template>
         <template #header>
           <div class="w-full flex items-center gap-2 px-[--soybean-layout-spacing]">
-            <SLayoutTrigger v-if="side === 'left'" :size="size" />
+            <SDropdownMenu
+              v-if="orientation === 'vertical'"
+              :size="size"
+              side="bottom"
+              :items="frameworks"
+              :ui="{ popup: 'w-[var(--soybean-popper-anchor-width)]' }"
+              @select="setActiveFramework"
+            >
+              <template #trigger>
+                <STreeMenuStyledItem>
+                  <SIcon :icon="activeFramework.icon" class="text-primary" />
+                  <span class="truncate font-medium">{{ activeFramework.label }}</span>
+                  <SIcon icon="lucide:chevrons-up-down" class="ms-auto" />
+                </STreeMenuStyledItem>
+              </template>
+            </SDropdownMenu>
+            <SLayoutTrigger v-if="side === 'left'" />
             <SSeparator orientation="vertical" class="h-4" />
             <SBreadcrumb :items="breadcrumbItems" :size="size" :ui="{ list: 'gap-2' }" />
-            <SLayoutTrigger v-if="side === 'right'" :size="size" class="ms-auto" />
+            <SLayoutTrigger v-if="side === 'right'" class="ms-auto" />
           </div>
         </template>
         <template #tab>

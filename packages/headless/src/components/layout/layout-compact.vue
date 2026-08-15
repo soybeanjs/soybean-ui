@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { computed, useId } from 'vue';
 import { useOmitProps } from '../../composables';
 import LayoutContent from './layout-content.vue';
 import LayoutFooter from './layout-footer.vue';
 import LayoutHeader from './layout-header.vue';
 import LayoutMain from './layout-main.vue';
+import LayoutPlaceholder from './layout-placeholder.vue';
 import LayoutRail from './layout-rail.vue';
 import LayoutRoot from './layout-root.vue';
 import LayoutSidebar from './layout-sidebar.vue';
@@ -20,21 +22,25 @@ const props = withDefaults(defineProps<LayoutCompactProps>(), {
   sidebarVisible: true,
   headerVisible: true,
   tabVisible: true,
-  footerVisible: true
+  footerVisible: true,
+  fixedTop: true
 });
 
 const emit = defineEmits<LayoutCompactEmits>();
 
 defineSlots<LayoutCompactSlots>();
 
+const _scrollIdFallback = useId();
+const resolvedScrollId = computed(() => props.scrollId ?? `soybean-layout-scroll-${_scrollIdFallback}`);
+
 const forwardedProps = useOmitProps(props, [
   'sidebarProps',
-  'headerProps',
+  'railProps',
   'mainProps',
+  'headerProps',
   'tabProps',
   'contentProps',
   'footerProps',
-  'railProps',
   'mobileProps'
 ]);
 </script>
@@ -45,21 +51,22 @@ const forwardedProps = useOmitProps(props, [
       <slot v-bind="slotProps" name="sidebar" />
       <LayoutRail v-bind="railProps" />
     </LayoutSidebar>
-    <LayoutMain v-bind="mainProps">
+    <LayoutMain v-bind="mainProps" :id="scrollBehavior === 'wrapper' ? resolvedScrollId : undefined">
       <LayoutHeader v-bind="headerProps">
         <slot name="header" />
       </LayoutHeader>
+      <LayoutPlaceholder type="header" />
       <LayoutTab v-bind="tabProps">
         <slot name="tab" />
       </LayoutTab>
-      <LayoutContent v-bind="contentProps">
-        <slot name="content">
-          <slot />
-        </slot>
+      <LayoutPlaceholder type="tab" />
+      <LayoutContent v-bind="contentProps" :id="scrollBehavior === 'content' ? resolvedScrollId : undefined">
+        <slot />
       </LayoutContent>
       <LayoutFooter v-bind="footerProps">
         <slot name="footer" />
       </LayoutFooter>
+      <LayoutPlaceholder type="footer" />
     </LayoutMain>
   </LayoutRoot>
 </template>

@@ -116,6 +116,42 @@ export interface LayoutRootProps extends BaseProps {
    * @returns The width in rem
    */
   pxToRem?: (px: number) => number;
+  /**
+   * Orientation of the component.
+   */
+  orientation?: DataOrientation;
+  /**
+   * Scroll behavior.
+   */
+  scrollBehavior?: LayoutScrollBehavior;
+  /**
+   * Scroll id.
+   */
+  scrollId?: string;
+  /**
+   * The base z-index of the layout. The z-index of the sidebar, header, tab, footer, and their fixed versions will be calculated based on this value.
+   *
+   * @default 50
+   */
+  baseZIndex?: number;
+  /**
+   * Whether the header and tab are fixed to the top of the layout when the orientation is vertical. If true, the header and tab will be fixed to the top of the layout when the orientation is vertical, and will scroll with the content when the orientation is horizontal.
+   *
+   * @default true
+   */
+  fixedTop?: boolean;
+  /**
+   * Whether footer is fixed
+   *
+   * @default true
+   */
+  fixedFooter?: boolean;
+  /**
+   * Whether the footer should stretch to the full width of the layout or the content when layout orientation is vertical.
+   *
+   * @default true
+   */
+  stretchFooter?: boolean;
 }
 
 /**
@@ -173,6 +209,9 @@ export interface LayoutTriggerProps extends ButtonProps {}
  */
 export interface LayoutMobileProps extends BaseProps {}
 
+/**
+ * Properties for the Layout Others component.
+ */
 interface LayoutOthersProps {
   sidebarProps?: LayoutSidebarProps;
   railProps?: LayoutRailProps;
@@ -225,71 +264,9 @@ export type LayoutCompactSlots = {
 };
 
 /**
- * Type information for LayoutClassicScrollBehavior.
+ * Type information for LayoutScrollBehavior.
  */
-export type LayoutClassicScrollBehavior = 'wrapper' | 'content';
-
-/**
- * Properties for the LayoutClassicRoot component.
- */
-export interface LayoutClassicRootProps extends Omit<LayoutRootProps, 'variant' | 'collapsible'> {
-  /**
-   * Orientation of the component.
-   */
-  orientation?: DataOrientation;
-  /**
-   * Scroll behavior.
-   */
-  scrollBehavior?: LayoutClassicScrollBehavior;
-  /**
-   * Scroll id.
-   */
-  scrollId?: string;
-  /**
-   * The base z-index of the layout. The z-index of the sidebar, header, tab, footer, and their fixed versions will be calculated based on this value.
-   *
-   * @default 50
-   */
-  baseZIndex?: number;
-  /**
-   * Whether the header and tab are fixed to the top of the layout when the orientation is vertical. If true, the header and tab will be fixed to the top of the layout when the orientation is vertical, and will scroll with the content when the orientation is horizontal.
-   *
-   * @default true
-   */
-  fixedTop?: boolean;
-  /**
-   * Whether footer is fixed
-   *
-   * @default true
-   */
-  fixedFooter?: boolean;
-  /**
-   * Whether the footer should stretch to the full width of the layout or the content when layout orientation is vertical.
-   *
-   * @default true
-   */
-  stretchFooter?: boolean;
-}
-
-/**
- * Events for the LayoutClassicRoot component.
- */
-export type LayoutClassicRootEmits = LayoutRootEmits;
-
-/**
- * Properties for the LayoutClassicCompact component.
- */
-export interface LayoutClassicCompactProps extends LayoutClassicRootProps, LayoutOthersProps {}
-
-/**
- * Events for the LayoutClassicCompact component.
- */
-export type LayoutClassicCompactEmits = LayoutClassicRootEmits;
-
-/**
- * Slots for the LayoutClassicCompact component.
- */
-export type LayoutClassicCompactSlots = LayoutCompactSlots;
+export type LayoutScrollBehavior = 'wrapper' | 'content';
 
 /**
  * Parameters used to create the LayoutRoot context.
@@ -303,6 +280,7 @@ export interface LayoutRootContextParams extends PropsToContext<
   | 'headerVisible'
   | 'tabVisible'
   | 'footerVisible'
+  | 'fixedFooter'
 > {
   /**
    * Whether the component is open.
@@ -316,20 +294,10 @@ export interface LayoutRootContextParams extends PropsToContext<
    * The width of the sidebar in the mobile view. (rem)
    */
   mobileSidebarWidth: ComputedRef<number>;
-}
-
-/**
- * Parameters used to create the LayoutCompactRoot context.
- */
-export interface LayoutCompactRootContextParams extends LayoutRootContextParams {
   /**
    * Whether fixed top.
    */
   fixedTop: ComputedRef<boolean>;
-  /**
-   * Whether fixed footer.
-   */
-  fixedFooter: ComputedRef<boolean>;
 }
 
 /**
@@ -350,19 +318,12 @@ export type LayoutUiSlot =
   | 'trigger'
   | 'mobile'
   | 'mobileDrawer'
-  | 'mobileOverlay';
+  | 'mobileOverlay'
+  | 'headerPlaceholder'
+  | 'tabPlaceholder'
+  | 'footerPlaceholder';
 
 /**
  * UI class overrides for the Layout component.
  */
 export type LayoutUi = UiClass<LayoutUiSlot>;
-
-/**
- * Available UI slots for the LayoutClassic component.
- */
-export type LayoutClassicUiSlot = LayoutUiSlot | 'headerPlaceholder' | 'tabPlaceholder' | 'footerPlaceholder';
-
-/**
- * UI class overrides for the LayoutClassic component.
- */
-export type LayoutClassicUi = UiClass<LayoutClassicUiSlot>;
