@@ -7,7 +7,9 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "types": ["node", "vite/client"],
-    "paths": { "@/*": ["./src/*"] },
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "resolveJsonModule": true,
     "strict": true,
     "strictNullChecks": true,

@@ -9,7 +9,9 @@
     "paths": {
       "@/*": ["../../packages/ui/src/*"],
       "@docs/*": ["../docs/src/*"],
-      "@soybeanjs/ui": ["../../packages/ui/src/index.ts"]
+      "@soybeanjs/ui": ["../../packages/ui/src/index.ts"],
+      "@soybeanjs/ui-x": ["../../packages/ui-x/src/index.ts"],
+      "@soybeanjs/admin": ["../../packages/admin/src/index.ts"]
     },
     "types": ["node", "vite/client"],
     "resolveJsonModule": true,

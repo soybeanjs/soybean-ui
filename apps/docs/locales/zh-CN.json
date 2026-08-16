@@ -687,6 +687,27 @@
       "mermaid": {
         "basic": "基础",
         "code-mode": "代码模式"
+      },
+      "admin": {
+        "shell": "Admin 应用壳"
+      },
+      "app-layout": {
+        "basic": "基础"
+      },
+      "app-menu": {
+        "basic": "基础"
+      },
+      "app-logo": {
+        "basic": "基础"
+      },
+      "app-breadcrumb": {
+        "basic": "基础"
+      },
+      "app-page-header": {
+        "basic": "基础"
+      },
+      "app-footer": {
+        "basic": "基础"
       }
     }
   },
@@ -920,8 +941,11 @@
     "ui_x_attachments": "附件",
     "ui_x_conversation": "会话管理",
     "ui_x_reasoning": "推理",
-    "ui_x_actions": "动作",
-    "ui_x_misc": "其他"
+    "ui_x_actions": "操作",
+    "ui_x_misc": "其他",
+    "admin_overview": "概览",
+    "admin_installation": "安装",
+    "admin_quick_start": "快速开始"
   },
   "api": {
     "ui_layer": "UI 层",

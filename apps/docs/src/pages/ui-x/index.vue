@@ -12,7 +12,7 @@ const componentGroups = computed(() =>
     items: group.items.map(item => ({
       key: item,
       label: pascalCase(item),
-      path: `/ui-x/components/${kebabCase(item)}`
+      path: `/ui-x/${kebabCase(item)}`
     }))
   }))
 );

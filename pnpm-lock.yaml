@@ -297,15 +297,27 @@ importers:
       '@unocss/cli':
         specifier: ^66.7.5
         version: 66.7.5
+      '@vitest/browser':
+        specifier: ^4.1.10
+        version: 4.1.10(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(vitest@4.1.10)
+      '@vitest/browser-playwright':
+        specifier: ^4.1.10
+        version: 4.1.10(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(playwright@1.62.1)(vitest@4.1.10)
       '@vue/test-utils':
         specifier: ^2.4.11
         version: 2.4.11(@vue/compiler-dom@3.5.41)(@vue/server-renderer@3.5.41)(vue@3.5.41(typescript@6.0.3))
+      axe-core:
+        specifier: ^4.13.0
+        version: 4.13.0
       happy-dom:
         specifier: ^20.11.2
         version: 20.11.2
       nuxt:
         specifier: ^4.5.2
         version: 4.5.2(00bf15d9d7bd7d3098d493412b0a21c4)
+      playwright:
+        specifier: ^1.62.1
+        version: 1.62.1
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -324,6 +336,9 @@ importers:
       vitest:
         specifier: 4.1.10
         version: 4.1.10(@types/node@26.2.0)(@vitest/browser-playwright@4.1.10)(@vitest/browser-preview@4.1.10)(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(typescript@6.0.3)(yaml@2.9.0))(happy-dom@20.11.2)(jsdom@27.0.1(supports-color@10.2.2))
+      vitest-browser-vue:
+        specifier: ^2.1.0
+        version: 2.1.0(@vue/compiler-dom@3.5.41)(@vue/server-renderer@3.5.41)(vitest@4.1.10)(vue@3.5.41(typescript@6.0.3))
       vue:
         specifier: ^3.5.41
         version: 3.5.41(typescript@6.0.3)

@@ -1,11 +1,26 @@
-// unplugin-vue-components resolver for @soybeanjs/admin.
-// TODO(admin): scaffold placeholder — implement resolver once components exist.
-
 import type { ComponentResolver } from 'unplugin-vue-components';
+import { components } from '../constants/components';
 
-export function adminResolver(): ComponentResolver {
-  return {
+function createResolver() {
+  const resolver: ComponentResolver = {
     type: 'component',
-    resolve: () => undefined
+    resolve: (name: string) => {
+      const $name = name.replace(/(^\w|-\w)/g, char => char.replace('-', '').toUpperCase());
+
+      const values: string[] = Object.values(components).flat();
+
+      if (values.includes($name)) {
+        return {
+          name: $name,
+          from: '@soybeanjs/admin'
+        };
+      }
+
+      return null;
+    }
   };
+
+  return resolver;
 }
+
+export default createResolver;

@@ -1,4 +1,12 @@
-// Test setup for @soybeanjs/admin.
-// TODO(admin): scaffold placeholder — add global mocks (fetch, animate, etc.) as needed.
+import { vi } from 'vitest';
 
-export {};
+// @iconify/vue makes CDN fetch requests for icon names; stub fetch to keep
+// happy-dom teardown clean (mirrors @soybeanjs/ui test setup).
+globalThis.fetch = vi.fn(() =>
+  Promise.resolve(
+    new Response(JSON.stringify({ not_found: 1 }), {
+      status: 404,
+      headers: { 'Content-Type': 'application/json' }
+    })
+  )
+);

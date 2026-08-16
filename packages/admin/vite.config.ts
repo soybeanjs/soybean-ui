@@ -5,9 +5,12 @@ import { cssRawPlugin } from '../_shared/css';
 import headlessPkg from '../headless/package.json' with { type: 'json' };
 import uiPkg from '../ui/package.json' with { type: 'json' };
 import pkg from './package.json' with { type: 'json' };
+import adminPkg from './package.json' with { type: 'json' };
 
 export default defineConfig({
-  resolve: { tsconfigPaths: true },
+  resolve: {
+    tsconfigPaths: true
+  },
   plugins: [vue()],
   pack: {
     entry: ['src/index.ts', 'src/nuxt/index.ts', 'src/resolver/index.ts'],
@@ -19,7 +22,9 @@ export default defineConfig({
         ...uiPkg.dependencies,
         ...uiPkg.devDependencies,
         ...pkg.dependencies,
-        ...pkg.devDependencies
+        ...pkg.devDependencies,
+        ...adminPkg.dependencies,
+        ...adminPkg.devDependencies
       })
     },
     clean: true,

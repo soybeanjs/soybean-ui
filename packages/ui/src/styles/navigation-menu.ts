@@ -3,14 +3,14 @@ import { scv } from '@soybeanjs/cva';
 
 export const navigationMenuVariants = scv({
   slots: {
-    root: `group`,
+    root: `group/navigation-menu`,
     viewport: [
       `fixed z-50 origin-top-center overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg`,
       `start-[--soybean-navigation-menu-viewport-left] top-[--soybean-navigation-menu-viewport-top]`,
       `h-[--soybean-navigation-menu-viewport-height] w-[--soybean-navigation-menu-viewport-width]`,
       `transition-all duration-200 ease-out`,
       `data-[state=open]:animate-in data-[state=open]:zoom-in-90 data-[state=closed]:animate-out data-[state=closed]:zoom-out-95`,
-      `group-data-[orientation=vertical]:mt-0`
+      `group-data-[orientation=vertical]/navigation-menu:mt-0`
     ],
     content: [
       `start-0 top-0 w-auto md:absolute lt-md:w-full`,
@@ -19,10 +19,10 @@ export const navigationMenuVariants = scv({
       `data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52`,
       `rtl:data-[motion=from-end]:slide-in-from-left-52 rtl:data-[motion=from-start]:slide-in-from-right-52 rtl:data-[motion=to-end]:slide-out-to-left-52 rtl:data-[motion=to-start]:slide-out-to-right-52`
     ],
-    arrow: `w-1em h-0.5em fill-popover stroke-border rotate-180 group-data-[orientation=vertical]:rotate-90`,
+    arrow: `w-1em h-0.5em fill-popover stroke-border rotate-180 group-data-[orientation=vertical]/navigation-menu:rotate-90`,
     list: [
       `group grow flex items-center justify-center my-0 list-none`,
-      `group-data-[orientation=vertical]:flex-col group-data-[orientation=vertical]:items-stretch`
+      `group-data-[orientation=vertical]/navigation-menu:flex-col group-data-[orientation=vertical]/navigation-menu:items-stretch`
     ],
     subList: `grid grid-cols-[auto_auto] list-none my-0`,
     item: `list-none m-0`,
@@ -62,7 +62,7 @@ export const navigationMenuVariants = scv({
   variants: {
     size: {
       xs: {
-        viewport: 'mt-1.75 group-data-[orientation=vertical]:ms-3.5',
+        viewport: 'mt-1.75 group-data-[orientation=vertical]/navigation-menu:ms-3.5',
         list: 'gap-1 text-2xs',
         subList: 'gap-1.5 p-1.5 text-2xs',
         trigger: 'gap-1 px-1 py-1',
@@ -75,7 +75,7 @@ export const navigationMenuVariants = scv({
         subLinkDescription: 'mt-1.25'
       },
       sm: {
-        viewport: 'mt-2 group-data-[orientation=vertical]:ms-4',
+        viewport: 'mt-2 group-data-[orientation=vertical]/navigation-menu:ms-4',
         list: 'gap-1.25 text-xs',
         subList: 'gap-1.75 p-1.75 text-xs',
         trigger: 'gap-1.5 px-1.5 py-1',
@@ -88,7 +88,7 @@ export const navigationMenuVariants = scv({
         subLinkDescription: 'mt-1.25'
       },
       md: {
-        viewport: 'mt-[calc(0.625rem-1px)] group-data-[orientation=vertical]:ms-5',
+        viewport: 'mt-[calc(0.625rem-1px)] group-data-[orientation=vertical]/navigation-menu:ms-5',
         list: 'gap-1.5 text-sm',
         subList: 'gap-2 p-2 text-sm',
         trigger: 'gap-2 px-2 py-1.5',
@@ -101,7 +101,7 @@ export const navigationMenuVariants = scv({
         subLinkDescription: 'mt-1.5'
       },
       lg: {
-        viewport: 'mt-3 group-data-[orientation=vertical]:ms-6',
+        viewport: 'mt-3 group-data-[orientation=vertical]/navigation-menu:ms-6',
         list: 'gap-1.75 text-base',
         subList: 'gap-2.5 p-2.5 text-base',
         trigger: 'gap-2.5 px-2.5 py-1.5',
@@ -114,7 +114,7 @@ export const navigationMenuVariants = scv({
         subLinkDescription: 'mt-1.75'
       },
       xl: {
-        viewport: 'mt-3.5 group-data-[orientation=vertical]:ms-7',
+        viewport: 'mt-3.5 group-data-[orientation=vertical]/navigation-menu:ms-7',
         list: 'gap-2 text-lg',
         subList: 'gap-3 p-3 text-lg',
         trigger: 'gap-3 px-3 py-2',
@@ -127,7 +127,7 @@ export const navigationMenuVariants = scv({
         subLinkDescription: 'mt-2'
       },
       '2xl': {
-        viewport: 'mt-4 group-data-[orientation=vertical]:ms-8',
+        viewport: 'mt-4 group-data-[orientation=vertical]/navigation-menu:ms-8',
         list: 'gap-2.5 text-xl',
         subList: 'gap-3.5 p-3.5 text-xl',
         trigger: 'gap-3.5 px-3.5 py-2.5',

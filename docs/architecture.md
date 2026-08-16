@@ -28,8 +28,8 @@ against imports and configuration before being documented.
 
 ## 2. Repository at a glance
 
-The pnpm workspace contains the private root project plus nine child workspaces:
-six publishable packages and three private applications.
+The pnpm workspace contains the private root project plus ten child workspaces:
+seven publishable packages and three private applications.
 
 | Area                 | Workspace                  | Purpose                                                                              |
 | -------------------- | -------------------------- | ------------------------------------------------------------------------------------ |
@@ -71,6 +71,7 @@ soybean-ui/
 │   └── components.md        # Detailed roadmap source material
 ├── packages/
 │   ├── _shared/             # Build helpers; not a workspace package
+│   ├── admin/               # @soybeanjs/admin (backend-management composites)
 │   ├── headless/            # @soybeanjs/headless
 │   ├── sbean/               # sbean CLI and registry system
 │   ├── theme/               # @soybeanjs/theme

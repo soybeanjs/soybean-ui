@@ -1,7 +1,7 @@
 {
   "name": "@soybeanjs/admin",
   "version": "0.30.0-beta.1",
-  "description": "SoybeanAdmin — admin shell components built on top of SoybeanUI.",
+  "description": "SoybeanAdmin provides a collection of composed backend-management components (layout, menu, page chrome, command palette, etc.) built on top of @soybeanjs/ui for Vue 3.",
   "homepage": "https://github.com/soybeanjs/soybean-ui",
   "bugs": {
     "url": "https://github.com/soybeanjs/soybean-ui/issues"
@@ -48,6 +48,7 @@
     "build:css": "unocss 'src/styles/**/*.ts' -o dist/styles.css --minify",
     "test": "vp test run",
     "test:coverage": "vp test run --coverage",
+    "test:e2e": "vitest run --config vitest.browser.config.ts",
     "test:ui": "vp test --ui",
     "test:watch": "vp test watch",
     "typecheck": "vue-tsc --noEmit --skipLibCheck"
@@ -65,15 +66,20 @@
     "@soybeanjs/ui-uno": "workspace:^",
     "@types/node": "^26.2.0",
     "@unocss/cli": "^66.7.5",
+    "@vitest/browser": "^4.1.10",
+    "@vitest/browser-playwright": "^4.1.10",
     "@vue/test-utils": "^2.4.11",
+    "axe-core": "^4.13.0",
     "happy-dom": "^20.11.2",
     "nuxt": "^4.5.2",
+    "playwright": "^1.62.1",
     "typescript": "7.0.2",
     "unocss": "^66.7.5",
     "unplugin-vue": "^7.2.0",
     "unplugin-vue-components": "^32.1.0",
     "vite-plus": "catalog:",
     "vitest": "4.1.10",
+    "vitest-browser-vue": "^2.1.0",
     "vue": "^3.5.41",
     "vue-router": "^5.2.0",
     "vue-tsc": "^3.3.10"

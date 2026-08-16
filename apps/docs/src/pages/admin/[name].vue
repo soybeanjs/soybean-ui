@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import { adminMenuData } from '~/constants/menus';
 import { getComponentChangelogMeta } from '~/shared/generated-changelog';

@@ -687,6 +687,27 @@
       "mermaid": {
         "basic": "Basic",
         "code-mode": "Code Mode"
+      },
+      "admin": {
+        "shell": "Admin Shell"
+      },
+      "app-layout": {
+        "basic": "Basic"
+      },
+      "app-menu": {
+        "basic": "Basic"
+      },
+      "app-logo": {
+        "basic": "Basic"
+      },
+      "app-breadcrumb": {
+        "basic": "Basic"
+      },
+      "app-page-header": {
+        "basic": "Basic"
+      },
+      "app-footer": {
+        "basic": "Basic"
       }
     }
   },
@@ -926,7 +947,10 @@
     "ui_x_conversation": "Conversation",
     "ui_x_reasoning": "Reasoning",
     "ui_x_actions": "Actions",
-    "ui_x_misc": "Miscellaneous"
+    "ui_x_misc": "Miscellaneous",
+    "admin_overview": "Overview",
+    "admin_installation": "Installation",
+    "admin_quick_start": "Quick Start"
   },
   "api": {
     "ui_layer": "UI Layer",

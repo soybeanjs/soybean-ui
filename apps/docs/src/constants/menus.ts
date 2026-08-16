@@ -150,7 +150,7 @@ export const menuData: MenuData[] = [
 // TODO(ui-x/admin/chart): fill items arrays when components are implemented.
 
 export const uiXNewlyComponentKeys: string[] = [];
-export const adminNewlyComponentKeys: string[] = [];
+export const adminNewlyComponentKeys: string[] = ['appLayout', 'appMenu', 'appBreadcrumb', 'appLogo', 'appPageHeader', 'appFooter'];
 export const chartNewlyComponentKeys: string[] = [];
 
 export const uiXMenuData: MenuData[] = [
@@ -195,7 +195,7 @@ export const adminMenuData: MenuData[] = [
   {
     value: 'shell',
     i18n: 'admin.sidebar.shell',
-    items: []
+    items: ['app-layout', 'app-menu', 'app-logo', 'app-breadcrumb', 'app-page-header', 'app-footer']
   }
 ];
 

@@ -16,7 +16,8 @@ export interface LibraryOption {
 export const libraryOptions: LibraryOption[] = [
   { value: 'ui', label: 'UI', icon: 'lucide:layout-grid' },
   { value: 'ui-x', label: 'UI-X', icon: 'lucide:sparkles' },
-  { value: 'chart', label: 'Chart', icon: 'lucide:chart-column' }
+  { value: 'chart', label: 'Chart', icon: 'lucide:chart-column' },
+  { value: 'admin', label: 'Admin', icon: 'lucide:panel-left' }
 ];
 
 /** Components belonging to `@soybeanjs/ui-x`. All others default to `'ui'`. */
@@ -45,10 +46,21 @@ const uiXComponents = new Set([
 
 /** Component names belonging to `@soybeanjs/chart`. */
 const chartComponents = new Set(['bar', 'line', 'area', 'pie', 'scatter']);
+/** Components belonging to `@soybeanjs/admin`. */
+const adminComponents = new Set([
+  'admin',
+  'app-layout',
+  'app-menu',
+  'app-logo',
+  'app-breadcrumb',
+  'app-page-header',
+  'app-footer'
+]);
 
 /** Returns the library value for a given component name. */
 export function getComponentLibrary(componentName: string): string {
   if (uiXComponents.has(componentName)) return 'ui-x';
   if (chartComponents.has(componentName)) return 'chart';
+  if (adminComponents.has(componentName)) return 'admin';
   return 'ui';
 }

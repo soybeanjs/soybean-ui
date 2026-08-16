@@ -8,14 +8,14 @@
 
 ### 1.1 已实现组件（6 个，`S` 前缀 + `App*`）
 
-| 导出名           | 说明                                                                                                                                                                                                          |
-| :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `SAppLayout`     | `engine: 'classic'（SLayoutClassic）\| 'fluid'（SLayout）` 双内核；6 种布局模式；`AppLayoutContext` 注入；`mobileBreakpoint`（默认 768）matchMedia 自动响应式；插槽 sidebar / header / tab / content / footer |
-| `SAppMenu`       | 基于 `STreeMenu` / `SNavigationMenu`，`MENU_MAP[resolvedMode]` 分支到 6 个模式子模块 + `Teleport` 挂载点；`hideInMenu` 裁剪；`inverted` 反色；折叠联动                                                        |
-| `SAppLogo`       | Logo + 标题，支持仅图标                                                                                                                                                                                       |
-| `SAppBreadcrumb` | 复用 `SBreadcrumb` + 内置子级下拉 `SDropdownMenu`                                                                                                                                                             |
-| `SAppPageHeader` | 面包屑 + 标题 + 操作区 + 返回按钮                                                                                                                                                                             |
-| `SAppFooter`     | 页脚文本 / 链接                                                                                                                                                                                               |
+| 导出名           | 说明                                                                                                                                                                                                                                         |
+| :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SAppLayout`     | 统一 `SLayout` 底座（`variant` / `orientation` / `scrollBehavior` / `fixedTop` / `fixedFooter`）；6 种布局模式；`AppLayoutContext` 注入；`mobileBreakpoint`（默认 768）matchMedia 自动响应式；插槽 sidebar / header / tab / content / footer |
+| `SAppMenu`       | 基于 `STreeMenu` / `SNavigationMenu`，`MENU_MAP[resolvedMode]` 分支到 6 个模式子模块 + `Teleport` 挂载点；`hideInMenu` 裁剪；`inverted` 反色；折叠联动                                                                                       |
+| `SAppLogo`       | Logo + 标题，支持仅图标                                                                                                                                                                                                                      |
+| `SAppBreadcrumb` | 复用 `SBreadcrumb` + 内置子级下拉 `SDropdownMenu`                                                                                                                                                                                            |
+| `SAppPageHeader` | 面包屑 + 标题 + 操作区 + 返回按钮                                                                                                                                                                                                            |
+| `SAppFooter`     | 页脚文本 / 链接                                                                                                                                                                                                                              |
 
 ### 1.2 统一模式体系（核心设计）
 
@@ -64,7 +64,7 @@ packages/admin/
 │   ├── styles/                  # cv()/scv() recipe + @unocss-include
 │   ├── constants/components.ts  # SApp* 名称注册表
 │   ├── resolver/ · nuxt/
-│   └── types.ts                 # AppLayoutMode / AppMenuMode / AppLayoutEngine / AppMenuData /
+│   └── types.ts                 # AppLayoutMode / AppMenuMode / AppMenuData /
 │                                # AppTableColumn / AppFormSchema / AppTab
 └── test/                        # 单测 5 个 + browser e2e（app-shell.e2e.spec.ts）
 ```
