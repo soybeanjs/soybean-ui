@@ -213,17 +213,17 @@ describe('SMenuOptions', () => {
       wrapper.unmount();
     });
 
-    it('uses linkProps.target as the fallback and lets item.target win', async () => {
+    it('renders target from item data on the link', async () => {
       const wrapper = mountMenu({
         items: [
           { value: 'home', label: 'Home', href: '/home' },
           { value: 'docs', label: 'Docs', href: '/docs', target: '_self' }
-        ],
-        menuProps: { linkProps: { target: '_blank' } }
+        ]
       });
 
       await openMenu(wrapper);
 
+      // items without target fall back to the Link default ('_blank' for href links)
       expect(wrapper.find('a[href="/home"]').attributes('target')).toBe('_blank');
       expect(wrapper.find('a[href="/docs"]').attributes('target')).toBe('_self');
 

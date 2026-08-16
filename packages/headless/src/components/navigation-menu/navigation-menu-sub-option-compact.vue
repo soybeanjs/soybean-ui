@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import Icon from '../_icon/icon.vue';
+import type { LinkProps } from '../link/types';
 import { useCommonSlotNames } from './shared';
 import { useNavigationMenuUi } from './context';
 import NavigationMenuItemSlot from './navigation-menu-item-slot-compact.vue';
@@ -28,15 +29,15 @@ const ui = useNavigationMenuUi();
 
 const isLink = computed(() => Boolean(props.subItem.to || props.subItem.href));
 
-const linkProps = computed(() =>
+const linkProps = computed<LinkProps>(() =>
   isLink.value
     ? {
         ...props.linkProps,
         disabled: props.subItem.disabled ?? props.linkProps?.disabled,
-        to: props.subItem.to ?? props.linkProps?.to,
+        to: props.subItem.to,
         href: props.subItem.href,
-        target: props.subItem.target ?? props.linkProps?.target,
-        external: props.subItem.external ?? props.linkProps?.external
+        target: props.subItem.target,
+        external: props.subItem.external
       }
     : {}
 );

@@ -4,7 +4,7 @@ import type { IconValue } from '../_icon/types';
 import type { BadgeCompactProps } from '../badge/types';
 import type { ButtonProps } from '../button/types';
 import type { DropdownMenuCompactProps } from '../dropdown-menu/types';
-import type { LinkProps, LinkBaseProps } from '../link/types';
+import type { LinkBaseProps, LinkExtraProps } from '../link/types';
 import type { MenuOptionData } from '../menu/types';
 import type { AsTag, PrimitiveWithBaseProps } from '../primitive/types';
 import type { TooltipCompactProps } from '../tooltip/types';
@@ -258,7 +258,7 @@ export interface TreeMenuOptionCompactProps {
   /**
    * Properties forwarded to the link element.
    */
-  linkProps?: LinkProps;
+  linkProps?: LinkExtraProps;
   /**
    * Properties forwarded to the collapsible element.
    */

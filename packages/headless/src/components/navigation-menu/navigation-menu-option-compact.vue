@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { keysOf } from '@soybeanjs/utils';
 import { useForwardListeners } from '../../composables';
 import Icon from '../_icon/icon.vue';
+import type { LinkProps } from '../link/types';
 import { useCommonSlotNames } from './shared';
 import { useNavigationMenuUi } from './context';
 import NavigationMenuContent from './navigation-menu-content.vue';
@@ -38,15 +39,15 @@ const ui = useNavigationMenuUi();
 
 const isLink = computed(() => Boolean(props.item.to || props.item.href));
 
-const linkProps = computed(() =>
+const linkProps = computed<LinkProps>(() =>
   isLink.value
     ? {
         ...props.linkProps,
         disabled: props.item.disabled ?? props.linkProps?.disabled,
-        to: props.item.to ?? props.linkProps?.to,
+        to: props.item.to,
         href: props.item.href,
-        target: props.item.target ?? props.linkProps?.target,
-        external: props.item.external ?? props.linkProps?.external
+        target: props.item.target,
+        external: props.item.external
       }
     : {}
 );

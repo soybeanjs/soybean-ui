@@ -47,17 +47,15 @@ const dataActive = computed(() => activeValue.value === props.item.value);
 
 const childActive = computed(() => activePaths.value.includes(props.item.value));
 
-type MenuOptionLinkProps = Pick<LinkProps, 'disabled' | 'to' | 'href' | 'target' | 'external'>;
-
-const linkProps = computed<MenuOptionLinkProps>(() =>
+const linkProps = computed<LinkProps>(() =>
   props.item.to || props.item.href
     ? {
         ...props.linkProps,
         disabled: props.item.disabled ?? props.linkProps?.disabled,
-        to: props.item.to ?? props.linkProps?.to,
+        to: props.item.to,
         href: props.item.href,
-        target: props.item.target ?? props.linkProps?.target,
-        external: props.item.external ?? props.linkProps?.external
+        target: props.item.target,
+        external: props.item.external
       }
     : {}
 );

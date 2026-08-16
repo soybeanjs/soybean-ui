@@ -11,7 +11,7 @@ import type {
   UiClass
 } from '../../types';
 import type { IconValue } from '../_icon/types';
-import type { LinkProps, LinkBaseProps } from '../link/types';
+import type { LinkProps, LinkBaseProps, LinkBasePropsKey } from '../link/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
@@ -330,7 +330,7 @@ export interface NavigationMenuSubOptionCompactProps {
   /**
    * Properties forwarded to the link element.
    */
-  linkProps?: Omit<NavigationMenuLinkProps, 'href'>;
+  linkProps?: Omit<NavigationMenuLinkProps, LinkBasePropsKey>;
 }
 
 /**
@@ -364,7 +364,7 @@ export interface NavigationMenuOptionCompactProps {
   /**
    * Properties forwarded to the link element.
    */
-  linkProps?: Omit<NavigationMenuLinkProps, 'href'>;
+  linkProps?: Omit<NavigationMenuLinkProps, LinkBasePropsKey>;
   /**
    * Properties forwarded to the trigger element.
    */

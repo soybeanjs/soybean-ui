@@ -339,18 +339,18 @@ describe('SNavigationMenu', () => {
       wrapper.unmount();
     });
 
-    it('uses linkProps.target as the fallback and lets item.target win', () => {
+    it('renders target from item data on the link', () => {
       const wrapper = mount(SNavigationMenu, {
         props: {
           items: [
             { value: 'guide', label: 'Guide', href: '/guide' },
             { value: 'docs', label: 'Docs', href: '/docs', target: '_self' }
           ],
-          linkProps: { target: '_blank' },
           attachTo: document.body
         }
       });
 
+      // items without target fall back to the Link default ('_blank' for href links)
       expect(wrapper.find('a[href="/guide"]').attributes('target')).toBe('_blank');
       expect(wrapper.find('a[href="/docs"]').attributes('target')).toBe('_self');
 

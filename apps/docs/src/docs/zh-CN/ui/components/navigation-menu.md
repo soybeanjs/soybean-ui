@@ -18,7 +18,7 @@ NavigationMenu 用于构建站点级的水平或垂直导航，支持任意层�
 - **指示器与视口定位** — `NavigationMenuIndicator` 随激活项滑动，视口以激活触发器（或根节点）为参照定位，支持 `align` 对齐并在视口边缘自动钳制。
 - **受控 / 非受控** — 提供 `modelValue` 时高亮跟随 prop 并触发 `update:modelValue`；否则使用 `defaultValue` 做非受控初始值。
 - **双向方向** — `orientation` 支持水平 / 垂直；`dir` 支持 LTR / RTL，定位与动画均按逻辑方向处理。
-- **逐项与全局链接属性** — `disabled` / `target` 等既可按项设置，也可通过 `linkProps` 全局兜底；显式项值始终优先，`linkProps.href` 被刻意排除在类型之外（目标地址由项的 `href` / `to` 决定）。
+- **逐项与全局链接属性** — 目标地址（`href` / `to`）、`target`、`external` 由每个项持有；`linkProps` 仅透传其余链接属性（例如全局 `disabled` 兜底，显式项值始终优先）。
 - **禁用项** — 禁用链接渲染 `aria-disabled="true"`、`tabindex="-1"` 并阻断交互；禁用触发器不会打开子菜单。
 - **六种尺寸** — `size`（xs…2xl）变体覆盖视口、列表、触发器、链接、子项与指示器的间距与字号。
 - **19 个 UI 槽位** — `root` / `item` / `trigger` / `content` / `link` / `subLink` / `indicator` / `viewport` / `arrow` 等槽位均可通过 `ui` prop 逐一定制。

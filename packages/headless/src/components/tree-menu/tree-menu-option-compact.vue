@@ -8,6 +8,7 @@ import Icon from '../_icon/icon.vue';
 import Button from '../button/button.vue';
 import DropdownMenuCompact from '../dropdown-menu/dropdown-menu-compact.vue';
 import Link from '../link/link.vue';
+import type { LinkProps } from '../link/types';
 import { useTreeMenuRootContext, useTreeMenuUi } from './context';
 import TreeMenuButton from './tree-menu-button.vue';
 import TreeMenuCollapsible from './tree-menu-collapsible.vue';
@@ -59,7 +60,7 @@ const childActive = computed(() => {
 
 const isLink = computed(() => Boolean(props.item.to || props.item.href));
 
-const linkProps = computed(() => {
+const linkProps = computed<LinkProps>(() => {
   if (!isLink.value) {
     return {};
   }
@@ -68,7 +69,7 @@ const linkProps = computed(() => {
 
   return {
     ...props.linkProps,
-    disabled,
+    disabled: disabled ?? props.linkProps?.disabled,
     to,
     href,
     target,

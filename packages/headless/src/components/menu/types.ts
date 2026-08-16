@@ -17,7 +17,7 @@ import type { IconValue } from '../_icon/types';
 import type { ButtonProps } from '../button/types';
 import type { DialogRootEmits, DialogBaseProps } from '../dialog/types';
 import type { KbdProps, KbdValue } from '../kbd/types';
-import type { LinkBaseProps, LinkProps } from '../link/types';
+import type { LinkBaseProps, LinkExtraProps } from '../link/types';
 import type { PopperPopupProps, PopperPositionerProps } from '../popper/types';
 import type { PortalProps as MenuPortalProps } from '../portal/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
@@ -284,7 +284,7 @@ export interface MenuOptionCompactProps<T extends DefinedValue = DefinedValue> {
   /**
    * Properties forwarded to the link element.
    */
-  linkProps?: LinkProps;
+  linkProps?: LinkExtraProps;
   /**
    * Properties forwarded to the group element.
    */

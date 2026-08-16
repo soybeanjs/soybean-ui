@@ -1,6 +1,6 @@
 import type { BaseProps, UiClass } from '../../types';
 import type { IconValue } from '../_icon/types';
-import type { LinkBaseProps, LinkProps } from '../link/types';
+import type { LinkBaseProps, LinkExtraProps, LinkProps } from '../link/types';
 
 /**
  * Properties for the BreadcrumbRoot component.
@@ -79,7 +79,7 @@ export interface BreadcrumbCompactProps<T extends BreadcrumbOptionData = Breadcr
   /**
    * Properties forwarded to the link element.
    */
-  linkProps?: BreadcrumbLinkProps;
+  linkProps?: LinkExtraProps;
   /**
    * Properties forwarded to the page element.
    */
