@@ -23,18 +23,21 @@ export interface TestServer {
 
 /**
  * Start a local HTTP server serving registry fixture files.
+ *
+ * `fixturesDir` allows a secondary namespaced fixture set (see
+ * `test/fixtures/registry-ns/`) to serve namespaced paths like `/ui/button.json`.
  */
-export async function startRegistryServer(port = 0): Promise<TestServer> {
+export async function startRegistryServer(port = 0, fixturesDir: string = FIXTURES_DIR): Promise<TestServer> {
   const server = http.createServer(async (req, res) => {
     const url = new URL(req.url ?? '/', `http://localhost:${port}`);
 
     try {
       // Strip leading slash for file lookup
       const fileName = url.pathname.slice(1) || 'registry.json';
-      const filePath = path.join(FIXTURES_DIR, fileName);
+      const filePath = path.join(fixturesDir, fileName);
 
       // Security: block path traversal
-      if (!filePath.startsWith(FIXTURES_DIR)) {
+      if (!filePath.startsWith(fixturesDir)) {
         res.writeHead(403);
         res.end('Forbidden');
         return;

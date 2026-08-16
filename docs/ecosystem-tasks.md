@@ -26,10 +26,10 @@
 | B 分包骨架与依赖        |   8    |   7    |   1    |   0    |    94%    |
 | C 功能组件实现          |   12   |   0    |   0    |   12   |    0%     |
 | D 文档站                |   7    |   0    |   4    |   3    |    20%    |
-| E sbean registry 与 CLI |   5    |   1    |   0    |   4    |    20%    |
+| E sbean registry 与 CLI |   5    |   3    |   0    |   2    |    60%    |
 | F 生成与 playground     |   7    |   2    |   1    |   4    |    40%    |
 | G 迁移与发布            |   7    |   0    |   3    |   4    |    18%    |
-| **合计**                | **54** | **19** | **9**  | **26** | **≈ 43%** |
+| **合计**                | **54** | **21** | **9**  | **24** | **≈ 39%** |
 
 > 当前处于「结构骨架已落地、业务功能与文档内容未填充」阶段——即方案 §10 checklist 的前置工作已大部分完成，§3/§6/§7/§8 的功能与分发部分待推进。
 
@@ -113,9 +113,9 @@
 | ID     | 任务描述                                                                                                              | 优先级 | 负责人   | 开始       | 目标完成   | 状态      | 进度 |
 | ------ | --------------------------------------------------------------------------------------------------------------------- | :----: | -------- | ---------- | ---------- | --------- | :--: |
 | EC-E01 | [registry.json](../packages/sbean/registry.json) 顶层增补 `packages` 元数据（ui / ui-x / admin / chart）              |   P0   | AI Agent | 2026-08-14 | 2026-08-14 | ✅ 已完成 | 100% |
-| EC-E02 | 既有 items 命名空间化：`accordion` → `ui/accordion` 并附 `package: "ui"` 字段（§11.4）                                |   P0   | AI Agent | 2026-08-18 | 2026-08-28 | ⬜ 未开始 |  0%  |
+| EC-E02 | 既有 items 命名空间化：`accordion` → `ui/accordion` 并附 `package: "ui"` 字段（§11.4）                                |   P0   | AI Agent | 2026-08-18 | 2026-08-28 | ✅ 已完成 | 100% |
 | EC-E03 | 新增 `ui-x/*`、`admin/*`、`chart/*` 命名空间 items（随 C 阶段组件产出）                                               |   P1   | AI Agent | 2026-08-20 | 2026-08-31 | ⬜ 未开始 |  0%  |
-| EC-E04 | sbean CLI：`getComponentSlug` / `fetchRegistryItem` 适配命名空间路径，保留无前缀别名兼容（`sbean add bubble` 仍可用） |   P0   | AI Agent | 2026-08-18 | 2026-08-28 | ⬜ 未开始 |  0%  |
+| EC-E04 | sbean CLI：`getComponentSlug` / `fetchRegistryItem` 适配命名空间路径，保留无前缀别名兼容（`sbean add bubble` 仍可用） |   P0   | AI Agent | 2026-08-18 | 2026-08-28 | ✅ 已完成 | 100% |
 | EC-E05 | CLI 命令验证：`sbean add <pkg>/<component>`、`sbean list --package`、`sbean docs <item>` 命名空间文档链接             |   P1   | AI Agent | 2026-08-20 | 2026-08-31 | ⬜ 未开始 |  0%  |
 
 ## 6. 阶段 F — 生成链路与 playground（ecosystem.md §7.3/§8）

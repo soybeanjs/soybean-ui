@@ -1,0 +1,45 @@
+{
+  "name": "soybean-ui",
+  "homepage": "https://ui.soybeanjs.cn",
+  "packages": [
+    { "name": "ui", "scope": "@soybeanjs/ui", "prefix": "S" },
+    { "name": "ui-x", "scope": "@soybeanjs/ui-x", "prefix": "Sx" },
+    { "name": "admin", "scope": "@soybeanjs/admin", "prefix": "S", "nounPrefix": "App" }
+  ],
+  "items": [
+    {
+      "name": "ui/button",
+      "package": "ui",
+      "type": "registry:ui",
+      "description": "Displays a button or a component that looks like a button.",
+      "dependencies": ["@soybeanjs/headless"],
+      "files": [
+        { "path": "components/button/button.vue", "type": "registry:ui", "content": "<template><button /></template>" }
+      ]
+    },
+    {
+      "name": "ui/accordion",
+      "package": "ui",
+      "type": "registry:ui",
+      "description": "A vertically stacked set of interactive headings.",
+      "files": []
+    },
+    {
+      "name": "ui-x/bubble",
+      "package": "ui-x",
+      "type": "registry:ui",
+      "description": "AI conversation bubble.",
+      "dependencies": ["@soybeanjs/ui"],
+      "files": [
+        { "path": "components/bubble/bubble.vue", "type": "registry:ui", "content": "<template><div /></template>" }
+      ]
+    },
+    {
+      "name": "admin/app-layout",
+      "package": "admin",
+      "type": "registry:ui",
+      "description": "Admin application shell layout.",
+      "files": []
+    }
+  ]
+}

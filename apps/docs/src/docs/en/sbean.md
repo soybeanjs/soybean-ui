@@ -94,6 +94,21 @@ sbean search [query] [options]
 | `-l, --limit <limit>`   | Max results (default: 50)                              |
 | `-o, --offset <offset>` | Pagination offset                                      |
 
+### `sbean list`
+
+List registry items, optionally filtered by package.
+
+```bash
+sbean list [options]
+```
+
+| Option             | Description                                            |
+| ------------------ | ------------------------------------------------------ |
+| `--package <name>` | Filter by package namespace: ui / ui-x / admin / chart |
+| `--json`           | Output as JSON                                         |
+
+Items are namespaced by package (`ui/button`, `ui-x/bubble`, `admin/app-layout`, …).
+
 ### `sbean view`
 
 View a component's source code.
@@ -143,8 +158,6 @@ The `sbean.json` file stores your project configuration:
 
 ```json
 {
-  "style": "soybean",
-  "isMonorepo": false,
   "iconLibrary": "lucide",
   "uno": {
     "base": "zinc",
@@ -156,28 +169,24 @@ The `sbean.json` file stores your project configuration:
     "sans": "inter",
     "heading": "inherit"
   },
-  "menu": {
-    "accent": "subtle",
-    "color": "default"
+  "aliases": {
+    "ui": "#ui"
   },
-  "uiDir": "src/ui"
+  "registries": {}
 }
 ```
 
-| Field          | Type      | Description                                         |
-| -------------- | --------- | --------------------------------------------------- |
-| `style`        | `string`  | Style preset name                                   |
-| `isMonorepo`   | `boolean` | Whether the project is a monorepo                   |
-| `uiDir`        | `string`  | Component output directory relative to project root |
-| `iconLibrary`  | `string`  | Icon library prefix                                 |
-| `uno.base`     | `string`  | Base (neutral) color                                |
-| `uno.primary`  | `string`  | Primary (brand) color                               |
-| `uno.size`     | `string`  | Base component size                                 |
-| `uno.radius`   | `string`  | Border radius                                       |
-| `font.sans`    | `string`  | Sans-serif font name                                |
-| `font.heading` | `string`  | Heading font or `"inherit"`                         |
-| `menu.accent`  | `string`  | Menu accent style: subtle / bold                    |
-| `menu.color`   | `string`  | Menu color scheme                                   |
+| Field          | Type     | Description                                                                                                                             |
+| -------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `iconLibrary`  | `string` | Icon library prefix                                                                                                                     |
+| `uno.base`     | `string` | Base (neutral) color                                                                                                                    |
+| `uno.primary`  | `string` | Primary (brand) color                                                                                                                   |
+| `uno.size`     | `string` | Base component size                                                                                                                     |
+| `uno.radius`   | `string` | Border radius                                                                                                                           |
+| `font.sans`    | `string` | Sans-serif font name                                                                                                                    |
+| `font.heading` | `string` | Heading font or `"inherit"`                                                                                                             |
+| `aliases`      | `object` | Import aliases per package (`ui`, `ui-x`, `admin`, `chart`) — each maps to an output dir via `tsconfig` paths (default `src/<package>`) |
+| `registries`   | `object` | Additional registry namespace → URL mappings                                                                                            |
 
 ## Project Structure
 
@@ -240,4 +249,4 @@ import { buttonVariants } from '#ui/styles/button';
 
 ## Registry
 
-SBean fetches component source from the SoybeanUI registry at `https://ui.soybeanjs.cn/r/{name}.json`. A local cache (`~/.sbean/cache`) is maintained with 24-hour TTL and ETag support for efficient updates.
+SBean fetches component source from the SoybeanUI registry at `https://ui.soybeanjs.cn/r/{name}.json`. Registry items are **namespaced by package** — e.g. `ui/button` is served from `r/ui/button.json`, `ui-x/bubble` from `r/ui-x/bubble.json`. Core `ui` components can be referenced without a prefix (`sbean add button`); components from other packages require the namespace prefix (`sbean add ui-x/bubble`). A local cache (`~/.sbean/cache`) is maintained with 24-hour TTL and ETag support for efficient updates.

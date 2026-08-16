@@ -12,6 +12,7 @@ export const searchOptionsSchema = v.object({
   cwd: v.string(),
   all: v.boolean(),
   type: v.optional(v.string()),
+  package: v.optional(v.string()),
   limit: v.optional(v.number()),
   offset: v.optional(v.number())
 });
@@ -22,6 +23,7 @@ export const search = new Command()
   .argument('[query]', 'search query')
   .option('-a, --all', 'show all components', false)
   .option('-t, --type <type>', 'filter by type (component, hook, style, lib, theme, base, font, block)')
+  .option('--package <name>', 'filter by package namespace (ui, ui-x, admin, chart)')
   .option('-l, --limit <limit>', 'max results to show', '50')
   .option('-o, --offset <offset>', 'offset for pagination', '0')
   .option('-c, --cwd <cwd>', 'the working directory. defaults to the current directory.', process.cwd())
@@ -31,6 +33,7 @@ export const search = new Command()
       cwd: path.resolve(opts.cwd),
       all: opts.all,
       type: opts.type,
+      package: opts.package,
       limit: opts.limit ? Number.parseInt(opts.limit, 10) : undefined,
       offset: opts.offset ? Number.parseInt(opts.offset, 10) : undefined
     });
@@ -67,12 +70,22 @@ export const search = new Command()
       }
     }
 
+    // Filter by package (EC-E04) — pre-filter items before the search engine.
+    let filtered: RegistryItem[];
+    if (options.package) {
+      filtered = items.filter(item => {
+        const pkg = item.package ?? (item.name.includes('/') ? item.name.split('/')[0] : 'ui');
+        return pkg === options.package;
+      });
+    } else {
+      filtered = items;
+    }
+
     // Filter by query using advanced search engine
-    let filtered = items;
     let searchResult: ReturnType<typeof searchRegistry> | null = null;
 
     if (!options.all && options.query) {
-      searchResult = searchRegistry(items, {
+      searchResult = searchRegistry(filtered, {
         query: options.query,
         type: options.type,
         sortBy: 'relevance',
@@ -82,7 +95,7 @@ export const search = new Command()
       filtered = searchResult.items;
     } else if (options.type || options.limit || options.offset) {
       // Apply type filter and pagination even without query
-      searchResult = searchRegistry(items, {
+      searchResult = searchRegistry(filtered, {
         type: options.type,
         sortBy: 'name',
         limit: options.limit ?? 50,
@@ -104,6 +117,7 @@ export const search = new Command()
     const summaryParts: string[] = [`Found ${searchResult?.total ?? filtered.length} component(s)`];
     if (options.query) summaryParts.push(`matching "${options.query}"`);
     if (options.type) summaryParts.push(`(type: ${options.type})`);
+    if (options.package) summaryParts.push(`(package: ${options.package})`);
     console.log(`  ${summaryParts.join(' ')}`);
     if (searchResult && searchResult.total > filtered.length) {
       console.log(

@@ -3,7 +3,7 @@ import * as v from 'valibot';
 import { Command } from 'commander';
 import { getConfig } from '../utils/get-config';
 import { fetchRegistryItem } from '../registry/fetcher';
-import { readRegistryWithIncludes, createRegistryItem } from '../registry/loader';
+import { readRegistryWithIncludes, createRegistryItem, resolveRegistryItemName } from '../registry/loader';
 
 export const viewOptionsSchema = v.object({
   component: v.string(),
@@ -41,8 +41,11 @@ export const view = new Command()
 
     const rootDir = registryResult?.usesInclude ? path.dirname(registryFile) : config.resolvedPaths.cwd;
 
-    // Try local first, then remote
-    let resolvedItem = registryResult?.registry.items.find((i: any) => i.name === options.component) ?? null;
+    // Try local first, then remote. Bare aliases are resolved to their
+    // namespaced item name against the local registry (EC-E04).
+    const localItems: any[] = registryResult?.registry.items ?? [];
+    const resolvedName = resolveRegistryItemName(options.component, localItems);
+    let resolvedItem = localItems.find((i: any) => i.name === resolvedName) ?? null;
 
     if (!resolvedItem) {
       console.log('  Fetching from ui.soybeanjs.cn...');

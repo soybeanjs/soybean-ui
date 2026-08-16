@@ -12,6 +12,99 @@ export type RegistryLoadResult = {
 };
 
 /**
+ * Thrown when a bare (unprefixed) component reference matches an item in a
+ * non-core package. Per the add-namespace rule, only the core `ui` package is
+ * addressable without a prefix — other packages require `<package>/<name>`.
+ */
+export class PackageNamespaceRequiredError extends Error {
+  readonly pkg: string;
+
+  constructor(name: string, pkg: string) {
+    super(`Component "${name}" is from the "${pkg}" package — use the namespaced form: "sbean add ${pkg}/${name}".`);
+    this.name = 'PackageNamespaceRequiredError';
+    this.pkg = pkg;
+  }
+}
+
+/**
+ * Thrown when a bare (unprefixed) component reference matches items in more
+ * than one package. Callers should surface the candidate namespaces so the
+ * user can pick the namespaced form (EC-E04).
+ */
+export class AmbiguousComponentNameError extends Error {
+  readonly candidates: string[];
+
+  constructor(name: string, candidates: string[]) {
+    super(
+      `Component "${name}" is ambiguous across packages: ${candidates.join(', ')}. ` +
+        `Use the namespaced form (e.g. "${candidates[0]}").`
+    );
+    this.name = 'AmbiguousComponentNameError';
+    this.candidates = candidates;
+  }
+}
+
+/**
+ * The component segment of a (possibly namespaced) item name.
+ * `ui/accordion` → `accordion`; `@acme/foo` → `foo`; `accordion` → `accordion`.
+ */
+export function getItemBasename(itemName: string): string {
+  const slash = itemName.lastIndexOf('/');
+  return slash >= 0 ? itemName.slice(slash + 1) : itemName;
+}
+
+/**
+ * The package namespace of an item name. Registry-namespace references
+ * (`@acme/foo`) and bare names default to the core `ui` package.
+ * `ui-x/bubble` → `ui-x`; `@acme/foo` → `ui`; `accordion` → `ui`.
+ */
+export function getItemPackage(itemName: string): string {
+  if (itemName.startsWith('@')) return 'ui';
+  const slash = itemName.indexOf('/');
+  return slash > 0 ? itemName.slice(0, slash) : 'ui';
+}
+
+/**
+ * Resolve a user-supplied component reference to a canonical registry item name.
+ *
+ * Supports three forms (EC-E04 / EC-E05):
+ *   - `@acme/foo`   registry-namespace — passes through unchanged (fetcher owns it)
+ *   - `ui-x/bubble` namespaced package reference — passes through unchanged
+ *   - `bubble`      bare alias — resolves ONLY to the core `ui` package
+ *                   (`ui/bubble`). A bare name matching a non-core package
+ *                   throws {@link PackageNamespaceRequiredError}; ambiguous
+ *                   matches throw {@link AmbiguousComponentNameError}.
+ *
+ * Returns the input unchanged when no local match exists so callers can fall
+ * back to remote resolution with the original reference.
+ */
+export function resolveRegistryItemName(name: string, items: RegistryItem[]): string {
+  if (name.startsWith('@') || name.includes('/')) {
+    return name;
+  }
+
+  const matches = items.filter(item => getItemBasename(item.name) === name);
+
+  if (matches.length === 0) {
+    return name;
+  }
+
+  // Bare names address the core `ui` package only; other packages require the
+  // `<package>/` prefix (EC-E05).
+  const uiMatches = matches.filter(item => getItemPackage(item.name) === 'ui');
+
+  if (uiMatches.length === 1) {
+    return uiMatches[0].name;
+  }
+
+  if (matches.length === 1) {
+    throw new PackageNamespaceRequiredError(name, getItemPackage(matches[0].name));
+  }
+
+  throw new AmbiguousComponentNameError(name, matches.map(match => match.name).sort());
+}
+
+/**
  * Read registry.json, resolving any `include` references.
  */
 export async function readRegistryWithIncludes(

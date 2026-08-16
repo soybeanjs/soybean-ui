@@ -17,13 +17,26 @@ type ComponentDocLinks = {
 };
 
 function getComponentSlug(component: string): string {
-  const slashIndex = component.indexOf('/');
+  const slashIndex = component.lastIndexOf('/');
+  return slashIndex >= 0 ? component.slice(slashIndex + 1) : component;
+}
 
-  if (component.startsWith('@') && slashIndex > 0) {
-    return component.slice(slashIndex + 1);
+/**
+ * Docs route path for a component reference (EC-E04 / ecosystem.md §7.1).
+ * Core `ui` items live under `/components`; peripheral packages under
+ * `/<package>/components`. Bare and `@scope/` references default to `ui`.
+ */
+function getDocPath(component: string, slug: string): string {
+  let pkg = 'ui';
+
+  if (!component.startsWith('@')) {
+    const slashIndex = component.indexOf('/');
+    if (slashIndex > 0) {
+      pkg = component.slice(0, slashIndex);
+    }
   }
 
-  return component;
+  return pkg === 'ui' ? `/components/${slug}` : `/${pkg}/components/${slug}`;
 }
 
 function normalizeDocLinks(
@@ -31,18 +44,22 @@ function normalizeDocLinks(
   item: NonNullable<Awaited<ReturnType<typeof fetchRegistryItem>>>
 ): ComponentDocLinks {
   const slug = getComponentSlug(component);
+  // The fetched item carries the canonical namespaced name (e.g. `ui/button`),
+  // which the registry URL must use regardless of how the user referenced it.
+  const canonicalName = item.name;
   const registryUrl = typeof item.meta?.registryUrl === 'string' ? item.meta.registryUrl : null;
   const links: Record<string, string> = {};
 
   if (!component.startsWith('@')) {
-    links.docs = `${DOCS_URL}/components/${slug}`;
-    links.api = `${DOCS_URL}/components/${slug}`;
+    const docPath = getDocPath(component, slug);
+    links.docs = `${DOCS_URL}${docPath}`;
+    links.api = `${DOCS_URL}${docPath}`;
   }
 
   if (registryUrl) {
     links.registry = registryUrl.includes('{name}')
-      ? registryUrl.replace('{name}', slug)
-      : `${registryUrl.replace(/\/$/, '')}/${slug}.json`;
+      ? registryUrl.replace('{name}', canonicalName)
+      : `${registryUrl.replace(/\/$/, '')}/${canonicalName}.json`;
   }
 
   const sourceFile = item.files?.find(file => file.type === 'registry:ui') ?? item.files?.[0];

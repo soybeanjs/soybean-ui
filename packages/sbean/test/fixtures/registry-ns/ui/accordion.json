@@ -1,0 +1,7 @@
+{
+  "name": "ui/accordion",
+  "package": "ui",
+  "type": "registry:ui",
+  "description": "A vertically stacked set of interactive headings.",
+  "files": []
+}

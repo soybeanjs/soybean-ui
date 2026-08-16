@@ -61,11 +61,11 @@ export const build = new Command()
       // Validate the final output
       v.parse(registryItemSchema, itemWithContent);
 
-      await fs.writeFile(
-        path.resolve(options.outputDir, `${itemWithContent.name}.json`),
-        JSON.stringify(itemWithContent, null, 2),
-        'utf-8'
-      );
+      // Namespaced names (e.g. `ui/button`) are written into subdirectories so
+      // the generated `public/r/` mirrors the package layout (EC-E02).
+      const outputPath = path.resolve(options.outputDir, `${itemWithContent.name}.json`);
+      await fs.mkdir(path.dirname(outputPath), { recursive: true });
+      await fs.writeFile(outputPath, JSON.stringify(itemWithContent, null, 2), 'utf-8');
 
       builtCount++;
     }

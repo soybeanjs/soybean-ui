@@ -94,6 +94,21 @@ sbean search [query] [options]
 | `-l, --limit <limit>`   | 最大结果数（默认：50）                             |
 | `-o, --offset <offset>` | 分页偏移量                                         |
 
+### `sbean list`
+
+列出 registry 中的条目，可按包过滤。
+
+```bash
+sbean list [options]
+```
+
+| 选项               | 描述                                        |
+| ------------------ | ------------------------------------------- |
+| `--package <name>` | 按包命名空间过滤：ui / ui-x / admin / chart |
+| `--json`           | 以 JSON 格式输出                            |
+
+条目按包命名空间区分（`ui/button`、`ui-x/bubble`、`admin/app-layout`、…）。
+
 ### `sbean view`
 
 查看组件源码。
@@ -143,8 +158,6 @@ sbean preset <preset>
 
 ```json
 {
-  "style": "soybean",
-  "isMonorepo": false,
   "iconLibrary": "lucide",
   "uno": {
     "base": "zinc",
@@ -156,28 +169,24 @@ sbean preset <preset>
     "sans": "inter",
     "heading": "inherit"
   },
-  "menu": {
-    "accent": "subtle",
-    "color": "default"
+  "aliases": {
+    "ui": "#ui"
   },
-  "uiDir": "src/ui"
+  "registries": {}
 }
 ```
 
-| 字段           | 类型      | 描述                             |
-| -------------- | --------- | -------------------------------- |
-| `isMonorepo`   | `boolean` | 是否为 monorepo                  |
-| `uiDir`        | `string`  | 组件输出目录（相对于项目根目录） |
-| `style`        | `string`  | 样式预设名称                     |
-| `iconLibrary`  | `string`  | 图标库前缀                       |
-| `uno.size`     | `string`  | 基础组件尺寸                     |
-| `uno.base`     | `string`  | 基础（中性）色                   |
-| `uno.primary`  | `string`  | 主（品牌）色                     |
-| `uno.radius`   | `string`  | 圆角大小                         |
-| `font.sans`    | `string`  | 无衬线字体名称                   |
-| `font.heading` | `string`  | 标题字体或 `"inherit"`           |
-| `menu.accent`  | `string`  | 菜单强调样式：subtle / bold      |
-| `menu.color`   | `string`  | 菜单颜色方案                     |
+| 字段           | 类型     | 描述                                                                                                        |
+| -------------- | -------- | ----------------------------------------------------------------------------------------------------------- |
+| `iconLibrary`  | `string` | 图标库前缀                                                                                                  |
+| `uno.base`     | `string` | 基础（中性）色                                                                                              |
+| `uno.primary`  | `string` | 主（品牌）色                                                                                                |
+| `uno.size`     | `string` | 基础组件尺寸                                                                                                |
+| `uno.radius`   | `string` | 圆角大小                                                                                                    |
+| `font.sans`    | `string` | 无衬线字体名称                                                                                              |
+| `font.heading` | `string` | 标题字体或 `"inherit"`                                                                                      |
+| `aliases`      | `object` | 各包 import 别名（`ui`/`ui-x`/`admin`/`chart`）——经 `tsconfig` paths 映射到输出目录（默认 `src/<package>`） |
+| `registries`   | `object` | 额外 registry 命名空间 → URL 映射                                                                           |
 
 ## 项目结构
 
@@ -240,4 +249,4 @@ import { buttonVariants } from '#ui/styles/button';
 
 ## 注册表
 
-SBean 从 SoybeanUI 注册表获取组件源码 `https://ui.soybeanjs.cn/r/{name}.json`。本地缓存（`~/.sbean/cache`）保持 24 小时 TTL 并支持 ETag 条件请求。
+SBean 从 SoybeanUI 注册表获取组件源码 `https://ui.soybeanjs.cn/r/{name}.json`。注册表条目**按包命名空间区分**——如 `ui/button` 由 `r/ui/button.json` 提供，`ui-x/bubble` 由 `r/ui-x/bubble.json` 提供。核心 `ui` 组件可省略前缀（`sbean add button`）；其他包的组件必须带命名空间前缀（`sbean add ui-x/bubble`）。本地缓存（`~/.sbean/cache`）保持 24 小时 TTL 并支持 ETag 条件请求。

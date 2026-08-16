@@ -67,16 +67,74 @@ export async function getConfig(cwd: string): Promise<Config | null> {
 }
 
 /**
- * Resolve uiDir to an absolute path. Always defaults to `src/ui`.
+ * Resolve an import alias (shadcn-vue style, EC-E03) to an absolute output
+ * directory.
+ *
+ * Resolution order:
+ *   1. `compilerOptions.paths` in `tsconfig.json` / `jsconfig.json`
+ *      (e.g. `#ui-x/*` → `./src/ui-x/*`).
+ *   2. Convention fallback: `#ui` / `@/ui` → `src/ui`; explicit relative
+ *      (`./src/ui`, `src/ui`) used as-is; bare names → `src/<name>`.
+ */
+export async function resolveAliasDir(cwd: string, alias: string | undefined): Promise<string | null> {
+  if (!alias) return null;
+
+  // 1) tsconfig / jsconfig paths
+  for (const file of ['tsconfig.json', 'jsconfig.json']) {
+    try {
+      const raw = JSON.parse(await fs.readFile(path.join(cwd, file), 'utf-8')) as {
+        compilerOptions?: { paths?: Record<string, string[]> };
+      };
+      const paths = raw?.compilerOptions?.paths;
+      const target = paths?.[`${alias}/*`]?.[0] ?? paths?.[alias]?.[0];
+
+      if (typeof target === 'string') {
+        return path.resolve(cwd, target.replace(/^\.\//, '').replace(/\*$/, ''));
+      }
+    } catch {
+      // Ignore unreadable configs
+    }
+  }
+
+  // 2) Convention fallback
+  const cleaned = alias
+    .replace(/^[#@]\//, '')
+    .replace(/^[#@]/, '')
+    .replace(/^\//, '');
+  if (!cleaned) return null;
+
+  if (cleaned.startsWith('.') || cleaned.startsWith('src/') || path.isAbsolute(cleaned)) {
+    return path.resolve(cwd, cleaned);
+  }
+
+  return path.resolve(cwd, 'src', cleaned);
+}
+
+/**
+ * Resolve uiDir / per-package dirs to absolute paths. Each package alias maps
+ * to an output directory; `ui` always resolves (default `src/ui`).
  */
 export async function resolveConfigPaths(cwd: string, config: v.InferOutput<typeof rawConfigSchema>): Promise<Config> {
-  const uiAbs = path.resolve(cwd, 'src/ui');
+  const aliases = config.aliases ?? {};
+
+  const packages: Record<string, string> = {};
+
+  const uiDir = (await resolveAliasDir(cwd, aliases.ui)) ?? path.resolve(cwd, 'src/ui');
+  packages.ui = uiDir;
+
+  for (const [pkg, alias] of Object.entries(aliases)) {
+    if (pkg === 'ui') continue;
+
+    const dir = (await resolveAliasDir(cwd, alias)) ?? path.resolve(cwd, `src/${pkg}`);
+    packages[pkg] = dir;
+  }
 
   return v.parse(configSchema, {
     ...config,
     resolvedPaths: {
       cwd,
-      ui: uiAbs
+      ui: uiDir,
+      packages
     }
   });
 }
@@ -96,6 +154,9 @@ export async function createDefaultConfig(
       radius: 'md'
     },
     font: {},
+    aliases: {
+      ui: '#ui'
+    },
     registries: {},
     ...overrides
   };

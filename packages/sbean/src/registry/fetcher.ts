@@ -11,6 +11,7 @@ import {
   getCachedRegistryCatalogRaw,
   setCachedRegistryCatalog
 } from './cache';
+import { getItemBasename, getItemPackage, AmbiguousComponentNameError, PackageNamespaceRequiredError } from './loader';
 import { registryItemSchema } from './schema';
 import type { RegistryItem } from './schema';
 
@@ -180,6 +181,27 @@ export async function fetchRegistryItem(
       if (targets.length === 1) {
         throw error;
       }
+    }
+  }
+
+  // Bare-name alias resolution (EC-E04/E05): direct lookup missed (e.g. `button`
+  // vs the namespaced `ui/button`). Bare names resolve ONLY to the core `ui`
+  // package — non-core packages require the `<package>/` prefix.
+  if (!name.includes('/') && !name.startsWith('@')) {
+    const catalog = await fetchRegistryCatalog(config, registryUrl);
+    const matches = catalog.filter(item => getItemBasename(item.name) === name);
+    const uiMatches = matches.filter(item => getItemPackage(item.name) === 'ui');
+
+    if (uiMatches.length === 1) {
+      return fetchRegistryItem(uiMatches[0].name, config, registryUrl);
+    }
+
+    if (matches.length === 1) {
+      throw new PackageNamespaceRequiredError(name, getItemPackage(matches[0].name));
+    }
+
+    if (matches.length > 1) {
+      throw new AmbiguousComponentNameError(name, matches.map(match => match.name).sort());
     }
   }
 

@@ -49,6 +49,63 @@ describe('generated file mapping', () => {
   });
 });
 
+describe('multi-package path mapping (EC-E03)', () => {
+  const packages = {
+    ui: '/tmp/project/src/ui',
+    'ui-x': '/tmp/project/src/ui-x',
+    admin: '/tmp/project/src/admin'
+  };
+
+  it('routes ui-x source paths into the ui-x package dir', () => {
+    const targetPath = resolveTargetPath(
+      {
+        path: 'packages/ui-x/src/components/bubble/bubble.vue',
+        type: 'registry:ui'
+      },
+      { uiDir: packages.ui, packages }
+    );
+
+    expect(targetPath).toBe('/tmp/project/src/ui-x/components/bubble/bubble.vue');
+  });
+
+  it('routes admin source paths into the admin package dir', () => {
+    const targetPath = resolveTargetPath(
+      {
+        path: 'packages/admin/src/components/app-layout/app-layout.vue',
+        type: 'registry:ui'
+      },
+      { uiDir: packages.ui, packages }
+    );
+
+    expect(targetPath).toBe('/tmp/project/src/admin/components/app-layout/app-layout.vue');
+  });
+
+  it('resolves an alias-aware target to the package dir (shadcn v4.7 style)', () => {
+    const targetPath = resolveTargetPath(
+      {
+        path: 'packages/ui-x/src/components/bubble/bubble.vue',
+        type: 'registry:ui',
+        target: '#ui-x/custom/bubble.vue'
+      },
+      { uiDir: packages.ui, packages }
+    );
+
+    expect(targetPath).toBe('/tmp/project/src/ui-x/custom/bubble.vue');
+  });
+
+  it('keeps core ui mapping unchanged', () => {
+    const targetPath = resolveTargetPath(
+      {
+        path: `${UI_SOURCE_PATH}/components/button/button.vue`,
+        type: 'registry:ui'
+      },
+      { uiDir: packages.ui, packages }
+    );
+
+    expect(targetPath).toBe('/tmp/project/src/ui/components/button/button.vue');
+  });
+});
+
 describe('generated import mapping', () => {
   it('rewrites @/ styles, theme, components under #ui/ prefix', () => {
     const output = transformImports(

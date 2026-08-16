@@ -1,0 +1,7 @@
+{
+  "name": "admin/app-layout",
+  "package": "admin",
+  "type": "registry:ui",
+  "description": "Admin application shell layout.",
+  "files": []
+}

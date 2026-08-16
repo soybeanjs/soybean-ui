@@ -9,8 +9,12 @@ import fs from 'fs/promises';
 import os from 'os';
 import path from 'path';
 
-const CACHE_DIR = process.env.SBEAN_CACHE_DIR || path.join(os.homedir(), '.sbean', 'cache');
 const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+/** Resolve the cache directory lazily so `SBEAN_CACHE_DIR` overrides take effect at call time. */
+function getCacheDir(): string {
+  return process.env.SBEAN_CACHE_DIR || path.join(os.homedir(), '.sbean', 'cache');
+}
 
 export interface CacheEntry<T> {
   data: T;
@@ -23,7 +27,7 @@ export interface CacheEntry<T> {
  */
 function getCacheFilePath(namespace: string, itemName: string): string {
   const sanitizedNamespace = namespace.replace(/[@/]/g, '_');
-  return path.join(CACHE_DIR, `${sanitizedNamespace}-${itemName}.json`);
+  return path.join(getCacheDir(), `${sanitizedNamespace}-${itemName}.json`);
 }
 
 /**
@@ -83,7 +87,7 @@ export async function setCachedRegistryItem<T>(
   etag?: string
 ): Promise<void> {
   try {
-    await fs.mkdir(CACHE_DIR, { recursive: true });
+    await fs.mkdir(getCacheDir(), { recursive: true });
 
     const filePath = getCacheFilePath(namespace, itemName);
     const entry: CacheEntry<T> = {
@@ -103,7 +107,7 @@ export async function setCachedRegistryItem<T>(
  */
 export async function clearRegistryCache(): Promise<void> {
   try {
-    await fs.rm(CACHE_DIR, { recursive: true, force: true });
+    await fs.rm(getCacheDir(), { recursive: true, force: true });
   } catch {
     // Silently fail
   }
@@ -114,12 +118,12 @@ export async function clearRegistryCache(): Promise<void> {
  */
 export async function clearRegistryCacheByNamespace(namespace: string): Promise<void> {
   try {
-    const files = await fs.readdir(CACHE_DIR);
+    const files = await fs.readdir(getCacheDir());
     const sanitizedNamespace = namespace.replace(/[@/]/g, '_');
 
     for (const file of files) {
       if (file.startsWith(sanitizedNamespace)) {
-        await fs.unlink(path.join(CACHE_DIR, file)).catch(() => {});
+        await fs.unlink(path.join(getCacheDir(), file)).catch(() => {});
       }
     }
   } catch {
@@ -151,7 +155,7 @@ export async function getCachedRegistryItemEtag(namespace: string, itemName: str
  */
 function getCatalogCacheFilePath(namespace: string): string {
   const sanitizedNamespace = namespace.replace(/[@/]/g, '_');
-  return path.join(CACHE_DIR, `${sanitizedNamespace}-catalog.json`);
+  return path.join(getCacheDir(), `${sanitizedNamespace}-catalog.json`);
 }
 
 /**
@@ -195,7 +199,7 @@ export async function getCachedRegistryCatalog<T>(namespace: string): Promise<T 
  */
 export async function setCachedRegistryCatalog<T>(namespace: string, data: T, etag?: string): Promise<void> {
   try {
-    await fs.mkdir(CACHE_DIR, { recursive: true });
+    await fs.mkdir(getCacheDir(), { recursive: true });
 
     const filePath = getCatalogCacheFilePath(namespace);
     const entry: CacheEntry<T> = {
@@ -239,13 +243,13 @@ export async function getRegistryCacheStats(): Promise<{
   newestEntry: number;
 } | null> {
   try {
-    const files = await fs.readdir(CACHE_DIR);
+    const files = await fs.readdir(getCacheDir());
     let totalSize = 0;
     let oldestEntry = Date.now();
     let newestEntry = 0;
 
     for (const file of files) {
-      const filePath = path.join(CACHE_DIR, file);
+      const filePath = path.join(getCacheDir(), file);
       const stat = await fs.stat(filePath);
       const content = await fs.readFile(filePath, 'utf-8');
       const entry = JSON.parse(content) as CacheEntry<unknown>;

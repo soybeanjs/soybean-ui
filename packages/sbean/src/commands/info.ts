@@ -100,7 +100,10 @@ export const info = new Command()
 
       console.log();
       console.log('  Paths');
-      console.log(`    ui  →  src/ui  →  ${config.resolvedPaths.ui}`);
+      for (const [pkg, dir] of Object.entries(config.resolvedPaths.packages)) {
+        const alias = config.aliases?.[pkg] ?? (pkg === 'ui' ? '#ui' : `#${pkg}`);
+        console.log(`    ${pkg.padEnd(8)} ${alias.padEnd(10)} → ${dir}`);
+      }
     } else {
       console.log('  No sbean.json found. Run "sbean init" to create one.');
     }

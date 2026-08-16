@@ -8,6 +8,7 @@ import { diff } from './commands/diff';
 import { docs } from './commands/docs';
 import { info } from './commands/info';
 import { init } from './commands/init';
+import { list } from './commands/list';
 import { mcp } from './commands/mcp';
 import { preset } from './commands/preset';
 import { registry } from './commands/registry';
@@ -36,6 +37,7 @@ async function main() {
     .addCommand(search)
     .addCommand(template)
     .addCommand(info)
+    .addCommand(list)
     .addCommand(mcp)
     .addCommand(registry)
     .addCommand(preset)

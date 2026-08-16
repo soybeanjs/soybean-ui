@@ -1,0 +1,10 @@
+{
+  "name": "ui-x/bubble",
+  "package": "ui-x",
+  "type": "registry:ui",
+  "description": "AI conversation bubble.",
+  "dependencies": ["@soybeanjs/ui"],
+  "files": [
+    { "path": "components/bubble/bubble.vue", "type": "registry:ui", "content": "<template><div /></template>" }
+  ]
+}

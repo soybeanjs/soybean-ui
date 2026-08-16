@@ -14,11 +14,12 @@ import * as v from 'valibot';
 import { Command } from 'commander';
 import { UI_SOURCE_PATH } from '../registry/constants';
 import { registrySchema } from '../registry/schema';
-import type { RegistryItem, RegistryItemFile } from '../registry/schema';
+import type { Registry, RegistryItem, RegistryItemFile } from '../registry/schema';
 
 export const scanOptionsSchema = v.object({
   cwd: v.string(),
   output: v.string(),
+  package: v.optional(v.string()),
   merge: v.optional(v.boolean(), true)
 });
 
@@ -40,13 +41,19 @@ export const scan = new Command()
   .description('scan the component source tree and generate registry.json')
   .option('-c, --cwd <cwd>', 'workspace root', process.cwd())
   .option('-o, --output <path>', 'output path for registry.json', 'registry.json')
+  .option('-p, --package <name>', 'package namespace for generated items (default: ui)', 'ui')
   .option('--no-merge', 'do not merge with existing registry.json (overwrite)')
   .action(async opts => {
     const options = v.parse(scanOptionsSchema, {
       cwd: path.resolve(opts.cwd),
       output: opts.output,
+      package: opts.package,
       merge: opts.merge
     });
+
+    // Namespace prefix for generated items — the scanned source tree belongs
+    // to one package (defaults to the core `ui` package, EC-E02).
+    const pkg = options.package || 'ui';
 
     const componentsDir = path.join(options.cwd, `${UI_SOURCE_PATH}/components`);
 
@@ -59,10 +66,12 @@ export const scan = new Command()
 
     // Load existing registry (for descriptions, categories, etc.)
     let existingMap = new Map<string, RegistryItem>();
+    let existingPackages: Registry['packages'];
     if (options.merge) {
       try {
         const existingRaw = JSON.parse(await fs.readFile(path.resolve(options.cwd, options.output), 'utf-8'));
         const existing = v.parse(registrySchema, existingRaw);
+        existingPackages = existing.packages;
         for (const item of existing.items) {
           existingMap.set(item.name, item);
         }
@@ -108,15 +117,20 @@ export const scan = new Command()
         allComponentNames
       );
 
-      // Merge with existing
-      const existing = existingMap.get(dir.name);
+      // Merge with existing (namespaced item name — EC-E02)
+      const itemName = `${pkg}/${dir.name}`;
+      const existing = existingMap.get(itemName);
 
       // Merge external dependencies: keep existing + add new (avoid losing hand-curated deps)
       const mergedDeps = mergeStringArrays(existing?.dependencies, externalDeps);
-      const mergedRegistryDeps = mergeStringArrays(existing?.registryDependencies, registryDeps);
+      const mergedRegistryDeps = mergeStringArrays(
+        existing?.registryDependencies,
+        registryDeps.map(dep => `${pkg}/${dep}`)
+      );
 
       const item = {
-        name: dir.name,
+        name: itemName,
+        package: pkg,
         type: existing?.type ?? 'registry:ui',
         description: existing?.description,
         categories: existing?.categories,
@@ -150,6 +164,7 @@ export const scan = new Command()
             'soybean-ui')
           : 'soybean-ui',
       homepage: 'https://ui.soybeanjs.cn',
+      packages: existingPackages,
       items
     };
 

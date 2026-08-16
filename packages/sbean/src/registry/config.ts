@@ -60,6 +60,13 @@ export const rawConfigSchema = v.object({
     sans: v.optional(v.picklist(PRESET_FONTS)),
     heading: v.optional(v.picklist(['inherit' as const, ...PRESET_FONTS]))
   }),
+  /**
+   * Import aliases per package (shadcn-vue style, EC-E03). Key = package
+   * namespace (ui, ui-x, admin, chart); value = import alias prefix such as
+   * `#ui` / `#ui-x` / `@/ui`. The CLI resolves each alias to an output
+   * directory (via tsconfig paths, else `src/<package>`).
+   */
+  aliases: v.optional(v.record(v.string(), v.string())),
   registries: v.optional(v.record(v.string(), v.string()))
 });
 
@@ -73,7 +80,10 @@ export const configSchema = v.object({
   ...rawConfigSchema.entries,
   resolvedPaths: v.object({
     cwd: v.string(),
-    ui: v.string()
+    /** Core `ui` package output dir (alias `ui`, default `src/ui`). */
+    ui: v.string(),
+    /** Per-package output dirs: package namespace → absolute directory. */
+    packages: v.record(v.string(), v.string())
   })
 });
 

@@ -7,7 +7,13 @@ import path from 'path';
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import * as v from 'valibot';
 import { rawConfigSchema } from '../src/registry/config';
-import { getConfig, createDefaultConfig, writeConfig, resolveConfigPaths } from '../src/utils/get-config';
+import {
+  getConfig,
+  createDefaultConfig,
+  writeConfig,
+  resolveConfigPaths,
+  resolveAliasDir
+} from '../src/utils/get-config';
 
 describe('config management', () => {
   let tmpDir: string;
@@ -104,6 +110,65 @@ describe('config management', () => {
       });
 
       expect(resolved.resolvedPaths.ui).toBe(path.join(tmpDir, 'src', 'ui'));
+    });
+
+    it('resolves per-package dirs from aliases (EC-E03)', async () => {
+      const resolved = await resolveConfigPaths(tmpDir, {
+        iconLibrary: 'lucide',
+        uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
+        font: {},
+        aliases: {
+          ui: '#ui',
+          'ui-x': '#ui-x',
+          admin: './src/soybean-admin'
+        }
+      });
+
+      expect(resolved.resolvedPaths.packages.ui).toBe(path.join(tmpDir, 'src', 'ui'));
+      expect(resolved.resolvedPaths.packages['ui-x']).toBe(path.join(tmpDir, 'src', 'ui-x'));
+      expect(resolved.resolvedPaths.packages.admin).toBe(path.join(tmpDir, 'src', 'soybean-admin'));
+    });
+
+    it('defaults missing aliases to src/<package>', async () => {
+      const resolved = await resolveConfigPaths(tmpDir, {
+        iconLibrary: 'lucide',
+        uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
+        font: {},
+        aliases: { 'ui-x': '#ui-x' }
+      });
+
+      // `ui` is always present even without an explicit alias
+      expect(resolved.resolvedPaths.packages.ui).toBe(path.join(tmpDir, 'src', 'ui'));
+      expect(resolved.resolvedPaths.packages['ui-x']).toBe(path.join(tmpDir, 'src', 'ui-x'));
+    });
+  });
+
+  describe('resolveAliasDir', () => {
+    it('resolves tsconfig paths over the convention fallback', async () => {
+      await fs.writeFile(
+        path.join(tmpDir, 'tsconfig.json'),
+        JSON.stringify({
+          compilerOptions: {
+            paths: { '#ui/*': ['./custom/ui/*'] }
+          }
+        })
+      );
+
+      expect(await resolveAliasDir(tmpDir, '#ui')).toBe(path.join(tmpDir, 'custom', 'ui'));
+    });
+
+    it('falls back to src/<name> convention', async () => {
+      expect(await resolveAliasDir(tmpDir, '#ui')).toBe(path.join(tmpDir, 'src', 'ui'));
+      expect(await resolveAliasDir(tmpDir, '@/ui')).toBe(path.join(tmpDir, 'src', 'ui'));
+    });
+
+    it('uses explicit relative dirs as-is', async () => {
+      expect(await resolveAliasDir(tmpDir, './src/ui')).toBe(path.join(tmpDir, 'src', 'ui'));
+      expect(await resolveAliasDir(tmpDir, 'src/admin')).toBe(path.join(tmpDir, 'src', 'admin'));
+    });
+
+    it('returns null for empty alias', async () => {
+      expect(await resolveAliasDir(tmpDir, undefined)).toBeNull();
     });
   });
 });

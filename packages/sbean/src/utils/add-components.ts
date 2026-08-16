@@ -4,7 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { UI_SOURCE_PATH } from '../registry/constants';
 import { fetchRegistryItem } from '../registry/fetcher';
-import { readRegistryWithIncludes } from '../registry/loader';
+import { readRegistryWithIncludes, resolveRegistryItemName, getItemPackage } from '../registry/loader';
 import type { RegistryItem, RegistryItemFile } from '../registry/schema';
 import type { Config } from './get-config';
 import { updateDependencies } from './updaters/update-dependencies';
@@ -140,7 +140,10 @@ export async function addComponents(
     transformCtx,
     dryRun: options.dryRun,
     diff: options.diff,
-    silent
+    silent,
+    // EC-E03: per-package output dirs, so ui-x/admin/chart items land in their
+    // own directory instead of the core `src/ui`.
+    packages: config.resolvedPaths.packages
   };
 
   const allDeps: string[] = [];
@@ -164,8 +167,15 @@ export async function addComponents(
   const resolved: ResolvedRegistryItem[] = [];
 
   const resolveRegistryDependencyName = (dependencyName: string, item: RegistryItem): string => {
-    if (dependencyName.startsWith('@')) {
+    if (dependencyName.startsWith('@') || dependencyName.includes('/')) {
       return dependencyName;
+    }
+
+    // Bare dependency — derive the owning package from the item's `package`
+    // field (namespaced registry, EC-E02), falling back to the legacy
+    // registryNamespace metadata for remote registries.
+    if (typeof item.package === 'string' && item.package) {
+      return `${item.package}/${dependencyName}`;
     }
 
     const registryNamespace = typeof item.meta?.registryNamespace === 'string' ? item.meta.registryNamespace : null;
@@ -178,7 +188,7 @@ export async function addComponents(
   };
 
   const queue = [...componentNames];
-  const queued = new Set(componentNames);
+  const queued = new Set<string>(componentNames);
   const processed = new Set<string>();
 
   // Phase 1 — BFS resolution: load items, expand files, queue dependencies.
@@ -191,8 +201,6 @@ export async function addComponents(
       continue;
     }
 
-    processed.add(componentName);
-
     const item = await loadRegistryItem(componentName, localItems, config);
 
     if (!item) {
@@ -202,6 +210,12 @@ export async function addComponents(
       }
       continue;
     }
+
+    // Canonical (namespaced) identity — `loadRegistryItem` resolves bare
+    // aliases to their namespaced item name (EC-E04).
+    const resolvedName = item.name;
+    processed.add(resolvedName);
+    queued.add(resolvedName);
 
     const expandedFiles = item.files?.length ? await expandRegistryItemFiles(item.files) : [];
 
@@ -222,7 +236,7 @@ export async function addComponents(
     const transformedDeps = registryDependencies.map(dep => resolveRegistryDependencyName(dep, item));
 
     resolved.push({
-      name: componentName,
+      name: resolvedName,
       dependencies: transformedDeps,
       item,
       expandedFiles
@@ -257,7 +271,11 @@ export async function addComponents(
     const filesToAdd = expandedFiles.filter(file => WRITABLE_FILE_TYPES.has(file.type));
 
     if (filesToAdd.length > 0) {
-      const filesAdded = await updateFiles(filesToAdd, targetDir, updateOpts);
+      // Route each item to its package directory (EC-E03); `--path` overrides
+      // all packages to a single base dir (backward compatible).
+      const pkg = item.package ?? getItemPackage(item.name);
+      const itemDir = options.path ? targetDir : (config.resolvedPaths.packages[pkg] ?? config.resolvedPaths.ui);
+      const filesAdded = await updateFiles(filesToAdd, itemDir, { ...updateOpts, package: pkg });
       added += filesAdded.length;
       addedFiles.push(...filesAdded);
     }
@@ -303,7 +321,10 @@ async function loadRegistryItem(
   config: Config
 ): Promise<RegistryItem | null> {
   if (localItems) {
-    const localItem = localItems.find(item => item.name === componentName);
+    // Resolve bare aliases against the local registry first (EC-E04).
+    // Ambiguous names throw AmbiguousComponentNameError.
+    const resolvedName = resolveRegistryItemName(componentName, localItems);
+    const localItem = localItems.find(item => item.name === resolvedName);
 
     if (localItem) {
       return localItem;

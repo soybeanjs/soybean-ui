@@ -2,14 +2,32 @@
   "name": "soybean-ui",
   "homepage": "https://ui.soybeanjs.cn",
   "packages": [
-    { "name": "ui", "scope": "@soybeanjs/ui", "prefix": "S" },
-    { "name": "ui-x", "scope": "@soybeanjs/ui-x", "prefix": "Sx" },
-    { "name": "admin", "scope": "@soybeanjs/admin", "prefix": "S", "nounPrefix": "App" },
-    { "name": "chart", "scope": "@soybeanjs/chart", "prefix": "S", "nounPrefix": "Chart" }
+    {
+      "name": "ui",
+      "scope": "@soybeanjs/ui",
+      "prefix": "S"
+    },
+    {
+      "name": "ui-x",
+      "scope": "@soybeanjs/ui-x",
+      "prefix": "Sx"
+    },
+    {
+      "name": "admin",
+      "scope": "@soybeanjs/admin",
+      "prefix": "S",
+      "nounPrefix": "App"
+    },
+    {
+      "name": "chart",
+      "scope": "@soybeanjs/chart",
+      "prefix": "S",
+      "nounPrefix": "Chart"
+    }
   ],
   "items": [
     {
-      "name": "accordion",
+      "name": "ui/accordion",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -25,10 +43,11 @@
           "path": "packages/ui/src/components/accordion/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "affix",
+      "name": "ui/affix",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -44,10 +63,11 @@
           "path": "packages/ui/src/components/affix/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "alert",
+      "name": "ui/alert",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -63,10 +83,11 @@
           "path": "packages/ui/src/components/alert/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "anchor",
+      "name": "ui/anchor",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -82,10 +103,11 @@
           "path": "packages/ui/src/components/anchor/anchor.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "arrow",
+      "name": "ui/arrow",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -93,10 +115,11 @@
           "path": "packages/ui/src/components/arrow/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "aspect-ratio",
+      "name": "ui/aspect-ratio",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -104,10 +127,11 @@
           "path": "packages/ui/src/components/aspect-ratio/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "autocomplete",
+      "name": "ui/autocomplete",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -123,10 +147,11 @@
           "path": "packages/ui/src/components/autocomplete/autocomplete.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "avatar",
+      "name": "ui/avatar",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -142,13 +167,14 @@
           "path": "packages/ui/src/components/avatar/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "backtop",
+      "name": "ui/backtop",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
-      "registryDependencies": ["icon"],
+      "registryDependencies": ["ui/icon"],
       "files": [
         {
           "path": "packages/ui/src/components/backtop/backtop.vue",
@@ -162,10 +188,11 @@
           "path": "packages/ui/src/components/backtop/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "badge",
+      "name": "ui/badge",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -181,10 +208,11 @@
           "path": "packages/ui/src/components/badge/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "bottom-sheet",
+      "name": "ui/bottom-sheet",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -200,10 +228,11 @@
           "path": "packages/ui/src/components/bottom-sheet/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "breadcrumb",
+      "name": "ui/breadcrumb",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -219,13 +248,14 @@
           "path": "packages/ui/src/components/breadcrumb/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "button",
+      "name": "ui/button",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
-      "registryDependencies": ["icon", "link"],
+      "registryDependencies": ["ui/icon", "ui/link"],
       "files": [
         {
           "path": "packages/ui/src/components/button/button-group.vue",
@@ -259,13 +289,14 @@
           "path": "packages/ui/src/components/button/button-link.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "calendar",
+      "name": "ui/calendar",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
-      "registryDependencies": ["icon", "select"],
+      "registryDependencies": ["ui/icon", "ui/select"],
       "files": [
         {
           "path": "packages/ui/src/components/calendar/calendar.vue",
@@ -279,13 +310,14 @@
           "path": "packages/ui/src/components/calendar/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "calendar-range",
+      "name": "ui/calendar-range",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["select"],
+      "registryDependencies": ["ui/select"],
       "files": [
         {
           "path": "packages/ui/src/components/calendar-range/types.ts",
@@ -299,13 +331,14 @@
           "path": "packages/ui/src/components/calendar-range/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "card",
+      "name": "ui/card",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["button"],
+      "registryDependencies": ["ui/button"],
       "files": [
         {
           "path": "packages/ui/src/components/card/card.vue",
@@ -323,10 +356,11 @@
           "path": "packages/ui/src/components/card/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "carousel",
+      "name": "ui/carousel",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -342,10 +376,11 @@
           "path": "packages/ui/src/components/carousel/carousel.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "checkbox",
+      "name": "ui/checkbox",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -373,10 +408,11 @@
           "path": "packages/ui/src/components/checkbox/checkbox.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "clipboard",
+      "name": "ui/clipboard",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -392,10 +428,11 @@
           "path": "packages/ui/src/components/clipboard/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "collapsible",
+      "name": "ui/collapsible",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -411,10 +448,11 @@
           "path": "packages/ui/src/components/collapsible/collapsible.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "color-area",
+      "name": "ui/color-area",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -430,10 +468,11 @@
           "path": "packages/ui/src/components/color-area/color-area.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "color-field",
+      "name": "ui/color-field",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -449,10 +488,11 @@
           "path": "packages/ui/src/components/color-field/color-field.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "color-picker",
+      "name": "ui/color-picker",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -468,10 +508,11 @@
           "path": "packages/ui/src/components/color-picker/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "color-slider",
+      "name": "ui/color-slider",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -487,10 +528,11 @@
           "path": "packages/ui/src/components/color-slider/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "color-swatch",
+      "name": "ui/color-swatch",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -506,10 +548,11 @@
           "path": "packages/ui/src/components/color-swatch/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "color-swatch-picker",
+      "name": "ui/color-swatch-picker",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -525,10 +568,11 @@
           "path": "packages/ui/src/components/color-swatch-picker/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "combobox",
+      "name": "ui/combobox",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -544,10 +588,11 @@
           "path": "packages/ui/src/components/combobox/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "command",
+      "name": "ui/command",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -563,13 +608,14 @@
           "path": "packages/ui/src/components/command/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "config-provider",
+      "name": "ui/config-provider",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/theme"],
-      "registryDependencies": ["dialog", "icon", "progress", "toast"],
+      "registryDependencies": ["ui/dialog", "ui/icon", "ui/progress", "ui/toast"],
       "files": [
         {
           "path": "packages/ui/src/components/config-provider/context.ts",
@@ -587,10 +633,11 @@
           "path": "packages/ui/src/components/config-provider/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "context-menu",
+      "name": "ui/context-menu",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -618,10 +665,11 @@
           "path": "packages/ui/src/components/context-menu/context-menu.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "date-field",
+      "name": "ui/date-field",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -637,13 +685,14 @@
           "path": "packages/ui/src/components/date-field/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "date-picker",
+      "name": "ui/date-picker",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
-      "registryDependencies": ["calendar"],
+      "registryDependencies": ["ui/calendar"],
       "files": [
         {
           "path": "packages/ui/src/components/date-picker/date-picker.vue",
@@ -657,10 +706,11 @@
           "path": "packages/ui/src/components/date-picker/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "date-range-field",
+      "name": "ui/date-range-field",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -676,13 +726,14 @@
           "path": "packages/ui/src/components/date-range-field/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "date-range-picker",
+      "name": "ui/date-range-picker",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
-      "registryDependencies": ["calendar-range"],
+      "registryDependencies": ["ui/calendar-range"],
       "files": [
         {
           "path": "packages/ui/src/components/date-range-picker/date-range-picker.vue",
@@ -696,10 +747,11 @@
           "path": "packages/ui/src/components/date-range-picker/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "dialog",
+      "name": "ui/dialog",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -719,10 +771,11 @@
           "path": "packages/ui/src/components/dialog/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "drawer",
+      "name": "ui/drawer",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -738,10 +791,11 @@
           "path": "packages/ui/src/components/drawer/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "dropdown-menu",
+      "name": "ui/dropdown-menu",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -769,10 +823,11 @@
           "path": "packages/ui/src/components/dropdown-menu/dropdown-menu.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "editable",
+      "name": "ui/editable",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -788,10 +843,11 @@
           "path": "packages/ui/src/components/editable/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "empty",
+      "name": "ui/empty",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -807,10 +863,11 @@
           "path": "packages/ui/src/components/empty/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "form",
+      "name": "ui/form",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -842,10 +899,11 @@
           "path": "packages/ui/src/components/form/form.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "hover-card",
+      "name": "ui/hover-card",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -861,10 +919,11 @@
           "path": "packages/ui/src/components/hover-card/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "icon",
+      "name": "ui/icon",
       "type": "registry:ui",
       "dependencies": ["@iconify/vue", "@soybeanjs/headless"],
       "files": [
@@ -880,10 +939,11 @@
           "path": "packages/ui/src/components/icon/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "input",
+      "name": "ui/input",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -899,10 +959,11 @@
           "path": "packages/ui/src/components/input/input.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "input-number",
+      "name": "ui/input-number",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -918,10 +979,11 @@
           "path": "packages/ui/src/components/input-number/input-number.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "input-otp",
+      "name": "ui/input-otp",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -937,10 +999,11 @@
           "path": "packages/ui/src/components/input-otp/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "kbd",
+      "name": "ui/kbd",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -956,10 +1019,11 @@
           "path": "packages/ui/src/components/kbd/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "label",
+      "name": "ui/label",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -975,10 +1039,11 @@
           "path": "packages/ui/src/components/label/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "layout",
+      "name": "ui/layout",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -998,10 +1063,11 @@
           "path": "packages/ui/src/components/layout/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "link",
+      "name": "ui/link",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1017,10 +1083,11 @@
           "path": "packages/ui/src/components/link/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "list",
+      "name": "ui/list",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1040,10 +1107,11 @@
           "path": "packages/ui/src/components/list/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "menu",
+      "name": "ui/menu",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1059,10 +1127,11 @@
           "path": "packages/ui/src/components/menu/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "menubar",
+      "name": "ui/menubar",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -1078,10 +1147,11 @@
           "path": "packages/ui/src/components/menubar/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "navigation-menu",
+      "name": "ui/navigation-menu",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -1097,10 +1167,11 @@
           "path": "packages/ui/src/components/navigation-menu/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "page-tabs",
+      "name": "ui/page-tabs",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -1116,10 +1187,11 @@
           "path": "packages/ui/src/components/page-tabs/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "pagination",
+      "name": "ui/pagination",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -1135,10 +1207,11 @@
           "path": "packages/ui/src/components/pagination/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "password",
+      "name": "ui/password",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -1154,10 +1227,11 @@
           "path": "packages/ui/src/components/password/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "popconfirm",
+      "name": "ui/popconfirm",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -1177,10 +1251,11 @@
           "path": "packages/ui/src/components/popconfirm/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "popover",
+      "name": "ui/popover",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -1196,10 +1271,11 @@
           "path": "packages/ui/src/components/popover/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "progress",
+      "name": "ui/progress",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1223,10 +1299,11 @@
           "path": "packages/ui/src/components/progress/progress-circle.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "radio-group",
+      "name": "ui/radio-group",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1246,10 +1323,11 @@
           "path": "packages/ui/src/components/radio-group/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "scroll-area",
+      "name": "ui/scroll-area",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1265,10 +1343,11 @@
           "path": "packages/ui/src/components/scroll-area/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "segment",
+      "name": "ui/segment",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1284,10 +1363,11 @@
           "path": "packages/ui/src/components/segment/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "select",
+      "name": "ui/select",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -1303,10 +1383,11 @@
           "path": "packages/ui/src/components/select/select.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "separator",
+      "name": "ui/separator",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1322,10 +1403,11 @@
           "path": "packages/ui/src/components/separator/separator.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "skeleton",
+      "name": "ui/skeleton",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1341,10 +1423,11 @@
           "path": "packages/ui/src/components/skeleton/skeleton.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "slider",
+      "name": "ui/slider",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1360,13 +1443,14 @@
           "path": "packages/ui/src/components/slider/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "spinner",
+      "name": "ui/spinner",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
-      "registryDependencies": ["icon"],
+      "registryDependencies": ["ui/icon"],
       "files": [
         {
           "path": "packages/ui/src/components/spinner/types.ts",
@@ -1380,10 +1464,11 @@
           "path": "packages/ui/src/components/spinner/spinner.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "splitter",
+      "name": "ui/splitter",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1407,10 +1492,11 @@
           "path": "packages/ui/src/components/splitter/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "stepper",
+      "name": "ui/stepper",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -1426,10 +1512,11 @@
           "path": "packages/ui/src/components/stepper/stepper.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "switch",
+      "name": "ui/switch",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -1445,13 +1532,14 @@
           "path": "packages/ui/src/components/switch/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "table",
+      "name": "ui/table",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/hooks"],
-      "registryDependencies": ["button", "checkbox", "empty", "input", "popover"],
+      "registryDependencies": ["ui/button", "ui/checkbox", "ui/empty", "ui/input", "ui/popover"],
       "files": [
         {
           "path": "packages/ui/src/components/table/table-radio.vue",
@@ -1477,10 +1565,11 @@
           "path": "packages/ui/src/components/table/hooks.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "tabs",
+      "name": "ui/tabs",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -1496,13 +1585,14 @@
           "path": "packages/ui/src/components/tabs/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "tag",
+      "name": "ui/tag",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
-      "registryDependencies": ["icon"],
+      "registryDependencies": ["ui/icon"],
       "files": [
         {
           "path": "packages/ui/src/components/tag/tag.vue",
@@ -1516,10 +1606,11 @@
           "path": "packages/ui/src/components/tag/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "tags-input",
+      "name": "ui/tags-input",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1535,10 +1626,11 @@
           "path": "packages/ui/src/components/tags-input/tags-input.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "textarea",
+      "name": "ui/textarea",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -1554,10 +1646,11 @@
           "path": "packages/ui/src/components/textarea/textarea.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "time-field",
+      "name": "ui/time-field",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1573,10 +1666,11 @@
           "path": "packages/ui/src/components/time-field/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "time-range-field",
+      "name": "ui/time-range-field",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -1592,10 +1686,11 @@
           "path": "packages/ui/src/components/time-range-field/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "toast",
+      "name": "ui/toast",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@vueuse/core"],
       "files": [
@@ -1611,10 +1706,11 @@
           "path": "packages/ui/src/components/toast/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "toggle",
+      "name": "ui/toggle",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1630,10 +1726,11 @@
           "path": "packages/ui/src/components/toggle/toggle.vue",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "toggle-group",
+      "name": "ui/toggle-group",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1649,10 +1746,11 @@
           "path": "packages/ui/src/components/toggle-group/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "toolbar",
+      "name": "ui/toolbar",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1668,10 +1766,11 @@
           "path": "packages/ui/src/components/toolbar/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "tooltip",
+      "name": "ui/tooltip",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1687,10 +1786,11 @@
           "path": "packages/ui/src/components/tooltip/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "tree",
+      "name": "ui/tree",
       "type": "registry:ui",
       "dependencies": ["@formkit/auto-animate", "@soybeanjs/headless"],
       "files": [
@@ -1710,10 +1810,11 @@
           "path": "packages/ui/src/components/tree/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "tree-menu",
+      "name": "ui/tree-menu",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
@@ -1733,10 +1834,11 @@
           "path": "packages/ui/src/components/tree-menu/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "virtualizer",
+      "name": "ui/virtualizer",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1752,10 +1854,11 @@
           "path": "packages/ui/src/components/virtualizer/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     },
     {
-      "name": "watermark",
+      "name": "ui/watermark",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
       "files": [
@@ -1771,7 +1874,8 @@
           "path": "packages/ui/src/components/watermark/index.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "package": "ui"
     }
   ]
 }

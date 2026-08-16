@@ -10,10 +10,19 @@ export interface UpdateFilesOptions {
   dryRun?: boolean;
   diff?: boolean;
   silent?: boolean;
+  /** Per-package output dirs (EC-E03): package namespace → absolute dir. */
+  packages?: Record<string, string>;
+  /** Owning package namespace for this batch of files (e.g. `ui`, `ui-x`). */
+  package?: string;
 }
 
 interface ResolveTargetPathOptions {
+  /** Core ui output directory. */
   uiDir: string;
+  /** Per-package output directories: package namespace → absolute dir. */
+  packages?: Record<string, string>;
+  /** The owning package namespace, e.g. `ui`, `ui-x`, `admin`. */
+  package?: string;
 }
 
 /**
@@ -39,7 +48,9 @@ export async function updateFiles(
     if (!file.content) continue;
 
     const targetPath = resolveTargetPath(file, {
-      uiDir: targetDir
+      uiDir: targetDir,
+      packages: options.packages,
+      package: options.package
     });
 
     // Apply transformers
@@ -127,25 +138,53 @@ function printSimpleDiff(oldContent: string, newContent: string): void {
 /**
  * Resolve where a registry file should be placed in the user's project.
  *
- * Mirrors the source package structure: everything under `/ui/src/`
- * in the registry path is preserved as-is under the target `uiDir`.
+ * Resolution order (EC-E03, shadcn-vue ala v4.7):
+ *   1. `file.target` starting with an alias prefix (`#ui/`, `@/ui/` etc.) →
+ *      resolved via the `packages` map to the corresponding package dir.
+ *   2. `file.target` (plain) → `{uiDir}/{target}`.
+ *   3. Source path contains `packages/<pkg>/src/` → resolved to `{packages[pkg]}/{relative}`.
+ *   4. Source path contains `/ui/src/` → `{uiDir}/{relative}` (legacy core ui).
+ *   5. Fallback → `{uiDir}/basename`.
  */
 export function resolveTargetPath(file: RegistryItemFile, options: ResolveTargetPathOptions): string {
+  const baseDir = options.packages?.[options.package ?? 'ui'] ?? options.uiDir;
+
   if (file.target) {
-    return path.join(options.uiDir, file.target);
+    // Alias-aware target (shadcn v4.7, issue #8169): `#ui-x/foo/bar.vue` →
+    // resolve the alias prefix to a package directory.
+    const aliasMatch = /^(#|@\/)?([a-z][a-z0-9-]*)\//.exec(file.target);
+    if (aliasMatch) {
+      const pkg = aliasMatch[2];
+      const suffix = file.target.slice(aliasMatch[0].length);
+
+      if (options.packages?.[pkg]) {
+        return path.join(options.packages[pkg], suffix);
+      }
+    }
+
+    // Plain target → write under the package base dir.
+    return path.join(baseDir, file.target);
   }
 
   const normalizedPath = normalizePath(file.path);
 
-  // Preserve the full relative path within the UI source package
-  // e.g. "${UI_SOURCE_PATH}/components/button/button.vue" → "components/button/button.vue"
+  // `packages/<pkg>/src/` → packages[pkg] + relative
+  const pkgSrcMatch = /^packages\/([a-z][a-z0-9-]*)\/src\//.exec(normalizedPath);
+  if (pkgSrcMatch) {
+    const pkg = pkgSrcMatch[1];
+    const relative = normalizedPath.slice(pkgSrcMatch[0].length);
+    const pkgDir = options.packages?.[pkg] ?? options.uiDir;
+    return path.join(pkgDir, relative);
+  }
+
+  // Legacy: `/ui/src/` → uiDir
   const uiSrcRelative = getRelativePathFromSegment(normalizedPath, '/ui/src/');
   if (uiSrcRelative) {
     return path.join(options.uiDir, uiSrcRelative);
   }
 
-  // Fallback: use basename in uiDir
-  return path.join(options.uiDir, path.basename(normalizedPath));
+  // Fallback: basename in the owning package dir
+  return path.join(baseDir, path.basename(normalizedPath));
 }
 
 function normalizePath(filePath: string): string {

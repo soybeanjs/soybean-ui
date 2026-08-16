@@ -6,6 +6,7 @@ import { BUILTIN_REGISTRIES } from '../registry/constants';
 import { getConfig } from '../utils/get-config';
 import { scanInstalledComponents } from '../utils/scan-installed';
 import { fetchRegistryCatalog, fetchRegistryItem } from '../registry/fetcher';
+import { getItemBasename } from '../registry/loader';
 
 type TextContent = { type: 'text'; text: string };
 
@@ -351,13 +352,18 @@ export async function handleToolCall(name: string, args: Record<string, unknown>
         return createTextResult('No sbean.json found. Run `sbean init` first to configure the project.');
       }
 
-      const installed = await scanInstalledComponents(config.resolvedPaths.ui);
+      const uiDirs = Object.values(config.resolvedPaths.packages);
+      const installed = (await Promise.all(uiDirs.map(dir => scanInstalledComponents(dir)))).flat();
       const catalog = await getCatalog(registries);
       const installedSet = new Set(installed);
 
       // Compare against user-facing UI components only — base/theme/font items
       // don't map to a `components/<name>/` directory and would always look "missing".
-      const missing = catalog.filter(item => item.type === 'registry:ui' && !installedSet.has(item.name));
+      // Installed dirs are bare names; catalog items are namespaced (`ui/button`),
+      // so match on the basename (EC-E04).
+      const missing = catalog.filter(
+        item => item.type === 'registry:ui' && !installedSet.has(getItemBasename(item.name))
+      );
 
       return createTextResult(formatGapReport(installed, missing));
     }

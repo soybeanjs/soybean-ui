@@ -6,7 +6,12 @@ import { getConfig } from '../utils/get-config';
 import { transformImports, transformIcons } from '../utils/transformers/transform-import';
 import type { TransformContext } from '../utils/transformers/transform-import';
 import { resolveTargetPath } from '../utils/updaters/update-files';
-import { readRegistryWithIncludes, createRegistryItem } from '../registry/loader';
+import {
+  readRegistryWithIncludes,
+  createRegistryItem,
+  resolveRegistryItemName,
+  getItemPackage
+} from '../registry/loader';
 
 export const diffOptionsSchema = v.object({
   component: v.string(),
@@ -43,7 +48,9 @@ export const diff = new Command()
       process.exit(1);
     }
 
-    const item = result.registry.items.find(i => i.name === options.component);
+    // Resolve bare aliases to their namespaced item name (EC-E04).
+    const resolvedName = resolveRegistryItemName(options.component, result.registry.items);
+    const item = result.registry.items.find(i => i.name === resolvedName);
 
     if (!item) {
       console.error(`Component "${options.component}" not found in registry.`);
@@ -77,9 +84,11 @@ export const diff = new Command()
         continue;
       }
 
-      // Resolve the local file path
+      // Resolve the local file path (per-package dir, EC-E03)
       const localPath = resolveTargetPath(regFile, {
-        uiDir: config.resolvedPaths.ui
+        uiDir: config.resolvedPaths.ui,
+        packages: config.resolvedPaths.packages,
+        package: item.package ?? getItemPackage(item.name)
       });
 
       // Check if local file exists

@@ -130,6 +130,8 @@ export const registryItemCommonSchema = v.object({
   $schema: v.optional(v.string()),
   extends: v.optional(v.string()),
   name: v.string(),
+  /** Namespaced ownership (ADR-006a): which package the item ships from, e.g. `ui`, `ui-x`, `admin`, `chart`. */
+  package: v.optional(v.string()),
   title: v.optional(v.string()),
   author: v.optional(v.pipe(v.string(), v.minLength(2))),
   description: v.optional(v.string()),
@@ -262,6 +264,17 @@ export const registrySchema = v.object({
   $schema: v.optional(v.string()),
   name: v.string(),
   homepage: v.string(),
+  /** Package metadata (EC-E01): name / scope / export prefix per registered package. */
+  packages: v.optional(
+    v.array(
+      v.object({
+        name: v.string(),
+        scope: v.string(),
+        prefix: v.string(),
+        nounPrefix: v.optional(v.string())
+      })
+    )
+  ),
   include: v.optional(v.array(v.string())),
   items: v.array(registryItemSchema)
 });
