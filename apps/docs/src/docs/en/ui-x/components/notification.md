@@ -27,31 +27,7 @@ Within `@soybeanjs/ui-x`, `SxNotification` pairs with `SxMarkdown`/`SxCodeBlock`
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'title', type: 'string', default: `''`, description: 'The notification title.' },
-  { name: 'description', type: 'string', default: `''`, description: 'Optional longer description.' },
-  { name: 'type', type: `'info' | 'success' | 'warning' | 'error'`, default: `'info'`, description: 'The visual tone.' },
-  { name: 'closable', type: 'boolean', default: 'true', description: 'Whether the close button is shown.' },
-  { name: 'onClose', type: '() => void', default: '-', description: 'Called when the close button is clicked.' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'close', parameters: '[]', description: 'Emitted when the close button is clicked.' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'icon', parameters: '{ type }', description: 'Custom icon; receives the current `type`.' },
-  { name: 'title', parameters: '-', description: 'Custom title content.' },
-  { name: 'description', parameters: '-', description: 'Custom description content.' },
-  { name: 'close-icon', parameters: '-', description: 'Custom close button content.' },
-]"/>
+<ComponentApi component="notification" />
 
 ## Notes
 

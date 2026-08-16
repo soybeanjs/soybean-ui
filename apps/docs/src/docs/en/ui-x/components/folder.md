@@ -27,26 +27,7 @@ Use it to group related content — such as attachments, sources, or sub-documen
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'name', type: 'string', default: '-', description: 'The folder name. Required.' },
-  { name: 'count', type: 'number', default: '-', description: 'Number of items to show as a badge. Hidden when `undefined`.' },
-  { name: 'defaultOpen', type: 'boolean', default: 'false', description: 'Whether the folder is expanded by default.' },
-]"/>
-
-### Emits
-
-This component does not emit any events.
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'icon', parameters: '{ open: boolean }', description: 'Custom folder icon. Receives the current open state.' },
-  { name: 'name', parameters: '-', description: 'Custom folder name rendering.' },
-  { name: 'default', parameters: '-', description: 'Folder content, displayed when expanded.' },
-]"/>
+<ComponentApi component="folder" />
 
 ## Notes
 

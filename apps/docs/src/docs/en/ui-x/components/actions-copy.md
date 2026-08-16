@@ -28,26 +28,7 @@ Use it as the "copy" action on AI messages, code blocks, or any generated conten
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'text', type: 'string', default: `''`, description: 'The text to copy. Falls back to the default slot content.' },
-  { name: 'label', type: 'string', default: `'Copy'`, description: 'Accessible label.' },
-  { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the button is disabled.' },
-  { name: 'onCopy', type: '(text: string) => void', default: '-', description: 'Callback invoked after a copy attempt, with the copied text.' },
-]"/>
-
-### Emits
-
-This component does not emit any events — the copy result is delivered via the `onCopy` prop.
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'icon', parameters: '{ copied: boolean }', description: 'Custom icon. Receives the current `copied` state.' },
-  { name: 'label', parameters: '{ copied: boolean }', description: 'Custom label. Receives the current `copied` state.' },
-]"/>
+<ComponentApi component="actions-copy" />
 
 ## Notes
 

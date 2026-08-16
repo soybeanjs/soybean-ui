@@ -903,6 +903,7 @@
   "api": {
     "ui_layer": "UI 层",
     "headless_layer": "Headless 层",
+    "ui_x_layer": "UI-X 层",
     "props": "属性",
     "emits": "事件",
     "slots": "插槽",

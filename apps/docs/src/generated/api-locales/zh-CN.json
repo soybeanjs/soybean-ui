@@ -13607,6 +13607,281 @@
       },
       "packages_ui_src_styles_toggle_group": {
         "togglegroupvariant": ""
+      },
+      "packages_ui_x_src_components_actions_copy_types": {
+        "actionscopyprops": {
+          "members": {
+            "class": "根类",
+            "disabled": "该按钮是否处于禁用状态。",
+            "label": "无障碍标签。",
+            "oncopy": "在尝试复制后生成，并包含被复制的文本。",
+            "text": "待复制的文本。若未提供，则使用默认槽内容。"
+          },
+          "props": "SxActionsCopy 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_actions_feedback_types": {
+        "actionsfeedbackprops": {
+          "members": {
+            "class": "根类",
+            "disabled": "按钮是否处于禁用状态。",
+            "onchange": "在提供反馈时触发；`null` 可清除活动状态。",
+            "value": "当前有效的反馈（如有）。"
+          },
+          "props": "SxActionsFeedback 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_actions_types": {
+        "actionsprops": {
+          "members": {
+            "class": "根类",
+            "items": "要显示的操作。"
+          },
+          "props": "SxActions 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_attachments_types": {
+        "attachmentsprops": {
+          "members": {
+            "attachments": "待渲染的附件。",
+            "class": "根类",
+            "onremove": "当用户请求删除附件时触发。",
+            "onselect": "点击附件时触发。",
+            "showicons": "是否渲染图标列。默认值为 `true`。"
+          },
+          "props": "SxAttachments 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_bubble_list_types": {
+        "bubblelistprops": {
+          "members": {
+            "class": "根类",
+            "items": "待渲染的消息列表。",
+            "scrollable": "容器是否具有固定高度且应支持滚动。\n当值为 `false` 时，列表会自动扩展以适应其内容。",
+            "scrollthreshold": "距离底部（px）被视为“位于底部”。默认值为 `40`。",
+            "showbacktobottom": "是否显示“返回底部”按钮。默认值为 `true`。"
+          },
+          "props": "SxBubbleList 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_bubble_types": {
+        "bubbleprops": {
+          "members": {
+            "avatarsize": "头像大小。",
+            "class": "根类",
+            "content": "消息文本内容（当未提供 `message` 时使用）。",
+            "loading": "是否显示加载指示器。",
+            "message": "待渲染的消息。若省略，则使用 `content` / `role` 属性。",
+            "placement": "消息位置。",
+            "role": "消息角色（当未提供 `message` 时使用）。",
+            "typing": "为内容启用打字机/渐入效果。",
+            "variant": "视觉变体。"
+          },
+          "props": "SxBubble 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_code_block_types": {
+        "codeblockprops": {
+          "members": {
+            "class": "根类",
+            "code": "待显示的代码。",
+            "copytext": "复制文本覆盖（默认使用代码本身）。",
+            "highlight": "是否启用 Shiki 语法高亮。默认值为 `false`。",
+            "language": "代码的语言（用于高亮显示和标签）。默认为 `text`。",
+            "oncopy": "在执行复制操作时生成。",
+            "showheader": "是否显示页眉（语言 + 副本）。默认值为 `true`。"
+          },
+          "props": "SxCodeBlock 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_conversations_types": {
+        "conversationsprops": {
+          "members": {
+            "active": "当前活动的对话 ID。",
+            "class": "根类",
+            "items": "要显示的对话列表。",
+            "onchange": "当选中某段对话时触发。"
+          },
+          "props": "SxConversations 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_file_card_types": {
+        "filecardprops": {
+          "members": {
+            "attachment": "待渲染的附件。",
+            "class": "根类",
+            "onclick": "可选点击处理程序（例如打开预览）。"
+          },
+          "props": "SxFileCard 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_folder_types": {
+        "folderprops": {
+          "members": {
+            "class": "根类",
+            "count": "作为徽章显示的项目数量。",
+            "defaultopen": "该文件夹是否默认展开。",
+            "name": "文件夹名称。"
+          },
+          "props": "SxFolder 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_markdown_types": {
+        "markdownprops": {
+          "members": {
+            "class": "根类",
+            "coderenderer": "代码块渲染器。",
+            "content": "待渲染的 Markdown 源代码。用于流式输入——渲染器\n会增量重新解析，并将不完整的结构作为占位符进行渲染。",
+            "final": "流是否已完成。`true` 将禁用流式处理占位符。",
+            "htmlpolicy": "HTML 处理政策。",
+            "isdark": "是否以深色模式渲染。",
+            "mode": "渲染节奏模式。",
+            "parseoptions": "解析转发给 Markdown 引擎的选项。",
+            "rendererprops": "将额外的 props 转发给底层的 `MarkdownRender`。",
+            "smoothstreaming": "启用平滑（分批）流式处理。",
+            "typewriter": "打字机动画。"
+          },
+          "props": "SxMarkdown 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_mermaid_types": {
+        "mermaidmode": "SxMermaid 图表的显示模式。",
+        "mermaidprops": {
+          "members": {
+            "class": "根类",
+            "code": "Mermaid 图表源代码。",
+            "mode": "初始显示模式。",
+            "showtoggle": "是否显示图片/代码切换按钮。"
+          },
+          "props": "SxMermaid 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_notification_types": {
+        "notificationprops": {
+          "members": {
+            "class": "根类",
+            "closable": "是否显示关闭按钮。",
+            "description": "可选的详细说明。",
+            "onclose": "点击关闭按钮时触发。",
+            "title": "通知标题。",
+            "type": "语气风格。"
+          },
+          "props": "SxNotification 组件的属性。"
+        },
+        "notificationtype": "SxNotification 的视觉风格。"
+      },
+      "packages_ui_x_src_components_prompts_types": {
+        "promptsprops": {
+          "members": {
+            "class": "根类",
+            "onselect": "点击提示时触发。",
+            "prompts": "要显示的提示信息。"
+          },
+          "props": "SxPrompts 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_sender_types": {
+        "senderprops": {
+          "members": {
+            "attachments": "附件将显示在输入内容上方。",
+            "class": "根类",
+            "disabled": "是否禁用整个输入内容。",
+            "loading": "发送操作是否被禁用（例如，当请求正在传输中时）。",
+            "mentionsuggestions": "标注（`@`）建议。",
+            "placeholder": "占位符文本。默认为空字符串。",
+            "rows": "文本区域行数。默认值为 `3`。",
+            "slashsuggestions": "斜杠 (`/`) 命令建议。",
+            "submittype": "提交行为。默认使用 `enter`（`shiftEnter` 需要按 Shift+Enter）。"
+          },
+          "props": "SxSender 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_sources_types": {
+        "sourcesprops": {
+          "members": {
+            "class": "根类",
+            "onselect": "点击源内容时触发。",
+            "sources": "待显示的源代码。"
+          },
+          "props": "SxSources 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_suggestion_types": {
+        "suggestionprops": {
+          "members": {
+            "class": "根类",
+            "onselect": "点击建议时触发。",
+            "suggestions": "显示的建议。"
+          },
+          "props": "SxSuggestion 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_think_types": {
+        "thinkprops": {
+          "members": {
+            "class": "根类",
+            "defaultopen": "面板默认是否展开。",
+            "ontogglechange": "在面板切换时触发，显示新的打开状态。",
+            "title": "折叠/展开的标题。"
+          },
+          "props": "SxThink 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_thought_chain_types": {
+        "thoughtchainprops": {
+          "members": {
+            "class": "根类",
+            "defaultexpand": "可展开的步骤是否默认展开。",
+            "items": "需显示推理步骤。"
+          },
+          "props": "SxThoughtChain 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_components_welcome_types": {
+        "welcomeprops": {
+          "members": {
+            "class": "根类",
+            "description": "描述文本。",
+            "onselectprompt": "点击提示时触发。",
+            "prompts": "建议在译文下方显示以下提示。",
+            "title": "问候语标题。"
+          },
+          "props": "SxWelcome 组件的属性。"
+        }
+      },
+      "packages_ui_x_src_types_attachment": {
+        "attachment": {
+          "members": {
+            "extrainfo": "任意额外元数据。",
+            "id": "唯一标识符。",
+            "kind": "用于图标选择的类型。",
+            "mimetype": "若已知，请保留 MIME 类型。",
+            "name": "显示名称。",
+            "size": "采用人类可读的单位表示形式，例如 `\"1.2 MB\"`。",
+            "url": "源 URL（用于图片/链接）。"
+          }
+        }
+      },
+      "packages_ui_x_src_types_chat_message": {
+        "chatmessage": {
+          "members": {
+            "content": "文本内容。",
+            "extrainfo": "任意额外元数据（词汇使用情况、推理依据、来源引用等……）。",
+            "id": "唯一的消息标识符。",
+            "role": "编写角色。",
+            "status": "当前生命周期状态。"
+          }
+        },
+        "chatrole": "聊天消息的角色。允许使用任何自定义字符串；常见角色包括\n`ai`、`user`、`system` 和 `divider`。"
+      },
+      "packages_ui_x_src_types_conversation": {
+        "conversationitem": "侧边栏列表中的一条对话条目。"
+      },
+      "packages_ui_x_src_types_prompt": {
+        "prompt": "在欢迎页面或建议界面中显示的建议提示/问题。"
+      },
+      "packages_ui_x_src_types_source": {
+        "source": "引用来源/参考文献。"
       }
     }
   }

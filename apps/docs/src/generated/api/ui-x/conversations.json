@@ -1,0 +1,93 @@
+{
+  "component": "conversations",
+  "symbols": {
+    "Conversations": {
+      "props": {
+        "kind": "props",
+        "name": "ConversationsProps",
+        "type": "Interface ConversationsProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; items: ConversationItem[]; active?: string | null; onChange?: ((item: ConversationItem) => void) }",
+        "description": "Properties for the SxConversations component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_conversations_types.conversationsprops.props",
+        "sourcePath": "packages/ui-x/src/components/conversations/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_conversations_types.conversationsprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/conversations/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "ConversationItem[]",
+            "required": true,
+            "description": "The conversation list to display.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_conversations_types.conversationsprops.members.items",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/conversations/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "active",
+            "type": "string | null",
+            "required": false,
+            "description": "The currently active conversation id.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_conversations_types.conversationsprops.members.active",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/conversations/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onChange",
+            "type": "((item: ConversationItem) => void)",
+            "required": false,
+            "description": "Emitted when a conversation is selected.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_conversations_types.conversationsprops.members.onchange",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/conversations/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ConversationItem",
+                "kind": "interface",
+                "type": "ConversationItem",
+                "resolvedType": null,
+                "description": "A conversation entry in the sidebar list.",
+                "descriptionKey": "api.generated.packages_ui_x_src_types_conversation.conversationitem",
+                "sourcePath": "packages/ui-x/src/types/conversation.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

@@ -28,27 +28,7 @@ Use it at the bottom of an AI message to collect thumbs-up / thumbs-down feedbac
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'value', type: `'like' | 'dislike' | null`, default: 'null', description: 'The currently active feedback, if any.' },
-  { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the buttons are disabled.' },
-  { name: 'onChange', type: '(value: FeedbackValue | null) => void', default: '-', description: 'Callback invoked when feedback is given; `null` clears the active state.' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'change', parameters: '[value: FeedbackValue | null]', description: 'Emitted when feedback is given; `null` clears the active state.' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'like-icon', parameters: '{ active: boolean }', description: 'Custom like button icon. Receives whether the like state is active.' },
-  { name: 'dislike-icon', parameters: '{ active: boolean }', description: 'Custom dislike button icon. Receives whether the dislike state is active.' },
-]"/>
+<ComponentApi component="actions-feedback" />
 
 ## Notes
 

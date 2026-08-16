@@ -25,28 +25,7 @@ Use it as the empty-state of your chat app when there are no messages yet. It co
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'title', type: 'string', default: `''`, description: 'Greeting title.' },
-  { name: 'description', type: 'string', default: `''`, description: 'Description text.' },
-  { name: 'prompts', type: 'Prompt[]', default: '-', description: 'Recommended prompts to show below the copy.' },
-  { name: 'onSelectPrompt', type: '(prompt: Prompt) => void', default: '-', description: 'Callback invoked when a prompt is clicked.' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'selectPrompt', parameters: '[prompt: Prompt]', description: 'Emitted when a prompt is clicked.' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'title', parameters: '-', description: 'Custom title content (replaces the default h2).' },
-  { name: 'description', parameters: '-', description: 'Custom description content (replaces the default p).' },
-]"/>
+<ComponentApi component="welcome" />
 
 ## Notes
 

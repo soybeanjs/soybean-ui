@@ -13607,6 +13607,281 @@
       },
       "packages_ui_src_styles_toggle_group": {
         "togglegroupvariant": ""
+      },
+      "packages_ui_x_src_components_actions_copy_types": {
+        "actionscopyprops": {
+          "members": {
+            "class": "root class",
+            "disabled": "Whether the button is disabled.",
+            "label": "Accessible label.",
+            "oncopy": "Emitted after a copy attempt, with the copied text.",
+            "text": "The text to copy. Falls back to the default slot content."
+          },
+          "props": "Properties for the SxActionsCopy component."
+        }
+      },
+      "packages_ui_x_src_components_actions_feedback_types": {
+        "actionsfeedbackprops": {
+          "members": {
+            "class": "root class",
+            "disabled": "Whether the buttons are disabled.",
+            "onchange": "Emitted when feedback is given; `null` clears the active state.",
+            "value": "The currently active feedback, if any."
+          },
+          "props": "Properties for the SxActionsFeedback component."
+        }
+      },
+      "packages_ui_x_src_components_actions_types": {
+        "actionsprops": {
+          "members": {
+            "class": "root class",
+            "items": "The actions to display."
+          },
+          "props": "Properties for the SxActions component."
+        }
+      },
+      "packages_ui_x_src_components_attachments_types": {
+        "attachmentsprops": {
+          "members": {
+            "attachments": "The attachments to render.",
+            "class": "root class",
+            "onremove": "Emitted when the user requests to remove an attachment.",
+            "onselect": "Emitted when an attachment is clicked.",
+            "showicons": "Whether to render the icon column. Defaults to `true`."
+          },
+          "props": "Properties for the SxAttachments component."
+        }
+      },
+      "packages_ui_x_src_components_bubble_list_types": {
+        "bubblelistprops": {
+          "members": {
+            "class": "root class",
+            "items": "The message list to render.",
+            "scrollable": "Whether the container has a constrained height and should be scrollable.\nWhen `false`, the list grows to fit its content.",
+            "scrollthreshold": "Distance (px) from the bottom considered \"at bottom\". Defaults to `40`.",
+            "showbacktobottom": "Whether to show the \"back to bottom\" button. Defaults to `true`."
+          },
+          "props": "Properties for the SxBubbleList component."
+        }
+      },
+      "packages_ui_x_src_components_bubble_types": {
+        "bubbleprops": {
+          "members": {
+            "avatarsize": "Avatar size.",
+            "class": "root class",
+            "content": "Message text content (used when `message` is not provided).",
+            "loading": "Whether to show a loading indicator.",
+            "message": "The message to render. When omitted, `content` / `role` props are used.",
+            "placement": "Message placement.",
+            "role": "Message role (used when `message` is not provided).",
+            "typing": "Enable a typewriter / fade-in effect on the content.",
+            "variant": "Visual variant."
+          },
+          "props": "Properties for the SxBubble component."
+        }
+      },
+      "packages_ui_x_src_components_code_block_types": {
+        "codeblockprops": {
+          "members": {
+            "class": "root class",
+            "code": "The code to display.",
+            "copytext": "Copy text override (defaults to the code itself).",
+            "highlight": "Whether to enable shiki syntax highlighting. Defaults to `false`.",
+            "language": "The language of the code (used for highlighting + label). Defaults to `text`.",
+            "oncopy": "Emitted when a copy is performed.",
+            "showheader": "Whether to show the header (language + copy). Defaults to `true`."
+          },
+          "props": "Properties for the SxCodeBlock component."
+        }
+      },
+      "packages_ui_x_src_components_conversations_types": {
+        "conversationsprops": {
+          "members": {
+            "active": "The currently active conversation id.",
+            "class": "root class",
+            "items": "The conversation list to display.",
+            "onchange": "Emitted when a conversation is selected."
+          },
+          "props": "Properties for the SxConversations component."
+        }
+      },
+      "packages_ui_x_src_components_file_card_types": {
+        "filecardprops": {
+          "members": {
+            "attachment": "The attachment to render.",
+            "class": "root class",
+            "onclick": "Optional click handler (e.g. open preview)."
+          },
+          "props": "Properties for the SxFileCard component."
+        }
+      },
+      "packages_ui_x_src_components_folder_types": {
+        "folderprops": {
+          "members": {
+            "class": "root class",
+            "count": "Number of items to show as a badge.",
+            "defaultopen": "Whether the folder is expanded by default.",
+            "name": "The folder name."
+          },
+          "props": "Properties for the SxFolder component."
+        }
+      },
+      "packages_ui_x_src_components_markdown_types": {
+        "markdownprops": {
+          "members": {
+            "class": "root class",
+            "coderenderer": "Code block renderer.",
+            "content": "Markdown source to render. Use this for streaming input — the renderer\nre-parses incrementally and renders incomplete constructs as placeholders.",
+            "final": "Whether the stream has completed. `true` disables streaming placeholders.",
+            "htmlpolicy": "HTML handling policy.",
+            "isdark": "Whether to render in dark mode.",
+            "mode": "Render pacing mode.",
+            "parseoptions": "Parse options forwarded to the markdown engine.",
+            "rendererprops": "Additional props forwarded to the underlying `MarkdownRender`.",
+            "smoothstreaming": "Enable smooth (paced) streaming.",
+            "typewriter": "Typewriter animation."
+          },
+          "props": "Properties for the SxMarkdown component."
+        }
+      },
+      "packages_ui_x_src_components_mermaid_types": {
+        "mermaidmode": "The display mode of an SxMermaid diagram.",
+        "mermaidprops": {
+          "members": {
+            "class": "root class",
+            "code": "The mermaid diagram source code.",
+            "mode": "The initial display mode.",
+            "showtoggle": "Whether the image / code toggle is shown."
+          },
+          "props": "Properties for the SxMermaid component."
+        }
+      },
+      "packages_ui_x_src_components_notification_types": {
+        "notificationprops": {
+          "members": {
+            "class": "root class",
+            "closable": "Whether the close button is shown.",
+            "description": "Optional longer description.",
+            "onclose": "Emitted when the close button is clicked.",
+            "title": "The notification title.",
+            "type": "The visual tone."
+          },
+          "props": "Properties for the SxNotification component."
+        },
+        "notificationtype": "The visual tone of an SxNotification."
+      },
+      "packages_ui_x_src_components_prompts_types": {
+        "promptsprops": {
+          "members": {
+            "class": "root class",
+            "onselect": "Emitted when a prompt is clicked.",
+            "prompts": "The prompts to display."
+          },
+          "props": "Properties for the SxPrompts component."
+        }
+      },
+      "packages_ui_x_src_components_sender_types": {
+        "senderprops": {
+          "members": {
+            "attachments": "Attachments to show above the input.",
+            "class": "root class",
+            "disabled": "Whether to disable the whole input.",
+            "loading": "Whether the send action is disabled (e.g. while a request is in flight).",
+            "mentionsuggestions": "Mention (`@`) suggestions.",
+            "placeholder": "Placeholder text. Defaults to an empty string.",
+            "rows": "Textarea rows. Defaults to `3`.",
+            "slashsuggestions": "Slash (`/`) command suggestions.",
+            "submittype": "Submit behavior. Defaults to `enter` (`shiftEnter` requires Shift+Enter)."
+          },
+          "props": "Properties for the SxSender component."
+        }
+      },
+      "packages_ui_x_src_components_sources_types": {
+        "sourcesprops": {
+          "members": {
+            "class": "root class",
+            "onselect": "Emitted when a source is clicked.",
+            "sources": "The sources to display."
+          },
+          "props": "Properties for the SxSources component."
+        }
+      },
+      "packages_ui_x_src_components_suggestion_types": {
+        "suggestionprops": {
+          "members": {
+            "class": "root class",
+            "onselect": "Emitted when a suggestion is clicked.",
+            "suggestions": "The suggestions to display."
+          },
+          "props": "Properties for the SxSuggestion component."
+        }
+      },
+      "packages_ui_x_src_components_think_types": {
+        "thinkprops": {
+          "members": {
+            "class": "root class",
+            "defaultopen": "Whether the panel is expanded by default.",
+            "ontogglechange": "Emitted when the panel is toggled, with the new open state.",
+            "title": "The collapsed / expanded header title."
+          },
+          "props": "Properties for the SxThink component."
+        }
+      },
+      "packages_ui_x_src_components_thought_chain_types": {
+        "thoughtchainprops": {
+          "members": {
+            "class": "root class",
+            "defaultexpand": "Whether expandable steps are expanded by default.",
+            "items": "The reasoning steps to display."
+          },
+          "props": "Properties for the SxThoughtChain component."
+        }
+      },
+      "packages_ui_x_src_components_welcome_types": {
+        "welcomeprops": {
+          "members": {
+            "class": "root class",
+            "description": "Description text.",
+            "onselectprompt": "Emitted when a prompt is clicked.",
+            "prompts": "Recommended prompts to show below the copy.",
+            "title": "Greeting title."
+          },
+          "props": "Properties for the SxWelcome component."
+        }
+      },
+      "packages_ui_x_src_types_attachment": {
+        "attachment": {
+          "members": {
+            "extrainfo": "Arbitrary extra metadata.",
+            "id": "Unique identifier.",
+            "kind": "The kind used for icon selection.",
+            "mimetype": "MIME type, when known.",
+            "name": "Display name.",
+            "size": "Human-readable size, e.g. `\"1.2 MB\"`.",
+            "url": "Source URL (for images / links)."
+          }
+        }
+      },
+      "packages_ui_x_src_types_chat_message": {
+        "chatmessage": {
+          "members": {
+            "content": "Text content.",
+            "extrainfo": "Arbitrary extra metadata (token usage, reasoning, source citations...).",
+            "id": "Unique message identifier.",
+            "role": "The authoring role.",
+            "status": "The current lifecycle status."
+          }
+        },
+        "chatrole": "The role of a chat message. Any custom string is allowed; the common roles are\n`ai`, `user`, `system` and `divider`."
+      },
+      "packages_ui_x_src_types_conversation": {
+        "conversationitem": "A conversation entry in the sidebar list."
+      },
+      "packages_ui_x_src_types_prompt": {
+        "prompt": "A suggested prompt / question shown on welcome or suggestion surfaces."
+      },
+      "packages_ui_x_src_types_source": {
+        "source": "A referenced source / citation."
       }
     }
   }

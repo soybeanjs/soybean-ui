@@ -28,24 +28,7 @@ Use it to visualize the step-by-step reasoning process of an AI model — from p
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'items', type: 'ThoughtChainItem[]', default: '-', description: 'The reasoning steps to display. Required.' },
-  { name: 'defaultExpand', type: 'boolean', default: 'false', description: 'Whether expandable steps are expanded by default.' },
-]"/>
-
-### Emits
-
-This component does not emit any events.
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'title', parameters: '{ item: ThoughtChainItem }', description: 'Custom title rendering for each step.' },
-  { name: 'content', parameters: '{ item: ThoughtChainItem }', description: 'Custom content rendering for each expandable step.' },
-]"/>
+<ComponentApi component="thought-chain" />
 
 ## Notes
 

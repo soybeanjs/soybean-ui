@@ -1,6 +1,30 @@
 {
   "name": "soybean-ui",
   "homepage": "https://ui.soybeanjs.cn",
+  "packages": [
+    {
+      "name": "ui",
+      "scope": "@soybeanjs/ui",
+      "prefix": "S"
+    },
+    {
+      "name": "ui-x",
+      "scope": "@soybeanjs/ui-x",
+      "prefix": "Sx"
+    },
+    {
+      "name": "admin",
+      "scope": "@soybeanjs/admin",
+      "prefix": "S",
+      "nounPrefix": "App"
+    },
+    {
+      "name": "chart",
+      "scope": "@soybeanjs/chart",
+      "prefix": "S",
+      "nounPrefix": "Chart"
+    }
+  ],
   "items": [
     {
       "name": "accordion",

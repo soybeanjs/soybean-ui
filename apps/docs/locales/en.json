@@ -908,6 +908,7 @@
   "api": {
     "ui_layer": "UI Layer",
     "headless_layer": "Headless Layer",
+    "ui_x_layer": "UI-X Layer",
     "props": "Props",
     "emits": "Emits",
     "slots": "Slots",

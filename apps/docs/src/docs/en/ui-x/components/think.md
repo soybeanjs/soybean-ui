@@ -27,27 +27,7 @@ Use it to display the internal reasoning steps of an AI response, helping users 
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'title', type: 'string', default: `''`, description: 'The collapsed / expanded header title.' },
-  { name: 'defaultOpen', type: 'boolean', default: 'false', description: 'Whether the panel is expanded by default.' },
-  { name: 'onToggleChange', type: '(open: boolean) => void', default: '-', description: 'Callback invoked when the panel toggles, with the new open state.' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'toggleChange', parameters: '[open: boolean]', description: 'Emitted when the panel toggles, with the new open state.' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'trigger', parameters: '{ open: boolean }', description: 'Custom trigger content. Receives the current open state.' },
-  { name: 'default', parameters: '-', description: 'Panel content displayed when expanded.' },
-]"/>
+<ComponentApi component="think" />
 
 ## Notes
 

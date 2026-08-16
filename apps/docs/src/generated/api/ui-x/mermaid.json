@@ -1,0 +1,93 @@
+{
+  "component": "mermaid",
+  "symbols": {
+    "Mermaid": {
+      "props": {
+        "kind": "props",
+        "name": "MermaidProps",
+        "type": "Interface MermaidProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; code: string; mode?: MermaidMode; showToggle?: boolean }",
+        "description": "Properties for the SxMermaid component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_mermaid_types.mermaidprops.props",
+        "sourcePath": "packages/ui-x/src/components/mermaid/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_mermaid_types.mermaidprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/mermaid/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "code",
+            "type": "string",
+            "required": true,
+            "description": "The mermaid diagram source code.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_mermaid_types.mermaidprops.members.code",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/mermaid/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "mode",
+            "type": "MermaidMode",
+            "required": false,
+            "description": "The initial display mode.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_mermaid_types.mermaidprops.members.mode",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/mermaid/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MermaidMode",
+                "kind": "typeAlias",
+                "type": "'image' | 'code'",
+                "resolvedType": "'image' | 'code'",
+                "description": "The display mode of an SxMermaid diagram.",
+                "descriptionKey": "api.generated.packages_ui_x_src_components_mermaid_types.mermaidmode",
+                "sourcePath": "packages/ui-x/src/components/mermaid/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "showToggle",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the image / code toggle is shown.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_mermaid_types.mermaidprops.members.showtoggle",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/mermaid/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

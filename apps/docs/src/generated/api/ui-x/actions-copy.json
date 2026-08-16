@@ -1,0 +1,90 @@
+{
+  "component": "actions-copy",
+  "symbols": {
+    "ActionsCopy": {
+      "props": {
+        "kind": "props",
+        "name": "ActionsCopyProps",
+        "type": "Interface ActionsCopyProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; text?: string; label?: string; disabled?: boolean; onCopy?: ((text: string) => void) }",
+        "description": "Properties for the SxActionsCopy component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_actions_copy_types.actionscopyprops.props",
+        "sourcePath": "packages/ui-x/src/components/actions-copy/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_actions_copy_types.actionscopyprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/actions-copy/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "required": false,
+            "description": "The text to copy. Falls back to the default slot content.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_actions_copy_types.actionscopyprops.members.text",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/actions-copy/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "required": false,
+            "description": "Accessible label.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_actions_copy_types.actionscopyprops.members.label",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/actions-copy/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the button is disabled.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_actions_copy_types.actionscopyprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/actions-copy/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onCopy",
+            "type": "((text: string) => void)",
+            "required": false,
+            "description": "Emitted after a copy attempt, with the copied text.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_actions_copy_types.actionscopyprops.members.oncopy",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/actions-copy/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

@@ -25,31 +25,7 @@ Use it above a `SxSender` to show pending attachments before a message is sent, 
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'attachments', type: 'Attachment[]', default: '-', description: 'The attachments to render.', required: true },
-  { name: 'showIcons', type: 'boolean', default: 'true', description: 'Whether to render the icon column.' },
-  { name: 'onRemove', type: '(attachment: Attachment) => void', default: '-', description: 'Callback invoked when the user requests to remove an attachment.' },
-  { name: 'onSelect', type: '(attachment: Attachment) => void', default: '-', description: 'Callback invoked when an attachment is clicked.' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'remove', parameters: '[attachment: Attachment]', description: 'Emitted when an attachment is removed via the remove button.' },
-  { name: 'select', parameters: '[attachment: Attachment]', description: 'Emitted when an attachment is clicked.' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'prepend', parameters: '-', description: 'Content rendered above the attachment list.' },
-  { name: 'item', parameters: '{ attachment: Attachment }', description: 'Custom item content replacing the default SxFileCard.' },
-  { name: 'actions', parameters: '{ attachment: Attachment }', description: 'Custom actions per attachment (overrides the default remove button).' },
-  { name: 'remove-icon', parameters: '-', description: 'Custom remove button icon.' },
-]"/>
+<ComponentApi component="attachments" />
 
 ## Notes
 

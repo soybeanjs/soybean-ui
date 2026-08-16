@@ -27,26 +27,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'name', type: 'string', default: '-', description: '文件夹名称。必填。' },
-  { name: 'count', type: 'number', default: '-', description: '以徽标显示的条目数。`undefined` 时隐藏。' },
-  { name: 'defaultOpen', type: 'boolean', default: 'false', description: '文件夹默认是否展开。' },
-]"/>
-
-### Emits
-
-此组件不触发任何事件。
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'icon', parameters: '{ open: boolean }', description: '自定义文件夹图标。接收当前开关状态。' },
-  { name: 'name', parameters: '-', description: '自定义文件夹名称渲染。' },
-  { name: 'default', parameters: '-', description: '文件夹内容，展开时显示。' },
-]"/>
+<ComponentApi component="folder" />
 
 ## 注意事项
 

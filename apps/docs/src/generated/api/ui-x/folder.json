@@ -1,0 +1,79 @@
+{
+  "component": "folder",
+  "symbols": {
+    "Folder": {
+      "props": {
+        "kind": "props",
+        "name": "FolderProps",
+        "type": "Interface FolderProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; name: string; count?: number; defaultOpen?: boolean }",
+        "description": "Properties for the SxFolder component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_folder_types.folderprops.props",
+        "sourcePath": "packages/ui-x/src/components/folder/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_folder_types.folderprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/folder/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "description": "The folder name.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_folder_types.folderprops.members.name",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/folder/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "count",
+            "type": "number",
+            "required": false,
+            "description": "Number of items to show as a badge.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_folder_types.folderprops.members.count",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/folder/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the folder is expanded by default.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_folder_types.folderprops.members.defaultopen",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/folder/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

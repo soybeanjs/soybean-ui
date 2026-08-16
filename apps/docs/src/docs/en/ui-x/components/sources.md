@@ -25,25 +25,7 @@ Use it under an assistant `SxBubble` to show which documents, pages or internal 
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'sources', type: 'Source[]', default: '-', description: 'The sources to display.', required: true },
-  { name: 'onSelect', type: '(source: Source) => void', default: '-', description: 'Callback invoked when a source is clicked.' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'select', parameters: '[source: Source]', description: 'Emitted when a source link is clicked.' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'label', parameters: '{ source: Source }', description: 'Custom label content for each source.' },
-]"/>
+<ComponentApi component="sources" />
 
 ## Notes
 

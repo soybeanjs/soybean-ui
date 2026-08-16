@@ -25,11 +25,11 @@
 | A 架构与命名契约        |   8    |   6    |   1    |   1    |    75%    |
 | B 分包骨架与依赖        |   8    |   7    |   1    |   0    |    94%    |
 | C 功能组件实现          |   12   |   0    |   0    |   12   |    0%     |
-| D 文档站                |   7    |   0    |   3    |   4    |    24%    |
+| D 文档站                |   7    |   0    |   4    |   3    |    20%    |
 | E sbean registry 与 CLI |   5    |   1    |   0    |   4    |    20%    |
-| F 生成与 playground     |   7    |   1    |   0    |   6    |    14%    |
+| F 生成与 playground     |   7    |   2    |   1    |   4    |    40%    |
 | G 迁移与发布            |   7    |   0    |   3    |   4    |    18%    |
-| **合计**                | **54** | **17** | **8**  | **29** | **≈ 39%** |
+| **合计**                | **54** | **19** | **9**  | **26** | **≈ 43%** |
 
 > 当前处于「结构骨架已落地、业务功能与文档内容未填充」阶段——即方案 §10 checklist 的前置工作已大部分完成，§3/§6/§7/§8 的功能与分发部分待推进。
 
@@ -100,7 +100,7 @@
 | ------ | ------------------------------------------------------------------------------------------------------------------- | :----: | -------- | ---------- | ---------- | --------- | :--: |
 | EC-D01 | 文档站路由命名空间化：`/ui-x` `/admin` `/chart` 页面骨架（index / installation / quick-start / [name]）             |   P0   | AI Agent | 2026-08-14 | 2026-08-14 | 🔵 进行中 | 50%  |
 | EC-D02 | docs 内容撰写（en/zh-CN）：各包 index / installation / quick-start 实际文案（含包切换落地页分层共享 §7.4）          |   P1   | AI Agent | 2026-08-18 | 2026-08-31 | ⬜ 未开始 |  0%  |
-| EC-D03 | 各组件 `[name].md` 文档 + `<UsageCode>` / `<PlaygroundGallery>` / `<ComponentApi>` 引用（联动 C/E/F 阶段）          |   P1   | AI Agent | 2026-08-20 | 2026-08-31 | ⬜ 未开始 |  0%  |
+| EC-D03 | 各组件 `[name].md` 文档 + `<UsageCode>` / `<PlaygroundGallery>` / `<ComponentApi>` 引用（联动 C/E/F 阶段）          |   P1   | AI Agent | 2026-08-20 | 2026-08-31 | 🔵 进行中 | 40%  |
 | EC-D04 | 顶部包切换器：header 下拉（UI/UI-X/Admin/Chart）+ `shouldShowSidebar` 适配 + 侧边栏 menu data 切换                  |   P0   | AI Agent | 2026-08-14 | 2026-08-18 | 🔵 进行中 | 40%  |
 | EC-D05 | [menus.ts](../apps/docs/src/constants/menus.ts) 的 `uiXMenuData` / `adminMenuData` / `chartMenuData` 随组件落地填充 |   P1   | AI Agent | 2026-08-18 | 2026-08-31 | 🔵 进行中 | 10%  |
 | EC-D06 | `/registry`（或各包命名空间 registry 子页）：按 `package` 分组展示 sbean 条目 + `sbean add` 命令 + 源码链接（§7.5） |   P2   | AI Agent | 2026-08-20 | 2026-08-31 | ⬜ 未开始 |  0%  |
@@ -122,9 +122,9 @@
 
 | ID     | 任务描述                                                                                                                           | 优先级 | 负责人   | 开始       | 目标完成   | 状态      | 进度 |
 | ------ | ---------------------------------------------------------------------------------------------------------------------------------- | :----: | -------- | ---------- | ---------- | --------- | :--: |
-| EC-F01 | [scripts/cli.ts](../scripts/cli.ts) `api` 命令改为遍历 `packages` 元数据；输出迁至 `generated/api/<pkg>/<component>.json`（§11.5） |   P0   | AI Agent | 2026-08-20 | 2026-08-30 | ⬜ 未开始 |  0%  |
+| EC-F01 | [scripts/cli.ts](../scripts/cli.ts) `api` 命令改为遍历 `packages` 元数据；输出迁至 `generated/api/<pkg>/<component>.json`（§11.5） |   P0   | AI Agent | 2026-08-20 | 2026-08-30 | ✅ 已完成 | 100% |
 | EC-F02 | `changelog` / `changelog-locales` 命令同步多包化（`generated/changelog/<pkg>/`）                                                   |   P1   | AI Agent | 2026-08-20 | 2026-08-30 | ⬜ 未开始 |  0%  |
-| EC-F03 | `<ComponentApi>` / `<PlaygroundGallery>` 渲染按当前路由命名空间定位子目录                                                          |   P0   | AI Agent | 2026-08-20 | 2026-08-30 | ⬜ 未开始 |  0%  |
+| EC-F03 | `<ComponentApi>` / `<PlaygroundGallery>` 渲染按当前路由命名空间定位子目录                                                          |   P0   | AI Agent | 2026-08-20 | 2026-08-30 | ✅ 已完成 | 100% |
 | EC-F04 | playground 顶部包切换器（镜像 docs，切到 `examples/<pkg>/` 入口与导航，§8.2）                                                      |   P1   | AI Agent | 2026-08-18 | 2026-08-28 | ⬜ 未开始 |  0%  |
 | EC-F05 | core examples 迁移收尾：`examples/ui/` 迁移后 docs 引用 / playground 导航 / `AGENTS.md` Demo source 路径终验                       |   P0   | AI Agent | 2026-08-14 | 2026-08-18 | 🔵 进行中 | 80%  |
 | EC-F06 | `ui-x` 分支扁平 examples（bubble / attachments / actions …）迁入 `examples/ui-x/`（§11.3 step 3）                                  |   P2   | AI Agent | 2026-08-18 | 2026-08-31 | ⬜ 未开始 |  0%  |
@@ -159,4 +159,4 @@ EC-G01/G02/G03 ──► EC-G04 (验证) ──► EC-G05 (归档分支) ──�
 
 - **2026-08-14（headless-x 拆解）**：EC-A04~A06 在本分支完成——9 个 composables、7 个 types、`use-sender.spec` 迁入 `packages/ui-x/src/{composables,types}/` 与 `test/specs/`；删除 `packages/headless-x/`；ui-x 移除 `@soybeanjs/headless-x` 依赖并增补 `./composables`、`./types` exports；组件内部（`@/composables`、`@/types`）、playground/docs 消费者（`@soybeanjs/ui-x/types`）引用同步切换；ui-x typecheck/test/build、playground/docs typecheck 均通过。EC-A08（`use-x-stream` 上浮评估）仍待 Soybean 决策。
 - **2026-08-14（下午）**：新增三份提案文档——`docs/ecosystem/table.md`（`@soybeanjs/table` 立项提案）、`docs/ecosystem/form.md`（`@soybeanjs/form` 立项提案）、`docs/ecosystem/commercialization.md`（editor/table/form 商业化策略）；调研文档落 `docs/research/`（table-ecosystem / form-ecosystem / commercialization-ecosystem）。新增任务 EC-G08~G10（待排期）。
-- **2026-08-14（基线）**：生成本文档。核对仓库实际状态：包骨架、根脚本、registry `packages` 元数据、core examples 迁移、header 入口均已完成；功能组件、docs 内容、registry 命名空间化、sui 多包生成、分支合并均未完成或进行中。
+- **2026-08-15（ui-x API 自动生成）**：EC-F01 完成——`scripts/api.ts` 扩展为多包 API 生成器，同时为 `@soybeanjs/ui` 和 `@soybeanjs/ui-x` 生成 API JSON；输出迁至 `generated/api/{ui,ui-x}/<component>.json` 子目录结构。EC-F03 完成——`<ComponentApi>` 支持单包外围组件层（ui-x 显示为 UI-X 层，不再按 ui/headless 拆分）。EC-D03 推进——全部 20 个 ui-x 组件（en/zh-CN 共 40 个文件）的手写 `<DataTable>` API 段替换为 `<ComponentApi component="..." />` 自动生成版本。生成流程：`pnpm sui api` 重建所有包数据，`pnpm sui api-translate -- --locale zh-CN` 翻译新增的 137 个 ui-x 描述键。`api-i18n.ts` 递归扫描子目录，`llms.ts` 和 `skills-docs.ts` 更新 API 路径解析以适配子目录结构。`AGENTS.md` 补充多包 API 数据说明。

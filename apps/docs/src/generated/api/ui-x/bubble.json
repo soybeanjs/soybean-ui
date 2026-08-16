@@ -1,0 +1,232 @@
+{
+  "component": "bubble",
+  "symbols": {
+    "Bubble": {
+      "props": {
+        "kind": "props",
+        "name": "BubbleProps",
+        "type": "Interface BubbleProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; message?: ChatMessage; content?: string; role?: ChatRole; placement?: 'start' | 'end'; variant?: 'filled' | 'outlined' | 'shadow'; avatarSize?: ThemeSize; loading?: boolean; typing?: boolean }",
+        "description": "Properties for the SxBubble component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_bubble_types.bubbleprops.props",
+        "sourcePath": "packages/ui-x/src/components/bubble/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_bubble_types.bubbleprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/bubble/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "message",
+            "type": "ChatMessage",
+            "required": false,
+            "description": "The message to render. When omitted, `content` / `role` props are used.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_bubble_types.bubbleprops.members.message",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/bubble/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ChatMessage",
+                "kind": "interface",
+                "type": "ChatMessage",
+                "resolvedType": "{ id: string; role: 'ai' | 'user' | 'system' | 'divider' | (string & {}); content: string; status?: MessageStatus; extraInfo?: Record<string, unknown> }",
+                "description": "The canonical message model shared across",
+                "descriptionKey": "api.generated.packages_ui_x_src_types_chat_message.chatmessage",
+                "sourcePath": "packages/ui-x/src/types/chat-message.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "required": true,
+                    "description": "Unique message identifier.",
+                    "descriptionKey": "api.generated.packages_ui_x_src_types_chat_message.chatmessage.members.id",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/ui-x/src/types/chat-message.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "role",
+                    "type": "'ai' | 'user' | 'system' | 'divider' | (string & {})",
+                    "required": true,
+                    "description": "The authoring role.",
+                    "descriptionKey": "api.generated.packages_ui_x_src_types_chat_message.chatmessage.members.role",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/ui-x/src/types/chat-message.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "content",
+                    "type": "string",
+                    "required": true,
+                    "description": "Text content.",
+                    "descriptionKey": "api.generated.packages_ui_x_src_types_chat_message.chatmessage.members.content",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/ui-x/src/types/chat-message.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "status",
+                    "type": "MessageStatus",
+                    "required": false,
+                    "description": "The current lifecycle status.",
+                    "descriptionKey": "api.generated.packages_ui_x_src_types_chat_message.chatmessage.members.status",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/ui-x/src/types/chat-message.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "extraInfo",
+                    "type": "Record<string, unknown>",
+                    "required": false,
+                    "description": "Arbitrary extra metadata (token usage, reasoning, source citations...).",
+                    "descriptionKey": "api.generated.packages_ui_x_src_types_chat_message.chatmessage.members.extrainfo",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/ui-x/src/types/chat-message.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "required": false,
+            "description": "Message text content (used when `message` is not provided).",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_bubble_types.bubbleprops.members.content",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/bubble/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "role",
+            "type": "ChatRole",
+            "required": false,
+            "description": "Message role (used when `message` is not provided).",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_bubble_types.bubbleprops.members.role",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/bubble/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ChatRole",
+                "kind": "typeAlias",
+                "type": "'ai' | 'user' | 'system' | 'divider' | (string & {})",
+                "resolvedType": "'ai' | 'user' | 'system' | 'divider' | (string & {})",
+                "description": "The role of a chat message. Any custom string is allowed; the common roles are\n`ai`, `user`, `system` and `divider`.",
+                "descriptionKey": "api.generated.packages_ui_x_src_types_chat_message.chatrole",
+                "sourcePath": "packages/ui-x/src/types/chat-message.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "placement",
+            "type": "'start' | 'end'",
+            "required": false,
+            "description": "Message placement.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_bubble_types.bubbleprops.members.placement",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/bubble/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "variant",
+            "type": "'filled' | 'outlined' | 'shadow'",
+            "required": false,
+            "description": "Visual variant.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_bubble_types.bubbleprops.members.variant",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/bubble/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "avatarSize",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Avatar size.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_bubble_types.bubbleprops.members.avatarsize",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/bubble/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px",
+                "descriptionKey": "api.generated.packages_theme_src_types.themesize",
+                "sourcePath": "packages/theme/src/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "loading",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show a loading indicator.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_bubble_types.bubbleprops.members.loading",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/bubble/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "typing",
+            "type": "boolean",
+            "required": false,
+            "description": "Enable a typewriter / fade-in effect on the content.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_bubble_types.bubbleprops.members.typing",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/bubble/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

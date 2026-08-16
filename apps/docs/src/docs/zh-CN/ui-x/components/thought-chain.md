@@ -28,24 +28,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'items', type: 'ThoughtChainItem[]', default: '-', description: '要展示的推理步骤。必填。' },
-  { name: 'defaultExpand', type: 'boolean', default: 'false', description: '可展开步骤默认是否展开。' },
-]"/>
-
-### Emits
-
-此组件不触发任何事件。
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'title', parameters: '{ item: ThoughtChainItem }', description: '每个步骤的自定义标题渲染。' },
-  { name: 'content', parameters: '{ item: ThoughtChainItem }', description: '每个可展开步骤的自定义内容渲染。' },
-]"/>
+<ComponentApi component="thought-chain" />
 
 ## 注意事项
 

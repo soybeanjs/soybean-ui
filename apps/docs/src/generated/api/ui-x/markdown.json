@@ -1,0 +1,226 @@
+{
+  "component": "markdown",
+  "symbols": {
+    "Markdown": {
+      "props": {
+        "kind": "props",
+        "name": "MarkdownProps",
+        "type": "Interface MarkdownProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; content?: string; final?: boolean; mode?: NodeRendererMode; htmlPolicy?: HtmlPolicy; isDark?: boolean; typewriter?: NodeRendererTypewriter; smoothStreaming?: boolean | 'auto'; codeRenderer?: NodeRendererCodeRenderer; parseOptions?: ParseOptions; rendererProps?: Partial<Partial<{ showTooltips: boolean; nodeVirtual: boolean | 'auto'; fade: boolean; debugPerformance: boolean; viewportPriority: boolean; codeBlockStream: boolean; renderCodeBlocksAsPre: boolean; typewriter: NodeRendererTypewriter; smoothStreaming: boolean | 'auto'; batchRendering: boolean; deferNodesUntilVisible: boolean; }> & Omit<{ readonly content?: string; readonly nodes?: import(\"markstream-vue\").BaseNode[]; readonly final?: boolean; readonly parseOptions?: ParseOptions; readonly customMarkdownIt?: ((md: import(\"markstream-vue\").MarkdownIt) => import(\"markstream-vue\").MarkdownIt); readonly debugPerformance?: boolean; readonly customHtmlTags?: readonly string[]; readonly mode?: NodeRendererMode; readonly domMode?: import(\"markstream-vue\").NodeRendererDomMode; readonly htmlPolicy?: HtmlPolicy; readonly viewportPriority?: boolean; readonly viewportPriorityOptions?: import(\"markstream-vue\").MarkstreamViewportPriorityOptions; readonly codeBlockStream?: boolean; readonly codeBlockDarkTheme?: import(\"markstream-vue\").CodeBlockMonacoTheme; readonly codeBlockLightTheme?: import(\"markstream-vue\").CodeBlockMonacoTheme; readonly codeBlockMonacoOptions?: import(\"markstream-vue\").CodeBlockMonacoOptions; readonly codeRenderer?: NodeRendererCodeRenderer; readonly renderCodeBlocksAsPre?: boolean; readonly codeBlockMinWidth?: string | number; readonly codeBlockMaxWidth?: string | number; readonly codeBlockProps?: (Partial<Omit<import(\"markstream-vue\").CodeBlockNodeProps, 'themes' | 'node'>> & Partial<Omit<import(\"markstream-vue\").ShikiCodeBlockProps, 'themes'>> & { themes?: readonly string[] | import(\"markstream-vue\").CodeBlockMonacoTheme[]; } & Record<string, unknown>); readonly mermaidProps?: Partial<Omit<import(\"markstream-vue\").MermaidBlockNodeProps, 'node' | 'loading' | 'isDark'>>; readonly d2Props?: Partial<Omit<import(\"markstream-vue\").D2BlockNodeProps, 'node' | 'loading' | 'isDark'>>; readonly infographicProps?: Partial<Omit<import(\"markstream-vue\").InfographicBlockNodeProps, 'node' | 'loading' | 'isDark'>>; readonly showTooltips?: boolean; readonly themes?: import(\"markstream-vue\").CodeBlockMonacoTheme[]; readonly langs?: readonly string[]; readonly isDark?: boolean; readonly customId?: string; readonly indexKey?: number | string; readonly typewriter?: NodeRendererTypewriter; readonly smoothStreaming?: boolean | 'auto'; readonly smoothStreamingOptions?: import(\"markstream-vue\").SmoothMarkdownStreamOptions; readonly parseCoalesceMs?: number; readonly fade?: boolean; readonly batchRendering?: boolean; readonly initialRenderBatchSize?: number; readonly renderBatchSize?: number; readonly renderBatchDelay?: number; readonly renderBatchBudgetMs?: number; readonly renderBatchIdleTimeoutMs?: number; readonly deferNodesUntilVisible?: boolean; readonly maxLiveNodes?: number; readonly liveNodeBuffer?: number; readonly nodeVirtual?: boolean | 'auto'; readonly virtualScroll?: import(\"markstream-vue\").MarkstreamVirtualScrollOptions; readonly renderAsFragment?: boolean; readonly onClick?: ((event: MouseEvent) => any); readonly onCopy?: ((code: string) => any); readonly onMouseout?: ((event: MouseEvent) => any); readonly onMouseover?: ((event: MouseEvent) => any); readonly \"onCopy-code\"?: ((code: string) => any); readonly onHandleArtifactClick?: ((payload: import(\"markstream-vue\").CodeBlockPreviewPayload) => any); readonly \"onVirtual-state-change\"?: ((payload: import(\"markstream-vue\").MarkstreamVirtualState) => any); readonly \"onHeight-change\"?: ((payload: import(\"markstream-vue\").MarkstreamVirtualMetrics) => any); readonly \"onRender-settled\"?: ((payload: import(\"markstream-vue\").MarkstreamVirtualMetrics) => any); readonly \"onRender-final\"?: ((payload: import(\"markstream-vue\").MarkstreamVirtualMetrics) => any); readonly \"onAnchor-change\"?: ((payload: import(\"markstream-vue\").MarkstreamVirtualAnchor) => any); } & import(\"vue\").VNodeProps & import(\"vue\").AllowedComponentProps & import(\"vue\").ComponentCustomProps, 'debugPerformance' | 'viewportPriority' | 'codeBlockStream' | 'renderCodeBlocksAsPre' | 'showTooltips' | 'typewriter' | 'smoothStreaming' | 'fade' | 'batchRendering' | 'deferNodesUntilVisible' | 'nodeVirtual'>> }",
+        "description": "Properties for the SxMarkdown component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_markdown_types.markdownprops.props",
+        "sourcePath": "packages/ui-x/src/components/markdown/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_markdown_types.markdownprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/markdown/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "required": false,
+            "description": "Markdown source to render. Use this for streaming input — the renderer\nre-parses incrementally and renders incomplete constructs as placeholders.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_markdown_types.markdownprops.members.content",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/markdown/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "final",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the stream has completed. `true` disables streaming placeholders.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_markdown_types.markdownprops.members.final",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/markdown/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "mode",
+            "type": "NodeRendererMode",
+            "required": false,
+            "description": "Render pacing mode.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_markdown_types.markdownprops.members.mode",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/markdown/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NodeRendererMode",
+                "kind": "typeAlias",
+                "type": "NodeRendererMode",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/markstream-vue@1.1.3_katex@0.16.47_mermaid@11.16.1_vue-i18n@11.4.8_vue@3.5.41_typescrip_57c911ca52c75b44c6497cacbc5156c7/node_modules/markstream-vue/dist/index.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "htmlPolicy",
+            "type": "HtmlPolicy",
+            "required": false,
+            "description": "HTML handling policy.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_markdown_types.markdownprops.members.htmlpolicy",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/markdown/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HtmlPolicy",
+                "kind": "typeAlias",
+                "type": "HtmlPolicy",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/stream-markdown-parser@1.2.5/node_modules/stream-markdown-parser/dist/index.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "isDark",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to render in dark mode.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_markdown_types.markdownprops.members.isdark",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/markdown/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "typewriter",
+            "type": "NodeRendererTypewriter",
+            "required": false,
+            "description": "Typewriter animation.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_markdown_types.markdownprops.members.typewriter",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/markdown/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NodeRendererTypewriter",
+                "kind": "typeAlias",
+                "type": "NodeRendererTypewriter",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/markstream-vue@1.1.3_katex@0.16.47_mermaid@11.16.1_vue-i18n@11.4.8_vue@3.5.41_typescrip_57c911ca52c75b44c6497cacbc5156c7/node_modules/markstream-vue/dist/index.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "smoothStreaming",
+            "type": "boolean | 'auto'",
+            "required": false,
+            "description": "Enable smooth (paced) streaming.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_markdown_types.markdownprops.members.smoothstreaming",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/markdown/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "codeRenderer",
+            "type": "NodeRendererCodeRenderer",
+            "required": false,
+            "description": "Code block renderer.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_markdown_types.markdownprops.members.coderenderer",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/markdown/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NodeRendererCodeRenderer",
+                "kind": "typeAlias",
+                "type": "NodeRendererCodeRenderer",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/markstream-vue@1.1.3_katex@0.16.47_mermaid@11.16.1_vue-i18n@11.4.8_vue@3.5.41_typescrip_57c911ca52c75b44c6497cacbc5156c7/node_modules/markstream-vue/dist/index.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "parseOptions",
+            "type": "ParseOptions",
+            "required": false,
+            "description": "Parse options forwarded to the markdown engine.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_markdown_types.markdownprops.members.parseoptions",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/markdown/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ParseOptions",
+                "kind": "interface",
+                "type": "ParseOptions",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/stream-markdown-parser@1.2.5/node_modules/stream-markdown-parser/dist/index.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "rendererProps",
+            "type": "Partial<Partial<{ showTooltips: boolean; nodeVirtual: boolean | 'auto'; fade: boolean; debugPerformance: boolean; viewportPriority: boolean; codeBlockStream: boolean; renderCodeBlocksAsPre: boolean; typewriter: NodeRendererTypewriter; smoothStreaming: boolean | 'auto'; batchRendering: boolean; deferNodesUntilVisible: boolean; }> & Omit<{ readonly content?: string; readonly nodes?: import(\"markstream-vue\").BaseNode[]; readonly final?: boolean; readonly parseOptions?: ParseOptions; readonly customMarkdownIt?: ((md: import(\"markstream-vue\").MarkdownIt) => import(\"markstream-vue\").MarkdownIt); readonly debugPerformance?: boolean; readonly customHtmlTags?: readonly string[]; readonly mode?: NodeRendererMode; readonly domMode?: import(\"markstream-vue\").NodeRendererDomMode; readonly htmlPolicy?: HtmlPolicy; readonly viewportPriority?: boolean; readonly viewportPriorityOptions?: import(\"markstream-vue\").MarkstreamViewportPriorityOptions; readonly codeBlockStream?: boolean; readonly codeBlockDarkTheme?: import(\"markstream-vue\").CodeBlockMonacoTheme; readonly codeBlockLightTheme?: import(\"markstream-vue\").CodeBlockMonacoTheme; readonly codeBlockMonacoOptions?: import(\"markstream-vue\").CodeBlockMonacoOptions; readonly codeRenderer?: NodeRendererCodeRenderer; readonly renderCodeBlocksAsPre?: boolean; readonly codeBlockMinWidth?: string | number; readonly codeBlockMaxWidth?: string | number; readonly codeBlockProps?: (Partial<Omit<import(\"markstream-vue\").CodeBlockNodeProps, 'themes' | 'node'>> & Partial<Omit<import(\"markstream-vue\").ShikiCodeBlockProps, 'themes'>> & { themes?: readonly string[] | import(\"markstream-vue\").CodeBlockMonacoTheme[]; } & Record<string, unknown>); readonly mermaidProps?: Partial<Omit<import(\"markstream-vue\").MermaidBlockNodeProps, 'node' | 'loading' | 'isDark'>>; readonly d2Props?: Partial<Omit<import(\"markstream-vue\").D2BlockNodeProps, 'node' | 'loading' | 'isDark'>>; readonly infographicProps?: Partial<Omit<import(\"markstream-vue\").InfographicBlockNodeProps, 'node' | 'loading' | 'isDark'>>; readonly showTooltips?: boolean; readonly themes?: import(\"markstream-vue\").CodeBlockMonacoTheme[]; readonly langs?: readonly string[]; readonly isDark?: boolean; readonly customId?: string; readonly indexKey?: number | string; readonly typewriter?: NodeRendererTypewriter; readonly smoothStreaming?: boolean | 'auto'; readonly smoothStreamingOptions?: import(\"markstream-vue\").SmoothMarkdownStreamOptions; readonly parseCoalesceMs?: number; readonly fade?: boolean; readonly batchRendering?: boolean; readonly initialRenderBatchSize?: number; readonly renderBatchSize?: number; readonly renderBatchDelay?: number; readonly renderBatchBudgetMs?: number; readonly renderBatchIdleTimeoutMs?: number; readonly deferNodesUntilVisible?: boolean; readonly maxLiveNodes?: number; readonly liveNodeBuffer?: number; readonly nodeVirtual?: boolean | 'auto'; readonly virtualScroll?: import(\"markstream-vue\").MarkstreamVirtualScrollOptions; readonly renderAsFragment?: boolean; readonly onClick?: ((event: MouseEvent) => any); readonly onCopy?: ((code: string) => any); readonly onMouseout?: ((event: MouseEvent) => any); readonly onMouseover?: ((event: MouseEvent) => any); readonly \"onCopy-code\"?: ((code: string) => any); readonly onHandleArtifactClick?: ((payload: import(\"markstream-vue\").CodeBlockPreviewPayload) => any); readonly \"onVirtual-state-change\"?: ((payload: import(\"markstream-vue\").MarkstreamVirtualState) => any); readonly \"onHeight-change\"?: ((payload: import(\"markstream-vue\").MarkstreamVirtualMetrics) => any); readonly \"onRender-settled\"?: ((payload: import(\"markstream-vue\").MarkstreamVirtualMetrics) => any); readonly \"onRender-final\"?: ((payload: import(\"markstream-vue\").MarkstreamVirtualMetrics) => any); readonly \"onAnchor-change\"?: ((payload: import(\"markstream-vue\").MarkstreamVirtualAnchor) => any); } & import(\"vue\").VNodeProps & import(\"vue\").AllowedComponentProps & import(\"vue\").ComponentCustomProps, 'debugPerformance' | 'viewportPriority' | 'codeBlockStream' | 'renderCodeBlocksAsPre' | 'showTooltips' | 'typewriter' | 'smoothStreaming' | 'fade' | 'batchRendering' | 'deferNodesUntilVisible' | 'nodeVirtual'>>",
+            "required": false,
+            "description": "Additional props forwarded to the underlying `MarkdownRender`.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_markdown_types.markdownprops.members.rendererprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/markdown/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

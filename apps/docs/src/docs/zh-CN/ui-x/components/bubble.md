@@ -28,31 +28,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'message', type: 'ChatMessage', default: '-', description: '要渲染的消息。省略时使用 `content` / `role` 属性。' },
-  { name: 'content', type: 'string', default: '-', description: '消息文本内容（未提供 `message` 时使用）。' },
-  { name: 'role', type: 'ChatRole', default: '-', description: '消息角色（未提供 `message` 时使用）。`ChatRole` = `\'ai\' | \'user\' | \'system\' | \'divider\' | string`。' },
-  { name: 'placement', type: `'start' | 'end'`, default: `'start'`, description: '消息位置。' },
-  { name: 'variant', type: `'filled' | 'outlined' | 'shadow'`, default: `'filled'`, description: '视觉变体。' },
-  { name: 'avatarSize', type: 'ThemeSize', default: `'md'`, description: '头像尺寸。' },
-  { name: 'loading', type: 'boolean', default: 'false', description: '是否显示加载指示。' },
-  { name: 'typing', type: 'boolean', default: 'false', description: '是否对内容启用打字机 / 淡入效果。' },
-]"/>
-
-### Emits
-
-该组件不触发任何事件。
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'header', parameters: '-', description: '消息主体上方的内容。' },
-  { name: 'content', parameters: '{ content: string }', description: '自定义消息主体；`content` 为展示文本，包含打字机进度。' },
-  { name: 'footer', parameters: '-', description: '消息主体下方的自定义内容。' },
-]"/>
+<ComponentApi component="bubble" />
 
 ## 注意事项
 

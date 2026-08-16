@@ -1,0 +1,82 @@
+{
+  "component": "sources",
+  "symbols": {
+    "Sources": {
+      "props": {
+        "kind": "props",
+        "name": "SourcesProps",
+        "type": "Interface SourcesProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; sources: Source[]; onSelect?: ((source: Source) => void) }",
+        "description": "Properties for the SxSources component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_sources_types.sourcesprops.props",
+        "sourcePath": "packages/ui-x/src/components/sources/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_sources_types.sourcesprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/sources/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "sources",
+            "type": "Source[]",
+            "required": true,
+            "description": "The sources to display.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_sources_types.sourcesprops.members.sources",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/sources/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onSelect",
+            "type": "((source: Source) => void)",
+            "required": false,
+            "description": "Emitted when a source is clicked.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_sources_types.sourcesprops.members.onselect",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/sources/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Source",
+                "kind": "interface",
+                "type": "Source",
+                "resolvedType": null,
+                "description": "A referenced source / citation.",
+                "descriptionKey": "api.generated.packages_ui_x_src_types_source.source",
+                "sourcePath": "packages/ui-x/src/types/source.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

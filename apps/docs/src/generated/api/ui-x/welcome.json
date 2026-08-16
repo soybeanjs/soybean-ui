@@ -1,0 +1,104 @@
+{
+  "component": "welcome",
+  "symbols": {
+    "Welcome": {
+      "props": {
+        "kind": "props",
+        "name": "WelcomeProps",
+        "type": "Interface WelcomeProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; title?: string; description?: string; prompts?: Prompt[]; onSelectPrompt?: ((prompt: Prompt) => void) }",
+        "description": "Properties for the SxWelcome component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_welcome_types.welcomeprops.props",
+        "sourcePath": "packages/ui-x/src/components/welcome/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_welcome_types.welcomeprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/welcome/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "required": false,
+            "description": "Greeting title.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_welcome_types.welcomeprops.members.title",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/welcome/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "description": "Description text.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_welcome_types.welcomeprops.members.description",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/welcome/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prompts",
+            "type": "Prompt[]",
+            "required": false,
+            "description": "Recommended prompts to show below the copy.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_welcome_types.welcomeprops.members.prompts",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/welcome/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onSelectPrompt",
+            "type": "((prompt: Prompt) => void)",
+            "required": false,
+            "description": "Emitted when a prompt is clicked.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_welcome_types.welcomeprops.members.onselectprompt",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/welcome/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Prompt",
+                "kind": "interface",
+                "type": "Prompt",
+                "resolvedType": null,
+                "description": "A suggested prompt / question shown on welcome or suggestion surfaces.",
+                "descriptionKey": "api.generated.packages_ui_x_src_types_prompt.prompt",
+                "sourcePath": "packages/ui-x/src/types/prompt.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

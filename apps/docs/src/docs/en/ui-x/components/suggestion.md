@@ -25,25 +25,7 @@ Use it inside an assistant `SxBubble` (typically after the message body) to offe
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'suggestions', type: 'Prompt[]', default: '-', description: 'The suggestions to display.', required: true },
-  { name: 'onSelect', type: '(suggestion: Prompt) => void', default: '-', description: 'Callback invoked when a suggestion is clicked.' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'select', parameters: '[suggestion: Prompt]', description: 'Emitted when a suggestion is clicked.' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'label', parameters: '{ suggestion: Prompt }', description: 'Custom label content for each suggestion.' },
-]"/>
+<ComponentApi component="suggestion" />
 
 ## Notes
 

@@ -27,22 +27,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'code', type: 'string', default: '-', description: 'Mermaid 图表源码。必填。' },
-  { name: 'mode', type: `'image' | 'code'`, default: `'image'`, description: '显示模式（渲染图表或源码）。' },
-  { name: 'showToggle', type: 'boolean', default: 'true', description: '是否显示图片 / 代码切换。' },
-]"/>
-
-### Emits
-
-无自定义事件 — `SxMermaid` 是自包含的展示组件。
-
-### Slots
-
-无插槽 — 图表内容与工具栏完全由组件内部实现。
+<ComponentApi component="mermaid" />
 
 ## 注意事项
 

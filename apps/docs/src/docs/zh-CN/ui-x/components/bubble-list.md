@@ -28,27 +28,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'items', type: 'ChatMessage[]', default: '-', description: '要渲染的消息列表。必填。' },
-  { name: 'scrollable', type: 'boolean', default: 'true', description: '容器是否有约束高度并应可滚动。设为 `false` 时列表按内容自适应高度。' },
-  { name: 'scrollThreshold', type: 'number', default: '40', description: '与底部距离小于该值（px）视为「位于底部」。' },
-  { name: 'showBackToBottom', type: 'boolean', default: 'true', description: '是否显示「返回底部」按钮。' },
-]"/>
-
-### Emits
-
-该组件不触发任何事件。
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'items', parameters: '{ items }', description: '替换整个默认气泡列表。' },
-  { name: 'content', parameters: '{ message, content }', description: '覆盖单条消息主体（`ChatMessage` + 展示文本）。' },
-  { name: 'back-to-bottom-icon', parameters: '-', description: '替换默认的「↓」返回底部图标。' },
-]"/>
+<ComponentApi component="bubble-list" />
 
 ## 注意事项
 

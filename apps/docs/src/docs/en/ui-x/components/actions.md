@@ -27,25 +27,7 @@ Use it below a chat message bubble to provide quick, inline actions. Each item i
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'items', type: 'ActionItem[]', default: '-', description: 'The actions to display. Each item has `key`, `label`, optional `icon`, and optional `disabled`.' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'action', parameters: '[item: ActionItem]', description: 'Emitted when a non-disabled action is clicked, with the action item.' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'icon', parameters: '{ item: ActionItem }', description: 'Custom icon rendering for each action button.' },
-  { name: 'label', parameters: '{ item: ActionItem }', description: 'Custom label rendering for each action button.' },
-]"/>
+<ComponentApi component="actions" />
 
 ## Notes
 

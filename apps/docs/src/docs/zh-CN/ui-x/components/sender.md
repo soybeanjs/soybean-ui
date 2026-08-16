@@ -27,34 +27,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'placeholder', type: 'string', default: `''`, description: '占位文本。' },
-  { name: 'slashSuggestions', type: 'SenderSuggestion[]', default: '-', description: '斜杠（`/`）命令建议。' },
-  { name: 'mentionSuggestions', type: 'SenderSuggestion[]', default: '-', description: '提及（`@`）建议。' },
-  { name: 'loading', type: 'boolean', default: 'false', description: '是否禁用发送操作（例如请求进行中时）。' },
-  { name: 'disabled', type: 'boolean', default: 'false', description: '是否禁用整个输入框。' },
-  { name: 'attachments', type: 'Attachment[]', default: '-', description: '显示在输入框上方的附件。' },
-  { name: 'rows', type: 'number', default: '3', description: '文本域行数。' },
-  { name: 'submitType', type: `'enter' | 'shiftEnter'`, default: `'enter'`, description: '提交行为。`enter` 按 Enter 提交；`shiftEnter` 按 Ctrl+Enter 提交（普通 Enter 为换行）。' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'submit', parameters: '[text: string]', description: '消息提交时触发。' },
-  { name: 'removeAttachment', parameters: '[attachment: Attachment]', description: '附件被移除时触发。' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'actions', parameters: '-', description: '渲染在左侧操作区的自定义操作。' },
-  { name: 'submit-icon', parameters: '-', description: '自定义提交按钮图标。' },
-  { name: 'suggestion', parameters: '{ suggestion }', description: '自定义单个建议项的渲染。' },
-]"/>
+<ComponentApi component="sender" />
 
 ## 注意事项
 

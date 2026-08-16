@@ -1,0 +1,90 @@
+{
+  "component": "bubble-list",
+  "symbols": {
+    "BubbleList": {
+      "props": {
+        "kind": "props",
+        "name": "BubbleListProps",
+        "type": "Interface BubbleListProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; items: ChatMessage[]; scrollable?: boolean; scrollThreshold?: number; showBackToBottom?: boolean }",
+        "description": "Properties for the SxBubbleList component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_bubble_list_types.bubblelistprops.props",
+        "sourcePath": "packages/ui-x/src/components/bubble-list/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_bubble_list_types.bubblelistprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/bubble-list/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "ChatMessage[]",
+            "required": true,
+            "description": "The message list to render.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_bubble_list_types.bubblelistprops.members.items",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/bubble-list/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "scrollable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the container has a constrained height and should be scrollable.\nWhen `false`, the list grows to fit its content.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_bubble_list_types.bubblelistprops.members.scrollable",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/bubble-list/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "scrollThreshold",
+            "type": "number",
+            "required": false,
+            "description": "Distance (px) from the bottom considered \"at bottom\". Defaults to `40`.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_bubble_list_types.bubblelistprops.members.scrollthreshold",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/bubble-list/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showBackToBottom",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show the \"back to bottom\" button. Defaults to `true`.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_bubble_list_types.bubblelistprops.members.showbacktobottom",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/bubble-list/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

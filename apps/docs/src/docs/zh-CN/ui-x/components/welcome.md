@@ -25,28 +25,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'title', type: 'string', default: `''`, description: '问候标题。' },
-  { name: 'description', type: 'string', default: `''`, description: '描述文本。' },
-  { name: 'prompts', type: 'Prompt[]', default: '-', description: '显示在文案下方的推荐提示。' },
-  { name: 'onSelectPrompt', type: '(prompt: Prompt) => void', default: '-', description: '提示被点击时调用的回调。' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'selectPrompt', parameters: '[prompt: Prompt]', description: '提示被点击时触发。' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'title', parameters: '-', description: '自定义标题内容（替换默认 h2）。' },
-  { name: 'description', parameters: '-', description: '自定义描述内容（替换默认 p）。' },
-]"/>
+<ComponentApi component="welcome" />
 
 ## 注意事项
 

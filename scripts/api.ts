@@ -5,7 +5,7 @@ import { Application, ReflectionKind } from 'typedoc';
 import type { Comment, DeclarationReflection, ProjectReflection, Reflection, SignatureReflection } from 'typedoc';
 import ts from 'typescript';
 import { components as headlessComponents } from '../packages/headless/src/constants/components';
-import { runCliModule, writeGeneratedJsonDirectory } from './_shared';
+import { runCliModule, writeGeneratedJsonDirectory, writeJsonFile } from './_shared';
 
 type ApiSectionKind = 'props' | 'emits' | 'slots' | 'slotProps';
 
@@ -80,23 +80,67 @@ type ComponentApiIndex = {
 };
 
 const rootDir = process.cwd();
-const outputDir = path.join(rootDir, 'apps/docs/src/generated/api');
+const apiRootDir = path.join(rootDir, 'apps/docs/src/generated/api');
 const legacyOutputDir = path.join(rootDir, 'apps/docs/src/generated/component-api');
-const typedocTsconfig = {
-  extends: './tsconfig.json',
-  compilerOptions: {
+
+type ApiPackageConfig = {
+  key: string;
+  entryPoint: string;
+  outputDir: string;
+  sourceRoots: string[];
+  paths: Record<string, string[]>;
+};
+
+const apiPackages: ApiPackageConfig[] = [
+  {
+    key: 'ui',
+    entryPoint: 'packages/ui/src/index.ts',
+    outputDir: path.join(apiRootDir, 'ui'),
+    sourceRoots: ['packages/ui/src/', 'packages/headless/src/'],
     paths: {
       '@/*': ['./packages/ui/src/*'],
       '@soybeanjs/ui': ['./packages/ui/src/index.ts'],
       '@soybeanjs/theme': ['./packages/theme/src/index.ts'],
       '@soybeanjs/theme/*': ['./packages/theme/src/*']
-    },
-    skipLibCheck: true,
-    types: ['vite/client']
+    }
   },
-  include: ['packages/ui/src/**/*', 'packages/headless/src/**/*', 'packages/theme/src/**/*', 'typings/typedoc.d.ts'],
-  exclude: ['apps/docs/**/*', 'apps/playground/**/*', 'test/**/*']
-} as const;
+  {
+    key: 'ui-x',
+    entryPoint: 'packages/ui-x/src/index.ts',
+    outputDir: path.join(apiRootDir, 'ui-x'),
+    sourceRoots: ['packages/ui-x/src/'],
+    paths: {
+      // ui-x has no `@/` imports today; point the alias at the ui package source so
+      // that pulling in `@soybeanjs/ui` source (for rich referenced-type resolution)
+      // also resolves ui's own internal aliases (`@/theme`, `@/styles`, ...).
+      '@/*': ['./packages/ui/src/*'],
+      '@soybeanjs/ui': ['./packages/ui/src/index.ts'],
+      '@soybeanjs/headless': ['./packages/headless/src/index.ts'],
+      '@soybeanjs/headless/*': ['./packages/headless/src/*'],
+      '@soybeanjs/theme': ['./packages/theme/src/index.ts'],
+      '@soybeanjs/theme/*': ['./packages/theme/src/*']
+    }
+  }
+];
+
+function createTypedocTsconfig(pkg: ApiPackageConfig): Record<string, unknown> {
+  return {
+    extends: './tsconfig.json',
+    compilerOptions: {
+      paths: pkg.paths,
+      skipLibCheck: true,
+      types: ['vite/client']
+    },
+    include: [
+      'packages/ui-x/src/**/*',
+      'packages/ui/src/**/*',
+      'packages/headless/src/**/*',
+      'packages/theme/src/**/*',
+      'typings/typedoc.d.ts'
+    ],
+    exclude: ['apps/docs/**/*', 'apps/playground/**/*', 'test/**/*']
+  };
+}
 const emptyIgnoredIndexes = Object.freeze([]) satisfies readonly number[];
 const tsTypeFormatFlags =
   ts.TypeFormatFlags.NoTruncation |
@@ -346,7 +390,9 @@ function getComponentKeyFromPath(sourcePath: string | null): string | null {
     return null;
   }
 
-  const match = sourcePath.match(/(?:^|\/)(?:packages\/ui\/src|packages\/headless\/src)\/components\/([^/]+)\//);
+  const match = sourcePath.match(
+    /(?:^|\/)(?:packages\/ui\/src|packages\/headless\/src|packages\/ui-x\/src)\/components\/([^/]+)\//
+  );
 
   return match?.[1] ?? null;
 }
@@ -581,12 +627,12 @@ function getTsProgramContext(): TsProgramContext {
   return tsProgramContext;
 }
 
-function getTypedocParsedConfig(): ts.ParsedCommandLine {
+function getTypedocParsedConfig(pkg: ApiPackageConfig = apiPackages[0]): ts.ParsedCommandLine {
   if (typedocParsedConfig) {
     return typedocParsedConfig;
   }
 
-  typedocParsedConfig = ts.parseJsonConfigFileContent(typedocTsconfig, ts.sys, rootDir, undefined);
+  typedocParsedConfig = ts.parseJsonConfigFileContent(createTypedocTsconfig(pkg), ts.sys, rootDir, undefined);
 
   if (typedocParsedConfig.errors.length) {
     throw new Error(
@@ -595,6 +641,12 @@ function getTypedocParsedConfig(): ts.ParsedCommandLine {
   }
 
   return typedocParsedConfig;
+}
+
+function resetProgramState(): void {
+  typedocParsedConfig = null;
+  tsProgramContext = null;
+  declarationCache.clear();
 }
 
 function getDeclarationSourcePath(declaration: ts.Node | undefined): string | null {
@@ -1472,7 +1524,10 @@ function completeComponentSymbols(componentKey: string, componentApi: ComponentA
   };
 }
 
-function collectComponentApis(project: ProjectReflection): Record<string, ComponentApi> {
+function collectComponentApis(
+  project: ProjectReflection,
+  isSourceIncluded: (sourcePath: string | null) => boolean
+): Record<string, ComponentApi> {
   const reflections = project
     .getReflectionsByKind(ReflectionKind.Interface | ReflectionKind.TypeAlias)
     .filter(reflection => reflection.isDeclaration());
@@ -1487,6 +1542,11 @@ function collectComponentApis(project: ProjectReflection): Record<string, Compon
     }
 
     const sourcePath = getSourcePath(reflection);
+
+    if (!isSourceIncluded(sourcePath)) {
+      continue;
+    }
+
     const componentKey = getComponentKeyForSymbol(sectionMeta.sectionName) ?? getComponentKeyFromPath(sourcePath);
 
     if (!componentKey) {
@@ -1530,12 +1590,16 @@ function createComponentApiIndex(generatedAt: string, components: Record<string,
   };
 }
 
-async function writeOutputs(generatedAt: string, components: Record<string, ComponentApi>): Promise<void> {
+async function writeOutputs(
+  pkg: ApiPackageConfig,
+  generatedAt: string,
+  components: Record<string, ComponentApi>
+): Promise<ComponentApiIndex> {
   const index = createComponentApiIndex(generatedAt, components);
 
   await writeGeneratedJsonDirectory({
-    outputDir,
-    resetPaths: [legacyOutputDir],
+    outputDir: pkg.outputDir,
+    resetPaths: pkg.key === 'ui' ? [legacyOutputDir] : [],
     documents: [
       {
         fileName: 'index.json',
@@ -1547,34 +1611,61 @@ async function writeOutputs(generatedAt: string, components: Record<string, Comp
       }))
     ]
   });
+
+  return index;
 }
 
 export async function generateApiData(): Promise<void> {
-  const parsedTypedocConfig = getTypedocParsedConfig();
-  const app = await Application.bootstrap(
-    {
-      entryPoints: [path.join(rootDir, 'packages/ui/src/index.ts')],
-      logLevel: 'Warn'
-    },
-    []
-  );
+  const generatedAt = new Date().toISOString();
+  const packages: Record<string, { file: string; components: ComponentApiIndex['components'] }> = {};
 
-  app.options.setCompilerOptions(
-    parsedTypedocConfig.fileNames,
-    parsedTypedocConfig.options,
-    parsedTypedocConfig.projectReferences
-  );
+  for (const pkg of apiPackages) {
+    resetProgramState();
 
-  const project = await app.convert();
+    const parsedTypedocConfig = getTypedocParsedConfig(pkg);
+    const app = await Application.bootstrap(
+      {
+        entryPoints: [pkg.entryPoint],
+        logLevel: 'Warn'
+      },
+      []
+    );
 
-  if (!project) {
-    throw new Error('TypeDoc failed to create a project reflection.');
+    app.options.setCompilerOptions(
+      parsedTypedocConfig.fileNames,
+      parsedTypedocConfig.options,
+      parsedTypedocConfig.projectReferences
+    );
+
+    const project = await app.convert();
+
+    if (!project) {
+      throw new Error(`TypeDoc failed to create a project reflection for ${pkg.key}.`);
+    }
+
+    const isSourceIncluded = (sourcePath: string | null): boolean =>
+      sourcePath !== null && pkg.sourceRoots.some(sourceRoot => sourcePath.startsWith(sourceRoot));
+
+    const components = collectComponentApis(project, isSourceIncluded);
+    const index = await writeOutputs(pkg, generatedAt, components);
+
+    packages[pkg.key] = {
+      file: `${pkg.key}/index.json`,
+      components: index.components
+    };
   }
 
-  const components = collectComponentApis(project);
-  const generatedAt = new Date().toISOString();
+  await writeJsonFile(
+    path.join(apiRootDir, 'index.json'),
+    {
+      generatedAt,
+      schemaVersion: 4,
+      packages
+    },
+    { sort: true }
+  );
 
-  await writeOutputs(generatedAt, components);
+  console.log(`Generated API data for packages: ${Object.keys(packages).join(', ')}.`);
 }
 
 runCliModule(import.meta.url, generateApiData);

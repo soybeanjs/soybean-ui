@@ -1,0 +1,118 @@
+{
+  "component": "attachments",
+  "symbols": {
+    "Attachments": {
+      "props": {
+        "kind": "props",
+        "name": "AttachmentsProps",
+        "type": "Interface AttachmentsProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; attachments: Attachment[]; showIcons?: boolean; onRemove?: ((attachment: Attachment) => void); onSelect?: ((attachment: Attachment) => void) }",
+        "description": "Properties for the SxAttachments component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_attachments_types.attachmentsprops.props",
+        "sourcePath": "packages/ui-x/src/components/attachments/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_attachments_types.attachmentsprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/attachments/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "attachments",
+            "type": "Attachment[]",
+            "required": true,
+            "description": "The attachments to render.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_attachments_types.attachmentsprops.members.attachments",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/attachments/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showIcons",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to render the icon column. Defaults to `true`.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_attachments_types.attachmentsprops.members.showicons",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/attachments/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onRemove",
+            "type": "((attachment: Attachment) => void)",
+            "required": false,
+            "description": "Emitted when the user requests to remove an attachment.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_attachments_types.attachmentsprops.members.onremove",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/attachments/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Attachment",
+                "kind": "interface",
+                "type": "Attachment",
+                "resolvedType": null,
+                "description": "A single attachment (file / image / link) associated with a chat message.",
+                "descriptionKey": "api.generated.packages_ui_x_src_types_attachment.attachment",
+                "sourcePath": "packages/ui-x/src/types/attachment.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "onSelect",
+            "type": "((attachment: Attachment) => void)",
+            "required": false,
+            "description": "Emitted when an attachment is clicked.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_attachments_types.attachmentsprops.members.onselect",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/attachments/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Attachment",
+                "kind": "interface",
+                "type": "Attachment",
+                "resolvedType": null,
+                "description": "A single attachment (file / image / link) associated with a chat message.",
+                "descriptionKey": "api.generated.packages_ui_x_src_types_attachment.attachment",
+                "sourcePath": "packages/ui-x/src/types/attachment.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

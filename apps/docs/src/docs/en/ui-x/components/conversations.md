@@ -25,27 +25,7 @@ Use it as the left sidebar in a chat interface to list all user conversations. I
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'items', type: 'ConversationItem[]', default: '-', description: 'The conversation list to display.', required: true },
-  { name: 'active', type: 'string | null', default: 'null', description: 'The currently active conversation id.' },
-  { name: 'onChange', type: '(item: ConversationItem) => void', default: '-', description: 'Callback invoked when a conversation is selected.' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'change', parameters: '[item: ConversationItem]', description: 'Emitted when a conversation is selected.' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'groupTitle', parameters: '{ group: string }', description: 'Custom group header content.' },
-  { name: 'item', parameters: '{ item: ConversationItem }', description: 'Custom item content.' },
-]"/>
+<ComponentApi component="conversations" />
 
 ## Notes
 

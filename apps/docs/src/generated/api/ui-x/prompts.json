@@ -1,0 +1,82 @@
+{
+  "component": "prompts",
+  "symbols": {
+    "Prompts": {
+      "props": {
+        "kind": "props",
+        "name": "PromptsProps",
+        "type": "Interface PromptsProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; prompts: Prompt[]; onSelect?: ((prompt: Prompt) => void) }",
+        "description": "Properties for the SxPrompts component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_prompts_types.promptsprops.props",
+        "sourcePath": "packages/ui-x/src/components/prompts/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_prompts_types.promptsprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/prompts/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "prompts",
+            "type": "Prompt[]",
+            "required": true,
+            "description": "The prompts to display.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_prompts_types.promptsprops.members.prompts",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/prompts/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onSelect",
+            "type": "((prompt: Prompt) => void)",
+            "required": false,
+            "description": "Emitted when a prompt is clicked.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_prompts_types.promptsprops.members.onselect",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/prompts/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Prompt",
+                "kind": "interface",
+                "type": "Prompt",
+                "resolvedType": null,
+                "description": "A suggested prompt / question shown on welcome or suggestion surfaces.",
+                "descriptionKey": "api.generated.packages_ui_x_src_types_prompt.prompt",
+                "sourcePath": "packages/ui-x/src/types/prompt.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

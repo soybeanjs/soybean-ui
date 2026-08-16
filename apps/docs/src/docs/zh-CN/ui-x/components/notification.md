@@ -27,31 +27,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'title', type: 'string', default: `''`, description: '通知标题。' },
-  { name: 'description', type: 'string', default: `''`, description: '可选的长描述。' },
-  { name: 'type', type: `'info' | 'success' | 'warning' | 'error'`, default: `'info'`, description: '视觉风格。' },
-  { name: 'closable', type: 'boolean', default: 'true', description: '是否显示关闭按钮。' },
-  { name: 'onClose', type: '() => void', default: '-', description: '点击关闭按钮时调用。' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'close', parameters: '[]', description: '点击关闭按钮时触发。' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'icon', parameters: '{ type }', description: '自定义图标；接收当前 `type`。' },
-  { name: 'title', parameters: '-', description: '自定义标题内容。' },
-  { name: 'description', parameters: '-', description: '自定义描述内容。' },
-  { name: 'close-icon', parameters: '-', description: '自定义关闭按钮内容。' },
-]"/>
+<ComponentApi component="notification" />
 
 ## 注意事项
 

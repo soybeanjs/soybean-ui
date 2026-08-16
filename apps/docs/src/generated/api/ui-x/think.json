@@ -1,0 +1,79 @@
+{
+  "component": "think",
+  "symbols": {
+    "Think": {
+      "props": {
+        "kind": "props",
+        "name": "ThinkProps",
+        "type": "Interface ThinkProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; title?: string; defaultOpen?: boolean; onToggleChange?: ((open: boolean) => void) }",
+        "description": "Properties for the SxThink component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_think_types.thinkprops.props",
+        "sourcePath": "packages/ui-x/src/components/think/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_think_types.thinkprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/think/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "required": false,
+            "description": "The collapsed / expanded header title.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_think_types.thinkprops.members.title",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/think/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the panel is expanded by default.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_think_types.thinkprops.members.defaultopen",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/think/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onToggleChange",
+            "type": "((open: boolean) => void)",
+            "required": false,
+            "description": "Emitted when the panel is toggled, with the new open state.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_think_types.thinkprops.members.ontogglechange",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/think/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

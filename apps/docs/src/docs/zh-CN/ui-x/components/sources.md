@@ -25,25 +25,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'sources', type: 'Source[]', default: '-', description: '要展示的来源。', required: true },
-  { name: 'onSelect', type: '(source: Source) => void', default: '-', description: '来源被点击时调用的回调。' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'select', parameters: '[source: Source]', description: '来源链接被点击时触发。' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'label', parameters: '{ source: Source }', description: '每个来源的自定义标签内容。' },
-]"/>
+<ComponentApi component="sources" />
 
 ## 注意事项
 

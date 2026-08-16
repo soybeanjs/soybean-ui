@@ -142,7 +142,7 @@ async function createComponentDoc(filePath: string): Promise<SkillComponentDoc> 
   const slug = path.basename(filePath, '.md');
   const rawContent = await readFile(filePath, 'utf8');
   const { content, data } = parseFrontmatter(rawContent);
-  const apiSummary = await createApiSummary(path.resolve(generatedApiDir, `${slug}.json`));
+  const apiSummary = await createApiSummary(path.resolve(generatedApiDir, 'ui', `${slug}.json`));
   const normalizedContent = normalizeMarkdownContent(content, slug, apiSummary);
   const title = data.title || extractTitle(normalizedContent) || humanizeTitle(slug);
   const description = data.description || extractDescription(normalizedContent);

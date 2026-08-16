@@ -1,0 +1,79 @@
+{
+  "component": "actions-feedback",
+  "symbols": {
+    "ActionsFeedback": {
+      "props": {
+        "kind": "props",
+        "name": "ActionsFeedbackProps",
+        "type": "Interface ActionsFeedbackProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; value?: FeedbackValue | null; disabled?: boolean; onChange?: ((value: FeedbackValue | null) => void) }",
+        "description": "Properties for the SxActionsFeedback component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_actions_feedback_types.actionsfeedbackprops.props",
+        "sourcePath": "packages/ui-x/src/components/actions-feedback/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_actions_feedback_types.actionsfeedbackprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/actions-feedback/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "value",
+            "type": "FeedbackValue | null",
+            "required": false,
+            "description": "The currently active feedback, if any.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_actions_feedback_types.actionsfeedbackprops.members.value",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/actions-feedback/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the buttons are disabled.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_actions_feedback_types.actionsfeedbackprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/actions-feedback/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onChange",
+            "type": "((value: FeedbackValue | null) => void)",
+            "required": false,
+            "description": "Emitted when feedback is given; `null` clears the active state.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_actions_feedback_types.actionsfeedbackprops.members.onchange",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/actions-feedback/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

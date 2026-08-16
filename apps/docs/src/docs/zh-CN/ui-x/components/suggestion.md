@@ -25,25 +25,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'suggestions', type: 'Prompt[]', default: '-', description: '要展示的建议。', required: true },
-  { name: 'onSelect', type: '(suggestion: Prompt) => void', default: '-', description: '建议被点击时调用的回调。' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'select', parameters: '[suggestion: Prompt]', description: '建议被点击时触发。' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'label', parameters: '{ suggestion: Prompt }', description: '每个建议的自定义标签内容。' },
-]"/>
+<ComponentApi component="suggestion" />
 
 ## 注意事项
 

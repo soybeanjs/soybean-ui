@@ -27,27 +27,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'title', type: 'string', default: `''`, description: '折叠 / 展开状态的头部标题。' },
-  { name: 'defaultOpen', type: 'boolean', default: 'false', description: '面板默认是否展开。' },
-  { name: 'onToggleChange', type: '(open: boolean) => void', default: '-', description: '面板切换时触发的回调，参数为新开关状态。' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'toggleChange', parameters: '[open: boolean]', description: '面板切换时触发，参数为新开关状态。' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'trigger', parameters: '{ open: boolean }', description: '自定义触发器内容。接收当前开关状态。' },
-  { name: 'default', parameters: '-', description: '展开时显示的面板内容。' },
-]"/>
+<ComponentApi component="think" />
 
 ## 注意事项
 

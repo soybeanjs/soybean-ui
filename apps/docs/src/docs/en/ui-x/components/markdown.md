@@ -29,29 +29,7 @@ Within `@soybeanjs/ui-x`, `SxMarkdown` pairs naturally with `SxCodeBlock` and `S
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'content', type: 'string', default: '-', description: 'Markdown source to render. Re-parsed incrementally for streaming input.' },
-  { name: 'final', type: 'boolean', default: 'false', description: 'Whether the stream has completed. `true` disables streaming placeholders.' },
-  { name: 'mode', type: 'NodeRendererMode', default: `'chat'`, description: 'Render pacing mode.' },
-  { name: 'htmlPolicy', type: 'HtmlPolicy', default: `'safe'`, description: 'HTML handling policy.' },
-  { name: 'isDark', type: 'boolean', default: '-', description: 'Whether to render in dark mode.' },
-  { name: 'typewriter', type: 'NodeRendererTypewriter', default: 'false', description: 'Typewriter animation.' },
-  { name: 'smoothStreaming', type: `boolean | 'auto'`, default: '-', description: 'Enable smooth (paced) streaming.' },
-  { name: 'codeRenderer', type: 'NodeRendererCodeRenderer', default: '-', description: 'Code block renderer.' },
-  { name: 'parseOptions', type: 'ParseOptions', default: '-', description: 'Parse options forwarded to the markdown engine.' },
-  { name: 'rendererProps', type: 'Partial<MarkdownRenderProps>', default: '-', description: 'Additional props forwarded to the underlying `MarkdownRender`.' },
-]"/>
-
-### Emits
-
-No custom emits — `SxMarkdown` is a passthrough wrapper; props and slots flow straight through to `MarkdownRender`.
-
-### Slots
-
-All slots are forwarded dynamically to the underlying `MarkdownRender` (via `v-for` over `useSlots()`). Any slot `MarkdownRender` supports (for example a custom code or heading renderer) can be overridden with the same name and slot props.
+<ComponentApi component="markdown" />
 
 ## Notes
 

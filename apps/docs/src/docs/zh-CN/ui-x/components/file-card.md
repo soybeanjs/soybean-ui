@@ -25,26 +25,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'attachment', type: 'Attachment', default: '-', description: '要渲染的附件。', required: true },
-  { name: 'onClick', type: '() => void', default: 'undefined', description: '可选的点击处理（如打开预览）。' },
-]"/>
-
-### Emits
-
-此组件不触发任何事件（点击通过 `onClick` 属性传递）。
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'icon', parameters: '{ kind: AttachmentKind }', description: '针对给定类型的自定义图标内容。' },
-  { name: 'name', parameters: '{ attachment: Attachment }', description: '自定义文件名渲染。' },
-  { name: 'meta', parameters: '{ meta: string }', description: '自定义元信息行渲染（mimeType · size）。' },
-  { name: 'actions', parameters: '{ attachment: Attachment }', description: '渲染在卡片右侧的操作。' },
-]"/>
+<ComponentApi component="file-card" />
 
 ## 注意事项
 

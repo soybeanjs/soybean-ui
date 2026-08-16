@@ -28,26 +28,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'text', type: 'string', default: `''`, description: '要复制的文本。缺省时回退到默认插槽内容。' },
-  { name: 'label', type: 'string', default: `'Copy'`, description: '无障碍标签。' },
-  { name: 'disabled', type: 'boolean', default: 'false', description: '按钮是否禁用。' },
-  { name: 'onCopy', type: '(text: string) => void', default: '-', description: '复制尝试后触发的回调，参数为被复制的文本。' },
-]"/>
-
-### Emits
-
-此组件不触发任何事件——复制结果通过 `onCopy` 属性传递。
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'icon', parameters: '{ copied: boolean }', description: '自定义图标。接收当前 `copied` 状态。' },
-  { name: 'label', parameters: '{ copied: boolean }', description: '自定义标签。接收当前 `copied` 状态。' },
-]"/>
+<ComponentApi component="actions-copy" />
 
 ## 注意事项
 

@@ -1,0 +1,115 @@
+{
+  "component": "notification",
+  "symbols": {
+    "Notification": {
+      "props": {
+        "kind": "props",
+        "name": "NotificationProps",
+        "type": "Interface NotificationProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; title?: string; description?: string; type?: NotificationType; closable?: boolean; onClose?: (() => void) }",
+        "description": "Properties for the SxNotification component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_notification_types.notificationprops.props",
+        "sourcePath": "packages/ui-x/src/components/notification/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_notification_types.notificationprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/notification/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "required": false,
+            "description": "The notification title.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_notification_types.notificationprops.members.title",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/notification/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "description": "Optional longer description.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_notification_types.notificationprops.members.description",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/notification/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "type",
+            "type": "NotificationType",
+            "required": false,
+            "description": "The visual tone.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_notification_types.notificationprops.members.type",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/notification/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NotificationType",
+                "kind": "typeAlias",
+                "type": "'success' | 'error' | 'info' | 'warning'",
+                "resolvedType": "'success' | 'error' | 'info' | 'warning'",
+                "description": "The visual tone of an SxNotification.",
+                "descriptionKey": "api.generated.packages_ui_x_src_components_notification_types.notificationtype",
+                "sourcePath": "packages/ui-x/src/components/notification/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "closable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the close button is shown.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_notification_types.notificationprops.members.closable",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/notification/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onClose",
+            "type": "(() => void)",
+            "required": false,
+            "description": "Emitted when the close button is clicked.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_notification_types.notificationprops.members.onclose",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/notification/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

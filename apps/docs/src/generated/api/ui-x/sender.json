@@ -1,0 +1,134 @@
+{
+  "component": "sender",
+  "symbols": {
+    "Sender": {
+      "props": {
+        "kind": "props",
+        "name": "SenderProps",
+        "type": "Interface SenderProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; placeholder?: string; slashSuggestions?: SenderSuggestion[]; mentionSuggestions?: SenderSuggestion[]; loading?: boolean; disabled?: boolean; attachments?: Attachment[]; rows?: number; submitType?: 'enter' | 'shiftEnter' }",
+        "description": "Properties for the SxSender component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_sender_types.senderprops.props",
+        "sourcePath": "packages/ui-x/src/components/sender/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_sender_types.senderprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/sender/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "Placeholder text. Defaults to an empty string.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_sender_types.senderprops.members.placeholder",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/sender/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "slashSuggestions",
+            "type": "SenderSuggestion[]",
+            "required": false,
+            "description": "Slash (`/`) command suggestions.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_sender_types.senderprops.members.slashsuggestions",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/sender/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "mentionSuggestions",
+            "type": "SenderSuggestion[]",
+            "required": false,
+            "description": "Mention (`@`) suggestions.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_sender_types.senderprops.members.mentionsuggestions",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/sender/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "loading",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the send action is disabled (e.g. while a request is in flight).",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_sender_types.senderprops.members.loading",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/sender/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to disable the whole input.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_sender_types.senderprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/sender/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "attachments",
+            "type": "Attachment[]",
+            "required": false,
+            "description": "Attachments to show above the input.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_sender_types.senderprops.members.attachments",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/sender/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "rows",
+            "type": "number",
+            "required": false,
+            "description": "Textarea rows. Defaults to `3`.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_sender_types.senderprops.members.rows",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/sender/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "submitType",
+            "type": "'enter' | 'shiftEnter'",
+            "required": false,
+            "description": "Submit behavior. Defaults to `enter` (`shiftEnter` requires Shift+Enter).",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_sender_types.senderprops.members.submittype",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/sender/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

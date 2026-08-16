@@ -22,13 +22,32 @@ function collectDescriptionEntries(value: unknown, collected: Map<string, string
   });
 }
 
+async function listApiJsonFiles(directoryPath: string): Promise<string[]> {
+  const entries = await readdir(directoryPath, { withFileTypes: true });
+  const jsonFilePaths: string[] = [];
+
+  for (const entry of entries) {
+    const fullPath = path.join(directoryPath, entry.name);
+
+    if (entry.isDirectory()) {
+      jsonFilePaths.push(...(await listApiJsonFiles(fullPath)));
+      continue;
+    }
+
+    if (entry.isFile() && entry.name.endsWith('.json') && entry.name !== 'index.json') {
+      jsonFilePaths.push(fullPath);
+    }
+  }
+
+  return jsonFilePaths;
+}
+
 async function collectApiDescriptionEntries(): Promise<Map<string, string>> {
-  const fileNames = await readdir(apiDir);
-  const jsonFileNames = fileNames.filter(fileName => fileName.endsWith('.json') && fileName !== 'index.json');
+  const jsonFilePaths = await listApiJsonFiles(apiDir);
   const collected = new Map<string, string>();
 
-  for (const fileName of jsonFileNames) {
-    const document = await readJsonObject(path.join(apiDir, fileName));
+  for (const filePath of jsonFilePaths) {
+    const document = await readJsonObject(filePath);
     collectDescriptionEntries(document, collected);
   }
 

@@ -27,25 +27,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'items', type: 'ActionItem[]', default: '-', description: '要展示的操作。每个条目含 `key`、`label`、可选 `icon` 与可选 `disabled`。' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'action', parameters: '[item: ActionItem]', description: '点击非禁用操作时触发，携带操作条目。' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'icon', parameters: '{ item: ActionItem }', description: '每个操作按钮的自定义图标渲染。' },
-  { name: 'label', parameters: '{ item: ActionItem }', description: '每个操作按钮的自定义标签渲染。' },
-]"/>
+<ComponentApi component="actions" />
 
 ## 注意事项
 

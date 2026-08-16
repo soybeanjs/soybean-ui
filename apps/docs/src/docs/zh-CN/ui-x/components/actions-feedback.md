@@ -28,27 +28,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'value', type: `'like' | 'dislike' | null`, default: 'null', description: '当前激活的反馈（若有）。' },
-  { name: 'disabled', type: 'boolean', default: 'false', description: '按钮是否禁用。' },
-  { name: 'onChange', type: '(value: FeedbackValue | null) => void', default: '-', description: '反馈给出时触发的回调；`null` 表示清除激活状态。' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'change', parameters: '[value: FeedbackValue | null]', description: '反馈给出时触发；`null` 表示清除激活状态。' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'like-icon', parameters: '{ active: boolean }', description: '点赞按钮的自定义图标。接收点赞状态是否激活。' },
-  { name: 'dislike-icon', parameters: '{ active: boolean }', description: '点踩按钮的自定义图标。接收点踩状态是否激活。' },
-]"/>
+<ComponentApi component="actions-feedback" />
 
 ## 注意事项
 

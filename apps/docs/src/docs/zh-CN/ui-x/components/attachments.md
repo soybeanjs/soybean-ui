@@ -25,31 +25,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'attachments', type: 'Attachment[]', default: '-', description: '要渲染的附件。', required: true },
-  { name: 'showIcons', type: 'boolean', default: 'true', description: '是否渲染图标列。' },
-  { name: 'onRemove', type: '(attachment: Attachment) => void', default: '-', description: '用户请求移除附件时调用的回调。' },
-  { name: 'onSelect', type: '(attachment: Attachment) => void', default: '-', description: '附件被点击时调用的回调。' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'remove', parameters: '[attachment: Attachment]', description: '通过移除按钮移除附件时触发。' },
-  { name: 'select', parameters: '[attachment: Attachment]', description: '附件被点击时触发。' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'prepend', parameters: '-', description: '渲染在附件列表上方的内容。' },
-  { name: 'item', parameters: '{ attachment: Attachment }', description: '自定义单项内容，替换默认的 SxFileCard。' },
-  { name: 'actions', parameters: '{ attachment: Attachment }', description: '每个附件的自定义操作（覆盖默认移除按钮）。' },
-  { name: 'remove-icon', parameters: '-', description: '自定义移除按钮图标。' },
-]"/>
+<ComponentApi component="attachments" />
 
 ## 注意事项
 

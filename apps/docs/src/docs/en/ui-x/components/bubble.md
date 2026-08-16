@@ -28,31 +28,7 @@ Use it whenever you need to display an individual message: a fixed user/AI excha
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'message', type: 'ChatMessage', default: '-', description: 'The message to render. When omitted, `content` / `role` props are used.' },
-  { name: 'content', type: 'string', default: '-', description: 'Message text content (used when `message` is not provided).' },
-  { name: 'role', type: 'ChatRole', default: '-', description: 'Message role (used when `message` is not provided). `ChatRole` = `\'ai\' | \'user\' | \'system\' | \'divider\' | string`.' },
-  { name: 'placement', type: `'start' | 'end'`, default: `'start'`, description: 'Message placement.' },
-  { name: 'variant', type: `'filled' | 'outlined' | 'shadow'`, default: `'filled'`, description: 'Visual variant.' },
-  { name: 'avatarSize', type: 'ThemeSize', default: `'md'`, description: 'Avatar size.' },
-  { name: 'loading', type: 'boolean', default: 'false', description: 'Whether to show a loading indicator.' },
-  { name: 'typing', type: 'boolean', default: 'false', description: 'Enable a typewriter / fade-in effect on the content.' },
-]"/>
-
-### Emits
-
-This component emits no events.
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'header', parameters: '-', description: 'Custom content above the message body.' },
-  { name: 'content', parameters: '{ content: string }', description: 'Custom message body; `content` is the displayed text including the typing progress.' },
-  { name: 'footer', parameters: '-', description: 'Custom content below the message body.' },
-]"/>
+<ComponentApi component="bubble" />
 
 ## Notes
 

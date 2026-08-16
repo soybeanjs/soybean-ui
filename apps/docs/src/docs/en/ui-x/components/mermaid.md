@@ -27,22 +27,7 @@ Within `@soybeanjs/ui-x`, `SxMermaid` pairs with `SxMarkdown` (diagrams embedded
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'code', type: 'string', default: '-', description: 'The mermaid diagram source code. Required.' },
-  { name: 'mode', type: `'image' | 'code'`, default: `'image'`, description: 'The display mode (rendered diagram or source code).' },
-  { name: 'showToggle', type: 'boolean', default: 'true', description: 'Whether the image / code toggle is shown.' },
-]"/>
-
-### Emits
-
-No custom emits — `SxMermaid` is a self-contained display component.
-
-### Slots
-
-No slots — diagram content and the toolbar are fully internal.
+<ComponentApi component="mermaid" />
 
 ## Notes
 

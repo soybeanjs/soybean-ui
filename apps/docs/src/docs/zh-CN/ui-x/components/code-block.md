@@ -29,30 +29,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'code', type: 'string', default: '-', description: '要展示的代码。必填。' },
-  { name: 'language', type: 'string', default: `'text'`, description: '代码语言（用于高亮与标签）。' },
-  { name: 'showHeader', type: 'boolean', default: 'true', description: '是否显示头部（语言 + 复制）。' },
-  { name: 'highlight', type: 'boolean', default: 'false', description: '是否启用 shiki 语法高亮。' },
-  { name: 'copyText', type: 'string', default: '-', description: '复制文本覆盖值（默认复制代码本身）。' },
-  { name: 'onCopy', type: '(text: string) => void', default: '-', description: '复制尝试后以复制的文本调用。' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'copy', parameters: '[text: string]', description: '复制尝试后携带复制的文本触发。' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'actions', parameters: '-', description: '额外头部操作，渲染在复制按钮旁。' },
-  { name: 'copy-label', parameters: '-', description: '自定义复制按钮文案（默认为 `Copy` / `Copied`）。' },
-]"/>
+<ComponentApi component="code-block" />
 
 ## 注意事项
 

@@ -27,34 +27,7 @@ Use it as the main input in a chat interface, paired with `SxBubbleList` (which 
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'placeholder', type: 'string', default: `''`, description: 'Placeholder text.' },
-  { name: 'slashSuggestions', type: 'SenderSuggestion[]', default: '-', description: 'Slash (`/`) command suggestions.' },
-  { name: 'mentionSuggestions', type: 'SenderSuggestion[]', default: '-', description: 'Mention (`@`) suggestions.' },
-  { name: 'loading', type: 'boolean', default: 'false', description: 'Whether the send action is disabled (e.g. while a request is in flight).' },
-  { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether to disable the whole input.' },
-  { name: 'attachments', type: 'Attachment[]', default: '-', description: 'Attachments to show above the input.' },
-  { name: 'rows', type: 'number', default: '3', description: 'Textarea rows.' },
-  { name: 'submitType', type: `'enter' | 'shiftEnter'`, default: `'enter'`, description: 'Submit behavior. `enter` submits on Enter; `shiftEnter` submits on Ctrl+Enter (plain Enter is a newline).' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'submit', parameters: '[text: string]', description: 'Emitted when the message is submitted.' },
-  { name: 'removeAttachment', parameters: '[attachment: Attachment]', description: 'Emitted when an attachment is removed.' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'actions', parameters: '-', description: 'Custom actions rendered in the left action area.' },
-  { name: 'submit-icon', parameters: '-', description: 'Custom submit button icon.' },
-  { name: 'suggestion', parameters: '{ suggestion }', description: 'Custom suggestion item rendering.' },
-]"/>
+<ComponentApi component="sender" />
 
 ## Notes
 

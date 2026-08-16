@@ -1,0 +1,160 @@
+{
+  "component": "file-card",
+  "symbols": {
+    "FileCard": {
+      "props": {
+        "kind": "props",
+        "name": "FileCardProps",
+        "type": "Interface FileCardProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; attachment: Attachment; onClick?: (() => void) }",
+        "description": "Properties for the SxFileCard component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_file_card_types.filecardprops.props",
+        "sourcePath": "packages/ui-x/src/components/file-card/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_file_card_types.filecardprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/file-card/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "attachment",
+            "type": "Attachment",
+            "required": true,
+            "description": "The attachment to render.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_file_card_types.filecardprops.members.attachment",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/file-card/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Attachment",
+                "kind": "interface",
+                "type": "Attachment",
+                "resolvedType": "{ id: string; name: string; kind?: AttachmentKind; size?: string; url?: string; mimeType?: string; extraInfo?: Record<string, unknown> }",
+                "description": "A single attachment (file / image / link) associated with a chat message.",
+                "descriptionKey": "api.generated.packages_ui_x_src_types_attachment.attachment",
+                "sourcePath": "packages/ui-x/src/types/attachment.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "required": true,
+                    "description": "Unique identifier.",
+                    "descriptionKey": "api.generated.packages_ui_x_src_types_attachment.attachment.members.id",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/ui-x/src/types/attachment.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "required": true,
+                    "description": "Display name.",
+                    "descriptionKey": "api.generated.packages_ui_x_src_types_attachment.attachment.members.name",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/ui-x/src/types/attachment.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "kind",
+                    "type": "AttachmentKind",
+                    "required": false,
+                    "description": "The kind used for icon selection.",
+                    "descriptionKey": "api.generated.packages_ui_x_src_types_attachment.attachment.members.kind",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/ui-x/src/types/attachment.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "size",
+                    "type": "string",
+                    "required": false,
+                    "description": "Human-readable size, e.g. `\"1.2 MB\"`.",
+                    "descriptionKey": "api.generated.packages_ui_x_src_types_attachment.attachment.members.size",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/ui-x/src/types/attachment.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "url",
+                    "type": "string",
+                    "required": false,
+                    "description": "Source URL (for images / links).",
+                    "descriptionKey": "api.generated.packages_ui_x_src_types_attachment.attachment.members.url",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/ui-x/src/types/attachment.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "mimeType",
+                    "type": "string",
+                    "required": false,
+                    "description": "MIME type, when known.",
+                    "descriptionKey": "api.generated.packages_ui_x_src_types_attachment.attachment.members.mimetype",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/ui-x/src/types/attachment.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "extraInfo",
+                    "type": "Record<string, unknown>",
+                    "required": false,
+                    "description": "Arbitrary extra metadata.",
+                    "descriptionKey": "api.generated.packages_ui_x_src_types_attachment.attachment.members.extrainfo",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/ui-x/src/types/attachment.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "onClick",
+            "type": "(() => void)",
+            "required": false,
+            "description": "Optional click handler (e.g. open preview).",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_file_card_types.filecardprops.members.onclick",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/file-card/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

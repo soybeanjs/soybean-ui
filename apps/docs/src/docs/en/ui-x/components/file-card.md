@@ -25,26 +25,7 @@ Use it to preview a single attachment inside a message, an upload queue, or any 
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'attachment', type: 'Attachment', default: '-', description: 'The attachment to render.', required: true },
-  { name: 'onClick', type: '() => void', default: 'undefined', description: 'Optional click handler (e.g. open preview).' },
-]"/>
-
-### Emits
-
-This component does not emit any events (click is delivered via the `onClick` prop).
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'icon', parameters: '{ kind: AttachmentKind }', description: 'Custom icon content for the given kind.' },
-  { name: 'name', parameters: '{ attachment: Attachment }', description: 'Custom file name rendering.' },
-  { name: 'meta', parameters: '{ meta: string }', description: 'Custom meta line rendering (mimeType · size).' },
-  { name: 'actions', parameters: '{ attachment: Attachment }', description: 'Actions rendered on the right of the card.' },
-]"/>
+<ComponentApi component="file-card" />
 
 ## Notes
 

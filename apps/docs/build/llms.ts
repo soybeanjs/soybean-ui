@@ -326,11 +326,13 @@ function normalizeMarkdownContent(source: string, relativePath: string, apiSumma
 }
 
 function resolveGeneratedApiPath(relativePath: string): string | null {
-  if (!relativePath.startsWith('ui/components/')) {
+  const packageMatch = relativePath.match(/^(ui|ui-x|admin|chart)\/components\/([^/]+)\.md$/u);
+
+  if (!packageMatch) {
     return null;
   }
 
-  return `src/generated/api/${path.basename(relativePath, '.md')}.json`;
+  return `src/generated/api/${packageMatch[1]}/${packageMatch[2]}.json`;
 }
 
 async function createApiSummary(rootDir: string, generatedApiPath: string): Promise<string | null> {

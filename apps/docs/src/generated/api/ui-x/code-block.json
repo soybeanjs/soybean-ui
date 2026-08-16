@@ -1,0 +1,112 @@
+{
+  "component": "code-block",
+  "symbols": {
+    "CodeBlock": {
+      "props": {
+        "kind": "props",
+        "name": "CodeBlockProps",
+        "type": "Interface CodeBlockProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; code: string; language?: string; showHeader?: boolean; highlight?: boolean; copyText?: string; onCopy?: ((text: string) => void) }",
+        "description": "Properties for the SxCodeBlock component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_code_block_types.codeblockprops.props",
+        "sourcePath": "packages/ui-x/src/components/code-block/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_code_block_types.codeblockprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/code-block/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "code",
+            "type": "string",
+            "required": true,
+            "description": "The code to display.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_code_block_types.codeblockprops.members.code",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/code-block/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "language",
+            "type": "string",
+            "required": false,
+            "description": "The language of the code (used for highlighting + label). Defaults to `text`.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_code_block_types.codeblockprops.members.language",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/code-block/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showHeader",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show the header (language + copy). Defaults to `true`.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_code_block_types.codeblockprops.members.showheader",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/code-block/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "highlight",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to enable shiki syntax highlighting. Defaults to `false`.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_code_block_types.codeblockprops.members.highlight",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/code-block/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "copyText",
+            "type": "string",
+            "required": false,
+            "description": "Copy text override (defaults to the code itself).",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_code_block_types.codeblockprops.members.copytext",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/code-block/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onCopy",
+            "type": "((text: string) => void)",
+            "required": false,
+            "description": "Emitted when a copy is performed.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_code_block_types.codeblockprops.members.oncopy",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/code-block/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

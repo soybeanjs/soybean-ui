@@ -1,0 +1,68 @@
+{
+  "component": "thought-chain",
+  "symbols": {
+    "ThoughtChain": {
+      "props": {
+        "kind": "props",
+        "name": "ThoughtChainProps",
+        "type": "Interface ThoughtChainProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; items: ThoughtChainItem[]; defaultExpand?: boolean }",
+        "description": "Properties for the SxThoughtChain component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_thought_chain_types.thoughtchainprops.props",
+        "sourcePath": "packages/ui-x/src/components/thought-chain/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_thought_chain_types.thoughtchainprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/thought-chain/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "ThoughtChainItem[]",
+            "required": true,
+            "description": "The reasoning steps to display.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_thought_chain_types.thoughtchainprops.members.items",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/thought-chain/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultExpand",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether expandable steps are expanded by default.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_thought_chain_types.thoughtchainprops.members.defaultexpand",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/thought-chain/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

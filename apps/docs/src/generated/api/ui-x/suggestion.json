@@ -1,0 +1,82 @@
+{
+  "component": "suggestion",
+  "symbols": {
+    "Suggestion": {
+      "props": {
+        "kind": "props",
+        "name": "SuggestionProps",
+        "type": "Interface SuggestionProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; suggestions: Prompt[]; onSelect?: ((suggestion: Prompt) => void) }",
+        "description": "Properties for the SxSuggestion component.",
+        "descriptionKey": "api.generated.packages_ui_x_src_components_suggestion_types.suggestionprops.props",
+        "sourcePath": "packages/ui-x/src/components/suggestion/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_suggestion_types.suggestionprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/suggestion/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "suggestions",
+            "type": "Prompt[]",
+            "required": true,
+            "description": "The suggestions to display.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_suggestion_types.suggestionprops.members.suggestions",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/suggestion/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onSelect",
+            "type": "((suggestion: Prompt) => void)",
+            "required": false,
+            "description": "Emitted when a suggestion is clicked.",
+            "descriptionKey": "api.generated.packages_ui_x_src_components_suggestion_types.suggestionprops.members.onselect",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui-x/src/components/suggestion/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Prompt",
+                "kind": "interface",
+                "type": "Prompt",
+                "resolvedType": null,
+                "description": "A suggested prompt / question shown on welcome or suggestion surfaces.",
+                "descriptionKey": "api.generated.packages_ui_x_src_types_prompt.prompt",
+                "sourcePath": "packages/ui-x/src/types/prompt.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

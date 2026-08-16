@@ -28,27 +28,7 @@ Use it for any sequence of chat messages: a static transcript, a live conversati
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'items', type: 'ChatMessage[]', default: '-', description: 'The message list to render. Required.' },
-  { name: 'scrollable', type: 'boolean', default: 'true', description: 'Whether the container has a constrained height and should be scrollable. When `false`, the list grows to fit its content.' },
-  { name: 'scrollThreshold', type: 'number', default: '40', description: 'Distance (px) from the bottom that is considered at bottom.' },
-  { name: 'showBackToBottom', type: 'boolean', default: 'true', description: 'Whether to show the back-to-bottom button.' },
-]"/>
-
-### Emits
-
-This component emits no events.
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'items', parameters: '{ items }', description: 'Replace the whole default bubble list.' },
-  { name: 'content', parameters: '{ message, content }', description: 'Override the body of a single message (`ChatMessage` + displayed text).' },
-  { name: 'back-to-bottom-icon', parameters: '-', description: 'Replace the default back-to-bottom icon.' },
-]"/>
+<ComponentApi component="bubble-list" />
 
 ## Notes
 

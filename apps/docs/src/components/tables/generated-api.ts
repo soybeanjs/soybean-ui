@@ -1,5 +1,3 @@
-import generatedApiIndex from '~/generated/api/index.json';
-
 export interface GeneratedApiReferencedType {
   name: string;
   kind: string;
@@ -122,23 +120,11 @@ export interface GeneratedApiSymbolSection {
 }
 
 export interface GeneratedApiLayerSection {
-  key: 'ui' | 'headless';
+  key: string;
   symbols: GeneratedApiSymbolSection[];
 }
 
-interface GeneratedApiIndexEntry {
-  component: string;
-  file: string;
-  symbols: string[];
-}
-
-interface GeneratedApiIndex {
-  generatedAt: string;
-  schemaVersion: number;
-  components: Record<string, GeneratedApiIndexEntry>;
-}
-
-const generatedApiModules = import.meta.glob<GeneratedApiDocument>('../../generated/api/*.json', {
+const generatedApiModules = import.meta.glob<GeneratedApiDocument>('../../generated/api/*/*.json', {
   eager: true,
   import: 'default'
 });
@@ -162,13 +148,38 @@ const componentApiDocuments = Object.fromEntries(
     .map(([, document]) => [document.component, document])
 ) as Record<string, GeneratedApiDocument>;
 
+const packageByComponent = Object.fromEntries(
+  Object.entries(componentApiDocuments).map(([component, document]) => [component, detectComponentPackage(document)])
+) as Record<string, string>;
+
+const packagePrefixMap: Record<string, string> = {
+  ui: 'S',
+  'ui-x': 'Sx'
+};
+
+function detectComponentPackage(document: GeneratedApiDocument): string {
+  for (const symbol of Object.values(document.symbols)) {
+    for (const entry of [symbol.props, symbol.emits, symbol.slots]) {
+      const sourcePath = entry?.sourcePath ?? '';
+
+      if (sourcePath.startsWith('packages/ui-x/')) {
+        return 'ui-x';
+      }
+
+      if (sourcePath.startsWith('packages/ui/') || sourcePath.startsWith('packages/headless/')) {
+        return 'ui';
+      }
+    }
+  }
+
+  return 'ui';
+}
+
 const sourceTypeFiles = Object.fromEntries(
   Object.entries(sourceTypeModules).map(([path, content]) => [normalizeSourceModulePath(path), content])
 ) as Record<string, string>;
 const sourceTypePreviewCache = new Map<string, GeneratedApiTypePreview | null>();
 const externalTypeImportRegistry = buildExternalTypeImportRegistry();
-
-const apiIndex = generatedApiIndex as GeneratedApiIndex;
 
 const workspaceTypePathPattern = /^(headless|src)\//u;
 const componentScopedTypePathPattern = /^(headless|src)\/src\/components\//u;
@@ -1057,8 +1068,14 @@ function isUiSymbol(symbol: GeneratedApiSymbol) {
   return [symbol.props, symbol.emits, symbol.slots].filter(Boolean).some(entry => entry?.sourcePath.startsWith('src/'));
 }
 
-function toUiDisplayName(symbolName: string) {
-  return symbolName.startsWith('S') ? symbolName : `S${symbolName}`;
+function toPackageDisplayName(symbolName: string, pkg: string) {
+  const prefix = packagePrefixMap[pkg];
+
+  if (!prefix || symbolName.startsWith(prefix)) {
+    return symbolName;
+  }
+
+  return `${prefix}${symbolName}`;
 }
 
 function toTypeTable(type: GeneratedApiReferencedType): GeneratedApiTypeTable | null {
@@ -1367,9 +1384,9 @@ export function getComponentApiSections(component: string): GeneratedApiLayerSec
     return [];
   }
 
-  const orderedSymbols = apiIndex.components[component]?.symbols ?? Object.keys(document.symbols);
-  const uiSymbols: GeneratedApiSymbolSection[] = [];
-  const headlessSymbols: GeneratedApiSymbolSection[] = [];
+  const pkg = packageByComponent[component] ?? 'ui';
+  const orderedSymbols = Object.keys(document.symbols);
+  const symbolSections: GeneratedApiSymbolSection[] = [];
 
   for (const symbolName of orderedSymbols) {
     const symbol = document.symbols[symbolName];
@@ -1378,11 +1395,13 @@ export function getComponentApiSections(component: string): GeneratedApiLayerSec
       continue;
     }
 
-    const symbolSection: GeneratedApiSymbolSection = {
+    const displayName = isUiSymbol(symbol) || pkg !== 'ui' ? toPackageDisplayName(symbolName, pkg) : symbolName;
+
+    symbolSections.push({
       key: symbolName,
       name: symbolName,
       displayName: formatDisplayName(
-        isUiSymbol(symbol) ? toUiDisplayName(symbolName) : symbolName,
+        displayName,
         resolveTypeParameters(
           (symbol.props ?? symbol.emits ?? symbol.slots)?.sourcePath ?? '',
           (symbol.props ?? symbol.emits ?? symbol.slots)?.name ?? symbolName,
@@ -1392,27 +1411,32 @@ export function getComponentApiSections(component: string): GeneratedApiLayerSec
       propsRows: createEntityRows(symbol.props),
       emitsRows: createEntityRows(symbol.emits),
       slotsRows: createEntityRows(symbol.slots)
-    };
-
-    if (isUiSymbol(symbol)) {
-      uiSymbols.push(symbolSection);
-    } else {
-      headlessSymbols.push(symbolSection);
-    }
+    });
   }
 
-  const layers: GeneratedApiLayerSection[] = [
+  if (pkg === 'ui') {
+    const uiSymbols = symbolSections.filter((_, index) => isUiSymbol(document.symbols[orderedSymbols[index]]));
+    const headlessSymbols = symbolSections.filter((_, index) => !isUiSymbol(document.symbols[orderedSymbols[index]]));
+
+    return [
+      {
+        key: 'ui',
+        symbols: uiSymbols
+      },
+      {
+        key: 'headless',
+        symbols: headlessSymbols
+      }
+    ].filter(layer => layer.symbols.length);
+  }
+
+  // Peripheral packages (ui-x, admin, chart, ...) are single-package: render one layer.
+  return [
     {
-      key: 'ui',
-      symbols: uiSymbols
-    },
-    {
-      key: 'headless',
-      symbols: headlessSymbols
+      key: pkg,
+      symbols: symbolSections
     }
   ];
-
-  return layers.filter(layer => layer.symbols.length);
 }
 
 export function getCommonTypes() {

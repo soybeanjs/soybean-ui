@@ -25,27 +25,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'items', type: 'ConversationItem[]', default: '-', description: '要展示的会话列表。', required: true },
-  { name: 'active', type: 'string | null', default: 'null', description: '当前选中的会话 id。' },
-  { name: 'onChange', type: '(item: ConversationItem) => void', default: '-', description: '会话被选中时调用的回调。' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'change', parameters: '[item: ConversationItem]', description: '会话被选中时触发。' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'groupTitle', parameters: '{ group: string }', description: '自定义分组标题内容。' },
-  { name: 'item', parameters: '{ item: ConversationItem }', description: '自定义单项内容。' },
-]"/>
+<ComponentApi component="conversations" />
 
 ## 注意事项
 

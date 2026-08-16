@@ -25,25 +25,7 @@ Use it anywhere you want to suggest questions, commands or actions. Each prompt 
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'prompts', type: 'Prompt[]', default: '-', description: 'The prompts to display.', required: true },
-  { name: 'onSelect', type: '(prompt: Prompt) => void', default: '-', description: 'Callback invoked when a prompt is clicked.' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'select', parameters: '[prompt: Prompt]', description: 'Emitted when a prompt is clicked.' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'label', parameters: '{ prompt: Prompt }', description: 'Custom label content for each prompt.' },
-]"/>
+<ComponentApi component="prompts" />
 
 ## Notes
 

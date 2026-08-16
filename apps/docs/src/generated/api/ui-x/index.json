@@ -1,0 +1,106 @@
+{
+  "generatedAt": "2026-08-15T05:53:10.860Z",
+  "schemaVersion": 4,
+  "components": {
+    "actions": {
+      "component": "actions",
+      "file": "actions.json",
+      "symbols": ["Actions"]
+    },
+    "actions-copy": {
+      "component": "actions-copy",
+      "file": "actions-copy.json",
+      "symbols": ["ActionsCopy"]
+    },
+    "actions-feedback": {
+      "component": "actions-feedback",
+      "file": "actions-feedback.json",
+      "symbols": ["ActionsFeedback"]
+    },
+    "attachments": {
+      "component": "attachments",
+      "file": "attachments.json",
+      "symbols": ["Attachments"]
+    },
+    "bubble": {
+      "component": "bubble",
+      "file": "bubble.json",
+      "symbols": ["Bubble"]
+    },
+    "bubble-list": {
+      "component": "bubble-list",
+      "file": "bubble-list.json",
+      "symbols": ["BubbleList"]
+    },
+    "code-block": {
+      "component": "code-block",
+      "file": "code-block.json",
+      "symbols": ["CodeBlock"]
+    },
+    "conversations": {
+      "component": "conversations",
+      "file": "conversations.json",
+      "symbols": ["Conversations"]
+    },
+    "file-card": {
+      "component": "file-card",
+      "file": "file-card.json",
+      "symbols": ["FileCard"]
+    },
+    "folder": {
+      "component": "folder",
+      "file": "folder.json",
+      "symbols": ["Folder"]
+    },
+    "markdown": {
+      "component": "markdown",
+      "file": "markdown.json",
+      "symbols": ["Markdown"]
+    },
+    "mermaid": {
+      "component": "mermaid",
+      "file": "mermaid.json",
+      "symbols": ["Mermaid"]
+    },
+    "notification": {
+      "component": "notification",
+      "file": "notification.json",
+      "symbols": ["Notification"]
+    },
+    "prompts": {
+      "component": "prompts",
+      "file": "prompts.json",
+      "symbols": ["Prompts"]
+    },
+    "sender": {
+      "component": "sender",
+      "file": "sender.json",
+      "symbols": ["Sender"]
+    },
+    "sources": {
+      "component": "sources",
+      "file": "sources.json",
+      "symbols": ["Sources"]
+    },
+    "suggestion": {
+      "component": "suggestion",
+      "file": "suggestion.json",
+      "symbols": ["Suggestion"]
+    },
+    "think": {
+      "component": "think",
+      "file": "think.json",
+      "symbols": ["Think"]
+    },
+    "thought-chain": {
+      "component": "thought-chain",
+      "file": "thought-chain.json",
+      "symbols": ["ThoughtChain"]
+    },
+    "welcome": {
+      "component": "welcome",
+      "file": "welcome.json",
+      "symbols": ["Welcome"]
+    }
+  }
+}

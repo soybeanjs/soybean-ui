@@ -29,29 +29,7 @@
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '根节点类名。' },
-  { name: 'content', type: 'string', default: '-', description: '要渲染的 Markdown 源码。流式输入时会被增量重新解析。' },
-  { name: 'final', type: 'boolean', default: 'false', description: '流是否已完成。`true` 时禁用流式占位符。' },
-  { name: 'mode', type: 'NodeRendererMode', default: `'chat'`, description: '渲染节奏模式。' },
-  { name: 'htmlPolicy', type: 'HtmlPolicy', default: `'safe'`, description: 'HTML 处理策略。' },
-  { name: 'isDark', type: 'boolean', default: '-', description: '是否以深色模式渲染。' },
-  { name: 'typewriter', type: 'NodeRendererTypewriter', default: 'false', description: '打字机动画。' },
-  { name: 'smoothStreaming', type: `boolean | 'auto'`, default: '-', description: '启用平滑（有节奏的）流式输出。' },
-  { name: 'codeRenderer', type: 'NodeRendererCodeRenderer', default: '-', description: '代码块渲染器。' },
-  { name: 'parseOptions', type: 'ParseOptions', default: '-', description: '转发给 Markdown 引擎的解析选项。' },
-  { name: 'rendererProps', type: 'Partial<MarkdownRenderProps>', default: '-', description: '转发给底层 `MarkdownRender` 的额外 props。' },
-]"/>
-
-### Emits
-
-无自定义事件 — `SxMarkdown` 是透传封装，props 与插槽直接流向 `MarkdownRender`。
-
-### Slots
-
-所有插槽都会动态转发给底层 `MarkdownRender`（通过 `v-for` 遍历 `useSlots()`）。`MarkdownRender` 支持的任意插槽（例如自定义代码块或标题渲染器）都可以用相同名称和插槽 props 进行覆盖。
+<ComponentApi component="markdown" />
 
 ## 注意事项
 

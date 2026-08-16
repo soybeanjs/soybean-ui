@@ -17,9 +17,10 @@ provideTypeRenderContext(() => ({
   activePreviewNames: []
 }));
 
-const layerTitleMap: Record<'ui' | 'headless', string> = {
+const layerTitleMap: Record<string, string> = {
   ui: 'api.ui_layer',
-  headless: 'api.headless_layer'
+  headless: 'api.headless_layer',
+  'ui-x': 'api.ui_x_layer'
 };
 </script>
 

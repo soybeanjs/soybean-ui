@@ -29,30 +29,7 @@ Within `@soybeanjs/ui-x`, `SxCodeBlock` pairs with `SxMarkdown` (as a `codeRende
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Root class.' },
-  { name: 'code', type: 'string', default: '-', description: 'The code to display. Required.' },
-  { name: 'language', type: 'string', default: `'text'`, description: 'Code language (used for highlighting + label).' },
-  { name: 'showHeader', type: 'boolean', default: 'true', description: 'Whether to show the header (language + copy).' },
-  { name: 'highlight', type: 'boolean', default: 'false', description: 'Whether to enable shiki syntax highlighting.' },
-  { name: 'copyText', type: 'string', default: '-', description: 'Copy text override (defaults to the code itself).' },
-  { name: 'onCopy', type: '(text: string) => void', default: '-', description: 'Called with the copied text after a copy attempt.' },
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'copy', parameters: '[text: string]', description: 'Emitted with the copied text after a copy attempt.' },
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'actions', parameters: '-', description: 'Extra header actions rendered next to the copy button.' },
-  { name: 'copy-label', parameters: '-', description: 'Custom copy button text (defaults to `Copy` / `Copied`).' },
-]"/>
+<ComponentApi component="code-block" />
 
 ## Notes
 
