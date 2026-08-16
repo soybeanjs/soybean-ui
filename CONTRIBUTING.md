@@ -232,8 +232,8 @@ pnpm sui api-translate -- --locale zh-CN
 ### Phase 5 — Delivery Surfaces
 
 - **Playground demo:** `apps/playground/src/examples/<component>/`
-- **Docs (en):** `apps/docs/src/docs/en/components/<component>.md`
-- **Docs (zh-CN):** `apps/docs/src/docs/zh-CN/components/<component>.md`
+- **Docs (en):** `apps/docs/src/docs/en/ui/components/<component>.md`
+- **Docs (zh-CN):** `apps/docs/src/docs/zh-CN/ui/components/<component>.md`
 - **Menu:** update `apps/docs/src/constants/menus.ts`
 - **Tests:** `packages/ui/test/specs/components/<component>.spec.ts`
 
@@ -528,8 +528,8 @@ pnpm sui api-translate -- --locale zh-CN
 ### Phase 5 — 交付面
 
 - **Playground 示例：** `apps/playground/src/examples/<component>/`
-- **英文文档：** `apps/docs/src/docs/en/components/<component>.md`
-- **中文文档：** `apps/docs/src/docs/zh-CN/components/<component>.md`
+- **英文文档：** `apps/docs/src/docs/en/ui/components/<component>.md`
+- **中文文档：** `apps/docs/src/docs/zh-CN/ui/components/<component>.md`
 - **菜单：** 更新 `apps/docs/src/constants/menus.ts`
 - **测试：** `packages/ui/test/specs/components/<component>.spec.ts`
 

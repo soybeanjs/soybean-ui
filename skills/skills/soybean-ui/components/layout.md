@@ -11,7 +11,7 @@ The layout component structure for admin dashboards or complex applications. It 
 
 ## Features
 
-- **Two layout modes** — `SLayout` (modern sidebar + main flow) and `SLayoutClassic` (admin-classic with scrollable wrapper, fixed header/footer, and orientation support).
+- **One unified layout** — `SLayout` combines the modern sidebar shell with admin-classic capabilities: scrollable wrapper, fixed header/footer, and orientation support.
 - **Three variants** — `sidebar` (bordered), `floating` (rounded shadow), and `inset` (content with margin and rounded corners).
 - **Collapsible sidebar** — `collapsible="icon"` collapses the sidebar to a rail width; `collapsible="offcanvas"` slides it off-canvas while preserving layout space.
 - **Side control** — `side="left"` or `side="right"` flips the sidebar position with full RTL-aware logical properties.
@@ -20,8 +20,8 @@ The layout component structure for admin dashboards or complex applications. It 
 - **CSS-variable driven** — dimensions (`sidebarWidth`, `headerHeight`, `tabHeight`, `footerHeight`) emit rem-based CSS variables for runtime customization.
 - **Size scaling** — `size` (xs…2xl) scales the layout spacing and base typography through `themeSizeRatio`.
 - **`fullContent` mode** — pins the content area to fill the viewport while keeping the tab bar above it.
-- **Classic orientation** — `LayoutClassic` supports horizontal (sidebar beside content) and vertical (sidebar stacked under header) orientations.
-- **Classic scroll behaviors** — `scrollBehavior="content"` scrolls only the content region; `scrollBehavior="wrapper"` scrolls the entire main wrapper.
+- **Orientation** — `Layout` supports horizontal (sidebar beside content) and vertical (sidebar stacked under header) orientations.
+- **Scroll behaviors** — `scrollBehavior="content"` scrolls only the content region; `scrollBehavior="wrapper"` scrolls the entire main wrapper.
 - **Fixed header/footer** — `fixedTop` and `fixedFooter` keep the header/footer pinned during content scroll, with automatic placeholder elements to prevent overlap.
 - **Base z-index control** — `baseZIndex` derives the stacking order of sidebar, header, tab, and footer so multiple layouts compose predictably.
 - **Headless composition** — every region (`LayoutRoot`, `LayoutSidebar`, `LayoutRail`, `LayoutHeader`, `LayoutTab`, `LayoutContent`, `LayoutFooter`, `LayoutMobile`, `LayoutTrigger`) is exported from `@soybeanjs/headless/layout` for custom styled builds.
@@ -39,7 +39,7 @@ Interactive demos for layout are rendered on the site.
 
 Structured API summary generated from build-time component metadata.
 
-- Exported symbols (14): Layout, LayoutClassic, LayoutClassicCompact, LayoutCompact, LayoutContent, LayoutFooter, LayoutHeader, LayoutMain, LayoutMobile, LayoutRail, LayoutRoot, LayoutSidebar, LayoutTab, LayoutTrigger.
+- Exported symbols (12): Layout, LayoutCompact, LayoutContent, LayoutFooter, LayoutHeader, LayoutMain, LayoutMobile, LayoutRail, LayoutRoot, LayoutSidebar, LayoutTab, LayoutTrigger.
 
 ### Layout
 
@@ -68,6 +68,13 @@ Properties for the Layout component.
 - `footerHeight`: The height of the footer. (px) (type `number`; default `48`; optional)
 - `fullContent`: whether the content takes the full height of the layout (include). (type `boolean`; default `false`; optional)
 - `pxToRem`: The function to convert pixels to rem. (type `((px: number) => number)`; default `(px: number) => px / 16 (16 is the base font size)`; optional)
+- `orientation`: Orientation of the component. (type `DataOrientation`; optional)
+- `scrollBehavior`: Scroll behavior. (type `LayoutScrollBehavior`; optional)
+- `scrollId`: Scroll id. (type `string`; optional)
+- `baseZIndex`: The base z-index of the layout. The z-index of the sidebar, header, tab, footer, and their fixed versions will be calculated based on this value. (type `number`; default `50`; optional)
+- `fixedTop`: Whether the header and tab are fixed to the top of the layout when the orientation is vertical. If true, the header and tab will be fixed to the top of the layout when the orientation is vertical, and will scroll with the content when the orientation is horizontal. (type `boolean`; default `true`; optional)
+- `fixedFooter`: Whether footer is fixed (type `boolean`; default `true`; optional)
+- `stretchFooter`: Whether the footer should stretch to the full width of the layout or the content when layout orientation is vertical. (type `boolean`; default `true`; optional)
 - `sidebarProps`: No description. (type `LayoutSidebarProps`; optional)
 - `railProps`: No description. (type `LayoutRailProps`; optional)
 - `mainProps`: No description. (type `LayoutMainProps`; optional)
@@ -86,119 +93,6 @@ Events for the Layout component.
 #### Slots
 
 Slots for the Layout component.
-
-- `default`: Custom content for the default slot. (type `(() => any) | undefined`)
-- `sidebar`: Custom content for the sidebar slot. (type `((props: { open: boolean | undefined; collapsedSidebarWidth: number; }) => any) | undefined`)
-- `header`: Custom content for the header slot. (type `(() => any) | undefined`)
-- `tab`: Custom content for the tab slot. (type `(() => any) | undefined`)
-- `content`: Custom content for the content slot. (type `(() => any) | undefined`)
-- `footer`: Custom content for the footer slot. (type `(() => any) | undefined`)
-
-### LayoutClassic
-
-#### Props
-
-Properties for the LayoutClassic component.
-
-- `class`: Additional class names applied to the root element. (type `string | false | Record<string, any> | ClassValue[] | null`; optional)
-- `size`: Visual size of the component. (type `ThemeSize`; optional)
-- `ui`: Per-slot class overrides for the component. (type `Partial<LayoutClassicUi>`; optional)
-- `orientation`: Orientation of the component. (type `DataOrientation`; optional)
-- `scrollBehavior`: Scroll behavior. (type `LayoutClassicScrollBehavior`; optional)
-- `scrollId`: Scroll id. (type `string`; optional)
-- `baseZIndex`: The base z-index of the layout. The z-index of the sidebar, header, tab, footer, and their fixed versions will be calculated based on this value. (type `number`; default `50`; optional)
-- `fixedTop`: Whether the header and tab are fixed to the top of the layout when the orientation is vertical. If true, the header and tab will be fixed to the top of the layout when the orientation is vertical, and will scroll with the content when the orientation is horizontal. (type `boolean`; default `true`; optional)
-- `fixedFooter`: Whether footer is fixed (type `boolean`; default `true`; optional)
-- `stretchFooter`: Whether the footer should stretch to the full width of the layout or the content when layout orientation is vertical. (type `boolean`; default `true`; optional)
-- `open`: The controlled open state of the layout. Can be bound with `v-model`. (type `boolean`; optional)
-- `defaultOpen`: The open state of the layout when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; optional)
-- `side`: The side of the layout. (type `HorizontalSide`; optional)
-- `sidebarVisible`: whether to show the sidebar. (type `boolean`; default `true`; optional)
-- `sidebarWidth`: The width of the sidebar. (px) (type `number`; default `240`; optional)
-- `collapsedSidebarWidth`: The width of the sidebar when it is collapsed. (px) (type `number`; default `50`; optional)
-- `isMobile`: Whether the layout is in mobile view. (type `boolean`; default `false`; optional)
-- `mobileSidebarWidth`: The width of the sidebar in the mobile view. (px) (type `number`; default `240`; optional)
-- `headerVisible`: whether to show the header. (type `boolean`; default `true`; optional)
-- `headerHeight`: The height of the header. (px) (type `number`; default `56`; optional)
-- `tabVisible`: whether to show the tab. (type `boolean`; default `true`; optional)
-- `tabHeight`: The height of the tab. (px) (type `number`; default `44`; optional)
-- `footerVisible`: whether to show the footer. (type `boolean`; default `true`; optional)
-- `footerHeight`: The height of the footer. (px) (type `number`; default `48`; optional)
-- `fullContent`: whether the content takes the full height of the layout (include). (type `boolean`; default `false`; optional)
-- `pxToRem`: The function to convert pixels to rem. (type `((px: number) => number)`; default `(px: number) => px / 16 (16 is the base font size)`; optional)
-- `sidebarProps`: No description. (type `LayoutSidebarProps`; optional)
-- `railProps`: No description. (type `LayoutRailProps`; optional)
-- `mainProps`: No description. (type `LayoutMainProps`; optional)
-- `headerProps`: No description. (type `LayoutHeaderProps`; optional)
-- `tabProps`: No description. (type `LayoutTabProps`; optional)
-- `contentProps`: No description. (type `LayoutContentProps`; optional)
-- `footerProps`: No description. (type `LayoutFooterProps`; optional)
-- `mobileProps`: No description. (type `LayoutMobileProps`; optional)
-
-#### Emits
-
-Events for the LayoutClassic component.
-
-- `update:open`: Emitted when the open state changes. (type `[open: boolean]`; parameters `open: boolean`)
-
-#### Slots
-
-Slots for the LayoutClassic component.
-
-- `default`: Custom content for the default slot. (type `(() => any) | undefined`)
-- `sidebar`: Custom content for the sidebar slot. (type `((props: { open: boolean | undefined; collapsedSidebarWidth: number; }) => any) | undefined`)
-- `header`: Custom content for the header slot. (type `(() => any) | undefined`)
-- `tab`: Custom content for the tab slot. (type `(() => any) | undefined`)
-- `content`: Custom content for the content slot. (type `(() => any) | undefined`)
-- `footer`: Custom content for the footer slot. (type `(() => any) | undefined`)
-
-### LayoutClassicCompact
-
-#### Props
-
-Properties for the LayoutClassicCompact component.
-
-- `orientation`: Orientation of the component. (type `DataOrientation`; optional)
-- `scrollBehavior`: Scroll behavior. (type `LayoutClassicScrollBehavior`; optional)
-- `scrollId`: Scroll id. (type `string`; optional)
-- `baseZIndex`: The base z-index of the layout. The z-index of the sidebar, header, tab, footer, and their fixed versions will be calculated based on this value. (type `number`; default `50`; optional)
-- `fixedTop`: Whether the header and tab are fixed to the top of the layout when the orientation is vertical. If true, the header and tab will be fixed to the top of the layout when the orientation is vertical, and will scroll with the content when the orientation is horizontal. (type `boolean`; default `true`; optional)
-- `fixedFooter`: Whether footer is fixed (type `boolean`; default `true`; optional)
-- `stretchFooter`: Whether the footer should stretch to the full width of the layout or the content when layout orientation is vertical. (type `boolean`; default `true`; optional)
-- `open`: The controlled open state of the layout. Can be bound with `v-model`. (type `boolean`; optional)
-- `defaultOpen`: The open state of the layout when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; optional)
-- `side`: The side of the layout. (type `HorizontalSide`; optional)
-- `sidebarVisible`: whether to show the sidebar. (type `boolean`; default `true`; optional)
-- `sidebarWidth`: The width of the sidebar. (px) (type `number`; default `240`; optional)
-- `collapsedSidebarWidth`: The width of the sidebar when it is collapsed. (px) (type `number`; default `50`; optional)
-- `isMobile`: Whether the layout is in mobile view. (type `boolean`; default `false`; optional)
-- `mobileSidebarWidth`: The width of the sidebar in the mobile view. (px) (type `number`; default `240`; optional)
-- `headerVisible`: whether to show the header. (type `boolean`; default `true`; optional)
-- `headerHeight`: The height of the header. (px) (type `number`; default `56`; optional)
-- `tabVisible`: whether to show the tab. (type `boolean`; default `true`; optional)
-- `tabHeight`: The height of the tab. (px) (type `number`; default `44`; optional)
-- `footerVisible`: whether to show the footer. (type `boolean`; default `true`; optional)
-- `footerHeight`: The height of the footer. (px) (type `number`; default `48`; optional)
-- `fullContent`: whether the content takes the full height of the layout (include). (type `boolean`; default `false`; optional)
-- `pxToRem`: The function to convert pixels to rem. (type `((px: number) => number)`; default `(px: number) => px / 16 (16 is the base font size)`; optional)
-- `sidebarProps`: No description. (type `LayoutSidebarProps`; optional)
-- `railProps`: No description. (type `LayoutRailProps`; optional)
-- `mainProps`: No description. (type `LayoutMainProps`; optional)
-- `headerProps`: No description. (type `LayoutHeaderProps`; optional)
-- `tabProps`: No description. (type `LayoutTabProps`; optional)
-- `contentProps`: No description. (type `LayoutContentProps`; optional)
-- `footerProps`: No description. (type `LayoutFooterProps`; optional)
-- `mobileProps`: No description. (type `LayoutMobileProps`; optional)
-
-#### Emits
-
-Events for the LayoutClassicCompact component.
-
-- `update:open`: Emitted when the open state changes. (type `[open: boolean]`; parameters `open: boolean`)
-
-#### Slots
-
-Slots for the LayoutClassicCompact component.
 
 - `default`: Custom content for the default slot. (type `(() => any) | undefined`)
 - `sidebar`: Custom content for the sidebar slot. (type `((props: { open: boolean | undefined; collapsedSidebarWidth: number; }) => any) | undefined`)
@@ -231,6 +125,13 @@ Properties for the LayoutCompact component.
 - `footerHeight`: The height of the footer. (px) (type `number`; default `48`; optional)
 - `fullContent`: whether the content takes the full height of the layout (include). (type `boolean`; default `false`; optional)
 - `pxToRem`: The function to convert pixels to rem. (type `((px: number) => number)`; default `(px: number) => px / 16 (16 is the base font size)`; optional)
+- `orientation`: Orientation of the component. (type `DataOrientation`; optional)
+- `scrollBehavior`: Scroll behavior. (type `LayoutScrollBehavior`; optional)
+- `scrollId`: Scroll id. (type `string`; optional)
+- `baseZIndex`: The base z-index of the layout. The z-index of the sidebar, header, tab, footer, and their fixed versions will be calculated based on this value. (type `number`; default `50`; optional)
+- `fixedTop`: Whether the header and tab are fixed to the top of the layout when the orientation is vertical. If true, the header and tab will be fixed to the top of the layout when the orientation is vertical, and will scroll with the content when the orientation is horizontal. (type `boolean`; default `true`; optional)
+- `fixedFooter`: Whether footer is fixed (type `boolean`; default `true`; optional)
+- `stretchFooter`: Whether the footer should stretch to the full width of the layout or the content when layout orientation is vertical. (type `boolean`; default `true`; optional)
 - `sidebarProps`: No description. (type `LayoutSidebarProps`; optional)
 - `railProps`: No description. (type `LayoutRailProps`; optional)
 - `mainProps`: No description. (type `LayoutMainProps`; optional)
@@ -305,6 +206,13 @@ Properties for the LayoutRoot component.
 - `footerHeight`: The height of the footer. (px) (type `number`; default `48`; optional)
 - `fullContent`: whether the content takes the full height of the layout (include). (type `boolean`; default `false`; optional)
 - `pxToRem`: The function to convert pixels to rem. (type `((px: number) => number)`; default `(px: number) => px / 16 (16 is the base font size)`; optional)
+- `orientation`: Orientation of the component. (type `DataOrientation`; optional)
+- `scrollBehavior`: Scroll behavior. (type `LayoutScrollBehavior`; optional)
+- `scrollId`: Scroll id. (type `string`; optional)
+- `baseZIndex`: The base z-index of the layout. The z-index of the sidebar, header, tab, footer, and their fixed versions will be calculated based on this value. (type `number`; default `50`; optional)
+- `fixedTop`: Whether the header and tab are fixed to the top of the layout when the orientation is vertical. If true, the header and tab will be fixed to the top of the layout when the orientation is vertical, and will scroll with the content when the orientation is horizontal. (type `boolean`; default `true`; optional)
+- `fixedFooter`: Whether footer is fixed (type `boolean`; default `true`; optional)
+- `stretchFooter`: Whether the footer should stretch to the full width of the layout or the content when layout orientation is vertical. (type `boolean`; default `true`; optional)
 
 #### Emits
 
@@ -341,9 +249,9 @@ Properties for the LayoutTrigger component.
 | Sidebar variants             | `sidebar` / `floating` / `inset`                                                               | `sider` only                                            | `aside` only                                                        |
 | Collapsible modes            | `icon` (rail) + `offcanvas` (slide out)                                                        | `collapsible` + `collapsedWidth`                        | —                                                                   |
 | Mobile drawer                | built-in `Dialog`-based drawer (`isMobile` prop)                                               | requires `Drawer` composition                           | requires `Drawer` composition                                       |
-| Fixed header/footer          | `LayoutClassic` with `fixedTop` / `fixedFooter` + automatic placeholders                       | requires manual sticky CSS                              | requires manual sticky CSS                                          |
-| Orientation                  | `LayoutClassic` `orientation="horizontal" \| "vertical"`                                       | —                                                       | —                                                                   |
-| Scroll behavior              | `wrapper` / `content` on `LayoutClassic`                                                       | —                                                       | —                                                                   |
+| Fixed header/footer          | `Layout` with `fixedTop` / `fixedFooter` + automatic placeholders                              | requires manual sticky CSS                              | requires manual sticky CSS                                          |
+| Orientation                  | `Layout` `orientation="horizontal" \| "vertical"`                                              | —                                                       | —                                                                   |
+| Scroll behavior              | `wrapper` / `content` on `Layout`                                                              | —                                                       | —                                                                   |
 | CSS-variable dimensions      | `--soybean-sidebar-width`, `--soybean-layout-header-height`, etc.                              | inline width on `Sider`                                 | inline width on `Aside`                                             |
 | RTL support                  | logical properties (`start-*`, `end-*`, `ps-*`, `pe-*`) + `rtl:` variants on rail              | —                                                       | —                                                                   |
 | Z-index orchestration        | `baseZIndex` derives sidebar/header/tab/footer z-index                                         | manual                                                  | manual                                                              |
@@ -355,14 +263,14 @@ Properties for the LayoutTrigger component.
 2. **`size` scales spacing and typography** — the UI wrapper multiplies pixel dimensions by `themeSizeRatio[size] / themeSizeMap.md`, so `size="xs"` shrinks both text and sidebar width proportionally.
 3. **Mobile detection is declarative** — `isMobile` is a prop (not internal logic). Pair it with `@vueuse/core`'s `useMediaQuery` or a server-side detection to toggle the drawer.
 4. **`LayoutTrigger` vs `LayoutRail`** — `LayoutTrigger` is a focusable button in the header for keyboard users; `LayoutRail` is the edge drag affordance with `tabindex="-1"` (click-only). Both reflect `aria-expanded`.
-5. **`LayoutClassic` placeholder elements** — when `fixedTop` or `fixedFooter` is enabled, `LayoutClassicPlaceholder` renders empty spacer divs (`data-soybean-layout-{header|tab|footer}-placeholder`) to prevent content from sliding under the fixed region.
-6. **`scrollId` for scroll restoration** — `LayoutClassic` generates a stable `soybean-layout-scroll-{id}` on the scrolling element (wrapper or content depending on `scrollBehavior`). Pass `scrollId` to make it deterministic across SSR/CSR.
+5. **`Layout` placeholder elements** — when `fixedTop` or `fixedFooter` is enabled, `LayoutPlaceholder` renders empty spacer divs (`data-soybean-layout-{header|tab|footer}-placeholder`) to prevent content from sliding under the fixed region.
+6. **`scrollId` for scroll restoration** — `Layout` generates a stable `soybean-layout-scroll-{id}` on the scrolling element (wrapper or content depending on `scrollBehavior`). Pass `scrollId` to make it deterministic across SSR/CSR.
 
 ## FAQ
 
-### Which layout should I use — `SLayout` or `SLayoutClassic`?
+### Which layout mode should I use?
 
-Use `SLayout` for modern application shells where the sidebar sits beside a single scrolling content area. Use `SLayoutClassic` for admin dashboards that need fixed header/footer, orientation switching, or wrapper-level scrolling with placeholder spacers.
+Use `SLayout` for both modern application shells and admin dashboards. It handles fixed header/footer, orientation switching (`horizontal` / `vertical`), and wrapper-level scrolling with placeholder spacers through a single unified component.
 
 ### How do I control the sidebar open state?
 
@@ -382,7 +290,7 @@ Yes — set `side="right"`. The layout uses RTL-aware logical properties (`start
 
 ### How are z-index values coordinated?
 
-`LayoutClassic` accepts a `baseZIndex` (default `50`). The sidebar, header, tab, and footer z-index values are derived from this base so they stack predictably. The derived values are exposed as `--soybean-layout-{sidebar|header|tab|footer}-z-index` CSS variables.
+`Layout` accepts a `baseZIndex` (default `50`). The sidebar, header, tab, and footer z-index values are derived from this base so they stack predictably. The derived values are exposed as `--soybean-layout-{sidebar|header|tab|footer}-z-index` CSS variables.
 
 ### How do I customize region-level attributes?
 

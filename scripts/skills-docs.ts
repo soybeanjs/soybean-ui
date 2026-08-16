@@ -4,7 +4,8 @@ import type { Dirent } from 'node:fs';
 import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { menuData } from '../apps/docs/src/constants/menus';
+import { menuData, uiXMenuData } from '../apps/docs/src/constants/menus';
+import type { MenuData } from '../apps/docs/src/constants/menus';
 import { runCliModule } from './_shared';
 
 type FrontmatterResult = {
@@ -57,10 +58,19 @@ const htmlCommentRegex = /<!--([\s\S]*?)-->/gu;
 const genericVueTagRegex = /^<\/?[A-Z][^>]*>$/gmu;
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(currentDir, '..');
-const docsComponentsDir = path.resolve(repoRoot, 'apps/docs/src/docs/en/components');
 const generatedApiDir = path.resolve(repoRoot, 'apps/docs/src/generated/api');
 const defaultSkillsRootDir = path.resolve(repoRoot, 'skills/skills');
-const categoryTitleMap: Record<string, string> = {
+
+type SkillDocSource = {
+  key: string;
+  docsDir: string;
+  apiDir: string;
+  routePrefix: string;
+  menu: MenuData[];
+  categoryTitles: Record<string, string>;
+};
+
+const uiCategoryTitleMap: Record<string, string> = {
   general: 'General',
   groupLayout: 'Layout',
   navigation: 'Navigation',
@@ -72,10 +82,46 @@ const categoryTitleMap: Record<string, string> = {
   other: 'Other'
 };
 
+const uiXCategoryTitleMap: Record<string, string> = {
+  'ui-x-core': 'Core',
+  'ui-x-content': 'Content Rendering',
+  'ui-x-attachments': 'Attachments',
+  'ui-x-conversation': 'Conversation',
+  'ui-x-reasoning': 'Reasoning',
+  'ui-x-actions': 'Actions',
+  'ui-x-misc': 'Miscellaneous',
+  other: 'Other'
+};
+
+const skillDocSources: SkillDocSource[] = [
+  {
+    key: 'ui',
+    docsDir: path.resolve(repoRoot, 'apps/docs/src/docs/en/ui/components'),
+    apiDir: 'ui',
+    routePrefix: '/components',
+    menu: menuData,
+    categoryTitles: uiCategoryTitleMap
+  },
+  {
+    key: 'ui-x',
+    docsDir: path.resolve(repoRoot, 'apps/docs/src/docs/en/ui-x/components'),
+    apiDir: 'ui-x',
+    routePrefix: '/ui-x',
+    menu: uiXMenuData,
+    categoryTitles: uiXCategoryTitleMap
+  }
+];
+
+const categoryTitleMap = Object.assign({}, ...skillDocSources.map(source => source.categoryTitles), { other: 'Other' });
+
+const skillOrderedCategoryKeys = [
+  ...new Set(skillDocSources.flatMap(source => source.menu.map(group => group.value))),
+  'other'
+];
+
 export async function generateSkillDocs(options: GenerateSkillDocsOptions = {}): Promise<void> {
   const outputPaths = resolveSkillOutputPaths(options.skillsRootDir ?? defaultSkillsRootDir);
-  const componentPaths = await collectMarkdownFiles(docsComponentsDir);
-  const docs = await Promise.all(componentPaths.map(componentPath => createComponentDoc(componentPath)));
+  const docs = await collectSourceDocs();
   const sortedDocs = docs.sort((left, right) => left.slug.localeCompare(right.slug));
 
   await rm(outputPaths.soybeanUiComponentsOutputDir, { recursive: true, force: true });
@@ -95,6 +141,18 @@ export async function generateSkillDocs(options: GenerateSkillDocsOptions = {}):
   ]);
 
   console.log(`Generated SoybeanUI skill docs for ${sortedDocs.length} components.`);
+}
+
+async function collectSourceDocs(): Promise<SkillComponentDoc[]> {
+  const collectedDocs = await Promise.all(
+    skillDocSources.map(async source => {
+      const componentPaths = await collectMarkdownFiles(source.docsDir);
+
+      return Promise.all(componentPaths.map(componentPath => createComponentDoc(componentPath, source)));
+    })
+  );
+
+  return collectedDocs.flat();
 }
 
 runCliModule(import.meta.url, generateSkillDocs);
@@ -138,18 +196,18 @@ async function collectMarkdownFiles(directoryPath: string): Promise<string[]> {
   return nestedPaths.flat();
 }
 
-async function createComponentDoc(filePath: string): Promise<SkillComponentDoc> {
+async function createComponentDoc(filePath: string, source: SkillDocSource): Promise<SkillComponentDoc> {
   const slug = path.basename(filePath, '.md');
   const rawContent = await readFile(filePath, 'utf8');
   const { content, data } = parseFrontmatter(rawContent);
-  const apiSummary = await createApiSummary(path.resolve(generatedApiDir, 'ui', `${slug}.json`));
+  const apiSummary = await createApiSummary(path.resolve(generatedApiDir, source.apiDir, `${slug}.json`));
   const normalizedContent = normalizeMarkdownContent(content, slug, apiSummary);
   const title = data.title || extractTitle(normalizedContent) || humanizeTitle(slug);
   const description = data.description || extractDescription(normalizedContent);
   const bodyContent = stripLeadingTitle(normalizedContent);
-  const categoryKey = resolveCategoryKey(slug);
-  const categoryTitle = categoryTitleMap[categoryKey] ?? categoryTitleMap.other;
-  const routePath = `/components/${slug}`;
+  const categoryKey = resolveCategoryKey(slug, source);
+  const categoryTitle = source.categoryTitles[categoryKey] ?? source.categoryTitles.other;
+  const routePath = `${source.routePrefix}/${slug}`;
   const markdownPath = `${routePath}.md`;
   const output = [
     `# ${title}`,
@@ -174,8 +232,8 @@ async function createComponentDoc(filePath: string): Promise<SkillComponentDoc> 
   };
 }
 
-function resolveCategoryKey(slug: string): string {
-  for (const group of menuData) {
+function resolveCategoryKey(slug: string, source: SkillDocSource): string {
+  for (const group of source.menu) {
     if (group.items.some(item => toKebabCase(item) === slug)) {
       return group.value;
     }
@@ -194,8 +252,7 @@ function createComponentsIndex(docs: SkillComponentDoc[]): string {
     groupedDocs.set(doc.categoryKey, group);
   }
 
-  const orderedCategoryKeys = [...menuData.map(group => group.value), 'other'];
-  const sections = orderedCategoryKeys.flatMap(categoryKey => {
+  const sections = skillOrderedCategoryKeys.flatMap(categoryKey => {
     const categoryDocs = groupedDocs.get(categoryKey)?.sort((left, right) => left.slug.localeCompare(right.slug)) ?? [];
 
     if (categoryDocs.length === 0) {
@@ -239,8 +296,7 @@ function createHeadlessComponentsIndex(docs: SkillComponentDoc[]): string {
     groupedDocs.set(doc.categoryKey, group);
   }
 
-  const orderedCategoryKeys = [...menuData.map(group => group.value), 'other'];
-  const sections = orderedCategoryKeys.flatMap(categoryKey => {
+  const sections = skillOrderedCategoryKeys.flatMap(categoryKey => {
     const categoryDocs = groupedDocs.get(categoryKey)?.sort((left, right) => left.slug.localeCompare(right.slug)) ?? [];
 
     if (categoryDocs.length === 0) {

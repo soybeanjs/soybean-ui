@@ -1,6 +1,6 @@
 ---
 name: soybean-ui
-description: Helps use SoybeanUI in Vue and Nuxt apps, including choosing styled vs headless packages, configuring styles and ConfigProvider, and looking up component docs and generated API summaries. Use when building with @soybeanjs/ui or @soybeanjs/headless, asking which SoybeanUI component to use, or needing props, slots, usage, and theming guidance for a specific component.
+description: Helps use SoybeanUI in Vue and Nuxt apps, including choosing styled vs headless packages, configuring styles and ConfigProvider, and looking up component docs and generated API summaries. Use when building with @soybeanjs/ui, @soybeanjs/ui-x, or @soybeanjs/headless, asking which SoybeanUI component to use, or needing props, slots, usage, and theming guidance for a specific component.
 license: MIT
 ---
 
@@ -11,6 +11,7 @@ Vue 3 UI library with styled and headless packages.
 ## Quick start
 
 - Prefer `@soybeanjs/ui` for ready-to-use `S*` components.
+- Prefer `@soybeanjs/ui-x` for styled AI conversation components (`Sx*`: `SxBubble`, `SxSender`, `SxThoughtChain`, ...).
 - Prefer `@soybeanjs/headless` when you want SoybeanUI logic and accessibility without bundled styles.
 - Load [REFERENCE.md](REFERENCE.md) for setup, docs routes, and which deeper reference to open next.
 - Load [references/headless-vs-styled.md](references/headless-vs-styled.md) when deciding between `@soybeanjs/ui` and `@soybeanjs/headless`.
@@ -39,13 +40,14 @@ Vue 3 UI library with styled and headless packages.
 
 ## Key concepts
 
-| Concept            | Description                                                                                                |
-| ------------------ | ---------------------------------------------------------------------------------------------------------- |
-| Styled package     | `@soybeanjs/ui` exposes `SButton`, `SDialog`, and other pre-styled `S*` components                         |
-| Headless package   | `@soybeanjs/headless` exposes unstyled primitives, logic, a11y, and Compact aggregations                   |
-| `SConfigProvider`  | Global config for theme, size, locale, direction, nonce, and tooltip defaults                              |
-| Compact components | Data-driven aggregated components such as `AccordionCompact` and `TableCompact`                            |
-| Generated docs     | This skill's component files are generated from `docs/src/docs/en/components` and `docs/src/generated/api` |
+| Concept            | Description                                                                                                                    |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| Styled package     | `@soybeanjs/ui` exposes `SButton`, `SDialog`, and other pre-styled `S*` components                                             |
+| AI package         | `@soybeanjs/ui-x` exposes styled AI conversation components prefixed `Sx*` (bubble, sender, thought chain)                     |
+| Headless package   | `@soybeanjs/headless` exposes unstyled primitives, logic, a11y, and Compact aggregations                                       |
+| `SConfigProvider`  | Global config for theme, size, locale, direction, nonce, and tooltip defaults                                                  |
+| Compact components | Data-driven aggregated components such as `AccordionCompact` and `TableCompact`                                                |
+| Generated docs     | This skill's component files are generated from `docs/src/docs/en/{ui,ui-x}/components` and `docs/src/generated/api/{ui,ui-x}` |
 
 ## Basic patterns
 
