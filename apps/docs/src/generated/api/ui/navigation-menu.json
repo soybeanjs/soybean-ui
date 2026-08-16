@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "NavigationMenuProps",
         "type": "Interface NavigationMenuProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<NavigationMenuUi>; items: NavigationMenuOptionData[]; modelValue?: string; defaultValue?: string; dir?: Direction; orientation?: DataOrientation; delayDuration?: number; skipDelayDuration?: number; disableClickTrigger?: boolean; disableHoverTrigger?: boolean; disablePointerLeaveClose?: boolean; unmountOnHide?: boolean; itemProps?: NavigationMenuItemProps; linkProps?: Omit<NavigationMenuLinkProps, 'href'>; triggerProps?: NavigationMenuTriggerProps; contentProps?: NavigationMenuContentProps; viewportProps?: NavigationMenuViewportProps; indicatorProps?: NavigationMenuIndicatorProps; listProps?: NavigationMenuListProps; subListProps?: NavigationMenuListProps; subItemProps?: NavigationMenuItemProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<NavigationMenuUi>; items: NavigationMenuOptionData[]; modelValue?: string; defaultValue?: string; dir?: Direction; orientation?: DataOrientation; delayDuration?: number; skipDelayDuration?: number; disableClickTrigger?: boolean; disableHoverTrigger?: boolean; disablePointerLeaveClose?: boolean; unmountOnHide?: boolean; itemProps?: NavigationMenuItemProps; linkProps?: Omit<NavigationMenuLinkProps, LinkBasePropsKey>; triggerProps?: NavigationMenuTriggerProps; contentProps?: NavigationMenuContentProps; viewportProps?: NavigationMenuViewportProps; indicatorProps?: NavigationMenuIndicatorProps; listProps?: NavigationMenuListProps; subListProps?: NavigationMenuListProps; subItemProps?: NavigationMenuItemProps }",
         "description": "Properties for the NavigationMenu component.",
         "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.props",
         "sourcePath": "packages/ui/src/components/navigation-menu/types.ts",
@@ -275,7 +275,7 @@
           },
           {
             "name": "linkProps",
-            "type": "Omit<NavigationMenuLinkProps, 'href'>",
+            "type": "Omit<NavigationMenuLinkProps, LinkBasePropsKey>",
             "required": false,
             "description": "Properties forwarded to the link element.",
             "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.linkprops",
@@ -283,6 +283,19 @@
             "inheritedFrom": "linkProps",
             "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
             "referencedTypes": [
+              {
+                "name": "LinkBasePropsKey",
+                "kind": "typeAlias",
+                "type": "'href' | 'to' | 'external' | 'target'",
+                "resolvedType": null,
+                "description": "Type information for LinkBasePropsKey.",
+                "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkbasepropskey",
+                "sourcePath": "packages/headless/src/components/link/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
               {
                 "name": "NavigationMenuLinkProps",
                 "kind": "interface",
@@ -1065,7 +1078,7 @@
         "kind": "props",
         "name": "NavigationMenuCompactProps",
         "type": "Interface NavigationMenuCompactProps",
-        "resolvedType": "{ items: NavigationMenuOptionData[]; modelValue?: string; defaultValue?: string; dir?: Direction; orientation?: DataOrientation; delayDuration?: number; skipDelayDuration?: number; disableClickTrigger?: boolean; disableHoverTrigger?: boolean; disablePointerLeaveClose?: boolean; unmountOnHide?: boolean; itemProps?: NavigationMenuItemProps; linkProps?: Omit<NavigationMenuLinkProps, 'href'>; triggerProps?: NavigationMenuTriggerProps; contentProps?: NavigationMenuContentProps; viewportProps?: NavigationMenuViewportProps; indicatorProps?: NavigationMenuIndicatorProps; listProps?: NavigationMenuListProps; subListProps?: NavigationMenuListProps; subItemProps?: NavigationMenuItemProps }",
+        "resolvedType": "{ items: NavigationMenuOptionData[]; modelValue?: string; defaultValue?: string; dir?: Direction; orientation?: DataOrientation; delayDuration?: number; skipDelayDuration?: number; disableClickTrigger?: boolean; disableHoverTrigger?: boolean; disablePointerLeaveClose?: boolean; unmountOnHide?: boolean; itemProps?: NavigationMenuItemProps; linkProps?: Omit<NavigationMenuLinkProps, LinkBasePropsKey>; triggerProps?: NavigationMenuTriggerProps; contentProps?: NavigationMenuContentProps; viewportProps?: NavigationMenuViewportProps; indicatorProps?: NavigationMenuIndicatorProps; listProps?: NavigationMenuListProps; subListProps?: NavigationMenuListProps; subItemProps?: NavigationMenuItemProps }",
         "description": "Properties for the NavigationMenuCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.props",
         "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
@@ -1259,7 +1272,7 @@
           },
           {
             "name": "linkProps",
-            "type": "Omit<NavigationMenuLinkProps, 'href'>",
+            "type": "Omit<NavigationMenuLinkProps, LinkBasePropsKey>",
             "required": false,
             "description": "Properties forwarded to the link element.",
             "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.linkprops",
@@ -1267,6 +1280,19 @@
             "inheritedFrom": "Omit.linkProps",
             "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
             "referencedTypes": [
+              {
+                "name": "LinkBasePropsKey",
+                "kind": "typeAlias",
+                "type": "'href' | 'to' | 'external' | 'target'",
+                "resolvedType": null,
+                "description": "Type information for LinkBasePropsKey.",
+                "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkbasepropskey",
+                "sourcePath": "packages/headless/src/components/link/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
               {
                 "name": "NavigationMenuLinkProps",
                 "kind": "interface",
@@ -2355,7 +2381,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/vue-router@5.2.0_@voidzero-dev+vite-plus-core@0.2.9_@types+node@26.2.0_esbuild@0.28.2_j_376c68605d244d61e947f8377fc5524e/node_modules/vue-router/dist/index-BN0B0y8a.d.ts",
+                "sourcePath": "node_modules/.pnpm/vue-router@5.2.0_@voidzero-dev+vite-plus-core@0.2.9_@types+node@26.2.0_esbuild@0.28.2_j_266234c366c8aa2ea0860ee4a35e2cb3/node_modules/vue-router/dist/index-BN0B0y8a.d.ts",
                 "typeParameters": ["Name extends keyof RouteMap = keyof RouteMap"],
                 "external": true,
                 "members": [],

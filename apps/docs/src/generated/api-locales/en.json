@@ -5079,6 +5079,7 @@
           },
           "props": "Properties for the LinkBase component."
         },
+        "linkbasepropskey": "Type information for LinkBasePropsKey.",
         "linkextraprops": {
           "members": {
             "activeclass": "Class to apply when the link is active",
@@ -5099,30 +5100,6 @@
             "viewtransition": "Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported."
           },
           "props": "Properties for the LinkExtra component."
-        },
-        "linkprops": {
-          "members": {
-            "activeclass": "Class to apply when the link is active",
-            "ariacurrentvalue": "Value passed to the attribute `aria-current` when the link is exact active.",
-            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "disabled": "When `true`, the link is disabled.",
-            "exactactiveclass": "Class to apply when the link is exact active",
-            "external": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
-            "href": "The URL the link should navigate to when clicked on.",
-            "inactiveclass": "The class to apply to the link when it is inactive.",
-            "noprefetch": "Escape hatch to disable `prefetch` attribute.",
-            "norel": "If set to true, no rel attribute will be added to the link",
-            "prefetch": "When enabled will prefetch middleware, layouts and payloads of links in the viewport.",
-            "prefetchedclass": "A class to apply to links that have been prefetched.",
-            "prefetchon": "Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.",
-            "rel": "A rel attribute value to apply on the link. Defaults to \"noopener noreferrer\" for external links.",
-            "replace": "Calls `router.replace` instead of `router.push`.",
-            "target": "Where to display the linked URL, as the name for a browsing context.",
-            "to": "Route Location the link should navigate to when clicked on.",
-            "trailingslash": "An option to either add or remove trailing slashes in the `href` for this specific link.\nOverrides the global `trailingSlash` option if provided.",
-            "viewtransition": "Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported."
-          }
         },
         "type": ""
       },

@@ -5079,6 +5079,7 @@
           },
           "props": "LinkBase 组件的属性。"
         },
+        "linkbasepropskey": "LinkBasePropsKey 的类型信息。",
         "linkextraprops": {
           "members": {
             "activeclass": "链接激活时应用的类",
@@ -5099,30 +5100,6 @@
             "viewtransition": "如果支持，将 `router.push()` 返回的承诺传递给 `document.startViewTransition()` 。"
           },
           "props": "LinkExtra 组件的属性。"
-        },
-        "linkprops": {
-          "members": {
-            "activeclass": "链接激活时应用的类",
-            "ariacurrentvalue": "当链接确切激活时，传递给属性 `aria-current` 的值。",
-            "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
-            "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
-            "disabled": "true \"时，链接被禁用。",
-            "exactactiveclass": "链接确切激活时应用的类",
-            "external": "强制将链接视为外部链接（true）或内部链接（false）。这有助于处理边缘情况",
-            "href": "点击链接时应导航到的 URL。",
-            "inactiveclass": "当链接处于非活动状态时，应用于链接的类。",
-            "noprefetch": "Escape hatch 可禁用 `prefetch` 属性。",
-            "norel": "如果设置为 true，将不会在链接中添加 rel 属性",
-            "prefetch": "启用后将预取视口中链接的中间件、布局和有效载荷。",
-            "prefetchedclass": "用于预检链接的类。",
-            "prefetchon": "允许控制何时预取链接。默认情况下，只有在可见时才会触发预取。",
-            "rel": "用于链接的 rel 属性值。外部链接默认为 \"noopener noreferrer\"。",
-            "replace": "调用 `router.replace` 代替 `router.push`.",
-            "target": "显示链接 URL 的位置，作为浏览上下文的名称。",
-            "to": "路由 点击链接时应导航到的位置。",
-            "trailingslash": "为特定链接的 `href` 添加或删除尾部斜线的选项。\n如果提供，则覆盖全局 `trailingSlash` 选项。",
-            "viewtransition": "如果支持，将 `router.push()` 返回的承诺传递给 `document.startViewTransition()` 。"
-          }
         },
         "type": ""
       },

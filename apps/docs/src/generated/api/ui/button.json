@@ -1179,7 +1179,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/vue-router@5.2.0_@voidzero-dev+vite-plus-core@0.2.9_@types+node@26.2.0_esbuild@0.28.2_j_376c68605d244d61e947f8377fc5524e/node_modules/vue-router/dist/index-BN0B0y8a.d.ts",
+                "sourcePath": "node_modules/.pnpm/vue-router@5.2.0_@voidzero-dev+vite-plus-core@0.2.9_@types+node@26.2.0_esbuild@0.28.2_j_266234c366c8aa2ea0860ee4a35e2cb3/node_modules/vue-router/dist/index-BN0B0y8a.d.ts",
                 "typeParameters": ["Name extends keyof RouteMap = keyof RouteMap"],
                 "external": true,
                 "members": [],

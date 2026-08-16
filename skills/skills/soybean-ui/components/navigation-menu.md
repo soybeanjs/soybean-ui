@@ -23,7 +23,7 @@ NavigationMenu builds site-level horizontal or vertical navigation with arbitrar
 - **Indicator and viewport positioning** — `NavigationMenuIndicator` slides with the active item; the viewport positions against the active trigger (or the root), supports `align`, and clamps to the screen edges.
 - **Controlled / uncontrolled** — with `modelValue`, highlight follows the prop and `update:modelValue` fires; otherwise `defaultValue` seeds the initial open item.
 - **Bidirectional** — `orientation` supports horizontal / vertical; `dir` supports LTR / RTL with logical positioning and animations.
-- **Per-item and global link props** — `disabled` / `target` can be set per item or fall back to global `linkProps`; explicit item values always win, and `linkProps.href` is deliberately excluded from the type (the destination is decided by the item's `href` / `to`).
+- **Per-item and global link props** — the destination (`href` / `to`), `target`, and `external` are owned by each item; `linkProps` only forwards the remaining link props (for example a global `disabled` fallback, where an explicit item value always wins).
 - **Disabled items** — disabled links render `aria-disabled="true"`, `tabindex="-1"`, and block interaction; disabled triggers never open a submenu.
 - **Six sizes** — `size` (xs…2xl) variants cover spacing and type scale across viewport, lists, trigger, links, sub-items, and indicator.
 - **19 UI slots** — `root` / `item` / `trigger` / `content` / `link` / `subLink` / `indicator` / `viewport` / `arrow` and more are individually customizable through the `ui` prop.
@@ -64,7 +64,7 @@ Properties for the NavigationMenu component.
 - `disablePointerLeaveClose`: If `true`, menu will not close during pointer leave event (type `boolean`; default `false`; optional)
 - `unmountOnHide`: When `true`, the element will be unmounted on closed state. (type `boolean`; default `true`; optional)
 - `itemProps`: Properties forwarded to the item element. (type `NavigationMenuItemProps`; optional)
-- `linkProps`: Properties forwarded to the link element. (type `Omit<NavigationMenuLinkProps, 'href'>`; optional)
+- `linkProps`: Properties forwarded to the link element. (type `Omit<NavigationMenuLinkProps, LinkBasePropsKey>`; optional)
 - `triggerProps`: Properties forwarded to the trigger element. (type `NavigationMenuTriggerProps`; optional)
 - `contentProps`: Properties forwarded to the content element. (type `NavigationMenuContentProps`; optional)
 - `viewportProps`: Properties forwarded to the viewport element. (type `NavigationMenuViewportProps`; optional)
@@ -113,7 +113,7 @@ Properties for the NavigationMenuCompact component.
 - `disablePointerLeaveClose`: If `true`, menu will not close during pointer leave event (type `boolean`; default `false`; optional)
 - `unmountOnHide`: When `true`, the element will be unmounted on closed state. (type `boolean`; default `true`; optional)
 - `itemProps`: Properties forwarded to the item element. (type `NavigationMenuItemProps`; optional)
-- `linkProps`: Properties forwarded to the link element. (type `Omit<NavigationMenuLinkProps, 'href'>`; optional)
+- `linkProps`: Properties forwarded to the link element. (type `Omit<NavigationMenuLinkProps, LinkBasePropsKey>`; optional)
 - `triggerProps`: Properties forwarded to the trigger element. (type `NavigationMenuTriggerProps`; optional)
 - `contentProps`: Properties forwarded to the content element. (type `NavigationMenuContentProps`; optional)
 - `viewportProps`: Properties forwarded to the viewport element. (type `NavigationMenuViewportProps`; optional)

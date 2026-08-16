@@ -223,7 +223,7 @@ Properties for the MenuOptionCompact component.
 
 - `item`: Current item data. (type `MenuOptionData<T>`; required)
 - `itemProps`: Properties forwarded to the item element. (type `MenuItemProps`; optional)
-- `linkProps`: Properties forwarded to the link element. (type `LinkProps`; optional)
+- `linkProps`: Properties forwarded to the link element. (type `LinkExtraProps`; optional)
 - `groupProps`: Properties forwarded to the group element. (type `MenuGroupProps`; optional)
 - `groupLabelProps`: Properties forwarded to the group label element. (type `MenuGroupLabelProps`; optional)
 - `subProps`: Properties forwarded to the sub element. (type `MenuSubProps`; optional)
@@ -274,7 +274,7 @@ Properties for the MenuOptionsCompact component.
 - `items`: Items rendered by the component. (type `MenuOptionData<T>[]`; required)
 - `activeValue`: The active value of the menu. (type `T`; optional)
 - `itemProps`: Properties forwarded to the item element. (type `MenuItemProps`; optional)
-- `linkProps`: Properties forwarded to the link element. (type `LinkProps`; optional)
+- `linkProps`: Properties forwarded to the link element. (type `LinkExtraProps`; optional)
 - `groupProps`: Properties forwarded to the group element. (type `MenuGroupProps`; optional)
 - `groupLabelProps`: Properties forwarded to the group label element. (type `MenuGroupLabelProps`; optional)
 - `subProps`: Properties forwarded to the sub element. (type `MenuSubProps`; optional)
