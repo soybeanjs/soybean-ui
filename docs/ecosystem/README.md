@@ -16,6 +16,7 @@
 | [form.md](./form.md)                           | `@soybeanjs/form`        | 立项提案（调研已完成）       | Schema 驱动高级表单              |
 | [ui-pro.md](./ui-pro.md)                       | `@soybeanjs/ui-pro`      | 探索性预留                   | 增值 / 高级组件                  |
 | [commercialization.md](./commercialization.md) | editor/table/form 三生态 | 策略建议（调研已完成）       | 商业化方向与执行建议             |
+| [sbean.md](./sbean.md)                         | `@soybeanjs/sbean`       | 核心功能完成（横切工具链）   | 源码分发 CLI 开发指南/完成度     |
 
 > 包骨架接入契约见 [../ecosystem.md](../ecosystem.md) §10「新包接入清单」；每个新包立项时按 [../GOVERNANCE.md](../GOVERNANCE.md) 登记到本文档索引。
 
