@@ -73,7 +73,7 @@
     "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
     "@soybeanjs/utils": "^0.1.1",
-    "markstream-vue": "^1.0.9"
+    "markstream-vue": "^1.1.4"
   },
   "devDependencies": {
     "@nuxt/kit": "^4.5.2",
@@ -94,7 +94,7 @@
     "vitest": "4.1.10",
     "vue": "^3.5.41",
     "vue-router": "^5.2.0",
-    "vue-tsc": "^3.3.9"
+    "vue-tsc": "^3.3.10"
   },
   "peerDependencies": {
     "@nuxt/kit": "^4.3.0",
@@ -129,5 +129,5 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@11.21.0"
+  "packageManager": "pnpm@11.22.0"
 }

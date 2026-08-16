@@ -123,7 +123,7 @@
     "embla-carousel-reactive-utils": "^8.6.0",
     "fuse.js": "^7.5.0",
     "klona": "^2.0.6",
-    "ohash": "^2.0.11"
+    "ohash": "^2.0.12"
   },
   "devDependencies": {
     "@nuxt/kit": "^4.5.2",
@@ -162,5 +162,5 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@11.21.0"
+  "packageManager": "pnpm@11.22.0"
 }
