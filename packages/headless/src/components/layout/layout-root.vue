@@ -56,8 +56,8 @@ const dataCollapsible = computed(() => (sidebarState.value === 'collapsed' ? pro
 const isHorizontal = computed(() => props.orientation === 'horizontal');
 const isVertical = computed(() => props.orientation === 'vertical');
 
-const fixedTop = computed(() => Boolean(props.fixedTop) || isVertical.value || props.scrollBehavior === 'content');
-const fixedFooter = computed(() => Boolean(props.fixedFooter) || props.scrollBehavior === 'content');
+const fixedTop = computed(() => isVertical.value || props.scrollBehavior === 'content' || Boolean(props.fixedTop));
+const fixedFooter = computed(() => props.scrollBehavior === 'content' || Boolean(props.fixedFooter));
 const stretchFooter = computed(() => fixedFooter.value && props.stretchFooter);
 const isOffcanvas = computed(() => props.collapsible === 'offcanvas');
 
@@ -127,13 +127,13 @@ provideLayoutRootContext({
     'sidebarVisible',
     'headerVisible',
     'tabVisible',
-    'footerVisible',
-    'fixedFooter'
+    'footerVisible'
   ]),
   open,
   mobileOpen,
   mobileSidebarWidth,
-  fixedTop
+  fixedTop,
+  fixedFooter
 });
 </script>
 

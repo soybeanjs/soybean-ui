@@ -10,7 +10,15 @@ export const layoutVariants = scv({
     mobileDrawer: drawerVariants({ size: props.size, side: props.side }).popup
   }),
   slots: {
-    root: 'group relative h-full transition-all-300 [--soybean-layout-half-spacing:calc(var(--soybean-layout-spacing)/2)]',
+    // --sl-* 是本库的间距/gap 别名(headless 注入的 --soybean-layout-* 保持不变),在 root 上按状态计算,各槽位直接应用
+    root: [
+      'group relative h-full transition-all-300',
+      '[--sl-half-spacing:calc(var(--sl-spacing)/2)]',
+      '[--sl-main-gap:var(--soybean-layout-start-gap)]',
+      '[--sl-header-gap:var(--soybean-layout-header-start-gap)]',
+      '[--sl-footer-gap:var(--soybean-layout-footer-start-gap)]',
+      '[--sl-end-gap:0px]'
+    ],
     main: 'flex flex-col h-full group-data-[scroll-behavior=wrapper]:overflow-y-auto transition-all-300',
     sidebarRoot: 'lt-md:hidden',
     sidebarWrapper: [
@@ -29,8 +37,8 @@ export const layoutVariants = scv({
     ],
     mobile: 'flex flex-col w-full h-full',
     rail: [
-      'absolute inset-y-0 z-20 flex w-[--soybean-layout-spacing] -translate-x-1/2 rtl:translate-x-1/2 transition-all ease-linear lt-sm:hidden',
-      'after:absolute after:inset-y-0 after:start-1/2 after:content-empty after:w-[calc(var(--soybean-layout-spacing)/8)] hover:after:bg-sidebar-border'
+      'absolute inset-y-0 z-20 flex w-[--sl-spacing] -translate-x-1/2 rtl:translate-x-1/2 transition-all ease-linear lt-sm:hidden',
+      'after:absolute after:inset-y-0 after:start-1/2 after:content-empty after:w-[calc(var(--sl-spacing)/8)] hover:after:bg-sidebar-border'
     ],
     trigger: '',
     header: [
@@ -50,65 +58,51 @@ export const layoutVariants = scv({
   variants: {
     size: {
       xs: {
-        root: 'text-2xs [--soybean-layout-spacing:0.75rem]'
+        root: 'text-2xs [--sl-spacing:0.75rem]'
       },
       sm: {
-        root: 'text-xs [--soybean-layout-spacing:0.875rem]'
+        root: 'text-xs [--sl-spacing:0.875rem]'
       },
       md: {
-        root: 'text-sm [--soybean-layout-spacing:1rem]'
+        root: 'text-sm [--sl-spacing:1rem]'
       },
       lg: {
-        root: 'text-base [--soybean-layout-spacing:1.25rem]'
+        root: 'text-base [--sl-spacing:1.25rem]'
       },
       xl: {
-        root: 'text-lg [--soybean-layout-spacing:1.5rem]'
+        root: 'text-lg [--sl-spacing:1.5rem]'
       },
       '2xl': {
-        root: 'text-xl [--soybean-layout-spacing:1.75rem]'
+        root: 'text-xl [--sl-spacing:1.75rem]'
       }
     },
     side: {
       left: {
-        main: [
-          'ms-[var(--soybean-layout-main-gap,var(--soybean-layout-start-gap))]',
-          'group-data-[variant=inset]:me-[--soybean-layout-half-spacing]'
-        ],
+        main: ['ms-[var(--sl-main-gap)]', 'me-[var(--sl-end-gap)]'],
         sidebarWrapper: 'start-0 border-e',
-        rail: 'cursor-w-resize group-data-[state=collapsed]:cursor-e-resize -end-[var(--soybean-layout-spacing)]',
-        header: [
-          'group-data-[fixed-top=true]:ms-[var(--soybean-layout-header-gap,var(--soybean-layout-header-start-gap))]',
-          'group-data-[variant=inset]:me-[--soybean-layout-half-spacing]'
-        ],
+        rail: 'cursor-w-resize group-data-[state=collapsed]:cursor-e-resize -end-[var(--sl-spacing)]',
+        header: ['group-data-[fixed-top=true]:ms-[var(--sl-header-gap)]', 'me-[var(--sl-end-gap)]'],
         tab: [
-          'group-data-[full-content=false]:group-data-[fixed-top=true]:ms-[var(--soybean-layout-main-gap,var(--soybean-layout-start-gap))]',
-          'group-data-[full-content=false]:group-data-[fixed-top=true]:group-data-[variant=inset]:me-[--soybean-layout-half-spacing]'
+          'group-data-[full-content=false]:group-data-[fixed-top=true]:ms-[var(--sl-main-gap)]',
+          'group-data-[full-content=false]:group-data-[fixed-top=true]:me-[var(--sl-end-gap)]'
         ],
         footer: [
-          'group-data-[fixed-footer=true]:ms-[var(--soybean-layout-footer-gap,var(--soybean-layout-footer-start-gap))]',
-          'group-data-[fixed-footer=true]:group-data-[variant=inset]:me-[--soybean-layout-half-spacing]',
-          'group-data-[orientation=vertical]:group-data-[variant=floating]:group-data-[stretch-footer=true]:ms-0'
+          'group-data-[fixed-footer=true]:ms-[var(--sl-footer-gap)]',
+          'group-data-[fixed-footer=true]:me-[var(--sl-end-gap)]'
         ]
       },
       right: {
-        main: [
-          'me-[var(--soybean-layout-main-gap,var(--soybean-layout-start-gap))]',
-          'group-data-[variant=inset]:ms-[--soybean-layout-half-spacing]'
-        ],
+        main: ['me-[var(--sl-main-gap)]', 'ms-[var(--sl-end-gap)]'],
         sidebarWrapper: 'end-0 border-s',
         rail: 'cursor-e-resize group-data-[state=collapsed]:cursor-w-resize start-0',
-        header: [
-          'group-data-[fixed-top=true]:me-[var(--soybean-layout-header-gap,var(--soybean-layout-header-start-gap))]',
-          'group-data-[variant=inset]:ms-[--soybean-layout-half-spacing]'
-        ],
+        header: ['group-data-[fixed-top=true]:me-[var(--sl-header-gap)]', 'ms-[var(--sl-end-gap)]'],
         tab: [
-          'group-data-[full-content=false]:group-data-[fixed-top=true]:me-[var(--soybean-layout-main-gap,var(--soybean-layout-start-gap))]',
-          'group-data-[full-content=false]:group-data-[fixed-top=true]:group-data-[variant=inset]:ms-[--soybean-layout-half-spacing]'
+          'group-data-[full-content=false]:group-data-[fixed-top=true]:me-[var(--sl-main-gap)]',
+          'group-data-[full-content=false]:group-data-[fixed-top=true]:ms-[var(--sl-end-gap)]'
         ],
         footer: [
-          'group-data-[fixed-footer=true]:me-[var(--soybean-layout-footer-gap,var(--soybean-layout-footer-start-gap))]',
-          'group-data-[fixed-footer=true]:group-data-[variant=inset]:ms-[--soybean-layout-half-spacing]',
-          'group-data-[orientation=vertical]:group-data-[variant=floating]:group-data-[stretch-footer=true]:me-0'
+          'group-data-[fixed-footer=true]:me-[var(--sl-footer-gap)]',
+          'group-data-[fixed-footer=true]:ms-[var(--sl-end-gap)]'
         ]
       }
     },
@@ -119,40 +113,41 @@ export const layoutVariants = scv({
       },
       floating: {
         root: [
-          'data-[state=expanded]:[--soybean-layout-main-gap:calc(var(--soybean-layout-start-gap)+var(--soybean-layout-spacing))]',
-          'data-[state=expanded]:[--soybean-layout-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--soybean-layout-spacing))]',
-          'data-[collapsible=icon]:[--soybean-layout-main-gap:calc(var(--soybean-layout-start-gap)+var(--soybean-layout-spacing))]',
-          'data-[collapsible=icon]:[--soybean-layout-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--soybean-layout-spacing))]',
-          'data-[state=expanded]:data-[orientation=horizontal]:[--soybean-layout-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--soybean-layout-spacing))]',
-          'data-[collapsible=icon]:data-[orientation=horizontal]:[--soybean-layout-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--soybean-layout-spacing))]'
+          'data-[state=expanded]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
+          'data-[state=expanded]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
+          'data-[collapsible=icon]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
+          'data-[collapsible=icon]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
+          'data-[state=expanded]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
+          'data-[collapsible=icon]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
+          'data-[orientation=vertical]:data-[stretch-footer=true]:[--sl-footer-gap:0px]'
         ],
-        sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--soybean-layout-spacing))] group-data-[collapsible=icon]:group-data-[state=collapsed]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--soybean-layout-spacing))]`,
-        sidebarWrapper: `w-[calc(var(--soybean-sidebar-width)+var(--soybean-layout-spacing))] p-[--soybean-layout-half-spacing] group-data-[collapsible=icon]:group-data-[state=collapsed]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--soybean-layout-spacing))] border-e-0`
+        sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]:group-data-[state=collapsed]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))]`,
+        sidebarWrapper: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] p-[--sl-half-spacing] group-data-[collapsible=icon]:group-data-[state=collapsed]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))] border-e-0`
       },
       inset: {
         root: [
-          'py-[--soybean-layout-half-spacing] bg-sidebar',
-          '[--soybean-layout-main-gap:calc(var(--soybean-layout-start-gap)+var(--soybean-layout-spacing))]',
-          '[--soybean-layout-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--soybean-layout-spacing))]',
-          'data-[orientation=horizontal]:[--soybean-layout-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--soybean-layout-spacing))]'
+          'py-[--sl-half-spacing] bg-sidebar',
+          // data-[variant=inset] 前缀用于保证特异性高于 base 上的默认值
+          'data-[variant=inset]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
+          'data-[variant=inset]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
+          'data-[variant=inset]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
+          'data-[variant=inset]:data-[orientation=vertical]:[--sl-header-gap:var(--sl-half-spacing)]',
+          'data-[variant=inset]:[--sl-end-gap:var(--sl-half-spacing)]',
+          'data-[variant=inset]:data-[orientation=vertical]:data-[stretch-footer=true]:[--sl-footer-gap:var(--sl-half-spacing)]'
         ],
-        sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--soybean-layout-spacing))] group-data-[collapsible=icon]:group-data-[state=collapsed]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--soybean-layout-spacing))]`,
-        sidebarWrapper: `p-[--soybean-layout-half-spacing] w-[calc(var(--soybean-sidebar-width)+var(--soybean-layout-spacing))] group-data-[collapsible=icon]:group-data-[state=collapsed]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--soybean-layout-spacing))] border-e-0`,
+        sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]:group-data-[state=collapsed]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))]`,
+        sidebarWrapper: `p-[--sl-half-spacing] w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]:group-data-[state=collapsed]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))] border-e-0`,
         main: `rounded-xl shadow`,
         header: [
-          `top-[--soybean-layout-half-spacing] rounded-t-xl`,
-          `group-data-[variant=inset]:group-data-[orientation=vertical]:ms-[--soybean-layout-half-spacing]`,
-          `group-data-[variant=inset]:group-data-[orientation=vertical]:me-[--soybean-layout-half-spacing]`,
+          `top-[--sl-half-spacing] rounded-t-xl`,
           `group-data-[orientation=vertical]:border-0`,
           `group-data-[orientation=vertical]:shadow group-data-[orientation=vertical]:rounded-xl`
         ],
-        tab: `top-[calc(var(--soybean-layout-header-height)+var(--soybean-layout-half-spacing))]`,
+        tab: `top-[calc(var(--soybean-layout-header-height)+var(--sl-half-spacing))]`,
         footer: [
-          'bottom-[--soybean-layout-half-spacing] rounded-b-xl',
+          'bottom-[--sl-half-spacing] rounded-b-xl',
           `group-data-[orientation=vertical]:shadow group-data-[orientation=vertical]:rounded-xl`,
-          `group-data-[variant=inset]:group-data-[orientation=vertical]:group-data-[stretch-footer=true]:ms-[--soybean-layout-half-spacing]`,
-          `group-data-[variant=inset]:group-data-[orientation=vertical]:group-data-[stretch-footer=true]:me-[--soybean-layout-half-spacing]`,
-          `group-data-[orientation=vertical]:group-data-[stretch-footer=true]:bottom-[calc(var(--soybean-layout-half-spacing)-2px)]`
+          `group-data-[orientation=vertical]:group-data-[stretch-footer=true]:bottom-[calc(var(--sl-half-spacing)-2px)]`
         ]
       }
     },
@@ -175,14 +170,14 @@ export const layoutVariants = scv({
       side: 'left',
       collapsible: 'offcanvas',
       class: {
-        rail: '-end-[--soybean-layout-half-spacing]'
+        rail: '-end-[--sl-half-spacing]'
       }
     },
     {
       side: 'right',
       collapsible: 'offcanvas',
       class: {
-        rail: '-start-[--soybean-layout-half-spacing]'
+        rail: '-start-[--sl-half-spacing]'
       }
     },
     {
@@ -206,7 +201,7 @@ export const layoutVariants = scv({
       variant: 'floating',
       collapsible: 'offcanvas',
       class: {
-        rail: 'group-data-[state=collapsed]:end-[--soybean-layout-half-spacing]'
+        rail: 'group-data-[state=collapsed]:end-[--sl-half-spacing]'
       }
     },
     {
@@ -214,14 +209,14 @@ export const layoutVariants = scv({
       variant: 'floating',
       collapsible: 'offcanvas',
       class: {
-        rail: 'group-data-[state=collapsed]:start-[--soybean-layout-half-spacing]'
+        rail: 'group-data-[state=collapsed]:start-[--sl-half-spacing]'
       }
     },
     {
       variant: 'inset',
       collapsible: 'offcanvas',
       class: {
-        main: 'md:group-data-[state=collapsed]:ms-[--soybean-layout-half-spacing]'
+        main: 'md:group-data-[state=collapsed]:ms-[--sl-half-spacing]'
       }
     }
   ],

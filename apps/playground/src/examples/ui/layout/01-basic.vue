@@ -153,7 +153,7 @@ const fullContent = shallowRef(false);
 
 <template>
   <div class="space-y-4">
-    <div class="flex-y-center flex-wrap justify-end gap-4">
+    <div class="flex-y-center flex-wrap gap-4">
       <SButtonGroup>
         <SButton variant="pure" class="cursor-default">orientation</SButton>
         <SSelect
@@ -223,7 +223,7 @@ const fullContent = shallowRef(false);
         :ui="{
           header: 'bg-background border-b border-border',
           tab: 'bg-background border-b border-border',
-          content: 'px-[--soybean-layout-spacing] bg-background',
+          content: 'px-[--sl-spacing] bg-background',
           footer: 'bg-background border-t border-border'
         }"
       >
@@ -255,21 +255,20 @@ const fullContent = shallowRef(false);
           </STreeMenu>
         </template>
         <template #header>
-          <div class="w-full flex items-center gap-2 px-[--soybean-layout-spacing]">
+          <div class="w-full flex items-center gap-2">
             <SDropdownMenu
               v-if="orientation === 'vertical'"
               :size="size"
               side="bottom"
               :items="frameworks"
-              :ui="{ popup: 'w-[var(--soybean-popper-anchor-width)]' }"
               @select="setActiveFramework"
             >
               <template #trigger>
-                <STreeMenuStyledItem>
+                <div class="flex-y-center gap-3 w-[--soybean-sidebar-width] px-[--sl-spacing] cursor-pointer">
                   <SIcon :icon="activeFramework.icon" class="text-primary" />
                   <span class="truncate font-medium">{{ activeFramework.label }}</span>
                   <SIcon icon="lucide:chevrons-up-down" class="ms-auto" />
-                </STreeMenuStyledItem>
+                </div>
               </template>
             </SDropdownMenu>
             <SLayoutTrigger v-if="side === 'left'" />
@@ -279,7 +278,7 @@ const fullContent = shallowRef(false);
           </div>
         </template>
         <template #tab>
-          <div class="flex-y-center justify-between h-full px-[--soybean-layout-spacing]">
+          <div class="flex-y-center justify-between h-full px-[--sl-spacing]">
             <span>This is Tab</span>
             <SButtonIcon :icon="fullContent ? 'lucide:shrink' : 'lucide:expand'" @click="fullContent = !fullContent" />
           </div>
@@ -288,7 +287,7 @@ const fullContent = shallowRef(false);
           <p v-for="i in 100" :key="i">This is Content {{ i }}</p>
         </div>
         <template #footer>
-          <div class="flex-y-center h-full px-[--soybean-layout-spacing]">This is Footer</div>
+          <div class="flex-y-center h-full px-[--sl-spacing]">This is Footer</div>
         </template>
       </SLayout>
     </div>
