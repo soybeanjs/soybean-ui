@@ -67,7 +67,7 @@ describe('SLayout', () => {
   });
 
   describe('defaults', () => {
-    it('defaults to vertical orientation, sidebar variant and expanded state', () => {
+    it('defaults to horizontal orientation, sidebar variant and expanded state', () => {
       const wrapper = mount(SLayout, {
         slots: {
           sidebar: '<div>Sidebar</div>',
@@ -77,7 +77,7 @@ describe('SLayout', () => {
       });
 
       const root = wrapper.find('[data-soybean-layout-root]');
-      expect(root.attributes('data-orientation')).toBe('vertical');
+      expect(root.attributes('data-orientation')).toBe('horizontal');
       expect(root.attributes('data-variant')).toBe('sidebar');
       expect(root.attributes('data-state')).toBe('expanded');
 
