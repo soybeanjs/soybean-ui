@@ -15,6 +15,11 @@ import type { TooltipCompactProps } from '../tooltip/types';
 export type TreeMenuCollapsedState = 'expanded' | 'collapsed';
 
 /**
+ * Expand strategy of the TreeMenu component.
+ */
+export type TreeMenuExpandStrategy = 'keep' | 'active';
+
+/**
  * Properties for the TreeMenuRoot component.
  */
 export interface TreeMenuRootProps {
@@ -34,6 +39,15 @@ export interface TreeMenuRootProps {
    * the expanded value of the tree menu when initially rendered. use when you do not need to control the state of the tree.
    */
   defaultExpanded?: string[];
+  /**
+   * The expand strategy of the tree menu.
+   *
+   * - `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus.
+   * - `active`: only expand the currently active menu and all its ancestor menus; non-active menus are collapsed when the active menu changes.
+   *
+   * @default 'keep'
+   */
+  expandStrategy?: TreeMenuExpandStrategy;
   /**
    * Whether the tree menu is collapsed.
    *
@@ -390,6 +404,10 @@ export interface TreeMenuRootContextParams {
    * Whether the component is collapsed.
    */
   collapsed: ShallowRef<boolean>;
+  /**
+   * Expand strategy used by the component context.
+   */
+  expandStrategy: ComputedRef<TreeMenuExpandStrategy>;
 }
 
 /**

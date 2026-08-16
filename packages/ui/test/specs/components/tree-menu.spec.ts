@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
+import type { VueWrapper } from '@vue/test-utils';
 import STreeMenu from '@/components/tree-menu/tree-menu.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -107,6 +108,16 @@ const disabledItems = [
     ]
   }
 ];
+
+function getButtonWithText(wrapper: VueWrapper, label: string) {
+  const button = wrapper.findAll('[data-soybean-tree-menu-button]').find(item => item.text().includes(label));
+
+  if (!button) {
+    throw new Error(`tree menu button with text "${label}" not found`);
+  }
+
+  return button;
+}
 
 describe('STreeMenu', () => {
   describe('rendering', () => {
@@ -401,6 +412,192 @@ describe('STreeMenu', () => {
 
       expect(wrapper.find('[data-soybean-tree-menu-root]').attributes('data-state')).toBe('expanded');
       expect(wrapper.text()).toContain('Profile');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('expand strategy', () => {
+    it('defaults to "keep" and preserves manual expansion when another item is activated', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          defaultExpanded: ['settings']
+        },
+        attachTo: document.body
+      });
+
+      const trigger = wrapper.find('[data-soybean-tree-menu-collapsible-trigger]');
+
+      expect(trigger.attributes('aria-expanded')).toBe('true');
+
+      await getButtonWithText(wrapper, 'Security').trigger('click');
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toBe('security');
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('true');
+      expect(wrapper.text()).toContain('Profile');
+      expect(wrapper.emitted('update:expanded')).toBeFalsy();
+
+      wrapper.unmount();
+    });
+
+    it('"active" strategy expands only the active menu and its ancestors on mount', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          expandStrategy: 'active',
+          defaultValue: 'security'
+        },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('true');
+      expect(wrapper.text()).toContain('Security');
+      expect(wrapper.text()).toContain('Profile');
+
+      wrapper.unmount();
+    });
+
+    it('"active" strategy emits update:expanded without group nodes', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          expandStrategy: 'active',
+          defaultValue: 'security'
+        },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      expect(wrapper.emitted('update:expanded')?.at(-1)?.[0]).toEqual(['settings', 'security']);
+
+      wrapper.unmount();
+    });
+
+    it('"active" strategy collapses non-active branches when the active menu changes', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          expandStrategy: 'active',
+          defaultValue: 'security'
+        },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('true');
+
+      await getButtonWithText(wrapper, 'Projects').trigger('click');
+      await nextTick();
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toBe('projects');
+      expect(wrapper.emitted('update:expanded')?.at(-1)?.[0]).toEqual(['projects']);
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('false');
+      expect(wrapper.text()).not.toContain('Profile');
+
+      wrapper.unmount();
+    });
+
+    it('"active" strategy expands nothing when no menu is active', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          expandStrategy: 'active'
+        },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('false');
+      expect(wrapper.text()).not.toContain('Profile');
+
+      wrapper.unmount();
+    });
+
+    it('"active" strategy expands nothing when the active value is not in the tree', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          expandStrategy: 'active',
+          defaultValue: 'missing'
+        },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('false');
+
+      wrapper.unmount();
+    });
+
+    it('switching from "keep" to "active" collapses the menu to the active path', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          defaultValue: 'security',
+          defaultExpanded: ['settings']
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('true');
+
+      await wrapper.setProps({ expandStrategy: 'active' });
+      await nextTick();
+
+      expect(wrapper.emitted('update:expanded')?.at(-1)?.[0]).toEqual(['settings', 'security']);
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('true');
+
+      wrapper.unmount();
+    });
+
+    it('switching from "active" to "keep" preserves the current expansion', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          expandStrategy: 'active',
+          defaultValue: 'security'
+        },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      await wrapper.setProps({ expandStrategy: 'keep' });
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('true');
+      expect(wrapper.text()).toContain('Profile');
+
+      wrapper.unmount();
+    });
+
+    it('"active" strategy re-syncs the active path after uncollapsing', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          expandStrategy: 'active',
+          defaultValue: 'security',
+          collapsed: true
+        },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-root]').attributes('data-state')).toBe('collapsed');
+
+      await wrapper.setProps({ collapsed: false });
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('true');
+      expect(wrapper.text()).toContain('Security');
 
       wrapper.unmount();
     });

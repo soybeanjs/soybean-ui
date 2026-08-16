@@ -1,10 +1,10 @@
 <script setup lang="ts" generic="T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData">
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { keysOf } from '@soybeanjs/utils';
 import { getTreePaths } from '../../shared';
 import { usePickProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
-import { filterHiddenTreeMenuOptions } from './shared';
+import { filterHiddenTreeMenuOptions, getActiveExpandValues } from './shared';
 import { useTreeMenuRootContext } from './context';
 import TreeMenuGroupLabel from './tree-menu-group-label.vue';
 import TreeMenuGroupRoot from './tree-menu-group-root.vue';
@@ -44,11 +44,31 @@ const forwardedOptionProps = usePickProps(props, [
   'subProps'
 ]);
 
-const { modelValue } = useTreeMenuRootContext('TreeMenuCompactOptions');
+const { modelValue, collapsed, expandStrategy, onExpandedChange } = useTreeMenuRootContext('TreeMenuCompactOptions');
 
 const items = computed(() => filterHiddenTreeMenuOptions(props.items));
 
 const activePaths = computed(() => getTreePaths(modelValue.value, items.value));
+
+const activeExpanded = computed(() => {
+  if (expandStrategy.value !== 'active') {
+    return [];
+  }
+
+  return getActiveExpandValues(modelValue.value, items.value);
+});
+
+watch(
+  [collapsed, expandStrategy, activeExpanded],
+  () => {
+    if (expandStrategy.value !== 'active' || collapsed.value) {
+      return;
+    }
+
+    onExpandedChange(activeExpanded.value);
+  },
+  { immediate: true }
+);
 </script>
 
 <template>

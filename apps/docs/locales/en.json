@@ -554,7 +554,8 @@
         "virtualizer": "Virtualizer"
       },
       "tree-menu": {
-        "basic": "Basic"
+        "basic": "Basic",
+        "expand-strategy": "Expand Strategy"
       },
       "virtualizer": {
         "basic": "Basic",

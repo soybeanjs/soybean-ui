@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "TreeMenuProps",
         "type": "Interface TreeMenuProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<Record<TreeMenuUiSlot, ClassValue>>; modelValue?: string; defaultValue?: string; expanded?: string[]; defaultExpanded?: string[]; collapsed?: boolean; defaultCollapsed?: boolean; collapsedWidth?: number; indent?: number; pxToRem?: ((px: number) => number); items: TreeMenuOptionData<T>[]; groupRootProps?: TreeMenuGroupRootProps; groupProps?: TreeMenuGroupProps; groupLabelProps?: TreeMenuGroupLabelProps; showGroupIcon?: boolean; side?: HorizontalSide; itemProps?: TreeMenuItemProps; linkProps?: LinkProps; subProps?: TreeMenuSubProps; buttonProps?: TreeMenuButtonProps; collapsibleProps?: TreeMenuCollapsibleProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<Record<TreeMenuUiSlot, ClassValue>>; modelValue?: string; defaultValue?: string; expanded?: string[]; defaultExpanded?: string[]; expandStrategy?: TreeMenuExpandStrategy; collapsed?: boolean; defaultCollapsed?: boolean; collapsedWidth?: number; indent?: number; pxToRem?: ((px: number) => number); items: TreeMenuOptionData<T>[]; groupRootProps?: TreeMenuGroupRootProps; groupProps?: TreeMenuGroupProps; groupLabelProps?: TreeMenuGroupLabelProps; showGroupIcon?: boolean; side?: HorizontalSide; itemProps?: TreeMenuItemProps; linkProps?: LinkProps; subProps?: TreeMenuSubProps; buttonProps?: TreeMenuButtonProps; collapsibleProps?: TreeMenuCollapsibleProps }",
         "description": "Properties for the TreeMenu component.",
         "descriptionKey": "api.generated.packages_ui_src_components_tree_menu_types.treemenuprops.props",
         "sourcePath": "packages/ui/src/components/tree-menu/types.ts",
@@ -143,6 +143,31 @@
             "inheritedFrom": "defaultExpanded",
             "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "expandStrategy",
+            "type": "TreeMenuExpandStrategy",
+            "required": false,
+            "description": "The expand strategy of the tree menu.\n\n- `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus.\n- `active`: only expand the currently active menu and all its ancestor menus; non-active menus are collapsed when the active menu changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_menu_types.treemenuprops.members.expandstrategy",
+            "default": "'keep'",
+            "inheritedFrom": "expandStrategy",
+            "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuExpandStrategy",
+                "kind": "typeAlias",
+                "type": "'active' | 'keep'",
+                "resolvedType": "'active' | 'keep'",
+                "description": "Expand strategy of the TreeMenu component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenuexpandstrategy",
+                "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "collapsed",
@@ -1313,7 +1338,7 @@
         "kind": "props",
         "name": "TreeMenuCompactProps",
         "type": "Interface TreeMenuCompactProps<T>",
-        "resolvedType": "{ modelValue?: string; defaultValue?: string; expanded?: string[]; defaultExpanded?: string[]; collapsed?: boolean; defaultCollapsed?: boolean; collapsedWidth?: number; indent?: number; pxToRem?: ((px: number) => number); items: TreeMenuOptionData<T>[]; groupRootProps?: TreeMenuGroupRootProps; groupProps?: TreeMenuGroupProps; groupLabelProps?: TreeMenuGroupLabelProps; showGroupIcon?: boolean; side?: HorizontalSide; itemProps?: TreeMenuItemProps; linkProps?: LinkProps; subProps?: TreeMenuSubProps; buttonProps?: TreeMenuButtonProps; collapsibleProps?: TreeMenuCollapsibleProps }",
+        "resolvedType": "{ modelValue?: string; defaultValue?: string; expanded?: string[]; defaultExpanded?: string[]; expandStrategy?: TreeMenuExpandStrategy; collapsed?: boolean; defaultCollapsed?: boolean; collapsedWidth?: number; indent?: number; pxToRem?: ((px: number) => number); items: TreeMenuOptionData<T>[]; groupRootProps?: TreeMenuGroupRootProps; groupProps?: TreeMenuGroupProps; groupLabelProps?: TreeMenuGroupLabelProps; showGroupIcon?: boolean; side?: HorizontalSide; itemProps?: TreeMenuItemProps; linkProps?: LinkProps; subProps?: TreeMenuSubProps; buttonProps?: TreeMenuButtonProps; collapsibleProps?: TreeMenuCollapsibleProps }",
         "description": "Properties for the TreeMenuCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenucompactprops.props",
         "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
@@ -1362,6 +1387,31 @@
             "inheritedFrom": "defaultExpanded",
             "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "expandStrategy",
+            "type": "TreeMenuExpandStrategy",
+            "required": false,
+            "description": "The expand strategy of the tree menu.\n\n- `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus.\n- `active`: only expand the currently active menu and all its ancestor menus; non-active menus are collapsed when the active menu changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenucompactprops.members.expandstrategy",
+            "default": "'keep'",
+            "inheritedFrom": "expandStrategy",
+            "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuExpandStrategy",
+                "kind": "typeAlias",
+                "type": "'active' | 'keep'",
+                "resolvedType": "'active' | 'keep'",
+                "description": "Expand strategy of the TreeMenu component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenuexpandstrategy",
+                "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "collapsed",
@@ -4862,7 +4912,7 @@
         "kind": "props",
         "name": "TreeMenuRootProps",
         "type": "Interface TreeMenuRootProps",
-        "resolvedType": "{ modelValue?: string; defaultValue?: string; expanded?: string[]; defaultExpanded?: string[]; collapsed?: boolean; defaultCollapsed?: boolean; collapsedWidth?: number; indent?: number; pxToRem?: ((px: number) => number) }",
+        "resolvedType": "{ modelValue?: string; defaultValue?: string; expanded?: string[]; defaultExpanded?: string[]; expandStrategy?: TreeMenuExpandStrategy; collapsed?: boolean; defaultCollapsed?: boolean; collapsedWidth?: number; indent?: number; pxToRem?: ((px: number) => number) }",
         "description": "Properties for the TreeMenuRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenurootprops.props",
         "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
@@ -4911,6 +4961,31 @@
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "expandStrategy",
+            "type": "TreeMenuExpandStrategy",
+            "required": false,
+            "description": "The expand strategy of the tree menu.\n\n- `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus.\n- `active`: only expand the currently active menu and all its ancestor menus; non-active menus are collapsed when the active menu changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenurootprops.members.expandstrategy",
+            "default": "'keep'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuExpandStrategy",
+                "kind": "typeAlias",
+                "type": "'active' | 'keep'",
+                "resolvedType": "'active' | 'keep'",
+                "description": "Expand strategy of the TreeMenu component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenuexpandstrategy",
+                "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "collapsed",

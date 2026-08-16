@@ -8852,6 +8852,7 @@
             "defaultexpanded": "在不需要控制树的状态时使用。",
             "defaultvalue": "在不需要控制树的状态时使用。",
             "expanded": "可与 `v-model` 绑定。",
+            "expandstrategy": "树形菜单的展开策略。\n\n- `keep`：保持当前展开状态；手动展开或折叠的菜单不会因激活其他菜单而受影响。\n- `active`：仅展开当前活动的菜单及其所有父级菜单；当活动菜单发生变化时，非活动菜单将被折叠。",
             "grouplabelprops": "转发到组标签元素的属性。",
             "groupprops": "转发到组元素的属性。",
             "grouprootprops": "转发到组根元素的属性。",
@@ -8878,6 +8879,7 @@
           },
           "slots": "TreeMenuCompact 组件的插槽。"
         },
+        "treemenuexpandstrategy": "扩展 TreeMenu 组件的实现策略。",
         "treemenugrouplabelprops": {
           "props": "TreeMenuGroupLabel 组件的属性。"
         },
@@ -8997,6 +8999,7 @@
             "defaultexpanded": "在不需要控制树的状态时使用。",
             "defaultvalue": "在不需要控制树的状态时使用。",
             "expanded": "可与 `v-model` 绑定。",
+            "expandstrategy": "树形菜单的展开策略。\n\n- `keep`：保持当前展开状态；手动展开或折叠的菜单不会因激活其他菜单而受影响。\n- `active`：仅展开当前活动的菜单及其所有父级菜单；当活动菜单发生变化时，非活动菜单将被折叠。",
             "indent": "缩进的宽度。",
             "modelvalue": "可与 `v-model` 绑定。",
             "pxtorem": "将像素转换为 rem 的函数"
@@ -13430,6 +13433,7 @@
             "defaultexpanded": "树形菜单在初始渲染时的展开状态。当您无需控制树的状态时请使用此选项。",
             "defaultvalue": "树形菜单在初始渲染时的值。当您无需控制树的状态时请使用此选项。",
             "expanded": "树形菜单的展开值。可通过 `v-model` 进行绑定。",
+            "expandstrategy": "树形菜单的展开策略。\n\n- `keep`：保持当前展开状态；手动展开或折叠的菜单不会因激活其他菜单而受影响。\n- `active`：仅展开当前活动的菜单及其所有父级菜单；当活动菜单发生变化时，非活动菜单将被折叠。",
             "grouplabelprops": "传递给组标签元素的属性。",
             "groupprops": "转发至 group 元素的属性。",
             "grouprootprops": "转发至组根元素的属性。",

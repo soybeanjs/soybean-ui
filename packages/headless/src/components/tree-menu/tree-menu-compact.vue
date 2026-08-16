@@ -26,6 +26,7 @@ const forwardedRootProps = usePickProps(props, [
   'defaultValue',
   'expanded',
   'defaultExpanded',
+  'expandStrategy',
   'collapsed',
   'defaultCollapsed',
   'collapsedWidth',

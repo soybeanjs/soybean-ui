@@ -554,7 +554,8 @@
         "virtualizer": "虚拟列表"
       },
       "tree-menu": {
-        "basic": "基础"
+        "basic": "基础",
+        "expand-strategy": "展开策略"
       },
       "virtualizer": {
         "basic": "基础",

@@ -8852,6 +8852,7 @@
             "defaultexpanded": "the expanded value of the tree menu when initially rendered. use when you do not need to control the state of the tree.",
             "defaultvalue": "the value of the tree menu when initially rendered. use when you do not need to control the state of the tree.",
             "expanded": "the expanded value of the tree menu. can be bound-with with `v-model`.",
+            "expandstrategy": "The expand strategy of the tree menu.\n\n- `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus.\n- `active`: only expand the currently active menu and all its ancestor menus; non-active menus are collapsed when the active menu changes.",
             "grouplabelprops": "Properties forwarded to the group label element.",
             "groupprops": "Properties forwarded to the group element.",
             "grouprootprops": "Properties forwarded to the group root element.",
@@ -8878,6 +8879,7 @@
           },
           "slots": "Slots for the TreeMenuCompact component."
         },
+        "treemenuexpandstrategy": "Expand strategy of the TreeMenu component.",
         "treemenugrouplabelprops": {
           "props": "Properties for the TreeMenuGroupLabel component."
         },
@@ -8997,6 +8999,7 @@
             "defaultexpanded": "the expanded value of the tree menu when initially rendered. use when you do not need to control the state of the tree.",
             "defaultvalue": "the value of the tree menu when initially rendered. use when you do not need to control the state of the tree.",
             "expanded": "the expanded value of the tree menu. can be bound-with with `v-model`.",
+            "expandstrategy": "The expand strategy of the tree menu.\n\n- `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus.\n- `active`: only expand the currently active menu and all its ancestor menus; non-active menus are collapsed when the active menu changes.",
             "indent": "The width of the indent.",
             "modelvalue": "the active value of the tree menu. can be bound-with with `v-model`.",
             "pxtorem": "The function to convert pixels to rem."
@@ -13430,6 +13433,7 @@
             "defaultexpanded": "the expanded value of the tree menu when initially rendered. use when you do not need to control the state of the tree.",
             "defaultvalue": "the value of the tree menu when initially rendered. use when you do not need to control the state of the tree.",
             "expanded": "the expanded value of the tree menu. can be bound-with with `v-model`.",
+            "expandstrategy": "The expand strategy of the tree menu.\n\n- `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus.\n- `active`: only expand the currently active menu and all its ancestor menus; non-active menus are collapsed when the active menu changes.",
             "grouplabelprops": "Properties forwarded to the group label element.",
             "groupprops": "Properties forwarded to the group element.",
             "grouprootprops": "Properties forwarded to the group root element.",

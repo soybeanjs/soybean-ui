@@ -12,6 +12,7 @@ A collapsible sidebar navigation tree-menu component. `STreeMenu` combines the h
 
 - 🧭 Hierarchical data model — `items: TreeMenuOptionData<T>[]` (`value`/`label` plus recursive `children`); the `TreeMenuOptionData<T>` generic preserves custom fields; built-in `isGroup`/`hidden`/`icon`/`badge`/`tag`/`disabled`/`actions`/`to`/`href` fields
 - 🎛️ Controlled/uncontrolled dual channels — `modelValue` / `defaultValue` (active item), `expanded` / `defaultExpanded` (expanded items), `collapsed` / `defaultCollapsed` (collapsed state); all support `v-model` and `update:*` events
+- 🎯 Expand strategy — `expandStrategy="keep"` (default) preserves manual expansion no matter which menu is activated; `expandStrategy="active"` auto-expands only the active menu and its ancestors, collapsing non-active branches whenever the active menu changes
 - 📉 Collapsed sidebar mode — `collapsed` + `collapsedWidth` (default 50px) / `indent` collapses the rail; items with children render a flyout menu while collapsed, and the expansion state is stashed and restored automatically
 - 🧩 Action menus — `actions` + `actionMenuProps` + `onActionSelect` attach hover actions (ellipsis button) to items; the trigger aria-label is localized across 13 language packs
 - 🏷️ Badge/tag/icon — built-in `icon`/`badge`/`tag` fields, freely extended via the `item-leading`/`item-trailing` slots
@@ -25,6 +26,7 @@ A collapsible sidebar navigation tree-menu component. `STreeMenu` combines the h
 - `STreeMenu` (styled) — entry wrapper; composes `TreeMenuCompact` + the `treeMenuVariants` size recipe + `provideTreeMenuUi` slot-class injection, `useForwardListeners` event merging
 - `TreeMenuCompact` (headless) — composite root; `TreeMenuRoot` state root + `TreeMenuOptionsCompact` grouping/recursive rendering + `top`/`bottom` slots
 - `TreeMenuRoot` (headless) — state root; `useControllableState` manages activation/expansion/collapse; `backupExpanded` stashes expansion while collapsed and restores it on recovery
+- `TreeMenuOptionsCompact` (headless) — grouping/recursive rendering; with `expandStrategy="active"` it syncs the expanded state to the active menu path
 - `TreeMenuOptionCompact` (headless) — single-node composition; leaves render buttons/links + the action menu, parents render a `TreeMenuCollapsible` trigger + recursive `TreeMenuSub` + a collapsed-mode flyout `DropdownMenuCompact`
 - `TreeMenuSlotCompact` (headless) — node content orchestration (icon/label/badge/tag/external-link icon/chevron)
 - Base primitives (headless) — `TreeMenuButton`/`TreeMenuItem`/`TreeMenuCollapsible`/`TreeMenuSub`/`TreeMenuGroup`/`TreeMenuGroupLabel`/`TreeMenuTooltipCompact`, all zero-style
@@ -34,6 +36,7 @@ A collapsible sidebar navigation tree-menu component. `STreeMenu` combines the h
 <PlaygroundGallery component="tree-menu" />
 
 - 01 Basic — a collapsible sidebar (`v-model:collapsed` + `size` switching + groups/icons/badge/tag/action menus/link items)
+- 02 Expand Strategy — switch between `keep` / `active` expansion strategies and watch the menu collapse to the active path
 
 ## API
 
@@ -66,6 +69,7 @@ A collapsible sidebar navigation tree-menu component. `STreeMenu` combines the h
 - The action button's accessible name comes from the `treeMenu.openActions` template (with the `{label}` placeholder) and follows the `ConfigProvider` locale across 13 languages.
 - A node's `disabled` blocks activation/expansion/actions; disabled items render `data-disabled` and native `disabled` semantics.
 - Clicking a leaf activates it and emits `update:modelValue`; clicking an item with children toggles expansion and emits `update:expanded`.
+- With `expandStrategy="active"` the expanded state is re-synced to the active menu path whenever the active menu changes or the strategy switches to `active`; manually expanded non-active branches stay open until the next activation.
 - Data attributes use only `data-soybean-tree-menu-*` (D1-07) with no redundant attributes.
 - `size` supports 8 steps from xs to 2xl; style overrides are injected via `ui` (20+ named slots) and the root `class`.
 
@@ -98,6 +102,16 @@ Hovering the item reveals an ellipsis button at the end; clicking it opens the a
 ### How do I control the active and expanded items?
 
 Controlled: `v-model:modelValue="active"`, `v-model:expanded="expandedKeys"`, `v-model:collapsed="collapsed"`; uncontrolled initial values use `default-value` / `default-expanded` / `default-collapsed`. The activation event is `update:modelValue` and the expansion event is `update:expanded`.
+
+### What is the difference between the `keep` and `active` expand strategies?
+
+`expandStrategy` decides how the expanded state relates to the active menu. With `keep` (default) expansion is purely manual: activating another menu never changes what is expanded or collapsed. With `active` the menu follows the active item — whenever the active menu changes (or you switch to `active`), only the active menu and all its ancestor menus stay expanded and every other branch collapses:
+
+```vue
+<STreeMenu :items="items" expand-strategy="active" />
+```
+
+Use `keep` for free-form browsing where the user controls every branch, and `active` for navigation-driven sidebars where the current route's path should always stay visible.
 
 ### How do I create groups?
 

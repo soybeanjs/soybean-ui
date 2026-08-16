@@ -13,6 +13,7 @@ defineOptions({
 const props = withDefaults(defineProps<TreeMenuRootProps>(), {
   defaultValue: '',
   defaultExpanded: () => [] as string[],
+  expandStrategy: 'keep',
   collapsed: undefined,
   defaultCollapsed: false,
   collapsedWidth: 50,
@@ -48,6 +49,8 @@ const collapsed = useControllableState(
   props.defaultCollapsed
 );
 
+const expandStrategy = computed(() => props.expandStrategy);
+
 const dataState = computed<TreeMenuCollapsedState>(() => (collapsed.value ? 'collapsed' : 'expanded'));
 
 const style = computed<CSSProperties>(() => {
@@ -79,7 +82,8 @@ watch(collapsed, value => {
 provideTreeMenuRootContext({
   modelValue,
   expanded,
-  collapsed
+  collapsed,
+  expandStrategy
 });
 </script>
 
