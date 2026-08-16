@@ -89,8 +89,12 @@ watchPostEffect(() => {
 });
 
 watchPostEffect(() => {
-  if (popupElement.value && pointerEvents.value) {
+  if (!popupElement.value) return;
+
+  if (pointerEvents.value) {
     popupElement.value.style.pointerEvents = pointerEvents.value;
+  } else {
+    popupElement.value.style.removeProperty('pointer-events');
   }
 });
 </script>

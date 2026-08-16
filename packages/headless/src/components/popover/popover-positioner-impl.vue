@@ -69,8 +69,15 @@ watchEffect(() => {
 });
 
 watchPostEffect(() => {
-  if (popupElement.value && pointerEvents.value) {
+  if (!popupElement.value) return;
+
+  // `pointerEvents` is `undefined` when no modal layer is active above us. We must remove the inline
+  // override in that case, otherwise a `pointer-events: none` set while a nested modal (e.g. a
+  // DropdownMenu inside this Popover) was open would stick and block all clicks inside the popup.
+  if (pointerEvents.value) {
     popupElement.value.style.pointerEvents = pointerEvents.value;
+  } else {
+    popupElement.value.style.removeProperty('pointer-events');
   }
 });
 </script>
