@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { VisArea, VisAxis, VisCrosshair, VisLine, VisTooltip, VisXYContainer } from '@unovis/vue';
 import { SChartContainer, SChartTooltipContent, chartColors, componentToString } from '@soybeanjs/chart';
 import type { ChartConfig } from '@soybeanjs/chart';
+import { VisArea, VisAxis, VisCrosshair, VisLine, VisTooltip, VisXYContainer } from '@unovis/vue';
 
 const chartData = [
   { month: 1, monthLabel: 'January', desktop: 186 },

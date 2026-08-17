@@ -53,11 +53,9 @@ const tooltipLabel = computed(() => {
 });
 
 const ui = computed(() =>
-  chartTooltipContentVariants(
-    { indicator: props.indicator, nestLabel: nestLabel.value },
-    undefined,
-    { root: props.class }
-  )
+  chartTooltipContentVariants({ indicator: props.indicator, nestLabel: nestLabel.value }, undefined, {
+    root: props.class
+  })
 );
 </script>
 
@@ -71,10 +69,7 @@ const ui = computed(() =>
         <div v-for="{ key, value, itemConfig, indicatorColor } in payload" :key="key" :class="ui.item">
           <component :is="itemConfig.icon" v-if="itemConfig?.icon" />
           <template v-else-if="!hideIndicator">
-            <div
-              :class="ui.indicator"
-              :style="{ '--color-bg': indicatorColor, '--color-border': indicatorColor }"
-            />
+            <div :class="ui.indicator" :style="{ '--color-bg': indicatorColor, '--color-border': indicatorColor }" />
           </template>
           <div :class="ui.itemContent">
             <div :class="ui.itemLabelWrap">

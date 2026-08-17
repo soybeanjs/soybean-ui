@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { chartColors } from '@soybeanjs/chart';
 import { defineChart, dot } from '@tanstack/charts';
 import { scaleLinear } from '@tanstack/charts/scales/linear';
 import { tooltip } from '@tanstack/charts/tooltip';
 import { Chart } from '@tanstack/charts/vue';
-import { chartColors } from '@soybeanjs/chart';
 
 interface ScatterDatum {
   income: number;

@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { chartColors } from '@soybeanjs/chart';
 import { barY, colorLegend, defineChart, group } from '@tanstack/charts';
 import { scaleBand } from '@tanstack/charts/scales/band';
 import { scaleLinear } from '@tanstack/charts/scales/linear';
 import { tooltip } from '@tanstack/charts/tooltip';
 import { Chart } from '@tanstack/charts/vue';
-import { chartColors } from '@soybeanjs/chart';
 
 interface GroupedBarDatum {
   quarter: string;

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Donut } from '@unovis/ts';
-import { VisDonut, VisSingleContainer, VisTooltip } from '@unovis/vue';
 import { SChartContainer, SChartTooltipContent, chartColors, componentToString } from '@soybeanjs/chart';
 import type { ChartConfig } from '@soybeanjs/chart';
+import { Donut } from '@unovis/ts';
+import { VisDonut, VisSingleContainer, VisTooltip } from '@unovis/vue';
 
 const chartData = [
   { browser: 'chrome', visitors: 275, fill: 'var(--color-chrome)' },
@@ -33,11 +33,7 @@ const tooltipTemplate = componentToString(chartConfig, SChartTooltipContent, { h
   <div class="mx-auto h-[250px] w-[250px]">
     <SChartContainer :config="chartConfig">
       <VisSingleContainer :data="chartData" :margin="{ top: 30, bottom: 30 }">
-        <VisDonut
-          :value="value"
-          :color="color"
-          :arc-width="0"
-        />
+        <VisDonut :value="value" :color="color" :arc-width="0" />
         <VisTooltip
           :triggers="{
             [Donut.selectors.segment]: tooltipTemplate!

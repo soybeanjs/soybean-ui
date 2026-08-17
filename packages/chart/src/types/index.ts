@@ -35,10 +35,7 @@ export type ChartConfig = {
   [k in string]: {
     label?: string | Component;
     icon?: string | Component;
-  } & (
-    | { color?: string; theme?: never }
-    | { color?: never; theme: Record<ChartThemeKey, string> }
-  );
+  } & ({ color?: string; theme?: never } | { color?: never; theme: Record<ChartThemeKey, string> });
 };
 
 /** Reactive context shared between `SChartContainer` and its chart parts. */

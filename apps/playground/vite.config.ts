@@ -5,9 +5,9 @@ import VueJsx from '@vitejs/plugin-vue-jsx';
 import Components from 'unplugin-vue-components/vite';
 import VueRouter from 'vue-router/vite';
 import Unocss from 'unocss/vite';
-import UiResolver from '../../packages/ui/src/resolver';
-import UiXResolver from '../../packages/ui-x/src/resolver';
 import ChartResolver from '../../packages/chart/src/resolver';
+import UiXResolver from '../../packages/ui-x/src/resolver';
+import UiResolver from '../../packages/ui/src/resolver';
 
 export default defineConfig({
   resolve: {

@@ -30,7 +30,6 @@
     "./*": "./src/components/*/index.ts"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
     "exports": {
       ".": {
         "types": "./dist/index.d.ts",
@@ -48,7 +47,8 @@
         "require": "./dist/resolver/index.js"
       },
       "./styles.css": "./dist/styles.css"
-    }
+    },
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "build": "vp pack && pnpm build:css",

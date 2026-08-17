@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Primitive } from '@soybeanjs/headless';
-import { useChartContext } from '../../context';
 import { buildChartColorCss } from '../../utils/chart-style';
+import { useChartContext } from '../../context';
 import type { ChartStyleProps } from './types';
 
 defineOptions({

@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { chartColors } from '@soybeanjs/chart';
 import { defineChart, lineY } from '@tanstack/charts';
 import { scaleLinear } from '@tanstack/charts/scales/linear';
 import { scalePoint } from '@tanstack/charts/scales/point';
 import { tooltip } from '@tanstack/charts/tooltip';
 import { Chart } from '@tanstack/charts/vue';
-import { chartColors } from '@soybeanjs/chart';
 
 interface LineDatum {
   month: string;

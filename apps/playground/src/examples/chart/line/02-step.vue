@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { CurveType } from '@unovis/ts';
-import { VisAxis, VisCrosshair, VisLine, VisTooltip, VisXYContainer } from '@unovis/vue';
 import { SChartContainer, SChartTooltipContent, chartColors, componentToString } from '@soybeanjs/chart';
 import type { ChartConfig } from '@soybeanjs/chart';
+import { CurveType } from '@unovis/ts';
+import { VisAxis, VisCrosshair, VisLine, VisTooltip, VisXYContainer } from '@unovis/vue';
 
 const chartData = [
   { date: new Date('2024-01-01'), desktop: 186 },
@@ -34,12 +34,7 @@ const tooltipTemplate = componentToString(chartConfig, SChartTooltipContent, { h
   <div class="h-[250px]">
     <SChartContainer :config="chartConfig">
       <VisXYContainer :data="chartData" :margin="{ left: -24 }" :y-domain="[0, undefined]">
-        <VisLine
-          :x="x"
-          :y="y"
-          :color="chartConfig.desktop.color"
-          :curve-type="CurveType.Step"
-        />
+        <VisLine :x="x" :y="y" :color="chartConfig.desktop.color" :curve-type="CurveType.Step" />
         <VisAxis
           type="x"
           :x="x"
