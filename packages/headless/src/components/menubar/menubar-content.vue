@@ -13,7 +13,9 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<MenubarContentProps>(), {
-  align: 'start'
+  align: 'start',
+  avoidCollisions: true,
+  prioritizePosition: true
 });
 
 const emit = defineEmits<MenubarContentEmits>();

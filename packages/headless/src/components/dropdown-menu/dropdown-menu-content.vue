@@ -16,7 +16,8 @@ const props = withDefaults(defineProps<DropdownMenuContentProps>(), {
   sideOffset: 8,
   sideFlip: true,
   alignFlip: true,
-  avoidCollisions: true
+  avoidCollisions: true,
+  prioritizePosition: true
 });
 
 const emit = defineEmits<DropdownMenuContentEmits>();
