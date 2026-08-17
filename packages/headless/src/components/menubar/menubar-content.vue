@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { shallowRef } from 'vue';
+import { computed, shallowRef } from 'vue';
 import { wrapArray } from '../../shared';
-import { useForwardListeners } from '../../composables';
+import { useMenuContext } from '../menu/context';
+import { useForwardListeners, useGraceArea } from '../../composables';
 import type { FocusOutsideEvent } from '../../types';
 import { MenuContent } from '../menu';
 import { isTriggerLink } from './shared';
@@ -22,12 +23,34 @@ const emit = defineEmits<MenubarContentEmits>();
 
 const listeners = useForwardListeners(emit);
 
-const { dir, isLinkTriggerHovered, loop, modelValue, onMenuOpen, setTriggerLink } =
+const { popupElement } = useMenuContext('MenubarContent');
+const { containerElement, getOrderedItems } = useMenubarCollectionContext('MenubarContent');
+
+const { dir, isLinkTriggerHovered, loop, modelValue, onMenuOpen, onMenuClose, hoverable, setTriggerLink } =
   useMenubarRootContext('MenubarContent');
-const { value, triggerId, contentId, triggerElement, wasKeyboardTriggerOpen } = useMenubarMenuContext('MenubarContent');
-const { getOrderedItems } = useMenubarCollectionContext('MenubarContent');
+const { value, triggerId, contentId, triggerElement, wasKeyboardTriggerOpen, open } =
+  useMenubarMenuContext('MenubarContent');
 
 const hasInteractedOutside = shallowRef(false);
+
+// In hover mode, keep the open menu alive while the pointer moves between the
+// menubar and the content, and close it once the pointer leaves both.
+// The grace area must be armed only while this menu is open: a closing content
+// (kept mounted during its exit animation) must not close the menu that just
+// replaced it.
+// Submenu popups (teleported to body, e.g. inside the overflow "more" menu)
+// count as valid hover targets so moving into one does not close the menu.
+useGraceArea({
+  triggerElement: containerElement,
+  areaElement: popupElement,
+  onPointerExit: () => {
+    if (open.value) {
+    onMenuClose();
+    }
+  },
+  subAreaAttribute: 'data-soybean-menu-sub-popup',
+  disabled: computed(() => !hoverable.value || !open.value)
+});
 
 const onCloseAutoFocus = (event: Event) => {
   if (!modelValue.value && !hasInteractedOutside.value && !isLinkTriggerHovered.value) {

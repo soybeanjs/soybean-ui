@@ -1,5 +1,6 @@
 import type { ComputedRef, ShallowRef } from 'vue';
 import type { DefinedValue, Direction, Placement, PropsToContext, UiClass } from '../../types';
+import type { IconValue } from '../_icon/types';
 import type { ButtonProps } from '../button/types';
 import type {
   MenuPopupProps,
@@ -19,6 +20,11 @@ import type {
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
+ * Supported menubar trigger values.
+ */
+export type MenubarTriggerType = 'click' | 'hover';
+
+/**
  * Properties for the MenubarRoot component.
  */
 export interface MenubarRootProps<T extends DefinedValue = DefinedValue> extends Omit<
@@ -33,6 +39,30 @@ export interface MenubarRootProps<T extends DefinedValue = DefinedValue> extends
   dir?: Direction;
   /** When `true`, keyboard navigation loops from last trigger to first and vice versa. */
   loop?: boolean;
+  /**
+   * The trigger type of the menubar.
+   *
+   * - `click`: The menu will be opened when the trigger is clicked (hovering
+   *   an open menubar still switches between menus).
+   * - `hover`: The menu will be opened when the trigger is hovered.
+   *
+   * @defaultValue 'click'
+   */
+  trigger?: MenubarTriggerType;
+  /**
+   * The duration from when the pointer enters the trigger until the menu gets
+   * opened in hover mode.
+   *
+   * @defaultValue 150
+   */
+  delayDuration?: number;
+  /**
+   * How much time a user has to enter another trigger without incurring a
+   * delay again.
+   *
+   * @defaultValue 300
+   */
+  skipDelayDuration?: number;
 }
 
 /**
@@ -113,6 +143,26 @@ export interface MenubarCompactProps<T extends DefinedValue = DefinedValue>
    */
   triggerProps?: MenubarTriggerProps;
   /**
+   * When `true`, if the menubar content is wider than its container, the
+   * trailing items collapse into a trailing "more" menu so the content always
+   * fits inside the container.
+   */
+  collapsible?: boolean;
+  /**
+   * Label of the trailing "more" trigger when `collapsible`.
+   *
+   * @defaultValue undefined
+   */
+  moreLabel?: string;
+  /**
+   * Icon of the trailing "more" trigger when `collapsible`.
+   */
+  moreIcon?: IconValue;
+  /**
+   * Properties forwarded to the trailing "more" trigger.
+   */
+  moreProps?: MenubarTriggerProps;
+  /**
    * Properties forwarded to the portal element.
    */
   portalProps?: MenuPortalProps;
@@ -146,12 +196,19 @@ export type MenubarCompactSlots<T extends DefinedValue = DefinedValue> = MenuOpt
    * label, link icon, trailing slot) when the consumer does not provide it.
    */
   trigger?: (data: { item: MenuOptionData<T> }) => any;
+  /**
+   * Custom content for the trailing "more" trigger when `collapsible`.
+   */
+  'more-trigger'?: () => any;
 };
 
 /**
  * Parameters used to create the MenubarRoot context.
  */
-export interface MenubarRootContextParams extends PropsToContext<MenubarRootProps, 'dir' | 'loop'> {
+export interface MenubarRootContextParams extends PropsToContext<
+  MenubarRootProps,
+  'dir' | 'loop' | 'trigger' | 'delayDuration' | 'skipDelayDuration'
+> {
   /**
    * Current model value.
    */

@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "MenubarProps",
         "type": "Interface MenubarProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<MenubarUi>; indicatorPosition?: AlignSide; disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: MenubarTriggerProps; portalProps?: MenuPortalProps; contentProps?: MenubarContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; asChild?: boolean; as?: AsTag | Component; items: MenuOptionData<T>[]; activeValue?: T; itemProps?: MenuItemProps; linkProps?: LinkExtraProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<MenubarUi>; indicatorPosition?: AlignSide; disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: MenubarTriggerProps; collapsible?: boolean; moreLabel?: string; moreIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; moreProps?: MenubarTriggerProps; portalProps?: MenuPortalProps; contentProps?: MenubarContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; trigger?: MenubarTriggerType; delayDuration?: number; skipDelayDuration?: number; asChild?: boolean; as?: AsTag | Component; items: MenuOptionData<T>[]; activeValue?: T; itemProps?: MenuItemProps; linkProps?: LinkExtraProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
         "description": "Properties for the Menubar component.",
         "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarprops.props",
         "sourcePath": "packages/ui/src/components/menubar/types.ts",
@@ -167,6 +167,123 @@
             "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarprops.members.triggerprops",
             "default": null,
             "inheritedFrom": "triggerProps",
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MenubarTriggerProps",
+                "kind": "interface",
+                "type": "MenubarTriggerProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the MenubarTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubartriggerprops",
+                "sourcePath": "packages/headless/src/components/menubar/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubartriggerprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubartriggerprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubartriggerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubartriggerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "collapsible",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, if the menubar content is wider than its container, the\ntrailing items collapse into a trailing \"more\" menu so the content always\nfits inside the container.",
+            "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarprops.members.collapsible",
+            "default": null,
+            "inheritedFrom": "collapsible",
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "moreLabel",
+            "type": "string",
+            "required": false,
+            "description": "Label of the trailing \"more\" trigger when `collapsible`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarprops.members.morelabel",
+            "default": "'More'",
+            "inheritedFrom": "moreLabel",
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "moreIcon",
+            "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null",
+            "required": false,
+            "description": "Icon of the trailing \"more\" trigger when `collapsible`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarprops.members.moreicon",
+            "default": null,
+            "inheritedFrom": "moreIcon",
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "IconValue",
+                "kind": "typeAlias",
+                "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "resolvedType": "string | Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "description": "Type information for IconValue.",
+                "descriptionKey": "api.generated.packages_headless_src_components_icon_types.iconvalue",
+                "sourcePath": "packages/headless/src/components/_icon/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "moreProps",
+            "type": "MenubarTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the trailing \"more\" trigger.",
+            "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarprops.members.moreprops",
+            "default": null,
+            "inheritedFrom": "moreProps",
             "sourcePath": "packages/headless/src/components/menubar/types.ts",
             "referencedTypes": [
               {
@@ -672,6 +789,53 @@
             "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarprops.members.loop",
             "default": null,
             "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trigger",
+            "type": "MenubarTriggerType",
+            "required": false,
+            "description": "The trigger type of the menubar.\n\n- `click`: The menu will be opened when the trigger is clicked (hovering\n  an open menubar still switches between menus).\n- `hover`: The menu will be opened when the trigger is hovered.",
+            "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarprops.members.trigger",
+            "default": "'click'",
+            "inheritedFrom": "trigger",
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MenubarTriggerType",
+                "kind": "typeAlias",
+                "type": "'click' | 'hover'",
+                "resolvedType": "'click' | 'hover'",
+                "description": "Supported menubar trigger values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubartriggertype",
+                "sourcePath": "packages/headless/src/components/menubar/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "delayDuration",
+            "type": "number",
+            "required": false,
+            "description": "The duration from when the pointer enters the trigger until the menu gets\nopened in hover mode.",
+            "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarprops.members.delayduration",
+            "default": "150",
+            "inheritedFrom": "delayDuration",
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "skipDelayDuration",
+            "type": "number",
+            "required": false,
+            "description": "How much time a user has to enter another trigger without incurring a\ndelay again.",
+            "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarprops.members.skipdelayduration",
+            "default": "300",
+            "inheritedFrom": "skipDelayDuration",
             "sourcePath": "packages/headless/src/components/menubar/types.ts",
             "referencedTypes": []
           },
@@ -1795,7 +1959,7 @@
         "kind": "slots",
         "name": "MenubarSlots",
         "type": "TypeAlias MenubarSlots<T>: MenubarCompactSlots<T>",
-        "resolvedType": "{ item?: ((props: { item: MenuOptionData<T>; isTrigger?: boolean; }) => any); \"item-leading\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trailing\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trigger-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-link-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); trigger?: ((data: { item: MenuOptionData<T>; }) => any) }",
+        "resolvedType": "{ item?: ((props: { item: MenuOptionData<T>; isTrigger?: boolean; }) => any); \"item-leading\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trailing\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trigger-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-link-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); trigger?: ((data: { item: MenuOptionData<T>; }) => any); \"more-trigger\"?: (() => any) }",
         "description": "Slots for the Menubar component.",
         "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarslots.slots",
         "sourcePath": "packages/ui/src/components/menubar/types.ts",
@@ -1945,6 +2109,16 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "more-trigger",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the trailing \"more\" trigger when `collapsible`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarslots.callables.more_trigger",
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": []
           }
         ],
         "referencedTypes": []
@@ -1958,7 +2132,7 @@
         "kind": "props",
         "name": "MenubarCompactProps",
         "type": "Interface MenubarCompactProps<T>",
-        "resolvedType": "{ disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: MenubarTriggerProps; portalProps?: MenuPortalProps; contentProps?: MenubarContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; asChild?: boolean; as?: AsTag | Component; items: MenuOptionData<T>[]; activeValue?: T; itemProps?: MenuItemProps; linkProps?: LinkExtraProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
+        "resolvedType": "{ disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: MenubarTriggerProps; collapsible?: boolean; moreLabel?: string; moreIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; moreProps?: MenubarTriggerProps; portalProps?: MenuPortalProps; contentProps?: MenubarContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; trigger?: MenubarTriggerType; delayDuration?: number; skipDelayDuration?: number; asChild?: boolean; as?: AsTag | Component; items: MenuOptionData<T>[]; activeValue?: T; itemProps?: MenuItemProps; linkProps?: LinkExtraProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
         "description": "Properties for the MenubarCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactprops.props",
         "sourcePath": "packages/headless/src/components/menubar/types.ts",
@@ -2017,6 +2191,123 @@
             "required": false,
             "description": "Properties forwarded to the trigger element.",
             "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactprops.members.triggerprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MenubarTriggerProps",
+                "kind": "interface",
+                "type": "MenubarTriggerProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the MenubarTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubartriggerprops",
+                "sourcePath": "packages/headless/src/components/menubar/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubartriggerprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubartriggerprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubartriggerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubartriggerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "collapsible",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, if the menubar content is wider than its container, the\ntrailing items collapse into a trailing \"more\" menu so the content always\nfits inside the container.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactprops.members.collapsible",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "moreLabel",
+            "type": "string",
+            "required": false,
+            "description": "Label of the trailing \"more\" trigger when `collapsible`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactprops.members.morelabel",
+            "default": "'More'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "moreIcon",
+            "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null",
+            "required": false,
+            "description": "Icon of the trailing \"more\" trigger when `collapsible`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactprops.members.moreicon",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "IconValue",
+                "kind": "typeAlias",
+                "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "resolvedType": "string | Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "description": "Type information for IconValue.",
+                "descriptionKey": "api.generated.packages_headless_src_components_icon_types.iconvalue",
+                "sourcePath": "packages/headless/src/components/_icon/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "moreProps",
+            "type": "MenubarTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the trailing \"more\" trigger.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactprops.members.moreprops",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/menubar/types.ts",
@@ -2524,6 +2815,53 @@
             "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactprops.members.loop",
             "default": null,
             "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trigger",
+            "type": "MenubarTriggerType",
+            "required": false,
+            "description": "The trigger type of the menubar.\n\n- `click`: The menu will be opened when the trigger is clicked (hovering\n  an open menubar still switches between menus).\n- `hover`: The menu will be opened when the trigger is hovered.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactprops.members.trigger",
+            "default": "'click'",
+            "inheritedFrom": "trigger",
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MenubarTriggerType",
+                "kind": "typeAlias",
+                "type": "'click' | 'hover'",
+                "resolvedType": "'click' | 'hover'",
+                "description": "Supported menubar trigger values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubartriggertype",
+                "sourcePath": "packages/headless/src/components/menubar/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "delayDuration",
+            "type": "number",
+            "required": false,
+            "description": "The duration from when the pointer enters the trigger until the menu gets\nopened in hover mode.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactprops.members.delayduration",
+            "default": "150",
+            "inheritedFrom": "delayDuration",
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "skipDelayDuration",
+            "type": "number",
+            "required": false,
+            "description": "How much time a user has to enter another trigger without incurring a\ndelay again.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactprops.members.skipdelayduration",
+            "default": "300",
+            "inheritedFrom": "skipDelayDuration",
             "sourcePath": "packages/headless/src/components/menubar/types.ts",
             "referencedTypes": []
           },
@@ -3646,8 +3984,8 @@
       "slots": {
         "kind": "slots",
         "name": "MenubarCompactSlots",
-        "type": "TypeAlias MenubarCompactSlots<T>: MenuOptionsCompactSlots<T> & { trigger?: (data: { item: MenuOptionData<T> }) => any }",
-        "resolvedType": "{ item?: ((props: { item: MenuOptionData<T>; isTrigger?: boolean; }) => any); \"item-leading\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trailing\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trigger-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-link-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); trigger?: ((data: { item: MenuOptionData<T>; }) => any) }",
+        "type": "TypeAlias MenubarCompactSlots<T>: MenuOptionsCompactSlots<T> & { more-trigger?: () => any; trigger?: (data: { item: MenuOptionData<T> }) => any }",
+        "resolvedType": "{ item?: ((props: { item: MenuOptionData<T>; isTrigger?: boolean; }) => any); \"item-leading\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trailing\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trigger-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-link-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); trigger?: ((data: { item: MenuOptionData<T>; }) => any); \"more-trigger\"?: (() => any) }",
         "description": "Slots for the MenubarCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactslots.slots",
         "sourcePath": "packages/headless/src/components/menubar/types.ts",
@@ -3797,6 +4135,16 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "more-trigger",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the trailing \"more\" trigger when `collapsible`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactslots.callables.more_trigger",
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": []
           }
         ],
         "referencedTypes": []
@@ -4491,7 +4839,7 @@
         "kind": "props",
         "name": "MenubarRootProps",
         "type": "Interface MenubarRootProps<T>",
-        "resolvedType": "{ modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; trigger?: MenubarTriggerType; delayDuration?: number; skipDelayDuration?: number; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the MenubarRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarrootprops.props",
         "sourcePath": "packages/headless/src/components/menubar/types.ts",
@@ -4551,6 +4899,53 @@
             "description": "When `true`, keyboard navigation loops from last trigger to first and vice versa.",
             "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarrootprops.members.loop",
             "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trigger",
+            "type": "MenubarTriggerType",
+            "required": false,
+            "description": "The trigger type of the menubar.\n\n- `click`: The menu will be opened when the trigger is clicked (hovering\n  an open menubar still switches between menus).\n- `hover`: The menu will be opened when the trigger is hovered.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarrootprops.members.trigger",
+            "default": "'click'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MenubarTriggerType",
+                "kind": "typeAlias",
+                "type": "'click' | 'hover'",
+                "resolvedType": "'click' | 'hover'",
+                "description": "Supported menubar trigger values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubartriggertype",
+                "sourcePath": "packages/headless/src/components/menubar/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "delayDuration",
+            "type": "number",
+            "required": false,
+            "description": "The duration from when the pointer enters the trigger until the menu gets\nopened in hover mode.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarrootprops.members.delayduration",
+            "default": "150",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/menubar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "skipDelayDuration",
+            "type": "number",
+            "required": false,
+            "description": "How much time a user has to enter another trigger without incurring a\ndelay again.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarrootprops.members.skipdelayduration",
+            "default": "300",
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/menubar/types.ts",
             "referencedTypes": []

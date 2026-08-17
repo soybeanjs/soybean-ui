@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { page, userEvent } from 'vitest/browser';
+import { defineComponent, h } from 'vue';
+import { render } from 'vitest-browser-vue';
+import { cdp, page, userEvent } from 'vitest/browser';
 import type { MenuOptionData } from '@/components/menu';
 import SMenubar from '@/components/menubar/menubar.vue';
 import { getA11yViolations } from '../../shared/a11y';
@@ -36,6 +38,38 @@ const items: MenuOptionData<string>[] = [
     href: 'https://github.com/soybeanjs/soybean-ui'
   }
 ];
+
+const manyItems: MenuOptionData<string>[] = [
+  'file',
+  'edit',
+  'view',
+  'window',
+  'help',
+  'settings',
+  'account',
+  'billing',
+  'support'
+].map(value => ({
+  value,
+  label: value.charAt(0).toUpperCase() + value.slice(1),
+  children: [{ value: `${value}-child`, label: `${value} action` }]
+}));
+
+function renderNarrowMenubar(width: number) {
+  return render(
+    defineComponent({
+      name: 'NarrowMenubarHost',
+      setup() {
+        return () =>
+          h(
+            'div',
+            { style: { width: `${width}px`, overflow: 'hidden' } },
+            h(SMenubar, { items: manyItems, collapsible: true, moreLabel: 'More' })
+          );
+      }
+    })
+  );
+}
 
 describe('SMenubar (e2e)', () => {
   it('opens the menu on trigger click and renders items in the real portal', async () => {
@@ -110,6 +144,85 @@ describe('SMenubar (e2e)', () => {
       }
     });
     expect(violations).toHaveLength(0);
+
+    unmount();
+  });
+
+  it('opens the menu on hover and ignores clicks in hover mode', async () => {
+    const { unmount } = renderComponent(SMenubar, { props: { items, trigger: 'hover', delayDuration: 0 } });
+    const fileTrigger = page.getByRole('menuitem', { name: 'File' });
+
+    await userEvent.hover(fileTrigger);
+    await expect.element(page.getByRole('menu')).toBeVisible();
+    await expect.element(page.getByRole('menuitem', { name: 'New Tab' })).toBeVisible();
+
+    unmount();
+  });
+
+  it('keeps the menu open when moving from the trigger onto the content in hover mode', async () => {
+    const { unmount } = renderComponent(SMenubar, { props: { items, trigger: 'hover', delayDuration: 0 } });
+    const fileTrigger = page.getByRole('menuitem', { name: 'File' });
+    const menu = page.getByRole('menu');
+
+    await userEvent.hover(fileTrigger);
+    await expect.element(menu).toBeVisible();
+
+    // Move the real pointer in small steps from the trigger center down onto
+    // the open content (through the gap between the menubar and the popup).
+    // The grace area must keep the menu open while the pointer is in transit.
+    const triggerEl = fileTrigger.elements()[0]!;
+    const menuEl = menu.elements()[0]!;
+    const t = triggerEl.getBoundingClientRect();
+    const m = menuEl.getBoundingClientRect();
+
+    const startX = t.x + t.width / 2;
+    const startY = t.y + t.height / 2;
+    const endX = m.x + m.width / 2;
+    const endY = m.y + m.height / 2;
+
+    const session = cdp();
+    const steps = 12;
+    for (let i = 0; i <= steps; i++) {
+      const x = startX + ((endX - startX) * i) / steps;
+      const y = startY + ((endY - startY) * i) / steps;
+      await session.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x, y });
+    }
+
+    await expect.element(menu).toBeVisible();
+    await expect.element(page.getByRole('menuitem', { name: 'New Tab' })).toBeVisible();
+
+    // Moving back onto the trigger also keeps the menu open.
+    for (let i = 0; i <= steps; i++) {
+      const x = endX + ((startX - endX) * i) / steps;
+      const y = endY + ((startY - endY) * i) / steps;
+      await session.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x, y });
+    }
+    await expect.element(menu).toBeVisible();
+
+    unmount();
+  });
+
+  it('collapses overflowing items into a trailing "more" menu so the content fits', async () => {
+    const { unmount } = renderNarrowMenubar(280);
+
+    // Not every item fits; a "more" trigger appears and the bar content fits
+    // its container.
+    const moreTrigger = page.getByText('More');
+    await expect.element(moreTrigger).toBeVisible();
+
+    // The menubar content always fits inside the measurement wrapper.
+    const menubarEl = document.querySelector('[data-soybean-menubar-root]');
+    const wrapperEl = menubarEl?.closest('[data-soybean-menubar-overflow]');
+    expect(menubarEl).not.toBeNull();
+    expect(wrapperEl).not.toBeNull();
+    if (menubarEl && wrapperEl) {
+      expect(menubarEl.getBoundingClientRect().width).toBeLessThanOrEqual(wrapperEl.getBoundingClientRect().width);
+    }
+
+    // Hidden items live inside the "more" menu.
+    await userEvent.click(moreTrigger);
+    await expect.element(page.getByText('Support')).toBeVisible();
+    await expect.element(page.getByText('Settings')).toBeVisible();
 
     unmount();
   });

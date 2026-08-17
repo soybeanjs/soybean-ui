@@ -5714,8 +5714,10 @@
             "arrowprops": "Properties forwarded to the arrow element.",
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "collapsible": "When `true`, if the menubar content is wider than its container, the\ntrailing items collapse into a trailing \"more\" menu so the content always\nfits inside the container.",
             "contentprops": "Properties forwarded to the content element.",
             "defaultvalue": "The value of the menu that should be open when initially rendered.",
+            "delayduration": "The duration from when the pointer enters the trigger until the menu gets\nopened in hover mode.",
             "dir": "The reading direction of the menubar when applicable.",
             "disabled": "Whether the component is disabled.",
             "grouplabelprops": "Properties forwarded to the group label element.",
@@ -5725,15 +5727,20 @@
             "linkprops": "Properties forwarded to the link element.",
             "loop": "When `true`, keyboard navigation loops from last trigger to first and vice versa.",
             "modelvalue": "The controlled value of the menu to open. Can be used as `v-model`.",
+            "moreicon": "Icon of the trailing \"more\" trigger when `collapsible`.",
+            "morelabel": "Label of the trailing \"more\" trigger when `collapsible`.",
+            "moreprops": "Properties forwarded to the trailing \"more\" trigger.",
             "placement": "Placement.",
             "popupprops": "Properties forwarded to the popup element.",
             "portalprops": "Properties forwarded to the portal element.",
             "separatorprops": "Properties forwarded to the separator element.",
             "shortcutprops": "Properties forwarded to the shortcut element.",
             "showarrow": "Whether to show an arrow.",
+            "skipdelayduration": "How much time a user has to enter another trigger without incurring a\ndelay again.",
             "subcontentprops": "Properties forwarded to the sub content element.",
             "subprops": "Properties forwarded to the sub element.",
             "subtriggerprops": "Properties forwarded to the sub trigger element.",
+            "trigger": "The trigger type of the menubar.\n\n- `click`: The menu will be opened when the trigger is clicked (hovering\n  an open menubar still switches between menus).\n- `hover`: The menu will be opened when the trigger is hovered.",
             "triggerprops": "Properties forwarded to the trigger element."
           },
           "props": "Properties for the MenubarCompact component."
@@ -5745,6 +5752,7 @@
             "item_link_icon": "Custom content for the item link icon slot.",
             "item_trailing": "Custom content for the item trailing slot.",
             "item_trigger_icon": "Custom content for the item trigger icon slot.",
+            "more_trigger": "Custom content for the trailing \"more\" trigger when `collapsible`.",
             "trigger": "Custom content for the trigger slot.\n\nOptional: `MenubarCompact` renders full default trigger content (icon,\nlabel, link icon, trailing slot) when the consumer does not provide it."
           },
           "slots": "Slots for the MenubarCompact component."
@@ -5805,9 +5813,12 @@
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "defaultvalue": "The value of the menu that should be open when initially rendered.",
+            "delayduration": "The duration from when the pointer enters the trigger until the menu gets\nopened in hover mode.",
             "dir": "The reading direction of the menubar when applicable.",
             "loop": "When `true`, keyboard navigation loops from last trigger to first and vice versa.",
-            "modelvalue": "The controlled value of the menu to open. Can be used as `v-model`."
+            "modelvalue": "The controlled value of the menu to open. Can be used as `v-model`.",
+            "skipdelayduration": "How much time a user has to enter another trigger without incurring a\ndelay again.",
+            "trigger": "The trigger type of the menubar.\n\n- `click`: The menu will be opened when the trigger is clicked (hovering\n  an open menubar still switches between menus).\n- `hover`: The menu will be opened when the trigger is hovered."
           },
           "props": "Properties for the MenubarRoot component."
         },
@@ -5866,6 +5877,7 @@
           },
           "props": "Properties for the MenubarTrigger component."
         },
+        "menubartriggertype": "Supported menubar trigger values.",
         "menubarui": "UI class overrides for the Menubar component.",
         "type": ""
       },
@@ -11971,8 +11983,10 @@
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "class": "class of menubar root",
+            "collapsible": "When `true`, if the menubar content is wider than its container, the\ntrailing items collapse into a trailing \"more\" menu so the content always\nfits inside the container.",
             "contentprops": "Properties forwarded to the content element.",
             "defaultvalue": "The value of the menu that should be open when initially rendered.",
+            "delayduration": "The duration from when the pointer enters the trigger until the menu gets\nopened in hover mode.",
             "dir": "The reading direction of the menubar when applicable.",
             "disabled": "Whether the component is disabled.",
             "grouplabelprops": "Properties forwarded to the group label element.",
@@ -11983,6 +11997,9 @@
             "linkprops": "Properties forwarded to the link element.",
             "loop": "When `true`, keyboard navigation loops from last trigger to first and vice versa.",
             "modelvalue": "The controlled value of the menu to open. Can be used as `v-model`.",
+            "moreicon": "Icon of the trailing \"more\" trigger when `collapsible`.",
+            "morelabel": "Label of the trailing \"more\" trigger when `collapsible`.",
+            "moreprops": "Properties forwarded to the trailing \"more\" trigger.",
             "placement": "Placement.",
             "popupprops": "Properties forwarded to the popup element.",
             "portalprops": "Properties forwarded to the portal element.",
@@ -11990,9 +12007,11 @@
             "shortcutprops": "Properties forwarded to the shortcut element.",
             "showarrow": "Whether to show an arrow.",
             "size": "Visual size of the component.",
+            "skipdelayduration": "How much time a user has to enter another trigger without incurring a\ndelay again.",
             "subcontentprops": "Properties forwarded to the sub content element.",
             "subprops": "Properties forwarded to the sub element.",
             "subtriggerprops": "Properties forwarded to the sub trigger element.",
+            "trigger": "The trigger type of the menubar.\n\n- `click`: The menu will be opened when the trigger is clicked (hovering\n  an open menubar still switches between menus).\n- `hover`: The menu will be opened when the trigger is hovered.",
             "triggerprops": "Properties forwarded to the trigger element.",
             "ui": "Per-slot class overrides for the component."
           },
@@ -12005,6 +12024,7 @@
             "item_link_icon": "Custom content for the item link icon slot.",
             "item_trailing": "Custom content for the item trailing slot.",
             "item_trigger_icon": "Custom content for the item trigger icon slot.",
+            "more_trigger": "Custom content for the trailing \"more\" trigger when `collapsible`.",
             "trigger": "Custom content for the trigger slot.\n\nOptional: `MenubarCompact` renders full default trigger content (icon,\nlabel, link icon, trailing slot) when the consumer does not provide it."
           },
           "slots": "Slots for the Menubar component."

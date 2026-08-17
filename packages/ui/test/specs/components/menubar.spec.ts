@@ -183,6 +183,51 @@ describe('SMenubar', () => {
     });
   });
 
+  describe('trigger modes', () => {
+    it('opens the menu on pointer enter in hover mode', async () => {
+      const wrapper = mountMenubar({ trigger: 'hover', delayDuration: 0 });
+      const trigger = wrapper.find('[data-soybean-menubar-trigger][data-value="file"]');
+
+      await trigger.trigger('pointerenter');
+      await new Promise(resolve => window.setTimeout(resolve, 0));
+      await nextTick();
+      await nextTick();
+
+      expect(trigger.attributes('aria-expanded')).toBe('true');
+      expect(wrapper.find('[role="menu"][data-state="open"]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+
+    it('ignores pointer down in hover mode', async () => {
+      const wrapper = mountMenubar({ trigger: 'hover' });
+      const trigger = wrapper.find('[data-soybean-menubar-trigger][data-value="file"]');
+
+      await trigger.trigger('pointerdown', { button: 0, ctrlKey: false });
+      await nextTick();
+      await nextTick();
+
+      expect(trigger.attributes('aria-expanded')).toBe('false');
+      expect(wrapper.find('[role="menu"][data-state="open"]').exists()).toBe(false);
+
+      wrapper.unmount();
+    });
+
+    it('opens the menu on pointer down in click mode', async () => {
+      const wrapper = mountMenubar({ trigger: 'click' });
+      const trigger = wrapper.find('[data-soybean-menubar-trigger][data-value="file"]');
+
+      await trigger.trigger('pointerdown', { button: 0, ctrlKey: false });
+      await nextTick();
+      await nextTick();
+
+      expect(trigger.attributes('aria-expanded')).toBe('true');
+      expect(wrapper.find('[role="menu"][data-state="open"]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+  });
+
   describe('accessibility', () => {
     it('has no a11y violations when closed', async () => {
       const wrapper = mountMenubar();

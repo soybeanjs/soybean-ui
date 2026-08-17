@@ -24,6 +24,7 @@ export type {
   MenubarRootProps,
   MenubarRootEmits,
   MenubarMenuProps,
+  MenubarTriggerType,
   MenubarTriggerProps,
   MenubarContentProps,
   MenubarContentEmits,

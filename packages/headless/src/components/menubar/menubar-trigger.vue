@@ -14,8 +14,16 @@ defineOptions({
 
 const props = defineProps<MenubarTriggerProps>();
 
-const { isLinkTriggerHovered, modelValue, onMenuOpen, onMenuToggle, setTriggerLink } =
-  useMenubarRootContext('MenubarTrigger');
+const {
+  isLinkTriggerHovered,
+  modelValue,
+  onMenuOpen,
+  onMenuToggle,
+  setTriggerLink,
+  hoverable,
+  onHoverPointerEnter,
+  onHoverPointerLeave
+} = useMenubarRootContext('MenubarTrigger');
 const {
   value,
   triggerId,
@@ -47,6 +55,9 @@ const onPointerDown = (event: PointerEvent) => {
     return;
   }
 
+  // In hover mode the menu is opened on hover, not on click.
+  if (hoverable.value) return;
+
   const wasOpen = open.value;
 
   onMenuOpen(value.value);
@@ -57,15 +68,38 @@ const onPointerDown = (event: PointerEvent) => {
 };
 
 const onPointerEnter = () => {
-  if ((!modelValue.value && !isLinkTriggerHovered.value) || open.value) return;
+  if (props.disabled) return;
 
+  // Link triggers never open a menu; hovering them closes the open menu so the
+  // link can be navigated.
   if (isCurrentTriggerLink()) {
-    setTriggerLink();
-  } else {
+    if (modelValue.value || isLinkTriggerHovered.value) {
+      setTriggerLink();
+      triggerElement.value?.focus();
+    }
+    return;
+  }
+
+  if (open.value) return;
+
+  if (hoverable.value) {
+    onHoverPointerEnter(value.value);
+  } else if (modelValue.value || isLinkTriggerHovered.value) {
+    // Click mode: switching between triggers only happens once a menu is open.
     onMenuOpen(value.value);
+  } else {
+    return;
   }
 
   triggerElement.value?.focus();
+};
+
+const onPointerLeave = () => {
+  if (props.disabled) return;
+
+  if (hoverable.value) {
+    onHoverPointerLeave();
+  }
 };
 
 const onFocus = () => {
@@ -116,6 +150,7 @@ const onKeyDown = (event: KeyboardEvent) => {
         role="menuitem"
         @pointerdown="onPointerDown"
         @pointerenter="onPointerEnter"
+        @pointerleave="onPointerLeave"
         @keydown.enter.space.arrow-down="onKeyDown"
         @focus="onFocus"
         @blur="onBlur"

@@ -22,9 +22,11 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'indicatorPos
 
 const listeners = useForwardListeners(emit);
 
-const slotNames = computed(() => keysOf(slots));
+const slotNames = computed(() => keysOf(slots).filter(key => key !== 'trigger' && key !== 'more-trigger'));
 
-const ui = computed(() => menubarVariants({ size: props.size }, props.ui, { root: props.class }));
+const ui = computed(() =>
+  menubarVariants({ size: props.size, collapsible: props.collapsible }, props.ui, { root: props.class })
+);
 
 provideMenubarUi(ui);
 provideMenuUi(() => props);
@@ -32,6 +34,12 @@ provideMenuUi(() => props);
 
 <template>
   <MenubarCompact v-bind="forwardedProps" v-on="listeners">
+    <template #trigger="{ item }">
+      <slot name="trigger" :item="item" />
+    </template>
+    <template #more-trigger>
+      <slot name="more-trigger" />
+    </template>
     <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
       <slot :name="slotName" v-bind="slotProps" />
     </template>

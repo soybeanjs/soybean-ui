@@ -36,9 +36,18 @@ export const menubarVariants = scv({
         root: 'gap-2.5 p-1.25',
         trigger: 'gap-3.5 px-3.5 py-2.5'
       }
+    },
+    collapsible: {
+      true: {
+        // Keep the bar at its natural content width so the collapsible overflow
+        // measurement can detect triggers that exceed the container.
+        root: 'min-w-max'
+      },
+      false: {}
     }
   },
   defaultVariants: {
-    size: 'md'
+    size: 'md',
+    collapsible: false
   }
 });

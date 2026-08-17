@@ -13,14 +13,26 @@ defineOptions({
 
 const props = withDefaults(defineProps<MenubarRootProps>(), {
   loop: false,
-  modelValue: undefined
+  modelValue: undefined,
+  trigger: 'click',
+  delayDuration: 150,
+  skipDelayDuration: 300
 });
 
 const emit = defineEmits<MenubarRootEmits>();
 
 const cls = useMenubarUi('root');
 
-const forwardedProps = useOmitProps(props, ['class', 'modelValue', 'defaultValue', 'dir', 'loop']);
+const forwardedProps = useOmitProps(props, [
+  'class',
+  'modelValue',
+  'defaultValue',
+  'dir',
+  'loop',
+  'trigger',
+  'delayDuration',
+  'skipDelayDuration'
+]);
 
 const modelValue = useControllableState(
   () => props.modelValue,
@@ -35,7 +47,7 @@ const currentTabStopId = shallowRef<string | null>(null);
 provideMenubarRootContext({
   modelValue,
   currentTabStopId,
-  ...transformPropsToContext(props, ['dir', 'loop'])
+  ...transformPropsToContext(props, ['dir', 'loop', 'trigger', 'delayDuration', 'skipDelayDuration'])
 });
 
 const { onContainerElementChange } = provideMenubarCollectionContext();

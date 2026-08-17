@@ -20,5 +20,5 @@ linkWorkspacePackages: true
 allowBuilds:
   '@parcel/watcher': false
   esbuild: false
+  maplibre-gl: false
   simple-git-hooks: false
-minimumReleaseAgeExclude:

@@ -1,17 +1,12 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
-import { computed } from 'vue';
+import { computed, nextTick, onMounted, shallowRef, useTemplateRef, watch } from 'vue';
+import { useResizeObserver } from '@vueuse/core';
 import { keysOf } from '@soybeanjs/utils';
-import { useMenuUi } from '../menu/context';
+import { isClient } from '../../shared';
 import { usePickProps, useForwardListeners } from '../../composables';
 import type { DefinedValue } from '../../types';
-import Icon from '../_icon/icon.vue';
-import Link from '../link/link.vue';
-import { MenuPortal, MenuOptionsCompact } from '../menu';
 import type { MenuOptionData } from '../menu';
-import MenubarContent from './menubar-content.vue';
-import MenubarMenu from './menubar-menu.vue';
-import MenubarRoot from './menubar-root.vue';
-import MenubarTrigger from './menubar-trigger.vue';
+import MenubarMenus from './menubar-menus.vue';
 import type { MenubarCompactProps, MenubarCompactEmits, MenubarCompactSlots } from './types';
 
 defineOptions({
@@ -24,7 +19,25 @@ const emit = defineEmits<MenubarCompactEmits<T>>();
 
 const slots = defineSlots<MenubarCompactSlots<T>>();
 
-const forwardedRootProps = usePickProps(props, ['as', 'modelValue', 'defaultValue', 'dir', 'loop']);
+const menuSlotNames = computed(() => keysOf(slots).filter(key => key !== 'trigger' && key !== 'more-trigger'));
+
+const forwardedRootProps = usePickProps(props, [
+  'as',
+  'modelValue',
+  'defaultValue',
+  'dir',
+  'loop',
+  'trigger',
+  'delayDuration',
+  'skipDelayDuration'
+]);
+
+// When collapsible, force the root to render at its natural width so the
+// overflow measurement can detect triggers that exceed the container.
+const effectiveRootProps = computed(() => ({
+  ...forwardedRootProps.value,
+  ...(props.collapsible ? { style: { minWidth: 'max-content' } } : {})
+}));
 
 const forwardedOptionsProps = usePickProps(props, [
   'items',
@@ -41,10 +54,6 @@ const forwardedOptionsProps = usePickProps(props, [
 ]);
 
 const listeners = useForwardListeners(emit);
-
-const slotNames = computed(() => keysOf(slots).filter(key => key !== 'trigger'));
-
-const ui = useMenuUi();
 
 const triggerProps = computed(() => {
   return {
@@ -78,53 +87,169 @@ const contentProps = computed(() => {
     sideOffset: props.contentProps?.sideOffset ?? (props.showArrow ? 0 : 8)
   };
 });
+
+// Overflow collapsing --------------------------------------------------------
+//
+// When `collapsible` is enabled and the menubar content is wider than its
+// container, the trailing items merge into a trailing "more" menu so the
+// content always fits. The container is a transparent measurement wrapper
+// around the menubar root; items are moved in/out of the "more" menu one at a
+// time against the real layout so gaps, padding and custom trigger content are
+// all accounted for.
+
+const overflowElement = useTemplateRef<HTMLElement>('overflowElement');
+
+const collapsedCount = shallowRef(0);
+
+const hiddenCount = computed(() => Math.min(collapsedCount.value, props.items.length));
+const visibleItems = computed(() => props.items.slice(0, props.items.length - hiddenCount.value));
+const moreItems = computed(() => props.items.slice(props.items.length - hiddenCount.value));
+
+const moreTriggerProps = computed(() => {
+  return {
+    ...props.moreProps,
+    disabled: props.disabled ?? props.moreProps?.disabled
+  };
+});
+
+let reflowRunning = false;
+let reflowQueued = false;
+
+/**
+ * The menubar root is sized with `w-fit`, so detect overflow by comparing the
+ * root's full content width against the wrapper's available width.
+ */
+function isOverflowing(container: HTMLElement): boolean {
+  const root = container.querySelector('[data-soybean-menubar-root]') as HTMLElement | null;
+
+  return root ? root.scrollWidth > container.clientWidth : false;
+}
+
+async function reflow() {
+  if (!isClient) return;
+
+  if (reflowRunning) {
+    reflowQueued = true;
+    return;
+  }
+
+  reflowRunning = true;
+
+  try {
+    const container = overflowElement.value;
+    if (!container) return;
+
+    await nextTick();
+
+    // Restore items from the "more" menu while they fit again.
+    while (collapsedCount.value > 0) {
+      collapsedCount.value -= 1;
+      await nextTick();
+      if (isOverflowing(container)) {
+        collapsedCount.value += 1;
+        await nextTick();
+        break;
+      }
+    }
+
+    // Collapse trailing items while the content overflows the container.
+    while (collapsedCount.value < props.items.length && isOverflowing(container)) {
+      collapsedCount.value += 1;
+      await nextTick();
+    }
+  } finally {
+    reflowRunning = false;
+    if (reflowQueued) {
+      reflowQueued = false;
+      reflow();
+    }
+  }
+}
+
+useResizeObserver(overflowElement, () => {
+  if (props.collapsible) {
+    reflow();
+  }
+});
+
+watch(
+  () => props.items,
+  () => {
+    if (!props.collapsible) return;
+    collapsedCount.value = 0;
+    reflow();
+  }
+);
+
+watch(
+  () => props.collapsible,
+  enabled => {
+    if (enabled) {
+      reflow();
+    }
+  }
+);
+
+onMounted(() => {
+  if (props.collapsible) {
+    reflow();
+  }
+});
 </script>
 
 <template>
-  <MenubarRoot v-bind="forwardedRootProps" v-on="listeners">
-    <MenubarMenu v-for="item in items" :key="item.value" :value="item.value">
-      <MenubarTrigger v-if="item.to || item.href" v-bind="getTriggerProps(item)" as-child>
-        <Link
-          v-slot="{ isHref }"
-          v-bind="linkProps"
-          :disabled="getTriggerProps(item).disabled ?? linkProps?.disabled"
-          :to="item.to"
-          :href="item.href"
-          :target="item.target"
-          :external="item.external"
-        >
-          <slot name="trigger" :item="item">
-            <slot name="item-leading" :item="item">
-              <Icon v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />
-            </slot>
-            <span>{{ item.label }}</span>
-            <slot v-if="isHref" name="item-link-icon" :item="item">
-              <Icon icon="lucide:arrow-up-right" :class="ui.itemLinkIcon" />
-            </slot>
-            <slot name="item-trailing" :item="item" />
-          </slot>
-        </Link>
-      </MenubarTrigger>
-      <template v-else>
-        <MenubarTrigger v-bind="getTriggerProps(item)">
-          <slot name="trigger" :item="item">
-            <slot name="item-leading" :item="item">
-              <Icon v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />
-            </slot>
-            <span>{{ item.label }}</span>
-            <slot name="item-trailing" :item="item" />
-          </slot>
-        </MenubarTrigger>
-        <MenuPortal v-bind="portalProps">
-          <MenubarContent v-bind="contentProps">
-            <MenuOptionsCompact v-bind="forwardedOptionsProps" :items="item.children ?? []">
-              <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
-                <slot :name="slotName" v-bind="slotProps" />
-              </template>
-            </MenuOptionsCompact>
-          </MenubarContent>
-        </MenuPortal>
+  <template v-if="collapsible">
+    <div ref="overflowElement" data-soybean-menubar-overflow>
+      <MenubarMenus
+        :items="visibleItems"
+        :more-items="moreItems"
+        :root-props="effectiveRootProps"
+        :listeners="listeners"
+        :options-props="forwardedOptionsProps"
+        :link-props="linkProps"
+        :content-props="contentProps"
+        :portal-props="portalProps"
+        :get-trigger-props="getTriggerProps"
+        :more-trigger-props="moreTriggerProps"
+        :more-label="moreLabel"
+        :more-icon="moreIcon"
+      >
+        <template #trigger="{ item }">
+          <slot name="trigger" :item="item" />
+        </template>
+        <template #more-trigger>
+          <slot name="more-trigger" />
+        </template>
+        <template v-for="slotName in menuSlotNames" :key="slotName" #[slotName]="slotProps">
+          <slot :name="slotName" v-bind="slotProps" />
+        </template>
+      </MenubarMenus>
+    </div>
+  </template>
+  <template v-else>
+    <MenubarMenus
+      :items="visibleItems"
+      :more-items="moreItems"
+      :root-props="effectiveRootProps"
+      :listeners="listeners"
+      :options-props="forwardedOptionsProps"
+      :link-props="linkProps"
+      :content-props="contentProps"
+      :portal-props="portalProps"
+      :get-trigger-props="getTriggerProps"
+      :more-trigger-props="moreTriggerProps"
+      :more-label="moreLabel"
+      :more-icon="moreIcon"
+    >
+      <template #trigger="{ item }">
+        <slot name="trigger" :item="item" />
       </template>
-    </MenubarMenu>
-  </MenubarRoot>
+      <template #more-trigger>
+        <slot name="more-trigger" />
+      </template>
+      <template v-for="slotName in menuSlotNames" :key="slotName" #[slotName]="slotProps">
+        <slot :name="slotName" v-bind="slotProps" />
+      </template>
+    </MenubarMenus>
+  </template>
 </template>

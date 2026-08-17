@@ -5714,8 +5714,10 @@
             "arrowprops": "转发到箭头元素的属性。",
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
+            "collapsible": "",
             "contentprops": "转发到内容元素的属性。",
             "defaultvalue": "初始渲染时应打开的菜单值。",
+            "delayduration": "",
             "dir": "在适用的情况下，菜单的阅读方向。",
             "disabled": "组件是否禁用。",
             "grouplabelprops": "转发到组标签元素的属性。",
@@ -5725,15 +5727,20 @@
             "linkprops": "转发到链接元素的属性。",
             "loop": "true \"时，键盘导航会从最后一个触发器循环到第一个触发器，反之亦然。",
             "modelvalue": "要打开的菜单的受控值。可用作 `v-model`。",
+            "moreicon": "",
+            "morelabel": "",
+            "moreprops": "",
             "placement": "放置。",
             "popupprops": "转发到弹出元素的属性。",
             "portalprops": "转发到门户元素的属性。",
             "separatorprops": "转发到分隔符元素的属性。",
             "shortcutprops": "转发到快捷方式元素的属性。",
             "showarrow": "是否显示箭头",
+            "skipdelayduration": "",
             "subcontentprops": "转发到子内容元素的属性。",
             "subprops": "转发到子元素的属性。",
             "subtriggerprops": "转发到子触发器元素的属性。",
+            "trigger": "",
             "triggerprops": "转发到触发器元素的属性。"
           },
           "props": "MenubarCompact 组件的属性。"
@@ -5745,6 +5752,7 @@
             "item_link_icon": "自定义项目链接图标槽的内容。",
             "item_trailing": "自定义项尾部槽的内容。",
             "item_trigger_icon": "项目触发器图标槽的自定义内容。",
+            "more_trigger": "",
             "trigger": "触发器插槽的自定义内容。\n\n可选：当消费者未提供内容时，`MenubarCompact` 会渲染完整的默认触发器内容（图标、\n标签、链接图标、尾部插槽）。"
           },
           "slots": "MenubarCompact 组件的插槽。"
@@ -5805,9 +5813,12 @@
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
             "defaultvalue": "初始渲染时应打开的菜单值。",
+            "delayduration": "",
             "dir": "在适用的情况下，菜单的阅读方向。",
             "loop": "true \"时，键盘导航会从最后一个触发器循环到第一个触发器，反之亦然。",
-            "modelvalue": "要打开的菜单的受控值。可用作 `v-model`。"
+            "modelvalue": "要打开的菜单的受控值。可用作 `v-model`。",
+            "skipdelayduration": "",
+            "trigger": ""
           },
           "props": "MenubarRoot 组件的属性。"
         },
@@ -5866,6 +5877,7 @@
           },
           "props": "MenubarTrigger 组件的属性。"
         },
+        "menubartriggertype": "",
         "menubarui": "Menubar 组件的 UI 类重载。",
         "type": ""
       },
@@ -11971,8 +11983,10 @@
             "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖",
             "aschild": "将默认渲染元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
             "class": "菜单栏根类",
+            "collapsible": "",
             "contentprops": "转发至内容元素的属性。",
             "defaultvalue": "初始渲染时应打开的菜单值。",
+            "delayduration": "",
             "dir": "如适用，请保留菜单栏的阅读方向。",
             "disabled": "该组件是否已禁用。",
             "grouplabelprops": "传递给组标签元素的属性。",
@@ -11983,6 +11997,9 @@
             "linkprops": "传递给 link 元素的属性。",
             "loop": "当值为 `true` 时，键盘导航将在最后触发点与起始点之间循环。",
             "modelvalue": "要打开的菜单的受控值。可作为 `v-model` 使用。",
+            "moreicon": "",
+            "morelabel": "",
+            "moreprops": "",
             "placement": "位置。",
             "popupprops": "转发给弹出元素的属性。",
             "portalprops": "转发至 portal 元素的属性。",
@@ -11990,9 +12007,11 @@
             "shortcutprops": "转发至快捷方式元素的属性。",
             "showarrow": "是否显示箭头。",
             "size": "组件的视觉尺寸。",
+            "skipdelayduration": "",
             "subcontentprops": "转发至子内容元素的属性。",
             "subprops": "转发给子元素的属性。",
             "subtriggerprops": "转发给子触发器元素的属性。",
+            "trigger": "",
             "triggerprops": "转发给触发元素的属性。",
             "ui": "针对该组件的按槽位类重写。"
           },
@@ -12005,6 +12024,7 @@
             "item_link_icon": "为项目链接图标槽位定制内容。",
             "item_trailing": "用于项尾部插槽的自定义内容。",
             "item_trigger_icon": "用于项目触发图标槽位的自定义内容。",
+            "more_trigger": "",
             "trigger": "触发器插槽的自定义内容。\n\n可选：当消费者未提供内容时，`MenubarCompact` 会渲染完整的默认触发器内容（图标、\n标签、链接图标、尾部插槽）。"
           },
           "slots": "Menubar 组件的插槽。"
