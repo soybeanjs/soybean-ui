@@ -25,6 +25,31 @@
         "multiple": "多选",
         "single": "单项"
       },
+      "area": {
+        "basic": "基础",
+        "gradient": "渐变",
+        "tk-basic": "基础 (TanStack)",
+        "tk-stacked": "堆叠 (TanStack)"
+      },
+      "bar": {
+        "basic": "基础",
+        "multiple": "多系列",
+        "tk-basic": "基础 (TanStack)",
+        "tk-grouped": "分组 (TanStack)"
+      },
+      "line": {
+        "basic": "基础",
+        "step": "阶梯",
+        "tk-basic": "基础 (TanStack)",
+        "tk-multiple": "多系列 (TanStack)"
+      },
+      "pie": {
+        "donut": "环形图",
+        "simple": "简单饼图"
+      },
+      "scatter": {
+        "tk-basic": "基础 (TanStack)"
+      },
       "affix": {
         "basic": "基础",
         "custom-styling": "自定义样式",

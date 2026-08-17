@@ -44,6 +44,16 @@ function getTabs() {
 
 const filteredTabs = computed(() => tabs.filter(tab => tab.library === activeLibrary.value));
 
+const libraryTagLabel = computed(() => {
+  const labelByLibrary: Record<string, string> = {
+    ui: '@soybeanjs/ui',
+    'ui-x': '@soybeanjs/ui-x',
+    chart: '@soybeanjs/chart'
+  };
+
+  return labelByLibrary[activeLibrary.value] ?? '@soybeanjs/ui';
+});
+
 watch(activeLibrary, newLib => {
   const firstTab = tabs.find(t => t.library === newLib);
   if (firstTab) {
@@ -118,9 +128,10 @@ onMounted(() => {
         <SToggleGroup v-model="activeLibrary" size="sm">
           <SToggleGroupItem value="ui">UI</SToggleGroupItem>
           <SToggleGroupItem value="ui-x">UI-X</SToggleGroupItem>
+          <SToggleGroupItem value="chart">Chart</SToggleGroupItem>
         </SToggleGroup>
         <STag :color="activeLibrary === 'ui-x' ? 'primary' : 'carbon'" variant="soft" size="sm" class="font-semibold">
-          {{ activeLibrary === 'ui-x' ? '@soybeanjs/ui-x' : '@soybeanjs/ui' }}
+          {{ libraryTagLabel }}
         </STag>
         <SLink href="https://github.com/soybeanjs/soybean-ui">
           <SButtonIcon icon="lucide:github" size="lg" />

@@ -25,6 +25,31 @@
         "multiple": "Multiple",
         "single": "Single"
       },
+      "area": {
+        "basic": "Basic",
+        "gradient": "Gradient",
+        "tk-basic": "Basic (TanStack)",
+        "tk-stacked": "Stacked (TanStack)"
+      },
+      "bar": {
+        "basic": "Basic",
+        "multiple": "Multiple",
+        "tk-basic": "Basic (TanStack)",
+        "tk-grouped": "Grouped (TanStack)"
+      },
+      "line": {
+        "basic": "Basic",
+        "step": "Step",
+        "tk-basic": "Basic (TanStack)",
+        "tk-multiple": "Multiple (TanStack)"
+      },
+      "pie": {
+        "donut": "Donut",
+        "simple": "Simple"
+      },
+      "scatter": {
+        "tk-basic": "Basic (TanStack)"
+      },
       "affix": {
         "basic": "Basic",
         "custom-styling": "Custom Styling",

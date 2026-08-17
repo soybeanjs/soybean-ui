@@ -15,7 +15,8 @@ export interface LibraryOption {
 
 export const libraryOptions: LibraryOption[] = [
   { value: 'ui', label: 'UI', icon: 'lucide:layout-grid' },
-  { value: 'ui-x', label: 'UI-X', icon: 'lucide:sparkles' }
+  { value: 'ui-x', label: 'UI-X', icon: 'lucide:sparkles' },
+  { value: 'chart', label: 'Chart', icon: 'lucide:chart-column' }
 ];
 
 /** Components belonging to `@soybeanjs/ui-x`. All others default to `'ui'`. */
@@ -42,8 +43,12 @@ const uiXComponents = new Set([
   'mermaid'
 ]);
 
+/** Component names belonging to `@soybeanjs/chart`. */
+const chartComponents = new Set(['bar', 'line', 'area', 'pie', 'scatter']);
+
 /** Returns the library value for a given component name. */
 export function getComponentLibrary(componentName: string): string {
   if (uiXComponents.has(componentName)) return 'ui-x';
+  if (chartComponents.has(componentName)) return 'chart';
   return 'ui';
 }

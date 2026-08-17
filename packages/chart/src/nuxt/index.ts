@@ -1,14 +1,22 @@
 // Nuxt module for @soybeanjs/chart.
-// TODO(chart): scaffold placeholder — implement Nuxt auto-registration once components exist.
-
-import { defineNuxtModule } from '@nuxt/kit';
+import { addComponent, defineNuxtModule } from '@nuxt/kit';
+import { components } from '../constants/components';
 
 export default defineNuxtModule({
   meta: {
     name: '@soybeanjs/chart',
-    configKey: 'chart'
+    configKey: 'chart',
+    compatibility: {
+      nuxt: '>=3.14'
+    }
   },
   setup() {
-    // TODO(chart): register resolver / transpile.
+    for (const component of Object.values(components).flat()) {
+      addComponent({
+        name: component,
+        export: component,
+        filePath: '@soybeanjs/chart'
+      });
+    }
   }
 });
