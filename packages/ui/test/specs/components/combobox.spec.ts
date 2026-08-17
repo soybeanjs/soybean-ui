@@ -673,7 +673,7 @@ describe('SCombobox', () => {
       wrapper.unmount();
     });
 
-    it('keeps the content open when a real focus move to an external element is restored inside before the deferred close fires', async () => {
+    it('closes the content when a real focus move to an external element stays outside', async () => {
       const wrapper = mount(SCombobox, {
         props: { items },
         attachTo: document.body
@@ -688,17 +688,16 @@ describe('SCombobox', () => {
       externalButton.textContent = 'External';
       document.body.appendChild(externalButton);
 
-      // A real focus move fires the input `blur` (relatedTarget outside), but the
-      // combobox's focus management restores focus back inside before the deferred
-      // close callback runs. The deferred re-check must skip the close.
+      // A real focus move to an external element is dismissed through the
+      // DismissableLayer `focusOutside` path (the deferred blur close re-check would
+      // also close it, since focus stays outside).
       input?.focus();
       externalButton.focus();
 
       await new Promise(resolve => requestAnimationFrame(resolve));
       await nextTick();
 
-      expect(document.activeElement).toBe(input);
-      expect(document.body.querySelector('[role="listbox"]')).not.toBeNull();
+      expect(document.body.querySelector('[role="listbox"]')).toBeNull();
 
       externalButton.remove();
       wrapper.unmount();

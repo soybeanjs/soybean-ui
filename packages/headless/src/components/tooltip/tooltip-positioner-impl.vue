@@ -39,7 +39,7 @@ useGraceArea({
   disabled: disableHoverableContent
 });
 
-const { pointerEvents } = useDismissableLayer(positionerElement, {
+const { pointerEvents, onFocusCapture, onBlurCapture } = useDismissableLayer(positionerElement, {
   disableOutsidePointerEvents: false,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
@@ -100,7 +100,13 @@ watchPostEffect(() => {
 </script>
 
 <template>
-  <PopperPositioner v-bind="positionerProps" :ref="setPositionerElement" data-soybean-tooltip-positioner-impl>
+  <PopperPositioner
+    v-bind="positionerProps"
+    :ref="setPositionerElement"
+    data-soybean-tooltip-positioner-impl
+    @focus.capture="onFocusCapture"
+    @blur.capture="onBlurCapture"
+  >
     <slot />
   </PopperPositioner>
 </template>

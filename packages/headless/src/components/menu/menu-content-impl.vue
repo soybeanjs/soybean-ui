@@ -48,7 +48,7 @@ const popupCls = computed(() => (isRoot ? ui.value?.popup : ui.value?.subPopup))
 const { handleTypeaheadSearch } = useTypeahead();
 const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
 
-const { pointerEvents } = useDismissableLayer(popupElement, {
+const { pointerEvents, onFocusCapture, onBlurCapture } = useDismissableLayer(popupElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
@@ -229,6 +229,8 @@ watchEffect(() => {
         role="menu"
         tabindex="-1"
         :style="popupStyle"
+        @focus.capture="onFocusCapture"
+        @blur.capture="onBlurCapture"
         @keydown="onKeyDown"
         @blur="onBlur"
         @pointermove="onPointerMove"

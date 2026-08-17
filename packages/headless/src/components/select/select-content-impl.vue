@@ -62,7 +62,7 @@ const [popupElement, setPopupElement] = useForwardElement(node => {
 });
 const { search, handleTypeaheadSearch } = useTypeahead();
 
-const { pointerEvents } = useDismissableLayer(positionerElement, {
+const { pointerEvents, onFocusCapture, onBlurCapture } = useDismissableLayer(positionerElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
@@ -219,6 +219,8 @@ watchEffect(() => {
     v-if="position === 'popper'"
     :ref="setPositionerElement"
     v-bind="popperPositionerProps"
+    @focus.capture="onFocusCapture"
+    @blur.capture="onBlurCapture"
     @contextmenu.prevent
     @placed="onPlaced"
     @keydown="onKeyDown"
@@ -239,6 +241,8 @@ watchEffect(() => {
   <SelectItemAlignedPositioner
     v-else
     :ref="setPositionerElement"
+    @focus.capture="onFocusCapture"
+    @blur.capture="onBlurCapture"
     @contextmenu.prevent
     @placed="onPlaced"
     @keydown="onKeyDown"

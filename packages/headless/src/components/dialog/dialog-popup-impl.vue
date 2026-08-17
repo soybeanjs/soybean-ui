@@ -32,7 +32,7 @@ const {
   focusCancel
 } = useDialogRootContext('DialogPopupImpl');
 
-const { pointerEvents } = useDismissableLayer(popupElement, {
+const { pointerEvents, onFocusCapture, onBlurCapture } = useDismissableLayer(popupElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
@@ -109,6 +109,8 @@ onMounted(() => {
     :aria-live="isAlert ? (alertType === 'error' ? 'assertive' : 'polite') : undefined"
     tabindex="-1"
     :style="style"
+    @focus.capture="onFocusCapture"
+    @blur.capture="onBlurCapture"
     @keydown="onKeydown"
   >
     <slot />

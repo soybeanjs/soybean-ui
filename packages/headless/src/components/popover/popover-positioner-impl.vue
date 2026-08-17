@@ -25,7 +25,7 @@ const { modal, popupElement, onOpenChange } = usePopoverRootContext('PopoverPosi
 
 const [positionerElement, setPositionerElement] = useForwardElement();
 
-const { pointerEvents } = useDismissableLayer(positionerElement, {
+const { pointerEvents, onFocusCapture, onBlurCapture } = useDismissableLayer(positionerElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
@@ -87,6 +87,8 @@ watchPostEffect(() => {
     v-bind="forwardedProps"
     :ref="setPositionerElement"
     data-soybean-popover-positioner-impl
+    @focus.capture="onFocusCapture"
+    @blur.capture="onBlurCapture"
     @keydown="onKeydown"
   >
     <slot />

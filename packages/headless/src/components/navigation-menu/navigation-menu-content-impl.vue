@@ -40,7 +40,7 @@ const { getOrderedElements } = useCollectionContext('NavigationMenuContentImpl')
 
 const [contentElement, setContentElement] = useExposedElement();
 
-const { pointerEvents } = useDismissableLayer(contentElement, {
+const { pointerEvents, onFocusCapture, onBlurCapture } = useDismissableLayer(contentElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
@@ -208,6 +208,8 @@ watchEffect(cleanupFn => {
     :data-motion="motionAttribute"
     :data-state="dataState"
     :style="style"
+    @focus.capture="onFocusCapture"
+    @blur.capture="onBlurCapture"
     @keydown="onKeydown"
   >
     <slot />

@@ -80,7 +80,7 @@ export function useDismissableLayer(
     return isPointerEventsEnabled.value ? 'auto' : 'none';
   });
 
-  usePointerdownOutside(layerElement, event => {
+  const { onPointerdownCapture } = usePointerdownOutside(layerElement, event => {
     if (!isPointerEventsEnabled.value) return;
 
     const target = event.target as HTMLElement;
@@ -96,7 +96,7 @@ export function useDismissableLayer(
     }
   });
 
-  useFocusOutside(layerElement, event => {
+  const { onFocusCapture, onBlurCapture } = useFocusOutside(layerElement, event => {
     const target = event.target as HTMLElement;
 
     const isFocusInBranch = [...layerContext.branches].some(branch => branch.contains(target));
@@ -183,7 +183,10 @@ export function useDismissableLayer(
   );
 
   return {
-    pointerEvents
+    pointerEvents,
+    onPointerdownCapture,
+    onFocusCapture,
+    onBlurCapture
   };
 }
 

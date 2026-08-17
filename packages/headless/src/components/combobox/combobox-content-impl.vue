@@ -67,7 +67,7 @@ function isEventTargetWithinCombobox(target: EventTarget | null) {
   return Boolean(control) && isInside(control as EventTarget);
 }
 
-const { pointerEvents } = useDismissableLayer(contentElement, {
+const { pointerEvents, onFocusCapture, onBlurCapture } = useDismissableLayer(contentElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
@@ -199,6 +199,8 @@ onUnmounted(() => {
       :data-state="open ? 'open' : 'closed'"
       :data-empty="isEmpty ? '' : undefined"
       :style="popupStyle"
+      @focus.capture="onFocusCapture"
+      @blur.capture="onBlurCapture"
       @keydown="onKeydown"
     >
       <slot />
@@ -215,6 +217,8 @@ onUnmounted(() => {
     :data-state="open ? 'open' : 'closed'"
     :data-empty="isEmpty ? '' : undefined"
     :style="popupStyle"
+    @focus.capture="onFocusCapture"
+    @blur.capture="onBlurCapture"
     @keydown="onKeydown"
   >
     <slot />

@@ -71,7 +71,7 @@ const setContentElement = (el: Element | ComponentPublicInstance | null) => {
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open);
 
-const { pointerEvents } = useDismissableLayer(positionerElement, {
+const { pointerEvents, onFocusCapture, onBlurCapture } = useDismissableLayer(positionerElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
   onEscapeKeyDown: event => emit('escapeKeyDown', event),
   onPointerDownOutside: event => emit('pointerDownOutside', event),
@@ -102,6 +102,8 @@ const isEmpty = computed(() => {
     data-soybean-cascader-content
     v-bind="forwardedProps"
     v-on="listeners"
+    @focus.capture="onFocusCapture"
+    @blur.capture="onBlurCapture"
     @contextmenu.prevent
     @keydown="handleKeydown"
   >
