@@ -45,7 +45,7 @@ useGraceArea({
   areaElement: popupElement,
   onPointerExit: () => {
     if (open.value) {
-    onMenuClose();
+      onMenuClose();
     }
   },
   subAreaAttribute: 'data-soybean-menu-sub-popup',
