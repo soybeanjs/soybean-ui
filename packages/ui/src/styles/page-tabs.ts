@@ -9,7 +9,11 @@ export const pageTabsVariants = scv({
       `group/item relative flex items-center cursor-pointer select-none outline-none`,
       `data-[active=true]:bg-primary-50 data-[active=true]:text-primary data-[active=true]:z-2`,
       `data-[active=false]:hover:bg-accent data-[active=false]:focus:bg-accent`,
-      `dark:data-[active=true]:bg-accent dark:data-[active=true]:text-foreground`
+      `dark:data-[active=true]:bg-accent dark:data-[active=true]:text-foreground`,
+      `data-[draggable=true]:cursor-grab`,
+      `data-[dragging=true]:opacity-40`,
+      `data-[dragging=true]:[.dnd-kit-preview_&]:opacity-100`,
+      `[.dnd-kit-preview_&]:shadow-lg`
     ],
     itemText: 'grow truncate',
     close: [

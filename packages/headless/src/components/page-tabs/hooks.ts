@@ -10,6 +10,16 @@ interface UsePageTabsStateOptions<T extends PageTabsOptionData> {
   beforeClose: (value: string) => MaybePromise<boolean | void>;
 }
 
+/**
+ * Sort zone of a tab: `0` = pinned, `1` = unpinned. Tabs may reorder by
+ * dragging within their own zone only, which keeps the pinned group
+ * aggregated at the front. `hidePinnedIcon` is display-only and never
+ * affects the zone, so all pinned tabs reorder among themselves.
+ */
+export function getPageTabZone(tab: PageTabsOptionData): number {
+  return tab.pinned ? 0 : 1;
+}
+
 export function usePageTabsScroll(activeValue: ShallowRef<string>) {
   const [rootElement, setRootElement] = useForwardElement();
 
@@ -38,6 +48,7 @@ export function usePageTabsScroll(activeValue: ShallowRef<string>) {
   });
 
   return {
+    rootElement,
     setRootElement,
     onWheel
   };
@@ -188,23 +199,9 @@ export function usePageTabsState<T extends PageTabsOptionData>(options: UsePageT
   };
 
   const sortTabs = () => {
-    const hidePinnedItems: T[] = [];
-    const pinnedItems: T[] = [];
-    const normalItems: T[] = [];
-
-    items.value.forEach(item => {
-      if (item.pinned) {
-        if (item.hidePinnedIcon) {
-          hidePinnedItems.push(item);
-        } else {
-          pinnedItems.push(item);
-        }
-      } else {
-        normalItems.push(item);
-      }
-    });
-
-    const updated = [...hidePinnedItems, ...pinnedItems, ...normalItems];
+    // Stable sort by zone keeps the relative order within each zone, so
+    // drag-reordered tabs never bounce back after a pin/unpin transition.
+    const updated = [...items.value].sort((a, b) => getPageTabZone(a) - getPageTabZone(b));
     const hasChanged = updated.some((item, index) => item.value !== items.value[index].value);
 
     if (hasChanged) {

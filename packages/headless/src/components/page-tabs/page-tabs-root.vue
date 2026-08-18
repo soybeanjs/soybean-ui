@@ -12,7 +12,8 @@ defineOptions({
 
 const props = withDefaults(defineProps<PageTabsRootProps>(), {
   modelValue: undefined,
-  loop: true
+  loop: true,
+  draggable: false
 });
 
 const emit = defineEmits<PageTabsRootEmits>();
@@ -38,7 +39,7 @@ const modelValue = useControllableState(
 const { setRootElement, onWheel } = usePageTabsScroll(modelValue);
 
 providePageTabsRootContext({
-  ...transformPropsToContext(props, ['middleClickClose']),
+  ...transformPropsToContext(props, ['middleClickClose', 'draggable']),
   modelValue
 });
 </script>

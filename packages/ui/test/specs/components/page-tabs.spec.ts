@@ -321,7 +321,65 @@ describe('SPageTabs', () => {
 
       const emitted = wrapper.emitted('update:items')?.[0]?.[0] as Array<{ value: string }> | undefined;
 
-      expect(emitted?.map(item => item.value)).toEqual(['hidden', 'pinned1', 'normal1', 'normal2']);
+      expect(emitted?.map(item => item.value)).toEqual(['pinned1', 'hidden', 'normal1', 'normal2']);
+
+      wrapper.unmount();
+    });
+
+    it('keeps the relative order within each zone when sorting', () => {
+      // zone invariant that drag reordering relies on: pinned → unpinned,
+      // with the relative order inside a zone preserved (hidePinnedIcon is
+      // display-only and does not affect the zone)
+      const wrapper = mount(SPageTabs, {
+        props: {
+          items: [
+            { value: 'hidden2', label: 'H2', pinned: true, hidePinnedIcon: true },
+            { value: 'normal1', label: 'N1' },
+            { value: 'pinned2', label: 'P2', pinned: true },
+            { value: 'normal2', label: 'N2' },
+            { value: 'pinned1', label: 'P1', pinned: true },
+            { value: 'normal3', label: 'N3' }
+          ],
+          modelValue: 'normal1'
+        },
+        attachTo: document.body
+      });
+
+      const emitted = wrapper.emitted('update:items')?.[0]?.[0] as Array<{ value: string }> | undefined;
+
+      expect(emitted?.map(item => item.value)).toEqual([
+        'hidden2',
+        'pinned2',
+        'pinned1',
+        'normal1',
+        'normal2',
+        'normal3'
+      ]);
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('drag behavior', () => {
+    it('locks an item with an explicit draggable: false even when the component enables dragging', () => {
+      const wrapper = mount(SPageTabs, {
+        props: {
+          items: [
+            { value: 'home', label: 'Home', pinned: true, draggable: false },
+            { value: 'profile', label: 'Profile' },
+            { value: 'settings', label: 'Settings' }
+          ],
+          modelValue: 'home',
+          draggable: true
+        },
+        attachTo: document.body
+      });
+
+      const tabs = wrapper.findAll('[data-soybean-page-tabs-item]');
+
+      expect(tabs[0].attributes('data-draggable')).toBe('false');
+      expect(tabs[1].attributes('data-draggable')).toBe('true');
+      expect(tabs[2].attributes('data-draggable')).toBe('true');
 
       wrapper.unmount();
     });

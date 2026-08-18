@@ -6089,6 +6089,7 @@
             "currenttabstopid": "当前停止项的受控值。可绑定为 `v-model`。",
             "defaultcurrenttabstopid": "当前停止项的值。\n\n在不需要控制停止项的状态时使用。",
             "dir": "项目之间的导航方向。",
+            "draggable": "是否可以通过拖拽重新排列标签页。标签页仅可在\n其所在区域内重新排列——固定组始终位于最前。带有显式 `draggable: false` 属性的标签页\n项将被锁定在原位。",
             "itemprops": "组件的每槽类重写。",
             "items": "组件呈现的项目。",
             "loop": "键盘导航是否应循环",
@@ -6116,6 +6117,8 @@
         },
         "pagetabsitemprops": {
           "members": {
+            "draggable": "此标签页是否启用了拖拽重新排序功能。不可拖拽的标签页会被\n锁定在原位：既无法被拖拽，其他标签页也无法\n拖拽至其上方。固定标签页仅可在固定区域内重新排序。",
+            "index": "标签页在 `items` 中的索引，用于构建拖拽数据。",
             "pinned": "标签是否固定。",
             "value": "制表符的唯一值。"
           },
@@ -6140,6 +6143,7 @@
             "currenttabstopid": "当前停止项的受控值。可绑定为 `v-model`。",
             "defaultcurrenttabstopid": "当前停止项的值。\n\n在不需要控制停止项的状态时使用。",
             "dir": "项目之间的导航方向。",
+            "draggable": "是否可以通过拖拽重新排列标签页。标签页仅可在\n其所在区域内重新排列——固定组始终位于最前。带有显式 `draggable: false` 属性的标签页\n项将被锁定在原位。",
             "loop": "键盘导航是否应循环",
             "middleclickclose": "中间点击标签是否会关闭。",
             "modelvalue": "活动制表符值。",
@@ -12097,6 +12101,7 @@
             "currenttabstopid": "当前停靠项的受控值。可作为 `v-model` 绑定。",
             "defaultcurrenttabstopid": "当前停止项的值。\n\n当不需要控制停止项的状态时使用。",
             "dir": "项目之间的导航方向。",
+            "draggable": "是否可以通过拖拽重新排列标签页。标签页仅可在\n其所在区域内重新排列——固定组始终位于最前。带有显式 `draggable: false` 属性的标签页\n项将被锁定在原位。",
             "itemprops": "针对该组件的按槽位类重写。",
             "items": "由组件渲染的项。",
             "loop": "键盘导航是否应循环",

@@ -18,6 +18,12 @@ export interface PageTabsRootProps extends Omit<RovingFocusGroupProps, 'orientat
    * Whether middle-clicking a tab closes it.
    */
   middleClickClose?: boolean;
+  /**
+   * Whether tabs can be reordered by dragging. Tabs only reorder within
+   * their own zone — the pinned group always stays in front. A tab item
+   * with an explicit `draggable: false` is locked in place.
+   */
+  draggable?: boolean;
 }
 
 /**
@@ -31,6 +37,20 @@ export type PageTabsRootEmits = {
 };
 
 /**
+ * Event payload for tab drag operations.
+ */
+export interface PageTabsDragEvent<T extends PageTabsOptionData = PageTabsOptionData> {
+  /**
+   * The tab being dragged.
+   */
+  item: T;
+  /**
+   * The index the dragged tab currently sits at (updated while dragging).
+   */
+  index: number;
+}
+
+/**
  * Properties for the PageTabsItem component.
  */
 export interface PageTabsItemProps extends Omit<BaseProps, 'onClick'> {
@@ -42,6 +62,16 @@ export interface PageTabsItemProps extends Omit<BaseProps, 'onClick'> {
    * Whether the tab is pinned.
    */
   pinned?: boolean;
+  /**
+   * Whether drag reordering is enabled for this tab. A non-draggable tab is
+   * locked in place: it cannot be dragged and other tabs cannot be dropped
+   * onto it. Pinned tabs reorder within the pinned zone only.
+   */
+  draggable?: boolean;
+  /**
+   * @internal Index of the tab within `items`, used to build the drag payload.
+   */
+  index?: number;
 }
 
 /**
@@ -60,6 +90,23 @@ export type PageTabsItemEmits = {
    * Emitted when the tab is requested to be pinned.
    */
   (e: 'pin', pinned: boolean): void;
+  /**
+   * Emitted when dragging this tab starts.
+   */
+  (e: 'tabDragStart'): void;
+  /**
+   * Emitted while this tab is being dragged.
+   */
+  (e: 'tabDragMove'): void;
+  /**
+   * Emitted when the dragged tab crosses onto a new position so the list is
+   * reordered in place while dragging (surrounding tabs shift immediately).
+   */
+  (e: 'tabDragReorder'): void;
+  /**
+   * Emitted when dragging this tab ends.
+   */
+  (e: 'tabDragEnd'): void;
 };
 
 /**
@@ -219,6 +266,23 @@ export type PageTabsCompactEmits<T extends PageTabsOptionData = PageTabsOptionDa
    * Emitted when a context menu item is selected.
    */
   (e: 'selectContextMenu', menu: PageTabsContextMenuOptionData, tab: T): void;
+  /**
+   * Emitted when dragging a tab starts.
+   */
+  (e: 'tabDragStart', tab: PageTabsDragEvent<T>): void;
+  /**
+   * Emitted while a tab is being dragged.
+   */
+  (e: 'tabDragMove', tab: PageTabsDragEvent<T>): void;
+  /**
+   * Emitted when the dragged tab crosses onto a new position and the list is
+   * reordered in place while dragging.
+   */
+  (e: 'tabDragReorder', tab: PageTabsDragEvent<T>): void;
+  /**
+   * Emitted when dragging a tab ends.
+   */
+  (e: 'tabDragEnd', tab: PageTabsDragEvent<T>): void;
 };
 
 /**

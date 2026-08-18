@@ -1,11 +1,13 @@
 <script setup lang="ts" generic="T extends PageTabsOptionData = PageTabsOptionData">
 import { computed } from 'vue';
+import { useStyleTag } from '@vueuse/core';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { PageTabsCompact, providePageTabsUi } from '@soybeanjs/headless/page-tabs';
 import type { PageTabsOptionData } from '@soybeanjs/headless/page-tabs';
 import { keysOf } from '@soybeanjs/utils';
 import { pageTabsVariants } from '@/styles/page-tabs';
 import { provideMenuUi } from '../menu/context';
+import pageTabsStyles from './styles.css?raw';
 import type { PageTabsProps, PageTabsEmits, PageTabsSlots } from './types';
 
 defineOptions({
@@ -21,7 +23,7 @@ const emit = defineEmits<PageTabsEmits<T>>();
 
 const slots = defineSlots<PageTabsSlots<T>>();
 
-const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'onClick', 'onContextmenu']);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'variant', 'ui', 'onClick', 'onContextmenu']);
 
 const listeners = useForwardListeners(emit);
 
@@ -42,6 +44,10 @@ provideMenuUi(() => ({
   size: props.size
 }));
 providePageTabsUi(ui);
+
+useStyleTag(pageTabsStyles, {
+  id: '__SoybeanUI_pageTabsStyle'
+});
 </script>
 
 <template>

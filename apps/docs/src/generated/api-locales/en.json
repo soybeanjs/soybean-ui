@@ -6089,6 +6089,7 @@
             "currenttabstopid": "The controlled value of the current stop item. Can be bound as `v-model`.",
             "defaultcurrenttabstopid": "The value of the current stop item.\n\nUse when you do not need to control the state of the stop item.",
             "dir": "The direction of navigation between items.",
+            "draggable": "Whether tabs can be reordered by dragging. Tabs only reorder within\ntheir own zone — the pinned group always stays in front. A tab item\nwith an explicit `draggable: false` is locked in place.",
             "itemprops": "Per-slot class overrides for the component.",
             "items": "Items rendered by the component.",
             "loop": "Whether keyboard navigation should loop around",
@@ -6116,6 +6117,8 @@
         },
         "pagetabsitemprops": {
           "members": {
+            "draggable": "Whether drag reordering is enabled for this tab. A non-draggable tab is\nlocked in place: it cannot be dragged and other tabs cannot be dropped\nonto it. Pinned tabs reorder within the pinned zone only.",
+            "index": "Index of the tab within `items`, used to build the drag payload.",
             "pinned": "Whether the tab is pinned.",
             "value": "The unique value of the tab."
           },
@@ -6140,6 +6143,7 @@
             "currenttabstopid": "The controlled value of the current stop item. Can be bound as `v-model`.",
             "defaultcurrenttabstopid": "The value of the current stop item.\n\nUse when you do not need to control the state of the stop item.",
             "dir": "The direction of navigation between items.",
+            "draggable": "Whether tabs can be reordered by dragging. Tabs only reorder within\ntheir own zone — the pinned group always stays in front. A tab item\nwith an explicit `draggable: false` is locked in place.",
             "loop": "Whether keyboard navigation should loop around",
             "middleclickclose": "Whether middle-clicking a tab closes it.",
             "modelvalue": "The active tab value.",
@@ -12097,6 +12101,7 @@
             "currenttabstopid": "The controlled value of the current stop item. Can be bound as `v-model`.",
             "defaultcurrenttabstopid": "The value of the current stop item.\n\nUse when you do not need to control the state of the stop item.",
             "dir": "The direction of navigation between items.",
+            "draggable": "Whether tabs can be reordered by dragging. Tabs only reorder within\ntheir own zone — the pinned group always stays in front. A tab item\nwith an explicit `draggable: false` is locked in place.",
             "itemprops": "Per-slot class overrides for the component.",
             "items": "Items rendered by the component.",
             "loop": "Whether keyboard navigation should loop around",

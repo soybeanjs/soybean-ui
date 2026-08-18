@@ -15,6 +15,7 @@ export type {
   PageTabsPinProps,
   PageTabsOptionData,
   PageTabsState,
+  PageTabsDragEvent,
   PageTabsContextMenuOptionData,
   PageTabsCompactProps,
   PageTabsCompactEmits,
