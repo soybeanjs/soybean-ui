@@ -1,6 +1,8 @@
 # @soybeanjs/ui-x
 
 > SoybeanUI-X — AI conversation UI components built on top of SoybeanUI.
+>
+> **Note:** This package is still under development and is scheduled to ship with the v0.40.0 release. Stay tuned!
 
 A collection of 20 styled components for building conversational AI interfaces: chat bubbles, streaming markdown, code blocks with syntax highlighting, mermaid diagrams, thought chains, file attachments, prompts, suggestions, and more. Built on `@soybeanjs/headless` + `@soybeanjs/ui` with `@soybeanjs/ui-x` composables for streaming, typing effects, and sender state.
 

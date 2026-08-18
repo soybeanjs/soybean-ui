@@ -889,11 +889,6 @@
       }
     }
   },
-  "ui_x": {
-    "catalog": {
-      "description": "面向 AI 对话场景的组件库，提供流式 Markdown、推理链、附件、会话管理等能力。"
-    }
-  },
   "sidebar": {
     "overview": "概览",
     "introduction": "介绍",
@@ -1062,16 +1057,20 @@
     }
   },
   "ui_x": {
-    "sidebar": {
-      "general": "通用"
-    },
     "catalog": {
       "title": "SoybeanUI-X",
-      "description": "基于 SoybeanUI 的 AI 对话 UI 组件。",
+      "description": "面向 AI 对话场景的组件库，提供流式 Markdown、推理链、附件、会话管理等能力。",
       "placeholder": {
         "title": "即将推出",
         "body": "组件目录正在准备中。"
+      },
+      "notice": {
+        "title": "还在开发中，敬请期待",
+        "description": "本包仍在积极开发中，计划于 v0.40.0 版本正式发布。届时敬请关注！"
       }
+    },
+    "sidebar": {
+      "general": "通用"
     }
   },
   "admin": {
@@ -1081,6 +1080,10 @@
     "catalog": {
       "title": "SoybeanAdmin",
       "description": "基于 SoybeanUI 的后台管理壳组件。",
+      "notice": {
+        "title": "还在开发中，敬请期待",
+        "description": "本包仍在积极开发中，计划于 v0.40.0 版本正式发布。届时敬请关注！"
+      },
       "placeholder": {
         "title": "即将推出",
         "body": "组件目录正在准备中。"
@@ -1094,6 +1097,10 @@
     "catalog": {
       "title": "SoybeanChart",
       "description": "基于 SoybeanUI 的图表组件。",
+      "notice": {
+        "title": "还在开发中，敬请期待",
+        "description": "本包仍在积极开发中，计划于 v0.40.0 版本正式发布。届时敬请关注！"
+      },
       "placeholder": {
         "title": "即将推出",
         "body": "组件目录正在准备中。"

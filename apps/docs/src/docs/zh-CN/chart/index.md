@@ -1,6 +1,8 @@
 # @soybeanjs/chart
 
 > SoybeanChart —— 基于 SoybeanUI 的图表组件。
+>
+> **注意：** 本包仍在开发中，计划于 v0.40.0 版本正式发布，敬请期待！
 
 ## 状态
 

@@ -1,6 +1,8 @@
 # @soybeanjs/ui-x
 
 > SoybeanUI-X —— 基于 SoybeanUI 的 AI 对话 UI 组件。
+>
+> **注意：** 本包仍在开发中，计划于 v0.40.0 版本正式发布，敬请期待！
 
 20 个样式组件，用于构建对话式 AI 界面：聊天气泡、流式 Markdown（含 markstream-vue 底层）、语法高亮代码块、Mermaid 图表、思考链、文件附件、提示与建议等。基于 `@soybeanjs/headless` + `@soybeanjs/ui` 构建，借助 `@soybeanjs/ui-x` 的 composable 实现流式、打字机效果和发送器状态管理。
 

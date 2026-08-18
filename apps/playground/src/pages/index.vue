@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { shallowRef, ref, watch, watchPostEffect, onMounted, computed } from 'vue';
 import type { Component } from 'vue';
-import { SButtonIcon, SCard, SLink, STabs, SToggleGroup, SToggleGroupItem, STag } from '@soybeanjs/ui';
-import type { TabsOptionData } from '@soybeanjs/ui';
+import { SButtonIcon, SIcon, SCard, SLink, STabs, SSelect } from '@soybeanjs/ui';
+import type { TabsOptionData, SelectSingleOptionData } from '@soybeanjs/ui';
 import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import { getComponentLibrary } from '../component-libraries';
 import DirectionToggler from '../components/direction-toggler.vue';
@@ -44,15 +44,28 @@ function getTabs() {
 
 const filteredTabs = computed(() => tabs.filter(tab => tab.library === activeLibrary.value));
 
-const libraryTagLabel = computed(() => {
-  const labelByLibrary: Record<string, string> = {
-    ui: '@soybeanjs/ui',
-    'ui-x': '@soybeanjs/ui-x',
-    chart: '@soybeanjs/chart'
-  };
-
-  return labelByLibrary[activeLibrary.value] ?? '@soybeanjs/ui';
-});
+const libraries: SelectSingleOptionData<string>[] = [
+  {
+    label: 'UI',
+    value: 'ui',
+    icon: 'lucide:layout-grid'
+  },
+  {
+    label: 'UI-X',
+    value: 'ui-x',
+    icon: 'lucide:sparkles'
+  },
+  {
+    label: 'Admin',
+    value: 'admin',
+    icon: 'lucide:layout-dashboard'
+  },
+  {
+    label: 'Chart',
+    value: 'chart',
+    icon: 'lucide:bar-chart-3'
+  }
+];
 
 watch(activeLibrary, newLib => {
   const firstTab = tabs.find(t => t.library === newLib);
@@ -60,6 +73,8 @@ watch(activeLibrary, newLib => {
     activeTab.value = firstTab.value;
   }
 });
+
+const activeIcon = computed(() => libraries.find(item => item.value === activeLibrary.value)?.icon);
 
 // for nuxt
 function getQuery() {
@@ -125,14 +140,11 @@ onMounted(() => {
   <SCard data-soybean-bottom-sheet-scale title="SoybeanUI Playground" class="h-full bg-background">
     <template #extra>
       <div class="flex items-center gap-3">
-        <SToggleGroup v-model="activeLibrary" size="sm">
-          <SToggleGroupItem value="ui">UI</SToggleGroupItem>
-          <SToggleGroupItem value="ui-x">UI-X</SToggleGroupItem>
-          <SToggleGroupItem value="chart">Chart</SToggleGroupItem>
-        </SToggleGroup>
-        <STag :color="activeLibrary === 'ui-x' ? 'primary' : 'carbon'" variant="soft" size="sm" class="font-semibold">
-          {{ libraryTagLabel }}
-        </STag>
+        <SSelect v-model="activeLibrary" :items="libraries">
+          <template #trigger-leading>
+            <SIcon :icon="activeIcon" />
+          </template>
+        </SSelect>
         <SLink href="https://github.com/soybeanjs/soybean-ui">
           <SButtonIcon icon="lucide:github" size="lg" />
         </SLink>

@@ -26,6 +26,13 @@ onBeforeUnmount(() => {
         {{ t('admin.catalog.description') }}
       </p>
     </div>
+    <SAlert
+      color="info"
+      variant="soft"
+      icon="lucide:construction"
+      :title="t('admin.catalog.notice.title')"
+      :description="t('admin.catalog.notice.description')"
+    />
     <SCard :title="t('admin.catalog.placeholder.title')" split class="docs-card">
       <template #default>
         <p class="text-sm text-muted-foreground">

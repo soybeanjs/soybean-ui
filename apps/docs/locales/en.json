@@ -894,11 +894,6 @@
       }
     }
   },
-  "ui_x": {
-    "catalog": {
-      "description": "AI-native component library for building conversational interfaces, with streaming markdown, thought chains, attachments, and more."
-    }
-  },
   "sidebar": {
     "overview": "Overview",
     "introduction": "Introduction",
@@ -1072,10 +1067,14 @@
     },
     "catalog": {
       "title": "SoybeanUI-X",
-      "description": "AI conversation UI components built on SoybeanUI.",
+      "description": "AI-native component library for building conversational interfaces, with streaming markdown, thought chains, attachments, and more.",
       "placeholder": {
         "title": "Coming Soon",
         "body": "Component catalog is being prepared."
+      },
+      "notice": {
+        "title": "In development — coming soon",
+        "description": "This package is still under active development and is scheduled to ship with the v0.40.0 release. Stay tuned!"
       }
     }
   },
@@ -1086,6 +1085,10 @@
     "catalog": {
       "title": "SoybeanAdmin",
       "description": "Admin shell components built on SoybeanUI.",
+      "notice": {
+        "title": "In development — coming soon",
+        "description": "This package is still under active development and is scheduled to ship with the v0.40.0 release. Stay tuned!"
+      },
       "placeholder": {
         "title": "Coming Soon",
         "body": "Component catalog is being prepared."
@@ -1099,6 +1102,10 @@
     "catalog": {
       "title": "SoybeanChart",
       "description": "Chart components built on SoybeanUI.",
+      "notice": {
+        "title": "In development — coming soon",
+        "description": "This package is still under active development and is scheduled to ship with the v0.40.0 release. Stay tuned!"
+      },
       "placeholder": {
         "title": "Coming Soon",
         "body": "Component catalog is being prepared."

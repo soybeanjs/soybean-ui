@@ -58,6 +58,13 @@ onBeforeUnmount(() => {
             {{ t('ui_x.catalog.description') }}
           </p>
         </div>
+        <SAlert
+          color="info"
+          variant="soft"
+          icon="lucide:construction"
+          :title="t('ui_x.catalog.notice.title')"
+          :description="t('ui_x.catalog.notice.description')"
+        />
         <div class="flex flex-wrap gap-3">
           <SButtonLink to="/ui-x/installation" size="lg" variant="solid" shape="rounded">
             {{ t('sidebar.ui_x_installation') }}
