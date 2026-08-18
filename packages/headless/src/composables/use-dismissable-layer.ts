@@ -363,6 +363,21 @@ function isInsideDOMTree(mainLayer: HTMLElement, targetElement: HTMLElement) {
 
   if (mainDismissableLayer === targetLayer) return true;
 
+  // Prefer the layer stack registration order (mount order) over DOM order:
+  // teleported layers are inserted at fixed portal-anchor positions, so DOM
+  // order can disagree with the actual stacking order (e.g. a menubar menu
+  // replaced by an earlier-anchored menu during its exit animation would
+  // otherwise be treated as "outside" and dismiss the new menu).
+  const stack = Array.from(layerContext.layers).map(getDismissableLayerElement);
+  const mainIndex = stack.indexOf(mainDismissableLayer);
+  const targetIndex = stack.indexOf(targetLayer);
+
+  if (mainIndex !== -1 && targetIndex !== -1) {
+    return mainIndex < targetIndex;
+  }
+
+  // Fallback to DOM order for layers not tracked in the stack (e.g. rendered
+  // by another document or outside this layer context).
   const layerList = Array.from(
     mainDismissableLayer.ownerDocument.querySelectorAll<HTMLElement>(`[${DISMISSABLE_LAYER_DATA_ATTRIBUTE}]`)
   );

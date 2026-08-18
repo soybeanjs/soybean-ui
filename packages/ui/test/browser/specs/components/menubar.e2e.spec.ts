@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { defineComponent, h } from 'vue';
+import { defineComponent, h, ref } from 'vue';
 import { render } from 'vitest-browser-vue';
 import { cdp, page, userEvent } from 'vitest/browser';
 import type { MenuOptionData } from '@/components/menu';
@@ -69,6 +69,89 @@ function renderNarrowMenubar(width: number) {
       }
     })
   );
+}
+
+/**
+ * Move the real pointer in small steps from the center of `fromEl` to the
+ * center of `toEl`, mimicking a continuous mouse move across adjacent
+ * menubar triggers.
+ */
+async function movePointerBetween(fromEl: Element, toEl: Element) {
+  const session = cdp();
+  const a = fromEl.getBoundingClientRect();
+  const b = toEl.getBoundingClientRect();
+  const startX = a.x + a.width / 2;
+  const startY = a.y + a.height / 2;
+  const endX = b.x + b.width / 2;
+  const endY = b.y + b.height / 2;
+  const steps = 8;
+
+  for (let i = 1; i <= steps; i++) {
+    const x = startX + ((endX - startX) * i) / steps;
+    const y = startY + ((endY - startY) * i) / steps;
+    await session.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x, y });
+  }
+}
+
+/**
+ * Inject a deterministic exit animation into menu popups and return a cleanup
+ * function.
+ *
+ * The layer race these specs guard against only exists while a closing popup
+ * stays mounted for an exit animation. The default test page has no theme, so
+ * popups unmount immediately and the race cannot happen — the injected
+ * animation recreates that window explicitly instead of depending on the
+ * UnoCSS animation pipeline.
+ */
+function injectMenuExitAnimation() {
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes menubar-e2e-exit { from { opacity: 1 } to { opacity: 0.99 } }
+    [data-dismissable-layer][data-state='open'] { animation: none !important; }
+    [data-dismissable-layer][data-state='closed'] { animation: menubar-e2e-exit 300ms !important; }
+  `;
+  document.head.append(style);
+  return () => style.remove();
+}
+
+/**
+ * Wait for a replaced menu popup to finish its exit animation and unmount.
+ *
+ * The regression these specs guard needs the replaced popup to REMOUNT fresh:
+ * a fresh mount runs `open-auto-focus` (focus moves into the new popup), which
+ * is what the closing layer used to misinterpret as focus leaving. If the
+ * pointer returns while the old popup is still animating out, the same element
+ * is reused, no focus move happens, and the race cannot occur.
+ */
+function waitForPopupUnmount() {
+  return new Promise(resolve => setTimeout(resolve, 400));
+}
+
+/**
+ * Render a menubar whose open menu is driven by a controlled `modelValue`.
+ *
+ * Driving the switch programmatically (instead of via pointer moves) makes the
+ * layer race deterministic: the remounted popup's `open-auto-focus` always
+ * moves focus into the new popup while the replaced popup is still animating
+ * out — exactly the window the regression lives in.
+ */
+function renderControlledMenubar() {
+  const model = ref<string | number>('file');
+  const host = defineComponent({
+    name: 'ControlledMenubarHost',
+    setup() {
+      return () =>
+        h(SMenubar, {
+          items,
+          modelValue: model.value,
+          'onUpdate:modelValue': (value: string | number) => {
+            model.value = value;
+          }
+        });
+    }
+  });
+
+  return { ...render(host), model };
 }
 
 describe('SMenubar (e2e)', () => {
@@ -200,6 +283,66 @@ describe('SMenubar (e2e)', () => {
     await expect.element(menu).toBeVisible();
 
     unmount();
+  });
+
+  it('does not dismiss a freshly remounted menu while the replaced one is exiting', async () => {
+    const removeExitAnimation = injectMenuExitAnimation();
+    const { unmount, model } = renderControlledMenubar();
+    const fileTrigger = page.getByRole('menuitem', { name: 'File' });
+    const newItem = page.getByRole('menuitem', { name: 'New Tab' });
+    const undoItem = page.getByRole('menuitem', { name: 'Undo' });
+
+    // File menu opens (fresh mount => open-auto-focus moves focus into it).
+    await expect.element(newItem).toBeVisible();
+
+    // Switch to Edit; the File popup animates out and unmounts.
+    model.value = 'edit';
+    await expect.element(undoItem).toBeVisible();
+    await waitForPopupUnmount();
+
+    // Switch back: the File popup REMOUNTS fresh and takes focus while the
+    // Edit popup is still mounted for its exit animation. Regression guard:
+    // the exiting Edit layer used to treat the remounted File popup (teleported
+    // to an earlier portal anchor, so DOM order disagreed with the layer
+    // stack) as an outside focus target and dismiss the whole menubar.
+    model.value = 'file';
+    await expect.element(newItem).toBeVisible();
+    expect(model.value).toBe('file');
+    expect((fileTrigger.elements()[0]! as HTMLElement).dataset.state).toBe('open');
+
+    unmount();
+    removeExitAnimation();
+  });
+
+  it('switches menus in both directions on hover without dismissing the newly opened menu', async () => {
+    const removeExitAnimation = injectMenuExitAnimation();
+    const { unmount } = renderComponent(SMenubar, {
+      props: { items, trigger: 'hover', delayDuration: 0 }
+    });
+    const fileTrigger = page.getByRole('menuitem', { name: 'File' });
+    const editTrigger = page.getByRole('menuitem', { name: 'Edit' });
+    const newItem = page.getByRole('menuitem', { name: 'New Tab' });
+    const undoItem = page.getByRole('menuitem', { name: 'Undo' });
+
+    await userEvent.hover(fileTrigger);
+    await expect.element(newItem).toBeVisible();
+
+    // Move right: File -> Edit replaces the open menu.
+    await movePointerBetween(fileTrigger.elements()[0]!, editTrigger.elements()[0]!);
+    await expect.element(undoItem).toBeVisible();
+
+    // Let the File popup finish its exit animation and unmount so that moving
+    // back REMOUNTS it fresh (fresh mount => open-auto-focus => the focus move
+    // the closing Edit layer must tolerate).
+    await waitForPopupUnmount();
+
+    // Move back LEFT: Edit -> File — the real-pointer equivalent of the
+    // controlled spec above.
+    await movePointerBetween(editTrigger.elements()[0]!, fileTrigger.elements()[0]!);
+    await expect.element(newItem).toBeVisible();
+
+    unmount();
+    removeExitAnimation();
   });
 
   it('collapses overflowing items into a trailing "more" menu so the content fits', async () => {
