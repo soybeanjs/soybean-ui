@@ -246,7 +246,7 @@
             "required": false,
             "description": "Label of the trailing \"more\" trigger when `collapsible`.",
             "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarprops.members.morelabel",
-            "default": "'More'",
+            "default": "undefined",
             "inheritedFrom": "moreLabel",
             "sourcePath": "packages/headless/src/components/menubar/types.ts",
             "referencedTypes": []
@@ -2272,7 +2272,7 @@
             "required": false,
             "description": "Label of the trailing \"more\" trigger when `collapsible`.",
             "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactprops.members.morelabel",
-            "default": "'More'",
+            "default": "undefined",
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/menubar/types.ts",
             "referencedTypes": []

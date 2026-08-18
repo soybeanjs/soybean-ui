@@ -19,6 +19,8 @@ Menubar builds a persistent horizontal menu bar for application chrome: a row of
 - **Horizontal roving focus** — the root keeps a single tab stop; `ArrowLeft` / `ArrowRight` move focus between triggers and `loop` wraps around at the ends; disabled triggers drop out of the focus order.
 - **Full keyboard navigation** — `Enter` / `Space` toggle the menu and `ArrowDown` opens it; arrow keys roam menu items, `ArrowRight` / `ArrowLeft` switch between neighboring top-level menus; `Escape` closes and restores focus.
 - **Hover / pointer switching** — with a menu open, hovering another trigger switches the open menu; hovering a link trigger dismisses the menu and focuses the link.
+- **Click / hover trigger modes** — `trigger` supports `click` (default) and `hover`: `click` opens on click while hovering an open menubar still switches menus; `hover` opens on hover (tune with `delayDuration` / `skipDelayDuration`) and includes a pointer grace area so the pointer can move between the menubar and the content without accidental closes.
+- **Overflow collapsing** — with `collapsible`, when the menubar content is wider than its container, trailing top-level items merge into a trailing "more" menu so the content always fits; customize via `moreLabel` / `moreIcon` / `moreProps` / the `more-trigger` slot.
 - **Link top-level items** — items with `href` / `to` render as links (no dropdown), matching the navigation-menu pattern; link semantics for `target` / `external` / `disabled` are preserved.
 - **Nested submenus** — child items render arbitrarily deep submenus via `MenuSub`, with arrow-key entry/exit and a pointer-grace debounce (100ms open delay).
 - **Controlled / uncontrolled** — with `modelValue`, the open menu follows the prop and emits `update:modelValue`; otherwise `defaultValue` seeds the initial state.
@@ -56,6 +58,10 @@ Properties for the Menubar component.
 - `placement`: Placement. (type `Placement`; optional)
 - `showArrow`: Whether to show an arrow. (type `boolean`; optional)
 - `triggerProps`: Properties forwarded to the trigger element. (type `MenubarTriggerProps`; optional)
+- `collapsible`: When `true`, if the menubar content is wider than its container, the trailing items collapse into a trailing "more" menu so the content always fits inside the container. (type `boolean`; optional)
+- `moreLabel`: Label of the trailing "more" trigger when `collapsible`. (type `string`; default `undefined`; optional)
+- `moreIcon`: Icon of the trailing "more" trigger when `collapsible`. (type `string | import("vue").Component | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, { [...`; optional)
+- `moreProps`: Properties forwarded to the trailing "more" trigger. (type `MenubarTriggerProps`; optional)
 - `portalProps`: Properties forwarded to the portal element. (type `MenuPortalProps`; optional)
 - `contentProps`: Properties forwarded to the content element. (type `MenubarContentProps`; optional)
 - `popupProps`: Properties forwarded to the popup element. (type `MenuPopupProps`; optional)
@@ -64,6 +70,9 @@ Properties for the Menubar component.
 - `defaultValue`: The value of the menu that should be open when initially rendered. (type `T`; optional)
 - `dir`: The reading direction of the menubar when applicable. (type `Direction`; optional)
 - `loop`: When `true`, keyboard navigation loops from last trigger to first and vice versa. (type `boolean`; optional)
+- `trigger`: The trigger type of the menubar. - `click`: The menu will be opened when the trigger is clicked (hovering an open menubar still switches between menus). - `hover`: The menu will be opened when the trigger is hovered. (type `MenubarTriggerType`; default `'click'`; optional)
+- `delayDuration`: The duration from when the pointer enters the trigger until the menu gets opened in hover mode. (type `number`; default `150`; optional)
+- `skipDelayDuration`: How much time a user has to enter another trigger without incurring a delay again. (type `number`; default `300`; optional)
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
 - `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 - `items`: Items rendered by the component. (type `MenuOptionData<T>[]`; required)
@@ -103,6 +112,7 @@ Slots for the Menubar component.
 - `item-trigger-icon`: Custom content for the item trigger icon slot. (type `((props: { item: MenuOptionData<T>; }) => any) | undefined`)
 - `item-link-icon`: Custom content for the item link icon slot. (type `((props: { item: MenuOptionData<T>; }) => any) | undefined`)
 - `trigger`: Custom content for the trigger slot. Optional: `MenubarCompact` renders full default trigger content (icon, label, link icon, trailing slot) when the consumer does not provide it. (type `((data: { item: MenuOptionData<T>; }) => any) | undefined`)
+- `more-trigger`: Custom content for the trailing "more" trigger when `collapsible`. (type `(() => any) | undefined`)
 
 ### MenubarArrow
 
@@ -126,6 +136,10 @@ Properties for the MenubarCompact component.
 - `placement`: Placement. (type `Placement`; optional)
 - `showArrow`: Whether to show an arrow. (type `boolean`; optional)
 - `triggerProps`: Properties forwarded to the trigger element. (type `MenubarTriggerProps`; optional)
+- `collapsible`: When `true`, if the menubar content is wider than its container, the trailing items collapse into a trailing "more" menu so the content always fits inside the container. (type `boolean`; optional)
+- `moreLabel`: Label of the trailing "more" trigger when `collapsible`. (type `string`; default `undefined`; optional)
+- `moreIcon`: Icon of the trailing "more" trigger when `collapsible`. (type `string | import("vue").Component | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, { [...`; optional)
+- `moreProps`: Properties forwarded to the trailing "more" trigger. (type `MenubarTriggerProps`; optional)
 - `portalProps`: Properties forwarded to the portal element. (type `MenuPortalProps`; optional)
 - `contentProps`: Properties forwarded to the content element. (type `MenubarContentProps`; optional)
 - `popupProps`: Properties forwarded to the popup element. (type `MenuPopupProps`; optional)
@@ -134,6 +148,9 @@ Properties for the MenubarCompact component.
 - `defaultValue`: The value of the menu that should be open when initially rendered. (type `T`; optional)
 - `dir`: The reading direction of the menubar when applicable. (type `Direction`; optional)
 - `loop`: When `true`, keyboard navigation loops from last trigger to first and vice versa. (type `boolean`; optional)
+- `trigger`: The trigger type of the menubar. - `click`: The menu will be opened when the trigger is clicked (hovering an open menubar still switches between menus). - `hover`: The menu will be opened when the trigger is hovered. (type `MenubarTriggerType`; default `'click'`; optional)
+- `delayDuration`: The duration from when the pointer enters the trigger until the menu gets opened in hover mode. (type `number`; default `150`; optional)
+- `skipDelayDuration`: How much time a user has to enter another trigger without incurring a delay again. (type `number`; default `300`; optional)
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
 - `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 - `items`: Items rendered by the component. (type `MenuOptionData<T>[]`; required)
@@ -173,6 +190,7 @@ Slots for the MenubarCompact component.
 - `item-trigger-icon`: Custom content for the item trigger icon slot. (type `((props: { item: MenuOptionData<T>; }) => any) | undefined`)
 - `item-link-icon`: Custom content for the item link icon slot. (type `((props: { item: MenuOptionData<T>; }) => any) | undefined`)
 - `trigger`: Custom content for the trigger slot. Optional: `MenubarCompact` renders full default trigger content (icon, label, link icon, trailing slot) when the consumer does not provide it. (type `((data: { item: MenuOptionData<T>; }) => any) | undefined`)
+- `more-trigger`: Custom content for the trailing "more" trigger when `collapsible`. (type `(() => any) | undefined`)
 
 ### MenubarContent
 
@@ -261,6 +279,9 @@ Properties for the MenubarRoot component.
 - `defaultValue`: The value of the menu that should be open when initially rendered. (type `T`; optional)
 - `dir`: The reading direction of the menubar when applicable. (type `Direction`; optional)
 - `loop`: When `true`, keyboard navigation loops from last trigger to first and vice versa. (type `boolean`; optional)
+- `trigger`: The trigger type of the menubar. - `click`: The menu will be opened when the trigger is clicked (hovering an open menubar still switches between menus). - `hover`: The menu will be opened when the trigger is hovered. (type `MenubarTriggerType`; default `'click'`; optional)
+- `delayDuration`: The duration from when the pointer enters the trigger until the menu gets opened in hover mode. (type `number`; default `150`; optional)
+- `skipDelayDuration`: How much time a user has to enter another trigger without incurring a delay again. (type `number`; default `300`; optional)
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
 - `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 
@@ -360,13 +381,14 @@ Properties for the MenubarTrigger component.
 
 ### Runtime considerations
 
-1. **Open state and pointer** — top-level triggers open their menu on `pointerdown`; clicking the same trigger again while open closes it via the dismissable layer ("click again to collapse"). Hovering another trigger switches the open menu.
+1. **Open state and pointer** — in the default mode (`trigger="click"`), top-level triggers open their menu on `pointerdown`; clicking the same trigger again while open closes it via the dismissable layer ("click again to collapse"). Hovering another trigger switches the open menu. With `trigger="hover"` the menu opens on hover; `delayDuration` (default 150ms) controls the open delay and `skipDelayDuration` (default 300ms) the no-delay re-open window.
 2. **Link top-level items** — items with `href` / `to` render no dropdown; clicking or keyboard activation navigates directly. Hovering a link item while a menu is open collapses the menu and moves focus to the link.
 3. **Disabled semantics** — `item.disabled` targets a single top-level item: `aria-disabled`, `tabindex="-1"`, and blocked click/keyboard activation. The compact-level `disabled` disables every trigger (including link triggers). Disabled child items follow menu-layer semantics.
 4. **Portal and positioning** — dropdown content teleports to `body` by default (disable via `portalProps.disabled`). If content appears in the wrong place, check for `transform` / animation-container ancestors; positioning relies on `getBoundingClientRect` measurements.
 5. **Controlled / uncontrolled** — with `modelValue`, internal writes only emit `update:modelValue` and the open menu fully follows the prop; uncontrolled usage seeds the initial state with `defaultValue`.
 6. **Focus restoration** — keyboard paths (`Escape` / arrow switching) restore focus to the trigger precisely; pointer paths (click outside to close) do not move focus, matching the "pointer interaction does not hijack focus" convention.
 7. **RTL** — with `dir="rtl"`, arrow-key semantics mirror (`ArrowLeft` becomes "next") and menu layout flips via logical properties.
+8. **Overflow collapsing** — with `collapsible`, trailing items merge into the "more" menu when the content overflows its container; measurement runs against the real rendered layout, so the container's parent must provide a fixed/constrained width (e.g. `max-w-*`). If the menubar sits in a flex container that does not shrink, set `min-w-0` or a width constraint on the parent.
 
 ## FAQ
 
@@ -393,3 +415,11 @@ Yes — dropdown content reuses the menu layer: `item-checked` slots, `MenuCheck
 ### Why does the menu collapse when hovering a link item?
 
 Link top-level items have no dropdown; on pointer enter the menubar collapses the currently open menu and moves focus to the link — matching Radix Menubar's link-item behavior and avoiding focus lingering on the trigger of a closed menu.
+
+### How do I make the menu open on hover instead of on click?
+
+Pass `trigger="hover"` to `SMenubar`. Hovering a trigger opens its menu (`delayDuration` controls the open delay, `skipDelayDuration` the re-open window); the pointer can move between the menubar and the menu content without accidental closes. Keyboard operation (arrows / Enter / Space / Escape) is identical in both modes.
+
+### What if there are too many menu items to fit?
+
+Pass `collapsible` to `SMenubar`. When the menubar content is wider than its container, trailing top-level items automatically merge into a trailing "more" menu (default label `More`, customizable via `moreLabel` / `moreIcon` / `moreProps`), so the content never exceeds the container width. The collapse state recomputes automatically when the container resizes.
