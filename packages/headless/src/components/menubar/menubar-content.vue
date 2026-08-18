@@ -3,7 +3,7 @@ import { computed, shallowRef } from 'vue';
 import { wrapArray } from '../../shared';
 import { useMenuContext } from '../menu/context';
 import { useForwardListeners, useGraceArea } from '../../composables';
-import type { FocusOutsideEvent } from '../../types';
+import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
 import { MenuContent } from '../menu';
 import { isTriggerLink } from './shared';
 import { useMenubarCollectionContext, useMenubarMenuContext, useMenubarRootContext } from './context';
@@ -61,11 +61,19 @@ const onCloseAutoFocus = (event: Event) => {
   event.preventDefault();
 };
 
-const onFocusOutside = (event: FocusOutsideEvent) => {
-  const target = event.target as HTMLElement;
-  const isMenubarTrigger = getOrderedItems().some(item => item.element.contains(target));
+const isMenubarTriggerTarget = (target: HTMLElement) => getOrderedItems().some(item => item.element.contains(target));
 
-  if (isMenubarTrigger) {
+// Pointer-down and focus on menubar triggers are menu-switching interactions,
+// not outside dismissals — the trigger decides whether to switch, toggle, or
+// keep the menu open.
+const onPointerDownOutside = (event: PointerDownOutsideEvent) => {
+  if (isMenubarTriggerTarget(event.target as HTMLElement)) {
+    event.preventDefault();
+  }
+};
+
+const onFocusOutside = (event: FocusOutsideEvent) => {
+  if (isMenubarTriggerTarget(event.target as HTMLElement)) {
     event.preventDefault();
   }
 };
@@ -122,6 +130,7 @@ const onArrowNavigation = (event: KeyboardEvent) => {
     :aria-labelledby="triggerId"
     v-on="listeners"
     @close-auto-focus="onCloseAutoFocus"
+    @pointer-down-outside="onPointerDownOutside"
     @focus-outside="onFocusOutside"
     @interact-outside="onInteractOutside"
     @entry-focus="onEntryFocus"

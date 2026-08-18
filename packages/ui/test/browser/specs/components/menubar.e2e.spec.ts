@@ -345,6 +345,76 @@ describe('SMenubar (e2e)', () => {
     removeExitAnimation();
   });
 
+  it('switches menus on trigger click in click mode instead of dismissing everything', async () => {
+    const { unmount } = renderComponent(SMenubar, { props: { items } });
+    const fileTrigger = page.getByRole('menuitem', { name: 'File' });
+    const editTrigger = page.getByRole('menuitem', { name: 'Edit' });
+    const newItem = page.getByRole('menuitem', { name: 'New Tab' });
+    const undoItem = page.getByRole('menuitem', { name: 'Undo' });
+
+    await userEvent.click(fileTrigger);
+    await expect.element(newItem).toBeVisible();
+
+    // The pointer approach switches File -> Edit (click-mode contract), and
+    // the click must then KEEP the switched-to menu open. Regression guard:
+    // the open menu's dismissable layer used to treat the trigger pointerdown
+    // as an outside dismissal and close the whole menubar.
+    await userEvent.hover(editTrigger);
+    await userEvent.click(editTrigger);
+    await expect.element(undoItem).toBeVisible();
+
+    // Clicking the same trigger again (no hover switch in between) toggles
+    // the open menu closed.
+    await userEvent.click(editTrigger);
+    await expect.element(page.getByRole('menu')).not.toBeInTheDocument();
+
+    unmount();
+  });
+
+  it('keeps a hover-opened menu open when its trigger is clicked', async () => {
+    const { unmount } = renderComponent(SMenubar, {
+      props: { items, trigger: 'hover', delayDuration: 0 }
+    });
+    const fileTrigger = page.getByRole('menuitem', { name: 'File' });
+    const newItem = page.getByRole('menuitem', { name: 'New Tab' });
+
+    await userEvent.hover(fileTrigger);
+    await expect.element(newItem).toBeVisible();
+
+    // In hover mode a click on the trigger must not dismiss the open menu
+    // (the menu follows hover, not clicks).
+    await userEvent.click(fileTrigger);
+    await expect.element(newItem).toBeVisible();
+
+    unmount();
+  });
+
+  it('unmounts a closing popup whose exit animation is cancelled mid-flight', async () => {
+    const removeExitAnimation = injectMenuExitAnimation();
+    const { unmount } = renderComponent(SMenubar, { props: { items } });
+    const menu = page.getByRole('menu');
+
+    await userEvent.click(page.getByRole('menuitem', { name: 'File' }));
+    await expect.element(menu).toBeVisible();
+    const popup = menu.elements()[0]!;
+
+    // Close, then strip the injected styles once the exit animation has
+    // started: the running animation is cancelled while its animation-name no
+    // longer resolves, so no matching `animationend` will ever arrive.
+    // Regression guard: presence used to stay stuck in `unmountSuspended`
+    // with the popup mounted, visible, and interactive.
+    const exitStarted = new Promise<void>(resolve => {
+      popup.addEventListener('animationstart', () => resolve(), { once: true });
+    });
+    await userEvent.keyboard('{Escape}');
+    await exitStarted;
+    removeExitAnimation();
+
+    await expect.element(menu).not.toBeInTheDocument();
+
+    unmount();
+  });
+
   it('collapses overflowing items into a trailing "more" menu so the content fits', async () => {
     const { unmount } = renderNarrowMenubar(280);
 

@@ -17,6 +17,7 @@ const props = defineProps<MenubarTriggerProps>();
 const {
   isLinkTriggerHovered,
   modelValue,
+  onMenuClose,
   onMenuOpen,
   onMenuToggle,
   setTriggerLink,
@@ -43,6 +44,10 @@ const [triggerElement, setTriggerElement] = useForwardElement(element => {
 });
 
 const isFocused = shallowRef(false);
+// Whether the open menu was switched to this trigger by the current pointer
+// approach (pointerenter). Distinguishes "click confirms a hover switch" from
+// "click toggles the menu closed".
+const hoverSwitched = shallowRef(false);
 const isCurrentTriggerLink = () => isTriggerLink(triggerElement.value);
 
 const onPointerDown = (event: PointerEvent) => {
@@ -59,6 +64,16 @@ const onPointerDown = (event: PointerEvent) => {
   if (hoverable.value) return;
 
   const wasOpen = open.value;
+  const switchedByHover = hoverSwitched.value;
+  hoverSwitched.value = false;
+
+  // Toggle: clicking the trigger of an already-open menu closes it, unless the
+  // pointer approach just switched the open menu here (then the click confirms
+  // the switch and keeps the menu open).
+  if (wasOpen && !switchedByHover) {
+    onMenuClose();
+    return;
+  }
 
   onMenuOpen(value.value);
 
@@ -86,6 +101,11 @@ const onPointerEnter = () => {
     onHoverPointerEnter(value.value);
   } else if (modelValue.value || isLinkTriggerHovered.value) {
     // Click mode: switching between triggers only happens once a menu is open.
+    // Remember that this approach switched the open menu here so the following
+    // pointerdown keeps the switched-to menu open instead of toggling it off.
+    if (modelValue.value && modelValue.value !== value.value) {
+      hoverSwitched.value = true;
+    }
     onMenuOpen(value.value);
   } else {
     return;
