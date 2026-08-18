@@ -73,7 +73,7 @@
     "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
     "@soybeanjs/utils": "^0.1.1",
-    "markstream-vue": "^1.1.4"
+    "markstream-vue": "^1.1.5"
   },
   "devDependencies": {
     "@nuxt/kit": "^4.5.2",

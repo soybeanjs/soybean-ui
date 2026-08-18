@@ -24,7 +24,7 @@
     "@soybeanjs/ui": "workspace:^",
     "@soybeanjs/ui-x": "workspace:^",
     "@tanstack/charts": "^0.14.0",
-    "es-toolkit": "^1.50.0",
+    "es-toolkit": "^1.51.0",
     "pinia": "^4.0.3",
     "sbean": "workspace:^",
     "shiki": "^4.4.3",

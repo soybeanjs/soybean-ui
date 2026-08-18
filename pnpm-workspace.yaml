@@ -22,3 +22,7 @@ allowBuilds:
   esbuild: false
   maplibre-gl: false
   simple-git-hooks: false
+minimumReleaseAgeExclude:
+  - markstream-core@1.1.5
+  - markstream-vue@1.1.5
+  - stream-markdown-parser@1.2.7
