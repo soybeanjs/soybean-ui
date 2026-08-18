@@ -184,7 +184,10 @@ export function useCascaderData<T extends DefinedValue = DefinedValue>(options: 
       for (const node of list) {
         if (node.checked) {
           if (strategy === 'parent') {
-            if (!node.parent || !node.parent.checked) result.push(node);
+            // In checkStrictly mode every checked node is an independent selection,
+            // so the parent fold must not suppress it. In linked mode a checked
+            // parent covers its whole subtree, so its children fold into it.
+            if (isCheckStrictly.value || !node.parent || !node.parent.checked) result.push(node);
           } else {
             const children = node.children ?? [];
             if (!children.some(child => child.checked)) result.push(node);

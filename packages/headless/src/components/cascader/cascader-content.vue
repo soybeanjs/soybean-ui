@@ -44,6 +44,7 @@ const listeners = useForwardListeners(emit);
 
 const {
   open,
+  multiple,
   onOpenChange,
   dataState,
   dir,
@@ -116,7 +117,12 @@ const isEmpty = computed(() => {
       :dir="dir"
       :style="popupStyle"
     >
-      <div data-soybean-cascader-panel :class="panelCls" role="tree">
+      <div
+        data-soybean-cascader-panel
+        :class="panelCls"
+        role="tree"
+        :aria-multiselectable="multiple ? true : undefined"
+      >
         <template v-if="isSearchMode">
           <CascaderMenu :level="0" v-bind="menuProps">
             <template #default="slotProps">

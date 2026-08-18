@@ -16,6 +16,7 @@ const props = withDefaults(defineProps<CascaderTriggerProps>(), {
 
 const {
   open,
+  multiple,
   dataState,
   disabled,
   filterable,
@@ -67,6 +68,7 @@ const onKeyDown = (event: KeyboardEvent) => {
       aria-haspopup="tree"
       :aria-activedescendant="highlightedId ?? undefined"
       :aria-disabled="isDisabled || undefined"
+      :data-multiple="multiple ? '' : undefined"
       :data-state="dataState"
       :data-disabled="isDisabled ? '' : undefined"
       :tabindex="isFilterable ? -1 : isDisabled ? undefined : 0"

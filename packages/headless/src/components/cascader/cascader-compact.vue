@@ -178,7 +178,12 @@ const handleChange = (value: CascaderModelValue | undefined, nodes: CascaderNode
             >
               <Icon icon="lucide:check" />
             </span>
-            <span v-if="!slotProps.node.isLeaf" data-soybean-cascader-option-arrow :class="optionArrowCls">
+            <span
+              v-if="!slotProps.node.isLeaf"
+              data-soybean-cascader-option-arrow
+              :class="optionArrowCls"
+              @click.stop="slotProps.expand"
+            >
               <Icon v-if="slotProps.loading" icon="lucide:loader-circle" class="animate-spin" />
               <Icon v-else icon="lucide:chevron-right" />
             </span>

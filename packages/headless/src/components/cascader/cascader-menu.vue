@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import type { DefinedValue } from '../../types';
+import { isCascaderNodeAncestor } from './shared';
 import { useCascaderRootContext, useCascaderUi } from './context';
 import CascaderOption from './cascader-option.vue';
 import type { CascaderMenuProps, CascaderNode } from './types';
@@ -25,7 +26,8 @@ const {
   loadingKeys,
   isChecked,
   isIndeterminate,
-  isSelected
+  isSelected,
+  expandNode
 } = useCascaderRootContext('CascaderMenu');
 
 const cls = useCascaderUi('menu');
@@ -64,6 +66,12 @@ const onScroll = (event: Event) => {
   scrollTop.value = (event.target as HTMLElement).scrollTop;
 };
 
+/** Whether a descendant of the node is currently highlighted. */
+const isChildActive = (node: CascaderNode<DefinedValue>) => {
+  const highlightedNode = highlighted.value;
+  return highlightedNode ? isCascaderNodeAncestor(highlightedNode, node) : false;
+};
+
 /** Slot props forwarded to every option, matching the option slot contract. */
 const getSlotProps = (node: CascaderNode<DefinedValue>) => ({
   node,
@@ -71,7 +79,9 @@ const getSlotProps = (node: CascaderNode<DefinedValue>) => ({
   indeterminate: isIndeterminate(node),
   selected: isSelected(node),
   highlighted: highlighted.value?.uid === node.uid,
-  loading: loadingKeys.value.has(node.uid)
+  childActive: isChildActive(node),
+  loading: loadingKeys.value.has(node.uid),
+  expand: () => expandNode(node)
 });
 </script>
 

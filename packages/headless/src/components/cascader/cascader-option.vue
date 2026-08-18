@@ -3,7 +3,7 @@ import { computed, nextTick } from 'vue';
 import { handleAndDispatchCustomEvent } from '../../shared';
 import type { DefinedValue } from '../../types';
 import { Primitive } from '../primitive';
-import { CASCADER_EXPAND_EVENT, CASCADER_SELECT_EVENT } from './shared';
+import { CASCADER_EXPAND_EVENT, CASCADER_SELECT_EVENT, isCascaderNodeAncestor } from './shared';
 import { useCascaderRootContext, useCascaderUi } from './context';
 import type { CascaderOptionProps, CascaderOptionEmits, CascaderSelectEvent, CascaderExpandEvent } from './types';
 
@@ -26,7 +26,8 @@ const {
   isSelected,
   onOptionSelect,
   onOptionHover,
-  setHighlighted
+  setHighlighted,
+  expandNode
 } = useCascaderRootContext('CascaderOption');
 
 const cls = useCascaderUi('option');
@@ -34,6 +35,10 @@ const cls = useCascaderUi('option');
 const isHighlighted = computed(() => highlighted.value?.uid === props.node.uid);
 const isLoading = computed(() => loadingKeys.value.has(props.node.uid));
 const isExpanded = computed(() => menus.value[props.node.level + 1] === props.node.children);
+const isChildActive = computed(() => {
+  const node = highlighted.value;
+  return node ? isCascaderNodeAncestor(node, props.node) : false;
+});
 
 const dataState = computed(() => {
   if (isSelected(props.node)) return 'selected';
@@ -87,6 +92,16 @@ function onPointerMove(event: PointerEvent) {
 function onClick(event: MouseEvent) {
   onCustomSelect(event);
 }
+
+/**
+ * Expands the children column without toggling the selection. Used by the expand
+ * arrow of non-leaf nodes so that expanding and selecting stay independent.
+ */
+function onExpandClick() {
+  if (props.node.disabled) return;
+  setHighlighted(props.node);
+  expandNode(props.node);
+}
 </script>
 
 <template>
@@ -101,6 +116,8 @@ function onClick(event: MouseEvent) {
     :data-state="dataState"
     :data-selected="isSelected(node) ? '' : undefined"
     :data-highlighted="isHighlighted ? '' : undefined"
+    :data-child-active="isChildActive ? '' : undefined"
+    :data-leaf="node.isLeaf ? '' : undefined"
     :data-disabled="node.disabled ? '' : undefined"
     :data-loading="isLoading ? '' : undefined"
     @pointermove="onPointerMove"
@@ -112,7 +129,9 @@ function onClick(event: MouseEvent) {
       :indeterminate="isIndeterminate(node)"
       :selected="isSelected(node)"
       :highlighted="isHighlighted"
+      :child-active="isChildActive"
       :loading="isLoading"
+      :expand="onExpandClick"
     />
   </Primitive>
 </template>

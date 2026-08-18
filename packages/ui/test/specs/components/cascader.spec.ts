@@ -266,6 +266,55 @@ describe('SCascader', () => {
       wrapper.unmount();
     });
 
+    it('marks the ancestors of the highlighted node with data-child-active', async () => {
+      const wrapper = mount(SCascader, {
+        props: { options },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      // Expand 浙江 to reveal the second column, then highlight one of its children.
+      await new DOMWrapper(findTreeItem('浙江') as Element).trigger('click');
+      await nextTick();
+
+      const hangzhou = findTreeItem('杭州');
+      expect(hangzhou).toBeTruthy();
+      await new DOMWrapper(hangzhou as Element).trigger('pointermove');
+      await nextTick();
+
+      // The parent of the highlighted node is emphasized, sibling paths are not.
+      expect(findTreeItem('浙江')?.getAttribute('data-child-active')).toBe('');
+      expect(findTreeItem('江苏')?.getAttribute('data-child-active')).toBeNull();
+      wrapper.unmount();
+    });
+
+    it('marks leaf options with data-leaf and non-leaf options without it', async () => {
+      const wrapper = mount(SCascader, {
+        props: { options },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      // Root nodes are non-leaf, so no data-leaf.
+      expect(findTreeItem('浙江')?.getAttribute('data-leaf')).toBeNull();
+      expect(findTreeItem('江苏')?.getAttribute('data-leaf')).toBeNull();
+
+      // Drill down to a leaf.
+      await new DOMWrapper(findTreeItem('浙江') as Element).trigger('click');
+      await nextTick();
+      await new DOMWrapper(findTreeItem('宁波') as Element).trigger('click');
+      await nextTick();
+
+      const district = findTreeItem('海曙区');
+      expect(district).toBeTruthy();
+      expect(district?.getAttribute('data-leaf')).toBe('');
+      wrapper.unmount();
+    });
+
     it('selects a node with ArrowDown + Enter in checkStrictly mode', async () => {
       const wrapper = mount(SCascader, {
         props: {
@@ -438,6 +487,105 @@ describe('SCascader', () => {
       expect(document.body.querySelector('[data-soybean-cascader-tag]')).toBeNull();
       wrapper.unmount();
     });
+
+    it('expands a node via its arrow without toggling the check state', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options,
+          multiple: true
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      const zhejiang = findTreeItem('浙江');
+      expect(zhejiang).toBeTruthy();
+      const arrow = zhejiang?.querySelector('[data-soybean-cascader-option-arrow]');
+      expect(arrow).toBeTruthy();
+
+      await new DOMWrapper(arrow as Element).trigger('click');
+      await nextTick();
+
+      // The children column is expanded...
+      expect(document.body.textContent).toContain('杭州');
+      // ...but the click on the expand icon must not toggle the selection.
+      expect(document.body.querySelector('[data-soybean-cascader-tag]')).toBeNull();
+      expect(wrapper.emitted('update:modelValue')).toBeUndefined();
+      wrapper.unmount();
+    });
+
+    it('selects a second-level node independently under a checked parent (checkStrictly + parent strategy)', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options,
+          multiple: true,
+          checkStrictly: true,
+          showCheckedStrategy: 'parent'
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      // Select the top-level 浙江 first.
+      await new DOMWrapper(findTreeItem('浙江') as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+      await nextTick();
+
+      // Then select its second-level child 杭州 independently.
+      const hangzhou = findTreeItem('杭州');
+      expect(hangzhou).toBeTruthy();
+      await new DOMWrapper(hangzhou as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+      await nextTick();
+
+      // checkStrictly keeps both nodes: the parent fold must not drop 杭州.
+      expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual([['zhejiang', 'hangzhou']]);
+      expect(findTreeItem('杭州')?.getAttribute('data-state')).toBe('selected');
+      wrapper.unmount();
+    });
+
+    it('selects a leaf independently and marks parent rows as indeterminate', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options,
+          multiple: true
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      // Expand 浙江 and 杭州 via their arrows (expanding must not select).
+      await new DOMWrapper(
+        findTreeItem('浙江')?.querySelector('[data-soybean-cascader-option-arrow]') as Element
+      ).trigger('click');
+      await nextTick();
+      await new DOMWrapper(
+        findTreeItem('杭州')?.querySelector('[data-soybean-cascader-option-arrow]') as Element
+      ).trigger('click');
+      await nextTick();
+
+      // Select a single leaf.
+      await new DOMWrapper(findTreeItem('西湖区') as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+      await nextTick();
+
+      const selected = findTreeItem('西湖区');
+      expect(selected?.getAttribute('data-selected')).toBe('');
+      expect(selected?.getAttribute('data-leaf')).toBe('');
+      // Parent rows are indeterminate and not independently selected.
+      expect(findTreeItem('杭州')?.getAttribute('data-state')).toBe('indeterminate');
+      expect(findTreeItem('杭州')?.getAttribute('data-selected')).toBeNull();
+      wrapper.unmount();
+    });
   });
 
   describe('filterable', () => {
@@ -462,6 +610,42 @@ describe('SCascader', () => {
 
       expect(document.body.querySelector('[role="treeitem"]')?.textContent).toContain('西湖区');
       expect(document.body.textContent).not.toContain('宁波');
+      wrapper.unmount();
+    });
+
+    it('shows the selected content in the input and fades it on focus', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options,
+          filterable: true
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      const input = document.body.querySelector<HTMLInputElement>('[data-soybean-cascader-search-input]');
+      expect(input).toBeTruthy();
+
+      await new DOMWrapper(input as Element).setValue('西湖');
+      await flushPromises();
+      await nextTick();
+
+      await new DOMWrapper(findTreeItem('西湖区') as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+      await nextTick();
+
+      // After selection the input shows the selected path instead of the search text.
+      expect(input?.value).toBe('浙江 / 杭州 / 西湖区');
+      // The panel closed and the input lost focus, so the text is not faded.
+      expect(input?.getAttribute('data-faded')).toBeNull();
+
+      // Focusing the input fades the selected content.
+      await new DOMWrapper(input as Element).trigger('focus');
+      await nextTick();
+      expect(input?.getAttribute('data-faded')).toBeDefined();
       wrapper.unmount();
     });
 

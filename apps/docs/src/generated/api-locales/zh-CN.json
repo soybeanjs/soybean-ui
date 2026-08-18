@@ -1602,6 +1602,8 @@
         "cascadercompactoptionslotprops": {
           "members": {
             "checked": "该节点是否已被选中。",
+            "childactive": "该节点的后代节点当前是否处于高亮状态（面包屑强调）。",
+            "expand": "展开该节点的子列，而不切换其选中状态。",
             "highlighted": "该节点当前是否被高亮显示。",
             "indeterminate": "该节点是否处于未定状态。",
             "loading": "该节点当前是否正在加载其子节点。",

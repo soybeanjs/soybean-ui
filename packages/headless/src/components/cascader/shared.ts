@@ -169,6 +169,24 @@ export function getCascaderAncestorPath<T extends DefinedValue = DefinedValue>(
 }
 
 /**
+ * Whether `ancestor` is an ancestor of `node` (the node itself is excluded).
+ *
+ * Used to emphasize the parents of the currently highlighted node across the
+ * linked columns, mirroring the TreeMenu `child-active` behavior.
+ */
+export function isCascaderNodeAncestor<T extends DefinedValue = DefinedValue>(
+  node: CascaderNode<T>,
+  ancestor: CascaderNode<T>
+): boolean {
+  let current = node.parent;
+  while (current) {
+    if (current.uid === ancestor.uid) return true;
+    current = current.parent;
+  }
+  return false;
+}
+
+/**
  * Whether the children of a node still need to be loaded (lazy mode).
  */
 export function isLazyCascaderNode<T extends DefinedValue = DefinedValue>(node: CascaderNode<T>): boolean {

@@ -2987,7 +2987,7 @@
         "kind": "slotProps",
         "name": "CascaderCompactOptionSlotProps",
         "type": "Interface CascaderCompactOptionSlotProps<T>",
-        "resolvedType": "{ node: CascaderNode<T>; checked: boolean; indeterminate: boolean; selected: boolean; highlighted: boolean; loading: boolean }",
+        "resolvedType": "{ node: CascaderNode<T>; checked: boolean; indeterminate: boolean; selected: boolean; highlighted: boolean; childActive: boolean; loading: boolean; expand: () => void }",
         "description": "Slot properties for the CascaderCompact option.",
         "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercompactoptionslotprops.slotprops",
         "sourcePath": "packages/headless/src/components/cascader/types.ts",
@@ -3229,11 +3229,33 @@
             "referencedTypes": []
           },
           {
+            "name": "childActive",
+            "type": "boolean",
+            "required": true,
+            "description": "Whether a descendant of the node is currently highlighted (breadcrumb emphasis).",
+            "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercompactoptionslotprops.members.childactive",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/cascader/types.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "loading",
             "type": "boolean",
             "required": true,
             "description": "Whether the node is currently loading its children.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercompactoptionslotprops.members.loading",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/cascader/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "expand",
+            "type": "() => void",
+            "required": true,
+            "description": "Expands the children column of the node without toggling its selection.",
+            "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercompactoptionslotprops.members.expand",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/cascader/types.ts",

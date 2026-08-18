@@ -1602,6 +1602,8 @@
         "cascadercompactoptionslotprops": {
           "members": {
             "checked": "Whether the node is checked.",
+            "childactive": "Whether a descendant of the node is currently highlighted (breadcrumb emphasis).",
+            "expand": "Expands the children column of the node without toggling its selection.",
             "highlighted": "Whether the node is currently highlighted.",
             "indeterminate": "Whether the node is in an indeterminate state.",
             "loading": "Whether the node is currently loading its children.",
