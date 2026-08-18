@@ -33,12 +33,23 @@ export function usePresence(
    * animation.
    */
   const handleAnimationEnd = (event: AnimationEvent) => {
+    if (event.target !== elRef.value) return;
+
     const currentAnimationName = getAnimationName(styles);
     const isCurrentAnimation = currentAnimationName.includes(CSS.escape(event.animationName));
-    if (event.target === elRef.value && isCurrentAnimation) {
+
+    if (isCurrentAnimation) {
       // With React 18 concurrency this update is applied
       // a frame after the animation ends, creating a flash of visible content.
       // By manually flushing we ensure they sync within a frame, removing the flash.
+      send('ANIMATION_END');
+      return;
+    }
+
+    // A cancelled animation whose animation-name no longer resolves (e.g. its
+    // styles were removed mid-flight) never fires a matching `animationend`;
+    // without this the machine would stay stuck in `unmountSuspended` forever.
+    if (currentAnimationName === 'none') {
       send('ANIMATION_END');
     }
   };
