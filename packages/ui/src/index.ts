@@ -18,6 +18,7 @@ export * from './components/carousel';
 export * from './components/cascader';
 export * from './components/checkbox';
 export * from './components/clipboard';
+export * from './components/code';
 export * from './components/collapsible';
 export * from './components/color-area';
 export * from './components/color-field';

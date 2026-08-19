@@ -2058,6 +2058,33 @@
         },
         "clipboardstate": "ClipboardState 的状态值"
       },
+      "packages_headless_src_components_code_types": {
+        "codecopyslotprops": {
+          "members": {
+            "copied": "无论代码是否直接复制而来。",
+            "copy": "将代码复制到剪贴板。"
+          },
+          "slotprops": "CodeRoot 复制按钮插槽暴露的插槽属性。"
+        },
+        "coderootemits": {
+          "callables": {
+            "copied": "当代码被复制时触发。"
+          },
+          "emits": "CodeRoot 组件的事件。"
+        },
+        "coderootprops": {
+          "members": {
+            "code": "待显示的源代码。",
+            "copyable": "是否提供“复制”按钮。",
+            "copytext": "当 `copyable` 时要复制的文本。默认为 `code`。",
+            "highlight": "一个返回 HTML 的语法高亮函数。若省略该函数，代码将\n渲染为转义后的纯文本。",
+            "language": "传递给代码高亮器的代码语言。",
+            "linenumbers": "是否显示行号。"
+          },
+          "props": "CodeRoot 组件的属性。"
+        },
+        "codeui": "Code 组件的 UI 类重写。"
+      },
       "packages_headless_src_components_collapsible_types": {
         "collapsiblecontentprops": {
           "members": {
@@ -10599,6 +10626,23 @@
           },
           "props": "Clipboard 组件的属性。"
         }
+      },
+      "packages_ui_src_components_code_types": {
+        "codeprops": {
+          "members": {
+            "class": "根类",
+            "code": "待显示的源代码。",
+            "copyable": "是否提供“复制”按钮。",
+            "copytext": "当 `copyable` 时要复制的文本。默认为 `code`。",
+            "highlight": "一个返回 HTML 的语法高亮函数。若省略该函数，代码将\n渲染为转义后的纯文本。",
+            "language": "传递给代码高亮器的代码语言。",
+            "linenumbers": "是否显示行号。",
+            "ui": "该组件的按槽类重写。",
+            "variant": "代码的视觉呈现形式。"
+          },
+          "props": "Code 组件的属性。"
+        },
+        "codevariant": "代码块的视觉呈现形式。"
       },
       "packages_ui_src_components_collapsible_types": {
         "collapsibleemits": {

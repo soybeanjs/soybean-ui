@@ -19,6 +19,7 @@ export const components = {
   cascader: ['SCascader'],
   checkbox: ['SCheckboxGroup', 'SCheckbox', 'SCheckboxCardGroup', 'SCheckboxCard'],
   clipboard: ['SClipboard'],
+  code: ['SCode'],
   collapsible: ['SCollapsible', 'SCollapsibleTrigger', 'SCollapsibleContent'],
   colorArea: ['SColorArea'],
   colorField: ['SColorField'],

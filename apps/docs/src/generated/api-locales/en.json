@@ -2058,6 +2058,33 @@
         },
         "clipboardstate": "State values for ClipboardState."
       },
+      "packages_headless_src_components_code_types": {
+        "codecopyslotprops": {
+          "members": {
+            "copied": "Whether the code was just copied.",
+            "copy": "Copies the code to the clipboard."
+          },
+          "slotprops": "Slot props exposed by the CodeRoot copy button slot."
+        },
+        "coderootemits": {
+          "callables": {
+            "copied": "Emitted when the code has been copied."
+          },
+          "emits": "Events for the CodeRoot component."
+        },
+        "coderootprops": {
+          "members": {
+            "code": "The source code to display.",
+            "copyable": "Whether a copy button is available.",
+            "copytext": "The text to copy when `copyable`. Defaults to `code`.",
+            "highlight": "A syntax-highlighting function returning HTML. When omitted the code is\nrendered as escaped plain text.",
+            "language": "The language of the code, passed to the highlighter.",
+            "linenumbers": "Whether to render line numbers."
+          },
+          "props": "Properties for the CodeRoot component."
+        },
+        "codeui": "UI class overrides for the Code component."
+      },
       "packages_headless_src_components_collapsible_types": {
         "collapsiblecontentprops": {
           "members": {
@@ -10599,6 +10626,23 @@
           },
           "props": "Properties for the Clipboard component."
         }
+      },
+      "packages_ui_src_components_code_types": {
+        "codeprops": {
+          "members": {
+            "class": "root class",
+            "code": "The source code to display.",
+            "copyable": "Whether a copy button is available.",
+            "copytext": "The text to copy when `copyable`. Defaults to `code`.",
+            "highlight": "A syntax-highlighting function returning HTML. When omitted the code is\nrendered as escaped plain text.",
+            "language": "The language of the code, passed to the highlighter.",
+            "linenumbers": "Whether to render line numbers.",
+            "ui": "Per-slot class overrides for the component.",
+            "variant": "The visual variant of the code."
+          },
+          "props": "Properties for the Code component."
+        },
+        "codevariant": "The visual variant of the code block."
       },
       "packages_ui_src_components_collapsible_types": {
         "collapsibleemits": {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T10:08:07.816Z",
+  "generatedAt": "2026-08-19T10:16:39.825Z",
   "packages": {
     "ui": {
       "components": {
@@ -248,6 +248,11 @@
           "component": "clipboard",
           "file": "clipboard.json",
           "symbols": ["Clipboard"]
+        },
+        "code": {
+          "component": "code",
+          "file": "code.json",
+          "symbols": ["Code", "CodeCopy", "CodeRoot"]
         },
         "collapsible": {
           "component": "collapsible",

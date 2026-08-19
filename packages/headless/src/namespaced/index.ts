@@ -134,6 +134,7 @@ import {
   CheckboxLabel,
   CheckboxRoot,
   Clipboard,
+  CodeRoot,
   CollapsibleContent,
   CollapsibleRoot,
   CollapsibleTrigger,
@@ -910,6 +911,8 @@ export const Checkbox = {
 };
 
 export { Clipboard };
+
+export { CodeRoot };
 
 export const Collapsible = {
   Root: CollapsibleRoot,

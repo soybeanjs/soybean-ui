@@ -114,6 +114,7 @@ export const menuData: MenuData[] = [
       'colorSwatch',
       'collapsible',
       'card',
+      'code',
       'descriptions',
       'empty',
       'image',

@@ -137,6 +137,7 @@ export const components = {
     'CheckboxLabel'
   ],
   clipboard: ['Clipboard'],
+  code: ['CodeRoot'],
   collapsible: ['CollapsibleRoot', 'CollapsibleContent', 'CollapsibleTrigger'],
   colorArea: ['ColorAreaCompact', 'ColorAreaRoot', 'ColorAreaArea', 'ColorAreaThumb'],
   colorField: ['ColorFieldCompact', 'ColorFieldRoot', 'ColorFieldInput'],

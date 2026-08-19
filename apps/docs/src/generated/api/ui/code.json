@@ -1,0 +1,306 @@
+{
+  "component": "code",
+  "symbols": {
+    "Code": {
+      "props": {
+        "kind": "props",
+        "name": "CodeProps",
+        "type": "Interface CodeProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; variant?: CodeVariant; ui?: Partial<CodeUi>; code?: string; language?: string; lineNumbers?: boolean; copyable?: boolean; copyText?: string; highlight?: ((code: string, language?: string) => string) }",
+        "description": "Properties for the Code component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_code_types.codeprops.props",
+        "sourcePath": "packages/ui/src/components/code/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_src_components_code_types.codeprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/code/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "variant",
+            "type": "CodeVariant",
+            "required": false,
+            "description": "The visual variant of the code.",
+            "descriptionKey": "api.generated.packages_ui_src_components_code_types.codeprops.members.variant",
+            "default": "'block'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/code/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CodeVariant",
+                "kind": "typeAlias",
+                "type": "'inline' | 'block'",
+                "resolvedType": "'inline' | 'block'",
+                "description": "The visual variant of the code block.",
+                "descriptionKey": "api.generated.packages_ui_src_components_code_types.codevariant",
+                "sourcePath": "packages/ui/src/components/code/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<CodeUi>",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_code_types.codeprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/code/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CodeUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; code: ClassValue; lineNumbers: ClassValue; copyButton: ClassValue; }",
+                "resolvedType": null,
+                "description": "UI class overrides for the Code component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_code_types.codeui",
+                "sourcePath": "packages/headless/src/components/code/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "code",
+            "type": "string",
+            "required": false,
+            "description": "The source code to display.",
+            "descriptionKey": "api.generated.packages_ui_src_components_code_types.codeprops.members.code",
+            "default": null,
+            "inheritedFrom": "code",
+            "sourcePath": "packages/headless/src/components/code/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "language",
+            "type": "string",
+            "required": false,
+            "description": "The language of the code, passed to the highlighter.",
+            "descriptionKey": "api.generated.packages_ui_src_components_code_types.codeprops.members.language",
+            "default": null,
+            "inheritedFrom": "language",
+            "sourcePath": "packages/headless/src/components/code/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "lineNumbers",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to render line numbers.",
+            "descriptionKey": "api.generated.packages_ui_src_components_code_types.codeprops.members.linenumbers",
+            "default": null,
+            "inheritedFrom": "lineNumbers",
+            "sourcePath": "packages/headless/src/components/code/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "copyable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether a copy button is available.",
+            "descriptionKey": "api.generated.packages_ui_src_components_code_types.codeprops.members.copyable",
+            "default": null,
+            "inheritedFrom": "copyable",
+            "sourcePath": "packages/headless/src/components/code/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "copyText",
+            "type": "string",
+            "required": false,
+            "description": "The text to copy when `copyable`. Defaults to `code`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_code_types.codeprops.members.copytext",
+            "default": null,
+            "inheritedFrom": "copyText",
+            "sourcePath": "packages/headless/src/components/code/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "highlight",
+            "type": "((code: string, language?: string) => string)",
+            "required": false,
+            "description": "A syntax-highlighting function returning HTML. When omitted the code is\nrendered as escaped plain text.",
+            "descriptionKey": "api.generated.packages_ui_src_components_code_types.codeprops.members.highlight",
+            "default": null,
+            "inheritedFrom": "highlight",
+            "sourcePath": "packages/headless/src/components/code/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "CodeCopy": {
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "CodeCopySlotProps",
+        "type": "Interface CodeCopySlotProps",
+        "resolvedType": "{ copied: boolean; copy: () => Promise<void> }",
+        "description": "Slot props exposed by the CodeRoot copy button slot.",
+        "descriptionKey": "api.generated.packages_headless_src_components_code_types.codecopyslotprops.slotprops",
+        "sourcePath": "packages/headless/src/components/code/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "copied",
+            "type": "boolean",
+            "required": true,
+            "description": "Whether the code was just copied.",
+            "descriptionKey": "api.generated.packages_headless_src_components_code_types.codecopyslotprops.members.copied",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/code/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "copy",
+            "type": "() => Promise<void>",
+            "required": true,
+            "description": "Copies the code to the clipboard.",
+            "descriptionKey": "api.generated.packages_headless_src_components_code_types.codecopyslotprops.members.copy",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/code/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "CodeRoot": {
+      "props": {
+        "kind": "props",
+        "name": "CodeRootProps",
+        "type": "Interface CodeRootProps",
+        "resolvedType": "{ code?: string; language?: string; lineNumbers?: boolean; copyable?: boolean; copyText?: string; highlight?: ((code: string, language?: string) => string) }",
+        "description": "Properties for the CodeRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_code_types.coderootprops.props",
+        "sourcePath": "packages/headless/src/components/code/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "code",
+            "type": "string",
+            "required": false,
+            "description": "The source code to display.",
+            "descriptionKey": "api.generated.packages_headless_src_components_code_types.coderootprops.members.code",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/code/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "language",
+            "type": "string",
+            "required": false,
+            "description": "The language of the code, passed to the highlighter.",
+            "descriptionKey": "api.generated.packages_headless_src_components_code_types.coderootprops.members.language",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/code/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "lineNumbers",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to render line numbers.",
+            "descriptionKey": "api.generated.packages_headless_src_components_code_types.coderootprops.members.linenumbers",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/code/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "copyable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether a copy button is available.",
+            "descriptionKey": "api.generated.packages_headless_src_components_code_types.coderootprops.members.copyable",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/code/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "copyText",
+            "type": "string",
+            "required": false,
+            "description": "The text to copy when `copyable`. Defaults to `code`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_code_types.coderootprops.members.copytext",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/code/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "highlight",
+            "type": "((code: string, language?: string) => string)",
+            "required": false,
+            "description": "A syntax-highlighting function returning HTML. When omitted the code is\nrendered as escaped plain text.",
+            "descriptionKey": "api.generated.packages_headless_src_components_code_types.coderootprops.members.highlight",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/code/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "CodeRootEmits",
+        "type": "TypeAlias CodeRootEmits",
+        "resolvedType": "{ copied: [text: string] }",
+        "description": "Events for the CodeRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_code_types.coderootemits.emits",
+        "sourcePath": "packages/headless/src/components/code/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "copied",
+            "type": "[text: string]",
+            "parameters": "text: string",
+            "required": true,
+            "description": "Emitted when the code has been copied.",
+            "descriptionKey": "api.generated.packages_headless_src_components_code_types.coderootemits.callables.copied",
+            "sourcePath": "packages/headless/src/components/code/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    }
+  }
+}
