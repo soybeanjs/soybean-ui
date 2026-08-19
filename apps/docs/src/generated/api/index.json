@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-18T14:15:36.082Z",
+  "generatedAt": "2026-08-19T08:42:22.049Z",
   "packages": {
     "ui": {
       "components": {
@@ -398,6 +398,8 @@
             "DialogContent",
             "DialogDescription",
             "DialogFooter",
+            "DialogFullscreen",
+            "DialogFullscreenState",
             "DialogHeader",
             "DialogOverlay",
             "DialogPopup",

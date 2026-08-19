@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "BottomSheetProps",
         "type": "TypeAlias BottomSheetProps: BottomSheetCompactProps & { class?: ClassValue; size?: ThemeSize; ui?: Partial<BottomSheetUi> }",
-        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: BottomSheetTriggerProps; overlayProps?: BottomSheetOverlayProps; portalProps?: BottomSheetPortalProps; popupProps?: BottomSheetPopupProps; headerProps?: BottomSheetHeaderProps; contentProps?: BottomSheetContentProps; footerProps?: BottomSheetFooterProps; titleProps?: BottomSheetTitleProps; descriptionProps?: BottomSheetDescriptionProps; closeProps?: BottomSheetCloseProps; cancelProps?: BottomSheetCancelProps; confirmProps?: BottomSheetConfirmProps; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; open?: boolean; defaultOpen?: boolean; modal?: boolean; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number; handleProps?: BottomSheetHandleProps; class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<BottomSheetUi> }",
+        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; showFullscreen?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: BottomSheetTriggerProps; overlayProps?: BottomSheetOverlayProps; portalProps?: BottomSheetPortalProps; popupProps?: BottomSheetPopupProps; headerProps?: BottomSheetHeaderProps; contentProps?: BottomSheetContentProps; footerProps?: BottomSheetFooterProps; titleProps?: BottomSheetTitleProps; descriptionProps?: BottomSheetDescriptionProps; closeProps?: BottomSheetCloseProps; fullscreenProps?: DialogFullscreenProps; cancelProps?: BottomSheetCancelProps; confirmProps?: BottomSheetConfirmProps; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; draggable?: boolean; fullscreen?: boolean; defaultFullscreen?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number; handleProps?: BottomSheetHandleProps; class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<BottomSheetUi> }",
         "description": "Properties for the BottomSheet component.",
         "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetprops.props",
         "sourcePath": "packages/ui/src/components/bottom-sheet/types.ts",
@@ -65,6 +65,17 @@
             "required": false,
             "description": "Whether show the close button in the header of the dialog.",
             "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetprops.members.showclose",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showFullscreen",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether show the fullscreen toggle button in the header of the dialog.",
+            "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetprops.members.showfullscreen",
             "default": "true",
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
@@ -557,6 +568,76 @@
             ]
           },
           {
+            "name": "fullscreenProps",
+            "type": "DialogFullscreenProps",
+            "required": false,
+            "description": "Properties forwarded to the fullscreen element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetprops.members.fullscreenprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DialogFullscreenProps",
+                "kind": "interface",
+                "type": "DialogFullscreenProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the DialogFullscreen component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogfullscreenprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogfullscreenprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogfullscreenprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogfullscreenprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogfullscreenprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "cancelProps",
             "type": "BottomSheetCancelProps",
             "required": false,
@@ -756,6 +837,39 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "draggable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the dialog can be moved by dragging its header.",
+            "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetprops.members.draggable",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fullscreen",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetprops.members.fullscreen",
+            "default": "undefined",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultFullscreen",
+            "type": "boolean",
+            "required": false,
+            "description": "The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.",
+            "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetprops.members.defaultfullscreen",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": []
           },
           {
             "name": "open",
@@ -1058,7 +1172,7 @@
               {
                 "name": "BottomSheetUi",
                 "kind": "typeAlias",
-                "type": "{ header: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; icon: ClassValue; close: ClassValue; popup: ClassValue; cancel: ClassValue; overlay: ClassValue; footer: ClassValue; confirm: ClassValue; handle: ClassValue; }",
+                "type": "{ header: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; icon: ClassValue; close: ClassValue; popup: ClassValue; cancel: ClassValue; overlay: ClassValue; footer: ClassValue; fullscreen: ClassValue; confirm: ClassValue; handle: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the BottomSheet component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetui",
@@ -1078,7 +1192,7 @@
         "kind": "emits",
         "name": "BottomSheetEmits",
         "type": "TypeAlias BottomSheetEmits: BottomSheetCompactEmits",
-        "resolvedType": "{ cancel: [event: MouseEvent]; confirm: [event: MouseEvent]; \"update:open\": [value: boolean]; click: [event: PointerEvent]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; drag: [percentageDragged: number]; release: [open: boolean]; close: []; \"update:activeSnapPoint\": [val: string | number | null] }",
+        "resolvedType": "{ cancel: [event: MouseEvent]; fullscreen: [event: MouseEvent]; confirm: [event: MouseEvent]; \"update:open\": [value: boolean]; \"update:fullscreen\": [value: boolean]; click: [event: PointerEvent]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; drag: [percentageDragged: number]; release: [open: boolean]; close: []; \"update:activeSnapPoint\": [val: string | number | null] }",
         "description": "Events for the BottomSheet component.",
         "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetemits.emits",
         "sourcePath": "packages/ui/src/components/bottom-sheet/types.ts",
@@ -1092,6 +1206,30 @@
             "required": true,
             "description": "Event handler called when the dialog is requested to be canceled.",
             "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetemits.callables.cancel",
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "fullscreen",
+            "type": "[event: MouseEvent]",
+            "parameters": "event: MouseEvent",
+            "required": true,
+            "description": "Event handler called when the fullscreen state of the dialog is requested to be toggled.",
+            "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetemits.callables.fullscreen",
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
@@ -1140,6 +1278,16 @@
             "required": true,
             "description": "Event handler called when the open state of the dialog changes.",
             "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetemits.callables.update_open",
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:fullscreen",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "Event handler called when the fullscreen state of the dialog changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetemits.callables.update_fullscreen",
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": []
           },
@@ -1370,7 +1518,7 @@
             "name": "BottomSheetCompactEmits",
             "kind": "typeAlias",
             "type": "Omit<import(\"@soybeanjs/headless\").DialogCompactEmits, 'close'> & import(\"@soybeanjs/headless\").DialogRootEmits & { drag: [percentageDragged: number]; release: [open: boolean]; close: []; 'update:activeSnapPoint': [val: string | number | null]; }",
-            "resolvedType": "{ cancel: [event: MouseEvent]; confirm: [event: MouseEvent]; \"update:open\": [value: boolean]; click: [event: PointerEvent]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; drag: [percentageDragged: number]; release: [open: boolean]; close: []; \"update:activeSnapPoint\": [val: string | number | null] }",
+            "resolvedType": "{ cancel: [event: MouseEvent]; fullscreen: [event: MouseEvent]; confirm: [event: MouseEvent]; \"update:open\": [value: boolean]; \"update:fullscreen\": [value: boolean]; click: [event: PointerEvent]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; drag: [percentageDragged: number]; release: [open: boolean]; close: []; \"update:activeSnapPoint\": [val: string | number | null] }",
             "description": "Events for the BottomSheetCompact component.",
             "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactemits",
             "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
@@ -1401,6 +1549,16 @@
                 "referencedTypes": []
               },
               {
+                "name": "fullscreen",
+                "type": "[event: MouseEvent]",
+                "parameters": "event: MouseEvent",
+                "required": true,
+                "description": "Event handler called when the fullscreen state of the dialog is requested to be toggled.",
+                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactemits.callables.fullscreen",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "referencedTypes": []
+              },
+              {
                 "name": "confirm",
                 "type": "[event: MouseEvent]",
                 "parameters": "event: MouseEvent",
@@ -1417,6 +1575,16 @@
                 "required": true,
                 "description": "Event handler called when the open state of the dialog changes.",
                 "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactemits.callables.update_open",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "update:fullscreen",
+                "type": "[value: boolean]",
+                "parameters": "value: boolean",
+                "required": true,
+                "description": "Event handler called when the fullscreen state of the dialog changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactemits.callables.update_fullscreen",
                 "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "referencedTypes": []
               },
@@ -1528,7 +1696,7 @@
         "kind": "slots",
         "name": "BottomSheetSlots",
         "type": "TypeAlias BottomSheetSlots: BottomSheetCompactSlots",
-        "resolvedType": "{ BottomSheetHandle: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
+        "resolvedType": "{ BottomSheetHandle: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); fullscreen?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
         "description": "Slots for the BottomSheet component.",
         "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetslots.slots",
         "sourcePath": "packages/ui/src/components/bottom-sheet/types.ts",
@@ -1656,6 +1824,30 @@
             ]
           },
           {
+            "name": "fullscreen",
+            "type": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+            "parameters": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the fullscreen slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetslots.callables.fullscreen",
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DialogCompactBaseSlotProps",
+                "kind": "interface",
+                "type": "DialogCompactBaseSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the DialogCompactBase component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcompactbaseslotprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "footer",
             "type": "((props: DialogCompactBaseSlotProps) => any) | undefined",
             "parameters": "((props: DialogCompactBaseSlotProps) => any) | undefined",
@@ -1732,8 +1924,8 @@
           {
             "name": "DialogCompactSlots",
             "kind": "typeAlias",
-            "type": "{ DialogConfirm: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; trigger?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; title?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; description?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; close?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; footer?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; cancel?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; confirm?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; }",
-            "resolvedType": "{ DialogConfirm: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
+            "type": "{ DialogConfirm: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; trigger?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; title?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; description?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; close?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; fullscreen?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; footer?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; cancel?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; confirm?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; }",
+            "resolvedType": "{ DialogConfirm: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); fullscreen?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
             "description": "Slots for the DialogCompact component.",
             "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcompactslots",
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
@@ -1788,6 +1980,16 @@
                 "required": false,
                 "description": "Custom content for the close slot.",
                 "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcompactslots.callables.close",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "fullscreen",
+                "type": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "parameters": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "required": false,
+                "description": "Custom content for the fullscreen slot.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcompactslots.callables.fullscreen",
                 "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "referencedTypes": []
               },
@@ -1887,7 +2089,7 @@
         "kind": "props",
         "name": "BottomSheetCompactProps",
         "type": "TypeAlias BottomSheetCompactProps: DialogCompactProps & BottomSheetRootProps & { handleProps?: BottomSheetHandleProps }",
-        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: BottomSheetTriggerProps; overlayProps?: BottomSheetOverlayProps; portalProps?: BottomSheetPortalProps; popupProps?: BottomSheetPopupProps; headerProps?: BottomSheetHeaderProps; contentProps?: BottomSheetContentProps; footerProps?: BottomSheetFooterProps; titleProps?: BottomSheetTitleProps; descriptionProps?: BottomSheetDescriptionProps; closeProps?: BottomSheetCloseProps; cancelProps?: BottomSheetCancelProps; confirmProps?: BottomSheetConfirmProps; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; open?: boolean; defaultOpen?: boolean; modal?: boolean; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number; handleProps?: BottomSheetHandleProps }",
+        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; showFullscreen?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: BottomSheetTriggerProps; overlayProps?: BottomSheetOverlayProps; portalProps?: BottomSheetPortalProps; popupProps?: BottomSheetPopupProps; headerProps?: BottomSheetHeaderProps; contentProps?: BottomSheetContentProps; footerProps?: BottomSheetFooterProps; titleProps?: BottomSheetTitleProps; descriptionProps?: BottomSheetDescriptionProps; closeProps?: BottomSheetCloseProps; fullscreenProps?: DialogFullscreenProps; cancelProps?: BottomSheetCancelProps; confirmProps?: BottomSheetConfirmProps; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; draggable?: boolean; fullscreen?: boolean; defaultFullscreen?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number; handleProps?: BottomSheetHandleProps }",
         "description": "Properties for the BottomSheetCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactprops.props",
         "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
@@ -1946,6 +2148,17 @@
             "required": false,
             "description": "Whether show the close button in the header of the dialog.",
             "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactprops.members.showclose",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showFullscreen",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether show the fullscreen toggle button in the header of the dialog.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactprops.members.showfullscreen",
             "default": "true",
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
@@ -2438,6 +2651,76 @@
             ]
           },
           {
+            "name": "fullscreenProps",
+            "type": "DialogFullscreenProps",
+            "required": false,
+            "description": "Properties forwarded to the fullscreen element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactprops.members.fullscreenprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DialogFullscreenProps",
+                "kind": "interface",
+                "type": "DialogFullscreenProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the DialogFullscreen component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogfullscreenprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogfullscreenprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogfullscreenprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogfullscreenprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogfullscreenprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "cancelProps",
             "type": "BottomSheetCancelProps",
             "required": false,
@@ -2637,6 +2920,39 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "draggable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the dialog can be moved by dragging its header.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactprops.members.draggable",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fullscreen",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactprops.members.fullscreen",
+            "default": "undefined",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultFullscreen",
+            "type": "boolean",
+            "required": false,
+            "description": "The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactprops.members.defaultfullscreen",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": []
           },
           {
             "name": "open",
@@ -2884,7 +3200,7 @@
         "kind": "emits",
         "name": "BottomSheetCompactEmits",
         "type": "TypeAlias BottomSheetCompactEmits: Omit<DialogCompactEmits, \"close\"> & BottomSheetRootEmits",
-        "resolvedType": "{ cancel: [event: MouseEvent]; confirm: [event: MouseEvent]; \"update:open\": [value: boolean]; click: [event: PointerEvent]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; drag: [percentageDragged: number]; release: [open: boolean]; close: []; \"update:activeSnapPoint\": [val: string | number | null] }",
+        "resolvedType": "{ cancel: [event: MouseEvent]; fullscreen: [event: MouseEvent]; confirm: [event: MouseEvent]; \"update:open\": [value: boolean]; \"update:fullscreen\": [value: boolean]; click: [event: PointerEvent]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; drag: [percentageDragged: number]; release: [open: boolean]; close: []; \"update:activeSnapPoint\": [val: string | number | null] }",
         "description": "Events for the BottomSheetCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactemits.emits",
         "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
@@ -2898,6 +3214,30 @@
             "required": true,
             "description": "Event handler called when the dialog is requested to be canceled.",
             "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactemits.callables.cancel",
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "fullscreen",
+            "type": "[event: MouseEvent]",
+            "parameters": "event: MouseEvent",
+            "required": true,
+            "description": "Event handler called when the fullscreen state of the dialog is requested to be toggled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactemits.callables.fullscreen",
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
@@ -2946,6 +3286,16 @@
             "required": true,
             "description": "Event handler called when the open state of the dialog changes.",
             "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactemits.callables.update_open",
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:fullscreen",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "Event handler called when the fullscreen state of the dialog changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactemits.callables.update_fullscreen",
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": []
           },
@@ -3177,7 +3527,7 @@
         "kind": "slots",
         "name": "BottomSheetCompactSlots",
         "type": "TypeAlias BottomSheetCompactSlots: DialogCompactSlots",
-        "resolvedType": "{ BottomSheetHandle: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
+        "resolvedType": "{ BottomSheetHandle: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); fullscreen?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
         "description": "Slots for the BottomSheetCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactslots.slots",
         "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
@@ -3305,6 +3655,30 @@
             ]
           },
           {
+            "name": "fullscreen",
+            "type": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+            "parameters": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the fullscreen slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactslots.callables.fullscreen",
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DialogCompactBaseSlotProps",
+                "kind": "interface",
+                "type": "DialogCompactBaseSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the DialogCompactBase component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcompactbaseslotprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "footer",
             "type": "((props: DialogCompactBaseSlotProps) => any) | undefined",
             "parameters": "((props: DialogCompactBaseSlotProps) => any) | undefined",
@@ -3381,8 +3755,8 @@
           {
             "name": "DialogCompactSlots",
             "kind": "typeAlias",
-            "type": "{ DialogConfirm: (props: import(\"@/index\").DialogCompactBaseSlotProps) => any; trigger?: (props: import(\"@/index\").DialogCompactBaseSlotProps) => any; title?: (props: import(\"@/index\").DialogCompactBaseSlotProps) => any; description?: (props: import(\"@/index\").DialogCompactBaseSlotProps) => any; close?: (props: import(\"@/index\").DialogCompactBaseSlotProps) => any; footer?: (props: import(\"@/index\").DialogCompactBaseSlotProps) => any; cancel?: (props: import(\"@/index\").DialogCompactBaseSlotProps) => any; confirm?: (props: import(\"@/index\").DialogCompactBaseSlotProps) => any; }",
-            "resolvedType": "{ DialogConfirm: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
+            "type": "{ DialogConfirm: (props: import(\"@/index\").DialogCompactBaseSlotProps) => any; trigger?: (props: import(\"@/index\").DialogCompactBaseSlotProps) => any; title?: (props: import(\"@/index\").DialogCompactBaseSlotProps) => any; description?: (props: import(\"@/index\").DialogCompactBaseSlotProps) => any; close?: (props: import(\"@/index\").DialogCompactBaseSlotProps) => any; fullscreen?: (props: import(\"@/index\").DialogCompactBaseSlotProps) => any; footer?: (props: import(\"@/index\").DialogCompactBaseSlotProps) => any; cancel?: (props: import(\"@/index\").DialogCompactBaseSlotProps) => any; confirm?: (props: import(\"@/index\").DialogCompactBaseSlotProps) => any; }",
+            "resolvedType": "{ DialogConfirm: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); fullscreen?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
             "description": "Slots for the DialogCompact component.",
             "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcompactslots",
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
@@ -3437,6 +3811,16 @@
                 "required": false,
                 "description": "Custom content for the close slot.",
                 "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcompactslots.callables.close",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "fullscreen",
+                "type": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "parameters": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "required": false,
+                "description": "Custom content for the fullscreen slot.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcompactslots.callables.fullscreen",
                 "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "referencedTypes": []
               },
@@ -3639,7 +4023,7 @@
         "kind": "props",
         "name": "BottomSheetRootProps",
         "type": "TypeAlias BottomSheetRootProps: DialogRootProps & { activeSnapPoint?: number | string | null; closeThreshold?: number; direction?: DrawerDirection; dismissible?: boolean; fixed?: boolean; handleOnly?: boolean; nested?: boolean; noBodyStyles?: boolean; preventScrollRestoration?: boolean; scrollLockTimeout?: number; setBackgroundColorOnScale?: boolean; shouldScaleBackground?: boolean } & (WithFadeFromProps | WithoutFadeFromProps)",
-        "resolvedType": "{ dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; open?: boolean; defaultOpen?: boolean; modal?: boolean; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number }",
+        "resolvedType": "{ dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; draggable?: boolean; fullscreen?: boolean; defaultFullscreen?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number }",
         "description": "Properties for the BottomSheetRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetrootprops.props",
         "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
@@ -3705,6 +4089,39 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "draggable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the dialog can be moved by dragging its header.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetrootprops.members.draggable",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fullscreen",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetrootprops.members.fullscreen",
+            "default": "undefined",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultFullscreen",
+            "type": "boolean",
+            "required": false,
+            "description": "The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetrootprops.members.defaultfullscreen",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": []
           },
           {
             "name": "open",

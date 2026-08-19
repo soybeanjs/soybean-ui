@@ -9,7 +9,7 @@ Description: A window overlaid on either the primary window or another dialog wi
 
 A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
 
-`SDialog` is the declarative wrapper for inline usage. `dialog(...)` is the imperative API for creating alert-style dialogs programmatically. It combines the `DialogRoot`/`DialogTrigger`/`DialogOverlay`/`DialogPopup`/`DialogHeader`/`DialogContent`/`DialogFooter`/`DialogTitle`/`DialogDescription`/`DialogClose`/`DialogCancel`/`DialogConfirm` headless primitive family (zero styles) with the `dialogVariants` style recipe (11 slots, 6 sizes).
+`SDialog` is the declarative wrapper for inline usage. `dialog(...)` is the imperative API for creating alert-style dialogs programmatically. It combines the `DialogRoot`/`DialogTrigger`/`DialogOverlay`/`DialogPopup`/`DialogHeader`/`DialogContent`/`DialogFooter`/`DialogTitle`/`DialogDescription`/`DialogClose`/`DialogFullscreen`/`DialogCancel`/`DialogConfirm` headless primitive family (zero styles) with the `dialogVariants` style recipe (12 slots, 6 sizes).
 
 Mount `SDialogProvider` once near your app root before calling the imperative `dialog(...)` API.
 
@@ -50,6 +50,8 @@ function openWarningDialog() {
 - ⚠️ Alert mode — `isAlert` switches to `role="alertdialog"`, adds the type icon and `aria-live` (`polite`/`assertive`)
 - 🏷️ Accessible title/description — `title`/`description` wire `aria-labelledby`/`aria-describedby`
 - ❌ Closable — `showClose` renders a close control; Escape, outside pointer/focus and the close button all dismiss
+- 🖐️ Draggable — `draggable` lets you move the dialog by dragging its header (powered by `@dnd-kit/vue`)
+- ⛶ Fullscreen — `showFullscreen` renders a toggle; `fullscreen`/`defaultFullscreen` drive a `v-model:fullscreen` state
 - 🔘 Cancel/confirm — `showCancel`/`showConfirm` with localized `cancelText`/`confirmText` from `dialog.cancel`/`dialog.confirm`
 - 🧹 Pure mode — `pure` drops the header/footer for fully custom content
 - 📐 6 sizes — xs–2xl `size`; per-slot `ui` overrides
@@ -65,6 +67,7 @@ function openWarningDialog() {
 - `DialogPopup` / `DialogPopupImpl` (headless) — the focus-trapped, dismissable surface hosting the dialog body
 - `DialogTitle` / `DialogDescription` (headless) — the labelled/described elements
 - `DialogClose` (headless) — the close control, toggles `open` and emits `close`
+- `DialogFullscreen` (headless) — the fullscreen toggle, toggles the `fullscreen` state and emits `fullscreen`
 - `DialogCancel` / `DialogConfirm` (headless) — footer actions, emit `cancel`/`confirm`
 - `DialogHeader` / `DialogContent` / `DialogFooter` (headless) — layout sections
 - `DialogCompact` (headless) — the aggregated composite; composes all primitives and exposes the per-part slots
@@ -77,7 +80,7 @@ Interactive demos for dialog are rendered on the site.
 
 Structured API summary generated from build-time component metadata.
 
-- Exported symbols (17): Dialog, DialogCancel, DialogClose, DialogCompact, DialogCompactBase, DialogConfirm, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogPopup, DialogPortal, DialogProvider, DialogRoot, DialogTitle, DialogTrigger.
+- Exported symbols (19): Dialog, DialogCancel, DialogClose, DialogCompact, DialogCompactBase, DialogConfirm, DialogContent, DialogDescription, DialogFooter, DialogFullscreen, DialogFullscreenState, DialogHeader, DialogOverlay, DialogPopup, DialogPortal, DialogProvider, DialogRoot, DialogTitle, DialogTrigger.
 
 ### Dialog
 
@@ -92,6 +95,7 @@ Properties for the Dialog component.
 - `description`: The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided. (type `string`; optional)
 - `icon`: The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided. (type `string | import("vue").Component | VNode<import("vue").RendererNode, import("vue").RendererElement, { [key: string]: ...`; optional)
 - `showClose`: Whether show the close button in the header of the dialog. (type `boolean`; default `true`; optional)
+- `showFullscreen`: Whether show the fullscreen toggle button in the header of the dialog. (type `boolean`; default `true`; optional)
 - `pure`: Whether to use the pure version of the dialog, which does not include the header and footer. This is useful when you want to fully control the content of the dialog and do not need the built-in header and footer. (type `boolean`; default `false`; optional)
 - `showCancel`: Whether to show the cancel button. When set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType="warning"`. When set to `true`, the cancel button will always be shown. (type `boolean | 'onlyWarning'`; default `'onlyWarning'`; optional)
 - `cancelText`: The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided. Defaults to the localized `dialog.cancel` message from `ConfigProvider`. (type `string`; optional)
@@ -107,11 +111,15 @@ Properties for the Dialog component.
 - `titleProps`: Properties forwarded to the title element. (type `DialogTitleProps`; optional)
 - `descriptionProps`: Properties forwarded to the description element. (type `DialogDescriptionProps`; optional)
 - `closeProps`: Properties forwarded to the close element. (type `DialogCloseProps`; optional)
+- `fullscreenProps`: Properties forwarded to the fullscreen element. (type `DialogFullscreenProps`; optional)
 - `cancelProps`: Properties forwarded to the cancel element. (type `DialogCancelProps`; optional)
 - `confirmProps`: Properties forwarded to the confirm element. (type `DialogConfirmProps`; optional)
 - `dir`: The text direction of the dialog (type `Direction`; optional)
 - `isAlert`: Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response. When set to `true`, the dialog will have `role="alertdialog"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes. (type `boolean`; default `false`; optional)
 - `alertType`: The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog. (type `DialogAlertType`; optional)
+- `draggable`: Whether the dialog can be moved by dragging its header. (type `boolean`; default `false`; optional)
+- `fullscreen`: The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`. (type `boolean`; default `undefined`; optional)
+- `defaultFullscreen`: The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state. (type `boolean`; default `false`; optional)
 - `open`: The controlled open state of the dialog. Can be bound with `v-model:open`. (type `boolean`; default `undefined`; optional)
 - `defaultOpen`: The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; default `false`; optional)
 - `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. (type `boolean`; default `true`; optional)
@@ -121,6 +129,7 @@ Properties for the Dialog component.
 Events for the Dialog component.
 
 - `update:open`: Event handler called when the open state of the dialog changes. (type `[value: boolean]`; parameters `value: boolean`)
+- `update:fullscreen`: Event handler called when the fullscreen state of the dialog changes. (type `[value: boolean]`; parameters `value: boolean`)
 - `click`: Event handler called when the dialog trigger is activated. (type `[event: PointerEvent]`; parameters `event: PointerEvent`)
 - `escapeKeyDown`: Event handler called when the escape key is down. Can be prevented. (type `[event: KeyboardEvent]`; parameters `event: KeyboardEvent`)
 - `pointerDownOutside`: Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented. (type `[event: PointerDownOutsideEvent]`; parameters `event: PointerDownOutsideEvent`)
@@ -129,6 +138,7 @@ Events for the Dialog component.
 - `openAutoFocus`: Event handler called when auto-focusing on open. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
 - `closeAutoFocus`: Event handler called when auto-focusing on close. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
 - `close`: Event handler called when the dialog is requested to be closed. (type `[event: MouseEvent]`; parameters `event: MouseEvent`)
+- `fullscreen`: Event handler called when the fullscreen state of the dialog is requested to be toggled. (type `[event: MouseEvent]`; parameters `event: MouseEvent`)
 - `confirm`: Event handler called when the dialog is requested to be closed by confirming. (type `[event: MouseEvent]`; parameters `event: MouseEvent`)
 - `cancel`: Event handler called when the dialog is requested to be canceled. (type `[event: MouseEvent]`; parameters `event: MouseEvent`)
 
@@ -141,6 +151,7 @@ Slots for the Dialog component.
 - `title`: Custom content for the title slot. (type `((props: DialogCompactBaseSlotProps) => any) | undefined`)
 - `description`: Custom content for the description slot. (type `((props: DialogCompactBaseSlotProps) => any) | undefined`)
 - `close`: Custom content for the close slot. (type `((props: DialogCompactBaseSlotProps) => any) | undefined`)
+- `fullscreen`: Custom content for the fullscreen slot. (type `((props: DialogCompactBaseSlotProps) => any) | undefined`)
 - `footer`: Custom content for the footer slot. (type `((props: DialogCompactBaseSlotProps) => any) | undefined`)
 - `cancel`: Custom content for the cancel slot. (type `((props: DialogCompactBaseSlotProps) => any) | undefined`)
 - `confirm`: Custom content for the confirm slot. (type `((props: DialogCompactBaseSlotProps) => any) | undefined`)
@@ -189,6 +200,7 @@ Properties for the DialogCompact component.
 - `description`: The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided. (type `string`; optional)
 - `icon`: The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided. (type `string | import("vue").Component | VNode<import("vue").RendererNode, import("vue").RendererElement, { [key: string]: ...`; optional)
 - `showClose`: Whether show the close button in the header of the dialog. (type `boolean`; default `true`; optional)
+- `showFullscreen`: Whether show the fullscreen toggle button in the header of the dialog. (type `boolean`; default `true`; optional)
 - `pure`: Whether to use the pure version of the dialog, which does not include the header and footer. This is useful when you want to fully control the content of the dialog and do not need the built-in header and footer. (type `boolean`; default `false`; optional)
 - `showCancel`: Whether to show the cancel button. When set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType="warning"`. When set to `true`, the cancel button will always be shown. (type `boolean | 'onlyWarning'`; default `'onlyWarning'`; optional)
 - `cancelText`: The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided. Defaults to the localized `dialog.cancel` message from `ConfigProvider`. (type `string`; optional)
@@ -204,11 +216,15 @@ Properties for the DialogCompact component.
 - `titleProps`: Properties forwarded to the title element. (type `DialogTitleProps`; optional)
 - `descriptionProps`: Properties forwarded to the description element. (type `DialogDescriptionProps`; optional)
 - `closeProps`: Properties forwarded to the close element. (type `DialogCloseProps`; optional)
+- `fullscreenProps`: Properties forwarded to the fullscreen element. (type `DialogFullscreenProps`; optional)
 - `cancelProps`: Properties forwarded to the cancel element. (type `DialogCancelProps`; optional)
 - `confirmProps`: Properties forwarded to the confirm element. (type `DialogConfirmProps`; optional)
 - `dir`: The text direction of the dialog (type `Direction`; optional)
 - `isAlert`: Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response. When set to `true`, the dialog will have `role="alertdialog"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes. (type `boolean`; default `false`; optional)
 - `alertType`: The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog. (type `DialogAlertType`; optional)
+- `draggable`: Whether the dialog can be moved by dragging its header. (type `boolean`; default `false`; optional)
+- `fullscreen`: The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`. (type `boolean`; default `undefined`; optional)
+- `defaultFullscreen`: The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state. (type `boolean`; default `false`; optional)
 - `open`: The controlled open state of the dialog. Can be bound with `v-model:open`. (type `boolean`; default `undefined`; optional)
 - `defaultOpen`: The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; default `false`; optional)
 - `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. (type `boolean`; default `true`; optional)
@@ -218,6 +234,7 @@ Properties for the DialogCompact component.
 Events for the DialogCompact component.
 
 - `update:open`: Event handler called when the open state of the dialog changes. (type `[value: boolean]`; parameters `value: boolean`)
+- `update:fullscreen`: Event handler called when the fullscreen state of the dialog changes. (type `[value: boolean]`; parameters `value: boolean`)
 - `click`: Event handler called when the dialog trigger is activated. (type `[event: PointerEvent]`; parameters `event: PointerEvent`)
 - `escapeKeyDown`: Event handler called when the escape key is down. Can be prevented. (type `[event: KeyboardEvent]`; parameters `event: KeyboardEvent`)
 - `pointerDownOutside`: Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented. (type `[event: PointerDownOutsideEvent]`; parameters `event: PointerDownOutsideEvent`)
@@ -226,6 +243,7 @@ Events for the DialogCompact component.
 - `openAutoFocus`: Event handler called when auto-focusing on open. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
 - `closeAutoFocus`: Event handler called when auto-focusing on close. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
 - `close`: Event handler called when the dialog is requested to be closed. (type `[event: MouseEvent]`; parameters `event: MouseEvent`)
+- `fullscreen`: Event handler called when the fullscreen state of the dialog is requested to be toggled. (type `[event: MouseEvent]`; parameters `event: MouseEvent`)
 - `confirm`: Event handler called when the dialog is requested to be closed by confirming. (type `[event: MouseEvent]`; parameters `event: MouseEvent`)
 - `cancel`: Event handler called when the dialog is requested to be canceled. (type `[event: MouseEvent]`; parameters `event: MouseEvent`)
 
@@ -238,6 +256,7 @@ Slots for the DialogCompact component.
 - `title`: Custom content for the title slot. (type `((props: DialogCompactBaseSlotProps) => any) | undefined`)
 - `description`: Custom content for the description slot. (type `((props: DialogCompactBaseSlotProps) => any) | undefined`)
 - `close`: Custom content for the close slot. (type `((props: DialogCompactBaseSlotProps) => any) | undefined`)
+- `fullscreen`: Custom content for the fullscreen slot. (type `((props: DialogCompactBaseSlotProps) => any) | undefined`)
 - `footer`: Custom content for the footer slot. (type `((props: DialogCompactBaseSlotProps) => any) | undefined`)
 - `cancel`: Custom content for the cancel slot. (type `((props: DialogCompactBaseSlotProps) => any) | undefined`)
 - `confirm`: Custom content for the confirm slot. (type `((props: DialogCompactBaseSlotProps) => any) | undefined`)
@@ -279,6 +298,32 @@ Events for the DialogConfirm component.
 ### DialogFooter
 
 - No documented props, emits, slots, or slot props were available.
+
+### DialogFullscreen
+
+#### Props
+
+Properties for the DialogFullscreen component.
+
+- `type`: The type of the button element. Can be one of 'button', 'submit', or 'reset'. (type `ButtonType`; default `'button'`; optional)
+- `disabled`: Whether the component is disabled. (type `boolean`; optional)
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
+
+#### Emits
+
+Events for the DialogFullscreen component.
+
+- `fullscreen`: Event handler called when the fullscreen state of the dialog is requested to be toggled. (type `[event: MouseEvent]`; parameters `event: MouseEvent`)
+
+### DialogFullscreenState
+
+#### Emits
+
+Events for the fullscreen state of the dialog. Kept separate from `DialogRootEmits`
+because the latter is shared by other disclosure primitives (popover, menu, bottom-sheet).
+
+- `update:fullscreen`: Event handler called when the fullscreen state of the dialog changes. (type `[value: boolean]`; parameters `value: boolean`)
 
 ### DialogHeader
 
@@ -330,6 +375,9 @@ Properties for the DialogRoot component.
 - `dir`: The text direction of the dialog (type `Direction`; optional)
 - `isAlert`: Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response. When set to `true`, the dialog will have `role="alertdialog"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes. (type `boolean`; default `false`; optional)
 - `alertType`: The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog. (type `DialogAlertType`; optional)
+- `draggable`: Whether the dialog can be moved by dragging its header. (type `boolean`; default `false`; optional)
+- `fullscreen`: The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`. (type `boolean`; default `undefined`; optional)
+- `defaultFullscreen`: The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state. (type `boolean`; default `false`; optional)
 - `open`: The controlled open state of the dialog. Can be bound with `v-model:open`. (type `boolean`; default `undefined`; optional)
 - `defaultOpen`: The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; default `false`; optional)
 - `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. (type `boolean`; default `true`; optional)
@@ -430,4 +478,21 @@ Set `modal={false}` to allow interacting with content outside the dialog:
 
 ```vue
 <SDialog v-model:open="open" :modal="false" title="Palette">...</SDialog>
+```
+
+### How do I make a draggable dialog?
+
+Set `draggable` and drag the header to move the dialog. The position is kept until the dialog is closed:
+
+```vue
+<template #trigger><SButton>Open</SButton></template>
+<div>Drag the header to move this dialog.</div>
+```
+
+### How do I use the fullscreen mode?
+
+Toggle it with the header button (`showFullscreen`, on by default) or drive it with `v-model:fullscreen`:
+
+```vue
+<SDialog v-model:fullscreen="fullscreen" title="Panel">...</SDialog>
 ```
