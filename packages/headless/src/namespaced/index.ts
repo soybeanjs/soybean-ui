@@ -281,6 +281,8 @@ import {
   HoverCardPositioner,
   HoverCardRoot,
   HoverCardTrigger,
+  ImagePreview,
+  ImageRoot,
   InputClear,
   InputCompact,
   InputControl,
@@ -1273,6 +1275,14 @@ export const HoverCard = {
   Popup: typeof HoverCardPopup;
   Arrow: typeof HoverCardArrow;
   Compact: typeof HoverCardCompact;
+};
+
+export const Image = {
+  Root: ImageRoot,
+  Preview: ImagePreview
+} as {
+  Root: typeof ImageRoot;
+  Preview: typeof ImagePreview;
 };
 
 export const Input = {

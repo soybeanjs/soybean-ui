@@ -4703,6 +4703,56 @@
       "packages_headless_src_components_icon_types": {
         "iconvalue": "Type information for IconValue."
       },
+      "packages_headless_src_components_image_types": {
+        "imagepreviewemits": {
+          "callables": {
+            "update_open": "Emitted when the preview open state changes."
+          },
+          "emits": "Events for the ImagePreview component."
+        },
+        "imagepreviewprops": {
+          "members": {
+            "alt": "Alternative text for the preview image.",
+            "defaultopen": "The initial open state when uncontrolled.",
+            "dir": "The reading direction of the preview.",
+            "initialrotate": "The initial rotation of the preview image, in degrees.",
+            "initialzoom": "The initial zoom level of the preview image.",
+            "open": "The controlled open state of the preview.",
+            "src": "The image source shown in the preview."
+          },
+          "props": "Properties for the ImagePreview component."
+        },
+        "imagepreviewtoolbarslotprops": {
+          "members": {
+            "close": "Close the preview.",
+            "reset": "Reset zoom and rotation to their initial values.",
+            "rotate": "Rotate the image 90 degrees clockwise.",
+            "rotatedeg": "The current rotation in degrees.",
+            "zoom": "The current zoom level.",
+            "zoomin": "Zoom in by one step.",
+            "zoomout": "Zoom out by one step."
+          },
+          "slotprops": "Slot props exposed by the ImagePreview toolbar slot."
+        },
+        "imagerootemits": {
+          "callables": {
+            "preview": "Emitted when the image is clicked while `preview` is enabled."
+          },
+          "emits": "Events for the ImageRoot component."
+        },
+        "imagerootprops": {
+          "members": {
+            "alt": "Alternative text for the image.",
+            "dir": "The reading direction of the image.",
+            "fallback": "Fallback source shown when the image fails to load.",
+            "loading": "The loading behavior of the image element.",
+            "preview": "Whether clicking the image opens the fullscreen preview.",
+            "src": "The image source URL."
+          },
+          "props": "Properties for the ImageRoot component."
+        },
+        "imageui": "UI class overrides for the Image component."
+      },
       "packages_headless_src_components_input_number_types": {
         "inputnumbercompactemits": {
           "callables": {
@@ -11980,6 +12030,25 @@
             "icon": "Icon rendered by the component."
           },
           "props": "Properties for the Icon component."
+        }
+      },
+      "packages_ui_src_components_image_types": {
+        "imagefit": "How the image fits its container.",
+        "imageprops": {
+          "members": {
+            "alt": "Alternative text for the image.",
+            "class": "root class",
+            "dir": "The reading direction of the image.",
+            "fallback": "Fallback source shown when the image fails to load.",
+            "fit": "How the image fits its container.",
+            "loading": "The loading behavior of the image element.",
+            "preview": "Whether clicking the image opens the fullscreen preview.",
+            "previewsrc": "Source used in the preview when it differs from `src`.",
+            "rounded": "Whether to apply rounded corners.",
+            "src": "The image source URL.",
+            "ui": "Per-slot class overrides for the component."
+          },
+          "props": "Properties for the Image component."
         }
       },
       "packages_ui_src_components_input_number_types": {

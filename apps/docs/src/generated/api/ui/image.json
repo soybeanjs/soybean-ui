@@ -1,0 +1,542 @@
+{
+  "component": "image",
+  "symbols": {
+    "Image": {
+      "props": {
+        "kind": "props",
+        "name": "ImageProps",
+        "type": "Interface ImageProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; fit?: ImageFit; rounded?: boolean; previewSrc?: string; ui?: Partial<ImageUi>; src?: string; alt?: string; fallback?: string; loading?: 'eager' | 'lazy'; preview?: boolean; dir?: Direction }",
+        "description": "Properties for the Image component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_image_types.imageprops.props",
+        "sourcePath": "packages/ui/src/components/image/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_src_components_image_types.imageprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/image/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "fit",
+            "type": "ImageFit",
+            "required": false,
+            "description": "How the image fits its container.",
+            "descriptionKey": "api.generated.packages_ui_src_components_image_types.imageprops.members.fit",
+            "default": "'cover'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/image/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ImageFit",
+                "kind": "typeAlias",
+                "type": "'fill' | 'none' | 'cover' | 'contain' | 'scale-down'",
+                "resolvedType": "'fill' | 'none' | 'cover' | 'contain' | 'scale-down'",
+                "description": "How the image fits its container.",
+                "descriptionKey": "api.generated.packages_ui_src_components_image_types.imagefit",
+                "sourcePath": "packages/ui/src/components/image/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "rounded",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to apply rounded corners.",
+            "descriptionKey": "api.generated.packages_ui_src_components_image_types.imageprops.members.rounded",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "previewSrc",
+            "type": "string",
+            "required": false,
+            "description": "Source used in the preview when it differs from `src`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_image_types.imageprops.members.previewsrc",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "ui",
+            "type": "Partial<ImageUi>",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_image_types.imageprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/image/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ImageUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; placeholder: ClassValue; image: ClassValue; error: ClassValue; mask: ClassValue; }",
+                "resolvedType": null,
+                "description": "UI class overrides for the Image component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_image_types.imageui",
+                "sourcePath": "packages/headless/src/components/image/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "src",
+            "type": "string",
+            "required": false,
+            "description": "The image source URL.",
+            "descriptionKey": "api.generated.packages_ui_src_components_image_types.imageprops.members.src",
+            "default": null,
+            "inheritedFrom": "src",
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "alt",
+            "type": "string",
+            "required": false,
+            "description": "Alternative text for the image.",
+            "descriptionKey": "api.generated.packages_ui_src_components_image_types.imageprops.members.alt",
+            "default": null,
+            "inheritedFrom": "alt",
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fallback",
+            "type": "string",
+            "required": false,
+            "description": "Fallback source shown when the image fails to load.",
+            "descriptionKey": "api.generated.packages_ui_src_components_image_types.imageprops.members.fallback",
+            "default": null,
+            "inheritedFrom": "fallback",
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "loading",
+            "type": "'eager' | 'lazy'",
+            "required": false,
+            "description": "The loading behavior of the image element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_image_types.imageprops.members.loading",
+            "default": "'eager'",
+            "inheritedFrom": "loading",
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "preview",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether clicking the image opens the fullscreen preview.",
+            "descriptionKey": "api.generated.packages_ui_src_components_image_types.imageprops.members.preview",
+            "default": null,
+            "inheritedFrom": "preview",
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the image.",
+            "descriptionKey": "api.generated.packages_ui_src_components_image_types.imageprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ImagePreview": {
+      "props": {
+        "kind": "props",
+        "name": "ImagePreviewProps",
+        "type": "Interface ImagePreviewProps",
+        "resolvedType": "{ open?: boolean; defaultOpen?: boolean; src?: string; alt?: string; initialZoom?: number; initialRotate?: number; dir?: Direction }",
+        "description": "Properties for the ImagePreview component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewprops.props",
+        "sourcePath": "packages/headless/src/components/image/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "open",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled open state of the preview.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewprops.members.open",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "The initial open state when uncontrolled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewprops.members.defaultopen",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "src",
+            "type": "string",
+            "required": false,
+            "description": "The image source shown in the preview.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewprops.members.src",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "alt",
+            "type": "string",
+            "required": false,
+            "description": "Alternative text for the preview image.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewprops.members.alt",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "initialZoom",
+            "type": "number",
+            "required": false,
+            "description": "The initial zoom level of the preview image.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewprops.members.initialzoom",
+            "default": "1",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "initialRotate",
+            "type": "number",
+            "required": false,
+            "description": "The initial rotation of the preview image, in degrees.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewprops.members.initialrotate",
+            "default": "0",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the preview.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "ImagePreviewEmits",
+        "type": "TypeAlias ImagePreviewEmits",
+        "resolvedType": "{ \"update:open\": [value: boolean] }",
+        "description": "Events for the ImagePreview component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewemits.emits",
+        "sourcePath": "packages/headless/src/components/image/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:open",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "Emitted when the preview open state changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewemits.callables.update_open",
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "ImagePreviewToolbar": {
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "ImagePreviewToolbarSlotProps",
+        "type": "Interface ImagePreviewToolbarSlotProps",
+        "resolvedType": "{ zoomIn: () => void; zoomOut: () => void; reset: () => void; rotate: () => void; close: () => void; zoom: number; rotateDeg: number }",
+        "description": "Slot props exposed by the ImagePreview toolbar slot.",
+        "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewtoolbarslotprops.slotprops",
+        "sourcePath": "packages/headless/src/components/image/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "zoomIn",
+            "type": "() => void",
+            "required": true,
+            "description": "Zoom in by one step.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewtoolbarslotprops.members.zoomin",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "zoomOut",
+            "type": "() => void",
+            "required": true,
+            "description": "Zoom out by one step.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewtoolbarslotprops.members.zoomout",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "reset",
+            "type": "() => void",
+            "required": true,
+            "description": "Reset zoom and rotation to their initial values.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewtoolbarslotprops.members.reset",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "rotate",
+            "type": "() => void",
+            "required": true,
+            "description": "Rotate the image 90 degrees clockwise.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewtoolbarslotprops.members.rotate",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "close",
+            "type": "() => void",
+            "required": true,
+            "description": "Close the preview.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewtoolbarslotprops.members.close",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "zoom",
+            "type": "number",
+            "required": true,
+            "description": "The current zoom level.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewtoolbarslotprops.members.zoom",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "rotateDeg",
+            "type": "number",
+            "required": true,
+            "description": "The current rotation in degrees.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagepreviewtoolbarslotprops.members.rotatedeg",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ImageRoot": {
+      "props": {
+        "kind": "props",
+        "name": "ImageRootProps",
+        "type": "Interface ImageRootProps",
+        "resolvedType": "{ src?: string; alt?: string; fallback?: string; loading?: 'eager' | 'lazy'; preview?: boolean; dir?: Direction }",
+        "description": "Properties for the ImageRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagerootprops.props",
+        "sourcePath": "packages/headless/src/components/image/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "src",
+            "type": "string",
+            "required": false,
+            "description": "The image source URL.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagerootprops.members.src",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "alt",
+            "type": "string",
+            "required": false,
+            "description": "Alternative text for the image.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagerootprops.members.alt",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fallback",
+            "type": "string",
+            "required": false,
+            "description": "Fallback source shown when the image fails to load.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagerootprops.members.fallback",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "loading",
+            "type": "'eager' | 'lazy'",
+            "required": false,
+            "description": "The loading behavior of the image element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagerootprops.members.loading",
+            "default": "'eager'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "preview",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether clicking the image opens the fullscreen preview.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagerootprops.members.preview",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the image.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagerootprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "ImageRootEmits",
+        "type": "TypeAlias ImageRootEmits",
+        "resolvedType": "{ preview: [] }",
+        "description": "Events for the ImageRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagerootemits.emits",
+        "sourcePath": "packages/headless/src/components/image/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "preview",
+            "type": "[]",
+            "parameters": null,
+            "required": true,
+            "description": "Emitted when the image is clicked while `preview` is enabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_image_types.imagerootemits.callables.preview",
+            "sourcePath": "packages/headless/src/components/image/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    }
+  }
+}

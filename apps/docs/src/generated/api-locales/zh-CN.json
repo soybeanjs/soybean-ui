@@ -4703,6 +4703,56 @@
       "packages_headless_src_components_icon_types": {
         "iconvalue": "IconValue 的类型信息。"
       },
+      "packages_headless_src_components_image_types": {
+        "imagepreviewemits": {
+          "callables": {
+            "update_open": "当预览的打开状态发生变化时触发。"
+          },
+          "emits": "ImagePreview 组件的事件。"
+        },
+        "imagepreviewprops": {
+          "members": {
+            "alt": "预览图片的替代文本。",
+            "defaultopen": "未受控时的初始打开状态。",
+            "dir": "预览的阅读方向。",
+            "initialrotate": "预览图像的初始旋转角度（单位：度）。",
+            "initialzoom": "预览图像的初始缩放级别。",
+            "open": "预览处于受控打开状态。",
+            "src": "预览中显示的图片来源。"
+          },
+          "props": "ImagePreview 组件的属性。"
+        },
+        "imagepreviewtoolbarslotprops": {
+          "members": {
+            "close": "关闭预览。",
+            "reset": "将缩放和旋转重置为初始值。",
+            "rotate": "将图片顺时针旋转 90 度。",
+            "rotatedeg": "当前的旋转角度（单位：度）。",
+            "zoom": "当前缩放级别。",
+            "zoomin": "缩小一级。",
+            "zoomout": "退后一步。"
+          },
+          "slotprops": "由 ImagePreview 工具栏插槽暴露的插槽属性。"
+        },
+        "imagerootemits": {
+          "callables": {
+            "preview": "当启用 `preview` 时，点击图片会触发此提示。"
+          },
+          "emits": "ImageRoot 组件的事件。"
+        },
+        "imagerootprops": {
+          "members": {
+            "alt": "图片的替代文本。",
+            "dir": "图片的阅读方向。",
+            "fallback": "当图片无法加载时，显示备用源内容。",
+            "loading": "image 元素的加载行为。",
+            "preview": "点击图片是否会打开全屏预览。",
+            "src": "图片来源 URL。"
+          },
+          "props": "ImageRoot 组件的属性。"
+        },
+        "imageui": "Image 组件的 UI 类重写。"
+      },
       "packages_headless_src_components_input_number_types": {
         "inputnumbercompactemits": {
           "callables": {
@@ -11980,6 +12030,25 @@
             "icon": "由组件渲染的图标。"
           },
           "props": "Icon 组件的属性。"
+        }
+      },
+      "packages_ui_src_components_image_types": {
+        "imagefit": "图片如何适应其容器。",
+        "imageprops": {
+          "members": {
+            "alt": "图片的替代文本。",
+            "class": "根类",
+            "dir": "图片的阅读方向。",
+            "fallback": "当图片无法加载时，显示备用源内容。",
+            "fit": "图片如何适应其容器。",
+            "loading": "image 元素的加载行为。",
+            "preview": "点击图片是否会打开全屏预览。",
+            "previewsrc": "当源文本与 `src` 不一致时，预览中使用的源文本。",
+            "rounded": "是否应用圆角。",
+            "src": "图片来源 URL。",
+            "ui": "该组件的按槽位类重写。"
+          },
+          "props": "Image 组件的属性。"
         }
       },
       "packages_ui_src_components_input_number_types": {

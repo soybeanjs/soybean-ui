@@ -41,6 +41,7 @@ export * from './components/ellipsis';
 export * from './components/empty';
 export * from './components/form';
 export * from './components/hover-card';
+export * from './components/image';
 export * from './components/input';
 export * from './components/input-number';
 export * from './components/input-otp';

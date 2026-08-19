@@ -44,6 +44,7 @@ export const components = {
   form: ['SForm', 'SFormFieldBase'],
   hoverCard: ['SHoverCard'],
   icon: ['SIcon'],
+  image: ['SImage', 'SImagePreview'],
   input: ['SInput', 'SInputClear'],
   inputNumber: ['SInputNumber'],
   inputOtp: ['SInputOtp'],

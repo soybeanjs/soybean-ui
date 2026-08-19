@@ -274,6 +274,7 @@ export const components = {
     'HoverCardArrow',
     'HoverCardCompact'
   ],
+  image: ['ImageRoot', 'ImagePreview'],
   input: ['InputCompact', 'InputRoot', 'InputControl', 'InputClear'],
   inputNumber: [
     'InputNumberCompact',

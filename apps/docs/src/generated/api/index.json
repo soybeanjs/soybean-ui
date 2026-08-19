@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T09:58:03.676Z",
+  "generatedAt": "2026-08-19T10:08:07.816Z",
   "packages": {
     "ui": {
       "components": {
@@ -520,6 +520,11 @@
           "component": "icon",
           "file": "icon.json",
           "symbols": ["Icon"]
+        },
+        "image": {
+          "component": "image",
+          "file": "image.json",
+          "symbols": ["Image", "ImagePreview", "ImagePreviewToolbar", "ImageRoot"]
         },
         "input": {
           "component": "input",
