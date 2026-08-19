@@ -569,6 +569,10 @@ import {
   TreeMenuSlotCompact,
   TreeMenuSub,
   TreeRoot,
+  TreeSelectCompact,
+  TreeSelectContent,
+  TreeSelectRoot,
+  TreeSelectTrigger,
   TreeVirtualizerItem,
   TreeVirtualizerRoot,
   TypographyParagraph,
@@ -2030,6 +2034,18 @@ export const TreeMenu = {
   Button: typeof TreeMenuButton;
   Collapsible: typeof TreeMenuCollapsible;
   Sub: typeof TreeMenuSub;
+};
+
+export const TreeSelect = {
+  Root: TreeSelectRoot,
+  Trigger: TreeSelectTrigger,
+  Content: TreeSelectContent,
+  Compact: TreeSelectCompact
+} as {
+  Root: typeof TreeSelectRoot;
+  Trigger: typeof TreeSelectTrigger;
+  Content: typeof TreeSelectContent;
+  Compact: typeof TreeSelectCompact;
 };
 
 export const Virtualizer = {

@@ -1,0 +1,2110 @@
+{
+  "component": "tree-select",
+  "symbols": {
+    "TreeSelect": {
+      "props": {
+        "kind": "props",
+        "name": "TreeSelectProps",
+        "type": "Interface TreeSelectProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; color?: ThemeColor; ui?: Partial<TreeSelectUi>; triggerProps?: TreeSelectTriggerProps; portalProps?: BaseProps; contentProps?: TreeSelectContentProps; placement?: import(\"@/index\").Placement; showArrow?: boolean; modelValue?: TreeSelectModelValue; defaultValue?: TreeSelectModelValue; multiple?: boolean; items?: TreeSelectBaseItem[]; placeholder?: string; open?: boolean; defaultOpen?: boolean; disabled?: boolean; clearable?: boolean; allowParentSelect?: boolean; propagateSelect?: boolean; bubbleSelect?: boolean; expanded?: string[]; defaultExpanded?: string[]; dir?: Direction }",
+        "description": "Properties for the TreeSelect component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.props",
+        "sourcePath": "packages/ui/src/components/tree-select/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the trigger.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px",
+                "descriptionKey": "api.generated.packages_theme_src_types.themesize",
+                "sourcePath": "packages/theme/src/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "type": "ThemeColor",
+            "required": false,
+            "description": "Theme color of the trigger focus state.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.color",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeColor",
+                "kind": "typeAlias",
+                "type": "'primary' | 'secondary' | 'accent' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon'",
+                "resolvedType": "'primary' | 'secondary' | 'accent' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon'",
+                "description": "Theme color",
+                "descriptionKey": "api.generated.packages_theme_src_types.themecolor",
+                "sourcePath": "packages/theme/src/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<TreeSelectUi>",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; trigger: ClassValue; triggerIcon: ClassValue; placeholder: ClassValue; value: ClassValue; popup: ClassValue; arrow: ClassValue; panel: ClassValue; node: ClassValue; nodeLabel: ClassValue; nodeCheck: ClassValue; }",
+                "resolvedType": null,
+                "description": "UI class overrides for the TreeSelect component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectui",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "triggerProps",
+            "type": "TreeSelectTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the trigger element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.triggerprops",
+            "default": null,
+            "inheritedFrom": "triggerProps",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectTriggerProps",
+                "kind": "interface",
+                "type": "TreeSelectTriggerProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TreeSelectTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselecttriggerprops",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselecttriggerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselecttriggerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "portalProps",
+            "type": "BaseProps",
+            "required": false,
+            "description": "Properties forwarded to the portal.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.portalprops",
+            "default": null,
+            "inheritedFrom": "portalProps",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BaseProps",
+                "kind": "typeAlias",
+                "type": "import(\"../../types\").DataAttributes & import(\"vue\").HTMLAttributes",
+                "resolvedType": "DataAttributes & T",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_vue.baseprops",
+                "sourcePath": "packages/headless/src/types/vue.ts",
+                "typeParameters": ["T = HTMLAttributes"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contentProps",
+            "type": "TreeSelectContentProps",
+            "required": false,
+            "description": "Properties forwarded to the popup content.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.contentprops",
+            "default": null,
+            "inheritedFrom": "contentProps",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectContentProps",
+                "kind": "interface",
+                "type": "TreeSelectContentProps",
+                "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; disableOutsidePointerEvents?: boolean; forceMount?: boolean }",
+                "description": "Properties for the TreeSelectContent component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "placement",
+                    "type": "Placement",
+                    "required": false,
+                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.placement",
+                    "default": "undefined",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "side",
+                    "type": "Side",
+                    "required": false,
+                    "description": "The preferred side of the trigger to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.side",
+                    "default": "'bottom'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sideOffset",
+                    "type": "number",
+                    "required": false,
+                    "description": "The distance in pixels from the trigger.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.sideoffset",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sideFlip",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Flip to the opposite side when colliding with boundary.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.sideflip",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "align",
+                    "type": "Align",
+                    "required": false,
+                    "description": "The preferred alignment against the trigger. May change when collisions occur.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.align",
+                    "default": "'center'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "alignOffset",
+                    "type": "number",
+                    "required": false,
+                    "description": "An offset in pixels from the `start` or `end` alignment options.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.alignoffset",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "alignFlip",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.alignflip",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "avoidCollisions",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.avoidcollisions",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "collisionBoundary",
+                    "type": "Element | (Element | null)[] | null",
+                    "required": false,
+                    "description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.collisionboundary",
+                    "default": "[ ]",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "collisionPadding",
+                    "type": "Padding",
+                    "required": false,
+                    "description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.collisionpadding",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "arrowPadding",
+                    "type": "number",
+                    "required": false,
+                    "description": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.arrowpadding",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "hideShiftedArrow",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.hideshiftedarrow",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sticky",
+                    "type": "'partial' | 'always'",
+                    "required": false,
+                    "description": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.sticky",
+                    "default": "'partial'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "hideWhenDetached",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to hide the content when the trigger becomes fully occluded.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.hidewhendetached",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "positionStrategy",
+                    "type": "'fixed' | 'absolute'",
+                    "required": false,
+                    "description": "The type of CSS position property to use.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.positionstrategy",
+                    "default": "'fixed'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "updatePositionStrategy",
+                    "type": "'always' | 'optimized'",
+                    "required": false,
+                    "description": "Strategy to update the position of the floating element on every animation frame.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.updatepositionstrategy",
+                    "default": "'optimized'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disableUpdateOnLayoutShift",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to disable the update position for the content when the layout shifted.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.disableupdateonlayoutshift",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prioritizePosition",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.prioritizeposition",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "reference",
+                    "type": "ReferenceElement",
+                    "required": false,
+                    "description": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.reference",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disableOutsidePointerEvents",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, hover/focus/click interactions will be disabled on elements outside the `DismissableLayer`. Users will\nneed to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to\ntrigger the element.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.disableoutsidepointerevents",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "placement",
+            "type": "import(\"@/index\").Placement",
+            "required": false,
+            "description": "The placement of the popup.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.placement",
+            "default": null,
+            "inheritedFrom": "placement",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showArrow",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show the arrow on the popup.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.showarrow",
+            "default": null,
+            "inheritedFrom": "showArrow",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "TreeSelectModelValue",
+            "required": false,
+            "description": "The controlled value of the selected node(s). Can be bound as `v-model`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectModelValue",
+                "kind": "typeAlias",
+                "type": "string | string[]",
+                "resolvedType": "string | string[]",
+                "description": "The value model of the tree-select: a single value or an array when `multiple`.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectmodelvalue",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultValue",
+            "type": "TreeSelectModelValue",
+            "required": false,
+            "description": "The initial value when uncontrolled.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectModelValue",
+                "kind": "typeAlias",
+                "type": "string | string[]",
+                "resolvedType": "string | string[]",
+                "description": "The value model of the tree-select: a single value or an array when `multiple`.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectmodelvalue",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "multiple",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether multiple nodes can be selected.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.multiple",
+            "default": null,
+            "inheritedFrom": "multiple",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "items",
+            "type": "TreeSelectBaseItem[]",
+            "required": false,
+            "description": "The tree data source.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.items",
+            "default": null,
+            "inheritedFrom": "items",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "Placeholder text shown when nothing is selected.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.placeholder",
+            "default": null,
+            "inheritedFrom": "placeholder",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "open",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled open state of the popup. Can be bound as `v-model:open`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.open",
+            "default": null,
+            "inheritedFrom": "open",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "The initial open state when uncontrolled.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.defaultopen",
+            "default": null,
+            "inheritedFrom": "defaultOpen",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the tree-select is disabled.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "clearable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether a clear button is shown.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.clearable",
+            "default": null,
+            "inheritedFrom": "clearable",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "allowParentSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether parent nodes can be selected.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.allowparentselect",
+            "default": null,
+            "inheritedFrom": "allowParentSelect",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "propagateSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether selecting a parent selects all its descendants.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.propagateselect",
+            "default": null,
+            "inheritedFrom": "propagateSelect",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "bubbleSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether selecting children updates the parent selection state.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.bubbleselect",
+            "default": null,
+            "inheritedFrom": "bubbleSelect",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "expanded",
+            "type": "string[]",
+            "required": false,
+            "description": "The controlled expanded node values.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.expanded",
+            "default": null,
+            "inheritedFrom": "expanded",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultExpanded",
+            "type": "string[]",
+            "required": false,
+            "description": "The initial expanded node values when uncontrolled.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.defaultexpanded",
+            "default": null,
+            "inheritedFrom": "defaultExpanded",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TreeSelectCompact": {
+      "props": {
+        "kind": "props",
+        "name": "TreeSelectCompactProps",
+        "type": "Interface TreeSelectCompactProps",
+        "resolvedType": "{ triggerProps?: TreeSelectTriggerProps; portalProps?: BaseProps; contentProps?: TreeSelectContentProps; placement?: import(\"@/index\").Placement; showArrow?: boolean; modelValue?: TreeSelectModelValue; defaultValue?: TreeSelectModelValue; multiple?: boolean; items?: TreeSelectBaseItem[]; placeholder?: string; open?: boolean; defaultOpen?: boolean; disabled?: boolean; clearable?: boolean; allowParentSelect?: boolean; propagateSelect?: boolean; bubbleSelect?: boolean; expanded?: string[]; defaultExpanded?: string[]; dir?: Direction }",
+        "description": "Properties for the TreeSelectCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.props",
+        "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "triggerProps",
+            "type": "TreeSelectTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the trigger element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.triggerprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectTriggerProps",
+                "kind": "interface",
+                "type": "TreeSelectTriggerProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TreeSelectTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselecttriggerprops",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselecttriggerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselecttriggerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "portalProps",
+            "type": "BaseProps",
+            "required": false,
+            "description": "Properties forwarded to the portal.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.portalprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BaseProps",
+                "kind": "typeAlias",
+                "type": "import(\"../../types\").DataAttributes & import(\"vue\").HTMLAttributes",
+                "resolvedType": "DataAttributes & T",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_vue.baseprops",
+                "sourcePath": "packages/headless/src/types/vue.ts",
+                "typeParameters": ["T = HTMLAttributes"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contentProps",
+            "type": "TreeSelectContentProps",
+            "required": false,
+            "description": "Properties forwarded to the popup content.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.contentprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectContentProps",
+                "kind": "interface",
+                "type": "TreeSelectContentProps",
+                "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; disableOutsidePointerEvents?: boolean; forceMount?: boolean }",
+                "description": "Properties for the TreeSelectContent component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "placement",
+                    "type": "Placement",
+                    "required": false,
+                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.placement",
+                    "default": "undefined",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "side",
+                    "type": "Side",
+                    "required": false,
+                    "description": "The preferred side of the trigger to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.side",
+                    "default": "'bottom'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sideOffset",
+                    "type": "number",
+                    "required": false,
+                    "description": "The distance in pixels from the trigger.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.sideoffset",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sideFlip",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Flip to the opposite side when colliding with boundary.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.sideflip",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "align",
+                    "type": "Align",
+                    "required": false,
+                    "description": "The preferred alignment against the trigger. May change when collisions occur.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.align",
+                    "default": "'center'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "alignOffset",
+                    "type": "number",
+                    "required": false,
+                    "description": "An offset in pixels from the `start` or `end` alignment options.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.alignoffset",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "alignFlip",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.alignflip",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "avoidCollisions",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.avoidcollisions",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "collisionBoundary",
+                    "type": "Element | (Element | null)[] | null",
+                    "required": false,
+                    "description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.collisionboundary",
+                    "default": "[ ]",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "collisionPadding",
+                    "type": "Padding",
+                    "required": false,
+                    "description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.collisionpadding",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "arrowPadding",
+                    "type": "number",
+                    "required": false,
+                    "description": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.arrowpadding",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "hideShiftedArrow",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.hideshiftedarrow",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sticky",
+                    "type": "'partial' | 'always'",
+                    "required": false,
+                    "description": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.sticky",
+                    "default": "'partial'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "hideWhenDetached",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to hide the content when the trigger becomes fully occluded.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.hidewhendetached",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "positionStrategy",
+                    "type": "'fixed' | 'absolute'",
+                    "required": false,
+                    "description": "The type of CSS position property to use.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.positionstrategy",
+                    "default": "'fixed'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "updatePositionStrategy",
+                    "type": "'always' | 'optimized'",
+                    "required": false,
+                    "description": "Strategy to update the position of the floating element on every animation frame.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.updatepositionstrategy",
+                    "default": "'optimized'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disableUpdateOnLayoutShift",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to disable the update position for the content when the layout shifted.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.disableupdateonlayoutshift",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prioritizePosition",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.prioritizeposition",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "reference",
+                    "type": "ReferenceElement",
+                    "required": false,
+                    "description": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.reference",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disableOutsidePointerEvents",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, hover/focus/click interactions will be disabled on elements outside the `DismissableLayer`. Users will\nneed to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to\ntrigger the element.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.disableoutsidepointerevents",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "placement",
+            "type": "import(\"@/index\").Placement",
+            "required": false,
+            "description": "The placement of the popup.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.placement",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showArrow",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show the arrow on the popup.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.showarrow",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "TreeSelectModelValue",
+            "required": false,
+            "description": "The controlled value of the selected node(s). Can be bound as `v-model`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectModelValue",
+                "kind": "typeAlias",
+                "type": "string | string[]",
+                "resolvedType": "string | string[]",
+                "description": "The value model of the tree-select: a single value or an array when `multiple`.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectmodelvalue",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultValue",
+            "type": "TreeSelectModelValue",
+            "required": false,
+            "description": "The initial value when uncontrolled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectModelValue",
+                "kind": "typeAlias",
+                "type": "string | string[]",
+                "resolvedType": "string | string[]",
+                "description": "The value model of the tree-select: a single value or an array when `multiple`.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectmodelvalue",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "multiple",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether multiple nodes can be selected.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.multiple",
+            "default": null,
+            "inheritedFrom": "multiple",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "items",
+            "type": "TreeSelectBaseItem[]",
+            "required": false,
+            "description": "The tree data source.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.items",
+            "default": null,
+            "inheritedFrom": "items",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "Placeholder text shown when nothing is selected.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.placeholder",
+            "default": null,
+            "inheritedFrom": "placeholder",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "open",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled open state of the popup. Can be bound as `v-model:open`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.open",
+            "default": null,
+            "inheritedFrom": "open",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "The initial open state when uncontrolled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.defaultopen",
+            "default": null,
+            "inheritedFrom": "defaultOpen",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the tree-select is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "clearable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether a clear button is shown.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.clearable",
+            "default": null,
+            "inheritedFrom": "clearable",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "allowParentSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether parent nodes can be selected.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.allowparentselect",
+            "default": null,
+            "inheritedFrom": "allowParentSelect",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "propagateSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether selecting a parent selects all its descendants.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.propagateselect",
+            "default": null,
+            "inheritedFrom": "propagateSelect",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "bubbleSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether selecting children updates the parent selection state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.bubbleselect",
+            "default": null,
+            "inheritedFrom": "bubbleSelect",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "expanded",
+            "type": "string[]",
+            "required": false,
+            "description": "The controlled expanded node values.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.expanded",
+            "default": null,
+            "inheritedFrom": "expanded",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultExpanded",
+            "type": "string[]",
+            "required": false,
+            "description": "The initial expanded node values when uncontrolled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.defaultexpanded",
+            "default": null,
+            "inheritedFrom": "defaultExpanded",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TreeSelectCompactEmits",
+        "type": "TypeAlias TreeSelectCompactEmits: TreeSelectRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: TreeSelectModelValue]; \"update:open\": [value: boolean] }",
+        "description": "Events for the TreeSelectCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactemits.emits",
+        "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: TreeSelectModelValue]",
+            "parameters": "value: TreeSelectModelValue",
+            "required": true,
+            "description": "Emitted when the selected value changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectModelValue",
+                "kind": "typeAlias",
+                "type": "string | string[]",
+                "resolvedType": null,
+                "description": "The value model of the tree-select: a single value or an array when `multiple`.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectmodelvalue",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "update:open",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "Emitted when the popup open state changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactemits.callables.update_open",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "TreeSelectRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: TreeSelectModelValue]; 'update:open': [value: boolean]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: TreeSelectModelValue]; \"update:open\": [value: boolean] }",
+            "description": "Events for the TreeSelectRoot component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootemits",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: TreeSelectModelValue]",
+                "parameters": "value: TreeSelectModelValue",
+                "required": true,
+                "description": "Emitted when the selected value changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootemits.callables.update_modelvalue",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "update:open",
+                "type": "[value: boolean]",
+                "parameters": "value: boolean",
+                "required": true,
+                "description": "Emitted when the popup open state changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootemits.callables.update_open",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "TreeSelectCompactSlots",
+        "type": "TypeAlias TreeSelectCompactSlots",
+        "resolvedType": "{ value?: ((props: { labels: string[]; modelValue: TreeSelectModelValue; }) => any); node?: ((props: Record<string, any>) => any) }",
+        "description": "Slots for the TreeSelectCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactslots.slots",
+        "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "value",
+            "type": "((props: { labels: string[]; modelValue: TreeSelectModelValue | undefined; }) => any) | undefined",
+            "parameters": "((props: { labels: string[]; modelValue: TreeSelectModelValue | undefined; }) => any) | undefined",
+            "required": false,
+            "description": "Custom trigger value content. Receives `{ labels, modelValue }`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactslots.callables.value",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ labels: string[]; modelValue: TreeSelectModelValue | undefined; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.type",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "node",
+            "type": "((props: Record<string, any>) => any) | undefined",
+            "parameters": "((props: Record<string, any>) => any) | undefined",
+            "required": false,
+            "description": "Custom node rendering. Receives the flattened item and tree item slot props.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactslots.callables.node",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "TreeSelectContent": {
+      "props": {
+        "kind": "props",
+        "name": "TreeSelectContentProps",
+        "type": "Interface TreeSelectContentProps",
+        "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; disableOutsidePointerEvents?: boolean; forceMount?: boolean }",
+        "description": "Properties for the TreeSelectContent component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.props",
+        "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "placement",
+            "type": "Placement",
+            "required": false,
+            "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.placement",
+            "default": "undefined",
+            "inheritedFrom": "PopperPositionerProps.placement",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Placement",
+                "kind": "typeAlias",
+                "type": "'top' | 'right' | 'bottom' | 'left' | 'top-start' | 'top-end' | 'right-start' | 'right-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end'",
+                "resolvedType": "'top' | 'right' | 'bottom' | 'left' | 'top-start' | 'top-end' | 'right-start' | 'right-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.placement",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "side",
+            "type": "Side",
+            "required": false,
+            "description": "The preferred side of the trigger to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.side",
+            "default": "'bottom'",
+            "inheritedFrom": "PopperPositionerProps.side",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Side",
+                "kind": "typeAlias",
+                "type": "Side",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.12/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "sideOffset",
+            "type": "number",
+            "required": false,
+            "description": "The distance in pixels from the trigger.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.sideoffset",
+            "default": "0",
+            "inheritedFrom": "PopperPositionerProps.sideOffset",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "sideFlip",
+            "type": "boolean",
+            "required": false,
+            "description": "Flip to the opposite side when colliding with boundary.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.sideflip",
+            "default": "true",
+            "inheritedFrom": "PopperPositionerProps.sideFlip",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "align",
+            "type": "Align",
+            "required": false,
+            "description": "The preferred alignment against the trigger. May change when collisions occur.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.align",
+            "default": "'center'",
+            "inheritedFrom": "PopperPositionerProps.align",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Align",
+                "kind": "typeAlias",
+                "type": "'start' | 'center' | 'end'",
+                "resolvedType": "'start' | 'center' | 'end'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.align",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "alignOffset",
+            "type": "number",
+            "required": false,
+            "description": "An offset in pixels from the `start` or `end` alignment options.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.alignoffset",
+            "default": "0",
+            "inheritedFrom": "PopperPositionerProps.alignOffset",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "alignFlip",
+            "type": "boolean",
+            "required": false,
+            "description": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.alignflip",
+            "default": "true",
+            "inheritedFrom": "PopperPositionerProps.alignFlip",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "avoidCollisions",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.avoidcollisions",
+            "default": "true",
+            "inheritedFrom": "PopperPositionerProps.avoidCollisions",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "collisionBoundary",
+            "type": "Element | (Element | null)[] | null",
+            "required": false,
+            "description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.collisionboundary",
+            "default": "[ ]",
+            "inheritedFrom": "collisionBoundary",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Element",
+                "kind": "interface",
+                "type": "Element",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "collisionPadding",
+            "type": "Padding",
+            "required": false,
+            "description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.collisionpadding",
+            "default": "0",
+            "inheritedFrom": "PopperPositionerProps.collisionPadding",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Padding",
+                "kind": "typeAlias",
+                "type": "Padding",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.12/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "arrowPadding",
+            "type": "number",
+            "required": false,
+            "description": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.arrowpadding",
+            "default": "0",
+            "inheritedFrom": "PopperPositionerProps.arrowPadding",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "hideShiftedArrow",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.hideshiftedarrow",
+            "default": "true",
+            "inheritedFrom": "PopperPositionerProps.hideShiftedArrow",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "sticky",
+            "type": "'partial' | 'always'",
+            "required": false,
+            "description": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.sticky",
+            "default": "'partial'",
+            "inheritedFrom": "sticky",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "hideWhenDetached",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to hide the content when the trigger becomes fully occluded.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.hidewhendetached",
+            "default": "false",
+            "inheritedFrom": "PopperPositionerProps.hideWhenDetached",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "positionStrategy",
+            "type": "'fixed' | 'absolute'",
+            "required": false,
+            "description": "The type of CSS position property to use.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.positionstrategy",
+            "default": "'fixed'",
+            "inheritedFrom": "positionStrategy",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "updatePositionStrategy",
+            "type": "'always' | 'optimized'",
+            "required": false,
+            "description": "Strategy to update the position of the floating element on every animation frame.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.updatepositionstrategy",
+            "default": "'optimized'",
+            "inheritedFrom": "updatePositionStrategy",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disableUpdateOnLayoutShift",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to disable the update position for the content when the layout shifted.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.disableupdateonlayoutshift",
+            "default": "false",
+            "inheritedFrom": "PopperPositionerProps.disableUpdateOnLayoutShift",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prioritizePosition",
+            "type": "boolean",
+            "required": false,
+            "description": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.prioritizeposition",
+            "default": "false",
+            "inheritedFrom": "PopperPositionerProps.prioritizePosition",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "reference",
+            "type": "ReferenceElement",
+            "required": false,
+            "description": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.reference",
+            "default": null,
+            "inheritedFrom": "PopperPositionerProps.reference",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ReferenceElement",
+                "kind": "typeAlias",
+                "type": "ReferenceElement",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.8.0/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disableOutsidePointerEvents",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, hover/focus/click interactions will be disabled on elements outside the `DismissableLayer`. Users will\nneed to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to\ntrigger the element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.disableoutsidepointerevents",
+            "default": null,
+            "inheritedFrom": "disableOutsidePointerEvents",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "forceMount",
+            "type": "boolean",
+            "required": false,
+            "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentprops.members.forcemount",
+            "default": null,
+            "inheritedFrom": "forceMount",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TreeSelectContentEmits",
+        "type": "TypeAlias TreeSelectContentEmits",
+        "resolvedType": "{ escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent] }",
+        "description": "Events for the TreeSelectContent component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentemits.emits",
+        "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "escapeKeyDown",
+            "type": "[event: KeyboardEvent]",
+            "parameters": "event: KeyboardEvent",
+            "required": true,
+            "description": "Emitted when the Escape key is pressed inside the popup.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentemits.callables.escapekeydown",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "KeyboardEvent",
+                "kind": "interface",
+                "type": "KeyboardEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pointerDownOutside",
+            "type": "[event: PointerDownOutsideEvent]",
+            "parameters": "event: PointerDownOutsideEvent",
+            "required": true,
+            "description": "Emitted when a pointer is pressed outside the popup.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcontentemits.callables.pointerdownoutside",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PointerDownOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: PointerEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.pointerdownoutsideevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "TreeSelectRoot": {
+      "props": {
+        "kind": "props",
+        "name": "TreeSelectRootProps",
+        "type": "Interface TreeSelectRootProps",
+        "resolvedType": "{ modelValue?: TreeSelectModelValue; defaultValue?: TreeSelectModelValue; multiple?: boolean; items?: TreeSelectBaseItem[]; placeholder?: string; open?: boolean; defaultOpen?: boolean; disabled?: boolean; clearable?: boolean; allowParentSelect?: boolean; propagateSelect?: boolean; bubbleSelect?: boolean; expanded?: string[]; defaultExpanded?: string[]; dir?: Direction }",
+        "description": "Properties for the TreeSelectRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootprops.props",
+        "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "modelValue",
+            "type": "TreeSelectModelValue",
+            "required": false,
+            "description": "The controlled value of the selected node(s). Can be bound as `v-model`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectModelValue",
+                "kind": "typeAlias",
+                "type": "string | string[]",
+                "resolvedType": "string | string[]",
+                "description": "The value model of the tree-select: a single value or an array when `multiple`.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectmodelvalue",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultValue",
+            "type": "TreeSelectModelValue",
+            "required": false,
+            "description": "The initial value when uncontrolled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectModelValue",
+                "kind": "typeAlias",
+                "type": "string | string[]",
+                "resolvedType": "string | string[]",
+                "description": "The value model of the tree-select: a single value or an array when `multiple`.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectmodelvalue",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "multiple",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether multiple nodes can be selected.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootprops.members.multiple",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "items",
+            "type": "TreeSelectBaseItem[]",
+            "required": false,
+            "description": "The tree data source.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootprops.members.items",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "Placeholder text shown when nothing is selected.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootprops.members.placeholder",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "open",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled open state of the popup. Can be bound as `v-model:open`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootprops.members.open",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "The initial open state when uncontrolled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootprops.members.defaultopen",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the tree-select is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "clearable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether a clear button is shown.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootprops.members.clearable",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "allowParentSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether parent nodes can be selected.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootprops.members.allowparentselect",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "propagateSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether selecting a parent selects all its descendants.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootprops.members.propagateselect",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "bubbleSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether selecting children updates the parent selection state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootprops.members.bubbleselect",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "expanded",
+            "type": "string[]",
+            "required": false,
+            "description": "The controlled expanded node values.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootprops.members.expanded",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultExpanded",
+            "type": "string[]",
+            "required": false,
+            "description": "The initial expanded node values when uncontrolled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootprops.members.defaultexpanded",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TreeSelectRootEmits",
+        "type": "TypeAlias TreeSelectRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: TreeSelectModelValue]; \"update:open\": [value: boolean] }",
+        "description": "Events for the TreeSelectRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootemits.emits",
+        "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: TreeSelectModelValue]",
+            "parameters": "value: TreeSelectModelValue",
+            "required": true,
+            "description": "Emitted when the selected value changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectModelValue",
+                "kind": "typeAlias",
+                "type": "string | string[]",
+                "resolvedType": null,
+                "description": "The value model of the tree-select: a single value or an array when `multiple`.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectmodelvalue",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "update:open",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "Emitted when the popup open state changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootemits.callables.update_open",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "TreeSelectTrigger": {
+      "props": {
+        "kind": "props",
+        "name": "TreeSelectTriggerProps",
+        "type": "Interface TreeSelectTriggerProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the TreeSelectTrigger component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselecttriggerprops.props",
+        "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselecttriggerprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselecttriggerprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

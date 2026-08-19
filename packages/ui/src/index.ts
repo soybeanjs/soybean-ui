@@ -95,6 +95,7 @@ export * from './components/theme-mode-switch';
 export * from './components/palette-picker';
 export * from './components/tree';
 export * from './components/tree-menu';
+export * from './components/tree-select';
 export * from './components/virtualizer';
 export * from './components/watermark';
 

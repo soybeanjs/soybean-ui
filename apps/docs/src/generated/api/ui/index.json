@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T10:16:39.825Z",
+  "generatedAt": "2026-08-19T10:31:11.883Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -1053,6 +1053,11 @@
         "TreeMenuStyledItem",
         "TreeMenuSub"
       ]
+    },
+    "tree-select": {
+      "component": "tree-select",
+      "file": "tree-select.json",
+      "symbols": ["TreeSelect", "TreeSelectCompact", "TreeSelectContent", "TreeSelectRoot", "TreeSelectTrigger"]
     },
     "typography": {
       "component": "typography",

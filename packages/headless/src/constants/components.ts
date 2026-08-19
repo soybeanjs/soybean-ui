@@ -546,6 +546,7 @@ export const components = {
     'TreeMenuCollapsible',
     'TreeMenuSub'
   ],
+  treeSelect: ['TreeSelectRoot', 'TreeSelectTrigger', 'TreeSelectContent', 'TreeSelectCompact'],
   typography: ['TypographyTitle', 'TypographyParagraph', 'TypographyText'],
   virtualizer: ['VirtualizerRoot', 'VirtualizerContent', 'VirtualizerItem'],
   visuallyHidden: ['VisuallyHidden', 'VisuallyHiddenInput'],

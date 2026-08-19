@@ -9273,6 +9273,117 @@
         "treemenuuislot": "Available UI slots for the TreeMenu component.",
         "type": ""
       },
+      "packages_headless_src_components_tree_select_types": {
+        "treeselectcompactemits": {
+          "callables": {
+            "update_modelvalue": "Emitted when the selected value changes.",
+            "update_open": "Emitted when the popup open state changes."
+          },
+          "emits": "Events for the TreeSelectCompact component."
+        },
+        "treeselectcompactprops": {
+          "members": {
+            "allowparentselect": "Whether parent nodes can be selected.",
+            "bubbleselect": "Whether selecting children updates the parent selection state.",
+            "clearable": "Whether a clear button is shown.",
+            "contentprops": "Properties forwarded to the popup content.",
+            "defaultexpanded": "The initial expanded node values when uncontrolled.",
+            "defaultopen": "The initial open state when uncontrolled.",
+            "defaultvalue": "The initial value when uncontrolled.",
+            "dir": "The reading direction.",
+            "disabled": "Whether the tree-select is disabled.",
+            "expanded": "The controlled expanded node values.",
+            "items": "The tree data source.",
+            "modelvalue": "The controlled value of the selected node(s). Can be bound as `v-model`.",
+            "multiple": "Whether multiple nodes can be selected.",
+            "open": "The controlled open state of the popup. Can be bound as `v-model:open`.",
+            "placeholder": "Placeholder text shown when nothing is selected.",
+            "placement": "The placement of the popup.",
+            "portalprops": "Properties forwarded to the portal.",
+            "propagateselect": "Whether selecting a parent selects all its descendants.",
+            "showarrow": "Whether to show the arrow on the popup.",
+            "triggerprops": "Properties forwarded to the trigger element."
+          },
+          "props": "Properties for the TreeSelectCompact component."
+        },
+        "treeselectcompactslots": {
+          "callables": {
+            "node": "Custom node rendering. Receives the flattened item and tree item slot props.",
+            "value": "Custom trigger value content. Receives `{ labels, modelValue }`."
+          },
+          "slots": "Slots for the TreeSelectCompact component."
+        },
+        "treeselectcontentemits": {
+          "callables": {
+            "escapekeydown": "Emitted when the Escape key is pressed inside the popup.",
+            "pointerdownoutside": "Emitted when a pointer is pressed outside the popup."
+          },
+          "emits": "Events for the TreeSelectContent component."
+        },
+        "treeselectcontentprops": {
+          "members": {
+            "align": "The preferred alignment against the trigger. May change when collisions occur.",
+            "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
+            "alignoffset": "An offset in pixels from the `start` or `end` alignment options.",
+            "arrowpadding": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
+            "avoidcollisions": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
+            "collisionboundary": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
+            "collisionpadding": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "disableoutsidepointerevents": "When `true`, hover/focus/click interactions will be disabled on elements outside the `DismissableLayer`. Users will\nneed to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to\ntrigger the element.",
+            "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
+            "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+            "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
+            "hidewhendetached": "Whether to hide the content when the trigger becomes fully occluded.",
+            "placement": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+            "positionstrategy": "The type of CSS position property to use.",
+            "prioritizeposition": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
+            "reference": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
+            "side": "The preferred side of the trigger to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
+            "sideflip": "Flip to the opposite side when colliding with boundary.",
+            "sideoffset": "The distance in pixels from the trigger.",
+            "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
+          },
+          "props": "Properties for the TreeSelectContent component."
+        },
+        "treeselectmodelvalue": "The value model of the tree-select: a single value or an array when `multiple`.",
+        "treeselectrootemits": {
+          "callables": {
+            "update_modelvalue": "Emitted when the selected value changes.",
+            "update_open": "Emitted when the popup open state changes."
+          },
+          "emits": "Events for the TreeSelectRoot component."
+        },
+        "treeselectrootprops": {
+          "members": {
+            "allowparentselect": "Whether parent nodes can be selected.",
+            "bubbleselect": "Whether selecting children updates the parent selection state.",
+            "clearable": "Whether a clear button is shown.",
+            "defaultexpanded": "The initial expanded node values when uncontrolled.",
+            "defaultopen": "The initial open state when uncontrolled.",
+            "defaultvalue": "The initial value when uncontrolled.",
+            "dir": "The reading direction.",
+            "disabled": "Whether the tree-select is disabled.",
+            "expanded": "The controlled expanded node values.",
+            "items": "The tree data source.",
+            "modelvalue": "The controlled value of the selected node(s). Can be bound as `v-model`.",
+            "multiple": "Whether multiple nodes can be selected.",
+            "open": "The controlled open state of the popup. Can be bound as `v-model:open`.",
+            "placeholder": "Placeholder text shown when nothing is selected.",
+            "propagateselect": "Whether selecting a parent selects all its descendants."
+          },
+          "props": "Properties for the TreeSelectRoot component."
+        },
+        "treeselecttriggerprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior."
+          },
+          "props": "Properties for the TreeSelectTrigger component."
+        },
+        "treeselectui": "UI class overrides for the TreeSelect component.",
+        "type": ""
+      },
       "packages_headless_src_components_tree_types": {
         "ismultiple": "",
         "treeitememits": {
@@ -13941,6 +14052,37 @@
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the TreeMenuStyledItem component."
+        }
+      },
+      "packages_ui_src_components_tree_select_types": {
+        "treeselectprops": {
+          "members": {
+            "allowparentselect": "Whether parent nodes can be selected.",
+            "bubbleselect": "Whether selecting children updates the parent selection state.",
+            "class": "root class",
+            "clearable": "Whether a clear button is shown.",
+            "color": "Theme color of the trigger focus state.",
+            "contentprops": "Properties forwarded to the popup content.",
+            "defaultexpanded": "The initial expanded node values when uncontrolled.",
+            "defaultopen": "The initial open state when uncontrolled.",
+            "defaultvalue": "The initial value when uncontrolled.",
+            "dir": "The reading direction.",
+            "disabled": "Whether the tree-select is disabled.",
+            "expanded": "The controlled expanded node values.",
+            "items": "The tree data source.",
+            "modelvalue": "The controlled value of the selected node(s). Can be bound as `v-model`.",
+            "multiple": "Whether multiple nodes can be selected.",
+            "open": "The controlled open state of the popup. Can be bound as `v-model:open`.",
+            "placeholder": "Placeholder text shown when nothing is selected.",
+            "placement": "The placement of the popup.",
+            "portalprops": "Properties forwarded to the portal.",
+            "propagateselect": "Whether selecting a parent selects all its descendants.",
+            "showarrow": "Whether to show the arrow on the popup.",
+            "size": "Visual size of the trigger.",
+            "triggerprops": "Properties forwarded to the trigger element.",
+            "ui": "Per-slot class overrides for the component."
+          },
+          "props": "Properties for the TreeSelect component."
         }
       },
       "packages_ui_src_components_tree_types": {

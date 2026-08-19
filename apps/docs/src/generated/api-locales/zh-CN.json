@@ -9273,6 +9273,117 @@
         "treemenuuislot": "TreeMenu 组件的可用 UI 插槽。",
         "type": ""
       },
+      "packages_headless_src_components_tree_select_types": {
+        "treeselectcompactemits": {
+          "callables": {
+            "update_modelvalue": "当所选值发生变化时触发。",
+            "update_open": "在弹出窗口的打开状态发生变化时触发。"
+          },
+          "emits": "TreeSelectCompact 组件的事件。"
+        },
+        "treeselectcompactprops": {
+          "members": {
+            "allowparentselect": "是否可以选中父节点。",
+            "bubbleselect": "选择子元素是否会更新父元素的选择状态。",
+            "clearable": "是否显示“清除”按钮。",
+            "contentprops": "转发至弹出窗口内容的属性。",
+            "defaultexpanded": "初始展开的节点值在不受控时。",
+            "defaultopen": "未受控时的初始打开状态。",
+            "defaultvalue": "未受控时的初始值。",
+            "dir": "阅读方向。",
+            "disabled": "树形下拉菜单是否已禁用。",
+            "expanded": "受控的展开节点值。",
+            "items": "树形数据源。",
+            "modelvalue": "所选节点的受控值。可作为 `v-model` 绑定。",
+            "multiple": "是否支持多节点选择。",
+            "open": "弹出窗口的可控打开状态。可绑定为 `v-model:open`。",
+            "placeholder": "当未选中任何内容时显示的占位符文本。",
+            "placement": "弹出窗口的位置。",
+            "portalprops": "已转发至门户的属性。",
+            "propagateselect": "选择父节点是否会选中其所有子节点。",
+            "showarrow": "是否在弹出窗口中显示箭头。",
+            "triggerprops": "转发给触发元素的属性。"
+          },
+          "props": "TreeSelectCompact 组件的属性。"
+        },
+        "treeselectcompactslots": {
+          "callables": {
+            "node": "自定义节点渲染。接收扁平化项和树项的槽属性。",
+            "value": "自定义触发值内容。接收 `{ labels, modelValue }`。"
+          },
+          "slots": "TreeSelectCompact 组件的槽位。"
+        },
+        "treeselectcontentemits": {
+          "callables": {
+            "escapekeydown": "在弹出窗口内按下 Escape 键时触发。",
+            "pointerdownoutside": "当鼠标指针位于弹出窗口外部时触发。"
+          },
+          "emits": "TreeSelectContent 组件的事件。"
+        },
+        "treeselectcontentprops": {
+          "members": {
+            "align": "首选与触发词对齐。若发生冲突，对齐方式可能会发生变化。",
+            "alignflip": "当与边界发生冲突时，需翻转对齐方式。\n此情况仅在 `prioritizePosition` 为 true 时才会发生。",
+            "alignoffset": "相对于 `start` 或 `end` 对齐选项的像素偏移量。",
+            "arrowpadding": "箭头与内容边缘之间的间距。如果您的内容使用了 border-radius，这将防止其\n溢出到角落。",
+            "avoidcollisions": "当值为 `true` 时，将覆盖“侧边”和“对齐”首选项，以避免与边界边缘发生冲突。",
+            "collisionboundary": "用作碰撞边界的元素。默认情况下，此处为视口，但您可以提供一个或多个\n元素以将其纳入此检查范围。",
+            "collisionpadding": "从应进行碰撞检测的边界边缘开始计算的距离（以像素为单位）。支持数值（\n所有边均相同）或部分填充对象，例如：{ top: 20, left: 20 }。",
+            "disableoutsidepointerevents": "当设置为 `true` 时，`DismissableLayer` 外部的元素将禁用悬停/焦点/点击交互。用户\n需要双击外部元素才能与其交互：第一次用于关闭 `DismissableLayer`，第二次用于\n触发该元素。",
+            "disableupdateonlayoutshift": "当布局发生变化时，是否禁用内容的更新位置。",
+            "forcemount": "用于在需要更多控制时强制挂载。\n\n在使用 Vue 动画库控制动画时非常有用。",
+            "hideshiftedarrow": "当设置为 `true` 时，若无法将箭头居中对齐\n到引用元素上，则隐藏该箭头。",
+            "hidewhendetached": "当触发器完全被遮挡时，是否隐藏内容。",
+            "placement": "浮动元素的位置。\n\n若使用该属性，它将覆盖 `side` 和 `align` 属性。",
+            "positionstrategy": "要使用的 CSS `position` 属性的类型。",
+            "prioritizeposition": "强制内容位于视口内。这可能会与参考元素重叠，这可能并非预期效果。",
+            "reference": "将作为浮动元素定位参考的自定义元素或虚拟元素。如果\n提供了该元素，它将替换默认的锚点元素。",
+            "side": "打开时优先渲染的触发器一侧。当发生冲突且\n启用了 avoidCollisions 时，该方向将被反转。",
+            "sideflip": "遇到边界时，请翻转至另一侧。",
+            "sideoffset": "距触发器的像素距离。",
+            "sticky": "在对齐轴上的“粘附”行为。`partial` 会在触发器至少部分位于边界内时将内容保留在边界内，而 \"always\" 则无论触发器是否位于边界内，都会将内容保留在边界内。",
+            "updatepositionstrategy": "在每个动画帧中更新浮动元素位置的策略。"
+          },
+          "props": "TreeSelectContent 组件的属性。"
+        },
+        "treeselectmodelvalue": "树形下拉菜单的值模型：当 `multiple` 时，可为单个值或数组。",
+        "treeselectrootemits": {
+          "callables": {
+            "update_modelvalue": "当所选值发生变化时触发。",
+            "update_open": "在弹出窗口的打开状态发生变化时触发。"
+          },
+          "emits": "TreeSelectRoot 组件的事件。"
+        },
+        "treeselectrootprops": {
+          "members": {
+            "allowparentselect": "是否可以选中父节点。",
+            "bubbleselect": "选择子元素是否会更新父元素的选择状态。",
+            "clearable": "是否显示“清除”按钮。",
+            "defaultexpanded": "初始展开的节点值在不受控时。",
+            "defaultopen": "未受控时的初始打开状态。",
+            "defaultvalue": "未受控时的初始值。",
+            "dir": "阅读方向。",
+            "disabled": "树形下拉菜单是否已禁用。",
+            "expanded": "受控的展开节点值。",
+            "items": "树形数据源。",
+            "modelvalue": "所选节点的受控值。可作为 `v-model` 绑定。",
+            "multiple": "是否支持多节点选择。",
+            "open": "弹出窗口的可控打开状态。可绑定为 `v-model:open`。",
+            "placeholder": "当未选中任何内容时显示的占位符文本。",
+            "propagateselect": "选择父节点是否会选中其所有子节点。"
+          },
+          "props": "TreeSelectRoot 组件的属性。"
+        },
+        "treeselecttriggerprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。"
+          },
+          "props": "TreeSelectTrigger 组件的属性。"
+        },
+        "treeselectui": "TreeSelect 组件的 UI 类重写。",
+        "type": ""
+      },
       "packages_headless_src_components_tree_types": {
         "ismultiple": "",
         "treeitememits": {
@@ -13941,6 +14052,37 @@
             "ui": "针对该组件的按槽位类重写。"
           },
           "props": "TreeMenuStyledItem 组件的属性。"
+        }
+      },
+      "packages_ui_src_components_tree_select_types": {
+        "treeselectprops": {
+          "members": {
+            "allowparentselect": "是否可以选中父节点。",
+            "bubbleselect": "选择子元素是否会更新父元素的选择状态。",
+            "class": "根类",
+            "clearable": "是否显示“清除”按钮。",
+            "color": "触发器聚焦状态的主题颜色。",
+            "contentprops": "转发至弹出窗口内容的属性。",
+            "defaultexpanded": "初始展开的节点值在不受控时。",
+            "defaultopen": "未受控时的初始打开状态。",
+            "defaultvalue": "未受控时的初始值。",
+            "dir": "阅读方向。",
+            "disabled": "树形下拉菜单是否已禁用。",
+            "expanded": "受控的展开节点值。",
+            "items": "树形数据源。",
+            "modelvalue": "所选节点的受控值。可作为 `v-model` 绑定。",
+            "multiple": "是否支持多节点选择。",
+            "open": "弹出窗口的可控打开状态。可绑定为 `v-model:open`。",
+            "placeholder": "当未选中任何内容时显示的占位符文本。",
+            "placement": "弹出窗口的位置。",
+            "portalprops": "已转发至门户的属性。",
+            "propagateselect": "选择父节点是否会选中其所有子节点。",
+            "showarrow": "是否在弹出窗口中显示箭头。",
+            "size": "触发器的视觉尺寸。",
+            "triggerprops": "转发给触发元素的属性。",
+            "ui": "该组件的按槽位类重写。"
+          },
+          "props": "TreeSelect 组件的属性。"
         }
       },
       "packages_ui_src_components_tree_types": {
