@@ -4,7 +4,7 @@ import { SDescriptions, SDescriptionsItem } from '@/components/descriptions';
 import { getA11yViolations } from '../../shared/a11y';
 
 describe('SDescriptions', () => {
-  const mountDescriptions = (props = {}, itemProps = []) =>
+  const mountDescriptions = (props: Record<string, unknown> = {}, itemProps: string[] = []) =>
     mount(SDescriptions, {
       props,
       slots: {
