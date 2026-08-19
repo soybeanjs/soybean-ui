@@ -548,6 +548,7 @@ export const components = {
   ],
   treeSelect: ['TreeSelectRoot', 'TreeSelectTrigger', 'TreeSelectContent', 'TreeSelectCompact'],
   typography: ['TypographyTitle', 'TypographyParagraph', 'TypographyText'],
+  upload: ['UploadRoot', 'UploadTrigger', 'UploadFileList', 'UploadFileItem', 'UploadCompact'],
   virtualizer: ['VirtualizerRoot', 'VirtualizerContent', 'VirtualizerItem'],
   visuallyHidden: ['VisuallyHidden', 'VisuallyHiddenInput'],
   watermark: ['WatermarkCompact', 'WatermarkOverlay', 'WatermarkRoot']

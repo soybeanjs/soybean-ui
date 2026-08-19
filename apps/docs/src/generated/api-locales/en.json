@@ -9539,6 +9539,86 @@
         },
         "typographytype": "The semantic type (color) of a typography text."
       },
+      "packages_headless_src_components_upload_types": {
+        "type": "",
+        "uploadcompactemits": {
+          "callables": {
+            "update_filelist": "Emitted when the file list changes."
+          },
+          "emits": "Events for the UploadCompact component."
+        },
+        "uploadcompactprops": {
+          "members": {
+            "accept": "Accepted file types, following the native `accept` syntax\n(e.g. `.png,.jpg` or `image/*`).",
+            "autoupload": "Whether to start the upload automatically after selection.",
+            "customrequest": "A custom request adapter. When omitted files are added without an upload.",
+            "defaultfilelist": "The initial file list when uncontrolled.",
+            "dir": "The reading direction.",
+            "disabled": "Whether the upload is disabled.",
+            "filelist": "The controlled file list.",
+            "filelistprops": "Properties forwarded to the file list element.",
+            "maxcount": "The maximum number of files.",
+            "maxsize": "The maximum file size in bytes.",
+            "multiple": "Whether multiple files can be selected.",
+            "triggerprops": "Properties forwarded to the trigger element."
+          },
+          "props": "Properties for the UploadCompact component."
+        },
+        "uploadcompactslots": {
+          "callables": {
+            "default": "The trigger content (button or dropzone area).",
+            "item": "Custom file item rendering."
+          },
+          "slots": "Slots for the UploadCompact component."
+        },
+        "uploadcustomrequest": "A custom request adapter. Use XHR, fetch, or a third-party storage SDK.",
+        "uploadfile": {
+          "members": {
+            "name": "The file name.",
+            "percent": "The upload progress, 0–100.",
+            "raw": "The underlying native file.",
+            "size": "The file size in bytes.",
+            "status": "The upload status.",
+            "type": "The MIME type of the file.",
+            "uid": "A stable unique id for the file.",
+            "url": "An optional URL for previews (image mode)."
+          }
+        },
+        "uploadfileitemprops": {
+          "members": {
+            "file": "The file to render."
+          },
+          "props": "Properties for the UploadFileItem component."
+        },
+        "uploadfilelistprops": {
+          "props": "Properties for the UploadFileList component."
+        },
+        "uploadrootemits": {
+          "callables": {
+            "update_filelist": "Emitted when the file list changes."
+          },
+          "emits": "Events for the UploadRoot component."
+        },
+        "uploadrootprops": {
+          "members": {
+            "accept": "Accepted file types, following the native `accept` syntax\n(e.g. `.png,.jpg` or `image/*`).",
+            "autoupload": "Whether to start the upload automatically after selection.",
+            "customrequest": "A custom request adapter. When omitted files are added without an upload.",
+            "defaultfilelist": "The initial file list when uncontrolled.",
+            "dir": "The reading direction.",
+            "disabled": "Whether the upload is disabled.",
+            "filelist": "The controlled file list.",
+            "maxcount": "The maximum number of files.",
+            "maxsize": "The maximum file size in bytes.",
+            "multiple": "Whether multiple files can be selected."
+          },
+          "props": "Properties for the UploadRoot component."
+        },
+        "uploadtriggerprops": {
+          "props": "Properties for the UploadTrigger component."
+        },
+        "uploadui": "UI class overrides for the Upload component."
+      },
       "packages_headless_src_components_virtualizer_types": {
         "virtualizercontentprops": {
           "members": {
@@ -14119,6 +14199,28 @@
             "togglebehavior": "Determines whether a \"single\" or \"multiple\" items can be toggled at a time."
           },
           "props": "Properties for the TreeVirtualizer component."
+        }
+      },
+      "packages_ui_src_components_upload_types": {
+        "uploadprops": {
+          "members": {
+            "accept": "Accepted file types, following the native `accept` syntax\n(e.g. `.png,.jpg` or `image/*`).",
+            "autoupload": "Whether to start the upload automatically after selection.",
+            "class": "root class",
+            "customrequest": "A custom request adapter. When omitted files are added without an upload.",
+            "defaultfilelist": "The initial file list when uncontrolled.",
+            "dir": "The reading direction.",
+            "disabled": "Whether the upload is disabled.",
+            "filelist": "The controlled file list.",
+            "filelistprops": "Properties forwarded to the file list element.",
+            "maxcount": "The maximum number of files.",
+            "maxsize": "The maximum file size in bytes.",
+            "multiple": "Whether multiple files can be selected.",
+            "size": "Visual size of the component.",
+            "triggerprops": "Properties forwarded to the trigger element.",
+            "ui": "Per-slot class overrides for the component."
+          },
+          "props": "Properties for the Upload component."
         }
       },
       "packages_ui_src_components_virtualizer_types": {

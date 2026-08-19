@@ -104,6 +104,7 @@ export const components = {
   treeMenu: ['STreeMenu', 'STreeMenuStyledItem'],
   treeSelect: ['STreeSelect'],
   typography: ['STypographyTitle', 'STypographyParagraph', 'STypographyText'],
+  upload: ['SUpload'],
   virtualizer: ['SVirtualizer', 'SVirtualizerItem'],
   watermark: ['SWatermark']
 };

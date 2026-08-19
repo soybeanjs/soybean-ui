@@ -578,6 +578,11 @@ import {
   TypographyParagraph,
   TypographyText,
   TypographyTitle,
+  UploadCompact,
+  UploadFileItem,
+  UploadFileList,
+  UploadRoot,
+  UploadTrigger,
   VirtualizerContent,
   VirtualizerItem,
   VirtualizerRoot,
@@ -2046,6 +2051,20 @@ export const TreeSelect = {
   Trigger: typeof TreeSelectTrigger;
   Content: typeof TreeSelectContent;
   Compact: typeof TreeSelectCompact;
+};
+
+export const Upload = {
+  Root: UploadRoot,
+  Trigger: UploadTrigger,
+  FileList: UploadFileList,
+  FileItem: UploadFileItem,
+  Compact: UploadCompact
+} as {
+  Root: typeof UploadRoot;
+  Trigger: typeof UploadTrigger;
+  FileList: typeof UploadFileList;
+  FileItem: typeof UploadFileItem;
+  Compact: typeof UploadCompact;
 };
 
 export const Virtualizer = {

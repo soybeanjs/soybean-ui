@@ -102,7 +102,8 @@ export const menuData: MenuData[] = [
       'tagsInput',
       'toggle',
       'toggleGroup',
-      'treeSelect'
+      'treeSelect',
+      'upload'
     ]
   },
   {

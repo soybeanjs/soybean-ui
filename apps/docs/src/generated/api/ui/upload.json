@@ -1,0 +1,923 @@
+{
+  "component": "upload",
+  "symbols": {
+    "Upload": {
+      "props": {
+        "kind": "props",
+        "name": "UploadProps",
+        "type": "Interface UploadProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<UploadUi>; triggerProps?: UploadTriggerProps; fileListProps?: UploadFileListProps; accept?: string; multiple?: boolean; maxCount?: number; maxSize?: number; autoUpload?: boolean; customRequest?: UploadCustomRequest; disabled?: boolean; fileList?: UploadFile[]; defaultFileList?: UploadFile[]; dir?: Direction }",
+        "description": "Properties for the Upload component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadprops.props",
+        "sourcePath": "packages/ui/src/components/upload/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/upload/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/upload/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px",
+                "descriptionKey": "api.generated.packages_theme_src_types.themesize",
+                "sourcePath": "packages/theme/src/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<UploadUi>",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/upload/types.ts",
+            "referencedTypes": [
+              {
+                "name": "UploadUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; trigger: ClassValue; fileList: ClassValue; fileItem: ClassValue; filePreview: ClassValue; fileInfo: ClassValue; fileStatus: ClassValue; fileAction: ClassValue; }",
+                "resolvedType": null,
+                "description": "UI class overrides for the Upload component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadui",
+                "sourcePath": "packages/headless/src/components/upload/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "triggerProps",
+            "type": "UploadTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the trigger element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadprops.members.triggerprops",
+            "default": null,
+            "inheritedFrom": "triggerProps",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": [
+              {
+                "name": "UploadTriggerProps",
+                "kind": "interface",
+                "type": "UploadTriggerProps",
+                "resolvedType": null,
+                "description": "Properties for the UploadTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadtriggerprops",
+                "sourcePath": "packages/headless/src/components/upload/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "fileListProps",
+            "type": "UploadFileListProps",
+            "required": false,
+            "description": "Properties forwarded to the file list element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadprops.members.filelistprops",
+            "default": null,
+            "inheritedFrom": "fileListProps",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": [
+              {
+                "name": "UploadFileListProps",
+                "kind": "interface",
+                "type": "UploadFileListProps",
+                "resolvedType": null,
+                "description": "Properties for the UploadFileList component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadfilelistprops",
+                "sourcePath": "packages/headless/src/components/upload/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "accept",
+            "type": "string",
+            "required": false,
+            "description": "Accepted file types, following the native `accept` syntax\n(e.g. `.png,.jpg` or `image/*`).",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadprops.members.accept",
+            "default": null,
+            "inheritedFrom": "accept",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "multiple",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether multiple files can be selected.",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadprops.members.multiple",
+            "default": null,
+            "inheritedFrom": "multiple",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "maxCount",
+            "type": "number",
+            "required": false,
+            "description": "The maximum number of files.",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadprops.members.maxcount",
+            "default": null,
+            "inheritedFrom": "maxCount",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "maxSize",
+            "type": "number",
+            "required": false,
+            "description": "The maximum file size in bytes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadprops.members.maxsize",
+            "default": null,
+            "inheritedFrom": "maxSize",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autoUpload",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to start the upload automatically after selection.",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadprops.members.autoupload",
+            "default": "true",
+            "inheritedFrom": "autoUpload",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "customRequest",
+            "type": "UploadCustomRequest",
+            "required": false,
+            "description": "A custom request adapter. When omitted files are added without an upload.",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadprops.members.customrequest",
+            "default": null,
+            "inheritedFrom": "customRequest",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": [
+              {
+                "name": "UploadCustomRequest",
+                "kind": "typeAlias",
+                "type": "(options: UploadRequestOptions) => void",
+                "resolvedType": "(options: UploadRequestOptions) => void",
+                "description": "A custom request adapter. Use XHR, fetch, or a third-party storage SDK.",
+                "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcustomrequest",
+                "sourcePath": "packages/headless/src/components/upload/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the upload is disabled.",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fileList",
+            "type": "UploadFile[]",
+            "required": false,
+            "description": "The controlled file list.",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadprops.members.filelist",
+            "default": null,
+            "inheritedFrom": "fileList",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultFileList",
+            "type": "UploadFile[]",
+            "required": false,
+            "description": "The initial file list when uncontrolled.",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadprops.members.defaultfilelist",
+            "default": null,
+            "inheritedFrom": "defaultFileList",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction.",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "UploadCompact": {
+      "props": {
+        "kind": "props",
+        "name": "UploadCompactProps",
+        "type": "Interface UploadCompactProps",
+        "resolvedType": "{ triggerProps?: UploadTriggerProps; fileListProps?: UploadFileListProps; accept?: string; multiple?: boolean; maxCount?: number; maxSize?: number; autoUpload?: boolean; customRequest?: UploadCustomRequest; disabled?: boolean; fileList?: UploadFile[]; defaultFileList?: UploadFile[]; dir?: Direction }",
+        "description": "Properties for the UploadCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactprops.props",
+        "sourcePath": "packages/headless/src/components/upload/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "triggerProps",
+            "type": "UploadTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the trigger element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactprops.members.triggerprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": [
+              {
+                "name": "UploadTriggerProps",
+                "kind": "interface",
+                "type": "UploadTriggerProps",
+                "resolvedType": null,
+                "description": "Properties for the UploadTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadtriggerprops",
+                "sourcePath": "packages/headless/src/components/upload/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "fileListProps",
+            "type": "UploadFileListProps",
+            "required": false,
+            "description": "Properties forwarded to the file list element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactprops.members.filelistprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": [
+              {
+                "name": "UploadFileListProps",
+                "kind": "interface",
+                "type": "UploadFileListProps",
+                "resolvedType": null,
+                "description": "Properties for the UploadFileList component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadfilelistprops",
+                "sourcePath": "packages/headless/src/components/upload/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "accept",
+            "type": "string",
+            "required": false,
+            "description": "Accepted file types, following the native `accept` syntax\n(e.g. `.png,.jpg` or `image/*`).",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactprops.members.accept",
+            "default": null,
+            "inheritedFrom": "accept",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "multiple",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether multiple files can be selected.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactprops.members.multiple",
+            "default": null,
+            "inheritedFrom": "multiple",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "maxCount",
+            "type": "number",
+            "required": false,
+            "description": "The maximum number of files.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactprops.members.maxcount",
+            "default": null,
+            "inheritedFrom": "maxCount",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "maxSize",
+            "type": "number",
+            "required": false,
+            "description": "The maximum file size in bytes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactprops.members.maxsize",
+            "default": null,
+            "inheritedFrom": "maxSize",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autoUpload",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to start the upload automatically after selection.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactprops.members.autoupload",
+            "default": "true",
+            "inheritedFrom": "autoUpload",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "customRequest",
+            "type": "UploadCustomRequest",
+            "required": false,
+            "description": "A custom request adapter. When omitted files are added without an upload.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactprops.members.customrequest",
+            "default": null,
+            "inheritedFrom": "customRequest",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": [
+              {
+                "name": "UploadCustomRequest",
+                "kind": "typeAlias",
+                "type": "(options: UploadRequestOptions) => void",
+                "resolvedType": "(options: UploadRequestOptions) => void",
+                "description": "A custom request adapter. Use XHR, fetch, or a third-party storage SDK.",
+                "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcustomrequest",
+                "sourcePath": "packages/headless/src/components/upload/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the upload is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fileList",
+            "type": "UploadFile[]",
+            "required": false,
+            "description": "The controlled file list.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactprops.members.filelist",
+            "default": null,
+            "inheritedFrom": "fileList",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultFileList",
+            "type": "UploadFile[]",
+            "required": false,
+            "description": "The initial file list when uncontrolled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactprops.members.defaultfilelist",
+            "default": null,
+            "inheritedFrom": "defaultFileList",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "UploadCompactEmits",
+        "type": "TypeAlias UploadCompactEmits: UploadRootEmits",
+        "resolvedType": "{ \"update:fileList\": [files: UploadFile[]] }",
+        "description": "Events for the UploadCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactemits.emits",
+        "sourcePath": "packages/headless/src/components/upload/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:fileList",
+            "type": "[files: UploadFile[]]",
+            "parameters": "files: UploadFile[]",
+            "required": true,
+            "description": "Emitted when the file list changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactemits.callables.update_filelist",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "UploadRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:fileList': [files: UploadFile[]]; }",
+            "resolvedType": "{ \"update:fileList\": [files: UploadFile[]] }",
+            "description": "Events for the UploadRoot component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadrootemits",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:fileList",
+                "type": "[files: UploadFile[]]",
+                "parameters": "files: UploadFile[]",
+                "required": true,
+                "description": "Emitted when the file list changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadrootemits.callables.update_filelist",
+                "sourcePath": "packages/headless/src/components/upload/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "UploadCompactSlots",
+        "type": "TypeAlias UploadCompactSlots",
+        "resolvedType": "{ UploadCompact?: (() => any); item?: ((props: { file: UploadFile; remove: (uid: string) => void; retry: (uid: string) => void; }) => any) }",
+        "description": "Slots for the UploadCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactslots.slots",
+        "sourcePath": "packages/headless/src/components/upload/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "The trigger content (button or dropzone area).",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactslots.callables.default",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "item",
+            "type": "((props: { file: UploadFile; remove: (uid: string) => void; retry: (uid: string) => void; }) => any) | undefined",
+            "parameters": "((props: { file: UploadFile; remove: (uid: string) => void; retry: (uid: string) => void; }) => any) | undefined",
+            "required": false,
+            "description": "Custom file item rendering.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactslots.callables.item",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ file: UploadFile; remove: (uid: string) => void; retry: (uid: string) => void; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_upload_types.type",
+                "sourcePath": "packages/headless/src/components/upload/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "UploadFileItem": {
+      "props": {
+        "kind": "props",
+        "name": "UploadFileItemProps",
+        "type": "Interface UploadFileItemProps",
+        "resolvedType": "{ file: UploadFile }",
+        "description": "Properties for the UploadFileItem component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadfileitemprops.props",
+        "sourcePath": "packages/headless/src/components/upload/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "file",
+            "type": "UploadFile",
+            "required": true,
+            "description": "The file to render.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadfileitemprops.members.file",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": [
+              {
+                "name": "UploadFile",
+                "kind": "interface",
+                "type": "UploadFile",
+                "resolvedType": "{ uid: string; name: string; size: number; type: string; status: 'success' | 'error' | 'ready' | 'uploading'; percent: number; url?: string; raw: File }",
+                "description": "A file tracked by the upload component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadfile",
+                "sourcePath": "packages/headless/src/components/upload/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "uid",
+                    "type": "string",
+                    "required": true,
+                    "description": "A stable unique id for the file.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadfile.members.uid",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/upload/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "required": true,
+                    "description": "The file name.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadfile.members.name",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/upload/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "size",
+                    "type": "number",
+                    "required": true,
+                    "description": "The file size in bytes.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadfile.members.size",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/upload/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "string",
+                    "required": true,
+                    "description": "The MIME type of the file.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadfile.members.type",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/upload/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "status",
+                    "type": "'success' | 'error' | 'ready' | 'uploading'",
+                    "required": true,
+                    "description": "The upload status.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadfile.members.status",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/upload/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "percent",
+                    "type": "number",
+                    "required": true,
+                    "description": "The upload progress, 0–100.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadfile.members.percent",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/upload/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "url",
+                    "type": "string",
+                    "required": false,
+                    "description": "An optional URL for previews (image mode).",
+                    "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadfile.members.url",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/upload/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "raw",
+                    "type": "File",
+                    "required": true,
+                    "description": "The underlying native file.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadfile.members.raw",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/upload/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "UploadFileList": {
+      "props": {
+        "kind": "props",
+        "name": "UploadFileListProps",
+        "type": "Interface UploadFileListProps",
+        "resolvedType": null,
+        "description": "Properties for the UploadFileList component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadfilelistprops.props",
+        "sourcePath": "packages/headless/src/components/upload/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "UploadRoot": {
+      "props": {
+        "kind": "props",
+        "name": "UploadRootProps",
+        "type": "Interface UploadRootProps",
+        "resolvedType": "{ accept?: string; multiple?: boolean; maxCount?: number; maxSize?: number; autoUpload?: boolean; customRequest?: UploadCustomRequest; disabled?: boolean; fileList?: UploadFile[]; defaultFileList?: UploadFile[]; dir?: Direction }",
+        "description": "Properties for the UploadRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadrootprops.props",
+        "sourcePath": "packages/headless/src/components/upload/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "accept",
+            "type": "string",
+            "required": false,
+            "description": "Accepted file types, following the native `accept` syntax\n(e.g. `.png,.jpg` or `image/*`).",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadrootprops.members.accept",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "multiple",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether multiple files can be selected.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadrootprops.members.multiple",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "maxCount",
+            "type": "number",
+            "required": false,
+            "description": "The maximum number of files.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadrootprops.members.maxcount",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "maxSize",
+            "type": "number",
+            "required": false,
+            "description": "The maximum file size in bytes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadrootprops.members.maxsize",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autoUpload",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to start the upload automatically after selection.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadrootprops.members.autoupload",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "customRequest",
+            "type": "UploadCustomRequest",
+            "required": false,
+            "description": "A custom request adapter. When omitted files are added without an upload.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadrootprops.members.customrequest",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": [
+              {
+                "name": "UploadCustomRequest",
+                "kind": "typeAlias",
+                "type": "(options: UploadRequestOptions) => void",
+                "resolvedType": "(options: UploadRequestOptions) => void",
+                "description": "A custom request adapter. Use XHR, fetch, or a third-party storage SDK.",
+                "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcustomrequest",
+                "sourcePath": "packages/headless/src/components/upload/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the upload is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadrootprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fileList",
+            "type": "UploadFile[]",
+            "required": false,
+            "description": "The controlled file list.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadrootprops.members.filelist",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultFileList",
+            "type": "UploadFile[]",
+            "required": false,
+            "description": "The initial file list when uncontrolled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadrootprops.members.defaultfilelist",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadrootprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "UploadRootEmits",
+        "type": "TypeAlias UploadRootEmits",
+        "resolvedType": "{ \"update:fileList\": [files: UploadFile[]] }",
+        "description": "Events for the UploadRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadrootemits.emits",
+        "sourcePath": "packages/headless/src/components/upload/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:fileList",
+            "type": "[files: UploadFile[]]",
+            "parameters": "files: UploadFile[]",
+            "required": true,
+            "description": "Emitted when the file list changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadrootemits.callables.update_filelist",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "UploadTrigger": {
+      "props": {
+        "kind": "props",
+        "name": "UploadTriggerProps",
+        "type": "Interface UploadTriggerProps",
+        "resolvedType": null,
+        "description": "Properties for the UploadTrigger component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadtriggerprops.props",
+        "sourcePath": "packages/headless/src/components/upload/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

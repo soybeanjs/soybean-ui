@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T10:31:11.883Z",
+  "generatedAt": "2026-08-19T10:40:22.473Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -1063,6 +1063,11 @@
       "component": "typography",
       "file": "typography.json",
       "symbols": ["TypographyParagraph", "TypographyText", "TypographyTitle"]
+    },
+    "upload": {
+      "component": "upload",
+      "file": "upload.json",
+      "symbols": ["Upload", "UploadCompact", "UploadFileItem", "UploadFileList", "UploadRoot", "UploadTrigger"]
     },
     "virtualizer": {
       "component": "virtualizer",

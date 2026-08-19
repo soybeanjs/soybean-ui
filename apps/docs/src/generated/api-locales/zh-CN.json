@@ -9539,6 +9539,86 @@
         },
         "typographytype": "排版文本的语义类型（颜色）。"
       },
+      "packages_headless_src_components_upload_types": {
+        "type": "",
+        "uploadcompactemits": {
+          "callables": {
+            "update_filelist": "当文件列表发生变化时触发。"
+          },
+          "emits": "UploadCompact 组件的事件。"
+        },
+        "uploadcompactprops": {
+          "members": {
+            "accept": "接受的文件类型，需遵循原生 `accept` 语法\n（例如 `.png, .jpg` 或 `image/*`）。",
+            "autoupload": "是否在选定后自动开始上传。",
+            "customrequest": "一个自定义请求适配器。当省略的文件在未上传的情况下被添加时。",
+            "defaultfilelist": "未受控时的初始文件列表。",
+            "dir": "阅读方向。",
+            "disabled": "上传功能是否已禁用。",
+            "filelist": "受控文件列表。",
+            "filelistprops": "转发给文件列表元素的属性。",
+            "maxcount": "文件的最大数量。",
+            "maxsize": "文件最大大小（单位：字节）。",
+            "multiple": "是否支持选择多个文件。",
+            "triggerprops": "转发给触发器元素的属性。"
+          },
+          "props": "UploadCompact 组件的属性。"
+        },
+        "uploadcompactslots": {
+          "callables": {
+            "default": "触发内容（按钮或拖放区域）。",
+            "item": "自定义文件项渲染。"
+          },
+          "slots": "UploadCompact 组件的插槽。"
+        },
+        "uploadcustomrequest": "自定义请求适配器。使用 XHR、fetch 或第三方存储 SDK。",
+        "uploadfile": {
+          "members": {
+            "name": "文件名。",
+            "percent": "上传进度，0–100。",
+            "raw": "底层源文件。",
+            "size": "文件大小（单位：字节）。",
+            "status": "上传状态。",
+            "type": "文件的 MIME 类型。",
+            "uid": "文件的稳定且唯一的标识符。",
+            "url": "用于预览的可选 URL（图像模式）。"
+          }
+        },
+        "uploadfileitemprops": {
+          "members": {
+            "file": "待渲染的文件。"
+          },
+          "props": "UploadFileItem 组件的属性。"
+        },
+        "uploadfilelistprops": {
+          "props": "UploadFileList 组件的属性。"
+        },
+        "uploadrootemits": {
+          "callables": {
+            "update_filelist": "当文件列表发生变化时触发。"
+          },
+          "emits": "UploadRoot 组件的事件。"
+        },
+        "uploadrootprops": {
+          "members": {
+            "accept": "接受的文件类型，需遵循原生 `accept` 语法\n（例如 `.png, .jpg` 或 `image/*`）。",
+            "autoupload": "是否在选定后自动开始上传。",
+            "customrequest": "一个自定义请求适配器。当省略的文件在未上传的情况下被添加时。",
+            "defaultfilelist": "未受控时的初始文件列表。",
+            "dir": "阅读方向。",
+            "disabled": "上传功能是否已禁用。",
+            "filelist": "受控文件列表。",
+            "maxcount": "文件的最大数量。",
+            "maxsize": "文件最大大小（单位：字节）。",
+            "multiple": "是否支持选择多个文件。"
+          },
+          "props": "UploadRoot 组件的属性。"
+        },
+        "uploadtriggerprops": {
+          "props": "UploadTrigger 组件的属性。"
+        },
+        "uploadui": "Upload 组件的 UI 类重写。"
+      },
       "packages_headless_src_components_virtualizer_types": {
         "virtualizercontentprops": {
           "members": {
@@ -14119,6 +14199,28 @@
             "togglebehavior": "用于确定一次可以切换“单个”还是“多个”项目。"
           },
           "props": "TreeVirtualizer 组件的属性。"
+        }
+      },
+      "packages_ui_src_components_upload_types": {
+        "uploadprops": {
+          "members": {
+            "accept": "接受的文件类型，需遵循原生 `accept` 语法\n（例如 `.png, .jpg` 或 `image/*`）。",
+            "autoupload": "是否在选定后自动开始上传。",
+            "class": "根类",
+            "customrequest": "一个自定义请求适配器。当省略的文件在未上传的情况下被添加时。",
+            "defaultfilelist": "未受控时的初始文件列表。",
+            "dir": "阅读方向。",
+            "disabled": "上传功能是否已禁用。",
+            "filelist": "受控文件列表。",
+            "filelistprops": "转发给文件列表元素的属性。",
+            "maxcount": "文件的最大数量。",
+            "maxsize": "文件最大大小（单位：字节）。",
+            "multiple": "是否支持选择多个文件。",
+            "size": "组件的视觉尺寸。",
+            "triggerprops": "转发给触发器元素的属性。",
+            "ui": "该组件的按槽位类覆盖。"
+          },
+          "props": "Upload 组件的属性。"
         }
       },
       "packages_ui_src_components_virtualizer_types": {

@@ -95,6 +95,7 @@ export * from './components/typography';
 export * from './components/tree';
 export * from './components/tree-menu';
 export * from './components/tree-select';
+export * from './components/upload';
 export * from './components/virtualizer';
 export * from './components/visually-hidden';
 export * from './components/watermark';
