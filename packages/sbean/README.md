@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://github.com/soybeanjs/soybean-ui">
+    <img src="https://r2.soybeanjs.tech/soybeanjs/logo-sbean.svg?v=202608192144" alt="Logo" width="150" />
+  </a>
+</p>
+
 # sbean
 
 CLI tool for adding SoybeanUI components to your Vue apps — copy-paste, like shadcn/ui.
