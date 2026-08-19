@@ -171,7 +171,7 @@ export function getCascaderAncestorPath<T extends DefinedValue = DefinedValue>(
 /**
  * Whether `ancestor` is an ancestor of `node` (the node itself is excluded).
  *
- * Used to emphasize the parents of the currently highlighted node across the
+ * Used to emphasize the parents of the currently selected node across the
  * linked columns, mirroring the TreeMenu `child-active` behavior.
  */
 export function isCascaderNodeAncestor<T extends DefinedValue = DefinedValue>(

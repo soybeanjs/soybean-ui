@@ -3232,7 +3232,7 @@
             "name": "childActive",
             "type": "boolean",
             "required": true,
-            "description": "Whether a descendant of the node is currently highlighted (breadcrumb emphasis).",
+            "description": "Whether a descendant of the node is currently selected (breadcrumb emphasis).",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercompactoptionslotprops.members.childactive",
             "default": null,
             "inheritedFrom": null,

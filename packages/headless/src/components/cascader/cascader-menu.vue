@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, nextTick, onMounted, ref, watch } from 'vue';
 import type { DefinedValue } from '../../types';
 import { isCascaderNodeAncestor } from './shared';
 import { useCascaderRootContext, useCascaderUi } from './context';
@@ -23,7 +23,9 @@ const {
   itemSize,
   height,
   highlighted,
+  selectedNodes,
   loadingKeys,
+  getOptionId,
   isChecked,
   isIndeterminate,
   isSelected,
@@ -66,11 +68,49 @@ const onScroll = (event: Event) => {
   scrollTop.value = (event.target as HTMLElement).scrollTop;
 };
 
-/** Whether a descendant of the node is currently highlighted. */
-const isChildActive = (node: CascaderNode<DefinedValue>) => {
-  const highlightedNode = highlighted.value;
-  return highlightedNode ? isCascaderNodeAncestor(highlightedNode, node) : false;
-};
+const menuElement = ref<HTMLElement>();
+
+/**
+ * Scrolls the highlighted node into view when it lands outside the rendered
+ * window: keyboard navigation and the on-open selection restore can highlight
+ * rows that are not currently rendered (virtual) or scrolled out (both modes).
+ */
+function scrollHighlightedIntoView() {
+  const element = menuElement.value;
+  const node = highlighted.value;
+  if (!element || !node) return;
+
+  if (isVirtual.value) {
+    // Virtual columns only render the visible window, so off-screen rows have
+    // no element: move the scroll offset instead and sync the reactive offset
+    // so the window re-renders immediately (the `scroll` event only confirms).
+    const index = column.value.findIndex(item => item.uid === node.uid);
+    if (index === -1) return;
+    const top = index * rowHeight.value;
+    const bottom = top + rowHeight.value;
+    if (top < element.scrollTop) {
+      element.scrollTop = top;
+    } else if (bottom > element.scrollTop + element.clientHeight) {
+      element.scrollTop = bottom - element.clientHeight;
+    } else {
+      return;
+    }
+    scrollTop.value = element.scrollTop;
+    return;
+  }
+
+  element.querySelector(`[id="${getOptionId(node)}"]`)?.scrollIntoView({ block: 'nearest' });
+}
+
+onMounted(scrollHighlightedIntoView);
+
+watch(highlighted, () => {
+  void nextTick(scrollHighlightedIntoView);
+});
+
+/** Whether a descendant of the node is currently selected (breadcrumb emphasis). */
+const isChildActive = (node: CascaderNode<DefinedValue>) =>
+  selectedNodes.value.some(selected => isCascaderNodeAncestor(selected, node));
 
 /** Slot props forwarded to every option, matching the option slot contract. */
 const getSlotProps = (node: CascaderNode<DefinedValue>) => ({
@@ -87,6 +127,7 @@ const getSlotProps = (node: CascaderNode<DefinedValue>) => ({
 
 <template>
   <div
+    ref="menuElement"
     data-soybean-cascader-menu
     :class="cls"
     :style="isVirtual ? { height: `${viewportHeight}px`, overflowY: 'auto' } : undefined"
@@ -97,7 +138,7 @@ const getSlotProps = (node: CascaderNode<DefinedValue>) => ({
       v-for="(node, index) in visibleNodes"
       :key="node.uid"
       :node="node"
-      :index="index"
+      :index="startIndex + index"
       :level="level"
       v-bind="optionProps"
     >

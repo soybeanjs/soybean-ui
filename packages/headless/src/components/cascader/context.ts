@@ -5,7 +5,7 @@ import { useDirection } from '../config-provider/context';
 import { providePopperUi } from '../popper/context';
 import { useContext, useUiContext } from '../../composables';
 import type { DefinedValue, Direction } from '../../types';
-import { mergeCascaderFieldKeys } from './shared';
+import { getCascaderAncestorPath, mergeCascaderFieldKeys } from './shared';
 import { useCascaderData } from './hooks';
 import type {
   CascaderFieldKeys,
@@ -117,7 +117,12 @@ export const [provideCascaderRootContext, useCascaderRootContext] = useContext(
         // On open, focus the selected node so keyboard navigation starts there.
         const selected = data.selectedNodes.value;
         if (selected.length > 0) {
-          data.highlighted.value = selected[0]!;
+          const node = selected[0]!;
+          data.highlighted.value = node;
+          // Restore the linked columns to the selected path. The close handler
+          // below clears the expansion of filterable cascaders, so without this
+          // the panel would reopen collapsed on every session after the first.
+          data.expandingPath.value = getCascaderAncestorPath(node);
         }
       } else {
         data.searchPattern.value = '';

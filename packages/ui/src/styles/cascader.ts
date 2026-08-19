@@ -35,13 +35,13 @@ export const cascaderVariants = scv({
     option: [
       `relative flex items-center w-full outline-none cursor-pointer select-none`,
       `rounded-sm focus:bg-accent focus:text-accent-foreground data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground`,
-      `data-[child-active]:text-primary data-[state=indeterminate]:not-data-[highlighted]:text-primary data-[selected]:text-primary data-[selected]:font-medium data-[selected]:data-[leaf]:bg-primary/10`,
+      `data-[child-active]:text-primary data-[state=indeterminate]:not-data-[highlighted]:text-primary data-[selected]:text-primary data-[selected]:font-medium data-[selected]:bg-primary/10`,
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     optionText: 'grow truncate text-start',
     optionCheck: `shrink-0 text-primary`,
     optionArrow: `shrink-0 rounded-sm p-0.5 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground`,
-    empty: 'flex items-center justify-center text-muted-foreground',
+    empty: 'flex items-center justify-center w-full text-muted-foreground',
     arrow: 'w-1em h-0.5em fill-popover stroke-border'
   },
   variants: {
@@ -55,7 +55,7 @@ export const cascaderVariants = scv({
         clear: 'size-3.5 text-2xs group-data-[multiple]:end-5.5',
         menu: 'max-h-80 py-1 w-32',
         option: 'gap-2 px-1 py-1',
-        empty: 'py-2.5 text-2xs'
+        empty: 'min-w-32 py-2.5 text-2xs'
       },
       sm: {
         popup: 'text-xs',
@@ -66,7 +66,7 @@ export const cascaderVariants = scv({
         clear: 'size-4 text-xs group-data-[multiple]:end-7.5',
         menu: 'max-h-80 py-1 w-36',
         option: 'gap-2 px-1.5 py-1',
-        empty: 'py-3 text-xs'
+        empty: 'min-w-36 py-3 text-xs'
       },
       md: {
         popup: 'text-sm',
@@ -77,7 +77,7 @@ export const cascaderVariants = scv({
         clear: 'size-4.5 text-sm group-data-[multiple]:end-9',
         menu: 'max-h-80 py-1 w-40',
         option: 'gap-2 px-2 py-1.5',
-        empty: 'py-4 text-sm'
+        empty: 'min-w-40 py-4 text-sm'
       },
       lg: {
         popup: 'text-base',
@@ -88,7 +88,7 @@ export const cascaderVariants = scv({
         clear: 'size-5 text-base group-data-[multiple]:end-11',
         menu: 'max-h-80 py-1 w-44',
         option: 'gap-2 px-2.5 py-1.5',
-        empty: 'py-4.5 text-base'
+        empty: 'min-w-44 py-4.5 text-base'
       },
       xl: {
         popup: 'text-lg',
@@ -99,7 +99,7 @@ export const cascaderVariants = scv({
         clear: 'size-5.5 text-lg group-data-[multiple]:end-12.5',
         menu: 'max-h-80 py-1 w-48',
         option: 'gap-2 px-3 py-2',
-        empty: 'py-5 text-lg'
+        empty: 'min-w-48 py-5 text-lg'
       },
       '2xl': {
         popup: 'text-xl',
@@ -110,7 +110,7 @@ export const cascaderVariants = scv({
         clear: 'size-6 text-xl group-data-[multiple]:end-14.5',
         menu: 'max-h-80 py-1 w-52',
         option: 'gap-2 px-3.5 py-2.5',
-        empty: 'py-6 text-xl'
+        empty: 'min-w-52 py-6 text-xl'
       }
     }
   },

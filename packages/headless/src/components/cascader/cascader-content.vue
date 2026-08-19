@@ -24,10 +24,9 @@ const props = withDefaults(defineProps<CascaderContentProps>(), {
   sideOffset: 4,
   align: 'start',
   avoidCollisions: true,
+  prioritizePosition: true,
   collisionPadding: 10,
-  disableOutsidePointerEvents: true,
-  menuProps: () => ({}),
-  emptyProps: () => ({})
+  disableOutsidePointerEvents: true
 });
 
 const emit = defineEmits<CascaderContentEmits>();
@@ -123,25 +122,25 @@ const isEmpty = computed(() => {
         role="tree"
         :aria-multiselectable="multiple ? true : undefined"
       >
-        <template v-if="isSearchMode">
-          <CascaderMenu :level="0" v-bind="menuProps">
+        <template v-if="!isEmpty">
+          <CascaderMenu v-if="isSearchMode" :level="0" v-bind="menuProps">
             <template #default="slotProps">
               <slot name="option" v-bind="slotProps">
                 {{ slotProps.node.label }}
               </slot>
             </template>
           </CascaderMenu>
+          <template v-else>
+            <CascaderMenu v-for="(_menu, level) in menus" :key="level" :level="level" v-bind="menuProps">
+              <template #default="slotProps">
+                <slot name="option" v-bind="slotProps">
+                  {{ slotProps.node.label }}
+                </slot>
+              </template>
+            </CascaderMenu>
+          </template>
         </template>
-        <template v-else>
-          <CascaderMenu v-for="(_menu, level) in menus" :key="level" :level="level" v-bind="menuProps">
-            <template #default="slotProps">
-              <slot name="option" v-bind="slotProps">
-                {{ slotProps.node.label }}
-              </slot>
-            </template>
-          </CascaderMenu>
-        </template>
-        <slot v-if="isEmpty" name="empty">
+        <slot v-else name="empty">
           <CascaderEmpty v-bind="emptyProps" />
         </slot>
         <slot />

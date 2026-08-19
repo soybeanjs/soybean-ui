@@ -18,6 +18,7 @@ const emit = defineEmits<CascaderOptionEmits<T>>();
 const {
   menus,
   highlighted,
+  selectedNodes,
   loadingKeys,
   expandTrigger,
   getOptionId,
@@ -35,10 +36,9 @@ const cls = useCascaderUi('option');
 const isHighlighted = computed(() => highlighted.value?.uid === props.node.uid);
 const isLoading = computed(() => loadingKeys.value.has(props.node.uid));
 const isExpanded = computed(() => menus.value[props.node.level + 1] === props.node.children);
-const isChildActive = computed(() => {
-  const node = highlighted.value;
-  return node ? isCascaderNodeAncestor(node, props.node) : false;
-});
+// Breadcrumb emphasis follows the selection, not the transient hover highlight,
+// so merely hovering a deep node never recolors its ancestors.
+const isChildActive = computed(() => selectedNodes.value.some(node => isCascaderNodeAncestor(node, props.node)));
 
 const dataState = computed(() => {
   if (isSelected(props.node)) return 'selected';

@@ -266,7 +266,7 @@ describe('SCascader', () => {
       wrapper.unmount();
     });
 
-    it('marks the ancestors of the highlighted node with data-child-active', async () => {
+    it('marks only the ancestors of the selected node with data-child-active', async () => {
       const wrapper = mount(SCascader, {
         props: { options },
         attachTo: document.body
@@ -275,17 +275,31 @@ describe('SCascader', () => {
       await wrapper.get('[role="combobox"]').trigger('click');
       await nextTick();
 
-      // Expand 浙江 to reveal the second column, then highlight one of its children.
+      // Expand 浙江 to reveal the second column.
       await new DOMWrapper(findTreeItem('浙江') as Element).trigger('click');
       await nextTick();
 
+      // Hovering a child without selecting must not emphasize its parents.
       const hangzhou = findTreeItem('杭州');
       expect(hangzhou).toBeTruthy();
       await new DOMWrapper(hangzhou as Element).trigger('pointermove');
       await nextTick();
+      expect(findTreeItem('浙江')?.getAttribute('data-child-active')).toBeNull();
 
-      // The parent of the highlighted node is emphasized, sibling paths are not.
+      // Selecting a leaf marks its ancestors (breadcrumb emphasis).
+      await new DOMWrapper(findTreeItem('杭州') as Element).trigger('click');
+      await nextTick();
+      await new DOMWrapper(findTreeItem('西湖区') as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+      await nextTick();
+
+      // Single selection closed the panel; reopen to inspect the columns.
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
       expect(findTreeItem('浙江')?.getAttribute('data-child-active')).toBe('');
+      expect(findTreeItem('杭州')?.getAttribute('data-child-active')).toBe('');
       expect(findTreeItem('江苏')?.getAttribute('data-child-active')).toBeNull();
       wrapper.unmount();
     });
@@ -550,6 +564,33 @@ describe('SCascader', () => {
       wrapper.unmount();
     });
 
+    it('marks a fully checked non-leaf parent with data-selected (selected background applies to parents too)', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options,
+          multiple: true
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      // Checking a parent in non-strict mode checks the whole subtree; the
+      // non-leaf parent itself is selected and must carry data-selected so
+      // the selected background (not only the font color) applies to it.
+      await new DOMWrapper(findTreeItem('浙江') as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+      await nextTick();
+
+      const parent = findTreeItem('浙江');
+      expect(parent?.getAttribute('data-selected')).toBe('');
+      expect(parent?.getAttribute('data-state')).toBe('selected');
+      expect(parent?.getAttribute('data-leaf')).toBeNull();
+      wrapper.unmount();
+    });
+
     it('selects a leaf independently and marks parent rows as indeterminate', async () => {
       const wrapper = mount(SCascader, {
         props: {
@@ -668,6 +709,53 @@ describe('SCascader', () => {
       wrapper.unmount();
     });
 
+    it('re-expands to the selected node on every reopen', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options,
+          filterable: true
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      const input = document.body.querySelector<HTMLInputElement>('input');
+      await new DOMWrapper(input as Element).setValue('西湖');
+      await flushPromises();
+      await nextTick();
+
+      await new DOMWrapper(findTreeItem('西湖区') as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+      await nextTick();
+
+      // The leaf selection closed the panel.
+      expect(document.body.querySelector('[role="tree"]')).toBeNull();
+
+      const reopenAndAssertColumns = async () => {
+        await new DOMWrapper(input as Element).trigger('focus');
+        await nextTick();
+        await nextTick();
+
+        // The panel reopens expanded to the selected path, not just the root column.
+        expect(findTreeItem('杭州')).toBeTruthy();
+        expect(findTreeItem('西湖区')).toBeTruthy();
+        expect(findTreeItem('西湖区')?.getAttribute('data-selected')).toBe('');
+
+        // Close again (trigger toggle) to cycle the panel state.
+        await wrapper.get('[role="combobox"]').trigger('click');
+        await nextTick();
+        await nextTick();
+        expect(document.body.querySelector('[role="tree"]')).toBeNull();
+      };
+
+      await reopenAndAssertColumns();
+      await reopenAndAssertColumns();
+      wrapper.unmount();
+    });
+
     it('shows the localized empty text when no result matches', async () => {
       const wrapper = mount(SCascader, {
         props: {
@@ -687,6 +775,8 @@ describe('SCascader', () => {
 
       // Default locale is `en`.
       expect(document.body.querySelector('[data-soybean-cascader-empty]')?.textContent).toContain('No data');
+      // The empty state replaces the menu columns so it can center in the panel.
+      expect(document.body.querySelector('[data-soybean-cascader-menu]')).toBeNull();
       wrapper.unmount();
     });
 
@@ -709,6 +799,58 @@ describe('SCascader', () => {
       await nextTick();
 
       expect(document.body.querySelector('[data-soybean-cascader-empty]')?.textContent).toContain('没有匹配项');
+      wrapper.unmount();
+    });
+  });
+
+  describe('virtual scroll', () => {
+    const virtualOptions = Array.from({ length: 50 }, (_, index) => ({
+      label: `分组 ${index + 1}`,
+      value: `group-${index + 1}`,
+      children: [{ label: `子选项 ${index + 1}`, value: `child-${index + 1}` }]
+    }));
+
+    it('renders only the visible window of a column instead of all rows', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options: virtualOptions,
+          virtualScroll: true,
+          itemSize: 34,
+          height: 240
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      const menu = document.body.querySelector('[data-soybean-cascader-menu]');
+      expect(menu).toBeTruthy();
+      // ceil(240 / 34) + 2 = 10 rendered rows out of 50 root options.
+      expect(menu?.querySelectorAll('[role="treeitem"]').length).toBe(10);
+      wrapper.unmount();
+    });
+
+    it('keeps the full scroll height via spacer elements', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options: virtualOptions,
+          virtualScroll: true,
+          itemSize: 34,
+          height: 240
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      const menu = document.body.querySelector<HTMLElement>('[data-soybean-cascader-menu]');
+      expect(menu).toBeTruthy();
+      // The bottom spacer covers the 40 unrendered rows: 40 * 34 = 1360px.
+      const spacers = menu?.querySelectorAll('div[aria-hidden="true"]');
+      expect(spacers?.length).toBe(1);
+      expect(spacers?.[0]?.getAttribute('style')).toContain('height: 1360px');
       wrapper.unmount();
     });
   });
