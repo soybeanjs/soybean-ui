@@ -255,6 +255,7 @@ import {
   EditablePreview,
   EditableRoot,
   EditableSubmitTrigger,
+  EllipsisRoot,
   EmptyCompact,
   EmptyContent,
   EmptyDescription,
@@ -1195,6 +1196,8 @@ export const Editable = {
   SubmitTrigger: typeof EditableSubmitTrigger;
   Compact: typeof EditableCompact;
 };
+
+export { EllipsisRoot };
 
 export const Empty = {
   Compact: EmptyCompact,

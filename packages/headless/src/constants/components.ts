@@ -251,6 +251,7 @@ export const components = {
     'EditableSubmitTrigger',
     'EditableCompact'
   ],
+  ellipsis: ['EllipsisRoot'],
   empty: ['EmptyCompact', 'EmptyRoot', 'EmptyHeader', 'EmptyMedia', 'EmptyContent', 'EmptyTitle', 'EmptyDescription'],
   form: [
     'FormCompact',

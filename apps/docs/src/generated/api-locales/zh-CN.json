@@ -4403,6 +4403,36 @@
         },
         "editableui": "可编辑组件的 UI 类重载。"
       },
+      "packages_headless_src_components_ellipsis_types": {
+        "ellipsisrootemits": {
+          "callables": {
+            "update_expanded": "在展开状态发生变化时触发。"
+          },
+          "emits": "EllipsisRoot 组件的事件。"
+        },
+        "ellipsisrootprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
+            "defaultexpanded": "未受控时的初始展开状态。",
+            "expandable": "点击文本是否会在折叠和展开状态之间切换。",
+            "expanded": "内容的受控展开状态。",
+            "lines": "截断前显示的行数上限。",
+            "tooltip": "当内容溢出时，工具提示是否应显示全文。"
+          },
+          "props": "EllipsisRoot 组件的属性。"
+        },
+        "ellipsisslotprops": {
+          "members": {
+            "expanded": "内容是否已展开。",
+            "overflowed": "内容是否超出当前配置的行长限制。",
+            "text": "根元素的纯文本内容。",
+            "toggle": "在展开和折叠状态之间切换。",
+            "tooltip": "是否启用工具提示显示。"
+          },
+          "slotprops": "由 EllipsisRoot 默认插槽暴露的插槽属性。"
+        }
+      },
       "packages_headless_src_components_empty_types": {
         "emptycompactprops": {
           "members": {
@@ -11715,6 +11745,28 @@
             "submit_trigger": "提交触发器插槽的自定义内容。"
           },
           "slots": "Editable 组件的插槽属性。"
+        }
+      },
+      "packages_ui_src_components_ellipsis_types": {
+        "ellipsisemits": {
+          "callables": {
+            "update_expanded": "在展开状态发生变化时触发。"
+          },
+          "emits": "Ellipsis 组件的事件。"
+        },
+        "ellipsisprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
+            "class": "根类",
+            "defaultexpanded": "未受控时的初始展开状态。",
+            "expandable": "点击文本是否会在折叠和展开状态之间切换。",
+            "expanded": "内容的受控展开状态。",
+            "lines": "截断前显示的行数上限。",
+            "tooltip": "当内容溢出时，工具提示是否应显示全文。",
+            "tooltipcontent": "溢出提示框中显示的文本。默认为根节点的文本内容。"
+          },
+          "props": "Ellipsis 组件的属性。"
         }
       },
       "packages_ui_src_components_empty_types": {

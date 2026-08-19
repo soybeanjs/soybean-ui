@@ -20,6 +20,7 @@ export * from './use-is-using-keyboard';
 export * from './use-kbd';
 export * from './use-popup-events';
 export * from './use-presence';
+export * from './use-overflow';
 export * from './use-props';
 export * from './use-selection';
 export * from './use-state-machine';

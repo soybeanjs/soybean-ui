@@ -143,7 +143,7 @@ export const menuData: MenuData[] = [
   {
     value: 'utilities',
     i18n: 'sidebar.utilities',
-    items: ['arrow', 'visuallyHidden']
+    items: ['arrow', 'ellipsis', 'visuallyHidden']
   }
 ];
 

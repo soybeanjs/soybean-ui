@@ -38,6 +38,7 @@ export const components = {
   drawer: ['SDrawer'],
   dropdownMenu: ['SDropdownMenu', 'SDropdownMenuCheckbox', 'SDropdownMenuRadio', 'SDropdownMenuWrapper'],
   editable: ['SEditable'],
+  ellipsis: ['SEllipsis'],
   empty: ['SEmpty'],
   form: ['SForm', 'SFormFieldBase'],
   hoverCard: ['SHoverCard'],

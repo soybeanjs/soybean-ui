@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T09:14:58.857Z",
+  "generatedAt": "2026-08-19T09:38:04.791Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -452,6 +452,11 @@
         "EditableRoot",
         "EditableSubmitTrigger"
       ]
+    },
+    "ellipsis": {
+      "component": "ellipsis",
+      "file": "ellipsis.json",
+      "symbols": ["Ellipsis", "EllipsisRoot"]
     },
     "empty": {
       "component": "empty",

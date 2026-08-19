@@ -4403,6 +4403,36 @@
         },
         "editableui": "UI class overrides for the Editable component."
       },
+      "packages_headless_src_components_ellipsis_types": {
+        "ellipsisrootemits": {
+          "callables": {
+            "update_expanded": "Emitted when the expanded state changes."
+          },
+          "emits": "Events for the EllipsisRoot component."
+        },
+        "ellipsisrootprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "defaultexpanded": "The initial expanded state when uncontrolled.",
+            "expandable": "Whether clicking the text toggles between collapsed and expanded.",
+            "expanded": "The controlled expanded state of the content.",
+            "lines": "The maximum number of lines to display before truncation.",
+            "tooltip": "Whether a tooltip should reveal the full text when the content overflows."
+          },
+          "props": "Properties for the EllipsisRoot component."
+        },
+        "ellipsisslotprops": {
+          "members": {
+            "expanded": "Whether the content is expanded.",
+            "overflowed": "Whether the content currently overflows the configured line clamp.",
+            "text": "The plain text content of the root element.",
+            "toggle": "Toggles between expanded and collapsed.",
+            "tooltip": "Whether tooltip display is enabled."
+          },
+          "slotprops": "Slot props exposed by the EllipsisRoot default slot."
+        }
+      },
       "packages_headless_src_components_empty_types": {
         "emptycompactprops": {
           "members": {
@@ -11715,6 +11745,28 @@
             "submit_trigger": "Custom content for the submit trigger slot."
           },
           "slots": "Slot properties for the Editable component."
+        }
+      },
+      "packages_ui_src_components_ellipsis_types": {
+        "ellipsisemits": {
+          "callables": {
+            "update_expanded": "Emitted when the expanded state changes."
+          },
+          "emits": "Events for the Ellipsis component."
+        },
+        "ellipsisprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "class": "root class",
+            "defaultexpanded": "The initial expanded state when uncontrolled.",
+            "expandable": "Whether clicking the text toggles between collapsed and expanded.",
+            "expanded": "The controlled expanded state of the content.",
+            "lines": "The maximum number of lines to display before truncation.",
+            "tooltip": "Whether a tooltip should reveal the full text when the content overflows.",
+            "tooltipcontent": "Text shown in the overflow tooltip. Defaults to the text content of the root."
+          },
+          "props": "Properties for the Ellipsis component."
         }
       },
       "packages_ui_src_components_empty_types": {

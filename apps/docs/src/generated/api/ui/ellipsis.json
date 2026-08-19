@@ -1,0 +1,413 @@
+{
+  "component": "ellipsis",
+  "symbols": {
+    "Ellipsis": {
+      "props": {
+        "kind": "props",
+        "name": "EllipsisProps",
+        "type": "Interface EllipsisProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; tooltipContent?: string; lines?: number; expandable?: boolean; expanded?: boolean; defaultExpanded?: boolean; tooltip?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the Ellipsis component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_ellipsis_types.ellipsisprops.props",
+        "sourcePath": "packages/ui/src/components/ellipsis/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_src_components_ellipsis_types.ellipsisprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/ellipsis/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "tooltipContent",
+            "type": "string",
+            "required": false,
+            "description": "Text shown in the overflow tooltip. Defaults to the text content of the root.",
+            "descriptionKey": "api.generated.packages_ui_src_components_ellipsis_types.ellipsisprops.members.tooltipcontent",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "lines",
+            "type": "number",
+            "required": false,
+            "description": "The maximum number of lines to display before truncation.",
+            "descriptionKey": "api.generated.packages_ui_src_components_ellipsis_types.ellipsisprops.members.lines",
+            "default": "1",
+            "inheritedFrom": "lines",
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "expandable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether clicking the text toggles between collapsed and expanded.",
+            "descriptionKey": "api.generated.packages_ui_src_components_ellipsis_types.ellipsisprops.members.expandable",
+            "default": null,
+            "inheritedFrom": "expandable",
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "expanded",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled expanded state of the content.",
+            "descriptionKey": "api.generated.packages_ui_src_components_ellipsis_types.ellipsisprops.members.expanded",
+            "default": null,
+            "inheritedFrom": "expanded",
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultExpanded",
+            "type": "boolean",
+            "required": false,
+            "description": "The initial expanded state when uncontrolled.",
+            "descriptionKey": "api.generated.packages_ui_src_components_ellipsis_types.ellipsisprops.members.defaultexpanded",
+            "default": null,
+            "inheritedFrom": "defaultExpanded",
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "tooltip",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether a tooltip should reveal the full text when the content overflows.",
+            "descriptionKey": "api.generated.packages_ui_src_components_ellipsis_types.ellipsisprops.members.tooltip",
+            "default": "true",
+            "inheritedFrom": "tooltip",
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_ui_src_components_ellipsis_types.ellipsisprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_ui_src_components_ellipsis_types.ellipsisprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "EllipsisEmits",
+        "type": "TypeAlias EllipsisEmits: EllipsisRootEmits",
+        "resolvedType": "{ \"update:expanded\": [value: boolean] }",
+        "description": "Events for the Ellipsis component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_ellipsis_types.ellipsisemits.emits",
+        "sourcePath": "packages/ui/src/components/ellipsis/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:expanded",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "Emitted when the expanded state changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_ellipsis_types.ellipsisemits.callables.update_expanded",
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "EllipsisRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:expanded': [value: boolean]; }",
+            "resolvedType": "{ \"update:expanded\": [value: boolean] }",
+            "description": "Events for the EllipsisRoot component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisrootemits",
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:expanded",
+                "type": "[value: boolean]",
+                "parameters": "value: boolean",
+                "required": true,
+                "description": "Emitted when the expanded state changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisrootemits.callables.update_expanded",
+                "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "EllipsisSlotProps",
+        "type": "Interface EllipsisSlotProps",
+        "resolvedType": "{ overflowed: boolean; expanded: boolean; text: string; toggle: () => void; tooltip: boolean }",
+        "description": "Slot props exposed by the EllipsisRoot default slot.",
+        "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisslotprops.slotprops",
+        "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "overflowed",
+            "type": "boolean",
+            "required": true,
+            "description": "Whether the content currently overflows the configured line clamp.",
+            "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisslotprops.members.overflowed",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "expanded",
+            "type": "boolean",
+            "required": true,
+            "description": "Whether the content is expanded.",
+            "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisslotprops.members.expanded",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "required": true,
+            "description": "The plain text content of the root element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisslotprops.members.text",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "toggle",
+            "type": "() => void",
+            "required": true,
+            "description": "Toggles between expanded and collapsed.",
+            "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisslotprops.members.toggle",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "tooltip",
+            "type": "boolean",
+            "required": true,
+            "description": "Whether tooltip display is enabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisslotprops.members.tooltip",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "EllipsisRoot": {
+      "props": {
+        "kind": "props",
+        "name": "EllipsisRootProps",
+        "type": "Interface EllipsisRootProps",
+        "resolvedType": "{ lines?: number; expandable?: boolean; expanded?: boolean; defaultExpanded?: boolean; tooltip?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the EllipsisRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisrootprops.props",
+        "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "lines",
+            "type": "number",
+            "required": false,
+            "description": "The maximum number of lines to display before truncation.",
+            "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisrootprops.members.lines",
+            "default": "1",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "expandable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether clicking the text toggles between collapsed and expanded.",
+            "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisrootprops.members.expandable",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "expanded",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled expanded state of the content.",
+            "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisrootprops.members.expanded",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultExpanded",
+            "type": "boolean",
+            "required": false,
+            "description": "The initial expanded state when uncontrolled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisrootprops.members.defaultexpanded",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "tooltip",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether a tooltip should reveal the full text when the content overflows.",
+            "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisrootprops.members.tooltip",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisrootprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisrootprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "EllipsisRootEmits",
+        "type": "TypeAlias EllipsisRootEmits",
+        "resolvedType": "{ \"update:expanded\": [value: boolean] }",
+        "description": "Events for the EllipsisRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisrootemits.emits",
+        "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:expanded",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "Emitted when the expanded state changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisrootemits.callables.update_expanded",
+            "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    }
+  }
+}
