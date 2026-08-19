@@ -472,6 +472,13 @@ import {
   SplitterGroup,
   SplitterPanel,
   SplitterResizeHandle,
+  StatisticCompact,
+  StatisticLabel,
+  StatisticPrefix,
+  StatisticRoot,
+  StatisticSuffix,
+  StatisticValue,
+  StatisticValueRow,
   StepperCompact,
   StepperDescription,
   StepperIndicator,
@@ -1730,6 +1737,24 @@ export const Slider = {
 };
 
 export { Slot };
+
+export const Statistic = {
+  Root: StatisticRoot,
+  Label: StatisticLabel,
+  ValueRow: StatisticValueRow,
+  Value: StatisticValue,
+  Prefix: StatisticPrefix,
+  Suffix: StatisticSuffix,
+  Compact: StatisticCompact
+} as {
+  Root: typeof StatisticRoot;
+  Label: typeof StatisticLabel;
+  ValueRow: typeof StatisticValueRow;
+  Value: typeof StatisticValue;
+  Prefix: typeof StatisticPrefix;
+  Suffix: typeof StatisticSuffix;
+  Compact: typeof StatisticCompact;
+};
 
 export const Stepper = {
   Root: StepperRoot,

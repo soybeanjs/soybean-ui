@@ -123,6 +123,7 @@ export const menuData: MenuData[] = [
       'progress',
       'scrollArea',
       'skeleton',
+      'statistic',
       'tag',
       'table',
       'virtualizer',

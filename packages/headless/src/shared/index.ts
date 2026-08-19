@@ -13,3 +13,4 @@ export * from './event';
 export * from './geometry';
 export * from './tree';
 export * from './time-picker';
+export * from './format';

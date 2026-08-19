@@ -7444,6 +7444,73 @@
         },
         "splitterui": "分割器组件的 UI 类重载。"
       },
+      "packages_headless_src_components_statistic_types": {
+        "statisticcompactemits": {
+          "emits": "StatisticCompact 组件的事件。"
+        },
+        "statisticcompactprops": {
+          "members": {
+            "decimalseparator": "用作小数分隔符的字符。",
+            "dir": "统计数据的阅读方向。",
+            "formatter": "自定义格式化函数。若提供该函数，其优先级将高于\n`precision` 和 `separator` 属性。",
+            "groupseparator": "用于分组千位的字符。",
+            "label": "将标签文本渲染在数值上方。",
+            "labelprops": "传递给 label 元素的属性。",
+            "precision": "要显示的小数位数。",
+            "prefix": "在值之前渲染前缀文本（或图标字形）。",
+            "prefixprops": "转发至前缀元素的属性。",
+            "suffix": "值后渲染的后缀文本（或单位）。",
+            "suffixprops": "转发给后缀元素的属性。",
+            "trend": "趋势指示器的方向为可选。在根元素上以 `data-trend` 的形式体现。",
+            "value": "要显示的数值。",
+            "valueprops": "转发至 value 元素的属性。",
+            "valuerowprops": "转发至值行元素的属性。"
+          },
+          "props": "StatisticCompact 组件的属性。"
+        },
+        "statisticcompactslots": {
+          "callables": {
+            "default": "值行下方渲染的自定义内容。",
+            "label": "标签槽位的自定义内容。",
+            "prefix": "前缀槽位的自定义内容。",
+            "suffix": "后缀槽位的自定义内容。",
+            "value": "value 插槽的自定义内容。"
+          },
+          "slots": "StatisticCompact 组件的槽位。"
+        },
+        "statisticlabelprops": {
+          "props": "StatisticLabel 组件的属性。"
+        },
+        "statisticprefixprops": {
+          "props": "StatisticPrefix 组件的属性。"
+        },
+        "statisticrootemits": {
+          "emits": "StatisticRoot 组件的事件。"
+        },
+        "statisticrootprops": {
+          "members": {
+            "decimalseparator": "用作小数分隔符的字符。",
+            "dir": "统计数据的阅读方向。",
+            "formatter": "自定义格式化函数。若提供该函数，其优先级将高于\n`precision` 和 `separator` 属性。",
+            "groupseparator": "用于分组千位的字符。",
+            "precision": "要显示的小数位数。",
+            "trend": "趋势指示器的方向为可选。在根元素上以 `data-trend` 的形式体现。",
+            "value": "要显示的数值。"
+          },
+          "props": "StatisticRoot 组件的属性。"
+        },
+        "statisticsuffixprops": {
+          "props": "StatisticSuffix 组件的属性。"
+        },
+        "statistictrend": "统计值的趋势方向。",
+        "statisticui": "Statistic 组件的 UI 类重写。",
+        "statisticvalueprops": {
+          "props": "StatisticValue 组件的属性。"
+        },
+        "statisticvaluerowprops": {
+          "props": "StatisticValueRow 组件的属性。"
+        }
+      },
       "packages_headless_src_components_stepper_types": {
         "steppercompactemits": {
           "callables": {
@@ -12847,6 +12914,44 @@
             "withhandle": "是否使用 handle。"
           },
           "props": "SplitterResizeHandle 组件的属性。"
+        }
+      },
+      "packages_ui_src_components_statistic_types": {
+        "statisticemits": {
+          "emits": "Statistic 组件的事件。"
+        },
+        "statisticprops": {
+          "members": {
+            "class": "根类",
+            "decimalseparator": "用作小数分隔符的字符。",
+            "dir": "统计数据的阅读方向。",
+            "formatter": "自定义格式化函数。若提供该函数，其优先级将高于\n`precision` 和 `separator` 属性。",
+            "groupseparator": "用于分组千位的字符。",
+            "label": "将标签文本渲染在数值上方。",
+            "labelprops": "传递给 label 元素的属性。",
+            "precision": "要显示的小数位数。",
+            "prefix": "在值之前渲染前缀文本（或图标字形）。",
+            "prefixprops": "转发至前缀元素的属性。",
+            "size": "组件的视觉尺寸。",
+            "suffix": "值后渲染的后缀文本（或单位）。",
+            "suffixprops": "转发给后缀元素的属性。",
+            "trend": "趋势指示器的方向为可选。在根元素上以 `data-trend` 的形式体现。",
+            "ui": "该组件的按槽位类重写。",
+            "value": "要显示的数值。",
+            "valueprops": "转发至 value 元素的属性。",
+            "valuerowprops": "转发至值行元素的属性。"
+          },
+          "props": "Statistic 组件的属性。"
+        },
+        "statisticslots": {
+          "callables": {
+            "default": "值行下方渲染的自定义内容。",
+            "label": "标签槽位的自定义内容。",
+            "prefix": "前缀槽位的自定义内容。",
+            "suffix": "后缀槽位的自定义内容。",
+            "value": "value 插槽的自定义内容。"
+          },
+          "slots": "Statistic 组件的槽位。"
         }
       },
       "packages_ui_src_components_stepper_types": {

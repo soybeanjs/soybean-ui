@@ -460,6 +460,15 @@ export const components = {
   slider: ['SliderCompact', 'SliderRoot', 'SliderTrack', 'SliderRange', 'SliderThumb'],
   slot: ['Slot'],
   splitter: ['SplitterGroup', 'SplitterPanel', 'SplitterResizeHandle'],
+  statistic: [
+    'StatisticRoot',
+    'StatisticLabel',
+    'StatisticValueRow',
+    'StatisticValue',
+    'StatisticPrefix',
+    'StatisticSuffix',
+    'StatisticCompact'
+  ],
   stepper: [
     'StepperRoot',
     'StepperItem',

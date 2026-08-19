@@ -7444,6 +7444,73 @@
         },
         "splitterui": "UI class overrides for the Splitter component."
       },
+      "packages_headless_src_components_statistic_types": {
+        "statisticcompactemits": {
+          "emits": "Events for the StatisticCompact component."
+        },
+        "statisticcompactprops": {
+          "members": {
+            "decimalseparator": "Character used as the decimal separator.",
+            "dir": "The reading direction of the statistic.",
+            "formatter": "Custom formatter function. When provided it takes priority over\n`precision` and the separator props.",
+            "groupseparator": "Character used to group thousands.",
+            "label": "Label text rendered above the value.",
+            "labelprops": "Properties forwarded to the label element.",
+            "precision": "Number of decimal places to display.",
+            "prefix": "Prefix text (or icon glyph) rendered before the value.",
+            "prefixprops": "Properties forwarded to the prefix element.",
+            "suffix": "Suffix text (or unit) rendered after the value.",
+            "suffixprops": "Properties forwarded to the suffix element.",
+            "trend": "Optional trend indicator direction. Reflected as `data-trend` on the root.",
+            "value": "The numeric value to display.",
+            "valueprops": "Properties forwarded to the value element.",
+            "valuerowprops": "Properties forwarded to the value row element."
+          },
+          "props": "Properties for the StatisticCompact component."
+        },
+        "statisticcompactslots": {
+          "callables": {
+            "default": "Custom content rendered below the value row.",
+            "label": "Custom content for the label slot.",
+            "prefix": "Custom content for the prefix slot.",
+            "suffix": "Custom content for the suffix slot.",
+            "value": "Custom content for the value slot."
+          },
+          "slots": "Slots for the StatisticCompact component."
+        },
+        "statisticlabelprops": {
+          "props": "Properties for the StatisticLabel component."
+        },
+        "statisticprefixprops": {
+          "props": "Properties for the StatisticPrefix component."
+        },
+        "statisticrootemits": {
+          "emits": "Events for the StatisticRoot component."
+        },
+        "statisticrootprops": {
+          "members": {
+            "decimalseparator": "Character used as the decimal separator.",
+            "dir": "The reading direction of the statistic.",
+            "formatter": "Custom formatter function. When provided it takes priority over\n`precision` and the separator props.",
+            "groupseparator": "Character used to group thousands.",
+            "precision": "Number of decimal places to display.",
+            "trend": "Optional trend indicator direction. Reflected as `data-trend` on the root.",
+            "value": "The numeric value to display."
+          },
+          "props": "Properties for the StatisticRoot component."
+        },
+        "statisticsuffixprops": {
+          "props": "Properties for the StatisticSuffix component."
+        },
+        "statistictrend": "The trend direction of a statistic value.",
+        "statisticui": "UI class overrides for the Statistic component.",
+        "statisticvalueprops": {
+          "props": "Properties for the StatisticValue component."
+        },
+        "statisticvaluerowprops": {
+          "props": "Properties for the StatisticValueRow component."
+        }
+      },
       "packages_headless_src_components_stepper_types": {
         "steppercompactemits": {
           "callables": {
@@ -12847,6 +12914,44 @@
             "withhandle": "Whether with handle."
           },
           "props": "Properties for the SplitterResizeHandle component."
+        }
+      },
+      "packages_ui_src_components_statistic_types": {
+        "statisticemits": {
+          "emits": "Events for the Statistic component."
+        },
+        "statisticprops": {
+          "members": {
+            "class": "root class",
+            "decimalseparator": "Character used as the decimal separator.",
+            "dir": "The reading direction of the statistic.",
+            "formatter": "Custom formatter function. When provided it takes priority over\n`precision` and the separator props.",
+            "groupseparator": "Character used to group thousands.",
+            "label": "Label text rendered above the value.",
+            "labelprops": "Properties forwarded to the label element.",
+            "precision": "Number of decimal places to display.",
+            "prefix": "Prefix text (or icon glyph) rendered before the value.",
+            "prefixprops": "Properties forwarded to the prefix element.",
+            "size": "Visual size of the component.",
+            "suffix": "Suffix text (or unit) rendered after the value.",
+            "suffixprops": "Properties forwarded to the suffix element.",
+            "trend": "Optional trend indicator direction. Reflected as `data-trend` on the root.",
+            "ui": "Per-slot class overrides for the component.",
+            "value": "The numeric value to display.",
+            "valueprops": "Properties forwarded to the value element.",
+            "valuerowprops": "Properties forwarded to the value row element."
+          },
+          "props": "Properties for the Statistic component."
+        },
+        "statisticslots": {
+          "callables": {
+            "default": "Custom content rendered below the value row.",
+            "label": "Custom content for the label slot.",
+            "prefix": "Custom content for the prefix slot.",
+            "suffix": "Custom content for the suffix slot.",
+            "value": "Custom content for the value slot."
+          },
+          "slots": "Slots for the Statistic component."
         }
       },
       "packages_ui_src_components_stepper_types": {

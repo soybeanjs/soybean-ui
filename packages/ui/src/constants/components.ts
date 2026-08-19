@@ -70,6 +70,7 @@ export const components = {
   slider: ['SSlider'],
   spinner: ['SSpinner'],
   splitter: ['SSplitterGroup', 'SSplitterPanel', 'SSplitterResizeHandle'],
+  statistic: ['SStatistic'],
   stepper: ['SStepper'],
   switch: ['SSwitch'],
   table: ['STable', 'STableRow', 'STableCell'],

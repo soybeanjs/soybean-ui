@@ -71,6 +71,7 @@ export * from './components/skeleton';
 export * from './components/splitter';
 export * from './components/slider';
 export * from './components/slot';
+export * from './components/statistic';
 export * from './components/stepper';
 export * from './components/switch';
 export * from './components/table';

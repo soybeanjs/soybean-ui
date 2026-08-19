@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T08:42:22.049Z",
+  "generatedAt": "2026-08-19T09:14:58.857Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -836,6 +836,20 @@
       "component": "splitter",
       "file": "splitter.json",
       "symbols": ["SplitterGroup", "SplitterPanel", "SplitterResizeHandle"]
+    },
+    "statistic": {
+      "component": "statistic",
+      "file": "statistic.json",
+      "symbols": [
+        "Statistic",
+        "StatisticCompact",
+        "StatisticLabel",
+        "StatisticPrefix",
+        "StatisticRoot",
+        "StatisticSuffix",
+        "StatisticValue",
+        "StatisticValueRow"
+      ]
     },
     "stepper": {
       "component": "stepper",

@@ -1,0 +1,1080 @@
+{
+  "component": "statistic",
+  "symbols": {
+    "Statistic": {
+      "props": {
+        "kind": "props",
+        "name": "StatisticProps",
+        "type": "Interface StatisticProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<StatisticUi>; label?: string; prefix?: string; suffix?: string; labelProps?: StatisticLabelProps; valueRowProps?: StatisticValueRowProps; valueProps?: StatisticValueProps; prefixProps?: StatisticPrefixProps; suffixProps?: StatisticSuffixProps; value?: number; precision?: number; groupSeparator?: string; decimalSeparator?: string; formatter?: ((value: number) => string); trend?: StatisticTrend; dir?: Direction }",
+        "description": "Properties for the Statistic component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.props",
+        "sourcePath": "packages/ui/src/components/statistic/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px",
+                "descriptionKey": "api.generated.packages_theme_src_types.themesize",
+                "sourcePath": "packages/theme/src/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<StatisticUi>",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StatisticUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; prefix: ClassValue; label: ClassValue; value: ClassValue; valueRow: ClassValue; suffix: ClassValue; }",
+                "resolvedType": null,
+                "description": "UI class overrides for the Statistic component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticui",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "required": false,
+            "description": "Label text rendered above the value.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.label",
+            "default": null,
+            "inheritedFrom": "label",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prefix",
+            "type": "string",
+            "required": false,
+            "description": "Prefix text (or icon glyph) rendered before the value.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.prefix",
+            "default": null,
+            "inheritedFrom": "prefix",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "suffix",
+            "type": "string",
+            "required": false,
+            "description": "Suffix text (or unit) rendered after the value.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.suffix",
+            "default": null,
+            "inheritedFrom": "suffix",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "labelProps",
+            "type": "StatisticLabelProps",
+            "required": false,
+            "description": "Properties forwarded to the label element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.labelprops",
+            "default": null,
+            "inheritedFrom": "labelProps",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StatisticLabelProps",
+                "kind": "interface",
+                "type": "StatisticLabelProps",
+                "resolvedType": null,
+                "description": "Properties for the StatisticLabel component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticlabelprops",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "valueRowProps",
+            "type": "StatisticValueRowProps",
+            "required": false,
+            "description": "Properties forwarded to the value row element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.valuerowprops",
+            "default": null,
+            "inheritedFrom": "valueRowProps",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StatisticValueRowProps",
+                "kind": "interface",
+                "type": "StatisticValueRowProps",
+                "resolvedType": null,
+                "description": "Properties for the StatisticValueRow component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticvaluerowprops",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "valueProps",
+            "type": "StatisticValueProps",
+            "required": false,
+            "description": "Properties forwarded to the value element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.valueprops",
+            "default": null,
+            "inheritedFrom": "valueProps",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StatisticValueProps",
+                "kind": "interface",
+                "type": "StatisticValueProps",
+                "resolvedType": null,
+                "description": "Properties for the StatisticValue component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticvalueprops",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "prefixProps",
+            "type": "StatisticPrefixProps",
+            "required": false,
+            "description": "Properties forwarded to the prefix element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.prefixprops",
+            "default": null,
+            "inheritedFrom": "prefixProps",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StatisticPrefixProps",
+                "kind": "interface",
+                "type": "StatisticPrefixProps",
+                "resolvedType": null,
+                "description": "Properties for the StatisticPrefix component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticprefixprops",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "suffixProps",
+            "type": "StatisticSuffixProps",
+            "required": false,
+            "description": "Properties forwarded to the suffix element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.suffixprops",
+            "default": null,
+            "inheritedFrom": "suffixProps",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StatisticSuffixProps",
+                "kind": "interface",
+                "type": "StatisticSuffixProps",
+                "resolvedType": null,
+                "description": "Properties for the StatisticSuffix component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticsuffixprops",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "value",
+            "type": "number",
+            "required": false,
+            "description": "The numeric value to display.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.value",
+            "default": null,
+            "inheritedFrom": "value",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "precision",
+            "type": "number",
+            "required": false,
+            "description": "Number of decimal places to display.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.precision",
+            "default": null,
+            "inheritedFrom": "precision",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "groupSeparator",
+            "type": "string",
+            "required": false,
+            "description": "Character used to group thousands.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.groupseparator",
+            "default": "','",
+            "inheritedFrom": "groupSeparator",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "decimalSeparator",
+            "type": "string",
+            "required": false,
+            "description": "Character used as the decimal separator.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.decimalseparator",
+            "default": "'.'",
+            "inheritedFrom": "decimalSeparator",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "formatter",
+            "type": "((value: number) => string)",
+            "required": false,
+            "description": "Custom formatter function. When provided it takes priority over\n`precision` and the separator props.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.formatter",
+            "default": null,
+            "inheritedFrom": "formatter",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trend",
+            "type": "StatisticTrend",
+            "required": false,
+            "description": "Optional trend indicator direction. Reflected as `data-trend` on the root.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.trend",
+            "default": null,
+            "inheritedFrom": "trend",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StatisticTrend",
+                "kind": "typeAlias",
+                "type": "'up' | 'down'",
+                "resolvedType": "'up' | 'down'",
+                "description": "The trend direction of a statistic value.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statistictrend",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the statistic.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "StatisticEmits",
+        "type": "TypeAlias StatisticEmits: StatisticCompactEmits",
+        "resolvedType": "{ [x: string]: never; }",
+        "description": "Events for the Statistic component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticemits.emits",
+        "sourcePath": "packages/ui/src/components/statistic/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": [
+          {
+            "name": "StatisticCompactEmits",
+            "kind": "typeAlias",
+            "type": "{ [x: string]: never; }",
+            "resolvedType": "{ [x: string]: never; }",
+            "description": "Events for the StatisticCompact component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactemits",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": []
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "StatisticSlots",
+        "type": "TypeAlias StatisticSlots: StatisticCompactSlots",
+        "resolvedType": "{ StatisticCompact?: (() => any); label?: (() => any); value?: (() => any); prefix?: (() => any); suffix?: (() => any) }",
+        "description": "Slots for the Statistic component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticslots.slots",
+        "sourcePath": "packages/ui/src/components/statistic/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content rendered below the value row.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticslots.callables.default",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "label",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the label slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticslots.callables.label",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "value",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the value slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticslots.callables.value",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prefix",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the prefix slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticslots.callables.prefix",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "suffix",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the suffix slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_statistic_types.statisticslots.callables.suffix",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "StatisticCompactSlots",
+            "kind": "typeAlias",
+            "type": "{ StatisticCompact?: () => any; label?: () => any; value?: () => any; prefix?: () => any; suffix?: () => any; }",
+            "resolvedType": "{ StatisticCompact?: (() => any); label?: (() => any); value?: (() => any); prefix?: (() => any); suffix?: (() => any) }",
+            "description": "Slots for the StatisticCompact component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactslots",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "default",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content rendered below the value row.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactslots.callables.default",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "label",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the label slot.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactslots.callables.label",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "value",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the value slot.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactslots.callables.value",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "prefix",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the prefix slot.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactslots.callables.prefix",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "suffix",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the suffix slot.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactslots.callables.suffix",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "StatisticCompact": {
+      "props": {
+        "kind": "props",
+        "name": "StatisticCompactProps",
+        "type": "Interface StatisticCompactProps",
+        "resolvedType": "{ label?: string; prefix?: string; suffix?: string; labelProps?: StatisticLabelProps; valueRowProps?: StatisticValueRowProps; valueProps?: StatisticValueProps; prefixProps?: StatisticPrefixProps; suffixProps?: StatisticSuffixProps; value?: number; precision?: number; groupSeparator?: string; decimalSeparator?: string; formatter?: ((value: number) => string); trend?: StatisticTrend; dir?: Direction }",
+        "description": "Properties for the StatisticCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactprops.props",
+        "sourcePath": "packages/headless/src/components/statistic/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "label",
+            "type": "string",
+            "required": false,
+            "description": "Label text rendered above the value.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactprops.members.label",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prefix",
+            "type": "string",
+            "required": false,
+            "description": "Prefix text (or icon glyph) rendered before the value.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactprops.members.prefix",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "suffix",
+            "type": "string",
+            "required": false,
+            "description": "Suffix text (or unit) rendered after the value.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactprops.members.suffix",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "labelProps",
+            "type": "StatisticLabelProps",
+            "required": false,
+            "description": "Properties forwarded to the label element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactprops.members.labelprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StatisticLabelProps",
+                "kind": "interface",
+                "type": "StatisticLabelProps",
+                "resolvedType": null,
+                "description": "Properties for the StatisticLabel component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticlabelprops",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "valueRowProps",
+            "type": "StatisticValueRowProps",
+            "required": false,
+            "description": "Properties forwarded to the value row element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactprops.members.valuerowprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StatisticValueRowProps",
+                "kind": "interface",
+                "type": "StatisticValueRowProps",
+                "resolvedType": null,
+                "description": "Properties for the StatisticValueRow component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticvaluerowprops",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "valueProps",
+            "type": "StatisticValueProps",
+            "required": false,
+            "description": "Properties forwarded to the value element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactprops.members.valueprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StatisticValueProps",
+                "kind": "interface",
+                "type": "StatisticValueProps",
+                "resolvedType": null,
+                "description": "Properties for the StatisticValue component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticvalueprops",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "prefixProps",
+            "type": "StatisticPrefixProps",
+            "required": false,
+            "description": "Properties forwarded to the prefix element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactprops.members.prefixprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StatisticPrefixProps",
+                "kind": "interface",
+                "type": "StatisticPrefixProps",
+                "resolvedType": null,
+                "description": "Properties for the StatisticPrefix component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticprefixprops",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "suffixProps",
+            "type": "StatisticSuffixProps",
+            "required": false,
+            "description": "Properties forwarded to the suffix element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactprops.members.suffixprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StatisticSuffixProps",
+                "kind": "interface",
+                "type": "StatisticSuffixProps",
+                "resolvedType": null,
+                "description": "Properties for the StatisticSuffix component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticsuffixprops",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "value",
+            "type": "number",
+            "required": false,
+            "description": "The numeric value to display.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactprops.members.value",
+            "default": null,
+            "inheritedFrom": "value",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "precision",
+            "type": "number",
+            "required": false,
+            "description": "Number of decimal places to display.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactprops.members.precision",
+            "default": null,
+            "inheritedFrom": "precision",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "groupSeparator",
+            "type": "string",
+            "required": false,
+            "description": "Character used to group thousands.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactprops.members.groupseparator",
+            "default": "','",
+            "inheritedFrom": "groupSeparator",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "decimalSeparator",
+            "type": "string",
+            "required": false,
+            "description": "Character used as the decimal separator.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactprops.members.decimalseparator",
+            "default": "'.'",
+            "inheritedFrom": "decimalSeparator",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "formatter",
+            "type": "((value: number) => string)",
+            "required": false,
+            "description": "Custom formatter function. When provided it takes priority over\n`precision` and the separator props.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactprops.members.formatter",
+            "default": null,
+            "inheritedFrom": "formatter",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trend",
+            "type": "StatisticTrend",
+            "required": false,
+            "description": "Optional trend indicator direction. Reflected as `data-trend` on the root.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactprops.members.trend",
+            "default": null,
+            "inheritedFrom": "trend",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StatisticTrend",
+                "kind": "typeAlias",
+                "type": "'up' | 'down'",
+                "resolvedType": "'up' | 'down'",
+                "description": "The trend direction of a statistic value.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statistictrend",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the statistic.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "StatisticCompactEmits",
+        "type": "TypeAlias StatisticCompactEmits: Record<string, never>",
+        "resolvedType": "{ [x: string]: never; }",
+        "description": "Events for the StatisticCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactemits.emits",
+        "sourcePath": "packages/headless/src/components/statistic/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "StatisticCompactSlots",
+        "type": "TypeAlias StatisticCompactSlots",
+        "resolvedType": "{ StatisticCompact?: (() => any); label?: (() => any); value?: (() => any); prefix?: (() => any); suffix?: (() => any) }",
+        "description": "Slots for the StatisticCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactslots.slots",
+        "sourcePath": "packages/headless/src/components/statistic/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content rendered below the value row.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactslots.callables.default",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "label",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the label slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactslots.callables.label",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "value",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the value slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactslots.callables.value",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prefix",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the prefix slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactslots.callables.prefix",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "suffix",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the suffix slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticcompactslots.callables.suffix",
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "StatisticLabel": {
+      "props": {
+        "kind": "props",
+        "name": "StatisticLabelProps",
+        "type": "Interface StatisticLabelProps",
+        "resolvedType": null,
+        "description": "Properties for the StatisticLabel component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticlabelprops.props",
+        "sourcePath": "packages/headless/src/components/statistic/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "StatisticPrefix": {
+      "props": {
+        "kind": "props",
+        "name": "StatisticPrefixProps",
+        "type": "Interface StatisticPrefixProps",
+        "resolvedType": null,
+        "description": "Properties for the StatisticPrefix component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticprefixprops.props",
+        "sourcePath": "packages/headless/src/components/statistic/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "StatisticRoot": {
+      "props": {
+        "kind": "props",
+        "name": "StatisticRootProps",
+        "type": "Interface StatisticRootProps",
+        "resolvedType": "{ value?: number; precision?: number; groupSeparator?: string; decimalSeparator?: string; formatter?: ((value: number) => string); trend?: StatisticTrend; dir?: Direction }",
+        "description": "Properties for the StatisticRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticrootprops.props",
+        "sourcePath": "packages/headless/src/components/statistic/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "value",
+            "type": "number",
+            "required": false,
+            "description": "The numeric value to display.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticrootprops.members.value",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "precision",
+            "type": "number",
+            "required": false,
+            "description": "Number of decimal places to display.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticrootprops.members.precision",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "groupSeparator",
+            "type": "string",
+            "required": false,
+            "description": "Character used to group thousands.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticrootprops.members.groupseparator",
+            "default": "','",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "decimalSeparator",
+            "type": "string",
+            "required": false,
+            "description": "Character used as the decimal separator.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticrootprops.members.decimalseparator",
+            "default": "'.'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "formatter",
+            "type": "((value: number) => string)",
+            "required": false,
+            "description": "Custom formatter function. When provided it takes priority over\n`precision` and the separator props.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticrootprops.members.formatter",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trend",
+            "type": "StatisticTrend",
+            "required": false,
+            "description": "Optional trend indicator direction. Reflected as `data-trend` on the root.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticrootprops.members.trend",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StatisticTrend",
+                "kind": "typeAlias",
+                "type": "'up' | 'down'",
+                "resolvedType": "'up' | 'down'",
+                "description": "The trend direction of a statistic value.",
+                "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statistictrend",
+                "sourcePath": "packages/headless/src/components/statistic/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the statistic.",
+            "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticrootprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/statistic/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "StatisticRootEmits",
+        "type": "TypeAlias StatisticRootEmits: Record<string, never>",
+        "resolvedType": "{ [x: string]: never; }",
+        "description": "Events for the StatisticRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticrootemits.emits",
+        "sourcePath": "packages/headless/src/components/statistic/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "StatisticSuffix": {
+      "props": {
+        "kind": "props",
+        "name": "StatisticSuffixProps",
+        "type": "Interface StatisticSuffixProps",
+        "resolvedType": null,
+        "description": "Properties for the StatisticSuffix component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticsuffixprops.props",
+        "sourcePath": "packages/headless/src/components/statistic/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "StatisticValue": {
+      "props": {
+        "kind": "props",
+        "name": "StatisticValueProps",
+        "type": "Interface StatisticValueProps",
+        "resolvedType": null,
+        "description": "Properties for the StatisticValue component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticvalueprops.props",
+        "sourcePath": "packages/headless/src/components/statistic/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "StatisticValueRow": {
+      "props": {
+        "kind": "props",
+        "name": "StatisticValueRowProps",
+        "type": "Interface StatisticValueRowProps",
+        "resolvedType": null,
+        "description": "Properties for the StatisticValueRow component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_statistic_types.statisticvaluerowprops.props",
+        "sourcePath": "packages/headless/src/components/statistic/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}
