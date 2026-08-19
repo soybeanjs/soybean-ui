@@ -1,6 +1,6 @@
 {
   "name": "@soybeanjs/theme",
-  "version": "0.29.3",
+  "version": "0.30.0-beta.1",
   "description": "A lightweight theme engine for Soybean UI: minimal core tokens, deterministic derivation, and light/dark level offsets.",
   "homepage": "https://github.com/soybeanjs/soybean-ui",
   "bugs": {

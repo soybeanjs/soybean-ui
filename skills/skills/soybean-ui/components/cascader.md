@@ -206,7 +206,9 @@ Slot properties for the CascaderCompact option.
 - `indeterminate`: Whether the node is in an indeterminate state. (type `boolean`; required)
 - `selected`: Whether the node is the currently selected node (single-select). (type `boolean`; required)
 - `highlighted`: Whether the node is currently highlighted. (type `boolean`; required)
+- `childActive`: Whether a descendant of the node is currently highlighted (breadcrumb emphasis). (type `boolean`; required)
 - `loading`: Whether the node is currently loading its children. (type `boolean`; required)
+- `expand`: Expands the children column of the node without toggling its selection. (type `() => void`; required)
 
 ### CascaderCompactTag
 

@@ -1,8 +1,25 @@
 {
   "component": "tree-menu",
-  "generatedAt": "2026-06-22T09:41:07.525Z",
+  "generatedAt": "2026-08-19T02:48:18.093Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.30.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0-beta.1",
+      "date": "2026-08-19",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "tree-menu",
+          "summary": "add expandStrategy prop, support keep and active mode",
+          "summaryKey": "changelog.generated.v0.30.0-beta.1.5d911",
+          "commitHash": "5d911",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5d91103e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.26.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.25.4...v0.26.0",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-22T09:41:07.525Z",
+  "generatedAt": "2026-08-19T02:48:18.093Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -121,6 +121,13 @@
       "versionCount": 4,
       "entryCount": 4
     },
+    "cascader": {
+      "component": "cascader",
+      "file": "cascader.json",
+      "latestVersion": "v0.30.0-beta.1",
+      "versionCount": 1,
+      "entryCount": 1
+    },
     "checkbox": {
       "component": "checkbox",
       "file": "checkbox.json",
@@ -201,9 +208,9 @@
     "config-provider": {
       "component": "config-provider",
       "file": "config-provider.json",
-      "latestVersion": "v0.29.3",
-      "versionCount": 11,
-      "entryCount": 16
+      "latestVersion": "v0.30.0-beta.1",
+      "versionCount": 12,
+      "entryCount": 17
     },
     "context-menu": {
       "component": "context-menu",
@@ -348,16 +355,16 @@
     "menu": {
       "component": "menu",
       "file": "menu.json",
-      "latestVersion": "v0.15.0",
-      "versionCount": 7,
-      "entryCount": 16
+      "latestVersion": "v0.30.0-beta.1",
+      "versionCount": 8,
+      "entryCount": 18
     },
     "menubar": {
       "component": "menubar",
       "file": "menubar.json",
-      "latestVersion": "v0.21.0",
-      "versionCount": 2,
-      "entryCount": 2
+      "latestVersion": "v0.30.0-beta.1",
+      "versionCount": 3,
+      "entryCount": 6
     },
     "navigation-menu": {
       "component": "navigation-menu",
@@ -369,9 +376,9 @@
     "page-tabs": {
       "component": "page-tabs",
       "file": "page-tabs.json",
-      "latestVersion": "v0.19.0",
-      "versionCount": 8,
-      "entryCount": 8
+      "latestVersion": "v0.30.0-beta.1",
+      "versionCount": 9,
+      "entryCount": 9
     },
     "pagination": {
       "component": "pagination",
@@ -436,6 +443,13 @@
       "versionCount": 1,
       "entryCount": 1
     },
+    "rating": {
+      "component": "rating",
+      "file": "rating.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
     "roving-focus": {
       "component": "roving-focus",
       "file": "roving-focus.json",
@@ -460,9 +474,9 @@
     "select": {
       "component": "select",
       "file": "select.json",
-      "latestVersion": "v0.15.0",
-      "versionCount": 8,
-      "entryCount": 12
+      "latestVersion": "v0.30.0-beta.1",
+      "versionCount": 9,
+      "entryCount": 13
     },
     "separator": {
       "component": "separator",
@@ -579,9 +593,9 @@
     "toggle-group": {
       "component": "toggle-group",
       "file": "toggle-group.json",
-      "latestVersion": "v0.19.0",
-      "versionCount": 3,
-      "entryCount": 3
+      "latestVersion": "v0.30.0-beta.1",
+      "versionCount": 4,
+      "entryCount": 4
     },
     "toolbar": {
       "component": "toolbar",
@@ -607,9 +621,9 @@
     "tree-menu": {
       "component": "tree-menu",
       "file": "tree-menu.json",
-      "latestVersion": "v0.26.0",
-      "versionCount": 28,
-      "entryCount": 32
+      "latestVersion": "v0.30.0-beta.1",
+      "versionCount": 29,
+      "entryCount": 33
     },
     "virtualizer": {
       "component": "virtualizer",
