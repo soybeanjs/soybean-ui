@@ -3671,6 +3671,28 @@
         },
         "daterangepickerui": "UI class for the DateRangePicker component."
       },
+      "packages_headless_src_components_descriptions_types": {
+        "descriptionsitemprops": {
+          "members": {
+            "label": "The label text of the item.",
+            "span": "The number of columns the item occupies."
+          },
+          "props": "Properties for the DescriptionsItem component."
+        },
+        "descriptionslabelalign": "The alignment of the label cell.",
+        "descriptionslayout": "The layout of each descriptions item.",
+        "descriptionsrootprops": {
+          "members": {
+            "bordered": "Whether to render bordered cells.",
+            "column": "The number of items displayed per row.",
+            "dir": "The reading direction of the descriptions.",
+            "labelalign": "The alignment of the label cell.",
+            "layout": "The layout of each item."
+          },
+          "props": "Properties for the DescriptionsRoot component."
+        },
+        "descriptionsui": "UI class overrides for the Descriptions component."
+      },
       "packages_headless_src_components_dialog_types": {
         "dialogalerttype": "Supported dialog alert values.",
         "dialogcancelemits": {
@@ -11402,6 +11424,21 @@
             "separator": "Custom content rendered between the start and end segment groups."
           },
           "slots": "Slots for the DateRangePicker component."
+        }
+      },
+      "packages_ui_src_components_descriptions_types": {
+        "descriptionsprops": {
+          "members": {
+            "bordered": "Whether to render bordered cells.",
+            "class": "root class",
+            "column": "The number of items displayed per row.",
+            "dir": "The reading direction of the descriptions.",
+            "labelalign": "The alignment of the label cell.",
+            "layout": "The layout of each item.",
+            "title": "Title text rendered above the list.",
+            "ui": "Per-slot class overrides for the component."
+          },
+          "props": "Properties for the Descriptions component."
         }
       },
       "packages_ui_src_components_dialog_types": {

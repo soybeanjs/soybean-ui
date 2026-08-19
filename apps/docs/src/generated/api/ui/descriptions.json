@@ -1,0 +1,330 @@
+{
+  "component": "descriptions",
+  "symbols": {
+    "Descriptions": {
+      "props": {
+        "kind": "props",
+        "name": "DescriptionsProps",
+        "type": "Interface DescriptionsProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; title?: string; ui?: Partial<DescriptionsUi>; column?: number; bordered?: boolean; layout?: DescriptionsLayout; labelAlign?: DescriptionsLabelAlign; dir?: Direction }",
+        "description": "Properties for the Descriptions component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_descriptions_types.descriptionsprops.props",
+        "sourcePath": "packages/ui/src/components/descriptions/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_src_components_descriptions_types.descriptionsprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/descriptions/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "required": false,
+            "description": "Title text rendered above the list.",
+            "descriptionKey": "api.generated.packages_ui_src_components_descriptions_types.descriptionsprops.members.title",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/descriptions/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "ui",
+            "type": "Partial<DescriptionsUi>",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_descriptions_types.descriptionsprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/descriptions/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DescriptionsUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; item: ClassValue; content: ClassValue; label: ClassValue; }",
+                "resolvedType": null,
+                "description": "UI class overrides for the Descriptions component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_descriptions_types.descriptionsui",
+                "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "column",
+            "type": "number",
+            "required": false,
+            "description": "The number of items displayed per row.",
+            "descriptionKey": "api.generated.packages_ui_src_components_descriptions_types.descriptionsprops.members.column",
+            "default": "3",
+            "inheritedFrom": "column",
+            "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "bordered",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to render bordered cells.",
+            "descriptionKey": "api.generated.packages_ui_src_components_descriptions_types.descriptionsprops.members.bordered",
+            "default": null,
+            "inheritedFrom": "bordered",
+            "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "layout",
+            "type": "DescriptionsLayout",
+            "required": false,
+            "description": "The layout of each item.",
+            "descriptionKey": "api.generated.packages_ui_src_components_descriptions_types.descriptionsprops.members.layout",
+            "default": "'horizontal'",
+            "inheritedFrom": "layout",
+            "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DescriptionsLayout",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "The layout of each descriptions item.",
+                "descriptionKey": "api.generated.packages_headless_src_components_descriptions_types.descriptionslayout",
+                "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "labelAlign",
+            "type": "DescriptionsLabelAlign",
+            "required": false,
+            "description": "The alignment of the label cell.",
+            "descriptionKey": "api.generated.packages_ui_src_components_descriptions_types.descriptionsprops.members.labelalign",
+            "default": "'start'",
+            "inheritedFrom": "labelAlign",
+            "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DescriptionsLabelAlign",
+                "kind": "typeAlias",
+                "type": "'start' | 'center' | 'end'",
+                "resolvedType": "'start' | 'center' | 'end'",
+                "description": "The alignment of the label cell.",
+                "descriptionKey": "api.generated.packages_headless_src_components_descriptions_types.descriptionslabelalign",
+                "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the descriptions.",
+            "descriptionKey": "api.generated.packages_ui_src_components_descriptions_types.descriptionsprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "DescriptionsItem": {
+      "props": {
+        "kind": "props",
+        "name": "DescriptionsItemProps",
+        "type": "Interface DescriptionsItemProps",
+        "resolvedType": "{ label?: string; span?: number }",
+        "description": "Properties for the DescriptionsItem component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_descriptions_types.descriptionsitemprops.props",
+        "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "label",
+            "type": "string",
+            "required": false,
+            "description": "The label text of the item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_descriptions_types.descriptionsitemprops.members.label",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "span",
+            "type": "number",
+            "required": false,
+            "description": "The number of columns the item occupies.",
+            "descriptionKey": "api.generated.packages_headless_src_components_descriptions_types.descriptionsitemprops.members.span",
+            "default": "1",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "DescriptionsRoot": {
+      "props": {
+        "kind": "props",
+        "name": "DescriptionsRootProps",
+        "type": "Interface DescriptionsRootProps",
+        "resolvedType": "{ column?: number; bordered?: boolean; layout?: DescriptionsLayout; labelAlign?: DescriptionsLabelAlign; dir?: Direction }",
+        "description": "Properties for the DescriptionsRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_descriptions_types.descriptionsrootprops.props",
+        "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "column",
+            "type": "number",
+            "required": false,
+            "description": "The number of items displayed per row.",
+            "descriptionKey": "api.generated.packages_headless_src_components_descriptions_types.descriptionsrootprops.members.column",
+            "default": "3",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "bordered",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to render bordered cells.",
+            "descriptionKey": "api.generated.packages_headless_src_components_descriptions_types.descriptionsrootprops.members.bordered",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "layout",
+            "type": "DescriptionsLayout",
+            "required": false,
+            "description": "The layout of each item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_descriptions_types.descriptionsrootprops.members.layout",
+            "default": "'horizontal'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DescriptionsLayout",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "The layout of each descriptions item.",
+                "descriptionKey": "api.generated.packages_headless_src_components_descriptions_types.descriptionslayout",
+                "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "labelAlign",
+            "type": "DescriptionsLabelAlign",
+            "required": false,
+            "description": "The alignment of the label cell.",
+            "descriptionKey": "api.generated.packages_headless_src_components_descriptions_types.descriptionsrootprops.members.labelalign",
+            "default": "'start'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DescriptionsLabelAlign",
+                "kind": "typeAlias",
+                "type": "'start' | 'center' | 'end'",
+                "resolvedType": "'start' | 'center' | 'end'",
+                "description": "The alignment of the label cell.",
+                "descriptionKey": "api.generated.packages_headless_src_components_descriptions_types.descriptionslabelalign",
+                "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the descriptions.",
+            "descriptionKey": "api.generated.packages_headless_src_components_descriptions_types.descriptionsrootprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/descriptions/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

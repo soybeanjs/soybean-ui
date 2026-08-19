@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T09:52:21.248Z",
+  "generatedAt": "2026-08-19T09:58:03.676Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -375,6 +375,11 @@
       "component": "date-range-picker",
       "file": "date-range-picker.json",
       "symbols": ["DateRangePicker", "DateRangePickerCompact"]
+    },
+    "descriptions": {
+      "component": "descriptions",
+      "file": "descriptions.json",
+      "symbols": ["Descriptions", "DescriptionsItem", "DescriptionsRoot"]
     },
     "dialog": {
       "component": "dialog",

@@ -3671,6 +3671,28 @@
         },
         "daterangepickerui": "DateRangePicker 组件的 UI 类。"
       },
+      "packages_headless_src_components_descriptions_types": {
+        "descriptionsitemprops": {
+          "members": {
+            "label": "该项的标签文本。",
+            "span": "该项占用的列数。"
+          },
+          "props": "DescriptionsItem 组件的属性。"
+        },
+        "descriptionslabelalign": "标签单元格的对齐方式。",
+        "descriptionslayout": "每个描述项的布局。",
+        "descriptionsrootprops": {
+          "members": {
+            "bordered": "是否渲染带边框的单元格。",
+            "column": "每行显示的项目数量。",
+            "dir": "描述内容的阅读方向。",
+            "labelalign": "标签单元格的对齐方式。",
+            "layout": "每个条目的排版。"
+          },
+          "props": "DescriptionsRoot 组件的属性。"
+        },
+        "descriptionsui": "Descriptions 组件的 UI 类重写。"
+      },
       "packages_headless_src_components_dialog_types": {
         "dialogalerttype": "支持的对话框提示值。",
         "dialogcancelemits": {
@@ -11402,6 +11424,21 @@
             "separator": "在起始和结束分段组之间渲染的自定义内容。"
           },
           "slots": "DateRangePicker 组件的槽位。"
+        }
+      },
+      "packages_ui_src_components_descriptions_types": {
+        "descriptionsprops": {
+          "members": {
+            "bordered": "是否渲染带边框的单元格。",
+            "class": "根类",
+            "column": "每行显示的项目数量。",
+            "dir": "描述内容的阅读方向。",
+            "labelalign": "标签单元格的对齐方式。",
+            "layout": "每个条目的排版。",
+            "title": "标题文本显示在列表上方。",
+            "ui": "该组件的按槽位类重写。"
+          },
+          "props": "Descriptions 组件的属性。"
         }
       },
       "packages_ui_src_components_dialog_types": {

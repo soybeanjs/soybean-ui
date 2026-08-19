@@ -209,6 +209,8 @@ import {
   DateRangeFieldInput,
   DateRangeFieldRoot,
   DateRangePickerCompact,
+  DescriptionsItem,
+  DescriptionsRoot,
   DialogCancel,
   DialogClose,
   DialogCompact,
@@ -1100,6 +1102,14 @@ export const DateRangeField = {
 };
 
 export { DateRangePickerCompact };
+
+export const Descriptions = {
+  Root: DescriptionsRoot,
+  Item: DescriptionsItem
+} as {
+  Root: typeof DescriptionsRoot;
+  Item: typeof DescriptionsItem;
+};
 
 export const Dialog = {
   Compact: DialogCompact,

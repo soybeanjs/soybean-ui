@@ -34,6 +34,7 @@ export const components = {
   datePicker: ['SDatePicker'],
   dateRangeField: ['SDateRangeField'],
   dateRangePicker: ['SDateRangePicker'],
+  descriptions: ['SDescriptions', 'SDescriptionsItem'],
   dialog: ['SDialog', 'SDialogProvider'],
   drawer: ['SDrawer'],
   dropdownMenu: ['SDropdownMenu', 'SDropdownMenuCheckbox', 'SDropdownMenuRadio', 'SDropdownMenuWrapper'],

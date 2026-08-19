@@ -33,6 +33,7 @@ export * from './components/date-field';
 export * from './components/date-picker';
 export * from './components/date-range-field';
 export * from './components/date-range-picker';
+export * from './components/descriptions';
 export * from './components/dialog';
 export * from './components/drawer';
 export * from './components/dropdown-menu';
