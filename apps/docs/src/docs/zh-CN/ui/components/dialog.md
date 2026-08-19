@@ -4,7 +4,7 @@
 
 覆盖在主窗口或其他对话框之上、并使其下层内容失效的窗口。
 
-`SDialog` 是用于内联场景的声明式包装组件。`dialog(...)` 是用于以编程方式创建警告式对话框的命令式 API。它组合 `DialogRoot`/`DialogTrigger`/`DialogOverlay`/`DialogPopup`/`DialogHeader`/`DialogContent`/`DialogFooter`/`DialogTitle`/`DialogDescription`/`DialogClose`/`DialogCancel`/`DialogConfirm` 这一系列 headless 基础组件（零样式）与 `dialogVariants` 样式配方（11 个槽、6 种尺寸）。
+`SDialog` 是用于内联场景的声明式包装组件。`dialog(...)` 是用于以编程方式创建警告式对话框的命令式 API。它组合 `DialogRoot`/`DialogTrigger`/`DialogOverlay`/`DialogPopup`/`DialogHeader`/`DialogContent`/`DialogFooter`/`DialogTitle`/`DialogDescription`/`DialogClose`/`DialogFullscreen`/`DialogCancel`/`DialogConfirm` 这一系列 headless 基础组件（零样式）与 `dialogVariants` 样式配方（12 个槽、6 种尺寸）。
 
 调用命令式 `dialog(...)` API 前，请在应用根部附近挂载一次 `SDialogProvider`。
 
@@ -45,6 +45,8 @@ function openWarningDialog() {
 - ⚠️ 警告模式 — `isAlert` 切换为 `role="alertdialog"`，并加入类型图标与 `aria-live`（`polite`/`assertive`）
 - 🏷️ 无障碍标题/描述 — `title`/`description` 连接 `aria-labelledby`/`aria-describedby`
 - ❌ 可关闭 — `showClose` 渲染关闭控件；Escape、外部指针/焦点与关闭按钮均可关闭
+- 🖐️ 可拖拽 — `draggable` 支持拖动头部移动对话框（基于 `@dnd-kit/vue`）
+- ⛶ 全屏 — `showFullscreen` 渲染切换按钮；`fullscreen`/`defaultFullscreen` 驱动 `v-model:fullscreen` 状态
 - 🔘 取消/确认 — `showCancel`/`showConfirm`，`cancelText`/`confirmText` 取自 `dialog.cancel`/`dialog.confirm` 本地化消息
 - 🧹 纯净模式 — `pure` 移除头部与底部，用于完全自定义内容
 - 📐 6 种尺寸 — xs–2xl `size`；逐槽 `ui` 覆盖
@@ -60,6 +62,7 @@ function openWarningDialog() {
 - `DialogPopup` / `DialogPopupImpl`（headless）— 承载对话框主体的可关闭、焦点陷阱表面
 - `DialogTitle` / `DialogDescription`（headless）— 用于标注/描述的元素
 - `DialogClose`（headless）— 关闭控件，切换 `open` 并发出 `close`
+- `DialogFullscreen`（headless）— 全屏切换按钮，切换 `fullscreen` 状态并发出 `fullscreen`
 - `DialogCancel` / `DialogConfirm`（headless）— 底部操作，发出 `cancel`/`confirm`
 - `DialogHeader` / `DialogContent` / `DialogFooter`（headless）— 布局分区
 - `DialogCompact`（headless）— 聚合组件；组合所有基础组件并暴露各分区插槽
@@ -145,4 +148,23 @@ dialog.warning('磁盘已满', { description: '请释放空间。' });
 
 ```vue
 <SDialog v-model:open="open" :modal="false" title="面板">...</SDialog>
+```
+
+### 如何制作可拖拽对话框？
+
+设置 `draggable`，拖动头部即可移动对话框。位置会保持到对话框关闭：
+
+```vue
+<SDialog draggable title="面板">
+  <template #trigger><SButton>打开</SButton></template>
+  <div>拖动头部即可移动此对话框。</div>
+</SDialog>
+```
+
+### 如何使用全屏模式？
+
+通过头部按钮切换（`showFullscreen`，默认开启），或用 `v-model:fullscreen` 驱动：
+
+```vue
+<SDialog v-model:fullscreen="fullscreen" title="面板">...</SDialog>
 ```

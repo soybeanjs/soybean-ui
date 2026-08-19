@@ -129,7 +129,9 @@ const messages: LocaleMessages = {
   },
   dialog: {
     cancel: 'Cancelar',
-    confirm: 'Confirmar'
+    confirm: 'Confirmar',
+    fullscreen: 'Tela cheia',
+    exitFullscreen: 'Sair da tela cheia'
   },
   rating: {
     ariaLabel: 'Avaliação',

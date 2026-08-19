@@ -244,7 +244,9 @@
       "dialog": {
         "basic": "Basic",
         "dialog-api": "Dialog API",
+        "draggable": "Draggable",
         "footer": "Footer",
+        "fullscreen": "Fullscreen",
         "prevent": "Prevent",
         "pure": "Pure",
         "state": "State"

@@ -65,6 +65,24 @@ export interface DialogRootProps extends DialogBaseProps {
    * The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog.
    */
   alertType?: DialogAlertType;
+  /**
+   * Whether the dialog can be moved by dragging its header.
+   *
+   * @defaultValue false
+   */
+  draggable?: boolean;
+  /**
+   * The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.
+   *
+   * @defaultValue undefined
+   */
+  fullscreen?: boolean;
+  /**
+   * The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.
+   *
+   * @defaultValue false
+   */
+  defaultFullscreen?: boolean;
 }
 /**
  * Events for the DialogRoot component.
@@ -72,6 +90,15 @@ export interface DialogRootProps extends DialogBaseProps {
 export type DialogRootEmits = {
   /** Event handler called when the open state of the dialog changes. */
   'update:open': [value: boolean];
+};
+
+/**
+ * Events for the fullscreen state of the dialog. Kept separate from `DialogRootEmits`
+ * because the latter is shared by other disclosure primitives (popover, menu, bottom-sheet).
+ */
+export type DialogFullscreenStateEmits = {
+  /** Event handler called when the fullscreen state of the dialog changes. */
+  'update:fullscreen': [value: boolean];
 };
 
 /**
@@ -131,6 +158,18 @@ export interface DialogCloseProps extends ButtonProps {}
 export type DialogCloseEmits = {
   /** Event handler called when the dialog is requested to be closed. */
   close: [event: MouseEvent];
+};
+
+/**
+ * Properties for the DialogFullscreen component.
+ */
+export interface DialogFullscreenProps extends ButtonProps {}
+/**
+ * Events for the DialogFullscreen component.
+ */
+export type DialogFullscreenEmits = {
+  /** Event handler called when the fullscreen state of the dialog is requested to be toggled. */
+  fullscreen: [event: MouseEvent];
 };
 
 /**
@@ -194,6 +233,12 @@ export interface DialogCompactProps extends DialogRootProps {
    * @defaultValue true
    */
   showClose?: boolean;
+  /**
+   * Whether show the fullscreen toggle button in the header of the dialog.
+   *
+   * @defaultValue true
+   */
+  showFullscreen?: boolean;
   /**
    * Whether to use the pure version of the dialog, which does not include the header and footer.
    * This is useful when you want to fully control the content of the dialog and do not need the built-in header and footer.
@@ -269,6 +314,10 @@ export interface DialogCompactProps extends DialogRootProps {
    */
   closeProps?: DialogCloseProps;
   /**
+   * Properties forwarded to the fullscreen element.
+   */
+  fullscreenProps?: DialogFullscreenProps;
+  /**
    * Properties forwarded to the cancel element.
    */
   cancelProps?: DialogCancelProps;
@@ -282,9 +331,11 @@ export interface DialogCompactProps extends DialogRootProps {
  * Events for the DialogCompact component.
  */
 export type DialogCompactEmits = DialogRootEmits &
+  DialogFullscreenStateEmits &
   DialogTriggerEmits &
   DialogPopupEmits &
   DialogCloseEmits &
+  DialogFullscreenEmits &
   DialogConfirmEmits &
   DialogCancelEmits;
 
@@ -327,6 +378,10 @@ export type DialogCompactSlots = {
    */
   close?: (props: DialogCompactBaseSlotProps) => any;
   /**
+   * Custom content for the fullscreen slot.
+   */
+  fullscreen?: (props: DialogCompactBaseSlotProps) => any;
+  /**
    * Custom content for the footer slot.
    */
   footer?: (props: DialogCompactBaseSlotProps) => any;
@@ -345,12 +400,16 @@ export type DialogCompactSlots = {
  */
 export interface DialogRootContextParams extends PropsToContext<
   DialogRootProps,
-  'dir' | 'modal' | 'isAlert' | 'alertType'
+  'dir' | 'modal' | 'isAlert' | 'alertType' | 'draggable'
 > {
   /**
    * Whether the component is open.
    */
   open: Ref<boolean | undefined>;
+  /**
+   * Whether the component is in fullscreen mode.
+   */
+  fullscreen: Ref<boolean | undefined>;
 }
 
 /**
@@ -386,6 +445,7 @@ export type DialogUiSlot =
   | 'icon'
   | 'description'
   | 'close'
+  | 'fullscreen'
   | 'cancel'
   | 'confirm';
 

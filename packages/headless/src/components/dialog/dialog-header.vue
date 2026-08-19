@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDialogUi } from './context';
+import { useDialogRootContext, useDialogUi } from './context';
 import type { DialogHeaderProps } from './types';
 
 defineOptions({
@@ -8,11 +8,13 @@ defineOptions({
 
 defineProps<DialogHeaderProps>();
 
+const { setHeaderElement, draggable } = useDialogRootContext('DialogHeader');
+
 const cls = useDialogUi('header');
 </script>
 
 <template>
-  <div data-soybean-dialog-header :class="cls">
+  <div :ref="setHeaderElement" data-soybean-dialog-header :data-draggable="draggable ? '' : undefined" :class="cls">
     <slot />
   </div>
 </template>

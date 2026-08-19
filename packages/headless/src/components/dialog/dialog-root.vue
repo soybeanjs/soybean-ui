@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { transformPropsToContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { useControllableState } from '../../composables';
 import { provideDialogRootContext } from './context';
-import type { DialogRootProps, DialogRootEmits } from './types';
+import type { DialogRootProps, DialogRootEmits, DialogFullscreenStateEmits } from './types';
 
 defineOptions({
   name: 'DialogRoot',
@@ -13,10 +13,11 @@ defineOptions({
 
 const props = withDefaults(defineProps<DialogRootProps>(), {
   open: undefined,
+  fullscreen: undefined,
   modal: true
 });
 
-const emit = defineEmits<DialogRootEmits>();
+const emit = defineEmits<DialogRootEmits & DialogFullscreenStateEmits>();
 
 const open = useControllableState(
   () => props.open,
@@ -24,6 +25,14 @@ const open = useControllableState(
     emit('update:open', value);
   },
   props.defaultOpen ?? false
+);
+
+const fullscreen = useControllableState(
+  () => props.fullscreen,
+  value => {
+    emit('update:fullscreen', value);
+  },
+  props.defaultFullscreen ?? false
 );
 
 const dir = useDirection(() => props.dir);
@@ -34,12 +43,25 @@ const { onOpenChange } = provideDialogRootContext({
   dir,
   open,
   modal,
-  ...transformPropsToContext(props, ['isAlert', 'alertType'])
+  fullscreen,
+  ...transformPropsToContext(props, ['isAlert', 'alertType', 'draggable'])
 });
 
 const close = () => {
   onOpenChange(false);
 };
+
+// Reset the uncontrolled fullscreen state when the dialog reopens so a previous
+// fullscreen session does not leak into the next one. Controlled `fullscreen`
+// props stay untouched — the parent owns that state. The reset runs on reopen
+// instead of on close so the exit animation keeps the fullscreen surface until
+// the popup unmounts (resetting at close would snap it back to normal size
+// mid-fade-out).
+watch(open, value => {
+  if (value && props.fullscreen === undefined) {
+    fullscreen.value = props.defaultFullscreen ?? false;
+  }
+});
 </script>
 
 <template>

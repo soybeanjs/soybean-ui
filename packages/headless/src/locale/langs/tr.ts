@@ -129,7 +129,9 @@ const messages: LocaleMessages = {
   },
   dialog: {
     cancel: 'İptal',
-    confirm: 'Onayla'
+    confirm: 'Onayla',
+    fullscreen: 'Tam ekran',
+    exitFullscreen: 'Tam ekrandan çık'
   },
   rating: {
     ariaLabel: 'Derecelendirme',

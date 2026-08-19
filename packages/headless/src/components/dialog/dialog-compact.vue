@@ -12,6 +12,7 @@ import DialogConfirm from './dialog-confirm.vue';
 import DialogContent from './dialog-content.vue';
 import DialogDescription from './dialog-description.vue';
 import DialogFooter from './dialog-footer.vue';
+import DialogFullscreen from './dialog-fullscreen.vue';
 import DialogHeader from './dialog-header.vue';
 import DialogOverlay from './dialog-overlay.vue';
 import DialogPopup from './dialog-popup.vue';
@@ -26,8 +27,10 @@ defineOptions({
 
 const props = withDefaults(defineProps<DialogCompactProps>(), {
   open: undefined,
+  fullscreen: undefined,
   modal: true,
   showClose: true,
+  showFullscreen: true,
   showConfirm: true,
   alertType: 'default',
   showCancel: 'onlyWarning'
@@ -38,6 +41,7 @@ const forwardedProps = useOmitProps(props, [
   'description',
   'icon',
   'showClose',
+  'showFullscreen',
   'pure',
   'showCancel',
   'cancelText',
@@ -53,6 +57,7 @@ const forwardedProps = useOmitProps(props, [
   'titleProps',
   'descriptionProps',
   'closeProps',
+  'fullscreenProps',
   'cancelProps',
   'confirmProps'
 ]);
@@ -122,7 +127,12 @@ provideDialogCompactContext({
 </script>
 
 <template>
-  <DialogRoot v-slot="slotProps" v-bind="forwardedProps" @update:open="emit('update:open', $event)">
+  <DialogRoot
+    v-slot="slotProps"
+    v-bind="forwardedProps"
+    @update:open="emit('update:open', $event)"
+    @update:fullscreen="emit('update:fullscreen', $event)"
+  >
     <DialogTrigger v-bind="triggerProps">
       <slot name="trigger" v-bind="slotProps" />
     </DialogTrigger>
@@ -139,6 +149,13 @@ provideDialogCompactContext({
           <DialogDescription v-if="slots.description || description" v-bind="descriptionProps">
             <slot name="description" v-bind="slotProps">{{ description }}</slot>
           </DialogDescription>
+          <DialogFullscreen
+            v-if="!isAlert && showFullscreen"
+            v-bind="fullscreenProps"
+            @fullscreen="emit('fullscreen', $event)"
+          >
+            <slot name="fullscreen" v-bind="slotProps" />
+          </DialogFullscreen>
           <DialogClose v-if="!isAlert && showClose" @close="emit('close', $event)">
             <slot name="close" v-bind="slotProps" />
           </DialogClose>

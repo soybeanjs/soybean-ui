@@ -613,11 +613,13 @@
             "drag": "Emitted when drag occurs.",
             "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
             "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "fullscreen": "Event handler called when the fullscreen state of the dialog is requested to be toggled.",
             "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
             "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
             "release": "Emitted when release occurs.",
             "update_activesnappoint": "Emitted when the active snap point value changes.",
+            "update_fullscreen": "Event handler called when the fullscreen state of the dialog changes.",
             "update_open": "Event handler called when the open state of the dialog changes."
           },
           "emits": "Events for the BottomSheetCompact component.",
@@ -636,15 +638,19 @@
             "confirmprops": "Properties forwarded to the confirm element.",
             "confirmtext": "The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.\n\nDefaults to the localized `dialog.confirm` message from `ConfigProvider`.",
             "contentprops": "Properties forwarded to the content element.",
+            "defaultfullscreen": "The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.",
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "description": "The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided.",
             "descriptionprops": "Properties forwarded to the description element.",
             "dir": "The text direction of the dialog",
             "direction": "Direction.",
             "dismissible": "Whether dismissible.",
+            "draggable": "Whether the dialog can be moved by dragging its header.",
             "fadefromindex": "Fade from index.",
             "fixed": "Whether fixed.",
             "footerprops": "Properties forwarded to the footer element.",
+            "fullscreen": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
+            "fullscreenprops": "Properties forwarded to the fullscreen element.",
             "handleonly": "Whether handle only.",
             "handleprops": "Properties forwarded to the handle element.",
             "headerprops": "Properties forwarded to the header element.",
@@ -665,6 +671,7 @@
             "showcancel": "Whether to show the cancel button.\n\nWhen set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType=\"warning\"`.\nWhen set to `true`, the cancel button will always be shown.",
             "showclose": "Whether show the close button in the header of the dialog.",
             "showconfirm": "Whether to show the confirm button when the dialog is an alert dialog.\n\nThe default value is `true` when the dialog is an alert dialog.",
+            "showfullscreen": "Whether show the fullscreen toggle button in the header of the dialog.",
             "snappoints": "Snap points.",
             "title": "The title of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `title` slot is not provided.",
             "titleprops": "Properties forwarded to the title element.",
@@ -680,6 +687,7 @@
             "default": "Custom content for the default slot.",
             "description": "Custom content for the description slot.",
             "footer": "Custom content for the footer slot.",
+            "fullscreen": "Custom content for the fullscreen slot.",
             "title": "Custom content for the title slot.",
             "trigger": "Custom content for the trigger slot."
           },
@@ -706,12 +714,15 @@
             "activesnappoint": "Active snap point.",
             "alerttype": "The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog.",
             "closethreshold": "Close threshold.",
+            "defaultfullscreen": "The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.",
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "dir": "The text direction of the dialog",
             "direction": "Direction.",
             "dismissible": "Whether dismissible.",
+            "draggable": "Whether the dialog can be moved by dragging its header.",
             "fadefromindex": "Fade from index.",
             "fixed": "Whether fixed.",
+            "fullscreen": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
             "handleonly": "Whether handle only.",
             "isalert": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
             "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
@@ -3708,9 +3719,11 @@
             "confirm": "Event handler called when the dialog is requested to be closed by confirming.",
             "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
             "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "fullscreen": "Event handler called when the fullscreen state of the dialog is requested to be toggled.",
             "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
             "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+            "update_fullscreen": "Event handler called when the fullscreen state of the dialog changes.",
             "update_open": "Event handler called when the open state of the dialog changes."
           },
           "emits": "Events for the DialogCompact component."
@@ -3724,11 +3737,15 @@
             "confirmprops": "Properties forwarded to the confirm element.",
             "confirmtext": "The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.\n\nDefaults to the localized `dialog.confirm` message from `ConfigProvider`.",
             "contentprops": "Properties forwarded to the content element.",
+            "defaultfullscreen": "The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.",
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "description": "The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided.",
             "descriptionprops": "Properties forwarded to the description element.",
             "dir": "The text direction of the dialog",
+            "draggable": "Whether the dialog can be moved by dragging its header.",
             "footerprops": "Properties forwarded to the footer element.",
+            "fullscreen": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
+            "fullscreenprops": "Properties forwarded to the fullscreen element.",
             "headerprops": "Properties forwarded to the header element.",
             "icon": "The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided.",
             "isalert": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
@@ -3741,6 +3758,7 @@
             "showcancel": "Whether to show the cancel button.\n\nWhen set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType=\"warning\"`.\nWhen set to `true`, the cancel button will always be shown.",
             "showclose": "Whether show the close button in the header of the dialog.",
             "showconfirm": "Whether to show the confirm button when the dialog is an alert dialog.\n\nThe default value is `true` when the dialog is an alert dialog.",
+            "showfullscreen": "Whether show the fullscreen toggle button in the header of the dialog.",
             "title": "The title of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `title` slot is not provided.",
             "titleprops": "Properties forwarded to the title element.",
             "triggerprops": "Properties forwarded to the trigger element."
@@ -3755,6 +3773,7 @@
             "default": "Custom content for the default slot.",
             "description": "Custom content for the description slot.",
             "footer": "Custom content for the footer slot.",
+            "fullscreen": "Custom content for the fullscreen slot.",
             "title": "Custom content for the title slot.",
             "trigger": "Custom content for the trigger slot."
           },
@@ -3783,6 +3802,27 @@
         },
         "dialogfooterprops": {
           "props": "Properties for the DialogFooter component."
+        },
+        "dialogfullscreenemits": {
+          "callables": {
+            "fullscreen": "Event handler called when the fullscreen state of the dialog is requested to be toggled."
+          },
+          "emits": "Events for the DialogFullscreen component."
+        },
+        "dialogfullscreenprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "disabled": "Whether the component is disabled.",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
+          },
+          "props": "Properties for the DialogFullscreen component."
+        },
+        "dialogfullscreenstateemits": {
+          "callables": {
+            "update_fullscreen": "Event handler called when the fullscreen state of the dialog changes."
+          },
+          "emits": "Events for the fullscreen state of the dialog. Kept separate from `DialogRootEmits`\nbecause the latter is shared by other disclosure primitives (popover, menu, bottom-sheet)."
         },
         "dialogheaderprops": {
           "props": "Properties for the DialogHeader component."
@@ -3831,8 +3871,11 @@
         "dialogrootprops": {
           "members": {
             "alerttype": "The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog.",
+            "defaultfullscreen": "The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.",
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "dir": "The text direction of the dialog",
+            "draggable": "Whether the dialog can be moved by dragging its header.",
+            "fullscreen": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
             "isalert": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
             "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
             "open": "The controlled open state of the dialog. Can be bound with `v-model:open`."
@@ -9651,11 +9694,13 @@
             "drag": "Emitted when drag occurs.",
             "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
             "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "fullscreen": "Event handler called when the fullscreen state of the dialog is requested to be toggled.",
             "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
             "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
             "release": "Emitted when release occurs.",
             "update_activesnappoint": "Emitted when the active snap point value changes.",
+            "update_fullscreen": "Event handler called when the fullscreen state of the dialog changes.",
             "update_open": "Event handler called when the open state of the dialog changes."
           },
           "emits": "Events for the BottomSheet component."
@@ -9672,15 +9717,19 @@
             "confirmprops": "Properties forwarded to the confirm element.",
             "confirmtext": "The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.\n\nDefaults to the localized `dialog.confirm` message from `ConfigProvider`.",
             "contentprops": "Properties forwarded to the content element.",
+            "defaultfullscreen": "The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.",
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "description": "The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided.",
             "descriptionprops": "Properties forwarded to the description element.",
             "dir": "The text direction of the dialog",
             "direction": "Direction.",
             "dismissible": "Whether dismissible.",
+            "draggable": "Whether the dialog can be moved by dragging its header.",
             "fadefromindex": "Fade from index.",
             "fixed": "Whether fixed.",
             "footerprops": "Properties forwarded to the footer element.",
+            "fullscreen": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
+            "fullscreenprops": "Properties forwarded to the fullscreen element.",
             "handleonly": "Whether handle only.",
             "handleprops": "Properties forwarded to the handle element.",
             "headerprops": "Properties forwarded to the header element.",
@@ -9701,6 +9750,7 @@
             "showcancel": "Whether to show the cancel button.\n\nWhen set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType=\"warning\"`.\nWhen set to `true`, the cancel button will always be shown.",
             "showclose": "Whether show the close button in the header of the dialog.",
             "showconfirm": "Whether to show the confirm button when the dialog is an alert dialog.\n\nThe default value is `true` when the dialog is an alert dialog.",
+            "showfullscreen": "Whether show the fullscreen toggle button in the header of the dialog.",
             "size": "Visual size of the component.",
             "snappoints": "Snap points.",
             "title": "The title of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `title` slot is not provided.",
@@ -9718,6 +9768,7 @@
             "default": "Custom content for the default slot.",
             "description": "Custom content for the description slot.",
             "footer": "Custom content for the footer slot.",
+            "fullscreen": "Custom content for the fullscreen slot.",
             "title": "Custom content for the title slot.",
             "trigger": "Custom content for the trigger slot."
           },
@@ -11192,9 +11243,11 @@
             "confirm": "Event handler called when the dialog is requested to be closed by confirming.",
             "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
             "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "fullscreen": "Event handler called when the fullscreen state of the dialog is requested to be toggled.",
             "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
             "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+            "update_fullscreen": "Event handler called when the fullscreen state of the dialog changes.",
             "update_open": "Event handler called when the open state of the dialog changes."
           },
           "emits": "Events for the Dialog component."
@@ -11209,11 +11262,15 @@
             "confirmprops": "Properties forwarded to the confirm element.",
             "confirmtext": "The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.\n\nDefaults to the localized `dialog.confirm` message from `ConfigProvider`.",
             "contentprops": "Properties forwarded to the content element.",
+            "defaultfullscreen": "The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.",
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "description": "The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided.",
             "descriptionprops": "Properties forwarded to the description element.",
             "dir": "The text direction of the dialog",
+            "draggable": "Whether the dialog can be moved by dragging its header.",
             "footerprops": "Properties forwarded to the footer element.",
+            "fullscreen": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
+            "fullscreenprops": "Properties forwarded to the fullscreen element.",
             "headerprops": "Properties forwarded to the header element.",
             "icon": "The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided.",
             "isalert": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
@@ -11226,6 +11283,7 @@
             "showcancel": "Whether to show the cancel button.\n\nWhen set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType=\"warning\"`.\nWhen set to `true`, the cancel button will always be shown.",
             "showclose": "Whether show the close button in the header of the dialog.",
             "showconfirm": "Whether to show the confirm button when the dialog is an alert dialog.\n\nThe default value is `true` when the dialog is an alert dialog.",
+            "showfullscreen": "Whether show the fullscreen toggle button in the header of the dialog.",
             "size": "Visual size of the component.",
             "title": "The title of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `title` slot is not provided.",
             "titleprops": "Properties forwarded to the title element.",
@@ -11242,6 +11300,7 @@
             "default": "Custom content for the default slot.",
             "description": "Custom content for the description slot.",
             "footer": "Custom content for the footer slot.",
+            "fullscreen": "Custom content for the fullscreen slot.",
             "title": "Custom content for the title slot.",
             "trigger": "Custom content for the trigger slot."
           },
@@ -11258,9 +11317,11 @@
             "confirm": "Event handler called when the dialog is requested to be closed by confirming.",
             "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
             "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "fullscreen": "Event handler called when the fullscreen state of the dialog is requested to be toggled.",
             "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
             "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+            "update_fullscreen": "Event handler called when the fullscreen state of the dialog changes.",
             "update_open": "Event handler called when the open state of the dialog changes."
           },
           "emits": "Events for the Drawer component."
@@ -11275,11 +11336,15 @@
             "confirmprops": "Properties forwarded to the confirm element.",
             "confirmtext": "The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.\n\nDefaults to the localized `dialog.confirm` message from `ConfigProvider`.",
             "contentprops": "Properties forwarded to the content element.",
+            "defaultfullscreen": "The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.",
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "description": "The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided.",
             "descriptionprops": "Properties forwarded to the description element.",
             "dir": "The text direction of the dialog",
+            "draggable": "Whether the dialog can be moved by dragging its header.",
             "footerprops": "Properties forwarded to the footer element.",
+            "fullscreen": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
+            "fullscreenprops": "Properties forwarded to the fullscreen element.",
             "headerprops": "Properties forwarded to the header element.",
             "icon": "The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided.",
             "isalert": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
@@ -11292,6 +11357,7 @@
             "showcancel": "Whether to show the cancel button.\n\nWhen set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType=\"warning\"`.\nWhen set to `true`, the cancel button will always be shown.",
             "showclose": "Whether show the close button in the header of the dialog.",
             "showconfirm": "Whether to show the confirm button when the dialog is an alert dialog.\n\nThe default value is `true` when the dialog is an alert dialog.",
+            "showfullscreen": "Whether show the fullscreen toggle button in the header of the dialog.",
             "side": "Side placement of the component.",
             "size": "Visual size of the component.",
             "title": "The title of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `title` slot is not provided.",
@@ -11309,6 +11375,7 @@
             "default": "Custom content for the default slot.",
             "description": "Custom content for the description slot.",
             "footer": "Custom content for the footer slot.",
+            "fullscreen": "Custom content for the fullscreen slot.",
             "title": "Custom content for the title slot.",
             "trigger": "Custom content for the trigger slot."
           },

@@ -244,7 +244,9 @@
       "dialog": {
         "basic": "基础",
         "dialog-api": "Dialog API",
+        "draggable": "可拖拽",
         "footer": "底部",
+        "fullscreen": "全屏",
         "prevent": "阻止关闭",
         "pure": "纯净",
         "state": "状态"

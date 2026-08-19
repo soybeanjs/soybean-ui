@@ -12,8 +12,10 @@ defineOptions({
 
 const props = withDefaults(defineProps<DialogProps>(), {
   open: undefined,
+  fullscreen: undefined,
   modal: true,
-  showClose: true
+  showClose: true,
+  showFullscreen: true
 });
 
 const emit = defineEmits<DialogEmits>();

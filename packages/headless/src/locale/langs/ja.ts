@@ -129,7 +129,9 @@ const messages: LocaleMessages = {
   },
   dialog: {
     cancel: 'キャンセル',
-    confirm: '確認'
+    confirm: '確認',
+    fullscreen: '全画面',
+    exitFullscreen: '全画面を終了'
   },
   rating: {
     ariaLabel: '評価',

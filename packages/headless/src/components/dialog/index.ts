@@ -11,6 +11,7 @@ export { default as DialogTitle } from './dialog-title.vue';
 export { default as DialogDescription } from './dialog-description.vue';
 export { default as DialogFooter } from './dialog-footer.vue';
 export { default as DialogClose } from './dialog-close.vue';
+export { default as DialogFullscreen } from './dialog-fullscreen.vue';
 export { default as DialogCancel } from './dialog-cancel.vue';
 export { default as DialogConfirm } from './dialog-confirm.vue';
 
@@ -24,6 +25,7 @@ export type {
   DialogCompactBaseSlotProps,
   DialogRootProps,
   DialogRootEmits,
+  DialogFullscreenStateEmits,
   DialogTriggerProps,
   DialogOverlayProps,
   DialogPortalProps,
@@ -36,6 +38,8 @@ export type {
   DialogDescriptionProps,
   DialogCloseProps,
   DialogCloseEmits,
+  DialogFullscreenProps,
+  DialogFullscreenEmits,
   DialogConfirmProps,
   DialogConfirmEmits,
   DialogCancelProps,

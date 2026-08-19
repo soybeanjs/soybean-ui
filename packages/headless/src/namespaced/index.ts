@@ -216,6 +216,7 @@ import {
   DialogContent,
   DialogDescription,
   DialogFooter,
+  DialogFullscreen,
   DialogHeader,
   DialogOverlay,
   DialogPopup,
@@ -1098,6 +1099,7 @@ export const Dialog = {
   Description: DialogDescription,
   Footer: DialogFooter,
   Close: DialogClose,
+  Fullscreen: DialogFullscreen,
   Cancel: DialogCancel,
   Confirm: DialogConfirm
 } as {
@@ -1114,6 +1116,7 @@ export const Dialog = {
   Description: typeof DialogDescription;
   Footer: typeof DialogFooter;
   Close: typeof DialogClose;
+  Fullscreen: typeof DialogFullscreen;
   Cancel: typeof DialogCancel;
   Confirm: typeof DialogConfirm;
 };

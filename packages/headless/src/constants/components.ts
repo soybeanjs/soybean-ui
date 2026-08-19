@@ -213,6 +213,7 @@ export const components = {
     'DialogDescription',
     'DialogFooter',
     'DialogClose',
+    'DialogFullscreen',
     'DialogCancel',
     'DialogConfirm'
   ],

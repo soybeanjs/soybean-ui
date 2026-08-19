@@ -143,6 +143,10 @@ export interface LocaleDialogMessages {
   cancel: string;
   /** Default slot content for the confirm trigger. */
   confirm: string;
+  /** Aria-label for the fullscreen toggle when the dialog is not fullscreen. */
+  fullscreen: string;
+  /** Aria-label for the fullscreen toggle when the dialog is fullscreen. */
+  exitFullscreen: string;
 }
 
 export interface LocaleEditableMessages {

@@ -12,14 +12,22 @@ export const [provideDialogRootContext, useDialogRootContext] = useContext(
     const [triggerElement, setTriggerElement] = useForwardElement();
     const [popupElement, setPopupElement] = useForwardElement();
     const [cancelElement, setCancelElement] = useForwardElement();
+    const [headerElement, setHeaderElement] = useForwardElement();
 
-    const { open } = params;
+    const { open, fullscreen } = params;
 
     const onOpenChange = (value: boolean) => {
       open.value = value;
     };
     const onOpenToggle = () => {
       open.value = !open.value;
+    };
+
+    const onFullscreenChange = (value: boolean) => {
+      fullscreen.value = value;
+    };
+    const onFullscreenToggle = () => {
+      fullscreen.value = !fullscreen.value;
     };
 
     const dataState = computed<DisclosureState>(() => getDisclosureState(open.value));
@@ -59,6 +67,8 @@ export const [provideDialogRootContext, useDialogRootContext] = useContext(
       ...params,
       onOpenChange,
       onOpenToggle,
+      onFullscreenChange,
+      onFullscreenToggle,
       dataState,
       overlayElement,
       setOverlayElement,
@@ -68,6 +78,8 @@ export const [provideDialogRootContext, useDialogRootContext] = useContext(
       setPopupElement,
       cancelElement,
       setCancelElement,
+      headerElement,
+      setHeaderElement,
       popupId,
       initPopupId,
       titleId,

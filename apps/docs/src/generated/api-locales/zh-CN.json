@@ -613,11 +613,13 @@
             "drag": "拖动时发出。",
             "escapekeydown": "按下 Escape 键时调用事件处理程序。可以避免。",
             "focusoutside": "当焦点移出 \"DismissableLayer \"时调用事件处理程序。可以防止。",
+            "fullscreen": "当请求切换对话框的全屏状态时，会调用此事件处理程序。",
             "interactoutside": "当交互发生在 `DismissableLayer` 以外时，调用事件处理程序。具体来说，当`pointerdown\n事件发生或焦点移出时调用的事件处理程序。可以避免。",
             "openautofocus": "打开时自动聚焦调用事件处理程序。可以避免。",
             "pointerdownoutside": "当 \"DismissableLayer \"之外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。",
             "release": "发布时输出。",
             "update_activesnappoint": "当活动扣点值发生变化时发出。",
+            "update_fullscreen": "当对话框的全屏状态发生变化时调用的事件处理程序。",
             "update_open": "当对话框的打开状态发生变化时，调用事件处理程序。"
           },
           "emits": "BottomSheetCompact 组件的事件。",
@@ -636,15 +638,19 @@
             "confirmprops": "属性转发到确认元素。",
             "confirmtext": "确认按钮的文本。该文本用于可访问性目的，如果未提供 `confirm` 插槽，则将在对话框的页脚中呈现。\n\n默认为来自 `ConfigProvider` 的本地化 `dialog.confirm` 信息。",
             "contentprops": "转发到内容元素的属性。",
+            "defaultfullscreen": "对话框初次渲染时的全屏状态。当您无需控制其全屏状态时使用此选项。",
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
             "description": "对话框说明。该说明用于辅助功能，如果未提供 `description` 插槽，则将在对话框内容中呈现。",
             "descriptionprops": "转发到描述元素的属性。",
             "dir": "对话框的文本方向",
             "direction": "方向",
             "dismissible": "是否可删除。",
+            "draggable": "是否可以通过拖动对话框标题来移动该对话框。",
             "fadefromindex": "淡出索引。",
             "fixed": "是否固定。",
             "footerprops": "转发到页脚元素的属性。",
+            "fullscreen": "对话框的可控全屏状态。可通过 `v-model:fullscreen` 进行绑定。",
+            "fullscreenprops": "转发给全屏元素的属性。",
             "handleonly": "是否只处理。",
             "handleprops": "转发到句柄元素的属性。",
             "headerprops": "转发到标题元素的属性。",
@@ -665,6 +671,7 @@
             "showcancel": "是否显示取消按钮\n\n设置为 \"onlyWarning \"时，只有当对话框是具有 \"alertType=\"warning\"\"的警报对话框时，才会显示取消按钮。\n设置为 `true` 时，将始终显示取消按钮。",
             "showclose": "是否在对话框头部显示关闭按钮。",
             "showconfirm": "当对话框为警报对话框时，是否显示确认按钮。\n\n当对话框为警报对话框时，默认值为 \"true\"。",
+            "showfullscreen": "是否在对话框的标题栏中显示全屏切换按钮。",
             "snappoints": "扣分点。",
             "title": "对话框的标题。该标题用于可访问性目的，如果未提供 `title` 插槽，则将在对话框的页眉中显示。",
             "titleprops": "属性转发到标题元素。",
@@ -680,6 +687,7 @@
             "default": "默认插槽的自定义内容。",
             "description": "自定义描述槽的内容。",
             "footer": "页脚槽的自定义内容。",
+            "fullscreen": "全屏插槽的自定义内容。",
             "title": "标题槽的自定义内容。",
             "trigger": "触发槽的自定义内容。"
           },
@@ -706,12 +714,15 @@
             "activesnappoint": "活动扣点。",
             "alerttype": "对话框的警报类型，当对话框是警报对话框时，它将决定默认图标和样式。",
             "closethreshold": "关闭阈值。",
+            "defaultfullscreen": "对话框初次渲染时的全屏状态。当您无需控制其全屏状态时使用此选项。",
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
             "dir": "对话框的文本方向",
             "direction": "方向",
             "dismissible": "是否可删除。",
+            "draggable": "是否可以通过拖动对话框标题来移动该对话框。",
             "fadefromindex": "淡出索引。",
             "fixed": "是否固定。",
+            "fullscreen": "对话框的可控全屏状态。可通过 `v-model:fullscreen` 进行绑定。",
             "handleonly": "是否只处理。",
             "isalert": "对话框是否为警报对话框。警报对话框是一种中断用户工作流程以传达重要信息并要求用户做出响应的对话框。\n\n设置为 \"true \"时，对话框将具有 \"role=\"alertdialog\"\"，并要求提供 \"DialogTitle\"。这将用于可访问性目的。",
             "modal": "对话框的模式。设置为 \"true \"时，与外部元素的交互将被禁用，屏幕阅读器只能看到对话框的内容。\n内容对屏幕阅读器可见。",
@@ -3708,9 +3719,11 @@
             "confirm": "通过确认请求关闭对话框时调用事件处理程序。",
             "escapekeydown": "按下 Escape 键时调用事件处理程序。可以避免。",
             "focusoutside": "当焦点移出 \"DismissableLayer \"时调用事件处理程序。可以防止。",
+            "fullscreen": "当请求切换对话框的全屏状态时，会调用此事件处理程序。",
             "interactoutside": "当交互发生在 `DismissableLayer` 以外时，调用事件处理程序。具体来说，当`pointerdown\n事件发生或焦点移出时调用的事件处理程序。可以避免。",
             "openautofocus": "打开时自动聚焦调用事件处理程序。可以避免。",
             "pointerdownoutside": "当 \"DismissableLayer \"之外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。",
+            "update_fullscreen": "当对话框的全屏状态发生变化时调用的事件处理程序。",
             "update_open": "当对话框的打开状态发生变化时，调用事件处理程序。"
           },
           "emits": "DialogCompact 组件的事件。"
@@ -3724,11 +3737,15 @@
             "confirmprops": "属性转发到确认元素。",
             "confirmtext": "确认按钮的文本。该文本用于可访问性目的，如果未提供 `confirm` 插槽，则将在对话框的页脚中呈现。\n\n默认为来自 `ConfigProvider` 的本地化 `dialog.confirm` 信息。",
             "contentprops": "转发到内容元素的属性。",
+            "defaultfullscreen": "对话框初次渲染时的全屏状态。当您无需控制其全屏状态时使用此选项。",
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
             "description": "对话框说明。该说明用于辅助功能，如果未提供 `description` 插槽，则将在对话框内容中呈现。",
             "descriptionprops": "转发到描述元素的属性。",
             "dir": "对话框的文本方向",
+            "draggable": "是否可以通过拖动对话框标题来移动该对话框。",
             "footerprops": "转发到页脚元素的属性。",
+            "fullscreen": "对话框的可控全屏状态。可通过 `v-model:fullscreen` 进行绑定。",
+            "fullscreenprops": "转发给全屏元素的属性。",
             "headerprops": "转发到标题元素的属性。",
             "icon": "对话框的图标。该图标用于可访问性目的，如果未提供 icon 插槽，则将在对话框的页眉中显示。",
             "isalert": "对话框是否为警报对话框。警报对话框是一种中断用户工作流程以传达重要信息并要求用户做出响应的对话框。\n\n设置为 \"true \"时，对话框将具有 \"role=\"alertdialog\"\"，并要求提供 \"DialogTitle\"。这将用于可访问性目的。",
@@ -3741,6 +3758,7 @@
             "showcancel": "是否显示取消按钮\n\n设置为 \"onlyWarning \"时，只有当对话框是具有 \"alertType=\"warning\"\"的警报对话框时，才会显示取消按钮。\n设置为 `true` 时，将始终显示取消按钮。",
             "showclose": "是否在对话框头部显示关闭按钮。",
             "showconfirm": "当对话框为警报对话框时，是否显示确认按钮。\n\n当对话框为警报对话框时，默认值为 \"true\"。",
+            "showfullscreen": "是否在对话框的标题栏中显示全屏切换按钮。",
             "title": "对话框的标题。该标题用于可访问性目的，如果未提供 `title` 插槽，则将在对话框的页眉中显示。",
             "titleprops": "属性转发到标题元素。",
             "triggerprops": "转发到触发器元素的属性。"
@@ -3755,6 +3773,7 @@
             "default": "默认插槽的自定义内容。",
             "description": "自定义描述槽的内容。",
             "footer": "页脚槽的自定义内容。",
+            "fullscreen": "全屏插槽的自定义内容。",
             "title": "标题槽的自定义内容。",
             "trigger": "触发槽的自定义内容。"
           },
@@ -3783,6 +3802,27 @@
         },
         "dialogfooterprops": {
           "props": "DialogFooter 组件的属性。"
+        },
+        "dialogfullscreenemits": {
+          "callables": {
+            "fullscreen": "当请求切换对话框的全屏状态时，会调用此事件处理程序。"
+          },
+          "emits": "DialogFullscreen 组件的事件。"
+        },
+        "dialogfullscreenprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 覆盖此设置。",
+            "aschild": "将默认渲染的元素替换为作为子元素传入的元素，并合并两者的属性与行为。",
+            "disabled": "该组件是否被禁用。",
+            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
+          },
+          "props": "DialogFullscreen 组件的属性。"
+        },
+        "dialogfullscreenstateemits": {
+          "callables": {
+            "update_fullscreen": "当对话框的全屏状态发生变化时调用的事件处理程序。"
+          },
+          "emits": "对话框全屏状态的事件。与 `DialogRootEmits` 分开处理，\n因为后者还被其他展开控件（弹出框、菜单、底部面板）共享。"
         },
         "dialogheaderprops": {
           "props": "DialogHeader 组件的属性。"
@@ -3831,8 +3871,11 @@
         "dialogrootprops": {
           "members": {
             "alerttype": "对话框的警报类型，当对话框是警报对话框时，它将决定默认图标和样式。",
+            "defaultfullscreen": "对话框初次渲染时的全屏状态。当您无需控制其全屏状态时使用此选项。",
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
             "dir": "对话框的文本方向",
+            "draggable": "是否可以通过拖动对话框标题来移动该对话框。",
+            "fullscreen": "对话框的可控全屏状态。可通过 `v-model:fullscreen` 进行绑定。",
             "isalert": "对话框是否为警报对话框。警报对话框是一种中断用户工作流程以传达重要信息并要求用户做出响应的对话框。\n\n设置为 \"true \"时，对话框将具有 \"role=\"alertdialog\"\"，并要求提供 \"DialogTitle\"。这将用于可访问性目的。",
             "modal": "对话框的模式。设置为 \"true \"时，与外部元素的交互将被禁用，屏幕阅读器只能看到对话框的内容。\n内容对屏幕阅读器可见。",
             "open": "对话框的受控打开状态。可与 `v-model:open`绑定。"
@@ -9651,11 +9694,13 @@
             "drag": "在发生拖拽操作时触发。",
             "escapekeydown": "当Esc键被按下时调用的事件处理程序。可被阻止。",
             "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。可被阻止。",
+            "fullscreen": "当请求切换对话框的全屏状态时，会调用此事件处理程序。",
             "interactoutside": "当交互发生在 `DismissableLayer` 外部时触发的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。可被阻止。",
             "openautofocus": "在打开页面时自动聚焦时触发的事件处理程序。可被阻止。",
             "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。",
             "release": "在发布时生成。",
             "update_activesnappoint": "当活动快照点的值发生变化时触发。",
+            "update_fullscreen": "当对话框的全屏状态发生变化时调用的事件处理程序。",
             "update_open": "当对话框的打开状态发生变化时调用的事件处理程序。"
           },
           "emits": "BottomSheet 组件的事件。"
@@ -9672,15 +9717,19 @@
             "confirmprops": "传递给 confirm 元素的属性。",
             "confirmtext": "确认按钮的文本。此文本用于辅助功能，若未提供 `confirm` 插槽，则会在对话框的页脚中显示。\n\n默认使用来自 `ConfigProvider` 的本地化 `dialog.confirm` 消息。",
             "contentprops": "转发至内容元素的属性。",
+            "defaultfullscreen": "对话框初次渲染时的全屏状态。当您无需控制其全屏状态时使用此选项。",
             "defaultopen": "对话框在初始渲染时的打开状态。当您无需控制其打开状态时使用。",
             "description": "对话框的描述。此内容用于辅助功能，若未提供 `description` 槽，则会在对话框内容中显示。",
             "descriptionprops": "已将属性转发至 description 元素。",
             "dir": "对话框的文本方向",
             "direction": "翻译方向。",
             "dismissible": "是否可关闭。",
+            "draggable": "是否可以通过拖动对话框标题来移动该对话框。",
             "fadefromindex": "从索引中淡出。",
             "fixed": "是否已修复。",
             "footerprops": "传递给页脚元素的属性。",
+            "fullscreen": "对话框的可控全屏状态。可通过 `v-model:fullscreen` 进行绑定。",
+            "fullscreenprops": "转发给全屏元素的属性。",
             "handleonly": "仅处理“whether”一词。",
             "handleprops": "转发至 handle 元素的属性。",
             "headerprops": "传递给 header 元素的属性。",
@@ -9701,6 +9750,7 @@
             "showcancel": "是否显示取消按钮。\n\n当设置为 `onlyWarning` 时，只有当对话框是 `alertType=\"warning\"` 的警告对话框时，才会显示取消按钮。\n当设置为 `true` 时，取消按钮将始终显示。",
             "showclose": "是否在对话框的标题栏中显示关闭按钮。",
             "showconfirm": "当对话框为提示对话框时，是否显示确认按钮。\n\n当对话框为提示对话框时，默认值为 `true`。",
+            "showfullscreen": "是否在对话框的标题栏中显示全屏切换按钮。",
             "size": "组件的视觉尺寸。",
             "snappoints": "对齐点。",
             "title": "对话框的标题。此标题用于辅助功能，若未提供 `title` 槽，则会显示在对话框的标题栏中。",
@@ -9718,6 +9768,7 @@
             "default": "默认插槽的自定义内容。",
             "description": "描述字段的自定义内容。",
             "footer": "页脚位置的自定义内容。",
+            "fullscreen": "全屏插槽的自定义内容。",
             "title": "标题槽位的自定义内容。",
             "trigger": "触发槽的自定义内容。"
           },
@@ -11192,9 +11243,11 @@
             "confirm": "当通过确认操作请求关闭对话框时调用的事件处理程序。",
             "escapekeydown": "当Esc键被按下时调用的事件处理程序。可被阻止。",
             "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。可被阻止。",
+            "fullscreen": "当请求切换对话框的全屏状态时，会调用此事件处理程序。",
             "interactoutside": "当交互发生在 `DismissableLayer` 外部时触发的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。可被阻止。",
             "openautofocus": "在打开页面时自动聚焦时触发的事件处理程序。可被阻止。",
             "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。",
+            "update_fullscreen": "当对话框的全屏状态发生变化时调用的事件处理程序。",
             "update_open": "当对话框的打开状态发生变化时调用的事件处理程序。"
           },
           "emits": "Dialog 组件的事件。"
@@ -11209,11 +11262,15 @@
             "confirmprops": "传递给 confirm 元素的属性。",
             "confirmtext": "确认按钮的文本。此文本用于辅助功能，若未提供 `confirm` 插槽，则会在对话框的页脚中显示。\n\n默认使用来自 `ConfigProvider` 的本地化 `dialog.confirm` 消息。",
             "contentprops": "转发至内容元素的属性。",
+            "defaultfullscreen": "对话框初次渲染时的全屏状态。当您无需控制其全屏状态时使用此选项。",
             "defaultopen": "对话框在初始渲染时的打开状态。当您无需控制其打开状态时使用。",
             "description": "对话框的描述。此内容用于辅助功能，若未提供 `description` 槽，则会在对话框内容中显示。",
             "descriptionprops": "已将属性转发至 description 元素。",
             "dir": "对话框的文本方向",
+            "draggable": "是否可以通过拖动对话框标题来移动该对话框。",
             "footerprops": "传递给页脚元素的属性。",
+            "fullscreen": "对话框的可控全屏状态。可通过 `v-model:fullscreen` 进行绑定。",
+            "fullscreenprops": "转发给全屏元素的属性。",
             "headerprops": "传递给 header 元素的属性。",
             "icon": "对话框的图标。此图标用于辅助功能，若未提供 `icon` 槽，则会在对话框的标题栏中显示。",
             "isalert": "该对话框是否为警报对话框。警报对话框是一种会中断用户工作流程以传达重要信息并需要用户响应的对话框。\n\n当设置为 `true` 时，对话框将具有 `role=\"alertdialog\"` 属性，并需要提供 `DialogTitle`。此设置用于辅助功能支持。",
@@ -11226,6 +11283,7 @@
             "showcancel": "是否显示取消按钮。\n\n当设置为 `onlyWarning` 时，只有当对话框是 `alertType=\"warning\"` 的警告对话框时，才会显示取消按钮。\n当设置为 `true` 时，取消按钮将始终显示。",
             "showclose": "是否在对话框的标题栏中显示关闭按钮。",
             "showconfirm": "当对话框为提示对话框时，是否显示确认按钮。\n\n当对话框为提示对话框时，默认值为 `true`。",
+            "showfullscreen": "是否在对话框的标题栏中显示全屏切换按钮。",
             "size": "组件的视觉尺寸。",
             "title": "对话框的标题。此标题用于辅助功能，若未提供 `title` 槽，则会显示在对话框的标题栏中。",
             "titleprops": "传递给 title 元素的属性。",
@@ -11242,6 +11300,7 @@
             "default": "默认插槽的自定义内容。",
             "description": "描述字段的自定义内容。",
             "footer": "页脚位置的自定义内容。",
+            "fullscreen": "全屏插槽的自定义内容。",
             "title": "标题槽位的自定义内容。",
             "trigger": "触发槽的自定义内容。"
           },
@@ -11258,9 +11317,11 @@
             "confirm": "当通过确认操作请求关闭对话框时调用的事件处理程序。",
             "escapekeydown": "当Esc键被按下时调用的事件处理程序。可被阻止。",
             "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。可被阻止。",
+            "fullscreen": "当请求切换对话框的全屏状态时，会调用此事件处理程序。",
             "interactoutside": "当交互发生在 `DismissableLayer` 外部时触发的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。可被阻止。",
             "openautofocus": "在打开页面时自动聚焦时触发的事件处理程序。可被阻止。",
             "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。",
+            "update_fullscreen": "当对话框的全屏状态发生变化时调用的事件处理程序。",
             "update_open": "当对话框的打开状态发生变化时调用的事件处理程序。"
           },
           "emits": "Drawer 组件的事件。"
@@ -11275,11 +11336,15 @@
             "confirmprops": "传递给 confirm 元素的属性。",
             "confirmtext": "确认按钮的文本。此文本用于辅助功能，若未提供 `confirm` 插槽，则会在对话框的页脚中显示。\n\n默认使用来自 `ConfigProvider` 的本地化 `dialog.confirm` 消息。",
             "contentprops": "转发至内容元素的属性。",
+            "defaultfullscreen": "对话框初次渲染时的全屏状态。当您无需控制其全屏状态时使用此选项。",
             "defaultopen": "对话框在初始渲染时的打开状态。当您无需控制其打开状态时使用。",
             "description": "对话框的描述。此内容用于辅助功能，若未提供 `description` 槽，则会在对话框内容中显示。",
             "descriptionprops": "已将属性转发至 description 元素。",
             "dir": "对话框的文本方向",
+            "draggable": "是否可以通过拖动对话框标题来移动该对话框。",
             "footerprops": "传递给页脚元素的属性。",
+            "fullscreen": "对话框的可控全屏状态。可通过 `v-model:fullscreen` 进行绑定。",
+            "fullscreenprops": "转发给全屏元素的属性。",
             "headerprops": "传递给 header 元素的属性。",
             "icon": "对话框的图标。此图标用于辅助功能，若未提供 `icon` 槽，则会在对话框的标题栏中显示。",
             "isalert": "该对话框是否为警报对话框。警报对话框是一种会中断用户工作流程以传达重要信息并需要用户响应的对话框。\n\n当设置为 `true` 时，对话框将具有 `role=\"alertdialog\"` 属性，并需要提供 `DialogTitle`。此设置用于辅助功能支持。",
@@ -11292,6 +11357,7 @@
             "showcancel": "是否显示取消按钮。\n\n当设置为 `onlyWarning` 时，只有当对话框是 `alertType=\"warning\"` 的警告对话框时，才会显示取消按钮。\n当设置为 `true` 时，取消按钮将始终显示。",
             "showclose": "是否在对话框的标题栏中显示关闭按钮。",
             "showconfirm": "当对话框为提示对话框时，是否显示确认按钮。\n\n当对话框为提示对话框时，默认值为 `true`。",
+            "showfullscreen": "是否在对话框的标题栏中显示全屏切换按钮。",
             "side": "组件的侧边布局。",
             "size": "组件的视觉尺寸。",
             "title": "对话框的标题。此标题用于辅助功能，若未提供 `title` 槽，则会显示在对话框的标题栏中。",
@@ -11309,6 +11375,7 @@
             "default": "默认插槽的自定义内容。",
             "description": "描述字段的自定义内容。",
             "footer": "页脚位置的自定义内容。",
+            "fullscreen": "全屏插槽的自定义内容。",
             "title": "标题槽位的自定义内容。",
             "trigger": "触发槽的自定义内容。"
           },

@@ -4,7 +4,7 @@
 
 A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
 
-`SDialog` is the declarative wrapper for inline usage. `dialog(...)` is the imperative API for creating alert-style dialogs programmatically. It combines the `DialogRoot`/`DialogTrigger`/`DialogOverlay`/`DialogPopup`/`DialogHeader`/`DialogContent`/`DialogFooter`/`DialogTitle`/`DialogDescription`/`DialogClose`/`DialogCancel`/`DialogConfirm` headless primitive family (zero styles) with the `dialogVariants` style recipe (11 slots, 6 sizes).
+`SDialog` is the declarative wrapper for inline usage. `dialog(...)` is the imperative API for creating alert-style dialogs programmatically. It combines the `DialogRoot`/`DialogTrigger`/`DialogOverlay`/`DialogPopup`/`DialogHeader`/`DialogContent`/`DialogFooter`/`DialogTitle`/`DialogDescription`/`DialogClose`/`DialogFullscreen`/`DialogCancel`/`DialogConfirm` headless primitive family (zero styles) with the `dialogVariants` style recipe (12 slots, 6 sizes).
 
 Mount `SDialogProvider` once near your app root before calling the imperative `dialog(...)` API.
 
@@ -45,6 +45,8 @@ function openWarningDialog() {
 - ⚠️ Alert mode — `isAlert` switches to `role="alertdialog"`, adds the type icon and `aria-live` (`polite`/`assertive`)
 - 🏷️ Accessible title/description — `title`/`description` wire `aria-labelledby`/`aria-describedby`
 - ❌ Closable — `showClose` renders a close control; Escape, outside pointer/focus and the close button all dismiss
+- 🖐️ Draggable — `draggable` lets you move the dialog by dragging its header (powered by `@dnd-kit/vue`)
+- ⛶ Fullscreen — `showFullscreen` renders a toggle; `fullscreen`/`defaultFullscreen` drive a `v-model:fullscreen` state
 - 🔘 Cancel/confirm — `showCancel`/`showConfirm` with localized `cancelText`/`confirmText` from `dialog.cancel`/`dialog.confirm`
 - 🧹 Pure mode — `pure` drops the header/footer for fully custom content
 - 📐 6 sizes — xs–2xl `size`; per-slot `ui` overrides
@@ -60,6 +62,7 @@ function openWarningDialog() {
 - `DialogPopup` / `DialogPopupImpl` (headless) — the focus-trapped, dismissable surface hosting the dialog body
 - `DialogTitle` / `DialogDescription` (headless) — the labelled/described elements
 - `DialogClose` (headless) — the close control, toggles `open` and emits `close`
+- `DialogFullscreen` (headless) — the fullscreen toggle, toggles the `fullscreen` state and emits `fullscreen`
 - `DialogCancel` / `DialogConfirm` (headless) — footer actions, emit `cancel`/`confirm`
 - `DialogHeader` / `DialogContent` / `DialogFooter` (headless) — layout sections
 - `DialogCompact` (headless) — the aggregated composite; composes all primitives and exposes the per-part slots
@@ -145,4 +148,23 @@ Set `modal={false}` to allow interacting with content outside the dialog:
 
 ```vue
 <SDialog v-model:open="open" :modal="false" title="Palette">...</SDialog>
+```
+
+### How do I make a draggable dialog?
+
+Set `draggable` and drag the header to move the dialog. The position is kept until the dialog is closed:
+
+```vue
+<SDialog draggable title="Panel">
+  <template #trigger><SButton>Open</SButton></template>
+  <div>Drag the header to move this dialog.</div>
+</SDialog>
+```
+
+### How do I use the fullscreen mode?
+
+Toggle it with the header button (`showFullscreen`, on by default) or drive it with `v-model:fullscreen`:
+
+```vue
+<SDialog v-model:fullscreen="fullscreen" title="Panel">...</SDialog>
 ```
