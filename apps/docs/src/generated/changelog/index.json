@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T02:48:18.093Z",
+  "generatedAt": "2026-08-19T08:51:23.685Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -124,9 +124,9 @@
     "cascader": {
       "component": "cascader",
       "file": "cascader.json",
-      "latestVersion": "v0.30.0-beta.1",
-      "versionCount": 1,
-      "entryCount": 1
+      "latestVersion": "v0.30.0-beta.2",
+      "versionCount": 2,
+      "entryCount": 2
     },
     "checkbox": {
       "component": "checkbox",
@@ -250,9 +250,9 @@
     "dialog": {
       "component": "dialog",
       "file": "dialog.json",
-      "latestVersion": "v0.22.3",
-      "versionCount": 11,
-      "entryCount": 14
+      "latestVersion": "v0.30.0-beta.2",
+      "versionCount": 12,
+      "entryCount": 15
     },
     "dropdown-menu": {
       "component": "dropdown-menu",

@@ -1790,6 +1790,11 @@
               "ff2c7": "force presence unmount when exit animation name stops resolving",
               "ff970": "fix scroll in large list",
               "ffafc": "optimize PalettePicker"
+            },
+            "2": {
+              "6371e": "update docs api and skills",
+              "73f50": "Corrected the highlighting logic and style of the parent node in the cascading selector.",
+              "fac2c": "add fullscreen and draggable features"
             }
           }
         }

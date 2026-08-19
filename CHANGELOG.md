@@ -1,5 +1,23 @@
 # Changelog
 
+## [v0.30.0-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.30.0-beta.1...v0.30.0-beta.2) (2026-08-19)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **dialog**: add fullscreen and draggable features &nbsp;-&nbsp; by @soybeanjs [<samp>(fac2c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fac2c421)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cascader**: Corrected the highlighting logic and style of the parent node in the cascading selector. &nbsp;-&nbsp; by @soybeanjs [<samp>(73f50)</samp>](https://github.com/soybeanjs/soybean-ui/commit/73f50b92)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**: update docs api and skills &nbsp;-&nbsp; by @soybeanjs [<samp>(6371e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6371e07a)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.30.0-beta.1](https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0-beta.1) (2026-08-19)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

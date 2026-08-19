@@ -1,8 +1,25 @@
 {
   "component": "dialog",
-  "generatedAt": "2026-08-19T02:48:18.093Z",
+  "generatedAt": "2026-08-19T08:51:23.685Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.30.0-beta.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0-beta.1...v0.30.0-beta.2",
+      "date": "2026-08-19",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "dialog",
+          "summary": "add fullscreen and draggable features",
+          "summaryKey": "changelog.generated.v0.30.0-beta.2.fac2c",
+          "commitHash": "fac2c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/fac2c421",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.22.3",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.22.2...v0.22.3",

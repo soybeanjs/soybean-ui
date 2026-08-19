@@ -1,6 +1,6 @@
 {
   "name": "@soybeanjs/ui-uno",
-  "version": "0.30.0-beta.1",
+  "version": "0.30.0-beta.2",
   "description": "unocss preset for Soybean UI",
   "homepage": "https://github.com/soybeanjs/soybean-ui/tree/main/packages/unocss",
   "bugs": {
