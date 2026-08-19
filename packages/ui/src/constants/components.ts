@@ -83,6 +83,7 @@ export const components = {
   themeModeSelect: ['SThemeModeSelect'],
   themeModeSwitch: ['SThemeModeSwitch'],
   timeField: ['STimeField'],
+  timeline: ['STimeline', 'STimelineItem'],
   timeRangeField: ['STimeRangeField'],
   toast: ['SToastProvider'],
   toggle: ['SToggle'],

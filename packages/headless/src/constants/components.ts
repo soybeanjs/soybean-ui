@@ -506,6 +506,7 @@ export const components = {
   ],
   textarea: ['TextareaCompact', 'TextareaRoot', 'TextareaControl', 'TextareaClear', 'TextareaCounter'],
   timeField: ['TimeFieldCompact', 'TimeFieldRoot', 'TimeFieldInput'],
+  timeline: ['TimelineRoot', 'TimelineItem', 'TimelineSeparator', 'TimelineDot', 'TimelineContent'],
   timeRangeField: ['TimeRangeFieldCompact', 'TimeRangeFieldRoot', 'TimeRangeFieldInput'],
   toast: ['Toaster', 'ToastProvider'],
   toggle: ['Toggle'],

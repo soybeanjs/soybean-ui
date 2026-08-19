@@ -8622,6 +8622,29 @@
         },
         "timerangefieldui": "UI class overrides for the TimeRangeField component."
       },
+      "packages_headless_src_components_timeline_types": {
+        "timelinecontentprops": {
+          "props": "Properties for the TimelineContent component."
+        },
+        "timelinedotprops": {
+          "props": "Properties for the TimelineDot component."
+        },
+        "timelinemode": "The item placement mode of a vertical timeline.",
+        "timelineorientation": "The layout orientation of a timeline.",
+        "timelinerootprops": {
+          "members": {
+            "dir": "The reading direction of the timeline.",
+            "mode": "The item placement mode. Only applies to the vertical orientation.",
+            "orientation": "The layout orientation of the timeline.",
+            "reverse": "Reverse the visual order of the items."
+          },
+          "props": "Properties for the TimelineRoot component."
+        },
+        "timelineseparatorprops": {
+          "props": "Properties for the TimelineSeparator component."
+        },
+        "timelineui": "UI class overrides for the Timeline component."
+      },
       "packages_headless_src_components_toast_types": {
         "toasterprops": {
           "members": {
@@ -13497,6 +13520,26 @@
             "trailing": "Custom content for the trailing slot."
           },
           "slots": "Slots for the TimeRangeField component."
+        }
+      },
+      "packages_ui_src_components_timeline_types": {
+        "timelineitemprops": {
+          "members": {
+            "color": "The color of the dot marker. Accepts a theme color key or any CSS color.",
+            "label": "Timestamp or label text rendered in the label column."
+          },
+          "props": "Properties for the TimelineItem component."
+        },
+        "timelineprops": {
+          "members": {
+            "class": "root class",
+            "dir": "The reading direction of the timeline.",
+            "mode": "The item placement mode. Only applies to the vertical orientation.",
+            "orientation": "The layout orientation of the timeline.",
+            "reverse": "Reverse the visual order of the items.",
+            "ui": "Per-slot class overrides for the component."
+          },
+          "props": "Properties for the Timeline component."
         }
       },
       "packages_ui_src_components_toast_types": {

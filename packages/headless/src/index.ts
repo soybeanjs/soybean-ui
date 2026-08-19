@@ -82,6 +82,7 @@ export * from './components/tags-input';
 export * from './components/textarea';
 export * from './components/time-field';
 export * from './components/time-range-field';
+export * from './components/timeline';
 export * from './components/toast';
 export * from './components/toolbar';
 export * from './components/toggle';

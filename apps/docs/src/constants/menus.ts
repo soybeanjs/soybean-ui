@@ -126,6 +126,7 @@ export const menuData: MenuData[] = [
       'statistic',
       'tag',
       'table',
+      'timeline',
       'virtualizer',
       'watermark'
     ]

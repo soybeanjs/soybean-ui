@@ -1,0 +1,342 @@
+{
+  "component": "timeline",
+  "symbols": {
+    "Timeline": {
+      "props": {
+        "kind": "props",
+        "name": "TimelineProps",
+        "type": "Interface TimelineProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<TimelineUi>; orientation?: TimelineOrientation; mode?: TimelineMode; reverse?: boolean; dir?: Direction }",
+        "description": "Properties for the Timeline component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_timeline_types.timelineprops.props",
+        "sourcePath": "packages/ui/src/components/timeline/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_src_components_timeline_types.timelineprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/timeline/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<TimelineUi>",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_timeline_types.timelineprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/timeline/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TimelineUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; item: ClassValue; content: ClassValue; label: ClassValue; separator: ClassValue; dot: ClassValue; }",
+                "resolvedType": null,
+                "description": "UI class overrides for the Timeline component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_timeline_types.timelineui",
+                "sourcePath": "packages/headless/src/components/timeline/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "orientation",
+            "type": "TimelineOrientation",
+            "required": false,
+            "description": "The layout orientation of the timeline.",
+            "descriptionKey": "api.generated.packages_ui_src_components_timeline_types.timelineprops.members.orientation",
+            "default": "'vertical'",
+            "inheritedFrom": "orientation",
+            "sourcePath": "packages/headless/src/components/timeline/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TimelineOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "The layout orientation of a timeline.",
+                "descriptionKey": "api.generated.packages_headless_src_components_timeline_types.timelineorientation",
+                "sourcePath": "packages/headless/src/components/timeline/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "mode",
+            "type": "TimelineMode",
+            "required": false,
+            "description": "The item placement mode. Only applies to the vertical orientation.",
+            "descriptionKey": "api.generated.packages_ui_src_components_timeline_types.timelineprops.members.mode",
+            "default": "'left'",
+            "inheritedFrom": "mode",
+            "sourcePath": "packages/headless/src/components/timeline/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TimelineMode",
+                "kind": "typeAlias",
+                "type": "'right' | 'left' | 'alternate'",
+                "resolvedType": "'right' | 'left' | 'alternate'",
+                "description": "The item placement mode of a vertical timeline.",
+                "descriptionKey": "api.generated.packages_headless_src_components_timeline_types.timelinemode",
+                "sourcePath": "packages/headless/src/components/timeline/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "reverse",
+            "type": "boolean",
+            "required": false,
+            "description": "Reverse the visual order of the items.",
+            "descriptionKey": "api.generated.packages_ui_src_components_timeline_types.timelineprops.members.reverse",
+            "default": null,
+            "inheritedFrom": "reverse",
+            "sourcePath": "packages/headless/src/components/timeline/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the timeline.",
+            "descriptionKey": "api.generated.packages_ui_src_components_timeline_types.timelineprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/timeline/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TimelineContent": {
+      "props": {
+        "kind": "props",
+        "name": "TimelineContentProps",
+        "type": "Interface TimelineContentProps",
+        "resolvedType": null,
+        "description": "Properties for the TimelineContent component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_timeline_types.timelinecontentprops.props",
+        "sourcePath": "packages/headless/src/components/timeline/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TimelineDot": {
+      "props": {
+        "kind": "props",
+        "name": "TimelineDotProps",
+        "type": "Interface TimelineDotProps",
+        "resolvedType": null,
+        "description": "Properties for the TimelineDot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_timeline_types.timelinedotprops.props",
+        "sourcePath": "packages/headless/src/components/timeline/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TimelineItem": {
+      "props": {
+        "kind": "props",
+        "name": "TimelineItemProps",
+        "type": "Interface TimelineItemProps",
+        "resolvedType": "{ color?: string; label?: string }",
+        "description": "Properties for the TimelineItem component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_timeline_types.timelineitemprops.props",
+        "sourcePath": "packages/ui/src/components/timeline/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "color",
+            "type": "string",
+            "required": false,
+            "description": "The color of the dot marker. Accepts a theme color key or any CSS color.",
+            "descriptionKey": "api.generated.packages_ui_src_components_timeline_types.timelineitemprops.members.color",
+            "default": null,
+            "inheritedFrom": "_TimelineItemProps.color",
+            "sourcePath": "packages/headless/src/components/timeline/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "required": false,
+            "description": "Timestamp or label text rendered in the label column.",
+            "descriptionKey": "api.generated.packages_ui_src_components_timeline_types.timelineitemprops.members.label",
+            "default": null,
+            "inheritedFrom": "_TimelineItemProps.label",
+            "sourcePath": "packages/headless/src/components/timeline/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TimelineRoot": {
+      "props": {
+        "kind": "props",
+        "name": "TimelineRootProps",
+        "type": "Interface TimelineRootProps",
+        "resolvedType": "{ orientation?: TimelineOrientation; mode?: TimelineMode; reverse?: boolean; dir?: Direction }",
+        "description": "Properties for the TimelineRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_timeline_types.timelinerootprops.props",
+        "sourcePath": "packages/headless/src/components/timeline/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "orientation",
+            "type": "TimelineOrientation",
+            "required": false,
+            "description": "The layout orientation of the timeline.",
+            "descriptionKey": "api.generated.packages_headless_src_components_timeline_types.timelinerootprops.members.orientation",
+            "default": "'vertical'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/timeline/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TimelineOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "The layout orientation of a timeline.",
+                "descriptionKey": "api.generated.packages_headless_src_components_timeline_types.timelineorientation",
+                "sourcePath": "packages/headless/src/components/timeline/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "mode",
+            "type": "TimelineMode",
+            "required": false,
+            "description": "The item placement mode. Only applies to the vertical orientation.",
+            "descriptionKey": "api.generated.packages_headless_src_components_timeline_types.timelinerootprops.members.mode",
+            "default": "'left'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/timeline/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TimelineMode",
+                "kind": "typeAlias",
+                "type": "'right' | 'left' | 'alternate'",
+                "resolvedType": "'right' | 'left' | 'alternate'",
+                "description": "The item placement mode of a vertical timeline.",
+                "descriptionKey": "api.generated.packages_headless_src_components_timeline_types.timelinemode",
+                "sourcePath": "packages/headless/src/components/timeline/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "reverse",
+            "type": "boolean",
+            "required": false,
+            "description": "Reverse the visual order of the items.",
+            "descriptionKey": "api.generated.packages_headless_src_components_timeline_types.timelinerootprops.members.reverse",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/timeline/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the timeline.",
+            "descriptionKey": "api.generated.packages_headless_src_components_timeline_types.timelinerootprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/timeline/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TimelineSeparator": {
+      "props": {
+        "kind": "props",
+        "name": "TimelineSeparatorProps",
+        "type": "Interface TimelineSeparatorProps",
+        "resolvedType": null,
+        "description": "Properties for the TimelineSeparator component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_timeline_types.timelineseparatorprops.props",
+        "sourcePath": "packages/headless/src/components/timeline/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

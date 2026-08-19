@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T09:38:04.791Z",
+  "generatedAt": "2026-08-19T09:44:24.501Z",
   "packages": {
     "ui": {
       "components": {
@@ -979,6 +979,11 @@
           "component": "time-range-field",
           "file": "time-range-field.json",
           "symbols": ["TimeRangeField", "TimeRangeFieldCompact", "TimeRangeFieldInput", "TimeRangeFieldRoot"]
+        },
+        "timeline": {
+          "component": "timeline",
+          "file": "timeline.json",
+          "symbols": ["Timeline", "TimelineContent", "TimelineDot", "TimelineItem", "TimelineRoot", "TimelineSeparator"]
         },
         "toast": {
           "component": "toast",

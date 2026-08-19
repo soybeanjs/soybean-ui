@@ -8622,6 +8622,29 @@
         },
         "timerangefieldui": "TimeRangeField 组件的 UI 类重载。"
       },
+      "packages_headless_src_components_timeline_types": {
+        "timelinecontentprops": {
+          "props": "TimelineContent 组件的属性。"
+        },
+        "timelinedotprops": {
+          "props": "TimelineDot 组件的属性。"
+        },
+        "timelinemode": "垂直时间轴的项目排列模式。",
+        "timelineorientation": "时间轴的布局方向。",
+        "timelinerootprops": {
+          "members": {
+            "dir": "时间轴的阅读方向。",
+            "mode": "项目排列模式。仅适用于纵向布局。",
+            "orientation": "时间轴的布局方向。",
+            "reverse": "将各项的视觉顺序逆转。"
+          },
+          "props": "TimelineRoot 组件的属性。"
+        },
+        "timelineseparatorprops": {
+          "props": "TimelineSeparator 组件的属性。"
+        },
+        "timelineui": "Timeline 组件的 UI 类重写。"
+      },
       "packages_headless_src_components_toast_types": {
         "toasterprops": {
           "members": {
@@ -13497,6 +13520,26 @@
             "trailing": "尾部槽位的自定义内容。"
           },
           "slots": "TimeRangeField 组件的槽位。"
+        }
+      },
+      "packages_ui_src_components_timeline_types": {
+        "timelineitemprops": {
+          "members": {
+            "color": "点标记的颜色。支持主题颜色代码或任何 CSS 颜色。",
+            "label": "标签列中渲染的时间戳或标签文本。"
+          },
+          "props": "TimelineItem 组件的属性。"
+        },
+        "timelineprops": {
+          "members": {
+            "class": "根类",
+            "dir": "时间轴的阅读方向。",
+            "mode": "项目排列模式。仅适用于纵向布局。",
+            "orientation": "时间轴的布局方向。",
+            "reverse": "将各项的视觉顺序逆转。",
+            "ui": "该组件的按槽位类重写。"
+          },
+          "props": "Timeline 组件的属性。"
         }
       },
       "packages_ui_src_components_toast_types": {

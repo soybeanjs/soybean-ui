@@ -524,6 +524,11 @@ import {
   TimeFieldCompact,
   TimeFieldInput,
   TimeFieldRoot,
+  TimelineContent,
+  TimelineDot,
+  TimelineItem,
+  TimelineRoot,
+  TimelineSeparator,
   TimeRangeFieldCompact,
   TimeRangeFieldInput,
   TimeRangeFieldRoot,
@@ -1883,6 +1888,20 @@ export const TimeRangeField = {
   Compact: typeof TimeRangeFieldCompact;
   Root: typeof TimeRangeFieldRoot;
   Input: typeof TimeRangeFieldInput;
+};
+
+export const Timeline = {
+  Root: TimelineRoot,
+  Item: TimelineItem,
+  Separator: TimelineSeparator,
+  Dot: TimelineDot,
+  Content: TimelineContent
+} as {
+  Root: typeof TimelineRoot;
+  Item: typeof TimelineItem;
+  Separator: typeof TimelineSeparator;
+  Dot: typeof TimelineDot;
+  Content: typeof TimelineContent;
 };
 
 export const Toast = {
