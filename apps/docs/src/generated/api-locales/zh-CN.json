@@ -9278,6 +9278,57 @@
           "props": "TreeVirtualizerRoot 组件的属性。"
         }
       },
+      "packages_headless_src_components_typography_types": {
+        "typographyparagraphemits": {
+          "callables": {
+            "copied": "当段落文本被复制时触发。"
+          },
+          "emits": "TypographyParagraph 组件的事件。"
+        },
+        "typographyparagraphprops": {
+          "members": {
+            "copyable": "段落文本是否提供“复制”按钮。",
+            "copytext": "当 `copyable` 时要复制的文本。默认为段落正文内容。"
+          },
+          "props": "TypographyParagraph 组件的属性。"
+        },
+        "typographyparagraphslotprops": {
+          "members": {
+            "copied": "段落文本是否为直接复制而来。",
+            "copy": "将段落文本复制到剪贴板。"
+          },
+          "slotprops": "由 TypographyParagraph 默认插槽暴露的插槽属性。"
+        },
+        "typographytextemits": {
+          "emits": "TypographyText 组件的事件。"
+        },
+        "typographytextprops": {
+          "members": {
+            "as": "该组件应渲染成的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传入的元素，并合并两者的属性与行为。",
+            "code": "渲染为内联 `<code>`。",
+            "delete": "渲染已删除的 `<del>`。",
+            "italic": "将斜体 `<em>` 呈现出来。",
+            "mark": "渲染时请使用高亮标记 `<mark>`。",
+            "strong": "将 `<strong>` 渲染为粗体。",
+            "type": "文本的语义类型（颜色）。",
+            "underline": "将带下划线的 `<u>` 渲染为相应形式。"
+          },
+          "props": "TypographyText 组件的属性。"
+        },
+        "typographytitleemits": {
+          "emits": "TypographyTitle 组件的事件。"
+        },
+        "typographytitleprops": {
+          "members": {
+            "as": "该组件应渲染成的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传入的元素，并合并两者的属性与行为。",
+            "level": "要渲染的标题级别（`h1`–`h6`）。"
+          },
+          "props": "TypographyTitle 组件的属性。"
+        },
+        "typographytype": "排版文本的语义类型（颜色）。"
+      },
       "packages_headless_src_components_virtualizer_types": {
         "virtualizercontentprops": {
           "members": {

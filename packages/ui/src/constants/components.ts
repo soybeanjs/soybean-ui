@@ -99,6 +99,7 @@ export const components = {
   tooltip: ['STooltip'],
   tree: ['STree', 'STreeVirtualizer', 'STreeItem', 'STreeVirtualizerItem'],
   treeMenu: ['STreeMenu', 'STreeMenuStyledItem'],
+  typography: ['STypographyTitle', 'STypographyParagraph', 'STypographyText'],
   virtualizer: ['SVirtualizer', 'SVirtualizerItem'],
   watermark: ['SWatermark']
 };

@@ -85,6 +85,7 @@ export * from './components/toolbar';
 export * from './components/toggle';
 export * from './components/toggle-group';
 export * from './components/tooltip';
+export * from './components/typography';
 export * from './components/theme-customizer';
 export * from './components/theme-mode-select';
 export * from './components/theme-mode-switch';

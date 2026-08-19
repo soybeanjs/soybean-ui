@@ -88,6 +88,7 @@ export * from './components/toolbar';
 export * from './components/toggle';
 export * from './components/toggle-group';
 export * from './components/tooltip';
+export * from './components/typography';
 export * from './components/tree';
 export * from './components/tree-menu';
 export * from './components/virtualizer';

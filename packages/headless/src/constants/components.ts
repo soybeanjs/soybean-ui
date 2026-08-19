@@ -543,6 +543,7 @@ export const components = {
     'TreeMenuCollapsible',
     'TreeMenuSub'
   ],
+  typography: ['TypographyTitle', 'TypographyParagraph', 'TypographyText'],
   virtualizer: ['VirtualizerRoot', 'VirtualizerContent', 'VirtualizerItem'],
   visuallyHidden: ['VisuallyHidden', 'VisuallyHiddenInput'],
   watermark: ['WatermarkCompact', 'WatermarkOverlay', 'WatermarkRoot']

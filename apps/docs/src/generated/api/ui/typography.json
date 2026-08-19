@@ -1,0 +1,351 @@
+{
+  "component": "typography",
+  "symbols": {
+    "TypographyParagraph": {
+      "props": {
+        "kind": "props",
+        "name": "TypographyParagraphProps",
+        "type": "Interface TypographyParagraphProps",
+        "resolvedType": "{ copyable?: boolean; copyText?: string }",
+        "description": "Properties for the TypographyParagraph component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographyparagraphprops.props",
+        "sourcePath": "packages/headless/src/components/typography/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "copyable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether a copy button is available for the paragraph text.",
+            "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographyparagraphprops.members.copyable",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/typography/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "copyText",
+            "type": "string",
+            "required": false,
+            "description": "The text to copy when `copyable`. Defaults to the paragraph text content.",
+            "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographyparagraphprops.members.copytext",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/typography/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TypographyParagraphEmits",
+        "type": "TypeAlias TypographyParagraphEmits",
+        "resolvedType": "{ copied: [text: string] }",
+        "description": "Events for the TypographyParagraph component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographyparagraphemits.emits",
+        "sourcePath": "packages/headless/src/components/typography/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "copied",
+            "type": "[text: string]",
+            "parameters": "text: string",
+            "required": true,
+            "description": "Emitted when the paragraph text has been copied.",
+            "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographyparagraphemits.callables.copied",
+            "sourcePath": "packages/headless/src/components/typography/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "TypographyParagraphSlotProps",
+        "type": "Interface TypographyParagraphSlotProps",
+        "resolvedType": "{ copied: boolean; copy: () => Promise<void> }",
+        "description": "Slot props exposed by the TypographyParagraph default slot.",
+        "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographyparagraphslotprops.slotprops",
+        "sourcePath": "packages/headless/src/components/typography/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "copied",
+            "type": "boolean",
+            "required": true,
+            "description": "Whether the paragraph text was just copied.",
+            "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographyparagraphslotprops.members.copied",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/typography/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "copy",
+            "type": "() => Promise<void>",
+            "required": true,
+            "description": "Copies the paragraph text to the clipboard.",
+            "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographyparagraphslotprops.members.copy",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/typography/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TypographyText": {
+      "props": {
+        "kind": "props",
+        "name": "TypographyTextProps",
+        "type": "Interface TypographyTextProps",
+        "resolvedType": "{ type?: TypographyType; code?: boolean; mark?: boolean; underline?: boolean; delete?: boolean; strong?: boolean; italic?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the TypographyText component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographytextprops.props",
+        "sourcePath": "packages/headless/src/components/typography/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "type",
+            "type": "TypographyType",
+            "required": false,
+            "description": "The semantic type (color) of the text.",
+            "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographytextprops.members.type",
+            "default": "'default'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/typography/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TypographyType",
+                "kind": "typeAlias",
+                "type": "'secondary' | 'success' | 'warning' | 'TypographyText' | 'danger'",
+                "resolvedType": "'secondary' | 'success' | 'warning' | 'TypographyText' | 'danger'",
+                "description": "The semantic type (color) of a typography text.",
+                "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographytype",
+                "sourcePath": "packages/headless/src/components/typography/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "code",
+            "type": "boolean",
+            "required": false,
+            "description": "Render as inline `<code>`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographytextprops.members.code",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/typography/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "mark",
+            "type": "boolean",
+            "required": false,
+            "description": "Render with a highlight `<mark>`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographytextprops.members.mark",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/typography/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "underline",
+            "type": "boolean",
+            "required": false,
+            "description": "Render underlined `<u>`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographytextprops.members.underline",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/typography/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "delete",
+            "type": "boolean",
+            "required": false,
+            "description": "Render deleted `<del>`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographytextprops.members.delete",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/typography/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "strong",
+            "type": "boolean",
+            "required": false,
+            "description": "Render bold `<strong>`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographytextprops.members.strong",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/typography/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "italic",
+            "type": "boolean",
+            "required": false,
+            "description": "Render italic `<em>`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographytextprops.members.italic",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/typography/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographytextprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographytextprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TypographyTextEmits",
+        "type": "TypeAlias TypographyTextEmits: Record<string, never>",
+        "resolvedType": "{ [x: string]: never; }",
+        "description": "Events for the TypographyText component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographytextemits.emits",
+        "sourcePath": "packages/headless/src/components/typography/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TypographyTitle": {
+      "props": {
+        "kind": "props",
+        "name": "TypographyTitleProps",
+        "type": "Interface TypographyTitleProps",
+        "resolvedType": "{ level?: 1 | 2 | 3 | 4 | 5 | 6; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the TypographyTitle component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographytitleprops.props",
+        "sourcePath": "packages/headless/src/components/typography/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "level",
+            "type": "1 | 2 | 3 | 4 | 5 | 6",
+            "required": false,
+            "description": "The heading level to render (`h1`–`h6`).",
+            "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographytitleprops.members.level",
+            "default": "1",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/typography/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographytitleprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographytitleprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TypographyTitleEmits",
+        "type": "TypeAlias TypographyTitleEmits: Record<string, never>",
+        "resolvedType": "{ [x: string]: never; }",
+        "description": "Events for the TypographyTitle component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographytitleemits.emits",
+        "sourcePath": "packages/headless/src/components/typography/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

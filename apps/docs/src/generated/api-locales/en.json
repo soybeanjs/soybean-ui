@@ -9278,6 +9278,57 @@
           "props": "Properties for the TreeVirtualizerRoot component."
         }
       },
+      "packages_headless_src_components_typography_types": {
+        "typographyparagraphemits": {
+          "callables": {
+            "copied": "Emitted when the paragraph text has been copied."
+          },
+          "emits": "Events for the TypographyParagraph component."
+        },
+        "typographyparagraphprops": {
+          "members": {
+            "copyable": "Whether a copy button is available for the paragraph text.",
+            "copytext": "The text to copy when `copyable`. Defaults to the paragraph text content."
+          },
+          "props": "Properties for the TypographyParagraph component."
+        },
+        "typographyparagraphslotprops": {
+          "members": {
+            "copied": "Whether the paragraph text was just copied.",
+            "copy": "Copies the paragraph text to the clipboard."
+          },
+          "slotprops": "Slot props exposed by the TypographyParagraph default slot."
+        },
+        "typographytextemits": {
+          "emits": "Events for the TypographyText component."
+        },
+        "typographytextprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "code": "Render as inline `<code>`.",
+            "delete": "Render deleted `<del>`.",
+            "italic": "Render italic `<em>`.",
+            "mark": "Render with a highlight `<mark>`.",
+            "strong": "Render bold `<strong>`.",
+            "type": "The semantic type (color) of the text.",
+            "underline": "Render underlined `<u>`."
+          },
+          "props": "Properties for the TypographyText component."
+        },
+        "typographytitleemits": {
+          "emits": "Events for the TypographyTitle component."
+        },
+        "typographytitleprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "level": "The heading level to render (`h1`–`h6`)."
+          },
+          "props": "Properties for the TypographyTitle component."
+        },
+        "typographytype": "The semantic type (color) of a typography text."
+      },
       "packages_headless_src_components_virtualizer_types": {
         "virtualizercontentprops": {
           "members": {

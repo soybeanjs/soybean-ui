@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T09:44:24.501Z",
+  "generatedAt": "2026-08-19T09:52:21.248Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -1038,6 +1038,11 @@
         "TreeMenuStyledItem",
         "TreeMenuSub"
       ]
+    },
+    "typography": {
+      "component": "typography",
+      "file": "typography.json",
+      "symbols": ["TypographyParagraph", "TypographyText", "TypographyTitle"]
     },
     "virtualizer": {
       "component": "virtualizer",

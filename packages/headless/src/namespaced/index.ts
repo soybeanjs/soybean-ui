@@ -566,6 +566,9 @@ import {
   TreeRoot,
   TreeVirtualizerItem,
   TreeVirtualizerRoot,
+  TypographyParagraph,
+  TypographyText,
+  TypographyTitle,
   VirtualizerContent,
   VirtualizerItem,
   VirtualizerRoot,
@@ -1954,6 +1957,16 @@ export const Tooltip = {
   Positioner: typeof TooltipPositioner;
   Popup: typeof TooltipPopup;
   Arrow: typeof TooltipArrow;
+};
+
+export const Typography = {
+  Title: TypographyTitle,
+  Paragraph: TypographyParagraph,
+  Text: TypographyText
+} as {
+  Title: typeof TypographyTitle;
+  Paragraph: typeof TypographyParagraph;
+  Text: typeof TypographyText;
 };
 
 export const Tree = {
