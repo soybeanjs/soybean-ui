@@ -964,6 +964,10 @@
     "sources": {
       "curated": "Curated mapping"
     },
+    "notes": {
+      "breaking": "Breaking changes",
+      "info": "Release note"
+    },
     "empty": {
       "title": "No component-specific release notes yet",
       "desc": "Release entries appear here when CHANGELOG items are scoped to this component or manually mapped."
@@ -982,6 +986,9 @@
     "kicker": "Release overview",
     "title": "Releases",
     "summary": "Track recent releases, see which components changed, and jump directly into the parts of the system most relevant to your upgrade.",
+    "badges": {
+      "new": "New"
+    },
     "filter": {
       "title": "Filter by component",
       "desc": "Narrow the release timeline to the components you actually use, then jump back into their docs from the matched entries.",

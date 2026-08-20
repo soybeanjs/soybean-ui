@@ -4,6 +4,8 @@ import process from 'node:process';
 import { kebabCase } from '@soybeanjs/utils';
 import { components as headlessComponents } from '../packages/headless/src/constants/components';
 import { runCliModule, writeGeneratedJsonDirectory } from './_shared';
+import { releaseIntroducedComponents, releaseChangelogNotes } from './changelog-notes';
+import type { ReleaseChangelogNoteSource } from './changelog-notes';
 import { componentChangelogOverrides } from './changelog-overrides';
 
 type ChangelogEntryType = 'feature' | 'fix' | 'optimization' | 'refactor' | 'docs' | 'chore' | 'style';
@@ -55,6 +57,12 @@ interface GeneratedReleaseChangelogEntry extends GeneratedComponentChangelogEntr
   components: string[];
 }
 
+interface GeneratedReleaseChangelogNote {
+  type: ReleaseChangelogNoteSource['type'];
+  summary: string;
+  summaryKey: string;
+}
+
 interface GeneratedReleaseChangelogVersion {
   version: string;
   compareUrl: string;
@@ -62,7 +70,9 @@ interface GeneratedReleaseChangelogVersion {
   entryCount: number;
   componentCount: number;
   components: string[];
+  newComponents: string[];
   typeCounts: Partial<Record<ChangelogEntryType, number>>;
+  notes: GeneratedReleaseChangelogNote[];
   entries: GeneratedReleaseChangelogEntry[];
 }
 
@@ -436,11 +446,31 @@ function createReleaseDocument(
         entryCount: entries.length,
         componentCount: components.length,
         components,
+        newComponents: resolveIntroducedComponents(versionBlock.version),
         typeCounts,
+        notes: resolveReleaseNotes(versionBlock.version),
         entries
       } satisfies GeneratedReleaseChangelogVersion;
     })
   };
+}
+
+function resolveIntroducedComponents(version: string): string[] {
+  return releaseIntroducedComponents[version] ?? [];
+}
+
+function resolveReleaseNotes(version: string): GeneratedReleaseChangelogNote[] {
+  const notes = releaseChangelogNotes[version];
+
+  if (!notes?.length) {
+    return [];
+  }
+
+  return notes.map((note, index) => ({
+    type: note.type,
+    summary: note.summary,
+    summaryKey: `changelog.generated.note.${version}.${index}`
+  }));
 }
 
 function resolveEntryComponents(entry: ParsedChangelogEntry): string[] {

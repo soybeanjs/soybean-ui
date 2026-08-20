@@ -2,7 +2,11 @@
 import { pascalCase } from '@soybeanjs/utils';
 import { useGeneratedI18n } from '~/composables/use-generated-i18n';
 import { getReleaseChangelogDocument } from '~/shared/generated-changelog';
-import type { GeneratedChangelogEntryType, GeneratedReleaseChangelogVersion } from '~/shared/generated-changelog';
+import type {
+  GeneratedChangelogEntryType,
+  GeneratedReleaseChangelogNoteType,
+  GeneratedReleaseChangelogVersion
+} from '~/shared/generated-changelog';
 
 const route = useRoute();
 const router = useRouter();
@@ -111,6 +115,11 @@ const typeClassMap: Record<GeneratedChangelogEntryType, string> = {
   style: 'border-blue/25 bg-blue/10 text-blue'
 };
 
+const noteConfigMap: Record<GeneratedReleaseChangelogNoteType, { color: 'warning' | 'info'; icon: string }> = {
+  breaking: { color: 'warning', icon: 'lucide:triangle-alert' },
+  info: { color: 'info', icon: 'lucide:info' }
+};
+
 const actionLinks = computed(() => {
   const links = [];
 
@@ -143,6 +152,22 @@ function resolveTypeLabel(type: GeneratedChangelogEntryType) {
 
 function resolveSummary(summary: string, summaryKey: string | null) {
   return resolveGeneratedText(summary, summaryKey);
+}
+
+function resolveNoteConfig(type: GeneratedReleaseChangelogNoteType) {
+  return noteConfigMap[type];
+}
+
+function resolveNoteLabel(type: GeneratedReleaseChangelogNoteType) {
+  return t(`changelog.notes.${type}`);
+}
+
+function resolveNoteSummary(summary: string, summaryKey: string) {
+  return resolveGeneratedText(summary, summaryKey);
+}
+
+function isNewComponent(release: GeneratedReleaseChangelogVersion, component: string) {
+  return release.newComponents.includes(component);
 }
 
 type ReleaseEntry = GeneratedReleaseChangelogVersion['entries'][number];
@@ -532,8 +557,15 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                   :to="toComponentLink(component)"
                   shape="rounded"
                   variant="pure"
+                  class="inline-flex items-center gap-2"
                 >
                   {{ formatComponentLabel(component) }}
+                  <span
+                    v-if="isNewComponent(latestRelease, component)"
+                    class="rounded-full bg-primary/15 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-primary"
+                  >
+                    {{ t('releases_page.badges.new') }}
+                  </span>
                 </SButtonLink>
 
                 <span
@@ -689,6 +721,18 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
 
               <template #default>
                 <div class="space-y-5">
+                  <div v-if="release.notes.length" class="space-y-3">
+                    <SAlert
+                      v-for="note in release.notes"
+                      :key="note.summaryKey"
+                      :color="resolveNoteConfig(note.type).color"
+                      variant="soft"
+                      :icon="resolveNoteConfig(note.type).icon"
+                      :title="resolveNoteLabel(note.type)"
+                      :description="resolveNoteSummary(note.summary, note.summaryKey)"
+                    />
+                  </div>
+
                   <div class="flex flex-wrap gap-2">
                     <span
                       v-for="item in getOrderedTypeCounts(release)"
@@ -712,8 +756,15 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                         :to="toComponentLink(component)"
                         variant="pure"
                         shape="rounded"
+                        class="inline-flex items-center gap-2"
                       >
                         {{ formatComponentLabel(component) }}
+                        <span
+                          v-if="isNewComponent(release, component)"
+                          class="rounded-full bg-primary/15 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-primary"
+                        >
+                          {{ t('releases_page.badges.new') }}
+                        </span>
                       </SButtonLink>
 
                       <span

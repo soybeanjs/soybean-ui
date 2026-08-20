@@ -1874,8 +1874,74 @@
           "path": "packages/ui/src/components/watermark/index.ts",
           "type": "registry:lib"
         }
-      ],
-      "package": "ui"
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils", "@unovis/vue", "@unovis/ts"],
+      "files": [
+        {
+          "path": "packages/chart/src/components/chart-container/chart-container.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/chart/src/components/chart-container/index.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/chart/src/components/chart-tooltip-content/chart-tooltip-content.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/chart/src/components/chart-tooltip-content/index.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/chart/src/components/chart-legend-content/chart-legend-content.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/chart/src/components/chart-legend-content/index.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/chart/src/components/chart-style/chart-style.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/chart/src/components/chart-style/index.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/chart/src/context.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/chart/src/types/index.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/chart/src/utils/component-to-string.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/chart/src/utils/chart-style.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/chart/src/styles/chart-container.ts",
+          "type": "registry:style"
+        },
+        {
+          "path": "packages/chart/src/styles/chart-tooltip-content.ts",
+          "type": "registry:style"
+        },
+        {
+          "path": "packages/chart/src/styles/chart-legend-content.ts",
+          "type": "registry:style"
+        }
+      ]
     }
   ]
 }

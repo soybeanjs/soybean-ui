@@ -31,6 +31,14 @@ export interface GeneratedReleaseChangelogEntry extends GeneratedChangelogEntry 
   components: string[];
 }
 
+export type GeneratedReleaseChangelogNoteType = 'breaking' | 'info';
+
+export interface GeneratedReleaseChangelogNote {
+  type: GeneratedReleaseChangelogNoteType;
+  summary: string;
+  summaryKey: string;
+}
+
 export interface GeneratedReleaseChangelogVersion {
   version: string;
   compareUrl: string;
@@ -38,7 +46,9 @@ export interface GeneratedReleaseChangelogVersion {
   entryCount: number;
   componentCount: number;
   components: string[];
+  newComponents: string[];
   typeCounts: Partial<Record<GeneratedChangelogEntryType, number>>;
+  notes: GeneratedReleaseChangelogNote[];
   entries: GeneratedReleaseChangelogEntry[];
 }
 

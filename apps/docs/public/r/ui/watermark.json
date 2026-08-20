@@ -1,6 +1,5 @@
 {
   "name": "ui/watermark",
-  "package": "ui",
   "dependencies": ["@soybeanjs/headless"],
   "files": [
     {

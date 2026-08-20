@@ -179,7 +179,7 @@ export const sbeanBaseConfigSchema = v.object({
     components: v.string(),
     composables: v.string()
   }),
-  /** Theme token package, e.g. `@soybeanjs/shadcn-theme`. */
+  /** Theme token package, e.g. `@soybeanjs/theme`. */
   themePackage: v.string(),
   /** Resolver module path (relative to project root), e.g. `./src/ui/resolver`. */
   resolver: v.string(),

@@ -63,27 +63,64 @@ import { SConfigProvider } from '@soybeanjs/ui';
 }
 ```
 
-### Complete preset
+### Custom color token overrides
 
-When `preset.light` provides **every** color token (each key of `ColorTokens`), the preset is considered a "complete preset". You can then enable the `complete` option to skip the built-in base style derivation (base / primary / sidebar) and apply the provided tokens as the final theme directly.
+To override specific color tokens per mode, use the `overrides` option. Tokens in `overrides` have the highest priority and are applied on top of the derived base / primary / feedback / chart / sidebar tokens.
 
 ```ts
 createTheme({
-  preset: {
-    light: {/* all 40 color tokens */},
-    dark: {/* optional; missing keys are derived from light */}
-  },
-  complete: true
+  base: 'gray',
+  primary: 'violet',
+  radius: '0.625rem',
+  // override any color token for light / dark
+  overrides: {
+    light: {
+      background: 'oklch(100% 0 0)',
+      foreground: 'stone.950',
+      primary: 'violet.700',
+      ring: 'violet.500',
+      border: 'stone.200',
+      input: 'stone.200'
+    },
+    dark: {
+      background: 'stone.950',
+      foreground: 'stone.50',
+      primary: 'violet.400',
+      ring: 'violet.600',
+      border: 'oklch(100% 0 0 / 0.1)',
+      input: 'oklch(100% 0 0 / 0.15)'
+    }
+  }
 });
 ```
 
 **Notes and caveats:**
 
-- **Detection**: `complete` only takes effect when `preset` is mode-split (has `light` / `dark` layers) and `light` defines every color token. A flat `ThemeTokens` or a partial `light` never triggers the skip.
-- **Optimization only**: for a complete `light`, the resolved tokens are identical whether or not the derivation is skipped — `complete` just avoids redundant computation.
-- **`lightLevel` / `darkLevel` are ignored**: once the base derivation is skipped, these offsets no longer affect the result.
-- **Dark is still derived**: keys missing from `dark` are still derived from `light` via `deriveDarkFromLight`, so you don't have to fill them manually.
-- The `isCompleteThemePreset` helper reports whether a preset is complete.
+- **Dark is auto-derived**: any key missing from `dark` is derived from its light value via `deriveDarkFromLight`, so you only need to fill the differences.
+- **`SConfigProvider` `theme.preset`**: the provider accepts the same light / dark token object (or a `{ name }` reference to a stored preset) through the `theme.preset` prop, and resolves it into `overrides` before calling `createTheme`.
+
+```vue
+<template>
+  <SConfigProvider
+    :theme="{
+      base: 'gray',
+      primary: 'violet',
+      preset: {
+        light: {
+          background: 'oklch(100% 0 0)',
+          foreground: 'stone.950'
+        },
+        dark: {
+          background: 'stone.950',
+          foreground: 'stone.50'
+        }
+      }
+    }"
+  >
+    <App />
+  </SConfigProvider>
+</template>
+```
 
 ### Colors
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-20T07:00:56.432Z",
+  "generatedAt": "2026-08-20T11:31:38.804Z",
   "schemaVersion": 1,
   "releases": [
     {
@@ -9,10 +9,12 @@
       "entryCount": 3,
       "componentCount": 2,
       "components": ["calendar-range", "stepper"],
+      "newComponents": [],
       "typeCounts": {
         "style": 2,
         "docs": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "style",
@@ -56,11 +58,13 @@
       "entryCount": 3,
       "componentCount": 2,
       "components": ["dialog", "cascader"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "fix": 1,
         "docs": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -113,6 +117,14 @@
         "cascader",
         "toggle-group"
       ],
+      "newComponents": [
+        "cascader",
+        "rating",
+        "palette-picker",
+        "theme-customizer",
+        "theme-mode-select",
+        "theme-mode-switch"
+      ],
       "typeCounts": {
         "feature": 20,
         "fix": 15,
@@ -122,6 +134,13 @@
         "refactor": 12,
         "chore": 14
       },
+      "notes": [
+        {
+          "type": "breaking",
+          "summary": "This release ships a rebuilt theme system with renamed packages. @soybeanjs/shadcn-theme is now @soybeanjs/theme (createShadcnTheme → createTheme), and @soybeanjs/unocss-shadcn is now @soybeanjs/ui-uno (presetShadcn → presetUiUnocss, ShadcnPresetOptions → UiUnocssOptions). The theme menu config (menuColor / menuAccent) is removed, and custom color overrides now use `overrides: { light, dark }` instead of the legacy preset object (presets can also be passed through SConfigProvider `theme.preset`). Please update your dependencies and imports accordingly.",
+          "summaryKey": "changelog.generated.note.v0.30.0-beta.1.0"
+        }
+      ],
       "entries": [
         {
           "type": "feature",
@@ -1375,10 +1394,12 @@
       "entryCount": 4,
       "componentCount": 1,
       "components": ["config-provider"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 3,
         "style": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -1433,12 +1454,14 @@
       "entryCount": 4,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1,
         "optimization": 1,
         "style": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -1493,10 +1516,12 @@
       "entryCount": 2,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1,
         "optimization": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -1529,6 +1554,7 @@
       "entryCount": 87,
       "componentCount": 2,
       "components": ["config-provider", "navigation-menu"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 25,
         "fix": 10,
@@ -1537,6 +1563,7 @@
         "chore": 9,
         "style": 11
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -2504,9 +2531,11 @@
       "entryCount": 3,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 3
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -2550,12 +2579,14 @@
       "entryCount": 8,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 2,
         "optimization": 3,
         "refactor": 2,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -2654,10 +2685,12 @@
       "entryCount": 2,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "optimization": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -2690,12 +2723,14 @@
       "entryCount": 9,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1,
         "optimization": 5,
         "refactor": 2,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -2805,6 +2840,7 @@
       "entryCount": 8,
       "componentCount": 1,
       "components": ["config-provider"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 3,
         "fix": 1,
@@ -2812,6 +2848,7 @@
         "chore": 1,
         "style": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -2910,6 +2947,7 @@
       "entryCount": 18,
       "componentCount": 1,
       "components": ["config-provider"],
+      "newComponents": [],
       "typeCounts": {
         "refactor": 5,
         "feature": 2,
@@ -2918,6 +2956,7 @@
         "chore": 2,
         "style": 4
       },
+      "notes": [],
       "entries": [
         {
           "type": "refactor",
@@ -3126,6 +3165,7 @@
       "entryCount": 21,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "feature": 12,
         "fix": 3,
@@ -3133,6 +3173,7 @@
         "refactor": 2,
         "chore": 3
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -3374,10 +3415,12 @@
       "entryCount": 2,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -3410,9 +3453,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -3434,9 +3479,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -3458,9 +3505,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -3482,9 +3531,11 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["navigation-menu"],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -3517,6 +3568,7 @@
       "entryCount": 10,
       "componentCount": 1,
       "components": ["config-provider"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 3,
         "feature": 3,
@@ -3524,6 +3576,7 @@
         "style": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -3644,6 +3697,7 @@
       "entryCount": 8,
       "componentCount": 1,
       "components": ["affix"],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 1,
         "fix": 3,
@@ -3651,6 +3705,7 @@
         "refactor": 1,
         "chore": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -3749,11 +3804,13 @@
       "entryCount": 3,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "optimization": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -3797,10 +3854,12 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["link"],
+      "newComponents": [],
       "typeCounts": {
         "refactor": 1,
         "optimization": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "refactor",
@@ -3833,11 +3892,13 @@
       "entryCount": 7,
       "componentCount": 3,
       "components": ["date-range-picker", "link", "time-field"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 4,
         "feature": 2,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -3925,10 +3986,12 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["config-provider"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1,
         "docs": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -3961,9 +4024,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["table"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -3985,9 +4050,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -4009,9 +4076,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -4033,10 +4102,12 @@
       "entryCount": 2,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -4069,11 +4140,13 @@
       "entryCount": 5,
       "componentCount": 2,
       "components": ["color-picker", "tag"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 2,
         "optimization": 2,
         "refactor": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -4139,10 +4212,12 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["card"],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 1,
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -4175,11 +4250,13 @@
       "entryCount": 9,
       "componentCount": 2,
       "components": ["config-provider", "tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 4,
         "optimization": 2,
         "fix": 3
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -4289,9 +4366,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -4313,9 +4392,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -4337,10 +4418,12 @@
       "entryCount": 2,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -4373,9 +4456,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["link"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -4397,12 +4482,14 @@
       "entryCount": 9,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "feature": 2,
         "optimization": 3,
         "docs": 1,
         "chore": 3
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -4512,10 +4599,12 @@
       "entryCount": 6,
       "componentCount": 1,
       "components": ["watermark"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 2,
         "chore": 4
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -4592,9 +4681,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "chore",
@@ -4616,12 +4707,14 @@
       "entryCount": 10,
       "componentCount": 1,
       "components": ["watermark"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "optimization": 1,
         "chore": 6,
         "style": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -4742,6 +4835,7 @@
       "entryCount": 10,
       "componentCount": 1,
       "components": ["toggle"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 3,
         "feature": 1,
@@ -4749,6 +4843,7 @@
         "docs": 2,
         "chore": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -4869,9 +4964,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -4893,10 +4990,12 @@
       "entryCount": 2,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -4929,10 +5028,12 @@
       "entryCount": 2,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -4965,12 +5066,14 @@
       "entryCount": 5,
       "componentCount": 1,
       "components": ["toggle"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1,
         "optimization": 1,
         "docs": 2,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -5036,12 +5139,14 @@
       "entryCount": 5,
       "componentCount": 1,
       "components": ["button"],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 1,
         "refactor": 1,
         "docs": 1,
         "chore": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -5107,10 +5212,12 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["input-number"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1,
         "docs": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -5143,11 +5250,13 @@
       "entryCount": 5,
       "componentCount": 2,
       "components": ["dialog", "layout"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 2,
         "docs": 1,
         "chore": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -5213,9 +5322,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -5237,6 +5348,7 @@
       "entryCount": 17,
       "componentCount": 3,
       "components": ["input", "input-number", "password"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 5,
         "optimization": 1,
@@ -5244,6 +5356,7 @@
         "docs": 4,
         "chore": 3
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -5441,6 +5554,7 @@
       "entryCount": 7,
       "componentCount": 1,
       "components": ["accordion"],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 2,
         "feature": 1,
@@ -5448,6 +5562,7 @@
         "refactor": 1,
         "docs": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -5535,6 +5650,7 @@
       "entryCount": 11,
       "componentCount": 2,
       "components": ["menubar", "toolbar"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1,
         "chore": 2,
@@ -5544,6 +5660,7 @@
         "docs": 2,
         "style": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -5690,6 +5807,7 @@
         "tooltip",
         "radio-group"
       ],
+      "newComponents": [],
       "typeCounts": {
         "feature": 7,
         "fix": 8,
@@ -5699,6 +5817,7 @@
         "style": 4,
         "docs": 3
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -6160,6 +6279,7 @@
         "button",
         "toggle-group"
       ],
+      "newComponents": [],
       "typeCounts": {
         "feature": 22,
         "fix": 14,
@@ -6168,6 +6288,7 @@
         "docs": 1,
         "chore": 6
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -6915,6 +7036,7 @@
       "entryCount": 43,
       "componentCount": 9,
       "components": ["empty", "backtop", "input", "avatar", "badge", "carousel", "form", "button", "clipboard"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 10,
         "fix": 2,
@@ -6924,6 +7046,7 @@
         "docs": 5,
         "style": 5
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -7407,6 +7530,7 @@
       "entryCount": 37,
       "componentCount": 7,
       "components": ["date-picker", "config-provider", "hover-card", "calendar", "dialog", "popover", "anchor"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 8,
         "optimization": 8,
@@ -7416,6 +7540,7 @@
         "chore": 3,
         "style": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -7847,6 +7972,7 @@
         "popper",
         "autocomplete"
       ],
+      "newComponents": [],
       "typeCounts": {
         "feature": 4,
         "optimization": 9,
@@ -7855,6 +7981,7 @@
         "docs": 2,
         "chore": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -8085,9 +8212,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["layout"],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -8109,11 +8238,13 @@
       "entryCount": 3,
       "componentCount": 1,
       "components": ["bottom-sheet"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "optimization": 1,
         "refactor": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -8157,6 +8288,7 @@
       "entryCount": 7,
       "componentCount": 3,
       "components": ["table", "progress", "card"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "fix": 1,
@@ -8164,6 +8296,7 @@
         "style": 1,
         "chore": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -8251,10 +8384,12 @@
       "entryCount": 3,
       "componentCount": 1,
       "components": ["table"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 2,
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -8298,6 +8433,7 @@
       "entryCount": 9,
       "componentCount": 4,
       "components": ["kbd", "toast", "combobox", "color-picker"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 2,
         "fix": 2,
@@ -8306,6 +8442,7 @@
         "chore": 1,
         "style": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -8440,6 +8577,7 @@
         "clipboard",
         "editable"
       ],
+      "newComponents": [],
       "typeCounts": {
         "feature": 49,
         "fix": 17,
@@ -8449,6 +8587,7 @@
         "chore": 19,
         "style": 9
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -10131,9 +10270,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "style": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "style",
@@ -10170,6 +10311,7 @@
         "clipboard",
         "editable"
       ],
+      "newComponents": [],
       "typeCounts": {
         "feature": 13,
         "fix": 6,
@@ -10179,6 +10321,7 @@
         "chore": 2,
         "docs": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -10629,9 +10772,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["form"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -10669,6 +10814,7 @@
         "toggle-group",
         "progress"
       ],
+      "newComponents": [],
       "typeCounts": {
         "feature": 35,
         "fix": 10,
@@ -10678,6 +10824,7 @@
         "chore": 16,
         "style": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -11843,6 +11990,7 @@
       "entryCount": 8,
       "componentCount": 3,
       "components": ["toast", "tooltip", "menu"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "fix": 4,
@@ -11850,6 +11998,7 @@
         "optimization": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -11948,9 +12097,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["dialog"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -11972,9 +12123,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "chore",
@@ -11996,9 +12149,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["table"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -12020,9 +12175,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["table"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -12044,9 +12201,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["table"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -12068,9 +12227,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["button"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -12092,10 +12253,12 @@
       "entryCount": 3,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 2,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -12139,9 +12302,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["table"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -12163,6 +12328,7 @@
       "entryCount": 13,
       "componentCount": 1,
       "components": ["table"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 2,
         "fix": 1,
@@ -12171,6 +12337,7 @@
         "chore": 7,
         "docs": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -12324,6 +12491,7 @@
       "entryCount": 12,
       "componentCount": 1,
       "components": ["table"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 2,
         "refactor": 1,
@@ -12331,6 +12499,7 @@
         "chore": 7,
         "docs": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -12473,9 +12642,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -12497,9 +12668,11 @@
       "entryCount": 2,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -12532,9 +12705,11 @@
       "entryCount": 3,
       "componentCount": 1,
       "components": ["select"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 3
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -12578,10 +12753,12 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["dialog"],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -12614,10 +12791,12 @@
       "entryCount": 3,
       "componentCount": 2,
       "components": ["popover", "tooltip"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 2,
         "optimization": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -12661,9 +12840,11 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["dialog"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -12696,9 +12877,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["dialog"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -12720,9 +12903,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["dialog"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -12744,9 +12929,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["pagination"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -12768,9 +12955,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["pagination"],
+      "newComponents": [],
       "typeCounts": {
         "refactor": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "refactor",
@@ -12792,9 +12981,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["table"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -12816,9 +13007,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["card"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -12840,9 +13033,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["select"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -12864,9 +13059,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["dialog"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -12888,9 +13085,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["form"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -12912,10 +13111,12 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["card"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -12948,11 +13149,13 @@
       "entryCount": 4,
       "componentCount": 2,
       "components": ["card", "form"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "optimization": 1,
         "chore": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -13007,9 +13210,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["form"],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -13031,10 +13236,12 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["form"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -13067,10 +13274,12 @@
       "entryCount": 3,
       "componentCount": 2,
       "components": ["form", "select"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 2,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -13114,11 +13323,13 @@
       "entryCount": 7,
       "componentCount": 3,
       "components": ["layout", "command", "table"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 5,
         "optimization": 1,
         "docs": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -13206,6 +13417,7 @@
       "entryCount": 12,
       "componentCount": 2,
       "components": ["table", "checkbox"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "fix": 5,
@@ -13213,6 +13425,7 @@
         "chore": 3,
         "style": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -13355,10 +13568,12 @@
       "entryCount": 3,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 2,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -13412,6 +13627,7 @@
         "select",
         "tooltip"
       ],
+      "newComponents": [],
       "typeCounts": {
         "feature": 4,
         "fix": 4,
@@ -13419,6 +13635,7 @@
         "refactor": 2,
         "docs": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -13594,9 +13811,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -13618,9 +13837,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "refactor": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "refactor",
@@ -13642,10 +13863,12 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["config-provider"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -13678,9 +13901,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["page-tabs"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -13702,10 +13927,12 @@
       "entryCount": 2,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -13738,9 +13965,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["layout"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -13762,9 +13991,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["page-tabs"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -13786,9 +14017,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["page-tabs"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -13810,10 +14043,12 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["page-tabs"],
+      "newComponents": [],
       "typeCounts": {
         "refactor": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "refactor",
@@ -13846,9 +14081,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["layout"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -13870,9 +14107,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["layout"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -13894,9 +14133,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "chore",
@@ -13918,9 +14159,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -13942,7 +14185,9 @@
       "entryCount": 0,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {},
+      "notes": [],
       "entries": []
     },
     {
@@ -13952,12 +14197,14 @@
       "entryCount": 6,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "fix": 2,
         "optimization": 1,
         "chore": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -14034,9 +14281,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["tabs"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -14058,9 +14307,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -14082,11 +14333,13 @@
       "entryCount": 3,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "docs": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -14130,9 +14383,11 @@
       "entryCount": 2,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "feature": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -14165,9 +14420,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -14189,10 +14446,12 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["card"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1,
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -14225,10 +14484,12 @@
       "entryCount": 2,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -14261,9 +14522,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["page-tabs"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -14285,9 +14548,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["page-tabs"],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -14309,9 +14574,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["page-tabs"],
+      "newComponents": [],
       "typeCounts": {
         "refactor": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "refactor",
@@ -14333,11 +14600,13 @@
       "entryCount": 4,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "feature": 2,
         "fix": 1,
         "refactor": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -14392,10 +14661,12 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1,
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -14428,10 +14699,12 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["layout"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "optimization": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -14464,10 +14737,12 @@
       "entryCount": 2,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "refactor": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "refactor",
@@ -14500,10 +14775,12 @@
       "entryCount": 3,
       "componentCount": 2,
       "components": ["tree-menu", "menu"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 2,
         "optimization": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -14547,9 +14824,11 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -14582,9 +14861,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -14606,9 +14887,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -14630,9 +14913,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -14654,10 +14939,12 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1,
         "optimization": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -14690,9 +14977,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["link"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -14714,9 +15003,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["command"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -14738,9 +15029,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["command"],
+      "newComponents": [],
       "typeCounts": {
         "refactor": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "refactor",
@@ -14762,9 +15055,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "refactor": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "refactor",
@@ -14786,9 +15081,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -14810,9 +15107,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -14834,9 +15133,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["menu"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -14858,9 +15159,11 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -14893,9 +15196,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "refactor": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "refactor",
@@ -14917,9 +15222,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -14941,9 +15248,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -14965,10 +15274,12 @@
       "entryCount": 3,
       "componentCount": 1,
       "components": ["layout"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "fix": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -15012,9 +15323,11 @@
       "entryCount": 3,
       "componentCount": 2,
       "components": ["link", "tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "optimization": 3
       },
+      "notes": [],
       "entries": [
         {
           "type": "optimization",
@@ -15058,9 +15371,11 @@
       "entryCount": 1,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -15082,10 +15397,12 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -15118,9 +15435,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -15142,10 +15461,12 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["layout"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -15178,12 +15499,14 @@
       "entryCount": 6,
       "componentCount": 1,
       "components": ["link"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 2,
         "optimization": 2,
         "refactor": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -15260,6 +15583,7 @@
       "entryCount": 24,
       "componentCount": 4,
       "components": ["link", "menu", "button", "checkbox"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 7,
         "docs": 5,
@@ -15269,6 +15593,7 @@
         "style": 2,
         "chore": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -15543,10 +15868,12 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["checkbox"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "optimization": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -15579,9 +15906,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "refactor": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "refactor",
@@ -15603,12 +15932,14 @@
       "entryCount": 10,
       "componentCount": 3,
       "components": ["config-provider", "select", "popover"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 2,
         "optimization": 2,
         "refactor": 5,
         "feature": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -15729,7 +16060,9 @@
       "entryCount": 0,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {},
+      "notes": [],
       "entries": []
     },
     {
@@ -15739,9 +16072,11 @@
       "entryCount": 2,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "chore": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "chore",
@@ -15774,10 +16109,12 @@
       "entryCount": 2,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "docs": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "docs",
@@ -15810,10 +16147,12 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["layout"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -15846,10 +16185,12 @@
       "entryCount": 5,
       "componentCount": 1,
       "components": ["command"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 3,
         "chore": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -15915,11 +16256,13 @@
       "entryCount": 6,
       "componentCount": 3,
       "components": ["tree-menu", "form", "layout"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 2,
         "fix": 2,
         "chore": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -15996,6 +16339,7 @@
       "entryCount": 17,
       "componentCount": 3,
       "components": ["form", "input", "layout"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 3,
         "refactor": 5,
@@ -16004,6 +16348,7 @@
         "chore": 3,
         "docs": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -16201,10 +16546,12 @@
       "entryCount": 6,
       "componentCount": 4,
       "components": ["badge", "dropdown-menu", "link", "tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 5,
         "refactor": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -16294,6 +16641,7 @@
         "arrow",
         "tree-menu"
       ],
+      "newComponents": [],
       "typeCounts": {
         "feature": 5,
         "fix": 7,
@@ -16303,6 +16651,7 @@
         "docs": 8,
         "chore": 4
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -16874,6 +17223,7 @@
       "entryCount": 16,
       "componentCount": 3,
       "components": ["layout", "pagination", "breadcrumb"],
+      "newComponents": [],
       "typeCounts": {
         "fix": 4,
         "style": 3,
@@ -16881,6 +17231,7 @@
         "optimization": 4,
         "chore": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -17067,6 +17418,7 @@
       "entryCount": 22,
       "componentCount": 4,
       "components": ["link", "command", "layout", "tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 7,
         "fix": 2,
@@ -17076,6 +17428,7 @@
         "refactor": 1,
         "chore": 5
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -17328,12 +17681,14 @@
       "entryCount": 9,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 3,
         "docs": 1,
         "chore": 4,
         "style": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -17443,6 +17798,7 @@
       "entryCount": 12,
       "componentCount": 2,
       "components": ["link", "command"],
+      "newComponents": [],
       "typeCounts": {
         "feature": 5,
         "fix": 1,
@@ -17452,6 +17808,7 @@
         "chore": 1,
         "style": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -17594,10 +17951,12 @@
       "entryCount": 2,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -17630,9 +17989,11 @@
       "entryCount": 1,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "fix": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "fix",
@@ -17654,10 +18015,12 @@
       "entryCount": 3,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {
         "docs": 2,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "docs",
@@ -17701,11 +18064,13 @@
       "entryCount": 5,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "refactor": 2,
         "docs": 2,
         "chore": 1
       },
+      "notes": [],
       "entries": [
         {
           "type": "refactor",
@@ -17771,9 +18136,11 @@
       "entryCount": 2,
       "componentCount": 1,
       "components": ["tree-menu"],
+      "newComponents": [],
       "typeCounts": {
         "refactor": 2
       },
+      "notes": [],
       "entries": [
         {
           "type": "refactor",
@@ -17806,7 +18173,9 @@
       "entryCount": 0,
       "componentCount": 0,
       "components": [],
+      "newComponents": [],
       "typeCounts": {},
+      "notes": [],
       "entries": []
     }
   ]

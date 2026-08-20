@@ -63,27 +63,64 @@ import { SConfigProvider } from '@soybeanjs/ui';
 }
 ```
 
-### 完整预设（complete）
+### 自定义颜色 token 覆盖
 
-当 `preset.light` 提供**全部**颜色 token（对应 `ColorTokens` 的每个键）时，该 preset 即视为"完整预设"。此时可开启 `complete` 选项，跳过内置基础样式（base / primary / sidebar）的派生流程，直接将提供的 token 作为最终主题。
+想要针对不同模式覆盖具体颜色 token，可使用 `overrides` 选项。`overrides` 中的 token 拥有最高优先级，会被叠加到由 base / primary / feedback / chart / sidebar 派生出的 token 之上。
 
 ```ts
 createTheme({
-  preset: {
-    light: {/* 全部 40 个颜色 token */},
-    dark: {/* 可省略，缺失部分由 light 自动派生 */}
-  },
-  complete: true
+  base: 'gray',
+  primary: 'violet',
+  radius: '0.625rem',
+  // 覆盖任意颜色 token（浅色 / 暗色）
+  overrides: {
+    light: {
+      background: 'oklch(100% 0 0)',
+      foreground: 'stone.950',
+      primary: 'violet.700',
+      ring: 'violet.500',
+      border: 'stone.200',
+      input: 'stone.200'
+    },
+    dark: {
+      background: 'stone.950',
+      foreground: 'stone.50',
+      primary: 'violet.400',
+      ring: 'violet.600',
+      border: 'oklch(100% 0 0 / 0.1)',
+      input: 'oklch(100% 0 0 / 0.15)'
+    }
+  }
 });
 ```
 
 **说明与注意事项：**
 
-- **判断标准**：`complete` 仅在 `preset` 为 mode-split（含 `light` / `dark` 层）且 `light` 定义了全部颜色 token 时生效。扁平 `ThemeTokens` 或 `light` 不完整都不会触发跳过。
-- **仅优化，不改结果**：对完整 `light`，无论是否跳过派生，最终 token 完全一致——`complete` 只是避免无意义的派计算。
-- **`lightLevel` / `darkLevel` 失效**：跳过基准派生后，这两个档位不会作用于最终结果。
-- **暗色仍自动派生**：`dark` 缺失的键仍由 `light` 经 `deriveDarkFromLight` 派生，无需手动补齐。
-- 相关判断函数 `isCompleteThemePreset` 可单独用于检测预设是否完整。
+- **暗色自动派生**：`dark` 中缺失的键会自动由对应的 `light` 值经 `deriveDarkFromLight` 派生，因此只需补充差异项。
+- **`SConfigProvider` 的 `theme.preset`**：provider 也支持通过 `theme.preset` prop 传入同样的浅色/暗色 token 对象（或指向已存储 preset 的 `{ name }` 引用），并在调用 `createTheme` 前将其解析为 `overrides`。
+
+```vue
+<template>
+  <SConfigProvider
+    :theme="{
+      base: 'gray',
+      primary: 'violet',
+      preset: {
+        light: {
+          background: 'oklch(100% 0 0)',
+          foreground: 'stone.950'
+        },
+        dark: {
+          background: 'stone.950',
+          foreground: 'stone.50'
+        }
+      }
+    }"
+  >
+    <App />
+  </SConfigProvider>
+</template>
+```
 
 ### 颜色
 

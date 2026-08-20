@@ -1,6 +1,17 @@
 {
   "changelog": {
     "generated": {
+      "note": {
+        "v0": {
+          "30": {
+            "0-beta": {
+              "1": {
+                "0": "该版本带来了重建的主题系统和包重命名。@soybeanjs/shadcn-theme 已改名为 @soybeanjs/theme（createShadcnTheme → createTheme），@soybeanjs/unocss-shadcn 已改名为 @soybeanjs/ui-uno（presetShadcn → presetUiUnocss，ShadcnPresetOptions → UiUnocssOptions）。已移除主题的 menu 配置（menuColor / menuAccent），自定义颜色覆盖改用 `overrides: { light, dark }` 取代旧的 preset 对象（也可通过 SConfigProvider 的 `theme.preset` 传入 preset）。请相应更新你的依赖与导入。"
+              }
+            }
+          }
+        }
+      },
       "v0": {
         "0": {
           "3": {
