@@ -38,7 +38,7 @@ export const calendarRangeVariants = scv({
       'data-[selection-end]:bg-primary data-[selection-end]:text-primary-foreground',
       '[&[data-selection-start]:hover]:bg-primary data-[selection-start]:hover:text-primary-foreground data-[selection-start]:focus-visible:bg-primary data-[selection-start]:focus-visible:text-primary-foreground',
       '[&[data-selection-end]:hover]:bg-primary data-[selection-end]:hover:text-primary-foreground data-[selection-end]:focus-visible:bg-primary data-[selection-end]:focus-visible:text-primary-foreground',
-      'data-[highlighted]:bg-accent/80 data-[highlighted]:text-foreground',
+      '[&[data-highlighted]:not([data-selected])]:bg-accent/80 [&[data-highlighted]:not([data-selected])]:text-foreground',
       'hover:bg-accent hover:text-accent-foreground data-[outside-view]:text-muted-foreground',
       'data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50',
       'data-[unavailable]:line-through'
