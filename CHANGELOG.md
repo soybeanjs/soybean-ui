@@ -1,5 +1,20 @@
 # Changelog
 
+## [v0.30.0-beta.3](https://github.com/soybeanjs/soybean-ui/compare/v0.30.0-beta.2...v0.30.0-beta.3) (2026-08-20)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**: update logo URLs in README files &nbsp;-&nbsp; by **soybeanfe** [<samp>(1ae01)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1ae01c20)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **calendar-range**: fix highlighted style &nbsp;-&nbsp; by **soybeanfe** [<samp>(37b50)</samp>](https://github.com/soybeanjs/soybean-ui/commit/37b50838)
+- **stepper**: optimize style &nbsp;-&nbsp; by **soybeanfe** [<samp>(0223b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0223b6d6)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.30.0-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.30.0-beta.1...v0.30.0-beta.2) (2026-08-19)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

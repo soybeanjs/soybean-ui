@@ -1,6 +1,24 @@
 {
   "component": "calendar-range",
-  "generatedAt": "2026-08-19T08:51:23.685Z",
+  "generatedAt": "2026-08-20T07:00:56.432Z",
   "schemaVersion": 1,
-  "versions": []
+  "versions": [
+    {
+      "version": "v0.30.0-beta.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0-beta.2...v0.30.0-beta.3",
+      "date": "2026-08-20",
+      "entries": [
+        {
+          "type": "style",
+          "scope": "calendar-range",
+          "summary": "fix highlighted style",
+          "summaryKey": "changelog.generated.v0.30.0-beta.3.37b50",
+          "commitHash": "37b50",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/37b50838",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
 }

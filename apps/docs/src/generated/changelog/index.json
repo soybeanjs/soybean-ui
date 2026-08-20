@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T08:51:23.685Z",
+  "generatedAt": "2026-08-20T07:00:56.432Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -103,9 +103,9 @@
     "calendar-range": {
       "component": "calendar-range",
       "file": "calendar-range.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.30.0-beta.3",
+      "versionCount": 1,
+      "entryCount": 1
     },
     "card": {
       "component": "card",
@@ -516,9 +516,9 @@
     "stepper": {
       "component": "stepper",
       "file": "stepper.json",
-      "latestVersion": "v0.20.0",
-      "versionCount": 2,
-      "entryCount": 2
+      "latestVersion": "v0.30.0-beta.3",
+      "versionCount": 3,
+      "entryCount": 3
     },
     "switch": {
       "component": "switch",

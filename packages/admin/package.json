@@ -1,6 +1,6 @@
 {
   "name": "@soybeanjs/admin",
-  "version": "0.30.0-beta.2",
+  "version": "0.30.0-beta.3",
   "description": "SoybeanAdmin — admin shell components built on top of SoybeanUI.",
   "homepage": "https://github.com/soybeanjs/soybean-ui",
   "bugs": {
