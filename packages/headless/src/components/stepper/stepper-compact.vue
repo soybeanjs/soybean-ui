@@ -48,6 +48,8 @@ const ui = useStepperUi();
         :step="item.step"
         :disabled="item.disabled"
         :completed="item.completed"
+        :data-first="index === 0 ? '' : undefined"
+        :data-last="index === resolvedItems.length - 1 ? '' : undefined"
       >
         <slot name="item" v-bind="{ ...item, ...rootSlotProps, ...itemSlotProps }">
           <StepperTrigger v-bind="triggerProps">

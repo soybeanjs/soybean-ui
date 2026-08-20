@@ -4,7 +4,7 @@ import { scv } from '@soybeanjs/cva';
 export const stepperVariants = scv({
   slots: {
     root: 'flex w-full',
-    item: 'group flex min-w-0 flex-1',
+    item: 'group flex min-w-0 flex-1 data-[last]:flex-none',
     trigger: [
       'inline-flex rounded-md transition-colors',
       'outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30',
