@@ -1,8 +1,55 @@
 {
   "component": "menubar",
-  "generatedAt": "2026-08-20T11:31:38.804Z",
+  "generatedAt": "2026-08-20T11:40:21.331Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.30.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0",
+      "date": "2026-08-20",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "menubar",
+          "summary": "support hover trigger and show ellipsis item when overflow",
+          "summaryKey": "changelog.generated.v0.30.0.5924e",
+          "commitHash": "5924e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5924e61f",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "menubar",
+          "summary": "prevent trigger clicks from dismissing open menus",
+          "summaryKey": "changelog.generated.v0.30.0.574b5",
+          "commitHash": "574b5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/574b5053",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "docs",
+          "scope": "menubar",
+          "summary": "mark dialog/select e2e baseline fix as verified",
+          "summaryKey": "changelog.generated.v0.30.0.96d00",
+          "commitHash": "96d00",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/96d005a6",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "docs",
+          "scope": "menubar",
+          "summary": "update menubar docs api and skills",
+          "summaryKey": "changelog.generated.v0.30.0.de78c",
+          "commitHash": "de78c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/de78c41f",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.30.0-beta.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0-beta.1",

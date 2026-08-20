@@ -1,8 +1,35 @@
 {
   "component": "cascader",
-  "generatedAt": "2026-08-20T11:31:38.804Z",
+  "generatedAt": "2026-08-20T11:40:21.331Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.30.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0",
+      "date": "2026-08-20",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "cascader",
+          "summary": "Corrected the highlighting logic and style of the parent node in the cascading selector.",
+          "summaryKey": "changelog.generated.v0.30.0.73f50",
+          "commitHash": "73f50",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/73f50b92",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "cascader",
+          "summary": "optimize style and fix multiple logic",
+          "summaryKey": "changelog.generated.v0.30.0.7e1dc",
+          "commitHash": "7e1dc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7e1dcff0",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.30.0-beta.2",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0-beta.1...v0.30.0-beta.2",

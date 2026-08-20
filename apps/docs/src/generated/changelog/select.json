@@ -1,8 +1,25 @@
 {
   "component": "select",
-  "generatedAt": "2026-08-20T11:31:38.804Z",
+  "generatedAt": "2026-08-20T11:40:21.331Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.30.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0",
+      "date": "2026-08-20",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "select",
+          "summary": "fix scroll in large list",
+          "summaryKey": "changelog.generated.v0.30.0.ff970",
+          "commitHash": "ff970",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ff9703a4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.30.0-beta.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0-beta.1",
