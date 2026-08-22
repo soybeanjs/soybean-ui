@@ -446,6 +446,14 @@
         "icon": "图标",
         "size": "尺寸"
       },
+      "split-nav": {
+        "basic": "基础",
+        "custom": "定制",
+        "horizontal-dual-vertical": "横双竖",
+        "horizontal-vertical": "横竖",
+        "teleport": "挂载",
+        "vertical-horizontal": "竖横"
+      },
       "splitter": {
         "basic": "基础",
         "collapsible": "可折叠",

@@ -88,7 +88,7 @@
               {
                 "name": "TreeMenuUiSlot",
                 "kind": "typeAlias",
-                "type": "'root' | 'item' | 'button' | 'sub' | 'group' | 'groupLabel' | 'groupRoot' | 'itemLabel' | 'itemLinkIcon' | 'itemAbsolute' | 'itemTag' | 'itemAction' | 'collapsibleIcon' | 'collapsibleRoot' | 'collapsibleTrigger' | 'collapsibleContent' | 'tooltipPositioner' | 'tooltipPopup' | 'tooltipArrow' | 'badgeRoot' | 'badgeContent'",
+                "type": "'root' | 'item' | 'button' | 'sub' | 'group' | 'groupLabel' | 'groupRoot' | 'itemLabel' | 'itemLinkIcon' | 'collapsibleIcon' | 'itemAbsolute' | 'itemTag' | 'itemAction' | 'collapsibleRoot' | 'collapsibleTrigger' | 'collapsibleContent' | 'tooltipPositioner' | 'tooltipPopup' | 'tooltipArrow' | 'badgeRoot' | 'badgeContent'",
                 "resolvedType": null,
                 "description": "Available UI slots for the TreeMenu component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenuuislot",

@@ -67,6 +67,8 @@ export * from './components/separator';
 export * from './components/skeleton';
 export * from './components/slider';
 export * from './components/spinner';
+export * from './components/split-menu';
+export * from './components/split-nav';
 export * from './components/splitter';
 export * from './components/stepper';
 export * from './components/switch';

@@ -7422,6 +7422,150 @@
         },
         "sliderui": "UI class overrides for the Slider component."
       },
+      "packages_headless_src_components_split_menu_types": {
+        "splitmenucompactemits": {
+          "callables": {
+            "select": "Emitted when a leaf menu item is chosen.",
+            "update_collapsed": "Emitted when the collapsed state changes.",
+            "update_modelvalue": "Emitted when the model value changes."
+          },
+          "emits": "Events for the SplitMenuCompact component."
+        },
+        "splitmenucompactprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "collapsed": "Whether the level-1 vertical panel is collapsed.",
+            "defaultcollapsed": "The collapsed state when initially rendered.",
+            "defaultvalue": "The active value when initially rendered. Use when you do not need to control the state.",
+            "dir": "The reading direction of the menu when applicable.\n\nIf omitted, inherits globally from `ConfigProvider` or assumes LTR.",
+            "horizontalmenuel": "The id of the element to mount horizontal panels into (rendered via `Teleport`).\n\nWhen unset, the panels render in place.",
+            "items": "The level-1 menu items.",
+            "mode": "The menu shape.",
+            "modelvalue": "The active value of the menu. Can be bound with `v-model`.",
+            "verticalmenuel": "The id of the element to mount vertical panels into (rendered via `Teleport`).\n\nWhen unset, the panels render in place."
+          },
+          "props": "Properties for the SplitMenuCompact component."
+        },
+        "splitmenucompactslots": {
+          "callables": {
+            "bottom": "Custom content rendered after the panels.",
+            "item": "Custom content for the item slot.",
+            "item_leading": "Custom content for the item leading slot.",
+            "item_trailing": "Custom content for the item trailing slot.",
+            "top": "Custom content rendered before the panels.",
+            "trigger": "Custom content for the horizontal trigger slot."
+          },
+          "slots": "Slots for the SplitMenuCompact component."
+        },
+        "splitmenucontentprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "to": "The id of the element to mount the content into (rendered via `Teleport`).\n\nWhen unset, the content renders in place."
+          },
+          "props": "Properties for the SplitMenuContent component."
+        },
+        "splitmenuitemprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "disabled": "When `true`, prevents the user from interacting with the item.",
+            "orientation": "The rendering orientation of the item.",
+            "value": "The unique value of the item."
+          },
+          "props": "Properties for the SplitMenuItem component."
+        },
+        "splitmenumode": "Available menu shapes for the SplitMenu component.\n\n- `dual-vertical`: level-1 vertical + level-2 vertical, two vertical columns.\n- `vertical-horizontal`: level-1 vertical + level-2 horizontal.\n- `horizontal-vertical`: level-1 horizontal + level-2 vertical.\n- `horizontal-dual-vertical`: level-1 horizontal + level-2 vertical + level-3 vertical (three panels).",
+        "splitmenuorientation": "Orientation of a single SplitMenu panel.",
+        "splitmenupanelemits": {
+          "callables": {
+            "panelselect": "Emitted when a leaf item is selected."
+          },
+          "emits": "Events for the SplitMenuPanel component."
+        },
+        "splitmenupanelprops": {
+          "members": {
+            "depth": "Panel depth (1-based). Exposed via `data-depth` for styling.",
+            "horizontalmenuel": "The id of the element to mount horizontal panels into (rendered via `Teleport`).\n\nWhen unset, the panel renders in place.",
+            "items": "The menu items rendered in this panel.",
+            "orientation": "Orientation of the panel.",
+            "verticalmenuel": "The id of the element to mount vertical panels into (rendered via `Teleport`).\n\nWhen unset, the panel renders in place."
+          },
+          "props": "Properties for the SplitMenuPanel component."
+        },
+        "splitmenurootemits": {
+          "callables": {
+            "select": "Emitted when a leaf menu item is chosen.",
+            "update_collapsed": "Emitted when the collapsed state changes.",
+            "update_modelvalue": "Emitted when the model value changes."
+          },
+          "emits": "Events for the SplitMenuRoot component."
+        },
+        "splitmenurootprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "collapsed": "Whether the level-1 vertical panel is collapsed.",
+            "defaultcollapsed": "The collapsed state when initially rendered.",
+            "defaultvalue": "The active value when initially rendered. Use when you do not need to control the state.",
+            "dir": "The reading direction of the menu when applicable.\n\nIf omitted, inherits globally from `ConfigProvider` or assumes LTR.",
+            "mode": "The menu shape.",
+            "modelvalue": "The active value of the menu. Can be bound with `v-model`."
+          },
+          "props": "Properties for the SplitMenuRoot component."
+        },
+        "splitmenutriggerprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "collapsed": "Whether the trigger is collapsed to an icon-only rail.",
+            "disabled": "When `true`, prevents the user from interacting with the trigger.",
+            "orientation": "The rendering orientation of the trigger.",
+            "value": "The unique value of the trigger."
+          },
+          "props": "Properties for the SplitMenuTrigger component."
+        },
+        "splitmenuuislot": "Available UI slots for the SplitMenu component.",
+        "type": ""
+      },
+      "packages_headless_src_components_split_nav_types": {
+        "splitnavmode": "Available menu shapes for the SplitNav component.\n\n- `dual-vertical`: level-1 vertical + remaining tree vertical.\n- `vertical-horizontal`: level-1 vertical + nested Menubar.\n- `horizontal-vertical`: level-1 horizontal + nested TreeMenu.\n- `horizontal-dual-vertical`: level-1 horizontal + nested dual-vertical.",
+        "splitnavrootemits": {
+          "callables": {
+            "select": "Emitted when a leaf menu item is chosen.",
+            "update_modelvalue": "Emitted when the model value changes."
+          },
+          "emits": "Events for the SplitNavRoot component."
+        },
+        "splitnavrootprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "defaultvalue": "The value of the SplitNav component when initially rendered. Use when you do not need to control the state.",
+            "dir": "The reading direction of the menu when applicable.\n\nIf omitted, inherits globally from `ConfigProvider` or assumes LTR.",
+            "horizontalmountedid": "The id of the element to mount horizontal menus into (rendered via `Teleport`).\n\nWhen unset, the horizontal menus render in place. Pass the element id without `#`.",
+            "items": "The option data for the SplitNav component.",
+            "loop": "Whether first-level keyboard navigation loops from last item to first and vice versa.",
+            "mode": "The menu shape.",
+            "modelvalue": "The active value of the SplitNav component. Can be bound with `v-model`.",
+            "verticalmountedid": "The id of the element to mount vertical menus into (rendered via `Teleport`).\n\nWhen unset, the vertical menus render in place. Pass the element id without `#`."
+          },
+          "props": "Properties for the SplitNavRoot component."
+        },
+        "splitnavrootslots": {
+          "callables": {
+            "first_level_item": "Custom content for a first-level item.",
+            "item": "Custom content for a nested TreeMenu item.",
+            "item_leading": "Custom content for a nested TreeMenu item leading slot.",
+            "item_trailing": "Custom content for a nested TreeMenu item trailing slot.",
+            "trigger": "Custom content for a nested Menubar trigger."
+          },
+          "slots": "Slots for the SplitNavRoot component."
+        },
+        "splitnavuislot": "Available UI slots for the SplitNav component.",
+        "type": ""
+      },
       "packages_headless_src_components_splitter_types": {
         "splittergroupemits": {
           "callables": {
@@ -12786,6 +12930,83 @@
             "size": "Visual size of the component."
           },
           "props": "Properties for the Spinner component."
+        }
+      },
+      "packages_ui_src_components_split_menu_types": {
+        "splitmenuemits": {
+          "callables": {
+            "select": "Emitted when a leaf menu item is chosen.",
+            "update_collapsed": "Emitted when the collapsed state changes.",
+            "update_modelvalue": "Emitted when the model value changes."
+          },
+          "emits": "Events for the SplitMenu component."
+        },
+        "splitmenuprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "class": "Additional class names applied to the root element.",
+            "collapsed": "Whether the level-1 vertical panel is collapsed.",
+            "defaultcollapsed": "The collapsed state when initially rendered.",
+            "defaultvalue": "The active value when initially rendered. Use when you do not need to control the state.",
+            "dir": "The reading direction of the menu when applicable.\n\nIf omitted, inherits globally from `ConfigProvider` or assumes LTR.",
+            "horizontalmenuel": "The id of the element to mount horizontal panels into (rendered via `Teleport`).\n\nWhen unset, the panels render in place.",
+            "items": "The level-1 menu items.",
+            "mode": "The menu shape.",
+            "modelvalue": "The active value of the menu. Can be bound with `v-model`.",
+            "size": "Visual size of the component.",
+            "ui": "Per-slot class overrides for the component.",
+            "verticalmenuel": "The id of the element to mount vertical panels into (rendered via `Teleport`).\n\nWhen unset, the panels render in place."
+          },
+          "props": "Properties for the SplitMenu component."
+        },
+        "splitmenuslots": {
+          "callables": {
+            "bottom": "Custom content rendered after the panels.",
+            "item": "Custom content for the item slot.",
+            "item_leading": "Custom content for the item leading slot.",
+            "item_trailing": "Custom content for the item trailing slot.",
+            "top": "Custom content rendered before the panels.",
+            "trigger": "Custom content for the horizontal trigger slot."
+          },
+          "slots": "Slots for the SplitMenu component."
+        }
+      },
+      "packages_ui_src_components_split_nav_types": {
+        "splitnavemits": {
+          "callables": {
+            "select": "Emitted when a leaf menu item is chosen.",
+            "update_modelvalue": "Emitted when the model value changes."
+          },
+          "emits": "Events for the SplitNav component."
+        },
+        "splitnavprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "class": "Additional class names applied to the root element.",
+            "defaultvalue": "The value of the SplitNav component when initially rendered. Use when you do not need to control the state.",
+            "dir": "The reading direction of the menu when applicable.\n\nIf omitted, inherits globally from `ConfigProvider` or assumes LTR.",
+            "horizontalmountedid": "The id of the element to mount horizontal menus into (rendered via `Teleport`).\n\nWhen unset, the horizontal menus render in place. Pass the element id without `#`.",
+            "items": "The option data for the SplitNav component.",
+            "loop": "Whether first-level keyboard navigation loops from last item to first and vice versa.",
+            "mode": "The menu shape.",
+            "modelvalue": "The active value of the SplitNav component. Can be bound with `v-model`.",
+            "size": "Visual size of the component.",
+            "ui": "Per-slot class overrides for the component.",
+            "verticalmountedid": "The id of the element to mount vertical menus into (rendered via `Teleport`).\n\nWhen unset, the vertical menus render in place. Pass the element id without `#`."
+          },
+          "props": "Properties for the SplitNav component."
+        },
+        "splitnavslots": {
+          "callables": {
+            "first_level_item": "Custom content for a first-level item.",
+            "item": "Custom content for a nested TreeMenu item.",
+            "item_leading": "Custom content for a nested TreeMenu item leading slot.",
+            "item_trailing": "Custom content for a nested TreeMenu item trailing slot.",
+            "trigger": "Custom content for a nested Menubar trigger."
+          },
+          "slots": "Slots for the SplitNav component."
         }
       },
       "packages_ui_src_components_splitter_types": {

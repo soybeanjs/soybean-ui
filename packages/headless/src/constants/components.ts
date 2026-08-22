@@ -456,9 +456,17 @@ export const components = {
     'SelectArrow'
   ],
   separator: ['SeparatorCompact', 'SeparatorRoot', 'SeparatorLabel'],
-  skeleton: ['Skeleton'],
   slider: ['SliderCompact', 'SliderRoot', 'SliderTrack', 'SliderRange', 'SliderThumb'],
   slot: ['Slot'],
+  splitMenu: [
+    'SplitMenuCompact',
+    'SplitMenuRoot',
+    'SplitMenuPanel',
+    'SplitMenuItem',
+    'SplitMenuTrigger',
+    'SplitMenuContent'
+  ],
+  splitNav: ['SplitNavRoot'],
   splitter: ['SplitterGroup', 'SplitterPanel', 'SplitterResizeHandle'],
   stepper: [
     'StepperRoot',

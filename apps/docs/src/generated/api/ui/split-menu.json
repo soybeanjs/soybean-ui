@@ -1,0 +1,1550 @@
+{
+  "component": "split-menu",
+  "symbols": {
+    "SplitMenu": {
+      "props": {
+        "kind": "props",
+        "name": "SplitMenuProps",
+        "type": "Interface SplitMenuProps<T>",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<Record<SplitMenuUiSlot, ClassValue>>; items: SplitMenuOptionData<T>[]; horizontalMenuEl?: string; verticalMenuEl?: string; mode?: SplitMenuMode; modelValue?: string; defaultValue?: string; collapsed?: boolean; defaultCollapsed?: boolean; dir?: Direction; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the SplitMenu component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuprops.props",
+        "sourcePath": "packages/ui/src/components/split-menu/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Additional class names applied to the root element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px",
+                "descriptionKey": "api.generated.packages_theme_src_types.themesize",
+                "sourcePath": "packages/theme/src/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<Record<SplitMenuUiSlot, ClassValue>>",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "SplitMenuUiSlot",
+                "kind": "typeAlias",
+                "type": "'root' | 'item' | 'trigger' | 'triggerIcon' | 'sub' | 'group' | 'groupLabel' | 'separator' | 'panel' | 'itemLabel' | 'shortcut' | 'itemIcon' | 'itemLinkIcon' | 'panelRow' | 'panelVertical' | 'panelHorizontal' | 'itemLeading' | 'itemTrailing' | 'collapsibleIcon'",
+                "resolvedType": null,
+                "description": "Available UI slots for the SplitMenu component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenuuislot",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "SplitMenuOptionData<T>[]",
+            "required": true,
+            "description": "The level-1 menu items.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuprops.members.items",
+            "default": null,
+            "inheritedFrom": "items",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "horizontalMenuEl",
+            "type": "string",
+            "required": false,
+            "description": "The id of the element to mount horizontal panels into (rendered via `Teleport`).\n\nWhen unset, the panels render in place.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuprops.members.horizontalmenuel",
+            "default": null,
+            "inheritedFrom": "horizontalMenuEl",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "verticalMenuEl",
+            "type": "string",
+            "required": false,
+            "description": "The id of the element to mount vertical panels into (rendered via `Teleport`).\n\nWhen unset, the panels render in place.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuprops.members.verticalmenuel",
+            "default": null,
+            "inheritedFrom": "verticalMenuEl",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "mode",
+            "type": "SplitMenuMode",
+            "required": false,
+            "description": "The menu shape.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuprops.members.mode",
+            "default": "'dual-vertical'",
+            "inheritedFrom": "mode",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SplitMenuMode",
+                "kind": "typeAlias",
+                "type": "'dual-vertical' | 'vertical-horizontal' | 'horizontal-vertical' | 'horizontal-dual-vertical'",
+                "resolvedType": "'dual-vertical' | 'vertical-horizontal' | 'horizontal-vertical' | 'horizontal-dual-vertical'",
+                "description": "Available menu shapes for the SplitMenu component.\n\n- `dual-vertical`: level-1 vertical + level-2 vertical, two vertical columns.\n- `vertical-horizontal`: level-1 vertical + level-2 horizontal.\n- `horizontal-vertical`: level-1 horizontal + level-2 vertical.\n- `horizontal-dual-vertical`: level-1 horizontal + level-2 vertical + level-3 vertical (three panels).",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenumode",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The active value of the menu. Can be bound with `v-model`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "The active value when initially rendered. Use when you do not need to control the state.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "collapsed",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the level-1 vertical panel is collapsed.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuprops.members.collapsed",
+            "default": null,
+            "inheritedFrom": "collapsed",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultCollapsed",
+            "type": "boolean",
+            "required": false,
+            "description": "The collapsed state when initially rendered.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuprops.members.defaultcollapsed",
+            "default": null,
+            "inheritedFrom": "defaultCollapsed",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the menu when applicable.\n\nIf omitted, inherits globally from `ConfigProvider` or assumes LTR.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "SplitMenuEmits",
+        "type": "TypeAlias SplitMenuEmits: SplitMenuCompactEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; \"update:collapsed\": [value: boolean]; select: [key: string, event?: Event | undefined] }",
+        "description": "Events for the SplitMenu component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuemits.emits",
+        "sourcePath": "packages/ui/src/components/split-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when the model value changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:collapsed",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "Emitted when the collapsed state changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuemits.callables.update_collapsed",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "select",
+            "type": "[key: string, event?: Event | undefined]",
+            "parameters": "key: string, event?: Event | undefined",
+            "required": true,
+            "description": "Emitted when a leaf menu item is chosen.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuemits.callables.select",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "SplitMenuRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: string]; 'update:collapsed': [value: boolean]; select: [key: string, event?: Event]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: string]; \"update:collapsed\": [value: boolean]; select: [key: string, event?: Event | undefined] }",
+            "description": "Events for the SplitMenuRoot component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootemits",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when the model value changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootemits.callables.update_modelvalue",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "update:collapsed",
+                "type": "[value: boolean]",
+                "parameters": "value: boolean",
+                "required": true,
+                "description": "Emitted when the collapsed state changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootemits.callables.update_collapsed",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "select",
+                "type": "[key: string, event?: Event | undefined]",
+                "parameters": "key: string, event?: Event | undefined",
+                "required": true,
+                "description": "Emitted when a leaf menu item is chosen.",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootemits.callables.select",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "SplitMenuSlots",
+        "type": "TypeAlias SplitMenuSlots<T>: SplitMenuCompactSlots<T>",
+        "resolvedType": "{ top?: (() => any); bottom?: (() => any); item?: ((props: { item: T; }) => any); \"item-leading\"?: ((props: { item: T; }) => any); \"item-trailing\"?: ((props: { item: T; }) => any); trigger?: ((data: { item: T; }) => any) }",
+        "description": "Slots for the SplitMenu component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuslots.slots",
+        "sourcePath": "packages/ui/src/components/split-menu/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "top",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content rendered before the panels.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuslots.callables.top",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "bottom",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content rendered after the panels.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuslots.callables.bottom",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "item",
+            "type": "((props: { item: T; }) => any) | undefined",
+            "parameters": "((props: { item: T; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuslots.callables.item",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: T; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.type",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-leading",
+            "type": "((props: { item: T; }) => any) | undefined",
+            "parameters": "((props: { item: T; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item leading slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuslots.callables.item_leading",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: T; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.type",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-trailing",
+            "type": "((props: { item: T; }) => any) | undefined",
+            "parameters": "((props: { item: T; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item trailing slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuslots.callables.item_trailing",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: T; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.type",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "trigger",
+            "type": "((data: { item: T; }) => any) | undefined",
+            "parameters": "((data: { item: T; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the horizontal trigger slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_menu_types.splitmenuslots.callables.trigger",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: T; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.type",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "SplitMenuCompact": {
+      "props": {
+        "kind": "props",
+        "name": "SplitMenuCompactProps",
+        "type": "Interface SplitMenuCompactProps<T>",
+        "resolvedType": "{ items: SplitMenuOptionData<T>[]; horizontalMenuEl?: string; verticalMenuEl?: string; mode?: SplitMenuMode; modelValue?: string; defaultValue?: string; collapsed?: boolean; defaultCollapsed?: boolean; dir?: Direction; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the SplitMenuCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactprops.props",
+        "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "items",
+            "type": "SplitMenuOptionData<T>[]",
+            "required": true,
+            "description": "The level-1 menu items.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactprops.members.items",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "horizontalMenuEl",
+            "type": "string",
+            "required": false,
+            "description": "The id of the element to mount horizontal panels into (rendered via `Teleport`).\n\nWhen unset, the panels render in place.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactprops.members.horizontalmenuel",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "verticalMenuEl",
+            "type": "string",
+            "required": false,
+            "description": "The id of the element to mount vertical panels into (rendered via `Teleport`).\n\nWhen unset, the panels render in place.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactprops.members.verticalmenuel",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "mode",
+            "type": "SplitMenuMode",
+            "required": false,
+            "description": "The menu shape.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactprops.members.mode",
+            "default": "'dual-vertical'",
+            "inheritedFrom": "mode",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SplitMenuMode",
+                "kind": "typeAlias",
+                "type": "'dual-vertical' | 'vertical-horizontal' | 'horizontal-vertical' | 'horizontal-dual-vertical'",
+                "resolvedType": "'dual-vertical' | 'vertical-horizontal' | 'horizontal-vertical' | 'horizontal-dual-vertical'",
+                "description": "Available menu shapes for the SplitMenu component.\n\n- `dual-vertical`: level-1 vertical + level-2 vertical, two vertical columns.\n- `vertical-horizontal`: level-1 vertical + level-2 horizontal.\n- `horizontal-vertical`: level-1 horizontal + level-2 vertical.\n- `horizontal-dual-vertical`: level-1 horizontal + level-2 vertical + level-3 vertical (three panels).",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenumode",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The active value of the menu. Can be bound with `v-model`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "The active value when initially rendered. Use when you do not need to control the state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "collapsed",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the level-1 vertical panel is collapsed.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactprops.members.collapsed",
+            "default": null,
+            "inheritedFrom": "collapsed",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultCollapsed",
+            "type": "boolean",
+            "required": false,
+            "description": "The collapsed state when initially rendered.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactprops.members.defaultcollapsed",
+            "default": null,
+            "inheritedFrom": "defaultCollapsed",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the menu when applicable.\n\nIf omitted, inherits globally from `ConfigProvider` or assumes LTR.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "SplitMenuCompactEmits",
+        "type": "TypeAlias SplitMenuCompactEmits: SplitMenuRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; \"update:collapsed\": [value: boolean]; select: [key: string, event?: Event | undefined] }",
+        "description": "Events for the SplitMenuCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactemits.emits",
+        "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when the model value changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:collapsed",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "Emitted when the collapsed state changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactemits.callables.update_collapsed",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "select",
+            "type": "[key: string, event?: Event | undefined]",
+            "parameters": "key: string, event?: Event | undefined",
+            "required": true,
+            "description": "Emitted when a leaf menu item is chosen.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactemits.callables.select",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "SplitMenuRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: string]; 'update:collapsed': [value: boolean]; select: [key: string, event?: Event]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: string]; \"update:collapsed\": [value: boolean]; select: [key: string, event?: Event | undefined] }",
+            "description": "Events for the SplitMenuRoot component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootemits",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when the model value changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootemits.callables.update_modelvalue",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "update:collapsed",
+                "type": "[value: boolean]",
+                "parameters": "value: boolean",
+                "required": true,
+                "description": "Emitted when the collapsed state changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootemits.callables.update_collapsed",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "select",
+                "type": "[key: string, event?: Event | undefined]",
+                "parameters": "key: string, event?: Event | undefined",
+                "required": true,
+                "description": "Emitted when a leaf menu item is chosen.",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootemits.callables.select",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "SplitMenuCompactSlots",
+        "type": "TypeAlias SplitMenuCompactSlots<T>",
+        "resolvedType": "{ top?: (() => any); bottom?: (() => any); item?: ((props: { item: T; }) => any); \"item-leading\"?: ((props: { item: T; }) => any); \"item-trailing\"?: ((props: { item: T; }) => any); trigger?: ((data: { item: T; }) => any) }",
+        "description": "Slots for the SplitMenuCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactslots.slots",
+        "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "top",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content rendered before the panels.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactslots.callables.top",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "bottom",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content rendered after the panels.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactslots.callables.bottom",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "item",
+            "type": "((props: { item: T; }) => any) | undefined",
+            "parameters": "((props: { item: T; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactslots.callables.item",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: T; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.type",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-leading",
+            "type": "((props: { item: T; }) => any) | undefined",
+            "parameters": "((props: { item: T; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item leading slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactslots.callables.item_leading",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: T; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.type",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-trailing",
+            "type": "((props: { item: T; }) => any) | undefined",
+            "parameters": "((props: { item: T; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item trailing slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactslots.callables.item_trailing",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: T; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.type",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "trigger",
+            "type": "((data: { item: T; }) => any) | undefined",
+            "parameters": "((data: { item: T; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the horizontal trigger slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucompactslots.callables.trigger",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: T; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.type",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "SplitMenuContent": {
+      "props": {
+        "kind": "props",
+        "name": "SplitMenuContentProps",
+        "type": "Interface SplitMenuContentProps",
+        "resolvedType": "{ to?: string; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the SplitMenuContent component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucontentprops.props",
+        "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "to",
+            "type": "string",
+            "required": false,
+            "description": "The id of the element to mount the content into (rendered via `Teleport`).\n\nWhen unset, the content renders in place.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucontentprops.members.to",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucontentprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenucontentprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "SplitMenuItem": {
+      "props": {
+        "kind": "props",
+        "name": "SplitMenuItemProps",
+        "type": "Interface SplitMenuItemProps",
+        "resolvedType": "{ value: string; disabled?: boolean; orientation?: SplitMenuOrientation; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the SplitMenuItem component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenuitemprops.props",
+        "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "value",
+            "type": "string",
+            "required": true,
+            "description": "The unique value of the item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenuitemprops.members.value",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenuitemprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "SplitMenuOrientation",
+            "required": false,
+            "description": "The rendering orientation of the item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenuitemprops.members.orientation",
+            "default": "'vertical'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SplitMenuOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "Orientation of a single SplitMenu panel.",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenuorientation",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenuitemprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenuitemprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "SplitMenuPanel": {
+      "props": {
+        "kind": "props",
+        "name": "SplitMenuPanelProps",
+        "type": "Interface SplitMenuPanelProps",
+        "resolvedType": "{ depth?: number; orientation?: SplitMenuOrientation; items?: SplitMenuOptionData<SplitMenuBaseOptionData>[]; horizontalMenuEl?: string; verticalMenuEl?: string }",
+        "description": "Properties for the SplitMenuPanel component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenupanelprops.props",
+        "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "depth",
+            "type": "number",
+            "required": false,
+            "description": "Panel depth (1-based). Exposed via `data-depth` for styling.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenupanelprops.members.depth",
+            "default": "1",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "SplitMenuOrientation",
+            "required": false,
+            "description": "Orientation of the panel.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenupanelprops.members.orientation",
+            "default": "'vertical'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SplitMenuOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "Orientation of a single SplitMenu panel.",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenuorientation",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "SplitMenuOptionData<SplitMenuBaseOptionData>[]",
+            "required": false,
+            "description": "The menu items rendered in this panel.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenupanelprops.members.items",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "horizontalMenuEl",
+            "type": "string",
+            "required": false,
+            "description": "The id of the element to mount horizontal panels into (rendered via `Teleport`).\n\nWhen unset, the panel renders in place.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenupanelprops.members.horizontalmenuel",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "verticalMenuEl",
+            "type": "string",
+            "required": false,
+            "description": "The id of the element to mount vertical panels into (rendered via `Teleport`).\n\nWhen unset, the panel renders in place.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenupanelprops.members.verticalmenuel",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "SplitMenuPanelEmits",
+        "type": "TypeAlias SplitMenuPanelEmits",
+        "resolvedType": "{ panelSelect: [value: string] }",
+        "description": "Events for the SplitMenuPanel component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenupanelemits.emits",
+        "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "panelSelect",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when a leaf item is selected.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenupanelemits.callables.panelselect",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "SplitMenuRoot": {
+      "props": {
+        "kind": "props",
+        "name": "SplitMenuRootProps",
+        "type": "Interface SplitMenuRootProps",
+        "resolvedType": "{ mode?: SplitMenuMode; modelValue?: string; defaultValue?: string; collapsed?: boolean; defaultCollapsed?: boolean; dir?: Direction; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the SplitMenuRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootprops.props",
+        "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "mode",
+            "type": "SplitMenuMode",
+            "required": false,
+            "description": "The menu shape.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootprops.members.mode",
+            "default": "'dual-vertical'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SplitMenuMode",
+                "kind": "typeAlias",
+                "type": "'dual-vertical' | 'vertical-horizontal' | 'horizontal-vertical' | 'horizontal-dual-vertical'",
+                "resolvedType": "'dual-vertical' | 'vertical-horizontal' | 'horizontal-vertical' | 'horizontal-dual-vertical'",
+                "description": "Available menu shapes for the SplitMenu component.\n\n- `dual-vertical`: level-1 vertical + level-2 vertical, two vertical columns.\n- `vertical-horizontal`: level-1 vertical + level-2 horizontal.\n- `horizontal-vertical`: level-1 horizontal + level-2 vertical.\n- `horizontal-dual-vertical`: level-1 horizontal + level-2 vertical + level-3 vertical (three panels).",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenumode",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The active value of the menu. Can be bound with `v-model`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "The active value when initially rendered. Use when you do not need to control the state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "collapsed",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the level-1 vertical panel is collapsed.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootprops.members.collapsed",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultCollapsed",
+            "type": "boolean",
+            "required": false,
+            "description": "The collapsed state when initially rendered.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootprops.members.defaultcollapsed",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the menu when applicable.\n\nIf omitted, inherits globally from `ConfigProvider` or assumes LTR.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "SplitMenuRootEmits",
+        "type": "TypeAlias SplitMenuRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; \"update:collapsed\": [value: boolean]; select: [key: string, event?: Event | undefined] }",
+        "description": "Events for the SplitMenuRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootemits.emits",
+        "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when the model value changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:collapsed",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "Emitted when the collapsed state changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootemits.callables.update_collapsed",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "select",
+            "type": "[key: string, event?: Event | undefined]",
+            "parameters": "key: string, event?: Event | undefined",
+            "required": true,
+            "description": "Emitted when a leaf menu item is chosen.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenurootemits.callables.select",
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "SplitMenuTrigger": {
+      "props": {
+        "kind": "props",
+        "name": "SplitMenuTriggerProps",
+        "type": "Interface SplitMenuTriggerProps",
+        "resolvedType": "{ value: string; disabled?: boolean; orientation?: SplitMenuOrientation; collapsed?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the SplitMenuTrigger component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenutriggerprops.props",
+        "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "value",
+            "type": "string",
+            "required": true,
+            "description": "The unique value of the trigger.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenutriggerprops.members.value",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the trigger.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenutriggerprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "SplitMenuOrientation",
+            "required": false,
+            "description": "The rendering orientation of the trigger.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenutriggerprops.members.orientation",
+            "default": "'vertical'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SplitMenuOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "Orientation of a single SplitMenu panel.",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenuorientation",
+                "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "collapsed",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the trigger is collapsed to an icon-only rail.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenutriggerprops.members.collapsed",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenutriggerprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_menu_types.splitmenutriggerprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

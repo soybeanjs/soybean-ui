@@ -446,6 +446,14 @@
         "icon": "Icon",
         "size": "Size"
       },
+      "split-nav": {
+        "basic": "Basic",
+        "custom": "Custom",
+        "horizontal-dual-vertical": "Horizontal Dual Vertical",
+        "horizontal-vertical": "Horizontal Vertical",
+        "teleport": "Teleport",
+        "vertical-horizontal": "Vertical Horizontal"
+      },
       "splitter": {
         "basic": "Basic",
         "collapsible": "Collapsible",

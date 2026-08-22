@@ -7422,6 +7422,150 @@
         },
         "sliderui": "滑块组件的 UI 类重载。"
       },
+      "packages_headless_src_components_split_menu_types": {
+        "splitmenucompactemits": {
+          "callables": {
+            "select": "当选择叶子菜单项时触发。",
+            "update_collapsed": "在折叠状态发生变化时触发。",
+            "update_modelvalue": "当模型值发生变化时触发。"
+          },
+          "emits": "SplitMenuCompact 组件的事件。"
+        },
+        "splitmenucompactprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
+            "collapsed": "一级垂直面板是否已折叠。",
+            "defaultcollapsed": "初始渲染时的折叠状态。",
+            "defaultvalue": "初始渲染时的活动值。当不需要控制状态时使用。",
+            "dir": "菜单的阅读方向（如适用）。\n\n若省略，则从全局 `ConfigProvider` 继承，或默认采用从左到右（LTR）方向。",
+            "horizontalmenuel": "用于挂载水平面板的元素 ID（通过 `Teleport` 渲染）。\n\n若未设置，面板将就地渲染。",
+            "items": "一级菜单项。",
+            "mode": "菜单的样式。",
+            "modelvalue": "菜单的当前选中值。可通过 `v-model` 进行绑定。",
+            "verticalmenuel": "用于挂载垂直面板的元素 ID（通过 `Teleport` 渲染）。\n\n若未设置，面板将在原位置渲染。"
+          },
+          "props": "SplitMenuCompact 组件的属性。"
+        },
+        "splitmenucompactslots": {
+          "callables": {
+            "bottom": "面板渲染后的自定义内容。",
+            "item": "项槽位的自定义内容。",
+            "item_leading": "用于项目引导槽位的自定义内容。",
+            "item_trailing": "用于项目尾部槽位的自定义内容。",
+            "top": "面板渲染前的自定义内容。",
+            "trigger": "水平触发器插槽的自定义内容。"
+          },
+          "slots": "SplitMenuCompact 组件的插槽。"
+        },
+        "splitmenucontentprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "to": "用于挂载内容（通过 `Teleport` 渲染）的元素 ID。\n\n若未设置，内容将就地渲染。"
+          },
+          "props": "SplitMenuContent 组件的属性。"
+        },
+        "splitmenuitemprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
+            "disabled": "当值为 `true` 时，禁止用户与该项进行交互。",
+            "orientation": "该项的渲染方向。",
+            "value": "该项的唯一值。"
+          },
+          "props": "SplitMenuItem 组件的属性。"
+        },
+        "splitmenumode": "SplitMenu 组件可用的菜单布局。\n\n- `dual-vertical`：一级垂直 + 二级垂直，两个垂直列。\n- `vertical-horizontal`：一级垂直 + 二级水平。\n- `horizontal-vertical`：一级水平 + 二级垂直。\n- `horizontal-dual-vertical`：一级水平 + 二级垂直 + 三级垂直（三个面板）。",
+        "splitmenuorientation": "单个 SplitMenu 面板的布局方向。",
+        "splitmenupanelemits": {
+          "callables": {
+            "panelselect": "当选中叶节点时触发。"
+          },
+          "emits": "SplitMenuPanel 组件的事件。"
+        },
+        "splitmenupanelprops": {
+          "members": {
+            "depth": "面板层级（从 1 开始计数）。通过 `data-depth` 属性暴露，用于样式设置。",
+            "horizontalmenuel": "用于挂载水平面板的元素 ID（通过 `Teleport` 渲染）。\n\n若未设置，面板将在原地渲染。",
+            "items": "在此面板中渲染的菜单项。",
+            "orientation": "面板的朝向。",
+            "verticalmenuel": "用于挂载垂直面板的元素 ID（通过 `Teleport` 渲染）。\n\n若未设置，面板将在原位置渲染。"
+          },
+          "props": "SplitMenuPanel 组件的属性。"
+        },
+        "splitmenurootemits": {
+          "callables": {
+            "select": "当选择叶子菜单项时触发。",
+            "update_collapsed": "在折叠状态发生变化时触发。",
+            "update_modelvalue": "当模型值发生变化时触发。"
+          },
+          "emits": "SplitMenuRoot 组件的事件。"
+        },
+        "splitmenurootprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
+            "collapsed": "一级垂直面板是否已折叠。",
+            "defaultcollapsed": "初始渲染时的折叠状态。",
+            "defaultvalue": "初始渲染时的活动值。当不需要控制状态时使用。",
+            "dir": "菜单的阅读方向（如适用）。\n\n若省略，则从全局 `ConfigProvider` 继承，或默认采用从左到右（LTR）方向。",
+            "mode": "菜单的样式。",
+            "modelvalue": "菜单的当前选中值。可通过 `v-model` 进行绑定。"
+          },
+          "props": "SplitMenuRoot 组件的属性。"
+        },
+        "splitmenutriggerprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
+            "collapsed": "触发器是否折叠为仅显示图标的侧边栏。",
+            "disabled": "当值为 `true` 时，禁止用户与触发器进行交互。",
+            "orientation": "触发器的渲染方向。",
+            "value": "触发器的唯一值。"
+          },
+          "props": "SplitMenuTrigger 组件的属性。"
+        },
+        "splitmenuuislot": "SplitMenu 组件可用的 UI 插槽。",
+        "type": ""
+      },
+      "packages_headless_src_components_split_nav_types": {
+        "splitnavmode": "SplitNav 组件可用的菜单样式。\n\n- `dual-vertical`：第 1 级垂直布局 + 其余树形结构垂直布局。\n- `vertical-horizontal`：第 1 级垂直布局 + 嵌套的 Menubar。\n- `horizontal-vertical`：第一级水平布局 + 嵌套的 TreeMenu。\n- `horizontal-dual-vertical`：第一级水平布局 + 嵌套的双垂直布局。",
+        "splitnavrootemits": {
+          "callables": {
+            "select": "当选择叶子菜单项时触发。",
+            "update_modelvalue": "当模型值发生变化时触发。"
+          },
+          "emits": "SplitNavRoot 组件的事件。"
+        },
+        "splitnavrootprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 覆盖此设置。",
+            "aschild": "将默认渲染元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "defaultvalue": "SplitNav 组件在初始渲染时的值。当不需要控制状态时使用。",
+            "dir": "菜单的阅读方向（如适用）。\n\n若省略，则从全局 `ConfigProvider` 继承，或默认采用从左到右（LTR）方向。",
+            "horizontalmountedid": "用于挂载水平菜单的元素 ID（通过 `Teleport` 渲染）。\n\n若未设置，水平菜单将就地渲染。传递元素 ID 时请勿包含 `#`。",
+            "items": "SplitNav 组件的选项数据。",
+            "loop": "一级键盘导航是否会在最后一项与第一项之间循环往复。",
+            "mode": "菜单的样式。",
+            "modelvalue": "SplitNav 组件的当前值。可通过 `v-model` 进行绑定。",
+            "verticalmountedid": "用于挂载垂直菜单的元素 ID（通过 `Teleport` 渲染）。\n\n若未设置，垂直菜单将原地渲染。传递元素 ID 时请勿包含 `#`。"
+          },
+          "props": "SplitNavRoot 组件的属性。"
+        },
+        "splitnavrootslots": {
+          "callables": {
+            "first_level_item": "一级项目的自定义内容。",
+            "item": "嵌套 TreeMenu 项的自定义内容。",
+            "item_leading": "用于嵌套 TreeMenu 项引导槽位的自定义内容。",
+            "item_trailing": "用于嵌套 TreeMenu 项尾部槽位的自定义内容。",
+            "trigger": "针对嵌套菜单栏触发器的自定义内容。"
+          },
+          "slots": "SplitNavRoot 组件的插槽。"
+        },
+        "splitnavuislot": "SplitNav 组件可用的 UI 插槽。",
+        "type": ""
+      },
       "packages_headless_src_components_splitter_types": {
         "splittergroupemits": {
           "callables": {
@@ -12786,6 +12930,83 @@
             "size": "组件的视觉尺寸。"
           },
           "props": "Spinner 组件的属性。"
+        }
+      },
+      "packages_ui_src_components_split_menu_types": {
+        "splitmenuemits": {
+          "callables": {
+            "select": "当选择叶子菜单项时触发。",
+            "update_collapsed": "在折叠状态发生变化时触发。",
+            "update_modelvalue": "当模型值发生变化时触发。"
+          },
+          "emits": "SplitMenu 组件的事件。"
+        },
+        "splitmenuprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
+            "class": "已为根元素添加了额外的类名。",
+            "collapsed": "一级垂直面板是否已折叠。",
+            "defaultcollapsed": "初始渲染时的折叠状态。",
+            "defaultvalue": "初始渲染时的活动值。当不需要控制状态时使用。",
+            "dir": "菜单的阅读方向（如适用）。\n\n若省略，则从全局 `ConfigProvider` 继承，或默认采用从左到右（LTR）方向。",
+            "horizontalmenuel": "用于挂载水平面板的元素 ID（通过 `Teleport` 渲染）。\n\n若未设置，面板将就地渲染。",
+            "items": "一级菜单项。",
+            "mode": "菜单的样式。",
+            "modelvalue": "菜单的当前选中值。可通过 `v-model` 进行绑定。",
+            "size": "组件的视觉尺寸。",
+            "ui": "该组件的按槽位类重写。",
+            "verticalmenuel": "用于挂载垂直面板的元素 ID（通过 `Teleport` 渲染）。\n\n若未设置，面板将在原位置渲染。"
+          },
+          "props": "SplitMenu 组件的属性。"
+        },
+        "splitmenuslots": {
+          "callables": {
+            "bottom": "面板渲染后的自定义内容。",
+            "item": "项槽位的自定义内容。",
+            "item_leading": "用于项目引导槽位的自定义内容。",
+            "item_trailing": "用于项目尾部槽位的自定义内容。",
+            "top": "面板渲染前的自定义内容。",
+            "trigger": "水平触发器插槽的自定义内容。"
+          },
+          "slots": "SplitMenu 组件的插槽。"
+        }
+      },
+      "packages_ui_src_components_split_nav_types": {
+        "splitnavemits": {
+          "callables": {
+            "select": "当选择叶子菜单项时触发。",
+            "update_modelvalue": "当模型值发生变化时触发。"
+          },
+          "emits": "SplitNav 组件的事件。"
+        },
+        "splitnavprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 覆盖此设置。",
+            "aschild": "将默认渲染元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "class": "已为根元素应用了额外的类名。",
+            "defaultvalue": "SplitNav 组件在初始渲染时的值。当不需要控制状态时使用。",
+            "dir": "菜单的阅读方向（如适用）。\n\n若省略，则从全局 `ConfigProvider` 继承，或默认采用从左到右（LTR）方向。",
+            "horizontalmountedid": "用于挂载水平菜单的元素 ID（通过 `Teleport` 渲染）。\n\n若未设置，水平菜单将就地渲染。传递元素 ID 时请勿包含 `#`。",
+            "items": "SplitNav 组件的选项数据。",
+            "loop": "一级键盘导航是否会在最后一项与第一项之间循环往复。",
+            "mode": "菜单的样式。",
+            "modelvalue": "SplitNav 组件的当前值。可通过 `v-model` 进行绑定。",
+            "size": "组件的视觉尺寸。",
+            "ui": "该组件的按槽类重写。",
+            "verticalmountedid": "用于挂载垂直菜单的元素 ID（通过 `Teleport` 渲染）。\n\n若未设置，垂直菜单将原地渲染。传递元素 ID 时请勿包含 `#`。"
+          },
+          "props": "SplitNav 组件的属性。"
+        },
+        "splitnavslots": {
+          "callables": {
+            "first_level_item": "一级项目的自定义内容。",
+            "item": "嵌套 TreeMenu 项的自定义内容。",
+            "item_leading": "用于嵌套 TreeMenu 项引导槽位的自定义内容。",
+            "item_trailing": "用于嵌套 TreeMenu 项尾部槽位的自定义内容。",
+            "trigger": "针对嵌套菜单栏触发器的自定义内容。"
+          },
+          "slots": "SplitNav 组件的插槽。"
         }
       },
       "packages_ui_src_components_splitter_types": {

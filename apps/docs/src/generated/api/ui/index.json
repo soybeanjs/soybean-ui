@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T08:42:22.049Z",
+  "generatedAt": "2026-08-22T16:19:57.643Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -831,6 +831,24 @@
       "component": "spinner",
       "file": "spinner.json",
       "symbols": ["Spinner"]
+    },
+    "split-menu": {
+      "component": "split-menu",
+      "file": "split-menu.json",
+      "symbols": [
+        "SplitMenu",
+        "SplitMenuCompact",
+        "SplitMenuContent",
+        "SplitMenuItem",
+        "SplitMenuPanel",
+        "SplitMenuRoot",
+        "SplitMenuTrigger"
+      ]
+    },
+    "split-nav": {
+      "component": "split-nav",
+      "file": "split-nav.json",
+      "symbols": ["SplitNav", "SplitNavRoot"]
     },
     "splitter": {
       "component": "splitter",
