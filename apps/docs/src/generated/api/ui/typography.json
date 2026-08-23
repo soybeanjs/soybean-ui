@@ -2,6 +2,44 @@
   "component": "typography",
   "symbols": {
     "TypographyParagraph": {
+      "slots": {
+        "kind": "slots",
+        "name": "TypographyParagraphSlots",
+        "type": "TypeAlias TypographyParagraphSlots",
+        "resolvedType": "{ TypographyText?: ((props: TypographyParagraphSlotProps) => any) }",
+        "description": "Slots for the TypographyParagraph component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_typography_types.typographyparagraphslots.slots",
+        "sourcePath": "packages/ui/src/components/typography/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: TypographyParagraphSlotProps) => any) | undefined",
+            "parameters": "((props: TypographyParagraphSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Default slot. Receives the same slot props as the headless paragraph.",
+            "descriptionKey": "api.generated.packages_ui_src_components_typography_types.typographyparagraphslots.callables.default",
+            "sourcePath": "packages/ui/src/components/typography/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TypographyParagraphSlotProps",
+                "kind": "interface",
+                "type": "TypographyParagraphSlotProps",
+                "resolvedType": null,
+                "description": "Slot props exposed by the TypographyParagraph default slot.",
+                "descriptionKey": "api.generated.packages_headless_src_components_typography_types.typographyparagraphslotprops",
+                "sourcePath": "packages/headless/src/components/typography/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      },
       "props": {
         "kind": "props",
         "name": "TypographyParagraphProps",

@@ -41,7 +41,7 @@ provideDescriptionsUi(ui);
 
 <template>
   <DescriptionsRoot v-bind="forwardedProps" :style="rootStyle">
-    <div v-if="title" class="mb-2 text-sm font-semibold text-foreground">{{ title }}</div>
+    <div v-if="title" data-soybean-descriptions-title :class="ui.title">{{ title }}</div>
     <slot />
   </DescriptionsRoot>
 </template>

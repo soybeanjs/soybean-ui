@@ -3717,8 +3717,7 @@
             "layout": "The layout of each item."
           },
           "props": "Properties for the DescriptionsRoot component."
-        },
-        "descriptionsui": "UI class overrides for the Descriptions component."
+        }
       },
       "packages_headless_src_components_dialog_types": {
         "dialogalerttype": "Supported dialog alert values.",
@@ -8728,6 +8727,9 @@
         "timelinedotprops": {
           "props": "Properties for the TimelineDot component."
         },
+        "timelinelabelprops": {
+          "props": "Properties for the TimelineLabel component."
+        },
         "timelinemode": "The item placement mode of a vertical timeline.",
         "timelineorientation": "The layout orientation of a timeline.",
         "timelinerootprops": {
@@ -11712,6 +11714,7 @@
         }
       },
       "packages_ui_src_components_descriptions_types": {
+        "descriptionsextendedui": "UI class overrides including styled-layer structural slots.",
         "descriptionsprops": {
           "members": {
             "bordered": "Whether to render bordered cells.",
@@ -12163,6 +12166,12 @@
             "tooltipcontent": "Text shown in the overflow tooltip. Defaults to the text content of the root."
           },
           "props": "Properties for the Ellipsis component."
+        },
+        "ellipsisslots": {
+          "callables": {
+            "default": "Default slot. Receives the same slot props as the headless root."
+          },
+          "slots": "Slots for the Ellipsis component."
         }
       },
       "packages_ui_src_components_empty_types": {
@@ -14135,6 +14144,13 @@
         }
       },
       "packages_ui_src_components_tree_select_types": {
+        "treeselectemits": {
+          "callables": {
+            "update_modelvalue": "Emitted when the selected value changes.",
+            "update_open": "Emitted when the popup open state changes."
+          },
+          "emits": "Events for the TreeSelect component."
+        },
         "treeselectprops": {
           "members": {
             "allowparentselect": "Whether parent nodes can be selected.",
@@ -14163,6 +14179,13 @@
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the TreeSelect component."
+        },
+        "treeselectslots": {
+          "callables": {
+            "node": "Custom node rendering. Receives the flattened item and tree item slot props.",
+            "value": "Custom trigger value content. Receives `{ labels, modelValue }`."
+          },
+          "slots": "Slots for the TreeSelect component."
         }
       },
       "packages_ui_src_components_tree_types": {
@@ -14201,7 +14224,21 @@
           "props": "Properties for the TreeVirtualizer component."
         }
       },
+      "packages_ui_src_components_typography_types": {
+        "typographyparagraphslots": {
+          "callables": {
+            "default": "Default slot. Receives the same slot props as the headless paragraph."
+          },
+          "slots": "Slots for the TypographyParagraph component."
+        }
+      },
       "packages_ui_src_components_upload_types": {
+        "uploademits": {
+          "callables": {
+            "update_filelist": "Emitted when the file list changes."
+          },
+          "emits": "Events for the Upload component."
+        },
         "uploadprops": {
           "members": {
             "accept": "Accepted file types, following the native `accept` syntax\n(e.g. `.png,.jpg` or `image/*`).",
@@ -14221,6 +14258,13 @@
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the Upload component."
+        },
+        "uploadslots": {
+          "callables": {
+            "default": "The trigger content (button or dropzone area).",
+            "item": "Custom file item rendering."
+          },
+          "slots": "Slots for the Upload component."
         }
       },
       "packages_ui_src_components_virtualizer_types": {

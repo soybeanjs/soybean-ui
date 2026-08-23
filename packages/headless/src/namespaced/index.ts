@@ -532,6 +532,7 @@ import {
   TimelineContent,
   TimelineDot,
   TimelineItem,
+  TimelineLabel,
   TimelineRoot,
   TimelineSeparator,
   TimeRangeFieldCompact,
@@ -1930,12 +1931,14 @@ export const Timeline = {
   Item: TimelineItem,
   Separator: TimelineSeparator,
   Dot: TimelineDot,
+  Label: TimelineLabel,
   Content: TimelineContent
 } as {
   Root: typeof TimelineRoot;
   Item: typeof TimelineItem;
   Separator: typeof TimelineSeparator;
   Dot: typeof TimelineDot;
+  Label: typeof TimelineLabel;
   Content: typeof TimelineContent;
 };
 

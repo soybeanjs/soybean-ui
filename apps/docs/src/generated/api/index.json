@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T10:40:22.473Z",
+  "generatedAt": "2026-08-23T11:27:13.537Z",
   "packages": {
     "ui": {
       "components": {
@@ -998,7 +998,15 @@
         "timeline": {
           "component": "timeline",
           "file": "timeline.json",
-          "symbols": ["Timeline", "TimelineContent", "TimelineDot", "TimelineItem", "TimelineRoot", "TimelineSeparator"]
+          "symbols": [
+            "Timeline",
+            "TimelineContent",
+            "TimelineDot",
+            "TimelineItem",
+            "TimelineLabel",
+            "TimelineRoot",
+            "TimelineSeparator"
+          ]
         },
         "toast": {
           "component": "toast",

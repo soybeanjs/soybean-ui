@@ -31,10 +31,8 @@ const expanded = useControllableState(
   props.defaultExpanded ?? false
 );
 
-const isExpanded = computed(() => expanded.value);
-
 const dataOverflowed = computed(() => (overflowed.value ? '' : undefined));
-const dataExpanded = computed(() => (isExpanded.value ? '' : undefined));
+const dataExpanded = computed(() => (expanded.value ? '' : undefined));
 
 function onToggle() {
   if (!props.expandable) return;
@@ -54,9 +52,12 @@ defineExpose({ overflowed, expanded, text });
     :data-overflowed="dataOverflowed"
     :data-expanded="dataExpanded"
     :data-lines="lines"
-    :aria-expanded="expandable ? isExpanded : undefined"
+    :role="expandable ? 'button' : undefined"
+    :tabindex="expandable ? 0 : undefined"
+    :aria-expanded="expandable ? expanded : undefined"
     @click="onToggle"
+    @keydown.enter.space.prevent="onToggle"
   >
-    <slot :overflowed="overflowed" :expanded="isExpanded" :text="text" :toggle="onToggle" :tooltip="tooltip" />
+    <slot :overflowed="overflowed" :expanded="expanded" :text="text" :toggle="onToggle" :tooltip="tooltip" />
   </Primitive>
 </template>

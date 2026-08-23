@@ -2,7 +2,7 @@
 import { computed, shallowRef, useTemplateRef } from 'vue';
 import { useControllableState } from '../../composables';
 import { provideUploadRootContext, useUploadUi } from './context';
-import type { UploadFile, UploadRequestOptions, UploadRootEmits, UploadRootProps, UploadStatus } from './types';
+import type { UploadFile, UploadRequestOptions, UploadRootEmits, UploadRootProps } from './types';
 
 defineOptions({
   name: 'UploadRoot'
@@ -25,10 +25,12 @@ const emit = defineEmits<UploadRootEmits>();
 
 const rootCls = useUploadUi('root');
 
+const inputCls = useUploadUi('input');
+
 const inputRef = useTemplateRef('inputRef');
 
 const files = useControllableState<UploadFile[] | undefined, true>(
-  () => props.fileList as UploadFile[] | undefined,
+  () => props.fileList,
   value => {
     emit('update:fileList', value as UploadFile[]);
   },
@@ -48,12 +50,12 @@ function createUid() {
 }
 
 function toItems(fileList: FileList | File[]): UploadFile[] {
-  return Array.from(fileList).map(file => ({
+  return Array.from(fileList).map((file): UploadFile => ({
     uid: createUid(),
     name: file.name,
     size: file.size,
     type: file.type,
-    status: 'ready' as UploadStatus,
+    status: 'ready',
     percent: 0,
     raw: file
   }));
@@ -75,30 +77,31 @@ function isAccepted(file: File) {
   });
 }
 
+function patchFile(uid: string, patch: Partial<UploadFile>) {
+  files.value = (files.value ?? []).map(file => (file.uid === uid ? { ...file, ...patch } : file));
+}
+
 function startUpload(item: UploadFile) {
   if (!props.autoUpload) return;
 
   if (!props.customRequest) {
-    item.status = 'success';
-    item.percent = 100;
+    patchFile(item.uid, { status: 'success', percent: 100 });
 
     return;
   }
 
-  item.status = 'uploading';
-  item.percent = 0;
+  patchFile(item.uid, { status: 'uploading', percent: 0 });
 
   const options: UploadRequestOptions = {
     file: item.raw,
     onProgress: percent => {
-      item.percent = Math.min(Math.max(percent, 0), 100);
+      patchFile(item.uid, { percent: Math.min(Math.max(percent, 0), 100) });
     },
     onSuccess: () => {
-      item.status = 'success';
-      item.percent = 100;
+      patchFile(item.uid, { status: 'success', percent: 100 });
     },
     onError: () => {
-      item.status = 'error';
+      patchFile(item.uid, { status: 'error' });
     }
   };
 
@@ -194,7 +197,7 @@ provideUploadRootContext({
       ref="inputRef"
       data-soybean-upload-input
       type="file"
-      hidden
+      :class="inputCls"
       aria-label="Upload"
       :accept="accept"
       :multiple="multiple"

@@ -2,9 +2,8 @@
 import { computed } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { TreeSelectCompact, provideTreeSelectUi } from '@soybeanjs/headless/tree-select';
-import type { TreeSelectModelValue } from '@soybeanjs/headless/tree-select';
 import { treeSelectVariants } from '@/styles/tree-select';
-import type { TreeSelectProps } from './types';
+import type { TreeSelectEmits, TreeSelectProps, TreeSelectSlots } from './types';
 
 defineOptions({
   name: 'STreeSelect'
@@ -17,14 +16,11 @@ const props = withDefaults(defineProps<TreeSelectProps>(), {
   color: 'primary'
 });
 
-const emit = defineEmits<{
-  'update:modelValue': [value: TreeSelectModelValue];
-  'update:open': [value: boolean];
-}>();
+const emit = defineEmits<TreeSelectEmits>();
 
 const forwardedProps = useOmitProps(props, ['class', 'size', 'color', 'ui']);
 
-const slots = defineSlots();
+const slots = defineSlots<TreeSelectSlots>();
 
 const ui = computed(() =>
   treeSelectVariants({ size: props.size, color: props.color }, props.ui, { trigger: props.class })
@@ -39,8 +35,9 @@ provideTreeSelectUi(ui);
     @update:model-value="emit('update:modelValue', $event)"
     @update:open="emit('update:open', $event)"
   >
-    <template v-for="(_, slotName) in slots" :key="slotName" #[slotName]>
-      <slot :name="slotName" />
+    <template v-for="(_, slotName) in slots" :key="slotName" #[slotName]="slotProps">
+      <!-- @vue-ignore ignore vue slot props type -->
+      <slot :name="slotName" v-bind="slotProps" />
     </template>
   </TreeSelectCompact>
 </template>

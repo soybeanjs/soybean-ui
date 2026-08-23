@@ -1,15 +1,25 @@
 import type {
   ImageRootProps as _ImageRootProps,
   ImagePreviewProps as _ImagePreviewProps,
-  ImageUi,
-  ImagePreviewUi
+  ImagePreviewUiSlot,
+  ImageUi
 } from '@soybeanjs/headless/image';
-import type { ClassValue } from '@soybeanjs/headless/types';
+import type { ClassValue, UiClass } from '@soybeanjs/headless/types';
 
 /**
  * How the image fits its container.
  */
 export type ImageFit = 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
+
+/**
+ * UI slots added by the styled layer on top of the headless preview slots.
+ */
+export type ImagePreviewExtraUiSlot = 'toolbar' | 'toolbarButton';
+
+/**
+ * UI class overrides for the preview including styled-layer structural slots.
+ */
+export type ImagePreviewExtendedUi = UiClass<ImagePreviewUiSlot | ImagePreviewExtraUiSlot>;
 
 /**
  * Properties for the Image component.
@@ -50,5 +60,5 @@ export interface ImagePreviewProps extends _ImagePreviewProps {
   /**
    * Per-slot class overrides for the component.
    */
-  ui?: Partial<ImagePreviewUi>;
+  ui?: Partial<ImagePreviewExtendedUi>;
 }

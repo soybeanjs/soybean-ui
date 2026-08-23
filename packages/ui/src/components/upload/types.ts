@@ -1,5 +1,11 @@
 import type { ClassValue } from '@soybeanjs/headless/types';
-import type { UploadUi, UploadFile, UploadCompactProps as _UploadCompactProps } from '@soybeanjs/headless/upload';
+import type {
+  UploadUi,
+  UploadFile,
+  UploadCompactProps as _UploadCompactProps,
+  UploadCompactEmits,
+  UploadCompactSlots
+} from '@soybeanjs/headless/upload';
 import type { ThemeSize } from '@/theme';
 
 /**
@@ -19,5 +25,15 @@ export interface UploadProps extends _UploadCompactProps {
    */
   ui?: Partial<UploadUi>;
 }
+
+/**
+ * Events for the Upload component.
+ */
+export type UploadEmits = UploadCompactEmits;
+
+/**
+ * Slots for the Upload component.
+ */
+export type UploadSlots = UploadCompactSlots;
 
 export type { UploadFile };

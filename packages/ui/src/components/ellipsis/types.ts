@@ -1,4 +1,4 @@
-import type { EllipsisRootProps, EllipsisRootEmits } from '@soybeanjs/headless/ellipsis';
+import type { EllipsisRootProps, EllipsisRootEmits, EllipsisSlotProps } from '@soybeanjs/headless/ellipsis';
 import type { ClassValue } from '@soybeanjs/headless/types';
 
 /**
@@ -19,3 +19,13 @@ export interface EllipsisProps extends EllipsisRootProps {
  * Events for the Ellipsis component.
  */
 export type EllipsisEmits = EllipsisRootEmits;
+
+/**
+ * Slots for the Ellipsis component.
+ */
+export type EllipsisSlots = {
+  /**
+   * Default slot. Receives the same slot props as the headless root.
+   */
+  default?: (props: EllipsisSlotProps) => any;
+};

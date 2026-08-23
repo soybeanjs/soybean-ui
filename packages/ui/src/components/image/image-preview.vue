@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { ImagePreview, provideImagePreviewUi } from '@soybeanjs/headless/image';
+import type { ImagePreviewEmits } from '@soybeanjs/headless/image';
 import { imagePreviewVariants } from '@/styles/image';
 import { SIcon } from '../icon';
 import type { ImagePreviewProps } from './types';
@@ -20,7 +21,7 @@ const props = withDefaults(defineProps<ImagePreviewProps>(), {
   dir: undefined
 });
 
-const emit = defineEmits<{ 'update:open': [value: boolean] }>();
+const emit = defineEmits<ImagePreviewEmits>();
 
 const forwardedProps = useOmitProps(props, ['class', 'ui']);
 
@@ -33,44 +34,19 @@ provideImagePreviewUi(ui);
   <ImagePreview v-bind="forwardedProps" @update:open="emit('update:open', $event)">
     <template #toolbar="{ zoomIn, zoomOut, reset, rotate, close }">
       <div :class="ui.toolbar">
-        <button
-          type="button"
-          aria-label="Zoom out"
-          class="inline-flex size-8 items-center justify-center rounded-full transition-colors-150 hover:bg-white/15"
-          @click="zoomOut"
-        >
+        <button type="button" aria-label="Zoom out" :class="ui.toolbarButton" @click="zoomOut">
           <SIcon icon="lucide:zoom-out" class="size-4" />
         </button>
-        <button
-          type="button"
-          aria-label="Zoom in"
-          class="inline-flex size-8 items-center justify-center rounded-full transition-colors-150 hover:bg-white/15"
-          @click="zoomIn"
-        >
+        <button type="button" aria-label="Zoom in" :class="ui.toolbarButton" @click="zoomIn">
           <SIcon icon="lucide:zoom-in" class="size-4" />
         </button>
-        <button
-          type="button"
-          aria-label="Rotate"
-          class="inline-flex size-8 items-center justify-center rounded-full transition-colors-150 hover:bg-white/15"
-          @click="rotate"
-        >
+        <button type="button" aria-label="Rotate" :class="ui.toolbarButton" @click="rotate">
           <SIcon icon="lucide:rotate-cw" class="size-4" />
         </button>
-        <button
-          type="button"
-          aria-label="Reset"
-          class="inline-flex size-8 items-center justify-center rounded-full transition-colors-150 hover:bg-white/15"
-          @click="reset"
-        >
+        <button type="button" aria-label="Reset" :class="ui.toolbarButton" @click="reset">
           <SIcon icon="lucide:maximize" class="size-4" />
         </button>
-        <button
-          type="button"
-          aria-label="Close"
-          class="inline-flex size-8 items-center justify-center rounded-full transition-colors-150 hover:bg-white/15"
-          @click="close"
-        >
+        <button type="button" aria-label="Close" :class="ui.toolbarButton" @click="close">
           <SIcon icon="lucide:x" class="size-4" />
         </button>
       </div>

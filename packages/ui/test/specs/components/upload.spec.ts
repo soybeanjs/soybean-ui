@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
+import type { UploadRequestOptions } from '@/components/upload';
 import SUpload from '@/components/upload/upload.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -74,6 +75,9 @@ describe('SUpload', () => {
       const emitted = wrapper.emitted('update:fileList')?.[0]?.[0];
 
       expect(Array.isArray(emitted)).toBe(true);
+
+      if (!Array.isArray(emitted)) return;
+
       expect(emitted).toHaveLength(1);
       expect(emitted[0].name).toBe('test.txt');
 
@@ -102,6 +106,31 @@ describe('SUpload', () => {
       expect(typeof options.onProgress).toBe('function');
       expect(typeof options.onSuccess).toBe('function');
       expect(typeof options.onError).toBe('function');
+
+      wrapper.unmount();
+    });
+
+    it('reflects status changes from upload callbacks in the file list', async () => {
+      const wrapper = mount(SUpload, {
+        props: {
+          customRequest: (options: UploadRequestOptions) => {
+            options.onProgress(50);
+            options.onSuccess();
+          }
+        },
+        slots: { default: '<span>Upload</span>' },
+        attachTo: document.body
+      });
+
+      const input = wrapper.find('input[type="file"]');
+      const file = createFile();
+      Object.defineProperty(input.element, 'files', { value: [file], configurable: true });
+
+      await input.trigger('change');
+      await new Promise(resolve => setTimeout(resolve, 0));
+
+      expect(wrapper.find('[data-soybean-upload-file-item]').attributes('data-status')).toBe('success');
+      expect(wrapper.text()).toContain('Done');
 
       wrapper.unmount();
     });

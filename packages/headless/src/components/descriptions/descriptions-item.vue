@@ -30,8 +30,7 @@ const dataSpan = computed(() => (props.span > 1 ? String(props.span) : undefined
     :data-span="dataSpan"
     :data-layout="layout"
     :data-label-align="labelAlign"
-    :class="[cls, props.class]"
-    :style="props.style"
+    :class="cls"
   >
     <div data-soybean-descriptions-label :class="labelCls">
       <slot name="label">{{ label }}</slot>

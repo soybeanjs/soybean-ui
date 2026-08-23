@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useForwardElement } from '../../composables';
 import { PopperAnchor } from '../popper';
 import { Primitive } from '../primitive';
 import { useTreeSelectRootContext, useTreeSelectUi } from './context';
@@ -10,13 +9,11 @@ defineOptions({
   name: 'TreeSelectTrigger'
 });
 
-const props = withDefaults(defineProps<TreeSelectTriggerProps>(), {
+withDefaults(defineProps<TreeSelectTriggerProps>(), {
   as: 'button'
 });
 
 const { open, disabled, dataState, contentId, onOpenChange } = useTreeSelectRootContext('TreeSelectTrigger');
-
-const [_, setTriggerElement] = useForwardElement();
 
 const cls = useTreeSelectUi('trigger');
 
@@ -37,7 +34,6 @@ function onKeyDown(event: KeyboardEvent) {
 <template>
   <PopperAnchor as-child>
     <Primitive
-      :ref="setTriggerElement"
       :as="as"
       :as-child="asChild"
       data-soybean-tree-select-trigger
@@ -48,7 +44,6 @@ function onKeyDown(event: KeyboardEvent) {
       :aria-disabled="isDisabled || undefined"
       :data-state="dataState"
       :data-disabled="isDisabled ? '' : undefined"
-      :tabindex="isDisabled ? undefined : 0"
       type="button"
       @click="onOpen"
       @keydown="onKeyDown"

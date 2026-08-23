@@ -86,7 +86,16 @@ useEscapeKeyDown(
 
 <template>
   <Portal>
-    <div v-if="open" data-soybean-image-preview :dir="dir" :style="previewStyle" :class="rootCls">
+    <div
+      v-if="open"
+      data-soybean-image-preview
+      role="dialog"
+      aria-modal="true"
+      :aria-label="alt || 'Image preview'"
+      :dir="dir"
+      :style="previewStyle"
+      :class="rootCls"
+    >
       <div data-soybean-image-preview-backdrop :class="backdropCls" @click="close" />
       <img data-soybean-image-preview-img :src="src" :alt="alt" :class="imageCls" />
       <slot

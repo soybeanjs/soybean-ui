@@ -34,6 +34,7 @@ const as = computed(() => {
 
 const dataType = computed(() => (props.type === 'default' ? undefined : props.type));
 
+// `delete` is a reserved word and cannot be referenced directly in the template.
 const dataDelete = computed(() => (props.delete ? '' : undefined));
 </script>
 

@@ -32,11 +32,11 @@ const props = withDefaults(defineProps<TreeSelectRootProps>(), {
 const emit = defineEmits<TreeSelectRootEmits>();
 
 const modelValue = useControllableState<TreeSelectModelValue | undefined, true>(
-  () => props.modelValue as TreeSelectModelValue | undefined,
+  () => props.modelValue,
   value => {
     emit('update:modelValue', value as TreeSelectModelValue);
   },
-  (props.defaultValue ?? (props.multiple ? [] : '')) as TreeSelectModelValue,
+  props.defaultValue ?? (props.multiple ? [] : ''),
   true
 );
 const open = useControllableState(
@@ -76,6 +76,10 @@ function handleModelValueChange(value: TreeSelectModelValue) {
   modelValue.value = value ?? (props.multiple ? [] : '');
 }
 
+function handleOpenChange(value: boolean) {
+  open.value = value;
+}
+
 provideTreeSelectRootContext({
   ...transformPropsToContext(props, ['items', 'placeholder', 'disabled', 'clearable', 'multiple', 'dir']),
   open,
@@ -83,9 +87,7 @@ provideTreeSelectRootContext({
   selectedLabels,
   contentId,
   dataState,
-  onOpenChange: (value: boolean) => {
-    open.value = value;
-  },
+  onOpenChange: handleOpenChange,
   onModelValueChange: handleModelValueChange
 });
 </script>

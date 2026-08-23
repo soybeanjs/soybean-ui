@@ -4,7 +4,7 @@ import { useOmitProps } from '@soybeanjs/headless/composables';
 import { TypographyParagraph } from '@soybeanjs/headless/typography';
 import { typographyParagraphVariants } from '@/styles/typography';
 import { SIcon } from '../icon';
-import type { TypographyParagraphProps } from './types';
+import type { TypographyParagraphEmits, TypographyParagraphProps, TypographyParagraphSlots } from './types';
 
 defineOptions({
   name: 'STypographyParagraph'
@@ -15,7 +15,9 @@ const props = withDefaults(defineProps<TypographyParagraphProps>(), {
   copyText: undefined
 });
 
-const emit = defineEmits<{ copied: [text: string] }>();
+const emit = defineEmits<TypographyParagraphEmits>();
+
+defineSlots<TypographyParagraphSlots>();
 
 const forwardedProps = useOmitProps(props, ['class', 'ui']);
 
@@ -29,7 +31,7 @@ const ui = computed(() => typographyParagraphVariants({}, props.ui, { root: prop
     :class="ui.root"
     @copied="emit('copied', $event)"
   >
-    <slot />
+    <slot :copied="copied" :copy="copy" />
     <button
       v-if="copyable"
       type="button"

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
+import { formatFileSize, getUploadStatusLabel } from './shared';
 import { useUploadUi } from './context';
-import type { UploadCompactEmits, UploadCompactProps, UploadCompactSlots, UploadFile } from './types';
+import type { UploadCompactEmits, UploadCompactProps, UploadCompactSlots } from './types';
 import UploadFileItem from './upload-file-item.vue';
 import UploadFileList from './upload-file-list.vue';
 import UploadRoot from './upload-root.vue';
@@ -35,21 +36,8 @@ const forwardedProps = useOmitProps(props, ['triggerProps', 'fileListProps']);
 
 const filePreviewCls = useUploadUi('filePreview');
 const fileInfoCls = useUploadUi('fileInfo');
+const fileStatusCls = useUploadUi('fileStatus');
 const fileActionCls = useUploadUi('fileAction');
-
-const formatSize = (bytes: number) => {
-  if (bytes < 1024) return `${bytes} B`;
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-};
-
-const getStatusLabel = (file: UploadFile) => {
-  if (file.status === 'uploading') return `${file.percent}%`;
-  if (file.status === 'success') return 'Done';
-  if (file.status === 'error') return 'Failed';
-
-  return 'Ready';
-};
 </script>
 
 <template>
@@ -67,7 +55,9 @@ const getStatusLabel = (file: UploadFile) => {
               </span>
               <span data-soybean-upload-file-info :class="fileInfoCls">
                 <span>{{ file.name }}</span>
-                <span>{{ formatSize(file.size) }} · {{ getStatusLabel(file) }}</span>
+                <span data-soybean-upload-file-status :data-status="file.status" :class="fileStatusCls">
+                  {{ formatFileSize(file.size) }} · {{ getUploadStatusLabel(file) }}
+                </span>
               </span>
               <button
                 type="button"

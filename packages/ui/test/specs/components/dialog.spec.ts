@@ -323,7 +323,14 @@ describe('SDialog', () => {
   describe('draggable', () => {
     const firePointer = (target: Element | Window, type: string, x: number, y: number) => {
       target.dispatchEvent(
-        new PointerEvent(type, { bubbles: true, cancelable: true, clientX: x, clientY: y, button: 0, pointerType: 'mouse' })
+        new PointerEvent(type, {
+          bubbles: true,
+          cancelable: true,
+          clientX: x,
+          clientY: y,
+          button: 0,
+          pointerType: 'mouse'
+        })
       );
     };
 

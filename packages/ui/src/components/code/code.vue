@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { CodeRoot, provideCodeUi } from '@soybeanjs/headless/code';
+import type { CodeRootEmits } from '@soybeanjs/headless/code';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { codeVariants } from '@/styles/code';
 import { SIcon } from '../icon';
@@ -20,7 +21,7 @@ const props = withDefaults(defineProps<CodeProps>(), {
   variant: 'block'
 });
 
-const emit = defineEmits<{ copied: [text: string] }>();
+const emit = defineEmits<CodeRootEmits>();
 
 const forwardedProps = useOmitProps(props, ['class', 'ui', 'variant']);
 

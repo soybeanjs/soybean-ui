@@ -221,6 +221,21 @@
         "referencedTypes": []
       }
     },
+    "TimelineLabel": {
+      "props": {
+        "kind": "props",
+        "name": "TimelineLabelProps",
+        "type": "Interface TimelineLabelProps",
+        "resolvedType": null,
+        "description": "Properties for the TimelineLabel component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_timeline_types.timelinelabelprops.props",
+        "sourcePath": "packages/headless/src/components/timeline/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "TimelineRoot": {
       "props": {
         "kind": "props",

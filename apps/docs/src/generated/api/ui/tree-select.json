@@ -674,6 +674,172 @@
         ],
         "callables": [],
         "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TreeSelectEmits",
+        "type": "TypeAlias TreeSelectEmits: TreeSelectCompactEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: TreeSelectModelValue]; \"update:open\": [value: boolean] }",
+        "description": "Events for the TreeSelect component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectemits.emits",
+        "sourcePath": "packages/ui/src/components/tree-select/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: TreeSelectModelValue]",
+            "parameters": "value: TreeSelectModelValue",
+            "required": true,
+            "description": "Emitted when the selected value changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectModelValue",
+                "kind": "typeAlias",
+                "type": "string | string[]",
+                "resolvedType": null,
+                "description": "The value model of the tree-select: a single value or an array when `multiple`.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectmodelvalue",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "update:open",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "Emitted when the popup open state changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectemits.callables.update_open",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "TreeSelectRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: import(\"@soybeanjs/headless\").TreeSelectModelValue]; 'update:open': [value: boolean]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: TreeSelectModelValue]; \"update:open\": [value: boolean] }",
+            "description": "Events for the TreeSelectRoot component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootemits",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: TreeSelectModelValue]",
+                "parameters": "value: TreeSelectModelValue",
+                "required": true,
+                "description": "Emitted when the selected value changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootemits.callables.update_modelvalue",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "update:open",
+                "type": "[value: boolean]",
+                "parameters": "value: boolean",
+                "required": true,
+                "description": "Emitted when the popup open state changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectrootemits.callables.update_open",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "TreeSelectSlots",
+        "type": "TypeAlias TreeSelectSlots: TreeSelectCompactSlots",
+        "resolvedType": "{ value?: ((props: { labels: string[]; modelValue: TreeSelectModelValue; }) => any); node?: ((props: Record<string, any>) => any) }",
+        "description": "Slots for the TreeSelect component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectslots.slots",
+        "sourcePath": "packages/ui/src/components/tree-select/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "value",
+            "type": "((props: { labels: string[]; modelValue: TreeSelectModelValue | undefined; }) => any) | undefined",
+            "parameters": "((props: { labels: string[]; modelValue: TreeSelectModelValue | undefined; }) => any) | undefined",
+            "required": false,
+            "description": "Custom trigger value content. Receives `{ labels, modelValue }`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectslots.callables.value",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ labels: string[]; modelValue: TreeSelectModelValue | undefined; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.type",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "node",
+            "type": "((props: Record<string, any>) => any) | undefined",
+            "parameters": "((props: Record<string, any>) => any) | undefined",
+            "required": false,
+            "description": "Custom node rendering. Receives the flattened item and tree item slot props.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_select_types.treeselectslots.callables.node",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "TreeSelectCompactSlots",
+            "kind": "typeAlias",
+            "type": "{ value?: (props: { labels: string[]; modelValue: import(\"@soybeanjs/headless\").TreeSelectModelValue | undefined; }) => any; node?: (props: Record<string, any>) => any; }",
+            "resolvedType": "{ value?: ((props: { labels: string[]; modelValue: TreeSelectModelValue; }) => any); node?: ((props: Record<string, any>) => any) }",
+            "description": "Slots for the TreeSelectCompact component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactslots",
+            "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "value",
+                "type": "((props: { labels: string[]; modelValue: TreeSelectModelValue | undefined; }) => any) | undefined",
+                "parameters": "((props: { labels: string[]; modelValue: TreeSelectModelValue | undefined; }) => any) | undefined",
+                "required": false,
+                "description": "Custom trigger value content. Receives `{ labels, modelValue }`.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactslots.callables.value",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "node",
+                "type": "((props: Record<string, any>) => any) | undefined",
+                "parameters": "((props: Record<string, any>) => any) | undefined",
+                "required": false,
+                "description": "Custom node rendering. Receives the flattened item and tree item slot props.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_select_types.treeselectcompactslots.callables.node",
+                "sourcePath": "packages/headless/src/components/tree-select/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
       }
     },
     "TreeSelectCompact": {

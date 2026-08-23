@@ -3,6 +3,7 @@ import { computed, useSlots } from 'vue';
 import { useTimelineRootContext, useTimelineUi } from './context';
 import TimelineContent from './timeline-content.vue';
 import TimelineDot from './timeline-dot.vue';
+import TimelineLabel from './timeline-label.vue';
 import TimelineSeparator from './timeline-separator.vue';
 import type { TimelineItemProps, TimelinePosition } from './types';
 
@@ -17,8 +18,6 @@ const slots = useSlots();
 const context = useTimelineRootContext('TimelineItem');
 
 const cls = useTimelineUi('item');
-
-const labelCls = useTimelineUi('label');
 
 const index = context.registerItem();
 
@@ -41,9 +40,9 @@ const dataColor = computed(() => props.color ?? undefined);
     :data-color="dataColor"
     :class="cls"
   >
-    <div v-if="slots.label || label" data-soybean-timeline-label :class="labelCls">
+    <TimelineLabel v-if="slots.label || label">
       <slot name="label">{{ label }}</slot>
-    </div>
+    </TimelineLabel>
     <TimelineSeparator>
       <TimelineDot>
         <slot name="dot" />

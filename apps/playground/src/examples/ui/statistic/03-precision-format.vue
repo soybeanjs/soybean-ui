@@ -6,11 +6,11 @@ const formatter = (value: number) => `${value.toFixed(2)} USD`;
 
 <template>
   <div class="flex flex-col gap-6">
-    <SStatistic label="Thousands Separator" :value="1234567.891" precision="2" />
+    <SStatistic label="Thousands Separator" :value="1234567.891" :precision="2" />
     <SStatistic
       label="Custom Decimal Separator"
       :value="1234567.891"
-      precision="2"
+      :precision="2"
       decimal-separator=","
       group-separator=" "
     />

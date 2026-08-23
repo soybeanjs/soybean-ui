@@ -4,6 +4,7 @@ import { scv } from '@soybeanjs/cva';
 export const descriptionsVariants = scv({
   slots: {
     root: 'grid',
+    title: 'mb-2 text-sm font-semibold text-foreground',
     item: 'min-w-0',
     label: 'text-muted-foreground',
     content: 'min-w-0'

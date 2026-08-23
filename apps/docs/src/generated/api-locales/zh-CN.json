@@ -3717,8 +3717,7 @@
             "layout": "每个条目的排版。"
           },
           "props": "DescriptionsRoot 组件的属性。"
-        },
-        "descriptionsui": "Descriptions 组件的 UI 类重写。"
+        }
       },
       "packages_headless_src_components_dialog_types": {
         "dialogalerttype": "支持的对话框提示值。",
@@ -8728,6 +8727,9 @@
         "timelinedotprops": {
           "props": "TimelineDot 组件的属性。"
         },
+        "timelinelabelprops": {
+          "props": ""
+        },
         "timelinemode": "垂直时间轴的项目排列模式。",
         "timelineorientation": "时间轴的布局方向。",
         "timelinerootprops": {
@@ -11712,6 +11714,7 @@
         }
       },
       "packages_ui_src_components_descriptions_types": {
+        "descriptionsextendedui": "",
         "descriptionsprops": {
           "members": {
             "bordered": "是否渲染带边框的单元格。",
@@ -12163,6 +12166,12 @@
             "tooltipcontent": "溢出提示框中显示的文本。默认为根节点的文本内容。"
           },
           "props": "Ellipsis 组件的属性。"
+        },
+        "ellipsisslots": {
+          "callables": {
+            "default": ""
+          },
+          "slots": ""
         }
       },
       "packages_ui_src_components_empty_types": {
@@ -14135,6 +14144,13 @@
         }
       },
       "packages_ui_src_components_tree_select_types": {
+        "treeselectemits": {
+          "callables": {
+            "update_modelvalue": "",
+            "update_open": ""
+          },
+          "emits": ""
+        },
         "treeselectprops": {
           "members": {
             "allowparentselect": "是否可以选中父节点。",
@@ -14163,6 +14179,13 @@
             "ui": "该组件的按槽位类重写。"
           },
           "props": "TreeSelect 组件的属性。"
+        },
+        "treeselectslots": {
+          "callables": {
+            "node": "",
+            "value": ""
+          },
+          "slots": ""
         }
       },
       "packages_ui_src_components_tree_types": {
@@ -14201,7 +14224,21 @@
           "props": "TreeVirtualizer 组件的属性。"
         }
       },
+      "packages_ui_src_components_typography_types": {
+        "typographyparagraphslots": {
+          "callables": {
+            "default": ""
+          },
+          "slots": ""
+        }
+      },
       "packages_ui_src_components_upload_types": {
+        "uploademits": {
+          "callables": {
+            "update_filelist": ""
+          },
+          "emits": ""
+        },
         "uploadprops": {
           "members": {
             "accept": "接受的文件类型，需遵循原生 `accept` 语法\n（例如 `.png, .jpg` 或 `image/*`）。",
@@ -14221,6 +14258,13 @@
             "ui": "该组件的按槽位类覆盖。"
           },
           "props": "Upload 组件的属性。"
+        },
+        "uploadslots": {
+          "callables": {
+            "default": "",
+            "item": ""
+          },
+          "slots": ""
         }
       },
       "packages_ui_src_components_virtualizer_types": {

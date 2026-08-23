@@ -67,6 +67,11 @@ export interface TimelineSeparatorProps extends BaseProps {}
 export interface TimelineDotProps extends BaseProps {}
 
 /**
+ * Properties for the TimelineLabel component.
+ */
+export interface TimelineLabelProps extends BaseProps {}
+
+/**
  * Properties for the TimelineContent component.
  */
 export interface TimelineContentProps extends BaseProps {}

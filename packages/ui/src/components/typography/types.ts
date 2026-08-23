@@ -3,6 +3,7 @@ import type {
   TypographyParagraphSlotProps,
   TypographyTitleProps as _TypographyTitleProps,
   TypographyParagraphProps as _TypographyParagraphProps,
+  TypographyParagraphEmits as _TypographyParagraphEmits,
   TypographyTextProps as _TypographyTextProps
 } from '@soybeanjs/headless/typography';
 
@@ -44,5 +45,20 @@ export interface TypographyTextProps extends _TypographyTextProps {
    */
   class?: ClassValue;
 }
+
+/**
+ * Events for the TypographyParagraph component.
+ */
+export type TypographyParagraphEmits = _TypographyParagraphEmits;
+
+/**
+ * Slots for the TypographyParagraph component.
+ */
+export type TypographyParagraphSlots = {
+  /**
+   * Default slot. Receives the same slot props as the headless paragraph.
+   */
+  default?: (props: TypographyParagraphSlotProps) => any;
+};
 
 export type { TypographyParagraphSlotProps };

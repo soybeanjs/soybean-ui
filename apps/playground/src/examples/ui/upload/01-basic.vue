@@ -8,7 +8,7 @@ const fileList = ref<UploadFile[]>([]);
 
 <template>
   <div class="w-96">
-    <SUpload v-model:file-list="fileList" accept=".png,.jpg,.pdf" max-size="1048576">
+    <SUpload v-model:file-list="fileList" accept=".png,.jpg,.pdf" :max-size="1048576">
       <div class="flex flex-col items-center gap-1.5">
         <SIcon icon="lucide:upload" class="size-6" />
         <span>Click to upload (PNG, JPG, PDF, max 1 MB)</span>

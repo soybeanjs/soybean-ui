@@ -26,8 +26,10 @@ const status = useImageLoadingStatus({ src: () => props.src ?? '' });
 
 const effectiveSrc = computed(() => (status.value === 'error' && props.fallback ? props.fallback : props.src));
 
+const previewable = computed(() => props.preview && status.value === 'loaded');
+
 function onImageClick() {
-  if (props.preview && status.value === 'loaded') emit('preview');
+  if (previewable.value) emit('preview');
 }
 </script>
 
@@ -45,8 +47,11 @@ function onImageClick() {
       :src="effectiveSrc"
       :alt="alt"
       :loading="loading"
+      :role="previewable ? 'button' : undefined"
+      :tabindex="previewable ? 0 : undefined"
       :class="imageCls"
       @click="onImageClick"
+      @keydown.enter.space.prevent="onImageClick"
     />
     <slot v-if="status === 'loading'" name="placeholder" :status="status" />
     <slot v-if="status === 'error' && !fallback" name="error" :status="status" />

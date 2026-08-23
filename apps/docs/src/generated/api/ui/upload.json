@@ -75,7 +75,7 @@
               {
                 "name": "UploadUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; trigger: ClassValue; fileList: ClassValue; fileItem: ClassValue; filePreview: ClassValue; fileInfo: ClassValue; fileStatus: ClassValue; fileAction: ClassValue; }",
+                "type": "{ root: ClassValue; trigger: ClassValue; input: ClassValue; fileList: ClassValue; fileItem: ClassValue; filePreview: ClassValue; fileInfo: ClassValue; fileStatus: ClassValue; fileAction: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Upload component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadui",
@@ -278,6 +278,138 @@
         ],
         "callables": [],
         "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "UploadEmits",
+        "type": "TypeAlias UploadEmits: UploadCompactEmits",
+        "resolvedType": "{ \"update:fileList\": [files: UploadFile[]] }",
+        "description": "Events for the Upload component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploademits.emits",
+        "sourcePath": "packages/ui/src/components/upload/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:fileList",
+            "type": "[files: UploadFile[]]",
+            "parameters": "files: UploadFile[]",
+            "required": true,
+            "description": "Emitted when the file list changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploademits.callables.update_filelist",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "UploadRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:fileList': [files: UploadFile[]]; }",
+            "resolvedType": "{ \"update:fileList\": [files: UploadFile[]] }",
+            "description": "Events for the UploadRoot component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadrootemits",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:fileList",
+                "type": "[files: UploadFile[]]",
+                "parameters": "files: UploadFile[]",
+                "required": true,
+                "description": "Emitted when the file list changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadrootemits.callables.update_filelist",
+                "sourcePath": "packages/headless/src/components/upload/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "UploadSlots",
+        "type": "TypeAlias UploadSlots: UploadCompactSlots",
+        "resolvedType": "{ UploadCompact?: (() => any); item?: ((props: { file: UploadFile; remove: (uid: string) => void; retry: (uid: string) => void; }) => any) }",
+        "description": "Slots for the Upload component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadslots.slots",
+        "sourcePath": "packages/ui/src/components/upload/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "The trigger content (button or dropzone area).",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadslots.callables.default",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "item",
+            "type": "((props: { file: UploadFile; remove: (uid: string) => void; retry: (uid: string) => void; }) => any) | undefined",
+            "parameters": "((props: { file: UploadFile; remove: (uid: string) => void; retry: (uid: string) => void; }) => any) | undefined",
+            "required": false,
+            "description": "Custom file item rendering.",
+            "descriptionKey": "api.generated.packages_ui_src_components_upload_types.uploadslots.callables.item",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ file: UploadFile; remove: (uid: string) => void; retry: (uid: string) => void; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_upload_types.type",
+                "sourcePath": "packages/headless/src/components/upload/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "UploadCompactSlots",
+            "kind": "typeAlias",
+            "type": "{ UploadCompact?: () => any; item?: (props: { file: UploadFile; remove: (uid: string) => void; retry: (uid: string) => void; }) => any; }",
+            "resolvedType": "{ UploadCompact?: (() => any); item?: ((props: { file: UploadFile; remove: (uid: string) => void; retry: (uid: string) => void; }) => any) }",
+            "description": "Slots for the UploadCompact component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactslots",
+            "sourcePath": "packages/headless/src/components/upload/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "default",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "The trigger content (button or dropzone area).",
+                "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactslots.callables.default",
+                "sourcePath": "packages/headless/src/components/upload/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "item",
+                "type": "((props: { file: UploadFile; remove: (uid: string) => void; retry: (uid: string) => void; }) => any) | undefined",
+                "parameters": "((props: { file: UploadFile; remove: (uid: string) => void; retry: (uid: string) => void; }) => any) | undefined",
+                "required": false,
+                "description": "Custom file item rendering.",
+                "descriptionKey": "api.generated.packages_headless_src_components_upload_types.uploadcompactslots.callables.item",
+                "sourcePath": "packages/headless/src/components/upload/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
       }
     },
     "UploadCompact": {

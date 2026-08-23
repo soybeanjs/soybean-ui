@@ -200,6 +200,44 @@
           }
         ]
       },
+      "slots": {
+        "kind": "slots",
+        "name": "EllipsisSlots",
+        "type": "TypeAlias EllipsisSlots",
+        "resolvedType": "{ EllipsisRoot?: ((props: EllipsisSlotProps) => any) }",
+        "description": "Slots for the Ellipsis component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_ellipsis_types.ellipsisslots.slots",
+        "sourcePath": "packages/ui/src/components/ellipsis/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: EllipsisSlotProps) => any) | undefined",
+            "parameters": "((props: EllipsisSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Default slot. Receives the same slot props as the headless root.",
+            "descriptionKey": "api.generated.packages_ui_src_components_ellipsis_types.ellipsisslots.callables.default",
+            "sourcePath": "packages/ui/src/components/ellipsis/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EllipsisSlotProps",
+                "kind": "interface",
+                "type": "EllipsisSlotProps",
+                "resolvedType": null,
+                "description": "Slot props exposed by the EllipsisRoot default slot.",
+                "descriptionKey": "api.generated.packages_headless_src_components_ellipsis_types.ellipsisslotprops",
+                "sourcePath": "packages/headless/src/components/ellipsis/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      },
       "slotProps": {
         "kind": "slotProps",
         "name": "EllipsisSlotProps",

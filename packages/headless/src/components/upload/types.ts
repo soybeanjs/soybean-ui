@@ -188,6 +188,7 @@ export type UploadCompactSlots = {
  */
 export type UploadUiSlot =
   | 'root'
+  | 'input'
   | 'trigger'
   | 'fileList'
   | 'fileItem'

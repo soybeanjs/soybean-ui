@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCode, STypographyText } from '@soybeanjs/ui';
+import { SCode } from '@soybeanjs/ui';
 </script>
 
 <template>

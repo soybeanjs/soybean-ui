@@ -13,7 +13,7 @@ import { SStatistic } from '@soybeanjs/ui';
       </template>
       <template #suffix>GB</template>
     </SStatistic>
-    <SStatistic label="Custom ui override" :value="99.5" precision="1">
+    <SStatistic label="Custom ui override" :value="99.5" :precision="1">
       <template #suffix>%</template>
     </SStatistic>
   </div>

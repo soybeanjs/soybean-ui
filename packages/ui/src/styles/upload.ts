@@ -4,6 +4,7 @@ import { scv } from '@soybeanjs/cva';
 export const uploadVariants = scv({
   slots: {
     root: 'flex flex-col gap-2',
+    input: 'hidden',
     trigger: [
       'inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-dashed border-border bg-secondary/30 text-muted-foreground outline-none transition-colors-150',
       'hover:border-primary/60 hover:text-foreground focus-visible:ring-2 focus-visible:ring-primary/30',

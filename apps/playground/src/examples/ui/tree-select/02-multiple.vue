@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { STreeSelect } from '@soybeanjs/ui';
 import type { TreeSelectModelValue } from '@soybeanjs/ui';
 
 const value = ref<TreeSelectModelValue>([]);
+
+const selectedText = computed(() => (Array.isArray(value.value) ? value.value.join(', ') : value.value));
 
 const items = [
   {
@@ -37,6 +39,6 @@ const items = [
       propagate-select
       bubble-select
     />
-    <p class="mt-2 text-xs text-muted-foreground">Selected: {{ value.join(', ') || '—' }}</p>
+    <p class="mt-2 text-xs text-muted-foreground">Selected: {{ selectedText || '—' }}</p>
   </div>
 </template>

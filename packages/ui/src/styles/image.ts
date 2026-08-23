@@ -37,6 +37,7 @@ export const imagePreviewVariants = scv({
       '[transform:scale(var(--soybean-image-preview-zoom))_rotate(var(--soybean-image-preview-rotate))]'
     ],
     toolbar:
-      'absolute bottom-4 left-1/2 z-2 flex -translate-x-1/2 items-center gap-1 rounded-full border border-white/20 bg-black/50 p-1.5 text-white backdrop-blur'
+      'absolute bottom-4 left-1/2 z-2 flex -translate-x-1/2 items-center gap-1 rounded-full border border-white/20 bg-black/50 p-1.5 text-white backdrop-blur',
+    toolbarButton: 'inline-flex size-8 items-center justify-center rounded-full transition-colors-150 hover:bg-white/15'
   }
 });

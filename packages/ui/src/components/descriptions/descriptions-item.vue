@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useOmitProps } from '@soybeanjs/headless/composables';
 import { DescriptionsItem } from '@soybeanjs/headless/descriptions';
 import type { DescriptionsItemProps } from './types';
 
@@ -13,13 +12,11 @@ const props = withDefaults(defineProps<DescriptionsItemProps>(), {
   span: 1
 });
 
-const forwardedProps = useOmitProps(props, []);
-
 const itemStyle = computed(() => (props.span > 1 ? { gridColumn: `span ${props.span}` } : undefined));
 </script>
 
 <template>
-  <DescriptionsItem v-bind="forwardedProps" :style="itemStyle">
+  <DescriptionsItem v-bind="props" :style="itemStyle">
     <template #label>
       <slot name="label" />
     </template>

@@ -1,4 +1,9 @@
-import type { TreeSelectUi, TreeSelectCompactProps as _TreeSelectCompactProps } from '@soybeanjs/headless/tree-select';
+import type {
+  TreeSelectUi,
+  TreeSelectCompactProps as _TreeSelectCompactProps,
+  TreeSelectCompactEmits,
+  TreeSelectCompactSlots
+} from '@soybeanjs/headless/tree-select';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 
@@ -23,3 +28,13 @@ export interface TreeSelectProps extends _TreeSelectCompactProps {
    */
   ui?: Partial<TreeSelectUi>;
 }
+
+/**
+ * Events for the TreeSelect component.
+ */
+export type TreeSelectEmits = TreeSelectCompactEmits;
+
+/**
+ * Slots for the TreeSelect component.
+ */
+export type TreeSelectSlots = TreeSelectCompactSlots;

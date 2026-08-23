@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, shallowRef } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { EllipsisRoot } from '@soybeanjs/headless/ellipsis';
 import { ellipsisVariants } from '@/styles/ellipsis';
 import { STooltip } from '../tooltip';
-import type { EllipsisProps, EllipsisEmits } from './types';
+import type { EllipsisEmits, EllipsisProps, EllipsisSlots } from './types';
 
 defineOptions({
   name: 'SEllipsis'
@@ -21,11 +21,13 @@ const props = withDefaults(defineProps<EllipsisProps>(), {
 
 const emit = defineEmits<EllipsisEmits>();
 
+defineSlots<EllipsisSlots>();
+
 const forwardedProps = useOmitProps(props, ['class', 'tooltipContent']);
 
 const cls = computed(() => ellipsisVariants({ lines: props.lines }, props.class));
 
-const ellipsisRef = ref<InstanceType<typeof EllipsisRoot>>();
+const ellipsisRef = shallowRef<InstanceType<typeof EllipsisRoot>>();
 
 const showTooltip = computed(() => {
   if (!props.tooltip || props.expandable) return false;
@@ -41,11 +43,12 @@ const tooltipContent = computed(() => props.tooltipContent ?? ellipsisRef.value?
     <template #trigger>
       <EllipsisRoot
         ref="ellipsisRef"
+        v-slot="ellipsisSlotProps"
         v-bind="forwardedProps"
         :class="cls"
         @update:expanded="emit('update:expanded', $event)"
       >
-        <slot />
+        <slot v-bind="ellipsisSlotProps" />
       </EllipsisRoot>
     </template>
   </STooltip>
