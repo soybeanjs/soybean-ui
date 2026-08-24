@@ -18,21 +18,6 @@ export function usePopupEvents(options: UsePopupEventsOptions) {
   let hasInteractedOutsideRef = false;
   let hasPointerDownOutsideRef = false;
 
-  const onPointerDownOutside = (event: PointerDownOutsideEvent) => {
-    if (!modal.value) return;
-
-    if (event.defaultPrevented) return;
-    const originalEvent = event.detail.originalEvent;
-    const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
-    const isRightClick = originalEvent.button === 2 || ctrlLeftClick;
-
-    // If the event is a right-click, we shouldn't close because
-    // it is effectively as if we right-clicked the `Overlay`.
-    if (isRightClick) {
-      event.preventDefault();
-    }
-  };
-
   const onFocusOutside = (event: FocusOutsideEvent) => {
     if (!modal.value) return;
 
@@ -91,7 +76,6 @@ export function usePopupEvents(options: UsePopupEventsOptions) {
   };
 
   return {
-    onPointerDownOutside,
     onFocusOutside,
     onInteractOutside,
     onCloseAutoFocus

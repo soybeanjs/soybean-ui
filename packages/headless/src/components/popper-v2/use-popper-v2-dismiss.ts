@@ -42,7 +42,6 @@ export function usePopperV2Dismiss(options: UsePopperDismissOptions) {
 
   function onPointerDownOutside(event: PointerDownOutsideEvent) {
     dismissReason = 'dismiss-outside';
-    popupEvents.onPointerDownOutside(event);
     options.onPointerDownOutside(event);
   }
 

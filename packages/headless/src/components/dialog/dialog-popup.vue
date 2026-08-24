@@ -24,17 +24,28 @@ const isPresent = props.forceMount ? shallowRef(true) : usePresence(popupElement
 
 const trapFocus = computed(() => modal.value && open.value);
 
-const { onPointerDownOutside, onFocusOutside, onInteractOutside, onCloseAutoFocus } = usePopupEvents({
+const { onFocusOutside, onInteractOutside, onCloseAutoFocus } = usePopupEvents({
   modal,
   triggerElement
 });
 
 const handlePointerDownOutside = (event: PointerDownOutsideEvent) => {
+  // An alert dialog swallows every outside press so focus stays inside.
   if (isAlert.value) {
     event.preventDefault();
+    return;
   }
 
-  onPointerDownOutside(event);
+  if (!modal.value) return;
+
+  const originalEvent = event.detail.originalEvent;
+  const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
+
+  // If the event is a right-click, we shouldn't close because
+  // it is effectively as if we right-clicked the `Overlay`.
+  if (originalEvent.button === 2 || ctrlLeftClick) {
+    event.preventDefault();
+  }
 };
 
 const handleInteractOutside = (event: PointerDownOutsideEvent | FocusOutsideEvent) => {
