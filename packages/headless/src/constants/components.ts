@@ -406,6 +406,19 @@ export const components = {
     'PopoverClose'
   ],
   popper: ['PopperRoot', 'PopperAnchor', 'PopperPositioner', 'PopperPopup', 'PopperArrow'],
+  popperV2: [
+    'PopperV2Root',
+    'PopperV2Trigger',
+    'PopperV2Anchor',
+    'PopperV2SubTrigger',
+    'PopperV2Portal',
+    'PopperV2Positioner',
+    'PopperV2PositionerImpl',
+    'PopperV2Popup',
+    'PopperV2Arrow',
+    'PopperV2Sub',
+    'PopperV2Compact'
+  ],
   portal: ['Portal'],
   primitive: ['Primitive'],
   progress: [

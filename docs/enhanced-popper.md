@@ -1,7 +1,7 @@
 # Enhanced Popper 设计方案
 
 > 定位：基于 Floating UI，在现有定位原语之上扩展触发、开合、嵌套与 dismiss 等通用浮层能力的设计方案；指导 playground 原型与后续 headless 收敛。
-> 状态：🧪 P0 原型已落地，待评审
+> 状态：🔵 P1 迁移进行中 —— 已从 playground 迁入 `packages` 为正式组件 **PopperV2**（headless `popper-v2/` + UI `SPopperV2`），上层消费为待迁移清单
 > 基线：2026-08-24 · 对照源码 `packages/headless/src/components/{popper,popover,tooltip,menu,dropdown-menu,context-menu,hover-card}/`
 
 ---
@@ -18,11 +18,11 @@
 
 ### 1.2 落地策略（强制）
 
-| 阶段        | 位置                                                            | 说明                                                                                                                                                 |
-| :---------- | :-------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **P0 原型** | `apps/playground/src/examples/ui/enhanced-popper/`              | 先在 playground 用本地 `headless/`（含本地 `headless/popper/` 定位层）+ `ui/` 验证 API 与交互；**不**改 `packages/headless` / `packages/ui` 公共导出 |
-| **P1 收敛** | `packages/headless/src/components/popper/`（或并列 `floating`） | 原型稳定后，按兼容策略迁入 headless                                                                                                                  |
-| **P2 消费** | Popover / Tooltip / Menu / …                                    | 逐个改为组合新 API；行为回归由 e2e / playground 覆盖                                                                                                 |
+| 阶段        | 位置                                                            | 说明                                                                                                                                                              |
+| :---------- | :-------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **P0 原型** | `apps/playground/src/examples/ui/enhanced-popper/`              | 先在 playground 用本地 `headless/`（定位逻辑直接内联，**无**独立 `popper/` 定位层）+ `ui/` 验证 API 与交互；**不**改 `packages/headless` / `packages/ui` 公共导出 |
+| **P1 收敛** | `packages/headless/src/components/popper/`（或并列 `floating`） | 原型稳定后，按兼容策略迁入 headless                                                                                                                               |
+| **P2 消费** | Popover / Tooltip / Menu / …                                    | 逐个改为组合新 API；行为回归由 e2e / playground 覆盖                                                                                                              |
 
 本方案文档只覆盖 **设计与 P0 原型范围**；P1/P2 迁移细则在原型验收后再拆任务。
 
@@ -123,7 +123,7 @@ Enhanced Popper 的嵌套模型应以 **MenuSub + grace + layer 栈** 为基准�
 ## 4. 设计原则
 
 1. **分层清晰**：定位（已有）∪ 交互壳（新增）∪ 领域语义（上层）。Enhanced Popper 只到「壳」。
-2. **组合优先于替换**：P0 原型新部件与现有 `Popper*` 并存；P1 再决定是扩展现有目录还是 `floating` 新目录。
+2. **组合优先于替换**：P0 原型定位逻辑内联（不依赖现有 `Popper*` 组件），与现有 `Popper*` 并存；P1 再决定是扩展现有目录还是 `floating` 新目录。
 3. **策略可插拔**：trigger / dismiss / focus / delay 用策略对象或 composable，避免巨型 Root。
 4. **嵌套是一等公民**：Root 注册到 parent stack；默认「父关子关」「子区域不触发父 dismiss」。
 5. **默认安全**：无障碍与键盘路径有合理默认，但 role 不写死（由上层注入或 `role` prop）。
@@ -150,6 +150,8 @@ PopperRoot                    # open 状态 + nest stack + dir + 元素注册
 ```
 
 > P0 原型命名建议使用前缀 `Ep`（Enhanced Popper）或目录名 `enhanced-popper`，避免与正式 `Popper*` 冲突，例如 `EpRoot` / `EpTrigger`。迁入 headless 后再统一命名。
+>
+> **P0 实现口径**：定位逻辑（`useFloating` + middleware + `autoUpdate`）直接内联进 ep 组件（`ep-positioner-impl`），**不建立独立 `popper/` 定位组件层，也不包 headless `PopperPositioner`**；仅复用 `@soybeanjs/headless` 的通用 composables / Primitive / Arrow 图标 / 类型。下表为抽象目标，P1 迁入时再定正式部件命名。
 
 ### 5.2 职责边界
 
@@ -271,7 +273,7 @@ interface EpTriggerProps extends PrimitiveWithBaseProps {
 
 实现要点：
 
-- Trigger 默认同时充当 Anchor（内部包 `PopperAnchor`）；若存在独立 `EpAnchor` / `reference`，则 Trigger 只负责事件。
+- Trigger 默认同时充当 Anchor（原型内联锚点注册，经 `onAnchorElementChange` 登记为 reference）；若存在独立 `EpAnchor` / `reference`，则 Trigger 只负责事件。
 - `contextmenu` 模式下，Root/Positioner 的 reference 切到零尺寸 virtual element（复用 ContextMenu 的 `getBoundingClientRect` 模式）。
 - `contextmenu` 触发器需内联 `pointer-events: auto`（对齐 `ContextMenuTrigger`）：modal 层打开期间 body 指针事件被禁用，触发器保持可交互，重复右键才能再次到达 Trigger、更新虚拟点坐标并重定位浮层（对齐 ContextMenu 的重复右键行为）。
 - `contextmenu` 的虚拟 reference 必须真实依赖坐标状态：在 computed getter 内读取 `point` 再闭包捕获，而不是在 `getBoundingClientRect` 闭包里惰性读取——后者不收集依赖，浮层打开后重复右键不会重定位。ContextMenu 现状用 `update-position-strategy="always"`（animationFrame 轮询）绕过此问题；Enhanced Popper 用响应式 reference 事件驱动重定位，无需轮询。
@@ -279,7 +281,7 @@ interface EpTriggerProps extends PrimitiveWithBaseProps {
 
 ### 6.3 `EpPopup` / Positioner / Arrow / Portal
 
-- **定位 props**：原样透传现有 `PopperPositionerProps`（或直接复用 headless `PopperPositioner`）。
+- **定位 props**：原型内联定义 `EpPositionerProps`（表面同 `PopperPositionerProps`，另含 `trapFocus`）；定位逻辑直接在 `ep-positioner-impl` 用 `useFloating` + middleware，**不包 headless `PopperPositioner`**。
 - **Portal**：原型可组合现有 `Portal`；提供 `to` / `disabled`。
 - **Presence**：`forceMount` + `data-state="open|closed"` + `usePresence`。
 - **Dismiss**：基于 `useDismissableLayer` + `usePopupEvents` 的预设：
@@ -365,9 +367,9 @@ interface EpTriggerProps extends PrimitiveWithBaseProps {
 apps/playground/src/examples/ui/enhanced-popper/
 ├── index.vue                 # 示例索引
 ├── headless/                 # 本地 headless 层（对应 packages/headless，不发 npm）
-│   ├── shared.ts            # middleware / css vars / placement helpers / 默认 props
+│   ├── shared.ts            # middleware / css vars / placement / 默认 props
 │   ├── types.ts             # 定位 + 交互壳类型（定位 props 内联定义）
-│   ├── context.ts           # root + positioner + ui context（定位数据直接在此）
+│   ├── context.ts           # root / positioner / ui 三层 context（定位数据直接在此）
 │   ├── use-popper-trigger.ts
 │   ├── use-popper-nesting.ts
 │   ├── use-popper-dismiss.ts
@@ -418,8 +420,8 @@ apps/playground/src/examples/ui/enhanced-popper/
 
 - 分层：`headless/` 只放逻辑 / 状态 / a11y；`ui/` 只放 `scv()` recipe、UiContext 注入与薄包装。
 - 样式：写在本地 `ui/styles.ts`；**不要**改 `packages/ui`。
-- 定位：原型自带 `headless/popper/`（自 `@soybeanjs/headless/popper` 移植的种子实现），交互壳与定位层均在原型内闭环；通用设施（`useFloating` 等 composables、Primitive、Arrow 图标、类型）继续复用 `@soybeanjs/headless`。
-- `headless/popper/popper-root.vue` 不再接 headless 的 ConfigProvider `useDirection`，fallback `'ltr'`；方向仍由 `EpRoot` 传入（RTL 能力不变）。
+- 定位：定位逻辑（`useFloating` + middleware + `autoUpdate`）直接内联在 `headless/ep-positioner-impl.vue` 与 `headless/shared.ts`，**不保留独立 `popper/` 定位组件层、也不包 headless `PopperPositioner`**；交互壳与定位逻辑均在原型内闭环，通用设施（`useFloating` 等 composables、Primitive、Arrow 图标、`useDismissableLayer` 等类型）继续复用 `@soybeanjs/headless`。
+- 方向：不接 headless 的 ConfigProvider `useDirection`，由 `EpRoot` 传入 `dir`，并沿 `EpRootContext` / `EpPositionerContext` 传递（RTL 能力不变）。
 - 不新增 workspace 依赖（Floating UI 已作为 playground 直接依赖，与 headless 同版本）。
 
 ---
@@ -499,7 +501,7 @@ apps/playground/src/examples/ui/enhanced-popper/
 
 ### 14.1 功能缺口
 
-#### T-1 · modal 焦点圈闭 + body 滚动锁（⬜ P1）
+#### T-1 · modal 焦点圈闭 + body 滚动锁（✅ 2026-08-24）
 
 **问题**：`modal=true` 时仅做 `disableOutsidePointerEvents`（body `pointer-events: none`），无焦点圈闭（focus trap）与滚动锁定；wheel 仍可滚动背后页面。Radix DropdownMenu modal 提供 `trapFocus` + `useBodyScrollLock`。
 
@@ -507,7 +509,7 @@ apps/playground/src/examples/ui/enhanced-popper/
 
 **验收**：modal 浮层打开后 Tab 在层内循环、背后滚动被锁、Escape 关闭后回焦 trigger 正常。
 
-#### T-2 · 接线 `onOpenAutoFocus` / `onCloseAutoFocus`（⬜ P1）
+#### T-2 · 接线 `onOpenAutoFocus` / `onCloseAutoFocus`（✅ 2026-08-24）
 
 **问题**：`usePopupEvents` 已导出 `onCloseAutoFocus` 但从未调用；打开侧无焦点入口钩子，modal 浮层打开不会聚焦首个可聚焦元素。
 
@@ -523,13 +525,13 @@ apps/playground/src/examples/ui/enhanced-popper/
 
 ### 14.2 逻辑清理
 
-#### T-4 · 删除 `longPressOpened` 死逻辑（⬜ P2）
+#### T-4 · 删除 `longPressOpened` 死逻辑（✅ 2026-08-24）
 
 **问题**：`use-popper-trigger.ts` 中 `longPressOpened` 仅在 `trigger==='contextmenu'` 时置位、仅在 `trigger==='click'` 的 `onClick` 读取，两种 trigger 互斥，分支永不交叉。
 
 **验收**：删除后 typecheck 通过，contextmenu 长按与 click 行为不变。
 
-#### T-5 · `useGraceArea` 按 trigger 条件启用（⬜ P2）
+#### T-5 · `useGraceArea` 按 trigger 条件启用（✅ 2026-08-24）
 
 **问题**：`ep-positioner-impl` 对 click / contextmenu trigger 也建 grace polygon + pointer 监听；`useGraceArea` 支持 `disabled` 参数却未使用。
 
@@ -537,13 +539,13 @@ apps/playground/src/examples/ui/enhanced-popper/
 
 **验收**：click / contextmenu 示例行为不变，hover 示例 grace 仍正常。
 
-#### T-6 · 清理 `onDocumentPointerEnd` 残留 `setTimeout`（⬜ P3）
+#### T-6 · 清理 `onDocumentPointerEnd` 残留 `setTimeout`（✅ 2026-08-24）
 
 **问题**：`use-popper-trigger.ts:65-67` 的 `setTimeout(() => { isPointerDown = false }, 0)` 在 unmount 后仍执行且不清理。
 
 **方案**：unmount 标记或同步复位，避免未清理异步。
 
-#### T-7 · 确认并绑定 dismiss 捕获事件（⬜ P2，与 T-2 关联）
+#### T-7 · 确认并绑定 dismiss 捕获事件（✅ 2026-08-24，与 T-2 关联）
 
 **问题**：`use-popper-dismiss` 丢弃 `usePopupEvents` 返回的 `onCloseAutoFocus`；`ep-positioner-impl` 解构未使用 `onPointerdownCapture`（模板只绑 focus/blur capture），当前靠 `isInsideDOMTree` 兜底。
 
@@ -551,7 +553,7 @@ apps/playground/src/examples/ui/enhanced-popper/
 
 ### 14.3 性能优化
 
-#### T-8 · 抽取 `useVirtualPointReference`（⬜ P1，最有价值）
+#### T-8 · 抽取 `useVirtualPointReference`（✅ 2026-08-24，最有价值）
 
 **问题**：contextmenu 每次右键更新 `point` → `virtualReference` 产出新对象 → `useFloating` 的 reference watch 同步重挂载 → 反复 cleanup / 重建 `autoUpdate`（重新绑定 scroll / resize / IntersectionObserver）。
 
@@ -571,7 +573,7 @@ T-1/T-2/T-4 ~ T-8 已在 playground 原型落地，关键决策供 P1 迁移参�
 - **T-5**：`ep-positioner-impl` 向 `useGraceArea` 传 `disabled: computed(() => triggerType !== 'hover')`，click / contextmenu 不再建 grace polygon 与 pointer 监听。
 - **T-6**：`setTimeout` 延迟复位保留（pointerup 后同任务内的 focus/click 仍需观察到 `isPointerDown === true`），但 timer 已可追踪并在 unmount 清理。
 - **T-7**：`ep-positioner-impl` 模板绑定 `@pointerdown.capture="onPointerdownCapture"` 与 `@keydown="onKeydown"`，portal 边界场景由捕获事件兜底。
-- **T-8**：新增 `useVirtualPointReference`（稳定 reference + `setPoint` 回调通知）；本地 `popper/context.ts` 增加 `onPositionerUpdateChange` / `requestPositionerUpdate` 手动重定位通道，`PopperPositioner` 挂载时注册 `useFloating().update`。contextmenu 重复右键经 `setPoint → requestPositionerUpdate → update()` 事件驱动重定位，`autoUpdate` 每次打开只建一次。
+- **T-8**：新增 `useVirtualPointReference`（稳定 reference + `setPoint` 回调通知）；root context 增加 `onPositionerUpdateChange` / `requestPositionerUpdate` 手动重定位通道，`ep-positioner-impl` 挂载时经 context 注册 `useFloating().update` 并于 unmount 清空。contextmenu 重复右键经 `setPoint → requestPositionerUpdate → update()` 事件驱动重定位，`autoUpdate` 每次打开只建一次。
 
 ---
 
@@ -581,3 +583,50 @@ T-1/T-2/T-4 ~ T-8 已在 playground 原型落地，关键决策供 P1 迁移参�
 - T-8（虚拟点 reference）→ 并入 **M1**（trigger 交互）验收。
 - T-4 ~ T-7（逻辑清理）→ 任一轮修 `headless/` 时顺手合入。
 - T-3 / T-9 → P1 迁入 headless 时与领域层（Tooltip）一并决策。
+
+---
+
+## 16. P1 迁移记录与待迁移任务（2026-08-24）
+
+### 16.1 迁移完成内容
+
+已将 P0 原型从 playground 迁入 `packages`，成型为正式组件 **PopperV2**（命名见 §11 #1）。
+
+| 层         | 落点                                                            | 说明                                                                                                                                                                                                                                          |
+| :--------- | :-------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| headless   | `packages/headless/src/components/popper-v2/`                   | 组件 `PopperV2Root/Trigger/Anchor/Portal/Positioner/PositionerImpl/Popup/Arrow/Sub/SubTrigger/Compact`；context `providePopperV2Ui`；composable `usePopperV2Trigger/Nesting/Dismiss`、`useVirtualPointReference`；helper `getNestedPopupSide` |
+| UI         | `packages/ui/src/components/popper-v2/` + `styles/popper-v2.ts` | `SPopperV2`，variants `popperV2Variants`（slots 与 `PopperV2UiSlot` 对齐）                                                                                                                                                                    |
+| barrel     | `packages/headless/src/index.ts`、`packages/ui/src/index.ts`    | 均 `export * from ./components/popper-v2`；`pnpm sui headless/ui` 已重生成                                                                                                                                                                    |
+| playground | `apps/playground/src/examples/ui/enhanced-popper/`              | 本地 `headless/`、`ui/` 副本已删除；01–08 示例改用 `@soybeanjs/ui` 的 `SPopperV2` 与 `@soybeanjs/headless/popper-v2`                                                                                                                          |
+
+验证：全量 monorepo `pnpm typecheck`（12 workspaces）通过；`pnpm sui headless` / `pnpm sui ui` 通过；`vp lint --fix` + `vp fmt` 通过。
+
+### 16.2 旧版 Popper 使用组件清单（依据模板 `<Popper` 检索）
+
+以下组件在模板中直接使用 `packages/headless/src/components/popper/` 的旧版定位原语 `<PopperRoot/Anchor/Positioner/Popup/Arrow>`（排除 popper 自身目录），是通过 Grep 检索 `<Popper` 得到的**完整**使用清单，即迁移到 `PopperV2` 的对象：
+
+**表 A · 待迁移（主动收敛，删除重复 timer / grace / dismiss 壳逻辑）**
+
+| 组件           | 目录                                                               | 使用的 `<Popper*>`           | 迁移到 PopperV2 的方案                                                            | 阶段  |
+| :------------- | :----------------------------------------------------------------- | :--------------------------- | :-------------------------------------------------------------------------------- | :---- |
+| **Popover**    | `components/popover`                                               | Root/Anchor/Positioner/Popup | `PopperV2Root` + `PopperV2Trigger(trigger=click)` + dialog 领域；**建议 M5 试点** | M5    |
+| **Tooltip**    | `components/tooltip`                                               | Root/Anchor/Positioner/Popup | `trigger=hover` + `openOnFocus` + Tooltip ARIA；此时落地 **T-3**                  | P2    |
+| **HoverCard**  | `components/hover-card`                                            | Root/Anchor/Positioner/Popup | `trigger=hover` + open/closeDelay + grace                                         | M5/P2 |
+| **Menu 家族**  | `components/menu`（含 dropdown-menu / context-menu 的 `menu-sub`） | Root/Anchor/Positioner/Popup | 嵌套壳替换为 `PopperV2Sub`（保留 roving focus/typeahead）                         | P2    |
+| **Popconfirm** | `components/popconfirm`                                            | Arrow                        | 随 `Popover` 收敛自动受益                                                         | P2    |
+
+**表 B · 仅消费定位原语（交互自管，可保持或选择性复用 PopperV2 定位）**
+
+| 组件             | 目录                      | 使用的 `<Popper*>`                 | 说明                                      |
+| :--------------- | :------------------------ | :--------------------------------- | :---------------------------------------- |
+| **Select**       | `components/select`       | Root/Anchor/Positioner/Popup/Arrow | `item-aligned` 手工定位为特例；仅复用定位 |
+| **Combobox**     | `components/combobox`     | Root/Anchor/Positioner/Popup/Arrow | 仅复用定位                                |
+| **Autocomplete** | `components/autocomplete` | Root                               | 仅复用定位                                |
+| **Cascader**     | `components/cascader`     | Root/Anchor/Positioner/Arrow       | 多列非 nested-Popper；仅复用定位          |
+
+> 注：`TreeMenu` 通过 `tree-menu-tooltip-compact` 间接消费 `Tooltip`，模板不含直接的 `<Popper>`，随表 A 的 Tooltip 收敛自动受益。
+
+> 检索依据：`packages/headless/src/components` 中匹配模板 `<Popper(?:Root|Anchor|Positioner|Popup|Arrow|Sub|Trigger|Portal|Content|Item)>` 的组件（2026-08-24）。### 16.3 迁移期配套任务
+
+- **T-9**（document 监听聚合，`useDismissableLayer` 每层 2N 监听）：随 P2 逐组件消费 `PopperV2` 时，评估「共享单文档监听 + 按栈分发」是否下沉到 headless 库层。
+- **T-3**（Tooltip focus-visible）：在迁移 Tooltip 时落地 `openOnFocus` 仅响应键盘/程序化 focus。
