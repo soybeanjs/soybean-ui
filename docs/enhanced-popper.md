@@ -612,7 +612,7 @@ T-1/T-2/T-4 ~ T-8 已在 playground 原型落地，关键决策供 P1 迁移参�
 | **Popover**    | `components/popover`                                               | Root/Anchor/Positioner/Popup | `PopperV2Root` + `PopperV2Trigger(trigger=click)` + dialog 领域；**建议 M5 试点** | M5    |
 | **Tooltip**    | `components/tooltip`                                               | Root/Anchor/Positioner/Popup | `trigger=hover` + `openOnFocus` + Tooltip ARIA；此时落地 **T-3**                  | P2    |
 | **HoverCard**  | `components/hover-card`                                            | Root/Anchor/Positioner/Popup | ✅ 已迁移（2026-08-24，见 §16.5）                                                 | M5/P2 |
-| **Menu 家族**  | `components/menu`（含 dropdown-menu / context-menu 的 `menu-sub`） | Root/Anchor/Positioner/Popup | 嵌套壳替换为 `PopperV2Sub`（保留 roving focus/typeahead）                         | P2    |
+| **Menu 家族**  | `components/menu`（含 dropdown-menu / context-menu 的 `menu-sub`） | Root/Anchor/Positioner/Popup | ✅ 已迁移（2026-08-25，见 §16.6）                                                 | P2    |
 | **Popconfirm** | `components/popconfirm`                                            | Arrow                        | 随 `Popover` 收敛自动受益                                                         | P2    |
 
 **表 B · 仅消费定位原语（交互自管，可保持或选择性复用 PopperV2 定位）**
@@ -658,6 +658,24 @@ T-1/T-2/T-4 ~ T-8 已在 playground 原型落地，关键决策供 P1 迁移参�
 **验证**：monorepo typecheck 通过；hover-card.spec 7/7、tooltip/popover 全过；全量单测失败集与迁移前基线完全一致（popconfirm a11y ×1 + date-picker 系 ×16，均为存量）；`sui headless/ui`、fmt、lint 通过。
 
 **Menu 家族评估（下一批次）**：`menu`（2629 行）+ `dropdown-menu`（950）+ `context-menu`（748）是最后一批，也是最大一块。要点：① `menu-sub` 嵌套（自建 PopperRoot + grace polygon + `data-soybean-menu-sub-popup`）映射到 `PopperV2Sub`；② Menu 自有 open 状态机与 roving focus / typeahead 深度耦合，需按 Tooltip 模式消除双状态源（popper open 为唯一源，领域只留 highlight/item 模型）；③ `context-menu` 虚拟点 + 长按直接换 `PopperV2Trigger(trigger="contextmenu")`（T-8 稳定 reference 通道）；④ 键盘方向键打开 Sub 的 Enter/Arrow 语义留在 Menu。建议单独批次 + e2e（menubar/navigation-menu 依赖 menu 语义，回归面大）。
+
+### 16.6 Menu 家族迁移落地（2026-08-25，P2 收官）
+
+表 A 最后一批：`menu` + `dropdown-menu` + `context-menu` 全部迁至 PopperV2，旧版 `<Popper*>` 消费清单清零（表 B 的 Select/Combobox/Cascader/Autocomplete 仍按计划仅用定位原语）。
+
+**架构口径**：`MenuContext` 保留（menubar / navigation-menu / tree-menu 等消费方零改动），open 走「受控转发」——`MenuRoot`/`MenuSub` 的 `useControllableState` 现值直连 `PopperV2Root`/`PopperV2Sub` 的 `:open`；交互状态机只剩壳一份。
+
+- **menu**：`menu-root` → `PopperV2Root`（modal 下沉 trap/guards/scrollLock/dismiss）；`menu-sub` → `PopperV2Sub`（父关子关由壳 nesting 内建，删除自管 watch）；`menu-content-impl` 删除手拼的 `useDismissableLayer`/`useFocusScope`/`useFocusGuards`/`useBodyScrollLock` 栈，改组合 `PopperV2Positioner` + `PopperV2Popup`（roving focus / typeahead / arrow-nav / pointer-grace polygon 全部保留为领域逻辑）；popup 打开聚焦容器改领域 `watch(open)`（trap 层 `openAutoFocus` 恒 preventDefault、非 trap 子层无壳事件，watch 统一覆盖）；`useHideOthers` 保留（仅根层 modal）；`MenuAnchor/Portal/Arrow` 切换为 PopperV2 别名；`provideMenuUi → providePopperV2Ui` 全量透传。
+- **dropdown-menu**：删除 `DropdownMenuHoverContext` 整个 hover 机器（open timer / skip-delay / wasOpenDelayed）与 `DROPDOWN_MENU_HOVER_OPEN` document 广播；trigger 改用 `usePopperV2Trigger`（hover 延迟/skip 窗口/触控忽略全下壳），click toggle 与打开时 `preventDefault` 焦点竞争处理留领域；content 保留 scroll 关闭（hover）与非 modal 关闭回焦 watch，删除自有 `useGraceArea`（父层 grace 由壳接管，`subAreaAttribute` 经 PopperV2Popup 的 `data-popper-v2-sub-popup` 自动衔接）。
+- **context-menu**：trigger 改用 `usePopperV2Trigger(trigger="contextmenu")`——右键/触控长按/点击点虚拟 reference 全下壳（**T-8 稳定 reference 通道**），删除自建 `point`/`virtualEl`/长按 timer；**删除 `update-position-strategy="always"` animationFrame 轮询**（重复右键经 `requestPositionerUpdate` 事件驱动重定位）；外部 `reference` 时 shell handlers 挂到该元素。
+
+**壳层修复（本批次发现）**：A-1 的 focus 门控存在回归——非 trap **子层**不再注册 focus scope 栈，无法暂停父层（modal 菜单）的 trap，焦点在根/子弹层间无限拉锯（`use-popper-v2-dismiss.ts`）。修正：focus 栈装配条件放宽为 `trapFocus || isSub`（子层即使非 trap 也挂载以暂停父层，auto-focus 仍恒 preventDefault 不偷焦点）；hover 根层弹层维持零 focus 基础设施。另修复 `MenuSub`/`MenuRoot` 非受控时 `:open` 传 `props.open`（恒 undefined）导致壳内 open 永假的问题——改传 controllable state 现值。
+
+**已知行为差异（有意，均对齐 Radix/壳规则）**：① 子层 outside dismiss 只关子层自身（原实现不关，靠父层 focus 路径间接处理）；② dropdown hover 跨实例兄弟关闭的 document 广播删除（嵌套内由壳 `isPointerInTree` 覆盖，非嵌套独立实例 hover 同开不再互斥）；③ `DROPDOWN_MENU_HOVER_OPEN` 常量删除（内部机制，无公共导出）。
+
+**验证**：monorepo typecheck 通过；menu 家族 10 个 spec（menu/dropdown/context/menubar×4/navigation/tree-menu/page-tabs）**131/131 全过**；全量单测失败集与存量基线完全一致（popconfirm a11y ×1 + date-picker 系 ×16）；`sui headless/ui`、fmt、lint 通过。
+
+**代码量**：menu 三目录 + 壳修复合计 **+257/−460（净 −203）**；至此表 A 全部迁移完成，`pnpm sui` 无导出漂移。
 
 ---
 
