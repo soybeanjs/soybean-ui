@@ -80,20 +80,34 @@ export function usePopperV2Dismiss(options: UsePopperDismissOptions) {
     }
   }
 
-  // Focus infrastructure (guards + scope + auto-focus events) is only assembled for trapped
-  // layers: hover popups must never steal focus, so they skip the DOM guards, the focus scope
-  // stack registration, and the open/close auto-focus events entirely.
-  const trappedLayerElement = computed(() => (options.trapFocus() ? layerElement.value : undefined));
+  // Focus infrastructure (guards + scope + auto-focus events) is assembled for trapped layers
+  // and sub layers. Hover popups must never steal focus, so non-trap roots skip the DOM guards,
+  // the focus scope stack registration, and the open/close auto-focus events entirely. Non-trap
+  // SUB layers still join the focus scope stack: mounting pauses the parent (trapped) scope's
+  // document focus handler, so opening a submenu inside a modal menu doesn't fight over focus.
+  const focusScopeEnabled = () => options.trapFocus() || context.isSub.value;
+  const focusLayerElement = computed(() => (focusScopeEnabled() ? layerElement.value : undefined));
 
-  useFocusGuards(options.trapFocus);
+  useFocusGuards(focusScopeEnabled);
 
-  const { onKeydown } = useFocusScope(trappedLayerElement, {
+  const { onKeydown } = useFocusScope(focusLayerElement, {
     trapped: options.trapFocus,
     loop: true,
     onOpenAutoFocus: event => {
+      // Non-trapped layers (hover popups, submenus) must never steal focus on open.
+      if (!options.trapFocus()) {
+        event.preventDefault();
+        return;
+      }
+
       options.onOpenAutoFocus(event);
     },
     onCloseAutoFocus: event => {
+      if (!options.trapFocus()) {
+        event.preventDefault();
+        return;
+      }
+
       // Consumer hook first: preventing the event opts out of the default trigger refocus.
       options.onCloseAutoFocus(event);
       popupEvents.onCloseAutoFocus(event);
