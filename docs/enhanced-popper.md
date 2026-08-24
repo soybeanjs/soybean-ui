@@ -611,7 +611,7 @@ T-1/T-2/T-4 ~ T-8 已在 playground 原型落地，关键决策供 P1 迁移参�
 | :------------- | :----------------------------------------------------------------- | :--------------------------- | :-------------------------------------------------------------------------------- | :---- |
 | **Popover**    | `components/popover`                                               | Root/Anchor/Positioner/Popup | `PopperV2Root` + `PopperV2Trigger(trigger=click)` + dialog 领域；**建议 M5 试点** | M5    |
 | **Tooltip**    | `components/tooltip`                                               | Root/Anchor/Positioner/Popup | `trigger=hover` + `openOnFocus` + Tooltip ARIA；此时落地 **T-3**                  | P2    |
-| **HoverCard**  | `components/hover-card`                                            | Root/Anchor/Positioner/Popup | `trigger=hover` + open/closeDelay + grace                                         | M5/P2 |
+| **HoverCard**  | `components/hover-card`                                            | Root/Anchor/Positioner/Popup | ✅ 已迁移（2026-08-24，见 §16.5）                                                 | M5/P2 |
 | **Menu 家族**  | `components/menu`（含 dropdown-menu / context-menu 的 `menu-sub`） | Root/Anchor/Positioner/Popup | 嵌套壳替换为 `PopperV2Sub`（保留 roving focus/typeahead）                         | P2    |
 | **Popconfirm** | `components/popconfirm`                                            | Arrow                        | 随 `Popover` 收敛自动受益                                                         | P2    |
 
@@ -642,6 +642,22 @@ T-1/T-2/T-4 ~ T-8 已在 playground 原型落地，关键决策供 P1 迁移参�
 
 - **T-9**（document 监听聚合，`useDismissableLayer` 每层 2N 监听）：随 P2 逐组件消费 `PopperV2` 时，评估「共享单文档监听 + 按栈分发」是否下沉到 headless 库层。
 - **T-3**（Tooltip focus-visible）：在迁移 Tooltip 时落地 `openOnFocus` 仅响应键盘/程序化 focus。
+
+### 16.5 HoverCard 迁移落地 + T-10（2026-08-24，P2）
+
+**壳层新增（本批次）**：
+
+- `registerHoverCloseGuard(guard)`（`PopperV2RootContext`）：领域级「延迟关闭否决」钩子，在 close timer **触发时**求值——HoverCard 文本选择 / popup 按住场景用，选择发生在延迟期间也能被拦住；Tooltip 类「disableClosingTrigger」未来亦可复用。
+- `focusOpenDelay`（`PopperV2TriggerProps` / `PopperV2TriggerConfiguration`）：focus 打开的独立延迟，默认继承 `openDelay`（HoverCard：focus 也走 openDelay）；Tooltip 显式传 0（即时）。修正 §17.6.3 期间写死的「focus 一律跳过延迟」。
+- **T-10（✅）**：`useFloating` 的 `reset()` 语义改为 **open→true 时清 `isPositioned`**（关闭期间保持定位，退出动画原位播放）；`popper-v2-positioner-impl` 传 `open: () => context.open`；旧 `popper-positioner` 新增可选 `open` prop（默认 true，纯定位原语由消费方接线自己的 open，向后兼容）。
+
+**HoverCard（✅ 已迁移）**：壳下沉 PopperV2（Root/Trigger/Anchor/Portal/Positioner/Popup/Arrow + hover/open·closeDelay/grace/dismiss），`skipDelayDuration: 0` 保持「每次打开都延迟」（HoverCard 无 skip 窗口语义）；保留领域：文本选择跟踪（`hasSelectionRef`/`isPointerDownOnPopupRef` → `registerHoverCloseGuard`）、选择期间 body user-select 锁、`removeFromTabOrder`、scroll 关闭。删除 `hover-card-positioner-impl.vue`；`update:open` 携带 reason；`provideHoverCardUi → providePopperV2Ui`；`HoverCardPortal/Arrow` 改为 PopperV2 别名。代码 686 → 517 行（−169，−25%）。
+
+**已知行为差异（有意）**：focus 打开从「固定 openDelay」变为「openDelay（默认继承）」——语义一致；grace `subAreaAttribute` 由 `data-soybean-hover-card-sub-popup` 预留标记统一为 PopperV2 的 `data-popper-v2-sub-popup`（原标记无组件使用）。
+
+**验证**：monorepo typecheck 通过；hover-card.spec 7/7、tooltip/popover 全过；全量单测失败集与迁移前基线完全一致（popconfirm a11y ×1 + date-picker 系 ×16，均为存量）；`sui headless/ui`、fmt、lint 通过。
+
+**Menu 家族评估（下一批次）**：`menu`（2629 行）+ `dropdown-menu`（950）+ `context-menu`（748）是最后一批，也是最大一块。要点：① `menu-sub` 嵌套（自建 PopperRoot + grace polygon + `data-soybean-menu-sub-popup`）映射到 `PopperV2Sub`；② Menu 自有 open 状态机与 roving focus / typeahead 深度耦合，需按 Tooltip 模式消除双状态源（popper open 为唯一源，领域只留 highlight/item 模型）；③ `context-menu` 虚拟点 + 长按直接换 `PopperV2Trigger(trigger="contextmenu")`（T-8 稳定 reference 通道）；④ 键盘方向键打开 Sub 的 Enter/Arrow 语义留在 Menu。建议单独批次 + e2e（menubar/navigation-menu 依赖 menu 语义，回归面大）。
 
 ---
 
@@ -781,3 +797,39 @@ Popover 是「全量下壳」的样板：Root/Trigger/Positioner 均为薄透传
 - **行为差异（有意）**：`update:open` 现携带可选 reason；`tooltip.open` document 事件不再派发（原为内部机制，无公共导出）。
 - **验证**：monorepo `pnpm typecheck` 通过；tooltip.spec 8/8 通过（「兄弟 tooltip 关闭」用例改写为共享 `TooltipProvider` 下的两 tooltip 交互）；全量单测 1778 例中 33 失败均为存量（popconfirm a11y 1 + date-picker/date-range-picker 32，stash 基线对照确认）；`pnpm sui headless/ui`、`vp fmt`、`vp lint` 通过。
 - **代码量**：tooltip 目录 806 → 782 行（净 −24），但**新增** `TooltipProvider` 公共组件（52 行）；trigger 130 → 98、context 143 → 74、root 82 → 69。timer/skip-delay 状态从三份收敛为「PopperV2 实例 + Provider 树级」各一份。
+
+### 17.7 `useFloating` 的 `open` 选项分析（2026-08-24）
+
+> 背景：`popper-v2-positioner-impl.vue`（以及旧 `popper-positioner.vue`）调用 `useFloating` 时均未传 `open`；全库仅这两个调用方，`open` 相关分支目前是死路径（默认 `true`）。
+
+#### `open` 在本实现中的作用（`composables/use-floating.ts`）
+
+本 Vue 移植版中 `open` **只**影响 `isPositioned` 的生命周期与重算时机，共三处：
+
+| 位置                                                | 行为                                                                                                                                         |
+| :-------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| `update()` 内 `isPositioned.value = open !== false` | 「已关闭但仍挂载」（退出动画 / forceMount）期间发生的重定位计算**不把** `isPositioned` 置 true（源码注释明确目的：保证下次打开初始为 false） |
+| `watch(openOption, reset)`                          | open 由 true → false 的瞬间，立即把 `isPositioned` 清为 false                                                                                |
+| `watch([... openOption], update)`                   | open 翻转（false → true）时同步重跑一次 `computePosition`                                                                                    |
+
+**注意**：与 `@floating-ui/react` 不同，本实现**不**用 `open` 控制 `whileElementsMounted`/`autoUpdate` 的挂载（`attach()` 只看 reference/floating 元素是否就绪）。因此「不传 open 省 scroll/resize 监听」的收益在本实现不存在。
+
+`isPositioned` 的下游消费（popper / popper-v2 一致）：positioner 的 `transform: isPositioned ? 定位值 : 'translate(0, -200%)'`（未定位时移出视口防闪现）、popup 的 `animation: isPositioned ? undefined : 'none'`（未定位禁动画）、`@placed` 的 emit 触发。
+
+#### 不传 `open` 的影响评估
+
+| 场景                                       | 现状（不传 open，恒视为 true）                                                                                                                                                               | 若直接传 open                                                                                                                                            |
+| :----------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 默认挂载（无 `forceMount`，presence 卸载） | **无差异且正确**：关闭后组件卸载，状态随实例销毁；关闭/退出动画期间 `isPositioned` 保持 true → 浮层在**原位**播放退出动画                                                                    | **有破坏**：close 瞬间 `reset()` 把 `isPositioned` 清 false → transform 跳 `translate(0, -200%)`，浮层瞬间移出视口，退出动画在屏外播放（视觉上立即消失） |
+| `forceMount` 常驻挂载                      | **有缺陷**：首次打开后 `isPositioned` 永远 true。重开时：① computePosition resolve 前用旧坐标渲染（闪现旧位置一帧）；② `@placed` 不再 emit；③ 「未定位禁动画」失效，重开动画可能从旧位置起播 | 生命周期正确，但退出动画被上述 reset 破坏                                                                                                                |
+
+**结论**：
+
+1. 默认场景下不传 `open` 是**有意为之且必要**的——本实现的 `reset()` 语义（close 即清 `isPositioned`）与退出动画相冲突，传了反而回归。
+2. 唯一受害的是 `forceMount` 场景（重开闪旧坐标 + `placed` 只 emit 一次 + 禁动画门失效）。
+3. 若要修 forceMount，正确改法不是简单传入 `open`，而是**调整 reset 语义**：把「open→false 立即清」改为「open→**true** 时清」（重新进入未定位→定位生命周期）。这样传 `open` 后：关闭期间不清（退出动画原位 ✓）、重开时清 false → 走完整 `translate(-200%)` → 定位 → `@placed` 重发（forceMount ✓）、`update()` 的 `open !== false` 守卫继续防「关闭期间计算置位」。属 headless 库层 `useFloating` 的一处小改动 + popper-v2/popper 两处调用补传 `open`，建议随 HoverCard/Menu 迁移批次一并落地（届时 forceMount 用例增加）。
+
+#### T-10 · `useFloating` reset 语义修正 + 接线 `open`（✅ 2026-08-24，随 HoverCard 批次落地，见 §16.5）
+
+- **改动**：`use-floating.ts` 的 `reset()` watcher 改为在 `openOption` 变为 **true** 时清 `isPositioned`（退出动画期间保持 true）；`popper-v2-positioner-impl.vue` 与 `popper-positioner.vue` 的 `useFloating` 调用补传 `open`。
+- **验收**：默认场景退出动画原位播放不回归；`forceMount` 场景重开无旧坐标闪帧、`@placed` 每次 open 重新 emit、未定位禁动画门生效。
