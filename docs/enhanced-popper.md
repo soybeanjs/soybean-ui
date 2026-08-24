@@ -920,11 +920,13 @@ monorepo typecheck 通过；popper 相关 13 个 spec（hover-card/context/dropd
 
 即当前每个 trigger 都绑着 3～7 个**永不产生行为**的监听；click 模式每次 pointerdown 还会注册/清理 2 个 document once-listener（`registerDocumentPointerListeners`），而 `openOnFocus=false` 时 `isPointerDown` 根本无人读取。
 
-#### 17.10.2 优化方案（T-12，⬜ 待办）
+#### 17.10.2 优化方案（T-12，✅ 2026-08-25 已实施）
 
 1. **组件层 `triggerEvents` computed**（旧 DropdownTrigger `hoverListeners` 模式的复刻）：按 `trigger` + `openOnFocus` 组装事件 map，模板 `v-on="triggerEvents"`；外部 `reference` 的 watchEffect 改为遍历同一 map 挂载/卸载（事件名全小写，与 `addEventListener` 无转换差异）。`trigger` / `openOnFocus` 均为响应式 prop，切换时 computed 自动重绑。
 2. **hook 层配套 guard**：`onPointerDown` 的 `registerDocumentPointerListeners` 仅在 `openOnFocus || trigger === 'contextmenu'` 时执行（focus 门控或长按清理才有读者）。
 3. handler 内现有 guard **保留**（防御外部直接调用/事件转发场景），收敛只发生在绑定层——「绑都不绑」优于「绑了再 guard」。
+
+**落地记录**：`popper-v2-trigger.vue` 增加 `triggerEvents` computed（按 `trigger` + `openOnFocus` 组装，`never` 参数类型兼容各 DOM 事件 handler 签名），模板与外部 `reference` 挂载统一走它；`use-popper-v2-trigger.ts` 的 `onPointerDown` 对 `isPointerDown` 追踪与 document 监听注册加 `openOnFocus || contextmenu` 门控。验证：popper 相关 14 spec 159/159、全量单测 1778/1778 零失败、typecheck/sui/fmt/lint 通过。
 
 #### 17.10.3 收益与风险评估（诚实版）
 

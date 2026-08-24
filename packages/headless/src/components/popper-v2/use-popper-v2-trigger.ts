@@ -120,8 +120,12 @@ export function usePopperV2Trigger(
   }
 
   async function onPointerDown(event: PointerEvent) {
-    isPointerDown = true;
-    registerDocumentPointerListeners((event.currentTarget as HTMLElement).ownerDocument);
+    // `isPointerDown` only gates focus-driven opening; the document listeners also serve the
+    // contextmenu long-press cleanup. Skip both when nothing can read the state.
+    if (openOnFocus.value || props.trigger === 'contextmenu') {
+      isPointerDown = true;
+      registerDocumentPointerListeners((event.currentTarget as HTMLElement).ownerDocument);
+    }
 
     if (props.trigger !== 'contextmenu' || !isTouchOrPen(event)) return;
 

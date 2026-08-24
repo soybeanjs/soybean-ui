@@ -81,52 +81,47 @@ const {
   onPointerUp
 } = usePopperV2Trigger(props, context, { onVirtualPointChange: requestPositionerUpdate });
 
-// Anchor priority: custom `PopperV2Anchor` > contextmenu virtual point > `reference` prop >
-// trigger element (registered by `setTriggerAnchorRef` above). The contextmenu virtual reference
-// is a stable object, so this registers once per layer; repeated right-clicks reposition through
-// `requestPositionerUpdate` instead of re-registering the anchor.
-watchEffect(() => {
-  if (hasCustomAnchor.value) return;
-
-  if (props.trigger === 'contextmenu') {
-    onAnchorElementChange(reference.value);
-  } else if (props.reference) {
-    onAnchorElementChange(props.reference);
-  }
-});
-
 // When `reference` is a real element, the trigger events live on that element and the inline
 // trigger element is not rendered (e.g. `ContextMenuTrigger` wrapping an external area).
 const externalReference = computed(() => (props.reference instanceof HTMLElement ? props.reference : undefined));
 
-watchEffect(() => {
-  const target = externalReference.value;
-  if (!target) return;
+// Bind only the events a trigger mode can actually act on: click/contextmenu toggling, hover
+// enter/leave (the pointer-inside state only feeds the hover close machine), the contextmenu
+// touch long-press, and focus-driven opening behind `openOnFocus`. The `never` parameter type
+// accepts every concrete DOM event handler signature (contravariance).
+type NativeEventHandler = (event: never) => void;
 
-  onTriggerElementChange(target);
-  target.addEventListener('click', onClick);
-  target.addEventListener('blur', onBlur);
-  target.addEventListener('focus', onFocus);
-  target.addEventListener('contextmenu', onContextMenu);
-  target.addEventListener('pointerdown', onPointerDown);
-  target.addEventListener('pointerenter', onPointerEnter);
-  target.addEventListener('pointerleave', onPointerLeave);
-  target.addEventListener('pointermove', onPointerMove);
-  target.addEventListener('pointerup', onPointerUp);
-  target.addEventListener('pointercancel', onPointerCancel);
+const openOnFocusResolved = computed(() => props.openOnFocus ?? props.trigger === 'hover');
 
-  onWatcherCleanup(() => {
-    target.removeEventListener('click', onClick);
-    target.removeEventListener('blur', onBlur);
-    target.removeEventListener('focus', onFocus);
-    target.removeEventListener('contextmenu', onContextMenu);
-    target.removeEventListener('pointerdown', onPointerDown);
-    target.removeEventListener('pointerenter', onPointerEnter);
-    target.removeEventListener('pointerleave', onPointerLeave);
-    target.removeEventListener('pointermove', onPointerMove);
-    target.removeEventListener('pointerup', onPointerUp);
-    target.removeEventListener('pointercancel', onPointerCancel);
-  });
+const triggerEvents = computed<Record<string, NativeEventHandler>>(() => {
+  const events: Record<string, NativeEventHandler> = {};
+
+  if (props.trigger === 'click') {
+    events.click = onTriggerClick;
+  }
+
+  if (props.trigger === 'contextmenu') {
+    events.contextmenu = onContextMenu;
+    events.pointermove = onPointerMove;
+    events.pointerdown = onPointerDown;
+    events.pointerup = onPointerUp;
+    events.pointercancel = onPointerCancel;
+  }
+
+  if (props.trigger === 'hover') {
+    events.pointerenter = onPointerEnter;
+    events.pointerleave = onPointerLeave;
+  }
+
+  if (openOnFocusResolved.value) {
+    events.focus = onFocus;
+    events.blur = onBlur;
+    events.pointerdown = onPointerDown;
+    events.pointerup = onPointerUp;
+    events.pointercancel = onPointerCancel;
+  }
+
+  return events;
 });
 
 // The modal layer disables body pointer events while open; the contextmenu trigger must stay
@@ -169,6 +164,37 @@ function onTriggerClick(event: PointerEvent) {
 
   onClick(event);
 }
+
+// Anchor priority: custom `PopperV2Anchor` > contextmenu virtual point > `reference` prop >
+// trigger element (registered by `setTriggerAnchorRef` above). The contextmenu virtual reference
+// is a stable object, so this registers once per layer; repeated right-clicks reposition through
+// `requestPositionerUpdate` instead of re-registering the anchor.
+watchEffect(() => {
+  if (hasCustomAnchor.value) return;
+
+  if (props.trigger === 'contextmenu') {
+    onAnchorElementChange(reference.value);
+  } else if (props.reference) {
+    onAnchorElementChange(props.reference);
+  }
+});
+
+watchEffect(() => {
+  const target = externalReference.value;
+  if (!target) return;
+
+  onTriggerElementChange(target);
+  const events = triggerEvents.value;
+  for (const [name, handler] of Object.entries(events)) {
+    target.addEventListener(name, handler as EventListener);
+  }
+
+  onWatcherCleanup(() => {
+    for (const [name, handler] of Object.entries(events)) {
+      target.removeEventListener(name, handler as EventListener);
+    }
+  });
+});
 </script>
 
 <template>
@@ -187,16 +213,7 @@ function onTriggerClick(event: PointerEvent) {
     :disabled="nativeDisabled"
     :aria-disabled="ariaDisabled"
     :type="buttonType"
-    @blur="onBlur"
-    @click="onTriggerClick"
-    @contextmenu="onContextMenu"
-    @focus="onFocus"
-    @pointercancel="onPointerCancel"
-    @pointerdown="onPointerDown"
-    @pointerenter="onPointerEnter"
-    @pointerleave="onPointerLeave"
-    @pointermove="onPointerMove"
-    @pointerup="onPointerUp"
+    v-on="triggerEvents"
   >
     <slot />
   </Primitive>
