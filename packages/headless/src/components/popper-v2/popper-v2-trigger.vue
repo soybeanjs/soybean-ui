@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { computed, watchEffect } from 'vue';
+import { computed, onWatcherCleanup, watchEffect } from 'vue';
 import type { ComponentPublicInstance, CSSProperties } from 'vue';
 import { useForwardElement, useOmitProps } from '../../composables';
-import { Button } from '../button';
 import { Primitive } from '../primitive';
 import { usePopperV2RootContext, usePopperV2Ui } from './context';
 import type { PopperV2TriggerProps } from './types';
@@ -15,7 +14,8 @@ defineOptions({
 const props = withDefaults(defineProps<PopperV2TriggerProps>(), {
   as: 'button',
   trigger: 'click',
-  openOnFocus: undefined
+  openOnFocus: undefined,
+  ariaMode: 'controls'
 });
 
 const forwardedProps = useOmitProps(props, [
@@ -29,7 +29,10 @@ const forwardedProps = useOmitProps(props, [
   'pressOpenDelay',
   'openOnFocus',
   'focusVisibleOnly',
-  'focusOpenDelay'
+  'focusOpenDelay',
+  'ariaMode',
+  'disabled',
+  'type'
 ]);
 
 const cls = usePopperV2Ui('trigger');
@@ -50,7 +53,9 @@ const {
 
 const [_, setTriggerElement] = useForwardElement(onTriggerElementChange);
 const [__, setAnchorElement] = useForwardElement(el => {
-  if (props.reference) return;
+  // The trigger element doubles as the anchor unless a custom `PopperV2Anchor` or an explicit
+  // reference takes over.
+  if (hasCustomAnchor.value || props.reference || props.trigger === 'contextmenu') return;
 
   onAnchorElementChange(el);
 });
@@ -61,18 +66,6 @@ function setTriggerAnchorRef(node: Element | ComponentPublicInstance | null | un
   setTriggerElement(node as HTMLElement | undefined);
   setAnchorElement(node as HTMLElement | undefined);
 }
-
-watchEffect(() => {
-  if (props.reference && !hasCustomAnchor.value) {
-    onAnchorElementChange(props.reference);
-  }
-});
-
-// The modal layer disables body pointer events while open; the contextmenu trigger must stay
-// interactive so repeated right-clicks keep reaching it and can reposition the popup.
-const triggerStyle = computed<CSSProperties | undefined>(() =>
-  props.trigger === 'contextmenu' ? { WebkitTouchCallout: 'none', pointerEvents: 'auto' } : undefined
-);
 
 const {
   reference,
@@ -87,54 +80,115 @@ const {
   onPointerMove,
   onPointerUp
 } = usePopperV2Trigger(props, context, { onVirtualPointChange: requestPositionerUpdate });
+
+// Anchor priority: custom `PopperV2Anchor` > contextmenu virtual point > `reference` prop >
+// trigger element (registered by `setTriggerAnchorRef` above). The contextmenu virtual reference
+// is a stable object, so this registers once per layer; repeated right-clicks reposition through
+// `requestPositionerUpdate` instead of re-registering the anchor.
+watchEffect(() => {
+  if (hasCustomAnchor.value) return;
+
+  if (props.trigger === 'contextmenu') {
+    onAnchorElementChange(reference.value);
+  } else if (props.reference) {
+    onAnchorElementChange(props.reference);
+  }
+});
+
+// When `reference` is a real element, the trigger events live on that element and the inline
+// trigger element is not rendered (e.g. `ContextMenuTrigger` wrapping an external area).
+const externalReference = computed(() => (props.reference instanceof HTMLElement ? props.reference : undefined));
+
+watchEffect(() => {
+  const target = externalReference.value;
+  if (!target) return;
+
+  onTriggerElementChange(target);
+  target.addEventListener('click', onClick);
+  target.addEventListener('blur', onBlur);
+  target.addEventListener('focus', onFocus);
+  target.addEventListener('contextmenu', onContextMenu);
+  target.addEventListener('pointerdown', onPointerDown);
+  target.addEventListener('pointerenter', onPointerEnter);
+  target.addEventListener('pointerleave', onPointerLeave);
+  target.addEventListener('pointermove', onPointerMove);
+  target.addEventListener('pointerup', onPointerUp);
+  target.addEventListener('pointercancel', onPointerCancel);
+
+  onWatcherCleanup(() => {
+    target.removeEventListener('click', onClick);
+    target.removeEventListener('blur', onBlur);
+    target.removeEventListener('focus', onFocus);
+    target.removeEventListener('contextmenu', onContextMenu);
+    target.removeEventListener('pointerdown', onPointerDown);
+    target.removeEventListener('pointerenter', onPointerEnter);
+    target.removeEventListener('pointerleave', onPointerLeave);
+    target.removeEventListener('pointermove', onPointerMove);
+    target.removeEventListener('pointerup', onPointerUp);
+    target.removeEventListener('pointercancel', onPointerCancel);
+  });
+});
+
+// The modal layer disables body pointer events while open; the contextmenu trigger must stay
+// interactive so repeated right-clicks keep reaching it and can reposition the popup.
+const triggerStyle = computed<CSSProperties | undefined>(() =>
+  props.trigger === 'contextmenu' ? { WebkitTouchCallout: 'none', pointerEvents: 'auto' } : undefined
+);
+
+const ariaBindings = computed(() => {
+  if (props.ariaMode === 'describedby') {
+    return { 'aria-describedby': open.value ? popupId.value : undefined };
+  }
+
+  if (props.ariaMode === 'none') {
+    return {};
+  }
+
+  return {
+    'aria-expanded': open.value,
+    'aria-controls': open.value ? popupId.value : undefined
+  };
+});
+
+// A single merged binding: Vue templates do not allow two `v-bind` object expressions on one
+// element, and the explicit bindings below must win over forwarded prop values.
+const triggerBindings = computed(() => ({ ...forwardedProps.value, ...ariaBindings.value }));
+
+// Button semantics kept inline now that the trigger renders a plain `Primitive` (native disabled
+// only on real buttons, `type` default, disabled click interception).
+const buttonType = computed(() => (props.as === 'button' && !props.asChild ? (props.type ?? 'button') : undefined));
+const nativeDisabled = computed(() => (props.as === 'button' && !props.asChild ? disabled.value : undefined));
+const ariaDisabled = computed(() => (disabled.value ? true : undefined));
+
+function onTriggerClick(event: PointerEvent) {
+  if (disabled.value) {
+    event.preventDefault();
+    event.stopPropagation();
+    return;
+  }
+
+  onClick(event);
+}
 </script>
 
 <template>
   <Primitive
-    v-if="!hasCustomAnchor"
+    v-if="!externalReference"
     :id="triggerId"
     :ref="setTriggerAnchorRef"
-    as-child
-    :reference="reference"
-    :class="[anchorCls, cls]"
+    v-bind="triggerBindings"
+    :class="hasCustomAnchor ? cls : [anchorCls, cls]"
     :dir="dir"
+    :style="triggerStyle"
     data-soybean-popper-v2-trigger
     data-grace-area-trigger
     :data-state="dataState"
     :data-disabled="disabled ? '' : undefined"
-    :aria-expanded="open"
-    :aria-controls="open ? popupId : undefined"
+    :disabled="nativeDisabled"
+    :aria-disabled="ariaDisabled"
+    :type="buttonType"
     @blur="onBlur"
-    @click="onClick"
-    @contextmenu="onContextMenu"
-    @focus="onFocus"
-    @pointercancel="onPointerCancel"
-    @pointerdown="onPointerDown"
-    @pointerenter="onPointerEnter"
-    @pointerleave="onPointerLeave"
-    @pointermove="onPointerMove"
-    @pointerup="onPointerUp"
-  >
-    <Button v-bind="forwardedProps" :style="triggerStyle" :disabled="disabled">
-      <slot />
-    </Button>
-  </Primitive>
-
-  <Button
-    v-else
-    :id="triggerId"
-    :ref="setTriggerElement"
-    v-bind="forwardedProps"
-    :style="triggerStyle"
-    data-soybean-popper-v2-trigger
-    data-grace-area-trigger
-    :class="cls"
-    :disabled="disabled"
-    :data-state="dataState"
-    :aria-expanded="open"
-    :aria-controls="open ? popupId : undefined"
-    @blur="onBlur"
-    @click="onClick"
+    @click="onTriggerClick"
     @contextmenu="onContextMenu"
     @focus="onFocus"
     @pointercancel="onPointerCancel"
@@ -145,5 +199,5 @@ const {
     @pointerup="onPointerUp"
   >
     <slot />
-  </Button>
+  </Primitive>
 </template>

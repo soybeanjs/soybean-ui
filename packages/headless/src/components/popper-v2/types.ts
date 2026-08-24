@@ -75,7 +75,19 @@ export interface PopperV2TriggerProps extends ButtonProps {
    * @defaultValue false
    */
   focusVisibleOnly?: boolean;
+  /**
+   * How the trigger references its popup for assistive technology.
+   *
+   * - `controls`: `aria-expanded` + `aria-controls` (expandable widgets: popover / menu)
+   * - `describedby`: `aria-describedby` while open (tooltip-like descriptions)
+   * - `none`: no popup-reference attributes
+   *
+   * @defaultValue 'controls'
+   */
+  ariaMode?: PopperV2TriggerAriaMode;
 }
+
+export type PopperV2TriggerAriaMode = 'controls' | 'describedby' | 'none';
 
 export interface PopperV2TriggerConfiguration {
   type: PopperV2TriggerType;

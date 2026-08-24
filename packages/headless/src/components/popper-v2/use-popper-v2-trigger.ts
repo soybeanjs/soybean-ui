@@ -152,12 +152,19 @@ export function usePopperV2Trigger(
 
   async function onClick(event: PointerEvent) {
     if (props.trigger !== 'click') return;
+    if (event.button !== 0 || event.ctrlKey) return;
+    if (context.disabled.value) return;
+
+    context.onOpenToggle('trigger-click');
 
     await nextTick();
-    if (event.defaultPrevented || context.disabled.value) return;
+    if (event.defaultPrevented) return;
 
-    if (event.button !== 0 || event.ctrlKey) return;
-    context.onOpenToggle('trigger-click');
+    // Prevent the trigger from taking focus when opening (Safari / iOS focus on click) so the
+    // popup content can receive focus without competition.
+    if (context.open.value) {
+      event.preventDefault();
+    }
   }
 
   async function onContextMenu(event: MouseEvent) {
