@@ -161,11 +161,16 @@ export function useFloating<T extends ReferenceElement = ReferenceElement>(
       middlewareData.value = position.middlewareData;
       /**
        * The floating element's position may be recomputed while it's closed
-       * but still mounted (such as when transitioning out). To ensure
-       * `isPositioned` will be `false` initially on the next open, avoid
-       * setting it to `true` when `open === false` (must be specified).
+       * but still mounted (such as when transitioning out). `isPositioned`
+       * must then stay `true` so the exit animation plays in place (inline
+       * `animation: none` fallback and the off-screen transform are bound to
+       * it); the re-enter of the unpositioned state on the next open is
+       * handled by `reset()`. Only flag as positioned while open (or when no
+       * `open` option is specified).
        */
-      isPositioned.value = open !== false;
+      if (open !== false) {
+        isPositioned.value = true;
+      }
     });
   }
 
