@@ -26,6 +26,7 @@ interface PopperV2RootContextParams {
 const defaultTriggerConfiguration: PopperV2TriggerConfiguration = {
   type: 'click',
   openDelay: 0,
+  focusOpenDelay: 0,
   closeDelay: 0,
   skipDelayDuration: 300,
   pressOpenDelay: 700,
@@ -75,6 +76,7 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
     let openTimer: ReturnType<typeof setTimeout> | undefined;
     let closeTimer: ReturnType<typeof setTimeout> | undefined;
     let skipDelayTimer: ReturnType<typeof setTimeout> | undefined;
+    let hoverCloseGuard: (() => boolean) | undefined;
 
     function clearOpenTimer() {
       if (openTimer === undefined) return;
@@ -151,8 +153,11 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
       clearOpenTimer();
       clearCloseTimer();
 
-      // Focus is a deliberate targeting act: open immediately instead of incurring the hover delay.
-      const delay = reason === 'trigger-focus' ? 0 : isOpenDelayed.value ? triggerConfiguration.openDelay : 0;
+      const delay = isOpenDelayed.value
+        ? reason === 'trigger-focus'
+          ? triggerConfiguration.focusOpenDelay
+          : triggerConfiguration.openDelay
+        : 0;
       if (delay <= 0) {
         commitHoverOpen(reason, false);
         return;
@@ -173,6 +178,10 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
       closeTimer = setTimeout(() => {
         closeTimer = undefined;
         if (isPointerInTree.value) return;
+
+        // A domain layer (e.g. HoverCard text selection) may veto the delayed close; the guard
+        // runs at fire time so late-changing state (selection made during the delay) is honored.
+        if (hoverCloseGuard?.()) return;
 
         onOpenChange(false, reason);
         startSkipDelayTimer();
@@ -236,6 +245,10 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
       };
     }
 
+    function registerHoverCloseGuard(guard?: () => boolean) {
+      hoverCloseGuard = guard;
+    }
+
     function registerChild(child: PopperV2RootContext) {
       children.value = [...children.value, child];
 
@@ -282,6 +295,7 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
       onTriggerPointerInsideChange,
       onPopupPointerInsideChange,
       registerCustomAnchor,
+      registerHoverCloseGuard,
       registerChild,
       closeDescendants,
       clearTimers

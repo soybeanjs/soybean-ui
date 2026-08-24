@@ -199,6 +199,7 @@ export function usePopperV2Trigger(
     context.configureTrigger({
       type,
       openDelay: props.openDelay ?? (type === 'hover' ? 150 : 0),
+      focusOpenDelay: props.focusOpenDelay ?? props.openDelay ?? (type === 'hover' ? 150 : 0),
       closeDelay: props.closeDelay ?? 0,
       skipDelayDuration: props.skipDelayDuration ?? 300,
       pressOpenDelay: props.pressOpenDelay ?? 700,

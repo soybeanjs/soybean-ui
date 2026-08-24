@@ -25,6 +25,7 @@ const { anchorElement, popupElement } = usePopperRootContext('PopperPositioner')
 const referenceElement = computed(() => props.reference ?? anchorElement.value);
 
 const { floatingStyles, placement, isPositioned, middlewareData } = useFloating(referenceElement, positionerElement, {
+  open: () => props.open,
   strategy: () => props.positionStrategy,
   placement: () => props.placement ?? getPlacement(props.side, props.align),
   whileElementsMounted: (...args) =>

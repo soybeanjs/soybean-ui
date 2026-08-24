@@ -31,6 +31,7 @@ const shellTriggerProps: PopperV2TriggerProps = reactive({
     return provider.isOpenDelayed.value ? delayDuration.value : 0;
   },
   closeDelay: 0,
+  focusOpenDelay: 0,
   get skipDelayDuration() {
     return provider.skipDelayDuration.value;
   },

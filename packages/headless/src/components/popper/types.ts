@@ -29,6 +29,14 @@ export interface PopperAnchorProps extends PrimitiveWithBaseProps {
  */
 export interface PopperPositionerProps extends BaseProps {
   /**
+   * Whether the floating element is open. Drives the positioning lifecycle (`isPositioned`
+   * resets on open, exit transitions keep the last position); the pure positioning primitive
+   * itself has no open state, so consumers wire their own open state here.
+   *
+   * @defaultValue true
+   */
+  open?: boolean;
+  /**
    * The placement of the floating element.
    *
    * If used, it will override the `side` and `align` props.

@@ -62,6 +62,13 @@ export interface PopperV2TriggerProps extends ButtonProps {
   pressOpenDelay?: number;
   openOnFocus?: boolean;
   /**
+   * Open delay applied to focus-driven opens. Defaults to `openDelay`; set `0` to open
+   * instantly on focus (Tooltip semantics).
+   *
+   * @defaultValue inherit from `openDelay`
+   */
+  focusOpenDelay?: number;
+  /**
    * When `true`, focus-driven opening only responds to keyboard/programmatic focus
    * (`:focus-visible`), ignoring pointer-derived focus.
    *
@@ -73,6 +80,7 @@ export interface PopperV2TriggerProps extends ButtonProps {
 export interface PopperV2TriggerConfiguration {
   type: PopperV2TriggerType;
   openDelay: number;
+  focusOpenDelay: number;
   closeDelay: number;
   skipDelayDuration: number;
   pressOpenDelay: number;
@@ -330,6 +338,11 @@ export interface PopperV2RootContext {
   onTriggerPointerInsideChange: (value: boolean) => void;
   onPopupPointerInsideChange: (value: boolean) => void;
   registerCustomAnchor: () => () => void;
+  /**
+   * Registers a domain-level veto for delayed hover closes (e.g. HoverCard text selection).
+   * The guard is consulted when the close timer fires; returning `true` keeps the layer open.
+   */
+  registerHoverCloseGuard: (guard?: () => boolean) => void;
   registerChild: (child: PopperV2RootContext) => () => void;
   closeDescendants: () => void;
   clearTimers: () => void;

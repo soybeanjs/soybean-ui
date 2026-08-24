@@ -45,6 +45,7 @@ const { floatingStyles, placement, isPositioned, middlewareData, update } = useF
   referenceElement,
   positionerElement,
   {
+    open: () => context.open.value,
     strategy: () => props.positionStrategy,
     placement: () => props.placement ?? getPlacement(props.side, props.align),
     whileElementsMounted: (...args) =>

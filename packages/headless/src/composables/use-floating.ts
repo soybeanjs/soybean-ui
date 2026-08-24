@@ -190,7 +190,10 @@ export function useFloating<T extends ReferenceElement = ReferenceElement>(
   }
 
   function reset() {
-    if (!openOption.value) {
+    // A fresh open starts a new positioning cycle: re-enter the unpositioned state so the first
+    // frame stays hidden at the fallback transform until `computePosition` resolves. While closed
+    // (exit transition / forceMount), keep the last position so the out-animation plays in place.
+    if (openOption.value) {
       isPositioned.value = false;
     }
   }
