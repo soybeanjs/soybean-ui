@@ -2,9 +2,9 @@
 import { nextTick, onMounted, onUnmounted, shallowRef, watchEffect } from 'vue';
 import type { CSSProperties } from 'vue';
 import { getTabbableCandidates, removeFromTabOrder } from '../../shared';
-import { popperCssVars } from '../popper/shared';
-import { useForwardElement } from '../../composables';
-import { PopperPopup } from '../popper';
+import { popperCssVars } from '../popper-v2/shared';
+import { usePopperV2RootContext } from '../popper-v2/context';
+import { PopperV2Popup } from '../popper-v2';
 import { hoverCardCssVars } from './shared';
 import { useHoverCardRootContext } from './context';
 import type { HoverCardPopupProps } from './types';
@@ -15,10 +15,8 @@ defineOptions({
 
 defineProps<HoverCardPopupProps>();
 
-const { dataState, hasSelectionRef, isPointerDownOnPopupRef, onDismiss, onOpen, onPopupElementChange, triggerElement } =
-  useHoverCardRootContext('HoverCardPopup');
-
-const [popupElement, setPopupElement] = useForwardElement(onPopupElementChange);
+const { hasSelectionRef, isPointerDownOnPopupRef } = useHoverCardRootContext('HoverCardPopup');
+const { dataState, popupElement, triggerElement, onOpenChange } = usePopperV2RootContext('HoverCardPopup');
 
 const containSelection = shallowRef(false);
 
@@ -28,12 +26,6 @@ const cssVarsStyle: CSSProperties = {
   [hoverCardCssVars.availableHeight]: `var(${popperCssVars.availableHeight})`,
   [hoverCardCssVars.anchorWidth]: `var(${popperCssVars.anchorWidth})`,
   [hoverCardCssVars.anchorHeight]: `var(${popperCssVars.anchorHeight})`
-};
-
-const onPointerEnter = (event: PointerEvent) => {
-  if (event.pointerType === 'touch') return;
-
-  onOpen();
 };
 
 const onPointerDown = (event: PointerEvent) => {
@@ -57,7 +49,7 @@ const onPointerUp = () => {
 const onScroll = (event: Event) => {
   const target = event.target as HTMLElement;
   if (triggerElement.value && target?.contains(triggerElement.value)) {
-    onDismiss();
+    onOpenChange(false, 'imperative');
   }
 };
 
@@ -98,8 +90,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <PopperPopup
-    :ref="setPopupElement"
+  <PopperV2Popup
     data-soybean-hover-card-popup
     data-dismissable-layer
     :data-state="dataState"
@@ -108,9 +99,8 @@ onUnmounted(() => {
       userSelect: containSelection ? 'text' : undefined,
       WebkitUserSelect: containSelection ? 'text' : undefined
     }"
-    @pointerenter="onPointerEnter"
     @pointerdown="onPointerDown"
   >
     <slot />
-  </PopperPopup>
+  </PopperV2Popup>
 </template>

@@ -1,12 +1,12 @@
 export { default as HoverCardRoot } from './hover-card-root.vue';
 export { default as HoverCardTrigger } from './hover-card-trigger.vue';
-export { default as HoverCardPortal } from '../portal/portal.vue';
+export { PopperV2Portal as HoverCardPortal } from '../popper-v2';
 export { default as HoverCardPositioner } from './hover-card-positioner.vue';
 export { default as HoverCardPopup } from './hover-card-popup.vue';
-export { default as HoverCardArrow } from '../popper/popper-arrow.vue';
+export { PopperV2Arrow as HoverCardArrow } from '../popper-v2';
 export { default as HoverCardCompact } from './hover-card-compact.vue';
 
-export { providePopperUi as provideHoverCardUi } from '../popper/context';
+export { provideHoverCardUi } from './context';
 
 export type {
   HoverCardRootProps,
@@ -20,8 +20,8 @@ export type {
   HoverCardCompactSlots
 } from './types';
 export type {
-  PopperArrowProps as HoverCardArrowProps,
-  PopperUiSlot as HoverCardUiSlot,
-  PopperUi as HoverCardUi
-} from '../popper/types';
-export type { PortalProps as HoverCardPortalProps } from '../portal/types';
+  PopperV2ArrowProps as HoverCardArrowProps,
+  PopperV2UiSlot as HoverCardUiSlot,
+  PopperV2Ui as HoverCardUi
+} from '../popper-v2/types';
+export type { PopperV2PortalProps as HoverCardPortalProps } from '../popper-v2/types';

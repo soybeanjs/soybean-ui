@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '../../composables';
-import HoverCardArrow from '../popper/popper-arrow.vue';
-import HoverCardPortal from '../portal/portal.vue';
+import PopperV2Arrow from '../popper-v2/popper-v2-arrow.vue';
+import PopperV2Portal from '../popper-v2/popper-v2-portal.vue';
+import type { PopperV2OpenChangeReason } from '../popper-v2/types';
 import HoverCardPopup from './hover-card-popup.vue';
 import HoverCardPositioner from './hover-card-positioner.vue';
 import HoverCardRoot from './hover-card-root.vue';
@@ -50,17 +51,20 @@ const positionerProps = computed(() => {
 </script>
 
 <template>
-  <HoverCardRoot v-bind="forwardedProps" @update:open="emit('update:open', $event)">
+  <HoverCardRoot
+    v-bind="forwardedProps"
+    @update:open="(value: boolean, reason?: PopperV2OpenChangeReason) => emit('update:open', value, reason)"
+  >
     <HoverCardTrigger v-bind="triggerProps">
       <slot name="trigger" />
     </HoverCardTrigger>
-    <HoverCardPortal v-bind="portalProps">
+    <PopperV2Portal v-bind="portalProps">
       <HoverCardPositioner v-bind="positionerProps" v-on="listeners">
         <HoverCardPopup v-bind="popupProps">
           <slot />
-          <HoverCardArrow v-if="showArrow" v-bind="arrowProps" />
+          <PopperV2Arrow v-if="showArrow" v-bind="arrowProps" />
         </HoverCardPopup>
       </HoverCardPositioner>
-    </HoverCardPortal>
+    </PopperV2Portal>
   </HoverCardRoot>
 </template>

@@ -1,18 +1,20 @@
-import type { ComputedRef, ShallowRef } from 'vue';
-import type { DismissableLayerEmits, DisclosureState, ForceMountProps, PropsToContext } from '../../types';
+import type { ShallowRef } from 'vue';
+import type { ForceMountProps, PropsToContext } from '../../types';
 import type {
-  PopperRootProps,
-  PopperAnchorProps,
-  PopperArrowProps,
-  PopperPopupProps,
-  PopperPositionerProps
-} from '../popper/types';
-import type { PortalProps } from '../portal/types';
+  PopperV2RootProps,
+  PopperV2PositionerEmits,
+  PopperV2AnchorProps,
+  PopperV2ArrowProps,
+  PopperV2OpenChangeReason,
+  PopperV2PopupProps,
+  PopperV2PortalProps,
+  PopperV2PositionerProps
+} from '../popper-v2/types';
 
 /**
  * Properties for the HoverCardRoot component.
  */
-export interface HoverCardRootProps extends PopperRootProps {
+export interface HoverCardRootProps extends PopperV2RootProps {
   /** The open state of the hover card when it is initially rendered. Use when you do not need to control its open state. */
   defaultOpen?: boolean;
   /** The controlled open state of the hover card. */
@@ -28,18 +30,18 @@ export interface HoverCardRootProps extends PopperRootProps {
  */
 export interface HoverCardRootEmits {
   /** Event handler called when the open state of the hover card changes. */
-  'update:open': [value: boolean];
+  'update:open': [value: boolean, reason?: PopperV2OpenChangeReason];
 }
 
 /**
  * Properties for the HoverCardPositionerImpl component.
  */
-export interface HoverCardPositionerImplProps extends PopperPositionerProps {}
+export interface HoverCardPositionerImplProps extends PopperV2PositionerProps {}
 /**
  * Events for the HoverCardPositionerImpl component.
  */
 export type HoverCardPositionerImplEmits = Pick<
-  DismissableLayerEmits,
+  PopperV2PositionerEmits,
   'escapeKeyDown' | 'pointerDownOutside' | 'focusOutside'
 >;
 
@@ -55,75 +57,35 @@ export type HoverCardPositionerEmits = HoverCardPositionerImplEmits;
 /**
  * Properties for the HoverCardPopup component.
  */
-export interface HoverCardPopupProps extends PopperPopupProps {}
+export interface HoverCardPopupProps extends PopperV2PopupProps {}
 
 /**
  * Parameters used to create the HoverCardRoot context.
  */
-export interface HoverCardRootContextParams extends PropsToContext<HoverCardRootProps, 'openDelay' | 'closeDelay'> {
-  /**
-   * Whether the component is open.
-   */
-  open: ShallowRef<boolean | undefined>;
-}
+export type HoverCardRootContextParams = PropsToContext<HoverCardRootProps, 'openDelay' | 'closeDelay'>;
 
 /**
- * Context for the HoverCardRoot component.
+ * Context for the HoverCardRoot component. Open state, timers, grace and dismiss live on the
+ * PopperV2 root context; only the HoverCard-specific selection tracking stays here.
  */
 export interface HoverCardRootContext extends HoverCardRootContextParams {
   /**
-   * Data state used by the component context.
-   */
-  dataState: ComputedRef<DisclosureState>;
-  /**
-   * Trigger element used by the component context.
-   */
-  triggerElement: ShallowRef<HTMLElement | undefined>;
-  /**
-   * Callback invoked when the trigger element changes.
-   */
-  onTriggerElementChange: (element: HTMLElement) => void;
-  /**
-   * Popup element used by the component context.
-   */
-  popupElement: ShallowRef<HTMLElement | undefined>;
-  /**
-   * Callback invoked when the popup element changes.
-   */
-  onPopupElementChange: (element: HTMLElement) => void;
-  /**
-   * Whether the component has selection ref.
+   * Whether the popup currently contains a text selection (blocks delayed closes).
    */
   hasSelectionRef: ShallowRef<boolean>;
   /**
-   * Whether a pointer down on popup ref.
+   * Whether a pointer down started on the popup (blocks delayed closes).
    */
   isPointerDownOnPopupRef: ShallowRef<boolean>;
-  /**
-   * Whether a pointer in transit ref.
-   */
-  isPointerInTransitRef: ShallowRef<boolean>;
-  /**
-   * Callback invoked when the open event fires.
-   */
-  onOpen: () => void;
-  /**
-   * Callback invoked when the close event fires.
-   */
-  onClose: () => void;
-  /**
-   * Callback invoked when the dismiss event fires.
-   */
-  onDismiss: () => void;
 }
 
 export type {
-  PopperArrowProps as HoverCardArrowProps,
-  PopperUiSlot as HoverCardUiSlot,
-  PopperUi as HoverCardUi
-} from '../popper/types';
-export type { PortalProps as HoverCardPortalProps } from '../portal/types';
-export type { PopperAnchorProps as HoverCardTriggerProps } from '../popper/types';
+  PopperV2ArrowProps as HoverCardArrowProps,
+  PopperV2UiSlot as HoverCardUiSlot,
+  PopperV2Ui as HoverCardUi
+} from '../popper-v2/types';
+export type { PopperV2PortalProps as HoverCardPortalProps } from '../popper-v2/types';
+export type { PopperV2AnchorProps as HoverCardTriggerProps } from '../popper-v2/types';
 
 /**
  * Properties for the HoverCardCompact component.
@@ -132,7 +94,7 @@ export interface HoverCardCompactProps extends HoverCardRootProps {
   /**
    * Placement.
    */
-  placement?: PopperPositionerProps['placement'];
+  placement?: PopperV2PositionerProps['placement'];
   /**
    * Whether to show an arrow.
    */
@@ -140,11 +102,11 @@ export interface HoverCardCompactProps extends HoverCardRootProps {
   /**
    * Properties forwarded to the trigger element.
    */
-  triggerProps?: PopperAnchorProps;
+  triggerProps?: PopperV2AnchorProps;
   /**
    * Properties forwarded to the portal element.
    */
-  portalProps?: PortalProps;
+  portalProps?: PopperV2PortalProps;
   /**
    * Properties forwarded to the positioner element.
    */
@@ -156,7 +118,7 @@ export interface HoverCardCompactProps extends HoverCardRootProps {
   /**
    * Properties forwarded to the arrow element.
    */
-  arrowProps?: PopperArrowProps;
+  arrowProps?: PopperV2ArrowProps;
 }
 
 /**

@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { shallowRef } from 'vue';
-import { useForwardListeners, useOmitProps, usePresence } from '../../composables';
-import { useHoverCardRootContext } from './context';
-import HoverCardPositionerImpl from './hover-card-positioner-impl.vue';
-import type { HoverCardPositionerProps, HoverCardPositionerEmits } from './types';
+import { computed } from 'vue';
+import { defu } from 'defu';
+import { usePopperV2RootContext } from '../popper-v2/context';
+import { useForwardListeners } from '../../composables';
+import { PopperV2Positioner } from '../popper-v2';
+import type { HoverCardPositionerEmits, HoverCardPositionerProps } from './types';
 
 defineOptions({
   name: 'HoverCardPositioner'
@@ -16,16 +17,23 @@ const props = withDefaults(defineProps<HoverCardPositionerProps>(), {
 
 const emit = defineEmits<HoverCardPositionerEmits>();
 
-const forwardedProps = useOmitProps(props, ['forceMount']);
-const listeners = useForwardListeners(emit);
+const listeners = useForwardListeners<keyof HoverCardPositionerEmits>(emit);
 
-const { open, popupElement } = useHoverCardRootContext('HoverCardPositioner');
+const { onOpenChange } = usePopperV2RootContext('HoverCardPositioner');
 
-const isPresent = props.forceMount ? shallowRef(true) : usePresence(popupElement, open);
+const resolvedProps = computed(() =>
+  defu(props, {
+    side: 'bottom',
+    sideOffset: 4,
+    align: 'center',
+    avoidCollisions: true,
+    onGracePointerExit: () => onOpenChange(false, 'trigger-hover')
+  } satisfies HoverCardPositionerProps)
+);
 </script>
 
 <template>
-  <HoverCardPositionerImpl v-if="isPresent" data-soybean-hover-card-positioner v-bind="forwardedProps" v-on="listeners">
+  <PopperV2Positioner v-bind="resolvedProps" data-soybean-hover-card-positioner v-on="listeners">
     <slot />
-  </HoverCardPositionerImpl>
+  </PopperV2Positioner>
 </template>
