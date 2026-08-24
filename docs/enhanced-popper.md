@@ -902,3 +902,32 @@ Popover 是「全量下壳」的样板：Root/Trigger/Positioner 均为薄透传
 #### 17.9.3 验证
 
 monorepo typecheck 通过；popper 相关 13 个 spec（hover-card/context/dropdown/menu/popover/tooltip/popconfirm/menubar×4/tree-menu/page-tabs）138/138 全过；**全量单测 1778+ 用例 0 失败**（含此前视为存量的 popconfirm a11y ×1 与 date-picker/date-range-picker ×16——后者实为 trigger attrs 泄漏类问题，本轮连带修复）；`sui headless/ui`、fmt、lint 通过。净变化 +184/−294（壳层 +162 的同时三个上层 trigger 共 −224）。
+
+### 17.10 `PopperV2Trigger` 事件绑定按 trigger 收敛分析（2026-08-25）
+
+> 现状：`popper-v2-trigger.vue` 的 Primitive 与外部 `reference` 上**全量绑定 10 个事件**（click / contextmenu / focus / blur / pointerenter / pointerleave / pointermove / pointerdown / pointerup / pointercancel），各 handler 内部按 trigger 早退。
+
+#### 17.10.1 事件需求矩阵（依据 handler 源码逐一核实）
+
+| 事件                        |         click         |         hover          |     contextmenu     | 依据                                                                                                                                                      |
+| :-------------------------- | :-------------------: | :--------------------: | :-----------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| click                       |       ✅ toggle       |           ❌           |         ❌          | handler 首行 `trigger !== 'click'` 早退                                                                                                                   |
+| contextmenu                 |          ❌           |           ❌           |   ✅ 右键/长按开    | 同上 guard                                                                                                                                                |
+| pointerenter / pointerleave |          ❌           |   ✅ 开/关 + inTree    |         ❌          | `onTriggerPointerInsideChange` / `cancelHoverClose` **只服务于 hover close 机器**（`isPointerInTree` 全库唯一消费方是 `onHoverClose` 的 timer 回调）      |
+| pointermove                 |          ❌           |           ❌           | ✅ 触控移动取消长按 | handler 只处理 `contextmenu + touch`                                                                                                                      |
+| pointerdown / up / cancel   | ⬜ 仅当 `openOnFocus` |           ✅           |   ✅ 长按 + 清理    | `isPointerDown` **唯一读者是 `onFocus`**（focus 门控）；contextmenu 长按核心                                                                              |
+| focus / blur                | ⬜ 仅当 `openOnFocus` | ✅（默认 openOnFocus） |         ⬜          | handler 首行 `!openOnFocus` 早退；`openOnFocus` 默认 = `trigger === 'hover'`，但 click/contextmenu 可显式开启，故按 **openOnFocus 而非 trigger 类型**门控 |
+
+即当前每个 trigger 都绑着 3～7 个**永不产生行为**的监听；click 模式每次 pointerdown 还会注册/清理 2 个 document once-listener（`registerDocumentPointerListeners`），而 `openOnFocus=false` 时 `isPointerDown` 根本无人读取。
+
+#### 17.10.2 优化方案（T-12，⬜ 待办）
+
+1. **组件层 `triggerEvents` computed**（旧 DropdownTrigger `hoverListeners` 模式的复刻）：按 `trigger` + `openOnFocus` 组装事件 map，模板 `v-on="triggerEvents"`；外部 `reference` 的 watchEffect 改为遍历同一 map 挂载/卸载（事件名全小写，与 `addEventListener` 无转换差异）。`trigger` / `openOnFocus` 均为响应式 prop，切换时 computed 自动重绑。
+2. **hook 层配套 guard**：`onPointerDown` 的 `registerDocumentPointerListeners` 仅在 `openOnFocus || trigger === 'contextmenu'` 时执行（focus 门控或长按清理才有读者）。
+3. handler 内现有 guard **保留**（防御外部直接调用/事件转发场景），收敛只发生在绑定层——「绑都不绑」优于「绑了再 guard」。
+
+#### 17.10.3 收益与风险评估（诚实版）
+
+- **性能**：微小。省 3～7 个/元素的原生 listener 与无效分发、click 模式的 document 监听往返；量级对浮层组件可忽略。**不应以性能为由做**。
+- **真实收益是语义与防御**：DevTools 里元素的监听即交互模式（可调试性）；消除「第三方 `dispatchEvent('click')` 到 hover trigger」「脚本派发 pointermove 到 click trigger」等意外路径对 handler guard 的依赖；hook 状态机（isPointerDown / document 监听）不再为无关 trigger 空转。
+- **风险**：低。`trigger` 运行时切换（罕见）由 computed 覆盖；测试若存在「在非对应 trigger 上合成事件」的用例（如对 hover trigger `trigger('click')`）会从「静默早退」变为「无监听」，跑全量测试确认即可。旧 DropdownTrigger 的 `hoverListeners` 实践证明该模式在本库测试体系下稳定。
