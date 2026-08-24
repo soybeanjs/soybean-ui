@@ -399,11 +399,11 @@ export const components = {
     'PopoverRoot',
     'PopoverTrigger',
     'PopoverAnchor',
-    'PopoverPortal',
     'PopoverPositioner',
     'PopoverPopup',
+    'PopoverClose',
     'PopoverArrow',
-    'PopoverClose'
+    'PopoverPortal'
   ],
   popper: ['PopperRoot', 'PopperAnchor', 'PopperPositioner', 'PopperPopup', 'PopperArrow'],
   popperV2: [
@@ -523,6 +523,7 @@ export const components = {
   ],
   tooltip: [
     'TooltipCompact',
+    'TooltipProvider',
     'TooltipRoot',
     'TooltipTrigger',
     'TooltipPortal',

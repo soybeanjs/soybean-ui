@@ -27,7 +27,8 @@ const forwardedProps = useOmitProps(props, [
   'closeDelay',
   'skipDelayDuration',
   'pressOpenDelay',
-  'openOnFocus'
+  'openOnFocus',
+  'focusVisibleOnly'
 ]);
 
 const cls = usePopperV2Ui('trigger');

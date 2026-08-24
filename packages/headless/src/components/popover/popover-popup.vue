@@ -1,21 +1,15 @@
 <script setup lang="ts">
 import type { CSSProperties } from 'vue';
-import { popperCssVars } from '../popper/shared';
-import { useForwardElement } from '../../composables';
-import { PopperPopup } from '../popper';
+import { popperCssVars } from '../popper-v2/shared';
+import { PopperV2Popup } from '../popper-v2';
 import { popoverCssVars } from './shared';
-import { usePopoverRootContext } from './context';
 import type { PopoverPopupProps } from './types';
 
 defineOptions({
   name: 'PopoverPopup'
 });
 
-defineProps<PopoverPopupProps>();
-
-const { dataState, triggerId, popupId, initPopupId, onPopupElementChange } = usePopoverRootContext('PopoverPopup');
-
-const [_, setPopupElement] = useForwardElement(onPopupElementChange);
+const props = defineProps<PopoverPopupProps>();
 
 const cssVarsStyle: CSSProperties = {
   [popoverCssVars.transformOrigin]: `var(${popperCssVars.transformOrigin})`,
@@ -24,22 +18,10 @@ const cssVarsStyle: CSSProperties = {
   [popoverCssVars.anchorWidth]: `var(${popperCssVars.anchorWidth})`,
   [popoverCssVars.anchorHeight]: `var(${popperCssVars.anchorHeight})`
 };
-
-initPopupId();
 </script>
 
 <template>
-  <PopperPopup
-    :id="popupId"
-    :ref="setPopupElement"
-    data-soybean-popover-popup
-    :aria-labelledby="triggerId"
-    data-dismissable-layer
-    :data-state="dataState"
-    role="dialog"
-    tabindex="-1"
-    :style="cssVarsStyle"
-  >
+  <PopperV2Popup v-bind="props" data-soybean-popover-popup role="dialog" :style="cssVarsStyle">
     <slot />
-  </PopperPopup>
+  </PopperV2Popup>
 </template>

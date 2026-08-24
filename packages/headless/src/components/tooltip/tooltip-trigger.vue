@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, reactive, useId, watch } from 'vue';
+import { usePopperV2RootContext } from '../popper-v2/context';
 import { useForwardElement } from '../../composables';
-import { PopperAnchor } from '../popper';
-import { useTooltipOpenDelayedContext, useTooltipRootContext } from './context';
+import { PopperV2Anchor } from '../popper-v2';
+import type { PopperV2TriggerProps } from '../popper-v2/types';
+import { usePopperV2Trigger } from '../popper-v2/use-popper-v2-trigger';
+import { useTooltipRootContext } from './context';
 import type { TooltipTriggerProps } from './types';
 
 defineOptions({
@@ -13,101 +16,83 @@ withDefaults(defineProps<TooltipTriggerProps>(), {
   as: 'button'
 });
 
-const { isPointerInTransitRef } = useTooltipOpenDelayedContext('TooltipTrigger');
-const {
-  open,
-  disabled,
-  popupId,
-  dataState,
-  disableClosingTrigger,
-  ignoreNonKeyboardFocus,
-  onTriggerElementChange,
-  onOpen,
-  onClose,
-  onTriggerEnter,
-  onTriggerLeave
-} = useTooltipRootContext('TooltipTrigger');
-const [_, setTriggerElement] = useForwardElement(onTriggerElementChange);
+const { delayDuration, disableClosingTrigger, ignoreNonKeyboardFocus, disabled, popupId, provider } =
+  useTooltipRootContext('TooltipTrigger');
+const popperContext = usePopperV2RootContext('TooltipTrigger');
 
-let isPointerDown = false;
-let hasPointerMoveOpened = false;
+const [, setTriggerElement] = useForwardElement(popperContext.onTriggerElementChange);
 
-const onPointerUp = () => {
-  setTimeout(() => {
-    isPointerDown = false;
-  }, 1);
-};
-
-const onPointerDown = () => {
-  if (open.value && !disableClosingTrigger.value) {
-    onClose();
+// All hover timing (open delay, skip-delay window, focus gating) runs on the shared PopperV2
+// trigger machine; the provider-level `isOpenDelayed` gates `openDelay` so sibling tooltips
+// opened within the skip-delay window open instantly.
+const shellTriggerProps: PopperV2TriggerProps = reactive({
+  trigger: 'hover',
+  get openDelay() {
+    return provider.isOpenDelayed.value ? delayDuration.value : 0;
+  },
+  closeDelay: 0,
+  get skipDelayDuration() {
+    return provider.skipDelayDuration.value;
+  },
+  openOnFocus: true,
+  get focusVisibleOnly() {
+    return ignoreNonKeyboardFocus.value;
+  },
+  get disabled() {
+    return disabled.value;
   }
-  isPointerDown = true;
-  document.addEventListener('pointerup', onPointerUp, { once: true });
-};
+});
 
-const onPointerMove = (event: PointerEvent) => {
-  if (event.pointerType === 'touch') return;
+const { onBlur, onFocus, onPointerCancel, onPointerDown, onPointerEnter, onPointerLeave, onPointerMove, onPointerUp } =
+  usePopperV2Trigger(shellTriggerProps, popperContext, { onVirtualPointChange: () => {} });
 
-  if (!hasPointerMoveOpened && !isPointerInTransitRef.value) {
-    onTriggerEnter();
-    hasPointerMoveOpened = true;
+const dataState = computed(() => {
+  if (!popperContext.open.value) return 'closed' as const;
+  return popperContext.wasOpenDelayed.value ? ('delayed-open' as const) : ('instant-open' as const);
+});
+
+// Pointer down on an open trigger closes the tooltip unless `disableClosingTrigger` is set;
+// the dismiss layer alone won't, because it prevents dismissal for trigger targets.
+function onTriggerPointerDown(event: PointerEvent) {
+  onPointerDown(event);
+
+  if (popperContext.open.value && !disableClosingTrigger.value) {
+    popperContext.onOpenChange(false, 'imperative');
   }
-};
+}
 
-const onPointerLeave = () => {
-  onTriggerLeave();
-  hasPointerMoveOpened = false;
-};
-
-const onFocus = (event: FocusEvent) => {
-  if (isPointerDown) return;
-
-  if (ignoreNonKeyboardFocus.value && !(event.target as HTMLElement).matches?.(':focus-visible')) {
-    return;
+// Coordinate sibling tooltips through the provider: opening one instantly closes the others
+// and suppresses the open delay for the next one within the skip-delay window.
+const rootId = useId();
+watch(popperContext.open, isOpen => {
+  if (isOpen) {
+    provider.rootOpened(rootId, () => popperContext.onOpenChange(false, 'imperative'));
+  } else {
+    provider.rootClosed(rootId);
   }
-
-  onOpen();
-};
-
-const onBlur = () => {
-  onClose();
-};
-
-const onClick = () => {
-  if (!disableClosingTrigger.value) {
-    onClose();
-  }
-};
-
-const tooltipListeners = computed(() => {
-  if (disabled.value) {
-    return {};
-  }
-
-  return {
-    click: onClick,
-    focus: onFocus,
-    pointermove: onPointerMove,
-    pointerleave: onPointerLeave,
-    pointerdown: onPointerDown,
-    blur: onBlur
-  };
 });
 </script>
 
 <template>
-  <PopperAnchor
+  <PopperV2Anchor
     :ref="setTriggerElement"
     :as="as"
     :as-child="asChild"
-    data-soybean-tooltip-trigger
     :reference="reference"
-    :aria-describedby="open ? popupId : undefined"
-    :data-state="dataState"
+    data-soybean-tooltip-trigger
     data-grace-area-trigger
-    v-on="tooltipListeners"
+    :aria-describedby="popperContext.open.value ? popupId : undefined"
+    :data-state="dataState"
+    :data-disabled="disabled ? '' : undefined"
+    @blur="onBlur"
+    @focus="onFocus"
+    @pointercancel="onPointerCancel"
+    @pointerdown="onTriggerPointerDown"
+    @pointerenter="onPointerEnter"
+    @pointerleave="onPointerLeave"
+    @pointermove="onPointerMove"
+    @pointerup="onPointerUp"
   >
     <slot />
-  </PopperAnchor>
+  </PopperV2Anchor>
 </template>

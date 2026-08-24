@@ -1,13 +1,15 @@
-import type { Ref, ShallowRef } from 'vue';
-import type { DismissableLayerEmits, ForceMountProps, PropsToContext, Placement } from '../../types';
+import type { ShallowRef } from 'vue';
+import type { ForceMountProps, Placement, PropsToContext } from '../../types';
 import type {
-  PopperRootProps,
-  PopperAnchorProps,
-  PopperArrowProps,
-  PopperPopupProps,
-  PopperPositionerProps
-} from '../popper/types';
-import type { PortalProps } from '../portal/types';
+  PopperV2AnchorProps,
+  PopperV2ArrowProps,
+  PopperV2OpenChangeReason,
+  PopperV2PopupProps,
+  PopperV2PortalProps,
+  PopperV2PositionerEmits,
+  PopperV2PositionerProps,
+  PopperV2RootProps
+} from '../popper-v2/types';
 
 /**
  * Properties for the TooltipProvider component.
@@ -58,14 +60,62 @@ export interface TooltipProviderProps {
 }
 
 /**
- * Parameters used to create the TooltipOpenDelayed context.
+ * Context provided by `TooltipProvider` (or a local fallback created by `TooltipRoot`).
+ *
+ * Holds the tree-scoped resolved provider config plus the cross-instance shared skip-delay
+ * state: opening any tooltip within the provider instantly closes the others and opens the
+ * next one without incurring the open delay again.
  */
-export type TooltipOpenDelayedContextParams = PropsToContext<TooltipProviderProps, 'skipDelayDuration'>;
+export interface TooltipProviderContext extends PropsToContext<
+  TooltipProviderProps,
+  | 'delayDuration'
+  | 'skipDelayDuration'
+  | 'disableHoverableContent'
+  | 'disableClosingTrigger'
+  | 'disabled'
+  | 'ignoreNonKeyboardFocus'
+  | 'positionerProps'
+> {
+  /**
+   * Shared skip-delay state: `true` while the open delay applies, `false` within the
+   * skip-delay window after a tooltip opened/closed inside this provider.
+   */
+  isOpenDelayed: ShallowRef<boolean>;
+  /**
+   * Notifies the provider that a tooltip root opened; `close` lets the provider close it
+   * later when a sibling opens. Sibling open roots are closed immediately.
+   */
+  rootOpened: (id: string, close: () => void) => void;
+  /** Notifies the provider that a tooltip root closed. */
+  rootClosed: (id: string) => void;
+}
+
+/**
+ * Parameters used to create the TooltipRoot context.
+ */
+export type TooltipRootContextParams = PropsToContext<
+  TooltipProviderProps,
+  | 'delayDuration'
+  | 'disableHoverableContent'
+  | 'disableClosingTrigger'
+  | 'disabled'
+  | 'ignoreNonKeyboardFocus'
+  | 'positionerProps'
+> & {
+  /**
+   * Id of the visually hidden tooltip description element (`aria-describedby` target).
+   */
+  popupId: string;
+  /**
+   * The provider context backing this root (ancestor `TooltipProvider` or local fallback).
+   */
+  provider: TooltipProviderContext;
+};
 
 /**
  * Properties for the TooltipRoot component.
  */
-export interface TooltipRootProps extends PopperRootProps, TooltipProviderProps {
+export interface TooltipRootProps extends PopperV2RootProps, TooltipProviderProps {
   /** The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state. */
   defaultOpen?: boolean;
   /** The controlled open state of the tooltip. */
@@ -76,7 +126,7 @@ export interface TooltipRootProps extends PopperRootProps, TooltipProviderProps 
  */
 export interface TooltipRootEmits {
   /** Event handler called when the open state of the tooltip changes. */
-  'update:open': [value: boolean];
+  'update:open': [value: boolean, reason?: PopperV2OpenChangeReason];
 }
 
 /**
@@ -87,11 +137,11 @@ export type TooltipDataState = 'closed' | 'delayed-open' | 'instant-open';
 /**
  * Properties for the TooltipPositionerImpl component.
  */
-export interface TooltipPositionerImplProps extends PopperPositionerProps {}
+export interface TooltipPositionerImplProps extends PopperV2PositionerProps {}
 /**
  * Events for the TooltipPositionerImpl component.
  */
-export type TooltipPositionerImplEmits = Pick<DismissableLayerEmits, 'escapeKeyDown' | 'pointerDownOutside'>;
+export type TooltipPositionerImplEmits = PopperV2PositionerEmits;
 
 /**
  * Properties for the TooltipPositioner component.
@@ -105,7 +155,7 @@ export type TooltipPositionerEmits = TooltipPositionerImplEmits;
 /**
  * Properties for the TooltipPopup component.
  */
-export interface TooltipPopupProps extends PopperPopupProps {
+export interface TooltipPopupProps extends PopperV2PopupProps {
   /**
    * By default, screen readers will announce the content inside the component.
    *
@@ -115,29 +165,7 @@ export interface TooltipPopupProps extends PopperPopupProps {
   ariaLabel?: string;
 }
 
-/**
- * Parameters used to create the TooltipRoot context.
- */
-export interface TooltipRootContextParams extends PropsToContext<
-  TooltipProviderProps,
-  | 'delayDuration'
-  | 'disableHoverableContent'
-  | 'disableClosingTrigger'
-  | 'disabled'
-  | 'ignoreNonKeyboardFocus'
-  | 'positionerProps'
-> {
-  /**
-   * Whether the component is open.
-   */
-  open: ShallowRef<boolean | undefined>;
-  /**
-   * Whether opening is delayed.
-   */
-  isOpenDelayed: Ref<boolean>;
-}
-
-export type { PopperAnchorProps as TooltipTriggerProps } from '../popper/types';
+export type { PopperV2AnchorProps as TooltipTriggerProps } from '../popper-v2/types';
 
 /**
  * Properties for the TooltipCompact component.
@@ -158,11 +186,11 @@ export interface TooltipCompactProps extends TooltipRootProps {
   /**
    * Properties forwarded to the trigger element.
    */
-  triggerProps?: PopperAnchorProps;
+  triggerProps?: PopperV2AnchorProps;
   /**
    * Properties forwarded to the portal element.
    */
-  portalProps?: PortalProps;
+  portalProps?: PopperV2PortalProps;
   /**
    * Properties forwarded to the positioner element.
    */
@@ -174,7 +202,7 @@ export interface TooltipCompactProps extends TooltipRootProps {
   /**
    * Properties forwarded to the arrow element.
    */
-  arrowProps?: PopperArrowProps;
+  arrowProps?: PopperV2ArrowProps;
 }
 
 /**

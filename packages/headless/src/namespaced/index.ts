@@ -546,6 +546,7 @@ import {
   TooltipPopup,
   TooltipPortal,
   TooltipPositioner,
+  TooltipProvider,
   TooltipRoot,
   TooltipTrigger,
   TreeItem,
@@ -1551,21 +1552,21 @@ export const Popover = {
   Root: PopoverRoot,
   Trigger: PopoverTrigger,
   Anchor: PopoverAnchor,
-  Portal: PopoverPortal,
   Positioner: PopoverPositioner,
   Popup: PopoverPopup,
+  Close: PopoverClose,
   Arrow: PopoverArrow,
-  Close: PopoverClose
+  Portal: PopoverPortal
 } as {
   Compact: typeof PopoverCompact;
   Root: typeof PopoverRoot;
   Trigger: typeof PopoverTrigger;
   Anchor: typeof PopoverAnchor;
-  Portal: typeof PopoverPortal;
   Positioner: typeof PopoverPositioner;
   Popup: typeof PopoverPopup;
-  Arrow: typeof PopoverArrow;
   Close: typeof PopoverClose;
+  Arrow: typeof PopoverArrow;
+  Portal: typeof PopoverPortal;
 };
 
 export const PopperV2 = {
@@ -1930,6 +1931,7 @@ export const ToggleGroup = {
 
 export const Tooltip = {
   Compact: TooltipCompact,
+  Provider: TooltipProvider,
   Root: TooltipRoot,
   Trigger: TooltipTrigger,
   Portal: TooltipPortal,
@@ -1938,6 +1940,7 @@ export const Tooltip = {
   Arrow: TooltipArrow
 } as {
   Compact: typeof TooltipCompact;
+  Provider: typeof TooltipProvider;
   Root: typeof TooltipRoot;
   Trigger: typeof TooltipTrigger;
   Portal: typeof TooltipPortal;

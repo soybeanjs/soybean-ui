@@ -1,50 +1,27 @@
 <script setup lang="ts">
-import { computed, shallowRef } from 'vue';
-import { useForwardListeners, useOmitProps, usePopupEvents, usePresence } from '../../composables';
-import { usePopoverRootContext } from './context';
-import PopoverPositionerImpl from './popover-positioner-impl.vue';
+import { usePopperV2RootContext } from '../popper-v2/context';
+import { useForwardListeners, useHideOthers } from '../../composables';
+import { PopperV2Positioner } from '../popper-v2';
 import type { PopoverPositionerProps, PopoverPositionerEmits } from './types';
 
 defineOptions({
   name: 'PopoverPositioner'
 });
 
-const props = withDefaults(defineProps<PopoverPositionerProps>(), {
-  avoidCollisions: true,
-  prioritizePosition: true
-});
-
-const forwardedProps = useOmitProps(props, ['forceMount']);
+const props = defineProps<PopoverPositionerProps>();
 
 const emit = defineEmits<PopoverPositionerEmits>();
 
 const listeners = useForwardListeners(emit);
 
-const { popupElement, open, modal, triggerElement } = usePopoverRootContext('PopoverPositioner');
+const { modal, positionerElement } = usePopperV2RootContext('PopoverPositioner');
 
-const isPresent = props.forceMount ? shallowRef(true) : usePresence(popupElement, open);
-
-const trapFocus = computed(() => modal.value && open.value);
-
-const { onPointerDownOutside, onFocusOutside, onInteractOutside, onCloseAutoFocus } = usePopupEvents({
-  modal,
-  triggerElement
-});
+// The dialog domain hides the background context while a modal popover is open.
+useHideOthers(positionerElement, modal);
 </script>
 
 <template>
-  <PopoverPositionerImpl
-    v-if="isPresent"
-    v-bind="forwardedProps"
-    data-soybean-popover-positioner
-    :trap-focus="trapFocus"
-    :disable-outside-pointer-events="modal"
-    v-on="listeners"
-    @pointer-down-outside="onPointerDownOutside"
-    @focus-outside="onFocusOutside"
-    @interact-outside="onInteractOutside"
-    @close-auto-focus="onCloseAutoFocus"
-  >
+  <PopperV2Positioner v-bind="props" data-soybean-popover-positioner v-on="listeners">
     <slot />
-  </PopoverPositionerImpl>
+  </PopperV2Positioner>
 </template>

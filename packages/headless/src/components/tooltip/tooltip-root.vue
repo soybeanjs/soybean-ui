@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue';
+import { computed, useId } from 'vue';
 import { useConfigProvider } from '../config-provider/context';
-import { useControllableState } from '../../composables';
-import { PopperRoot } from '../popper';
-import { TOOLTIP_OPEN, createDefaultTooltipConfig } from './shared';
-import { provideTooltipOpenDelayedContext, provideTooltipRootContext } from './context';
-import type { TooltipRootProps, TooltipRootEmits } from './types';
+import { PopperV2Root } from '../popper-v2';
+import type { PopperV2OpenChangeReason } from '../popper-v2/types';
+import { createDefaultTooltipConfig } from './shared';
+import { provideTooltipProviderContext, provideTooltipRootContext, useTooltipProviderContext } from './context';
+import type { TooltipRootEmits, TooltipRootProps } from './types';
 
 defineOptions({
   name: 'TooltipRoot',
@@ -14,63 +14,56 @@ defineOptions({
 
 const props = withDefaults(defineProps<TooltipRootProps>(), {
   defaultOpen: false,
-  open: undefined,
-  avoidCollisions: true
+  open: undefined
 });
 
 const emit = defineEmits<TooltipRootEmits>();
 
-const open = useControllableState(
-  () => props.open,
-  value => {
-    emit('update:open', value);
-  },
-  props.defaultOpen
-);
-
+// Without an ancestor `TooltipProvider`, fall back to a local one backed by the global config
+// so skip-delay state and sibling coordination keep working through a single shared machine.
 const globalConfig = useConfigProvider();
-const tooltipConfig = computed(() => createDefaultTooltipConfig(globalConfig?.tooltip?.value));
+const globalTooltipConfig = computed(() => createDefaultTooltipConfig(globalConfig?.tooltip?.value));
+const inheritedProvider = useTooltipProviderContext();
+const provider =
+  inheritedProvider ??
+  provideTooltipProviderContext({
+    delayDuration: computed(() => globalTooltipConfig.value.delayDuration),
+    skipDelayDuration: computed(() => globalTooltipConfig.value.skipDelayDuration),
+    disableHoverableContent: computed(() => globalTooltipConfig.value.disableHoverableContent),
+    disableClosingTrigger: computed(() => globalTooltipConfig.value.disableClosingTrigger),
+    disabled: computed(() => globalTooltipConfig.value.disabled),
+    ignoreNonKeyboardFocus: computed(() => globalTooltipConfig.value.ignoreNonKeyboardFocus),
+    positionerProps: computed(() => globalTooltipConfig.value.positionerProps)
+  });
 
-const providerContext = provideTooltipOpenDelayedContext({
-  skipDelayDuration: computed(() => tooltipConfig.value.skipDelayDuration)
-});
-
-const delayDuration = computed(() => props.delayDuration ?? tooltipConfig.value.delayDuration);
-const disableHoverableContent = computed(
-  () => props.disableHoverableContent ?? tooltipConfig.value.disableHoverableContent
-);
-const disableClosingTrigger = computed(() => props.disableClosingTrigger ?? tooltipConfig.value.disableClosingTrigger);
-const disabled = computed(() => props.disabled ?? tooltipConfig.value.disabled);
-const ignoreNonKeyboardFocus = computed(
-  () => props.ignoreNonKeyboardFocus ?? tooltipConfig.value.ignoreNonKeyboardFocus
-);
-
+// Resolution chain: prop → provider (ancestor `TooltipProvider` or global config) → defaults.
 provideTooltipRootContext({
-  open,
-  delayDuration,
-  disableHoverableContent,
-  disableClosingTrigger,
-  disabled,
-  ignoreNonKeyboardFocus,
-  isOpenDelayed: providerContext.isOpenDelayed,
-  positionerProps: computed(() => tooltipConfig.value.positionerProps)
+  delayDuration: computed(() => props.delayDuration ?? provider.delayDuration.value),
+  disableHoverableContent: computed(() => props.disableHoverableContent ?? provider.disableHoverableContent.value),
+  disableClosingTrigger: computed(() => props.disableClosingTrigger ?? provider.disableClosingTrigger.value),
+  disabled: computed(() => props.disabled ?? provider.disabled.value),
+  ignoreNonKeyboardFocus: computed(() => props.ignoreNonKeyboardFocus ?? provider.ignoreNonKeyboardFocus.value),
+  positionerProps: computed(() => props.positionerProps ?? provider.positionerProps.value),
+  popupId: `soybean-tooltip-popup-${useId()}`,
+  provider
 });
 
-watch(open, isOpen => {
-  if (!providerContext.onClose) return;
-  if (isOpen) {
-    providerContext.onOpen();
-    // as `onChange` is called within a lifecycle method we
-    // avoid dispatching via `dispatchDiscreteCustomEvent`.
-    document.dispatchEvent(new CustomEvent(TOOLTIP_OPEN));
-  } else {
-    providerContext.onClose();
-  }
-});
+function onUpdateOpen(value: boolean, reason?: PopperV2OpenChangeReason) {
+  emit('update:open', value, reason);
+}
 </script>
 
 <template>
-  <PopperRoot :dir="dir">
-    <slot :open="open" />
-  </PopperRoot>
+  <PopperV2Root
+    :dir="dir"
+    :modal="false"
+    :disabled="props.disabled ?? provider.disabled.value"
+    :open="props.open"
+    :default-open="defaultOpen"
+    @update:open="onUpdateOpen"
+  >
+    <template #default="slotProps">
+      <slot v-bind="slotProps" />
+    </template>
+  </PopperV2Root>
 </template>

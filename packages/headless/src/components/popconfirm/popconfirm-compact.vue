@@ -9,8 +9,8 @@ import PopoverPopup from '../popover/popover-popup.vue';
 import PopoverPositioner from '../popover/popover-positioner.vue';
 import PopoverRoot from '../popover/popover-root.vue';
 import PopoverTrigger from '../popover/popover-trigger.vue';
-import PopperArrow from '../popper/popper-arrow.vue';
-import PopoverPortal from '../portal/portal.vue';
+import PopperV2Arrow from '../popper-v2/popper-v2-arrow.vue';
+import PopperV2Portal from '../popper-v2/popper-v2-portal.vue';
 import { usePopconfirmUi } from './context';
 import PopconfirmCancel from './popconfirm-cancel.vue';
 import PopconfirmConfirm from './popconfirm-confirm.vue';
@@ -118,7 +118,7 @@ const confirmText = computed(() => props.confirmText ?? messages.value.dialog.co
     <PopoverTrigger v-bind="triggerProps">
       <slot name="trigger" v-bind="slotProps" />
     </PopoverTrigger>
-    <PopoverPortal v-bind="portalProps">
+    <PopperV2Portal v-bind="portalProps">
       <PopoverPositioner v-bind="positionerProps" v-on="listeners">
         <PopoverPopup v-bind="popupProps">
           <PopconfirmHeader>
@@ -145,12 +145,12 @@ const confirmText = computed(() => props.confirmText ?? messages.value.dialog.co
               </PopconfirmConfirm>
             </slot>
           </PopconfirmFooter>
-          <PopperArrow v-if="showArrow" v-bind="arrowProps" />
+          <PopperV2Arrow v-if="showArrow" v-bind="arrowProps" />
         </PopoverPopup>
         <PopoverClose v-if="slots.close" v-bind="closeProps">
           <slot name="close" v-bind="slotProps" />
         </PopoverClose>
       </PopoverPositioner>
-    </PopoverPortal>
+    </PopperV2Portal>
   </PopoverRoot>
 </template>

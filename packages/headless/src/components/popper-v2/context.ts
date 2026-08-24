@@ -70,6 +70,7 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
     );
 
     const isOpenDelayed = shallowRef(true);
+    const wasOpenDelayed = shallowRef(false);
 
     let openTimer: ReturnType<typeof setTimeout> | undefined;
     let closeTimer: ReturnType<typeof setTimeout> | undefined;
@@ -130,11 +131,15 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
       }, triggerConfiguration.skipDelayDuration);
     }
 
-    function commitHoverOpen(reason: Extract<PopperV2OpenChangeReason, 'trigger-hover' | 'trigger-focus'>) {
+    function commitHoverOpen(
+      reason: Extract<PopperV2OpenChangeReason, 'trigger-hover' | 'trigger-focus'>,
+      delayed: boolean
+    ) {
       clearOpenTimer();
       clearCloseTimer();
       clearSkipDelayTimer();
       isOpenDelayed.value = false;
+      wasOpenDelayed.value = delayed;
       onOpenChange(true, reason);
     }
 
@@ -146,14 +151,15 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
       clearOpenTimer();
       clearCloseTimer();
 
-      const delay = isOpenDelayed.value ? triggerConfiguration.openDelay : 0;
+      // Focus is a deliberate targeting act: open immediately instead of incurring the hover delay.
+      const delay = reason === 'trigger-focus' ? 0 : isOpenDelayed.value ? triggerConfiguration.openDelay : 0;
       if (delay <= 0) {
-        commitHoverOpen(reason);
+        commitHoverOpen(reason, false);
         return;
       }
 
       openTimer = setTimeout(() => {
-        commitHoverOpen(reason);
+        commitHoverOpen(reason, true);
         openTimer = undefined;
       }, delay);
     }
@@ -259,6 +265,8 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
       nestingLevel,
       isPointerInTransit,
       isPointerInTree,
+      isOpenDelayed,
+      wasOpenDelayed,
       configureTrigger,
       onOpenChange,
       onOpenToggle,

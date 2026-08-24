@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount, onUnmounted } from 'vue';
-import { PopperAnchor } from '../popper';
-import { usePopoverRootContext } from './context';
+import { PopperV2Anchor } from '../popper-v2';
 import type { PopoverAnchorProps } from './types';
 
 defineOptions({
@@ -9,20 +7,10 @@ defineOptions({
 });
 
 const props = defineProps<PopoverAnchorProps>();
-
-const { hasCustomAnchor } = usePopoverRootContext('PopoverAnchor');
-
-onBeforeMount(() => {
-  hasCustomAnchor.value = true;
-});
-
-onUnmounted(() => {
-  hasCustomAnchor.value = false;
-});
 </script>
 
 <template>
-  <PopperAnchor data-soybean-popover-anchor v-bind="props">
+  <PopperV2Anchor v-bind="props" data-soybean-popover-anchor>
     <slot />
-  </PopperAnchor>
+  </PopperV2Anchor>
 </template>

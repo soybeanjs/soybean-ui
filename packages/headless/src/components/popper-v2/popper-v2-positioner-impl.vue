@@ -95,12 +95,13 @@ providePopperV2PositionerContext({
 
 // Grace polygons only matter for hover triggers; click / contextmenu layers close on outside
 // interaction instead of pointer transit, so the polygon + pointer listeners are skipped.
-const isGraceDisabled = computed(() => triggerType.value !== 'hover');
+// `disableHoverableContent` additionally disables the grace so leaving the trigger closes right away.
+const graceDisabled = computed(() => triggerType.value !== 'hover' || Boolean(props.disableHoverableContent));
 
 useGraceArea({
   triggerElement,
   areaElement: positionerElement,
-  disabled: isGraceDisabled,
+  disabled: graceDisabled,
   subAreaAttribute: 'data-popper-v2-sub-popup',
   onPointerInTransitChange: value => {
     isPointerInTransit.value = value;
@@ -112,6 +113,7 @@ useGraceArea({
     if (triggerType.value === 'hover') {
       context.onHoverClose('trigger-hover');
     }
+    props.onGracePointerExit?.();
   }
 });
 

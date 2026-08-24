@@ -133,7 +133,7 @@ describe('SPopconfirm', () => {
       await nextTick();
 
       const violations = await getA11yViolations(wrapper.get('[data-testid="container"]').element);
-      expect(violations).toHaveLength(1);
+      expect(violations).toHaveLength(0);
       wrapper.unmount();
     });
   });

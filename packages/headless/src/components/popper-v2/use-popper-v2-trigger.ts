@@ -16,7 +16,7 @@ interface UsePopperTriggerReturn {
   onBlur: (event: FocusEvent) => void;
   onClick: (event: PointerEvent) => Promise<void>;
   onContextMenu: (event: MouseEvent) => Promise<void>;
-  onFocus: () => void;
+  onFocus: (event: FocusEvent) => void;
   onPointerCancel: () => void;
   onPointerDown: (event: PointerEvent) => Promise<void>;
   onPointerEnter: (event: PointerEvent) => void;
@@ -172,8 +172,13 @@ export function usePopperV2Trigger(
     event.preventDefault();
   }
 
-  function onFocus() {
+  function onFocus(event: FocusEvent) {
     if (!openOnFocus.value || isPointerDown || context.disabled.value) return;
+
+    if (props.focusVisibleOnly && !(event.target as HTMLElement | null)?.matches?.(':focus-visible')) {
+      return;
+    }
+
     context.onHoverOpen('trigger-focus');
   }
 

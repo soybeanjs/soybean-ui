@@ -1,4 +1,4 @@
-import { nextTick, onWatcherCleanup, watchEffect } from 'vue';
+import { computed, nextTick, onWatcherCleanup, watchEffect } from 'vue';
 import type { ShallowRef } from 'vue';
 import {
   useBodyScrollLock,
@@ -80,27 +80,20 @@ export function usePopperV2Dismiss(options: UsePopperDismissOptions) {
     }
   }
 
-  // Focus guards keep Tab from escaping into the browser chrome while a layer is open.
-  useFocusGuards();
+  // Focus infrastructure (guards + scope + auto-focus events) is only assembled for trapped
+  // layers: hover popups must never steal focus, so they skip the DOM guards, the focus scope
+  // stack registration, and the open/close auto-focus events entirely.
+  const trappedLayerElement = computed(() => (options.trapFocus() ? layerElement.value : undefined));
 
-  const { onKeydown } = useFocusScope(layerElement, {
+  useFocusGuards(options.trapFocus);
+
+  const { onKeydown } = useFocusScope(trappedLayerElement, {
     trapped: options.trapFocus,
     loop: true,
     onOpenAutoFocus: event => {
-      // Non-trapped layers (hover popups) must never steal focus on open.
-      if (!options.trapFocus()) {
-        event.preventDefault();
-        return;
-      }
-
       options.onOpenAutoFocus(event);
     },
     onCloseAutoFocus: event => {
-      if (!options.trapFocus()) {
-        event.preventDefault();
-        return;
-      }
-
       // Consumer hook first: preventing the event opts out of the default trigger refocus.
       options.onCloseAutoFocus(event);
       popupEvents.onCloseAutoFocus(event);

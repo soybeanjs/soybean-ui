@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { popperCssVars } from '../popper/shared';
+import type { CSSProperties } from 'vue';
+import { popperCssVars } from '../popper-v2/shared';
+import { usePopperV2RootContext } from '../popper-v2/context';
 import { useForwardElement } from '../../composables';
-import { PopperPopup } from '../popper';
+import { PopperV2Popup } from '../popper-v2';
 import { VisuallyHidden } from '../visually-hidden';
 import { tooltipCssVars } from './shared';
 import { useTooltipRootContext } from './context';
@@ -14,10 +16,17 @@ defineOptions({
 
 const props = defineProps<TooltipPopupProps>();
 
-const { popupId, dataState, initPopupId, onPopupElementChange } = useTooltipRootContext('TooltipPopup');
-const [popupElement, setPopupElement] = useForwardElement(onPopupElementChange);
+const { popupId } = useTooltipRootContext('TooltipPopup');
+const { open, wasOpenDelayed } = usePopperV2RootContext('TooltipPopup');
 
-const cssVarsStyle = {
+const [popupElement, setPopupElement] = useForwardElement();
+
+const dataState = computed(() => {
+  if (!open.value) return 'closed' as const;
+  return wasOpenDelayed.value ? ('delayed-open' as const) : ('instant-open' as const);
+});
+
+const cssVarsStyle: CSSProperties = {
   [tooltipCssVars.transformOrigin]: `var(${popperCssVars.transformOrigin})`,
   [tooltipCssVars.availableWidth]: `var(${popperCssVars.availableWidth})`,
   [tooltipCssVars.availableHeight]: `var(${popperCssVars.availableHeight})`,
@@ -26,13 +35,12 @@ const cssVarsStyle = {
 };
 
 const ariaLabel = computed(() => props.ariaLabel ?? popupElement.value?.textContent);
-
-initPopupId();
 </script>
 
 <template>
-  <PopperPopup
+  <PopperV2Popup
     :ref="setPopupElement"
+    v-bind="props"
     data-soybean-tooltip-popup
     data-dismissable-layer
     :data-state="dataState"
@@ -42,5 +50,5 @@ initPopupId();
     <VisuallyHidden :id="popupId" role="tooltip">
       {{ ariaLabel }}
     </VisuallyHidden>
-  </PopperPopup>
+  </PopperV2Popup>
 </template>

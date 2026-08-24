@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
+import { TooltipProvider } from '@soybeanjs/headless/tooltip';
 import STooltip from '@/components/tooltip/tooltip.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -78,26 +79,39 @@ describe('STooltip', () => {
       wrapper.unmount();
     });
 
-    it('closes when another tooltip broadcasts that it opened on document', async () => {
-      const wrapper = mount(STooltip, {
-        props: { portalProps: { disabled: true } },
-        slots,
-        attachTo: document.body
-      });
+    it('closes when a sibling tooltip within the same provider opens', async () => {
+      const wrapper = mount(
+        {
+          components: { STooltip, TooltipProvider },
+          template: `
+            <TooltipProvider>
+              <STooltip :portal-props="{ disabled: true }">
+                <template #trigger><button type="button">First</button></template>
+                <div>First content</div>
+              </STooltip>
+              <STooltip :portal-props="{ disabled: true }">
+                <template #trigger><button type="button">Second</button></template>
+                <div>Second content</div>
+              </STooltip>
+            </TooltipProvider>
+          `
+        },
+        { attachTo: document.body }
+      );
 
-      await wrapper.find('button').trigger('focus');
+      const buttons = wrapper.findAll('button');
+      await buttons[0].trigger('focus');
       await nextTick();
-      expect(wrapper.text()).toContain('Tooltip content');
+      expect(wrapper.text()).toContain('First content');
 
-      // The open broadcast is emitted on `document` (see TooltipRoot),
-      // so the positioner must listen there to receive it and close itself.
-      document.dispatchEvent(new CustomEvent('tooltip.open'));
+      // Opening the sibling within the provider closes this one via the shared
+      // provider coordination (see TooltipProvider / provideTooltipProviderContext).
+      await buttons[1].trigger('focus');
       await nextTick();
-      // `usePresence` unmounts the positioner via a post-render watcher,
-      // so a second flush is required for the element to be removed.
       await nextTick();
 
-      expect(wrapper.text()).not.toContain('Tooltip content');
+      expect(wrapper.text()).not.toContain('First content');
+      expect(wrapper.text()).toContain('Second content');
       wrapper.unmount();
     });
   });
@@ -120,7 +134,7 @@ describe('STooltip', () => {
           components: { STooltip },
           template: `
             <div data-testid="container">
-              <STooltip :open="true" :portal-props="{ disabled: true }">
+              <STooltip :open="true" ::portal-props="{ disabled: true }">
                 <template #trigger>
                   <button type="button">Trigger</button>
                 </template>

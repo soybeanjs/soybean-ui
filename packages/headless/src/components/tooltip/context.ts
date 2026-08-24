@@ -1,135 +1,74 @@
-import { computed, shallowRef, useId } from 'vue';
-import { useContext } from '../../composables';
-import type { TooltipDataState, TooltipOpenDelayedContextParams, TooltipRootContextParams } from './types';
+import { shallowRef } from 'vue';
+import { providePopperV2Ui } from '../popper-v2/context';
+import { useContext, useUiContext } from '../../composables';
+import type { PopperV2UiSlot } from '../popper-v2/types';
+import type { TooltipProviderContext, TooltipRootContextParams } from './types';
 
-export const [provideTooltipOpenDelayedContext, useTooltipOpenDelayedContext] = useContext(
-  'TooltipOpenDelayed',
-  (params: TooltipOpenDelayedContextParams) => {
+export const [provideTooltipProviderContext, useTooltipProviderContext] = useContext(
+  'TooltipProvider',
+  (params: Omit<TooltipProviderContext, 'isOpenDelayed' | 'rootOpened' | 'rootClosed'>) => {
     const { skipDelayDuration } = params;
 
     const isOpenDelayed = shallowRef(true);
-    // Reset the inTransit state if idle/scrolled.
-    const isPointerInTransitRef = shallowRef(false);
 
-    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+    let skipDelayTimer: ReturnType<typeof setTimeout> | undefined;
 
-    const clearTimer = () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-        timeoutId = null;
-      }
-    };
+    function clearTimer() {
+      if (skipDelayTimer === undefined) return;
+      clearTimeout(skipDelayTimer);
+      skipDelayTimer = undefined;
+    }
 
-    const startTimer = () => {
-      clearTimer();
-      timeoutId = setTimeout(() => {
-        isOpenDelayed.value = true;
-      }, skipDelayDuration.value);
-    };
-    const onOpen = () => {
+    function onOpen() {
       clearTimer();
       isOpenDelayed.value = false;
-    };
-    const onClose = () => {
-      startTimer();
-    };
+    }
+
+    // The skip-delay window only starts once the last open tooltip inside the provider closes;
+    // while any tooltip stays open the next sibling open must stay instant.
+    function onClose() {
+      clearTimer();
+      skipDelayTimer = setTimeout(() => {
+        isOpenDelayed.value = true;
+        skipDelayTimer = undefined;
+      }, skipDelayDuration.value);
+    }
+
+    const openRootClosers = new Map<string, () => void>();
+
+    function rootOpened(id: string, close: () => void) {
+      onOpen();
+
+      openRootClosers.forEach((closer, rootId) => {
+        if (rootId !== id) closer();
+      });
+      openRootClosers.set(id, close);
+    }
+
+    function rootClosed(id: string) {
+      openRootClosers.delete(id);
+
+      if (openRootClosers.size === 0) {
+        onClose();
+      }
+    }
 
     return {
-      skipDelayDuration,
+      ...params,
       isOpenDelayed,
-      isPointerInTransitRef,
-      onOpen,
-      onClose
+      rootOpened,
+      rootClosed
     };
   }
 );
 
 export const [provideTooltipRootContext, useTooltipRootContext] = useContext(
   'TooltipRoot',
-  (params: TooltipRootContextParams) => {
-    const { open, delayDuration, isOpenDelayed, disableHoverableContent } = params;
-
-    const popupId = shallowRef('');
-    const initPopupId = () => {
-      if (popupId.value) return;
-      popupId.value = `soybean-tooltip-popup-${useId()}`;
-    };
-
-    const wasOpenDelayedRef = shallowRef(false);
-
-    const dataState = computed<TooltipDataState>(() => {
-      if (!open.value) return 'closed';
-      return wasOpenDelayedRef.value ? 'delayed-open' : 'instant-open';
-    });
-
-    const popupElement = shallowRef<HTMLElement>();
-    const onPopupElementChange = (element: HTMLElement) => {
-      popupElement.value = element;
-    };
-
-    const triggerElement = shallowRef<HTMLElement>();
-    const onTriggerElementChange = (element: HTMLElement) => {
-      triggerElement.value = element;
-    };
-
-    let timeoutId: ReturnType<typeof setTimeout> | null = null;
-
-    const clearTimer = () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-        timeoutId = null;
-      }
-    };
-
-    const startTimer = () => {
-      clearTimer();
-      timeoutId = setTimeout(() => {
-        wasOpenDelayedRef.value = true;
-        open.value = true;
-      }, delayDuration.value);
-    };
-
-    const onOpen = () => {
-      clearTimer();
-      wasOpenDelayedRef.value = false;
-      open.value = true;
-    };
-    const onClose = () => {
-      clearTimer();
-      open.value = false;
-    };
-    const onDelayedOpen = () => {
-      startTimer();
-    };
-    const onTriggerEnter = () => {
-      if (isOpenDelayed.value) {
-        onDelayedOpen();
-      } else {
-        onOpen();
-      }
-    };
-    const onTriggerLeave = () => {
-      if (disableHoverableContent.value) {
-        onClose();
-      } else {
-        // Clear the timer in case the pointer leaves the trigger before the tooltip is opened.
-        clearTimer();
-      }
-    };
-
-    return {
-      ...params,
-      dataState,
-      popupId,
-      initPopupId,
-      popupElement,
-      onPopupElementChange,
-      triggerElement,
-      onTriggerElementChange,
-      onTriggerEnter,
-      onTriggerLeave,
-      onOpen,
-      onClose
-    };
-  }
+  (params: TooltipRootContextParams) => params
 );
+
+export const [provideTooltipUi, useTooltipUi] = useUiContext<PopperV2UiSlot>('Tooltip', ui => {
+  providePopperV2Ui(ui);
+
+  return ui;
+});

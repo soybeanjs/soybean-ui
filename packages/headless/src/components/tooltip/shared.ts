@@ -1,8 +1,5 @@
 import type { TooltipProviderProps } from './types';
 
-/** Custom event name for tooltip open state */
-export const TOOLTIP_OPEN = 'tooltip.open';
-
 export const tooltipCssVars = {
   transformOrigin: '--soybean-tooltip-transform-origin',
   availableWidth: '--soybean-tooltip-available-width',
@@ -21,4 +18,9 @@ export const createDefaultTooltipConfig = (config?: Partial<TooltipProviderProps
     ignoreNonKeyboardFocus: false,
     ...config
   };
+};
+
+/** Keeps only explicitly provided entries so an `undefined` prop never overrides a base config. */
+export const pickDefinedConfig = (config?: Partial<TooltipProviderProps> | null) => {
+  return Object.fromEntries(Object.entries(config ?? {}).filter(([, value]) => value !== undefined));
 };

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '../../composables';
-import TooltipArrow from '../popper/popper-arrow.vue';
-import TooltipPortal from '../portal/portal.vue';
+import PopperV2Arrow from '../popper-v2/popper-v2-arrow.vue';
+import PopperV2Portal from '../popper-v2/popper-v2-portal.vue';
+import type { PopperV2OpenChangeReason } from '../popper-v2/types';
 import TooltipPopup from './tooltip-popup.vue';
 import TooltipPositioner from './tooltip-positioner.vue';
 import TooltipRoot from './tooltip-root.vue';
@@ -52,17 +53,20 @@ const positionerProps = computed(() => {
 </script>
 
 <template>
-  <TooltipRoot v-bind="forwardedProps" @update:open="emit('update:open', $event)">
+  <TooltipRoot
+    v-bind="forwardedProps"
+    @update:open="(value: boolean, reason?: PopperV2OpenChangeReason) => emit('update:open', value, reason)"
+  >
     <TooltipTrigger v-bind="triggerProps">
       <slot name="trigger" />
     </TooltipTrigger>
-    <TooltipPortal v-bind="portalProps">
+    <PopperV2Portal v-bind="portalProps">
       <TooltipPositioner v-bind="positionerProps" v-on="listeners">
         <TooltipPopup v-bind="popupProps">
           <slot>{{ content }}</slot>
-          <TooltipArrow v-if="showArrow" v-bind="arrowProps" />
+          <PopperV2Arrow v-if="showArrow" v-bind="arrowProps" />
         </TooltipPopup>
       </TooltipPositioner>
-    </TooltipPortal>
+    </PopperV2Portal>
   </TooltipRoot>
 </template>

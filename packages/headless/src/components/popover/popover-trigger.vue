@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { useForwardElement } from '../../composables';
-import Button from '../button/button.vue';
-import { PopperAnchor } from '../popper';
-import { usePopoverRootContext, usePopoverUi } from './context';
+import { PopperV2Trigger } from '../popper-v2';
 import type { PopoverTriggerProps } from './types';
 
 defineOptions({
@@ -12,32 +9,10 @@ defineOptions({
 const props = withDefaults(defineProps<PopoverTriggerProps>(), {
   as: 'button'
 });
-
-const cls = usePopoverUi('trigger');
-
-const { open, onOpenToggle, dataState, popupId, disabled, initTriggerId, onTriggerElementChange, hasCustomAnchor } =
-  usePopoverRootContext('PopoverTrigger');
-
-const [_, setTriggerElement] = useForwardElement(onTriggerElementChange);
-
-initTriggerId();
 </script>
 
 <template>
-  <component
-    :is="hasCustomAnchor ? Button : PopperAnchor"
-    :ref="setTriggerElement"
-    v-bind="props"
-    data-soybean-popover-trigger
-    :class="cls"
-    :as="hasCustomAnchor ? props.as : Button"
-    aria-haspopup="dialog"
-    :aria-expanded="open || false"
-    :aria-controls="open ? popupId : undefined"
-    :disabled="disabled"
-    :data-state="dataState"
-    @click="onOpenToggle"
-  >
+  <PopperV2Trigger v-bind="props" data-soybean-popover-trigger aria-haspopup="dialog">
     <slot />
-  </component>
+  </PopperV2Trigger>
 </template>

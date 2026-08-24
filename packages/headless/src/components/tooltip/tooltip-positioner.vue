@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { shallowRef } from 'vue';
-import { useForwardListeners, useOmitProps, usePresence } from '../../composables';
+import { computed, onWatcherCleanup, watchPostEffect } from 'vue';
+import { defu } from 'defu';
+import { usePopperV2RootContext } from '../popper-v2/context';
+import { useForwardListeners } from '../../composables';
+import type { PointerDownOutsideEvent } from '../../types';
+import { PopperV2Positioner } from '../popper-v2';
 import { useTooltipRootContext } from './context';
-import TooltipPositionerImpl from './tooltip-positioner-impl.vue';
-import type { TooltipPositionerProps, TooltipPositionerEmits } from './types';
+import type { TooltipPositionerEmits, TooltipPositionerProps } from './types';
 
 defineOptions({
   name: 'TooltipPositioner'
@@ -16,17 +19,62 @@ const props = withDefaults(defineProps<TooltipPositionerProps>(), {
 
 const emit = defineEmits<TooltipPositionerEmits>();
 
-const forwardedProps = useOmitProps(props, ['forceMount']);
+const listeners = useForwardListeners<keyof TooltipPositionerEmits>(emit);
 
-const listeners = useForwardListeners(emit);
+const {
+  positionerProps: contextPositionerProps,
+  disableHoverableContent,
+  disableClosingTrigger
+} = useTooltipRootContext('TooltipPositioner');
 
-const { popupElement, open } = useTooltipRootContext('TooltipPositioner');
+const { open, triggerElement, onOpenChange } = usePopperV2RootContext('TooltipPositioner');
 
-const isPresent = props.forceMount ? shallowRef(true) : usePresence(popupElement, open);
+function close() {
+  onOpenChange(false, 'trigger-hover');
+}
+
+// With `disableClosingTrigger`, a pointer down landing on the trigger must not dismiss.
+function onPointerDownOutside(event: PointerDownOutsideEvent) {
+  if (disableClosingTrigger.value && triggerElement.value?.contains(event.target as Node)) {
+    event.preventDefault();
+  }
+
+  emit('pointerDownOutside', event);
+}
+
+listeners.pointerDownOutside = onPointerDownOutside;
+
+const resolvedProps = computed(() =>
+  defu(props, contextPositionerProps.value ?? {}, {
+    side: 'top',
+    sideOffset: 0,
+    align: 'center',
+    avoidCollisions: true,
+    disableHoverableContent: disableHoverableContent.value,
+    onGracePointerExit: close
+  } satisfies TooltipPositionerProps)
+);
+
+// Close on scroll of any ancestor scroll container of the trigger. Observed only while open.
+watchPostEffect(() => {
+  if (!open.value) return;
+
+  const handleScroll = (event: Event) => {
+    const target = event.target as HTMLElement;
+    if (target?.contains(triggerElement.value!)) {
+      close();
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  onWatcherCleanup(() => {
+    window.removeEventListener('scroll', handleScroll);
+  });
+});
 </script>
 
 <template>
-  <TooltipPositionerImpl v-if="isPresent" v-bind="forwardedProps" data-soybean-tooltip-positioner v-on="listeners">
+  <PopperV2Positioner v-bind="resolvedProps" data-soybean-tooltip-positioner v-on="listeners">
     <slot />
-  </TooltipPositionerImpl>
+  </PopperV2Positioner>
 </template>

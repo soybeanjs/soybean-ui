@@ -1,7 +1,7 @@
 # Enhanced Popper 设计方案
 
 > 定位：基于 Floating UI，在现有定位原语之上扩展触发、开合、嵌套与 dismiss 等通用浮层能力的设计方案；指导 playground 原型与后续 headless 收敛。
-> 状态：🔵 P1 迁移进行中 —— 已从 playground 迁入 `packages` 为正式组件 **PopperV2**（headless `popper-v2/` + UI `SPopperV2`），上层消费为待迁移清单
+> 状态：🔵 P2 消费进行中 —— **PopperV2** 已迁入 `packages` 并通过 Popover/Tooltip 两个上游试点；上信任层（HoverCard/Menu/…）为剩余待迁移清单
 > 基线：2026-08-24 · 对照源码 `packages/headless/src/components/{popper,popover,tooltip,menu,dropdown-menu,context-menu,hover-card}/`
 
 ---
@@ -628,5 +628,156 @@ T-1/T-2/T-4 ~ T-8 已在 playground 原型落地，关键决策供 P1 迁移参�
 
 > 检索依据：`packages/headless/src/components` 中匹配模板 `<Popper(?:Root|Anchor|Positioner|Popup|Arrow|Sub|Trigger|Portal|Content|Item)>` 的组件（2026-08-24）。### 16.3 迁移期配套任务
 
+### 16.4 上游试点迁移落地（2026-08-24，P2）
+
+**PopperV2 修复**：`popper-v2-trigger.vue` 的裸 `as-child` 修正为 `:as-child="true"`（裸值使 `Primitive` 不塌缩、产生多余锚点层并把 ARIA 挂到无 role 元素，曾导致 date-picker/date-range-picker 回归）。
+
+**Popover（M5 试点，✅ 已迁移）**：壳下沉 PopperV2（Root/Trigger/Anchor/Portal/Positioner/Popup/Arrow + presence/dismiss/trap/auto-focus），保留 dialog 领域：`role="dialog"`、`aria-labelledby` 关联、`PopoverClose`（closeProps/close slot/默认 lucide:x）、modal 的 `useHideOthers`、trigger `aria-haspopup="dialog"`。`providePopoverUi → providePopperV2Ui`；删除 `popover-positioner-impl.vue`。公共 API 完全兼容。
+
+**Tooltip（✅ 已迁移）**：壳下沉 PopperV2（Root/Anchor/Positioner/Popup + hover/delay/grace），保留 Tooltip 领域：`role="tooltip"` + `aria-describedby` 关联；**Provider 级共享 skipDelay**（`provideTooltipOpenDelayedContext` + `TOOLTIP_OPEN` 广播，跨实例共享，未依赖 PopperV2 实例级 skipDelay）；`ignoreNonKeyboardFocus`（**落地 T-3** focus-visible 门控，`onFocus` 仅键盘/程序化打开）；`disableClosingTrigger`；scroll 关闭；default delay 150/skipDelay 300。`provideTooltipUi → providePopperV2Ui`；删除 `tooltip-positioner-impl.vue`。公共 API 兼容（`TooltipUiSlot` 拓宽为 `PopperV2UiSlot` 超集）。
+
+**下游同步**：`popconfirm` 因 Popover 自建 RootContext 移除而改用 `usePopperV2RootContext`（非 API 破坏）。
+
+验证：全量 monorepo `pnpm typecheck`（12 workspaces）EXIT 0；Popover/Tooltip/popconfirm/date-* 相关 UI 测试通过；`pnpm sui headless/ui` 无导出漂移。
+
 - **T-9**（document 监听聚合，`useDismissableLayer` 每层 2N 监听）：随 P2 逐组件消费 `PopperV2` 时，评估「共享单文档监听 + 按栈分发」是否下沉到 headless 库层。
 - **T-3**（Tooltip focus-visible）：在迁移 Tooltip 时落地 `openOnFocus` 仅响应键盘/程序化 focus。
+
+---
+
+## 17. Popper vs PopperV2 对比分析（2026-08-24）
+
+> 基线：commit `29ef9d754`（PopperV2 落地）→ `ce37764b8`（Popover/Tooltip 迁移）。本节回答四个问题：实现方式差异、性能影响、代码缩减量化、功能集成方式是否应改为可插拔 hooks。
+
+### 17.1 实现方式差异
+
+| 维度         | Popper（旧）                                                                                           | PopperV2                                                                                                                                                                                            |
+| :----------- | :----------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 定位         | 纯定位原语；`PopperPositioner` 组件封装 `useFloating` + middleware                                     | 定位逻辑内联在 `popper-v2-positioner-impl.vue`（**不依赖旧 popper 目录**，`shared.ts`/middleware 为平行副本）                                                                                       |
+| 交互壳       | 无；open / trigger / dismiss / delay / grace / nesting 由 4~5 个上层组件各自复制                       | 全部收敛：Root 持有受控 open + reason + hover timer 状态机（`context.ts` ~300 行）；Trigger 用 `usePopperV2Trigger` 三态事件；Dismiss 用 `usePopperV2Dismiss` 组合 focusScope / guards / scrollLock |
+| 嵌套         | 无 popup stack；MenuSub 是唯一完整实现                                                                 | 一等公民：`usePopperV2Nesting` 父子注册，「父关子关」「子层 outside 只关自身」内建                                                                                                                  |
+| 虚拟参考     | 上层各自实现；ContextMenu 用 `update-position-strategy="always"`（animationFrame 轮询）绕过响应性问题  | `useVirtualPointReference` 稳定 reference + `requestPositionerUpdate()` 事件驱动重定位（T-8）                                                                                                       |
+| 上游组件形态 | 每个组件一个 `*-positioner-impl.vue`（Popover 96 行 / Tooltip 112 行）手工拼装 dismiss / grace / focus | 上游不再有 positioner-impl；壳能力经 props/emits 透出，上游只保留领域逻辑（role、ARIA、Provider skipDelay 等）                                                                                      |
+
+**关键结构性差异**：PopperV2 把「每组件一份的命令式拼装」变成「一次性声明式编排」。代价是定位栈（middleware / placement / css-var helper）在 `popper/shared.ts`（246 行）与 `popper-v2/shared.ts`（268 行）间形成**平行副本**，类型层（207 vs 325 行）同理。这是当前最大的维护性负债（见 17.5 R-1）。
+
+### 17.2 性能影响评估
+
+**结论：稳态性能持平或更优；每层常驻开销略有增加但量级可忽略（个位数监听器 + 2 个 guard DOM 节点）；已被 T-5/T-8 消掉的两项是净收益。**
+
+净收益（已落地）：
+
+1. **虚拟参考重定位**（T-8）：旧 ContextMenu 右键重定位 = 每次右键重建 `autoUpdate`（重绑 scroll/resize/IntersectionObserver）或 animationFrame 轮询（每帧 `getBoundingClientRect`）；PopperV2 = 稳定 reference + 一次 `update()` 调用，打开期间 `autoUpdate` 只建一次。
+2. **grace 条件启用**（T-5）：非 hover 层不再建 grace polygon 与 pointer 监听，click/contextmenu 层比旧实现（无条件 `useGraceArea`）更省。
+
+持平项：定位计算路径相同（同一 `useFloating` + `@floating-ui/dom`）；代码量增大 2.8×（752 → 2139 行）只影响包体积（tree-shaking 后单组件增量远小于此），不影响运行时。
+
+新增常驻开销（每层、打开期间）：
+
+| 开销                                                           | 触发条件                     | 影响                                                                     |
+| :------------------------------------------------------------- | :--------------------------- | :----------------------------------------------------------------------- |
+| `useFocusGuards()` 无条件挂载（`use-popper-v2-dismiss.ts:84`） | **所有层，含 hover Tooltip** | 2 个 guard DOM 节点 + focusin/out；旧 Tooltip impl 不挂 guards —— 回退点 |
+| `useFocusScope` 无条件挂载                                     | 所有层                       | 若干 focus 监听；hover 层 trap 恒 false，监听属空转                      |
+| `useDismissableLayer` 每层 2 个 document 监听                  | 所有层（与旧实现相同）       | N 层嵌套 = 2N 监听，即 T-9，未恶化但未解决                               |
+
+结论：无性能回退风险；优化空间集中在「hover 层不该挂 focus 基础设施」（17.4 A-1）与 T-9。
+
+### 17.3 代码缩减量化（实测 + 推算）
+
+**已迁移两组件实测**（`git diff 29ef9d754..ce37764b8`，仅 headless 组件目录）：
+
+| 组件    | 删除 | 新增 | 净变化   | 备注                                                                                                    |
+| :------ | :--- | :--- | :------- | :------------------------------------------------------------------------------------------------------ |
+| Popover | 349  | 63   | **−286** | 删除 `popover-positioner-impl.vue`（−96）与 RootContext 壳（−62）                                       |
+| Tooltip | 184  | 148  | **−36**  | 删除 impl（−112），但 `tooltip-positioner.vue` +61（scroll 关闭、delay 等领域逻辑从 impl 移入，非重复） |
+| 合计    | 533  | 211  | **−322** |                                                                                                         |
+
+一次性成本：`popper-v2/` 目录 2139 行（对比旧 `popper/` 752 行，其中约 500 行是与旧 popper 平行的定位副本，见 R-1）。
+
+**待迁移组件推算**（壳逻辑占比参照 Popover 的 ~300 行/组件；HoverCard 壳占比最高，Menu 家族因保留 roving focus/typeahead 领域逻辑，比例略低）：
+
+| 组件                         | 现有规模 | 预计净缩减                                    |
+| :--------------------------- | :------- | :-------------------------------------------- |
+| HoverCard                    | 686 行   | ~250–350 行（−40%±）                          |
+| Menu 家族（menu-sub 嵌套壳） | 2629 行  | ~300 行 + 嵌套模型简化                        |
+| DropdownMenu                 | 950 行   | ~150–250 行                                   |
+| ContextMenu                  | 748 行   | ~150–250 行（含删除 animationFrame 轮询路径） |
+
+表 A 全部迁移完成后，上游合计预计净减 **900–1200 行**重复壳逻辑，且 timer/grace/dismiss 只剩一份实现。
+
+### 17.4 集成方式评估：可插拔 hooks vs 现状「编排式内建」
+
+**现状**：功能已按 composable 拆分（`usePopperV2Trigger` / `Dismiss` / `Nesting`、`useVirtualPointReference`），但 `popper-v2-positioner-impl.vue` **无条件全量接线**——不管 trigger 是什么，每层都挂 focusGuards、focusScope、grace（已 gated）、dismiss 全家桶。「按需引入」目前只体现在 runtime gating（`trapFocus`、`graceDisabled` 的 computed），未体现在**代码路径与监听器挂载**上。
+
+**评估结论：不需要推倒为插件注册表式的架构（过度设计）；应做「预设驱动的条件装配」——保留现有 composables，把装配点从无条件改为按 trigger/modal 预设分支。** 理由：消费方是组件作者而非终端用户，组合点唯一（PositionerImpl），插件化收益低；真正的痛点是 hover 层空转 focus 基础设施。
+
+具体建议（按性价比排序）：
+
+- **A-1（高）· dismiss 分级装配**：`usePopperV2Dismiss` 拆为三层——核心（`useDismissableLayer`，所有层需要）+ focus 模块（`useFocusScope` + `useFocusGuards`，仅 `trapFocus()===true` 时挂载；hover 层现状里的「非 trap 层 preventDefault 空转回调」可整体删除）+ scrollLock（modal，已 gated）。这同时消掉 17.2 的最大回退点。
+- **A-2（中）· 继续用 computed gating 而非动态 composable 调用**：Vue setup 期间 composables 必须同步调用，无法真正「按需再引入」；正确的 Vue 式按需 = composable 内部首行 `if (!enabled.value) return` + watch 启停（`useGraceArea(disabled)` 已是这个模式，focusScope/guards 补齐同款即可）。
+- **A-3（中）· 领域增强走「外部组合」而非「壳内开关」**：Tooltip Provider skipDelay、scroll 关闭、`ignoreNonKeyboardFocus` 没有进壳，而是留在 Tooltip 层组合 context API——这是正确的样板，后续 Menu typeahead、HoverCard selection 延迟同理，不要往 PopperV2 加 prop。
+- **A-4（低）· `OpenChangeReason` 已是解耦关键**：reason 枚举让上游能监听 `update:open(v, reason)` 做领域响应而无需 hack 壳内部——保持这条边界即可，无需事件总线式插件。
+
+#### 17.4.1 A-1 / A-2 / A-3 落地记录（2026-08-24）
+
+- **A-1（✅）· dismiss 分级装配**：`usePopperV2Dismiss` 中 focus 基础设施改为仅 trap 层装配——
+  - `useFocusGuards` 新增可选 `enabled: MaybeRefOrGetter<boolean>` 参数（默认 `true`，dialog/menu/select/combobox 等既有调用方零改动），非 trap 层不再创建 guard DOM 节点；
+  - `useFocusScope` 的元素 ref 改为 `computed(() => trapFocus() ? layerElement.value : undefined)`：非 trap 层（hover Tooltip 等）不再注册 focus scope 栈、不再派发 open/close auto-focus 事件、卸载时不再尝试回焦——原先「非 trap 层 preventDefault 空转回调」整体删除，净效果等价（hover 层本就不偷焦点）但零开销；
+  - `trapFocus` 在实例生命周期内可切换（`modal` / `trapFocus` prop 变化时 computed 自动装/卸）。
+- **A-2（✅）· computed gating 模式**：以上即样板——Vue composable 必须 setup 同步调用，真正的「按需」= 响应式 `enabled`/gated element ref 让 composable 内部 watcher 不触发（`useGraceArea(disabled)`、`useFocusScope(trapped)`、`useFocusGuards(enabled)`、`useBodyScrollLock` modal watch 均已对齐）。
+- **A-3（✅ 核验，无需改动）**：PopperV2 仅含实例级 `skipDelayDuration`（通用壳能力）；Tooltip 的 Provider 级跨实例 skipDelay、scroll 关闭、`ignoreNonKeyboardFocus`、`disableClosingTrigger` 均保留在 `tooltip/` 层外部组合，未发现领域逻辑泄漏进壳。
+- **验证**：monorepo `pnpm typecheck`（12 workspaces）通过；popover/tooltip/popconfirm/context-menu/dropdown-menu/hover-card 共 38 个用例中 37 通过——唯一失败为 popconfirm a11y `aria-allowed-attr`，经 stash 对照确认为**迁移前已存在**的存量问题，与本次改动无关；`vp fmt` + `vp lint` 通过。
+
+### 17.5 风险与后续任务
+
+- **R-1 · 定位栈双副本**：`popper/shared.ts`（246 行）与 `popper-v2/shared.ts`（268 行）平行维护 middleware/placement/css-var。建议：待表 B 组件（Select/Combobox/Cascader）确认是否最终也迁 PopperV2 定位后，二选一收敛（倾向把纯定位 helper 提为共享模块，旧 popper 与 v2 同源引用）。
+- **R-2 · 表 B 组件迁移决策**：Select `item-aligned` 仍需手工定位；若表 B 仅复用 PopperV2 的 Anchor/Positioner 定位子集，R-1 的收敛优先级提前。
+- **R-3 · A-1 落地时机**：建议在 HoverCard（下一个 hover 型迁移对象）之前完成，避免 hover 层 focus 基础设施空转的回退面继续扩大。
+- **T-9 维持原判**：监听聚合下沉 headless 库层评估，不阻塞 P2。
+
+### 17.6 Popover / Tooltip 迁移质量复查与进一步优化（2026-08-24）
+
+#### 17.6.1 Popover：已收敛到位，仅两处小项
+
+Popover 是「全量下壳」的样板：Root/Trigger/Positioner 均为薄透传，领域只剩 `aria-haspopup="dialog"`、`role="dialog"`、`useHideOthers`、Close 语义。
+
+- **P-1 · `update:open` 丢失 reason**：`PopoverRootEmits = DialogRootEmits`（`[value: boolean]`），Root 里 `onOpenChange(value)` 丢掉了 PopperV2 的 `reason` 参数，消费方无法区分 dismiss-outside / escape / trigger-click。建议改为 `[value: boolean, reason?: PopperV2OpenChangeReason]`（additive，不破坏现有监听）。
+- **P-2（可选）**：`types.ts` 的空壳接口（`PopoverRootProps extends PopperV2RootProps {}` 等）保留即可，是公共 API 兼容层，不算冗余。
+
+#### 17.6.2 Tooltip：属「半迁移」——定位/dismiss/grace 下了壳，trigger + delay 状态机没有
+
+现状问题（按严重度）：
+
+- **TT-1 · 双 open 状态机（核心冗余，~90 行可删）**：`provideTooltipRootContext` 自带完整 hover 状态机（`startTimer`/`onOpen`/`onClose`/`onTriggerEnter`/`onTriggerLeave`/`wasOpenDelayedRef` + open timer），而 `PopperV2Root` context 已有同构机器（`onHoverOpen`/`onHoverClose`/openTimer/skipDelayTimer/`isOpenDelayed`）。`TooltipTrigger` **完全没用 `PopperV2Trigger`**，手写 7 个指针/焦点监听 + 两个双向 watch 把 domain `open` 与 popper `open` 互相同步——这正是迁移本要消灭的「两份实现」，目前只剩一份半。两个状态源还引入顺序敏感：scroll/TOOLTIP_OPEN 监听必须等 domain open 翻转后才注册（`tooltip-positioner` 注释记录了自关竞态）。
+- **TT-2 · `provideTooltipRootContext` 冗余字段**：`popupElement`/`onPopupElementChange` 镜像**无任何读取方**（`ariaLabel` 用的是本地 ref）→ 纯死代码；`triggerElement` 镜像仅 positioner scroll-close 用，可直接读 `usePopperV2RootContext().triggerElement`；`initPopupId` 惰性 `useId` 可简化为一次调用。
+- **TT-3 · Provider 配置与跨实例 skipDelay 的实现方式**：没有独立的 `TooltipProvider` 组件，「Provider」= ConfigProvider 的 `tooltip` 全局键 + 每根实例 `TooltipOpenDelayedContext`（又一份 per-instance skipDelay 状态，与 PopperV2 实例级 skipDelay 重复）+ `TOOLTIP_OPEN` document 自定义事件广播做跨实例协调。缺陷：document 事件是**全局**而非树级作用域（两个隔离区域的 Tooltip 会互相打断）；配置只能全局覆盖、不能局部子树覆盖；skipDelay 状态存在三份（Tooltip per-root、PopperV2 per-root、隐含全局语义）。
+- **TT-4 · 死类型**：`TooltipPositionerImplProps/Emits`（impl 组件已删）仅剩导出兼容意义。
+
+优化方案（目标形态：TooltipTrigger 塌缩为薄包装，Timer 只剩 PopperV2 一份）：
+
+1. **壳层补两个通用能力**（HoverCard 未来直接复用，符合 A-3「通用才进壳」判据）：
+   - `PopperV2Trigger` 新增 `focusVisibleOnly?: boolean`（focus 打开仅响应 `:focus-visible`）——把 Tooltip 的 `ignoreNonKeyboardFocus` 门控从手写 `onFocus` 下沉为壳能力；
+   - `PopperV2RootContext` 暴露 `isOpenDelayed`（内部已存在，未导出）——Tooltip 的 `data-state: delayed-open | instant-open` 直接推导，`wasOpenDelayedRef` 删除。
+2. **TooltipTrigger 改用 `PopperV2Trigger`**：`trigger="hover"` + `:open-delay="delayDuration"` + `:close-delay="0"` + `open-on-focus` + `focus-visible-only` + `disable-closing-trigger` 时拦截 pointerdown/click 关闭（壳层已有 `onClick` toggle 语义可配）。删除手写监听与双向 sync watch，`TooltipRoot` 里的 domain `open` 镜像与 watch 一并删除（`update:open`/`data-state` 直接从 popper context 派生）。
+3. **引入真正的 `TooltipProvider` SFC**（Radix 同款）：树级 `provide` 共享 skip-delay 状态（单个 `isOpenDelayed` ref + onOpen/onClose），跨实例协调从 `TOOLTIP_OPEN` document 广播改为注入共享 context——作用域正确、类型安全；同时支持子树级配置覆盖（`delayDuration` 等，解析链变更为 `props → 祖先 Provider → ConfigProvider 全局 → 默认`）。`TooltipProviderProps` 类型复用不动。ConfigProvider 全局键保留为隐式根 Provider。
+4. **清理**：删 `popupElement` 镜像、`initPopupId` 惰性逻辑、`TooltipPositionerImpl*` 死类型（保留别名导出以防破坏）、`tooltip-positioner` 的 defu 默认值块与 `PopperV2Positioner` 自带 `withDefaults` 重复的部分。
+
+预估收益：`tooltip-trigger.vue` 130 → ~30 行、`context.ts` 143 → ~60 行、`tooltip-root.vue` 删 ~25 行同步逻辑，Tooltip 侧净减 **~200 行**；timer/skipDelay 状态从三份收敛为「PopperV2 实例一份 + Provider 树级一份」；消除双 open 源的竞态类（自关竞态注释可删）。
+
+前置依赖：1 完成后 2/3 才可做；建议与 HoverCard 迁移（同为 hover 型）合并为一个任务批次，壳层两个新能力一次验收两处消费。
+
+#### 17.6.3 Tooltip 优化落地记录（2026-08-24）
+
+按 §17.6.2 方案完成 TT-1 ~ TT-4 全部四项（含 P-1 顺带修复）：
+
+- **壳层新增**：
+  - `PopperV2Trigger` 新增 `focusVisibleOnly`（focus 打开仅响应 `:focus-visible`），`onFocus` 带 `FocusEvent` 入参；
+  - `PopperV2RootContext` 暴露 `isOpenDelayed` / `wasOpenDelayed`；`commitHoverOpen(reason, delayed)` 记录本次打开是否经过延迟，驱动 `delayed-open | instant-open` data-state；
+  - `onHoverOpen` 语义补充：**focus 打开跳过 hover delay**（对齐旧 Tooltip「focus 立即打开」与 Radix 行为），delay 仅作用于 hover reason。
+- **TT-1/TT-2（✅）**：删除 Tooltip 自有 hover 状态机与 domain `open` 镜像——`TooltipTrigger` 直接调用壳层 `usePopperV2Trigger`（`trigger="hover"` + reactive props 把 provider 级 `isOpenDelayed` 映射为 `openDelay: 0`），模板保留 Tooltip 专属 ARIA（`aria-describedby`、无 `aria-expanded`）；`provideTooltipRootContext` 收敛为纯配置载体（resolved config + `popupId` + provider 引用），删除 `popupElement` 死镜像、`triggerElement` 镜像、`initPopupId`、`onOpen/onClose/onTriggerEnter/onTriggerLeave` 与整套 timer。双向 sync watch 删除，popper open 成为唯一状态源；provider 协调 watch（开→关兄弟、关注册 closer）是唯一新增 watcher。
+- **TT-3（✅）**：新增 `TooltipProvider` SFC——树级共享 skip-delay 状态（单个 `isOpenDelayed` + `rootOpened/rootClosed` 协调，打开即关闭同 Provider 内其他 tooltip），**删除 `TOOLTIP_OPEN` document 广播**（不再全局互相打断）；配置解析链 `prop → 祖先 Provider → ConfigProvider 全局 → 默认`，支持嵌套 Provider 覆盖。`TooltipRoot` 无祖先 Provider 时自动创建本地 fallback（行为等价旧全局语义）。
+- **TT-4（✅）**：`disableClosingTrigger` 在 `TooltipPositioner` 拦截 `pointerDownOutside`（target 在 trigger 内时 `preventDefault`，事件仍透传消费方）；trigger pointerdown 关闭保留在 Trigger（dismiss layer 对 trigger 目标 preventDefault 不关，属 shell 通用行为）。`TooltipPositionerImpl*` 类型保留为兼容别名；defu 默认块仅保留 Tooltip 特有默认（`side: 'top'` 等）。
+- **P-1（✅ 顺带）**：`TooltipRootEmits['update:open']` 拓宽为 `[value, reason?]`，Compact 转发 reason。
+- **行为差异（有意）**：`update:open` 现携带可选 reason；`tooltip.open` document 事件不再派发（原为内部机制，无公共导出）。
+- **验证**：monorepo `pnpm typecheck` 通过；tooltip.spec 8/8 通过（「兄弟 tooltip 关闭」用例改写为共享 `TooltipProvider` 下的两 tooltip 交互）；全量单测 1778 例中 33 失败均为存量（popconfirm a11y 1 + date-picker/date-range-picker 32，stash 基线对照确认）；`pnpm sui headless/ui`、`vp fmt`、`vp lint` 通过。
+- **代码量**：tooltip 目录 806 → 782 行（净 −24），但**新增** `TooltipProvider` 公共组件（52 行）；trigger 130 → 98、context 143 → 74、root 82 → 69。timer/skip-delay 状态从三份收敛为「PopperV2 实例 + Provider 树级」各一份。

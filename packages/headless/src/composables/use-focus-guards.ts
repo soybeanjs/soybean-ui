@@ -1,4 +1,5 @@
-import { onWatcherCleanup, watchPostEffect } from 'vue';
+import { onWatcherCleanup, toValue, watchPostEffect } from 'vue';
+import type { MaybeRefOrGetter } from 'vue';
 import { isClient } from '../shared';
 
 /** Number of components which have requested interest to have focus guards */
@@ -6,10 +7,10 @@ let count = 0;
 
 const FOCUS_GUARD_ATTRIBUTE = 'data-soybean-focus-guard';
 
-export function useFocusGuards() {
+export function useFocusGuards(enabled: MaybeRefOrGetter<boolean> = true) {
   watchPostEffect(() => {
     // Ensure we're in a browser environment
-    if (!isClient) {
+    if (!isClient || !toValue(enabled)) {
       return;
     }
 

@@ -61,6 +61,13 @@ export interface PopperV2TriggerProps extends ButtonProps {
   skipDelayDuration?: number;
   pressOpenDelay?: number;
   openOnFocus?: boolean;
+  /**
+   * When `true`, focus-driven opening only responds to keyboard/programmatic focus
+   * (`:focus-visible`), ignoring pointer-derived focus.
+   *
+   * @defaultValue false
+   */
+  focusVisibleOnly?: boolean;
 }
 
 export interface PopperV2TriggerConfiguration {
@@ -207,6 +214,18 @@ export interface PopperV2PositionerProps extends BaseProps, ForceMountProps {
    * @defaultValue modal
    */
   trapFocus?: boolean;
+  /**
+   * When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,
+   * so leaving the trigger closes the layer immediately).
+   *
+   * @defaultValue false
+   */
+  disableHoverableContent?: boolean;
+  /**
+   * Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.
+   * Tooltip) run area-scoped close logic without registering its own second grace area.
+   */
+  onGracePointerExit?: () => void;
 }
 
 export type PopperV2PositionerEmits = DismissableLayerEmits &
@@ -292,6 +311,10 @@ export interface PopperV2RootContext {
   nestingLevel: ComputedRef<number>;
   isPointerInTransit: ShallowRef<boolean>;
   isPointerInTree: ComputedRef<boolean>;
+  /** Whether the next hover open still incurs `openDelay` (skip-delay window state). */
+  isOpenDelayed: ShallowRef<boolean>;
+  /** Whether the most recent open went through the open delay (drives `delayed-open` data states). */
+  wasOpenDelayed: ShallowRef<boolean>;
   configureTrigger: (configuration: PopperV2TriggerConfiguration) => void;
   onOpenChange: (value: boolean, reason?: PopperV2OpenChangeReason) => void;
   onOpenToggle: (reason: PopperV2OpenChangeReason) => void;

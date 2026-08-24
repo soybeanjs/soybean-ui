@@ -10,7 +10,7 @@ import type {
   PopoverTriggerProps,
   PopoverUiSlot
 } from '../popover/types';
-import type { PopperArrowProps as PopconfirmArrowProps } from '../popper/types';
+import type { PopperV2ArrowProps as PopconfirmArrowProps } from '../popper-v2/types';
 import type { PortalProps as PopconfirmPortalProps } from '../portal/types';
 
 /**

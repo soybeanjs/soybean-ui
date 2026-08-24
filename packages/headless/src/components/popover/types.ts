@@ -1,33 +1,20 @@
-import type { ShallowRef } from 'vue';
-import type {
-  DismissableLayerEmits,
-  DismissableLayerProps,
-  FocusScopeEmits,
-  ForceMountProps,
-  TrapFocusProps,
-  PropsToContext,
-  UiClass
-} from '../../types';
+import type { UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
-import type { DialogRootEmits, DialogBaseProps } from '../dialog/types';
+import type { DialogRootEmits } from '../dialog/types';
 import type {
-  PopperRootProps,
-  PopperPopupProps,
-  PopperPositionerProps,
-  PopperArrowProps,
-  PopperUiSlot
-} from '../popper/types';
-import type { PortalProps } from '../portal/types';
+  PopperV2RootProps,
+  PopperV2PositionerProps,
+  PopperV2PositionerEmits,
+  PopperV2PopupProps,
+  PopperV2ArrowProps,
+  PopperV2PortalProps,
+  PopperV2UiSlot
+} from '../popper-v2/types';
 
 /**
  * Properties for the PopoverRoot component.
  */
-export interface PopoverRootProps extends PopperRootProps, DialogBaseProps {
-  /**
-   * Whether the component is disabled.
-   */
-  disabled?: boolean;
-}
+export interface PopoverRootProps extends PopperV2RootProps {}
 
 /**
  * Events for the PopoverRoot component.
@@ -49,44 +36,25 @@ export type PopoverCloseEmits = {
 };
 
 /**
- * Properties for the PopoverPositionerImpl component.
- */
-export interface PopoverPositionerImplProps extends PopperPositionerProps, TrapFocusProps, DismissableLayerProps {}
-/**
- * Events for the PopoverPositionerImpl component.
- */
-export type PopoverPositionerImplEmits = DismissableLayerEmits & FocusScopeEmits;
-
-/**
  * Properties for the PopoverPositioner component.
  */
-export interface PopoverPositionerProps extends PopperPositionerProps, ForceMountProps {}
+export interface PopoverPositionerProps extends PopperV2PositionerProps {}
 /**
  * Events for the PopoverPositioner component.
  */
-export type PopoverPositionerEmits = PopoverPositionerImplEmits;
+export type PopoverPositionerEmits = PopperV2PositionerEmits;
 
 /**
  * Properties for the PopoverPopup component.
  */
-export interface PopoverPopupProps extends PopperPopupProps {}
+export interface PopoverPopupProps extends PopperV2PopupProps {}
 
 /**
  * Properties for the PopoverTrigger component.
  */
 export interface PopoverTriggerProps extends ButtonProps {}
 
-/**
- * Parameters used to create the PopoverRoot context.
- */
-export interface PopoverRootContextParams extends PropsToContext<PopoverRootProps, 'modal' | 'disabled'> {
-  /**
-   * Whether the component is open.
-   */
-  open: ShallowRef<boolean | undefined>;
-}
-
-export type { PopperAnchorProps as PopoverAnchorProps } from '../popper/types';
+export type { PopperV2AnchorProps as PopoverAnchorProps } from '../popper-v2/types';
 
 /**
  * Properties for the PopoverCompact component.
@@ -95,7 +63,7 @@ export interface PopoverCompactProps extends PopoverRootProps {
   /**
    * Placement.
    */
-  placement?: PopperPositionerProps['placement'];
+  placement?: PopperV2PositionerProps['placement'];
   /**
    * Whether to show an arrow.
    */
@@ -107,7 +75,7 @@ export interface PopoverCompactProps extends PopoverRootProps {
   /**
    * Properties forwarded to the portal element.
    */
-  portalProps?: PortalProps;
+  portalProps?: PopperV2PortalProps;
   /**
    * Properties forwarded to the positioner element.
    */
@@ -119,7 +87,7 @@ export interface PopoverCompactProps extends PopoverRootProps {
   /**
    * Properties forwarded to the arrow element.
    */
-  arrowProps?: PopperArrowProps;
+  arrowProps?: PopperV2ArrowProps;
   /**
    * Properties forwarded to the close element.
    */
@@ -152,7 +120,7 @@ export type PopoverCompactSlots = {
 /**
  * Available UI slots for the Popover component.
  */
-export type PopoverUiSlot = PopperUiSlot | 'trigger' | 'close';
+export type PopoverUiSlot = PopperV2UiSlot | 'close';
 
 /**
  * UI class overrides for the Popover component.
