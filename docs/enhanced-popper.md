@@ -851,3 +851,25 @@ Popover 是「全量下壳」的样板：Root/Trigger/Positioner 均为薄透传
 
 - **改动**：`use-floating.ts` 的 `reset()` watcher 改为在 `openOption` 变为 **true** 时清 `isPositioned`（退出动画期间保持 true）；`popper-v2-positioner-impl.vue` 与 `popper-positioner.vue` 的 `useFloating` 调用补传 `open`。
 - **验收**：默认场景退出动画原位播放不回归；`forceMount` 场景重开无旧坐标闪帧、`@placed` 每次 open 重新 emit、未定位禁动画门生效。
+
+### 17.8 为何多数 Trigger 不基于 `PopperV2Trigger` 组件实现（2026-08-25）
+
+> 迁移后形态盘点：PopoverTrigger 直接包装 `PopperV2Trigger` 组件；Tooltip / HoverCard / DropdownMenu / ContextMenu 的 Trigger 均为「`usePopperV2Trigger` hook + `PopperV2Anchor`/`MenuAnchor` 领域模板」；MenuSubTrigger 为纯领域 + Anchor 注册。本节解释该分层是否合理。
+
+#### 17.8.1 三个根因
+
+1. **ARIA 模型锁死**：`PopperV2Trigger` 硬编码 `aria-expanded` + `aria-controls`（expandable 控件语义，对 Popover/Menu 正确）。Tooltip / HoverCard 的正确语义是 `aria-describedby`，且按 WAI-ARIA **不应**挂 `aria-expanded`（tooltip 不是可展开控件）——挂上反而是 a11y 噪音（tooltip.spec 的 a11y 用例会暴露）。组件无关闭开关。
+2. **渲染模型锁死**：`PopperV2Trigger` 两个模板分支都经 `Button` 包装（`Primitive as-child > Button` / `Button`），为「按钮触发器」设计。Dropdown 需要原生 `:type` 按钮 + `aria-haspopup="menu"`；Context 默认 `as="span"`（非聚焦控件）；MenuSubTrigger 必须复合在 `MenuItemImpl` 上（grace polygon / 100ms openTimer / `SUB_OPEN_KEYS` / typeahead 交互）——三态 trigger 枚举完全不覆盖子菜单语义，这些本来就该留在 Menu 领域（§1.3 非目标）。
+3. **事件语义是领域差异**：每个 trigger 都需要替换/包装壳返回的个别 handler——Tooltip 注入 `focusOpenDelay: 0` + pointerdown 关闭（`disableClosingTrigger`）；Dropdown click 打开时 `preventDefault` 焦点竞争 + `ArrowDown` 键盘打开 + hover/click listener 集切换；Context 外部 `reference` 时把 handler 挂到外部元素。组件模式下每一项都会变成壳的新 prop——正是 §17.4 拒绝的「参数化一切的巨石」方向。
+
+#### 17.8.2 hook 模式即设计答案
+
+「状态机下沉（hook）、模板归领域」正是 §17.4 A-2 的口径：delay / skipDelay / 长按 / 触控忽略 / 焦点跟踪 / `configureTrigger` 全在 `usePopperV2Trigger` 一份；各 Trigger 保留的只是薄模板（anchor 注册 + triggerElement 双注册 + listeners 绑定，约 10–15 行样板）。ARIA / id 绑定是真实领域差异、不算重复；真正的重复仅剩样板，不值得用 4 个维度的壳分支（aria 模式开关、去 Button 化、复合模式、handler 覆写入口）去消除。**结论：现状三级递进（全壳组件 → 壳 hook + 领域模板 → 纯领域）是合理分层，固化为模式**：新浮层组件默认从 `PopperV2Trigger` 组件起步，仅当 ARIA/渲染/事件三者任一与壳模型冲突时降级到 hook。
+
+#### 17.8.3 T-11 · `PopperV2Trigger` contextmenu 虚拟锚点断链（🔴 bug，待修）
+
+核实 `popper-v2-trigger.vue` 发现：`usePopperV2Trigger` 返回的 `reference`（contextmenu 时 = `useVirtualPointReference` 的虚拟元素）只被绑到 `<Primitive :reference="reference">`，而 `Primitive` 仅声明 `as`/`asChild`，`reference` 落入 attrs 最终成为子元素的无效 DOM attr；锚点注册路径是 `setTriggerAnchorRef`（**触发器元素**）或外部 `props.reference`，虚拟 reference 从未到达 `onAnchorElementChange`。
+
+- **影响**：`PopperV2Trigger(trigger="contextmenu")`（playground SEp 03）实际锚定触发器元素而非指针坐标，与示例文案「positioned at the pointer coordinates」不符；T-8 的「重复右键重定位」因此只在「触发器移动」时生效。
+- **不受影响**：迁移后的 `ContextMenuTrigger` 用 `MenuAnchor :reference="virtualReference"`（`PopperV2Anchor` 有真正的 reference 注册通道）接的是正确链路。
+- **修法**：`popper-v2-trigger.vue` 内当 `trigger === 'contextmenu'` 时将 shell 返回的 `reference` 注册到 `onAnchorElementChange`（替代触发器元素锚点），并删除 Primitive 上的无效 `:reference` 绑定；验收 = SEp 03 右键不同位置浮层跟随指针 + 重复右键重定位。
