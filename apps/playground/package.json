@@ -16,6 +16,7 @@
     "typecheck": "vue-tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.8.0",
     "@iconify/vue": "^5.0.1",
     "@soybeanjs/admin": "workspace:^",
     "@soybeanjs/chart": "workspace:^",

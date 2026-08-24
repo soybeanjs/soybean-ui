@@ -1,7 +1,7 @@
 # Enhanced Popper 设计方案
 
 > 定位：基于 Floating UI，在现有定位原语之上扩展触发、开合、嵌套与 dismiss 等通用浮层能力的设计方案；指导 playground 原型与后续 headless 收敛。
-> 状态：💡 提案
+> 状态：🧪 P0 原型已落地，待评审
 > 基线：2026-08-24 · 对照源码 `packages/headless/src/components/{popper,popover,tooltip,menu,dropdown-menu,context-menu,hover-card}/`
 
 ---
@@ -18,11 +18,11 @@
 
 ### 1.2 落地策略（强制）
 
-| 阶段        | 位置                                                            | 说明                                                                                                              |
-| :---------- | :-------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
-| **P0 原型** | `apps/playground/src/examples/ui/enhanced-popper/`              | 先在 playground 用本地 `headless/` + `ui/` 验证 API 与交互；**不**改 `packages/headless` / `packages/ui` 公共导出 |
-| **P1 收敛** | `packages/headless/src/components/popper/`（或并列 `floating`） | 原型稳定后，按兼容策略迁入 headless                                                                               |
-| **P2 消费** | Popover / Tooltip / Menu / …                                    | 逐个改为组合新 API；行为回归由 e2e / playground 覆盖                                                              |
+| 阶段        | 位置                                                            | 说明                                                                                                                                                 |
+| :---------- | :-------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **P0 原型** | `apps/playground/src/examples/ui/enhanced-popper/`              | 先在 playground 用本地 `headless/`（含本地 `headless/popper/` 定位层）+ `ui/` 验证 API 与交互；**不**改 `packages/headless` / `packages/ui` 公共导出 |
+| **P1 收敛** | `packages/headless/src/components/popper/`（或并列 `floating`） | 原型稳定后，按兼容策略迁入 headless                                                                                                                  |
+| **P2 消费** | Popover / Tooltip / Menu / …                                    | 逐个改为组合新 API；行为回归由 e2e / playground 覆盖                                                                                                 |
 
 本方案文档只覆盖 **设计与 P0 原型范围**；P1/P2 迁移细则在原型验收后再拆任务。
 
@@ -273,6 +273,8 @@ interface EpTriggerProps extends PrimitiveWithBaseProps {
 
 - Trigger 默认同时充当 Anchor（内部包 `PopperAnchor`）；若存在独立 `EpAnchor` / `reference`，则 Trigger 只负责事件。
 - `contextmenu` 模式下，Root/Positioner 的 reference 切到零尺寸 virtual element（复用 ContextMenu 的 `getBoundingClientRect` 模式）。
+- `contextmenu` 触发器需内联 `pointer-events: auto`（对齐 `ContextMenuTrigger`）：modal 层打开期间 body 指针事件被禁用，触发器保持可交互，重复右键才能再次到达 Trigger、更新虚拟点坐标并重定位浮层（对齐 ContextMenu 的重复右键行为）。
+- `contextmenu` 的虚拟 reference 必须真实依赖坐标状态：在 computed getter 内读取 `point` 再闭包捕获，而不是在 `getBoundingClientRect` 闭包里惰性读取——后者不收集依赖，浮层打开后重复右键不会重定位。ContextMenu 现状用 `update-position-strategy="always"`（animationFrame 轮询）绕过此问题；Enhanced Popper 用响应式 reference 事件驱动重定位，无需轮询。
 - 所有 timer 在 unmount / `disabled` / 父关时清理。
 
 ### 6.3 `EpPopup` / Positioner / Arrow / Portal
@@ -319,7 +321,7 @@ interface EpTriggerProps extends PrimitiveWithBaseProps {
 | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
 | 注册           | `EpSub` ≡ 嵌套 `EpRoot`，自动 `registerChild`                                                                                                  |
 | 父关子关       | 父 `open === false` → 强制子关（对齐 `menu-sub.vue`）                                                                                          |
-| Dismiss        | 仅 **根层** 的 outside 关闭整棵树；子层 outside 若落在父 popup 内则不关父                                                                      |
+| Dismiss        | 仅 **根层** 的 outside 关闭整棵树；子层 outside 只关子层自身（含其后代），落在父 popup 内时不关父                                              |
 | Grace          | 统一 `useGraceArea`；`subAreaAttribute: 'data-ep-sub-popup'`；SubTrigger leave 可附带 polygon（Menu 现有逻辑可抽 `createSubmenuGracePolygon`） |
 | 键盘           | Escape：子开着 → 只关子并回焦 SubTrigger；否则关根（领域层可覆盖）                                                                             |
 | pointer-events | 继承 Popover 对 layer 栈的修复，避免嵌套关闭后父层不可点                                                                                       |
@@ -363,18 +365,21 @@ interface EpTriggerProps extends PrimitiveWithBaseProps {
 apps/playground/src/examples/ui/enhanced-popper/
 ├── index.vue                 # 示例索引
 ├── headless/                 # 本地 headless 层（对应 packages/headless，不发 npm）
-│   ├── types.ts
-│   ├── context.ts
+│   ├── shared.ts            # middleware / css vars / placement helpers / 默认 props
+│   ├── types.ts             # 定位 + 交互壳类型（定位 props 内联定义）
+│   ├── context.ts           # root + positioner + ui context（定位数据直接在此）
 │   ├── use-popper-trigger.ts
 │   ├── use-popper-nesting.ts
 │   ├── use-popper-dismiss.ts
-│   ├── ep-root.vue
-│   ├── ep-trigger.vue
-│   ├── ep-anchor.vue
-│   ├── ep-portal.vue         # 薄封装现有 Portal
-│   ├── ep-positioner.vue     # 复用现有 PopperPositioner
-│   ├── ep-popup.vue
-│   ├── ep-arrow.vue
+│   ├── use-virtual-point-reference.ts
+│   ├── ep-root.vue          # 含 dir / open / nest
+│   ├── ep-trigger.vue       # 内联 anchor 注册
+│   ├── ep-anchor.vue        # 内联锚点
+│   ├── ep-portal.vue        # 薄封装现有 Portal
+│   ├── ep-positioner.vue    # presence 薄包装
+│   ├── ep-positioner-impl.vue # 内联定位逻辑（useFloating + middleware + dismiss / grace）
+│   ├── ep-popup.vue         # 内联 popup 容器
+│   ├── ep-arrow.vue         # 内联箭头
 │   ├── ep-sub.vue
 │   ├── ep-sub-trigger.vue
 │   ├── ep-compact.vue
@@ -413,9 +418,9 @@ apps/playground/src/examples/ui/enhanced-popper/
 
 - 分层：`headless/` 只放逻辑 / 状态 / a11y；`ui/` 只放 `scv()` recipe、UiContext 注入与薄包装。
 - 样式：写在本地 `ui/styles.ts`；**不要**改 `packages/ui`。
-- 定位：优先 `import { PopperPositioner, PopperArrow, … } from '@soybeanjs/headless'`，只自研交互壳。
-- 遵守全局 `typescript-functional-style` / `vue-sfc-structure`。
-- 不新增 workspace 依赖（Floating UI / VueUse 已有）。
+- 定位：原型自带 `headless/popper/`（自 `@soybeanjs/headless/popper` 移植的种子实现），交互壳与定位层均在原型内闭环；通用设施（`useFloating` 等 composables、Primitive、Arrow 图标、类型）继续复用 `@soybeanjs/headless`。
+- `headless/popper/popper-root.vue` 不再接 headless 的 ConfigProvider `useDirection`，fallback `'ltr'`；方向仍由 `EpRoot` 传入（RTL 能力不变）。
+- 不新增 workspace 依赖（Floating UI 已作为 playground 直接依赖，与 headless 同版本）。
 
 ---
 
@@ -481,6 +486,98 @@ apps/playground/src/examples/ui/enhanced-popper/
 
 ## 13. 下一步
 
-1. 评审本文 §6 API 与 §11 开放问题。
-2. 按 §8 在 `apps/playground/src/examples/ui/enhanced-popper/` 落地 M1。
-3. M3 通过后补 ADR，再进入 headless 迁移。
+1. 按 §8.2 对 P0 的 8 个示例执行评审与回归验收。
+2. 结合原型结果拍板 §11 的正式命名、focus trigger、Portal、grace 与 trapFocus 决策。
+3. 按 §14 任务清单推进优化；P0 通过后补 ADR，再进入 headless 迁移。
+
+---
+
+## 14. 评审发现与优化任务（2026-08-24）
+
+> 来源：对照设计文档、原型源码与主流浮层组件（Radix / Floating UI 系）的功能与实现评审。
+> 状态图例：⬜ 待办 · 🔵 进行中 · ✅ 完成
+
+### 14.1 功能缺口
+
+#### T-1 · modal 焦点圈闭 + body 滚动锁（⬜ P1）
+
+**问题**：`modal=true` 时仅做 `disableOutsidePointerEvents`（body `pointer-events: none`），无焦点圈闭（focus trap）与滚动锁定；wheel 仍可滚动背后页面。Radix DropdownMenu modal 提供 `trapFocus` + `useBodyScrollLock`。
+
+**方案**：在 `use-popper-dismiss` / `ep-positioner-impl` 增加可选 `trapFocus` 钩子（对齐 §11 开放问题 #5）；滚动静默用 `useBodyScrollLock`（headless 已有）。
+
+**验收**：modal 浮层打开后 Tab 在层内循环、背后滚动被锁、Escape 关闭后回焦 trigger 正常。
+
+#### T-2 · 接线 `onOpenAutoFocus` / `onCloseAutoFocus`（⬜ P1）
+
+**问题**：`usePopupEvents` 已导出 `onCloseAutoFocus` 但从未调用；打开侧无焦点入口钩子，modal 浮层打开不会聚焦首个可聚焦元素。
+
+**方案**：`use-popper-dismiss` 补齐打开/关闭自动聚焦回调；`ep-positioner-impl` 绑定捕获事件与关闭回焦。
+
+**验收**：modal 浮层打开聚焦首个可聚焦元素；关闭时消费方可控制回焦目标（默认回 trigger）。
+
+#### T-3 · Tooltip focus-visible 策略（⬜ P3，可留白）
+
+**问题**：`openOnFocus` 只要有 focus 就打开；Radix Tooltip 仅键盘 focus-visible 打开，鼠标点击不触发。
+
+**说明**：文档 §3.2 将该策略归 Tooltip 领域，原型可不实现，仅记录为对齐差。
+
+### 14.2 逻辑清理
+
+#### T-4 · 删除 `longPressOpened` 死逻辑（⬜ P2）
+
+**问题**：`use-popper-trigger.ts` 中 `longPressOpened` 仅在 `trigger==='contextmenu'` 时置位、仅在 `trigger==='click'` 的 `onClick` 读取，两种 trigger 互斥，分支永不交叉。
+
+**验收**：删除后 typecheck 通过，contextmenu 长按与 click 行为不变。
+
+#### T-5 · `useGraceArea` 按 trigger 条件启用（⬜ P2）
+
+**问题**：`ep-positioner-impl` 对 click / contextmenu trigger 也建 grace polygon + pointer 监听；`useGraceArea` 支持 `disabled` 参数却未使用。
+
+**方案**：仅 `trigger==='hover'` 时启用 grace；`disabled` 绑定 `triggerType.value !== 'hover'`。
+
+**验收**：click / contextmenu 示例行为不变，hover 示例 grace 仍正常。
+
+#### T-6 · 清理 `onDocumentPointerEnd` 残留 `setTimeout`（⬜ P3）
+
+**问题**：`use-popper-trigger.ts:65-67` 的 `setTimeout(() => { isPointerDown = false }, 0)` 在 unmount 后仍执行且不清理。
+
+**方案**：unmount 标记或同步复位，避免未清理异步。
+
+#### T-7 · 确认并绑定 dismiss 捕获事件（⬜ P2，与 T-2 关联）
+
+**问题**：`use-popper-dismiss` 丢弃 `usePopupEvents` 返回的 `onCloseAutoFocus`；`ep-positioner-impl` 解构未使用 `onPointerdownCapture`（模板只绑 focus/blur capture），当前靠 `isInsideDOMTree` 兜底。
+
+**验收**：明确「已处理」而非死代码；portal 边界场景由捕获事件兜底。
+
+### 14.3 性能优化
+
+#### T-8 · 抽取 `useVirtualPointReference`（⬜ P1，最有价值）
+
+**问题**：contextmenu 每次右键更新 `point` → `virtualReference` 产出新对象 → `useFloating` 的 reference watch 同步重挂载 → 反复 cleanup / 重建 `autoUpdate`（重新绑定 scroll / resize / IntersectionObserver）。
+
+**方案**：按 §6.5 规划抽出 `useVirtualPointReference`：reference 对象保持稳定，坐标变化时手动调 `positioner.update()`；contextmenu 打开后 `autoUpdate` 只建一次。比现「事件驱动重建」省去每次重挂载，也比 ContextMenu 的 `update-position-strategy="always"`（animationFrame 轮询）更省。
+
+**验收**：03 右键重定位行为不变；性能 profile 显示无 `autoUpdate` 反复创建。
+
+#### T-9 · 嵌套层 document 监听聚合（⬜ P3，P1 迁入时评估）
+
+**问题**：`useDismissableLayer` 每层挂 `pointerdown` + `focusin` 监听，N 层嵌套 = 2N 监听。属 headless 库层面设计，原型不改；迁入 headless 时评估「共享单文档监听 + 按栈分发」。
+
+### 14.4 落地记录（2026-08-24）
+
+T-1/T-2/T-4 ~ T-8 已在 playground 原型落地，关键决策供 P1 迁移参考：
+
+- **T-1/T-2**：`usePopperDismiss` 内部组合 `useFocusScope`（`trapped` 绑定 `trapFocus ?? modal`，`loop: true`）+ `useFocusGuards` + `useBodyScrollLock`（modal 时）。`EpPositioner` 新增 `trapFocus` prop（默认跟随 `modal`，回答 §11 #5：壳层提供可选 trapFocus）；`EpPositionerEmits` 合入 `FocusScopeEmits`（`openAutoFocus` / `closeAutoFocus` 可 preventDefault 接管回焦）。非 trap 层（hover）在 open/close 自动聚焦回调中一律 `preventDefault`，保证 hover 浮层不偷焦点；子层挂载会经由 focus scope 栈暂停父层 trap，嵌套子浮层内部交互不受父层圈闭影响。
+- **T-5**：`ep-positioner-impl` 向 `useGraceArea` 传 `disabled: computed(() => triggerType !== 'hover')`，click / contextmenu 不再建 grace polygon 与 pointer 监听。
+- **T-6**：`setTimeout` 延迟复位保留（pointerup 后同任务内的 focus/click 仍需观察到 `isPointerDown === true`），但 timer 已可追踪并在 unmount 清理。
+- **T-7**：`ep-positioner-impl` 模板绑定 `@pointerdown.capture="onPointerdownCapture"` 与 `@keydown="onKeydown"`，portal 边界场景由捕获事件兜底。
+- **T-8**：新增 `useVirtualPointReference`（稳定 reference + `setPoint` 回调通知）；本地 `popper/context.ts` 增加 `onPositionerUpdateChange` / `requestPositionerUpdate` 手动重定位通道，`PopperPositioner` 挂载时注册 `useFloating().update`。contextmenu 重复右键经 `setPoint → requestPositionerUpdate → update()` 事件驱动重定位，`autoUpdate` 每次打开只建一次。
+
+---
+
+## 15. 任务与里程碑映射
+
+- T-1 / T-2（焦点圈闭与自动聚焦）→ 并入 **M3**（dismiss / portal / arrow 验收）或独立 **M3.5**。
+- T-8（虚拟点 reference）→ 并入 **M1**（trigger 交互）验收。
+- T-4 ~ T-7（逻辑清理）→ 任一轮修 `headless/` 时顺手合入。
+- T-3 / T-9 → P1 迁入 headless 时与领域层（Tooltip）一并决策。
