@@ -1,11 +1,11 @@
 <script setup lang="ts" generic="T extends PageTabsOptionData = PageTabsOptionData">
 import { computed, shallowRef, watchEffect } from 'vue';
 import type { ShallowRef } from 'vue';
-import { DragDropProvider, KeyboardSensor, PointerSensor } from '@dnd-kit/vue';
-import { isSortable } from '@dnd-kit/vue/sortable';
-import { arrayMove } from '@dnd-kit/helpers';
-import type { DragEndEvent, DragMoveEvent, DragOverEvent, DragStartEvent } from '@dnd-kit/vue';
 import { PointerActivationConstraints } from '@dnd-kit/dom';
+import { arrayMove } from '@dnd-kit/helpers';
+import { DragDropProvider, KeyboardSensor, PointerSensor } from '@dnd-kit/vue';
+import type { DragEndEvent, DragMoveEvent, DragOverEvent, DragStartEvent } from '@dnd-kit/vue';
+import { isSortable } from '@dnd-kit/vue/sortable';
 import { useControllableState, useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
 import ContextMenuCompact from '../context-menu/context-menu-compact.vue';
