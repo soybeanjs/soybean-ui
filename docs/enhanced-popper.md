@@ -866,10 +866,39 @@ Popover 是「全量下壳」的样板：Root/Trigger/Positioner 均为薄透传
 
 「状态机下沉（hook）、模板归领域」正是 §17.4 A-2 的口径：delay / skipDelay / 长按 / 触控忽略 / 焦点跟踪 / `configureTrigger` 全在 `usePopperV2Trigger` 一份；各 Trigger 保留的只是薄模板（anchor 注册 + triggerElement 双注册 + listeners 绑定，约 10–15 行样板）。ARIA / id 绑定是真实领域差异、不算重复；真正的重复仅剩样板，不值得用 4 个维度的壳分支（aria 模式开关、去 Button 化、复合模式、handler 覆写入口）去消除。**结论：现状三级递进（全壳组件 → 壳 hook + 领域模板 → 纯领域）是合理分层，固化为模式**：新浮层组件默认从 `PopperV2Trigger` 组件起步，仅当 ARIA/渲染/事件三者任一与壳模型冲突时降级到 hook。
 
-#### 17.8.3 T-11 · `PopperV2Trigger` contextmenu 虚拟锚点断链（🔴 bug，待修）
+#### 17.8.3 T-11 · `PopperV2Trigger` contextmenu 虚拟锚点断链（✅ 2026-08-25 修复，见 §17.9）
 
 核实 `popper-v2-trigger.vue` 发现：`usePopperV2Trigger` 返回的 `reference`（contextmenu 时 = `useVirtualPointReference` 的虚拟元素）只被绑到 `<Primitive :reference="reference">`，而 `Primitive` 仅声明 `as`/`asChild`，`reference` 落入 attrs 最终成为子元素的无效 DOM attr；锚点注册路径是 `setTriggerAnchorRef`（**触发器元素**）或外部 `props.reference`，虚拟 reference 从未到达 `onAnchorElementChange`。
 
 - **影响**：`PopperV2Trigger(trigger="contextmenu")`（playground SEp 03）实际锚定触发器元素而非指针坐标，与示例文案「positioned at the pointer coordinates」不符；T-8 的「重复右键重定位」因此只在「触发器移动」时生效。
 - **不受影响**：迁移后的 `ContextMenuTrigger` 用 `MenuAnchor :reference="virtualReference"`（`PopperV2Anchor` 有真正的 reference 注册通道）接的是正确链路。
 - **修法**：`popper-v2-trigger.vue` 内当 `trigger === 'contextmenu'` 时将 shell 返回的 `reference` 注册到 `onAnchorElementChange`（替代触发器元素锚点），并删除 Primitive 上的无效 `:reference` 绑定；验收 = SEp 03 右键不同位置浮层跟随指针 + 重复右键重定位。
+
+### 17.9 `PopperV2Trigger` 泛化与上层 Trigger 组件化（2026-08-25）
+
+> 目标：让三种触发模式（click/hover/contextmenu）的统一真正落地到组件层——上层 Trigger 尽量直接包装 `PopperV2Trigger`，而不是各自 hook + 手写模板。
+
+#### 17.9.1 壳层改造（`popper-v2-trigger.vue`）
+
+- **`Button` → `Primitive` 渲染**（默认 `as="button"`）：Button 的行为内联保真——`type` 默认（仅真实 button）、原生 `disabled`/`aria-disabled`/`tabindex`、disabled click 拦截（preventDefault + stopPropagation）；双分支模板（hasCustomAnchor 与否）合并为单 `Primitive`（anchor ref 注册内部判断）。任意 `as` / `asChild` 现在直达。
+- **`ariaMode?: 'controls' | 'describedby' | 'none'`**（默认 `controls`）：controls = `aria-expanded`+`aria-controls`（popover/menu）；describedby = 打开时 `aria-describedby` 指向 popupId；none = 不挂 popup 引用属性。解决 §17.8.1 的「ARIA 模型锁死」。
+- **T-11 修复**：contextmenu 时把 shell 的稳定虚拟 reference 注册到 `onAnchorElementChange`（优先级：custom `PopperV2Anchor` > contextmenu 虚拟点 > `reference` prop > 触发器元素）；删除 Primitive 上无效的 `:reference` 绑定。重复右键经 `requestPositionerUpdate` 重定位。
+- **外部 `reference`（真实元素）模式**：trigger 事件自动挂载到该元素、注册为 triggerElement、不渲染内联触发元素——`ContextMenuTrigger` 的外部元素场景进入壳。
+- **click 焦点竞争**（`usePopperV2Trigger.onClick`）：打开时 `preventDefault` 防止 trigger 抢焦点（Safari/iOS click 聚焦），对齐原 Dropdown 领域行为，click 类 trigger 通用受益。
+- 修复过程中发现并解决：`useOmitProps` 返回 ComputedRef，computed 内 spread 需 `.value`（否则 ref 内部属性泄入 DOM attrs，Slot as-child 合并整体失效——date-picker 系 16 个存量测试失败即源于此类 trigger 渲染问题，本轮全量单测归零）。
+
+#### 17.9.2 上层 Trigger 组件化结果
+
+| Trigger                         | 形态变化                                        | 说明                                                                                                                                                                                           |
+| :------------------------------ | :---------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| HoverCardTrigger                | hook+Anchor（67 行）→ **组件包装（34 行）**     | `trigger="hover"` + delays + `skipDelayDuration: 0` + `ariaMode="none"`；选择守卫经 `registerHoverCloseGuard` 在包装 setup 注册                                                                |
+| ContextMenuTrigger              | hook+Anchor（141 行）→ **组件包装（28 行）**    | `trigger="contextmenu"` + `pressOpenDelay`；右键/长按/虚拟点/外部 reference 全部由壳承接                                                                                                       |
+| DropdownMenuTrigger             | hook+Primitive（121 行）→ **组件包装（70 行）** | trigger 模式由 root `trigger` prop 推导；Enter/Space 走原生 button click（壳 toggle+焦点竞争），ArrowDown 打开与 hover blur 关闭留领域（fallthrough listener 与壳合并）                        |
+| TooltipTrigger                  | **维持 hook 模式**                              | 卡点：`data-state` 需要 `delayed-open/instant-open` 三态（壳只有 open/closed）+ `aria-describedby` 指向 Tooltip 自己的 VisuallyHidden id（非壳 popupId）——均为 Tooltip 领域语义，按 A-3 不进壳 |
+| PopoverTrigger / MenuSubTrigger | 不变                                            | 前者本就是组件包装；后者为纯领域（grace polygon/键盘/typeahead 复合在 MenuItemImpl 上）                                                                                                        |
+
+§17.8.2 的三级递进模式维持，但**第一级（直接组件包装）的覆盖面显著扩大**：5 个 trigger 中 3 个回到组件形态，hook 层只剩 Tooltip（data-state 三态）与 MenuSub（复合 item）两个真实领域卡点。
+
+#### 17.9.3 验证
+
+monorepo typecheck 通过；popper 相关 13 个 spec（hover-card/context/dropdown/menu/popover/tooltip/popconfirm/menubar×4/tree-menu/page-tabs）138/138 全过；**全量单测 1778+ 用例 0 失败**（含此前视为存量的 popconfirm a11y ×1 与 date-picker/date-range-picker ×16——后者实为 trigger attrs 泄漏类问题，本轮连带修复）；`sui headless/ui`、fmt、lint 通过。净变化 +184/−294（壳层 +162 的同时三个上层 trigger 共 −224）。
