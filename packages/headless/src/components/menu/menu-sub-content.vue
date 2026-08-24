@@ -72,7 +72,6 @@ const onKeyDown = (event: KeyboardEvent) => {
     data-soybean-menu-sub-content
     v-bind="mergedProps"
     :trap-focus="false"
-    :disable-outside-pointer-events="false"
     :aria-labelledby="triggerId"
     align="start"
     :side="side"

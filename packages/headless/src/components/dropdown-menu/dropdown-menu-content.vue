@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { computed, onWatcherCleanup, watchPostEffect } from 'vue';
+import { watch, watchPostEffect, onWatcherCleanup } from 'vue';
 import { useMenuContext } from '../menu/context';
-import { useForwardListeners, useGraceArea } from '../../composables';
+import { useForwardListeners } from '../../composables';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
 import { MenuContent } from '../menu';
-import { DROPDOWN_MENU_HOVER_OPEN } from './shared';
-import { useDropdownMenuHoverContext, useDropdownMenuRootContext } from './context';
+import { useDropdownMenuRootContext } from './context';
 import type { DropdownMenuContentProps, DropdownMenuContentEmits } from './types';
 
 defineOptions({
@@ -24,25 +23,42 @@ const emit = defineEmits<DropdownMenuContentEmits>();
 
 const listeners = useForwardListeners(emit);
 
-const { popupElement, triggerElement } = useMenuContext('DropdownMenuContent');
-const { modal } = useDropdownMenuRootContext('DropdownMenuContent');
+const { open, triggerElement } = useMenuContext('DropdownMenuContent');
+const { modal, hoverable } = useDropdownMenuRootContext('DropdownMenuContent');
 
-const { isPointerInTransitRef, hoverable, onClose } = useDropdownMenuHoverContext('DropdownMenuContent');
+function close() {
+  open.value = false;
+}
 
-useGraceArea({
-  triggerElement,
-  areaElement: popupElement,
-  onPointerInTransitChange: v => {
-    isPointerInTransitRef.value = v;
-  },
-  onPointerExit: () => {
-    onClose();
-  },
-  subAreaAttribute: 'data-soybean-menu-sub-popup',
-  disabled: computed(() => !hoverable.value)
+// Close on scroll of any ancestor scroll container of the trigger (hover mode only).
+watchPostEffect(() => {
+  if (!hoverable.value || !open.value) return;
+
+  const handleScroll = (event: Event) => {
+    const target = event.target as HTMLElement;
+    if (target?.contains(triggerElement.value!)) {
+      close();
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  onWatcherCleanup(() => {
+    window.removeEventListener('scroll', handleScroll);
+  });
 });
 
 let hasInteractedOutsideRef = false;
+
+// Click (non-modal) closes should still return focus to the trigger; the shell only refocuses
+// for trapped/escape dismissals, so the transition open -> closed is watched here.
+watch(open, (value, previousValue) => {
+  if (previousValue !== true || value) return;
+  if (hoverable.value || hasInteractedOutsideRef) return;
+
+  setTimeout(() => {
+    triggerElement.value?.focus();
+  }, 0);
+});
 
 const onCloseAutoFocus = (event: Event) => {
   if (event.defaultPrevented || hoverable.value || hasInteractedOutsideRef) return;
@@ -67,28 +83,7 @@ const onInteractOutside = (event: PointerDownOutsideEvent | FocusOutsideEvent) =
   if (!modal.value || isRightClick) {
     hasInteractedOutsideRef = true;
   }
-  if (triggerElement.value?.contains(event.target as HTMLElement)) {
-    event.preventDefault();
-  }
 };
-
-watchPostEffect(() => {
-  if (!hoverable.value) return;
-
-  const handleScroll = (event: Event) => {
-    const target = event.target as HTMLElement;
-    if (target?.contains(triggerElement.value!)) {
-      onClose();
-    }
-  };
-
-  window.addEventListener('scroll', handleScroll);
-  window.addEventListener(DROPDOWN_MENU_HOVER_OPEN, onClose);
-  onWatcherCleanup(() => {
-    window.removeEventListener('scroll', handleScroll);
-    window.removeEventListener(DROPDOWN_MENU_HOVER_OPEN, onClose);
-  });
-});
 </script>
 
 <template>

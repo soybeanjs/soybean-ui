@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import { usePopperV2RootContext } from '../popper-v2/context';
 import { useForwardListeners } from '../../composables';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
 import { MenuContent } from '../menu';
-import { useContextMenuRootContext } from './context';
 import type { ContextMenuContentProps, ContextMenuContentEmits } from './types';
 
 defineOptions({
@@ -18,7 +18,7 @@ const emit = defineEmits<ContextMenuContentEmits>();
 
 const listeners = useForwardListeners(emit);
 
-const { modal, triggerElement } = useContextMenuRootContext('ContextMenuContent');
+const { modal, triggerElement } = usePopperV2RootContext('ContextMenuContent');
 
 let hasInteractedOutside = false;
 
@@ -49,7 +49,6 @@ function onInteractOutside(event: PointerDownOutsideEvent | FocusOutsideEvent) {
     side="right"
     :side-offset="2"
     align="start"
-    update-position-strategy="always"
     v-on="listeners"
     @close-auto-focus="onCloseAutoFocus"
     @interact-outside="onInteractOutside"

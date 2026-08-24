@@ -38,7 +38,6 @@ const focusOutside = (event: FocusOutsideEvent) => {
     v-bind="forwardedProps"
     data-soybean-menu-content
     :trap-focus="trapFocus"
-    :disable-outside-pointer-events="trapFocus"
     v-on="listeners"
     @focus-outside="focusOutside"
   >

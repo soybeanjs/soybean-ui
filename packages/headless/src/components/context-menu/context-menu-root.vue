@@ -23,10 +23,7 @@ watch(open, value => {
   emit('update:open', value);
 });
 
-provideContextMenuRootContext({
-  ...transformPropsToContext(props, ['dir', 'modal', 'pressOpenDelay']),
-  open
-});
+provideContextMenuRootContext(transformPropsToContext(props, ['pressOpenDelay']));
 </script>
 
 <template>

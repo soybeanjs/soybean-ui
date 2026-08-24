@@ -2,7 +2,7 @@
 import { transformPropsToContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { useControllableState, useIsUsingKeyboard } from '../../composables';
-import { PopperRoot } from '../popper';
+import { PopperV2Root } from '../popper-v2';
 import { provideMenuContext, provideMenuRootContext } from './context';
 import type { MenuRootProps, MenuRootEmits } from './types';
 
@@ -40,6 +40,11 @@ provideMenuContext({
   isRoot: true
 });
 
+function onUpdateOpen(value: boolean) {
+  open.value = value;
+  emit('update:open', value);
+}
+
 provideMenuRootContext({
   ...transformPropsToContext(props, ['modal']),
   dir,
@@ -49,7 +54,9 @@ provideMenuRootContext({
 </script>
 
 <template>
-  <PopperRoot :dir="dir">
-    <slot :open="open" />
-  </PopperRoot>
+  <PopperV2Root :dir="dir" :modal="modal" :open="open" :default-open="defaultOpen" @update:open="onUpdateOpen">
+    <template #default="slotProps">
+      <slot v-bind="slotProps" />
+    </template>
+  </PopperV2Root>
 </template>

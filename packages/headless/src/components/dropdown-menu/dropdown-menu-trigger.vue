@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { computed, nextTick } from 'vue';
+import { computed, reactive } from 'vue';
 import { SELECTION_KEYS } from '../../constants';
 import { useMenuContext } from '../menu/context';
+import { usePopperV2RootContext } from '../popper-v2/context';
 import { useForwardElement } from '../../composables';
 import { MenuAnchor } from '../menu';
+import type { PopperV2TriggerProps } from '../popper-v2/types';
+import { usePopperV2Trigger } from '../popper-v2/use-popper-v2-trigger';
 import { Primitive } from '../primitive';
-import { useDropdownMenuHoverContext, useDropdownMenuRootContext } from './context';
+import { useDropdownMenuRootContext } from './context';
 import type { DropdownMenuTriggerProps } from './types';
 
 defineOptions({
@@ -17,12 +20,15 @@ const props = withDefaults(defineProps<DropdownMenuTriggerProps>(), {
 });
 
 const { popupId, triggerId, initTriggerId, onTriggerElementChange } = useMenuContext('DropdownMenuTrigger');
-const [_, setTriggerElement] = useForwardElement(onTriggerElementChange);
+const popperContext = usePopperV2RootContext('DropdownMenuTrigger');
+const { open, dataState } = popperContext;
 
-const { open, dataState, onOpenToggle, onOpenChange } = useDropdownMenuRootContext('DropdownMenuTrigger');
+const { trigger, hoverable, delayDuration, skipDelayDuration } = useDropdownMenuRootContext('DropdownMenuTrigger');
 
-const { isPointerInTransitRef, hoverable, onTriggerEnter, onTriggerLeave, onClose } =
-  useDropdownMenuHoverContext('DropdownMenuTrigger');
+const [_, setTriggerElement] = useForwardElement(element => {
+  onTriggerElementChange(element);
+  popperContext.onTriggerElementChange(element);
+});
 
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
@@ -30,16 +36,38 @@ const ariaControls = computed(() => (open.value ? popupId.value : undefined));
 const ariaDisabled = computed(() => (props.disabled ? true : undefined));
 const dataDisabled = computed(() => (props.disabled ? '' : undefined));
 
-const onClick = async (event: MouseEvent) => {
+// Hover timing (open delay, skip-delay window, touch handling) runs on the shared PopperV2
+// trigger machine; click toggling stays domain-side to keep the open-time focus competition
+// handling (`preventDefault` so the popup keeps focus).
+const shellTriggerProps: PopperV2TriggerProps = reactive({
+  get trigger() {
+    return trigger.value;
+  },
+  get openDelay() {
+    return delayDuration.value;
+  },
+  get skipDelayDuration() {
+    return skipDelayDuration.value;
+  },
+  openOnFocus: false,
+  get disabled() {
+    return props.disabled;
+  }
+});
+
+const { onPointerCancel, onPointerDown, onPointerEnter, onPointerLeave, onPointerMove, onPointerUp } =
+  usePopperV2Trigger(shellTriggerProps, popperContext, { onVirtualPointChange: () => {} });
+
+const onClick = (event: MouseEvent) => {
   if (props.disabled || hoverable.value) return;
 
   // only call handler if it's the left button (mousedown gets triggered by all mouse buttons)
   // but not when the control key is pressed (avoiding MacOS right click)
   if (event.button === 0 && event.ctrlKey === false) {
-    onOpenToggle();
-    await nextTick();
-    // prevent trigger focusing when opening
-    // this allows the content to be given focus without competition
+    popperContext.onOpenToggle('trigger-click');
+
+    // prevent trigger focusing when opening; this allows the content to be given focus
+    // without competition
     if (open.value) {
       event.preventDefault();
     }
@@ -50,10 +78,10 @@ const onKeyDown = (event: KeyboardEvent) => {
   if (props.disabled) return;
 
   if (SELECTION_KEYS.includes(event.key)) {
-    onOpenToggle();
+    popperContext.onOpenToggle('trigger-click');
   }
   if (event.key === 'ArrowDown') {
-    onOpenChange(true);
+    popperContext.onOpenChange(true, 'trigger-click');
   }
   // prevent keydown from scrolling window / first focused item to execute
   // that keydown (inadvertently closing the menu)
@@ -62,35 +90,24 @@ const onKeyDown = (event: KeyboardEvent) => {
   }
 };
 
-let hasPointerMoveOpened = false;
-
-const onPointerMove = (event: PointerEvent) => {
+const onBlurClose = () => {
   if (props.disabled) return;
-
-  if (event.pointerType === 'touch') return;
-
-  if (!hasPointerMoveOpened && !isPointerInTransitRef.value) {
-    onTriggerEnter();
-    hasPointerMoveOpened = true;
-  }
-};
-
-const onPointerLeave = () => {
-  if (props.disabled) return;
-
-  onTriggerLeave();
-  hasPointerMoveOpened = false;
+  popperContext.onOpenChange(false, 'trigger-hover');
 };
 
 const hoverListeners = computed(() =>
   hoverable.value
     ? {
-        blur: onClose,
-        pointermove: onPointerMove,
-        pointerleave: onPointerLeave
+        blur: onBlurClose,
+        pointerenter: onPointerEnter,
+        pointerleave: onPointerLeave,
+        pointermove: onPointerMove
       }
     : {
-        click: onClick
+        click: onClick,
+        pointerdown: onPointerDown,
+        pointerup: onPointerUp,
+        pointercancel: onPointerCancel
       }
 );
 

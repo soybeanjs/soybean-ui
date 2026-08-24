@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { nextTick, mergeProps, computed } from 'vue';
 import { isMouseEvent } from '../../shared';
+import { usePopperV2RootContext } from '../popper-v2/context';
 import { useForwardElement } from '../../composables';
 import type { HorizontalSide } from '../../types';
-import { PopperAnchor } from '../popper';
+import { PopperV2Anchor } from '../popper-v2';
 import { SUB_OPEN_KEYS } from './shared';
 import {
   useMenuContentContext,
@@ -29,7 +30,12 @@ const {
   onItemEnter,
   onTriggerLeave
 } = useMenuContentContext('MenuSubTrigger');
-const [_, setSubTriggerElement] = useForwardElement(onTriggerElementChange);
+// Register on both contexts: menu (grace polygon / close refocus) and PopperV2 (dismiss refocus).
+const popperContext = usePopperV2RootContext('MenuSubTrigger');
+const [_, setSubTriggerElement] = useForwardElement(element => {
+  onTriggerElementChange(element);
+  popperContext.onTriggerElementChange(element);
+});
 
 const mergedProps = computed(() => mergeProps(props, { ...attrContext?.subTrigger?.value }));
 
@@ -131,7 +137,7 @@ initTriggerId();
 </script>
 
 <template>
-  <PopperAnchor as-child>
+  <PopperV2Anchor as-child>
     <MenuItemImpl
       v-bind="mergedProps"
       :id="triggerId"
@@ -149,5 +155,5 @@ initTriggerId();
     >
       <slot />
     </MenuItemImpl>
-  </PopperAnchor>
+  </PopperV2Anchor>
 </template>

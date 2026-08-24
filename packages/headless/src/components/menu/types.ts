@@ -6,7 +6,6 @@ import type {
   DefinedValue,
   Direction,
   DismissableLayerEmits,
-  DismissableLayerProps,
   FocusScopeEmits,
   ForceMountProps,
   PropsToContext,
@@ -18,7 +17,7 @@ import type { ButtonProps } from '../button/types';
 import type { DialogRootEmits, DialogBaseProps } from '../dialog/types';
 import type { KbdProps, KbdValue } from '../kbd/types';
 import type { LinkBaseProps, LinkExtraProps } from '../link/types';
-import type { PopperPopupProps, PopperPositionerProps } from '../popper/types';
+import type { PopperV2PopupProps, PopperV2PositionerProps } from '../popper-v2/types';
 import type { PortalProps as MenuPortalProps } from '../portal/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { RovingFocusGroupEmits, RovingFocusGroupProps } from '../roving-focus/types';
@@ -44,14 +43,14 @@ export type MenuRootEmits = DialogRootEmits;
 /**
  * Properties for the MenuPopup component.
  */
-export interface MenuPopupProps extends PopperPopupProps {}
+export interface MenuPopupProps extends PopperV2PopupProps {}
 
 // MenuContentImpl
 /**
  * Properties for the MenuContentImpl component.
  */
 export interface MenuContentImplProps
-  extends PopperPositionerProps, TrapFocusProps, DismissableLayerProps, Pick<RovingFocusGroupProps, 'loop'> {
+  extends PopperV2PositionerProps, TrapFocusProps, Pick<RovingFocusGroupProps, 'loop'> {
   /**
    * Properties forwarded to the popup element.
    */
@@ -66,7 +65,8 @@ export type MenuContentImplEmits = DismissableLayerEmits & FocusScopeEmits & Pic
 /**
  * Properties for the MenuContent component.
  */
-export interface MenuContentProps extends PopperPositionerProps, ForceMountProps, Pick<RovingFocusGroupProps, 'loop'> {
+export interface MenuContentProps
+  extends PopperV2PositionerProps, ForceMountProps, Pick<RovingFocusGroupProps, 'loop'> {
   /**
    * Properties forwarded to the popup element.
    */

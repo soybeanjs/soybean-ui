@@ -1,4 +1,4 @@
-import type { ComputedRef, ShallowRef } from 'vue';
+import type { ComputedRef } from 'vue';
 import type { AcceptableBooleanValue, DefinedValue, Placement, PropsToContext } from '../../types';
 import type {
   MenuContentEmits,
@@ -60,28 +60,14 @@ export type DropdownMenuRootEmits = MenuRootEmits;
 /**
  * Parameters used to create the DropdownMenuRoot context.
  */
-export interface DropdownMenuRootContextParams extends PropsToContext<DropdownMenuRootProps, 'dir' | 'modal'> {
-  /**
-   * Whether the component is open.
-   */
-  open: ShallowRef<boolean | undefined>;
-}
-
-/**
- * Parameters used to create the DropdownMenuHover context.
- */
-export interface DropdownMenuHoverContextParams extends PropsToContext<
+export interface DropdownMenuRootContextParams extends PropsToContext<
   DropdownMenuRootProps,
-  'delayDuration' | 'skipDelayDuration'
+  'dir' | 'trigger' | 'modal' | 'delayDuration' | 'skipDelayDuration'
 > {
   /**
-   * Whether hoverable.
+   * Whether the trigger runs in hover mode.
    */
   hoverable: ComputedRef<boolean>;
-  /**
-   * Whether the component is open.
-   */
-  open: ShallowRef<boolean | undefined>;
 }
 
 /**

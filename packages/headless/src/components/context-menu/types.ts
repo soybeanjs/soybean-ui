@@ -1,4 +1,3 @@
-import type { ShallowRef } from 'vue';
 import type { AcceptableBooleanValue, DefinedValue, PropsToContext } from '../../types';
 import type {
   MenuContentEmits,
@@ -51,15 +50,7 @@ export type ContextMenuContentEmits = MenuContentEmits;
 /**
  * Parameters used to create the ContextMenuRoot context.
  */
-export interface ContextMenuRootContextParams extends PropsToContext<
-  ContextMenuRootProps,
-  'dir' | 'modal' | 'pressOpenDelay'
-> {
-  /**
-   * Whether the component is open.
-   */
-  open: ShallowRef<boolean | undefined>;
-}
+export interface ContextMenuRootContextParams extends PropsToContext<ContextMenuRootProps, 'pressOpenDelay'> {}
 /**
  * Properties for the ContextMenuTrigger component.
  */

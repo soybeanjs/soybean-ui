@@ -1,21 +1,19 @@
 <script setup lang="ts">
-import { computed, onWatcherCleanup, useTemplateRef, watchEffect } from 'vue';
+import { computed, nextTick, useTemplateRef, watch } from 'vue';
 import type { CSSProperties } from 'vue';
 import { COLLECTION_ITEM_ATTRIBUTE } from '../../constants';
 import { getActiveElement, isMouseEvent, tryFocusFirst } from '../../shared';
-import { popperCssVars } from '../popper/shared';
+import { popperCssVars } from '../popper-v2/shared';
+import { usePopperV2RootContext } from '../popper-v2/context';
 import {
   useArrowNavigation,
-  useBodyScrollLock,
-  useDismissableLayer,
-  useFocusGuards,
-  useFocusScope,
   useForwardElement,
+  useForwardListeners,
   useHideOthers,
   useOmitProps,
   useTypeahead
 } from '../../composables';
-import { PopperPopup, PopperPositioner } from '../popper';
+import { PopperV2Popup, PopperV2Positioner } from '../popper-v2';
 import { RovingFocusGroup } from '../roving-focus';
 import { FIRST_LAST_KEYS, LAST_KEYS, MENU_POPUP_DATA_ATTRIBUTE, menuCssVars, subMenuCssVars } from './shared';
 import { provideMenuContentContext, useMenuContext, useMenuRootContext, useMenuUi } from './context';
@@ -30,10 +28,11 @@ const props = defineProps<MenuContentImplProps>();
 const emit = defineEmits<MenuContentImplEmits>();
 
 const { modal, dir, isUsingKeyboard } = useMenuRootContext('MenuContentImpl');
-const { isRoot, dataState, popupId, triggerId, dataPopupAttr, initPopupId, onOpenChange, onPopupElementChange } =
+const { isRoot, open, dataState, popupId, triggerId, dataPopupAttr, initPopupId, onPopupElementChange } =
   useMenuContext('MenuContentImpl');
+const popperContext = usePopperV2RootContext('MenuContentImpl');
 
-const [positionerElement, setPositionerElement] = useForwardElement();
+const positionerElement = popperContext.positionerElement;
 const [popupElement, setPopupElement] = useForwardElement(node => {
   onPopupElementChange(node);
 });
@@ -48,44 +47,19 @@ const popupCls = computed(() => (isRoot ? ui.value?.popup : ui.value?.subPopup))
 const { handleTypeaheadSearch } = useTypeahead();
 const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
 
-const { pointerEvents, onFocusCapture, onBlurCapture } = useDismissableLayer(popupElement, {
-  disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
-  onEscapeKeyDown: event => {
-    emit('escapeKeyDown', event);
-  },
-  onPointerDownOutside: event => {
-    emit('pointerDownOutside', event);
-  },
-  onFocusOutside: event => {
-    emit('focusOutside', event);
-  },
-  onInteractOutside: event => {
-    emit('interactOutside', event);
-  },
-  onDismiss: () => {
-    if (!isRoot) return;
-    onOpenChange(false);
-  }
-});
+const listeners = useForwardListeners<keyof MenuContentImplEmits>(emit);
 
-const { onKeydown: onFocusScopeKeydown } = useFocusScope(popupElement, {
-  trapped: () => props.trapFocus,
-  onOpenAutoFocus: event => {
-    emit('openAutoFocus', event);
-    if (event.defaultPrevented) return;
-    // when opening, explicitly focus the popup area only and leave
-    // `onEntryFocus` in  control of focusing first item
-    event.preventDefault();
-    popupElement.value?.focus({
-      preventScroll: true
-    });
-  },
-  onCloseAutoFocus: event => {
-    emit('closeAutoFocus', event);
-  }
-});
+// The dismiss stack (outside/escape, focus trap, guards, scroll lock, layer dismissal rules —
+// a sub layer's outside dismissal closes only itself) lives on the PopperV2 positioner now.
+function onOpenAutoFocus(event: Event) {
+  emit('openAutoFocus', event);
+  // Focus the popup area only and leave `onEntryFocus` in control of focusing the first item.
+  event.preventDefault();
+}
 
-const forwardedProps = useOmitProps(props, ['disableOutsidePointerEvents', 'trapFocus', 'loop', 'popupProps']);
+listeners.openAutoFocus = onOpenAutoFocus;
+
+const forwardedProps = useOmitProps(props, ['trapFocus', 'loop', 'popupProps']);
 
 const popupProps = computed(() => {
   return {
@@ -102,8 +76,7 @@ const popupStyle = computed<CSSProperties>(() => {
     [cssVars.popupAvailableWidth]: `var(${popperCssVars.availableWidth})`,
     [cssVars.popupAvailableHeight]: `var(${popperCssVars.availableHeight})`,
     [cssVars.triggerWidth]: `var(${popperCssVars.anchorWidth})`,
-    [cssVars.triggerHeight]: `var(${popperCssVars.anchorHeight})`,
-    pointerEvents: pointerEvents.value
+    [cssVars.triggerHeight]: `var(${popperCssVars.anchorHeight})`
   };
 });
 
@@ -116,8 +89,6 @@ const onEntryFocus = (event: Event) => {
 };
 
 const onKeyDown = (event: KeyboardEvent) => {
-  onFocusScopeKeydown(event);
-
   if (event.defaultPrevented) return;
   // submenu key events bubble through portals. We only care about keys in this menu.
   const target = event.target as HTMLElement;
@@ -194,19 +165,35 @@ function onPointerMove(event: PointerEvent) {
 }
 
 initPopupId();
-useFocusGuards();
+// Only the root menu hides the background context while modal; submenus stay in-flow.
 useHideOthers(positionerElement, () => modal.value && isRoot);
 
-watchEffect(() => {
-  if (!props.disableOutsidePointerEvents) return;
+// Focus the popup container on open (submenus: keyboard users only). Non-trapped layers get
+// no shell auto-focus event, so the watch covers every layer shape uniformly.
+// Focus the popup container on open (submenus: keyboard users only). Non-trapped layers get
+// no shell auto-focus event, so this watch covers every layer shape uniformly.
+watch(
+  open,
+  value => {
+    if (!value) return;
+    if (!isRoot && !isUsingKeyboard.value) return;
 
-  const cleanup = useBodyScrollLock();
-  onWatcherCleanup(cleanup);
-});
+    nextTick(() => {
+      popupElement.value?.focus({ preventScroll: true });
+    });
+  },
+  { immediate: true }
+);
 </script>
 
 <template>
-  <PopperPositioner v-bind="forwardedProps" :ref="setPositionerElement" data-soybean-menu-content-impl :class="cls">
+  <PopperV2Positioner
+    v-bind="forwardedProps"
+    :trap-focus="trapFocus"
+    data-soybean-menu-content-impl
+    :class="cls"
+    v-on="listeners"
+  >
     <RovingFocusGroup
       ref="rovingFocusGroupRef"
       v-model:current-tab-stop-id="currentItemId"
@@ -216,27 +203,24 @@ watchEffect(() => {
       :loop="loop"
       @entry-focus="onEntryFocus"
     >
-      <PopperPopup
+      <PopperV2Popup
         v-bind="popupProps"
         :id="popupId"
         :ref="setPopupElement"
         :class="popupCls"
         :aria-labelledby="triggerId"
         aria-orientation="vertical"
-        data-dismissable-layer
         :data-state="dataState"
         :dir="dir"
         role="menu"
         tabindex="-1"
         :style="popupStyle"
-        @focus.capture="onFocusCapture"
-        @blur.capture="onBlurCapture"
         @keydown="onKeyDown"
         @blur="onBlur"
         @pointermove="onPointerMove"
       >
         <slot />
-      </PopperPopup>
+      </PopperV2Popup>
     </RovingFocusGroup>
-  </PopperPositioner>
+  </PopperV2Positioner>
 </template>

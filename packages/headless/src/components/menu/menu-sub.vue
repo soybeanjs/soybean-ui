@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, onWatcherCleanup, watchEffect } from 'vue';
+import { computed } from 'vue';
 import { useControllableState } from '../../composables';
-import { PopperRoot } from '../popper';
+import { PopperV2Sub } from '../popper-v2';
 import { provideMenuContext, useMenuContext } from './context';
 import type { MenuSubProps, MenuSubEmits } from './types';
 
@@ -28,25 +28,20 @@ const parentContext = useMenuContext('MenuSub');
 
 const dir = computed(() => parentContext.dir.value);
 
-// Prevent the parent menu from reopening with open submenus.
-watchEffect(() => {
-  if (parentContext.open.value === false) {
-    open.value = false;
-  }
-
-  onWatcherCleanup(() => {
-    open.value = false;
-  });
-});
-
+// Parent-close cascading lives on the PopperV2 nesting stack (closeDescendants).
 provideMenuContext({
   dir,
   open
 });
+
+function onUpdateOpen(value: boolean) {
+  open.value = value;
+  emit('update:open', value);
+}
 </script>
 
 <template>
-  <PopperRoot :dir="dir">
+  <PopperV2Sub :open="open" :default-open="defaultOpen" @update:open="onUpdateOpen">
     <slot />
-  </PopperRoot>
+  </PopperV2Sub>
 </template>

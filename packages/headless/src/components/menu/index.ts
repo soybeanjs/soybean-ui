@@ -1,8 +1,8 @@
 export { default as MenuRoot } from './menu-root.vue';
-export { default as MenuPortal } from '../portal/portal.vue';
+export { PopperV2Portal as MenuPortal } from '../popper-v2';
 export { default as MenuContent } from './menu-content.vue';
-export { default as MenuAnchor } from '../popper/popper-anchor.vue';
-export { default as MenuArrow } from '../popper/popper-arrow.vue';
+export { PopperV2Anchor as MenuAnchor } from '../popper-v2';
+export { PopperV2Arrow as MenuArrow } from '../popper-v2';
 export { default as MenuGroup } from './menu-group.vue';
 export { default as MenuGroupLabel } from './menu-group-label.vue';
 export { default as MenuItem } from './menu-item.vue';
@@ -23,8 +23,8 @@ export { default as MenuRadioOptionsCompact } from './menu-radio-options-compact
 export { provideMenuUi } from './context';
 
 export type { SeparatorRootProps as MenuSeparatorProps } from '../separator/types';
-export type { PopperAnchorProps as MenuAnchorProps, PopperArrowProps as MenuArrowProps } from '../popper/types';
-export type { PortalProps as MenuPortalProps } from '../portal/types';
+export type { PopperV2AnchorProps as MenuAnchorProps, PopperV2ArrowProps as MenuArrowProps } from '../popper-v2/types';
+export type { PopperV2PortalProps as MenuPortalProps } from '../popper-v2/types';
 export type {
   MenuRootProps,
   MenuRootEmits,
