@@ -1,7 +1,7 @@
 import { computed } from 'vue';
 import type { ComputedRef } from 'vue';
 import { provideListboxUi } from '../listbox/context';
-import { providePopperV2Ui } from '../popper-v2/context';
+import { providePopperUi } from '../popper/context';
 import { useContext, useUiContext } from '../../composables';
 import type { ComboboxRootContext, ComboboxUiSlot } from './types';
 
@@ -19,7 +19,7 @@ export const [provideComboboxUi, useComboboxUi] = useUiContext<ComboboxUiSlot>('
     filterControl: ui.value?.inputControl
   }));
 
-  providePopperV2Ui(ui);
+  providePopperUi(ui);
   provideListboxUi(listboxUi);
 
   return ui;

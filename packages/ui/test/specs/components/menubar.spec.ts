@@ -212,7 +212,7 @@ describe('SMenubar', () => {
       await nextTick();
       expect(fileTrigger.attributes('aria-expanded')).toBe('true');
 
-      // While a menu is open, the shared skip-delay window (the PopperV2 delay group
+      // While a menu is open, the shared skip-delay window (the Popper delay group
       // provided by the menubar root) makes the sibling trigger open instantly and the
       // previously open menu closes.
       await editTrigger.trigger('pointerenter');
@@ -243,7 +243,7 @@ describe('SMenubar', () => {
       expect(trigger.attributes('aria-expanded')).toBe('true');
 
       // Entering the teleported popup keeps the menu open.
-      const positioner = document.querySelector('[data-soybean-popper-v2-positioner]') as HTMLElement;
+      const positioner = document.querySelector('[data-soybean-popper-positioner]') as HTMLElement;
       expect(positioner).toBeTruthy();
       positioner.dispatchEvent(new MouseEvent('pointerenter', { bubbles: false, clientX: 10, clientY: 100 }));
       await new Promise(resolve => window.setTimeout(resolve, 20));

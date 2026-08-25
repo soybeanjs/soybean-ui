@@ -2,10 +2,10 @@ export { default as TooltipCompact } from './tooltip-compact.vue';
 export { default as TooltipProvider } from './tooltip-provider.vue';
 export { default as TooltipRoot } from './tooltip-root.vue';
 export { default as TooltipTrigger } from './tooltip-trigger.vue';
-export { PopperV2Portal as TooltipPortal } from '../popper-v2';
+export { PopperPortal as TooltipPortal } from '../popper';
 export { default as TooltipPositioner } from './tooltip-positioner.vue';
 export { default as TooltipPopup } from './tooltip-popup.vue';
-export { PopperV2Arrow as TooltipArrow } from '../popper-v2';
+export { PopperArrow as TooltipArrow } from '../popper';
 
 export { provideTooltipUi } from './context';
 
@@ -25,8 +25,8 @@ export type {
 } from './types';
 
 export type {
-  PopperV2ArrowProps as TooltipArrowProps,
-  PopperV2UiSlot as TooltipUiSlot,
-  PopperV2Ui as TooltipUi
-} from '../popper-v2/types';
-export type { PopperV2PortalProps as TooltipPortalProps } from '../popper-v2/types';
+  PopperArrowProps as TooltipArrowProps,
+  PopperUiSlot as TooltipUiSlot,
+  PopperUi as TooltipUi
+} from '../popper/types';
+export type { PopperPortalProps as TooltipPortalProps } from '../popper/types';

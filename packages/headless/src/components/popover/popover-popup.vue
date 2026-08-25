@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { CSSProperties } from 'vue';
-import { popperCssVars } from '../popper-v2/shared';
-import { PopperV2Popup } from '../popper-v2';
+import { popperCssVars } from '../popper/shared';
+import { PopperPopup } from '../popper';
 import { popoverCssVars } from './shared';
 import type { PopoverPopupProps } from './types';
 
@@ -21,7 +21,7 @@ const cssVarsStyle: CSSProperties = {
 </script>
 
 <template>
-  <PopperV2Popup v-bind="props" data-soybean-popover-popup role="dialog" :style="cssVarsStyle">
+  <PopperPopup v-bind="props" data-soybean-popover-popup role="dialog" :style="cssVarsStyle">
     <slot />
-  </PopperV2Popup>
+  </PopperPopup>
 </template>

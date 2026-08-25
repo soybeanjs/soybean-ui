@@ -1,6 +1,6 @@
 import { computed, ref, shallowRef, useId } from 'vue';
 import { getDisclosureState, isPointerInGraceArea } from '../../shared';
-import { providePopperV2Ui } from '../popper-v2/context';
+import { providePopperUi } from '../popper/context';
 import { provideSeparatorUi } from '../separator/context';
 import { useContext, useUiContext } from '../../composables';
 import type { AcceptableBooleanValue, DefinedValue, GraceIntent, HorizontalSide } from '../../types';
@@ -163,7 +163,7 @@ export const [provideMenuOptionsCompactContext, useMenuOptionsCompactContext] =
   useContext<MenuOptionsCompactContext>('MenuOptionsCompact');
 
 export const [provideMenuUi, useMenuUi] = useUiContext<MenuUiSlot>('MenuUi', ui => {
-  providePopperV2Ui(ui);
+  providePopperUi(ui);
 
   const separatorUi = computed(() => ({ root: ui.value?.separator }));
   provideSeparatorUi(separatorUi);

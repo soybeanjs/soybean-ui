@@ -2,7 +2,7 @@
 import { transformPropsToContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { useControllableState, useIsUsingKeyboard } from '../../composables';
-import { PopperV2Root } from '../popper-v2';
+import { PopperRoot } from '../popper';
 import { provideMenuContext, provideMenuRootContext } from './context';
 import type { MenuRootProps, MenuRootEmits } from './types';
 
@@ -54,9 +54,9 @@ provideMenuRootContext({
 </script>
 
 <template>
-  <PopperV2Root :dir="dir" :modal="modal" :open="open" :default-open="defaultOpen" @update:open="onUpdateOpen">
+  <PopperRoot :dir="dir" :modal="modal" :open="open" :default-open="defaultOpen" @update:open="onUpdateOpen">
     <template #default="slotProps">
       <slot v-bind="slotProps" />
     </template>
-  </PopperV2Root>
+  </PopperRoot>
 </template>

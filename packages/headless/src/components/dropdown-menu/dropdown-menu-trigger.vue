@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useMenuContext } from '../menu/context';
-import { usePopperV2RootContext } from '../popper-v2/context';
-import { PopperV2Trigger } from '../popper-v2';
-import type { PopperV2TriggerType } from '../popper-v2/types';
+import { usePopperRootContext } from '../popper/context';
+import { PopperTrigger } from '../popper';
+import type { PopperTriggerType } from '../popper/types';
 import { useDropdownMenuRootContext } from './context';
 import type { DropdownMenuTriggerProps } from './types';
 
@@ -16,12 +16,12 @@ const props = withDefaults(defineProps<DropdownMenuTriggerProps>(), {
 });
 
 const { popupId, triggerId, initTriggerId } = useMenuContext('DropdownMenuTrigger');
-const popperContext = usePopperV2RootContext('DropdownMenuTrigger');
+const popperContext = usePopperRootContext('DropdownMenuTrigger');
 const { hoverable, delayDuration, skipDelayDuration } = useDropdownMenuRootContext('DropdownMenuTrigger');
 
 initTriggerId();
 
-const triggerMode = computed<PopperV2TriggerType>(() => (hoverable.value ? 'hover' : 'click'));
+const triggerMode = computed<PopperTriggerType>(() => (hoverable.value ? 'hover' : 'click'));
 
 // ArrowDown opens the menu; Enter/Space toggle through the native button click the shell handles.
 function onKeyDown(event: KeyboardEvent) {
@@ -43,7 +43,7 @@ function onBlurClose() {
 </script>
 
 <template>
-  <PopperV2Trigger
+  <PopperTrigger
     v-bind="props"
     :id="triggerId"
     :trigger="triggerMode"
@@ -57,5 +57,5 @@ function onBlurClose() {
     @blur="onBlurClose"
   >
     <slot />
-  </PopperV2Trigger>
+  </PopperTrigger>
 </template>

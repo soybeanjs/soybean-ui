@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { CSSProperties } from 'vue';
-import { popperCssVars } from '../popper-v2/shared';
-import { usePopperV2RootContext } from '../popper-v2/context';
+import { popperCssVars } from '../popper/shared';
+import { usePopperRootContext } from '../popper/context';
 import { useForwardElement } from '../../composables';
-import { PopperV2Popup } from '../popper-v2';
+import { PopperPopup } from '../popper';
 import { VisuallyHidden } from '../visually-hidden';
 import { tooltipCssVars } from './shared';
 import { useTooltipRootContext } from './context';
@@ -17,7 +17,7 @@ defineOptions({
 const props = defineProps<TooltipPopupProps>();
 
 const { popupId } = useTooltipRootContext('TooltipPopup');
-const { open, wasOpenDelayed } = usePopperV2RootContext('TooltipPopup');
+const { open, wasOpenDelayed } = usePopperRootContext('TooltipPopup');
 
 const [popupElement, setPopupElement] = useForwardElement();
 
@@ -38,7 +38,7 @@ const ariaLabel = computed(() => props.ariaLabel ?? popupElement.value?.textCont
 </script>
 
 <template>
-  <PopperV2Popup
+  <PopperPopup
     :ref="setPopupElement"
     v-bind="props"
     data-soybean-tooltip-popup
@@ -50,5 +50,5 @@ const ariaLabel = computed(() => props.ariaLabel ?? popupElement.value?.textCont
     <VisuallyHidden :id="popupId" role="tooltip">
       {{ ariaLabel }}
     </VisuallyHidden>
-  </PopperV2Popup>
+  </PopperPopup>
 </template>

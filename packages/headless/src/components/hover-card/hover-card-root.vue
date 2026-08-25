@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { transformPropsToContext } from '../../shared';
-import { PopperV2Root } from '../popper-v2';
-import type { PopperV2OpenChangeReason } from '../popper-v2/types';
+import { PopperRoot } from '../popper';
+import type { PopperOpenChangeReason } from '../popper/types';
 import { provideHoverCardRootContext } from './context';
 import type { HoverCardRootProps, HoverCardRootEmits } from './types';
 
@@ -21,15 +21,15 @@ const emit = defineEmits<HoverCardRootEmits>();
 
 provideHoverCardRootContext(transformPropsToContext(props, ['openDelay', 'closeDelay']));
 
-function onUpdateOpen(value: boolean, reason?: PopperV2OpenChangeReason) {
+function onUpdateOpen(value: boolean, reason?: PopperOpenChangeReason) {
   emit('update:open', value, reason);
 }
 </script>
 
 <template>
-  <PopperV2Root :dir="dir" :modal="false" :open="props.open" :default-open="defaultOpen" @update:open="onUpdateOpen">
+  <PopperRoot :dir="dir" :modal="false" :open="props.open" :default-open="defaultOpen" @update:open="onUpdateOpen">
     <template #default="slotProps">
       <slot v-bind="slotProps" />
     </template>
-  </PopperV2Root>
+  </PopperRoot>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PopperV2Root } from '../popper-v2';
+import { PopperRoot } from '../popper';
 import type { PopoverRootProps, PopoverRootEmits } from './types';
 
 defineOptions({
@@ -17,7 +17,7 @@ function onOpenChange(value: boolean) {
 </script>
 
 <template>
-  <PopperV2Root v-slot="slotProps" v-bind="props" @update:open="onOpenChange">
+  <PopperRoot v-slot="slotProps" v-bind="props" @update:open="onOpenChange">
     <slot v-bind="slotProps" />
-  </PopperV2Root>
+  </PopperRoot>
 </template>

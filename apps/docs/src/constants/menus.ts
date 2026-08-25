@@ -10,6 +10,7 @@ export const newlyComponentKeys = [
   'colorSwatch',
   'colorSwatchPicker',
   'colorPicker',
+  'popper',
   'pageTabs',
   'calendar',
   'dateField',
@@ -137,7 +138,7 @@ export const menuData: MenuData[] = [
   {
     value: 'overlay',
     i18n: 'sidebar.overlay',
-    items: ['bottomSheet', 'dialog', 'drawer', 'hoverCard', 'popconfirm', 'popover', 'tooltip']
+    items: ['bottomSheet', 'dialog', 'drawer', 'hoverCard', 'popconfirm', 'popover', 'popper', 'tooltip']
   },
   {
     value: 'utilities',

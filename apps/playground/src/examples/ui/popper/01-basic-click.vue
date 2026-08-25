@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { SPopperV2 } from '@soybeanjs/ui';
+import { SPopper } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SPopperV2 :positioner-props="{ sideOffset: 8 }" :popup-props="{ role: 'dialog' }">
+  <SPopper :positioner-props="{ sideOffset: 8 }" :popup-props="{ role: 'dialog' }">
     <template #trigger>
       <button type="button" aria-haspopup="dialog">Open enhanced popper</button>
     </template>
@@ -23,5 +23,5 @@ import { SPopperV2 } from '@soybeanjs/ui';
         </button>
       </div>
     </template>
-  </SPopperV2>
+  </SPopper>
 </template>

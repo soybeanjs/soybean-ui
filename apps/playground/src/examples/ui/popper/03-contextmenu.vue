@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { SPopperV2 } from '@soybeanjs/ui';
+import { SPopper } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SPopperV2
+  <SPopper
     trigger="contextmenu"
     :trigger-props="{
       as: 'div',
@@ -25,5 +25,5 @@ import { SPopperV2 } from '@soybeanjs/ui';
       <p class="font-medium">Virtual point reference</p>
       <p class="text-muted-foreground">The popup is positioned at the pointer coordinates.</p>
     </div>
-  </SPopperV2>
+  </SPopper>
 </template>

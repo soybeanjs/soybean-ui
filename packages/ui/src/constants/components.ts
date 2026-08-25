@@ -59,7 +59,7 @@ export const components = {
   password: ['SPassword'],
   popconfirm: ['SPopconfirm', 'SPopconfirmConfirm', 'SPopconfirmCancel'],
   popover: ['SPopover'],
-  popperV2: ['SPopperV2'],
+  popper: ['SPopper'],
   progress: ['SProgressProvider', 'SProgress', 'SProgressCircle'],
   radioGroup: ['SRadioGroup', 'SRadioGroupCard'],
   rating: ['SRating'],

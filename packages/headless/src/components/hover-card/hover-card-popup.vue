@@ -2,9 +2,9 @@
 import { nextTick, onMounted, onUnmounted, shallowRef, watchEffect } from 'vue';
 import type { CSSProperties } from 'vue';
 import { getTabbableCandidates, removeFromTabOrder } from '../../shared';
-import { popperCssVars } from '../popper-v2/shared';
-import { usePopperV2RootContext } from '../popper-v2/context';
-import { PopperV2Popup } from '../popper-v2';
+import { popperCssVars } from '../popper/shared';
+import { usePopperRootContext } from '../popper/context';
+import { PopperPopup } from '../popper';
 import { hoverCardCssVars } from './shared';
 import { useHoverCardRootContext } from './context';
 import type { HoverCardPopupProps } from './types';
@@ -16,7 +16,7 @@ defineOptions({
 defineProps<HoverCardPopupProps>();
 
 const { hasSelectionRef, isPointerDownOnPopupRef } = useHoverCardRootContext('HoverCardPopup');
-const { dataState, popupElement, triggerElement, onOpenChange } = usePopperV2RootContext('HoverCardPopup');
+const { dataState, popupElement, triggerElement, onOpenChange } = usePopperRootContext('HoverCardPopup');
 
 const containSelection = shallowRef(false);
 
@@ -90,7 +90,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <PopperV2Popup
+  <PopperPopup
     data-soybean-hover-card-popup
     data-dismissable-layer
     :data-state="dataState"
@@ -102,5 +102,5 @@ onUnmounted(() => {
     @pointerdown="onPointerDown"
   >
     <slot />
-  </PopperV2Popup>
+  </PopperPopup>
 </template>

@@ -1706,7 +1706,7 @@
         },
         "cascadercontentprops": {
           "members": {
-            "align": "The preferred alignment against the trigger. May change when collisions occur.",
+            "align": "The preferred alignment against the anchor. May change when collisions occur.",
             "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
             "alignoffset": "An offset in pixels from the `start` or `end` alignment options.",
             "arrowpadding": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
@@ -1718,16 +1718,17 @@
             "emptyprops": "Properties forwarded to the empty part.",
             "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
-            "hidewhendetached": "Whether to hide the content when the trigger becomes fully occluded.",
+            "hidewhendetached": "Whether to hide the content when the anchor becomes fully occluded.",
             "menuprops": "Properties forwarded to every menu part.",
+            "open": "Whether the floating layer is open. Drives the positioning lifecycle (`isPositioned`\nresets when open flips); the positioning primitive itself has no open state, so\nconsumers wire their own open state here.",
             "placement": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
             "positionstrategy": "The type of CSS position property to use.",
             "prioritizeposition": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
             "reference": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
-            "side": "The preferred side of the trigger to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
+            "side": "The preferred side of the anchor to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
             "sideflip": "Flip to the opposite side when colliding with boundary.",
-            "sideoffset": "The distance in pixels from the trigger.",
-            "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "sideoffset": "The distance in pixels from the anchor.",
+            "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the anchor is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
             "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
           },
           "props": "Properties for the CascaderContent component."
@@ -1859,7 +1860,7 @@
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "disabled": "When `true`, prevents the user from interacting with the trigger.",
-            "reference": "The reference (or anchor) element that is being referred to for positioning. If not provided will use the current\ncomponent as anchor."
+            "reference": ""
           },
           "props": "Properties for the CascaderTrigger component."
         },
@@ -2238,13 +2239,17 @@
             "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
             "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
             "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
             "update_color": "Emitted when the color value changes.",
             "update_format": "Emitted when the format value changes.",
             "update_modelvalue": "Emitted when the model value changes.",
             "update_open": "Event handler called when the open state of the dialog changes."
           },
-          "emits": "Events for the ColorPickerCompact component."
+          "emits": "Events for the ColorPickerCompact component.",
+          "members": {
+            "placed": ""
+          }
         },
         "colorpickercompactprops": {
           "members": {
@@ -2255,17 +2260,17 @@
             "closeprops": "Properties forwarded to the close element.",
             "colorspace": "Color space.",
             "defaultformat": "Default format.",
-            "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "defaultopen": "",
             "defaultvalue": "Default value.",
-            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "dir": "",
             "disabled": "Whether the component is disabled.",
             "fieldprops": "Properties forwarded to the field element.",
             "format": "Format.",
             "huesliderprops": "Properties forwarded to the hue slider element.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
+            "modal": "",
             "modelvalue": "Current model value.",
             "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
-            "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+            "open": "",
             "placement": "Placement.",
             "popupprops": "Properties forwarded to the popup element.",
             "portalprops": "Properties forwarded to the portal element.",
@@ -2704,7 +2709,7 @@
         },
         "comboboxcontentprops": {
           "members": {
-            "align": "The preferred alignment against the trigger. May change when collisions occur.",
+            "align": "The preferred alignment against the anchor. May change when collisions occur.",
             "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
             "alignoffset": "An offset in pixels from the `start` or `end` alignment options.",
             "arrowpadding": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
@@ -2716,18 +2721,19 @@
             "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
             "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
-            "hidewhendetached": "Whether to hide the content when the trigger becomes fully occluded.",
+            "hidewhendetached": "Whether to hide the content when the anchor becomes fully occluded.",
             "hidewhenempty": "Whether hide when empty.",
+            "open": "Whether the floating layer is open. Drives the positioning lifecycle (`isPositioned`\nresets when open flips); the positioning primitive itself has no open state, so\nconsumers wire their own open state here.",
             "placement": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
             "popupprops": "Properties forwarded to the popup element.",
             "position": "Position.",
             "positionstrategy": "The type of CSS position property to use.",
             "prioritizeposition": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
             "reference": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
-            "side": "The preferred side of the trigger to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
+            "side": "The preferred side of the anchor to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
             "sideflip": "Flip to the opposite side when colliding with boundary.",
-            "sideoffset": "The distance in pixels from the trigger.",
-            "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "sideoffset": "The distance in pixels from the anchor.",
+            "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the anchor is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
             "trapfocus": "When `true`, focus cannot escape the content via keyboard, pointer, or a programmatic focus.",
             "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
           },
@@ -2980,6 +2986,9 @@
           "props": "Properties for the MenuItem component."
         },
         "contextmenupopupprops": "Properties for the MenuPopup component.",
+        "contextmenuportalprops": {
+          "props": "Properties for the Portal component."
+        },
         "contextmenuradiogroupemits": {
           "emits": "Events for the MenuRadioGroup component."
         },
@@ -3006,6 +3015,9 @@
           "emits": "Events for the MenuSubContent component."
         },
         "contextmenusubcontentprops": {
+          "callables": {
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area."
+          },
           "members": {
             "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
             "alignoffset": "An offset in pixels from the `start` or `end` alignment options.",
@@ -3013,6 +3025,7 @@
             "avoidcollisions": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
             "collisionboundary": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
             "collisionpadding": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "disablehoverablecontent": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
             "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
             "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
@@ -3026,6 +3039,7 @@
             "sideflip": "Flip to the opposite side when colliding with boundary.",
             "sideoffset": "The distance in pixels from the trigger.",
             "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "trapfocus": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
             "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
           },
           "props": "Properties for the MenuSubContent component."
@@ -3166,24 +3180,30 @@
           "emits": "Events for the ContextMenuContent component."
         },
         "contextmenucontentprops": {
+          "callables": {
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area."
+          },
           "members": {
             "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
             "alignoffset": "An offset in pixels from the `start` or `end` alignment options.",
             "avoidcollisions": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
             "collisionboundary": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
             "collisionpadding": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "disablehoverablecontent": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
             "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
             "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
             "hidewhendetached": "Whether to hide the content when the trigger becomes fully occluded.",
             "loop": "Whether keyboard navigation should loop around",
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
             "placement": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
             "popupprops": "Properties forwarded to the popup element.",
             "positionstrategy": "The type of CSS position property to use.",
             "prioritizeposition": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
             "reference": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
             "sideflip": "Flip to the opposite side when colliding with boundary.",
-            "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless."
+            "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "trapfocus": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers)."
           },
           "props": "Properties for the ContextMenuContent component."
         },
@@ -3388,12 +3408,16 @@
             "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
             "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
             "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
             "update_modelvalue": "Emitted when the model value changes.",
             "update_open": "Event handler called when the open state of the dialog changes.",
             "update_placeholder": "Emitted when the placeholder value changes."
           },
-          "emits": "Events for the DatePickerCompact component."
+          "emits": "Events for the DatePickerCompact component.",
+          "members": {
+            "placed": ""
+          }
         },
         "datepickercompactprops": {
           "members": {
@@ -3405,10 +3429,10 @@
             "celltriggerprops": "Properties forwarded to the cell trigger element.",
             "closeprops": "Properties forwarded to the close element.",
             "datefieldprops": "",
-            "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "defaultopen": "",
             "defaultplaceholder": "Default placeholder.",
             "defaultvalue": "Default value.",
-            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "dir": "Reading direction of the component.",
             "disabled": "Whether the component is disabled.",
             "disabledaysoutsidecurrentview": "Whether to disable days outside current view.",
             "fixedweeks": "Whether fixed weeks.",
@@ -3425,13 +3449,13 @@
             "locale": "Locale.",
             "maxvalue": "Max value.",
             "minvalue": "Min value.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
+            "modal": "",
             "modelvalue": "Current model value.",
             "multiple": "Whether multiple values are supported.",
             "nextpage": "Next page.",
             "nextprops": "Properties forwarded to the next element.",
             "numberofmonths": "Number of months.",
-            "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+            "open": "",
             "pagednavigation": "Whether paged navigation.",
             "placeholder": "Placeholder.",
             "placement": "Placement.",
@@ -3586,13 +3610,17 @@
             "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
             "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
             "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
             "update_modelvalue": "Emitted when the model value changes.",
             "update_open": "Event handler called when the open state of the dialog changes.",
             "update_placeholder": "Emitted when the placeholder value changes.",
             "update_startvalue": "Emitted when the start value changes."
           },
-          "emits": "Events for the DateRangePickerCompact component."
+          "emits": "Events for the DateRangePickerCompact component.",
+          "members": {
+            "placed": ""
+          }
         },
         "daterangepickercompactprops": {
           "members": {
@@ -3605,10 +3633,10 @@
             "celltriggerprops": "Properties forwarded to the cell trigger element.",
             "closeprops": "Properties forwarded to the close element.",
             "datefieldprops": "",
-            "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "defaultopen": "",
             "defaultplaceholder": "Default placeholder.",
             "defaultvalue": "Default value.",
-            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "dir": "Reading direction of the component.",
             "disabled": "Whether the component is disabled.",
             "disabledaysoutsidecurrentview": "Whether to disable days outside current view.",
             "fixeddate": "Fixed date.",
@@ -3628,12 +3656,12 @@
             "maximumdays": "Maximum days.",
             "maxvalue": "Max value.",
             "minvalue": "Min value.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
+            "modal": "",
             "modelvalue": "Current model value.",
             "nextpage": "Next page.",
             "nextprops": "Properties forwarded to the next element.",
             "numberofmonths": "Number of months.",
-            "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+            "open": "",
             "pagednavigation": "Whether paged navigation.",
             "placeholder": "Placeholder.",
             "placement": "Placement.",
@@ -3946,6 +3974,9 @@
           }
         },
         "dropdownmenusubcontentprops": {
+          "callables": {
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area."
+          },
           "members": {
             "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
             "alignoffset": "An offset in pixels from the `start` or `end` alignment options.",
@@ -3953,6 +3984,7 @@
             "avoidcollisions": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
             "collisionboundary": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
             "collisionpadding": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "disablehoverablecontent": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
             "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
             "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
@@ -3966,6 +3998,7 @@
             "sideflip": "Flip to the opposite side when colliding with boundary.",
             "sideoffset": "The distance in pixels from the trigger.",
             "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "trapfocus": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
             "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
           }
         },
@@ -4110,6 +4143,9 @@
           "emits": "Events for the DropdownMenuContent component."
         },
         "dropdownmenucontentprops": {
+          "callables": {
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area."
+          },
           "members": {
             "align": "The preferred alignment against the trigger. May change when collisions occur.",
             "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
@@ -4118,11 +4154,13 @@
             "avoidcollisions": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
             "collisionboundary": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
             "collisionpadding": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "disablehoverablecontent": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
             "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
             "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
             "hidewhendetached": "Whether to hide the content when the trigger becomes fully occluded.",
             "loop": "Whether keyboard navigation should loop around",
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
             "placement": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
             "popupprops": "Properties forwarded to the popup element.",
             "positionstrategy": "The type of CSS position property to use.",
@@ -4132,6 +4170,7 @@
             "sideflip": "Flip to the opposite side when colliding with boundary.",
             "sideoffset": "The distance in pixels from the trigger.",
             "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "trapfocus": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
             "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
           },
           "props": "Properties for the DropdownMenuContent component."
@@ -4543,7 +4582,7 @@
         "formui": ""
       },
       "packages_headless_src_components_hover_card_index": {
-        "hovercardarrowprops": "Properties for the PopperArrow component.",
+        "hovercardarrowprops": "",
         "hovercardportalprops": {
           "members": {
             "defer": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
@@ -4552,7 +4591,7 @@
             "to": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}"
           }
         },
-        "hovercardui": "UI class overrides for the Popper component."
+        "hovercardui": ""
       },
       "packages_headless_src_components_hover_card_types": {
         "hovercardcompactemits": {
@@ -4569,7 +4608,9 @@
             "arrowprops": "Properties forwarded to the arrow element.",
             "closedelay": "The duration from when the pointer leaves the trigger or popup until the hover card closes.",
             "defaultopen": "The open state of the hover card when it is initially rendered. Use when you do not need to control its open state.",
-            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
             "open": "The controlled open state of the hover card.",
             "opendelay": "The duration from when the pointer enters the trigger until the hover card opens.",
             "placement": "Placement.",
@@ -4607,6 +4648,9 @@
           }
         },
         "hovercardpositionerprops": {
+          "callables": {
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area."
+          },
           "members": {
             "align": "The preferred alignment against the trigger. May change when collisions occur.",
             "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
@@ -4615,10 +4659,12 @@
             "avoidcollisions": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
             "collisionboundary": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
             "collisionpadding": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "disablehoverablecontent": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
             "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
             "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
             "hidewhendetached": "Whether to hide the content when the trigger becomes fully occluded.",
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
             "placement": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
             "positionstrategy": "The type of CSS position property to use.",
             "prioritizeposition": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
@@ -4627,6 +4673,7 @@
             "sideflip": "Flip to the opposite side when colliding with boundary.",
             "sideoffset": "The distance in pixels from the trigger.",
             "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "trapfocus": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
             "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
           },
           "props": "Properties for the HoverCardPositioner component."
@@ -4641,7 +4688,9 @@
           "members": {
             "closedelay": "The duration from when the pointer leaves the trigger or popup until the hover card closes.",
             "defaultopen": "The open state of the hover card when it is initially rendered. Use when you do not need to control its open state.",
-            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
             "open": "The controlled open state of the hover card.",
             "opendelay": "The duration from when the pointer enters the trigger until the hover card opens."
           },
@@ -5296,14 +5345,6 @@
         "listboxvirtualizerslotsprops": "Properties for the ListboxVirtualizerSlots component."
       },
       "packages_headless_src_components_menu_index": {
-        "menuportalprops": {
-          "members": {
-            "defer": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
-            "disabled": "Disable teleport and render the component inline\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
-            "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-            "to": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}"
-          }
-        },
         "menuseparatorprops": {
           "members": {
             "decorative": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
@@ -5417,11 +5458,13 @@
             "avoidcollisions": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
             "collisionboundary": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
             "collisionpadding": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "disablehoverablecontent": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
             "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
             "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
             "hidewhendetached": "Whether to hide the content when the trigger becomes fully occluded.",
             "loop": "Whether keyboard navigation should loop around",
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
             "placement": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
             "popupprops": "Properties forwarded to the popup element.",
             "positionstrategy": "The type of CSS position property to use.",
@@ -5431,6 +5474,7 @@
             "sideflip": "Flip to the opposite side when colliding with boundary.",
             "sideoffset": "The distance in pixels from the trigger.",
             "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "trapfocus": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
             "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
           },
           "props": "Properties for the MenuContent component."
@@ -5680,6 +5724,9 @@
           "emits": "Events for the MenuSubContent component."
         },
         "menusubcontentprops": {
+          "callables": {
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area."
+          },
           "members": {
             "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
             "alignoffset": "An offset in pixels from the `start` or `end` alignment options.",
@@ -5687,11 +5734,13 @@
             "avoidcollisions": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
             "collisionboundary": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
             "collisionpadding": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "disablehoverablecontent": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
             "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
             "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
             "hidewhendetached": "Whether to hide the content when the trigger becomes fully occluded.",
             "loop": "Whether keyboard navigation should loop around",
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
             "placement": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
             "popupprops": "Properties forwarded to the popup element.",
             "positionstrategy": "The type of CSS position property to use.",
@@ -5700,6 +5749,7 @@
             "sideflip": "Flip to the opposite side when colliding with boundary.",
             "sideoffset": "The distance in pixels from the trigger.",
             "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "trapfocus": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
             "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
           },
           "props": "Properties for the MenuSubContent component."
@@ -5815,6 +5865,9 @@
           "emits": "Events for the MenubarContent component."
         },
         "menubarcontentprops": {
+          "callables": {
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area."
+          },
           "members": {
             "align": "The preferred alignment against the trigger. May change when collisions occur.",
             "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
@@ -5823,11 +5876,13 @@
             "avoidcollisions": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
             "collisionboundary": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
             "collisionpadding": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "disablehoverablecontent": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
             "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
             "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
             "hidewhendetached": "Whether to hide the content when the trigger becomes fully occluded.",
             "loop": "Whether keyboard navigation should loop around",
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
             "placement": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
             "popupprops": "Properties forwarded to the popup element.",
             "positionstrategy": "The type of CSS position property to use.",
@@ -5837,6 +5892,7 @@
             "sideflip": "Flip to the opposite side when colliding with boundary.",
             "sideoffset": "The distance in pixels from the trigger.",
             "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "trapfocus": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
             "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
           },
           "props": "Properties for the MenubarContent component."
@@ -5887,11 +5943,13 @@
             "avoidcollisions": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
             "collisionboundary": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
             "collisionpadding": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "disablehoverablecontent": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
             "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
             "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
             "hidewhendetached": "Whether to hide the content when the trigger becomes fully occluded.",
             "loop": "Whether keyboard navigation should loop around",
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
             "placement": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
             "popupprops": "Properties forwarded to the popup element.",
             "positionstrategy": "The type of CSS position property to use.",
@@ -5900,6 +5958,7 @@
             "sideflip": "Flip to the opposite side when colliding with boundary.",
             "sideoffset": "The distance in pixels from the trigger.",
             "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "trapfocus": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
             "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
           },
           "props": "Properties for the MenubarSubContent component."
@@ -6344,7 +6403,7 @@
         "passwordui": "UI class overrides for the Password component."
       },
       "packages_headless_src_components_popconfirm_index": {
-        "popconfirmarrowprops": "Properties for the PopperArrow component.",
+        "popconfirmarrowprops": "",
         "popconfirmcloseprops": {
           "members": {
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
@@ -6369,6 +6428,9 @@
           "emits": "Events for the PopoverPositioner component."
         },
         "popconfirmpositionerprops": {
+          "callables": {
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area."
+          },
           "members": {
             "align": "The preferred alignment against the trigger. May change when collisions occur.",
             "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
@@ -6377,6 +6439,7 @@
             "avoidcollisions": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
             "collisionboundary": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
             "collisionpadding": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "disablehoverablecontent": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
             "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
             "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
@@ -6389,6 +6452,7 @@
             "sideflip": "Flip to the opposite side when colliding with boundary.",
             "sideoffset": "The distance in pixels from the trigger.",
             "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "trapfocus": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
             "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
           },
           "props": "Properties for the PopoverPositioner component."
@@ -6435,10 +6499,14 @@
             "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
             "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
             "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
             "update_open": "Event handler called when the open state of the dialog changes."
           },
-          "emits": "Events for the PopconfirmCompact component."
+          "emits": "Events for the PopconfirmCompact component.",
+          "members": {
+            "placed": ""
+          }
         },
         "popconfirmcompactprops": {
           "members": {
@@ -6450,15 +6518,15 @@
             "confirmtext": "The text of the confirm button.\n\nDefaults to the localized `dialog.confirm` message from `ConfigProvider`.",
             "content": "Content.",
             "contentprops": "Properties forwarded to the content element.",
-            "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "defaultopen": "",
             "description": "Description text rendered by the component.",
             "descriptionprops": "Properties forwarded to the description element.",
-            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
-            "disabled": "Whether the component is disabled.",
+            "dir": "",
+            "disabled": "",
             "footerprops": "Properties forwarded to the footer element.",
             "headerprops": "Properties forwarded to the header element.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
-            "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+            "modal": "",
+            "open": "",
             "placement": "Placement.",
             "popupprops": "Properties forwarded to the popup element.",
             "portalprops": "Properties forwarded to the portal element.",
@@ -6518,7 +6586,7 @@
         "popconfirmui": "UI class overrides for the Popconfirm component."
       },
       "packages_headless_src_components_popover_index": {
-        "popoverarrowprops": "Properties for the PopperArrow component.",
+        "popoverarrowprops": "",
         "popoverportalprops": {
           "members": {
             "defer": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
@@ -6551,20 +6619,24 @@
             "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
             "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
             "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
             "update_open": "Event handler called when the open state of the dialog changes."
           },
-          "emits": "Events for the PopoverCompact component."
+          "emits": "Events for the PopoverCompact component.",
+          "members": {
+            "placed": ""
+          }
         },
         "popovercompactprops": {
           "members": {
             "arrowprops": "Properties forwarded to the arrow element.",
             "closeprops": "Properties forwarded to the close element.",
-            "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
-            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
-            "disabled": "Whether the component is disabled.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
-            "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+            "defaultopen": "",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
+            "open": "",
             "placement": "Placement.",
             "popupprops": "Properties forwarded to the popup element.",
             "portalprops": "Properties forwarded to the portal element.",
@@ -6592,21 +6664,15 @@
             "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
             "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
             "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented."
           },
           "emits": "Events for the PopoverPositioner component."
         },
-        "popoverpositionerimplemits": {
-          "callables": {
-            "closeautofocus": "Event handler called when auto-focusing on close. Can be prevented.",
-            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
-            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
-            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
-            "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
-            "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented."
-          }
-        },
         "popoverpositionerprops": {
+          "callables": {
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area."
+          },
           "members": {
             "align": "The preferred alignment against the trigger. May change when collisions occur.",
             "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
@@ -6615,10 +6681,12 @@
             "avoidcollisions": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
             "collisionboundary": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
             "collisionpadding": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "disablehoverablecontent": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
             "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
             "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
             "hidewhendetached": "Whether to hide the content when the trigger becomes fully occluded.",
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
             "placement": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
             "positionstrategy": "The type of CSS position property to use.",
             "prioritizeposition": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
@@ -6627,6 +6695,7 @@
             "sideflip": "Flip to the opposite side when colliding with boundary.",
             "sideoffset": "The distance in pixels from the trigger.",
             "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "trapfocus": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
             "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
           },
           "props": "Properties for the PopoverPositioner component."
@@ -6639,11 +6708,11 @@
         },
         "popoverrootprops": {
           "members": {
-            "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
-            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
-            "disabled": "Whether the component is disabled.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
-            "open": "The controlled open state of the dialog. Can be bound with `v-model:open`."
+            "defaultopen": "",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
+            "open": ""
           },
           "props": "Properties for the PopoverRoot component."
         },
@@ -6661,20 +6730,261 @@
       },
       "packages_headless_src_components_popper_types": {
         "autocompleteanchorprops": {
-          "props": "Properties for the PopperAnchor component."
+          "props": "Properties for the anchor (reference) element, optionally overriding the reference."
         },
         "comboboxarrowprops": {
-          "props": "Properties for the PopperArrow component."
+          "props": ""
         },
         "popperanchorprops": {
           "members": {
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "reference": "The reference (or anchor) element that is being referred to for positioning. If not provided will use the current\ncomponent as anchor."
+            "reference": ""
+          },
+          "props": "Properties for the anchor (reference) element, optionally overriding the reference."
+        },
+        "popperarrowprops": {
+          "props": ""
+        },
+        "poppercompactemits": {
+          "callables": {
+            "closeautofocus": "Event handler called when auto-focusing on close. Can be prevented.",
+            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
+            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
+            "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "",
+            "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+            "update_open": ""
+          },
+          "emits": "",
+          "members": {
+            "placed": ""
           }
         },
-        "popperarrowprops": "Properties for the PopperArrow component.",
-        "popperpopupprops": "Properties for the PopperPopup component."
+        "poppercompactprops": {
+          "members": {
+            "arrowprops": "",
+            "closedelay": "",
+            "defaultopen": "",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
+            "open": "",
+            "opendelay": "",
+            "openonfocus": "",
+            "placement": "",
+            "popupprops": "",
+            "portalprops": "",
+            "positionerprops": "",
+            "pressopendelay": "",
+            "showarrow": "",
+            "skipdelayduration": "",
+            "trigger": "",
+            "triggerprops": ""
+          },
+          "props": ""
+        },
+        "poppercompactslots": {
+          "callables": {
+            "default": "",
+            "trigger": ""
+          },
+          "slots": ""
+        },
+        "popperopenchangereason": "",
+        "popperpopupprops": {
+          "props": ""
+        },
+        "popperportalprops": {
+          "members": {
+            "defer": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
+            "disabled": "Disable teleport and render the component inline\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
+            "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+            "to": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}"
+          },
+          "props": ""
+        },
+        "popperpositioneremits": {
+          "callables": {
+            "closeautofocus": "Event handler called when auto-focusing on close. Can be prevented.",
+            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
+            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
+            "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "",
+            "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented."
+          },
+          "emits": "",
+          "members": {
+            "placed": ""
+          }
+        },
+        "popperpositionerprops": {
+          "callables": {
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area."
+          },
+          "members": {
+            "align": "The preferred alignment against the trigger. May change when collisions occur.",
+            "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
+            "alignoffset": "An offset in pixels from the `start` or `end` alignment options.",
+            "arrowpadding": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
+            "avoidcollisions": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
+            "collisionboundary": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
+            "collisionpadding": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "disablehoverablecontent": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
+            "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
+            "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+            "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
+            "hidewhendetached": "Whether to hide the content when the trigger becomes fully occluded.",
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
+            "placement": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+            "positionstrategy": "The type of CSS position property to use.",
+            "prioritizeposition": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
+            "reference": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
+            "side": "The preferred side of the trigger to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
+            "sideflip": "Flip to the opposite side when colliding with boundary.",
+            "sideoffset": "The distance in pixels from the trigger.",
+            "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "trapfocus": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
+            "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
+          },
+          "props": "Properties for the positioner that floats above the anchor. Mirrors the positioning surface of\nthe headless `PopperPositioner` with the prototype's own defaults."
+        },
+        "popperpositioningpopupprops": {
+          "props": "Properties for the positioning-only popup."
+        },
+        "popperpositioningpositioneremits": {
+          "callables": {
+            "placed": "Event handler called when the positioner is placed"
+          },
+          "emits": ""
+        },
+        "popperpositioningpositionerprops": {
+          "members": {
+            "align": "The preferred alignment against the anchor. May change when collisions occur.",
+            "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
+            "alignoffset": "An offset in pixels from the `start` or `end` alignment options.",
+            "arrowpadding": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
+            "avoidcollisions": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
+            "collisionboundary": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
+            "collisionpadding": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
+            "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
+            "hidewhendetached": "Whether to hide the content when the anchor becomes fully occluded.",
+            "open": "Whether the floating layer is open. Drives the positioning lifecycle (`isPositioned`\nresets when open flips); the positioning primitive itself has no open state, so\nconsumers wire their own open state here.",
+            "placement": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+            "positionstrategy": "The type of CSS position property to use.",
+            "prioritizeposition": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
+            "reference": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
+            "side": "The preferred side of the anchor to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
+            "sideflip": "Flip to the opposite side when colliding with boundary.",
+            "sideoffset": "The distance in pixels from the anchor.",
+            "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the anchor is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
+          },
+          "props": "Properties for the positioning-only positioner. Same positioning surface as\n`PopperPositionerProps` minus the interactive-shell concerns (presence, focus trap,\nhoverable content) plus an `open` input the domain layer wires to its own state.\nFields are spelled out (not `Omit`) so the SFC compiler can resolve runtime props keys."
+        },
+        "popperpositioningrootprops": {
+          "members": {
+            "dir": "The direction of the content. Used for RTL-aware rendering of the popup."
+          },
+          "props": "Properties for the positioning-only root. The positioning primitives have no open state,\ntrigger, or dismissal of their own — domain layers (Select / Combobox / Cascader / …)\nown the interaction and mount these parts purely for floating placement."
+        },
+        "popperrootemits": {
+          "callables": {
+            "update_open": ""
+          },
+          "emits": ""
+        },
+        "popperrootprops": {
+          "members": {
+            "defaultopen": "",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
+            "open": ""
+          },
+          "props": ""
+        },
+        "popperrootslotprops": {
+          "members": {
+            "close": "",
+            "dir": "",
+            "open": "",
+            "reason": ""
+          },
+          "slotprops": ""
+        },
+        "popperrootslots": {
+          "callables": {
+            "default": ""
+          },
+          "slots": ""
+        },
+        "poppersubemits": {
+          "callables": {
+            "update_open": ""
+          },
+          "emits": ""
+        },
+        "poppersubprops": {
+          "members": {
+            "defaultopen": "",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
+            "open": ""
+          },
+          "props": ""
+        },
+        "poppersubslots": {
+          "callables": {
+            "default": ""
+          },
+          "slots": ""
+        },
+        "poppersubtriggerprops": {
+          "members": {
+            "ariamode": "How the trigger references its popup for assistive technology.\n\n- `controls`: `aria-expanded` + `aria-controls` (expandable widgets: popover / menu)\n- `describedby`: `aria-describedby` while open (tooltip-like descriptions)\n- `none`: no popup-reference attributes",
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "closedelay": "",
+            "disabled": "Whether the component is disabled.",
+            "focusopendelay": "Open delay applied to focus-driven opens. Defaults to `openDelay`; set `0` to open\ninstantly on focus (Tooltip semantics).",
+            "focusvisibleonly": "When `true`, focus-driven opening only responds to keyboard/programmatic focus\n(`:focus-visible`), ignoring pointer-derived focus.",
+            "opendelay": "",
+            "openonfocus": "",
+            "pressopendelay": "",
+            "reference": "",
+            "skipdelayduration": "",
+            "trigger": "",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
+          },
+          "props": ""
+        },
+        "poppertriggerariamode": "",
+        "poppertriggerprops": {
+          "members": {
+            "ariamode": "How the trigger references its popup for assistive technology.\n\n- `controls`: `aria-expanded` + `aria-controls` (expandable widgets: popover / menu)\n- `describedby`: `aria-describedby` while open (tooltip-like descriptions)\n- `none`: no popup-reference attributes",
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "closedelay": "",
+            "disabled": "Whether the component is disabled.",
+            "focusopendelay": "Open delay applied to focus-driven opens. Defaults to `openDelay`; set `0` to open\ninstantly on focus (Tooltip semantics).",
+            "focusvisibleonly": "When `true`, focus-driven opening only responds to keyboard/programmatic focus\n(`:focus-visible`), ignoring pointer-derived focus.",
+            "opendelay": "",
+            "openonfocus": "",
+            "pressopendelay": "",
+            "reference": "",
+            "skipdelayduration": "",
+            "trigger": "",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
+          },
+          "props": ""
+        },
+        "poppertriggertype": "",
+        "popperui": ""
       },
       "packages_headless_src_components_portal_types": {
         "autocompleteportalprops": {
@@ -7161,7 +7471,7 @@
         },
         "selectcontentprops": {
           "members": {
-            "align": "The preferred alignment against the trigger. May change when collisions occur.",
+            "align": "The preferred alignment against the anchor. May change when collisions occur.",
             "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
             "alignoffset": "An offset in pixels from the `start` or `end` alignment options.",
             "arrowpadding": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
@@ -7173,17 +7483,18 @@
             "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
             "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
-            "hidewhendetached": "Whether to hide the content when the trigger becomes fully occluded.",
+            "hidewhendetached": "Whether to hide the content when the anchor becomes fully occluded.",
+            "open": "Whether the floating layer is open. Drives the positioning lifecycle (`isPositioned`\nresets when open flips); the positioning primitive itself has no open state, so\nconsumers wire their own open state here.",
             "placement": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
             "popupprops": "Properties forwarded to the popup element.",
             "position": "The positioning mode to use\n\n`item-aligned (default)` - behaves similarly to a native MacOS menu by positioning content relative to the active\nitem. <br> `popper` - positions content in the same way as our other primitives, for example `Popover` or\n`DropdownMenu`.",
             "positionstrategy": "The type of CSS position property to use.",
             "prioritizeposition": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
             "reference": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
-            "side": "The preferred side of the trigger to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
+            "side": "The preferred side of the anchor to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
             "sideflip": "Flip to the opposite side when colliding with boundary.",
-            "sideoffset": "The distance in pixels from the trigger.",
-            "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "sideoffset": "The distance in pixels from the anchor.",
+            "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the anchor is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
             "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
           },
           "props": "Properties for the SelectContent component."
@@ -7279,7 +7590,7 @@
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "disabled": "Whether the component is disabled.",
-            "reference": "The reference (or anchor) element that is being referred to for positioning. If not provided will use the current\ncomponent as anchor."
+            "reference": ""
           },
           "props": "Properties for the SelectTrigger component."
         },
@@ -8717,7 +9028,7 @@
         "toolbarui": "UI class overrides for the Toolbar component."
       },
       "packages_headless_src_components_tooltip_index": {
-        "tooltiparrowprops": "Properties for the PopperArrow component.",
+        "tooltiparrowprops": "",
         "tooltipportalprops": {
           "members": {
             "defer": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
@@ -8726,16 +9037,24 @@
             "to": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}"
           }
         },
-        "tooltipui": "UI class overrides for the Popper component."
+        "tooltipui": ""
       },
       "packages_headless_src_components_tooltip_types": {
         "tooltipcompactemits": {
           "callables": {
+            "closeautofocus": "Event handler called when auto-focusing on close. Can be prevented.",
             "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
+            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
+            "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
             "update_open": "Event handler called when the open state of the tooltip changes."
           },
-          "emits": "Events for the TooltipCompact component."
+          "emits": "Events for the TooltipCompact component.",
+          "members": {
+            "placed": ""
+          }
         },
         "tooltipcompactprops": {
           "members": {
@@ -8743,11 +9062,12 @@
             "content": "Content.",
             "defaultopen": "The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state.",
             "delayduration": "The duration from when the pointer enters the trigger until the tooltip gets opened.",
-            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "dir": "",
             "disableclosingtrigger": "When `true`, clicking on trigger will not close the content.",
             "disabled": "When `true`, disable tooltip",
             "disablehoverablecontent": "When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.",
             "ignorenonkeyboardfocus": "Prevent the tooltip from opening if the focus did not come from the keyboard by matching against the\n`:focus-visible` selector. This is useful if you want to avoid opening it when switching browser tabs or closing a\ndialog.",
+            "modal": "",
             "open": "The controlled open state of the tooltip.",
             "placement": "Placement.",
             "popupprops": "Properties forwarded to the popup element.",
@@ -8774,18 +9094,20 @@
         },
         "tooltippositioneremits": {
           "callables": {
+            "closeautofocus": "Event handler called when auto-focusing on close. Can be prevented.",
             "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
+            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
+            "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented."
           },
           "emits": "Events for the TooltipPositioner component."
         },
-        "tooltippositionerimplemits": {
-          "callables": {
-            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
-            "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented."
-          }
-        },
         "tooltippositionerprops": {
+          "callables": {
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area."
+          },
           "members": {
             "align": "The preferred alignment against the trigger. May change when collisions occur.",
             "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
@@ -8794,10 +9116,12 @@
             "avoidcollisions": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
             "collisionboundary": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
             "collisionpadding": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "disablehoverablecontent": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
             "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
             "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
             "hidewhendetached": "Whether to hide the content when the trigger becomes fully occluded.",
+            "ongracepointerexit": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
             "placement": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
             "positionstrategy": "The type of CSS position property to use.",
             "prioritizeposition": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
@@ -8806,6 +9130,7 @@
             "sideflip": "Flip to the opposite side when colliding with boundary.",
             "sideoffset": "The distance in pixels from the trigger.",
             "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "trapfocus": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
             "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
           },
           "props": "Properties for the TooltipPositioner component."
@@ -8832,11 +9157,12 @@
           "members": {
             "defaultopen": "The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state.",
             "delayduration": "The duration from when the pointer enters the trigger until the tooltip gets opened.",
-            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "dir": "",
             "disableclosingtrigger": "When `true`, clicking on trigger will not close the content.",
             "disabled": "When `true`, disable tooltip",
             "disablehoverablecontent": "When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.",
             "ignorenonkeyboardfocus": "Prevent the tooltip from opening if the focus did not come from the keyboard by matching against the\n`:focus-visible` selector. This is useful if you want to avoid opening it when switching browser tabs or closing a\ndialog.",
+            "modal": "",
             "open": "The controlled open state of the tooltip.",
             "positionerprops": "Props to be passed down to the positioner. Useful when you need to control the positioner, such as disabling it when the trigger is disabled.",
             "skipdelayduration": "How much time a user has to enter another trigger without incurring a delay again."
@@ -10453,6 +10779,7 @@
             "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
             "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
             "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
             "update_color": "Emitted when the color value changes.",
             "update_format": "Emitted when the format value changes.",
@@ -10471,17 +10798,17 @@
             "closeprops": "Properties forwarded to the close element.",
             "colorspace": "Color space.",
             "defaultformat": "Default format.",
-            "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "defaultopen": "",
             "defaultvalue": "Default value.",
-            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "dir": "",
             "disabled": "Whether the component is disabled.",
             "fieldprops": "Properties forwarded to the field element.",
             "format": "Format.",
             "huesliderprops": "Properties forwarded to the hue slider element.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
+            "modal": "",
             "modelvalue": "Current model value.",
             "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
-            "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+            "open": "",
             "placement": "Placement.",
             "popupprops": "Properties forwarded to the popup element.",
             "portalprops": "Properties forwarded to the portal element.",
@@ -11025,6 +11352,7 @@
             "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
             "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
             "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
             "update_modelvalue": "Emitted when the model value changes.",
             "update_open": "Event handler called when the open state of the dialog changes.",
@@ -11044,10 +11372,10 @@
             "class": "Additional class names applied to the root element.",
             "closeprops": "Properties forwarded to the close element.",
             "datefieldprops": "",
-            "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "defaultopen": "",
             "defaultplaceholder": "Default placeholder.",
             "defaultvalue": "Default value.",
-            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "dir": "Reading direction of the component.",
             "disabled": "Whether the component is disabled.",
             "disabledaysoutsidecurrentview": "Whether to disable days outside current view.",
             "fixedweeks": "Whether fixed weeks.",
@@ -11064,13 +11392,13 @@
             "locale": "Locale.",
             "maxvalue": "Max value.",
             "minvalue": "Min value.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
+            "modal": "",
             "modelvalue": "Current model value.",
             "multiple": "Whether multiple values are supported.",
             "nextpage": "Next page.",
             "nextprops": "Properties forwarded to the next element.",
             "numberofmonths": "Number of months.",
-            "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+            "open": "",
             "pagednavigation": "Whether paged navigation.",
             "placeholder": "Placeholder.",
             "placement": "Placement.",
@@ -11156,6 +11484,7 @@
             "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
             "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
             "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
             "update_modelvalue": "Emitted when the model value changes.",
             "update_open": "Event handler called when the open state of the dialog changes.",
@@ -11177,10 +11506,10 @@
             "class": "Additional class names applied to the root element.",
             "closeprops": "Properties forwarded to the close element.",
             "datefieldprops": "",
-            "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "defaultopen": "",
             "defaultplaceholder": "Default placeholder.",
             "defaultvalue": "Default value.",
-            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "dir": "Reading direction of the component.",
             "disabled": "Whether the component is disabled.",
             "disabledaysoutsidecurrentview": "Whether to disable days outside current view.",
             "fixeddate": "Fixed date.",
@@ -11200,12 +11529,12 @@
             "maximumdays": "Maximum days.",
             "maxvalue": "Max value.",
             "minvalue": "Min value.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
+            "modal": "",
             "modelvalue": "Current model value.",
             "nextpage": "Next page.",
             "nextprops": "Properties forwarded to the next element.",
             "numberofmonths": "Number of months.",
-            "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+            "open": "",
             "pagednavigation": "Whether paged navigation.",
             "placeholder": "Placeholder.",
             "placement": "Placement.",
@@ -11719,7 +12048,9 @@
             "class": "class of popup",
             "closedelay": "The duration from when the pointer leaves the trigger or popup until the hover card closes.",
             "defaultopen": "The open state of the hover card when it is initially rendered. Use when you do not need to control its open state.",
-            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
             "open": "The controlled open state of the hover card.",
             "opendelay": "The duration from when the pointer enters the trigger until the hover card opens.",
             "placement": "Placement.",
@@ -12316,6 +12647,7 @@
             "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
             "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
             "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
             "update_open": "Event handler called when the open state of the dialog changes."
           },
@@ -12332,15 +12664,15 @@
             "confirmtext": "The text of the confirm button.\n\nDefaults to the localized `dialog.confirm` message from `ConfigProvider`.",
             "content": "Content.",
             "contentprops": "Properties forwarded to the content element.",
-            "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "defaultopen": "",
             "description": "Description text rendered by the component.",
             "descriptionprops": "Properties forwarded to the description element.",
-            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
-            "disabled": "Whether the component is disabled.",
+            "dir": "",
+            "disabled": "",
             "footerprops": "Properties forwarded to the footer element.",
             "headerprops": "Properties forwarded to the header element.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
-            "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+            "modal": "",
+            "open": "",
             "placement": "Placement.",
             "popupprops": "Properties forwarded to the popup element.",
             "portalprops": "Properties forwarded to the portal element.",
@@ -12377,6 +12709,7 @@
             "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
             "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
             "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
             "update_open": "Event handler called when the open state of the dialog changes."
           },
@@ -12387,11 +12720,11 @@
             "arrowprops": "Properties forwarded to the arrow element.",
             "class": "class of popup",
             "closeprops": "Properties forwarded to the close element.",
-            "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
-            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
-            "disabled": "Whether the component is disabled.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
-            "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+            "defaultopen": "",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
+            "open": "",
             "placement": "Placement.",
             "popupprops": "Properties forwarded to the popup element.",
             "portalprops": "Properties forwarded to the portal element.",
@@ -12410,6 +12743,55 @@
             "trigger": "Custom content for the trigger slot."
           },
           "slots": "Slots for the Popover component."
+        }
+      },
+      "packages_ui_src_components_popper_types": {
+        "popperemits": {
+          "callables": {
+            "closeautofocus": "Event handler called when auto-focusing on close. Can be prevented.",
+            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
+            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
+            "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "",
+            "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+            "update_open": ""
+          },
+          "emits": "Events for the Popper component."
+        },
+        "popperprops": {
+          "members": {
+            "arrowprops": "",
+            "class": "class of popup",
+            "closedelay": "",
+            "defaultopen": "",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
+            "open": "",
+            "opendelay": "",
+            "openonfocus": "",
+            "placement": "",
+            "popupprops": "",
+            "portalprops": "",
+            "positionerprops": "",
+            "pressopendelay": "",
+            "showarrow": "",
+            "size": "Visual size of the component.",
+            "skipdelayduration": "",
+            "trigger": "",
+            "triggerprops": "",
+            "ui": "Per-slot class overrides for the component."
+          },
+          "props": "Properties for the Popper component."
+        },
+        "poppersize": "",
+        "popperslots": {
+          "callables": {
+            "default": "",
+            "trigger": ""
+          },
+          "slots": "Slots for the Popper component."
         }
       },
       "packages_ui_src_components_progress_types": {
@@ -13444,7 +13826,12 @@
       "packages_ui_src_components_tooltip_types": {
         "tooltipemits": {
           "callables": {
+            "closeautofocus": "Event handler called when auto-focusing on close. Can be prevented.",
             "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
+            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
+            "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
             "update_open": "Event handler called when the open state of the tooltip changes."
           },
@@ -13457,11 +13844,12 @@
             "content": "Content.",
             "defaultopen": "The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state.",
             "delayduration": "The duration from when the pointer enters the trigger until the tooltip gets opened.",
-            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "dir": "",
             "disableclosingtrigger": "When `true`, clicking on trigger will not close the content.",
             "disabled": "When `true`, disable tooltip",
             "disablehoverablecontent": "When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.",
             "ignorenonkeyboardfocus": "Prevent the tooltip from opening if the focus did not come from the keyboard by matching against the\n`:focus-visible` selector. This is useful if you want to avoid opening it when switching browser tabs or closing a\ndialog.",
+            "modal": "",
             "open": "The controlled open state of the tooltip.",
             "placement": "Placement.",
             "popupprops": "Properties forwarded to the popup element.",

@@ -271,16 +271,6 @@
         "disabled": "禁用",
         "size": "尺寸"
       },
-      "enhanced-popper": {
-        "basic-click": "基础点击",
-        "contextmenu": "上下文菜单",
-        "controlled": "受控状态",
-        "hover": "悬停",
-        "nested": "嵌套点击",
-        "nested-hover": "嵌套悬停",
-        "virtual-reference": "虚拟参考点",
-        "with-arrow-portal": "箭头、传送与碰撞"
-      },
       "empty": {
         "basic": "基础",
         "custom-styling": "自定义样式",
@@ -383,6 +373,16 @@
       },
       "popover": {
         "basic": "基础"
+      },
+      "popper": {
+        "basic-click": "基础（点击）",
+        "hover": "悬浮",
+        "contextmenu": "右键菜单",
+        "nested": "嵌套",
+        "nested-hover": "嵌套悬浮",
+        "controlled": "受控",
+        "virtual-reference": "虚拟引用",
+        "with-arrow-portal": "箭头与 Portal"
       },
       "progress": {
         "basic": "基础",

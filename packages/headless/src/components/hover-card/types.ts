@@ -1,20 +1,20 @@
 import type { ShallowRef } from 'vue';
 import type { ForceMountProps, PropsToContext } from '../../types';
 import type {
-  PopperV2RootProps,
-  PopperV2PositionerEmits,
-  PopperV2AnchorProps,
-  PopperV2ArrowProps,
-  PopperV2OpenChangeReason,
-  PopperV2PopupProps,
-  PopperV2PortalProps,
-  PopperV2PositionerProps
-} from '../popper-v2/types';
+  PopperRootProps,
+  PopperPositionerEmits,
+  PopperAnchorProps,
+  PopperArrowProps,
+  PopperOpenChangeReason,
+  PopperPopupProps,
+  PopperPortalProps,
+  PopperPositionerProps
+} from '../popper/types';
 
 /**
  * Properties for the HoverCardRoot component.
  */
-export interface HoverCardRootProps extends PopperV2RootProps {
+export interface HoverCardRootProps extends PopperRootProps {
   /** The open state of the hover card when it is initially rendered. Use when you do not need to control its open state. */
   defaultOpen?: boolean;
   /** The controlled open state of the hover card. */
@@ -30,18 +30,18 @@ export interface HoverCardRootProps extends PopperV2RootProps {
  */
 export interface HoverCardRootEmits {
   /** Event handler called when the open state of the hover card changes. */
-  'update:open': [value: boolean, reason?: PopperV2OpenChangeReason];
+  'update:open': [value: boolean, reason?: PopperOpenChangeReason];
 }
 
 /**
  * Properties for the HoverCardPositionerImpl component.
  */
-export interface HoverCardPositionerImplProps extends PopperV2PositionerProps {}
+export interface HoverCardPositionerImplProps extends PopperPositionerProps {}
 /**
  * Events for the HoverCardPositionerImpl component.
  */
 export type HoverCardPositionerImplEmits = Pick<
-  PopperV2PositionerEmits,
+  PopperPositionerEmits,
   'escapeKeyDown' | 'pointerDownOutside' | 'focusOutside'
 >;
 
@@ -57,7 +57,7 @@ export type HoverCardPositionerEmits = HoverCardPositionerImplEmits;
 /**
  * Properties for the HoverCardPopup component.
  */
-export interface HoverCardPopupProps extends PopperV2PopupProps {}
+export interface HoverCardPopupProps extends PopperPopupProps {}
 
 /**
  * Parameters used to create the HoverCardRoot context.
@@ -66,7 +66,7 @@ export type HoverCardRootContextParams = PropsToContext<HoverCardRootProps, 'ope
 
 /**
  * Context for the HoverCardRoot component. Open state, timers, grace and dismiss live on the
- * PopperV2 root context; only the HoverCard-specific selection tracking stays here.
+ * Popper root context; only the HoverCard-specific selection tracking stays here.
  */
 export interface HoverCardRootContext extends HoverCardRootContextParams {
   /**
@@ -80,12 +80,12 @@ export interface HoverCardRootContext extends HoverCardRootContextParams {
 }
 
 export type {
-  PopperV2ArrowProps as HoverCardArrowProps,
-  PopperV2UiSlot as HoverCardUiSlot,
-  PopperV2Ui as HoverCardUi
-} from '../popper-v2/types';
-export type { PopperV2PortalProps as HoverCardPortalProps } from '../popper-v2/types';
-export type { PopperV2AnchorProps as HoverCardTriggerProps } from '../popper-v2/types';
+  PopperArrowProps as HoverCardArrowProps,
+  PopperUiSlot as HoverCardUiSlot,
+  PopperUi as HoverCardUi
+} from '../popper/types';
+export type { PopperPortalProps as HoverCardPortalProps } from '../popper/types';
+export type { PopperAnchorProps as HoverCardTriggerProps } from '../popper/types';
 
 /**
  * Properties for the HoverCardCompact component.
@@ -94,7 +94,7 @@ export interface HoverCardCompactProps extends HoverCardRootProps {
   /**
    * Placement.
    */
-  placement?: PopperV2PositionerProps['placement'];
+  placement?: PopperPositionerProps['placement'];
   /**
    * Whether to show an arrow.
    */
@@ -102,11 +102,11 @@ export interface HoverCardCompactProps extends HoverCardRootProps {
   /**
    * Properties forwarded to the trigger element.
    */
-  triggerProps?: PopperV2AnchorProps;
+  triggerProps?: PopperAnchorProps;
   /**
    * Properties forwarded to the portal element.
    */
-  portalProps?: PopperV2PortalProps;
+  portalProps?: PopperPortalProps;
   /**
    * Properties forwarded to the positioner element.
    */
@@ -118,7 +118,7 @@ export interface HoverCardCompactProps extends HoverCardRootProps {
   /**
    * Properties forwarded to the arrow element.
    */
-  arrowProps?: PopperV2ArrowProps;
+  arrowProps?: PopperArrowProps;
 }
 
 /**

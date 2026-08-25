@@ -105,7 +105,7 @@ describe('STooltip', () => {
       expect(wrapper.text()).toContain('First content');
 
       // Focus moves to the sibling: the first trigger blurs so its tooltip closes, and the
-      // shared skip-delay window (the PopperV2 delay group provided by `TooltipProvider`)
+      // shared skip-delay window (the Popper delay group provided by `TooltipProvider`)
       // makes the sibling open instantly.
       await buttons[0].trigger('blur');
       await buttons[1].trigger('focus');

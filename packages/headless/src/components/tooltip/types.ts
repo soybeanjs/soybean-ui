@@ -1,14 +1,14 @@
 import type { ForceMountProps, Placement, PropsToContext } from '../../types';
 import type {
-  PopperV2AnchorProps,
-  PopperV2ArrowProps,
-  PopperV2OpenChangeReason,
-  PopperV2PopupProps,
-  PopperV2PortalProps,
-  PopperV2PositionerEmits,
-  PopperV2PositionerProps,
-  PopperV2RootProps
-} from '../popper-v2/types';
+  PopperAnchorProps,
+  PopperArrowProps,
+  PopperOpenChangeReason,
+  PopperPopupProps,
+  PopperPortalProps,
+  PopperPositionerEmits,
+  PopperPositionerProps,
+  PopperRootProps
+} from '../popper/types';
 
 /**
  * Properties for the TooltipProvider component.
@@ -62,7 +62,7 @@ export interface TooltipProviderProps {
  * Context provided by `TooltipProvider` (or a local fallback created by `TooltipRoot`).
  *
  * Pure config resolution (prop → ancestor provider → global config). The cross-instance
- * skip-delay coordination lives in the PopperV2 delay group provided alongside this context.
+ * skip-delay coordination lives in the Popper delay group provided alongside this context.
  */
 export interface TooltipProviderContext extends PropsToContext<
   TooltipProviderProps,
@@ -100,7 +100,7 @@ export type TooltipRootContextParams = PropsToContext<
 /**
  * Properties for the TooltipRoot component.
  */
-export interface TooltipRootProps extends PopperV2RootProps, TooltipProviderProps {
+export interface TooltipRootProps extends PopperRootProps, TooltipProviderProps {
   /** The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state. */
   defaultOpen?: boolean;
   /** The controlled open state of the tooltip. */
@@ -111,7 +111,7 @@ export interface TooltipRootProps extends PopperV2RootProps, TooltipProviderProp
  */
 export interface TooltipRootEmits {
   /** Event handler called when the open state of the tooltip changes. */
-  'update:open': [value: boolean, reason?: PopperV2OpenChangeReason];
+  'update:open': [value: boolean, reason?: PopperOpenChangeReason];
 }
 
 /**
@@ -122,11 +122,11 @@ export type TooltipDataState = 'closed' | 'delayed-open' | 'instant-open';
 /**
  * Properties for the TooltipPositionerImpl component.
  */
-export interface TooltipPositionerImplProps extends PopperV2PositionerProps {}
+export interface TooltipPositionerImplProps extends PopperPositionerProps {}
 /**
  * Events for the TooltipPositionerImpl component.
  */
-export type TooltipPositionerImplEmits = PopperV2PositionerEmits;
+export type TooltipPositionerImplEmits = PopperPositionerEmits;
 
 /**
  * Properties for the TooltipPositioner component.
@@ -140,7 +140,7 @@ export type TooltipPositionerEmits = TooltipPositionerImplEmits;
 /**
  * Properties for the TooltipPopup component.
  */
-export interface TooltipPopupProps extends PopperV2PopupProps {
+export interface TooltipPopupProps extends PopperPopupProps {
   /**
    * By default, screen readers will announce the content inside the component.
    *
@@ -150,7 +150,7 @@ export interface TooltipPopupProps extends PopperV2PopupProps {
   ariaLabel?: string;
 }
 
-export type { PopperV2AnchorProps as TooltipTriggerProps } from '../popper-v2/types';
+export type { PopperAnchorProps as TooltipTriggerProps } from '../popper/types';
 
 /**
  * Properties for the TooltipCompact component.
@@ -171,11 +171,11 @@ export interface TooltipCompactProps extends TooltipRootProps {
   /**
    * Properties forwarded to the trigger element.
    */
-  triggerProps?: PopperV2AnchorProps;
+  triggerProps?: PopperAnchorProps;
   /**
    * Properties forwarded to the portal element.
    */
-  portalProps?: PopperV2PortalProps;
+  portalProps?: PopperPortalProps;
   /**
    * Properties forwarded to the positioner element.
    */
@@ -187,7 +187,7 @@ export interface TooltipCompactProps extends TooltipRootProps {
   /**
    * Properties forwarded to the arrow element.
    */
-  arrowProps?: PopperV2ArrowProps;
+  arrowProps?: PopperArrowProps;
 }
 
 /**

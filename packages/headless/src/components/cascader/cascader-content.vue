@@ -8,7 +8,7 @@ import {
   useOmitProps,
   usePresence
 } from '../../composables';
-import { PopperV2PositioningPositioner } from '../popper-v2';
+import { PopperPositioningPositioner } from '../popper';
 import { useCascaderRootContext, useCascaderUi } from './context';
 import CascaderEmpty from './cascader-empty.vue';
 import CascaderMenu from './cascader-menu.vue';
@@ -104,7 +104,7 @@ const isEmpty = computed(() => {
 </script>
 
 <template>
-  <PopperV2PositioningPositioner
+  <PopperPositioningPositioner
     v-if="isPresent"
     :ref="setPositionerElement"
     data-soybean-cascader-content
@@ -155,5 +155,5 @@ const isEmpty = computed(() => {
         <slot />
       </div>
     </div>
-  </PopperV2PositioningPositioner>
+  </PopperPositioningPositioner>
 </template>

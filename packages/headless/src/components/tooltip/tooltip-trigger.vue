@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, reactive } from 'vue';
-import { usePopperV2RootContext } from '../popper-v2/context';
+import { usePopperRootContext } from '../popper/context';
 import { useForwardElement } from '../../composables';
-import { PopperV2Anchor } from '../popper-v2';
-import type { PopperV2TriggerProps } from '../popper-v2/types';
-import { usePopperV2Trigger } from '../popper-v2/use-popper-v2-trigger';
+import { PopperAnchor } from '../popper';
+import type { PopperTriggerProps } from '../popper/types';
+import { usePopperTrigger } from '../popper/use-popper-trigger';
 import { useTooltipRootContext } from './context';
 import type { TooltipTriggerProps } from './types';
 
@@ -18,14 +18,14 @@ withDefaults(defineProps<TooltipTriggerProps>(), {
 
 const { delayDuration, disableClosingTrigger, ignoreNonKeyboardFocus, disabled, popupId, provider } =
   useTooltipRootContext('TooltipTrigger');
-const popperContext = usePopperV2RootContext('TooltipTrigger');
+const popperContext = usePopperRootContext('TooltipTrigger');
 
 const [, setTriggerElement] = useForwardElement(popperContext.onTriggerElementChange);
 
-// All hover timing (open delay, skip-delay window, focus gating) runs on the shared PopperV2
+// All hover timing (open delay, skip-delay window, focus gating) runs on the shared Popper
 // trigger machine. Sibling skip-delay coordination comes from the delay group provided by
 // `TooltipProvider`; without one the per-root machine keeps working standalone.
-const shellTriggerProps: PopperV2TriggerProps = reactive({
+const shellTriggerProps: PopperTriggerProps = reactive({
   trigger: 'hover',
   get openDelay() {
     return delayDuration.value;
@@ -45,7 +45,7 @@ const shellTriggerProps: PopperV2TriggerProps = reactive({
 });
 
 const { onBlur, onFocus, onPointerCancel, onPointerDown, onPointerEnter, onPointerLeave, onPointerMove, onPointerUp } =
-  usePopperV2Trigger(shellTriggerProps, popperContext, { onVirtualPointChange: () => {} });
+  usePopperTrigger(shellTriggerProps, popperContext, { onVirtualPointChange: () => {} });
 
 const dataState = computed(() => {
   if (!popperContext.open.value) return 'closed' as const;
@@ -64,7 +64,7 @@ function onTriggerPointerDown(event: PointerEvent) {
 </script>
 
 <template>
-  <PopperV2Anchor
+  <PopperAnchor
     :ref="setTriggerElement"
     :as="as"
     :as-child="asChild"
@@ -84,5 +84,5 @@ function onTriggerPointerDown(event: PointerEvent) {
     @pointerup="onPointerUp"
   >
     <slot />
-  </PopperV2Anchor>
+  </PopperAnchor>
 </template>

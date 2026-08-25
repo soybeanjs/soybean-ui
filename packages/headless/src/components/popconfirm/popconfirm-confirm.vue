@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePopperV2RootContext } from '../popper-v2/context';
+import { usePopperRootContext } from '../popper/context';
 import Button from '../button/button.vue';
 import { usePopconfirmUi } from './context';
 import type { PopconfirmConfirmProps, PopconfirmConfirmEmits } from './types';
@@ -14,7 +14,7 @@ const emit = defineEmits<PopconfirmConfirmEmits>();
 
 const cls = usePopconfirmUi('confirm');
 
-const { onOpenChange } = usePopperV2RootContext('PopconfirmConfirm');
+const { onOpenChange } = usePopperRootContext('PopconfirmConfirm');
 
 const handleClose = (event: PointerEvent) => {
   emit('confirm', event);

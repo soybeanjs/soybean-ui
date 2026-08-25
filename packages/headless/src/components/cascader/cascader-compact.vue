@@ -8,7 +8,7 @@ import { useOmitProps } from '../../composables';
 import { useLocaleMessages } from '../../locale';
 import type { DefinedValue } from '../../types';
 import Icon from '../_icon/icon.vue';
-import { PopperV2Arrow } from '../popper-v2';
+import { PopperArrow } from '../popper';
 import { Portal } from '../portal';
 import { useCascaderUi } from './context';
 import CascaderClear from './cascader-clear.vue';
@@ -194,7 +194,7 @@ const handleChange = (value: CascaderModelValue | undefined, nodes: CascaderNode
             <CascaderEmpty v-bind="emptyProps">{{ emptyLabel }}</CascaderEmpty>
           </slot>
         </template>
-        <PopperV2Arrow v-if="showArrow" v-bind="arrowProps" />
+        <PopperArrow v-if="showArrow" v-bind="arrowProps" />
       </CascaderContent>
     </Portal>
   </CascaderRoot>

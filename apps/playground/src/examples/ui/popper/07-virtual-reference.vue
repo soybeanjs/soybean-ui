@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { computed, nextTick, shallowRef } from 'vue';
 import {
-  PopperV2Anchor,
-  PopperV2Arrow,
-  PopperV2Popup,
-  PopperV2Portal,
-  PopperV2Positioner,
-  PopperV2Root,
-  providePopperV2Ui
-} from '@soybeanjs/headless/popper-v2';
+  PopperAnchor,
+  PopperArrow,
+  PopperPopup,
+  PopperPortal,
+  PopperPositioner,
+  PopperRoot,
+  providePopperUi
+} from '@soybeanjs/headless/popper';
 
 type PointPreset = 'top-start' | 'center' | 'bottom-end';
 
@@ -73,12 +73,12 @@ function onOpenChange(value: boolean, _reason: string) {
   open.value = value;
 }
 
-providePopperV2Ui(ui);
+providePopperUi(ui);
 </script>
 
 <template>
-  <PopperV2Root :open="open" @update:open="onOpenChange">
-    <PopperV2Anchor :reference="reference" />
+  <PopperRoot :open="open" @update:open="onOpenChange">
+    <PopperAnchor :reference="reference" />
 
     <div class="flex flex-wrap gap-2">
       <button
@@ -92,14 +92,14 @@ providePopperV2Ui(ui);
       </button>
     </div>
 
-    <PopperV2Portal>
-      <PopperV2Positioner :side-offset="6" :collision-padding="16">
-        <PopperV2Popup role="dialog">
+    <PopperPortal>
+      <PopperPositioner :side-offset="6" :collision-padding="16">
+        <PopperPopup role="dialog">
           <p class="font-medium">Virtual reference</p>
           <p class="mt-1 text-muted-foreground">Current point: {{ Math.round(point.x) }}, {{ Math.round(point.y) }}</p>
-          <PopperV2Arrow />
-        </PopperV2Popup>
-      </PopperV2Positioner>
-    </PopperV2Portal>
-  </PopperV2Root>
+          <PopperArrow />
+        </PopperPopup>
+      </PopperPositioner>
+    </PopperPortal>
+  </PopperRoot>
 </template>

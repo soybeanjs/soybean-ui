@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T08:42:22.049Z",
+  "generatedAt": "2026-08-25T11:05:47.526Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -733,6 +733,27 @@
         "PopoverPositioner",
         "PopoverRoot",
         "PopoverTrigger"
+      ]
+    },
+    "popper": {
+      "component": "popper",
+      "file": "popper.json",
+      "symbols": [
+        "Popper",
+        "PopperAnchor",
+        "PopperArrow",
+        "PopperCompact",
+        "PopperPopup",
+        "PopperPortal",
+        "PopperPositioner",
+        "PopperPositionerImpl",
+        "PopperPositioningPopup",
+        "PopperPositioningPositioner",
+        "PopperPositioningRoot",
+        "PopperRoot",
+        "PopperSub",
+        "PopperSubTrigger",
+        "PopperTrigger"
       ]
     },
     "progress": {

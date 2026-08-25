@@ -1,6 +1,6 @@
 export { default as ComboboxCompact } from './combobox-compact.vue';
 export { default as ComboboxRoot } from './combobox-root.vue';
-export { default as ComboboxAnchor } from '../popper-v2/popper-v2-anchor.vue';
+export { default as ComboboxAnchor } from '../popper/popper-anchor.vue';
 export { default as ComboboxTrigger } from './combobox-trigger.vue';
 export { default as ComboboxPortal } from '../portal/portal.vue';
 export { default as ComboboxViewport } from './combobox-viewport.vue';

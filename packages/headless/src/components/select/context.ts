@@ -1,7 +1,7 @@
 import { computed, ref, shallowRef, useId } from 'vue';
 import { getDisclosureState, isValueEqualOrExist, tryFocusFirst } from '../../shared';
 import { useDirection } from '../config-provider/context';
-import { providePopperV2Ui } from '../popper-v2/context';
+import { providePopperUi } from '../popper/context';
 import { useCollection, useContext, useUiContext } from '../../composables';
 import type { AcceptableValue, Point } from '../../types';
 import type {
@@ -321,7 +321,7 @@ export const [provideSelectItemAlignedPositionContext, useSelectItemAlignedPosit
   useContext<SelectItemAlignedPositionContext>('SelectItemAlignedPosition');
 
 export const [provideSelectUi, useSelectUi] = useUiContext<SelectUiSlot>('SelectUi', ui => {
-  providePopperV2Ui(ui);
+  providePopperUi(ui);
 
   return ui;
 });

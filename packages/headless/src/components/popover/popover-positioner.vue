@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { usePopperV2RootContext } from '../popper-v2/context';
+import { usePopperRootContext } from '../popper/context';
 import { useForwardListeners, useHideOthers } from '../../composables';
-import { PopperV2Positioner } from '../popper-v2';
+import { PopperPositioner } from '../popper';
 import type { PopoverPositionerProps, PopoverPositionerEmits } from './types';
 
 defineOptions({
@@ -14,14 +14,14 @@ const emit = defineEmits<PopoverPositionerEmits>();
 
 const listeners = useForwardListeners(emit);
 
-const { modal, positionerElement } = usePopperV2RootContext('PopoverPositioner');
+const { modal, positionerElement } = usePopperRootContext('PopoverPositioner');
 
 // The dialog domain hides the background context while a modal popover is open.
 useHideOthers(positionerElement, modal);
 </script>
 
 <template>
-  <PopperV2Positioner v-bind="props" data-soybean-popover-positioner v-on="listeners">
+  <PopperPositioner v-bind="props" data-soybean-popover-positioner v-on="listeners">
     <slot />
-  </PopperV2Positioner>
+  </PopperPositioner>
 </template>

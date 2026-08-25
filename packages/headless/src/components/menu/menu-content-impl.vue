@@ -3,8 +3,8 @@ import { computed, nextTick, useTemplateRef, watch } from 'vue';
 import type { CSSProperties } from 'vue';
 import { COLLECTION_ITEM_ATTRIBUTE } from '../../constants';
 import { getActiveElement, isMouseEvent, tryFocusFirst } from '../../shared';
-import { popperCssVars } from '../popper-v2/shared';
-import { usePopperV2RootContext } from '../popper-v2/context';
+import { popperCssVars } from '../popper/shared';
+import { usePopperRootContext } from '../popper/context';
 import {
   useArrowNavigation,
   useForwardElement,
@@ -13,7 +13,7 @@ import {
   useOmitProps,
   useTypeahead
 } from '../../composables';
-import { PopperV2Popup, PopperV2Positioner } from '../popper-v2';
+import { PopperPopup, PopperPositioner } from '../popper';
 import { RovingFocusGroup } from '../roving-focus';
 import { FIRST_LAST_KEYS, LAST_KEYS, MENU_POPUP_DATA_ATTRIBUTE, menuCssVars, subMenuCssVars } from './shared';
 import { provideMenuContentContext, useMenuContext, useMenuRootContext, useMenuUi } from './context';
@@ -30,7 +30,7 @@ const emit = defineEmits<MenuContentImplEmits>();
 const { modal, dir, isUsingKeyboard } = useMenuRootContext('MenuContentImpl');
 const { isRoot, open, dataState, popupId, triggerId, dataPopupAttr, initPopupId, onPopupElementChange } =
   useMenuContext('MenuContentImpl');
-const popperContext = usePopperV2RootContext('MenuContentImpl');
+const popperContext = usePopperRootContext('MenuContentImpl');
 
 const positionerElement = popperContext.positionerElement;
 const [popupElement, setPopupElement] = useForwardElement(node => {
@@ -50,7 +50,7 @@ const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
 const listeners = useForwardListeners<keyof MenuContentImplEmits>(emit);
 
 // The dismiss stack (outside/escape, focus trap, guards, scroll lock, layer dismissal rules —
-// a sub layer's outside dismissal closes only itself) lives on the PopperV2 positioner now.
+// a sub layer's outside dismissal closes only itself) lives on the Popper positioner now.
 function onOpenAutoFocus(event: Event) {
   emit('openAutoFocus', event);
   // Focus the popup area only and leave `onEntryFocus` in control of focusing the first item.
@@ -187,7 +187,7 @@ watch(
 </script>
 
 <template>
-  <PopperV2Positioner
+  <PopperPositioner
     v-bind="forwardedProps"
     :trap-focus="trapFocus"
     data-soybean-menu-content-impl
@@ -203,7 +203,7 @@ watch(
       :loop="loop"
       @entry-focus="onEntryFocus"
     >
-      <PopperV2Popup
+      <PopperPopup
         v-bind="popupProps"
         :id="popupId"
         :ref="setPopupElement"
@@ -220,7 +220,7 @@ watch(
         @pointermove="onPointerMove"
       >
         <slot />
-      </PopperV2Popup>
+      </PopperPopup>
     </RovingFocusGroup>
-  </PopperV2Positioner>
+  </PopperPositioner>
 </template>

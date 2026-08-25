@@ -12,7 +12,7 @@ import {
   useOmitProps,
   useTypeahead
 } from '../../composables';
-import { PopperV2PositioningPositioner } from '../popper-v2';
+import { PopperPositioningPositioner } from '../popper';
 import { CONTENT_MARGIN } from './shared';
 import {
   provideSelectContentContext,
@@ -218,7 +218,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <PopperV2PositioningPositioner
+  <PopperPositioningPositioner
     v-if="position === 'popper'"
     :ref="setPositionerElement"
     v-bind="popperPositionerProps"
@@ -241,7 +241,7 @@ watchEffect(() => {
     >
       <slot />
     </SelectPopperPopup>
-  </PopperV2PositioningPositioner>
+  </PopperPositioningPositioner>
   <SelectItemAlignedPositioner
     v-else
     :ref="setPositionerElement"

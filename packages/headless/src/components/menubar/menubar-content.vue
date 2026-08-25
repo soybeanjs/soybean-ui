@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, shallowRef, watchEffect } from 'vue';
 import { wrapArray } from '../../shared';
-import { usePopperV2RootContext } from '../popper-v2/context';
+import { usePopperRootContext } from '../popper/context';
 import { useForwardListeners } from '../../composables';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
 import { MenuContent } from '../menu';
@@ -29,15 +29,15 @@ const { dir, isLinkTriggerHovered, loop, modelValue, onMenuOpen, setTriggerLink 
   useMenubarRootContext('MenubarContent');
 const { value, triggerId, contentId, triggerElement, wasKeyboardTriggerOpen } = useMenubarMenuContext('MenubarContent');
 
-const popperContext = usePopperV2RootContext('MenubarContent');
+const popperContext = usePopperRootContext('MenubarContent');
 
 const hasInteractedOutside = shallowRef(false);
 
-// In hover mode the PopperV2 positioner's built-in grace area keeps the open menu alive while
+// In hover mode the Popper positioner's built-in grace area keeps the open menu alive while
 // the pointer moves between the menubar and the content. The grace anchor is overridden to the
 // whole menubar container so the corridor spans every trigger, not just the open one; leaving
 // the shared surface closes the menu through the grace area exit.
-// Submenu popups (`data-popper-v2-sub-popup`, teleported to body) count as valid hover
+// Submenu popups (`data-popper-sub-popup`, teleported to body) count as valid hover
 // targets so moving into one does not close the menu.
 // While the override is active the trigger hover machines defer closing to this shared
 // surface, so it must not be registered when the grace area is disabled

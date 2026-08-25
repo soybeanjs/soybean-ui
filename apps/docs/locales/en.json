@@ -271,16 +271,6 @@
         "disabled": "Disabled",
         "size": "Size"
       },
-      "enhanced-popper": {
-        "basic-click": "Basic Click",
-        "contextmenu": "Context Menu",
-        "controlled": "Controlled State",
-        "hover": "Hover",
-        "nested": "Nested Click",
-        "nested-hover": "Nested Hover",
-        "virtual-reference": "Virtual Reference",
-        "with-arrow-portal": "Arrow, Portal and Collision"
-      },
       "empty": {
         "basic": "Basic",
         "custom-styling": "Custom Styling",
@@ -383,6 +373,16 @@
       },
       "popover": {
         "basic": "Basic"
+      },
+      "popper": {
+        "basic-click": "Basic (Click)",
+        "hover": "Hover",
+        "contextmenu": "Context Menu",
+        "nested": "Nested",
+        "nested-hover": "Nested Hover",
+        "controlled": "Controlled",
+        "virtual-reference": "Virtual Reference",
+        "with-arrow-portal": "Arrow & Portal"
       },
       "progress": {
         "basic": "Basic",

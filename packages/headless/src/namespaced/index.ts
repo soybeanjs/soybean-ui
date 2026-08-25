@@ -407,20 +407,20 @@ import {
   PopoverPositioner,
   PopoverRoot,
   PopoverTrigger,
-  PopperV2Anchor,
-  PopperV2Arrow,
-  PopperV2Compact,
-  PopperV2Popup,
-  PopperV2Portal,
-  PopperV2Positioner,
-  PopperV2PositionerImpl,
-  PopperV2PositioningPopup,
-  PopperV2PositioningPositioner,
-  PopperV2PositioningRoot,
-  PopperV2Root,
-  PopperV2Sub,
-  PopperV2SubTrigger,
-  PopperV2Trigger,
+  PopperAnchor,
+  PopperArrow,
+  PopperCompact,
+  PopperPopup,
+  PopperPortal,
+  PopperPositioner,
+  PopperPositionerImpl,
+  PopperPositioningPopup,
+  PopperPositioningPositioner,
+  PopperPositioningRoot,
+  PopperRoot,
+  PopperSub,
+  PopperSubTrigger,
+  PopperTrigger,
   Portal,
   Primitive,
   ProgressCircle,
@@ -1567,36 +1567,36 @@ export const Popover = {
   Portal: typeof PopoverPortal;
 };
 
-export const PopperV2 = {
-  Root: PopperV2Root,
-  Trigger: PopperV2Trigger,
-  Anchor: PopperV2Anchor,
-  SubTrigger: PopperV2SubTrigger,
-  Portal: PopperV2Portal,
-  Positioner: PopperV2Positioner,
-  PositionerImpl: PopperV2PositionerImpl,
-  Popup: PopperV2Popup,
-  Arrow: PopperV2Arrow,
-  Sub: PopperV2Sub,
-  Compact: PopperV2Compact,
-  PositioningRoot: PopperV2PositioningRoot,
-  PositioningPositioner: PopperV2PositioningPositioner,
-  PositioningPopup: PopperV2PositioningPopup
+export const Popper = {
+  Root: PopperRoot,
+  Trigger: PopperTrigger,
+  Anchor: PopperAnchor,
+  SubTrigger: PopperSubTrigger,
+  Portal: PopperPortal,
+  Positioner: PopperPositioner,
+  PositionerImpl: PopperPositionerImpl,
+  Popup: PopperPopup,
+  Arrow: PopperArrow,
+  Sub: PopperSub,
+  Compact: PopperCompact,
+  PositioningRoot: PopperPositioningRoot,
+  PositioningPositioner: PopperPositioningPositioner,
+  PositioningPopup: PopperPositioningPopup
 } as {
-  Root: typeof PopperV2Root;
-  Trigger: typeof PopperV2Trigger;
-  Anchor: typeof PopperV2Anchor;
-  SubTrigger: typeof PopperV2SubTrigger;
-  Portal: typeof PopperV2Portal;
-  Positioner: typeof PopperV2Positioner;
-  PositionerImpl: typeof PopperV2PositionerImpl;
-  Popup: typeof PopperV2Popup;
-  Arrow: typeof PopperV2Arrow;
-  Sub: typeof PopperV2Sub;
-  Compact: typeof PopperV2Compact;
-  PositioningRoot: typeof PopperV2PositioningRoot;
-  PositioningPositioner: typeof PopperV2PositioningPositioner;
-  PositioningPopup: typeof PopperV2PositioningPopup;
+  Root: typeof PopperRoot;
+  Trigger: typeof PopperTrigger;
+  Anchor: typeof PopperAnchor;
+  SubTrigger: typeof PopperSubTrigger;
+  Portal: typeof PopperPortal;
+  Positioner: typeof PopperPositioner;
+  PositionerImpl: typeof PopperPositionerImpl;
+  Popup: typeof PopperPopup;
+  Arrow: typeof PopperArrow;
+  Sub: typeof PopperSub;
+  Compact: typeof PopperCompact;
+  PositioningRoot: typeof PopperPositioningRoot;
+  PositioningPositioner: typeof PopperPositioningPositioner;
+  PositioningPopup: typeof PopperPositioningPopup;
 };
 
 export { Portal };

@@ -57,7 +57,7 @@ export * from './components/pagination';
 export * from './components/password';
 export * from './components/popconfirm';
 export * from './components/popover';
-export * from './components/popper-v2';
+export * from './components/popper';
 export * from './components/progress';
 export * from './components/radio-group';
 export * from './components/rating';

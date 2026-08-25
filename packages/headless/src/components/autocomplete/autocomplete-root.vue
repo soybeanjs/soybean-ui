@@ -7,7 +7,7 @@ import { provideComboboxRootContext } from '../combobox/context';
 import { useDirection } from '../config-provider/context';
 import { useControllableState, useOmitProps } from '../../composables';
 import { ListboxRoot } from '../listbox';
-import { PopperV2PositioningRoot } from '../popper-v2';
+import { PopperPositioningRoot } from '../popper';
 import { provideAutocompleteRootContext } from './context';
 import type { AutocompleteRootProps, AutocompleteRootEmits } from './types';
 
@@ -237,7 +237,7 @@ defineExpose({
 </script>
 
 <template>
-  <PopperV2PositioningRoot :dir="dir">
+  <PopperPositioningRoot :dir="dir">
     <ListboxRoot
       ref="listboxElement"
       v-bind="forwardedProps"
@@ -251,5 +251,5 @@ defineExpose({
     >
       <slot :open="open" :model-value="modelValue" />
     </ListboxRoot>
-  </PopperV2PositioningRoot>
+  </PopperPositioningRoot>
 </template>

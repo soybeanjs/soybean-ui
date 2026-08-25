@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, reactive, shallowRef } from 'vue';
-import { usePopperV2RootContext } from '../popper-v2/context';
+import { usePopperRootContext } from '../popper/context';
 import { useForwardElement } from '../../composables';
 import Button from '../button/button.vue';
 import { MenuAnchor } from '../menu';
-import type { PopperV2TriggerProps } from '../popper-v2/types';
-import { usePopperV2Trigger } from '../popper-v2/use-popper-v2-trigger';
+import type { PopperTriggerProps } from '../popper/types';
+import { usePopperTrigger } from '../popper/use-popper-trigger';
 import { RovingFocusItem } from '../roving-focus';
 import { isTriggerLink } from './shared';
 import { useMenubarCollectionItem, useMenubarMenuContext, useMenubarRootContext, useMenubarUi } from './context';
@@ -37,7 +37,7 @@ const {
   open
 } = useMenubarMenuContext('MenubarTrigger');
 
-const popperContext = usePopperV2RootContext('MenubarTrigger');
+const popperContext = usePopperRootContext('MenubarTrigger');
 
 const cls = useMenubarUi('trigger');
 
@@ -55,12 +55,12 @@ const isFocused = shallowRef(false);
 const hoverSwitched = shallowRef(false);
 const isCurrentTriggerLink = () => isTriggerLink(triggerElement.value);
 
-// All hover timing (open delay, skip-delay window) runs on the shared PopperV2 trigger
+// All hover timing (open delay, skip-delay window) runs on the shared Popper trigger
 // machine; sibling coordination comes from the delay group provided by `MenubarRoot`.
 // Link triggers disable the machine — they never open a menu.
 const isLink = computed(() => isTriggerLink(triggerElement.value));
 
-const shellTriggerProps: PopperV2TriggerProps = reactive({
+const shellTriggerProps: PopperTriggerProps = reactive({
   get trigger() {
     return hoverable.value ? 'hover' : 'click';
   },
@@ -79,7 +79,7 @@ const shellTriggerProps: PopperV2TriggerProps = reactive({
   }
 });
 
-const { onPointerEnter: onMachinePointerEnter, onPointerLeave: onMachinePointerLeave } = usePopperV2Trigger(
+const { onPointerEnter: onMachinePointerEnter, onPointerLeave: onMachinePointerLeave } = usePopperTrigger(
   shellTriggerProps,
   popperContext,
   { onVirtualPointChange: () => {} }
@@ -135,7 +135,7 @@ const onPointerEnter = (event: PointerEvent) => {
   if (open.value) return;
 
   if (hoverable.value) {
-    // Hover-mode opening runs on the PopperV2 machine; focus the trigger so the
+    // Hover-mode opening runs on the Popper machine; focus the trigger so the
     // roving-focus highlight follows the pointer.
     triggerElement.value?.focus();
   } else if (modelValue.value || isLinkTriggerHovered.value) {

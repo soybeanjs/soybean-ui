@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { SPopperV2 } from '@soybeanjs/ui';
+import { SPopper } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SPopperV2
+  <SPopper
     trigger="hover"
     :open-delay="250"
     :close-delay="180"
@@ -18,5 +18,5 @@ import { SPopperV2 } from '@soybeanjs/ui';
       <p class="font-medium">Hover grace area</p>
       <p class="text-muted-foreground">Move the pointer into this popup without closing it.</p>
     </div>
-  </SPopperV2>
+  </SPopper>
 </template>

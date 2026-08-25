@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { getVueBooleanCasting, transformPropsToContext } from '../../shared';
 import { useControllableState } from '../../composables';
 import type { DefinedValue } from '../../types';
-import { PopperV2PositioningRoot } from '../popper-v2';
+import { PopperPositioningRoot } from '../popper';
 import { provideCascaderRootContext } from './context';
 import type { CascaderRootProviderParams } from './context';
 import type { CascaderModelValue, CascaderNode, CascaderRootProps, CascaderRootEmits, CascaderValue } from './types';
@@ -106,7 +106,7 @@ const { dir } = provideCascaderRootContext({
 </script>
 
 <template>
-  <PopperV2PositioningRoot :dir="dir">
+  <PopperPositioningRoot :dir="dir">
     <slot :model-value="modelValue" :open="Boolean(open)" />
-  </PopperV2PositioningRoot>
+  </PopperPositioningRoot>
 </template>

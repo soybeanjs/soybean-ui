@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
-import PopperV2Arrow from '../popper-v2/popper-v2-arrow.vue';
-import PopperV2Portal from '../popper-v2/popper-v2-portal.vue';
+import PopperArrow from '../popper/popper-arrow.vue';
+import PopperPortal from '../popper/popper-portal.vue';
 import PopoverClose from './popover-close.vue';
 import PopoverPopup from './popover-popup.vue';
 import PopoverPositioner from './popover-positioner.vue';
@@ -59,11 +59,11 @@ const positionerProps = computed(() => {
     <PopoverTrigger v-bind="triggerProps">
       <slot name="trigger" />
     </PopoverTrigger>
-    <PopperV2Portal v-bind="portalProps">
+    <PopperPortal v-bind="portalProps">
       <PopoverPositioner v-bind="positionerProps" v-on="listeners">
         <PopoverPopup v-bind="popupProps">
           <slot v-bind="slotProps" />
-          <PopperV2Arrow v-if="showArrow" v-bind="arrowProps" />
+          <PopperArrow v-if="showArrow" v-bind="arrowProps" />
         </PopoverPopup>
         <PopoverClose v-if="slots.close" v-bind="closeProps">
           <slot name="close">
@@ -71,6 +71,6 @@ const positionerProps = computed(() => {
           </slot>
         </PopoverClose>
       </PopoverPositioner>
-    </PopperV2Portal>
+    </PopperPortal>
   </PopoverRoot>
 </template>

@@ -2,7 +2,7 @@ import { computed, shallowRef, toValue, useId, watch } from 'vue';
 import type { ComputedRef, ShallowRef } from 'vue';
 import { getDisclosureState } from '../../shared';
 import { useDirection } from '../config-provider/context';
-import { providePopperV2Ui } from '../popper-v2/context';
+import { providePopperUi } from '../popper/context';
 import { useContext, useUiContext } from '../../composables';
 import type { DefinedValue, Direction } from '../../types';
 import { getCascaderAncestorPath, mergeCascaderFieldKeys } from './shared';
@@ -175,7 +175,7 @@ export const [provideCascaderRootContext, useCascaderRootContext] = useContext(
 );
 
 export const [provideCascaderUi, useCascaderUi] = useUiContext<CascaderUiSlot>('CascaderUi', ui => {
-  providePopperV2Ui(ui);
+  providePopperUi(ui);
 
   return ui;
 });

@@ -923,7 +923,7 @@
         "kind": "props",
         "name": "MenuContentProps",
         "type": "Interface MenuContentProps",
-        "resolvedType": "{ popupProps?: MenuPopupProps; placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean; loop?: boolean }",
+        "resolvedType": "{ popupProps?: MenuPopupProps; placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean; loop?: boolean }",
         "description": "Properties for the MenuContent component.",
         "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.props",
         "sourcePath": "packages/headless/src/components/menu/types.ts",
@@ -961,7 +961,7 @@
             "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.placement",
             "default": "undefined",
-            "inheritedFrom": "PopperPositionerProps.placement",
+            "inheritedFrom": "placement",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -986,7 +986,7 @@
             "description": "The preferred side of the trigger to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.side",
             "default": "'bottom'",
-            "inheritedFrom": "PopperPositionerProps.side",
+            "inheritedFrom": "side",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -1011,7 +1011,7 @@
             "description": "The distance in pixels from the trigger.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.sideoffset",
             "default": "0",
-            "inheritedFrom": "PopperPositionerProps.sideOffset",
+            "inheritedFrom": "sideOffset",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -1022,7 +1022,7 @@
             "description": "Flip to the opposite side when colliding with boundary.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.sideflip",
             "default": "true",
-            "inheritedFrom": "PopperPositionerProps.sideFlip",
+            "inheritedFrom": "sideFlip",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -1033,7 +1033,7 @@
             "description": "The preferred alignment against the trigger. May change when collisions occur.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.align",
             "default": "'center'",
-            "inheritedFrom": "PopperPositionerProps.align",
+            "inheritedFrom": "align",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -1058,7 +1058,7 @@
             "description": "An offset in pixels from the `start` or `end` alignment options.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.alignoffset",
             "default": "0",
-            "inheritedFrom": "PopperPositionerProps.alignOffset",
+            "inheritedFrom": "alignOffset",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -1069,7 +1069,7 @@
             "description": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.alignflip",
             "default": "true",
-            "inheritedFrom": "PopperPositionerProps.alignFlip",
+            "inheritedFrom": "alignFlip",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -1080,7 +1080,7 @@
             "description": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.avoidcollisions",
             "default": "true",
-            "inheritedFrom": "PopperPositionerProps.avoidCollisions",
+            "inheritedFrom": "avoidCollisions",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -1116,7 +1116,7 @@
             "description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.collisionpadding",
             "default": "0",
-            "inheritedFrom": "PopperPositionerProps.collisionPadding",
+            "inheritedFrom": "collisionPadding",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -1141,7 +1141,7 @@
             "description": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.arrowpadding",
             "default": "0",
-            "inheritedFrom": "PopperPositionerProps.arrowPadding",
+            "inheritedFrom": "arrowPadding",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -1152,7 +1152,7 @@
             "description": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.hideshiftedarrow",
             "default": "true",
-            "inheritedFrom": "PopperPositionerProps.hideShiftedArrow",
+            "inheritedFrom": "hideShiftedArrow",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -1174,7 +1174,7 @@
             "description": "Whether to hide the content when the trigger becomes fully occluded.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.hidewhendetached",
             "default": "false",
-            "inheritedFrom": "PopperPositionerProps.hideWhenDetached",
+            "inheritedFrom": "hideWhenDetached",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -1207,7 +1207,7 @@
             "description": "Whether to disable the update position for the content when the layout shifted.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.disableupdateonlayoutshift",
             "default": "false",
-            "inheritedFrom": "PopperPositionerProps.disableUpdateOnLayoutShift",
+            "inheritedFrom": "disableUpdateOnLayoutShift",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -1218,7 +1218,7 @@
             "description": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.prioritizeposition",
             "default": "false",
-            "inheritedFrom": "PopperPositionerProps.prioritizePosition",
+            "inheritedFrom": "prioritizePosition",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -1229,7 +1229,7 @@
             "description": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.reference",
             "default": null,
-            "inheritedFrom": "PopperPositionerProps.reference",
+            "inheritedFrom": "reference",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -1246,6 +1246,39 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "trapFocus",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
+            "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.trapfocus",
+            "default": "modal",
+            "inheritedFrom": "trapFocus",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disableHoverableContent",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
+            "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.disablehoverablecontent",
+            "default": "false",
+            "inheritedFrom": "disableHoverableContent",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onGracePointerExit",
+            "type": "(() => void)",
+            "required": false,
+            "description": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.ongracepointerexit",
+            "default": null,
+            "inheritedFrom": "onGracePointerExit",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
           },
           {
             "name": "forceMount",
@@ -2474,13 +2507,13 @@
             "sourcePath": "packages/headless/src/components/menu/types.ts",
             "referencedTypes": [
               {
-                "name": "MenuPortalProps",
+                "name": "PortalProps",
                 "kind": "interface",
                 "type": "MenuPortalProps",
                 "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
                 "description": "Properties for the Portal component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_menu_index.menuportalprops",
-                "sourcePath": "packages/headless/src/components/menu/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_portal_types.portalprops",
+                "sourcePath": "packages/headless/src/components/portal/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -2489,7 +2522,7 @@
                     "type": "string | HTMLElement",
                     "required": false,
                     "description": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_index.menuportalprops.members.to",
+                    "descriptionKey": "api.generated.packages_headless_src_components_portal_types.portalprops.members.to",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/portal/types.ts",
@@ -2500,7 +2533,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Disable teleport and render the component inline\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_index.menuportalprops.members.disabled",
+                    "descriptionKey": "api.generated.packages_headless_src_components_portal_types.portalprops.members.disabled",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/portal/types.ts",
@@ -2511,7 +2544,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_index.menuportalprops.members.defer",
+                    "descriptionKey": "api.generated.packages_headless_src_components_portal_types.portalprops.members.defer",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/portal/types.ts",
@@ -2522,7 +2555,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_index.menuportalprops.members.forcemount",
+                    "descriptionKey": "api.generated.packages_headless_src_components_portal_types.portalprops.members.forcemount",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/types/component.ts",
@@ -2547,13 +2580,24 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+                "resolvedType": "{ trapFocus?: boolean; placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "packages/headless/src/components/menu/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "trapFocus",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.trapfocus",
+                    "default": "modal",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "placement",
                     "type": "Placement",
@@ -2764,6 +2808,17 @@
                     "referencedTypes": []
                   },
                   {
+                    "name": "disableHoverableContent",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.disablehoverablecontent",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
                     "name": "forceMount",
                     "type": "boolean",
                     "required": false,
@@ -2775,7 +2830,18 @@
                     "referencedTypes": []
                   }
                 ],
-                "callables": []
+                "callables": [
+                  {
+                    "name": "onGracePointerExit",
+                    "type": "(() => void) | undefined",
+                    "parameters": "(() => void) | undefined",
+                    "required": false,
+                    "description": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.callables.ongracepointerexit",
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  }
+                ]
               }
             ]
           },
@@ -3805,13 +3871,13 @@
             "sourcePath": "packages/headless/src/components/menu/types.ts",
             "referencedTypes": [
               {
-                "name": "MenuPortalProps",
+                "name": "PortalProps",
                 "kind": "interface",
                 "type": "MenuPortalProps",
                 "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
                 "description": "Properties for the Portal component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_menu_index.menuportalprops",
-                "sourcePath": "packages/headless/src/components/menu/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_portal_types.portalprops",
+                "sourcePath": "packages/headless/src/components/portal/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -3820,7 +3886,7 @@
                     "type": "string | HTMLElement",
                     "required": false,
                     "description": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_index.menuportalprops.members.to",
+                    "descriptionKey": "api.generated.packages_headless_src_components_portal_types.portalprops.members.to",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/portal/types.ts",
@@ -3831,7 +3897,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Disable teleport and render the component inline\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_index.menuportalprops.members.disabled",
+                    "descriptionKey": "api.generated.packages_headless_src_components_portal_types.portalprops.members.disabled",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/portal/types.ts",
@@ -3842,7 +3908,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_index.menuportalprops.members.defer",
+                    "descriptionKey": "api.generated.packages_headless_src_components_portal_types.portalprops.members.defer",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/portal/types.ts",
@@ -3853,7 +3919,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_index.menuportalprops.members.forcemount",
+                    "descriptionKey": "api.generated.packages_headless_src_components_portal_types.portalprops.members.forcemount",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/types/component.ts",
@@ -3878,13 +3944,24 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+                "resolvedType": "{ trapFocus?: boolean; placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "packages/headless/src/components/menu/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "trapFocus",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.trapfocus",
+                    "default": "modal",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "placement",
                     "type": "Placement",
@@ -4095,6 +4172,17 @@
                     "referencedTypes": []
                   },
                   {
+                    "name": "disableHoverableContent",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.disablehoverablecontent",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
                     "name": "forceMount",
                     "type": "boolean",
                     "required": false,
@@ -4106,7 +4194,18 @@
                     "referencedTypes": []
                   }
                 ],
-                "callables": []
+                "callables": [
+                  {
+                    "name": "onGracePointerExit",
+                    "type": "(() => void) | undefined",
+                    "parameters": "(() => void) | undefined",
+                    "required": false,
+                    "description": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.callables.ongracepointerexit",
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  }
+                ]
               }
             ]
           },
@@ -5685,12 +5784,23 @@
         "kind": "props",
         "name": "MenuSubContentProps",
         "type": "Interface MenuSubContentProps",
-        "resolvedType": "{ placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+        "resolvedType": "{ trapFocus?: boolean; placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
         "description": "Properties for the MenuSubContent component.",
         "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.props",
         "sourcePath": "packages/headless/src/components/menu/types.ts",
         "typeParameters": [],
         "members": [
+          {
+            "name": "trapFocus",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
+            "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.trapfocus",
+            "default": "modal",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
           {
             "name": "placement",
             "type": "Placement",
@@ -5969,6 +6079,28 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "disableHoverableContent",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
+            "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.disablehoverablecontent",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onGracePointerExit",
+            "type": "(() => void)",
+            "required": false,
+            "description": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.ongracepointerexit",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
           },
           {
             "name": "forceMount",

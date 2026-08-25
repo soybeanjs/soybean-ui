@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SPopperV2 } from '@soybeanjs/ui';
+import { SPopper } from '@soybeanjs/ui';
 </script>
 
 <template>
@@ -11,7 +11,7 @@ import { SPopperV2 } from '@soybeanjs/ui';
     </p>
 
     <div class="flex justify-end">
-      <SPopperV2
+      <SPopper
         placement="bottom-end"
         :portal-props="{ to: 'body' }"
         :positioner-props="{ collisionPadding: 16, prioritizePosition: true, sideOffset: 10 }"
@@ -27,7 +27,7 @@ import { SPopperV2 } from '@soybeanjs/ui';
             The popup teleports to body, escapes clipping, and flips away from the lower boundary.
           </p>
         </div>
-      </SPopperV2>
+      </SPopper>
     </div>
   </div>
 </template>

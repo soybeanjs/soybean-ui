@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { isFormControl, isNullish, transformPropsToContext } from '../../shared';
 import { useControllableState, useSelection } from '../../composables';
 import type { DefinedValue } from '../../types';
-import { PopperV2PositioningRoot } from '../popper-v2';
+import { PopperPositioningRoot } from '../popper';
 import { provideCollectionContext, provideSelectRootContext } from './context';
 import SelectBubbleSelect from './select-bubble-select.vue';
 import type { SelectRootProps, SelectRootEmits } from './types';
@@ -50,7 +50,7 @@ const formControl = computed(() => isFormControl(triggerElement.value));
 </script>
 
 <template>
-  <PopperV2PositioningRoot :dir="dir">
+  <PopperPositioningRoot :dir="dir">
     <slot :model-value="modelValue" :open="Boolean(open)" />
 
     <SelectBubbleSelect
@@ -68,5 +68,5 @@ const formControl = computed(() => isFormControl(triggerElement.value));
       <option v-if="isNullish(modelValue)" :value="nullableValue" />
       <option v-for="option in options" :key="option.value ?? ''" v-bind="option" />
     </SelectBubbleSelect>
-  </PopperV2PositioningRoot>
+  </PopperPositioningRoot>
 </template>

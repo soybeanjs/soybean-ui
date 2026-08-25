@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardElement } from '../../composables';
-import { PopperV2Anchor } from '../popper-v2';
+import { PopperAnchor } from '../popper';
 import { Primitive } from '../primitive';
 import { useCascaderRootContext, useCascaderUi } from './context';
 import type { CascaderTriggerProps } from './types';
@@ -56,7 +56,7 @@ const onKeyDown = (event: KeyboardEvent) => {
 </script>
 
 <template>
-  <PopperV2Anchor as-child :reference="reference">
+  <PopperAnchor as-child :reference="reference">
     <Primitive
       :ref="setTriggerElement"
       :as="as"
@@ -78,5 +78,5 @@ const onKeyDown = (event: KeyboardEvent) => {
     >
       <slot />
     </Primitive>
-  </PopperV2Anchor>
+  </PopperAnchor>
 </template>

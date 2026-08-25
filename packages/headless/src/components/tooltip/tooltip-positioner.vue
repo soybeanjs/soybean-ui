@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, onWatcherCleanup, watchPostEffect } from 'vue';
 import { defu } from 'defu';
-import { usePopperV2RootContext } from '../popper-v2/context';
+import { usePopperRootContext } from '../popper/context';
 import { useForwardListeners } from '../../composables';
 import type { PointerDownOutsideEvent } from '../../types';
-import { PopperV2Positioner } from '../popper-v2';
+import { PopperPositioner } from '../popper';
 import { useTooltipRootContext } from './context';
 import type { TooltipPositionerEmits, TooltipPositionerProps } from './types';
 
@@ -27,7 +27,7 @@ const {
   disableClosingTrigger
 } = useTooltipRootContext('TooltipPositioner');
 
-const { open, triggerElement, onOpenChange } = usePopperV2RootContext('TooltipPositioner');
+const { open, triggerElement, onOpenChange } = usePopperRootContext('TooltipPositioner');
 
 function close() {
   onOpenChange(false, 'trigger-hover');
@@ -74,7 +74,7 @@ watchPostEffect(() => {
 </script>
 
 <template>
-  <PopperV2Positioner v-bind="resolvedProps" data-soybean-tooltip-positioner v-on="listeners">
+  <PopperPositioner v-bind="resolvedProps" data-soybean-tooltip-positioner v-on="listeners">
     <slot />
-  </PopperV2Positioner>
+  </PopperPositioner>
 </template>

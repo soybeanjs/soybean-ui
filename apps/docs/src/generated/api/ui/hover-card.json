@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "HoverCardProps",
         "type": "Interface HoverCardProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<HoverCardUi>; placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopperAnchorProps; portalProps?: HoverCardPortalProps; positionerProps?: HoverCardPositionerProps; popupProps?: HoverCardPopupProps; arrowProps?: HoverCardArrowProps; defaultOpen?: boolean; open?: boolean; openDelay?: number; closeDelay?: number; dir?: Direction }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<HoverCardUi>; placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopperAnchorProps; portalProps?: HoverCardPortalProps; positionerProps?: HoverCardPositionerProps; popupProps?: HoverCardPopupProps; arrowProps?: HoverCardArrowProps; defaultOpen?: boolean; open?: boolean; openDelay?: number; closeDelay?: number; dir?: Direction; modal?: boolean; disabled?: boolean }",
         "description": "Properties for the HoverCard component.",
         "descriptionKey": "api.generated.packages_ui_src_components_hover_card_types.hovercardprops.props",
         "sourcePath": "packages/ui/src/components/hover-card/types.ts",
@@ -75,9 +75,9 @@
               {
                 "name": "HoverCardUi",
                 "kind": "typeAlias",
-                "type": "{ anchor: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; }",
+                "type": "{ trigger: ClassValue; anchor: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; }",
                 "resolvedType": null,
-                "description": "UI class overrides for the Popper component.",
+                "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_hover_card_index.hovercardui",
                 "sourcePath": "packages/headless/src/components/hover-card/index.ts",
                 "typeParameters": [],
@@ -124,7 +124,7 @@
                 "kind": "interface",
                 "type": "PopperAnchorProps",
                 "resolvedType": "{ reference?: ReferenceElement; asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the PopperAnchor component.",
+                "description": "Properties for the anchor (reference) element, optionally overriding the reference.",
                 "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperanchorprops",
                 "sourcePath": "packages/headless/src/components/popper/types.ts",
                 "typeParameters": [],
@@ -134,7 +134,7 @@
                     "name": "reference",
                     "type": "ReferenceElement",
                     "required": false,
-                    "description": "The reference (or anchor) element that is being referred to for positioning. If not provided will use the current\ncomponent as anchor.",
+                    "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperanchorprops.members.reference",
                     "default": null,
                     "inheritedFrom": null,
@@ -183,7 +183,7 @@
                 "kind": "interface",
                 "type": "HoverCardPortalProps",
                 "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
-                "description": "Properties for the Portal component.",
+                "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_hover_card_index.hovercardportalprops",
                 "sourcePath": "packages/headless/src/components/hover-card/index.ts",
                 "typeParameters": [],
@@ -252,7 +252,7 @@
                 "name": "HoverCardPositionerProps",
                 "kind": "interface",
                 "type": "HoverCardPositionerProps",
-                "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+                "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the HoverCardPositioner component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardpositionerprops",
                 "sourcePath": "packages/headless/src/components/hover-card/types.ts",
@@ -469,6 +469,28 @@
                     "referencedTypes": []
                   },
                   {
+                    "name": "trapFocus",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
+                    "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardpositionerprops.members.trapfocus",
+                    "default": "modal",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disableHoverableContent",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
+                    "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardpositionerprops.members.disablehoverablecontent",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
                     "name": "forceMount",
                     "type": "boolean",
                     "required": false,
@@ -480,7 +502,18 @@
                     "referencedTypes": []
                   }
                 ],
-                "callables": []
+                "callables": [
+                  {
+                    "name": "onGracePointerExit",
+                    "type": "(() => void) | undefined",
+                    "parameters": "(() => void) | undefined",
+                    "required": false,
+                    "description": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardpositionerprops.callables.ongracepointerexit",
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  }
+                ]
               }
             ]
           },
@@ -524,7 +557,7 @@
                 "kind": "interface",
                 "type": "HoverCardArrowProps",
                 "resolvedType": null,
-                "description": "Properties for the PopperArrow component.",
+                "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_hover_card_index.hovercardarrowprops",
                 "sourcePath": "packages/headless/src/components/hover-card/index.ts",
                 "typeParameters": [],
@@ -582,7 +615,7 @@
             "name": "dir",
             "type": "Direction",
             "required": false,
-            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "description": "",
             "descriptionKey": "api.generated.packages_ui_src_components_hover_card_types.hovercardprops.members.dir",
             "default": null,
             "inheritedFrom": "dir",
@@ -602,6 +635,28 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "modal",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.packages_ui_src_components_hover_card_types.hovercardprops.members.modal",
+            "default": null,
+            "inheritedFrom": "modal",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.packages_ui_src_components_hover_card_types.hovercardprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
           }
         ],
         "callables": [],
@@ -611,7 +666,7 @@
         "kind": "emits",
         "name": "HoverCardEmits",
         "type": "TypeAlias HoverCardEmits: HoverCardCompactEmits",
-        "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent] }",
+        "resolvedType": "{ \"update:open\": [value: boolean, reason?: PopperOpenChangeReason | undefined]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent] }",
         "description": "Events for the HoverCard component.",
         "descriptionKey": "api.generated.packages_ui_src_components_hover_card_types.hovercardemits.emits",
         "sourcePath": "packages/ui/src/components/hover-card/types.ts",
@@ -620,8 +675,8 @@
         "callables": [
           {
             "name": "update:open",
-            "type": "[value: boolean]",
-            "parameters": "value: boolean",
+            "type": "[value: boolean, reason?: PopperOpenChangeReason | undefined]",
+            "parameters": "value: boolean, reason?: PopperOpenChangeReason | undefined",
             "required": true,
             "description": "Event handler called when the open state of the hover card changes.",
             "descriptionKey": "api.generated.packages_ui_src_components_hover_card_types.hovercardemits.callables.update_open",
@@ -706,7 +761,7 @@
             "name": "HoverCardCompactEmits",
             "kind": "typeAlias",
             "type": "import(\"@soybeanjs/headless\").HoverCardRootEmits & import(\"../../../node_modules/@soybeanjs/headless/src/components/hover-card/types\").HoverCardPositionerImplEmits",
-            "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent] }",
+            "resolvedType": "{ \"update:open\": [value: boolean, reason?: PopperOpenChangeReason | undefined]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent] }",
             "description": "Events for the HoverCardCompact component.",
             "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardcompactemits",
             "sourcePath": "packages/headless/src/components/hover-card/types.ts",
@@ -716,8 +771,8 @@
             "callables": [
               {
                 "name": "update:open",
-                "type": "[value: boolean]",
-                "parameters": "value: boolean",
+                "type": "[value: boolean, reason?: PopperOpenChangeReason | undefined]",
+                "parameters": "value: boolean, reason?: PopperOpenChangeReason | undefined",
                 "required": true,
                 "description": "Event handler called when the open state of the hover card changes.",
                 "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardcompactemits.callables.update_open",
@@ -834,7 +889,7 @@
         "kind": "props",
         "name": "HoverCardCompactProps",
         "type": "Interface HoverCardCompactProps",
-        "resolvedType": "{ placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopperAnchorProps; portalProps?: HoverCardPortalProps; positionerProps?: HoverCardPositionerProps; popupProps?: HoverCardPopupProps; arrowProps?: HoverCardArrowProps; defaultOpen?: boolean; open?: boolean; openDelay?: number; closeDelay?: number; dir?: Direction }",
+        "resolvedType": "{ placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopperAnchorProps; portalProps?: HoverCardPortalProps; positionerProps?: HoverCardPositionerProps; popupProps?: HoverCardPopupProps; arrowProps?: HoverCardArrowProps; defaultOpen?: boolean; open?: boolean; openDelay?: number; closeDelay?: number; dir?: Direction; modal?: boolean; disabled?: boolean }",
         "description": "Properties for the HoverCardCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardcompactprops.props",
         "sourcePath": "packages/headless/src/components/hover-card/types.ts",
@@ -877,7 +932,7 @@
                 "kind": "interface",
                 "type": "PopperAnchorProps",
                 "resolvedType": "{ reference?: ReferenceElement; asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the PopperAnchor component.",
+                "description": "Properties for the anchor (reference) element, optionally overriding the reference.",
                 "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperanchorprops",
                 "sourcePath": "packages/headless/src/components/popper/types.ts",
                 "typeParameters": [],
@@ -887,7 +942,7 @@
                     "name": "reference",
                     "type": "ReferenceElement",
                     "required": false,
-                    "description": "The reference (or anchor) element that is being referred to for positioning. If not provided will use the current\ncomponent as anchor.",
+                    "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperanchorprops.members.reference",
                     "default": null,
                     "inheritedFrom": null,
@@ -936,7 +991,7 @@
                 "kind": "interface",
                 "type": "HoverCardPortalProps",
                 "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
-                "description": "Properties for the Portal component.",
+                "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_hover_card_index.hovercardportalprops",
                 "sourcePath": "packages/headless/src/components/hover-card/index.ts",
                 "typeParameters": [],
@@ -1005,7 +1060,7 @@
                 "name": "HoverCardPositionerProps",
                 "kind": "interface",
                 "type": "HoverCardPositionerProps",
-                "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+                "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the HoverCardPositioner component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardpositionerprops",
                 "sourcePath": "packages/headless/src/components/hover-card/types.ts",
@@ -1222,6 +1277,28 @@
                     "referencedTypes": []
                   },
                   {
+                    "name": "trapFocus",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
+                    "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardpositionerprops.members.trapfocus",
+                    "default": "modal",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disableHoverableContent",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
+                    "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardpositionerprops.members.disablehoverablecontent",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
                     "name": "forceMount",
                     "type": "boolean",
                     "required": false,
@@ -1233,7 +1310,18 @@
                     "referencedTypes": []
                   }
                 ],
-                "callables": []
+                "callables": [
+                  {
+                    "name": "onGracePointerExit",
+                    "type": "(() => void) | undefined",
+                    "parameters": "(() => void) | undefined",
+                    "required": false,
+                    "description": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardpositionerprops.callables.ongracepointerexit",
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  }
+                ]
               }
             ]
           },
@@ -1277,7 +1365,7 @@
                 "kind": "interface",
                 "type": "HoverCardArrowProps",
                 "resolvedType": null,
-                "description": "Properties for the PopperArrow component.",
+                "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_hover_card_index.hovercardarrowprops",
                 "sourcePath": "packages/headless/src/components/hover-card/index.ts",
                 "typeParameters": [],
@@ -1335,7 +1423,7 @@
             "name": "dir",
             "type": "Direction",
             "required": false,
-            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardcompactprops.members.dir",
             "default": null,
             "inheritedFrom": "dir",
@@ -1355,6 +1443,28 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "modal",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardcompactprops.members.modal",
+            "default": null,
+            "inheritedFrom": "modal",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardcompactprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
           }
         ],
         "callables": [],
@@ -1364,7 +1474,7 @@
         "kind": "emits",
         "name": "HoverCardCompactEmits",
         "type": "TypeAlias HoverCardCompactEmits: HoverCardRootEmits & HoverCardPositionerEmits",
-        "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent] }",
+        "resolvedType": "{ \"update:open\": [value: boolean, reason?: PopperOpenChangeReason | undefined]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent] }",
         "description": "Events for the HoverCardCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardcompactemits.emits",
         "sourcePath": "packages/headless/src/components/hover-card/types.ts",
@@ -1373,8 +1483,8 @@
         "callables": [
           {
             "name": "update:open",
-            "type": "[value: boolean]",
-            "parameters": "value: boolean",
+            "type": "[value: boolean, reason?: PopperOpenChangeReason | undefined]",
+            "parameters": "value: boolean, reason?: PopperOpenChangeReason | undefined",
             "required": true,
             "description": "Event handler called when the open state of the hover card changes.",
             "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardcompactemits.callables.update_open",
@@ -1512,7 +1622,7 @@
         "kind": "props",
         "name": "HoverCardPositionerProps",
         "type": "Interface HoverCardPositionerProps",
-        "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+        "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
         "description": "Properties for the HoverCardPositioner component.",
         "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardpositionerprops.props",
         "sourcePath": "packages/headless/src/components/hover-card/types.ts",
@@ -1812,6 +1922,39 @@
             ]
           },
           {
+            "name": "trapFocus",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
+            "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardpositionerprops.members.trapfocus",
+            "default": "modal",
+            "inheritedFrom": "HoverCardPositionerImplProps.trapFocus",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disableHoverableContent",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
+            "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardpositionerprops.members.disablehoverablecontent",
+            "default": "false",
+            "inheritedFrom": "HoverCardPositionerImplProps.disableHoverableContent",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onGracePointerExit",
+            "type": "(() => void)",
+            "required": false,
+            "description": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
+            "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardpositionerprops.members.ongracepointerexit",
+            "default": null,
+            "inheritedFrom": "HoverCardPositionerImplProps.onGracePointerExit",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "forceMount",
             "type": "boolean",
             "required": false,
@@ -1963,7 +2106,7 @@
         "kind": "props",
         "name": "HoverCardRootProps",
         "type": "Interface HoverCardRootProps",
-        "resolvedType": "{ defaultOpen?: boolean; open?: boolean; openDelay?: number; closeDelay?: number; dir?: Direction }",
+        "resolvedType": "{ defaultOpen?: boolean; open?: boolean; openDelay?: number; closeDelay?: number; dir?: Direction; modal?: boolean; disabled?: boolean }",
         "description": "Properties for the HoverCardRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardrootprops.props",
         "sourcePath": "packages/headless/src/components/hover-card/types.ts",
@@ -2017,10 +2160,10 @@
             "name": "dir",
             "type": "Direction",
             "required": false,
-            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardrootprops.members.dir",
             "default": null,
-            "inheritedFrom": "PopperRootProps.dir",
+            "inheritedFrom": "dir",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -2037,6 +2180,28 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "modal",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardrootprops.members.modal",
+            "default": null,
+            "inheritedFrom": "modal",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardrootprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
           }
         ],
         "callables": [],
@@ -2046,7 +2211,7 @@
         "kind": "emits",
         "name": "HoverCardRootEmits",
         "type": "Interface HoverCardRootEmits",
-        "resolvedType": "{ \"update:open\": [value: boolean] }",
+        "resolvedType": "{ \"update:open\": [value: boolean, reason?: PopperOpenChangeReason | undefined] }",
         "description": "Events for the HoverCardRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardrootemits.emits",
         "sourcePath": "packages/headless/src/components/hover-card/types.ts",
@@ -2055,8 +2220,8 @@
         "callables": [
           {
             "name": "update:open",
-            "type": "[value: boolean]",
-            "parameters": "value: boolean",
+            "type": "[value: boolean, reason?: PopperOpenChangeReason | undefined]",
+            "parameters": "value: boolean, reason?: PopperOpenChangeReason | undefined",
             "required": true,
             "description": "Event handler called when the open state of the hover card changes.",
             "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardrootemits.callables.update_open",

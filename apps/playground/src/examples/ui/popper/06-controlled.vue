@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SPopperV2 } from '@soybeanjs/ui';
+import { SPopper } from '@soybeanjs/ui';
 
 interface HistoryEntry {
   id: number;
@@ -27,7 +27,7 @@ function onOpenChange(value: boolean, reason: string) {
 
 <template>
   <div class="flex flex-wrap items-start gap-4">
-    <SPopperV2
+    <SPopper
       :open="open"
       :positioner-props="{ sideOffset: 8 }"
       :popup-props="{ role: 'dialog' }"
@@ -39,7 +39,7 @@ function onOpenChange(value: boolean, reason: string) {
 
       <p class="font-medium">Controlled state</p>
       <p class="mt-1 text-muted-foreground">Every transition reports an explicit reason.</p>
-    </SPopperV2>
+    </SPopper>
 
     <div class="min-w-56 rounded-md border border-border bg-muted/30 p-3 text-xs">
       <p class="font-medium">Transition log</p>

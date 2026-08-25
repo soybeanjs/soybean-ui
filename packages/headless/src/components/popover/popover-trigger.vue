@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PopperV2Trigger } from '../popper-v2';
+import { PopperTrigger } from '../popper';
 import type { PopoverTriggerProps } from './types';
 
 defineOptions({
@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<PopoverTriggerProps>(), {
 </script>
 
 <template>
-  <PopperV2Trigger v-bind="props" data-soybean-popover-trigger aria-haspopup="dialog">
+  <PopperTrigger v-bind="props" data-soybean-popover-trigger aria-haspopup="dialog">
     <slot />
-  </PopperV2Trigger>
+  </PopperTrigger>
 </template>

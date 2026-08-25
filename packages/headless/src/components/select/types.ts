@@ -15,7 +15,7 @@ import type {
 } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type { ButtonProps } from '../button/types';
-import type { PopperV2AnchorProps, PopperV2ArrowProps, PopperV2PositioningPositionerProps } from '../popper-v2/types';
+import type { PopperAnchorProps, PopperArrowProps, PopperPositioningPositionerProps } from '../popper/types';
 import type { PortalProps } from '../portal/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
@@ -88,7 +88,7 @@ export type SelectPosition = 'item-aligned' | 'popper';
 /**
  * Properties for the SelectContentImpl component.
  */
-export interface SelectContentImplProps extends PopperV2PositioningPositionerProps, DismissableLayerProps {
+export interface SelectContentImplProps extends PopperPositioningPositionerProps, DismissableLayerProps {
   /**
    * The positioning mode to use
    *
@@ -172,7 +172,7 @@ export interface SelectGroupLabelProps extends BaseProps {}
 /**
  * Properties for the SelectTrigger component.
  */
-export interface SelectTriggerProps extends PopperV2AnchorProps {
+export interface SelectTriggerProps extends PopperAnchorProps {
   /**
    * Whether the component is disabled.
    */
@@ -337,7 +337,7 @@ export interface SelectCompactProps<
   /**
    * Placement.
    */
-  placement?: PopperV2PositioningPositionerProps['placement'];
+  placement?: PopperPositioningPositionerProps['placement'];
   /**
    * Properties forwarded to the popup element.
    */
@@ -381,7 +381,7 @@ export interface SelectCompactProps<
   /**
    * Properties forwarded to the arrow element.
    */
-  arrowProps?: PopperV2ArrowProps;
+  arrowProps?: PopperArrowProps;
 }
 
 /**
@@ -692,5 +692,5 @@ export type SelectUiSlot =
  */
 export type SelectUi = UiClass<SelectUiSlot>;
 
-export type { PopperV2ArrowProps as SelectArrowProps } from '../popper-v2/types';
+export type { PopperArrowProps as SelectArrowProps } from '../popper/types';
 export type { PortalProps as SelectPortalProps } from '../portal/types';

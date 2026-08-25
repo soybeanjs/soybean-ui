@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { defu } from 'defu';
-import { usePopperV2RootContext } from '../popper-v2/context';
+import { usePopperRootContext } from '../popper/context';
 import { useForwardListeners } from '../../composables';
-import { PopperV2Positioner } from '../popper-v2';
+import { PopperPositioner } from '../popper';
 import type { HoverCardPositionerEmits, HoverCardPositionerProps } from './types';
 
 defineOptions({
@@ -19,7 +19,7 @@ const emit = defineEmits<HoverCardPositionerEmits>();
 
 const listeners = useForwardListeners<keyof HoverCardPositionerEmits>(emit);
 
-const { onOpenChange } = usePopperV2RootContext('HoverCardPositioner');
+const { onOpenChange } = usePopperRootContext('HoverCardPositioner');
 
 const resolvedProps = computed(() =>
   defu(props, {
@@ -33,7 +33,7 @@ const resolvedProps = computed(() =>
 </script>
 
 <template>
-  <PopperV2Positioner v-bind="resolvedProps" data-soybean-hover-card-positioner v-on="listeners">
+  <PopperPositioner v-bind="resolvedProps" data-soybean-hover-card-positioner v-on="listeners">
     <slot />
-  </PopperV2Positioner>
+  </PopperPositioner>
 </template>

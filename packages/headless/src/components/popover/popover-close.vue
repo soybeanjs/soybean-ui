@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePopperV2RootContext } from '../popper-v2/context';
+import { usePopperRootContext } from '../popper/context';
 import Button from '../button/button.vue';
 import { usePopoverUi } from './context';
 import type { PopoverCloseProps, PopoverCloseEmits } from './types';
@@ -12,7 +12,7 @@ const props = defineProps<PopoverCloseProps>();
 
 const emit = defineEmits<PopoverCloseEmits>();
 
-const { onOpenChange } = usePopperV2RootContext('PopoverClose');
+const { onOpenChange } = usePopperRootContext('PopoverClose');
 
 const cls = usePopoverUi('close');
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useConfigProvider } from '../config-provider/context';
-import { providePopperV2DelayGroup } from '../popper-v2';
+import { providePopperDelayGroup } from '../popper';
 import { createDefaultTooltipConfig, pickDefinedConfig } from './shared';
 import { provideTooltipProviderContext, useTooltipProviderContext } from './context';
 import type { TooltipProviderProps } from './types';
@@ -48,8 +48,8 @@ provideTooltipProviderContext({
 });
 
 // Sibling tooltips share one skip-delay window (the FloatingDelayGroup pattern); the
-// per-root hover machines inside PopperV2 read this group instead of their own state.
-providePopperV2DelayGroup({
+// per-root hover machines inside Popper read this group instead of their own state.
+providePopperDelayGroup({
   skipDelayDuration: computed(() => config.value.skipDelayDuration)
 });
 </script>

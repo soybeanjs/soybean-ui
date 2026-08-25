@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "PopoverProps",
         "type": "Interface PopoverProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<PopoverUi>; placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopoverTriggerProps; portalProps?: PopoverPortalProps; positionerProps?: PopoverPositionerProps; popupProps?: PopoverPopupProps; arrowProps?: PopoverArrowProps; closeProps?: PopoverCloseProps; disabled?: boolean; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<PopoverUi>; placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopoverTriggerProps; portalProps?: PopoverPortalProps; positionerProps?: PopoverPositionerProps; popupProps?: PopoverPopupProps; arrowProps?: PopoverArrowProps; closeProps?: PopoverCloseProps; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; disabled?: boolean }",
         "description": "Properties for the Popover component.",
         "descriptionKey": "api.generated.packages_ui_src_components_popover_types.popoverprops.props",
         "sourcePath": "packages/ui/src/components/popover/types.ts",
@@ -75,7 +75,7 @@
               {
                 "name": "PopoverUi",
                 "kind": "typeAlias",
-                "type": "{ trigger: ClassValue; anchor: ClassValue; close: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; }",
+                "type": "{ trigger: ClassValue; anchor: ClassValue; close: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Popover component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverui",
@@ -194,7 +194,7 @@
                 "kind": "interface",
                 "type": "PopoverPortalProps",
                 "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
-                "description": "Properties for the Portal component.",
+                "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_popover_index.popoverportalprops",
                 "sourcePath": "packages/headless/src/components/popover/index.ts",
                 "typeParameters": [],
@@ -263,7 +263,7 @@
                 "name": "PopoverPositionerProps",
                 "kind": "interface",
                 "type": "PopoverPositionerProps",
-                "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+                "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the PopoverPositioner component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops",
                 "sourcePath": "packages/headless/src/components/popover/types.ts",
@@ -480,6 +480,28 @@
                     "referencedTypes": []
                   },
                   {
+                    "name": "trapFocus",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
+                    "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.trapfocus",
+                    "default": "modal",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disableHoverableContent",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
+                    "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.disablehoverablecontent",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
                     "name": "forceMount",
                     "type": "boolean",
                     "required": false,
@@ -491,7 +513,18 @@
                     "referencedTypes": []
                   }
                 ],
-                "callables": []
+                "callables": [
+                  {
+                    "name": "onGracePointerExit",
+                    "type": "(() => void) | undefined",
+                    "parameters": "(() => void) | undefined",
+                    "required": false,
+                    "description": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.callables.ongracepointerexit",
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  }
+                ]
               }
             ]
           },
@@ -535,7 +568,7 @@
                 "kind": "interface",
                 "type": "PopoverArrowProps",
                 "resolvedType": null,
-                "description": "Properties for the PopperArrow component.",
+                "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_popover_index.popoverarrowprops",
                 "sourcePath": "packages/headless/src/components/popover/index.ts",
                 "typeParameters": [],
@@ -616,21 +649,10 @@
             ]
           },
           {
-            "name": "disabled",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether the component is disabled.",
-            "descriptionKey": "api.generated.packages_ui_src_components_popover_types.popoverprops.members.disabled",
-            "default": null,
-            "inheritedFrom": "disabled",
-            "sourcePath": "packages/headless/src/components/popover/types.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "dir",
             "type": "Direction",
             "required": false,
-            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "description": "",
             "descriptionKey": "api.generated.packages_ui_src_components_popover_types.popoverprops.members.dir",
             "default": null,
             "inheritedFrom": "dir",
@@ -655,33 +677,44 @@
             "name": "open",
             "type": "boolean",
             "required": false,
-            "description": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+            "description": "",
             "descriptionKey": "api.generated.packages_ui_src_components_popover_types.popoverprops.members.open",
-            "default": "undefined",
+            "default": null,
             "inheritedFrom": "open",
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
           {
             "name": "defaultOpen",
             "type": "boolean",
             "required": false,
-            "description": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "description": "",
             "descriptionKey": "api.generated.packages_ui_src_components_popover_types.popoverprops.members.defaultopen",
-            "default": "false",
+            "default": null,
             "inheritedFrom": "defaultOpen",
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
           {
             "name": "modal",
             "type": "boolean",
             "required": false,
-            "description": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
+            "description": "",
             "descriptionKey": "api.generated.packages_ui_src_components_popover_types.popoverprops.members.modal",
-            "default": "true",
+            "default": null,
             "inheritedFrom": "modal",
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.packages_ui_src_components_popover_types.popoverprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           }
         ],
@@ -692,7 +725,7 @@
         "kind": "emits",
         "name": "PopoverEmits",
         "type": "TypeAlias PopoverEmits: PopoverCompactEmits",
-        "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event] }",
+        "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; placed: [] }",
         "description": "Events for the Popover component.",
         "descriptionKey": "api.generated.packages_ui_src_components_popover_types.popoveremits.emits",
         "sourcePath": "packages/ui/src/components/popover/types.ts",
@@ -865,20 +898,42 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "placed",
+            "type": "[]",
+            "parameters": null,
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_ui_src_components_popover_types.popoveremits.callables.placed",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
           }
         ],
         "referencedTypes": [
           {
             "name": "PopoverCompactEmits",
             "kind": "typeAlias",
-            "type": "import(\"@soybeanjs/headless\").DialogRootEmits & import(\"@soybeanjs/headless\").DismissableLayerEmits & import(\"@soybeanjs/headless\").FocusScopeEmits",
-            "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event] }",
+            "type": "import(\"@soybeanjs/headless\").DialogRootEmits & import(\"@soybeanjs/headless\").DismissableLayerEmits & import(\"@soybeanjs/headless\").FocusScopeEmits & { placed: []; }",
+            "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; placed: [] }",
             "description": "Events for the PopoverCompact component.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercompactemits",
             "sourcePath": "packages/headless/src/components/popover/types.ts",
             "typeParameters": [],
             "external": false,
-            "members": [],
+            "members": [
+              {
+                "name": "placed",
+                "type": "[]",
+                "required": true,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercompactemits.members.placed",
+                "default": null,
+                "inheritedFrom": null,
+                "sourcePath": "packages/headless/src/components/popper/types.ts",
+                "referencedTypes": []
+              }
+            ],
             "callables": [
               {
                 "name": "update:open",
@@ -1199,7 +1254,7 @@
         "kind": "props",
         "name": "PopoverCompactProps",
         "type": "Interface PopoverCompactProps",
-        "resolvedType": "{ placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopoverTriggerProps; portalProps?: PopoverPortalProps; positionerProps?: PopoverPositionerProps; popupProps?: PopoverPopupProps; arrowProps?: PopoverArrowProps; closeProps?: PopoverCloseProps; disabled?: boolean; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
+        "resolvedType": "{ placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopoverTriggerProps; portalProps?: PopoverPortalProps; positionerProps?: PopoverPositionerProps; popupProps?: PopoverPopupProps; arrowProps?: PopoverArrowProps; closeProps?: PopoverCloseProps; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; disabled?: boolean }",
         "description": "Properties for the PopoverCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercompactprops.props",
         "sourcePath": "packages/headless/src/components/popover/types.ts",
@@ -1312,7 +1367,7 @@
                 "kind": "interface",
                 "type": "PopoverPortalProps",
                 "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
-                "description": "Properties for the Portal component.",
+                "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_popover_index.popoverportalprops",
                 "sourcePath": "packages/headless/src/components/popover/index.ts",
                 "typeParameters": [],
@@ -1381,7 +1436,7 @@
                 "name": "PopoverPositionerProps",
                 "kind": "interface",
                 "type": "PopoverPositionerProps",
-                "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+                "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the PopoverPositioner component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops",
                 "sourcePath": "packages/headless/src/components/popover/types.ts",
@@ -1598,6 +1653,28 @@
                     "referencedTypes": []
                   },
                   {
+                    "name": "trapFocus",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
+                    "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.trapfocus",
+                    "default": "modal",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disableHoverableContent",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
+                    "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.disablehoverablecontent",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
                     "name": "forceMount",
                     "type": "boolean",
                     "required": false,
@@ -1609,7 +1686,18 @@
                     "referencedTypes": []
                   }
                 ],
-                "callables": []
+                "callables": [
+                  {
+                    "name": "onGracePointerExit",
+                    "type": "(() => void) | undefined",
+                    "parameters": "(() => void) | undefined",
+                    "required": false,
+                    "description": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.callables.ongracepointerexit",
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  }
+                ]
               }
             ]
           },
@@ -1653,7 +1741,7 @@
                 "kind": "interface",
                 "type": "PopoverArrowProps",
                 "resolvedType": null,
-                "description": "Properties for the PopperArrow component.",
+                "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_popover_index.popoverarrowprops",
                 "sourcePath": "packages/headless/src/components/popover/index.ts",
                 "typeParameters": [],
@@ -1734,21 +1822,10 @@
             ]
           },
           {
-            "name": "disabled",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether the component is disabled.",
-            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercompactprops.members.disabled",
-            "default": null,
-            "inheritedFrom": "disabled",
-            "sourcePath": "packages/headless/src/components/popover/types.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "dir",
             "type": "Direction",
             "required": false,
-            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercompactprops.members.dir",
             "default": null,
             "inheritedFrom": "dir",
@@ -1773,33 +1850,44 @@
             "name": "open",
             "type": "boolean",
             "required": false,
-            "description": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+            "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercompactprops.members.open",
-            "default": "undefined",
+            "default": null,
             "inheritedFrom": "open",
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
           {
             "name": "defaultOpen",
             "type": "boolean",
             "required": false,
-            "description": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercompactprops.members.defaultopen",
-            "default": "false",
+            "default": null,
             "inheritedFrom": "defaultOpen",
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
           {
             "name": "modal",
             "type": "boolean",
             "required": false,
-            "description": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
+            "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercompactprops.members.modal",
-            "default": "true",
+            "default": null,
             "inheritedFrom": "modal",
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercompactprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           }
         ],
@@ -1810,7 +1898,7 @@
         "kind": "emits",
         "name": "PopoverCompactEmits",
         "type": "TypeAlias PopoverCompactEmits: PopoverRootEmits & PopoverPositionerEmits",
-        "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event] }",
+        "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; placed: [] }",
         "description": "Events for the PopoverCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercompactemits.emits",
         "sourcePath": "packages/headless/src/components/popover/types.ts",
@@ -1983,6 +2071,16 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "placed",
+            "type": "[]",
+            "parameters": null,
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercompactemits.callables.placed",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
           }
         ],
         "referencedTypes": []
@@ -2067,7 +2165,7 @@
         "kind": "props",
         "name": "PopoverPositionerProps",
         "type": "Interface PopoverPositionerProps",
-        "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+        "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
         "description": "Properties for the PopoverPositioner component.",
         "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.props",
         "sourcePath": "packages/headless/src/components/popover/types.ts",
@@ -2367,6 +2465,39 @@
             ]
           },
           {
+            "name": "trapFocus",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
+            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.trapfocus",
+            "default": "modal",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disableHoverableContent",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
+            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.disablehoverablecontent",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onGracePointerExit",
+            "type": "(() => void)",
+            "required": false,
+            "description": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
+            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.ongracepointerexit",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "forceMount",
             "type": "boolean",
             "required": false,
@@ -2385,7 +2516,7 @@
         "kind": "emits",
         "name": "PopoverPositionerEmits",
         "type": "TypeAlias PopoverPositionerEmits",
-        "resolvedType": "{ escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event] }",
+        "resolvedType": "{ escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; placed: [] }",
         "description": "Events for the PopoverPositioner component.",
         "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositioneremits.emits",
         "sourcePath": "packages/headless/src/components/popover/types.ts",
@@ -2548,20 +2679,42 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "placed",
+            "type": "[]",
+            "parameters": null,
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositioneremits.callables.placed",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
           }
         ],
         "referencedTypes": [
           {
-            "name": "PopoverPositionerImplEmits",
+            "name": "PopperPositionerEmits",
             "kind": "typeAlias",
-            "type": "DismissableLayerEmits & FocusScopeEmits",
-            "resolvedType": "{ escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event] }",
-            "description": "Events for the PopoverPositionerImpl component.",
-            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerimplemits",
-            "sourcePath": "packages/headless/src/components/popover/types.ts",
+            "type": "import(\"@/index\").DismissableLayerEmits & import(\"@/index\").FocusScopeEmits & { placed: []; }",
+            "resolvedType": "{ escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; placed: [] }",
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperpositioneremits",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
             "typeParameters": [],
             "external": false,
-            "members": [],
+            "members": [
+              {
+                "name": "placed",
+                "type": "[]",
+                "required": true,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperpositioneremits.members.placed",
+                "default": null,
+                "inheritedFrom": null,
+                "sourcePath": "packages/headless/src/components/popper/types.ts",
+                "referencedTypes": []
+              }
+            ],
             "callables": [
               {
                 "name": "escapeKeyDown",
@@ -2569,7 +2722,7 @@
                 "parameters": "event: KeyboardEvent",
                 "required": true,
                 "description": "Event handler called when the escape key is down. Can be prevented.",
-                "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerimplemits.callables.escapekeydown",
+                "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperpositioneremits.callables.escapekeydown",
                 "sourcePath": "packages/headless/src/types/component.ts",
                 "referencedTypes": []
               },
@@ -2579,7 +2732,7 @@
                 "parameters": "event: PointerDownOutsideEvent",
                 "required": true,
                 "description": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
-                "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerimplemits.callables.pointerdownoutside",
+                "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperpositioneremits.callables.pointerdownoutside",
                 "sourcePath": "packages/headless/src/types/component.ts",
                 "referencedTypes": []
               },
@@ -2589,7 +2742,7 @@
                 "parameters": "event: FocusOutsideEvent",
                 "required": true,
                 "description": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
-                "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerimplemits.callables.focusoutside",
+                "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperpositioneremits.callables.focusoutside",
                 "sourcePath": "packages/headless/src/types/component.ts",
                 "referencedTypes": []
               },
@@ -2599,7 +2752,7 @@
                 "parameters": "event: PointerDownOutsideEvent | FocusOutsideEvent",
                 "required": true,
                 "description": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
-                "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerimplemits.callables.interactoutside",
+                "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperpositioneremits.callables.interactoutside",
                 "sourcePath": "packages/headless/src/types/component.ts",
                 "referencedTypes": []
               },
@@ -2609,7 +2762,7 @@
                 "parameters": "event: Event",
                 "required": true,
                 "description": "Event handler called when auto-focusing on open. Can be prevented.",
-                "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerimplemits.callables.openautofocus",
+                "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperpositioneremits.callables.openautofocus",
                 "sourcePath": "packages/headless/src/types/component.ts",
                 "referencedTypes": []
               },
@@ -2619,7 +2772,7 @@
                 "parameters": "event: Event",
                 "required": true,
                 "description": "Event handler called when auto-focusing on close. Can be prevented.",
-                "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerimplemits.callables.closeautofocus",
+                "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperpositioneremits.callables.closeautofocus",
                 "sourcePath": "packages/headless/src/types/component.ts",
                 "referencedTypes": []
               }
@@ -2633,28 +2786,17 @@
         "kind": "props",
         "name": "PopoverRootProps",
         "type": "Interface PopoverRootProps",
-        "resolvedType": "{ disabled?: boolean; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
+        "resolvedType": "{ dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; disabled?: boolean }",
         "description": "Properties for the PopoverRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverrootprops.props",
         "sourcePath": "packages/headless/src/components/popover/types.ts",
         "typeParameters": [],
         "members": [
           {
-            "name": "disabled",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether the component is disabled.",
-            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverrootprops.members.disabled",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popover/types.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "dir",
             "type": "Direction",
             "required": false,
-            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverrootprops.members.dir",
             "default": null,
             "inheritedFrom": null,
@@ -2679,33 +2821,44 @@
             "name": "open",
             "type": "boolean",
             "required": false,
-            "description": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+            "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverrootprops.members.open",
-            "default": "undefined",
+            "default": null,
             "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
           {
             "name": "defaultOpen",
             "type": "boolean",
             "required": false,
-            "description": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverrootprops.members.defaultopen",
-            "default": "false",
+            "default": null,
             "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
           {
             "name": "modal",
             "type": "boolean",
             "required": false,
-            "description": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
+            "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverrootprops.members.modal",
-            "default": "true",
+            "default": null,
             "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverrootprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           }
         ],

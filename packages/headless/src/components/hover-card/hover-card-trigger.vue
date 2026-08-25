@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { usePopperV2RootContext } from '../popper-v2/context';
-import { PopperV2Trigger } from '../popper-v2';
+import { usePopperRootContext } from '../popper/context';
+import { PopperTrigger } from '../popper';
 import { useHoverCardRootContext } from './context';
 import type { HoverCardTriggerProps } from './types';
 
@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<HoverCardTriggerProps>(), {
 });
 
 const { openDelay, closeDelay, hasSelectionRef, isPointerDownOnPopupRef } = useHoverCardRootContext('HoverCardTrigger');
-const popperContext = usePopperV2RootContext('HoverCardTrigger');
+const popperContext = usePopperRootContext('HoverCardTrigger');
 
 // Text selection / active pointer press inside the popup vetoes delayed hover closes; the guard
 // runs when the shell close timer fires, so late selections are honored too.
@@ -21,7 +21,7 @@ popperContext.registerHoverCloseGuard(() => hasSelectionRef.value || isPointerDo
 </script>
 
 <template>
-  <PopperV2Trigger
+  <PopperTrigger
     v-bind="props"
     trigger="hover"
     :open-delay="openDelay"
@@ -31,5 +31,5 @@ popperContext.registerHoverCloseGuard(() => hasSelectionRef.value || isPointerDo
     data-soybean-hover-card-trigger
   >
     <slot />
-  </PopperV2Trigger>
+  </PopperTrigger>
 </template>

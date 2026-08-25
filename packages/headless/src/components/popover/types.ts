@@ -2,19 +2,19 @@ import type { UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
 import type { DialogRootEmits } from '../dialog/types';
 import type {
-  PopperV2RootProps,
-  PopperV2PositionerProps,
-  PopperV2PositionerEmits,
-  PopperV2PopupProps,
-  PopperV2ArrowProps,
-  PopperV2PortalProps,
-  PopperV2UiSlot
-} from '../popper-v2/types';
+  PopperRootProps,
+  PopperPositionerProps,
+  PopperPositionerEmits,
+  PopperPopupProps,
+  PopperArrowProps,
+  PopperPortalProps,
+  PopperUiSlot
+} from '../popper/types';
 
 /**
  * Properties for the PopoverRoot component.
  */
-export interface PopoverRootProps extends PopperV2RootProps {}
+export interface PopoverRootProps extends PopperRootProps {}
 
 /**
  * Events for the PopoverRoot component.
@@ -38,23 +38,23 @@ export type PopoverCloseEmits = {
 /**
  * Properties for the PopoverPositioner component.
  */
-export interface PopoverPositionerProps extends PopperV2PositionerProps {}
+export interface PopoverPositionerProps extends PopperPositionerProps {}
 /**
  * Events for the PopoverPositioner component.
  */
-export type PopoverPositionerEmits = PopperV2PositionerEmits;
+export type PopoverPositionerEmits = PopperPositionerEmits;
 
 /**
  * Properties for the PopoverPopup component.
  */
-export interface PopoverPopupProps extends PopperV2PopupProps {}
+export interface PopoverPopupProps extends PopperPopupProps {}
 
 /**
  * Properties for the PopoverTrigger component.
  */
 export interface PopoverTriggerProps extends ButtonProps {}
 
-export type { PopperV2AnchorProps as PopoverAnchorProps } from '../popper-v2/types';
+export type { PopperAnchorProps as PopoverAnchorProps } from '../popper/types';
 
 /**
  * Properties for the PopoverCompact component.
@@ -63,7 +63,7 @@ export interface PopoverCompactProps extends PopoverRootProps {
   /**
    * Placement.
    */
-  placement?: PopperV2PositionerProps['placement'];
+  placement?: PopperPositionerProps['placement'];
   /**
    * Whether to show an arrow.
    */
@@ -75,7 +75,7 @@ export interface PopoverCompactProps extends PopoverRootProps {
   /**
    * Properties forwarded to the portal element.
    */
-  portalProps?: PopperV2PortalProps;
+  portalProps?: PopperPortalProps;
   /**
    * Properties forwarded to the positioner element.
    */
@@ -87,7 +87,7 @@ export interface PopoverCompactProps extends PopoverRootProps {
   /**
    * Properties forwarded to the arrow element.
    */
-  arrowProps?: PopperV2ArrowProps;
+  arrowProps?: PopperArrowProps;
   /**
    * Properties forwarded to the close element.
    */
@@ -120,7 +120,7 @@ export type PopoverCompactSlots = {
 /**
  * Available UI slots for the Popover component.
  */
-export type PopoverUiSlot = PopperV2UiSlot | 'close';
+export type PopoverUiSlot = PopperUiSlot | 'close';
 
 /**
  * UI class overrides for the Popover component.

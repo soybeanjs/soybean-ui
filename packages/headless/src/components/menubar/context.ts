@@ -26,7 +26,7 @@ export const [provideMenubarRootContext, useMenubarRootContext] = useContext(
 
     const isLinkTriggerHovered = shallowRef(false);
 
-    // Hover timing (open delay, skip-delay window) runs on the PopperV2 hover machine of each
+    // Hover timing (open delay, skip-delay window) runs on the Popper hover machine of each
     // menu, coordinated through the delay group provided by `MenubarRoot`; this context only
     // routes which menu is open.
     const onMenuOpen = (value: DefinedValue) => {

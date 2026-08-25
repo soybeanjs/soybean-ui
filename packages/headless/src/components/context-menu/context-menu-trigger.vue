@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PopperV2Trigger } from '../popper-v2';
+import { PopperTrigger } from '../popper';
 import { useContextMenuRootContext } from './context';
 import type { ContextMenuTriggerProps } from './types';
 
@@ -15,7 +15,7 @@ const { pressOpenDelay } = useContextMenuRootContext('ContextMenuTrigger');
 </script>
 
 <template>
-  <PopperV2Trigger
+  <PopperTrigger
     v-bind="props"
     trigger="contextmenu"
     :reference="props.reference ?? undefined"
@@ -24,5 +24,5 @@ const { pressOpenDelay } = useContextMenuRootContext('ContextMenuTrigger');
     data-soybean-context-menu-trigger
   >
     <slot />
-  </PopperV2Trigger>
+  </PopperTrigger>
 </template>

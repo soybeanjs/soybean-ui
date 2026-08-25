@@ -3,5 +3,5 @@ import PlaygroundGallery from '../../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <PlaygroundGallery component="enhanced-popper" />
+  <PlaygroundGallery component="popper" />
 </template>

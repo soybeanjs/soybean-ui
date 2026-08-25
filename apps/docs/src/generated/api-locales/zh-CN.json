@@ -1706,7 +1706,7 @@
         },
         "cascadercontentprops": {
           "members": {
-            "align": "优先采用与触发词对齐的方式。若发生冲突，对齐方式可能会发生变化。",
+            "align": "首选与锚点对齐。发生冲突时可能会调整对齐方式。",
             "alignflip": "当与边界发生冲突时，反转对齐方式。\n仅当 `prioritizePosition` 为 true 时才会发生。",
             "alignoffset": "相对于 `start` 或 `end` 对齐选项的像素偏移量。",
             "arrowpadding": "箭头与内容边缘之间的间距。如果您的内容使用了 border-radius，这将防止内容\n溢出到角落。",
@@ -1718,16 +1718,17 @@
             "emptyprops": "属性已转发至空部分。",
             "forcemount": "用于在需要更多控制时强制挂载。\n\n在使用 Vue 动画库控制动画时非常有用。",
             "hideshiftedarrow": "当值为 `true` 时，若无法将箭头居中对齐\n到引用元素上，则隐藏该箭头。",
-            "hidewhendetached": "当触发器被完全遮挡时，是否隐藏内容。",
+            "hidewhendetached": "当锚点被完全遮挡时，是否隐藏内容。",
             "menuprops": "转发至每个菜单部分的属性。",
+            "open": "浮动层是否处于打开状态。该状态驱动定位的生命周期（当打开状态切换时，`isPositioned`\n会重置）；定位原语本身没有打开状态，因此\n调用方需在此处自行连接其打开状态。",
             "placement": "浮动元素的位置。\n\n若使用该属性，它将覆盖 `side` 和 `align` 属性。",
             "positionstrategy": "要使用的 CSS `position` 属性的类型。",
             "prioritizeposition": "强制内容位于视口内。可能会与参考元素重叠，这可能并非预期效果。",
             "reference": "将作为浮动元素定位参考点的自定义元素或虚拟元素。如果\n提供了该元素，它将替换默认的锚点元素。",
-            "side": "打开时优先渲染的触发器侧。当发生冲突且\n启用了 avoidCollisions 时，将进行反转。",
+            "side": "锚点打开时优先渲染的一侧。当发生冲突且\n启用了 avoidCollisions 时，该方向将被反转。",
             "sideflip": "遇到边界时，请翻转至另一侧。",
-            "sideoffset": "距触发器的像素距离。",
-            "sticky": "在对齐轴上的“粘附”行为。`partial` 会在触发器至少部分位于边界内时将内容保留在边界内，而\n“always” 则无论触发器是否位于边界内，都会将内容保留在边界内。",
+            "sideoffset": "距锚点的像素距离。",
+            "sticky": "在对齐轴上的“粘附”行为。`partial` 会将内容保留在边界内，只要锚点\n至少部分位于边界内；而 “always” 则无论如何都会将内容保留在边界内。",
             "updatepositionstrategy": "在每个动画帧中更新浮动元素位置的策略。"
           },
           "props": "CascaderContent 组件的属性。"
@@ -1859,7 +1860,7 @@
             "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
             "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
             "disabled": "当值为 `true` 时，禁止用户与触发器进行交互。",
-            "reference": "用于定位的引用（或锚点）元素。若未提供，则使用当前\n组件作为锚点。"
+            "reference": ""
           },
           "props": "CascaderTrigger 组件的属性。"
         },
@@ -2238,13 +2239,17 @@
             "focusoutside": "当焦点移出 \"DismissableLayer \"时调用事件处理程序。可以防止。",
             "interactoutside": "当交互发生在 `DismissableLayer` 以外时，调用事件处理程序。具体来说，当`pointerdown\n事件发生或焦点移出时调用的事件处理程序。可以防止。",
             "openautofocus": "打开时自动聚焦调用事件处理程序。可以避免。",
+            "placed": "",
             "pointerdownoutside": "当 \"DismissableLayer \"外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。",
             "update_color": "当颜色值发生变化时发出。",
             "update_format": "当格式值发生变化时输出。",
             "update_modelvalue": "当模型值发生变化时发出。",
             "update_open": "当对话框的打开状态发生变化时，调用事件处理程序。"
           },
-          "emits": "ColorPickerCompact 组件的事件。"
+          "emits": "ColorPickerCompact 组件的事件。",
+          "members": {
+            "placed": ""
+          }
         },
         "colorpickercompactprops": {
           "members": {
@@ -2255,17 +2260,17 @@
             "closeprops": "属性转发到 close 元素。",
             "colorspace": "颜色空间。",
             "defaultformat": "默认格式",
-            "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
+            "defaultopen": "",
             "defaultvalue": "默认值。",
-            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
+            "dir": "",
             "disabled": "组件是否禁用。",
             "fieldprops": "转发到字段元素的属性。",
             "format": "格式。",
             "huesliderprops": "转发到色调滑块元素的属性。",
-            "modal": "对话框的模式。设置为 \"true \"时，与外部元素的交互将被禁用，屏幕阅读器只能看到对话框的内容。\n内容对屏幕阅读器可见。",
+            "modal": "",
             "modelvalue": "当前模型值。",
             "name": "字段名称。作为名称/值对的一部分，与其所属形式一起提交。",
-            "open": "对话框的受控打开状态。可与 `v-model:open`绑定。",
+            "open": "",
             "placement": "放置。",
             "popupprops": "转发到弹出元素的属性。",
             "portalprops": "转发到门户元素的属性。",
@@ -2704,7 +2709,7 @@
         },
         "comboboxcontentprops": {
           "members": {
-            "align": "与触发器的首选对齐方式。发生碰撞时可能会改变。",
+            "align": "首选与锚点对齐。发生冲突时可能会调整对齐方式。",
             "alignflip": "与边界碰撞时翻转对齐方式。\n只有当 `prioritizePosition` 为 true 时才会发生。",
             "alignoffset": "开始 \"或 \"结束 \"对齐选项的像素偏移。",
             "arrowpadding": "箭头与内容边缘之间的填充。如果您的内容有边框半径，这将防止内容溢出边角。\n溢出边角。",
@@ -2716,18 +2721,19 @@
             "disableupdateonlayoutshift": "布局移动时是否禁用内容的更新位置。",
             "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。",
             "hideshiftedarrow": "为`true`时，当箭头无法居中于引用元素时，将隐藏箭头。\n时，将隐藏箭头。",
-            "hidewhendetached": "当触发器完全闭合时，是否隐藏内容。",
+            "hidewhendetached": "当锚点被完全遮挡时，是否隐藏内容。",
             "hidewhenempty": "空时是否隐藏。",
+            "open": "浮动层是否处于打开状态。该状态驱动定位的生命周期（当打开状态切换时，`isPositioned`\n会重置）；定位原语本身没有打开状态，因此\n调用方需在此处自行连接其打开状态。",
             "placement": "浮动元素的位置。\n\n如果使用，它将覆盖`side`和`align`道具。",
             "popupprops": "转发到弹出元素的属性。",
             "position": "位置",
             "positionstrategy": "要使用的 CSS 位置属性类型。",
             "prioritizeposition": "强制内容位于视口内。可能会与参考元素重叠，这可能不是我们想要的。",
             "reference": "自定义元素或虚拟元素将被设置为浮动元素的位置参考。如果\n则将替换默认的锚元素。",
-            "side": "触发器打开时的首选渲染面。当发生碰撞且\navoidCollisions 启用时，触发器的首选渲染面将被反转。",
+            "side": "锚点打开时优先渲染的一侧。当发生冲突且\n启用了 avoidCollisions 时，该方向将被反转。",
             "sideflip": "与边界碰撞时，翻转到相反的一侧。",
-            "sideoffset": "与触发器的距离（以像素为单位）。",
-            "sticky": "对齐轴上的粘性行为。只要触发器至少部分位于边界内，\"partial \"就会将内容保持在边界内。\n而 \"始终 \"则无论如何都会将内容保持在边界内。",
+            "sideoffset": "距锚点的像素距离。",
+            "sticky": "在对齐轴上的“粘附”行为。`partial` 会将内容保留在边界内，只要锚点\n至少部分位于边界内；而 “always” 则无论如何都会将内容保留在边界内。",
             "trapfocus": "true \"时，焦点不能通过键盘、指针或程序焦点逃离内容。",
             "updatepositionstrategy": "在每一帧动画中更新浮动元素位置的策略。"
           },
@@ -2980,6 +2986,9 @@
           "props": "MenuItem 组件的属性。"
         },
         "contextmenupopupprops": "MenuPopup 组件的属性。",
+        "contextmenuportalprops": {
+          "props": "Portal 组件的属性。"
+        },
         "contextmenuradiogroupemits": {
           "emits": "MenuRadioGroup 组件的事件。"
         },
@@ -3006,6 +3015,9 @@
           "emits": "MenuSubContent 组件的事件。"
         },
         "contextmenusubcontentprops": {
+          "callables": {
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。"
+          },
           "members": {
             "alignflip": "与边界碰撞时翻转对齐方式。\n只有当 `prioritizePosition` 为 true 时才会发生。",
             "alignoffset": "开始 \"或 \"结束 \"对齐选项的像素偏移。",
@@ -3013,6 +3025,7 @@
             "avoidcollisions": "true \"时，覆盖侧边和对齐首选项，以防止与边界边缘碰撞。",
             "collisionboundary": "用作碰撞边界的元素。默认情况下是视口，但您也可以提供额外的\n元素。",
             "collisionpadding": "以像素为单位的碰撞检测边界距离。接受一个数字（所有边都相同\n所有边），或部分填充对象，例如{ top: 20, left: 20 }。",
+            "disablehoverablecontent": "当设置为 `true` 时，鼠标悬停在弹出窗口上会将其关闭，而非保持打开状态（宽限区域已禁用，\n因此离开触发区域会立即关闭该层）。",
             "disableupdateonlayoutshift": "布局移动时是否禁用内容的更新位置。",
             "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。",
             "hideshiftedarrow": "为`true`时，当箭头无法居中于引用元素时，将隐藏箭头。\n时，将隐藏箭头。",
@@ -3026,6 +3039,7 @@
             "sideflip": "与边界碰撞时，翻转到相反的一侧。",
             "sideoffset": "与触发器的距离（以像素为单位）。",
             "sticky": "对齐轴上的粘性行为。只要触发器至少部分位于边界内，\"partial \"就会将内容保持在边界内。\n而 \"始终 \"则无论如何都会将内容保持在边界内。",
+            "trapfocus": "弹出窗口打开时，焦点是否被困在其中（Tab 键在层内循环，且\n模态层的主体滚动被锁定）。",
             "updatepositionstrategy": "在每一帧动画中更新浮动元素位置的策略。"
           },
           "props": "MenuSubContent 组件的属性。"
@@ -3166,24 +3180,30 @@
           "emits": "ContextMenuContent 组件的事件。"
         },
         "contextmenucontentprops": {
+          "callables": {
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。"
+          },
           "members": {
             "alignflip": "与边界碰撞时翻转对齐方式。\n只有当 `prioritizePosition` 为 true 时才会发生。",
             "alignoffset": "开始 \"或 \"结束 \"对齐选项的像素偏移。",
             "avoidcollisions": "true \"时，覆盖侧边和对齐首选项，以防止与边界边缘碰撞。",
             "collisionboundary": "用作碰撞边界的元素。默认情况下是视口，但您也可以提供额外的\n元素。",
             "collisionpadding": "以像素为单位的碰撞检测边界距离。接受一个数字（所有边都相同\n所有边），或部分填充对象，例如{ top: 20, left: 20 }。",
+            "disablehoverablecontent": "当设置为 `true` 时，鼠标悬停在弹出窗口上会将其关闭，而非保持打开状态（宽限区域已禁用，\n因此离开触发区域会立即关闭该层）。",
             "disableupdateonlayoutshift": "布局移动时是否禁用内容的更新位置。",
             "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。",
             "hideshiftedarrow": "为`true`时，当箭头无法居中于引用元素时，将隐藏箭头。\n时，将隐藏箭头。",
             "hidewhendetached": "当触发器完全闭合时，是否隐藏内容。",
             "loop": "键盘导航是否应循环",
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。",
             "placement": "浮动元素的位置。\n\n如果使用，它将覆盖`side`和`align`道具。",
             "popupprops": "转发到弹出元素的属性。",
             "positionstrategy": "要使用的 CSS 位置属性类型。",
             "prioritizeposition": "强制内容位于视口内。可能会与参考元素重叠，这可能不是我们想要的。",
             "reference": "自定义元素或虚拟元素将被设置为浮动元素的位置参考。如果\n则将替换默认的锚元素。",
             "sideflip": "与边界碰撞时，翻转到相反的一侧。",
-            "sticky": "对齐轴上的粘性行为。只要触发器至少部分位于边界内，\"partial \"就会将内容保持在边界内。\n而 \"始终 \"则无论如何都会将内容保持在边界内。"
+            "sticky": "对齐轴上的粘性行为。只要触发器至少部分位于边界内，\"partial \"就会将内容保持在边界内。\n而 \"始终 \"则无论如何都会将内容保持在边界内。",
+            "trapfocus": "弹出窗口打开时，焦点是否被困在其中（Tab 键在层内循环，且\n模态层的主体滚动被锁定）。"
           },
           "props": "ContextMenuContent 组件的属性。"
         },
@@ -3388,12 +3408,16 @@
             "focusoutside": "当焦点移出 \"DismissableLayer \"时调用事件处理程序。可以防止。",
             "interactoutside": "当交互发生在 `DismissableLayer` 以外时，调用事件处理程序。具体来说，当`pointerdown\n事件发生或焦点移出时调用的事件处理程序。可以防止。",
             "openautofocus": "打开时自动聚焦调用事件处理程序。可以避免。",
+            "placed": "",
             "pointerdownoutside": "当 \"DismissableLayer \"外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。",
             "update_modelvalue": "当模型值发生变化时发出。",
             "update_open": "当对话框的打开状态发生变化时，调用事件处理程序。",
             "update_placeholder": "在占位符值发生变化时输出。"
           },
-          "emits": "DatePickerCompact 组件的事件。"
+          "emits": "DatePickerCompact 组件的事件。",
+          "members": {
+            "placed": ""
+          }
         },
         "datepickercompactprops": {
           "members": {
@@ -3405,10 +3429,10 @@
             "celltriggerprops": "转发到单元格触发器元素的属性。",
             "closeprops": "属性转发到 close 元素。",
             "datefieldprops": "",
-            "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
+            "defaultopen": "",
             "defaultplaceholder": "默认占位符。",
             "defaultvalue": "默认值。",
-            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
+            "dir": "组件的阅读方向。",
             "disabled": "组件是否禁用。",
             "disabledaysoutsidecurrentview": "是否禁用当前视图以外的天数。",
             "fixedweeks": "是否固定周数。",
@@ -3425,13 +3449,13 @@
             "locale": "语言",
             "maxvalue": "最大值。",
             "minvalue": "最小值。",
-            "modal": "对话框的模式。设置为 \"true \"时，与外部元素的交互将被禁用，屏幕阅读器只能看到对话框的内容。\n内容对屏幕阅读器可见。",
+            "modal": "",
             "modelvalue": "当前模型值。",
             "multiple": "是否支持多值。",
             "nextpage": "下一页",
             "nextprops": "属性转到下一个元素。",
             "numberofmonths": "月数",
-            "open": "对话框的受控打开状态。可与 `v-model:open`绑定。",
+            "open": "",
             "pagednavigation": "是否采用分页导航。",
             "placeholder": "占位符。",
             "placement": "放置。",
@@ -3586,13 +3610,17 @@
             "focusoutside": "当焦点移出 \"DismissableLayer \"时调用事件处理程序。可以防止。",
             "interactoutside": "当交互发生在 `DismissableLayer` 以外时，调用事件处理程序。具体来说，当`pointerdown\n事件发生或焦点移出时调用的事件处理程序。可以防止。",
             "openautofocus": "打开时自动聚焦调用事件处理程序。可以避免。",
+            "placed": "",
             "pointerdownoutside": "当 \"DismissableLayer \"外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。",
             "update_modelvalue": "当模型值发生变化时发出。",
             "update_open": "当对话框的打开状态发生变化时，调用事件处理程序。",
             "update_placeholder": "在占位符值发生变化时输出。",
             "update_startvalue": "当起始值发生变化时发出。"
           },
-          "emits": "DateRangePickerCompact 组件的事件。"
+          "emits": "DateRangePickerCompact 组件的事件。",
+          "members": {
+            "placed": ""
+          }
         },
         "daterangepickercompactprops": {
           "members": {
@@ -3605,10 +3633,10 @@
             "celltriggerprops": "转发到单元格触发器元素的属性。",
             "closeprops": "属性转发到 close 元素。",
             "datefieldprops": "",
-            "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
+            "defaultopen": "",
             "defaultplaceholder": "默认占位符。",
             "defaultvalue": "默认值。",
-            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
+            "dir": "组件的阅读方向。",
             "disabled": "组件是否禁用。",
             "disabledaysoutsidecurrentview": "是否禁用当前视图以外的天数。",
             "fixeddate": "固定日期。",
@@ -3628,12 +3656,12 @@
             "maximumdays": "最长天数",
             "maxvalue": "最大值。",
             "minvalue": "最小值。",
-            "modal": "对话框的模式。设置为 \"true \"时，与外部元素的交互将被禁用，屏幕阅读器只能看到对话框的内容。\n内容对屏幕阅读器可见。",
+            "modal": "",
             "modelvalue": "当前模型值。",
             "nextpage": "下一页",
             "nextprops": "属性转到下一个元素。",
             "numberofmonths": "月数",
-            "open": "对话框的受控打开状态。可与 `v-model:open`绑定。",
+            "open": "",
             "pagednavigation": "是否采用分页导航。",
             "placeholder": "占位符。",
             "placement": "放置。",
@@ -3946,6 +3974,9 @@
           }
         },
         "dropdownmenusubcontentprops": {
+          "callables": {
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。"
+          },
           "members": {
             "alignflip": "与边界碰撞时翻转对齐方式。\n只有当 `prioritizePosition` 为 true 时才会发生。",
             "alignoffset": "开始 \"或 \"结束 \"对齐选项的像素偏移。",
@@ -3953,6 +3984,7 @@
             "avoidcollisions": "true \"时，覆盖侧边和对齐首选项，以防止与边界边缘碰撞。",
             "collisionboundary": "用作碰撞边界的元素。默认情况下是视口，但您也可以提供额外的\n元素。",
             "collisionpadding": "以像素为单位的碰撞检测边界距离。接受一个数字（所有边都相同\n所有边），或部分填充对象，例如{ top: 20, left: 20 }。",
+            "disablehoverablecontent": "当设置为 `true` 时，鼠标悬停在弹出窗口上会将其关闭，而非保持打开状态（宽限区域已禁用，\n因此离开触发区域会立即关闭该层）。",
             "disableupdateonlayoutshift": "布局移动时是否禁用内容的更新位置。",
             "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。",
             "hideshiftedarrow": "为`true`时，当箭头无法居中于引用元素时，将隐藏箭头。\n时，将隐藏箭头。",
@@ -3966,6 +3998,7 @@
             "sideflip": "与边界碰撞时，翻转到相反的一侧。",
             "sideoffset": "与触发器的距离（以像素为单位）。",
             "sticky": "对齐轴上的粘性行为。只要触发器至少部分位于边界内，\"partial \"就会将内容保持在边界内。\n而 \"始终 \"则无论如何都会将内容保持在边界内。",
+            "trapfocus": "弹出窗口打开时，焦点是否被困在其中（Tab 键在层内循环，且\n模态层的主体滚动被锁定）。",
             "updatepositionstrategy": "在每一帧动画中更新浮动元素位置的策略。"
           }
         },
@@ -4110,6 +4143,9 @@
           "emits": "DropdownMenuContent 组件的事件。"
         },
         "dropdownmenucontentprops": {
+          "callables": {
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。"
+          },
           "members": {
             "align": "与触发器的首选对齐方式。发生碰撞时可能会改变。",
             "alignflip": "与边界碰撞时翻转对齐方式。\n只有当 `prioritizePosition` 为 true 时才会发生。",
@@ -4118,11 +4154,13 @@
             "avoidcollisions": "true \"时，覆盖侧边和对齐首选项，以防止与边界边缘碰撞。",
             "collisionboundary": "用作碰撞边界的元素。默认情况下是视口，但您也可以提供额外的\n元素。",
             "collisionpadding": "以像素为单位的碰撞检测边界距离。接受一个数字（所有边都相同\n所有边），或部分填充对象，例如{ top: 20, left: 20 }。",
+            "disablehoverablecontent": "当设置为 `true` 时，鼠标悬停在弹出窗口上会将其关闭，而非保持打开状态（宽限区域已禁用，\n因此离开触发区域会立即关闭该层）。",
             "disableupdateonlayoutshift": "布局移动时是否禁用内容的更新位置。",
             "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。",
             "hideshiftedarrow": "为`true`时，当箭头无法居中于引用元素时，将隐藏箭头。\n时，将隐藏箭头。",
             "hidewhendetached": "当触发器完全闭合时，是否隐藏内容。",
             "loop": "键盘导航是否应循环",
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。",
             "placement": "浮动元素的位置。\n\n如果使用，它将覆盖`side`和`align`道具。",
             "popupprops": "转发到弹出元素的属性。",
             "positionstrategy": "要使用的 CSS 位置属性类型。",
@@ -4132,6 +4170,7 @@
             "sideflip": "与边界碰撞时，翻转到相反的一侧。",
             "sideoffset": "与触发器的距离（以像素为单位）。",
             "sticky": "对齐轴上的粘性行为。只要触发器至少部分位于边界内，\"partial \"就会将内容保持在边界内。\n而 \"始终 \"则无论如何都会将内容保持在边界内。",
+            "trapfocus": "弹出窗口打开时，焦点是否被困在其中（Tab 键在层内循环，且\n模态层的主体滚动被锁定）。",
             "updatepositionstrategy": "在每一帧动画中更新浮动元素位置的策略。"
           },
           "props": "DropdownMenuContent 组件的属性。"
@@ -4543,7 +4582,7 @@
         "formui": ""
       },
       "packages_headless_src_components_hover_card_index": {
-        "hovercardarrowprops": "PopperArrow 组件的属性。",
+        "hovercardarrowprops": "",
         "hovercardportalprops": {
           "members": {
             "defer": "推迟解析 Teleport 目标，直到应用程序的其他部分安装完毕（需要 Vue 3.5.0 以上版本）\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
@@ -4552,7 +4591,7 @@
             "to": "Vue 本地传送组件道具 `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}"
           }
         },
-        "hovercardui": "Popper 组件的 UI 类重载。"
+        "hovercardui": ""
       },
       "packages_headless_src_components_hover_card_types": {
         "hovercardcompactemits": {
@@ -4569,7 +4608,9 @@
             "arrowprops": "转发到箭头元素的属性。",
             "closedelay": "从指针离开触发器或弹出窗口到悬浮卡关闭的持续时间。",
             "defaultopen": "悬浮卡初始呈现时的打开状态。在不需要控制其打开状态时使用。",
-            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
             "open": "悬浮卡的受控打开状态。",
             "opendelay": "从指针进入触发器到悬停卡打开的持续时间。",
             "placement": "放置。",
@@ -4607,6 +4648,9 @@
           }
         },
         "hovercardpositionerprops": {
+          "callables": {
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。"
+          },
           "members": {
             "align": "与触发器的首选对齐方式。发生碰撞时可能会改变。",
             "alignflip": "与边界碰撞时翻转对齐方式。\n只有当 `prioritizePosition` 为 true 时才会发生。",
@@ -4615,10 +4659,12 @@
             "avoidcollisions": "true \"时，覆盖侧边和对齐首选项，以防止与边界边缘碰撞。",
             "collisionboundary": "用作碰撞边界的元素。默认情况下是视口，但您也可以提供额外的\n元素。",
             "collisionpadding": "以像素为单位的碰撞检测边界距离。接受一个数字（所有边都相同\n所有边），或部分填充对象，例如{ top: 20, left: 20 }。",
+            "disablehoverablecontent": "当设置为 `true` 时，鼠标悬停在弹出窗口上会将其关闭，而非保持打开状态（宽限区域已禁用，\n因此离开触发区域会立即关闭该层）。",
             "disableupdateonlayoutshift": "布局移动时是否禁用内容的更新位置。",
             "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。",
             "hideshiftedarrow": "为`true`时，当箭头无法居中于引用元素时，将隐藏箭头。\n时，将隐藏箭头。",
             "hidewhendetached": "当触发器完全闭合时，是否隐藏内容。",
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。",
             "placement": "浮动元素的位置。\n\n如果使用，它将覆盖`side`和`align`道具。",
             "positionstrategy": "要使用的 CSS 位置属性类型。",
             "prioritizeposition": "强制内容位于视口内。可能会与参考元素重叠，这可能不是我们想要的。",
@@ -4627,6 +4673,7 @@
             "sideflip": "与边界碰撞时，翻转到相反的一侧。",
             "sideoffset": "与触发器的距离（以像素为单位）。",
             "sticky": "对齐轴上的粘性行为。只要触发器至少部分位于边界内，\"partial \"就会将内容保持在边界内。\n而 \"始终 \"则无论如何都会将内容保持在边界内。",
+            "trapfocus": "弹出窗口打开时，焦点是否被困在其中（Tab 键在层内循环，且\n模态层的主体滚动被锁定）。",
             "updatepositionstrategy": "在每一帧动画中更新浮动元素位置的策略。"
           },
           "props": "HoverCardPositioner 组件的属性。"
@@ -4641,7 +4688,9 @@
           "members": {
             "closedelay": "从指针离开触发器或弹出窗口到悬浮卡关闭的持续时间。",
             "defaultopen": "悬浮卡初始呈现时的打开状态。在不需要控制其打开状态时使用。",
-            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
             "open": "悬浮卡的受控打开状态。",
             "opendelay": "从指针进入触发器到悬停卡打开的持续时间。"
           },
@@ -5296,14 +5345,6 @@
         "listboxvirtualizerslotsprops": "ListboxVirtualizerSlots 组件的属性。"
       },
       "packages_headless_src_components_menu_index": {
-        "menuportalprops": {
-          "members": {
-            "defer": "推迟解析 Teleport 目标，直到应用程序的其他部分安装完毕（需要 Vue 3.5.0 以上版本）\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
-            "disabled": "禁用远程传输并内联渲染组件\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
-            "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。",
-            "to": "Vue 本地传送组件道具 `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}"
-          }
-        },
         "menuseparatorprops": {
           "members": {
             "decorative": "组件是否纯粹是装饰性的。<br>当 \"true \"时，与可访问性相关的属性将被更新，以便\n使呈现的元素从可访问性树中移除。",
@@ -5417,11 +5458,13 @@
             "avoidcollisions": "true \"时，覆盖侧边和对齐首选项，以防止与边界边缘碰撞。",
             "collisionboundary": "用作碰撞边界的元素。默认情况下是视口，但您也可以提供额外的\n元素。",
             "collisionpadding": "以像素为单位的碰撞检测边界距离。接受一个数字（所有边都相同\n所有边），或部分填充对象，例如{ top: 20, left: 20 }。",
+            "disablehoverablecontent": "当设置为 `true` 时，鼠标悬停在弹出窗口上会将其关闭，而非保持打开状态（宽限区域已禁用，\n因此离开触发区域会立即关闭该层）。",
             "disableupdateonlayoutshift": "布局移动时是否禁用内容的更新位置。",
             "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。",
             "hideshiftedarrow": "为`true`时，当箭头无法居中于引用元素时，将隐藏箭头。\n时，将隐藏箭头。",
             "hidewhendetached": "当触发器完全闭合时，是否隐藏内容。",
             "loop": "键盘导航是否应循环",
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。",
             "placement": "浮动元素的位置。\n\n如果使用，它将覆盖`side`和`align`道具。",
             "popupprops": "转发到弹出元素的属性。",
             "positionstrategy": "要使用的 CSS 位置属性类型。",
@@ -5431,6 +5474,7 @@
             "sideflip": "与边界碰撞时，翻转到相反的一侧。",
             "sideoffset": "与触发器的距离（以像素为单位）。",
             "sticky": "对齐轴上的粘性行为。只要触发器至少部分位于边界内，\"partial \"就会将内容保持在边界内。\n而 \"始终 \"则无论如何都会将内容保持在边界内。",
+            "trapfocus": "弹出窗口打开时，焦点是否被困在其中（Tab 键在层内循环，且\n模态层的主体滚动被锁定）。",
             "updatepositionstrategy": "在每一帧动画中更新浮动元素位置的策略。"
           },
           "props": "MenuContent 组件的属性。"
@@ -5680,6 +5724,9 @@
           "emits": "MenuSubContent 组件的事件。"
         },
         "menusubcontentprops": {
+          "callables": {
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。"
+          },
           "members": {
             "alignflip": "与边界碰撞时翻转对齐方式。\n只有当 `prioritizePosition` 为 true 时才会发生。",
             "alignoffset": "开始 \"或 \"结束 \"对齐选项的像素偏移。",
@@ -5687,11 +5734,13 @@
             "avoidcollisions": "true \"时，覆盖侧边和对齐首选项，以防止与边界边缘碰撞。",
             "collisionboundary": "用作碰撞边界的元素。默认情况下是视口，但您也可以提供额外的\n元素。",
             "collisionpadding": "以像素为单位的碰撞检测边界距离。接受一个数字（所有边都相同\n所有边），或部分填充对象，例如{ top: 20, left: 20 }。",
+            "disablehoverablecontent": "当设置为 `true` 时，鼠标悬停在弹出窗口上会将其关闭，而非保持打开状态（宽限区域已禁用，\n因此离开触发区域会立即关闭该层）。",
             "disableupdateonlayoutshift": "布局移动时是否禁用内容的更新位置。",
             "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。",
             "hideshiftedarrow": "为`true`时，当箭头无法居中于引用元素时，将隐藏箭头。\n时，将隐藏箭头。",
             "hidewhendetached": "当触发器完全闭合时，是否隐藏内容。",
             "loop": "键盘导航是否应循环",
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。",
             "placement": "浮动元素的位置。\n\n如果使用，它将覆盖`side`和`align`道具。",
             "popupprops": "转发到弹出元素的属性。",
             "positionstrategy": "要使用的 CSS 位置属性类型。",
@@ -5700,6 +5749,7 @@
             "sideflip": "与边界碰撞时，翻转到相反的一侧。",
             "sideoffset": "与触发器的距离（以像素为单位）。",
             "sticky": "对齐轴上的粘性行为。只要触发器至少部分位于边界内，\"partial \"就会将内容保持在边界内。\n而 \"始终 \"则无论如何都会将内容保持在边界内。",
+            "trapfocus": "弹出窗口打开时，焦点是否被困在其中（Tab 键在层内循环，且\n模态层的主体滚动被锁定）。",
             "updatepositionstrategy": "在每一帧动画中更新浮动元素位置的策略。"
           },
           "props": "MenuSubContent 组件的属性。"
@@ -5815,6 +5865,9 @@
           "emits": "MenubarContent 组件的事件。"
         },
         "menubarcontentprops": {
+          "callables": {
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。"
+          },
           "members": {
             "align": "与触发器的首选对齐方式。发生碰撞时可能会改变。",
             "alignflip": "与边界碰撞时翻转对齐方式。\n只有当 `prioritizePosition` 为 true 时才会发生。",
@@ -5823,11 +5876,13 @@
             "avoidcollisions": "true \"时，覆盖侧边和对齐首选项，以防止与边界边缘碰撞。",
             "collisionboundary": "用作碰撞边界的元素。默认情况下是视口，但您也可以提供额外的\n元素。",
             "collisionpadding": "以像素为单位的碰撞检测边界距离。接受一个数字（所有边都相同\n所有边），或部分填充对象，例如{ top: 20, left: 20 }。",
+            "disablehoverablecontent": "当设置为 `true` 时，鼠标悬停在弹出窗口上会将其关闭，而非保持打开状态（宽限区域已禁用，\n因此离开触发区域会立即关闭该层）。",
             "disableupdateonlayoutshift": "布局移动时是否禁用内容的更新位置。",
             "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。",
             "hideshiftedarrow": "为`true`时，当箭头无法居中于引用元素时，将隐藏箭头。\n时，将隐藏箭头。",
             "hidewhendetached": "当触发器完全闭合时，是否隐藏内容。",
             "loop": "键盘导航是否应循环",
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。",
             "placement": "浮动元素的位置。\n\n如果使用，它将覆盖`side`和`align`道具。",
             "popupprops": "转发到弹出元素的属性。",
             "positionstrategy": "要使用的 CSS 位置属性类型。",
@@ -5837,6 +5892,7 @@
             "sideflip": "与边界碰撞时，翻转到相反的一侧。",
             "sideoffset": "与触发器的距离（以像素为单位）。",
             "sticky": "对齐轴上的粘性行为。只要触发器至少部分位于边界内，\"partial \"就会将内容保持在边界内。\n而 \"始终 \"则无论如何都会将内容保持在边界内。",
+            "trapfocus": "弹出窗口打开时，焦点是否被困在其中（Tab 键在层内循环，且\n模态层的主体滚动被锁定）。",
             "updatepositionstrategy": "在每一帧动画中更新浮动元素位置的策略。"
           },
           "props": "MenubarContent 组件的属性。"
@@ -5887,11 +5943,13 @@
             "avoidcollisions": "true \"时，覆盖侧边和对齐首选项，以防止与边界边缘碰撞。",
             "collisionboundary": "用作碰撞边界的元素。默认情况下是视口，但您也可以提供额外的\n元素。",
             "collisionpadding": "以像素为单位的碰撞检测边界距离。接受一个数字（所有边都相同\n所有边），或部分填充对象，例如{ top: 20, left: 20 }。",
+            "disablehoverablecontent": "当设置为 `true` 时，鼠标悬停在弹出窗口上会将其关闭，而非保持打开状态（宽限区域已禁用，\n因此离开触发区域会立即关闭该层）。",
             "disableupdateonlayoutshift": "布局移动时是否禁用内容的更新位置。",
             "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。",
             "hideshiftedarrow": "为`true`时，当箭头无法居中于引用元素时，将隐藏箭头。\n时，将隐藏箭头。",
             "hidewhendetached": "当触发器完全闭合时，是否隐藏内容。",
             "loop": "键盘导航是否应循环",
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。",
             "placement": "浮动元素的位置。\n\n如果使用，它将覆盖`side`和`align`道具。",
             "popupprops": "转发到弹出元素的属性。",
             "positionstrategy": "要使用的 CSS 位置属性类型。",
@@ -5900,6 +5958,7 @@
             "sideflip": "与边界碰撞时，翻转到相反的一侧。",
             "sideoffset": "与触发器的距离（以像素为单位）。",
             "sticky": "对齐轴上的粘性行为。只要触发器至少部分位于边界内，\"partial \"就会将内容保持在边界内。\n而 \"始终 \"则无论如何都会将内容保持在边界内。",
+            "trapfocus": "弹出窗口打开时，焦点是否被困在其中（Tab 键在层内循环，且\n模态层的主体滚动被锁定）。",
             "updatepositionstrategy": "在每一帧动画中更新浮动元素位置的策略。"
           },
           "props": "MenubarSubContent 组件的属性。"
@@ -6344,7 +6403,7 @@
         "passwordui": "密码组件的用户界面类重载。"
       },
       "packages_headless_src_components_popconfirm_index": {
-        "popconfirmarrowprops": "PopperArrow 组件的属性。",
+        "popconfirmarrowprops": "",
         "popconfirmcloseprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
@@ -6369,6 +6428,9 @@
           "emits": "PopoverPositioner 组件的事件。"
         },
         "popconfirmpositionerprops": {
+          "callables": {
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。"
+          },
           "members": {
             "align": "与触发器的首选对齐方式。发生碰撞时可能会改变。",
             "alignflip": "与边界碰撞时翻转对齐方式。\n只有当 `prioritizePosition` 为 true 时才会发生。",
@@ -6377,6 +6439,7 @@
             "avoidcollisions": "true \"时，覆盖侧边和对齐首选项，以防止与边界边缘碰撞。",
             "collisionboundary": "用作碰撞边界的元素。默认情况下是视口，但您也可以提供额外的\n元素。",
             "collisionpadding": "以像素为单位的碰撞检测边界距离。接受一个数字（所有边都相同\n所有边），或部分填充对象，例如{ top: 20, left: 20 }。",
+            "disablehoverablecontent": "当设置为 `true` 时，鼠标悬停在弹出窗口上会将其关闭，而非保持打开状态（宽限区域已禁用，\n因此离开触发区域会立即关闭该层）。",
             "disableupdateonlayoutshift": "布局移动时是否禁用内容的更新位置。",
             "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。",
             "hideshiftedarrow": "为`true`时，当箭头无法居中于引用元素时，将隐藏箭头。\n时，将隐藏箭头。",
@@ -6389,6 +6452,7 @@
             "sideflip": "与边界碰撞时，翻转到相反的一侧。",
             "sideoffset": "与触发器的距离（以像素为单位）。",
             "sticky": "对齐轴上的粘性行为。只要触发器至少部分位于边界内，\"partial \"就会将内容保持在边界内。\n而 \"始终 \"则无论如何都会将内容保持在边界内。",
+            "trapfocus": "弹出窗口打开时，焦点是否被困在其中（Tab 键在层内循环，且\n模态层的主体滚动被锁定）。",
             "updatepositionstrategy": "在每一帧动画中更新浮动元素位置的策略。"
           },
           "props": "PopoverPositioner 组件的属性。"
@@ -6435,10 +6499,14 @@
             "focusoutside": "当焦点移出 \"DismissableLayer \"时调用事件处理程序。可以防止。",
             "interactoutside": "当交互发生在 `DismissableLayer` 以外时，调用事件处理程序。具体来说，当`pointerdown\n事件发生或焦点移出时调用的事件处理程序。可以防止。",
             "openautofocus": "打开时自动聚焦调用事件处理程序。可以避免。",
+            "placed": "",
             "pointerdownoutside": "当 \"DismissableLayer \"外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。",
             "update_open": "当对话框的打开状态发生变化时，调用事件处理程序。"
           },
-          "emits": "PopconfirmCompact 组件的事件。"
+          "emits": "PopconfirmCompact 组件的事件。",
+          "members": {
+            "placed": ""
+          }
         },
         "popconfirmcompactprops": {
           "members": {
@@ -6450,15 +6518,15 @@
             "confirmtext": "确认按钮的文本。\n\n默认为来自 `ConfigProvider` 的本地化 `dialog.confirm` 消息。",
             "content": "内容。",
             "contentprops": "转发到内容元素的属性。",
-            "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
+            "defaultopen": "",
             "description": "组件呈现的描述文本。",
             "descriptionprops": "转发到描述元素的属性。",
-            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
-            "disabled": "组件是否禁用。",
+            "dir": "",
+            "disabled": "",
             "footerprops": "转发到页脚元素的属性。",
             "headerprops": "转发到标题元素的属性。",
-            "modal": "对话框的模式。设置为 \"true \"时，与外部元素的交互将被禁用，屏幕阅读器只能看到对话框的内容。\n内容对屏幕阅读器可见。",
-            "open": "对话框的受控打开状态。可与 `v-model:open`绑定。",
+            "modal": "",
+            "open": "",
             "placement": "放置。",
             "popupprops": "转发到弹出元素的属性。",
             "portalprops": "转发到门户元素的属性。",
@@ -6518,7 +6586,7 @@
         "popconfirmui": "Popconfirm 组件的 UI 类重载。"
       },
       "packages_headless_src_components_popover_index": {
-        "popoverarrowprops": "PopperArrow 组件的属性。",
+        "popoverarrowprops": "",
         "popoverportalprops": {
           "members": {
             "defer": "推迟解析 Teleport 目标，直到应用程序的其他部分安装完毕（需要 Vue 3.5.0 以上版本）\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
@@ -6551,20 +6619,24 @@
             "focusoutside": "当焦点移出 \"DismissableLayer \"时调用事件处理程序。可以防止。",
             "interactoutside": "当交互发生在 `DismissableLayer` 以外时，调用事件处理程序。具体来说，当`pointerdown\n事件发生或焦点移出时调用的事件处理程序。可以避免。",
             "openautofocus": "打开时自动聚焦调用事件处理程序。可以避免。",
+            "placed": "",
             "pointerdownoutside": "当 \"DismissableLayer \"之外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。",
             "update_open": "当对话框的打开状态发生变化时，调用事件处理程序。"
           },
-          "emits": "PopoverCompact 组件的事件。"
+          "emits": "PopoverCompact 组件的事件。",
+          "members": {
+            "placed": ""
+          }
         },
         "popovercompactprops": {
           "members": {
             "arrowprops": "转发到箭头元素的属性。",
             "closeprops": "属性转发到 close 元素。",
-            "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
-            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
-            "disabled": "组件是否禁用。",
-            "modal": "对话框的模式。设置为 \"true \"时，与外部元素的交互将被禁用，屏幕阅读器只能看到对话框的内容。\n内容对屏幕阅读器可见。",
-            "open": "对话框的受控打开状态。可与 `v-model:open`绑定。",
+            "defaultopen": "",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
+            "open": "",
             "placement": "放置。",
             "popupprops": "转发到弹出元素的属性。",
             "portalprops": "转发到门户元素的属性。",
@@ -6592,21 +6664,15 @@
             "focusoutside": "当焦点移出 \"DismissableLayer \"时调用事件处理程序。可以防止。",
             "interactoutside": "当交互发生在 `DismissableLayer` 以外时，调用事件处理程序。具体来说，当`pointerdown\n事件发生或焦点移出时调用的事件处理程序。可以避免。",
             "openautofocus": "打开时自动聚焦调用事件处理程序。可以避免。",
+            "placed": "",
             "pointerdownoutside": "当 \"DismissableLayer \"之外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。"
           },
           "emits": "PopoverPositioner 组件的事件。"
         },
-        "popoverpositionerimplemits": {
-          "callables": {
-            "closeautofocus": "关闭时自动聚焦会调用事件处理程序。可以避免。",
-            "escapekeydown": "按下 Escape 键时调用事件处理程序。可以避免。",
-            "focusoutside": "当焦点移出 \"DismissableLayer \"时调用事件处理程序。可以防止。",
-            "interactoutside": "当交互发生在 `DismissableLayer` 以外时，调用事件处理程序。具体来说，当`pointerdown\n事件发生或焦点移出时调用的事件处理程序。可以避免。",
-            "openautofocus": "打开时自动聚焦调用事件处理程序。可以避免。",
-            "pointerdownoutside": "当 \"DismissableLayer \"之外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。"
-          }
-        },
         "popoverpositionerprops": {
+          "callables": {
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。"
+          },
           "members": {
             "align": "与触发器的首选对齐方式。发生碰撞时可能会改变。",
             "alignflip": "与边界碰撞时翻转对齐方式。\n只有当 `prioritizePosition` 为 true 时才会发生。",
@@ -6615,10 +6681,12 @@
             "avoidcollisions": "true \"时，覆盖侧边和对齐首选项，以防止与边界边缘碰撞。",
             "collisionboundary": "用作碰撞边界的元素。默认情况下是视口，但您也可以提供额外的\n元素。",
             "collisionpadding": "以像素为单位的碰撞检测边界距离。接受一个数字（所有边都相同\n所有边），或部分填充对象，例如{ top: 20, left: 20 }。",
+            "disablehoverablecontent": "当设置为 `true` 时，鼠标悬停在弹出窗口上会将其关闭，而非保持打开状态（宽限区域已禁用，\n因此离开触发区域会立即关闭该层）。",
             "disableupdateonlayoutshift": "布局移动时是否禁用内容的更新位置。",
             "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。",
             "hideshiftedarrow": "为`true`时，当箭头无法居中于引用元素时，将隐藏箭头。\n时，将隐藏箭头。",
             "hidewhendetached": "当触发器完全闭合时，是否隐藏内容。",
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。",
             "placement": "浮动元素的位置。\n\n如果使用，它将覆盖`side`和`align`道具。",
             "positionstrategy": "要使用的 CSS 位置属性类型。",
             "prioritizeposition": "强制内容位于视口内。可能会与参考元素重叠，这可能不是我们想要的。",
@@ -6627,6 +6695,7 @@
             "sideflip": "与边界碰撞时，翻转到相反的一侧。",
             "sideoffset": "与触发器的距离（以像素为单位）。",
             "sticky": "对齐轴上的粘性行为。只要触发器至少部分位于边界内，\"partial \"就会将内容保持在边界内。\n而 \"始终 \"则无论如何都会将内容保持在边界内。",
+            "trapfocus": "弹出窗口打开时，焦点是否被困在其中（Tab 键在层内循环，且\n模态层的主体滚动被锁定）。",
             "updatepositionstrategy": "在每一帧动画中更新浮动元素位置的策略。"
           },
           "props": "PopoverPositioner 组件的属性。"
@@ -6639,11 +6708,11 @@
         },
         "popoverrootprops": {
           "members": {
-            "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
-            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
-            "disabled": "组件是否禁用。",
-            "modal": "对话框的模式。设置为 \"true \"时，与外部元素的交互将被禁用，屏幕阅读器只能看到对话框的内容。\n内容对屏幕阅读器可见。",
-            "open": "对话框的受控打开状态。可与 `v-model:open`绑定。"
+            "defaultopen": "",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
+            "open": ""
           },
           "props": "PopoverRoot 组件的属性。"
         },
@@ -6661,20 +6730,261 @@
       },
       "packages_headless_src_components_popper_types": {
         "autocompleteanchorprops": {
-          "props": "PopperAnchor 组件的属性。"
+          "props": "锚点（引用）元素的属性，可选地覆盖引用。"
         },
         "comboboxarrowprops": {
-          "props": "PopperArrow 组件的属性。"
+          "props": ""
         },
         "popperanchorprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
-            "reference": "用于定位的引用（或锚点）元素。如果未提供，将使用当前\n组件作为锚点。"
+            "reference": ""
+          },
+          "props": "锚点（引用）元素的属性，可选地覆盖引用。"
+        },
+        "popperarrowprops": {
+          "props": ""
+        },
+        "poppercompactemits": {
+          "callables": {
+            "closeautofocus": "在关闭时自动聚焦时触发的事件处理程序。可被阻止。",
+            "escapekeydown": "按下Esc键时触发的事件处理程序。可被阻止。",
+            "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。该事件可被阻止。",
+            "interactoutside": "当在 `DismissableLayer` 外部发生交互时调用的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。此事件可被阻止。",
+            "openautofocus": "在打开页面时自动获得焦点时触发的事件处理程序。可阻止该行为。",
+            "placed": "",
+            "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 之外时调用的事件处理程序。可被阻止。",
+            "update_open": ""
+          },
+          "emits": "",
+          "members": {
+            "placed": ""
           }
         },
-        "popperarrowprops": "PopperArrow 组件的属性。",
-        "popperpopupprops": "PopperPopup 组件的属性。"
+        "poppercompactprops": {
+          "members": {
+            "arrowprops": "",
+            "closedelay": "",
+            "defaultopen": "",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
+            "open": "",
+            "opendelay": "",
+            "openonfocus": "",
+            "placement": "",
+            "popupprops": "",
+            "portalprops": "",
+            "positionerprops": "",
+            "pressopendelay": "",
+            "showarrow": "",
+            "skipdelayduration": "",
+            "trigger": "",
+            "triggerprops": ""
+          },
+          "props": ""
+        },
+        "poppercompactslots": {
+          "callables": {
+            "default": "",
+            "trigger": ""
+          },
+          "slots": ""
+        },
+        "popperopenchangereason": "",
+        "popperpopupprops": {
+          "props": ""
+        },
+        "popperportalprops": {
+          "members": {
+            "defer": "将 Teleport 目标的解析推迟到应用程序的其他部分加载完成后（需要 Vue 3.5.0 及以上版本）\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
+            "disabled": "禁用 teleport 并内联渲染该组件\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
+            "forcemount": "用于在需要更多控制时强制挂载。\n\n在使用 Vue 动画库控制动画时非常有用。",
+            "to": "Vue 原生 teleport 组件属性 `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}"
+          },
+          "props": ""
+        },
+        "popperpositioneremits": {
+          "callables": {
+            "closeautofocus": "在关闭时自动聚焦时触发的事件处理程序。可被阻止。",
+            "escapekeydown": "按下Esc键时触发的事件处理程序。可被阻止。",
+            "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。该事件可被阻止。",
+            "interactoutside": "当在 `DismissableLayer` 外部发生交互时调用的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。此事件可被阻止。",
+            "openautofocus": "在打开页面时自动获得焦点时触发的事件处理程序。可阻止该行为。",
+            "placed": "",
+            "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 之外时调用的事件处理程序。可被阻止。"
+          },
+          "emits": "",
+          "members": {
+            "placed": ""
+          }
+        },
+        "popperpositionerprops": {
+          "callables": {
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。"
+          },
+          "members": {
+            "align": "优先采用与触发词对齐的排版方式。若发生冲突，排版方式可能会调整。",
+            "alignflip": "当与边界发生冲突时，反转对齐方向。\n此情况仅在 `prioritizePosition` 为 true 时才会发生。",
+            "alignoffset": "相对于 `start` 或 `end` 对齐选项的像素偏移量。",
+            "arrowpadding": "箭头与内容边缘之间的间距。如果您的内容使用了 border-radius，这将防止内容\n溢出到角落。",
+            "avoidcollisions": "当值为 `true` 时，将覆盖“侧边”和“对齐”首选项，以避免与边界边缘发生冲突。",
+            "collisionboundary": "用作碰撞边界的元素。默认情况下，此处为视口，但您可以提供额外的\n元素以纳入此检查范围。",
+            "collisionpadding": "从边界边缘开始，碰撞检测应发生的距离（以像素为单位）。接受一个数字（\n所有边均相同），或一个部分填充对象，例如：{ top: 20, left: 20 }。",
+            "disablehoverablecontent": "当设置为 `true` 时，鼠标悬停在弹出窗口上会将其关闭，而非保持打开状态（宽限区域已禁用，\n因此离开触发区域会立即关闭该层）。",
+            "disableupdateonlayoutshift": "当布局发生变化时，是否禁用内容的更新位置。",
+            "forcemount": "用于在需要更多控制时强制挂载。\n\n在使用 Vue 动画库控制动画时非常有用。",
+            "hideshiftedarrow": "当值为 `true` 时，若无法将箭头居中对齐\n到引用元素，则隐藏该箭头。",
+            "hidewhendetached": "当触发器被完全遮挡时，是否隐藏内容。",
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。",
+            "placement": "浮动元素的位置。\n\n若使用该属性，它将覆盖 `side` 和 `align` 属性。",
+            "positionstrategy": "要使用的 CSS `position` 属性的类型。",
+            "prioritizeposition": "强制内容位于视口内。这可能会与参考元素重叠，这可能并非预期效果。",
+            "reference": "将作为浮动元素定位参考的自定义元素或虚拟元素。如果\n提供了该元素，它将替换默认的锚点元素。",
+            "side": "打开时优先渲染的触发器一侧。当发生冲突且\nenableAvoidCollisions 启用时，渲染方向将被反转。",
+            "sideflip": "遇到边界时，请翻转至另一侧。",
+            "sideoffset": "距触发器的像素距离。",
+            "sticky": "在对齐轴上的“粘附”行为。`partial` 会在触发器至少部分位于边界内时将内容保留在边界内，而\n“always” 则无论触发器是否位于边界内，都会将内容保留在边界内。",
+            "trapfocus": "弹出窗口打开时，焦点是否被困在其中（Tab 键在层内循环，且\n模态层的主体滚动被锁定）。",
+            "updatepositionstrategy": "在每个动画帧中更新浮动元素位置的策略。"
+          },
+          "props": "用于悬浮在锚点上方的定位器的属性。反映无头 `PopperPositioner` 的定位表面，\n并采用原型自身的默认值。"
+        },
+        "popperpositioningpopupprops": {
+          "props": "仅用于定位的弹出窗口属性。"
+        },
+        "popperpositioningpositioneremits": {
+          "callables": {
+            "placed": "当定位器被放置时调用的事件处理程序"
+          },
+          "emits": ""
+        },
+        "popperpositioningpositionerprops": {
+          "members": {
+            "align": "首选与锚点对齐。发生冲突时可能会调整对齐方式。",
+            "alignflip": "当与边界发生冲突时，反转对齐方向。\n此情况仅在 `prioritizePosition` 为 true 时才会发生。",
+            "alignoffset": "相对于 `start` 或 `end` 对齐选项的像素偏移量。",
+            "arrowpadding": "箭头与内容边缘之间的间距。如果您的内容使用了 border-radius，这将防止内容\n溢出到角落。",
+            "avoidcollisions": "当值为 `true` 时，将覆盖“侧边”和“对齐”首选项，以避免与边界边缘发生冲突。",
+            "collisionboundary": "用作碰撞边界的元素。默认情况下，此处为视口，但您可以提供额外的\n元素以纳入此检查范围。",
+            "collisionpadding": "从边界边缘开始，碰撞检测应发生的距离（以像素为单位）。接受一个数字（\n所有边均相同），或一个部分填充对象，例如：{ top: 20, left: 20 }。",
+            "disableupdateonlayoutshift": "当布局发生变化时，是否禁用内容的更新位置。",
+            "hideshiftedarrow": "当值为 `true` 时，若无法将箭头居中对齐\n到引用元素，则隐藏该箭头。",
+            "hidewhendetached": "当锚点被完全遮挡时，是否隐藏内容。",
+            "open": "浮动层是否处于打开状态。该状态驱动定位的生命周期（当打开状态切换时，`isPositioned`\n会重置）；定位原语本身没有打开状态，因此\n调用方需在此处自行连接其打开状态。",
+            "placement": "浮动元素的位置。\n\n若使用该属性，它将覆盖 `side` 和 `align` 属性。",
+            "positionstrategy": "要使用的 CSS `position` 属性的类型。",
+            "prioritizeposition": "强制内容位于视口内。这可能会与参考元素重叠，这可能并非预期效果。",
+            "reference": "将作为浮动元素定位参考的自定义元素或虚拟元素。如果\n提供了该元素，它将替换默认的锚点元素。",
+            "side": "锚点打开时优先渲染的一侧。当发生冲突且\n启用了 avoidCollisions 时，该方向将被反转。",
+            "sideflip": "遇到边界时，请翻转至另一侧。",
+            "sideoffset": "距锚点的像素距离。",
+            "sticky": "在对齐轴上的“粘附”行为。`partial` 会将内容保留在边界内，只要锚点\n至少部分位于边界内；而 “always” 则无论如何都会将内容保留在边界内。",
+            "updatepositionstrategy": "在每个动画帧中更新浮动元素位置的策略。"
+          },
+          "props": "仅用于定位的定位器的属性。与\n`PopperPositionerProps` 具有相同的定位表面，但去除了交互式 shell 相关的内容（存在状态、焦点捕获、\n可悬停内容），并增加了一个 `open` 输入，域层将其与自身的状态关联。\n字段采用全称形式（而非 `Omit`），以便 SFC 编译器能在运行时解析 props 键。"
+        },
+        "popperpositioningrootprops": {
+          "members": {
+            "dir": "内容的书写方向。用于弹出窗口的从右到左（RTL）渲染。"
+          },
+          "props": "仅用于定位的根节点属性。定位基元本身不具备打开状态、\n触发器或关闭功能——交互逻辑由域层（Select / Combobox / Cascader / …）\n负责，这些组件仅用于浮动布局。"
+        },
+        "popperrootemits": {
+          "callables": {
+            "update_open": ""
+          },
+          "emits": ""
+        },
+        "popperrootprops": {
+          "members": {
+            "defaultopen": "",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
+            "open": ""
+          },
+          "props": ""
+        },
+        "popperrootslotprops": {
+          "members": {
+            "close": "",
+            "dir": "",
+            "open": "",
+            "reason": ""
+          },
+          "slotprops": ""
+        },
+        "popperrootslots": {
+          "callables": {
+            "default": ""
+          },
+          "slots": ""
+        },
+        "poppersubemits": {
+          "callables": {
+            "update_open": ""
+          },
+          "emits": ""
+        },
+        "poppersubprops": {
+          "members": {
+            "defaultopen": "",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
+            "open": ""
+          },
+          "props": ""
+        },
+        "poppersubslots": {
+          "callables": {
+            "default": ""
+          },
+          "slots": ""
+        },
+        "poppersubtriggerprops": {
+          "members": {
+            "ariamode": "触发器如何为辅助技术引用其弹出窗口。\n\n- `controls`：`aria-expanded` + `aria-controls`（可展开的小部件：弹出框/菜单）\n- `describedby`：展开时为 `aria-describedby`（类似工具提示的描述）\n- `none`：无弹出框引用属性",
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认的渲染元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
+            "closedelay": "",
+            "disabled": "该组件是否已禁用。",
+            "focusopendelay": "对焦点触发打开操作应用打开延迟。默认值为 `openDelay`；设置为 `0` 则在获得焦点时\n立即打开（工具提示语义）。",
+            "focusvisibleonly": "当值为 `true` 时，基于焦点的展开仅响应键盘/程序化的焦点\n(`:focus-visible`)，忽略由指针引发的焦点。",
+            "opendelay": "",
+            "openonfocus": "",
+            "pressopendelay": "",
+            "reference": "",
+            "skipdelayduration": "",
+            "trigger": "",
+            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
+          },
+          "props": ""
+        },
+        "poppertriggerariamode": "",
+        "poppertriggerprops": {
+          "members": {
+            "ariamode": "触发器如何为辅助技术引用其弹出窗口。\n\n- `controls`：`aria-expanded` + `aria-controls`（可展开的小部件：弹出框/菜单）\n- `describedby`：展开时为 `aria-describedby`（类似工具提示的描述）\n- `none`：无弹出框引用属性",
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认的渲染元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
+            "closedelay": "",
+            "disabled": "该组件是否已禁用。",
+            "focusopendelay": "对焦点触发打开操作应用打开延迟。默认值为 `openDelay`；设置为 `0` 则在获得焦点时\n立即打开（工具提示语义）。",
+            "focusvisibleonly": "当值为 `true` 时，基于焦点的展开仅响应键盘/程序化的焦点\n(`:focus-visible`)，忽略由指针引发的焦点。",
+            "opendelay": "",
+            "openonfocus": "",
+            "pressopendelay": "",
+            "reference": "",
+            "skipdelayduration": "",
+            "trigger": "",
+            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
+          },
+          "props": ""
+        },
+        "poppertriggertype": "",
+        "popperui": ""
       },
       "packages_headless_src_components_portal_types": {
         "autocompleteportalprops": {
@@ -7161,7 +7471,7 @@
         },
         "selectcontentprops": {
           "members": {
-            "align": "与触发器的首选对齐方式。发生碰撞时可能会改变。",
+            "align": "首选与锚点对齐。发生冲突时可能会调整对齐方式。",
             "alignflip": "与边界碰撞时翻转对齐方式。\n只有当 `prioritizePosition` 为 true 时才会发生。",
             "alignoffset": "开始 \"或 \"结束 \"对齐选项的像素偏移。",
             "arrowpadding": "箭头与内容边缘之间的填充。如果您的内容有边框半径，这将防止内容溢出边角。\n溢出边角。",
@@ -7173,17 +7483,18 @@
             "disableupdateonlayoutshift": "布局移动时是否禁用内容的更新位置。",
             "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。",
             "hideshiftedarrow": "为`true`时，当箭头无法居中于引用元素时，将隐藏箭头。\n时，将隐藏箭头。",
-            "hidewhendetached": "当触发器完全闭合时，是否隐藏内容。",
+            "hidewhendetached": "当锚点被完全遮挡时，是否隐藏内容。",
+            "open": "浮动层是否处于打开状态。该状态驱动定位的生命周期（当打开状态切换时，`isPositioned`\n会重置）；定位原语本身没有打开状态，因此\n调用方需在此处自行连接其打开状态。",
             "placement": "浮动元素的位置。\n\n如果使用，它将覆盖`side`和`align`道具。",
             "popupprops": "转发到弹出元素的属性。",
             "position": "使用的定位模式\n\n项目对齐（默认）\"--与本地 MacOS 菜单类似，将内容相对于活动项目定位。\n项。<br> `popper` - 与我们的其他原语（例如 `Popover` 或\n下拉菜单\"。",
             "positionstrategy": "要使用的 CSS 位置属性类型。",
             "prioritizeposition": "强制内容位于视口内。可能会与参考元素重叠，这可能不是我们想要的。",
             "reference": "自定义元素或虚拟元素将被设置为浮动元素的位置参考。如果\n则将替换默认的锚元素。",
-            "side": "触发器打开时的首选渲染面。当发生碰撞且\navoidCollisions 启用时，触发器的首选渲染面将被反转。",
+            "side": "锚点打开时优先渲染的一侧。当发生冲突且\n启用了 avoidCollisions 时，该方向将被反转。",
             "sideflip": "与边界碰撞时，翻转到相反的一侧。",
-            "sideoffset": "与触发器的距离（以像素为单位）。",
-            "sticky": "对齐轴上的粘性行为。只要触发器至少部分位于边界内，\"partial \"就会将内容保持在边界内。\n而 \"始终 \"则无论如何都会将内容保持在边界内。",
+            "sideoffset": "距锚点的像素距离。",
+            "sticky": "在对齐轴上的“粘附”行为。`partial` 会将内容保留在边界内，只要锚点\n至少部分位于边界内；而 “always” 则无论如何都会将内容保留在边界内。",
             "updatepositionstrategy": "在每一帧动画中更新浮动元素位置的策略。"
           },
           "props": "SelectContent 组件的属性。"
@@ -7279,7 +7590,7 @@
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
             "disabled": "组件是否禁用。",
-            "reference": "用于定位的引用（或锚点）元素。如果未提供，将使用当前\n组件作为锚点。"
+            "reference": ""
           },
           "props": "SelectTrigger 组件的属性。"
         },
@@ -8717,7 +9028,7 @@
         "toolbarui": "工具栏组件的 UI 类重载。"
       },
       "packages_headless_src_components_tooltip_index": {
-        "tooltiparrowprops": "PopperArrow 组件的属性。",
+        "tooltiparrowprops": "",
         "tooltipportalprops": {
           "members": {
             "defer": "推迟解析 Teleport 目标，直到应用程序的其他部分安装完毕（需要 Vue 3.5.0 以上版本）\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
@@ -8726,16 +9037,24 @@
             "to": "Vue 本地传送组件道具 `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}"
           }
         },
-        "tooltipui": "Popper 组件的 UI 类重载。"
+        "tooltipui": ""
       },
       "packages_headless_src_components_tooltip_types": {
         "tooltipcompactemits": {
           "callables": {
+            "closeautofocus": "在关闭时自动聚焦时触发的事件处理程序。可被阻止。",
             "escapekeydown": "按下 Escape 键时调用事件处理程序。可以避免。",
+            "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。该事件可被阻止。",
+            "interactoutside": "当在 `DismissableLayer` 外部发生交互时调用的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。此事件可被阻止。",
+            "openautofocus": "在打开页面时自动获得焦点时触发的事件处理程序。可阻止该行为。",
+            "placed": "",
             "pointerdownoutside": "当 \"DismissableLayer \"外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。",
             "update_open": "当工具提示的打开状态发生变化时，调用事件处理程序。"
           },
-          "emits": "TooltipCompact 组件的事件。"
+          "emits": "TooltipCompact 组件的事件。",
+          "members": {
+            "placed": ""
+          }
         },
         "tooltipcompactprops": {
           "members": {
@@ -8743,11 +9062,12 @@
             "content": "内容。",
             "defaultopen": "工具提示最初呈现时的打开状态。在不需要控制其打开状态时使用。",
             "delayduration": "从指针进入触发器到打开工具提示的持续时间。",
-            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
+            "dir": "",
             "disableclosingtrigger": "true \"时，点击触发器不会关闭内容。",
             "disabled": "true \"时，禁用工具提示",
             "disablehoverablecontent": "当 \"true \"时，尝试悬停内容将导致工具提示在指针离开触发器时关闭。",
             "ignorenonkeyboardfocus": "通过匹配\n:focus-visible \"选择器进行匹配，防止工具提示在焦点不是来自键盘的情况下打开。如果您想避免在切换浏览器选项卡或关闭对话框时打开工具提示，这将非常有用。\n对话框时打开工具提示。",
+            "modal": "",
             "open": "工具提示的受控打开状态。",
             "placement": "放置。",
             "popupprops": "转发到弹出元素的属性。",
@@ -8774,18 +9094,20 @@
         },
         "tooltippositioneremits": {
           "callables": {
+            "closeautofocus": "在关闭时自动聚焦时触发的事件处理程序。可被阻止。",
             "escapekeydown": "按下 Escape 键时调用事件处理程序。可以避免。",
+            "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。该事件可被阻止。",
+            "interactoutside": "当在 `DismissableLayer` 外部发生交互时调用的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。此事件可被阻止。",
+            "openautofocus": "在打开页面时自动获得焦点时触发的事件处理程序。可阻止该行为。",
+            "placed": "",
             "pointerdownoutside": "当 \"DismissableLayer \"之外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。"
           },
           "emits": "TooltipPositioner 组件的事件。"
         },
-        "tooltippositionerimplemits": {
-          "callables": {
-            "escapekeydown": "按下 Escape 键时调用事件处理程序。可以避免。",
-            "pointerdownoutside": "当 \"DismissableLayer \"之外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。"
-          }
-        },
         "tooltippositionerprops": {
+          "callables": {
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。"
+          },
           "members": {
             "align": "与触发器的首选对齐方式。发生碰撞时可能会改变。",
             "alignflip": "与边界碰撞时翻转对齐方式。\n只有当 `prioritizePosition` 为 true 时才会发生。",
@@ -8794,10 +9116,12 @@
             "avoidcollisions": "true \"时，覆盖侧边和对齐首选项，以防止与边界边缘碰撞。",
             "collisionboundary": "用作碰撞边界的元素。默认情况下是视口，但您也可以提供额外的\n元素。",
             "collisionpadding": "以像素为单位的碰撞检测边界距离。接受一个数字（所有边都相同\n所有边），或部分填充对象，例如{ top: 20, left: 20 }。",
+            "disablehoverablecontent": "当设置为 `true` 时，鼠标悬停在弹出窗口上会将其关闭，而非保持打开状态（宽限区域已禁用，\n因此离开触发区域会立即关闭该层）。",
             "disableupdateonlayoutshift": "布局移动时是否禁用内容的更新位置。",
             "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。",
             "hideshiftedarrow": "为`true`时，当箭头无法居中于引用元素时，将隐藏箭头。\n时，将隐藏箭头。",
             "hidewhendetached": "当触发器完全闭合时，是否隐藏内容。",
+            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。",
             "placement": "浮动元素的位置。\n\n如果使用，它将覆盖`side`和`align`道具。",
             "positionstrategy": "要使用的 CSS 位置属性类型。",
             "prioritizeposition": "强制内容位于视口内。可能会与参考元素重叠，这可能不是我们想要的。",
@@ -8806,6 +9130,7 @@
             "sideflip": "与边界碰撞时，翻转到相反的一侧。",
             "sideoffset": "与触发器的距离（以像素为单位）。",
             "sticky": "对齐轴上的粘性行为。只要触发器至少部分位于边界内，\"partial \"就会将内容保持在边界内。\n而 \"始终 \"则无论如何都会将内容保持在边界内。",
+            "trapfocus": "弹出窗口打开时，焦点是否被困在其中（Tab 键在层内循环，且\n模态层的主体滚动被锁定）。",
             "updatepositionstrategy": "在每一帧动画中更新浮动元素位置的策略。"
           },
           "props": "TooltipPositioner 组件的属性。"
@@ -8832,11 +9157,12 @@
           "members": {
             "defaultopen": "工具提示最初呈现时的打开状态。在不需要控制其打开状态时使用。",
             "delayduration": "从指针进入触发器到打开工具提示的持续时间。",
-            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
+            "dir": "",
             "disableclosingtrigger": "true \"时，点击触发器不会关闭内容。",
             "disabled": "true \"时，禁用工具提示",
             "disablehoverablecontent": "当 \"true \"时，尝试悬停内容将导致工具提示在指针离开触发器时关闭。",
             "ignorenonkeyboardfocus": "通过匹配\n:focus-visible \"选择器进行匹配，防止工具提示在焦点不是来自键盘的情况下打开。如果您想避免在切换浏览器选项卡或关闭对话框时打开工具提示，这将非常有用。\n对话框时打开工具提示。",
+            "modal": "",
             "open": "工具提示的受控打开状态。",
             "positionerprops": "向下传递给定位器的道具。在需要控制定位器时非常有用，例如在触发器失效时禁用定位器。",
             "skipdelayduration": "用户有多少时间输入另一个触发器而不会再次产生延迟。"
@@ -10453,6 +10779,7 @@
             "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。可被阻止。",
             "interactoutside": "当交互发生在 `DismissableLayer` 外部时触发的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。可被阻止。",
             "openautofocus": "在打开页面时自动聚焦时触发的事件处理程序。可被阻止。",
+            "placed": "",
             "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。",
             "update_color": "当颜色值发生变化时触发。",
             "update_format": "当格式值发生变化时触发。",
@@ -10471,17 +10798,17 @@
             "closeprops": "传递给 close 元素的属性。",
             "colorspace": "色彩空间。",
             "defaultformat": "默认格式。",
-            "defaultopen": "对话框在初始渲染时的打开状态。当您无需控制其打开状态时使用。",
+            "defaultopen": "",
             "defaultvalue": "默认值。",
-            "dir": "内容的方向。用于在未显式指定时确定布局位置，并用于处理从左到右（RTL）的翻转行为。",
+            "dir": "",
             "disabled": "该组件是否已禁用。",
             "fieldprops": "转发给 field 元素的属性。",
             "format": "格式。",
             "huesliderprops": "传递给色相滑块元素的属性。",
-            "modal": "对话框的模态属性。当设置为 `true` 时，将禁用与外部元素的交互，屏幕阅读器仅能读取对话框\n内容。",
+            "modal": "",
             "modelvalue": "当前模型值。",
             "name": "字段的名称。作为名称/值对的一部分，与其所属表单一同提交。",
-            "open": "对话框的受控打开状态。可通过 `v-model:open` 进行绑定。",
+            "open": "",
             "placement": "位置。",
             "popupprops": "转发给弹出元素的属性。",
             "portalprops": "转发至 portal 元素的属性。",
@@ -11025,6 +11352,7 @@
             "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。可被阻止。",
             "interactoutside": "当交互发生在 `DismissableLayer` 外部时触发的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。可被阻止。",
             "openautofocus": "在打开页面时自动聚焦时触发的事件处理程序。可被阻止。",
+            "placed": "",
             "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。",
             "update_modelvalue": "当模型值发生变化时触发。",
             "update_open": "当对话框的打开状态发生变化时调用的事件处理程序。",
@@ -11044,10 +11372,10 @@
             "class": "应用于根元素的额外类名。",
             "closeprops": "传递给 close 元素的属性。",
             "datefieldprops": "",
-            "defaultopen": "对话框在初始渲染时的打开状态。当您无需控制其打开状态时使用。",
+            "defaultopen": "",
             "defaultplaceholder": "默认占位符。",
             "defaultvalue": "默认值。",
-            "dir": "内容的方向。用于在未显式指定时确定布局位置，并用于处理从左到右（RTL）的翻转行为。",
+            "dir": "组件的阅读方向。",
             "disabled": "该组件是否已禁用。",
             "disabledaysoutsidecurrentview": "是否禁用当前视图范围外的日期。",
             "fixedweeks": "是否为固定周数。",
@@ -11064,13 +11392,13 @@
             "locale": "语言环境。",
             "maxvalue": "最大值。",
             "minvalue": "最小值。",
-            "modal": "对话框的模态属性。当设置为 `true` 时，将禁用与外部元素的交互，屏幕阅读器仅能读取对话框\n内容。",
+            "modal": "",
             "modelvalue": "当前模型值。",
             "multiple": "是否支持多个值。",
             "nextpage": "下一页。",
             "nextprops": "转发给下一个元素的属性。",
             "numberofmonths": "月数。",
-            "open": "对话框的受控打开状态。可通过 `v-model:open` 进行绑定。",
+            "open": "",
             "pagednavigation": "是否启用分页导航。",
             "placeholder": "占位符。",
             "placement": "位置。",
@@ -11156,6 +11484,7 @@
             "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。可被阻止。",
             "interactoutside": "当交互发生在 `DismissableLayer` 外部时触发的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。可被阻止。",
             "openautofocus": "在打开页面时自动聚焦时触发的事件处理程序。可被阻止。",
+            "placed": "",
             "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。",
             "update_modelvalue": "当模型值发生变化时触发。",
             "update_open": "当对话框的打开状态发生变化时调用的事件处理程序。",
@@ -11177,10 +11506,10 @@
             "class": "应用于根元素的额外类名。",
             "closeprops": "传递给 close 元素的属性。",
             "datefieldprops": "",
-            "defaultopen": "对话框在初始渲染时的打开状态。当您无需控制其打开状态时使用。",
+            "defaultopen": "",
             "defaultplaceholder": "默认占位符。",
             "defaultvalue": "默认值。",
-            "dir": "内容的方向。用于在未显式指定时确定布局位置，并用于处理从左到右（RTL）的翻转行为。",
+            "dir": "组件的阅读方向。",
             "disabled": "该组件是否已禁用。",
             "disabledaysoutsidecurrentview": "是否禁用当前视图范围外的日期。",
             "fixeddate": "固定日期。",
@@ -11200,12 +11529,12 @@
             "maximumdays": "最大天数。",
             "maxvalue": "最大值。",
             "minvalue": "最小值。",
-            "modal": "对话框的模态属性。当设置为 `true` 时，将禁用与外部元素的交互，屏幕阅读器仅能读取对话框\n内容。",
+            "modal": "",
             "modelvalue": "当前模型值。",
             "nextpage": "下一页。",
             "nextprops": "转发给下一个元素的属性。",
             "numberofmonths": "月数。",
-            "open": "对话框的受控打开状态。可通过 `v-model:open` 进行绑定。",
+            "open": "",
             "pagednavigation": "是否启用分页导航。",
             "placeholder": "占位符。",
             "placement": "位置。",
@@ -11719,7 +12048,9 @@
             "class": "弹出窗口类",
             "closedelay": "指针离开触发器或弹出窗口后，直至悬停卡片关闭所经过的时间。",
             "defaultopen": "悬停卡片在初始渲染时的展开状态。当无需控制其展开状态时使用。",
-            "dir": "内容的方向。用于在未显式指定时确定布局位置，并用于处理从左到右（RTL）的翻转行为。",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
             "open": "悬停卡片的受控打开状态。",
             "opendelay": "指针进入触发器区域后，直至悬停卡片展开所耗费的时间。",
             "placement": "位置。",
@@ -12316,6 +12647,7 @@
             "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。可被阻止。",
             "interactoutside": "当交互发生在 `DismissableLayer` 外部时触发的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。可被阻止。",
             "openautofocus": "在打开页面时自动聚焦时触发的事件处理程序。可被阻止。",
+            "placed": "",
             "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。",
             "update_open": "当对话框的打开状态发生变化时调用的事件处理程序。"
           },
@@ -12332,15 +12664,15 @@
             "confirmtext": "确认按钮的文本。\n\n默认使用来自 `ConfigProvider` 的本地化 `dialog.confirm` 消息。",
             "content": "内容。",
             "contentprops": "转发至内容元素的属性。",
-            "defaultopen": "对话框在初始渲染时的打开状态。当您无需控制其打开状态时使用。",
+            "defaultopen": "",
             "description": "由组件渲染的描述文本。",
             "descriptionprops": "已将属性转发至 description 元素。",
-            "dir": "内容的方向。用于在未显式指定时确定布局位置，并用于处理从左到右（RTL）的翻转行为。",
-            "disabled": "该组件是否已禁用。",
+            "dir": "",
+            "disabled": "",
             "footerprops": "传递给页脚元素的属性。",
             "headerprops": "传递给 header 元素的属性。",
-            "modal": "对话框的模态属性。当设置为 `true` 时，将禁用与外部元素的交互，屏幕阅读器仅能读取对话框\n内容。",
-            "open": "对话框的受控打开状态。可通过 `v-model:open` 进行绑定。",
+            "modal": "",
+            "open": "",
             "placement": "位置。",
             "popupprops": "转发给弹出元素的属性。",
             "portalprops": "转发至 portal 元素的属性。",
@@ -12377,6 +12709,7 @@
             "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。可被阻止。",
             "interactoutside": "当交互发生在 `DismissableLayer` 外部时触发的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。可被阻止。",
             "openautofocus": "在打开页面时自动聚焦时触发的事件处理程序。可被阻止。",
+            "placed": "",
             "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。",
             "update_open": "当对话框的打开状态发生变化时调用的事件处理程序。"
           },
@@ -12387,11 +12720,11 @@
             "arrowprops": "转发给箭头元素的属性。",
             "class": "弹出窗口类",
             "closeprops": "传递给 close 元素的属性。",
-            "defaultopen": "对话框在初始渲染时的打开状态。当您无需控制其打开状态时使用。",
-            "dir": "内容的方向。用于在未显式指定时确定布局位置，并用于处理从左到右（RTL）的翻转行为。",
-            "disabled": "该组件是否已禁用。",
-            "modal": "对话框的模态属性。当设置为 `true` 时，将禁用与外部元素的交互，屏幕阅读器仅能读取对话框\n内容。",
-            "open": "对话框的受控打开状态。可通过 `v-model:open` 进行绑定。",
+            "defaultopen": "",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
+            "open": "",
             "placement": "位置。",
             "popupprops": "转发给弹出元素的属性。",
             "portalprops": "转发至 portal 元素的属性。",
@@ -12410,6 +12743,55 @@
             "trigger": "触发槽的自定义内容。"
           },
           "slots": "Popover 组件的插槽。"
+        }
+      },
+      "packages_ui_src_components_popper_types": {
+        "popperemits": {
+          "callables": {
+            "closeautofocus": "在关闭时自动聚焦时触发的事件处理程序。可被阻止。",
+            "escapekeydown": "按下Esc键时触发的事件处理程序。可被阻止。",
+            "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。该事件可被阻止。",
+            "interactoutside": "当在 `DismissableLayer` 外部发生交互时调用的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。此事件可被阻止。",
+            "openautofocus": "在打开页面时自动获得焦点时触发的事件处理程序。可阻止该行为。",
+            "placed": "",
+            "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 之外时调用的事件处理程序。可被阻止。",
+            "update_open": ""
+          },
+          "emits": "Popper 组件的事件。"
+        },
+        "popperprops": {
+          "members": {
+            "arrowprops": "",
+            "class": "弹出窗口类",
+            "closedelay": "",
+            "defaultopen": "",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
+            "open": "",
+            "opendelay": "",
+            "openonfocus": "",
+            "placement": "",
+            "popupprops": "",
+            "portalprops": "",
+            "positionerprops": "",
+            "pressopendelay": "",
+            "showarrow": "",
+            "size": "组件的视觉尺寸。",
+            "skipdelayduration": "",
+            "trigger": "",
+            "triggerprops": "",
+            "ui": "该组件的按槽位类重写。"
+          },
+          "props": "Popper 组件的属性。"
+        },
+        "poppersize": "",
+        "popperslots": {
+          "callables": {
+            "default": "",
+            "trigger": ""
+          },
+          "slots": "Popper 组件的插槽。"
         }
       },
       "packages_ui_src_components_progress_types": {
@@ -13444,7 +13826,12 @@
       "packages_ui_src_components_tooltip_types": {
         "tooltipemits": {
           "callables": {
+            "closeautofocus": "在关闭时自动聚焦时触发的事件处理程序。可被阻止。",
             "escapekeydown": "当Esc键被按下时调用的事件处理程序。可被阻止。",
+            "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。该事件可被阻止。",
+            "interactoutside": "当在 `DismissableLayer` 外部发生交互时调用的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。此事件可被阻止。",
+            "openautofocus": "在打开页面时自动获得焦点时触发的事件处理程序。可阻止该行为。",
+            "placed": "",
             "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。",
             "update_open": "当工具提示的打开状态发生变化时，会调用此事件处理程序。"
           },
@@ -13457,11 +13844,12 @@
             "content": "内容。",
             "defaultopen": "工具提示在初始渲染时的打开状态。当您无需控制其打开状态时使用。",
             "delayduration": "指针进入触发器到工具提示打开之间的时间间隔。",
-            "dir": "内容的方向。用于在未显式指定时确定布局位置，并用于处理从左到右（RTL）的翻转行为。",
+            "dir": "",
             "disableclosingtrigger": "当 `true` 时，点击触发器不会关闭内容。",
             "disabled": "当值为 `true` 时，禁用工具提示",
             "disablehoverablecontent": "当设置为 `true` 时，尝试将鼠标悬停在内容上会导致指针离开触发区域时关闭工具提示。",
             "ignorenonkeyboardfocus": "通过匹配\n`:focus-visible` 选择器，防止在焦点非来自键盘时打开工具提示。这在切换浏览器标签页或关闭\n对话框时，有助于避免意外打开工具提示。",
+            "modal": "",
             "open": "工具提示的受控打开状态。",
             "placement": "位置。",
             "popupprops": "转发给弹出元素的属性。",
