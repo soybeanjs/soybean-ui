@@ -113,9 +113,11 @@ export function usePopperV2Dismiss(options: UsePopperDismissOptions) {
     }
   });
 
-  // Lock body scroll while a modal layer is open.
+  // Lock body scroll while a modal layer is open. Gated on `open` — not on presence/unmount —
+  // so the lock is released as soon as the layer closes, even while exit animations keep the
+  // impl mounted (mirrors DialogOverlay).
   watchEffect(() => {
-    if (!context.modal.value) return;
+    if (!context.modal.value || !context.open.value) return;
 
     const cleanup = useBodyScrollLock();
     onWatcherCleanup(cleanup);
