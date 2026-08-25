@@ -30,6 +30,12 @@ const SCROLL_LOCK_CSS = `
   }
 `;
 
+// Reference-counted lock state: the lock is applied when the count goes 0→1 and released
+// when it returns to 0. Each caller owns exactly one count, so overlapping modal layers
+// (e.g. a Select inside a Dialog) never unlock each other prematurely.
+let lockCount = 0;
+let releaseLock: (() => void) | undefined;
+
 /**
  * High-performance scroll lock using CSS classes
  *
@@ -40,25 +46,37 @@ export function useBodyScrollLock(): () => void {
     return () => {};
   }
 
-  const body = document.body;
+  lockCount += 1;
 
-  // Prevent multiple locks on the same body
-  if (body.hasAttribute(DATA_SCROLL_LOCK)) {
-    return () => {};
+  if (lockCount === 1) {
+    const body = document.body;
+
+    ensureScrollLockCSS();
+
+    const scrollY = window.scrollY;
+    const shouldShowScrollbar = shouldShowVerticalScrollbar();
+
+    // Apply scroll lock
+    applyScrollLock(body, scrollY, shouldShowScrollbar);
+
+    // Setup iOS-specific touch prevention
+    const stopTouchMoveListener = isIOS() ? setupIOSTouchPrevention() : undefined;
+
+    releaseLock = () => unlockScroll(body, scrollY, stopTouchMoveListener);
   }
 
-  ensureScrollLockCSS();
+  // Idempotent: a double-invoked cleanup must not over-decrement the count.
+  let released = false;
+  return () => {
+    if (released) return;
+    released = true;
+    lockCount = Math.max(0, lockCount - 1);
 
-  const scrollY = window.scrollY;
-  const shouldShowScrollbar = shouldShowVerticalScrollbar();
-
-  // Apply scroll lock
-  applyScrollLock(body, scrollY, shouldShowScrollbar);
-
-  // Setup iOS-specific touch prevention
-  const stopTouchMoveListener = isIOS() ? setupIOSTouchPrevention() : undefined;
-
-  return () => unlockScroll(body, scrollY, stopTouchMoveListener);
+    if (lockCount === 0) {
+      releaseLock?.();
+      releaseLock = undefined;
+    }
+  };
 }
 
 /** Apply scroll lock to the body element */
