@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, onWatcherCleanup, ref, useAttrs, watchEffect } from 'vue';
 import type { CSSProperties } from 'vue';
-import { popperCssVars } from '../popper/shared';
+import { popperCssVars } from '../popper-v2/shared';
 import {
   useBodyScrollLock,
   useDismissableLayer,
@@ -11,7 +11,7 @@ import {
   useHideOthers,
   useOmitProps
 } from '../../composables';
-import { PopperPopup, PopperPositioner } from '../popper';
+import { PopperV2PositioningPopup, PopperV2PositioningPositioner } from '../popper-v2';
 import { Primitive } from '../primitive';
 import { provideComboboxContentContext, useComboboxRootContext } from './context';
 import type { ComboboxContentImplProps, ComboboxContentImplEmits } from './types';
@@ -118,7 +118,10 @@ const positionerProps = useOmitProps(props, [
   'hideWhenEmpty',
   'popupProps',
   'position',
-  'trapFocus'
+  'trapFocus',
+  // `open` is boolean-cast to `false` when absent; the real open state comes from the
+  // root context and is bound explicitly below.
+  'open'
 ]);
 
 const popupProps = computed(() => ({
@@ -190,8 +193,13 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <PopperPositioner v-if="position === 'popper'" v-bind="positionerProps" @placed="emit('placed')">
-    <PopperPopup
+  <PopperV2PositioningPositioner
+    v-if="position === 'popper'"
+    v-bind="positionerProps"
+    :open="open"
+    @placed="emit('placed')"
+  >
+    <PopperV2PositioningPopup
       :id="contentId"
       :ref="setContentElement"
       v-bind="popupProps"
@@ -204,8 +212,8 @@ onUnmounted(() => {
       @keydown="onKeydown"
     >
       <slot />
-    </PopperPopup>
-  </PopperPositioner>
+    </PopperV2PositioningPopup>
+  </PopperV2PositioningPositioner>
   <Primitive
     v-else
     :id="contentId"

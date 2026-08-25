@@ -10,12 +10,12 @@ import type {
   PropsToContext,
   UiClass
 } from '../../types';
-import type { PopperAnchorProps, PopperArrowProps, PopperPositionerProps } from '../popper/types';
+import type { PopperV2AnchorProps, PopperV2ArrowProps, PopperV2PositioningPositionerProps } from '../popper-v2/types';
 import type { PortalProps } from '../portal/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /** Alias of the popper arrow props used by the cascader arrow part. */
-export type CascaderArrowProps = PopperArrowProps;
+export type CascaderArrowProps = PopperV2ArrowProps;
 /** Alias of the portal props used by the cascader portal part. */
 export type CascaderPortalProps = PortalProps;
 
@@ -220,7 +220,7 @@ export type CascaderRootEmits<
 /**
  * Properties for the CascaderTrigger component.
  */
-export interface CascaderTriggerProps extends PopperAnchorProps {
+export interface CascaderTriggerProps extends PopperV2AnchorProps {
   /** When `true`, prevents the user from interacting with the trigger. */
   disabled?: boolean;
 }
@@ -244,7 +244,8 @@ export interface CascaderSearchInputProps extends BaseProps {}
 /**
  * Properties for the CascaderContent component.
  */
-export interface CascaderContentProps extends PopperPositionerProps, DismissableLayerProps, ForceMountProps {
+export interface CascaderContentProps
+  extends PopperV2PositioningPositionerProps, DismissableLayerProps, ForceMountProps {
   /** Properties forwarded to every menu part. */
   menuProps?: CascaderMenuProps;
   /** Properties forwarded to the empty part. */

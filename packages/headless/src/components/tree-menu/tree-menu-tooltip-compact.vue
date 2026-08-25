@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { providePopperUi } from '../popper/context';
+import { providePopperV2Ui } from '../popper-v2/context';
 import { useForwardListeners } from '../../composables';
 import TooltipCompact from '../tooltip/tooltip-compact.vue';
 import type { TooltipCompactProps, TooltipCompactEmits, TooltipCompactSlots } from '../tooltip/types';
@@ -30,7 +30,7 @@ const tooltipUi = computed(() => ({
   arrow: ui.value?.tooltipArrow
 }));
 
-providePopperUi(tooltipUi);
+providePopperV2Ui(tooltipUi);
 </script>
 
 <template>

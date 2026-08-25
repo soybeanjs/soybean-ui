@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { PopperArrow } from '../popper';
+import { PopperV2Arrow } from '../popper-v2';
 import { useComboboxContentContext, useComboboxRootContext, useComboboxUi } from './context';
 import type { ComboboxArrowProps } from './types';
 
@@ -19,7 +19,7 @@ const showArrow = computed(() => open.value && position.value === 'popper');
 </script>
 
 <template>
-  <PopperArrow v-if="showArrow" data-soybean-combobox-arrow :class="cls">
+  <PopperV2Arrow v-if="showArrow" data-soybean-combobox-arrow :class="cls">
     <slot />
-  </PopperArrow>
+  </PopperV2Arrow>
 </template>

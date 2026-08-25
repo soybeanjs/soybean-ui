@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { CSSProperties } from 'vue';
-import { popperCssVars } from '../popper/shared';
+import { popperCssVars } from '../popper-v2/shared';
 import { useForwardElement } from '../../composables';
-import { PopperPopup } from '../popper';
+import { PopperV2PositioningPopup } from '../popper-v2';
 import { selectCssVars } from './shared';
 import { useSelectPopupElementContext } from './context';
 import type { SelectPopupProps } from './types';
@@ -28,7 +28,7 @@ const style: CSSProperties = {
 </script>
 
 <template>
-  <PopperPopup :ref="setPopupElement" data-soybean-select-popper-popup :style="style">
+  <PopperV2PositioningPopup :ref="setPopupElement" data-soybean-select-popper-popup :style="style">
     <slot />
-  </PopperPopup>
+  </PopperV2PositioningPopup>
 </template>

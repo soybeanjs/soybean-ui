@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { PopperArrow } from '../popper';
+import { PopperV2Arrow } from '../popper-v2';
 import { useSelectContentContext } from './context';
 import type { SelectArrowProps } from './types';
 
@@ -16,7 +16,7 @@ const showArrow = computed(() => position.value === 'popper');
 </script>
 
 <template>
-  <PopperArrow v-if="showArrow" data-soybean-select-arrow>
+  <PopperV2Arrow v-if="showArrow" data-soybean-select-arrow>
     <slot />
-  </PopperArrow>
+  </PopperV2Arrow>
 </template>

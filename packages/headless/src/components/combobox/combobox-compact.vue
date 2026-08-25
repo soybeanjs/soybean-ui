@@ -6,7 +6,7 @@ import type { MaybeArray } from '../../types';
 import Icon from '../_icon/icon.vue';
 import ComboboxGroupLabel from '../listbox/listbox-group-label.vue';
 import ComboboxItemIndicator from '../listbox/listbox-item-indicator.vue';
-import ComboboxAnchor from '../popper/popper-anchor.vue';
+import ComboboxAnchor from '../popper-v2/popper-v2-anchor.vue';
 import ComboboxPortal from '../portal/portal.vue';
 import { getDisplayValue, getSelectedLabels, isGroupOption } from './shared';
 import ComboboxCancel from './combobox-cancel.vue';

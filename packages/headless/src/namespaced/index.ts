@@ -407,11 +407,6 @@ import {
   PopoverPositioner,
   PopoverRoot,
   PopoverTrigger,
-  PopperAnchor,
-  PopperArrow,
-  PopperPopup,
-  PopperPositioner,
-  PopperRoot,
   PopperV2Anchor,
   PopperV2Arrow,
   PopperV2Compact,
@@ -1602,20 +1597,6 @@ export const PopperV2 = {
   PositioningRoot: typeof PopperV2PositioningRoot;
   PositioningPositioner: typeof PopperV2PositioningPositioner;
   PositioningPopup: typeof PopperV2PositioningPopup;
-};
-
-export const Popper = {
-  Root: PopperRoot,
-  Anchor: PopperAnchor,
-  Positioner: PopperPositioner,
-  Popup: PopperPopup,
-  Arrow: PopperArrow
-} as {
-  Root: typeof PopperRoot;
-  Anchor: typeof PopperAnchor;
-  Positioner: typeof PopperPositioner;
-  Popup: typeof PopperPopup;
-  Arrow: typeof PopperArrow;
 };
 
 export { Portal };

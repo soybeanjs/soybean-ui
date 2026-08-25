@@ -57,7 +57,6 @@ export * from './components/password';
 export * from './components/popconfirm';
 export * from './components/popover';
 export * from './components/popper-v2';
-export * from './components/popper';
 export * from './components/portal';
 export * from './components/primitive';
 export * from './components/progress';

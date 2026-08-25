@@ -25,13 +25,13 @@ import type {
   ListboxVirtualizerProps
 } from '../listbox/types';
 import type {
-  PopperAnchorProps as ComboboxAnchorProps,
-  PopperArrowProps as ComboboxArrowProps,
-  PopperPopupProps,
-  PopperPositionerEmits,
-  PopperPositionerProps,
-  PopperUiSlot
-} from '../popper/types';
+  PopperV2AnchorProps as ComboboxAnchorProps,
+  PopperV2ArrowProps as ComboboxArrowProps,
+  PopperV2PositioningPopupProps,
+  PopperV2PositioningPositionerEmits,
+  PopperV2PositioningPositionerProps,
+  PopperV2UiSlot
+} from '../popper-v2/types';
 import type { PortalProps } from '../portal/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
@@ -103,7 +103,7 @@ export interface ComboboxTriggerProps extends PrimitiveWithBaseProps {
  * Properties for the ComboboxContentImpl component.
  */
 export interface ComboboxContentImplProps
-  extends PopperPositionerProps, TrapFocusProps, DismissableLayerProps, ForceMountProps {
+  extends PopperV2PositioningPositionerProps, TrapFocusProps, DismissableLayerProps, ForceMountProps {
   /**
    * Position.
    */
@@ -119,13 +119,13 @@ export interface ComboboxContentImplProps
   /**
    * Properties forwarded to the popup element.
    */
-  popupProps?: PopperPopupProps;
+  popupProps?: PopperV2PositioningPopupProps;
 }
 
 /**
  * Events for the ComboboxContentImpl component.
  */
-export type ComboboxContentImplEmits = DismissableLayerEmits & FocusScopeEmits & PopperPositionerEmits;
+export type ComboboxContentImplEmits = DismissableLayerEmits & FocusScopeEmits & PopperV2PositioningPositionerEmits;
 
 /**
  * Properties for the ComboboxContent component.
@@ -544,7 +544,7 @@ export interface ComboboxRootContext extends PropsToContext<
  * Available UI slots for the Combobox component.
  */
 export type ComboboxUiSlot =
-  | PopperUiSlot
+  | PopperV2UiSlot
   | 'root'
   | 'trigger'
   | 'triggerIcon'

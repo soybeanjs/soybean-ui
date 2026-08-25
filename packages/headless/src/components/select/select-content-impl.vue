@@ -12,7 +12,7 @@ import {
   useOmitProps,
   useTypeahead
 } from '../../composables';
-import { PopperPositioner } from '../popper';
+import { PopperV2PositioningPositioner } from '../popper-v2';
 import { CONTENT_MARGIN } from './shared';
 import {
   provideSelectContentContext,
@@ -102,7 +102,10 @@ const popperPositionerProps = useOmitProps(props, [
   'position',
   'bodyLock',
   'popupProps',
-  'disableOutsidePointerEvents'
+  'disableOutsidePointerEvents',
+  // `open` is boolean-cast to `false` when absent; the real open state comes from the
+  // root context and is bound explicitly below.
+  'open'
 ]);
 
 const popupStyle = computed<CSSProperties>(() => ({
@@ -215,10 +218,11 @@ watchEffect(() => {
 </script>
 
 <template>
-  <PopperPositioner
+  <PopperV2PositioningPositioner
     v-if="position === 'popper'"
     :ref="setPositionerElement"
     v-bind="popperPositionerProps"
+    :open="open"
     @focus.capture="onFocusCapture"
     @blur.capture="onBlurCapture"
     @contextmenu.prevent
@@ -237,7 +241,7 @@ watchEffect(() => {
     >
       <slot />
     </SelectPopperPopup>
-  </PopperPositioner>
+  </PopperV2PositioningPositioner>
   <SelectItemAlignedPositioner
     v-else
     :ref="setPositionerElement"

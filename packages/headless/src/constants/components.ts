@@ -405,7 +405,6 @@ export const components = {
     'PopoverArrow',
     'PopoverPortal'
   ],
-  popper: ['PopperRoot', 'PopperAnchor', 'PopperPositioner', 'PopperPopup', 'PopperArrow'],
   popperV2: [
     'PopperV2Root',
     'PopperV2Trigger',

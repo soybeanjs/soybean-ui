@@ -45,6 +45,9 @@ export function createPopperV2PositionerDefaultProps() {
  */
 export function createPopperV2PositioningDefaultProps() {
   const props: InferDefaults<PopperV2PositioningPositionerProps> = {
+    // Explicit default: Vue boolean-casts an absent `open` prop to `false`, which would
+    // otherwise defeat the documented `true` default and freeze `isPositioned` off.
+    open: true,
     placement: undefined,
     side: 'bottom',
     sideOffset: 0,

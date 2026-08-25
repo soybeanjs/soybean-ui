@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardElement, useTypeahead } from '../../composables';
-import { PopperAnchor } from '../popper';
+import { PopperV2Anchor } from '../popper-v2';
 import { Primitive } from '../primitive';
 import { OPEN_KEYS, shouldShowPlaceholder } from './shared';
 import { useCollectionContext, useSelectRootContext, useSelectUi } from './context';
@@ -118,7 +118,7 @@ initContentId();
 </script>
 
 <template>
-  <PopperAnchor as-child :reference="reference">
+  <PopperV2Anchor as-child :reference="reference">
     <Primitive
       :ref="setTriggerElement"
       :as="as"
@@ -142,5 +142,5 @@ initContentId();
     >
       <slot />
     </Primitive>
-  </PopperAnchor>
+  </PopperV2Anchor>
 </template>

@@ -8,7 +8,7 @@ import {
   useOmitProps,
   usePresence
 } from '../../composables';
-import { PopperPositioner } from '../popper';
+import { PopperV2PositioningPositioner } from '../popper-v2';
 import { useCascaderRootContext, useCascaderUi } from './context';
 import CascaderEmpty from './cascader-empty.vue';
 import CascaderMenu from './cascader-menu.vue';
@@ -35,7 +35,15 @@ const attrs = useAttrs();
 
 const forwardedProps = useOmitProps(
   props,
-  ['forceMount', 'disableOutsidePointerEvents', 'menuProps', 'emptyProps'],
+  [
+    'forceMount',
+    'disableOutsidePointerEvents',
+    'menuProps',
+    'emptyProps',
+    // `open` is boolean-cast to `false` when absent; the real open state comes from the
+    // root context and is bound explicitly below.
+    'open'
+  ],
   attrs
 );
 
@@ -96,11 +104,12 @@ const isEmpty = computed(() => {
 </script>
 
 <template>
-  <PopperPositioner
+  <PopperV2PositioningPositioner
     v-if="isPresent"
     :ref="setPositionerElement"
     data-soybean-cascader-content
     v-bind="forwardedProps"
+    :open="open"
     v-on="listeners"
     @focus.capture="onFocusCapture"
     @blur.capture="onBlurCapture"
@@ -146,5 +155,5 @@ const isEmpty = computed(() => {
         <slot />
       </div>
     </div>
-  </PopperPositioner>
+  </PopperV2PositioningPositioner>
 </template>
