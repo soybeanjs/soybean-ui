@@ -1,19 +1,11 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, shallowRef, watchPostEffect } from 'vue';
-import type { CSSProperties } from 'vue';
-import { autoUpdate } from '@floating-ui/dom';
-import { useFloating, useForwardElement, useGraceArea } from '../../composables';
-import {
-  createPopperV2PositionerDefaultProps,
-  getFloatingUiMiddleware,
-  getPlacement,
-  getPlacementAlignment,
-  getPlacementSide,
-  popperCssVars
-} from './shared';
+import { computed, onBeforeUnmount, watchPostEffect } from 'vue';
+import { useForwardElement, useGraceArea } from '../../composables';
+import { createPopperV2PositionerDefaultProps } from './shared';
 import { providePopperV2PositionerContext, usePopperV2RootContext, usePopperV2Ui } from './context';
 import type { PopperV2PositionerEmits, PopperV2PositionerProps } from './types';
 import { usePopperV2Dismiss } from './use-popper-v2-dismiss';
+import { usePopperV2Positioning } from './use-popper-v2-positioning';
 
 defineOptions({
   name: 'PopperV2PositionerImpl'
@@ -41,48 +33,18 @@ const [arrowElement, setArrowElement] = useForwardElement();
 
 const referenceElement = computed(() => props.reference ?? anchorElement.value);
 
-const { floatingStyles, placement, isPositioned, middlewareData, update } = useFloating(
-  referenceElement,
-  positionerElement,
-  {
+const { isPositioned, update, placedSide, placedAlign, arrowX, arrowY, hideArrow, positionerStyle } =
+  usePopperV2Positioning({
+    props,
+    referenceElement,
+    positionerElement,
+    arrowElement,
     open: () => context.open.value,
-    strategy: () => props.positionStrategy,
-    placement: () => props.placement ?? getPlacement(props.side, props.align),
-    whileElementsMounted: (...args) =>
-      autoUpdate(...args, {
-        layoutShift: !props.disableUpdateOnLayoutShift,
-        animationFrame: props.updatePositionStrategy === 'always'
-      }),
-    middleware: () => getFloatingUiMiddleware(props, arrowElement.value)
-  }
-);
+    popupElement
+  });
 
 // Expose manual repositioning for stable virtual references (see `useVirtualPointReference`).
 onPositionerUpdateChange(update);
-
-const placedSide = computed(() => getPlacementSide(placement.value));
-const placedAlign = computed(() => getPlacementAlignment(placement.value) ?? 'center');
-const arrowCentered = computed(() => middlewareData.value.arrow?.centerOffset === 0);
-const arrowX = computed(() => middlewareData.value.arrow?.x ?? 0);
-const arrowY = computed(() => middlewareData.value.arrow?.y ?? 0);
-const hideArrow = computed(() => props.hideShiftedArrow && !arrowCentered.value);
-
-const popupZIndex = shallowRef<string>();
-
-const positionerStyle = computed<CSSProperties>(() => {
-  const { transformOrigin, hide } = middlewareData.value;
-
-  return {
-    ...floatingStyles.value,
-    zIndex: popupZIndex.value,
-    transform: isPositioned.value ? floatingStyles.value.transform : 'translate(0, -200%)',
-    [popperCssVars.transformOrigin]: [transformOrigin?.x, transformOrigin?.y].join(' '),
-    ...(hide?.referenceHidden && {
-      visibility: 'hidden',
-      pointerEvents: 'none'
-    })
-  };
-});
 
 providePopperV2PositionerContext({
   arrowX,
@@ -160,12 +122,6 @@ function onPointerLeave(event: PointerEvent) {
 watchPostEffect(() => {
   if (isPositioned.value) {
     emit('placed');
-  }
-});
-
-watchPostEffect(() => {
-  if (popupElement.value) {
-    popupZIndex.value = window.getComputedStyle(popupElement.value).zIndex;
   }
 });
 

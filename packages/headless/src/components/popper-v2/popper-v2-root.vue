@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, shallowRef, watch } from 'vue';
 import { useControllableState } from '../../composables';
-import { providePopperV2RootContext, usePopperV2RootContext } from './context';
+import { providePopperV2PositioningRootContext, providePopperV2RootContext, usePopperV2RootContext } from './context';
 import type { PopperV2OpenChangeReason, PopperV2RootEmits, PopperV2RootProps, PopperV2RootSlots } from './types';
 import { usePopperV2Nesting } from './use-popper-v2-nesting';
 
@@ -50,6 +50,17 @@ const context = providePopperV2RootContext({
   disabled,
   parent,
   onOpenChange: commitOpenChange
+});
+
+// Dual-provide the positioning context with the same refs so shared leaves
+// (`PopperV2Anchor` / `PopperV2Arrow`) work under the interactive shell too.
+providePopperV2PositioningRootContext({
+  dir,
+  anchorElement: context.anchorElement,
+  onAnchorElementChange: context.onAnchorElementChange,
+  popupElement: context.popupElement,
+  onPopupElementChange: context.onPopupElementChange,
+  registerCustomAnchor: context.registerCustomAnchor
 });
 
 usePopperV2Nesting(context);

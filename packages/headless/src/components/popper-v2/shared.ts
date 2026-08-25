@@ -2,7 +2,7 @@ import { arrow, flip, hide, limitShift, offset, shift, size } from '@floating-ui
 import type { Side, Middleware, MiddlewareState, SideObject } from '@floating-ui/dom';
 import { isNullish } from '../../shared';
 import type { Direction, Align, InferDefaults, Placement } from '../../types';
-import type { PopperV2PositionerProps } from './types';
+import type { PopperV2PositionerProps, PopperV2PositioningPositionerProps } from './types';
 
 export const popperCssVars = {
   transformOrigin: '--soybean-popper-transform-origin',
@@ -32,6 +32,36 @@ export function createPopperV2PositionerDefaultProps() {
     updatePositionStrategy: 'optimized',
     prioritizePosition: true,
     trapFocus: undefined
+  };
+
+  return props;
+}
+
+/**
+ * Defaults for the positioning-only positioner. Kept separate from
+ * `createPopperV2PositionerDefaultProps` because the interactive shell defaults differ:
+ * `prioritizePosition` is `false` here — pure positioning must not force-flip — and
+ * `hideShiftedArrow` stays off like the historical popper defaults.
+ */
+export function createPopperV2PositioningDefaultProps() {
+  const props: InferDefaults<PopperV2PositioningPositionerProps> = {
+    placement: undefined,
+    side: 'bottom',
+    sideOffset: 0,
+    sideFlip: true,
+    align: 'center',
+    alignOffset: 0,
+    alignFlip: true,
+    arrowPadding: 0,
+    avoidCollisions: true,
+    collisionPadding: 0,
+    collisionBoundary: () => [],
+    hideShiftedArrow: false,
+    sticky: 'partial',
+    hideWhenDetached: false,
+    positionStrategy: 'fixed',
+    updatePositionStrategy: 'optimized',
+    prioritizePosition: false
   };
 
   return props;

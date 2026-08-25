@@ -417,7 +417,10 @@ export const components = {
     'PopperV2Popup',
     'PopperV2Arrow',
     'PopperV2Sub',
-    'PopperV2Compact'
+    'PopperV2Compact',
+    'PopperV2PositioningRoot',
+    'PopperV2PositioningPositioner',
+    'PopperV2PositioningPopup'
   ],
   portal: ['Portal'],
   primitive: ['Primitive'],

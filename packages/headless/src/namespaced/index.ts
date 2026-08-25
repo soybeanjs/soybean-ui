@@ -419,6 +419,9 @@ import {
   PopperV2Portal,
   PopperV2Positioner,
   PopperV2PositionerImpl,
+  PopperV2PositioningPopup,
+  PopperV2PositioningPositioner,
+  PopperV2PositioningRoot,
   PopperV2Root,
   PopperV2Sub,
   PopperV2SubTrigger,
@@ -1580,7 +1583,10 @@ export const PopperV2 = {
   Popup: PopperV2Popup,
   Arrow: PopperV2Arrow,
   Sub: PopperV2Sub,
-  Compact: PopperV2Compact
+  Compact: PopperV2Compact,
+  PositioningRoot: PopperV2PositioningRoot,
+  PositioningPositioner: PopperV2PositioningPositioner,
+  PositioningPopup: PopperV2PositioningPopup
 } as {
   Root: typeof PopperV2Root;
   Trigger: typeof PopperV2Trigger;
@@ -1593,6 +1599,9 @@ export const PopperV2 = {
   Arrow: typeof PopperV2Arrow;
   Sub: typeof PopperV2Sub;
   Compact: typeof PopperV2Compact;
+  PositioningRoot: typeof PopperV2PositioningRoot;
+  PositioningPositioner: typeof PopperV2PositioningPositioner;
+  PositioningPopup: typeof PopperV2PositioningPopup;
 };
 
 export const Popper = {

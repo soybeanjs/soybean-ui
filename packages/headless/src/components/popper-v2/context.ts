@@ -305,6 +305,50 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
 
 export const [providePopperV2Ui, usePopperV2Ui] = useUiContext<PopperV2UiSlot>('PopperV2Ui');
 
+interface PopperV2PositioningRootContextParams {
+  dir: ComputedRef<Direction>;
+  /**
+   * Optional shared members: the interactive shell's `PopperV2Root` dual-provides this
+   * context with its own refs (same objects, so both contexts stay in sync) so shared
+   * leaves (`PopperV2Anchor` / `PopperV2Arrow`) work under both trees. Positioning-only
+   * roots leave them unset and fresh refs are created here.
+   */
+  anchorElement?: ShallowRef<PopperV2ReferenceElement | undefined>;
+  onAnchorElementChange?: (element: PopperV2ReferenceElement | undefined) => void;
+  popupElement?: ShallowRef<HTMLElement | undefined>;
+  onPopupElementChange?: (element: HTMLElement | undefined) => void;
+  /** Custom-anchor registration; no-op for positioning-only trees (they have no trigger). */
+  registerCustomAnchor?: () => () => void;
+}
+
+export const [providePopperV2PositioningRootContext, usePopperV2PositioningRootContext] = useContext(
+  'PopperV2PositioningRoot',
+  (params: PopperV2PositioningRootContextParams) => {
+    const popupElement = params.popupElement ?? shallowRef<HTMLElement>();
+    const onPopupElementChange =
+      params.onPopupElementChange ??
+      ((element: HTMLElement | undefined) => {
+        popupElement.value = element;
+      });
+
+    const anchorElement = params.anchorElement ?? shallowRef<PopperV2ReferenceElement>();
+    const onAnchorElementChange =
+      params.onAnchorElementChange ??
+      ((element: PopperV2ReferenceElement | undefined) => {
+        anchorElement.value = element;
+      });
+
+    return {
+      ...params,
+      popupElement,
+      onPopupElementChange,
+      anchorElement,
+      onAnchorElementChange,
+      registerCustomAnchor: params.registerCustomAnchor ?? (() => () => {})
+    };
+  }
+);
+
 export const [providePopperV2PositionerContext, usePopperV2PositionerContext] = useContext(
   'PopperV2Positioner',
   (params: PopperV2PositionerContextParams) => {

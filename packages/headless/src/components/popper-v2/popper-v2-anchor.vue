@@ -2,7 +2,7 @@
 import { onBeforeUnmount, watchEffect } from 'vue';
 import { useForwardElement, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
-import { usePopperV2RootContext, usePopperV2Ui } from './context';
+import { usePopperV2PositioningRootContext, usePopperV2Ui } from './context';
 import type { PopperV2AnchorProps } from './types';
 
 defineOptions({
@@ -15,7 +15,9 @@ const forwardedProps = useOmitProps(props, ['reference']);
 
 const cls = usePopperV2Ui('anchor');
 
-const { dir, onAnchorElementChange, registerCustomAnchor } = usePopperV2RootContext('PopperV2Anchor');
+// Consumes the positioning (thin) context so this anchor works under both the interactive
+// shell (whose root dual-provides it) and positioning-only roots.
+const { dir, onAnchorElementChange, registerCustomAnchor } = usePopperV2PositioningRootContext('PopperV2Anchor');
 const unregister = registerCustomAnchor();
 const [_, setAnchorElement] = useForwardElement(el => {
   if (props.reference) return;

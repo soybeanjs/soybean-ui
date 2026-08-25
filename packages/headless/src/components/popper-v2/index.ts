@@ -9,6 +9,9 @@ export { default as PopperV2Popup } from './popper-v2-popup.vue';
 export { default as PopperV2Arrow } from './popper-v2-arrow.vue';
 export { default as PopperV2Sub } from './popper-v2-sub.vue';
 export { default as PopperV2Compact } from './popper-v2-compact.vue';
+export { default as PopperV2PositioningRoot } from './popper-v2-positioning-root.vue';
+export { default as PopperV2PositioningPositioner } from './popper-v2-positioning-positioner.vue';
+export { default as PopperV2PositioningPopup } from './popper-v2-positioning-popup.vue';
 
 export { providePopperV2Ui } from './context';
 
@@ -38,5 +41,9 @@ export type {
   PopperV2CompactEmits,
   PopperV2CompactSlots,
   PopperV2UiSlot,
-  PopperV2Ui
+  PopperV2Ui,
+  PopperV2PositioningRootProps,
+  PopperV2PositioningPositionerProps,
+  PopperV2PositioningPositionerEmits,
+  PopperV2PositioningPopupProps
 } from './types';
