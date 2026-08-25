@@ -25,8 +25,13 @@ const wasKeyboardTriggerOpen = shallowRef(false);
 const open = computed(() => modelValue.value === menuValue.value);
 const triggerId = `soybean-menubar-trigger-${useId()}`;
 
+// Opens are driven either by the trigger (click switching / keyboard) or by the PopperV2
+// hover machine in hover mode; both funnel through the shared model value so only one menu
+// is open at a time.
 const onOpenChange = (isOpen: boolean) => {
-  if (!isOpen) {
+  if (isOpen) {
+    onMenuOpen(menuValue.value);
+  } else {
     onMenuClose();
   }
 };

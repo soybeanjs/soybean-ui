@@ -1,4 +1,3 @@
-import type { ShallowRef } from 'vue';
 import type { ForceMountProps, Placement, PropsToContext } from '../../types';
 import type {
   PopperV2AnchorProps,
@@ -62,9 +61,8 @@ export interface TooltipProviderProps {
 /**
  * Context provided by `TooltipProvider` (or a local fallback created by `TooltipRoot`).
  *
- * Holds the tree-scoped resolved provider config plus the cross-instance shared skip-delay
- * state: opening any tooltip within the provider instantly closes the others and opens the
- * next one without incurring the open delay again.
+ * Pure config resolution (prop → ancestor provider → global config). The cross-instance
+ * skip-delay coordination lives in the PopperV2 delay group provided alongside this context.
  */
 export interface TooltipProviderContext extends PropsToContext<
   TooltipProviderProps,
@@ -75,20 +73,7 @@ export interface TooltipProviderContext extends PropsToContext<
   | 'disabled'
   | 'ignoreNonKeyboardFocus'
   | 'positionerProps'
-> {
-  /**
-   * Shared skip-delay state: `true` while the open delay applies, `false` within the
-   * skip-delay window after a tooltip opened/closed inside this provider.
-   */
-  isOpenDelayed: ShallowRef<boolean>;
-  /**
-   * Notifies the provider that a tooltip root opened; `close` lets the provider close it
-   * later when a sibling opens. Sibling open roots are closed immediately.
-   */
-  rootOpened: (id: string, close: () => void) => void;
-  /** Notifies the provider that a tooltip root closed. */
-  rootClosed: (id: string) => void;
-}
+> {}
 
 /**
  * Parameters used to create the TooltipRoot context.

@@ -104,10 +104,13 @@ describe('STooltip', () => {
       await nextTick();
       expect(wrapper.text()).toContain('First content');
 
-      // Opening the sibling within the provider closes this one via the shared
-      // provider coordination (see TooltipProvider / provideTooltipProviderContext).
+      // Focus moves to the sibling: the first trigger blurs so its tooltip closes, and the
+      // shared skip-delay window (the PopperV2 delay group provided by `TooltipProvider`)
+      // makes the sibling open instantly.
+      await buttons[0].trigger('blur');
       await buttons[1].trigger('focus');
       await nextTick();
+      await new Promise(resolve => setTimeout(resolve, 0));
       await nextTick();
 
       expect(wrapper.text()).not.toContain('First content');

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive, useId, watch } from 'vue';
+import { computed, reactive } from 'vue';
 import { usePopperV2RootContext } from '../popper-v2/context';
 import { useForwardElement } from '../../composables';
 import { PopperV2Anchor } from '../popper-v2';
@@ -23,12 +23,12 @@ const popperContext = usePopperV2RootContext('TooltipTrigger');
 const [, setTriggerElement] = useForwardElement(popperContext.onTriggerElementChange);
 
 // All hover timing (open delay, skip-delay window, focus gating) runs on the shared PopperV2
-// trigger machine; the provider-level `isOpenDelayed` gates `openDelay` so sibling tooltips
-// opened within the skip-delay window open instantly.
+// trigger machine. Sibling skip-delay coordination comes from the delay group provided by
+// `TooltipProvider`; without one the per-root machine keeps working standalone.
 const shellTriggerProps: PopperV2TriggerProps = reactive({
   trigger: 'hover',
   get openDelay() {
-    return provider.isOpenDelayed.value ? delayDuration.value : 0;
+    return delayDuration.value;
   },
   closeDelay: 0,
   focusOpenDelay: 0,
@@ -61,17 +61,6 @@ function onTriggerPointerDown(event: PointerEvent) {
     popperContext.onOpenChange(false, 'imperative');
   }
 }
-
-// Coordinate sibling tooltips through the provider: opening one instantly closes the others
-// and suppresses the open delay for the next one within the skip-delay window.
-const rootId = useId();
-watch(popperContext.open, isOpen => {
-  if (isOpen) {
-    provider.rootOpened(rootId, () => popperContext.onOpenChange(false, 'imperative'));
-  } else {
-    provider.rootClosed(rootId);
-  }
-});
 </script>
 
 <template>

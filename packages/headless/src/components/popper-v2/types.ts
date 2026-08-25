@@ -101,6 +101,33 @@ export interface PopperV2TriggerConfiguration {
 }
 
 /**
+ * Parameters for creating the shared delay-group context.
+ */
+export interface PopperV2DelayGroupParams {
+  /**
+   * How much time a user has to open another member without incurring the open
+   * delay again, counted from the last member close.
+   */
+  skipDelayDuration: ComputedRef<number>;
+}
+
+/**
+ * Shared hover-delay coordination across sibling PopperV2 roots — the
+ * `FloatingDelayGroup` pattern. While any member stays open (or within the
+ * skip-delay window after the last member closes) other members skip their
+ * open delay. Nested roots (submenus, popups inside a popup) never join the
+ * group; they keep their own per-root delay machine.
+ */
+export interface PopperV2DelayGroupContext {
+  /** Whether the next member hover open incurs its open delay (skip-delay window state). */
+  isOpenDelayed: ShallowRef<boolean>;
+  /** Reports a member opened; resets the skip-delay window. */
+  onMemberOpen: (member: PopperV2RootContext) => void;
+  /** Reports a member closed; starts the skip-delay window once the last member closed. */
+  onMemberClose: (member: PopperV2RootContext) => void;
+}
+
+/**
  * Properties for the positioner that floats above the anchor. Mirrors the positioning surface of
  * the headless `PopperPositioner` with the prototype's own defaults.
  */
@@ -508,6 +535,13 @@ export interface PopperV2RootContext {
   onHoverClose: (reason?: Extract<PopperV2OpenChangeReason, 'trigger-hover' | 'trigger-focus'>) => void;
   cancelHoverClose: () => void;
   onTriggerElementChange: (element: HTMLElement | undefined) => void;
+  /**
+   * Overrides the element the hover grace area anchors to. Defaults to the trigger element;
+   * domains with a shared hover surface (e.g. a menubar container) set this so the grace
+   * corridor spans the whole surface instead of a single trigger.
+   */
+  graceTriggerElement: ShallowRef<HTMLElement | undefined>;
+  onGraceTriggerElementChange: (element: HTMLElement | undefined) => void;
   onPositionerElementChange: (element: HTMLElement | undefined) => void;
   onPopupElementChange: (element: HTMLElement | undefined) => void;
   onAnchorElementChange: (element: PopperV2ReferenceElement | undefined) => void;

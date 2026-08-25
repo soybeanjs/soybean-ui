@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { shallowRef } from 'vue';
+import { computed, shallowRef } from 'vue';
 import { transformPropsToContext } from '../../shared';
 import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
+import { providePopperV2DelayGroup } from '../popper-v2';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { provideMenubarCollectionContext, provideMenubarRootContext, useMenubarUi } from './context';
@@ -43,6 +44,13 @@ const modelValue = useControllableState(
 );
 
 const currentTabStopId = shallowRef<string | null>(null);
+
+// Sibling menus share one skip-delay window (the FloatingDelayGroup pattern): while a menu is
+// open — or within `skipDelayDuration` after the last one closed — hovering another trigger
+// opens it instantly instead of after `delayDuration`.
+providePopperV2DelayGroup({
+  skipDelayDuration: computed(() => props.skipDelayDuration)
+});
 
 provideMenubarRootContext({
   modelValue,

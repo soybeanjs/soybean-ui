@@ -1,9 +1,11 @@
-import { computed, shallowReactive, shallowRef, useId } from 'vue';
+import { computed, onScopeDispose, shallowReactive, shallowRef, useId, watch } from 'vue';
 import type { ComputedRef, ShallowRef } from 'vue';
 import { getDisclosureState } from '../../shared';
 import { useContext, useUiContext } from '../../composables';
 import type { Direction } from '../../types';
 import type {
+  PopperV2DelayGroupContext,
+  PopperV2DelayGroupParams,
   PopperV2OpenChangeReason,
   PopperV2PositionerContextParams,
   PopperV2ReferenceElement,
@@ -37,6 +39,10 @@ const defaultTriggerConfiguration: PopperV2TriggerConfiguration = {
 export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
   'PopperV2Root',
   (params: PopperV2RootContextParams): PopperV2RootContext => {
+    // Shared delay group (FloatingDelayGroup pattern). Nested roots never join — opening a
+    // submenu or an inner popup must not reset the sibling delay window of the outer group.
+    const delayGroup = params.parent === undefined ? (usePopperV2DelayGroup() ?? undefined) : undefined;
+
     const triggerConfiguration = shallowReactive({ ...defaultTriggerConfiguration });
     const triggerType = shallowRef<PopperV2TriggerType>('click');
 
@@ -45,6 +51,7 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
     const dataState = computed(() => getDisclosureState(params.open.value));
 
     const triggerElement = shallowRef<HTMLElement>();
+    const graceTriggerElement = shallowRef<HTMLElement | undefined>();
     const positionerElement = shallowRef<HTMLElement>();
     const popupElement = shallowRef<HTMLElement>();
     const anchorElement = shallowRef<PopperV2ReferenceElement>();
@@ -140,7 +147,9 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
       clearOpenTimer();
       clearCloseTimer();
       clearSkipDelayTimer();
-      isOpenDelayed.value = false;
+      // In a delay group the window state is group-owned and reset through the member-open
+      // report below; the local machine is only authoritative for group-less roots.
+      if (!delayGroup) isOpenDelayed.value = false;
       wasOpenDelayed.value = delayed;
       onOpenChange(true, reason);
     }
@@ -153,7 +162,8 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
       clearOpenTimer();
       clearCloseTimer();
 
-      const delay = isOpenDelayed.value
+      const openIsDelayed = delayGroup ? delayGroup.isOpenDelayed.value : isOpenDelayed.value;
+      const delay = openIsDelayed
         ? reason === 'trigger-focus'
           ? triggerConfiguration.focusOpenDelay
           : triggerConfiguration.openDelay
@@ -184,7 +194,7 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
         if (hoverCloseGuard?.()) return;
 
         onOpenChange(false, reason);
-        startSkipDelayTimer();
+        if (!delayGroup) startSkipDelayTimer();
 
         if (params.parent?.triggerType.value === 'hover') {
           params.parent.onHoverClose('trigger-hover');
@@ -207,6 +217,10 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
 
     function onTriggerElementChange(element: HTMLElement | undefined) {
       triggerElement.value = element;
+    }
+
+    function onGraceTriggerElementChange(element: HTMLElement | undefined) {
+      graceTriggerElement.value = element;
     }
 
     function onPositionerElementChange(element: HTMLElement | undefined) {
@@ -257,7 +271,7 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
       };
     }
 
-    return {
+    const context: PopperV2RootContext = {
       open: params.open,
       reason: params.reason,
       dir: params.dir,
@@ -266,6 +280,7 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
       dataState,
       triggerType,
       triggerElement,
+      graceTriggerElement,
       positionerElement,
       popupElement,
       anchorElement,
@@ -287,6 +302,7 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
       onHoverClose,
       cancelHoverClose,
       onTriggerElementChange,
+      onGraceTriggerElementChange,
       onPositionerElementChange,
       onPopupElementChange,
       onAnchorElementChange,
@@ -299,6 +315,66 @@ export const [providePopperV2RootContext, usePopperV2RootContext] = useContext(
       registerChild,
       closeDescendants,
       clearTimers
+    };
+
+    // Report open changes to the delay group from the settled open state so every open path
+    // (hover, focus, imperative, controlled prop flips) resets the shared skip-delay window.
+    if (delayGroup) {
+      const group = delayGroup;
+      watch(
+        params.open,
+        isOpen => {
+          if (isOpen) group.onMemberOpen(context);
+          else group.onMemberClose(context);
+        },
+        { immediate: true }
+      );
+      // A member unmounting while open must not keep the group window from starting.
+      onScopeDispose(() => group.onMemberClose(context));
+    }
+
+    return context;
+  }
+);
+
+export const [providePopperV2DelayGroup, usePopperV2DelayGroup] = useContext(
+  'PopperV2DelayGroup',
+  (params: PopperV2DelayGroupParams): PopperV2DelayGroupContext => {
+    const isOpenDelayed = shallowRef(true);
+    const openMembers = new Set<PopperV2RootContext>();
+
+    let skipDelayTimer: ReturnType<typeof setTimeout> | undefined;
+
+    function clearSkipDelayTimer() {
+      if (skipDelayTimer === undefined) return;
+      clearTimeout(skipDelayTimer);
+      skipDelayTimer = undefined;
+    }
+
+    function onMemberOpen(member: PopperV2RootContext) {
+      clearSkipDelayTimer();
+      isOpenDelayed.value = false;
+      openMembers.add(member);
+    }
+
+    // The skip-delay window only starts once the last open member closes; while any member
+    // stays open the next sibling open must stay instant.
+    function onMemberClose(member: PopperV2RootContext) {
+      if (!openMembers.delete(member)) return;
+
+      if (openMembers.size === 0) {
+        clearSkipDelayTimer();
+        skipDelayTimer = setTimeout(() => {
+          isOpenDelayed.value = true;
+          skipDelayTimer = undefined;
+        }, params.skipDelayDuration.value);
+      }
+    }
+
+    return {
+      isOpenDelayed,
+      onMemberOpen,
+      onMemberClose
     };
   }
 );

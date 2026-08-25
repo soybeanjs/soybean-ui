@@ -22,6 +22,7 @@ const {
   dataState,
   popupElement,
   triggerElement,
+  graceTriggerElement,
   triggerType,
   isPointerInTransit,
   anchorElement,
@@ -61,8 +62,12 @@ providePopperV2PositionerContext({
 // `disableHoverableContent` additionally disables the grace so leaving the trigger closes right away.
 const graceDisabled = computed(() => triggerType.value !== 'hover' || Boolean(props.disableHoverableContent));
 
+// Domains with a shared hover surface (e.g. a menubar container) override the grace anchor so
+// the corridor spans the whole surface instead of the single trigger element.
+const graceTrigger = computed(() => graceTriggerElement.value ?? triggerElement.value);
+
 useGraceArea({
-  triggerElement,
+  triggerElement: graceTrigger,
   areaElement: positionerElement,
   disabled: graceDisabled,
   subAreaAttribute: 'data-popper-v2-sub-popup',

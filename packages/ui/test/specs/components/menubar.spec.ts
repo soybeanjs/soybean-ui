@@ -199,6 +199,70 @@ describe('SMenubar', () => {
       wrapper.unmount();
     });
 
+    it('delays the first hover open and switches to a sibling instantly while a menu is open', async () => {
+      const wrapper = mountMenubar({ trigger: 'hover', delayDuration: 50, skipDelayDuration: 300 });
+      const [fileTrigger, editTrigger] = wrapper.findAll('[data-soybean-menubar-trigger]');
+
+      // The first open waits for `delayDuration`.
+      await fileTrigger.trigger('pointerenter');
+      await new Promise(resolve => window.setTimeout(resolve, 10));
+      expect(fileTrigger.attributes('aria-expanded')).toBe('false');
+
+      await new Promise(resolve => window.setTimeout(resolve, 50));
+      await nextTick();
+      expect(fileTrigger.attributes('aria-expanded')).toBe('true');
+
+      // While a menu is open, the shared skip-delay window (the PopperV2 delay group
+      // provided by the menubar root) makes the sibling trigger open instantly and the
+      // previously open menu closes.
+      await editTrigger.trigger('pointerenter');
+      await new Promise(resolve => window.setTimeout(resolve, 0));
+      await nextTick();
+
+      expect(editTrigger.attributes('aria-expanded')).toBe('true');
+      expect(fileTrigger.attributes('aria-expanded')).toBe('false');
+
+      wrapper.unmount();
+    });
+
+    it('keeps the menu open while the pointer moves from the trigger to the popup', async () => {
+      const wrapper = mountMenubar({ trigger: 'hover', delayDuration: 0 });
+      const trigger = wrapper.find('[data-soybean-menubar-trigger][data-value="file"]');
+
+      await trigger.trigger('pointerenter');
+      await new Promise(resolve => window.setTimeout(resolve, 20));
+      await nextTick();
+      expect(trigger.attributes('aria-expanded')).toBe('true');
+
+      // Leaving the single trigger must not close the menu: the grace anchor is the whole
+      // menubar container (shared hover surface), so closing is owned by the container's
+      // grace area exit, not by the trigger's hover machine.
+      await trigger.trigger('pointerleave');
+      await new Promise(resolve => window.setTimeout(resolve, 20));
+      await nextTick();
+      expect(trigger.attributes('aria-expanded')).toBe('true');
+
+      // Entering the teleported popup keeps the menu open.
+      const positioner = document.querySelector('[data-soybean-popper-v2-positioner]') as HTMLElement;
+      expect(positioner).toBeTruthy();
+      positioner.dispatchEvent(new MouseEvent('pointerenter', { bubbles: false, clientX: 10, clientY: 100 }));
+      await new Promise(resolve => window.setTimeout(resolve, 20));
+      await nextTick();
+      expect(trigger.attributes('aria-expanded')).toBe('true');
+
+      // Leaving the popup and moving away from the menubar closes the menu through the
+      // grace area exit.
+      positioner.dispatchEvent(new MouseEvent('pointerleave', { bubbles: false, clientX: 10, clientY: 100 }));
+      await new Promise(resolve => window.setTimeout(resolve, 20));
+      await nextTick();
+      document.body.dispatchEvent(new MouseEvent('pointermove', { bubbles: true, clientX: 500, clientY: 500 }));
+      await new Promise(resolve => window.setTimeout(resolve, 20));
+      await nextTick();
+      expect(trigger.attributes('aria-expanded')).toBe('false');
+
+      wrapper.unmount();
+    });
+
     it('ignores pointer down in hover mode', async () => {
       const wrapper = mountMenubar({ trigger: 'hover' });
       const trigger = wrapper.find('[data-soybean-menubar-trigger][data-value="file"]');

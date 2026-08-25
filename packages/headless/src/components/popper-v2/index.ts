@@ -13,7 +13,7 @@ export { default as PopperV2PositioningRoot } from './popper-v2-positioning-root
 export { default as PopperV2PositioningPositioner } from './popper-v2-positioning-positioner.vue';
 export { default as PopperV2PositioningPopup } from './popper-v2-positioning-popup.vue';
 
-export { providePopperV2Ui } from './context';
+export { providePopperV2Ui, providePopperV2DelayGroup } from './context';
 
 export { getNestedPopupSide } from './shared';
 
@@ -42,6 +42,8 @@ export type {
   PopperV2CompactSlots,
   PopperV2UiSlot,
   PopperV2Ui,
+  PopperV2DelayGroupParams,
+  PopperV2DelayGroupContext,
   PopperV2PositioningRootProps,
   PopperV2PositioningPositionerProps,
   PopperV2PositioningPositionerEmits,

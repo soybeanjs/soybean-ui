@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { shallowRef } from 'vue';
+import { computed, reactive, shallowRef } from 'vue';
+import { usePopperV2RootContext } from '../popper-v2/context';
 import { useForwardElement } from '../../composables';
 import Button from '../button/button.vue';
 import { MenuAnchor } from '../menu';
+import type { PopperV2TriggerProps } from '../popper-v2/types';
+import { usePopperV2Trigger } from '../popper-v2/use-popper-v2-trigger';
 import { RovingFocusItem } from '../roving-focus';
 import { isTriggerLink } from './shared';
 import { useMenubarCollectionItem, useMenubarMenuContext, useMenubarRootContext, useMenubarUi } from './context';
@@ -22,8 +25,8 @@ const {
   onMenuToggle,
   setTriggerLink,
   hoverable,
-  onHoverPointerEnter,
-  onHoverPointerLeave
+  delayDuration,
+  skipDelayDuration
 } = useMenubarRootContext('MenubarTrigger');
 const {
   value,
@@ -33,6 +36,8 @@ const {
   wasKeyboardTriggerOpen,
   open
 } = useMenubarMenuContext('MenubarTrigger');
+
+const popperContext = usePopperV2RootContext('MenubarTrigger');
 
 const cls = useMenubarUi('trigger');
 
@@ -49,6 +54,36 @@ const isFocused = shallowRef(false);
 // "click toggles the menu closed".
 const hoverSwitched = shallowRef(false);
 const isCurrentTriggerLink = () => isTriggerLink(triggerElement.value);
+
+// All hover timing (open delay, skip-delay window) runs on the shared PopperV2 trigger
+// machine; sibling coordination comes from the delay group provided by `MenubarRoot`.
+// Link triggers disable the machine — they never open a menu.
+const isLink = computed(() => isTriggerLink(triggerElement.value));
+
+const shellTriggerProps: PopperV2TriggerProps = reactive({
+  get trigger() {
+    return hoverable.value ? 'hover' : 'click';
+  },
+  get openDelay() {
+    return delayDuration.value;
+  },
+  closeDelay: 0,
+  focusOpenDelay: 0,
+  get skipDelayDuration() {
+    return skipDelayDuration.value;
+  },
+  // Menubar triggers never open on focus; keyboard opens are explicit (Enter/Space/ArrowDown).
+  openOnFocus: false,
+  get disabled() {
+    return Boolean(props.disabled) || isLink.value;
+  }
+});
+
+const { onPointerEnter: onMachinePointerEnter, onPointerLeave: onMachinePointerLeave } = usePopperV2Trigger(
+  shellTriggerProps,
+  popperContext,
+  { onVirtualPointChange: () => {} }
+);
 
 const onPointerDown = (event: PointerEvent) => {
   if (props.disabled || event.button !== 0 || event.ctrlKey) {
@@ -82,7 +117,9 @@ const onPointerDown = (event: PointerEvent) => {
   }
 };
 
-const onPointerEnter = () => {
+const onPointerEnter = (event: PointerEvent) => {
+  onMachinePointerEnter(event);
+
   if (props.disabled) return;
 
   // Link triggers never open a menu; hovering them closes the open menu so the
@@ -98,7 +135,9 @@ const onPointerEnter = () => {
   if (open.value) return;
 
   if (hoverable.value) {
-    onHoverPointerEnter(value.value);
+    // Hover-mode opening runs on the PopperV2 machine; focus the trigger so the
+    // roving-focus highlight follows the pointer.
+    triggerElement.value?.focus();
   } else if (modelValue.value || isLinkTriggerHovered.value) {
     // Click mode: switching between triggers only happens once a menu is open.
     // Remember that this approach switched the open menu here so the following
@@ -107,19 +146,12 @@ const onPointerEnter = () => {
       hoverSwitched.value = true;
     }
     onMenuOpen(value.value);
-  } else {
-    return;
+    triggerElement.value?.focus();
   }
-
-  triggerElement.value?.focus();
 };
 
-const onPointerLeave = () => {
-  if (props.disabled) return;
-
-  if (hoverable.value) {
-    onHoverPointerLeave();
-  }
+const onPointerLeave = (event: PointerEvent) => {
+  onMachinePointerLeave(event);
 };
 
 const onFocus = () => {

@@ -116,6 +116,12 @@ export function usePopperV2Trigger(
     context.onTriggerPointerInsideChange(false);
 
     if (props.trigger !== 'hover' || event.pointerType === 'touch') return;
+
+    // When a domain overrides the grace anchor to a shared hover surface (e.g. the menubar
+    // container), closing is owned by that surface's grace area: leaving a single trigger
+    // must not close while the pointer can still be on (or transit to) the shared surface.
+    if (context.graceTriggerElement.value) return;
+
     context.onHoverClose('trigger-hover');
   }
 
