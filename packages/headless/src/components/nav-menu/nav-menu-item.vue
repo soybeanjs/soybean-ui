@@ -13,7 +13,7 @@ defineOptions({
 
 const props = defineProps<NavMenuItemProps>();
 
-const { baseId, modelValue, onItemDismiss, addValue, removeValue } = useNavMenuRootContext('NavMenuItem');
+const { baseId, modelValue, orientation, onItemDismiss, addValue, removeValue } = useNavMenuRootContext('NavMenuItem');
 const { getOrderedElements } = useCollectionContext('NavMenuItem');
 
 const ui = useNavMenuUi();
@@ -85,15 +85,22 @@ const onKeydown = (event: KeyboardEvent) => {
   // prevent triggering when the focus is on link
   if (!items.includes(currentFocus)) return;
 
+  // Mirror menubar: arrows only move between triggers along the orientation axis (left/right
+  // in horizontal, up/down in vertical). The entry key (down in horizontal) opens the flyout
+  // instead of moving focus, so it must not navigate here.
   const newSelectedElement = useArrowNavigation(event, currentFocus, undefined, {
     itemsArray: items,
-    loop: false
+    loop: false,
+    arrowKeyOptions: orientation.value === 'horizontal' ? 'horizontal' : 'vertical'
   });
 
-  newSelectedElement?.focus?.();
-
-  event.preventDefault();
-  event.stopPropagation();
+  // only swallow the event when a focus move actually happened (skipped axes/entry keys are
+  // left to the trigger's own keydown or the browser)
+  if (newSelectedElement) {
+    newSelectedElement.focus?.();
+    event.preventDefault();
+    event.stopPropagation();
+  }
 };
 
 addValue(value);

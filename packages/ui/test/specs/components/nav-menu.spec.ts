@@ -257,6 +257,79 @@ describe('SNavMenu', () => {
     });
   });
 
+  describe('keyboard navigation (menubar-like)', () => {
+    it('opens the flyout with ArrowDown in horizontal mode and focuses the first item', async () => {
+      const wrapper = mount(SNavMenu, {
+        props: { items: hoverItems },
+        attachTo: document.body
+      });
+
+      const trigger = wrapper.find('[data-soybean-nav-menu-trigger]');
+      (trigger.element as HTMLElement).focus();
+
+      await trigger.trigger('keydown', { key: 'ArrowDown' });
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-nav-menu-content]').exists()).toBe(true);
+      // focus moved into the content's first link
+      expect(document.activeElement?.closest('[data-soybean-nav-menu-content]')).toBeTruthy();
+
+      wrapper.unmount();
+    });
+
+    it('moves focus between triggers with ArrowLeft/ArrowRight in horizontal mode', async () => {
+      const wrapper = mount(SNavMenu, {
+        props: { items: hoverItems },
+        attachTo: document.body
+      });
+
+      const triggers = wrapper.findAll('[data-soybean-nav-menu-trigger]');
+      (triggers[0].element as HTMLElement).focus();
+
+      await triggers[0].trigger('keydown', { key: 'ArrowRight' });
+      await nextTick();
+      expect(document.activeElement).toBe(triggers[1].element);
+
+      await triggers[1].trigger('keydown', { key: 'ArrowLeft' });
+      await nextTick();
+      expect(document.activeElement).toBe(triggers[0].element);
+
+      wrapper.unmount();
+    });
+
+    it('does not move focus with ArrowUp in horizontal mode', async () => {
+      const wrapper = mount(SNavMenu, {
+        props: { items: hoverItems },
+        attachTo: document.body
+      });
+
+      const triggers = wrapper.findAll('[data-soybean-nav-menu-trigger]');
+      (triggers[0].element as HTMLElement).focus();
+
+      await triggers[0].trigger('keydown', { key: 'ArrowUp' });
+      await nextTick();
+      expect(document.activeElement).toBe(triggers[0].element);
+
+      wrapper.unmount();
+    });
+
+    it('moves focus between triggers with ArrowDown/ArrowUp in vertical mode', async () => {
+      const wrapper = mount(SNavMenu, {
+        props: { items: hoverItems, orientation: 'vertical' },
+        attachTo: document.body
+      });
+
+      const triggers = wrapper.findAll('[data-soybean-nav-menu-trigger]');
+      (triggers[0].element as HTMLElement).focus();
+
+      await triggers[0].trigger('keydown', { key: 'ArrowDown' });
+      await nextTick();
+      expect(document.activeElement).toBe(triggers[1].element);
+
+      wrapper.unmount();
+    });
+  });
+
   describe('accessibility', () => {
     it('has no a11y violations', async () => {
       const wrapper = mount(SNavMenu, {

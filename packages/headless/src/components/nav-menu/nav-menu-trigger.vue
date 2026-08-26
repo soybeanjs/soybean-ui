@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAttrs } from 'vue';
+import { nextTick, useAttrs } from 'vue';
 import { refAutoReset } from '@vueuse/core';
 import { isMouseEvent, isNullish } from '../../shared';
 import { usePopperRootContext } from '../popper/context';
@@ -116,9 +116,14 @@ const onKeydown = (event: KeyboardEvent) => {
   const verticalEntryKey = dir.value === 'rtl' ? 'ArrowLeft' : 'ArrowRight';
   const entryKey = { horizontal: 'ArrowDown', vertical: verticalEntryKey }[orientation.value];
 
-  if (open.value && event.key === entryKey) {
-    onEntryKeyDown();
-    // prevent focus group / parent menu from handling the event
+  // Mirror menubar: the entry key (down in horizontal, toward-the-flyout in vertical) opens
+  // the flyout — idempotent when already open — and moves focus to the first content item,
+  // instead of moving between triggers. The item's arrow navigation is restricted to the
+  // orientation axis, so it never navigates on the entry key.
+  if (event.key === entryKey) {
+    pendingValue.value = value;
+    onItemSelect(value);
+    nextTick(() => onEntryKeyDown());
     event.preventDefault();
     event.stopPropagation();
   }
