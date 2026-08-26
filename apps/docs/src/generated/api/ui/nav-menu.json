@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "NavMenuProps",
         "type": "Interface NavMenuProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<NavMenuUi>; items: NavMenuOptionData[]; modelValue?: string; defaultValue?: string; dir?: Direction; orientation?: DataOrientation; delayDuration?: number; skipDelayDuration?: number; disableClickTrigger?: boolean; disableHoverTrigger?: boolean; disablePointerLeaveClose?: boolean; itemProps?: NavMenuItemProps; linkProps?: Omit<NavMenuLinkProps, LinkBasePropsKey>; triggerProps?: NavMenuTriggerProps; contentProps?: NavMenuContentProps; viewportProps?: NavMenuViewportProps; listProps?: NavMenuListProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<NavMenuUi>; items: NavMenuOptionData[]; modelValue?: string; defaultValue?: string; dir?: Direction; orientation?: DataOrientation; delayDuration?: number; skipDelayDuration?: number; disableClickTrigger?: boolean; disableHoverTrigger?: boolean; disablePointerLeaveClose?: boolean; itemProps?: NavMenuItemProps; linkProps?: Omit<NavMenuLinkProps, LinkBasePropsKey>; subTriggerProps?: NavMenuSubTriggerProps; subContentProps?: NavMenuSubContentProps; triggerProps?: NavMenuTriggerProps; contentProps?: NavMenuContentProps; viewportProps?: NavMenuViewportProps; listProps?: NavMenuListProps }",
         "description": "Properties for the NavMenu component.",
         "descriptionKey": "api.generated.packages_ui_src_components_nav_menu_types.navmenuprops.props",
         "sourcePath": "packages/ui/src/components/nav-menu/types.ts",
@@ -75,7 +75,7 @@
               {
                 "name": "NavMenuUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; content: ClassValue; triggerIcon: ClassValue; link: ClassValue; viewport: ClassValue; list: ClassValue; itemIcon: ClassValue; subLink: ClassValue; subLinkContent: ClassValue; subLinkLabel: ClassValue; subLinkDescription: ClassValue; subList: ClassValue; linkIcon: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; content: ClassValue; triggerIcon: ClassValue; link: ClassValue; positioner: ClassValue; arrow: ClassValue; subTrigger: ClassValue; viewport: ClassValue; list: ClassValue; itemIcon: ClassValue; subTriggerIcon: ClassValue; subLink: ClassValue; subLinkContent: ClassValue; subLinkLabel: ClassValue; subLinkDescription: ClassValue; subList: ClassValue; subContent: ClassValue; linkIcon: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the NavMenu component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenuui",
@@ -296,6 +296,113 @@
                 "typeParameters": [],
                 "external": false,
                 "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "subTriggerProps",
+            "type": "NavMenuSubTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the nested flyout trigger element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_nav_menu_types.navmenuprops.members.subtriggerprops",
+            "default": null,
+            "inheritedFrom": "subTriggerProps",
+            "sourcePath": "packages/headless/src/components/nav-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavMenuSubTriggerProps",
+                "kind": "interface",
+                "type": "NavMenuSubTriggerProps",
+                "resolvedType": "{ disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the NavMenuSubTrigger component (the trigger of a nested flyout).",
+                "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubtriggerprops",
+                "sourcePath": "packages/headless/src/components/nav-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the trigger is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubtriggerprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/nav-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubtriggerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubtriggerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "subContentProps",
+            "type": "NavMenuSubContentProps",
+            "required": false,
+            "description": "Properties forwarded to the nested flyout content element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_nav_menu_types.navmenuprops.members.subcontentprops",
+            "default": null,
+            "inheritedFrom": "subContentProps",
+            "sourcePath": "packages/headless/src/components/nav-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavMenuSubContentProps",
+                "kind": "interface",
+                "type": "NavMenuSubContentProps",
+                "resolvedType": "{ sideOffset?: number; forceMount?: boolean }",
+                "description": "Properties for the NavMenuSubContent component (the nested flyout surface).",
+                "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubcontentprops",
+                "sourcePath": "packages/headless/src/components/nav-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "sideOffset",
+                    "type": "number",
+                    "required": false,
+                    "description": "Distance in pixels between the sub trigger and the nested flyout.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubcontentprops.members.sideoffset",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/nav-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubcontentprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
                 "callables": []
               }
             ]
@@ -819,7 +926,7 @@
         "kind": "props",
         "name": "NavMenuCompactProps",
         "type": "Interface NavMenuCompactProps",
-        "resolvedType": "{ items: NavMenuOptionData[]; modelValue?: string; defaultValue?: string; dir?: Direction; orientation?: DataOrientation; delayDuration?: number; skipDelayDuration?: number; disableClickTrigger?: boolean; disableHoverTrigger?: boolean; disablePointerLeaveClose?: boolean; itemProps?: NavMenuItemProps; linkProps?: Omit<NavMenuLinkProps, LinkBasePropsKey>; triggerProps?: NavMenuTriggerProps; contentProps?: NavMenuContentProps; viewportProps?: NavMenuViewportProps; listProps?: NavMenuListProps }",
+        "resolvedType": "{ items: NavMenuOptionData[]; modelValue?: string; defaultValue?: string; dir?: Direction; orientation?: DataOrientation; delayDuration?: number; skipDelayDuration?: number; disableClickTrigger?: boolean; disableHoverTrigger?: boolean; disablePointerLeaveClose?: boolean; itemProps?: NavMenuItemProps; linkProps?: Omit<NavMenuLinkProps, LinkBasePropsKey>; subTriggerProps?: NavMenuSubTriggerProps; subContentProps?: NavMenuSubContentProps; triggerProps?: NavMenuTriggerProps; contentProps?: NavMenuContentProps; viewportProps?: NavMenuViewportProps; listProps?: NavMenuListProps }",
         "description": "Properties for the NavMenuCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenucompactprops.props",
         "sourcePath": "packages/headless/src/components/nav-menu/types.ts",
@@ -1034,6 +1141,113 @@
                 "typeParameters": [],
                 "external": false,
                 "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "subTriggerProps",
+            "type": "NavMenuSubTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the nested flyout trigger element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenucompactprops.members.subtriggerprops",
+            "default": null,
+            "inheritedFrom": "Omit.subTriggerProps",
+            "sourcePath": "packages/headless/src/components/nav-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavMenuSubTriggerProps",
+                "kind": "interface",
+                "type": "NavMenuSubTriggerProps",
+                "resolvedType": "{ disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the NavMenuSubTrigger component (the trigger of a nested flyout).",
+                "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubtriggerprops",
+                "sourcePath": "packages/headless/src/components/nav-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the trigger is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubtriggerprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/nav-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubtriggerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubtriggerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "subContentProps",
+            "type": "NavMenuSubContentProps",
+            "required": false,
+            "description": "Properties forwarded to the nested flyout content element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenucompactprops.members.subcontentprops",
+            "default": null,
+            "inheritedFrom": "Omit.subContentProps",
+            "sourcePath": "packages/headless/src/components/nav-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavMenuSubContentProps",
+                "kind": "interface",
+                "type": "NavMenuSubContentProps",
+                "resolvedType": "{ sideOffset?: number; forceMount?: boolean }",
+                "description": "Properties for the NavMenuSubContent component (the nested flyout surface).",
+                "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubcontentprops",
+                "sourcePath": "packages/headless/src/components/nav-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "sideOffset",
+                    "type": "number",
+                    "required": false,
+                    "description": "Distance in pixels between the sub trigger and the nested flyout.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubcontentprops.members.sideoffset",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/nav-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubcontentprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
                 "callables": []
               }
             ]
@@ -2047,6 +2261,115 @@
             "referencedTypes": []
           }
         ],
+        "referencedTypes": []
+      }
+    },
+    "NavMenuSubContent": {
+      "props": {
+        "kind": "props",
+        "name": "NavMenuSubContentProps",
+        "type": "Interface NavMenuSubContentProps",
+        "resolvedType": "{ sideOffset?: number; forceMount?: boolean }",
+        "description": "Properties for the NavMenuSubContent component (the nested flyout surface).",
+        "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubcontentprops.props",
+        "sourcePath": "packages/headless/src/components/nav-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "sideOffset",
+            "type": "number",
+            "required": false,
+            "description": "Distance in pixels between the sub trigger and the nested flyout.",
+            "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubcontentprops.members.sideoffset",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/nav-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "forceMount",
+            "type": "boolean",
+            "required": false,
+            "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+            "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubcontentprops.members.forcemount",
+            "default": null,
+            "inheritedFrom": "forceMount",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "NavMenuSubTrigger": {
+      "props": {
+        "kind": "props",
+        "name": "NavMenuSubTriggerProps",
+        "type": "Interface NavMenuSubTriggerProps",
+        "resolvedType": "{ disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the NavMenuSubTrigger component (the trigger of a nested flyout).",
+        "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubtriggerprops.props",
+        "sourcePath": "packages/headless/src/components/nav-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the trigger is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubtriggerprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/nav-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubtriggerprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_nav_menu_types.navmenusubtriggerprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
         "referencedTypes": []
       }
     },

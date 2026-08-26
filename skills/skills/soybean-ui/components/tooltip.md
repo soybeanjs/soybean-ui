@@ -66,21 +66,27 @@ Properties for the Tooltip component.
 - `arrowProps`: Properties forwarded to the arrow element. (type `TooltipArrowProps`; optional)
 - `defaultOpen`: The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; optional)
 - `open`: The controlled open state of the tooltip. (type `boolean`; optional)
-- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
+- `dir`: No description. (type `Direction`; optional)
+- `modal`: No description. (type `boolean`; optional)
+- `disabled`: When `true`, disable tooltip (type `boolean`; optional)
 - `delayDuration`: The duration from when the pointer enters the trigger until the tooltip gets opened. (type `number`; default `150`; optional)
 - `skipDelayDuration`: How much time a user has to enter another trigger without incurring a delay again. (type `number`; default `300`; optional)
 - `disableHoverableContent`: When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger. (type `boolean`; default `false`; optional)
 - `disableClosingTrigger`: When `true`, clicking on trigger will not close the content. (type `boolean`; default `false`; optional)
-- `disabled`: When `true`, disable tooltip (type `boolean`; default `false`; optional)
 - `ignoreNonKeyboardFocus`: Prevent the tooltip from opening if the focus did not come from the keyboard by matching against the `:focus-visible` selector. This is useful if you want to avoid opening it when switching browser tabs or closing a dialog. (type `boolean`; default `false`; optional)
 
 #### Emits
 
 Events for the Tooltip component.
 
-- `update:open`: Event handler called when the open state of the tooltip changes. (type `[value: boolean]`; parameters `value: boolean`)
+- `update:open`: Event handler called when the open state of the tooltip changes. (type `[value: boolean, reason?: PopperOpenChangeReason | undefined]`; parameters `value: boolean, reason?: PopperOpenChangeReason | undefined`)
 - `escapeKeyDown`: Event handler called when the escape key is down. Can be prevented. (type `[event: KeyboardEvent]`; parameters `event: KeyboardEvent`)
 - `pointerDownOutside`: Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented. (type `[event: PointerDownOutsideEvent]`; parameters `event: PointerDownOutsideEvent`)
+- `focusOutside`: Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented. (type `[event: FocusOutsideEvent]`; parameters `event: FocusOutsideEvent`)
+- `interactOutside`: Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown` event happens outside or focus moves outside of it. Can be prevented. (type `[event: PointerDownOutsideEvent | FocusOutsideEvent]`; parameters `event: PointerDownOutsideEvent | FocusOutsideEvent`)
+- `openAutoFocus`: Event handler called when auto-focusing on open. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
+- `closeAutoFocus`: Event handler called when auto-focusing on close. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
+- `placed`: No description. (type `[]`)
 
 #### Slots
 
@@ -109,21 +115,27 @@ Properties for the TooltipCompact component.
 - `arrowProps`: Properties forwarded to the arrow element. (type `TooltipArrowProps`; optional)
 - `defaultOpen`: The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; optional)
 - `open`: The controlled open state of the tooltip. (type `boolean`; optional)
-- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
+- `dir`: No description. (type `Direction`; optional)
+- `modal`: No description. (type `boolean`; optional)
+- `disabled`: When `true`, disable tooltip (type `boolean`; optional)
 - `delayDuration`: The duration from when the pointer enters the trigger until the tooltip gets opened. (type `number`; default `150`; optional)
 - `skipDelayDuration`: How much time a user has to enter another trigger without incurring a delay again. (type `number`; default `300`; optional)
 - `disableHoverableContent`: When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger. (type `boolean`; default `false`; optional)
 - `disableClosingTrigger`: When `true`, clicking on trigger will not close the content. (type `boolean`; default `false`; optional)
-- `disabled`: When `true`, disable tooltip (type `boolean`; default `false`; optional)
 - `ignoreNonKeyboardFocus`: Prevent the tooltip from opening if the focus did not come from the keyboard by matching against the `:focus-visible` selector. This is useful if you want to avoid opening it when switching browser tabs or closing a dialog. (type `boolean`; default `false`; optional)
 
 #### Emits
 
 Events for the TooltipCompact component.
 
-- `update:open`: Event handler called when the open state of the tooltip changes. (type `[value: boolean]`; parameters `value: boolean`)
+- `update:open`: Event handler called when the open state of the tooltip changes. (type `[value: boolean, reason?: PopperOpenChangeReason | undefined]`; parameters `value: boolean, reason?: PopperOpenChangeReason | undefined`)
 - `escapeKeyDown`: Event handler called when the escape key is down. Can be prevented. (type `[event: KeyboardEvent]`; parameters `event: KeyboardEvent`)
 - `pointerDownOutside`: Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented. (type `[event: PointerDownOutsideEvent]`; parameters `event: PointerDownOutsideEvent`)
+- `focusOutside`: Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented. (type `[event: FocusOutsideEvent]`; parameters `event: FocusOutsideEvent`)
+- `interactOutside`: Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown` event happens outside or focus moves outside of it. Can be prevented. (type `[event: PointerDownOutsideEvent | FocusOutsideEvent]`; parameters `event: PointerDownOutsideEvent | FocusOutsideEvent`)
+- `openAutoFocus`: Event handler called when auto-focusing on open. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
+- `closeAutoFocus`: Event handler called when auto-focusing on close. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
+- `placed`: No description. (type `[]`)
 
 #### Slots
 
@@ -169,6 +181,9 @@ Properties for the TooltipPositioner component.
 - `disableUpdateOnLayoutShift`: Whether to disable the update position for the content when the layout shifted. (type `boolean`; default `false`; optional)
 - `prioritizePosition`: Force content to be position within the viewport. Might overlap the reference element, which may not be desired. (type `boolean`; default `false`; optional)
 - `reference`: The custom element or virtual element that will be set as the reference to position the floating element. If provided, it will replace the default anchor element. (type `ReferenceElement`; optional)
+- `trapFocus`: Whether focus is trapped inside the popup while open (Tab cycles within the layer and body scroll is locked for modal layers). (type `boolean`; default `modal`; optional)
+- `disableHoverableContent`: When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled, so leaving the trigger closes the layer immediately). (type `boolean`; default `false`; optional)
+- `onGracePointerExit`: Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g. Tooltip) run area-scoped close logic without registering its own second grace area. (type `(() => void)`; optional)
 - `forceMount`: Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. (type `boolean`; optional)
 
 #### Emits
@@ -177,6 +192,11 @@ Events for the TooltipPositioner component.
 
 - `escapeKeyDown`: Event handler called when the escape key is down. Can be prevented. (type `[event: KeyboardEvent]`; parameters `event: KeyboardEvent`)
 - `pointerDownOutside`: Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented. (type `[event: PointerDownOutsideEvent]`; parameters `event: PointerDownOutsideEvent`)
+- `focusOutside`: Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented. (type `[event: FocusOutsideEvent]`; parameters `event: FocusOutsideEvent`)
+- `interactOutside`: Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown` event happens outside or focus moves outside of it. Can be prevented. (type `[event: PointerDownOutsideEvent | FocusOutsideEvent]`; parameters `event: PointerDownOutsideEvent | FocusOutsideEvent`)
+- `openAutoFocus`: Event handler called when auto-focusing on open. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
+- `closeAutoFocus`: Event handler called when auto-focusing on close. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
+- `placed`: No description. (type `[]`)
 
 ### TooltipProvider
 
@@ -200,12 +220,13 @@ Properties for the TooltipRoot component.
 
 - `defaultOpen`: The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; optional)
 - `open`: The controlled open state of the tooltip. (type `boolean`; optional)
-- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
+- `dir`: No description. (type `Direction`; optional)
+- `modal`: No description. (type `boolean`; optional)
+- `disabled`: When `true`, disable tooltip (type `boolean`; optional)
 - `delayDuration`: The duration from when the pointer enters the trigger until the tooltip gets opened. (type `number`; default `150`; optional)
 - `skipDelayDuration`: How much time a user has to enter another trigger without incurring a delay again. (type `number`; default `300`; optional)
 - `disableHoverableContent`: When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger. (type `boolean`; default `false`; optional)
 - `disableClosingTrigger`: When `true`, clicking on trigger will not close the content. (type `boolean`; default `false`; optional)
-- `disabled`: When `true`, disable tooltip (type `boolean`; default `false`; optional)
 - `ignoreNonKeyboardFocus`: Prevent the tooltip from opening if the focus did not come from the keyboard by matching against the `:focus-visible` selector. This is useful if you want to avoid opening it when switching browser tabs or closing a dialog. (type `boolean`; default `false`; optional)
 - `positionerProps`: Props to be passed down to the positioner. Useful when you need to control the positioner, such as disabling it when the trigger is disabled. (type `TooltipPositionerProps`; optional)
 
@@ -213,7 +234,7 @@ Properties for the TooltipRoot component.
 
 Events for the TooltipRoot component.
 
-- `update:open`: Event handler called when the open state of the tooltip changes. (type `[value: boolean]`; parameters `value: boolean`)
+- `update:open`: Event handler called when the open state of the tooltip changes. (type `[value: boolean, reason?: PopperOpenChangeReason | undefined]`; parameters `value: boolean, reason?: PopperOpenChangeReason | undefined`)
 
 ### TooltipTrigger
 

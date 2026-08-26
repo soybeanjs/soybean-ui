@@ -131,6 +131,22 @@ export type NavMenuLinkEmits = {
 };
 
 /**
+ * Properties for the NavMenuSubTrigger component (the trigger of a nested flyout).
+ */
+export interface NavMenuSubTriggerProps extends PrimitiveWithBaseProps {
+  /** Whether the trigger is disabled. */
+  disabled?: boolean;
+}
+
+/**
+ * Properties for the NavMenuSubContent component (the nested flyout surface).
+ */
+export interface NavMenuSubContentProps extends ForceMountProps, BaseProps {
+  /** Distance in pixels between the sub trigger and the nested flyout. */
+  sideOffset?: number;
+}
+
+/**
  * Parameters used to create the NavMenuRoot context.
  */
 export interface NavMenuRootContextParams extends PropsToContext<
@@ -185,6 +201,9 @@ export type NavMenuUiSlot =
   | 'subLinkLabel'
   | 'subLinkDescription'
   | 'subList'
+  | 'subTrigger'
+  | 'subTriggerIcon'
+  | 'subContent'
   | 'itemIcon'
   | 'linkIcon'
   | 'triggerIcon'
@@ -257,6 +276,10 @@ export interface NavMenuOptionCompactProps {
   viewportProps?: NavMenuViewportProps;
   /** Properties forwarded to the list element. */
   listProps?: NavMenuListProps;
+  /** Properties forwarded to the nested flyout trigger element. */
+  subTriggerProps?: NavMenuSubTriggerProps;
+  /** Properties forwarded to the nested flyout content element. */
+  subContentProps?: NavMenuSubContentProps;
 }
 
 /**
@@ -268,3 +291,27 @@ export type NavMenuOptionCompactEmits = NavMenuLinkEmits;
  * Slots for the NavMenuOptionCompact component.
  */
 export type NavMenuOptionCompactSlots = NavMenuCompactSlots;
+
+/**
+ * Properties for the NavMenuSubOptionCompact component (a recursively rendered sub item).
+ */
+export interface NavMenuSubOptionCompactProps {
+  /** Current sub item data. */
+  item: NavMenuOptionData;
+  /** Properties forwarded to the sub link element. */
+  linkProps?: Omit<NavMenuLinkProps, LinkBasePropsKey>;
+  /** Properties forwarded to the nested flyout trigger element. */
+  subTriggerProps?: NavMenuSubTriggerProps;
+  /** Properties forwarded to the nested flyout content element. */
+  subContentProps?: NavMenuSubContentProps;
+}
+
+/**
+ * Events for the NavMenuSubOptionCompact component.
+ */
+export type NavMenuSubOptionCompactEmits = NavMenuLinkEmits;
+
+/**
+ * Slots for the NavMenuSubOptionCompact component.
+ */
+export type NavMenuSubOptionCompactSlots = NavMenuCompactSlots;

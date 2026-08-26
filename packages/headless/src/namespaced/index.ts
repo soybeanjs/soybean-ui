@@ -374,6 +374,8 @@ import {
   NavMenuLink,
   NavMenuList,
   NavMenuRoot,
+  NavMenuSubContent,
+  NavMenuSubTrigger,
   NavMenuTrigger,
   NavMenuViewport,
   PageTabsClose,
@@ -1465,7 +1467,9 @@ export const NavMenu = {
   Trigger: NavMenuTrigger,
   Content: NavMenuContent,
   Link: NavMenuLink,
-  Viewport: NavMenuViewport
+  Viewport: NavMenuViewport,
+  SubTrigger: NavMenuSubTrigger,
+  SubContent: NavMenuSubContent
 } as {
   Compact: typeof NavMenuCompact;
   Root: typeof NavMenuRoot;
@@ -1475,6 +1479,8 @@ export const NavMenu = {
   Content: typeof NavMenuContent;
   Link: typeof NavMenuLink;
   Viewport: typeof NavMenuViewport;
+  SubTrigger: typeof NavMenuSubTrigger;
+  SubContent: typeof NavMenuSubContent;
 };
 
 export const NavigationMenu = {

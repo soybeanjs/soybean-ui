@@ -76,11 +76,11 @@ Properties for the Popconfirm component.
 - `footerProps`: Properties forwarded to the footer element. (type `PopconfirmFooterProps`; optional)
 - `confirmProps`: Properties forwarded to the confirm element. (type `PopconfirmConfirmProps`; optional)
 - `cancelProps`: Properties forwarded to the cancel element. (type `PopconfirmCancelProps`; optional)
-- `disabled`: Whether the component is disabled. (type `boolean`; optional)
-- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
-- `open`: The controlled open state of the dialog. Can be bound with `v-model:open`. (type `boolean`; default `undefined`; optional)
-- `defaultOpen`: The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; default `false`; optional)
-- `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. (type `boolean`; default `true`; optional)
+- `dir`: No description. (type `Direction`; optional)
+- `open`: No description. (type `boolean`; optional)
+- `defaultOpen`: No description. (type `boolean`; optional)
+- `modal`: No description. (type `boolean`; optional)
+- `disabled`: No description. (type `boolean`; optional)
 
 #### Emits
 
@@ -93,6 +93,7 @@ Events for the Popconfirm component.
 - `interactOutside`: Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown` event happens outside or focus moves outside of it. Can be prevented. (type `[event: PointerDownOutsideEvent | FocusOutsideEvent]`; parameters `event: PointerDownOutsideEvent | FocusOutsideEvent`)
 - `openAutoFocus`: Event handler called when auto-focusing on open. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
 - `closeAutoFocus`: Event handler called when auto-focusing on close. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
+- `placed`: No description. (type `[]`)
 - `confirm`: Emitted when confirm occurs. (type `[event: PointerEvent]`; parameters `event: PointerEvent`)
 - `cancel`: Emitted when cancel occurs. (type `[event: PointerEvent]`; parameters `event: PointerEvent`)
 
@@ -161,11 +162,11 @@ Properties for the PopconfirmCompact component.
 - `footerProps`: Properties forwarded to the footer element. (type `PopconfirmFooterProps`; optional)
 - `confirmProps`: Properties forwarded to the confirm element. (type `PopconfirmConfirmProps`; optional)
 - `cancelProps`: Properties forwarded to the cancel element. (type `PopconfirmCancelProps`; optional)
-- `disabled`: Whether the component is disabled. (type `boolean`; optional)
-- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
-- `open`: The controlled open state of the dialog. Can be bound with `v-model:open`. (type `boolean`; default `undefined`; optional)
-- `defaultOpen`: The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; default `false`; optional)
-- `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. (type `boolean`; default `true`; optional)
+- `dir`: No description. (type `Direction`; optional)
+- `open`: No description. (type `boolean`; optional)
+- `defaultOpen`: No description. (type `boolean`; optional)
+- `modal`: No description. (type `boolean`; optional)
+- `disabled`: No description. (type `boolean`; optional)
 
 #### Emits
 
@@ -178,6 +179,7 @@ Events for the PopconfirmCompact component.
 - `interactOutside`: Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown` event happens outside or focus moves outside of it. Can be prevented. (type `[event: PointerDownOutsideEvent | FocusOutsideEvent]`; parameters `event: PointerDownOutsideEvent | FocusOutsideEvent`)
 - `openAutoFocus`: Event handler called when auto-focusing on open. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
 - `closeAutoFocus`: Event handler called when auto-focusing on close. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
+- `placed`: No description. (type `[]`)
 - `confirm`: Emitted when confirm occurs. (type `[event: PointerEvent]`; parameters `event: PointerEvent`)
 - `cancel`: Emitted when cancel occurs. (type `[event: PointerEvent]`; parameters `event: PointerEvent`)
 

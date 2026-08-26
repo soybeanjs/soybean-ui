@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T09:14:05.166Z",
+  "generatedAt": "2026-08-26T13:53:45.541Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -650,6 +650,8 @@
         "NavMenuLink",
         "NavMenuList",
         "NavMenuRoot",
+        "NavMenuSubContent",
+        "NavMenuSubTrigger",
         "NavMenuTrigger",
         "NavMenuViewport"
       ]

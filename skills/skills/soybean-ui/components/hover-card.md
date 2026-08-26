@@ -65,13 +65,15 @@ Properties for the HoverCard component.
 - `open`: The controlled open state of the hover card. (type `boolean`; optional)
 - `openDelay`: The duration from when the pointer enters the trigger until the hover card opens. (type `number`; optional)
 - `closeDelay`: The duration from when the pointer leaves the trigger or popup until the hover card closes. (type `number`; optional)
-- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
+- `dir`: No description. (type `Direction`; optional)
+- `modal`: No description. (type `boolean`; optional)
+- `disabled`: No description. (type `boolean`; optional)
 
 #### Emits
 
 Events for the HoverCard component.
 
-- `update:open`: Event handler called when the open state of the hover card changes. (type `[value: boolean]`; parameters `value: boolean`)
+- `update:open`: Event handler called when the open state of the hover card changes. (type `[value: boolean, reason?: PopperOpenChangeReason | undefined]`; parameters `value: boolean, reason?: PopperOpenChangeReason | undefined`)
 - `escapeKeyDown`: Event handler called when the escape key is down. Can be prevented. (type `[event: KeyboardEvent]`; parameters `event: KeyboardEvent`)
 - `pointerDownOutside`: Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented. (type `[event: PointerDownOutsideEvent]`; parameters `event: PointerDownOutsideEvent`)
 - `focusOutside`: Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented. (type `[event: FocusOutsideEvent]`; parameters `event: FocusOutsideEvent`)
@@ -104,13 +106,15 @@ Properties for the HoverCardCompact component.
 - `open`: The controlled open state of the hover card. (type `boolean`; optional)
 - `openDelay`: The duration from when the pointer enters the trigger until the hover card opens. (type `number`; optional)
 - `closeDelay`: The duration from when the pointer leaves the trigger or popup until the hover card closes. (type `number`; optional)
-- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
+- `dir`: No description. (type `Direction`; optional)
+- `modal`: No description. (type `boolean`; optional)
+- `disabled`: No description. (type `boolean`; optional)
 
 #### Emits
 
 Events for the HoverCardCompact component.
 
-- `update:open`: Event handler called when the open state of the hover card changes. (type `[value: boolean]`; parameters `value: boolean`)
+- `update:open`: Event handler called when the open state of the hover card changes. (type `[value: boolean, reason?: PopperOpenChangeReason | undefined]`; parameters `value: boolean, reason?: PopperOpenChangeReason | undefined`)
 - `escapeKeyDown`: Event handler called when the escape key is down. Can be prevented. (type `[event: KeyboardEvent]`; parameters `event: KeyboardEvent`)
 - `pointerDownOutside`: Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented. (type `[event: PointerDownOutsideEvent]`; parameters `event: PointerDownOutsideEvent`)
 - `focusOutside`: Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented. (type `[event: FocusOutsideEvent]`; parameters `event: FocusOutsideEvent`)
@@ -155,6 +159,9 @@ Properties for the HoverCardPositioner component.
 - `disableUpdateOnLayoutShift`: Whether to disable the update position for the content when the layout shifted. (type `boolean`; default `false`; optional)
 - `prioritizePosition`: Force content to be position within the viewport. Might overlap the reference element, which may not be desired. (type `boolean`; default `false`; optional)
 - `reference`: The custom element or virtual element that will be set as the reference to position the floating element. If provided, it will replace the default anchor element. (type `ReferenceElement`; optional)
+- `trapFocus`: Whether focus is trapped inside the popup while open (Tab cycles within the layer and body scroll is locked for modal layers). (type `boolean`; default `modal`; optional)
+- `disableHoverableContent`: When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled, so leaving the trigger closes the layer immediately). (type `boolean`; default `false`; optional)
+- `onGracePointerExit`: Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g. Tooltip) run area-scoped close logic without registering its own second grace area. (type `(() => void)`; optional)
 - `forceMount`: Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. (type `boolean`; optional)
 
 #### Emits
@@ -175,13 +182,15 @@ Properties for the HoverCardRoot component.
 - `open`: The controlled open state of the hover card. (type `boolean`; optional)
 - `openDelay`: The duration from when the pointer enters the trigger until the hover card opens. (type `number`; optional)
 - `closeDelay`: The duration from when the pointer leaves the trigger or popup until the hover card closes. (type `number`; optional)
-- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
+- `dir`: No description. (type `Direction`; optional)
+- `modal`: No description. (type `boolean`; optional)
+- `disabled`: No description. (type `boolean`; optional)
 
 #### Emits
 
 Events for the HoverCardRoot component.
 
-- `update:open`: Event handler called when the open state of the hover card changes. (type `[value: boolean]`; parameters `value: boolean`)
+- `update:open`: Event handler called when the open state of the hover card changes. (type `[value: boolean, reason?: PopperOpenChangeReason | undefined]`; parameters `value: boolean, reason?: PopperOpenChangeReason | undefined`)
 
 ### HoverCardTrigger
 

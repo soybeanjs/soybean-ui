@@ -372,7 +372,9 @@ export const components = {
     'NavMenuTrigger',
     'NavMenuContent',
     'NavMenuLink',
-    'NavMenuViewport'
+    'NavMenuViewport',
+    'NavMenuSubTrigger',
+    'NavMenuSubContent'
   ],
   pageTabs: ['PageTabsRoot', 'PageTabsItem', 'PageTabsClose', 'PageTabsPin', 'PageTabsCompact'],
   pagination: [

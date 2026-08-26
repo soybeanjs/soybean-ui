@@ -77,15 +77,15 @@ Properties for the ColorPicker component.
 - `placement`: Placement. (type `import("@/index").Placement`; optional)
 - `showArrow`: Whether to show an arrow. (type `boolean`; optional)
 - `triggerProps`: Properties forwarded to the trigger element. (type `PopoverTriggerProps`; optional)
-- `portalProps`: Properties forwarded to the portal element. (type `PortalProps`; optional)
+- `portalProps`: Properties forwarded to the portal element. (type `PopperPortalProps`; optional)
 - `positionerProps`: Properties forwarded to the positioner element. (type `PopoverPositionerProps`; optional)
 - `popupProps`: Properties forwarded to the popup element. (type `PopoverPopupProps`; optional)
 - `arrowProps`: Properties forwarded to the arrow element. (type `PopperArrowProps`; optional)
 - `closeProps`: Properties forwarded to the close element. (type `PopoverCloseProps`; optional)
-- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
-- `open`: The controlled open state of the dialog. Can be bound with `v-model:open`. (type `boolean`; default `undefined`; optional)
-- `defaultOpen`: The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; default `false`; optional)
-- `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. (type `boolean`; default `true`; optional)
+- `dir`: No description. (type `Direction`; optional)
+- `open`: No description. (type `boolean`; optional)
+- `defaultOpen`: No description. (type `boolean`; optional)
+- `modal`: No description. (type `boolean`; optional)
 
 #### Emits
 
@@ -102,6 +102,7 @@ Events for the ColorPicker component.
 - `interactOutside`: Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown` event happens outside or focus moves outside of it. Can be prevented. (type `[event: PointerDownOutsideEvent | FocusOutsideEvent]`; parameters `event: PointerDownOutsideEvent | FocusOutsideEvent`)
 - `openAutoFocus`: Event handler called when auto-focusing on open. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
 - `closeAutoFocus`: Event handler called when auto-focusing on close. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
+- `placed`: No description. (type `[]`)
 
 ### ColorPickerCompact
 
@@ -132,15 +133,15 @@ Properties for the ColorPickerCompact component.
 - `placement`: Placement. (type `import("@/index").Placement`; optional)
 - `showArrow`: Whether to show an arrow. (type `boolean`; optional)
 - `triggerProps`: Properties forwarded to the trigger element. (type `PopoverTriggerProps`; optional)
-- `portalProps`: Properties forwarded to the portal element. (type `PortalProps`; optional)
+- `portalProps`: Properties forwarded to the portal element. (type `PopperPortalProps`; optional)
 - `positionerProps`: Properties forwarded to the positioner element. (type `PopoverPositionerProps`; optional)
 - `popupProps`: Properties forwarded to the popup element. (type `PopoverPopupProps`; optional)
 - `arrowProps`: Properties forwarded to the arrow element. (type `PopperArrowProps`; optional)
 - `closeProps`: Properties forwarded to the close element. (type `PopoverCloseProps`; optional)
-- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
-- `open`: The controlled open state of the dialog. Can be bound with `v-model:open`. (type `boolean`; default `undefined`; optional)
-- `defaultOpen`: The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; default `false`; optional)
-- `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. (type `boolean`; default `true`; optional)
+- `dir`: No description. (type `Direction`; optional)
+- `open`: No description. (type `boolean`; optional)
+- `defaultOpen`: No description. (type `boolean`; optional)
+- `modal`: No description. (type `boolean`; optional)
 
 #### Emits
 
@@ -157,6 +158,7 @@ Events for the ColorPickerCompact component.
 - `interactOutside`: Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown` event happens outside or focus moves outside of it. Can be prevented. (type `[event: PointerDownOutsideEvent | FocusOutsideEvent]`; parameters `event: PointerDownOutsideEvent | FocusOutsideEvent`)
 - `openAutoFocus`: Event handler called when auto-focusing on open. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
 - `closeAutoFocus`: Event handler called when auto-focusing on close. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
+- `placed`: No description. (type `[]`)
 
 ### ColorPickerRoot
 

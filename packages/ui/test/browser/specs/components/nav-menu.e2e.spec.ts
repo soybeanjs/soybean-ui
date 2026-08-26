@@ -173,4 +173,91 @@ describe('SNavMenu (e2e)', () => {
 
     unmount();
   });
+
+  it('opens a nested flyout on hover and keeps both levels open while the pointer is on the flyout', async () => {
+    const nestedItems: NavMenuOptionData[] = [
+      {
+        value: 'one',
+        label: 'One',
+        href: '/one',
+        children: [
+          {
+            value: 'one-a',
+            label: 'One A',
+            href: '/one-a',
+            children: [
+              { value: 'one-a-1', label: 'One A 1', href: '/one-a-1' },
+              { value: 'one-a-2', label: 'One A 2', href: '/one-a-2' }
+            ]
+          }
+        ]
+      }
+    ];
+
+    const { unmount } = renderComponent(SNavMenu, { props: { items: nestedItems, delayDuration: 0 } });
+    const oneTrigger = page.getByRole('link', { name: 'One', exact: true });
+    const oneATrigger = page.getByRole('button', { name: 'One A', exact: true });
+    const oneA1 = page.getByText('One A 1', { exact: true });
+
+    await userEvent.hover(oneTrigger);
+    await expect.element(oneATrigger).toBeVisible();
+
+    await userEvent.hover(oneATrigger);
+    await expect.element(oneA1).toBeVisible();
+
+    // Move the real pointer from the sub-trigger into the nested flyout. The child
+    // transit corridor + parent `isPointerInTree` must keep both levels open.
+    const triggerEl = oneATrigger.elements()[0]!;
+    const flyoutEl = document.querySelector('[data-soybean-nav-menu-sub-content]')!;
+    await movePointerBetween(triggerEl, flyoutEl);
+
+    await expect.element(oneA1).toBeVisible();
+    await expect.element(oneATrigger).toBeVisible();
+
+    unmount();
+  });
+
+  it('closes the nested flyout when the pointer leaves the flyout corridor', async () => {
+    const nestedItems: NavMenuOptionData[] = [
+      {
+        value: 'one',
+        label: 'One',
+        href: '/one',
+        children: [
+          {
+            value: 'one-a',
+            label: 'One A',
+            href: '/one-a',
+            children: [{ value: 'one-a-1', label: 'One A 1', href: '/one-a-1' }]
+          }
+        ]
+      }
+    ];
+
+    const { unmount } = renderComponent(SNavMenu, { props: { items: nestedItems, delayDuration: 0 } });
+    const oneTrigger = page.getByRole('link', { name: 'One', exact: true });
+    const oneATrigger = page.getByRole('button', { name: 'One A', exact: true });
+    const oneA1 = page.getByText('One A 1', { exact: true });
+
+    await userEvent.hover(oneTrigger);
+    await userEvent.hover(oneATrigger);
+    await expect.element(oneA1).toBeVisible();
+
+    // Move the real pointer far below the flyout: both the flyout and the root close.
+    const session = cdp();
+    const t = oneATrigger.elements()[0]!.getBoundingClientRect();
+    const startX = t.x + t.width / 2;
+    const startY = t.y + t.height / 2;
+    const endY = Math.min(startY + 500, window.innerHeight - 20);
+    const steps = 12;
+    for (let i = 1; i <= steps; i++) {
+      const y = startY + ((endY - startY) * i) / steps;
+      await session.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: startX, y });
+    }
+
+    await expect.element(oneA1).not.toBeInTheDocument();
+    await expect.element(oneATrigger).not.toBeInTheDocument();
+
+    unmount();
+  });
 });

@@ -330,6 +330,140 @@ describe('SNavMenu', () => {
     });
   });
 
+  describe('nested flyout', () => {
+    const nestedItems = [
+      {
+        value: 'one',
+        label: 'One',
+        href: '/one',
+        children: [
+          {
+            value: 'one-a',
+            label: 'One A',
+            href: '/one-a',
+            children: [
+              {
+                value: 'one-a-1',
+                label: 'One A 1',
+                href: '/one-a-1',
+                children: [{ value: 'one-a-1-x', label: 'One A 1 X', href: '/one-a-1-x' }]
+              },
+              { value: 'one-a-2', label: 'One A 2', href: '/one-a-2' }
+            ]
+          },
+          { value: 'one-b', label: 'One B', href: '/one-b' }
+        ]
+      }
+    ];
+
+    const openRoot = async (wrapper: ReturnType<typeof mount>) => {
+      await wrapper.find('[data-soybean-nav-menu-trigger]').trigger('click');
+      await nextTick();
+      expect(document.querySelector('[data-soybean-nav-menu-content]')).toBeTruthy();
+    };
+
+    it('opens a nested flyout on sub-trigger click and keeps the root menu open', async () => {
+      const wrapper = mount(SNavMenu, { props: { items: nestedItems }, attachTo: document.body });
+      await openRoot(wrapper);
+
+      const subTrigger = document.querySelector('[data-soybean-nav-menu-sub-trigger]') as HTMLElement;
+      expect(subTrigger).toBeTruthy();
+      expect(subTrigger.getAttribute('aria-expanded')).toBe('false');
+
+      subTrigger.click();
+      await nextTick();
+
+      expect(subTrigger.getAttribute('aria-expanded')).toBe('true');
+      const flyout = document.querySelector('[data-soybean-nav-menu-sub-content]') as HTMLElement;
+      expect(flyout).toBeTruthy();
+      expect(flyout.textContent).toContain('One A 1');
+      expect(flyout.textContent).toContain('One A 2');
+      // the root viewport stays open underneath
+      expect(document.querySelector('[data-soybean-nav-menu-content]')).toBeTruthy();
+
+      wrapper.unmount();
+    });
+
+    it('opens the nested flyout on hover after the open delay', async () => {
+      vi.useFakeTimers();
+      const wrapper = mount(SNavMenu, { props: { items: nestedItems }, attachTo: document.body });
+      await openRoot(wrapper);
+
+      const subTrigger = document.querySelector('[data-soybean-nav-menu-sub-trigger]') as HTMLElement;
+      subTrigger.dispatchEvent(new PointerEvent('pointerenter', { bubbles: true, pointerType: 'mouse' }));
+      await vi.advanceTimersByTimeAsync(200);
+      await nextTick();
+
+      expect(document.querySelector('[data-soybean-nav-menu-sub-content]')).toBeTruthy();
+
+      vi.useRealTimers();
+      wrapper.unmount();
+    });
+
+    it('closes the flyout on Escape while keeping the root menu open', async () => {
+      const wrapper = mount(SNavMenu, { props: { items: nestedItems }, attachTo: document.body });
+      await openRoot(wrapper);
+
+      const subTrigger = document.querySelector('[data-soybean-nav-menu-sub-trigger]') as HTMLElement;
+      subTrigger.click();
+      await nextTick();
+      expect(document.querySelector('[data-soybean-nav-menu-sub-content]')).toBeTruthy();
+
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+      await nextTick();
+
+      expect(document.querySelector('[data-soybean-nav-menu-sub-content]')).toBeNull();
+      expect(document.querySelector('[data-soybean-nav-menu-content]')).toBeTruthy();
+
+      wrapper.unmount();
+    });
+
+    it('closes the nested flyout when the root menu closes', async () => {
+      const wrapper = mount(SNavMenu, { props: { items: nestedItems }, attachTo: document.body });
+      await openRoot(wrapper);
+
+      const subTrigger = document.querySelector('[data-soybean-nav-menu-sub-trigger]') as HTMLElement;
+      subTrigger.click();
+      await nextTick();
+      expect(document.querySelector('[data-soybean-nav-menu-sub-content]')).toBeTruthy();
+
+      // closing the root trigger cascades to the nested flyout (Popper nesting)
+      await wrapper.find('[data-soybean-nav-menu-trigger]').trigger('click');
+      await nextTick();
+
+      expect(document.querySelector('[data-soybean-nav-menu-content]')).toBeNull();
+      expect(document.querySelector('[data-soybean-nav-menu-sub-content]')).toBeNull();
+
+      wrapper.unmount();
+    });
+
+    it('recurses to arbitrary nesting depth and leaves render as links', async () => {
+      const wrapper = mount(SNavMenu, { props: { items: nestedItems }, attachTo: document.body });
+      await openRoot(wrapper);
+
+      // level 3: open the "One A" flyout
+      const triggers = document.querySelectorAll('[data-soybean-nav-menu-sub-trigger]');
+      (triggers[0] as HTMLElement).click();
+      await nextTick();
+
+      // level 4: "One A 1" also has children -> a deeper sub trigger appears
+      const deepTriggers = document.querySelectorAll('[data-soybean-nav-menu-sub-trigger]');
+      expect(deepTriggers.length).toBe(2);
+      (deepTriggers[1] as HTMLElement).click();
+      await nextTick();
+
+      const deepFlyouts = document.querySelectorAll('[data-soybean-nav-menu-sub-content]');
+      expect(deepFlyouts.length).toBe(2);
+      const deepFlyout = deepFlyouts[1] as HTMLElement;
+      expect(deepFlyout.textContent).toContain('One A 1 X');
+
+      // "One B" is a leaf at level 2 and renders as a link
+      expect(document.querySelector('[data-soybean-nav-menu-content] a[href="/one-b"]')).toBeTruthy();
+
+      wrapper.unmount();
+    });
+  });
+
   describe('accessibility', () => {
     it('has no a11y violations', async () => {
       const wrapper = mount(SNavMenu, {

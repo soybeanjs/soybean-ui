@@ -63,11 +63,11 @@ Properties for the Popover component.
 - `popupProps`: Properties forwarded to the popup element. (type `PopoverPopupProps`; optional)
 - `arrowProps`: Properties forwarded to the arrow element. (type `PopoverArrowProps`; optional)
 - `closeProps`: Properties forwarded to the close element. (type `PopoverCloseProps`; optional)
-- `disabled`: Whether the component is disabled. (type `boolean`; optional)
-- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
-- `open`: The controlled open state of the dialog. Can be bound with `v-model:open`. (type `boolean`; default `undefined`; optional)
-- `defaultOpen`: The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; default `false`; optional)
-- `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. (type `boolean`; default `true`; optional)
+- `dir`: No description. (type `Direction`; optional)
+- `open`: No description. (type `boolean`; optional)
+- `defaultOpen`: No description. (type `boolean`; optional)
+- `modal`: No description. (type `boolean`; optional)
+- `disabled`: No description. (type `boolean`; optional)
 
 #### Emits
 
@@ -80,6 +80,7 @@ Events for the Popover component.
 - `interactOutside`: Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown` event happens outside or focus moves outside of it. Can be prevented. (type `[event: PointerDownOutsideEvent | FocusOutsideEvent]`; parameters `event: PointerDownOutsideEvent | FocusOutsideEvent`)
 - `openAutoFocus`: Event handler called when auto-focusing on open. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
 - `closeAutoFocus`: Event handler called when auto-focusing on close. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
+- `placed`: No description. (type `[]`)
 
 #### Slots
 
@@ -128,11 +129,11 @@ Properties for the PopoverCompact component.
 - `popupProps`: Properties forwarded to the popup element. (type `PopoverPopupProps`; optional)
 - `arrowProps`: Properties forwarded to the arrow element. (type `PopoverArrowProps`; optional)
 - `closeProps`: Properties forwarded to the close element. (type `PopoverCloseProps`; optional)
-- `disabled`: Whether the component is disabled. (type `boolean`; optional)
-- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
-- `open`: The controlled open state of the dialog. Can be bound with `v-model:open`. (type `boolean`; default `undefined`; optional)
-- `defaultOpen`: The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; default `false`; optional)
-- `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. (type `boolean`; default `true`; optional)
+- `dir`: No description. (type `Direction`; optional)
+- `open`: No description. (type `boolean`; optional)
+- `defaultOpen`: No description. (type `boolean`; optional)
+- `modal`: No description. (type `boolean`; optional)
+- `disabled`: No description. (type `boolean`; optional)
 
 #### Emits
 
@@ -145,6 +146,7 @@ Events for the PopoverCompact component.
 - `interactOutside`: Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown` event happens outside or focus moves outside of it. Can be prevented. (type `[event: PointerDownOutsideEvent | FocusOutsideEvent]`; parameters `event: PointerDownOutsideEvent | FocusOutsideEvent`)
 - `openAutoFocus`: Event handler called when auto-focusing on open. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
 - `closeAutoFocus`: Event handler called when auto-focusing on close. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
+- `placed`: No description. (type `[]`)
 
 #### Slots
 
@@ -187,6 +189,9 @@ Properties for the PopoverPositioner component.
 - `disableUpdateOnLayoutShift`: Whether to disable the update position for the content when the layout shifted. (type `boolean`; default `false`; optional)
 - `prioritizePosition`: Force content to be position within the viewport. Might overlap the reference element, which may not be desired. (type `boolean`; default `false`; optional)
 - `reference`: The custom element or virtual element that will be set as the reference to position the floating element. If provided, it will replace the default anchor element. (type `ReferenceElement`; optional)
+- `trapFocus`: Whether focus is trapped inside the popup while open (Tab cycles within the layer and body scroll is locked for modal layers). (type `boolean`; default `modal`; optional)
+- `disableHoverableContent`: When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled, so leaving the trigger closes the layer immediately). (type `boolean`; default `false`; optional)
+- `onGracePointerExit`: Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g. Tooltip) run area-scoped close logic without registering its own second grace area. (type `(() => void)`; optional)
 - `forceMount`: Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. (type `boolean`; optional)
 
 #### Emits
@@ -199,6 +204,7 @@ Events for the PopoverPositioner component.
 - `interactOutside`: Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown` event happens outside or focus moves outside of it. Can be prevented. (type `[event: PointerDownOutsideEvent | FocusOutsideEvent]`; parameters `event: PointerDownOutsideEvent | FocusOutsideEvent`)
 - `openAutoFocus`: Event handler called when auto-focusing on open. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
 - `closeAutoFocus`: Event handler called when auto-focusing on close. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
+- `placed`: No description. (type `[]`)
 
 ### PopoverRoot
 
@@ -206,11 +212,11 @@ Events for the PopoverPositioner component.
 
 Properties for the PopoverRoot component.
 
-- `disabled`: Whether the component is disabled. (type `boolean`; optional)
-- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
-- `open`: The controlled open state of the dialog. Can be bound with `v-model:open`. (type `boolean`; default `undefined`; optional)
-- `defaultOpen`: The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; default `false`; optional)
-- `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. (type `boolean`; default `true`; optional)
+- `dir`: No description. (type `Direction`; optional)
+- `open`: No description. (type `boolean`; optional)
+- `defaultOpen`: No description. (type `boolean`; optional)
+- `modal`: No description. (type `boolean`; optional)
+- `disabled`: No description. (type `boolean`; optional)
 
 #### Emits
 

@@ -68,8 +68,8 @@ Properties for the NavigationMenu component.
 - `triggerProps`: Properties forwarded to the trigger element. (type `NavigationMenuTriggerProps`; optional)
 - `contentProps`: Properties forwarded to the content element. (type `NavigationMenuContentProps`; optional)
 - `viewportProps`: Properties forwarded to the viewport element. (type `NavigationMenuViewportProps`; optional)
-- `indicatorProps`: Properties forwarded to the indicator element. (type `NavigationMenuIndicatorProps`; optional)
 - `listProps`: Properties forwarded to the list element. (type `NavigationMenuListProps`; optional)
+- `indicatorProps`: Properties forwarded to the indicator element. (type `NavigationMenuIndicatorProps`; optional)
 - `subListProps`: Properties forwarded to the sub list element. (type `NavigationMenuListProps`; optional)
 - `subItemProps`: Properties forwarded to the sub item element. (type `NavigationMenuItemProps`; optional)
 
@@ -117,8 +117,8 @@ Properties for the NavigationMenuCompact component.
 - `triggerProps`: Properties forwarded to the trigger element. (type `NavigationMenuTriggerProps`; optional)
 - `contentProps`: Properties forwarded to the content element. (type `NavigationMenuContentProps`; optional)
 - `viewportProps`: Properties forwarded to the viewport element. (type `NavigationMenuViewportProps`; optional)
-- `indicatorProps`: Properties forwarded to the indicator element. (type `NavigationMenuIndicatorProps`; optional)
 - `listProps`: Properties forwarded to the list element. (type `NavigationMenuListProps`; optional)
+- `indicatorProps`: Properties forwarded to the indicator element. (type `NavigationMenuIndicatorProps`; optional)
 - `subListProps`: Properties forwarded to the sub list element. (type `NavigationMenuListProps`; optional)
 - `subItemProps`: Properties forwarded to the sub item element. (type `NavigationMenuItemProps`; optional)
 

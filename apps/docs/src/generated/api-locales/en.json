@@ -6009,6 +6009,8 @@
             "modelvalue": "The controlled value of the active item. Can be used as `v-model`.",
             "orientation": "The orientation of the menu.",
             "skipdelayduration": "How much time a user has to enter another trigger without incurring a delay again.",
+            "subcontentprops": "Properties forwarded to the nested flyout content element.",
+            "subtriggerprops": "Properties forwarded to the nested flyout trigger element.",
             "triggerprops": "Properties forwarded to the trigger element.",
             "viewportprops": "Properties forwarded to the viewport element."
           },
@@ -6095,6 +6097,21 @@
             "skipdelayduration": "How much time a user has to enter another trigger without incurring a delay again."
           },
           "props": "Properties for the NavMenuRoot component."
+        },
+        "navmenusubcontentprops": {
+          "members": {
+            "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+            "sideoffset": "Distance in pixels between the sub trigger and the nested flyout."
+          },
+          "props": "Properties for the NavMenuSubContent component (the nested flyout surface)."
+        },
+        "navmenusubtriggerprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "disabled": "Whether the trigger is disabled."
+          },
+          "props": "Properties for the NavMenuSubTrigger component (the trigger of a nested flyout)."
         },
         "navmenutriggerprops": {
           "members": {
@@ -12590,6 +12607,8 @@
             "orientation": "The orientation of the menu.",
             "size": "Visual size of the component.",
             "skipdelayduration": "How much time a user has to enter another trigger without incurring a delay again.",
+            "subcontentprops": "Properties forwarded to the nested flyout content element.",
+            "subtriggerprops": "Properties forwarded to the nested flyout trigger element.",
             "triggerprops": "Properties forwarded to the trigger element.",
             "ui": "Per-slot class overrides for the component.",
             "viewportprops": "Properties forwarded to the viewport element."

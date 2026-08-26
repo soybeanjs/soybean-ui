@@ -5988,31 +5988,33 @@
       "packages_headless_src_components_nav_menu_types": {
         "navmenucompactemits": {
           "callables": {
-            "select": "",
-            "update_modelvalue": ""
+            "select": "当选中链接时触发。",
+            "update_modelvalue": "当模型值发生变化时触发。"
           },
-          "emits": ""
+          "emits": "NavMenuCompact 组件的事件。"
         },
         "navmenucompactprops": {
           "members": {
-            "contentprops": "",
-            "defaultvalue": "",
-            "delayduration": "",
-            "dir": "",
-            "disableclicktrigger": "",
-            "disablehovertrigger": "",
-            "disablepointerleaveclose": "",
-            "itemprops": "",
-            "items": "",
-            "linkprops": "",
-            "listprops": "",
-            "modelvalue": "",
-            "orientation": "",
-            "skipdelayduration": "",
-            "triggerprops": "",
-            "viewportprops": ""
+            "contentprops": "转发给内容元素的属性。",
+            "defaultvalue": "初始渲染时应处于活动状态的项的值。",
+            "delayduration": "从指针进入触发区到子菜单打开所花费的时间。",
+            "dir": "菜单的阅读方向。",
+            "disableclicktrigger": "如果设置为 `true`，则无法通过点击触发器打开菜单。",
+            "disablehovertrigger": "如果设置为 `true`，则无法通过将鼠标悬停在触发器上打开菜单。",
+            "disablepointerleaveclose": "如果设置为 `true`，当指针移出内容区域时，菜单不会关闭。",
+            "itemprops": "转发给 item 元素的属性。",
+            "items": "导航菜单中要渲染的项目。",
+            "linkprops": "传递给 link 元素的属性。",
+            "listprops": "转发给列表元素的属性。",
+            "modelvalue": "活动项的受控值。可作为 `v-model` 使用。",
+            "orientation": "菜单的排列方向。",
+            "skipdelayduration": "用户在触发延迟之前，还有多少时间可以输入另一个触发条件。",
+            "subcontentprops": "转发至嵌套的展开内容元素的属性。",
+            "subtriggerprops": "转发给嵌套弹出触发器元素的属性。",
+            "triggerprops": "转发给触发元素的属性。",
+            "viewportprops": "转发给视口元素的属性。"
           },
-          "props": ""
+          "props": "NavMenuCompact 组件的属性。"
         },
         "navmenucompactslots": {
           "callables": {
@@ -6023,95 +6025,110 @@
             "item_trailing": "",
             "item_trigger_icon": ""
           },
-          "slots": ""
+          "slots": "NavMenuCompact 组件的插槽。"
         },
         "navmenucontentemits": {
-          "emits": ""
+          "emits": "NavMenuContent 组件的事件。"
         },
         "navmenucontentprops": {
           "members": {
-            "forcemount": ""
+            "forcemount": "用于在需要更多控制时强制挂载。\n\n在使用 Vue 动画库控制动画时非常有用。"
           },
-          "props": ""
+          "props": "NavMenuContent 组件的属性。"
         },
         "navmenuitemprops": {
           "members": {
-            "value": ""
+            "value": "与当前项目关联的值。"
           },
-          "props": ""
+          "props": "NavMenuItem 组件的属性。"
         },
         "navmenulinkemits": {
           "callables": {
-            "select": ""
+            "select": "当选中链接时触发。"
           },
-          "emits": ""
+          "emits": "NavMenuLink 组件的事件。"
         },
         "navmenulinkprops": {
           "members": {
-            "active": "",
-            "activeclass": "",
-            "ariacurrentvalue": "",
-            "as": "",
-            "aschild": "",
-            "disabled": "",
-            "exactactiveclass": "",
-            "external": "",
-            "href": "",
-            "inactiveclass": "",
-            "noprefetch": "",
-            "norel": "",
-            "prefetch": "",
-            "prefetchedclass": "",
-            "prefetchon": "",
-            "rel": "",
-            "replace": "",
-            "sub": "",
-            "target": "",
-            "to": "",
-            "trailingslash": "",
-            "viewtransition": ""
+            "active": "将该链接标记为当前活动页面。",
+            "activeclass": "当链接处于活动状态时应应用的类",
+            "ariacurrentvalue": "当链接处于活动状态时，传递给 `aria-current` 属性的值。",
+            "as": "该组件应渲染成的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "disabled": "当值为 `true` 时，该链接将被禁用。",
+            "exactactiveclass": "当链接完全有效时应用的类",
+            "external": "强制将链接视为外部链接（true）或内部链接（false）。这有助于处理边界情况",
+            "href": "点击该链接后应跳转到的 URL。",
+            "inactiveclass": "链接处于非活动状态时应用的类。",
+            "noprefetch": "用于禁用 `prefetch` 属性的逃逸机制。",
+            "norel": "如果设置为 true，则不会在链接中添加 rel 属性",
+            "prefetch": "启用后，将预取视口内链接的中间件、布局和有效载荷。",
+            "prefetchedclass": "一个用于应用于已预取链接的类。",
+            "prefetchon": "允许控制何时预取链接。默认情况下，仅在可见时才会触发预取。",
+            "rel": "应用于链接的 rel 属性值。对于外部链接，默认值为“noopener noreferrer”。",
+            "replace": "调用 `router.replace` 而不是 `router.push`。",
+            "sub": "链接是否渲染在子菜单中。当值为 `true` 时，将使用 `subLink` UI 插槽\n代替 `link`（以反映列表中根项与子项的划分）。",
+            "target": "将链接的 URL 作为浏览上下文的名称显示在何处。",
+            "to": "链接点击后应跳转到的目标位置。",
+            "trailingslash": "针对此特定链接的 `href`，提供添加或移除尾部斜杠的选项。\n若提供此选项，将覆盖全局 `trailingSlash` 选项。",
+            "viewtransition": "如果支持，请将 `router.push()` 返回的 Promise 传递给 `document.startViewTransition()`。"
           },
-          "props": ""
+          "props": "NavMenuLink 组件的属性。"
         },
         "navmenulistprops": {
-          "props": ""
+          "props": "NavMenuList 组件的属性。"
         },
         "navmenurootemits": {
           "callables": {
-            "update_modelvalue": ""
+            "update_modelvalue": "当模型值发生变化时触发。"
           },
-          "emits": ""
+          "emits": "NavMenuRoot 组件的事件。"
         },
         "navmenurootprops": {
           "members": {
-            "defaultvalue": "",
-            "delayduration": "",
-            "dir": "",
-            "disableclicktrigger": "",
-            "disablehovertrigger": "",
-            "disablepointerleaveclose": "",
-            "modelvalue": "",
-            "orientation": "",
-            "skipdelayduration": ""
+            "defaultvalue": "初始渲染时应处于活动状态的项的值。",
+            "delayduration": "从指针进入触发区到子菜单打开所花费的时间。",
+            "dir": "菜单的阅读方向。",
+            "disableclicktrigger": "如果设置为 `true`，则无法通过点击触发器打开菜单。",
+            "disablehovertrigger": "如果设置为 `true`，则无法通过将鼠标悬停在触发器上打开菜单。",
+            "disablepointerleaveclose": "如果设置为 `true`，当指针移出内容区域时，菜单不会关闭。",
+            "modelvalue": "活动项的受控值。可作为 `v-model` 使用。",
+            "orientation": "菜单的排列方向。",
+            "skipdelayduration": "用户在触发延迟之前，还有多少时间可以输入另一个触发条件。"
           },
-          "props": ""
+          "props": "NavMenuRoot 组件的属性。"
+        },
+        "navmenusubcontentprops": {
+          "members": {
+            "forcemount": "用于在需要更多控制时强制挂载。\n\n在使用 Vue 动画库控制动画时非常有用。",
+            "sideoffset": "子触发器与嵌套弹出菜单之间的像素距离。"
+          },
+          "props": "NavMenuSubContent 组件（嵌套的下拉菜单区域）的属性。"
+        },
+        "navmenusubtriggerprops": {
+          "members": {
+            "as": "该组件应渲染成的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "disabled": "触发器是否已禁用。"
+          },
+          "props": "NavMenuSubTrigger 组件（嵌套下拉菜单的触发器）的属性。"
         },
         "navmenutriggerprops": {
           "members": {
-            "as": "",
-            "aschild": "",
-            "disabled": ""
+            "as": "该组件应渲染成的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "disabled": "触发器是否已禁用。"
           },
-          "props": ""
+          "props": "NavMenuTrigger 组件的属性。"
         },
-        "navmenuui": "",
+        "navmenuui": "NavMenu 组件的 UI 类重写。",
         "navmenuviewportprops": {
           "members": {
-            "align": "",
-            "forcemount": "",
-            "sideoffset": ""
+            "align": "将视口与活动触发器对齐。",
+            "forcemount": "用于在需要更多控制时强制挂载。\n\n在使用 Vue 动画库控制动画时非常有用。",
+            "sideoffset": "触发器与视口之间的距离（以像素为单位）。"
           },
-          "props": ""
+          "props": "NavMenuViewport 组件（共享浮动区域）的属性。"
         },
         "type": ""
       },
@@ -12567,34 +12584,36 @@
       "packages_ui_src_components_nav_menu_types": {
         "navmenuemits": {
           "callables": {
-            "select": "",
-            "update_modelvalue": ""
+            "select": "当选中链接时触发。",
+            "update_modelvalue": "当模型值发生变化时触发。"
           },
-          "emits": ""
+          "emits": "NavMenu 组件的事件。"
         },
         "navmenuprops": {
           "members": {
-            "class": "",
-            "contentprops": "",
-            "defaultvalue": "",
-            "delayduration": "",
-            "dir": "",
-            "disableclicktrigger": "",
-            "disablehovertrigger": "",
-            "disablepointerleaveclose": "",
-            "itemprops": "",
-            "items": "",
-            "linkprops": "",
-            "listprops": "",
-            "modelvalue": "",
-            "orientation": "",
-            "size": "",
-            "skipdelayduration": "",
-            "triggerprops": "",
-            "ui": "",
-            "viewportprops": ""
+            "class": "已为根元素添加了额外的类名。",
+            "contentprops": "转发给内容元素的属性。",
+            "defaultvalue": "初始渲染时应处于活动状态的项的值。",
+            "delayduration": "从指针进入触发区到子菜单打开所花费的时间。",
+            "dir": "菜单的阅读方向。",
+            "disableclicktrigger": "如果设置为 `true`，则无法通过点击触发器打开菜单。",
+            "disablehovertrigger": "如果设置为 `true`，则无法通过将鼠标悬停在触发器上打开菜单。",
+            "disablepointerleaveclose": "如果设置为 `true`，当指针移出内容区域时，菜单不会关闭。",
+            "itemprops": "转发给 item 元素的属性。",
+            "items": "导航菜单中要渲染的项目。",
+            "linkprops": "传递给 link 元素的属性。",
+            "listprops": "转发给列表元素的属性。",
+            "modelvalue": "活动项的受控值。可作为 `v-model` 使用。",
+            "orientation": "菜单的排列方向。",
+            "size": "组件的视觉尺寸。",
+            "skipdelayduration": "用户在触发延迟之前，还有多少时间可以输入另一个触发条件。",
+            "subcontentprops": "转发至嵌套的展开内容元素的属性。",
+            "subtriggerprops": "转发给嵌套弹出触发器元素的属性。",
+            "triggerprops": "转发给触发元素的属性。",
+            "ui": "该组件的按槽位类重写。",
+            "viewportprops": "转发给视口元素的属性。"
           },
-          "props": ""
+          "props": "NavMenu 组件的属性。"
         },
         "navmenuslots": {
           "callables": {
@@ -12605,7 +12624,7 @@
             "item_trailing": "",
             "item_trigger_icon": ""
           },
-          "slots": ""
+          "slots": "NavMenu 组件的插槽。"
         }
       },
       "packages_ui_src_components_navigation_menu_types": {

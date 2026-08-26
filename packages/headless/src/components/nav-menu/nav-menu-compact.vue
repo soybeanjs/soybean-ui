@@ -24,7 +24,9 @@ const optionPropKeys = [
   'triggerProps',
   'contentProps',
   'viewportProps',
-  'listProps'
+  'listProps',
+  'subTriggerProps',
+  'subContentProps'
 ] as const;
 
 const forwardedRootProps = useOmitProps(props, ['items', ...optionPropKeys]);
