@@ -368,6 +368,14 @@ import {
   NavigationMenuSubList,
   NavigationMenuTrigger,
   NavigationMenuViewport,
+  NavMenuCompact,
+  NavMenuContent,
+  NavMenuItem,
+  NavMenuLink,
+  NavMenuList,
+  NavMenuRoot,
+  NavMenuTrigger,
+  NavMenuViewport,
   PageTabsClose,
   PageTabsCompact,
   PageTabsItem,
@@ -1447,6 +1455,26 @@ export const Menubar = {
   CheckboxGroup: typeof MenubarCheckboxGroup;
   RadioGroup: typeof MenubarRadioGroup;
   Compact: typeof MenubarCompact;
+};
+
+export const NavMenu = {
+  Compact: NavMenuCompact,
+  Root: NavMenuRoot,
+  List: NavMenuList,
+  Item: NavMenuItem,
+  Trigger: NavMenuTrigger,
+  Content: NavMenuContent,
+  Link: NavMenuLink,
+  Viewport: NavMenuViewport
+} as {
+  Compact: typeof NavMenuCompact;
+  Root: typeof NavMenuRoot;
+  List: typeof NavMenuList;
+  Item: typeof NavMenuItem;
+  Trigger: typeof NavMenuTrigger;
+  Content: typeof NavMenuContent;
+  Link: typeof NavMenuLink;
+  Viewport: typeof NavMenuViewport;
 };
 
 export const NavigationMenu = {

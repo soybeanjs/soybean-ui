@@ -5985,6 +5985,136 @@
         "menubarui": "Menubar 组件的 UI 类重载。",
         "type": ""
       },
+      "packages_headless_src_components_nav_menu_types": {
+        "navmenucompactemits": {
+          "callables": {
+            "select": "",
+            "update_modelvalue": ""
+          },
+          "emits": ""
+        },
+        "navmenucompactprops": {
+          "members": {
+            "contentprops": "",
+            "defaultvalue": "",
+            "delayduration": "",
+            "dir": "",
+            "disableclicktrigger": "",
+            "disablehovertrigger": "",
+            "disablepointerleaveclose": "",
+            "itemprops": "",
+            "items": "",
+            "linkprops": "",
+            "listprops": "",
+            "modelvalue": "",
+            "orientation": "",
+            "skipdelayduration": "",
+            "triggerprops": "",
+            "viewportprops": ""
+          },
+          "props": ""
+        },
+        "navmenucompactslots": {
+          "callables": {
+            "item": "",
+            "item_children": "",
+            "item_leading": "",
+            "item_link_icon": "",
+            "item_trailing": "",
+            "item_trigger_icon": ""
+          },
+          "slots": ""
+        },
+        "navmenucontentemits": {
+          "emits": ""
+        },
+        "navmenucontentprops": {
+          "members": {
+            "forcemount": ""
+          },
+          "props": ""
+        },
+        "navmenuitemprops": {
+          "members": {
+            "value": ""
+          },
+          "props": ""
+        },
+        "navmenulinkemits": {
+          "callables": {
+            "select": ""
+          },
+          "emits": ""
+        },
+        "navmenulinkprops": {
+          "members": {
+            "active": "",
+            "activeclass": "",
+            "ariacurrentvalue": "",
+            "as": "",
+            "aschild": "",
+            "disabled": "",
+            "exactactiveclass": "",
+            "external": "",
+            "href": "",
+            "inactiveclass": "",
+            "noprefetch": "",
+            "norel": "",
+            "prefetch": "",
+            "prefetchedclass": "",
+            "prefetchon": "",
+            "rel": "",
+            "replace": "",
+            "sub": "",
+            "target": "",
+            "to": "",
+            "trailingslash": "",
+            "viewtransition": ""
+          },
+          "props": ""
+        },
+        "navmenulistprops": {
+          "props": ""
+        },
+        "navmenurootemits": {
+          "callables": {
+            "update_modelvalue": ""
+          },
+          "emits": ""
+        },
+        "navmenurootprops": {
+          "members": {
+            "defaultvalue": "",
+            "delayduration": "",
+            "dir": "",
+            "disableclicktrigger": "",
+            "disablehovertrigger": "",
+            "disablepointerleaveclose": "",
+            "modelvalue": "",
+            "orientation": "",
+            "skipdelayduration": ""
+          },
+          "props": ""
+        },
+        "navmenutriggerprops": {
+          "members": {
+            "as": "",
+            "aschild": "",
+            "disabled": ""
+          },
+          "props": ""
+        },
+        "navmenuui": "",
+        "navmenuviewportprops": {
+          "members": {
+            "align": "",
+            "forcemount": "",
+            "sideoffset": ""
+          },
+          "props": ""
+        },
+        "type": ""
+      },
       "packages_headless_src_components_navigation_menu_types": {
         "navigationmenucompactemits": {
           "callables": {
@@ -12432,6 +12562,50 @@
             "trigger": "触发器插槽的自定义内容。\n\n可选：当消费者未提供内容时，`MenubarCompact` 会渲染完整的默认触发器内容（图标、\n标签、链接图标、尾部插槽）。"
           },
           "slots": "Menubar 组件的插槽。"
+        }
+      },
+      "packages_ui_src_components_nav_menu_types": {
+        "navmenuemits": {
+          "callables": {
+            "select": "",
+            "update_modelvalue": ""
+          },
+          "emits": ""
+        },
+        "navmenuprops": {
+          "members": {
+            "class": "",
+            "contentprops": "",
+            "defaultvalue": "",
+            "delayduration": "",
+            "dir": "",
+            "disableclicktrigger": "",
+            "disablehovertrigger": "",
+            "disablepointerleaveclose": "",
+            "itemprops": "",
+            "items": "",
+            "linkprops": "",
+            "listprops": "",
+            "modelvalue": "",
+            "orientation": "",
+            "size": "",
+            "skipdelayduration": "",
+            "triggerprops": "",
+            "ui": "",
+            "viewportprops": ""
+          },
+          "props": ""
+        },
+        "navmenuslots": {
+          "callables": {
+            "item": "",
+            "item_children": "",
+            "item_leading": "",
+            "item_link_icon": "",
+            "item_trailing": "",
+            "item_trigger_icon": ""
+          },
+          "slots": ""
         }
       },
       "packages_ui_src_components_navigation_menu_types": {

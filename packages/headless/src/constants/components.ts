@@ -364,6 +364,16 @@ export const components = {
     'NavigationMenuViewport',
     'NavigationMenuIndicator'
   ],
+  navMenu: [
+    'NavMenuCompact',
+    'NavMenuRoot',
+    'NavMenuList',
+    'NavMenuItem',
+    'NavMenuTrigger',
+    'NavMenuContent',
+    'NavMenuLink',
+    'NavMenuViewport'
+  ],
   pageTabs: ['PageTabsRoot', 'PageTabsItem', 'PageTabsClose', 'PageTabsPin', 'PageTabsCompact'],
   pagination: [
     'PaginationRoot',

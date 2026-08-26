@@ -333,6 +333,10 @@
         "controlled": "Controlled",
         "rtl": "RTL"
       },
+      "navMenu": {
+        "basic": "Basic",
+        "vertical": "Vertical"
+      },
       "month-picker": {
         "basic": "Basic",
         "custom-styling": "Custom Styling",

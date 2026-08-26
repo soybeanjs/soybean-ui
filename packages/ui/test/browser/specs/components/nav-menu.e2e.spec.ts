@@ -1,0 +1,157 @@
+import { describe, expect, it } from 'vitest';
+import { cdp, page, userEvent } from 'vitest/browser';
+import type { NavMenuOptionData } from '@/components/nav-menu';
+import SNavMenu from '@/components/nav-menu/nav-menu.vue';
+import { renderComponent } from '../../shared/render';
+
+/**
+ * NavMenu e2e — single shared Popper root + viewport-as-positioner.
+ *
+ * The viewport is a real `PopperPositioner`: Floating UI positions it against the active
+ * trigger (inline styles), the grace corridor and dismissal come from the positioner, and
+ * hover timing runs on one shared machine with `pendingValue` routing. Real pointers here
+ * validate the corridor (trigger → viewport) and the instant trigger switching.
+ */
+const items: NavMenuOptionData[] = [
+  {
+    value: 'one',
+    label: 'One',
+    href: '/one',
+    children: [
+      { value: 'one-a', label: 'One A', description: 'Introduction guide', href: '/one-a' },
+      { value: 'one-b', label: 'One B', description: 'Installation guide', href: '/one-b' }
+    ]
+  },
+  {
+    value: 'two',
+    label: 'Two',
+    href: '/two',
+    children: [
+      { value: 'two-a', label: 'Two A', description: 'Component library', href: '/two-a' },
+      { value: 'two-b', label: 'Two B', description: 'Theme reference', href: '/two-b' }
+    ]
+  }
+];
+
+/**
+ * Move the real pointer in small steps from the center of `fromEl` to the center of `toEl`.
+ */
+async function movePointerBetween(fromEl: Element, toEl: Element) {
+  const session = cdp();
+  const a = fromEl.getBoundingClientRect();
+  const b = toEl.getBoundingClientRect();
+  const startX = a.x + a.width / 2;
+  const startY = a.y + a.height / 2;
+  const endX = b.x + b.width / 2;
+  const endY = b.y + b.height / 2;
+  const steps = 12;
+
+  for (let i = 0; i <= steps; i++) {
+    const x = startX + ((endX - startX) * i) / steps;
+    const y = startY + ((endY - startY) * i) / steps;
+    await session.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x, y });
+  }
+}
+
+describe('SNavMenu (e2e)', () => {
+  it('opens on hover and keeps the menu open while moving onto the content', async () => {
+    const { unmount } = renderComponent(SNavMenu, { props: { items, delayDuration: 0 } });
+    const oneTrigger = page.getByRole('link', { name: 'One' });
+    const oneItem = page.getByText('One A');
+
+    await userEvent.hover(oneTrigger);
+    await expect.element(oneItem).toBeVisible();
+
+    // Move the real pointer from the trigger center down into the open viewport. The
+    // positioner's grace corridor must keep the menu open while the pointer is in transit.
+    const triggerEl = oneTrigger.elements()[0]!;
+    const viewportEl = document.querySelector('[data-soybean-nav-menu-viewport]')!;
+    const session = cdp();
+    const t = triggerEl.getBoundingClientRect();
+    const v = viewportEl.getBoundingClientRect();
+    const startX = t.x + t.width / 2;
+    const startY = t.y + t.height / 2;
+    const endX = v.x + v.width / 2;
+    const endY = v.y + v.height / 2;
+    const steps = 12;
+
+    for (let i = 0; i <= steps; i++) {
+      const x = startX + ((endX - startX) * i) / steps;
+      const y = startY + ((endY - startY) * i) / steps;
+      await session.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x, y });
+    }
+
+    await expect.element(oneItem).toBeVisible();
+
+    unmount();
+  });
+
+  it('switches instantly between triggers on hover', async () => {
+    const { unmount } = renderComponent(SNavMenu, { props: { items, delayDuration: 0 } });
+    const oneTrigger = page.getByRole('link', { name: 'One' });
+    const twoTrigger = page.getByRole('link', { name: 'Two' });
+    const oneItem = page.getByText('One A');
+    const twoItem = page.getByText('Two A');
+
+    await userEvent.hover(oneTrigger);
+    await expect.element(oneItem).toBeVisible();
+
+    await movePointerBetween(oneTrigger.elements()[0]!, twoTrigger.elements()[0]!);
+
+    await expect.element(twoItem).toBeVisible();
+    expect((twoTrigger.elements()[0]! as HTMLElement).getAttribute('data-state')).toBe('open');
+
+    unmount();
+  });
+
+  it('closes the menu when the pointer leaves the grace corridor', async () => {
+    const { unmount } = renderComponent(SNavMenu, { props: { items, delayDuration: 0 } });
+    const oneTrigger = page.getByRole('link', { name: 'One' });
+    const oneItem = page.getByText('One A');
+
+    await userEvent.hover(oneTrigger);
+    await expect.element(oneItem).toBeVisible();
+
+    const session = cdp();
+    const t = oneTrigger.elements()[0]!.getBoundingClientRect();
+    const startX = t.x + t.width / 2;
+    const startY = t.y + t.height / 2;
+    const endY = Math.min(startY + 500, window.innerHeight - 20);
+    const steps = 12;
+
+    for (let i = 1; i <= steps; i++) {
+      const y = startY + ((endY - startY) * i) / steps;
+      await session.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: startX, y });
+    }
+
+    await expect.element(oneItem).not.toBeInTheDocument();
+
+    unmount();
+  });
+
+  it('opens the submenu on trigger click', async () => {
+    const { unmount } = renderComponent(SNavMenu, { props: { items } });
+    const oneTrigger = page.getByRole('link', { name: 'One' });
+
+    await userEvent.click(oneTrigger);
+    await expect.element(page.getByText('One A')).toBeVisible();
+
+    unmount();
+  });
+
+  it('aligns the horizontal viewport to the logical end in RTL (mirror of LTR bottom-start)', async () => {
+    const { unmount } = renderComponent(SNavMenu, { props: { items, dir: 'rtl', delayDuration: 0 } });
+    const oneTrigger = page.getByRole('link', { name: 'One' });
+
+    await userEvent.hover(oneTrigger);
+    await expect.element(page.getByText('One A')).toBeVisible();
+
+    // Floating UI aligns logically: `start` maps to the right edge in RTL, so the
+    // viewport's right edge must line up with the trigger's right edge.
+    const tr = oneTrigger.elements()[0]!.getBoundingClientRect();
+    const vr = document.querySelector('[data-soybean-nav-menu-viewport]')!.getBoundingClientRect();
+    expect(Math.abs(vr.right - tr.right)).toBeLessThan(2);
+
+    unmount();
+  });
+});

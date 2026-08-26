@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T11:05:47.526Z",
+  "generatedAt": "2026-08-26T09:14:05.166Z",
   "packages": {
     "ui": {
       "components": {
@@ -646,6 +646,21 @@
             "MenubarSubContent",
             "MenubarSubTrigger",
             "MenubarTrigger"
+          ]
+        },
+        "nav-menu": {
+          "component": "nav-menu",
+          "file": "nav-menu.json",
+          "symbols": [
+            "NavMenu",
+            "NavMenuCompact",
+            "NavMenuContent",
+            "NavMenuItem",
+            "NavMenuLink",
+            "NavMenuList",
+            "NavMenuRoot",
+            "NavMenuTrigger",
+            "NavMenuViewport"
           ]
         },
         "navigation-menu": {

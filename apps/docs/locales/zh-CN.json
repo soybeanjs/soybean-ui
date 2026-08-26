@@ -333,6 +333,10 @@
         "controlled": "受控",
         "rtl": "RTL"
       },
+      "navMenu": {
+        "basic": "基础",
+        "vertical": "纵向"
+      },
       "month-picker": {
         "basic": "基础",
         "custom-styling": "自定义样式",

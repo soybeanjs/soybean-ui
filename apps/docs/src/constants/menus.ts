@@ -50,6 +50,7 @@ export const menuData: MenuData[] = [
       'dropdownMenu',
       'menu',
       'menubar',
+      'navMenu',
       'navigationMenu',
       'pageTabs',
       'pagination',

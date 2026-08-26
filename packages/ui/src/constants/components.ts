@@ -53,6 +53,7 @@ export const components = {
   menu: ['SMenuOptions', 'SMenuCheckboxOptions', 'SMenuRadioOptions'],
   menubar: ['SMenubar'],
   navigationMenu: ['SNavigationMenu'],
+  navMenu: ['SNavMenu'],
   pageTabs: ['SPageTabs'],
   pagination: ['SPagination'],
   palettePicker: ['SPalettePicker'],

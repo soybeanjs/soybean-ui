@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "NavigationMenuProps",
         "type": "Interface NavigationMenuProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<NavigationMenuUi>; items: NavigationMenuOptionData[]; modelValue?: string; defaultValue?: string; dir?: Direction; orientation?: DataOrientation; delayDuration?: number; skipDelayDuration?: number; disableClickTrigger?: boolean; disableHoverTrigger?: boolean; disablePointerLeaveClose?: boolean; unmountOnHide?: boolean; itemProps?: NavigationMenuItemProps; linkProps?: Omit<NavigationMenuLinkProps, LinkBasePropsKey>; triggerProps?: NavigationMenuTriggerProps; contentProps?: NavigationMenuContentProps; viewportProps?: NavigationMenuViewportProps; indicatorProps?: NavigationMenuIndicatorProps; listProps?: NavigationMenuListProps; subListProps?: NavigationMenuListProps; subItemProps?: NavigationMenuItemProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<NavigationMenuUi>; items: NavigationMenuOptionData[]; modelValue?: string; defaultValue?: string; dir?: Direction; orientation?: DataOrientation; delayDuration?: number; skipDelayDuration?: number; disableClickTrigger?: boolean; disableHoverTrigger?: boolean; disablePointerLeaveClose?: boolean; unmountOnHide?: boolean; itemProps?: NavigationMenuItemProps; linkProps?: Omit<NavigationMenuLinkProps, LinkBasePropsKey>; triggerProps?: NavigationMenuTriggerProps; contentProps?: NavigationMenuContentProps; viewportProps?: NavigationMenuViewportProps; listProps?: NavigationMenuListProps; indicatorProps?: NavigationMenuIndicatorProps; subListProps?: NavigationMenuListProps; subItemProps?: NavigationMenuItemProps }",
         "description": "Properties for the NavigationMenu component.",
         "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.props",
         "sourcePath": "packages/ui/src/components/navigation-menu/types.ts",
@@ -75,7 +75,7 @@
               {
                 "name": "NavigationMenuUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; content: ClassValue; triggerIcon: ClassValue; link: ClassValue; indicator: ClassValue; arrow: ClassValue; viewport: ClassValue; list: ClassValue; itemIcon: ClassValue; subList: ClassValue; subItem: ClassValue; subLink: ClassValue; linkIcon: ClassValue; subItemContent: ClassValue; subLinkContent: ClassValue; subLinkLabel: ClassValue; subLinkDescription: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; content: ClassValue; triggerIcon: ClassValue; link: ClassValue; indicator: ClassValue; arrow: ClassValue; viewport: ClassValue; list: ClassValue; itemIcon: ClassValue; subLink: ClassValue; subLinkContent: ClassValue; subLinkLabel: ClassValue; subLinkDescription: ClassValue; subList: ClassValue; linkIcon: ClassValue; subItem: ClassValue; subItemContent: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the NavigationMenu component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuui",
@@ -467,6 +467,31 @@
             ]
           },
           {
+            "name": "listProps",
+            "type": "NavigationMenuListProps",
+            "required": false,
+            "description": "Properties forwarded to the list element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.listprops",
+            "default": null,
+            "inheritedFrom": "listProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuListProps",
+                "kind": "interface",
+                "type": "NavigationMenuListProps",
+                "resolvedType": null,
+                "description": "Properties for the NavigationMenuList component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulistprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "indicatorProps",
             "type": "NavigationMenuIndicatorProps",
             "required": false,
@@ -499,31 +524,6 @@
                     "referencedTypes": []
                   }
                 ],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "listProps",
-            "type": "NavigationMenuListProps",
-            "required": false,
-            "description": "Properties forwarded to the list element.",
-            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.listprops",
-            "default": null,
-            "inheritedFrom": "listProps",
-            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "NavigationMenuListProps",
-                "kind": "interface",
-                "type": "NavigationMenuListProps",
-                "resolvedType": null,
-                "description": "Properties for the NavigationMenuList component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulistprops",
-                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
                 "callables": []
               }
             ]
@@ -1078,7 +1078,7 @@
         "kind": "props",
         "name": "NavigationMenuCompactProps",
         "type": "Interface NavigationMenuCompactProps",
-        "resolvedType": "{ items: NavigationMenuOptionData[]; modelValue?: string; defaultValue?: string; dir?: Direction; orientation?: DataOrientation; delayDuration?: number; skipDelayDuration?: number; disableClickTrigger?: boolean; disableHoverTrigger?: boolean; disablePointerLeaveClose?: boolean; unmountOnHide?: boolean; itemProps?: NavigationMenuItemProps; linkProps?: Omit<NavigationMenuLinkProps, LinkBasePropsKey>; triggerProps?: NavigationMenuTriggerProps; contentProps?: NavigationMenuContentProps; viewportProps?: NavigationMenuViewportProps; indicatorProps?: NavigationMenuIndicatorProps; listProps?: NavigationMenuListProps; subListProps?: NavigationMenuListProps; subItemProps?: NavigationMenuItemProps }",
+        "resolvedType": "{ items: NavigationMenuOptionData[]; modelValue?: string; defaultValue?: string; dir?: Direction; orientation?: DataOrientation; delayDuration?: number; skipDelayDuration?: number; disableClickTrigger?: boolean; disableHoverTrigger?: boolean; disablePointerLeaveClose?: boolean; unmountOnHide?: boolean; itemProps?: NavigationMenuItemProps; linkProps?: Omit<NavigationMenuLinkProps, LinkBasePropsKey>; triggerProps?: NavigationMenuTriggerProps; contentProps?: NavigationMenuContentProps; viewportProps?: NavigationMenuViewportProps; listProps?: NavigationMenuListProps; indicatorProps?: NavigationMenuIndicatorProps; subListProps?: NavigationMenuListProps; subItemProps?: NavigationMenuItemProps }",
         "description": "Properties for the NavigationMenuCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.props",
         "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
@@ -1464,6 +1464,31 @@
             ]
           },
           {
+            "name": "listProps",
+            "type": "NavigationMenuListProps",
+            "required": false,
+            "description": "Properties forwarded to the list element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.listprops",
+            "default": null,
+            "inheritedFrom": "Omit.listProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuListProps",
+                "kind": "interface",
+                "type": "NavigationMenuListProps",
+                "resolvedType": null,
+                "description": "Properties for the NavigationMenuList component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulistprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "indicatorProps",
             "type": "NavigationMenuIndicatorProps",
             "required": false,
@@ -1496,31 +1521,6 @@
                     "referencedTypes": []
                   }
                 ],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "listProps",
-            "type": "NavigationMenuListProps",
-            "required": false,
-            "description": "Properties forwarded to the list element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.listprops",
-            "default": null,
-            "inheritedFrom": "Omit.listProps",
-            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "NavigationMenuListProps",
-                "kind": "interface",
-                "type": "NavigationMenuListProps",
-                "resolvedType": null,
-                "description": "Properties for the NavigationMenuList component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulistprops",
-                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
                 "callables": []
               }
             ]
