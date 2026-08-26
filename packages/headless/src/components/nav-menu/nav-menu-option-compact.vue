@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import Icon from '../_icon/icon.vue';
 import type { LinkProps } from '../link/types';
-import { useNavMenuUi } from './context';
+import { useNavMenuRootContext, useNavMenuUi } from './context';
 import NavMenuContent from './nav-menu-content.vue';
 import NavMenuItem from './nav-menu-item.vue';
 import NavMenuLink from './nav-menu-link.vue';
@@ -25,6 +25,15 @@ const emit = defineEmits<NavMenuOptionCompactEmits>();
 defineSlots<NavMenuOptionCompactSlots>();
 
 const ui = useNavMenuUi();
+
+const { modelValue, disableHoverTrigger, onItemDismiss } = useNavMenuRootContext('NavMenuOptionCompact');
+
+// A root-level leaf link has no flyout to show: entering it while another menu is open
+// (hover-driven) must close that menu, instead of the shared corridor keeping it open.
+const onLeafPointerEnter = () => {
+  if (disableHoverTrigger.value || !modelValue.value) return;
+  onItemDismiss();
+};
 
 const isLink = computed(() => Boolean(props.item.to || props.item.href));
 
@@ -55,8 +64,13 @@ function childLinkProps(child: NavMenuOptionData): LinkProps {
 
 <template>
   <NavMenuItem v-bind="itemProps" :value="item.value">
-    <!-- leaf item: a single link -->
-    <NavMenuLink v-if="!item.children?.length" v-bind="linkProps" @select="emit('select', $event)">
+    <!-- leaf item: a single link; entering it closes any open menu -->
+    <NavMenuLink
+      v-if="!item.children?.length"
+      v-bind="linkProps"
+      @pointerenter="onLeafPointerEnter"
+      @select="emit('select', $event)"
+    >
       <slot name="item" :item="item">
         <slot name="item-leading" :item="item">
           <Icon v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />

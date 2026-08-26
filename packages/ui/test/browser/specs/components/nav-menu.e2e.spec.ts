@@ -54,6 +54,25 @@ async function movePointerBetween(fromEl: Element, toEl: Element) {
 }
 
 describe('SNavMenu (e2e)', () => {
+  it('closes the menu when the pointer moves to a root-level leaf link', async () => {
+    const { unmount } = renderComponent(SNavMenu, {
+      props: { items: [...items, { value: 'help', label: 'Help', href: '/help' }], delayDuration: 0 }
+    });
+    const oneTrigger = page.getByRole('link', { name: 'One', exact: true });
+    const helpLink = page.getByRole('link', { name: 'Help', exact: true });
+    const oneItem = page.getByText('One A');
+
+    await userEvent.hover(oneTrigger);
+    await expect.element(oneItem).toBeVisible();
+
+    // moving the real pointer onto a root link without children dismisses the open menu
+    await movePointerBetween(oneTrigger.elements()[0]!, helpLink.elements()[0]!);
+
+    await expect.element(oneItem).not.toBeInTheDocument();
+
+    unmount();
+  });
+
   it('opens on hover and keeps the menu open while moving onto the content', async () => {
     const { unmount } = renderComponent(SNavMenu, { props: { items, delayDuration: 0 } });
     const oneTrigger = page.getByRole('link', { name: 'One' });

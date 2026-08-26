@@ -180,6 +180,34 @@ describe('SNavMenu', () => {
       wrapper.unmount();
     });
 
+    it('closes an open menu when hovering a root-level leaf link', async () => {
+      vi.useFakeTimers();
+
+      const wrapper = mount(SNavMenu, {
+        props: {
+          items: [...hoverItems, { value: 'leaf', label: 'Leaf', href: '/leaf' }]
+        },
+        attachTo: document.body
+      });
+
+      const trigger = wrapper.find('[data-soybean-nav-menu-trigger]');
+
+      await trigger.trigger('pointerenter', { pointerType: 'mouse' });
+      await vi.advanceTimersByTimeAsync(200);
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-nav-menu-content]').exists()).toBe(true);
+
+      // a root-level link without children has no flyout: entering it dismisses the open menu
+      await wrapper.find('a[href="/leaf"]').trigger('pointerenter', { pointerType: 'mouse' });
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-nav-menu-content]').exists()).toBe(false);
+      expect(trigger.attributes('data-state')).not.toBe('open');
+
+      wrapper.unmount();
+    });
+
     it('does not open on hover when disableHoverTrigger is set, but still opens on click', async () => {
       vi.useFakeTimers();
 
