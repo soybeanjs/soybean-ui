@@ -41,8 +41,8 @@ const ui = computed(() => colorPickerVariants({ size: props.size }, props.ui, { 
 const popoverUi = computed(() => popoverVariants({ size: props.size }, { popup: props.ui?.popup }));
 const colorAreaUi = computed(() => colorAreaVariants({ size: props.size }));
 const colorFieldUi = computed(() => colorFieldVariants({ size: props.size }));
-const colorSwatchUi = computed(() => colorSwatchVariants({ size: props.size, shape: 'square' }));
-const colorSwatchPickerUi = computed(() => colorSwatchPickerVariants({ size: props.size, shape: 'square' }));
+const colorSwatchUi = computed(() => colorSwatchVariants({ size: props.size, shape: 'circle' }));
+const colorSwatchPickerUi = computed(() => colorSwatchPickerVariants({ size: props.size, shape: 'circle' }));
 const colorSliderUi = computed(() => sliderVariants({ size: props.size }));
 const segmentUi = computed(() =>
   tabsVariants({
@@ -58,9 +58,9 @@ provideColorPickerUi(ui);
 providePopoverUi(popoverUi);
 provideColorAreaUi(colorAreaUi);
 provideColorFieldUi(colorFieldUi);
+provideColorSwatchUi(colorSwatchUi);
 provideColorSwatchPickerUi(colorSwatchPickerUi);
 provideColorSliderUi(colorSliderUi);
-provideColorSwatchUi(colorSwatchUi);
 provideTabsUi(segmentUi);
 </script>
 
