@@ -12,7 +12,7 @@ const variants: ClipboardVariant[] = ['solid', 'outline', 'dashed', 'soft', 'gho
       :key="variant"
       :value="`copy-${variant}`"
       :variant="variant"
-      color="accent"
+      color="destructive"
       :copy-text="variant"
       :copied-text="`${variant} copied`"
     />

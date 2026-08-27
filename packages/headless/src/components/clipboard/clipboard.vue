@@ -33,7 +33,8 @@ const forwardedProps = useOmitProps(props, [
   'copyIcon',
   'copiedIcon',
   'copyText',
-  'copiedText'
+  'copiedText',
+  'onlyIcon'
 ]);
 
 const copied = shallowRef(false);
@@ -105,7 +106,7 @@ const onClick = async (event: PointerEvent) => {
         <Icon :icon="displayIcon" />
       </span>
     </slot>
-    <slot v-bind="slotProps">{{ displayText }}</slot>
+    <slot v-if="!onlyIcon" v-bind="slotProps">{{ displayText }}</slot>
     <slot name="trailing" v-bind="slotProps" />
   </Button>
 </template>

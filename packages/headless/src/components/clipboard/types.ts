@@ -50,6 +50,12 @@ export interface ClipboardProps extends ButtonProps {
    * Defaults to the localized `clipboard.copied` message from `ConfigProvider`.
    */
   copiedText?: string;
+  /**
+   * Whether to only render the icon without any text.
+   *
+   * @defaultValue false
+   */
+  onlyIcon?: boolean;
 }
 
 /**

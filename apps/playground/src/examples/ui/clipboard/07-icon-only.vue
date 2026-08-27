@@ -5,15 +5,5 @@ const value = 'icon-only-example';
 </script>
 
 <template>
-  <SClipboard
-    :value="value"
-    color="accent"
-    variant="outline"
-    shape="square"
-    aria-label="Copy icon-only example"
-    copy-text="Copy icon-only example"
-    copied-text="Copied icon-only example"
-  >
-    <template #default />
-  </SClipboard>
+  <SClipboard :value="value" only-icon color="accent" variant="soft" shape="square" />
 </template>
