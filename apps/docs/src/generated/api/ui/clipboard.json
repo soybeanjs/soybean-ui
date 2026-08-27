@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "ClipboardProps",
         "type": "Interface ClipboardProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; variant?: ClipboardVariant; shape?: ClipboardShape; fitContent?: boolean; value: string; copiedDuration?: number; legacy?: boolean; copyIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; copiedIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; copyText?: string; copiedText?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; variant?: ClipboardVariant; shape?: ClipboardShape; fitContent?: boolean; value: string; copiedDuration?: number; legacy?: boolean; copyIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; copiedIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; copyText?: string; copiedText?: string; onlyIcon?: boolean; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the Clipboard component.",
         "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.props",
         "sourcePath": "packages/ui/src/components/clipboard/types.ts",
@@ -250,6 +250,17 @@
             "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.copiedtext",
             "default": null,
             "inheritedFrom": "_ClipboardProps.copiedText",
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onlyIcon",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to only render the icon without any text.",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.onlyicon",
+            "default": "false",
+            "inheritedFrom": "_ClipboardProps.onlyIcon",
             "sourcePath": "packages/headless/src/components/clipboard/types.ts",
             "referencedTypes": []
           },

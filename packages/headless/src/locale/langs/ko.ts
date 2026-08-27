@@ -113,6 +113,7 @@ const messages: LocaleMessages = {
     submit: '저장'
   },
   combobox: {
+    clear: '지우기',
     clearInput: '입력 지우기',
     noResults: '결과가 없습니다.',
     search: '검색',

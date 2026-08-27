@@ -113,6 +113,7 @@ const messages: LocaleMessages = {
     submit: '保存'
   },
   combobox: {
+    clear: 'クリア',
     clearInput: '入力をクリア',
     noResults: '結果が見つかりません。',
     search: '検索',

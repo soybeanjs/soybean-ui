@@ -23,7 +23,6 @@ const props = withDefaults(defineProps<ComboboxRootProps<M>>(), {
   resetSearchTermOnSelect: true,
   openOnFocus: false,
   openOnClick: false,
-  resetModelValueOnClear: false,
   highlightOnHover: true
 });
 
@@ -42,8 +41,7 @@ const forwardedProps = useOmitProps(
     'resetSearchTermOnBlur',
     'resetSearchTermOnSelect',
     'openOnFocus',
-    'openOnClick',
-    'resetModelValueOnClear'
+    'openOnClick'
   ],
   attrs
 );
@@ -177,8 +175,7 @@ provideComboboxRootContext({
     'resetSearchTermOnBlur',
     'resetSearchTermOnSelect',
     'openOnFocus',
-    'openOnClick',
-    'resetModelValueOnClear'
+    'openOnClick'
   ]),
   dir,
   modelValue: modelValue as ShallowRef<MaybeArray<string>>,

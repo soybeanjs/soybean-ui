@@ -159,6 +159,8 @@ export const components = {
     'ComboboxViewport',
     'ComboboxContent',
     'ComboboxCancel',
+    'ComboboxClear',
+    'ComboboxValue',
     'ComboboxArrow',
     'ComboboxGroup',
     'ComboboxGroupLabel',

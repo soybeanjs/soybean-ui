@@ -75,7 +75,7 @@
               {
                 "name": "ComboboxUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; triggerIcon: ClassValue; anchor: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; cancel: ClassValue; viewport: ClassValue; inputRoot: ClassValue; inputControl: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIndicator: ClassValue; empty: ClassValue; separator: ClassValue; virtualizer: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; triggerIcon: ClassValue; clear: ClassValue; anchor: ClassValue; value: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; cancel: ClassValue; viewport: ClassValue; inputRoot: ClassValue; inputControl: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIndicator: ClassValue; empty: ClassValue; separator: ClassValue; virtualizer: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Combobox component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxui",

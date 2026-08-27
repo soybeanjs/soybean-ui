@@ -113,6 +113,7 @@ const messages: LocaleMessages = {
     submit: 'Speichern'
   },
   combobox: {
+    clear: 'Leeren',
     clearInput: 'Eingabe löschen',
     noResults: 'Keine Ergebnisse gefunden.',
     search: 'Suchen',

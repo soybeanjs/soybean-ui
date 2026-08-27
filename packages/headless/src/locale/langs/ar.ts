@@ -113,6 +113,7 @@ const messages: LocaleMessages = {
     submit: 'إرسال'
   },
   combobox: {
+    clear: 'مسح',
     clearInput: 'مسح الإدخال',
     noResults: 'لم يتم العثور على نتائج.',
     search: 'بحث',

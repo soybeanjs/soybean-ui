@@ -14,7 +14,8 @@
 - ⌨️ 完整键盘导航——方向键、Enter/Space 选择、typeahead、Escape 关闭
 - 📜 可选虚拟滚动（`ComboboxVirtualizer`）
 - 🗂 分组，支持组标签与分隔符
-- 🧹 取消/清空按钮，可选 `resetModelValueOnClear`
+- 🧹 触发器清除图标取消选择（`clearable`）；浮窗内取消按钮仅清空搜索输入
+- 🧩 `ComboboxValue` 原语渲染已选标签（或占位符），便于自定义触发器布局
 - 📊 数据驱动 `ComboboxCompact` API——`items`（选项使用 `label` / `value` 字段）+ 分组
 - 🎛 受控/非受控，支持 `v-model:open` 与过滤语义（`ignoreFilter`、`resetSearchTermOnBlur`）
 - ♿ 完整无障碍支持——`role="combobox"` / `listbox` / `option`、`aria-activedescendant`、axe 零违规
@@ -31,7 +32,7 @@
 
 ### 架构与对标差异
 
-SoybeanUI 通过复用 listbox 基座与 Popper 定位构建组合框：`ComboboxRoot`（选择状态 + `useControllableState(open)` + 三态过滤）→ `ComboboxInput`（`role="combobox"` + `aria-autocomplete`）→ `ComboboxTrigger` → `ComboboxContentImpl`（DismissableLayer + FocusScope + bodyLock）→ `ComboboxItem` → `ListboxItem`。`scv()` 配方 `comboboxVariants` 声明 15 个插槽与 7 个尺寸变体。这与 reka-ui / shadcn 的 combobox 语义一致，虚拟滚动与数据驱动 compact API 为 SoybeanUI 的差异化增强。
+SoybeanUI 通过复用 listbox 基座与 Popper 定位构建组合框：`ComboboxRoot`（选择状态 + `useControllableState(open)` + 三态过滤）→ `ComboboxInput`（`role="combobox"` + `aria-autocomplete`）→ `ComboboxTrigger` → `ComboboxContentImpl`（DismissableLayer + FocusScope + bodyLock）→ `ComboboxItem` → `ListboxItem`。`scv()` 配方 `comboboxVariants` 声明 16 个插槽与 7 个尺寸变体。这与 reka-ui / shadcn 的 combobox 语义一致，虚拟滚动与数据驱动 compact API 为 SoybeanUI 的差异化增强。
 
 | 能力                     | SoybeanUI | reka-ui `Combobox` | shadcn `Combobox` | Ant Design `Select` (showSearch) |
 | :----------------------- | :-------: | :----------------: | :---------------: | :------------------------------: |
@@ -62,9 +63,9 @@ SoybeanUI 通过复用 listbox 基座与 Popper 定位构建组合框：`Combobo
 
 在内容中加入 `ComboboxVirtualizer`（或对应 compact 开关），会激活内部虚拟列表，同时保留键盘导航。
 
-### 如何清空输入并重置模型值？
+### 如何取消选择或只清空搜索词？
 
-传入 `clearable`。`resetModelValueOnClear` 决定清除时是否同时发出空 `modelValue`，还是仅重置搜索词。
+传入 `clearable`。已选中值时，触发器会显示 ✕ 清除图标——点击后取消选择并发出空 `modelValue`（单选为 `undefined`，多选为 `[]`）。浮窗内的取消按钮只清空搜索输入，不影响已选值。
 
 ### 为什么禁用条目仍可选中？
 

@@ -58,6 +58,37 @@ describe('SCombobox', () => {
       wrapper.unmount();
     });
 
+    it('renders the value element with placeholder state until a value is selected', () => {
+      const wrapper = mount(SCombobox, {
+        props: {
+          items,
+          modelValue: 'banana'
+        },
+        attachTo: document.body
+      });
+
+      const value = wrapper.get('[data-soybean-combobox-value]');
+      expect(value.text()).toBe('Banana');
+      expect(value.attributes('data-placeholder')).toBeUndefined();
+      wrapper.unmount();
+    });
+
+    it('marks the value element as placeholder when nothing is selected', () => {
+      const wrapper = mount(SCombobox, {
+        props: {
+          items,
+          multiple: true,
+          placeholder: 'Select fruits'
+        },
+        attachTo: document.body
+      });
+
+      const value = wrapper.get('[data-soybean-combobox-value]');
+      expect(value.text()).toContain('Select fruits');
+      expect(value.attributes('data-placeholder')).toBe('');
+      wrapper.unmount();
+    });
+
     it('applies custom class', () => {
       const wrapper = mount(SCombobox, {
         props: {
@@ -205,20 +236,16 @@ describe('SCombobox', () => {
       wrapper.unmount();
     });
 
-    it('emits undefined when clearable reset is enabled', async () => {
+    it('emits undefined when the trigger clear button is clicked', async () => {
       const wrapper = mount(SCombobox, {
         props: {
           items,
           modelValue: 'banana',
           clearable: true,
-          resetModelValueOnClear: true,
           clearLabel: 'Clear selection'
         },
         attachTo: document.body
       });
-
-      await wrapper.get('button').trigger('click');
-      await wrapper.vm.$nextTick();
 
       const clearButton = document.body.querySelector('[aria-label="Clear selection"]') as HTMLButtonElement | null;
       expect(clearButton).not.toBeNull();
@@ -227,6 +254,20 @@ describe('SCombobox', () => {
       await wrapper.vm.$nextTick();
 
       expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual([undefined]);
+      wrapper.unmount();
+    });
+
+    it('hides the trigger clear button when no value is selected', async () => {
+      const wrapper = mount(SCombobox, {
+        props: {
+          items,
+          clearable: true,
+          placeholder: 'Select a fruit'
+        },
+        attachTo: document.body
+      });
+
+      expect(document.body.querySelector('[data-soybean-combobox-clear]')).toBeNull();
       wrapper.unmount();
     });
   });
@@ -533,7 +574,7 @@ describe('SCombobox', () => {
   });
 
   describe('cancel button', () => {
-    it('keeps the selection when the cancel button is clicked by default', async () => {
+    it('only clears the search input and keeps the selection when clicked', async () => {
       const wrapper = mount(SCombobox, {
         props: {
           items,
@@ -545,7 +586,9 @@ describe('SCombobox', () => {
 
       await openCombobox(wrapper);
 
-      const cancel = document.body.querySelector('[aria-label="Clear selection"]') as HTMLElement | null;
+      const cancel = document.body.querySelector(
+        '[data-soybean-combobox-cancel][aria-label="Clear selection"]'
+      ) as HTMLElement | null;
 
       expect(cancel).not.toBeNull();
 
@@ -554,34 +597,8 @@ describe('SCombobox', () => {
       await nextTick();
 
       expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+      expect(getComboboxInput()?.value).toBe('');
       expect(wrapper.get('button').text()).toContain('Banana');
-      wrapper.unmount();
-    });
-
-    it('clears the selection when resetModelValueOnClear is enabled', async () => {
-      const wrapper = mount(SCombobox, {
-        props: {
-          items,
-          defaultValue: 'banana',
-          resetModelValueOnClear: true,
-          placeholder: 'Pick a fruit',
-          clearLabel: 'Clear selection'
-        },
-        attachTo: document.body
-      });
-
-      await openCombobox(wrapper);
-
-      const cancel = document.body.querySelector('[aria-label="Clear selection"]') as HTMLElement | null;
-
-      expect(cancel).not.toBeNull();
-
-      cancel?.click();
-      await nextTick();
-      await nextTick();
-
-      expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual([undefined]);
-      expect(wrapper.get('button').text()).toContain('Pick a fruit');
       wrapper.unmount();
     });
   });

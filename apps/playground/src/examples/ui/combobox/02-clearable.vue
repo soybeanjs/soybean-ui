@@ -17,7 +17,6 @@ const items: ComboboxOptionData[] = [
     <SCombobox
       v-model="value"
       clearable
-      reset-model-value-on-clear
       :items="items"
       placeholder="Select a fruit"
       search-placeholder="Search fruits"

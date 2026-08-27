@@ -113,6 +113,7 @@ const messages: LocaleMessages = {
     submit: '提交'
   },
   combobox: {
+    clear: '清除',
     clearInput: '清除輸入',
     noResults: '無符合結果。',
     search: '搜尋',

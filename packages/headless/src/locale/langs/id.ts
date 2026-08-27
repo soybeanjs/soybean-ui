@@ -113,6 +113,7 @@ const messages: LocaleMessages = {
     submit: 'Simpan'
   },
   combobox: {
+    clear: 'Hapus',
     clearInput: 'Hapus input',
     noResults: 'Tidak ada hasil.',
     search: 'Cari',

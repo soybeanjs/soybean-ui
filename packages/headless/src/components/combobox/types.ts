@@ -70,10 +70,6 @@ export interface ComboboxRootProps<M extends boolean = false> extends Omit<
    * When `true`, disable the default filters
    */
   ignoreFilter?: boolean;
-  /**
-   * When `true` the `modelValue` will be reset to `null` (or `[]` if `multiple`)
-   */
-  resetModelValueOnClear?: boolean;
 }
 
 /**
@@ -198,6 +194,39 @@ export interface ComboboxCancelProps extends PrimitiveWithBaseProps {
 }
 
 /**
+ * Properties for the ComboboxClear component.
+ */
+export interface ComboboxClearProps {
+  /**
+   * Aria label for the clear button.
+   */
+  ariaLabel?: string;
+  /**
+   * Whether the clear button is disabled.
+   */
+  disabled?: boolean;
+}
+
+/**
+ * Properties for the ComboboxValue component.
+ */
+export interface ComboboxValueProps extends PrimitiveWithBaseProps {
+  /**
+   * Items used to resolve selected labels.
+   */
+  items?: ComboboxOptionData[];
+  /**
+   * Placeholder rendered when no value is selected.
+   */
+  placeholder?: string;
+  /**
+   * Separator used to join multiple selected labels.
+   * @defaultValue `', '`
+   */
+  separator?: string;
+}
+
+/**
  * Properties for the ComboboxVirtualizer component.
  */
 export interface ComboboxVirtualizerProps extends ListboxVirtualizerProps {}
@@ -275,6 +304,10 @@ export interface ComboboxCompactProps<M extends boolean = false> extends Combobo
    * Properties forwarded to the cancel element.
    */
   cancelProps?: ComboboxCancelProps;
+  /**
+   * Properties forwarded to the value element.
+   */
+  valueProps?: ComboboxValueProps;
   /**
    * Properties forwarded to the portal element.
    */
@@ -440,7 +473,6 @@ export interface ComboboxRootContext extends PropsToContext<
   | 'resetSearchTermOnSelect'
   | 'openOnFocus'
   | 'openOnClick'
-  | 'resetModelValueOnClear'
 > {
   /**
    * Whether multiple values are supported.
@@ -547,7 +579,9 @@ export type ComboboxUiSlot =
   | PopperUiSlot
   | 'root'
   | 'trigger'
+  | 'value'
   | 'triggerIcon'
+  | 'clear'
   | 'cancel'
   | 'viewport'
   | 'inputRoot'

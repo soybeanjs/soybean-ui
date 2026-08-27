@@ -6,6 +6,8 @@ export { default as ComboboxPortal } from '../portal/portal.vue';
 export { default as ComboboxViewport } from './combobox-viewport.vue';
 export { default as ComboboxContent } from './combobox-content.vue';
 export { default as ComboboxCancel } from './combobox-cancel.vue';
+export { default as ComboboxClear } from './combobox-clear.vue';
+export { default as ComboboxValue } from './combobox-value.vue';
 export { default as ComboboxArrow } from './combobox-arrow.vue';
 export { default as ComboboxGroup } from './combobox-group.vue';
 export { default as ComboboxGroupLabel } from '../listbox/listbox-group-label.vue';
@@ -31,6 +33,8 @@ export type {
   ComboboxContentProps,
   ComboboxContentEmits,
   ComboboxCancelProps,
+  ComboboxClearProps,
+  ComboboxValueProps,
   ComboboxArrowProps,
   ComboboxGroupProps,
   ComboboxGroupLabelProps,

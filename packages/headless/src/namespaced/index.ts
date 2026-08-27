@@ -163,6 +163,7 @@ import {
   ComboboxAnchor,
   ComboboxArrow,
   ComboboxCancel,
+  ComboboxClear,
   ComboboxCompact,
   ComboboxContent,
   ComboboxEmpty,
@@ -175,6 +176,7 @@ import {
   ComboboxRoot,
   ComboboxSeparator,
   ComboboxTrigger,
+  ComboboxValue,
   ComboboxViewport,
   ComboboxVirtualizer,
   CommandCompact,
@@ -1000,6 +1002,8 @@ export const Combobox = {
   Viewport: ComboboxViewport,
   Content: ComboboxContent,
   Cancel: ComboboxCancel,
+  Clear: ComboboxClear,
+  Value: ComboboxValue,
   Arrow: ComboboxArrow,
   Group: ComboboxGroup,
   GroupLabel: ComboboxGroupLabel,
@@ -1018,6 +1022,8 @@ export const Combobox = {
   Viewport: typeof ComboboxViewport;
   Content: typeof ComboboxContent;
   Cancel: typeof ComboboxCancel;
+  Clear: typeof ComboboxClear;
+  Value: typeof ComboboxValue;
   Arrow: typeof ComboboxArrow;
   Group: typeof ComboboxGroup;
   GroupLabel: typeof ComboboxGroupLabel;

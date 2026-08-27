@@ -2605,6 +2605,13 @@
           },
           "props": "ComboboxCancel 组件的属性。"
         },
+        "comboboxclearprops": {
+          "members": {
+            "arialabel": "“清除”按钮的 ARIA 标签。",
+            "disabled": "“清除”按钮是否被禁用。"
+          },
+          "props": "ComboboxClear 组件的属性。"
+        },
         "comboboxcompactemits": {
           "callables": {
             "closeautofocus": "关闭时自动聚焦会调用事件处理程序。可以避免。",
@@ -2654,12 +2661,12 @@
             "placeholder": "占位符。",
             "portalprops": "转发到门户元素的属性。",
             "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
-            "resetmodelvalueonclear": "true \"时，\"modelValue \"将重置为 \"null\"（如果是 \"多个\"，则为\"[]\"）。",
             "resetsearchtermonblur": "组合框输入模糊时是否重置 searchTerm",
             "resetsearchtermonselect": "选择组合框值时是否重置 searchTerm",
             "searchplaceholder": "搜索占位符。",
             "separatorprops": "转发到分隔符元素的属性。",
             "triggerprops": "转发到触发器元素的属性。",
+            "valueprops": "转发至 value 元素的属性。",
             "viewportprops": "转发到视口元素的属性。"
           },
           "props": "ComboboxCompact 组件的属性。"
@@ -2819,7 +2826,6 @@
             "openonclick": "点击输入时是否打开组合框",
             "openonfocus": "是否在输入集中时打开组合框",
             "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
-            "resetmodelvalueonclear": "true \"时，\"modelValue \"将重置为 \"null\"（如果是 \"多个\"，则为\"[]\"）。",
             "resetsearchtermonblur": "组合框输入模糊时是否重置 searchTerm",
             "resetsearchtermonselect": "选择组合框值时是否重置 searchTerm"
           },
@@ -2841,6 +2847,16 @@
           "props": "ComboboxTrigger 组件的属性。"
         },
         "comboboxui": "组合框组件的 UI 类重载。",
+        "comboboxvalueprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "items": "用于解析所选标签的项。",
+            "placeholder": "当未选择任何值时，显示占位符。",
+            "separator": "用于连接多个选中标签的分隔符。"
+          },
+          "props": "ComboboxValue 组件的属性。"
+        },
         "comboboxviewportprops": {
           "members": {
             "nonce": "Nonce。"
@@ -10821,6 +10837,7 @@
             "disabled": "该组件是否已禁用。",
             "fitcontent": "组件是否应适应其内容宽度。",
             "legacy": "是否启用旧版 `execCommand` 备用方案。",
+            "onlyicon": "是否仅渲染图标而不显示任何文本。",
             "shape": "组件的结构。",
             "size": "组件的视觉尺寸。",
             "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。",
@@ -11120,7 +11137,6 @@
             "placeholder": "占位符。",
             "portalprops": "转发至 portal 元素的属性。",
             "required": "当值为 `true` 时，表示用户必须先设置该值，所属表单才能提交。",
-            "resetmodelvalueonclear": "当 `true` 时，`modelValue` 将被重置为 `null`（若为 `multiple` 则重置为 `[]`）",
             "resetsearchtermonblur": "当下拉列表（Combobox）输入框失去焦点时，是否重置搜索词（searchTerm）",
             "resetsearchtermonselect": "当下拉列表（Combobox）的值被选中时，是否重置搜索词（searchTerm）",
             "searchplaceholder": "搜索占位符。",
@@ -11128,6 +11144,7 @@
             "size": "组件的视觉尺寸。",
             "triggerprops": "转发给触发元素的属性。",
             "ui": "针对该组件的按槽位类重写。",
+            "valueprops": "转发至 value 元素的属性。",
             "viewportprops": "传递给视口元素的属性。"
           },
           "props": "Combobox 组件的属性。"

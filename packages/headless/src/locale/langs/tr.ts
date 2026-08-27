@@ -113,6 +113,7 @@ const messages: LocaleMessages = {
     submit: 'Kaydet'
   },
   combobox: {
+    clear: 'Temizle',
     clearInput: 'Girdiyi temizle',
     noResults: 'Sonuç bulunamadı.',
     search: 'Ara',

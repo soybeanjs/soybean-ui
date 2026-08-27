@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T13:53:45.541Z",
+  "generatedAt": "2026-08-27T13:42:27.192Z",
   "packages": {
     "ui": {
       "components": {
@@ -300,6 +300,7 @@
             "ComboboxAnchor",
             "ComboboxArrow",
             "ComboboxCancel",
+            "ComboboxClear",
             "ComboboxCompact",
             "ComboboxContent",
             "ComboboxEmpty",
@@ -312,6 +313,7 @@
             "ComboboxRoot",
             "ComboboxSeparator",
             "ComboboxTrigger",
+            "ComboboxValue",
             "ComboboxViewport",
             "ComboboxVirtualizer"
           ]

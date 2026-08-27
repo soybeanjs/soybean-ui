@@ -10,6 +10,7 @@ import ComboboxAnchor from '../popper/popper-anchor.vue';
 import ComboboxPortal from '../portal/portal.vue';
 import { getDisplayValue, getSelectedLabels, isGroupOption } from './shared';
 import ComboboxCancel from './combobox-cancel.vue';
+import ComboboxClear from './combobox-clear.vue';
 import ComboboxContent from './combobox-content.vue';
 import ComboboxEmpty from './combobox-empty.vue';
 import ComboboxGroup from './combobox-group.vue';
@@ -18,6 +19,7 @@ import ComboboxItem from './combobox-item.vue';
 import ComboboxRoot from './combobox-root.vue';
 import ComboboxSeparator from './combobox-separator.vue';
 import ComboboxTrigger from './combobox-trigger.vue';
+import ComboboxValue from './combobox-value.vue';
 import ComboboxViewport from './combobox-viewport.vue';
 import type { ComboboxCompactProps, ComboboxCompactEmits, ComboboxCompactSlots, ComboboxOptionData } from './types';
 
@@ -43,6 +45,7 @@ const forwardedProps = useOmitProps(props, [
   'anchorProps',
   'triggerProps',
   'cancelProps',
+  'valueProps',
   'portalProps',
   'contentProps',
   'viewportProps',
@@ -117,6 +120,12 @@ const getTriggerProps = (modelValue: MaybeArray<string> | undefined) => ({
   'aria-label': props.triggerProps?.['aria-label'] ?? getTriggerText(modelValue),
   'data-placeholder': !getSelectedItemLabels(modelValue).length ? '' : undefined
 });
+
+const getValueProps = () => ({
+  ...props.valueProps,
+  items: props.items,
+  placeholder: props.placeholder ?? ''
+});
 </script>
 
 <template>
@@ -136,9 +145,10 @@ const getTriggerProps = (modelValue: MaybeArray<string> | undefined) => ({
           :selected-labels="getSelectedItemLabels(modelValue)"
           :slot-text="getTriggerText(modelValue)"
         >
-          {{ getTriggerText(modelValue) }}
+          <ComboboxValue v-bind="getValueProps()" />
         </slot>
         <slot name="trigger-trailing" />
+        <ComboboxClear v-if="clearable" :aria-label="props.clearLabel ?? messages.combobox.clear" />
         <slot name="trigger-icon">
           <Icon icon="lucide:chevrons-up-down" :class="triggerIconClass" />
         </slot>

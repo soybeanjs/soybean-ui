@@ -65,7 +65,9 @@ export interface LocaleClipboardMessages {
 }
 
 export interface LocaleComboboxMessages {
-  /** Default aria-label for the clear button. */
+  /** Default aria-label for the trigger clear button. */
+  clear: string;
+  /** Default aria-label for the popup input clear button. */
   clearInput: string;
   /** Default text for the empty state. */
   noResults: string;

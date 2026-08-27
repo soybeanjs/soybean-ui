@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "ComboboxProps",
         "type": "Interface ComboboxProps<M>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ComboboxUi>; items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: ComboboxPortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; clearable?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ComboboxUi>; items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; valueProps?: ComboboxValueProps; portalProps?: ComboboxPortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; clearable?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean }",
         "description": "Properties for the Combobox component.",
         "descriptionKey": "api.generated.packages_ui_src_components_combobox_types.comboboxprops.props",
         "sourcePath": "packages/ui/src/components/combobox/types.ts",
@@ -75,7 +75,7 @@
               {
                 "name": "ComboboxUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; triggerIcon: ClassValue; anchor: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; cancel: ClassValue; viewport: ClassValue; inputRoot: ClassValue; inputControl: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIndicator: ClassValue; empty: ClassValue; separator: ClassValue; virtualizer: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; triggerIcon: ClassValue; clear: ClassValue; anchor: ClassValue; value: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; cancel: ClassValue; viewport: ClassValue; inputRoot: ClassValue; inputControl: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIndicator: ClassValue; empty: ClassValue; separator: ClassValue; virtualizer: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Combobox component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxui",
@@ -309,6 +309,87 @@
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
                     "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcancelprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "valueProps",
+            "type": "ComboboxValueProps",
+            "required": false,
+            "description": "Properties forwarded to the value element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_combobox_types.comboboxprops.members.valueprops",
+            "default": null,
+            "inheritedFrom": "valueProps",
+            "sourcePath": "packages/headless/src/components/combobox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComboboxValueProps",
+                "kind": "interface",
+                "type": "ComboboxValueProps",
+                "resolvedType": "{ items?: ComboboxOptionData[]; placeholder?: string; separator?: string; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ComboboxValue component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops",
+                "sourcePath": "packages/headless/src/components/combobox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "items",
+                    "type": "ComboboxOptionData[]",
+                    "required": false,
+                    "description": "Items used to resolve selected labels.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops.members.items",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/combobox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "placeholder",
+                    "type": "string",
+                    "required": false,
+                    "description": "Placeholder rendered when no value is selected.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops.members.placeholder",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/combobox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "separator",
+                    "type": "string",
+                    "required": false,
+                    "description": "Separator used to join multiple selected labels.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops.members.separator",
+                    "default": "`', '`",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/combobox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -1325,17 +1406,6 @@
             "referencedTypes": []
           },
           {
-            "name": "resetModelValueOnClear",
-            "type": "boolean",
-            "required": false,
-            "description": "When `true` the `modelValue` will be reset to `null` (or `[]` if `multiple`)",
-            "descriptionKey": "api.generated.packages_ui_src_components_combobox_types.comboboxprops.members.resetmodelvalueonclear",
-            "default": null,
-            "inheritedFrom": "resetModelValueOnClear",
-            "sourcePath": "packages/headless/src/components/combobox/types.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "clearable",
             "type": "boolean",
             "required": false,
@@ -2035,12 +2105,50 @@
         "referencedTypes": []
       }
     },
+    "ComboboxClear": {
+      "props": {
+        "kind": "props",
+        "name": "ComboboxClearProps",
+        "type": "Interface ComboboxClearProps",
+        "resolvedType": "{ ariaLabel?: string; disabled?: boolean }",
+        "description": "Properties for the ComboboxClear component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxclearprops.props",
+        "sourcePath": "packages/headless/src/components/combobox/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "ariaLabel",
+            "type": "string",
+            "required": false,
+            "description": "Aria label for the clear button.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxclearprops.members.arialabel",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/combobox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the clear button is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxclearprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/combobox/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "ComboboxCompact": {
       "props": {
         "kind": "props",
         "name": "ComboboxCompactProps",
         "type": "Interface ComboboxCompactProps<M>",
-        "resolvedType": "{ items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: ComboboxPortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; clearable?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean }",
+        "resolvedType": "{ items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; valueProps?: ComboboxValueProps; portalProps?: ComboboxPortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; clearable?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean }",
         "description": "Properties for the ComboboxCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcompactprops.props",
         "sourcePath": "packages/headless/src/components/combobox/types.ts",
@@ -2268,6 +2376,87 @@
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
                     "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcancelprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "valueProps",
+            "type": "ComboboxValueProps",
+            "required": false,
+            "description": "Properties forwarded to the value element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcompactprops.members.valueprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/combobox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComboboxValueProps",
+                "kind": "interface",
+                "type": "ComboboxValueProps",
+                "resolvedType": "{ items?: ComboboxOptionData[]; placeholder?: string; separator?: string; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ComboboxValue component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops",
+                "sourcePath": "packages/headless/src/components/combobox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "items",
+                    "type": "ComboboxOptionData[]",
+                    "required": false,
+                    "description": "Items used to resolve selected labels.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops.members.items",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/combobox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "placeholder",
+                    "type": "string",
+                    "required": false,
+                    "description": "Placeholder rendered when no value is selected.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops.members.placeholder",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/combobox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "separator",
+                    "type": "string",
+                    "required": false,
+                    "description": "Separator used to join multiple selected labels.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops.members.separator",
+                    "default": "`', '`",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/combobox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -3280,17 +3469,6 @@
             "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcompactprops.members.ignorefilter",
             "default": null,
             "inheritedFrom": "ignoreFilter",
-            "sourcePath": "packages/headless/src/components/combobox/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "resetModelValueOnClear",
-            "type": "boolean",
-            "required": false,
-            "description": "When `true` the `modelValue` will be reset to `null` (or `[]` if `multiple`)",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcompactprops.members.resetmodelvalueonclear",
-            "default": null,
-            "inheritedFrom": "resetModelValueOnClear",
             "sourcePath": "packages/headless/src/components/combobox/types.ts",
             "referencedTypes": []
           },
@@ -5130,7 +5308,7 @@
         "kind": "props",
         "name": "ComboboxRootProps",
         "type": "Interface ComboboxRootProps<M>",
-        "resolvedType": "{ open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; clearable?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean }",
+        "resolvedType": "{ open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; clearable?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean }",
         "description": "Properties for the ComboboxRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxrootprops.props",
         "sourcePath": "packages/headless/src/components/combobox/types.ts",
@@ -5208,17 +5386,6 @@
             "required": false,
             "description": "When `true`, disable the default filters",
             "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxrootprops.members.ignorefilter",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/combobox/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "resetModelValueOnClear",
-            "type": "boolean",
-            "required": false,
-            "description": "When `true` the `modelValue` will be reset to `null` (or `[]` if `multiple`)",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxrootprops.members.resetmodelvalueonclear",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/combobox/types.ts",
@@ -5501,6 +5668,99 @@
             "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxtriggerprops.members.as",
             "default": "'div'",
             "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ComboboxValue": {
+      "props": {
+        "kind": "props",
+        "name": "ComboboxValueProps",
+        "type": "Interface ComboboxValueProps",
+        "resolvedType": "{ items?: ComboboxOptionData[]; placeholder?: string; separator?: string; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the ComboboxValue component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops.props",
+        "sourcePath": "packages/headless/src/components/combobox/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "items",
+            "type": "ComboboxOptionData[]",
+            "required": false,
+            "description": "Items used to resolve selected labels.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops.members.items",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/combobox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "Placeholder rendered when no value is selected.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops.members.placeholder",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/combobox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "required": false,
+            "description": "Separator used to join multiple selected labels.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops.members.separator",
+            "default": "`', '`",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/combobox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxvalueprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
