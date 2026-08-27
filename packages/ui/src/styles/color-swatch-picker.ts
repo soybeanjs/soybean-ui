@@ -18,9 +18,9 @@ export const colorSwatchPickerVariants = scv({
       'hover:scale-110 data-[disabled]:opacity-50'
     ],
     itemIndicator: `pointer-events-none absolute inset-0 flex justify-center items-center text-muted`,
-    swatchRoot: 'group-data-[highlighted]:border-[--soybean-color-swatch-color]',
+    swatchRoot: 'group-data-[state=checked]:border-[--soybean-color-swatch-color]',
     swatchChecker: '',
-    swatchFill: 'transition-transform group-data-[highlighted]:scale-77'
+    swatchFill: 'transition-transform group-data-[state=checked]:scale-77'
   },
   variants: {
     size: {
@@ -52,11 +52,11 @@ export const colorSwatchPickerVariants = scv({
     shape: {
       square: {
         item: 'rounded-md',
-        swatchFill: 'group-data-[highlighted]:rounded-sm'
+        swatchFill: 'group-data-[state=checked]:rounded-sm'
       },
       circle: {
         item: 'rounded-full',
-        swatchFill: 'group-data-[highlighted]:rounded-full'
+        swatchFill: 'group-data-[state=checked]:rounded-full'
       }
     }
   },
