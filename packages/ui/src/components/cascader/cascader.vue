@@ -27,7 +27,9 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => cascaderVariants({ size: props.size }, props.ui, { trigger: props.class }));
+const ui = computed(() =>
+  cascaderVariants({ size: props.size, virtual: Boolean(props.virtualScroll) }, props.ui, { trigger: props.class })
+);
 
 provideCascaderUi(ui);
 </script>

@@ -95,16 +95,10 @@ export const [provideCascaderRootContext, useCascaderRootContext] = useContext(
       modelValue: params.modelValue,
       onModelValueChange: params.onModelValueChange,
       onChange: params.onChange,
+      open: params.open,
+      onOpenChange: params.onOpenChange,
       idPrefix: baseId
     });
-
-    // Single selection closes the panel once a node has been selected.
-    const onOptionSelect = (node: CascaderNode<DefinedValue>, originalEvent: PointerEvent | KeyboardEvent) => {
-      data.onOptionSelect(node, originalEvent);
-      if (!data.isMultiple.value && (data.isCheckStrictly.value || node.isLeaf)) {
-        params.onOpenChange(false);
-      }
-    };
 
     const clearValue = () => {
       data.clearValue();
@@ -158,7 +152,7 @@ export const [provideCascaderRootContext, useCascaderRootContext] = useContext(
       searchLoading: data.searchLoading,
       loadingKeys: data.loadingKeys,
       expandNode: data.expandNode,
-      onOptionSelect,
+      onOptionSelect: data.onOptionSelect,
       onOptionHover: data.onOptionHover,
       setHighlighted: data.setHighlighted,
       isChecked: data.isChecked,

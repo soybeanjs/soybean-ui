@@ -350,6 +350,35 @@ describe('SCascader', () => {
       expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['zhejiang']);
       wrapper.unmount();
     });
+
+    it('closes the panel after selecting a leaf via keyboard Enter', async () => {
+      const wrapper = mount(SCascader, {
+        props: { options },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+      expect(document.body.querySelector('[role="tree"]')).toBeTruthy();
+
+      const trigger = wrapper.get('[role="combobox"]');
+      // Drill down to the leaf: 浙江 -> 杭州 -> 西湖区.
+      await trigger.trigger('keydown', { key: 'ArrowDown' });
+      await nextTick();
+      await trigger.trigger('keydown', { key: 'ArrowRight' });
+      await nextTick();
+      await trigger.trigger('keydown', { key: 'ArrowRight' });
+      await nextTick();
+      await trigger.trigger('keydown', { key: 'Enter' });
+      await flushPromises();
+      await nextTick();
+      await nextTick();
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['xihu']);
+      // The single leaf selection completes the interaction and closes the panel.
+      expect(document.body.querySelector('[role="tree"]')).toBeNull();
+      wrapper.unmount();
+    });
   });
 
   describe('multiple', () => {
@@ -680,13 +709,13 @@ describe('SCascader', () => {
 
       // After selection the input shows the selected path instead of the search text.
       expect(input?.value).toBe('浙江 / 杭州 / 西湖区');
-      // The panel closed and the input lost focus, so the text is not faded.
-      expect(input?.getAttribute('data-faded')).toBeNull();
 
-      // Focusing the input fades the selected content.
+      // Focusing the input frees the value for a fresh search: the selection
+      // moves to the placeholder so it only fades in the background.
       await new DOMWrapper(input as Element).trigger('focus');
       await nextTick();
-      expect(input?.getAttribute('data-faded')).toBeDefined();
+      expect(input?.value).toBe('');
+      expect(input?.getAttribute('placeholder')).toBe('浙江 / 杭州 / 西湖区');
       wrapper.unmount();
     });
 

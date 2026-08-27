@@ -33,11 +33,23 @@ const selectedText = computed(() => {
   return selectedLabels.value.join(multiple.value ? ', ' : (separator.value ?? ' / '));
 });
 
-/** Value displayed in the input: the live search pattern, otherwise the selection. */
-const displayValue = computed(() => searchPattern.value || selectedText.value);
+/**
+ * Value bound to the input. While focused the input only ever holds the live
+ * search pattern, so typing always starts from a clean state; the selection is
+ * surfaced through the faded placeholder instead of occupying the input value.
+ */
+const displayValue = computed(() =>
+  isFocused.value ? searchPattern.value : searchPattern.value || selectedText.value
+);
 
-/** Whether the input is currently displaying the selection (faded while focused). */
-const isFaded = computed(() => isFocused.value && !searchPattern.value && selectedLabels.value.length > 0);
+/**
+ * Placeholder of the input: the selection acts as a faded ghost while focused
+ * and empty, otherwise the regular placeholder is shown.
+ */
+const placeholderText = computed(() => {
+  if (isFocused.value && !searchPattern.value && selectedText.value) return selectedText.value;
+  return placeholder.value;
+});
 
 const onInput = (event: Event) => {
   searchPattern.value = (event.target as HTMLInputElement).value;
@@ -58,7 +70,7 @@ const onBlur = () => {
 };
 
 // After the panel closes (e.g. a single selection), drop focus so the input
-// shows the selection at full color instead of the faded focus state.
+// shows the selection as its value instead of the faded placeholder ghost.
 watch(open, openValue => {
   if (!openValue && isFocused.value) {
     inputElement.value?.blur();
@@ -72,8 +84,7 @@ watch(open, openValue => {
     data-soybean-cascader-search-input
     :class="cls"
     :value="displayValue"
-    :data-faded="isFaded ? '' : undefined"
-    :placeholder="placeholder"
+    :placeholder="placeholderText"
     :disabled="isDisabled || undefined"
     :aria-label="ariaLabel"
     :aria-controls="contentId"

@@ -22,7 +22,7 @@ export const cascaderVariants = scv({
       `shrink-0 rounded-sm text-muted-foreground opacity-70 outline-none hover:bg-accent hover:text-accent-foreground focus-visible:ring-3 focus-visible:ring-primary/30 focus:ring-3 focus:ring-primary/30`,
       `group-data-[multiple]:absolute group-data-[multiple]:top-1/2 group-data-[multiple]:-translate-y-1/2`
     ],
-    searchInput: `w-full grow bg-transparent outline-none placeholder:text-muted-foreground data-[faded]:text-muted-foreground`,
+    searchInput: `w-full grow bg-transparent outline-none placeholder:text-muted-foreground`,
     positioner: '',
     popup: [
       `relative z-50 rounded-md border bg-popover text-popover-foreground shadow-md`,
@@ -53,8 +53,9 @@ export const cascaderVariants = scv({
         searchInput: 'min-h-6 text-2xs',
         tag: 'gap-0.5 h-4 px-1 text-2xs',
         clear: 'size-3.5 text-2xs group-data-[multiple]:end-5.5',
-        menu: 'max-h-80 py-1 w-32',
-        option: 'gap-2 px-1 py-1',
+        panel: 'gap-0.75 p-0.75 text-2xs',
+        menu: 'max-h-80 w-32',
+        option: 'gap-1.5 px-1.5 py-0.875',
         empty: 'min-w-32 py-2.5 text-2xs'
       },
       sm: {
@@ -64,8 +65,9 @@ export const cascaderVariants = scv({
         searchInput: 'min-h-7 text-xs',
         tag: 'gap-1 h-4.5 px-1.5 text-xs',
         clear: 'size-4 text-xs group-data-[multiple]:end-7.5',
-        menu: 'max-h-80 py-1 w-36',
-        option: 'gap-2 px-1.5 py-1',
+        panel: 'gap-0.875 p-0.875 text-xs',
+        menu: 'max-h-80 w-36',
+        option: 'gap-1.75 px-1.75 py-1',
         empty: 'min-w-36 py-3 text-xs'
       },
       md: {
@@ -75,8 +77,9 @@ export const cascaderVariants = scv({
         searchInput: 'min-h-8 text-sm',
         tag: 'gap-1 h-5 px-2 text-sm',
         clear: 'size-4.5 text-sm group-data-[multiple]:end-9',
-        menu: 'max-h-80 py-1 w-40',
-        option: 'gap-2 px-2 py-1.5',
+        panel: 'gap-1 p-1 text-sm',
+        menu: 'max-h-80 w-40',
+        option: 'gap-2 px-2 py-1.25',
         empty: 'min-w-40 py-4 text-sm'
       },
       lg: {
@@ -86,8 +89,9 @@ export const cascaderVariants = scv({
         searchInput: 'min-h-9 text-base',
         tag: 'gap-1 h-5.5 px-2 text-base',
         clear: 'size-5 text-base group-data-[multiple]:end-11',
-        menu: 'max-h-80 py-1 w-44',
-        option: 'gap-2 px-2.5 py-1.5',
+        panel: 'gap-1.25 p-1.25 text-base',
+        menu: 'max-h-80 w-44',
+        option: 'gap-2.5 px-2.5 py-1.5',
         empty: 'min-w-44 py-4.5 text-base'
       },
       xl: {
@@ -97,8 +101,9 @@ export const cascaderVariants = scv({
         searchInput: 'min-h-10 text-lg',
         tag: 'gap-1 h-6 px-2.5 text-lg',
         clear: 'size-5.5 text-lg group-data-[multiple]:end-12.5',
-        menu: 'max-h-80 py-1 w-48',
-        option: 'gap-2 px-3 py-2',
+        panel: 'gap-1.5 p-1.5 text-lg',
+        menu: 'max-h-80 w-48',
+        option: 'gap-3 px-3 py-1.75',
         empty: 'min-w-48 py-5 text-lg'
       },
       '2xl': {
@@ -108,12 +113,63 @@ export const cascaderVariants = scv({
         searchInput: 'min-h-12 text-xl',
         tag: 'gap-1 h-7 px-3 text-xl',
         clear: 'size-6 text-xl group-data-[multiple]:end-14.5',
-        menu: 'max-h-80 py-1 w-52',
-        option: 'gap-2 px-3.5 py-2.5',
+        panel: 'gap-1.75 p-1.75 text-xl',
+        menu: 'max-h-80 w-52',
+        option: 'gap-3.5 px-3.5 py-2',
         empty: 'min-w-52 py-6 text-xl'
       }
+    },
+    virtual: {
+      // Row spacing relies on adjacent-sibling margins which would corrupt the
+      // fixed-stride offset math of virtual scrolling, so it is skipped there.
+      true: {},
+      false: {}
     }
   },
+  compoundVariants: [
+    {
+      size: 'xs',
+      virtual: false,
+      class: {
+        option: '[&+&]:mt-0.75'
+      }
+    },
+    {
+      size: 'sm',
+      virtual: false,
+      class: {
+        option: '[&+&]:mt-0.875'
+      }
+    },
+    {
+      size: 'md',
+      virtual: false,
+      class: {
+        option: '[&+&]:mt-1'
+      }
+    },
+    {
+      size: 'lg',
+      virtual: false,
+      class: {
+        option: '[&+&]:mt-1.25'
+      }
+    },
+    {
+      size: 'xl',
+      virtual: false,
+      class: {
+        option: '[&+&]:mt-1.5'
+      }
+    },
+    {
+      size: '2xl',
+      virtual: false,
+      class: {
+        option: '[&+&]:mt-1.75'
+      }
+    }
+  ],
   defaultVariants: {
     size: 'md'
   }

@@ -53,6 +53,10 @@ export interface UseCascaderDataOptions<T extends DefinedValue = DefinedValue> {
   onModelValueChange: (value: CascaderModelValue) => void;
   /** Emits the change event with the selected nodes. */
   onChange?: (value: CascaderModelValue | undefined, nodes: CascaderNode<T>[]) => void;
+  /** Whether the panel is currently open; used to close it after a single selection. */
+  open: MaybeRefOrGetter<boolean | undefined>;
+  /** Closes the panel once a single selection completes. */
+  onOpenChange: (value: boolean) => void;
   /** Id prefix used to generate aria ids. */
   idPrefix: string;
 }
@@ -267,15 +271,22 @@ export function useCascaderData<T extends DefinedValue = DefinedValue>(options: 
       return;
     }
 
+    // A single selection completes the interaction, so the panel closes. Both
+    // the pointer path and the keyboard Enter path share this rule.
+    const shouldClose = isCheckStrictly.value || node.isLeaf;
+
     if (isCheckStrictly.value || node.isLeaf) {
       singleSelectedNode.value = node;
       expandingPath.value = getCascaderAncestorPath(node);
       highlighted.value = node;
       emitValue([node]);
-      return;
+    } else {
+      expandNode(node);
     }
 
-    expandNode(node);
+    if (shouldClose && toValue(options.open)) {
+      options.onOpenChange(false);
+    }
   }
 
   function onOptionHover(node: CascaderNode<T>) {

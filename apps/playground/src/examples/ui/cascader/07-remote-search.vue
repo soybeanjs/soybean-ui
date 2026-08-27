@@ -36,16 +36,20 @@ const options: CascaderOptionData<string>[] = [
 const onSearch = (pattern: string) => {
   return new Promise<CascaderOptionData<string>[]>(resolve => {
     window.setTimeout(() => {
-      const flat: CascaderOptionData<string>[] = [];
+      const keyword = pattern.trim().toLowerCase();
+      const results: CascaderOptionData<string>[] = [];
       for (const group of options) {
         const children = Array.isArray(group.children) ? group.children : [];
-        for (const child of children) {
-          if (String(child.label).includes(pattern)) {
-            flat.push({ ...child, children: [{ label: group.label, value: group.value, disabled: true }] });
-          }
+        const matched = children.filter(child => String(child.label).toLowerCase().includes(keyword));
+        if (matched.length > 0) {
+          // Keep the hierarchy: the group comes first and the matched children below it.
+          results.push({ label: group.label, value: group.value, children: matched });
+        } else if (String(group.label).toLowerCase().includes(keyword)) {
+          // A matching group label matches the whole path, like the local filter.
+          results.push({ ...group });
         }
       }
-      resolve(flat);
+      resolve(results);
     }, 400);
   });
 };
