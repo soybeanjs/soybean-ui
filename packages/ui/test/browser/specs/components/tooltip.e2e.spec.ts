@@ -25,12 +25,19 @@ import { renderComponent } from '../../shared/render';
  * semantic role, so each tooltip's content carries a `data-testid` — the rare
  * no-role case where a testid is the right tool.
  */
+/**
+ * The host div needs vertical breathing room above the triggers: with the
+ * buttons flush against the viewport top edge, a `side="top"` tooltip has no
+ * space to open into and floats over its own trigger, swallowing the hover
+ * point (real-browser flip/collision behavior we don't want to assert
+ * against).
+ */
 function renderTwoTooltips() {
   return renderComponent({
     name: 'TwoTooltips',
     components: { STooltip },
     template: `
-      <div>
+      <div style="margin-top: 48px">
         <STooltip :delay-duration="0">
           <template #trigger><button type="button">Hover A</button></template>
           <span data-testid="tooltip-a">Tooltip A</span>

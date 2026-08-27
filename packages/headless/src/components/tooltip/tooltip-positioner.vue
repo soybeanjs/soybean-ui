@@ -5,6 +5,8 @@ import { usePopperRootContext } from '../popper/context';
 import { useForwardListeners } from '../../composables';
 import type { PointerDownOutsideEvent } from '../../types';
 import { PopperPositioner } from '../popper';
+import { TOOLTIP_OPEN } from './shared';
+import type { TooltipOpenEventDetail } from './shared';
 import { useTooltipRootContext } from './context';
 import type { TooltipPositionerEmits, TooltipPositionerProps } from './types';
 
@@ -24,7 +26,8 @@ const listeners = useForwardListeners<keyof TooltipPositionerEmits>(emit);
 const {
   positionerProps: contextPositionerProps,
   disableHoverableContent,
-  disableClosingTrigger
+  disableClosingTrigger,
+  popupId
 } = useTooltipRootContext('TooltipPositioner');
 
 const { open, triggerElement, onOpenChange } = usePopperRootContext('TooltipPositioner');
@@ -32,6 +35,27 @@ const { open, triggerElement, onOpenChange } = usePopperRootContext('TooltipPosi
 function close() {
   onOpenChange(false, 'trigger-hover');
 }
+
+/**
+ * Cross-root coordination: any tooltip opening broadcasts `tooltip.open` on
+ * `document` (see `TooltipTrigger`); every OTHER open tooltip closes in
+ * response. The opener is identified by its popup id so a tooltip never
+ * closes itself — popups stay mounted here, so the listener cannot be scoped
+ * to the open state.
+ */
+watchPostEffect(() => {
+  const handleOpenBroadcast = (event: Event) => {
+    const sourceId = (event as CustomEvent<TooltipOpenEventDetail>).detail?.sourceId;
+    if (sourceId && sourceId !== popupId) {
+      close();
+    }
+  };
+
+  document.addEventListener(TOOLTIP_OPEN, handleOpenBroadcast);
+  onWatcherCleanup(() => {
+    document.removeEventListener(TOOLTIP_OPEN, handleOpenBroadcast);
+  });
+});
 
 // With `disableClosingTrigger`, a pointer down landing on the trigger must not dismiss.
 function onPointerDownOutside(event: PointerDownOutsideEvent) {

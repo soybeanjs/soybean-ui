@@ -79,15 +79,17 @@ export function usePopperDismiss(options: UsePopperDismissOptions) {
     }
   }
 
-  // Focus infrastructure (guards + scope + auto-focus events) is assembled for trapped layers
-  // and sub layers. Hover popups must never steal focus, so non-trap roots skip the DOM guards,
-  // the focus scope stack registration, and the open/close auto-focus events entirely. Non-trap
-  // SUB layers still join the focus scope stack: mounting pauses the parent (trapped) scope's
-  // document focus handler, so opening a submenu inside a modal menu doesn't fight over focus.
-  const focusScopeEnabled = () => options.trapFocus() || context.isSub.value;
-  const focusLayerElement = computed(() => (focusScopeEnabled() ? layerElement.value : undefined));
+  // Focus infrastructure (guards + scope + auto-focus events). Scope registration happens for
+  // EVERY popup layer: the mount/open-auto-focus dispatch and the unmount/close-auto-focus
+  // contract (`AUTOFOCUS_ON_OPEN` / `AUTOFOCUS_ON_CLOSE` consumer hooks) must be alive even
+  // when trapping is off — non-modal layers (e.g. menubar menus) rely on close-auto-focus to
+  // restore trigger focus. Stealing focus is prevented per-event below, not by skipping
+  // registration.
+  const focusLayerElement = computed(() => layerElement.value);
 
-  useFocusGuards(focusScopeEnabled);
+  // Body-level guards stay limited to previously-enabled shapes (trapped layers and sub layers)
+  // so non-modal single popups don't change tab-edge behavior.
+  useFocusGuards(() => options.trapFocus() || context.isSub.value);
 
   const { onKeydown } = useFocusScope(focusLayerElement, {
     trapped: options.trapFocus,
@@ -102,7 +104,8 @@ export function usePopperDismiss(options: UsePopperDismissOptions) {
       options.onOpenAutoFocus(event);
     },
     onCloseAutoFocus: event => {
-      if (!options.trapFocus()) {
+      // Hover popups never move DOM focus on open or close.
+      if (context.triggerType.value === 'hover') {
         event.preventDefault();
         return;
       }

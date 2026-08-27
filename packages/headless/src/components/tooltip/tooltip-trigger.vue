@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { computed, reactive } from 'vue';
+import { computed, reactive, watchPostEffect } from 'vue';
 import { usePopperRootContext } from '../popper/context';
 import { useForwardElement } from '../../composables';
 import { PopperAnchor } from '../popper';
 import type { PopperTriggerProps } from '../popper/types';
 import { usePopperTrigger } from '../popper/use-popper-trigger';
+import { TOOLTIP_OPEN } from './shared';
+import type { TooltipOpenEventDetail } from './shared';
 import { useTooltipRootContext } from './context';
 import type { TooltipTriggerProps } from './types';
 
@@ -61,6 +63,21 @@ function onTriggerPointerDown(event: PointerEvent) {
     popperContext.onOpenChange(false, 'imperative');
   }
 }
+
+/**
+ * Cross-root coordination broadcast: independent tooltips don't share a Vue
+ * ancestor beyond `document`, so every open announces itself there and each
+ * open tooltip (positioner listener) closes on broadcasts from other roots.
+ */
+watchPostEffect(() => {
+  if (!popperContext.open.value) return;
+
+  document.dispatchEvent(
+    new CustomEvent<TooltipOpenEventDetail>(TOOLTIP_OPEN, {
+      detail: { sourceId: popupId }
+    })
+  );
+});
 </script>
 
 <template>

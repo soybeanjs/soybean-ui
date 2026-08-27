@@ -1,5 +1,17 @@
 import type { TooltipProviderProps } from './types';
 
+/**
+ * Document-level broadcast fired whenever a tooltip opens. Independent tooltip
+ * roots don't share a Vue ancestor beyond `document`, so the event is how an
+ * opening tooltip tells every other open tooltip to close. The payload carries
+ * the opener's popup id so listeners can ignore their own broadcast.
+ */
+export const TOOLTIP_OPEN = 'tooltip.open';
+
+export interface TooltipOpenEventDetail {
+  sourceId: string;
+}
+
 export const tooltipCssVars = {
   transformOrigin: '--soybean-tooltip-transform-origin',
   availableWidth: '--soybean-tooltip-available-width',

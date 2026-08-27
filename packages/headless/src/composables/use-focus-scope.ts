@@ -1,4 +1,4 @@
-import { nextTick, onWatcherCleanup, toValue, watch, watchEffect } from 'vue';
+import { onWatcherCleanup, toValue, watch, watchEffect } from 'vue';
 import type { MaybeRefOrGetter, Ref } from 'vue';
 import {
   arrayRemove,
@@ -118,8 +118,15 @@ export function useFocusScope(elRef: Ref<HTMLElement | undefined>, options?: Use
       });
     });
 
-    watch(elRef, async (container, _, onCleanup) => {
-      await nextTick();
+    /**
+     * The callback must stay SYNCHRONOUS: registration onto the shared scope
+     * stack (pausing the previous top scope) has to happen inside the same
+     * scheduler flush that mounts the container. An inner `await nextTick()`
+     * defers registration past any focus call made right after the container
+     * mounts (e.g. an opening submenu moving focus into its popup), letting a
+     * paused-too-late parent trap yank focus back.
+     */
+    watch(elRef, (container, _, onCleanup) => {
       if (!container) return;
       focusScopesStack.add(focusScope);
 
