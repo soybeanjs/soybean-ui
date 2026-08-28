@@ -91,6 +91,25 @@ describe('SAutocomplete', () => {
 
       wrapper.unmount();
     });
+
+    it('exposes autocomplete data attributes on public slots', async () => {
+      const wrapper = mount(SAutocomplete, {
+        props: { items: groupedItems, open: true },
+        attachTo: document.body
+      });
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-autocomplete-anchor]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-autocomplete-trigger]').exists()).toBe(true);
+      expect(document.body.querySelector('[data-soybean-autocomplete-content]')).toBeTruthy();
+      expect(document.body.querySelector('[data-soybean-autocomplete-viewport]')).toBeTruthy();
+      expect(document.body.querySelector('[data-soybean-autocomplete-group]')).toBeTruthy();
+      expect(document.body.querySelector('[data-soybean-autocomplete-group-label]')).toBeTruthy();
+      expect(document.body.querySelector('[data-soybean-autocomplete-item]')).toBeTruthy();
+      expect(document.body.querySelector('[data-soybean-combobox-item]')).toBeTruthy();
+
+      wrapper.unmount();
+    });
   });
 
   describe('model value', () => {

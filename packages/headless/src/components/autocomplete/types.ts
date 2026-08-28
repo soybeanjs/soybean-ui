@@ -3,22 +3,78 @@ import type { UseFuseOptions, CollectionItemData } from '../../composables';
 import type { BaseProps, Direction, FormFieldCommonProps } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type {
-  ComboboxAnchorProps as AutocompleteAnchorProps,
-  ComboboxContentProps as AutocompleteContentProps,
-  ComboboxGroupLabelProps as AutocompleteGroupLabelProps,
-  ComboboxGroupProps as AutocompleteGroupProps,
-  ComboboxItemEmits as AutocompleteItemEmits,
-  ComboboxItemIndicatorProps as AutocompleteItemIndicatorProps,
-  ComboboxItemProps as AutocompleteItemProps,
-  ComboboxSeparatorProps as AutocompleteSeparatorProps,
-  ComboboxTriggerProps as AutocompleteTriggerProps,
-  ComboboxViewportProps as AutocompleteViewportProps,
+  ComboboxAnchorProps,
+  ComboboxContentEmits,
+  ComboboxContentProps,
+  ComboboxGroupLabelProps,
+  ComboboxGroupProps,
+  ComboboxItemEmits,
+  ComboboxItemIndicatorProps,
+  ComboboxItemProps,
+  ComboboxSeparatorProps,
+  ComboboxTriggerProps,
+  ComboboxViewportProps,
   ComboboxUiSlot as AutocompleteUiSlot,
   ComboboxUi as AutocompleteUi
 } from '../combobox/types';
 import type { InputControlProps, InputRootEmits as AutocompleteInputEmits, InputRootProps } from '../input/types';
 import type { ListboxCollectionItemData } from '../listbox/types';
 import type { PortalProps as AutocompletePortalProps } from '../portal/types';
+
+/**
+ * Properties for the AutocompleteAnchor component.
+ */
+export interface AutocompleteAnchorProps extends ComboboxAnchorProps {}
+
+/**
+ * Properties for the AutocompleteTrigger component.
+ */
+export interface AutocompleteTriggerProps extends ComboboxTriggerProps {}
+
+/**
+ * Properties for the AutocompleteContent component.
+ */
+export interface AutocompleteContentProps extends ComboboxContentProps {}
+
+/**
+ * Events for the AutocompleteContent component.
+ */
+export type AutocompleteContentEmits = ComboboxContentEmits;
+
+/**
+ * Properties for the AutocompleteViewport component.
+ */
+export interface AutocompleteViewportProps extends ComboboxViewportProps {}
+
+/**
+ * Properties for the AutocompleteGroup component.
+ */
+export interface AutocompleteGroupProps extends ComboboxGroupProps {}
+
+/**
+ * Properties for the AutocompleteGroupLabel component.
+ */
+export interface AutocompleteGroupLabelProps extends ComboboxGroupLabelProps {}
+
+/**
+ * Properties for the AutocompleteItem component.
+ */
+export interface AutocompleteItemProps extends ComboboxItemProps {}
+
+/**
+ * Events for the AutocompleteItem component.
+ */
+export type AutocompleteItemEmits = ComboboxItemEmits;
+
+/**
+ * Properties for the AutocompleteItemIndicator component.
+ */
+export interface AutocompleteItemIndicatorProps extends ComboboxItemIndicatorProps {}
+
+/**
+ * Properties for the AutocompleteSeparator component.
+ */
+export interface AutocompleteSeparatorProps extends ComboboxSeparatorProps {}
 
 /**
  * Properties for the AutocompleteRoot component.
@@ -279,19 +335,4 @@ export type AutocompleteCompactSlots<T extends AutocompleteSingleOptionData = Au
   'item-indicator'?: (props: { item: T }) => any;
 };
 
-export type {
-  AutocompleteAnchorProps,
-  AutocompleteContentProps,
-  AutocompleteGroupLabelProps,
-  AutocompleteGroupProps,
-  AutocompleteInputEmits,
-  AutocompleteItemEmits,
-  AutocompleteItemIndicatorProps,
-  AutocompleteItemProps,
-  AutocompletePortalProps,
-  AutocompleteSeparatorProps,
-  AutocompleteTriggerProps,
-  AutocompleteViewportProps,
-  AutocompleteUiSlot,
-  AutocompleteUi
-};
+export type { AutocompleteInputEmits, AutocompletePortalProps, AutocompleteUiSlot, AutocompleteUi };

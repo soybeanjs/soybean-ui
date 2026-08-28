@@ -1,16 +1,16 @@
 export { default as AutocompleteCompact } from './autocomplete-compact.vue';
 export { default as AutocompleteRoot } from './autocomplete-root.vue';
-export { ComboboxAnchor as AutocompleteAnchor } from '../combobox/index';
+export { default as AutocompleteAnchor } from './autocomplete-anchor.vue';
 export { default as AutocompleteInput } from './autocomplete-input.vue';
-export { ComboboxTrigger as AutocompleteTrigger } from '../combobox/index';
+export { default as AutocompleteTrigger } from './autocomplete-trigger.vue';
 export { Portal as AutocompletePortal } from '../portal/index';
-export { ComboboxContent as AutocompleteContent } from '../combobox/index';
-export { ComboboxViewport as AutocompleteViewport } from '../combobox/index';
-export { ComboboxGroup as AutocompleteGroup } from '../combobox/index';
-export { ComboboxGroupLabel as AutocompleteGroupLabel } from '../combobox/index';
-export { ComboboxItem as AutocompleteItem } from '../combobox/index';
-export { ComboboxItemIndicator as AutocompleteItemIndicator } from '../combobox/index';
-export { ComboboxSeparator as AutocompleteSeparator } from '../combobox/index';
+export { default as AutocompleteContent } from './autocomplete-content.vue';
+export { default as AutocompleteViewport } from './autocomplete-viewport.vue';
+export { default as AutocompleteGroup } from './autocomplete-group.vue';
+export { default as AutocompleteGroupLabel } from './autocomplete-group-label.vue';
+export { default as AutocompleteItem } from './autocomplete-item.vue';
+export { default as AutocompleteItemIndicator } from './autocomplete-item-indicator.vue';
+export { default as AutocompleteSeparator } from './autocomplete-separator.vue';
 
 export { provideAutocompleteUi } from './context';
 
@@ -27,6 +27,7 @@ export type {
   AutocompleteTriggerProps,
   AutocompletePortalProps,
   AutocompleteContentProps,
+  AutocompleteContentEmits,
   AutocompleteViewportProps,
   AutocompleteGroupProps,
   AutocompleteGroupLabelProps,

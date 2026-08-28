@@ -4,23 +4,20 @@ import { defu } from 'defu';
 import { useFuse, useControllableState, useOmitProps } from '../../composables';
 import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
-import {
-  ComboboxAnchor as AutocompleteAnchor,
-  ComboboxContent as AutocompleteContent,
-  ComboboxGroup as AutocompleteGroup,
-  ComboboxGroupLabel as AutocompleteGroupLabel,
-  ComboboxItem as AutocompleteItem,
-  ComboboxItemIndicator as AutocompleteItemIndicator,
-  ComboboxSeparator as AutocompleteSeparator,
-  ComboboxTrigger as AutocompleteTrigger,
-  ComboboxViewport as AutocompleteViewport,
-  ComboboxEmpty as AutocompleteEmpty,
-  ComboboxCancel as AutocompleteCancel
-} from '../combobox';
+import { ComboboxCancel as AutocompleteCancel, ComboboxEmpty as AutocompleteEmpty } from '../combobox';
 import { Portal } from '../portal';
 import { getAutocompleteItemOptions, getAutocompleteSearchOptions, isGroupOption } from './shared';
+import AutocompleteAnchor from './autocomplete-anchor.vue';
+import AutocompleteContent from './autocomplete-content.vue';
+import AutocompleteGroupLabel from './autocomplete-group-label.vue';
+import AutocompleteGroup from './autocomplete-group.vue';
 import AutocompleteInput from './autocomplete-input.vue';
+import AutocompleteItemIndicator from './autocomplete-item-indicator.vue';
+import AutocompleteItem from './autocomplete-item.vue';
 import AutocompleteRoot from './autocomplete-root.vue';
+import AutocompleteSeparator from './autocomplete-separator.vue';
+import AutocompleteTrigger from './autocomplete-trigger.vue';
+import AutocompleteViewport from './autocomplete-viewport.vue';
 import type {
   AutocompleteCompactProps,
   AutocompleteCompactEmits,
@@ -130,7 +127,7 @@ const handleSelect = (item: T) => {
     @update:model-value="modelValue = $event"
     @update:open="emit('update:open', $event)"
   >
-    <AutocompleteAnchor v-bind="anchorProps" data-soybean-autocomplete-anchor>
+    <AutocompleteAnchor v-bind="anchorProps">
       <AutocompleteInput v-bind="inputProps">
         <template #leading>
           <slot name="input-leading">
@@ -153,7 +150,6 @@ const handleSelect = (item: T) => {
         v-slot="{ triggerIconClass }"
         v-bind="triggerProps"
         :aria-label="messages.autocomplete.toggleSuggestions"
-        data-soybean-autocomplete-trigger
       >
         <slot name="trigger-icon">
           <Icon icon="lucide:chevrons-up-down" :class="triggerIconClass" />
