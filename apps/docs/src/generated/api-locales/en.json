@@ -317,6 +317,14 @@
         }
       },
       "packages_headless_src_components_autocomplete_types": {
+        "autocompleteanchorprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "reference": ""
+          },
+          "props": "Properties for the AutocompleteAnchor component."
+        },
         "autocompletecompactemits": {
           "callables": {
             "highlight": "Emitted when highlight occurs.",
@@ -374,6 +382,56 @@
           },
           "slots": "Slots for the AutocompleteCompact component."
         },
+        "autocompletecontentemits": {
+          "callables": {
+            "closeautofocus": "Event handler called when auto-focusing on close. Can be prevented.",
+            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
+            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
+            "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "placed": "Event handler called when the positioner is placed",
+            "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented."
+          },
+          "emits": "Events for the AutocompleteContent component."
+        },
+        "autocompletecontentprops": {
+          "members": {
+            "align": "The preferred alignment against the anchor. May change when collisions occur.",
+            "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
+            "alignoffset": "An offset in pixels from the `start` or `end` alignment options.",
+            "arrowpadding": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
+            "avoidcollisions": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
+            "bodylock": "Whether body lock.",
+            "collisionboundary": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
+            "collisionpadding": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "disableoutsidepointerevents": "When `true`, hover/focus/click interactions will be disabled on elements outside the `DismissableLayer`. Users will\nneed to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to\ntrigger the element.",
+            "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
+            "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+            "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
+            "hidewhendetached": "Whether to hide the content when the anchor becomes fully occluded.",
+            "hidewhenempty": "Whether hide when empty.",
+            "open": "Whether the floating layer is open. Drives the positioning lifecycle (`isPositioned`\nresets when open flips); the positioning primitive itself has no open state, so\nconsumers wire their own open state here.",
+            "placement": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+            "popupprops": "Properties forwarded to the popup element.",
+            "position": "Position.",
+            "positionstrategy": "The type of CSS position property to use.",
+            "prioritizeposition": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
+            "reference": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
+            "side": "The preferred side of the anchor to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
+            "sideflip": "Flip to the opposite side when colliding with boundary.",
+            "sideoffset": "The distance in pixels from the anchor.",
+            "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the anchor is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "trapfocus": "When `true`, focus cannot escape the content via keyboard, pointer, or a programmatic focus.",
+            "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
+          },
+          "props": "Properties for the AutocompleteContent component."
+        },
+        "autocompletegrouplabelprops": {
+          "props": "Properties for the AutocompleteGroupLabel component."
+        },
+        "autocompletegroupprops": {
+          "props": "Properties for the AutocompleteGroup component."
+        },
         "autocompletehighlightpayload": "Type information for AutocompleteHighlightPayload.",
         "autocompleteinputprops": {
           "callables": {
@@ -397,6 +455,29 @@
             "type": "The type of the input element."
           },
           "props": "Properties for the AutocompleteInput component."
+        },
+        "autocompleteitememits": {
+          "callables": {
+            "select": "Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`."
+          },
+          "emits": "Events for the AutocompleteItem component."
+        },
+        "autocompleteitemindicatorprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior."
+          },
+          "props": "Properties for the AutocompleteItemIndicator component."
+        },
+        "autocompleteitemprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "disabled": "When `true`, prevents the user from interacting with the item.",
+            "textvalue": "Text value.",
+            "value": "The value given as data when submitted with a `name`."
+          },
+          "props": "Properties for the AutocompleteItem component."
         },
         "autocompleterootemits": {
           "callables": {
@@ -422,6 +503,27 @@
             "resetmodelvalueonclear": "When `true`, clearing the search term also resets `modelValue` to an empty string."
           },
           "props": "Properties for the AutocompleteRoot component."
+        },
+        "autocompleteseparatorprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior."
+          },
+          "props": "Properties for the AutocompleteSeparator component."
+        },
+        "autocompletetriggerprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "disabled": "Whether the component is disabled."
+          },
+          "props": "Properties for the AutocompleteTrigger component."
+        },
+        "autocompleteviewportprops": {
+          "members": {
+            "nonce": "Nonce."
+          },
+          "props": "Properties for the AutocompleteViewport component."
         },
         "type": ""
       },
@@ -524,54 +626,6 @@
         "badgeui": "UI class overrides for the Badge component."
       },
       "packages_headless_src_components_bottom_sheet_index": {
-        "bottomsheetcancelemits": {
-          "emits": "Events for the DialogCancel component."
-        },
-        "bottomsheetcancelprops": {
-          "members": {
-            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "disabled": "Whether the component is disabled.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
-          },
-          "props": "Properties for the DialogCancel component."
-        },
-        "bottomsheetcloseemits": {
-          "emits": "Events for the DialogClose component."
-        },
-        "bottomsheetcloseprops": {
-          "members": {
-            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "disabled": "Whether the component is disabled.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
-          },
-          "props": "Properties for the DialogClose component."
-        },
-        "bottomsheetconfirmemits": {
-          "emits": "Events for the DialogConfirm component."
-        },
-        "bottomsheetconfirmprops": {
-          "members": {
-            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "disabled": "Whether the component is disabled.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
-          },
-          "props": "Properties for the DialogConfirm component."
-        },
-        "bottomsheetcontentprops": {
-          "props": "Properties for the DialogContent component."
-        },
-        "bottomsheetdescriptionprops": {
-          "props": "Properties for the DialogDescription component."
-        },
-        "bottomsheetfooterprops": {
-          "props": "Properties for the DialogFooter component."
-        },
-        "bottomsheetheaderprops": {
-          "props": "Properties for the DialogHeader component."
-        },
         "bottomsheetoverlayprops": {
           "members": {
             "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries."
@@ -588,21 +642,39 @@
             "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries."
           },
           "props": "Properties for the DialogPopup component."
+        }
+      },
+      "packages_headless_src_components_bottom_sheet_types": {
+        "bottomsheetcancelemits": {
+          "callables": {
+            "cancel": "Event handler called when the dialog is requested to be canceled."
+          },
+          "emits": "Events for the BottomSheetCancel component."
         },
-        "bottomsheettitleprops": {
-          "props": "Properties for the DialogTitle component."
-        },
-        "bottomsheettriggerprops": {
+        "bottomsheetcancelprops": {
           "members": {
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "disabled": "Whether the component is disabled.",
             "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
           },
-          "props": "Properties for the DialogTrigger component."
-        }
-      },
-      "packages_headless_src_components_bottom_sheet_types": {
+          "props": "Properties for the BottomSheetCancel component."
+        },
+        "bottomsheetcloseemits": {
+          "callables": {
+            "close": "Event handler called when the dialog is requested to be closed."
+          },
+          "emits": "Events for the BottomSheetClose component."
+        },
+        "bottomsheetcloseprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "disabled": "Whether the component is disabled.",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
+          },
+          "props": "Properties for the BottomSheetClose component."
+        },
         "bottomsheetcompactemits": {
           "callables": {
             "cancel": "Event handler called when the dialog is requested to be canceled.",
@@ -693,11 +765,38 @@
           },
           "slots": "Slots for the BottomSheetCompact component."
         },
+        "bottomsheetconfirmemits": {
+          "callables": {
+            "confirm": "Event handler called when the dialog is requested to be closed by confirming."
+          },
+          "emits": "Events for the BottomSheetConfirm component."
+        },
+        "bottomsheetconfirmprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "disabled": "Whether the component is disabled.",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
+          },
+          "props": "Properties for the BottomSheetConfirm component."
+        },
+        "bottomsheetcontentprops": {
+          "props": "Properties for the BottomSheetContent component."
+        },
+        "bottomsheetdescriptionprops": {
+          "props": "Properties for the BottomSheetDescription component."
+        },
+        "bottomsheetfooterprops": {
+          "props": "Properties for the BottomSheetFooter component."
+        },
         "bottomsheethandleprops": {
           "members": {
             "preventcycle": "Whether prevent cycle."
           },
           "props": "Properties for the BottomSheetHandle component."
+        },
+        "bottomsheetheaderprops": {
+          "props": "Properties for the BottomSheetHeader component."
         },
         "bottomsheetrootemits": {
           "callables": {
@@ -742,6 +841,24 @@
             "default": "Custom content for the default slot."
           },
           "slots": "Slots for the BottomSheetRoot component."
+        },
+        "bottomsheettitleprops": {
+          "props": "Properties for the BottomSheetTitle component."
+        },
+        "bottomsheettriggeremits": {
+          "callables": {
+            "click": "Event handler called when the dialog trigger is activated."
+          },
+          "emits": "Events for the BottomSheetTrigger component."
+        },
+        "bottomsheettriggerprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "disabled": "Whether the component is disabled.",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
+          },
+          "props": "Properties for the BottomSheetTrigger component."
         },
         "bottomsheetui": "UI class overrides for the BottomSheet component.",
         "type": ""
@@ -2579,23 +2696,13 @@
         }
       },
       "packages_headless_src_components_combobox_types": {
-        "autocompletecontentprops": {
-          "props": "Properties for the ComboboxContent component."
-        },
-        "autocompleteitememits": {
-          "emits": "Events for the ComboboxItem component."
-        },
-        "autocompleteitemprops": {
-          "props": "Properties for the ComboboxItem component."
-        },
-        "autocompleteseparatorprops": {
-          "props": "Properties for the ComboboxSeparator component."
-        },
-        "autocompletetriggerprops": {
-          "props": "Properties for the ComboboxTrigger component."
-        },
-        "autocompleteviewportprops": {
-          "props": "Properties for the ComboboxViewport component."
+        "comboboxanchorprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "reference": ""
+          },
+          "props": "Properties for the ComboboxAnchor component."
         },
         "comboboxcancelprops": {
           "members": {
@@ -2753,6 +2860,9 @@
           },
           "props": "Properties for the ComboboxEmpty component."
         },
+        "comboboxgrouplabelprops": {
+          "props": "Properties for the ComboboxGroupLabel component."
+        },
         "comboboxinputemits": {
           "callables": {
             "update_modelvalue": "Emitted when the model value changes."
@@ -2791,6 +2901,13 @@
             "select": "Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`."
           },
           "emits": "Events for the ComboboxItem component."
+        },
+        "comboboxitemindicatorprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior."
+          },
+          "props": "Properties for the ComboboxItemIndicator component."
         },
         "comboboxitemprops": {
           "members": {
@@ -2951,6 +3068,9 @@
         "commandui": "UI class overrides for the Command component."
       },
       "packages_headless_src_components_context_menu_index": {
+        "contextmenuanchorprops": {
+          "props": "Properties for the anchor (reference) element, optionally overriding the reference."
+        },
         "contextmenucheckboxgroupemits": {
           "emits": "Events for the MenuCheckboxGroup component."
         },
@@ -5229,14 +5349,11 @@
         "listui": "UI class overrides for the List component."
       },
       "packages_headless_src_components_listbox_types": {
-        "autocompletegrouplabelprops": {
-          "props": "Properties for the ListboxGroupLabel component."
-        },
-        "autocompletegroupprops": {
+        "comboboxgroupprops": {
           "props": "Properties for the ListboxGroup component."
         },
-        "autocompleteitemindicatorprops": {
-          "props": "Properties for the ListboxItemIndicator component."
+        "commandgrouplabelprops": {
+          "props": "Properties for the ListboxGroupLabel component."
         },
         "commandinputprops": {
           "props": "Properties for the ListboxFilter component."
@@ -6925,9 +7042,6 @@
         "type": ""
       },
       "packages_headless_src_components_popper_types": {
-        "autocompleteanchorprops": {
-          "props": "Properties for the anchor (reference) element, optionally overriding the reference."
-        },
         "comboboxarrowprops": {
           "props": ""
         },
@@ -7564,6 +7678,43 @@
             "item": "Custom content for the item slot."
           },
           "slots": "Slots for the SegmentCompact component."
+        },
+        "segmentindicatorprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior."
+          },
+          "props": "Properties for the SegmentIndicator component."
+        },
+        "segmentlistprops": {
+          "props": "Properties for the SegmentList component."
+        },
+        "segmentrootemits": {
+          "callables": {
+            "update_modelvalue": "Event handler called when the value changes"
+          },
+          "emits": "Events for the SegmentRoot component."
+        },
+        "segmentrootprops": {
+          "members": {
+            "activationmode": "Whether a tab is activated automatically (on focus) or manually (on click).",
+            "defaultvalue": "The value of the tab that should be active when initially rendered. Use when you do not need to control the state\nof the tabs",
+            "dir": "The direction of navigation between items.",
+            "loop": "Whether keyboard navigation should loop around",
+            "modelvalue": "The controlled value of the tab to activate. Can be bind as `v-model`.",
+            "orientation": "The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "unmountonhide": "When `true`, the element will be unmounted on closed state."
+          },
+          "props": "Properties for the SegmentRoot component."
+        },
+        "segmenttriggerprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "disabled": "When `true`, prevents the user from interacting with the tab.",
+            "value": "A unique value that associates the trigger with a content."
+          },
+          "props": "Properties for the SegmentTrigger component."
         },
         "segmentui": "UI class overrides for the Segment component.",
         "type": ""
@@ -8506,21 +8657,6 @@
         "type": ""
       },
       "packages_headless_src_components_tabs_types": {
-        "segmentindicatorprops": {
-          "props": "Properties for the TabsIndicator component."
-        },
-        "segmentlistprops": {
-          "props": "Properties for the TabsList component."
-        },
-        "segmentrootemits": {
-          "emits": "Events for the TabsRoot component."
-        },
-        "segmentrootprops": {
-          "props": "Properties for the TabsRoot component."
-        },
-        "segmenttriggerprops": {
-          "props": "Properties for the TabsTrigger component."
-        },
         "tabsactivationmode": "Type information for TabsActivationMode.",
         "tabscompactemits": {
           "callables": {

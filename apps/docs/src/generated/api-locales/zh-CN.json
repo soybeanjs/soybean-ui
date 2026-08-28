@@ -317,6 +317,14 @@
         }
       },
       "packages_headless_src_components_autocomplete_types": {
+        "autocompleteanchorprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "reference": ""
+          },
+          "props": "AutocompleteAnchor 组件的属性。"
+        },
         "autocompletecompactemits": {
           "callables": {
             "highlight": "发生高亮时发出。",
@@ -374,6 +382,56 @@
           },
           "slots": "AutocompleteCompact 组件的插槽。"
         },
+        "autocompletecontentemits": {
+          "callables": {
+            "closeautofocus": "在关闭时自动聚焦时触发的事件处理程序。可被阻止。",
+            "escapekeydown": "按下Esc键时触发的事件处理程序。可被阻止。",
+            "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。可被阻止。",
+            "interactoutside": "当在 `DismissableLayer` 外部发生交互时触发的事件处理程序。具体而言，当 `pointerdown`\n事件在该区域外部发生，或焦点移出该区域时触发。此事件可被阻止。",
+            "openautofocus": "在打开页面时自动获得焦点时调用的事件处理程序。可被阻止。",
+            "placed": "当定位器被放置时调用的事件处理程序",
+            "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。"
+          },
+          "emits": "AutocompleteContent 组件的事件。"
+        },
+        "autocompletecontentprops": {
+          "members": {
+            "align": "首选与锚点对齐。发生冲突时可能会有变化。",
+            "alignflip": "当与边界发生冲突时，翻转对齐方式。\n仅当 `prioritizePosition` 为 true 时才会发生。",
+            "alignoffset": "相对于 `start` 或 `end` 对齐选项的像素偏移量。",
+            "arrowpadding": "箭头与内容边缘之间的间距。如果内容设置了边框圆角（border-radius），这将防止内容\n溢出到角落。",
+            "avoidcollisions": "当值为 `true` 时，将覆盖“侧边”和“对齐”偏好设置，以避免与边界边缘发生冲突。",
+            "bodylock": "是否启用正文锁定。",
+            "collisionboundary": "用作碰撞边界的元素。默认情况下为视口，但您可以提供额外的\n元素以纳入此检查范围。",
+            "collisionpadding": "从边界边缘到应进行碰撞检测位置的像素距离。接受一个数值（\n所有边均相同），或一个部分填充对象，例如：{ top: 20, left: 20 }。",
+            "disableoutsidepointerevents": "当值为 `true` 时，`DismissableLayer` 外部元素的悬停/聚焦/点击交互将被禁用。用户\n需要双击外部元素才能与其交互：第一次点击用于关闭 `DismissableLayer`，第二次点击用于\n触发该元素。",
+            "disableupdateonlayoutshift": "当布局发生变化时，是否禁用内容的更新位置。",
+            "forcemount": "用于在需要更多控制时强制挂载。\n\n在使用 Vue 动画库控制动画时非常有用。",
+            "hideshiftedarrow": "当值为 `true` 时，如果无法将箭头居中对齐\n到引用元素上，则隐藏该箭头。",
+            "hidewhendetached": "当锚点被完全遮挡时，是否隐藏内容。",
+            "hidewhenempty": "是否在内容为空时隐藏。",
+            "open": "浮动层是否处于打开状态。该状态驱动定位生命周期（当打开状态切换时，`isPositioned`\n将重置）；定位原语本身没有打开状态，因此\n调用方需在此处自行连接其打开状态。",
+            "placement": "浮动元素的位置。\n\n如果使用该属性，它将覆盖 `side` 和 `align` 属性。",
+            "popupprops": "转发给弹出元素的属性。",
+            "position": "职位。",
+            "positionstrategy": "要使用的 CSS `position` 属性的类型。",
+            "prioritizeposition": "强制内容位于视口内。这可能会与参考元素重叠，这可能并非预期效果。",
+            "reference": "将作为定位浮动元素参考点的自定义元素或虚拟元素。如果\n提供了该元素，它将替换默认的锚点元素。",
+            "side": "锚点在打开时优先显示的一侧。当发生冲突且\n启用了 avoidCollisions 时，该方向将被反转。",
+            "sideflip": "遇到边界时，请翻转至另一侧。",
+            "sideoffset": "距锚点的像素距离。",
+            "sticky": "在对齐轴上的“粘附”行为。`partial` 会在锚点至少部分位于边界内时将内容保留在边界内，而\n“always” 则无论如何都会将内容保留在边界内。",
+            "trapfocus": "当值为 `true` 时，焦点无法通过键盘、指针或程序化焦点离开该内容。",
+            "updatepositionstrategy": "在每个动画帧中更新浮动元素位置的策略。"
+          },
+          "props": "AutocompleteContent 组件的属性。"
+        },
+        "autocompletegrouplabelprops": {
+          "props": "AutocompleteGroupLabel 组件的属性。"
+        },
+        "autocompletegroupprops": {
+          "props": "AutocompleteGroup 组件的属性。"
+        },
         "autocompletehighlightpayload": "AutocompleteHighlightPayload 的类型信息。",
         "autocompleteinputprops": {
           "callables": {
@@ -397,6 +455,29 @@
             "type": "输入元素的类型。"
           },
           "props": "AutocompleteInput 组件的属性。"
+        },
+        "autocompleteitememits": {
+          "callables": {
+            "select": "当选中某项时调用的事件处理程序。<br> 可通过调用 `event.preventDefault` 来阻止该行为。"
+          },
+          "emits": "AutocompleteItem 组件的事件。"
+        },
+        "autocompleteitemindicatorprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。"
+          },
+          "props": "AutocompleteItemIndicator 组件的属性。"
+        },
+        "autocompleteitemprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "disabled": "当值为 `true` 时，禁止用户与该项进行交互。",
+            "textvalue": "文本值。",
+            "value": "作为数据提交时与 `name` 关联的值。"
+          },
+          "props": "AutocompleteItem 组件的属性。"
         },
         "autocompleterootemits": {
           "callables": {
@@ -422,6 +503,27 @@
             "resetmodelvalueonclear": "当 `true` 时，清除搜索词也会将 `modelValue` 重置为空字符串。"
           },
           "props": "AutocompleteRoot 组件的属性。"
+        },
+        "autocompleteseparatorprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。"
+          },
+          "props": "AutocompleteSeparator 组件的属性。"
+        },
+        "autocompletetriggerprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "disabled": "该组件是否被禁用。"
+          },
+          "props": "AutocompleteTrigger 组件的属性。"
+        },
+        "autocompleteviewportprops": {
+          "members": {
+            "nonce": "随机数。"
+          },
+          "props": "AutocompleteViewport 组件的属性。"
         },
         "type": ""
       },
@@ -524,54 +626,6 @@
         "badgeui": "徽章组件的 UI 类重载。"
       },
       "packages_headless_src_components_bottom_sheet_index": {
-        "bottomsheetcancelemits": {
-          "emits": "DialogCancel 组件的事件。"
-        },
-        "bottomsheetcancelprops": {
-          "members": {
-            "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
-            "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
-            "disabled": "组件是否禁用。",
-            "type": "按钮元素的类型。可以是 \"按钮\"、\"提交 \"或 \"重置\"。"
-          },
-          "props": "DialogCancel 组件的属性。"
-        },
-        "bottomsheetcloseemits": {
-          "emits": "DialogClose 组件的事件。"
-        },
-        "bottomsheetcloseprops": {
-          "members": {
-            "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
-            "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
-            "disabled": "组件是否禁用。",
-            "type": "按钮元素的类型。可以是 \"按钮\"、\"提交 \"或 \"重置\"。"
-          },
-          "props": "DialogClose 组件的属性。"
-        },
-        "bottomsheetconfirmemits": {
-          "emits": "DialogConfirm 组件的事件。"
-        },
-        "bottomsheetconfirmprops": {
-          "members": {
-            "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
-            "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
-            "disabled": "组件是否禁用。",
-            "type": "按钮元素的类型。可以是 \"按钮\"、\"提交 \"或 \"重置\"。"
-          },
-          "props": "DialogConfirm 组件的属性。"
-        },
-        "bottomsheetcontentprops": {
-          "props": "DialogContent 组件的属性。"
-        },
-        "bottomsheetdescriptionprops": {
-          "props": "DialogDescription 组件的属性。"
-        },
-        "bottomsheetfooterprops": {
-          "props": "DialogFooter 组件的属性。"
-        },
-        "bottomsheetheaderprops": {
-          "props": "DialogHeader 组件的属性。"
-        },
         "bottomsheetoverlayprops": {
           "members": {
             "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。"
@@ -588,21 +642,39 @@
             "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。"
           },
           "props": "DialogPopup 组件的属性。"
-        },
-        "bottomsheettitleprops": {
-          "props": "DialogTitle 组件的属性。"
-        },
-        "bottomsheettriggerprops": {
-          "members": {
-            "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
-            "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
-            "disabled": "组件是否禁用。",
-            "type": "按钮元素的类型。可以是 \"按钮\"、\"提交 \"或 \"重置\"。"
-          },
-          "props": "DialogTrigger 组件的属性。"
         }
       },
       "packages_headless_src_components_bottom_sheet_types": {
+        "bottomsheetcancelemits": {
+          "callables": {
+            "cancel": "当请求取消对话框时调用的事件处理程序。"
+          },
+          "emits": "BottomSheetCancel 组件的事件。"
+        },
+        "bottomsheetcancelprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "disabled": "该组件是否被禁用。",
+            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
+          },
+          "props": "BottomSheetCancel 组件的属性。"
+        },
+        "bottomsheetcloseemits": {
+          "callables": {
+            "close": "当请求关闭对话框时调用的事件处理程序。"
+          },
+          "emits": "BottomSheetClose 组件的事件。"
+        },
+        "bottomsheetcloseprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "disabled": "该组件是否被禁用。",
+            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
+          },
+          "props": "BottomSheetClose 组件的属性。"
+        },
         "bottomsheetcompactemits": {
           "callables": {
             "cancel": "请求取消对话框时调用事件处理程序。",
@@ -693,11 +765,38 @@
           },
           "slots": "BottomSheetCompact 组件的插槽。"
         },
+        "bottomsheetconfirmemits": {
+          "callables": {
+            "confirm": "当通过确认操作请求关闭对话框时，会调用此事件处理程序。"
+          },
+          "emits": "BottomSheetConfirm 组件的事件。"
+        },
+        "bottomsheetconfirmprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "disabled": "该组件是否被禁用。",
+            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
+          },
+          "props": "BottomSheetConfirm 组件的属性。"
+        },
+        "bottomsheetcontentprops": {
+          "props": "BottomSheetContent 组件的属性。"
+        },
+        "bottomsheetdescriptionprops": {
+          "props": "BottomSheetDescription 组件的属性。"
+        },
+        "bottomsheetfooterprops": {
+          "props": "BottomSheetFooter 组件的属性。"
+        },
         "bottomsheethandleprops": {
           "members": {
             "preventcycle": "是否防止循环。"
           },
           "props": "BottomSheetHandle 组件的属性。"
+        },
+        "bottomsheetheaderprops": {
+          "props": "BottomSheetHeader 组件的属性。"
         },
         "bottomsheetrootemits": {
           "callables": {
@@ -742,6 +841,24 @@
             "default": "默认插槽的自定义内容。"
           },
           "slots": "BottomSheetRoot 组件的插槽。"
+        },
+        "bottomsheettitleprops": {
+          "props": "BottomSheetTitle 组件的属性。"
+        },
+        "bottomsheettriggeremits": {
+          "callables": {
+            "click": "当对话框触发器被激活时调用的事件处理程序。"
+          },
+          "emits": "BottomSheetTrigger 组件的事件。"
+        },
+        "bottomsheettriggerprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "disabled": "该组件是否被禁用。",
+            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
+          },
+          "props": "BottomSheetTrigger 组件的属性。"
         },
         "bottomsheetui": "BottomSheet 组件的 UI 类重载。",
         "type": ""
@@ -2579,23 +2696,13 @@
         }
       },
       "packages_headless_src_components_combobox_types": {
-        "autocompletecontentprops": {
-          "props": "ComboboxContent 组件的属性。"
-        },
-        "autocompleteitememits": {
-          "emits": "ComboboxItem 组件的事件。"
-        },
-        "autocompleteitemprops": {
-          "props": "ComboboxItem 组件的属性。"
-        },
-        "autocompleteseparatorprops": {
-          "props": "ComboboxSeparator 组件的属性。"
-        },
-        "autocompletetriggerprops": {
-          "props": "ComboboxTrigger 组件的属性。"
-        },
-        "autocompleteviewportprops": {
-          "props": "ComboboxViewport 组件的属性。"
+        "comboboxanchorprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "reference": ""
+          },
+          "props": "ComboboxAnchor 组件的属性。"
         },
         "comboboxcancelprops": {
           "members": {
@@ -2753,6 +2860,9 @@
           },
           "props": "ComboboxEmpty 组件的属性。"
         },
+        "comboboxgrouplabelprops": {
+          "props": "ComboboxGroupLabel 组件的属性。"
+        },
         "comboboxinputemits": {
           "callables": {
             "update_modelvalue": "当模型值发生变化时发出。"
@@ -2791,6 +2901,13 @@
             "select": "当选择项目时调用事件处理程序。<br> 可以通过调用 `event.preventDefault`来阻止它。"
           },
           "emits": "ComboboxItem 组件的事件。"
+        },
+        "comboboxitemindicatorprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。"
+          },
+          "props": "ComboboxItemIndicator 组件的属性。"
         },
         "comboboxitemprops": {
           "members": {
@@ -2951,6 +3068,9 @@
         "commandui": "命令组件的 UI 类重载。"
       },
       "packages_headless_src_components_context_menu_index": {
+        "contextmenuanchorprops": {
+          "props": "锚点（引用）元素的属性，可选地覆盖引用。"
+        },
         "contextmenucheckboxgroupemits": {
           "emits": "MenuCheckboxGroup 组件的事件。"
         },
@@ -5229,14 +5349,11 @@
         "listui": "List 组件的 UI 类重载。"
       },
       "packages_headless_src_components_listbox_types": {
-        "autocompletegrouplabelprops": {
-          "props": "ListboxGroupLabel 组件的属性。"
-        },
-        "autocompletegroupprops": {
+        "comboboxgroupprops": {
           "props": "ListboxGroup 组件的属性。"
         },
-        "autocompleteitemindicatorprops": {
-          "props": "ListboxItemIndicator 组件的属性。"
+        "commandgrouplabelprops": {
+          "props": "ListboxGroupLabel 组件的属性。"
         },
         "commandinputprops": {
           "props": "ListboxFilter 组件的属性。"
@@ -6925,9 +7042,6 @@
         "type": ""
       },
       "packages_headless_src_components_popper_types": {
-        "autocompleteanchorprops": {
-          "props": "锚点（引用）元素的属性，可选地覆盖引用。"
-        },
         "comboboxarrowprops": {
           "props": ""
         },
@@ -7564,6 +7678,43 @@
             "item": "自定义项目槽的内容。"
           },
           "slots": "SegmentCompact 组件的插槽。"
+        },
+        "segmentindicatorprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。"
+          },
+          "props": "SegmentIndicator 组件的属性。"
+        },
+        "segmentlistprops": {
+          "props": "SegmentList 组件的属性。"
+        },
+        "segmentrootemits": {
+          "callables": {
+            "update_modelvalue": "当值发生变化时调用的事件处理程序"
+          },
+          "emits": "SegmentRoot 组件的事件。"
+        },
+        "segmentrootprops": {
+          "members": {
+            "activationmode": "Tab 键是自动激活（获得焦点时）还是手动激活（点击时）。",
+            "defaultvalue": "初始渲染时应处于活动状态的标签页。当无需控制标签页状态时使用\n此选项",
+            "dir": "项目之间的导航方向。",
+            "loop": "键盘导航是否应循环往复",
+            "modelvalue": "用于激活的 Tab 键的受控值。可作为 `v-model` 进行绑定。",
+            "orientation": "该组的取向。主要是为了确保箭头导航能相应地进行（左右与上下）。",
+            "unmountonhide": "当值为 `true` 时，该元素将在关闭状态下被卸载。"
+          },
+          "props": "SegmentRoot 组件的属性。"
+        },
+        "segmenttriggerprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "disabled": "当值为 `true` 时，禁止用户与该选项卡进行交互。",
+            "value": "一个将触发器与内容关联起来的唯一值。"
+          },
+          "props": "SegmentTrigger 组件的属性。"
         },
         "segmentui": "为 Segment 组件重写用户界面类。",
         "type": ""
@@ -8506,21 +8657,6 @@
         "type": ""
       },
       "packages_headless_src_components_tabs_types": {
-        "segmentindicatorprops": {
-          "props": "TabsIndicator 组件的属性。"
-        },
-        "segmentlistprops": {
-          "props": "TabsList 组件的属性。"
-        },
-        "segmentrootemits": {
-          "emits": "TabsRoot 组件的事件。"
-        },
-        "segmentrootprops": {
-          "props": "TabsRoot 组件的属性。"
-        },
-        "segmenttriggerprops": {
-          "props": "TabsTrigger 组件的属性。"
-        },
         "tabsactivationmode": "TabsActivationMode 的类型信息。",
         "tabscompactemits": {
           "callables": {
