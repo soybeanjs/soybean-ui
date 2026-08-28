@@ -57,7 +57,8 @@ export const menuData: MenuData[] = [
       'stepper',
       'tabs',
       'tree',
-      'treeMenu'
+      'treeMenu',
+      'treeNav'
     ]
   },
   {

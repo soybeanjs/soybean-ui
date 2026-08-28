@@ -1057,6 +1057,11 @@
         "TreeMenuSub"
       ]
     },
+    "tree-nav": {
+      "component": "tree-nav",
+      "file": "tree-nav.json",
+      "symbols": ["TreeNav", "TreeNavCompact"]
+    },
     "virtualizer": {
       "component": "virtualizer",
       "file": "virtualizer.json",

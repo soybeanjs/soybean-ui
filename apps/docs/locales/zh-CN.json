@@ -598,6 +598,13 @@
         "basic": "基础",
         "expand-strategy": "展开策略"
       },
+      "tree-nav": {
+        "basic": "基础",
+        "selection": "选择态",
+        "links": "链接项",
+        "disabled": "禁用",
+        "collapsible": "溢出折叠"
+      },
       "virtualizer": {
         "basic": "基础",
         "dynamic": "动态",

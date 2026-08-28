@@ -88,6 +88,7 @@ export * from './components/toggle-group';
 export * from './components/tooltip';
 export * from './components/tree';
 export * from './components/tree-menu';
+export * from './components/tree-nav';
 export * from './components/virtualizer';
 export * from './components/visually-hidden';
 export * from './components/watermark';

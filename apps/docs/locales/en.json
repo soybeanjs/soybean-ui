@@ -598,6 +598,13 @@
         "basic": "Basic",
         "expand-strategy": "Expand Strategy"
       },
+      "tree-nav": {
+        "basic": "Basic",
+        "selection": "Selection",
+        "links": "Link Items",
+        "disabled": "Disabled",
+        "collapsible": "Overflow Collapsing"
+      },
       "virtualizer": {
         "basic": "Basic",
         "dynamic": "Dynamic",

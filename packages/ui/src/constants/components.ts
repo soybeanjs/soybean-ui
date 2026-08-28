@@ -98,6 +98,7 @@ export const components = {
   tooltip: ['STooltip'],
   tree: ['STree', 'STreeVirtualizer', 'STreeItem', 'STreeVirtualizerItem'],
   treeMenu: ['STreeMenu', 'STreeMenuStyledItem'],
+  treeNav: ['STreeNav'],
   virtualizer: ['SVirtualizer', 'SVirtualizerItem'],
   watermark: ['SWatermark']
 };

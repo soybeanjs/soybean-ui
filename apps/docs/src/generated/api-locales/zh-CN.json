@@ -9721,6 +9721,59 @@
         "treemenuuislot": "TreeMenu 组件的可用 UI 插槽。",
         "type": ""
       },
+      "packages_headless_src_components_tree_nav_types": {
+        "treenavcompactemits": {
+          "callables": {
+            "select": "当选中某项时触发。",
+            "update_modelvalue": "当所选值发生变化时触发。"
+          },
+          "emits": "TreeNavCompact 组件的事件。"
+        },
+        "treenavcompactprops": {
+          "members": {
+            "arrowprops": "转发至弹出窗口箭头元素的属性。",
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
+            "collapsible": "是否将顶层的溢出项目折叠到尾部的“更多”分支\n弹出窗口中，以确保进度条始终能完全容纳在其容器内。",
+            "defaultvalue": "初始渲染时应选中的项的值。",
+            "delayduration": "从指针进入分支触发器起，直到\n悬停模式下弹出窗口打开为止的时间间隔。",
+            "dir": "如适用，请标注组件的阅读方向。",
+            "disabled": "整个导航栏是否被禁用。",
+            "grouplabelprops": "转发至弹出窗口组标签元素的属性。",
+            "itemprops": "转发至弹出项的 item 元素的属性。",
+            "items": "树结构中的项目将作为顶级导航条目呈现。",
+            "linkprops": "传递给链接项的 `link` 元素的属性。",
+            "modelvalue": "当前所选项的值。可作为 `v-model` 使用。",
+            "moreicon": "当 `collapsible` 时，末尾“更多”触发器的图标。",
+            "morelabel": "当 `collapsible` 时，末尾“更多”触发器的标签。",
+            "moreprops": "传递给末尾“更多”触发按钮的属性。",
+            "placement": "分支弹出窗口相对于其触发点的首选位置。",
+            "popupprops": "转发给弹出窗口（popups）中弹出元素的属性。",
+            "portalprops": "转发至弹出窗口 portal 元素的属性。",
+            "separatorprops": "传递给弹出式分隔符的分隔符元素的属性。",
+            "shortcutprops": "转发至弹出项快捷方式元素的属性。",
+            "showarrow": "分支弹出窗口是否显示箭头。",
+            "skipdelayduration": "用户有多少时间可以触发另一个分支，而不会\n再次产生延迟。",
+            "subcontentprops": "属性将转发至弹出窗口分支的子内容元素。",
+            "subtriggerprops": "转发至弹出窗口分支子触发器元素的属性。",
+            "trigger": "分支弹出窗口的打开方式。\n\n- `click`：点击触发器时，弹出窗口将打开。\n- `hover`：将鼠标悬停在触发器上时，弹出窗口将打开。"
+          },
+          "props": "TreeNavCompact 组件的属性。"
+        },
+        "treenavcompactslots": {
+          "callables": {
+            "item": "项槽位的自定义内容。",
+            "item_leading": "用于项目引导槽位的自定义内容。",
+            "item_link_icon": "项目链接图标槽位的自定义内容。",
+            "item_trailing": "项尾槽的自定义内容。",
+            "item_trigger_icon": "项目触发图标槽位的自定义内容。",
+            "more_trigger": "当 `collapsible` 时，为末尾的“更多”触发器提供自定义内容。"
+          },
+          "slots": "TreeNavCompact 组件的插槽。"
+        },
+        "treenavmoreentry": "当 `collapsible` 时，显示描述尾部“更多”触发器的条目。",
+        "treenavui": "TreeNav 组件的 UI 类重写。"
+      },
       "packages_headless_src_components_tree_types": {
         "ismultiple": "",
         "treeitememits": {
@@ -14319,6 +14372,61 @@
             "ui": "针对该组件的按槽位类重写。"
           },
           "props": "TreeMenuStyledItem 组件的属性。"
+        }
+      },
+      "packages_ui_src_components_tree_nav_types": {
+        "treenavemits": {
+          "callables": {
+            "select": "当选中某项时触发。",
+            "update_modelvalue": "当所选值发生变化时触发。"
+          },
+          "emits": "TreeNav 组件的事件。"
+        },
+        "treenavprops": {
+          "members": {
+            "arrowprops": "转发至弹出窗口箭头元素的属性。",
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
+            "class": "树导航的根节点类。",
+            "collapsible": "是否将顶层的溢出项目折叠到尾部的“更多”分支\n弹出窗口中，以确保进度条始终能完全容纳在其容器内。",
+            "defaultvalue": "初始渲染时应选中的项的值。",
+            "delayduration": "从指针进入分支触发器起，直到\n悬停模式下弹出窗口打开为止的时间间隔。",
+            "dir": "如适用，请标注组件的阅读方向。",
+            "disabled": "整个导航栏是否被禁用。",
+            "grouplabelprops": "转发至弹出窗口组标签元素的属性。",
+            "itemprops": "转发至弹出项的 item 元素的属性。",
+            "items": "树结构中的项目将作为顶级导航条目呈现。",
+            "linkprops": "传递给链接项的 `link` 元素的属性。",
+            "modelvalue": "当前所选项的值。可作为 `v-model` 使用。",
+            "moreicon": "当 `collapsible` 时，末尾“更多”触发器的图标。",
+            "morelabel": "当 `collapsible` 时，末尾“更多”触发器的标签。",
+            "moreprops": "传递给末尾“更多”触发按钮的属性。",
+            "placement": "分支弹出窗口相对于其触发点的首选位置。",
+            "popupprops": "转发给弹出窗口（popups）中弹出元素的属性。",
+            "portalprops": "转发至弹出窗口 portal 元素的属性。",
+            "separatorprops": "传递给弹出式分隔符的分隔符元素的属性。",
+            "shortcutprops": "转发至弹出项快捷方式元素的属性。",
+            "showarrow": "分支弹出窗口是否显示箭头。",
+            "size": "组件的视觉尺寸。",
+            "skipdelayduration": "用户有多少时间可以触发另一个分支，而不会\n再次产生延迟。",
+            "subcontentprops": "属性将转发至弹出窗口分支的子内容元素。",
+            "subtriggerprops": "转发至弹出窗口分支子触发器元素的属性。",
+            "trigger": "分支弹出窗口的打开方式。\n\n- `click`：点击触发器时，弹出窗口将打开。\n- `hover`：将鼠标悬停在触发器上时，弹出窗口将打开。",
+            "ui": "该组件的按槽类重写。",
+            "variant": "该组件的视觉变体。"
+          },
+          "props": "TreeNav 组件的属性。"
+        },
+        "treenavslots": {
+          "callables": {
+            "item": "项槽位的自定义内容。",
+            "item_leading": "用于项目引导槽位的自定义内容。",
+            "item_link_icon": "项目链接图标槽位的自定义内容。",
+            "item_trailing": "项尾槽的自定义内容。",
+            "item_trigger_icon": "项目触发图标槽位的自定义内容。",
+            "more_trigger": "当 `collapsible` 时，为末尾的“更多”触发器提供自定义内容。"
+          },
+          "slots": "TreeNav 组件的槽位。"
         }
       },
       "packages_ui_src_components_tree_types": {

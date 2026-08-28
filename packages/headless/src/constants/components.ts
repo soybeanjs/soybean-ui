@@ -564,6 +564,7 @@ export const components = {
     'TreeMenuCollapsible',
     'TreeMenuSub'
   ],
+  treeNav: ['TreeNavCompact'],
   virtualizer: ['VirtualizerRoot', 'VirtualizerContent', 'VirtualizerItem'],
   visuallyHidden: ['VisuallyHidden', 'VisuallyHiddenInput'],
   watermark: ['WatermarkCompact', 'WatermarkOverlay', 'WatermarkRoot']

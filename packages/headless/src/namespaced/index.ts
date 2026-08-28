@@ -574,6 +574,7 @@ import {
   TreeMenuRoot,
   TreeMenuSlotCompact,
   TreeMenuSub,
+  TreeNavCompact,
   TreeRoot,
   TreeVirtualizerItem,
   TreeVirtualizerRoot,
@@ -2024,6 +2025,8 @@ export const TreeMenu = {
   Collapsible: typeof TreeMenuCollapsible;
   Sub: typeof TreeMenuSub;
 };
+
+export { TreeNavCompact };
 
 export const Virtualizer = {
   Root: VirtualizerRoot,
