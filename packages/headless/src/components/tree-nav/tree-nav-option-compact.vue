@@ -6,6 +6,7 @@ import Button from '../button/button.vue';
 import DropdownMenuCompact from '../dropdown-menu/dropdown-menu-compact.vue';
 import Link from '../link/link.vue';
 import type { MenuOptionCompactSlots, MenuOptionData } from '../menu';
+import { RovingFocusItem } from '../roving-focus';
 import {
   buildTreeNavLinkProps,
   createTreeNavBranchPopupBind,
@@ -69,25 +70,26 @@ const handlePopupSelect = createTreeNavPopupSelectHandler(onSelect);
 
 <template>
   <!-- A. Top-level link leaf -->
-  <Link
-    v-if="isLinkItem(item)"
-    v-slot="{ isHref }"
-    v-bind="linkBind"
-    :class="ui.item"
-    :data-active="dataActive"
-    @click="handleSelect($event)"
-  >
-    <slot name="item" :item="item">
-      <slot name="item-leading" :item="item">
-        <Icon v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />
+  <RovingFocusItem v-if="isLinkItem(item)" as-child :tab-stop-id="item.value" :focusable="!isDisabled">
+    <Link
+      v-slot="{ isHref }"
+      v-bind="linkBind"
+      :class="ui.item"
+      :data-active="dataActive"
+      @click="handleSelect($event)"
+    >
+      <slot name="item" :item="item">
+        <slot name="item-leading" :item="item">
+          <Icon v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />
+        </slot>
+        <span>{{ item.label }}</span>
+        <slot v-if="isHref" name="item-link-icon" :item="item">
+          <Icon icon="lucide:arrow-up-right" :class="ui.itemLinkIcon" />
+        </slot>
+        <slot name="item-trailing" :item="item" />
       </slot>
-      <span>{{ item.label }}</span>
-      <slot v-if="isHref" name="item-link-icon" :item="item">
-        <Icon icon="lucide:arrow-up-right" :class="ui.itemLinkIcon" />
-      </slot>
-      <slot name="item-trailing" :item="item" />
-    </slot>
-  </Link>
+    </Link>
+  </RovingFocusItem>
 
   <!-- B. Top-level branch with a DropdownMenu popup -->
   <DropdownMenuCompact
@@ -98,18 +100,20 @@ const handlePopupSelect = createTreeNavPopupSelectHandler(onSelect);
     @select="handlePopupSelect"
   >
     <template #trigger>
-      <Button :class="ui.item" data-active="false" :data-child-active="dataChildActive" :disabled="isDisabled">
-        <slot name="item" :item="item">
-          <slot name="item-leading" :item="item">
-            <Icon v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />
+      <RovingFocusItem as-child :tab-stop-id="item.value" :focusable="!isDisabled">
+        <Button :class="ui.item" data-active="false" :data-child-active="dataChildActive" :disabled="isDisabled">
+          <slot name="item" :item="item">
+            <slot name="item-leading" :item="item">
+              <Icon v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />
+            </slot>
+            <span>{{ item.label }}</span>
+            <slot name="item-trigger-icon" :item="item">
+              <Icon icon="lucide:chevron-down" :class="ui.itemChevron" />
+            </slot>
+            <slot name="item-trailing" :item="item" />
           </slot>
-          <span>{{ item.label }}</span>
-          <slot name="item-trigger-icon" :item="item">
-            <Icon icon="lucide:chevron-down" :class="ui.itemChevron" />
-          </slot>
-          <slot name="item-trailing" :item="item" />
-        </slot>
-      </Button>
+        </Button>
+      </RovingFocusItem>
     </template>
     <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
       <slot :name="slotName" v-bind="slotProps" />
@@ -117,20 +121,21 @@ const handlePopupSelect = createTreeNavPopupSelectHandler(onSelect);
   </DropdownMenuCompact>
 
   <!-- C. Top-level plain leaf -->
-  <Button
-    v-else
-    :class="ui.item"
-    :data-active="dataActive"
-    :data-child-active="undefined"
-    :disabled="isDisabled"
-    @click="handleSelect($event)"
-  >
-    <slot name="item" :item="item">
-      <slot name="item-leading" :item="item">
-        <Icon v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />
+  <RovingFocusItem v-else as-child :tab-stop-id="item.value" :focusable="!isDisabled">
+    <Button
+      :class="ui.item"
+      :data-active="dataActive"
+      :data-child-active="undefined"
+      :disabled="isDisabled"
+      @click="handleSelect($event)"
+    >
+      <slot name="item" :item="item">
+        <slot name="item-leading" :item="item">
+          <Icon v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />
+        </slot>
+        <span>{{ item.label }}</span>
+        <slot name="item-trailing" :item="item" />
       </slot>
-      <span>{{ item.label }}</span>
-      <slot name="item-trailing" :item="item" />
-    </slot>
-  </Button>
+    </Button>
+  </RovingFocusItem>
 </template>

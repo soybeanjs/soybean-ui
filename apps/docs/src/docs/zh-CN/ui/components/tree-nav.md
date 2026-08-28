@@ -17,6 +17,7 @@ TreeNav 是一个数据驱动的水平导航栏，携带持久选择态：顶层
 - **链接型顶层项** — 提供 `href` / `to` 的顶层项渲染为链接，点击同时更新选择。
 - **溢出折叠** — 开启 `collapsible` 后，超宽的末尾顶层项自动合并进尾部"更多"弹层，始终贴合容器宽度；可通过 `moreLabel` / `moreIcon` / `moreProps` / `more-trigger` 插槽定制。
 - **导航语义** — 根元素渲染 `<nav>`（可用 `as` 覆写）；触发器的 `aria-haspopup` / `aria-expanded`、Escape 关闭等语义继承自 DropdownMenu 层。
+- **键盘导航** — 顶层是单一 roving Tab 停留点：←/→ 对所有条目一视同仁地漫游（跳过禁用项、首尾不循环），Home/End 跳转首尾条目；分支弹层的打开走显式按键——Enter/Space（原生按钮语义）或 ↓——弹层一旦打开，按键全部归属 Menu 机制。
 - **逐项与整体禁用** — `item.disabled` 使单个条目惰性；栏级 `disabled` 一次禁用全部。
 - **六种尺寸与两种变体** — `size`（xs…2xl）加 `variant="default"`（浅色卡片底）或 `variant="nav"`（纯净无框）。
 - **插槽透传** — `item` / `item-leading` / `item-trailing` / `item-trigger-icon` / `item-link-icon` 同时透传到顶层与弹层内部。
@@ -51,8 +52,13 @@ TreeNav 是一个数据驱动的水平导航栏，携带持久选择态：顶层
 2. **折叠后的高亮一致性** — 选中项被收进"更多"弹层后，其可见祖先仍显示 `data-child-active`，因为派生始终基于完整的 `items` 列表。
 3. **折叠测量** — 与 Menubar 的溢出折叠一样，测量在挂载后基于真实布局进行；父容器请提供受限宽度（如 `max-w-*` / 固定宽度）。首帧可能先全量渲染再收缩。
 4. **受控模式** — 提供 `modelValue` 时内部只触发 `update:modelValue`；非受控用法用 `defaultValue` 设定初始值。
+5. **键盘模型** — 弹层关闭时 ←/→（及 Home/End）通过 roving tabindex 在顶层漫游；分支触发器与其他条目一视同仁，方向键只移动、不打开弹层。打开弹层走 Enter/Space 或 ↓（焦点随后落入首个菜单项）；弹层一旦打开，所有按键归属 Menu（弹层内 ↑/↓，Escape 关闭并归还焦点到触发器），hover 弹层在焦点离开触发器时自动收起。
 
 ## FAQ
+
+### 导航栏支持哪些键盘快捷键？
+
+←/→ 在顶层条目间漫游（Home/End 跳转首尾）——分支触发器同样只是漫游目标，方向键只移动、不会打开弹层。弹层通过分支触发器上的 Enter/Space 或 ↓ 打开（焦点落入首个菜单项）。方向键从不改变选中项——选中只在显式激活（点击，或叶子上的 Enter/Space）时发生。
 
 ### 如何让顶层条目直接跳转而不是展开下拉？
 

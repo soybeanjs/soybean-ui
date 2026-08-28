@@ -6,7 +6,13 @@ import Icon from '../_icon/icon.vue';
 import Button from '../button/button.vue';
 import DropdownMenuCompact from '../dropdown-menu/dropdown-menu-compact.vue';
 import type { MenuOptionData, MenuOptionsCompactSlots } from '../menu';
-import { createTreeNavBranchPopupBind, createTreeNavPopupSelectHandler, filterHiddenTreeNavOptions } from './shared';
+import { RovingFocusItem } from '../roving-focus';
+import {
+  TREE_NAV_MORE_VALUE,
+  createTreeNavBranchPopupBind,
+  createTreeNavPopupSelectHandler,
+  filterHiddenTreeNavOptions
+} from './shared';
 import { useTreeNavRootContext, useTreeNavUi } from './context';
 import TreeNavOptionCompact from './tree-nav-option-compact.vue';
 import type { TreeNavOptionData, TreeNavOptionsCompactProps, TreeNavOptionsCompactSlots } from './types';
@@ -83,10 +89,12 @@ const handlePopupSelect = createTreeNavPopupSelectHandler(onSelect);
   >
     <template #trigger>
       <slot name="more-trigger" :label="moreEntry.label" :icon="moreEntry.icon">
-        <Button v-bind="moreTriggerBind" :class="ui.item" data-active="false">
-          <Icon v-if="moreEntry.icon" :icon="moreEntry.icon" :class="ui.itemIcon" />
-          <span v-if="moreEntry.label">{{ moreEntry.label }}</span>
-        </Button>
+        <RovingFocusItem as-child :tab-stop-id="TREE_NAV_MORE_VALUE" :focusable="!moreDisabled">
+          <Button v-bind="moreTriggerBind" :class="ui.item" data-active="false">
+            <Icon v-if="moreEntry.icon" :icon="moreEntry.icon" :class="ui.itemIcon" />
+            <span v-if="moreEntry.label">{{ moreEntry.label }}</span>
+          </Button>
+        </RovingFocusItem>
       </slot>
     </template>
     <template v-for="slotName in optionSlotNames" :key="slotName" #[slotName]="slotProps">

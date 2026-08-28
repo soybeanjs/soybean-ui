@@ -2,6 +2,7 @@
 import { computed, shallowRef } from 'vue';
 import { transformPropsToContext } from '../../shared';
 import { Primitive } from '../primitive/primitive';
+import { RovingFocusGroup } from '../roving-focus';
 import { provideTreeNavRootContext, useTreeNavUi } from './context';
 import type { TreeNavOptionData, TreeNavRootProps, TreeNavRootEmits, TreeNavRootSlots } from './types';
 
@@ -67,7 +68,15 @@ provideTreeNavRootContext({
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" data-soybean-tree-nav :class="cls">
-    <slot />
-  </Primitive>
+  <!--
+    Keyboard model (APG menubar convention): the roving focus group makes the
+    top level a single tab stop and ←/→/Home/End roam the entries. Opening a
+    branch popup stays on the explicit keys — Enter/Space and ArrowDown — and
+    once a popup is open its keys belong to the Menu machinery.
+  -->
+  <RovingFocusGroup as-child orientation="horizontal" :dir="dir" :loop="false">
+    <Primitive :as="as" :as-child="asChild" data-soybean-tree-nav :class="cls">
+      <slot />
+    </Primitive>
+  </RovingFocusGroup>
 </template>

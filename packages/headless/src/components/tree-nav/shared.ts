@@ -8,6 +8,11 @@ export const hasChildren = (item: TreeNavOptionData): boolean => Boolean(item.ch
 export const isLinkItem = (item: TreeNavOptionData): boolean => Boolean(item.to || item.href);
 
 /**
+ * Stable roving tab-stop id of the trailing "more" trigger.
+ */
+export const TREE_NAV_MORE_VALUE = '__soybean-tree-nav-more__';
+
+/**
  * Recursively remove options flagged as `hidden`, aligned with TreeMenu.
  */
 export function filterHiddenTreeNavOptions(items?: TreeNavOptionData[]): TreeNavOptionData[] {

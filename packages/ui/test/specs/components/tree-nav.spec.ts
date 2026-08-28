@@ -279,6 +279,118 @@ describe('STreeNav', () => {
     });
   });
 
+  describe('keyboard navigation', () => {
+    it('turns the top level into a single roving tab stop', async () => {
+      const wrapper = mountTreeNav({ trigger: 'click' });
+
+      const root = wrapper.find('[data-soybean-tree-nav]');
+
+      // The group's tabbability settles after the items register themselves.
+      await nextTick();
+
+      expect(root.attributes('tabindex')).toBe('0');
+
+      // Every top-level entry (branch triggers, leaves, the link) is removed
+      // from the natural tab order until it becomes the roving target.
+      root.findAll('button, a').forEach(item => {
+        expect(item.attributes('tabindex')).toBe('-1');
+      });
+
+      wrapper.unmount();
+    });
+
+    it('focuses the selected item when the bar receives focus', async () => {
+      const wrapper = mountTreeNav({ trigger: 'click', defaultValue: 'pricing' });
+
+      await wrapper.find('[data-soybean-tree-nav]').trigger('focus');
+      await nextTick();
+
+      expect(document.activeElement?.textContent).toContain('Pricing');
+      expect(findLeafButton(wrapper, 'Pricing')?.attributes('tabindex')).toBe('0');
+
+      wrapper.unmount();
+    });
+
+    it('roams top-level items with ←/→ and Home/End, skipping disabled items', async () => {
+      const wrapper = mountTreeNav({ trigger: 'click', defaultValue: 'pricing' });
+
+      const pricing = findLeafButton(wrapper, 'Pricing')!;
+      (pricing.element as HTMLElement).focus();
+
+      // The disabled "private" leaf is skipped.
+      await pricing.trigger('keydown', { key: 'ArrowRight' });
+      await nextTick();
+
+      expect(document.activeElement?.textContent).toContain('GitHub');
+
+      await pricing.trigger('keydown', { key: 'ArrowLeft' });
+      await nextTick();
+
+      expect(document.activeElement?.textContent).toContain('Blog');
+
+      await pricing.trigger('keydown', { key: 'Home' });
+      await nextTick();
+
+      expect(document.activeElement?.textContent).toContain('Docs');
+
+      await pricing.trigger('keydown', { key: 'End' });
+      await nextTick();
+
+      expect(document.activeElement?.textContent).toContain('GitHub');
+
+      wrapper.unmount();
+    });
+
+    it('roams across branch triggers with ←/→ without opening popups', async () => {
+      const wrapper = mountTreeNav({ trigger: 'click' });
+
+      const [docsTrigger, blogTrigger] = wrapper.findAll('[data-soybean-dropdown-menu-trigger]');
+      (docsTrigger.element as HTMLElement).focus();
+
+      // Branch triggers are roam targets like any other entry: → moves on.
+      await docsTrigger.trigger('keydown', { key: 'ArrowRight' });
+      await nextTick();
+
+      expect(document.activeElement).toBe(blogTrigger.element);
+      expect(wrapper.find('[role="menu"][data-state="open"]').exists()).toBe(false);
+
+      await blogTrigger.trigger('keydown', { key: 'ArrowLeft' });
+      await nextTick();
+
+      expect(document.activeElement).toBe(docsTrigger.element);
+      expect(wrapper.find('[role="menu"][data-state="open"]').exists()).toBe(false);
+
+      wrapper.unmount();
+    });
+
+    it('opens a branch popup with ArrowDown and keeps popup keys with the menu', async () => {
+      const wrapper = mountTreeNav({ trigger: 'click' });
+
+      const docsTrigger = wrapper.find('[data-soybean-dropdown-menu-trigger]');
+      (docsTrigger.element as HTMLElement).focus();
+
+      // Opening stays on the explicit keys: ArrowDown (or Enter/Space).
+      await docsTrigger.trigger('keydown', { key: 'ArrowDown' });
+      await nextTick();
+      await nextTick();
+
+      expect(docsTrigger.attributes('aria-expanded')).toBe('true');
+      expect(wrapper.find('[role="menu"][data-state="open"]').exists()).toBe(true);
+
+      const menuItem = wrapper.findAll('[role="menuitem"]').find(item => item.text() === 'Getting Started');
+
+      expect(menuItem).toBeTruthy();
+
+      // Keys dispatched inside the popup never reach the bar's handlers.
+      await menuItem!.trigger('keydown', { key: 'ArrowRight' });
+      await nextTick();
+
+      expect(wrapper.find('[role="menu"][data-state="open"]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+  });
+
   describe('accessibility', () => {
     it('has no a11y violations in the closed state', async () => {
       const wrapper = mountTreeNav();
