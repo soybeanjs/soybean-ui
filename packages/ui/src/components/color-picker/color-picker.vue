@@ -1,22 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { provideColorAreaUi } from '@soybeanjs/headless/color-area';
-import { provideColorFieldUi } from '@soybeanjs/headless/color-field';
 import { ColorPickerCompact, provideColorPickerUi } from '@soybeanjs/headless/color-picker';
-import { provideColorSliderUi } from '@soybeanjs/headless/color-slider';
-import { provideColorSwatchUi } from '@soybeanjs/headless/color-swatch';
-import { provideColorSwatchPickerUi } from '@soybeanjs/headless/color-swatch-picker';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { providePopoverUi } from '@soybeanjs/headless/popover';
-import { provideTabsUi } from '@soybeanjs/headless/tabs';
-import { colorAreaVariants } from '@/styles/color-area';
-import { colorFieldVariants } from '@/styles/color-field';
 import { colorPickerVariants } from '@/styles/color-picker';
-import { colorSwatchVariants } from '@/styles/color-swatch';
-import { colorSwatchPickerVariants } from '@/styles/color-swatch-picker';
-import { popoverVariants } from '@/styles/popover';
-import { sliderVariants } from '@/styles/slider';
-import { tabsVariants } from '@/styles/tabs';
 import type { ColorPickerProps, ColorPickerEmits } from './types';
 
 defineOptions({
@@ -38,30 +24,8 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 const listeners = useForwardListeners(emit);
 
 const ui = computed(() => colorPickerVariants({ size: props.size }, props.ui, { trigger: props.class }));
-const popoverUi = computed(() => popoverVariants({ size: props.size }, { popup: props.ui?.popup }));
-const colorAreaUi = computed(() => colorAreaVariants({ size: props.size }));
-const colorFieldUi = computed(() => colorFieldVariants({ size: props.size }));
-const colorSwatchUi = computed(() => colorSwatchVariants({ size: props.size, shape: 'circle' }));
-const colorSwatchPickerUi = computed(() => colorSwatchPickerVariants({ size: props.size, shape: 'circle' }));
-const colorSliderUi = computed(() => sliderVariants({ size: props.size }));
-const segmentUi = computed(() =>
-  tabsVariants({
-    size: props.size,
-    orientation: 'horizontal',
-    shape: 'square',
-    fill: 'auto',
-    enableIndicator: true
-  })
-);
 
 provideColorPickerUi(ui);
-providePopoverUi(popoverUi);
-provideColorAreaUi(colorAreaUi);
-provideColorFieldUi(colorFieldUi);
-provideColorSwatchUi(colorSwatchUi);
-provideColorSwatchPickerUi(colorSwatchPickerUi);
-provideColorSliderUi(colorSliderUi);
-provideTabsUi(segmentUi);
 </script>
 
 <template>

@@ -77,7 +77,6 @@ const popoverProps = usePickProps(props, [
         <SegmentCompact
           v-bind="segmentProps"
           data-soybean-color-picker-segment
-          :class="ui.segment"
           :model-value="displayFormat"
           :items="colorFormats"
           :disabled="disabled"
@@ -86,7 +85,6 @@ const popoverProps = usePickProps(props, [
         <ColorAreaCompact
           v-bind="areaProps"
           data-soybean-color-picker-area
-          :class="ui.area"
           :model-value="color"
           :color-space="colorSpace"
           :x-channel="areaChannel.x"
@@ -99,7 +97,6 @@ const popoverProps = usePickProps(props, [
             <ColorSliderCompact
               v-bind="hueSliderProps"
               data-soybean-color-picker-hue-slider
-              :class="ui.slider"
               :model-value="color"
               channel="hue"
               :color-space="colorSpace"
@@ -110,7 +107,6 @@ const popoverProps = usePickProps(props, [
               v-if="showAlpha"
               v-bind="alphaSliderProps"
               data-soybean-color-picker-alpha-slider
-              :class="ui.alphaSlider"
               :model-value="color"
               channel="alpha"
               :color-space="colorSpace"
@@ -129,7 +125,6 @@ const popoverProps = usePickProps(props, [
           <ColorFieldCompact
             v-bind="fieldProps"
             data-soybean-color-picker-field
-            :class="ui.field"
             :model-value="hexValue"
             :format="displayFormat"
             :placeholder="displayFormatLabel"
@@ -152,7 +147,6 @@ const popoverProps = usePickProps(props, [
           v-if="showSwatches && swatches.length"
           v-bind="swatchPickerProps"
           data-soybean-color-picker-swatch-picker
-          :class="ui.swatchPicker"
           :colors="swatches"
           :model-value="hexValue"
           :disabled="disabled"

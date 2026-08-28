@@ -5,8 +5,7 @@ import type { ThemeSize } from '@/theme';
 export const fieldSurface = 'rounded-md border border-solid border-input bg-background transition-all-150';
 
 /** Focus-within ring shared by field roots. */
-export const fieldFocusRing =
-  'outline-none focus-within:ring-3 focus-within:ring-offset-background focus-within:ring-primary/30';
+export const fieldFocusRing = `outline-none focus-within:ring-3 focus-within:ring-offset-background focus-within:ring-primary/30`;
 
 /** Shared chrome for single-line form fields and triggers. Layout stays per component. */
 export const fieldChrome = [fieldSurface, fieldFocusRing];

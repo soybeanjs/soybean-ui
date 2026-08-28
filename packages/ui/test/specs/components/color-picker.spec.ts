@@ -102,4 +102,34 @@ describe('SColorPicker', () => {
       wrapper.unmount();
     });
   });
+
+  describe('styles', () => {
+    it('applies the compact popup padding from colorPickerVariants', async () => {
+      const wrapper = mount(SColorPicker, {
+        props: { modelValue: '#7c3aed' },
+        attachTo: document.body
+      });
+
+      await openPicker(wrapper);
+
+      const popup = document.body.querySelector('[data-soybean-popper-popup]');
+
+      expect(popup?.className).toContain('p-2');
+      wrapper.unmount();
+    });
+
+    it('forwards aliased area thumb classes through the unified ui map', async () => {
+      const wrapper = mount(SColorPicker, {
+        props: { modelValue: '#7c3aed', ui: { areaThumb: 'data-test-area-thumb' } },
+        attachTo: document.body
+      });
+
+      await openPicker(wrapper);
+
+      const thumb = document.body.querySelector('[data-soybean-color-area-thumb]');
+
+      expect(thumb?.className).toContain('data-test-area-thumb');
+      wrapper.unmount();
+    });
+  });
 });

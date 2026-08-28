@@ -75,7 +75,7 @@
               {
                 "name": "ColorPickerUi",
                 "kind": "typeAlias",
-                "type": "{ trigger: ClassValue; content: ClassValue; popup: ClassValue; area: ClassValue; triggerSwatch: ClassValue; triggerValue: ClassValue; segment: ClassValue; sliderSwatch: ClassValue; sliderRoot: ClassValue; slider: ClassValue; alphaSlider: ClassValue; swatch: ClassValue; fields: ClassValue; field: ClassValue; alphaField: ClassValue; swatchPicker: ClassValue; }",
+                "type": "{ trigger: ClassValue; content: ClassValue; close: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; popoverTrigger: ClassValue; triggerSwatch: ClassValue; triggerValue: ClassValue; areaRoot: ClassValue; areaSurface: ClassValue; areaThumb: ClassValue; sliderSwatch: ClassValue; sliderRoot: ClassValue; sliderControl: ClassValue; sliderTrack: ClassValue; sliderThumb: ClassValue; swatchRoot: ClassValue; swatchChecker: ClassValue; swatchFill: ClassValue; swatch: ClassValue; fields: ClassValue; fieldRoot: ClassValue; fieldInput: ClassValue; alphaField: ClassValue; segmentRoot: ClassValue; segmentList: ClassValue; segmentTrigger: ClassValue; segmentIndicator: ClassValue; segmentIndicatorContent: ClassValue; swatchPickerRoot: ClassValue; swatchPickerItem: ClassValue; swatchPickerItemIndicator: ClassValue; swatchPickerSwatchRoot: ClassValue; swatchPickerSwatchChecker: ClassValue; swatchPickerSwatchFill: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the ColorPicker component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_color_picker_types.colorpickerui",

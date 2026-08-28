@@ -201,24 +201,47 @@ export type ColorPickerCompactEmits = ColorPickerRootEmits & PopoverCompactEmits
 
 /**
  * Available UI slots for the ColorPicker component.
+ *
+ * Nested primitive slots are aliased so colliding names (`root`, `trigger`, `thumb`)
+ * can live on one recipe. Headless remaps them back to each child `provide*Ui`.
  */
 export type ColorPickerUiSlot =
+  | 'positioner'
   | 'popup'
+  | 'arrow'
+  | 'close'
+  | 'popoverTrigger'
   | 'content'
   | 'trigger'
   | 'triggerSwatch'
   | 'triggerValue'
-  | 'segment'
-  | 'area'
+  | 'areaRoot'
+  | 'areaSurface'
+  | 'areaThumb'
   | 'sliderSwatch'
   | 'sliderRoot'
-  | 'slider'
-  | 'alphaSlider'
+  | 'sliderControl'
+  | 'sliderTrack'
+  | 'sliderThumb'
+  | 'swatchRoot'
+  | 'swatchChecker'
+  | 'swatchFill'
   | 'swatch'
   | 'fields'
-  | 'field'
+  | 'fieldRoot'
+  | 'fieldInput'
   | 'alphaField'
-  | 'swatchPicker';
+  | 'segmentRoot'
+  | 'segmentList'
+  | 'segmentTrigger'
+  | 'segmentIndicator'
+  | 'segmentIndicatorContent'
+  | 'swatchPickerRoot'
+  | 'swatchPickerItem'
+  | 'swatchPickerItemIndicator'
+  | 'swatchPickerSwatchRoot'
+  | 'swatchPickerSwatchChecker'
+  | 'swatchPickerSwatchFill';
 
 /**
  * UI class overrides for the ColorPicker component.

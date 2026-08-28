@@ -75,7 +75,7 @@
               {
                 "name": "ColorSwatchPickerExtendedUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; fill: ClassValue; itemIndicator: ClassValue; checker: ClassValue; swatchRoot: ClassValue; swatchChecker: ClassValue; swatchFill: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; fill: ClassValue; itemIndicator: ClassValue; swatchRoot: ClassValue; swatchChecker: ClassValue; swatchFill: ClassValue; checker: ClassValue; }",
                 "resolvedType": null,
                 "description": "Extended UI class overrides for the ColorSwatchPicker component.",
                 "descriptionKey": "api.generated.packages_ui_src_components_color_swatch_picker_types.colorswatchpickerextendedui",
