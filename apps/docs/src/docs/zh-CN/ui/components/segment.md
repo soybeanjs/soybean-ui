@@ -22,7 +22,8 @@
 ## 组件族系
 
 - `SSegment`——样式包装层，透传 props 给 headless compact 并注入 `segmentVariants` 类
-- `SegmentCompact`（headless）——由 `TabsRoot` + `TabsList` + `TabsTrigger` + `TabsIndicator` 数据驱动组合；无样式使用时从 `@soybeanjs/headless/segment` 导入
+- `SegmentRoot` / `SegmentList` / `SegmentTrigger` / `SegmentIndicator`（headless）— 包装 Tabs 的领域基元；DOM 使用 `data-soybean-segment-*`
+- `SegmentCompact`（headless）——由上述基元数据驱动组合；无样式使用时从 `@soybeanjs/headless/segment` 导入
 
 ## 演示
 
@@ -36,7 +37,7 @@
 
 ### 架构与行业对标差异
 
-`SegmentCompact` 组合了 headless 的 `TabsRoot`/`TabsList`/`TabsTrigger`/`TabsIndicator` 基元：负责遍历 `items`、转发 `listProps`/`triggerProps`/`indicatorProps`，并暴露 `item`/`indicator` 插槽。`TabsTrigger` 基于 `RovingFocusGroup` 实现方向键导航，因此 `loop` 与 `dir`（RTL）行为与 Tabs 完全一致。`SSegment` 是薄包装层，仅计算 `segmentVariants`（`tabsVariants` 的别名）并调用 `provideTabsUi`。指示器通过异步布局测量定位（resize observer + post-flush watch），因此在挂载后一帧出现。`segment` 对应分段控件模式；各对标库原生提供该模式，唯一例外是 shadcn，通常以 Tabs 替代。
+`SegmentCompact` 组合了 headless 的 `SegmentRoot`/`SegmentList`/`SegmentTrigger`/`SegmentIndicator` 基元（各自包装对应的 Tabs 部件）：负责遍历 `items`、转发 `listProps`/`triggerProps`/`indicatorProps`，并暴露 `item`/`indicator` 插槽。`SegmentTrigger` 沿用 Tabs 的 ARIA 模式（`role="tab"` + 焦点漫游），因此 `loop` 与 `dir`（RTL）行为与 Tabs 完全一致。`SSegment` 是薄包装层，仅计算 `segmentVariants`（`tabsVariants` 的别名）并调用 `provideSegmentUi`。指示器通过异步布局测量定位（resize observer + post-flush watch），因此在挂载后一帧出现。`segment` 对应分段控件模式；各对标库原生提供该模式，唯一例外是 shadcn，通常以 Tabs 替代。
 
 | 能力                    | SoybeanUI | Ant Design | Element Plus | Mantine | Naive UI | shadcn |
 | :---------------------- | :-------: | :--------: | :----------: | :-----: | :------: | :----: |

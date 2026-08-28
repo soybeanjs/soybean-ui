@@ -22,7 +22,8 @@ A linear set of two or more mutually exclusive options presented as a unified co
 ## Component family
 
 - `SSegment` — the styled wrapper that forwards props to the headless compact and injects `segmentVariants` classes
-- `SegmentCompact` (headless) — data-driven composition of `TabsRoot` + `TabsList` + `TabsTrigger` + `TabsIndicator`; import from `@soybeanjs/headless/segment` for unstyled usage
+- `SegmentRoot` / `SegmentList` / `SegmentTrigger` / `SegmentIndicator` (headless) — domain primitives wrapping Tabs; DOM uses `data-soybean-segment-*`
+- `SegmentCompact` (headless) — data-driven composition of those primitives; import from `@soybeanjs/headless/segment` for unstyled usage
 
 ## Demos
 
@@ -36,7 +37,7 @@ A linear set of two or more mutually exclusive options presented as a unified co
 
 ### Architecture and benchmark differences
 
-`SegmentCompact` composes the headless `TabsRoot`/`TabsList`/`TabsTrigger`/`TabsIndicator` primitives: it iterates `items`, forwards `listProps`/`triggerProps`/`indicatorProps`, and exposes `item`/`indicator` slots. `TabsTrigger` uses `RovingFocusGroup` for arrow-key navigation, so `loop` and `dir` (RTL) behave identically to tabs. `SSegment` is a thin wrapper that only computes `segmentVariants` (an alias of `tabsVariants`) and calls `provideTabsUi`. The indicator is measured asynchronously (resize observer + post-flush watch), so it appears one frame after mount. `segment` maps to the segmented-control pattern; the benchmark libraries express it natively except shadcn, which typically uses Tabs.
+`SegmentCompact` composes the headless `SegmentRoot`/`SegmentList`/`SegmentTrigger`/`SegmentIndicator` primitives (each wrapping the matching Tabs part): it iterates `items`, forwards `listProps`/`triggerProps`/`indicatorProps`, and exposes `item`/`indicator` slots. `SegmentTrigger` keeps the Tabs ARIA pattern (`role="tab"` + roving focus), so `loop` and `dir` (RTL) behave identically to tabs. `SSegment` is a thin wrapper that only computes `segmentVariants` (an alias of `tabsVariants`) and calls `provideSegmentUi`. The indicator is measured asynchronously (resize observer + post-flush watch), so it appears one frame after mount. `segment` maps to the segmented-control pattern; the benchmark libraries express it natively except shadcn, which typically uses Tabs.
 
 | Capability                    | SoybeanUI | Ant Design | Element Plus | Mantine | Naive UI | shadcn |
 | :---------------------------- | :-------: | :--------: | :----------: | :-----: | :------: | :----: |

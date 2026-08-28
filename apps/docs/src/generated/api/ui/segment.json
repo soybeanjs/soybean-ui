@@ -170,13 +170,13 @@
             "sourcePath": "packages/headless/src/components/segment/types.ts",
             "referencedTypes": [
               {
-                "name": "TabsListProps",
+                "name": "SegmentListProps",
                 "kind": "interface",
                 "type": "SegmentListProps",
                 "resolvedType": null,
-                "description": "Properties for the TabsList component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabslistprops",
-                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "description": "Properties for the SegmentList component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentlistprops",
+                "sourcePath": "packages/headless/src/components/segment/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -195,13 +195,13 @@
             "sourcePath": "packages/headless/src/components/segment/types.ts",
             "referencedTypes": [
               {
-                "name": "TabsTriggerProps",
+                "name": "SegmentTriggerProps",
                 "kind": "interface",
                 "type": "SegmentTriggerProps",
                 "resolvedType": "{ value: string | number; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the TabsTrigger component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops",
-                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "description": "Properties for the SegmentTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops",
+                "sourcePath": "packages/headless/src/components/segment/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -210,7 +210,7 @@
                     "type": "string | number",
                     "required": true,
                     "description": "A unique value that associates the trigger with a content.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.value",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops.members.value",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/tabs/types.ts",
@@ -221,7 +221,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "When `true`, prevents the user from interacting with the tab.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.disabled",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops.members.disabled",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/tabs/types.ts",
@@ -232,7 +232,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.aschild",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops.members.aschild",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -243,7 +243,7 @@
                     "type": "AsTag | Component",
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.as",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -265,13 +265,13 @@
             "sourcePath": "packages/headless/src/components/segment/types.ts",
             "referencedTypes": [
               {
-                "name": "TabsIndicatorProps",
+                "name": "SegmentIndicatorProps",
                 "kind": "interface",
                 "type": "SegmentIndicatorProps",
                 "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the TabsIndicator component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsindicatorprops",
-                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "description": "Properties for the SegmentIndicator component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentindicatorprops",
+                "sourcePath": "packages/headless/src/components/segment/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -280,7 +280,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsindicatorprops.members.aschild",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentindicatorprops.members.aschild",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -291,7 +291,7 @@
                     "type": "AsTag | Component",
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsindicatorprops.members.as",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentindicatorprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -542,13 +542,13 @@
             "sourcePath": "packages/headless/src/components/segment/types.ts",
             "referencedTypes": [
               {
-                "name": "TabsListProps",
+                "name": "SegmentListProps",
                 "kind": "interface",
                 "type": "SegmentListProps",
                 "resolvedType": null,
-                "description": "Properties for the TabsList component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabslistprops",
-                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "description": "Properties for the SegmentList component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentlistprops",
+                "sourcePath": "packages/headless/src/components/segment/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -567,13 +567,13 @@
             "sourcePath": "packages/headless/src/components/segment/types.ts",
             "referencedTypes": [
               {
-                "name": "TabsTriggerProps",
+                "name": "SegmentTriggerProps",
                 "kind": "interface",
                 "type": "SegmentTriggerProps",
                 "resolvedType": "{ value: string | number; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the TabsTrigger component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops",
-                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "description": "Properties for the SegmentTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops",
+                "sourcePath": "packages/headless/src/components/segment/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -582,7 +582,7 @@
                     "type": "string | number",
                     "required": true,
                     "description": "A unique value that associates the trigger with a content.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.value",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops.members.value",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/tabs/types.ts",
@@ -593,7 +593,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "When `true`, prevents the user from interacting with the tab.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.disabled",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops.members.disabled",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/tabs/types.ts",
@@ -604,7 +604,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.aschild",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops.members.aschild",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -615,7 +615,7 @@
                     "type": "AsTag | Component",
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.as",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -637,13 +637,13 @@
             "sourcePath": "packages/headless/src/components/segment/types.ts",
             "referencedTypes": [
               {
-                "name": "TabsIndicatorProps",
+                "name": "SegmentIndicatorProps",
                 "kind": "interface",
                 "type": "SegmentIndicatorProps",
                 "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the TabsIndicator component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsindicatorprops",
-                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "description": "Properties for the SegmentIndicator component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentindicatorprops",
+                "sourcePath": "packages/headless/src/components/segment/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -652,7 +652,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsindicatorprops.members.aschild",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentindicatorprops.members.aschild",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -663,7 +663,7 @@
                     "type": "AsTag | Component",
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsindicatorprops.members.as",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentindicatorprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -875,12 +875,57 @@
         "kind": "props",
         "name": "SegmentIndicatorProps",
         "type": "Interface SegmentIndicatorProps",
-        "resolvedType": null,
-        "description": "Properties for the TabsIndicator component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.segmentindicatorprops.props",
-        "sourcePath": "packages/headless/src/components/tabs/types.ts",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the SegmentIndicator component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentindicatorprops.props",
+        "sourcePath": "packages/headless/src/components/segment/types.ts",
         "typeParameters": [],
-        "members": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentindicatorprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentindicatorprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
         "callables": [],
         "referencedTypes": []
       }
@@ -891,9 +936,9 @@
         "name": "SegmentListProps",
         "type": "Interface SegmentListProps",
         "resolvedType": null,
-        "description": "Properties for the TabsList component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.segmentlistprops.props",
-        "sourcePath": "packages/headless/src/components/tabs/types.ts",
+        "description": "Properties for the SegmentList component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentlistprops.props",
+        "sourcePath": "packages/headless/src/components/segment/types.ts",
         "typeParameters": [],
         "members": [],
         "callables": [],
@@ -901,30 +946,161 @@
       }
     },
     "SegmentRoot": {
-      "emits": {
-        "kind": "emits",
-        "name": "SegmentRootEmits",
-        "type": "TypeAlias SegmentRootEmits<T>",
-        "resolvedType": null,
-        "description": "Events for the TabsRoot component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.segmentrootemits.emits",
-        "sourcePath": "packages/headless/src/components/tabs/types.ts",
-        "typeParameters": ["TypeParameter T"],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      },
       "props": {
         "kind": "props",
         "name": "SegmentRootProps",
         "type": "Interface SegmentRootProps<T>",
-        "resolvedType": null,
-        "description": "Properties for the TabsRoot component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.segmentrootprops.props",
-        "sourcePath": "packages/headless/src/components/tabs/types.ts",
+        "resolvedType": "{ modelValue?: T; defaultValue?: T; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean }",
+        "description": "Properties for the SegmentRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentrootprops.props",
+        "sourcePath": "packages/headless/src/components/segment/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "modelValue",
+            "type": "T",
+            "required": false,
+            "description": "The controlled value of the tab to activate. Can be bind as `v-model`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentrootprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "T",
+            "required": false,
+            "description": "The value of the tab that should be active when initially rendered. Use when you do not need to control the state\nof the tabs",
+            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentrootprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "activationMode",
+            "type": "TabsActivationMode",
+            "required": false,
+            "description": "Whether a tab is activated automatically (on focus) or manually (on click).",
+            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentrootprops.members.activationmode",
+            "default": "automatic",
+            "inheritedFrom": "activationMode",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsActivationMode",
+                "kind": "typeAlias",
+                "type": "'automatic' | 'manual'",
+                "resolvedType": "'automatic' | 'manual'",
+                "description": "Type information for TabsActivationMode.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsactivationmode",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "unmountOnHide",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the element will be unmounted on closed state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentrootprops.members.unmountonhide",
+            "default": "`true`",
+            "inheritedFrom": "unmountOnHide",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of navigation between items.",
+            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentrootprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentrootprops.members.orientation",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentrootprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "SegmentRootEmits",
+        "type": "TypeAlias SegmentRootEmits<T>: TabsRootEmits<T>",
+        "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined>] }",
+        "description": "Events for the SegmentRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentrootemits.emits",
+        "sourcePath": "packages/headless/src/components/segment/types.ts",
         "typeParameters": ["TypeParameter T"],
         "members": [],
-        "callables": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[payload: Exclude<T, undefined>]",
+            "parameters": "payload: Exclude<T, undefined>",
+            "required": true,
+            "description": "Event handler called when the value changes",
+            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentrootemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          }
+        ],
         "referencedTypes": []
       }
     },
@@ -933,12 +1109,93 @@
         "kind": "props",
         "name": "SegmentTriggerProps",
         "type": "Interface SegmentTriggerProps",
-        "resolvedType": null,
-        "description": "Properties for the TabsTrigger component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.segmenttriggerprops.props",
-        "sourcePath": "packages/headless/src/components/tabs/types.ts",
+        "resolvedType": "{ value: string | number; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the SegmentTrigger component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops.props",
+        "sourcePath": "packages/headless/src/components/segment/types.ts",
         "typeParameters": [],
-        "members": [],
+        "members": [
+          {
+            "name": "value",
+            "type": "string | number",
+            "required": true,
+            "description": "A unique value that associates the trigger with a content.",
+            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops.members.value",
+            "default": null,
+            "inheritedFrom": "value",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DefinedValue",
+                "kind": "typeAlias",
+                "type": "string | number",
+                "resolvedType": "string | number",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.definedvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the tab.",
+            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
         "callables": [],
         "referencedTypes": []
       }

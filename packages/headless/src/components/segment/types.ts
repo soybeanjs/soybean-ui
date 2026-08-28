@@ -1,13 +1,38 @@
 import type { AcceptableValue, UiClass } from '../../types';
 import type {
-  TabsIndicatorProps as SegmentIndicatorProps,
-  TabsListProps as SegmentListProps,
+  TabsIndicatorProps,
+  TabsListProps,
   TabsOptionData as SegmentOptionData,
-  TabsRootEmits as SegmentRootEmits,
-  TabsRootProps as SegmentRootProps,
-  TabsTriggerProps as SegmentTriggerProps,
+  TabsRootEmits,
+  TabsRootProps,
+  TabsTriggerProps,
   TabsUiSlot
 } from '../tabs/types';
+
+/**
+ * Properties for the SegmentRoot component.
+ */
+export interface SegmentRootProps<T extends AcceptableValue = AcceptableValue> extends TabsRootProps<T> {}
+
+/**
+ * Events for the SegmentRoot component.
+ */
+export type SegmentRootEmits<T = AcceptableValue> = TabsRootEmits<T>;
+
+/**
+ * Properties for the SegmentList component.
+ */
+export interface SegmentListProps extends TabsListProps {}
+
+/**
+ * Properties for the SegmentTrigger component.
+ */
+export interface SegmentTriggerProps extends TabsTriggerProps {}
+
+/**
+ * Properties for the SegmentIndicator component.
+ */
+export interface SegmentIndicatorProps extends TabsIndicatorProps {}
 
 /**
  * Properties for the SegmentCompact component.
@@ -64,11 +89,4 @@ export type SegmentUiSlot = Exclude<TabsUiSlot, 'content'>;
  */
 export type SegmentUi = UiClass<SegmentUiSlot>;
 
-export type {
-  SegmentIndicatorProps,
-  SegmentListProps,
-  SegmentOptionData,
-  SegmentRootEmits,
-  SegmentRootProps,
-  SegmentTriggerProps
-};
+export type { SegmentOptionData };
