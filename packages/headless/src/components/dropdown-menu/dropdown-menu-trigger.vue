@@ -34,9 +34,15 @@ function onKeyDown(event: KeyboardEvent) {
   event.preventDefault();
 }
 
-// Hover-mode dropdowns close on trigger blur without opening on focus.
-function onBlurClose() {
+// Hover-mode dropdowns close on trigger blur without opening on focus — unless
+// focus moved into the popup itself (keyboard opens hand focus to the first
+// menu item, which must not close the popup again).
+function onBlurClose(event: FocusEvent) {
   if (props.disabled || !hoverable.value) return;
+
+  const relatedTarget = event.relatedTarget as HTMLElement | null;
+
+  if (relatedTarget?.closest(`#${popupId.value}`)) return;
 
   popperContext.onOpenChange(false, 'trigger-hover');
 }
