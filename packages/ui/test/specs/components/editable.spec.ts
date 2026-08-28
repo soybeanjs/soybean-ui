@@ -475,8 +475,10 @@ describe('SEditable', () => {
         attachTo: document.body
       });
 
+      expect(wrapper.find('[data-soybean-editable-area]').classes()).toContain('h-6');
       expect(wrapper.find('[data-soybean-editable-area]').classes()).toContain('text-2xs');
-      expect(wrapper.find('[data-soybean-editable-submit-trigger]').classes().join(' ')).toContain('size-5');
+      expect(wrapper.find('[data-soybean-editable-submit-trigger]').classes()).toContain('p-0.75');
+      expect(wrapper.find('[data-soybean-editable-submit-trigger]').classes()).toContain('w-fit');
 
       wrapper.unmount();
     });

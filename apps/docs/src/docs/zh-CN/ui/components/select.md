@@ -14,7 +14,7 @@
 - ⌨️ 完整 combobox 交互——指针/键盘打开、Arrow/Home/End 导航、typeahead 搜索、Enter/Space 选择、Escape 关闭
 - 🗂 分组，支持组标签、分隔符与条目指示器
 - ✅ `multiple` 多选，累积与去重
-- 🧹 可清除模式（`selectionBehavior` 控制清除是切换还是重置）
+- 🧹 可清除模式——触发器悬停显现清除按钮；`selectionBehavior` 控制再次点击是切换还是重置
 - 📍 选中项对齐定位（`position="item-aligned"`）
 - 📋 通过隐藏代理 `<select>`（`SelectBubbleSelect`）支持原生表单提交
 - 📌 `top` / `bottom` 插槽，可在浮窗内添加固定的顶部与底部内容
@@ -32,7 +32,7 @@
 
 ### 架构与对标差异
 
-SoybeanUI 基于完整 ComboBox 基座构建选择器：`SelectRoot` → `SelectTrigger`（`role="combobox"`）→ `SelectValue`（collection 标签查找）→ `SelectContentImpl`（DismissableLayer + FocusScope + typeahead + 键盘导航）→ `SelectItem`，并由 `SelectBubbleSelect` 代理原生表单提交。`scv()` 配方 `selectVariants` 声明 15 个插槽与 7 个尺寸变体。这与 reka-ui / shadcn 的 select 语义一致，数据驱动 `SelectCompact` 聚合为 SoybeanUI 的差异化增强。
+SoybeanUI 基于完整 ComboBox 基座构建选择器：`SelectRoot` → `SelectTrigger`（`role="combobox"`）→ `SelectValue`（collection 标签查找）→ `SelectContentImpl`（DismissableLayer + FocusScope + typeahead + 键盘导航）→ `SelectItem`，并由 `SelectBubbleSelect` 代理原生表单提交。`scv()` 配方 `selectVariants` 声明 16 个插槽与 7 个尺寸变体。这与 reka-ui / shadcn 的 select 语义一致，数据驱动 `SelectCompact` 聚合为 SoybeanUI 的差异化增强。
 
 | 能力                     | SoybeanUI | reka-ui `Select` | shadcn `Select` | Element Plus `el-select` |
 | :----------------------- | :-------: | :--------------: | :-------------: | :----------------------: |
@@ -73,7 +73,11 @@ SoybeanUI 基于完整 ComboBox 基座构建选择器：`SelectRoot` → `Select
 
 ### 如何让触发器显示箭头或自定义内容？
 
-使用 `trigger-icon` / `value` 插槽（及 `showArrow` 对应插槽面）；`SSelect` 会转发全部 15 个配方插槽。
+使用 `trigger-icon` / `value` 插槽（及 `showArrow` 对应插槽面）；`SSelect` 会转发全部 16 个配方插槽。
+
+### 如何从触发器清除选中值？
+
+`clearable` 默认为 `true`。有选中值时，悬停或聚焦触发器会显现 ✕ 按钮，点击后将 `modelValue` 重置为 `undefined`（多选时为 `[]`）。传入 `:clearable="false"` 可隐藏该按钮。再次点击已选项仍遵循 `selectionBehavior`。
 
 ### 如何在浮窗内添加固定的顶部或底部内容？
 

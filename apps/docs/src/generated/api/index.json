@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T13:42:27.192Z",
+  "generatedAt": "2026-08-28T08:46:09.933Z",
   "packages": {
     "ui": {
       "components": {
@@ -842,6 +842,7 @@
           "symbols": [
             "Select",
             "SelectArrow",
+            "SelectClear",
             "SelectCompact",
             "SelectContent",
             "SelectGroup",

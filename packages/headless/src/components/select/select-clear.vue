@@ -1,31 +1,18 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import Icon from '../_icon/icon.vue';
-import { useComboboxRootContext, useComboboxUi } from './context';
-import type { ComboboxClearProps } from './types';
+import { useSelectRootContext, useSelectUi } from './context';
+import type { SelectClearProps } from './types';
 
 defineOptions({
-  name: 'ComboboxClear'
+  name: 'SelectClear'
 });
 
-const props = withDefaults(defineProps<ComboboxClearProps>(), {
-  ariaLabel: '',
-  disabled: false
-});
+const props = defineProps<SelectClearProps>();
 
-const { modelValue, disabled: rootDisabled, filterSearch, resetModelValue } = useComboboxRootContext('ComboboxClear');
+const { disabled: rootDisabled, isEmptyModelValue, resetModelValue } = useSelectRootContext('SelectClear');
 
-const cls = useComboboxUi('clear');
-
-const hasValue = computed(() => {
-  const value = modelValue.value;
-
-  if (Array.isArray(value)) {
-    return value.length > 0;
-  }
-
-  return value !== undefined && value !== null;
-});
+const cls = useSelectUi('clear');
 
 const disabled = computed(() => props.disabled || rootDisabled.value || false);
 
@@ -34,16 +21,15 @@ const onClear = () => {
     return;
   }
 
-  filterSearch.value = '';
   resetModelValue();
 };
 </script>
 
 <template>
   <button
-    v-if="hasValue"
+    v-if="!isEmptyModelValue"
     type="button"
-    data-soybean-combobox-clear
+    data-soybean-select-clear
     :class="cls"
     :aria-label="ariaLabel"
     :aria-disabled="disabled || undefined"

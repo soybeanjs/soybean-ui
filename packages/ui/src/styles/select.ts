@@ -1,16 +1,31 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
 import type { VariantProps } from '@soybeanjs/cva';
+import { miniButtonIconVariants } from './button';
+import {
+  fieldAffordanceIcon,
+  fieldChrome,
+  fieldClearReveal,
+  fieldDisabled,
+  fieldSize,
+  fieldTriggerFocus
+} from './field';
 
 export const selectVariants = scv({
+  extendBase: props => ({
+    clear: miniButtonIconVariants({ size: props.size, shape: 'circle' })
+  }),
   slots: {
     trigger: [
-      `flex items-center justify-between w-full rounded-md border border-input bg-background transition-all-150`,
-      `outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30 focus:ring-3 focus:ring-offset-background focus:ring-primary/30 disabled:pointer-events-none disabled:opacity-50`,
-      `placeholder:text-muted-foreground data-[placeholder]:text-muted-foreground`
+      'group flex items-center justify-between w-full',
+      ...fieldChrome,
+      ...fieldTriggerFocus,
+      ...fieldDisabled,
+      'placeholder:text-muted-foreground data-[placeholder]:text-muted-foreground'
     ],
-    triggerIcon: `shrink-0 text-muted-foreground opacity-70`,
+    triggerIcon: fieldAffordanceIcon,
     value: 'grow truncate text-start',
+    clear: fieldClearReveal,
     positioner: '',
     popup: [
       `relative z-50 min-w-32 rounded-md border bg-popover text-popover-foreground shadow-md`,
@@ -36,7 +51,7 @@ export const selectVariants = scv({
     size: {
       xs: {
         popup: 'max-h-70 text-2xs',
-        trigger: 'gap-1 h-6 px-1.5 text-2xs',
+        trigger: fieldSize.xs,
         viewport: 'p-0.75',
         item: 'gap-1 px-1 py-1',
         groupLabel: 'p-1 text-3xs',
@@ -47,7 +62,7 @@ export const selectVariants = scv({
       },
       sm: {
         popup: 'max-h-75 text-xs',
-        trigger: 'gap-1.5 h-7 px-2 text-xs',
+        trigger: fieldSize.sm,
         viewport: 'p-0.875',
         item: 'gap-1.5 px-1.5 py-1',
         separator: '-mx-0.875 my-0.4375',
@@ -58,7 +73,7 @@ export const selectVariants = scv({
       },
       md: {
         popup: 'max-h-80 text-sm',
-        trigger: 'gap-2 h-8 px-2.5 text-sm',
+        trigger: fieldSize.md,
         viewport: 'p-1',
         item: 'gap-2 px-2 py-1.5',
         separator: '-mx-1 my-0.5',
@@ -69,7 +84,7 @@ export const selectVariants = scv({
       },
       lg: {
         popup: 'max-h-90 text-base',
-        trigger: 'gap-2.5 h-9 px-3 text-base',
+        trigger: fieldSize.lg,
         viewport: 'p-1.25',
         item: 'gap-2.5 px-2.5 py-1.5',
         separator: '-mx-1.25 my-0.625',
@@ -80,7 +95,7 @@ export const selectVariants = scv({
       },
       xl: {
         popup: 'max-h-100 text-lg',
-        trigger: 'gap-3 h-10 px-3.5 text-lg',
+        trigger: fieldSize.xl,
         viewport: 'p-1.5',
         item: 'gap-3 px-3 py-2',
         separator: '-mx-1.5 my-0.75',
@@ -91,7 +106,7 @@ export const selectVariants = scv({
       },
       '2xl': {
         popup: 'max-h-115 text-xl',
-        trigger: 'gap-3.5 h-12 px-4 text-xl',
+        trigger: fieldSize['2xl'],
         viewport: 'p-1.75',
         item: 'gap-3.5 px-3.5 py-2.5',
         separator: '-mx-1.75 my-0.875',

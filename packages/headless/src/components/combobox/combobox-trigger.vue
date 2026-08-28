@@ -56,6 +56,7 @@ const onClick = () => {
     :aria-disabled="disabled || undefined"
     :data-state="open ? 'open' : 'closed'"
     :data-disabled="disabled ? '' : undefined"
+    :data-normal="disabled ? undefined : ''"
     :disabled="disabled"
     tabindex="-1"
     @click="onClick"

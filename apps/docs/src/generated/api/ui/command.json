@@ -75,7 +75,7 @@
               {
                 "name": "CommandUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; inputRoot: ClassValue; inputControl: ClassValue; group: ClassValue; groupLabel: ClassValue; empty: ClassValue; separator: ClassValue; list: ClassValue; inputClearable: ClassValue; itemLabel: ClassValue; shortcut: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; inputRoot: ClassValue; inputControl: ClassValue; group: ClassValue; groupLabel: ClassValue; empty: ClassValue; separator: ClassValue; list: ClassValue; inputIcon: ClassValue; inputClearable: ClassValue; itemLabel: ClassValue; shortcut: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Command component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandui",

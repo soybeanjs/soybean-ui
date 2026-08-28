@@ -128,6 +128,9 @@ const messages: LocaleMessages = {
   command: {
     noResults: 'Sonuç bulunamadı.'
   },
+  select: {
+    clear: 'Temizle'
+  },
   dialog: {
     cancel: 'İptal',
     confirm: 'Onayla',

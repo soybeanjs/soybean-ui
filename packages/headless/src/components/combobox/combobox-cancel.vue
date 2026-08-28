@@ -53,6 +53,7 @@ const onClick = () => {
     :type="tag"
     :aria-disabled="disabled || undefined"
     :data-disabled="disabled ? '' : undefined"
+    :data-normal="disabled ? undefined : ''"
     :disabled="disabled"
     :tabindex="tabindex"
     @click="onClick"

@@ -237,6 +237,70 @@ describe('SSelect', () => {
       wrapper.unmount();
     });
 
+    it('clears the value from the trigger clear button', async () => {
+      const wrapper = mount(SSelect, {
+        props: {
+          items,
+          modelValue: 'banana',
+          placeholder: 'Select a fruit'
+        },
+        attachTo: document.body
+      });
+
+      const clearButton = wrapper.find('[data-soybean-select-clear]');
+      expect(clearButton.exists()).toBe(true);
+
+      await clearButton.trigger('click');
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual([undefined]);
+      wrapper.unmount();
+    });
+
+    it('clears an uncontrolled defaultValue from the trigger', async () => {
+      const wrapper = mount(SSelect, {
+        props: {
+          items,
+          defaultValue: 'apple',
+          placeholder: 'Select a fruit'
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('button').text()).toContain('Apple');
+
+      await wrapper.find('[data-soybean-select-clear]').trigger('click');
+
+      expect(wrapper.get('button').text()).toContain('Select a fruit');
+      wrapper.unmount();
+    });
+
+    it('hides the trigger clear button when no value is selected', () => {
+      const wrapper = mount(SSelect, {
+        props: {
+          items,
+          placeholder: 'Select a fruit'
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-select-clear]').exists()).toBe(false);
+      wrapper.unmount();
+    });
+
+    it('hides the trigger clear button when clearable is false', () => {
+      const wrapper = mount(SSelect, {
+        props: {
+          items,
+          modelValue: 'banana',
+          clearable: false
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-select-clear]').exists()).toBe(false);
+      wrapper.unmount();
+    });
+
     it('keeps the selection when clearable is false', async () => {
       const wrapper = mount(SSelect, {
         props: {

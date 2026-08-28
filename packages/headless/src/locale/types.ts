@@ -82,6 +82,11 @@ export interface LocaleCommandMessages {
   noResults: string;
 }
 
+export interface LocaleSelectMessages {
+  /** Default aria-label for the trigger clear button. */
+  clear: string;
+}
+
 export interface LocaleDatePlaceholderMessages {
   /**
    * Placeholder shown in the year segment when empty.
@@ -404,6 +409,7 @@ export interface LocaleMessages {
   password: LocalePasswordMessages;
   progress: LocaleProgressMessages;
   rating: LocaleRatingMessages;
+  select: LocaleSelectMessages;
   slider: LocaleSliderMessages;
   stepper: LocaleStepperMessages;
   table: LocaleTableMessages;

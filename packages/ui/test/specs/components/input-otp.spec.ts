@@ -70,6 +70,21 @@ describe('SInputOtp', () => {
       wrapper.unmount();
     });
 
+    it('applies a faded idle surface to unfilled slots', () => {
+      const wrapper = mount(SInputOtp, {
+        props: {
+          maxlength: 4,
+          placeholder: '0000',
+          'aria-label': 'Verification code'
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-input-otp-slot]').classes()).toContain('border-input/40');
+      expect(wrapper.find('[data-soybean-input-otp-placeholder]').classes()).toContain('text-muted-foreground/45');
+      wrapper.unmount();
+    });
+
     it('applies the align variant class to the native input', () => {
       const wrapper = mount(SInputOtp, {
         props: {

@@ -14,7 +14,7 @@ Displays a list of options for the user to pick from, triggered by a button. The
 - ⌨️ Full combobox interaction — pointer/keyboard open, Arrow/Home/End navigation, typeahead search, Enter/Space select, Escape close
 - 🗂 Grouping with group labels, separators, and item indicators
 - ✅ `multiple` selection with accumulation and deduplication
-- 🧹 Clearable mode (`selectionBehavior` controls whether clearing toggles or resets)
+- 🧹 Clearable mode — trigger hover-reveal clear, plus `selectionBehavior` for whether re-selecting toggles or resets
 - 📍 Item-aligned positioning (`position="item-aligned"`)
 - 📋 Native form submission via a hidden proxy `<select>` (`SelectBubbleSelect`)
 - 📌 `top` / `bottom` slots for fixed header and footer content inside the popup
@@ -32,7 +32,7 @@ Displays a list of options for the user to pick from, triggered by a button. The
 
 ### Architecture and benchmark differences
 
-SoybeanUI builds select on a full ComboBox base: `SelectRoot` → `SelectTrigger` (`role="combobox"`) → `SelectValue` (collection label lookup) → `SelectContentImpl` (DismissableLayer + FocusScope + typeahead + keyboard nav) → `SelectItem`, with `SelectBubbleSelect` proxying native form submission. The `scv()` recipe `selectVariants` declares 15 slots and 7 size variants. This mirrors reka-ui / shadcn select semantics with a data-driven `SelectCompact` aggregation as the SoybeanUI differentiator.
+SoybeanUI builds select on a full ComboBox base: `SelectRoot` → `SelectTrigger` (`role="combobox"`) → `SelectValue` (collection label lookup) → `SelectContentImpl` (DismissableLayer + FocusScope + typeahead + keyboard nav) → `SelectItem`, with `SelectBubbleSelect` proxying native form submission. The `scv()` recipe `selectVariants` declares 16 slots and 7 size variants. This mirrors reka-ui / shadcn select semantics with a data-driven `SelectCompact` aggregation as the SoybeanUI differentiator.
 
 | Capability                           | SoybeanUI | reka-ui `Select` | shadcn `Select` | Element Plus `el-select` |
 | :----------------------------------- | :-------: | :--------------: | :-------------: | :----------------------: |
@@ -73,7 +73,11 @@ The component renders a hidden native `<select>` (`SelectBubbleSelect`) mirrorin
 
 ### How do I make the trigger show an arrow or custom content?
 
-Use the `trigger-icon` / `value` slots or the `showArrow`-equivalent slot surface; all 15 recipe slots are forwarded by `SSelect`.
+Use the `trigger-icon` / `value` slots or the `showArrow`-equivalent slot surface; all 16 recipe slots are forwarded by `SSelect`.
+
+### How do I clear the selected value from the trigger?
+
+`clearable` defaults to `true`. With a value selected, hover or focus the trigger to reveal an ✕ button; clicking it resets `modelValue` to `undefined` (or `[]` when `multiple`). Pass `:clearable="false"` to hide it. Re-clicking the selected option still follows `selectionBehavior`.
 
 ### How do I add fixed header or footer content inside the popup?
 

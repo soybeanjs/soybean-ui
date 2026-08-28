@@ -1,6 +1,7 @@
 export { default as SelectRoot } from './select-root.vue';
 export { default as SelectCompact } from './select-compact.vue';
 export { default as SelectTrigger } from './select-trigger.vue';
+export { default as SelectClear } from './select-clear.vue';
 export { default as SelectPortal } from '../portal/portal.vue';
 export { default as SelectContent } from './select-content.vue';
 export { default as SelectViewport } from './select-viewport.vue';
@@ -38,6 +39,7 @@ export type {
   SelectSeparatorProps,
   SelectTriggerProps,
   SelectTriggerIconProps,
+  SelectClearProps,
   SelectValueProps,
   SelectViewportProps,
   SelectScrollUpButtonProps,

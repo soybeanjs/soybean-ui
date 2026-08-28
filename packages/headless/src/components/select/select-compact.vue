@@ -2,11 +2,13 @@
 import { computed } from 'vue';
 import { isNullish } from '../../shared';
 import { useOmitProps } from '../../composables';
+import { useLocaleMessages } from '../../locale';
 import type { MaybeArray, DefinedValue } from '../../types';
 import Icon from '../_icon/icon.vue';
 import { Portal } from '../portal';
 import { isGroupOption } from './shared';
 import SelectArrow from './select-arrow.vue';
+import SelectClear from './select-clear.vue';
 import SelectContent from './select-content.vue';
 import SelectGroupLabel from './select-group-label.vue';
 import SelectGroup from './select-group.vue';
@@ -44,6 +46,8 @@ const emit = defineEmits<SelectCompactEmits<T, M>>();
 
 defineSlots<SelectCompactSlots<T, M>>();
 
+const messages = useLocaleMessages();
+
 const forwardedProps = useOmitProps(props, [
   'items',
   'showArrow',
@@ -51,6 +55,8 @@ const forwardedProps = useOmitProps(props, [
   'triggerIconProps',
   'showTriggerIcon',
   'placeholder',
+  'clearLabel',
+  'clearProps',
   'valueProps',
   'portalProps',
   'contentProps',
@@ -95,16 +101,19 @@ const getTriggerValueSlotProps = (slotProps: {
   return slotProps as SelectCompactTriggerValueSlotProps<T, M>;
 };
 
+const isEmptyValue = (value: MaybeArray<DefinedValue> | undefined) =>
+  isNullish(value) || (Array.isArray(value) && value.length === 0);
+
 /**
  * The collection-backed label lookup only works once the popup content has mounted
  * (options are registered by `SelectItem` on mount). Before the first open this
  * leaves the trigger empty even when `defaultValue`/`modelValue` is set, so we
  * resolve the label from the data-driven `items` as a fallback.
  */
-const fallbackLabel = computed(() => {
-  const value = props.modelValue ?? props.defaultValue;
-
-  if (isNullish(value) || (Array.isArray(value) && value.length === 0)) return '';
+const resolveLabelFromItems = (value: MaybeArray<DefinedValue> | undefined) => {
+  if (isEmptyValue(value)) {
+    return '';
+  }
 
   const values = (Array.isArray(value) ? value : [value]) as DefinedValue[];
 
@@ -122,7 +131,23 @@ const fallbackLabel = computed(() => {
   };
 
   return values.map(labelOf).filter(Boolean).join(', ');
-});
+};
+
+const getDisplayedTriggerText = (slotProps: {
+  modelValue: MaybeArray<DefinedValue> | undefined;
+  selectedLabel: string[];
+  slotText: string;
+}) => {
+  if (isEmptyValue(slotProps.modelValue)) {
+    return slotProps.slotText;
+  }
+
+  if (slotProps.selectedLabel.length) {
+    return slotProps.slotText;
+  }
+
+  return resolveLabelFromItems(slotProps.modelValue) || slotProps.slotText;
+};
 
 const handleModelValueChange = (value: MaybeArray<DefinedValue> | undefined) => {
   emit('update:modelValue', value as NonNullable<SelectCompactProps<T, M>['modelValue']>);
@@ -143,10 +168,11 @@ const handleSelect = (event: SelectItemEvent<DefinedValue>) => {
       <slot name="trigger-leading" />
       <SelectValue v-slot="slotProps" v-bind="valueProps">
         <slot name="trigger-value" v-bind="getTriggerValueSlotProps(slotProps)">
-          {{ fallbackLabel || slotProps.slotText }}
+          {{ getDisplayedTriggerText(slotProps) }}
         </slot>
       </SelectValue>
       <slot name="trigger-trailing" />
+      <SelectClear v-if="clearable" v-bind="clearProps" :aria-label="clearLabel ?? messages.select.clear" />
       <SelectTriggerIcon v-if="showTriggerIcon" v-bind="triggerIconProps">
         <slot name="trigger-icon">
           <Icon icon="lucide:chevrons-up-down" />

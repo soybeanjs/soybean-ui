@@ -464,6 +464,7 @@ import {
   SegmentRoot,
   SegmentTrigger,
   SelectArrow,
+  SelectClear,
   SelectCompact,
   SelectContent,
   SelectGroup,
@@ -1727,6 +1728,7 @@ export const Select = {
   Root: SelectRoot,
   Compact: SelectCompact,
   Trigger: SelectTrigger,
+  Clear: SelectClear,
   Portal: SelectPortal,
   Content: SelectContent,
   Viewport: SelectViewport,
@@ -1745,6 +1747,7 @@ export const Select = {
   Root: typeof SelectRoot;
   Compact: typeof SelectCompact;
   Trigger: typeof SelectTrigger;
+  Clear: typeof SelectClear;
   Portal: typeof SelectPortal;
   Content: typeof SelectContent;
   Viewport: typeof SelectViewport;

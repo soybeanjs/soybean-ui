@@ -37,6 +37,16 @@ describe('SColorField', () => {
       expect(wrapper.find('input[name="accent"]').exists()).toBe(true);
       wrapper.unmount();
     });
+
+    it('applies the size variant class to the root', () => {
+      const wrapper = mount(SColorField, {
+        props: { size: 'lg' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-color-field-root]').classes()).toContain('h-9');
+      wrapper.unmount();
+    });
   });
 
   describe('interaction', () => {

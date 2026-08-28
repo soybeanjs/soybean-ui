@@ -1,38 +1,35 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
+import { fieldChrome, fieldDisabled, fieldSize } from './field';
 
 export const colorFieldVariants = scv({
   slots: {
-    root: [
-      'group flex items-center min-w-0 rounded-md border border-input bg-background transition-all-150',
-      'outline-none focus-within:ring-3 focus-within:ring-offset-background focus-within:ring-primary/30',
-      'data-[disabled]:opacity-60 data-[readonly]:bg-muted/40'
-    ],
+    root: ['group flex items-center min-w-0', ...fieldChrome, ...fieldDisabled, 'data-[readonly]:bg-muted/40'],
     input: [
       'flex-1 min-w-0 bg-transparent outline-none',
       'placeholder:text-muted-foreground',
-      'disabled:cursor-not-allowed disabled:opacity-50'
+      'disabled:cursor-not-allowed'
     ]
   },
   variants: {
     size: {
       xs: {
-        root: 'h-6 px-1.5 text-2xs gap-1'
+        root: fieldSize.xs
       },
       sm: {
-        root: 'h-7 px-2 text-xs gap-1.5'
+        root: fieldSize.sm
       },
       md: {
-        root: 'h-8 px-2.5 text-sm gap-2'
+        root: fieldSize.md
       },
       lg: {
-        root: 'h-9 px-3 text-base gap-2.5'
+        root: fieldSize.lg
       },
       xl: {
-        root: 'h-10 px-3.5 text-lg gap-3'
+        root: fieldSize.xl
       },
       '2xl': {
-        root: 'h-12 px-4 text-xl gap-3.5'
+        root: fieldSize['2xl']
       }
     }
   },

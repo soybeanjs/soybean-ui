@@ -1,28 +1,33 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
+import { miniButtonIconVariants } from './button';
+import {
+  fieldAffordanceIcon,
+  fieldChrome,
+  fieldClearReveal,
+  fieldDisabled,
+  fieldSize,
+  fieldTriggerFocus
+} from './field';
 
 export const comboboxVariants = scv({
+  extendBase: props => ({
+    clear: miniButtonIconVariants({ size: props.size, shape: 'circle' }),
+    cancel: miniButtonIconVariants({ size: props.size, shape: 'circle' })
+  }),
   slots: {
     anchor: '',
     trigger: [
-      'flex w-full items-center justify-between rounded-md border border-input bg-background transition-all-150',
-      'outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30 focus:ring-3 focus:ring-offset-background focus:ring-primary/30 disabled:pointer-events-none disabled:opacity-50',
+      'group flex w-full items-center justify-between',
+      ...fieldChrome,
+      ...fieldTriggerFocus,
+      ...fieldDisabled,
       'data-[placeholder]:text-muted-foreground'
     ],
-    triggerIcon: 'shrink-0 text-muted-foreground opacity-70',
+    triggerIcon: fieldAffordanceIcon,
     value: ['min-w-0 flex-1 truncate text-left', 'data-[placeholder]:text-muted-foreground'],
-    clear: [
-      'shrink-0 rounded-sm bg-transparent text-muted-foreground opacity-70',
-      'outline-none transition-colors hover:bg-accent hover:text-accent-foreground',
-      'focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30 focus:ring-3 focus:ring-offset-background focus:ring-primary/30',
-      'disabled:pointer-events-none disabled:opacity-50'
-    ],
-    cancel: [
-      'shrink-0 rounded-sm bg-transparent text-muted-foreground opacity-70',
-      'outline-none transition-colors hover:bg-accent hover:text-accent-foreground',
-      'focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30 focus:ring-3 focus:ring-offset-background focus:ring-primary/30',
-      'disabled:cursor-not-allowed disabled:opacity-50'
-    ],
+    clear: fieldClearReveal,
+    cancel: 'shrink-0',
     positioner: '',
     popup: [
       'relative z-50 min-w-32 w-[--soybean-combobox-trigger-width] rounded-md border bg-popover text-popover-foreground shadow-md',
@@ -33,7 +38,7 @@ export const comboboxVariants = scv({
     arrow: 'fill-popover',
     viewport: 'overflow-x-hidden overflow-y-auto',
     inputRoot: 'group flex items-center border-b',
-    inputControl: `flex w-full rounded-md bg-transparent outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50`,
+    inputControl: `flex w-full rounded-md bg-transparent outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed`,
     group: 'overflow-hidden text-foreground',
     groupLabel: 'font-medium text-muted-foreground',
     item: [
@@ -47,11 +52,8 @@ export const comboboxVariants = scv({
   variants: {
     size: {
       xs: {
-        trigger: 'h-6 gap-1 px-1.5 text-2xs',
-        triggerIcon: 'text-3xs',
+        trigger: fieldSize.xs,
         popup: 'text-2xs',
-        clear: 'size-3.5 text-2xs',
-        cancel: 'size-3.5 text-2xs',
         inputRoot: 'gap-1 px-1.5 py-0.5',
         inputControl: 'h-6',
         viewport: 'max-h-70 p-0.75',
@@ -60,11 +62,8 @@ export const comboboxVariants = scv({
         separator: '-mx-0.75 my-0.375'
       },
       sm: {
-        trigger: 'h-7 gap-1.5 px-2 text-xs',
-        triggerIcon: 'text-2xs',
+        trigger: fieldSize.sm,
         popup: 'text-xs',
-        clear: 'size-4 text-xs',
-        cancel: 'size-4 text-xs',
         inputRoot: 'gap-1.5 px-2 py-0.625',
         inputControl: 'h-7',
         viewport: 'max-h-75 p-0.875',
@@ -73,11 +72,8 @@ export const comboboxVariants = scv({
         separator: '-mx-0.875 my-0.4375'
       },
       md: {
-        trigger: 'h-8 gap-2 px-2.5 text-sm',
-        triggerIcon: 'text-xs',
+        trigger: fieldSize.md,
         popup: 'text-sm',
-        clear: 'size-4.5 text-sm',
-        cancel: 'size-4.5 text-sm',
         inputRoot: 'gap-2 px-2.5 py-0.75',
         inputControl: 'h-8',
         viewport: 'max-h-80 p-1',
@@ -86,11 +82,8 @@ export const comboboxVariants = scv({
         separator: '-mx-1 my-0.5'
       },
       lg: {
-        trigger: 'h-9 gap-2.5 px-3 text-base',
-        triggerIcon: 'text-sm',
+        trigger: fieldSize.lg,
         popup: 'text-base',
-        clear: 'size-5 text-base',
-        cancel: 'size-5 text-base',
         inputRoot: 'gap-2.5 px-3 py-0.875',
         inputControl: 'h-9',
         viewport: 'max-h-90 p-1.25',
@@ -99,11 +92,8 @@ export const comboboxVariants = scv({
         separator: '-mx-1.25 my-0.625'
       },
       xl: {
-        trigger: 'h-10 gap-3 px-3.5 text-lg',
-        triggerIcon: 'text-base',
+        trigger: fieldSize.xl,
         popup: 'text-lg',
-        clear: 'size-6 text-xl',
-        cancel: 'size-6 text-xl',
         inputRoot: 'gap-3 px-3.5 py-1',
         inputControl: 'h-10',
         viewport: 'max-h-100 p-1.5',
@@ -112,11 +102,8 @@ export const comboboxVariants = scv({
         separator: '-mx-1.5 my-0.75'
       },
       '2xl': {
-        trigger: 'h-12 gap-3.5 px-4 text-xl',
-        triggerIcon: 'text-lg',
+        trigger: fieldSize['2xl'],
         popup: 'text-xl',
-        clear: 'p-1.125',
-        cancel: 'p-1.75',
         inputRoot: 'gap-3.5 px-4 py-1.25',
         inputControl: 'h-12',
         viewport: 'max-h-115 p-1.75',

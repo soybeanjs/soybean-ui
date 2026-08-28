@@ -3,9 +3,7 @@ import { computed } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { InputNumberCompact, provideInputNumberUi } from '@soybeanjs/headless/input-number';
 import { keysOf } from '@soybeanjs/utils';
-import { buttonIconVariants } from '@/styles/button';
 import { inputNumberVariants } from '@/styles/input-number';
-import { miniSizeMap } from '@/theme';
 import type { InputNumberProps, InputNumberEmits, InputNumberSlots } from './types';
 
 defineOptions({
@@ -22,23 +20,16 @@ const slots = defineSlots<InputNumberSlots>();
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const miniSize = miniSizeMap[props.size ?? 'md'];
-
-  return inputNumberVariants(
+const ui = computed(() =>
+  inputNumberVariants(
     {
       size: props.size,
       center: props.center
     },
-    {
-      decrement: buttonIconVariants({ size: miniSize }),
-      increment: buttonIconVariants({ size: miniSize }),
-      clear: buttonIconVariants({ size: miniSize, shape: 'circle' })
-    },
     props.ui,
     { root: props.class }
-  );
-});
+  )
+);
 
 provideInputNumberUi(ui);
 </script>

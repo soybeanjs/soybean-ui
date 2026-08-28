@@ -1,19 +1,22 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
+import { miniButtonIconVariants } from './button';
+import { fieldAffordanceIcon, fieldClearReveal } from './field';
 import { kbdVariants } from './kbd';
 
 export const commandVariants = scv({
   extendBase: props => ({
     shortcut: kbdVariants({
       size: props.size
-    })
+    }),
+    inputClearable: miniButtonIconVariants({ size: props.size, shape: 'circle' })
   }),
   slots: {
     root: `flex w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground`,
     inputRoot: 'group flex items-center border-b',
-    inputControl: `flex w-full rounded-md bg-transparent outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50`,
-    inputIcon: `shrink-0 opacity-50`,
-    inputClearable: 'hidden group-hover:block size-1em cursor-pointer opacity-50 hover:opacity-100',
+    inputControl: `flex w-full rounded-md bg-transparent outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed`,
+    inputIcon: fieldAffordanceIcon,
+    inputClearable: fieldClearReveal,
     empty: `text-center`,
     list: `overflow-y-auto overflow-x-hidden`,
     group: `overflow-hidden text-foreground`,
@@ -31,9 +34,8 @@ export const commandVariants = scv({
     size: {
       xs: {
         root: 'text-2xs',
-        inputRoot: 'px-1.5 py-0.5',
+        inputRoot: 'gap-1 px-1.5 py-0.5',
         inputControl: 'h-6',
-        inputIcon: 'me-1.5',
         empty: 'py-3',
         list: 'max-h-70 p-0.75',
         groupLabel: 'gap-1 p-1 text-3xs',
@@ -42,9 +44,8 @@ export const commandVariants = scv({
       },
       sm: {
         root: 'text-xs',
-        inputRoot: 'px-2 py-0.625',
+        inputRoot: 'gap-1.5 px-2 py-0.625',
         inputControl: 'h-7',
-        inputIcon: 'me-1.75',
         empty: 'py-3.5',
         list: 'max-h-75 p-0.875',
         groupLabel: 'gap-1.25 p-1.25 text-2xs',
@@ -53,9 +54,8 @@ export const commandVariants = scv({
       },
       md: {
         root: 'text-sm',
-        inputRoot: 'px-2.5 py-0.75',
+        inputRoot: 'gap-2 px-2.5 py-0.75',
         inputControl: 'h-8',
-        inputIcon: 'me-2',
         empty: 'py-4 text-sm',
         list: 'max-h-80 p-1',
         groupLabel: 'gap-1.75 p-1.75 text-xs',
@@ -64,9 +64,8 @@ export const commandVariants = scv({
       },
       lg: {
         root: 'text-base',
-        inputRoot: 'px-3.5 py-0.875',
+        inputRoot: 'gap-2.5 px-3 py-0.875',
         inputControl: 'h-9',
-        inputIcon: 'me-2.5',
         empty: 'py-4.5',
         list: 'max-h-90 p-1.25',
         groupLabel: 'gap-2 p-2 text-sm',
@@ -75,9 +74,8 @@ export const commandVariants = scv({
       },
       xl: {
         root: 'text-lg',
-        inputRoot: 'px-4 py-1',
+        inputRoot: 'gap-3 px-3.5 py-1',
         inputControl: 'h-10',
-        inputIcon: 'me-3',
         empty: 'py-5',
         list: 'max-h-100 p-1.5',
         groupLabel: 'gap-2.5 p-2.5 text-base',
@@ -86,9 +84,8 @@ export const commandVariants = scv({
       },
       '2xl': {
         root: 'text-xl',
-        inputRoot: 'px-4.5 py-1.25',
+        inputRoot: 'gap-3.5 px-4 py-1.25',
         inputControl: 'h-12',
-        inputIcon: 'me-3.5',
         empty: 'py-6',
         list: 'max-h-115 p-1.75',
         groupLabel: 'gap-3 p-3 text-lg',

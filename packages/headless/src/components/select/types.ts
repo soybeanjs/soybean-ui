@@ -222,6 +222,20 @@ export type SelectItemEmits<T extends DefinedValue = DefinedValue> = {
   select: [event: SelectItemEvent<T>];
 };
 
+/**
+ * Properties for the SelectClear component.
+ */
+export interface SelectClearProps extends BaseProps {
+  /**
+   * Aria label for the clear button.
+   */
+  ariaLabel?: string;
+  /**
+   * Whether the clear button is disabled.
+   */
+  disabled?: boolean;
+}
+
 // SelectItemText
 /**
  * Properties for the SelectItemText component.
@@ -318,6 +332,14 @@ export interface SelectCompactProps<
    * @default true
    */
   showTriggerIcon?: boolean;
+  /**
+   * Clear label.
+   */
+  clearLabel?: string;
+  /**
+   * Properties forwarded to the clear element.
+   */
+  clearProps?: SelectClearProps;
   /**
    * Placeholder.
    */
@@ -607,6 +629,10 @@ export interface SelectRootContextParams extends PropsToContext<
    * Whether the model value is empty.
    */
   isEmptyModelValue: ComputedRef<boolean>;
+  /**
+   * Resets the model value to empty.
+   */
+  resetModelValue: () => void;
 }
 
 /**
@@ -674,6 +700,7 @@ export type SelectUiSlot =
   | 'trigger'
   | 'triggerIcon'
   | 'value'
+  | 'clear'
   | 'positioner'
   | 'popup'
   | 'viewport'

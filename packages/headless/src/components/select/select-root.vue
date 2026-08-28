@@ -20,12 +20,12 @@ const props = withDefaults(defineProps<SelectRootProps<T, M>>(), {
 
 const emit = defineEmits<SelectRootEmits<T, M>>();
 
-const { modelValue, isMultiple, onModelValueChange, isEmptyModelValue } = useSelection<boolean, DefinedValue>(
-  props,
-  value => {
-    emit('update:modelValue', value as NonNullable<SelectRootProps<T, M>['modelValue']>);
-  }
-);
+const { modelValue, isMultiple, onModelValueChange, isEmptyModelValue, resetModelValue } = useSelection<
+  boolean,
+  DefinedValue
+>(props, value => {
+  emit('update:modelValue', value as NonNullable<SelectRootProps<T, M>['modelValue']>);
+});
 
 const open = useControllableState(
   () => props.open,
@@ -41,7 +41,8 @@ const { dir, triggerElement, options, nativeSelectKey } = provideSelectRootConte
   modelValue,
   onModelValueChange,
   isMultiple,
-  isEmptyModelValue
+  isEmptyModelValue,
+  resetModelValue
 });
 
 provideCollectionContext();

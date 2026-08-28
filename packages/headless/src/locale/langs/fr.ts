@@ -128,6 +128,9 @@ const messages: LocaleMessages = {
   command: {
     noResults: 'Aucun résultat trouvé.'
   },
+  select: {
+    clear: 'Effacer'
+  },
   dialog: {
     cancel: 'Annuler',
     confirm: 'Confirmer',

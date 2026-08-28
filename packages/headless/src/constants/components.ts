@@ -469,6 +469,7 @@ export const components = {
     'SelectRoot',
     'SelectCompact',
     'SelectTrigger',
+    'SelectClear',
     'SelectPortal',
     'SelectContent',
     'SelectViewport',

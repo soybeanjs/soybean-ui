@@ -1,12 +1,14 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
+import { fieldChrome, fieldDisabled, fieldSize } from './field';
 
 export const dateFieldVariants = scv({
   slots: {
     root: [
-      'group inline-flex items-center w-fit lt-md:max-w-auto rounded-md border border-input bg-background transition-all-150',
-      'outline-none focus-within:ring-3 focus-within:ring-offset-background focus-within:ring-primary/30',
-      'data-[disabled]:opacity-50 data-[readonly]:bg-muted/40',
+      'group inline-flex items-center w-fit lt-md:max-w-auto',
+      ...fieldChrome,
+      ...fieldDisabled,
+      'data-[readonly]:bg-muted/40',
       'data-[invalid]:border-destructive data-[invalid]:ring-3 data-[invalid]:ring-destructive/20'
     ],
     input: [
@@ -22,27 +24,27 @@ export const dateFieldVariants = scv({
   variants: {
     size: {
       xs: {
-        root: 'gap-0.5 h-6 px-1.5 text-2xs',
+        root: fieldSize.xs,
         input: 'min-w-4.5 p-0.5 data-[segment=timeZoneName]:px-0.5'
       },
       sm: {
-        root: 'gap-0.75 h-7 px-2 text-xs',
+        root: fieldSize.sm,
         input: 'min-w-5 p-0.5 data-[segment=timeZoneName]:px-0.75'
       },
       md: {
-        root: 'gap-1 h-8 px-2.5 text-sm',
+        root: fieldSize.md,
         input: 'min-w-5.5 p-0.625 data-[segment=timeZoneName]:px-1'
       },
       lg: {
-        root: 'gap-1.25 h-9 px-3 text-base',
+        root: fieldSize.lg,
         input: 'min-w-6 p-0.75 data-[segment=timeZoneName]:px-1.25'
       },
       xl: {
-        root: 'gap-1.5 h-10 px-3.5 text-lg',
+        root: fieldSize.xl,
         input: 'min-w-6.5 p-0.875 data-[segment=timeZoneName]:px-1.5'
       },
       '2xl': {
-        root: 'gap-2 h-12 px-4 text-xl',
+        root: fieldSize['2xl'],
         input: 'min-w-8 p-1 data-[segment=timeZoneName]:px-2'
       }
     }

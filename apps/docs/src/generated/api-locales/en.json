@@ -7546,6 +7546,13 @@
         }
       },
       "packages_headless_src_components_select_types": {
+        "selectclearprops": {
+          "members": {
+            "arialabel": "Aria label for the clear button.",
+            "disabled": "Whether the clear button is disabled."
+          },
+          "props": "Properties for the SelectClear component."
+        },
         "selectcompactemits": {
           "callables": {
             "closeautofocus": "Emitted when close auto focus occurs.",
@@ -7564,6 +7571,8 @@
             "arrowprops": "Properties forwarded to the arrow element.",
             "autocomplete": "Native html input `autocomplete` attribute.",
             "clearable": "Whether selected item can be cleared when `multiple` is false.",
+            "clearlabel": "Clear label.",
+            "clearprops": "Properties forwarded to the clear element.",
             "contentprops": "Properties forwarded to the content element.",
             "defaultopen": "The open state of the select when it is initially rendered. Use when you do not need to control its open state.",
             "defaultvalue": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
@@ -9816,6 +9825,7 @@
             "password": "",
             "progress": "",
             "rating": "",
+            "select": "",
             "slider": "",
             "stepper": "",
             "table": "",
@@ -13246,6 +13256,8 @@
             "autocomplete": "Native html input `autocomplete` attribute.",
             "class": "the class of select trigger",
             "clearable": "Whether selected item can be cleared when `multiple` is false.",
+            "clearlabel": "Clear label.",
+            "clearprops": "Properties forwarded to the clear element.",
             "contentprops": "Properties forwarded to the content element.",
             "defaultopen": "The open state of the select when it is initially rendered. Use when you do not need to control its open state.",
             "defaultvalue": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",

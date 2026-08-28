@@ -37,6 +37,7 @@ const hasValue = computed(() => {
     data-soybean-cascader-clear
     :class="cls"
     :aria-label="ariaLabel"
+    data-normal=""
     tabindex="-1"
     @click.prevent.stop="clearValue"
     @pointerdown.prevent.stop

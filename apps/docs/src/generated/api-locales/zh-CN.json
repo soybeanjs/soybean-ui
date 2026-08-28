@@ -7546,6 +7546,13 @@
         }
       },
       "packages_headless_src_components_select_types": {
+        "selectclearprops": {
+          "members": {
+            "arialabel": "“清除”按钮的 ARIA 标签。",
+            "disabled": "“清除”按钮是否被禁用。"
+          },
+          "props": "SelectClear 组件的属性。"
+        },
         "selectcompactemits": {
           "callables": {
             "closeautofocus": "关闭自动对焦时发出。",
@@ -7564,6 +7571,8 @@
             "arrowprops": "转发到箭头元素的属性。",
             "autocomplete": "本地 html 输入的 \"自动完成 \"属性。",
             "clearable": "当 `multiple` 为 false 时，所选项目是否可以清除。",
+            "clearlabel": "标签清晰。",
+            "clearprops": "转发给 clear 元素的属性。",
             "contentprops": "转发到内容元素的属性。",
             "defaultopen": "初始呈现时选择项的打开状态。在不需要控制其打开状态时使用。",
             "defaultvalue": "所选项目的默认值。\n\n在需要设置项目的初始状态时使用。",
@@ -9816,6 +9825,7 @@
             "password": "",
             "progress": "",
             "rating": "",
+            "select": "",
             "slider": "",
             "stepper": "",
             "table": "",
@@ -13246,6 +13256,8 @@
             "autocomplete": "原生 HTML 输入字段的 `autocomplete` 属性。",
             "class": "select 控件的触发类",
             "clearable": "当 `multiple` 为 false 时，是否可以清除所选项目。",
+            "clearlabel": "标签清晰。",
+            "clearprops": "转发给 clear 元素的属性。",
             "contentprops": "转发至内容元素的属性。",
             "defaultopen": "下拉菜单在初始渲染时的展开状态。当您无需控制其展开状态时使用。",
             "defaultvalue": "所选项的默认值。\n\n当需要设置项的初始状态时，请使用此选项。",

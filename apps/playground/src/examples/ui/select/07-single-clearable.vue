@@ -11,5 +11,5 @@ const items: SelectOptionData[] = fruits.map(fruit => ({
 </script>
 
 <template>
-  <SSelect :items="items" placeholder="Please select a fruit" class="w-60 lt-md:w-auto" />
+  <SSelect :items="items" default-value="apple" placeholder="Please select a fruit" class="w-60 lt-md:w-auto" />
 </template>

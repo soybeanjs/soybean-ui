@@ -103,6 +103,7 @@ export type CommandUiSlot =
   | 'list'
   | 'inputRoot'
   | 'inputControl'
+  | 'inputIcon'
   | 'inputClearable'
   | 'itemLabel'
   | 'shortcut'

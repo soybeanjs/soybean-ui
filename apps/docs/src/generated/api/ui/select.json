@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "SelectProps",
         "type": "Interface SelectProps<T, M>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<SelectUi>; size?: ThemeSize; items: SelectOptionData<T>[]; showArrow?: boolean; triggerProps?: SelectTriggerProps; triggerIconProps?: SelectTriggerIconProps; showTriggerIcon?: boolean; placeholder?: string; valueProps?: SelectValueProps; portalProps?: SelectPortalProps; contentProps?: SelectContentProps; placement?: import(\"@/index\").Placement; popupProps?: SelectPopupProps; viewportProps?: SelectViewportProps; scrollDownButtonProps?: SelectScrollDownButtonProps; scrollUpButtonProps?: SelectScrollUpButtonProps; groupProps?: SelectGroupProps; groupLabelProps?: SelectGroupLabelProps; itemProps?: SelectItemProps; itemTextProps?: SelectItemTextProps; itemIndicatorProps?: SelectItemIndicatorProps; separatorProps?: SelectSeparatorProps; arrowProps?: PopperArrowProps; open?: boolean; defaultOpen?: boolean; nullableValue?: string; dir?: Direction; autocomplete?: string; disabled?: boolean; modelValue?: (M extends true ? T[] : T); defaultValue?: (M extends true ? T[] : T); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<SelectUi>; size?: ThemeSize; items: SelectOptionData<T>[]; showArrow?: boolean; triggerProps?: SelectTriggerProps; triggerIconProps?: SelectTriggerIconProps; showTriggerIcon?: boolean; clearLabel?: string; clearProps?: SelectClearProps; placeholder?: string; valueProps?: SelectValueProps; portalProps?: SelectPortalProps; contentProps?: SelectContentProps; placement?: import(\"@/index\").Placement; popupProps?: SelectPopupProps; viewportProps?: SelectViewportProps; scrollDownButtonProps?: SelectScrollDownButtonProps; scrollUpButtonProps?: SelectScrollUpButtonProps; groupProps?: SelectGroupProps; groupLabelProps?: SelectGroupLabelProps; itemProps?: SelectItemProps; itemTextProps?: SelectItemTextProps; itemIndicatorProps?: SelectItemIndicatorProps; separatorProps?: SelectSeparatorProps; arrowProps?: PopperArrowProps; open?: boolean; defaultOpen?: boolean; nullableValue?: string; dir?: Direction; autocomplete?: string; disabled?: boolean; modelValue?: (M extends true ? T[] : T); defaultValue?: (M extends true ? T[] : T); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
         "description": "Properties for the Select component.",
         "descriptionKey": "api.generated.packages_ui_src_components_select_types.selectprops.props",
         "sourcePath": "packages/ui/src/components/select/types.ts",
@@ -50,7 +50,7 @@
               {
                 "name": "SelectUi",
                 "kind": "typeAlias",
-                "type": "{ item: ClassValue; trigger: ClassValue; triggerIcon: ClassValue; value: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; viewport: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIndicator: ClassValue; separator: ClassValue; itemText: ClassValue; scrollUpButton: ClassValue; scrollDownButton: ClassValue; }",
+                "type": "{ item: ClassValue; trigger: ClassValue; triggerIcon: ClassValue; clear: ClassValue; value: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; viewport: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIndicator: ClassValue; separator: ClassValue; itemText: ClassValue; scrollUpButton: ClassValue; scrollDownButton: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Select component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectui",
@@ -214,6 +214,65 @@
             "inheritedFrom": "showTriggerIcon",
             "sourcePath": "packages/headless/src/components/select/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "clearLabel",
+            "type": "string",
+            "required": false,
+            "description": "Clear label.",
+            "descriptionKey": "api.generated.packages_ui_src_components_select_types.selectprops.members.clearlabel",
+            "default": null,
+            "inheritedFrom": "clearLabel",
+            "sourcePath": "packages/headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "clearProps",
+            "type": "SelectClearProps",
+            "required": false,
+            "description": "Properties forwarded to the clear element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_select_types.selectprops.members.clearprops",
+            "default": null,
+            "inheritedFrom": "clearProps",
+            "sourcePath": "packages/headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectClearProps",
+                "kind": "interface",
+                "type": "SelectClearProps",
+                "resolvedType": "{ ariaLabel?: string; disabled?: boolean }",
+                "description": "Properties for the SelectClear component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectclearprops",
+                "sourcePath": "packages/headless/src/components/select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "ariaLabel",
+                    "type": "string",
+                    "required": false,
+                    "description": "Aria label for the clear button.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectclearprops.members.arialabel",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/select/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the clear button is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectclearprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/select/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "placeholder",
@@ -1636,12 +1695,50 @@
       }
     },
     "SelectArrow": {},
+    "SelectClear": {
+      "props": {
+        "kind": "props",
+        "name": "SelectClearProps",
+        "type": "Interface SelectClearProps",
+        "resolvedType": "{ ariaLabel?: string; disabled?: boolean }",
+        "description": "Properties for the SelectClear component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectclearprops.props",
+        "sourcePath": "packages/headless/src/components/select/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "ariaLabel",
+            "type": "string",
+            "required": false,
+            "description": "Aria label for the clear button.",
+            "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectclearprops.members.arialabel",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the clear button is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectclearprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/select/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "SelectCompact": {
       "props": {
         "kind": "props",
         "name": "SelectCompactProps",
         "type": "Interface SelectCompactProps<T, M>",
-        "resolvedType": "{ items: SelectOptionData<T>[]; showArrow?: boolean; triggerProps?: SelectTriggerProps; triggerIconProps?: SelectTriggerIconProps; showTriggerIcon?: boolean; placeholder?: string; valueProps?: SelectValueProps; portalProps?: SelectPortalProps; contentProps?: SelectContentProps; placement?: import(\"@/index\").Placement; popupProps?: SelectPopupProps; viewportProps?: SelectViewportProps; scrollDownButtonProps?: SelectScrollDownButtonProps; scrollUpButtonProps?: SelectScrollUpButtonProps; groupProps?: SelectGroupProps; groupLabelProps?: SelectGroupLabelProps; itemProps?: SelectItemProps; itemTextProps?: SelectItemTextProps; itemIndicatorProps?: SelectItemIndicatorProps; separatorProps?: SelectSeparatorProps; arrowProps?: PopperArrowProps; open?: boolean; defaultOpen?: boolean; nullableValue?: string; dir?: Direction; autocomplete?: string; disabled?: boolean; modelValue?: (M extends true ? T[] : T); defaultValue?: (M extends true ? T[] : T); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
+        "resolvedType": "{ items: SelectOptionData<T>[]; showArrow?: boolean; triggerProps?: SelectTriggerProps; triggerIconProps?: SelectTriggerIconProps; showTriggerIcon?: boolean; clearLabel?: string; clearProps?: SelectClearProps; placeholder?: string; valueProps?: SelectValueProps; portalProps?: SelectPortalProps; contentProps?: SelectContentProps; placement?: import(\"@/index\").Placement; popupProps?: SelectPopupProps; viewportProps?: SelectViewportProps; scrollDownButtonProps?: SelectScrollDownButtonProps; scrollUpButtonProps?: SelectScrollUpButtonProps; groupProps?: SelectGroupProps; groupLabelProps?: SelectGroupLabelProps; itemProps?: SelectItemProps; itemTextProps?: SelectItemTextProps; itemIndicatorProps?: SelectItemIndicatorProps; separatorProps?: SelectSeparatorProps; arrowProps?: PopperArrowProps; open?: boolean; defaultOpen?: boolean; nullableValue?: string; dir?: Direction; autocomplete?: string; disabled?: boolean; modelValue?: (M extends true ? T[] : T); defaultValue?: (M extends true ? T[] : T); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
         "description": "Properties for the SelectCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectcompactprops.props",
         "sourcePath": "packages/headless/src/components/select/types.ts",
@@ -1774,6 +1871,65 @@
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/select/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "clearLabel",
+            "type": "string",
+            "required": false,
+            "description": "Clear label.",
+            "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectcompactprops.members.clearlabel",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "clearProps",
+            "type": "SelectClearProps",
+            "required": false,
+            "description": "Properties forwarded to the clear element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectcompactprops.members.clearprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectClearProps",
+                "kind": "interface",
+                "type": "SelectClearProps",
+                "resolvedType": "{ ariaLabel?: string; disabled?: boolean }",
+                "description": "Properties for the SelectClear component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectclearprops",
+                "sourcePath": "packages/headless/src/components/select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "ariaLabel",
+                    "type": "string",
+                    "required": false,
+                    "description": "Aria label for the clear button.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectclearprops.members.arialabel",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/select/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the clear button is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_select_types.selectclearprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/select/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "placeholder",

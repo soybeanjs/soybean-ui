@@ -4,6 +4,7 @@ import { defu } from 'defu';
 import { useFuse, useControllableState, useOmitProps } from '../../composables';
 import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
+import Button from '../button/button.vue';
 import Kbd from '../kbd/kbd.vue';
 import { ListboxContent, ListboxFilter, ListboxGroup, ListboxGroupLabel, ListboxItem, ListboxRoot } from '../listbox';
 import SeparatorRoot from '../separator/separator-root.vue';
@@ -105,11 +106,13 @@ const getItemKey = (item: CommandOptionData<T>) => {
     <ListboxFilter v-bind="inputProps" v-model="searchTerm" autofocus>
       <template #leading="{ clear }">
         <slot name="input-leading" :clear="clear">
-          <Icon icon="lucide:search" />
+          <Icon icon="lucide:search" :class="ui.inputIcon" />
         </slot>
       </template>
       <template #trailing="{ clear }">
-        <Icon v-if="clearable" icon="lucide:x" :class="ui.inputClearable" @click="clear" />
+        <Button v-if="clearable" :class="ui.inputClearable" :aria-label="messages.input.clear" @click="clear">
+          <Icon icon="lucide:x" :aria-hidden="true" />
+        </Button>
         <slot name="input-trailing" :clear="clear" />
       </template>
     </ListboxFilter>

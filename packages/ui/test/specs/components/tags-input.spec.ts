@@ -113,6 +113,14 @@ describe('STagsInput', () => {
       wrapper.unmount();
     });
 
+    it('applies the size variant class to the root', () => {
+      const wrapper = mountCompactTagsInput({ size: 'lg' });
+
+      expect(wrapper.find('[data-soybean-tags-input-root]').classes()).toContain('min-h-9');
+
+      wrapper.unmount();
+    });
+
     it('forwards itemProps, itemTextProps and itemDeleteProps to the sub-parts', () => {
       const wrapper = mountCompactTagsInput({
         itemProps: { class: 'custom-item' },

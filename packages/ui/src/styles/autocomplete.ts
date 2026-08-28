@@ -1,24 +1,29 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
+import { miniButtonIconVariants } from './button';
+import {
+  fieldAffordanceIcon,
+  fieldChrome,
+  fieldClearReveal,
+  fieldDisabled,
+  fieldNestedAction,
+  fieldSize
+} from './field';
 
 export const autocompleteVariants = scv({
+  extendBase: props => ({
+    trigger: miniButtonIconVariants({ size: props.size }),
+    cancel: miniButtonIconVariants({ size: props.size, shape: 'circle' })
+  }),
   slots: {
-    root: 'flex w-full flex-col',
-    anchor: [
-      'group flex w-full items-center rounded-md border border-input bg-background text-foreground shadow-xs transition-all-150',
-      'outline-none focus-within:ring-3 focus-within:ring-offset-background focus-within:ring-primary/30',
-      'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50'
-    ],
-    inputRoot: 'flex min-w-0 grow items-center gap-2 bg-transparent',
-    inputControl: 'min-w-0 grow border-0 bg-transparent px-0 outline-none placeholder:text-muted-foreground',
-    inputIcon: 'shrink-0 text-muted-foreground',
-    inputClearable: [
-      'flex shrink-0 items-center justify-center rounded-sm text-muted-foreground opacity-70 outline-none transition-opacity',
-      'hover:opacity-100 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-1',
-      'disabled:cursor-not-allowed disabled:opacity-50'
-    ],
-    trigger: 'flex shrink-0 items-center justify-center text-muted-foreground outline-none disabled:cursor-not-allowed',
-    triggerIcon: 'size-1em',
+    root: ['flex w-full flex-col', ...fieldDisabled],
+    anchor: ['group flex w-full items-center', ...fieldChrome],
+    inputRoot: 'flex min-w-0 grow items-center bg-transparent',
+    inputControl:
+      'min-w-0 grow h-full border-0 bg-transparent px-0 outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed',
+    trigger: ['shrink-0', fieldNestedAction],
+    triggerIcon: fieldAffordanceIcon,
+    cancel: fieldClearReveal,
     popup: [
       'relative z-50 min-w-[--soybean-popper-anchor-width] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md',
       'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
@@ -33,15 +38,13 @@ export const autocompleteVariants = scv({
       'relative flex w-full items-center rounded-sm outline-none select-none',
       'data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50'
     ],
-    itemIcon: 'shrink-0 text-muted-foreground',
-    itemText: 'grow truncate text-start',
     itemIndicator: 'ms-auto shrink-0 text-muted-foreground',
     separator: '-mx-1 my-1 h-px bg-border'
   },
   variants: {
     size: {
       xs: {
-        anchor: 'min-h-6 gap-1 px-1.5 text-2xs',
+        anchor: fieldSize.xs,
         inputRoot: 'gap-1',
         popup: 'text-2xs',
         viewport: 'max-h-70 p-0.75',
@@ -50,7 +53,7 @@ export const autocompleteVariants = scv({
         separator: '-mx-0.75 my-0.75'
       },
       sm: {
-        anchor: 'min-h-7 gap-1.5 px-2 text-xs',
+        anchor: fieldSize.sm,
         inputRoot: 'gap-1.5',
         popup: 'text-xs',
         viewport: 'max-h-75 p-0.875',
@@ -59,7 +62,7 @@ export const autocompleteVariants = scv({
         separator: '-mx-0.875 my-0.875'
       },
       md: {
-        anchor: 'min-h-8 gap-2 px-2.5 text-sm',
+        anchor: fieldSize.md,
         inputRoot: 'gap-2',
         popup: 'text-sm',
         viewport: 'max-h-80 p-1',
@@ -68,7 +71,7 @@ export const autocompleteVariants = scv({
         separator: '-mx-1 my-1'
       },
       lg: {
-        anchor: 'min-h-9 gap-2.5 px-3 text-base',
+        anchor: fieldSize.lg,
         inputRoot: 'gap-2.5',
         popup: 'text-base',
         viewport: 'max-h-90 p-1.25',
@@ -77,7 +80,7 @@ export const autocompleteVariants = scv({
         separator: '-mx-1.25 my-1.25'
       },
       xl: {
-        anchor: 'min-h-10 gap-3 px-3.5 text-lg',
+        anchor: fieldSize.xl,
         inputRoot: 'gap-3',
         popup: 'text-lg',
         viewport: 'max-h-100 p-1.5',
@@ -86,7 +89,7 @@ export const autocompleteVariants = scv({
         separator: '-mx-1.5 my-1.5'
       },
       '2xl': {
-        anchor: 'min-h-12 gap-3.5 px-4 text-xl',
+        anchor: fieldSize['2xl'],
         inputRoot: 'gap-3.5',
         popup: 'text-xl',
         viewport: 'max-h-115 p-1.75',

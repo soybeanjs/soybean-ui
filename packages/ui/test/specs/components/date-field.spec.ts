@@ -36,6 +36,13 @@ describe('SDateField', () => {
       wrapper.unmount();
     });
 
+    it('applies the size variant class to the root', () => {
+      const wrapper = mountDateField({ size: 'lg' });
+
+      expect(wrapper.find('[data-soybean-date-field-root]').classes()).toContain('h-9');
+      wrapper.unmount();
+    });
+
     it('exposes modelValue, segments and isInvalid through the root slot', () => {
       const wrapper = mount(
         {
