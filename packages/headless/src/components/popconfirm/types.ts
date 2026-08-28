@@ -1,22 +1,70 @@
 import type { BaseProps, Placement, UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
 import type {
-  PopoverCloseProps,
-  PopoverPopupProps,
-  PopoverPositionerEmits,
-  PopoverPositionerProps,
-  PopoverRootEmits,
-  PopoverRootProps,
-  PopoverTriggerProps,
-  PopoverUiSlot
-} from '../popover/types';
-import type { PopperArrowProps as PopconfirmArrowProps } from '../popper/types';
-import type { PortalProps as PopconfirmPortalProps } from '../portal/types';
+  PopperAnchorProps,
+  PopperArrowProps as PopconfirmArrowProps,
+  PopperPopupProps,
+  PopperPortalProps as PopconfirmPortalProps,
+  PopperPositionerEmits,
+  PopperPositionerProps,
+  PopperRootEmits,
+  PopperRootProps,
+  PopperTriggerProps,
+  PopperUiSlot
+} from '../popper/types';
 
 /**
  * Supported popconfirm values.
  */
 export type PopconfirmType = 'error' | 'success' | 'warning' | 'info';
+
+/**
+ * Properties for the PopconfirmRoot component.
+ */
+export interface PopconfirmRootProps extends PopperRootProps {}
+
+/**
+ * Events for the PopconfirmRoot component.
+ */
+export type PopconfirmRootEmits = PopperRootEmits;
+
+/**
+ * Properties for the PopconfirmTrigger component.
+ */
+export interface PopconfirmTriggerProps extends PopperTriggerProps {}
+
+/**
+ * Properties for the PopconfirmClose component.
+ */
+export interface PopconfirmCloseProps extends ButtonProps {}
+/**
+ * Events for the PopconfirmClose component.
+ */
+export type PopconfirmCloseEmits = {
+  /**
+   * Emitted when close occurs.
+   */
+  close: [event: PointerEvent];
+};
+
+/**
+ * Properties for the PopconfirmPositioner component.
+ */
+export interface PopconfirmPositionerProps extends PopperPositionerProps {}
+/**
+ * Events for the PopconfirmPositioner component.
+ */
+export type PopconfirmPositionerEmits = PopperPositionerEmits;
+
+/**
+ * Properties for the PopconfirmPopup component.
+ */
+export interface PopconfirmPopupProps extends PopperPopupProps {}
+
+/**
+ * Properties for the PopconfirmAnchor component.
+ */
+export interface PopconfirmAnchorProps extends PopperAnchorProps {}
 
 /**
  * Properties for the PopconfirmConfirm component.
@@ -74,7 +122,7 @@ export interface PopconfirmFooterProps extends BaseProps {}
 /**
  * Properties for the PopconfirmCompact component.
  */
-export interface PopconfirmCompactProps extends PopoverRootProps {
+export interface PopconfirmCompactProps extends PopconfirmRootProps {
   /**
    * Type.
    */
@@ -128,7 +176,7 @@ export interface PopconfirmCompactProps extends PopoverRootProps {
   /**
    * Properties forwarded to the trigger element.
    */
-  triggerProps?: PopoverTriggerProps;
+  triggerProps?: PopconfirmTriggerProps;
   /**
    * Properties forwarded to the portal element.
    */
@@ -136,11 +184,11 @@ export interface PopconfirmCompactProps extends PopoverRootProps {
   /**
    * Properties forwarded to the positioner element.
    */
-  positionerProps?: PopoverPositionerProps;
+  positionerProps?: PopconfirmPositionerProps;
   /**
    * Properties forwarded to the popup element.
    */
-  popupProps?: PopoverPopupProps;
+  popupProps?: PopconfirmPopupProps;
   /**
    * Properties forwarded to the arrow element.
    */
@@ -148,7 +196,7 @@ export interface PopconfirmCompactProps extends PopoverRootProps {
   /**
    * Properties forwarded to the close element.
    */
-  closeProps?: PopoverCloseProps;
+  closeProps?: PopconfirmCloseProps;
   /**
    * Properties forwarded to the header element.
    */
@@ -182,8 +230,8 @@ export interface PopconfirmCompactProps extends PopoverRootProps {
 /**
  * Events for the PopconfirmCompact component.
  */
-export type PopconfirmCompactEmits = PopoverRootEmits &
-  PopoverPositionerEmits &
+export type PopconfirmCompactEmits = PopconfirmRootEmits &
+  PopconfirmPositionerEmits &
   PopconfirmConfirmEmits &
   PopconfirmCancelEmits;
 
@@ -235,7 +283,8 @@ export type PopconfirmCompactSlots = {
  * Available UI slots for the Popconfirm component.
  */
 export type PopconfirmUiSlot =
-  | PopoverUiSlot
+  | PopperUiSlot
+  | 'close'
   | 'header'
   | 'icon'
   | 'title'
@@ -250,4 +299,4 @@ export type PopconfirmUiSlot =
  */
 export type PopconfirmUi = UiClass<PopconfirmUiSlot>;
 
-export type { PopconfirmPortalProps };
+export type { PopconfirmArrowProps, PopconfirmPortalProps };

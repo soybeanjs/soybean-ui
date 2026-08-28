@@ -395,6 +395,7 @@ import {
   PaginationPrev,
   PaginationRoot,
   PasswordCompact,
+  PopconfirmAnchor,
   PopconfirmArrow,
   PopconfirmCancel,
   PopconfirmClose,
@@ -1556,10 +1557,9 @@ export const Popconfirm = {
   Compact: PopconfirmCompact,
   Root: PopconfirmRoot,
   Trigger: PopconfirmTrigger,
-  Portal: PopconfirmPortal,
+  Anchor: PopconfirmAnchor,
   Positioner: PopconfirmPositioner,
   Popup: PopconfirmPopup,
-  Arrow: PopconfirmArrow,
   Close: PopconfirmClose,
   Header: PopconfirmHeader,
   Title: PopconfirmTitle,
@@ -1567,15 +1567,16 @@ export const Popconfirm = {
   Content: PopconfirmContent,
   Footer: PopconfirmFooter,
   Confirm: PopconfirmConfirm,
-  Cancel: PopconfirmCancel
+  Cancel: PopconfirmCancel,
+  Arrow: PopconfirmArrow,
+  Portal: PopconfirmPortal
 } as {
   Compact: typeof PopconfirmCompact;
   Root: typeof PopconfirmRoot;
   Trigger: typeof PopconfirmTrigger;
-  Portal: typeof PopconfirmPortal;
+  Anchor: typeof PopconfirmAnchor;
   Positioner: typeof PopconfirmPositioner;
   Popup: typeof PopconfirmPopup;
-  Arrow: typeof PopconfirmArrow;
   Close: typeof PopconfirmClose;
   Header: typeof PopconfirmHeader;
   Title: typeof PopconfirmTitle;
@@ -1584,6 +1585,8 @@ export const Popconfirm = {
   Footer: typeof PopconfirmFooter;
   Confirm: typeof PopconfirmConfirm;
   Cancel: typeof PopconfirmCancel;
+  Arrow: typeof PopconfirmArrow;
+  Portal: typeof PopconfirmPortal;
 };
 
 export const Popover = {

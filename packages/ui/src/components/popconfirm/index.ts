@@ -14,7 +14,8 @@ export type {
   PopconfirmPopupProps,
   PopconfirmTriggerProps,
   PopconfirmPortalProps,
-  PopconfirmArrowProps
+  PopconfirmArrowProps,
+  PopconfirmCloseEmits
 } from '@soybeanjs/headless/popconfirm';
 
 export type * from './types';

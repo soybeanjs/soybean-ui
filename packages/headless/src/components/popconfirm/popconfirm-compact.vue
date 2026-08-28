@@ -4,25 +4,27 @@ import { useForwardListeners, useOmitProps } from '../../composables';
 import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
 import type { IconValue } from '../_icon/types';
-import PopoverClose from '../popover/popover-close.vue';
-import PopoverPopup from '../popover/popover-popup.vue';
-import PopoverPositioner from '../popover/popover-positioner.vue';
-import PopoverRoot from '../popover/popover-root.vue';
-import PopoverTrigger from '../popover/popover-trigger.vue';
 import PopperArrow from '../popper/popper-arrow.vue';
 import PopperPortal from '../popper/popper-portal.vue';
+import type { PopperOpenChangeReason } from '../popper/types';
 import { usePopconfirmUi } from './context';
 import PopconfirmCancel from './popconfirm-cancel.vue';
+import PopconfirmClose from './popconfirm-close.vue';
 import PopconfirmConfirm from './popconfirm-confirm.vue';
 import PopconfirmContent from './popconfirm-content.vue';
 import PopconfirmDescription from './popconfirm-description.vue';
 import PopconfirmFooter from './popconfirm-footer.vue';
 import PopconfirmHeader from './popconfirm-header.vue';
+import PopconfirmPopup from './popconfirm-popup.vue';
+import PopconfirmPositioner from './popconfirm-positioner.vue';
+import PopconfirmRoot from './popconfirm-root.vue';
 import PopconfirmTitle from './popconfirm-title.vue';
-import type { PopconfirmCompactProps, PopconfirmCompactEmits, PopconfirmCompactSlots, PopconfirmType } from './types';
+import PopconfirmTrigger from './popconfirm-trigger.vue';
+import type { PopconfirmCompactEmits, PopconfirmCompactProps, PopconfirmCompactSlots, PopconfirmType } from './types';
 
 defineOptions({
-  name: 'PopconfirmCompact'
+  name: 'PopconfirmCompact',
+  inheritAttrs: false
 });
 
 const props = withDefaults(defineProps<PopconfirmCompactProps>(), {
@@ -95,6 +97,11 @@ const positionerProps = computed(() => ({
   placement: props.placement ?? props.positionerProps?.placement
 }));
 
+const popupProps = computed(() => ({
+  ...props.popupProps,
+  'data-type': props.type
+}));
+
 const cancelVisible = computed(() => {
   if (typeof props.showCancel === 'boolean') {
     return props.showCancel;
@@ -106,22 +113,29 @@ const cancelVisible = computed(() => {
 const cancelText = computed(() => props.cancelText ?? messages.value.dialog.cancel);
 
 const confirmText = computed(() => props.confirmText ?? messages.value.dialog.confirm);
+
+function onUpdateOpen(value: boolean, reason: PopperOpenChangeReason) {
+  emit('update:open', value, reason);
+}
+
+function onConfirm(event: PointerEvent) {
+  emit('confirm', event);
+}
+
+function onCancel(event: PointerEvent) {
+  emit('cancel', event);
+}
 </script>
 
 <template>
-  <PopoverRoot
-    v-slot="slotProps"
-    v-bind="forwardedRootProps"
-    :data-type="type"
-    @update:open="emit('update:open', $event)"
-  >
-    <PopoverTrigger v-bind="triggerProps">
+  <PopconfirmRoot v-slot="slotProps" v-bind="forwardedRootProps" @update:open="onUpdateOpen">
+    <PopconfirmTrigger v-bind="triggerProps">
       <slot name="trigger" v-bind="slotProps" />
-    </PopoverTrigger>
+    </PopconfirmTrigger>
     <PopperPortal v-bind="portalProps">
-      <PopoverPositioner v-bind="positionerProps" v-on="listeners">
-        <PopoverPopup v-bind="popupProps">
-          <PopconfirmHeader>
+      <PopconfirmPositioner v-bind="positionerProps" v-on="listeners">
+        <PopconfirmPopup v-bind="popupProps">
+          <PopconfirmHeader v-bind="headerProps">
             <PopconfirmTitle v-bind="titleProps">
               <Icon v-if="showIcon && icon" :class="ui.icon" :icon="icon" />
               <slot name="title" v-bind="slotProps">
@@ -137,20 +151,20 @@ const confirmText = computed(() => props.confirmText ?? messages.value.dialog.co
           </PopconfirmContent>
           <PopconfirmFooter v-bind="footerProps">
             <slot name="footer" v-bind="slotProps">
-              <PopconfirmCancel v-if="cancelVisible" v-bind="cancelProps" @close="emit('cancel', $event)">
+              <PopconfirmCancel v-if="cancelVisible" v-bind="cancelProps" @cancel="onCancel">
                 {{ cancelText }}
               </PopconfirmCancel>
-              <PopconfirmConfirm v-bind="confirmProps" @close="emit('confirm', $event)">
+              <PopconfirmConfirm v-bind="confirmProps" @confirm="onConfirm">
                 {{ confirmText }}
               </PopconfirmConfirm>
             </slot>
           </PopconfirmFooter>
           <PopperArrow v-if="showArrow" v-bind="arrowProps" />
-        </PopoverPopup>
-        <PopoverClose v-if="slots.close" v-bind="closeProps">
+        </PopconfirmPopup>
+        <PopconfirmClose v-if="slots.close" v-bind="closeProps">
           <slot name="close" v-bind="slotProps" />
-        </PopoverClose>
-      </PopoverPositioner>
+        </PopconfirmClose>
+      </PopconfirmPositioner>
     </PopperPortal>
-  </PopoverRoot>
+  </PopconfirmRoot>
 </template>

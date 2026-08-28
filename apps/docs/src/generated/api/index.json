@@ -730,6 +730,7 @@
           "file": "popconfirm.json",
           "symbols": [
             "Popconfirm",
+            "PopconfirmAnchor",
             "PopconfirmArrow",
             "PopconfirmCancel",
             "PopconfirmClose",

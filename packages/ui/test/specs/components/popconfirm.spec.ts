@@ -48,7 +48,9 @@ describe('SPopconfirm', () => {
 
       await nextTick();
 
-      expect(wrapper.find('.my-popconfirm-class').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-popconfirm-popup]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-popconfirm-popup]').attributes('role')).toBe('dialog');
+      expect(wrapper.find('[data-soybean-popover-popup]').exists()).toBe(false);
       wrapper.unmount();
     });
   });
@@ -70,15 +72,12 @@ describe('SPopconfirm', () => {
       wrapper.unmount();
     });
 
-    it('does not close when beforeConfirm returns false', async () => {
+    it('emits confirm and closes when the confirm button is clicked', async () => {
       const wrapper = mount(SPopconfirm, {
         props: {
           open: true,
           portalProps: { disabled: true },
-          title: 'Confirm',
-          confirmProps: {
-            'data-soybean-popconfirm-confirm': ''
-          }
+          title: 'Confirm'
         },
         slots,
         attachTo: document.body
@@ -87,7 +86,29 @@ describe('SPopconfirm', () => {
       await nextTick();
       await wrapper.get('[data-soybean-popconfirm-confirm]').trigger('click');
 
-      expect(wrapper.emitted('confirm')).toBeFalsy();
+      expect(wrapper.emitted('confirm')).toBeTruthy();
+      expect(wrapper.emitted('update:open')?.at(-1)?.[0]).toBe(false);
+      wrapper.unmount();
+    });
+
+    it('emits cancel and closes when the cancel button is clicked', async () => {
+      const wrapper = mount(SPopconfirm, {
+        props: {
+          open: true,
+          portalProps: { disabled: true },
+          title: 'Confirm',
+          type: 'warning',
+          showCancel: true
+        },
+        slots,
+        attachTo: document.body
+      });
+
+      await nextTick();
+      await wrapper.get('[data-soybean-popconfirm-cancel]').trigger('click');
+
+      expect(wrapper.emitted('cancel')).toBeTruthy();
+      expect(wrapper.emitted('update:open')?.at(-1)?.[0]).toBe(false);
       wrapper.unmount();
     });
   });

@@ -2,7 +2,7 @@
 
 ## Overview
 
-A confirmation box component based on `Popover`, used for lightweight secondary confirmation operations. `SPopconfirm` combines the headless `PopconfirmCompact` (built on the popover primitives) with the `popconfirmVariants` style recipe (13 slots, 6 sizes × 4 types).
+A confirmation box component based on `Popper`, used for lightweight secondary confirmation operations. `SPopconfirm` combines the headless `PopconfirmCompact` (built on the popper primitives) with the `popconfirmVariants` style recipe (13 slots, 6 sizes × 4 types).
 
 Use it for a quick inline confirm (delete, destructive action) next to the trigger. For a richer blocking confirmation use `dialog`; for an unobtrusive hint use `tooltip`.
 
@@ -12,7 +12,7 @@ Use it for a quick inline confirm (delete, destructive action) next to the trigg
 
 ## Features
 
-- 🧩 Built on `Popover` — inherits placement, arrow, portal, dismissable and focus behavior
+- 🧩 Built on `Popper` — inherits placement, arrow, portal, dismissable and focus behavior
 - 🎨 4 types — `type="error"`/`"success"`/`"warning"`/`"info"` drive the leading icon and color
 - 🏷️ Title + description + content — `title`/`description`/`content` props or the matching slots
 - 🔘 Confirm/cancel — `confirmText`/`cancelText` (localized from `dialog.confirm`/`dialog.cancel`); `showCancel` defaults to `onlyWarning`
@@ -24,7 +24,7 @@ Use it for a quick inline confirm (delete, destructive action) next to the trigg
 ## Component family
 
 - `SPopconfirm` (styled) — the entry wrapper; `popconfirmVariants` recipe with dynamic slot forwarding
-- `PopconfirmCompact` (headless) — the aggregated composite built on `PopoverRoot`/`PopoverTrigger`/`PopoverPositioner`/`PopoverPopup`
+- `PopconfirmCompact` (headless) — the aggregated composite built on `PopperRoot`/`PopperTrigger`/`PopperPositioner`/`PopperPopup`
 - `PopconfirmHeader` / `PopconfirmContent` / `PopconfirmFooter` (headless) — layout sections
 - `PopconfirmTitle` / `PopconfirmDescription` (headless) — the title/description
 - `PopconfirmConfirm` / `PopconfirmCancel` (headless) — footer `<button>`s, emit `confirm`/`cancel`
@@ -41,11 +41,11 @@ Use it for a quick inline confirm (delete, destructive action) next to the trigg
 
 ### Architecture and benchmark differences
 
-`PopconfirmCompact` composes the popover trigger/positioner/popup with a confirm-style header, content and footer, while every primitive stays style-free and only the UI wrapper injects the `popconfirmVariants` classes. This mirrors radix-ui/shadcn-ui's headless split. Ant Design, Element Plus, Mantine and Naive UI ship a single styled popconfirm with `title`/`description`/`okText`/`cancelText`/`onConfirm` props; SoybeanUI additionally exposes per-slot `*Props`, a `size` scale, a `type` color/icon system, and localized action labels.
+`PopconfirmCompact` composes the popper trigger/positioner/popup with a confirm-style header, content and footer, while every primitive stays style-free and only the UI wrapper injects the `popconfirmVariants` classes. This mirrors radix-ui/shadcn-ui's headless split. Ant Design, Element Plus, Mantine and Naive UI ship a single styled popconfirm with `title`/`description`/`okText`/`cancelText`/`onConfirm` props; SoybeanUI additionally exposes per-slot `*Props`, a `size` scale, a `type` color/icon system, and localized action labels.
 
 | Capability               | SoybeanUI | shadcn/ui | Ant Design Popconfirm | Element Plus Popconfirm | Mantine Popconfirm | Naive UI Popconfirm |
 | :----------------------- | :-------: | :-------: | :-------------------: | :---------------------: | :----------------: | :-----------------: |
-| Built on Popover         |    ✅     |    ✅     |           —           |            —            |         —          |          —          |
+| Built on Popper          |    ✅     |    ✅     |           —           |            —            |         —          |          —          |
 | Headless/styled split    |    ✅     |    ✅     |           —           |            —            |         —          |          —          |
 | Type icon + color        |    ✅     |     —     |           —           |           ✅            |         —          |          —          |
 | Title + description      |    ✅     |    ✅     |          ✅           |           ✅            |         ✅         |         ✅          |

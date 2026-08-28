@@ -395,10 +395,9 @@ export const components = {
     'PopconfirmCompact',
     'PopconfirmRoot',
     'PopconfirmTrigger',
-    'PopconfirmPortal',
+    'PopconfirmAnchor',
     'PopconfirmPositioner',
     'PopconfirmPopup',
-    'PopconfirmArrow',
     'PopconfirmClose',
     'PopconfirmHeader',
     'PopconfirmTitle',
@@ -406,7 +405,9 @@ export const components = {
     'PopconfirmContent',
     'PopconfirmFooter',
     'PopconfirmConfirm',
-    'PopconfirmCancel'
+    'PopconfirmCancel',
+    'PopconfirmArrow',
+    'PopconfirmPortal'
   ],
   popover: [
     'PopoverCompact',

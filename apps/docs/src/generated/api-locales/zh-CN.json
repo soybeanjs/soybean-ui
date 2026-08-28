@@ -6565,78 +6565,15 @@
         },
         "passwordui": "密码组件的用户界面类重载。"
       },
-      "packages_headless_src_components_popconfirm_index": {
-        "popconfirmarrowprops": "",
-        "popconfirmcloseprops": {
-          "members": {
-            "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
-            "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
-            "disabled": "组件是否禁用。",
-            "type": "按钮元素的类型。可以是 \"按钮\"、\"提交 \"或 \"重置\"。"
-          },
-          "props": "PopoverClose 组件的属性。"
-        },
-        "popconfirmpopupprops": {
-          "props": "PopoverPopup 组件的属性。"
-        },
-        "popconfirmportalprops": {
-          "members": {
-            "defer": "推迟解析 Teleport 目标，直到应用程序的其他部分安装完毕（需要 Vue 3.5.0 以上版本）\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
-            "disabled": "禁用远程传输并内联渲染组件\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
-            "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。",
-            "to": "Vue 本地传送组件道具 `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}"
-          }
-        },
-        "popconfirmpositioneremits": {
-          "emits": "PopoverPositioner 组件的事件。"
-        },
-        "popconfirmpositionerprops": {
-          "callables": {
-            "ongracepointerexit": "当指针最终离开宽限区域时触发的回调。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。"
-          },
-          "members": {
-            "align": "与触发器的首选对齐方式。发生碰撞时可能会改变。",
-            "alignflip": "与边界碰撞时翻转对齐方式。\n只有当 `prioritizePosition` 为 true 时才会发生。",
-            "alignoffset": "开始 \"或 \"结束 \"对齐选项的像素偏移。",
-            "arrowpadding": "箭头与内容边缘之间的填充。如果您的内容有边框半径，这将防止内容溢出边角。\n溢出边角。",
-            "avoidcollisions": "true \"时，覆盖侧边和对齐首选项，以防止与边界边缘碰撞。",
-            "collisionboundary": "用作碰撞边界的元素。默认情况下是视口，但您也可以提供额外的\n元素。",
-            "collisionpadding": "以像素为单位的碰撞检测边界距离。接受一个数字（所有边都相同\n所有边），或部分填充对象，例如{ top: 20, left: 20 }。",
-            "disablehoverablecontent": "当设置为 `true` 时，鼠标悬停在弹出窗口上会将其关闭，而非保持打开状态（宽限区域已禁用，\n因此离开触发区域会立即关闭该层）。",
-            "disableupdateonlayoutshift": "布局移动时是否禁用内容的更新位置。",
-            "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。",
-            "hideshiftedarrow": "为`true`时，当箭头无法居中于引用元素时，将隐藏箭头。\n时，将隐藏箭头。",
-            "hidewhendetached": "当触发器完全闭合时，是否隐藏内容。",
-            "placement": "浮动元素的位置。\n\n如果使用，它将覆盖`side`和`align`道具。",
-            "positionstrategy": "要使用的 CSS 位置属性类型。",
-            "prioritizeposition": "强制内容位于视口内。可能会与参考元素重叠，这可能不是我们想要的。",
-            "reference": "自定义元素或虚拟元素将被设置为浮动元素的位置参考。如果\n则将替换默认的锚元素。",
-            "side": "触发器打开时的首选渲染面。当发生碰撞且\navoidCollisions 启用时，触发器的首选渲染面将被反转。",
-            "sideflip": "与边界碰撞时，翻转到相反的一侧。",
-            "sideoffset": "与触发器的距离（以像素为单位）。",
-            "sticky": "对齐轴上的粘性行为。只要触发器至少部分位于边界内，\"partial \"就会将内容保持在边界内。\n而 \"始终 \"则无论如何都会将内容保持在边界内。",
-            "trapfocus": "弹出窗口打开时，焦点是否被困在其中（Tab 键在层内循环，且\n模态层的主体滚动被锁定）。",
-            "updatepositionstrategy": "在每一帧动画中更新浮动元素位置的策略。"
-          },
-          "props": "PopoverPositioner 组件的属性。"
-        },
-        "popconfirmrootemits": {
-          "emits": "PopoverRoot 组件的事件。"
-        },
-        "popconfirmrootprops": {
-          "props": "PopoverRoot 组件的属性。"
-        },
-        "popconfirmtriggerprops": {
-          "members": {
-            "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
-            "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
-            "disabled": "组件是否禁用。",
-            "type": "按钮元素的类型。可以是 \"按钮\"、\"提交 \"或 \"重置\"。"
-          },
-          "props": "PopoverTrigger 组件的属性。"
-        }
-      },
       "packages_headless_src_components_popconfirm_types": {
+        "popconfirmanchorprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "reference": ""
+          },
+          "props": "PopconfirmAnchor 组件的属性。"
+        },
         "popconfirmcancelemits": {
           "callables": {
             "cancel": "发生取消时发出。"
@@ -6652,6 +6589,21 @@
           },
           "props": "PopconfirmCancel 组件的属性。"
         },
+        "popconfirmcloseemits": {
+          "callables": {
+            "close": "在关闭时触发。"
+          },
+          "emits": "PopconfirmClose 组件的事件。"
+        },
+        "popconfirmcloseprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "disabled": "该组件是否被禁用。",
+            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
+          },
+          "props": "PopconfirmClose 组件的属性。"
+        },
         "popconfirmcompactbaseslotprops": "PopconfirmCompact 组件的槽属性。",
         "popconfirmcompactemits": {
           "callables": {
@@ -6664,7 +6616,7 @@
             "openautofocus": "打开时自动聚焦调用事件处理程序。可以避免。",
             "placed": "",
             "pointerdownoutside": "当 \"DismissableLayer \"外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。",
-            "update_open": "当对话框的打开状态发生变化时，调用事件处理程序。"
+            "update_open": ""
           },
           "emits": "PopconfirmCompact 组件的事件。",
           "members": {
@@ -6742,8 +6694,89 @@
         "popconfirmheaderprops": {
           "props": "PopconfirmHeader 组件的属性。"
         },
+        "popconfirmpopupprops": {
+          "props": "PopconfirmPopup 组件的属性。"
+        },
+        "popconfirmpositioneremits": {
+          "callables": {
+            "closeautofocus": "在关闭时自动聚焦时触发的事件处理程序。可被阻止。",
+            "escapekeydown": "按下Esc键时调用的事件处理程序。此操作可被阻止。",
+            "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。可被阻止。",
+            "interactoutside": "当在 `DismissableLayer` 外部发生交互时触发的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。此事件可被阻止。",
+            "openautofocus": "在打开页面时自动获取焦点时触发的事件处理程序。可被阻止。",
+            "placed": "",
+            "pointerdownoutside": "当 `pointerdown` 事件在 `DismissableLayer` 外部发生时调用的事件处理程序。可被阻止。"
+          },
+          "emits": "PopconfirmPositioner 组件的事件。"
+        },
+        "popconfirmpositionerprops": {
+          "callables": {
+            "ongracepointerexit": "当指针最终离开宽限区域时调用的回调函数。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。"
+          },
+          "members": {
+            "align": "首选与触发词对齐。发生冲突时可能会调整对齐方式。",
+            "alignflip": "当与边界发生冲突时，应反转对齐方式。\n此情况仅在 `prioritizePosition` 为 true 时才会发生。",
+            "alignoffset": "相对于 `start` 或 `end` 对齐选项的像素偏移量。",
+            "arrowpadding": "箭头与内容边缘之间的间距。如果您的内容使用了 border-radius，这将防止内容\n溢出到角落。",
+            "avoidcollisions": "当值为 `true` 时，将覆盖“侧边”和“对齐”偏好设置，以避免与边界边缘发生冲突。",
+            "collisionboundary": "用作碰撞边界的元素。默认情况下，此处为视口，但您可以提供额外的\n元素以纳入此检查范围。",
+            "collisionpadding": "从应进行碰撞检测的边界边缘开始，以像素为单位的距离。接受一个数字（\n所有边均相同），或一个部分填充对象，例如：{ top: 20, left: 20 }。",
+            "disablehoverablecontent": "当设置为 `true` 时，鼠标悬停会关闭弹出窗口而非保持其打开状态（宽限区域已禁用，\n因此离开触发区域会立即关闭该层）。",
+            "disableupdateonlayoutshift": "当布局发生变化时，是否禁用内容的更新位置。",
+            "forcemount": "用于在需要更多控制时强制挂载。\n\n在使用 Vue 动画库控制动画时非常有用。",
+            "hideshiftedarrow": "当值为 `true` 时，若无法将箭头居中对齐\n到引用元素，则隐藏该箭头。",
+            "hidewhendetached": "当触发器被完全遮挡时，是否隐藏内容。",
+            "ongracepointerexit": "当指针最终离开宽限区域时调用的回调函数。允许上层组件（例如\nTooltip）在无需注册自己的第二个宽限区域的情况下，执行区域范围内的关闭逻辑。",
+            "placement": "浮动元素的位置。\n\n若使用该属性，它将覆盖 `side` 和 `align` 属性。",
+            "positionstrategy": "要使用的 CSS `position` 属性的类型。",
+            "prioritizeposition": "强制内容置于视口内。可能会与参考元素重叠，这可能并非预期效果。",
+            "reference": "将作为浮动元素定位参考的自定义元素或虚拟元素。如果\n提供了该元素，它将替换默认的锚点元素。",
+            "side": "打开时优先渲染的触发器一侧。当发生冲突且\n启用了 avoidCollisions 时，该方向将被反转。",
+            "sideflip": "遇到边界时，请翻转至另一侧。",
+            "sideoffset": "距触发器的像素距离。",
+            "sticky": "在对齐轴上的“粘附”行为。`partial` 会在触发点至少部分位于边界内时将内容保留在边界内，\n而“always”则无论触发点是否位于边界内，都会将内容保留在边界内。",
+            "trapfocus": "弹出窗口打开时，焦点是否被困在其中（Tab 键在该层内循环，且\n模态层的页面滚动被锁定）。",
+            "updatepositionstrategy": "在每个动画帧中更新浮动元素位置的策略。"
+          },
+          "props": "PopconfirmPositioner 组件的属性。"
+        },
+        "popconfirmrootemits": {
+          "callables": {
+            "update_open": ""
+          },
+          "emits": "PopconfirmRoot 组件的事件。"
+        },
+        "popconfirmrootprops": {
+          "members": {
+            "defaultopen": "",
+            "dir": "",
+            "disabled": "",
+            "modal": "",
+            "open": ""
+          },
+          "props": "PopconfirmRoot 组件的属性。"
+        },
         "popconfirmtitleprops": {
           "props": "PopconfirmTitle 组件的属性。"
+        },
+        "popconfirmtriggerprops": {
+          "members": {
+            "ariamode": "触发器如何为其弹出窗口提供辅助技术支持。\n\n- `controls`：`aria-expanded` + `aria-controls`（可展开控件：弹出框/菜单）\n- `describedby`：展开时为 `aria-describedby`（类似工具提示的描述）\n- `none`：无弹出窗口引用属性",
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "closedelay": "",
+            "disabled": "该组件是否被禁用。",
+            "focusopendelay": "对焦点驱动的打开操作应用打开延迟。默认值为 `openDelay`；设置为 `0` 则在获得焦点时\n立即打开（工具提示语义）。",
+            "focusvisibleonly": "当值为 `true` 时，基于焦点的展开仅响应键盘/程序化的焦点\n（`:focus-visible`），忽略由指针引发的焦点。",
+            "opendelay": "",
+            "openonfocus": "",
+            "pressopendelay": "",
+            "reference": "",
+            "skipdelayduration": "",
+            "trigger": "",
+            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
+          },
+          "props": "PopconfirmTrigger 组件的属性。"
         },
         "popconfirmtype": "支持的 popconfirm 值。",
         "popconfirmui": "Popconfirm 组件的 UI 类重载。"
@@ -12869,7 +12902,7 @@
             "openautofocus": "在打开页面时自动聚焦时触发的事件处理程序。可被阻止。",
             "placed": "",
             "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。",
-            "update_open": "当对话框的打开状态发生变化时调用的事件处理程序。"
+            "update_open": ""
           },
           "emits": "Popconfirm 组件的事件。"
         },
