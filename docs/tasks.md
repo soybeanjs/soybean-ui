@@ -10,16 +10,16 @@
 
 ### ID 体系
 
-| 前缀    | 工作流            | 对应路线图板块                                  |
-| :------ | :---------------- | :---------------------------------------------- |
-| `EC-*`  | W1 生态基础与合并 | 生态扩展路线（沿用 ecosystem 分支任务清单编号） |
-| `UX-*`  | W2 ui-x           | [ecosystem/ui-x.md](./ecosystem/ui-x.md)        |
-| `AD-*`  | W3 admin          | [ecosystem/admin.md](./ecosystem/admin.md)      |
-| `CH-*`  | W4 chart          | [ecosystem/chart.md](./ecosystem/chart.md)      |
-| `PRO-*` | W5 ui-pro         | [ecosystem/ui-pro.md](./ecosystem/ui-pro.md)    |
-| `ED-*`  | W6 editor         | [ecosystem/editor.md](./ecosystem/editor.md)    |
-| `OPT-*` | W7 工程优化       | [optimize.md](./optimize.md) F1–F11             |
-| `CMP-*` | W8 核心组件       | 核心组件路线（45 个活跃组件）                   |
+| 前缀    | 工作流            | 对应路线图板块                                                                 |
+| :------ | :---------------- | :----------------------------------------------------------------------------- |
+| `EC-*`  | W1 生态基础与合并 | 生态扩展路线（沿用 ecosystem 分支任务清单编号）                                |
+| `UX-*`  | W2 ui-x           | [ecosystem/ui-x.md](./ecosystem/ui-x.md)                                       |
+| `AD-*`  | W3 admin          | [ecosystem/admin.md](./ecosystem/admin.md)                                     |
+| `CH-*`  | W4 chart          | [ecosystem/chart.md](./ecosystem/chart.md)                                     |
+| `PRO-*` | W5 ui-pro         | [ecosystem/ui-pro.md](./ecosystem/ui-pro.md)                                   |
+| `ED-*`  | W6 editor         | [ecosystem/editor.md](./ecosystem/editor.md)                                   |
+| `OPT-*` | W7 工程优化       | [optimize.md](./optimize.md) F1–F11                                            |
+| `CMP-*` | W8 核心组件       | 核心组件路线（45 个活跃组件）+ [准入整改](./headless-admission-remediation.md) |
 
 ### 负责人约定（与 ecosystem 分支任务清单一致）
 
@@ -349,13 +349,13 @@
 
 ## W8 核心组件路线（CMP）
 
-> 45 个活跃路线图组件（高 22 / 中 11 / 低 12），详见 [roadmap.md](./roadmap.md) 各详细条目。每个组件交付含：headless + UI 源码、单测、playground 示例、双语文档、API/changelog 生成、registry 条目（全交付面验收，联动 OPT-F3.2 的 `check:generated`）。负责人默认 AI Agent 实施、Soybean 验收。
+> 45 个活跃路线图组件（高 22 / 中 11 / 低 12），详见 [roadmap.md](./roadmap.md) 各详细条目。每个组件交付含：UI 源码、单测、playground 示例、双语文档、API/changelog 生成、registry 条目；**headless 仅在通过 admission 时创建**（全交付面验收，联动 OPT-F3.2 的 `check:generated`）。负责人默认 AI Agent 实施、Soybean 验收。
 
 工时折算：Effort Low ≈ 1–2d、Medium ≈ 2–4d、High ≈ 5–8d（含测试与交付面）。
 
 ### CMP-1 P0 组件（高优先级第一批，9 个，共约 25d）
 
-**目标**：补齐关键缺口。**时间窗建议**：2026 Q4（生态首发后）。**依赖条件**：EC-M5 完成（避免与生态主线抢占）；组件间内部依赖见下表「依赖」列。
+**目标**：补齐关键缺口。**时间窗建议**：2026 Q4（生态首发后）。**依赖条件**：EC-M5 完成（避免与生态主线抢占）；组件间内部依赖见下表「依赖」列。每个组件 Phase 0 必须先过 [Headless admission](../.agents/skills/soybean-ui-component-development/layers.md#headless-admission)；`Statistic` / `Descriptions` / `Typography` 等视觉或解剖型组件很可能是 UI-only，不要先开 headless 目录。
 
 | 子任务  | 组件           | Effort  | 工时 | 依赖（核心库内部）                                        |
 | :------ | :------------- | :-----: | :--: | :-------------------------------------------------------- |
@@ -416,6 +416,17 @@
 ### CMP-5 组件市场（11 个延后项）
 
 **目标**：以 sbean registry 源码分发模式落地（Tour / TreeTable / PageHeader / Navbar / Comment / Sidebar / AppShell / Galleria / OrganizationChart / Dock / DynamicInput；RichTextEditor 已升级为独立生态包 `@soybeanjs/editor`，见 W6/ED）。**负责人**：AI Agent + Soybean 评审。**预计工时**：每项 2–5d，视需求信号排期。**依赖条件**：EC-M2（registry 命名空间化）+ 所需原子组件就绪。
+
+### CMP-6 Headless 准入整改
+
+**目标**：按 [layers.md Headless admission](../.agents/skills/soybean-ui-component-development/layers.md#headless-admission) 冻结解剖壳、补 Alert 语义、收敛装饰槽与平行家族；**禁止**再把 Empty / List / Badge / Skeleton 当新组件模板。组件级清单与证据见 [headless-admission-remediation.md](./headless-admission-remediation.md)。**负责人**：AI Agent 实施、Soybean 验收（HAD-C / HAD-D 需先决策）。**预计工时**：2.5d 决策与小修复；装饰槽/合并实施另估。**依赖条件**：规范已落地；不阻塞 CMP-1，但 CMP-1 起的新组件必须先过 admission。
+
+| 子任务  | 目标                                                                           |       负责人       | 工时 | 依赖           |
+| :------ | :----------------------------------------------------------------------------- | :----------------: | :--: | :------------- |
+| CMP-6.1 | 桶 A（empty / list / skeleton）冻结策略：清单 + skill 反模式点名               |      AI Agent      | 0.5d | 规范侧已完成   |
+| CMP-6.2 | HAD-B2 Alert 补 `role="alert"`/`status`；HAD-B3 headless 组件名 `STag` → `Tag` |      AI Agent      | 0.5d | —              |
+| CMP-6.3 | HAD-C1–C3 装饰槽方案（内部化 vs ExtraUiSlot）+ Card 装饰槽冻结                 | Soybean + AI Agent |  1d  | 方案需验收     |
+| CMP-6.4 | HAD-D1 `nav-menu` vs `navigation-menu`：合并或写出不可替代的领域差             |      Soybean       | 0.5d | 决策后再估实施 |
 
 ---
 

@@ -17,6 +17,7 @@ docs/
 ├── components.md        # 组件路线图源材料（45 活跃组件评估明细）
 ├── tasks.md             # 任务深度拆解（可执行子任务）
 ├── task-tracking.md     # 任务状态跟踪（唯一状态表）
+├── headless-admission-remediation.md  # Headless 准入整改（组件级清单）
 ├── ecosystem.md         # 生态架构方案（跨包依赖 / 命名 / registry 契约）
 ├── ecosystem-tasks.md   # 生态架构落地任务清单
 ├── adr/                 # 架构决策记录（ADR）
@@ -32,15 +33,15 @@ docs/
 
 ## 文档分类速查
 
-| 分类           | 文件                                                                                                                                                         | 定位                          | 典型读者       |
-| :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------- | :------------- |
-| **架构与质量** | [architecture.md](./architecture.md) · [optimize.md](./optimize.md)                                                                                          | 仓库现状真相源 + 工程质量评估 | 架构师、新成员 |
-| **路线与规划** | [roadmap.md](./roadmap.md) · [components.md](./components.md)                                                                                                | 总路线图 + 组件评估           | 规划者、贡献者 |
-| **任务执行**   | [tasks.md](./tasks.md) · [task-tracking.md](./task-tracking.md)                                                                                              | 任务拆解 + 实时状态跟踪       | 执行者、管理者 |
-| **决策记录**   | [adr/](./adr/README.md)                                                                                                                                      | 已接受的架构决策（ADR）       | 架构师         |
-| **生态扩展**   | [ecosystem.md](./ecosystem.md)（架构契约）· [ecosystem-tasks.md](./ecosystem-tasks.md)（任务清单）· [ecosystem/](./ecosystem/README.md)（各包方案 + 商业化） | 生态架构 / 落地任务 / 包方案  | 生态开发者     |
-| **调研报告**   | [research/](./research/README.md)                                                                                                                            | 市场/竞品调研原始结论         | 规划者         |
-| **一次性报告** | [info/](./info/README.md)                                                                                                                                    | 周期审计、同步/适配报告       | 维护者         |
+| 分类           | 文件                                                                                                                                                         | 定位                                            | 典型读者       |
+| :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------- | :------------- |
+| **架构与质量** | [architecture.md](./architecture.md) · [optimize.md](./optimize.md)                                                                                          | 仓库现状真相源 + 工程质量评估                   | 架构师、新成员 |
+| **路线与规划** | [roadmap.md](./roadmap.md) · [components.md](./components.md)                                                                                                | 总路线图 + 组件评估                             | 规划者、贡献者 |
+| **任务执行**   | [tasks.md](./tasks.md) · [task-tracking.md](./task-tracking.md) · [headless-admission-remediation.md](./headless-admission-remediation.md)                   | 任务拆解 + 实时状态跟踪 + headless 准入整改清单 | 执行者、管理者 |
+| **决策记录**   | [adr/](./adr/README.md)                                                                                                                                      | 已接受的架构决策（ADR）                         | 架构师         |
+| **生态扩展**   | [ecosystem.md](./ecosystem.md)（架构契约）· [ecosystem-tasks.md](./ecosystem-tasks.md)（任务清单）· [ecosystem/](./ecosystem/README.md)（各包方案 + 商业化） | 生态架构 / 落地任务 / 包方案                    | 生态开发者     |
+| **调研报告**   | [research/](./research/README.md)                                                                                                                            | 市场/竞品调研原始结论                           | 规划者         |
+| **一次性报告** | [info/](./info/README.md)                                                                                                                                    | 周期审计、同步/适配报告                         | 维护者         |
 
 ## 核心文档关系图
 
@@ -64,6 +65,7 @@ components.md ──► roadmap.md ◄── optimize.md
 - **「某组件要不要做 / 排期如何」** → [roadmap.md](./roadmap.md)（高/中/低优先级）→ [components.md](./components.md)（评估明细）
 - **「当前做到哪了」** → [task-tracking.md](./task-tracking.md)
 - **「某个任务怎么拆」** → [tasks.md](./tasks.md)
+- **「这个组件该不该做 headless / 现有哪些违规」** → skill [layers.md Headless admission](../.agents/skills/soybean-ui-component-development/layers.md#headless-admission) → [headless-admission-remediation.md](./headless-admission-remediation.md)
 - **「为什么这样分层」** → [adr/](./adr/README.md)
 - **「生态包怎么规划」** → [ecosystem/](./ecosystem/README.md)
 - **「竞品/市场依据」** → [research/](./research/README.md)

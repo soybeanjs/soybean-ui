@@ -37,8 +37,9 @@ Check in reverse: validate first, then delivery surfaces, then exports, then lay
 ### Headless
 
 - `types.ts`, `context.ts`, SFCs, and `index.ts` follow the layer rules.
+- New or migrated families pass [Headless admission](layers.md#headless-admission). Anatomy shells are not used as templates.
 - Context values stay reactive.
-- No UI styles, no `@soybeanjs/ui` imports.
+- No visual token styles, no `@soybeanjs/ui` imports. Geometric layout-contract inline styles follow admission R8.
 - Stable aggregation structure has been correctly sunk into `{Name}Compact`.
 - Slot root elements carry the correct `data-soybean-{name}` attributes.
 

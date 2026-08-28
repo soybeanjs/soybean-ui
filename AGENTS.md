@@ -5,11 +5,11 @@
 Component development rules live in the self-contained skill at `.agents/skills/soybean-ui-component-development/`:
 
 - [SKILL.md](.agents/skills/soybean-ui-component-development/SKILL.md) — pattern classification, phase order, workflows, guardrails, delivery surfaces, generation workflow.
-- [layers.md](.agents/skills/soybean-ui-component-development/layers.md) — headless/UI layer rules, a11y/RTL.
+- [layers.md](.agents/skills/soybean-ui-component-development/layers.md) — headless admission, headless/UI layer rules, a11y/RTL.
 - [surfaces.md](.agents/skills/soybean-ui-component-development/surfaces.md) — playground, docs, testing delivery surface rules.
 - [e2e.md](.agents/skills/soybean-ui-component-development/e2e.md) — browser e2e testing (Tier 1 component-level + Tier 2 app-level smoke), env setup, core scenarios, assertion standards.
 - [process.md](.agents/skills/soybean-ui-component-development/process.md) — finish checklist, git commit convention.
-- [audit.md](.agents/skills/soybean-ui-component-development/audit.md) — assessment methodology, seven check dimensions (D1–D7, 105 items), severity, acceptance, regression flows for already-shipped components.
+- [audit.md](.agents/skills/soybean-ui-component-development/audit.md) — assessment methodology, seven check dimensions (D1–D7, 106 items), severity, acceptance, regression flows for already-shipped components.
 - [EXAMPLES.md](.agents/skills/soybean-ui-component-development/EXAMPLES.md) — request shapes that trigger the skill.
 
 **Global skill rules (mandatory for all agents, applied before any task):**
@@ -82,7 +82,8 @@ Private applications:
 | Browser e2e tests        | `packages/ui/test/browser/`                                               | `vitest.browser.config.ts` + `vitest-browser-vue` + `axe-core` (color-contrast on) |
 | Workspace architecture   | `docs/architecture.md`                                                    | Package/app map, dependency graph, generation/build/test/release flows             |
 | Architecture assessment  | `docs/optimize.md`                                                        | Evidence-ranked maintainability, scalability, and quality recommendations          |
-| Component dev skill      | `.agents/skills/soybean-ui-component-development/`                        | SKILL.md + layers.md + surfaces.md + e2e.md + process.md + audit.md + EXAMPLES.md  |
+| Component dev skill      | `.agents/skills/soybean-ui-component-development/`                        | SKILL.md + layers.md (admission) + surfaces.md + e2e.md + process.md + audit.md    |
+| Headless admission gaps  | `docs/headless-admission-remediation.md`                                  | Anatomy shells, decorative slots, and parallel families to freeze or fix           |
 
 ## BUILD & CI
 

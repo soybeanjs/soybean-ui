@@ -12,7 +12,7 @@ For any AI assistant editing files under `packages/headless/`:
 The remaining content in this file is package knowledge and local context. Normative component rules live in the skill.
 
 **Package:** `packages/headless/` → publishes as `@soybeanjs/headless`
-**Role:** Logic layer. State, a11y, keyboard nav, focus management. Zero styles. Also hosts Compact aggregations when structure belongs in headless rather than the UI wrapper.
+**Role:** Logic layer. State, a11y, keyboard nav, focus management. Zero visual styles. Also hosts Compact aggregations when structure belongs in headless rather than the UI wrapper. New families must pass [Headless admission](../../.agents/skills/soybean-ui-component-development/layers.md#headless-admission).
 
 ## EXPORTS
 
@@ -27,7 +27,7 @@ After public export changes, rerun `pnpm sui headless` so `packages/headless/src
 - **useUiContext**: High-fanout bridge to the UI layer. Returns `[provideXUi, useUi]`; 67 component contexts currently consume it, so changes require direct contract tests plus broad component verification.
 - **useControllableState**: Controlled/uncontrolled prop pattern. If initial prop is `undefined`, uses internal `shallowRef`; otherwise returns computed proxy.
 - **useForwardElement**: Exposes inner DOM element via `defineExpose`. Prefer over direct DOM access.
-- **Compact components**: Stable, data-driven compositions can live in headless as `{Name}Compact`, reusing base parts while centralizing iteration, slot props, and default content. Current examples span accordion, card, date-field, dialog, editable, hover-card, layout, navigation-menu, pagination, popover, stepper, and table.
+- **Compact components**: Stable, data-driven compositions can live in headless as `{Name}Compact` only for a family that already passed Headless admission. Compact does not admit a new family.
 - **Composing another family**: Per-slot alias vs domain SFC. Rule lives in `.agents/skills/soybean-ui-component-development/layers.md` (Step 3.1). Remediations for Autocomplete, Segment, BottomSheet, and Combobox Anchor/GroupLabel/ItemIndicator are done; remaining aliases are documented Portal/Arrow/Menu-leaf cases.
 - **Type export surface**: UI wrappers should prefer per-component sub-path type re-exports such as `@soybeanjs/headless/dialog`, not ad hoc deep imports.
 
@@ -50,7 +50,8 @@ packages/headless/src/
 ## ANTI-PATTERNS
 
 - **NO imports from `@soybeanjs/ui`** — circular dependency
-- **NO styles** — not even `hidden`, `sr-only`, or inline styles
+- **NO visual token styles** — not even `hidden`, `sr-only`; layout-contract geometry is allowed (admission R8)
 - **NO presentation logic** — colors, sizing, spacing belong in UI layer
+- **NO new family that fails the deletion test** — see Headless admission; do not clone Empty/List/Badge/Skeleton
 - **NO direct DOM mutation** — use Vue refs + `useForwardElement`
 - **NO UI-side reimplementation of stable aggregate structure** — if a data-driven composite is reusable, prefer a headless `*Compact`

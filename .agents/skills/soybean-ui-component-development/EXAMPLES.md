@@ -16,7 +16,7 @@ Why it triggers:
 
 Expected approach:
 
-1. Decide whether `tree` is multi-slot, compact, or single-class.
+1. Decide whether `tree` is admitted to headless ([layers.md -> Headless admission](layers.md#headless-admission)), then whether it is multi-slot, compact, or single-class.
 2. Load this skill and follow [SKILL.md -> Phase order](SKILL.md#phase-order).
 3. Inspect at least one same-pattern headless reference and one UI reference in the repository.
 4. Implement headless first (types.ts -> context.ts -> base SFCs -> optional Compact -> index.ts), then UI (styles recipe -> types.ts -> wrapper.vue -> index.ts).
@@ -101,7 +101,7 @@ Why it triggers:
 
 Expected approach:
 
-1. Load [audit.md](audit.md) for the assessment methodology, seven check dimensions (D1–D7, 105 items), severity levels, and acceptance states.
+1. Load [audit.md](audit.md) for the assessment methodology, seven check dimensions (D1–D7, 106 items), severity levels, and acceptance states.
 2. Run the eight-step assessment flow from [audit.md -> Assessment flow](audit.md#assessment-flow). Grade every finding by severity (Blocker / Major / Minor / Enhancement); do not start the next component while a Blocker is open.
 3. For D2 industry benchmarking, follow [audit.md -> D2. Industry benchmarking](audit.md#d2-industry-benchmarking) (six libraries) and record concrete findings (for example, `input` should add `showCount`).
 4. Apply [audit.md -> Single-component acceptance checklist](audit.md#single-component-acceptance-checklist) before marking the component passed.

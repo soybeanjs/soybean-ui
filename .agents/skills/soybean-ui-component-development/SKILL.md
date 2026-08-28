@@ -7,7 +7,7 @@ description: Builds, updates, and audits SoybeanUI components with headless/UI s
 
 This skill is the single, self-contained source of truth for SoybeanUI component work. It owns pattern classification, phase order, layer rules, delivery surfaces, generation workflow, and the finish-stage checklist. Load it for any task that creates, migrates, extends, standardizes, fixes, or audits a SoybeanUI component.
 
-For detailed rules, see [layers.md](layers.md) (implementation layers), [surfaces.md](surfaces.md) (delivery surfaces), [e2e.md](e2e.md) (browser e2e testing), [process.md](process.md) (finish checklist and commit convention), and [audit.md](audit.md) (assessment methodology, seven check dimensions, and regression flows for already-shipped components). For request shapes that trigger this skill, see [EXAMPLES.md](EXAMPLES.md). TypeScript functional style and Vue SFC structure are owned by the global `typescript-functional-style` and `vue-sfc-structure` skills — load them directly; this skill does not restate their content.
+For detailed rules, see [layers.md](layers.md) (headless admission, implementation layers), [surfaces.md](surfaces.md) (delivery surfaces), [e2e.md](e2e.md) (browser e2e testing), [process.md](process.md) (finish checklist and commit convention), and [audit.md](audit.md) (assessment methodology, seven check dimensions, and regression flows for already-shipped components). For request shapes that trigger this skill, see [EXAMPLES.md](EXAMPLES.md). TypeScript functional style and Vue SFC structure are owned by the global `typescript-functional-style` and `vue-sfc-structure` skills — load them directly; this skill does not restate their content.
 
 ## Repository context
 
@@ -21,6 +21,7 @@ For detailed rules, see [layers.md](layers.md) (implementation layers), [surface
 ## Quick start
 
 1. **Classify the task before editing.**
+   - Headless admission: behavioral family, frozen anatomy shell, UI-only, or compose an existing primitive. See [layers.md -> Headless admission](layers.md#headless-admission).
    - Component pattern: multi-slot base, compact aggregation, or single-class.
    - Scenario: new component, migration or normalization, standards alignment, or audit and evaluation.
    - Delivery scope: headless only, UI only, or full surface.
@@ -43,7 +44,7 @@ Example: "audit the `dialog` component against industry baselines" means audit s
 - Headless exposes multiple slot primitives.
 - Uses `UiSlot` and `UiClass<UiSlot>`.
 - UI injects classes through `provide{Name}Ui(ui)`.
-- Examples: badge, accordion, dialog.
+- Examples: accordion, dialog.
 
 ### Compact aggregation
 
@@ -63,7 +64,8 @@ Example: "audit the `dialog` component against industry baselines" means audit s
 
 ### New or migrated component
 
-1. **Build headless first.**
+0. **Admit or refuse headless.** Apply [layers.md -> Headless admission](layers.md#headless-admission). If refused, skip step 1 and implement UI-only or compose an existing family.
+1. **Build headless first** (admitted families only).
    - `types.ts` -> `context.ts` -> base slot SFCs -> optional `{Name}Compact` -> `index.ts`.
 2. **Build UI second.**
    - `packages/ui/src/styles/{name}.ts` -> `types.ts` -> wrapper `.vue` -> `index.ts`.
@@ -92,7 +94,7 @@ Example: "audit the `dialog` component against industry baselines" means audit s
 
 ### Audit and evaluation of shipped components
 
-1. Load [audit.md](audit.md) for the full assessment methodology, seven check dimensions (D1–D7, 105 items), severity levels, acceptance states, and regression rules.
+1. Load [audit.md](audit.md) for the full assessment methodology, seven check dimensions (D1–D7, 106 items), severity levels, acceptance states, and regression rules.
 2. Run the eight-step assessment flow from [audit.md -> Assessment flow](audit.md#assessment-flow). Grade every finding by severity; do not start the next component while a Blocker is open.
 3. For D2 industry benchmarking, follow [audit.md -> Industry benchmarking](audit.md#d2-industry-benchmarking) (six libraries) and record concrete findings.
 4. Apply the [audit.md -> Single-component acceptance checklist](audit.md#single-component-acceptance-checklist) before marking the component passed.
@@ -105,6 +107,7 @@ Execute in this order. Do not skip ahead until the current phase is done.
 ### Phase 0: Classify pattern, scenario, and scope
 
 - Determine component pattern, task scenario, and whether this is full delivery.
+- For a new family: apply [layers.md -> Headless admission](layers.md#headless-admission) before `types.ts`. If the family is not admitted, implement UI-only or compose an existing family.
 - Do not write code first and reverse-engineer the pattern.
 
 ### Phase 1: Find reference implementations
@@ -116,6 +119,7 @@ Execute in this order. Do not skip ahead until the current phase is done.
 
 ### Phase 2: Implement headless
 
+- Skip this phase when admission refused the family (UI-only or compose existing).
 - Default order: `types.ts` -> `context.ts` -> base slot SFCs -> optional `{Name}Compact` -> `index.ts`.
 - See [layers.md -> Headless](layers.md#headless) for layer rules.
 
@@ -147,9 +151,9 @@ Execute in this order. Do not skip ahead until the current phase is done.
 ## Boundary rules
 
 - Compile-time dependency must remain `packages/ui` -> `packages/headless`. Never import `@soybeanjs/ui` from `packages/headless`.
-- Headless owns logic, state, accessibility, structure aggregation, and default semantics.
+- Headless owns logic, state, accessibility, structure aggregation, and default semantics. Structure aggregation does not by itself admit a new family — see [layers.md -> Headless admission](layers.md#headless-admission).
 - UI owns variants, UnoCSS classes, `ui` injection, and wrapper composition.
-- Do not add styles or visual classes in headless (not even `hidden`, `sr-only`).
+- Do not add visual token styles or utility classes in headless (not even `hidden`, `sr-only`). Geometric layout-contract inline styles are allowed (admission R8).
 - Do not put ARIA, `role`, `tabindex`, keyboard interaction, or state semantics in `packages/ui/src/components`.
 - Do not hand-edit generated files; update source exports and rerun scripts.
 - Avoid adding new helpers before checking existing repository utilities and `@vueuse/core`.
@@ -172,11 +176,11 @@ Execute in this order. Do not skip ahead until the current phase is done.
 
 ## Full delivery surface
 
-New components check every entry; existing component changes sync affected entries:
+New components check every entry that applies; existing component changes sync affected entries. Headless paths apply only when the family passed [Headless admission](layers.md#headless-admission); UI-only components skip the headless directory and barrel.
 
-- `packages/headless/src/components/{component}/`
+- `packages/headless/src/components/{component}/` (admitted families)
 - `packages/ui/src/components/{component}/`
-- `packages/headless/src/index.ts`
+- `packages/headless/src/index.ts` (admitted families)
 - `packages/ui/src/index.ts`
 - `apps/playground/src/examples/ui/{component}/`
 - `apps/docs/src/docs/en/ui/components/{component}.md`

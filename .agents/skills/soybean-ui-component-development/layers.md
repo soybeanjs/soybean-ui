@@ -1,6 +1,6 @@
 # SoybeanUI Implementation Layer Rules
 
-Implementation rules for the headless and UI layers, plus cross-cutting a11y/RTL. The companion [SKILL.md](SKILL.md) owns pattern classification, phase order, and guardrails; [surfaces.md](surfaces.md) owns delivery surface rules; [process.md](process.md) owns finish and commit rules.
+Implementation rules for the headless and UI layers, plus cross-cutting a11y/RTL. [Headless admission](#headless-admission) is the gate for creating a new headless family. The companion [SKILL.md](SKILL.md) owns pattern classification, phase order, and guardrails; [surfaces.md](surfaces.md) owns delivery surface rules; [process.md](process.md) owns finish and commit rules. Existing admission violations are tracked in [docs/headless-admission-remediation.md](../../../docs/headless-admission-remediation.md).
 
 ## Headless
 
@@ -8,11 +8,50 @@ Applies to `packages/headless/src/components/**/*.{ts,vue}`.
 
 ### Responsibility boundary
 
-- Headless only owns logic, state, a11y, structure aggregation, and default semantics.
-- Never add UnoCSS classes, `<style>`, inline styles, or any visual styles (not even `hidden`, `sr-only`).
+- Headless only owns logic, state, a11y, structure aggregation, and default semantics. Structure aggregation does not by itself admit a new family — apply [Headless admission](#headless-admission) first.
+- Never add UnoCSS classes, `<style>`, visual token styles, or utility classes (not even `hidden`, `sr-only`). Geometric inline styles that implement a layout contract are allowed; see [R8](#r8-layout-is-behavior).
 - Never import from `@soybeanjs/ui`.
 - Before writing new logic, check `packages/headless/src/composables/`, `packages/headless/src/shared/`, and `packages/headless/src/types/`.
 - `role`, `aria-*`, `tabindex`, keyboard interaction, focus management, and `dir` semantics are headless responsibilities; concrete rules live in [A11y and RTL](#a11y-and-rtl).
+
+### Headless admission
+
+Gate for **creating a new headless family**. Apply in Phase 0, before `types.ts`. Existing violations are tracked in [docs/headless-admission-remediation.md](../../../docs/headless-admission-remediation.md); do not copy those families as templates.
+
+#### Deletion test
+
+Delete the proposed headless module. If keyboard, focus, ARIA, positioning, form association, or cross-browser geometry would reappear across N UI wrappers, admit it. If only a `div` plus class injection remains, refuse a new family: implement UI-only or compose an existing primitive.
+
+#### R1–R8
+
+**R1 · Deletion test is the gate.** Every new family must pass it. Compact, `provideXUi`, and slot anatomy are not substitutes.
+
+**R2 · Admit when any one holds:**
+
+| Condition                                                | Typical matches                   |
+| :------------------------------------------------------- | :-------------------------------- |
+| WAI-ARIA widget role + APG keyboard                      | Tabs, Menu, Listbox, Tree         |
+| Focus trap, restore, or roving tabindex                  | Dialog, Toolbar, RovingFocus      |
+| Portal + anchor positioning + dismiss                    | Popover, Tooltip, Select          |
+| Selection or open invariants (controlled + uncontrolled) | Checkbox, Accordion, Combobox     |
+| Form association (hidden input, `name`, `required`)      | Checkbox, Slider, Input           |
+| Pointer + keyboard dual input                            | Slider, ColorArea, Splitter       |
+| Locale-sensitive parse or format                         | DateField, TimeField, InputNumber |
+| Cross-browser layout contract that is not just CSS       | AspectRatio, Virtualizer, Affix   |
+
+**R3 · Refuse a new family when:** the component is visual-only; it can be expressed with CSS and slots and has no state; it is a themed composition of an existing primitive (Drawer is Dialog with a side); or the only reason is that a styled library (Ant Design, Element) ships the same name.
+
+**R4 · Anatomy shell is not a template.** A thin headless shell (multi-slot `provideXUi` + Compact) is allowed only when the family already has one real semantic: dismissible state, a landmark/`role`, or a domain wrap of an admitted primitive. Empty and List fail this bar; freeze them, do not clone them.
+
+**R5 · Semantic slots vs decorative slots.** Slots that own `aria-labelledby` / `aria-describedby` / widget `role` (DialogTitle, DialogDescription) stay in headless. Header / Footer / Media chrome is decorative: prefer UI `ExtraUiSlot`, or keep the node internal to Compact. Do not promote decorative chrome to a public primitive contract.
+
+**R6 · Compose before a parallel family.** Alias inner slots with no domain semantics; wrap when the slot owns a11y, context, UI, or `data-soybean-{family-slot}`. Full rule: [Step 3.1](#step-31-composing-an-existing-family). Password, Command, and Drawer are the correct shape; a second menu family beside an existing one is not.
+
+**R7 · Compact is not admission.** Sink aggregation into `{Name}Compact` only for a family that already passed R1–R2. UI wrappers must not iterate `items` or assemble default content once Compact exists. Adding Compact to an anatomy shell does not make that shell a valid new family.
+
+#### R8 · Layout-is-behavior
+
+Geometric inline styles that implement the contract — aspect-ratio padding, affix placeholder size, watermark canvas `backgroundImage`, measured layout CSS variables — belong in headless. Visual tokens (color, font, shadow, radius, spacing utilities) do not.
 
 ### Implementation order
 
@@ -70,7 +109,7 @@ Empty Root shells that only re-emit may alias the inner Root unless they `provid
 
 ### Step 5: Compact aggregation
 
-Sink aggregation logic into headless when:
+Sink aggregation logic into headless only for a family that already passed [Headless admission](#headless-admission), and when:
 
 - Input is list data.
 - Structure is stable.
@@ -107,7 +146,10 @@ Typical headless-owned concerns:
 
 ### Headless anti-patterns
 
-- Adding style classes (including `hidden`, `sr-only`).
+- Adding style classes (including `hidden`, `sr-only`) or visual token inline styles.
+- Opening a new headless family that fails the [deletion test](#deletion-test).
+- Using Empty, List, Badge, or Skeleton as the template for a new family.
+- Adding Compact to an anatomy shell to justify a new family.
 - Direct DOM manipulation (e.g. `document.querySelector`).
 - Storing non-reactive raw values in context.
 - Exporting `use{Name}Ui`.
