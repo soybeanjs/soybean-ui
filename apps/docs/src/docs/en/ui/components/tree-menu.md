@@ -19,7 +19,8 @@ A collapsible sidebar navigation tree-menu component. `STreeMenu` combines the h
 - 🔗 Link items — `to`/`href` render route links or external links (`external` controls behavior); external links show an arrow-up-right icon automatically
 - 🗂️ Grouping — `isGroup` groups with the `group-label` slot; `top`/`bottom` slots host menu header/footer content
 - 🎨 8 sizes + style injection — `size` from xs to 2xl; `class`/`ui` overrides across 20+ named slots
-- ♿ Accessibility — native button semantics with `aria-expanded`/`aria-controls`/`aria-label`, `data-soybean-tree-menu-*` data attributes, zero axe violations
+- ⌨️ Keyboard navigation — WAI-ARIA tree pattern: the root is a single tab stop with `role="tree"`, ↑/↓ roam visible items, → expands or enters children, ← collapses or returns to the parent, Home/End jump to the first/last item, and Enter/Space activates (direction keys only move focus — they never change the active item)
+- ♿ Accessibility — `role="tree"`/`treeitem` semantics with `aria-expanded`/`aria-controls`/`aria-selected`, roving tabindex, `data-soybean-tree-menu-*` data attributes, zero axe violations
 
 ## Component family
 
@@ -46,7 +47,7 @@ A collapsible sidebar navigation tree-menu component. `STreeMenu` combines the h
 
 ### Architecture and benchmark differences
 
-`TreeMenuRoot` owns all state (activation/expansion/collapse through the `useControllableState` controlled/uncontrolled dual channels). On collapse it stashes the expanded branches via `backupExpanded`, clears expansion, and triggers the flyout menus; on recovery it restores the branches verbatim — a lossless collapse/expand round trip. Composition happens in the headless layer: `TreeMenuOptionCompact` orchestrates leaves (button/link + action menu) and parents (Collapsible trigger + recursive `TreeMenuSub` + flyout menu), while the UI `STreeMenu` only injects the size recipe and slot classes and carries no state. Both the action menu and the flyout menu reuse the data-driven `DropdownMenuCompact` (rendered by `MenuOptions`). Keyboard accessibility builds on native buttons with `aria-expanded`/`aria-controls` to express the hierarchy (rather than `role="tree"` roving tabindex), and the axe scan reports zero violations. Compared with mainstream sidebar-menu libraries, SoybeanUI is more complete in headless separation, built-in action menus, collapsed flyouts, external link items, and 13-language localization.
+`TreeMenuRoot` owns all state (activation/expansion/collapse through the `useControllableState` controlled/uncontrolled dual channels). On collapse it stashes the expanded branches via `backupExpanded`, clears expansion, and triggers the flyout menus; on recovery it restores the branches verbatim — a lossless collapse/expand round trip. Composition happens in the headless layer: `TreeMenuOptionCompact` orchestrates leaves (button/link + action menu) and parents (Collapsible trigger + recursive `TreeMenuSub` + flyout menu), while the UI `STreeMenu` only injects the size recipe and slot classes and carries no state. Both the action menu and the flyout menu reuse the data-driven `DropdownMenuCompact` (rendered by `MenuOptions`). The root follows the WAI-ARIA tree pattern — a single roving tab stop with `role="tree"`, `treeitem` items, and `group` sub-lists — and the axe scan reports zero violations. Compared with mainstream sidebar-menu libraries, SoybeanUI is more complete in headless separation, built-in action menus, collapsed flyouts, external link items, and 13-language localization.
 
 | Capability                            | SoybeanUI | Ant Design | Element Plus | Naive UI |
 | :------------------------------------ | :-------: | :--------: | :----------: | :------: |
@@ -63,6 +64,8 @@ A collapsible sidebar navigation tree-menu component. `STreeMenu` combines the h
 
 ### Cautions
 
+- Keyboard navigation follows the WAI-ARIA tree pattern: ↑/↓ (and Home/End) roam the visible items without wrapping, → expands a closed branch then enters its first child, ← collapses an expanded branch then returns to the parent, and Enter/Space activate the focused item. Direction keys only move focus — the active item only changes on explicit activation.
+- In collapsed mode the flyout branch popups are owned by the Menu machinery; the tree roaming applies to the rail items only.
 - In collapsed mode (`collapsed`) the action menu (`actions`) is hidden; the action button only renders in expanded mode.
 - The collapsed flyout defaults to `hover` triggering; switch it via `dropdownMenuProps.trigger: 'click'`.
 - Toggling `collapsed` stashes and restores the expansion state; the original expanded branches survive the collapse round trip.
@@ -74,6 +77,10 @@ A collapsible sidebar navigation tree-menu component. `STreeMenu` combines the h
 - `size` supports 8 steps from xs to 2xl; style overrides are injected via `ui` (20+ named slots) and the root `class`.
 
 ## FAQ
+
+### Which keyboard shortcuts does the tree menu support?
+
+The menu is a single tab stop following the WAI-ARIA tree pattern: entering the tree focuses the active item (or the first one), ↑/↓ roam visible items (skipping disabled ones), → expands a closed branch and a second press enters its first child, ← collapses or returns to the parent, Home/End jump to the first/last visible item, and Enter/Space activate.
 
 ### How do I build a collapsible sidebar menu?
 

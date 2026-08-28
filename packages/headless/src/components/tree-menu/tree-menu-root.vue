@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue';
+import { computed, shallowRef, useTemplateRef, watch } from 'vue';
 import type { CSSProperties } from 'vue';
+import { getTreeNavigationKey, resolveTreeNavigation } from '../../shared';
+import type { TreeNavigationNode } from '../../shared';
+import { useDirection } from '../config-provider/context';
 import { useControllableState } from '../../composables';
+import { RovingFocusGroup } from '../roving-focus';
 import { treeMenuCssVars } from './shared';
 import { provideTreeMenuRootContext, useTreeMenuUi } from './context';
 import type { TreeMenuRootProps, TreeMenuCollapsedState, TreeMenuRootEmits } from './types';
@@ -24,6 +28,8 @@ const props = withDefaults(defineProps<TreeMenuRootProps>(), {
 const emit = defineEmits<TreeMenuRootEmits>();
 
 const cls = useTreeMenuUi('root');
+
+const dir = useDirection();
 
 const modelValue = useControllableState(
   () => props.modelValue,
@@ -79,16 +85,80 @@ watch(collapsed, value => {
   }
 });
 
+// Keyboard navigation ---------------------------------------------------------
+//
+// Roving focus owns the single tab stop and the vertical keys (↑/↓/Home/End
+// roam the rendered items). The horizontal keys are resolved here against the
+// flattened visible tree published by `TreeMenuOptionsCompact`: `→` expands a
+// closed branch or moves into its first child, `←` collapses an expanded
+// branch or returns to the parent.
+
+const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
+
+const navigationNodes = shallowRef<TreeNavigationNode[]>([]);
+
+const setNavigationNodes = (nodes: TreeNavigationNode[]) => {
+  navigationNodes.value = nodes;
+};
+
+function toggleExpanded(value: string) {
+  expanded.value = expanded.value.includes(value)
+    ? expanded.value.filter(item => item !== value)
+    : [...expanded.value, value];
+}
+
+function onTreeKeydown(event: KeyboardEvent) {
+  if (collapsed.value) return;
+  if (event.shiftKey || event.altKey || event.ctrlKey || event.metaKey) return;
+
+  // Vertical keys are already handled by the roving focus group.
+  const key = getTreeNavigationKey(event);
+  if (key !== 'left' && key !== 'right') return;
+
+  const target = event.target;
+  if (!(target instanceof HTMLElement)) return;
+
+  const items = rovingFocusGroupRef.value?.getItems() ?? [];
+  if (!items.some(item => item.element === target)) return;
+
+  const currentValue = target.dataset.value ?? '';
+  const result = resolveTreeNavigation(navigationNodes.value, currentValue, key, dir.value);
+
+  if (!result) return;
+
+  event.preventDefault();
+
+  if (result.toggleExpand) {
+    toggleExpanded(currentValue);
+    return;
+  }
+
+  if (result.targetValue) {
+    items.find(item => item.element.dataset.value === result.targetValue)?.element.focus();
+  }
+}
+
 provideTreeMenuRootContext({
   modelValue,
   expanded,
   collapsed,
-  expandStrategy
+  expandStrategy,
+  navigationNodes,
+  setNavigationNodes
 });
 </script>
 
 <template>
-  <div data-soybean-tree-menu-root :class="cls" :data-state="dataState" :style="style">
-    <slot />
-  </div>
+  <RovingFocusGroup ref="rovingFocusGroupRef" as-child orientation="vertical" :dir="dir" :loop="false">
+    <div
+      data-soybean-tree-menu-root
+      :class="cls"
+      :data-state="dataState"
+      :style="style"
+      role="tree"
+      @keydown="onTreeKeydown"
+    >
+      <slot />
+    </div>
+  </RovingFocusGroup>
 </template>

@@ -109,6 +109,36 @@ const disabledItems = [
   }
 ];
 
+const keyboardItems = [
+  {
+    value: 'overview',
+    label: 'Overview'
+  },
+  {
+    value: 'locked',
+    label: 'Locked',
+    disabled: true
+  },
+  {
+    value: 'projects',
+    label: 'Projects'
+  },
+  {
+    value: 'settings',
+    label: 'Settings',
+    children: [
+      {
+        value: 'profile',
+        label: 'Profile'
+      },
+      {
+        value: 'security',
+        label: 'Security'
+      }
+    ]
+  }
+];
+
 function getButtonWithText(wrapper: VueWrapper, label: string) {
   const button = wrapper.findAll('[data-soybean-tree-menu-button]').find(item => item.text().includes(label));
 
@@ -714,6 +744,180 @@ describe('STreeMenu', () => {
       });
 
       expect(wrapper.find('[data-soybean-tree-menu-button][data-active="true"]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('keyboard navigation', () => {
+    it('exposes the tree semantics', () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          defaultExpanded: ['settings']
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-tree-menu-root]').attributes('role')).toBe('tree');
+
+      const item = wrapper.find('[data-soybean-tree-menu-item]');
+
+      // The item wrapper carries the treeitem role and its selection state.
+      expect(item.attributes('role')).toBe('treeitem');
+      expect(item.attributes('aria-selected')).toBe('false');
+
+      // Nested lists become groups.
+      expect(wrapper.find('[data-soybean-tree-menu-sub]').attributes('role')).toBe('group');
+
+      wrapper.unmount();
+    });
+
+    it('converges to a single tab stop and focuses the active item on entry', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items: keyboardItems,
+          defaultExpanded: ['settings'],
+          defaultValue: 'profile'
+        },
+        attachTo: document.body
+      });
+
+      const buttons = wrapper.findAll('[data-soybean-tree-menu-button]');
+
+      // Every item is removed from the natural tab order.
+      buttons.forEach(button => {
+        expect(button.attributes('tabindex')).toBe('-1');
+      });
+
+      // Entering the tree focuses the active item.
+      await wrapper.find('[data-soybean-tree-menu-root]').trigger('focus');
+      await nextTick();
+
+      expect(document.activeElement?.textContent).toContain('Profile');
+      expect(getButtonWithText(wrapper, 'Profile').attributes('tabindex')).toBe('0');
+
+      wrapper.unmount();
+    });
+
+    it('roams visible items with ↓/↑, skips disabled items and stops at the edges', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items: keyboardItems
+        },
+        attachTo: document.body
+      });
+
+      const [overview, , projects] = wrapper.findAll('[data-soybean-tree-menu-button]');
+
+      (overview.element as HTMLElement).focus();
+
+      // The disabled "locked" item is skipped.
+      await overview.trigger('keydown', { key: 'ArrowDown' });
+      await nextTick();
+
+      expect(document.activeElement).toBe(projects.element);
+
+      // No wrap-around at the end: focus stays on the last item.
+      const settings = getButtonWithText(wrapper, 'Settings');
+      (settings.element as HTMLElement).focus();
+
+      await settings.trigger('keydown', { key: 'ArrowDown' });
+      await nextTick();
+
+      expect(document.activeElement).toBe(settings.element);
+
+      await settings.trigger('keydown', { key: 'ArrowUp' });
+      await nextTick();
+
+      expect(document.activeElement).toBe(projects.element);
+
+      wrapper.unmount();
+    });
+
+    it('expands, enters children, returns to the parent and collapses with ←/→', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items: keyboardItems
+        },
+        attachTo: document.body
+      });
+
+      const settings = getButtonWithText(wrapper, 'Settings');
+      (settings.element as HTMLElement).focus();
+
+      // Closed branch: expands in place, focus does not move.
+      await settings.trigger('keydown', { key: 'ArrowRight' });
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('true');
+      expect(document.activeElement).toBe(settings.element);
+
+      // Expanded branch: moves into the first child.
+      await settings.trigger('keydown', { key: 'ArrowRight' });
+      await nextTick();
+
+      expect(document.activeElement?.textContent).toContain('Profile');
+
+      // Leaf child: ← returns to the parent.
+      const profile = getButtonWithText(wrapper, 'Profile');
+      await profile.trigger('keydown', { key: 'ArrowLeft' });
+      await nextTick();
+
+      expect(document.activeElement).toBe(settings.element);
+
+      // Expanded branch: ← collapses in place.
+      await settings.trigger('keydown', { key: 'ArrowLeft' });
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('false');
+      expect(document.activeElement).toBe(settings.element);
+
+      wrapper.unmount();
+    });
+
+    it('treats ← on a root-level leaf as a no-op', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items: keyboardItems
+        },
+        attachTo: document.body
+      });
+
+      const overview = getButtonWithText(wrapper, 'Overview');
+      (overview.element as HTMLElement).focus();
+
+      await overview.trigger('keydown', { key: 'ArrowLeft' });
+      await nextTick();
+
+      expect(document.activeElement).toBe(overview.element);
+      expect(wrapper.emitted('update:expanded')).toBeFalsy();
+
+      wrapper.unmount();
+    });
+
+    it('jumps to the first and last visible item with Home/End', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items: keyboardItems,
+          defaultExpanded: ['settings']
+        },
+        attachTo: document.body
+      });
+
+      const security = getButtonWithText(wrapper, 'Security');
+      (security.element as HTMLElement).focus();
+
+      await security.trigger('keydown', { key: 'Home' });
+      await nextTick();
+
+      expect(document.activeElement?.textContent).toContain('Overview');
+
+      const overview = getButtonWithText(wrapper, 'Overview');
+      await overview.trigger('keydown', { key: 'End' });
+      await nextTick();
+
+      expect(document.activeElement?.textContent).toContain('Security');
 
       wrapper.unmount();
     });

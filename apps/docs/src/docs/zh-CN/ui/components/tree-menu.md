@@ -19,7 +19,8 @@
 - 🔗 链接项 — `to`/`href` 渲染为路由链接或外链（`external` 控制），外链自动显示跳转图标
 - 🗂️ 分组 — `isGroup` 分组 + `group-label` 插槽；`top`/`bottom` 插槽承载菜单首尾内容
 - 🎨 8 档尺寸 + 样式注入 — `size` xs~2xl，`class`/`ui` 按 20+ 命名插槽覆盖样式
-- ♿ 无障碍 — 原生 button 语义 + `aria-expanded`/`aria-controls`/`aria-label`，`data-soybean-tree-menu-*` 数据属性，axe 扫描零违规
+- ⌨️ 键盘导航 — 遵循 WAI-ARIA tree 模式：根元素为单一 Tab 停留点并携带 `role="tree"`，↑/↓ 在可见条目间漫游，→ 展开分支或进入首个子项，← 折叠分支或回到父项，Home/End 跳转首尾项，Enter/Space 显式激活（方向键只漫游焦点，不改变选中项）
+- ♿ 无障碍 — `role="tree"`/`treeitem` 语义 + `aria-expanded`/`aria-controls`/`aria-selected`、roving tabindex、`data-soybean-tree-menu-*` 数据属性，axe 扫描零违规
 
 ## 组件家族
 
@@ -46,7 +47,7 @@
 
 ### 架构与对标差异
 
-`TreeMenuRoot` 持有全部状态（激活/展开/折叠经 `useControllableState` 受控/非受控双通道）；折叠切换时用 `backupExpanded` 暂存展开分支、清空展开并触发折叠弹出菜单，恢复折叠时原样还原——折叠/展开无损往返。紧凑组合在 headless 层完成：`TreeMenuOptionCompact` 编排叶子（按钮/链接 + 操作菜单）与父项（Collapsible 触发器 + 递归 `TreeMenuSub` + 折叠弹出菜单），UI 层 `STreeMenu` 只注入尺寸配方与插槽类，不承载任何状态。操作菜单与折叠弹出菜单均复用数据驱动的 `DropdownMenuCompact`（`MenuOptions` 渲染）。键盘可访问性基于原生 button + `aria-expanded`/`aria-controls` 表达层级（而非 `role="tree"` roving tabindex），axe 扫描零违规。对比主流侧边菜单库，SoybeanUI 在 headless 分离、内建操作菜单、折叠弹出、外链项与 13 语言本地化上更完整。
+`TreeMenuRoot` 持有全部状态（激活/展开/折叠经 `useControllableState` 受控/非受控双通道）；折叠切换时用 `backupExpanded` 暂存展开分支、清空展开并触发折叠弹出菜单，恢复折叠时原样还原——折叠/展开无损往返。紧凑组合在 headless 层完成：`TreeMenuOptionCompact` 编排叶子（按钮/链接 + 操作菜单）与父项（Collapsible 触发器 + 递归 `TreeMenuSub` + 折叠弹出菜单），UI 层 `STreeMenu` 只注入尺寸配方与插槽类，不承载任何状态。操作菜单与折叠弹出菜单均复用数据驱动的 `DropdownMenuCompact`（`MenuOptions` 渲染）。根元素遵循 WAI-ARIA tree 模式——单一 roving 停留点、`role="tree"`、`treeitem` 条目与 `group` 子列表，axe 扫描零违规。对比主流侧边菜单库，SoybeanUI 在 headless 分离、内建操作菜单、折叠弹出、外链项与 13 语言本地化上更完整。
 
 | 能力                         | SoybeanUI | Ant Design | Element Plus | Naive UI |
 | :--------------------------- | :-------: | :--------: | :----------: | :------: |
@@ -63,6 +64,8 @@
 
 ### 注意事项
 
+- 键盘导航遵循 WAI-ARIA tree 模式：↑/↓（及 Home/End）在可见条目间漫游且首尾不循环，→ 展开闭合分支、再次按下进入首个子项，← 折叠已展开分支或回到父项，Enter/Space 显式激活；方向键只移动焦点，选中项仅在显式激活时变化。
+- 折叠模式下弹出子菜单由 Menu 机制接管键盘，树漫游只作用于侧栏条目本身。
 - 折叠模式（`collapsed`）下隐藏操作菜单（`actions`），操作按钮仅在展开模式渲染。
 - 折叠时子菜单弹出默认 `hover` 触发，可经 `dropdownMenuProps.trigger` 切换为 `click`。
 - `collapsed` 切换会暂存并恢复展开状态；从折叠返回后仍保留原有展开分支。
@@ -74,6 +77,10 @@
 - `size` 支持 xs~2xl 8 档；样式覆盖经 `ui`（20+ 命名插槽）与根 `class` 注入。
 
 ## 常见问题
+
+### 树菜单支持哪些键盘快捷键？
+
+菜单是单一 Tab 停留点并遵循 WAI-ARIA tree 模式：进入树时聚焦选中项（否则首项），↑/↓ 在可见条目间漫游（自动跳过禁用项），→ 展开闭合分支、再次按下进入首个子项，← 折叠或回到父项，Home/End 跳转首尾可见项，Enter/Space 显式激活。
 
 ### 如何实现可折叠的侧边栏菜单？
 

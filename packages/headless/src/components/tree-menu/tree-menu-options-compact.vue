@@ -1,10 +1,10 @@
 <script setup lang="ts" generic="T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData">
-import { computed, watch } from 'vue';
+import { computed, watch, watchEffect } from 'vue';
 import { keysOf } from '@soybeanjs/utils';
 import { getTreePaths } from '../../shared';
 import { usePickProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
-import { filterHiddenTreeMenuOptions, getActiveExpandValues } from './shared';
+import { filterHiddenTreeMenuOptions, flattenTreeMenuNavigationNodes, getActiveExpandValues } from './shared';
 import { useTreeMenuRootContext } from './context';
 import TreeMenuGroupLabel from './tree-menu-group-label.vue';
 import TreeMenuGroupRoot from './tree-menu-group-root.vue';
@@ -44,7 +44,8 @@ const forwardedOptionProps = usePickProps(props, [
   'subProps'
 ]);
 
-const { modelValue, collapsed, expandStrategy, onExpandedChange } = useTreeMenuRootContext('TreeMenuCompactOptions');
+const { modelValue, expanded, collapsed, expandStrategy, onExpandedChange, setNavigationNodes } =
+  useTreeMenuRootContext('TreeMenuCompactOptions');
 
 const items = computed(() => filterHiddenTreeMenuOptions(props.items));
 
@@ -69,6 +70,15 @@ watch(
   },
   { immediate: true }
 );
+
+// Keyboard navigation ---------------------------------------------------------
+//
+// The root resolves `←`/`→` against the flattened visible tree, but the items
+// data lives here — publish it whenever the items or expansion change.
+
+watchEffect(() => {
+  setNavigationNodes(flattenTreeMenuNavigationNodes(items.value, value => expanded.value.includes(value)));
+});
 </script>
 
 <template>

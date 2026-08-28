@@ -1,4 +1,5 @@
 import { getTreePaths } from '../../shared';
+import type { TreeNavigationNode } from '../../shared';
 import type { TreeMenuBaseOptionData, TreeMenuOptionData } from './types';
 
 export const treeMenuCssVars = {
@@ -49,4 +50,44 @@ export function filterHiddenTreeMenuOptions<T extends TreeMenuBaseOptionData>(
       }
       return newItem;
     });
+}
+
+/**
+ * Flatten the visible tree into keyboard navigation nodes.
+ *
+ * Hidden items are skipped, group containers stay transparent (their children
+ * keep the group's level), and a branch's children are only emitted while the
+ * branch is expanded — so the result matches the rendered DOM order exactly.
+ */
+export function flattenTreeMenuNavigationNodes<T extends TreeMenuBaseOptionData>(
+  items: TreeMenuOptionData<T>[],
+  isExpanded: (value: string) => boolean
+): TreeNavigationNode[] {
+  const nodes: TreeNavigationNode[] = [];
+
+  const walk = (list: TreeMenuOptionData<T>[], level: number) => {
+    for (const item of list) {
+      if (item.hidden) continue;
+
+      // Group containers never receive focus; only their children do.
+      if (item.isGroup) {
+        walk(item.children ?? [], level);
+        continue;
+      }
+
+      const children = item.children ?? [];
+      const hasChildren = children.some(child => !child.hidden);
+      const expanded = hasChildren && isExpanded(item.value);
+
+      nodes.push({ value: item.value, level, hasChildren, expanded, disabled: item.disabled });
+
+      if (expanded) {
+        walk(children, level + 1);
+      }
+    }
+  };
+
+  walk(items, 0);
+
+  return nodes;
 }

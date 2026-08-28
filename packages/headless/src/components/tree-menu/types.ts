@@ -1,4 +1,5 @@
 import type { ComputedRef, ShallowRef } from 'vue';
+import type { TreeNavigationNode } from '../../shared';
 import type { BaseProps, HorizontalSide, UiClass } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type { BadgeCompactProps } from '../badge/types';
@@ -408,6 +409,15 @@ export interface TreeMenuRootContextParams {
    * Expand strategy used by the component context.
    */
   expandStrategy: ComputedRef<TreeMenuExpandStrategy>;
+  /**
+   * Flattened visible tree used to resolve horizontal navigation keys. Owned by
+   * the root; the options compact publishes it via `setNavigationNodes`.
+   */
+  navigationNodes: ShallowRef<TreeNavigationNode[]>;
+  /**
+   * Publish the flattened visible tree for keyboard navigation.
+   */
+  setNavigationNodes(nodes: TreeNavigationNode[]): void;
 }
 
 /**
