@@ -190,7 +190,10 @@ function useRovingFocusItem(options: UseRovingFocusItemOptions = {}) {
       tabindex: isCurrentTabStop.value ? '0' : '-1',
       'data-soybean-collection-item': '',
       'data-orientation': orientation.value,
-      'data-active': active?.value ? '' : undefined,
+      // Only expose the key when the item is active: mergeProps lets extra
+      // props override with `undefined`, which would wipe a child's own
+      // `data-active` binding.
+      ...(active?.value ? { 'data-active': '' } : {}),
       'data-disabled': !focusable.value ? '' : undefined
     };
   });
