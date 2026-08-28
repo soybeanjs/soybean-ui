@@ -1,7 +1,6 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
 import type { VariantProps } from '@soybeanjs/cva';
-import { miniButtonIconVariants } from './button';
 import {
   fieldAffordanceIcon,
   fieldChrome,
@@ -9,7 +8,9 @@ import {
   fieldDisabled,
   fieldSize,
   fieldTriggerFocus
-} from './field';
+} from './_field';
+import { overlayArrow, overlayMotion, overlayShadow, overlaySurface } from './_overlay';
+import { miniButtonIconVariants } from './button';
 
 export const selectVariants = scv({
   extendBase: props => ({
@@ -27,12 +28,7 @@ export const selectVariants = scv({
     value: 'grow truncate text-start',
     clear: fieldClearReveal,
     positioner: '',
-    popup: [
-      `relative z-50 min-w-32 rounded-md border bg-popover text-popover-foreground shadow-md`,
-      `data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95`,
-      `data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95`,
-      `data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`
-    ],
+    popup: ['relative z-50 min-w-32', overlaySurface, overlayShadow, ...overlayMotion],
     viewport: '',
     group: '',
     groupLabel: `font-medium text-muted-foreground`,
@@ -45,7 +41,7 @@ export const selectVariants = scv({
     separator: `-mx-1 my-1 h-px bg-muted`,
     scrollUpButton: `flex items-center justify-center cursor-default`,
     scrollDownButton: `flex items-center justify-center cursor-default`,
-    arrow: 'w-1em h-0.5em fill-popover stroke-border'
+    arrow: overlayArrow
   },
   variants: {
     size: {

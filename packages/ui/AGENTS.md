@@ -50,6 +50,8 @@ packages/ui/src/
 
 Size uses `ThemeSize` (`xs|sm|md|lg|xl|2xl`). Color uses `ThemeColor` (8 values including `primary`, `destructive`, `success`, etc.).
 
+Shared class tokens (not component recipes) live in `_*.ts` files next to recipes: `_field.ts` for form chrome, `_overlay.ts` for floating popup chrome. Recipes reuse those fragments, or inherit a sibling recipe via `extend` / `alias` / `extendBase`. Do not extract a new `_*.ts` unless the same fragment is copied across unrelated recipes.
+
 ## INTEGRATIONS
 
 - **Nuxt**: `@soybeanjs/ui/nuxt` module for auto component registration

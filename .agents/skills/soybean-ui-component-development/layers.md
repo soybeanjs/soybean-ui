@@ -124,6 +124,7 @@ Applies to `packages/ui/src/components/**/*.{ts,vue}`.
 
 - First line must be `// @unocss-include`.
 - Use `@soybeanjs/cva`'s `cv()` or `scv()` to define the style recipe.
+- Same-family recipes reuse via `extend` / `alias` / `extendBase`. Cross-family chrome fragments live in `_*.ts` next to recipes (`_field.ts`, `_overlay.ts`); compose those tokens instead of copying class strings. Do not extract a new `_*.ts` unless the same fragment is copied across unrelated recipes.
 - `slots` keys must match headless `{Name}UiSlot` exactly.
 - Custom CSS variables use the `--soybean-` prefix.
 - Direction-related styles follow [A11y and RTL](#a11y-and-rtl): prefer logical properties and logical alignment classes; only use `rtl:` modifiers when logical properties cannot express the intent.

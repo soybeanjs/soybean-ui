@@ -1,6 +1,5 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
-import { miniButtonIconVariants } from './button';
 import {
   fieldAffordanceIcon,
   fieldChrome,
@@ -9,7 +8,9 @@ import {
   fieldMultiple,
   fieldSize,
   fieldTriggerFocus
-} from './field';
+} from './_field';
+import { overlayArrow, overlayMotion, overlayShadow, overlaySurface } from './_overlay';
+import { miniButtonIconVariants } from './button';
 
 export const cascaderVariants = scv({
   extendBase: props => ({
@@ -38,12 +39,7 @@ export const cascaderVariants = scv({
     ],
     searchInput: 'w-full grow bg-transparent outline-none placeholder:text-muted-foreground',
     positioner: '',
-    popup: [
-      'relative z-50 rounded-md border bg-popover text-popover-foreground shadow-md',
-      'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
-      'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
-      'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2'
-    ],
+    popup: ['relative z-50', overlaySurface, overlayShadow, ...overlayMotion],
     panel: 'flex items-stretch',
     menu: ['overflow-y-auto overflow-x-hidden', 'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-muted'],
     option: [
@@ -57,7 +53,7 @@ export const cascaderVariants = scv({
     optionArrow:
       'shrink-0 rounded-sm p-0.5 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground',
     empty: 'flex items-center justify-center w-full text-muted-foreground',
-    arrow: 'w-1em h-0.5em fill-popover stroke-border'
+    arrow: overlayArrow
   },
   variants: {
     size: {

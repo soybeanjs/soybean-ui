@@ -1,11 +1,14 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
+import { overlayArrow, overlaySurface } from './_overlay';
 
 export const navigationMenuVariants = scv({
   slots: {
     root: `group`,
     viewport: [
-      `fixed z-50 origin-top-center overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg`,
+      `fixed z-50 origin-top-center overflow-hidden`,
+      overlaySurface,
+      'shadow-lg',
       `start-[--soybean-navigation-menu-viewport-left] top-[--soybean-navigation-menu-viewport-top]`,
       `h-[--soybean-navigation-menu-viewport-height] w-[--soybean-navigation-menu-viewport-width]`,
       `transition-all duration-200 ease-out`,
@@ -19,7 +22,7 @@ export const navigationMenuVariants = scv({
       `data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52`,
       `rtl:data-[motion=from-end]:slide-in-from-left-52 rtl:data-[motion=from-start]:slide-in-from-right-52 rtl:data-[motion=to-end]:slide-out-to-left-52 rtl:data-[motion=to-start]:slide-out-to-right-52`
     ],
-    arrow: `w-1em h-0.5em fill-popover stroke-border rotate-180 group-data-[orientation=vertical]:rotate-90`,
+    arrow: [overlayArrow, 'rotate-180 group-data-[orientation=vertical]:rotate-90'],
     list: [
       `group grow flex items-center justify-center my-0 list-none`,
       `group-data-[orientation=vertical]:flex-col group-data-[orientation=vertical]:items-stretch`

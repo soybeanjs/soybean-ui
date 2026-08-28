@@ -1,6 +1,7 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
 import { kbdVariants } from '@/styles/kbd';
+import { overlayArrow, overlayLayer, overlayMotion, overlayShadow, overlaySurface } from './_overlay';
 
 export const menuVariants = scv({
   extendBase: props => ({
@@ -8,18 +9,10 @@ export const menuVariants = scv({
   }),
   slots: {
     positioner: '',
-    popup: [
-      `z-50 min-w-max rounded-md border bg-popover text-popover-foreground shadow-md will-change-transform outline-none`,
-      `data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95`,
-      `data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`
-    ],
-    arrow: 'w-1em h-0.5em fill-popover stroke-border',
+    popup: ['min-w-max', overlaySurface, overlayShadow, overlayLayer, ...overlayMotion],
+    arrow: overlayArrow,
     subPositioner: '',
-    subPopup: [
-      `z-50 min-w-32 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg will-change-transform outline-none`,
-      `data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95`,
-      `data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`
-    ],
+    subPopup: ['min-w-32 overflow-hidden', overlaySurface, 'shadow-lg', overlayLayer, ...overlayMotion],
     group: '',
     groupLabel: 'flex items-center font-medium text-muted-foreground',
     checkboxGroup: '',

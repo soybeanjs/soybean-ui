@@ -1,8 +1,8 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
 import type { VariantProps } from '@soybeanjs/cva';
+import { fieldChrome, fieldClearReveal, fieldDisabled } from './_field';
 import { miniButtonIconVariants } from './button';
-import { fieldChrome, fieldClearReveal, fieldDisabled } from './field';
 
 export const textareaVariants = scv({
   extendBase: props => ({

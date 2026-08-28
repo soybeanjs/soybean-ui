@@ -1,7 +1,7 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
+import { fieldAffordanceIcon, fieldClearReveal } from './_field';
 import { miniButtonIconVariants } from './button';
-import { fieldAffordanceIcon, fieldClearReveal } from './field';
 import { kbdVariants } from './kbd';
 
 export const commandVariants = scv({

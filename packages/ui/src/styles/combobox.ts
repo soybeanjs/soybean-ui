@@ -1,6 +1,5 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
-import { miniButtonIconVariants } from './button';
 import {
   fieldAffordanceIcon,
   fieldChrome,
@@ -8,7 +7,9 @@ import {
   fieldDisabled,
   fieldSize,
   fieldTriggerFocus
-} from './field';
+} from './_field';
+import { overlayMotion, overlayShadow, overlaySurface } from './_overlay';
+import { miniButtonIconVariants } from './button';
 
 export const comboboxVariants = scv({
   extendBase: props => ({
@@ -30,10 +31,10 @@ export const comboboxVariants = scv({
     cancel: 'shrink-0',
     positioner: '',
     popup: [
-      'relative z-50 min-w-32 w-[--soybean-combobox-trigger-width] rounded-md border bg-popover text-popover-foreground shadow-md',
-      'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
-      'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
-      'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2'
+      'relative z-50 min-w-32 w-[--soybean-combobox-trigger-width]',
+      overlaySurface,
+      overlayShadow,
+      ...overlayMotion
     ],
     arrow: 'fill-popover',
     viewport: 'overflow-x-hidden overflow-y-auto',

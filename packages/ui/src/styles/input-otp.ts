@@ -1,6 +1,6 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
-import { fieldDisabled } from './field';
+import { fieldDisabled } from './_field';
 
 export const inputOtpVariants = scv({
   slots: {

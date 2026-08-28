@@ -1,14 +1,11 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
+import { overlayArrow, overlayEnter, overlayLeave, overlaySurface } from './_overlay';
 
 export const navMenuVariants = scv({
   slots: {
     root: `group`,
-    viewport: [
-      `z-50 rounded-md border bg-popover text-popover-foreground shadow-lg will-change-transform`,
-      `data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95`,
-      `data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95`
-    ],
+    viewport: [overlaySurface, 'z-50 shadow-lg will-change-transform', overlayEnter, overlayLeave],
     content: `w-auto`,
     list: [
       `group grow flex items-center justify-center my-0 list-none`,
@@ -43,15 +40,12 @@ export const navMenuVariants = scv({
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     subTriggerIcon: 'ms-auto shrink-0 text-muted-foreground',
-    subContent: [
-      `z-50 min-w-8rem rounded-md border bg-popover text-popover-foreground shadow-lg will-change-transform`,
-      `data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95`
-    ],
+    subContent: ['min-w-8rem', overlaySurface, 'z-50 shadow-lg will-change-transform', overlayEnter],
     linkIcon: 'shrink-0 self-start text-muted-foreground rtl:rotate-270',
     subLinkContent: `grow flex flex-col items-start`,
     subLinkLabel: `font-medium leading-none`,
     subLinkDescription: `line-clamp-2 text-muted-foreground leading-snug m-0`,
-    arrow: 'w-1em h-0.5em fill-popover stroke-border',
+    arrow: overlayArrow,
     positioner: 'data-[settled]:transition-transform-200'
   },
   variants: {

@@ -1,16 +1,12 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
+import { overlayArrow, overlayPopup } from './_overlay';
 
 export const hoverCardVariants = scv({
   slots: {
     positioner: 'w-max',
-    popup: [
-      'z-50 w-64 rounded-md border bg-popover text-popover-foreground shadow-md outline-none will-change-transform',
-      'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
-      'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
-      'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2'
-    ],
-    arrow: 'w-1em h-0.5em fill-popover stroke-border'
+    popup: ['w-64', ...overlayPopup],
+    arrow: overlayArrow
   },
   variants: {
     size: {

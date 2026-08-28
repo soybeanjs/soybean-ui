@@ -162,7 +162,7 @@ Execute in this order. Do not skip ahead until the current phase is done.
 - `use{Name}Ui('root')` -> `ComputedRef<ClassValue>` (single slot); `use{Name}Ui()` -> full map.
 - For multi-slot wrappers, pass `props.ui` and `{ root: props.class }` directly into the `scv()` recipe call.
 - Multi-slot: only export `provide{Name}Ui` from headless barrel; never export `use{Name}Ui`.
-- `packages/ui/src/styles/{name}.ts` first line must be `// @unocss-include`.
+- `packages/ui/src/styles/{name}.ts` first line must be `// @unocss-include`. Shared class tokens live in `_*.ts` files (`_field.ts`, `_overlay.ts`); recipes compose those tokens or inherit a sibling recipe via `extend` / `alias` / `extendBase`.
 - `slots` keys in style recipe must match headless `{Name}UiSlot` exactly.
 - `useOmitProps` must include `class` to avoid double-binding.
 - UI component names use `S` prefix (`SButton`, `SDialog`); headless names do not (`Button`, `Dialog`).
