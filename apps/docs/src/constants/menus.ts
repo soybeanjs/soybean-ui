@@ -25,7 +25,8 @@ export const newlyComponentKeys = [
   'timeField',
   'timePicker',
   'timeRangeField',
-  'timeRangePicker'
+  'timeRangePicker',
+  'splitNav'
 ];
 
 export const menuData: MenuData[] = [
@@ -54,6 +55,7 @@ export const menuData: MenuData[] = [
       'navigationMenu',
       'pageTabs',
       'pagination',
+      'splitNav',
       'stepper',
       'tabs',
       'tree',

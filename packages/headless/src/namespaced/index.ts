@@ -485,13 +485,13 @@ import {
   SeparatorCompact,
   SeparatorLabel,
   SeparatorRoot,
-  Skeleton,
   SliderCompact,
   SliderRange,
   SliderRoot,
   SliderThumb,
   SliderTrack,
   Slot,
+  SplitNavRoot,
   SplitterGroup,
   SplitterPanel,
   SplitterResizeHandle,
@@ -1781,18 +1781,6 @@ export const Separator = {
   Label: typeof SeparatorLabel;
 };
 
-export { Skeleton };
-
-export const Splitter = {
-  Group: SplitterGroup,
-  Panel: SplitterPanel,
-  ResizeHandle: SplitterResizeHandle
-} as {
-  Group: typeof SplitterGroup;
-  Panel: typeof SplitterPanel;
-  ResizeHandle: typeof SplitterResizeHandle;
-};
-
 export const Slider = {
   Compact: SliderCompact,
   Root: SliderRoot,
@@ -1805,6 +1793,18 @@ export const Slider = {
   Track: typeof SliderTrack;
   Range: typeof SliderRange;
   Thumb: typeof SliderThumb;
+};
+
+export { SplitNavRoot };
+
+export const Splitter = {
+  Group: SplitterGroup,
+  Panel: SplitterPanel,
+  ResizeHandle: SplitterResizeHandle
+} as {
+  Group: typeof SplitterGroup;
+  Panel: typeof SplitterPanel;
+  ResizeHandle: typeof SplitterResizeHandle;
 };
 
 export { Slot };

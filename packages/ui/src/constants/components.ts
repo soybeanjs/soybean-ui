@@ -71,6 +71,7 @@ export const components = {
   skeleton: ['SSkeleton'],
   slider: ['SSlider'],
   spinner: ['SSpinner'],
+  splitNav: ['SSplitNav'],
   splitter: ['SSplitterGroup', 'SSplitterPanel', 'SSplitterResizeHandle'],
   stepper: ['SStepper'],
   switch: ['SSwitch'],
