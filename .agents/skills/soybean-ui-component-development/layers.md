@@ -50,6 +50,18 @@ Applies to `packages/headless/src/components/**/*.{ts,vue}`.
 - `role`, `aria-*`, `tabindex`, keyboard events, and focus attributes belong on these headless interactive elements, not on UI wrappers.
 - State is exposed via `data-state` and other `data-*` attributes, never via class.
 
+### Step 3.1: Composing an existing family
+
+When this family is built on another (Popover on Popper, Autocomplete on Combobox), choose **per slot**, not per component.
+
+**Alias** the inner export (`export { PopperPortal as PopoverPortal }`) when the slot has no domain semantics. Typical matches: Portal, unconditional Arrow, and same-ARIA leaves (DropdownMenu Item is still a menu item).
+
+**Add a domain SFC** that wraps the inner primitive when the slot has domain semantics. Typical matches: a different a11y contract (`role`, `aria-haspopup`, `ariaMode`), domain context or locked defaults, `use{Name}Ui` for a slot the inner family does not own, conditional behavior, or a public `data-soybean-{family-slot}` contract.
+
+**Compact only assembles.** `role` / `data-*` / `aria-*` for a publicly exported primitive live on that primitive's SFC so Compact composition and hand-built composition share one DOM contract. Compact may set those attributes on inner nodes only when this family does not export those nodes as primitives (DatePicker Compact composing DateField + Popover).
+
+Empty Root shells that only re-emit may alias the inner Root unless they `provide` domain context or change the emit contract.
+
 ### Step 4: UiContext
 
 - Multi-slot components establish `provide{Name}Ui` / `use{Name}Ui` via `useUiContext`.
@@ -101,6 +113,8 @@ Typical headless-owned concerns:
 - Exporting `use{Name}Ui`.
 - Leaving stable aggregation structure in the UI wrapper.
 - Leaving any non-style logic in the UI wrapper once `{Name}Compact` exists.
+- Aliasing a publicly exported slot from another family when that slot has domain a11y, context, UI, or `data-soybean-{family-slot}` of its own.
+- Putting `role` / `data-*` / `aria-*` for a publicly exported primitive only on `{Name}Compact`.
 
 ## UI layer
 

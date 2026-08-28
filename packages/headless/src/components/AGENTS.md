@@ -16,4 +16,18 @@ Use this file only as routing and local path context. Normative component rules 
 - Public component export changes must be reflected in `packages/headless/src/index.ts`, then synced via `pnpm sui headless` to update `packages/headless/src/constants/components.ts` and `packages/headless/src/namespaced/index.ts`
 - Headless component barrels are the source for per-component sub-path exports such as `@soybeanjs/headless/dialog`; keep this surface aligned when adding or renaming components
 - Stable, data-driven composite structure should prefer headless `*Compact` implementations instead of pushing iteration and default content up into the UI layer
+- When this family is built on another, alias inner slots with no domain semantics and wrap slots that own a11y, context, UI, or `data-soybean-{family-slot}`. Compact only assembles; it does not define the contract of a publicly exported primitive. Full rule: skill `layers.md` Step 3.1.
 - If a headless change affects public docs, demos, or tests, also sync `apps/docs/src/generated/api/`, `apps/docs/src/generated/api-locales/`, and the related delivery surfaces rather than stopping at implementation files
+
+## Composition debt
+
+Known `index.ts` aliases that leak an inner family's `data-soybean-*`, Vue `name`, or UI inject into a **forked public** family. Leave Portal / Arrow aliases and Menu leaves reused by Dropdown / Context / Menubar in place. Track and remediate per family:
+
+| Family       | Aliased public slots                                                                  | Inner family     | Why it is debt                                                                                                                                                       |
+| ------------ | ------------------------------------------------------------------------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Autocomplete | Anchor, Trigger, Content, Viewport, Group, GroupLabel, Item, ItemIndicator, Separator | Combobox         | Distinct public primitives; DOM stays `data-soybean-combobox-*`. Portal alias is fine.                                                                               |
+| Segment      | Root, List, Trigger, Indicator                                                        | Tabs             | Distinct public primitives; DOM stays `data-soybean-tabs-*`.                                                                                                         |
+| BottomSheet  | Trigger, Header, Content, Footer, Title, Description, Close, Cancel, Confirm          | Dialog           | Presentation already forks (own Root / Popup / Overlay / Handle); chrome slots still `data-soybean-dialog-*`. Portal alias is fine.                                  |
+| Combobox     | Anchor; GroupLabel; ItemIndicator                                                     | Popper / Listbox | Select wraps ItemIndicator; Combobox aliases Listbox (also `useListboxUi`). Anchor is a raw `PopperAnchor` while Popover wraps the equivalent. Portal alias is fine. |
+
+Compliant Compact-only composition (no extra public primitives): DatePicker, DateRangePicker, Password, Command, ColorPicker.

@@ -163,6 +163,7 @@ Execute in this order. Do not skip ahead until the current phase is done.
 - For multi-slot wrappers, pass `props.ui` and `{ root: props.class }` directly into the `scv()` recipe call.
 - Multi-slot: only export `provide{Name}Ui` from headless barrel; never export `use{Name}Ui`.
 - `packages/ui/src/styles/{name}.ts` first line must be `// @unocss-include`. Shared class tokens live in `_*.ts` files (`_field.ts`, `_overlay.ts`); recipes compose those tokens or inherit a sibling recipe via `extend` / `alias` / `extendBase`.
+- Headless families built on another family alias inner slots that have no domain semantics, and wrap inner primitives in a domain SFC when the slot has a11y, context, UI, or `data-soybean-{family-slot}` of its own. See [layers.md -> Composing an existing family](layers.md#step-31-composing-an-existing-family). Compact only assembles; it does not define the contract of a publicly exported primitive.
 - `slots` keys in style recipe must match headless `{Name}UiSlot` exactly.
 - `useOmitProps` must include `class` to avoid double-binding.
 - UI component names use `S` prefix (`SButton`, `SDialog`); headless names do not (`Button`, `Dialog`).
