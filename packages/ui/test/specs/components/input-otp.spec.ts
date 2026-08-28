@@ -80,7 +80,7 @@ describe('SInputOtp', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-input-otp-slot]').classes()).toContain('border-input/40');
+      expect(wrapper.find('[data-soybean-input-otp-slot]').classes()).toContain('border-input');
       expect(wrapper.find('[data-soybean-input-otp-placeholder]').classes()).toContain('text-muted-foreground/45');
       wrapper.unmount();
     });
