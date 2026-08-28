@@ -220,7 +220,8 @@ describe('SSelect', () => {
       const wrapper = mount(SSelect, {
         props: {
           items,
-          placeholder: 'Select a fruit'
+          placeholder: 'Select a fruit',
+          clearable: true
         },
         attachTo: document.body
       });
@@ -242,7 +243,8 @@ describe('SSelect', () => {
         props: {
           items,
           modelValue: 'banana',
-          placeholder: 'Select a fruit'
+          placeholder: 'Select a fruit',
+          clearable: true
         },
         attachTo: document.body
       });
@@ -261,7 +263,8 @@ describe('SSelect', () => {
         props: {
           items,
           defaultValue: 'apple',
-          placeholder: 'Select a fruit'
+          placeholder: 'Select a fruit',
+          clearable: true
         },
         attachTo: document.body
       });
