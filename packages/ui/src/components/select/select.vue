@@ -14,8 +14,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<SelectProps<T, M>>(), {
   open: undefined,
-  showTriggerIcon: true,
-  clearable: true
+  showTriggerIcon: true
 });
 
 const emit = defineEmits<SelectEmits<T, M>>();
