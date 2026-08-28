@@ -29,7 +29,7 @@ A modal panel that slides in from the bottom edge of the screen. It is suited fo
 - `BottomSheetOverlay` (headless) — the dimmed backdrop
 - `BottomSheetPopup` (headless) — the focus-trapped, draggable, dismissable surface
 - `BottomSheetHandle` (headless) — the grab handle
-- Dialog primitives (headless) — `DialogHeader`/`DialogContent`/`DialogFooter`/`DialogTitle`/`DialogDescription`/`DialogClose`/`DialogCancel`/`DialogConfirm`/`DialogTrigger`
+- `BottomSheetTrigger` / `BottomSheetHeader` / `BottomSheetContent` / `BottomSheetFooter` / `BottomSheetTitle` / `BottomSheetDescription` / `BottomSheetClose` / `BottomSheetCancel` / `BottomSheetConfirm` (headless) — chrome primitives wrapping Dialog; DOM uses `data-soybean-bottom-sheet-*`
 - `BottomSheetCompact` (headless) — the aggregated composite; composes handle, header, content, footer and exposes the slots
 
 ## Demos

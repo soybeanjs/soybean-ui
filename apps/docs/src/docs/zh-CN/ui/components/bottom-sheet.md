@@ -29,7 +29,7 @@
 - `BottomSheetOverlay`（headless）— 变暗的背景遮罩
 - `BottomSheetPopup`（headless）— 焦点陷阱、可拖拽、可关闭表面
 - `BottomSheetHandle`（headless）— 抓手柄
-- dialog 基础组件（headless）— `DialogHeader`/`DialogContent`/`DialogFooter`/`DialogTitle`/`DialogDescription`/`DialogClose`/`DialogCancel`/`DialogConfirm`/`DialogTrigger`
+- `BottomSheetTrigger` / `BottomSheetHeader` / `BottomSheetContent` / `BottomSheetFooter` / `BottomSheetTitle` / `BottomSheetDescription` / `BottomSheetClose` / `BottomSheetCancel` / `BottomSheetConfirm`（headless）— 包装 Dialog 的 chrome 基元；DOM 使用 `data-soybean-bottom-sheet-*`
 - `BottomSheetCompact`（headless）— 聚合组件；组合手柄、头部、内容、底部并暴露各插槽
 
 ## 演示

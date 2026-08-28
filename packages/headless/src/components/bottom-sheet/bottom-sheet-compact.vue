@@ -4,25 +4,23 @@ import { useForwardListeners, useOmitProps } from '../../composables';
 import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
 import type { IconValue } from '../_icon/types';
-import {
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  DialogCancel,
-  DialogConfirm
-} from '../dialog';
+import { DialogPortal as BottomSheetPortal } from '../dialog';
 import type { DialogAlertType } from '../dialog/types';
-import DialogPortal from '../portal/portal.vue';
 import { useBottomSheetUi } from './context';
+import BottomSheetCancel from './bottom-sheet-cancel.vue';
+import BottomSheetClose from './bottom-sheet-close.vue';
+import BottomSheetConfirm from './bottom-sheet-confirm.vue';
+import BottomSheetContent from './bottom-sheet-content.vue';
+import BottomSheetDescription from './bottom-sheet-description.vue';
+import BottomSheetFooter from './bottom-sheet-footer.vue';
 import BottomSheetHandle from './bottom-sheet-handle.vue';
+import BottomSheetHeader from './bottom-sheet-header.vue';
 import BottomSheetOverlay from './bottom-sheet-overlay.vue';
 import BottomSheetPopup from './bottom-sheet-popup.vue';
 import BottomSheetRootNested from './bottom-sheet-root-nested.vue';
 import BottomSheetRoot from './bottom-sheet-root.vue';
+import BottomSheetTitle from './bottom-sheet-title.vue';
+import BottomSheetTrigger from './bottom-sheet-trigger.vue';
 import type { BottomSheetCompactProps, BottomSheetCompactEmits, BottomSheetCompactSlots } from './types';
 
 defineOptions({
@@ -127,44 +125,44 @@ const confirmText = computed(() => props.confirmText ?? messages.value.dialog.co
     v-bind="forwardedProps"
     @update:open="emit('update:open', $event)"
   >
-    <DialogTrigger v-bind="triggerProps">
+    <BottomSheetTrigger v-bind="triggerProps">
       <slot name="trigger" v-bind="slotProps" />
-    </DialogTrigger>
-    <DialogPortal v-bind="portalProps">
+    </BottomSheetTrigger>
+    <BottomSheetPortal v-bind="portalProps">
       <BottomSheetOverlay v-bind="overlayProps" />
       <BottomSheetPopup v-bind="popupProps" v-on="listeners">
         <BottomSheetHandle v-bind="handleProps" />
-        <DialogHeader v-if="!pure" v-bind="headerProps">
-          <DialogTitle v-bind="titleProps">
+        <BottomSheetHeader v-if="!pure" v-bind="headerProps">
+          <BottomSheetTitle v-bind="titleProps">
             <Icon v-if="icon" :icon="icon" :class="ui.icon" />
             <slot name="title" v-bind="slotProps">
               <span>{{ title }}</span>
             </slot>
-          </DialogTitle>
-          <DialogDescription v-if="slots.description || description" v-bind="descriptionProps">
+          </BottomSheetTitle>
+          <BottomSheetDescription v-if="slots.description || description" v-bind="descriptionProps">
             <slot name="description" v-bind="slotProps">{{ description }}</slot>
-          </DialogDescription>
-          <DialogClose v-if="!isAlert && showClose" @close="emit('close')">
+          </BottomSheetDescription>
+          <BottomSheetClose v-if="!isAlert && showClose" @close="emit('close')">
             <slot name="close" v-bind="slotProps" />
-          </DialogClose>
-        </DialogHeader>
-        <DialogContent v-bind="contentProps">
+          </BottomSheetClose>
+        </BottomSheetHeader>
+        <BottomSheetContent v-bind="contentProps">
           <slot v-bind="slotProps" />
-        </DialogContent>
-        <DialogClose v-if="pure && !isAlert && showClose" @close="emit('close')">
+        </BottomSheetContent>
+        <BottomSheetClose v-if="pure && !isAlert && showClose" @close="emit('close')">
           <slot name="close" v-bind="slotProps" />
-        </DialogClose>
-        <DialogFooter v-if="showFooter" v-bind="footerProps">
+        </BottomSheetClose>
+        <BottomSheetFooter v-if="showFooter" v-bind="footerProps">
           <slot name="footer" v-bind="slotProps">
-            <DialogCancel v-if="showCancel" v-bind="cancelProps" @cancel="emit('cancel', $event)">
+            <BottomSheetCancel v-if="showCancel" v-bind="cancelProps" @cancel="emit('cancel', $event)">
               <slot name="cancel" v-bind="slotProps">{{ cancelText }}</slot>
-            </DialogCancel>
-            <DialogConfirm v-if="showConfirm" v-bind="confirmProps" @confirm="emit('confirm', $event)">
+            </BottomSheetCancel>
+            <BottomSheetConfirm v-if="showConfirm" v-bind="confirmProps" @confirm="emit('confirm', $event)">
               <slot name="confirm" v-bind="slotProps">{{ confirmText }}</slot>
-            </DialogConfirm>
+            </BottomSheetConfirm>
           </slot>
-        </DialogFooter>
+        </BottomSheetFooter>
       </BottomSheetPopup>
-    </DialogPortal>
+    </BottomSheetPortal>
   </component>
 </template>

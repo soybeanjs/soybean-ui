@@ -1,11 +1,24 @@
 import type { ShallowRef, Ref } from 'vue';
 import type { BaseProps, Side, UiClass, VNodeRef } from '../../types';
 import type {
-  DialogRootProps,
-  DialogRootEmits,
-  DialogCompactProps,
+  DialogCancelEmits,
+  DialogCancelProps,
+  DialogCloseEmits,
+  DialogCloseProps,
   DialogCompactEmits,
+  DialogCompactProps,
   DialogCompactSlots,
+  DialogConfirmEmits,
+  DialogConfirmProps,
+  DialogContentProps,
+  DialogDescriptionProps,
+  DialogFooterProps,
+  DialogHeaderProps,
+  DialogRootEmits,
+  DialogRootProps,
+  DialogTitleProps,
+  DialogTriggerEmits,
+  DialogTriggerProps,
   DialogUiSlot
 } from '../dialog/types';
 
@@ -404,6 +417,71 @@ export interface BottomSheetEmitHandlers {
    */
   emitOpenChange: (open: boolean) => void;
 }
+
+/**
+ * Properties for the BottomSheetTrigger component.
+ */
+export interface BottomSheetTriggerProps extends DialogTriggerProps {}
+
+/**
+ * Events for the BottomSheetTrigger component.
+ */
+export type BottomSheetTriggerEmits = DialogTriggerEmits;
+
+/**
+ * Properties for the BottomSheetHeader component.
+ */
+export interface BottomSheetHeaderProps extends DialogHeaderProps {}
+
+/**
+ * Properties for the BottomSheetContent component.
+ */
+export interface BottomSheetContentProps extends DialogContentProps {}
+
+/**
+ * Properties for the BottomSheetFooter component.
+ */
+export interface BottomSheetFooterProps extends DialogFooterProps {}
+
+/**
+ * Properties for the BottomSheetTitle component.
+ */
+export interface BottomSheetTitleProps extends DialogTitleProps {}
+
+/**
+ * Properties for the BottomSheetDescription component.
+ */
+export interface BottomSheetDescriptionProps extends DialogDescriptionProps {}
+
+/**
+ * Properties for the BottomSheetClose component.
+ */
+export interface BottomSheetCloseProps extends DialogCloseProps {}
+
+/**
+ * Events for the BottomSheetClose component.
+ */
+export type BottomSheetCloseEmits = DialogCloseEmits;
+
+/**
+ * Properties for the BottomSheetCancel component.
+ */
+export interface BottomSheetCancelProps extends DialogCancelProps {}
+
+/**
+ * Events for the BottomSheetCancel component.
+ */
+export type BottomSheetCancelEmits = DialogCancelEmits;
+
+/**
+ * Properties for the BottomSheetConfirm component.
+ */
+export interface BottomSheetConfirmProps extends DialogConfirmProps {}
+
+/**
+ * Events for the BottomSheetConfirm component.
+ */
+export type BottomSheetConfirmEmits = DialogConfirmEmits;
 
 /**
  * Properties for the BottomSheetHandle component.

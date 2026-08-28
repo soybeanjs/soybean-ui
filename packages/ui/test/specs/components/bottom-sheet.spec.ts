@@ -102,6 +102,24 @@ describe('SBottomSheet', () => {
       wrapper.unmount();
     });
 
+    it('exposes bottom-sheet data attributes on chrome slots', async () => {
+      const wrapper = mount(SBottomSheet, {
+        props: { open: true, title: 'Sheet Title', portalProps: { disabled: true } },
+        slots,
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-bottom-sheet-trigger]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-bottom-sheet-header]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-bottom-sheet-title]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-bottom-sheet-content]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-bottom-sheet-close]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+
     it('applies custom class to popup', async () => {
       const wrapper = mount(SBottomSheet, {
         props: {

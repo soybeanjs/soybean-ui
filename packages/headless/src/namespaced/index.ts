@@ -704,8 +704,14 @@ export const Badge = {
 };
 
 export const BottomSheet = {
-  Trigger: BottomSheetTrigger,
   Portal: BottomSheetPortal,
+  Compact: BottomSheetCompact,
+  Root: BottomSheetRoot,
+  RootNested: BottomSheetRootNested,
+  Trigger: BottomSheetTrigger,
+  Popup: BottomSheetPopup,
+  Overlay: BottomSheetOverlay,
+  Handle: BottomSheetHandle,
   Header: BottomSheetHeader,
   Content: BottomSheetContent,
   Footer: BottomSheetFooter,
@@ -713,16 +719,16 @@ export const BottomSheet = {
   Description: BottomSheetDescription,
   Close: BottomSheetClose,
   Cancel: BottomSheetCancel,
-  Confirm: BottomSheetConfirm,
-  Compact: BottomSheetCompact,
-  Root: BottomSheetRoot,
-  RootNested: BottomSheetRootNested,
-  Popup: BottomSheetPopup,
-  Overlay: BottomSheetOverlay,
-  Handle: BottomSheetHandle
+  Confirm: BottomSheetConfirm
 } as {
-  Trigger: typeof BottomSheetTrigger;
   Portal: typeof BottomSheetPortal;
+  Compact: typeof BottomSheetCompact;
+  Root: typeof BottomSheetRoot;
+  RootNested: typeof BottomSheetRootNested;
+  Trigger: typeof BottomSheetTrigger;
+  Popup: typeof BottomSheetPopup;
+  Overlay: typeof BottomSheetOverlay;
+  Handle: typeof BottomSheetHandle;
   Header: typeof BottomSheetHeader;
   Content: typeof BottomSheetContent;
   Footer: typeof BottomSheetFooter;
@@ -731,12 +737,6 @@ export const BottomSheet = {
   Close: typeof BottomSheetClose;
   Cancel: typeof BottomSheetCancel;
   Confirm: typeof BottomSheetConfirm;
-  Compact: typeof BottomSheetCompact;
-  Root: typeof BottomSheetRoot;
-  RootNested: typeof BottomSheetRootNested;
-  Popup: typeof BottomSheetPopup;
-  Overlay: typeof BottomSheetOverlay;
-  Handle: typeof BottomSheetHandle;
 };
 
 export const Breadcrumb = {

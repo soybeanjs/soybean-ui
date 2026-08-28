@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "BottomSheetProps",
         "type": "TypeAlias BottomSheetProps: BottomSheetCompactProps & { class?: ClassValue; size?: ThemeSize; ui?: Partial<BottomSheetUi> }",
-        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; showFullscreen?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: BottomSheetTriggerProps; overlayProps?: BottomSheetOverlayProps; portalProps?: BottomSheetPortalProps; popupProps?: BottomSheetPopupProps; headerProps?: BottomSheetHeaderProps; contentProps?: BottomSheetContentProps; footerProps?: BottomSheetFooterProps; titleProps?: BottomSheetTitleProps; descriptionProps?: BottomSheetDescriptionProps; closeProps?: BottomSheetCloseProps; fullscreenProps?: DialogFullscreenProps; cancelProps?: BottomSheetCancelProps; confirmProps?: BottomSheetConfirmProps; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; draggable?: boolean; fullscreen?: boolean; defaultFullscreen?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number; handleProps?: BottomSheetHandleProps; class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<BottomSheetUi> }",
+        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; showFullscreen?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: BottomSheetOverlayProps; portalProps?: BottomSheetPortalProps; popupProps?: BottomSheetPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; fullscreenProps?: DialogFullscreenProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; draggable?: boolean; fullscreen?: boolean; defaultFullscreen?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number; handleProps?: BottomSheetHandleProps; class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<BottomSheetUi> }",
         "description": "Properties for the BottomSheet component.",
         "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetprops.props",
         "sourcePath": "packages/ui/src/components/bottom-sheet/types.ts",
@@ -138,7 +138,7 @@
           },
           {
             "name": "triggerProps",
-            "type": "BottomSheetTriggerProps",
+            "type": "DialogTriggerProps",
             "required": false,
             "description": "Properties forwarded to the trigger element.",
             "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetprops.members.triggerprops",
@@ -147,13 +147,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetTriggerProps",
+                "name": "DialogTriggerProps",
                 "kind": "interface",
-                "type": "BottomSheetTriggerProps",
+                "type": "DialogTriggerProps",
                 "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the DialogTrigger component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheettriggerprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -162,7 +162,7 @@
                     "type": "ButtonType",
                     "required": false,
                     "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheettriggerprops.members.type",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.type",
                     "default": "'button'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/button/types.ts",
@@ -173,7 +173,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Whether the component is disabled.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheettriggerprops.members.disabled",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.disabled",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/button/types.ts",
@@ -184,7 +184,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheettriggerprops.members.aschild",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.aschild",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -195,7 +195,7 @@
                     "type": "AsTag | Component",
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheettriggerprops.members.as",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -374,7 +374,7 @@
           },
           {
             "name": "headerProps",
-            "type": "BottomSheetHeaderProps",
+            "type": "DialogHeaderProps",
             "required": false,
             "description": "Properties forwarded to the header element.",
             "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetprops.members.headerprops",
@@ -383,13 +383,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetHeaderProps",
+                "name": "DialogHeaderProps",
                 "kind": "interface",
-                "type": "BottomSheetHeaderProps",
+                "type": "DialogHeaderProps",
                 "resolvedType": null,
                 "description": "Properties for the DialogHeader component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetheaderprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogheaderprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -399,7 +399,7 @@
           },
           {
             "name": "contentProps",
-            "type": "BottomSheetContentProps",
+            "type": "DialogContentProps",
             "required": false,
             "description": "Properties forwarded to the content element.",
             "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetprops.members.contentprops",
@@ -408,13 +408,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetContentProps",
+                "name": "DialogContentProps",
                 "kind": "interface",
-                "type": "BottomSheetContentProps",
+                "type": "DialogContentProps",
                 "resolvedType": null,
                 "description": "Properties for the DialogContent component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcontentprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcontentprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -424,7 +424,7 @@
           },
           {
             "name": "footerProps",
-            "type": "BottomSheetFooterProps",
+            "type": "DialogFooterProps",
             "required": false,
             "description": "Properties forwarded to the footer element.",
             "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetprops.members.footerprops",
@@ -433,13 +433,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetFooterProps",
+                "name": "DialogFooterProps",
                 "kind": "interface",
-                "type": "BottomSheetFooterProps",
+                "type": "DialogFooterProps",
                 "resolvedType": null,
                 "description": "Properties for the DialogFooter component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetfooterprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogfooterprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -449,7 +449,7 @@
           },
           {
             "name": "titleProps",
-            "type": "BottomSheetTitleProps",
+            "type": "DialogTitleProps",
             "required": false,
             "description": "Properties forwarded to the title element.",
             "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetprops.members.titleprops",
@@ -458,13 +458,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetTitleProps",
+                "name": "DialogTitleProps",
                 "kind": "interface",
-                "type": "BottomSheetTitleProps",
+                "type": "DialogTitleProps",
                 "resolvedType": null,
                 "description": "Properties for the DialogTitle component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheettitleprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtitleprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -474,7 +474,7 @@
           },
           {
             "name": "descriptionProps",
-            "type": "BottomSheetDescriptionProps",
+            "type": "DialogDescriptionProps",
             "required": false,
             "description": "Properties forwarded to the description element.",
             "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetprops.members.descriptionprops",
@@ -483,13 +483,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetDescriptionProps",
+                "name": "DialogDescriptionProps",
                 "kind": "interface",
-                "type": "BottomSheetDescriptionProps",
+                "type": "DialogDescriptionProps",
                 "resolvedType": null,
                 "description": "Properties for the DialogDescription component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetdescriptionprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogdescriptionprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -499,7 +499,7 @@
           },
           {
             "name": "closeProps",
-            "type": "BottomSheetCloseProps",
+            "type": "DialogCloseProps",
             "required": false,
             "description": "Properties forwarded to the close element.",
             "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetprops.members.closeprops",
@@ -508,13 +508,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetCloseProps",
+                "name": "DialogCloseProps",
                 "kind": "interface",
-                "type": "BottomSheetCloseProps",
+                "type": "DialogCloseProps",
                 "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the DialogClose component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcloseprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -523,7 +523,7 @@
                     "type": "ButtonType",
                     "required": false,
                     "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcloseprops.members.type",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.type",
                     "default": "'button'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/button/types.ts",
@@ -534,7 +534,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Whether the component is disabled.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcloseprops.members.disabled",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.disabled",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/button/types.ts",
@@ -545,7 +545,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcloseprops.members.aschild",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.aschild",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -556,7 +556,7 @@
                     "type": "AsTag | Component",
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcloseprops.members.as",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -639,7 +639,7 @@
           },
           {
             "name": "cancelProps",
-            "type": "BottomSheetCancelProps",
+            "type": "DialogCancelProps",
             "required": false,
             "description": "Properties forwarded to the cancel element.",
             "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetprops.members.cancelprops",
@@ -648,13 +648,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetCancelProps",
+                "name": "DialogCancelProps",
                 "kind": "interface",
-                "type": "BottomSheetCancelProps",
+                "type": "DialogCancelProps",
                 "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the DialogCancel component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcancelprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcancelprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -663,7 +663,7 @@
                     "type": "ButtonType",
                     "required": false,
                     "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcancelprops.members.type",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcancelprops.members.type",
                     "default": "'button'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/button/types.ts",
@@ -674,7 +674,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Whether the component is disabled.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcancelprops.members.disabled",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcancelprops.members.disabled",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/button/types.ts",
@@ -685,7 +685,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcancelprops.members.aschild",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcancelprops.members.aschild",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -696,7 +696,7 @@
                     "type": "AsTag | Component",
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcancelprops.members.as",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcancelprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -709,7 +709,7 @@
           },
           {
             "name": "confirmProps",
-            "type": "BottomSheetConfirmProps",
+            "type": "DialogConfirmProps",
             "required": false,
             "description": "Properties forwarded to the confirm element.",
             "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetprops.members.confirmprops",
@@ -718,13 +718,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetConfirmProps",
+                "name": "DialogConfirmProps",
                 "kind": "interface",
-                "type": "BottomSheetConfirmProps",
+                "type": "DialogConfirmProps",
                 "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the DialogConfirm component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetconfirmprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogconfirmprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -733,7 +733,7 @@
                     "type": "ButtonType",
                     "required": false,
                     "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetconfirmprops.members.type",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogconfirmprops.members.type",
                     "default": "'button'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/button/types.ts",
@@ -744,7 +744,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Whether the component is disabled.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetconfirmprops.members.disabled",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogconfirmprops.members.disabled",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/button/types.ts",
@@ -755,7 +755,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetconfirmprops.members.aschild",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogconfirmprops.members.aschild",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -766,7 +766,7 @@
                     "type": "AsTag | Component",
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetconfirmprops.members.as",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogconfirmprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -1696,7 +1696,7 @@
         "kind": "slots",
         "name": "BottomSheetSlots",
         "type": "TypeAlias BottomSheetSlots: BottomSheetCompactSlots",
-        "resolvedType": "{ BottomSheetHandle: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); fullscreen?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
+        "resolvedType": "{ BottomSheetConfirm: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); fullscreen?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
         "description": "Slots for the BottomSheet component.",
         "descriptionKey": "api.generated.packages_ui_src_components_bottom_sheet_types.bottomsheetslots.slots",
         "sourcePath": "packages/ui/src/components/bottom-sheet/types.ts",
@@ -2033,27 +2033,158 @@
         "kind": "props",
         "name": "BottomSheetCancelProps",
         "type": "Interface BottomSheetCancelProps",
-        "resolvedType": null,
-        "description": "Properties for the DialogCancel component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcancelprops.props",
-        "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the BottomSheetCancel component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcancelprops.props",
+        "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
-        "members": [],
+        "members": [
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcancelprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "type",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_button_types.buttontype",
+                "sourcePath": "packages/headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcancelprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcancelprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcancelprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
         "callables": [],
         "referencedTypes": []
       },
       "emits": {
         "kind": "emits",
         "name": "BottomSheetCancelEmits",
-        "type": "TypeAlias BottomSheetCancelEmits",
-        "resolvedType": null,
-        "description": "Events for the DialogCancel component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcancelemits.emits",
-        "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+        "type": "TypeAlias BottomSheetCancelEmits: DialogCancelEmits",
+        "resolvedType": "{ cancel: [event: MouseEvent] }",
+        "description": "Events for the BottomSheetCancel component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcancelemits.emits",
+        "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
         "members": [],
-        "callables": [],
-        "referencedTypes": []
+        "callables": [
+          {
+            "name": "cancel",
+            "type": "[event: MouseEvent]",
+            "parameters": "event: MouseEvent",
+            "required": true,
+            "description": "Event handler called when the dialog is requested to be canceled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcancelemits.callables.cancel",
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "DialogCancelEmits",
+            "kind": "typeAlias",
+            "type": "{ cancel: [event: MouseEvent]; }",
+            "resolvedType": "{ cancel: [event: MouseEvent] }",
+            "description": "Events for the DialogCancel component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcancelemits",
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "cancel",
+                "type": "[event: MouseEvent]",
+                "parameters": "event: MouseEvent",
+                "required": true,
+                "description": "Event handler called when the dialog is requested to be canceled.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcancelemits.callables.cancel",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
       }
     },
     "BottomSheetClose": {
@@ -2061,27 +2192,158 @@
         "kind": "props",
         "name": "BottomSheetCloseProps",
         "type": "Interface BottomSheetCloseProps",
-        "resolvedType": null,
-        "description": "Properties for the DialogClose component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcloseprops.props",
-        "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the BottomSheetClose component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcloseprops.props",
+        "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
-        "members": [],
+        "members": [
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcloseprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "type",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_button_types.buttontype",
+                "sourcePath": "packages/headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcloseprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcloseprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcloseprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
         "callables": [],
         "referencedTypes": []
       },
       "emits": {
         "kind": "emits",
         "name": "BottomSheetCloseEmits",
-        "type": "TypeAlias BottomSheetCloseEmits",
-        "resolvedType": null,
-        "description": "Events for the DialogClose component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcloseemits.emits",
-        "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+        "type": "TypeAlias BottomSheetCloseEmits: DialogCloseEmits",
+        "resolvedType": "{ close: [event: MouseEvent] }",
+        "description": "Events for the BottomSheetClose component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcloseemits.emits",
+        "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
         "members": [],
-        "callables": [],
-        "referencedTypes": []
+        "callables": [
+          {
+            "name": "close",
+            "type": "[event: MouseEvent]",
+            "parameters": "event: MouseEvent",
+            "required": true,
+            "description": "Event handler called when the dialog is requested to be closed.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcloseemits.callables.close",
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "DialogCloseEmits",
+            "kind": "typeAlias",
+            "type": "{ close: [event: MouseEvent]; }",
+            "resolvedType": "{ close: [event: MouseEvent] }",
+            "description": "Events for the DialogClose component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseemits",
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "close",
+                "type": "[event: MouseEvent]",
+                "parameters": "event: MouseEvent",
+                "required": true,
+                "description": "Event handler called when the dialog is requested to be closed.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseemits.callables.close",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
       }
     },
     "BottomSheetCompact": {
@@ -2089,7 +2351,7 @@
         "kind": "props",
         "name": "BottomSheetCompactProps",
         "type": "TypeAlias BottomSheetCompactProps: DialogCompactProps & BottomSheetRootProps & { handleProps?: BottomSheetHandleProps }",
-        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; showFullscreen?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: BottomSheetTriggerProps; overlayProps?: BottomSheetOverlayProps; portalProps?: BottomSheetPortalProps; popupProps?: BottomSheetPopupProps; headerProps?: BottomSheetHeaderProps; contentProps?: BottomSheetContentProps; footerProps?: BottomSheetFooterProps; titleProps?: BottomSheetTitleProps; descriptionProps?: BottomSheetDescriptionProps; closeProps?: BottomSheetCloseProps; fullscreenProps?: DialogFullscreenProps; cancelProps?: BottomSheetCancelProps; confirmProps?: BottomSheetConfirmProps; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; draggable?: boolean; fullscreen?: boolean; defaultFullscreen?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number; handleProps?: BottomSheetHandleProps }",
+        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; showFullscreen?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: BottomSheetOverlayProps; portalProps?: BottomSheetPortalProps; popupProps?: BottomSheetPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; fullscreenProps?: DialogFullscreenProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; draggable?: boolean; fullscreen?: boolean; defaultFullscreen?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number; handleProps?: BottomSheetHandleProps }",
         "description": "Properties for the BottomSheetCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactprops.props",
         "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
@@ -2221,7 +2483,7 @@
           },
           {
             "name": "triggerProps",
-            "type": "BottomSheetTriggerProps",
+            "type": "DialogTriggerProps",
             "required": false,
             "description": "Properties forwarded to the trigger element.",
             "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactprops.members.triggerprops",
@@ -2230,13 +2492,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetTriggerProps",
+                "name": "DialogTriggerProps",
                 "kind": "interface",
-                "type": "BottomSheetTriggerProps",
+                "type": "DialogTriggerProps",
                 "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the DialogTrigger component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheettriggerprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -2245,7 +2507,7 @@
                     "type": "ButtonType",
                     "required": false,
                     "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheettriggerprops.members.type",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.type",
                     "default": "'button'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/button/types.ts",
@@ -2256,7 +2518,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Whether the component is disabled.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheettriggerprops.members.disabled",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.disabled",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/button/types.ts",
@@ -2267,7 +2529,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheettriggerprops.members.aschild",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.aschild",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -2278,7 +2540,7 @@
                     "type": "AsTag | Component",
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheettriggerprops.members.as",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -2457,7 +2719,7 @@
           },
           {
             "name": "headerProps",
-            "type": "BottomSheetHeaderProps",
+            "type": "DialogHeaderProps",
             "required": false,
             "description": "Properties forwarded to the header element.",
             "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactprops.members.headerprops",
@@ -2466,13 +2728,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetHeaderProps",
+                "name": "DialogHeaderProps",
                 "kind": "interface",
-                "type": "BottomSheetHeaderProps",
+                "type": "DialogHeaderProps",
                 "resolvedType": null,
                 "description": "Properties for the DialogHeader component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetheaderprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogheaderprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -2482,7 +2744,7 @@
           },
           {
             "name": "contentProps",
-            "type": "BottomSheetContentProps",
+            "type": "DialogContentProps",
             "required": false,
             "description": "Properties forwarded to the content element.",
             "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactprops.members.contentprops",
@@ -2491,13 +2753,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetContentProps",
+                "name": "DialogContentProps",
                 "kind": "interface",
-                "type": "BottomSheetContentProps",
+                "type": "DialogContentProps",
                 "resolvedType": null,
                 "description": "Properties for the DialogContent component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcontentprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcontentprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -2507,7 +2769,7 @@
           },
           {
             "name": "footerProps",
-            "type": "BottomSheetFooterProps",
+            "type": "DialogFooterProps",
             "required": false,
             "description": "Properties forwarded to the footer element.",
             "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactprops.members.footerprops",
@@ -2516,13 +2778,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetFooterProps",
+                "name": "DialogFooterProps",
                 "kind": "interface",
-                "type": "BottomSheetFooterProps",
+                "type": "DialogFooterProps",
                 "resolvedType": null,
                 "description": "Properties for the DialogFooter component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetfooterprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogfooterprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -2532,7 +2794,7 @@
           },
           {
             "name": "titleProps",
-            "type": "BottomSheetTitleProps",
+            "type": "DialogTitleProps",
             "required": false,
             "description": "Properties forwarded to the title element.",
             "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactprops.members.titleprops",
@@ -2541,13 +2803,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetTitleProps",
+                "name": "DialogTitleProps",
                 "kind": "interface",
-                "type": "BottomSheetTitleProps",
+                "type": "DialogTitleProps",
                 "resolvedType": null,
                 "description": "Properties for the DialogTitle component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheettitleprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtitleprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -2557,7 +2819,7 @@
           },
           {
             "name": "descriptionProps",
-            "type": "BottomSheetDescriptionProps",
+            "type": "DialogDescriptionProps",
             "required": false,
             "description": "Properties forwarded to the description element.",
             "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactprops.members.descriptionprops",
@@ -2566,13 +2828,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetDescriptionProps",
+                "name": "DialogDescriptionProps",
                 "kind": "interface",
-                "type": "BottomSheetDescriptionProps",
+                "type": "DialogDescriptionProps",
                 "resolvedType": null,
                 "description": "Properties for the DialogDescription component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetdescriptionprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogdescriptionprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -2582,7 +2844,7 @@
           },
           {
             "name": "closeProps",
-            "type": "BottomSheetCloseProps",
+            "type": "DialogCloseProps",
             "required": false,
             "description": "Properties forwarded to the close element.",
             "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactprops.members.closeprops",
@@ -2591,13 +2853,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetCloseProps",
+                "name": "DialogCloseProps",
                 "kind": "interface",
-                "type": "BottomSheetCloseProps",
+                "type": "DialogCloseProps",
                 "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the DialogClose component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcloseprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -2606,7 +2868,7 @@
                     "type": "ButtonType",
                     "required": false,
                     "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcloseprops.members.type",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.type",
                     "default": "'button'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/button/types.ts",
@@ -2617,7 +2879,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Whether the component is disabled.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcloseprops.members.disabled",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.disabled",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/button/types.ts",
@@ -2628,7 +2890,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcloseprops.members.aschild",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.aschild",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -2639,7 +2901,7 @@
                     "type": "AsTag | Component",
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcloseprops.members.as",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -2722,7 +2984,7 @@
           },
           {
             "name": "cancelProps",
-            "type": "BottomSheetCancelProps",
+            "type": "DialogCancelProps",
             "required": false,
             "description": "Properties forwarded to the cancel element.",
             "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactprops.members.cancelprops",
@@ -2731,13 +2993,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetCancelProps",
+                "name": "DialogCancelProps",
                 "kind": "interface",
-                "type": "BottomSheetCancelProps",
+                "type": "DialogCancelProps",
                 "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the DialogCancel component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcancelprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcancelprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -2746,7 +3008,7 @@
                     "type": "ButtonType",
                     "required": false,
                     "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcancelprops.members.type",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcancelprops.members.type",
                     "default": "'button'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/button/types.ts",
@@ -2757,7 +3019,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Whether the component is disabled.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcancelprops.members.disabled",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcancelprops.members.disabled",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/button/types.ts",
@@ -2768,7 +3030,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcancelprops.members.aschild",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcancelprops.members.aschild",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -2779,7 +3041,7 @@
                     "type": "AsTag | Component",
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcancelprops.members.as",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcancelprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -2792,7 +3054,7 @@
           },
           {
             "name": "confirmProps",
-            "type": "BottomSheetConfirmProps",
+            "type": "DialogConfirmProps",
             "required": false,
             "description": "Properties forwarded to the confirm element.",
             "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactprops.members.confirmprops",
@@ -2801,13 +3063,13 @@
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
-                "name": "BottomSheetConfirmProps",
+                "name": "DialogConfirmProps",
                 "kind": "interface",
-                "type": "BottomSheetConfirmProps",
+                "type": "DialogConfirmProps",
                 "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the DialogConfirm component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetconfirmprops",
-                "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogconfirmprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -2816,7 +3078,7 @@
                     "type": "ButtonType",
                     "required": false,
                     "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetconfirmprops.members.type",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogconfirmprops.members.type",
                     "default": "'button'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/button/types.ts",
@@ -2827,7 +3089,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Whether the component is disabled.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetconfirmprops.members.disabled",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogconfirmprops.members.disabled",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/button/types.ts",
@@ -2838,7 +3100,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetconfirmprops.members.aschild",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogconfirmprops.members.aschild",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -2849,7 +3111,7 @@
                     "type": "AsTag | Component",
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetconfirmprops.members.as",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogconfirmprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -3527,7 +3789,7 @@
         "kind": "slots",
         "name": "BottomSheetCompactSlots",
         "type": "TypeAlias BottomSheetCompactSlots: DialogCompactSlots",
-        "resolvedType": "{ BottomSheetHandle: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); fullscreen?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
+        "resolvedType": "{ BottomSheetConfirm: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); fullscreen?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
         "description": "Slots for the BottomSheetCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcompactslots.slots",
         "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
@@ -3864,27 +4126,158 @@
         "kind": "props",
         "name": "BottomSheetConfirmProps",
         "type": "Interface BottomSheetConfirmProps",
-        "resolvedType": null,
-        "description": "Properties for the DialogConfirm component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetconfirmprops.props",
-        "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the BottomSheetConfirm component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetconfirmprops.props",
+        "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
-        "members": [],
+        "members": [
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetconfirmprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "type",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_button_types.buttontype",
+                "sourcePath": "packages/headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetconfirmprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetconfirmprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetconfirmprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
         "callables": [],
         "referencedTypes": []
       },
       "emits": {
         "kind": "emits",
         "name": "BottomSheetConfirmEmits",
-        "type": "TypeAlias BottomSheetConfirmEmits",
-        "resolvedType": null,
-        "description": "Events for the DialogConfirm component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetconfirmemits.emits",
-        "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+        "type": "TypeAlias BottomSheetConfirmEmits: DialogConfirmEmits",
+        "resolvedType": "{ confirm: [event: MouseEvent] }",
+        "description": "Events for the BottomSheetConfirm component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetconfirmemits.emits",
+        "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
         "members": [],
-        "callables": [],
-        "referencedTypes": []
+        "callables": [
+          {
+            "name": "confirm",
+            "type": "[event: MouseEvent]",
+            "parameters": "event: MouseEvent",
+            "required": true,
+            "description": "Event handler called when the dialog is requested to be closed by confirming.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetconfirmemits.callables.confirm",
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "DialogConfirmEmits",
+            "kind": "typeAlias",
+            "type": "{ confirm: [event: MouseEvent]; }",
+            "resolvedType": "{ confirm: [event: MouseEvent] }",
+            "description": "Events for the DialogConfirm component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogconfirmemits",
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "confirm",
+                "type": "[event: MouseEvent]",
+                "parameters": "event: MouseEvent",
+                "required": true,
+                "description": "Event handler called when the dialog is requested to be closed by confirming.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogconfirmemits.callables.confirm",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
       }
     },
     "BottomSheetContent": {
@@ -3893,9 +4286,9 @@
         "name": "BottomSheetContentProps",
         "type": "Interface BottomSheetContentProps",
         "resolvedType": null,
-        "description": "Properties for the DialogContent component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetcontentprops.props",
-        "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+        "description": "Properties for the BottomSheetContent component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetcontentprops.props",
+        "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
         "members": [],
         "callables": [],
@@ -3908,9 +4301,9 @@
         "name": "BottomSheetDescriptionProps",
         "type": "Interface BottomSheetDescriptionProps",
         "resolvedType": null,
-        "description": "Properties for the DialogDescription component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetdescriptionprops.props",
-        "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+        "description": "Properties for the BottomSheetDescription component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetdescriptionprops.props",
+        "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
         "members": [],
         "callables": [],
@@ -3923,9 +4316,9 @@
         "name": "BottomSheetFooterProps",
         "type": "Interface BottomSheetFooterProps",
         "resolvedType": null,
-        "description": "Properties for the DialogFooter component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetfooterprops.props",
-        "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+        "description": "Properties for the BottomSheetFooter component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetfooterprops.props",
+        "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
         "members": [],
         "callables": [],
@@ -3965,9 +4358,9 @@
         "name": "BottomSheetHeaderProps",
         "type": "Interface BottomSheetHeaderProps",
         "resolvedType": null,
-        "description": "Properties for the DialogHeader component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheetheaderprops.props",
-        "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+        "description": "Properties for the BottomSheetHeader component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetheaderprops.props",
+        "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
         "members": [],
         "callables": [],
@@ -4396,7 +4789,7 @@
         "kind": "slots",
         "name": "BottomSheetRootSlots",
         "type": "TypeAlias BottomSheetRootSlots",
-        "resolvedType": "{ BottomSheetHandle?: ((props: { open: boolean; }) => any) }",
+        "resolvedType": "{ BottomSheetConfirm?: ((props: { open: boolean; }) => any) }",
         "description": "Slots for the BottomSheetRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheetrootslots.slots",
         "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
@@ -4438,9 +4831,9 @@
         "name": "BottomSheetTitleProps",
         "type": "Interface BottomSheetTitleProps",
         "resolvedType": null,
-        "description": "Properties for the DialogTitle component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheettitleprops.props",
-        "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+        "description": "Properties for the BottomSheetTitle component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheettitleprops.props",
+        "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
         "members": [],
         "callables": [],
@@ -4452,14 +4845,158 @@
         "kind": "props",
         "name": "BottomSheetTriggerProps",
         "type": "Interface BottomSheetTriggerProps",
-        "resolvedType": null,
-        "description": "Properties for the DialogTrigger component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_index.bottomsheettriggerprops.props",
-        "sourcePath": "packages/headless/src/components/bottom-sheet/index.ts",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the BottomSheetTrigger component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheettriggerprops.props",
+        "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
-        "members": [],
+        "members": [
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheettriggerprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "type",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_button_types.buttontype",
+                "sourcePath": "packages/headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheettriggerprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheettriggerprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheettriggerprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
         "callables": [],
         "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "BottomSheetTriggerEmits",
+        "type": "TypeAlias BottomSheetTriggerEmits: DialogTriggerEmits",
+        "resolvedType": "{ click: [event: PointerEvent] }",
+        "description": "Events for the BottomSheetTrigger component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheettriggeremits.emits",
+        "sourcePath": "packages/headless/src/components/bottom-sheet/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "click",
+            "type": "[event: PointerEvent]",
+            "parameters": "event: PointerEvent",
+            "required": true,
+            "description": "Event handler called when the dialog trigger is activated.",
+            "descriptionKey": "api.generated.packages_headless_src_components_bottom_sheet_types.bottomsheettriggeremits.callables.click",
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PointerEvent",
+                "kind": "interface",
+                "type": "PointerEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "DialogTriggerEmits",
+            "kind": "typeAlias",
+            "type": "{ click: [event: PointerEvent]; }",
+            "resolvedType": "{ click: [event: PointerEvent] }",
+            "description": "Events for the DialogTrigger component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggeremits",
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "click",
+                "type": "[event: PointerEvent]",
+                "parameters": "event: PointerEvent",
+                "required": true,
+                "description": "Event handler called when the dialog trigger is activated.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggeremits.callables.click",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
       }
     }
   }

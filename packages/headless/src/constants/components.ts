@@ -32,8 +32,14 @@ export const components = {
   backtop: ['Backtop'],
   badge: ['BadgeCompact', 'BadgeRoot', 'BadgeContent'],
   bottomSheet: [
-    'BottomSheetTrigger',
     'BottomSheetPortal',
+    'BottomSheetCompact',
+    'BottomSheetRoot',
+    'BottomSheetRootNested',
+    'BottomSheetTrigger',
+    'BottomSheetPopup',
+    'BottomSheetOverlay',
+    'BottomSheetHandle',
     'BottomSheetHeader',
     'BottomSheetContent',
     'BottomSheetFooter',
@@ -41,13 +47,7 @@ export const components = {
     'BottomSheetDescription',
     'BottomSheetClose',
     'BottomSheetCancel',
-    'BottomSheetConfirm',
-    'BottomSheetCompact',
-    'BottomSheetRoot',
-    'BottomSheetRootNested',
-    'BottomSheetPopup',
-    'BottomSheetOverlay',
-    'BottomSheetHandle'
+    'BottomSheetConfirm'
   ],
   breadcrumb: [
     'BreadcrumbRoot',
