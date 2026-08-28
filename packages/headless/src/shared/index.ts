@@ -12,4 +12,5 @@ export * from './env';
 export * from './event';
 export * from './geometry';
 export * from './tree';
+export * from './tree-navigation';
 export * from './time-picker';
