@@ -1076,7 +1076,7 @@
         "tree-nav": {
           "component": "tree-nav",
           "file": "tree-nav.json",
-          "symbols": ["TreeNav", "TreeNavCompact"]
+          "symbols": ["TreeNav", "TreeNavCompact", "TreeNavOptionCompact", "TreeNavOptionsCompact", "TreeNavRoot"]
         },
         "virtualizer": {
           "component": "virtualizer",

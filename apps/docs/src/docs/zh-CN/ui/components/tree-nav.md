@@ -4,7 +4,7 @@
 
 TreeNav 是一个数据驱动的水平导航栏，携带持久选择态：顶层条目横向排列，分支项默认悬停展开弹层，选中任意叶子后整条祖先链持续高亮。
 
-`STreeNav` 是 `STreeMenu` 的横向版本：两者消费同一份 `MenuOptionData` 树形数据并基于选中值派生高亮，区别在于 TreeNav 的分支渲染为 DropdownMenu 弹层而非折叠分组。逻辑与无障碍语义由 headless `TreeNavCompact` 承载，样式通过 `scv()` 配方注入。
+`STreeNav` 是 `STreeMenu` 的横向版本：两者消费同一份树形 `items` 数据（`TreeNavOptionData`）并基于选中值派生高亮，区别在于 TreeNav 的分支渲染为 DropdownMenu 弹层而非折叠分组。逻辑与无障碍语义由 headless `TreeNavCompact` 承载，样式通过 `scv()` 配方注入。
 
 > 与 Menubar（瞬态"哪个菜单正打开"的命令菜单模型）不同，TreeNav 建模的是**选择**：打开弹层永远不会激活任何条目——只有叶子被选中才会。选中叶子的祖先链会持续携带高亮标记。
 
@@ -13,7 +13,7 @@ TreeNav 是一个数据驱动的水平导航栏，携带持久选择态：顶层
 - **持久选择态** — 绑定 `modelValue`（`v-model`）或用 `defaultValue` 设置初始值；弹层关闭后选择依然保留。
 - **高亮派生** — 选中的叶子渲染 `data-active="true"`，其祖先链上的每一层渲染 `data-child-active`；派生复用共享树路径工具，任意深度均可正确传播。
 - **悬停优先的弹层** — 分支弹层默认悬停展开（可用 `trigger="click"` 覆盖），通过 `delayDuration` / `skipDelayDuration` 微调时序。
-- **与 STreeMenu 共用数据** — 一份 `items` 数组（`MenuOptionData`：`value` / `label` / `icon` / `children` / `href` / `to` / `disabled` …）可同时喂给垂直侧边栏与本组件。
+- **对齐 TreeMenu 的数据形态** — 一份 `items` 数组（`TreeNavOptionData`：`value` / `label` / `icon` / `children` / `href` / `to` / `disabled` …）与 TreeMenu 的选项模型保持一致；徽标、标签、操作按钮等条目自定义能力通过插槽实现，不再依赖额外数据字段。
 - **链接型顶层项** — 提供 `href` / `to` 的顶层项渲染为链接，点击同时更新选择。
 - **溢出折叠** — 开启 `collapsible` 后，超宽的末尾顶层项自动合并进尾部"更多"弹层，始终贴合容器宽度；可通过 `moreLabel` / `moreIcon` / `moreProps` / `more-trigger` 插槽定制。
 - **导航语义** — 根元素渲染 `<nav>`（可用 `as` 覆写）；触发器的 `aria-haspopup` / `aria-expanded`、Escape 关闭等语义继承自 DropdownMenu 层。

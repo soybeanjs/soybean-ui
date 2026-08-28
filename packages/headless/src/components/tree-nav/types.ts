@@ -1,13 +1,14 @@
-import type { DefinedValue, Direction, Placement, UiClass } from '../../types';
+import type { ComputedRef } from 'vue';
+import type { Direction, Placement, UiClass, PropsToContext } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type { ButtonProps } from '../button/types';
 import type { DropdownMenuTriggerType } from '../dropdown-menu/types';
-import type { LinkExtraProps } from '../link/types';
+import type { KbdValue } from '../kbd/types';
+import type { LinkBaseProps, LinkExtraProps } from '../link/types';
 import type {
   MenuArrowProps,
   MenuGroupLabelProps,
   MenuItemProps,
-  MenuOptionData,
   MenuOptionsCompactSlots,
   MenuPopupProps,
   MenuPortalProps,
@@ -17,20 +18,59 @@ import type {
   MenuSubTriggerProps
 } from '../menu';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
+import type { TreeMenuBaseItemProps } from '../tree-menu/types';
 
 /**
- * Properties for the TreeNavCompact component.
+ * Base option data for a TreeNav entry.
+ *
+ * Item customization beyond the fields below (badges, tags, tooltips,
+ * actions...) is provided via slots instead of extra data fields.
  */
-export interface TreeNavCompactProps<T extends DefinedValue = DefinedValue> extends Omit<
-  PrimitiveWithBaseProps,
-  'onSelect'
-> {
+export interface TreeNavBaseOptionData extends TreeMenuBaseItemProps, LinkBaseProps {
+  /**
+   * Whether the option is a pure visual group container that only groups its children and never becomes active itself.
+   */
+  isGroup?: boolean;
+  /**
+   * The label of the option.
+   */
+  label: string;
+  /**
+   * The icon rendered before the label.
+   */
+  icon?: IconValue;
+  /**
+   * The shortcut rendered at the end of the option inside branch popups.
+   */
+  shortcut?: KbdValue | KbdValue[];
+  /**
+   * Whether to show a separator after this option inside branch popups.
+   */
+  separator?: boolean;
+  /**
+   * Whether the option is hidden.
+   */
+  hidden?: boolean;
+}
+
+/**
+ * Recursive option data for the TreeNav component.
+ */
+export type TreeNavOptionData<T extends TreeNavBaseOptionData = TreeNavBaseOptionData> = Omit<T, 'children'> & {
+  /**
+   * Child options rendered inside the branch popup.
+   */
+  children?: TreeNavOptionData<T>[];
+};
+
+/**
+ * Properties for the TreeNavRoot component.
+ */
+export interface TreeNavRootProps extends Omit<PrimitiveWithBaseProps, 'onSelect'> {
   /** The value of the currently selected item. Can be used as `v-model`. */
-  modelValue?: T;
+  modelValue?: string;
   /** The value of the item that should be selected when initially rendered. */
-  defaultValue?: T;
-  /** The tree items rendered as top-level navigation entries. */
-  items: MenuOptionData<T>[];
+  defaultValue?: string;
   /** The reading direction of the component when applicable. */
   dir?: Direction;
   /**
@@ -72,29 +112,6 @@ export interface TreeNavCompactProps<T extends DefinedValue = DefinedValue> exte
    * Whether the whole navigation bar is disabled.
    */
   disabled?: boolean;
-  /**
-   * Whether top-level overflow items collapse into a trailing "more" branch
-   * popup so the bar always fits inside its container.
-   *
-   * @defaultValue false
-   */
-  collapsible?: boolean;
-  /**
-   * Label of the trailing "more" trigger when `collapsible`.
-   *
-   * @defaultValue 'More'
-   */
-  moreLabel?: string;
-  /**
-   * Icon of the trailing "more" trigger when `collapsible`.
-   *
-   * @defaultValue 'lucide:ellipsis'
-   */
-  moreIcon?: IconValue;
-  /**
-   * Properties forwarded to the trailing "more" trigger button.
-   */
-  moreProps?: ButtonProps;
   /**
    * Properties forwarded to the link element of link items.
    */
@@ -138,17 +155,78 @@ export interface TreeNavCompactProps<T extends DefinedValue = DefinedValue> exte
 }
 
 /**
- * Events for the TreeNavCompact component.
+ * Events for the TreeNavRoot component.
  */
-export interface TreeNavCompactEmits<T extends DefinedValue = DefinedValue> {
+export interface TreeNavRootEmits {
   /**
    * Emitted when the selected value changes.
    */
-  'update:modelValue': [value: T];
+  'update:modelValue': [value: string];
   /**
    * Emitted when an item is selected.
    */
-  select: [item: MenuOptionData<T>, event: Event];
+  select: [item: TreeNavOptionData, event: Event];
+}
+
+/**
+ * Slots for the TreeNavRoot component.
+ */
+export interface TreeNavRootSlots {
+  /**
+   * Default content rendered inside the nav root.
+   */
+  default?: () => any;
+}
+
+/**
+ * Configuration shared by the TreeNav primitives.
+ *
+ * Top-level link and popup-related props are provided as individual reactive
+ * entries (`transformPropsToContext`), so each field stays independently
+ * consumable instead of being nested inside grouped prop objects.
+ */
+export interface TreeNavRootContextParams extends PropsToContext<
+  TreeNavRootProps,
+  | 'dir'
+  | 'disabled'
+  | 'trigger'
+  | 'delayDuration'
+  | 'skipDelayDuration'
+  | 'placement'
+  | 'showArrow'
+  | 'portalProps'
+  | 'popupProps'
+  | 'arrowProps'
+  | 'itemProps'
+  | 'linkProps'
+  | 'groupLabelProps'
+  | 'shortcutProps'
+  | 'separatorProps'
+  | 'subTriggerProps'
+  | 'subContentProps'
+> {
+  /**
+   * Current selected value.
+   */
+  selected: ComputedRef<string | undefined>;
+  /**
+   * Select an entry. Guarded against disabled bars and entries.
+   */
+  onSelect(item: TreeNavOptionData, event: Event): void;
+}
+
+/**
+ * Properties for the TreeNavOptionCompact component.
+ */
+export interface TreeNavOptionCompactProps {
+  /**
+   * Current item data.
+   */
+  item: TreeNavOptionData;
+  /**
+   * Whether the active selection lives inside this branch subtree.
+   */
+  childActive?: boolean;
 }
 
 /**
@@ -162,14 +240,67 @@ export interface TreeNavMoreEntry {
 }
 
 /**
- * Slots for the TreeNavCompact component.
+ * Properties for the TreeNavOptionsCompact component.
  */
-export type TreeNavCompactSlots<T extends DefinedValue = DefinedValue> = MenuOptionsCompactSlots<T> & {
+export interface TreeNavOptionsCompactProps {
   /**
-   * Custom content for the trailing "more" trigger when `collapsible`.
+   * Top-level items rendered as visible entries.
+   */
+  items: TreeNavOptionData[];
+  /**
+   * Items collapsed into the trailing "more" popup.
+   */
+  moreItems?: TreeNavOptionData[];
+  /**
+   * Label of the trailing "more" trigger.
+   *
+   * @defaultValue 'More'
+   */
+  moreLabel?: string;
+  /**
+   * Icon of the trailing "more" trigger.
+   *
+   * @defaultValue 'lucide:ellipsis'
+   */
+  moreIcon?: IconValue;
+  /**
+   * Properties forwarded to the trailing "more" trigger button.
+   */
+  moreProps?: ButtonProps;
+}
+
+/**
+ * Slots for the TreeNavOptionsCompact component.
+ */
+export type TreeNavOptionsCompactSlots = MenuOptionsCompactSlots & {
+  /**
+   * Custom content for the trailing "more" trigger when present.
    */
   'more-trigger'?: (props: TreeNavMoreEntry) => any;
 };
+
+/**
+ * Properties for the TreeNavCompact component.
+ */
+export interface TreeNavCompactProps extends TreeNavRootProps, TreeNavOptionsCompactProps {
+  /**
+   * Whether top-level overflow items collapse into a trailing "more" branch
+   * popup so the bar always fits inside its container.
+   *
+   * @defaultValue false
+   */
+  collapsible?: boolean;
+}
+
+/**
+ * Events for the TreeNavCompact component.
+ */
+export type TreeNavCompactEmits = TreeNavRootEmits;
+
+/**
+ * Slots for the TreeNavCompact component.
+ */
+export type TreeNavCompactSlots = TreeNavOptionsCompactSlots;
 
 /**
  * Available UI slots for the TreeNav component.
@@ -180,19 +311,3 @@ export type TreeNavUiSlot = 'root' | 'item' | 'itemIcon' | 'itemChevron' | 'item
  * UI class overrides for the TreeNav component.
  */
 export type TreeNavUi = UiClass<TreeNavUiSlot>;
-
-/**
- * Properties for the internal top-level renderer of `TreeNavCompact`.
- *
- * Identical to {@link TreeNavCompactProps} except that the visible/more item
- * split is provided by the compact orchestrator instead of being derived here.
- */
-export interface TreeNavTopProps<T extends DefinedValue = DefinedValue> extends Omit<
-  TreeNavCompactProps<T>,
-  'items' | 'collapsible'
-> {
-  /** Top-level items rendered as visible entries. */
-  items: MenuOptionData<T>[];
-  /** Items collapsed into the trailing "more" popup. */
-  moreItems?: MenuOptionData<T>[];
-}

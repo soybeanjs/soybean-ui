@@ -575,6 +575,9 @@ import {
   TreeMenuSlotCompact,
   TreeMenuSub,
   TreeNavCompact,
+  TreeNavOptionCompact,
+  TreeNavOptionsCompact,
+  TreeNavRoot,
   TreeRoot,
   TreeVirtualizerItem,
   TreeVirtualizerRoot,
@@ -2026,7 +2029,17 @@ export const TreeMenu = {
   Sub: typeof TreeMenuSub;
 };
 
-export { TreeNavCompact };
+export const TreeNav = {
+  Root: TreeNavRoot,
+  OptionCompact: TreeNavOptionCompact,
+  OptionsCompact: TreeNavOptionsCompact,
+  Compact: TreeNavCompact
+} as {
+  Root: typeof TreeNavRoot;
+  OptionCompact: typeof TreeNavOptionCompact;
+  OptionsCompact: typeof TreeNavOptionsCompact;
+  Compact: typeof TreeNavCompact;
+};
 
 export const Virtualizer = {
   Root: VirtualizerRoot,

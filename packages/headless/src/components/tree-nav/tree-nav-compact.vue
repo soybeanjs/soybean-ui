@@ -1,11 +1,12 @@
-<script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
+<script setup lang="ts">
 import { computed, nextTick, onMounted, shallowRef, useAttrs, useTemplateRef, watch } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { keysOf } from '@soybeanjs/utils';
 import { isClient } from '../../shared';
-import { useForwardListeners, usePickProps } from '../../composables';
-import type { DefinedValue } from '../../types';
-import TreeNavTop from './tree-nav-top.vue';
+import { useForwardListeners, useOmitProps } from '../../composables';
+import { filterHiddenTreeNavOptions } from './shared';
+import TreeNavOptionsCompact from './tree-nav-options-compact.vue';
+import TreeNavRoot from './tree-nav-root.vue';
 import type { TreeNavCompactProps, TreeNavCompactEmits, TreeNavCompactSlots } from './types';
 
 defineOptions({
@@ -13,65 +14,41 @@ defineOptions({
   inheritAttrs: false
 });
 
-const props = defineProps<TreeNavCompactProps<T>>();
+const props = defineProps<TreeNavCompactProps>();
 
-const emit = defineEmits<TreeNavCompactEmits<T>>();
+const emit = defineEmits<TreeNavCompactEmits>();
 
-const slots = defineSlots<TreeNavCompactSlots<T>>();
+const slots = defineSlots<TreeNavCompactSlots>();
 
 // Forwarding -----------------------------------------------------------------
 
 const attrs = useAttrs();
 
-const forwardedListeners = useForwardListeners(emit);
+const forwardedRootProps = useOmitProps(props, ['items', 'collapsible', 'moreLabel', 'moreIcon', 'moreProps'], attrs);
 
-const slotNames = computed(() => keysOf(slots));
+const listeners = useForwardListeners(emit);
 
-const optionSlotNames = computed(() => slotNames.value.filter(key => key !== 'more-trigger'));
-
-const topForwardKeys: Array<Exclude<keyof TreeNavCompactProps, 'items' | 'collapsible'>> = [
-  'as',
-  'asChild',
-  'modelValue',
-  'defaultValue',
-  'dir',
-  'trigger',
-  'delayDuration',
-  'skipDelayDuration',
-  'placement',
-  'showArrow',
-  'disabled',
-  'moreLabel',
-  'moreIcon',
-  'moreProps',
-  'linkProps',
-  'itemProps',
-  'groupLabelProps',
-  'shortcutProps',
-  'separatorProps',
-  'subTriggerProps',
-  'subContentProps',
-  'portalProps',
-  'popupProps',
-  'arrowProps'
-];
-
-const forwardedTopProps = usePickProps(props, [...topForwardKeys], attrs);
+const optionSlotNames = computed(() => keysOf(slots).filter(key => key !== 'more-trigger'));
 
 // Overflow collapsing --------------------------------------------------------
 //
 // Mirrors the proven `MenubarCompact` reflow mechanism: when `collapsible` is
 // enabled the bar is wrapped in a measurement container; trailing items are
 // moved into a "more" popup one at a time against real layout until everything
-// fits. Selection state and rendering are delegated to `TreeNavTop`.
+// fits. Selection state and rendering are delegated to `TreeNavRoot` and
+// `TreeNavOptionsCompact`.
 
 const overflowElement = useTemplateRef<HTMLElement>('overflowElement');
 
 const collapsedCount = shallowRef(0);
 
-const hiddenCount = computed(() => Math.min(collapsedCount.value, props.items.length));
-const visibleItems = computed(() => props.items.slice(0, props.items.length - hiddenCount.value));
-const moreItems = computed(() => props.items.slice(props.items.length - hiddenCount.value));
+// Hidden options are filtered before layout math so the reflow loop counts
+// exactly what `TreeNavOptionsCompact` renders.
+const items = computed(() => filterHiddenTreeNavOptions(props.items));
+
+const hiddenCount = computed(() => Math.min(collapsedCount.value, items.value.length));
+const visibleItems = computed(() => items.value.slice(0, items.value.length - hiddenCount.value));
+const moreItems = computed(() => items.value.slice(items.value.length - hiddenCount.value));
 
 let reflowRunning = false;
 let reflowQueued = false;
@@ -110,7 +87,7 @@ async function reflow() {
     }
 
     // Collapse trailing items while the content overflows the container.
-    while (collapsedCount.value < props.items.length && isOverflowing(container)) {
+    while (collapsedCount.value < items.value.length && isOverflowing(container)) {
       collapsedCount.value += 1;
       await nextTick();
     }
@@ -129,14 +106,11 @@ useResizeObserver(overflowElement, () => {
   }
 });
 
-watch(
-  () => props.items,
-  () => {
-    if (!props.collapsible) return;
-    collapsedCount.value = 0;
-    reflow();
-  }
-);
+watch(items, () => {
+  if (!props.collapsible) return;
+  collapsedCount.value = 0;
+  reflow();
+});
 
 watch(
   () => props.collapsible,
@@ -156,21 +130,37 @@ onMounted(() => {
 
 <template>
   <div v-if="collapsible" ref="overflowElement" data-soybean-tree-nav-overflow>
-    <TreeNavTop v-bind="forwardedTopProps" :items="visibleItems" :more-items="moreItems" v-on="forwardedListeners">
+    <TreeNavRoot v-bind="forwardedRootProps" v-on="listeners">
+      <TreeNavOptionsCompact
+        :items="visibleItems"
+        :more-items="moreItems"
+        :more-label="moreLabel"
+        :more-icon="moreIcon"
+        :more-props="moreProps"
+      >
+        <template #more-trigger="entry">
+          <slot name="more-trigger" :label="entry.label" :icon="entry.icon" />
+        </template>
+        <template v-for="slotName in optionSlotNames" :key="slotName" #[slotName]="slotProps">
+          <slot :name="slotName" v-bind="slotProps" />
+        </template>
+      </TreeNavOptionsCompact>
+    </TreeNavRoot>
+  </div>
+  <TreeNavRoot v-else v-bind="forwardedRootProps" v-on="listeners">
+    <TreeNavOptionsCompact
+      :items="visibleItems"
+      :more-items="moreItems"
+      :more-label="moreLabel"
+      :more-icon="moreIcon"
+      :more-props="moreProps"
+    >
       <template #more-trigger="entry">
         <slot name="more-trigger" :label="entry.label" :icon="entry.icon" />
       </template>
       <template v-for="slotName in optionSlotNames" :key="slotName" #[slotName]="slotProps">
         <slot :name="slotName" v-bind="slotProps" />
       </template>
-    </TreeNavTop>
-  </div>
-  <TreeNavTop v-else v-bind="forwardedTopProps" :items="visibleItems" :more-items="moreItems" v-on="forwardedListeners">
-    <template #more-trigger="entry">
-      <slot name="more-trigger" :label="entry.label" :icon="entry.icon" />
-    </template>
-    <template v-for="slotName in optionSlotNames" :key="slotName" #[slotName]="slotProps">
-      <slot :name="slotName" v-bind="slotProps" />
-    </template>
-  </TreeNavTop>
+    </TreeNavOptionsCompact>
+  </TreeNavRoot>
 </template>

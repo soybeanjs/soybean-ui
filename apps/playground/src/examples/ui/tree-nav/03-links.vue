@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { STreeNav } from '@soybeanjs/ui';
-import type { MenuOptionData } from '@soybeanjs/ui';
+import type { TreeNavOptionData } from '@soybeanjs/ui';
 
-const items: MenuOptionData<string>[] = [
+const items: TreeNavOptionData[] = [
   { value: 'home', label: 'Home', to: '/' },
   {
     value: 'github',

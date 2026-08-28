@@ -9722,6 +9722,7 @@
         "type": ""
       },
       "packages_headless_src_components_tree_nav_types": {
+        "treenavbaseoptiondata": "Base option data for a TreeNav entry.\n\nItem customization beyond the fields below (badges, tags, tooltips,\nactions...) is provided via slots instead of extra data fields.",
         "treenavcompactemits": {
           "callables": {
             "select": "Emitted when an item is selected.",
@@ -9741,11 +9742,12 @@
             "disabled": "Whether the whole navigation bar is disabled.",
             "grouplabelprops": "Properties forwarded to the group label element of popup group labels.",
             "itemprops": "Properties forwarded to the item element of popup items.",
-            "items": "The tree items rendered as top-level navigation entries.",
+            "items": "Top-level items rendered as visible entries.",
             "linkprops": "Properties forwarded to the link element of link items.",
             "modelvalue": "The value of the currently selected item. Can be used as `v-model`.",
-            "moreicon": "Icon of the trailing \"more\" trigger when `collapsible`.",
-            "morelabel": "Label of the trailing \"more\" trigger when `collapsible`.",
+            "moreicon": "Icon of the trailing \"more\" trigger.",
+            "moreitems": "Items collapsed into the trailing \"more\" popup.",
+            "morelabel": "Label of the trailing \"more\" trigger.",
             "moreprops": "Properties forwarded to the trailing \"more\" trigger button.",
             "placement": "The preferred placement of branch popups relative to their trigger.",
             "popupprops": "Properties forwarded to the popup element of popups.",
@@ -9767,11 +9769,95 @@
             "item_link_icon": "Custom content for the item link icon slot.",
             "item_trailing": "Custom content for the item trailing slot.",
             "item_trigger_icon": "Custom content for the item trigger icon slot.",
-            "more_trigger": "Custom content for the trailing \"more\" trigger when `collapsible`."
+            "more_trigger": "Custom content for the trailing \"more\" trigger when present."
           },
           "slots": "Slots for the TreeNavCompact component."
         },
         "treenavmoreentry": "Display entry describing the trailing \"more\" trigger when `collapsible`.",
+        "treenavoptioncompactprops": {
+          "members": {
+            "childactive": "Whether the active selection lives inside this branch subtree.",
+            "item": "Current item data."
+          },
+          "props": "Properties for the TreeNavOptionCompact component."
+        },
+        "treenavoptiondata": {
+          "members": {
+            "children": "Child options rendered inside the branch popup.",
+            "disabled": "When `true`, prevents the user from interacting with the item.",
+            "external": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
+            "hidden": "Whether the option is hidden.",
+            "href": "The URL the link should navigate to when clicked on.",
+            "icon": "The icon rendered before the label.",
+            "isgroup": "Whether the option is a pure visual group container that only groups its children and never becomes active itself.",
+            "label": "The label of the option.",
+            "separator": "Whether to show a separator after this option inside branch popups.",
+            "shortcut": "The shortcut rendered at the end of the option inside branch popups.",
+            "target": "Where to display the linked URL, as the name for a browsing context.",
+            "to": "Route Location the link should navigate to when clicked on.",
+            "value": "The unique value of the item."
+          }
+        },
+        "treenavoptionscompactprops": {
+          "members": {
+            "items": "Top-level items rendered as visible entries.",
+            "moreicon": "Icon of the trailing \"more\" trigger.",
+            "moreitems": "Items collapsed into the trailing \"more\" popup.",
+            "morelabel": "Label of the trailing \"more\" trigger.",
+            "moreprops": "Properties forwarded to the trailing \"more\" trigger button."
+          },
+          "props": "Properties for the TreeNavOptionsCompact component."
+        },
+        "treenavoptionscompactslots": {
+          "callables": {
+            "item": "Custom content for the item slot.",
+            "item_leading": "Custom content for the item leading slot.",
+            "item_link_icon": "Custom content for the item link icon slot.",
+            "item_trailing": "Custom content for the item trailing slot.",
+            "item_trigger_icon": "Custom content for the item trigger icon slot.",
+            "more_trigger": "Custom content for the trailing \"more\" trigger when present."
+          },
+          "slots": "Slots for the TreeNavOptionsCompact component."
+        },
+        "treenavrootemits": {
+          "callables": {
+            "select": "Emitted when an item is selected.",
+            "update_modelvalue": "Emitted when the selected value changes."
+          },
+          "emits": "Events for the TreeNavRoot component."
+        },
+        "treenavrootprops": {
+          "members": {
+            "arrowprops": "Properties forwarded to the arrow element of popups.",
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "defaultvalue": "The value of the item that should be selected when initially rendered.",
+            "delayduration": "The duration from when the pointer enters a branch trigger until the\npopup gets opened in hover mode.",
+            "dir": "The reading direction of the component when applicable.",
+            "disabled": "Whether the whole navigation bar is disabled.",
+            "grouplabelprops": "Properties forwarded to the group label element of popup group labels.",
+            "itemprops": "Properties forwarded to the item element of popup items.",
+            "linkprops": "Properties forwarded to the link element of link items.",
+            "modelvalue": "The value of the currently selected item. Can be used as `v-model`.",
+            "placement": "The preferred placement of branch popups relative to their trigger.",
+            "popupprops": "Properties forwarded to the popup element of popups.",
+            "portalprops": "Properties forwarded to the portal element of popups.",
+            "separatorprops": "Properties forwarded to the separator element of popup separators.",
+            "shortcutprops": "Properties forwarded to the shortcut element of popup items.",
+            "showarrow": "Whether branch popups show an arrow.",
+            "skipdelayduration": "How much time a user has to enter another branch trigger without\nincurring a delay again.",
+            "subcontentprops": "Properties forwarded to the sub content element of popup branches.",
+            "subtriggerprops": "Properties forwarded to the sub trigger element of popup branches.",
+            "trigger": "How branch popups are opened.\n\n- `click`: The popup will be opened when the trigger is clicked.\n- `hover`: The popup will be opened when the trigger is hovered."
+          },
+          "props": "Properties for the TreeNavRoot component."
+        },
+        "treenavrootslots": {
+          "callables": {
+            "default": "Default content rendered inside the nav root."
+          },
+          "slots": "Slots for the TreeNavRoot component."
+        },
         "treenavui": "UI class overrides for the TreeNav component."
       },
       "packages_headless_src_components_tree_types": {
@@ -14395,11 +14481,12 @@
             "disabled": "Whether the whole navigation bar is disabled.",
             "grouplabelprops": "Properties forwarded to the group label element of popup group labels.",
             "itemprops": "Properties forwarded to the item element of popup items.",
-            "items": "The tree items rendered as top-level navigation entries.",
+            "items": "Top-level items rendered as visible entries.",
             "linkprops": "Properties forwarded to the link element of link items.",
             "modelvalue": "The value of the currently selected item. Can be used as `v-model`.",
-            "moreicon": "Icon of the trailing \"more\" trigger when `collapsible`.",
-            "morelabel": "Label of the trailing \"more\" trigger when `collapsible`.",
+            "moreicon": "Icon of the trailing \"more\" trigger.",
+            "moreitems": "Items collapsed into the trailing \"more\" popup.",
+            "morelabel": "Label of the trailing \"more\" trigger.",
             "moreprops": "Properties forwarded to the trailing \"more\" trigger button.",
             "placement": "The preferred placement of branch popups relative to their trigger.",
             "popupprops": "Properties forwarded to the popup element of popups.",
@@ -14412,8 +14499,7 @@
             "subcontentprops": "Properties forwarded to the sub content element of popup branches.",
             "subtriggerprops": "Properties forwarded to the sub trigger element of popup branches.",
             "trigger": "How branch popups are opened.\n\n- `click`: The popup will be opened when the trigger is clicked.\n- `hover`: The popup will be opened when the trigger is hovered.",
-            "ui": "Per-slot class overrides for the component.",
-            "variant": "Visual variant of the component."
+            "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the TreeNav component."
         },
@@ -14424,7 +14510,7 @@
             "item_link_icon": "Custom content for the item link icon slot.",
             "item_trailing": "Custom content for the item trailing slot.",
             "item_trigger_icon": "Custom content for the item trigger icon slot.",
-            "more_trigger": "Custom content for the trailing \"more\" trigger when `collapsible`."
+            "more_trigger": "Custom content for the trailing \"more\" trigger when present."
           },
           "slots": "Slots for the TreeNav component."
         }

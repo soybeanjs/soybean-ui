@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { STreeNav } from '@soybeanjs/ui';
-import type { MenuOptionData } from '@soybeanjs/ui';
+import type { TreeNavOptionData } from '@soybeanjs/ui';
 
-const items: MenuOptionData<string>[] = [
+const items: TreeNavOptionData[] = [
   { value: 'guide', label: 'Guide' },
   { value: 'api', label: 'API Reference' },
   { value: 'examples', label: 'Examples' },

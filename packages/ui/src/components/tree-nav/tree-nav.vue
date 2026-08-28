@@ -1,8 +1,7 @@
-<script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
+<script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { TreeNavCompact, provideTreeNavUi } from '@soybeanjs/headless/tree-nav';
-import type { DefinedValue } from '@soybeanjs/headless/types';
 import { keysOf } from '@soybeanjs/utils';
 import { treeNavVariants } from '@/styles/tree-nav';
 import { provideMenuUi } from '../menu/context';
@@ -12,13 +11,15 @@ defineOptions({
   name: 'STreeNav'
 });
 
-const props = defineProps<TreeNavProps<T>>();
+const props = defineProps<TreeNavProps>();
 
-const emit = defineEmits<TreeNavEmits<T>>();
+const emit = defineEmits<TreeNavEmits>();
 
-const slots = defineSlots<TreeNavSlots<T>>();
+// Forwarded scopes resolve against headless internals; the slot contract is
+// the shared `MenuOptionsCompactSlots` + `more-trigger`.
+const slots = defineSlots<TreeNavSlots>();
 
-const forwardedProps = useOmitProps(props, ['class', 'size', 'variant', 'ui']);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const listeners = useForwardListeners(emit);
 
@@ -28,7 +29,6 @@ const ui = computed(() =>
   treeNavVariants(
     {
       size: props.size,
-      variant: props.variant,
       collapsible: props.collapsible
     },
     props.ui,

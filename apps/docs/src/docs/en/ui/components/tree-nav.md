@@ -4,7 +4,7 @@
 
 TreeNav is a data-driven horizontal navigation bar with a persistent selection state: top-level entries sit in a row, branch entries open dropdown popups (hover by default), and selecting any leaf keeps the whole ancestor chain highlighted.
 
-`STreeNav` is the horizontal counterpart of `STreeMenu`: both consume the same `MenuOptionData` tree shape and derive highlights from the selected value, but TreeNav renders branches as DropdownMenu popups instead of collapsible sections. Logic and accessibility semantics live in the headless `TreeNavCompact`; styles are injected through an `scv()` recipe.
+`STreeNav` is the horizontal counterpart of `STreeMenu`: both consume the same tree-shaped `items` data (`TreeNavOptionData`) and derive highlights from the selected value, but TreeNav renders branches as DropdownMenu popups instead of collapsible sections. Logic and accessibility semantics live in the headless `TreeNavCompact`; styles are injected through an `scv()` recipe.
 
 > Unlike Menubar (a transient "which menu is open" command-menu model), TreeNav models **selection**: opening a popup never marks anything active — only selection does. Selected leaves carry `data-active`, and ancestors of the selected leaf carry `data-child-active`.
 
@@ -13,7 +13,7 @@ TreeNav is a data-driven horizontal navigation bar with a persistent selection s
 - **Persistent selection** — bind `modelValue` (`v-model`) or seed with `defaultValue`; selection survives closing popups and page interactions.
 - **Highlight derivation** — the selected leaf renders `data-active="true"`, and every ancestor in its path renders `data-child-active`; derivation reuses the shared tree-path helper, so highlighting works at any depth.
 - **Hover-first popups** — branch popups open on hover by default (`trigger="click"` to override), tuned via `delayDuration` / `skipDelayDuration`.
-- **Same data as STreeMenu** — pass one `items` array (`MenuOptionData`: `value` / `label` / `icon` / `children` / `href` / `to` / `disabled` …) to either the vertical sidebar or this horizontal bar.
+- **Familiar data shape** — pass one `items` array (`TreeNavOptionData`: `value` / `label` / `icon` / `children` / `href` / `to` / `disabled` …), aligned with TreeMenu's option model; item customization beyond these fields (badges, tags, actions…) is provided via slots instead of extra data fields.
 - **Link top-level items** — items with `href` / `to` render as links that also update the selection on click.
 - **Overflow collapsing** — with `collapsible`, trailing top-level items merge into a trailing "more" popup so the bar always fits its container; customize via `moreLabel` / `moreIcon` / `moreProps` / the `more-trigger` slot.
 - **Navigation semantics** — root renders as `<nav>` (`as` overridable); popup trigger semantics (`aria-haspopup` / `aria-expanded`, Escape handling) are inherited from the DropdownMenu layer.

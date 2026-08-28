@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { STreeNav } from '@soybeanjs/ui';
-import type { MenuOptionData } from '@soybeanjs/ui';
+import type { TreeNavOptionData } from '@soybeanjs/ui';
 
 const selected = ref<string>('email');
 
-const items: MenuOptionData<string>[] = [
+const items: TreeNavOptionData[] = [
   {
     value: 'contact',
     label: 'Contact',
@@ -17,7 +17,7 @@ const items: MenuOptionData<string>[] = [
   { value: 'about', label: 'About' }
 ];
 
-const handleSelect = (item: MenuOptionData<string>) => {
+const handleSelect = (item: TreeNavOptionData) => {
   // eslint-disable-next-line no-console
   console.log('selected:', item.value);
 };

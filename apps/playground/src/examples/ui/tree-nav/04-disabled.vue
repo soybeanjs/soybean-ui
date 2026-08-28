@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { SButton, STreeNav } from '@soybeanjs/ui';
-import type { MenuOptionData } from '@soybeanjs/ui';
+import type { TreeNavOptionData } from '@soybeanjs/ui';
 
 const disabled = ref(false);
 
-const items: MenuOptionData<string>[] = [
+const items: TreeNavOptionData[] = [
   {
     value: 'products',
     label: 'Products',

@@ -2,11 +2,11 @@ import { describe, expect, it } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import SConfigProvider from '@/components/config-provider/config-provider.vue';
-import type { MenuOptionData } from '@/components/menu';
 import { STreeNav } from '@/components/tree-nav';
+import type { TreeNavOptionData } from '@/components/tree-nav';
 import { getA11yViolations } from '../../shared/a11y';
 
-const items: MenuOptionData<string>[] = [
+const items: TreeNavOptionData[] = [
   {
     value: 'docs',
     label: 'Docs',
@@ -89,6 +89,47 @@ describe('STreeNav', () => {
 
       const docsTrigger = wrapper.find('[data-soybean-dropdown-menu-trigger]');
       expect(docsTrigger.find('svg').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+
+    it('filters hidden options from the bar and branch popups', async () => {
+      const wrapper = mount(STreeNav, {
+        props: {
+          trigger: 'click',
+          portalProps: { disabled: true },
+          items: [
+            { value: 'visible', label: 'Visible' },
+            { value: 'hidden', label: 'Hidden', hidden: true },
+            {
+              value: 'branch',
+              label: 'Branch',
+              children: [
+                { value: 'kept', label: 'Kept' },
+                { value: 'dropped', label: 'Dropped', hidden: true }
+              ]
+            }
+          ]
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.text()).toContain('Visible');
+      expect(wrapper.text()).not.toContain('Hidden');
+
+      const branchTrigger = wrapper.find('[data-soybean-dropdown-menu-trigger]');
+      await branchTrigger.trigger('click');
+      await nextTick();
+      await nextTick();
+
+      expect(wrapper.text()).toContain('Kept');
+      expect(wrapper.text()).not.toContain('Dropped');
+
+      // Hidden options must not break selection derivation.
+      const keptItem = wrapper.findAll('[role="menuitem"]').find(item => item.text() === 'Kept');
+      await keptItem!.trigger('click');
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['kept']);
 
       wrapper.unmount();
     });

@@ -4,13 +4,13 @@ import type {
   TreeNavCompactSlots,
   TreeNavUi
 } from '@soybeanjs/headless/tree-nav';
-import type { ClassValue, DefinedValue } from '@soybeanjs/headless/types';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
  * Properties for the TreeNav component.
  */
-export interface TreeNavProps<T extends DefinedValue = DefinedValue> extends TreeNavCompactProps<T> {
+export interface TreeNavProps extends TreeNavCompactProps {
   /**
    * class of tree-nav root.
    */
@@ -20,10 +20,6 @@ export interface TreeNavProps<T extends DefinedValue = DefinedValue> extends Tre
    */
   size?: ThemeSize;
   /**
-   * Visual variant of the component.
-   */
-  variant?: 'default' | 'nav';
-  /**
    * Per-slot class overrides for the component.
    */
   ui?: Partial<TreeNavUi>;
@@ -32,9 +28,9 @@ export interface TreeNavProps<T extends DefinedValue = DefinedValue> extends Tre
 /**
  * Events for the TreeNav component.
  */
-export type TreeNavEmits<T extends DefinedValue = DefinedValue> = TreeNavCompactEmits<T>;
+export type TreeNavEmits = TreeNavCompactEmits;
 
 /**
  * Slots for the TreeNav component.
  */
-export type TreeNavSlots<T extends DefinedValue = DefinedValue> = TreeNavCompactSlots<T>;
+export type TreeNavSlots = TreeNavCompactSlots;
