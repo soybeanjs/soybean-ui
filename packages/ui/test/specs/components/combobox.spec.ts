@@ -102,6 +102,25 @@ describe('SCombobox', () => {
       wrapper.unmount();
     });
 
+    it('exposes combobox data attributes on public slots', async () => {
+      const wrapper = mount(SCombobox, {
+        props: {
+          items: groupedItems,
+          modelValue: 'apple'
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-combobox-anchor]').exists()).toBe(true);
+
+      await openCombobox(wrapper);
+
+      expect(document.body.querySelector('[data-soybean-combobox-group-label]')).toBeTruthy();
+      expect(document.body.querySelector('[data-soybean-combobox-item-indicator]')).toBeTruthy();
+
+      wrapper.unmount();
+    });
+
     it('shows empty slot when there are no options', async () => {
       const wrapper = mount(SCombobox, {
         props: {

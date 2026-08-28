@@ -153,13 +153,13 @@
             "sourcePath": "packages/headless/src/components/combobox/types.ts",
             "referencedTypes": [
               {
-                "name": "PopperAnchorProps",
+                "name": "ComboboxAnchorProps",
                 "kind": "interface",
                 "type": "ComboboxAnchorProps",
                 "resolvedType": "{ reference?: ReferenceElement; asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the anchor (reference) element, optionally overriding the reference.",
-                "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperanchorprops",
-                "sourcePath": "packages/headless/src/components/popper/types.ts",
+                "description": "Properties for the ComboboxAnchor component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxanchorprops",
+                "sourcePath": "packages/headless/src/components/combobox/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -168,7 +168,7 @@
                     "type": "ReferenceElement",
                     "required": false,
                     "description": "",
-                    "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperanchorprops.members.reference",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxanchorprops.members.reference",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/popper/types.ts",
@@ -179,7 +179,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperanchorprops.members.aschild",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxanchorprops.members.aschild",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -190,7 +190,7 @@
                     "type": "AsTag | Component",
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperanchorprops.members.as",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxanchorprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -1137,13 +1137,13 @@
             "sourcePath": "packages/headless/src/components/combobox/types.ts",
             "referencedTypes": [
               {
-                "name": "ListboxGroupLabelProps",
+                "name": "ComboboxGroupLabelProps",
                 "kind": "interface",
                 "type": "ComboboxGroupLabelProps",
                 "resolvedType": null,
-                "description": "Properties for the ListboxGroupLabel component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxgrouplabelprops",
-                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "description": "Properties for the ComboboxGroupLabel component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxgrouplabelprops",
+                "sourcePath": "packages/headless/src/components/combobox/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -1243,13 +1243,13 @@
             "sourcePath": "packages/headless/src/components/combobox/types.ts",
             "referencedTypes": [
               {
-                "name": "ListboxItemIndicatorProps",
+                "name": "ComboboxItemIndicatorProps",
                 "kind": "interface",
                 "type": "ComboboxItemIndicatorProps",
                 "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the ListboxItemIndicator component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxitemindicatorprops",
-                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "description": "Properties for the ComboboxItemIndicator component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxitemindicatorprops",
+                "sourcePath": "packages/headless/src/components/combobox/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -1258,7 +1258,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxitemindicatorprops.members.aschild",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxitemindicatorprops.members.aschild",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -1269,7 +1269,7 @@
                     "type": "AsTag | Component",
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxitemindicatorprops.members.as",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxitemindicatorprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -2018,7 +2018,91 @@
         "referencedTypes": []
       }
     },
-    "ComboboxAnchor": {},
+    "ComboboxAnchor": {
+      "props": {
+        "kind": "props",
+        "name": "ComboboxAnchorProps",
+        "type": "Interface ComboboxAnchorProps",
+        "resolvedType": "{ reference?: ReferenceElement; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the ComboboxAnchor component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxanchorprops.props",
+        "sourcePath": "packages/headless/src/components/combobox/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "reference",
+            "type": "ReferenceElement",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxanchorprops.members.reference",
+            "default": null,
+            "inheritedFrom": "reference",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ReferenceElement",
+                "kind": "typeAlias",
+                "type": "ReferenceElement",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.8.0/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxanchorprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxanchorprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "ComboboxArrow": {
       "props": {
         "kind": "props",
@@ -2220,13 +2304,13 @@
             "sourcePath": "packages/headless/src/components/combobox/types.ts",
             "referencedTypes": [
               {
-                "name": "PopperAnchorProps",
+                "name": "ComboboxAnchorProps",
                 "kind": "interface",
                 "type": "ComboboxAnchorProps",
                 "resolvedType": "{ reference?: ReferenceElement; asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the anchor (reference) element, optionally overriding the reference.",
-                "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperanchorprops",
-                "sourcePath": "packages/headless/src/components/popper/types.ts",
+                "description": "Properties for the ComboboxAnchor component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxanchorprops",
+                "sourcePath": "packages/headless/src/components/combobox/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -2235,7 +2319,7 @@
                     "type": "ReferenceElement",
                     "required": false,
                     "description": "",
-                    "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperanchorprops.members.reference",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxanchorprops.members.reference",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/popper/types.ts",
@@ -2246,7 +2330,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperanchorprops.members.aschild",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxanchorprops.members.aschild",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -2257,7 +2341,7 @@
                     "type": "AsTag | Component",
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperanchorprops.members.as",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxanchorprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -3204,13 +3288,13 @@
             "sourcePath": "packages/headless/src/components/combobox/types.ts",
             "referencedTypes": [
               {
-                "name": "ListboxGroupLabelProps",
+                "name": "ComboboxGroupLabelProps",
                 "kind": "interface",
                 "type": "ComboboxGroupLabelProps",
                 "resolvedType": null,
-                "description": "Properties for the ListboxGroupLabel component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxgrouplabelprops",
-                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "description": "Properties for the ComboboxGroupLabel component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxgrouplabelprops",
+                "sourcePath": "packages/headless/src/components/combobox/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -3310,13 +3394,13 @@
             "sourcePath": "packages/headless/src/components/combobox/types.ts",
             "referencedTypes": [
               {
-                "name": "ListboxItemIndicatorProps",
+                "name": "ComboboxItemIndicatorProps",
                 "kind": "interface",
                 "type": "ComboboxItemIndicatorProps",
                 "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the ListboxItemIndicator component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxitemindicatorprops",
-                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "description": "Properties for the ComboboxItemIndicator component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxitemindicatorprops",
+                "sourcePath": "packages/headless/src/components/combobox/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -3325,7 +3409,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxitemindicatorprops.members.aschild",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxitemindicatorprops.members.aschild",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -3336,7 +3420,7 @@
                     "type": "AsTag | Component",
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxitemindicatorprops.members.as",
+                    "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxitemindicatorprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -3592,7 +3676,7 @@
       "emits": {
         "kind": "emits",
         "name": "ComboboxCompactEmits",
-        "type": "TypeAlias ComboboxCompactEmits<M>: ComboboxRootEmits<M> & ComboboxContentEmits & AutocompleteItemEmits",
+        "type": "TypeAlias ComboboxCompactEmits<M>: ComboboxRootEmits<M> & ComboboxContentEmits & ComboboxItemEmits",
         "resolvedType": "{ \"update:modelValue\": [value: M extends true ? string[] : string]; highlight: [payload?: CollectionItemData<ListboxCollectionItemData> | undefined]; \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; placed: []; select: [event: SelectEvent<string>] }",
         "description": "Events for the ComboboxCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcompactemits.emits",
@@ -4086,6 +4170,415 @@
       }
     },
     "ComboboxContent": {
+      "props": {
+        "kind": "props",
+        "name": "ComboboxContentProps",
+        "type": "Interface ComboboxContentProps",
+        "resolvedType": "{ position?: 'inline' | 'popper'; bodyLock?: boolean; hideWhenEmpty?: boolean; popupProps?: PopperPositioningPopupProps; open?: boolean; placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableOutsidePointerEvents?: boolean; forceMount?: boolean }",
+        "description": "Properties for the ComboboxContent component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.props",
+        "sourcePath": "packages/headless/src/components/combobox/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "position",
+            "type": "'inline' | 'popper'",
+            "required": false,
+            "description": "Position.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.position",
+            "default": null,
+            "inheritedFrom": "position",
+            "sourcePath": "packages/headless/src/components/combobox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "bodyLock",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether body lock.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.bodylock",
+            "default": null,
+            "inheritedFrom": "ComboboxContentImplProps.bodyLock",
+            "sourcePath": "packages/headless/src/components/combobox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "hideWhenEmpty",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether hide when empty.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.hidewhenempty",
+            "default": null,
+            "inheritedFrom": "ComboboxContentImplProps.hideWhenEmpty",
+            "sourcePath": "packages/headless/src/components/combobox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "popupProps",
+            "type": "PopperPositioningPopupProps",
+            "required": false,
+            "description": "Properties forwarded to the popup element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.popupprops",
+            "default": null,
+            "inheritedFrom": "ComboboxContentImplProps.popupProps",
+            "sourcePath": "packages/headless/src/components/combobox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PopperPositioningPopupProps",
+                "kind": "interface",
+                "type": "PopperPositioningPopupProps",
+                "resolvedType": null,
+                "description": "Properties for the positioning-only popup.",
+                "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperpositioningpopupprops",
+                "sourcePath": "packages/headless/src/components/popper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "open",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the floating layer is open. Drives the positioning lifecycle (`isPositioned`\nresets when open flips); the positioning primitive itself has no open state, so\nconsumers wire their own open state here.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.open",
+            "default": "true",
+            "inheritedFrom": "ComboboxContentImplProps.open",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placement",
+            "type": "Placement",
+            "required": false,
+            "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.placement",
+            "default": "undefined",
+            "inheritedFrom": "ComboboxContentImplProps.placement",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Placement",
+                "kind": "typeAlias",
+                "type": "'top' | 'right' | 'bottom' | 'left' | 'top-start' | 'top-end' | 'right-start' | 'right-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end'",
+                "resolvedType": "'top' | 'right' | 'bottom' | 'left' | 'top-start' | 'top-end' | 'right-start' | 'right-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.placement",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "side",
+            "type": "Side",
+            "required": false,
+            "description": "The preferred side of the anchor to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.side",
+            "default": "'bottom'",
+            "inheritedFrom": "ComboboxContentImplProps.side",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Side",
+                "kind": "typeAlias",
+                "type": "Side",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.12/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "sideOffset",
+            "type": "number",
+            "required": false,
+            "description": "The distance in pixels from the anchor.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.sideoffset",
+            "default": "0",
+            "inheritedFrom": "ComboboxContentImplProps.sideOffset",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "sideFlip",
+            "type": "boolean",
+            "required": false,
+            "description": "Flip to the opposite side when colliding with boundary.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.sideflip",
+            "default": "true",
+            "inheritedFrom": "ComboboxContentImplProps.sideFlip",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "align",
+            "type": "Align",
+            "required": false,
+            "description": "The preferred alignment against the anchor. May change when collisions occur.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.align",
+            "default": "'center'",
+            "inheritedFrom": "ComboboxContentImplProps.align",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Align",
+                "kind": "typeAlias",
+                "type": "'start' | 'center' | 'end'",
+                "resolvedType": "'start' | 'center' | 'end'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.align",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "alignOffset",
+            "type": "number",
+            "required": false,
+            "description": "An offset in pixels from the `start` or `end` alignment options.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.alignoffset",
+            "default": "0",
+            "inheritedFrom": "ComboboxContentImplProps.alignOffset",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "alignFlip",
+            "type": "boolean",
+            "required": false,
+            "description": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.alignflip",
+            "default": "true",
+            "inheritedFrom": "ComboboxContentImplProps.alignFlip",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "avoidCollisions",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.avoidcollisions",
+            "default": "true",
+            "inheritedFrom": "ComboboxContentImplProps.avoidCollisions",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "collisionBoundary",
+            "type": "Element | (Element | null)[] | null",
+            "required": false,
+            "description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.collisionboundary",
+            "default": "[ ]",
+            "inheritedFrom": "ComboboxContentImplProps.collisionBoundary",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Element",
+                "kind": "interface",
+                "type": "Element",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "collisionPadding",
+            "type": "Padding",
+            "required": false,
+            "description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.collisionpadding",
+            "default": "0",
+            "inheritedFrom": "ComboboxContentImplProps.collisionPadding",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Padding",
+                "kind": "typeAlias",
+                "type": "Padding",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.12/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "arrowPadding",
+            "type": "number",
+            "required": false,
+            "description": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.arrowpadding",
+            "default": "0",
+            "inheritedFrom": "ComboboxContentImplProps.arrowPadding",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "hideShiftedArrow",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.hideshiftedarrow",
+            "default": "false",
+            "inheritedFrom": "ComboboxContentImplProps.hideShiftedArrow",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "sticky",
+            "type": "'partial' | 'always'",
+            "required": false,
+            "description": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the anchor is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.sticky",
+            "default": "'partial'",
+            "inheritedFrom": "ComboboxContentImplProps.sticky",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "hideWhenDetached",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to hide the content when the anchor becomes fully occluded.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.hidewhendetached",
+            "default": "false",
+            "inheritedFrom": "ComboboxContentImplProps.hideWhenDetached",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "positionStrategy",
+            "type": "'fixed' | 'absolute'",
+            "required": false,
+            "description": "The type of CSS position property to use.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.positionstrategy",
+            "default": "'fixed'",
+            "inheritedFrom": "ComboboxContentImplProps.positionStrategy",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "updatePositionStrategy",
+            "type": "'always' | 'optimized'",
+            "required": false,
+            "description": "Strategy to update the position of the floating element on every animation frame.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.updatepositionstrategy",
+            "default": "'optimized'",
+            "inheritedFrom": "ComboboxContentImplProps.updatePositionStrategy",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disableUpdateOnLayoutShift",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to disable the update position for the content when the layout shifted.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.disableupdateonlayoutshift",
+            "default": "false",
+            "inheritedFrom": "ComboboxContentImplProps.disableUpdateOnLayoutShift",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prioritizePosition",
+            "type": "boolean",
+            "required": false,
+            "description": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.prioritizeposition",
+            "default": "false",
+            "inheritedFrom": "ComboboxContentImplProps.prioritizePosition",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "reference",
+            "type": "ReferenceElement",
+            "required": false,
+            "description": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.reference",
+            "default": null,
+            "inheritedFrom": "ComboboxContentImplProps.reference",
+            "sourcePath": "packages/headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ReferenceElement",
+                "kind": "typeAlias",
+                "type": "ReferenceElement",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.8.0/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "trapFocus",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, focus cannot escape the content via keyboard, pointer, or a programmatic focus.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.trapfocus",
+            "default": "false",
+            "inheritedFrom": "ComboboxContentImplProps.trapFocus",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disableOutsidePointerEvents",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, hover/focus/click interactions will be disabled on elements outside the `DismissableLayer`. Users will\nneed to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to\ntrigger the element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.disableoutsidepointerevents",
+            "default": null,
+            "inheritedFrom": "ComboboxContentImplProps.disableOutsidePointerEvents",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "forceMount",
+            "type": "boolean",
+            "required": false,
+            "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.forcemount",
+            "default": null,
+            "inheritedFrom": "ComboboxContentImplProps.forceMount",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
       "emits": {
         "kind": "emits",
         "name": "ComboboxContentEmits",
@@ -4353,415 +4846,6 @@
             ]
           }
         ]
-      },
-      "props": {
-        "kind": "props",
-        "name": "ComboboxContentProps",
-        "type": "Interface ComboboxContentProps",
-        "resolvedType": "{ position?: 'inline' | 'popper'; bodyLock?: boolean; hideWhenEmpty?: boolean; popupProps?: PopperPositioningPopupProps; open?: boolean; placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableOutsidePointerEvents?: boolean; forceMount?: boolean }",
-        "description": "Properties for the ComboboxContent component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.props",
-        "sourcePath": "packages/headless/src/components/combobox/types.ts",
-        "typeParameters": [],
-        "members": [
-          {
-            "name": "position",
-            "type": "'inline' | 'popper'",
-            "required": false,
-            "description": "Position.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.position",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/combobox/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "bodyLock",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether body lock.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.bodylock",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/combobox/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "hideWhenEmpty",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether hide when empty.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.hidewhenempty",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/combobox/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "popupProps",
-            "type": "PopperPositioningPopupProps",
-            "required": false,
-            "description": "Properties forwarded to the popup element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.popupprops",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/combobox/types.ts",
-            "referencedTypes": [
-              {
-                "name": "PopperPositioningPopupProps",
-                "kind": "interface",
-                "type": "PopperPositioningPopupProps",
-                "resolvedType": null,
-                "description": "Properties for the positioning-only popup.",
-                "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperpositioningpopupprops",
-                "sourcePath": "packages/headless/src/components/popper/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "open",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether the floating layer is open. Drives the positioning lifecycle (`isPositioned`\nresets when open flips); the positioning primitive itself has no open state, so\nconsumers wire their own open state here.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.open",
-            "default": "true",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "placement",
-            "type": "Placement",
-            "required": false,
-            "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.placement",
-            "default": "undefined",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Placement",
-                "kind": "typeAlias",
-                "type": "'top' | 'right' | 'bottom' | 'left' | 'top-start' | 'top-end' | 'right-start' | 'right-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end'",
-                "resolvedType": "'top' | 'right' | 'bottom' | 'left' | 'top-start' | 'top-end' | 'right-start' | 'right-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end'",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_types_common.placement",
-                "sourcePath": "packages/headless/src/types/common.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "side",
-            "type": "Side",
-            "required": false,
-            "description": "The preferred side of the anchor to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.side",
-            "default": "'bottom'",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Side",
-                "kind": "typeAlias",
-                "type": "Side",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.12/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "sideOffset",
-            "type": "number",
-            "required": false,
-            "description": "The distance in pixels from the anchor.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.sideoffset",
-            "default": "0",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "sideFlip",
-            "type": "boolean",
-            "required": false,
-            "description": "Flip to the opposite side when colliding with boundary.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.sideflip",
-            "default": "true",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "align",
-            "type": "Align",
-            "required": false,
-            "description": "The preferred alignment against the anchor. May change when collisions occur.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.align",
-            "default": "'center'",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Align",
-                "kind": "typeAlias",
-                "type": "'start' | 'center' | 'end'",
-                "resolvedType": "'start' | 'center' | 'end'",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_types_common.align",
-                "sourcePath": "packages/headless/src/types/common.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "alignOffset",
-            "type": "number",
-            "required": false,
-            "description": "An offset in pixels from the `start` or `end` alignment options.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.alignoffset",
-            "default": "0",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "alignFlip",
-            "type": "boolean",
-            "required": false,
-            "description": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.alignflip",
-            "default": "true",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "avoidCollisions",
-            "type": "boolean",
-            "required": false,
-            "description": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.avoidcollisions",
-            "default": "true",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "collisionBoundary",
-            "type": "Element | (Element | null)[] | null",
-            "required": false,
-            "description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.collisionboundary",
-            "default": "[ ]",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Element",
-                "kind": "interface",
-                "type": "Element",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "collisionPadding",
-            "type": "Padding",
-            "required": false,
-            "description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.collisionpadding",
-            "default": "0",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Padding",
-                "kind": "typeAlias",
-                "type": "Padding",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.12/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "arrowPadding",
-            "type": "number",
-            "required": false,
-            "description": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.arrowpadding",
-            "default": "0",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "hideShiftedArrow",
-            "type": "boolean",
-            "required": false,
-            "description": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.hideshiftedarrow",
-            "default": "false",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "sticky",
-            "type": "'partial' | 'always'",
-            "required": false,
-            "description": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the anchor is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.sticky",
-            "default": "'partial'",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "hideWhenDetached",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether to hide the content when the anchor becomes fully occluded.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.hidewhendetached",
-            "default": "false",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "positionStrategy",
-            "type": "'fixed' | 'absolute'",
-            "required": false,
-            "description": "The type of CSS position property to use.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.positionstrategy",
-            "default": "'fixed'",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "updatePositionStrategy",
-            "type": "'always' | 'optimized'",
-            "required": false,
-            "description": "Strategy to update the position of the floating element on every animation frame.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.updatepositionstrategy",
-            "default": "'optimized'",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "disableUpdateOnLayoutShift",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether to disable the update position for the content when the layout shifted.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.disableupdateonlayoutshift",
-            "default": "false",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "prioritizePosition",
-            "type": "boolean",
-            "required": false,
-            "description": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.prioritizeposition",
-            "default": "false",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "reference",
-            "type": "ReferenceElement",
-            "required": false,
-            "description": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.reference",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/popper/types.ts",
-            "referencedTypes": [
-              {
-                "name": "ReferenceElement",
-                "kind": "typeAlias",
-                "type": "ReferenceElement",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.8.0/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "trapFocus",
-            "type": "boolean",
-            "required": false,
-            "description": "When `true`, focus cannot escape the content via keyboard, pointer, or a programmatic focus.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.trapfocus",
-            "default": "false",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/types/component.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "disableOutsidePointerEvents",
-            "type": "boolean",
-            "required": false,
-            "description": "When `true`, hover/focus/click interactions will be disabled on elements outside the `DismissableLayer`. Users will\nneed to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to\ntrigger the element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.disableoutsidepointerevents",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/types/component.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "forceMount",
-            "type": "boolean",
-            "required": false,
-            "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentprops.members.forcemount",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/types/component.ts",
-            "referencedTypes": []
-          }
-        ],
-        "callables": [],
-        "referencedTypes": []
       }
     },
     "ComboboxEmpty": {
@@ -4824,8 +4908,36 @@
         "referencedTypes": []
       }
     },
-    "ComboboxGroup": {},
-    "ComboboxGroupLabel": {},
+    "ComboboxGroup": {
+      "props": {
+        "kind": "props",
+        "name": "ComboboxGroupProps",
+        "type": "Interface ComboboxGroupProps",
+        "resolvedType": null,
+        "description": "Properties for the ListboxGroup component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.comboboxgroupprops.props",
+        "sourcePath": "packages/headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ComboboxGroupLabel": {
+      "props": {
+        "kind": "props",
+        "name": "ComboboxGroupLabelProps",
+        "type": "Interface ComboboxGroupLabelProps",
+        "resolvedType": null,
+        "description": "Properties for the ComboboxGroupLabel component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxgrouplabelprops.props",
+        "sourcePath": "packages/headless/src/components/combobox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "ComboboxInput": {
       "props": {
         "kind": "props",
@@ -5174,7 +5286,7 @@
             "description": "The value given as data when submitted with a `name`.",
             "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxitemprops.members.value",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "value",
             "sourcePath": "packages/headless/src/components/listbox/types.ts",
             "referencedTypes": []
           },
@@ -5185,7 +5297,7 @@
             "description": "When `true`, prevents the user from interacting with the item.",
             "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxitemprops.members.disabled",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "disabled",
             "sourcePath": "packages/headless/src/components/listbox/types.ts",
             "referencedTypes": []
           },
@@ -5196,7 +5308,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxitemprops.members.aschild",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "asChild",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -5207,7 +5319,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxitemprops.members.as",
             "default": "'div'",
-            "inheritedFrom": null,
+            "inheritedFrom": "as",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -5240,7 +5352,7 @@
       "emits": {
         "kind": "emits",
         "name": "ComboboxItemEmits",
-        "type": "TypeAlias ComboboxItemEmits",
+        "type": "TypeAlias ComboboxItemEmits: CommandItemEmits",
         "resolvedType": "{ select: [event: SelectEvent<string>] }",
         "description": "Events for the ComboboxItem component.",
         "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxitememits.emits",
@@ -5301,7 +5413,66 @@
         ]
       }
     },
-    "ComboboxItemIndicator": {},
+    "ComboboxItemIndicator": {
+      "props": {
+        "kind": "props",
+        "name": "ComboboxItemIndicatorProps",
+        "type": "Interface ComboboxItemIndicatorProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the ComboboxItemIndicator component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxitemindicatorprops.props",
+        "sourcePath": "packages/headless/src/components/combobox/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxitemindicatorprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "ListboxItemIndicatorProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxitemindicatorprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "ListboxItemIndicatorProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "ComboboxPortal": {},
     "ComboboxRoot": {
       "props": {
@@ -5585,7 +5756,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxseparatorprops.members.aschild",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -5596,7 +5767,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxseparatorprops.members.as",
             "default": "'div'",
-            "inheritedFrom": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -5656,7 +5827,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxtriggerprops.members.aschild",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -5667,7 +5838,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxtriggerprops.members.as",
             "default": "'div'",
-            "inheritedFrom": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {

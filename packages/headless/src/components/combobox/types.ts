@@ -20,12 +20,12 @@ import type {
   ListboxItemProps,
   ListboxItemEmits,
   ListboxGroupProps as ComboboxGroupProps,
-  ListboxGroupLabelProps as ComboboxGroupLabelProps,
-  ListboxItemIndicatorProps as ComboboxItemIndicatorProps,
+  ListboxGroupLabelProps,
+  ListboxItemIndicatorProps,
   ListboxVirtualizerProps
 } from '../listbox/types';
 import type {
-  PopperAnchorProps as ComboboxAnchorProps,
+  PopperAnchorProps,
   PopperArrowProps as ComboboxArrowProps,
   PopperPositioningPopupProps,
   PopperPositioningPositionerEmits,
@@ -84,6 +84,21 @@ export type ComboboxRootEmits<M extends boolean = false> = Pick<
    */
   'update:open': [value: boolean];
 };
+
+/**
+ * Properties for the ComboboxAnchor component.
+ */
+export interface ComboboxAnchorProps extends PopperAnchorProps {}
+
+/**
+ * Properties for the ComboboxGroupLabel component.
+ */
+export interface ComboboxGroupLabelProps extends ListboxGroupLabelProps {}
+
+/**
+ * Properties for the ComboboxItemIndicator component.
+ */
+export interface ComboboxItemIndicatorProps extends ListboxItemIndicatorProps {}
 
 /**
  * Properties for the ComboboxTrigger component.
@@ -599,10 +614,4 @@ export type ComboboxUiSlot =
  */
 export type ComboboxUi = UiClass<ComboboxUiSlot>;
 
-export type {
-  ComboboxAnchorProps,
-  ComboboxArrowProps,
-  ComboboxGroupProps,
-  ComboboxGroupLabelProps,
-  ComboboxItemIndicatorProps
-};
+export type { ComboboxArrowProps, ComboboxGroupProps };
