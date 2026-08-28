@@ -15,7 +15,6 @@ docs/
 ├── optimize.md          # 工程质量评估（F1–F11 改进项与验收）
 ├── roadmap.md           # 总路线图（组件 / 生态 / 优化三板块汇总）
 ├── components.md        # 组件路线图源材料（45 活跃组件评估明细）
-├── navigation-menu.md   # NavigationMenu 改造方案（基于 Popper 的悬浮能力迁移）
 ├── tasks.md             # 任务深度拆解（可执行子任务）
 ├── task-tracking.md     # 任务状态跟踪（唯一状态表）
 ├── ecosystem.md         # 生态架构方案（跨包依赖 / 命名 / registry 契约）
@@ -33,15 +32,15 @@ docs/
 
 ## 文档分类速查
 
-| 分类           | 文件                                                                                                                                                         | 定位                               | 典型读者       |
-| :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------- | :------------- |
-| **架构与质量** | [architecture.md](./architecture.md) · [optimize.md](./optimize.md)                                                                                          | 仓库现状真相源 + 工程质量评估      | 架构师、新成员 |
-| **路线与规划** | [roadmap.md](./roadmap.md) · [components.md](./components.md) · [navigation-menu.md](./navigation-menu.md)                                                   | 总路线图 + 组件评估 + 组件改造方案 | 规划者、贡献者 |
-| **任务执行**   | [tasks.md](./tasks.md) · [task-tracking.md](./task-tracking.md)                                                                                              | 任务拆解 + 实时状态跟踪            | 执行者、管理者 |
-| **决策记录**   | [adr/](./adr/README.md)                                                                                                                                      | 已接受的架构决策（ADR）            | 架构师         |
-| **生态扩展**   | [ecosystem.md](./ecosystem.md)（架构契约）· [ecosystem-tasks.md](./ecosystem-tasks.md)（任务清单）· [ecosystem/](./ecosystem/README.md)（各包方案 + 商业化） | 生态架构 / 落地任务 / 包方案       | 生态开发者     |
-| **调研报告**   | [research/](./research/README.md)                                                                                                                            | 市场/竞品调研原始结论              | 规划者         |
-| **一次性报告** | [info/](./info/README.md)                                                                                                                                    | 周期审计、同步/适配报告            | 维护者         |
+| 分类           | 文件                                                                                                                                                         | 定位                          | 典型读者       |
+| :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------- | :------------- |
+| **架构与质量** | [architecture.md](./architecture.md) · [optimize.md](./optimize.md)                                                                                          | 仓库现状真相源 + 工程质量评估 | 架构师、新成员 |
+| **路线与规划** | [roadmap.md](./roadmap.md) · [components.md](./components.md)                                                                                                | 总路线图 + 组件评估           | 规划者、贡献者 |
+| **任务执行**   | [tasks.md](./tasks.md) · [task-tracking.md](./task-tracking.md)                                                                                              | 任务拆解 + 实时状态跟踪       | 执行者、管理者 |
+| **决策记录**   | [adr/](./adr/README.md)                                                                                                                                      | 已接受的架构决策（ADR）       | 架构师         |
+| **生态扩展**   | [ecosystem.md](./ecosystem.md)（架构契约）· [ecosystem-tasks.md](./ecosystem-tasks.md)（任务清单）· [ecosystem/](./ecosystem/README.md)（各包方案 + 商业化） | 生态架构 / 落地任务 / 包方案  | 生态开发者     |
+| **调研报告**   | [research/](./research/README.md)                                                                                                                            | 市场/竞品调研原始结论         | 规划者         |
+| **一次性报告** | [info/](./info/README.md)                                                                                                                                    | 周期审计、同步/适配报告       | 维护者         |
 
 ## 核心文档关系图
 
