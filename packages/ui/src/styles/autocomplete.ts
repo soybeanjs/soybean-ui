@@ -15,7 +15,7 @@ export const autocompleteVariants = scv({
     inputClearable: [
       'flex shrink-0 items-center justify-center rounded-sm text-muted-foreground opacity-70 outline-none transition-opacity',
       'hover:opacity-100 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-1',
-      'disabled:cursor-not-allowed disabled:opacity-40'
+      'disabled:cursor-not-allowed disabled:opacity-50'
     ],
     trigger: 'flex shrink-0 items-center justify-center text-muted-foreground outline-none disabled:cursor-not-allowed',
     triggerIcon: 'size-1em',
