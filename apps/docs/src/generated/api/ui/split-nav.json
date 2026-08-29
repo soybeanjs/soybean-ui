@@ -391,7 +391,7 @@
         "kind": "slots",
         "name": "SplitNavSlots",
         "type": "TypeAlias SplitNavSlots<T>: SplitNavRootSlots<T>",
-        "resolvedType": "{ \"first-level-item\"?: ((props: { item: SplitNavOptionData<T>; active: boolean; open: boolean; }) => any); item?: ((props: { item: T; }) => any); \"item-leading\"?: ((props: { item: T; }) => any); \"item-trailing\"?: ((props: { item: T; }) => any); \"item-trigger-icon\"?: ((props: { item: T; }) => any); \"item-link-icon\"?: ((props: { item: T; }) => any) }",
+        "resolvedType": "{ \"first-level-item\"?: ((props: { item: SplitNavOptionData<T>; selected: boolean; open: boolean; }) => any); item?: ((props: { item: T; }) => any); \"item-leading\"?: ((props: { item: T; }) => any); \"item-trailing\"?: ((props: { item: T; }) => any); \"item-trigger-icon\"?: ((props: { item: T; }) => any); \"item-link-icon\"?: ((props: { item: T; }) => any) }",
         "description": "Slots for the SplitNav component.",
         "descriptionKey": "api.generated.packages_ui_src_components_split_nav_types.splitnavslots.slots",
         "sourcePath": "packages/ui/src/components/split-nav/types.ts",
@@ -400,17 +400,17 @@
         "callables": [
           {
             "name": "first-level-item",
-            "type": "((props: { item: SplitNavOptionData<T>; active: boolean; open: boolean; }) => any) | undefined",
-            "parameters": "((props: { item: SplitNavOptionData<T>; active: boolean; open: boolean; }) => any) | undefined",
+            "type": "((props: { item: SplitNavOptionData<T>; selected: boolean; open: boolean; }) => any) | undefined",
+            "parameters": "((props: { item: SplitNavOptionData<T>; selected: boolean; open: boolean; }) => any) | undefined",
             "required": false,
-            "description": "Custom content for a first-level item.\n\n`active` is true for a selected leaf. `open` is true for a parent whose nested pane is showing.",
+            "description": "Custom content for a first-level item.\n\n`selected` is true for a selected leaf. `open` is true for a parent whose nested pane is showing.",
             "descriptionKey": "api.generated.packages_ui_src_components_split_nav_types.splitnavslots.callables.first_level_item",
             "sourcePath": "packages/headless/src/components/split-nav/types.ts",
             "referencedTypes": [
               {
                 "name": "__type",
                 "kind": "typeLiteral",
-                "type": "{ item: SplitNavOptionData<T>; active: boolean; open: boolean; }",
+                "type": "{ item: SplitNavOptionData<T>; selected: boolean; open: boolean; }",
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.type",
@@ -816,7 +816,7 @@
         "kind": "slots",
         "name": "SplitNavRootSlots",
         "type": "TypeAlias SplitNavRootSlots<T>",
-        "resolvedType": "{ \"first-level-item\"?: ((props: { item: SplitNavOptionData<T>; active: boolean; open: boolean; }) => any); item?: ((props: { item: T; }) => any); \"item-leading\"?: ((props: { item: T; }) => any); \"item-trailing\"?: ((props: { item: T; }) => any); \"item-trigger-icon\"?: ((props: { item: T; }) => any); \"item-link-icon\"?: ((props: { item: T; }) => any) }",
+        "resolvedType": "{ \"first-level-item\"?: ((props: { item: SplitNavOptionData<T>; selected: boolean; open: boolean; }) => any); item?: ((props: { item: T; }) => any); \"item-leading\"?: ((props: { item: T; }) => any); \"item-trailing\"?: ((props: { item: T; }) => any); \"item-trigger-icon\"?: ((props: { item: T; }) => any); \"item-link-icon\"?: ((props: { item: T; }) => any) }",
         "description": "Slots for the SplitNavRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.splitnavrootslots.slots",
         "sourcePath": "packages/headless/src/components/split-nav/types.ts",
@@ -825,17 +825,17 @@
         "callables": [
           {
             "name": "first-level-item",
-            "type": "((props: { item: SplitNavOptionData<T>; active: boolean; open: boolean; }) => any) | undefined",
-            "parameters": "((props: { item: SplitNavOptionData<T>; active: boolean; open: boolean; }) => any) | undefined",
+            "type": "((props: { item: SplitNavOptionData<T>; selected: boolean; open: boolean; }) => any) | undefined",
+            "parameters": "((props: { item: SplitNavOptionData<T>; selected: boolean; open: boolean; }) => any) | undefined",
             "required": false,
-            "description": "Custom content for a first-level item.\n\n`active` is true for a selected leaf. `open` is true for a parent whose nested pane is showing.",
+            "description": "Custom content for a first-level item.\n\n`selected` is true for a selected leaf. `open` is true for a parent whose nested pane is showing.",
             "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.splitnavrootslots.callables.first_level_item",
             "sourcePath": "packages/headless/src/components/split-nav/types.ts",
             "referencedTypes": [
               {
                 "name": "__type",
                 "kind": "typeLiteral",
-                "type": "{ item: SplitNavOptionData<T>; active: boolean; open: boolean; }",
+                "type": "{ item: SplitNavOptionData<T>; selected: boolean; open: boolean; }",
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.type",

@@ -8119,7 +8119,7 @@
         },
         "splitnavrootslots": {
           "callables": {
-            "first_level_item": "Custom content for a first-level item.\n\n`active` is true for a selected leaf. `open` is true for a parent whose nested pane is showing.",
+            "first_level_item": "Custom content for a first-level item.\n\n`selected` is true for a selected leaf. `open` is true for a parent whose nested pane is showing.",
             "item": "Custom content for a nested TreeMenu / TreeNav item.",
             "item_leading": "Custom content for a nested TreeMenu / TreeNav item leading slot.",
             "item_link_icon": "Custom content for a nested TreeNav item link icon.",
@@ -13774,7 +13774,7 @@
         },
         "splitnavslots": {
           "callables": {
-            "first_level_item": "Custom content for a first-level item.\n\n`active` is true for a selected leaf. `open` is true for a parent whose nested pane is showing.",
+            "first_level_item": "Custom content for a first-level item.\n\n`selected` is true for a selected leaf. `open` is true for a parent whose nested pane is showing.",
             "item": "Custom content for a nested TreeMenu / TreeNav item.",
             "item_leading": "Custom content for a nested TreeMenu / TreeNav item leading slot.",
             "item_link_icon": "Custom content for a nested TreeNav item link icon.",

@@ -13,10 +13,9 @@ export const splitNavVariants = scv({
       'group/split-nav-first-level-item flex cursor-pointer select-none rounded-sm outline-none',
       'data-[orientation=horizontal]:items-center',
       'data-[orientation=vertical]:h-auto data-[orientation=vertical]:min-w-0 data-[orientation=vertical]:w-full data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-center data-[orientation=vertical]:justify-center data-[orientation=vertical]:overflow-hidden data-[orientation=vertical]:text-center',
-      'data-[state=active]:bg-primary/10 data-[state=active]:text-primary',
-      'data-[state=open]:bg-accent',
+      'data-[selected=true]:bg-primary/10 data-[selected=true]:text-primary',
       'data-[child-selected]:text-primary',
-      'data-[state=inactive]:hover:bg-accent data-[state=inactive]:focus:bg-accent',
+      'data-[selected=false]:hover:bg-accent data-[selected=false]:focus:bg-accent',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50'
     ],
     firstLevelItemIcon: 'shrink-0',

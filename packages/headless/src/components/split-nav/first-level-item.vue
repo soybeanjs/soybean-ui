@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { getDisclosureState } from '../../shared';
 import Icon from '../_icon/icon.vue';
 import Button from '../button/button.vue';
 import Link from '../link/link.vue';
@@ -35,17 +36,7 @@ const hasChildSelected = computed(() => {
   return findActivePath(items.value, modelValue.value).includes(props.item.value);
 });
 
-const dataState = computed(() => {
-  if (isSelected.value) {
-    return 'active';
-  }
-
-  if (isOpen.value) {
-    return 'open';
-  }
-
-  return 'inactive';
-});
+const dataState = computed(() => getDisclosureState(isOpen.value));
 
 const ariaCurrent = computed(() => (isSelected.value ? 'page' : undefined));
 
@@ -108,6 +99,7 @@ function handleKeyDown(event: KeyboardEvent) {
       :disabled="item.disabled"
       role="menuitem"
       :data-state="dataState"
+      :data-selected="isSelected"
       :data-orientation="orientation"
       :data-disabled="item.disabled ? '' : undefined"
       :data-value="item.value"

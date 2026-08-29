@@ -188,7 +188,7 @@ describe('SSplitNav', () => {
   });
 
   describe('state', () => {
-    it('reflects the default active value on the first-level item', () => {
+    it('reflects the default selected value on the first-level item', () => {
       const wrapper = mount(SSplitNav, {
         props: {
           items,
@@ -197,10 +197,10 @@ describe('SSplitNav', () => {
         attachTo: document.body
       });
 
-      const activeItem = wrapper.find('[data-soybean-split-nav-first-level-item][data-state="active"]');
+      const selectedItem = wrapper.find('[data-soybean-split-nav-first-level-item][data-selected="true"]');
 
-      expect(activeItem.exists()).toBe(true);
-      expect(activeItem.text()).toContain('Overview');
+      expect(selectedItem.exists()).toBe(true);
+      expect(selectedItem.text()).toContain('Overview');
 
       wrapper.unmount();
     });
@@ -220,7 +220,8 @@ describe('SSplitNav', () => {
 
       expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toBe('overview');
       expect(wrapper.emitted('select')?.at(-1)?.[0]).toBe('overview');
-      expect(leaf.attributes('data-state')).toBe('active');
+      expect(leaf.attributes('data-selected')).toBe('true');
+      expect(leaf.attributes('data-state')).toBe('closed');
 
       wrapper.unmount();
     });
@@ -241,7 +242,7 @@ describe('SSplitNav', () => {
       await parent.trigger('click');
 
       expect(wrapper.emitted('update:modelValue')).toBeFalsy();
-      expect(leaf.attributes('data-state')).toBe('active');
+      expect(leaf.attributes('data-selected')).toBe('true');
       expect(parent.attributes('data-state')).toBe('open');
       expect(wrapper.find('[data-soybean-split-nav-sub-vertical]').exists()).toBe(true);
 
@@ -287,7 +288,7 @@ describe('SSplitNav', () => {
 
       expect(parent.attributes('data-state')).toBe('open');
       expect(parent.attributes('data-child-selected')).toBeDefined();
-      expect(wrapper.find('[data-soybean-split-nav-first-level-item][data-state="active"]').exists()).toBe(false);
+      expect(wrapper.find('[data-soybean-split-nav-first-level-item][data-selected="true"]').exists()).toBe(false);
 
       wrapper.unmount();
     });
@@ -305,7 +306,8 @@ describe('SSplitNav', () => {
 
       await parent.trigger('keydown', { key: 'ArrowDown' });
 
-      expect(parent.attributes('data-state')).toBe('inactive');
+      expect(parent.attributes('data-state')).toBe('closed');
+      expect(parent.attributes('data-selected')).toBe('false');
       expect(wrapper.find('[data-soybean-split-nav-sub-vertical]').exists()).toBe(false);
 
       wrapper.unmount();

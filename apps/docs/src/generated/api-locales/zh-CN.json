@@ -8119,7 +8119,7 @@
         },
         "splitnavrootslots": {
           "callables": {
-            "first_level_item": "一级项目的自定义内容。\n\n对于已选中的叶节点，`active` 为 true。对于其嵌套面板正在显示的父节点，`open` 为 true。",
+            "first_level_item": "一级项目的自定义内容。\n\n对于选中的叶节点，`selected` 为 true。对于其嵌套面板正在显示的父节点，`open` 为 true。",
             "item": "嵌套的 TreeMenu / TreeNav 项的自定义内容。",
             "item_leading": "用于嵌套 TreeMenu / TreeNav 项引导槽的自定义内容。",
             "item_link_icon": "针对嵌套 TreeNav 项目链接图标的自定义内容。",
@@ -13774,7 +13774,7 @@
         },
         "splitnavslots": {
           "callables": {
-            "first_level_item": "一级项目的自定义内容。\n\n对于已选中的叶节点，`active` 为 true。对于其嵌套面板正在显示的父节点，`open` 为 true。",
+            "first_level_item": "一级项目的自定义内容。\n\n对于选中的叶节点，`selected` 为 true。对于其嵌套面板正在显示的父节点，`open` 为 true。",
             "item": "嵌套的 TreeMenu / TreeNav 项的自定义内容。",
             "item_leading": "用于嵌套 TreeMenu / TreeNav 项引导槽的自定义内容。",
             "item_link_icon": "针对嵌套 TreeNav 项目链接图标的自定义内容。",

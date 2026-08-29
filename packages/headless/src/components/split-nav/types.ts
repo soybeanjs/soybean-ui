@@ -137,9 +137,9 @@ export type SplitNavRootSlots<T extends SplitNavBaseOptionData = SplitNavBaseOpt
   /**
    * Custom content for a first-level item.
    *
-   * `active` is true for a selected leaf. `open` is true for a parent whose nested pane is showing.
+   * `selected` is true for a selected leaf. `open` is true for a parent whose nested pane is showing.
    */
-  'first-level-item'?: (props: { item: SplitNavOptionData<T>; active: boolean; open: boolean }) => any;
+  'first-level-item'?: (props: { item: SplitNavOptionData<T>; selected: boolean; open: boolean }) => any;
   /**
    * Custom content for a nested TreeMenu / TreeNav item.
    */

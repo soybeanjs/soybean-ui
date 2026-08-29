@@ -29,7 +29,7 @@ const dataAttr = computed(() =>
     : { 'data-soybean-split-nav-horizontal-first-level': '' }
 );
 
-function isItemActive(item: SplitNavOptionData) {
+function isItemSelected(item: SplitNavOptionData) {
   return !hasVisibleChildren(item) && modelValue.value === item.value;
 }
 
@@ -52,7 +52,7 @@ function isItemOpen(item: SplitNavOptionData) {
     >
       <FirstLevelItem v-for="item in visibleItems" :key="item.value" :item="item" :orientation="orientation">
         <template v-if="hasFirstLevelItemSlot">
-          <slot name="first-level-item" :item="item" :active="isItemActive(item)" :open="isItemOpen(item)" />
+          <slot name="first-level-item" :item="item" :selected="isItemSelected(item)" :open="isItemOpen(item)" />
         </template>
       </FirstLevelItem>
     </Primitive>

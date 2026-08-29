@@ -61,7 +61,7 @@
 
 - 面板默认原地渲染；仅在需要挂到外部元素时才设置 `horizontalMountedId` / `verticalMountedId`（传不带 `#` 的 id）。
 - `dual-vertical` 以及 `horizontal-dual-vertical` 里嵌套的 dual-vertical，两列竖栏会通过 `verticalMountedId` **整块**挂载。混合模式则一级与子级独立挂载。
-- 点击父级只会展开子面板，不会改 `v-model`，也不会带上叶子的选中样式；点击叶子才会更新 `v-model` 并触发 `select`。
+- 点击父级只会展开子面板（`data-state="open"`），不会改 `v-model`，也不会设置 `data-selected`；点击叶子才会更新 `v-model` 并触发 `select`，选中的叶子渲染 `data-selected="true"`。
 - 各 `mode` 的 flex 布局定义在 UI 样式配方中；无样式层不携带任何布局类。
 
 ## 常见问题
@@ -87,7 +87,7 @@
 
 ### 如何知道叶子被选中？
 
-`select` 事件会带上叶子值；`v-model` 只反映当前选中的叶子。点击父级只会展开子面板（`data-state="open"`），不会触发 `select`，也不会出现选中样式。若该父级下已有选中叶子，会带上 `data-child-selected`。
+`select` 事件会带上叶子值；`v-model` 只反映当前选中的叶子。点击父级只会展开子面板（`data-state="open"`），不会触发 `select`，也不会设置 `data-selected`。若该父级下已有选中叶子，会带上 `data-child-selected`。
 
 ### 能否自定义每项内容？
 

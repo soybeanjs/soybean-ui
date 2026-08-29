@@ -86,7 +86,7 @@ Events for the SplitNav component.
 
 Slots for the SplitNav component.
 
-- `first-level-item`: Custom content for a first-level item. `active` is true for a selected leaf. `open` is true for a parent whose nested pane is showing. (type `((props: { item: SplitNavOptionData<T>; active: boolean; open: boolean; }) => any) | undefined`)
+- `first-level-item`: Custom content for a first-level item. `selected` is true for a selected leaf. `open` is true for a parent whose nested pane is showing. (type `((props: { item: SplitNavOptionData<T>; selected: boolean; open: boolean; }) => any) | undefined`)
 - `item`: Custom content for a nested TreeMenu / TreeNav item. (type `((props: { item: T; }) => any) | undefined`)
 - `item-leading`: Custom content for a nested TreeMenu / TreeNav item leading slot. (type `((props: { item: T; }) => any) | undefined`)
 - `item-trailing`: Custom content for a nested TreeMenu / TreeNav item trailing slot. (type `((props: { item: T; }) => any) | undefined`)
@@ -125,7 +125,7 @@ Events for the SplitNavRoot component.
 
 Slots for the SplitNavRoot component.
 
-- `first-level-item`: Custom content for a first-level item. `active` is true for a selected leaf. `open` is true for a parent whose nested pane is showing. (type `((props: { item: SplitNavOptionData<T>; active: boolean; open: boolean; }) => any) | undefined`)
+- `first-level-item`: Custom content for a first-level item. `selected` is true for a selected leaf. `open` is true for a parent whose nested pane is showing. (type `((props: { item: SplitNavOptionData<T>; selected: boolean; open: boolean; }) => any) | undefined`)
 - `item`: Custom content for a nested TreeMenu / TreeNav item. (type `((props: { item: T; }) => any) | undefined`)
 - `item-leading`: Custom content for a nested TreeMenu / TreeNav item leading slot. (type `((props: { item: T; }) => any) | undefined`)
 - `item-trailing`: Custom content for a nested TreeMenu / TreeNav item trailing slot. (type `((props: { item: T; }) => any) | undefined`)
@@ -149,7 +149,7 @@ Slots for the SplitNavRoot component.
 
 - Panes render in place by default; set `horizontalMountedId` / `verticalMountedId` only when a pane must mount into an external element (pass the id without `#`).
 - In `dual-vertical` and the nested dual-vertical of `horizontal-dual-vertical`, the two vertical columns teleport together via `verticalMountedId`. Mixed modes teleport the first-level and nested panes independently.
-- Clicking a parent item only opens the nested pane (`data-state="open"`); it does not change `v-model` or apply the selected style. Clicking a leaf updates `v-model` and emits `select`. A parent whose descendant is selected also gets `data-child-selected`.
+- Clicking a parent item only opens the nested pane (`data-state="open"`); it does not change `v-model` or set `data-selected`. Clicking a leaf updates `v-model` and emits `select`; the selected leaf renders `data-selected="true"` and `data-state="closed"`. A parent whose descendant is selected also gets `data-child-selected`.
 - Flex layout per `mode` lives in the UI style recipe; the headless layer carries no layout classes.
 
 ## FAQ
@@ -170,7 +170,7 @@ The pane is then rendered into `#app-header` / `#app-sider` through `Teleport` (
 
 ### How do I know when a leaf is chosen?
 
-The `select` event fires with the leaf value; `v-model` reflects the selected leaf only. Clicking a parent only opens the nested pane (`data-state="open"`) and does not emit `select` or apply the selected style. If a descendant is already selected, the parent also gets `data-child-selected`.
+The `select` event fires with the leaf value; `v-model` reflects the selected leaf only. Clicking a parent only opens the nested pane (`data-state="open"`) and does not emit `select` or set `data-selected`. If a descendant is already selected, the parent also gets `data-child-selected`.
 
 ### Can I customize each item's content?
 
