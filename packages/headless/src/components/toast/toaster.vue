@@ -45,7 +45,7 @@ const dir = useDirection(() => props.dir);
 const hotkeyLabel = computed(() => props.hotkey.join('+').replace(/Key/g, '').replace(/Digit/g, ''));
 const sectionAriaLabel = computed(() => props.customAriaLabel ?? `${props.containerAriaLabel} ${hotkeyLabel.value}`);
 
-const listRefs: Partial<Record<ToastPosition, HTMLOListElement | null>> = {};
+const listRefs: Partial<Record<ToastPosition, HTMLElement | null>> = {};
 const setListRef = (position: ToastPosition, nodeRef: VNodeRef) => {
   listRefs[position] = getElFromTemplateRef(nodeRef);
 };
