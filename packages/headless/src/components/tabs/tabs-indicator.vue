@@ -48,7 +48,7 @@ function getHorizontalIndicatorPosition(activeTab: HTMLButtonElement) {
 }
 
 function updateIndicatorStyle() {
-  const activeTab = listElement.value?.querySelector<HTMLButtonElement>('[role="tab"][data-state="active"]');
+  const activeTab = listElement.value?.querySelector<HTMLButtonElement>('[role="tab"][data-selected="true"]');
 
   if (!activeTab) return;
 

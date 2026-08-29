@@ -41,7 +41,7 @@ const effectiveRootProps = computed(() => ({
 
 const forwardedOptionsProps = usePickProps(props, [
   'items',
-  'activeValue',
+  'selectedValue',
   'itemProps',
   'linkProps',
   'groupProps',

@@ -23,7 +23,7 @@ Usage examples for actions-feedback are rendered on the site.
 - 🔄 Toggle semantics — clicking the active polarity returns the state to `null` (clears)
 - 🧩 Custom icons — `like-icon` and `dislike-icon` slots receive `{ active }` for state-aware rendering
 - 📞 Dual output — both the `onChange` prop and the `change` emit fire on change
-- ♿ Accessible — each button has `aria-pressed` and a `data-active` attribute
+- ♿ Accessible — each button has `aria-pressed` and a `data-selected` attribute
 - 🚫 Disabled state — `disabled` blocks both buttons entirely
 - 🔒 Type safe — the `FeedbackValue` type is `'like' | 'dislike'`
 

@@ -27,7 +27,8 @@ Usage examples for segment are rendered on the site.
 ## Component family
 
 - `SSegment` — the styled wrapper that forwards props to the headless compact and injects `segmentVariants` classes
-- `SegmentCompact` (headless) — data-driven composition of `TabsRoot` + `TabsList` + `TabsTrigger` + `TabsIndicator`; import from `@soybeanjs/headless/segment` for unstyled usage
+- `SegmentRoot` / `SegmentList` / `SegmentTrigger` / `SegmentIndicator` (headless) — domain primitives wrapping Tabs; DOM uses `data-soybean-segment-*`
+- `SegmentCompact` (headless) — data-driven composition of those primitives; import from `@soybeanjs/headless/segment` for unstyled usage
 
 ## Demos
 
@@ -73,7 +74,7 @@ Events for the Segment component.
 
 Slots for the Segment component.
 
-- `item`: Custom content for the item slot. (type `((props: T & { active: boolean; }) => any) | undefined`)
+- `item`: Custom content for the item slot. (type `((props: T & { selected: boolean; }) => any) | undefined`)
 - `indicator`: Custom content for the indicator slot. (type `(() => any) | undefined`)
 
 ### SegmentCompact
@@ -105,12 +106,17 @@ Events for the SegmentCompact component.
 
 Slots for the SegmentCompact component.
 
-- `item`: Custom content for the item slot. (type `((props: T & { active: boolean; }) => any) | undefined`)
+- `item`: Custom content for the item slot. (type `((props: T & { selected: boolean; }) => any) | undefined`)
 - `indicator`: Custom content for the indicator slot. (type `(() => any) | undefined`)
 
 ### SegmentIndicator
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the SegmentIndicator component.
+
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 
 ### SegmentList
 
@@ -118,17 +124,40 @@ Slots for the SegmentCompact component.
 
 ### SegmentRoot
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the SegmentRoot component.
+
+- `modelValue`: The controlled value of the tab to activate. Can be bind as `v-model`. (type `T`; optional)
+- `defaultValue`: The value of the tab that should be active when initially rendered. Use when you do not need to control the state of the tabs (type `T`; optional)
+- `activationMode`: Whether a tab is activated automatically (on focus) or manually (on click). (type `TabsActivationMode`; default `automatic`; optional)
+- `unmountOnHide`: When `true`, the element will be unmounted on closed state. (type `boolean`; default `true`; optional)
+- `dir`: The direction of navigation between items. (type `Direction`; optional)
+- `orientation`: The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
+- `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
+
+#### Emits
+
+Events for the SegmentRoot component.
+
+- `update:modelValue`: Event handler called when the value changes (type `[payload: Exclude<T, undefined>]`; parameters `payload: Exclude<T, undefined>`)
 
 ### SegmentTrigger
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the SegmentTrigger component.
+
+- `value`: A unique value that associates the trigger with a content. (type `string | number`; required)
+- `disabled`: When `true`, prevents the user from interacting with the tab. (type `boolean`; optional)
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 
 ## Notes
 
 ### Architecture and benchmark differences
 
-`SegmentCompact` composes the headless `TabsRoot`/`TabsList`/`TabsTrigger`/`TabsIndicator` primitives: it iterates `items`, forwards `listProps`/`triggerProps`/`indicatorProps`, and exposes `item`/`indicator` slots. `TabsTrigger` uses `RovingFocusGroup` for arrow-key navigation, so `loop` and `dir` (RTL) behave identically to tabs. `SSegment` is a thin wrapper that only computes `segmentVariants` (an alias of `tabsVariants`) and calls `provideTabsUi`. The indicator is measured asynchronously (resize observer + post-flush watch), so it appears one frame after mount. `segment` maps to the segmented-control pattern; the benchmark libraries express it natively except shadcn, which typically uses Tabs.
+`SegmentCompact` composes the headless `SegmentRoot`/`SegmentList`/`SegmentTrigger`/`SegmentIndicator` primitives (each wrapping the matching Tabs part): it iterates `items`, forwards `listProps`/`triggerProps`/`indicatorProps`, and exposes `item`/`indicator` slots. `SegmentTrigger` keeps the Tabs ARIA pattern (`role="tab"` + roving focus), so `loop` and `dir` (RTL) behave identically to tabs. `SSegment` is a thin wrapper that only computes `segmentVariants` (an alias of `tabsVariants`) and calls `provideSegmentUi`. The indicator is measured asynchronously (resize observer + post-flush watch), so it appears one frame after mount. `segment` maps to the segmented-control pattern; the benchmark libraries express it natively except shadcn, which typically uses Tabs.
 
 | Capability                    | SoybeanUI | Ant Design | Element Plus | Mantine | Naive UI | shadcn |
 | :---------------------------- | :-------: | :--------: | :----------: | :-----: | :------: | :----: |
@@ -162,7 +191,7 @@ Slots for the SegmentCompact component.
 
 ### How do I disable the sliding indicator?
 
-Pass `:enable-indicator="false"`. The active segment is then highlighted through the `data-state="active"` style rules instead.
+Pass `:enable-indicator="false"`. The selected segment is then highlighted through the `data-selected` style rules instead.
 
 ### How do I make arrow keys wrap around?
 

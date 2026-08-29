@@ -20,7 +20,7 @@ export function getPageTabZone(tab: PageTabsOptionData): number {
   return tab.pinned ? 0 : 1;
 }
 
-export function usePageTabsScroll(activeValue: ShallowRef<string>) {
+export function usePageTabsScroll(selectedValue: ShallowRef<string>) {
   const [rootElement, setRootElement] = useForwardElement();
 
   const onWheel = (event: WheelEvent) => {
@@ -30,19 +30,19 @@ export function usePageTabsScroll(activeValue: ShallowRef<string>) {
   };
 
   watchEffect(async () => {
-    if (!rootElement.value || !activeValue.value) return;
+    if (!rootElement.value || !selectedValue.value) return;
 
     await nextTick();
 
     // Re-check after the await — the element may have been removed during the tick.
     if (!rootElement.value) return;
 
-    const activeElement = rootElement.value.querySelector<HTMLElement>(`[data-value="${activeValue.value}"]`);
-    if (!activeElement) return;
+    const selectedElement = rootElement.value.querySelector<HTMLElement>(`[data-value="${selectedValue.value}"]`);
+    if (!selectedElement) return;
 
     const centerX = (rootElement.value?.offsetWidth ?? 0) / 2;
 
-    const offsetX = activeElement.offsetLeft + activeElement.offsetWidth / 2 - centerX;
+    const offsetX = selectedElement.offsetLeft + selectedElement.offsetWidth / 2 - centerX;
 
     rootElement.value.scrollTo({ left: offsetX, behavior: 'smooth' });
   });

@@ -170,8 +170,8 @@ export interface NavigationMenuItemProps extends BaseProps {
  * @deprecated Use `NavMenuLinkProps` instead. Will be removed in v1.0.
  */
 export interface NavigationMenuLinkProps extends Omit<LinkProps, 'onSelect'> {
-  /** Used to identify the link as the currently active page. */
-  active?: boolean;
+  /** Used to identify the link as the currently selected page. */
+  selected?: boolean;
 }
 
 /**

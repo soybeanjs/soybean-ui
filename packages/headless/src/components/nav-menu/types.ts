@@ -111,8 +111,8 @@ export interface NavMenuListProps extends BaseProps {}
  * Properties for the NavMenuLink component.
  */
 export interface NavMenuLinkProps extends Omit<LinkProps, 'onSelect'> {
-  /** Marks the link as the currently active page. */
-  active?: boolean;
+  /** Marks the link as the currently selected page. */
+  selected?: boolean;
   /**
    * Whether the link is rendered inside a submenu. When `true`, the `subLink` UI slot is
    * used instead of `link` (mirroring the root/sub split of the list).

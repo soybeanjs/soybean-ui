@@ -1,6 +1,21 @@
 {
   "component": "listbox",
   "symbols": {
+    "CommandGroupLabel": {
+      "props": {
+        "kind": "props",
+        "name": "CommandGroupLabelProps",
+        "type": "Interface CommandGroupLabelProps",
+        "resolvedType": null,
+        "description": "Properties for the ListboxGroupLabel component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.commandgrouplabelprops.props",
+        "sourcePath": "packages/headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "CommandInput": {
       "props": {
         "kind": "props",

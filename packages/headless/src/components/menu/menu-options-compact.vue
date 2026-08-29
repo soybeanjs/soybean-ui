@@ -26,17 +26,17 @@ const forwardedListeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots));
 
-const activePaths = computed(() => {
-  if (props.activeValue === undefined) {
+const selectedPaths = computed(() => {
+  if (props.selectedValue === undefined) {
     return [] as T[];
   }
 
-  return getTreePaths(props.activeValue, props.items);
+  return getTreePaths(props.selectedValue, props.items);
 });
 
 provideMenuOptionsCompactContext({
-  ...transformPropsToContext(props, ['activeValue']),
-  activePaths
+  ...transformPropsToContext(props, ['selectedValue']),
+  selectedPaths
 });
 </script>
 

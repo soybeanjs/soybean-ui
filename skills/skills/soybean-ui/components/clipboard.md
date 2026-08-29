@@ -58,6 +58,7 @@ Properties for the Clipboard component.
 - `copiedIcon`: The icon to display after copying. (type `string | import("vue").Component | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, { [...`; default `'lucide:check'`; optional)
 - `copyText`: The text to display before copying. Defaults to the localized `clipboard.copy` message from `ConfigProvider`. (type `string`; optional)
 - `copiedText`: The text to display after copying. Defaults to the localized `clipboard.copied` message from `ConfigProvider`. (type `string`; optional)
+- `onlyIcon`: Whether to only render the icon without any text. (type `boolean`; default `false`; optional)
 - `type`: The type of the button element. Can be one of 'button', 'submit', or 'reset'. (type `ButtonType`; default `'button'`; optional)
 - `disabled`: Whether the component is disabled. (type `boolean`; optional)
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)

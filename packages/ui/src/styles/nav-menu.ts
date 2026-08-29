@@ -19,7 +19,6 @@ export const navMenuVariants = scv({
       `hover:bg-accent hover:text-accent-foreground`,
       `focus:bg-accent focus:text-accent-foreground`,
       `disabled:pointer-events-none disabled:opacity-50`,
-      `data-[active]:bg-accent/50`,
       `data-[state=open]:bg-accent/50`
     ],
     triggerIcon: `ms-auto transition duration-200 group-data-[state=open]:rotate-180`,

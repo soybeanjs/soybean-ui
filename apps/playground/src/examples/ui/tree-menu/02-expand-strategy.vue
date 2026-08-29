@@ -6,7 +6,7 @@ import type { TreeMenuExpandStrategy } from '@soybeanjs/ui';
 import { treeMenuItems } from './data';
 
 const [collapsed, toggleCollapsible] = useToggle(false);
-const expandStrategy = shallowRef<TreeMenuExpandStrategy>('active');
+const expandStrategy = shallowRef<TreeMenuExpandStrategy>('selected');
 </script>
 
 <template>
@@ -16,7 +16,7 @@ const expandStrategy = shallowRef<TreeMenuExpandStrategy>('active');
         v-model="expandStrategy"
         :items="[
           { label: 'keep', value: 'keep' },
-          { label: 'active', value: 'active' }
+          { label: 'selected', value: 'selected' }
         ]"
         :ui="{ trigger: 'w-32' }"
       />

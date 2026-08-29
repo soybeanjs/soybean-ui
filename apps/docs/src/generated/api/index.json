@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-28T08:46:09.933Z",
+  "generatedAt": "2026-08-29T12:12:09.554Z",
   "packages": {
     "ui": {
       "components": {
@@ -577,6 +577,7 @@
           "component": "listbox",
           "file": "listbox.json",
           "symbols": [
+            "CommandGroupLabel",
             "CommandInput",
             "CommandItem",
             "CommandList",
@@ -882,6 +883,11 @@
           "component": "spinner",
           "file": "spinner.json",
           "symbols": ["Spinner"]
+        },
+        "split-nav": {
+          "component": "split-nav",
+          "file": "split-nav.json",
+          "symbols": ["SplitNav", "SplitNavRoot"]
         },
         "splitter": {
           "component": "splitter",

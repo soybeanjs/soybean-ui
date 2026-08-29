@@ -50,11 +50,11 @@ describe('STabs', () => {
           },
           template: `
             <STabs v-model="currentValue" :items="items">
-              <template #trigger="{ label, active }">
-                <span :data-test="'custom-trigger-' + label">{{ active ? 'active' : 'idle' }}-{{ label }}</span>
+              <template #trigger="{ label, selected }">
+                <span :data-test="'custom-trigger-' + label">{{ selected ? 'selected' : 'idle' }}-{{ label }}</span>
               </template>
-              <template #content="{ value, active }">
-                <div :data-test="'custom-content-' + value">{{ active }}-{{ value }}</div>
+              <template #content="{ value, selected }">
+                <div :data-test="'custom-content-' + value">{{ selected }}-{{ value }}</div>
               </template>
             </STabs>
           `
@@ -65,13 +65,13 @@ describe('STabs', () => {
       await nextTick();
       expect(wrapper.find('[data-test="custom-trigger-Account"]').exists()).toBe(true);
       expect(wrapper.find('[data-test="custom-content-tab-1"]').exists()).toBe(true);
-      expect(wrapper.find('[data-test="custom-trigger-Account"]').text()).toBe('active-Account');
+      expect(wrapper.find('[data-test="custom-trigger-Account"]').text()).toBe('selected-Account');
       expect(wrapper.find('[data-test="custom-content-tab-1"]').text()).toBe('true-tab-1');
 
       await wrapper.findAll('[role="tab"]')[1].trigger('mousedown', { button: 0 });
       await nextTick();
 
-      expect(wrapper.find('[data-test="custom-trigger-Security"]').text()).toBe('active-Security');
+      expect(wrapper.find('[data-test="custom-trigger-Security"]').text()).toBe('selected-Security');
       expect(wrapper.find('[data-test="custom-content-tab-2"]').text()).toBe('true-tab-2');
       wrapper.unmount();
     });
@@ -98,13 +98,13 @@ describe('STabs', () => {
       wrapper.unmount();
     });
 
-    it('marks the active tab with data-state="active"', () => {
+    it('marks the selected tab with data-selected="true"', () => {
       const wrapper = mount(STabs, {
         props: { items, modelValue: 'tab-1' },
         attachTo: document.body
       });
-      expect(wrapper.findAll('[role="tab"]')[0].attributes('data-state')).toBe('active');
-      expect(wrapper.findAll('[role="tab"]')[1].attributes('data-state')).toBe('inactive');
+      expect(wrapper.findAll('[role="tab"]')[0].attributes('data-selected')).toBe('true');
+      expect(wrapper.findAll('[role="tab"]')[1].attributes('data-selected')).toBe('false');
       wrapper.unmount();
     });
 

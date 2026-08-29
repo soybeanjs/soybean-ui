@@ -12,7 +12,7 @@
 
 - 🧭 层级数据模型 — `items: TreeMenuOptionData<T>[]`（`value`/`label` + 递归 `children`），`TreeMenuOptionData<T>` 泛型保留自定义字段；内建 `isGroup`/`hidden`/`icon`/`badge`/`tag`/`disabled`/`actions`/`to`/`href` 等字段
 - 🎛️ 受控/非受控双通道 — `modelValue` / `defaultValue`（激活项）、`expanded` / `defaultExpanded`（展开项）、`collapsed` / `defaultCollapsed`（折叠态）；均支持 `v-model` 与 `update:*` 事件回写
-- 🎯 展开策略 — `expandStrategy="keep"`（默认）保留手动展开，无论激活哪个菜单都不会改变展开/折叠状态；`expandStrategy="active"` 只展开当前激活菜单及其所有父级菜单，激活项变化时非激活分支自动折叠
+- 🎯 展开策略 — `expandStrategy="keep"`（默认）保留手动展开，无论选中哪个菜单都不会改变展开/折叠状态；`expandStrategy="selected"` 只展开当前选中菜单及其所有父级菜单，选中项变化时非选中分支自动折叠
 - 📉 折叠侧边栏模式 — `collapsed` + `collapsedWidth`（默认 50px）/ `indent` 一键收缩；折叠时含子项的菜单以弹出菜单呈现子级，展开状态暂存并在恢复时自动还原
 - 🧩 操作菜单 — `actions` + `actionMenuProps` + `onActionSelect` 为菜单项附加悬停操作（ellipsis 按钮），操作按钮 aria-label 经 13 语言包本地化
 - 🏷️ 徽标/标签/图标 — 内建 `icon`/`badge`/`tag` 字段，配合 `item-leading`/`item-trailing` 插槽自由扩展
@@ -27,7 +27,7 @@
 - `STreeMenu`（styled）— 入口包装；`TreeMenuCompact` 组合 + `treeMenuVariants` 尺寸配方 + `provideTreeMenuUi` 注入插槽类，`useForwardListeners` 合并事件
 - `TreeMenuCompact`（headless）— 组合根；`TreeMenuRoot` 状态根 + `TreeMenuOptionsCompact` 分组/递归渲染 + `top`/`bottom` 插槽
 - `TreeMenuRoot`（headless）— 状态根；`useControllableState` 管理激活/展开/折叠，折叠时 `backupExpanded` 暂存展开状态并在恢复时还原
-- `TreeMenuOptionsCompact`（headless）— 分组/递归渲染；`expandStrategy="active"` 时按激活菜单路径同步展开状态
+- `TreeMenuOptionsCompact`（headless）— 分组/递归渲染；`expandStrategy="selected"` 时按选中菜单路径同步展开状态
 - `TreeMenuOptionCompact`（headless）— 单节点组合；叶子渲染按钮/链接 + 操作菜单，父项渲染 `TreeMenuCollapsible` 触发器 + `TreeMenuSub` 递归 + 折叠弹出 `DropdownMenuCompact`
 - `TreeMenuSlotCompact`（headless）— 节点内容编排（图标/标签/badge/tag/外链图标/chevron）
 - 基础原语（headless）— `TreeMenuButton`/`TreeMenuItem`/`TreeMenuCollapsible`/`TreeMenuSub`/`TreeMenuGroup`/`TreeMenuGroupLabel`/`TreeMenuTooltipCompact`，全部零样式
@@ -72,7 +72,7 @@
 - 操作按钮的可访问名称来自 `treeMenu.openActions` 模板（`{label}` 占位符），随 `ConfigProvider` locale 在 13 种语言间切换。
 - 节点 `disabled` 阻止激活/展开/操作；禁用项渲染 `data-disabled` 与原生 `disabled` 语义。
 - 叶子项点击激活并派发 `update:modelValue`；含子项点击切换展开并派发 `update:expanded`。
-- `expandStrategy="active"` 时，展开状态会在激活项变化或切换到 `active` 策略时按激活菜单路径重新同步；此前手动展开的非激活分支会保持到下一次激活。
+- `expandStrategy="selected"` 时，展开状态会在选中项变化或切换到 `selected` 策略时按选中菜单路径重新同步；此前手动展开的非选中分支会保持到下一次选中。
 - 数据属性仅使用 `data-soybean-tree-menu-*`（D1-07），不附加冗余属性。
 - `size` 支持 xs~2xl 8 档；样式覆盖经 `ui`（20+ 命名插槽）与根 `class` 注入。
 
@@ -115,7 +115,7 @@ console.log('select', action.value) }
 `expandStrategy` 决定展开状态与激活菜单的关系。`keep`（默认）下展开完全由手动控制：激活其他菜单不会改变任何展开/折叠状态。`active` 下菜单跟随激活项——每当激活项变化（或切换到 `active`）时，只保留激活菜单及其所有父级菜单展开，其余分支自动折叠：
 
 ```vue
-<STreeMenu :items="items" expand-strategy="active" />
+<STreeMenu :items="items" expand-strategy="selected" />
 ```
 
 适合自由浏览、由用户完全掌控每个分支时使用 `keep`；需要侧边栏始终展示当前路由路径时使用 `active`。

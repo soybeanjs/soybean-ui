@@ -275,7 +275,7 @@ Events for the MenuOptionCompactSelect component.
 Properties for the MenuOptionsCompact component.
 
 - `items`: Items rendered by the component. (type `MenuOptionData<T>[]`; required)
-- `activeValue`: The active value of the menu. (type `T`; optional)
+- `selectedValue`: The selected value of the menu. (type `T`; optional)
 - `itemProps`: Properties forwarded to the item element. (type `MenuItemProps`; optional)
 - `linkProps`: Properties forwarded to the link element. (type `LinkExtraProps`; optional)
 - `groupProps`: Properties forwarded to the group element. (type `MenuGroupProps`; optional)

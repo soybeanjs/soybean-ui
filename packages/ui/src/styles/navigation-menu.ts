@@ -36,7 +36,6 @@ export const navigationMenuVariants = scv({
       `hover:bg-accent hover:text-accent-foreground`,
       `focus:bg-accent focus:text-accent-foreground`,
       `disabled:pointer-events-none disabled:opacity-50`,
-      `data-[active]:bg-accent/50`,
       `data-[state=open]:bg-accent/50`
     ],
     subItemContent: `flex items-start rounded-md outline-none cursor-default select-none`,

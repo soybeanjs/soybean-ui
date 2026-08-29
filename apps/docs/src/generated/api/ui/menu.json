@@ -3369,7 +3369,7 @@
         "kind": "props",
         "name": "MenuOptionsCompactProps",
         "type": "Interface MenuOptionsCompactProps<T>",
-        "resolvedType": "{ items: MenuOptionData<T>[]; activeValue?: T; itemProps?: MenuItemProps; linkProps?: LinkExtraProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; portalProps?: MenuPortalProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
+        "resolvedType": "{ items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: MenuItemProps; linkProps?: LinkExtraProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; portalProps?: MenuPortalProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
         "description": "Properties for the MenuOptionsCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuoptionscompactprops.props",
         "sourcePath": "packages/headless/src/components/menu/types.ts",
@@ -3387,11 +3387,11 @@
             "referencedTypes": []
           },
           {
-            "name": "activeValue",
+            "name": "selectedValue",
             "type": "T",
             "required": false,
-            "description": "The active value of the menu.",
-            "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuoptionscompactprops.members.activevalue",
+            "description": "The selected value of the menu.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuoptionscompactprops.members.selectedvalue",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/menu/types.ts",

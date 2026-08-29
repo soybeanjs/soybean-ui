@@ -27,7 +27,7 @@ const isDisabled = computed(() => props.disabled || disabled.value);
     :disabled="isDisabled"
     :aria-labelledby="textId || undefined"
     :aria-current="isSelected ? 'true' : undefined"
-    :data-state="isSelected ? 'active' : 'inactive'"
+    :data-selected="isSelected"
     @click="onDelete"
   >
     <slot>

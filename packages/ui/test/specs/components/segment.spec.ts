@@ -44,8 +44,8 @@ describe('SSegment', () => {
           },
           template: `
             <SSegment :items="items" model-value="segment-1">
-              <template #item="{ label, active }">
-                <span :data-test="'segment-item-' + label">{{ active ? 'active' : 'idle' }}-{{ label }}</span>
+              <template #item="{ label, selected }">
+                <span :data-test="'segment-item-' + label">{{ selected ? 'selected' : 'idle' }}-{{ label }}</span>
               </template>
             </SSegment>
           `
@@ -53,7 +53,7 @@ describe('SSegment', () => {
         { attachTo: document.body }
       );
 
-      expect(wrapper.find('[data-test="segment-item-Daily"]').text()).toBe('active-Daily');
+      expect(wrapper.find('[data-test="segment-item-Daily"]').text()).toBe('selected-Daily');
       wrapper.unmount();
     });
 
@@ -90,14 +90,14 @@ describe('SSegment', () => {
       wrapper.unmount();
     });
 
-    it('reflects data-state on active and inactive segments', () => {
+    it('reflects data-selected on active and inactive segments', () => {
       const wrapper = mount(SSegment, {
         props: { items, modelValue: 'segment-1' },
         attachTo: document.body
       });
 
-      expect(wrapper.findAll('[role="tab"]')[0].attributes('data-state')).toBe('active');
-      expect(wrapper.findAll('[role="tab"]')[1].attributes('data-state')).toBe('inactive');
+      expect(wrapper.findAll('[role="tab"]')[0].attributes('data-selected')).toBe('true');
+      expect(wrapper.findAll('[role="tab"]')[1].attributes('data-selected')).toBe('false');
       wrapper.unmount();
     });
 

@@ -58,7 +58,7 @@ provideTagsInputItemContext({
     :aria-labelledby="textId || undefined"
     :aria-current="isSelected ? 'true' : undefined"
     :data-disabled="disabled ? '' : undefined"
-    :data-state="isSelected ? 'active' : 'inactive'"
+    :data-selected="isSelected"
   >
     <slot :on-delete="onDelete" :displayed-value="displayedValue" />
   </Primitive>

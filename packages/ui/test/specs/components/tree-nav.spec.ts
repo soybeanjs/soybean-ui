@@ -136,36 +136,36 @@ describe('STreeNav', () => {
   });
 
   describe('selection state', () => {
-    it('marks the selected top-level leaf as active via data-active', () => {
+    it('marks the selected top-level leaf as selected via data-selected', () => {
       const wrapper = mountTreeNav({ defaultValue: 'pricing' });
 
       const pricing = findLeafButton(wrapper, 'Pricing');
-      expect(pricing?.attributes('data-active')).toBe('true');
-      expect(pricing?.attributes('data-child-active')).toBeUndefined();
+      expect(pricing?.attributes('data-selected')).toBe('true');
+      expect(pricing?.attributes('data-child-selected')).toBeUndefined();
 
       // Siblings are marked inactive.
       const githubLink = wrapper.find('a[href="https://github.com/soybeanjs/soybean-ui"]');
-      expect(githubLink.attributes('data-active')).toBe('false');
+      expect(githubLink.attributes('data-selected')).toBe('false');
 
       wrapper.unmount();
     });
 
-    it('highlights the ancestor chain of a selected nested leaf via data-child-active', () => {
+    it('highlights the ancestor chain of a selected nested leaf via data-child-selected', () => {
       const wrapper = mountTreeNav({ defaultValue: 'button' });
 
       const [docsTrigger, blogTrigger] = wrapper.findAll('[data-soybean-dropdown-menu-trigger]');
-      expect(docsTrigger.attributes('data-child-active')).toBe('');
-      expect(blogTrigger.attributes('data-child-active')).toBeUndefined();
+      expect(docsTrigger.attributes('data-child-selected')).toBe('');
+      expect(blogTrigger.attributes('data-child-selected')).toBeUndefined();
 
       wrapper.unmount();
     });
 
-    it('never marks branch triggers active even when their own value matches', () => {
-      // Container nodes carry no active state, aligned with TreeMenu.
+    it('never marks branch triggers selected even when their own value matches', () => {
+      // Container nodes carry no selected state, aligned with TreeMenu.
       const wrapper = mountTreeNav({ defaultValue: 'docs' });
 
       const docsTrigger = wrapper.find('[data-soybean-dropdown-menu-trigger]');
-      expect(docsTrigger.attributes('data-active')).toBe('false');
+      expect(docsTrigger.attributes('data-selected')).toBe('false');
 
       wrapper.unmount();
     });
@@ -186,13 +186,13 @@ describe('STreeNav', () => {
       wrapper.unmount();
     });
 
-    it('marks the clicked leaf as active in uncontrolled mode', async () => {
+    it('marks the clicked leaf as selected in uncontrolled mode', async () => {
       const wrapper = mountTreeNav();
 
       const pricing = findLeafButton(wrapper, 'Pricing');
       await pricing!.trigger('click');
 
-      expect(pricing!.attributes('data-active')).toBe('true');
+      expect(pricing!.attributes('data-selected')).toBe('true');
 
       wrapper.unmount();
     });
@@ -220,8 +220,8 @@ describe('STreeNav', () => {
       expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['github']);
 
       // The controlled value stays "pricing": only the emit happens.
-      expect(findLeafButton(wrapper, 'Pricing')?.attributes('data-active')).toBe('true');
-      expect(githubLink.attributes('data-active')).toBe('false');
+      expect(findLeafButton(wrapper, 'Pricing')?.attributes('data-selected')).toBe('true');
+      expect(githubLink.attributes('data-selected')).toBe('false');
 
       wrapper.unmount();
     });
@@ -249,7 +249,7 @@ describe('STreeNav', () => {
       expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['getting-started']);
 
       // The ancestor chain stays highlighted after selection.
-      expect(docsTrigger.attributes('data-child-active')).toBe('');
+      expect(docsTrigger.attributes('data-child-selected')).toBe('');
 
       wrapper.unmount();
     });

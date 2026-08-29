@@ -18,14 +18,14 @@ export type TreeMenuCollapsedState = 'expanded' | 'collapsed';
 /**
  * Expand strategy of the TreeMenu component.
  */
-export type TreeMenuExpandStrategy = 'keep' | 'active';
+export type TreeMenuExpandStrategy = 'keep' | 'selected';
 
 /**
  * Properties for the TreeMenuRoot component.
  */
 export interface TreeMenuRootProps {
   /**
-   * the active value of the tree menu. can be bound-with with `v-model`.
+   * the selected value of the tree menu. can be bound-with with `v-model`.
    */
   modelValue?: string;
   /**
@@ -44,7 +44,7 @@ export interface TreeMenuRootProps {
    * The expand strategy of the tree menu.
    *
    * - `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus.
-   * - `active`: only expand the currently active menu and all its ancestor menus; non-active menus are collapsed when the active menu changes.
+   * - `selected`: only expand the currently selected menu and all its ancestor menus; non-selected menus are collapsed when the selected menu changes.
    *
    * @default 'keep'
    */
@@ -138,11 +138,11 @@ export interface TreeMenuItemProps extends TreeMenuBaseItemProps, PrimitiveWithB
  */
 export interface TreeMenuButtonProps extends ButtonProps {
   /**
-   * When `true`, prevents the user from activating the item.
+   * When `true`, prevents the user from selecting the item.
    *
    * @default false
    */
-  disabledActive?: boolean;
+  disabledSelect?: boolean;
 }
 
 /**
@@ -203,7 +203,7 @@ export interface TreeMenuBaseOptionData extends TreeMenuBaseItemProps, LinkBaseP
   /**
    * Properties forwarded to the collapsed dropdown menu.
    */
-  dropdownMenuProps?: Omit<DropdownMenuCompactProps<string>, 'activeValue' | 'items'>;
+  dropdownMenuProps?: Omit<DropdownMenuCompactProps<string>, 'selectedValue' | 'items'>;
   /**
    * Action items rendered at the end of the option.
    */
@@ -211,7 +211,7 @@ export interface TreeMenuBaseOptionData extends TreeMenuBaseItemProps, LinkBaseP
   /**
    * Properties forwarded to the action dropdown menu.
    */
-  actionMenuProps?: Omit<DropdownMenuCompactProps, 'activeValue' | 'items'>;
+  actionMenuProps?: Omit<DropdownMenuCompactProps, 'selectedValue' | 'items'>;
   /**
    * Callback invoked when an action is selected.
    */
@@ -245,9 +245,9 @@ export interface TreeMenuOptionCompactProps {
    */
   side?: HorizontalSide;
   /**
-   * The active paths of the tree menu, used to determine whether the current item is active or has active descendants.
+   * The selected paths of the tree menu, used to determine whether the current item is selected or has selected descendants.
    */
-  activePaths?: string[];
+  selectedPaths?: string[];
   /**
    * Properties forwarded to the item element.
    */
@@ -343,9 +343,9 @@ export interface TreeMenuItemCompactSlotProps<T extends TreeMenuBaseOptionData =
    */
   hasChildren: boolean;
   /**
-   * Whether any descendant of the current item is active.
+   * Whether any descendant of the current item is selected.
    */
-  childActive: boolean;
+  childSelected: boolean;
 }
 
 /**
@@ -429,9 +429,9 @@ export interface TreeMenuItemContext {
    */
   value: string;
   /**
-   * Whether the current item is active.
+   * Whether the current item is selected.
    */
-  isActive: ComputedRef<boolean>;
+  isSelected: ComputedRef<boolean>;
   /**
    * Whether the current item is expanded.
    */
@@ -441,9 +441,9 @@ export interface TreeMenuItemContext {
    */
   onExpandedToggle: () => void;
   /**
-   * Callback invoked when the active event fires.
+   * Callback invoked when the selected event fires.
    */
-  onActive: () => void;
+  onSelect: () => void;
 }
 
 /**

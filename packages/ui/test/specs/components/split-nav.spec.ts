@@ -273,7 +273,7 @@ describe('SSplitNav', () => {
       wrapper.unmount();
     });
 
-    it('marks a first-level parent as child-active when a descendant is selected', () => {
+    it('marks a first-level parent as child-selected when a descendant is selected', () => {
       const wrapper = mount(SSplitNav, {
         props: {
           items,
@@ -286,7 +286,7 @@ describe('SSplitNav', () => {
       const parent = wrapper.find('[data-soybean-split-nav-first-level-item][data-value="workspace"]');
 
       expect(parent.attributes('data-state')).toBe('open');
-      expect(parent.attributes('data-child-active')).toBeDefined();
+      expect(parent.attributes('data-child-selected')).toBeDefined();
       expect(wrapper.find('[data-soybean-split-nav-first-level-item][data-state="active"]').exists()).toBe(false);
 
       wrapper.unmount();

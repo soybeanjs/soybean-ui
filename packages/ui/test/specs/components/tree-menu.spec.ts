@@ -317,10 +317,10 @@ describe('STreeMenu', () => {
         attachTo: document.body
       });
 
-      const activeButton = wrapper.find('[data-soybean-tree-menu-button][data-active="true"]');
+      const selectedButton = wrapper.find('[data-soybean-tree-menu-button][data-selected="true"]');
 
-      expect(activeButton.exists()).toBe(true);
-      expect(activeButton.text()).toContain('Overview');
+      expect(selectedButton.exists()).toBe(true);
+      expect(selectedButton.text()).toContain('Overview');
 
       wrapper.unmount();
     });
@@ -357,7 +357,7 @@ describe('STreeMenu', () => {
 
       await wrapper.setProps({ modelValue: 'projects' });
 
-      expect(wrapper.find('[data-soybean-tree-menu-button][data-active="true"]').text()).toContain('Projects');
+      expect(wrapper.find('[data-soybean-tree-menu-button][data-selected="true"]').text()).toContain('Projects');
 
       wrapper.unmount();
     });
@@ -475,7 +475,7 @@ describe('STreeMenu', () => {
       const wrapper = mount(STreeMenu, {
         props: {
           items,
-          expandStrategy: 'active',
+          expandStrategy: 'selected',
           defaultValue: 'security'
         },
         attachTo: document.body
@@ -494,7 +494,7 @@ describe('STreeMenu', () => {
       const wrapper = mount(STreeMenu, {
         props: {
           items,
-          expandStrategy: 'active',
+          expandStrategy: 'selected',
           defaultValue: 'security'
         },
         attachTo: document.body
@@ -511,7 +511,7 @@ describe('STreeMenu', () => {
       const wrapper = mount(STreeMenu, {
         props: {
           items,
-          expandStrategy: 'active',
+          expandStrategy: 'selected',
           defaultValue: 'security'
         },
         attachTo: document.body
@@ -536,7 +536,7 @@ describe('STreeMenu', () => {
       const wrapper = mount(STreeMenu, {
         props: {
           items,
-          expandStrategy: 'active'
+          expandStrategy: 'selected'
         },
         attachTo: document.body
       });
@@ -553,7 +553,7 @@ describe('STreeMenu', () => {
       const wrapper = mount(STreeMenu, {
         props: {
           items,
-          expandStrategy: 'active',
+          expandStrategy: 'selected',
           defaultValue: 'missing'
         },
         attachTo: document.body
@@ -578,7 +578,7 @@ describe('STreeMenu', () => {
 
       expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('true');
 
-      await wrapper.setProps({ expandStrategy: 'active' });
+      await wrapper.setProps({ expandStrategy: 'selected' });
       await nextTick();
 
       expect(wrapper.emitted('update:expanded')?.at(-1)?.[0]).toEqual(['settings', 'security']);
@@ -591,7 +591,7 @@ describe('STreeMenu', () => {
       const wrapper = mount(STreeMenu, {
         props: {
           items,
-          expandStrategy: 'active',
+          expandStrategy: 'selected',
           defaultValue: 'security'
         },
         attachTo: document.body
@@ -612,7 +612,7 @@ describe('STreeMenu', () => {
       const wrapper = mount(STreeMenu, {
         props: {
           items,
-          expandStrategy: 'active',
+          expandStrategy: 'selected',
           defaultValue: 'security',
           collapsed: true
         },
@@ -734,7 +734,7 @@ describe('STreeMenu', () => {
       wrapper.unmount();
     });
 
-    it('marks the active item button with aria-current semantics via data-active', () => {
+    it('marks the selected item button with aria-current semantics via data-selected', () => {
       const wrapper = mount(STreeMenu, {
         props: {
           items,
@@ -743,7 +743,7 @@ describe('STreeMenu', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-tree-menu-button][data-active="true"]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-tree-menu-button][data-selected="true"]').exists()).toBe(true);
 
       wrapper.unmount();
     });

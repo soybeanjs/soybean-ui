@@ -6,12 +6,12 @@ TreeNav is a data-driven horizontal navigation bar with a persistent selection s
 
 `STreeNav` is the horizontal counterpart of `STreeMenu`: both consume the same tree-shaped `items` data (`TreeNavOptionData`) and derive highlights from the selected value, but TreeNav renders branches as DropdownMenu popups instead of collapsible sections. Logic and accessibility semantics live in the headless `TreeNavCompact`; styles are injected through an `scv()` recipe.
 
-> Unlike Menubar (a transient "which menu is open" command-menu model), TreeNav models **selection**: opening a popup never marks anything active — only selection does. Selected leaves carry `data-active`, and ancestors of the selected leaf carry `data-child-active`.
+> Unlike Menubar (a transient "which menu is open" command-menu model), TreeNav models **selection**: opening a popup never marks anything active — only selection does. Selected leaves carry `data-selected`, and ancestors of the selected leaf carry `data-child-selected`.
 
 ## Features
 
 - **Persistent selection** — bind `modelValue` (`v-model`) or seed with `defaultValue`; selection survives closing popups and page interactions.
-- **Highlight derivation** — the selected leaf renders `data-active="true"`, and every ancestor in its path renders `data-child-active`; derivation reuses the shared tree-path helper, so highlighting works at any depth.
+- **Highlight derivation** — the selected leaf renders `data-selected="true"`, and every ancestor in its path renders `data-child-selected`; derivation reuses the shared tree-path helper, so highlighting works at any depth.
 - **Hover-first popups** — branch popups open on hover by default (`trigger="click"` to override), tuned via `delayDuration` / `skipDelayDuration`.
 - **Familiar data shape** — pass one `items` array (`TreeNavOptionData`: `value` / `label` / `icon` / `children` / `href` / `to` / `disabled` …), aligned with TreeMenu's option model; item customization beyond these fields (badges, tags, actions…) is provided via slots instead of extra data fields.
 - **Link top-level items** — items with `href` / `to` render as links that also update the selection on click.
@@ -48,8 +48,8 @@ TreeNav is a data-driven horizontal navigation bar with a persistent selection s
 
 ### Runtime considerations
 
-1. **Open ≠ active** — popup open state is transient UI state managed internally by the DropdownMenu layer; only leaf selection updates `data-active`. Do not use `SMenubar`'s `modelValue` semantics here.
-2. **Collapsed highlight consistency** — when a selected item collapses into the "more" popup, its visible ancestor still shows `data-child-active` because derivation runs on the full `items` list.
+1. **Open ≠ active** — popup open state is transient UI state managed internally by the DropdownMenu layer; only leaf selection updates `data-selected`. Do not use `SMenubar`'s `modelValue` semantics here.
+2. **Collapsed highlight consistency** — when a selected item collapses into the "more" popup, its visible ancestor still shows `data-child-selected` because derivation runs on the full `items` list.
 3. **Collapsible measurement** — like Menubar's overflow collapsing, measurement runs against real layout after mount; give the parent a constrained width (e.g. `max-w-*` / fixed width) for best results. The first frame may briefly render all items before collapsing.
 4. **Controlled mode** — with `modelValue`, internal writes only emit `update:modelValue`; uncontrolled usage seeds the initial state with `defaultValue`.
 5. **Keyboard model** — while the bar is closed, ←/→ (and Home/End) roam the top level through a roving tabindex; branch triggers are roam targets like any other entry, so arrows never open popups. Opening stays on Enter/Space or ArrowDown (focus then moves to the first menu item); once a popup is open, all keys belong to the Menu (↑/↓ inside, Escape to close and return focus to the trigger), and a hover popup closes itself when focus leaves the trigger.
@@ -66,7 +66,7 @@ Set `href` or `to` on the item — link entries render as `<a>` elements and upd
 
 ### How do I control which entry stays highlighted?
 
-Bind `v-model`. The selected value is compared against the whole `items` tree; matched leaves get `data-active` and their ancestors get `data-child-active`.
+Bind `v-model`. The selected value is compared against the whole `items` tree; matched leaves get `data-selected` and their ancestors get `data-child-selected`.
 
 ### Why doesn't hovering a branch mark it active?
 

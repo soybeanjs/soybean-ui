@@ -3,11 +3,11 @@
 Source URL: https://ui.soybeanjs.cn/components/popconfirm
 Markdown URL: https://ui.soybeanjs.cn/components/popconfirm.md
 Category: Overlay
-Description: A confirmation box component based on `Popover`, used for lightweight secondary confirmation operations. `SPopconfirm` combines the headless `PopconfirmCompact` (built on the popover primitives) with the `popconfirmVariants` style recipe (13 slots, 6 sizes × 4 types).
+Description: A confirmation box component based on `Popper`, used for lightweight secondary confirmation operations. `SPopconfirm` combines the headless `PopconfirmCompact` (built on the popper primitives) with the `popconfirmVariants` style recipe (13 slots, 6 sizes × 4 types).
 
 ## Overview
 
-A confirmation box component based on `Popover`, used for lightweight secondary confirmation operations. `SPopconfirm` combines the headless `PopconfirmCompact` (built on the popover primitives) with the `popconfirmVariants` style recipe (13 slots, 6 sizes × 4 types).
+A confirmation box component based on `Popper`, used for lightweight secondary confirmation operations. `SPopconfirm` combines the headless `PopconfirmCompact` (built on the popper primitives) with the `popconfirmVariants` style recipe (13 slots, 6 sizes × 4 types).
 
 Use it for a quick inline confirm (delete, destructive action) next to the trigger. For a richer blocking confirmation use `dialog`; for an unobtrusive hint use `tooltip`.
 
@@ -17,7 +17,7 @@ Usage examples for popconfirm are rendered on the site.
 
 ## Features
 
-- 🧩 Built on `Popover` — inherits placement, arrow, portal, dismissable and focus behavior
+- 🧩 Built on `Popper` — inherits placement, arrow, portal, dismissable and focus behavior
 - 🎨 4 types — `type="error"`/`"success"`/`"warning"`/`"info"` drive the leading icon and color
 - 🏷️ Title + description + content — `title`/`description`/`content` props or the matching slots
 - 🔘 Confirm/cancel — `confirmText`/`cancelText` (localized from `dialog.confirm`/`dialog.cancel`); `showCancel` defaults to `onlyWarning`
@@ -29,7 +29,7 @@ Usage examples for popconfirm are rendered on the site.
 ## Component family
 
 - `SPopconfirm` (styled) — the entry wrapper; `popconfirmVariants` recipe with dynamic slot forwarding
-- `PopconfirmCompact` (headless) — the aggregated composite built on `PopoverRoot`/`PopoverTrigger`/`PopoverPositioner`/`PopoverPopup`
+- `PopconfirmCompact` (headless) — the aggregated composite built on `PopperRoot`/`PopperTrigger`/`PopperPositioner`/`PopperPopup`
 - `PopconfirmHeader` / `PopconfirmContent` / `PopconfirmFooter` (headless) — layout sections
 - `PopconfirmTitle` / `PopconfirmDescription` (headless) — the title/description
 - `PopconfirmConfirm` / `PopconfirmCancel` (headless) — footer `<button>`s, emit `confirm`/`cancel`
@@ -42,7 +42,7 @@ Interactive demos for popconfirm are rendered on the site.
 
 Structured API summary generated from build-time component metadata.
 
-- Exported symbols (16): Popconfirm, PopconfirmArrow, PopconfirmCancel, PopconfirmClose, PopconfirmCompact, PopconfirmConfirm, PopconfirmContent, PopconfirmDescription, PopconfirmFooter, PopconfirmHeader, PopconfirmPopup, PopconfirmPortal, PopconfirmPositioner, PopconfirmRoot, PopconfirmTitle, PopconfirmTrigger.
+- Exported symbols (17): Popconfirm, PopconfirmAnchor, PopconfirmArrow, PopconfirmCancel, PopconfirmClose, PopconfirmCompact, PopconfirmConfirm, PopconfirmContent, PopconfirmDescription, PopconfirmFooter, PopconfirmHeader, PopconfirmPopup, PopconfirmPortal, PopconfirmPositioner, PopconfirmRoot, PopconfirmTitle, PopconfirmTrigger.
 
 ### Popconfirm
 
@@ -86,7 +86,7 @@ Properties for the Popconfirm component.
 
 Events for the Popconfirm component.
 
-- `update:open`: Event handler called when the open state of the dialog changes. (type `[value: boolean]`; parameters `value: boolean`)
+- `update:open`: No description. (type `[value: boolean, reason: PopperOpenChangeReason]`; parameters `value: boolean, reason: PopperOpenChangeReason`)
 - `escapeKeyDown`: Event handler called when the escape key is down. Can be prevented. (type `[event: KeyboardEvent]`; parameters `event: KeyboardEvent`)
 - `pointerDownOutside`: Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented. (type `[event: PointerDownOutsideEvent]`; parameters `event: PointerDownOutsideEvent`)
 - `focusOutside`: Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented. (type `[event: FocusOutsideEvent]`; parameters `event: FocusOutsideEvent`)
@@ -107,6 +107,16 @@ Slots for the Popconfirm component.
 - `description`: Custom content for the description slot. (type `((props: PopconfirmCompactBaseSlotProps) => any) | undefined`)
 - `footer`: Custom content for the footer slot. (type `((props: PopconfirmCompactBaseSlotProps) => any) | undefined`)
 - `close`: Custom content for the close slot. (type `((props: PopconfirmCompactBaseSlotProps) => any) | undefined`)
+
+### PopconfirmAnchor
+
+#### Props
+
+Properties for the PopconfirmAnchor component.
+
+- `reference`: No description. (type `ReferenceElement`; optional)
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 
 ### PopconfirmArrow
 
@@ -131,7 +141,20 @@ Events for the PopconfirmCancel component.
 
 ### PopconfirmClose
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the PopconfirmClose component.
+
+- `type`: The type of the button element. Can be one of 'button', 'submit', or 'reset'. (type `ButtonType`; default `'button'`; optional)
+- `disabled`: Whether the component is disabled. (type `boolean`; optional)
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
+
+#### Emits
+
+Events for the PopconfirmClose component.
+
+- `close`: Emitted when close occurs. (type `[event: PointerEvent]`; parameters `event: PointerEvent`)
 
 ### PopconfirmCompact
 
@@ -172,7 +195,7 @@ Properties for the PopconfirmCompact component.
 
 Events for the PopconfirmCompact component.
 
-- `update:open`: Event handler called when the open state of the dialog changes. (type `[value: boolean]`; parameters `value: boolean`)
+- `update:open`: No description. (type `[value: boolean, reason: PopperOpenChangeReason]`; parameters `value: boolean, reason: PopperOpenChangeReason`)
 - `escapeKeyDown`: Event handler called when the escape key is down. Can be prevented. (type `[event: KeyboardEvent]`; parameters `event: KeyboardEvent`)
 - `pointerDownOutside`: Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented. (type `[event: PointerDownOutsideEvent]`; parameters `event: PointerDownOutsideEvent`)
 - `focusOutside`: Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented. (type `[event: FocusOutsideEvent]`; parameters `event: FocusOutsideEvent`)
@@ -237,11 +260,63 @@ Events for the PopconfirmConfirm component.
 
 ### PopconfirmPositioner
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the PopconfirmPositioner component.
+
+- `placement`: The placement of the floating element. If used, it will override the `side` and `align` props. (type `Placement`; default `undefined`; optional)
+- `side`: The preferred side of the trigger to render against when open. Will be reversed when collisions occur and avoidCollisions is enabled. (type `Side`; default `'bottom'`; optional)
+- `sideOffset`: The distance in pixels from the trigger. (type `number`; default `0`; optional)
+- `sideFlip`: Flip to the opposite side when colliding with boundary. (type `boolean`; default `true`; optional)
+- `align`: The preferred alignment against the trigger. May change when collisions occur. (type `Align`; default `'center'`; optional)
+- `alignOffset`: An offset in pixels from the `start` or `end` alignment options. (type `number`; default `0`; optional)
+- `alignFlip`: Flip alignment when colliding with boundary. May only occur when `prioritizePosition` is true. (type `boolean`; default `true`; optional)
+- `avoidCollisions`: When `true`, overrides the side and align preferences to prevent collisions with boundary edges. (type `boolean`; default `true`; optional)
+- `collisionBoundary`: The element used as the collision boundary. By default this is the viewport, though you can provide additional element(s) to be included in this check. (type `Element | (Element | null)[] | null`; default `[ ]`; optional)
+- `collisionPadding`: The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for all sides), or a partial padding object, for example: { top: 20, left: 20 }. (type `Padding`; default `0`; optional)
+- `arrowPadding`: The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it from overflowing the corners. (type `number`; default `0`; optional)
+- `hideShiftedArrow`: When `true`, hides the arrow when it cannot be centered to the reference element. (type `boolean`; default `true`; optional)
+- `sticky`: The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at least partially in the boundary whilst "always" will keep the content in the boundary regardless. (type `'partial' | 'always'`; default `'partial'`; optional)
+- `hideWhenDetached`: Whether to hide the content when the trigger becomes fully occluded. (type `boolean`; default `false`; optional)
+- `positionStrategy`: The type of CSS position property to use. (type `'fixed' | 'absolute'`; default `'fixed'`; optional)
+- `updatePositionStrategy`: Strategy to update the position of the floating element on every animation frame. (type `'always' | 'optimized'`; default `'optimized'`; optional)
+- `disableUpdateOnLayoutShift`: Whether to disable the update position for the content when the layout shifted. (type `boolean`; default `false`; optional)
+- `prioritizePosition`: Force content to be position within the viewport. Might overlap the reference element, which may not be desired. (type `boolean`; default `false`; optional)
+- `reference`: The custom element or virtual element that will be set as the reference to position the floating element. If provided, it will replace the default anchor element. (type `ReferenceElement`; optional)
+- `trapFocus`: Whether focus is trapped inside the popup while open (Tab cycles within the layer and body scroll is locked for modal layers). (type `boolean`; default `modal`; optional)
+- `disableHoverableContent`: When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled, so leaving the trigger closes the layer immediately). (type `boolean`; default `false`; optional)
+- `onGracePointerExit`: Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g. Tooltip) run area-scoped close logic without registering its own second grace area. (type `(() => void)`; optional)
+- `forceMount`: Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. (type `boolean`; optional)
+
+#### Emits
+
+Events for the PopconfirmPositioner component.
+
+- `escapeKeyDown`: Event handler called when the escape key is down. Can be prevented. (type `[event: KeyboardEvent]`; parameters `event: KeyboardEvent`)
+- `pointerDownOutside`: Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented. (type `[event: PointerDownOutsideEvent]`; parameters `event: PointerDownOutsideEvent`)
+- `focusOutside`: Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented. (type `[event: FocusOutsideEvent]`; parameters `event: FocusOutsideEvent`)
+- `interactOutside`: Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown` event happens outside or focus moves outside of it. Can be prevented. (type `[event: PointerDownOutsideEvent | FocusOutsideEvent]`; parameters `event: PointerDownOutsideEvent | FocusOutsideEvent`)
+- `openAutoFocus`: Event handler called when auto-focusing on open. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
+- `closeAutoFocus`: Event handler called when auto-focusing on close. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
+- `placed`: No description. (type `[]`)
 
 ### PopconfirmRoot
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the PopconfirmRoot component.
+
+- `dir`: No description. (type `Direction`; optional)
+- `open`: No description. (type `boolean`; optional)
+- `defaultOpen`: No description. (type `boolean`; optional)
+- `modal`: No description. (type `boolean`; optional)
+- `disabled`: No description. (type `boolean`; optional)
+
+#### Emits
+
+Events for the PopconfirmRoot component.
+
+- `update:open`: No description. (type `[value: boolean, reason: PopperOpenChangeReason]`; parameters `value: boolean, reason: PopperOpenChangeReason`)
 
 ### PopconfirmTitle
 
@@ -249,17 +324,34 @@ Events for the PopconfirmConfirm component.
 
 ### PopconfirmTrigger
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the PopconfirmTrigger component.
+
+- `trigger`: No description. (type `PopperTriggerType`; optional)
+- `reference`: No description. (type `ReferenceElement`; optional)
+- `openDelay`: No description. (type `number`; optional)
+- `closeDelay`: No description. (type `number`; optional)
+- `skipDelayDuration`: No description. (type `number`; optional)
+- `pressOpenDelay`: No description. (type `number`; optional)
+- `openOnFocus`: No description. (type `boolean`; optional)
+- `focusOpenDelay`: Open delay applied to focus-driven opens. Defaults to `openDelay`; set `0` to open instantly on focus (Tooltip semantics). (type `number`; default `inherit from `openDelay``; optional)
+- `focusVisibleOnly`: When `true`, focus-driven opening only responds to keyboard/programmatic focus (`:focus-visible`), ignoring pointer-derived focus. (type `boolean`; default `false`; optional)
+- `ariaMode`: How the trigger references its popup for assistive technology. - `controls`: `aria-expanded` + `aria-controls` (expandable widgets: popover / menu) - `describedby`: `aria-describedby` while open (tooltip-like descriptions) - `none`: no popup-reference attributes (type `PopperTriggerAriaMode`; default `'controls'`; optional)
+- `type`: The type of the button element. Can be one of 'button', 'submit', or 'reset'. (type `ButtonType`; default `'button'`; optional)
+- `disabled`: Whether the component is disabled. (type `boolean`; optional)
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 
 ## Notes
 
 ### Architecture and benchmark differences
 
-`PopconfirmCompact` composes the popover trigger/positioner/popup with a confirm-style header, content and footer, while every primitive stays style-free and only the UI wrapper injects the `popconfirmVariants` classes. This mirrors radix-ui/shadcn-ui's headless split. Ant Design, Element Plus, Mantine and Naive UI ship a single styled popconfirm with `title`/`description`/`okText`/`cancelText`/`onConfirm` props; SoybeanUI additionally exposes per-slot `*Props`, a `size` scale, a `type` color/icon system, and localized action labels.
+`PopconfirmCompact` composes the popper trigger/positioner/popup with a confirm-style header, content and footer, while every primitive stays style-free and only the UI wrapper injects the `popconfirmVariants` classes. This mirrors radix-ui/shadcn-ui's headless split. Ant Design, Element Plus, Mantine and Naive UI ship a single styled popconfirm with `title`/`description`/`okText`/`cancelText`/`onConfirm` props; SoybeanUI additionally exposes per-slot `*Props`, a `size` scale, a `type` color/icon system, and localized action labels.
 
 | Capability               | SoybeanUI | shadcn/ui | Ant Design Popconfirm | Element Plus Popconfirm | Mantine Popconfirm | Naive UI Popconfirm |
 | :----------------------- | :-------: | :-------: | :-------------------: | :---------------------: | :----------------: | :-----------------: |
-| Built on Popover         |    ✅     |    ✅     |           —           |            —            |         —          |          —          |
+| Built on Popper          |    ✅     |    ✅     |           —           |            —            |         —          |          —          |
 | Headless/styled split    |    ✅     |    ✅     |           —           |            —            |         —          |          —          |
 | Type icon + color        |    ✅     |     —     |           —           |           ✅            |         —          |          —          |
 | Title + description      |    ✅     |    ✅     |          ✅           |           ✅            |         ✅         |         ✅          |

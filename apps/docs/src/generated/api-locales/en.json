@@ -1730,7 +1730,7 @@
         "cascadercompactoptionslotprops": {
           "members": {
             "checked": "Whether the node is checked.",
-            "childactive": "Whether a descendant of the node is currently selected (breadcrumb emphasis).",
+            "childselected": "Whether a descendant of the node is currently selected (breadcrumb emphasis).",
             "expand": "Expands the children column of the node without toggling its selection.",
             "highlighted": "Whether the node is currently highlighted.",
             "indeterminate": "Whether the node is in an indeterminate state.",
@@ -3268,7 +3268,6 @@
         },
         "contextmenucompactprops": {
           "members": {
-            "activevalue": "The active value of the menu.",
             "arrowprops": "Properties forwarded to the arrow element.",
             "contentprops": "Properties forwarded to the content element.",
             "dir": "The reading direction of the combobox when applicable.\n\nIf omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode.",
@@ -3282,6 +3281,7 @@
             "popupprops": "Properties forwarded to the popup element.",
             "portalprops": "Properties forwarded to the portal element.",
             "pressopendelay": "The duration from when the trigger is pressed until the menu opens.",
+            "selectedvalue": "The selected value of the menu.",
             "separatorprops": "Properties forwarded to the separator element.",
             "shortcutprops": "Properties forwarded to the shortcut element.",
             "showarrow": "Whether to show an arrow.",
@@ -4226,7 +4226,6 @@
         },
         "dropdownmenucompactprops": {
           "members": {
-            "activevalue": "The active value of the menu.",
             "arrowprops": "Properties forwarded to the arrow element.",
             "contentprops": "Properties forwarded to the content element.",
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
@@ -4243,6 +4242,7 @@
             "placement": "Placement.",
             "popupprops": "Properties forwarded to the popup element.",
             "portalprops": "Properties forwarded to the portal element.",
+            "selectedvalue": "The selected value of the menu.",
             "separatorprops": "Properties forwarded to the separator element.",
             "shortcutprops": "Properties forwarded to the shortcut element.",
             "showarrow": "Whether to show an arrow.",
@@ -5724,13 +5724,13 @@
         },
         "menuoptionscompactprops": {
           "members": {
-            "activevalue": "The active value of the menu.",
             "grouplabelprops": "Properties forwarded to the group label element.",
             "groupprops": "Properties forwarded to the group element.",
             "itemprops": "Properties forwarded to the item element.",
             "items": "Items rendered by the component.",
             "linkprops": "Properties forwarded to the link element.",
             "portalprops": "Properties forwarded to the portal element.",
+            "selectedvalue": "The selected value of the menu.",
             "separatorprops": "Properties forwarded to the separator element.",
             "shortcutprops": "Properties forwarded to the shortcut element.",
             "subcontentprops": "Properties forwarded to the sub content element.",
@@ -5938,7 +5938,6 @@
         },
         "menubarcompactprops": {
           "members": {
-            "activevalue": "The active value of the menu.",
             "arrowprops": "Properties forwarded to the arrow element.",
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
@@ -5961,6 +5960,7 @@
             "placement": "Placement.",
             "popupprops": "Properties forwarded to the popup element.",
             "portalprops": "Properties forwarded to the portal element.",
+            "selectedvalue": "The selected value of the menu.",
             "separatorprops": "Properties forwarded to the separator element.",
             "shortcutprops": "Properties forwarded to the shortcut element.",
             "showarrow": "Whether to show an arrow.",
@@ -6183,7 +6183,6 @@
         },
         "navmenulinkprops": {
           "members": {
-            "active": "Marks the link as the currently active page.",
             "activeclass": "Class to apply when the link is active",
             "ariacurrentvalue": "Value passed to the attribute `aria-current` when the link is exact active.",
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
@@ -6200,6 +6199,7 @@
             "prefetchon": "Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.",
             "rel": "A rel attribute value to apply on the link. Defaults to \"noopener noreferrer\" for external links.",
             "replace": "Calls `router.replace` instead of `router.push`.",
+            "selected": "Marks the link as the currently selected page.",
             "sub": "Whether the link is rendered inside a submenu. When `true`, the `subLink` UI slot is\nused instead of `link` (mirroring the root/sub split of the list).",
             "target": "Where to display the linked URL, as the name for a browsing context.",
             "to": "Route Location the link should navigate to when clicked on.",
@@ -6349,7 +6349,6 @@
         },
         "navigationmenulinkprops": {
           "members": {
-            "active": "Used to identify the link as the currently active page.",
             "activeclass": "Class to apply when the link is active",
             "ariacurrentvalue": "Value passed to the attribute `aria-current` when the link is exact active.",
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
@@ -6366,6 +6365,7 @@
             "prefetchon": "Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.",
             "rel": "A rel attribute value to apply on the link. Defaults to \"noopener noreferrer\" for external links.",
             "replace": "Calls `router.replace` instead of `router.push`.",
+            "selected": "Used to identify the link as the currently selected page.",
             "target": "Where to display the linked URL, as the name for a browsing context.",
             "to": "Route Location the link should navigate to when clicked on.",
             "trailingslash": "An option to either add or remove trailing slashes in the `href` for this specific link.\nOverrides the global `trailingSlash` option if provided.",
@@ -6456,10 +6456,10 @@
         },
         "pagetabscompactitemslotprops": {
           "members": {
-            "active": "Whether the current item is active.",
             "closable": "Whether the current item can be closed.",
             "index": "Index of the current item.",
-            "item": "Current item data."
+            "item": "Current item data.",
+            "selected": "Whether the current item is selected."
           },
           "slotprops": "Slot props for a compact page tab item."
         },
@@ -9567,7 +9567,7 @@
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "disabled": "Whether the component is disabled.",
-            "disabledactive": "When `true`, prevents the user from activating the item.",
+            "disabledselect": "When `true`, prevents the user from selecting the item.",
             "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
           },
           "props": "Properties for the TreeMenuButton component."
@@ -9599,7 +9599,7 @@
             "defaultexpanded": "the expanded value of the tree menu when initially rendered. use when you do not need to control the state of the tree.",
             "defaultvalue": "the value of the tree menu when initially rendered. use when you do not need to control the state of the tree.",
             "expanded": "the expanded value of the tree menu. can be bound-with with `v-model`.",
-            "expandstrategy": "The expand strategy of the tree menu.\n\n- `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus.\n- `active`: only expand the currently active menu and all its ancestor menus; non-active menus are collapsed when the active menu changes.",
+            "expandstrategy": "The expand strategy of the tree menu.\n\n- `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus.\n- `selected`: only expand the currently selected menu and all its ancestor menus; non-selected menus are collapsed when the selected menu changes.",
             "grouplabelprops": "Properties forwarded to the group label element.",
             "groupprops": "Properties forwarded to the group element.",
             "grouprootprops": "Properties forwarded to the group root element.",
@@ -9607,7 +9607,7 @@
             "itemprops": "Properties forwarded to the item element.",
             "items": "Items rendered by the component.",
             "linkprops": "Properties forwarded to the link element.",
-            "modelvalue": "the active value of the tree menu. can be bound-with with `v-model`.",
+            "modelvalue": "the selected value of the tree menu. can be bound-with with `v-model`.",
             "pxtorem": "The function to convert pixels to rem.",
             "showgroupicon": "Whether to show the group icon.",
             "side": "Horizontal side.",
@@ -9657,13 +9657,13 @@
         },
         "treemenuoptioncompactprops": {
           "members": {
-            "activepaths": "The active paths of the tree menu, used to determine whether the current item is active or has active descendants.",
             "as": "Rendered element tag.",
             "buttonprops": "Properties forwarded to the button element.",
             "collapsibleprops": "Properties forwarded to the collapsible element.",
             "item": "Current item data.",
             "itemprops": "Properties forwarded to the item element.",
             "linkprops": "Properties forwarded to the link element.",
+            "selectedpaths": "The selected paths of the tree menu, used to determine whether the current item is selected or has selected descendants.",
             "side": "Horizontal side.",
             "subprops": "Properties forwarded to the sub element."
           },
@@ -9717,13 +9717,13 @@
         },
         "treemenuoptionslotcompactprops": {
           "members": {
-            "activepaths": "The active paths of the tree menu, used to determine whether the current item is active or has active descendants.",
             "as": "Rendered element tag.",
             "buttonprops": "Properties forwarded to the button element.",
             "collapsibleprops": "Properties forwarded to the collapsible element.",
             "item": "Current item data.",
             "itemprops": "Properties forwarded to the item element.",
             "linkprops": "Properties forwarded to the link element.",
+            "selectedpaths": "The selected paths of the tree menu, used to determine whether the current item is selected or has selected descendants.",
             "showlinkicon": "Whether to show the link icon.",
             "side": "Horizontal side.",
             "subprops": "Properties forwarded to the sub element."
@@ -9746,9 +9746,9 @@
             "defaultexpanded": "the expanded value of the tree menu when initially rendered. use when you do not need to control the state of the tree.",
             "defaultvalue": "the value of the tree menu when initially rendered. use when you do not need to control the state of the tree.",
             "expanded": "the expanded value of the tree menu. can be bound-with with `v-model`.",
-            "expandstrategy": "The expand strategy of the tree menu.\n\n- `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus.\n- `active`: only expand the currently active menu and all its ancestor menus; non-active menus are collapsed when the active menu changes.",
+            "expandstrategy": "The expand strategy of the tree menu.\n\n- `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus.\n- `selected`: only expand the currently selected menu and all its ancestor menus; non-selected menus are collapsed when the selected menu changes.",
             "indent": "The width of the indent.",
-            "modelvalue": "the active value of the tree menu. can be bound-with with `v-model`.",
+            "modelvalue": "the selected value of the tree menu. can be bound-with with `v-model`.",
             "pxtorem": "The function to convert pixels to rem."
           },
           "props": "Properties for the TreeMenuRoot component."
@@ -9818,7 +9818,7 @@
         "treenavmoreentry": "Display entry describing the trailing \"more\" trigger when `collapsible`.",
         "treenavoptioncompactprops": {
           "members": {
-            "childactive": "Whether the active selection lives inside this branch subtree.",
+            "childselected": "Whether the selected leaf lives inside this branch subtree.",
             "item": "Current item data."
           },
           "props": "Properties for the TreeNavOptionCompact component."
@@ -9831,7 +9831,7 @@
             "hidden": "Whether the option is hidden.",
             "href": "The URL the link should navigate to when clicked on.",
             "icon": "The icon rendered before the label.",
-            "isgroup": "Whether the option is a pure visual group container that only groups its children and never becomes active itself.",
+            "isgroup": "Whether the option is a pure visual group container that only groups its children and never becomes selected itself.",
             "label": "The label of the option.",
             "separator": "Whether to show a separator after this option inside branch popups.",
             "shortcut": "The shortcut rendered at the end of the option inside branch popups.",
@@ -11705,7 +11705,6 @@
         },
         "contextmenuprops": {
           "members": {
-            "activevalue": "The active value of the menu.",
             "arrowprops": "Properties forwarded to the arrow element.",
             "class": "class of menu popup",
             "contentprops": "Properties forwarded to the content element.",
@@ -11720,6 +11719,7 @@
             "popupprops": "Properties forwarded to the popup element.",
             "portalprops": "Properties forwarded to the portal element.",
             "pressopendelay": "The duration from when the trigger is pressed until the menu opens.",
+            "selectedvalue": "The selected value of the menu.",
             "separatorprops": "Properties forwarded to the separator element.",
             "shortcutprops": "Properties forwarded to the shortcut element.",
             "showarrow": "Whether to show an arrow.",
@@ -12311,7 +12311,6 @@
         },
         "dropdownmenuprops": {
           "members": {
-            "activevalue": "The active value of the menu.",
             "arrowprops": "Properties forwarded to the arrow element.",
             "class": "class of menu popup",
             "contentprops": "Properties forwarded to the content element.",
@@ -12329,6 +12328,7 @@
             "placement": "Placement.",
             "popupprops": "Properties forwarded to the popup element.",
             "portalprops": "Properties forwarded to the portal element.",
+            "selectedvalue": "The selected value of the menu.",
             "separatorprops": "Properties forwarded to the separator element.",
             "shortcutprops": "Properties forwarded to the shortcut element.",
             "showarrow": "Whether to show an arrow.",
@@ -12906,7 +12906,6 @@
         },
         "menubarprops": {
           "members": {
-            "activevalue": "The active value of the menu.",
             "arrowprops": "Properties forwarded to the arrow element.",
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
@@ -12931,6 +12930,7 @@
             "placement": "Placement.",
             "popupprops": "Properties forwarded to the popup element.",
             "portalprops": "Properties forwarded to the portal element.",
+            "selectedvalue": "The selected value of the menu.",
             "separatorprops": "Properties forwarded to the separator element.",
             "shortcutprops": "Properties forwarded to the shortcut element.",
             "showarrow": "Whether to show an arrow.",
@@ -14506,7 +14506,7 @@
             "defaultexpanded": "the expanded value of the tree menu when initially rendered. use when you do not need to control the state of the tree.",
             "defaultvalue": "the value of the tree menu when initially rendered. use when you do not need to control the state of the tree.",
             "expanded": "the expanded value of the tree menu. can be bound-with with `v-model`.",
-            "expandstrategy": "The expand strategy of the tree menu.\n\n- `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus.\n- `active`: only expand the currently active menu and all its ancestor menus; non-active menus are collapsed when the active menu changes.",
+            "expandstrategy": "The expand strategy of the tree menu.\n\n- `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus.\n- `selected`: only expand the currently selected menu and all its ancestor menus; non-selected menus are collapsed when the selected menu changes.",
             "grouplabelprops": "Properties forwarded to the group label element.",
             "groupprops": "Properties forwarded to the group element.",
             "grouprootprops": "Properties forwarded to the group root element.",
@@ -14514,7 +14514,7 @@
             "itemprops": "Properties forwarded to the item element.",
             "items": "Items rendered by the component.",
             "linkprops": "Properties forwarded to the link element.",
-            "modelvalue": "the active value of the tree menu. can be bound-with with `v-model`.",
+            "modelvalue": "the selected value of the tree menu. can be bound-with with `v-model`.",
             "pxtorem": "The function to convert pixels to rem.",
             "showgroupicon": "Whether to show the group icon.",
             "side": "Horizontal side.",

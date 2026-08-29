@@ -45,7 +45,7 @@ export const cascaderVariants = scv({
     option: [
       'relative flex items-center w-full outline-none cursor-pointer select-none',
       'rounded-sm focus:bg-accent focus:text-accent-foreground data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground',
-      'data-[child-active]:text-primary data-[state=indeterminate]:not-data-[highlighted]:text-primary data-[selected]:text-primary data-[selected]:font-medium data-[selected]:bg-primary/10',
+      'data-[child-selected]:text-primary data-[state=indeterminate]:not-data-[highlighted]:text-primary data-[selected]:text-primary data-[selected]:font-medium data-[selected]:bg-primary/10',
       'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50'
     ],
     optionText: 'grow truncate text-start',

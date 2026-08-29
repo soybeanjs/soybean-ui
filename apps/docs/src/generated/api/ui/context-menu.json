@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "ContextMenuProps",
         "type": "TypeAlias ContextMenuProps<T>: Omit<MenuUiBaseProps, \"indicatorPosition\"> & ContextMenuCompactProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ContextMenuUi>; disabled?: boolean; showArrow?: boolean; triggerProps?: ContextMenuTriggerProps; portalProps?: ContextMenuPortalProps; contentProps?: ContextMenuContentProps; popupProps?: ContextMenuPopupProps; arrowProps?: ContextMenuArrowProps; pressOpenDelay?: number; dir?: Direction; modal?: boolean; items: MenuOptionData<T>[]; activeValue?: T; itemProps?: ContextMenuItemProps; linkProps?: LinkExtraProps; groupProps?: ContextMenuGroupProps; groupLabelProps?: ContextMenuGroupLabelProps; subProps?: ContextMenuSubProps; subTriggerProps?: ContextMenuSubTriggerProps; subContentProps?: ContextMenuSubContentProps; separatorProps?: ContextMenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ContextMenuUi>; disabled?: boolean; showArrow?: boolean; triggerProps?: ContextMenuTriggerProps; portalProps?: ContextMenuPortalProps; contentProps?: ContextMenuContentProps; popupProps?: ContextMenuPopupProps; arrowProps?: ContextMenuArrowProps; pressOpenDelay?: number; dir?: Direction; modal?: boolean; items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: ContextMenuItemProps; linkProps?: LinkExtraProps; groupProps?: ContextMenuGroupProps; groupLabelProps?: ContextMenuGroupLabelProps; subProps?: ContextMenuSubProps; subTriggerProps?: ContextMenuSubTriggerProps; subContentProps?: ContextMenuSubContentProps; separatorProps?: ContextMenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
         "description": "Properties for the ContextMenu component.",
         "descriptionKey": "api.generated.packages_ui_src_components_context_menu_types.contextmenuprops.props",
         "sourcePath": "packages/ui/src/components/context-menu/types.ts",
@@ -615,11 +615,11 @@
             "referencedTypes": []
           },
           {
-            "name": "activeValue",
+            "name": "selectedValue",
             "type": "T",
             "required": false,
-            "description": "The active value of the menu.",
-            "descriptionKey": "api.generated.packages_ui_src_components_context_menu_types.contextmenuprops.members.activevalue",
+            "description": "The selected value of the menu.",
+            "descriptionKey": "api.generated.packages_ui_src_components_context_menu_types.contextmenuprops.members.selectedvalue",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/menu/types.ts",
@@ -1843,7 +1843,21 @@
         "referencedTypes": []
       }
     },
-    "ContextMenuAnchor": {},
+    "ContextMenuAnchor": {
+      "props": {
+        "kind": "props",
+        "name": "ContextMenuAnchorProps",
+        "type": "Interface ContextMenuAnchorProps",
+        "resolvedType": null,
+        "description": "Properties for the anchor (reference) element, optionally overriding the reference.",
+        "descriptionKey": "api.generated.packages_headless_src_components_context_menu_index.contextmenuanchorprops.props",
+        "sourcePath": "packages/headless/src/components/context-menu/index.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "ContextMenuArrow": {},
     "ContextMenuCheckbox": {
       "props": {
@@ -4490,7 +4504,7 @@
         "kind": "props",
         "name": "ContextMenuCompactProps",
         "type": "Interface ContextMenuCompactProps<T>",
-        "resolvedType": "{ disabled?: boolean; showArrow?: boolean; triggerProps?: ContextMenuTriggerProps; portalProps?: ContextMenuPortalProps; contentProps?: ContextMenuContentProps; popupProps?: ContextMenuPopupProps; arrowProps?: ContextMenuArrowProps; pressOpenDelay?: number; dir?: Direction; modal?: boolean; items: MenuOptionData<T>[]; activeValue?: T; itemProps?: ContextMenuItemProps; linkProps?: LinkExtraProps; groupProps?: ContextMenuGroupProps; groupLabelProps?: ContextMenuGroupLabelProps; subProps?: ContextMenuSubProps; subTriggerProps?: ContextMenuSubTriggerProps; subContentProps?: ContextMenuSubContentProps; separatorProps?: ContextMenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
+        "resolvedType": "{ disabled?: boolean; showArrow?: boolean; triggerProps?: ContextMenuTriggerProps; portalProps?: ContextMenuPortalProps; contentProps?: ContextMenuContentProps; popupProps?: ContextMenuPopupProps; arrowProps?: ContextMenuArrowProps; pressOpenDelay?: number; dir?: Direction; modal?: boolean; items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: ContextMenuItemProps; linkProps?: LinkExtraProps; groupProps?: ContextMenuGroupProps; groupLabelProps?: ContextMenuGroupLabelProps; subProps?: ContextMenuSubProps; subTriggerProps?: ContextMenuSubTriggerProps; subContentProps?: ContextMenuSubContentProps; separatorProps?: ContextMenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
         "description": "Properties for the ContextMenuCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_context_menu_types.contextmenucompactprops.props",
         "sourcePath": "packages/headless/src/components/context-menu/types.ts",
@@ -5024,13 +5038,13 @@
             "referencedTypes": []
           },
           {
-            "name": "activeValue",
+            "name": "selectedValue",
             "type": "T",
             "required": false,
-            "description": "The active value of the menu.",
-            "descriptionKey": "api.generated.packages_headless_src_components_context_menu_types.contextmenucompactprops.members.activevalue",
+            "description": "The selected value of the menu.",
+            "descriptionKey": "api.generated.packages_headless_src_components_context_menu_types.contextmenucompactprops.members.selectedvalue",
             "default": null,
-            "inheritedFrom": "activeValue",
+            "inheritedFrom": "selectedValue",
             "sourcePath": "packages/headless/src/components/menu/types.ts",
             "referencedTypes": []
           },

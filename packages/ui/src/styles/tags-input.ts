@@ -19,7 +19,7 @@ export const tagsInputVariants = scv({
     root: ['group relative flex w-full flex-wrap items-center', ...fieldChrome, ...fieldDisabled],
     item: [
       'inline-flex items-center rounded-md bg-accent ring-offset-background transition-[box-shadow,background-color]',
-      'data-[state=active]:ring-2 data-[state=active]:ring-primary/30 data-[state=active]:ring-offset-2',
+      'data-[selected=true]:ring-2 data-[selected=true]:ring-primary/30 data-[selected=true]:ring-offset-2',
       'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 group-data-[disabled]:opacity-100'
     ],
     itemText: 'rounded bg-transparent',

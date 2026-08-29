@@ -37,11 +37,11 @@ const filteredItems = computed(() => filterHiddenTreeNavOptions(props.items));
 
 // Active path derivation -----------------------------------------------------
 
-const activePaths = computed(() =>
+const selectedPaths = computed(() =>
   selected.value === undefined ? [] : getTreePaths(selected.value, filteredItems.value)
 );
 
-const isChildActive = (item: TreeNavOptionData) => activePaths.value.includes(item.value);
+const hasChildSelected = (item: TreeNavOptionData) => selectedPaths.value.includes(item.value);
 
 // More trigger ---------------------------------------------------------------
 
@@ -72,7 +72,7 @@ const handlePopupSelect = createTreeNavPopupSelectHandler(onSelect);
 
 <template>
   <template v-for="item in filteredItems" :key="item.value">
-    <TreeNavOptionCompact :item="item" :child-active="isChildActive(item)">
+    <TreeNavOptionCompact :item="item" :child-selected="hasChildSelected(item)">
       <template v-for="slotName in optionSlotNames" :key="slotName" #[slotName]="slotProps">
         <slot :name="slotName" v-bind="slotProps" />
       </template>
@@ -90,7 +90,7 @@ const handlePopupSelect = createTreeNavPopupSelectHandler(onSelect);
     <template #trigger>
       <slot name="more-trigger" :label="moreEntry.label" :icon="moreEntry.icon">
         <RovingFocusItem as-child :tab-stop-id="TREE_NAV_MORE_VALUE" :focusable="!moreDisabled">
-          <Button v-bind="moreTriggerBind" :class="ui.item" data-active="false">
+          <Button v-bind="moreTriggerBind" :class="ui.item" :data-selected="false">
             <Icon v-if="moreEntry.icon" :icon="moreEntry.icon" :class="ui.itemIcon" />
             <span v-if="moreEntry.label">{{ moreEntry.label }}</span>
           </Button>

@@ -34,7 +34,7 @@ Usage examples for bottom-sheet are rendered on the site.
 - `BottomSheetOverlay` (headless) — the dimmed backdrop
 - `BottomSheetPopup` (headless) — the focus-trapped, draggable, dismissable surface
 - `BottomSheetHandle` (headless) — the grab handle
-- Dialog primitives (headless) — `DialogHeader`/`DialogContent`/`DialogFooter`/`DialogTitle`/`DialogDescription`/`DialogClose`/`DialogCancel`/`DialogConfirm`/`DialogTrigger`
+- `BottomSheetTrigger` / `BottomSheetHeader` / `BottomSheetContent` / `BottomSheetFooter` / `BottomSheetTitle` / `BottomSheetDescription` / `BottomSheetClose` / `BottomSheetCancel` / `BottomSheetConfirm` (headless) — chrome primitives wrapping Dialog; DOM uses `data-soybean-bottom-sheet-*`
 - `BottomSheetCompact` (headless) — the aggregated composite; composes handle, header, content, footer and exposes the slots
 
 ## Demos
@@ -63,19 +63,19 @@ Properties for the BottomSheet component.
 - `cancelText`: The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided. Defaults to the localized `dialog.cancel` message from `ConfigProvider`. (type `string`; optional)
 - `showConfirm`: Whether to show the confirm button when the dialog is an alert dialog. The default value is `true` when the dialog is an alert dialog. (type `boolean`; optional)
 - `confirmText`: The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided. Defaults to the localized `dialog.confirm` message from `ConfigProvider`. (type `string`; optional)
-- `triggerProps`: Properties forwarded to the trigger element. (type `BottomSheetTriggerProps`; optional)
+- `triggerProps`: Properties forwarded to the trigger element. (type `DialogTriggerProps`; optional)
 - `overlayProps`: Properties forwarded to the overlay element. (type `BottomSheetOverlayProps`; optional)
 - `portalProps`: Properties forwarded to the portal element. (type `BottomSheetPortalProps`; optional)
 - `popupProps`: Properties forwarded to the popup element. (type `BottomSheetPopupProps`; optional)
-- `headerProps`: Properties forwarded to the header element. (type `BottomSheetHeaderProps`; optional)
-- `contentProps`: Properties forwarded to the content element. (type `BottomSheetContentProps`; optional)
-- `footerProps`: Properties forwarded to the footer element. (type `BottomSheetFooterProps`; optional)
-- `titleProps`: Properties forwarded to the title element. (type `BottomSheetTitleProps`; optional)
-- `descriptionProps`: Properties forwarded to the description element. (type `BottomSheetDescriptionProps`; optional)
-- `closeProps`: Properties forwarded to the close element. (type `BottomSheetCloseProps`; optional)
+- `headerProps`: Properties forwarded to the header element. (type `DialogHeaderProps`; optional)
+- `contentProps`: Properties forwarded to the content element. (type `DialogContentProps`; optional)
+- `footerProps`: Properties forwarded to the footer element. (type `DialogFooterProps`; optional)
+- `titleProps`: Properties forwarded to the title element. (type `DialogTitleProps`; optional)
+- `descriptionProps`: Properties forwarded to the description element. (type `DialogDescriptionProps`; optional)
+- `closeProps`: Properties forwarded to the close element. (type `DialogCloseProps`; optional)
 - `fullscreenProps`: Properties forwarded to the fullscreen element. (type `DialogFullscreenProps`; optional)
-- `cancelProps`: Properties forwarded to the cancel element. (type `BottomSheetCancelProps`; optional)
-- `confirmProps`: Properties forwarded to the confirm element. (type `BottomSheetConfirmProps`; optional)
+- `cancelProps`: Properties forwarded to the cancel element. (type `DialogCancelProps`; optional)
+- `confirmProps`: Properties forwarded to the confirm element. (type `DialogConfirmProps`; optional)
 - `dir`: The text direction of the dialog (type `Direction`; optional)
 - `isAlert`: Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response. When set to `true`, the dialog will have `role="alertdialog"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes. (type `boolean`; default `false`; optional)
 - `alertType`: The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog. (type `DialogAlertType`; optional)
@@ -141,11 +141,37 @@ Slots for the BottomSheet component.
 
 ### BottomSheetCancel
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the BottomSheetCancel component.
+
+- `type`: The type of the button element. Can be one of 'button', 'submit', or 'reset'. (type `ButtonType`; default `'button'`; optional)
+- `disabled`: Whether the component is disabled. (type `boolean`; optional)
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
+
+#### Emits
+
+Events for the BottomSheetCancel component.
+
+- `cancel`: Event handler called when the dialog is requested to be canceled. (type `[event: MouseEvent]`; parameters `event: MouseEvent`)
 
 ### BottomSheetClose
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the BottomSheetClose component.
+
+- `type`: The type of the button element. Can be one of 'button', 'submit', or 'reset'. (type `ButtonType`; default `'button'`; optional)
+- `disabled`: Whether the component is disabled. (type `boolean`; optional)
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
+
+#### Emits
+
+Events for the BottomSheetClose component.
+
+- `close`: Event handler called when the dialog is requested to be closed. (type `[event: MouseEvent]`; parameters `event: MouseEvent`)
 
 ### BottomSheetCompact
 
@@ -163,19 +189,19 @@ Properties for the BottomSheetCompact component.
 - `cancelText`: The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided. Defaults to the localized `dialog.cancel` message from `ConfigProvider`. (type `string`; optional)
 - `showConfirm`: Whether to show the confirm button when the dialog is an alert dialog. The default value is `true` when the dialog is an alert dialog. (type `boolean`; optional)
 - `confirmText`: The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided. Defaults to the localized `dialog.confirm` message from `ConfigProvider`. (type `string`; optional)
-- `triggerProps`: Properties forwarded to the trigger element. (type `BottomSheetTriggerProps`; optional)
+- `triggerProps`: Properties forwarded to the trigger element. (type `DialogTriggerProps`; optional)
 - `overlayProps`: Properties forwarded to the overlay element. (type `BottomSheetOverlayProps`; optional)
 - `portalProps`: Properties forwarded to the portal element. (type `BottomSheetPortalProps`; optional)
 - `popupProps`: Properties forwarded to the popup element. (type `BottomSheetPopupProps`; optional)
-- `headerProps`: Properties forwarded to the header element. (type `BottomSheetHeaderProps`; optional)
-- `contentProps`: Properties forwarded to the content element. (type `BottomSheetContentProps`; optional)
-- `footerProps`: Properties forwarded to the footer element. (type `BottomSheetFooterProps`; optional)
-- `titleProps`: Properties forwarded to the title element. (type `BottomSheetTitleProps`; optional)
-- `descriptionProps`: Properties forwarded to the description element. (type `BottomSheetDescriptionProps`; optional)
-- `closeProps`: Properties forwarded to the close element. (type `BottomSheetCloseProps`; optional)
+- `headerProps`: Properties forwarded to the header element. (type `DialogHeaderProps`; optional)
+- `contentProps`: Properties forwarded to the content element. (type `DialogContentProps`; optional)
+- `footerProps`: Properties forwarded to the footer element. (type `DialogFooterProps`; optional)
+- `titleProps`: Properties forwarded to the title element. (type `DialogTitleProps`; optional)
+- `descriptionProps`: Properties forwarded to the description element. (type `DialogDescriptionProps`; optional)
+- `closeProps`: Properties forwarded to the close element. (type `DialogCloseProps`; optional)
 - `fullscreenProps`: Properties forwarded to the fullscreen element. (type `DialogFullscreenProps`; optional)
-- `cancelProps`: Properties forwarded to the cancel element. (type `BottomSheetCancelProps`; optional)
-- `confirmProps`: Properties forwarded to the confirm element. (type `BottomSheetConfirmProps`; optional)
+- `cancelProps`: Properties forwarded to the cancel element. (type `DialogCancelProps`; optional)
+- `confirmProps`: Properties forwarded to the confirm element. (type `DialogConfirmProps`; optional)
 - `dir`: The text direction of the dialog (type `Direction`; optional)
 - `isAlert`: Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response. When set to `true`, the dialog will have `role="alertdialog"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes. (type `boolean`; default `false`; optional)
 - `alertType`: The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog. (type `DialogAlertType`; optional)
@@ -238,7 +264,20 @@ Slots for the BottomSheetCompact component.
 
 ### BottomSheetConfirm
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the BottomSheetConfirm component.
+
+- `type`: The type of the button element. Can be one of 'button', 'submit', or 'reset'. (type `ButtonType`; default `'button'`; optional)
+- `disabled`: Whether the component is disabled. (type `boolean`; optional)
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
+
+#### Emits
+
+Events for the BottomSheetConfirm component.
+
+- `confirm`: Event handler called when the dialog is requested to be closed by confirming. (type `[event: MouseEvent]`; parameters `event: MouseEvent`)
 
 ### BottomSheetContent
 
@@ -332,7 +371,20 @@ Slots for the BottomSheetRoot component.
 
 ### BottomSheetTrigger
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the BottomSheetTrigger component.
+
+- `type`: The type of the button element. Can be one of 'button', 'submit', or 'reset'. (type `ButtonType`; default `'button'`; optional)
+- `disabled`: Whether the component is disabled. (type `boolean`; optional)
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
+
+#### Emits
+
+Events for the BottomSheetTrigger component.
+
+- `click`: Event handler called when the dialog trigger is activated. (type `[event: PointerEvent]`; parameters `event: PointerEvent`)
 
 ## Notes
 

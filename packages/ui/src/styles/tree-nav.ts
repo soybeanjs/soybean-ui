@@ -10,13 +10,13 @@ export const treeNavVariants = scv({
       'hover:bg-accent focus-visible:bg-accent focus-visible:text-accent-foreground',
       'data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
       'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',
-      'data-[active=true]:bg-primary/10 data-[active=true]:text-primary',
-      'data-[child-active]:text-primary'
+      'data-[selected=true]:bg-primary/10 data-[selected=true]:text-primary',
+      'data-[child-selected]:text-primary'
     ],
     itemIcon: 'shrink-0 text-muted-foreground',
     itemChevron: [
       'ms-auto shrink-0 text-muted-foreground transition-colors-200',
-      'group-data-[child-active]/item:text-primary'
+      'group-data-[child-selected]/item:text-primary'
     ],
     itemLinkIcon: 'shrink-0 self-start text-muted-foreground rtl:rotate-270'
   },

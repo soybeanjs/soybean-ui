@@ -50,12 +50,12 @@ const children = computed(() => props.item.children ?? []);
 
 const hasChildren = computed(() => Boolean(children.value.length));
 
-const childActive = computed(() => {
+const hasChildSelected = computed(() => {
   if (modelValue.value === props.item.value) {
     return false;
   }
 
-  return Boolean(props.activePaths?.includes(props.item.value));
+  return Boolean(props.selectedPaths?.includes(props.item.value));
 });
 
 const isLink = computed(() => Boolean(props.item.to || props.item.href));
@@ -155,8 +155,8 @@ const handleDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
         <TreeMenuButton
           v-bind="buttonProps"
           :disabled="item.disabled"
-          disabled-active
-          :data-child-active="childActive ? '' : undefined"
+          disabled-select
+          :data-child-selected="hasChildSelected ? '' : undefined"
         >
           <TreeMenuSlotCompact :item="item">
             <template v-for="slotName in slotNames" #[slotName]="slotProps">
@@ -172,7 +172,7 @@ const handleDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
           v-bind="forwardedOptionProps"
           :item="child"
           :side="side"
-          :active-paths="activePaths"
+          :selected-paths="selectedPaths"
           @select-dropdown="emit('selectDropdown', $event)"
         >
           <template v-for="slotName in slotNames" #[slotName]="slotProps">
@@ -186,7 +186,7 @@ const handleDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
           v-bind="dropdownMenuProps"
           :items="children"
           :disabled="item.disabled"
-          :active-value="modelValue"
+          :selected-value="modelValue"
           :data-menu="item.label"
           @select="handleDropdownMenuSelect"
         >

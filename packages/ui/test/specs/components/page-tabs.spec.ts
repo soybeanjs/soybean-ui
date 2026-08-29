@@ -101,15 +101,15 @@ describe('SPageTabs', () => {
     });
   });
 
-  describe('active state', () => {
-    it('marks the active item with data-active="true"', () => {
+  describe('selected state', () => {
+    it('marks the selected item with data-selected="true"', () => {
       const wrapper = mount(SPageTabs, {
         props: { items: createItems(), modelValue: 'home' },
         attachTo: document.body
       });
 
-      expect(wrapper.findAll('[data-soybean-page-tabs-item]')[0].attributes('data-active')).toBe('true');
-      expect(wrapper.findAll('[data-soybean-page-tabs-item]')[1].attributes('data-active')).toBe('false');
+      expect(wrapper.findAll('[data-soybean-page-tabs-item]')[0].attributes('data-selected')).toBe('true');
+      expect(wrapper.findAll('[data-soybean-page-tabs-item]')[1].attributes('data-selected')).toBe('false');
 
       wrapper.unmount();
     });
@@ -130,7 +130,7 @@ describe('SPageTabs', () => {
       wrapper.unmount();
     });
 
-    it('syncs data-active internally after activation', async () => {
+    it('syncs data-selected internally after selection', async () => {
       // uncontrolled: no modelValue prop, so the internal state drives the DOM
       const wrapper = mount(SPageTabs, {
         props: { items: createItems() },
@@ -141,13 +141,13 @@ describe('SPageTabs', () => {
 
       const items = wrapper.findAll('[data-soybean-page-tabs-item]');
 
-      expect(items[0].attributes('data-active')).toBe('false');
-      expect(items[1].attributes('data-active')).toBe('true');
+      expect(items[0].attributes('data-selected')).toBe('false');
+      expect(items[1].attributes('data-selected')).toBe('true');
 
       wrapper.unmount();
     });
 
-    it('does not emit click when the active tab is clicked', async () => {
+    it('does not emit click when the selected tab is clicked', async () => {
       const wrapper = mount(SPageTabs, {
         props: { items: createItems(), modelValue: 'home' },
         attachTo: document.body

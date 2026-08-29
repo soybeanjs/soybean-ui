@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "MenubarProps",
         "type": "Interface MenubarProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<MenubarUi>; indicatorPosition?: AlignSide; disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: MenubarTriggerProps; collapsible?: boolean; moreLabel?: string; moreIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; moreProps?: MenubarTriggerProps; portalProps?: MenuPortalProps; contentProps?: MenubarContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; trigger?: MenubarTriggerType; delayDuration?: number; skipDelayDuration?: number; asChild?: boolean; as?: AsTag | Component; items: MenuOptionData<T>[]; activeValue?: T; itemProps?: MenuItemProps; linkProps?: LinkExtraProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<MenubarUi>; indicatorPosition?: AlignSide; disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: MenubarTriggerProps; collapsible?: boolean; moreLabel?: string; moreIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; moreProps?: MenubarTriggerProps; portalProps?: MenuPortalProps; contentProps?: MenubarContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; trigger?: MenubarTriggerType; delayDuration?: number; skipDelayDuration?: number; asChild?: boolean; as?: AsTag | Component; items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: MenuItemProps; linkProps?: LinkExtraProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
         "description": "Properties for the Menubar component.",
         "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarprops.props",
         "sourcePath": "packages/ui/src/components/menubar/types.ts",
@@ -928,13 +928,13 @@
             "referencedTypes": []
           },
           {
-            "name": "activeValue",
+            "name": "selectedValue",
             "type": "T",
             "required": false,
-            "description": "The active value of the menu.",
-            "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarprops.members.activevalue",
+            "description": "The selected value of the menu.",
+            "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarprops.members.selectedvalue",
             "default": null,
-            "inheritedFrom": "activeValue",
+            "inheritedFrom": "selectedValue",
             "sourcePath": "packages/headless/src/components/menu/types.ts",
             "referencedTypes": []
           },
@@ -2198,7 +2198,7 @@
         "kind": "props",
         "name": "MenubarCompactProps",
         "type": "Interface MenubarCompactProps<T>",
-        "resolvedType": "{ disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: MenubarTriggerProps; collapsible?: boolean; moreLabel?: string; moreIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; moreProps?: MenubarTriggerProps; portalProps?: MenuPortalProps; contentProps?: MenubarContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; trigger?: MenubarTriggerType; delayDuration?: number; skipDelayDuration?: number; asChild?: boolean; as?: AsTag | Component; items: MenuOptionData<T>[]; activeValue?: T; itemProps?: MenuItemProps; linkProps?: LinkExtraProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
+        "resolvedType": "{ disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: MenubarTriggerProps; collapsible?: boolean; moreLabel?: string; moreIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; moreProps?: MenubarTriggerProps; portalProps?: MenuPortalProps; contentProps?: MenubarContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; trigger?: MenubarTriggerType; delayDuration?: number; skipDelayDuration?: number; asChild?: boolean; as?: AsTag | Component; items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: MenuItemProps; linkProps?: LinkExtraProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
         "description": "Properties for the MenubarCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactprops.props",
         "sourcePath": "packages/headless/src/components/menubar/types.ts",
@@ -3020,13 +3020,13 @@
             "referencedTypes": []
           },
           {
-            "name": "activeValue",
+            "name": "selectedValue",
             "type": "T",
             "required": false,
-            "description": "The active value of the menu.",
-            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactprops.members.activevalue",
+            "description": "The selected value of the menu.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactprops.members.selectedvalue",
             "default": null,
-            "inheritedFrom": "activeValue",
+            "inheritedFrom": "selectedValue",
             "sourcePath": "packages/headless/src/components/menu/types.ts",
             "referencedTypes": []
           },

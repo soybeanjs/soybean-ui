@@ -266,7 +266,7 @@ describe('SCascader', () => {
       wrapper.unmount();
     });
 
-    it('marks only the ancestors of the selected node with data-child-active', async () => {
+    it('marks only the ancestors of the selected node with data-child-selected', async () => {
       const wrapper = mount(SCascader, {
         props: { options },
         attachTo: document.body
@@ -284,7 +284,7 @@ describe('SCascader', () => {
       expect(hangzhou).toBeTruthy();
       await new DOMWrapper(hangzhou as Element).trigger('pointermove');
       await nextTick();
-      expect(findTreeItem('浙江')?.getAttribute('data-child-active')).toBeNull();
+      expect(findTreeItem('浙江')?.getAttribute('data-child-selected')).toBeNull();
 
       // Selecting a leaf marks its ancestors (breadcrumb emphasis).
       await new DOMWrapper(findTreeItem('杭州') as Element).trigger('click');
@@ -298,9 +298,9 @@ describe('SCascader', () => {
       await wrapper.get('[role="combobox"]').trigger('click');
       await nextTick();
 
-      expect(findTreeItem('浙江')?.getAttribute('data-child-active')).toBe('');
-      expect(findTreeItem('杭州')?.getAttribute('data-child-active')).toBe('');
-      expect(findTreeItem('江苏')?.getAttribute('data-child-active')).toBeNull();
+      expect(findTreeItem('浙江')?.getAttribute('data-child-selected')).toBe('');
+      expect(findTreeItem('杭州')?.getAttribute('data-child-selected')).toBe('');
+      expect(findTreeItem('江苏')?.getAttribute('data-child-selected')).toBeNull();
       wrapper.unmount();
     });
 

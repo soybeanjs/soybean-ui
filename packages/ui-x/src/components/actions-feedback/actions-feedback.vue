@@ -31,7 +31,7 @@ function select(next: FeedbackValue): void {
   <div :class="cls">
     <button
       type="button"
-      :data-active="value === 'like' || undefined"
+      :data-selected="value === 'like'"
       :disabled="disabled"
       :aria-pressed="value === 'like'"
       aria-label="Like"
@@ -42,7 +42,7 @@ function select(next: FeedbackValue): void {
     </button>
     <button
       type="button"
-      :data-active="value === 'dislike' || undefined"
+      :data-selected="value === 'dislike'"
       :disabled="disabled"
       :aria-pressed="value === 'dislike'"
       aria-label="Dislike"

@@ -19,7 +19,6 @@ const cls = useTabsUi('content');
 const { contentId, triggerId } = getId(props.value);
 
 const isSelected = computed(() => props.value === modelValue.value);
-const dataState = computed(() => (isSelected.value ? 'active' : 'inactive'));
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, isSelected);
 
@@ -47,12 +46,12 @@ onBeforeUnmount(() => {
     data-soybean-tabs-content
     :class="cls"
     :aria-labelledby="triggerId"
-    :data-state="dataState"
+    :data-selected="isSelected"
     :hidden="!isPresent"
     role="tabpanel"
     tabindex="0"
     :style="style"
   >
-    <slot v-if="!unmountOnHide || isPresent" :active="isSelected" />
+    <slot v-if="!unmountOnHide || isPresent" :selected="isSelected" />
   </div>
 </template>

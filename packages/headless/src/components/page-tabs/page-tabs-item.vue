@@ -21,7 +21,7 @@ const emit = defineEmits<PageTabsItemEmits>();
 const cls = usePageTabsUi('item');
 const { middleClickClose, modelValue } = usePageTabsRootContext('PageTabsItem');
 
-const isActive = computed(() => props.value === modelValue.value);
+const isSelected = computed(() => props.value === modelValue.value);
 const closable = computed(() => !props.pinned);
 
 // Drag wiring — enabled only when the compact owns a DragDropProvider.
@@ -40,7 +40,7 @@ const { isDragging, isDropTarget, isDragSource } = useSortable({
 });
 
 const onClick = () => {
-  if (isActive.value) return;
+  if (isSelected.value) return;
 
   modelValue.value = props.value;
   emit('click');
@@ -88,13 +88,13 @@ providePageTabsItemContext({
     :class="cls"
     data-soybean-page-tabs-item
     :data-value="value"
-    :data-active="isActive"
+    :data-selected="isSelected"
     :data-pinned="pinned"
     :data-draggable="draggable"
     :data-dragging="isDragging"
     :data-drop-target="isDropTarget || undefined"
     :data-drag-source="isDragSource || undefined"
-    :active="isActive"
+    :active="isSelected"
     :focusable="true"
     @click="onClick"
     @mousedown="onMouseDown"

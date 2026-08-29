@@ -38,7 +38,7 @@ const isLoading = computed(() => loadingKeys.value.has(props.node.uid));
 const isExpanded = computed(() => menus.value[props.node.level + 1] === props.node.children);
 // Breadcrumb emphasis follows the selection, not the transient hover highlight,
 // so merely hovering a deep node never recolors its ancestors.
-const isChildActive = computed(() => selectedNodes.value.some(node => isCascaderNodeAncestor(node, props.node)));
+const hasChildSelected = computed(() => selectedNodes.value.some(node => isCascaderNodeAncestor(node, props.node)));
 
 const dataState = computed(() => {
   if (isSelected(props.node)) return 'selected';
@@ -116,7 +116,7 @@ function onExpandClick() {
     :data-state="dataState"
     :data-selected="isSelected(node) ? '' : undefined"
     :data-highlighted="isHighlighted ? '' : undefined"
-    :data-child-active="isChildActive ? '' : undefined"
+    :data-child-selected="hasChildSelected ? '' : undefined"
     :data-leaf="node.isLeaf ? '' : undefined"
     :data-disabled="node.disabled ? '' : undefined"
     :data-loading="isLoading ? '' : undefined"
@@ -129,7 +129,7 @@ function onExpandClick() {
       :indeterminate="isIndeterminate(node)"
       :selected="isSelected(node)"
       :highlighted="isHighlighted"
-      :child-active="isChildActive"
+      :child-selected="hasChildSelected"
       :loading="isLoading"
       :expand="onExpandClick"
     />

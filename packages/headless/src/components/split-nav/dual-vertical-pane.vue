@@ -69,7 +69,7 @@ const treeSlotNames = computed(() =>
           :model-value="modelValue"
           :collapsed="collapsed"
           :collapsed-width="collapsedWidth"
-          expand-strategy="active"
+          expand-strategy="selected"
           @update:model-value="handleTreeSelect"
           @update:collapsed="handleCollapsedChange"
         >

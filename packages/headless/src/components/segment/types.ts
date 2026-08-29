@@ -72,7 +72,7 @@ export type SegmentCompactSlots<T extends SegmentOptionData = SegmentOptionData>
   /**
    * Custom content for the item slot.
    */
-  item?: (props: T & { active: boolean }) => any;
+  item?: (props: T & { selected: boolean }) => any;
   /**
    * Custom content for the indicator slot.
    */

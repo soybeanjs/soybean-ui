@@ -17,21 +17,22 @@ Usage examples for tree-menu are rendered on the site.
 
 - 🧭 Hierarchical data model — `items: TreeMenuOptionData<T>[]` (`value`/`label` plus recursive `children`); the `TreeMenuOptionData<T>` generic preserves custom fields; built-in `isGroup`/`hidden`/`icon`/`badge`/`tag`/`disabled`/`actions`/`to`/`href` fields
 - 🎛️ Controlled/uncontrolled dual channels — `modelValue` / `defaultValue` (active item), `expanded` / `defaultExpanded` (expanded items), `collapsed` / `defaultCollapsed` (collapsed state); all support `v-model` and `update:*` events
-- 🎯 Expand strategy — `expandStrategy="keep"` (default) preserves manual expansion no matter which menu is activated; `expandStrategy="active"` auto-expands only the active menu and its ancestors, collapsing non-active branches whenever the active menu changes
+- 🎯 Expand strategy — `expandStrategy="keep"` (default) preserves manual expansion no matter which menu is selected; `expandStrategy="selected"` auto-expands only the selected menu and its ancestors, collapsing non-selected branches whenever the selected menu changes
 - 📉 Collapsed sidebar mode — `collapsed` + `collapsedWidth` (default 50px) / `indent` collapses the rail; items with children render a flyout menu while collapsed, and the expansion state is stashed and restored automatically
 - 🧩 Action menus — `actions` + `actionMenuProps` + `onActionSelect` attach hover actions (ellipsis button) to items; the trigger aria-label is localized across 13 language packs
 - 🏷️ Badge/tag/icon — built-in `icon`/`badge`/`tag` fields, freely extended via the `item-leading`/`item-trailing` slots
 - 🔗 Link items — `to`/`href` render route links or external links (`external` controls behavior); external links show an arrow-up-right icon automatically
 - 🗂️ Grouping — `isGroup` groups with the `group-label` slot; `top`/`bottom` slots host menu header/footer content
 - 🎨 8 sizes + style injection — `size` from xs to 2xl; `class`/`ui` overrides across 20+ named slots
-- ♿ Accessibility — native button semantics with `aria-expanded`/`aria-controls`/`aria-label`, `data-soybean-tree-menu-*` data attributes, zero axe violations
+- ⌨️ Keyboard navigation — WAI-ARIA tree pattern: the root is a single tab stop with `role="tree"`, ↑/↓ roam visible items, → expands or enters children, ← collapses or returns to the parent, Home/End jump to the first/last item, and Enter/Space activates (direction keys only move focus — they never change the active item)
+- ♿ Accessibility — `role="tree"`/`treeitem` semantics with `aria-expanded`/`aria-controls`/`aria-selected`, roving tabindex, `data-soybean-tree-menu-*` data attributes, zero axe violations
 
 ## Component family
 
 - `STreeMenu` (styled) — entry wrapper; composes `TreeMenuCompact` + the `treeMenuVariants` size recipe + `provideTreeMenuUi` slot-class injection, `useForwardListeners` event merging
 - `TreeMenuCompact` (headless) — composite root; `TreeMenuRoot` state root + `TreeMenuOptionsCompact` grouping/recursive rendering + `top`/`bottom` slots
 - `TreeMenuRoot` (headless) — state root; `useControllableState` manages activation/expansion/collapse; `backupExpanded` stashes expansion while collapsed and restores it on recovery
-- `TreeMenuOptionsCompact` (headless) — grouping/recursive rendering; with `expandStrategy="active"` it syncs the expanded state to the active menu path
+- `TreeMenuOptionsCompact` (headless) — grouping/recursive rendering; with `expandStrategy="selected"` it syncs the expanded state to the selected menu path
 - `TreeMenuOptionCompact` (headless) — single-node composition; leaves render buttons/links + the action menu, parents render a `TreeMenuCollapsible` trigger + recursive `TreeMenuSub` + a collapsed-mode flyout `DropdownMenuCompact`
 - `TreeMenuSlotCompact` (headless) — node content orchestration (icon/label/badge/tag/external-link icon/chevron)
 - Base primitives (headless) — `TreeMenuButton`/`TreeMenuItem`/`TreeMenuCollapsible`/`TreeMenuSub`/`TreeMenuGroup`/`TreeMenuGroupLabel`/`TreeMenuTooltipCompact`, all zero-style
@@ -58,11 +59,11 @@ Properties for the TreeMenu component.
 - `class`: Additional class names applied to the root element. (type `string | false | Record<string, any> | ClassValue[] | null`; optional)
 - `size`: Visual size of the component. (type `ThemeSize`; optional)
 - `ui`: Per-slot class overrides for the component. (type `Partial<Record<TreeMenuUiSlot, ClassValue>>`; optional)
-- `modelValue`: the active value of the tree menu. can be bound-with with `v-model`. (type `string`; optional)
+- `modelValue`: the selected value of the tree menu. can be bound-with with `v-model`. (type `string`; optional)
 - `defaultValue`: the value of the tree menu when initially rendered. use when you do not need to control the state of the tree. (type `string`; optional)
 - `expanded`: the expanded value of the tree menu. can be bound-with with `v-model`. (type `string[]`; optional)
 - `defaultExpanded`: the expanded value of the tree menu when initially rendered. use when you do not need to control the state of the tree. (type `string[]`; optional)
-- `expandStrategy`: The expand strategy of the tree menu. - `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus. - `active`: only expand the currently active menu and all its ancestor menus; non-active menus are collapsed when the active menu changes. (type `TreeMenuExpandStrategy`; default `'keep'`; optional)
+- `expandStrategy`: The expand strategy of the tree menu. - `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus. - `selected`: only expand the currently selected menu and all its ancestor menus; non-selected menus are collapsed when the selected menu changes. (type `TreeMenuExpandStrategy`; default `'keep'`; optional)
 - `collapsed`: Whether the tree menu is collapsed. (type `boolean`; default `false`; optional)
 - `defaultCollapsed`: The value of the tree menu when it's collapsed. (type `boolean`; optional)
 - `collapsedWidth`: The width of the sidebar menu when it's collapsed. (type `number`; default `50`; optional)
@@ -115,7 +116,7 @@ Properties for the TreeMenuBaseItem component.
 
 Properties for the TreeMenuButton component.
 
-- `disabledActive`: When `true`, prevents the user from activating the item. (type `boolean`; default `false`; optional)
+- `disabledSelect`: When `true`, prevents the user from selecting the item. (type `boolean`; default `false`; optional)
 - `type`: The type of the button element. Can be one of 'button', 'submit', or 'reset'. (type `ButtonType`; default `'button'`; optional)
 - `disabled`: Whether the component is disabled. (type `boolean`; optional)
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
@@ -137,11 +138,11 @@ Properties for the TreeMenuCollapsible component.
 
 Properties for the TreeMenuCompact component.
 
-- `modelValue`: the active value of the tree menu. can be bound-with with `v-model`. (type `string`; optional)
+- `modelValue`: the selected value of the tree menu. can be bound-with with `v-model`. (type `string`; optional)
 - `defaultValue`: the value of the tree menu when initially rendered. use when you do not need to control the state of the tree. (type `string`; optional)
 - `expanded`: the expanded value of the tree menu. can be bound-with with `v-model`. (type `string[]`; optional)
 - `defaultExpanded`: the expanded value of the tree menu when initially rendered. use when you do not need to control the state of the tree. (type `string[]`; optional)
-- `expandStrategy`: The expand strategy of the tree menu. - `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus. - `active`: only expand the currently active menu and all its ancestor menus; non-active menus are collapsed when the active menu changes. (type `TreeMenuExpandStrategy`; default `'keep'`; optional)
+- `expandStrategy`: The expand strategy of the tree menu. - `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus. - `selected`: only expand the currently selected menu and all its ancestor menus; non-selected menus are collapsed when the selected menu changes. (type `TreeMenuExpandStrategy`; default `'keep'`; optional)
 - `collapsed`: Whether the tree menu is collapsed. (type `boolean`; default `false`; optional)
 - `defaultCollapsed`: The value of the tree menu when it's collapsed. (type `boolean`; optional)
 - `collapsedWidth`: The width of the sidebar menu when it's collapsed. (type `number`; default `50`; optional)
@@ -216,7 +217,7 @@ Properties for the TreeMenuOptionCompact component.
 - `as`: Rendered element tag. (type `AsTag`; optional)
 - `item`: Current item data. (type `Omit<TreeMenuBaseOptionData, 'children'> & { children?: TreeMenuOptionData<TreeMenuBaseOptionData>[] | undefined; }`; required)
 - `side`: Horizontal side. (type `HorizontalSide`; optional)
-- `activePaths`: The active paths of the tree menu, used to determine whether the current item is active or has active descendants. (type `string[]`; optional)
+- `selectedPaths`: The selected paths of the tree menu, used to determine whether the current item is selected or has selected descendants. (type `string[]`; optional)
 - `itemProps`: Properties forwarded to the item element. (type `TreeMenuItemProps`; optional)
 - `buttonProps`: Properties forwarded to the button element. (type `TreeMenuButtonProps`; optional)
 - `linkProps`: Properties forwarded to the link element. (type `LinkExtraProps`; optional)
@@ -263,7 +264,7 @@ Slot properties for the TreeMenuOptionCompact component.
 - `as`: Rendered element tag. (type `AsTag`; optional)
 - `item`: Current item data. (type `Omit<TreeMenuBaseOptionData, 'children'> & { children?: TreeMenuOptionData<TreeMenuBaseOptionData>[] | undefined; }`; required)
 - `side`: Horizontal side. (type `HorizontalSide`; optional)
-- `activePaths`: The active paths of the tree menu, used to determine whether the current item is active or has active descendants. (type `string[]`; optional)
+- `selectedPaths`: The selected paths of the tree menu, used to determine whether the current item is selected or has selected descendants. (type `string[]`; optional)
 - `itemProps`: Properties forwarded to the item element. (type `TreeMenuItemProps`; optional)
 - `buttonProps`: Properties forwarded to the button element. (type `TreeMenuButtonProps`; optional)
 - `linkProps`: Properties forwarded to the link element. (type `LinkExtraProps`; optional)
@@ -276,11 +277,11 @@ Slot properties for the TreeMenuOptionCompact component.
 
 Properties for the TreeMenuRoot component.
 
-- `modelValue`: the active value of the tree menu. can be bound-with with `v-model`. (type `string`; optional)
+- `modelValue`: the selected value of the tree menu. can be bound-with with `v-model`. (type `string`; optional)
 - `defaultValue`: the value of the tree menu when initially rendered. use when you do not need to control the state of the tree. (type `string`; optional)
 - `expanded`: the expanded value of the tree menu. can be bound-with with `v-model`. (type `string[]`; optional)
 - `defaultExpanded`: the expanded value of the tree menu when initially rendered. use when you do not need to control the state of the tree. (type `string[]`; optional)
-- `expandStrategy`: The expand strategy of the tree menu. - `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus. - `active`: only expand the currently active menu and all its ancestor menus; non-active menus are collapsed when the active menu changes. (type `TreeMenuExpandStrategy`; default `'keep'`; optional)
+- `expandStrategy`: The expand strategy of the tree menu. - `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus. - `selected`: only expand the currently selected menu and all its ancestor menus; non-selected menus are collapsed when the selected menu changes. (type `TreeMenuExpandStrategy`; default `'keep'`; optional)
 - `collapsed`: Whether the tree menu is collapsed. (type `boolean`; default `false`; optional)
 - `defaultCollapsed`: The value of the tree menu when it's collapsed. (type `boolean`; optional)
 - `collapsedWidth`: The width of the sidebar menu when it's collapsed. (type `number`; default `50`; optional)
@@ -322,7 +323,7 @@ Properties for the TreeMenuSub component.
 
 ### Architecture and benchmark differences
 
-`TreeMenuRoot` owns all state (activation/expansion/collapse through the `useControllableState` controlled/uncontrolled dual channels). On collapse it stashes the expanded branches via `backupExpanded`, clears expansion, and triggers the flyout menus; on recovery it restores the branches verbatim — a lossless collapse/expand round trip. Composition happens in the headless layer: `TreeMenuOptionCompact` orchestrates leaves (button/link + action menu) and parents (Collapsible trigger + recursive `TreeMenuSub` + flyout menu), while the UI `STreeMenu` only injects the size recipe and slot classes and carries no state. Both the action menu and the flyout menu reuse the data-driven `DropdownMenuCompact` (rendered by `MenuOptions`). Keyboard accessibility builds on native buttons with `aria-expanded`/`aria-controls` to express the hierarchy (rather than `role="tree"` roving tabindex), and the axe scan reports zero violations. Compared with mainstream sidebar-menu libraries, SoybeanUI is more complete in headless separation, built-in action menus, collapsed flyouts, external link items, and 13-language localization.
+`TreeMenuRoot` owns all state (activation/expansion/collapse through the `useControllableState` controlled/uncontrolled dual channels). On collapse it stashes the expanded branches via `backupExpanded`, clears expansion, and triggers the flyout menus; on recovery it restores the branches verbatim — a lossless collapse/expand round trip. Composition happens in the headless layer: `TreeMenuOptionCompact` orchestrates leaves (button/link + action menu) and parents (Collapsible trigger + recursive `TreeMenuSub` + flyout menu), while the UI `STreeMenu` only injects the size recipe and slot classes and carries no state. Both the action menu and the flyout menu reuse the data-driven `DropdownMenuCompact` (rendered by `MenuOptions`). The root follows the WAI-ARIA tree pattern — a single roving tab stop with `role="tree"`, `treeitem` items, and `group` sub-lists — and the axe scan reports zero violations. Compared with mainstream sidebar-menu libraries, SoybeanUI is more complete in headless separation, built-in action menus, collapsed flyouts, external link items, and 13-language localization.
 
 | Capability                            | SoybeanUI | Ant Design | Element Plus | Naive UI |
 | :------------------------------------ | :-------: | :--------: | :----------: | :------: |
@@ -339,17 +340,23 @@ Properties for the TreeMenuSub component.
 
 ### Cautions
 
+- Keyboard navigation follows the WAI-ARIA tree pattern: ↑/↓ (and Home/End) roam the visible items without wrapping, → expands a closed branch then enters its first child, ← collapses an expanded branch then returns to the parent, and Enter/Space activate the focused item. Direction keys only move focus — the active item only changes on explicit activation.
+- In collapsed mode the flyout branch popups are owned by the Menu machinery; the tree roaming applies to the rail items only.
 - In collapsed mode (`collapsed`) the action menu (`actions`) is hidden; the action button only renders in expanded mode.
 - The collapsed flyout defaults to `hover` triggering; switch it via `dropdownMenuProps.trigger: 'click'`.
 - Toggling `collapsed` stashes and restores the expansion state; the original expanded branches survive the collapse round trip.
 - The action button's accessible name comes from the `treeMenu.openActions` template (with the `{label}` placeholder) and follows the `ConfigProvider` locale across 13 languages.
 - A node's `disabled` blocks activation/expansion/actions; disabled items render `data-disabled` and native `disabled` semantics.
 - Clicking a leaf activates it and emits `update:modelValue`; clicking an item with children toggles expansion and emits `update:expanded`.
-- With `expandStrategy="active"` the expanded state is re-synced to the active menu path whenever the active menu changes or the strategy switches to `active`; manually expanded non-active branches stay open until the next activation.
+- With `expandStrategy="selected"` the expanded state is re-synced to the selected menu path whenever the selected menu changes or the strategy switches to `selected`; manually expanded non-selected branches stay open until the next selection.
 - Data attributes use only `data-soybean-tree-menu-*` (D1-07) with no redundant attributes.
 - `size` supports 8 steps from xs to 2xl; style overrides are injected via `ui` (20+ named slots) and the root `class`.
 
 ## FAQ
+
+### Which keyboard shortcuts does the tree menu support?
+
+The menu is a single tab stop following the WAI-ARIA tree pattern: entering the tree focuses the active item (or the first one), ↑/↓ roam visible items (skipping disabled ones), → expands a closed branch and a second press enters its first child, ← collapses or returns to the parent, Home/End jump to the first/last visible item, and Enter/Space activate.
 
 ### How do I build a collapsible sidebar menu?
 

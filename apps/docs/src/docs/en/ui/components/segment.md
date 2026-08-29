@@ -71,7 +71,7 @@ A linear set of two or more mutually exclusive options presented as a unified co
 
 ### How do I disable the sliding indicator?
 
-Pass `:enable-indicator="false"`. The active segment is then highlighted through the `data-state="active"` style rules instead.
+Pass `:enable-indicator="false"`. The selected segment is then highlighted through the `data-selected` style rules instead.
 
 ### How do I make arrow keys wrap around?
 

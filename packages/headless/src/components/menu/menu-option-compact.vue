@@ -41,11 +41,11 @@ const commonSlotNames = useCommonSlotNames(slots);
 
 const ui = useMenuUi();
 
-const { activeValue, activePaths } = useMenuOptionsCompactContext('MenuOptionCompact');
+const { selectedValue, selectedPaths } = useMenuOptionsCompactContext('MenuOptionCompact');
 
-const dataActive = computed(() => activeValue.value === props.item.value);
+const isSelected = computed(() => selectedValue.value === props.item.value);
 
-const childActive = computed(() => activePaths.value.includes(props.item.value));
+const hasChildSelected = computed(() => selectedPaths.value.includes(props.item.value));
 
 const linkProps = computed<LinkProps>(() =>
   props.item.to || props.item.href
@@ -75,7 +75,7 @@ const linkProps = computed<LinkProps>(() =>
     as-child
     :disabled="item.disabled ?? itemProps?.disabled ?? linkProps?.disabled"
     :text-value="item.textValue"
-    :data-active="dataActive"
+    :data-selected="isSelected"
     @select="emit('select', item, $event)"
   >
     <Link v-slot="{ isHref }" v-bind="linkProps">
@@ -96,7 +96,7 @@ const linkProps = computed<LinkProps>(() =>
     v-bind="itemProps"
     :disabled="item.disabled ?? itemProps?.disabled"
     :text-value="item.textValue"
-    :data-active="dataActive"
+    :data-selected="isSelected"
     @select="emit('select', item, $event)"
   >
     <MenuItemSlotCompact :icon="item.icon" :label="item.label">
@@ -113,7 +113,7 @@ const linkProps = computed<LinkProps>(() =>
       v-bind="subTriggerProps"
       :disabled="item.disabled ?? subTriggerProps?.disabled"
       :text-value="item.textValue"
-      :data-child-active="childActive ? '' : undefined"
+      :data-child-selected="hasChildSelected ? '' : undefined"
     >
       <MenuItemSlotCompact :icon="item.icon" :label="item.label">
         <template v-for="slotName in commonSlotNames">

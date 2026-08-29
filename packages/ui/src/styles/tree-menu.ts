@@ -35,9 +35,9 @@ export const treeMenuVariants = scv({
     item: 'relative m-0 p-0 group-data-[state=collapsed]:hover:bg-sidebar-accent group-data-[state=collapsed]:hover:rounded-sm',
     button: [
       `group/button relative flex items-center w-full rounded-sm outline-none cursor-pointer select-none group-data-[state=collapsed]:overflow-hidden`,
-      `data-[active=true]:bg-sidebar-primary/10 data-[active=true]:text-sidebar-primary`,
-      `data-[active=false]:hover:bg-sidebar-accent data-[active=false]:focus:bg-sidebar-accent`,
-      `data-[child-active]:text-sidebar-primary`,
+      `data-[selected=true]:bg-sidebar-primary/10 data-[selected=true]:text-sidebar-primary`,
+      `data-[selected=false]:hover:bg-sidebar-accent data-[selected=false]:focus:bg-sidebar-accent`,
+      `data-[child-selected]:text-sidebar-primary`,
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     collapsibleRoot: '',
@@ -46,7 +46,7 @@ export const treeMenuVariants = scv({
       'overflow-hidden transition will-change-auto',
       'data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up'
     ],
-    collapsibleIcon: `shrink-0 ms-auto text-muted-foreground transition-transform-200 group-data-[state=open]/button:rotate-90 group-data-[child-active]/button:text-sidebar-primary`,
+    collapsibleIcon: `shrink-0 ms-auto text-muted-foreground transition-transform-200 group-data-[state=open]/button:rotate-90 group-data-[child-selected]/button:text-sidebar-primary`,
     sub: 'flex flex-col m-0 list-none ms-[--soybean-tree-menu-indent] border-s border-sidebar-border border-solid',
     itemLabel: 'truncate',
     itemLinkIcon: `shrink-0 self-start text-muted-foreground rtl:rotate-270`,

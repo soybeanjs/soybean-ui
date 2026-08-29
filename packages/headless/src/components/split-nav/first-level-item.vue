@@ -27,7 +27,7 @@ const isSelected = computed(() => !isBranch.value && modelValue.value === props.
 
 const isOpen = computed(() => isBranch.value && openPath.value.includes(props.item.value));
 
-const isChildActive = computed(() => {
+const hasChildSelected = computed(() => {
   if (!isBranch.value || modelValue.value === props.item.value) {
     return false;
   }
@@ -111,20 +111,20 @@ function handleKeyDown(event: KeyboardEvent) {
       :data-orientation="orientation"
       :data-disabled="item.disabled ? '' : undefined"
       :data-value="item.value"
-      :data-child-active="isChildActive ? '' : undefined"
+      :data-child-selected="hasChildSelected ? '' : undefined"
       :aria-current="ariaCurrent"
       :aria-expanded="ariaExpanded"
       @click="handleClick"
       @keydown="handleKeyDown"
     >
       <Link v-if="isLink" v-bind="linkProps">
-        <slot :item="item" :active="isSelected" :open="isOpen">
+        <slot :item="item" :selected="isSelected" :open="isOpen">
           <Icon v-if="item.icon" :icon="item.icon" :class="ui.firstLevelItemIcon" :aria-hidden="true" />
           <span :class="ui.firstLevelItemLabel">{{ item.label }}</span>
         </slot>
       </Link>
       <template v-else>
-        <slot :item="item" :active="isSelected" :open="isOpen">
+        <slot :item="item" :selected="isSelected" :open="isOpen">
           <Icon v-if="item.icon" :icon="item.icon" :class="ui.firstLevelItemIcon" :aria-hidden="true" />
           <span :class="ui.firstLevelItemLabel">{{ item.label }}</span>
         </slot>

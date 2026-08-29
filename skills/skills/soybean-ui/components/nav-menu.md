@@ -152,7 +152,7 @@ Properties for the NavMenuItem component.
 
 Properties for the NavMenuLink component.
 
-- `active`: Marks the link as the currently active page. (type `boolean`; optional)
+- `selected`: Marks the link as the currently selected page. (type `boolean`; optional)
 - `sub`: Whether the link is rendered inside a submenu. When `true`, the `subLink` UI slot is used instead of `link` (mirroring the root/sub split of the list). (type `boolean`; optional)
 - `replace`: Calls `router.replace` instead of `router.push`. (type `boolean`; optional)
 - `disabled`: When `true`, the link is disabled. (type `boolean`; optional)

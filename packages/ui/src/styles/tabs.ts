@@ -78,7 +78,7 @@ export const tabsVariants = scv({
     },
     enableIndicator: {
       false: {
-        trigger: `data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow`
+        trigger: `data-[selected=true]:bg-background data-[selected=true]:text-foreground data-[selected=true]:shadow`
       }
     }
   },

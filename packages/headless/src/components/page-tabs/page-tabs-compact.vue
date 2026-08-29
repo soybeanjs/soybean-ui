@@ -178,7 +178,7 @@ const handleDragEnd = (event: DragEndEvent) => {
 const getItemSlotProps = (item: T, index: number): PageTabsCompactItemSlotProps<T> => ({
   item,
   index,
-  active: modelValue.value === item.value,
+  selected: modelValue.value === item.value,
   closable: !item.pinned
 });
 

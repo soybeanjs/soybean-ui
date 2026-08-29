@@ -98,7 +98,13 @@ Slots for the Autocomplete component.
 
 ### AutocompleteAnchor
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the AutocompleteAnchor component.
+
+- `reference`: No description. (type `ReferenceElement`; optional)
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 
 ### AutocompleteCompact
 
@@ -161,7 +167,49 @@ Slots for the AutocompleteCompact component.
 
 ### AutocompleteContent
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the AutocompleteContent component.
+
+- `position`: Position. (type `'inline' | 'popper'`; optional)
+- `bodyLock`: Whether body lock. (type `boolean`; optional)
+- `hideWhenEmpty`: Whether hide when empty. (type `boolean`; optional)
+- `popupProps`: Properties forwarded to the popup element. (type `PopperPositioningPopupProps`; optional)
+- `open`: Whether the floating layer is open. Drives the positioning lifecycle (`isPositioned` resets when open flips); the positioning primitive itself has no open state, so consumers wire their own open state here. (type `boolean`; default `true`; optional)
+- `placement`: The placement of the floating element. If used, it will override the `side` and `align` props. (type `Placement`; default `undefined`; optional)
+- `side`: The preferred side of the anchor to render against when open. Will be reversed when collisions occur and avoidCollisions is enabled. (type `Side`; default `'bottom'`; optional)
+- `sideOffset`: The distance in pixels from the anchor. (type `number`; default `0`; optional)
+- `sideFlip`: Flip to the opposite side when colliding with boundary. (type `boolean`; default `true`; optional)
+- `align`: The preferred alignment against the anchor. May change when collisions occur. (type `Align`; default `'center'`; optional)
+- `alignOffset`: An offset in pixels from the `start` or `end` alignment options. (type `number`; default `0`; optional)
+- `alignFlip`: Flip alignment when colliding with boundary. May only occur when `prioritizePosition` is true. (type `boolean`; default `true`; optional)
+- `avoidCollisions`: When `true`, overrides the side and align preferences to prevent collisions with boundary edges. (type `boolean`; default `true`; optional)
+- `collisionBoundary`: The element used as the collision boundary. By default this is the viewport, though you can provide additional element(s) to be included in this check. (type `Element | (Element | null)[] | null`; default `[ ]`; optional)
+- `collisionPadding`: The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for all sides), or a partial padding object, for example: { top: 20, left: 20 }. (type `Padding`; default `0`; optional)
+- `arrowPadding`: The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it from overflowing the corners. (type `number`; default `0`; optional)
+- `hideShiftedArrow`: When `true`, hides the arrow when it cannot be centered to the reference element. (type `boolean`; default `false`; optional)
+- `sticky`: The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the anchor is at least partially in the boundary whilst "always" will keep the content in the boundary regardless. (type `'partial' | 'always'`; default `'partial'`; optional)
+- `hideWhenDetached`: Whether to hide the content when the anchor becomes fully occluded. (type `boolean`; default `false`; optional)
+- `positionStrategy`: The type of CSS position property to use. (type `'fixed' | 'absolute'`; default `'fixed'`; optional)
+- `updatePositionStrategy`: Strategy to update the position of the floating element on every animation frame. (type `'always' | 'optimized'`; default `'optimized'`; optional)
+- `disableUpdateOnLayoutShift`: Whether to disable the update position for the content when the layout shifted. (type `boolean`; default `false`; optional)
+- `prioritizePosition`: Force content to be position within the viewport. Might overlap the reference element, which may not be desired. (type `boolean`; default `false`; optional)
+- `reference`: The custom element or virtual element that will be set as the reference to position the floating element. If provided, it will replace the default anchor element. (type `ReferenceElement`; optional)
+- `trapFocus`: When `true`, focus cannot escape the content via keyboard, pointer, or a programmatic focus. (type `boolean`; default `false`; optional)
+- `disableOutsidePointerEvents`: When `true`, hover/focus/click interactions will be disabled on elements outside the `DismissableLayer`. Users will need to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to trigger the element. (type `boolean`; optional)
+- `forceMount`: Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. (type `boolean`; optional)
+
+#### Emits
+
+Events for the AutocompleteContent component.
+
+- `escapeKeyDown`: Event handler called when the escape key is down. Can be prevented. (type `[event: KeyboardEvent]`; parameters `event: KeyboardEvent`)
+- `pointerDownOutside`: Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented. (type `[event: PointerDownOutsideEvent]`; parameters `event: PointerDownOutsideEvent`)
+- `focusOutside`: Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented. (type `[event: FocusOutsideEvent]`; parameters `event: FocusOutsideEvent`)
+- `interactOutside`: Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown` event happens outside or focus moves outside of it. Can be prevented. (type `[event: PointerDownOutsideEvent | FocusOutsideEvent]`; parameters `event: PointerDownOutsideEvent | FocusOutsideEvent`)
+- `openAutoFocus`: Event handler called when auto-focusing on open. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
+- `closeAutoFocus`: Event handler called when auto-focusing on close. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
+- `placed`: Event handler called when the positioner is placed (type `[]`)
 
 ### AutocompleteGroup
 
@@ -195,11 +243,30 @@ Properties for the AutocompleteInput component.
 
 ### AutocompleteItem
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the AutocompleteItem component.
+
+- `textValue`: Text value. (type `string`; optional)
+- `value`: The value given as data when submitted with a `name`. (type `string`; required)
+- `disabled`: When `true`, prevents the user from interacting with the item. (type `boolean`; optional)
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
+
+#### Emits
+
+Events for the AutocompleteItem component.
+
+- `select`: Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`. (type `[event: SelectEvent<string>]`; parameters `event: SelectEvent<string>`)
 
 ### AutocompleteItemIndicator
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the AutocompleteItemIndicator component.
+
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 
 ### AutocompletePortal
 
@@ -234,15 +301,30 @@ Events for the AutocompleteRoot component.
 
 ### AutocompleteSeparator
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the AutocompleteSeparator component.
+
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 
 ### AutocompleteTrigger
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the AutocompleteTrigger component.
+
+- `disabled`: Whether the component is disabled. (type `boolean`; optional)
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 
 ### AutocompleteViewport
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the AutocompleteViewport component.
+
+- `nonce`: Nonce. (type `string`; optional)
 
 ## Notes
 

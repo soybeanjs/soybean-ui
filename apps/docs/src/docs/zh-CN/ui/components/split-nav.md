@@ -87,7 +87,7 @@
 
 ### 如何知道叶子被选中？
 
-`select` 事件会带上叶子值；`v-model` 只反映当前选中的叶子。点击父级只会展开子面板（`data-state="open"`），不会触发 `select`，也不会出现选中样式。若该父级下已有选中叶子，会带上 `data-child-active`。
+`select` 事件会带上叶子值；`v-model` 只反映当前选中的叶子。点击父级只会展开子面板（`data-state="open"`），不会触发 `select`，也不会出现选中样式。若该父级下已有选中叶子，会带上 `data-child-selected`。
 
 ### 能否自定义每项内容？
 

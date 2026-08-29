@@ -49,10 +49,10 @@ const { modelValue, expanded, collapsed, expandStrategy, onExpandedChange, setNa
 
 const items = computed(() => filterHiddenTreeMenuOptions(props.items));
 
-const activePaths = computed(() => getTreePaths(modelValue.value, items.value));
+const selectedPaths = computed(() => getTreePaths(modelValue.value, items.value));
 
-const activeExpanded = computed(() => {
-  if (expandStrategy.value !== 'active') {
+const selectedExpanded = computed(() => {
+  if (expandStrategy.value !== 'selected') {
     return [];
   }
 
@@ -60,13 +60,13 @@ const activeExpanded = computed(() => {
 });
 
 watch(
-  [collapsed, expandStrategy, activeExpanded],
+  [collapsed, expandStrategy, selectedExpanded],
   () => {
-    if (expandStrategy.value !== 'active' || collapsed.value) {
+    if (expandStrategy.value !== 'selected' || collapsed.value) {
       return;
     }
 
-    onExpandedChange(activeExpanded.value);
+    onExpandedChange(selectedExpanded.value);
   },
   { immediate: true }
 );
@@ -97,7 +97,7 @@ watchEffect(() => {
           v-bind="forwardedOptionProps"
           :item="child"
           :side="side"
-          :active-paths="activePaths"
+          :selected-paths="selectedPaths"
           @select-dropdown="emit('selectDropdown', $event)"
         >
           <template v-for="slotName in optionSlotNames" #[slotName]="slotProps">
@@ -112,7 +112,7 @@ watchEffect(() => {
       v-bind="forwardedOptionProps"
       :item="item"
       :side="side"
-      :active-paths="activePaths"
+      :selected-paths="selectedPaths"
       @select-dropdown="emit('selectDropdown', $event)"
     >
       <template v-for="slotName in optionSlotNames" #[slotName]="slotProps">

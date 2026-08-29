@@ -501,7 +501,7 @@
         "kind": "slots",
         "name": "TabsSlots",
         "type": "TypeAlias TabsSlots<T>: TabsCompactSlots<T>",
-        "resolvedType": "{ trigger?: ((props: T & { active: boolean; }) => any); content?: ((props: T & { active: boolean; }) => any); indicator?: (() => any) }",
+        "resolvedType": "{ trigger?: ((props: T & { selected: boolean; }) => any); content?: ((props: T & { selected: boolean; }) => any); indicator?: (() => any) }",
         "description": "Slots for the Tabs component.",
         "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsslots.slots",
         "sourcePath": "packages/ui/src/components/tabs/types.ts",
@@ -510,8 +510,8 @@
         "callables": [
           {
             "name": "trigger",
-            "type": "((props: T & { active: boolean; }) => any) | undefined",
-            "parameters": "((props: T & { active: boolean; }) => any) | undefined",
+            "type": "((props: T & { selected: boolean; }) => any) | undefined",
+            "parameters": "((props: T & { selected: boolean; }) => any) | undefined",
             "required": false,
             "description": "Custom content for the trigger slot.",
             "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsslots.callables.trigger",
@@ -520,7 +520,7 @@
               {
                 "name": "__type",
                 "kind": "typeLiteral",
-                "type": "{ active: boolean; }",
+                "type": "{ selected: boolean; }",
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.type",
@@ -534,8 +534,8 @@
           },
           {
             "name": "content",
-            "type": "((props: T & { active: boolean; }) => any) | undefined",
-            "parameters": "((props: T & { active: boolean; }) => any) | undefined",
+            "type": "((props: T & { selected: boolean; }) => any) | undefined",
+            "parameters": "((props: T & { selected: boolean; }) => any) | undefined",
             "required": false,
             "description": "Custom content for the content slot.",
             "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsslots.callables.content",
@@ -544,7 +544,7 @@
               {
                 "name": "__type",
                 "kind": "typeLiteral",
-                "type": "{ active: boolean; }",
+                "type": "{ selected: boolean; }",
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.type",
@@ -920,7 +920,7 @@
       "emits": {
         "kind": "emits",
         "name": "TabsCompactEmits",
-        "type": "TypeAlias TabsCompactEmits<T>: SegmentRootEmits<T>",
+        "type": "TypeAlias TabsCompactEmits<T>: TabsRootEmits<T>",
         "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined>] }",
         "description": "Events for the TabsCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactemits.emits",
@@ -945,7 +945,7 @@
         "kind": "slots",
         "name": "TabsCompactSlots",
         "type": "TypeAlias TabsCompactSlots<T>",
-        "resolvedType": "{ trigger?: ((props: T & { active: boolean; }) => any); content?: ((props: T & { active: boolean; }) => any); indicator?: (() => any) }",
+        "resolvedType": "{ trigger?: ((props: T & { selected: boolean; }) => any); content?: ((props: T & { selected: boolean; }) => any); indicator?: (() => any) }",
         "description": "Slots for the TabsCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactslots.slots",
         "sourcePath": "packages/headless/src/components/tabs/types.ts",
@@ -954,8 +954,8 @@
         "callables": [
           {
             "name": "trigger",
-            "type": "((props: T & { active: boolean; }) => any) | undefined",
-            "parameters": "((props: T & { active: boolean; }) => any) | undefined",
+            "type": "((props: T & { selected: boolean; }) => any) | undefined",
+            "parameters": "((props: T & { selected: boolean; }) => any) | undefined",
             "required": false,
             "description": "Custom content for the trigger slot.",
             "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactslots.callables.trigger",
@@ -964,7 +964,7 @@
               {
                 "name": "__type",
                 "kind": "typeLiteral",
-                "type": "{ active: boolean; }",
+                "type": "{ selected: boolean; }",
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.type",
@@ -978,8 +978,8 @@
           },
           {
             "name": "content",
-            "type": "((props: T & { active: boolean; }) => any) | undefined",
-            "parameters": "((props: T & { active: boolean; }) => any) | undefined",
+            "type": "((props: T & { selected: boolean; }) => any) | undefined",
+            "parameters": "((props: T & { selected: boolean; }) => any) | undefined",
             "required": false,
             "description": "Custom content for the content slot.",
             "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactslots.callables.content",
@@ -988,7 +988,7 @@
               {
                 "name": "__type",
                 "kind": "typeLiteral",
-                "type": "{ active: boolean; }",
+                "type": "{ selected: boolean; }",
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.type",
@@ -1084,7 +1084,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsindicatorprops.members.aschild",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -1095,7 +1095,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsindicatorprops.members.as",
             "default": "'div'",
-            "inheritedFrom": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -1150,7 +1150,7 @@
         "description": "Properties for the TabsRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.props",
         "sourcePath": "packages/headless/src/components/tabs/types.ts",
-        "typeParameters": ["T extends AcceptableValue = AcceptableValue"],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "modelValue",
@@ -1217,7 +1217,7 @@
             "description": "The direction of navigation between items.",
             "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.members.dir",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "Omit.dir",
             "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
             "referencedTypes": [
               {
@@ -1242,7 +1242,7 @@
             "description": "The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
             "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.members.orientation",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "Omit.orientation",
             "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
             "referencedTypes": [
               {
@@ -1267,7 +1267,7 @@
             "description": "Whether keyboard navigation should loop around",
             "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.members.loop",
             "default": "false",
-            "inheritedFrom": null,
+            "inheritedFrom": "Omit.loop",
             "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
             "referencedTypes": []
           }
@@ -1283,7 +1283,7 @@
         "description": "Events for the TabsRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootemits.emits",
         "sourcePath": "packages/headless/src/components/tabs/types.ts",
-        "typeParameters": ["T = AcceptableValue"],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -1354,7 +1354,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.aschild",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -1365,7 +1365,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.as",
             "default": "'div'",
-            "inheritedFrom": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {

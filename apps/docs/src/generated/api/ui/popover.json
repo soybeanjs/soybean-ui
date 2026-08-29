@@ -1116,6 +1116,100 @@
     "PopoverAnchor": {},
     "PopoverArrow": {},
     "PopoverClose": {
+      "props": {
+        "kind": "props",
+        "name": "PopoverCloseProps",
+        "type": "Interface PopoverCloseProps",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the PopoverClose component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercloseprops.props",
+        "sourcePath": "packages/headless/src/components/popover/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercloseprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "ButtonProps.type",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_button_types.buttontype",
+                "sourcePath": "packages/headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercloseprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "ButtonProps.disabled",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercloseprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "ButtonProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercloseprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "ButtonProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
       "emits": {
         "kind": "emits",
         "name": "PopoverCloseEmits",
@@ -1152,100 +1246,6 @@
             ]
           }
         ],
-        "referencedTypes": []
-      },
-      "props": {
-        "kind": "props",
-        "name": "PopoverCloseProps",
-        "type": "Interface PopoverCloseProps",
-        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
-        "description": "Properties for the PopoverClose component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercloseprops.props",
-        "sourcePath": "packages/headless/src/components/popover/types.ts",
-        "typeParameters": [],
-        "members": [
-          {
-            "name": "type",
-            "type": "ButtonType",
-            "required": false,
-            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
-            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercloseprops.members.type",
-            "default": "'button'",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/button/types.ts",
-            "referencedTypes": [
-              {
-                "name": "ButtonType",
-                "kind": "typeAlias",
-                "type": "'button' | 'submit' | 'reset'",
-                "resolvedType": "'button' | 'submit' | 'reset'",
-                "description": "Supported button values.",
-                "descriptionKey": "api.generated.packages_headless_src_components_button_types.buttontype",
-                "sourcePath": "packages/headless/src/components/button/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "disabled",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether the component is disabled.",
-            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercloseprops.members.disabled",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/button/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "asChild",
-            "type": "boolean",
-            "required": false,
-            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercloseprops.members.aschild",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/primitive/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "as",
-            "type": "AsTag | Component",
-            "required": false,
-            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovercloseprops.members.as",
-            "default": "'div'",
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/primitive/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Component",
-                "kind": "typeAlias",
-                "type": "Component",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "PropsOrInstance = any",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions",
-                  "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          }
-        ],
-        "callables": [],
         "referencedTypes": []
       }
     },
@@ -2178,7 +2178,7 @@
             "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.placement",
             "default": "undefined",
-            "inheritedFrom": null,
+            "inheritedFrom": "placement",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -2203,7 +2203,7 @@
             "description": "The preferred side of the trigger to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.side",
             "default": "'bottom'",
-            "inheritedFrom": null,
+            "inheritedFrom": "side",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -2228,7 +2228,7 @@
             "description": "The distance in pixels from the trigger.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.sideoffset",
             "default": "0",
-            "inheritedFrom": null,
+            "inheritedFrom": "sideOffset",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2239,7 +2239,7 @@
             "description": "Flip to the opposite side when colliding with boundary.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.sideflip",
             "default": "true",
-            "inheritedFrom": null,
+            "inheritedFrom": "sideFlip",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2250,7 +2250,7 @@
             "description": "The preferred alignment against the trigger. May change when collisions occur.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.align",
             "default": "'center'",
-            "inheritedFrom": null,
+            "inheritedFrom": "align",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -2275,7 +2275,7 @@
             "description": "An offset in pixels from the `start` or `end` alignment options.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.alignoffset",
             "default": "0",
-            "inheritedFrom": null,
+            "inheritedFrom": "alignOffset",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2286,7 +2286,7 @@
             "description": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.alignflip",
             "default": "true",
-            "inheritedFrom": null,
+            "inheritedFrom": "alignFlip",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2297,7 +2297,7 @@
             "description": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.avoidcollisions",
             "default": "true",
-            "inheritedFrom": null,
+            "inheritedFrom": "avoidCollisions",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2308,7 +2308,7 @@
             "description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.collisionboundary",
             "default": "[ ]",
-            "inheritedFrom": null,
+            "inheritedFrom": "collisionBoundary",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -2333,7 +2333,7 @@
             "description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.collisionpadding",
             "default": "0",
-            "inheritedFrom": null,
+            "inheritedFrom": "collisionPadding",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -2358,7 +2358,7 @@
             "description": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.arrowpadding",
             "default": "0",
-            "inheritedFrom": null,
+            "inheritedFrom": "arrowPadding",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2369,7 +2369,7 @@
             "description": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.hideshiftedarrow",
             "default": "true",
-            "inheritedFrom": null,
+            "inheritedFrom": "hideShiftedArrow",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2380,7 +2380,7 @@
             "description": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.sticky",
             "default": "'partial'",
-            "inheritedFrom": null,
+            "inheritedFrom": "sticky",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2391,7 +2391,7 @@
             "description": "Whether to hide the content when the trigger becomes fully occluded.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.hidewhendetached",
             "default": "false",
-            "inheritedFrom": null,
+            "inheritedFrom": "hideWhenDetached",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2402,7 +2402,7 @@
             "description": "The type of CSS position property to use.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.positionstrategy",
             "default": "'fixed'",
-            "inheritedFrom": null,
+            "inheritedFrom": "positionStrategy",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2413,7 +2413,7 @@
             "description": "Strategy to update the position of the floating element on every animation frame.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.updatepositionstrategy",
             "default": "'optimized'",
-            "inheritedFrom": null,
+            "inheritedFrom": "updatePositionStrategy",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2424,7 +2424,7 @@
             "description": "Whether to disable the update position for the content when the layout shifted.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.disableupdateonlayoutshift",
             "default": "false",
-            "inheritedFrom": null,
+            "inheritedFrom": "disableUpdateOnLayoutShift",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2435,7 +2435,7 @@
             "description": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.prioritizeposition",
             "default": "false",
-            "inheritedFrom": null,
+            "inheritedFrom": "prioritizePosition",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2446,7 +2446,7 @@
             "description": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.reference",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "reference",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -2471,7 +2471,7 @@
             "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.trapfocus",
             "default": "modal",
-            "inheritedFrom": null,
+            "inheritedFrom": "trapFocus",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2482,7 +2482,7 @@
             "description": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.disablehoverablecontent",
             "default": "false",
-            "inheritedFrom": null,
+            "inheritedFrom": "disableHoverableContent",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2493,7 +2493,7 @@
             "description": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.ongracepointerexit",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "onGracePointerExit",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2504,7 +2504,7 @@
             "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositionerprops.members.forcemount",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "forceMount",
             "sourcePath": "packages/headless/src/types/component.ts",
             "referencedTypes": []
           }
@@ -2515,7 +2515,7 @@
       "emits": {
         "kind": "emits",
         "name": "PopoverPositionerEmits",
-        "type": "TypeAlias PopoverPositionerEmits",
+        "type": "TypeAlias PopoverPositionerEmits: PopperPositionerEmits",
         "resolvedType": "{ escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; placed: [] }",
         "description": "Events for the PopoverPositioner component.",
         "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverpositioneremits.emits",
@@ -2799,7 +2799,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverrootprops.members.dir",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "dir",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -2824,7 +2824,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverrootprops.members.open",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "open",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2835,7 +2835,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverrootprops.members.defaultopen",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "defaultOpen",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2846,7 +2846,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverrootprops.members.modal",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "modal",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2857,7 +2857,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverrootprops.members.disabled",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "disabled",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           }
@@ -2868,7 +2868,7 @@
       "emits": {
         "kind": "emits",
         "name": "PopoverRootEmits",
-        "type": "TypeAlias PopoverRootEmits",
+        "type": "TypeAlias PopoverRootEmits: DialogRootEmits",
         "resolvedType": "{ \"update:open\": [value: boolean] }",
         "description": "Events for the PopoverRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverrootemits.emits",
@@ -2933,7 +2933,7 @@
             "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovertriggerprops.members.type",
             "default": "'button'",
-            "inheritedFrom": null,
+            "inheritedFrom": "ButtonProps.type",
             "sourcePath": "packages/headless/src/components/button/types.ts",
             "referencedTypes": [
               {
@@ -2958,7 +2958,7 @@
             "description": "Whether the component is disabled.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovertriggerprops.members.disabled",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "ButtonProps.disabled",
             "sourcePath": "packages/headless/src/components/button/types.ts",
             "referencedTypes": []
           },
@@ -2969,7 +2969,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovertriggerprops.members.aschild",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "ButtonProps.asChild",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -2980,7 +2980,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popovertriggerprops.members.as",
             "default": "'div'",
-            "inheritedFrom": null,
+            "inheritedFrom": "ButtonProps.as",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {

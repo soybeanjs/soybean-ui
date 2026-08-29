@@ -22,7 +22,7 @@ const cls = computed(() => (isRoot ? ui.value?.link : ui.value?.subLink));
 
 const { setItemElement } = useCollectionItem();
 
-const forwardedProps = useOmitProps(props, ['active']);
+const forwardedProps = useOmitProps(props, ['selected']);
 
 const onClick = async (event: MouseEvent) => {
   const linkSelectEvent = new CustomEvent(LINK_SELECT, {
@@ -60,8 +60,8 @@ const onClick = async (event: MouseEvent) => {
     data-soybean-navigation-menu-link
     data-soybean-collection-item
     :class="cls"
-    :data-active="active ? '' : undefined"
-    :aria-current="active ? 'page' : undefined"
+    :data-selected="selected ? '' : undefined"
+    :aria-current="selected ? 'page' : undefined"
     @click="onClick"
   >
     <slot v-bind="slotProps" />

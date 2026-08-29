@@ -71,7 +71,7 @@
 
 ### 如何禁用滑动指示器？
 
-传入 `:enable-indicator="false"`。此时选中项改由 `data-state="active"` 样式规则高亮。
+传入 `:enable-indicator="false"`。此时选中项改由 `data-selected` 样式规则高亮。
 
 ### 如何让方向键循环回绕？
 

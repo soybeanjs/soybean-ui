@@ -430,7 +430,7 @@ export interface CascaderCompactOptionSlotProps<T extends DefinedValue = Defined
   /** Whether the node is currently highlighted. */
   highlighted: boolean;
   /** Whether a descendant of the node is currently selected (breadcrumb emphasis). */
-  childActive: boolean;
+  childSelected: boolean;
   /** Whether the node is currently loading its children. */
   loading: boolean;
   /** Expands the children column of the node without toggling its selection. */

@@ -21,7 +21,6 @@ const cls = useTabsUi('trigger');
 const { contentId, triggerId, existContentId } = getId(props.value);
 
 const isSelected = computed(() => props.value === modelValue.value);
-const dataState = computed(() => (isSelected.value ? 'active' : 'inactive'));
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
 const ariaControls = computed(() => (existContentId.value ? contentId.value : undefined));
@@ -64,14 +63,14 @@ const onFocus = () => {
       :aria-selected="isSelected ? 'true' : 'false'"
       :data-disabled="disabled ? '' : undefined"
       :data-orientation="orientation"
-      :data-state="dataState"
+      :data-selected="isSelected"
       role="tab"
       :type="tag"
       @mousedown.left="onMouseDown"
       @keydown.enter.space="onKeyDown"
       @focus="onFocus"
     >
-      <slot :active="isSelected" />
+      <slot :selected="isSelected" />
     </Primitive>
   </RovingFocusItem>
 </template>

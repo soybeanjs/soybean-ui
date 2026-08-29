@@ -132,11 +132,11 @@ export type TabsCompactSlots<T extends TabsOptionData = TabsOptionData> = {
   /**
    * Custom content for the trigger slot.
    */
-  trigger?: (props: T & { active: boolean }) => any;
+  trigger?: (props: T & { selected: boolean }) => any;
   /**
    * Custom content for the content slot.
    */
-  content?: (props: T & { active: boolean }) => any;
+  content?: (props: T & { selected: boolean }) => any;
   /**
    * Custom content for the indicator slot.
    */

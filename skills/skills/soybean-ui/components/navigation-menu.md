@@ -184,7 +184,7 @@ Properties for the NavigationMenuItem component.
 
 Properties for the NavigationMenuLink component.
 
-- `active`: Used to identify the link as the currently active page. (type `boolean`; optional)
+- `selected`: Used to identify the link as the currently selected page. (type `boolean`; optional)
 - `replace`: Calls `router.replace` instead of `router.push`. (type `boolean`; optional)
 - `disabled`: When `true`, the link is disabled. (type `boolean`; optional)
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)

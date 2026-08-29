@@ -74,8 +74,8 @@ Events for the Tabs component.
 
 Slots for the Tabs component.
 
-- `trigger`: Custom content for the trigger slot. (type `((props: T & { active: boolean; }) => any) | undefined`)
-- `content`: Custom content for the content slot. (type `((props: T & { active: boolean; }) => any) | undefined`)
+- `trigger`: Custom content for the trigger slot. (type `((props: T & { selected: boolean; }) => any) | undefined`)
+- `content`: Custom content for the content slot. (type `((props: T & { selected: boolean; }) => any) | undefined`)
 - `indicator`: Custom content for the indicator slot. (type `(() => any) | undefined`)
 
 ### TabsCompact
@@ -108,8 +108,8 @@ Events for the TabsCompact component.
 
 Slots for the TabsCompact component.
 
-- `trigger`: Custom content for the trigger slot. (type `((props: T & { active: boolean; }) => any) | undefined`)
-- `content`: Custom content for the content slot. (type `((props: T & { active: boolean; }) => any) | undefined`)
+- `trigger`: Custom content for the trigger slot. (type `((props: T & { selected: boolean; }) => any) | undefined`)
+- `content`: Custom content for the content slot. (type `((props: T & { selected: boolean; }) => any) | undefined`)
 - `indicator`: Custom content for the indicator slot. (type `(() => any) | undefined`)
 
 ### TabsContent

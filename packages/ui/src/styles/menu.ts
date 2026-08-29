@@ -20,8 +20,8 @@ export const menuVariants = scv({
     item: [
       `relative flex items-center rounded-sm outline-none transition-colors-200 cursor-pointer select-none`,
       `focus:bg-accent focus:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`,
-      `data-[active=true]:bg-primary/10 data-[active=true]:text-primary`,
-      `data-[active=false]:hover:bg-accent data-[active=false]:focus:bg-accent`
+      `data-[selected=true]:bg-primary/10 data-[selected=true]:text-primary`,
+      `data-[selected=false]:hover:bg-accent data-[selected=false]:focus:bg-accent`
     ],
     itemIcon: `shrink-0 text-muted-foreground`,
     itemLink: [
@@ -29,8 +29,8 @@ export const menuVariants = scv({
       `focus:bg-accent focus:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     itemLinkIcon: `shrink-0 self-start text-muted-foreground rtl:rotate-270`,
-    subTrigger: `group/trigger flex items-center rounded-sm outline-none cursor-pointer select-none focus:bg-accent data-[state=open]:bg-accent data-[child-active]:text-primary`,
-    subTriggerIcon: `ms-auto text-muted-foreground group-data-[child-active]/trigger:text-primary`,
+    subTrigger: `group/trigger flex items-center rounded-sm outline-none cursor-pointer select-none focus:bg-accent data-[state=open]:bg-accent data-[child-selected]:text-primary`,
+    subTriggerIcon: `ms-auto text-muted-foreground group-data-[child-selected]/trigger:text-primary`,
     shortcut: `ms-auto tracking-widest opacity-60`,
     separator: `h-px bg-border`,
     checkboxItem: [

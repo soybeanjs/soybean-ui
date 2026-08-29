@@ -453,7 +453,7 @@
         "kind": "slots",
         "name": "SegmentSlots",
         "type": "TypeAlias SegmentSlots<T>: SegmentCompactSlots<T>",
-        "resolvedType": "{ item?: ((props: T & { active: boolean; }) => any); indicator?: (() => any) }",
+        "resolvedType": "{ item?: ((props: T & { selected: boolean; }) => any); indicator?: (() => any) }",
         "description": "Slots for the Segment component.",
         "descriptionKey": "api.generated.packages_ui_src_components_segment_types.segmentslots.slots",
         "sourcePath": "packages/ui/src/components/segment/types.ts",
@@ -462,8 +462,8 @@
         "callables": [
           {
             "name": "item",
-            "type": "((props: T & { active: boolean; }) => any) | undefined",
-            "parameters": "((props: T & { active: boolean; }) => any) | undefined",
+            "type": "((props: T & { selected: boolean; }) => any) | undefined",
+            "parameters": "((props: T & { selected: boolean; }) => any) | undefined",
             "required": false,
             "description": "Custom content for the item slot.",
             "descriptionKey": "api.generated.packages_ui_src_components_segment_types.segmentslots.callables.item",
@@ -472,7 +472,7 @@
               {
                 "name": "__type",
                 "kind": "typeLiteral",
-                "type": "{ active: boolean; }",
+                "type": "{ selected: boolean; }",
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_segment_types.type",
@@ -825,7 +825,7 @@
         "kind": "slots",
         "name": "SegmentCompactSlots",
         "type": "TypeAlias SegmentCompactSlots<T>",
-        "resolvedType": "{ item?: ((props: T & { active: boolean; }) => any); indicator?: (() => any) }",
+        "resolvedType": "{ item?: ((props: T & { selected: boolean; }) => any); indicator?: (() => any) }",
         "description": "Slots for the SegmentCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentcompactslots.slots",
         "sourcePath": "packages/headless/src/components/segment/types.ts",
@@ -834,8 +834,8 @@
         "callables": [
           {
             "name": "item",
-            "type": "((props: T & { active: boolean; }) => any) | undefined",
-            "parameters": "((props: T & { active: boolean; }) => any) | undefined",
+            "type": "((props: T & { selected: boolean; }) => any) | undefined",
+            "parameters": "((props: T & { selected: boolean; }) => any) | undefined",
             "required": false,
             "description": "Custom content for the item slot.",
             "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentcompactslots.callables.item",
@@ -844,7 +844,7 @@
               {
                 "name": "__type",
                 "kind": "typeLiteral",
-                "type": "{ active: boolean; }",
+                "type": "{ selected: boolean; }",
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_segment_types.type",

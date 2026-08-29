@@ -21,8 +21,8 @@ const tabs = [
         indicatorContent: 'absolute -bottom-0.5 h-0.5 rounded-1 bg-primary'
       }"
     >
-      <template #trigger="{ label, active }">
-        <div :class="{ 'text-primary fw-bold': active }">{{ label }}</div>
+      <template #trigger="{ label, selected }">
+        <div :class="{ 'text-primary fw-bold': selected }">{{ label }}</div>
       </template>
       <template #content="{ value }">
         <div>The Tab Content: {{ value }}</div>
@@ -41,8 +41,8 @@ const tabs = [
         indicatorContent: 'absolute -start-0.5 w-0.5 rounded-1 bg-primary'
       }"
     >
-      <template #trigger="{ label, active }">
-        <div :class="{ 'text-primary fw-bold': active }">{{ label }}</div>
+      <template #trigger="{ label, selected }">
+        <div :class="{ 'text-primary fw-bold': selected }">{{ label }}</div>
       </template>
       <template #content="{ value }">
         <div>The Tab Content: {{ value }}</div>

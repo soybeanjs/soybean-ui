@@ -18,7 +18,7 @@
 - 🔄 切换语义 — 点击当前激活的极性会将状态清空为 `null`（取消）
 - 🧩 自定义图标 — `like-icon` 与 `dislike-icon` 插槽接收 `{ active }`，支持状态感知渲染
 - 📞 双重输出 — `onChange` 属性与 `change` 事件在变化时都会触发
-- ♿ 无障碍 — 每个按钮带有 `aria-pressed` 与 `data-active` 属性
+- ♿ 无障碍 — 每个按钮带有 `aria-pressed` 与 `data-selected` 属性
 - 🚫 禁用状态 — `disabled` 会完全阻止两个按钮
 - 🔒 类型安全 — `FeedbackValue` 类型为 `'like' | 'dislike'`
 

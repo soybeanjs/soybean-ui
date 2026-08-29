@@ -298,9 +298,9 @@ export interface PageTabsCompactItemSlotProps<T extends PageTabsOptionData = Pag
    */
   index: number;
   /**
-   * Whether the current item is active.
+   * Whether the current item is selected.
    */
-  active: boolean;
+  selected: boolean;
   /**
    * Whether the current item can be closed.
    */

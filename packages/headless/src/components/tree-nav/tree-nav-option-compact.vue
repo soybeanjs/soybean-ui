@@ -35,17 +35,10 @@ const { selected, onSelect, disabled, linkProps } = rootCtx;
 
 const isDisabled = computed(() => disabled.value || Boolean(props.item.disabled));
 
-const isActive = computed(() => selected.value === props.item.value);
+const isSelected = computed(() => selected.value === props.item.value);
 
-/**
- * Branch triggers never carry `data-active` even in the edge case where their
- * value matches the selection (container nodes disable active, aligned with
- * TreeMenu); leaves always expose a constant `"true"`/`"false"` string.
- */
-const dataActive = computed(() => (isActive.value ? 'true' : 'false'));
-
-const dataChildActive = computed(() =>
-  !isLinkItem(props.item) && hasChildren(props.item) && props.childActive ? '' : undefined
+const hasChildSelected = computed(() =>
+  !isLinkItem(props.item) && hasChildren(props.item) && props.childSelected ? '' : undefined
 );
 
 const linkBind = computed(() => buildTreeNavLinkProps(props.item, linkProps.value, isDisabled.value));
@@ -75,7 +68,7 @@ const handlePopupSelect = createTreeNavPopupSelectHandler(onSelect);
       v-slot="{ isHref }"
       v-bind="linkBind"
       :class="ui.item"
-      :data-active="dataActive"
+      :data-selected="isSelected"
       @click="handleSelect($event)"
     >
       <slot name="item" :item="item">
@@ -101,7 +94,7 @@ const handlePopupSelect = createTreeNavPopupSelectHandler(onSelect);
   >
     <template #trigger>
       <RovingFocusItem as-child :tab-stop-id="item.value" :focusable="!isDisabled">
-        <Button :class="ui.item" data-active="false" :data-child-active="dataChildActive" :disabled="isDisabled">
+        <Button :class="ui.item" :data-selected="false" :data-child-selected="hasChildSelected" :disabled="isDisabled">
           <slot name="item" :item="item">
             <slot name="item-leading" :item="item">
               <Icon v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />
@@ -122,13 +115,7 @@ const handlePopupSelect = createTreeNavPopupSelectHandler(onSelect);
 
   <!-- C. Top-level plain leaf -->
   <RovingFocusItem v-else as-child :tab-stop-id="item.value" :focusable="!isDisabled">
-    <Button
-      :class="ui.item"
-      :data-active="dataActive"
-      :data-child-active="undefined"
-      :disabled="isDisabled"
-      @click="handleSelect($event)"
-    >
+    <Button :class="ui.item" :data-selected="isSelected" :disabled="isDisabled" @click="handleSelect($event)">
       <slot name="item" :item="item">
         <slot name="item-leading" :item="item">
           <Icon v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />

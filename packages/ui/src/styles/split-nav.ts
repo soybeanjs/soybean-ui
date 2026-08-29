@@ -15,7 +15,7 @@ export const splitNavVariants = scv({
       'data-[orientation=vertical]:h-auto data-[orientation=vertical]:min-w-0 data-[orientation=vertical]:w-full data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-center data-[orientation=vertical]:justify-center data-[orientation=vertical]:overflow-hidden data-[orientation=vertical]:text-center',
       'data-[state=active]:bg-primary/10 data-[state=active]:text-primary',
       'data-[state=open]:bg-accent',
-      'data-[child-active]:text-primary',
+      'data-[child-selected]:text-primary',
       'data-[state=inactive]:hover:bg-accent data-[state=inactive]:focus:bg-accent',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50'
     ],

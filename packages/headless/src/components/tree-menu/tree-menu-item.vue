@@ -16,19 +16,19 @@ const { modelValue, expanded, onExpandedToggle, onModelValueChange } = useTreeMe
 
 const cls = useTreeMenuUi('item');
 
-const isActive = computed(() => modelValue.value === props.value);
+const isSelected = computed(() => modelValue.value === props.value);
 
 const isExpanded = computed(() => expanded.value?.includes(props.value));
 
 provideTreeMenuItemContext({
   value: props.value,
-  isActive,
+  isSelected,
   isExpanded,
   onExpandedToggle: () => {
     if (props.disabled) return;
     onExpandedToggle(props.value);
   },
-  onActive: () => {
+  onSelect: () => {
     if (props.disabled) return;
     onModelValueChange(props.value);
   }
@@ -42,9 +42,9 @@ provideTreeMenuItemContext({
     data-soybean-tree-menu-item
     :class="cls"
     :data-disabled="disabled ? '' : undefined"
-    :data-active="isActive"
+    :data-selected="isSelected"
+    :aria-selected="isSelected"
     role="treeitem"
-    :aria-selected="isActive"
   >
     <slot />
   </Primitive>

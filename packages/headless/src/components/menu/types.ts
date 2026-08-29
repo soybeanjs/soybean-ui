@@ -372,8 +372,8 @@ export interface MenuOptionsCompactProps<T extends DefinedValue = DefinedValue> 
    * Items rendered by the component.
    */
   items: MenuOptionData<T>[];
-  /** The active value of the menu. */
-  activeValue?: T;
+  /** The selected value of the menu. */
+  selectedValue?: T;
 }
 
 /**
@@ -653,13 +653,13 @@ export interface MenuSubAttributeContext {
  */
 export interface MenuOptionsCompactContext<T extends DefinedValue = DefinedValue> {
   /**
-   * Active value used by the component context.
+   * Selected value used by the component context.
    */
-  activeValue: ComputedRef<T | undefined>;
+  selectedValue: ComputedRef<T | undefined>;
   /**
-   * Active paths tracked by the component context.
+   * Selected paths tracked by the component context.
    */
-  activePaths: ComputedRef<T[]>;
+  selectedPaths: ComputedRef<T[]>;
 }
 
 /**

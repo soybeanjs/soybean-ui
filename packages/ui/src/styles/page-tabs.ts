@@ -7,9 +7,9 @@ export const pageTabsVariants = scv({
     root: `flex`,
     item: [
       `group/item relative flex items-center cursor-pointer select-none outline-none`,
-      `data-[active=true]:bg-primary-50 data-[active=true]:text-primary data-[active=true]:z-2`,
-      `data-[active=false]:hover:bg-accent data-[active=false]:focus:bg-accent`,
-      `dark:data-[active=true]:bg-accent dark:data-[active=true]:text-foreground`,
+      `data-[selected=true]:bg-primary-50 data-[selected=true]:text-primary data-[selected=true]:z-2`,
+      `data-[selected=false]:hover:bg-accent data-[selected=false]:focus:bg-accent`,
+      `dark:data-[selected=true]:bg-accent dark:data-[selected=true]:text-foreground`,
       `data-[draggable=true]:cursor-grab`,
       `data-[dragging=true]:opacity-50`,
       `data-[dragging=true]:[.dnd-kit-preview_&]:opacity-100`,
@@ -17,20 +17,20 @@ export const pageTabsVariants = scv({
     ],
     itemText: 'grow truncate',
     close: [
-      `outline-none rounded-full hover:text-muted group-data-[active=true]/item:hover:bg-primary/50`,
-      `group-data-[active=false]/item:hover:bg-accent-foreground/20`,
-      `dark:hover:text-foreground dark:group-data-[active=true]/item:hover:bg-accent-foreground/20`
+      `outline-none rounded-full hover:text-muted group-data-[selected=true]/item:hover:bg-primary/50`,
+      `group-data-[selected=false]/item:hover:bg-accent-foreground/20`,
+      `dark:hover:text-foreground dark:group-data-[selected=true]/item:hover:bg-accent-foreground/20`
     ],
     pin: 'outline-none',
     chromeBgLeft: [
       `absolute end-full bottom-0 fill-transparent`,
-      `group-hover/item:fill-accent group-data-[active=true]/item:fill-primary-50 dark:group-data-[active=true]/item:fill-accent group-data-[active=true]/item:z-2`
+      `group-hover/item:fill-accent group-data-[selected=true]/item:fill-primary-50 dark:group-data-[selected=true]/item:fill-accent group-data-[selected=true]/item:z-2`
     ],
     chromeBgRight: [
       `absolute start-full bottom-0 fill-transparent`,
-      `group-hover/item:fill-accent group-data-[active=true]/item:fill-primary-50 dark:group-data-[active=true]/item:fill-accent group-data-[active=true]/item:z-2`
+      `group-hover/item:fill-accent group-data-[selected=true]/item:fill-primary-50 dark:group-data-[selected=true]/item:fill-accent group-data-[selected=true]/item:z-2`
     ],
-    sliderIndicator: `absolute bottom-0 start-0 w-full h-0.5 group-data-[active=true]/item:bg-primary`
+    sliderIndicator: `absolute bottom-0 start-0 w-full h-0.5 group-data-[selected=true]/item:bg-primary`
   },
   variants: {
     size: {

@@ -3009,7 +3009,7 @@
         "kind": "slotProps",
         "name": "CascaderCompactOptionSlotProps",
         "type": "Interface CascaderCompactOptionSlotProps<T>",
-        "resolvedType": "{ node: CascaderNode<T>; checked: boolean; indeterminate: boolean; selected: boolean; highlighted: boolean; childActive: boolean; loading: boolean; expand: () => void }",
+        "resolvedType": "{ node: CascaderNode<T>; checked: boolean; indeterminate: boolean; selected: boolean; highlighted: boolean; childSelected: boolean; loading: boolean; expand: () => void }",
         "description": "Slot properties for the CascaderCompact option.",
         "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercompactoptionslotprops.slotprops",
         "sourcePath": "packages/headless/src/components/cascader/types.ts",
@@ -3251,11 +3251,11 @@
             "referencedTypes": []
           },
           {
-            "name": "childActive",
+            "name": "childSelected",
             "type": "boolean",
             "required": true,
             "description": "Whether a descendant of the node is currently selected (breadcrumb emphasis).",
-            "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercompactoptionslotprops.members.childactive",
+            "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercompactoptionslotprops.members.childselected",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/cascader/types.ts",

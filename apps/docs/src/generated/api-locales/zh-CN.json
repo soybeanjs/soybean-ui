@@ -1730,7 +1730,7 @@
         "cascadercompactoptionslotprops": {
           "members": {
             "checked": "该节点是否已被选中。",
-            "childactive": "该节点的后代节点当前是否被选中（面包屑强调）。",
+            "childselected": "该节点的后代节点当前是否被选中（面包屑强调）。",
             "expand": "展开该节点的子列，而不切换其选中状态。",
             "highlighted": "该节点当前是否被高亮显示。",
             "indeterminate": "该节点是否处于未定状态。",
@@ -3268,7 +3268,6 @@
         },
         "contextmenucompactprops": {
           "members": {
-            "activevalue": "菜单的活动值。",
             "arrowprops": "转发到箭头元素的属性。",
             "contentprops": "转发到内容元素的属性。",
             "dir": "组合框的阅读方向（如适用）。\n\n如果省略，则全局继承自 `ConfigProvider` 或假定为 LTR（从左到右）阅读模式。",
@@ -3282,6 +3281,7 @@
             "popupprops": "转发到弹出元素的属性。",
             "portalprops": "转发到门户元素的属性。",
             "pressopendelay": "从按下触发器到菜单打开的持续时间。",
+            "selectedvalue": "菜单的选中值。",
             "separatorprops": "转发到分隔符元素的属性。",
             "shortcutprops": "转发到快捷方式元素的属性。",
             "showarrow": "是否显示箭头",
@@ -4226,7 +4226,6 @@
         },
         "dropdownmenucompactprops": {
           "members": {
-            "activevalue": "菜单的活动值。",
             "arrowprops": "转发到箭头元素的属性。",
             "contentprops": "转发到内容元素的属性。",
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
@@ -4243,6 +4242,7 @@
             "placement": "放置。",
             "popupprops": "转发到弹出元素的属性。",
             "portalprops": "转发到门户元素的属性。",
+            "selectedvalue": "菜单的选中值。",
             "separatorprops": "转发到分隔符元素的属性。",
             "shortcutprops": "转发到快捷方式元素的属性。",
             "showarrow": "是否显示箭头",
@@ -5724,13 +5724,13 @@
         },
         "menuoptionscompactprops": {
           "members": {
-            "activevalue": "菜单的活动值。",
             "grouplabelprops": "转发到组标签元素的属性。",
             "groupprops": "转发到组元素的属性。",
             "itemprops": "转发到项目元素的属性。",
             "items": "组件呈现的项目。",
             "linkprops": "转发到链接元素的属性。",
             "portalprops": "转发到门户元素的属性。",
+            "selectedvalue": "菜单的选中值。",
             "separatorprops": "转发到分隔符元素的属性。",
             "shortcutprops": "转发到快捷方式元素的属性。",
             "subcontentprops": "转发到子内容元素的属性。",
@@ -5938,7 +5938,6 @@
         },
         "menubarcompactprops": {
           "members": {
-            "activevalue": "菜单的活动值。",
             "arrowprops": "转发到箭头元素的属性。",
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
@@ -5961,6 +5960,7 @@
             "placement": "放置。",
             "popupprops": "转发到弹出元素的属性。",
             "portalprops": "转发到门户元素的属性。",
+            "selectedvalue": "菜单的选中值。",
             "separatorprops": "转发到分隔符元素的属性。",
             "shortcutprops": "转发到快捷方式元素的属性。",
             "showarrow": "是否显示箭头",
@@ -6183,7 +6183,6 @@
         },
         "navmenulinkprops": {
           "members": {
-            "active": "将该链接标记为当前活动页面。",
             "activeclass": "当链接处于活动状态时应应用的类",
             "ariacurrentvalue": "当链接处于活动状态时，传递给 `aria-current` 属性的值。",
             "as": "该组件应渲染成的元素或组件。可通过 `asChild` 进行覆盖。",
@@ -6200,6 +6199,7 @@
             "prefetchon": "允许控制何时预取链接。默认情况下，仅在可见时才会触发预取。",
             "rel": "应用于链接的 rel 属性值。对于外部链接，默认值为“noopener noreferrer”。",
             "replace": "调用 `router.replace` 而不是 `router.push`。",
+            "selected": "将该链接标记为当前选中的页面。",
             "sub": "链接是否渲染在子菜单中。当值为 `true` 时，将使用 `subLink` UI 插槽\n代替 `link`（以反映列表中根项与子项的划分）。",
             "target": "将链接的 URL 作为浏览上下文的名称显示在何处。",
             "to": "链接点击后应跳转到的目标位置。",
@@ -6349,7 +6349,6 @@
         },
         "navigationmenulinkprops": {
           "members": {
-            "active": "用于将链接标识为当前活动页面。",
             "activeclass": "链接激活时应用的类",
             "ariacurrentvalue": "当链接确切激活时，传递给属性 `aria-current` 的值。",
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
@@ -6366,6 +6365,7 @@
             "prefetchon": "允许控制何时预取链接。默认情况下，只有在可见时才会触发预取。",
             "rel": "用于链接的 rel 属性值。外部链接默认为 \"noopener noreferrer\"。",
             "replace": "调用 `router.replace` 代替 `router.push`.",
+            "selected": "用于将链接标识为当前选中的页面。",
             "target": "显示链接 URL 的位置，作为浏览上下文的名称。",
             "to": "路由 点击链接时应导航到的位置。",
             "trailingslash": "为特定链接的 `href` 添加或删除尾部斜线的选项。\n如果提供，则覆盖全局 `trailingSlash` 选项。",
@@ -6456,10 +6456,10 @@
         },
         "pagetabscompactitemslotprops": {
           "members": {
-            "active": "当前项目是否处于活动状态。",
             "closable": "当前项目是否可以关闭。",
             "index": "当前项目的索引。",
-            "item": "当前项目数据。"
+            "item": "当前项目数据。",
+            "selected": "当前项是否被选中。"
           },
           "slotprops": "为紧凑的页面选项卡项目插入道具。"
         },
@@ -9567,7 +9567,7 @@
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
             "disabled": "组件是否禁用。",
-            "disabledactive": "true \"时，阻止用户激活项目。",
+            "disabledselect": "为 `true` 时，阻止用户选中该项。",
             "type": "按钮元素的类型。可以是 \"按钮\"、\"提交 \"或 \"重置\"。"
           },
           "props": "TreeMenuButton 组件的属性。"
@@ -9599,7 +9599,7 @@
             "defaultexpanded": "在不需要控制树的状态时使用。",
             "defaultvalue": "在不需要控制树的状态时使用。",
             "expanded": "可与 `v-model` 绑定。",
-            "expandstrategy": "树形菜单的展开策略。\n\n- `keep`：保持当前展开状态；手动展开或折叠的菜单不会因激活其他菜单而受影响。\n- `active`：仅展开当前活动的菜单及其所有父级菜单；当活动菜单发生变化时，非活动菜单将被折叠。",
+            "expandstrategy": "树形菜单的展开策略。\n\n- `keep`：保持当前展开状态；手动展开或折叠的菜单不会因选中其他菜单而受影响。\n- `selected`：仅展开当前选中的菜单及其所有父级菜单；当选中的菜单发生变化时，未选中的菜单将被折叠。",
             "grouplabelprops": "转发到组标签元素的属性。",
             "groupprops": "转发到组元素的属性。",
             "grouprootprops": "转发到组根元素的属性。",
@@ -9607,7 +9607,7 @@
             "itemprops": "转发到项目元素的属性。",
             "items": "组件呈现的项目。",
             "linkprops": "转发到链接元素的属性。",
-            "modelvalue": "可与 `v-model` 绑定。",
+            "modelvalue": "树形菜单的选中值。可与 `v-model` 进行绑定。",
             "pxtorem": "将像素转换为 rem 的函数",
             "showgroupicon": "是否显示组图标。",
             "side": "横向",
@@ -9657,13 +9657,13 @@
         },
         "treemenuoptioncompactprops": {
           "members": {
-            "activepaths": "树形菜单的活动路径，用于确定当前项目是否处于活动状态或是否有活动的后代。",
             "as": "渲染元素标签。",
             "buttonprops": "转发到按钮元素的属性。",
             "collapsibleprops": "转发到可折叠元素的属性。",
             "item": "当前项目数据。",
             "itemprops": "转发到项目元素的属性。",
             "linkprops": "转发到链接元素的属性。",
+            "selectedpaths": "树形菜单的选中路径，用于确定当前项是否被选中或是否有已选中的后代。",
             "side": "横向",
             "subprops": "转发到子元素的属性。"
           },
@@ -9717,13 +9717,13 @@
         },
         "treemenuoptionslotcompactprops": {
           "members": {
-            "activepaths": "树形菜单的活动路径，用于确定当前项目是否处于活动状态或是否有活动的后代。",
             "as": "渲染元素标签。",
             "buttonprops": "转发到按钮元素的属性。",
             "collapsibleprops": "转发到可折叠元素的属性。",
             "item": "当前项目数据。",
             "itemprops": "转发到项目元素的属性。",
             "linkprops": "转发到链接元素的属性。",
+            "selectedpaths": "树形菜单的选中路径，用于确定当前项是否被选中或是否有已选中的后代。",
             "showlinkicon": "是否显示链接图标。",
             "side": "横向",
             "subprops": "转发到子元素的属性。"
@@ -9746,9 +9746,9 @@
             "defaultexpanded": "在不需要控制树的状态时使用。",
             "defaultvalue": "在不需要控制树的状态时使用。",
             "expanded": "可与 `v-model` 绑定。",
-            "expandstrategy": "树形菜单的展开策略。\n\n- `keep`：保持当前展开状态；手动展开或折叠的菜单不会因激活其他菜单而受影响。\n- `active`：仅展开当前活动的菜单及其所有父级菜单；当活动菜单发生变化时，非活动菜单将被折叠。",
+            "expandstrategy": "树形菜单的展开策略。\n\n- `keep`：保持当前展开状态；手动展开或折叠的菜单不会因选中其他菜单而受影响。\n- `selected`：仅展开当前选中的菜单及其所有父级菜单；当选中的菜单发生变化时，未选中的菜单将被折叠。",
             "indent": "缩进的宽度。",
-            "modelvalue": "可与 `v-model` 绑定。",
+            "modelvalue": "树形菜单的选中值。可与 `v-model` 进行绑定。",
             "pxtorem": "将像素转换为 rem 的函数"
           },
           "props": "TreeMenuRoot 组件的属性。"
@@ -9818,7 +9818,7 @@
         "treenavmoreentry": "当 `collapsible` 时，显示描述尾部“更多”触发器的条目。",
         "treenavoptioncompactprops": {
           "members": {
-            "childactive": "当前选中内容是否位于此分支子树中。",
+            "childselected": "选中的叶子是否位于此分支子树中。",
             "item": "当前条目数据。"
           },
           "props": "TreeNavOptionCompact 组件的属性。"
@@ -9831,7 +9831,7 @@
             "hidden": "该选项是否被隐藏。",
             "href": "点击该链接时应跳转到的 URL。",
             "icon": "标签前渲染的图标。",
-            "isgroup": "该选项是否为纯视觉组容器，仅用于分组其子元素，自身从不处于活动状态。",
+            "isgroup": "",
             "label": "该选项的标签。",
             "separator": "是否在分支弹出窗口中，此选项后显示分隔符。",
             "shortcut": "在分支弹出窗口中，选项末尾显示的快捷方式。",
@@ -11705,7 +11705,6 @@
         },
         "contextmenuprops": {
           "members": {
-            "activevalue": "菜单的当前选中值。",
             "arrowprops": "转发给箭头元素的属性。",
             "class": "菜单弹出窗口类",
             "contentprops": "转发至内容元素的属性。",
@@ -11720,6 +11719,7 @@
             "popupprops": "转发给弹出元素的属性。",
             "portalprops": "转发至 portal 元素的属性。",
             "pressopendelay": "从按下触发器到菜单打开所需的时间。",
+            "selectedvalue": "菜单的选中值。",
             "separatorprops": "传递给分隔符元素的属性。",
             "shortcutprops": "转发至快捷方式元素的属性。",
             "showarrow": "是否显示箭头。",
@@ -12311,7 +12311,6 @@
         },
         "dropdownmenuprops": {
           "members": {
-            "activevalue": "菜单的当前选中值。",
             "arrowprops": "转发给箭头元素的属性。",
             "class": "菜单弹出窗口类",
             "contentprops": "转发至内容元素的属性。",
@@ -12329,6 +12328,7 @@
             "placement": "位置。",
             "popupprops": "转发给弹出元素的属性。",
             "portalprops": "转发至 portal 元素的属性。",
+            "selectedvalue": "菜单的选中值。",
             "separatorprops": "传递给分隔符元素的属性。",
             "shortcutprops": "转发至快捷方式元素的属性。",
             "showarrow": "是否显示箭头。",
@@ -12906,7 +12906,6 @@
         },
         "menubarprops": {
           "members": {
-            "activevalue": "菜单的当前选中值。",
             "arrowprops": "转发给箭头元素的属性。",
             "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖",
             "aschild": "将默认渲染元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
@@ -12931,6 +12930,7 @@
             "placement": "位置。",
             "popupprops": "转发给弹出元素的属性。",
             "portalprops": "转发至 portal 元素的属性。",
+            "selectedvalue": "菜单的选中值。",
             "separatorprops": "传递给分隔符元素的属性。",
             "shortcutprops": "转发至快捷方式元素的属性。",
             "showarrow": "是否显示箭头。",
@@ -14506,7 +14506,7 @@
             "defaultexpanded": "树形菜单在初始渲染时的展开状态。当您无需控制树的状态时请使用此选项。",
             "defaultvalue": "树形菜单在初始渲染时的值。当您无需控制树的状态时请使用此选项。",
             "expanded": "树形菜单的展开值。可通过 `v-model` 进行绑定。",
-            "expandstrategy": "树形菜单的展开策略。\n\n- `keep`：保持当前展开状态；手动展开或折叠的菜单不会因激活其他菜单而受影响。\n- `active`：仅展开当前活动的菜单及其所有父级菜单；当活动菜单发生变化时，非活动菜单将被折叠。",
+            "expandstrategy": "树形菜单的展开策略。\n\n- `keep`：保持当前展开状态；手动展开或折叠的菜单不会因选中其他菜单而受影响。\n- `selected`：仅展开当前选中的菜单及其所有父级菜单；当选中的菜单发生变化时，未选中的菜单将被折叠。",
             "grouplabelprops": "传递给组标签元素的属性。",
             "groupprops": "转发至 group 元素的属性。",
             "grouprootprops": "转发至组根元素的属性。",
@@ -14514,7 +14514,7 @@
             "itemprops": "转发至 item 元素的属性。",
             "items": "由组件渲染的项。",
             "linkprops": "传递给 link 元素的属性。",
-            "modelvalue": "树形菜单的当前选中项。可通过 `v-model` 进行绑定。",
+            "modelvalue": "树形菜单的选中值。可与 `v-model` 进行绑定。",
             "pxtorem": "将像素转换为 rem 的函数。",
             "showgroupicon": "是否显示组图标。",
             "side": "水平方向。",

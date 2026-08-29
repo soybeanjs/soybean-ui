@@ -109,7 +109,7 @@ watch(highlighted, () => {
 });
 
 /** Whether a descendant of the node is currently selected (breadcrumb emphasis). */
-const isChildActive = (node: CascaderNode<DefinedValue>) =>
+const hasChildSelected = (node: CascaderNode<DefinedValue>) =>
   selectedNodes.value.some(selected => isCascaderNodeAncestor(selected, node));
 
 /** Slot props forwarded to every option, matching the option slot contract. */
@@ -119,7 +119,7 @@ const getSlotProps = (node: CascaderNode<DefinedValue>) => ({
   indeterminate: isIndeterminate(node),
   selected: isSelected(node),
   highlighted: highlighted.value?.uid === node.uid,
-  childActive: isChildActive(node),
+  childSelected: hasChildSelected(node),
   loading: loadingKeys.value.has(node.uid),
   expand: () => expandNode(node)
 });

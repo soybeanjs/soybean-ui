@@ -28,7 +28,7 @@ import type { TreeMenuBaseItemProps } from '../tree-menu/types';
  */
 export interface TreeNavBaseOptionData extends TreeMenuBaseItemProps, LinkBaseProps {
   /**
-   * Whether the option is a pure visual group container that only groups its children and never becomes active itself.
+   * Whether the option is a pure visual group container that only groups its children and never becomes selected itself.
    */
   isGroup?: boolean;
   /**
@@ -224,9 +224,9 @@ export interface TreeNavOptionCompactProps {
    */
   item: TreeNavOptionData;
   /**
-   * Whether the active selection lives inside this branch subtree.
+   * Whether the selected leaf lives inside this branch subtree.
    */
-  childActive?: boolean;
+  childSelected?: boolean;
 }
 
 /**

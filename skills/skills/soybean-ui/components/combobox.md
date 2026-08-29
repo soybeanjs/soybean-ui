@@ -19,7 +19,8 @@ Usage examples for combobox are rendered on the site.
 - ⌨️ Full keyboard navigation — Arrow keys, Enter/Space select, typeahead, Escape close
 - 📜 Optional virtual scrolling (`ComboboxVirtualizer`)
 - 🗂 Grouping with group labels and separators
-- 🧹 Cancel/clear button with optional `resetModelValueOnClear`
+- 🧹 Trigger clear icon deselects (`clearable`); the popup cancel clears only the search input
+- 🧩 `ComboboxValue` primitive renders the selected labels (or placeholder) for custom trigger layouts
 - 📊 Data-driven `ComboboxCompact` API — `items` (options use `label` / `value` fields) + grouping
 - 🎛 Controlled / uncontrolled with `v-model:open` and filter semantics (`ignoreFilter`, `resetSearchTermOnBlur`)
 - ♿ Full accessibility support — `role="combobox"` / `listbox` / `option`, `aria-activedescendant`, axe-clean
@@ -32,7 +33,7 @@ Interactive demos for combobox are rendered on the site.
 
 Structured API summary generated from build-time component metadata.
 
-- Exported symbols (18): Combobox, ComboboxAnchor, ComboboxArrow, ComboboxCancel, ComboboxCompact, ComboboxContent, ComboboxEmpty, ComboboxGroup, ComboboxGroupLabel, ComboboxInput, ComboboxItem, ComboboxItemIndicator, ComboboxPortal, ComboboxRoot, ComboboxSeparator, ComboboxTrigger, ComboboxViewport, ComboboxVirtualizer.
+- Exported symbols (20): Combobox, ComboboxAnchor, ComboboxArrow, ComboboxCancel, ComboboxClear, ComboboxCompact, ComboboxContent, ComboboxEmpty, ComboboxGroup, ComboboxGroupLabel, ComboboxInput, ComboboxItem, ComboboxItemIndicator, ComboboxPortal, ComboboxRoot, ComboboxSeparator, ComboboxTrigger, ComboboxValue, ComboboxViewport, ComboboxVirtualizer.
 
 ### Combobox
 
@@ -51,6 +52,7 @@ Properties for the Combobox component.
 - `anchorProps`: Properties forwarded to the anchor element. (type `ComboboxAnchorProps`; optional)
 - `triggerProps`: Properties forwarded to the trigger element. (type `ComboboxTriggerProps`; optional)
 - `cancelProps`: Properties forwarded to the cancel element. (type `ComboboxCancelProps`; optional)
+- `valueProps`: Properties forwarded to the value element. (type `ComboboxValueProps`; optional)
 - `portalProps`: Properties forwarded to the portal element. (type `ComboboxPortalProps`; optional)
 - `contentProps`: Properties forwarded to the content element. (type `ComboboxContentProps`; optional)
 - `viewportProps`: Properties forwarded to the viewport element. (type `ComboboxViewportProps`; optional)
@@ -68,7 +70,6 @@ Properties for the Combobox component.
 - `openOnFocus`: Whether to open the combobox when the input is focused (type `boolean`; default `false`; optional)
 - `openOnClick`: Whether to open the combobox when the input is clicked (type `boolean`; default `false`; optional)
 - `ignoreFilter`: When `true`, disable the default filters (type `boolean`; optional)
-- `resetModelValueOnClear`: When `true` the `modelValue` will be reset to `null` (or `[]` if `multiple`) (type `boolean`; optional)
 - `clearable`: Whether selected item can be cleared when `multiple` is false. (type `boolean`; optional)
 - `modelValue`: The controlled value of the selected item(s). Use this when you need to control the state of the items. Can be bound with `v-model` (type `(M extends true ? string[] : string)`; optional)
 - `defaultValue`: The default value of the selected item(s). Use this when you need to set the initial state of the items. (type `(M extends true ? string[] : string)`; optional)
@@ -114,7 +115,13 @@ Slots for the Combobox component.
 
 ### ComboboxAnchor
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the ComboboxAnchor component.
+
+- `reference`: No description. (type `ReferenceElement`; optional)
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 
 ### ComboboxArrow
 
@@ -130,6 +137,15 @@ Properties for the ComboboxCancel component.
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
 - `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 
+### ComboboxClear
+
+#### Props
+
+Properties for the ComboboxClear component.
+
+- `ariaLabel`: Aria label for the clear button. (type `string`; optional)
+- `disabled`: Whether the clear button is disabled. (type `boolean`; optional)
+
 ### ComboboxCompact
 
 #### Props
@@ -144,6 +160,7 @@ Properties for the ComboboxCompact component.
 - `anchorProps`: Properties forwarded to the anchor element. (type `ComboboxAnchorProps`; optional)
 - `triggerProps`: Properties forwarded to the trigger element. (type `ComboboxTriggerProps`; optional)
 - `cancelProps`: Properties forwarded to the cancel element. (type `ComboboxCancelProps`; optional)
+- `valueProps`: Properties forwarded to the value element. (type `ComboboxValueProps`; optional)
 - `portalProps`: Properties forwarded to the portal element. (type `ComboboxPortalProps`; optional)
 - `contentProps`: Properties forwarded to the content element. (type `ComboboxContentProps`; optional)
 - `viewportProps`: Properties forwarded to the viewport element. (type `ComboboxViewportProps`; optional)
@@ -161,7 +178,6 @@ Properties for the ComboboxCompact component.
 - `openOnFocus`: Whether to open the combobox when the input is focused (type `boolean`; default `false`; optional)
 - `openOnClick`: Whether to open the combobox when the input is clicked (type `boolean`; default `false`; optional)
 - `ignoreFilter`: When `true`, disable the default filters (type `boolean`; optional)
-- `resetModelValueOnClear`: When `true` the `modelValue` will be reset to `null` (or `[]` if `multiple`) (type `boolean`; optional)
 - `clearable`: Whether selected item can be cleared when `multiple` is false. (type `boolean`; optional)
 - `modelValue`: The controlled value of the selected item(s). Use this when you need to control the state of the items. Can be bound with `v-model` (type `(M extends true ? string[] : string)`; optional)
 - `defaultValue`: The default value of the selected item(s). Use this when you need to set the initial state of the items. (type `(M extends true ? string[] : string)`; optional)
@@ -319,7 +335,12 @@ Events for the ComboboxItem component.
 
 ### ComboboxItemIndicator
 
-- No documented props, emits, slots, or slot props were available.
+#### Props
+
+Properties for the ComboboxItemIndicator component.
+
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 
 ### ComboboxPortal
 
@@ -338,7 +359,6 @@ Properties for the ComboboxRoot component.
 - `openOnFocus`: Whether to open the combobox when the input is focused (type `boolean`; default `false`; optional)
 - `openOnClick`: Whether to open the combobox when the input is clicked (type `boolean`; default `false`; optional)
 - `ignoreFilter`: When `true`, disable the default filters (type `boolean`; optional)
-- `resetModelValueOnClear`: When `true` the `modelValue` will be reset to `null` (or `[]` if `multiple`) (type `boolean`; optional)
 - `clearable`: Whether selected item can be cleared when `multiple` is false. (type `boolean`; optional)
 - `modelValue`: The controlled value of the selected item(s). Use this when you need to control the state of the items. Can be bound with `v-model` (type `(M extends true ? string[] : string)`; optional)
 - `defaultValue`: The default value of the selected item(s). Use this when you need to set the initial state of the items. (type `(M extends true ? string[] : string)`; optional)
@@ -376,6 +396,18 @@ Properties for the ComboboxTrigger component.
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
 - `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 
+### ComboboxValue
+
+#### Props
+
+Properties for the ComboboxValue component.
+
+- `items`: Items used to resolve selected labels. (type `ComboboxOptionData[]`; optional)
+- `placeholder`: Placeholder rendered when no value is selected. (type `string`; optional)
+- `separator`: Separator used to join multiple selected labels. (type `string`; default `', '`; optional)
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
+
 ### ComboboxViewport
 
 #### Props
@@ -399,7 +431,7 @@ Properties for the ComboboxVirtualizer component.
 
 ### Architecture and benchmark differences
 
-SoybeanUI builds combobox by reusing the listbox base plus Popper positioning: `ComboboxRoot` (selection state + `useControllableState(open)` + three-state filter) → `ComboboxInput` (`role="combobox"` + `aria-autocomplete`) → `ComboboxTrigger` → `ComboboxContentImpl` (DismissableLayer + FocusScope + bodyLock) → `ComboboxItem` → `ListboxItem`. The `scv()` recipe `comboboxVariants` declares 15 slots and 7 size variants. This mirrors reka-ui / shadcn combobox semantics, with virtual scrolling and the data-driven compact API as SoybeanUI differentiators.
+SoybeanUI builds combobox by reusing the listbox base plus Popper positioning: `ComboboxRoot` (selection state + `useControllableState(open)` + three-state filter) → `ComboboxInput` (`role="combobox"` + `aria-autocomplete`) → `ComboboxTrigger` → `ComboboxContentImpl` (DismissableLayer + FocusScope + bodyLock) → `ComboboxItem` → `ListboxItem`. The `scv()` recipe `comboboxVariants` declares 16 slots and 7 size variants. This mirrors reka-ui / shadcn combobox semantics, with virtual scrolling and the data-driven compact API as SoybeanUI differentiators.
 
 | Capability                      | SoybeanUI | reka-ui `Combobox` | shadcn `Combobox` | Ant Design `Select` (showSearch) |
 | :------------------------------ | :-------: | :----------------: | :---------------: | :------------------------------: |
@@ -430,9 +462,9 @@ SoybeanUI builds combobox by reusing the listbox base plus Popper positioning: `
 
 Add a `ComboboxVirtualizer` (or the equivalent compact flag) in the content; it activates an internal virtual list while preserving keyboard navigation.
 
-### How do I clear the input and reset the model value?
+### How do I clear the selection or just the search term?
 
-Pass `clearable`. `resetModelValueOnClear` decides whether clearing also emits an empty `modelValue` or only resets the search term.
+Pass `clearable`. With a selected value, the trigger shows an ✕ clear icon — clicking it deselects and emits an empty `modelValue` (`undefined`, or `[]` when `multiple`). Inside the popup, the cancel button clears only the search input, keeping the selection.
 
 ### Why is a disabled item still selectable?
 

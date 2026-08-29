@@ -263,10 +263,10 @@ describe('SMenuOptions', () => {
     });
   });
 
-  describe('active state', () => {
-    it('marks the active item with data-active', async () => {
+  describe('selected state', () => {
+    it('marks the selected item with data-selected', async () => {
       const wrapper = mountMenu({
-        menuProps: { activeValue: 'print' },
+        menuProps: { selectedValue: 'print' },
         items: [
           { value: 'new-tab', label: 'New Tab' },
           { value: 'print', label: 'Print' }
@@ -276,8 +276,8 @@ describe('SMenuOptions', () => {
       await openMenu(wrapper);
 
       const menuItems = wrapper.findAll('[role="menuitem"]');
-      expect(menuItems[0]?.attributes('data-active')).toBe('false');
-      expect(menuItems[1]?.attributes('data-active')).toBe('true');
+      expect(menuItems[0]?.attributes('data-selected')).toBe('false');
+      expect(menuItems[1]?.attributes('data-selected')).toBe('true');
 
       wrapper.unmount();
     });

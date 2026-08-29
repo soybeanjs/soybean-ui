@@ -133,7 +133,7 @@ Slot props for a compact page tab item.
 
 - `item`: Current item data. (type `T`; required)
 - `index`: Index of the current item. (type `number`; required)
-- `active`: Whether the current item is active. (type `boolean`; required)
+- `selected`: Whether the current item is selected. (type `boolean`; required)
 - `closable`: Whether the current item can be closed. (type `boolean`; required)
 
 ### PageTabsItem

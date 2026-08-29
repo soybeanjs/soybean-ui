@@ -94,7 +94,7 @@ export function createTreeNavBranchPopupBind(ctx: TreeNavRootContextParams) {
     portalProps: portalProps.value,
     popupProps: popupProps.value,
     arrowProps: arrowProps.value,
-    activeValue: selected.value,
+    selectedValue: selected.value,
     itemProps: itemProps.value,
     linkProps: linkProps.value,
     groupLabelProps: groupLabelProps.value,
