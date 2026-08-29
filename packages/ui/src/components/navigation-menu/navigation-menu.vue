@@ -6,6 +6,9 @@ import { keysOf } from '@soybeanjs/utils';
 import { navigationMenuVariants } from '@/styles/navigation-menu';
 import type { NavigationMenuProps, NavigationMenuEmits, NavigationMenuSlots } from './types';
 
+/**
+ * @deprecated Superseded by `SNavMenu`. Will be removed in v1.0.
+ */
 defineOptions({
   name: 'SNavigationMenu'
 });

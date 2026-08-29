@@ -1,5 +1,7 @@
 # 导航菜单
 
+> **⚠️ 已废弃:** `NavigationMenu` 已被 [`NavMenu`](/components/nav-menu) 取代,后者是唯一准入的导航菜单家族。该家族已冻结——不再新增槽位、特性或 prop,仅修复关键缺陷——并将在 **v1.0** 移除。新代码请使用 `SNavMenu`;存量代码可参照下方[迁移到 NavMenu](#迁移到-navmenu) 立即迁移。
+
 ## 概述
 
 NavigationMenu 用于构建站点级的水平或垂直导航，支持任意层级的子菜单、悬停 / 点击双触发、方向键键盘导航，以及随激活项平滑移动的指示器与视口。
@@ -35,6 +37,31 @@ NavigationMenu 用于构建站点级的水平或垂直导航，支持任意层�
 ## API
 
 <ComponentApi component="navigation-menu" />
+
+## 迁移到 NavMenu
+
+[`NavMenu`](/components/nav-menu) 建模同一个领域——站点级导航、悬停 / 点击双触发、键盘导航、定位视口、数据驱动 `items` API——但直接构建在单个共享 Popper 表面上:整个 viewport 就是单个 `PopperPositioner`,其 reference 动态切换到激活触发器,悬停时序运行在单个共享状态机上。Root props 高度同构(`modelValue` / `defaultValue`、`orientation`、`dir`、`delayDuration`、`skipDelayDuration`、`disableClickTrigger`、`disableHoverTrigger`、`disablePointerLeaveClose`)。
+
+### 组件映射
+
+| NavigationMenu(已废弃)                                                               | NavMenu                                   |
+| :----------------------------------------------------------------------------------- | :---------------------------------------- |
+| `SNavigationMenu` / `NavigationMenuCompact`                                          | `SNavMenu` / `NavMenuCompact`             |
+| `NavigationMenuRoot` / `List` / `Item` / `Trigger` / `Content` / `Link` / `Viewport` | 同名,前缀改为 `NavMenu`                   |
+| `NavigationMenuSubList`                                                              | `NavMenuSubTrigger` + `NavMenuSubContent` |
+| `NavigationMenuIndicator`                                                            | —(共享 viewport 自带 `PopperArrow`)       |
+| `provideNavigationMenuUi`                                                            | `provideNavMenuUi`                        |
+
+### 类型映射
+
+所有导出的 `NavigationMenu*` 类型都有同后缀的 `NavMenu*` 对应物:`NavigationMenuRootProps` → `NavMenuRootProps`、`NavigationMenuOptionData` → `NavMenuOptionData`、`NavigationMenuUiSlot` → `NavMenuUiSlot`,以此类推。
+
+### 行为差异
+
+- **子菜单表面** — `NavigationMenu` 把子项渲染在指示器 + 视口组合内;`NavMenu` 在项的触发器旁打开嵌套浮层(`NavMenuSubTrigger` / `NavMenuSubContent`),`NavMenuViewport` 与 `NavMenuSubContent` 均支持 `sideOffset`。
+- **指示器** — `NavMenu` 没有独立的指示器原语;箭头位于共享 viewport 上,跟随激活触发器。
+- **挂载控制** — `NavigationMenuRoot` 暴露 `unmountOnHide`;`NavMenu` 改为在内容原语上支持 `forceMount`。
+- **UI 槽位** — 槽位集合不同(`NavigationMenuUiSlot` 声明 19 个槽位,`NavMenuUiSlot` 20 个,新增 `subTrigger` / `subContent` / `positioner` 等);`class`、`size` 与 `ui` prop 含义不变。
 
 ## 备注
 

@@ -16,6 +16,8 @@ import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the NavigationMenuRoot component.
+ *
+ * @deprecated Use `NavMenuRootProps` instead. Will be removed in v1.0.
  */
 export interface NavigationMenuRootProps extends BaseProps {
   /** The controlled value of the menu item to activate. Can be used as `v-model`. */
@@ -76,6 +78,8 @@ export interface NavigationMenuRootProps extends BaseProps {
 
 /**
  * Events for the NavigationMenuRoot component.
+ *
+ * @deprecated Use `NavMenuRootEmits` instead. Will be removed in v1.0.
  */
 export type NavigationMenuRootEmits = {
   /**
@@ -86,6 +90,8 @@ export type NavigationMenuRootEmits = {
 
 /**
  * Properties for the NavigationMenuViewport component.
+ *
+ * @deprecated Use `NavMenuViewportProps` instead. Will be removed in v1.0.
  */
 export interface NavigationMenuViewportProps extends ForceMountProps, BaseProps {
   /**
@@ -96,24 +102,34 @@ export interface NavigationMenuViewportProps extends ForceMountProps, BaseProps 
 
 /**
  * Properties for the NavigationMenuContentImpl component.
+ *
+ * @deprecated Use `NavMenuContentProps` instead. Will be removed in v1.0.
  */
 export interface NavigationMenuContentImplProps extends DismissableLayerProps, BaseProps {}
 /**
  * Events for the NavigationMenuContentImpl component.
+ *
+ * @deprecated Use `NavMenuContentEmits` instead. Will be removed in v1.0.
  */
 export type NavigationMenuContentImplEmits = DismissableLayerEmits;
 
 /**
  * Properties for the NavigationMenuContent component.
+ *
+ * @deprecated Use `NavMenuContentProps` instead. Will be removed in v1.0.
  */
 export interface NavigationMenuContentProps extends NavigationMenuContentImplProps, ForceMountProps {}
 /**
  * Events for the NavigationMenuContent component.
+ *
+ * @deprecated Use `NavMenuContentEmits` instead. Will be removed in v1.0.
  */
 export type NavigationMenuContentEmits = NavigationMenuContentImplEmits;
 
 /**
  * Properties for the NavigationMenuTrigger component.
+ *
+ * @deprecated Use `NavMenuTriggerProps` instead. Will be removed in v1.0.
  */
 export interface NavigationMenuTriggerProps extends PrimitiveWithBaseProps {
   /**
@@ -124,16 +140,22 @@ export interface NavigationMenuTriggerProps extends PrimitiveWithBaseProps {
 
 /**
  * Properties for the NavigationMenuList component.
+ *
+ * @deprecated Use `NavMenuListProps` instead. Will be removed in v1.0.
  */
 export interface NavigationMenuListProps extends BaseProps {}
 
 /**
  * Properties for the NavigationMenuSubList component.
+ *
+ * @deprecated Use `NavMenuSubContentProps` instead. Will be removed in v1.0.
  */
 export interface NavigationMenuSubListProps extends BaseProps {}
 
 /**
  * Properties for the NavigationMenuItem component.
+ *
+ * @deprecated Use `NavMenuItemProps` instead. Will be removed in v1.0.
  */
 export interface NavigationMenuItemProps extends BaseProps {
   /**
@@ -144,6 +166,8 @@ export interface NavigationMenuItemProps extends BaseProps {
 
 /**
  * Properties for the NavigationMenuLink component.
+ *
+ * @deprecated Use `NavMenuLinkProps` instead. Will be removed in v1.0.
  */
 export interface NavigationMenuLinkProps extends Omit<LinkProps, 'onSelect'> {
   /** Used to identify the link as the currently active page. */
@@ -152,6 +176,8 @@ export interface NavigationMenuLinkProps extends Omit<LinkProps, 'onSelect'> {
 
 /**
  * Events for the NavigationMenuLink component.
+ *
+ * @deprecated Use `NavMenuLinkEmits` instead. Will be removed in v1.0.
  */
 export type NavigationMenuLinkEmits = {
   /**
@@ -162,11 +188,15 @@ export type NavigationMenuLinkEmits = {
 
 /**
  * Properties for the NavigationMenuIndicator component.
+ *
+ * @deprecated The `NavigationMenu` family is superseded by `NavMenu`.; `NavMenu` has no indicator concept. Will be removed in v1.0.
  */
 export interface NavigationMenuIndicatorProps extends ForceMountProps, BaseProps {}
 
 /**
  * Properties for the NavigationMenuSub component.
+ *
+ * @deprecated Sub navigation is modeled by `NavMenuSubTrigger` / `NavMenuSubContent`. Will be removed in v1.0.
  */
 export interface NavigationMenuSubProps extends BaseProps {
   /**
@@ -180,16 +210,22 @@ export interface NavigationMenuSubProps extends BaseProps {
 }
 /**
  * Events for the NavigationMenuSub component.
+ *
+ * @deprecated Sub navigation is modeled by `NavMenuSubTrigger` / `NavMenuSubContent`. Will be removed in v1.0.
  */
 export type NavigationMenuSubEmits = NavigationMenuRootEmits;
 
 /**
  * Type information for MotionAttribute.
+ *
+ * @deprecated The `NavigationMenu` family is superseded by `NavMenu`.. Will be removed in v1.0.
  */
 export type MotionAttribute = 'to-start' | 'to-end' | 'from-start' | 'from-end';
 
 /**
  * Type information for NavigationMenuViewportPosition.
+ *
+ * @deprecated The `NavigationMenu` family is superseded by `NavMenu`.. Will be removed in v1.0.
  */
 export interface NavigationMenuViewportPosition {
   /**
@@ -204,6 +240,8 @@ export interface NavigationMenuViewportPosition {
 
 /**
  * Parameters used to create the NavigationMenuRoot context.
+ *
+ * @deprecated Use `NavMenuRootContextParams` instead. Will be removed in v1.0.
  */
 export interface NavigationMenuRootContextParams extends PropsToContext<
   Required<NavigationMenuRootProps>,
@@ -228,6 +266,8 @@ export interface NavigationMenuRootContextParams extends PropsToContext<
 
 /**
  * Parameters used to create the NavigationMenuItem context.
+ *
+ * @deprecated Use `NavMenuItemContextParams` instead. Will be removed in v1.0.
  */
 export interface NavigationMenuItemContextParams {
   /**
@@ -266,6 +306,8 @@ export interface NavigationMenuItemContextParams {
 
 /**
  * Available UI slots for the NavigationMenu component.
+ *
+ * @deprecated Use `NavMenuUiSlot` instead. Will be removed in v1.0.
  */
 export type NavigationMenuUiSlot =
   | 'root'
@@ -290,11 +332,15 @@ export type NavigationMenuUiSlot =
 
 /**
  * UI class overrides for the NavigationMenu component.
+ *
+ * @deprecated Use `NavMenuUi` instead. Will be removed in v1.0.
  */
 export type NavigationMenuUi = UiClass<NavigationMenuUiSlot>;
 
 /**
  * Option data for the NavigationMenu component.
+ *
+ * @deprecated Use `NavMenuOptionData` instead. Will be removed in v1.0.
  */
 export interface NavigationMenuOptionData extends LinkBaseProps {
   /** The value of the option. */
@@ -317,6 +363,8 @@ export interface NavigationMenuOptionData extends LinkBaseProps {
 
 /**
  * Properties for the NavigationMenuSubCompact component.
+ *
+ * @deprecated Use `NavMenuSubOptionCompactProps` instead. Will be removed in v1.0.
  */
 export interface NavigationMenuSubOptionCompactProps {
   /**
@@ -335,11 +383,15 @@ export interface NavigationMenuSubOptionCompactProps {
 
 /**
  * Events for the NavigationMenuSubOptionCompact component.
+ *
+ * @deprecated Use `NavMenuSubOptionCompactEmits` instead. Will be removed in v1.0.
  */
 export type NavigationMenuSubOptionCompactEmits = NavigationMenuLinkEmits;
 
 /**
  * Slots for the NavigationMenuSubOptionCompact component.
+ *
+ * @deprecated Use `NavMenuSubOptionCompactSlots` instead. Will be removed in v1.0.
  */
 export type NavigationMenuSubOptionCompactSlots = {
   item: (props: { item: NavigationMenuOptionData; isTrigger?: boolean }) => any;
@@ -351,6 +403,8 @@ export type NavigationMenuSubOptionCompactSlots = {
 
 /**
  * Properties for the NavigationMenuCompact component.
+ *
+ * @deprecated Use `NavMenuOptionCompactProps` instead. Will be removed in v1.0.
  */
 export interface NavigationMenuOptionCompactProps {
   /**
@@ -397,6 +451,8 @@ export interface NavigationMenuOptionCompactProps {
 
 /**
  * Events for the NavigationMenuOptionCompact component.
+ *
+ * @deprecated Use `NavMenuOptionCompactEmits` instead. Will be removed in v1.0.
  */
 export type NavigationMenuOptionCompactEmits = NavigationMenuSubEmits &
   NavigationMenuContentEmits &
@@ -404,6 +460,8 @@ export type NavigationMenuOptionCompactEmits = NavigationMenuSubEmits &
 
 /**
  * Slots for the NavigationMenuOptionCompact component.
+ *
+ * @deprecated Use `NavMenuOptionCompactSlots` instead. Will be removed in v1.0.
  */
 export type NavigationMenuOptionCompactSlots = NavigationMenuSubOptionCompactSlots & {
   'item-trigger-icon': (props: { item: NavigationMenuOptionData }) => any;
@@ -411,6 +469,8 @@ export type NavigationMenuOptionCompactSlots = NavigationMenuSubOptionCompactSlo
 
 /**
  * Properties for the NavigationMenuCompact component.
+ *
+ * @deprecated Use `NavMenuCompactProps` instead. Will be removed in v1.0.
  */
 export interface NavigationMenuCompactProps
   extends NavigationMenuRootProps, Omit<NavigationMenuOptionCompactProps, 'item'> {
@@ -420,10 +480,14 @@ export interface NavigationMenuCompactProps
 
 /**
  * Events for the NavigationMenuCompact component.
+ *
+ * @deprecated Use `NavMenuCompactEmits` instead. Will be removed in v1.0.
  */
 export type NavigationMenuCompactEmits = NavigationMenuRootEmits & NavigationMenuOptionCompactEmits;
 
 /**
  * Slots for the NavigationMenuCompact component.
+ *
+ * @deprecated Use `NavMenuCompactSlots` instead. Will be removed in v1.0.
  */
 export type NavigationMenuCompactSlots = NavigationMenuOptionCompactSlots;

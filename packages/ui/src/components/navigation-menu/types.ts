@@ -9,6 +9,8 @@ import type { ThemeSize } from '@/theme';
 
 /**
  * Properties for the NavigationMenu component.
+ *
+ * @deprecated Use `NavMenuProps` instead. Will be removed in v1.0.
  */
 export interface NavigationMenuProps extends NavigationMenuCompactProps {
   /**
@@ -27,10 +29,14 @@ export interface NavigationMenuProps extends NavigationMenuCompactProps {
 
 /**
  * Events for the NavigationMenu component.
+ *
+ * @deprecated Use `NavMenuEmits` instead. Will be removed in v1.0.
  */
 export type NavigationMenuEmits = NavigationMenuCompactEmits;
 
 /**
  * Slots for the NavigationMenu component.
+ *
+ * @deprecated Use `NavMenuSlots` instead. Will be removed in v1.0.
  */
 export type NavigationMenuSlots = NavigationMenuCompactSlots;
