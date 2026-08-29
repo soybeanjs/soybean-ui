@@ -19,7 +19,7 @@ export const formVariants = scv({
     control: 'group-data-[orientation=horizontal]:flex-1 group-data-[orientation=horizontal]:min-w-0',
     description: `text-muted-foreground m-0 group-data-[orientation=horizontal]:w-full`,
     error: [
-      'font-medium text-destructive m-0',
+      'font-medium text-destructive m-0 animate-in fade-in-0 duration-300 motion-reduce:animate-none',
       'group-data-[orientation=horizontal]:absolute group-data-[orientation=horizontal]:start-0 group-data-[orientation=horizontal]:top-full group-data-[orientation=horizontal]:w-full'
     ]
   },

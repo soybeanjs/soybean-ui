@@ -24,7 +24,7 @@ globalThis.fetch = vi.fn(() =>
   )
 );
 
-// @formkit/auto-animate (used by SForm's control wrapper via vAutoAnimate) calls
+// @formkit/auto-animate (used by STree via vAutoAnimate) calls
 // `el.animate()` on DOM mutations and removes leaving elements when the returned
 // animation fires its "finish" event. happy-dom does not implement Element.animate,
 // so stub it with a shim that fires "finish" immediately — otherwise exit animations

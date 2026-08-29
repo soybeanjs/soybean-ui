@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, useSlots, mergeProps } from 'vue';
-import { vAutoAnimate } from '@formkit/auto-animate/vue';
 import { useOmitProps } from '../../composables';
 import { useFormCompactContext } from './context';
 import FormControl from './form-control.vue';
@@ -57,7 +56,7 @@ const errorProps = computed(() => mergeProps({ ...context.errorProps.value }, { 
     <FormLabel v-if="slots.label || label" v-bind="labelProps">
       <slot name="label">{{ label }}</slot>
     </FormLabel>
-    <FormControl v-auto-animate v-bind="controlProps">
+    <FormControl v-bind="controlProps">
       <slot v-bind="slotProps" />
       <FormError v-if="error" v-bind="errorProps">{{ error }}</FormError>
     </FormControl>

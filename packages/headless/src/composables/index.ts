@@ -11,6 +11,7 @@ export * from './use-floating';
 export * from './use-focus-guards';
 export * from './use-focus-scope';
 export * from './use-forward-element';
+export * from './use-flip';
 export * from './use-forward-listeners';
 export * from './use-fuse';
 export * from './use-grace-area';
