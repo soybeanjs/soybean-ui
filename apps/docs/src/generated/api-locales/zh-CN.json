@@ -8091,8 +8091,10 @@
       },
       "packages_headless_src_components_split_nav_types": {
         "splitnavmode": "SplitNav 组件可用的菜单样式。\n\n- `dual-vertical`：一级垂直 + 其余树状结构垂直。\n- `vertical-horizontal`：一级垂直布局 + 嵌套的 TreeNav。\n- `horizontal-vertical`：一级水平布局 + 嵌套的 TreeMenu。\n- `horizontal-dual-vertical`：一级水平布局 + 嵌套的双垂直布局。",
+        "splitnavoptiondata": "",
         "splitnavrootemits": {
           "callables": {
+            "open": "",
             "select": "当选择叶子菜单项时触发。",
             "update_collapsed": "当嵌套的 TreeMenu 窗格的折叠状态发生变化时触发。",
             "update_modelvalue": "当模型值发生变化时触发。"
@@ -13745,6 +13747,7 @@
       "packages_ui_src_components_split_nav_types": {
         "splitnavemits": {
           "callables": {
+            "open": "",
             "select": "当选择叶子菜单项时触发。",
             "update_collapsed": "当嵌套的 TreeMenu 窗格的折叠状态发生变化时触发。",
             "update_modelvalue": "当模型值发生变化时触发。"

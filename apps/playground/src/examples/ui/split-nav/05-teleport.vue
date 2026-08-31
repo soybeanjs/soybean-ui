@@ -12,7 +12,7 @@ const active = ref('');
       <span class="text-sm font-medium">Header mount</span>
     </header>
     <div class="flex min-h-0 flex-1 gap-3">
-      <aside id="split-nav-sider" class="w-56 shrink-0 border rounded-md bg-background">
+      <aside id="split-nav-sider" class="min-w-56 flex flex-col shrink-0 border rounded-md bg-background">
         <span class="flex h-full items-center justify-center text-sm text-muted-foreground">Sider mount</span>
       </aside>
       <main class="flex min-h-0 flex-1 items-center justify-center border rounded-md">

@@ -8091,8 +8091,10 @@
       },
       "packages_headless_src_components_split_nav_types": {
         "splitnavmode": "Available menu shapes for the SplitNav component.\n\n- `dual-vertical`: level-1 vertical + remaining tree vertical.\n- `vertical-horizontal`: level-1 vertical + nested TreeNav.\n- `horizontal-vertical`: level-1 horizontal + nested TreeMenu.\n- `horizontal-dual-vertical`: level-1 horizontal + nested dual-vertical.",
+        "splitnavoptiondata": "Recursive option data for the SplitNav component.",
         "splitnavrootemits": {
           "callables": {
+            "open": "Emitted when a menu item with children is activated and its nested pane opens.\n\nThe payload is the complete option data of the activated parent, including\nchildren, so consumers can react to the expansion — for example, activate\nthe first child at the same time.",
             "select": "Emitted when a leaf menu item is chosen.",
             "update_collapsed": "Emitted when the nested TreeMenu pane collapsed state changes.",
             "update_modelvalue": "Emitted when the model value changes."
@@ -13745,6 +13747,7 @@
       "packages_ui_src_components_split_nav_types": {
         "splitnavemits": {
           "callables": {
+            "open": "Emitted when a menu item with children is activated and its nested pane opens.\n\nThe payload is the complete option data of the activated parent, including\nchildren, so consumers can react to the expansion — for example, activate\nthe first child at the same time.",
             "select": "Emitted when a leaf menu item is chosen.",
             "update_collapsed": "Emitted when the nested TreeMenu pane collapsed state changes.",
             "update_modelvalue": "Emitted when the model value changes."

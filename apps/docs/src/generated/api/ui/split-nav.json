@@ -287,12 +287,12 @@
       "emits": {
         "kind": "emits",
         "name": "SplitNavEmits",
-        "type": "TypeAlias SplitNavEmits: SplitNavRootEmits",
-        "resolvedType": "{ \"update:modelValue\": [value: string]; select: [key: string, event?: Event | undefined]; \"update:collapsed\": [value: boolean] }",
+        "type": "TypeAlias SplitNavEmits<T>: SplitNavRootEmits<T>",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; select: [key: string, event?: Event | undefined]; open: [item: SplitNavOptionData<T>, event?: Event | undefined]; \"update:collapsed\": [value: boolean] }",
         "description": "Events for the SplitNav component.",
         "descriptionKey": "api.generated.packages_ui_src_components_split_nav_types.splitnavemits.emits",
         "sourcePath": "packages/ui/src/components/split-nav/types.ts",
-        "typeParameters": [],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -330,6 +330,43 @@
             ]
           },
           {
+            "name": "open",
+            "type": "[item: SplitNavOptionData<T>, event?: Event | undefined]",
+            "parameters": "item: SplitNavOptionData<T>, event?: Event | undefined",
+            "required": true,
+            "description": "Emitted when a menu item with children is activated and its nested pane opens.\n\nThe payload is the complete option data of the activated parent, including\nchildren, so consumers can react to the expansion — for example, activate\nthe first child at the same time.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_nav_types.splitnavemits.callables.open",
+            "sourcePath": "packages/headless/src/components/split-nav/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "SplitNavOptionData",
+                "kind": "typeAlias",
+                "type": "Omit<T, 'children'> & { children?: SplitNavOptionData<T>[] | undefined; }",
+                "resolvedType": null,
+                "description": "Recursive option data for the SplitNav component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.splitnavoptiondata",
+                "sourcePath": "packages/headless/src/components/split-nav/types.ts",
+                "typeParameters": ["T extends SplitNavBaseOptionData = SplitNavBaseOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "update:collapsed",
             "type": "[value: boolean]",
             "parameters": "value: boolean",
@@ -340,52 +377,7 @@
             "referencedTypes": []
           }
         ],
-        "referencedTypes": [
-          {
-            "name": "SplitNavRootEmits",
-            "kind": "typeAlias",
-            "type": "{ 'update:modelValue': [value: string]; select: [key: string, event?: Event]; 'update:collapsed': [value: boolean]; }",
-            "resolvedType": "{ \"update:modelValue\": [value: string]; select: [key: string, event?: Event | undefined]; \"update:collapsed\": [value: boolean] }",
-            "description": "Events for the SplitNavRoot component.",
-            "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.splitnavrootemits",
-            "sourcePath": "packages/headless/src/components/split-nav/types.ts",
-            "typeParameters": [],
-            "external": false,
-            "members": [],
-            "callables": [
-              {
-                "name": "update:modelValue",
-                "type": "[value: string]",
-                "parameters": "value: string",
-                "required": true,
-                "description": "Emitted when the model value changes.",
-                "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.splitnavrootemits.callables.update_modelvalue",
-                "sourcePath": "packages/headless/src/components/split-nav/types.ts",
-                "referencedTypes": []
-              },
-              {
-                "name": "select",
-                "type": "[key: string, event?: Event | undefined]",
-                "parameters": "key: string, event?: Event | undefined",
-                "required": true,
-                "description": "Emitted when a leaf menu item is chosen.",
-                "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.splitnavrootemits.callables.select",
-                "sourcePath": "packages/headless/src/components/split-nav/types.ts",
-                "referencedTypes": []
-              },
-              {
-                "name": "update:collapsed",
-                "type": "[value: boolean]",
-                "parameters": "value: boolean",
-                "required": true,
-                "description": "Emitted when the nested TreeMenu pane collapsed state changes.",
-                "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.splitnavrootemits.callables.update_collapsed",
-                "sourcePath": "packages/headless/src/components/split-nav/types.ts",
-                "referencedTypes": []
-              }
-            ]
-          }
-        ]
+        "referencedTypes": []
       },
       "slots": {
         "kind": "slots",
@@ -757,12 +749,12 @@
       "emits": {
         "kind": "emits",
         "name": "SplitNavRootEmits",
-        "type": "TypeAlias SplitNavRootEmits",
-        "resolvedType": "{ \"update:modelValue\": [value: string]; select: [key: string, event?: Event | undefined]; \"update:collapsed\": [value: boolean] }",
+        "type": "TypeAlias SplitNavRootEmits<T>",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; select: [key: string, event?: Event | undefined]; open: [item: SplitNavOptionData<T>, event?: Event | undefined]; \"update:collapsed\": [value: boolean] }",
         "description": "Events for the SplitNavRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.splitnavrootemits.emits",
         "sourcePath": "packages/headless/src/components/split-nav/types.ts",
-        "typeParameters": [],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -794,6 +786,43 @@
                 "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
                 "typeParameters": [],
                 "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "open",
+            "type": "[item: SplitNavOptionData<T>, event?: Event | undefined]",
+            "parameters": "item: SplitNavOptionData<T>, event?: Event | undefined",
+            "required": true,
+            "description": "Emitted when a menu item with children is activated and its nested pane opens.\n\nThe payload is the complete option data of the activated parent, including\nchildren, so consumers can react to the expansion — for example, activate\nthe first child at the same time.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.splitnavrootemits.callables.open",
+            "sourcePath": "packages/headless/src/components/split-nav/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "SplitNavOptionData",
+                "kind": "typeAlias",
+                "type": "Omit<T, 'children'> & { children?: SplitNavOptionData<T>[] | undefined; }",
+                "resolvedType": null,
+                "description": "Recursive option data for the SplitNav component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.splitnavoptiondata",
+                "sourcePath": "packages/headless/src/components/split-nav/types.ts",
+                "typeParameters": ["T extends SplitNavBaseOptionData = SplitNavBaseOptionData"],
+                "external": false,
                 "members": [],
                 "callables": []
               }

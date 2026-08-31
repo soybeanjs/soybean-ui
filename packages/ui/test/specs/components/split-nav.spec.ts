@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { defineComponent, h, ref } from 'vue';
+import { defineComponent, h, ref, shallowRef } from 'vue';
 import { mount } from '@vue/test-utils';
 import SSplitNav from '@/components/split-nav/split-nav.vue';
 import { getA11yViolations } from '../../shared/a11y';
@@ -456,6 +456,119 @@ describe('SSplitNav', () => {
 
       expect(wrapper.find('[data-soybean-split-nav-sub-vertical]').attributes('data-state')).toBe('collapsed');
       expect(wrapper.find('[data-soybean-tree-menu-root]').attributes('data-state')).toBe('collapsed');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('open event', () => {
+    it('emits open with the complete parent item when a parent is clicked', async () => {
+      const wrapper = mount(SSplitNav, {
+        props: {
+          items,
+          mode: 'dual-vertical'
+        },
+        attachTo: document.body
+      });
+
+      const parent = wrapper.find('[data-soybean-split-nav-first-level-item][data-value="workspace"]');
+
+      await parent.trigger('click');
+
+      expect(wrapper.emitted('open')).toHaveLength(1);
+      expect(wrapper.emitted('open')?.at(-1)?.[0]).toMatchObject({
+        value: 'workspace',
+        label: 'Workspace',
+        children: [{ value: 'projects' }, { value: 'tasks' }]
+      });
+      expect(wrapper.emitted('select')).toBeFalsy();
+      expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+
+      wrapper.unmount();
+    });
+
+    it('does not emit open when a leaf is clicked', async () => {
+      const wrapper = mount(SSplitNav, {
+        props: {
+          items,
+          mode: 'dual-vertical'
+        },
+        attachTo: document.body
+      });
+
+      const leaf = wrapper.find('[data-soybean-split-nav-first-level-item][data-value="overview"]');
+
+      await leaf.trigger('click');
+
+      expect(wrapper.emitted('open')).toBeFalsy();
+      expect(wrapper.emitted('select')?.at(-1)?.[0]).toBe('overview');
+
+      wrapper.unmount();
+    });
+
+    it('emits open when a vertical first-level parent is opened with ArrowLeft', async () => {
+      const wrapper = mount(SSplitNav, {
+        props: {
+          items,
+          mode: 'dual-vertical'
+        },
+        attachTo: document.body
+      });
+
+      const parent = wrapper.find('[data-soybean-split-nav-first-level-item][data-value="workspace"]');
+
+      await parent.trigger('keydown', { key: 'ArrowLeft' });
+
+      expect(wrapper.emitted('open')).toHaveLength(1);
+      expect(wrapper.emitted('open')?.at(-1)?.[0]).toMatchObject({ value: 'workspace' });
+      expect(wrapper.emitted('select')).toBeFalsy();
+
+      wrapper.unmount();
+    });
+
+    it('activates the first child when the host reacts to open', async () => {
+      const Host = defineComponent({
+        setup() {
+          const active = shallowRef('');
+
+          function handleOpen(item: { children?: { value: string }[] }) {
+            const firstChild = item.children?.[0];
+
+            if (firstChild) {
+              active.value = firstChild.value;
+            }
+          }
+
+          return {
+            active,
+            items,
+            handleOpen
+          };
+        },
+        template: `
+          <div>
+            <span data-test="active">{{ active }}</span>
+            <SSplitNav v-model="active" mode="dual-vertical" :items="items" @open="handleOpen" />
+          </div>
+        `
+      });
+
+      const wrapper = mount(Host, {
+        global: {
+          components: { SSplitNav }
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[data-soybean-split-nav-first-level-item][data-value="workspace"]').trigger('click');
+
+      expect(wrapper.find('[data-test="active"]').text()).toBe('projects');
+      expect(
+        wrapper
+          .find('[data-soybean-split-nav-first-level-item][data-value="workspace"]')
+          .attributes('data-child-selected')
+      ).toBeDefined();
+      expect(wrapper.find('[data-soybean-split-nav-sub-vertical]').exists()).toBe(true);
 
       wrapper.unmount();
     });

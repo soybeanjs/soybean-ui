@@ -17,6 +17,7 @@
 - 🪟 Teleport 挂载 — `verticalMountedId` / `horizontalMountedId` 将面板挂到 `#id` 元素（`dual-vertical` 整块挂载）
 - 🪜 路径切分 — `openPath` 控制子面板展开，`modelValue` 只表示选中的叶子
 - 🔄 受控/非受控 — `modelValue` / `defaultValue` 只表示选中的叶子；点击父级只展开子面板，不会改 `v-model`，也不会带上选中样式
+- 📢 展开事件 — 激活父级时触发 `open`，携带该父级的完整菜单数据（含子级），可用于同时激活子级第一项
 - 🧩 复用 `TreeMenuCompact`（竖向子级）与 `TreeNavCompact`（横向子级）
 - 🎨 6 档尺寸 + 样式注入 — `size` 从 xs 到 2xl；`class` / `ui` 覆盖各命名插槽
 - ✏️ 高度可定制 — `first-level-item` / `item` / `item-leading` / `item-trailing` 插槽
@@ -39,6 +40,7 @@
 - 04 横双竖 — 顶部横条 + 嵌套 dual-vertical
 - 05 挂载 — 将面板挂载到外部 `#id` 元素
 - 06 定制 — 通过插槽自定义一级与子级内容
+- 07 展开事件 — 监听 `open`，点击父级时同时激活子级第一项
 
 ## API
 
@@ -62,6 +64,7 @@
 - 面板默认原地渲染；仅在需要挂到外部元素时才设置 `horizontalMountedId` / `verticalMountedId`（传不带 `#` 的 id）。
 - `dual-vertical` 以及 `horizontal-dual-vertical` 里嵌套的 dual-vertical，两列竖栏会通过 `verticalMountedId` **整块**挂载。混合模式则一级与子级独立挂载。
 - 点击父级只会展开子面板（`data-state="open"`），不会改 `v-model`，也不会设置 `data-selected`；点击叶子才会更新 `v-model` 并触发 `select`，选中的叶子渲染 `data-selected="true"`。
+- 激活父级（点击或键盘）会触发 `open` 事件，携带该父级的完整菜单数据（含子级）；只有带可见子级的父级会触发，叶子不会。
 - 各 `mode` 的 flex 布局定义在 UI 样式配方中；无样式层不携带任何布局类。
 
 ## 常见问题
@@ -88,6 +91,34 @@
 ### 如何知道叶子被选中？
 
 `select` 事件会带上叶子值；`v-model` 只反映当前选中的叶子。点击父级只会展开子面板（`data-state="open"`），不会触发 `select`，也不会设置 `data-selected`。若该父级下已有选中叶子，会带上 `data-child-selected`。
+
+### 点击父级时如何同时激活子级第一项？
+
+监听 `open` 事件：它携带被激活父级的完整菜单数据（含子级）。从中取第一个可见子级，把它的值写入 `v-model` 即可：
+
+```vue
+<script setup lang="ts">
+import { shallowRef } from 'vue';
+import { SSplitNav } from '@soybeanjs/ui';
+import type { SplitNavOptionData } from '@soybeanjs/ui';
+
+const active = shallowRef('');
+
+function handleOpen(item: SplitNavOptionData) {
+  const firstChild = item.children?.find(child => !child.hidden);
+
+  if (firstChild) {
+    active.value = firstChild.value;
+  }
+}
+</script>
+
+<template>
+  <SSplitNav v-model="active" :items="items" @open="handleOpen" />
+</template>
+```
+
+`open` 只在带可见子级的父级被激活（点击或键盘）时触发，叶子仍然走 `select`。
 
 ### 能否自定义每项内容？
 

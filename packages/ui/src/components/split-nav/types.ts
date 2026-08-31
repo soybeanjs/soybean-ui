@@ -29,7 +29,7 @@ export interface SplitNavProps<T extends SplitNavBaseOptionData = SplitNavBaseOp
 /**
  * Events for the SplitNav component.
  */
-export type SplitNavEmits = SplitNavRootEmits;
+export type SplitNavEmits<T extends SplitNavBaseOptionData = SplitNavBaseOptionData> = SplitNavRootEmits<T>;
 
 /**
  * Slots for the SplitNav component.

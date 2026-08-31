@@ -115,7 +115,7 @@ export interface SplitNavRootProps<T extends SplitNavBaseOptionData = SplitNavBa
 /**
  * Events for the SplitNavRoot component.
  */
-export type SplitNavRootEmits = {
+export type SplitNavRootEmits<T extends SplitNavBaseOptionData = SplitNavBaseOptionData> = {
   /**
    * Emitted when the model value changes.
    */
@@ -124,6 +124,14 @@ export type SplitNavRootEmits = {
    * Emitted when a leaf menu item is chosen.
    */
   select: [key: string, event?: Event];
+  /**
+   * Emitted when a menu item with children is activated and its nested pane opens.
+   *
+   * The payload is the complete option data of the activated parent, including
+   * children, so consumers can react to the expansion — for example, activate
+   * the first child at the same time.
+   */
+  open: [item: SplitNavOptionData<T>, event?: Event];
   /**
    * Emitted when the nested TreeMenu pane collapsed state changes.
    */

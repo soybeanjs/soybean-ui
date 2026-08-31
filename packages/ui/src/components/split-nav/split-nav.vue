@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<SplitNavProps<T>>(), {
   collapsed: undefined
 });
 
-const emit = defineEmits<SplitNavEmits>();
+const emit = defineEmits<SplitNavEmits<T>>();
 
 const slots = defineSlots<SplitNavSlots<T>>();
 

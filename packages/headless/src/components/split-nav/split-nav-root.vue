@@ -33,7 +33,7 @@ const props = withDefaults(defineProps<SplitNavRootProps<T>>(), {
   as: 'nav'
 });
 
-const emit = defineEmits<SplitNavRootEmits>();
+const emit = defineEmits<SplitNavRootEmits<T>>();
 
 const slots = defineSlots<SplitNavRootSlots<T>>();
 
@@ -95,7 +95,12 @@ function onItemActivate(value: string, event?: Event) {
 
   openPath.value = toOpenPath(props.items, value);
 
-  if (!node || hasVisibleChildren(node)) {
+  if (!node) {
+    return;
+  }
+
+  if (hasVisibleChildren(node)) {
+    emit('open', node, event);
     return;
   }
 
