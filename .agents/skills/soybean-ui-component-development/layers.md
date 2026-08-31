@@ -39,11 +39,11 @@ Delete the proposed headless module. If keyboard, focus, ARIA, positioning, form
 | Locale-sensitive parse or format                         | DateField, TimeField, InputNumber |
 | Cross-browser layout contract that is not just CSS       | AspectRatio, Virtualizer, Affix   |
 
-**R3 · Refuse a new family when:** the component is visual-only; it can be expressed with CSS and slots and has no state; it is a themed composition of an existing primitive (Drawer is Dialog with a side); or the only reason is that a styled library (Ant Design, Element) ships the same name.
+**R3 · Refuse a new family when:** the component is visual-only; it can be expressed with CSS and slots and has no state; it is a themed composition of an existing primitive (Drawer is Dialog with a side; Card is Collapsible with chrome); or the only reason is that a styled library (Ant Design, Element) ships the same name.
 
 **R4 · Anatomy shell is not a template.** A thin headless shell (multi-slot `provideXUi` + Compact) is allowed only when the family already has one real semantic: dismissible state, a landmark/`role`, or a domain wrap of an admitted primitive. Empty and List fail this bar; freeze them, do not clone them.
 
-**R5 · Semantic slots vs decorative slots.** Slots that own `aria-labelledby` / `aria-describedby` / widget `role` (DialogTitle, DialogDescription) stay in headless. Header / Footer / Media chrome is decorative: prefer UI `ExtraUiSlot`, or keep the node internal to Compact. Do not promote decorative chrome to a public primitive contract.
+**R5 · Admission is per family; anatomy export follows Compact.** The two-gate rule: first judge whether the family needs headless at all (deletion test, R1–R3). If it passes, export every primitive its Compact composes, and let Compact compose only exported primitives — never re-declaring their markup — so hand-built and Compact composition share one DOM contract (`data-soybean-*` lives on the primitive). Additional anatomy primitives (items, portals, providers, arrows) may be exported beyond the Compact composition for hand-built use. Semantic slots keep `aria-labelledby` / `aria-describedby` / widget `role` on their own primitive (DialogTitle, DialogDescription); chrome that carries a real contract is a primitive too (DialogHeader is the drag handle, BottomSheetHandle is the gesture contract). If the family fails admission, it is UI-only: the UI layer composes admitted primitives and owns structure and assembly itself — Card is the exemplar (collapsible wiring from Collapsible primitives, chrome divs in `SCard`). Anatomy export is a consequence of admission, never a path to it (see R7).
 
 **R6 · Compose before a parallel family.** Alias inner slots with no domain semantics; wrap when the slot owns a11y, context, UI, or `data-soybean-{family-slot}`. Full rule: [Step 3.1](#step-31-composing-an-existing-family). Password, Command, and Drawer are the correct shape; a second menu family beside an existing one is not.
 
@@ -157,6 +157,8 @@ Typical headless-owned concerns:
 - Leaving any non-style logic in the UI wrapper once `{Name}Compact` exists.
 - Aliasing a publicly exported slot from another family when that slot has domain a11y, context, UI, or `data-soybean-{family-slot}` of its own.
 - Putting `role` / `data-*` / `aria-*` for a publicly exported primitive only on `{Name}Compact`.
+- Exporting a primitive the family's Compact does not compose, or writing markup inside Compact for a node that exists as an exported primitive (breaks the single DOM contract).
+- Treating anatomy export as an admission path: a UI-only family keeps its structure and assembly in the UI layer instead of opening a headless directory for chrome.
 
 ## UI layer
 
@@ -165,6 +167,7 @@ Applies to `packages/ui/src/components/**/*.{ts,vue}`.
 ### Responsibility boundary
 
 - UI only owns style wrapping, variant computation, UiContext injection, and prop/listener forwarding.
+- For a family that failed admission (UI-only component), the wrapper additionally owns structure and assembly — conditionals, default content, slot selection — and may carry its own `data-soybean-{name}` attributes for selectors. It still never adds ARIA, keyboard logic, or state semantics: compose admitted headless primitives for anything behavioral (see admission [R5](#r1r8)).
 - Never place ARIA, keyboard logic, or state semantics in UI.
 - UI consumes `data-state`, `dir`, and slot structure already exposed by headless; it does not rebuild semantics.
 
@@ -234,6 +237,13 @@ If the wrapper still needs conditionals, default content decisions, slot selecti
 
 - Direct `{name}Variants(variantProps, props.class)`.
 - No UiContext.
+
+**UI-only composition (family refused admission):**
+
+- The wrapper renders admitted headless primitives for behavior and its own structural nodes for chrome.
+- It owns conditionals and default content — no headless Compact exists, so the Compact restriction above does not apply.
+- Provide the inner family's UiContext with the matching slot subset (e.g. `provideCollapsibleUi`).
+- Keep stable `data-soybean-{name}` attributes on the wrapper-owned nodes for tests and selectors.
 
 ### Step 4: index.ts
 
