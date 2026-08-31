@@ -1,8 +1,35 @@
 {
   "component": "color-picker",
-  "generatedAt": "2026-08-20T11:40:21.331Z",
+  "generatedAt": "2026-08-31T07:28:58.055Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.31.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.31.0",
+      "date": "2026-08-31",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "color-picker",
+          "summary": "optimize style",
+          "summaryKey": "changelog.generated.v0.31.0.3e187",
+          "commitHash": "3e187",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3e187b8ea",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "color-picker",
+          "summary": "unify nested part styles in colorPickerVariants",
+          "summaryKey": "changelog.generated.v0.31.0.ce056",
+          "commitHash": "ce056",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ce056547c",
+          "authors": ["soybeanfe", "cursoragent"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.26.2",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.26.1...v0.26.2",

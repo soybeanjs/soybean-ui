@@ -3,7 +3,9 @@
 Source URL: https://ui.soybeanjs.cn/components/navigation-menu
 Markdown URL: https://ui.soybeanjs.cn/components/navigation-menu.md
 Category: Navigation
-Description: NavigationMenu builds site-level horizontal or vertical navigation with arbitrarily nested submenus, hover/click triggers, arrow-key keyboard navigation, and an indicator and viewport that follow the active item.
+Description: > **⚠️ Deprecated:** `NavigationMenu` is superseded by [`NavMenu`](/components/nav-menu) as the single admitted navigation-menu family. It is frozen — no new slots, features, or prop additions, critical-bug fixes only — and will be removed in **v1.0**. New code should use `SNavMenu`; existing code can migrate now via [Migrating to NavMenu](#migrating-to-navmenu).
+
+> **⚠️ Deprecated:** `NavigationMenu` is superseded by [`NavMenu`](/components/nav-menu) as the single admitted navigation-menu family. It is frozen — no new slots, features, or prop additions, critical-bug fixes only — and will be removed in **v1.0**. New code should use `SNavMenu`; existing code can migrate now via [Migrating to NavMenu](#migrating-to-navmenu).
 
 ## Overview
 
@@ -276,6 +278,31 @@ Properties for the NavigationMenuViewport component.
 
 - `align`: Align. (type `Align`; optional)
 - `forceMount`: Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. (type `boolean`; optional)
+
+## Migrating to NavMenu
+
+[`NavMenu`](/components/nav-menu) models the same domain — site-level navigation with hover/click triggers, keyboard navigation, a positioned viewport, and a data-driven `items` API — on a single shared Popper surface: one `PopperPositioner` whose reference switches to the active trigger, with hover timing driven by one shared state machine. Root props are largely isomorphic (`modelValue` / `defaultValue`, `orientation`, `dir`, `delayDuration`, `skipDelayDuration`, `disableClickTrigger`, `disableHoverTrigger`, `disablePointerLeaveClose`).
+
+### Component mapping
+
+| NavigationMenu (deprecated)                                                          | NavMenu                                                   |
+| :----------------------------------------------------------------------------------- | :-------------------------------------------------------- |
+| `SNavigationMenu` / `NavigationMenuCompact`                                          | `SNavMenu` / `NavMenuCompact`                             |
+| `NavigationMenuRoot` / `List` / `Item` / `Trigger` / `Content` / `Link` / `Viewport` | same name with the `NavMenu` prefix                       |
+| `NavigationMenuSubList`                                                              | `NavMenuSubTrigger` + `NavMenuSubContent`                 |
+| `NavigationMenuIndicator`                                                            | — (the shared `NavMenu` viewport carries a `PopperArrow`) |
+| `provideNavigationMenuUi`                                                            | `provideNavMenuUi`                                        |
+
+### Type mapping
+
+Every exported `NavigationMenu*` type has a `NavMenu*` counterpart with the same suffix: `NavigationMenuRootProps` → `NavMenuRootProps`, `NavigationMenuOptionData` → `NavMenuOptionData`, `NavigationMenuUiSlot` → `NavMenuUiSlot`, and so on.
+
+### Behavioral differences
+
+- **Submenu surfaces** — `NavigationMenu` renders sub-items inside an indicator + viewport pair; `NavMenu` opens a nested flyout next to the item's trigger (`NavMenuSubTrigger` / `NavMenuSubContent`), with `sideOffset` available on both `NavMenuViewport` and `NavMenuSubContent`.
+- **Indicator** — `NavMenu` has no separate indicator primitive; the arrow lives on the shared viewport and follows the active trigger.
+- **Mount control** — `NavigationMenuRoot` exposes `unmountOnHide`; `NavMenu` instead honors `forceMount` on its content primitives.
+- **UI slots** — slot sets differ (`NavigationMenuUiSlot` declares 19 slots, `NavMenuUiSlot` 20 including `subTrigger` / `subContent` / `positioner`); `class`, `size`, and the `ui` prop keep the same meaning.
 
 ## Notes
 

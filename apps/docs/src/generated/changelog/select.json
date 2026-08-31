@@ -1,8 +1,45 @@
 {
   "component": "select",
-  "generatedAt": "2026-08-20T11:40:21.331Z",
+  "generatedAt": "2026-08-31T07:28:58.055Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.31.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.31.0",
+      "date": "2026-08-31",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "select",
+          "summary": "add trigger clear and unify form-field chrome",
+          "summaryKey": "changelog.generated.v0.31.0.adeee",
+          "commitHash": "adeee",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/adeee522d",
+          "authors": ["soybeanfe", "cursoragent"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "select",
+          "summary": "make clearable prop default value to false",
+          "summaryKey": "changelog.generated.v0.31.0.a6d4d",
+          "commitHash": "a6d4d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a6d4ddba9",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "chore",
+          "scope": "select",
+          "summary": "add clearable prop to SSelect component",
+          "summaryKey": "changelog.generated.v0.31.0.74ba2",
+          "commitHash": "74ba2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/74ba2d481",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.30.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0",

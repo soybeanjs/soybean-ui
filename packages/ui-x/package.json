@@ -1,6 +1,6 @@
 {
   "name": "@soybeanjs/ui-x",
-  "version": "0.30.0",
+  "version": "0.31.0",
   "description": "SoybeanUIX provides styled AI conversation components for Vue 3, built on top of SoybeanHeadless and SoybeanUI.",
   "homepage": "https://github.com/soybeanjs/soybean-ui",
   "bugs": {

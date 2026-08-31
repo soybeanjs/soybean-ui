@@ -1,6 +1,6 @@
 {
   "name": "@soybeanjs/ui-skills",
-  "version": "0.30.0",
+  "version": "0.31.0",
   "description": "Agent skills for SoybeanUI and SoybeanHeadless.",
   "keywords": [
     "agentskills",

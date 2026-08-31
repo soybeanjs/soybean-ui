@@ -1,8 +1,25 @@
 {
   "component": "toast",
-  "generatedAt": "2026-08-20T11:40:21.331Z",
+  "generatedAt": "2026-08-31T07:28:58.055Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.31.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.31.0",
+      "date": "2026-08-31",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "toast",
+          "summary": "widen toaster list ref element type",
+          "summaryKey": "changelog.generated.v0.31.0.32a2e",
+          "commitHash": "32a2e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/32a2e45f3",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.15.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0...v0.15.1",

@@ -1,8 +1,25 @@
 {
   "component": "autocomplete",
-  "generatedAt": "2026-08-20T11:40:21.331Z",
+  "generatedAt": "2026-08-31T07:28:58.055Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.31.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.31.0",
+      "date": "2026-08-31",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "autocomplete",
+          "summary": "wrap Combobox slots as domain primitives",
+          "summaryKey": "changelog.generated.v0.31.0.09ea2",
+          "commitHash": "09ea2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/09ea2258e",
+          "authors": ["soybeanfe", "cursoragent"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.16.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.5...v0.16.0",

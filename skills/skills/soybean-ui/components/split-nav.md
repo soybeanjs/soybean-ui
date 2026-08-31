@@ -22,6 +22,7 @@ Usage examples for split-nav are rendered on the site.
 - 🪟 Teleport mounting — `verticalMountedId` / `horizontalMountedId` mount panes into `#id` elements (`dual-vertical` teleports as one block)
 - 🪜 Path slicing — `openPath` drives nested panes; `modelValue` is the selected leaf only
 - 🔄 Controlled/uncontrolled — `modelValue` / `defaultValue` store the selected leaf; clicking a parent only opens its pane, without changing `v-model` or applying the selected style
+- 📢 Open event — activating a parent emits `open` with its complete option data (children included), e.g. to activate the first child at the same time
 - 🧩 Reuses `TreeMenuCompact` (nested vertical) and `TreeNavCompact` (nested horizontal)
 - 🎨 6 sizes + style injection — `size` from xs to 2xl; `class` / `ui` overrides across named slots
 - ✏️ Customizable — `first-level-item` / `item` / `item-leading` / `item-trailing` slots
@@ -44,6 +45,7 @@ Interactive demos for split-nav are rendered on the site.
 - 04 Horizontal-Dual-Vertical — top horizontal bar + nested dual-vertical
 - 05 Teleport — mount panes into external `#id` elements
 - 06 Custom — override first-level and nested item content through slots
+- 07 Open Event — listen to `open` and activate the first child when a parent is clicked
 
 ## API
 
@@ -80,6 +82,7 @@ Events for the SplitNav component.
 
 - `update:modelValue`: Emitted when the model value changes. (type `[value: string]`; parameters `value: string`)
 - `select`: Emitted when a leaf menu item is chosen. (type `[key: string, event?: Event | undefined]`; parameters `key: string, event?: Event | undefined`)
+- `open`: Emitted when a menu item with children is activated and its nested pane opens. The payload is the complete option data of the activated parent, including children, so consumers can react to the expansion — for example, activate the first child at the same time. (type `[item: SplitNavOptionData<T>, event?: Event | undefined]`; parameters `item: SplitNavOptionData<T>, event?: Event | undefined`)
 - `update:collapsed`: Emitted when the nested TreeMenu pane collapsed state changes. (type `[value: boolean]`; parameters `value: boolean`)
 
 #### Slots
@@ -119,6 +122,7 @@ Events for the SplitNavRoot component.
 
 - `update:modelValue`: Emitted when the model value changes. (type `[value: string]`; parameters `value: string`)
 - `select`: Emitted when a leaf menu item is chosen. (type `[key: string, event?: Event | undefined]`; parameters `key: string, event?: Event | undefined`)
+- `open`: Emitted when a menu item with children is activated and its nested pane opens. The payload is the complete option data of the activated parent, including children, so consumers can react to the expansion — for example, activate the first child at the same time. (type `[item: SplitNavOptionData<T>, event?: Event | undefined]`; parameters `item: SplitNavOptionData<T>, event?: Event | undefined`)
 - `update:collapsed`: Emitted when the nested TreeMenu pane collapsed state changes. (type `[value: boolean]`; parameters `value: boolean`)
 
 #### Slots
@@ -150,6 +154,7 @@ Slots for the SplitNavRoot component.
 - Panes render in place by default; set `horizontalMountedId` / `verticalMountedId` only when a pane must mount into an external element (pass the id without `#`).
 - In `dual-vertical` and the nested dual-vertical of `horizontal-dual-vertical`, the two vertical columns teleport together via `verticalMountedId`. Mixed modes teleport the first-level and nested panes independently.
 - Clicking a parent item only opens the nested pane (`data-state="open"`); it does not change `v-model` or set `data-selected`. Clicking a leaf updates `v-model` and emits `select`; the selected leaf renders `data-selected="true"` and `data-state="closed"`. A parent whose descendant is selected also gets `data-child-selected`.
+- Activating a parent item (click or keyboard) emits `open` with the complete option data of that parent, children included; it fires only for parents with visible children and never for leaves.
 - Flex layout per `mode` lives in the UI style recipe; the headless layer carries no layout classes.
 
 ## FAQ
@@ -171,6 +176,34 @@ The pane is then rendered into `#app-header` / `#app-sider` through `Teleport` (
 ### How do I know when a leaf is chosen?
 
 The `select` event fires with the leaf value; `v-model` reflects the selected leaf only. Clicking a parent only opens the nested pane (`data-state="open"`) and does not emit `select` or set `data-selected`. If a descendant is already selected, the parent also gets `data-child-selected`.
+
+### How do I activate the first child when a parent is clicked?
+
+Listen to the `open` event: it carries the complete option data of the activated parent, children included. Pick its first visible child and write the value to `v-model`:
+
+```vue
+<script setup lang="ts">
+import { shallowRef } from 'vue';
+import { SSplitNav } from '@soybeanjs/ui';
+import type { SplitNavOptionData } from '@soybeanjs/ui';
+
+const active = shallowRef('');
+
+function handleOpen(item: SplitNavOptionData) {
+  const firstChild = item.children?.find(child => !child.hidden);
+
+  if (firstChild) {
+    active.value = firstChild.value;
+  }
+}
+</script>
+
+<template>
+  <SSplitNav v-model="active" :items="items" @open="handleOpen" />
+</template>
+```
+
+`open` fires only when a parent with visible children is activated (click or keyboard), so leaves keep using `select`.
 
 ### Can I customize each item's content?
 

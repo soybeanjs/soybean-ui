@@ -1,5 +1,136 @@
 # Changelog
 
+## [v0.31.0](https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.31.0) (2026-08-31)
+
+### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- **components**: rename popper-v2 to popper across packages, tests and playground &nbsp;-&nbsp; by **soybeanfe** [<samp>(091f4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/091f4e1b0)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **NavMenu**:
+  - support nested popup &nbsp;-&nbsp; by **soybeanfe** [<samp>(c3ee7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c3ee750d0)
+- **TreeMenu**:
+  - add WAI-ARIA tree keyboard navigation &nbsp;-&nbsp; by @soybeanjs [<samp>(220b0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/220b06036)
+- **TreeNav**:
+  - implement horizontal tree navigation component &nbsp;-&nbsp; by @soybeanjs [<samp>(072f7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/072f78433)
+  - add top-level keyboard roving navigation &nbsp;-&nbsp; by @soybeanjs [<samp>(148c2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/148c251ae)
+- **components**:
+  - Implement EnhancedPopper &nbsp;-&nbsp; by **soybeanfe** [<samp>(53898)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5389882fe)
+  - Implement PopperV2 &nbsp;-&nbsp; by **soybeanfe** [<samp>(957c6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/957c6397c)
+  - add PopperV2 focusOpenDelay, hover close guard and useFloating open wiring &nbsp;-&nbsp; by @soybeanjs [<samp>(c020e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c020e3f66)
+  - generalize PopperV2Trigger and componentize upper triggers &nbsp;-&nbsp; by @soybeanjs [<samp>(4395d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4395d87cb)
+  - add positioning-only primitives to popper-v2 &nbsp;-&nbsp; by **soybeanfe** [<samp>(d04a3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d04a37b31)
+  - Implement NavMenu &nbsp;-&nbsp; by **soybeanfe** [<samp>(5c69e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5c69e6bc7)
+  - implement menubar-like keyboard for NavMenu &nbsp;-&nbsp; by **soybeanfe** [<samp>(11c20)</samp>](https://github.com/soybeanjs/soybean-ui/commit/11c20b9fc)
+  - Implement SplitNav &nbsp;-&nbsp; by **soybeanfe** [<samp>(afb1f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/afb1f0812)
+- **headless**:
+  - add shared tree keyboard navigation resolver &nbsp;-&nbsp; by @soybeanjs [<samp>(ec486)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ec48624f6)
+- **select**:
+  - add trigger clear and unify form-field chrome &nbsp;-&nbsp; by **soybeanfe** and @cursoragent [<samp>(adeee)</samp>](https://github.com/soybeanjs/soybean-ui/commit/adeee522d)
+- **split-nav**:
+  - add open event forwarding full parent item on activation &nbsp;-&nbsp; by **soybeanfe** [<samp>(40c02)</samp>](https://github.com/soybeanjs/soybean-ui/commit/40c02786b)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **components**:
+  - let non-trap sub layers pause the parent focus trap &nbsp;-&nbsp; by @soybeanjs [<samp>(920c7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/920c7dbee)
+  - keep popper positioned during exit so out-animation and unmount run &nbsp;-&nbsp; by @soybeanjs [<samp>(4a7ad)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4a7ad5df1)
+  - dismiss popper-v2 layers on outside right-click &nbsp;-&nbsp; by @soybeanjs [<samp>(a918e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a918e3451)
+  - release popper-v2 body scroll lock on close instead of unmount &nbsp;-&nbsp; by **soybeanfe** [<samp>(01df5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/01df59490)
+  - close NavMenu flyout when entering a root leaf link &nbsp;-&nbsp; by **soybeanfe** [<samp>(62ef8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/62ef86e9a)
+- **composables**:
+  - reference-count body scroll lock across overlapping owners &nbsp;-&nbsp; by **soybeanfe** [<samp>(f7a13)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f7a137221)
+- **headless**:
+  - avoid clobbering child attributes in roving focus items and button chains &nbsp;-&nbsp; by @soybeanjs [<samp>(bbc45)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bbc45b3c2)
+  - keep hover dropdown popups open when focus moves into the popup &nbsp;-&nbsp; by @soybeanjs [<samp>(a45c7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a45c7fdeb)
+- **projects**:
+  - fix test e2e error &nbsp;-&nbsp; by **soybeanfe** [<samp>(ef6d4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ef6d466c2)
+
+### &nbsp;&nbsp;&nbsp;🔥 Performance
+
+- **components**: bind only the trigger events each PopperV2 trigger mode acts on &nbsp;-&nbsp; by @soybeanjs [<samp>(c9d47)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c9d47710c)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **TreeNav**: split headless primitives, align items type with TreeMenu and flatten root context &nbsp;-&nbsp; by @soybeanjs [<samp>(980a3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/980a366ab)
+- **cascader**: improve search input, keyboard select closing, and panel spacing &nbsp;-&nbsp; by @soybeanjs [<samp>(3c6a9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3c6a947d5)
+- **color-picker**: optimize style &nbsp;-&nbsp; by @soybeanjs [<samp>(3e187)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3e187b8ea)
+- **combobox**: move clear action to trigger and add ComboboxValue primitive &nbsp;-&nbsp; by @soybeanjs [<samp>(8fea1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8fea1fc14)
+- **components**: optimize clipboard examples, add onlyIcon prop &nbsp;-&nbsp; by @soybeanjs [<samp>(66435)</samp>](https://github.com/soybeanjs/soybean-ui/commit/664357bad)
+- **playground**: remove useless ThemeGenerator &nbsp;-&nbsp; by @soybeanjs [<samp>(090e5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/090e5a011)
+- **select**: make clearable prop default value to false &nbsp;-&nbsp; by @soybeanjs [<samp>(a6d4d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a6d4ddba9)
+- **tree-menu**: add pxToRem default value &nbsp;-&nbsp; by @soybeanjs [<samp>(abcf5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/abcf585cf)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **autocomplete**:
+  - wrap Combobox slots as domain primitives &nbsp;-&nbsp; by **soybeanfe** and @cursoragent [<samp>(09ea2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/09ea2258e)
+- **bottom-sheet**:
+  - wrap Dialog chrome as domain primitives &nbsp;-&nbsp; by **soybeanfe** and @cursoragent [<samp>(ddd66)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ddd66441a)
+- **color-picker**:
+  - unify nested part styles in colorPickerVariants &nbsp;-&nbsp; by **soybeanfe** and @cursoragent [<samp>(ce056)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ce056547c)
+- **combobox**:
+  - wrap Anchor, GroupLabel, and ItemIndicator &nbsp;-&nbsp; by **soybeanfe** and @cursoragent [<samp>(77373)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7737384c6)
+- **components**:
+  - refactor Tooltip,Popover use PopperV2 &nbsp;-&nbsp; by **soybeanfe** [<samp>(b58eb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b58ebbda7)
+  - migrate HoverCard to PopperV2 &nbsp;-&nbsp; by @soybeanjs [<samp>(9e6dd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9e6dd9a7d)
+  - migrate Menu family to PopperV2 &nbsp;-&nbsp; by @soybeanjs [<samp>(c6b0e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c6b0e34c2)
+  - migrate select/combobox/cascader/autocomplete to popper-v2 positioning &nbsp;-&nbsp; by **soybeanfe** [<samp>(dff87)</samp>](https://github.com/soybeanjs/soybean-ui/commit/dff877a61)
+  - consolidate hover delay machines into popper-v2 delay group &nbsp;-&nbsp; by **soybeanfe** [<samp>(e1c04)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e1c0401a6)
+  - rename data-active to data-selected for selection state &nbsp;-&nbsp; by **soybeanfe** [<samp>(f347b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f347b69d2)
+- **navigation-menu**:
+  - deprecate family in favor of NavMenu &nbsp;-&nbsp; by @soybeanjs [<samp>(0b9f9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0b9f93338)
+- **popconfirm**:
+  - build primitives on Popper instead of Popover &nbsp;-&nbsp; by **soybeanfe** and @cursoragent [<samp>(79696)</samp>](https://github.com/soybeanjs/soybean-ui/commit/79696035a)
+- **segment**:
+  - wrap Tabs primitives and provide Segment UI &nbsp;-&nbsp; by **soybeanfe** and @cursoragent [<samp>(2da74)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2da74c9b7)
+- **split-nav**:
+  - scope data-state to open state and add data-selected &nbsp;-&nbsp; by **soybeanfe** [<samp>(68339)</samp>](https://github.com/soybeanjs/soybean-ui/commit/683397b72)
+- **toast**:
+  - widen toaster list ref element type &nbsp;-&nbsp; by **soybeanfe** [<samp>(32a2e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/32a2e45f3)
+- **ui**:
+  - extract overlay chrome tokens and prefix shared style files &nbsp;-&nbsp; by **soybeanfe** and @cursoragent [<samp>(86c95)</samp>](https://github.com/soybeanjs/soybean-ui/commit/86c953eba)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- remove completed NavigationMenu Popper migration plan &nbsp;-&nbsp; by **soybeanfe** and @cursoragent [<samp>(c185f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c185fcc12)
+- **design**:
+  - add TreeNav component and shared tree keyboard navigation design &nbsp;-&nbsp; by @soybeanjs [<samp>(60d72)</samp>](https://github.com/soybeanjs/soybean-ui/commit/60d72bc57)
+  - remove tree navigation design docs after implementation &nbsp;-&nbsp; by @soybeanjs [<samp>(67d60)</samp>](https://github.com/soybeanjs/soybean-ui/commit/67d60fbce)
+- **enhanced-popper**:
+  - add Enhanced Popper docs &nbsp;-&nbsp; by **soybeanfe** [<samp>(44712)</samp>](https://github.com/soybeanjs/soybean-ui/commit/447123c7f)
+  - record T-10, HoverCard migration and Menu-family assessment &nbsp;-&nbsp; by @soybeanjs [<samp>(726ce)</samp>](https://github.com/soybeanjs/soybean-ui/commit/726ce202f)
+  - record Menu family migration (16.6), table A complete &nbsp;-&nbsp; by @soybeanjs [<samp>(e57a0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e57a039dc)
+  - analyze why most triggers build on the hook instead of PopperV2Trigger (17.8), file T-11 &nbsp;-&nbsp; by @soybeanjs [<samp>(63116)</samp>](https://github.com/soybeanjs/soybean-ui/commit/63116770b)
+  - record PopperV2Trigger generalization and trigger componentization (17.9), close T-11 &nbsp;-&nbsp; by @soybeanjs [<samp>(f8602)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f8602933b)
+  - analyze per-trigger event binding convergence, file T-12 (17.10) &nbsp;-&nbsp; by @soybeanjs [<samp>(bddc2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bddc2b1ea)
+- **headless**:
+  - record per-slot alias vs domain-SFC composition rule &nbsp;-&nbsp; by **soybeanfe** and @cursoragent [<samp>(79c5f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/79c5f85e6)
+  - mark composition debt remediations as done &nbsp;-&nbsp; by **soybeanfe** and @cursoragent [<samp>(91040)</samp>](https://github.com/soybeanjs/soybean-ui/commit/91040089e)
+  - add admission rules and remediation inventory &nbsp;-&nbsp; by **soybeanfe** and @cursoragent [<samp>(828fd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/828fdc56b)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **docs**: regenerate API locales for wrapped overlay primitives &nbsp;-&nbsp; by **soybeanfe** and @cursoragent [<samp>(fa880)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fa880ff6d)
+
+### &nbsp;&nbsp;&nbsp;✅ Tests
+
+- **input-otp**: update border class for input slots &nbsp;-&nbsp; by **soybeanfe** [<samp>(e0063)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e0063a2d6)
+- **select**: add clearable prop to SSelect component &nbsp;-&nbsp; by @soybeanjs [<samp>(74ba2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/74ba2d481)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **ColorSwatchPicker**: fix checked style &nbsp;-&nbsp; by @soybeanjs [<samp>(5c0fd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5c0fd832b)
+- **components**: optimize components styles &nbsp;-&nbsp; by @soybeanjs [<samp>(50ffd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/50ffd0d64)
+- **menu**: optimize menu space &nbsp;-&nbsp; by @soybeanjs [<samp>(5c0a5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5c0a57be4)
+- **projects**: format code &nbsp;-&nbsp; by @soybeanjs [<samp>(5742e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5742ea77b)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;[![cursoragent](https://github.com/cursoragent.png?size=48)](https://github.com/cursoragent)&nbsp;&nbsp;
+[soybeanfe](mailto:honghuangdc@gmail.com),&nbsp;
+
 ## [v0.30.0](https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0) (2026-08-20)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
