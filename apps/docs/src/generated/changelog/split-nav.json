@@ -1,0 +1,34 @@
+{
+  "component": "split-nav",
+  "generatedAt": "2026-08-31T07:28:58.055Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.31.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.31.0",
+      "date": "2026-08-31",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "split-nav",
+          "summary": "add open event forwarding full parent item on activation",
+          "summaryKey": "changelog.generated.v0.31.0.40c02",
+          "commitHash": "40c02",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/40c02786b",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "split-nav",
+          "summary": "scope data-state to open state and add data-selected",
+          "summaryKey": "changelog.generated.v0.31.0.68339",
+          "commitHash": "68339",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/683397b72",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}
