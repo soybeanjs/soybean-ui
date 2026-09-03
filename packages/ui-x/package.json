@@ -68,7 +68,7 @@
     "typecheck": "vue-tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
-    "@soybeanjs/cva": "^0.0.9",
+    "@soybeanjs/cva": "^0.1.1",
     "@soybeanjs/headless": "workspace:^",
     "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
