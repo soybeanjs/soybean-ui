@@ -1,13 +1,7 @@
 import { mkdir, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
-import {
-  collectKeyedTextEntries,
-  listFileBasenames,
-  readJsonObject,
-  runCliModule,
-  syncLocaleTemplateFiles
-} from './_shared';
+import { collectKeyedTextEntries, listFileBasenames, readJsonObject, syncLocaleTemplateFiles } from '../shared/json';
 
 const rootDir = process.cwd();
 const apiDir = path.join(rootDir, 'apps/docs/src/generated/api');
@@ -71,5 +65,3 @@ export async function generateApiLocaleTemplates(): Promise<void> {
       ` Reset ${changedSourceKeys.size} changed source keys for non-default locales.`
   );
 }
-
-runCliModule(import.meta.url, generateApiLocaleTemplates);

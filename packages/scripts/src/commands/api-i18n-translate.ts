@@ -1,24 +1,33 @@
 import path from 'node:path';
 import process from 'node:process';
-import { runCliModule } from './_shared';
 import {
   parseTranslateCliOptions,
   printTranslateUsage,
   resolveTargetLocales,
   translateJsonLocaleFile,
   resolveAvailableLocalesFromI18nModule
-} from './_translate';
-import type { TranslateCliOptions } from './_translate';
+} from '../shared/translate';
+import type { TranslateCliOptions } from '../shared/translate';
 
 const rootDir = process.cwd();
-const localeDir = path.join(rootDir, 'apps/docs/src/generated/changelog-locales');
+const localeDir = path.join(rootDir, 'apps/docs/src/generated/api-locales');
 const i18nModulePath = path.join(rootDir, 'apps/docs/src/modules/i18n.ts');
 
 function printUsage() {
   printTranslateUsage(
-    'sui changelog-translate --',
+    'sui api-translate --',
     'Target locale, for example zh-CN or ja. If omitted, translates all available locales except the source locale.'
   );
+}
+
+function createTranslationContext(locale: string): string {
+  return [
+    `Target locale: ${locale}.`,
+    'Translate technical component API documentation.',
+    'Preserve Markdown, punctuation, line breaks, code fences, and inline code.',
+    'Do not translate identifiers inside backticks, component names, type names, prop keys, event names, or enum-like string literals unless they are ordinary prose.',
+    'Keep the output natural for software documentation.'
+  ].join(' ');
 }
 
 async function translateLocale(locale: string, options: TranslateCliOptions): Promise<void> {
@@ -34,28 +43,27 @@ async function translateLocale(locale: string, options: TranslateCliOptions): Pr
     limit: options.limit,
     dryRun: options.dryRun,
     createContext: () => createTranslationContext(locale),
-    apiKeyErrorMessage: 'DEEPL_API_KEY is required to translate changelog locale messages.',
-    retryCountEnvName: 'DEEPL_RETRY_COUNT',
-    retryDelayEnvName: 'DEEPL_RETRY_DELAY_MS',
+    sourceLanguage: process.env.DEEPL_SOURCE_LANG?.trim() || undefined,
     onPendingResolved: context => {
-      console.log(`[${context.locale}] pending changelog translations: ${context.pendingCount}`);
+      if (!context.pendingCount) {
+        console.log(`No pending translations for ${context.locale}.`);
+        return;
+      }
+
+      console.log(`Found ${context.pendingCount} pending translations for ${context.locale}.`);
     },
     onBatchStart: context => {
-      console.log(`[${context.locale}] translated batch ${context.batchIndex + 1}/${context.batchCount}`);
+      console.log(
+        `Translating ${context.locale} batch ${context.batchIndex + 1}/${context.batchCount} (${context.entryCount} entries)...`
+      );
+    },
+    onUpdated: context => {
+      console.log(`Updated ${path.relative(rootDir, context.targetPath)} with ${context.pendingCount} translations.`);
     }
   });
 }
 
-function createTranslationContext(locale: string): string {
-  return [
-    `Target locale: ${locale}.`,
-    'Translate concise changelog summaries for a Vue component library.',
-    'Keep component names, versions, Markdown, punctuation, and inline code unchanged.',
-    'Prefer short release-note wording.'
-  ].join(' ');
-}
-
-export async function translateChangelogLocales(argv: string[] = process.argv.slice(2)): Promise<void> {
+export async function translateApiLocales(argv: string[] = process.argv.slice(2)): Promise<void> {
   const options = parseTranslateCliOptions(argv);
 
   if (options.help) {
@@ -68,21 +76,15 @@ export async function translateChangelogLocales(argv: string[] = process.argv.sl
   }
 
   const availableLocales = await resolveAvailableLocalesFromI18nModule(rootDir, i18nModulePath);
-
-  if (!availableLocales.includes(options.sourceLocale)) {
-    throw new Error(`Unknown source locale: ${options.sourceLocale}`);
-  }
-
   const targetLocales = resolveTargetLocales({
     availableLocales,
     sourceLocale: options.sourceLocale,
-    requestedLocale: options.locale,
-    unsupportedLocaleMessage: locale => `Unknown target locale: ${locale}`
+    requestedLocale: options.locale
   });
+
+  console.log(`Target locales: ${targetLocales.join(', ')}`);
 
   for (const locale of targetLocales) {
     await translateLocale(locale, options);
   }
 }
-
-runCliModule(import.meta.url, translateChangelogLocales);

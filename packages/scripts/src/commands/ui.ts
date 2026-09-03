@@ -3,7 +3,6 @@ import path from 'node:path';
 import process from 'node:process';
 import { camelCase } from '@soybeanjs/utils';
 import ts from 'typescript';
-import { runCliModule } from './_shared';
 
 type ComponentGroup = {
   key: string;
@@ -109,5 +108,3 @@ export async function generateUiMetadata(): Promise<void> {
   await mkdir(path.dirname(componentsOutputPath), { recursive: true });
   await writeFile(componentsOutputPath, generateComponentsFile(groups), 'utf8');
 }
-
-runCliModule(import.meta.url, generateUiMetadata);

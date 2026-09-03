@@ -1,21 +1,20 @@
 #!/usr/bin/env node
 import { spawn } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import process from 'node:process';
-import { version } from '../package.json';
-// ADR-008 — schema emission lives in the sbean package (closer to the
-// valibot schemas it converts). Imported directly so `pnpm sui sbean-schema`
-// reuses the same generator as `pnpm --filter sbean build:schema`.
-import { generateSchemaData } from '../packages/sbean/scripts/schema';
-import { generateApiData } from './api';
-import { generateApiLocaleTemplates } from './api-i18n';
-import { translateApiLocales } from './api-i18n-translate';
-import { generateChangelogData } from './changelog';
-import { generateChangelogLocaleTemplates } from './changelog-i18n';
-import { translateChangelogLocales } from './changelog-i18n-translate';
-import { generateHeadlessMetadata } from './headless';
-import { translateHeadlessLocales } from './locale-translate';
-import { generateSkillsDistribution } from './skills';
-import { generateUiMetadata } from './ui';
+
+/**
+ * `sui` — SoybeanUI repo service CLI (private, not published).
+ *
+ * Commands serve the repository itself: generators produce committed
+ * artifacts (`apps/docs/src/generated/*`, component metadata, skills
+ * distribution) and utility commands maintain workspace state. Do not merge
+ * with the consumer-facing `sbean` CLI.
+ *
+ * ADR-008 — `sbean-schema` lives in the sbean package (closer to the valibot
+ * schemas it converts) and is imported directly so `pnpm sui sbean-schema`
+ * reuses the same generator as `pnpm --filter sbean build:schema`.
+ */
 
 type Command =
   | 'api'
@@ -25,14 +24,25 @@ type Command =
   | 'changelog-translate'
   | 'headless'
   | 'locale-translate'
+  | 'reorder-imports'
   | 'sbean-schema'
   | 'skills'
+  | 'stub'
+  | 'sync-template-versions'
   | 'ui';
 
 type CommandConfig = {
   description: string;
   run: (args: string[]) => Promise<void>;
 };
+
+function readVersion(): string {
+  const manifest = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')) as {
+    version?: string;
+  };
+
+  return manifest.version ?? '0.0.0';
+}
 
 const isWindows = process.platform === 'win32';
 const fmtBinary = isWindows ? 'vp.cmd' : 'vp';
@@ -60,6 +70,9 @@ const commandConfigs: Record<Command, CommandConfig> = {
   api: {
     description: 'Generate API JSON and locale templates.',
     run: async () => {
+      const { generateApiData } = await import('./commands/api');
+      const { generateApiLocaleTemplates } = await import('./commands/api-i18n');
+
       await generateApiData();
       await generateApiLocaleTemplates();
       await formatPaths(['apps/docs/src/generated/api/']);
@@ -68,16 +81,25 @@ const commandConfigs: Record<Command, CommandConfig> = {
   'api-locales': {
     description: 'Generate API locale templates only.',
     run: async () => {
+      const { generateApiLocaleTemplates } = await import('./commands/api-i18n');
+
       await generateApiLocaleTemplates();
     }
   },
   'api-translate': {
     description: 'Translate generated API locale files.',
-    run: translateApiLocales
+    run: async args => {
+      const { translateApiLocales } = await import('./commands/api-i18n-translate');
+
+      await translateApiLocales(args);
+    }
   },
   changelog: {
     description: 'Generate changelog JSON and locale templates.',
     run: async () => {
+      const { generateChangelogData } = await import('./commands/changelog');
+      const { generateChangelogLocaleTemplates } = await import('./commands/changelog-i18n');
+
       await generateChangelogData();
       await generateChangelogLocaleTemplates();
       await formatPaths(['apps/docs/src/generated/changelog/', 'apps/docs/src/generated/changelog-locales/']);
@@ -85,23 +107,43 @@ const commandConfigs: Record<Command, CommandConfig> = {
   },
   'changelog-translate': {
     description: 'Translate generated changelog locale files.',
-    run: translateChangelogLocales
+    run: async args => {
+      const { translateChangelogLocales } = await import('./commands/changelog-i18n-translate');
+
+      await translateChangelogLocales(args);
+    }
   },
   headless: {
     description: 'Generate headless component metadata.',
     run: async () => {
+      const { generateHeadlessMetadata } = await import('./commands/headless');
+
       await generateHeadlessMetadata();
       await formatPaths(['packages/headless/src/constants/components.ts', 'packages/headless/src/namespaced/index.ts']);
     }
   },
   'locale-translate': {
     description: 'Translate headless locale source files.',
-    run: translateHeadlessLocales
+    run: async args => {
+      const { translateHeadlessLocales } = await import('./commands/locale-translate');
+
+      await translateHeadlessLocales(args);
+    }
+  },
+  'reorder-imports': {
+    description: 'Reorder Props before Emits in .vue import type blocks.',
+    run: async args => {
+      const { runReorderImports } = await import('./commands/reorder-imports');
+
+      await runReorderImports(args);
+    }
   },
   'sbean-schema': {
     description: 'Generate sbean JSON Schemas (sbean.json, registry-item.json, registry.json).',
     run: async () => {
       // ADR-008 — emits valibot→JSON-Schema into apps/docs/public/schema/.
+      const { generateSchemaData } = await import('../../sbean/scripts/schema');
+
       await generateSchemaData('apps/docs/public/schema');
       await formatPaths(['apps/docs/public/schema/']);
     }
@@ -109,13 +151,33 @@ const commandConfigs: Record<Command, CommandConfig> = {
   skills: {
     description: 'Generate skill docs and distribution files.',
     run: async () => {
+      const { generateSkillsDistribution } = await import('./commands/skills');
+
       await generateSkillsDistribution();
       await formatPaths(['skills']);
+    }
+  },
+  stub: {
+    description: 'Switch headless development exports to src (--reset restores dist exports).',
+    run: async args => {
+      const { runStub } = await import('./commands/stub');
+
+      await runStub({ reset: args.includes('--reset') });
+    }
+  },
+  'sync-template-versions': {
+    description: 'Sync the @soybeanjs/* version constant used by project templates.',
+    run: async () => {
+      const { runSyncTemplateVersions } = await import('./commands/sync-template-versions');
+
+      await runSyncTemplateVersions();
     }
   },
   ui: {
     description: 'Generate UI component metadata.',
     run: async () => {
+      const { generateUiMetadata } = await import('./commands/ui');
+
       await generateUiMetadata();
       await formatPaths(['packages/ui/src/constants/components.ts']);
     }
@@ -124,10 +186,12 @@ const commandConfigs: Record<Command, CommandConfig> = {
 
 function printHelp(): void {
   const commandHelpLines = Object.entries(commandConfigs)
-    .map(([command, config]) => `  ${command.padEnd(22, ' ')}${config.description}`)
+    .map(([command, config]) => `  ${command.padEnd(24, ' ')}${config.description}`)
     .join('\n');
 
-  console.log(`sui v${version}
+  console.log(`sui v${readVersion()}
+
+SoybeanUI repo service CLI (maintainers only, never published).
 
 Usage:
   pnpm sui <command>
@@ -163,7 +227,7 @@ async function main(): Promise<void> {
   }
 
   if (isVersionFlag(firstArg)) {
-    console.log(version);
+    console.log(readVersion());
     return;
   }
 

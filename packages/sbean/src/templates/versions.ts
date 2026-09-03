@@ -1,7 +1,7 @@
 /**
  * Current version of @soybeanjs/* packages.
  *
- * This file is auto-generated during release by `scripts/sync-template-versions.ts`.
+ * This file is auto-generated during release by `packages/scripts/src/commands/sync-template-versions.ts`.
  * Do not edit manually — run `pnpm sync-template-versions` to update.
  *
  * The version is read from the root `package.json` at release time so that

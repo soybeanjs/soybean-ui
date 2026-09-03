@@ -9,7 +9,7 @@ import {
   readResponseText,
   setNestedValue,
   writeJsonFile
-} from './_shared';
+} from './json';
 
 export interface TranslateCliOptions {
   locale: string;
@@ -253,7 +253,7 @@ export function resolveTargetLocales(options: {
   return targetLocales;
 }
 
-function toDeepLLanguage(locale: string): string {
+export function toDeepLLanguage(locale: string): string {
   const normalizedLocale = locale.trim().replace(/_/gu, '-').toLowerCase();
   const mappedLanguage = deepLLanguageMap.get(normalizedLocale);
 

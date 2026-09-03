@@ -2,16 +2,16 @@ import { writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 import { pathToFileURL } from 'node:url';
-import { cloneJsonObject, flattenJsonMessages, isJsonObject, listFileBasenames, runCliModule } from './_shared';
-import type { JsonObject, JsonValue } from './_shared';
+import { cloneJsonObject, flattenJsonMessages, isJsonObject, listFileBasenames } from '../shared/json';
+import type { JsonObject, JsonValue } from '../shared/json';
 import {
   getPendingEntries,
   parseTranslateCliOptions,
   printTranslateUsage,
   resolveTargetLocales,
   translateEntries
-} from './_translate';
-import type { TranslateCliOptions, TranslationEntry } from './_translate';
+} from '../shared/translate';
+import type { TranslateCliOptions, TranslationEntry } from '../shared/translate';
 
 interface LocaleRegistryDocument {
   name: string;
@@ -422,5 +422,3 @@ export async function translateHeadlessLocales(argv: string[] = process.argv.sli
     await translateLocale(locale, options);
   }
 }
-
-runCliModule(import.meta.url, translateHeadlessLocales);

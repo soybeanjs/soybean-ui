@@ -2,8 +2,6 @@
 
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { runCliModule } from './_shared';
 import { generateSkillDocs } from './skills-docs';
 
 type PackageAuthor = {
@@ -69,8 +67,7 @@ type ClaudeMarketplaceManifest = {
   }>;
 };
 
-const currentDir = path.dirname(fileURLToPath(import.meta.url));
-const repoRoot = path.resolve(currentDir, '..');
+const repoRoot = process.cwd();
 const rootPackageJsonPath = path.resolve(repoRoot, 'package.json');
 const skillsDistributionRootDir = path.resolve(repoRoot, 'skills');
 const skillsSourceRootDir = path.resolve(skillsDistributionRootDir, 'skills-source');
@@ -122,8 +119,6 @@ export async function generateSkillsDistribution(): Promise<void> {
 
   console.log(`Generated skills distribution in ${path.relative(repoRoot, skillsDistributionRootDir)}.`);
 }
-
-runCliModule(import.meta.url, generateSkillsDistribution);
 
 async function readRootPackageManifest(): Promise<RootPackageManifest> {
   const source = await readFile(rootPackageJsonPath, 'utf8');

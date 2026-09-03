@@ -12,8 +12,7 @@ const defaultTargets = ['.'];
 const ignoredDirectories = new Set(['.git', '.output', '.turbo', '.vercel', 'coverage', 'dist', 'node_modules']);
 const importRegex = /import\s+type\s*\{([\s\S]*?)\}\s*from\s*(['"][^'"]+['"])(;?)/g;
 
-function parseCliOptions(): CliOptions {
-  const args = process.argv.slice(2);
+function parseCliOptions(args: string[]): CliOptions {
   const checkOnly = args.includes('--check');
   const targets = args.filter(arg => arg !== '--check');
 
@@ -134,7 +133,7 @@ function reorderSpecifierBlock(sourceBlock: string): string | null {
   return formatSpecifierBlock(sourceBlock, orderedSpecifiers);
 }
 
-function reorderImports(sourceText: string): { changed: boolean; content: string } {
+export function reorderImports(sourceText: string): { changed: boolean; content: string } {
   let changed = false;
 
   const content = sourceText.replace(
@@ -158,8 +157,8 @@ function reorderImports(sourceText: string): { changed: boolean; content: string
   };
 }
 
-async function main(): Promise<void> {
-  const { checkOnly, targets } = parseCliOptions();
+export async function runReorderImports(args: string[]): Promise<void> {
+  const { checkOnly, targets } = parseCliOptions(args);
   const files = await resolveVueFiles(targets);
   let changedFileCount = 0;
 
@@ -187,8 +186,3 @@ async function main(): Promise<void> {
     process.exitCode = 1;
   }
 }
-
-main().catch(error => {
-  console.error(error instanceof Error ? error.message : error);
-  process.exitCode = 1;
-});

@@ -3,10 +3,8 @@
 import type { Dirent } from 'node:fs';
 import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { menuData, uiXMenuData } from '../apps/docs/src/constants/menus';
-import type { MenuData } from '../apps/docs/src/constants/menus';
-import { runCliModule } from './_shared';
+import { menuData, uiXMenuData } from '../../../../apps/docs/src/constants/menus';
+import type { MenuData } from '../../../../apps/docs/src/constants/menus';
 
 type FrontmatterResult = {
   content: string;
@@ -56,8 +54,7 @@ const llmOnlyRegex = /<llm-only>([\s\S]*?)<\/llm-only>/giu;
 const llmExcludeRegex = /<llm-exclude>[\s\S]*?<\/llm-exclude>/giu;
 const htmlCommentRegex = /<!--([\s\S]*?)-->/gu;
 const genericVueTagRegex = /^<\/?[A-Z][^>]*>$/gmu;
-const currentDir = path.dirname(fileURLToPath(import.meta.url));
-const repoRoot = path.resolve(currentDir, '..');
+const repoRoot = process.cwd();
 const generatedApiDir = path.resolve(repoRoot, 'apps/docs/src/generated/api');
 const defaultSkillsRootDir = path.resolve(repoRoot, 'skills/skills');
 
@@ -154,8 +151,6 @@ async function collectSourceDocs(): Promise<SkillComponentDoc[]> {
 
   return collectedDocs.flat();
 }
-
-runCliModule(import.meta.url, generateSkillDocs);
 
 function resolveSkillOutputPaths(skillsRootDir: string) {
   const soybeanUiSkillRootDir = path.resolve(skillsRootDir, 'soybean-ui');

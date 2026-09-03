@@ -2,8 +2,8 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 import { kebabCase } from '@soybeanjs/utils';
-import { components as headlessComponents } from '../packages/headless/src/constants/components';
-import { runCliModule, writeGeneratedJsonDirectory } from './_shared';
+import { components as headlessComponents } from '../../../headless/src/constants/components';
+import { writeGeneratedJsonDirectory } from '../shared/json';
 import { releaseIntroducedComponents, releaseChangelogNotes } from './changelog-notes';
 import type { ReleaseChangelogNoteSource } from './changelog-notes';
 import { componentChangelogOverrides } from './changelog-overrides';
@@ -527,5 +527,3 @@ function createIndex(
     components
   };
 }
-
-runCliModule(import.meta.url, generateChangelogData);

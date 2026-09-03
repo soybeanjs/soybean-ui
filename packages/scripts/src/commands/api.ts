@@ -4,8 +4,8 @@ import { kebabCase } from '@soybeanjs/utils';
 import { Application, ReflectionKind } from 'typedoc';
 import type { Comment, DeclarationReflection, ProjectReflection, Reflection, SignatureReflection } from 'typedoc';
 import ts from 'typescript';
-import { components as headlessComponents } from '../packages/headless/src/constants/components';
-import { runCliModule, writeGeneratedJsonDirectory, writeJsonFile } from './_shared';
+import { components as headlessComponents } from '../../../headless/src/constants/components';
+import { writeGeneratedJsonDirectory, writeJsonFile } from '../shared/json';
 
 type ApiSectionKind = 'props' | 'emits' | 'slots' | 'slotProps';
 
@@ -1667,5 +1667,3 @@ export async function generateApiData(): Promise<void> {
 
   console.log(`Generated API data for packages: ${Object.keys(packages).join(', ')}.`);
 }
-
-runCliModule(import.meta.url, generateApiData);

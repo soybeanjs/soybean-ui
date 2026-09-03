@@ -3,7 +3,6 @@ import path from 'node:path';
 import process from 'node:process';
 import { pascalCase, camelCase } from '@soybeanjs/utils';
 import ts from 'typescript';
-import { runCliModule } from './_shared';
 
 type ComponentGroup = {
   key: string;
@@ -167,5 +166,3 @@ export async function generateHeadlessMetadata(): Promise<void> {
   await writeFile(componentsOutputPath, generateComponentsFile(groups), 'utf8');
   await writeFile(namespacedOutputPath, generateNamespacedFile(groups), 'utf8');
 }
-
-runCliModule(import.meta.url, generateHeadlessMetadata);

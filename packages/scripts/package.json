@@ -1,0 +1,24 @@
+{
+  "name": "@soybeanjs/scripts",
+  "version": "0.31.0",
+  "private": true,
+  "description": "SoybeanUI repo generators (api / changelog / metadata / skills), not published. Binary: sui.",
+  "license": "MIT",
+  "bin": {
+    "sui": "./bin/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "vp test run",
+    "typecheck": "tsc --noEmit --skipLibCheck"
+  },
+  "devDependencies": {
+    "@soybeanjs/utils": "^0.1.1",
+    "@types/node": "^26.4.1",
+    "tsx": "^4.23.13",
+    "typedoc": "^0.28.20",
+    "typescript": "catalog:ts6",
+    "vite-plus": "catalog:",
+    "vitest": "4.1.11"
+  }
+}
