@@ -158,7 +158,7 @@ describe('registry source expansion', () => {
     const expandedPaths = expandedFiles.map(file => file.path);
 
     expect(expandedPaths).toContain(`${UI_SOURCE_PATH}/components/icon/icon.vue`);
-    expect(expandedPaths).toContain(`${UI_SOURCE_PATH}/components/config-provider/context.ts`);
+    expect(expandedPaths).toContain(`${UI_SOURCE_PATH}/constants/index.ts`);
     expect(expandedPaths).toContain(`${UI_SOURCE_PATH}/styles/button.ts`);
     expect(expandedPaths).toContain(`${UI_SOURCE_PATH}/theme/index.ts`);
   });
