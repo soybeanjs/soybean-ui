@@ -220,66 +220,19 @@ const menus = computed<TreeMenuOptionData[]>(() => {
 });
 
 watchEffect(() => {
-  const parts = route.path.split('/').filter(Boolean);
-  const dir = parts[0];
-  const value = parts[2];
+  const [dir, value] = route.path.split('/').filter(Boolean);
 
-  if (dir) {
-    if (dir === 'components') {
-      // Find which group the current component belongs to
-      const group = menuData.find(g => g.items.some(item => kebabCase(item) === value));
+  if (dir && !value) {
+    const valueMap: Record<string, string> = {
+      overview: 'installation',
+      components: componentsOverviewValue,
+      'ui-x': 'ui-x-overview',
+      admin: 'admin-overview',
+      chart: 'chart-overview'
+    };
 
-      if (group) {
-        expanded.value = ['components', group.value];
-      } else {
-        expanded.value = ['components'];
-      }
-    } else if (dir === 'ui-x') {
-      const group = uiXMenuData.find(g => g.items.some(item => kebabCase(item) === value));
+    selected.value = valueMap[dir] || '';
 
-      if (group) {
-        expanded.value = ['ui-x', group.value];
-      } else {
-        expanded.value = ['ui-x'];
-      }
-    } else if (dir === 'admin') {
-      const group = adminMenuData.find(g => g.items.some(item => kebabCase(item) === value));
-
-      if (group) {
-        expanded.value = ['admin', group.value];
-      } else {
-        expanded.value = ['admin'];
-      }
-    } else if (dir === 'chart') {
-      const group = chartMenuData.find(g => g.items.some(item => kebabCase(item) === value));
-
-      if (group) {
-        expanded.value = ['chart', group.value];
-      } else {
-        expanded.value = ['chart'];
-      }
-    } else {
-      expanded.value = [dir];
-    }
-  }
-
-  if (dir === 'components' && !value) {
-    selected.value = componentsOverviewValue;
-    return;
-  }
-
-  if (dir === 'ui-x' && !value) {
-    selected.value = 'ui-x-overview';
-    return;
-  }
-
-  if (dir === 'admin' && !value) {
-    selected.value = 'admin-overview';
-    return;
-  }
-
-  if (dir === 'chart' && !value) {
-    selected.value = 'chart-overview';
     return;
   }
 
