@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, inject } from 'vue';
+import { CONFIG_PROVIDER_CONTEXT_KEY } from '../../constants/attr';
 import { fromContext, toContext } from '../../shared';
-import { useConfigProvider } from '../config-provider/context';
 import { providePopperDelayGroup } from '../popper';
 import { PROVIDER_CONFIG_KEYS, createDefaultTooltipConfig, pickDefinedConfig } from './shared';
 import { provideTooltipProviderContext, useTooltipProviderContext } from './context';
@@ -14,7 +14,7 @@ defineOptions({
 
 const props = defineProps<TooltipProviderProps>();
 
-const globalConfig = useConfigProvider();
+const globalConfig = inject<{ tooltip?: Partial<TooltipProviderProps> }>(CONFIG_PROVIDER_CONTEXT_KEY);
 const parent = useTooltipProviderContext();
 
 // Resolution chain: prop → ancestor provider → ConfigProvider global → defaults. A missing

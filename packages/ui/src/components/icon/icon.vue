@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, inject } from 'vue';
 import { Icon as Iconify } from '@iconify/vue';
 import type { IconifyIcon } from '@iconify/vue';
-import { useConfigProvider } from '../config-provider/context';
+import { UI_CONFIG_PROVIDER_CONTEXT_KEY } from '../../constants';
 import type { IconProps, IconValue } from './types';
 
 defineOptions({
@@ -13,12 +13,19 @@ const props = withDefaults(defineProps<IconProps>(), {
   ariaHidden: true
 });
 
-const configProvider = useConfigProvider();
+interface IconContext {
+  iconify?: {
+    width?: string;
+    height?: string;
+  };
+}
+
+const context = inject<IconContext>(UI_CONFIG_PROVIDER_CONTEXT_KEY);
 
 const iconifySize = computed(() => {
   const { width, height } = props;
 
-  const config = configProvider?.iconify || {};
+  const config = context?.iconify || {};
 
   return {
     width: width || config.width,

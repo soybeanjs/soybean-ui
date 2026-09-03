@@ -1,6 +1,7 @@
-import { computed } from 'vue';
+import { computed, inject } from 'vue';
 import type { ComputedRef } from 'vue';
-import { useConfigProvider } from '../config-provider/context';
+import { UI_CONFIG_PROVIDER_CONTEXT_KEY } from '../../constants';
+import type { ConfigProviderContext } from '../config-provider/types';
 
 /**
  * Shared UI-layer locale messages for the theme components (`ThemeCustomizer`,
@@ -483,7 +484,7 @@ const themeLocaleZh: ThemeLocaleMessages = {
  * (including the default `en`) falls back to English.
  */
 export function useThemeLocale(): ComputedRef<ThemeLocaleMessages> {
-  const config = useConfigProvider();
+  const config = inject<ConfigProviderContext>(UI_CONFIG_PROVIDER_CONTEXT_KEY);
 
   return computed(() => {
     const locale = config?.locale ?? 'en';

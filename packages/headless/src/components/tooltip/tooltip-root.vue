@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { computed, useId } from 'vue';
+import { computed, inject, useId } from 'vue';
+import { CONFIG_PROVIDER_CONTEXT_KEY } from '../../constants/attr';
 import { fromContext, pick, toContext } from '../../shared';
-import { useConfigProvider } from '../config-provider/context';
 import { PopperRoot } from '../popper';
 import type { PopperOpenChangeReason } from '../popper/types';
 import { PROVIDER_CONFIG_KEYS, ROOT_RESOLVE_KEYS, createDefaultTooltipConfig, pickDefinedConfig } from './shared';
 import { provideTooltipProviderContext, provideTooltipRootContext, useTooltipProviderContext } from './context';
-import type { TooltipRootEmits, TooltipRootProps } from './types';
+import type { TooltipProviderProps, TooltipRootEmits, TooltipRootProps } from './types';
 
 defineOptions({
   name: 'TooltipRoot',
@@ -22,7 +22,7 @@ const emit = defineEmits<TooltipRootEmits>();
 
 // Without an ancestor `TooltipProvider`, fall back to a local config-only provider backed by
 // the global config; the per-root hover machine inside Popper then owns the skip-delay state.
-const globalConfig = useConfigProvider();
+const globalConfig = inject<{ tooltip?: Partial<TooltipProviderProps> }>(CONFIG_PROVIDER_CONTEXT_KEY);
 const globalTooltipConfig = computed(() => createDefaultTooltipConfig(globalConfig?.tooltip));
 const inheritedProvider = useTooltipProviderContext();
 const provider =
