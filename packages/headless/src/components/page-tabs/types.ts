@@ -1,15 +1,22 @@
 import type { ComputedRef, ShallowRef } from 'vue';
+import type { RovingFocusGroupOptions } from '../../composables';
 import type { BaseProps, MaybePromise, ToContext, UiClass } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type { ButtonProps } from '../button/types';
 import type { ContextMenuCompactProps } from '../context-menu/types';
 import type { MenuOptionData } from '../menu/types';
-import type { RovingFocusGroupProps } from '../roving-focus/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the PageTabsRoot component.
  */
-export interface PageTabsRootProps extends Omit<RovingFocusGroupProps, 'orientation'>, Omit<BaseProps, 'dir'> {
+export interface PageTabsRootProps
+  extends
+    Omit<PrimitiveWithBaseProps, 'dir'>,
+    Pick<
+      RovingFocusGroupOptions,
+      'dir' | 'loop' | 'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus'
+    > {
   /**
    * The active tab value.
    */

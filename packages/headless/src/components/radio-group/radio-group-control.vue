@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, useAttrs, watchEffect } from 'vue';
 import { getAriaLabel, handleAndDispatchCustomEvent, isFormControl } from '../../shared';
-import { useForwardElement } from '../../composables';
-import type { NavigationKey } from '../../types';
+import { useForwardElement, useRovingFocusGroupItem } from '../../composables';
+import type { NavigationKey, VNodeRef } from '../../types';
 import Button from '../button/button.vue';
-import { RovingFocusItem } from '../roving-focus';
 import { useRadioGroupItemContext, useRadioGroupRootContext, useRadioGroupUi } from './context';
 import type { RadioGroupControlProps, RadioSelectEvent } from './types';
 
@@ -22,6 +21,11 @@ const [controlElement, setControlElement] = useForwardElement();
 const rootContext = useRadioGroupRootContext('RadioGroupControl');
 const { value, disabled, name, required, checked, dataState, onSelect, initControlId } =
   useRadioGroupItemContext('RadioGroupControl');
+
+const { setItemElement, itemProps } = useRovingFocusGroupItem({
+  focusable: computed(() => !disabled.value),
+  active: checked
+});
 
 const formControl = computed(() => isFormControl(controlElement.value));
 const ariaLabel = computed(() => getAriaLabel(controlElement.value, props.id, attrs['aria-label'] as string));
@@ -84,6 +88,11 @@ watchEffect(() => {
   }
 });
 
+function setControlRef(nodeRef: VNodeRef) {
+  setControlElement(nodeRef);
+  setItemElement(nodeRef);
+}
+
 onMounted(() => {
   document.addEventListener('keydown', onKeyDown);
   document.addEventListener('keyup', onKeyUp);
@@ -96,25 +105,23 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <RovingFocusItem as-child :checked="checked" :focusable="!disabled" :active="checked">
-    <Button
-      :ref="setControlElement"
-      v-bind="props"
-      data-soybean-radio-group-control
-      :class="cls"
-      role="radio"
-      :disabled="disabled"
-      :aria-checked="checked"
-      :aria-label="ariaLabel"
-      :data-state="dataState"
-      :value="String(value)"
-      :required="required"
-      :name="name"
-      @click.stop="onClick"
-      @keydown.enter.prevent="onClick"
-      @focus="onFocus"
-    >
-      <slot :checked="checked" :required="required" :disabled="disabled" />
-    </Button>
-  </RovingFocusItem>
+  <Button
+    :ref="setControlRef"
+    v-bind="{ ...props, ...itemProps }"
+    data-soybean-radio-group-control
+    :class="cls"
+    role="radio"
+    :disabled="disabled"
+    :aria-checked="checked"
+    :aria-label="ariaLabel"
+    :data-state="dataState"
+    :value="String(value)"
+    :required="required"
+    :name="name"
+    @click.stop="onClick"
+    @keydown.enter.prevent="onClick"
+    @focus="onFocus"
+  >
+    <slot :checked="checked" :required="required" :disabled="disabled" />
+  </Button>
 </template>

@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T extends DefinedValue = string">
 import { computed } from 'vue';
 import { useToggleGroupRootContext } from '../toggle-group/context';
+import { useRovingFocusGroupItem } from '../../composables';
 import type { DefinedValue } from '../../types';
-import { RovingFocusItem } from '../roving-focus';
 import { ToggleGroupItem } from '../toggle-group';
 import { useToolbarUi } from './context';
 import type { ToolbarToggleItemProps } from './types';
@@ -18,12 +18,20 @@ const cls = useToolbarUi('toggleItem');
 const { disabled: rootDisabled } = useToggleGroupRootContext('ToolbarToggleItem');
 
 const disabled = computed(() => rootDisabled.value || props.disabled);
+
+const { setItemElement, itemProps } = useRovingFocusGroupItem({
+  focusable: computed(() => !disabled.value)
+});
 </script>
 
 <template>
-  <RovingFocusItem as-child :focusable="!disabled">
-    <ToggleGroupItem v-bind="props" data-soybean-toolbar-toggle-item :class="cls" :disabled="disabled">
-      <slot />
-    </ToggleGroupItem>
-  </RovingFocusItem>
+  <ToggleGroupItem
+    :ref="setItemElement"
+    v-bind="{ ...props, ...itemProps }"
+    data-soybean-toolbar-toggle-item
+    :class="cls"
+    :disabled="disabled"
+  >
+    <slot />
+  </ToggleGroupItem>
 </template>

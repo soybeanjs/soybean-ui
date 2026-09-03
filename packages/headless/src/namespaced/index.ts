@@ -451,8 +451,6 @@ import {
   RadioGroupRoot,
   RatingItem,
   RatingRoot,
-  RovingFocusGroup,
-  RovingFocusItem,
   ScrollAreaCompact,
   ScrollAreaCorner,
   ScrollAreaRoot,
@@ -1691,14 +1689,6 @@ export const Rating = {
 } as {
   Item: typeof RatingItem;
   Root: typeof RatingRoot;
-};
-
-export const RovingFocus = {
-  Group: RovingFocusGroup,
-  Item: RovingFocusItem
-} as {
-  Group: typeof RovingFocusGroup;
-  Item: typeof RovingFocusItem;
 };
 
 export const ScrollArea = {

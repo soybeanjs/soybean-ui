@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { useForwardElement } from '../../composables';
-import { RovingFocusGroup } from '../roving-focus';
+import { computed } from 'vue';
+import { useForwardElement, useRovingFocusGroup } from '../../composables';
+import type { VNodeRef } from '../../types';
 import { useTabsRootContext, useTabsUi } from './context';
 import type { TabsListProps } from './types';
 
@@ -12,15 +13,34 @@ defineProps<TabsListProps>();
 
 const { orientation, dir, loop, onListElementChange } = useTabsRootContext('TabsList');
 
+const { setContainerElement, groupProps } = useRovingFocusGroup({
+  orientation,
+  dir,
+  loop,
+  currentTabStopId: computed(() => undefined),
+  defaultCurrentTabStopId: computed(() => undefined),
+  preventScrollOnEntryFocus: computed(() => false)
+});
+
 const [_, setListElement] = useForwardElement(onListElementChange);
+
+function setRootRef(nodeRef: VNodeRef) {
+  setListElement(nodeRef);
+  setContainerElement(nodeRef);
+}
 
 const cls = useTabsUi('list');
 </script>
 
 <template>
-  <RovingFocusGroup data-soybean-tabs-list as-child :dir="dir" :orientation="orientation" :loop="loop">
-    <div :ref="setListElement" :class="cls" role="tablist" :aria-orientation="orientation">
-      <slot />
-    </div>
-  </RovingFocusGroup>
+  <div
+    v-bind="groupProps"
+    :ref="setRootRef"
+    data-soybean-tabs-list
+    :class="cls"
+    role="tablist"
+    :aria-orientation="orientation"
+  >
+    <slot />
+  </div>
 </template>

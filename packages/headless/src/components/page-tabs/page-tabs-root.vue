@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { toContext } from '../../shared';
-import { useControllableState, usePickProps } from '../../composables';
-import RovingFocusGroup from '../roving-focus/roving-focus-group.vue';
+import { useControllableState, useRovingFocusGroup } from '../../composables';
+import type { VNodeRef } from '../../types';
 import { providePageTabsRootContext, usePageTabsUi } from './context';
 import { usePageTabsScroll } from './hooks';
 import type { PageTabsRootProps, PageTabsRootEmits } from './types';
@@ -20,14 +21,6 @@ const emit = defineEmits<PageTabsRootEmits>();
 
 const cls = usePageTabsUi('root');
 
-const forwardedProps = usePickProps(props, [
-  'dir',
-  'loop',
-  'currentTabStopId',
-  'defaultCurrentTabStopId',
-  'preventScrollOnEntryFocus'
-]);
-
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
@@ -42,18 +35,33 @@ providePageTabsRootContext({
   ...toContext(props, ['middleClickClose', 'draggable']),
   modelValue
 });
+
+// The tab strip is a horizontal roving focus group rendered as a plain container: the
+// returned `groupProps` carries the entry-focus/keyboard bindings for the tab items.
+const { setContainerElement, groupProps } = useRovingFocusGroup({
+  orientation: computed(() => 'horizontal' as const),
+  dir: computed(() => props.dir),
+  loop: computed(() => props.loop ?? true),
+  currentTabStopId: computed(() => props.currentTabStopId),
+  defaultCurrentTabStopId: computed(() => props.defaultCurrentTabStopId),
+  preventScrollOnEntryFocus: computed(() => props.preventScrollOnEntryFocus ?? false)
+});
+
+function setRootRef(nodeRef: VNodeRef) {
+  setContainerElement(nodeRef);
+  setRootElement(nodeRef);
+}
 </script>
 
 <template>
-  <RovingFocusGroup
-    :ref="setRootElement"
-    v-bind="forwardedProps"
+  <div
+    v-bind="groupProps"
+    :ref="setRootRef"
     data-soybean-page-tabs-root
-    :class="cls"
-    orientation="horizontal"
     class="soybean-headless-scrollbar-hidden soybean-headless-overflow-y-hidden"
+    :class="[cls]"
     @wheel="onWheel"
   >
     <slot />
-  </RovingFocusGroup>
+  </div>
 </template>

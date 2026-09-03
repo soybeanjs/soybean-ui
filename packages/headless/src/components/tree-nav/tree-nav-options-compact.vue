@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { keysOf, getTreePaths } from '../../shared';
+import { useRovingFocusGroupItem } from '../../composables';
 import Icon from '../_icon/icon.vue';
 import Button from '../button/button.vue';
 import DropdownMenuCompact from '../dropdown-menu/dropdown-menu-compact.vue';
 import type { MenuOptionData, MenuOptionsCompactSlots } from '../menu';
-import { RovingFocusItem } from '../roving-focus';
 import {
   TREE_NAV_MORE_VALUE,
   createTreeNavBranchPopupBind,
@@ -57,7 +57,16 @@ const moreEntry = computed(() => ({
 
 const moreDisabled = computed(() => disabled.value || Boolean(props.moreProps?.disabled));
 
+// Roving focus item as a hook: registers the trailing "more" trigger with the root group
+// and exposes the collection item + roving-focus data attributes.
+const { setItemElement, itemProps } = useRovingFocusGroupItem({
+  tabStopId: computed(() => TREE_NAV_MORE_VALUE),
+  focusable: computed(() => !moreDisabled.value)
+});
+
 const moreTriggerBind = computed(() => ({ ...props.moreProps, disabled: moreDisabled.value }));
+
+const moreBindings = computed(() => ({ ...moreTriggerBind.value, ...itemProps.value }));
 
 const branchPopupBind = createTreeNavBranchPopupBind(rootCtx);
 
@@ -88,12 +97,10 @@ const handlePopupSelect = createTreeNavPopupSelectHandler(onSelect);
   >
     <template #trigger>
       <slot name="more-trigger" :label="moreEntry.label" :icon="moreEntry.icon">
-        <RovingFocusItem as-child :tab-stop-id="TREE_NAV_MORE_VALUE" :focusable="!moreDisabled">
-          <Button v-bind="moreTriggerBind" :class="ui.item" :data-selected="false">
-            <Icon v-if="moreEntry.icon" :icon="moreEntry.icon" :class="ui.itemIcon" />
-            <span v-if="moreEntry.label">{{ moreEntry.label }}</span>
-          </Button>
-        </RovingFocusItem>
+        <Button v-bind="moreBindings" :ref="setItemElement" :class="ui.item" :data-selected="false">
+          <Icon v-if="moreEntry.icon" :icon="moreEntry.icon" :class="ui.itemIcon" />
+          <span v-if="moreEntry.label">{{ moreEntry.label }}</span>
+        </Button>
       </slot>
     </template>
     <template v-for="slotName in optionSlotNames" :key="slotName" #[slotName]="slotProps">

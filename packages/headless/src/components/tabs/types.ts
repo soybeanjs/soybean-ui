@@ -1,7 +1,7 @@
 import type { ShallowRef } from 'vue';
+import type { RovingFocusGroupOptions } from '../../composables';
 import type { BaseProps, AcceptableValue, DefinedValue, ForceMountProps, ToContext, UiClass } from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
-import type { RovingFocusGroupProps } from '../roving-focus/types';
 
 /**
  * Type information for TabsActivationMode.
@@ -12,8 +12,8 @@ export type TabsActivationMode = 'automatic' | 'manual';
  * Properties for the TabsRoot component.
  */
 export interface TabsRootProps<T extends AcceptableValue = AcceptableValue> extends Omit<
-  RovingFocusGroupProps,
-  'as' | 'asChild' | 'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus'
+  RovingFocusGroupOptions,
+  'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus'
 > {
   /** The controlled value of the tab to activate. Can be bind as `v-model`. */
   modelValue?: T;

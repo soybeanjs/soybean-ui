@@ -1,9 +1,9 @@
 <script setup lang="ts" generic="T extends DefinedValue = string">
 import { computed } from 'vue';
-import { useOmitProps } from '../../composables';
+import { useOmitProps, useRovingFocusGroupItem } from '../../composables';
 import type { DefinedValue } from '../../types';
 import Button from '../button/button.vue';
-import { RovingFocusItem } from '../roving-focus';
+import { Primitive } from '../primitive';
 import { useToggleGroupRootContext, useToggleGroupUi } from './context';
 import type { ToggleGroupItemProps } from './types';
 
@@ -26,15 +26,22 @@ const {
 const disabled = computed(() => rootDisabled.value || props.disabled);
 const pressed = computed(() => isValueSelected(props.value));
 
-const rovingFocusProps = computed(() => {
-  if (!rovingFocus.value) {
-    return {};
-  }
+// `rovingFocus` is static per instance: when disabled, no roving context is provided by
+// the root, so the item must not consume one (it would throw or bind to an outer group).
+const roving = rovingFocus.value
+  ? useRovingFocusGroupItem({
+      focusable: computed(() => !disabled.value),
+      active: pressed
+    })
+  : null;
 
-  return { focusable: !disabled.value, active: pressed.value };
+const forwardedProps = useOmitProps(props, ['value']);
+
+const itemBindings = computed(() => {
+  if (!rovingFocus.value || !roving) return forwardedProps.value;
+
+  return { ...forwardedProps.value, ...roving.itemProps.value };
 });
-
-const forwardedProps = useOmitProps(props, ['value'], rovingFocusProps);
 
 const dataState = computed(() => (pressed.value ? 'on' : 'off'));
 
@@ -45,8 +52,9 @@ const onClick = () => {
 
 <template>
   <component
-    :is="rovingFocus ? RovingFocusItem : Button"
-    v-bind="forwardedProps"
+    :is="rovingFocus ? Primitive : Button"
+    :ref="roving?.setItemElement"
+    v-bind="itemBindings"
     :as="rovingFocus ? Button : props.as"
     data-soybean-toggle-group-item
     :class="cls"

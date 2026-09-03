@@ -1,4 +1,5 @@
 import type { ComputedRef, ShallowRef } from 'vue';
+import type { RovingFocusGroupOptions } from '../../composables';
 import type {
   BaseProps,
   CheckedState,
@@ -12,7 +13,6 @@ import type { IconValue } from '../_icon/types';
 import type { ButtonProps } from '../button/types';
 import type { LabelProps as CheckboxLabelProps } from '../label/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
-import type { RovingFocusGroupProps } from '../roving-focus/types';
 
 /**
  * Properties for the CheckboxRoot component.
@@ -98,10 +98,7 @@ export type CheckboxCardGroupOptionData<T extends DefinedValue = DefinedValue> =
  */
 export interface CheckboxGroupRootProps<T extends DefinedValue = DefinedValue>
   extends
-    Omit<
-      RovingFocusGroupProps,
-      'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus' | 'as' | 'asChild'
-    >,
+    Omit<RovingFocusGroupOptions, 'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus'>,
     FormFieldCommonProps {
   /** The controlled value of the checkbox. Can be bound with v-model. */
   modelValue?: T[];

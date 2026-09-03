@@ -21,6 +21,7 @@ export * from './use-kbd';
 export * from './use-popup-events';
 export * from './use-presence';
 export * from './use-props';
+export * from './use-roving-focus';
 export * from './use-selection';
 export * from './use-state-machine';
 export * from './use-typeahead';

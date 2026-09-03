@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { flattenChildren, getActiveElement, handleAndDispatchCustomEvent } from '../../shared';
+import { useRovingFocusGroupItem } from '../../composables';
 import type { HorizontalSide, TreeSelectEvent, TreeToggleEvent } from '../../types';
 import { Primitive } from '../primitive';
-import RovingFocusItem from '../roving-focus/roving-focus-item.vue';
 import { TREE_SELECT, TREE_TOGGLE, recurseCheckChildren } from './shared';
 import { useTreeRootContext } from './context';
 import type { TreeItemProps, TreeItemEmits } from './types';
@@ -33,6 +33,13 @@ const {
 } = useTreeRootContext('TreeItem');
 
 const itemData = { value: props.value };
+
+// Roving focus item as a hook: registers the item with the root collection and exposes the
+// collection item + roving-focus data attributes (alongside `data-soybean-tree-item`).
+const { setItemElement, itemProps } = useRovingFocusGroupItem({
+  itemData: computed(() => itemData),
+  allowShiftKey: computed(() => true)
+});
 
 const currentItem = computed(() => expandedItems.value.find(item => item.value === props.value));
 
@@ -189,32 +196,32 @@ const onKeydown = (event: KeyboardEvent) => {
 </script>
 
 <template>
-  <RovingFocusItem as-child :item-data="itemData" allow-shift-key>
-    <Primitive
-      :as="as"
-      :as-child="asChild"
-      data-soybean-tree-item
-      :aria-disabled="disabled ? true : undefined"
-      :aria-selected="isSelected"
-      :aria-expanded="hasChildren ? isExpanded : undefined"
-      :aria-level="level"
-      :aria-setsize="ariaSetsize"
-      :aria-posinset="ariaPosinset"
-      :data-disabled="disabled ? '' : undefined"
-      :data-indent="level"
-      :data-selected="isSelected ? '' : undefined"
-      :data-expanded="isExpanded ? '' : undefined"
-      :data-contains-selected="hasSelectedChildren ? '' : undefined"
-      role="treeitem"
-      @keydown.enter.space.self.right.left.prevent="onKeydown"
-      @click.stop="onClick"
-    >
-      <slot
-        :is-expanded="isExpanded"
-        :is-selected="isSelected"
-        :is-indeterminate="isIndeterminate"
-        :has-children="hasChildren"
-      />
-    </Primitive>
-  </RovingFocusItem>
+  <Primitive
+    v-bind="itemProps"
+    :ref="setItemElement"
+    :as="as"
+    :as-child="asChild"
+    data-soybean-tree-item
+    :aria-disabled="disabled ? true : undefined"
+    :aria-selected="isSelected"
+    :aria-expanded="hasChildren ? isExpanded : undefined"
+    :aria-level="level"
+    :aria-setsize="ariaSetsize"
+    :aria-posinset="ariaPosinset"
+    :data-disabled="disabled ? '' : undefined"
+    :data-indent="level"
+    :data-selected="isSelected ? '' : undefined"
+    :data-expanded="isExpanded ? '' : undefined"
+    :data-contains-selected="hasSelectedChildren ? '' : undefined"
+    role="treeitem"
+    @keydown.enter.space.self.right.left.prevent="onKeydown"
+    @click.stop="onClick"
+  >
+    <slot
+      :is-expanded="isExpanded"
+      :is-selected="isSelected"
+      :is-indeterminate="isIndeterminate"
+      :has-children="hasChildren"
+    />
+  </Primitive>
 </template>

@@ -1,13 +1,12 @@
 <script setup lang="ts" generic="T extends TreeItemData, U extends MaybeArray<string> | undefined, M extends boolean">
-import { computed, nextTick, shallowRef, useTemplateRef } from 'vue';
+import { computed, nextTick, shallowRef } from 'vue';
 import type { ComputedRef, ShallowRef } from 'vue';
 import { createEventHook } from '@vueuse/core';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../../constants';
 import { flattenChildren, getActiveElement, isNullish, toContext } from '../../shared';
-import { useControllableState, useTypeahead } from '../../composables';
-import type { MaybeArray, NavigationKey } from '../../types';
+import { useControllableState, useRovingFocusGroup, useTypeahead } from '../../composables';
+import type { MaybeArray, NavigationKey, VNodeRef } from '../../types';
 import { Primitive } from '../primitive';
-import RovingFocusGroup from '../roving-focus/roving-focus-group.vue';
 import { findParentPath, flattenItems } from './shared';
 import { provideTreeRootContext } from './context';
 import { useSelectionBehavior } from './hooks';
@@ -26,7 +25,6 @@ const props = withDefaults(defineProps<TreeRootProps<T, U, M>>(), {
 
 const emit = defineEmits<TreeRootEmits<TreeRootProps<T, U, M>['multiple']>>();
 
-const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
 const { handleTypeaheadSearch } = useTypeahead();
 
 const isVirtual = shallowRef(false);
@@ -72,6 +70,21 @@ const expanded = useControllableState(
 
 const expandedItems = computed(() => flattenItems(props.items, expanded.value));
 
+// Roving focus group as a hook: the tree container doubles as the group container and items
+// self-register against it (typeahead + shift-range selection read the ordered collection).
+const { setContainerElement, groupProps, getOrderedItems } = useRovingFocusGroup({
+  orientation: computed(() => 'vertical' as const),
+  dir: computed(() => props.dir),
+  loop: computed(() => props.loop ?? true),
+  currentTabStopId: computed(() => undefined),
+  defaultCurrentTabStopId: computed(() => undefined),
+  preventScrollOnEntryFocus: computed(() => false)
+});
+
+function setRootRef(nodeRef: VNodeRef) {
+  setContainerElement(nodeRef);
+}
+
 const onKeydownNavigation = (event: KeyboardEvent) => {
   const intent = MAP_KEY_TO_FOCUS_INTENT[event.key as NavigationKey];
   nextTick(() => {
@@ -79,7 +92,7 @@ const onKeydownNavigation = (event: KeyboardEvent) => {
       intent,
       getActiveElement(),
       expandedItems.value.map(item => item.value),
-      rovingFocusGroupRef.value?.getItems
+      getOrderedItems
     );
   });
 };
@@ -98,7 +111,7 @@ const onKeydown = (event: KeyboardEvent) => {
     return;
   }
 
-  const collections = rovingFocusGroupRef.value?.getItems() ?? [];
+  const collections = getOrderedItems();
   handleTypeaheadSearch(event.key, collections);
 };
 
@@ -193,31 +206,31 @@ provideTreeRootContext({
   expandedItems,
   isVirtual,
   virtualKeydownHook,
-  getItems: () => rovingFocusGroupRef.value?.getItems() ?? [],
+  getItems: () => getOrderedItems(),
   handleMultipleReplace,
   ...toContext(props, ['items', 'multiple', 'disabled', 'dir', 'selectionBehavior', 'propagateSelect', 'bubbleSelect'])
 });
 </script>
 
 <template>
-  <RovingFocusGroup ref="rovingFocusGroupRef" as-child orientation="vertical" :dir="dir" :loop="loop">
-    <Primitive
-      :as="as"
-      :as-child="asChild"
-      data-soybean-tree-root
-      :aria-disabled="disabled ? true : undefined"
-      :aria-multiselectable="multiple ? true : undefined"
-      :data-disabled="disabled ? '' : undefined"
-      role="tree"
-      @keydown="onKeydown"
-    >
-      <slot
-        :flatten-items="expandedItems"
-        :model-value="modelValue"
-        :expanded="expanded"
-        :select="onSelect"
-        :toggle="onToggle"
-      />
-    </Primitive>
-  </RovingFocusGroup>
+  <Primitive
+    v-bind="groupProps"
+    :ref="setRootRef"
+    :as="as"
+    :as-child="asChild"
+    data-soybean-tree-root
+    :aria-disabled="disabled ? true : undefined"
+    :aria-multiselectable="multiple ? true : undefined"
+    :data-disabled="disabled ? '' : undefined"
+    role="tree"
+    @keydown="onKeydown"
+  >
+    <slot
+      :flatten-items="expandedItems"
+      :model-value="modelValue"
+      :expanded="expanded"
+      :select="onSelect"
+      :toggle="onToggle"
+    />
+  </Primitive>
 </template>

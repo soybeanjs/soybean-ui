@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { computed, reactive, shallowRef } from 'vue';
 import { usePopperRootContext } from '../popper/context';
-import { useForwardElement } from '../../composables';
+import { useForwardElement, useRovingFocusGroupItem } from '../../composables';
 import Button from '../button/button.vue';
 import { MenuAnchor } from '../menu';
 import type { PopperTriggerProps } from '../popper/types';
 import { usePopperTrigger } from '../popper/use-popper-trigger';
-import { RovingFocusItem } from '../roving-focus';
 import { isTriggerLink } from './shared';
 import { useMenubarCollectionItem, useMenubarMenuContext, useMenubarRootContext, useMenubarUi } from './context';
 import type { MenubarTriggerProps } from './types';
@@ -41,12 +40,22 @@ const popperContext = usePopperRootContext('MenubarTrigger');
 
 const cls = useMenubarUi('trigger');
 
+// Register with the root roving focus group (Left/Right navigation across triggers) and expose
+// the collection item + roving-focus data attributes (alongside `data-soybean-menubar-trigger`)
+// via the returned `itemProps`.
+const { itemProps, setItemElement: setRovingItemElement } = useRovingFocusGroupItem({
+  tabStopId: computed(() => String(value.value)),
+  focusable: computed(() => !props.disabled)
+});
 const { onItemElementChange } = useMenubarCollectionItem(() => ({ value: value.value }));
 
 const [triggerElement, setTriggerElement] = useForwardElement(element => {
   menuTriggerElement.value = element;
+  setRovingItemElement(element);
   onItemElementChange(element);
 });
+
+const triggerBindings = computed(() => ({ ...props, ...itemProps.value }));
 
 const isFocused = shallowRef(false);
 // Whether the open menu was switched to this trigger by the current pointer
@@ -183,32 +192,29 @@ const onKeyDown = (event: KeyboardEvent) => {
 </script>
 
 <template>
-  <RovingFocusItem as-child :focusable="!disabled" :tab-stop-id="String(value)">
-    <MenuAnchor as-child>
-      <Button
-        v-bind="props"
-        :id="triggerId"
-        :ref="setTriggerElement"
-        data-soybean-menubar-trigger
-        :class="cls"
-        :aria-controls="open ? contentId : undefined"
-        :aria-expanded="open"
-        aria-haspopup="menu"
-        :data-highlighted="isFocused ? '' : undefined"
-        data-soybean-collection-item
-        :data-state="open ? 'open' : 'closed'"
-        :data-value="value"
-        :disabled="disabled"
-        role="menuitem"
-        @pointerdown="onPointerDown"
-        @pointerenter="onPointerEnter"
-        @pointerleave="onPointerLeave"
-        @keydown.enter.space.arrow-down="onKeyDown"
-        @focus="onFocus"
-        @blur="onBlur"
-      >
-        <slot />
-      </Button>
-    </MenuAnchor>
-  </RovingFocusItem>
+  <MenuAnchor as-child>
+    <Button
+      v-bind="triggerBindings"
+      :id="triggerId"
+      :ref="setTriggerElement"
+      data-soybean-menubar-trigger
+      :class="cls"
+      :aria-controls="open ? contentId : undefined"
+      :aria-expanded="open"
+      aria-haspopup="menu"
+      :data-highlighted="isFocused ? '' : undefined"
+      :data-state="open ? 'open' : 'closed'"
+      :data-value="value"
+      :disabled="disabled"
+      role="menuitem"
+      @pointerdown="onPointerDown"
+      @pointerenter="onPointerEnter"
+      @pointerleave="onPointerLeave"
+      @keydown.enter.space.arrow-down="onKeyDown"
+      @focus="onFocus"
+      @blur="onBlur"
+    >
+      <slot />
+    </Button>
+  </MenuAnchor>
 </template>

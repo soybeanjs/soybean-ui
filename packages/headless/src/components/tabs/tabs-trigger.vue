@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useRovingFocusGroupItem } from '../../composables';
 import { Primitive } from '../primitive';
-import { RovingFocusItem } from '../roving-focus';
 import { useTabsRootContext, useTabsUi } from './context';
 import type { TabsTriggerProps } from './types';
 
@@ -22,6 +22,11 @@ const { contentId, triggerId, existContentId } = getId(props.value);
 
 const isSelected = computed(() => props.value === modelValue.value);
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
+
+const { itemProps, setItemElement } = useRovingFocusGroupItem({
+  focusable: computed(() => !props.disabled),
+  active: isSelected
+});
 
 const ariaControls = computed(() => (existContentId.value ? contentId.value : undefined));
 
@@ -52,25 +57,25 @@ const onFocus = () => {
 </script>
 
 <template>
-  <RovingFocusItem as-child :focusable="!disabled" :active="isSelected">
-    <Primitive
-      :id="triggerId"
-      :as="as"
-      :as-child="asChild"
-      data-soybean-tabs-trigger
-      :class="cls"
-      :aria-controls="ariaControls"
-      :aria-selected="isSelected ? 'true' : 'false'"
-      :data-disabled="disabled ? '' : undefined"
-      :data-orientation="orientation"
-      :data-selected="isSelected"
-      role="tab"
-      :type="tag"
-      @mousedown.left="onMouseDown"
-      @keydown.enter.space="onKeyDown"
-      @focus="onFocus"
-    >
-      <slot :selected="isSelected" />
-    </Primitive>
-  </RovingFocusItem>
+  <Primitive
+    v-bind="itemProps"
+    :id="triggerId"
+    :ref="setItemElement"
+    :as="as"
+    :as-child="asChild"
+    data-soybean-tabs-trigger
+    :class="cls"
+    :aria-controls="ariaControls"
+    :aria-selected="isSelected ? 'true' : 'false'"
+    :data-disabled="disabled ? '' : undefined"
+    :data-orientation="orientation"
+    :data-selected="isSelected"
+    role="tab"
+    :type="tag"
+    @mousedown.left="onMouseDown"
+    @keydown.enter.space="onKeyDown"
+    @focus="onFocus"
+  >
+    <slot :selected="isSelected" />
+  </Primitive>
 </template>

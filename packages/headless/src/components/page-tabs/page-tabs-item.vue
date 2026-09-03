@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import { useSortable } from '@dnd-kit/vue/sortable';
 import { toContext } from '../../shared';
-import { useForwardElement } from '../../composables';
-import RovingFocusItem from '../roving-focus/roving-focus-item.vue';
+import { useForwardElement, useRovingFocusGroupItem } from '../../composables';
+import type { VNodeRef } from '../../types';
 import { usePageTabsUi, usePageTabsRootContext, providePageTabsItemContext } from './context';
 import type { PageTabsItemProps, PageTabsItemEmits } from './types';
 
@@ -30,7 +30,18 @@ const closable = computed(() => !props.pinned);
 // dropped onto it — the tab is locked in place. Pinned tabs stay sortable
 // and reorder within the pinned zone only (cross-zone drops are blocked by
 // the compact layer through the dragover hook).
-const [itemElement, setItemElement] = useForwardElement<HTMLElement>();
+const [itemElement, setSortableElement] = useForwardElement<HTMLElement>();
+
+// Roving focus item as a hook: registers the tab with the root group and exposes the
+// collection item + roving-focus data attributes (alongside `data-soybean-page-tabs-item`).
+const { setItemElement: setRovingItemElement, itemProps } = useRovingFocusGroupItem({
+  active: computed(() => isSelected.value)
+});
+
+function setItemRef(nodeRef: VNodeRef) {
+  setRovingItemElement(nodeRef);
+  setSortableElement(nodeRef);
+}
 
 const { isDragging, isDropTarget, isDragSource } = useSortable({
   id: computed(() => props.value),
@@ -83,8 +94,9 @@ providePageTabsItemContext({
 </script>
 
 <template>
-  <RovingFocusItem
-    :ref="setItemElement"
+  <div
+    v-bind="itemProps"
+    :ref="setItemRef"
     :class="cls"
     data-soybean-page-tabs-item
     :data-value="value"
@@ -94,12 +106,10 @@ providePageTabsItemContext({
     :data-dragging="isDragging"
     :data-drop-target="isDropTarget || undefined"
     :data-drag-source="isDragSource || undefined"
-    :active="isSelected"
-    :focusable="true"
     @click="onClick"
     @mousedown="onMouseDown"
     @keydown.enter.backspace="onKeydown"
   >
     <slot />
-  </RovingFocusItem>
+  </div>
 </template>

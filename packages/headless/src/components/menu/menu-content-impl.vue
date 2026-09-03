@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, useTemplateRef, watch } from 'vue';
+import { computed, nextTick, watch } from 'vue';
 import type { CSSProperties } from 'vue';
 import { COLLECTION_ITEM_ATTRIBUTE } from '../../constants';
 import { getActiveElement, isMouseEvent, tryFocusFirst } from '../../shared';
@@ -11,10 +11,11 @@ import {
   useForwardListeners,
   useHideOthers,
   useOmitProps,
+  useRovingFocusGroup,
   useTypeahead
 } from '../../composables';
+import type { VNodeRef } from '../../types';
 import { PopperPopup, PopperPositioner } from '../popper';
-import { RovingFocusGroup } from '../roving-focus';
 import { FIRST_LAST_KEYS, LAST_KEYS, MENU_POPUP_DATA_ATTRIBUTE, menuCssVars, subMenuCssVars } from './shared';
 import { provideMenuContentContext, useMenuContext, useMenuRootContext, useMenuUi } from './context';
 import type { MenuContentImplProps, MenuContentImplEmits } from './types';
@@ -45,7 +46,27 @@ const cls = computed(() => (isRoot ? ui.value?.positioner : ui.value?.subPositio
 const popupCls = computed(() => (isRoot ? ui.value?.popup : ui.value?.subPopup));
 
 const { handleTypeaheadSearch } = useTypeahead();
-const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
+
+// Roving focus group as a hook: the popup doubles as the group container and items self-register
+// against it. `currentItemId` stays the source of truth so item focus state is shared with the menu
+// content context (mirrors the component's `v-model:current-tab-stop-id`).
+const { setContainerElement, groupProps, getOrderedItems } = useRovingFocusGroup({
+  orientation: computed(() => 'vertical' as const),
+  dir,
+  loop: computed(() => props.loop ?? false),
+  currentTabStopId: computed(() => currentItemId.value),
+  defaultCurrentTabStopId: computed(() => ''),
+  preventScrollOnEntryFocus: computed(() => false),
+  onUpdateCurrentTabStopId: value => {
+    currentItemId.value = value ?? null;
+  },
+  onEntryFocus
+});
+
+function setPopupRef(nodeRef: VNodeRef) {
+  setContainerElement(nodeRef);
+  setPopupElement(nodeRef);
+}
 
 const listeners = useForwardListeners<keyof MenuContentImplEmits>(emit);
 
@@ -68,6 +89,10 @@ const popupProps = computed(() => {
   };
 });
 
+// `groupProps` (roving focus container bindings incl. listeners) and the menu popup data attribute
+// are merged into a single binding set because a Vue element accepts only one `v-bind`.
+const popupBindings = computed(() => ({ ...groupProps.value, ...popupProps.value }));
+
 const popupStyle = computed<CSSProperties>(() => {
   const cssVars = isRoot ? menuCssVars : subMenuCssVars;
 
@@ -80,13 +105,13 @@ const popupStyle = computed<CSSProperties>(() => {
   };
 });
 
-const onEntryFocus = (event: Event) => {
+function onEntryFocus(event: Event) {
   emit('entryFocus', event);
   // only focus first item when using keyboard
   if (!isUsingKeyboard.value) {
     event.preventDefault();
   }
-};
+}
 
 const onKeyDown = (event: KeyboardEvent) => {
   if (event.defaultPrevented) return;
@@ -111,7 +136,7 @@ const onKeyDown = (event: KeyboardEvent) => {
   // prevent "Space" taken account into handleTypeahead
   if (event.code === 'Space') return;
 
-  const collectionItems = rovingFocusGroupRef.value?.getItems() ?? [];
+  const collectionItems = getOrderedItems();
 
   if (isKeyDownInside) {
     // menus should not be navigated using the tab key; only trap it for modal
@@ -194,33 +219,23 @@ watch(
     :class="cls"
     v-on="listeners"
   >
-    <RovingFocusGroup
-      ref="rovingFocusGroupRef"
-      v-model:current-tab-stop-id="currentItemId"
-      as-child
-      orientation="vertical"
+    <PopperPopup
+      v-bind="popupBindings"
+      :id="popupId"
+      :ref="setPopupRef"
+      :class="popupCls"
+      :aria-labelledby="triggerId"
+      aria-orientation="vertical"
+      :data-state="dataState"
       :dir="dir"
-      :loop="loop"
-      @entry-focus="onEntryFocus"
+      role="menu"
+      tabindex="-1"
+      :style="popupStyle"
+      @keydown="onKeyDown"
+      @blur="onBlur"
+      @pointermove="onPointerMove"
     >
-      <PopperPopup
-        v-bind="popupProps"
-        :id="popupId"
-        :ref="setPopupElement"
-        :class="popupCls"
-        :aria-labelledby="triggerId"
-        aria-orientation="vertical"
-        :data-state="dataState"
-        :dir="dir"
-        role="menu"
-        tabindex="-1"
-        :style="popupStyle"
-        @keydown="onKeyDown"
-        @blur="onBlur"
-        @pointermove="onPointerMove"
-      >
-        <slot />
-      </PopperPopup>
-    </RovingFocusGroup>
+      <slot />
+    </PopperPopup>
   </PopperPositioner>
 </template>

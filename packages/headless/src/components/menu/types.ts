@@ -1,4 +1,5 @@
 import type { ComputedRef, ShallowRef } from 'vue';
+import type { RovingFocusGroupEmits, RovingFocusGroupOptions } from '../../composables';
 import type {
   BaseProps,
   AcceptableBooleanValue,
@@ -20,7 +21,6 @@ import type { LinkBaseProps, LinkExtraProps } from '../link/types';
 import type { PopperPopupProps, PopperPositionerProps } from '../popper/types';
 import type { PortalProps as MenuPortalProps } from '../portal/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
-import type { RovingFocusGroupEmits, RovingFocusGroupProps } from '../roving-focus/types';
 import type { SeparatorRootProps as MenuSeparatorProps } from '../separator/types';
 
 // MenuRoot
@@ -50,7 +50,7 @@ export interface MenuPopupProps extends PopperPopupProps {}
  * Properties for the MenuContentImpl component.
  */
 export interface MenuContentImplProps
-  extends PopperPositionerProps, TrapFocusProps, Pick<RovingFocusGroupProps, 'loop'> {
+  extends PopperPositionerProps, TrapFocusProps, Pick<RovingFocusGroupOptions, 'loop'> {
   /**
    * Properties forwarded to the popup element.
    */
@@ -65,7 +65,8 @@ export type MenuContentImplEmits = DismissableLayerEmits & FocusScopeEmits & Pic
 /**
  * Properties for the MenuContent component.
  */
-export interface MenuContentProps extends PopperPositionerProps, ForceMountProps, Pick<RovingFocusGroupProps, 'loop'> {
+export interface MenuContentProps
+  extends PopperPositionerProps, ForceMountProps, Pick<RovingFocusGroupOptions, 'loop'> {
   /**
    * Properties forwarded to the popup element.
    */

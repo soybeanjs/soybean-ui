@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { toContext } from '../../shared';
+import { useRovingFocusGroup } from '../../composables';
 import { Primitive } from '../primitive';
-import { RovingFocusGroup } from '../roving-focus';
 import { provideToolbarRootContext, useToolbarUi } from './context';
 import type { ToolbarRootProps } from './types';
 
@@ -15,22 +16,28 @@ const props = withDefaults(defineProps<ToolbarRootProps>(), {
 
 const cls = useToolbarUi('root');
 
+const { setContainerElement, groupProps } = useRovingFocusGroup({
+  ...toContext(props, ['orientation', 'dir', 'loop']),
+  currentTabStopId: computed(() => undefined),
+  defaultCurrentTabStopId: computed(() => undefined),
+  preventScrollOnEntryFocus: computed(() => false)
+});
+
 provideToolbarRootContext(toContext(props, ['orientation', 'dir']));
 </script>
 
 <template>
-  <RovingFocusGroup as-child :orientation="orientation" :dir="dir" :loop="loop">
-    <Primitive
-      :as="as"
-      :as-child="asChild"
-      data-soybean-toolbar-root
-      :class="cls"
-      role="toolbar"
-      :aria-orientation="orientation"
-      :dir="dir"
-      :data-orientation="orientation"
-    >
-      <slot />
-    </Primitive>
-  </RovingFocusGroup>
+  <Primitive
+    v-bind="groupProps"
+    :ref="setContainerElement"
+    :as="as"
+    :as-child="asChild"
+    data-soybean-toolbar-root
+    :class="cls"
+    role="toolbar"
+    :aria-orientation="orientation"
+    :data-orientation="orientation"
+  >
+    <slot />
+  </Primitive>
 </template>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed, shallowRef, useTemplateRef, watch } from 'vue';
+import { computed, shallowRef, watch } from 'vue';
 import type { CSSProperties } from 'vue';
 import { getTreeNavigationKey, resolveTreeNavigation } from '../../shared';
 import type { TreeNavigationNode } from '../../shared';
 import { useDirection } from '../config-provider/context';
-import { useControllableState } from '../../composables';
-import { RovingFocusGroup } from '../roving-focus';
+import { useControllableState, useRovingFocusGroup } from '../../composables';
+import type { VNodeRef } from '../../types';
 import { treeMenuCssVars } from './shared';
 import { provideTreeMenuRootContext, useTreeMenuUi } from './context';
 import type { TreeMenuRootProps, TreeMenuCollapsedState, TreeMenuRootEmits } from './types';
@@ -93,7 +93,18 @@ watch(collapsed, value => {
 // closed branch or moves into its first child, `←` collapses an expanded
 // branch or returns to the parent.
 
-const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
+const { setContainerElement, groupProps, getOrderedItems } = useRovingFocusGroup({
+  orientation: computed(() => 'vertical' as const),
+  dir,
+  loop: computed(() => false),
+  currentTabStopId: computed(() => undefined),
+  defaultCurrentTabStopId: computed(() => undefined),
+  preventScrollOnEntryFocus: computed(() => false)
+});
+
+function setRootRef(nodeRef: VNodeRef) {
+  setContainerElement(nodeRef);
+}
 
 const navigationNodes = shallowRef<TreeNavigationNode[]>([]);
 
@@ -118,7 +129,7 @@ function onTreeKeydown(event: KeyboardEvent) {
   const target = event.target;
   if (!(target instanceof HTMLElement)) return;
 
-  const items = rovingFocusGroupRef.value?.getItems() ?? [];
+  const items = getOrderedItems();
   if (!items.some(item => item.element === target)) return;
 
   const currentValue = target.dataset.value ?? '';
@@ -149,16 +160,16 @@ provideTreeMenuRootContext({
 </script>
 
 <template>
-  <RovingFocusGroup ref="rovingFocusGroupRef" as-child orientation="vertical" :dir="dir" :loop="false">
-    <div
-      data-soybean-tree-menu-root
-      :class="cls"
-      :data-state="dataState"
-      :style="style"
-      role="tree"
-      @keydown="onTreeKeydown"
-    >
-      <slot />
-    </div>
-  </RovingFocusGroup>
+  <div
+    v-bind="groupProps"
+    :ref="setRootRef"
+    data-soybean-tree-menu-root
+    :class="cls"
+    :data-state="dataState"
+    :style="style"
+    role="tree"
+    @keydown="onTreeKeydown"
+  >
+    <slot />
+  </div>
 </template>

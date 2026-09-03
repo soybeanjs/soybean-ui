@@ -1,10 +1,9 @@
 <script setup lang="ts" generic="M extends boolean = false, T extends DefinedValue = string">
 import { computed } from 'vue';
 import { isFormControl, toContext } from '../../shared';
-import { useForwardElement, useSelection } from '../../composables';
-import type { DefinedValue } from '../../types';
+import { useForwardElement, useRovingFocusGroup, useSelection } from '../../composables';
+import type { DefinedValue, VNodeRef } from '../../types';
 import { Primitive } from '../primitive';
-import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideToggleGroupRootContext, useToggleGroupUi } from './context';
 import type { ToggleGroupRootProps, ToggleGroupRootEmits } from './types';
@@ -34,17 +33,19 @@ const { modelValue, onModelValueChange, isValueSelected, isMultiple } = useSelec
 
 const formControl = computed(() => isFormControl(groupElement.value));
 
-const rovingFocusProps = computed(getRovingFocusProps);
+// `rovingFocus` is static per instance: when disabled (e.g. inside a Toolbar, which owns
+// navigation), skip the roving context entirely so nested items fall through to the
+// outer roving group instead of registering with this one.
+const roving = props.rovingFocus
+  ? useRovingFocusGroup({
+      ...toContext(props, ['loop', 'dir', 'orientation']),
+      currentTabStopId: computed(() => undefined),
+      defaultCurrentTabStopId: computed(() => undefined),
+      preventScrollOnEntryFocus: computed(() => false)
+    })
+  : null;
 
-function getRovingFocusProps() {
-  const { rovingFocus, loop, dir, orientation } = props;
-
-  if (!rovingFocus) {
-    return {};
-  }
-
-  return { loop, dir, orientation };
-}
+const groupBindings = computed(() => roving?.groupProps.value);
 
 const onValueChange = (value: DefinedValue) => {
   onModelValueChange(value as T);
@@ -61,18 +62,21 @@ provideToggleGroupRootContext({
   isValueSelected: isSelected,
   isMultiple
 });
+
+function setGroupRef(nodeRef: VNodeRef) {
+  setGroupElement(nodeRef);
+  roving?.setContainerElement(nodeRef);
+}
 </script>
 
 <template>
-  <component
-    :is="rovingFocus ? RovingFocusGroup : Primitive"
-    v-bind="rovingFocusProps"
-    :ref="setGroupElement"
+  <Primitive
+    v-bind="groupBindings"
+    :ref="setGroupRef"
     :as="as"
     :as-child="asChild"
     data-soybean-toggle-group-root
     :class="cls"
-    :dir="dir"
     role="group"
     :data-disabled="disabled ? '' : undefined"
     :data-orientation="orientation"
@@ -86,5 +90,5 @@ provideToggleGroupRootContext({
       :disabled="disabled"
       :required="required"
     />
-  </component>
+  </Primitive>
 </template>

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, shallowRef, useAttrs } from 'vue';
 import { isMouseEvent } from '../../shared';
-import { useCollectionItem } from '../roving-focus/context';
-import { useOmitProps } from '../../composables';
+import { useOmitProps, useRovingFocusGroupItem } from '../../composables';
 import { Primitive } from '../primitive';
 import { useMenuContext, useMenuContentContext } from './context';
 import type { MenuItemImplProps } from './types';
@@ -18,9 +17,16 @@ const attrs = useAttrs();
 const { open } = useMenuContext('MenuItemImpl');
 const { onItemEnter, onItemLeave } = useMenuContentContext('MenuItemImpl');
 
-const { setItemElement } = useCollectionItem(() => ({ textValue: props.textValue }));
+// Register with the roving focus group collection and expose the collection item + roving-focus
+// data attributes (alongside `data-soybean-menu-item-impl`) via the returned `itemProps`.
+const { setItemElement, itemProps } = useRovingFocusGroupItem({
+  itemData: computed(() => ({ textValue: props.textValue })),
+  focusable: computed(() => !props.disabled)
+});
 
 const forwardedProps = useOmitProps(props, ['disabled', 'textValue']);
+
+const mergedProps = computed(() => ({ ...forwardedProps.value, ...itemProps.value }));
 
 const role = computed(() => (attrs['role'] as string | undefined) ?? 'menuitem');
 
@@ -68,14 +74,11 @@ const onBlur = async (event: FocusEvent) => {
 
 <template>
   <Primitive
-    v-bind="forwardedProps"
+    v-bind="mergedProps"
     :ref="setItemElement"
     data-soybean-menu-item-impl
-    data-soybean-collection-item
     :role="role"
-    tabindex="-1"
     :aria-disabled="disabled || undefined"
-    :data-disabled="disabled ? '' : undefined"
     :data-highlighted="isFocused ? '' : undefined"
     @pointermove="onPointerMove"
     @pointerleave="onPointerLeave"

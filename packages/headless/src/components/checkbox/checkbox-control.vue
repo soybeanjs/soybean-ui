@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, useAttrs, watchEffect } from 'vue';
 import { getAriaLabel, isIndeterminate, isNullish, isValueEqualOrExist } from '../../shared';
-import { useForwardElement } from '../../composables';
+import { useForwardElement, useRovingFocusGroupItem } from '../../composables';
+import type { VNodeRef } from '../../types';
 import Button from '../button/button.vue';
-import { RovingFocusItem } from '../roving-focus';
+import { Primitive } from '../primitive';
 import { useCheckboxGroupRootContext, useCheckboxRootContext, useCheckboxUi } from './context';
 import type { CheckboxControlProps } from './types';
 
@@ -26,9 +27,21 @@ const [controlElement, setControlElement] = useForwardElement();
 
 const rovingFocus = computed(() => groupContext?.rovingFocus?.value);
 
-const ariaLabel = computed(() => getAriaLabel(controlElement.value, props.id, attrs['aria-label'] as string));
+// The roving item hook requires the group context, which only exists when the control is
+// rendered inside a `CheckboxGroupRoot`; the condition is stable per instance.
+const roving = groupContext
+  ? useRovingFocusGroupItem({
+      focusable: computed(() => !disabled.value)
+    })
+  : null;
 
-const focusable = computed(() => (rovingFocus.value ? !disabled.value : undefined));
+const controlBindings = computed(() => {
+  if (!rovingFocus.value || !roving) return props;
+
+  return { ...props, ...roving.itemProps.value };
+});
+
+const ariaLabel = computed(() => getAriaLabel(controlElement.value, props.id, attrs['aria-label'] as string));
 
 const onClick = () => {
   if (groupContext) {
@@ -50,17 +63,21 @@ watchEffect(() => {
     initControlId(props.id);
   }
 });
+
+function setControlRef(nodeRef: VNodeRef) {
+  setControlElement(nodeRef);
+  roving?.setItemElement(nodeRef);
+}
 </script>
 
 <template>
   <component
-    :is="rovingFocus ? RovingFocusItem : Button"
-    :ref="setControlElement"
-    v-bind="props"
+    :is="rovingFocus ? Primitive : Button"
+    :ref="setControlRef"
+    v-bind="controlBindings"
     :as="rovingFocus ? Button : props.as"
     data-soybean-checkbox-control
     :class="cls"
-    :focusable="focusable"
     role="checkbox"
     :disabled="disabled"
     :aria-checked="ariaChecked"

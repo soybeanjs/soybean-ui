@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useOmitProps } from '../../composables';
+import { computed } from 'vue';
+import { useOmitProps, useRovingFocusGroupItem } from '../../composables';
 import Button from '../button/button.vue';
-import { RovingFocusItem } from '../roving-focus';
 import { useTreeMenuItemContext, useTreeMenuUi } from './context';
 import type { TreeMenuButtonProps } from './types';
 
@@ -21,6 +21,17 @@ const { isSelected, onSelect, value } = useTreeMenuItemContext('TreeMenuButton')
 // on every render.
 const itemData = { value };
 
+// Roving focus item as a hook: exposes the collection item + roving-focus data attributes
+// (alongside `data-soybean-tree-menu-button`) merged into the button bindings.
+const { itemProps, setItemElement } = useRovingFocusGroupItem({
+  tabStopId: computed(() => value),
+  focusable: computed(() => !props.disabled),
+  active: isSelected,
+  itemData: computed(() => itemData)
+});
+
+const buttonBindings = computed(() => ({ ...forwardedProps.value, ...itemProps.value }));
+
 const onClick = () => {
   if (props.disabledSelect) return;
 
@@ -29,22 +40,15 @@ const onClick = () => {
 </script>
 
 <template>
-  <RovingFocusItem
-    as-child
-    :tab-stop-id="value"
-    :focusable="!props.disabled"
-    :active="isSelected"
-    :item-data="itemData"
+  <Button
+    :ref="setItemElement"
+    v-bind="buttonBindings"
+    data-soybean-tree-menu-button
+    :class="cls"
+    :data-selected="isSelected"
+    :data-value="value"
+    @click="onClick"
   >
-    <Button
-      v-bind="forwardedProps"
-      data-soybean-tree-menu-button
-      :class="cls"
-      :data-selected="isSelected"
-      :data-value="value"
-      @click="onClick"
-    >
-      <slot />
-    </Button>
-  </RovingFocusItem>
+    <slot />
+  </Button>
 </template>

@@ -1,10 +1,9 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { computed } from 'vue';
 import { isFormControl, toContext } from '../../shared';
-import { useControllableState, useForwardElement } from '../../composables';
-import type { DefinedValue } from '../../types';
-import { RovingFocusGroup } from '../roving-focus';
-import type { RovingFocusGroupProps } from '../roving-focus/types';
+import { useControllableState, useForwardElement, useRovingFocusGroup } from '../../composables';
+import type { DefinedValue, VNodeRef } from '../../types';
+import { Primitive } from '../primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideCheckboxGroupRootContext, useCheckboxUi } from './context';
 import type { CheckboxGroupRootProps, CheckboxGroupRootEmits } from './types';
@@ -22,12 +21,6 @@ const emit = defineEmits<CheckboxGroupRootEmits<T>>();
 
 const cls = useCheckboxUi('groupRoot');
 
-const rovingFocusProps = computed<RovingFocusGroupProps>(() => {
-  const { rovingFocus, loop, dir, orientation } = props;
-
-  return rovingFocus ? { loop, dir, orientation } : {};
-});
-
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
@@ -35,6 +28,13 @@ const modelValue = useControllableState(
   },
   props.defaultValue ?? []
 );
+
+const { setContainerElement, groupProps } = useRovingFocusGroup({
+  ...toContext(props, ['loop', 'dir', 'orientation']),
+  currentTabStopId: computed(() => undefined),
+  defaultCurrentTabStopId: computed(() => undefined),
+  preventScrollOnEntryFocus: computed(() => false)
+});
 
 provideCheckboxGroupRootContext({
   ...toContext(props, ['modelValue', 'defaultValue', 'rovingFocus', 'disabled']),
@@ -44,18 +44,24 @@ provideCheckboxGroupRootContext({
 const [groupElement, setGroupElement] = useForwardElement();
 
 const formControl = computed(() => isFormControl(groupElement.value));
+
+function setGroupRef(nodeRef: VNodeRef) {
+  setGroupElement(nodeRef);
+  if (props.rovingFocus) {
+    setContainerElement(nodeRef);
+  }
+}
 </script>
 
 <template>
-  <component
-    :is="rovingFocus ? RovingFocusGroup : 'div'"
-    v-bind="rovingFocusProps"
-    :ref="setGroupElement"
+  <Primitive
+    v-bind="rovingFocus ? groupProps : undefined"
+    :ref="setGroupRef"
+    as="div"
     data-soybean-checkbox-group-root
     :class="cls"
-    as="div"
   >
     <slot />
     <VisuallyHiddenInput v-if="formControl && name" :name="name" :value="modelValue" :required="required" />
-  </component>
+  </Primitive>
 </template>

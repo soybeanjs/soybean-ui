@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { getDisclosureState } from '../../shared';
+import { useRovingFocusGroupItem } from '../../composables';
 import Icon from '../_icon/icon.vue';
 import Button from '../button/button.vue';
 import Link from '../link/link.vue';
 import type { LinkProps } from '../link/types';
-import { RovingFocusItem } from '../roving-focus';
 import { findActivePath, hasVisibleChildren, isFirstLevelExpandKey } from './shared';
 import { useSplitNavRootContext, useSplitNavUi } from './context';
 import type { FirstLevelItemProps } from './types';
@@ -41,6 +41,14 @@ const dataState = computed(() => getDisclosureState(isOpen.value));
 const ariaCurrent = computed(() => (isSelected.value ? 'page' : undefined));
 
 const ariaExpanded = computed(() => (isBranch.value ? isOpen.value : undefined));
+
+// Roving focus item as a hook: exposes the collection item + roving-focus data attributes
+// (alongside `data-soybean-split-nav-first-level-item`) merged into the button bindings.
+const { itemProps, setItemElement } = useRovingFocusGroupItem({
+  tabStopId: computed(() => props.item.value),
+  focusable: computed(() => !props.item.disabled),
+  active: computed(() => isSelected.value || isOpen.value)
+});
 
 const linkProps = computed<LinkProps>(() => {
   if (!isLink.value) {
@@ -91,36 +99,36 @@ function handleKeyDown(event: KeyboardEvent) {
 </script>
 
 <template>
-  <RovingFocusItem as-child :focusable="!item.disabled" :active="isSelected || isOpen" :tab-stop-id="item.value">
-    <Button
-      data-soybean-split-nav-first-level-item
-      :class="ui.firstLevelItem"
-      :as-child="isLink"
-      :disabled="item.disabled"
-      role="menuitem"
-      :data-state="dataState"
-      :data-selected="isSelected"
-      :data-orientation="orientation"
-      :data-disabled="item.disabled ? '' : undefined"
-      :data-value="item.value"
-      :data-child-selected="hasChildSelected ? '' : undefined"
-      :aria-current="ariaCurrent"
-      :aria-expanded="ariaExpanded"
-      @click="handleClick"
-      @keydown="handleKeyDown"
-    >
-      <Link v-if="isLink" v-bind="linkProps">
-        <slot :item="item" :selected="isSelected" :open="isOpen">
-          <Icon v-if="item.icon" :icon="item.icon" :class="ui.firstLevelItemIcon" :aria-hidden="true" />
-          <span :class="ui.firstLevelItemLabel">{{ item.label }}</span>
-        </slot>
-      </Link>
-      <template v-else>
-        <slot :item="item" :selected="isSelected" :open="isOpen">
-          <Icon v-if="item.icon" :icon="item.icon" :class="ui.firstLevelItemIcon" :aria-hidden="true" />
-          <span :class="ui.firstLevelItemLabel">{{ item.label }}</span>
-        </slot>
-      </template>
-    </Button>
-  </RovingFocusItem>
+  <Button
+    :ref="setItemElement"
+    v-bind="itemProps"
+    data-soybean-split-nav-first-level-item
+    :class="ui.firstLevelItem"
+    :as-child="isLink"
+    :disabled="item.disabled"
+    role="menuitem"
+    :data-state="dataState"
+    :data-selected="isSelected"
+    :data-orientation="orientation"
+    :data-disabled="item.disabled ? '' : undefined"
+    :data-value="item.value"
+    :data-child-selected="hasChildSelected ? '' : undefined"
+    :aria-current="ariaCurrent"
+    :aria-expanded="ariaExpanded"
+    @click="handleClick"
+    @keydown="handleKeyDown"
+  >
+    <Link v-if="isLink" v-bind="linkProps">
+      <slot :item="item" :selected="isSelected" :open="isOpen">
+        <Icon v-if="item.icon" :icon="item.icon" :class="ui.firstLevelItemIcon" :aria-hidden="true" />
+        <span :class="ui.firstLevelItemLabel">{{ item.label }}</span>
+      </slot>
+    </Link>
+    <template v-else>
+      <slot :item="item" :selected="isSelected" :open="isOpen">
+        <Icon v-if="item.icon" :icon="item.icon" :class="ui.firstLevelItemIcon" :aria-hidden="true" />
+        <span :class="ui.firstLevelItemLabel">{{ item.label }}</span>
+      </slot>
+    </template>
+  </Button>
 </template>
