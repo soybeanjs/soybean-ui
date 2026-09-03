@@ -28,7 +28,7 @@
 - `TableCompactHead` / `TableCompactRow` / `TableCompactCell` / `TableCompactExpandedRow` / `TableVirtualSpacerRow`（headless 内部）— Compact 聚合内部的组合与渲染组件（不对外导出）
 - `STableFilterPopover`（styled 内部）— 筛选弹层（SPopover + SInput + SCheckbox + SButton），本地化搜索/选项/汇总/清除
 - `STableRadio`（styled 内部）— 单选模式的行内 radio 按钮（`aria-pressed` 语义），直接消费 `tableVariants` 的 `radioRoot`/`radioIndicator` 槽
-- `useTable` / `usePaginatedTable`（UI hooks）— 基于 `@soybeanjs/hooks` 的客户端排序/筛选/分页组合钩子
+- `useTable` / `usePaginatedTable`（UI hooks）— 客户端排序/筛选/分页组合钩子
 
 ## 演示
 

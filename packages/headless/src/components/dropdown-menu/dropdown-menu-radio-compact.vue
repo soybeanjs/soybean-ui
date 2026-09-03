@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableBooleanValue = AcceptableBooleanValue">
 import { computed } from 'vue';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '../../shared';
 import { useForwardListeners, useOmitProps, usePickProps } from '../../composables';
 import type { AcceptableBooleanValue } from '../../types';
 import MenuRadioOptions from '../menu/menu-radio-options-compact.vue';

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, shallowRef, useAttrs, useTemplateRef, watch } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import { keysOf } from '@soybeanjs/utils';
-import { isClient } from '../../shared';
+import { keysOf, isClient } from '../../shared';
 import { useForwardListeners, useOmitProps } from '../../composables';
 import { filterHiddenTreeNavOptions } from './shared';
 import TreeNavOptionsCompact from './tree-nav-options-compact.vue';

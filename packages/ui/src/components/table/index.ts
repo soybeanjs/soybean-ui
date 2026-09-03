@@ -3,5 +3,5 @@ export { TableRow as STableRow, TableCell as STableCell } from '@soybeanjs/headl
 export { useTable, usePaginatedTable } from './hooks';
 
 export type * from '@soybeanjs/headless/table';
-export type { TableColumnCheck } from '@soybeanjs/hooks';
+export type { TableColumnCheck, TableColumnCheckTitle, PaginationResult } from './hooks';
 export type * from './types';

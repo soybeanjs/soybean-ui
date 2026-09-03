@@ -1,7 +1,6 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { computed } from 'vue';
-import { keysOf } from '@soybeanjs/utils';
-import { getTreePaths, transformPropsToContext } from '../../shared';
+import { keysOf, getTreePaths, transformPropsToContext } from '../../shared';
 import { useForwardListeners, useOmitProps } from '../../composables';
 import type { DefinedValue } from '../../types';
 import { provideMenuOptionsCompactContext } from './context';

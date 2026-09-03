@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { LayoutCompact, provideLayoutUi } from '@soybeanjs/headless/layout';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { layoutVariants } from '@/styles/layout';
 import { themeSizeMap, themeSizeRatio } from '@/theme';
 import type { LayoutProps, LayoutEmits, LayoutSlots } from './types';

@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { DialogCompact, provideDialogUi } from '@soybeanjs/headless/dialog';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { drawerVariants } from '@/styles/drawer';
 import type { DrawerProps, DrawerEmits, DrawerSlots } from './types';
 

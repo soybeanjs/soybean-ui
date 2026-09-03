@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { EmptyCompact, provideEmptyUi } from '@soybeanjs/headless/empty';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { emptyVariants } from '@/styles/empty';
 import type { EmptyProps, EmptySlots } from './types';
 

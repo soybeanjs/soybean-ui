@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '../../shared';
 import { useForwardListeners } from '../../composables';
 import Icon from '../_icon/icon.vue';
 import type { LinkProps } from '../link/types';

@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { AlertCompact, provideAlertUi } from '@soybeanjs/headless/alert';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { alertVariants } from '@/styles/alert';
 import type { AlertProps, AlertEmits, AlertSlots } from './types';
 

@@ -1,6 +1,6 @@
 import { computed } from 'vue';
 import type { ComputedRef } from 'vue';
-import { defu } from 'defu';
+import { defu } from '../shared';
 import { useConfigProvider } from '../components/config-provider/context';
 import { resolveLocale } from './locales';
 import type { LocaleMessages, LocaleMessagesOverrides } from './types';

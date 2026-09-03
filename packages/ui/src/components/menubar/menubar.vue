@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { MenubarCompact, provideMenubarUi } from '@soybeanjs/headless/menubar';
+import { keysOf } from '@soybeanjs/headless/shared';
 import type { DefinedValue } from '@soybeanjs/headless/types';
-import { keysOf } from '@soybeanjs/utils';
 import { menubarVariants } from '@/styles/menubar';
 import { provideMenuUi } from '../menu/context';
 import type { MenubarProps, MenubarEmits, MenubarSlots } from './types';

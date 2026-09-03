@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { TreeNavCompact, provideTreeNavUi } from '@soybeanjs/headless/tree-nav';
-import { keysOf } from '@soybeanjs/utils';
 import { treeNavVariants } from '@/styles/tree-nav';
 import { provideMenuUi } from '../menu/context';
 import type { TreeNavProps, TreeNavEmits, TreeNavSlots } from './types';

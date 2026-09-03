@@ -28,5 +28,10 @@ export default defineConfig({
       'import.meta.env.DEV': 'undefined',
       'import.meta.env.MODE': 'undefined'
     }
+  },
+  test: {
+    globals: true,
+    include: ['test/specs/**/*.spec.ts'],
+    environment: 'happy-dom'
   }
 });

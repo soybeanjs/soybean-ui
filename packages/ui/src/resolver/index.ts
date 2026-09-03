@@ -1,5 +1,5 @@
 import type { ComponentResolver } from 'unplugin-vue-components';
-//---import { keysOf, kebabCase } from '@soybeanjs/utils';
+//---import { keysOf, kebabCase } from '@soybeanjs/headless/shared';
 import { components } from '../constants/components';
 
 function createResolver() {

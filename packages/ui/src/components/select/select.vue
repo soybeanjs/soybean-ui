@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { SelectCompact, provideSelectUi } from '@soybeanjs/headless/select';
+import { keysOf } from '@soybeanjs/headless/shared';
 import type { DefinedValue } from '@soybeanjs/headless/types';
-import { keysOf } from '@soybeanjs/utils';
 import { selectVariants } from '@/styles/select';
 import type { SelectProps, SelectEmits, SelectSlots } from './types';
 

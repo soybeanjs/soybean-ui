@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends CommandSingleOptionData = CommandSingleOptionData">
 import { computed } from 'vue';
-import { defu } from 'defu';
+import { defu } from '../../shared';
 import { useFuse, useControllableState, useOmitProps } from '../../composables';
 import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
@@ -56,8 +56,6 @@ const searchTerm = useControllableState(
 const fuseOptions = computed(() =>
   defu(props.fuseOptions, {
     fuseOptions: {
-      ignoreLocation: true,
-      threshold: 0.1,
       keys: ['label', 'groupLabel']
     },
     resultLimit: 12,

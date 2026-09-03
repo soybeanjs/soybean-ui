@@ -1,21 +1,39 @@
 import { onWatcherCleanup, toValue, watchPostEffect } from 'vue';
 import type { MaybeRefOrGetter } from 'vue';
-import { filterNullish } from '@soybeanjs/utils';
-import { hideOthers } from 'aria-hidden';
-import { isClient } from '../shared';
+import { INERT_MARKER_ATTR } from '../constants';
+import { filterNullish, isClient, markOthers, supportsInert } from '../shared';
+import type { MarkOthersOptions } from '../shared';
 import type { MaybeArray } from '../types';
 
+export interface UseHideOthersOptions extends MarkOthersOptions {
+  /**
+   * Keep a modal layer's own control channel instead of the modal default.
+   * By default a modal layer hides with `inert` where supported (background
+   * content leaves the accessibility tree and the tab order at once) and
+   * falls back to `aria-hidden="true"` elsewhere; pass explicit
+   * `inert` / `ariaHidden` values to override.
+   */
+  inert?: boolean;
+  ariaHidden?: boolean;
+}
+
 /**
- * The `useHideOthers` function is a TypeScript function that takes a target element reference and hides all other
- * elements in ARIA when the target element is present, and restores the visibility of the hidden elements when the
- * target element is removed.
+ * Hides everything outside `target` from assistive technology while the floating layer is
+ * open, and restores it when the target changes, the component unmounts, or `enabled`
+ * flips back to `false`. Non-modal layers pass `enabled: false` and become no-ops.
  *
- * @param target - reference to the element that you want to hide other elements when it is clicked or focused.
- * @param enabled - whether to enable the hide others functionality (supports reactive values)
+ * Modality resolution: when `enabled` is on and neither `inert` nor `ariaHidden` is set
+ * explicitly, `inert` wins where the runtime supports it (see `supportsInert`), falling
+ * back to `aria-hidden="true"`.
+ *
+ * @param target - The floating element (or elements) that stays visible and announced.
+ * @param enabled - Whether background hiding applies (supports reactive values).
+ * @param options - Channel overrides on top of the modal default.
  */
 export function useHideOthers(
   target: MaybeRefOrGetter<MaybeArray<HTMLElement | null | undefined>>,
-  enabled: MaybeRefOrGetter<boolean | undefined> = true
+  enabled: MaybeRefOrGetter<boolean | undefined> = true,
+  options: UseHideOthersOptions = {}
 ) {
   watchPostEffect(() => {
     // Ensure we're in a browser environment
@@ -30,8 +48,9 @@ export function useHideOthers(
       return;
     }
 
+    // The browser owns the visibility of native popover subtrees; writing our own control
+    // attributes there trips the "Blocked aria-hidden on an element" warning.
     if (elements.some(element => element.closest('[popover]:not(:popover-open)'))) {
-      // Skip if inside a closed native popover
       return;
     }
 
@@ -41,12 +60,23 @@ export function useHideOthers(
       return;
     }
 
-    // Hide other elements using aria-hidden
-    const undo = hideOthers(elements);
+    const { inert, ariaHidden, ...markOptions } = options;
+    const resolvedOptions: MarkOthersOptions = {
+      ...markOptions,
+      inert: inert ?? supportsInert(),
+      ariaHidden: ariaHidden ?? !supportsInert()
+    };
+
+    const undo = markOthers(elements, resolvedOptions);
 
     onWatcherCleanup(() => {
       // Restore visibility when target changes, component unmounts, or enabled becomes false
       undo();
     });
   });
+}
+
+/** Whether the element currently carries the `markOthers` marker tag. Test-facing helper. */
+export function isMarkedAsInert(element: Element): boolean {
+  return element.hasAttribute(INERT_MARKER_ATTR);
 }

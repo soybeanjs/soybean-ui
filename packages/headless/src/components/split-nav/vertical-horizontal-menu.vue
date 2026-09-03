@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '../../shared';
 import { TreeNavCompact } from '../tree-nav';
 import { toMountedTarget, toTreeNavOptions } from './shared';
 import { useSplitNavRootContext, useSplitNavUi } from './context';

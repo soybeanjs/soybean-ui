@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { PopconfirmCompact, providePopconfirmUi } from '@soybeanjs/headless/popconfirm';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { popconfirmVariants } from '@/styles/popconfirm';
 import type { PopconfirmProps, PopconfirmEmits, PopconfirmSlots } from './types';
 

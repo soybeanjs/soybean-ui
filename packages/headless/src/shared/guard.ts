@@ -72,7 +72,7 @@ export function isFunction(value: unknown): value is (...args: any[]) => any {
   return typeof value === 'function';
 }
 
-export function isObject(value: unknown) {
+export function isObject(value: unknown): value is Record<string, unknown> {
   return !isNullish(value) && !Array.isArray(value) && isObjectType(value) && !isDateObject(value);
 }
 
@@ -80,6 +80,6 @@ export function isPromise(value: any): value is PromiseLike<any> {
   return isObject(value) && isFunction(value?.then);
 }
 
-export function keysOf<TRecord extends Record<string, unknown>>(record: TRecord) {
+export function keysOf<TRecord extends object>(record: TRecord) {
   return Object.keys(record) as (keyof TRecord)[];
 }

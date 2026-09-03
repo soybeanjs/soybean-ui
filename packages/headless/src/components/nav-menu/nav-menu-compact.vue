@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '../../shared';
 import { useForwardListeners, useOmitProps, usePickProps } from '../../composables';
 import NavMenuList from './nav-menu-list.vue';
 import NavMenuOptionCompact from './nav-menu-option-compact.vue';

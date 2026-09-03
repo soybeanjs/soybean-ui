@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { CommandCompact, provideCommandUi } from '@soybeanjs/headless/command';
 import type { CommandSingleOptionData } from '@soybeanjs/headless/command';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { commandVariants } from '@/styles/command';
 import type { CommandProps, CommandEmits, CommandSlots } from './types';
 

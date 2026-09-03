@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { AccordionCompact, provideAccordionUi } from '@soybeanjs/headless/accordion';
 import type { AccordionOptionData } from '@soybeanjs/headless/accordion';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { accordionVariants } from '@/styles/accordion';
 import type { AccordionProps, AccordionEmits, AccordionSlots } from './types';
 

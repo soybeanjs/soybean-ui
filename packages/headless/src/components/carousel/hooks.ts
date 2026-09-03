@@ -1,7 +1,6 @@
 import { onBeforeUnmount, shallowRef, toRef, unref, watch } from 'vue';
 import type { MaybeRef, ShallowRef } from 'vue';
 import EmblaCarousel from 'embla-carousel';
-import { areOptionsEqual, arePluginsEqual } from 'embla-carousel-reactive-utils';
 import type { EmblaCarouselType, EmblaOptionsType, EmblaPluginType } from './types';
 
 export function useEmblaCarousel(
@@ -58,4 +57,47 @@ export function useEmblaCarousel(
   });
 
   return carousel;
+}
+
+function isRecord(subject: unknown): subject is Record<string, unknown> {
+  return Object.prototype.toString.call(subject) === '[object Object]' || Array.isArray(subject);
+}
+
+/** Local `embla-carousel-reactive-utils` equivalents so the package only depends on `embla-carousel` itself. */
+function areOptionsEqual(optionsA: Record<string, unknown>, optionsB: Record<string, unknown>): boolean {
+  const optionsAKeys = Object.keys(optionsA);
+  const optionsBKeys = Object.keys(optionsB);
+
+  if (optionsAKeys.length !== optionsBKeys.length) return false;
+
+  const breakpointsA = JSON.stringify(Object.keys((optionsA.breakpoints as object) || {}));
+  const breakpointsB = JSON.stringify(Object.keys((optionsB.breakpoints as object) || {}));
+
+  if (breakpointsA !== breakpointsB) return false;
+
+  return optionsAKeys.every(key => {
+    const valueA = optionsA[key];
+    const valueB = optionsB[key];
+
+    if (typeof valueA === 'function') return String(valueA) === String(valueB);
+    if (!isRecord(valueA) || !isRecord(valueB)) return valueA === valueB;
+
+    return areOptionsEqual(valueA, valueB);
+  });
+}
+
+function sortAndMapPluginToOptions(plugins: EmblaPluginType[]) {
+  return plugins
+    .concat()
+    .sort((a, b) => (a.name > b.name ? 1 : -1))
+    .map(plugin => plugin.options ?? {});
+}
+
+function arePluginsEqual(pluginsA: EmblaPluginType[], pluginsB: EmblaPluginType[]): boolean {
+  if (pluginsA.length !== pluginsB.length) return false;
+
+  const optionsA = sortAndMapPluginToOptions(pluginsA);
+  const optionsB = sortAndMapPluginToOptions(pluginsB);
+
+  return optionsA.every((optionA, index) => areOptionsEqual(optionA, optionsB[index]!));
 }

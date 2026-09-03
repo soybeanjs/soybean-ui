@@ -1,11 +1,11 @@
 <script setup lang="ts" generic="T extends SplitNavBaseOptionData = SplitNavBaseOptionData">
 import { computed, useAttrs } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { SplitNavRoot, provideSplitNavUi } from '@soybeanjs/headless/split-nav';
 import type { SplitNavBaseOptionData } from '@soybeanjs/headless/split-nav';
 import { provideTreeMenuUi } from '@soybeanjs/headless/tree-menu';
 import { provideTreeNavUi } from '@soybeanjs/headless/tree-nav';
-import { keysOf } from '@soybeanjs/utils';
 import { splitNavVariants } from '@/styles/split-nav';
 import { treeMenuVariants } from '@/styles/tree-menu';
 import { treeNavVariants } from '@/styles/tree-nav';

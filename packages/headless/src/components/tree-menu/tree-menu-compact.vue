@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData">
 import { computed } from 'vue';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '../../shared';
 import { useForwardListeners, usePickProps } from '../../composables';
 import TreeMenuCompactOptions from './tree-menu-options-compact.vue';
 import TreeMenuRoot from './tree-menu-root.vue';

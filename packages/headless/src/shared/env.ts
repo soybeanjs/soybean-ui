@@ -33,3 +33,12 @@ export function refreshIOSDetection(): boolean {
   cachedIOSResult = null;
   return isIOS();
 }
+
+/**
+ * Whether the runtime supports the native `inert` attribute (Baseline since 2023).
+ * Used by `markOthers` consumers to prefer `inert` over `aria-hidden` so background
+ * content leaves both the accessibility tree and the tab order.
+ */
+export function supportsInert(): boolean {
+  return isClient && 'inert' in HTMLElement.prototype;
+}

@@ -1,6 +1,6 @@
 import type { ComponentResolver } from 'unplugin-vue-components';
-import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import { components } from '../constants';
+import { kebabCase, pascalCase } from '../shared';
 
 export interface ResolverOptions {
   /**

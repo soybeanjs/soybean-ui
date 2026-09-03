@@ -1,5 +1,5 @@
 import { addComponent, defineNuxtModule } from '@nuxt/kit';
-//---import { keysOf, kebabCase } from '@soybeanjs/utils';
+//---import { keysOf, kebabCase } from '@soybeanjs/headless/shared';
 import { components } from '../constants/components';
 
 export interface ModuleOptions {

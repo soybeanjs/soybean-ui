@@ -1,7 +1,6 @@
 <script setup lang="ts" generic="T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData">
 import { computed, watch, watchEffect } from 'vue';
-import { keysOf } from '@soybeanjs/utils';
-import { getTreePaths } from '../../shared';
+import { keysOf, getTreePaths } from '../../shared';
 import { usePickProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
 import { filterHiddenTreeMenuOptions, flattenTreeMenuNavigationNodes, getActiveExpandValues } from './shared';

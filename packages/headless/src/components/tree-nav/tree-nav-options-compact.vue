@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { keysOf } from '@soybeanjs/utils';
-import { getTreePaths } from '../../shared';
+import { keysOf, getTreePaths } from '../../shared';
 import Icon from '../_icon/icon.vue';
 import Button from '../button/button.vue';
 import DropdownMenuCompact from '../dropdown-menu/dropdown-menu-compact.vue';

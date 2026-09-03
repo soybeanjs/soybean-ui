@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '../../shared';
 import { useOmitProps } from '../../composables';
 import { useLocaleMessages } from '../../locale';
 import type { Placement } from '../../types';

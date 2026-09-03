@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import { CascaderCompact, provideCascaderUi } from '@soybeanjs/headless/cascader';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/headless/shared';
 import type { DefinedValue } from '@soybeanjs/headless/types';
-import { keysOf } from '@soybeanjs/utils';
 import { cascaderVariants } from '@/styles/cascader';
 import type { CascaderProps, CascaderEmits, CascaderSlots } from './types';
 

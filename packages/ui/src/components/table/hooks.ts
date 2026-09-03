@@ -1,21 +1,120 @@
-import { shallowRef, watch } from 'vue';
+import { computed, ref, shallowRef, watch } from 'vue';
+import type { Component, VNode } from 'vue';
 import { getTableColumnKey, isTableGroupColumn } from '@soybeanjs/headless/table';
-import { useTable as _useTable } from '@soybeanjs/hooks';
-import type { UseTableOptions as _UseTableOptions, TableColumnCheck } from '@soybeanjs/hooks';
 import type { TableBaseData, TableColumn, TableColumnType } from './types';
 
+export type TableColumnCheckTitle = VNode | Component | string;
+
+export interface TableColumnCheck {
+  key: string;
+  title: TableColumnCheckTitle;
+  checked?: boolean;
+  hidden?: boolean;
+  fixed?: 'start' | 'end';
+}
+
+export interface PaginationResult<T> {
+  /** Page number */
+  page: number;
+  /** Page size */
+  pageSize: number;
+  /** Total count */
+  total: number;
+  /** List data */
+  list: T[];
+}
+
+type GetApiData<ApiData, Pagination extends boolean> = Pagination extends true ? PaginationResult<ApiData> : ApiData[];
+
+export interface UseTableBaseOptions<ResponseData, ApiData, Column, Pagination extends boolean> {
+  /** api function to get table data */
+  api: () => Promise<ResponseData>;
+  /** whether to enable pagination */
+  pagination?: Pagination;
+  /** transform api response to table data */
+  transform: (response: ResponseData) => GetApiData<ApiData, Pagination>;
+  /** columns factory */
+  columns: () => Column[];
+  /** get column checks */
+  getColumnChecks: (columns: Column[]) => TableColumnCheck[];
+  /** get columns */
+  getColumns: (columns: Column[], checks: TableColumnCheck[]) => Column[];
+  /** callback when response fetched */
+  onFetched?: (data: GetApiData<ApiData, Pagination>) => void | Promise<void>;
+  /**
+   * whether to get data immediately
+   *
+   * @default true
+   */
+  immediate?: boolean;
+}
+
+function useTableState<
+  ResponseData,
+  ApiData extends TableBaseData,
+  Column extends TableColumn<ApiData>,
+  Pagination extends boolean
+>(options: UseTableBaseOptions<ResponseData, ApiData, Column, Pagination>) {
+  const loading = shallowRef(false);
+  const empty = shallowRef(false);
+  const { api, pagination, transform, columns, getColumnChecks, getColumns, onFetched, immediate = true } = options;
+
+  const tableData = ref<ApiData[]>([]);
+  const columnChecks = ref<TableColumnCheck[]>(getColumnChecks(columns()));
+  const resolvedColumns = computed(() => getColumns(columns(), columnChecks.value));
+
+  function reloadColumns() {
+    const checksMap = new Map<string, { checked?: boolean; fixed?: 'start' | 'end' }>();
+
+    columnChecks.value.forEach(({ key, checked, fixed }) => {
+      checksMap.set(key, { checked, fixed });
+    });
+
+    columnChecks.value = getColumnChecks(columns()).map(check => {
+      const stored = checksMap.get(check.key) || {};
+      return { ...check, checked: stored.checked ?? check.checked, fixed: stored.fixed ?? check.fixed };
+    });
+  }
+
+  async function fetchData() {
+    try {
+      loading.value = true;
+      const data = transform(await api());
+      tableData.value = (pagination ? (data as PaginationResult<ApiData>).list : data) as ApiData[];
+      empty.value = tableData.value.length === 0;
+      await onFetched?.(data);
+    } finally {
+      loading.value = false;
+    }
+  }
+
+  if (immediate) {
+    fetchData();
+  }
+
+  return {
+    loading,
+    empty,
+    tableData,
+    columns: resolvedColumns,
+    columnChecks,
+    reloadColumns,
+    fetchData
+  };
+}
+
 export type UseTableOptions<ResponseData, ApiData extends TableBaseData, Pagination extends boolean> = Omit<
-  _UseTableOptions<ResponseData, ApiData, TableColumn<ApiData>, Pagination>,
+  UseTableBaseOptions<ResponseData, ApiData, TableColumn<ApiData>, Pagination>,
   'pagination' | 'getColumnChecks' | 'getColumns'
 >;
 
 export function useTable<ResponseData, ApiData extends TableBaseData>(
   options: UseTableOptions<ResponseData, ApiData, false>
 ) {
-  const result = _useTable<ResponseData, ApiData, TableColumn<ApiData>, false>({
+  const result = useTableState<ResponseData, ApiData, TableColumn<ApiData>, false>({
     ...options,
-    getColumnChecks,
-    getColumns
+    getColumnChecks: getDefaultColumnChecks,
+    getColumns: getDefaultColumns
   });
 
   return result;
@@ -49,11 +148,11 @@ export function usePaginatedTable<ResponseData, ApiData extends TableBaseData>(
   const pageSize = shallowRef(_pageSize);
   const total = shallowRef(0);
 
-  const result = _useTable<ResponseData, ApiData, TableColumn<ApiData>, true>({
+  const result = useTableState<ResponseData, ApiData, TableColumn<ApiData>, true>({
     ...options,
     pagination: true,
-    getColumnChecks,
-    getColumns,
+    getColumnChecks: getDefaultColumnChecks,
+    getColumns: getDefaultColumns,
     onFetched: data => {
       if (data.total && data.total !== total.value) {
         total.value = data.total;
@@ -87,12 +186,12 @@ export function usePaginatedTable<ResponseData, ApiData extends TableBaseData>(
   };
 }
 
-function getColumnChecks<T extends TableColumn<any>>(columns: T[]) {
+function getDefaultColumnChecks<T extends TableColumn<any>>(columns: T[]) {
   const cols: TableColumnCheck[] = [];
 
   columns.forEach(col => {
     if (isTableGroupColumn(col)) {
-      cols.push(...getColumnChecks(col.children));
+      cols.push(...getDefaultColumnChecks(col.children));
       return;
     }
 
@@ -116,7 +215,7 @@ function getColumnChecks<T extends TableColumn<any>>(columns: T[]) {
   return cols;
 }
 
-function getColumns<T extends TableColumn<any>>(columns: T[], checks: TableColumnCheck[]) {
+function getDefaultColumns<T extends TableColumn<any>>(columns: T[], checks: TableColumnCheck[]) {
   const typeColumnsMap = new Map<TableColumnType, { column: T; index: number }>();
   const checksMap = new Map(checks.map(check => [check.key, check]));
   const checksOrderMap = new Map(checks.map((check, i) => [check.key, i]));
@@ -140,7 +239,7 @@ function getColumns<T extends TableColumn<any>>(columns: T[], checks: TableColum
 
   const result = sortedNonType.reduce<T[]>((acc, column) => {
     if (isTableGroupColumn(column)) {
-      const nextChildren = getColumns(column.children, checks);
+      const nextChildren = getDefaultColumns(column.children, checks);
 
       if (nextChildren.length > 0) {
         acc.push({ ...column, children: nextChildren });

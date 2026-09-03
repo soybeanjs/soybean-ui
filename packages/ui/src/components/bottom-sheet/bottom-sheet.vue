@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { BottomSheetCompact, provideBottomSheetUi } from '@soybeanjs/headless/bottom-sheet';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { bottomSheetVariants } from '@/styles/bottom-sheet';
 import type { BottomSheetProps, BottomSheetEmits, BottomSheetSlots } from './types';
 

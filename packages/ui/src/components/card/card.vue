@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { CardCompact, provideCardUi } from '@soybeanjs/headless/card';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { cardVariants } from '@/styles/card';
 import type { CardProps, CardEmits, CardSlots } from './types';
 

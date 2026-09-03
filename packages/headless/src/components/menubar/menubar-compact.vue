@@ -1,8 +1,7 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { computed, nextTick, onMounted, shallowRef, useTemplateRef, watch } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import { keysOf } from '@soybeanjs/utils';
-import { isClient } from '../../shared';
+import { keysOf, isClient } from '../../shared';
 import { usePickProps, useForwardListeners } from '../../composables';
 import type { DefinedValue } from '../../types';
 import type { MenuOptionData } from '../menu';

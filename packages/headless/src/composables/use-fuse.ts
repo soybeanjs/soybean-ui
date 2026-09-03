@@ -1,9 +1,9 @@
-import { computed, shallowRef, toValue, watch } from 'vue';
-import type { ComputedRef, MaybeRefOrGetter, Ref } from 'vue';
-import Fuse from 'fuse.js';
-import type { FuseResult, IFuseOptions } from 'fuse.js';
+import { computed, toValue } from 'vue';
+import type { ComputedRef, MaybeRefOrGetter } from 'vue';
+import { fuzzySearch } from '../shared';
+import type { FuzzyOptions, FuzzyResult } from '../shared';
 
-export type FuseOptions<T> = IFuseOptions<T>;
+export type FuseOptions<T> = FuzzyOptions<T>;
 
 export interface UseFuseOptions<T> {
   fuseOptions?: FuseOptions<T>;
@@ -11,52 +11,41 @@ export interface UseFuseOptions<T> {
   matchAllWhenSearchEmpty?: boolean;
 }
 
-export interface UseFuseReturn<DataItem> {
-  fuse: Ref<Fuse<DataItem>>;
-  results: ComputedRef<FuseResult<DataItem>[]>;
+export interface UseFuseReturn<T> {
+  results: ComputedRef<FuzzyResult<T>[]>;
 }
 
-export function useFuse<DataItem>(
+/**
+ * Reactive fuzzy search over a list of items, backed by the dependency-free
+ * `fuzzySearch` utility (fuse.js replacement). Scoring: exact > prefix > substring > subsequence,
+ * with optional per-key weights and a result limit.
+ *
+ * @param search - The search query (supports reactive values)
+ * @param data - The items to search (supports reactive values)
+ * @param options - Search options: key/weight config, result limit, and whether an empty
+ * query returns all items
+ */
+export function useFuse<T>(
   search: MaybeRefOrGetter<string>,
-  data: MaybeRefOrGetter<DataItem[]>,
-  options?: MaybeRefOrGetter<UseFuseOptions<DataItem>>
-): UseFuseReturn<DataItem> {
-  const createFuse = () => {
-    return new Fuse(toValue(data) ?? [], toValue(options)?.fuseOptions);
-  };
-
-  const fuse = shallowRef(createFuse());
-
-  watch(
-    () => toValue(options)?.fuseOptions,
-    () => {
-      fuse.value = createFuse();
-    },
-    { deep: true }
-  );
-
-  watch(
-    () => toValue(data),
-    newData => {
-      fuse.value.setCollection(newData);
-    },
-    { deep: true }
-  );
-
-  const results: ComputedRef<FuseResult<DataItem>[]> = computed(() => {
+  data: MaybeRefOrGetter<T[]>,
+  options?: MaybeRefOrGetter<UseFuseOptions<T>>
+): UseFuseReturn<T> {
+  const results = computed<FuzzyResult<T>[]>(() => {
     const resolved = toValue(options);
-    // This will also be recomputed when `data` changes, as it causes a change
-    // to the Fuse instance, which is tracked here.
-    if (resolved?.matchAllWhenSearchEmpty && !toValue(search)) {
-      return toValue(data).map((item, index) => ({ item, refIndex: index }));
+    const query = toValue(search);
+    const items = toValue(data) ?? [];
+
+    if (resolved?.matchAllWhenSearchEmpty && !query) {
+      return items.map((item, index) => ({ item, refIndex: index, score: 1 }));
     }
 
-    const limit = resolved?.resultLimit;
-    return fuse.value.search(toValue(search), limit ? { limit } : undefined);
+    return fuzzySearch(query, items, {
+      ...resolved?.fuseOptions,
+      limit: resolved?.resultLimit ?? resolved?.fuseOptions?.limit
+    });
   });
 
   return {
-    fuse,
     results
   };
 }

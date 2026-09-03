@@ -340,7 +340,10 @@ describe('SCombobox', () => {
       expect(wrapper.get('button').element.closest('[aria-hidden="true"]')).toBeNull();
       expect(popup?.closest('[aria-hidden="true"]')).toBeNull();
       expect(host.getAttribute('aria-hidden')).not.toBe('true');
-      expect(sibling.getAttribute('aria-hidden')).toBe('true');
+      // Background content is hidden from AT via the preferred channel:
+      // `inert` where the runtime supports it, `aria-hidden="true"` otherwise.
+      const isBackgroundHidden = sibling.hasAttribute('inert') || sibling.getAttribute('aria-hidden') === 'true';
+      expect(isBackgroundHidden).toBe(true);
 
       wrapper.unmount();
       host.remove();

@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { FormFieldArrayCompact, provideFormFieldUi } from '@soybeanjs/headless/form';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { formVariants } from '@/styles/form';
 import type { FormFieldArrayProps, FormFieldArraySlots } from './types';
 

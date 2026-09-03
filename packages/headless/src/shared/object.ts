@@ -1,4 +1,98 @@
-import { isEqual } from 'ohash';
+import { isObject } from './guard';
+
+/**
+ * Structured deep comparison (covers the common `ohash isEqual` semantics: objects / arrays / Date / NaN).
+ *
+ * @param a - First value
+ * @param b - Second value
+ * @returns Whether the two values are structurally equal
+ */
+export function isEqual(a: unknown, b: unknown): boolean {
+  if (a === b) {
+    return true;
+  }
+
+  if (typeof a === 'number' && typeof b === 'number') {
+    return Number.isNaN(a) && Number.isNaN(b);
+  }
+
+  if (a instanceof Date && b instanceof Date) {
+    return a.getTime() === b.getTime();
+  }
+
+  if (Array.isArray(a) && Array.isArray(b)) {
+    return a.length === b.length && a.every((item, index) => isEqual(item, b[index]));
+  }
+
+  if (isObject(a) && isObject(b)) {
+    const keysA = Object.keys(a);
+    const keysB = Object.keys(b);
+
+    return keysA.length === keysB.length && keysA.every(key => key in b && isEqual(a[key], b[key]));
+  }
+
+  return false;
+}
+
+type UnionToIntersection<U> = (U extends unknown ? (arg: U) => void : never) extends (arg: infer I) => void ? I : never;
+
+/**
+ * Recursive defaults merge: `defu({ a: 1 }, { a: 2, b: 3 })` → `{ a: 1, b: 3 }`.
+ * Left side wins; plain objects merge recursively, arrays and other types are taken from the left side.
+ */
+export function defu<T extends object, D extends object[]>(
+  source: T | undefined,
+  ...defaults: D
+): UnionToIntersection<T | D[number]> {
+  const result: Record<string, unknown> = {};
+
+  for (const obj of [source, ...defaults]) {
+    if (!isObject(obj)) {
+      continue;
+    }
+
+    for (const key of Object.keys(obj)) {
+      const value = obj[key];
+      const current = result[key];
+
+      if (current === undefined) {
+        result[key] = value;
+      } else if (isObject(current) && isObject(value)) {
+        result[key] = defu(current, value);
+      }
+    }
+  }
+
+  return result as UnionToIntersection<T | D[number]>;
+}
+
+/**
+ * Structured deep clone (JSON-cloneable values + Date), replacing `klona`.
+ *
+ * @param value - The value to clone
+ * @returns A deep clone of the value
+ */
+export function klona<T>(value: T): T {
+  if (value instanceof Date) {
+    return new Date(value.getTime()) as T;
+  }
+
+  if (Array.isArray(value)) {
+    return value.map(item => klona(item)) as T;
+  }
+
+  if (isObject(value)) {
+    const result: Record<string, unknown> = {};
+
+    for (const key of Object.keys(value)) {
+      result[key] = klona(value[key]);
+    }
+
+    return result as T;
+  }
+
+  return value;
+}
 
 /**
  * Select specified properties from an object

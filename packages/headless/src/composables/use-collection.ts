@@ -1,7 +1,6 @@
 import { onBeforeUnmount, onWatcherCleanup, ref, shallowRef, toValue, watchPostEffect } from 'vue';
 import type { MaybeRefOrGetter, Ref } from 'vue';
-import { pascalCase } from '@soybeanjs/utils';
-import { getCollectionItemElements, getElFromTemplateRef, isElementHasAttribute } from '../shared';
+import { pascalCase, getCollectionItemElements, getElFromTemplateRef, isElementHasAttribute } from '../shared';
 import type { VNodeRef } from '../types';
 import { useContext } from './use-context';
 

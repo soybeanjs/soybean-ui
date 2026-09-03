@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { ContextMenuRadioCompact } from '@soybeanjs/headless/context-menu';
+import { keysOf } from '@soybeanjs/headless/shared';
 import type { AcceptableBooleanValue } from '@soybeanjs/headless/types';
-import { keysOf } from '@soybeanjs/utils';
 import { provideMenuUi } from '../menu/context';
 import type { ContextMenuRadioProps, ContextMenuRadioEmits, ContextMenuRadioSlots } from './types';
 

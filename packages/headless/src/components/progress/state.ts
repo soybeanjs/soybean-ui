@@ -1,5 +1,4 @@
-import { defu } from 'defu';
-import { clamp, isClient } from '../../shared';
+import { clamp, defu, isClient } from '../../shared';
 import type { Direction } from '../../types';
 import type { ProgressOptions } from './types';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '../../shared';
 import { useOmitProps } from '../../composables';
 import FormFieldBaseCompact from './form-field-base-compact.vue';
 import type { FormFieldCompactProps, FormFieldArrayCompactSlots } from './types';

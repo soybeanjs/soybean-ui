@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { AutocompleteCompact, provideAutocompleteUi } from '@soybeanjs/headless/autocomplete';
 import type { AutocompleteSingleOptionData } from '@soybeanjs/headless/autocomplete';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { autocompleteVariants } from '@/styles/autocomplete';
 import type { AutocompleteProps, AutocompleteEmits, AutocompleteSlots } from './types';
 

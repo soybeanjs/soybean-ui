@@ -1,6 +1,5 @@
 import type { StandardSchemaV1 } from '@standard-schema/spec';
-import { klona } from 'klona/full';
-import { isNullish, keysOf } from '../../../shared';
+import { isNullish, keysOf, klona } from '../../../shared';
 import type { Path, PathValue } from '../../../types';
 import { updateFormState } from './shared';
 import type {

@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { EditableCompact, provideEditableUi } from '@soybeanjs/headless/editable';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { editableVariants } from '@/styles/editable';
 import type { EditableProps, EditableEmits, EditableSlots } from './types';
 

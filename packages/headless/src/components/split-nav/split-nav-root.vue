@@ -1,8 +1,7 @@
 <script setup lang="ts" generic="T extends SplitNavBaseOptionData = SplitNavBaseOptionData">
 import { computed, shallowRef, useAttrs, watch } from 'vue';
 import type { Component } from 'vue';
-import { keysOf } from '@soybeanjs/utils';
-import { transformPropsToContext } from '../../shared';
+import { keysOf, transformPropsToContext } from '../../shared';
 import { useControllableState, useOmitProps } from '../../composables';
 import { findNode, hasVisibleChildren, toOpenPath } from './shared';
 import { provideSplitNavRootContext } from './context';

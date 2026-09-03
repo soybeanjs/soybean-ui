@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import { CarouselCompact, provideCarouselUi } from '@soybeanjs/headless/carousel';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/headless/shared';
 import type { DefinedValue } from '@soybeanjs/headless/types';
-import { keysOf } from '@soybeanjs/utils';
 import { carouselVariants } from '@/styles/carousel';
 import type { CarouselProps, CarouselEmits, CarouselSlots } from './types';
 

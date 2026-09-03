@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { PasswordCompact, providePasswordUi } from '@soybeanjs/headless/password';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { passwordVariants } from '@/styles/password';
 import type { PasswordProps, PasswordEmits, PasswordSlots } from './types';
 

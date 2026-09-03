@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useOmitProps, useForwardListeners } from '@soybeanjs/headless/composables';
 import { NavigationMenuCompact, provideNavigationMenuUi } from '@soybeanjs/headless/navigation-menu';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { navigationMenuVariants } from '@/styles/navigation-menu';
 import type { NavigationMenuProps, NavigationMenuEmits, NavigationMenuSlots } from './types';
 

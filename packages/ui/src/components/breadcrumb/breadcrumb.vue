@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { BreadcrumbCompact, provideBreadcrumbUi } from '@soybeanjs/headless/breadcrumb';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { breadcrumbVariants } from '@/styles/breadcrumb';
 import type { BreadcrumbProps, BreadcrumbEmits, BreadcrumbOptionData, BreadcrumbSlots } from './types';
 

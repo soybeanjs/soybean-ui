@@ -1,4 +1,4 @@
-import { defu } from 'defu';
+import { defu } from '../shared';
 import type { TimeValue, DateStep, DateValue, Granularity, HourCycle, TimeGranularity, TimeInputType } from './types';
 
 export function getOptsByGranularity(granularity: Granularity, hourCycle: HourCycle, isTimeValue = false) {

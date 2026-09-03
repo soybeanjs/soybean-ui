@@ -1,5 +1,4 @@
-import { klona } from 'klona/full';
-import { keysOf, setValue } from '../../../shared';
+import { klona, keysOf, setValue } from '../../../shared';
 import type { Path } from '../../../types';
 import type { FormMessage, FormState, FormValues } from './types';
 

@@ -4,7 +4,7 @@ import { useStyleTag } from '@vueuse/core';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { PageTabsCompact, providePageTabsUi } from '@soybeanjs/headless/page-tabs';
 import type { PageTabsOptionData } from '@soybeanjs/headless/page-tabs';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { pageTabsVariants } from '@/styles/page-tabs';
 import { provideMenuUi } from '../menu/context';
 import pageTabsStyles from './styles.css?raw';

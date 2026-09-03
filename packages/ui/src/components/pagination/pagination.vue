@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useOmitProps, useForwardListeners } from '@soybeanjs/headless/composables';
 import { PaginationCompact, providePaginationUi } from '@soybeanjs/headless/pagination';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { paginationVariants } from '@/styles/pagination';
 import type { PaginationProps, PaginationEmits, PaginationSlots } from './types';
 

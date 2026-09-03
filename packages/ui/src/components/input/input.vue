@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { InputCompact, provideInputUi } from '@soybeanjs/headless/input';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { inputVariants } from '@/styles/input';
 import type { InputProps, InputEmits, InputSlots } from './types';
 

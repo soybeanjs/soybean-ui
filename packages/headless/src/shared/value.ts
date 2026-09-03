@@ -160,8 +160,8 @@ export function getValue<T>(obj: T, path: string, defaultValue?: unknown): any {
     return defaultValue;
   }
 
-  const result = compact(path.split(/[,[\].]+?/)).reduce(
-    (res, key) => (isNullish(res) ? res : res[key as keyof {}]),
+  const result = compact(path.split(/[,[\].]+?/)).reduce<unknown>(
+    (res, key) => (isNullish(res) ? res : (res as Record<string, unknown>)[key]),
     obj
   );
 

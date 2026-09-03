@@ -2,7 +2,7 @@
 import { computed, useSlots } from 'vue';
 import { BadgeCompact, provideBadgeUi } from '@soybeanjs/headless/badge';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { badgeVariants } from '@/styles/badge';
 import type { BadgeProps, BadgeEmits } from './types';
 

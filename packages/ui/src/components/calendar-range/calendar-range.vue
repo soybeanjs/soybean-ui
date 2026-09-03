@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useLocaleMessages } from '@soybeanjs/headless';
 import { CalendarRangeCompact, provideCalendarRangeUi } from '@soybeanjs/headless/calendar-range';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { calendarRangeVariants } from '@/styles/calendar-range';
 import { miniSizeMap } from '@/theme';
 import SSelect from '../select/select.vue';

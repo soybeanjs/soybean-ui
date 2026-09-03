@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { PopoverCompact, providePopoverUi } from '@soybeanjs/headless/popover';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { popoverVariants } from '@/styles/popover';
 import type { PopoverProps, PopoverEmits, PopoverSlots } from './types';
 

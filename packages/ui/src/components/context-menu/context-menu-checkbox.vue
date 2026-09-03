@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { ContextMenuCheckboxCompact } from '@soybeanjs/headless/context-menu';
+import { keysOf } from '@soybeanjs/headless/shared';
 import type { DefinedValue } from '@soybeanjs/headless/types';
-import { keysOf } from '@soybeanjs/utils';
 import { provideMenuUi } from '../menu/context';
 import type { ContextMenuCheckboxProps, ContextMenuCheckboxEmits, ContextMenuCheckboxSlots } from './types';
 

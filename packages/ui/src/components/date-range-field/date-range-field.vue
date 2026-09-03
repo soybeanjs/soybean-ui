@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { DateRangeFieldCompact, provideDateRangeFieldUi } from '@soybeanjs/headless/date-range-field';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import { dateRangeFieldVariants } from '@/styles/date-range-field';
 import type { DateRangeFieldProps, DateRangeFieldEmits, DateRangeFieldSlots } from './types';
 
