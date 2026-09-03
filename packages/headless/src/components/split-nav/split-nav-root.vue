@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends SplitNavBaseOptionData = SplitNavBaseOptionData">
 import { computed, shallowRef, useAttrs, watch } from 'vue';
 import type { Component } from 'vue';
-import { keysOf, transformPropsToContext } from '../../shared';
+import { keysOf, toContext } from '../../shared';
 import { useControllableState, useOmitProps } from '../../composables';
 import { findNode, hasVisibleChildren, toOpenPath } from './shared';
 import { provideSplitNavRootContext } from './context';
@@ -113,15 +113,7 @@ provideSplitNavRootContext({
   openPath,
   rootAttrs,
   onItemActivate,
-  ...transformPropsToContext(props, [
-    'mode',
-    'items',
-    'horizontalMountedId',
-    'verticalMountedId',
-    'loop',
-    'dir',
-    'collapsedWidth'
-  ])
+  ...toContext(props, ['mode', 'items', 'horizontalMountedId', 'verticalMountedId', 'loop', 'dir', 'collapsedWidth'])
 });
 
 watch(modelValue, value => {

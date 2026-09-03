@@ -1,5 +1,5 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { Direction, FormFieldCommonProps, PropsToContext, UiClass, VNodeRef } from '../../types';
+import type { Direction, FormFieldCommonProps, ToContext, UiClass, VNodeRef } from '../../types';
 import type { ButtonProps } from '../button/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
@@ -120,7 +120,7 @@ export interface EditableCancelTriggerProps extends ButtonProps {}
 /**
  * Parameters used to create the EditableRoot context.
  */
-export interface EditableRootContextParams extends PropsToContext<
+export interface EditableRootContextParams extends ToContext<
   EditableRootProps,
   | 'id'
   | 'name'

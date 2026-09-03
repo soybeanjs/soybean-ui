@@ -1,5 +1,5 @@
 import type { ShallowRef } from 'vue';
-import type { BaseProps, AcceptableValue, DefinedValue, ForceMountProps, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, AcceptableValue, DefinedValue, ForceMountProps, ToContext, UiClass } from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 
@@ -146,7 +146,7 @@ export type TabsCompactSlots<T extends TabsOptionData = TabsOptionData> = {
 /**
  * Parameters used to create the TabsRoot context.
  */
-export interface TabsRootContextParams extends PropsToContext<
+export interface TabsRootContextParams extends ToContext<
   TabsRootProps,
   'orientation' | 'dir' | 'loop' | 'unmountOnHide' | 'activationMode'
 > {

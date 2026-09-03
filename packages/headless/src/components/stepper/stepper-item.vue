@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { provideStepperItemContext, useStepperRootContext, useStepperUi } from './context';
@@ -54,7 +54,7 @@ const isFocusable = computed(() => {
 const dataDisabled = computed(() => (props.disabled || !isFocusable.value ? '' : undefined));
 
 provideStepperItemContext({
-  ...transformPropsToContext(props, ['step', 'disabled', 'completed']),
+  ...toContext(props, ['step', 'disabled', 'completed']),
   state,
   isFocusable,
   dataDisabled

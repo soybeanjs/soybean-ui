@@ -8,7 +8,7 @@ import type {
   FormFieldCommonProps,
   MaybeArray,
   PointerDownOutsideEvent,
-  PropsToContext,
+  ToContext,
   SelectionEmits,
   SelectionProps,
   UiClass
@@ -605,7 +605,7 @@ export interface SelectBubbleSelectProps {
 /**
  * Parameters used to create the SelectRoot context.
  */
-export interface SelectRootContextParams extends PropsToContext<
+export interface SelectRootContextParams extends ToContext<
   SelectRootProps,
   'dir' | 'autocomplete' | 'disabled' | 'required' | 'clearable'
 > {
@@ -639,7 +639,7 @@ export interface SelectRootContextParams extends PropsToContext<
  * Parameters used to create the SelectContent context.
  */
 export interface SelectContentContextParams
-  extends PropsToContext<SelectContentProps, 'position'>, Pick<SelectRootContextParams, 'modelValue' | 'isMultiple'> {
+  extends ToContext<SelectContentProps, 'position'>, Pick<SelectRootContextParams, 'modelValue' | 'isMultiple'> {
   /**
    * Search used by the component context.
    */
@@ -671,7 +671,7 @@ export interface SelectItemAlignedPositionContext {
 /**
  * Parameters used to create the SelectItem context.
  */
-export interface SelectItemContextParams extends PropsToContext<SelectItemProps, 'textValue' | 'disabled'> {
+export interface SelectItemContextParams extends ToContext<SelectItemProps, 'textValue' | 'disabled'> {
   /**
    * Value associated with the current item.
    */

@@ -9,7 +9,7 @@ import {
   setChannelValue,
   toColorObject,
   isFormControl,
-  transformPropsToContext
+  toContext
 } from '../../shared';
 import { useControllableState, useForwardElement } from '../../composables';
 import type { ColorValue } from '../../types';
@@ -215,15 +215,7 @@ provideColorFieldRootContext({
   incrementToMax,
   decrementToMin,
   handleWheel,
-  ...transformPropsToContext(props, [
-    'channel',
-    'colorSpace',
-    'format',
-    'disabled',
-    'readonly',
-    'disableWheelChange',
-    'placeholder'
-  ])
+  ...toContext(props, ['channel', 'colorSpace', 'format', 'disabled', 'readonly', 'disableWheelChange', 'placeholder'])
 });
 </script>
 

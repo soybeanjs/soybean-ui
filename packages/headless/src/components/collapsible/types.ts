@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import type { ForceMountProps, PropsToContext, UiClass } from '../../types';
+import type { ForceMountProps, ToContext, UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
@@ -45,10 +45,7 @@ export interface CollapsibleTriggerProps extends ButtonProps {
 /**
  * Parameters used to create the CollapsibleRoot context.
  */
-export interface CollapsibleRootContextParams extends PropsToContext<
-  CollapsibleRootProps,
-  'disabled' | 'unmountOnHide'
-> {
+export interface CollapsibleRootContextParams extends ToContext<CollapsibleRootProps, 'disabled' | 'unmountOnHide'> {
   /**
    * Whether the component is open.
    */

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
 import type { CSSProperties } from 'vue';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useControllableState } from '../../composables';
 import { layoutCssVars } from './shared';
 import { provideLayoutRootContext, useLayoutUi } from './context';
@@ -120,7 +120,7 @@ function hasFooterStartGap() {
 const mobileSidebarWidth = computed(() => props.pxToRem(props.mobileSidebarWidth));
 
 provideLayoutRootContext({
-  ...transformPropsToContext(props, [
+  ...toContext(props, [
     'sidebarWidth',
     'collapsedSidebarWidth',
     'isMobile',

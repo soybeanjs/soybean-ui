@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="M extends boolean">
 import { computed, nextTick, watch } from 'vue';
-import { isFormControl, transformPropsToContext } from '../../shared';
+import { isFormControl, toContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { useSelection } from '../../composables';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
@@ -40,7 +40,7 @@ const {
   onLeave,
   onFocusOut
 } = provideListboxRootContext({
-  ...transformPropsToContext(props, ['orientation', 'disabled', 'highlightOnHover', 'selectionBehavior']),
+  ...toContext(props, ['orientation', 'disabled', 'highlightOnHover', 'selectionBehavior']),
   dir,
   modelValue,
   isMultiple,

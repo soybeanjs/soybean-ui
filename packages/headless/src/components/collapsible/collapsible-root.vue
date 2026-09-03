@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useControllableState, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { provideCollapsibleRootContext, useCollapsibleUi } from './context';
@@ -31,7 +31,7 @@ const open = useControllableState(
 
 const { dataDisabled, dataState } = provideCollapsibleRootContext({
   open,
-  ...transformPropsToContext(props, ['disabled', 'unmountOnHide'])
+  ...toContext(props, ['disabled', 'unmountOnHide'])
 });
 
 defineExpose({

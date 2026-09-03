@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { provideToolbarRootContext, useToolbarUi } from './context';
@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<ToolbarRootProps>(), {
 
 const cls = useToolbarUi('root');
 
-provideToolbarRootContext(transformPropsToContext(props, ['orientation', 'dir']));
+provideToolbarRootContext(toContext(props, ['orientation', 'dir']));
 </script>
 
 <template>

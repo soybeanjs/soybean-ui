@@ -5,7 +5,7 @@ import type {
   ColorValue,
   NormalizedColor,
   FormFieldCommonProps,
-  PropsToContext,
+  ToContext,
   UiClass
 } from '../../types';
 import type { ButtonProps } from '../button/types';
@@ -133,7 +133,7 @@ export interface ColorPickerFormatOptionData extends SegmentOptionData<ColorForm
 /**
  * Context for the ColorPickerRoot component.
  */
-export interface ColorPickerRootContext extends PropsToContext<ColorPickerRootProps, 'name' | 'required' | 'disabled'> {
+export interface ColorPickerRootContext extends ToContext<ColorPickerRootProps, 'name' | 'required' | 'disabled'> {
   color: ComputedRef<ColorValue>;
   formattedValue: ComputedRef<string>;
   hexValue: ComputedRef<string>;

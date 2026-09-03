@@ -7,7 +7,7 @@ import type {
   EmitsToHookProps,
   ForceMountProps,
   FormFieldCommonProps,
-  PropsToContext,
+  ToContext,
   UiClass
 } from '../../types';
 import type { IconValue } from '../_icon/types';
@@ -48,7 +48,7 @@ export type RadioGroupRootEmits<T extends DefinedWithBooleanValue> = {
 /**
  * Context for the RadioGroupRoot component.
  */
-export type RadioGroupRootContext = PropsToContext<
+export type RadioGroupRootContext = ToContext<
   RadioGroupRootProps,
   'disabled' | 'orientation' | 'dir' | 'loop' | 'name' | 'required'
 > & {
@@ -210,7 +210,7 @@ export type RadioGroupCardCompactSlots<T extends RadioGroupCardOptionData = Radi
 /**
  * Parameters used to create the RadioGroupItem context.
  */
-export type RadioGroupItemContextParams = PropsToContext<
+export type RadioGroupItemContextParams = ToContext<
   Pick<RadioGroupItemProps, 'name' | 'required' | 'value' | 'disabled'>
 > &
   EmitsToHookProps<RadioGroupItemEmits> & {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useControllableState } from '../../composables';
 import { providePaginationRootContext, usePaginationUi } from './context';
 import type { PaginationRootProps, PaginationRootEmits } from './types';
@@ -37,7 +37,7 @@ const pageSize = useControllableState(
 );
 
 const { pageCount } = providePaginationRootContext({
-  ...transformPropsToContext(props, ['total', 'siblingCount', 'disabled', 'showEdges']),
+  ...toContext(props, ['total', 'siblingCount', 'disabled', 'showEdges']),
   page,
   pageSize
 });

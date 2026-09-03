@@ -5,7 +5,7 @@ import type {
   DefinedValue,
   ForceMountProps,
   FormFieldCommonProps,
-  PropsToContext,
+  ToContext,
   UiClass
 } from '../../types';
 import type { IconValue } from '../_icon/types';
@@ -223,7 +223,7 @@ export type CheckboxCardGroupCompactEmits<T extends DefinedValue = DefinedValue>
 /**
  * Parameters used to create the CheckboxGroupRoot context.
  */
-export type CheckboxGroupRootContextParams = PropsToContext<CheckboxGroupRootProps, 'rovingFocus' | 'disabled'> & {
+export type CheckboxGroupRootContextParams = ToContext<CheckboxGroupRootProps, 'rovingFocus' | 'disabled'> & {
   /**
    * Current model value.
    */
@@ -233,10 +233,7 @@ export type CheckboxGroupRootContextParams = PropsToContext<CheckboxGroupRootPro
 /**
  * Parameters used to create the CheckboxRoot context.
  */
-export type CheckboxRootContextParams = PropsToContext<
-  CheckboxRootProps,
-  'value' | 'disabled' | 'name' | 'required'
-> & {
+export type CheckboxRootContextParams = ToContext<CheckboxRootProps, 'value' | 'disabled' | 'name' | 'required'> & {
   /**
    * Current model value.
    */

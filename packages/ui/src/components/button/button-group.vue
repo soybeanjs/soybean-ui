@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { ButtonGroup } from '@soybeanjs/headless/button';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { transformPropsToContext } from '@soybeanjs/headless/shared';
+import { toContext } from '@soybeanjs/headless/shared';
 import { buttonGroupVariants } from '@/styles/button';
 import { useConfigProvider } from '../config-provider/context';
 import { provideButtonGroupContext } from './context';
@@ -41,9 +41,7 @@ const cls = computed(() =>
 
 const dir = computed(() => props.dir ?? config.dir.value);
 
-provideButtonGroupContext(
-  transformPropsToContext(props, ['color', 'size', 'variant', 'shape', 'shadow', 'fitContent', 'disabled'])
-);
+provideButtonGroupContext(toContext(props, ['color', 'size', 'variant', 'shape', 'shadow', 'fitContent', 'disabled']));
 </script>
 
 <template>

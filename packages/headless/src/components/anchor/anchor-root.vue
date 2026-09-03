@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, useAttrs, onBeforeUnmount, onMounted, onWatcherCleanup, shallowRef, watch } from 'vue';
-import { transformPropsToContext, isClient } from '../../shared';
+import { toContext, isClient } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { useControllableState, useOmitProps } from '../../composables';
 import { useLocaleMessages } from '../../locale';
@@ -216,7 +216,7 @@ provideAnchorRootContext({
   registerLink,
   scrollTo,
   unregisterLink,
-  ...transformPropsToContext(props, ['dir'])
+  ...toContext(props, ['dir'])
 });
 
 watch(

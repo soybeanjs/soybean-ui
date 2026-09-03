@@ -6,7 +6,7 @@ import type {
   DismissableLayerProps,
   FocusScopeEmits,
   ForceMountProps,
-  PropsToContext,
+  ToContext,
   TrapFocusProps,
   UiClass
 } from '../../types';
@@ -398,7 +398,7 @@ export type DialogCompactSlots = {
 /**
  * Parameters used to create the DialogRoot context.
  */
-export interface DialogRootContextParams extends PropsToContext<
+export interface DialogRootContextParams extends ToContext<
   DialogRootProps,
   'dir' | 'modal' | 'isAlert' | 'alertType' | 'draggable'
 > {

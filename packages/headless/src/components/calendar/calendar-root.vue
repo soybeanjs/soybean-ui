@@ -2,7 +2,7 @@
 import { computed, onMounted, watch } from 'vue';
 import { isEqualDay, isSameDay } from '@internationalized/date';
 import type { DateValue } from '@internationalized/date';
-import { getVueBooleanCasting, transformPropsToContext } from '../../shared';
+import { getVueBooleanCasting, toContext } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { useControllableState, useForwardElement } from '../../composables';
 import { getDefaultDate, getWeekStartsOn, handleCalendarInitialFocus } from '../../date';
@@ -234,7 +234,7 @@ provideCalendarRootContext({
   nextPage,
   isPrevButtonDisabled,
   isNextButtonDisabled,
-  ...transformPropsToContext(props, [
+  ...toContext(props, [
     'disableDaysOutsideCurrentView',
     'disabled',
     'fixedWeeks',

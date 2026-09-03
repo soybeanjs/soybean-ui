@@ -1,6 +1,6 @@
 import type { VNode } from 'vue';
 import type { LocaleMessagesOverrides } from '../../locale/types';
-import type { Direction, PropsToContext } from '../../types';
+import type { Direction, ToContext } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type { TooltipProviderProps } from '../tooltip/types';
 
@@ -51,4 +51,4 @@ export interface ConfigProviderProps {
  * Context for the ConfigProvider component.
  */
 export interface ConfigProviderContext
-  extends PropsToContext<Omit<ConfigProviderProps, 'iconRender'>>, Pick<ConfigProviderProps, 'iconRender'> {}
+  extends ToContext<Omit<ConfigProviderProps, 'iconRender'>>, Pick<ConfigProviderProps, 'iconRender'> {}

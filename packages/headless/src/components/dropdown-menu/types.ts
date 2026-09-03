@@ -1,5 +1,5 @@
 import type { ComputedRef } from 'vue';
-import type { AcceptableBooleanValue, DefinedValue, Placement, PropsToContext } from '../../types';
+import type { AcceptableBooleanValue, DefinedValue, Placement, ToContext } from '../../types';
 import type {
   MenuContentEmits,
   MenuContentProps,
@@ -60,7 +60,7 @@ export type DropdownMenuRootEmits = MenuRootEmits;
 /**
  * Parameters used to create the DropdownMenuRoot context.
  */
-export interface DropdownMenuRootContextParams extends PropsToContext<
+export interface DropdownMenuRootContextParams extends ToContext<
   DropdownMenuRootProps,
   'dir' | 'trigger' | 'modal' | 'delayDuration' | 'skipDelayDuration'
 > {

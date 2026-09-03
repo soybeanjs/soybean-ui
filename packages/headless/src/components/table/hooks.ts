@@ -4,7 +4,7 @@ import { useEventListener, useResizeObserver } from '@vueuse/core';
 import { getElFromTemplateRef, getMergedRefsValue, pick } from '../../shared';
 import { useControllableState, useForwardElement, useSelection } from '../../composables';
 import { useLocaleMessages } from '../../locale';
-import type { CheckedState, VNodeRef, PropsToContext } from '../../types';
+import type { CheckedState, VNodeRef, ToContext } from '../../types';
 import {
   buildTableTree,
   filterTableColumns,
@@ -306,7 +306,7 @@ export function useTableCompactResize(options: UseTableCompactResizeOptions) {
   };
 }
 
-interface UseTableCompactVirtualOptions extends PropsToContext<
+interface UseTableCompactVirtualOptions extends ToContext<
   TableCompactProps,
   'height' | 'virtual' | 'virtualizerOptions' | 'estimateSize'
 > {
@@ -444,7 +444,7 @@ export function useTableCompactVirtual(options: UseTableCompactVirtualOptions) {
   };
 }
 
-export function useTableCompactHead(options: PropsToContext<TableCompactHeadProps>) {
+export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
   const {
     dir,
     headProps,
@@ -774,7 +774,7 @@ interface TableCompactCellOptions {
   index: number;
 }
 
-export function useTableCompactCell(options: PropsToContext<TableCompactCellOptions>) {
+export function useTableCompactCell(options: ToContext<TableCompactCellOptions>) {
   const {
     indent,
     rowKey,
@@ -908,7 +908,7 @@ interface TableCompactExpandedRowOptions {
   index: number;
 }
 
-export function useTableCompactExpandedRow(options: PropsToContext<TableCompactExpandedRowOptions>) {
+export function useTableCompactExpandedRow(options: ToContext<TableCompactExpandedRowOptions>) {
   const { hasExpandColumn, hasExpandedRowSlot, visibleExpandedKeys, rowProps, cellProps } =
     useTableCompactContext('TableCompactExpandedRow');
 

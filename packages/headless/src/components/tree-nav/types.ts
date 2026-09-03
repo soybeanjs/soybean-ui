@@ -1,5 +1,5 @@
 import type { ComputedRef } from 'vue';
-import type { Direction, Placement, UiClass, PropsToContext } from '../../types';
+import type { Direction, Placement, UiClass, ToContext } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type { ButtonProps } from '../button/types';
 import type { DropdownMenuTriggerType } from '../dropdown-menu/types';
@@ -182,10 +182,10 @@ export interface TreeNavRootSlots {
  * Configuration shared by the TreeNav primitives.
  *
  * Top-level link and popup-related props are provided as individual reactive
- * entries (`transformPropsToContext`), so each field stays independently
+ * entries (`toContext`), so each field stays independently
  * consumable instead of being nested inside grouped prop objects.
  */
-export interface TreeNavRootContextParams extends PropsToContext<
+export interface TreeNavRootContextParams extends ToContext<
   TreeNavRootProps,
   | 'dir'
   | 'disabled'

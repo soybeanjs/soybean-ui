@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { isFormControl, removeAt, transformPropsToContext } from '../../shared';
+import { isFormControl, removeAt, toContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { useArrowNavigation, useControllableState, useForwardElement } from '../../composables';
 import { VisuallyHiddenInput } from '../visually-hidden';
@@ -185,7 +185,7 @@ const onInputKeydown = (event: KeyboardEvent) => {
 };
 
 provideTagsInputRootContext({
-  ...transformPropsToContext(props, [
+  ...toContext(props, [
     'id',
     'autofocus',
     'disabled',

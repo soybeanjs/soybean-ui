@@ -32,6 +32,27 @@ export const createDefaultTooltipConfig = (config?: Partial<TooltipProviderProps
   };
 };
 
+/** All provider-context config fields; optional entries (e.g. `positionerProps`) must stay explicit for context keys. */
+export const PROVIDER_CONFIG_KEYS = [
+  'delayDuration',
+  'skipDelayDuration',
+  'disableHoverableContent',
+  'disableClosingTrigger',
+  'disabled',
+  'ignoreNonKeyboardFocus',
+  'positionerProps'
+] as const;
+
+/** Provider fields a root resolves over its backing provider; `skipDelayDuration` is owned by the provider's delay group. */
+export const ROOT_RESOLVE_KEYS = [
+  'delayDuration',
+  'disableHoverableContent',
+  'disableClosingTrigger',
+  'disabled',
+  'ignoreNonKeyboardFocus',
+  'positionerProps'
+] as const;
+
 /** Keeps only explicitly provided entries so an `undefined` prop never overrides a base config. */
 export const pickDefinedConfig = (config?: Partial<TooltipProviderProps> | null) => {
   return Object.fromEntries(Object.entries(config ?? {}).filter(([, value]) => value !== undefined));

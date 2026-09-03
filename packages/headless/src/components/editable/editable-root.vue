@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef, watch } from 'vue';
-import { isFormControl, transformPropsToContext } from '../../shared';
+import { isFormControl, toContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import {
   useControllableState,
@@ -147,7 +147,7 @@ const focusOutside = useFocusOutside(
 );
 
 const { dataDisabled, dataReadonly, dataState } = provideEditableRootContext({
-  ...transformPropsToContext(props, [
+  ...toContext(props, [
     'id',
     'name',
     'maxLength',

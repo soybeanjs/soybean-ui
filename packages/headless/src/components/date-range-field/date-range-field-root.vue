@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, shallowRef, watch } from 'vue';
-import { isNullish, transformPropsToContext } from '../../shared';
+import { isNullish, toContext } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { useControllableState, useForwardElement } from '../../composables';
 import {
@@ -278,7 +278,7 @@ const handleRootKeydown = (event: KeyboardEvent) => {
 };
 
 provideDateRangeFieldRootContext({
-  ...transformPropsToContext(props, ['disabled', 'readonly']),
+  ...toContext(props, ['disabled', 'readonly']),
   modelValue,
   placeholder,
   isInvalid,

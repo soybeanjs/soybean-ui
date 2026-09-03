@@ -5,7 +5,7 @@ import type {
   Virtualizer,
   VirtualizerOptions as _VirtualizerOptions
 } from '@tanstack/vue-virtual';
-import type { BaseProps, PropsToContext } from '../../types';
+import type { BaseProps, ToContext } from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
@@ -75,7 +75,7 @@ export interface VirtualizerItemProps extends PrimitiveWithBaseProps {
 /**
  * Parameters used to create the VirtualizerRoot context.
  */
-export interface VirtualizerRootContextParams extends PropsToContext<VirtualizerRootProps, 'dynamic'> {
+export interface VirtualizerRootContextParams extends ToContext<VirtualizerRootProps, 'dynamic'> {
   /**
    * Virtualizer used by the component context.
    */

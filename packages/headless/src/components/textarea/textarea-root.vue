@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { isFormControl, transformPropsToContext } from '../../shared';
+import { isFormControl, toContext } from '../../shared';
 import { useControllableState, useForwardElement } from '../../composables';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
 import { provideTextareaRootContext, useTextareaUi } from './context';
@@ -49,7 +49,7 @@ const onClear = () => {
 };
 
 provideTextareaRootContext({
-  ...transformPropsToContext(props, [
+  ...toContext(props, [
     'id',
     'autofocus',
     'placeholder',

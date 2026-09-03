@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { shallowRef, useAttrs } from 'vue';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { useExposedElement, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
@@ -84,7 +84,7 @@ provideScrollAreaRootContext({
   onScrollbarEnabledChange,
   onScrollbarVisibleChange,
   onScrollbarSizeChange,
-  ...transformPropsToContext(props, ['scrollHideDelay', 'type'])
+  ...toContext(props, ['scrollHideDelay', 'type'])
 });
 </script>
 

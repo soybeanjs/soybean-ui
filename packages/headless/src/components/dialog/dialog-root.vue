@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { useControllableState } from '../../composables';
 import { provideDialogRootContext } from './context';
@@ -44,7 +44,7 @@ const { onOpenChange } = provideDialogRootContext({
   open,
   modal,
   fullscreen,
-  ...transformPropsToContext(props, ['isAlert', 'alertType', 'draggable'])
+  ...toContext(props, ['isAlert', 'alertType', 'draggable'])
 });
 
 const close = () => {

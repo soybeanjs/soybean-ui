@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends DefinedValue, M extends boolean = false, P extends boolean = false">
 import { computed } from 'vue';
-import { getVueBooleanCasting, transformPropsToContext } from '../../shared';
+import { getVueBooleanCasting, toContext } from '../../shared';
 import { useControllableState } from '../../composables';
 import type { DefinedValue } from '../../types';
 import { PopperPositioningRoot } from '../popper';
@@ -66,7 +66,7 @@ const onLoaded = (node: CascaderNode<DefinedValue>) => {
 };
 
 const { dir } = provideCascaderRootContext({
-  ...transformPropsToContext(props, [
+  ...toContext(props, [
     'dir',
     'disabled',
     'clearable',

@@ -9,7 +9,7 @@ import {
   setChannelValues,
   toColorObject,
   isFormControl,
-  transformPropsToContext
+  toContext
 } from '../../shared';
 import { useControllableState, useForwardElement } from '../../composables';
 import type { ColorValue } from '../../types';
@@ -115,7 +115,7 @@ provideColorAreaRootContext({
   },
   updateValues,
   commitValues,
-  ...transformPropsToContext(props, ['colorSpace', 'format', 'xChannel', 'yChannel', 'disabled'])
+  ...toContext(props, ['colorSpace', 'format', 'xChannel', 'yChannel', 'disabled'])
 });
 </script>
 

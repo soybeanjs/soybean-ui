@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useTableUi } from './context';
 import { useTableCompactCell } from './hooks';
 import TableCell from './table-cell.vue';
@@ -24,7 +24,7 @@ const {
   indexSlotProps,
   selectionSlotProps,
   expandSlotProps
-} = useTableCompactCell(transformPropsToContext(props));
+} = useTableCompactCell(toContext(props));
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef, watchEffect } from 'vue';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { providePopperRootContext } from '../popper/context';
 import { useControllableState, useForwardElement } from '../../composables';
@@ -38,7 +38,7 @@ const { rootElement, onRootElementChange, onActiveTriggerElementChange, pendingV
     isRoot: true,
     modelValue,
     dir,
-    ...transformPropsToContext(props, [
+    ...toContext(props, [
       'orientation',
       'skipDelayDuration',
       'delayDuration',

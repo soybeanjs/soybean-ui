@@ -3,7 +3,7 @@ import type {
   ButtonGroupProps as _ButtonGroupProps,
   ButtonProps as _ButtonProps
 } from '@soybeanjs/headless/button';
-import type { Align, ClassValue, PropsToContext } from '@soybeanjs/headless/types';
+import type { Align, ClassValue, ToContext } from '@soybeanjs/headless/types';
 import type { ButtonShadow, ButtonShape, ButtonVariant } from '@/styles/button';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { IconValue, IconProps } from '../icon/types';
@@ -148,7 +148,7 @@ export interface ButtonGroupProps extends _ButtonGroupProps {
 /**
  * Context for the ButtonGroup component.
  */
-export interface ButtonGroupContext extends PropsToContext<
+export interface ButtonGroupContext extends ToContext<
   ButtonGroupProps,
   'color' | 'size' | 'variant' | 'shape' | 'shadow' | 'disabled' | 'fitContent'
 > {}

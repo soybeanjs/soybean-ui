@@ -4,7 +4,7 @@ import type {
   DataOrientation,
   Direction,
   MaybeArray,
-  PropsToContext,
+  ToContext,
   SelectionEmits,
   SelectionProps,
   UiClass
@@ -189,7 +189,7 @@ export type AccordionCompactSlots<T extends AccordionOptionData = AccordionOptio
 /**
  * Context for the AccordionRoot component.
  */
-export interface AccordionRootContext extends PropsToContext<
+export interface AccordionRootContext extends ToContext<
   AccordionRootProps,
   'collapsible' | 'disabled' | 'orientation' | 'unmountOnHide'
 > {
@@ -218,7 +218,7 @@ export interface AccordionRootContext extends PropsToContext<
 /**
  * Parameters used to create the AccordionItem context.
  */
-export interface AccordionItemContextParams extends PropsToContext<AccordionItemProps, 'value'> {
+export interface AccordionItemContextParams extends ToContext<AccordionItemProps, 'value'> {
   /**
    * Whether the component is open.
    */

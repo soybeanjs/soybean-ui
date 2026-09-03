@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useTableCompactExpandedRow } from './hooks';
 import TableCell from './table-cell.vue';
 import TableRow from './table-row.vue';
@@ -12,7 +12,7 @@ defineOptions({
 const props = defineProps<TableCompactExpandedRowProps>();
 
 const { visible, expandedRowSlotProps, rowProps, cellProps } = useTableCompactExpandedRow(
-  transformPropsToContext(props, ['row', 'index'])
+  toContext(props, ['row', 'index'])
 );
 </script>
 

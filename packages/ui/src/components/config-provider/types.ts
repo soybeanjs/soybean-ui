@@ -1,6 +1,6 @@
 import type { ConfigProviderProps as _ConfigProviderProps } from '@soybeanjs/headless/config-provider';
 import type { ProgressProviderProps } from '@soybeanjs/headless/progress';
-import type { PropsToContext } from '@soybeanjs/headless/types';
+import type { ToContext } from '@soybeanjs/headless/types';
 import type { ThemeOptions } from '@soybeanjs/theme';
 import type { CustomThemeColorPreset, ThemeConfigState, ThemePresetInput } from '@soybeanjs/theme/storage';
 import type { ThemeSize } from '@/theme';
@@ -114,9 +114,7 @@ export interface ConfigProviderProps extends _ConfigProviderProps {
  */
 export interface ConfigProviderContext
   extends
-    PropsToContext<
-      Omit<ConfigProviderProps, 'iconRender' | 'presetProvider' | 'persistTheme' | 'themeConfig' | 'isServer'>
-    >,
+    ToContext<Omit<ConfigProviderProps, 'iconRender' | 'presetProvider' | 'persistTheme' | 'themeConfig' | 'isServer'>>,
     Pick<ConfigProviderProps, 'iconRender'> {}
 
 export type { ThemeOptions };

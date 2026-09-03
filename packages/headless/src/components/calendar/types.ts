@@ -1,6 +1,6 @@
 import type { ComputedRef, ShallowRef } from 'vue';
 import type { DateValue, Formatter, DateGrid, DateMatcher, WeekDayFormat, WeekStartsOn } from '../../date';
-import type { Direction, PropsToContext, UiClass } from '../../types';
+import type { Direction, ToContext, UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { SelectOptionData } from '../select/types';
@@ -251,7 +251,7 @@ export interface CalendarNextProps extends ButtonProps {
 /**
  * Context for the CalendarRoot component.
  */
-export interface CalendarRootContext extends PropsToContext<
+export interface CalendarRootContext extends ToContext<
   CalendarRootProps,
   | 'disableDaysOutsideCurrentView'
   | 'disabled'

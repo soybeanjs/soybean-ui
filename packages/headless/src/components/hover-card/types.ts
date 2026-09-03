@@ -1,5 +1,5 @@
 import type { ShallowRef } from 'vue';
-import type { ForceMountProps, PropsToContext } from '../../types';
+import type { ForceMountProps, ToContext } from '../../types';
 import type {
   PopperRootProps,
   PopperPositionerEmits,
@@ -62,7 +62,7 @@ export interface HoverCardPopupProps extends PopperPopupProps {}
 /**
  * Parameters used to create the HoverCardRoot context.
  */
-export type HoverCardRootContextParams = PropsToContext<HoverCardRootProps, 'openDelay' | 'closeDelay'>;
+export type HoverCardRootContextParams = ToContext<HoverCardRootProps, 'openDelay' | 'closeDelay'>;
 
 /**
  * Context for the HoverCardRoot component. Open state, timers, grace and dismiss live on the

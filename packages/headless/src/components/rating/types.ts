@@ -1,5 +1,5 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { DataOrientation, Direction, FormFieldCommonProps, PropsToContext } from '../../types';
+import type { DataOrientation, Direction, FormFieldCommonProps, ToContext } from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
@@ -59,7 +59,7 @@ export type RatingItemState = 'full' | 'half' | 'empty';
 /**
  * Context for the RatingRoot component.
  */
-export interface RatingRootContext extends PropsToContext<
+export interface RatingRootContext extends ToContext<
   RatingRootProps,
   'max' | 'allowHalf' | 'allowClear' | 'readonly' | 'disabled' | 'dir' | 'orientation'
 > {

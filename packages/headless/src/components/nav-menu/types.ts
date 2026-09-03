@@ -1,13 +1,5 @@
 import type { ShallowRef } from 'vue';
-import type {
-  Align,
-  BaseProps,
-  DataOrientation,
-  Direction,
-  ForceMountProps,
-  PropsToContext,
-  UiClass
-} from '../../types';
+import type { Align, BaseProps, DataOrientation, Direction, ForceMountProps, ToContext, UiClass } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type { LinkBaseProps, LinkBasePropsKey, LinkProps } from '../link/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
@@ -149,7 +141,7 @@ export interface NavMenuSubContentProps extends ForceMountProps, BaseProps {
 /**
  * Parameters used to create the NavMenuRoot context.
  */
-export interface NavMenuRootContextParams extends PropsToContext<
+export interface NavMenuRootContextParams extends ToContext<
   Required<NavMenuRootProps>,
   | 'dir'
   | 'orientation'

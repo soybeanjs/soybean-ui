@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { MenuRoot } from '../menu';
 import { provideContextMenuRootContext } from './context';
 import type { ContextMenuRootProps, ContextMenuRootEmits } from './types';
@@ -23,7 +23,7 @@ watch(open, value => {
   emit('update:open', value);
 });
 
-provideContextMenuRootContext(transformPropsToContext(props, ['pressOpenDelay']));
+provideContextMenuRootContext(toContext(props, ['pressOpenDelay']));
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends DefinedValue, M extends boolean = false">
 import { computed } from 'vue';
-import { isFormControl, isNullish, transformPropsToContext } from '../../shared';
+import { isFormControl, isNullish, toContext } from '../../shared';
 import { useControllableState, useSelection } from '../../composables';
 import type { DefinedValue } from '../../types';
 import { PopperPositioningRoot } from '../popper';
@@ -36,7 +36,7 @@ const open = useControllableState(
 );
 
 const { dir, triggerElement, options, nativeSelectKey } = provideSelectRootContext({
-  ...transformPropsToContext(props, ['dir', 'autocomplete', 'disabled', 'required', 'clearable']),
+  ...toContext(props, ['dir', 'autocomplete', 'disabled', 'required', 'clearable']),
   open,
   modelValue,
   onModelValueChange,

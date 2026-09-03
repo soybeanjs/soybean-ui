@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useControllableState } from '../../composables';
 import { MenuRoot } from '../menu';
 import { provideDropdownMenuRootContext } from './context';
@@ -34,7 +34,7 @@ const hoverable = computed(() => props.trigger === 'hover');
 const modal = computed(() => props.modal && props.trigger !== 'hover');
 
 provideDropdownMenuRootContext({
-  ...transformPropsToContext(props, ['dir', 'trigger', 'delayDuration', 'skipDelayDuration']),
+  ...toContext(props, ['dir', 'trigger', 'delayDuration', 'skipDelayDuration']),
   hoverable,
   modal
 });

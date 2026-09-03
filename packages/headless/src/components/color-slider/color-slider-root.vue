@@ -10,7 +10,7 @@ import {
   setChannelValue,
   toColorObject,
   snapValueToStep,
-  transformPropsToContext
+  toContext
 } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { useControllableState } from '../../composables';
@@ -125,7 +125,7 @@ provideColorSliderRootContext({
   color,
   channelValue,
   range,
-  ...transformPropsToContext(props, ['channel', 'colorSpace', 'format', 'orientation', 'disabled', 'inverted'])
+  ...toContext(props, ['channel', 'colorSpace', 'format', 'orientation', 'disabled', 'inverted'])
 });
 </script>
 

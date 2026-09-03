@@ -9,7 +9,7 @@ import type {
   DataOrientation,
   Direction,
   FormFieldCommonProps,
-  PropsToContext,
+  ToContext,
   UiClass
 } from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
@@ -114,7 +114,7 @@ export type ColorSliderCompactEmits = ColorSliderRootEmits;
 /**
  * Context for the ColorSliderRoot component.
  */
-export interface ColorSliderRootContext extends PropsToContext<
+export interface ColorSliderRootContext extends ToContext<
   ColorSliderRootProps,
   'channel' | 'colorSpace' | 'format' | 'orientation' | 'disabled' | 'inverted'
 > {

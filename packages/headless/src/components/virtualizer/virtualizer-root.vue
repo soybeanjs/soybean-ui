@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends Record<string, any>">
 import { computed } from 'vue';
 import { useVirtualizer } from '@tanstack/vue-virtual';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useExposedElement } from '../../composables';
 import { Primitive } from '../primitive';
 import { getVirtualizerPadding } from './shared';
@@ -55,7 +55,7 @@ provideVirtualizerContext({
   contentStyle,
   isHorizontal,
   totalSize,
-  ...transformPropsToContext(props, ['dynamic'])
+  ...toContext(props, ['dynamic'])
 });
 </script>
 

@@ -1,6 +1,6 @@
 import type { ComputedRef, ShallowRef } from 'vue';
 import type { DateValue, DateStep, Granularity, Formatter, HourCycle, SegmentPart, SegmentValueObj } from '../../date';
-import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { FormFieldCommonProps, ToContext, UiClass } from '../../types';
 import type { CalendarRootProps } from '../calendar/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
@@ -113,7 +113,7 @@ export interface DateFieldInputProps extends PrimitiveWithBaseProps {
 /**
  * Context for the DateFieldRoot component.
  */
-export interface DateFieldRootContext extends PropsToContext<DateFieldRootProps, 'disabled' | 'readonly'> {
+export interface DateFieldRootContext extends ToContext<DateFieldRootProps, 'disabled' | 'readonly'> {
   /**
    * Current model value.
    */

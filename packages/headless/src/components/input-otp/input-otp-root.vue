@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, shallowRef, useAttrs, watch, watchEffect } from 'vue';
 import { defaultDocument, defaultWindow, useEventListener, usePrevious } from '@vueuse/core';
-import { omit, transformPropsToContext } from '../../shared';
+import { omit, toContext } from '../../shared';
 import { useControllableState } from '../../composables';
 import {
   createInputOtpSlots,
@@ -44,7 +44,7 @@ const modelValue = useControllableState(
 
 const previousValue = usePrevious(modelValue);
 const currentValue = computed(() => modelValue.value ?? '');
-const contextProps = transformPropsToContext(props, [
+const contextProps = toContext(props, [
   'autocomplete',
   'autofocus',
   'disabled',

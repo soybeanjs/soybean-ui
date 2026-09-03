@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { watch } from 'vue';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useImageLoadingStatus } from '../../composables';
 import { useAvatarRootContext, useAvatarUi } from './context';
 import type { AvatarImageProps, AvatarImageEmits } from './types';
@@ -17,7 +17,7 @@ const cls = useAvatarUi('image');
 
 const { updateImageLoadingStatus } = useAvatarRootContext('AvatarImage');
 
-const imageLoadingStatus = useImageLoadingStatus(transformPropsToContext(props));
+const imageLoadingStatus = useImageLoadingStatus(toContext(props));
 
 watch(
   imageLoadingStatus,

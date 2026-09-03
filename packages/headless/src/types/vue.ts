@@ -2,7 +2,7 @@ import type { ComponentPublicInstance, ComputedRef, HTMLAttributes } from 'vue';
 
 export type VNodeRef = Element | ComponentPublicInstance | null | undefined;
 
-export type PropsToContext<T, K extends keyof T = keyof T> = {
+export type ToContext<T, K extends keyof T = keyof T> = {
   [P in K]-?: ComputedRef<T[P]>;
 };
 

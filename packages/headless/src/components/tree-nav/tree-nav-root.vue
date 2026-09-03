@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { Primitive } from '../primitive/primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { provideTreeNavRootContext, useTreeNavUi } from './context';
@@ -47,7 +47,7 @@ provideTreeNavRootContext({
   onSelect: handleSelect,
   disabled: computed(() => Boolean(props.disabled)),
   linkProps: computed(() => props.linkProps),
-  ...transformPropsToContext(props, [
+  ...toContext(props, [
     'dir',
     'trigger',
     'delayDuration',

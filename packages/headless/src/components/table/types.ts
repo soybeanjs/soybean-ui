@@ -1,5 +1,5 @@
 import type { ShallowRef, ComputedRef, TableHTMLAttributes, TdHTMLAttributes, ThHTMLAttributes } from 'vue';
-import type { BaseProps, CheckedState, Direction, Path, PathValue, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, CheckedState, Direction, Path, PathValue, ToContext, UiClass } from '../../types';
 import type { VirtualizerOptions } from '../virtualizer/types';
 
 /**
@@ -1198,7 +1198,7 @@ export type TableCompactSlots<T extends TableBaseData> = {
 /**
  * Context for the TableCompact component.
  */
-export interface TableCompactContext extends PropsToContext<
+export interface TableCompactContext extends ToContext<
   TableCompactProps,
   'indent' | 'headProps' | 'rowProps' | 'cellProps'
 > {

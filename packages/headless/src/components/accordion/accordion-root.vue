@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="M extends boolean = false">
 import { shallowRef } from 'vue';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { useSelection } from '../../composables';
 import { provideAccordionRootContext, useAccordionUi } from './context';
@@ -41,7 +41,7 @@ provideAccordionRootContext({
   modelValue,
   isMultiple,
   onModelValueChange,
-  ...transformPropsToContext(props, ['collapsible', 'disabled', 'orientation', 'unmountOnHide'])
+  ...toContext(props, ['collapsible', 'disabled', 'orientation', 'unmountOnHide'])
 });
 </script>
 

@@ -1,6 +1,6 @@
 import type { ComputedRef, ShallowRef, InputHTMLAttributes } from 'vue';
 import type { CollectionItemData } from '../../composables';
-import type { BaseProps, Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, Direction, FormFieldCommonProps, ToContext, UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
 import type { InputBaseProps } from '../input/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
@@ -149,7 +149,7 @@ export type TagsInputCollectionItemData = {
 /**
  * Context for the TagsInputRoot component.
  */
-export interface TagsInputRootContext extends PropsToContext<
+export interface TagsInputRootContext extends ToContext<
   TagsInputRootProps,
   | 'id'
   | 'autofocus'

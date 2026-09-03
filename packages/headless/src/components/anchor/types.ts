@@ -1,5 +1,5 @@
 import type { HTMLAttributes, ShallowRef } from 'vue';
-import type { BaseProps, DataOrientation, Direction, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, DataOrientation, Direction, ToContext, UiClass } from '../../types';
 import type { LinkBaseProps } from '../link/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
@@ -179,7 +179,7 @@ export type AnchorCompactEmits = AnchorRootEmits;
 /**
  * Parameters used to create the AnchorRoot context.
  */
-export interface AnchorRootContextParams extends PropsToContext<AnchorRootProps, 'dir'> {
+export interface AnchorRootContextParams extends ToContext<AnchorRootProps, 'dir'> {
   /**
    * Active href used by the component context.
    */

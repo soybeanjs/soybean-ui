@@ -7,7 +7,7 @@ import type {
   DismissableLayerEmits,
   DismissableLayerProps,
   ForceMountProps,
-  PropsToContext,
+  ToContext,
   UiClass
 } from '../../types';
 import type { IconValue } from '../_icon/types';
@@ -243,7 +243,7 @@ export interface NavigationMenuViewportPosition {
  *
  * @deprecated Use `NavMenuRootContextParams` instead. Will be removed in v1.0.
  */
-export interface NavigationMenuRootContextParams extends PropsToContext<
+export interface NavigationMenuRootContextParams extends ToContext<
   Required<NavigationMenuRootProps>,
   | 'dir'
   | 'orientation'

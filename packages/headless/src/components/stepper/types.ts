@@ -1,5 +1,5 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { DataOrientation, Direction, PropsToContext, UiClass } from '../../types';
+import type { DataOrientation, Direction, ToContext, UiClass } from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { SeparatorRootProps } from '../separator/types';
 
@@ -85,7 +85,7 @@ export interface StepperDescriptionProps extends PrimitiveWithBaseProps {}
 /**
  * Context for the StepperRoot component.
  */
-export interface StepperRootContext extends PropsToContext<StepperRootProps, 'orientation' | 'dir' | 'linear'> {
+export interface StepperRootContext extends ToContext<StepperRootProps, 'orientation' | 'dir' | 'linear'> {
   /**
    * Current model value.
    */
@@ -115,7 +115,7 @@ export interface StepperRootContext extends PropsToContext<StepperRootProps, 'or
 /**
  * Parameters used to create the StepperItem context.
  */
-export interface StepperItemContextParams extends PropsToContext<StepperItemProps, 'step' | 'disabled' | 'completed'> {
+export interface StepperItemContextParams extends ToContext<StepperItemProps, 'step' | 'disabled' | 'completed'> {
   /**
    * State used by the component context.
    */

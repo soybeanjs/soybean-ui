@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { getCollectionItemElements, getOpenFromSingleOrMultiple, transformPropsToContext } from '../../shared';
+import { getCollectionItemElements, getOpenFromSingleOrMultiple, toContext } from '../../shared';
 import { useArrowNavigation, useOmitProps } from '../../composables';
 import { CollapsibleRoot } from '../collapsible';
 import { provideAccordionItemContext, useAccordionRootContext } from './context';
@@ -33,7 +33,7 @@ const unmountOnHide = computed(() => props.unmountOnHide ?? rootUnmountOnHide.va
 const { dataDisabled, dataState } = provideAccordionItemContext({
   open,
   disabled,
-  ...transformPropsToContext(props, ['value'])
+  ...toContext(props, ['value'])
 });
 
 const onKeydown = (e: KeyboardEvent) => {

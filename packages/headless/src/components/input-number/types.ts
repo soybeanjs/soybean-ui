@@ -1,5 +1,5 @@
 import type { ComputedRef, Attrs, InputHTMLAttributes, ShallowRef } from 'vue';
-import type { BaseProps, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, FormFieldCommonProps, ToContext, UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
 import type { InputBaseProps } from '../input/types';
 
@@ -158,7 +158,7 @@ export type InputNumberCompactSlots = {
 /**
  * Parameters used to create the InputNumberRoot context.
  */
-export interface InputNumberRootContextParams extends PropsToContext<
+export interface InputNumberRootContextParams extends ToContext<
   InputNumberRootProps,
   | 'disabled'
   | 'readonly'

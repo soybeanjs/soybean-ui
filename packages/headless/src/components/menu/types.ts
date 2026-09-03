@@ -8,7 +8,7 @@ import type {
   DismissableLayerEmits,
   FocusScopeEmits,
   ForceMountProps,
-  PropsToContext,
+  ToContext,
   TrapFocusProps,
   UiClass
 } from '../../types';
@@ -557,7 +557,7 @@ export type MenuRadioOptionsCompactSlots<T extends AcceptableBooleanValue = Acce
 /**
  * Context for the MenuRoot component.
  */
-export interface MenuRootContext extends PropsToContext<MenuRootProps, 'modal'> {
+export interface MenuRootContext extends ToContext<MenuRootProps, 'modal'> {
   /**
    * Reading direction of the component.
    */

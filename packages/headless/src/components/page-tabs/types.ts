@@ -1,5 +1,5 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { BaseProps, MaybePromise, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, MaybePromise, ToContext, UiClass } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type { ButtonProps } from '../button/types';
 import type { ContextMenuCompactProps } from '../context-menu/types';
@@ -340,7 +340,7 @@ export type PageTabsCompactSlots<T extends PageTabsOptionData = PageTabsOptionDa
 /**
  * Context for the PageTabsRoot component.
  */
-export interface PageTabsRootContext extends PropsToContext<PageTabsRootProps, 'middleClickClose'> {
+export interface PageTabsRootContext extends ToContext<PageTabsRootProps, 'middleClickClose'> {
   /**
    * Current model value.
    */
@@ -350,7 +350,7 @@ export interface PageTabsRootContext extends PropsToContext<PageTabsRootProps, '
 /**
  * Context for the PageTabsItem component.
  */
-export interface PageTabsItemContext extends PropsToContext<PageTabsItemProps, 'pinned'> {
+export interface PageTabsItemContext extends ToContext<PageTabsItemProps, 'pinned'> {
   /**
    * Whether the component can be closed.
    */

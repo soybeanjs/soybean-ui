@@ -1,5 +1,5 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { DataOrientation, Direction, PropsToContext, UiClass } from '../../types';
+import type { DataOrientation, Direction, ToContext, UiClass } from '../../types';
 import type { KbdValue } from '../kbd/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { TreeMenuBaseOptionData } from '../tree-menu/types';
@@ -234,7 +234,7 @@ export interface DualVerticalPaneProps {
 /**
  * Parameters used to create the SplitNavRoot context.
  */
-export interface SplitNavRootContextParams extends PropsToContext<
+export interface SplitNavRootContextParams extends ToContext<
   SplitNavRootProps,
   'mode' | 'items' | 'horizontalMountedId' | 'verticalMountedId' | 'loop' | 'collapsedWidth'
 > {

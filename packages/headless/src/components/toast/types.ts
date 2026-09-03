@@ -1,5 +1,5 @@
 import type { VNode, OlHTMLAttributes, LiHTMLAttributes, HTMLAttributes, ShallowRef, ComputedRef } from 'vue';
-import type { Direction, Side, SwipeDirection, PropsToContext, UiClass, BaseProps } from '../../types';
+import type { Direction, Side, SwipeDirection, ToContext, UiClass, BaseProps } from '../../types';
 import type { IconValue } from '../_icon/types';
 
 /**
@@ -389,7 +389,7 @@ export type ToastPromiseData<ToastData = any> = Omit<ToastExternal, 'description
 /**
  * Context for the Toaster component.
  */
-export interface ToasterContext extends PropsToContext<
+export interface ToasterContext extends ToContext<
   ToasterProps & Required<Pick<ToasterProps, 'gap' | 'duration' | 'visibleCounts'>>,
   | 'dir'
   | 'gap'

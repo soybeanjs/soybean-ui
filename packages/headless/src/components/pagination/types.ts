@@ -1,5 +1,5 @@
 import type { ShallowRef } from 'vue';
-import type { BaseProps, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, ToContext, UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
 
 /**
@@ -67,7 +67,7 @@ export interface PaginationButtonProps extends ButtonProps {}
 /**
  * Parameters used to create the PaginationRoot context.
  */
-export interface PaginationRootContextParams extends PropsToContext<
+export interface PaginationRootContextParams extends ToContext<
   Required<PaginationRootProps>,
   'total' | 'siblingCount' | 'disabled' | 'showEdges'
 > {

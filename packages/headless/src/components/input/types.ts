@@ -1,5 +1,5 @@
 import type { Attrs, ComputedRef, InputHTMLAttributes, InputTypeHTMLAttribute, ShallowRef } from 'vue';
-import type { BaseProps, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, FormFieldCommonProps, ToContext, UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
 
 /**
@@ -92,7 +92,7 @@ export interface InputControlProps extends BaseProps<InputHTMLAttributes> {}
 /**
  * Context for the InputRoot component.
  */
-export interface InputRootContext extends PropsToContext<InputRootProps, 'disabled' | 'readonly'> {
+export interface InputRootContext extends ToContext<InputRootProps, 'disabled' | 'readonly'> {
   /**
    * Current model value.
    */

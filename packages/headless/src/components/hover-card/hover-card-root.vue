@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { PopperRoot } from '../popper';
 import type { PopperOpenChangeReason } from '../popper/types';
 import { provideHoverCardRootContext } from './context';
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<HoverCardRootProps>(), {
 
 const emit = defineEmits<HoverCardRootEmits>();
 
-provideHoverCardRootContext(transformPropsToContext(props, ['openDelay', 'closeDelay']));
+provideHoverCardRootContext(toContext(props, ['openDelay', 'closeDelay']));
 
 function onUpdateOpen(value: boolean, reason?: PopperOpenChangeReason) {
   emit('update:open', value, reason);

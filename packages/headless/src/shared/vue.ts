@@ -1,6 +1,6 @@
 import { Comment, Fragment, computed, getCurrentInstance, toValue } from 'vue';
 import type { ComponentPublicInstance, MaybeRefOrGetter, VNode } from 'vue';
-import type { PropsToContext, VNodeRef } from '../types';
+import type { ToContext, VNodeRef } from '../types';
 
 /**
  * Vue's compiler generates blocks with a `patchFlag` property
@@ -64,19 +64,46 @@ export function getElFromTemplateRef<T extends HTMLElement>(nodeRef: VNodeRef) {
   return node;
 }
 
-export function transformPropsToContext<T extends Record<string, any>, K extends keyof T = keyof T>(
-  props: T,
+/**
+ * Builds a reactive context value map (`ComputedRef` per key) from a source object.
+ *
+ * `source` accepts anything `toValue` understands — a reactive object such as `props`, a
+ * ref / computed of an object, or a getter returning one. Values are taken as-is, so a
+ * function-valued key stays a function in the context. Keys default to every own key of
+ * the resolved source.
+ */
+export function toContext<T extends object, K extends keyof T = keyof T>(
+  source: MaybeRefOrGetter<T>,
   keys?: K[]
-) {
-  const $keys = keys ?? (Object.keys(props) as K[]);
-
-  return $keys.reduce(
+): ToContext<T, K> {
+  return (keys ?? (Object.keys(toValue(source)) as K[])).reduce(
     (acc, key) => {
-      acc[key] = computed(() => (typeof props[key] === 'function' ? props[key]() : props[key]));
+      acc[key] = computed(() => toValue(source)[key]);
+
       return acc;
     },
-    {} as PropsToContext<T, K>
+    {} as ToContext<T, K>
   );
+}
+
+/**
+ * Snapshots a `toContext`-built context back into plain values (all own keys by default).
+ * A nullish context yields an empty object, whose missing keys behave like `undefined`
+ * ones in `defu` resolution chains.
+ */
+export function fromContext<T extends object, K extends keyof T = keyof T>(
+  context: ToContext<T, K> | null | undefined,
+  keys?: K[]
+): Partial<T> {
+  if (!context) {
+    return {};
+  }
+
+  return (keys ?? (Object.keys(context) as K[])).reduce((acc, key) => {
+    acc[key] = context[key].value;
+
+    return acc;
+  }, {} as Partial<T>);
 }
 
 export function isFormControl(el?: HTMLElement | null) {

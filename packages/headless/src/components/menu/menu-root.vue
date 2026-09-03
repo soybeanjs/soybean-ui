@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { useControllableState, useIsUsingKeyboard } from '../../composables';
 import { PopperRoot } from '../popper';
@@ -46,7 +46,7 @@ function onUpdateOpen(value: boolean) {
 }
 
 provideMenuRootContext({
-  ...transformPropsToContext(props, ['modal']),
+  ...toContext(props, ['modal']),
   dir,
   onClose,
   isUsingKeyboard

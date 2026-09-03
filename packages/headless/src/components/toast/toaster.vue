@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, shallowRef, watch, watchEffect, onWatcherCleanup, nextTick, useAttrs } from 'vue';
 import type { CSSProperties } from 'vue';
-import { getElFromTemplateRef, transformPropsToContext, isClient } from '../../shared';
+import { getElFromTemplateRef, toContext, isClient } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import type { VNodeRef } from '../../types';
 import {
@@ -209,7 +209,7 @@ provideToasterContext({
   interactingPosition,
   expandedPosition,
   icons,
-  ...transformPropsToContext(props, [
+  ...toContext(props, [
     'gap',
     'duration',
     'visibleCounts',

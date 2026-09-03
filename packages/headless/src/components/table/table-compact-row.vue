@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { getTableColumnKey } from './shared';
 import { useTableCompactExpandedRow } from './hooks';
 import TableCell from './table-cell.vue';
@@ -25,7 +25,7 @@ const emit = defineEmits<TableCompactRowEmits>();
 const slots = useSlots();
 
 const { visible, expandedRowSlotProps, rowProps, cellProps } = useTableCompactExpandedRow(
-  transformPropsToContext(props, ['row', 'index'])
+  toContext(props, ['row', 'index'])
 );
 
 const slotNames = computed(() => Object.keys(slots));

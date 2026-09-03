@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useForwardElement } from '../../composables';
 import { Primitive } from '../primitive';
 import { provideRovingFocusGroupContext } from './context';
@@ -19,7 +19,7 @@ const emit = defineEmits<RovingFocusGroupEmits>();
 
 const { onContainerElementChange, rovingFocusGroupProps, rovingFocusGroupListeners, getOrderedItems } =
   provideRovingFocusGroupContext({
-    ...transformPropsToContext(props, [
+    ...toContext(props, [
       'loop',
       'orientation',
       'dir',

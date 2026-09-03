@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends DefinedWithBooleanValue">
 import { computed, useTemplateRef } from 'vue';
-import { isFormControl, transformPropsToContext } from '../../shared';
+import { isFormControl, toContext } from '../../shared';
 import { useControllableState } from '../../composables';
 import type { DefinedWithBooleanValue } from '../../types';
 import { RovingFocusGroup } from '../roving-focus';
@@ -37,7 +37,7 @@ const modelValue = useControllableState(
 const formControl = computed(() => isFormControl(rootElement.value));
 
 provideRadioGroupRootContext({
-  ...transformPropsToContext(props, ['disabled', 'orientation', 'dir', 'loop', 'name', 'required']),
+  ...toContext(props, ['disabled', 'orientation', 'dir', 'loop', 'name', 'required']),
   modelValue
 });
 </script>

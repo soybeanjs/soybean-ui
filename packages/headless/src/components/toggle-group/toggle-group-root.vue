@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="M extends boolean = false, T extends DefinedValue = string">
 import { computed } from 'vue';
-import { isFormControl, transformPropsToContext } from '../../shared';
+import { isFormControl, toContext } from '../../shared';
 import { useForwardElement, useSelection } from '../../composables';
 import type { DefinedValue } from '../../types';
 import { Primitive } from '../primitive';
@@ -55,7 +55,7 @@ const isSelected = (value: DefinedValue) => {
 };
 
 provideToggleGroupRootContext({
-  ...transformPropsToContext(props, ['disabled', 'rovingFocus', 'orientation', 'dir', 'loop', 'name', 'required']),
+  ...toContext(props, ['disabled', 'rovingFocus', 'orientation', 'dir', 'loop', 'name', 'required']),
   modelValue,
   onModelValueChange: onValueChange,
   isValueSelected: isSelected,

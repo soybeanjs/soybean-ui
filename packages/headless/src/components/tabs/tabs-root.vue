@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useControllableState } from '../../composables';
 import { provideTabsRootContext, useTabsUi } from './context';
 import type { TabsRootProps, TabsRootEmits } from './types';
@@ -29,7 +29,7 @@ const modelValue = useControllableState(
 const cls = useTabsUi('root');
 
 const { dir } = provideTabsRootContext({
-  ...transformPropsToContext(props, ['dir', 'loop', 'orientation', 'unmountOnHide', 'activationMode']),
+  ...toContext(props, ['dir', 'loop', 'orientation', 'unmountOnHide', 'activationMode']),
   modelValue
 });
 </script>

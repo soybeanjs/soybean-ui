@@ -1,5 +1,5 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { BaseProps, DataOrientation, HorizontalSide, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, DataOrientation, HorizontalSide, ToContext, UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
 
 /**
@@ -271,7 +271,7 @@ export type LayoutScrollBehavior = 'wrapper' | 'content';
 /**
  * Parameters used to create the LayoutRoot context.
  */
-export interface LayoutRootContextParams extends PropsToContext<
+export interface LayoutRootContextParams extends ToContext<
   LayoutRootProps,
   | 'sidebarWidth'
   | 'collapsedSidebarWidth'

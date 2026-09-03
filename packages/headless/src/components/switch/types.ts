@@ -4,7 +4,7 @@ import type {
   AcceptableBooleanValue,
   Direction,
   FormFieldCommonProps,
-  PropsToContext,
+  ToContext,
   UiClass
 } from '../../types';
 import type { ButtonProps } from '../button/types';
@@ -116,7 +116,7 @@ export type SwitchCompactSlots<T extends AcceptableBooleanValue = boolean> = {
 /**
  * Parameters used to create the SwitchRoot context.
  */
-export interface SwitchRootContextParams<T extends AcceptableBooleanValue = boolean> extends PropsToContext<
+export interface SwitchRootContextParams<T extends AcceptableBooleanValue = boolean> extends ToContext<
   SwitchRootProps<T>,
   'disabled' | 'required' | 'trueValue' | 'falseValue'
 > {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
 import { providePopperDelayGroup } from '../popper';
 import { Primitive } from '../primitive';
@@ -55,7 +55,7 @@ providePopperDelayGroup({
 provideMenubarRootContext({
   modelValue,
   currentTabStopId,
-  ...transformPropsToContext(props, ['dir', 'loop', 'trigger', 'delayDuration', 'skipDelayDuration'])
+  ...toContext(props, ['dir', 'loop', 'trigger', 'delayDuration', 'skipDelayDuration'])
 });
 
 const { onContainerElementChange } = provideMenubarCollectionContext();

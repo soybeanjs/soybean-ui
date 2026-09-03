@@ -1,4 +1,4 @@
-import type { DataOrientation, Direction, EmitsToHookProps, PropsToContext } from '../../types';
+import type { DataOrientation, Direction, EmitsToHookProps, ToContext } from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
@@ -66,7 +66,7 @@ export interface RovingFocusItemProps extends PrimitiveWithBaseProps {
 /**
  * Parameters used to create the RovingFocusGroup context.
  */
-export type RovingFocusGroupContextParams = PropsToContext<
+export type RovingFocusGroupContextParams = ToContext<
   RovingFocusGroupProps,
   'orientation' | 'dir' | 'loop' | 'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus'
 > &
@@ -76,5 +76,5 @@ export type RovingFocusGroupContextParams = PropsToContext<
  * Type information for UseRovingFocusItemOptions.
  */
 export type UseRovingFocusItemOptions = Partial<
-  PropsToContext<RovingFocusItemProps, 'tabStopId' | 'focusable' | 'active' | 'allowShiftKey' | 'itemData'>
+  ToContext<RovingFocusItemProps, 'tabStopId' | 'focusable' | 'active' | 'allowShiftKey' | 'itemData'>
 >;

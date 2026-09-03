@@ -1,4 +1,4 @@
-import type { AcceptableBooleanValue, DefinedValue, PropsToContext } from '../../types';
+import type { AcceptableBooleanValue, DefinedValue, ToContext } from '../../types';
 import type {
   MenuContentEmits,
   MenuContentProps,
@@ -50,7 +50,7 @@ export type ContextMenuContentEmits = MenuContentEmits;
 /**
  * Parameters used to create the ContextMenuRoot context.
  */
-export interface ContextMenuRootContextParams extends PropsToContext<ContextMenuRootProps, 'pressOpenDelay'> {}
+export interface ContextMenuRootContextParams extends ToContext<ContextMenuRootProps, 'pressOpenDelay'> {}
 /**
  * Properties for the ContextMenuTrigger component.
  */

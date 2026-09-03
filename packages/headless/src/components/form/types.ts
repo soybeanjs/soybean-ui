@@ -7,7 +7,7 @@ import type {
   PublicProps,
   SlotsType
 } from 'vue';
-import type { BaseProps, DataOrientation, Path, PathValue, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, DataOrientation, Path, PathValue, ToContext, UiClass } from '../../types';
 import type { LabelProps } from '../label/types';
 import type {
   UseHeadlessFormReturn,
@@ -230,7 +230,7 @@ export interface FormCompactProps
 /**
  * Context for the FormCompact component.
  */
-export interface FormCompactContext extends PropsToContext<
+export interface FormCompactContext extends ToContext<
   FormCompactProps,
   'orientation' | 'fieldProps' | 'fieldArrayProps' | 'labelProps' | 'controlProps' | 'descriptionProps' | 'errorProps'
 > {}

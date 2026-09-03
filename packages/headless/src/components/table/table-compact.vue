@@ -8,7 +8,7 @@
   "
 >
 import { computed, useSlots } from 'vue';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { provideTableCompactContext } from './context';
 import { useTableCompactData, useTableCompactResize, useTableCompactState, useTableCompactVirtual } from './hooks';
@@ -112,7 +112,7 @@ const {
 
 const { isVirtual, setTableScrollRef, tableScrollStyle, virtualPaddingStart, virtualPaddingEnd, visibleRows } =
   useTableCompactVirtual({
-    ...transformPropsToContext(contextProps, ['height', 'virtual', 'virtualizerOptions', 'estimateSize']),
+    ...toContext(contextProps, ['height', 'virtual', 'virtualizerOptions', 'estimateSize']),
     displayRows,
     syncMeasuredColumnWidths
   });
@@ -146,7 +146,7 @@ const handleRowMouseleave: TableCompactRowEventHandler = (event, payload) => {
 };
 
 provideTableCompactContext({
-  ...transformPropsToContext(props, ['indent', 'headProps', 'cellProps', 'rowProps']),
+  ...toContext(props, ['indent', 'headProps', 'cellProps', 'rowProps']),
   dir,
   rowKey: props.rowKey as (row: TableBaseData) => TableUnifiedKey,
   expanded,

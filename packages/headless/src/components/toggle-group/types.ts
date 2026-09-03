@@ -4,7 +4,7 @@ import type {
   DefinedValue,
   Direction,
   FormFieldCommonProps,
-  PropsToContext,
+  ToContext,
   SelectionEmits,
   SelectionProps,
   UiClass
@@ -37,7 +37,7 @@ export type ToggleGroupRootEmits<M extends boolean = false, T extends DefinedVal
 /**
  * Parameters used to create the ToggleGroupRoot context.
  */
-export type ToggleGroupRootContextParams = PropsToContext<
+export type ToggleGroupRootContextParams = ToContext<
   ToggleGroupRootProps<boolean, DefinedValue>,
   'disabled' | 'rovingFocus' | 'orientation' | 'dir' | 'loop' | 'name' | 'required'
 > & {

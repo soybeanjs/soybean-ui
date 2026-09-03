@@ -4,7 +4,7 @@ import type {
   DataOrientation,
   Direction,
   FormFieldCommonProps,
-  PropsToContext,
+  ToContext,
   Side,
   UiClass
 } from '../../types';
@@ -130,7 +130,7 @@ export type SliderSlideDirection = 'from-left' | 'from-right' | 'from-bottom' | 
 /**
  * Context for the SliderRoot component.
  */
-export interface SliderRootContext extends PropsToContext<
+export interface SliderRootContext extends ToContext<
   SliderRootProps,
   'disabled' | 'orientation' | 'dir' | 'inverted' | 'min' | 'max' | 'step' | 'minStepsBetweenThumbs' | 'thumbAlignment'
 > {

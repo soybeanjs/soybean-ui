@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useStyleTag } from '@vueuse/core';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { resolveLocaleDirection } from '../../locale/locales';
 import { provideConfigProviderContext } from './context';
 import type { ConfigProviderProps } from './types';
@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<ConfigProviderProps>(), {
 const dir = computed(() => props.dir ?? resolveLocaleDirection(props.locale));
 
 provideConfigProviderContext({
-  ...transformPropsToContext(props),
+  ...toContext(props),
   dir,
   iconRender: props.iconRender
 });

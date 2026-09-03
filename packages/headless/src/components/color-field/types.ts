@@ -7,7 +7,7 @@ import type {
   ColorValue,
   NormalizedColor,
   FormFieldCommonProps,
-  PropsToContext,
+  ToContext,
   UiClass
 } from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
@@ -95,7 +95,7 @@ export type ColorFieldCompactEmits = ColorFieldRootEmits;
 /**
  * Context for the ColorFieldRoot component.
  */
-export interface ColorFieldRootContext extends PropsToContext<
+export interface ColorFieldRootContext extends ToContext<
   ColorFieldRootProps,
   'channel' | 'colorSpace' | 'format' | 'disabled' | 'readonly' | 'disableWheelChange' | 'placeholder'
 > {

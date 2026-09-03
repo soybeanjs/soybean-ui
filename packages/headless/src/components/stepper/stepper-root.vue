@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef, useAttrs } from 'vue';
-import { getCollectionItemElements, interpolate, isElementHasAttribute, transformPropsToContext } from '../../shared';
+import { getCollectionItemElements, interpolate, isElementHasAttribute, toContext } from '../../shared';
 import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
 import { useLocaleMessages } from '../../locale';
 import { Primitive } from '../primitive';
@@ -126,7 +126,7 @@ const unregisterStepperItem = (element: HTMLElement | undefined) => {
 };
 
 const { dir } = provideStepperRootContext({
-  ...transformPropsToContext(props, ['orientation', 'dir', 'linear']),
+  ...toContext(props, ['orientation', 'dir', 'linear']),
   modelValue,
   stepperItems,
   totalSteps,

@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { computed } from 'vue';
-import { isFormControl, transformPropsToContext } from '../../shared';
+import { isFormControl, toContext } from '../../shared';
 import { useControllableState, useForwardElement } from '../../composables';
 import type { DefinedValue } from '../../types';
 import { RovingFocusGroup } from '../roving-focus';
@@ -37,7 +37,7 @@ const modelValue = useControllableState(
 );
 
 provideCheckboxGroupRootContext({
-  ...transformPropsToContext(props, ['modelValue', 'defaultValue', 'rovingFocus', 'disabled']),
+  ...toContext(props, ['modelValue', 'defaultValue', 'rovingFocus', 'disabled']),
   modelValue
 });
 

@@ -7,7 +7,7 @@ import type {
   FocusScopeEmits,
   ForceMountProps,
   MaybeArray,
-  PropsToContext,
+  ToContext,
   TrapFocusProps,
   UiClass
 } from '../../types';
@@ -479,7 +479,7 @@ export type ComboboxCompactSlots<M extends boolean = false> = {
 /**
  * Context for the ComboboxRoot component.
  */
-export interface ComboboxRootContext extends PropsToContext<
+export interface ComboboxRootContext extends ToContext<
   ComboboxRootProps,
   | 'dir'
   | 'disabled'

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, shallowRef, watch } from 'vue';
 import { isSameDay } from '@internationalized/date';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { getMonthOptions, getYearOptions, handleMonthChange, handleYearChange } from '../calendar/shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { useControllableState, useForwardElement } from '../../composables';
@@ -305,7 +305,7 @@ provideCalendarRangeRootContext({
   nextPage,
   isPrevButtonDisabled,
   isNextButtonDisabled,
-  ...transformPropsToContext(props, [
+  ...toContext(props, [
     'allowNonContiguousRanges',
     'disableDaysOutsideCurrentView',
     'disabled',

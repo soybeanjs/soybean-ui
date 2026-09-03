@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
-import { isFormControl, transformPropsToContext } from '../../shared';
+import { isFormControl, toContext } from '../../shared';
 import { useControllableState, useForwardElement } from '../../composables';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
 import { provideInputRootContext, useInputUi } from './context';
@@ -58,7 +58,7 @@ const onClear = () => {
 };
 
 provideInputRootContext({
-  ...transformPropsToContext(props, ['disabled', 'readonly']),
+  ...toContext(props, ['disabled', 'readonly']),
   modelValue,
   onClear,
   inputAttrs

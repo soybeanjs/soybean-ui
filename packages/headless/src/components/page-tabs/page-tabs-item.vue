@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useSortable } from '@dnd-kit/vue/sortable';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useForwardElement } from '../../composables';
 import RovingFocusItem from '../roving-focus/roving-focus-item.vue';
 import { usePageTabsUi, usePageTabsRootContext, providePageTabsItemContext } from './context';
@@ -75,7 +75,7 @@ const onPin = () => {
 };
 
 providePageTabsItemContext({
-  ...transformPropsToContext(props, ['pinned']),
+  ...toContext(props, ['pinned']),
   closable,
   onClose,
   onPin

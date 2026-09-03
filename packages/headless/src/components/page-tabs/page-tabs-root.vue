@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useControllableState, usePickProps } from '../../composables';
 import RovingFocusGroup from '../roving-focus/roving-focus-group.vue';
 import { providePageTabsRootContext, usePageTabsUi } from './context';
@@ -39,7 +39,7 @@ const modelValue = useControllableState(
 const { setRootElement, onWheel } = usePageTabsScroll(modelValue);
 
 providePageTabsRootContext({
-  ...transformPropsToContext(props, ['middleClickClose', 'draggable']),
+  ...toContext(props, ['middleClickClose', 'draggable']),
   modelValue
 });
 </script>

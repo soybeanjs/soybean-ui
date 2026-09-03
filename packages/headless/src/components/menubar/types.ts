@@ -1,5 +1,5 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { DefinedValue, Direction, Placement, PropsToContext, UiClass } from '../../types';
+import type { DefinedValue, Direction, Placement, ToContext, UiClass } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type { ButtonProps } from '../button/types';
 import type {
@@ -205,7 +205,7 @@ export type MenubarCompactSlots<T extends DefinedValue = DefinedValue> = MenuOpt
 /**
  * Parameters used to create the MenubarRoot context.
  */
-export interface MenubarRootContextParams extends PropsToContext<
+export interface MenubarRootContextParams extends ToContext<
   MenubarRootProps,
   'dir' | 'loop' | 'trigger' | 'delayDuration' | 'skipDelayDuration'
 > {

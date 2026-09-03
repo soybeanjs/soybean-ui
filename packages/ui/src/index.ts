@@ -128,7 +128,7 @@ export type {
   TreeSelectEvent,
   TreeToggleEvent,
   VNodeRef,
-  PropsToContext
+  ToContext
 } from '@soybeanjs/headless';
 
 export * from './theme';

@@ -5,7 +5,7 @@ import {
   getBinaryCheckedState,
   handleAndDispatchCustomEvent,
   isValueEqualOrExist,
-  transformPropsToContext
+  toContext
 } from '../../shared';
 import { useForwardElement } from '../../composables';
 import type { DefinedValue } from '../../types';
@@ -35,7 +35,7 @@ const cls = useSelectUi('item');
 const isSelected = computed(() => isValueEqualOrExist(modelValue.value, props.value));
 
 const { textId, textValue, disabled } = provideSelectItemContext({
-  ...transformPropsToContext(props, ['textValue', 'disabled']),
+  ...toContext(props, ['textValue', 'disabled']),
   value: props.value,
   isSelected
 });

@@ -1,5 +1,5 @@
 import type { ComputedRef, ShallowRef, TextareaHTMLAttributes } from 'vue';
-import type { BaseProps, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, FormFieldCommonProps, ToContext, UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
 
 /**
@@ -82,7 +82,7 @@ export interface TextareaCounterProps extends BaseProps {}
 /**
  * Context for the TextareaRoot component.
  */
-export interface TextareaRootContext extends PropsToContext<TextareaBaseProps & FormFieldCommonProps> {
+export interface TextareaRootContext extends ToContext<TextareaBaseProps & FormFieldCommonProps> {
   /**
    * Current model value.
    */

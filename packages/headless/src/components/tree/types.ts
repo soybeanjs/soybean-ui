@@ -1,7 +1,7 @@
 import type { ComputedRef, ShallowRef } from 'vue';
 import type { EventHook } from '@vueuse/core';
 import type { CollectionItemData } from '../../composables/use-collection';
-import type { Direction, FocusIntent, MaybeArray, PropsToContext, TreeSelectEvent, TreeToggleEvent } from '../../types';
+import type { Direction, FocusIntent, MaybeArray, ToContext, TreeSelectEvent, TreeToggleEvent } from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { VirtualizerItemProps, VirtualizerRootProps } from '../virtualizer/types';
 
@@ -200,7 +200,7 @@ export type TreeVirtualizerItemEmits = TreeItemEmits;
 /**
  * Parameters used to create the TreeRoot context.
  */
-export interface TreeRootContextParams extends PropsToContext<
+export interface TreeRootContextParams extends ToContext<
   TreeRootProps,
   'items' | 'dir' | 'multiple' | 'disabled' | 'selectionBehavior' | 'propagateSelect' | 'bubbleSelect'
 > {

@@ -1,4 +1,4 @@
-import type { ForceMountProps, Placement, PropsToContext } from '../../types';
+import type { ForceMountProps, Placement, ToContext } from '../../types';
 import type {
   PopperAnchorProps,
   PopperArrowProps,
@@ -64,7 +64,7 @@ export interface TooltipProviderProps {
  * Pure config resolution (prop → ancestor provider → global config). The cross-instance
  * skip-delay coordination lives in the Popper delay group provided alongside this context.
  */
-export interface TooltipProviderContext extends PropsToContext<
+export interface TooltipProviderContext extends ToContext<
   TooltipProviderProps,
   | 'delayDuration'
   | 'skipDelayDuration'
@@ -78,7 +78,7 @@ export interface TooltipProviderContext extends PropsToContext<
 /**
  * Parameters used to create the TooltipRoot context.
  */
-export type TooltipRootContextParams = PropsToContext<
+export type TooltipRootContextParams = ToContext<
   TooltipProviderProps,
   | 'delayDuration'
   | 'disableHoverableContent'

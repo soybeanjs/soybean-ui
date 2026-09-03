@@ -1,5 +1,5 @@
 import type { ComputedRef, CSSProperties, ShallowRef } from 'vue';
-import type { Direction, PropsToContext, UiClass } from '../../types';
+import type { Direction, ToContext, UiClass } from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
@@ -102,7 +102,7 @@ export type ScrollAreaCompactSlots = {
 /**
  * Context for the ScrollAreaRoot component.
  */
-export interface ScrollAreaRootContext extends PropsToContext<ScrollAreaRootProps, 'scrollHideDelay' | 'type'> {
+export interface ScrollAreaRootContext extends ToContext<ScrollAreaRootProps, 'scrollHideDelay' | 'type'> {
   /**
    * Reading direction of the component.
    */

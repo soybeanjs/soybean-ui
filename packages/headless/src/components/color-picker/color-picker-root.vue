@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef, watch } from 'vue';
-import { areColorsEqual, formatColor, resolveColorFormat, toColorObject, transformPropsToContext } from '../../shared';
+import { areColorsEqual, formatColor, resolveColorFormat, toColorObject, toContext } from '../../shared';
 import { useControllableState } from '../../composables';
 import type { ColorFormat, ColorSpace, ColorValue } from '../../types';
 import { provideColorPickerRootContext } from './context';
@@ -107,7 +107,7 @@ function setFormat(nextFormat: ColorFormat) {
 }
 
 provideColorPickerRootContext({
-  ...transformPropsToContext(props, ['name', 'required', 'disabled']),
+  ...toContext(props, ['name', 'required', 'disabled']),
   color,
   formattedValue,
   hexValue,

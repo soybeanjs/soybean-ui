@@ -7,7 +7,7 @@ import type {
   ForceMountProps,
   FormFieldCommonProps,
   PointerDownOutsideEvent,
-  PropsToContext,
+  ToContext,
   UiClass
 } from '../../types';
 import type { PopperAnchorProps, PopperArrowProps, PopperPositioningPositionerProps } from '../popper/types';
@@ -499,7 +499,7 @@ export type CascaderUi = UiClass<CascaderUiSlot>;
 /**
  * Parameters used to create the CascaderRoot context.
  */
-export interface CascaderRootContextParams extends PropsToContext<
+export interface CascaderRootContextParams extends ToContext<
   CascaderRootProps<DefinedValue, boolean, boolean>,
   | 'dir'
   | 'disabled'

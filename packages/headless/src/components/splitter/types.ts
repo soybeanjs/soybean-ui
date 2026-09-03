@@ -1,5 +1,5 @@
 import type { ComputedRef, CSSProperties, ShallowRef } from 'vue';
-import type { DataOrientation, Direction, PropsToContext, UiClass } from '../../types';
+import type { DataOrientation, Direction, ToContext, UiClass } from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
@@ -166,10 +166,7 @@ export type SplitterPanelRegistration = Omit<SplitterPanelRecord, 'registrationI
 /**
  * Context for the SplitterGroup component.
  */
-export interface SplitterGroupContext extends PropsToContext<
-  SplitterGroupProps,
-  'direction' | 'dir' | 'keyboardResizeBy'
-> {
+export interface SplitterGroupContext extends ToContext<SplitterGroupProps, 'direction' | 'dir' | 'keyboardResizeBy'> {
   /**
    * Group id used by the component context.
    */

@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableBooleanValue = boolean">
 import { computed } from 'vue';
-import { isFormControl, transformPropsToContext } from '../../shared';
+import { isFormControl, toContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { useControllableState, useForwardElement } from '../../composables';
 import type { AcceptableBooleanValue } from '../../types';
@@ -50,7 +50,7 @@ function checkSwitchValue() {
 checkSwitchValue();
 
 const { dataState } = provideSwitchRootContext({
-  ...transformPropsToContext(props, ['modelValue', 'disabled', 'required']),
+  ...toContext(props, ['modelValue', 'disabled', 'required']),
   trueValue: resolvedTrueValue,
   falseValue: resolvedFalseValue,
   modelValue

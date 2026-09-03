@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useTemplateRef } from 'vue';
-import { isFormControl, isNullish, isValueEqualOrExist, transformPropsToContext } from '../../shared';
+import { isFormControl, isNullish, isValueEqualOrExist, toContext } from '../../shared';
 import { useControllableState } from '../../composables';
 import type { CheckedState } from '../../types';
 import { VisuallyHiddenInput } from '../visually-hidden';
@@ -47,7 +47,7 @@ const state = computed<CheckedState>(() => {
 });
 
 const { dataState } = provideCheckboxRootContext({
-  ...transformPropsToContext(props, ['value', 'name', 'required']),
+  ...toContext(props, ['value', 'name', 'required']),
   modelValue,
   disabled,
   state

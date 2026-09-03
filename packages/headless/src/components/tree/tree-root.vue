@@ -3,7 +3,7 @@ import { computed, nextTick, shallowRef, useTemplateRef } from 'vue';
 import type { ComputedRef, ShallowRef } from 'vue';
 import { createEventHook } from '@vueuse/core';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../../constants';
-import { flattenChildren, getActiveElement, isNullish, transformPropsToContext } from '../../shared';
+import { flattenChildren, getActiveElement, isNullish, toContext } from '../../shared';
 import { useControllableState, useTypeahead } from '../../composables';
 import type { MaybeArray, NavigationKey } from '../../types';
 import { Primitive } from '../primitive';
@@ -195,15 +195,7 @@ provideTreeRootContext({
   virtualKeydownHook,
   getItems: () => rovingFocusGroupRef.value?.getItems() ?? [],
   handleMultipleReplace,
-  ...transformPropsToContext(props, [
-    'items',
-    'multiple',
-    'disabled',
-    'dir',
-    'selectionBehavior',
-    'propagateSelect',
-    'bubbleSelect'
-  ])
+  ...toContext(props, ['items', 'multiple', 'disabled', 'dir', 'selectionBehavior', 'propagateSelect', 'bubbleSelect'])
 });
 </script>
 

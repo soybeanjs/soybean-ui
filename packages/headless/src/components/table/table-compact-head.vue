@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { useTableCompactHead } from './hooks';
 import TableHead from './table-head.vue';
 import type { TableCompactHeadProps } from './types';
@@ -22,7 +22,7 @@ const {
   sortable,
   filterable,
   resizable
-} = useTableCompactHead(transformPropsToContext(props));
+} = useTableCompactHead(toContext(props));
 </script>
 
 <template>

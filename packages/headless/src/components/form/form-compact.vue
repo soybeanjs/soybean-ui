@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { provideFormCompactContext, useFormUi } from './context';
 import type { FormCompactProps } from './types';
 import { provideFormSub } from './use-form';
@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<FormCompactProps>(), {
 const cls = useFormUi('form');
 
 provideFormCompactContext({
-  ...transformPropsToContext(props, [
+  ...toContext(props, [
     'orientation',
     'fieldProps',
     'fieldArrayProps',

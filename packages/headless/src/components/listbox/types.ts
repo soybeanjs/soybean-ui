@@ -7,7 +7,7 @@ import type {
   Direction,
   FormFieldCommonProps,
   MaybeArray,
-  PropsToContext,
+  ToContext,
   SelectEvent,
   SelectionEmits,
   SelectionProps,
@@ -161,7 +161,7 @@ export type ListboxVirtualizerSlots = {
 /**
  * Parameters used to create the ListboxRoot context.
  */
-export interface ListboxRootContextParams extends PropsToContext<
+export interface ListboxRootContextParams extends ToContext<
   ListboxRootProps,
   'dir' | 'orientation' | 'disabled' | 'highlightOnHover' | 'selectionBehavior'
 > {

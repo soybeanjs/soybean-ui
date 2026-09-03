@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { Primitive } from '../primitive';
 import { useRovingFocusItem } from './context';
 import type { RovingFocusItemProps } from './types';
@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<RovingFocusItemProps>(), {
 });
 
 const { setItemElement, rovingFocusItemProps, rovingFocusItemListeners } = useRovingFocusItem(
-  transformPropsToContext(props, ['tabStopId', 'focusable', 'active', 'allowShiftKey', 'itemData'])
+  toContext(props, ['tabStopId', 'focusable', 'active', 'allowShiftKey', 'itemData'])
 );
 </script>
 

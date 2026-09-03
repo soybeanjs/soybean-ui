@@ -2,7 +2,7 @@
 import { computed, nextTick, onUnmounted, shallowRef, useAttrs, useId, useTemplateRef } from 'vue';
 import type { ComponentPublicInstance } from 'vue';
 import { createEventHook } from '@vueuse/core';
-import { transformPropsToContext } from '../../shared';
+import { toContext } from '../../shared';
 import { provideComboboxRootContext } from '../combobox/context';
 import { useDirection } from '../config-provider/context';
 import { useControllableState, useOmitProps } from '../../composables';
@@ -179,7 +179,7 @@ onUnmounted(() => {
 });
 
 provideComboboxRootContext({
-  ...transformPropsToContext(props, ['disabled', 'openOnClick', 'openOnFocus']),
+  ...toContext(props, ['disabled', 'openOnClick', 'openOnFocus']),
   dir,
   ignoreFilter,
   resetSearchTermOnBlur,

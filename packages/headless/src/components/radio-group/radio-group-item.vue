@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useTemplateRef } from 'vue';
-import { isFormControl, isNullish, transformPropsToContext } from '../../shared';
+import { isFormControl, isNullish, toContext } from '../../shared';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideRadioGroupItemContext, useRadioGroupRootContext, useRadioGroupUi } from './context';
 import type { RadioGroupItemProps, RadioGroupItemEmits, RadioSelectEvent } from './types';
@@ -26,7 +26,7 @@ const checked = computed(
 );
 
 const { dataState } = provideRadioGroupItemContext({
-  ...transformPropsToContext(props, ['name', 'required', 'value', 'disabled']),
+  ...toContext(props, ['name', 'required', 'value', 'disabled']),
   checked,
   onSelect: (event: RadioSelectEvent) => {
     emit('select', event);
