@@ -16,9 +16,9 @@ export function useLocaleMessages(): ComputedRef<LocaleMessages> {
   const context = useConfigProvider();
 
   return computed(() => {
-    const locale = context?.locale?.value ?? 'en';
+    const locale = context?.locale ?? 'en';
     const baseMessages = resolveLocale(locale);
-    const userMessages = context?.messages?.value as LocaleMessagesOverrides | undefined;
+    const userMessages = context?.messages as LocaleMessagesOverrides | undefined;
 
     if (!userMessages) {
       return baseMessages;

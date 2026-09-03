@@ -18,7 +18,7 @@ const configProvider = useConfigProvider();
 const iconifySize = computed(() => {
   const { width, height } = props;
 
-  const config = configProvider?.iconify?.value || {};
+  const config = configProvider?.iconify || {};
 
   return {
     width: width || config.width,

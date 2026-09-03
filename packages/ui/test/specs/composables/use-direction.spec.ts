@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { computed, ref } from 'vue';
+import { computed, reactive, ref, shallowReadonly } from 'vue';
 import { withSetup } from '../../shared';
 import {
   provideConfigProviderContext,
@@ -54,24 +54,24 @@ describe('useDirection', () => {
   });
 
   it('should fallback to context direction when no dir provided', () => {
-    const contextDir = ref<'ltr' | 'rtl'>('rtl');
+    const contextProps = reactive<{ dir?: 'ltr' | 'rtl' }>({ dir: 'rtl' });
     const [direction, unmount] = withSetup(
       () => useDirection(),
-      () => provideConfigProviderContext({ dir: contextDir } as any)
+      () => provideConfigProviderContext(shallowReadonly(contextProps))
     );
 
     expect(direction.value).toBe('rtl');
 
-    contextDir.value = 'ltr';
+    contextProps.dir = 'ltr';
     expect(direction.value).toBe('ltr');
     unmount();
   });
 
   it('should prefer provided direction over context', () => {
-    const contextDir = ref<'ltr' | 'rtl'>('rtl');
+    const contextProps = reactive<{ dir?: 'ltr' | 'rtl' }>({ dir: 'rtl' });
     const [direction, unmount] = withSetup(
       () => useDirection('ltr'),
-      () => provideConfigProviderContext({ dir: contextDir } as any)
+      () => provideConfigProviderContext(shallowReadonly(contextProps))
     );
 
     expect(direction.value).toBe('ltr');
@@ -79,16 +79,16 @@ describe('useDirection', () => {
   });
 
   it('should fallback to context when provided direction is undefined', () => {
-    const contextDir = ref<'ltr' | 'rtl'>('rtl');
+    const contextProps = reactive<{ dir?: 'ltr' | 'rtl' }>({ dir: 'rtl' });
     const dir = ref<'ltr' | 'rtl' | undefined>(undefined);
     const [direction, unmount] = withSetup(
       () => useDirection(dir),
-      () => provideConfigProviderContext({ dir: contextDir } as any)
+      () => provideConfigProviderContext(shallowReadonly(contextProps))
     );
 
     expect(direction.value).toBe('rtl');
 
-    dir.value = 'ltr';
+    contextProps.dir = 'ltr';
     expect(direction.value).toBe('ltr');
     unmount();
   });

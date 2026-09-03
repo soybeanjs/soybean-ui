@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { shallowReadonly } from 'vue';
 import { useStyleTag } from '@vueuse/core';
-import { toContext } from '../../shared';
-import { resolveLocaleDirection } from '../../locale/locales';
 import { provideConfigProviderContext } from './context';
 import type { ConfigProviderProps } from './types';
 
@@ -15,13 +13,9 @@ const props = withDefaults(defineProps<ConfigProviderProps>(), {
   nonce: undefined
 });
 
-const dir = computed(() => props.dir ?? resolveLocaleDirection(props.locale));
-
-provideConfigProviderContext({
-  ...toContext(props),
-  dir,
-  iconRender: props.iconRender
-});
+// Shallow readonly keeps nested sections (e.g. `tooltip` config) assignable to their prop
+// types; a deep `readonly` would freeze nested objects into incompatible DeepReadonly shapes.
+provideConfigProviderContext(shallowReadonly(props));
 
 useStyleTag(
   `

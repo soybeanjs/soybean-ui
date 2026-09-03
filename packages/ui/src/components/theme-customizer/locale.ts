@@ -486,7 +486,7 @@ export function useThemeLocale(): ComputedRef<ThemeLocaleMessages> {
   const config = useConfigProvider();
 
   return computed(() => {
-    const locale = config?.locale?.value ?? 'en';
+    const locale = config?.locale ?? 'en';
 
     return locale.startsWith('zh') ? themeLocaleZh : themeLocaleEn;
   });

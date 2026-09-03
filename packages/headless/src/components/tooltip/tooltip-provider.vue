@@ -20,7 +20,7 @@ const parent = useTooltipProviderContext();
 // Resolution chain: prop → ancestor provider → ConfigProvider global → defaults. A missing
 // ancestor snapshots to an empty object whose keys are filled from the next layer.
 const config = computed(() => ({
-  ...createDefaultTooltipConfig(globalConfig?.tooltip?.value),
+  ...createDefaultTooltipConfig(globalConfig?.tooltip),
   ...pickDefinedConfig(fromContext(parent)),
   ...pickDefinedConfig(props)
 }));

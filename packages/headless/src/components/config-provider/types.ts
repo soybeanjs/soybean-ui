@@ -1,6 +1,6 @@
 import type { VNode } from 'vue';
 import type { LocaleMessagesOverrides } from '../../locale/types';
-import type { Direction, ToContext } from '../../types';
+import type { Direction } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type { TooltipProviderProps } from '../tooltip/types';
 
@@ -48,7 +48,8 @@ export interface ConfigProviderProps {
 }
 
 /**
- * Context for the ConfigProvider component.
+ * Context for the ConfigProvider component: a plain shallow-readonly snapshot of the
+ * props. Direction resolution (`dir` falling back to `resolveLocaleDirection(locale)`)
+ * lives in the `useDirection` composable, not in this value.
  */
-export interface ConfigProviderContext
-  extends ToContext<Omit<ConfigProviderProps, 'iconRender'>>, Pick<ConfigProviderProps, 'iconRender'> {}
+export type ConfigProviderContext = Readonly<ConfigProviderProps>;

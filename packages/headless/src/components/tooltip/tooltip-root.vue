@@ -23,7 +23,7 @@ const emit = defineEmits<TooltipRootEmits>();
 // Without an ancestor `TooltipProvider`, fall back to a local config-only provider backed by
 // the global config; the per-root hover machine inside Popper then owns the skip-delay state.
 const globalConfig = useConfigProvider();
-const globalTooltipConfig = computed(() => createDefaultTooltipConfig(globalConfig?.tooltip?.value));
+const globalTooltipConfig = computed(() => createDefaultTooltipConfig(globalConfig?.tooltip));
 const inheritedProvider = useTooltipProviderContext();
 const provider =
   inheritedProvider ?? provideTooltipProviderContext(toContext(globalTooltipConfig, [...PROVIDER_CONFIG_KEYS]));

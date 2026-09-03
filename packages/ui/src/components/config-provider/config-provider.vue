@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { h } from 'vue';
+import { h, shallowReadonly } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { ConfigProvider } from '@soybeanjs/headless/config-provider';
-import { toContext } from '@soybeanjs/headless/shared';
 import { isServerRuntime } from '@soybeanjs/theme/ssr';
 import DialogProvider from '../dialog/dialog-provider.vue';
 import IconComponent from '../icon/icon.vue';
@@ -47,24 +46,9 @@ const iconRender = props.iconRender ?? ((icon: IconValue) => h(IconComponent, { 
 // 主题相关逻辑（存储缓存 / 有效主题合并 / preset 解析 / CSS 派生）统一收敛到 hooks.ts
 const { themeCss, ThemeStyle, commitThemeConfig } = useConfigProviderTheme(props);
 
-// 新持久化属性仅在组件内部消费，不进入 context（避免 toContext
-// 对函数型 prop 执行调用）；显式列出原有键，行为与改造前一致。
-provideConfigProviderContext({
-  ...toContext(props, [
-    'dir',
-    'locale',
-    'nonce',
-    'tooltip',
-    'messages',
-    'theme',
-    'size',
-    'iconify',
-    'progress',
-    'toast',
-    'customToast'
-  ]),
-  iconRender
-});
+// 直接以 shallowReadonly 快照注入 props：保持响应式追踪，同时避免深层 readonly 将
+// 嵌套对象（如 `tooltip`、`theme`）冻结为不兼容的 DeepReadonly 形态。
+provideConfigProviderContext(shallowReadonly(props));
 
 defineExpose({ commitThemeConfig });
 </script>

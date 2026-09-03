@@ -39,7 +39,7 @@ const cls = computed(() =>
   )
 );
 
-const dir = computed(() => props.dir ?? config.dir.value);
+const dir = computed(() => props.dir ?? config.dir);
 
 provideButtonGroupContext(toContext(props, ['color', 'size', 'variant', 'shape', 'shadow', 'fitContent', 'disabled']));
 </script>
