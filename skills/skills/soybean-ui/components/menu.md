@@ -523,7 +523,7 @@ Properties for the MenuTrigger component.
 
 1. **`items` data shape** — `MenuOptionData` includes `label`/`value`/`icon`/`shortcut`/`separator`/`isGroupLabel`/`children`; `children` recursively renders submenus. Checkbox/radio shapes each have their own type.
 2. **Controlled / uncontrolled** — checkbox and radio groups support `modelValue` / `defaultValue` (`useControllableState`); a radio group's `modelValue` can be `null` (no selection).
-3. **Keyboard activation** — roving focus is maintained by `RovingFocusGroup`; typeahead jumps by character (skipping disabled); `Esc` closes via `useDismissableLayer` and returns focus to the trigger.
+3. **Keyboard activation** — roving focus is maintained by `useRovingFocusGroup`; typeahead jumps by character (skipping disabled); `Esc` closes via `useDismissableLayer` and returns focus to the trigger.
 4. **Disabled fallback** — per-item `disabled` wins over `itemProps.disabled`; disabled items are `aria-disabled` + `tabindex="-1"` but stay registered so typeahead can skip them.
 5. **Floating lifecycle** — dismissable layer + Presence (`forceMount`); body scroll lock and focus scope are enabled when Root's modal mode is on.
 6. **Link items** — items with `href`/`to` render as links (reusing the Link primitive); `itemProps` / `linkProps` forward attributes.

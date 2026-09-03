@@ -73,10 +73,10 @@ soybean-ui/
 │   ├── _shared/             # Build helpers; not a workspace package
 │   ├── headless/            # @soybeanjs/headless
 │   ├── sbean/               # sbean CLI and registry system
+│   ├── scripts/             # @soybeanjs/scripts (private); sui CLI for metadata, API, changelog, locale, and skill generators
 │   ├── theme/               # @soybeanjs/theme
 │   ├── ui/                  # @soybeanjs/ui
 │   └── unocss/              # @soybeanjs/ui-uno
-├── scripts/                 # Metadata, API, changelog, locale, and skill generators
 ├── skills/                  # Generated @soybeanjs/ui-skills package
 ├── typings/                 # Root tool declarations
 ├── package.json             # Root orchestration
@@ -263,7 +263,7 @@ global import and the docs/playground source cycle are scaling constraints.
 
 ```mermaid
 flowchart LR
-  Source[Component barrels, types, CHANGELOG] --> SUI["scripts/cli.ts / pnpm sui"]
+  Source[Component barrels, types, CHANGELOG] --> SUI["packages/scripts / pnpm sui"]
   SUI --> Metadata[Headless/UI component metadata]
   SUI --> API[Generated API JSON and locale templates]
   SUI --> Changelog[Generated changelog JSON and locale templates]

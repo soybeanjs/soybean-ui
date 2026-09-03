@@ -416,7 +416,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.dir",
             "default": null,
             "inheritedFrom": "dir",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Direction",
@@ -441,7 +441,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.orientation",
             "default": null,
             "inheritedFrom": "orientation",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "DataOrientation",
@@ -466,7 +466,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.loop",
             "default": "false",
             "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           }
         ],
@@ -860,7 +860,7 @@
             "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.dir",
             "default": null,
             "inheritedFrom": "dir",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Direction",
@@ -885,7 +885,7 @@
             "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.orientation",
             "default": null,
             "inheritedFrom": "orientation",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "DataOrientation",
@@ -910,7 +910,7 @@
             "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.loop",
             "default": "false",
             "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           }
         ],
@@ -1105,7 +1105,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1218,7 +1218,7 @@
             "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.members.dir",
             "default": null,
             "inheritedFrom": "Omit.dir",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Direction",
@@ -1243,7 +1243,7 @@
             "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.members.orientation",
             "default": null,
             "inheritedFrom": "Omit.orientation",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "DataOrientation",
@@ -1268,7 +1268,7 @@
             "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.members.loop",
             "default": "false",
             "inheritedFrom": "Omit.loop",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           }
         ],
@@ -1375,7 +1375,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

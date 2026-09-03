@@ -52,9 +52,8 @@ Properties for the SxMarkdown component.
 - `isDark`: Whether to render in dark mode. (type `boolean`; optional)
 - `typewriter`: Typewriter animation. (type `NodeRendererTypewriter`; optional)
 - `smoothStreaming`: Enable smooth (paced) streaming. (type `boolean | 'auto'`; optional)
-- `codeRenderer`: Code block renderer. (type `NodeRendererCodeRenderer`; optional)
 - `parseOptions`: Parse options forwarded to the markdown engine. (type `ParseOptions`; optional)
-- `rendererProps`: Additional props forwarded to the underlying `MarkdownRender`. (type `Partial<Partial<{ showTooltips: boolean; nodeVirtual: boolean | 'auto'; fade: boolean; debugPerformance: boolean; vie...`; optional)
+- `rendererProps`: Additional props forwarded to the underlying `MarkdownRender`. (type `Partial<Partial<{ showTooltips: boolean; nodeVirtual: boolean | 'auto'; fade: boolean; renderCodeBlocksAsPre: boolean...`; optional)
 
 ## Notes
 

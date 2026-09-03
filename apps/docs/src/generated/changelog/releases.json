@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T07:28:58.055Z",
+  "generatedAt": "2026-09-03T18:58:52.694Z",
   "schemaVersion": 1,
   "releases": [
     {
@@ -10676,7 +10676,7 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
       "date": "2026-04-26",
       "entryCount": 152,
-      "componentCount": 23,
+      "componentCount": 24,
       "components": [
         "table",
         "menu",
@@ -10697,6 +10697,7 @@
         "autocomplete",
         "carousel",
         "color-picker",
+        "skeleton",
         "slider",
         "toggle-group",
         "clipboard",
@@ -11010,6 +11011,17 @@
           "authors": ["soybeanfe"],
           "source": "exact-scope",
           "components": ["dialog"]
+        },
+        {
+          "type": "optimization",
+          "scope": "skeleton",
+          "summary": "remove 'square' shape variant from Skeleton component",
+          "summaryKey": "changelog.generated.v0.15.0.50651",
+          "commitHash": "50651",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/50651159",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["skeleton"]
         },
         {
           "type": "optimization",
@@ -11844,17 +11856,6 @@
           "commitHash": "6970e",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6970e828",
           "authors": ["soybean-js"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "optimization",
-          "scope": "skeleton",
-          "summary": "remove 'square' shape variant from Skeleton component",
-          "summaryKey": "changelog.generated.v0.15.0.50651",
-          "commitHash": "50651",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/50651159",
-          "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": []
         },
@@ -12921,7 +12922,7 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
       "date": "2026-04-18",
       "entryCount": 105,
-      "componentCount": 14,
+      "componentCount": 15,
       "components": [
         "table",
         "menu",
@@ -12934,6 +12935,7 @@
         "autocomplete",
         "color-picker",
         "combobox",
+        "skeleton",
         "slider",
         "toggle-group",
         "progress"
@@ -13103,6 +13105,17 @@
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": ["combobox"]
+        },
+        {
+          "type": "optimization",
+          "scope": "skeleton",
+          "summary": "remove 'square' shape variant from Skeleton component",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.50651",
+          "commitHash": "50651",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/50651159",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["skeleton"]
         },
         {
           "type": "optimization",
@@ -13695,17 +13708,6 @@
           "commitHash": "4fdd8",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4fdd8e9b",
           "authors": ["soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/126"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "optimization",
-          "scope": "skeleton",
-          "summary": "remove 'square' shape variant from Skeleton component",
-          "summaryKey": "changelog.generated.v0.15.0-beta.1.50651",
-          "commitHash": "50651",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/50651159",
-          "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": []
         },

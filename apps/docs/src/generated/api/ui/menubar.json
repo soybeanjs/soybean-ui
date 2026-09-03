@@ -698,7 +698,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -900,7 +900,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1452,7 +1452,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   },
                   {
@@ -1954,7 +1954,7 @@
             "required": true,
             "description": "Emitted when entry focus occurs.",
             "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubaremits.callables.entryfocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Event",
@@ -2790,7 +2790,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -2992,7 +2992,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -3544,7 +3544,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   },
                   {
@@ -4046,7 +4046,7 @@
             "required": true,
             "description": "Emitted when entry focus occurs.",
             "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactemits.callables.entryfocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Event",
@@ -4663,7 +4663,7 @@
             "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcontentprops.members.loop",
             "default": "false",
             "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           }
         ],
@@ -4845,7 +4845,7 @@
             "required": true,
             "description": "Emitted when entry focus occurs.",
             "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcontentemits.callables.entryfocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Event",
@@ -4867,7 +4867,7 @@
           {
             "name": "MenuContentImplEmits",
             "kind": "typeAlias",
-            "type": "import(\"@/index\").DismissableLayerEmits & import(\"@/index\").FocusScopeEmits & Pick<import(\"../roving-focus\").RovingFocusGroupEmits, 'entryFocus'>",
+            "type": "import(\"@/index\").DismissableLayerEmits & import(\"@/index\").FocusScopeEmits & Pick<import(\"../../composables\").RovingFocusGroupEmits, 'entryFocus'>",
             "resolvedType": "{ escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; entryFocus: [event: Event] }",
             "description": "Events for the MenuContentImpl component.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentimplemits",
@@ -4943,7 +4943,7 @@
                 "required": true,
                 "description": "Emitted when entry focus occurs.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentimplemits.callables.entryfocus",
-                "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                 "referencedTypes": []
               }
             ]
@@ -5143,7 +5143,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -5245,7 +5245,7 @@
             "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarsubcontentprops.members.loop",
             "default": "false",
             "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           },
           {
@@ -5703,7 +5703,7 @@
             "required": true,
             "description": "Emitted when entry focus occurs.",
             "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarsubcontentemits.callables.entryfocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Event",
@@ -5725,7 +5725,7 @@
           {
             "name": "MenuContentImplEmits",
             "kind": "typeAlias",
-            "type": "import(\"@/index\").DismissableLayerEmits & import(\"@/index\").FocusScopeEmits & Pick<import(\"../roving-focus\").RovingFocusGroupEmits, 'entryFocus'>",
+            "type": "import(\"@/index\").DismissableLayerEmits & import(\"@/index\").FocusScopeEmits & Pick<import(\"../../composables\").RovingFocusGroupEmits, 'entryFocus'>",
             "resolvedType": "{ escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; entryFocus: [event: Event] }",
             "description": "Events for the MenuContentImpl component.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentimplemits",
@@ -5801,7 +5801,7 @@
                 "required": true,
                 "description": "Emitted when entry focus occurs.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentimplemits.callables.entryfocus",
-                "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                 "referencedTypes": []
               }
             ]
@@ -5870,7 +5870,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -5966,7 +5966,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

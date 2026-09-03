@@ -10,7 +10,7 @@
 - **数据驱动的 Compact 组合** — `STabs` 将条目迭代、默认触发器/内容组合与指示器渲染委托给泛型 headless `TabsCompact<T>`，由它负责每个条目的 ARIA 接线。
 - **受控/非受控状态** — `modelValue` 支持 `v-model`（受控）；`defaultValue` 提供非受控用法，底层基于 `useControllableState`。
 - **两种激活模式** — `activationMode: 'automatic'` 在聚焦时激活标签（ARIA 默认）；`'manual'` 仅在点击 / `Enter` / `Space` 时激活。
-- **完整键盘导航** — `RovingFocusGroup` 提供方向键（与 Home/End）移动并跳过禁用标签；`Enter` / `Space` 激活聚焦的标签。
+- **完整键盘导航** — `useRovingFocusGroup` 提供方向键（与 Home/End）移动并跳过禁用标签；`Enter` / `Space` 激活聚焦的标签。
 - **基于 Presence 的内容挂载** — `unmountOnHide: true`（默认）在退出动画后卸载非活动面板；`false` 保持所有面板挂载但带 `hidden` 属性；`forceMount` 无条件将面板保留在 DOM 中。
 - **动画指示器** — 滑动指示器通过 CSS 变量（`--soybean-tabs-indicator-size` / `--soybean-tabs-indicator-position`）追踪活动标签，由 `ResizeObserver` 测量并在值/方向变化时重新定位；RTL 偏移自动镜像。
 - **水平与垂直布局** — `orientation: 'vertical'` 纵向堆叠列表并让指示器沿块轴移动。

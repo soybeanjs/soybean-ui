@@ -23,8 +23,8 @@
 
 - `STree`（styled）— 入口包装；`TreeRootProps<T, U, M>` 泛型透传 + `useForwardListeners` 事件合并 + `top`/`item`/`bottom` 插槽；`withDefaults` 镜像 headless `loop: true` 默认
 - `STreeVirtualizer`（styled）— 虚拟滚动包装；`contentProps`/`dynamicContentProps` 转发给 `VirtualizerContent`，`item` 插槽额外暴露 `virtualItem`
-- `TreeRoot`（headless）— 根组件；`useControllableState` 管理选中/展开，`useSelectionBehavior` 处理单选/多选/范围选择，`RovingFocusGroup` + `useTypeahead` 实现键盘导航；`provideTreeRootContext` 桥接子项
-- `TreeItem`（headless）— 单节点；`RovingFocusItem` 管理焦点，渲染 `aria-*` 与 `data-*` 属性，`select`/`toggle` 事件经 `handleAndDispatchCustomEvent` 派发
+- `TreeRoot`（headless）— 根组件；`useControllableState` 管理选中/展开，`useSelectionBehavior` 处理单选/多选/范围选择，`useRovingFocusGroup` + `useTypeahead` 实现键盘导航；`provideTreeRootContext` 桥接子项
+- `TreeItem`（headless）— 单节点；`useRovingFocusGroupItem` 管理焦点，渲染 `aria-*` 与 `data-*` 属性，`select`/`toggle` 事件经 `handleAndDispatchCustomEvent` 派发
 - `TreeVirtualizerRoot`（headless）— 虚拟化根；`VirtualizerRoot` + TanStack Virtual，转发扁平化 `flattenItems`
 - `TreeVirtualizerItem`（headless）— 虚拟化节点；`TreeItem` + `VirtualizerItem` 组合（`data-soybean-tree-virtualizer-item`）
 

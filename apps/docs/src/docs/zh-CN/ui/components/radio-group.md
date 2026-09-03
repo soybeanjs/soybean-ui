@@ -36,7 +36,7 @@
 
 ### 架构与对标差异
 
-SoybeanUI 以 headless 链路构建单选框组：`RadioGroupRoot`（`useControllableState` + `RovingFocusGroup`）→ `RadioGroupItem`（选中派生 + `VisuallyHiddenInput` 表单代理）→ `RadioGroupControl`（`Button` 基座 + `role="radio"` + `aria-checked`/`data-state`，聚焦派生选中）→ `RadioGroupIndicator`（`usePresence` 条件挂载）→ `RadioGroupLabel`（`for` ↔ 控件 `id`）。`RadioGroupCompact` / `RadioGroupCardCompact` 持有条目迭代与默认组合，UI 包装器只注入变体类。`scv()` 配方 `radioGroupVariants` / `radioGroupCardVariants` 声明 6 尺寸、8 颜色与 dot/outline 变体。
+SoybeanUI 以 headless 链路构建单选框组：`RadioGroupRoot`（`useControllableState` + `useRovingFocusGroup`）→ `RadioGroupItem`（选中派生 + `VisuallyHiddenInput` 表单代理）→ `RadioGroupControl`（`Button` 基座 + `role="radio"` + `aria-checked`/`data-state`，聚焦派生选中）→ `RadioGroupIndicator`（`usePresence` 条件挂载）→ `RadioGroupLabel`（`for` ↔ 控件 `id`）。`RadioGroupCompact` / `RadioGroupCardCompact` 持有条目迭代与默认组合，UI 包装器只注入变体类。`scv()` 配方 `radioGroupVariants` / `radioGroupCardVariants` 声明 6 尺寸、8 颜色与 dot/outline 变体。
 
 | 能力                    | SoybeanUI | Ant Design `Radio` | Element Plus `Radio` | Mantine `Radio` | Naive UI `Radio` | shadcn `RadioGroup` |
 | :---------------------- | :-------: | :----------------: | :------------------: | :-------------: | :--------------: | :-----------------: |

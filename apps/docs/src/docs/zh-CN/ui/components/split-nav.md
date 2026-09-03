@@ -13,7 +13,7 @@
 ## 特性
 
 - 🧭 四种模式 — `mode` 选择面板组合，根组件切换对应模式组件
-- 🎹 一级键盘 — 竖/横 `RovingFocusGroup`，支持方向键、Home/End；Enter/Space 激活；横向一级 `ArrowDown`、竖向一级 `ArrowLeft` / `ArrowRight` 展开子面板；面板之间用 Tab 切换
+- 🎹 一级键盘 — 竖/横 `useRovingFocusGroup`，支持方向键、Home/End；Enter/Space 激活；横向一级 `ArrowDown`、竖向一级 `ArrowLeft` / `ArrowRight` 展开子面板；面板之间用 Tab 切换
 - 🪟 Teleport 挂载 — `verticalMountedId` / `horizontalMountedId` 将面板挂到 `#id` 元素（`dual-vertical` 整块挂载）
 - 🪜 路径切分 — `openPath` 控制子面板展开，`modelValue` 只表示选中的叶子
 - 🔄 受控/非受控 — `modelValue` / `defaultValue` 只表示选中的叶子；点击父级只展开子面板，不会改 `v-model`，也不会带上选中样式

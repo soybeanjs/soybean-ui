@@ -36,7 +36,7 @@ A set of checkable radio buttons where no more than one button can be checked at
 
 ### Architecture and benchmark differences
 
-SoybeanUI builds the radio group from headless `RadioGroupRoot` (`useControllableState` + `RovingFocusGroup`) → `RadioGroupItem` (checked derivation + `VisuallyHiddenInput` form proxy) → `RadioGroupControl` (`Button` base + `role="radio"` + `aria-checked`/`data-state`, focus-derived selection) → `RadioGroupIndicator` (`usePresence` conditional mount) → `RadioGroupLabel` (`for` ↔ control `id`). `RadioGroupCompact` / `RadioGroupCardCompact` own item iteration and default composition while the UI wrappers only inject variant classes. The `scv()` recipes `radioGroupVariants` / `radioGroupCardVariants` declare 6 sizes, 8 colors, and dot/outline variants.
+SoybeanUI builds the radio group from headless `RadioGroupRoot` (`useControllableState` + `useRovingFocusGroup`) → `RadioGroupItem` (checked derivation + `VisuallyHiddenInput` form proxy) → `RadioGroupControl` (`Button` base + `role="radio"` + `aria-checked`/`data-state`, focus-derived selection) → `RadioGroupIndicator` (`usePresence` conditional mount) → `RadioGroupLabel` (`for` ↔ control `id`). `RadioGroupCompact` / `RadioGroupCardCompact` own item iteration and default composition while the UI wrappers only inject variant classes. The `scv()` recipes `radioGroupVariants` / `radioGroupCardVariants` declare 6 sizes, 8 colors, and dot/outline variants.
 
 | Capability                      | SoybeanUI | Ant Design `Radio` | Element Plus `Radio` | Mantine `Radio` | Naive UI `Radio` | shadcn `RadioGroup` |
 | :------------------------------ | :-------: | :----------------: | :------------------: | :-------------: | :--------------: | :-----------------: |

@@ -556,7 +556,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -1266,7 +1266,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubcontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   },
                   {
@@ -1768,7 +1768,7 @@
             "required": true,
             "description": "Emitted when entry focus occurs.",
             "descriptionKey": "api.generated.packages_ui_src_components_dropdown_menu_types.dropdownmenuemits.callables.entryfocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Event",
@@ -2552,7 +2552,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -3048,7 +3048,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -3253,7 +3253,7 @@
             "required": true,
             "description": "Emitted when entry focus occurs.",
             "descriptionKey": "api.generated.packages_ui_src_components_dropdown_menu_types.dropdownmenucheckboxemits.callables.entryfocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Event",
@@ -3627,7 +3627,7 @@
             "required": true,
             "description": "Emitted when entry focus occurs.",
             "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucheckboxcompactemits.callables.entryfocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Event",
@@ -4173,7 +4173,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -4669,7 +4669,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -4998,7 +4998,7 @@
             "required": true,
             "description": "Emitted when entry focus occurs.",
             "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucompactemits.callables.entryfocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Event",
@@ -5534,7 +5534,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -6244,7 +6244,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubcontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   },
                   {
@@ -6882,7 +6882,7 @@
             "required": true,
             "description": "Emitted when entry focus occurs.",
             "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucontentemits.callables.entryfocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Event",
@@ -6904,7 +6904,7 @@
           {
             "name": "MenuContentImplEmits",
             "kind": "typeAlias",
-            "type": "import(\"@/index\").DismissableLayerEmits & import(\"@/index\").FocusScopeEmits & Pick<import(\"../roving-focus\").RovingFocusGroupEmits, 'entryFocus'>",
+            "type": "import(\"@/index\").DismissableLayerEmits & import(\"@/index\").FocusScopeEmits & Pick<import(\"../../composables\").RovingFocusGroupEmits, 'entryFocus'>",
             "resolvedType": "{ escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; entryFocus: [event: Event] }",
             "description": "Events for the MenuContentImpl component.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentimplemits",
@@ -6980,7 +6980,7 @@
                 "required": true,
                 "description": "Emitted when entry focus occurs.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentimplemits.callables.entryfocus",
-                "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                 "referencedTypes": []
               }
             ]
@@ -7367,7 +7367,7 @@
             "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucontentprops.members.loop",
             "default": "false",
             "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           }
         ],
@@ -7960,7 +7960,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -8445,7 +8445,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -8650,7 +8650,7 @@
             "required": true,
             "description": "Emitted when entry focus occurs.",
             "descriptionKey": "api.generated.packages_ui_src_components_dropdown_menu_types.dropdownmenuradioemits.callables.entryfocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Event",
@@ -9024,7 +9024,7 @@
             "required": true,
             "description": "Emitted when entry focus occurs.",
             "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenuradiocompactemits.callables.entryfocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Event",
@@ -9570,7 +9570,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -10055,7 +10055,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -10447,7 +10447,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -11048,7 +11048,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -11411,7 +11411,7 @@
             "required": true,
             "description": "Emitted when entry focus occurs.",
             "descriptionKey": "api.generated.packages_ui_src_components_dropdown_menu_types.dropdownmenuwrapperemits.callables.entryfocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Event",
@@ -11433,7 +11433,7 @@
           {
             "name": "DropdownMenuWrapperCompactEmits",
             "kind": "typeAlias",
-            "type": "import(\"@soybeanjs/headless\").DialogRootEmits & import(\"@soybeanjs/headless\").DismissableLayerEmits & import(\"@soybeanjs/headless\").FocusScopeEmits & Pick<import(\"@soybeanjs/headless\").RovingFocusGroupEmits, 'entryFocus'>",
+            "type": "import(\"@soybeanjs/headless\").DialogRootEmits & import(\"@soybeanjs/headless\").DismissableLayerEmits & import(\"@soybeanjs/headless\").FocusScopeEmits & Pick<import(\"@soybeanjs/headless/composables\").RovingFocusGroupEmits, 'entryFocus'>",
             "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; entryFocus: [event: Event] }",
             "description": "Events for the DropdownMenuWrapperCompact component.",
             "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenuwrappercompactemits",
@@ -11519,7 +11519,7 @@
                 "required": true,
                 "description": "Emitted when entry focus occurs.",
                 "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenuwrappercompactemits.callables.entryfocus",
-                "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                 "referencedTypes": []
               }
             ]
@@ -11713,7 +11713,7 @@
             "required": true,
             "description": "Emitted when entry focus occurs.",
             "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenuwrappercompactemits.callables.entryfocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Event",
@@ -12212,7 +12212,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   }
                 ],

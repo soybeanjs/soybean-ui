@@ -23,8 +23,8 @@ A component for displaying hierarchical tree data with selection and expand/coll
 
 - `STree` (styled) — entry wrapper; `TreeRootProps<T, U, M>` generic passthrough + `useForwardListeners` event merging + `top`/`item`/`bottom` slots; `withDefaults` mirrors the headless `loop: true` default
 - `STreeVirtualizer` (styled) — virtualized wrapper; forwards `contentProps`/`dynamicContentProps` to `VirtualizerContent`; the `item` slot additionally exposes `virtualItem`
-- `TreeRoot` (headless) — root component; `useControllableState` manages selection/expansion, `useSelectionBehavior` handles single/multi/range selection, `RovingFocusGroup` + `useTypeahead` implement keyboard navigation; `provideTreeRootContext` bridges child items
-- `TreeItem` (headless) — single node; `RovingFocusItem` manages focus, renders `aria-*` and `data-*` attributes, dispatches `select`/`toggle` events via `handleAndDispatchCustomEvent`
+- `TreeRoot` (headless) — root component; `useControllableState` manages selection/expansion, `useSelectionBehavior` handles single/multi/range selection, `useRovingFocusGroup` + `useTypeahead` implement keyboard navigation; `provideTreeRootContext` bridges child items
+- `TreeItem` (headless) — single node; `useRovingFocusGroupItem` manages focus, renders `aria-*` and `data-*` attributes, dispatches `select`/`toggle` events via `handleAndDispatchCustomEvent`
 - `TreeVirtualizerRoot` (headless) — virtualized root; `VirtualizerRoot` + TanStack Virtual, forwards flattened `flattenItems`
 - `TreeVirtualizerItem` (headless) — virtualized node; combines `TreeItem` + `VirtualizerItem` (`data-soybean-tree-virtualizer-item`)
 

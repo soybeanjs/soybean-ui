@@ -1179,7 +1179,7 @@ SoybeanUI 正从单一组件库扩展为**组件生态**。外围包遵循「单
 Layer 4  外围包（单包自治）     @soybeanjs/ui-x · @soybeanjs/admin ──(peerDep)──► @soybeanjs/chart
                                  @soybeanjs/editor（提案）· @soybeanjs/ui-pro（预留）
 Layer 3  样式组件层             @soybeanjs/ui（S 前缀，88 组 / 110 导出）
-Layer 2  无头逻辑层             @soybeanjs/headless（92 公共组件 / 27 composables）
+Layer 2  无头逻辑层             @soybeanjs/headless（92 公共组件 / 28 composables）
 Layer 1  主题与样式引擎         @soybeanjs/theme · @soybeanjs/unocss
 横切     源码分发与文档生成     @soybeanjs/sbean（CLI / registry / MCP，非运行时依赖）
 ```

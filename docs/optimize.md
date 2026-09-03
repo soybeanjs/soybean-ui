@@ -51,7 +51,7 @@
 - pnpm 识别 10 个 workspace project：私有根项目、9 个子 workspace。
 - 可发布包：6 个。
 - 私有应用：3 个。
-- Headless：94 个目录、92 个公共组件入口、27 个 composable。
+- Headless：94 个目录、92 个公共组件入口、28 个 composable。
 - UI：88 个公共组件组、110 个 `S` 前缀导出。
 - Playground：451 个示例 SFC。
 - Browser e2e：3 个组件级 spec。
@@ -87,7 +87,7 @@
 
 ### 3.3 组件交付面已有统一入口
 
-**事实：** `scripts/cli.ts` 通过 `pnpm sui` 统一暴露 headless/UI 元数据、API、
+**事实：** `packages/scripts/src/index.ts` 通过 `pnpm sui` 统一暴露 headless/UI 元数据、API、
 changelog、locale、schema 和 skills 生成命令。
 
 **判断：** 后续一致性检查应建立在该入口上，不需要再创建一套平行生成 CLI。
@@ -121,7 +121,6 @@ utils 分开，并有 15 个测试文件及 ADR。
   `@soybeanjs/unocss-preset` 和 `@soybeanjs/ui-uno`，其中多项未在
   docs manifest 声明。
 - `apps/nuxt` 的 UnoCSS 配置直接使用三项未声明 preset 依赖。
-- `scripts/stub.ts` 使用 `execa`，根 manifest 未声明。
 
 **推断：**
 

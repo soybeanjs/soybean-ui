@@ -11,7 +11,7 @@
 ## 特性
 
 - ☑️ 三态模型——`CheckedState` 为 `boolean | 'indeterminate'`，经 `aria-checked`（`mixed`）与 `data-state` 双通道反射
-- 🗂 分组支持 roving-focus 键盘导航（`RovingFocusGroup`，方向键）
+- 🗂 分组支持 roving-focus 键盘导航（`useRovingFocusGroup`，方向键）
 - 🏷 可访问标签——`SCheckboxLabel` 将 `for` 关联到控件的 `id`
 - 📋 原生表单代理——渲染隐藏输入，携带 `name` / `value`（默认 `'on'`）/ `checked` 参与表单提交
 - 🃏 卡片变体（`SCheckboxCard` / `SCheckboxCardGroup`）——icon、label、description 内容
@@ -38,7 +38,7 @@
 
 ### 架构与对标差异
 
-SoybeanUI 以单一事实源的三态状态机构建复选框：`CheckboxRoot`（`useControllableState` + `CheckedState`）派生 `ariaChecked`（`indeterminate` → `mixed`）与 `dataState`（checked / indeterminate / unchecked），`CheckboxControl` 在 `role="checkbox"` 上双通道反射，`CheckboxIndicator` 经 `usePresence` 条件挂载。组值变更由 `CheckboxGroupRoot` 发出——它包装 `RovingFocusGroup` 提供方向键导航，并渲染 `VisuallyHiddenInput` 表单代理。`scv()` 配方 `checkboxVariants` / `checkboxCardVariants` 声明 6 尺寸、8 颜色、2 形状；四层 Compact 持有迭代与默认组合，UI 包装器只注入变体类。
+SoybeanUI 以单一事实源的三态状态机构建复选框：`CheckboxRoot`（`useControllableState` + `CheckedState`）派生 `ariaChecked`（`indeterminate` → `mixed`）与 `dataState`（checked / indeterminate / unchecked），`CheckboxControl` 在 `role="checkbox"` 上双通道反射，`CheckboxIndicator` 经 `usePresence` 条件挂载。组值变更由 `CheckboxGroupRoot` 发出——它包装 `useRovingFocusGroup` 提供方向键导航，并渲染 `VisuallyHiddenInput` 表单代理。`scv()` 配方 `checkboxVariants` / `checkboxCardVariants` 声明 6 尺寸、8 颜色、2 形状；四层 Compact 持有迭代与默认组合，UI 包装器只注入变体类。
 
 | 能力                      | SoybeanUI | Ant Design `Checkbox` | Element Plus `Checkbox` | Mantine `Checkbox` | shadcn/ui `Checkbox` |
 | :------------------------ | :-------: | :-------------------: | :---------------------: | :----------------: | :------------------: |

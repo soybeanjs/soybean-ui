@@ -334,7 +334,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -358,7 +358,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_page_tabs_types.pagetabsprops.members.dir",
             "default": null,
             "inheritedFrom": "dir",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Direction",
@@ -383,7 +383,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_page_tabs_types.pagetabsprops.members.currenttabstopid",
             "default": null,
             "inheritedFrom": "currentTabStopId",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           },
           {
@@ -394,7 +394,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_page_tabs_types.pagetabsprops.members.defaultcurrenttabstopid",
             "default": null,
             "inheritedFrom": "defaultCurrentTabStopId",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           },
           {
@@ -405,7 +405,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_page_tabs_types.pagetabsprops.members.preventscrollonentryfocus",
             "default": null,
             "inheritedFrom": "preventScrollOnEntryFocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           },
           {
@@ -416,7 +416,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_page_tabs_types.pagetabsprops.members.loop",
             "default": "false",
             "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           }
         ],
@@ -642,7 +642,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -896,7 +896,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -920,7 +920,7 @@
             "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabscompactprops.members.dir",
             "default": null,
             "inheritedFrom": "dir",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Direction",
@@ -945,7 +945,7 @@
             "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabscompactprops.members.currenttabstopid",
             "default": null,
             "inheritedFrom": "currentTabStopId",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           },
           {
@@ -956,7 +956,7 @@
             "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabscompactprops.members.defaultcurrenttabstopid",
             "default": null,
             "inheritedFrom": "defaultCurrentTabStopId",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           },
           {
@@ -967,7 +967,7 @@
             "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabscompactprops.members.preventscrollonentryfocus",
             "default": null,
             "inheritedFrom": "preventScrollOnEntryFocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           },
           {
@@ -978,7 +978,7 @@
             "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabscompactprops.members.loop",
             "default": "false",
             "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           }
         ],
@@ -1337,7 +1337,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1430,7 +1430,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1453,8 +1453,8 @@
             "description": "The direction of navigation between items.",
             "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabsrootprops.members.dir",
             "default": null,
-            "inheritedFrom": "Omit.dir",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "inheritedFrom": "Pick.dir",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Direction",
@@ -1478,8 +1478,8 @@
             "description": "The controlled value of the current stop item. Can be bound as `v-model`.",
             "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabsrootprops.members.currenttabstopid",
             "default": null,
-            "inheritedFrom": "Omit.currentTabStopId",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "inheritedFrom": "Pick.currentTabStopId",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           },
           {
@@ -1489,8 +1489,8 @@
             "description": "The value of the current stop item.\n\nUse when you do not need to control the state of the stop item.",
             "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabsrootprops.members.defaultcurrenttabstopid",
             "default": null,
-            "inheritedFrom": "Omit.defaultCurrentTabStopId",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "inheritedFrom": "Pick.defaultCurrentTabStopId",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           },
           {
@@ -1500,8 +1500,8 @@
             "description": "When `true`, will prevent scrolling to the focus item when focused.",
             "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabsrootprops.members.preventscrollonentryfocus",
             "default": null,
-            "inheritedFrom": "Omit.preventScrollOnEntryFocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "inheritedFrom": "Pick.preventScrollOnEntryFocus",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           },
           {
@@ -1511,8 +1511,8 @@
             "description": "Whether keyboard navigation should loop around",
             "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabsrootprops.members.loop",
             "default": "false",
-            "inheritedFrom": "Omit.loop",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "inheritedFrom": "Pick.loop",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           }
         ],

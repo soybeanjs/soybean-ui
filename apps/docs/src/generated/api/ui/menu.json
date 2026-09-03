@@ -90,7 +90,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -246,7 +246,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -673,7 +673,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1299,7 +1299,7 @@
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentprops.members.loop",
             "default": "false",
             "inheritedFrom": "Pick.loop",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           }
         ],
@@ -1481,7 +1481,7 @@
             "required": true,
             "description": "Emitted when entry focus occurs.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentemits.callables.entryfocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Event",
@@ -1579,7 +1579,7 @@
                 "required": true,
                 "description": "Emitted when entry focus occurs.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentimplemits.callables.entryfocus",
-                "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                 "referencedTypes": []
               }
             ]
@@ -1626,7 +1626,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1723,7 +1723,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1832,7 +1832,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -2617,7 +2617,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   },
                   {
@@ -3119,7 +3119,7 @@
             "required": true,
             "description": "Emitted when entry focus occurs.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuoptioncompactemits.callables.entryfocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Event",
@@ -3981,7 +3981,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   },
                   {
@@ -4483,7 +4483,7 @@
             "required": true,
             "description": "Emitted when entry focus occurs.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuoptionscompactemits.callables.entryfocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Event",
@@ -4748,7 +4748,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -4879,7 +4879,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -5296,7 +5296,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -5834,7 +5834,7 @@
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.loop",
             "default": "false",
             "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           },
           {
@@ -6292,7 +6292,7 @@
             "required": true,
             "description": "Emitted when entry focus occurs.",
             "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentemits.callables.entryfocus",
-            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": [
               {
                 "name": "Event",
@@ -6390,7 +6390,7 @@
                 "required": true,
                 "description": "Emitted when entry focus occurs.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menucontentimplemits.callables.entryfocus",
-                "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                 "referencedTypes": []
               }
             ]
@@ -6459,7 +6459,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -6555,7 +6555,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

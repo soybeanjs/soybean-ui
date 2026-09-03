@@ -15,7 +15,7 @@ A set of layered sections of content—known as tab panels—that are displayed 
 - **Data-driven compact composition** — `STabs` delegates item iteration, default trigger/content composition, and indicator rendering to the generic headless `TabsCompact<T>`, which owns the ARIA wiring for every item.
 - **Controlled or uncontrolled state** — `modelValue` supports `v-model` (controlled); `defaultValue` provides uncontrolled usage backed by `useControllableState`.
 - **Two activation modes** — `activationMode: 'automatic'` activates a tab on focus (ARIA default); `'manual'` activates only on click / `Enter` / `Space`.
-- **Full keyboard navigation** — a `RovingFocusGroup` provides arrow-key (and Home/End) movement that skips disabled tabs; `Enter` / `Space` activates the focused tab.
+- **Full keyboard navigation** — the `useRovingFocusGroup` hook provides arrow-key (and Home/End) movement that skips disabled tabs; `Enter` / `Space` activates the focused tab.
 - **Presence-based content mounting** — `unmountOnHide: true` (default) unmounts inactive panels after the exit animation; `false` keeps every panel mounted but `hidden`; `forceMount` keeps a panel in the DOM unconditionally.
 - **Animated indicator** — a sliding indicator tracks the active tab with CSS variables (`--soybean-tabs-indicator-size` / `--soybean-tabs-indicator-position`), measured via `ResizeObserver` and re-positioned on value/direction changes; RTL offsets are mirrored automatically.
 - **Horizontal and vertical layouts** — `orientation: 'vertical'` stacks the list and runs the indicator along the block axis.

@@ -14865,7 +14865,6 @@
         "markdownprops": {
           "members": {
             "class": "根类",
-            "coderenderer": "代码块渲染器。",
             "content": "待渲染的 Markdown 源代码。用于流式输入——渲染器\n会增量重新解析，并将不完整的结构作为占位符进行渲染。",
             "final": "流是否已完成。`true` 将禁用流式处理占位符。",
             "htmlpolicy": "HTML 处理政策。",

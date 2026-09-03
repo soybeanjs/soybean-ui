@@ -14865,7 +14865,6 @@
         "markdownprops": {
           "members": {
             "class": "root class",
-            "coderenderer": "Code block renderer.",
             "content": "Markdown source to render. Use this for streaming input — the renderer\nre-parses incrementally and renders incomplete constructs as placeholders.",
             "final": "Whether the stream has completed. `true` disables streaming placeholders.",
             "htmlpolicy": "HTML handling policy.",

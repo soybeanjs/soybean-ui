@@ -33,7 +33,7 @@ Usage examples for table are rendered on the site.
 - `TableCompactHead` / `TableCompactRow` / `TableCompactCell` / `TableCompactExpandedRow` / `TableVirtualSpacerRow` (headless internal) — composition and rendering components inside the Compact aggregation (not publicly exported)
 - `STableFilterPopover` (styled internal) — the filter popover (SPopover + SInput + SCheckbox + SButton) with localized search/options/summary/clear
 - `STableRadio` (styled internal) — the row radio used in single-select mode (`aria-pressed` semantics), consuming the `radioRoot`/`radioIndicator` recipe slots directly
-- `useTable` / `usePaginatedTable` (UI hooks) — client-side sort/filter/pagination composition hooks built on `@soybeanjs/hooks`
+- `useTable` / `usePaginatedTable` (UI hooks) — client-side sort/filter/pagination composition hooks
 
 ## Demos
 

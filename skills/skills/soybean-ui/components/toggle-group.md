@@ -114,7 +114,7 @@ Events for the ToggleGroupRoot component.
 
 ### Architecture and benchmark differences
 
-SoybeanUI builds the group from headless `ToggleGroupRoot` (`useSelection` + `RovingFocusGroup` + hidden-input form proxy) and `ToggleGroupItem` (dynamically backed by `RovingFocusItem` or the `Button` base depending on `rovingFocus`). The UI wrapper `SToggleGroup` is a thin pass-through that only computes `toggleGroupVariants` classes; `data-state` drives the pressed look through UnoCSS `data-[state=on]:*` selectors. `toggle-group` is a Radix/shadcn-native pattern; the other benchmark libraries express the same interaction with radio/button groups or segmented controls.
+SoybeanUI builds the group from headless `ToggleGroupRoot` (`useSelection` + `useRovingFocusGroup` + hidden-input form proxy) and `ToggleGroupItem` (dynamically backed by `useRovingFocusGroupItem` or the `Button` base depending on `rovingFocus`). The UI wrapper `SToggleGroup` is a thin pass-through that only computes `toggleGroupVariants` classes; `data-state` drives the pressed look through UnoCSS `data-[state=on]:*` selectors. `toggle-group` is a Radix/shadcn-native pattern; the other benchmark libraries express the same interaction with radio/button groups or segmented controls.
 
 | Capability                        | SoybeanUI | Ant Design | Element Plus | Mantine | Naive UI | shadcn `ToggleGroup` |
 | :-------------------------------- | :-------: | :--------: | :----------: | :-----: | :------: | :------------------: |

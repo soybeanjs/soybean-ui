@@ -351,7 +351,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentcompactprops.members.dir",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   },
                   {
@@ -362,7 +362,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentcompactprops.members.orientation",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   },
                   {
@@ -373,7 +373,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentcompactprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -2974,7 +2974,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentcompactprops.members.dir",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   },
                   {
@@ -2985,7 +2985,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentcompactprops.members.orientation",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   },
                   {
@@ -2996,7 +2996,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentcompactprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -5439,7 +5439,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.41/node_modules/@vue/reactivity/dist/reactivity.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.42/node_modules/@vue/reactivity/dist/reactivity.d.ts",
                 "typeParameters": ["T = any"],
                 "external": true,
                 "members": [],
@@ -5464,7 +5464,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.41/node_modules/@vue/reactivity/dist/reactivity.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.42/node_modules/@vue/reactivity/dist/reactivity.d.ts",
                 "typeParameters": ["T = any"],
                 "external": true,
                 "members": [],
@@ -5489,7 +5489,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.41/node_modules/@vue/reactivity/dist/reactivity.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.42/node_modules/@vue/reactivity/dist/reactivity.d.ts",
                 "typeParameters": ["T = any"],
                 "external": true,
                 "members": [],
@@ -5514,7 +5514,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.41/node_modules/@vue/reactivity/dist/reactivity.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.42/node_modules/@vue/reactivity/dist/reactivity.d.ts",
                 "typeParameters": ["T = any"],
                 "external": true,
                 "members": [],
@@ -5539,7 +5539,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.41/node_modules/@vue/reactivity/dist/reactivity.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.42/node_modules/@vue/reactivity/dist/reactivity.d.ts",
                 "typeParameters": ["T = any"],
                 "external": true,
                 "members": [],
@@ -5564,7 +5564,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.41/node_modules/@vue/reactivity/dist/reactivity.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.42/node_modules/@vue/reactivity/dist/reactivity.d.ts",
                 "typeParameters": ["T = any"],
                 "external": true,
                 "members": [],
@@ -5589,7 +5589,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.41/node_modules/@vue/reactivity/dist/reactivity.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.42/node_modules/@vue/reactivity/dist/reactivity.d.ts",
                 "typeParameters": ["T = any"],
                 "external": true,
                 "members": [],
@@ -5713,7 +5713,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

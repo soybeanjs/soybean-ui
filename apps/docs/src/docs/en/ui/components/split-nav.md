@@ -13,7 +13,7 @@ Use it when a layout needs a first-level switcher plus a nested tree or horizont
 ## Features
 
 - 🧭 Four modes — `mode` selects the pane composition; the root switches the matching mode component
-- 🎹 First-level keyboard — vertical/horizontal `RovingFocusGroup` with Arrow, Home/End; Enter/Space activates; ArrowDown on a horizontal parent and ArrowLeft/ArrowRight on a vertical parent open the nested pane; Tab moves between panes
+- 🎹 First-level keyboard — vertical/horizontal `useRovingFocusGroup` with Arrow, Home/End; Enter/Space activates; ArrowDown on a horizontal parent and ArrowLeft/ArrowRight on a vertical parent open the nested pane; Tab moves between panes
 - 🪟 Teleport mounting — `verticalMountedId` / `horizontalMountedId` mount panes into `#id` elements (`dual-vertical` teleports as one block)
 - 🪜 Path slicing — `openPath` drives nested panes; `modelValue` is the selected leaf only
 - 🔄 Controlled/uncontrolled — `modelValue` / `defaultValue` store the selected leaf; clicking a parent only opens its pane, without changing `v-model` or applying the selected style

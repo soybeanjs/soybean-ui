@@ -11,7 +11,7 @@ A control that lets the user select or clear an option, with an indeterminate ha
 ## Features
 
 - ☑️ Tri-state model — `CheckedState` of `boolean | 'indeterminate'`, reflected via both `aria-checked` (`mixed`) and `data-state`
-- 🗂 Groups with roving-focus keyboard navigation (`RovingFocusGroup`, Arrow keys)
+- 🗂 Groups with roving-focus keyboard navigation (`useRovingFocusGroup`, Arrow keys)
 - 🏷 Accessible label — `SCheckboxLabel` wires `for` to the control's `id`
 - 📋 Native form proxy — renders a visually hidden input carrying `name` / `value` (default `'on'`) / `checked` for form submission
 - 🃏 Card variants (`SCheckboxCard` / `SCheckboxCardGroup`) with icon, label, and description content
@@ -38,7 +38,7 @@ A control that lets the user select or clear an option, with an indeterminate ha
 
 ### Architecture and benchmark differences
 
-SoybeanUI builds checkbox with a single-source tri-state state machine: `CheckboxRoot` (`useControllableState` + `CheckedState`) derives `ariaChecked` (`indeterminate` → `mixed`) and `dataState` (checked / indeterminate / unchecked), which `CheckboxControl` reflects on `role="checkbox"` while `CheckboxIndicator` mounts conditionally via `usePresence`. Group value changes are emitted by `CheckboxGroupRoot`, which wraps `RovingFocusGroup` for arrow-key navigation and renders a `VisuallyHiddenInput` form proxy. The `scv()` recipes `checkboxVariants` / `checkboxCardVariants` declare 6 sizes, 8 colors, and 2 shapes; all four Compact layers own iteration and default composition while the UI wrappers only inject variant classes.
+SoybeanUI builds checkbox with a single-source tri-state state machine: `CheckboxRoot` (`useControllableState` + `CheckedState`) derives `ariaChecked` (`indeterminate` → `mixed`) and `dataState` (checked / indeterminate / unchecked), which `CheckboxControl` reflects on `role="checkbox"` while `CheckboxIndicator` mounts conditionally via `usePresence`. Group value changes are emitted by `CheckboxGroupRoot`, which wraps `useRovingFocusGroup` for arrow-key navigation and renders a `VisuallyHiddenInput` form proxy. The `scv()` recipes `checkboxVariants` / `checkboxCardVariants` declare 6 sizes, 8 colors, and 2 shapes; all four Compact layers own iteration and default composition while the UI wrappers only inject variant classes.
 
 | Capability                       | SoybeanUI | Ant Design `Checkbox` | Element Plus `Checkbox` | Mantine `Checkbox` | shadcn/ui `Checkbox` |
 | :------------------------------- | :-------: | :-------------------: | :---------------------: | :----------------: | :------------------: |

@@ -12,7 +12,7 @@
 - **固定/取消固定与自动排序** — 固定标签在任何变更后自动排到最前（固定分组优先，然后是普通标签；`hidePinnedIcon` 仅控制显示，不影响排序）；内联固定按钮切换固定状态，上下文菜单提供 `固定` / `取消固定`。
 - **拖拽调整顺序** — 启用 `draggable` 后，标签可横向拖拽改变位置。重排采用与浏览器标签栏（Chrome / VS Code）一致的分区限制：标签只能在自己所在分区内重排 —— 固定分组最前，然后是普通标签 —— 未固定标签拖到固定区边界时会实时停住，永远不会落到固定标签之前。条目显式设置 `draggable: false` 时该标签被锁定：自身不可拖拽，其他标签也无法落到它的位置（如锁定在最首位的主页标签）。拖拽时浮动预览跟随光标、原标签淡出；松手后应用新顺序（触发 `update:items`），其余标签平滑滑动到新位置（基于 `@vue-dnd-kit/core` + `TransitionGroup`，enter/leave/move 动画样式在 UI 层实现）。`tabDragStart` / `tabDragMove` / `tabDragEnd` 会发出实时的拖拽状态 `{ item, index }`。
 - **上下文菜单工厂** — `menuFactory(tab, state)` 接收悬停标签与 `PageTabsState`（close、closeLeft、closeRight、closeOther、closeAll、pin、unpin 及其各自的 `*Closable` 布尔值）来构建自定义菜单；`selectContextMenu` 发出所选动作与标签。
-- **完整键盘支持** — `RovingFocusGroup` 提供方向键移动；`Enter` 激活标签，`Backspace` 关闭标签。
+- **完整键盘支持** — `useRovingFocusGroup` 提供方向键移动；`Enter` 激活标签，`Backspace` 关闭标签。
 - **活动标签自动滚动** — `usePageTabsScroll` 使活动标签水平居中（平滑 `scrollTo`），并将垂直滚轮转换为水平滚动。
 - **三种视觉变体** — `variant`（`chrome` / `card` / `slider`）带各变体指示器（chrome 圆角 SVG / slider 下划线）与 `size`（xs…2xl），通过 `pageTabsVariants` 的 `scv()` 配方应用。
 - **六个自定义插槽** — `item`（scoped `{ item, index, active, closable }`）、`icon`、`label`、`indicator`、`pin-icon`、`close-icon`。
@@ -47,7 +47,7 @@
 | 拖拽调整顺序                           | ✅ `draggable` + `tabDragStart/Move/End`         | ❌                                  | ❌                             | ✅（各应用）                        |
 | 上下文菜单（左/右/其他/全部关闭）      | ✅ `menuFactory` + `PageTabsState`               | ❌（仅 `more` 的下拉菜单）          | ❌                             | ✅（各应用）                        |
 | 中键点击关闭                           | ✅ `middleClickClose`                            | ❌                                  | ❌                             | ✅（各应用）                        |
-| 键盘（roving focus + Enter/Backspace） | ✅ `RovingFocusGroup`                            | ✅ 方向键 / Home / End              | ✅ 方向键                      | ❌                                  |
+| 键盘（roving focus + Enter/Backspace） | ✅ `useRovingFocusGroup`                         | ✅ 方向键 / Home / End              | ✅ 方向键                      | ❌                                  |
 | 活动标签自动滚动                       | ✅ 居中 `scrollTo` + 滚轮转横向                  | ✅ tabBar `auto`                    | ❌                             | ✅（各应用）                        |
 | 变体系统                               | ✅ `chrome`/`card`/`slider` × xs…2xl             | ✅ `line`/`card`/`editable-card`    | ✅ `card`/`border-card`        | —                                   |
 | 本地化 `aria-label`                    | ✅ locale 注册表（13 种语言）                    | 部分支持                            | —                              | —                                   |

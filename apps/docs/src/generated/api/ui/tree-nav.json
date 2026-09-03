@@ -742,7 +742,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   },
                   {
@@ -1118,7 +1118,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -2275,7 +2275,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   },
                   {
@@ -2651,7 +2651,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -4308,7 +4308,7 @@
                     "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.loop",
                     "default": "false",
                     "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+                    "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
                     "referencedTypes": []
                   },
                   {
@@ -4684,7 +4684,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.41/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

@@ -37,7 +37,7 @@ Prioritized structural findings and acceptance criteria live in
 
 Core Headless/Styled separation:
 
-- **@soybeanjs/headless** (`packages/headless/`): Logic, state, a11y. Zero styles. 94 component directories (92 publicly exported; `_common`/`_icon` are internal), 27 composables. Includes base primitives, date utilities, and Compact aggregations.
+- **@soybeanjs/headless** (`packages/headless/`): Logic, state, a11y. Zero styles. 94 component directories (92 publicly exported; `_common`/`_icon` are internal), 28 composables. Includes base primitives, date utilities, and Compact aggregations.
 - **@soybeanjs/ui** (`packages/ui/`): Styled wrappers. UnoCSS + `cv()` / `scv()`. 88 component directories / 110 S-prefixed exports.
 
 Compile-time dependency direction is **UI → Headless**: UI imports public
@@ -119,7 +119,7 @@ pnpm sui changelog-translate -- --locale <locale>  # Translate generated English
 **@soybeanjs/headless** sub-path exports:
 
 - `.` → all components + types
-- `./composables` → 27 composables (useContext, useControllableState, useUiContext, …)
+- `./composables` → 28 composables (useContext, useControllableState, useUiContext, …)
 - `./shared` → pure TS utilities
 - `./constants` → ARIA constants, component keys
 - `./date` → shared date utilities and calendar helpers

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T07:28:58.055Z",
+  "generatedAt": "2026-09-03T18:58:52.694Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -457,13 +457,6 @@
       "versionCount": 0,
       "entryCount": 0
     },
-    "roving-focus": {
-      "component": "roving-focus",
-      "file": "roving-focus.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
-    },
     "scroll-area": {
       "component": "scroll-area",
       "file": "scroll-area.json",
@@ -490,6 +483,13 @@
       "file": "separator.json",
       "latestVersion": "v0.19.0",
       "versionCount": 1,
+      "entryCount": 2
+    },
+    "skeleton": {
+      "component": "skeleton",
+      "file": "skeleton.json",
+      "latestVersion": "v0.15.0",
+      "versionCount": 2,
       "entryCount": 2
     },
     "slider": {

@@ -33,7 +33,7 @@ UnoCSS config ──> @soybeanjs/ui-uno
 
 | Package                 | Role                                                                | Current inventory                                    |
 | ----------------------- | ------------------------------------------------------------------- | ---------------------------------------------------- |
-| **@soybeanjs/headless** | Logic, state, a11y, focus, keyboard interaction, and unstyled parts | 94 directories (92 public groups), 27 composables    |
+| **@soybeanjs/headless** | Logic, state, a11y, focus, keyboard interaction, and unstyled parts | 94 directories (92 public groups), 28 composables    |
 | **@soybeanjs/ui**       | Styled wrappers using UnoCSS and `@soybeanjs/cva` recipes           | 88 public component groups, 110 `S`-prefixed exports |
 
 The compile-time dependency is strictly one-way: `@soybeanjs/ui` imports public
@@ -129,7 +129,7 @@ registerLocale('custom', customMessages);
 
 ```ts
 import { AccordionRoot } from '@soybeanjs/headless'; // all components
-import { useControllableState } from '@soybeanjs/headless/composables'; // 27 composables
+import { useControllableState } from '@soybeanjs/headless/composables'; // 28 composables
 import { transformPropsToContext } from '@soybeanjs/headless/shared'; // pure TS utils
 import { createMonth } from '@soybeanjs/headless/date'; // shared date helpers
 import { registerLocale } from '@soybeanjs/headless/locale'; // locale registry
