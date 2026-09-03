@@ -34,7 +34,6 @@ const ui = computed(() => ({
       :is-dark="isDark"
       :typewriter="typewriter"
       :smooth-streaming="smoothStreaming"
-      :code-renderer="codeRenderer"
       :parse-options="parseOptions"
       v-bind="rendererProps"
     >

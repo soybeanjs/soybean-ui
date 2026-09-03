@@ -2,7 +2,6 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type {
   HtmlPolicy,
   MarkdownRender,
-  NodeRendererCodeRenderer,
   NodeRendererMode,
   NodeRendererTypewriter,
   ParseOptions
@@ -47,10 +46,6 @@ export interface MarkdownProps {
    * Enable smooth (paced) streaming.
    */
   smoothStreaming?: boolean | 'auto';
-  /**
-   * Code block renderer.
-   */
-  codeRenderer?: NodeRendererCodeRenderer;
   /**
    * Parse options forwarded to the markdown engine.
    */
