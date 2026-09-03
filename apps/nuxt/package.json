@@ -9,16 +9,16 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
-    "@nuxt/icon": "2.5.0",
+    "@nuxt/icon": "2.5.1",
     "@nuxtjs/i18n": "10.6.0",
     "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
     "nuxt": "^4.5.2",
-    "vue": "^3.5.41",
-    "vue-router": "^5.2.0"
+    "vue": "^3.5.42",
+    "vue-router": "^5.3.1"
   },
   "devDependencies": {
-    "@unocss/nuxt": "^66.7.5",
-    "unocss": "^66.7.5"
+    "@unocss/nuxt": "^66.9.2",
+    "unocss": "^66.9.2"
   }
 }

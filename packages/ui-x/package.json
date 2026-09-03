@@ -73,28 +73,28 @@
     "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
     "@soybeanjs/utils": "^0.1.1",
-    "markstream-vue": "^1.1.5"
+    "markstream-vue": "^2.0.7"
   },
   "devDependencies": {
     "@nuxt/kit": "^4.5.2",
     "@soybeanjs/ui-uno": "workspace:^",
-    "@types/node": "^26.2.0",
-    "@unocss/cli": "^66.7.5",
-    "@vitest/browser": "^4.1.10",
-    "@vitest/browser-playwright": "^4.1.10",
-    "@vue/test-utils": "^2.4.11",
+    "@types/node": "^26.4.1",
+    "@unocss/cli": "^66.9.2",
+    "@vitest/browser": "^4.1.11",
+    "@vitest/browser-playwright": "^4.1.11",
+    "@vue/test-utils": "^2.5.0",
     "axe-core": "^4.13.0",
-    "happy-dom": "^20.11.2",
+    "happy-dom": "^20.13.2",
     "playwright": "^1.62.1",
-    "typescript": "7.0.2",
-    "unocss": "^66.7.5",
+    "typescript": "catalog:ts6",
+    "unocss": "^66.9.2",
     "unplugin-vue": "^7.2.0",
     "unplugin-vue-components": "^32.1.0",
     "vite-plus": "catalog:",
-    "vitest": "4.1.10",
-    "vue": "^3.5.41",
-    "vue-router": "^5.2.0",
-    "vue-tsc": "^3.3.10"
+    "vitest": "4.1.11",
+    "vue": "^3.5.42",
+    "vue-router": "^5.3.1",
+    "vue-tsc": "^3.3.11"
   },
   "peerDependencies": {
     "@nuxt/kit": "^4.3.0",
@@ -129,5 +129,5 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@11.22.0"
+  "packageManager": "pnpm@11.25.0"
 }

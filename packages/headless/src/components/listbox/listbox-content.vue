@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { refAutoReset } from '@vueuse/shared';
+import { refAutoReset } from '@vueuse/core';
 import { useForwardElement } from '../../composables';
 import { useCollectionContext, useListboxRootContext, useListboxUi } from './context';
 import type { ListboxContentProps } from './types';

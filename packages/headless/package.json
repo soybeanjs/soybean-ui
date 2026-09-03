@@ -104,52 +104,40 @@
   "scripts": {
     "build": "vp pack",
     "test": "vp test run",
-    "test:watch": "vp test watch"
+    "test:watch": "vp test watch",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
     "@dnd-kit/dom": "^0.5.0",
-    "@dnd-kit/helpers": "^0.5.0",
     "@dnd-kit/vue": "^0.5.0",
     "@floating-ui/dom": "^1.8.0",
-    "@floating-ui/utils": "^0.2.12",
     "@formkit/auto-animate": "^0.10.0",
-    "@internationalized/date": "^3.12.3",
-    "@internationalized/number": "^3.6.7",
+    "@internationalized/date": "^3.12.4",
+    "@internationalized/number": "^3.6.8",
     "@soybeanjs/colord": "^0.7.1",
     "@standard-schema/spec": "^1.1.0",
-    "@tanstack/vue-virtual": "^3.13.35",
+    "@tanstack/vue-virtual": "^3.13.36",
     "@vueuse/core": "^14.4.0",
-    "@vueuse/shared": "^14.4.0",
     "embla-carousel": "^8.6.0"
   },
   "devDependencies": {
-    "@nuxt/kit": "^4.5.2",
-    "@nuxt/schema": "^4.5.2",
-    "@vue/test-utils": "^2.4.11",
-    "fast-glob": "^3.3.3",
+    "@vue/test-utils": "^2.5.0",
     "nuxt": ">=4.5.2",
-    "typescript": "7.0.2",
+    "typescript": "catalog:ts6",
     "unplugin-vue": "7.2.0",
     "unplugin-vue-components": "^32.1.0",
     "vite-plus": "catalog:",
-    "vue": "3.5.41",
-    "vue-router": "5.2.0"
+    "vue": "3.5.42",
+    "vue-router": "5.3.1",
+    "vue-tsc": "^3.3.11"
   },
   "peerDependencies": {
-    "@nuxt/kit": "^4.3.0",
-    "@nuxt/schema": "^4.3.0",
     "nuxt": ">=4.0.0",
     "unplugin-vue-components": "^31.0.0",
     "vue": ">=3.2.0",
     "vue-router": ">=4.0.0"
   },
   "peerDependenciesMeta": {
-    "@nuxt/kit": {
-      "optional": true
-    },
-    "@nuxt/schema": {
-      "optional": true
-    },
     "nuxt": {
       "optional": true
     },
@@ -160,5 +148,5 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@11.22.0"
+  "packageManager": "pnpm@11.25.0"
 }

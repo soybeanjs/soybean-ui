@@ -1,4 +1,4 @@
-import { addComponent, defineNuxtModule } from '@nuxt/kit';
+import { addComponent, defineNuxtModule } from 'nuxt/kit';
 import { components } from '../constants';
 
 export interface ModuleOptions {

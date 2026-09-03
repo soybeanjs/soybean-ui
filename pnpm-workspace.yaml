@@ -1,18 +1,19 @@
 packages:
   - 'packages/**'
   - 'apps/**'
-  - 'shared/**'
   - 'skills'
 catalog:
-  vite: npm:@voidzero-dev/vite-plus-core@0.2.9
-  vite-plus: ^0.2.9
+  vite: npm:@voidzero-dev/vite-plus-core@0.3.0
+  vite-plus: ^0.3.0
   typescript: ^7.0.2
+catalogs:
+  ts6:
+    typescript: ^6.0.3
 overrides:
   vite: 'catalog:'
   vue: ^3.5.41
   vite-ssg>jsdom: 27.0.1
   markdown-exit: 1.1.0-beta.2
-  typescript: 6.0.3
   brace-expansion: 5.0.8
 shamefullyHoist: true
 ignoreWorkspaceRootCheck: true
@@ -23,6 +24,6 @@ allowBuilds:
   maplibre-gl: false
   simple-git-hooks: false
 minimumReleaseAgeExclude:
-  - markstream-core@1.1.5
-  - markstream-vue@1.1.5
-  - stream-markdown-parser@1.2.7
+  - happy-dom@20.13.2
+  - vue-router@5.3.1
+  - '@soybeanjs/oxc-config@0.2.4'

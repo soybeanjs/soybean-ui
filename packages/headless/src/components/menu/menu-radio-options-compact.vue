@@ -41,7 +41,7 @@ const ui = useMenuUi();
 
 <template>
   <MenuRadioGroup v-bind="forwardedProps" v-on="listeners">
-    <template v-for="item in items" :key="item.value">
+    <template v-for="item in items" :key="String(item.value)">
       <MenuGroupLabel v-if="item.isGroupLabel" v-bind="groupLabelProps">
         <MenuItemSlotCompact :icon="item.icon" :label="item.label">
           <template v-for="slotName in commonSlotNames">

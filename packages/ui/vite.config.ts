@@ -3,7 +3,6 @@ import vue from '@vitejs/plugin-vue';
 import unpluginVue from 'unplugin-vue/rolldown';
 import { cssRawPlugin } from '../_shared/css';
 import headlessPkg from '../headless/package.json' with { type: 'json' };
-import pkg from './package.json' with { type: 'json' };
 
 export default defineConfig({
   resolve: {
@@ -12,22 +11,15 @@ export default defineConfig({
   plugins: [vue()],
   pack: {
     entry: ['src/index.ts', 'src/nuxt/index.ts', 'src/resolver/index.ts'],
-    platform: 'neutral',
+    platform: 'browser',
     deps: {
-      neverBundle: Object.keys({
-        ...headlessPkg.dependencies,
-        ...headlessPkg.devDependencies,
-        ...pkg.dependencies,
-        ...pkg.devDependencies
-      })
+      neverBundle: ['@nuxt/kit', '@nuxt/schema', ...Object.keys(headlessPkg.dependencies)]
     },
-    clean: true,
     dts: {
       vue: true
     },
     unbundle: true,
     plugins: [cssRawPlugin(), unpluginVue({ isProduction: true })],
-    sourcemap: false,
     minify: true,
     define: {
       'import.meta.env.DEV': 'undefined',

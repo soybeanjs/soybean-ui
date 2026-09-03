@@ -1,5 +1,5 @@
 import { computed, ref, shallowRef, watch } from 'vue';
-import type { Component, VNode } from 'vue';
+import type { Component, Ref, VNode } from 'vue';
 import { getTableColumnKey, isTableGroupColumn } from '@soybeanjs/headless/table';
 import type { TableBaseData, TableColumn, TableColumnType } from './types';
 
@@ -59,8 +59,10 @@ function useTableState<
   const empty = shallowRef(false);
   const { api, pagination, transform, columns, getColumnChecks, getColumns, onFetched, immediate = true } = options;
 
-  const tableData = ref<ApiData[]>([]);
-  const columnChecks = ref<TableColumnCheck[]>(getColumnChecks(columns()));
+  // `Ref` annotations keep the inferred types nameable for declaration emit
+  // (bare `ref()` would embed non-portable `UnwrapRefSimple`/`LooseRequired` references)
+  const tableData: Ref<ApiData[]> = ref([]);
+  const columnChecks: Ref<TableColumnCheck[]> = ref(getColumnChecks(columns()));
   const resolvedColumns = computed(() => getColumns(columns(), columnChecks.value));
 
   function reloadColumns() {
