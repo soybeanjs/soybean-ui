@@ -1,7 +1,7 @@
-import type { DataOrientation } from '../../types';
+import type { DataOrientation, Direction } from '../../types';
 import type { TreeMenuOptionData } from '../tree-menu/types';
 import type { TreeNavOptionData } from '../tree-nav/types';
-import type { SplitNavBaseOptionData, SplitNavOptionData } from './types';
+import type { SplitNavBaseOptionData, SplitNavMode, SplitNavOptionData } from './types';
 
 /**
  * Build a CSS selector for a mounted element id, or `undefined` when the id is empty.
@@ -129,6 +129,91 @@ export function isFirstLevelExpandKey(key: string, orientation: DataOrientation)
   }
 
   return key === 'ArrowLeft' || key === 'ArrowRight';
+}
+
+/**
+ * Whether an expand key moves INTO the nested pane (the forward direction).
+ *
+ * Horizontal rails move into the pane with ArrowDown regardless of direction.
+ * Vertical rails move right with ArrowRight in LTR and left with ArrowLeft in RTL.
+ */
+export function isFirstLevelForwardExpandKey(key: string, orientation: DataOrientation, dir?: Direction): boolean {
+  if (orientation === 'horizontal') {
+    return key === 'ArrowDown';
+  }
+
+  return key === (dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight');
+}
+
+/** Nested pane selectors, resolved per rail orientation and nav mode. */
+const SUB_VERTICAL_SELECTOR = '[data-soybean-split-nav-sub-vertical]';
+const SUB_HORIZONTAL_SELECTOR = '[data-soybean-split-nav-sub-horizontal]';
+const VERTICAL_FIRST_LEVEL_SELECTOR = '[data-soybean-split-nav-vertical-first-level]';
+
+/**
+ * Locates the pane a first-level branch opens, per rail orientation and nav mode.
+ *
+ * `mountedIdKey` names the root prop whose mount target hosts the pane when the
+ * consumer renders SplitNav through mounted elements.
+ *
+ * The horizontal rail of `horizontal-dual-vertical` opens the nested dual-vertical
+ * pane whose first level is a vertical rail, while the vertical rail of the same
+ * mode opens the regular sub-vertical tree pane.
+ */
+const FIRST_LEVEL_PANE_QUERY: Record<
+  DataOrientation,
+  Partial<
+    Record<
+      SplitNavMode,
+      {
+        mountedIdKey: 'horizontalMountedId' | 'verticalMountedId';
+        paneSelector: string;
+      }
+    >
+  >
+> = {
+  vertical: {
+    'dual-vertical': { mountedIdKey: 'verticalMountedId', paneSelector: SUB_VERTICAL_SELECTOR },
+    'vertical-horizontal': { mountedIdKey: 'horizontalMountedId', paneSelector: SUB_HORIZONTAL_SELECTOR },
+    'horizontal-dual-vertical': { mountedIdKey: 'verticalMountedId', paneSelector: SUB_VERTICAL_SELECTOR }
+  },
+  horizontal: {
+    'vertical-horizontal': { mountedIdKey: 'horizontalMountedId', paneSelector: SUB_HORIZONTAL_SELECTOR },
+    'horizontal-vertical': { mountedIdKey: 'verticalMountedId', paneSelector: SUB_VERTICAL_SELECTOR },
+    'horizontal-dual-vertical': { mountedIdKey: 'verticalMountedId', paneSelector: VERTICAL_FIRST_LEVEL_SELECTOR }
+  }
+};
+
+/**
+ * Focus the first focusable item of the pane opened by the active first-level branch.
+ *
+ * The pane lives inside the mount target for the mode when provided, otherwise it
+ * renders in place: inside the enclosing dual-vertical pane, or next to the rail.
+ */
+export function focusFirstLevelPaneItem(options: {
+  itemElement: HTMLElement;
+  orientation: DataOrientation;
+  mode?: SplitNavMode;
+  horizontalMountedId?: string;
+  verticalMountedId?: string;
+}): void {
+  const { itemElement, orientation, mode, horizontalMountedId, verticalMountedId } = options;
+
+  const query = mode ? FIRST_LEVEL_PANE_QUERY[orientation][mode] : undefined;
+
+  if (!query) {
+    return;
+  }
+
+  const mountedId = query.mountedIdKey === 'verticalMountedId' ? verticalMountedId : horizontalMountedId;
+  const mountedElement = mountedId ? document.getElementById(mountedId) : null;
+  const rail = itemElement.closest<HTMLElement>('[data-soybean-split-nav-first-level]');
+  const scope = mountedElement ?? rail?.closest('[data-soybean-split-nav-dual-vertical]') ?? rail?.parentElement;
+
+  const pane = scope?.querySelector(query.paneSelector);
+  const item = pane?.querySelector<HTMLElement>('[data-soybean-roving-focus-item]:not([data-disabled])');
+
+  item?.focus();
 }
 
 /**

@@ -6,7 +6,13 @@ import Icon from '../_icon/icon.vue';
 import Button from '../button/button.vue';
 import Link from '../link/link.vue';
 import type { LinkProps } from '../link/types';
-import { findActivePath, hasVisibleChildren, isFirstLevelExpandKey } from './shared';
+import {
+  findActivePath,
+  focusFirstLevelPaneItem,
+  hasVisibleChildren,
+  isFirstLevelExpandKey,
+  isFirstLevelForwardExpandKey
+} from './shared';
 import { useSplitNavRootContext, useSplitNavUi } from './context';
 import type { FirstLevelItemProps } from './types';
 
@@ -16,7 +22,8 @@ defineOptions({
 
 const props = defineProps<FirstLevelItemProps>();
 
-const { items, modelValue, openPath, onItemActivate } = useSplitNavRootContext('SplitNavFirstLevelItem');
+const { dir, items, mode, modelValue, openPath, horizontalMountedId, verticalMountedId, onItemActivate } =
+  useSplitNavRootContext('SplitNavFirstLevelItem');
 
 const ui = useSplitNavUi();
 
@@ -87,6 +94,24 @@ function handleKeyDown(event: KeyboardEvent) {
   const isExpandKey = isBranch.value && isFirstLevelExpandKey(event.key, props.orientation);
 
   if (!isActivateKey && !isExpandKey) {
+    return;
+  }
+
+  // On an already-open branch, the forward expand key moves focus to the first
+  // item of the open pane instead of re-activating the branch.
+  const isForwardExpandKey =
+    isExpandKey && isOpen.value && isFirstLevelForwardExpandKey(event.key, props.orientation, dir.value);
+
+  if (isForwardExpandKey) {
+    event.preventDefault();
+    focusFirstLevelPaneItem({
+      itemElement: event.currentTarget as HTMLElement,
+      orientation: props.orientation,
+      mode: mode.value,
+      horizontalMountedId: horizontalMountedId.value,
+      verticalMountedId: verticalMountedId.value
+    });
+
     return;
   }
 
