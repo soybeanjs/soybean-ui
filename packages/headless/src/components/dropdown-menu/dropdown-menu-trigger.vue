@@ -42,7 +42,9 @@ function onBlurClose(event: FocusEvent) {
 
   const relatedTarget = event.relatedTarget as HTMLElement | null;
 
-  if (relatedTarget?.closest(`#${popupId.value}`)) return;
+  // The popup id is only assigned when the content mounts; a trigger whose
+  // menu never opened has no popup to check (and nothing to keep open).
+  if (popupId.value && relatedTarget?.closest(`#${popupId.value}`)) return;
 
   popperContext.onOpenChange(false, 'trigger-hover');
 }
