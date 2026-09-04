@@ -75,7 +75,6 @@
     "playwright": "^1.62.1",
     "typescript": "catalog:ts6",
     "unocss": "^66.9.2",
-    "unocss-preset-animations": "^1.3.0",
     "unplugin-vue": "^7.2.0",
     "unplugin-vue-components": "^32.1.0",
     "vite-plus": "catalog:",

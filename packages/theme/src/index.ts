@@ -17,6 +17,7 @@ export {
 } from './registry';
 export { generateThemePreset } from './preset';
 export { getDarkSelector, resolveColorValue } from './shared';
+export { SIZE_VARIABLE, RADIUS_VARIABLE, COLOR_VARIABLES, EXTENDED_THEME_VARIABLES } from './variables';
 
 export type {
   HSLColor,
