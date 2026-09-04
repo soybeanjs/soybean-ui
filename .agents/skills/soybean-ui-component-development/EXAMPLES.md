@@ -20,8 +20,8 @@ Expected approach:
 2. Load this skill and follow [SKILL.md -> Phase order](SKILL.md#phase-order).
 3. Inspect at least one same-pattern headless reference and one UI reference in the repository.
 4. Implement headless first (types.ts -> context.ts -> base SFCs -> optional Compact -> index.ts), then UI (styles recipe -> types.ts -> wrapper.vue -> index.ts).
-5. Wire exports and run `pnpm sui headless` and `pnpm sui ui`.
-6. Finish playground, docs, tests, and generated API data; run `pnpm sui api` and locale translations when public API changes.
+5. Wire exports and run `pnpm sui gen catalog headless` and `pnpm sui gen catalog ui`.
+6. Finish playground, docs, tests, and generated API data; run `pnpm sui gen api` and locale translations when public API changes.
 7. Validate with `pnpm typecheck`, `pnpm lint`, `pnpm fmt`, and the targeted component test, then apply the finish checklist.
 
 ## Migration or normalization

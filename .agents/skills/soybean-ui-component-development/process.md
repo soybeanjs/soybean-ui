@@ -21,17 +21,17 @@ Check in reverse: validate first, then delivery surfaces, then exports, then lay
 - Playground examples demonstrate major public capabilities.
 - Chinese and English docs are structurally synced.
 - `apps/docs/src/constants/menus.ts` is updated.
-- If public API changed, `pnpm sui api` has run.
-- Non-English API descriptions synced via `pnpm sui api-translate -- --locale <locale>`, or the untranslated reason is stated.
-- If changelog mapping, version log display, or release page was touched, `pnpm sui changelog` has run.
-- Non-English changelog copy synced via `pnpm sui changelog-translate -- --locale <locale>`, or the untranslated reason is stated.
+- If public API changed, `pnpm sui gen api` has run.
+- Non-English API descriptions synced via `pnpm sui gen api --translate --locale <locale>`, or the untranslated reason is stated.
+- If changelog mapping, version log display, or release page was touched, `pnpm sui gen changelog` has run.
+- Non-English changelog copy synced via `pnpm sui gen changelog --translate --locale <locale>`, or the untranslated reason is stated.
 - Component tests cover rendering, state, disabled, and accessibility core scenarios.
 
 ### Exports and generated files
 
 - `packages/headless/src/index.ts` and `packages/ui/src/index.ts` are updated.
-- `pnpm sui headless` has run (updates `packages/headless/src/constants/components.ts` and `packages/headless/src/namespaced/index.ts`).
-- `pnpm sui ui` has run (updates `packages/ui/src/constants/components.ts`).
+- `pnpm sui gen catalog headless` has run (updates `packages/headless/src/constants/components.ts` and `packages/headless/src/namespaced/index.ts`).
+- `pnpm sui gen catalog ui` has run (updates `packages/ui/src/constants/components.ts`).
 - Component name data, namespaced data, and API generation outputs all come from scripts; no generated files were hand-edited.
 
 ### Headless

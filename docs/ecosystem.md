@@ -239,7 +239,7 @@ Layer 1 · 适配层                  @soybeanjs/ui-uno （消费 theme）
 
 ### 7.3 API / Changelog 生成（Q6c=P2 子目录）
 
-`pnpm sui api` / `pnpm sui changelog` 扩展为按包遍历 exports：
+`pnpm sui gen api` / `pnpm sui gen changelog` 扩展为按包遍历 exports：
 
 ```
 apps/docs/src/generated/
@@ -371,7 +371,7 @@ apps/playground/src/examples/
 3. 新增 `ui-x/*`、`admin/*`、`chart/*` items。
 4. `sbean` CLI 的 `getComponentSlug` / `fetchRegistryItem` 适配命名空间路径，保留无前缀别名兼容。
 
-### 11.5 sui api 多包扩展（§7.3 执行步骤）
+### 11.5 sui gen api 多包扩展（§7.3 执行步骤）
 
 1. `scripts/cli.ts` 的 `api` 命令改为遍历 `packages` 元数据，对每包 `src/index.ts` 提取类型。
 2. 输出从 `generated/api/<component>.json` 迁移到 `generated/api/<pkg>/<component>.json`；`api-locales` 同步。

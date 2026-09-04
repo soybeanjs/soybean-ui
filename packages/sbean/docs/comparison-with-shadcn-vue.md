@@ -119,7 +119,7 @@ sbean defines 9 types ([schema.ts:27-37](../src/registry/schema.ts#L27-L37)); sh
 | **Transformers**        | 1 (`transform-import` only, [transformers/index.ts:1](../src/utils/transformers/index.ts)) | `transform.ts` (styles) + `transform-import`                                        | sbean parity for import-rewriting; no styles transform (correct for UnoCSS)                                                                                                                         |
 | **Resolver**            | BFS-queue + file-level source expansion + regex + dedup                                    | topological sort + recursive dep-tree + metadata merge                              | **D6:** keep BFS+regex; **add topo sort for write ordering only**                                                                                                                                   |
 | **Templates**           | Vite + UnoCSS config + resolver                                                            | Vite/Nuxt/Laravel/Astro scaffolds                                                   | **D10:** add **Nuxt** template (Vue-ecosystem, in-scope); skip Laravel/Astro                                                                                                                        |
-| **Schema library**      | valibot                                                                                    | zod                                                                                 | **D8:** keep valibot; **emit + publish JSON schemas** via new `pnpm sui sbean-schema` task                                                                                                          |
+| **Schema library**      | valibot                                                                                    | zod                                                                                 | **D8:** keep valibot; **emit + publish JSON schemas** via new `pnpm sui gen schema` task                                                                                                            |
 | **Public JSON schemas** | `scripts/schema.ts` exists, no published schema                                            | `registry-item.json`, `schema.json` published                                       | **GAP** → D8 closes it                                                                                                                                                                              |
 | **Framework detection** | `scan` recognizes `unocss`/`@unocss/core`/`@soybeanjs/ui-uno` + `uno.config.{ts,js,mjs}`   | `frameworks.ts` detects Nuxt/Vite/Laravel/Astro                                     | sbean is UnoCSS-focused; **D10** adds Nuxt awareness                                                                                                                                                |
 
@@ -205,7 +205,7 @@ Migrate hand-rolled JSON-RPC transport to `@modelcontextprotocol/sdk` `Server`. 
 
 ### G-7 Public JSON schema publishing (D8)
 
-Keep valibot. Add a valibot→JSON-Schema emitter (via `@valibot/to-json-schema`). Publish `sbean.json` + `registry-item.json` schemas via a new `pnpm sui sbean-schema` task, integrated with the monorepo's existing `pnpm sui` generation flow.
+Keep valibot. Add a valibot→JSON-Schema emitter (via `@valibot/to-json-schema`). Publish `sbean.json` + `registry-item.json` schemas via a new `pnpm sui gen schema` task, integrated with the monorepo's existing `pnpm sui` generation flow.
 
 ### G-8 Nuxt template (D10)
 
@@ -227,7 +227,7 @@ Tied to ADRs; priority reflects dependency + user-impact.
 | P0       | Type `registry:base` config (I-2, G-4)        | ADR-009 | Schema change + init/template refactor          |
 | P1       | Adopt 6 missing item types (G-2)              | ADR-002 | Schema additive; enforce `target` for file/page |
 | P1       | Add resolver topo-sort (I-4, G-5)             | ADR-006 | Localized to `add-components.ts` write path     |
-| P1       | Publish JSON schemas (I-5, G-7)               | ADR-008 | New `pnpm sui sbean-schema` task + emitter      |
+| P1       | Publish JSON schemas (I-5, G-7)               | ADR-008 | New `pnpm sui gen schema` task + emitter        |
 | P2       | Migrate MCP to SDK + `explain_gap` (I-3, G-6) | ADR-011 | Replace transport; preserve tool surface        |
 | P2       | Add Nuxt template (G-8)                       | ADR-010 | New template variant + framework flag           |
 | P3       | Per-registry auth object form (I-6, G-9)      | open    | `registry` command + config schema              |

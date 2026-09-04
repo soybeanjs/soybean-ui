@@ -26,7 +26,7 @@ const rtlLanguageCodes = new Set(['ar', 'fa', 'he', 'ur']);
 
 function printUsage() {
   printTranslateUsage(
-    'sui locale-translate --',
+    'sui gen locale',
     'Target locale, for example de, pt-BR, or zh-TW. If omitted, translates all locale files in packages/headless/src/locale/langs except the source locale.'
   );
 }

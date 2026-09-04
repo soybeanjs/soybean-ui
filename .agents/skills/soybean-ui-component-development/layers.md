@@ -61,7 +61,7 @@ Geometric inline styles that implement the contract — aspect-ratio padding, af
 4. `UiContext`
 5. Optional `{Name}Compact`
 6. `index.ts` and `packages/headless/src/index.ts`
-7. Run `pnpm sui headless`
+7. Run `pnpm sui gen catalog headless`
 
 ### Step 1: types.ts
 
@@ -142,7 +142,7 @@ Typical headless-owned concerns:
 
 - `index.ts` exports components, `provide{Name}Ui`, and related types.
 - Public exports also go into `packages/headless/src/index.ts`.
-- Run `pnpm sui headless` to regenerate files; never hand-edit them.
+- Run `pnpm sui gen catalog headless` to regenerate files; never hand-edit them.
 
 ### Headless anti-patterns
 
@@ -177,7 +177,7 @@ Applies to `packages/ui/src/components/**/*.{ts,vue}`.
 2. `types.ts`
 3. wrapper `.vue`
 4. `index.ts` and `packages/ui/src/index.ts`
-5. Run `pnpm sui ui`
+5. Run `pnpm sui gen catalog ui`
 
 ### Step 1: Style recipe
 
@@ -255,7 +255,7 @@ If the wrapper still needs conditionals, default content decisions, slot selecti
 ### Step 5: Register to UI exports
 
 - Update `packages/ui/src/index.ts`.
-- Run `pnpm sui ui` to regenerate `packages/ui/src/constants/components.ts` (script-generated; never hand-edit).
+- Run `pnpm sui gen catalog ui` to regenerate `packages/ui/src/constants/components.ts` (script-generated; never hand-edit).
 
 ### UI anti-patterns
 

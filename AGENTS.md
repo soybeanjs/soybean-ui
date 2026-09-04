@@ -63,27 +63,27 @@ Private applications:
 
 ## WHERE TO LOOK
 
-| Task                     | Location                                                                  | Key Pattern                                                                        |
-| ------------------------ | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| New component (logic)    | `packages/headless/src/components/[name]/`                                | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts       |
-| New component (styled)   | `packages/ui/src/components/[name]/` + `packages/ui/src/styles/[name].ts` | style recipe → types.ts → `*.vue` → index.ts                                       |
-| Variant definitions      | `packages/ui/src/styles/[name].ts`                                        | `cv()` / `scv()` with `// @unocss-include` at top                                  |
-| Shared hooks             | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (27 total)                                        |
-| Theme/sizing             | `packages/ui/src/theme/`                                                  | `ThemeColor` (8), `ThemeSize` (xs…2xl)                                             |
-| Theme CSS generation     | `packages/theme/`                                                         | `createTheme(options)` (returns CSS string)                                        |
-| UnoCSS adapter           | `packages/unocss/`                                                        | `presetUiUnocss()` / `presetSbean()`                                               |
-| Source-distribution CLI  | `packages/sbean/`                                                         | commands → registry/schema/templates/MCP                                           |
-| Utility functions        | `packages/headless/src/shared/`                                           | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                        |
-| Global types             | `packages/headless/src/types/`                                            | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                |
-| Generated API data       | `apps/docs/src/generated/api/`                                            | `pnpm sui api` baseline + `pnpm sui api-translate` locale descriptions             |
-| Generated changelog data | `apps/docs/src/generated/changelog/`                                      | `pnpm sui changelog` baseline + `pnpm sui changelog-translate` locale summaries    |
-| Docs content             | `apps/docs/src/docs/[en\|zh-CN]/`                                         | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`          |
-| Demo source              | `apps/playground/src/examples/[component]/`                               | Vue SFCs referenced by docs                                                        |
-| Browser e2e tests        | `packages/ui/test/browser/`                                               | `vitest.browser.config.ts` + `vitest-browser-vue` + `axe-core` (color-contrast on) |
-| Workspace architecture   | `docs/architecture.md`                                                    | Package/app map, dependency graph, generation/build/test/release flows             |
-| Architecture assessment  | `docs/optimize.md`                                                        | Evidence-ranked maintainability, scalability, and quality recommendations          |
-| Component dev skill      | `.agents/skills/soybean-ui-component-development/`                        | SKILL.md + layers.md (admission) + surfaces.md + e2e.md + process.md + audit.md    |
-| Headless admission gaps  | `docs/headless-admission-remediation.md`                                  | Anatomy shells, decorative slots, and parallel families to freeze or fix           |
+| Task                     | Location                                                                  | Key Pattern                                                                               |
+| ------------------------ | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| New component (logic)    | `packages/headless/src/components/[name]/`                                | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts              |
+| New component (styled)   | `packages/ui/src/components/[name]/` + `packages/ui/src/styles/[name].ts` | style recipe → types.ts → `*.vue` → index.ts                                              |
+| Variant definitions      | `packages/ui/src/styles/[name].ts`                                        | `cv()` / `scv()` with `// @unocss-include` at top                                         |
+| Shared hooks             | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (27 total)                                               |
+| Theme/sizing             | `packages/ui/src/theme/`                                                  | `ThemeColor` (8), `ThemeSize` (xs…2xl)                                                    |
+| Theme CSS generation     | `packages/theme/`                                                         | `createTheme(options)` (returns CSS string)                                               |
+| UnoCSS adapter           | `packages/unocss/`                                                        | `presetUiUnocss()` / `presetSbean()`                                                      |
+| Source-distribution CLI  | `packages/sbean/`                                                         | commands → registry/schema/templates/MCP                                                  |
+| Utility functions        | `packages/headless/src/shared/`                                           | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                               |
+| Global types             | `packages/headless/src/types/`                                            | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                       |
+| Generated API data       | `apps/docs/src/generated/api/`                                            | `pnpm sui gen api` baseline + `pnpm sui gen api --translate` locale descriptions          |
+| Generated changelog data | `apps/docs/src/generated/changelog/`                                      | `pnpm sui gen changelog` baseline + `pnpm sui gen changelog --translate` locale summaries |
+| Docs content             | `apps/docs/src/docs/[en\|zh-CN]/`                                         | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`                 |
+| Demo source              | `apps/playground/src/examples/[component]/`                               | Vue SFCs referenced by docs                                                               |
+| Browser e2e tests        | `packages/ui/test/browser/`                                               | `vitest.browser.config.ts` + `vitest-browser-vue` + `axe-core` (color-contrast on)        |
+| Workspace architecture   | `docs/architecture.md`                                                    | Package/app map, dependency graph, generation/build/test/release flows                    |
+| Architecture assessment  | `docs/optimize.md`                                                        | Evidence-ranked maintainability, scalability, and quality recommendations                 |
+| Component dev skill      | `.agents/skills/soybean-ui-component-development/`                        | SKILL.md + layers.md (admission) + surfaces.md + e2e.md + process.md + audit.md           |
+| Headless admission gaps  | `docs/headless-admission-remediation.md`                                  | Anatomy shells, decorative slots, and parallel families to freeze or fix                  |
 
 ## BUILD & CI
 
@@ -101,13 +101,13 @@ pnpm test:e2e         # browser e2e (Vitest Browser Mode + playwright chromium; 
 pnpm typecheck        # vue-tsc --noEmit --skipLibCheck (runs across all workspaces)
 pnpm release          # Generate changelog + sync templates + publish (soy release)
 pnpm stub             # switch headless development exports to src (`--reset` restores dist exports)
-pnpm sui headless     # Regenerate packages/headless/src/constants/components.ts + packages/headless/src/namespaced/index.ts from packages/headless/src/index.ts
-pnpm sui ui           # Regenerate packages/ui/src/constants/components.ts from packages/ui/src/index.ts
-pnpm sui api          # Regenerate apps/docs/src/generated/api/*.json and apps/docs/src/generated/api-locales/*.json base data
-pnpm sui api-locales     # Regenerate API i18n locale template data without re-running type extraction
-pnpm sui api-translate -- --locale <locale>  # Translate generated English API descriptions into a non-English locale
-pnpm sui changelog    # Regenerate apps/docs/src/generated/changelog/*.json and apps/docs/src/generated/changelog-locales/*.json base data
-pnpm sui changelog-translate -- --locale <locale>  # Translate generated English changelog summaries into a non-English locale
+pnpm sui gen catalog headless  # Regenerate packages/headless/src/constants/components.ts + packages/headless/src/namespaced/index.ts from packages/headless/src/index.ts
+pnpm sui gen catalog ui        # Regenerate packages/ui/src/constants/components.ts from packages/ui/src/index.ts
+pnpm sui gen api               # Regenerate apps/docs/src/generated/api/*.json and apps/docs/src/generated/api-locales/*.json base data
+pnpm sui gen api --locales-only     # Regenerate API i18n locale template data without re-running type extraction
+pnpm sui gen api --translate --locale <locale>  # Translate generated English API descriptions into a non-English locale
+pnpm sui gen changelog         # Regenerate apps/docs/src/generated/changelog/*.json and apps/docs/src/generated/changelog-locales/*.json base data
+pnpm sui gen changelog --translate --locale <locale>  # Translate generated English changelog summaries into a non-English locale
 ```
 
 - **Pre-commit hook** (Vite Plus, `.vite-hooks/pre-commit`): `vp staged`
@@ -155,7 +155,7 @@ pnpm sui changelog-translate -- --locale <locale>  # Translate generated English
 - **Compact aggregations**: For stable, data-driven composites, headless owns iteration, default content, and internal composition; UI wrappers stay thin and only handle variants, class injection, and prop/slot forwarding. Current examples span accordion, card, date-field, dialog, editable, hover-card, layout, navigation-menu, pagination, popover, stepper, and table flows.
 - **Single-class**: No UiContext; use `{name}Variants({...}, props.class)` directly
 - **index.ts re-exports**: UI component barrels re-export headless types from sub-path `@soybeanjs/headless/{component}`; `types.ts` should follow the established import style of neighboring components instead of mixing arbitrary paths
-- **Generated metadata**: after public export, API, or changelog mapping/docs-surface changes, rerun `pnpm sui headless`, `pnpm sui ui`, `pnpm sui api`, and `pnpm sui changelog` as needed; for non-English generated text, also run `pnpm sui api-translate -- --locale <locale>` and `pnpm sui changelog-translate -- --locale <locale>`
+- **Generated metadata**: after public export, API, or changelog mapping/docs-surface changes, rerun `pnpm sui gen catalog headless`, `pnpm sui gen catalog ui`, `pnpm sui gen api`, and `pnpm sui gen changelog` as needed; for non-English generated text, also run `pnpm sui gen api --translate --locale <locale>` and `pnpm sui gen changelog --translate --locale <locale>`
 
 ## ANTI-PATTERNS
 

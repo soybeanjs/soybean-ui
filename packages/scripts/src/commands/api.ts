@@ -132,11 +132,11 @@ function createTypedocTsconfig(pkg: ApiPackageConfig): Record<string, unknown> {
       types: ['vite/client']
     },
     include: [
+      'packages/scripts/src/typings/typedoc.d.ts',
       'packages/ui-x/src/**/*',
       'packages/ui/src/**/*',
       'packages/headless/src/**/*',
-      'packages/theme/src/**/*',
-      'typings/typedoc.d.ts'
+      'packages/theme/src/**/*'
     ],
     exclude: ['apps/docs/**/*', 'apps/playground/**/*', 'test/**/*']
   };

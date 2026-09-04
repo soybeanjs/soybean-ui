@@ -74,7 +74,7 @@
 - 删除 `packages/headless/src/components/card/`（含 `CardCompact` 与全部原语导出、`@soybeanjs/headless/card` 子路径）。
 - `SCard` 重写为 UI-only 组合：`CollapsibleRoot`（`defaultOpen: true`）+ 自绘 header/titleRoot/title/description/footer 节点 + `CollapsibleContent` + `CollapsibleTrigger`；`provideCollapsibleUi` 提供 recipe 的 `root`/`content`/`trigger` 子集；自绘节点保留 `data-soybean-card-*` 供测试与选择器。
 - `styles/card.ts` 配方、`CardUiSlot` 键集、`ui` 覆盖语义**完全不变**（chrome 类本来就在 UI 配方里）。
-- 同 major 内执行（breaking）：`pnpm sui headless` / `sui ui` / `sui api` 重生成，docs / playground 示例改引用。
+- 同 major 内执行（breaking）：`pnpm sui gen catalog headless` / `pnpm sui gen catalog ui` / `pnpm sui gen api` 重生成，docs / playground 示例改引用。
 
 ## 5. 桶 D — 平行家族
 
@@ -84,7 +84,7 @@
 
 ## 6. 桶 E — Compact 私有节点（Gate 2 单一 DOM 合同违规，2026-08-31 全量重扫发现）
 
-Compact 组合了**未导出**的内部节点：该节点承担家族解剖合同（`data-soybean-*`、槽位类、交互），却没有公开原语身份，导致 Compact 与手拼组合的 DOM 合同分叉。修复方式统一为**补导出**（`index.ts` + `packages/headless/src/index.ts` + `pnpm sui headless`）。反向情形（导出超出 Compact 组合，如 `FormField`、`SelectPortal`、`ComboboxArrow/Virtualizer`、`DialogProvider/Portal`、`TooltipProvider`、`ProgressProvider/ProgressCircle`、各 menu 的 item 集合）是手拼解剖与基础设施导出，**合规**。
+Compact 组合了**未导出**的内部节点：该节点承担家族解剖合同（`data-soybean-*`、槽位类、交互），却没有公开原语身份，导致 Compact 与手拼组合的 DOM 合同分叉。修复方式统一为**补导出**（`index.ts` + `packages/headless/src/index.ts` + `pnpm sui gen catalog headless`）。反向情形（导出超出 Compact 组合，如 `FormField`、`SelectPortal`、`ComboboxArrow/Virtualizer`、`DialogProvider/Portal`、`TooltipProvider`、`ProgressProvider/ProgressCircle`、各 menu 的 item 集合）是手拼解剖与基础设施导出，**合规**。
 
 | ID     | 家族              | Compact 组合的未导出节点                                       | 处置                                         | 状态 |
 | :----- | :---------------- | :------------------------------------------------------------- | :------------------------------------------- | :--: |

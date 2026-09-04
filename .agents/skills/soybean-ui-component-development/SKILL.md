@@ -71,7 +71,7 @@ Example: "audit the `dialog` component against industry baselines" means audit s
    - `packages/ui/src/styles/{name}.ts` -> `types.ts` -> wrapper `.vue` -> `index.ts`.
 3. **Complete exports and generated surfaces.**
    - Update `packages/headless/src/index.ts` and `packages/ui/src/index.ts`.
-   - Run `pnpm sui headless` and `pnpm sui ui`.
+   - Run `pnpm sui gen catalog headless` and `pnpm sui gen catalog ui`.
    - Do not hand-edit generated files.
 4. **Complete delivery surfaces** unless the user explicitly narrows scope.
    - `apps/playground/src/examples/ui/{component}/`
@@ -79,8 +79,8 @@ Example: "audit the `dialog` component against industry baselines" means audit s
    - `apps/docs/src/docs/zh-CN/ui/components/{component}.md`
    - `apps/docs/src/constants/menus.ts`
    - `packages/ui/test/specs/components/{component}.spec.ts`
-   - Run `pnpm sui api` when public API changes; for non-English locales run `pnpm sui api-translate -- --locale <locale>`.
-   - Run `pnpm sui changelog` and `pnpm sui changelog-translate -- --locale <locale>` when changelog mapping or release-facing surfaces change.
+   - Run `pnpm sui gen api` when public API changes; for non-English locales run `pnpm sui gen api --translate --locale <locale>`.
+   - Run `pnpm sui gen changelog` and `pnpm sui gen changelog --translate --locale <locale>` when changelog mapping or release-facing surfaces change.
 
 ### Existing component fix or extension
 
@@ -131,7 +131,7 @@ Execute in this order. Do not skip ahead until the current phase is done.
 ### Phase 4: Wire exports and generated files
 
 - Update `packages/headless/src/index.ts` and `packages/ui/src/index.ts`.
-- Run `pnpm sui headless` and `pnpm sui ui`.
+- Run `pnpm sui gen catalog headless` and `pnpm sui gen catalog ui`.
 - Do not hand-edit generated files.
 
 ### Phase 5: Complete delivery surfaces
@@ -139,8 +139,8 @@ Execute in this order. Do not skip ahead until the current phase is done.
 - Playground: see [surfaces.md -> Playground](surfaces.md#playground).
 - Docs: see [surfaces.md -> Docs](surfaces.md#docs).
 - Tests: see [surfaces.md -> Testing](surfaces.md#testing). For interactive components, also add a browser e2e spec — see [e2e.md](e2e.md).
-- If public API changed, run `pnpm sui api`; for non-English locales run `pnpm sui api-translate -- --locale <locale>`.
-- If changelog mapping or release surfaces changed, run `pnpm sui changelog`; for non-English locales run `pnpm sui changelog-translate -- --locale <locale>`.
+- If public API changed, run `pnpm sui gen api`; for non-English locales run `pnpm sui gen api --translate --locale <locale>`.
+- If changelog mapping or release surfaces changed, run `pnpm sui gen changelog`; for non-English locales run `pnpm sui gen changelog --translate --locale <locale>`.
 
 ### Phase 6: Validate and finish
 
@@ -192,13 +192,13 @@ New components check every entry that applies; existing component changes sync a
 
 Run these after the corresponding source changes. Never hand-edit generated outputs.
 
-- `pnpm sui headless` — regenerates `packages/headless/src/constants/components.ts` and `packages/headless/src/namespaced/index.ts` from `packages/headless/src/index.ts`.
-- `pnpm sui ui` — regenerates `packages/ui/src/constants/components.ts` from `packages/ui/src/index.ts`.
-- `pnpm sui api` — regenerates `apps/docs/src/generated/api/*.json` and `apps/docs/src/generated/api-locales/*.json` base data.
-- `pnpm sui api-locales` — regenerates API i18n locale template data without re-running type extraction.
-- `pnpm sui api-translate -- --locale <locale>` — translates generated English API descriptions into a non-English locale.
-- `pnpm sui changelog` — regenerates `apps/docs/src/generated/changelog/*.json` and `apps/docs/src/generated/changelog-locales/*.json` base data.
-- `pnpm sui changelog-translate -- --locale <locale>` — translates generated English changelog summaries into a non-English locale.
+- `pnpm sui gen catalog headless` — regenerates `packages/headless/src/constants/components.ts` and `packages/headless/src/namespaced/index.ts` from `packages/headless/src/index.ts`.
+- `pnpm sui gen catalog ui` — regenerates `packages/ui/src/constants/components.ts` from `packages/ui/src/index.ts`.
+- `pnpm sui gen api` — regenerates `apps/docs/src/generated/api/*.json` and `apps/docs/src/generated/api-locales/*.json` base data.
+- `pnpm sui gen api --locales-only` — regenerates API i18n locale template data without re-running type extraction.
+- `pnpm sui gen api --translate --locale <locale>` — translates generated English API descriptions into a non-English locale.
+- `pnpm sui gen changelog` — regenerates `apps/docs/src/generated/changelog/*.json` and `apps/docs/src/generated/changelog-locales/*.json` base data.
+- `pnpm sui gen changelog --translate --locale <locale>` — translates generated English changelog summaries into a non-English locale.
 
 ## Build and validation commands
 

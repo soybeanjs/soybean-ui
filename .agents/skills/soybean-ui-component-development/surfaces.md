@@ -105,7 +105,7 @@ Each section has a concrete content contract. Reviewers check docs against these
 - **Features** — 4–8 bullets, each one capability, prefixed with an emoji icon for scannability (follow the `button.md` reference). Cover: variant/color/size/shape counts, loading/link/icon support, a11y, TS type safety, and any signature capability (e.g. `as`/`asChild` polymorphism, `ui` override, `Compact` aggregation). Do not duplicate API table rows verbatim.
 - **Component family** _(optional)_ — a bullet list of the component's `S`-prefixed exports with a one-line role for each (e.g. `SButton` - base button; `SButtonLink` - route-aware link button). Omit entirely for single-export components.
 - **Demos** — `<PlaygroundGallery component="{component}" />` only. The underlying playground examples must progress basic → advanced (see the Playground section): start with `basic`, then `size`/`color`/`disabled`, then advanced scenarios (async loading, virtual scroll, custom slots, keyboard nav, etc.). Demos double as the basic and advanced usage examples required by industry standards; do not hand-write example code in this section.
-- **API** — `<ComponentApi component="{component}" />` only. The generated table is authoritative and already covers type definitions, default values, and required markers; do not hand-write prop/event/slot tables. Only hand-write a `DataTable`/`TypeTable` as an exception when generated API cannot cover a special page. After public API or type-description changes, rerun `pnpm sui api`; for non-English locales also `pnpm sui api-translate -- --locale <locale>`.
+- **API** — `<ComponentApi component="{component}" />` only. The generated table is authoritative and already covers type definitions, default values, and required markers; do not hand-write prop/event/slot tables. Only hand-write a `DataTable`/`TypeTable` as an exception when generated API cannot cover a special page. After public API or type-description changes, rerun `pnpm sui gen api`; for non-English locales also `pnpm sui gen api --translate --locale <locale>`.
 - **Notes** — at minimum:
   - **Architecture and benchmark differences** — a table or short prose contrasting SoybeanUI with mainstream libraries (Ant Design / Element Plus / Material UI / Mantine / Naive UI / shadcn/ui). Call out the headless/styled split, `ui` slot override, `as`/`asChild` polymorphism, `Compact` aggregation, or any deliberate API deviation and the rationale (e.g. "no `block` prop — UnoCSS `w-full` covers it").
   - **Cautions** — runtime constraints, SSR caveats, z-index/portal behavior, controlled vs uncontrolled pitfalls, or anything a user is likely to get wrong.
@@ -117,8 +117,8 @@ Each section has a concrete content contract. Reviewers check docs against these
 2. Wire `<UsageCode component="{component}" />`, `<PlaygroundGallery component="{component}" />`, and `<ComponentApi component="{component}" />`.
 3. Write Notes (architecture + benchmark differences + cautions) and FAQ.
 4. Update `apps/docs/src/constants/menus.ts`.
-5. If public API changed, run `pnpm sui api`; for non-English locales run `pnpm sui api-translate -- --locale <locale>`.
-6. If changelog mapping, release display, or changelog locale templates changed, run `pnpm sui changelog`; for non-English locales run `pnpm sui changelog-translate -- --locale <locale>`.
+5. If public API changed, run `pnpm sui gen api`; for non-English locales run `pnpm sui gen api --translate --locale <locale>`.
+6. If changelog mapping, release display, or changelog locale templates changed, run `pnpm sui gen changelog`; for non-English locales run `pnpm sui gen changelog --translate --locale <locale>`.
 
 ### Key rules
 
@@ -131,7 +131,7 @@ Each section has a concrete content contract. Reviewers check docs against these
 - The `component` value of `<ComponentApi>` defaults to the component directory name. If the doc filename differs from the component export name, pass the real component name (e.g. `input-number`).
 - Only hand-write `DataTable` / `TypeTable` as an exception when generated API cannot cover a special page.
 - The version log section on the component detail page is provided by generated changelog data; do not hand-write per-version update records in markdown.
-- After public API, type descriptions, or export surface changes, run `pnpm sui api`.
+- After public API, type descriptions, or export surface changes, run `pnpm sui gen api`.
 - API generation output is authoritative; do not hand-edit `apps/docs/src/generated/api/` or `apps/docs/src/generated/api-locales/`.
 - Changelog generation output is authoritative; do not hand-edit `apps/docs/src/generated/changelog/` or `apps/docs/src/generated/changelog-locales/`.
 

@@ -207,7 +207,7 @@ of the highest-impact internal interfaces.
   UI remains responsible for recipes and forwarding.
 
 The public barrel files are the intentional authoring surface. The `pnpm sui
-headless` and `pnpm sui ui` commands derive generated inventories from those
+headless` and `pnpm sui gen catalog ui` commands derive generated inventories from those
 barrels.
 
 ## 6. Theme and CSS architecture
@@ -280,7 +280,7 @@ per-component JSON, aggregate indexes, locale templates, docs menus, and
 component pages otherwise can diverge.
 
 The local `release-execute` chain regenerates skills and changelog data, but it
-does not run `pnpm sui api` or API translation. Public API freshness therefore
+does not run `pnpm sui gen api` or API translation. Public API freshness therefore
 depends on component-delivery work or an explicit pre-release check.
 
 ## 8. Build, test, and release framework

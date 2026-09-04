@@ -329,13 +329,13 @@
 
 **目标**：消除 docs ↔ playground 反向边；demo / raw TS 按需加载。**预计工时**：8d。**依赖条件**：docs build 基线数据（构建时间 / 峰值内存 / chunk 尺寸）。
 
-| 子任务                 | 目标                                                                                               |  负责人  | 工时 | 依赖 |
-| :--------------------- | :------------------------------------------------------------------------------------------------- | :------: | :--: | :--- |
-| F4.1 catalog 所有权    | demo catalog / 排序规则 / 共享类型移入 playground；docs 单向消费；playground 移除 `@docs/*` import | AI Agent |  2d  | —    |
-| F4.2 Nuxt fixture 定界 | 明确 source-coupled smoke 或独立示例；补 locale 文件与 build smoke                                 | AI Agent | 1.5d | —    |
-| F5.1 基线采集          | docs build time / 峰值内存 / route chunk 基线与预算                                                | AI Agent |  1d  | —    |
-| F5.2 demo 按需加载     | demo manifest 化，组件页只载对应示例；raw code 独立 lazy chunk                                     | AI Agent |  2d  | F5.1 |
-| F5.3 类型解析前移      | raw TS 解析移到 `pnpm sui api`，docs 消费 normalized preview model；1466 行模块收敛为三个深模块    | AI Agent | 1.5d | F5.1 |
+| 子任务                 | 目标                                                                                                |  负责人  | 工时 | 依赖 |
+| :--------------------- | :-------------------------------------------------------------------------------------------------- | :------: | :--: | :--- |
+| F4.1 catalog 所有权    | demo catalog / 排序规则 / 共享类型移入 playground；docs 单向消费；playground 移除 `@docs/*` import  | AI Agent |  2d  | —    |
+| F4.2 Nuxt fixture 定界 | 明确 source-coupled smoke 或独立示例；补 locale 文件与 build smoke                                  | AI Agent | 1.5d | —    |
+| F5.1 基线采集          | docs build time / 峰值内存 / route chunk 基线与预算                                                 | AI Agent |  1d  | —    |
+| F5.2 demo 按需加载     | demo manifest 化，组件页只载对应示例；raw code 独立 lazy chunk                                      | AI Agent |  2d  | F5.1 |
+| F5.3 类型解析前移      | raw TS 解析移到 `pnpm sui gen api`，docs 消费 normalized preview model；1466 行模块收敛为三个深模块 | AI Agent | 1.5d | F5.1 |
 
 ### OPT-F9/F10/F11 持续改进（低）
 

@@ -151,13 +151,13 @@ import '@soybeanjs/ui/styles.css'; // 预构建的 UnoCSS 样式表
 如果您在仓库内新增公共组件、调整导出入口或修改 API 描述，请通过官方脚本同步生成产物，而不是手动编辑生成文件。
 
 ```bash
-pnpm sui headless                 # 同步 headless 组件名称与命名空间导出
-pnpm sui ui                       # 同步 ui 组件名称
-pnpm sui api                      # 重新生成 docs api json 与 locale 英文基线数据
-pnpm sui api-locales              # 仅刷新 api locale 模板数据
-pnpm sui changelog                # 重新生成 docs changelog json 与 locale 英文基线数据
-pnpm sui api-translate -- --locale zh-CN
-pnpm sui changelog-translate -- --locale zh-CN
+pnpm sui gen catalog headless                 # 同步 headless 组件名称与命名空间导出
+pnpm sui gen catalog ui                       # 同步 ui 组件名称
+pnpm sui gen api                              # 重新生成 docs api json 与 locale 英文基线数据
+pnpm sui gen api --locales-only               # 仅刷新 api locale 模板数据
+pnpm sui gen changelog                        # 重新生成 docs changelog json 与 locale 英文基线数据
+pnpm sui gen api --translate --locale zh-CN
+pnpm sui gen changelog --translate --locale zh-CN
 ```
 
 当前文档站默认通过 `UsageCode`、`PlaygroundGallery` 与 `ComponentApi` 渲染组件文档；组件详情页与 `/releases` 还会消费 `apps/docs/src/generated/changelog/` 和 `apps/docs/src/generated/changelog-locales/` 下的版本日志生成数据。

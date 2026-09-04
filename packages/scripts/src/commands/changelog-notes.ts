@@ -11,7 +11,7 @@
  * The `summary` field is written in the default locale (English) and is
  * translatable: a `summaryKey` is generated from the version + index and
  * registered in `apps/docs/src/generated/changelog-locales/*.json`, then
- * translated for non-English locales via `pnpm sui changelog-translate`.
+ * translated for non-English locales via `pnpm sui gen changelog --translate`.
  */
 export interface ReleaseChangelogNoteSource {
   /**

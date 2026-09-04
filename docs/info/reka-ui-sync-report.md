@@ -131,7 +131,7 @@ headless 源码（8 组件修复 + 1 composable）:
 
 ### 6.1 建议后续动作（非本次范围）
 
-- `SelectRootProps.nullableValue` 属公开 API 变更，交付前应重跑 `pnpm sui headless` 与 `pnpm sui api` 刷新生成元数据（本任务未运行长耗时生成命令）。
+- `SelectRootProps.nullableValue` 属公开 API 变更，交付前应重跑 `pnpm sui gen catalog headless` 与 `pnpm sui gen api` 刷新生成元数据（本任务未运行长耗时生成命令）。
 - 第 4.3 节列出的待移植候选可编排为后续批次继续推进。
 
 ## 7. 结论

@@ -207,7 +207,7 @@ install、隔离构建、发布 tarball 或不同包管理器消费时，可能�
   本轮已修正文档基线，应用生成面缺口仍未解决。
 - API/changelog 生成器把当前时间写入 `generatedAt`，直接“重新生成后 git
   diff”并非完全确定性检查。
-- `release-execute` 会刷新 skills/changelog，但不会运行 `pnpm sui api` 或
+- `release-execute` 会刷新 skills/changelog，但不会运行 `pnpm sui gen api` 或
   API translation。
 
 **推断：**
@@ -303,7 +303,7 @@ filtered build 与独立测试。
 1. 记录 docs build time、峰值内存、入口 chunk 与各 route chunk 基线。
 2. Demo 按 component 生成 manifest，组件页面只加载对应示例；raw code 可独立
    lazy chunk 或构建时写入 JSON。
-3. 把类型源码解析移到 `pnpm sui api`，生成 UI 直接消费的 normalized preview
+3. 把类型源码解析移到 `pnpm sui gen api`，生成 UI 直接消费的 normalized preview
    model。
 4. 将 1,466 行模块收敛为三个深模块：
    - generated document loader；

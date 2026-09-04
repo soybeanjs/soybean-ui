@@ -209,7 +209,7 @@ function createDistributionReadme(): string {
     'Generate the publishable package contents from the source repository:',
     '',
     '```bash',
-    'pnpm sui skills',
+    'pnpm sui gen skills',
     '```',
     ''
   ].join('\n');

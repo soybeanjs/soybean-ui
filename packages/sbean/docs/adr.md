@@ -160,7 +160,7 @@
 
 **Context.** sbean uses valibot; shadcn uses zod AND publishes JSON schemas (`registry-item.json`, `schema.json`) for IDE autocompletion/validation. sbean has `scripts/schema.ts` but publishes no public schema. Switching to zod would enable sharing schema packages with shadcn but is a large migration touching every schema file + tests.
 
-**Decision.** Keep valibot. Add a valibot→JSON-Schema emitter (via `@valibot/to-json-schema`). Publish `sbean.json` + `registry-item.json` JSON schemas via a new `pnpm sui sbean-schema` task, integrated with the monorepo's existing `pnpm sui` generation flow.
+**Decision.** Keep valibot. Add a valibot→JSON-Schema emitter (via `@valibot/to-json-schema`). Publish `sbean.json` + `registry-item.json` JSON schemas via a new `pnpm sui gen schema` task, integrated with the monorepo's existing `pnpm sui` generation flow.
 
 **Consequences.**
 

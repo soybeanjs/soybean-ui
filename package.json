@@ -37,7 +37,7 @@
     "lint:vue": "eslint packages/ --ext .vue --fix",
     "publish-pkg": "pnpm publish -r --access public",
     "release": "soy release -e 'pnpm release-execute'",
-    "release-execute": "pnpm soy changelog && pnpm sui skills && pnpm sui changelog && pnpm sui changelog-translate && pnpm sync-template-versions",
+    "release-execute": "pnpm soy changelog && pnpm sui gen skills && pnpm sui gen changelog --translate && pnpm sync-template-versions",
     "stub": "pnpm sui stub",
     "sui": "tsx packages/scripts/src/index.ts",
     "sync-template-versions": "pnpm sui sync-template-versions",

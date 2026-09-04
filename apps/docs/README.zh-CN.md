@@ -73,11 +73,11 @@ apps/docs/
 从主仓库重新生成这些数据：
 
 ```bash
-pnpm sui api                              # 重新生成 API JSON 与 locale 基线
-pnpm sui changelog                        # 重新生成 changelog JSON 与 locale 基线
-pnpm sui sbean-schema                     # 重新生成公开 sbean JSON schema
-pnpm sui api-translate -- --locale zh-CN
-pnpm sui changelog-translate -- --locale zh-CN
+pnpm sui gen api                              # 重新生成 API JSON 与 locale 基线
+pnpm sui gen changelog                        # 重新生成 changelog JSON 与 locale 基线
+pnpm sui gen schema                           # 重新生成公开 sbean JSON schema
+pnpm sui gen api --translate --locale zh-CN
+pnpm sui gen changelog --translate --locale zh-CN
 ```
 
 生产文档构建还会重新生成 `apps/docs/public/r/` 下的 sbean registry。

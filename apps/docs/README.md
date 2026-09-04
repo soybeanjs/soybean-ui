@@ -73,11 +73,11 @@ The docs site reads generated data from `apps/docs/src/generated/`:
 To regenerate this data from the main repository:
 
 ```bash
-pnpm sui api                              # regenerate API JSON and locale baseline
-pnpm sui changelog                        # regenerate changelog JSON and locale baseline
-pnpm sui sbean-schema                     # regenerate public sbean JSON schemas
-pnpm sui api-translate -- --locale zh-CN
-pnpm sui changelog-translate -- --locale zh-CN
+pnpm sui gen api                              # regenerate API JSON and locale baseline
+pnpm sui gen changelog                        # regenerate changelog JSON and locale baseline
+pnpm sui gen schema                           # regenerate public sbean JSON schemas
+pnpm sui gen api --translate --locale zh-CN
+pnpm sui gen changelog --translate --locale zh-CN
 ```
 
 The production docs build also regenerates the public sbean registry under

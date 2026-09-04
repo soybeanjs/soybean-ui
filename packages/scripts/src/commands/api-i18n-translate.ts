@@ -15,7 +15,7 @@ const i18nModulePath = path.join(rootDir, 'apps/docs/src/modules/i18n.ts');
 
 function printUsage() {
   printTranslateUsage(
-    'sui api-translate --',
+    'sui gen api --translate',
     'Target locale, for example zh-CN or ja. If omitted, translates all available locales except the source locale.'
   );
 }
