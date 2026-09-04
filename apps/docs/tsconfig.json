@@ -1,11 +1,7 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "jsx": "preserve",
-    "jsxImportSource": "vue",
-    "lib": ["DOM", "ESNext"],
-    "module": "ESNext",
-    "moduleResolution": "bundler",
+    "types": ["node", "vite/client", "vite-plugin-vue-meta-layouts/client"],
     "paths": {
       "~/*": ["./src/*"],
       "@/*": ["../../packages/ui/src/*"],
@@ -14,18 +10,7 @@
       "@soybeanjs/ui-x": ["../../packages/ui-x/src/index.ts"],
       "@soybeanjs/theme": ["../../packages/theme/src/index.ts"],
       "@soybeanjs/theme/*": ["../../packages/theme/src/*"]
-    },
-    "types": ["node", "vite/client", "vite-plugin-vue-meta-layouts/client"],
-    "resolveJsonModule": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "noUnusedLocals": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "skipLibCheck": true
+    }
   },
-  "include": ["./**/*.ts", "./**/*.d.ts", "./**/*.tsx", "./**/*.vue"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["./**/*.ts", "./**/*.d.ts", "./**/*.tsx", "./**/*.vue"]
 }

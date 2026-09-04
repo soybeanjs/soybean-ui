@@ -1,20 +1,7 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["ESNext"],
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "types": ["node"],
-    "resolveJsonModule": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "noUnusedLocals": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "skipLibCheck": true
+    "lib": ["ESNext"]
   },
-  "include": ["./**/*.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["./**/*.ts"]
 }
