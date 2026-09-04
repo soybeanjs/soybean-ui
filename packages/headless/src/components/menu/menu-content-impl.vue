@@ -16,7 +16,14 @@ import {
 } from '../../composables';
 import type { VNodeRef } from '../../types';
 import { PopperPopup, PopperPositioner } from '../popper';
-import { FIRST_LAST_KEYS, LAST_KEYS, MENU_POPUP_DATA_ATTRIBUTE, menuCssVars, subMenuCssVars } from './shared';
+import {
+  FIRST_LAST_KEYS,
+  LAST_KEYS,
+  MENU_POPUP_DATA_ATTRIBUTE,
+  consumeMenuArrowSwitch,
+  menuCssVars,
+  subMenuCssVars
+} from './shared';
 import { provideMenuContentContext, useMenuContext, useMenuRootContext, useMenuUi } from './context';
 import type { MenuContentImplProps, MenuContentImplEmits } from './types';
 
@@ -195,8 +202,6 @@ useHideOthers(positionerElement, () => modal.value && isRoot);
 
 // Focus the popup container on open (submenus: keyboard users only). Non-trapped layers get
 // no shell auto-focus event, so the watch covers every layer shape uniformly.
-// Focus the popup container on open (submenus: keyboard users only). Non-trapped layers get
-// no shell auto-focus event, so this watch covers every layer shape uniformly.
 watch(
   open,
   value => {
@@ -204,6 +209,9 @@ watch(
     if (!isRoot && !isUsingKeyboard.value) return;
 
     nextTick(() => {
+      // Menubar-style switching: focus stays on the trigger that opened us.
+      if (consumeMenuArrowSwitch()) return;
+
       popupElement.value?.focus({ preventScroll: true });
     });
   },

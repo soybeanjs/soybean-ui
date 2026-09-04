@@ -9802,7 +9802,8 @@
             "skipdelayduration": "How much time a user has to enter another branch trigger without\nincurring a delay again.",
             "subcontentprops": "Properties forwarded to the sub content element of popup branches.",
             "subtriggerprops": "Properties forwarded to the sub trigger element of popup branches.",
-            "trigger": "How branch popups are opened.\n\n- `click`: The popup will be opened when the trigger is clicked.\n- `hover`: The popup will be opened when the trigger is hovered."
+            "trigger": "How branch popups are opened.\n\n- `click`: The popup will be opened when the trigger is clicked.\n- `hover`: The popup will be opened when the trigger is hovered.",
+            "triggerprops": "Properties forwarded to the trigger element of branch popups."
           },
           "props": "Properties for the TreeNavCompact component."
         },
@@ -9892,7 +9893,8 @@
             "skipdelayduration": "How much time a user has to enter another branch trigger without\nincurring a delay again.",
             "subcontentprops": "Properties forwarded to the sub content element of popup branches.",
             "subtriggerprops": "Properties forwarded to the sub trigger element of popup branches.",
-            "trigger": "How branch popups are opened.\n\n- `click`: The popup will be opened when the trigger is clicked.\n- `hover`: The popup will be opened when the trigger is hovered."
+            "trigger": "How branch popups are opened.\n\n- `click`: The popup will be opened when the trigger is clicked.\n- `hover`: The popup will be opened when the trigger is hovered.",
+            "triggerprops": "Properties forwarded to the trigger element of branch popups."
           },
           "props": "Properties for the TreeNavRoot component."
         },
@@ -14586,6 +14588,7 @@
             "subcontentprops": "Properties forwarded to the sub content element of popup branches.",
             "subtriggerprops": "Properties forwarded to the sub trigger element of popup branches.",
             "trigger": "How branch popups are opened.\n\n- `click`: The popup will be opened when the trigger is clicked.\n- `hover`: The popup will be opened when the trigger is hovered.",
+            "triggerprops": "Properties forwarded to the trigger element of branch popups.",
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the TreeNav component."

@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "TreeNavProps",
         "type": "Interface TreeNavProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TreeNavUi>; collapsible?: boolean; modelValue?: string; defaultValue?: string; dir?: Direction; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; placement?: Placement; showArrow?: boolean; disabled?: boolean; linkProps?: LinkExtraProps; itemProps?: MenuItemProps; groupLabelProps?: MenuGroupLabelProps; shortcutProps?: MenuShortcutProps; separatorProps?: MenuSeparatorProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; portalProps?: MenuPortalProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; asChild?: boolean; as?: AsTag | Component; items: TreeNavOptionData<TreeNavBaseOptionData>[]; moreItems?: TreeNavOptionData<TreeNavBaseOptionData>[]; moreLabel?: string; moreIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; moreProps?: ButtonProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TreeNavUi>; collapsible?: boolean; modelValue?: string; defaultValue?: string; dir?: Direction; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; placement?: Placement; showArrow?: boolean; disabled?: boolean; linkProps?: LinkExtraProps; itemProps?: MenuItemProps; groupLabelProps?: MenuGroupLabelProps; shortcutProps?: MenuShortcutProps; separatorProps?: MenuSeparatorProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; portalProps?: MenuPortalProps; popupProps?: MenuPopupProps; triggerProps?: DropdownMenuTriggerProps; arrowProps?: MenuArrowProps; asChild?: boolean; as?: AsTag | Component; items: TreeNavOptionData<TreeNavBaseOptionData>[]; moreItems?: TreeNavOptionData<TreeNavBaseOptionData>[]; moreLabel?: string; moreIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; moreProps?: ButtonProps }",
         "description": "Properties for the TreeNav component.",
         "descriptionKey": "api.generated.packages_ui_src_components_tree_nav_types.treenavprops.props",
         "sourcePath": "packages/ui/src/components/tree-nav/types.ts",
@@ -1066,6 +1066,76 @@
             ]
           },
           {
+            "name": "triggerProps",
+            "type": "DropdownMenuTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the trigger element of branch popups.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_nav_types.treenavprops.members.triggerprops",
+            "default": null,
+            "inheritedFrom": "triggerProps",
+            "sourcePath": "packages/headless/src/components/tree-nav/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DropdownMenuTriggerProps",
+                "kind": "interface",
+                "type": "DropdownMenuTriggerProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the DropdownMenuTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenutriggerprops",
+                "sourcePath": "packages/headless/src/components/dropdown-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenutriggerprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenutriggerprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenutriggerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenutriggerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "arrowProps",
             "type": "MenuArrowProps",
             "required": false,
@@ -1614,7 +1684,7 @@
         "kind": "props",
         "name": "TreeNavCompactProps",
         "type": "Interface TreeNavCompactProps",
-        "resolvedType": "{ collapsible?: boolean; modelValue?: string; defaultValue?: string; dir?: Direction; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; placement?: Placement; showArrow?: boolean; disabled?: boolean; linkProps?: LinkExtraProps; itemProps?: MenuItemProps; groupLabelProps?: MenuGroupLabelProps; shortcutProps?: MenuShortcutProps; separatorProps?: MenuSeparatorProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; portalProps?: MenuPortalProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; asChild?: boolean; as?: AsTag | Component; items: TreeNavOptionData<TreeNavBaseOptionData>[]; moreItems?: TreeNavOptionData<TreeNavBaseOptionData>[]; moreLabel?: string; moreIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; moreProps?: ButtonProps }",
+        "resolvedType": "{ collapsible?: boolean; modelValue?: string; defaultValue?: string; dir?: Direction; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; placement?: Placement; showArrow?: boolean; disabled?: boolean; linkProps?: LinkExtraProps; itemProps?: MenuItemProps; groupLabelProps?: MenuGroupLabelProps; shortcutProps?: MenuShortcutProps; separatorProps?: MenuSeparatorProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; portalProps?: MenuPortalProps; popupProps?: MenuPopupProps; triggerProps?: DropdownMenuTriggerProps; arrowProps?: MenuArrowProps; asChild?: boolean; as?: AsTag | Component; items: TreeNavOptionData<TreeNavBaseOptionData>[]; moreItems?: TreeNavOptionData<TreeNavBaseOptionData>[]; moreLabel?: string; moreIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; moreProps?: ButtonProps }",
         "description": "Properties for the TreeNavCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_tree_nav_types.treenavcompactprops.props",
         "sourcePath": "packages/headless/src/components/tree-nav/types.ts",
@@ -2594,6 +2664,76 @@
                 "typeParameters": [],
                 "external": false,
                 "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "triggerProps",
+            "type": "DropdownMenuTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the trigger element of branch popups.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_nav_types.treenavcompactprops.members.triggerprops",
+            "default": null,
+            "inheritedFrom": "triggerProps",
+            "sourcePath": "packages/headless/src/components/tree-nav/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DropdownMenuTriggerProps",
+                "kind": "interface",
+                "type": "DropdownMenuTriggerProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the DropdownMenuTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenutriggerprops",
+                "sourcePath": "packages/headless/src/components/dropdown-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenutriggerprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenutriggerprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenutriggerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenutriggerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
                 "callables": []
               }
             ]
@@ -3658,7 +3798,7 @@
         "kind": "props",
         "name": "TreeNavRootProps",
         "type": "Interface TreeNavRootProps",
-        "resolvedType": "{ modelValue?: string; defaultValue?: string; dir?: Direction; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; placement?: Placement; showArrow?: boolean; disabled?: boolean; linkProps?: LinkExtraProps; itemProps?: MenuItemProps; groupLabelProps?: MenuGroupLabelProps; shortcutProps?: MenuShortcutProps; separatorProps?: MenuSeparatorProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; portalProps?: MenuPortalProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ modelValue?: string; defaultValue?: string; dir?: Direction; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; placement?: Placement; showArrow?: boolean; disabled?: boolean; linkProps?: LinkExtraProps; itemProps?: MenuItemProps; groupLabelProps?: MenuGroupLabelProps; shortcutProps?: MenuShortcutProps; separatorProps?: MenuSeparatorProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; portalProps?: MenuPortalProps; popupProps?: MenuPopupProps; triggerProps?: DropdownMenuTriggerProps; arrowProps?: MenuArrowProps; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the TreeNavRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_tree_nav_types.treenavrootprops.props",
         "sourcePath": "packages/headless/src/components/tree-nav/types.ts",
@@ -4627,6 +4767,76 @@
                 "typeParameters": [],
                 "external": false,
                 "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "triggerProps",
+            "type": "DropdownMenuTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the trigger element of branch popups.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_nav_types.treenavrootprops.members.triggerprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-nav/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DropdownMenuTriggerProps",
+                "kind": "interface",
+                "type": "DropdownMenuTriggerProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the DropdownMenuTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenutriggerprops",
+                "sourcePath": "packages/headless/src/components/dropdown-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenutriggerprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenutriggerprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenutriggerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenutriggerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
                 "callables": []
               }
             ]

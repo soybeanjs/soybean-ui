@@ -2,7 +2,7 @@ import type { ComputedRef } from 'vue';
 import type { Direction, Placement, UiClass, ToContext } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type { ButtonProps } from '../button/types';
-import type { DropdownMenuTriggerType } from '../dropdown-menu/types';
+import type { DropdownMenuTriggerProps, DropdownMenuTriggerType } from '../dropdown-menu/types';
 import type { KbdValue } from '../kbd/types';
 import type { LinkBaseProps, LinkExtraProps } from '../link/types';
 import type {
@@ -149,6 +149,10 @@ export interface TreeNavRootProps extends Omit<PrimitiveWithBaseProps, 'onSelect
    */
   popupProps?: MenuPopupProps;
   /**
+   * Properties forwarded to the trigger element of branch popups.
+   */
+  triggerProps?: DropdownMenuTriggerProps;
+  /**
    * Properties forwarded to the arrow element of popups.
    */
   arrowProps?: MenuArrowProps;
@@ -179,6 +183,17 @@ export interface TreeNavRootSlots {
 }
 
 /**
+ * Collection data registered by each top-level trigger so popup key
+ * navigation can map trigger values back to their elements.
+ */
+export interface TreeNavTriggerItemData {
+  /** The stable value of the trigger. */
+  value: string;
+  /** Whether the trigger opens a branch popup. */
+  isBranch?: boolean;
+}
+
+/**
  * Configuration shared by the TreeNav primitives.
  *
  * Top-level link and popup-related props are provided as individual reactive
@@ -196,6 +211,7 @@ export interface TreeNavRootContextParams extends ToContext<
   | 'showArrow'
   | 'portalProps'
   | 'popupProps'
+  | 'triggerProps'
   | 'arrowProps'
   | 'itemProps'
   | 'linkProps'
@@ -213,6 +229,22 @@ export interface TreeNavRootContextParams extends ToContext<
    * Select an entry. Guarded against disabled bars and entries.
    */
   onSelect(item: TreeNavOptionData, event: Event): void;
+  /**
+   * The value of the branch popup that is currently open, if any. Drives the
+   * controlled popups so the root can switch them during key navigation.
+   */
+  openValue: ComputedRef<string | undefined>;
+  /**
+   * Track branch popup open state changes reported by the popups.
+   */
+  onBranchOpenChange(value: string, isOpen: boolean): void;
+  /**
+   * Menubar-style ArrowLeft/ArrowRight while a branch popup is open: move to
+   * the previous/next trigger, opening its popup (branch) or focusing it
+   * (link/leaf). Reported from both the popup and its own trigger so the
+   * navigation also works while the focus rests on the open trigger.
+   */
+  onPopupArrowNavigation(value: string, event: KeyboardEvent): void;
 }
 
 /**

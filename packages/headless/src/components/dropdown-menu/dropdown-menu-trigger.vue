@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<DropdownMenuTriggerProps>(), {
   as: 'button'
 });
 
-const { popupId, triggerId, initTriggerId } = useMenuContext('DropdownMenuTrigger');
+const { open, popupElement, popupId, triggerId, initTriggerId } = useMenuContext('DropdownMenuTrigger');
 const popperContext = usePopperRootContext('DropdownMenuTrigger');
 const { hoverable, delayDuration, skipDelayDuration } = useDropdownMenuRootContext('DropdownMenuTrigger');
 
@@ -23,12 +23,18 @@ initTriggerId();
 
 const triggerMode = computed<PopperTriggerType>(() => (hoverable.value ? 'hover' : 'click'));
 
-// ArrowDown opens the menu; Enter/Space toggle through the native button click the shell handles.
+// ArrowDown opens the menu, or moves focus into it while it is already open
+// (menubar semantics: switching keeps focus on the trigger). Enter/Space toggle
+// through the native button click the shell handles.
 function onKeyDown(event: KeyboardEvent) {
   if (props.disabled) return;
   if (event.key !== 'ArrowDown') return;
 
-  popperContext.onOpenChange(true, 'trigger-click');
+  if (open.value) {
+    popupElement.value?.focus({ preventScroll: true });
+  } else {
+    popperContext.onOpenChange(true, 'trigger-click');
+  }
   // prevent keydown from scrolling window / first focused item to execute
   // that keydown (inadvertently closing the menu)
   event.preventDefault();

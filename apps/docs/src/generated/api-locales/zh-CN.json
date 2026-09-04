@@ -8091,10 +8091,10 @@
       },
       "packages_headless_src_components_split_nav_types": {
         "splitnavmode": "SplitNav 组件可用的菜单样式。\n\n- `dual-vertical`：一级垂直 + 其余树状结构垂直。\n- `vertical-horizontal`：一级垂直布局 + 嵌套的 TreeNav。\n- `horizontal-vertical`：一级水平布局 + 嵌套的 TreeMenu。\n- `horizontal-dual-vertical`：一级水平布局 + 嵌套的双垂直布局。",
-        "splitnavoptiondata": "",
+        "splitnavoptiondata": "SplitNav 组件的递归选项数据。",
         "splitnavrootemits": {
           "callables": {
-            "open": "",
+            "open": "当包含子项的菜单项被激活且其嵌套面板展开时触发。\n\n有效载荷是被激活父项的完整选项数据，包括\n子项，以便调用方能够对展开操作做出响应——例如，同时激活\n第一个子项。",
             "select": "当选择叶子菜单项时触发。",
             "update_collapsed": "当嵌套的 TreeMenu 窗格的折叠状态发生变化时触发。",
             "update_modelvalue": "当模型值发生变化时触发。"
@@ -9802,7 +9802,8 @@
             "skipdelayduration": "用户有多少时间可以触发另一个分支，而不会\n再次产生延迟。",
             "subcontentprops": "属性将转发至弹出窗口分支的子内容元素。",
             "subtriggerprops": "转发至弹出窗口分支子触发器元素的属性。",
-            "trigger": "分支弹出窗口的打开方式。\n\n- `click`：点击触发器时，弹出窗口将打开。\n- `hover`：将鼠标悬停在触发器上时，弹出窗口将打开。"
+            "trigger": "分支弹出窗口的打开方式。\n\n- `click`：点击触发器时，弹出窗口将打开。\n- `hover`：将鼠标悬停在触发器上时，弹出窗口将打开。",
+            "triggerprops": "转发至分支弹出窗口触发元素的属性。"
           },
           "props": "TreeNavCompact 组件的属性。"
         },
@@ -9833,7 +9834,7 @@
             "hidden": "该选项是否被隐藏。",
             "href": "点击该链接时应跳转到的 URL。",
             "icon": "标签前渲染的图标。",
-            "isgroup": "",
+            "isgroup": "该选项是否为纯视觉分组容器，仅用于分组其子元素，且自身绝不会被选中。",
             "label": "该选项的标签。",
             "separator": "是否在分支弹出窗口中，此选项后显示分隔符。",
             "shortcut": "在分支弹出窗口中，选项末尾显示的快捷方式。",
@@ -9892,7 +9893,8 @@
             "skipdelayduration": "用户有多少时间可以触发另一个分支，而不会\n再次引发延迟。",
             "subcontentprops": "属性将转发至弹出窗口分支的子内容元素。",
             "subtriggerprops": "转发至弹出窗口分支子触发器元素的属性。",
-            "trigger": "分支弹出窗口的打开方式。\n\n- `click`：点击触发器时，弹出窗口将打开。\n- `hover`：将鼠标悬停在触发器上时，弹出窗口将打开。"
+            "trigger": "分支弹出窗口的打开方式。\n\n- `click`：点击触发器时，弹出窗口将打开。\n- `hover`：将鼠标悬停在触发器上时，弹出窗口将打开。",
+            "triggerprops": "转发至分支弹出窗口触发元素的属性。"
           },
           "props": "TreeNavRoot 组件的属性。"
         },
@@ -13747,7 +13749,7 @@
       "packages_ui_src_components_split_nav_types": {
         "splitnavemits": {
           "callables": {
-            "open": "",
+            "open": "当包含子项的菜单项被激活且其嵌套面板展开时触发。\n\n有效载荷是被激活父项的完整选项数据，包括\n子项，以便调用方能够对展开操作做出响应——例如，同时激活\n第一个子项。",
             "select": "当选择叶子菜单项时触发。",
             "update_collapsed": "当嵌套的 TreeMenu 窗格的折叠状态发生变化时触发。",
             "update_modelvalue": "当模型值发生变化时触发。"
@@ -14586,6 +14588,7 @@
             "subcontentprops": "属性将转发至弹出窗口分支的子内容元素。",
             "subtriggerprops": "转发至弹出窗口分支子触发器元素的属性。",
             "trigger": "分支弹出窗口的打开方式。\n\n- `click`：点击触发器时，弹出窗口将打开。\n- `hover`：将鼠标悬停在触发器上时，弹出窗口将打开。",
+            "triggerprops": "转发至分支弹出窗口触发元素的属性。",
             "ui": "该组件的按槽类重写。"
           },
           "props": "TreeNav 组件的属性。"

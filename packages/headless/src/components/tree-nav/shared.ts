@@ -1,4 +1,5 @@
-import { computed } from 'vue';
+import { computed, mergeProps } from 'vue';
+import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
 import type { LinkProps, LinkExtraProps } from '../link/types';
 import type { MenuOptionData } from '../menu';
 import type { TreeNavOptionData, TreeNavRootContextParams } from './types';
@@ -8,9 +9,28 @@ export const hasChildren = (item: TreeNavOptionData): boolean => Boolean(item.ch
 export const isLinkItem = (item: TreeNavOptionData): boolean => Boolean(item.to || item.href);
 
 /**
+ * Root element attribute of the navigation bar. Shared with DropdownMenu so
+ * its focus-restore logic can detect TreeNav keyboard switching.
+ */
+export const TREE_NAV_DATA_ATTRIBUTE = 'data-soybean-tree-nav';
+
+/**
  * Stable roving tab-stop id of the trailing "more" trigger.
  */
 export const TREE_NAV_MORE_VALUE = '__soybean-tree-nav-more__';
+
+/**
+ * Menubar semantics: focus and pointer-down inside the TreeNav bar are
+ * menu-switching interactions (arrow-key roaming, trigger toggling), not
+ * outside dismissals — the root orchestrates popup closing itself.
+ */
+function guardTreeNavPopupDismiss(event: FocusOutsideEvent | PointerDownOutsideEvent) {
+  const target = event.target as HTMLElement | null;
+
+  if (target?.closest?.(`[${TREE_NAV_DATA_ATTRIBUTE}]`)) {
+    event.preventDefault();
+  }
+}
 
 /**
  * Recursively remove options flagged as `hidden`, aligned with TreeMenu.
@@ -62,9 +82,16 @@ export function createTreeNavPopupSelectHandler(onSelect: (item: TreeNavOptionDa
 /**
  * Assemble all props of a branch popup (popup config + options config) from
  * flattened root-context entries.
+ *
+ * `getValue` reports the stable trigger value of the popup so the root can
+ * keep it under controlled open state and switch popups on arrow keys
+ * (menubar-style keyboard model).
  */
-export function createTreeNavBranchPopupBind(ctx: TreeNavRootContextParams) {
+export function createTreeNavBranchPopupBind(ctx: TreeNavRootContextParams, getValue: () => string) {
   const {
+    openValue,
+    onBranchOpenChange,
+    onPopupArrowNavigation,
     selected,
     dir,
     trigger,
@@ -74,6 +101,7 @@ export function createTreeNavBranchPopupBind(ctx: TreeNavRootContextParams) {
     showArrow,
     portalProps,
     popupProps,
+    triggerProps,
     arrowProps,
     itemProps,
     linkProps,
@@ -92,8 +120,20 @@ export function createTreeNavBranchPopupBind(ctx: TreeNavRootContextParams) {
     placement: placement.value,
     showArrow: showArrow.value,
     portalProps: portalProps.value,
-    popupProps: popupProps.value,
+    popupProps: mergeProps(
+      { ...popupProps.value },
+      {
+        onKeydown: (event: KeyboardEvent) => onPopupArrowNavigation(getValue(), event)
+      }
+    ),
+    triggerProps: triggerProps.value,
     arrowProps: arrowProps.value,
+    contentProps: {
+      // Menubar semantics: focus resting on triggers after arrow-key switching
+      // must not dismiss the open popup (see `guardTreeNavPopupDismiss`).
+      onFocusOutside: guardTreeNavPopupDismiss,
+      onPointerDownOutside: guardTreeNavPopupDismiss
+    },
     selectedValue: selected.value,
     itemProps: itemProps.value,
     linkProps: linkProps.value,
@@ -101,6 +141,15 @@ export function createTreeNavBranchPopupBind(ctx: TreeNavRootContextParams) {
     shortcutProps: shortcutProps.value,
     separatorProps: separatorProps.value,
     subTriggerProps: subTriggerProps.value,
-    subContentProps: subContentProps.value
+    subContentProps: mergeProps(
+      { ...subContentProps.value },
+      {
+        // Sub popups are portaled to body, so their key events never bubble
+        // back to the branch popup surface — bind the handler here as well.
+        onKeydown: (event: KeyboardEvent) => onPopupArrowNavigation(getValue(), event)
+      }
+    ),
+    open: openValue.value === getValue(),
+    'onUpdate:open': (isOpen: boolean) => onBranchOpenChange(getValue(), isOpen)
   }));
 }

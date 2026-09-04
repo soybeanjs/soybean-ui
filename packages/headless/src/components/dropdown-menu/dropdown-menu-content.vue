@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { watch, watchPostEffect, onWatcherCleanup } from 'vue';
+import { getActiveElement } from '../../shared';
+import { MENU_POPUP_DATA_ATTRIBUTE } from '../menu/shared';
+import { TREE_NAV_DATA_ATTRIBUTE } from '../tree-nav/shared';
 import { useMenuContext } from '../menu/context';
 import { useForwardListeners } from '../../composables';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
@@ -23,12 +26,24 @@ const emit = defineEmits<DropdownMenuContentEmits>();
 
 const listeners = useForwardListeners(emit);
 
-const { open, triggerElement } = useMenuContext('DropdownMenuContent');
+const { open, triggerElement, popupElement } = useMenuContext('DropdownMenuContent');
 const { modal, hoverable } = useDropdownMenuRootContext('DropdownMenuContent');
 
 function close() {
   open.value = false;
 }
+
+// Whether focus has already settled somewhere else than this popup's own
+// surface — another popup or a TreeNav trigger — meaning a keyboard switch
+// (menubar-style arrow navigation) is in progress and focus must be left alone.
+const isFocusSettledElsewhere = () => {
+  const activeElement = getActiveElement();
+  const activePopup = activeElement?.closest(`[${MENU_POPUP_DATA_ATTRIBUTE}]`);
+
+  return Boolean(
+    (activePopup && activePopup !== popupElement.value) || activeElement?.closest(TREE_NAV_DATA_ATTRIBUTE)
+  );
+};
 
 // Close on scroll of any ancestor scroll container of the trigger (hover mode only).
 watchPostEffect(() => {
@@ -56,6 +71,8 @@ watch(open, (value, previousValue) => {
   if (hoverable.value || hasInteractedOutsideRef) return;
 
   setTimeout(() => {
+    if (isFocusSettledElsewhere()) return;
+
     triggerElement.value?.focus();
   }, 0);
 });
@@ -64,6 +81,8 @@ const onCloseAutoFocus = (event: Event) => {
   if (event.defaultPrevented || hoverable.value || hasInteractedOutsideRef) return;
 
   setTimeout(() => {
+    if (isFocusSettledElsewhere()) return;
+
     triggerElement.value?.focus();
   }, 0);
 

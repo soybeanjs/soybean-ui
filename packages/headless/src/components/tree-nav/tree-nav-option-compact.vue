@@ -43,14 +43,20 @@ const hasChildSelected = computed(() =>
 
 const linkBind = computed(() => buildTreeNavLinkProps(props.item, linkProps.value, isDisabled.value));
 
-const branchPopupBind = createTreeNavBranchPopupBind(rootCtx);
+// Stable collection data: a fresh template object would re-register the item
+// on every render. The three template branches are mutually exclusive, so a
+// single object serves the link, branch, and leaf cases.
+const itemData = { value: props.item.value, isBranch: !isLinkItem(props.item) && hasChildren(props.item) };
+
+const branchPopupBind = createTreeNavBranchPopupBind(rootCtx, () => props.item.value);
 
 // Roving focus item as a hook: exactly one of the three shape branches renders, and all
 // share the same group registration, so one hook call covers the link leaf, the branch
 // trigger and the plain leaf.
 const { setItemElement, itemProps } = useRovingFocusGroupItem({
   tabStopId: computed(() => props.item.value),
-  focusable: computed(() => !isDisabled.value)
+  focusable: computed(() => !isDisabled.value),
+  itemData: computed(() => itemData)
 });
 
 // Pinned to `MenuOptionData<string>` so the generic dropdown compact resolves
@@ -101,6 +107,7 @@ const handlePopupSelect = createTreeNavPopupSelectHandler(onSelect);
     v-bind="branchPopupBind"
     :items="branchItems"
     :disabled="isDisabled"
+    :modal="false"
     @select="handlePopupSelect"
   >
     <template #trigger>

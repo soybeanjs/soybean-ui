@@ -381,11 +381,157 @@ describe('STreeNav', () => {
 
       expect(menuItem).toBeTruthy();
 
-      // Keys dispatched inside the popup never reach the bar's handlers.
-      await menuItem!.trigger('keydown', { key: 'ArrowRight' });
+      // Non-switching popup keys stay with the menu machinery.
+      await menuItem!.trigger('keydown', { key: 'ArrowDown' });
       await nextTick();
 
       expect(wrapper.find('[role="menu"][data-state="open"]').exists()).toBe(true);
+      expect(docsTrigger.attributes('aria-expanded')).toBe('true');
+
+      wrapper.unmount();
+    });
+
+    it('switches branch popups with ←/→ from inside an open popup', async () => {
+      const wrapper = mountTreeNav({ trigger: 'click' });
+
+      const [docsTrigger, blogTrigger] = wrapper.findAll('[data-soybean-dropdown-menu-trigger]');
+      (docsTrigger.element as HTMLElement).focus();
+
+      await docsTrigger.trigger('keydown', { key: 'ArrowDown' });
+      await nextTick();
+      await nextTick();
+
+      // ArrowRight on a plain item without a submenu moves to the next
+      // trigger and opens its popup. Menubar convention: focus rests on the
+      // trigger; ↓ walks into the menu items.
+      const menuItem = wrapper.findAll('[role="menuitem"]').find(item => item.text() === 'Getting Started');
+      await menuItem!.trigger('keydown', { key: 'ArrowRight' });
+      await nextTick();
+      await nextTick();
+
+      expect(blogTrigger.attributes('aria-expanded')).toBe('true');
+      expect(docsTrigger.attributes('aria-expanded')).toBe('false');
+      expect(document.activeElement).toBe(blogTrigger.element);
+
+      // ArrowLeft walks back to the previous trigger and reopens its popup.
+      await blogTrigger.trigger('keydown', { key: 'ArrowLeft' });
+      await nextTick();
+      await nextTick();
+
+      expect(docsTrigger.attributes('aria-expanded')).toBe('true');
+      expect(blogTrigger.attributes('aria-expanded')).toBe('false');
+      expect(document.activeElement).toBe(docsTrigger.element);
+
+      wrapper.unmount();
+    });
+
+    it('closes the popup and focuses a following leaf with ArrowRight', async () => {
+      const wrapper = mountTreeNav({ trigger: 'click' });
+
+      const [, blogTrigger] = wrapper.findAll('[data-soybean-dropdown-menu-trigger]');
+      (blogTrigger.element as HTMLElement).focus();
+
+      await blogTrigger.trigger('keydown', { key: 'ArrowDown' });
+      await nextTick();
+      await nextTick();
+
+      expect(blogTrigger.attributes('aria-expanded')).toBe('true');
+
+      // The next entry is a plain leaf: the popup closes and only the focus
+      // moves on.
+      await blogTrigger.trigger('keydown', { key: 'ArrowRight' });
+      await nextTick();
+      await nextTick();
+
+      expect(document.activeElement?.textContent).toContain('Pricing');
+      expect(blogTrigger.attributes('aria-expanded')).toBe('false');
+      expect(wrapper.find('[role="menu"][data-state="open"]').exists()).toBe(false);
+
+      wrapper.unmount();
+    });
+
+    it('lets a submenu trigger own ArrowRight to expand its own submenu', async () => {
+      const wrapper = mountTreeNav({ trigger: 'click' });
+
+      const [docsTrigger, blogTrigger] = wrapper.findAll('[data-soybean-dropdown-menu-trigger]');
+      (docsTrigger.element as HTMLElement).focus();
+
+      await docsTrigger.trigger('keydown', { key: 'ArrowDown' });
+      await nextTick();
+      await nextTick();
+
+      const subTrigger = wrapper.findAll('[data-soybean-menu-sub-trigger]').find(item => item.text() === 'Components');
+      expect(subTrigger).toBeTruthy();
+
+      await subTrigger!.trigger('keydown', { key: 'ArrowRight' });
+      await nextTick();
+      await nextTick();
+
+      // The submenu expands instead of switching to the next bar entry.
+      expect(subTrigger!.attributes('aria-expanded')).toBe('true');
+      expect(document.activeElement).not.toBe(blogTrigger.element);
+      expect(blogTrigger.attributes('aria-expanded')).toBe('false');
+
+      wrapper.unmount();
+    });
+
+    it('switches to the next trigger from inside an open submenu with ArrowRight', async () => {
+      const wrapper = mountTreeNav({ trigger: 'click' });
+
+      const [docsTrigger, blogTrigger] = wrapper.findAll('[data-soybean-dropdown-menu-trigger]');
+      (docsTrigger.element as HTMLElement).focus();
+
+      await docsTrigger.trigger('keydown', { key: 'ArrowDown' });
+      await nextTick();
+      await nextTick();
+
+      const subTrigger = wrapper.findAll('[data-soybean-menu-sub-trigger]').find(item => item.text() === 'Components');
+      await subTrigger!.trigger('keydown', { key: 'ArrowRight' });
+      await nextTick();
+      await nextTick();
+
+      const buttonItem = wrapper.findAll('[role="menuitem"]').find(item => item.text() === 'Button');
+      expect(buttonItem).toBeTruthy();
+
+      // ArrowRight on a nested leaf closes every popup and moves to the next
+      // trigger, opening its popup. Focus rests on the trigger (menubar).
+      await buttonItem!.trigger('keydown', { key: 'ArrowRight' });
+      await nextTick();
+      await nextTick();
+
+      expect(blogTrigger.attributes('aria-expanded')).toBe('true');
+      expect(docsTrigger.attributes('aria-expanded')).toBe('false');
+      expect(subTrigger!.attributes('aria-expanded')).toBe('false');
+      expect(document.activeElement).toBe(blogTrigger.element);
+
+      wrapper.unmount();
+    });
+
+    it('closes only the submenu with ArrowLeft inside it', async () => {
+      const wrapper = mountTreeNav({ trigger: 'click' });
+
+      const [docsTrigger] = wrapper.findAll('[data-soybean-dropdown-menu-trigger]');
+      (docsTrigger.element as HTMLElement).focus();
+
+      await docsTrigger.trigger('keydown', { key: 'ArrowDown' });
+      await nextTick();
+      await nextTick();
+
+      const subTrigger = wrapper.findAll('[data-soybean-menu-sub-trigger]').find(item => item.text() === 'Components');
+      await subTrigger!.trigger('keydown', { key: 'ArrowRight' });
+      await nextTick();
+      await nextTick();
+
+      const buttonItem = wrapper.findAll('[role="menuitem"]').find(item => item.text() === 'Button');
+      await buttonItem!.trigger('keydown', { key: 'ArrowLeft' });
+      await nextTick();
+      await nextTick();
+
+      // Only the submenu closes; the parent popup stays open and focus
+      // returns to the submenu trigger.
+      expect(subTrigger!.attributes('aria-expanded')).toBe('false');
+      expect(docsTrigger.attributes('aria-expanded')).toBe('true');
+      expect(document.activeElement).toBe(subTrigger!.element);
 
       wrapper.unmount();
     });

@@ -34,3 +34,21 @@ export const SUB_CLOSE_KEYS: Record<Direction, string[]> = {
 };
 
 export const COMMON_SLOTS = ['item', 'item-leading', 'item-trailing'];
+
+/**
+ * One-shot flag for menubar-style popup switching: when an orchestrator
+ * (TreeNav) moves between triggers with arrow keys, the freshly opened popup
+ * must keep focus on its trigger instead of pulling focus into the popup
+ * surface. Marked before the switch, consumed by the open-focus watch.
+ */
+let arrowSwitchPending = false;
+
+export function markMenuArrowSwitch() {
+  arrowSwitchPending = true;
+}
+
+export function consumeMenuArrowSwitch(): boolean {
+  const pending = arrowSwitchPending;
+  arrowSwitchPending = false;
+  return pending;
+}

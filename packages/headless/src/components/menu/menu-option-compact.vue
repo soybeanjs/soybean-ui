@@ -108,7 +108,7 @@ const linkProps = computed<LinkProps>(() =>
       </template>
     </MenuItemSlotCompact>
   </MenuItem>
-  <MenuSub v-else v-bind="subProps" @update:open="emit('update:open', $event)">
+  <MenuSub v-else v-bind="subProps">
     <MenuSubTrigger
       v-bind="subTriggerProps"
       :disabled="item.disabled ?? subTriggerProps?.disabled"

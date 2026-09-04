@@ -57,18 +57,23 @@ const moreEntry = computed(() => ({
 
 const moreDisabled = computed(() => disabled.value || Boolean(props.moreProps?.disabled));
 
+// Stable collection data: a fresh template object would re-register the item
+// on every render.
+const moreItemData = { value: TREE_NAV_MORE_VALUE, isBranch: true };
+
 // Roving focus item as a hook: registers the trailing "more" trigger with the root group
 // and exposes the collection item + roving-focus data attributes.
 const { setItemElement, itemProps } = useRovingFocusGroupItem({
   tabStopId: computed(() => TREE_NAV_MORE_VALUE),
-  focusable: computed(() => !moreDisabled.value)
+  focusable: computed(() => !moreDisabled.value),
+  itemData: computed(() => moreItemData)
 });
 
 const moreTriggerBind = computed(() => ({ ...props.moreProps, disabled: moreDisabled.value }));
 
 const moreBindings = computed(() => ({ ...moreTriggerBind.value, ...itemProps.value }));
 
-const branchPopupBind = createTreeNavBranchPopupBind(rootCtx);
+const branchPopupBind = createTreeNavBranchPopupBind(rootCtx, () => TREE_NAV_MORE_VALUE);
 
 // Slots ----------------------------------------------------------------------
 
@@ -91,6 +96,7 @@ const handlePopupSelect = createTreeNavPopupSelectHandler(onSelect);
   <DropdownMenuCompact
     v-if="hasMoreItems"
     v-bind="branchPopupBind"
+    :modal="false"
     :items="moreList"
     :disabled="disabled"
     @select="handlePopupSelect"
