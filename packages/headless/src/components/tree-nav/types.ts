@@ -1,5 +1,5 @@
 import type { ComputedRef } from 'vue';
-import type { Direction, Placement, UiClass, ToContext } from '../../types';
+import type { Direction, Placement, UiClass, ToContext, BaseProps } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type { ButtonProps } from '../button/types';
 import type { DropdownMenuTriggerProps, DropdownMenuTriggerType } from '../dropdown-menu/types';
@@ -183,6 +183,11 @@ export interface TreeNavRootSlots {
 }
 
 /**
+ * Properties for the TreeNavRoot component
+ */
+export interface TreeNavOverflowProps extends BaseProps {}
+
+/**
  * Collection data registered by each top-level trigger so popup key
  * navigation can map trigger values back to their elements.
  */
@@ -337,7 +342,7 @@ export type TreeNavCompactSlots = TreeNavOptionsCompactSlots;
 /**
  * Available UI slots for the TreeNav component.
  */
-export type TreeNavUiSlot = 'root' | 'item' | 'itemIcon' | 'itemChevron' | 'itemLinkIcon';
+export type TreeNavUiSlot = 'root' | 'overflow' | 'item' | 'itemIcon' | 'itemTriggerIcon' | 'itemLinkIcon';
 
 /**
  * UI class overrides for the TreeNav component.

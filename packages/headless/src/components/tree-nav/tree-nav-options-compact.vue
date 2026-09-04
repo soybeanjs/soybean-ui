@@ -50,6 +50,12 @@ const moreList = computed<MenuOptionData<string>[]>(() => filterHiddenTreeNavOpt
 
 const hasMoreItems = computed(() => Boolean(moreList.value.length));
 
+// Collapsed items live outside the visible `filteredItems` path search, so the
+// "more" trigger derives its own active-path state from `moreList`.
+const moreHasChildSelected = computed(() =>
+  selected.value !== undefined && getTreePaths(selected.value, moreList.value).length > 0 ? '' : undefined
+);
+
 const moreEntry = computed(() => ({
   label: props.moreLabel ?? 'More',
   icon: props.moreIcon ?? 'lucide:ellipsis'
@@ -103,7 +109,13 @@ const handlePopupSelect = createTreeNavPopupSelectHandler(onSelect);
   >
     <template #trigger>
       <slot name="more-trigger" :label="moreEntry.label" :icon="moreEntry.icon">
-        <Button v-bind="moreBindings" :ref="setItemElement" :class="ui.item" :data-selected="false">
+        <Button
+          v-bind="moreBindings"
+          :ref="setItemElement"
+          :class="ui.item"
+          :data-selected="false"
+          :data-child-selected="moreHasChildSelected"
+        >
           <Icon v-if="moreEntry.icon" :icon="moreEntry.icon" :class="ui.itemIcon" />
           <span v-if="moreEntry.label">{{ moreEntry.label }}</span>
         </Button>

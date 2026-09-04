@@ -125,7 +125,7 @@ const handlePopupSelect = createTreeNavPopupSelectHandler(onSelect);
           </slot>
           <span>{{ item.label }}</span>
           <slot name="item-trigger-icon" :item="item">
-            <Icon icon="lucide:chevron-down" :class="ui.itemChevron" />
+            <Icon icon="lucide:chevron-down" :class="ui.itemTriggerIcon" />
           </slot>
           <slot name="item-trailing" :item="item" />
         </slot>

@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, shallowRef, useAttrs, useTemplateRef, watch } from 'vue';
+import { computed, nextTick, onMounted, shallowRef, useAttrs, watch } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { keysOf, isClient } from '../../shared';
-import { useForwardListeners, useOmitProps } from '../../composables';
+import { useForwardListeners, useForwardElement, useOmitProps } from '../../composables';
 import { filterHiddenTreeNavOptions } from './shared';
 import TreeNavOptionsCompact from './tree-nav-options-compact.vue';
+import TreeNavOverflow from './tree-nav-overflow.vue';
 import TreeNavRoot from './tree-nav-root.vue';
 import type { TreeNavCompactProps, TreeNavCompactEmits, TreeNavCompactSlots } from './types';
 
@@ -37,7 +38,7 @@ const optionSlotNames = computed(() => keysOf(slots).filter(key => key !== 'more
 // fits. Selection state and rendering are delegated to `TreeNavRoot` and
 // `TreeNavOptionsCompact`.
 
-const overflowElement = useTemplateRef<HTMLElement>('overflowElement');
+const [overflowElement, setOverflowElement] = useForwardElement();
 
 const collapsedCount = shallowRef(0);
 
@@ -128,7 +129,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="collapsible" ref="overflowElement" data-soybean-tree-nav-overflow>
+  <TreeNavOverflow v-if="collapsible" :ref="setOverflowElement">
     <TreeNavRoot v-bind="forwardedRootProps" v-on="listeners">
       <TreeNavOptionsCompact
         :items="visibleItems"
@@ -145,7 +146,7 @@ onMounted(() => {
         </template>
       </TreeNavOptionsCompact>
     </TreeNavRoot>
-  </div>
+  </TreeNavOverflow>
   <TreeNavRoot v-else v-bind="forwardedRootProps" v-on="listeners">
     <TreeNavOptionsCompact
       :items="visibleItems"

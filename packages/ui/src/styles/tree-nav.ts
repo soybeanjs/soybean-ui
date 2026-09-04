@@ -3,18 +3,19 @@ import { scv } from '@soybeanjs/cva';
 
 export const treeNavVariants = scv({
   slots: {
-    root: 'flex w-fit items-center rounded-md bg-background',
+    overflow: 'group',
+    root: 'flex w-fit items-center rounded-md bg-background group-data-[soybean-tree-nav-overflow]:min-w-max',
     item: [
       'group/item relative flex cursor-pointer select-none items-center gap-1.5 rounded-sm px-3 py-1.5',
       'font-medium text-sm outline-none transition-colors-200',
-      'hover:bg-accent focus-visible:bg-accent focus-visible:text-accent-foreground',
+      'data-[selected=false]:hover:bg-accent data-[selected=false]:focus-visible:bg-accent',
       'data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
       'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',
       'data-[selected=true]:bg-primary/10 data-[selected=true]:text-primary',
       'data-[child-selected]:text-primary'
     ],
-    itemIcon: 'shrink-0 text-muted-foreground',
-    itemChevron: [
+    itemIcon: 'shrink-0 text-muted-foreground group-data-[child-selected]/item:text-primary',
+    itemTriggerIcon: [
       'ms-auto shrink-0 text-muted-foreground transition-colors-200',
       'group-data-[child-selected]/item:text-primary'
     ],
@@ -64,18 +65,9 @@ export const treeNavVariants = scv({
         itemChevron: 'size-4.5',
         itemLinkIcon: 'size-4.5 -ms-3.5'
       }
-    },
-    collapsible: {
-      true: {
-        // Keep the bar at its natural content width so the collapsible overflow
-        // measurement can detect items that exceed the container.
-        root: 'min-w-max'
-      },
-      false: {}
     }
   },
   defaultVariants: {
-    size: 'md',
-    collapsible: false
+    size: 'md'
   }
 });

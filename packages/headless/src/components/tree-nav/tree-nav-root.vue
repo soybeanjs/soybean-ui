@@ -184,13 +184,13 @@ provideTreeNavRootContext({
 });
 </script>
 
+<!--
+ Keyboard model (APG menubar convention): the roving focus group makes the
+top level a single tab stop and ←/→/Home/End roam the entries. Opening a
+branch popup stays on the explicit keys — Enter/Space and ArrowDown — and
+once a popup is open its keys belong to the Menu machinery.
+-->
 <template>
-  <!--
-    Keyboard model (APG menubar convention): the roving focus group makes the
-    top level a single tab stop and ←/→/Home/End roam the entries. Opening a
-    branch popup stays on the explicit keys — Enter/Space and ArrowDown — and
-    once a popup is open its keys belong to the Menu machinery.
-  -->
   <Primitive
     v-bind="groupProps"
     :ref="setRootRef"

@@ -25,16 +25,7 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots).filter(key => key !== 'more-trigger'));
 
-const ui = computed(() =>
-  treeNavVariants(
-    {
-      size: props.size,
-      collapsible: props.collapsible
-    },
-    props.ui,
-    { root: props.class }
-  )
-);
+const ui = computed(() => treeNavVariants({ size: props.size }, props.ui, { root: props.class }));
 
 provideTreeNavUi(ui);
 provideMenuUi(() => props);
