@@ -1,0 +1,21 @@
+{
+  "name": "@soybeanjs/shared",
+  "version": "0.31.0",
+  "private": true,
+  "description": "SoybeanUI shared utils, not published.",
+  "type": "module",
+  "exports": {
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "test": "vp test run",
+    "typecheck": "tsc --noEmit --skipLibCheck"
+  },
+  "devDependencies": {
+    "@types/node": "^26.4.1",
+    "tsx": "^4.23.13",
+    "typescript": "catalog:",
+    "vite-plus": "catalog:",
+    "vitest": "4.1.11"
+  }
+}

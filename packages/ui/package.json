@@ -63,6 +63,7 @@
     "@soybeanjs/theme": "workspace:^"
   },
   "devDependencies": {
+    "@soybeanjs/shared": "workspace:^",
     "@soybeanjs/ui-uno": "workspace:^",
     "@types/node": "^26.4.1",
     "@unocss/cli": "^66.9.2",

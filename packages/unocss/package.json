@@ -42,6 +42,7 @@
     "unocss": "^66.9.2"
   },
   "devDependencies": {
+    "@soybeanjs/shared": "workspace:^",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
     "vitest": "4.1.11"

@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite-plus';
-import { cssRawPlugin } from '../_shared/css';
+import { cssRawPlugin } from '@soybeanjs/shared/vite';
 import pkg from './package.json' with { type: 'json' };
 
 export default defineConfig({

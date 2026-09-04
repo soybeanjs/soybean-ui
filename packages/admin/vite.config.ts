@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite-plus';
 import vue from '@vitejs/plugin-vue';
 import unpluginVue from 'unplugin-vue/rolldown';
-import { cssRawPlugin } from '../_shared/css';
+import { cssRawPlugin } from '@soybeanjs/shared/vite';
 import headlessPkg from '../headless/package.json' with { type: 'json' };
 import uiPkg from '../ui/package.json' with { type: 'json' };
 import pkg from './package.json' with { type: 'json' };
