@@ -107,19 +107,24 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
 
     /** Handle item registration and data updates */
     watchPostEffect(() => {
-      if (itemElement.value) {
+      const element = itemElement.value;
+      if (element) {
         // Register or update the item in the registry
-        itemRegistry.value.set(itemElement.value, {
-          element: itemElement.value,
+        itemRegistry.value.set(element, {
+          element,
           data: toValue(itemData)
         });
       }
 
       /** Unregister the item from the collection registry when watcher is cleaned up */
       onWatcherCleanup(() => {
-        if (itemElement.value) {
-          itemRegistry.value.delete(itemElement.value);
-          itemElement.value = undefined;
+        // Capture the element in a local variable instead of resetting
+        // `itemElement` here: this cleanup runs synchronously during reactive
+        // flushes (e.g. right after a function ref re-registers the item), and
+        // writing the ref from within a render-triggered flush re-triggers the
+        // pending render, causing a "Maximum recursive updates" loop.
+        if (element) {
+          itemRegistry.value.delete(element);
         }
       });
     });
