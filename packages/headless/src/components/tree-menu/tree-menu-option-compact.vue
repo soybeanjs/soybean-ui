@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onBeforeUnmount, shallowRef, watch } from 'vue';
 import { keysOf } from '../../shared';
+import { useDirection } from '../config-provider/context';
 import { useOmitProps } from '../../composables';
 import { useLocaleMessages } from '../../locale';
 import type { Placement } from '../../types';
@@ -9,6 +10,12 @@ import Button from '../button/button.vue';
 import DropdownMenuCompact from '../dropdown-menu/dropdown-menu-compact.vue';
 import Link from '../link/link.vue';
 import type { LinkProps } from '../link/types';
+import {
+  focusCollapsedMenuPopupItem,
+  getCollapsedMenuPopupId,
+  isCollapsedMenuBackwardKey,
+  isCollapsedMenuForwardKey
+} from './shared';
 import { useTreeMenuRootContext, useTreeMenuUi } from './context';
 import TreeMenuButton from './tree-menu-button.vue';
 import TreeMenuCollapsible from './tree-menu-collapsible.vue';
@@ -46,6 +53,8 @@ const messages = useLocaleMessages();
 
 const { collapsed, modelValue, onModelValueChange } = useTreeMenuRootContext('TreeMenuCompactOption');
 
+const dir = useDirection();
+
 const children = computed(() => props.item.children ?? []);
 
 const hasChildren = computed(() => Boolean(children.value.length));
@@ -79,6 +88,13 @@ const linkProps = computed<LinkProps>(() => {
 
 const showDropdown = computed(() => collapsed.value && hasChildren.value);
 
+// Controls the collapsed popup so the keyboard can open it and track its state.
+const dropdownOpen = shallowRef(false);
+
+// The item button that owns the collapsed popup; keyboard closes restore focus
+// to it so the roving focus context survives the teleported popup unmount.
+const buttonElement = shallowRef<HTMLElement>();
+
 const tooltip = computed(() => (collapsed.value && !showDropdown.value ? props.item.label : undefined));
 
 const reversedSide = computed<Placement>(() => (props.side === 'left' ? 'right' : 'left'));
@@ -110,6 +126,57 @@ const handleDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
   onModelValueChange(item.value);
   emit('selectDropdown', item.value);
 };
+
+// Collapsed sidebar: the forward key opens the item's dropdown popup, then
+// moves focus to its first menu item once the popup is already open.
+const handleButtonKeydown = (event: KeyboardEvent) => {
+  buttonElement.value = event.currentTarget as HTMLElement;
+
+  if (event.shiftKey || event.altKey || event.ctrlKey || event.metaKey) return;
+  if (!showDropdown.value || !isCollapsedMenuForwardKey(event.key, dir.value)) return;
+
+  event.preventDefault();
+
+  if (!dropdownOpen.value) {
+    dropdownOpen.value = true;
+    return;
+  }
+
+  focusCollapsedMenuPopupItem(event.currentTarget as HTMLElement);
+};
+
+// The popup is teleported, so its key events never bubble back here; a
+// capture-phase document listener scopes keyboard closing to the open popup.
+// Escape and the backward key close the popup and restore focus to the item
+// button, mirroring the expanded state where the backward key collapses a
+// branch onto itself.
+const handlePopupKeydown = (event: KeyboardEvent) => {
+  const button = buttonElement.value;
+
+  if (!button) return;
+
+  const popupId = getCollapsedMenuPopupId(button);
+  const target = event.target instanceof Element ? event.target : null;
+
+  if (!popupId || !target?.closest(`[id="${popupId}"]`)) return;
+  if (event.key !== 'Escape' && !isCollapsedMenuBackwardKey(event.key, dir.value)) return;
+
+  event.preventDefault();
+  dropdownOpen.value = false;
+  button.focus();
+};
+
+watch(dropdownOpen, open => {
+  if (open) {
+    document.addEventListener('keydown', handlePopupKeydown, true);
+  } else {
+    document.removeEventListener('keydown', handlePopupKeydown, true);
+  }
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener('keydown', handlePopupKeydown, true);
+});
 </script>
 
 <template>
@@ -157,6 +224,7 @@ const handleDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
           :disabled="item.disabled"
           disabled-select
           :data-child-selected="hasChildSelected ? '' : undefined"
+          @keydown="handleButtonKeydown"
         >
           <TreeMenuSlotCompact :item="item">
             <template v-for="slotName in slotNames" #[slotName]="slotProps">
@@ -184,6 +252,7 @@ const handleDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
         <DropdownMenuCompact
           v-if="showDropdown"
           v-bind="dropdownMenuProps"
+          v-model:open="dropdownOpen"
           :items="children"
           :disabled="item.disabled"
           :selected-value="modelValue"

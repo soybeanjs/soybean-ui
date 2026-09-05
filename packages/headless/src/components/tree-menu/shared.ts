@@ -1,5 +1,7 @@
+import { COLLECTION_ITEM_ATTRIBUTE } from '../../constants';
 import { getTreePaths } from '../../shared';
 import type { TreeNavigationNode } from '../../shared';
+import type { Direction } from '../../types';
 import type { TreeMenuBaseOptionData, TreeMenuOptionData } from './types';
 
 export const treeMenuCssVars = {
@@ -90,4 +92,43 @@ export function flattenTreeMenuNavigationNodes<T extends TreeMenuBaseOptionData>
   walk(items, 0);
 
   return nodes;
+}
+
+/**
+ * Whether the key moves into the collapsed dropdown popup (the forward
+ * direction): ArrowRight in LTR and ArrowLeft in RTL.
+ */
+export function isCollapsedMenuForwardKey(key: string, dir?: Direction): boolean {
+  return key === (dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight');
+}
+
+/**
+ * Whether the key moves out of the collapsed dropdown popup (the backward
+ * direction): ArrowLeft in LTR and ArrowRight in RTL.
+ */
+export function isCollapsedMenuBackwardKey(key: string, dir?: Direction): boolean {
+  return key === (dir === 'rtl' ? 'ArrowRight' : 'ArrowLeft');
+}
+
+/**
+ * Resolve the popup id exposed by the item's dropdown trigger while it is open.
+ */
+export function getCollapsedMenuPopupId(buttonElement: HTMLElement): string | null {
+  const collapsible = buttonElement.closest<HTMLElement>('[data-soybean-tree-menu-collapsible-root]');
+  const popupTrigger = collapsible?.querySelector<HTMLElement>('[data-soybean-dropdown-menu-trigger]');
+
+  return popupTrigger?.getAttribute('aria-controls') ?? null;
+}
+
+/**
+ * Focus the first item of the dropdown popup opened by a collapsed menu item.
+ *
+ * The popup is teleported; while open, the item's dropdown trigger exposes its
+ * id through `aria-controls`.
+ */
+export function focusCollapsedMenuPopupItem(buttonElement: HTMLElement): void {
+  const popupId = getCollapsedMenuPopupId(buttonElement);
+  const popup = popupId ? document.getElementById(popupId) : null;
+
+  popup?.querySelector<HTMLElement>(`[${COLLECTION_ITEM_ATTRIBUTE}]:not([data-disabled])`)?.focus();
 }
