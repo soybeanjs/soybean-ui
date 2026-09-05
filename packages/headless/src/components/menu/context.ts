@@ -1,9 +1,15 @@
 import { computed, ref, shallowRef, useId } from 'vue';
 import { getDisclosureState, isPointerInGraceArea } from '../../shared';
+import { useDirection } from '../config-provider/context';
 import { providePopperUi } from '../popper/context';
 import { provideSeparatorUi } from '../separator/context';
-import { useContext, useUiContext } from '../../composables';
-import type { AcceptableBooleanValue, DefinedValue, GraceIntent, HorizontalSide } from '../../types';
+import {
+  provideRovingFocusGroupContext,
+  useRovingFocusGroupContext,
+  useContext,
+  useUiContext
+} from '../../composables';
+import type { AcceptableBooleanValue, DataOrientation, DefinedValue, GraceIntent, HorizontalSide } from '../../types';
 import type {
   MenuCheckboxGroupContextParams,
   MenuContentContextParams,
@@ -161,6 +167,47 @@ export const [provideMenuItemIndicatorContext, useMenuItemIndicatorContext] =
 
 export const [provideMenuOptionsCompactContext, useMenuOptionsCompactContext] =
   useContext<MenuOptionsCompactContext>('MenuOptionsCompact');
+
+/**
+ * Provides fallback `Menu`/`MenuRoot`/`MenuContent` contexts for compact aggregations rendered
+ * outside a `MenuRoot`.
+ *
+ * Ancestor-provided contexts always take precedence, so nesting a compact within a real
+ * `MenuRoot`/`MenuContent` (e.g. inside `Menubar` or `DropdownMenu`) is unaffected.
+ */
+export function provideMenuCompactFallbackContext() {
+  if (useMenuContext() === null) {
+    provideMenuContext({
+      dir: useDirection(),
+      isRoot: true,
+      open: shallowRef<boolean | undefined>(false)
+    });
+  }
+
+  if (useMenuRootContext() === null) {
+    provideMenuRootContext({
+      modal: computed(() => true),
+      dir: useDirection(),
+      isUsingKeyboard: computed(() => false),
+      onClose: () => {}
+    });
+  }
+
+  if (useMenuContentContext() === null) {
+    provideMenuContentContext({ popupElement: shallowRef<HTMLElement>() });
+  }
+
+  if (useRovingFocusGroupContext() === null) {
+    provideRovingFocusGroupContext({
+      orientation: computed<DataOrientation>(() => 'vertical'),
+      dir: useDirection(),
+      loop: computed(() => false),
+      currentTabStopId: computed<string | null>(() => null),
+      defaultCurrentTabStopId: computed(() => undefined),
+      preventScrollOnEntryFocus: computed(() => false)
+    });
+  }
+}
 
 export const [provideMenuUi, useMenuUi] = useUiContext<MenuUiSlot>('MenuUi', ui => {
   providePopperUi(ui);

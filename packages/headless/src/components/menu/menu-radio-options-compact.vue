@@ -4,7 +4,7 @@ import type { AcceptableBooleanValue } from '../../types';
 import Icon from '../_icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
 import MenuSeparator from '../separator/separator-root.vue';
-import { useMenuUi } from './context';
+import { provideMenuCompactFallbackContext, useMenuUi } from './context';
 import { useCommonSlotNames } from './hooks';
 import MenuGroupLabel from './menu-group-label.vue';
 import MenuItemIndicator from './menu-item-indicator.vue';
@@ -35,6 +35,8 @@ const forwardedProps = useOmitProps(props, [
 const listeners = useForwardListeners(emit);
 
 const commonSlotNames = useCommonSlotNames(slots);
+
+provideMenuCompactFallbackContext();
 
 const ui = useMenuUi();
 </script>

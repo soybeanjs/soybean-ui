@@ -75,7 +75,7 @@ const ROVING_FOCUS_EVENT_OPTIONS = { bubbles: false, cancelable: true };
 const { provideCollectionContext, useCollectionContext, useCollectionItem } =
   useCollection<Record<string, unknown>>('RovingFocusGroup');
 
-const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
+export const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
   'RovingFocusGroup',
   (params: RovingFocusGroupContextParams) => {
     const { onContainerElementChange, getOrderedItems, getOrderedElements } = provideCollectionContext();

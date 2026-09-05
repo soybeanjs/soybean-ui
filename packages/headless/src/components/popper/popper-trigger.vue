@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onWatcherCleanup, watchEffect } from 'vue';
 import type { ComponentPublicInstance, CSSProperties } from 'vue';
+import { isClient } from '../../shared';
 import { useForwardElement, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { usePopperRootContext, usePopperUi } from './context';
@@ -83,7 +84,9 @@ const {
 
 // When `reference` is a real element, the trigger events live on that element and the inline
 // trigger element is not rendered (e.g. `ContextMenuTrigger` wrapping an external area).
-const externalReference = computed(() => (props.reference instanceof HTMLElement ? props.reference : undefined));
+const externalReference = computed(() =>
+  isClient && props.reference instanceof HTMLElement ? props.reference : undefined
+);
 
 // Bind only the events a trigger mode can actually act on: click/contextmenu toggling, hover
 // enter/leave (the pointer-inside state only feeds the hover close machine), the contextmenu

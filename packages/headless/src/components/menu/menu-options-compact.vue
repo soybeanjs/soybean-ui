@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { keysOf, getTreePaths, toContext } from '../../shared';
 import { useForwardListeners, useOmitProps } from '../../composables';
 import type { DefinedValue } from '../../types';
-import { provideMenuOptionsCompactContext } from './context';
+import { provideMenuCompactFallbackContext, provideMenuOptionsCompactContext } from './context';
 import MenuGroup from './menu-group.vue';
 import MenuOptionCompact from './menu-option-compact.vue';
 import type { MenuOptionsCompactProps, MenuOptionsCompactEmits, MenuOptionsCompactSlots } from './types';
@@ -32,6 +32,8 @@ const selectedPaths = computed(() => {
 
   return getTreePaths(props.selectedValue, props.items);
 });
+
+provideMenuCompactFallbackContext();
 
 provideMenuOptionsCompactContext({
   ...toContext(props, ['selectedValue']),

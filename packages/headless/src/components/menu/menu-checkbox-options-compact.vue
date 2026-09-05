@@ -4,7 +4,7 @@ import type { DefinedValue } from '../../types';
 import Icon from '../_icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
 import MenuSeparator from '../separator/separator-root.vue';
-import { useMenuUi } from './context';
+import { provideMenuCompactFallbackContext, useMenuUi } from './context';
 import { useCommonSlotNames } from './hooks';
 import MenuCheckboxGroup from './menu-checkbox-group.vue';
 import MenuCheckboxItem from './menu-checkbox-item.vue';
@@ -37,6 +37,8 @@ const forwardedProps = useOmitProps(props, [
 ]);
 
 const commonSlotNames = useCommonSlotNames(slots);
+
+provideMenuCompactFallbackContext();
 
 const ui = useMenuUi();
 </script>
