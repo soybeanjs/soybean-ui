@@ -89,7 +89,9 @@ const linkProps = computed<LinkProps>(() => {
 const showDropdown = computed(() => collapsed.value && hasChildren.value);
 
 // Controls the collapsed popup so the keyboard can open it and track its state.
-const dropdownOpen = shallowRef(false);
+// The item's `dropdownMenuProps.open` seeds the initial state so a consumer
+// forcing the popup open still renders it.
+const dropdownOpen = shallowRef(Boolean(props.item.dropdownMenuProps?.open));
 
 // The item button that owns the collapsed popup; keyboard closes restore focus
 // to it so the roving focus context survives the teleported popup unmount.
