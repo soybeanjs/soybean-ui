@@ -25,12 +25,14 @@ const data: TableData[] = [
 </script>
 
 <template>
-  <STable
-    v-for="size in themeSizeOptions"
-    :key="size.value"
-    :size="size.value"
-    :columns="columns"
-    :data="data"
-    :row-key="row => row.id"
-  />
+  <div class="flex-c gap-2">
+    <STable
+      v-for="size in themeSizeOptions"
+      :key="size.value"
+      :size="size.value"
+      :columns="columns"
+      :data="data"
+      :row-key="row => row.id"
+    />
+  </div>
 </template>

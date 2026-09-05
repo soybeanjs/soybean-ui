@@ -29,5 +29,5 @@ const data: TableData[] = [
 </script>
 
 <template>
-  <STable :rounded="false" :columns="columns" :data="data" :row-key="row => row.id" />
+  <STable rounded :columns="columns" :data="data" :row-key="row => row.id" />
 </template>

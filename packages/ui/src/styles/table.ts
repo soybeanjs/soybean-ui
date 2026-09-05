@@ -253,7 +253,7 @@ export const tableVariants = scv({
     size: 'md',
     variant: 'default',
     bordered: false,
-    rounded: true,
+    rounded: false,
     striped: false
   }
 });

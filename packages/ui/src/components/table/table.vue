@@ -26,8 +26,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<TableProps<T, R, M>>(), {
-  multiple: () => true as M,
-  rounded: true
+  multiple: () => true as M
 });
 
 const emit = defineEmits<TableEmits<T, R, M>>();
