@@ -5,7 +5,7 @@ import { createAnchorItems, createAnchorSections } from './shared';
 
 const containerRef = shallowRef<HTMLElement>();
 
-const getContainer = () => containerRef.value ?? window;
+const getContainer = () => containerRef.value ?? (typeof window === 'undefined' ? null : window);
 const items = createAnchorItems('sticky-');
 const sections = createAnchorSections('sticky-');
 </script>

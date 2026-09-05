@@ -26,16 +26,14 @@ const emit = defineEmits<Emits>();
 
 const { locale } = useI18n();
 
-const mdModules = import.meta.glob<{ default: Component }>('./**/*.md', { base: '/src/docs' });
+// eager glob：所有 md 在构建期同步编译为组件，setup 内同步取值，保证 SSR 预渲染
+// 产物包含完整 markdown 正文（异步动态 import 会成为 renderToString 等待不到的边界）。
+const mdModules = import.meta.glob<{ default: Component }>('./**/*.md', { base: '/src/docs', eager: true });
 
 const cp = shallowRef<Component | null>(null);
 const contentRef = shallowRef<HTMLElement | null>(null);
-let loadVersion = 0;
 
-async function loadDoc() {
-  loadVersion += 1;
-  const currentLoadVersion = loadVersion;
-
+function resolveDocComponent(): Component | null {
   let path = props.path;
   if (path.startsWith('/')) {
     path = path.slice(1);
@@ -45,30 +43,20 @@ async function loadDoc() {
   }
 
   const key = `./${locale.value}/${path}.md`;
-  const load = mdModules[key];
-
-  let isSuccess = false;
-
-  resetDocOutline();
-
-  if (load) {
-    const mod = await load();
-
-    if (currentLoadVersion !== loadVersion) {
-      return;
-    }
-
-    cp.value = mod.default;
-    isSuccess = true;
-
-    await nextTick();
-    updateDocOutline();
-  } else {
-    cp.value = null;
-  }
-
-  emit('loaded', isSuccess);
+  return mdModules[key]?.default ?? null;
 }
+
+watchEffect(() => {
+  const component = resolveDocComponent();
+  cp.value = component;
+  resetDocOutline();
+  emit('loaded', Boolean(component));
+});
+
+watch(cp, async () => {
+  await nextTick();
+  updateDocOutline();
+});
 
 function updateDocOutline() {
   const container = contentRef.value;
@@ -164,10 +152,6 @@ function toHeadingId(title: string) {
 
 onBeforeUnmount(() => {
   resetDocOutline();
-});
-
-watchEffect(() => {
-  loadDoc();
 });
 </script>
 

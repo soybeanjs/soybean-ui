@@ -6,6 +6,6 @@ const { configProviderProps } = provideThemeContext();
 
 <template>
   <SConfigProvider v-bind="configProviderProps">
-    <RouterView />
+    <slot></slot>
   </SConfigProvider>
 </template>

@@ -234,11 +234,17 @@ UI config provider, the UnoCSS adapter, and all four repository UnoCSS configs.
 
 ### 7.1 Documentation application
 
-`apps/docs` is a Vue 3 Vite SSG application, not VitePress.
+`apps/docs` is a Vue 3 SSG application built on the ubean framework, not VitePress.
 
-- `unplugin-vue-router` provides file-based routes.
-- `unplugin-vue-markdown` converts Markdown to Vue pages.
-- `@shikijs/markdown-exit` and Shiki handle Markdown/code rendering.
+- ubean file-based routing drives routes; `definePage({ name, path })` overrides
+  file-level routes where the public URL differs (component docs pages live in
+  `src/pages/component-docs/` because ubean's pages scanner ignores
+  `**/components/**`).
+- ubean's built-in markdown channel converts Markdown to Vue pages; component
+  auto-import goes through ubean's built-in Components instance with
+  `UiResolver`.
+- markdown-exit and Shiki (wired in `src/modules/markdown.ts`) handle
+  Markdown/code rendering.
 - Vue I18n combines application locales with generated API and changelog
   locale files.
 - `UsageCode`, `PlaygroundGallery`, and `ComponentApi` are the main component

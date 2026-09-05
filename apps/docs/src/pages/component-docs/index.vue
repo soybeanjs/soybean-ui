@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import { kebabCase, pascalCase } from '@soybeanjs/utils';
+import { definePage } from '@ubean/vue';
 import { resetDocOutline, setDocOutline } from '~/composables/use-doc-outline';
 import { menuData, newlyComponentKeys } from '../../constants/menus';
+
+// 目录名避开 ubean 扫描器对 pages 下 `**/components/**` 的保留忽略规则，
+// definePage 把文件级路由 `/component-docs` 覆盖回公开 URL 约定。
+definePage({
+  name: 'ComponentsIndex',
+  path: '/components'
+});
 
 const { t } = useI18n();
 const featuredComponentKeys = ['button', 'input', 'select', 'dialog', 'table', 'form'];

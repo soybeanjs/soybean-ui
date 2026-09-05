@@ -1,13 +1,21 @@
 <script setup lang="ts">
 import { kebabCase, pascalCase } from '@soybeanjs/utils';
+import { definePage } from '@ubean/vue';
 import { menuData } from '~/constants/menus';
 import { getComponentChangelogMeta } from '~/shared/generated-changelog';
 
+// 目录名避开 ubean 扫描器对 pages 下 `**/components/**` 的保留忽略规则，
+// definePage 把文件级路由 `/component-docs/:name` 覆盖回公开 URL 约定。
+definePage({
+  name: 'ComponentsName',
+  path: '/components/:name'
+});
+
 const router = useRouter();
-const route = useRoute('/components/[name]');
+const route = useRoute();
 const { t } = useI18n();
 
-const name = computed(() => route.params.name);
+const name = computed(() => String((route.params as { name: string }).name));
 
 const path = computed(() => `ui/components/${name.value}`);
 

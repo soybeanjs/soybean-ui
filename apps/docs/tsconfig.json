@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "types": ["node", "vite/client", "vite-plugin-vue-meta-layouts/client"],
+    "types": ["node", "vite/client"],
     "paths": {
       "~/*": ["./src/*"],
       "@/*": ["../../packages/ui/src/*"],
@@ -12,5 +12,5 @@
       "@soybeanjs/theme/*": ["../../packages/theme/src/*"]
     }
   },
-  "include": ["./**/*.ts", "./**/*.d.ts", "./**/*.tsx", "./**/*.vue"]
+  "include": ["./**/*.ts", "./**/*.d.ts", "./**/*.tsx", "./**/*.vue", "./.ubean/**/*.d.ts"]
 }

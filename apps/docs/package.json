@@ -10,11 +10,11 @@
   },
   "type": "module",
   "scripts": {
-    "build": "pnpm build:registry && vite-ssg build",
+    "build": "pnpm build:registry && ubean build",
     "build:registry": "pnpm --filter sbean build:registry && vp fmt public/r --write",
     "build:schema": "pnpm --filter sbean build:schema",
-    "dev": "vp dev",
-    "preview": "vp preview",
+    "dev": "ubean dev",
+    "preview": "ubean preview",
     "typecheck": "vue-tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
@@ -28,6 +28,7 @@
     "pinia": "^4.0.3",
     "sbean": "workspace:^",
     "shiki": "^4.4.3",
+    "ubean": "^0.3.7",
     "valibot": "^1.4.2",
     "vue": "^3.5.42",
     "vue-i18n": "^11.4.10",
@@ -35,20 +36,14 @@
     "zod": "^4.5.4"
   },
   "devDependencies": {
-    "@shikijs/markdown-exit": "^4.4.3",
+    "@ubean/build": "^0.3.7",
     "@unhead/vue": "^3.4.0",
-    "@vitejs/plugin-vue": "^6.0.8",
     "@vitejs/plugin-vue-jsx": "^5.1.6",
     "lightningcss": "^1.33.0",
     "typescript": "catalog:ts6",
     "unplugin-auto-import": "^21.1.0",
-    "unplugin-vue-components": "^32.1.0",
-    "unplugin-vue-markdown": "^32.1.1",
     "vite": "^8.2.2",
-    "vite-plugin-vue-meta-layouts": "^0.6.1",
-    "vite-plus": "catalog:",
-    "vite-ssg": "^28.3.0",
-    "vite-ssg-sitemap": "^0.10.0"
+    "vite-plus": "catalog:"
   },
   "packageManager": "pnpm@11.25.0"
 }

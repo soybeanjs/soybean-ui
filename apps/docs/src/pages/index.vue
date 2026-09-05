@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { kebabCase, pascalCase } from '@soybeanjs/utils';
+import { definePage } from 'ubean/runtime/vue';
 import BackgroundDecoration from '~/motion/background-decoration.vue';
 import { menuData } from '../constants/menus';
+
+definePage({
+  layout: 'home'
+});
 
 const { t } = useI18n();
 
@@ -452,8 +457,3 @@ const featuredGroups = computed(() =>
     </div>
   </div>
 </template>
-
-<route lang="yaml">
-meta:
-  layout: home
-</route>

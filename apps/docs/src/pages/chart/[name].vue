@@ -4,10 +4,10 @@ import { chartMenuData } from '~/constants/menus';
 import { getComponentChangelogMeta } from '~/shared/generated-changelog';
 
 const router = useRouter();
-const route = useRoute('/chart/[name]');
+const route = useRoute();
 const { t } = useI18n();
 
-const name = computed(() => route.params.name);
+const name = computed(() => String((route.params as { name: string }).name));
 
 const path = computed(() => `chart/components/${name.value}`);
 

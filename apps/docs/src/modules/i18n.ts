@@ -1,6 +1,6 @@
+import type { App } from 'vue';
 import { createI18n } from 'vue-i18n';
 import type { Locale } from 'vue-i18n';
-import type { UserModule } from '../types';
 
 type LocaleMessages = Record<string, unknown>;
 type LocaleMessageLoader = () => Promise<{ default: LocaleMessages }>;
@@ -109,7 +109,20 @@ export async function loadLanguageAsync(lang: string): Promise<Locale> {
   return setI18nLanguage(lang);
 }
 
-export const install: UserModule = ({ app }) => {
+const BUILTIN_I18N_COMPONENTS = ['I18nT', 'i18n-t', 'I18nN', 'i18n-n', 'I18nD', 'i18n-d'];
+
+export function setupI18n(app: App) {
+  // ubean 运行时在 app 创建时总会安装一份内建 vue-i18n（即使 i18n: false，空 messages），
+  // 并注册 I18nT/I18nN/I18nD 组件与 t 指令。这里若探测到其注册，先卸载再安装我们的
+  // 实例，避免 "already been registered" 告警（重复 provide/globalProperties 由后者覆盖）。
+  if (app.component('I18nT')) {
+    const context = app._context as { components: Record<string, unknown>; directives: Record<string, unknown> };
+    for (const name of BUILTIN_I18N_COMPONENTS) {
+      delete context.components[name];
+    }
+    delete context.directives.t;
+  }
+
   app.use(i18n);
 
   let locale = 'en';
@@ -122,4 +135,4 @@ export const install: UserModule = ({ app }) => {
   }
 
   loadLanguageAsync(locale);
-};
+}

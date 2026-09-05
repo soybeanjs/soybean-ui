@@ -35,9 +35,9 @@ apps/docs/src/
 ├── docs/           # Markdown content
 │   ├── en/         # English docs
 │   └── zh-CN/      # Chinese docs (must mirror en/ structure exactly)
-├── pages/          # Route pages (auto-generated from file system)
+├── pages/          # Route pages (ubean file-based routing; component docs in component-docs/)
 ├── components/     # Docs UI: Header, Sider, PlaygroundGallery, etc.
-└── modules/        # Vite plugins, SSG setup
+└── modules/        # App modules (i18n, markdown, pinia, progress)
 ```
 
 ## CONVENTIONS

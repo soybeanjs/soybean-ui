@@ -1,21 +1,16 @@
-import { URL, fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite-plus';
-import Vue from '@vitejs/plugin-vue';
 import VueJsx from '@vitejs/plugin-vue-jsx';
-import MetaLayouts from 'vite-plugin-vue-meta-layouts';
-import generateSitemap from 'vite-ssg-sitemap';
-import Components from 'unplugin-vue-components/vite';
-import Markdown from 'unplugin-vue-markdown/vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import { VueRouterAutoImports } from 'vue-router/unplugin';
-import VueRouter from 'vue-router/vite';
 import Unocss from 'unocss/vite';
-import { createThemeInitScript } from '@soybeanjs/theme/ssr';
-import Shiki from '@shikijs/markdown-exit';
+import { registerComponentResolver } from '@ubean/build';
 import { unheadVueComposablesImports } from '@unhead/vue';
+import { ubeanPlugin } from 'ubean/vite';
 import UiResolver from '../../packages/ui/src/resolver';
-import { customMarkdownPlugin } from './src/modules/markdown';
 import { soybeanDocsLlmsPlugin } from './build/llms';
+
+// S* 组件解析交给 ubean 内置 Components 实例（含 .md），注册进其共享 registry
+registerComponentResolver(UiResolver());
 
 export default defineConfig({
   resolve: {
@@ -25,70 +20,31 @@ export default defineConfig({
     transformer: 'lightningcss'
   },
   plugins: [
-    VueRouter({
-      extensions: ['.vue', '.md'],
-      dts: fileURLToPath(new URL('./src/typings/typed-router.d.ts', import.meta.url))
-    }),
-    MetaLayouts(),
-    Vue({ include: [/\.vue$/, /\.md$/] }),
+    ubeanPlugin(),
     VueJsx(),
     Unocss(),
+    // ubean 内置 AutoImport 仅覆盖 ubean 自身符号，vue/vue-i18n/router/unhead 仍需自有实例
     AutoImport({
       include: [/\.[jt]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
       exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /headless[\\/]dist/, /ui[\\/]dist/],
-      imports: [
-        'vue',
-        'vue-i18n',
-        VueRouterAutoImports,
-        unheadVueComposablesImports,
-        {
-          'vue-router/auto': ['useLink']
-        }
-      ],
+      imports: ['vue', 'vue-i18n', VueRouterAutoImports, unheadVueComposablesImports],
       dts: 'src/typings/auto-imports.d.ts',
       vueTemplate: true
     }),
-    Components({
-      extensions: ['vue', 'md'],
-      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
-      dts: fileURLToPath(new URL('./src/typings/components.d.ts', import.meta.url)),
-      resolvers: [UiResolver()]
-    }),
-    Markdown({
-      wrapperClasses: 'markdown-wrapper',
-      headEnabled: true,
-      async markdownItSetup(md) {
-        md.use(
-          Shiki({
-            defaultColor: false,
-            themes: {
-              light: 'one-light',
-              dark: 'one-dark-pro'
-            }
-          })
-        );
-        md.use(customMarkdownPlugin);
-      }
-    }),
     soybeanDocsLlmsPlugin()
   ],
-  ssgOptions: {
-    script: 'sync',
-    formatting: 'minify',
-    beastiesOptions: {
-      reduceInlineStyles: false
-    },
-    // 在预渲染 HTML 的 <head> 内联主题初始化脚本，刷新时首帧即应用
-    // 持久化主题（localStorage），避免默认主题 → 持久化主题的闪烁。
-    onBeforePageRender(_route, indexHTML) {
-      return indexHTML.replace('</head>', `<script>${createThemeInitScript()}</script></head>`);
-    },
-    onFinished() {
-      generateSitemap();
-    }
-  },
   ssr: {
-    noExternal: ['workbox-window', /vue-i18n/]
+    // Workspace packages are aliased to src via tsconfigPaths; keep them out of
+    // SSR externalization so prerendering bundles the source instead of
+    // resolving dist entries that may be stale or missing.
+    noExternal: [
+      '@soybeanjs/ui',
+      '@soybeanjs/ui-x',
+      '@soybeanjs/headless',
+      '@soybeanjs/theme',
+      'workbox-window',
+      /vue-i18n/
+    ]
   },
   server: {
     host: '0.0.0.0',

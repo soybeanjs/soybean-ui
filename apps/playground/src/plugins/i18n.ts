@@ -1,9 +1,8 @@
 import type { App } from 'vue';
-import { install } from '../../../docs/src/modules/i18n';
+import { setupI18n as installDocsI18n } from '../../../docs/src/modules/i18n';
 
 export function setupI18n(app: App) {
-  // @ts-expect-error ignore
-  install({ app });
+  installDocsI18n(app);
 }
 
 export default {

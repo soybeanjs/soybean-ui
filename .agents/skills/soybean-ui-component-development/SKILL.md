@@ -16,7 +16,7 @@ For detailed rules, see [layers.md](layers.md) (headless admission, implementati
 - Architecture: headless / styled separation. Compile-time dependency is `packages/ui` -> `packages/headless`; headless never imports UI.
 - `@soybeanjs/headless` (`packages/headless/`): Logic, state, a11y, structure. Zero styles.
 - `@soybeanjs/ui` (`packages/ui/`): Styled wrappers. UnoCSS + `cv()` / `scv()`. `S`-prefixed components.
-- `@soybeanjs/ui-docs` (`apps/docs/`): Vite + vite-ssg + unplugin-vue-markdown + markdown-exit. NOT VitePress.
+- `@soybeanjs/ui-docs` (`apps/docs/`): ubean framework (SSG mode) + ubean markdown channel (markdown-exit + Shiki). NOT VitePress.
 
 ## Quick start
 

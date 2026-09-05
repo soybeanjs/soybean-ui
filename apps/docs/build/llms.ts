@@ -220,7 +220,7 @@ function createLlmsIndex(docFiles: DocFile[], base: string): string {
     '',
     '## Details',
     '',
-    '- Generated from docs/src/docs/en for the vite-ssg documentation site.',
+    '- Generated from docs/src/docs/en for the ubean (SSG) documentation site.',
     '- Mirrors the current docs routing model: overview pages and component detail pages.',
     '- Markdown component placeholders are normalized into short textual hints for LLM consumption.',
     '',

@@ -1,5 +1,7 @@
 <template>
-  <div class="h-full w-full text-sm">
-    <RouterView />
-  </div>
+  <AppProvider>
+    <div class="h-full w-full text-sm">
+      <PageView />
+    </div>
+  </AppProvider>
 </template>

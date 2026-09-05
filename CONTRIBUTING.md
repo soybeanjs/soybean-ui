@@ -33,7 +33,7 @@ SoybeanUI is a Vue 3 component library built on a **headless / styled separation
 | `@soybeanjs/headless` | `packages/headless/` | Logic, state, accessibility, composables. **Zero styles.** |
 | `@soybeanjs/ui`       | `packages/ui/`       | Styled wrappers (UnoCSS). Variants, theme, UI injection.   |
 | Playground            | `apps/playground/`   | Interactive demos (Vite).                                  |
-| Docs                  | `apps/docs/`         | Bilingual docs (en / zh-CN). Vite + vite-ssg.              |
+| Docs                  | `apps/docs/`         | Bilingual docs (en / zh-CN). ubean (SSG).                  |
 
 Data flows one way: `headless` → `ui` (never reverse). The UI layer injects styles via
 `provideXUi(ui)`; headless reads them through `useUiContext`.

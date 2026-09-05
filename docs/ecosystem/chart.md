@@ -97,7 +97,7 @@ interface ChartDatum {
 ## 6. 兼容性考虑
 
 - **主题**：色板必须由 `createTheme` token 派生（禁止图表库默认配色），保证与 `SConfigProvider` 亮暗切换实时联动。
-- **SSR**：unovis 渲染依赖 DOM 测量，SSG 首帧输出占位（固定尺寸骨架）并在客户端 hydrate 后绘制；文档站 vite-ssg 构建需加 smoke。
+- **SSR**：unovis 渲染依赖 DOM 测量，SSG 首帧输出占位（固定尺寸骨架）并在客户端 hydrate 后绘制；文档站 ubean 构建需加 smoke。
 - **体积**：unovis 作为 peer dependency，未安装时 `SChart*` 组件给出明确报错与安装指引（对齐 ui-x 的 optional peer 模式）。
 - **admin 集成**：保持 chart 不反向依赖 admin；admin 通过 optional peerDep 消费，缺失时降级为数字展示。
 - **a11y**：图表为视觉信息密集组件，必须提供数据表格降级与 `aria-label`；颜色对比纳入 axe e2e（现有 browser e2e 已开 color-contrast）。

@@ -89,7 +89,7 @@ Private applications:
 
 ```bash
 pnpm dev:playground    # Playground (Vite)
-pnpm dev:docs         # Docs site (Vite + vite-ssg)
+pnpm dev:docs         # Docs site (ubean dev)
 pnpm build            # headless → ui → sbean via Vite Plus pack
 pnpm build:libs       # theme → ui-uno
 pnpm build:docs       # package build → sbean registry → docs SSG
