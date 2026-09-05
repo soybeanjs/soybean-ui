@@ -16,7 +16,7 @@
  * 注意一旦使用 `scrollbar-color`，`::-webkit-scrollbar` 定制按规范整体失效，
  * 圆角与 `scrollbar-w` / `scrollbar-h` 等不再生效。
  */
-import type { Preset, Rule, Shortcut, VariantHandler } from 'unocss';
+import type { Preset, Shortcut, VariantHandler } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
 import { colorResolver, handler as h } from '@unocss/preset-mini/utils';
 

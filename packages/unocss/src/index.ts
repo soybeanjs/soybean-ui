@@ -18,6 +18,6 @@ export { presetScrollbar } from './scrollbar';
 export type { PresetScrollbarOptions } from './scrollbar';
 export { buildThemeColors } from './colors';
 export { buildGlobalCss } from './global-css';
-export { presetSbean } from './sbean-preset';
-export type { SbeanPresetOptions } from './sbean-preset';
+export { presetSbean } from './sbean';
+export type { SbeanPresetOptions } from './sbean';
 export type { UiUnocssOptions } from './options';

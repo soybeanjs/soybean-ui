@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite-plus';
 import vue from '@vitejs/plugin-vue';
 import unpluginVue from 'unplugin-vue/rolldown';
-import { cssRawPlugin } from '@soybeanjs/shared/vite';
 import headlessPkg from '../headless/package.json' with { type: 'json' };
 
 export default defineConfig({
@@ -19,7 +18,7 @@ export default defineConfig({
       vue: true
     },
     unbundle: true,
-    plugins: [cssRawPlugin(), unpluginVue({ isProduction: true })],
+    plugins: [unpluginVue({ isProduction: true })],
     minify: true,
     define: {
       'import.meta.env.DEV': 'undefined',

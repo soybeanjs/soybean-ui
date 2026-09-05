@@ -1,0 +1,93 @@
+/**
+ * Toast 滑出动画的 @keyframes 定义。
+ * keyframes 无法由 UnoCSS 工具类生成,动画属性的启用
+ * (data-swipe-out/data-swipe-direction 状态)已在 packages/ui/src/styles/toast.ts
+ * 中以工具类实现,此处仅保留 keyframes 本体,随预设分发给所有消费者。
+ */
+@keyframes toast-swipe-out-left {
+  from {
+    transform: var(--y) translateX(var(--swipe-amount-x));
+    opacity: 1;
+  }
+
+  to {
+    transform: var(--y) translateX(calc(var(--swipe-amount-x) - 100%));
+    opacity: 0;
+  }
+}
+
+@keyframes toast-swipe-out-right {
+  from {
+    transform: var(--y) translateX(var(--swipe-amount-x));
+    opacity: 1;
+  }
+
+  to {
+    transform: var(--y) translateX(calc(var(--swipe-amount-x) + 100%));
+    opacity: 0;
+  }
+}
+
+@keyframes toast-swipe-out-up {
+  from {
+    transform: var(--y) translateY(var(--swipe-amount-y));
+    opacity: 1;
+  }
+
+  to {
+    transform: var(--y) translateY(calc(var(--swipe-amount-y) - 100%));
+    opacity: 0;
+  }
+}
+
+@keyframes toast-swipe-out-down {
+  from {
+    transform: var(--y) translateY(var(--swipe-amount-y));
+    opacity: 1;
+  }
+
+  to {
+    transform: var(--y) translateY(calc(var(--swipe-amount-y) + 100%));
+    opacity: 0;
+  }
+}
+
+@keyframes toast-fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes toast-fade-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+/**
+ * RadioGroup 指示器的 Vue `<Transition name="radio-group-indicator">` 过渡类。
+ * Vue 过渡类名无法由 UnoCSS 工具类生成,经 presetUiUnocss 注入到自定义
+ * layer `soybean`(排序位于 utilities 之后),随预设分发给所有消费者。
+ */
+.radio-group-indicator-enter-active {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.radio-group-indicator-enter-from {
+  opacity: 0;
+  transform: scale(0);
+}

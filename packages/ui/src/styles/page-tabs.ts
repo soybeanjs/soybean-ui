@@ -4,7 +4,7 @@ import type { VariantProps } from '@soybeanjs/cva';
 
 export const pageTabsVariants = scv({
   slots: {
-    root: `flex`,
+    root: `scrollbar-none overflow-y-hidden flex`,
     item: [
       `group/item relative flex items-center cursor-pointer select-none outline-none`,
       `data-[selected=true]:bg-primary-50 data-[selected=true]:text-primary data-[selected=true]:z-2`,

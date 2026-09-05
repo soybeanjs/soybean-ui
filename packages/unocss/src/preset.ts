@@ -8,6 +8,7 @@ import { buildGlobalCss } from './global-css';
 import type { UiUnocssOptions } from './options';
 import resetStyle from './reset.css?raw';
 import { presetScrollbar } from './scrollbar';
+import uiStyles from './styles.css?raw';
 
 /**
  * The SoybeanUI unocss preset.
@@ -81,10 +82,14 @@ export function presetUiUnocss(options?: UiUnocssOptions): Preset<Theme>[] {
     });
   }
 
+  if (options?.preflights?.length) {
+    preflights.push(...options.preflights);
+  }
+
   // ---- Self preset (theme layer) ----------------------------------------
   const selfPreset: Preset = {
     name: 'soybean-ui-uno',
-    preflights,
+    preflights: [...preflights, { getCSS: () => uiStyles }],
     theme: {
       animation: {
         keyframes: {
