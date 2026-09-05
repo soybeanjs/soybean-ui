@@ -2,9 +2,27 @@
 import { scv } from '@soybeanjs/cva';
 import type { VariantProps } from '@soybeanjs/cva';
 
+/** Shared tab item transition (transform + opacity, 300ms) */
+const ITEM_TRANSITION = 'transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.165,0.84,0.44,1)]';
+
+/** Hidden leave/enter start/end state */
+const ITEM_HIDDEN = 'opacity-0 translate-y-1';
+
+/**
+ * Classes applied to tab items by the compact's internal `TransitionGroup`
+ * (enter / leave / move animations, replacing the former injected styles.css).
+ */
+export const pageTabsItemTransition = {
+  moveClass: ITEM_TRANSITION,
+  enterActiveClass: ITEM_TRANSITION,
+  enterFromClass: ITEM_HIDDEN,
+  leaveActiveClass: `${ITEM_TRANSITION} absolute pointer-events-none`,
+  leaveToClass: ITEM_HIDDEN
+} as const;
+
 export const pageTabsVariants = scv({
   slots: {
-    root: `flex`,
+    root: `scrollbar-none overflow-y-hidden flex`,
     item: [
       `group/item relative flex items-center cursor-pointer select-none outline-none`,
       `data-[selected=true]:bg-primary-50 data-[selected=true]:text-primary data-[selected=true]:z-2`,

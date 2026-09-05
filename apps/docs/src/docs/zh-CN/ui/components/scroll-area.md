@@ -6,7 +6,7 @@
 
 ## 功能
 
-- **原生滚动引擎** — 使用浏览器原生滚动性能，通过注入的 `soybean-headless-scrollbar-hidden` 全局样式隐藏原生滚动条。
+- **原生滚动引擎** — 使用浏览器原生滚动性能，全局样式隐藏原生滚动条。
 - **五种可见性模式** — `type="auto"`（溢出时可见）、`"always"`（始终可见）、`"hover"`（悬停可见）、`"scroll"`（滚动时短暂显示）、`"glimpse"`（悬停时短暂闪现）。
 - **可配置隐藏延迟** — `scrollHideDelay`（默认 600ms）控制 `scroll` / `glimpse` 模式的滚动条停留时间。
 - **水平与垂直滚动条** — 每个方向独立的 `ScrollAreaScrollbar`，通过 `ResizeObserver` + 滚动指标自动检测溢出。
@@ -56,8 +56,7 @@
 3. **拖拽可离开滑块** — `pointermove` / `pointerup` / `pointercancel` 挂在 `window`（非滑块），光标离开滑块后拖拽仍持续。监听在 `pointerup` / `pointercancel` 与卸载时移除。
 4. **RTL 模式一次性探测** — `detectRtlScrollType` 在每个 `Document` 上通过临时滚动容器探测一次，结果缓存于 `WeakMap`。三种模式归一化后内部数学始终使用 0 → max 坐标系。
 5. **`type` 仅影响可见性** — 溢出检测、拖拽与滚动事件在所有模式下行为一致；`type` 只决定滚动条何时绘制（`data-state="visible|hidden"`）。
-6. **原生滚动条隐藏** — 视口使用 `ConfigProvider` 注入的全局 `soybean-headless-scrollbar-hidden` 类（`scrollbar-width: none` + `::-webkit-scrollbar { display: none }`）。未使用 `ConfigProvider` 时该类仍以默认配置注入。
-7. **SSR 安全** — setup 中无 `window` / `document` 访问。RTL 探测与 `ResizeObserver` 仅在客户端元素存在后运行。
+6. **SSR 安全** — setup 中无 `window` / `document` 访问。RTL 探测与 `ResizeObserver` 仅在客户端元素存在后运行。
 
 ## 常见问题
 

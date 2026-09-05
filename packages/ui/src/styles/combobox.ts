@@ -37,7 +37,7 @@ export const comboboxVariants = scv({
       ...overlayMotion
     ],
     arrow: 'fill-popover',
-    viewport: 'overflow-x-hidden overflow-y-auto',
+    viewport: 'scrollbar-none overflow-x-hidden overflow-y-auto',
     inputRoot: 'group flex items-center border-b',
     inputControl: `flex w-full rounded-md bg-transparent outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed`,
     group: 'overflow-hidden text-foreground',

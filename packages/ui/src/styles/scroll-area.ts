@@ -4,8 +4,7 @@ import { scv } from '@soybeanjs/cva';
 export const scrollAreaVariants = scv({
   slots: {
     root: 'relative overflow-hidden',
-    viewport:
-      'size-full rounded-[inherit] outline-none focus-visible:outline-1 focus-visible:ring-3 focus-visible:ring-ring/50',
+    viewport: `scrollbar-none size-full rounded-[inherit] outline-none focus-visible:outline-1 focus-visible:ring-3 focus-visible:ring-ring/50`,
     scrollbar: [
       'absolute flex touch-none select-none p-px transition-opacity duration-200 ease-out',
       'data-[state=hidden]:pointer-events-none data-[state=hidden]:opacity-0',

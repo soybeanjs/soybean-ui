@@ -54,14 +54,7 @@ function setRootRef(nodeRef: VNodeRef) {
 </script>
 
 <template>
-  <div
-    v-bind="groupProps"
-    :ref="setRootRef"
-    data-soybean-page-tabs-root
-    class="soybean-headless-scrollbar-hidden soybean-headless-overflow-y-hidden"
-    :class="[cls]"
-    @wheel="onWheel"
-  >
+  <div v-bind="groupProps" :ref="setRootRef" data-soybean-page-tabs-root :class="cls" @wheel="onWheel">
     <slot />
   </div>
 </template>

@@ -81,6 +81,10 @@ export function presetUiUnocss(options?: UiUnocssOptions): Preset<Theme>[] {
     });
   }
 
+  if (options?.preflights?.length) {
+    preflights.push(...options.preflights);
+  }
+
   // ---- Self preset (theme layer) ----------------------------------------
   const selfPreset: Preset = {
     name: 'soybean-ui-uno',

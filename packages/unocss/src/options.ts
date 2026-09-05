@@ -1,3 +1,4 @@
+import type { Preflight } from 'unocss';
 import type { WebFontsOptions } from 'unocss/preset-web-fonts';
 import type { PresetWind3Options } from 'unocss/preset-wind3';
 import type { BaseTokens, ThemeOptions } from '@soybeanjs/theme';
@@ -81,4 +82,8 @@ export interface UiUnocssOptions extends ThemeOptions, BaseTokens {
    * See {@linkcode PresetScrollbarOptions}.
    */
   scrollbar?: PresetScrollbarOptions;
+  /**
+   * Additional preflights to include in the stack.
+   */
+  preflights?: Preflight[];
 }

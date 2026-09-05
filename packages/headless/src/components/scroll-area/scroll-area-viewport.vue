@@ -37,14 +37,7 @@ const contentStyle = computed<CSSProperties>(() => ({
 </script>
 
 <template>
-  <div
-    :ref="setViewportElement"
-    v-bind="viewportProps"
-    data-soybean-scroll-area-viewport
-    :class="cls"
-    class="soybean-headless-scrollbar-hidden"
-    :style="style"
-  >
+  <div :ref="setViewportElement" v-bind="viewportProps" data-soybean-scroll-area-viewport :class="cls" :style="style">
     <Primitive :ref="setContentElement" :as="as" :as-child="asChild" :style="contentStyle">
       <slot />
     </Primitive>

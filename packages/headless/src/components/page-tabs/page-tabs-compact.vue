@@ -230,41 +230,39 @@ watchEffect(() => {
     @drag-end="handleDragEnd"
   >
     <PageTabsRoot v-bind="forwardedProps" v-model="modelValue">
-      <TransitionGroup name="page-tabs">
-        <PageTabsItem
-          v-for="(item, index) in items"
-          v-bind="props.itemProps"
-          :key="item.value"
-          :value="item.value"
-          :pinned="item.pinned"
-          :draggable="props.draggable && item.draggable !== false"
-          :index="index"
-          @click="handleItemClick(item)"
-          @close="handleItemClose(item)"
-          @pin="handleItemPin(item, $event)"
-          @pointerenter="handleItemPointerEnter($event, item)"
-        >
-          <slot name="item" v-bind="getItemSlotProps(item, index)">
-            <slot name="icon" v-bind="getItemSlotProps(item, index)">
-              <Icon v-if="item.icon" :icon="item.icon" />
-            </slot>
-            <slot name="label" v-bind="getItemSlotProps(item, index)">
-              <span :class="ui.itemText">{{ item.label }}</span>
-            </slot>
-            <PageTabsPin v-if="!item.hidePinnedIcon" v-bind="props.pinProps">
-              <slot name="pin-icon">
-                <Icon icon="lucide:pin" />
-              </slot>
-            </PageTabsPin>
-            <PageTabsClose v-bind="props.closeProps">
-              <slot name="close-icon">
-                <Icon icon="lucide:x" />
-              </slot>
-            </PageTabsClose>
-            <slot name="indicator" v-bind="getItemSlotProps(item, index)" />
+      <PageTabsItem
+        v-for="(item, index) in items"
+        v-bind="props.itemProps"
+        :key="item.value"
+        :value="item.value"
+        :pinned="item.pinned"
+        :draggable="props.draggable && item.draggable !== false"
+        :index="index"
+        @click="handleItemClick(item)"
+        @close="handleItemClose(item)"
+        @pin="handleItemPin(item, $event)"
+        @pointerenter="handleItemPointerEnter($event, item)"
+      >
+        <slot name="item" v-bind="getItemSlotProps(item, index)">
+          <slot name="icon" v-bind="getItemSlotProps(item, index)">
+            <Icon v-if="item.icon" :icon="item.icon" />
           </slot>
-        </PageTabsItem>
-      </TransitionGroup>
+          <slot name="label" v-bind="getItemSlotProps(item, index)">
+            <span :class="ui.itemText">{{ item.label }}</span>
+          </slot>
+          <PageTabsPin v-if="!item.hidePinnedIcon" v-bind="props.pinProps">
+            <slot name="pin-icon">
+              <Icon icon="lucide:pin" />
+            </slot>
+          </PageTabsPin>
+          <PageTabsClose v-bind="props.closeProps">
+            <slot name="close-icon">
+              <Icon icon="lucide:x" />
+            </slot>
+          </PageTabsClose>
+          <slot name="indicator" v-bind="getItemSlotProps(item, index)" />
+        </slot>
+      </PageTabsItem>
 
       <ContextMenuCompact
         v-if="contextMenus.length"

@@ -11,7 +11,7 @@ A custom scroll container that keeps native scrolling behavior while rendering s
 
 ## Features
 
-- **Native scroll engine** — scrolls with the browser's native performance while the native scrollbar is hidden via the injected `soybean-headless-scrollbar-hidden` global style.
+- **Native scroll engine** — scrolls with the browser's native performance while the native scrollbar is hidden.
 - **Five visibility modes** — `type="auto"` (visible while overflow), `"always"` (always visible), `"hover"` (visible on hover), `"scroll"` (transiently visible while scrolling), and `"glimpse"` (a brief glimpse on hover).
 - **Customizable hide delay** — `scrollHideDelay` (default 600ms) controls how long transient scrollbars (`scroll` / `glimpse`) stay visible.
 - **Horizontal and vertical scrollbars** — independent `ScrollAreaScrollbar` components per orientation with automatic overflow detection via `ResizeObserver` + scroll metrics.
@@ -156,8 +156,7 @@ Properties for the ScrollAreaViewport component.
 3. **Drag continues off-thumb** — `pointermove` / `pointerup` / `pointercancel` listeners are attached to `window` (not the thumb) so dragging works even when the cursor leaves the thumb. Listeners are removed on `pointerup` / `pointercancel` and on unmount.
 4. **RTL mode detection is one-time** — `detectRtlScrollType` probes a temporary scroll container once per `Document` and caches the result in a `WeakMap`. The three modes (`default` / `negative` / `reverse`) are normalized so internal math always uses a 0 → max coordinate space.
 5. **`type` affects visibility only, not behavior** — overflow detection, drag, and scroll events work identically for all modes; `type` only decides when the scrollbars are painted (`data-state="visible|hidden"`).
-6. **Native scrollbar hiding** — the viewport uses the global `soybean-headless-scrollbar-hidden` class injected by `ConfigProvider` (`scrollbar-width: none` + `::-webkit-scrollbar { display: none }`). Without a `ConfigProvider`, the class is still injected with default options.
-7. **SSR safety** — no `window` / `document` access in setup. The RTL probe and `ResizeObserver` only run client-side once elements exist.
+6. **SSR safety** — no `window` / `document` access in setup. The RTL probe and `ResizeObserver` only run client-side once elements exist.
 
 ## FAQ
 

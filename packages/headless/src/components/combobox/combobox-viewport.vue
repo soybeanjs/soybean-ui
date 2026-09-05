@@ -10,7 +10,7 @@ defineProps<ComboboxViewportProps>();
 </script>
 
 <template>
-  <ListboxContent data-soybean-combobox-viewport class="soybean-headless-scrollbar-hidden">
+  <ListboxContent data-soybean-combobox-viewport>
     <slot />
   </ListboxContent>
 </template>

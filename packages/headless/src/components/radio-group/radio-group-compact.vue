@@ -35,10 +35,7 @@ const getItemId = (index: number) => `${props.itemProps?.id || `radio-${defaultI
       :disabled="disabled || item.disabled"
     >
       <RadioGroupControl v-bind="controlProps" :id="getItemId(index)">
-        <Transition
-          enter-active-class="soybean-headless-transition-all-150"
-          enter-from-class="soybean-headless-opacity-0 soybean-headless-scale-0"
-        >
+        <Transition name="radio-group-indicator">
           <RadioGroupIndicator v-bind="indicatorProps" />
         </Transition>
       </RadioGroupControl>

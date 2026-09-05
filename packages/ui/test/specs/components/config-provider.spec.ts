@@ -102,20 +102,6 @@ describe('SConfigProvider', () => {
 
       wrapper.unmount();
     });
-
-    it('injects headless utility CSS classes', () => {
-      const wrapper = mount(SConfigProvider, {
-        slots: { default: '<div />' },
-        attachTo: document.body
-      });
-
-      const styleEl = getStyleEl('__SoybeanHeadless_Styles');
-      expect(styleEl).toBeTruthy();
-      expect(styleEl!.textContent).toContain('soybean-headless-sr-only');
-      expect(styleEl!.textContent).toContain('soybean-headless-scrollbar-hidden');
-
-      wrapper.unmount();
-    });
   });
 
   describe('direction and locale', () => {

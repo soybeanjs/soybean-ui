@@ -1,4 +1,4 @@
-import type { ComputedRef, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef, TransitionProps } from 'vue';
 import type {
   BaseProps,
   DataOrientation,
