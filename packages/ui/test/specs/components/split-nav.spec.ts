@@ -249,6 +249,38 @@ describe('SSplitNav', () => {
       wrapper.unmount();
     });
 
+    it('falls back inside its own instance when a sibling instance shares item values', async () => {
+      const wrapperA = mount(SSplitNav, {
+        props: {
+          items,
+          mode: 'dual-vertical'
+        },
+        attachTo: document.body
+      });
+      const wrapperB = mount(SSplitNav, {
+        props: {
+          items,
+          mode: 'dual-vertical',
+          modelValue: 'workspace'
+        },
+        attachTo: document.body
+      });
+
+      const projectsB = wrapperB.find('[data-soybean-tree-menu-button][data-value="projects"]');
+      expect(projectsB.exists()).toBe(true);
+
+      await projectsB.trigger('keydown', { key: 'ArrowLeft' });
+
+      const workspaceB = wrapperB.find('[data-soybean-split-nav-first-level-item][data-value="workspace"]');
+      expect(document.activeElement).toBe(workspaceB.element);
+
+      const workspaceA = wrapperA.find('[data-soybean-split-nav-first-level-item][data-value="workspace"]');
+      expect(document.activeElement).not.toBe(workspaceA.element);
+
+      wrapperA.unmount();
+      wrapperB.unmount();
+    });
+
     it('opens a parent pane without selecting it', async () => {
       const wrapper = mount(SSplitNav, {
         props: {
@@ -313,7 +345,7 @@ describe('SSplitNav', () => {
       wrapper.unmount();
     });
 
-    it('opens a vertical first-level parent with ArrowLeft', async () => {
+    it('does not open a vertical first-level parent with the backward key ArrowLeft', async () => {
       const wrapper = mount(SSplitNav, {
         props: {
           items,
@@ -326,8 +358,8 @@ describe('SSplitNav', () => {
 
       await parent.trigger('keydown', { key: 'ArrowLeft' });
 
-      expect(parent.attributes('data-state')).toBe('open');
-      expect(wrapper.find('[data-soybean-split-nav-sub-vertical]').exists()).toBe(true);
+      expect(parent.attributes('data-state')).toBe('closed');
+      expect(wrapper.find('[data-soybean-split-nav-sub-vertical]').exists()).toBe(false);
       expect(wrapper.emitted('update:modelValue')).toBeFalsy();
 
       wrapper.unmount();
@@ -506,7 +538,7 @@ describe('SSplitNav', () => {
       wrapper.unmount();
     });
 
-    it('emits open when a vertical first-level parent is opened with ArrowLeft', async () => {
+    it('emits open when a vertical first-level parent is opened with the forward key ArrowRight', async () => {
       const wrapper = mount(SSplitNav, {
         props: {
           items,
@@ -517,7 +549,7 @@ describe('SSplitNav', () => {
 
       const parent = wrapper.find('[data-soybean-split-nav-first-level-item][data-value="workspace"]');
 
-      await parent.trigger('keydown', { key: 'ArrowLeft' });
+      await parent.trigger('keydown', { key: 'ArrowRight' });
 
       expect(wrapper.emitted('open')).toHaveLength(1);
       expect(wrapper.emitted('open')?.at(-1)?.[0]).toMatchObject({ value: 'workspace' });

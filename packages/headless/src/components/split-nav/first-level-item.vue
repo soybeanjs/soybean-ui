@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onBeforeUnmount } from 'vue';
 import { getDisclosureState } from '../../shared';
-import { useRovingFocusGroupItem } from '../../composables';
+import { useForwardElement, useRovingFocusGroupItem } from '../../composables';
+import type { VNodeRef } from '../../types';
 import Icon from '../_icon/icon.vue';
 import Button from '../button/button.vue';
 import Link from '../link/link.vue';
@@ -10,6 +11,7 @@ import {
   findActivePath,
   focusFirstLevelPaneItem,
   hasVisibleChildren,
+  isFirstLevelBackwardExpandKey,
   isFirstLevelExpandKey,
   isFirstLevelForwardExpandKey
 } from './shared';
@@ -22,10 +24,29 @@ defineOptions({
 
 const props = defineProps<FirstLevelItemProps>();
 
-const { dir, items, mode, modelValue, openPath, horizontalMountedId, verticalMountedId, onItemActivate } =
-  useSplitNavRootContext('SplitNavFirstLevelItem');
+const {
+  dir,
+  items,
+  mode,
+  modelValue,
+  openPath,
+  railItemElements,
+  horizontalMountedId,
+  verticalMountedId,
+  onItemActivate
+} = useSplitNavRootContext('SplitNavFirstLevelItem');
 
 const ui = useSplitNavUi();
+
+// Register this rail item so panes (possibly teleported away) can hand focus
+// back to it without querying the document across other instances.
+const [, setRegisteredItemElement] = useForwardElement<HTMLElement>(element => {
+  railItemElements.set(props.item.value, element);
+});
+
+onBeforeUnmount(() => {
+  railItemElements.delete(props.item.value);
+});
 
 const isLink = computed(() => Boolean(props.item.to || props.item.href));
 
@@ -51,11 +72,23 @@ const ariaExpanded = computed(() => (isBranch.value ? isOpen.value : undefined))
 
 // Roving focus item as a hook: exposes the collection item + roving-focus data attributes
 // (alongside `data-soybean-split-nav-first-level-item`) merged into the button bindings.
-const { itemProps, setItemElement } = useRovingFocusGroupItem({
+const { itemProps, setItemElement: setRovingItemElement } = useRovingFocusGroupItem({
   tabStopId: computed(() => props.item.value),
   focusable: computed(() => !props.item.disabled),
   active: computed(() => isSelected.value || isOpen.value)
 });
+
+function setItemElement(nodeRef: VNodeRef) {
+  setRegisteredItemElement(nodeRef);
+  setRovingItemElement(nodeRef);
+}
+
+// Focus this instance's rail item by value, resolving through the registry.
+function focusRailItem(value?: string) {
+  if (!value) return;
+
+  railItemElements.get(value)?.focus();
+}
 
 const linkProps = computed<LinkProps>(() => {
   if (!isLink.value) {
@@ -92,8 +125,12 @@ function handleKeyDown(event: KeyboardEvent) {
 
   const isActivateKey = event.key === 'Enter' || event.key === ' ';
   const isExpandKey = isBranch.value && isFirstLevelExpandKey(event.key, props.orientation);
+  // The vertical backward key is handled for leaves as well: a nested rail
+  // always releases the focus to its parent rail.
+  const isBackwardKey =
+    props.orientation === 'vertical' && isFirstLevelBackwardExpandKey(event.key, props.orientation, dir.value);
 
-  if (!isActivateKey && !isExpandKey) {
+  if (!isActivateKey && !isExpandKey && !isBackwardKey) {
     return;
   }
 
@@ -111,6 +148,22 @@ function handleKeyDown(event: KeyboardEvent) {
       horizontalMountedId: horizontalMountedId.value,
       verticalMountedId: verticalMountedId.value
     });
+
+    return;
+  }
+
+  // The backward key never activates: on a nested rail any item hands focus
+  // back to the parent rail item that owns this pane, while a top-level rail
+  // keeps the focus in place.
+  if (isBackwardKey) {
+    const element = event.currentTarget as HTMLElement;
+    const pane = element.closest('[data-soybean-split-nav-dual-vertical]');
+    const isNestedRail = Boolean(pane && !pane.hasAttribute('data-soybean-split-nav-root'));
+
+    if (isNestedRail) {
+      event.preventDefault();
+      focusRailItem(openPath.value[0]);
+    }
 
     return;
   }

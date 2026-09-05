@@ -1,3 +1,4 @@
+import { COLLECTION_ITEM_ATTRIBUTE } from '../../constants';
 import type { DataOrientation, Direction } from '../../types';
 import type { TreeMenuOptionData } from '../tree-menu/types';
 import type { TreeNavOptionData } from '../tree-nav/types';
@@ -214,6 +215,50 @@ export function focusFirstLevelPaneItem(options: {
   const item = pane?.querySelector<HTMLElement>('[data-soybean-roving-focus-item]:not([data-disabled])');
 
   item?.focus();
+}
+
+/**
+ * Whether an expand key moves OUT of the nested pane back to its rail (the
+ * backward direction).
+ *
+ * Vertical rails release focus with the horizontal key opposite to the forward
+ * one; horizontal rails use ArrowUp, the axis their ArrowDown expand leaves
+ * free.
+ */
+export function isFirstLevelBackwardExpandKey(key: string, orientation: DataOrientation, dir?: Direction): boolean {
+  if (orientation === 'horizontal') {
+    return key === 'ArrowUp';
+  }
+
+  return key === (dir === 'rtl' ? 'ArrowRight' : 'ArrowLeft');
+}
+
+/**
+ * Whether the event rests on the first visible top-level item of the pane —
+ * the boundary where roaming can go no further and the focus may fall back to
+ * the owning rail.
+ */
+export function isPaneBoundaryKey(
+  event: KeyboardEvent,
+  paneElement: HTMLElement,
+  matches: (key: string) => boolean
+): boolean {
+  if (!matches(event.key)) {
+    return false;
+  }
+
+  const target = event.target instanceof Element ? event.target : null;
+  const item = target?.closest<HTMLElement>(`[${COLLECTION_ITEM_ATTRIBUTE}]`);
+
+  if (!item || !paneElement.contains(item)) {
+    return false;
+  }
+
+  const firstItem = Array.from(paneElement.querySelectorAll<HTMLElement>(`[${COLLECTION_ITEM_ATTRIBUTE}]`)).find(
+    candidate => !candidate.closest('[data-soybean-tree-menu-collapsible-content]')
+  );
+
+  return Boolean(firstItem) && firstItem === item;
 }
 
 /**

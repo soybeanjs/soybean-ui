@@ -74,6 +74,11 @@ const collapsed = useControllableState(
 
 const openPath = shallowRef(toOpenPath(props.items, modelValue.value));
 
+// First-level rail items keyed by value. Panes may be teleported away from
+// their rail, so keyboard fallbacks resolve targets here instead of querying
+// the document (which would cross other SplitNav instances).
+const railItemElements = new Map<string, HTMLElement>();
+
 const menus: Record<SplitNavMode, Component> = {
   'dual-vertical': DualVerticalPane,
   'vertical-horizontal': VerticalHorizontalMenu,
@@ -112,6 +117,7 @@ provideSplitNavRootContext({
   collapsed,
   openPath,
   rootAttrs,
+  railItemElements,
   onItemActivate,
   ...toContext(props, ['mode', 'items', 'horizontalMountedId', 'verticalMountedId', 'loop', 'dir', 'collapsedWidth'])
 });

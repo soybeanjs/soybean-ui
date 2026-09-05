@@ -10,7 +10,8 @@ import { renderComponent } from '../../shared/render';
  * The happy-dom unit spec covers rendering, emit wiring, disabled items, and
  * Teleport structure. This spec covers first-level Arrow/Enter navigation and
  * theme-backed color-contrast a11y that happy-dom cannot faithfully reproduce.
- * ArrowLeft/ArrowRight on a vertical parent open the nested pane without selecting it.
+ * ArrowRight (forward) on a vertical parent opens the nested pane without selecting
+ * it; ArrowLeft (backward) on the pane's first item hands focus back to the rail.
  */
 const items = [
   {
@@ -67,6 +68,24 @@ describe('SSplitNav (e2e)', () => {
 
       await expect.element(workspace).toHaveAttribute('data-state', 'open');
       await expect.element(page.getByText('Projects')).toBeVisible();
+
+      unmount();
+    });
+
+    it('returns focus to the owning rail item with ArrowLeft on the nested pane', async () => {
+      const { unmount } = renderComponent(SSplitNav, {
+        props: { items, mode: 'dual-vertical', modelValue: 'workspace' }
+      });
+
+      const projects = page.getByRole('button', { name: 'Projects' });
+      await expect.element(projects).toBeVisible();
+
+      projects.element().focus();
+      await userEvent.keyboard('{ArrowLeft}');
+
+      const workspace = page.getByRole('menuitem', { name: 'Workspace' });
+      await expect.element(workspace).toBeVisible();
+      expect(document.activeElement).toBe(workspace.element());
 
       unmount();
     });

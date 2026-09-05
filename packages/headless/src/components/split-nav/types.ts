@@ -261,6 +261,14 @@ export interface SplitNavRootContextParams extends ToContext<
    */
   openPath: ShallowRef<string[]>;
   /**
+   * First-level rail items of this instance keyed by value.
+   *
+   * Panes and rails may live in separate DOM trees (mounted targets), so the
+   * focus fallback resolves its target through this registry instead of a
+   * document query that would cross other SplitNav instances.
+   */
+  railItemElements: Map<string, HTMLElement>;
+  /**
    * Activate an item by value: opens a parent pane, or selects a leaf.
    */
   onItemActivate: (value: string, event?: Event) => void;

@@ -4,7 +4,7 @@ import { keysOf } from '../../shared';
 import { TreeNavCompact } from '../tree-nav';
 import { toMountedTarget, toTreeNavOptions } from './shared';
 import { useSplitNavRootContext, useSplitNavUi } from './context';
-import { useSplitNavDerived } from './hooks';
+import { useSplitNavDerived, useSplitNavPaneFallback } from './hooks';
 import type { SplitNavRootSlots } from './types';
 import VerticalFirstLevelMenu from './vertical-first-level-menu.vue';
 
@@ -20,7 +20,9 @@ const { dir, modelValue, verticalMountedId, horizontalMountedId, onItemActivate 
   'SplitNavVerticalHorizontalMenu'
 );
 
-const { firstLevelItems, childItems } = useSplitNavDerived();
+const { activeItem, firstLevelItems, childItems } = useSplitNavDerived();
+
+const { onPaneKeydownCapture } = useSplitNavPaneFallback(activeItem);
 
 const navItems = computed(() => toTreeNavOptions(childItems.value));
 
@@ -49,7 +51,12 @@ const treeNavSlotNames = computed(() =>
     </VerticalFirstLevelMenu>
   </Teleport>
   <Teleport defer :to="horizontalTarget" :disabled="!horizontalTarget">
-    <div v-if="navItems.length" data-soybean-split-nav-sub-horizontal :class="ui.subHorizontal">
+    <div
+      v-if="navItems.length"
+      data-soybean-split-nav-sub-horizontal
+      :class="ui.subHorizontal"
+      @keydown-capture="onPaneKeydownCapture"
+    >
       <TreeNavCompact :items="navItems" :model-value="modelValue" :dir="dir" @update:model-value="onItemActivate">
         <template v-for="slotName in treeNavSlotNames" :key="slotName" #[slotName]="slotProps">
           <!-- @vue-expect-error ignore slot type -->

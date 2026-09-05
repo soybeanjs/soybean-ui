@@ -4,7 +4,7 @@ import { keysOf } from '../../shared';
 import { TreeMenuCompact } from '../tree-menu';
 import { toMountedTarget, toTreeMenuOptions } from './shared';
 import { useSplitNavRootContext, useSplitNavUi } from './context';
-import { useSplitNavDerived, useSplitNavTreePane } from './hooks';
+import { useSplitNavDerived, useSplitNavPaneFallback, useSplitNavTreePane } from './hooks';
 import HorizontalFirstLevelMenu from './horizontal-first-level-menu.vue';
 import type { SplitNavRootSlots } from './types';
 
@@ -18,7 +18,9 @@ const ui = useSplitNavUi();
 
 const { verticalMountedId, horizontalMountedId } = useSplitNavRootContext('SplitNavHorizontalVerticalMenu');
 
-const { firstLevelItems, childItems } = useSplitNavDerived();
+const { activeItem, firstLevelItems, childItems } = useSplitNavDerived();
+
+const { onPaneKeydown } = useSplitNavPaneFallback(activeItem);
 
 const { collapsed, collapsedWidth, modelValue, treePaneState, treePaneStyle, handleTreeSelect, handleCollapsedChange } =
   useSplitNavTreePane();
@@ -49,6 +51,7 @@ const treeSlotNames = computed(() =>
       :class="ui.subVertical"
       :data-state="treePaneState"
       :style="treePaneStyle"
+      @keydown="onPaneKeydown"
     >
       <TreeMenuCompact
         :items="treeItems"
