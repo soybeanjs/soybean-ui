@@ -7,6 +7,7 @@ import { buildThemeColors } from './colors';
 import { buildGlobalCss } from './global-css';
 import type { UiUnocssOptions } from './options';
 import resetStyle from './reset.css?raw';
+import { presetScrollbar } from './scrollbar';
 
 /**
  * The SoybeanUI unocss preset.
@@ -26,11 +27,15 @@ import resetStyle from './reset.css?raw';
  *
  * The returned array is:
  *   [
- *     presetWind3({ dark }),
- *     presetAnimations(),
- *     presetWebFonts({ ... }),        // only when `fonts` option is provided
+ *     presetWind3({ dark, ...wind3 }),
+ *     presetAnimations(animations),
+ *     presetScrollbar(scrollbar),
+ *     presetWebFonts({ ... }),        // only when `fonts` or `webFonts` option is provided
  *     ui-uno-theme + preflights,
  *   ]
+ *
+ * The `wind3` / `animations` / `scrollbar` / `webFonts` options inject the
+ * config into the corresponding preset (see {@link UiUnocssOptions}).
  */
 export function presetUiUnocss(options?: UiUnocssOptions): Preset<Theme>[] {
   const {
@@ -40,6 +45,10 @@ export function presetUiUnocss(options?: UiUnocssOptions): Preset<Theme>[] {
     fonts,
     fontProvider = 'fontsource',
     format = 'hsl',
+    wind3,
+    animations,
+    scrollbar,
+    webFonts,
     ...themeOptions
   } = options ?? {};
 
@@ -111,14 +120,18 @@ export function presetUiUnocss(options?: UiUnocssOptions): Preset<Theme>[] {
   // ---- Build the presets array ------------------------------------------
 
   const presets: Preset[] = [
-    // 1. Wind3 — required for utility classes
-    presetWind3({ dark: resolveWind3Dark(options?.darkSelector) }),
+    // 1. Wind3 — required for utility classes (`wind3.dark` overrides `darkSelector`)
+    presetWind3({ dark: resolveWind3Dark(options?.darkSelector), ...wind3 }),
     // 2. Animations (local implementation, replaces `unocss-preset-animations`)
-    presetAnimations()
+    presetAnimations(animations),
+    // 3. Scrollbar (local implementation, replaces `unocss-preset-scrollbar`)
+    presetScrollbar(scrollbar)
   ];
 
-  // 3. Web fonts (only when fonts are explicitly configured)
-  if (fonts) {
+  // 4. Web fonts (only when fonts are explicitly configured; `webFonts` wins over `fonts`)
+  if (webFonts) {
+    presets.push(presetWebFonts({ provider: fontProvider, ...webFonts }));
+  } else if (fonts) {
     presets.push(
       presetWebFonts({
         provider: fontProvider,
@@ -127,7 +140,7 @@ export function presetUiUnocss(options?: UiUnocssOptions): Preset<Theme>[] {
     );
   }
 
-  // 4. Self — shadcn theme layer
+  // 5. Self — shadcn theme layer
   presets.push(selfPreset);
 
   return presets as Preset<Theme>[];

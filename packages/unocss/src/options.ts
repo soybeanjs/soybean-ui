@@ -1,4 +1,8 @@
+import type { WebFontsOptions } from 'unocss/preset-web-fonts';
+import type { PresetWind3Options } from 'unocss/preset-wind3';
 import type { BaseTokens, ThemeOptions } from '@soybeanjs/theme';
+import type { PresetAnimationsOptions } from './animations';
+import type { PresetScrollbarOptions } from './scrollbar';
 
 /**
  * Options for {@link presetUiUnocss}.
@@ -7,6 +11,10 @@ import type { BaseTokens, ThemeOptions } from '@soybeanjs/theme';
  * with the base tokens (`size`/`radius`) so a single
  * options object can fully drive the generated theme. Base tokens are top-level
  * `ThemeOptions` fields that `createTheme` reads directly.
+ *
+ * The built-in presets of the returned stack (`presetWind3` / `presetAnimations` /
+ * `presetScrollbar` / `presetWebFonts`) can be configured via the `wind3` /
+ * `animations` / `scrollbar` / `webFonts` injection options.
  */
 export interface UiUnocssOptions extends ThemeOptions, BaseTokens {
   /**
@@ -28,11 +36,11 @@ export interface UiUnocssOptions extends ThemeOptions, BaseTokens {
    */
   uiCSS?: boolean;
   /**
-   * Font configuration forwarded to `@unocss/preset-web-fonts`.
-   * When provided, `presetWebFonts` is automatically included in the returned presets.
-   *
+   * Simple font configuration forwarded to `@unocss/preset-web-fonts`.
    * Keys (sans / heading / mono) map to web font names understood
    * by the configured provider (default: 'fontsource').
+   *
+   * Ignored when {@link UiUnocssOptions.webFonts} is provided.
    */
   fonts?: {
     sans?: string;
@@ -43,8 +51,34 @@ export interface UiUnocssOptions extends ThemeOptions, BaseTokens {
    * Web font provider.
    *
    * Uses `@fontsource-variable/*` npm packages (self-hosted, no CDN requests).
+   * Also acts as the default provider for {@link UiUnocssOptions.webFonts}.
    *
    * @default 'fontsource'
    */
   fontProvider?: 'google' | 'bunny' | 'fontshare' | 'fontsource' | 'coollabs' | 'none';
+  /**
+   * Options injected into `@unocss/preset-web-fonts` (full control over
+   * providers, font metas, `extendTheme`, etc.).
+   *
+   * When provided it takes precedence over the simple config derived from
+   * `fonts`; `provider` falls back to `fontProvider` if omitted.
+   */
+  webFonts?: Partial<WebFontsOptions>;
+  /**
+   * Options injected into `presetWind3` (`important`, `dark`, `content`...).
+   *
+   * `dark` takes precedence over `darkSelector`.
+   */
+  wind3?: PresetWind3Options;
+  /**
+   * Options injected into the local animation preset
+   * (duration / delay / timingFunction...). See {@linkcode PresetAnimationsOptions}.
+   */
+  animations?: PresetAnimationsOptions;
+  /**
+   * Options injected into the local scrollbar preset
+   * (default sizes / colors / `varPrefix` / `compatible`...).
+   * See {@linkcode PresetScrollbarOptions}.
+   */
+  scrollbar?: PresetScrollbarOptions;
 }
