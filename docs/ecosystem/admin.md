@@ -41,7 +41,7 @@ M2 遗留：`pnpm typecheck` 被 TS 6.0.3 + vue-tsc 既有工具链 bug 阻塞�
 @soybeanjs/headless ──► @soybeanjs/ui ──► @soybeanjs/admin ──(optional peerDep)──► @soybeanjs/chart
 ```
 
-admin 依赖 `@soybeanjs/theme`、`@soybeanjs/cva`、`@soybeanjs/hooks`、`@soybeanjs/utils`、`@iconify/vue`；peer 依赖 `vue >=3.2`、`vue-router >=4`、nuxt / unplugin-vue-components（可选）。`admin → chart` 是跨外围包白名单唯一有向边（仪表盘嵌图表）。
+admin 依赖 `@soybeanjs/theme`、`@soybeanjs/cva`、`@soybeanjs/hooks`、`iconify/vue`；peer 依赖 `vue >=3.2`、`vue-router >=4`、nuxt / unplugin-vue-components（可选）。`admin → chart` 是跨外围包白名单唯一有向边（仪表盘嵌图表）。
 
 ### 2.2 状态注入模式（关键抽象）
 

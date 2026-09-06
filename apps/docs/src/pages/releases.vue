@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { pascalCase } from '@soybeanjs/utils';
+import { pascalCase } from '@soybeanjs/headless/shared';
 import { useGeneratedI18n } from '~/composables/use-generated-i18n';
 import { getReleaseChangelogDocument } from '~/shared/generated-changelog';
 import type {

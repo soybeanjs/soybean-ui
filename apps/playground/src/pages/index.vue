@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { shallowRef, ref, watch, watchPostEffect, onMounted, computed } from 'vue';
 import type { Component } from 'vue';
+import { kebabCase, pascalCase } from '@soybeanjs/headless/shared';
 import { SButtonIcon, SIcon, SCard, SLink, STabs, SSelect } from '@soybeanjs/ui';
 import type { TabsOptionData, SelectSingleOptionData } from '@soybeanjs/ui';
-import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import { getComponentLibrary } from '../component-libraries';
 import DirectionToggler from '../components/direction-toggler.vue';
 import LocaleToggler from '../components/locale-toggler.vue';

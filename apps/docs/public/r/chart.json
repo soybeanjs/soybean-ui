@@ -1,6 +1,6 @@
 {
   "name": "chart",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils", "@unovis/vue", "@unovis/ts"],
+  "dependencies": ["@soybeanjs/headless", "@unovis/vue", "@unovis/ts"],
   "files": [
     {
       "path": "packages/chart/src/components/chart-container/chart-container.vue",

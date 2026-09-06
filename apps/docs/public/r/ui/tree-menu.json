@@ -1,7 +1,7 @@
 {
   "name": "ui/tree-menu",
   "package": "ui",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
+  "dependencies": ["@soybeanjs/headless"],
   "files": [
     {
       "path": "packages/ui/src/components/tree-menu/tree-menu.vue",

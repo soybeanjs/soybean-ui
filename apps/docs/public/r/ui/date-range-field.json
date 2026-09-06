@@ -1,7 +1,7 @@
 {
   "name": "ui/date-range-field",
   "package": "ui",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
+  "dependencies": ["@soybeanjs/headless"],
   "files": [
     {
       "path": "packages/ui/src/components/date-range-field/types.ts",

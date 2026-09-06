@@ -2,7 +2,7 @@ import { computed, watch } from 'vue';
 import type { App, WatchStopHandle } from 'vue';
 import { createI18n } from 'vue-i18n';
 import type { Locale } from 'vue-i18n';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '@soybeanjs/headless/shared';
 import en from '../../../docs/locales/en.json';
 import zhCN from '../../../docs/locales/zh-CN.json';
 

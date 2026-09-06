@@ -64,7 +64,6 @@
     "@soybeanjs/headless": "workspace:^",
     "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
-    "@soybeanjs/utils": "^0.1.1",
     "markstream-vue": "^2.0.7"
   },
   "devDependencies": {

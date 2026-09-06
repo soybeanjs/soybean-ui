@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { pascalCase } from '@soybeanjs/headless/shared';
 import type { TabsOptionData } from '@soybeanjs/ui';
-import { pascalCase } from '@soybeanjs/utils';
 import { getOrderedPlaygroundExamples } from '../constants/globs';
 import CodeBlock from './code-block.vue';
 

@@ -1,7 +1,7 @@
 {
   "name": "ui/switch",
   "package": "ui",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
+  "dependencies": ["@soybeanjs/headless"],
   "files": [
     {
       "path": "packages/ui/src/components/switch/switch.vue",

@@ -167,7 +167,6 @@ app.mount('#app')
     '@soybeanjs/headless': `^${SOYBEAN_VERSION}`,
     '@soybeanjs/hooks': `^0.3.0`,
     '@soybeanjs/theme': `^${SOYBEAN_VERSION}`,
-    '@soybeanjs/utils': `^0.1.1`,
     vue: '^3.5.41',
     'vue-router': '^5.2.0'
   },
@@ -237,7 +236,6 @@ export default defineNuxtConfig({
     '@soybeanjs/headless': `^${SOYBEAN_VERSION}`,
     '@soybeanjs/hooks': `^0.3.0`,
     '@soybeanjs/theme': `^${SOYBEAN_VERSION}`,
-    '@soybeanjs/utils': '^0.1.1',
     nuxt: '^4.4.8'
   },
   devDependencies: {

@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
-import { kebabCase } from '@soybeanjs/utils';
+import { kebabCase } from '#shared/string';
 import { components as headlessComponents } from '../../../headless/src/constants/components';
 import { writeGeneratedJsonDirectory } from '../shared/json';
 import { releaseIntroducedComponents, releaseChangelogNotes } from './changelog-notes';

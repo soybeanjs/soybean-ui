@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { kebabCase, pascalCase } from '@soybeanjs/utils';
+import { kebabCase, pascalCase } from '@soybeanjs/headless/shared';
 import BackgroundDecoration from '~/motion/background-decoration.vue';
 import { menuData } from '../constants/menus';
 

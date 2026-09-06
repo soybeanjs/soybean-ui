@@ -1,7 +1,7 @@
 {
   "name": "ui/calendar-range",
   "package": "ui",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
+  "dependencies": ["@soybeanjs/headless"],
   "registryDependencies": ["ui/select"],
   "files": [
     {

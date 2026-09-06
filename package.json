@@ -46,9 +46,6 @@
     "typecheck": "pnpm -r typecheck",
     "upkg": "soy ncu"
   },
-  "dependencies": {
-    "@soybeanjs/utils": "^0.1.1"
-  },
   "devDependencies": {
     "@soybeanjs/cli": "^1.8.2",
     "@soybeanjs/eslint-config-vue": "^0.1.1",

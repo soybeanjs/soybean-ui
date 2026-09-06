@@ -1,7 +1,7 @@
 {
   "name": "ui/textarea",
   "package": "ui",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
+  "dependencies": ["@soybeanjs/headless"],
   "files": [
     {
       "path": "packages/ui/src/components/textarea/types.ts",

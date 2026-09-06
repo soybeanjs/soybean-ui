@@ -1,7 +1,7 @@
 {
   "name": "ui/input-number",
   "package": "ui",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
+  "dependencies": ["@soybeanjs/headless"],
   "files": [
     {
       "path": "packages/ui/src/components/input-number/types.ts",

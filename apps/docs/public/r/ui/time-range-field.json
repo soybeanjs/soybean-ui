@@ -1,7 +1,7 @@
 {
   "name": "ui/time-range-field",
   "package": "ui",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
+  "dependencies": ["@soybeanjs/headless"],
   "files": [
     {
       "path": "packages/ui/src/components/time-range-field/time-range-field.vue",

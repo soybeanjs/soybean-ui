@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useMagicKeys } from '@vueuse/core';
+import { kebabCase, pascalCase } from '@soybeanjs/headless/shared';
 import type { CommandOptionData, SelectEvent } from '@soybeanjs/ui';
-import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import { components } from '@/constants/components';
 
 defineOptions({

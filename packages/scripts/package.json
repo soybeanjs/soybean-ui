@@ -13,7 +13,6 @@
     "typecheck": "tsc --noEmit --skipLibCheck"
   },
   "devDependencies": {
-    "@soybeanjs/utils": "^0.1.1",
     "@types/node": "^26.4.1",
     "tsx": "^4.23.13",
     "typedoc": "^0.28.20",

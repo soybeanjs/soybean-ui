@@ -1,7 +1,7 @@
 {
   "name": "ui/dropdown-menu",
   "package": "ui",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
+  "dependencies": ["@soybeanjs/headless"],
   "files": [
     {
       "path": "packages/ui/src/components/dropdown-menu/dropdown-menu-wrapper.vue",

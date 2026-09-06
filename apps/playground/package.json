@@ -24,7 +24,6 @@
     "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
     "@soybeanjs/ui-x": "workspace:^",
-    "@soybeanjs/utils": "^0.1.1",
     "@tanstack/charts": "^0.16.0",
     "@unovis/ts": "^1.6.7",
     "@unovis/vue": "^1.6.7",

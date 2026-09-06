@@ -7,7 +7,7 @@
 ## 1. 现状盘点（基于 `origin/ecosystem` 分支）
 
 - 包骨架与 ui-x / admin 一致：`src/{components,styles,constants,resolver,nuxt}` + `test/`；入口已导出四个基础组件（chart-container / chart-tooltip-content / chart-legend-content / chart-style）与 `chartColors` / `chartThemes`。
-- 依赖：`@soybeanjs/{headless,theme,ui}` workspace + `@soybeanjs/cva` + `@iconify/vue` + `@soybeanjs/utils`；peer 全部 optional（vue / nuxt / vue-router / unplugin-vue-components）。
+- 依赖：`@soybeanjs/{headless,theme,ui}` workspace + `@soybeanjs/cva` + `@iconify/vue`；peer 全部 optional（vue / nuxt / vue-router / unplugin-vue-components）。
 - exports：`.`、`./nuxt`、`./resolver`、`./styles.css`（**无** `./composables` / `./types` 子路径——chart 领域逻辑随包自治，无历史拆包负担）。
 - `admin` 已声明对 chart 的 optional peerDep（白名单唯一跨外围包边），供 `SAppProTable` / 仪表盘场景嵌入。
 - 任务基线：EC-C10（`SChartBar`）、EC-C11（`SChartLine`）为 P0，EC-C12（其余图表）为 P2，时间窗 2026-08-14 ~ 08-31。

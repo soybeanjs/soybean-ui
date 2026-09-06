@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { kebabCase, pascalCase } from '@soybeanjs/utils';
+import { kebabCase, pascalCase } from '@soybeanjs/headless/shared';
 import { resetDocOutline, setDocOutline } from '~/composables/use-doc-outline';
 import { uiXMenuData } from '../../constants/menus';
 

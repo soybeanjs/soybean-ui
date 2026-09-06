@@ -1,5 +1,5 @@
-import { camelCase, pascalCase } from '@soybeanjs/utils';
 import type { SourceFile } from 'typescript';
+import { camelCase, pascalCase } from '#shared/string';
 import { getExportModuleSpecifier, getNamedExportNames } from './ast';
 
 export interface CatalogGroup {

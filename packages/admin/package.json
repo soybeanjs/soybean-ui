@@ -62,8 +62,7 @@
     "@soybeanjs/cva": "^0.1.1",
     "@soybeanjs/headless": "workspace:^",
     "@soybeanjs/theme": "workspace:^",
-    "@soybeanjs/ui": "workspace:^",
-    "@soybeanjs/utils": "^0.1.1"
+    "@soybeanjs/ui": "workspace:^"
   },
   "devDependencies": {
     "@nuxt/kit": "^4.5.2",
