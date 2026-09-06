@@ -59,13 +59,13 @@ If your tool supports direct skill URLs, you can point it at the public GitHub s
 For the styled UI skill:
 
 ```text
-https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-ui
+https://github.com/soybeanjs/soybean-ui/tree/main/skills/skills/soybean-ui
 ```
 
 For the headless skill:
 
 ```text
-https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-headless
+https://github.com/soybeanjs/soybean-ui/tree/main/skills/skills/soybean-headless
 ```
 
 ### Claude Code

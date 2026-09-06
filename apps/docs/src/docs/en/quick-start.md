@@ -107,7 +107,7 @@ In `vite.config.ts`:
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
-import { UiResolver } from '@soybeanjs/ui/resolver';
+import UiResolver from '@soybeanjs/ui/resolver';
 
 export default defineConfig({
   plugins: [
@@ -153,7 +153,7 @@ import { SButton, SInput, SCard } from '@soybeanjs/ui';
 
 ## Nuxt integration
 
-If you use Nuxt 3, you can use the official Nuxt module for simpler configuration.
+If you use Nuxt 4, you can use the official Nuxt module for simpler configuration.
 
 ### Install
 
@@ -333,7 +333,7 @@ function handleClick() {
 
 ### Issues when using with Nuxt?
 
-1. Make sure you are using Nuxt 3
+1. Make sure you are using Nuxt 4
 2. Verify the module configuration in `nuxt.config.ts`
 3. Clear the `.nuxt` cache directory and restart
 
@@ -342,8 +342,7 @@ function handleClick() {
 Now that you’ve installed SoybeanUI, you can:
 
 1. Browse the [Component docs](/components) to see all available components
-2. Read the [Theme configuration](../theme) docs to customize theming
-3. Check the [Best practices](../best-practices) guide for recommendations
-4. Visit [GitHub](https://github.com/soybeanjs/soybean-ui) for source code and examples
+2. Read the [Theme configuration](../theming) docs to customize theming
+3. Visit [GitHub](https://github.com/soybeanjs/soybean-ui) for source code and examples
 
 Enjoy! If you run into any issues, feel free to open an issue on GitHub.

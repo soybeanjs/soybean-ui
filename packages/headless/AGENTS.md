@@ -24,7 +24,7 @@ After public export changes, rerun `pnpm sui gen catalog headless` so `packages/
 ## KEY PATTERNS
 
 - **useContext**: Factory returning `[provideX, injectX]` pair via `Symbol` key. Components call `injectX('ComponentName')` — throws if missing provider.
-- **useUiContext**: High-fanout bridge to the UI layer. Returns `[provideXUi, useUi]`; 67 component contexts currently consume it, so changes require direct contract tests plus broad component verification.
+- **useUiContext**: High-fanout bridge to the UI layer. Returns `[provideXUi, useUi]`; 73 component contexts currently consume it, so changes require direct contract tests plus broad component verification.
 - **useControllableState**: Controlled/uncontrolled prop pattern. If initial prop is `undefined`, uses internal `shallowRef`; otherwise returns computed proxy.
 - **useForwardElement**: Exposes inner DOM element via `defineExpose`. Prefer over direct DOM access.
 - **Compact components**: Stable, data-driven compositions can live in headless as `{Name}Compact` only for a family that already passed Headless admission. Compact does not admit a new family.
@@ -35,8 +35,8 @@ After public export changes, rerun `pnpm sui gen catalog headless` so `packages/
 
 ```
 packages/headless/src/
-├── components/   # 94 component dirs (92 publicly exported; _common/_icon are internal). Base primitives plus Compact aggregations. See components/AGENTS.md
-├── composables/  # 27 reusable hooks. See composables/AGENTS.md
+├── components/   # 96 component dirs (94 publicly exported; _common/_icon are internal). Base primitives plus Compact aggregations. See components/AGENTS.md
+├── composables/  # 28 reusable hooks. See composables/AGENTS.md
 ├── shared/       # Pure TS utilities (no Vue). See shared/AGENTS.md
 ├── constants/    # ARIA attrs, collection markers, component constants
 ├── date/         # Shared date and calendar helpers

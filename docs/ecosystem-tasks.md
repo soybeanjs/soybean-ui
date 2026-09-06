@@ -120,15 +120,15 @@
 
 ## 6. 阶段 F — 生成链路与 playground（ecosystem.md §7.3/§8）
 
-| ID     | 任务描述                                                                                                                           | 优先级 | 负责人   | 开始       | 目标完成   | 状态      | 进度 |
-| ------ | ---------------------------------------------------------------------------------------------------------------------------------- | :----: | -------- | ---------- | ---------- | --------- | :--: |
-| EC-F01 | [scripts/cli.ts](../scripts/cli.ts) `api` 命令改为遍历 `packages` 元数据；输出迁至 `generated/api/<pkg>/<component>.json`（§11.5） |   P0   | AI Agent | 2026-08-20 | 2026-08-30 | ✅ 已完成 | 100% |
-| EC-F02 | `changelog` / `changelog-locales` 命令同步多包化（`generated/changelog/<pkg>/`）                                                   |   P1   | AI Agent | 2026-08-20 | 2026-08-30 | ⬜ 未开始 |  0%  |
-| EC-F03 | `<ComponentApi>` / `<PlaygroundGallery>` 渲染按当前路由命名空间定位子目录                                                          |   P0   | AI Agent | 2026-08-20 | 2026-08-30 | ✅ 已完成 | 100% |
-| EC-F04 | playground 顶部包切换器（镜像 docs，切到 `examples/<pkg>/` 入口与导航，§8.2）                                                      |   P1   | AI Agent | 2026-08-18 | 2026-08-28 | ⬜ 未开始 |  0%  |
-| EC-F05 | core examples 迁移收尾：`examples/ui/` 迁移后 docs 引用 / playground 导航 / `AGENTS.md` Demo source 路径终验                       |   P0   | AI Agent | 2026-08-14 | 2026-08-18 | 🔵 进行中 | 80%  |
-| EC-F06 | `ui-x` 分支扁平 examples（bubble / attachments / actions …）迁入 `examples/ui-x/`（§11.3 step 3）                                  |   P2   | AI Agent | 2026-08-18 | 2026-08-31 | ⬜ 未开始 |  0%  |
-| EC-F07 | 各外围包组件 examples 撰写（`examples/{ui-x,admin,chart}/<component>/`，随 C 阶段产出）                                            |   P1   | AI Agent | 2026-08-18 | 2026-08-31 | ⬜ 未开始 |  0%  |
+| ID     | 任务描述                                                                                                                                                         | 优先级 | 负责人   | 开始       | 目标完成   | 状态      | 进度 |
+| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----: | -------- | ---------- | ---------- | --------- | :--: |
+| EC-F01 | [packages/scripts/src/index.ts](../packages/scripts/src/index.ts) `api` 命令改为遍历 `packages` 元数据；输出迁至 `generated/api/<pkg>/<component>.json`（§11.5） |   P0   | AI Agent | 2026-08-20 | 2026-08-30 | ✅ 已完成 | 100% |
+| EC-F02 | `changelog` / `changelog-locales` 命令同步多包化（`generated/changelog/<pkg>/`）                                                                                 |   P1   | AI Agent | 2026-08-20 | 2026-08-30 | ⬜ 未开始 |  0%  |
+| EC-F03 | `<ComponentApi>` / `<PlaygroundGallery>` 渲染按当前路由命名空间定位子目录                                                                                        |   P0   | AI Agent | 2026-08-20 | 2026-08-30 | ✅ 已完成 | 100% |
+| EC-F04 | playground 顶部包切换器（镜像 docs，切到 `examples/<pkg>/` 入口与导航，§8.2）                                                                                    |   P1   | AI Agent | 2026-08-18 | 2026-08-28 | ⬜ 未开始 |  0%  |
+| EC-F05 | core examples 迁移收尾：`examples/ui/` 迁移后 docs 引用 / playground 导航 / `AGENTS.md` Demo source 路径终验                                                     |   P0   | AI Agent | 2026-08-14 | 2026-08-18 | 🔵 进行中 | 80%  |
+| EC-F06 | `ui-x` 分支扁平 examples（bubble / attachments / actions …）迁入 `examples/ui-x/`（§11.3 step 3）                                                                |   P2   | AI Agent | 2026-08-18 | 2026-08-31 | ⬜ 未开始 |  0%  |
+| EC-F07 | 各外围包组件 examples 撰写（`examples/{ui-x,admin,chart}/<component>/`，随 C 阶段产出）                                                                          |   P1   | AI Agent | 2026-08-18 | 2026-08-31 | ⬜ 未开始 |  0%  |
 
 ## 7. 阶段 G — 迁移、版本与发布（ecosystem.md §9/§11）
 
@@ -139,7 +139,7 @@
 | EC-G03 | 合并 `admin` 分支到 `main`（接入 admin→chart peerDep，即 EC-B05）                                        |   P0   | Soybean  | 2026-08-14 | 2026-08-31 | 🔵 进行中 | 15%  |
 | EC-G04 | 每步合并后验证：`pnpm typecheck` + `pnpm test` + `pnpm build`                                            |   P0   | AI Agent | 2026-08-14 | 2026-09-01 | ⬜ 未开始 |  0%  |
 | EC-G05 | 合并完成后归档/删除 `ui-x` / `admin` / `chart` 临时分支；后续走短生命周期 feature branch                 |   P1   | Soybean  | 2026-09-01 | 2026-09-05 | ⬜ 未开始 |  0%  |
-| EC-G06 | lockstep 版本（当前 0.29.3）与单 tag 发布流程验证：`pnpm publish -r` + `release.yml` 全包同发            |   P1   | Soybean  | 2026-09-01 | 2026-09-10 | ⬜ 未开始 |  0%  |
+| EC-G06 | lockstep 版本（当前 0.31.0）与单 tag 发布流程验证：`pnpm publish -r` + `release.yml` 全包同发            |   P1   | Soybean  | 2026-09-01 | 2026-09-10 | ⬜ 未开始 |  0%  |
 | EC-G07 | 未来包预留：`@soybeanjs/ui-pro` / `@soybeanjs/ui-lowcode` 接入契约清单（§10）演练                        |   P3   | Soybean  | —          | —          | 📋 待排期 |  0%  |
 | EC-G08 | `@soybeanjs/table` 立项评估：评审 [table.md](./ecosystem/table.md)；跨包白名单加边 `table → form` 出 ADR |   P3   | Soybean  | —          | —          | 📋 待排期 |  0%  |
 | EC-G09 | `@soybeanjs/form` 立项评估：评审 [form.md](./ecosystem/form.md)；ISchema 协议 v1 冻结                    |   P3   | Soybean  | —          | —          | 📋 待排期 |  0%  |

@@ -117,8 +117,8 @@ registerLocale('custom', customMessages);
 
 ```
 headless/src/
-├── components/    # 94 个目录：92 个公共组件组 + _common/_icon 内部目录
-├── composables/   # 27 个共享 hook（状态、焦点、浮层、选择…）
+├── components/    # 96 个目录：94 个公共组件组 + _common/_icon 内部目录
+├── composables/   # 28 个共享 hook（状态、焦点、浮层、选择…）
 ├── shared/        # 纯 TS 工具函数（DOM、焦点、树、表单、守卫）
 ├── constants/     # ARIA 属性常量、组件标识键
 ├── date/          # 共享日期与日历工具
@@ -133,7 +133,7 @@ headless/src/
 
 ```ts
 import { AccordionRoot } from '@soybeanjs/headless'; // 组件 + 类型
-import { useControllableState } from '@soybeanjs/headless/composables'; // 27 个 composable
+import { useControllableState } from '@soybeanjs/headless/composables'; // 28 个 composable
 import { transformPropsToContext } from '@soybeanjs/headless/shared'; // 纯 TS 工具
 import { createMonth } from '@soybeanjs/headless/date'; // 日期工具
 import { registerLocale } from '@soybeanjs/headless/locale'; // locale 注册表
@@ -144,17 +144,17 @@ import type { UiClass } from '@soybeanjs/headless/types'; // 共享类型导出
 
 ## 🧩 Composables
 
-27 个 hook，按功能分类：
+28 个 composable，按功能分类：
 
-| 分类     | Composables                                                    |
-| -------- | -------------------------------------------------------------- |
-| **状态** | `useContext`、`useControllableState`、`useStateMachine`        |
-| **焦点** | `useFocusScope`、`useFocusGuards`、`useArrowNavigation`        |
-| **层叠** | `useDismissableLayer`、`useEscapeKeyDown`、`useBodyScrollLock` |
-| **浮层** | `useFloating`、`useGraceArea`、`usePopupEvents`                |
-| **DOM**  | `useForwardElement`、`useExposedElement`、`useHideOthers`      |
-| **选择** | `useSelection`、`useCollection`、`useTypeahead`                |
-| **桥接** | `useUiContext`、`useOmitProps`、`useForwardListeners`          |
+| 分类     | Composables                                                                                               |
+| -------- | --------------------------------------------------------------------------------------------------------- |
+| **状态** | `useContext`、`useControllableState`、`useStateMachine`、`useBoolProp`、`useProps`                        |
+| **焦点** | `useFocusScope`、`useFocusGuards`、`useArrowNavigation`、`useRovingFocus`、`useKbd`、`useIsUsingKeyboard` |
+| **层叠** | `useDismissableLayer`、`useEscapeKeyDown`、`useBodyScrollLock`、`usePresence`                             |
+| **浮层** | `useFloating`、`useGraceArea`、`usePopupEvents`                                                           |
+| **DOM**  | `useForwardElement`、`useExposedElement`、`useHideOthers`、`useImageLoadingStatus`                        |
+| **选择** | `useSelection`、`useCollection`、`useTypeahead`、`useFuse`                                                |
+| **桥接** | `useUiContext`、`useOmitProps`、`useForwardListeners`                                                     |
 
 ## 🎨 接入自定义样式层
 

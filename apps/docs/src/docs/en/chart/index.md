@@ -1,12 +1,10 @@
 # @soybeanjs/chart
 
 > SoybeanChart — chart components built on top of SoybeanUI.
->
-> **Note:** This package is still under development and is scheduled to ship with the v0.40.0 release. Stay tuned!
 
 ## Status
 
-This package is scaffolded. Component implementation is pending. See [ecosystem](/overview/introduction) for the architecture plan.
+The core chart primitives are implemented — chart container, legend content, style, and tooltip content. The chart family is still growing, with more chart types on the way. See [ecosystem](/overview/introduction) for the architecture plan.
 
 ## Install
 

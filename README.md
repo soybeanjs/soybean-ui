@@ -33,8 +33,8 @@ UnoCSS config ──> @soybeanjs/ui-uno
 
 | Package                 | Role                                                                | Current inventory                                    |
 | ----------------------- | ------------------------------------------------------------------- | ---------------------------------------------------- |
-| **@soybeanjs/headless** | Logic, state, a11y, focus, keyboard interaction, and unstyled parts | 94 directories (92 public groups), 28 composables    |
-| **@soybeanjs/ui**       | Styled wrappers using UnoCSS and `@soybeanjs/cva` recipes           | 88 public component groups, 110 `S`-prefixed exports |
+| **@soybeanjs/headless** | Logic, state, a11y, focus, keyboard interaction, and unstyled parts | 96 directories (94 public groups), 28 composables    |
+| **@soybeanjs/ui**       | Styled wrappers using UnoCSS and `@soybeanjs/cva` recipes           | 96 public component groups, 144 `S`-prefixed exports |
 
 The compile-time dependency is strictly one-way: `@soybeanjs/ui` imports public
 `@soybeanjs/headless` entry points, while headless never imports UI. At runtime,

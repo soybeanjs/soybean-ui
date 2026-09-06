@@ -4,15 +4,11 @@
 
 ## 主题（theme）
 
-一套完整的视觉令牌集合，覆盖全部 39 个 CSS 语义变量（light/dark 各一份）。`@soybeanjs/theme` 是主题生成引擎，`@soybeanjs/theme-presets` 是外部预设数据包。
+一套完整的视觉令牌集合，覆盖全部 40 个 CSS 颜色语义变量（light/dark 各一份）。`@soybeanjs/theme` 是主题生成引擎；用户自定义预设（`CustomThemeColorPreset`）可经 ConfigProvider 持久化，覆盖内置派生结果。
 
 ## 引擎（engine）
 
-`@soybeanjs/theme` 包。持有内置基线（核心 token 模板 + 派生规则），消费外部 preset 覆盖后输出 CSS。
-
-## 数据包（data package）
-
-`@soybeanjs/theme-presets` 包。外部预设集合，作为"覆盖面"供引擎覆盖内置；不拥有核心数据的唯一真相源。
+`@soybeanjs/theme` 包。持有内置基线（核心 token 模板 + 派生规则），消费外部传入的 preset 覆盖后输出 CSS。
 
 ## 内置（builtin）
 
@@ -20,7 +16,7 @@
 
 ## 预设（preset）
 
-数据包的最小单位，一个可被 `createTheme({ preset })` 消费的 token 集合（引擎 `CustomThemeColorPreset` 的实例，light/dark 各一份、字段全可选）。
+预设体系的最小单位，一个可被 `createTheme({ preset })` 消费的 token 集合（引擎 `CustomThemeColorPreset` 的实例，light/dark 各一份、字段全可选）。
 
 ## 维度（dimension）
 
@@ -70,29 +66,25 @@ ConfigProvider 上控制是否启用持久化主题读取（localStorage）的�
 
 `isServerRuntime()` 在调用时检测全局对象（`window`/`document` 是否存在）判断服务端运行。由于 `@soybeanjs/theme` 与 UI 库为预构建产物，`import.meta.env.SSR` 在构建时被固化而无法反映消费方运行时；应用应显式传 `isServer`（如 Nuxt 的 `import.meta.server`）驱动 SSR 专用存储路径。
 
-## 主题提供者（ThemeProvider）
+## 主题提供者（ConfigProvider）
 
-`@soybeanjs/ui` 的完整主题渲染组件。接收 `tokens`（light/dark 语义 token 集合）与 `styleTarget` / `darkSelector` / `format` / `size` / `radius` / `menuColor` / `menuAccent`，将 tokens 与内置默认主题合并为完整 `ThemeColorPreset` 后经 `generateCss` 输出 CSS，并以内联 `<style>` 注入（服务端与客户端都渲染以保证水合一致）。
+`@soybeanjs/ui` 的完整主题渲染组件（`SConfigProvider`）。接收 `tokens`（light/dark 部分语义 token 集合，或 `{ presetName }` 持久化预设引用）、`persistTheme`、`themeConfig`、`presetProvider`，将 tokens 与内置默认主题合并为完整主题后经 `createTheme` 派生并输出 CSS，以内联 `<style>` 注入（服务端与客户端都渲染以保证水合一致）。
 
 ## 主题 token（tokens）
 
-`ThemeProvider` 的输入，`{ light: Partial<ThemeColors>; dark?: Partial<ThemeColors> }`（即 `CustomThemeColorPreset`）。字段全可选，缺失键回退内置默认主题。可为内联 token 集合，也可为按名引用的持久化 preset（`{ presetName }`）。
+`SConfigProvider` 的 `tokens` 属性输入，`{ light: Partial<ThemeColors>; dark?: Partial<ThemeColors> }`（即 `CustomThemeColorPreset`）。字段全可选，缺失键回退内置默认主题。可为内联 token 集合，也可为按名引用的持久化 preset（`{ presetName }`）。
 
-## 主题生成器（ThemeGenerator）
+## 主题定制面板（SThemeCustomizer）
 
-`@soybeanjs/ui` 的预设驱动主题生成器。按 `base` / `primary` 预设 + 按分类 `overrides` + `lightLevel` / `darkLevel` 计算完整 tokens，内部渲染 `ThemeProvider`，并以插槽作用域暴露完整 tokens。
-
-## 主题生成组合式函数（useThemeGenerator）
-
-`@soybeanjs/headless` 的纯计算组合式函数：输入 `base` / `primary` / `overrides` / `lightLevel` / `darkLevel`，返回响应式完整 tokens。无 DOM 依赖，可单测。
+`@soybeanjs/ui` 的可视化主题定制组件。按 `base` / `primary` / `feedback` / `sidebar` / `chart` 分类选择内置模板与档位（`lightLevel` / `darkLevel`），产出 `CustomThemeColorPreset` 供 `SConfigProvider` 消费或持久化。
 
 ## token 分类（ThemeTokenGroup）
 
 主题 token 的组织维度：`base` / `primary` / `feedback` / `sidebar` / `chart`。仅用于组织覆盖与文档，不改变 `ThemeColors` 扁平键契约。feedback 为固定 classic 规则，不提供预设选择器，仅可按组覆盖。
 
-## playground 主题生成器（playground ThemeGenerator）
+## playground 主题配置器（playground ThemeConfigurator）
 
-playground 侧的可视化主题编辑组件（`apps/playground/src/components/theme-generator.vue`），**自包含 + 只输出 raw css**：`v-model:theme` 类型仍为 `ConfigProviderThemeOptions`，但每次改动只 emit `{ css: { base, light, dark } }`（即新增的 `css` 属性类型），由内部状态经 `createTheme` 派生完整 CSS 后拆分而来，写回 `SConfigProvider` 直接消费，实时生效。方向复刻 shadcnthemes 生成器的控制面板，双 tab（`Generate Theme` 可视化生成器 + `Edit Variables` 完整 ColorTokens 编辑）。与库内计划中的「主题生成器（ThemeGenerator）」不同：后者是 `@soybeanjs/ui` 的预设驱动渲染组件，前者是 playground 的编辑器，二者无代码关联。
+playground 侧的主题入口组件（`apps/playground/src/components/theme-configurator.vue`）：一个薄 `SPopover` 包装，内部渲染库组件 `SThemeCustomizer`，将定制结果写回持久化预设并经 `SConfigProvider` 实时生效。它不是自包含编辑器，也不直接输出 raw css。
 
 ## 外围包（peripheral package）
 

@@ -12,7 +12,7 @@
 
 | 类别                | 数量 | 说明                                                                                                                                                          |
 | :------------------ | :--: | :------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 已发布（shipped）   |  88  | `accordion` … `watermark`，见 `packages/ui/src/index.ts`                                                                                                      |
+| 已发布（shipped）   |  96  | `accordion` … `watermark`，见 `packages/ui/src/index.ts`                                                                                                      |
 | 高优先级（P0 + P1） |  22  | 关键缺口与强需求，优先实现（P0 × 9 + P1 × 13）                                                                                                                |
 | 中优先级（P2）      |  11  | 有用且有一定需求，按计划推进                                                                                                                                  |
 | 低优先级（P3）      |  12  | 小众但功能独立，择机实现                                                                                                                                      |
@@ -1178,8 +1178,8 @@ SoybeanUI 正从单一组件库扩展为**组件生态**。外围包遵循「单
 ```
 Layer 4  外围包（单包自治）     @soybeanjs/ui-x · @soybeanjs/admin ──(peerDep)──► @soybeanjs/chart
                                  @soybeanjs/editor（提案）· @soybeanjs/ui-pro（预留）
-Layer 3  样式组件层             @soybeanjs/ui（S 前缀，88 组 / 110 导出）
-Layer 2  无头逻辑层             @soybeanjs/headless（92 公共组件 / 28 composables）
+Layer 3  样式组件层             @soybeanjs/ui（S 前缀，96 组 / 144 导出）
+Layer 2  无头逻辑层             @soybeanjs/headless（94 公共组件 / 28 composables）
 Layer 1  主题与样式引擎         @soybeanjs/theme · @soybeanjs/unocss
 横切     源码分发与文档生成     @soybeanjs/sbean（CLI / registry / MCP，非运行时依赖）
 ```
@@ -1235,7 +1235,7 @@ Layer 1  主题与样式引擎         @soybeanjs/theme · @soybeanjs/unocss
 | F2  | PR CI 未覆盖「可发布 / 可部署」（不 build、不查生成物）              |    Major    |  A   |   高   |
 | F3  | 生成物非原子批次，已有可复现漂移（Rating 半完成状态）                |    Major    |  B   |   高   |
 | F4  | 私有 apps 双向与链式源码依赖（docs ↔ playground）                    |  Moderate   |  D   |   中   |
-| F5  | Docs 构建图一次性 eager 引入 451 demo + 682 源文件                   |  Moderate   |  D   |   中   |
+| F5  | Docs 构建图一次性 eager 引入 583 demo + 735 源文件                   |  Moderate   |  D   |   中   |
 | F6  | 高影响 seam（createTheme / presetUiUnocss / useUiContext）缺契约测试 |  Moderate   |  C   |   高   |
 | F7  | 构建图与 workspace 依赖图未对齐（theme 改动复用旧 dist 风险）        |  Moderate   |  C   |   中   |
 | F8  | TypeScript 声明 7.0.2 与锁定 6.0.3 分裂                              |    Minor    |  C   |   中   |

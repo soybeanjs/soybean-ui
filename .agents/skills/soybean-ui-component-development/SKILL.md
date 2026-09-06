@@ -205,11 +205,11 @@ Run these after the corresponding source changes. Never hand-edit generated outp
 ```bash
 pnpm dev:playground   # Playground (Vite)
 pnpm dev:docs         # Documentation site (Vite SSG)
-pnpm build            # headless -> ui -> sbean via Vite Plus pack
+pnpm build            # libs (theme, ui-uno) -> headless -> ui -> ui-x -> admin -> chart -> sbean via Vite Plus pack
 pnpm build:libs       # theme -> ui-uno
 pnpm lint             # vp lint --fix && package Vue lint
 pnpm fmt              # vp fmt
-pnpm test             # recursive UI/headless and sbean tests
+pnpm test             # recursive workspace tests (pnpm -r run test)
 pnpm test:e2e         # Vitest Browser Mode + Playwright Chromium
 pnpm typecheck        # recursive workspace type checks
 pnpm release          # Publish packages (soy release)

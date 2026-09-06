@@ -2,7 +2,7 @@
 
 > 定位：`@soybeanjs/sbean`（`packages/sbean`）CLI 的开发指南——命令面、模块结构、完成度与待办。给 sbean 贡献者、生态开发者与 AI Agent 用。
 > 状态：🔵 进行中（核心功能已完成，剩余项见 §6）
-> 基线：2026-08-16 · 版本：0.29.3
+> 基线：2026-09-06 · 版本：0.31.0
 >
 > 技术深度文档（ADR / 术语 / shadcn-vue 对标）已在包内独立维护，本文只做索引与摘要：
 >
@@ -110,8 +110,8 @@ packages/sbean/src/
 
 ## 5. 与旧指南不一致的修正点
 
-- 版本/完成度：0.29.0-beta.7 / 80% → **0.29.3 / 核心功能完整**。
-- 命令数：10 → **14**（新增 `template`/`mcp`/`registry`/`scan`）。
+- 版本/完成度：0.29.0-beta.7 / 80% → **0.31.0 / 核心功能完整**。
+- 命令数：10 → **15**（在 `template`/`mcp`/`registry`/`scan` 之外新增 `diff`/`apply`/`docs`）。
 - 模板数：旧指南称 4 种（Vue Bare / Library 未实现）→ 实际 **2 种**（`vue-vite`、`nuxt`，ADR-010）。
 - `sbean.json` 结构：旧示例含 `style`/`menu` 等已删除字段 → 当前为 `iconLibrary` / `uno{base,primary,size,radius}` / `font{sans,heading}` / `registries`。
 - 缓存 API：`getCacheStats()` → `getRegistryCacheStats()`；`getCachedRegistryItem(namespace, name)` 实际需 namespace + itemName。

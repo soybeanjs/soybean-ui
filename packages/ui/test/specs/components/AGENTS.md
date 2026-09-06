@@ -13,5 +13,5 @@ Use this file only as routing and local path context. Normative component rules 
 ## LOCAL CONTEXT
 
 - Component tests should track the current delivery model: implementation changes often require synchronized updates across docs, playground examples, generated API data, and tests
-- When a public API or behavior changes, verify that the corresponding docs page now uses `UsageCode`, `PlaygroundGallery`, and `ComponentApi`, and that generated API data has been refreshed via `pnpm sui api` when needed
+- When a public API or behavior changes, verify that the corresponding docs page now uses `UsageCode`, `PlaygroundGallery`, and `ComponentApi`, and that generated API data has been refreshed via `pnpm sui gen api` when needed
 - For demo-driven assertions, remember that `apps/playground/src/examples/ui/{component}/index.vue` is now a thin `PlaygroundGallery` entry point and child demos no longer carry local title headings by default

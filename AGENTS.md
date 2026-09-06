@@ -23,9 +23,9 @@ Load the component development skill for any task that creates, migrates, extend
 
 If a nearer scoped `AGENTS.md` exists for your target path, use it only to narrow which skill sections apply.
 
-**Generated:** 2026-08-02
-**Version:** 0.29.3
-**Monorepo:** pnpm workspaces (private root + 9 child workspaces; 6 publishable packages, 3 private apps)
+**Generated:** 2026-09-06
+**Version:** 0.31.0
+**Monorepo:** pnpm workspaces (private root + 14 child workspaces: 10 packages + 3 apps + `skills/`; 9 publishable packages, 2 private packages — `@soybeanjs/scripts`, `@soybeanjs/shared` — and 3 private apps)
 **Stack:** Vue 3 + TypeScript (strict) + UnoCSS + @soybeanjs/cva
 
 ## ARCHITECTURE
@@ -37,8 +37,8 @@ Prioritized structural findings and acceptance criteria live in
 
 Core Headless/Styled separation:
 
-- **@soybeanjs/headless** (`packages/headless/`): Logic, state, a11y. Zero styles. 94 component directories (92 publicly exported; `_common`/`_icon` are internal), 28 composables. Includes base primitives, date utilities, and Compact aggregations.
-- **@soybeanjs/ui** (`packages/ui/`): Styled wrappers. UnoCSS + `cv()` / `scv()`. 88 component directories / 110 S-prefixed exports.
+- **@soybeanjs/headless** (`packages/headless/`): Logic, state, a11y. Zero styles. 96 component directories (94 publicly exported; `_common`/`_icon` are internal), 28 composables. Includes base primitives, date utilities, and Compact aggregations.
+- **@soybeanjs/ui** (`packages/ui/`): Styled wrappers. UnoCSS + `cv()` / `scv()`. 96 component directories / 144 S-prefixed exports.
 
 Compile-time dependency direction is **UI → Headless**: UI imports public
 headless entry points; headless MUST NOT import UI. Runtime class injection goes
@@ -55,8 +55,10 @@ Other publishable modules:
 - **@soybeanjs/admin** (`packages/admin/`): admin shell components; prefix `S` + `App*` (e.g. `SAppLayout`); peerDep `@soybeanjs/chart` (optional). Peripheral package.
 - **@soybeanjs/chart** (`packages/chart/`): chart components; prefix `S` + `Chart*` (e.g. `SChartBar`). Peripheral package.
 
-Private applications:
+Private packages and applications:
 
+- **@soybeanjs/scripts** (`packages/scripts/`): private repo-service CLI `sui` (generators, stub, template sync). NOT published; do not merge with the consumer-facing `sbean` CLI.
+- **@soybeanjs/shared** (`packages/shared/`): private shared utils (e.g. `vite.ts` build helpers). NOT published.
 - **@soybeanjs/ui-docs** (`apps/docs/`): Vite + vite-ssg + unplugin-vue-markdown + markdown-exit. NOT VitePress.
 - **@soybeanjs/ui-playground** (`apps/playground/`): shared examples and manual/visual validation.
 - **@soybeanjs/ui-nuxt** (`apps/nuxt/`): Nuxt integration fixture.
@@ -68,11 +70,12 @@ Private applications:
 | New component (logic)    | `packages/headless/src/components/[name]/`                                | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts              |
 | New component (styled)   | `packages/ui/src/components/[name]/` + `packages/ui/src/styles/[name].ts` | style recipe → types.ts → `*.vue` → index.ts                                              |
 | Variant definitions      | `packages/ui/src/styles/[name].ts`                                        | `cv()` / `scv()` with `// @unocss-include` at top                                         |
-| Shared hooks             | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (27 total)                                               |
+| Shared hooks             | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (28 total)                                               |
 | Theme/sizing             | `packages/ui/src/theme/`                                                  | `ThemeColor` (8), `ThemeSize` (xs…2xl)                                                    |
 | Theme CSS generation     | `packages/theme/`                                                         | `createTheme(options)` (returns CSS string)                                               |
 | UnoCSS adapter           | `packages/unocss/`                                                        | `presetUiUnocss()` / `presetSbean()`                                                      |
 | Source-distribution CLI  | `packages/sbean/`                                                         | commands → registry/schema/templates/MCP                                                  |
+| Repo-service CLI (`sui`) | `packages/scripts/`                                                       | `gen catalog/api/changelog/locale/schema/skills`, `stub`, `reorder-imports`               |
 | Utility functions        | `packages/headless/src/shared/`                                           | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                               |
 | Global types             | `packages/headless/src/types/`                                            | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                       |
 | Generated API data       | `apps/docs/src/generated/api/`                                            | `pnpm sui gen api` baseline + `pnpm sui gen api --translate` locale descriptions          |
@@ -90,7 +93,7 @@ Private applications:
 ```bash
 pnpm dev:playground    # Playground (Vite)
 pnpm dev:docs         # Docs site (Vite + vite-ssg)
-pnpm build            # headless → ui → sbean via Vite Plus pack
+pnpm build            # libs (theme, ui-uno) → headless → ui → ui-x → admin → chart → sbean via Vite Plus pack
 pnpm build:libs       # theme → ui-uno
 pnpm build:docs       # package build → sbean registry → docs SSG
 pnpm build:playground # Playground production build
@@ -98,7 +101,7 @@ pnpm lint             # vp lint --fix && pnpm lint:vue (uses @soybeanjs/eslint-c
 pnpm fmt              # vp fmt (formatter)
 pnpm test             # recursive workspace unit tests (UI/headless + sbean)
 pnpm test:e2e         # browser e2e (Vitest Browser Mode + playwright chromium; run `pnpm exec playwright install chromium` first)
-pnpm typecheck        # vue-tsc --noEmit --skipLibCheck (runs across all workspaces)
+pnpm typecheck        # pnpm -r typecheck (per-workspace vue-tsc / tsc)
 pnpm release          # Generate changelog + sync templates + publish (soy release)
 pnpm stub             # switch headless development exports to src (`--reset` restores dist exports)
 pnpm sui gen catalog headless  # Regenerate packages/headless/src/constants/components.ts + packages/headless/src/namespaced/index.ts from packages/headless/src/index.ts
@@ -108,10 +111,15 @@ pnpm sui gen api --locales-only     # Regenerate API i18n locale template data w
 pnpm sui gen api --translate --locale <locale>  # Translate generated English API descriptions into a non-English locale
 pnpm sui gen changelog         # Regenerate apps/docs/src/generated/changelog/*.json and apps/docs/src/generated/changelog-locales/*.json base data
 pnpm sui gen changelog --translate --locale <locale>  # Translate generated English changelog summaries into a non-English locale
+pnpm sui gen locale [--locale <locale>]  # Translate headless locale source files
+pnpm sui gen schema            # Generate sbean JSON Schemas (sbean.json, registry-item.json, registry.json)
+pnpm sui gen skills            # Generate skill docs and distribution files (skills/skills from skills/skills-source)
+pnpm sui reorder-imports [--check] [targets...]  # Reorder Props before Emits in .vue import type blocks
+pnpm sui sync-template-versions  # Sync the @soybeanjs/* version constant used by project templates
 ```
 
 - **Pre-commit hook** (Vite Plus, `.vite-hooks/pre-commit`): `vp staged`
-- **CI**: `ci.yml` runs typecheck / lint / test + browser e2e on PRs and pushes to `main`/`master`; it does not currently build packages/docs or check generated drift. `release.yml` handles tag-triggered build and release.
+- **CI**: `ci.yml` runs `pnpm build` (all packages) then typecheck / lint / test, plus a separate `e2e` job for browser tests, on PRs and pushes to `main`/`master`; it does not currently build the docs site or check generated-output drift. `release.yml` handles tag-triggered build and release.
 - **Formatter**: `vp fmt`
 
 ## PACKAGE EXPORTS

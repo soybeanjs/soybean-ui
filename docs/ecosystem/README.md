@@ -39,7 +39,7 @@ Layer 1  主题与样式引擎         @soybeanjs/theme · @soybeanjs/unocss
 2. **单包自治。** 外围包的领域逻辑与样式同居于一个包内（区别于核心的 headless/styled 两层拆分），避免包数量爆炸。
 3. **原子原语上浮判据。** 仅当某能力被 ≥2 个域共享且无领域语义时，才可上浮核心 headless（当前待评估：`use-x-stream`）。
 4. **跨包依赖白名单。** 外围包之间默认禁止依赖；唯一允许的有向边是 `admin → chart`（peerDependencies，optional，供仪表盘嵌图表）。新增边须更新 CONTEXT.md 白名单。
-5. **Lockstep 版本。** 全包同版本（当前 0.29.3），单主干 main，单 tag 发布。
+5. **Lockstep 版本。** 全包同版本（当前 0.31.0），单主干 main，单 tag 发布。
 
 ## 术语
 

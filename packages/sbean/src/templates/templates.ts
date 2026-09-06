@@ -79,7 +79,7 @@ import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
 import Components from 'unplugin-vue-components/vite'
-import SbeanResolver from '{{resolverPath}}'
+import UiResolver from '{{resolverPath}}'
 
 export default defineConfig({
   resolve: {
@@ -90,7 +90,7 @@ export default defineConfig({
     UnoCSS(),
     Components({
       dts: fileURLToPath(new URL('./src/typings/components.d.ts', import.meta.url)),
-      resolvers: [SbeanResolver()]
+      resolvers: [UiResolver()]
     })
   ]
 })

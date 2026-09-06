@@ -48,12 +48,12 @@ import { SButton } from '@soybeanjs/ui';
 ```ts
 // vite.config.ts
 import Components from 'unplugin-vue-components/vite';
-import { SbeanResolver } from '@soybeanjs/ui/resolver';
+import UiResolver from '@soybeanjs/ui/resolver';
 
 export default defineConfig({
   plugins: [
     Components({
-      resolvers: [SbeanResolver()]
+      resolvers: [UiResolver()]
     })
   ]
 });

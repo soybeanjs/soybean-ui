@@ -158,7 +158,7 @@ Tier 2 is intentionally minimal and documented rather than heavily tooled. Add a
 - Keep the suite to a handful of smoke tests. Do not enumerate every component page.
 - Place tier 2 tests under `apps/playground/e2e/` and add a `test:smoke` script on the playground package. Wire CI to run it as a separate job.
 
-Tier 2 is out of scope for the initial e2e introduction. The three Tier 1 specs (`button`, `dialog`, `select`) are the baseline; expand Tier 1 per [When to add an e2e spec](#when-to-add-an-e2e-spec) as components are touched. Introduce Tier 2 only when an actual cross-provider flow needs verifying.
+Tier 2 is out of scope for the initial e2e introduction. The Tier 1 suite currently covers 11 components (`button`, `combobox`, `dialog`, `drawer`, `menu`, `menubar`, `nav-menu`, `select`, `split-nav`, `textarea`, `tooltip`); expand Tier 1 per [When to add an e2e spec](#when-to-add-an-e2e-spec) as components are touched. Introduce Tier 2 only when an actual cross-provider flow needs verifying.
 
 ## Automation integration
 

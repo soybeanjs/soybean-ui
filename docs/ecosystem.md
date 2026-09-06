@@ -8,16 +8,16 @@
 
 核心库（`@soybeanjs/headless` + `@soybeanjs/ui` + `@soybeanjs/theme` + `@soybeanjs/ui-uno`）已稳定。现需围绕它构建多条领域扩展线：
 
-| 包                      | 领域                                        | 当前状态                                                    |
-| ----------------------- | ------------------------------------------- | ----------------------------------------------------------- |
-| `@soybeanjs/ui-x`       | AI 组件（Bubble/Sender/ThoughtChain…）      | `ui-x` 分支已初始化，含独立的 `headless-x`（待拆解）        |
-| `@soybeanjs/admin`      | 后台应用壳（AppLayout/AppMenu/Breadcrumb…） | `admin` 分支已初始化，单包                                  |
-| `@soybeanjs/chart`      | 图表组件（对标 shadcn charts）              | `chart` 分支，尚无包                                        |
-| `@soybeanjs/editor`     | 富文本编辑器（Tiptap 内核，MIT 边界）       | 立项提案（见 [ecosystem/editor.md](./ecosystem/editor.md)） |
-| `@soybeanjs/table`      | 高级数据网格 / ProTable                     | 立项提案（见 [ecosystem/table.md](./ecosystem/table.md)）   |
-| `@soybeanjs/form`       | Schema 驱动高级表单                         | 立项提案（见 [ecosystem/form.md](./ecosystem/form.md)）     |
-| `@soybeanjs/ui-pro`     | 高级/付费组件                               | 未来                                                        |
-| `@soybeanjs/ui-lowcode` | 低代码渲染组件                              | 未来                                                        |
+| 包                      | 领域                                        | 当前状态                                                                                               |
+| ----------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `@soybeanjs/ui-x`       | AI 组件（Bubble/Sender/ThoughtChain…）      | 已落地 `packages/ui-x/`（ADR-0001 已执行：`headless-x` 已拆解，exports 含 `./composables`、`./types`） |
+| `@soybeanjs/admin`      | 后台应用壳（AppLayout/AppMenu/Breadcrumb…） | `admin` 分支已初始化，单包                                                                             |
+| `@soybeanjs/chart`      | 图表组件（对标 shadcn charts）              | 已落地 `packages/chart/`（`@soybeanjs/chart`，deps：headless/ui/theme/utils）                          |
+| `@soybeanjs/editor`     | 富文本编辑器（Tiptap 内核，MIT 边界）       | 立项提案（见 [ecosystem/editor.md](./ecosystem/editor.md)）                                            |
+| `@soybeanjs/table`      | 高级数据网格 / ProTable                     | 立项提案（见 [ecosystem/table.md](./ecosystem/table.md)）                                              |
+| `@soybeanjs/form`       | Schema 驱动高级表单                         | 立项提案（见 [ecosystem/form.md](./ecosystem/form.md)）                                                |
+| `@soybeanjs/ui-pro`     | 高级/付费组件                               | 未来                                                                                                   |
+| `@soybeanjs/ui-lowcode` | 低代码渲染组件                              | 未来                                                                                                   |
 
 > 商业化：editor / table / form 三生态的方向与执行建议见 [ecosystem/commercialization.md](./ecosystem/commercialization.md)；市场调研原始结论见 [research/](./research/)。
 
@@ -83,7 +83,7 @@ Layer 1 · 适配层                  @soybeanjs/ui-uno （消费 theme）
 
 ### 3.2 拆解 `headless-x`（Q1=C 的直接后果）
 
-当前 `ui-x` 分支存在 `@soybeanjs/headless-x`（仅 composables + types，无 SFC）。按本方案拆解：
+原 `ui-x` 分支曾存在 `@soybeanjs/headless-x`（仅 composables + types，无 SFC），现已按本方案完成拆解（ADR-0001 已执行）：
 
 - 删除包 `packages/headless-x/`。
 - 将其内容迁移进 `packages/ui-x/src/`：
@@ -306,7 +306,7 @@ apps/playground/src/examples/
 
 ### 9.1 lockstep 版本（Q7a=L）
 
-所有包共享单一版本号（当前 `0.29.3`）。`pnpm publish -r` 一次发布全包。跨包依赖无需 range 协商（`workspace:^` 在仓内、`peerDependencies` 在发布态）。退出路径见 `CONTEXT.md`「lockstep 版本」。
+所有包共享单一版本号（当前 `0.31.0`）。`pnpm publish -r` 一次发布全包。跨包依赖无需 range 协商（`workspace:^` 在仓内、`peerDependencies` 在发布态）。退出路径见 `CONTEXT.md`「lockstep 版本」。
 
 ### 9.2 单主干（Q7b=M）
 

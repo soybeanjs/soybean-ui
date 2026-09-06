@@ -32,8 +32,8 @@ UnoCSS 配置 ──> @soybeanjs/ui-uno
 
 | 包                      | 职责                                                | 当前清单                                       |
 | ----------------------- | --------------------------------------------------- | ---------------------------------------------- |
-| **@soybeanjs/headless** | 逻辑、状态、a11y、焦点、键盘交互与无主题组件分片    | 94 个目录（92 个公共组件组）、27 个 composable |
-| **@soybeanjs/ui**       | 使用 UnoCSS 与 `@soybeanjs/cva` recipe 的样式包装层 | 88 个公共组件组、110 个带 `S` 前缀的导出       |
+| **@soybeanjs/headless** | 逻辑、状态、a11y、焦点、键盘交互与无主题组件分片    | 96 个目录（94 个公共组件组）、28 个 composable |
+| **@soybeanjs/ui**       | 使用 UnoCSS 与 `@soybeanjs/cva` recipe 的样式包装层 | 96 个公共组件组、144 个带 `S` 前缀的导出       |
 
 编译期依赖严格单向：`@soybeanjs/ui` 只从
 `@soybeanjs/headless` 的公共入口导入，headless 不会反向导入 UI。运行时由样式包装
@@ -126,7 +126,7 @@ registerLocale('custom', customMessages);
 
 ```ts
 import { AccordionRoot } from '@soybeanjs/headless'; // 所有组件
-import { useControllableState } from '@soybeanjs/headless/composables'; // 27 个 composable
+import { useControllableState } from '@soybeanjs/headless/composables'; // 28 个 composable
 import { transformPropsToContext } from '@soybeanjs/headless/shared'; // 纯 TS 工具
 import { createMonth } from '@soybeanjs/headless/date'; // 日期工具
 import { registerLocale } from '@soybeanjs/headless/locale'; // locale 注册表

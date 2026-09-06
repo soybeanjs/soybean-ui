@@ -110,7 +110,7 @@ packages/ui-x/
 
 - **体积**：markstream-vue 硬依赖 + shiki/mermaid 可选 peer——基础 chunk 控制在 ≈277KB（分支已验证）；重特性通过 peer 缺失回退保证不阻塞安装。
 - **Nuxt**：提供 `./nuxt` module 与 resolver，peer 全部 optional，非 Nuxt 项目零额外成本。
-- **版本**：lockstep 与核心包同版本（0.29.3）；单主干 main 发布。
+- **版本**：lockstep 与核心包同版本（0.31.0）；单主干 main 发布。
 - **UnoCSS**：用户侧需配置 `@soybeanjs/ui-uno` preset（注意 main 已改名，旧名 `@soybeanjs/ui-unocss` 引用需在文档中统一为 `@soybeanjs/ui-uno`）。
 - **桌面优先**：与核心库范围一致，移动端 AI 场景（语音输入 UI 等）暂在范围外。
 

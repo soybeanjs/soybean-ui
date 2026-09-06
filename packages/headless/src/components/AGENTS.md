@@ -13,7 +13,7 @@ Use this file only as routing and local path context. Normative component rules 
 
 ## LOCAL CONTEXT
 
-- Public component export changes must be reflected in `packages/headless/src/index.ts`, then synced via `pnpm sui headless` to update `packages/headless/src/constants/components.ts` and `packages/headless/src/namespaced/index.ts`
+- Public component export changes must be reflected in `packages/headless/src/index.ts`, then synced via `pnpm sui gen catalog headless` to update `packages/headless/src/constants/components.ts` and `packages/headless/src/namespaced/index.ts`
 - Headless component barrels are the source for per-component sub-path exports such as `@soybeanjs/headless/dialog`; keep this surface aligned when adding or renaming components
 - Stable, data-driven composite structure should prefer headless `*Compact` implementations instead of pushing iteration and default content up into the UI layer. Compact does not admit a new family; new families must pass [Headless admission](../../../../.agents/skills/soybean-ui-component-development/layers.md#headless-admission). Existing anatomy-shell violations: [docs/headless-admission-remediation.md](../../../../docs/headless-admission-remediation.md).
 - When this family is built on another, alias inner slots with no domain semantics and wrap slots that own a11y, context, UI, or `data-soybean-{family-slot}`. Compact only assembles; it does not define the contract of a publicly exported primitive. Full rule: skill `layers.md` Step 3.1.

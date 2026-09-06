@@ -1,8 +1,8 @@
 # 项目结构与工程质量改进评估
 
-> **评估时间：** 2026-08-02
+> **评估时间：** 2026-09-06
 >
-> **适用版本：** `0.29.3`
+> **适用版本：** `0.31.0`
 >
 > **详细架构：** [architecture.md](./architecture.md)
 >
@@ -18,18 +18,19 @@
 - `createTheme` 同时服务运行时主题和 UnoCSS 构建，避免两套 token
   生成逻辑。
 - `sbean`、组件包、文档站、playground、生成脚本均有明确用途。
-- TypeScript 严格模式、106 个 UI/headless 单测文件、15 个 sbean 测试文件及
+- TypeScript 严格模式、119 个 UI 单测文件、16 个 sbean 测试文件及
   browser e2e 已形成基础质量网。
 
 当前主要风险不在组件目录是否“分得够细”，而在跨 workspace 的工程约束没有
 完全机器化：
 
 1. 若干直接依赖未在所属 workspace 声明，由 `shamefullyHoist` 掩盖。
-2. PR CI 不构建发布包或文档，也不校验生成物是否为同一批次。
+2. PR CI 会构建全部发布包（`pnpm build`），但仍不构建文档站，也不校验生成物
+   是否为同一批次。
 3. docs 与 playground 存在双向源码导入，且使用全量 eager glob。
 4. 两个高影响接口缺少直接契约测试。
 5. 文档、聚合索引和逐组件生成文件仍可能部分同步。
-6. Headless/Nuxt 缺独立 typecheck，双语 Markdown 文件树也未保持同构。
+6. 仅 Nuxt 缺独立 typecheck，双语 Markdown 文件树也未保持同构。
 
 建议先解决依赖闭包、CI 构建/生成一致性和发布包 smoke test，再进行目录拆分或
 引入新的构建编排工具。
@@ -48,13 +49,14 @@
 
 ### 2.2 当前规模
 
-- pnpm 识别 10 个 workspace project：私有根项目、9 个子 workspace。
-- 可发布包：6 个。
+- pnpm 识别 15 个 workspace project：私有根项目、14 个子 workspace。
+- 可发布包：9 个（admin、chart、headless、sbean、theme、ui、ui-uno、ui-x、ui-skills）。
+- 私有包：2 个（scripts、shared）。
 - 私有应用：3 个。
-- Headless：94 个目录、92 个公共组件入口、28 个 composable。
-- UI：88 个公共组件组、110 个 `S` 前缀导出。
-- Playground：451 个示例 SFC。
-- Browser e2e：3 个组件级 spec。
+- Headless：96 个目录、94 个公共组件入口、28 个 composable。
+- UI：96 个公共组件组、144 个 `S` 前缀导出。
+- Playground：583 个示例 SFC。
+- Browser e2e：11 个组件级 spec。
 
 ### 2.3 证据边界
 
@@ -95,7 +97,7 @@ changelog、locale、schema 和 skills 生成命令。
 ### 3.4 sbean 的模块边界较清晰
 
 **事实：** sbean 将 commands、registry、schema、preset、templates、MCP 和
-utils 分开，并有 15 个测试文件及 ADR。
+utils 分开，并有 16 个测试文件及 ADR。
 
 **判断：** sbean 已经接近“较小接口 + 较深实现”的结构。当前优先项是依赖声明、
 打包验证和 ADR/manifest 对齐，而不是继续拆目录。
@@ -114,8 +116,6 @@ utils 分开，并有 15 个测试文件及 ADR。
 - `packages/ui` 的运行时代码直接导入 `@vueuse/core`，但 UI manifest 未声明。
 - `packages/sbean/src/registry/config.ts` 运行时导入
   `@soybeanjs/theme`，但 sbean manifest 未声明。
-- `packages/unocss/src/index.ts` 导入 `lightningcss`；manifest 将其放在
-  `devDependencies`，而 pack 配置又将 dev dependency 列入 `neverBundle`。
 - `apps/docs` 直接使用 `@soybeanjs/utils`、`@soybeanjs/colord`、
   `@vueuse/core`、`unocss`、`unocss-preset-animations`、
   `@soybeanjs/unocss-preset` 和 `@soybeanjs/ui-uno`，其中多项未在
@@ -133,7 +133,8 @@ install、隔离构建、发布 tarball 或不同包管理器消费时，可能�
 1. 为每个直接 import 补充所属 workspace 的 `dependencies` 或
    `devDependencies`；运行时 external 必须是 production dependency 或明确的
    peer dependency。
-2. 对六个发布包执行 `pnpm pack` 后在临时空项目中安装并 import 每个公共入口。
+2. 对九个发布包（admin、chart、headless、sbean、theme、ui、ui-uno、ui-x、
+   ui-skills）执行 `pnpm pack` 后在临时空项目中安装并 import 每个公共入口。
 3. 为 docs、playground、nuxt 分别执行 filtered install/build smoke test。
 4. 完成闭包后再尝试关闭 `shamefullyHoist`；若暂时不能关闭，记录仍依赖 hoist
    的工具和原因。
@@ -141,7 +142,7 @@ install、隔离构建、发布 tarball 或不同包管理器消费时，可能�
 **验收条件：**
 
 - 直接依赖扫描无未声明项。
-- 六个 tarball 在空目录中可安装并导入。
+- 九个 tarball 在空目录中可安装并导入。
 - 三个 app 可在仅安装其声明依赖的条件下构建。
 - `shamefullyHoist` 不再是隐式依赖正确性的必要条件，或保留项有明确清单。
 
@@ -151,10 +152,12 @@ install、隔离构建、发布 tarball 或不同包管理器消费时，可能�
 
 **事实：**
 
-- PR CI 运行 typecheck、`pnpm lint`、unit test 和 browser e2e。
-- PR CI 不运行 `pnpm build`、`pnpm build:docs` 或发布包 smoke test。
+- PR CI 运行 typecheck、`pnpm lint`、unit test 和 browser e2e（browser tests
+  为独立 `e2e` job），并在两个 job 中先执行
+  `pnpm install --frozen-lockfile && pnpm build` 构建全部发布包。
+- PR CI 仍不运行 `pnpm build:docs` 或发布包 smoke test。
 - 根 `lint` 脚本包含 `--fix`，CI 后没有 `git diff --exit-code`。
-- 完整发布包构建在 `v*` tag workflow 中发生。
+- `v*` tag workflow 中会再次执行构建并发布。
 - Tag release workflow 不重新运行 unit/browser tests，并使用
   `pnpm install --no-frozen-lockfile`。
 
@@ -169,8 +172,9 @@ install、隔离构建、发布 tarball 或不同包管理器消费时，可能�
 
 1. CI 使用非修改模式 lint；若工具只提供 fix 模式，则之后运行
    `git diff --exit-code`。
-2. 新增 package build job，覆盖所有实际发布包，而不仅是 root 当前的
-   headless/UI/sbean 三项。
+2. 保持 package build job 覆盖所有实际发布包（root `pnpm build` 已覆盖
+   build:libs 与 headless/ui/ui-x/admin/chart/sbean 六个目标，CI 已运行），
+   关注其耗时与缓存。
 3. 新增 docs SSG build smoke job。
 4. 新增 tarball import smoke job，至少验证根入口、headless 子路径、UI CSS、
    Nuxt module、resolver 和 sbean MCP/schema 入口。
@@ -194,17 +198,17 @@ install、隔离构建、发布 tarball 或不同包管理器消费时，可能�
 
 - `rating` 已从 headless/UI 根 barrel 导出，并有 playground、单测、API JSON、
   changelog JSON 和 locale 文案。
-- `apps/docs/src/generated/api/rating.json` 已存在，但 API 聚合
-  `index.json` 不含 `rating`。
-- `apps/docs/src/generated/changelog/rating.json` 已存在，但 changelog 聚合
-  index 不含 `rating`。
-- docs 菜单、docs locale 和中英文组件 Markdown 未包含 `rating`。
-- 英文 Markdown 有 95 个、中文有 101 个，存在 8 个路径级差异：英文仅有
-  `input-number`，中文仅有 7 个 picker/旧命名页面；`DocMd` 按相同 path
-  切换 locale，因此该差异可能导致语言切换 404。
-- 本轮分析时，`docs/roadmap.md` 已将 Rating 标记为 shipped，但
-  `docs/components.md` 仍以 87 个 shipped 为基线并把 Rating 计入活跃 P0；
-  本轮已修正文档基线，应用生成面缺口仍未解决。
+- **已解决：** 此前 rating 在 API/changelog 聚合 index、docs 菜单、docs
+  locale 与中英文组件 Markdown 的缺口均已补齐；生成输出现按包命名空间化
+  （`generated/api/ui/rating.json`、`generated/api/ui-x/…` 等），不再使用扁平
+  的 `generated/api/rating.json` 路径。
+- 英文 Markdown 有 134 个、中文有 140 个，存在 6 个路径级差异：中文仅有
+  `month-picker`、`month-range-picker`、`time-picker`、`time-range-picker`、
+  `year-picker`、`year-range-picker`；此前 `input-number`/`number-input`
+  命名分歧已解决。`DocMd` 按相同 path 切换 locale，剩余差异仍可能导致语言
+  切换 404。
+- **已解决：** `docs/roadmap.md` 与 `docs/components.md` 曾以不同 shipped
+  计数为基线（87/88），现已统一；rating 的应用生成面缺口已消除。
 - API/changelog 生成器把当前时间写入 `generatedAt`，直接“重新生成后 git
   diff”并非完全确定性检查。
 - `release-execute` 会刷新 skills/changelog，但不会运行 `pnpm sui gen api` 或
@@ -287,11 +291,11 @@ filtered build 与独立测试。
 
 **事实：**
 
-- Demo catalog 使用 eager glob 载入 451 个 Vue 示例及其 raw code。
-- `generated-api.ts` 使用 eager raw glob 载入 headless 的 416 个 TS 文件和 UI
-  的 266 个 TS 文件，共 682 个源码文件。
-- `generated-api.ts` 共 1,466 行，内部还包含 TypeScript 文本解析、类型 registry、
-  cache、preview model 和展示适配。
+- Demo catalog 使用 eager glob 载入 583 个 Vue 示例及其 raw code。
+- `generated-api.ts` 使用 eager raw glob 载入 headless 的 438 个 TS 文件和 UI
+  的 297 个 TS 文件，共 735 个源码文件。
+- `apps/docs/src/components/tables/generated-api.ts` 共 1,489 行，内部还包含
+  TypeScript 文本解析、类型 registry、cache、preview model 和展示适配。
 
 **推断：**
 
@@ -305,7 +309,7 @@ filtered build 与独立测试。
    lazy chunk 或构建时写入 JSON。
 3. 把类型源码解析移到 `pnpm sui gen api`，生成 UI 直接消费的 normalized preview
    model。
-4. 将 1,466 行模块收敛为三个深模块：
+4. 将 1,489 行模块收敛为三个深模块：
    - generated document loader；
    - build-time type normalizer；
    - presentation model/query interface。
@@ -313,7 +317,7 @@ filtered build 与独立测试。
 
 **验收条件：**
 
-- 组件详情路由不再 eager 引入全部 demo 与 682 份 raw TS。
+- 组件详情路由不再 eager 引入全部 demo 与 735 份 raw TS。
 - runtime/SSG 展示层不解析 TypeScript 声明文本。
 - 基线指标和允许回归阈值写入 CI 或工程文档。
 
@@ -327,9 +331,12 @@ filtered build 与独立测试。
 - `packages/theme` 和 `packages/unocss` 无测试目录。
 - `useUiContext` 影响 68 个符号；CodeGraph 能关联 7 个下游测试，但没有
   `use-ui-context` 的直接单测。
-- Browser e2e 当前只有 button、dialog、select 三个 spec；浮层、键盘导航和颜色对比场景待补。
-- `packages/headless` 与 `apps/nuxt` 均未定义 workspace `typecheck` script；
-  递归 typecheck 不能证明它们可作为独立单元通过。
+- Browser e2e 当前有 11 个组件级 spec（button、combobox、dialog、drawer、
+  menu、menubar、nav-menu、select、split-nav、textarea、tooltip）；浮层、
+  键盘导航和颜色对比场景仍按风险清单扩展。
+- `packages/headless`（以及 ui-x/admin/chart）已定义 `vue-tsc --noEmit
+--skipLibCheck` 的 workspace `typecheck` script；仅 `apps/nuxt` 仍未定义，
+  递归 typecheck 不能证明它可作为独立单元通过。
 
 **建议：**
 
@@ -339,7 +346,7 @@ filtered build 与独立测试。
   `resetCSS/globalCSS/uiCSS` 开关。
 - 为 `useUiContext` 增加 slot/full-map、响应式更新、默认空值和 provider
   缺失行为测试。
-- 为 headless 增加独立 `vue-tsc` 门禁，为 Nuxt 增加 `nuxt typecheck` 或等价
+- 为 Nuxt 增加独立 typecheck（headless 已具备 `vue-tsc` 门禁）或等价
   集成检查。
 - 按浮层/focus/keyboard 风险清单扩展 browser e2e，不按组件数量平均铺测试。
 
@@ -356,27 +363,23 @@ filtered build 与独立测试。
 
 **事实：**
 
-- 根 `pnpm build` 只执行 headless → UI → sbean。
-- theme → ui-uno 由独立 `build:libs` 和 install-time `prepare`
-  负责。
+- 根 `pnpm build` 已覆盖 build:libs（theme → ui-uno）与 headless → ui →
+  ui-x → admin → chart → sbean。
 - UI CSS 构建依赖 ui-uno；UI runtime 又依赖 theme。
 - 根 `vite.config.ts` 已有部分 Vite Plus task dependency，但 package scripts
   未统一通过该图执行。
-- `pnpm-workspace.yaml` 保留 `shared/**` pattern，但当前没有 workspace project
-  匹配它。
 
 **推断：**
 
-安装后修改 theme/preset 再执行根 build，可能复用旧 dist。开发者需要记住
-“先 build:libs”，说明构建顺序知识泄漏给调用者。
+根 build 已包含 build:libs 前置；但绕过根 build 直接执行包级脚本时仍可能
+复用旧 dist，构建顺序知识仍部分泄漏给调用者。
 
 **建议：**
 
 - 选择一个现有编排入口作为单一事实源：pnpm 拓扑递归或 Vite Plus task graph。
-- `build` 应覆盖所有发布包，并由依赖图推导顺序。
+- 保持 `build` 覆盖所有发布包，并由依赖图推导顺序。
 - `build:docs`、`build:playground` 和 Nuxt smoke 应依赖相同 package build
   任务。
-- 若 `shared/**` 没有明确落地计划则移除；若是预留层，在架构文档记录触发条件。
 - 先采集构建 profile；只有现有增量机制不足时再评估 Turbo 等额外系统。
 
 **验收条件：**
@@ -391,24 +394,28 @@ filtered build 与独立测试。
 
 **事实：**
 
-- 多个 manifest 与 workspace catalog 请求 TypeScript `7.0.2`。
-- workspace override 和 lockfile 将 TypeScript 解析为 `6.0.3`。
+- 此前的 TypeScript 声明版本冲突已消除：manifest 现按两个 catalog 显式
+  拆分——`catalog:` 请求 `^7.0.2`（theme、shared、sbean、unocss），
+  `catalog:ts6` 锁定 `^6.0.3`（其余多数包）。
+- lockfile 按分组分别解析为 `6.0.3` 与 `7.x`，与声明一致。
 
 **推断：**
 
-阅读 manifest 的开发者会误判真实编译器能力；升级测试也无法仅从版本 diff 判断。
+版本分裂已从“隐性 override”变为“显式双轨”，属有意设计；但仓库仍同时运行
+两个 TypeScript 主版本，升级验证与工具链兼容性（Vue/TypeDoc/Vite Plus）需
+按分组分别确认。
 
 **建议：**
 
-- 如果 6.0.3 是兼容性临时锁定，统一 manifest 到 6.0.3 并记录解除条件。
-- 如果目标是 7.0.2，先验证 Vue/TypeDoc/Vite Plus 兼容，再删除 override。
+- 记录 `catalog:ts6` 分组的收敛条件，逐步把其余包迁移到 TypeScript 7 后删除
+  该分组。
 - 增加一个 toolchain report/check，输出 Node、pnpm、TypeScript、vue-tsc、
   Vite Plus 和 Vitest 实际版本。
 
 **验收条件：**
 
-- manifest、catalog、override 和 lockfile 对有效 TypeScript 主版本表达一致。
-- 临时 override 有原因、owner 和删除条件。
+- manifest、catalog 和 lockfile 对有效 TypeScript 主版本表达一致（已满足）。
+- 双轨分组有原因、owner 和删除条件。
 
 ## P2：持续改进
 
@@ -444,11 +451,11 @@ filtered build 与独立测试。
 
 - 组件数、composable 数、CI、hook 和版本信息散布在多个 README、AGENTS、
   roadmap/check/components 文档。
-- 本轮更新前的 README 曾记录 95/25/91，实际为 94/27/88 groups + 110 exports。
+- 本轮更新前的 README 曾记录 95/25/91，实际为 96/28/96 groups + 144 exports。
 - Hook 实际来源是 `.vite-hooks/pre-commit`，不是 simple-git-hooks；本轮已修正根
   AGENTS 与 component skill。
 - `packages/headless/src/composables/AGENTS.md` 的 25 hooks 与唯一
-  `@ts-expect-error` 描述也已在本轮按 27 个实际导出修正。
+  `@ts-expect-error` 描述也已在本轮按 28 个实际导出修正。
 - 本轮发现的本机绝对 `file:///Users/...` 文档链接已替换为仓库相对链接。
 
 **建议：**
@@ -491,10 +498,11 @@ filtered build 与独立测试。
 ### 阶段 A：依赖与发布安全（1–2 周）
 
 1. 完成 direct dependency audit。
-2. 添加六个 package 的 pack/install/import smoke。
+2. 添加九个 package 的 pack/install/import smoke。
 3. 将 CI lint 改为非修改检查并验证 clean tree。
-4. PR CI 增加 package build 与 docs SSG build。
-5. 为 headless/Nuxt 增加独立 typecheck，并收紧 release lockfile/test gate。
+4. PR CI 已包含 package build；补 docs SSG build。
+5. 为 Nuxt 增加独立 typecheck（headless 已具备），并收紧 release
+   lockfile/test gate。
 
 ### 阶段 B：生成一致性（1–2 周）
 
@@ -544,7 +552,7 @@ filtered build 与独立测试。
 
 - clean/cached package build time；
 - docs SSG build time、峰值内存、route chunk 大小；
-- 六个 tarball 的独立安装矩阵；
+- 九个 tarball 的独立安装矩阵；
 - package/目录级 unit coverage；
 - browser e2e 场景与耗时清单。
 

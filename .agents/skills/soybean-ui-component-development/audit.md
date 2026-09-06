@@ -272,7 +272,7 @@ After each category is complete (e.g. all "Forms" components), run a cross-compo
 After all components have been audited, run a full regression:
 
 - `pnpm typecheck` / `pnpm lint` / `pnpm fmt` / `pnpm test` all green
-- `pnpm build` (headless -> UI -> sbean) and `pnpm build:libs` (theme -> UnoCSS preset) succeed
+- `pnpm build` (libs -> headless -> ui -> ui-x -> admin -> chart -> sbean) and `pnpm build:libs` (theme -> ui-uno) succeed
 - `pnpm sui gen catalog headless` / `pnpm sui gen catalog ui` / `pnpm sui gen api` / `pnpm sui gen changelog` all re-run; diff only from intended changes
 - Playground dev server starts cleanly; all examples render
 - Docs build cleanly; all component pages are reachable
@@ -324,7 +324,7 @@ Authoritative interaction patterns to consult during D1 and D7 a11y checks:
 - **Performance benchmark:** Vue DevTools Performance + 1k+ item dataset + 60fps frame monitoring
 - **Type coverage:** `vue-tsc` + IDE hover + `pnpm sui gen api` generated data reverse lookup
 - **Bundle analysis:** `vite-bundle-visualizer` or equivalent after `pnpm build`
-- **SSR verification:** `pnpm build` (includes `vite-ssg`) + `pnpm preview`
+- **SSR verification:** `pnpm build:docs` (vite-ssg build) + `pnpm --filter @soybeanjs/ui-docs preview`
 
 ## Command quick reference
 
@@ -333,7 +333,7 @@ Authoritative interaction patterns to consult during D1 and D7 a11y checks:
 pnpm typecheck          # vue-tsc --noEmit --skipLibCheck
 pnpm lint               # Vite Plus lint --fix + Vue ESLint
 pnpm fmt                # Vite Plus formatter
-pnpm test               # recursive UI/headless and sbean tests
+pnpm test               # recursive workspace tests (pnpm -r run test)
 pnpm test:e2e           # vitest browser mode e2e (D7-19/D7-20; run `pnpm exec playwright install chromium` first)
 pnpm vitest packages/ui/test/specs/components/{component}.spec.ts  # single-component unit test
 pnpm --filter @soybeanjs/ui test:e2e test/browser/specs/components/{component}.e2e.spec.ts  # single-component e2e
@@ -349,6 +349,6 @@ pnpm sui gen changelog --translate --locale <locale>
 # Dev and build
 pnpm dev:playground     # playground
 pnpm dev:docs           # documentation site
-pnpm build              # headless -> UI -> sbean
+pnpm build              # libs -> headless -> ui -> ui-x -> admin -> chart -> sbean
 pnpm build:libs         # theme -> ui-uno
 ```

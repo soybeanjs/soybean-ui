@@ -5,7 +5,7 @@
 
 ## 1. Executive summary
 
-`sbean` (`packages/sbean`, v0.29.3) is the SoybeanUI ecosystem's counterpart to `shadcn-vue`'s `packages/cli`. Both are copy-paste component CLIs built on `commander`, with a registry-fetch + file-write core. sbean is **UnoCSS-first, Vue-ecosystem-bound, valibot-validated**; shadcn-vue is **Tailwind-first, multi-framework, zod-validated**.
+`sbean` (`packages/sbean`, v0.31.0) is the SoybeanUI ecosystem's counterpart to `shadcn-vue`'s `packages/cli`. Both are copy-paste component CLIs built on `commander`, with a registry-fetch + file-write core. sbean is **UnoCSS-first, Vue-ecosystem-bound, valibot-validated**; shadcn-vue is **Tailwind-first, multi-framework, zod-validated**.
 
 **Headline findings:**
 
@@ -27,7 +27,7 @@
 |            | sbean                                                       | shadcn-vue                                    |
 | ---------- | ----------------------------------------------------------- | --------------------------------------------- |
 | Path       | `packages/sbean/`                                           | `packages/cli/` (in `shadcn-vue` repo)        |
-| Version    | 0.29.3                                                      | (per `package.json`)                          |
+| Version    | 0.31.0                                                      | (per `package.json`)                          |
 | Stack      | UnoCSS + `@soybeanjs/cva` + `@soybeanjs/headless` + valibot | Tailwind + zod + `ts-morph` + `vue-metamorph` |
 | Frameworks | Vue (Vite)                                                  | Vue (Vite/Nuxt/Laravel/Astro)                 |
 

@@ -16,5 +16,5 @@ Use this file only as routing and local path context. Normative component rules 
 - Package: `@soybeanjs/admin` (peripheral package, single-package — domain logic + styles coexist in `src/`)
 - Component prefix: `S` + `App*`
 - Depends on: `@soybeanjs/headless`, `@soybeanjs/ui`, `@soybeanjs/theme`
-- peerDeps: vue, vue-router, unplugin-vue-components, nuxt (optional)`+ admin 追加 @soybeanjs/chart (optional)`
+- peerDeps: vue, vue-router, unplugin-vue-components, nuxt (optional); admin additionally depends on @soybeanjs/chart (optional)
 - See `docs/ecosystem.md` §2.2 for layering, §4 for prefix rules, §5 for dependency whitelist.

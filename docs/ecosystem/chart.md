@@ -2,11 +2,11 @@
 
 > 定位：图表组件包（对标 [shadcn charts](https://ui.shadcn.com/charts)），为 SoybeanUI 生态提供与主题 token 深度集成的声明式图表。核心库路线图已明确把 `Chart` / `Heatmap` / `Sparkline` 划为「独立包范围」（见 [roadmap.md 范围外](../roadmap.md#范围外组件out-of-scope)），本包即该范围的落地。
 >
-> 状态：`ecosystem` 分支仅落地**包骨架**（package.json / 占位入口 / resolver / nuxt module / test 目录，功能 0%）。渲染引擎选型未定，是本方案的核心待决策项。
+> 状态：包已作为 workspace 包落地（`packages/chart`）并随核心版本发布。已实现 `chart-container` / `chart-tooltip-content` / `chart-legend-content` / `chart-style` 四个基础组件及 `chartColors` / `chartThemes` 工具；其余图表族（EC-C10/C11/C12）仍在扩展。
 
 ## 1. 现状盘点（基于 `origin/ecosystem` 分支）
 
-- 包骨架与 ui-x / admin 一致：`src/{components,styles,constants,resolver,nuxt}` + `test/`，入口仅 `export const VERSION = '0.29.3'` 占位。
+- 包骨架与 ui-x / admin 一致：`src/{components,styles,constants,resolver,nuxt}` + `test/`；入口已导出四个基础组件（chart-container / chart-tooltip-content / chart-legend-content / chart-style）与 `chartColors` / `chartThemes`。
 - 依赖：`@soybeanjs/{headless,theme,ui}` workspace + `@soybeanjs/cva` + `@iconify/vue` + `@soybeanjs/utils`；peer 全部 optional（vue / nuxt / vue-router / unplugin-vue-components）。
 - exports：`.`、`./nuxt`、`./resolver`、`./styles.css`（**无** `./composables` / `./types` 子路径——chart 领域逻辑随包自治，无历史拆包负担）。
 - `admin` 已声明对 chart 的 optional peerDep（白名单唯一跨外围包边），供 `SAppProTable` / 仪表盘场景嵌入。

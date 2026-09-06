@@ -45,7 +45,7 @@ Data flows one way: `headless` → `ui` (never reverse). The UI layer injects st
 ### Prerequisites
 
 - **Node.js** ≥ 20
-- **pnpm** ≥ 9 (this repo uses `pnpm@11.5.2`)
+- **pnpm** ≥ 9 (this repo uses `pnpm@11.25.0`)
 
 ### Install
 
@@ -69,18 +69,18 @@ Open the playground URL shown in the terminal to preview your changes in real ti
 
 ### Common Commands
 
-| Command              | Purpose                              |
-| -------------------- | ------------------------------------ |
-| `pnpm dev`           | Start playground dev server          |
-| `pnpm build`         | Build headless → ui → CSS            |
-| `pnpm lint`          | oxlint + eslint (Vue)                |
-| `pnpm fmt`           | oxfmt (formatter)                    |
-| `pnpm test`          | Vitest (happy-dom)                   |
-| `pnpm typecheck`     | vue-tsc --noEmit                     |
-| `pnpm sui headless`  | Regenerate headless barrel constants |
-| `pnpm sui ui`        | Regenerate UI barrel constants       |
-| `pnpm sui api`       | Regenerate API reference data        |
-| `pnpm sui changelog` | Regenerate changelog data            |
+| Command                         | Purpose                                                                   |
+| ------------------------------- | ------------------------------------------------------------------------- |
+| `pnpm dev`                      | Start playground dev server                                               |
+| `pnpm build`                    | Build libs (theme, ui-uno) → headless → ui → ui-x → admin → chart → sbean |
+| `pnpm lint`                     | vp lint --fix + eslint (Vue)                                              |
+| `pnpm fmt`                      | vp fmt (formatter)                                                        |
+| `pnpm test`                     | recursive workspace tests (pnpm -r run test)                              |
+| `pnpm typecheck`                | recursive typecheck (pnpm -r typecheck)                                   |
+| `pnpm sui gen catalog headless` | Regenerate headless barrel constants                                      |
+| `pnpm sui gen catalog ui`       | Regenerate UI barrel constants                                            |
+| `pnpm sui gen api`              | Regenerate API reference data                                             |
+| `pnpm sui gen changelog`        | Regenerate changelog data                                                 |
 
 ## Development Workflow
 
@@ -221,12 +221,12 @@ Files in `packages/ui/src/components/<name>/`:
 
 ```bash
 # Update barrel index files
-pnpm sui headless
-pnpm sui ui
+pnpm sui gen catalog headless
+pnpm sui gen catalog ui
 
 # If public API changed
-pnpm sui api
-pnpm sui api-translate -- --locale zh-CN
+pnpm sui gen api
+pnpm sui gen api --translate --locale zh-CN
 ```
 
 ### Phase 5 — Delivery Surfaces
@@ -262,7 +262,7 @@ If any step fails, fix it before opening a PR. See the full checklist in
 pnpm test
 
 # Run a specific component test
-pnpm vitest packages/ui/test/specs/components/button.spec.ts
+pnpm --filter @soybeanjs/ui exec vitest run test/specs/components/button.spec.ts
 ```
 
 ## Documentation
@@ -273,8 +273,8 @@ English (`en`) and Chinese (`zh-CN`) documentation with matching structure.
 API reference data is auto-generated. After changing public exports:
 
 ```bash
-pnpm sui api                    # Regenerate baseline
-pnpm sui api-translate -- --locale zh-CN   # Translate descriptions
+pnpm sui gen api                    # Regenerate baseline
+pnpm sui gen api --translate --locale zh-CN   # Translate descriptions
 ```
 
 ## Commit & Pull Request
@@ -350,7 +350,7 @@ headless 通过 `useUiContext` 读取。
 ### 前置条件
 
 - **Node.js** ≥ 20
-- **pnpm** ≥ 9（本仓库使用 `pnpm@11.5.2`）
+- **pnpm** ≥ 9（本仓库使用 `pnpm@11.25.0`）
 
 ### 安装
 
@@ -374,18 +374,18 @@ pnpm dev
 
 ### 常用命令
 
-| 命令                 | 用途                          |
-| -------------------- | ----------------------------- |
-| `pnpm dev`           | 启动 playground 开发服务器    |
-| `pnpm build`         | 构建 headless → ui → CSS      |
-| `pnpm lint`          | oxlint + eslint（Vue）        |
-| `pnpm fmt`           | oxfmt（格式化）               |
-| `pnpm test`          | Vitest（happy-dom）           |
-| `pnpm typecheck`     | vue-tsc --noEmit              |
-| `pnpm sui headless`  | 重新生成 headless barrel 常量 |
-| `pnpm sui ui`        | 重新生成 UI barrel 常量       |
-| `pnpm sui api`       | 重新生成 API 参考数据         |
-| `pnpm sui changelog` | 重新生成 changelog 数据       |
+| 命令                            | 用途                                                                     |
+| ------------------------------- | ------------------------------------------------------------------------ |
+| `pnpm dev`                      | 启动 playground 开发服务器                                               |
+| `pnpm build`                    | 构建 libs（theme、ui-uno）→ headless → ui → ui-x → admin → chart → sbean |
+| `pnpm lint`                     | vp lint --fix + eslint（Vue）                                            |
+| `pnpm fmt`                      | vp fmt（格式化）                                                         |
+| `pnpm test`                     | 递归运行各 workspace 测试（pnpm -r run test）                            |
+| `pnpm typecheck`                | 递归类型检查（pnpm -r typecheck）                                        |
+| `pnpm sui gen catalog headless` | 重新生成 headless barrel 常量                                            |
+| `pnpm sui gen catalog ui`       | 重新生成 UI barrel 常量                                                  |
+| `pnpm sui gen api`              | 重新生成 API 参考数据                                                    |
+| `pnpm sui gen changelog`        | 重新生成 changelog 数据                                                  |
 
 ## 开发流程
 
@@ -517,12 +517,12 @@ Codex 提供专门的 **agent 角色**（prompt 面），你可以将复杂子�
 
 ```bash
 # 更新 barrel index 文件
-pnpm sui headless
-pnpm sui ui
+pnpm sui gen catalog headless
+pnpm sui gen catalog ui
 
 # 如果公开 API 有变化
-pnpm sui api
-pnpm sui api-translate -- --locale zh-CN
+pnpm sui gen api
+pnpm sui gen api --translate --locale zh-CN
 ```
 
 ### Phase 5 — 交付面
@@ -558,7 +558,7 @@ pnpm test
 pnpm test
 
 # 运行指定组件测试
-pnpm vitest packages/ui/test/specs/components/button.spec.ts
+pnpm --filter @soybeanjs/ui exec vitest run test/specs/components/button.spec.ts
 ```
 
 ## 文档
@@ -568,8 +568,8 @@ pnpm vitest packages/ui/test/specs/components/button.spec.ts
 API 参考数据自动生成。公开导出变化后：
 
 ```bash
-pnpm sui api                    # 重新生成基线
-pnpm sui api-translate -- --locale zh-CN   # 翻译描述
+pnpm sui gen api                    # 重新生成基线
+pnpm sui gen api --translate --locale zh-CN   # 翻译描述
 ```
 
 ## Commit 与 Pull Request

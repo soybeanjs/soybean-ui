@@ -1,6 +1,6 @@
 # SoybeanUI project architecture
 
-> **Snapshot:** 2026-08-02 · repository version `0.29.3`
+> **Snapshot:** 2026-09-06 · repository version `0.31.0`
 >
 > This document describes the repository as it exists today. It is the canonical
 > workspace-level architecture reference; component implementation rules remain
@@ -13,12 +13,13 @@ configuration, public entry points, generated metadata, and a CodeGraph 1.5.0
 index.
 
 - CodeGraph index status: up to date.
-- Indexed scope: 2,053 TypeScript, Vue, JavaScript, and YAML files.
-- Graph size: 19,293 nodes and 55,503 edges.
-- Repository scope: 2,730 tracked files. Markdown, JSON, CSS, assets, and other
+- Indexed scope: 2,557 files indexed (1,373 Vue, 1,176 TypeScript, plus
+  JavaScript and YAML).
+- Graph size: 23,434 nodes and 69,383 edges.
+- Repository scope: 3,435 tracked files. Markdown, JSON, CSS, assets, and other
   files outside the graph were checked directly.
 - Symbol-impact checks confirmed two important high-fanout seams:
-  `useUiContext` affects 68 symbols, while `createTheme` affects 10 symbols
+  `useUiContext` affects 74 files, while `createTheme` affects 15 files
   across runtime UI and UnoCSS configuration.
 
 Package manifests are the source of truth for declared package dependencies.
@@ -28,8 +29,9 @@ against imports and configuration before being documented.
 
 ## 2. Repository at a glance
 
-The pnpm workspace contains the private root project plus nine child workspaces:
-six publishable packages and three private applications.
+The pnpm workspace contains the private root project plus fourteen child
+workspaces: nine publishable packages, two private packages, and three private
+applications.
 
 | Area                 | Workspace                  | Purpose                                                                              |
 | -------------------- | -------------------------- | ------------------------------------------------------------------------------------ |
@@ -37,7 +39,12 @@ six publishable packages and three private applications.
 | Styled components    | `@soybeanjs/ui`            | `S`-prefixed wrappers, UnoCSS recipes, theme-facing props, Nuxt module, and resolver |
 | Theme engine         | `@soybeanjs/theme`         | Theme option normalization, CSS-variable generation, dark derivation, SSR/storage    |
 | UnoCSS integration   | `@soybeanjs/ui-uno`        | UnoCSS preset, preflights, animations, fonts, and generated theme CSS                |
+| AI conversation UI   | `@soybeanjs/ui-x`          | AI conversation components (`Sx` prefix); peripheral single-package                  |
+| Admin shell          | `@soybeanjs/admin`         | Admin shell components (`S` + `App*` prefix); peripheral single-package              |
+| Charts               | `@soybeanjs/chart`         | Chart components (`S` + `Chart*` prefix); peripheral single-package                  |
 | Source distribution  | `sbean`                    | CLI, registry, schemas, templates, and MCP tools for copy-source delivery            |
+| Repo service CLI     | `@soybeanjs/scripts`       | PRIVATE; `sui` CLI for metadata, API, changelog, locale, and skill generators        |
+| Shared utilities     | `@soybeanjs/shared`        | PRIVATE; shared utility helpers, not published                                       |
 | Agent distribution   | `@soybeanjs/ui-skills`     | Generated, publishable SoybeanUI and Headless agent skills                           |
 | Documentation        | `@soybeanjs/ui-docs`       | Vite SSG documentation, API reference, changelog, and embedded demos                 |
 | Component laboratory | `@soybeanjs/ui-playground` | Interactive examples and visual/manual component validation                          |
@@ -45,10 +52,10 @@ six publishable packages and three private applications.
 
 Current generated component inventory:
 
-- Headless: 94 component directories, of which 92 have public component entry
-  points; `_common` and `_icon` are internal. There are 27 reusable composable
+- Headless: 96 component directories, of which 94 have public component entry
+  points; `_common` and `_icon` are internal. There are 28 reusable composable
   files.
-- Styled UI: 88 public component groups and 110 `S`-prefixed exports.
+- Styled UI: 96 public component groups and 144 `S`-prefixed exports.
 - The generated inventories are
   `packages/headless/src/constants/components.ts` and
   `packages/ui/src/constants/components.ts`; prose counts are secondary.
@@ -70,12 +77,15 @@ soybean-ui/
 │   ├── roadmap.md           # Active component roadmap
 │   └── components.md        # Detailed roadmap source material
 ├── packages/
-│   ├── _shared/             # Build helpers; not a workspace package
+│   ├── admin/               # @soybeanjs/admin
+│   ├── chart/               # @soybeanjs/chart
 │   ├── headless/            # @soybeanjs/headless
 │   ├── sbean/               # sbean CLI and registry system
 │   ├── scripts/             # @soybeanjs/scripts (private); sui CLI for metadata, API, changelog, locale, and skill generators
+│   ├── shared/              # @soybeanjs/shared (private); shared utilities, not published
 │   ├── theme/               # @soybeanjs/theme
 │   ├── ui/                  # @soybeanjs/ui
+│   ├── ui-x/                # @soybeanjs/ui-x
 │   └── unocss/              # @soybeanjs/ui-uno
 ├── skills/                  # Generated @soybeanjs/ui-skills package
 ├── typings/                 # Root tool declarations
@@ -83,9 +93,6 @@ soybean-ui/
 ├── pnpm-workspace.yaml      # Workspace catalog, overrides, and install policy
 └── vite.config.ts           # Vite Plus lint/format/staged/task configuration
 ```
-
-`pnpm-workspace.yaml` also reserves `shared/**`, but no current workspace
-project matches that pattern.
 
 ## 4. Dependency architecture
 
@@ -100,6 +107,9 @@ flowchart LR
   Theme["@soybeanjs/theme"]
   Uno["@soybeanjs/ui-uno"]
   Sbean["sbean"]
+  UiX["@soybeanjs/ui-x"]
+  Admin["@soybeanjs/admin"]
+  Chart["@soybeanjs/chart"]
   Docs["apps/docs"]
   Playground["apps/playground"]
   Nuxt["apps/nuxt"]
@@ -113,10 +123,23 @@ flowchart LR
   Playground --> Headless
   Playground --> Theme
   Playground --> Uno
+  Playground --> UiX
+  Playground --> Admin
+  Playground --> Chart
   Docs --> UI
   Docs --> Headless
+  Docs --> UiX
   Docs --> Sbean
   Nuxt --> UI
+  UiX --> UI
+  UiX --> Headless
+  UiX --> Theme
+  Admin --> UI
+  Admin --> Headless
+  Admin --> Theme
+  Chart --> UI
+  Chart --> Headless
+  Chart --> Theme
 
   Docs -. source import .-> Playground
   Playground -. source and locale imports .-> Docs
@@ -207,7 +230,7 @@ of the highest-impact internal interfaces.
   UI remains responsible for recipes and forwarding.
 
 The public barrel files are the intentional authoring surface. The `pnpm sui
-headless` and `pnpm sui gen catalog ui` commands derive generated inventories from those
+gen catalog headless` and `pnpm sui gen catalog ui` commands derive generated inventories from those
 barrels.
 
 ## 6. Theme and CSS architecture
@@ -247,14 +270,14 @@ UI config provider, the UnoCSS adapter, and all four repository UnoCSS configs.
 Route shells live under `src/pages/`; `DocMd` then resolves the current locale
 and dynamically loads `src/docs/{locale}/{path}.md`. This makes the English and
 Chinese file trees a runtime contract, not just an editorial convention.
-Currently they differ at eight paths: English has `components/input-number.md`
-only, while Chinese has `month-picker`, `month-range-picker`, `number-input`,
-`time-picker`, `time-range-picker`, `year-picker`, and `year-range-picker`
-only. The totals are 95 English files and 101 Chinese files.
+Currently they differ at six paths: Chinese has
+`ui/components/{month-picker, month-range-picker, time-picker, time-range-picker,
+year-picker, year-range-picker}.md` only. The totals are 134 English files and
+140 Chinese files.
 
 ### 7.2 Demo sharing
 
-The playground owns 451 example SFC files. Docs eagerly discovers the example
+The playground owns 583 example SFC files. Docs eagerly discovers the example
 components and their raw source so a single example can power both a live
 preview and a code tab. This removes example duplication, but the current eager
 global import and the docs/playground source cycle are scaling constraints.
@@ -295,13 +318,14 @@ depends on component-delivery work or an explicit pre-release check.
 - Browser validation: Vitest Browser Mode, Playwright Chromium, and axe-core.
 - CLI/schema stack: Commander, Valibot, and the Model Context Protocol SDK.
 
-Package manifests request TypeScript `7.0.2`, while the workspace override and
-lockfile currently resolve `6.0.3`. Treat the lockfile value as the effective
-compiler until the manifests and override are aligned.
+Package manifests split TypeScript across two catalogs: `catalog:ts6` pins
+TypeScript `^6.0.3` for most packages, while `catalog:` requests `^7.0.2`
+(theme, shared, sbean, unocss). The lockfile resolves `6.0.3` for the ts6 group
+and 7.x for the rest.
 
 ### 8.2 Root commands
 
-- `pnpm build`: headless → UI → sbean.
+- `pnpm build`: theme/ui-uno (build:libs) → headless → ui → ui-x → admin → chart → sbean.
 - `pnpm build:libs`: theme → ui-uno.
 - `pnpm build:docs`: root build, registry generation, then docs SSG.
 - `pnpm typecheck`: recursive workspace type checks.
@@ -309,24 +333,23 @@ compiler until the manifests and override are aligned.
 - `pnpm test:e2e`: UI browser suite.
 - `pnpm sui <command>`: repository generation interface.
 
-The `prepare` script builds the theme libraries after install. Root `build`
-does not currently include those libraries, so a post-edit local build can
-depend on previously prepared output.
-
 ### 8.3 Test topology
 
 At this snapshot:
 
-- UI/headless unit suite: 106 `*.spec.ts` files under `packages/ui/test/specs`.
-- Browser suite: 3 component E2E files (`button`, `dialog`, and `select`).
-- sbean suite: 15 `*.spec.ts` files.
+- UI/headless unit suite: 119 `*.spec.ts` files under `packages/ui/test/specs`.
+- Browser suite: 11 component E2E specs (`button`, `combobox`, `dialog`,
+  `drawer`, `menu`, `menubar`, `nav-menu`, `select`, `split-nav`, `textarea`,
+  `tooltip`).
+- sbean suite: 16 `*.spec.ts` files.
 - Theme, UnoCSS preset, docs, playground, and Nuxt fixture have no dedicated
   repository test directories.
 
 Headless behavior is primarily exercised through the UI test workspace. The
 browser suite enables axe-core checks in addition to interaction assertions.
-Headless and the Nuxt fixture also have no workspace-level `typecheck` script,
-so recursive `pnpm typecheck` does not validate them as independent units.
+Headless (and ui-x/admin/chart) define `vue-tsc --noEmit --skipLibCheck`
+typecheck scripts; only `apps/nuxt` still lacks one, so recursive
+`pnpm typecheck` does not validate it as an independent unit.
 
 ### 8.4 CI and release
 
@@ -337,7 +360,9 @@ Pull requests and pushes to `main`/`master` run:
 3. unit tests;
 4. Playwright Chromium browser tests.
 
-CI does not currently build packages/docs or verify generated-output drift.
+CI runs `pnpm install --frozen-lockfile && pnpm build` (all packages) in both
+jobs before typecheck/lint/test; browser tests run as a separate `e2e` job. CI
+still does not build the docs site or verify generated-output drift.
 Tag pushes (`v*`) install, build, and publish public workspaces to npm with
 provenance; the release workflow itself does not rerun unit or browser tests
 and installs with `--no-frozen-lockfile`.

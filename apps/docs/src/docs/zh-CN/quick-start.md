@@ -107,7 +107,7 @@ pnpm add -D unplugin-vue-components
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
-import { UiResolver } from '@soybeanjs/ui/resolver';
+import UiResolver from '@soybeanjs/ui/resolver';
 
 export default defineConfig({
   plugins: [
@@ -153,7 +153,7 @@ import { SButton, SInput, SCard } from '@soybeanjs/ui';
 
 ## Nuxt 集成
 
-如果你使用 Nuxt 3，可以使用官方提供的 Nuxt 模块，配置更加简单：
+如果你使用 Nuxt 4，可以使用官方提供的 Nuxt 模块，配置更加简单：
 
 ### 安装
 
@@ -333,7 +333,7 @@ function handleClick() {
 
 ### 在 Nuxt 中使用时出现问题？
 
-1. 确保使用的是 Nuxt 3
+1. 确保使用的是 Nuxt 4
 2. 检查 `nuxt.config.ts` 中的模块配置
 3. 清除 `.nuxt` 缓存目录后重新启动
 
@@ -342,8 +342,7 @@ function handleClick() {
 现在你已经成功安装了 SoybeanUI，可以：
 
 1. 浏览 [组件文档](/components)，了解所有可用组件
-2. 查看 [主题配置](../theme) 文档，学习如何自定义主题
-3. 阅读 [最佳实践](../best-practices) 指南，了解使用建议
-4. 访问 [GitHub](https://github.com/soybeanjs/soybean-ui) 查看源码和示例
+2. 查看 [主题配置](../theming) 文档，学习如何自定义主题
+3. 访问 [GitHub](https://github.com/soybeanjs/soybean-ui) 查看源码和示例
 
 祝你使用愉快！如果遇到任何问题，欢迎在 GitHub Issues 中提出。

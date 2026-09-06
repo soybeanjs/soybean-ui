@@ -5,7 +5,7 @@
 ## Methodology
 
 1. **Surveyed libraries (14 total)** — React: MUI, Ant Design, Mantine, Chakra UI, shadcn/ui, Radix UI, Headless UI, PrimeReact, MUI Base. Vue: Element Plus, Naive UI, Vuetify, Quasar, PrimeVue, Arco Design, TDesign, Vant, Varlet.
-2. **Diffed** against the 88 component groups already shipped in `packages/ui/src/index.ts`.
+2. **Diffed** against the 96 component groups already shipped in `packages/ui/src/index.ts`.
 3. **Desktop-only scope** — all mobile-specific components (Vant/Varlet-originated patterns) are excluded from the active roadmap.
 4. **Selection criteria** — each candidate is evaluated on:
    - **Functional independence** — does it have a single, focused responsibility?
@@ -27,7 +27,7 @@
 
 ### Coverage Snapshot
 
-- **Already shipped:** 88 component groups (`accordion` … `watermark`).
+- **Already shipped:** 96 component groups (`accordion` … `watermark`).
 - **Active roadmap below:** 45 components (single-focused, desktop-oriented).
 - **Already implemented references retained here:** `Rating` (historical P0 entry) and `ButtonGroup` (see [Implemented Component Reference](#implemented-component-reference)).
 - **Marketplace deferred:** 12 components (composite/niche — deferred to source-code marketplace).
@@ -1374,4 +1374,4 @@ Maps each active roadmap component to its expected headless pattern (per the com
 
 ---
 
-_Last updated: 2026-08-02. Desktop-only scope. 88 component groups already shipped; 45 in the active roadmap; 12 deferred to the component marketplace; 60+ explicitly rejected in the Out-of-Scope section._
+_Last updated: 2026-08-02. Desktop-only scope. 96 component groups already shipped; 45 in the active roadmap; 12 deferred to the component marketplace; 60+ explicitly rejected in the Out-of-Scope section._

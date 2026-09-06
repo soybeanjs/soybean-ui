@@ -23,13 +23,13 @@ Every styled component follows this flow:
 3. In wrapper SFC: `useOmitProps` to separate style props from logic props
 4. Inject UI tokens: `provideXUi(ui)` where `ui` = computed slot→class map
 5. Merge classes: single-class wrappers use `${name}Variants({...}, props.class)`; multi-slot wrappers pass `props.ui` and `{ root: props.class }` directly into the recipe call
-6. Import or re-export wrapper-facing component types from `@soybeanjs/headless/{component}` sub-paths, and import headless global types from `@soybeanjs/headless/types`, then rerun `pnpm sui ui` after public export changes
+6. Import or re-export wrapper-facing component types from `@soybeanjs/headless/{component}` sub-paths, and import headless global types from `@soybeanjs/headless/types`, then rerun `pnpm sui gen catalog ui` after public export changes
 
 ## STRUCTURE
 
 ```
 packages/ui/src/
-├── components/   # 88 component directories / 110 S-prefixed exports (SButton, SDialog...)
+├── components/   # 96 component directories / 144 S-prefixed exports (SButton, SDialog...)
 │   └── [name]/   # index.ts, *.vue, types.ts
 ├── styles/       # cv/scv recipe files consumed by wrappers
 ├── theme/        # size context, ThemeColor/ThemeSize. See theme/AGENTS.md
@@ -57,7 +57,7 @@ Shared class tokens (not component recipes) live in `_*.ts` files next to recipe
 - **Nuxt**: `@soybeanjs/ui/nuxt` module for auto component registration
 - **unplugin**: `@soybeanjs/ui/resolver` for `unplugin-vue-components`
 - **CSS**: `@soybeanjs/ui/styles.css` — built by `unocss build` step
-- **Generated component names**: `packages/ui/src/constants/components.ts` is generated from `packages/ui/src/index.ts`; rerun `pnpm sui ui` after changing public UI exports
+- **Generated component names**: `packages/ui/src/constants/components.ts` is generated from `packages/ui/src/index.ts`; rerun `pnpm sui gen catalog ui` after changing public UI exports
 
 ## ANTI-PATTERNS
 

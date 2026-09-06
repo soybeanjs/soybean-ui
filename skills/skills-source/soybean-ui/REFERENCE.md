@@ -32,7 +32,7 @@ Use the resolver for auto imports:
 
 ```ts
 import Components from 'unplugin-vue-components/vite';
-import { UiResolver } from '@soybeanjs/ui/resolver';
+import UiResolver from '@soybeanjs/ui/resolver';
 
 Components({
   resolvers: [UiResolver()]

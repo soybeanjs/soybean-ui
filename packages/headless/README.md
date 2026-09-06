@@ -117,8 +117,8 @@ registerLocale('custom', customMessages);
 
 ```
 headless/src/
-├── components/    # 94 dirs: 92 public groups + _common/_icon internals
-├── composables/   # 27 shared hooks (state, focus, floating, selection…)
+├── components/    # 96 dirs: 94 public groups + _common/_icon internals
+├── composables/   # 28 shared hooks (state, focus, floating, selection…)
 ├── shared/        # Pure TS utilities (DOM, focus, tree, form, guard)
 ├── constants/     # ARIA attributes, component keys
 ├── date/          # Shared date and calendar helpers
@@ -133,7 +133,7 @@ headless/src/
 
 ```ts
 import { AccordionRoot } from '@soybeanjs/headless'; // components + types
-import { useControllableState } from '@soybeanjs/headless/composables'; // 27 composables
+import { useControllableState } from '@soybeanjs/headless/composables'; // 28 composables
 import { transformPropsToContext } from '@soybeanjs/headless/shared'; // pure TS utils
 import { createMonth } from '@soybeanjs/headless/date'; // shared date helpers
 import { registerLocale } from '@soybeanjs/headless/locale'; // locale registry
@@ -144,17 +144,17 @@ import type { UiClass } from '@soybeanjs/headless/types'; // shared type surface
 
 ## 🧩 Composables
 
-27 hooks organized by category:
+28 composables organized by category:
 
-| Category      | Composables                                                    |
-| ------------- | -------------------------------------------------------------- |
-| **State**     | `useContext`, `useControllableState`, `useStateMachine`        |
-| **Focus**     | `useFocusScope`, `useFocusGuards`, `useArrowNavigation`        |
-| **Layer**     | `useDismissableLayer`, `useEscapeKeyDown`, `useBodyScrollLock` |
-| **Floating**  | `useFloating`, `useGraceArea`, `usePopupEvents`                |
-| **DOM**       | `useForwardElement`, `useExposedElement`, `useHideOthers`      |
-| **Selection** | `useSelection`, `useCollection`, `useTypeahead`                |
-| **Bridge**    | `useUiContext`, `useOmitProps`, `useForwardListeners`          |
+| Category      | Composables                                                                                               |
+| ------------- | --------------------------------------------------------------------------------------------------------- |
+| **State**     | `useContext`, `useControllableState`, `useStateMachine`, `useBoolProp`, `useProps`                        |
+| **Focus**     | `useFocusScope`, `useFocusGuards`, `useArrowNavigation`, `useRovingFocus`, `useKbd`, `useIsUsingKeyboard` |
+| **Layer**     | `useDismissableLayer`, `useEscapeKeyDown`, `useBodyScrollLock`, `usePresence`                             |
+| **Floating**  | `useFloating`, `useGraceArea`, `usePopupEvents`                                                           |
+| **DOM**       | `useForwardElement`, `useExposedElement`, `useHideOthers`, `useImageLoadingStatus`                        |
+| **Selection** | `useSelection`, `useCollection`, `useTypeahead`, `useFuse`                                                |
+| **Bridge**    | `useUiContext`, `useOmitProps`, `useForwardListeners`                                                     |
 
 ## 🎨 Integrating Your Own Styled Layer
 
