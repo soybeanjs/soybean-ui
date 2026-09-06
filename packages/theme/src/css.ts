@@ -1,5 +1,5 @@
 import { generatePalette } from '@soybeanjs/colord/palette';
-import { keysOf } from '@soybeanjs/utils';
+import { keysOf } from '#shared/guard';
 import {
   resolveColorValue,
   isUnTransformedColor,

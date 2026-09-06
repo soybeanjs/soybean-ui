@@ -1,10 +1,8 @@
+import { globSync } from 'node:fs';
 import { defineConfig } from 'vite-plus';
 import vue from '@vitejs/plugin-vue';
 import unpluginVue from 'unplugin-vue/rolldown';
-import { cssRawPlugin } from '@soybeanjs/shared/vite';
 import headlessPkg from '../headless/package.json' with { type: 'json' };
-import uiPkg from '../ui/package.json' with { type: 'json' };
-import pkg from './package.json' with { type: 'json' };
 
 export default defineConfig({
   resolve: {
@@ -12,31 +10,16 @@ export default defineConfig({
   },
   plugins: [vue()],
   pack: {
-    entry: [
-      'src/index.ts',
-      'src/composables/index.ts',
-      'src/types/index.ts',
-      'src/nuxt/index.ts',
-      'src/resolver/index.ts'
-    ],
-    platform: 'neutral',
+    entry: [...globSync('src/components/**/index.ts'), 'src/index.ts', 'src/nuxt/index.ts', 'src/resolver/index.ts'],
+    platform: 'browser',
     deps: {
-      neverBundle: Object.keys({
-        ...headlessPkg.dependencies,
-        ...headlessPkg.devDependencies,
-        ...uiPkg.dependencies,
-        ...uiPkg.devDependencies,
-        ...pkg.dependencies,
-        ...pkg.devDependencies
-      })
+      neverBundle: ['@nuxt/kit', '@nuxt/schema', ...Object.keys(headlessPkg.dependencies)]
     },
-    clean: true,
     dts: {
       vue: true
     },
     unbundle: true,
-    plugins: [cssRawPlugin(), unpluginVue({ isProduction: true })],
-    sourcemap: false,
+    plugins: [unpluginVue({ isProduction: true })],
     minify: true,
     define: {
       'import.meta.env.DEV': 'undefined',

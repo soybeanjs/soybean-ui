@@ -1,7 +1,9 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "verbatimModuleSyntax": true
+    "paths": {
+      "#shared/*": ["../headless/src/shared/*"]
+    }
   },
   "include": ["./**/*.ts"]
 }

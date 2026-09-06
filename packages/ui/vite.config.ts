@@ -1,3 +1,4 @@
+import { globSync } from 'node:fs';
 import { defineConfig } from 'vite-plus';
 import vue from '@vitejs/plugin-vue';
 import unpluginVue from 'unplugin-vue/rolldown';
@@ -9,7 +10,7 @@ export default defineConfig({
   },
   plugins: [vue()],
   pack: {
-    entry: ['src/index.ts', 'src/nuxt/index.ts', 'src/resolver/index.ts'],
+    entry: [...globSync('src/components/**/index.ts'), 'src/index.ts', 'src/nuxt/index.ts', 'src/resolver/index.ts'],
     platform: 'browser',
     deps: {
       neverBundle: ['@nuxt/kit', '@nuxt/schema', ...Object.keys(headlessPkg.dependencies)]

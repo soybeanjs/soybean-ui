@@ -23,31 +23,29 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts",
-    "./nuxt": "./src/nuxt/index.ts",
-    "./resolver": "./src/resolver/index.ts",
-    "./styles.css": "./src/styles/index.css",
-    "./*": "./src/components/*/index.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./nuxt": {
+      "types": "./dist/nuxt/index.d.ts",
+      "import": "./dist/nuxt/index.js",
+      "require": "./dist/nuxt/index.js"
+    },
+    "./resolver": {
+      "types": "./dist/resolver/index.d.ts",
+      "import": "./dist/resolver/index.js",
+      "require": "./dist/resolver/index.js"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./*": {
+      "types": "./dist/components/*/index.d.ts",
+      "import": "./dist/components/*/index.js",
+      "require": "./dist/components/*/index.js"
+    }
   },
   "publishConfig": {
-    "exports": {
-      ".": {
-        "types": "./dist/index.d.ts",
-        "import": "./dist/index.js",
-        "require": "./dist/index.js"
-      },
-      "./nuxt": {
-        "types": "./dist/nuxt/index.d.ts",
-        "import": "./dist/nuxt/index.js",
-        "require": "./dist/nuxt/index.js"
-      },
-      "./resolver": {
-        "types": "./dist/resolver/index.d.ts",
-        "import": "./dist/resolver/index.js",
-        "require": "./dist/resolver/index.js"
-      },
-      "./styles.css": "./dist/styles.css"
-    },
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
@@ -69,7 +67,6 @@
   },
   "devDependencies": {
     "@nuxt/kit": "^4.5.2",
-    "@soybeanjs/shared": "workspace:^",
     "@soybeanjs/ui-uno": "workspace:^",
     "@types/node": "^26.4.1",
     "@unocss/cli": "^66.9.2",

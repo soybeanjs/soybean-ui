@@ -1,5 +1,5 @@
-import { keysOf } from '@soybeanjs/utils';
-import { defu } from 'defu';
+import { keysOf } from '#shared/guard';
+import { defu } from '#shared/object';
 import { DEFAULT_PRESET_OPTIONS } from './defaults';
 import { deriveBasePreset, deriveDarkFromLight, derivePrimaryPreset } from './derive';
 import { getRegistry } from './registry';
