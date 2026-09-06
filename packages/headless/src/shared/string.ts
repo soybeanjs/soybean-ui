@@ -11,9 +11,8 @@ export function capitalize(str: string): string {
 /** 'helloWorld' | 'hello_world' | 'Hello World' → 'hello-world' */
 export function kebabCase(str: string): string {
   return str
-    .replaceAll(/([a-z0-9])([A-Z])/g, '$1-$2')
-    .replaceAll(/[\s_]+/g, '-')
-    .replaceAll(/-+/g, '-')
+    .replace(/([a-z0-9])([A-Z])|[\s_]+/g, (_m, a, b) => (b ? `${a}-${b}` : '-'))
+    .replace(/-+/g, '-')
     .replace(/^-|-$/g, '')
     .toLowerCase();
 }

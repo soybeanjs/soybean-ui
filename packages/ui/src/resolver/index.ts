@@ -11,7 +11,7 @@ function createResolver() {
       const values = Object.values(components).flat();
 
       if (values.includes($name)) {
-        //---const path = kebabCase(keysOf(components).find(key => components[key].includes($name))!);
+        //---const path = kebabCase(keysOf(components).find(key => components[key]?.includes($name))!);
 
         return {
           name: $name,

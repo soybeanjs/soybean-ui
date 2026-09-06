@@ -33,7 +33,7 @@ export default defineNuxtModule({
     }
 
     for (const component of getComponents()) {
-      //---const path = kebabCase(keysOf(components).find(key => components[key].includes(component))!);
+      //---const path = kebabCase(keysOf(components).find(key => components[key]?.includes(component))!);
 
       addComponent({
         name: `${component}`,
