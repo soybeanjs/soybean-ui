@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T18:57:57.158Z",
+  "generatedAt": "2026-09-06T11:33:33.393Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -1066,7 +1066,14 @@
     "tree-nav": {
       "component": "tree-nav",
       "file": "tree-nav.json",
-      "symbols": ["TreeNav", "TreeNavCompact", "TreeNavOptionCompact", "TreeNavOptionsCompact", "TreeNavRoot"]
+      "symbols": [
+        "TreeNav",
+        "TreeNavCompact",
+        "TreeNavOptionCompact",
+        "TreeNavOptionsCompact",
+        "TreeNavOverflow",
+        "TreeNavRoot"
+      ]
     },
     "virtualizer": {
       "component": "virtualizer",

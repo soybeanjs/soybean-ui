@@ -127,7 +127,10 @@ function createTypedocTsconfig(pkg: ApiPackageConfig): Record<string, unknown> {
   return {
     extends: './tsconfig.json',
     compilerOptions: {
-      paths: pkg.paths,
+      paths: {
+        ...pkg.paths,
+        '#shared/*': ['./packages/headless/src/shared/*']
+      },
       skipLibCheck: true,
       types: ['vite/client']
     },

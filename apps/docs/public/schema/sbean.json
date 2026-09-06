@@ -143,6 +143,15 @@
       "required": [],
       "description": "Font family configuration for the project."
     },
+    "aliases": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
     "registries": {
       "type": "object",
       "propertyNames": {

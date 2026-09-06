@@ -16,6 +16,9 @@
           "type": "string",
           "description": "The name of the item. Unique within the registry. This is the identifier used by `sbean add <name>`."
         },
+        "package": {
+          "type": "string"
+        },
         "title": {
           "type": "string",
           "description": "A human-readable title for the item."
@@ -361,6 +364,9 @@
           "type": "string",
           "description": "The name of the item. Unique within the registry. This is the identifier used by `sbean add <name>`."
         },
+        "package": {
+          "type": "string"
+        },
         "title": {
           "type": "string",
           "description": "A human-readable title for the item."
@@ -617,6 +623,9 @@
           "type": "string",
           "description": "The name of the item. Unique within the registry. This is the identifier used by `sbean add <name>`."
         },
+        "package": {
+          "type": "string"
+        },
         "title": {
           "type": "string",
           "description": "A human-readable title for the item."
@@ -855,6 +864,9 @@
         "name": {
           "type": "string",
           "description": "The name of the item. Unique within the registry. This is the identifier used by `sbean add <name>`."
+        },
+        "package": {
+          "type": "string"
         },
         "title": {
           "type": "string",

@@ -9864,6 +9864,9 @@
           },
           "slots": "Slots for the TreeNavOptionsCompact component."
         },
+        "treenavoverflowprops": {
+          "props": "Properties for the TreeNavRoot component"
+        },
         "treenavrootemits": {
           "callables": {
             "select": "Emitted when an item is selected.",

@@ -9864,6 +9864,9 @@
           },
           "slots": "TreeNavOptionsCompact 组件的槽位。"
         },
+        "treenavoverflowprops": {
+          "props": "TreeNavRoot 组件的属性"
+        },
         "treenavrootemits": {
           "callables": {
             "select": "当选中某项时触发。",

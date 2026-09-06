@@ -15,6 +15,27 @@
       "type": "string",
       "description": "The registry homepage URL. Required when this file is used as the root registry."
     },
+    "packages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "prefix": {
+            "type": "string"
+          },
+          "nounPrefix": {
+            "type": "string"
+          }
+        },
+        "required": ["name", "scope", "prefix"]
+      }
+    },
     "include": {
       "type": "array",
       "items": {
@@ -36,6 +57,9 @@
                 "type": "string"
               },
               "name": {
+                "type": "string"
+              },
+              "package": {
                 "type": "string"
               },
               "title": {
@@ -345,6 +369,9 @@
               "name": {
                 "type": "string"
               },
+              "package": {
+                "type": "string"
+              },
               "title": {
                 "type": "string"
               },
@@ -580,6 +607,9 @@
               "name": {
                 "type": "string"
               },
+              "package": {
+                "type": "string"
+              },
               "title": {
                 "type": "string"
               },
@@ -796,6 +826,9 @@
                 "type": "string"
               },
               "name": {
+                "type": "string"
+              },
+              "package": {
                 "type": "string"
               },
               "title": {

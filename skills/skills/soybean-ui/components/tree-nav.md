@@ -40,7 +40,7 @@ Interactive demos for tree-nav are rendered on the site.
 
 Structured API summary generated from build-time component metadata.
 
-- Exported symbols (5): TreeNav, TreeNavCompact, TreeNavOptionCompact, TreeNavOptionsCompact, TreeNavRoot.
+- Exported symbols (6): TreeNav, TreeNavCompact, TreeNavOptionCompact, TreeNavOptionsCompact, TreeNavOverflow, TreeNavRoot.
 
 ### TreeNav
 
@@ -182,6 +182,10 @@ Slots for the TreeNavOptionsCompact component.
 - `item-trigger-icon`: Custom content for the item trigger icon slot. (type `((props: { item: MenuOptionData<DefinedValue>; }) => any) | undefined`)
 - `item-link-icon`: Custom content for the item link icon slot. (type `((props: { item: MenuOptionData<DefinedValue>; }) => any) | undefined`)
 - `more-trigger`: Custom content for the trailing "more" trigger when present. (type `((props: TreeNavMoreEntry) => any) | undefined`)
+
+### TreeNavOverflow
+
+- No documented props, emits, slots, or slot props were available.
 
 ### TreeNavRoot
 

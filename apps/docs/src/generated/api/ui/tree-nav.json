@@ -75,7 +75,7 @@
               {
                 "name": "TreeNavUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; itemIcon: ClassValue; itemLinkIcon: ClassValue; itemChevron: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; itemIcon: ClassValue; itemLinkIcon: ClassValue; overflow: ClassValue; itemTriggerIcon: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the TreeNav component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_tree_nav_types.treenavui",
@@ -3790,6 +3790,21 @@
             ]
           }
         ],
+        "referencedTypes": []
+      }
+    },
+    "TreeNavOverflow": {
+      "props": {
+        "kind": "props",
+        "name": "TreeNavOverflowProps",
+        "type": "Interface TreeNavOverflowProps",
+        "resolvedType": null,
+        "description": "Properties for the TreeNavRoot component",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_nav_types.treenavoverflowprops.props",
+        "sourcePath": "packages/headless/src/components/tree-nav/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
         "referencedTypes": []
       }
     },
