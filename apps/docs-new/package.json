@@ -1,0 +1,32 @@
+{
+  "name": "@soybeanjs/ui-docs",
+  "version": "0.31.0",
+  "private": true,
+  "description": "SoybeanUI Docs is a documentation for SoybeanUI. It is designed to be easy to use and understand.",
+  "author": {
+    "name": "Soybean",
+    "email": "soybeanjs@outlook.com",
+    "url": "https://github.com/soybeanjs"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "pnpm build:registry && ubean build",
+    "build:registry": "pnpm --filter sbean build:registry && vp fmt public/r --write",
+    "build:schema": "pnpm --filter sbean build:schema",
+    "dev": "ubean dev",
+    "preview": "ubean preview",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck"
+  },
+  "dependencies": {
+    "@soybeanjs/theme": "workspace:^",
+    "@soybeanjs/ui": "workspace:^",
+    "ubean": "^0.3.7",
+    "vue": "^3.5.42"
+  },
+  "devDependencies": {
+    "typescript": "catalog:ts6",
+    "unocss": "^66.9.2",
+    "vite-plus": "catalog:"
+  },
+  "packageManager": "pnpm@11.25.0"
+}
