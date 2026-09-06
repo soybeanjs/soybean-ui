@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { DialogCancel } from '../dialog';
-import type { BottomSheetCancelEmits, BottomSheetCancelProps } from './types';
+import type { BottomSheetCancelProps, BottomSheetCancelEmits } from './types';
 
 defineOptions({
   name: 'BottomSheetCancel'

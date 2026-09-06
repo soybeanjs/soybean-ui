@@ -3,7 +3,7 @@ import { computed, onBeforeUnmount, watchPostEffect } from 'vue';
 import { useForwardElement, useGraceArea } from '../../composables';
 import { createPopperPositionerDefaultProps } from './shared';
 import { providePopperPositionerContext, usePopperRootContext, usePopperUi } from './context';
-import type { PopperPositionerEmits, PopperPositionerProps } from './types';
+import type { PopperPositionerProps, PopperPositionerEmits } from './types';
 import { usePopperDismiss } from './use-popper-dismiss';
 import { usePopperPositioning } from './use-popper-positioning';
 

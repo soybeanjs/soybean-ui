@@ -21,11 +21,11 @@ import CascaderTrigger from './cascader-trigger.vue';
 import CascaderValue from './cascader-value.vue';
 import type {
   CascaderCompactProps,
-  CascaderCompactEmits,
   CascaderCompactOptionSlotProps,
-  CascaderCompactSlots,
   CascaderCompactTagSlotProps,
   CascaderCompactTriggerValueSlotProps,
+  CascaderCompactEmits,
+  CascaderCompactSlots,
   CascaderModelValue,
   CascaderNode,
   CascaderValue as CascaderValueType

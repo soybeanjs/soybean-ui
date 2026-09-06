@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { TabsRoot } from '../tabs';
-import type { SegmentRootEmits, SegmentRootProps } from './types';
+import type { SegmentRootProps, SegmentRootEmits } from './types';
 
 defineOptions({
   name: 'SegmentRoot'

@@ -2,7 +2,7 @@
 import { usePopperRootContext } from '../popper/context';
 import Button from '../button/button.vue';
 import { usePopconfirmUi } from './context';
-import type { PopconfirmCloseEmits, PopconfirmCloseProps } from './types';
+import type { PopconfirmCloseProps, PopconfirmCloseEmits } from './types';
 
 defineOptions({
   name: 'PopconfirmClose'

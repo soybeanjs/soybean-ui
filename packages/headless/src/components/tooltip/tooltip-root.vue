@@ -6,7 +6,7 @@ import { PopperRoot } from '../popper';
 import type { PopperOpenChangeReason } from '../popper/types';
 import { PROVIDER_CONFIG_KEYS, ROOT_RESOLVE_KEYS, createDefaultTooltipConfig, pickDefinedConfig } from './shared';
 import { provideTooltipProviderContext, provideTooltipRootContext, useTooltipProviderContext } from './context';
-import type { TooltipProviderProps, TooltipRootEmits, TooltipRootProps } from './types';
+import type { TooltipProviderProps, TooltipRootProps, TooltipRootEmits } from './types';
 
 defineOptions({
   name: 'TooltipRoot',

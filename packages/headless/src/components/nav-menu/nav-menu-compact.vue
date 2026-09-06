@@ -6,7 +6,7 @@ import NavMenuList from './nav-menu-list.vue';
 import NavMenuOptionCompact from './nav-menu-option-compact.vue';
 import NavMenuRoot from './nav-menu-root.vue';
 import NavMenuViewport from './nav-menu-viewport.vue';
-import type { NavMenuCompactEmits, NavMenuCompactProps, NavMenuCompactSlots } from './types';
+import type { NavMenuCompactProps, NavMenuCompactEmits, NavMenuCompactSlots } from './types';
 
 defineOptions({
   name: 'NavMenuCompact'

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { DialogClose } from '../dialog';
-import type { BottomSheetCloseEmits, BottomSheetCloseProps } from './types';
+import type { BottomSheetCloseProps, BottomSheetCloseEmits } from './types';
 
 defineOptions({
   name: 'BottomSheetClose'

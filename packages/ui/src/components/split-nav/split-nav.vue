@@ -10,7 +10,7 @@ import { splitNavVariants } from '@/styles/split-nav';
 import { treeMenuVariants } from '@/styles/tree-menu';
 import { treeNavVariants } from '@/styles/tree-nav';
 import { provideMenuUi } from '../menu/context';
-import type { SplitNavEmits, SplitNavProps, SplitNavSlots } from './types';
+import type { SplitNavProps, SplitNavEmits, SplitNavSlots } from './types';
 
 defineOptions({
   name: 'SSplitNav',

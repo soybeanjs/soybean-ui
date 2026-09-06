@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { PopperCompact, providePopperUi } from '@soybeanjs/headless/popper';
 import { popperVariants } from '@/styles/popper';
-import type { PopperEmits, PopperProps, PopperSlots } from './types';
+import type { PopperProps, PopperEmits, PopperSlots } from './types';
 
 defineOptions({
   name: 'SPopper'

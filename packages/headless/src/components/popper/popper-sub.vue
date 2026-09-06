@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import PopperRoot from './popper-root.vue';
-import type { PopperOpenChangeReason, PopperSubEmits, PopperSubProps, PopperSubSlots } from './types';
+import type { PopperSubProps, PopperOpenChangeReason, PopperSubEmits, PopperSubSlots } from './types';
 
 defineOptions({
   name: 'PopperSub',

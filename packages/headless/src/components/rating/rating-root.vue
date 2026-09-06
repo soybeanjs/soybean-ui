@@ -15,7 +15,7 @@ import {
   snapRatingToStep
 } from './shared';
 import { provideRatingRootContext } from './context';
-import type { RatingRootEmits, RatingRootProps } from './types';
+import type { RatingRootProps, RatingRootEmits } from './types';
 
 defineOptions({
   name: 'RatingRoot'

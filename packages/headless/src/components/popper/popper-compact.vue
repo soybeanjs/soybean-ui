@@ -7,7 +7,7 @@ import PopperPortal from './popper-portal.vue';
 import PopperPositioner from './popper-positioner.vue';
 import PopperRoot from './popper-root.vue';
 import PopperTrigger from './popper-trigger.vue';
-import type { PopperCompactEmits, PopperCompactProps, PopperCompactSlots, PopperOpenChangeReason } from './types';
+import type { PopperCompactProps, PopperCompactEmits, PopperCompactSlots, PopperOpenChangeReason } from './types';
 
 defineOptions({
   name: 'PopperCompact',

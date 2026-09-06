@@ -2,7 +2,7 @@
 import { usePopperRootContext } from '../popper/context';
 import { useForwardListeners, useHideOthers } from '../../composables';
 import { PopperPositioner } from '../popper';
-import type { PopconfirmPositionerEmits, PopconfirmPositionerProps } from './types';
+import type { PopconfirmPositionerProps, PopconfirmPositionerEmits } from './types';
 
 defineOptions({
   name: 'PopconfirmPositioner'

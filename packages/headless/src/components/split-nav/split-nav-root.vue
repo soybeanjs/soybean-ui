@@ -9,10 +9,10 @@ import DualVerticalPane from './dual-vertical-pane.vue';
 import HorizontalDualVerticalMenu from './horizontal-dual-vertical-menu.vue';
 import HorizontalVerticalMenu from './horizontal-vertical-menu.vue';
 import type {
+  SplitNavRootProps,
   SplitNavBaseOptionData,
   SplitNavMode,
   SplitNavRootEmits,
-  SplitNavRootProps,
   SplitNavRootSlots
 } from './types';
 import VerticalHorizontalMenu from './vertical-horizontal-menu.vue';

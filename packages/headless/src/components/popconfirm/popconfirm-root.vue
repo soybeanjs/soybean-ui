@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PopperRoot } from '../popper';
 import type { PopperOpenChangeReason } from '../popper/types';
-import type { PopconfirmRootEmits, PopconfirmRootProps } from './types';
+import type { PopconfirmRootProps, PopconfirmRootEmits } from './types';
 
 defineOptions({
   name: 'PopconfirmRoot',

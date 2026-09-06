@@ -6,7 +6,7 @@ import { useTableCompactExpandedRow } from './hooks';
 import TableCell from './table-cell.vue';
 import TableCompactCell from './table-compact-cell.vue';
 import TableRow from './table-row.vue';
-import type { TableCompactEmits, TableCompactRowProps, TableRowEventPayload } from './types';
+import type { TableCompactRowProps, TableCompactEmits, TableRowEventPayload } from './types';
 
 defineOptions({
   name: 'TableCompactRow',

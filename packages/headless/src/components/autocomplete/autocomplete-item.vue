@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ComboboxItem } from '../combobox';
-import type { AutocompleteItemEmits, AutocompleteItemProps } from './types';
+import type { AutocompleteItemProps, AutocompleteItemEmits } from './types';
 
 defineOptions({
   name: 'AutocompleteItem'

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { SplitterResizeHandle } from '@soybeanjs/headless/splitter';
-import type { SplitterResizeHandleEmits, SplitterResizeHandleProps } from './types';
+import type { SplitterResizeHandleProps, SplitterResizeHandleEmits } from './types';
 
 defineOptions({
   name: 'SSplitterResizeHandle'

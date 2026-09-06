@@ -5,7 +5,7 @@ import { RatingItem, RatingRoot } from '@soybeanjs/headless/rating';
 import type { RatingItemState } from '@soybeanjs/headless/rating';
 import { ratingItemVariants, ratingVariants } from '@/styles/rating';
 import { SIcon } from '../icon';
-import type { RatingEmits, RatingProps } from './types';
+import type { RatingProps, RatingEmits } from './types';
 
 defineOptions({
   name: 'SRating'

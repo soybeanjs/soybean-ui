@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { DialogConfirm } from '../dialog';
-import type { BottomSheetConfirmEmits, BottomSheetConfirmProps } from './types';
+import type { BottomSheetConfirmProps, BottomSheetConfirmEmits } from './types';
 
 defineOptions({
   name: 'BottomSheetConfirm'

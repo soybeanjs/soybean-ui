@@ -4,7 +4,7 @@ import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composabl
 import { NavMenuCompact, provideNavMenuUi } from '@soybeanjs/headless/nav-menu';
 import { keysOf } from '@soybeanjs/headless/shared';
 import { navMenuVariants } from '@/styles/nav-menu';
-import type { NavMenuEmits, NavMenuProps, NavMenuSlots } from './types';
+import type { NavMenuProps, NavMenuEmits, NavMenuSlots } from './types';
 
 defineOptions({
   name: 'SNavMenu'

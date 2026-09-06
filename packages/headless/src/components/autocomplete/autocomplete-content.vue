@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useForwardListeners } from '../../composables';
 import { ComboboxContent } from '../combobox';
-import type { AutocompleteContentEmits, AutocompleteContentProps } from './types';
+import type { AutocompleteContentProps, AutocompleteContentEmits } from './types';
 
 defineOptions({
   name: 'AutocompleteContent'

@@ -2,7 +2,7 @@
 import { computed, shallowRef, watch } from 'vue';
 import { useControllableState } from '../../composables';
 import { providePopperPositioningRootContext, providePopperRootContext, usePopperRootContext } from './context';
-import type { PopperOpenChangeReason, PopperRootEmits, PopperRootProps, PopperRootSlots } from './types';
+import type { PopperRootProps, PopperOpenChangeReason, PopperRootEmits, PopperRootSlots } from './types';
 import { usePopperNesting } from './use-popper-nesting';
 
 defineOptions({

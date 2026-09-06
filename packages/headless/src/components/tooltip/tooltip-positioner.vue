@@ -8,7 +8,7 @@ import { PopperPositioner } from '../popper';
 import { TOOLTIP_OPEN } from './shared';
 import type { TooltipOpenEventDetail } from './shared';
 import { useTooltipRootContext } from './context';
-import type { TooltipPositionerEmits, TooltipPositionerProps } from './types';
+import type { TooltipPositionerProps, TooltipPositionerEmits } from './types';
 
 defineOptions({
   name: 'TooltipPositioner'

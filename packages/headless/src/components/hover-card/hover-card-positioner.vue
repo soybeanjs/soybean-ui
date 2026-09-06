@@ -4,7 +4,7 @@ import { defu } from '../../shared';
 import { usePopperRootContext } from '../popper/context';
 import { useForwardListeners } from '../../composables';
 import { PopperPositioner } from '../popper';
-import type { HoverCardPositionerEmits, HoverCardPositionerProps } from './types';
+import type { HoverCardPositionerProps, HoverCardPositionerEmits } from './types';
 
 defineOptions({
   name: 'HoverCardPositioner'

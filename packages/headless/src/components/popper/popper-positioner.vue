@@ -3,7 +3,7 @@ import { shallowRef } from 'vue';
 import { useForwardListeners, usePresence } from '../../composables';
 import { usePopperRootContext } from './context';
 import PopperPositionerImpl from './popper-positioner-impl.vue';
-import type { PopperPositionerEmits, PopperPositionerProps } from './types';
+import type { PopperPositionerProps, PopperPositionerEmits } from './types';
 
 defineOptions({
   name: 'PopperPositioner'

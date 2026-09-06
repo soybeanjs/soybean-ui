@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { DialogTrigger } from '../dialog';
-import type { BottomSheetTriggerEmits, BottomSheetTriggerProps } from './types';
+import type { BottomSheetTriggerProps, BottomSheetTriggerEmits } from './types';
 
 defineOptions({
   name: 'BottomSheetTrigger'

@@ -25,7 +25,7 @@ import {
   simpleCssColor,
   toCssColor
 } from './shared';
-import type { PaletteChangePayload, PalettePickerEmits, PalettePickerProps, PaletteSelectValue } from './types';
+import type { PalettePickerProps, PaletteChangePayload, PalettePickerEmits, PaletteSelectValue } from './types';
 
 defineOptions({
   name: 'SPalettePicker'

@@ -20,7 +20,7 @@ import PopconfirmPositioner from './popconfirm-positioner.vue';
 import PopconfirmRoot from './popconfirm-root.vue';
 import PopconfirmTitle from './popconfirm-title.vue';
 import PopconfirmTrigger from './popconfirm-trigger.vue';
-import type { PopconfirmCompactEmits, PopconfirmCompactProps, PopconfirmCompactSlots, PopconfirmType } from './types';
+import type { PopconfirmCompactProps, PopconfirmCompactEmits, PopconfirmCompactSlots, PopconfirmType } from './types';
 
 defineOptions({
   name: 'PopconfirmCompact',

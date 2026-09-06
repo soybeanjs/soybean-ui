@@ -3,7 +3,7 @@ import { computed, watchPostEffect } from 'vue';
 import { useForwardElement } from '../../composables';
 import { createPopperPositioningDefaultProps } from './shared';
 import { providePopperPositionerContext, usePopperPositioningRootContext, usePopperUi } from './context';
-import type { PopperPositioningPositionerEmits, PopperPositioningPositionerProps } from './types';
+import type { PopperPositioningPositionerProps, PopperPositioningPositionerEmits } from './types';
 import { usePopperPositioning } from './use-popper-positioning';
 
 defineOptions({
