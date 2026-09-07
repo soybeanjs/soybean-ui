@@ -1,6 +1,6 @@
 import { createThemeInitScript } from '@soybeanjs/theme/ssr';
 import { progress } from '@soybeanjs/ui';
-import { defineApp } from 'ubean/runtime/vue';
+import { defineApp } from 'ubean/client';
 import 'uno.css';
 
 export default defineApp({

@@ -1,10 +1,8 @@
-<script setup lang="ts">
-import { SConfigProvider } from '@soybeanjs/ui';
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <SConfigProvider>
+  <div>
     <div>Default Layout</div>
     <PageView />
-  </SConfigProvider>
+  </div>
 </template>
