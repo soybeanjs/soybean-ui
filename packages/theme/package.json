@@ -56,6 +56,5 @@
     "typescript": "catalog:",
     "vite-plus": "catalog:",
     "vitest": "5.0.0"
-  },
-  "packageManager": "pnpm@12.3.4"
+  }
 }

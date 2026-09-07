@@ -3,6 +3,14 @@ import { defineConfig } from 'ubean';
 export default defineConfig({
   mode: 'ssg',
   favicon: 'https://r2.soybeanjs.tech/soybeanjs/logo-soybean-ui.svg?v=202608192144',
+  i18n: {
+    defaultLocale: 'en',
+    locales: [
+      { code: 'en', language: 'en', name: 'English' },
+      { code: 'zh', language: 'zh-CN', name: '中文', dir: 'ltr' }
+    ],
+    strategy: 'prefix_except_default'
+  },
   imports: {
     // ubean 的全局 auto-import(含 i18n 的 `t`)没有排除 node_modules,
     // 会把 `import { t } from 'ubean/client'` 注入压缩产物中含 `t` 局部声明的

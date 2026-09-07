@@ -49,6 +49,5 @@
     "vite-plus": "catalog:",
     "vite-ssg": "^28.3.0",
     "vite-ssg-sitemap": "^0.10.0"
-  },
-  "packageManager": "pnpm@12.3.4"
+  }
 }
