@@ -39,13 +39,13 @@
   },
   "dependencies": {
     "@soybeanjs/theme": "workspace:^",
-    "@unocss/preset-mini": "^66.9.2",
-    "unocss": "^66.9.2"
+    "@unocss/preset-mini": "^66.10.0",
+    "unocss": "^66.10.0"
   },
   "devDependencies": {
     "@soybeanjs/shared": "workspace:^",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
-    "vitest": "4.1.11"
+    "vitest": "5.0.0"
   }
 }

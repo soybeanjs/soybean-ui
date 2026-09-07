@@ -18,6 +18,6 @@
     "typedoc": "^0.28.20",
     "typescript": "catalog:ts6",
     "vite-plus": "catalog:",
-    "vitest": "4.1.11"
+    "vitest": "5.0.0"
   }
 }

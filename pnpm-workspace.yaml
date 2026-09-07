@@ -23,8 +23,4 @@ allowBuilds:
   esbuild: false
   maplibre-gl: false
   simple-git-hooks: false
-minimumReleaseAgeExclude:
-  - happy-dom@20.13.2
-  - vue-router@5.3.1
-  - '@soybeanjs/oxc-config@0.2.5'
-  - '@soybeanjs/cva@0.1.1'
+minimumReleaseAge: 0

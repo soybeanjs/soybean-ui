@@ -52,10 +52,10 @@
   },
   "devDependencies": {
     "@soybeanjs/shared": "workspace:^",
-    "happy-dom": "^20.13.2",
+    "happy-dom": "^20.14.0",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
-    "vitest": "4.1.11"
+    "vitest": "5.0.0"
   },
-  "packageManager": "pnpm@11.25.0"
+  "packageManager": "pnpm@12.3.4"
 }
