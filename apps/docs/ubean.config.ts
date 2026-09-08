@@ -133,16 +133,7 @@ export default defineConfig({
   security: {
     headers: {
       contentSecurityPolicy: {
-        'default-src': ["'self'"],
-        'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-        'style-src': ["'self'", "'unsafe-inline'"],
-        'img-src': ["'self'", 'data:', 'blob:', 'https:'],
-        'font-src': ["'self'", 'data:'],
-        'connect-src': ["'self'", 'ws:', 'wss:', 'https://api.iconify.design'],
-        'object-src': ["'none'"],
-        'base-uri': ["'self'"],
-        'form-action': ["'self'"],
-        'frame-ancestors': ["'self'"]
+        'connect-src': ["'self'", 'ws:', 'wss:', 'https://api.iconify.design']
       }
     }
   }
