@@ -2,7 +2,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import { createTheme } from '@soybeanjs/theme';
-import { THEME_STORAGE_KEY, getStoredThemeConfig } from '@soybeanjs/theme/storage';
+import { THEME_INIT_STYLE_ID } from '@soybeanjs/theme/ssr';
+import { THEME_CSS_STORAGE_KEY, THEME_STORAGE_KEY, getStoredThemeConfig } from '@soybeanjs/theme/storage';
 import SAccordion from '@/components/accordion/accordion.vue';
 import SConfigProvider from '@/components/config-provider/config-provider.vue';
 import SIcon from '@/components/icon/icon.vue';
@@ -42,6 +43,7 @@ describe('SConfigProvider', () => {
     getStyleEl('__SoybeanUI_theme')?.remove();
     getStyleEl('__SoybeanHeadless_Styles')?.remove();
     getStyleEl('__SoybeanUI_toastStyle')?.remove();
+    getStyleEl(THEME_INIT_STYLE_ID)?.remove();
   });
 
   describe('rendering', () => {
@@ -380,6 +382,38 @@ describe('SConfigProvider', () => {
 
       // 持久化管道短路：不读取任何存储
       expect(getStoredThemeConfigMock).not.toHaveBeenCalled();
+
+      wrapper.unmount();
+    });
+
+    it('persists the generated CSS snapshot for the pre-paint init script', () => {
+      const wrapper = mount(SConfigProvider, {
+        props: { persistTheme: true, theme: { base: 'gray' } },
+        slots: { default: '<div />' },
+        attachTo: document.body
+      });
+
+      const snapshot = window.localStorage.getItem(THEME_CSS_STORAGE_KEY);
+
+      expect(snapshot).toContain('--');
+      expect(snapshot).toBe(getStyleEl('__SoybeanUI_theme')?.textContent);
+
+      wrapper.unmount();
+    });
+
+    it('removes the pre-paint init style once the reactive theme style is applied', () => {
+      const initStyle = document.createElement('style');
+      initStyle.id = THEME_INIT_STYLE_ID;
+      initStyle.textContent = ':root { --primary: red !important; }';
+      document.head.appendChild(initStyle);
+
+      const wrapper = mount(SConfigProvider, {
+        props: { persistTheme: true, theme: { base: 'gray' } },
+        slots: { default: '<div />' },
+        attachTo: document.body
+      });
+
+      expect(getStyleEl(THEME_INIT_STYLE_ID)).toBeNull();
 
       wrapper.unmount();
     });

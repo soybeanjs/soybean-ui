@@ -1,6 +1,7 @@
-import { computed, defineComponent, h, onMounted, onUnmounted, shallowRef } from 'vue';
+import { computed, defineComponent, h, onMounted, onUnmounted, shallowRef, watch } from 'vue';
 import { createTheme } from '@soybeanjs/theme';
-import { THEME_PRESETS_STORAGE_KEY, THEME_STORAGE_KEY } from '@soybeanjs/theme/storage';
+import { THEME_INIT_STYLE_ID } from '@soybeanjs/theme/ssr';
+import { setStoredThemeCss, THEME_PRESETS_STORAGE_KEY, THEME_STORAGE_KEY } from '@soybeanjs/theme/storage';
 import type { ThemeConfigState } from '@soybeanjs/theme/storage';
 import type { ConfigProviderProps } from './types';
 import { createThemeContext, provideThemeContext } from './use-theme';
@@ -27,6 +28,10 @@ const ThemeStyle = defineComponent({
       if (styleRef.value) {
         styleRef.value.textContent = styleProps.css;
       }
+
+      // 首帧内联脚本注入的样式带 `!important`，会压制运行时主题切换；
+      // 此时响应式 CSS 已写入，可安全移除。
+      document.getElementById(THEME_INIT_STYLE_ID)?.remove();
     });
 
     return () =>
@@ -59,6 +64,14 @@ export function useConfigProviderTheme(props: ConfigProviderProps) {
    */
   const themeCss = computed(() => createTheme(themeContext.theme.value));
 
+  // 持久化生成好的 CSS 快照：首帧内联脚本（createThemeInitScript 的 injectCss）
+  // 读取它，在 hydration 前应用派生 token，消除刷新时的主题闪烁。
+  watch(themeCss, css => {
+    if (props.persistTheme) {
+      setStoredThemeCss(css);
+    }
+  });
+
   // 跨标签页同步：storage 事件（其他标签页写入）使缓存失效并触发重读。
   // 主题配置走 `refreshThemeConfig`（重读 + 强制重派生）；自定义 preset 表走
   // `refreshPresetsSnapshot`。仅当 `persistTheme` 开启时才注册监听。
@@ -71,9 +84,14 @@ export function useConfigProviderTheme(props: ConfigProviderProps) {
   };
 
   onMounted(() => {
-    if (props.persistTheme) {
-      window.addEventListener('storage', handleStorage);
+    if (!props.persistTheme) {
+      return;
     }
+
+    window.addEventListener('storage', handleStorage);
+
+    // 首次访问（或升级前没有快照）时补写一次，保证下次刷新可以首帧应用。
+    setStoredThemeCss(themeCss.value);
   });
 
   onUnmounted(() => {
