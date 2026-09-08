@@ -1,5 +1,5 @@
 <template>
-  <div class="app-logo">
+  <div>
     <svg
       width="100%"
       height="100%"
@@ -58,25 +58,20 @@
           opacity="1"
           stroke="none"
         />
-        <!-- Triangle, centered at (210, 762), 120×110, angle 57.2° -->
-        <path
-          d="M 150 707 L 270 707 L 210 817 Z"
-          fill="none"
-          stroke="#ffffff"
-          stroke-width="12"
-          stroke-linejoin="round"
-          stroke-linecap="round"
-        />
-
-        <!-- V, angle 56.9° matches triangle, arms extended for better proportions -->
-        <path
-          d="M 184 728 L 210 776 L 236 728"
-          fill="none"
-          stroke="#ffffff"
-          stroke-width="12"
-          stroke-linejoin="round"
-          stroke-linecap="round"
-        />
+      </g>
+      <!--左下角图案-->
+      <g transform="translate(130, 670) scale(7)">
+        <g viewBox="0 0 24 24" fill="#ffffff">
+          <path
+            d="m2.48 15.137 6.036 2.754c1.445.664 2.578.976 3.7.976 1.134 0 2.266-.312 3.712-.976l6.035-2.754q.066-.03.127-.063c.458.395.625.835.625 1.293 0 .674-.352 1.299-1.475 1.807l-6.025 2.754c-1.26.576-2.158.82-2.998.82-.83 0-1.729-.244-2.988-.82l-6.026-2.754C2.08 17.666 1.73 17.04 1.73 16.367c0-.459.163-.9.622-1.294Z"
+          />
+          <path
+            d="m2.48 10.479 6.036 2.763c1.445.654 2.578.977 3.7.977 1.134 0 2.266-.322 3.712-.977l6.035-2.764q.054-.023.103-.05c.476.397.649.844.649 1.31 0 .674-.352 1.3-1.475 1.817l-6.025 2.744c-1.26.576-2.158.82-2.998.82-.83 0-1.729-.244-2.988-.82l-6.026-2.744c-1.123-.518-1.474-1.143-1.474-1.817 0-.466.168-.914.646-1.311Z"
+          />
+          <path
+            d="M12.217 12.49c.84 0 1.738-.244 2.998-.82l6.025-2.754c1.123-.508 1.475-1.133 1.475-1.807 0-.683-.361-1.308-1.475-1.816l-6.045-2.744c-1.23-.557-2.129-.82-2.978-.82-.84 0-1.739.263-2.979.82L3.203 5.293C2.08 5.801 1.73 6.426 1.73 7.109c0 .674.351 1.3 1.474 1.807L9.23 11.67c1.26.576 2.158.82 2.988.82"
+          />
+        </g>
       </g>
       <defs>
         <linearGradient
@@ -88,8 +83,8 @@
           y1="0"
           y2="0"
         >
-          <stop offset="0" stop-color="var(--logo-color-700)" />
-          <stop offset="1" stop-color="var(--logo-color-600)" />
+          <stop offset="0" stop-color="hsl(var(--primary-700))" />
+          <stop offset="1" stop-color="hsl(var(--primary-600))" />
         </linearGradient>
         <linearGradient
           id="LinearGradient_2"
@@ -100,8 +95,8 @@
           y1="0"
           y2="0"
         >
-          <stop offset="0" stop-color="var(--logo-color-300)" />
-          <stop offset="1" stop-color="var(--logo-color-500)" />
+          <stop offset="0" stop-color="hsl(var(--primary-300))" />
+          <stop offset="1" stop-color="hsl(var(--primary-500))" />
         </linearGradient>
         <linearGradient
           id="LinearGradient_3"
@@ -112,8 +107,8 @@
           y1="0"
           y2="0"
         >
-          <stop offset="0" stop-color="var(--logo-color-600)" />
-          <stop offset="1" stop-color="var(--logo-color-700)" />
+          <stop offset="0" stop-color="hsl(var(--primary-600))" />
+          <stop offset="1" stop-color="hsl(var(--primary-700))" />
         </linearGradient>
         <linearGradient
           id="LinearGradient_4"
@@ -124,8 +119,8 @@
           y1="0"
           y2="0"
         >
-          <stop offset="0" stop-color="var(--logo-color-400)" />
-          <stop offset="1" stop-color="var(--logo-color-600)" />
+          <stop offset="0" stop-color="hsl(var(--primary-400))" />
+          <stop offset="1" stop-color="hsl(var(--primary-600))" />
         </linearGradient>
         <linearGradient
           id="LinearGradient_5"
@@ -136,8 +131,8 @@
           y1="0"
           y2="0"
         >
-          <stop offset="0" stop-color="var(--logo-color-500)" />
-          <stop offset="1" stop-color="var(--logo-color-300)" />
+          <stop offset="0" stop-color="hsl(var(--primary-500))" />
+          <stop offset="1" stop-color="hsl(var(--primary-300))" />
         </linearGradient>
         <linearGradient
           id="LinearGradient_6"
@@ -148,8 +143,8 @@
           y1="0"
           y2="0"
         >
-          <stop offset="0" stop-color="var(--logo-color-300)" />
-          <stop offset="1" stop-color="var(--logo-color-500)" />
+          <stop offset="0" stop-color="hsl(var(--primary-300))" />
+          <stop offset="1" stop-color="hsl(var(--primary-500))" />
         </linearGradient>
         <linearGradient
           id="LinearGradient_7"
@@ -160,20 +155,10 @@
           y1="0"
           y2="0"
         >
-          <stop offset="0" stop-color="var(--logo-color-700)" />
-          <stop offset="1" stop-color="var(--logo-color-600)" />
+          <stop offset="0" stop-color="hsl(var(--primary-700))" />
+          <stop offset="1" stop-color="hsl(var(--primary-600))" />
         </linearGradient>
       </defs>
     </svg>
   </div>
 </template>
-
-<style scoped>
-.app-logo {
-  --logo-color-300: hsl(var(--primary-300));
-  --logo-color-400: hsl(var(--primary-400));
-  --logo-color-500: hsl(var(--primary-500));
-  --logo-color-600: hsl(var(--primary-600));
-  --logo-color-700: hsl(var(--primary-700));
-}
-</style>
