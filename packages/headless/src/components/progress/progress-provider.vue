@@ -22,6 +22,7 @@ watchEffect(() => {
 <template>
   <div
     data-soybean-progress-provider
+    data-allow-mismatch="style"
     :class="ui.root"
     role="progressbar"
     :aria-label="messages.progress.loading"

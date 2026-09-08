@@ -16,7 +16,10 @@ export default defineApp({
   router: {
     setup(router) {
       router.beforeEach((to, from) => {
-        if (to.path !== from.path) {
+        // Skip the initial navigation: the first page is already SSR-rendered,
+        // so running progress before hydration mutates the provider's inline
+        // style and triggers a hydration style mismatch.
+        if (from.matched.length > 0 && to.path !== from.path) {
           progress.start();
         }
       });
