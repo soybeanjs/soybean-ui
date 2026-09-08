@@ -53,6 +53,11 @@ const iconifyProps = computed(() => {
 
   return {
     ...forwardedProps.value,
+    // 图标数据是异步加载的:SSR 端(`ssr` 开启时)可能已渲染真实图标,客户端
+    // 水合时仍是占位图(viewBox 等属性、iconify--* class 均不同)。这是
+    // check-only 的固有差异,声明允许 class + attribute 层 mismatch,避免
+    // 每次刷新产生 hydration 告警;挂载后 Iconify 会重渲染为真实图标。
+    'data-allow-mismatch': 'class,attribute',
     ...iconifySize.value,
     // 转发 Iconify 变换与渲染选项，避免声明过的 props 被静默丢弃
     mode: props.mode,
