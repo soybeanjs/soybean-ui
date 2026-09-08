@@ -722,7 +722,7 @@
   },
   "locale": {
     "en": "English",
-    "zh_cn": "Chinese"
+    "zh": "Chinese"
   },
   "layout": {
     "default": "Default Layout",
