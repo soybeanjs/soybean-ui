@@ -5,6 +5,7 @@ import { kebabCase, pascalCase } from '@soybeanjs/headless/shared';
 import { useLocalePrefix } from '~/composables/use-locale-prefix';
 import { chartMenuData } from '~/constants/menus';
 import { getComponentChangelogMeta } from '~/shared/generated-changelog';
+import { toHeadingId } from '~/shared/heading';
 
 definePage({ layout: 'default' });
 
@@ -107,18 +108,6 @@ const summary = computed(() => {
     category: currentGroupLabel.value
   });
 });
-
-function toHeadingId(title: string) {
-  const normalized = title
-    .trim()
-    .toLowerCase()
-    .replace(/[`~!@#$%^&*()+=[\]{}|\\:;"'<>,.?/]+/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
-
-  return `doc-${normalized || 'section'}`;
-}
 
 function onLoaded(isSuccess: boolean) {
   if (isSuccess) return;
