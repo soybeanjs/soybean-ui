@@ -2,12 +2,9 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "types": ["node", "vite/client"],
-    "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"],
-      "@/*": ["../../packages/ui/src/*"],
-      "@soybeanjs/ui": ["../../packages/ui/src/index.ts"],
-      "@soybeanjs/ui-x": ["../../packages/ui-x/src/index.ts"]
+      "@/*": ["../../packages/ui/src/*"]
     }
   },
   "include": ["./**/*", "./.ubean/*.d.ts"],
