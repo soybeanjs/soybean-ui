@@ -11,7 +11,7 @@ export default defineApp({
     title: 'SoybeanUI Documentation',
     htmlAttrs: { lang: 'en' },
     meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
-    script: [{ innerHTML: createThemeInitScript() }]
+    script: [{ innerHTML: createThemeInitScript({ injectCss: true }) }]
   },
   router: {
     setup(router) {
