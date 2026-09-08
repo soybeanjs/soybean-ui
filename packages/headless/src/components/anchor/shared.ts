@@ -50,7 +50,9 @@ export function updateAnchorHistory(href: string, mode: AnchorHistoryMode) {
   }
 
   const method = mode === 'replace' ? 'replaceState' : 'pushState';
-  window.history[method](null, '', href);
+  // Preserve the existing history.state (e.g. Vue Router's navigation state);
+  // passing `null` wipes it and triggers VUE_ROUTER_R0121 on the next router.push.
+  window.history[method]({ ...window.history.state }, '', href);
 }
 
 export function getContainerScrollTop(container: AnchorContainer) {

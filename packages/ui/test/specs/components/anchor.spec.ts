@@ -223,7 +223,7 @@ describe('SAnchor', () => {
       await wrapper.find('a[href="#api"]').trigger('click');
 
       expect(container.scrollTo).toHaveBeenCalledWith(expect.objectContaining({ behavior: 'smooth', top: 520 }));
-      expect(pushState).toHaveBeenCalledWith(null, '', '#api');
+      expect(pushState).toHaveBeenCalledWith({}, '', '#api');
       expect(wrapper.find('a[href="#api"]').attributes('aria-current')).toBe('location');
       expect(wrapper.emitted('activeChange')).toEqual([['#api']]);
       expect(wrapper.emitted('itemSelect')).toHaveLength(1);
@@ -259,7 +259,7 @@ describe('SAnchor', () => {
       await wrapper.vm.$nextTick();
 
       expect(wrapper.find('a[href="#overview"]').attributes('aria-current')).toBe('location');
-      expect(replaceState).toHaveBeenCalledWith(null, '', '#overview');
+      expect(replaceState).toHaveBeenCalledWith({}, '', '#overview');
       expect(pushState).not.toHaveBeenCalled();
 
       overview.setTop(-260);
@@ -270,7 +270,7 @@ describe('SAnchor', () => {
       await wrapper.vm.$nextTick();
 
       expect(wrapper.find('a[href="#usage"]').attributes('aria-current')).toBe('location');
-      expect(replaceState).toHaveBeenLastCalledWith(null, '', '#usage');
+      expect(replaceState).toHaveBeenLastCalledWith({}, '', '#usage');
 
       wrapper.unmount();
       cleanup(previousHash, overview.element, usage.element, api.element, container);
@@ -473,7 +473,7 @@ describe('SAnchor', () => {
 
       await wrapper.find('a[href="#api"]').trigger('click');
 
-      expect(replaceState).toHaveBeenCalledWith(null, '', '#api');
+      expect(replaceState).toHaveBeenCalledWith({}, '', '#api');
       expect(pushState).not.toHaveBeenCalled();
 
       wrapper.unmount();
