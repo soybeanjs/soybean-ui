@@ -177,7 +177,12 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div ref="contentRef" class="min-w-0">
+  <div ref="contentRef" class="min-w-0" data-allow-mismatch="children">
+    <!--
+ 内容组件由 async glob 在客户端加载,首帧水合时 cp 仍为 null,与 SSR
+         已渲染的 <article> 子节点不一致(加载完成后自愈)。声明允许 children
+         层 mismatch,避免每次刷新产生 hydration 告警。 
+-->
     <article
       v-if="cp"
       :data-doc-path="path"
