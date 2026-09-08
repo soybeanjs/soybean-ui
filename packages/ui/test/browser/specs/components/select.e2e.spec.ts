@@ -20,7 +20,7 @@ const items = [
 
 describe('SSelect (e2e)', () => {
   it('opens the listbox and selects an option by click', async () => {
-    const { unmount } = renderComponent(SSelect, {
+    const { unmount } = await renderComponent(SSelect, {
       props: { items, placeholder: 'Pick fruit' }
     });
 
@@ -39,7 +39,7 @@ describe('SSelect (e2e)', () => {
   });
 
   it('selects an option via keyboard', async () => {
-    const { unmount } = renderComponent(SSelect, {
+    const { unmount } = await renderComponent(SSelect, {
       props: { items, placeholder: 'Pick fruit' }
     });
 
@@ -59,7 +59,7 @@ describe('SSelect (e2e)', () => {
   });
 
   it('has no a11y violations when paired with a label (with theme)', async () => {
-    const { unmount } = renderComponent(
+    const { unmount } = await renderComponent(
       {
         components: { SSelect },
         data: () => ({ items }),

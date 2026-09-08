@@ -19,7 +19,7 @@ describe('SDialog (e2e)', () => {
   };
 
   it('opens on trigger click and reveals content in the portal', async () => {
-    const { unmount } = renderComponent(SDialog, {
+    const { unmount } = await renderComponent(SDialog, {
       props: { title: 'My Dialog' },
       slots
     });
@@ -34,7 +34,7 @@ describe('SDialog (e2e)', () => {
   });
 
   it('closes on Escape and restores focus to the trigger', async () => {
-    const { unmount } = renderComponent(SDialog, {
+    const { unmount } = await renderComponent(SDialog, {
       props: { title: 'Closable' },
       slots
     });
@@ -52,7 +52,7 @@ describe('SDialog (e2e)', () => {
   });
 
   it('has no a11y violations when open (with theme)', async () => {
-    const { unmount } = renderComponent(SDialog, {
+    const { unmount } = await renderComponent(SDialog, {
       props: {
         open: true,
         title: 'Accessible Dialog',

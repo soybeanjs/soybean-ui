@@ -53,7 +53,7 @@ function renderTwoTooltips() {
 
 describe('STooltip (e2e)', () => {
   it('opens on hover and reveals its content in the real portal', async () => {
-    const { unmount } = renderTwoTooltips();
+    const { unmount } = await renderTwoTooltips();
 
     await userEvent.hover(page.getByRole('button', { name: 'Hover A' }));
 
@@ -63,7 +63,7 @@ describe('STooltip (e2e)', () => {
   });
 
   it('closes the first tooltip when a second independent tooltip opens (broadcast)', async () => {
-    const { unmount } = renderTwoTooltips();
+    const { unmount } = await renderTwoTooltips();
 
     const triggerA = page.getByRole('button', { name: 'Hover A' });
     const triggerB = page.getByRole('button', { name: 'Hover B' });

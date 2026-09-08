@@ -135,7 +135,7 @@ function waitForPopupUnmount() {
  * moves focus into the new popup while the replaced popup is still animating
  * out — exactly the window the regression lives in.
  */
-function renderControlledMenubar() {
+async function renderControlledMenubar() {
   const model = ref<string | number>('file');
   const host = defineComponent({
     name: 'ControlledMenubarHost',
@@ -151,12 +151,14 @@ function renderControlledMenubar() {
     }
   });
 
-  return { ...render(host), model };
+  const result = await render(host);
+
+  return { ...result, model };
 }
 
 describe('SMenubar (e2e)', () => {
   it('opens the menu on trigger click and renders items in the real portal', async () => {
-    const { unmount } = renderComponent(SMenubar, { props: { items } });
+    const { unmount } = await renderComponent(SMenubar, { props: { items } });
 
     await userEvent.click(page.getByRole('menuitem', { name: 'File' }));
 
@@ -170,7 +172,7 @@ describe('SMenubar (e2e)', () => {
   });
 
   it('moves roving focus across triggers with Arrow keys and opens via keyboard', async () => {
-    const { unmount } = renderComponent(SMenubar, { props: { items } });
+    const { unmount } = await renderComponent(SMenubar, { props: { items } });
 
     // The menubar exposes a single tab stop (roving focus): Tab lands on the
     // first trigger, ArrowRight moves to the next.
@@ -192,7 +194,7 @@ describe('SMenubar (e2e)', () => {
   });
 
   it('closes the menu on Escape and restores focus to the trigger', async () => {
-    const { unmount } = renderComponent(SMenubar, { props: { items } });
+    const { unmount } = await renderComponent(SMenubar, { props: { items } });
 
     const fileTrigger = page.getByRole('menuitem', { name: 'File' });
     await userEvent.click(fileTrigger);
@@ -207,7 +209,7 @@ describe('SMenubar (e2e)', () => {
   });
 
   it('has no a11y violations when a menu is open (with theme)', async () => {
-    const { unmount } = renderComponent(SMenubar, { props: { items }, withTheme: true });
+    const { unmount } = await renderComponent(SMenubar, { props: { items }, withTheme: true });
 
     await userEvent.click(page.getByRole('menuitem', { name: 'File' }));
     await expect.element(page.getByRole('menu')).toBeVisible();
@@ -232,7 +234,7 @@ describe('SMenubar (e2e)', () => {
   });
 
   it('opens the menu on hover and ignores clicks in hover mode', async () => {
-    const { unmount } = renderComponent(SMenubar, { props: { items, trigger: 'hover', delayDuration: 0 } });
+    const { unmount } = await renderComponent(SMenubar, { props: { items, trigger: 'hover', delayDuration: 0 } });
     const fileTrigger = page.getByRole('menuitem', { name: 'File' });
 
     await userEvent.hover(fileTrigger);
@@ -243,7 +245,7 @@ describe('SMenubar (e2e)', () => {
   });
 
   it('keeps the menu open when moving from the trigger onto the content in hover mode', async () => {
-    const { unmount } = renderComponent(SMenubar, { props: { items, trigger: 'hover', delayDuration: 0 } });
+    const { unmount } = await renderComponent(SMenubar, { props: { items, trigger: 'hover', delayDuration: 0 } });
     const fileTrigger = page.getByRole('menuitem', { name: 'File' });
     const menu = page.getByRole('menu');
 
@@ -287,7 +289,7 @@ describe('SMenubar (e2e)', () => {
 
   it('does not dismiss a freshly remounted menu while the replaced one is exiting', async () => {
     const removeExitAnimation = injectMenuExitAnimation();
-    const { unmount, model } = renderControlledMenubar();
+    const { unmount, model } = await renderControlledMenubar();
     const fileTrigger = page.getByRole('menuitem', { name: 'File' });
     const newItem = page.getByRole('menuitem', { name: 'New Tab' });
     const undoItem = page.getByRole('menuitem', { name: 'Undo' });
@@ -316,7 +318,7 @@ describe('SMenubar (e2e)', () => {
 
   it('switches menus in both directions on hover without dismissing the newly opened menu', async () => {
     const removeExitAnimation = injectMenuExitAnimation();
-    const { unmount } = renderComponent(SMenubar, {
+    const { unmount } = await renderComponent(SMenubar, {
       props: { items, trigger: 'hover', delayDuration: 0 }
     });
     const fileTrigger = page.getByRole('menuitem', { name: 'File' });
@@ -346,7 +348,7 @@ describe('SMenubar (e2e)', () => {
   });
 
   it('switches menus on trigger click in click mode instead of dismissing everything', async () => {
-    const { unmount } = renderComponent(SMenubar, { props: { items } });
+    const { unmount } = await renderComponent(SMenubar, { props: { items } });
     const fileTrigger = page.getByRole('menuitem', { name: 'File' });
     const editTrigger = page.getByRole('menuitem', { name: 'Edit' });
     const newItem = page.getByRole('menuitem', { name: 'New Tab' });
@@ -372,7 +374,7 @@ describe('SMenubar (e2e)', () => {
   });
 
   it('keeps a hover-opened menu open when its trigger is clicked', async () => {
-    const { unmount } = renderComponent(SMenubar, {
+    const { unmount } = await renderComponent(SMenubar, {
       props: { items, trigger: 'hover', delayDuration: 0 }
     });
     const fileTrigger = page.getByRole('menuitem', { name: 'File' });
@@ -391,7 +393,7 @@ describe('SMenubar (e2e)', () => {
 
   it('unmounts a closing popup whose exit animation is cancelled mid-flight', async () => {
     const removeExitAnimation = injectMenuExitAnimation();
-    const { unmount } = renderComponent(SMenubar, { props: { items } });
+    const { unmount } = await renderComponent(SMenubar, { props: { items } });
     const menu = page.getByRole('menu');
 
     await userEvent.click(page.getByRole('menuitem', { name: 'File' }));
@@ -416,7 +418,7 @@ describe('SMenubar (e2e)', () => {
   });
 
   it('collapses overflowing items into a trailing "more" menu so the content fits', async () => {
-    const { unmount } = renderNarrowMenubar(280);
+    const { unmount } = await renderNarrowMenubar(280);
 
     // Not every item fits; a "more" trigger appears and the bar content fits
     // its container.

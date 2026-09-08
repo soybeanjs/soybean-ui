@@ -16,7 +16,7 @@ describe('SButton (e2e)', () => {
   describe('interactions', () => {
     it('fires click on a real pointer click', async () => {
       const onClick = vi.fn();
-      const { unmount } = renderComponent(SButton, {
+      const { unmount } = await renderComponent(SButton, {
         props: { onClick },
         slots: { default: 'Click me' }
       });
@@ -32,7 +32,7 @@ describe('SButton (e2e)', () => {
       // level) and `aria-disabled="true"` (assistive tech announcement). Asserting
       // the disabled contract is more truthful than attempting a click, since the
       // browser — not the component — is what suppresses the event.
-      const { unmount } = renderComponent(SButton, {
+      const { unmount } = await renderComponent(SButton, {
         props: { disabled: true },
         slots: { default: 'Submit' }
       });
@@ -46,7 +46,7 @@ describe('SButton (e2e)', () => {
 
     it('activates via keyboard (Enter)', async () => {
       const onClick = vi.fn();
-      const { unmount } = renderComponent(SButton, {
+      const { unmount } = await renderComponent(SButton, {
         props: { onClick },
         slots: { default: 'Confirm' }
       });
@@ -61,7 +61,7 @@ describe('SButton (e2e)', () => {
 
     it('activates via keyboard (Space)', async () => {
       const onClick = vi.fn();
-      const { unmount } = renderComponent(SButton, {
+      const { unmount } = await renderComponent(SButton, {
         props: { onClick },
         slots: { default: 'Confirm' }
       });
@@ -79,7 +79,7 @@ describe('SButton (e2e)', () => {
     it('has no axe violations including color-contrast', async () => {
       // withTheme injects the real CSS vars so colors are computed by the browser,
       // letting axe's color-contrast rule run (it is disabled in the happy-dom spec).
-      const { unmount } = renderComponent(SButton, {
+      const { unmount } = await renderComponent(SButton, {
         props: { onClick: () => {} },
         slots: { default: 'Submit' },
         withTheme: true

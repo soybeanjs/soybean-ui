@@ -19,7 +19,7 @@ import type { ElementContext, RunOptions } from 'axe-core';
  * import { renderComponent } from '../shared/render';
  * import { getA11yViolations } from '../shared/a11y';
  *
- * const { unmount } = renderComponent(SButton, {
+ * const { unmount } = await renderComponent(SButton, {
  *   slots: { default: 'Submit' },
  *   withTheme: true // injects theme CSS vars so colors are real
  * });

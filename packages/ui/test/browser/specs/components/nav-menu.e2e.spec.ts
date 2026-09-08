@@ -55,7 +55,7 @@ async function movePointerBetween(fromEl: Element, toEl: Element) {
 
 describe('SNavMenu (e2e)', () => {
   it('closes the menu when the pointer moves to a root-level leaf link', async () => {
-    const { unmount } = renderComponent(SNavMenu, {
+    const { unmount } = await renderComponent(SNavMenu, {
       props: { items: [...items, { value: 'help', label: 'Help', href: '/help' }], delayDuration: 0 }
     });
     const oneTrigger = page.getByRole('link', { name: 'One', exact: true });
@@ -74,7 +74,7 @@ describe('SNavMenu (e2e)', () => {
   });
 
   it('opens on hover and keeps the menu open while moving onto the content', async () => {
-    const { unmount } = renderComponent(SNavMenu, { props: { items, delayDuration: 0 } });
+    const { unmount } = await renderComponent(SNavMenu, { props: { items, delayDuration: 0 } });
     const oneTrigger = page.getByRole('link', { name: 'One' });
     const oneItem = page.getByText('One A');
 
@@ -106,7 +106,7 @@ describe('SNavMenu (e2e)', () => {
   });
 
   it('switches instantly between triggers on hover', async () => {
-    const { unmount } = renderComponent(SNavMenu, { props: { items, delayDuration: 0 } });
+    const { unmount } = await renderComponent(SNavMenu, { props: { items, delayDuration: 0 } });
     const oneTrigger = page.getByRole('link', { name: 'One' });
     const twoTrigger = page.getByRole('link', { name: 'Two' });
     const oneItem = page.getByText('One A');
@@ -124,7 +124,7 @@ describe('SNavMenu (e2e)', () => {
   });
 
   it('closes the menu when the pointer leaves the grace corridor', async () => {
-    const { unmount } = renderComponent(SNavMenu, { props: { items, delayDuration: 0 } });
+    const { unmount } = await renderComponent(SNavMenu, { props: { items, delayDuration: 0 } });
     const oneTrigger = page.getByRole('link', { name: 'One' });
     const oneItem = page.getByText('One A');
 
@@ -149,7 +149,7 @@ describe('SNavMenu (e2e)', () => {
   });
 
   it('opens the submenu on trigger click', async () => {
-    const { unmount } = renderComponent(SNavMenu, { props: { items } });
+    const { unmount } = await renderComponent(SNavMenu, { props: { items } });
     const oneTrigger = page.getByRole('link', { name: 'One' });
 
     await userEvent.click(oneTrigger);
@@ -159,7 +159,7 @@ describe('SNavMenu (e2e)', () => {
   });
 
   it('aligns the horizontal viewport to the logical end in RTL (mirror of LTR bottom-start)', async () => {
-    const { unmount } = renderComponent(SNavMenu, { props: { items, dir: 'rtl', delayDuration: 0 } });
+    const { unmount } = await renderComponent(SNavMenu, { props: { items, dir: 'rtl', delayDuration: 0 } });
     const oneTrigger = page.getByRole('link', { name: 'One' });
 
     await userEvent.hover(oneTrigger);
@@ -194,7 +194,7 @@ describe('SNavMenu (e2e)', () => {
       }
     ];
 
-    const { unmount } = renderComponent(SNavMenu, { props: { items: nestedItems, delayDuration: 0 } });
+    const { unmount } = await renderComponent(SNavMenu, { props: { items: nestedItems, delayDuration: 0 } });
     const oneTrigger = page.getByRole('link', { name: 'One', exact: true });
     const oneATrigger = page.getByRole('button', { name: 'One A', exact: true });
     const oneA1 = page.getByText('One A 1', { exact: true });
@@ -234,7 +234,7 @@ describe('SNavMenu (e2e)', () => {
       }
     ];
 
-    const { unmount } = renderComponent(SNavMenu, { props: { items: nestedItems, delayDuration: 0 } });
+    const { unmount } = await renderComponent(SNavMenu, { props: { items: nestedItems, delayDuration: 0 } });
     const oneTrigger = page.getByRole('link', { name: 'One', exact: true });
     const oneATrigger = page.getByRole('button', { name: 'One A', exact: true });
     const oneA1 = page.getByText('One A 1', { exact: true });

@@ -23,7 +23,7 @@ const items = [
 
 describe('SCombobox (e2e)', () => {
   it('opens the listbox on trigger click and shows the items', async () => {
-    const { unmount } = renderComponent(SCombobox, {
+    const { unmount } = await renderComponent(SCombobox, {
       props: { items, placeholder: 'Pick fruit' }
     });
 
@@ -36,7 +36,7 @@ describe('SCombobox (e2e)', () => {
   });
 
   it('keeps the listbox open when interacting with an associated label', async () => {
-    const { unmount } = renderComponent({
+    const { unmount } = await renderComponent({
       name: 'ComboboxLabelWrapper',
       components: { SCombobox },
       data: () => ({ items }),

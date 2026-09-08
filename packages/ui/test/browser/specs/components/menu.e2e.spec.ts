@@ -39,7 +39,7 @@ function renderMenu(withTheme = false) {
 
 describe('SMenuOptions (e2e)', () => {
   it('opens the menu on trigger click and renders items in the real portal', async () => {
-    const { unmount } = renderMenu();
+    const { unmount } = await renderMenu();
 
     await userEvent.click(page.getByRole('button', { name: 'Open menu' }));
 
@@ -53,7 +53,7 @@ describe('SMenuOptions (e2e)', () => {
   });
 
   it('opens the menu with keyboard, moves focus with Arrow keys and opens a submenu', async () => {
-    const { unmount } = renderMenu();
+    const { unmount } = await renderMenu();
 
     // The trigger is a plain button: Tab lands on it, Enter opens the menu.
     await userEvent.tab();
@@ -81,7 +81,7 @@ describe('SMenuOptions (e2e)', () => {
   });
 
   it('traps Tab inside the open menu (modal dropdown keeps focus contained)', async () => {
-    const { unmount } = renderMenu();
+    const { unmount } = await renderMenu();
 
     await userEvent.click(page.getByRole('button', { name: 'Open menu' }));
     await expect.element(page.getByRole('menu')).toBeVisible();
@@ -99,7 +99,7 @@ describe('SMenuOptions (e2e)', () => {
   });
 
   it('closes the menu on Escape and restores focus to the trigger', async () => {
-    const { unmount } = renderMenu();
+    const { unmount } = await renderMenu();
 
     const trigger = page.getByRole('button', { name: 'Open menu' });
     await userEvent.click(trigger);
@@ -114,7 +114,7 @@ describe('SMenuOptions (e2e)', () => {
   });
 
   it('has no a11y violations when a submenu is open (with theme)', async () => {
-    const { unmount } = renderMenu(true);
+    const { unmount } = await renderMenu(true);
 
     await userEvent.click(page.getByRole('button', { name: 'Open menu' }));
     const shareItem = page.getByRole('menuitem', { name: 'Share' });

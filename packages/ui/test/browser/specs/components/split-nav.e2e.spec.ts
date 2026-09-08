@@ -35,7 +35,7 @@ const items = [
 describe('SSplitNav (e2e)', () => {
   describe('keyboard', () => {
     it('moves first-level focus with ArrowDown and opens a parent with Enter', async () => {
-      const { unmount } = renderComponent(SSplitNav, {
+      const { unmount } = await renderComponent(SSplitNav, {
         props: { items, mode: 'dual-vertical' }
       });
 
@@ -58,7 +58,7 @@ describe('SSplitNav (e2e)', () => {
     });
 
     it('opens a vertical first-level parent with ArrowRight without selecting it', async () => {
-      const { unmount } = renderComponent(SSplitNav, {
+      const { unmount } = await renderComponent(SSplitNav, {
         props: { items, mode: 'dual-vertical' }
       });
 
@@ -73,7 +73,7 @@ describe('SSplitNav (e2e)', () => {
     });
 
     it('returns focus to the owning rail item with ArrowLeft on the nested pane', async () => {
-      const { unmount } = renderComponent(SSplitNav, {
+      const { unmount } = await renderComponent(SSplitNav, {
         props: { items, mode: 'dual-vertical', modelValue: 'workspace' }
       });
 
@@ -97,7 +97,7 @@ describe('SSplitNav (e2e)', () => {
       sider.id = 'split-nav-e2e-sider';
       document.body.append(sider);
 
-      const { unmount } = renderComponent(SSplitNav, {
+      const { unmount } = await renderComponent(SSplitNav, {
         props: {
           items,
           mode: 'dual-vertical',
@@ -118,7 +118,7 @@ describe('SSplitNav (e2e)', () => {
 
   describe('accessibility', () => {
     it('has no axe violations including color-contrast', async () => {
-      const { unmount } = renderComponent(SSplitNav, {
+      const { unmount } = await renderComponent(SSplitNav, {
         props: { items, modelValue: 'workspace' },
         withTheme: true
       });

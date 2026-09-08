@@ -27,7 +27,7 @@ async function textareaHeight(locator: Locator) {
 
 describe('STextarea (e2e)', () => {
   it('auto-grows to fit its initial value and grows further as content is typed', async () => {
-    const { unmount } = renderTextarea({ autosize: true, placeholder: 'Type here' });
+    const { unmount } = await renderTextarea({ autosize: true, placeholder: 'Type here' });
 
     const textarea = page.getByPlaceholder('Type here');
     await expect.element(textarea).toBeVisible();
@@ -46,7 +46,7 @@ describe('STextarea (e2e)', () => {
   });
 
   it('caps the height at maxRows and turns the textarea scrollable', async () => {
-    const { unmount } = renderTextarea({
+    const { unmount } = await renderTextarea({
       autosize: { maxRows: 3 },
       placeholder: 'Type here'
     });
@@ -73,7 +73,7 @@ describe('STextarea (e2e)', () => {
   });
 
   it('updates the counter live while typing', async () => {
-    const { unmount } = renderTextarea({ showCounter: true, maxlength: 20 });
+    const { unmount } = await renderTextarea({ showCounter: true, maxlength: 20 });
 
     await userEvent.type(page.getByRole('textbox'), 'hello');
 
@@ -83,7 +83,7 @@ describe('STextarea (e2e)', () => {
   });
 
   it('clears the value through the clear trigger', async () => {
-    const { unmount } = renderTextarea({ clearable: true, defaultValue: 'hello' });
+    const { unmount } = await renderTextarea({ clearable: true, defaultValue: 'hello' });
 
     const textarea = page.getByRole('textbox');
     await expect.element(textarea).toHaveValue('hello');
@@ -107,7 +107,7 @@ describe('STextarea (e2e)', () => {
       }
     });
 
-    const { unmount } = renderComponent(Wrapper, { withTheme: true });
+    const { unmount } = await renderComponent(Wrapper, { withTheme: true });
 
     // `region` is a page-level best-practice rule: the bare test page has no
     // landmark elements, so it flags every component scanned from `body`.
