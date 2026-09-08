@@ -1,14 +1,18 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import {
   getStoredThemeConfig,
+  getStoredThemeCss,
   getStoredThemePresets,
   parseThemeConfig,
   parseThemePresets,
   removeStoredThemeConfig,
+  removeStoredThemeCss,
   removeStoredThemePreset,
   setStoredThemeConfig,
+  setStoredThemeCss,
   setStoredThemePreset,
   stringifyThemeConfig,
+  THEME_CSS_STORAGE_KEY,
   THEME_PRESETS_STORAGE_KEY,
   THEME_STORAGE_KEY
 } from '../src/storage';
@@ -247,6 +251,50 @@ describe('getStoredThemePresets / setStoredThemePreset / removeStoredThemePreset
       expect(getStoredThemePresets()).toBeNull();
       expect(setStoredThemePreset(samplePreset)).toBe(false);
       expect(removeStoredThemePreset('brand')).toBe(false);
+    } finally {
+      Object.defineProperty(window, 'localStorage', { value: original, configurable: true });
+    }
+  });
+});
+
+describe('getStoredThemeCss / setStoredThemeCss / removeStoredThemeCss', () => {
+  const sampleCss = ':root {\n  --primary: red;\n}';
+
+  it('persists and reads back the CSS snapshot under the default key', () => {
+    setStoredThemeCss(sampleCss);
+
+    expect(getStoredThemeCss()).toBe(sampleCss);
+    expect(window.localStorage.getItem(THEME_CSS_STORAGE_KEY)).toBe(sampleCss);
+  });
+
+  it('supports a custom storage key', () => {
+    setStoredThemeCss(sampleCss, 'custom-css-key');
+    expect(getStoredThemeCss('custom-css-key')).toBe(sampleCss);
+
+    removeStoredThemeCss('custom-css-key');
+    expect(getStoredThemeCss('custom-css-key')).toBeNull();
+  });
+
+  it('returns null when nothing is stored', () => {
+    expect(getStoredThemeCss()).toBeNull();
+  });
+
+  it('ignores an empty snapshot so a valid one is not cleared', () => {
+    setStoredThemeCss(sampleCss);
+    setStoredThemeCss('');
+
+    expect(getStoredThemeCss()).toBe(sampleCss);
+  });
+
+  it('is SSR-safe when localStorage is unavailable', () => {
+    const original = window.localStorage;
+
+    Object.defineProperty(window, 'localStorage', { value: undefined, configurable: true });
+
+    try {
+      expect(getStoredThemeCss()).toBeNull();
+      expect(() => setStoredThemeCss(sampleCss)).not.toThrow();
+      expect(() => removeStoredThemeCss()).not.toThrow();
     } finally {
       Object.defineProperty(window, 'localStorage', { value: original, configurable: true });
     }

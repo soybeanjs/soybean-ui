@@ -1,11 +1,12 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { createThemeInitScript, isServerRuntime } from '../src/ssr';
-import { THEME_STORAGE_KEY } from '../src/storage';
+import { createThemeInitScript, isServerRuntime, THEME_INIT_STYLE_ID } from '../src/ssr';
+import { THEME_CSS_STORAGE_KEY, THEME_STORAGE_KEY } from '../src/storage';
 
 afterEach(() => {
   window.localStorage.clear();
   document.documentElement.removeAttribute('data-theme');
   document.documentElement.classList.remove('dark');
+  document.getElementById(THEME_INIT_STYLE_ID)?.remove();
 });
 
 describe('isServerRuntime', () => {
@@ -116,5 +117,51 @@ describe('createThemeInitScript', () => {
 
     expect(document.documentElement.getAttribute('data-theme')).toBeNull();
     expect(document.documentElement.classList.contains('dark')).toBe(false);
+  });
+
+  it('does not inject the persisted CSS snapshot by default', () => {
+    const script = createThemeInitScript();
+
+    expect(script).not.toContain(THEME_INIT_STYLE_ID);
+    expect(script).not.toContain(THEME_CSS_STORAGE_KEY);
+  });
+
+  it('injects the persisted CSS snapshot with !important when injectCss is enabled', () => {
+    window.localStorage.setItem(THEME_CSS_STORAGE_KEY, ':root {\n  --primary: red;\n}');
+
+    const script = createThemeInitScript({ injectCss: true });
+    // eslint-disable-next-line @typescript-eslint/no-implied-eval
+    const run = new Function(script);
+
+    run();
+
+    const style = document.getElementById(THEME_INIT_STYLE_ID) as HTMLStyleElement | null;
+
+    expect(style).toBeTruthy();
+    expect(style?.textContent).toContain('--primary: red !important;');
+  });
+
+  it('injects nothing when injectCss is enabled but no snapshot is stored', () => {
+    const script = createThemeInitScript({ injectCss: true });
+    // eslint-disable-next-line @typescript-eslint/no-implied-eval
+    const run = new Function(script);
+
+    run();
+
+    expect(document.getElementById(THEME_INIT_STYLE_ID)).toBeNull();
+  });
+
+  it('still applies data-theme and the dark class when a CSS snapshot is injected', () => {
+    window.localStorage.setItem(THEME_CSS_STORAGE_KEY, ':root {\n  --primary: red;\n}');
+    window.localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify({ base: 'slate', primary: 'violet', mode: 'dark' }));
+
+    const script = createThemeInitScript({ injectCss: true });
+    // eslint-disable-next-line @typescript-eslint/no-implied-eval
+    const run = new Function(script);
+
+    run();
+
+    expect(document.documentElement.getAttribute('data-theme')).toBe('slate-violet');
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
   });
 });

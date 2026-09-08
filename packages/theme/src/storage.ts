@@ -333,6 +333,44 @@ export function removeStoredThemeConfig(key: string = THEME_STORAGE_KEY): void {
 }
 
 /**
+ * the default localStorage key for the generated theme CSS snapshot.
+ *
+ * The full CSS string is persisted alongside the config so the inline init
+ * script (`createThemeInitScript`) can apply the persisted theme before first
+ * paint without re-running the engine in the browser.
+ */
+export const THEME_CSS_STORAGE_KEY = '__SOYBEAN_THEME_CSS';
+
+/**
+ * read the persisted theme CSS snapshot from localStorage
+ * (SSR-safe, returns `null` on the server)
+ */
+export function getStoredThemeCss(key: string = THEME_CSS_STORAGE_KEY): string | null {
+  return getStorage()?.getItem(key) || null;
+}
+
+/**
+ * persist the generated theme CSS snapshot into localStorage
+ * (SSR-safe, no-op on the server). An empty value is ignored so a failed
+ * derivation never clears a valid snapshot.
+ */
+export function setStoredThemeCss(css: string, key: string = THEME_CSS_STORAGE_KEY): void {
+  if (!css) {
+    return;
+  }
+
+  getStorage()?.setItem(key, css);
+}
+
+/**
+ * remove the persisted theme CSS snapshot from localStorage
+ * (SSR-safe, no-op on the server)
+ */
+export function removeStoredThemeCss(key: string = THEME_CSS_STORAGE_KEY): void {
+  getStorage()?.removeItem(key);
+}
+
+/**
  * the default localStorage key for the persisted custom theme presets table
  */
 export const THEME_PRESETS_STORAGE_KEY = '__SOYBEAN_THEME_PRESETS';

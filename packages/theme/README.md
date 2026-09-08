@@ -124,6 +124,8 @@ createTheme({
 | `THEME_STORAGE_KEY`                                                         | 默认主题 localStorage 键（`__SOYBEAN_THEME`） |
 | `stringifyThemeConfig` / `parseThemeConfig`                                 | 主题配置序列化 / 反序列化（带校验）           |
 | `getStoredThemeConfig` / `setStoredThemeConfig` / `removeStoredThemeConfig` | 主题配置读写                                  |
+| `THEME_CSS_STORAGE_KEY`                                                     | 主题 CSS 快照键（`__SOYBEAN_THEME_CSS`）      |
+| `getStoredThemeCss` / `setStoredThemeCss` / `removeStoredThemeCss`          | 主题 CSS 快照读写（供首帧内联脚本使用）       |
 | `THEME_PRESETS_STORAGE_KEY`                                                 | 自定义 preset 表 localStorage 键              |
 | `getStoredThemePresets`                                                     | 读取 preset 表                                |
 | `setStoredThemePreset` / `removeStoredThemePreset`                          | 增删单个 preset                               |
@@ -136,6 +138,7 @@ SSR/SSG 兼容工具。
 | ----------------------- | -------------------------------------------- |
 | `isServerRuntime`       | 运行时检测服务端（`window`/`document` 缺失） |
 | `createThemeInitScript` | 生成首帧前内联脚本，避免主题闪烁（FOUC）     |
+| `THEME_INIT_STYLE_ID`   | 首帧注入的 `<style>` 元素 id                 |
 
 ## SSR 指南
 
@@ -148,6 +151,12 @@ SSR/SSG 兼容工具。
   // 由 createThemeInitScript() 生成，放在 <head> 最前
   // 读取 localStorage 中持久化的主题，把 .dark 类与 data-theme 应用到 <html>
 </script>
+```
+
+内联脚本只能直接应用 `data-theme` 与暗色 class；颜色 / 圆角 / 尺寸等**派生 token** 无法在脚本里重算。需要连派生 token 也首帧生效时，开启 `injectCss`：应用会把 `createTheme()` 生成的 CSS 快照写入 localStorage（`SConfigProvider` 的 `persistTheme` 负责），脚本读取后以 `!important` 注入 `<style id="__SOYBEAN_THEME_INIT">`，压过 SSR 渲染的默认主题；客户端应用响应式主题样式后由 `SConfigProvider` 移除该样式，运行时切换不受影响。
+
+```ts
+createThemeInitScript({ injectCss: true });
 ```
 
 ### 2. 推荐：直接交给 `SConfigProvider`
