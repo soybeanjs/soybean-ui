@@ -28,5 +28,8 @@ export default defineApp({
         progress.done();
       });
     }
+    // scrollBehavior 使用 ubean 默认:hash 目标元素存在时平滑滚动,否则跳过。
+    // 标题 id 由 DocMd 客户端生成,首次导航时可能尚不存在,默认守卫避免
+    // VUE_ROUTER_R0042(此前在 setup 中直接变异 router.options 覆盖)。
   }
 });
