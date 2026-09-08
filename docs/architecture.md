@@ -33,22 +33,21 @@ The pnpm workspace contains the private root project plus fourteen child
 workspaces: nine publishable packages, two private packages, and three private
 applications.
 
-| Area                 | Workspace                  | Purpose                                                                              |
-| -------------------- | -------------------------- | ------------------------------------------------------------------------------------ |
-| Component logic      | `@soybeanjs/headless`      | State, behavior, a11y, focus, keyboard interaction, locale, and unstyled composition |
-| Styled components    | `@soybeanjs/ui`            | `S`-prefixed wrappers, UnoCSS recipes, theme-facing props, Nuxt module, and resolver |
-| Theme engine         | `@soybeanjs/theme`         | Theme option normalization, CSS-variable generation, dark derivation, SSR/storage    |
-| UnoCSS integration   | `@soybeanjs/ui-uno`        | UnoCSS preset, preflights, animations, fonts, and generated theme CSS                |
-| AI conversation UI   | `@soybeanjs/ui-x`          | AI conversation components (`Sx` prefix); peripheral single-package                  |
-| Admin shell          | `@soybeanjs/admin`         | Admin shell components (`S` + `App*` prefix); peripheral single-package              |
-| Charts               | `@soybeanjs/chart`         | Chart components (`S` + `Chart*` prefix); peripheral single-package                  |
-| Source distribution  | `sbean`                    | CLI, registry, schemas, templates, and MCP tools for copy-source delivery            |
-| Repo service CLI     | `@soybeanjs/scripts`       | PRIVATE; `sui` CLI for metadata, API, changelog, locale, and skill generators        |
-| Shared utilities     | `@soybeanjs/shared`        | PRIVATE; shared utility helpers, not published                                       |
-| Agent distribution   | `@soybeanjs/ui-skills`     | Generated, publishable SoybeanUI and Headless agent skills                           |
-| Documentation        | `@soybeanjs/ui-docs`       | Vite SSG documentation, API reference, changelog, and embedded demos                 |
-| Component laboratory | `@soybeanjs/ui-playground` | Interactive examples and visual/manual component validation                          |
-| Integration fixture  | `@soybeanjs/ui-nuxt`       | Thin Nuxt/UnoCSS shell over the shared playground                                    |
+| Area                | Workspace              | Purpose                                                                              |
+| ------------------- | ---------------------- | ------------------------------------------------------------------------------------ |
+| Component logic     | `@soybeanjs/headless`  | State, behavior, a11y, focus, keyboard interaction, locale, and unstyled composition |
+| Styled components   | `@soybeanjs/ui`        | `S`-prefixed wrappers, UnoCSS recipes, theme-facing props, Nuxt module, and resolver |
+| Theme engine        | `@soybeanjs/theme`     | Theme option normalization, CSS-variable generation, dark derivation, SSR/storage    |
+| UnoCSS integration  | `@soybeanjs/ui-uno`    | UnoCSS preset, preflights, animations, fonts, and generated theme CSS                |
+| AI conversation UI  | `@soybeanjs/ui-x`      | AI conversation components (`Sx` prefix); peripheral single-package                  |
+| Admin shell         | `@soybeanjs/admin`     | Admin shell components (`S` + `App*` prefix); peripheral single-package              |
+| Charts              | `@soybeanjs/chart`     | Chart components (`S` + `Chart*` prefix); peripheral single-package                  |
+| Source distribution | `sbean`                | CLI, registry, schemas, templates, and MCP tools for copy-source delivery            |
+| Repo service CLI    | `@soybeanjs/scripts`   | PRIVATE; `sui` CLI for metadata, API, changelog, locale, and skill generators        |
+| Shared utilities    | `@soybeanjs/shared`    | PRIVATE; shared utility helpers, not published                                       |
+| Agent distribution  | `@soybeanjs/ui-skills` | Generated, publishable SoybeanUI and Headless agent skills                           |
+| Documentation       | `@soybeanjs/ui-docs`   | ubean SSG documentation, API reference, changelog, and interactive demos             |
+| Integration fixture | `@soybeanjs/ui-nuxt`   | Self-contained minimal Nuxt/UnoCSS integration fixture                               |
 
 Current generated component inventory:
 
@@ -68,9 +67,8 @@ soybean-ui/
 ├── .github/workflows/       # CI and tag-based npm release
 ├── .vite-hooks/             # Vite Plus git hooks
 ├── apps/
-│   ├── docs/                # Static documentation application
-│   ├── nuxt/                # Nuxt integration fixture
-│   └── playground/          # Demo application and component examples
+│   ├── docs/                # ubean documentation site + component examples
+│   └── nuxt/                # Nuxt integration fixture
 ├── docs/
 │   ├── architecture.md      # This workspace architecture reference
 │   ├── optimize.md          # Prioritized architecture/quality assessment
@@ -111,7 +109,6 @@ flowchart LR
   Admin["@soybeanjs/admin"]
   Chart["@soybeanjs/chart"]
   Docs["apps/docs"]
-  Playground["apps/playground"]
   Nuxt["apps/nuxt"]
 
   Consumer --> UI
@@ -119,16 +116,13 @@ flowchart LR
   UI --> Headless
   UI --> Theme
   Uno --> Theme
-  Playground --> UI
-  Playground --> Headless
-  Playground --> Theme
-  Playground --> Uno
-  Playground --> UiX
-  Playground --> Admin
-  Playground --> Chart
   Docs --> UI
   Docs --> Headless
+  Docs --> Theme
+  Docs --> Uno
   Docs --> UiX
+  Docs --> Admin
+  Docs --> Chart
   Docs --> Sbean
   Nuxt --> UI
   UiX --> UI
@@ -140,10 +134,6 @@ flowchart LR
   Chart --> UI
   Chart --> Headless
   Chart --> Theme
-
-  Docs -. source import .-> Playground
-  Playground -. source and locale imports .-> Docs
-  Nuxt -. source import .-> Playground
 ```
 
 ### 4.1 Hard package invariants
@@ -162,19 +152,14 @@ flowchart LR
 The application graph contains edges that are not represented by workspace
 manifests:
 
-- Docs imports playground theme utilities, the theme configurator, and all demo
-  SFCs through `@playground/*` and `import.meta.glob`.
-- Playground imports `getOrderedPlaygroundExamples` through
-  `@docs/constants/globs` and imports docs locale JSON directly.
-- Nuxt imports the playground home page and theme context directly; its
-  `@docs` alias is consumed transitively by that page.
+- Docs eagerly discovers all demo SFCs under `apps/docs/src/examples` through
+  `import.meta.glob` in `apps/docs/src/constants/globs.ts`; examples and docs
+  pages are owned by the same app.
 - Root generation scripts import package/app implementation files directly,
   while sbean scans `packages/ui/src` as its registry source.
 
-This creates a bidirectional source-level dependency between docs and
-playground, with Nuxt layered on top of playground source. It works in the full
-monorepo, but filtered builds and ownership are less obvious because pnpm
-cannot model these edges. The remediation is tracked in `docs/optimize.md`.
+Nuxt is a self-contained fixture and no longer imports docs or playground
+source. The remaining source-only edges are limited to root tooling.
 
 ## 5. Component architecture
 
@@ -418,8 +403,7 @@ The highest-value improvements are:
 1. make every direct workspace dependency explicit and reduce reliance on
    global hoisting;
 2. add build/package/generated-drift checks to pull-request CI;
-3. remove the docs/playground source cycle and lazy-load or pre-generate demo
-   catalogs;
+3. lazy-load or pre-generate demo catalogs to relieve the eager example glob;
 4. move runtime API-source parsing into the generation pipeline;
 5. add direct contract tests around the theme and style-context seams.
 

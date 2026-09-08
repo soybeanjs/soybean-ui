@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/radio-group
 Markdown URL: https://ui.soybeanjs.cn/components/radio-group.md
 Category: Forms
-Description: A set of checkable radio buttons where no more than one button can be checked at a time. It ships as a data-driven group and a card variant with icon/description content, both built on roving-focus keyboard navigation. Use it for single-choice from a small, mutually exclusive set; when multiple values are allowed, use `SCheckboxGroup`; when the option set is too large to scan at once, prefer `SSelect`.
+Description: A set of checkable radio buttons where no more than one button can be checked at a time. It ships as a data-driven group and a card variant with icon/description content, both built on roving-focus keyboard navigation. Use it for single-choice from a small, mutually exclusive set; when multiple values are allowed, use SCheckboxGroup; when the option set is too large to scan at once, prefer SSelect.
 
 ## Overview
 

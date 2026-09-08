@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/password
 Markdown URL: https://ui.soybeanjs.cn/components/password.md
 Category: Forms
-Description: A password input field with a toggle button to show/hide the entered value. Use it for login forms, sign-up forms, or any sensitive credential entry. It composes the input family base with a visibility switch, and supports clearable mode. For non-sensitive text use `SInput`.
+Description: A password input field with a toggle button to show/hide the entered value. Use it for login forms, sign-up forms, or any sensitive credential entry. It composes the input family base with a visibility switch, and supports clearable mode. For non-sensitive text use SInput.
 
 ## Overview
 

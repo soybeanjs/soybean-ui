@@ -1,17 +1,13 @@
 import path from 'node:path';
 import process from 'node:process';
+import type { DocsTarget } from '../shared/docs-targets';
 import {
   parseTranslateCliOptions,
   printTranslateUsage,
   resolveTargetLocales,
-  translateJsonLocaleFile,
-  resolveAvailableLocalesFromI18nModule
+  translateJsonLocaleFile
 } from '../shared/translate';
 import type { TranslateCliOptions } from '../shared/translate';
-
-const rootDir = process.cwd();
-const localeDir = path.join(rootDir, 'apps/docs/src/generated/changelog-locales');
-const i18nModulePath = path.join(rootDir, 'apps/docs/src/modules/i18n.ts');
 
 function printUsage() {
   printTranslateUsage(
@@ -20,7 +16,8 @@ function printUsage() {
   );
 }
 
-async function translateLocale(locale: string, options: TranslateCliOptions): Promise<void> {
+async function translateLocale(target: DocsTarget, locale: string, options: TranslateCliOptions): Promise<void> {
+  const localeDir = path.join(target.generatedDir, 'changelog-locales');
   const sourcePath = path.join(localeDir, `${options.sourceLocale}.json`);
   const targetPath = path.join(localeDir, `${locale}.json`);
   await translateJsonLocaleFile({
@@ -37,10 +34,12 @@ async function translateLocale(locale: string, options: TranslateCliOptions): Pr
     retryCountEnvName: 'DEEPL_RETRY_COUNT',
     retryDelayEnvName: 'DEEPL_RETRY_DELAY_MS',
     onPendingResolved: context => {
-      console.log(`[${context.locale}] pending changelog translations: ${context.pendingCount}`);
+      console.log(`[${context.locale}] (${target.key}) pending changelog translations: ${context.pendingCount}`);
     },
     onBatchStart: context => {
-      console.log(`[${context.locale}] translated batch ${context.batchIndex + 1}/${context.batchCount}`);
+      console.log(
+        `[${context.locale}] (${target.key}) translated batch ${context.batchIndex + 1}/${context.batchCount}`
+      );
     }
   });
 }
@@ -54,7 +53,10 @@ function createTranslationContext(locale: string): string {
   ].join(' ');
 }
 
-export async function translateChangelogLocales(argv: string[] = process.argv.slice(2)): Promise<void> {
+export async function translateChangelogLocales(
+  target: DocsTarget,
+  argv: string[] = process.argv.slice(2)
+): Promise<void> {
   const options = parseTranslateCliOptions(argv);
 
   if (options.help) {
@@ -66,20 +68,18 @@ export async function translateChangelogLocales(argv: string[] = process.argv.sl
     throw new Error('--batch-size must be greater than 0.');
   }
 
-  const availableLocales = await resolveAvailableLocalesFromI18nModule(rootDir, i18nModulePath);
-
-  if (!availableLocales.includes(options.sourceLocale)) {
+  if (!target.locales.includes(options.sourceLocale)) {
     throw new Error(`Unknown source locale: ${options.sourceLocale}`);
   }
 
   const targetLocales = resolveTargetLocales({
-    availableLocales,
+    availableLocales: target.locales,
     sourceLocale: options.sourceLocale,
     requestedLocale: options.locale,
     unsupportedLocaleMessage: locale => `Unknown target locale: ${locale}`
   });
 
   for (const locale of targetLocales) {
-    await translateLocale(locale, options);
+    await translateLocale(target, locale, options);
   }
 }

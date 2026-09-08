@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { computed, onMounted, useTemplateRef } from 'vue';
 import { codeToHtml } from 'shiki';
-import { encodeBase64Utf8 } from '../shared/encode';
+import { encodeBase64Utf8 } from '~/shared/encode';
 
 interface Props {
   code: string;

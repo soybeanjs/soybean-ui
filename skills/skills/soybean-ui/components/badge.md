@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/badge
 Markdown URL: https://ui.soybeanjs.cn/components/badge.md
 Category: Data Display
-Description: A small status/notification marker that overlays a trigger (button, avatar, nav item) to indicate a count, a state, or new content. `SBadge` combines a `BadgeRoot`/`BadgeContent` family of headless primitives (zero styles) with the `badgeVariants` style recipe (2 slots: root/content; 8 colors × 6 sizes × 4 positions).
+Description: A small status/notification marker that overlays a trigger (button, avatar, nav item) to indicate a count, a state, or new content. SBadge combines a BadgeRoot/BadgeContent family of headless primitives (zero styles) with the badgeVariants style recipe (2 slots: root/content; 8 colors × 6 sizes × 4 positions).
 
 ## Overview
 

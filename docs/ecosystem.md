@@ -280,7 +280,7 @@ apps/docs/src/generated/
 全部 per-package 子目录，**core 也迁移到 `examples/ui/`**：
 
 ```
-apps/playground/src/examples/
+apps/docs/src/examples/
   ui/                  # 原 examples/<component>/ 全部迁入此目录
     accordion/  button/  ...
   ui-x/
@@ -294,9 +294,9 @@ apps/playground/src/examples/
 - 迁移影响：docs 中 `<PlaygroundGallery>` 引用路径、playground 内部导航、`AGENTS.md` 表格中的 Demo source 路径需同步更新。
 - core 迁移 churn 较大（几十个组件），但在 §11 合并主干时一次性完成，换取长期对称。
 
-### 8.2 playground 包切换器（Q8b）
+### 8.2 docs 包切换器（Q8b）
 
-镜像 docs §7.2，playground 顶部加包切换器，切换时切到 `examples/<pkg>/` 入口与对应导航。
+docs 顶部包切换器切换时切到 `examples/<pkg>/` 入口与对应导航（playground 已并入 docs，不再有独立切换器）。
 
 ### 8.3 playground 依赖（Q8c）
 
@@ -336,7 +336,7 @@ apps/playground/src/examples/
    - header 包切换器追加入口
 5. **sui 生成**：`scripts/cli.ts` 的 `api`/`changelog` 按 §7.3 遍历新包 exports → `generated/api/<pkg>/*.json` 等。
 6. **sbean registry**：`packages/sbean/registry.json` 顶层 `packages` 追加 `<pkg>` 元数据；items 追加命名空间条目 `<pkg>/<component>` + `package` 字段。
-7. **playground**：`apps/playground/src/examples/<pkg>/` + `apps/playground/package.json` 追加 dep + 包切换器入口。
+7. **docs 示例**：`apps/docs/src/examples/<pkg>/` + `apps/docs/package.json` 追加 dep + 包切换器入口。
 8. **CONTEXT.md**：若引入新领域词汇，追加 glossary 条目。
 9. **`AGENTS.md` + `docs/architecture.md`**：把新包补进 WHERE TO LOOK 表与依赖图。
 10. **跨外围依赖**（仅当命中 §5 白名单）：在白名单追加有向边，并声明为 peerDependencies。
@@ -360,7 +360,7 @@ apps/playground/src/examples/
 
 ### 11.3 core examples 迁移（§8.1 执行步骤）
 
-1. `git mv apps/playground/src/examples/<component> apps/playground/src/examples/ui/<component>`（批量，几十个组件）。
+1. `git mv apps/docs/src/examples/<component> apps/docs/src/examples/ui/<component>`（批量，几十个组件）。
 2. 更新 docs `<PlaygroundGallery>` 引用、playground 导航、`AGENTS.md` Demo source 路径、`typed-router.d.ts`（自动重生成）。
 3. ui-x 当前扁平混入的 examples（`bubble`/`attachments`/`actions`…）迁入 `examples/ui-x/`。
 

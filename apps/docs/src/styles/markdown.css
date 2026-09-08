@@ -77,8 +77,11 @@
     --uno: 'font-medium text-primary decoration-primary/40 underline underline-offset-4 transition-colors duration-200 hover:text-primary/80';
   }
 
+  /* Fence panels are the shiki <pre> itself (see wrapFenceWithCopyButton in
+     ubean.config.ts): the badge/copy button pin to the pre while horizontal
+     scrolling happens on the inner <code>. */
   .md-code-block {
-    --uno: 'relative my-8 border border-border rounded-xl overflow-hidden';
+    --uno: 'relative my-8 max-w-full overflow-hidden border border-border rounded-xl p-0';
     background: color-mix(in srgb, var(--docs-surface-strong) 96%, transparent);
     box-shadow: var(--docs-shadow), var(--docs-panel-inset);
     -webkit-backdrop-filter: saturate(170%) blur(var(--docs-panel-blur));
@@ -98,8 +101,8 @@
     --uno: 'absolute left-3 top-3 z-1 border border-border bg-accent rounded-full px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.2em] text-muted-foreground';
   }
 
-  .md-code-block > pre {
-    --uno: 'my-0 pt-12';
+  .md-code-block > code {
+    --uno: 'block max-w-full overflow-x-auto px-5 pt-12 pb-5';
   }
 
   blockquote {

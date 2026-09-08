@@ -1,8 +1,8 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
-import { kebabCase } from '#shared/string';
 import { components as headlessComponents } from '../../../headless/src/constants/components';
+import { kebabCase } from '../../../headless/src/shared/string';
 import { writeGeneratedJsonDirectory } from '../shared/json';
 import { releaseIntroducedComponents, releaseChangelogNotes } from './changelog-notes';
 import type { ReleaseChangelogNoteSource } from './changelog-notes';
@@ -98,7 +98,6 @@ interface GeneratedComponentChangelogIndex {
 
 const rootDir = process.cwd();
 const changelogPath = path.join(rootDir, 'CHANGELOG.md');
-const outputDir = path.join(rootDir, 'apps/docs/src/generated/changelog');
 const componentNames = Object.keys(headlessComponents)
   .map(component => kebabCase(component))
   .sort((left, right) => left.localeCompare(right));
@@ -141,7 +140,11 @@ const sharedScopeRelevanceScoreMap: Record<string, number> = {
   styles: -14
 };
 
-export async function generateChangelogData(): Promise<void> {
+/**
+ * Parse `CHANGELOG.md` and write per-component + release changelog JSON into
+ * `outputDir` (a docs target's `<generated>/changelog` directory).
+ */
+export async function generateChangelogData(outputDir: string): Promise<void> {
   const changelogContent = await readFile(changelogPath, 'utf8');
   const generatedAt = new Date().toISOString();
   const versionBlocks = parseChangelog(changelogContent);

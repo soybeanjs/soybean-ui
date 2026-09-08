@@ -1,4 +1,5 @@
 <script setup lang="ts">
+definePage({ layout: 'default' });
 // TODO(admin): scaffold placeholder — render installation markdown.
 const path = 'admin/installation';
 </script>

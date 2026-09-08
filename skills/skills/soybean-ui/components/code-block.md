@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/code-block
 Markdown URL: https://ui.soybeanjs.cn/ui-x/code-block.md
 Category: Content Rendering
-Description: `SxCodeBlock` is a styled code block for AI output that shows a language label, a copy button, and (optionally) shiki syntax highlighting. It is a self-contained single-export component in `@soybeanjs/ui-x`.
+Description: SxCodeBlock is a styled code block for AI output that shows a language label, a copy button, and (optionally) shiki syntax highlighting. It is a self-contained single-export component in @soybeanjs/ui-x.
 
 ## Overview
 

@@ -1,8 +1,12 @@
 <script setup lang="ts">
+import { computed, shallowRef, watch } from 'vue';
+import { useRouter } from 'vue-router';
 import { useMagicKeys } from '@vueuse/core';
+import { useI18n } from 'vue-i18n';
 import { kebabCase, pascalCase } from '@soybeanjs/headless/shared';
 import type { CommandOptionData, SelectEvent } from '@soybeanjs/ui';
 import { components } from '@/constants/components';
+import { useLocalePrefix } from '~/composables/use-locale-prefix';
 
 defineOptions({
   name: 'SearchDocument'
@@ -11,6 +15,7 @@ defineOptions({
 const router = useRouter();
 const { t } = useI18n();
 const keys = useMagicKeys();
+const { localizedTo } = useLocalePrefix();
 
 const search = shallowRef('');
 
@@ -82,7 +87,7 @@ function handleSelect(item: SelectEvent<string>) {
   if (!value) return;
 
   const path = `/${value.split('_').join('/')}`;
-  router.push(path);
+  router.push(localizedTo(path));
   searchOpen.value = false;
   search.value = '';
 }

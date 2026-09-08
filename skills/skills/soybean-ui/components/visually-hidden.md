@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/visually-hidden
 Markdown URL: https://ui.soybeanjs.cn/components/visually-hidden.md
 Category: Utilities
-Description: `VisuallyHidden` is a utility component that hides content from the screen but keeps it accessible to screen readers. It is essential for accessibility when you want to provide context to users relying on assistive technologies without affecting the visual design.
+Description: VisuallyHidden is a utility component that hides content from the screen but keeps it accessible to screen readers. It is essential for accessibility when you want to provide context to users relying on assistive technologies without affecting the visual design.
 
 ## Overview
 

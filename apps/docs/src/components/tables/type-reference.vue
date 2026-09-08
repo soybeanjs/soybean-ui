@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed, inject } from 'vue';
 import { SHoverCard } from '@soybeanjs/ui';
 import { getCommonTypePreview, getComponentTypePreview, getExternalTypeImportSignature } from './generated-api';
 import { normalizeTypeRenderContext, typeRenderContextKey } from './type-anchor';

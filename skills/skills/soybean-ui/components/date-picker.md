@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/date-picker
 Markdown URL: https://ui.soybeanjs.cn/components/date-picker.md
 Category: Forms
-Description: A date picker that pairs a keyboard-editable segmented date field with a calendar popup for visual selection. Type a date directly into the segments or click the calendar toggle to pick from a month grid. Use it whenever a user must choose a single date — booking, scheduling, filtering, or any form that needs a validated date range. For pure typing with no popup, prefer `SDateField`; for browsing a standalone calendar grid, use `SCalendar`.
+Description: A date picker that pairs a keyboard-editable segmented date field with a calendar popup for visual selection. Type a date directly into the segments or click the calendar toggle to pick from a month grid. Use it whenever a user must choose a single date — booking, scheduling, filtering, or any form that needs a validated date range. For pure typing with no popup, prefer SDateField; for browsing a standalone calendar grid, use SCalendar.
 
 ## Overview
 

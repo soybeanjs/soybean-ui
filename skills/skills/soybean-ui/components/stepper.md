@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/stepper
 Markdown URL: https://ui.soybeanjs.cn/components/stepper.md
 Category: Navigation
-Description: Displays progress through a multi-step workflow. `SStepper` combines a `StepperRoot`-family of headless primitives (zero styles) with the `stepperVariants` style recipe (8 slots: root/item/trigger/indicator/indicatorIcon/itemContent/separator/title/description) and 7 colors × 7 sizes. In **linear mode** (the default) steps must be completed in order — future steps are disabled and cannot be skipped; in non-linear mode any step can be activated freely. The current step is announced to screen readers through a localized `role="status"` live region, and the group exposes an `aria-label` that falls back to the `stepper.ariaLabel` locale message.
+Description: Displays progress through a multi-step workflow. SStepper combines a StepperRoot-family of headless primitives (zero styles) with the stepperVariants style recipe (8 slots: root/item/trigger/indicator/indicatorIcon/itemContent/separator/title/description) and 7 colors × 7 sizes. In linear mode (the default) steps must be completed in order — future steps are disabled and cannot be skipped; in non-linear mode any step can be activated freely. The current step is announced to screen readers through a localized role=\"status\" live region, and the group exposes an aria-label that falls back to the stepper.ariaLabel locale message.
 
 ## Overview
 

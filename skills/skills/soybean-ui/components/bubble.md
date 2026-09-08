@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/bubble
 Markdown URL: https://ui.soybeanjs.cn/ui-x/bubble.md
 Category: Core
-Description: `SxBubble` renders a single chat message bubble — the atomic message unit of an AI conversation UI. It displays one message (user, AI, system or divider) with configurable placement, visual variant, a loading state and an optional typewriter animation.
+Description: SxBubble renders a single chat message bubble — the atomic message unit of an AI conversation UI. It displays one message (user, AI, system or divider) with configurable placement, visual variant, a loading state and an optional typewriter animation.
 
 ## Overview
 

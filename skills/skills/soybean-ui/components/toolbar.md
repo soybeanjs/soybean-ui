@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/toolbar
 Markdown URL: https://ui.soybeanjs.cn/components/toolbar.md
 Category: Layout
-Description: A compact container that groups related actions, links, and toggle controls into a single roving-focus toolbar. `SToolbar` combines the headless toolbar primitives (`ToolbarRoot`/`ToolbarButton`/`ToolbarLink`/`ToolbarSeparator`/`ToolbarToggleGroup`/`ToolbarToggleItem`) with the `toolbarVariants` style recipe (7 slots, 6 sizes × 2 orientations).
+Description: A compact container that groups related actions, links, and toggle controls into a single roving-focus toolbar. SToolbar combines the headless toolbar primitives (ToolbarRoot/ToolbarButton/ToolbarLink/ToolbarSeparator/ToolbarToggleGroup/ToolbarToggleItem) with the toolbarVariants style recipe (7 slots, 6 sizes × 2 orientations).
 
 ## Overview
 

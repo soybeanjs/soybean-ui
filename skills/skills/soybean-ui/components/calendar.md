@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/calendar
 Markdown URL: https://ui.soybeanjs.cn/components/calendar.md
 Category: Forms
-Description: A monthly date grid that supports single or multiple selection, disabled and unavailable dates, min/max bounds, custom cell rendering, and month/year Select controls in the compact header. Use it for booking, scheduling, or any date-picking surface that needs keyboard-navigable grids instead of a plain text input. Pair it with `SDatePicker` when you need a popup trigger, or `SRangeCalendar`-style composites for range selection.
+Description: A monthly date grid that supports single or multiple selection, disabled and unavailable dates, min/max bounds, custom cell rendering, and month/year Select controls in the compact header. Use it for booking, scheduling, or any date-picking surface that needs keyboard-navigable grids instead of a plain text input. Pair it with SDatePicker when you need a popup trigger, or SRangeCalendar-style composites for range selection.
 
 ## Overview
 

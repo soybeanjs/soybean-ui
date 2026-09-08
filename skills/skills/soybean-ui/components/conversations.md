@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/conversations
 Markdown URL: https://ui.soybeanjs.cn/ui-x/conversations.md
 Category: Conversation
-Description: `SxConversations` is the AI conversation sidebar list — a grouped, selectable list of conversation items with active state tracking. It groups items by their `group` field and renders group headers automatically.
+Description: SxConversations is the AI conversation sidebar list — a grouped, selectable list of conversation items with active state tracking. It groups items by their group field and renders group headers automatically.
 
 ## Overview
 

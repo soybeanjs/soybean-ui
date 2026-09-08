@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/table
 Markdown URL: https://ui.soybeanjs.cn/components/table.md
 Category: Data Display
-Description: A data table component for displaying row and column data. `STable` combines the headless `TableCompact` aggregation component (9 zero-style base primitives in the `TableRoot` family) with the `tableVariants` style recipe (29 slots, 7 sizes × 2 visual variants). Supports a **config-driven `columns` model** (grouped headers, `index`/`selection`/`expand` type columns), sorting, filtering, multi/single selection, expandable and tree rows, fixed columns/headers, drag-and-keyboard column resizing, virtualization, and empty states; `default`/`simple` variants plus `bordered`/`rounded`/`striped` toggles. All interaction text and `aria-label`s (sorting, filtering, selection, expansion, column resize) are localized via `useLocaleMessages`.
+Description: A data table component for displaying row and column data. STable combines the headless TableCompact aggregation component (9 zero-style base primitives in the TableRoot family) with the tableVariants style recipe (29 slots, 7 sizes × 2 visual variants). Supports a config-driven columns model (grouped headers, index/selection/expand type columns), sorting, filtering, multi/single selection, expandable and tree rows, fixed columns/headers, drag-and-keyboard column resizing, virtualization, and empty states; default/simple variants plus bordered/rounded/striped toggles. All interaction text and aria-labels (sorting, filtering, selection, expansion, column resize) are localized via useLocaleMessages.
 
 ## Overview
 

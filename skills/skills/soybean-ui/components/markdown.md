@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/markdown
 Markdown URL: https://ui.soybeanjs.cn/ui-x/markdown.md
 Category: Content Rendering
-Description: `SxMarkdown` is a streaming markdown renderer built for AI chat output. It is a thin styled wrapper around `markstream-vue`'s `MarkdownRender` (importing `markstream-vue/index.css`) that gives you incremental rendering of AI output as it arrives.
+Description: SxMarkdown is a streaming markdown renderer built for AI chat output. It is a thin styled wrapper around markstream-vue's MarkdownRender (importing markstream-vue/index.css) that gives you incremental rendering of AI output as it arrives.
 
 ## Overview
 

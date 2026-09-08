@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/suggestion
 Markdown URL: https://ui.soybeanjs.cn/ui-x/suggestion.md
 Category: Conversation
-Description: `SxSuggestion` is the AI follow-up chip row — a compact row of small suggestion chips shown after an assistant message. It lets users continue, regenerate or drill into the last answer with one tap.
+Description: SxSuggestion is the AI follow-up chip row — a compact row of small suggestion chips shown after an assistant message. It lets users continue, regenerate or drill into the last answer with one tap.
 
 ## Overview
 

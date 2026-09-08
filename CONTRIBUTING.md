@@ -28,12 +28,11 @@ follow our conventions, and submit a pull request.
 
 SoybeanUI is a Vue 3 component library built on a **headless / styled separation**:
 
-| Package               | Path                 | Responsibility                                             |
-| --------------------- | -------------------- | ---------------------------------------------------------- |
-| `@soybeanjs/headless` | `packages/headless/` | Logic, state, accessibility, composables. **Zero styles.** |
-| `@soybeanjs/ui`       | `packages/ui/`       | Styled wrappers (UnoCSS). Variants, theme, UI injection.   |
-| Playground            | `apps/playground/`   | Interactive demos (Vite).                                  |
-| Docs                  | `apps/docs/`         | Bilingual docs (en / zh-CN). Vite + vite-ssg.              |
+| Package               | Path                 | Responsibility                                                    |
+| --------------------- | -------------------- | ----------------------------------------------------------------- |
+| `@soybeanjs/headless` | `packages/headless/` | Logic, state, accessibility, composables. **Zero styles.**        |
+| `@soybeanjs/ui`       | `packages/ui/`       | Styled wrappers (UnoCSS). Variants, theme, UI injection.          |
+| Docs                  | `apps/docs/`         | Bilingual docs (en / zh). ubean SSG site; owns interactive demos. |
 
 Data flows one way: `headless` → `ui` (never reverse). The UI layer injects styles via
 `provideXUi(ui)`; headless reads them through `useUiContext`.
@@ -61,17 +60,17 @@ pnpm install
 # Stub packages for instant source-to-dist linking
 pnpm stub
 
-# Start the playground (hot-reload for component dev)
+# Start the docs site (hot-reload for component dev)
 pnpm dev
 ```
 
-Open the playground URL shown in the terminal to preview your changes in real time.
+Open the docs URL shown in the terminal to preview your changes in real time.
 
 ### Common Commands
 
 | Command                         | Purpose                                                                   |
 | ------------------------------- | ------------------------------------------------------------------------- |
-| `pnpm dev`                      | Start playground dev server                                               |
+| `pnpm dev`                      | Start docs site dev server                                                |
 | `pnpm build`                    | Build libs (theme, ui-uno) → headless → ui → ui-x → admin → chart → sbean |
 | `pnpm lint`                     | vp lint --fix + eslint (Vue)                                              |
 | `pnpm fmt`                      | vp fmt (formatter)                                                        |
@@ -167,8 +166,7 @@ Normative component rules live in the project skill at
 | `layers.md` -> UI layer                      | `packages/ui/src/components/`       |
 | `layers.md` -> A11y and RTL                  | ARIA, keyboard, RTL                 |
 | `surfaces.md` -> Testing                     | `packages/ui/test/`                 |
-| `surfaces.md` -> Playground                  | `apps/playground/`                  |
-| `surfaces.md` -> Docs                        | `apps/docs/`                        |
+| `surfaces.md` -> Playground / Docs           | `apps/docs/`                        |
 | `process.md` -> Finish checklist             | Component completion checklist      |
 
 ### Key Rules
@@ -231,9 +229,9 @@ pnpm sui gen api --translate --locale zh-CN
 
 ### Phase 5 — Delivery Surfaces
 
-- **Playground demo:** `apps/playground/src/examples/<component>/`
-- **Docs (en):** `apps/docs/src/docs/en/ui/components/<component>.md`
-- **Docs (zh-CN):** `apps/docs/src/docs/zh-CN/ui/components/<component>.md`
+- **Playground demo:** `apps/docs/src/examples/<component>/`
+- **Docs (en):** `apps/docs/src/content/en/ui/components/<component>.md`
+- **Docs (zh):** `apps/docs/src/content/zh/ui/components/<component>.md`
 - **Menu:** update `apps/docs/src/constants/menus.ts`
 - **Tests:** `packages/ui/test/specs/components/<component>.spec.ts`
 
@@ -308,7 +306,7 @@ Full rules: `.agents/skills/soybean-ui-component-development/process.md`.
 - One PR = one logical change. Prefer small, focused PRs.
 - Link the related issue.
 - Run the formatter locally, then ensure CI passes (typecheck, lint, tests, and browser e2e).
-- If the PR adds a new component, include playground demos and bilingual docs.
+- If the PR adds a new component, include demo examples and bilingual docs.
 - Keep the PR description concise: what, why, and how to verify.
 
 ---
@@ -337,8 +335,7 @@ SoybeanUI 是一个基于 **headless / styled 分层架构** 的 Vue 3 组件库
 | --------------------- | -------------------- | -------------------------------------------- |
 | `@soybeanjs/headless` | `packages/headless/` | 逻辑、状态、无障碍、composable。**零样式。** |
 | `@soybeanjs/ui`       | `packages/ui/`       | 样式包装（UnoCSS）。变体、主题、UI 注入。    |
-| Playground            | `apps/playground/`   | 交互式示例（Vite）。                         |
-| Docs                  | `apps/docs/`         | 中英文档。Vite + vite-ssg。                  |
+| Docs                  | `apps/docs/`         | 中英文档（ubean SSG），同时承载交互式示例。  |
 
 数据流单向：`headless` → `ui`（不可反向）。UI 层通过 `provideXUi(ui)` 注入样式；
 headless 通过 `useUiContext` 读取。
@@ -366,17 +363,17 @@ pnpm install
 # 建立源码到构建产物的软链接
 pnpm stub
 
-# 启动 playground（组件开发热更新）
+# 启动文档站（组件开发热更新）
 pnpm dev
 ```
 
-打开终端输出的 playground 地址，即可实时预览改动。
+打开终端输出的文档站地址，即可实时预览改动。
 
 ### 常用命令
 
 | 命令                            | 用途                                                                     |
 | ------------------------------- | ------------------------------------------------------------------------ |
-| `pnpm dev`                      | 启动 playground 开发服务器                                               |
+| `pnpm dev`                      | 启动文档站开发服务器                                                     |
 | `pnpm build`                    | 构建 libs（theme、ui-uno）→ headless → ui → ui-x → admin → chart → sbean |
 | `pnpm lint`                     | vp lint --fix + eslint（Vue）                                            |
 | `pnpm fmt`                      | vp fmt（格式化）                                                         |
@@ -464,8 +461,7 @@ Codex 提供专门的 **agent 角色**（prompt 面），你可以将复杂子�
 | `layers.md` -> UI layer                     | `packages/ui/src/components/`       |
 | `layers.md` -> A11y and RTL                 | ARIA、键盘、RTL                     |
 | `surfaces.md` -> Testing                    | `packages/ui/test/`                 |
-| `surfaces.md` -> Playground                 | `apps/playground/`                  |
-| `surfaces.md` -> Docs                       | `apps/docs/`                        |
+| `surfaces.md` -> Playground / Docs          | `apps/docs/`                        |
 | `process.md` -> Finish checklist            | 组件完成清单                        |
 
 ### 核心规则
@@ -527,9 +523,9 @@ pnpm sui gen api --translate --locale zh-CN
 
 ### Phase 5 — 交付面
 
-- **Playground 示例：** `apps/playground/src/examples/<component>/`
-- **英文文档：** `apps/docs/src/docs/en/ui/components/<component>.md`
-- **中文文档：** `apps/docs/src/docs/zh-CN/ui/components/<component>.md`
+- **Playground 示例：** `apps/docs/src/examples/<component>/`
+- **英文文档：** `apps/docs/src/content/en/ui/components/<component>.md`
+- **中文文档：** `apps/docs/src/content/zh/ui/components/<component>.md`
 - **菜单：** 更新 `apps/docs/src/constants/menus.ts`
 - **测试：** `packages/ui/test/specs/components/<component>.spec.ts`
 
@@ -563,7 +559,7 @@ pnpm --filter @soybeanjs/ui exec vitest run test/specs/components/button.spec.ts
 
 ## 文档
 
-文档位于 `apps/docs/src/docs/<locale>/components/`。每个组件需要中英文文档，结构一致。
+文档位于 `apps/docs/src/content/<locale>/`。每个组件需要中英文文档，结构一致。
 
 API 参考数据自动生成。公开导出变化后：
 

@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/actions-copy
 Markdown URL: https://ui.soybeanjs.cn/ui-x/actions-copy.md
 Category: Actions
-Description: `SxActionsCopy` is a single-button copy action that copies a given text to the clipboard and shows a brief success state (✓/Copied) for 1.5 seconds.
+Description: SxActionsCopy is a single-button copy action that copies a given text to the clipboard and shows a brief success state (✓/Copied) for 1.5 seconds.
 
 ## Overview
 

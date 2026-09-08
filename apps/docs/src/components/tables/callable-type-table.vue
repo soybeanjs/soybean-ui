@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import type { GeneratedApiCallableType } from './generated-api';
 import { toTypeAnchorId, typeToVNode } from './type-anchor';
 import { useApiI18n } from './use-api-i18n';

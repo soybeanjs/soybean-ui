@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useTemplateRef, watch } from 'vue';
 import { codeToHtml } from 'shiki';
 
 interface Props {

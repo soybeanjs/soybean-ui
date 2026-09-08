@@ -1,6 +1,8 @@
 packages:
   - 'packages/**'
   - 'apps/**'
+  # ubean writes a runtime package.json into `dist/server`; keep build output out of the workspace.
+  - '!apps/**/dist/**'
   - 'skills'
 catalog:
   vite: npm:@voidzero-dev/vite-plus-core@0.3.0
@@ -11,16 +13,10 @@ catalogs:
     typescript: ^6.0.3
 overrides:
   vite: 'catalog:'
-  vue: ^3.5.41
-  vite-ssg>jsdom: 27.0.1
-  markdown-exit: 1.1.0-beta.2
-  brace-expansion: 5.0.8
 shamefullyHoist: true
 ignoreWorkspaceRootCheck: true
 linkWorkspacePackages: true
 allowBuilds:
-  '@parcel/watcher': false
   esbuild: false
   maplibre-gl: false
-  simple-git-hooks: false
 minimumReleaseAge: 0

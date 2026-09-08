@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/editable
 Markdown URL: https://ui.soybeanjs.cn/components/editable.md
 Category: Forms
-Description: An inline text editor that switches between preview and edit states. In preview mode the value is shown as a focusable text node (or a placeholder); focusing, double-clicking, or clicking the edit button enters edit mode, then submitting (Enter/blur/submit trigger) or cancelling (Esc/cancel trigger) returns to preview. The structure follows the headless core + styled wrapper split: the 8 `EditableRoot`-family components in `@soybeanjs/headless` (zero styles) own the full state machine, and `SEditable` injects the `editableVariants` styles (8 slots: root/area/preview/input/controls/editTrigger/submitTrigger/cancelTrigger).
+Description: An inline text editor that switches between preview and edit states. In preview mode the value is shown as a focusable text node (or a placeholder); focusing, double-clicking, or clicking the edit button enters edit mode, then submitting (Enter/blur/submit trigger) or cancelling (Esc/cancel trigger) returns to preview. The structure follows the headless core + styled wrapper split: the 8 EditableRoot-family components in @soybeanjs/headless (zero styles) own the full state machine, and SEditable injects the editableVariants styles (8 slots: root/area/preview/input/controls/editTrigger/submitTrigger/cancelTrigger).
 
 ## Overview
 

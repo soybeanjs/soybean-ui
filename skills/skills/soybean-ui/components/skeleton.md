@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/skeleton
 Markdown URL: https://ui.soybeanjs.cn/components/skeleton.md
 Category: Data Display
-Description: A placeholder used to indicate that content is still loading. `SSkeleton` combines the headless `Skeleton` primitive (zero styles) with the `skeletonVariants` style recipe (6 sizes × 2 shapes × animated toggle) and is decorative (`aria-hidden` by default).
+Description: A placeholder used to indicate that content is still loading. SSkeleton combines the headless Skeleton primitive (zero styles) with the skeletonVariants style recipe (6 sizes × 2 shapes × animated toggle) and is decorative (aria-hidden by default).
 
 ## Overview
 

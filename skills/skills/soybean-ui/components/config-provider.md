@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/config-provider
 Markdown URL: https://ui.soybeanjs.cn/components/config-provider.md
 Category: General
-Description: The `SConfigProvider` component is the root configuration provider for the SoybeanUI library. It manages global themes, localization, icon settings, and other context-aware features. It should wrap your entire application or specific sections that require isolated configuration.
+Description: The SConfigProvider component is the root configuration provider for the SoybeanUI library. It manages global themes, localization, icon settings, and other context-aware features. It should wrap your entire application or specific sections that require isolated configuration.
 
 ## Overview
 

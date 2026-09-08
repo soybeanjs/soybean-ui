@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/hover-card
 Markdown URL: https://ui.soybeanjs.cn/components/hover-card.md
 Category: Overlay
-Description: Displays a richer preview card when the trigger is hovered or receives focus. `SHoverCard` combines the headless `HoverCardRoot`/`HoverCardTrigger`/`HoverCardPositioner`/`HoverCardPopup`/`HoverCardArrow` primitive family (built on the shared `Popper`) with the `hoverCardVariants` style recipe (3 slots, 6 sizes).
+Description: Displays a richer preview card when the trigger is hovered or receives focus. SHoverCard combines the headless HoverCardRoot/HoverCardTrigger/HoverCardPositioner/HoverCardPopup/HoverCardArrow primitive family (built on the shared Popper) with the hoverCardVariants style recipe (3 slots, 6 sizes).
 
 ## Overview
 

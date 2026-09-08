@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/actions
 Markdown URL: https://ui.soybeanjs.cn/ui-x/actions.md
 Category: Actions
-Description: `SxActions` is a compact action toolbar that renders a horizontal row of buttons, each representing a user action on an AI message (e.g., copy, like, dislike, share, regenerate).
+Description: SxActions is a compact action toolbar that renders a horizontal row of buttons, each representing a user action on an AI message (e.g., copy, like, dislike, share, regenerate).
 
 ## Overview
 

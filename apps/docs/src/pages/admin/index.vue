@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { onBeforeUnmount } from 'vue';
 import { resetDocOutline } from '~/composables/use-doc-outline';
+
+definePage({ layout: 'default' });
 
 // TODO(admin): scaffold placeholder — implement hero landing page.
 

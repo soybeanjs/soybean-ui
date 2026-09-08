@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/popconfirm
 Markdown URL: https://ui.soybeanjs.cn/components/popconfirm.md
 Category: Overlay
-Description: A confirmation box component based on `Popper`, used for lightweight secondary confirmation operations. `SPopconfirm` combines the headless `PopconfirmCompact` (built on the popper primitives) with the `popconfirmVariants` style recipe (13 slots, 6 sizes × 4 types).
+Description: A confirmation box component based on Popper, used for lightweight secondary confirmation operations. SPopconfirm combines the headless PopconfirmCompact (built on the popper primitives) with the popconfirmVariants style recipe (13 slots, 6 sizes × 4 types).
 
 ## Overview
 

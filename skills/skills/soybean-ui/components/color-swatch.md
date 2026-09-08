@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/color-swatch
 Markdown URL: https://ui.soybeanjs.cn/components/color-swatch.md
 Category: Data Display
-Description: A read-only color preview block with support for transparent and OKLCH values. `SColorSwatch` combines the headless `ColorSwatchRoot`/`ColorSwatchChecker`/`ColorSwatchFill` primitives with the `colorSwatchVariants` style recipe (3 slots, 6 sizes × 2 shapes).
+Description: A read-only color preview block with support for transparent and OKLCH values. SColorSwatch combines the headless ColorSwatchRoot/ColorSwatchChecker/ColorSwatchFill primitives with the colorSwatchVariants style recipe (3 slots, 6 sizes × 2 shapes).
 
 ## Overview
 

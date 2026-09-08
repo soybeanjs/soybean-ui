@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/date-range-picker
 Markdown URL: https://ui.soybeanjs.cn/components/date-range-picker.md
 Category: Forms
-Description: A date range picker that pairs a keyboard-editable dual segmented date range field with a calendar range popup for visual selection. Type a start and end date directly into the segments or click the calendar toggle and pick both ends from a single month-range grid. Use it whenever a user must choose a bounded interval — booking stay dates, reporting windows, or filter ranges. For pure typing with no popup, prefer `SDateRangeField`; for a single date with a popup, use `SDatePicker`.
+Description: A date range picker that pairs a keyboard-editable dual segmented date range field with a calendar range popup for visual selection. Type a start and end date directly into the segments or click the calendar toggle and pick both ends from a single month-range grid. Use it whenever a user must choose a bounded interval — booking stay dates, reporting windows, or filter ranges. For pure typing with no popup, prefer SDateRangeField; for a single date with a popup, use SDatePicker.
 
 ## Overview
 

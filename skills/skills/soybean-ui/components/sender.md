@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/sender
 Markdown URL: https://ui.soybeanjs.cn/ui-x/sender.md
 Category: Core
-Description: `SxSender` is the AI composer input — a rich textarea with optional attachments, slash (`/`) command suggestions and mention (`@`) suggestions. It submits the typed text and delegates suggestion filtering/selection to the `useSender` composable.
+Description: SxSender is the AI composer input — a rich textarea with optional attachments, slash (/) command suggestions and mention (@) suggestions. It submits the typed text and delegates suggestion filtering/selection to the useSender composable.
 
 ## Overview
 

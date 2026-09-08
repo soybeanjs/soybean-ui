@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/label
 Markdown URL: https://ui.soybeanjs.cn/components/label.md
 Category: Forms
-Description: The `SLabel` component renders a native `<label>` element that provides an accessible caption for form controls. Use the `for` prop to associate the label with an input by its `id` — clicking the label then focuses the associated control. The component prevents text selection on double-click for a cleaner UX and supports size scaling via the design system.
+Description: The SLabel component renders a native <label> element that provides an accessible caption for form controls. Use the for prop to associate the label with an input by its id — clicking the label then focuses the associated control. The component prevents text selection on double-click for a cleaner UX and supports size scaling via the design system.
 
 ## Overview
 

@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/watermark
 Markdown URL: https://ui.soybeanjs.cn/components/watermark.md
 Category: Data Display
-Description: `SWatermark` overlays a repeating text or image pattern on top of page content to indicate ownership, confidentiality, or branding. It generates a tiled canvas data URL as the overlay's `background-image`, supports text and image watermarks with rotation, gap, offset, and cross-pattern configuration, and includes an optional anti-tamper defense mechanism that automatically restores the overlay if it is removed or modified via DevTools.
+Description: SWatermark overlays a repeating text or image pattern on top of page content to indicate ownership, confidentiality, or branding. It generates a tiled canvas data URL as the overlay's background-image, supports text and image watermarks with rotation, gap, offset, and cross-pattern configuration, and includes an optional anti-tamper defense mechanism that automatically restores the overlay if it is removed or modified via DevTools.
 
 ## Overview
 

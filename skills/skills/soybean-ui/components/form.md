@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/form
 Markdown URL: https://ui.soybeanjs.cn/components/form.md
 Category: Forms
-Description: A form composition layer for building validated forms with a headless core and styled wrappers. The `useForm` composable owns the values, touched/meta state, and validation pipeline (Standard Schema v1 — Zod, Valibot, ArkType, Yup, etc.), and returns a tuple of `[formState, SFormField, SFormFieldArray]` used to render the form. Fields register through slots, so any SoybeanUI input (`SInput`, `SSelect`, `SCheckbox`, `SSwitch`, `SRadioGroup`, …) or a plain custom control works without a per-control API.
+Description: A form composition layer for building validated forms with a headless core and styled wrappers. The useForm composable owns the values, touched/meta state, and validation pipeline (Standard Schema v1 — Zod, Valibot, ArkType, Yup, etc.), and returns a tuple of [formState, SFormField, SFormFieldArray] used to render the form. Fields register through slots, so any SoybeanUI input (SInput, SSelect, SCheckbox, SSwitch, SRadioGroup, …) or a plain custom control works without a per-control API.
 
 ## Overview
 

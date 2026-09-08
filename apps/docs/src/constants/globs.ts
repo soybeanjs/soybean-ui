@@ -17,12 +17,12 @@ const basicExampleName = 'basic';
 const ignoredPlaygroundExampleNamePrefix = '_';
 
 const playgroundComponents = import.meta.glob<{ default: Component }>('./**/*.vue', {
-  base: '../../../playground/src/examples',
+  base: '../examples',
   eager: true
 });
 
 const playgroundComponentCodes = import.meta.glob<{ default: string }>('./**/*.vue', {
-  base: '../../../playground/src/examples',
+  base: '../examples',
   eager: true,
   query: '?raw'
 });

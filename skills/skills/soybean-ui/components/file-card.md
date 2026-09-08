@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/file-card
 Markdown URL: https://ui.soybeanjs.cn/ui-x/file-card.md
 Category: Attachments
-Description: `SxFileCard` is the atomic file preview card of the AI package — a single attachment rendered as a kind icon, file name and meta line (`mimeType · size`). It is the building block used by `SxAttachments` to render its list items.
+Description: SxFileCard is the atomic file preview card of the AI package — a single attachment rendered as a kind icon, file name and meta line (mimeType · size). It is the building block used by SxAttachments to render its list items.
 
 ## Overview
 

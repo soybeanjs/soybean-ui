@@ -1,4 +1,5 @@
 <script setup lang="ts">
+definePage({ layout: 'default' });
 // TODO(chart): scaffold placeholder — render quick-start markdown.
 const path = 'chart/quick-start';
 </script>

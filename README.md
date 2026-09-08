@@ -165,7 +165,7 @@ pnpm sui gen changelog --translate --locale zh-CN
 
 The docs site now renders component docs through `UsageCode`, `PlaygroundGallery`, and `ComponentApi`. Component detail pages and `/releases` also read generated changelog data from `apps/docs/src/generated/changelog/` and `apps/docs/src/generated/changelog-locales/`.
 
-Public API or demo delivery changes should keep docs, playground examples, and generated API data aligned. Changelog mapping, release presentation, and changelog locale template changes should keep generated changelog data aligned as well.
+Public API or demo delivery changes should keep docs, component examples (`apps/docs/src/examples/`), and generated API data aligned. Changelog mapping, release presentation, and changelog locale template changes should keep generated changelog data aligned as well.
 
 ## 📦 Installation
 

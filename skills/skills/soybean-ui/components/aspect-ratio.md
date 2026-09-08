@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/aspect-ratio
 Markdown URL: https://ui.soybeanjs.cn/components/aspect-ratio.md
 Category: Layout
-Description: `SAspectRatio` maintains a fixed aspect ratio for its content using the CSS padding-bottom technique. It wraps content in a relatively-positioned container with a dynamic `paddingBottom` percentage, and an absolutely-positioned inner element that fills the container. Use it to prevent layout shift when loading images, videos, or embeds with known dimensions.
+Description: SAspectRatio maintains a fixed aspect ratio for its content using the CSS padding-bottom technique. It wraps content in a relatively-positioned container with a dynamic paddingBottom percentage, and an absolutely-positioned inner element that fills the container. Use it to prevent layout shift when loading images, videos, or embeds with known dimensions.
 
 ## Overview
 

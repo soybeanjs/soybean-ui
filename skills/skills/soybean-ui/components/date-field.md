@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/date-field
 Markdown URL: https://ui.soybeanjs.cn/components/date-field.md
 Category: Forms
-Description: A segmented date input that keeps day, month, year, and optional time values as separate keyboard-editable parts while still submitting a native form value. Use it for compact date entry where typing should be fast — birth dates, expiry dates, or any single date that needs validation against a range. For a date chosen from a calendar popup, prefer `SDatePicker`; for browsing a calendar grid, use `SCalendar`.
+Description: A segmented date input that keeps day, month, year, and optional time values as separate keyboard-editable parts while still submitting a native form value. Use it for compact date entry where typing should be fast — birth dates, expiry dates, or any single date that needs validation against a range. For a date chosen from a calendar popup, prefer SDatePicker; for browsing a calendar grid, use SCalendar.
 
 ## Overview
 

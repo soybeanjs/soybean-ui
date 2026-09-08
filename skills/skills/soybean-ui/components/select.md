@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/select
 Markdown URL: https://ui.soybeanjs.cn/components/select.md
 Category: Forms
-Description: Displays a list of options for the user to pick from, triggered by a button. The trigger renders the selected value (or placeholder), and the popup supports keyboard navigation, typeahead, grouping, multiple selection, and clearable mode. Use it to pick one or more values from a bounded set; for free-text search over a list, use `SCombobox`; for cascading hierarchical data, use `SCascader`.
+Description: Displays a list of options for the user to pick from, triggered by a button. The trigger renders the selected value (or placeholder), and the popup supports keyboard navigation, typeahead, grouping, multiple selection, and clearable mode. Use it to pick one or more values from a bounded set; for free-text search over a list, use SCombobox; for cascading hierarchical data, use SCascader.
 
 ## Overview
 

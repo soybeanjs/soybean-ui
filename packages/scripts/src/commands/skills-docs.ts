@@ -93,7 +93,7 @@ const uiXCategoryTitleMap: Record<string, string> = {
 const skillDocSources: SkillDocSource[] = [
   {
     key: 'ui',
-    docsDir: path.resolve(repoRoot, 'apps/docs/src/docs/en/ui/components'),
+    docsDir: path.resolve(repoRoot, 'apps/docs/src/content/en/ui/components'),
     apiDir: 'ui',
     routePrefix: '/components',
     menu: menuData,
@@ -101,7 +101,7 @@ const skillDocSources: SkillDocSource[] = [
   },
   {
     key: 'ui-x',
-    docsDir: path.resolve(repoRoot, 'apps/docs/src/docs/en/ui-x/components'),
+    docsDir: path.resolve(repoRoot, 'apps/docs/src/content/en/ui-x/components'),
     apiDir: 'ui-x',
     routePrefix: '/ui-x',
     menu: uiXMenuData,

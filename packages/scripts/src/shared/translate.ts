@@ -1,5 +1,3 @@
-import { readdir, readFile } from 'node:fs/promises';
-import path from 'node:path';
 import process from 'node:process';
 import {
   chunkArray,
@@ -157,27 +155,6 @@ export function parseTranslateCliOptions(argv: string[]): TranslateCliOptions {
   }
 
   return options;
-}
-
-export async function resolveAvailableLocalesFromI18nModule(
-  rootDir: string,
-  i18nModulePath: string
-): Promise<string[]> {
-  const moduleContent = await readFile(i18nModulePath, 'utf8');
-  const localesGlobMatch = moduleContent.match(/import\.meta\.glob\('([^']*locales\/\*\.json)'\)/u);
-
-  if (!localesGlobMatch) {
-    throw new Error(`Unable to resolve availableLocales from ${path.relative(rootDir, i18nModulePath)}.`);
-  }
-
-  const localesGlobPath = localesGlobMatch[1];
-  const localesDirectory = path.resolve(path.dirname(i18nModulePath), path.dirname(localesGlobPath));
-  const fileNames = await readdir(localesDirectory);
-
-  return fileNames
-    .filter(fileName => fileName.endsWith('.json'))
-    .map(fileName => fileName.replace(/\.json$/u, ''))
-    .sort((left, right) => left.localeCompare(right));
 }
 
 export function getPendingEntries(

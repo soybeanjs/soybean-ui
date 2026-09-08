@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/tag
 Markdown URL: https://ui.soybeanjs.cn/components/tag.md
 Category: Data Display
-Description: A compact label used to categorize, filter, or mark content inline. `STag` combines the headless `Tag` primitive (zero styles) with the `tagVariants` style recipe (8 colors × 6 sizes × 5 variants × 2 shapes) and exposes `leading`/`trailing`/`close` slots.
+Description: A compact label used to categorize, filter, or mark content inline. STag combines the headless Tag primitive (zero styles) with the tagVariants style recipe (8 colors × 6 sizes × 5 variants × 2 shapes) and exposes leading/trailing/close slots.
 
 ## Overview
 

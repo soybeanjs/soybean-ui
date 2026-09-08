@@ -1,17 +1,15 @@
 import path from 'node:path';
 import process from 'node:process';
+import type { DocsTarget } from '../shared/docs-targets';
 import {
   parseTranslateCliOptions,
   printTranslateUsage,
   resolveTargetLocales,
-  translateJsonLocaleFile,
-  resolveAvailableLocalesFromI18nModule
+  translateJsonLocaleFile
 } from '../shared/translate';
 import type { TranslateCliOptions } from '../shared/translate';
 
 const rootDir = process.cwd();
-const localeDir = path.join(rootDir, 'apps/docs/src/generated/api-locales');
-const i18nModulePath = path.join(rootDir, 'apps/docs/src/modules/i18n.ts');
 
 function printUsage() {
   printTranslateUsage(
@@ -30,7 +28,8 @@ function createTranslationContext(locale: string): string {
   ].join(' ');
 }
 
-async function translateLocale(locale: string, options: TranslateCliOptions): Promise<void> {
+async function translateLocale(target: DocsTarget, locale: string, options: TranslateCliOptions): Promise<void> {
+  const localeDir = path.join(target.generatedDir, 'api-locales');
   const sourcePath = path.join(localeDir, `${options.sourceLocale}.json`);
   const targetPath = path.join(localeDir, `${locale}.json`);
   await translateJsonLocaleFile({
@@ -46,15 +45,15 @@ async function translateLocale(locale: string, options: TranslateCliOptions): Pr
     sourceLanguage: process.env.DEEPL_SOURCE_LANG?.trim() || undefined,
     onPendingResolved: context => {
       if (!context.pendingCount) {
-        console.log(`No pending translations for ${context.locale}.`);
+        console.log(`No pending translations for ${context.locale} (${target.key}).`);
         return;
       }
 
-      console.log(`Found ${context.pendingCount} pending translations for ${context.locale}.`);
+      console.log(`Found ${context.pendingCount} pending translations for ${context.locale} (${target.key}).`);
     },
     onBatchStart: context => {
       console.log(
-        `Translating ${context.locale} batch ${context.batchIndex + 1}/${context.batchCount} (${context.entryCount} entries)...`
+        `Translating ${context.locale} (${target.key}) batch ${context.batchIndex + 1}/${context.batchCount} (${context.entryCount} entries)...`
       );
     },
     onUpdated: context => {
@@ -63,7 +62,7 @@ async function translateLocale(locale: string, options: TranslateCliOptions): Pr
   });
 }
 
-export async function translateApiLocales(argv: string[] = process.argv.slice(2)): Promise<void> {
+export async function translateApiLocales(target: DocsTarget, argv: string[] = process.argv.slice(2)): Promise<void> {
   const options = parseTranslateCliOptions(argv);
 
   if (options.help) {
@@ -75,16 +74,15 @@ export async function translateApiLocales(argv: string[] = process.argv.slice(2)
     throw new Error('--batch-size must be greater than 0.');
   }
 
-  const availableLocales = await resolveAvailableLocalesFromI18nModule(rootDir, i18nModulePath);
   const targetLocales = resolveTargetLocales({
-    availableLocales,
+    availableLocales: target.locales,
     sourceLocale: options.sourceLocale,
     requestedLocale: options.locale
   });
 
-  console.log(`Target locales: ${targetLocales.join(', ')}`);
+  console.log(`Target locales (${target.key}): ${targetLocales.join(', ')}`);
 
   for (const locale of targetLocales) {
-    await translateLocale(locale, options);
+    await translateLocale(target, locale, options);
   }
 }

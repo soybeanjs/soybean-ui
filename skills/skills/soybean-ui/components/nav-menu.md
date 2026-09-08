@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/nav-menu
 Markdown URL: https://ui.soybeanjs.cn/components/nav-menu.md
 Category: Navigation
-Description: NavMenu builds site-level horizontal or vertical navigation with a single shared floating surface. Unlike the Radix-derived `NavigationMenu`, it is modeled directly on the Popper primitives: the whole viewport is one `PopperPositioner`, its reference switches to the active trigger, and all hover timing runs on a single shared Popper hover machine with value routing through `pendingValue`.
+Description: NavMenu builds site-level horizontal or vertical navigation with a single shared floating surface. Unlike the Radix-derived NavigationMenu, it is modeled directly on the Popper primitives: the whole viewport is one PopperPositioner, its reference switches to the active trigger, and all hover timing runs on a single shared Popper hover machine with value routing through pendingValue.
 
 ## Overview
 

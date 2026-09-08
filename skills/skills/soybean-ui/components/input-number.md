@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/input-number
 Markdown URL: https://ui.soybeanjs.cn/components/input-number.md
 Category: Forms
-Description: A numeric input field that only accepts numeric values, with increment/decrement controls, keyboard interaction, and min/max boundary handling. Use it for quantities, prices, ages, or any value that must stay numeric and within a range. For general text use `SInput`.
+Description: A numeric input field that only accepts numeric values, with increment/decrement controls, keyboard interaction, and min/max boundary handling. Use it for quantities, prices, ages, or any value that must stay numeric and within a range. For general text use SInput.
 
 ## Overview
 

@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/context-menu
 Markdown URL: https://ui.soybeanjs.cn/components/context-menu.md
 Category: Navigation
-Description: Displays a menu located at the pointer, triggered by a right-click. `SContextMenu` is a data-driven menu built on the shared headless menu primitives, opening at the pointer position via the `contextmenu` event (or a press-and-hold on touch, after `pressOpenDelay`). The family also ships checkbox (`SContextMenuCheckbox`), radio (`SContextMenuRadio`) and custom (`SContextMenuWrapper`) variants.
+Description: Displays a menu located at the pointer, triggered by a right-click. SContextMenu is a data-driven menu built on the shared headless menu primitives, opening at the pointer position via the contextmenu event (or a press-and-hold on touch, after pressOpenDelay). The family also ships checkbox (SContextMenuCheckbox), radio (SContextMenuRadio) and custom (SContextMenuWrapper) variants.
 
 ## Overview
 

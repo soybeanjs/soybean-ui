@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/backtop
 Markdown URL: https://ui.soybeanjs.cn/components/backtop.md
 Category: Data Display
-Description: `SBacktop` reveals a floating button after the scroll target passes a configurable threshold and smoothly scrolls that target back to the top when activated. It wraps `SButton` with scroll-position tracking, `requestAnimationFrame`-based smooth scrolling, and `prefers-reduced-motion` support. Use it to let users quickly return to the top of long pages or scrollable containers.
+Description: SBacktop reveals a floating button after the scroll target passes a configurable threshold and smoothly scrolls that target back to the top when activated. It wraps SButton with scroll-position tracking, requestAnimationFrame-based smooth scrolling, and prefers-reduced-motion support. Use it to let users quickly return to the top of long pages or scrollable containers.
 
 ## Overview
 

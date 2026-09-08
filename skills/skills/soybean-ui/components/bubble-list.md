@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/bubble-list
 Markdown URL: https://ui.soybeanjs.cn/ui-x/bubble-list.md
 Category: Core
-Description: `SxBubbleList` renders a data-driven chat transcript from a `ChatMessage[]`. It owns the scroll container, auto-follows new messages while the user is at the bottom, and renders each item through the default `SxBubble` — user messages at the `end`, everything else at the `start`.
+Description: SxBubbleList renders a data-driven chat transcript from a ChatMessage[]. It owns the scroll container, auto-follows new messages while the user is at the bottom, and renders each item through the default SxBubble — user messages at the end, everything else at the start.
 
 ## Overview
 

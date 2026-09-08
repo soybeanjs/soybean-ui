@@ -59,8 +59,7 @@ Private packages and applications:
 
 - **@soybeanjs/scripts** (`packages/scripts/`): private repo-service CLI `sui` (generators, stub, template sync). NOT published; do not merge with the consumer-facing `sbean` CLI.
 - **@soybeanjs/shared** (`packages/shared/`): private shared utils (e.g. `vite.ts` build helpers). NOT published.
-- **@soybeanjs/ui-docs** (`apps/docs/`): Vite + vite-ssg + unplugin-vue-markdown + markdown-exit. NOT VitePress.
-- **@soybeanjs/ui-playground** (`apps/playground/`): shared examples and manual/visual validation.
+- **@soybeanjs/ui-docs** (`apps/docs/`): ubean-based documentation site (SSG, Markdown, i18n). Owns the demo examples under `apps/docs/src/examples/`.
 - **@soybeanjs/ui-nuxt** (`apps/nuxt/`): Nuxt integration fixture.
 
 ## WHERE TO LOOK
@@ -81,7 +80,7 @@ Private packages and applications:
 | Generated API data       | `apps/docs/src/generated/api/`                                            | `pnpm sui gen api` baseline + `pnpm sui gen api --translate` locale descriptions          |
 | Generated changelog data | `apps/docs/src/generated/changelog/`                                      | `pnpm sui gen changelog` baseline + `pnpm sui gen changelog --translate` locale summaries |
 | Docs content             | `apps/docs/src/docs/[en\|zh-CN]/`                                         | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`                 |
-| Demo source              | `apps/playground/src/examples/[component]/`                               | Vue SFCs referenced by docs                                                               |
+| Demo source              | `apps/docs/src/examples/[component]/`                                     | Vue SFCs referenced by docs                                                               |
 | Browser e2e tests        | `packages/ui/test/browser/`                                               | `vitest.browser.config.ts` + `vitest-browser-vue` + `axe-core` (color-contrast on)        |
 | Workspace architecture   | `docs/architecture.md`                                                    | Package/app map, dependency graph, generation/build/test/release flows                    |
 | Architecture assessment  | `docs/optimize.md`                                                        | Evidence-ranked maintainability, scalability, and quality recommendations                 |
@@ -91,12 +90,10 @@ Private packages and applications:
 ## BUILD & CI
 
 ```bash
-pnpm dev:playground    # Playground (Vite)
-pnpm dev:docs         # Docs site (Vite + vite-ssg)
+pnpm dev:docs         # Docs site (ubean dev)
 pnpm build            # libs (theme, ui-uno) → headless → ui → ui-x → admin → chart → sbean via Vite Plus pack
 pnpm build:libs       # theme → ui-uno
-pnpm build:docs       # package build → sbean registry → docs SSG
-pnpm build:playground # Playground production build
+pnpm build:docs       # package build → sbean registry → docs SSG + SEO
 pnpm lint             # vp lint --fix && pnpm lint:vue (uses @soybeanjs/eslint-config-vue)
 pnpm fmt              # vp fmt (formatter)
 pnpm test             # recursive workspace unit tests (UI/headless + sbean)

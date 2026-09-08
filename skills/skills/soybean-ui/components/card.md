@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/card
 Markdown URL: https://ui.soybeanjs.cn/components/card.md
 Category: Data Display
-Description: A container that groups related content and actions into a bordered, shadowed surface. `SCard` combines a `CardRoot`/`CardHeader`/`CardContent`/`CardFooter`/`CardTitle`/`CardDescription` family of headless primitives (zero styles) with the `cardVariants` style recipe (8 slots, 6 sizes, `scrollable`/`split` flags).
+Description: A container that groups related content and actions into a bordered, shadowed surface. SCard combines a CardRoot/CardHeader/CardContent/CardFooter/CardTitle/CardDescription family of headless primitives (zero styles) with the cardVariants style recipe (8 slots, 6 sizes, scrollable/split flags).
 
 ## Overview
 

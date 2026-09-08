@@ -3,8 +3,8 @@ import process from 'node:process';
 import { Application, ReflectionKind } from 'typedoc';
 import type { Comment, DeclarationReflection, ProjectReflection, Reflection, SignatureReflection } from 'typedoc';
 import ts from 'typescript';
-import { kebabCase } from '#shared/string';
 import { components as headlessComponents } from '../../../headless/src/constants/components';
+import { kebabCase } from '../../../headless/src/shared/string';
 import { writeGeneratedJsonDirectory, writeJsonFile } from '../shared/json';
 
 type ApiSectionKind = 'props' | 'emits' | 'slots' | 'slotProps';
@@ -80,8 +80,6 @@ type ComponentApiIndex = {
 };
 
 const rootDir = process.cwd();
-const apiRootDir = path.join(rootDir, 'apps/docs/src/generated/api');
-const legacyOutputDir = path.join(rootDir, 'apps/docs/src/generated/component-api');
 
 type ApiPackageConfig = {
   key: string;
@@ -91,37 +89,47 @@ type ApiPackageConfig = {
   paths: Record<string, string[]>;
 };
 
-const apiPackages: ApiPackageConfig[] = [
-  {
-    key: 'ui',
-    entryPoint: 'packages/ui/src/index.ts',
-    outputDir: path.join(apiRootDir, 'ui'),
-    sourceRoots: ['packages/ui/src/', 'packages/headless/src/'],
-    paths: {
-      '@/*': ['./packages/ui/src/*'],
-      '@soybeanjs/ui': ['./packages/ui/src/index.ts'],
-      '@soybeanjs/theme': ['./packages/theme/src/index.ts'],
-      '@soybeanjs/theme/*': ['./packages/theme/src/*']
+/** Packages for the docs target currently being generated (set per target run). */
+let currentApiPackages: ApiPackageConfig[] = [];
+
+/**
+ * Build the per-package extraction config for a docs target's `api` output
+ * directory. Each docs target gets its own set so `generateApiData` can write
+ * into multiple targets per run.
+ */
+function createApiPackages(apiRootDir: string): ApiPackageConfig[] {
+  return [
+    {
+      key: 'ui',
+      entryPoint: 'packages/ui/src/index.ts',
+      outputDir: path.join(apiRootDir, 'ui'),
+      sourceRoots: ['packages/ui/src/', 'packages/headless/src/'],
+      paths: {
+        '@/*': ['./packages/ui/src/*'],
+        '@soybeanjs/ui': ['./packages/ui/src/index.ts'],
+        '@soybeanjs/theme': ['./packages/theme/src/index.ts'],
+        '@soybeanjs/theme/*': ['./packages/theme/src/*']
+      }
+    },
+    {
+      key: 'ui-x',
+      entryPoint: 'packages/ui-x/src/index.ts',
+      outputDir: path.join(apiRootDir, 'ui-x'),
+      sourceRoots: ['packages/ui-x/src/'],
+      paths: {
+        // ui-x has no `@/` imports today; point the alias at the ui package source so
+        // that pulling in `@soybeanjs/ui` source (for rich referenced-type resolution)
+        // also resolves ui's own internal aliases (`@/theme`, `@/styles`, ...).
+        '@/*': ['./packages/ui/src/*'],
+        '@soybeanjs/ui': ['./packages/ui/src/index.ts'],
+        '@soybeanjs/headless': ['./packages/headless/src/index.ts'],
+        '@soybeanjs/headless/*': ['./packages/headless/src/*'],
+        '@soybeanjs/theme': ['./packages/theme/src/index.ts'],
+        '@soybeanjs/theme/*': ['./packages/theme/src/*']
+      }
     }
-  },
-  {
-    key: 'ui-x',
-    entryPoint: 'packages/ui-x/src/index.ts',
-    outputDir: path.join(apiRootDir, 'ui-x'),
-    sourceRoots: ['packages/ui-x/src/'],
-    paths: {
-      // ui-x has no `@/` imports today; point the alias at the ui package source so
-      // that pulling in `@soybeanjs/ui` source (for rich referenced-type resolution)
-      // also resolves ui's own internal aliases (`@/theme`, `@/styles`, ...).
-      '@/*': ['./packages/ui/src/*'],
-      '@soybeanjs/ui': ['./packages/ui/src/index.ts'],
-      '@soybeanjs/headless': ['./packages/headless/src/index.ts'],
-      '@soybeanjs/headless/*': ['./packages/headless/src/*'],
-      '@soybeanjs/theme': ['./packages/theme/src/index.ts'],
-      '@soybeanjs/theme/*': ['./packages/theme/src/*']
-    }
-  }
-];
+  ];
+}
 
 function createTypedocTsconfig(pkg: ApiPackageConfig): Record<string, unknown> {
   return {
@@ -141,7 +149,7 @@ function createTypedocTsconfig(pkg: ApiPackageConfig): Record<string, unknown> {
       'packages/headless/src/**/*',
       'packages/theme/src/**/*'
     ],
-    exclude: ['apps/docs/**/*', 'apps/playground/**/*', 'test/**/*']
+    exclude: ['apps/docs/**/*', 'test/**/*']
   };
 }
 const emptyIgnoredIndexes = Object.freeze([]) satisfies readonly number[];
@@ -615,7 +623,7 @@ function getTsProgramContext(): TsProgramContext {
     return tsProgramContext;
   }
 
-  const parsedConfig = getTypedocParsedConfig();
+  const parsedConfig = getTypedocParsedConfig(currentApiPackages[0]);
   const program = ts.createProgram({
     rootNames: parsedConfig.fileNames,
     options: parsedConfig.options,
@@ -630,7 +638,7 @@ function getTsProgramContext(): TsProgramContext {
   return tsProgramContext;
 }
 
-function getTypedocParsedConfig(pkg: ApiPackageConfig = apiPackages[0]): ts.ParsedCommandLine {
+function getTypedocParsedConfig(pkg: ApiPackageConfig): ts.ParsedCommandLine {
   if (typedocParsedConfig) {
     return typedocParsedConfig;
   }
@@ -1596,13 +1604,14 @@ function createComponentApiIndex(generatedAt: string, components: Record<string,
 async function writeOutputs(
   pkg: ApiPackageConfig,
   generatedAt: string,
-  components: Record<string, ComponentApi>
+  components: Record<string, ComponentApi>,
+  resetPaths: string[]
 ): Promise<ComponentApiIndex> {
   const index = createComponentApiIndex(generatedAt, components);
 
   await writeGeneratedJsonDirectory({
     outputDir: pkg.outputDir,
-    resetPaths: pkg.key === 'ui' ? [legacyOutputDir] : [],
+    resetPaths,
     documents: [
       {
         fileName: 'index.json',
@@ -1618,9 +1627,16 @@ async function writeOutputs(
   return index;
 }
 
-export async function generateApiData(): Promise<void> {
+/**
+ * Extract component API JSON into `apiRootDir` (a docs target's
+ * `<generated>/api` directory).
+ */
+export async function generateApiData(apiRootDir: string): Promise<void> {
   const generatedAt = new Date().toISOString();
   const packages: Record<string, { file: string; components: ComponentApiIndex['components'] }> = {};
+  const apiPackages = createApiPackages(apiRootDir);
+
+  currentApiPackages = apiPackages;
 
   for (const pkg of apiPackages) {
     resetProgramState();
@@ -1650,7 +1666,12 @@ export async function generateApiData(): Promise<void> {
       sourcePath !== null && pkg.sourceRoots.some(sourceRoot => sourcePath.startsWith(sourceRoot));
 
     const components = collectComponentApis(project, isSourceIncluded);
-    const index = await writeOutputs(pkg, generatedAt, components);
+    const index = await writeOutputs(
+      pkg,
+      generatedAt,
+      components,
+      pkg.key === 'ui' ? [path.join(apiRootDir, 'component-api')] : []
+    );
 
     packages[pkg.key] = {
       file: `${pkg.key}/index.json`,
@@ -1668,5 +1689,7 @@ export async function generateApiData(): Promise<void> {
     { sort: true }
   );
 
-  console.log(`Generated API data for packages: ${Object.keys(packages).join(', ')}.`);
+  console.log(
+    `Generated API data (${path.relative(rootDir, apiRootDir)}) for packages: ${Object.keys(packages).join(', ')}.`
+  );
 }

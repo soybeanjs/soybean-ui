@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/progress
 Markdown URL: https://ui.soybeanjs.cn/components/progress.md
 Category: Data Display
-Description: A progress indicator for determinate or indeterminate task completion. `SProgress` combines the headless `ProgressRoot`/`ProgressIndicator` primitives with the `progressVariants` style recipe, and `SProgressCircle` offers a circular variant via `progressCircleVariants`. Both share an imperative API (`progress.start()`/`done()`) surfaced through `SProgressProvider`.
+Description: A progress indicator for determinate or indeterminate task completion. SProgress combines the headless ProgressRoot/ProgressIndicator primitives with the progressVariants style recipe, and SProgressCircle offers a circular variant via progressCircleVariants. Both share an imperative API (progress.start()/done()) surfaced through SProgressProvider.
 
 ## Overview
 

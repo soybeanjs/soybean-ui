@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/switch
 Markdown URL: https://ui.soybeanjs.cn/components/switch.md
 Category: Forms
-Description: A control that toggles between checked and unchecked states with a sliding thumb and native form integration. Use it for a single binary setting that takes effect immediately (e.g. dark mode, notifications); when the option belongs to a form that needs explicit submission, prefer `SCheckbox`; when more than one value can be selected, use a checkbox group instead.
+Description: A control that toggles between checked and unchecked states with a sliding thumb and native form integration. Use it for a single binary setting that takes effect immediately (e.g. dark mode, notifications); when the option belongs to a form that needs explicit submission, prefer SCheckbox; when more than one value can be selected, use a checkbox group instead.
 
 ## Overview
 

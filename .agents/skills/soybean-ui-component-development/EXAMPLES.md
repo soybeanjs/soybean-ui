@@ -122,7 +122,7 @@ Why it triggers:
 Expected approach:
 
 1. Confirm the narrowed scope; do not widen it without explicit instruction.
-2. Follow [surfaces.md -> Playground](surfaces.md#playground) and [surfaces.md -> Docs](surfaces.md#docs) for the relevant rules.
+2. Follow [surfaces.md -> Playground (examples)](surfaces.md#playground-examples) and [surfaces.md -> Docs](surfaces.md#docs) for the relevant rules.
 3. Use prefix-stripped example keys for `<UsageCode>` and `<PlaygroundGallery>`.
 4. Update `apps/docs/src/constants/menus.ts` if the component is not yet registered.
 5. If public API or changelog mapping changed (unlikely here), run the corresponding `pnpm sui` commands; otherwise skip generation steps.

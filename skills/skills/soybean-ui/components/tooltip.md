@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/tooltip
 Markdown URL: https://ui.soybeanjs.cn/components/tooltip.md
 Category: Overlay
-Description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it. `STooltip` combines the headless `TooltipRoot`/`TooltipTrigger`/`TooltipPositioner`/`TooltipPopup`/`TooltipArrow` primitive family (built on the shared `Popper`) with the `tooltipVariants` style recipe (3 slots, 6 sizes).
+Description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it. STooltip combines the headless TooltipRoot/TooltipTrigger/TooltipPositioner/TooltipPopup/TooltipArrow primitive family (built on the shared Popper) with the tooltipVariants style recipe (3 slots, 6 sizes).
 
 ## Overview
 

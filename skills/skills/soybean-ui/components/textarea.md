@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/textarea
 Markdown URL: https://ui.soybeanjs.cn/components/textarea.md
 Category: Forms
-Description: A multi-line text input for longer free-form content, supporting auto-resizing, character counting, and clearable functionality. Use it for descriptions, comments, messages, or any content that spans multiple lines. For single-line input use `SInput`.
+Description: A multi-line text input for longer free-form content, supporting auto-resizing, character counting, and clearable functionality. Use it for descriptions, comments, messages, or any content that spans multiple lines. For single-line input use SInput.
 
 ## Overview
 

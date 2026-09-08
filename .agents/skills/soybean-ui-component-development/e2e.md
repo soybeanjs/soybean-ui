@@ -147,16 +147,16 @@ Tier 2 is intentionally minimal and documented rather than heavily tooled. Add a
 
 ### Scope
 
-- Playground route navigation (`apps/playground` auto-routes from `examples/**/index.vue`).
+- Docs route navigation (`apps/docs` routes from `src/pages/**` and renders examples from `src/examples/**`).
 - `SConfigProvider` theme switching (base / primary / feedback / radius / size / dir / locale) reflected in rendered components.
 - Global providers: dialog / toast / progress / icon providers.
-- Page-level a11y (no axe violations on a rendered playground page).
+- Page-level a11y (no axe violations on a rendered docs page).
 
 ### Suggested approach (when first introduced)
 
-- Drive the playground dev (or built) server with Playwright directly (`@playwright/test`), NOT Vitest browser mode. Tier 2 is app-level; the Vitest browser config is component-level and not appropriate for a running app server.
+- Drive the docs dev (or built) server with Playwright directly (`@playwright/test`), NOT Vitest browser mode. Tier 2 is app-level; the Vitest browser config is component-level and not appropriate for a running app server.
 - Keep the suite to a handful of smoke tests. Do not enumerate every component page.
-- Place tier 2 tests under `apps/playground/e2e/` and add a `test:smoke` script on the playground package. Wire CI to run it as a separate job.
+- Place tier 2 tests under `apps/docs/e2e/` and add a `test:smoke` script on the docs package. Wire CI to run it as a separate job.
 
 Tier 2 is out of scope for the initial e2e introduction. The Tier 1 suite currently covers 11 components (`button`, `combobox`, `dialog`, `drawer`, `menu`, `menubar`, `nav-menu`, `select`, `split-nav`, `textarea`, `tooltip`); expand Tier 1 per [When to add an e2e spec](#when-to-add-an-e2e-spec) as components are touched. Introduce Tier 2 only when an actual cross-provider flow needs verifying.
 

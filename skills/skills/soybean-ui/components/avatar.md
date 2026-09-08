@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/avatar
 Markdown URL: https://ui.soybeanjs.cn/components/avatar.md
 Category: Data Display
-Description: An image element with a fallback for representing the user. `SAvatar` combines a `AvatarRoot`/`AvatarImage`/`AvatarFallback` family of headless primitives (zero styles) with the `avatarVariants` style recipe (3 slots: root/image/fallback, 6 sizes xs–2xl).
+Description: An image element with a fallback for representing the user. SAvatar combines a AvatarRoot/AvatarImage/AvatarFallback family of headless primitives (zero styles) with the avatarVariants style recipe (3 slots: root/image/fallback, 6 sizes xs–2xl).
 
 ## Overview
 

@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/carousel
 Markdown URL: https://ui.soybeanjs.cn/components/carousel.md
 Category: Data Display
-Description: A carousel built on top of Embla Carousel that lets users browse a sequence of content (images, cards, banners, etc.) horizontally or vertically in a constrained space. `SCarousel` combines a `CarouselRoot`-family of headless primitives (zero styles) with the `carouselVariants` style recipe (8 slots: root/content/container/item/control/navigation/previous/next, 6 sizes × 2 orientations).
+Description: A carousel built on top of Embla Carousel that lets users browse a sequence of content (images, cards, banners, etc.) horizontally or vertically in a constrained space. SCarousel combines a CarouselRoot-family of headless primitives (zero styles) with the carouselVariants style recipe (8 slots: root/content/container/item/control/navigation/previous/next, 6 sizes × 2 orientations).
 
 ## Overview
 

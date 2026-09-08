@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/time-field
 Markdown URL: https://ui.soybeanjs.cn/components/time-field.md
 Category: Forms
-Description: A segmented time input that renders individually editable hour, minute, and optional second and day-period segments while submitting a native form value. Use it whenever a user must enter a time fast and precisely — scheduling, booking, time-window filtering, or any form that needs a validated time. For a date with a time, use `SDateField` with `granularity: 'minute'`; for a range, prefer `STimeRangeField`.
+Description: A segmented time input that renders individually editable hour, minute, and optional second and day-period segments while submitting a native form value. Use it whenever a user must enter a time fast and precisely — scheduling, booking, time-window filtering, or any form that needs a validated time. For a date with a time, use SDateField with granularity: 'minute'; for a range, prefer STimeRangeField.
 
 ## Overview
 

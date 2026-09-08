@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/dropdown-menu
 Markdown URL: https://ui.soybeanjs.cn/components/dropdown-menu.md
 Category: Navigation
-Description: Displays a menu to the user—such as a set of actions or functions—triggered by a button. `SDropdownMenu` is a data-driven menu built on the headless menu primitives (`MenuOptions`/`MenuItem`/…), rendered through the shared popover portal. The family also ships checkbox (`SDropdownMenuCheckbox`, multi-select), radio (`SDropdownMenuRadio`, single-select) and custom (`SDropdownMenuWrapper`) variants.
+Description: Displays a menu to the user—such as a set of actions or functions—triggered by a button. SDropdownMenu is a data-driven menu built on the headless menu primitives (MenuOptions/MenuItem/…), rendered through the shared popover portal. The family also ships checkbox (SDropdownMenuCheckbox, multi-select), radio (SDropdownMenuRadio, single-select) and custom (SDropdownMenuWrapper) variants.
 
 ## Overview
 

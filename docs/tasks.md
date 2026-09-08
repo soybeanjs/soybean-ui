@@ -41,9 +41,9 @@
 | 子任务                       | 目标                                                                                                                              |       负责人       | 工时 | 依赖         |
 | :--------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- | :----------------: | :--: | :----------- |
 | EC-M1.1 预处理包名冲突       | 将三分支中 `@soybeanjs/ui-uno` / `packages/ui-unocss` 引用重定向为 `unocss`，重锁 pnpm-lock                                       |      AI Agent      | 0.5d | —            |
-| EC-M1.2 合并 ecosystem 分支  | 三包骨架 + docs/playground 命名空间化（658 个文件迁移）+ 生成链路改造合入，冲突全消                                               | Soybean + AI Agent |  1d  | EC-M1.1      |
+| EC-M1.2 合并 ecosystem 分支  | 三包骨架 + docs 命名空间化（658 个文件迁移）+ 生成链路改造合入，冲突全消                                                          | Soybean + AI Agent |  1d  | EC-M1.1      |
 | EC-M1.3 headless-x 拆解迁移  | 9 composables + 7 types + specs 迁入 `packages/ui-x/src/`，删除 `packages/headless-x/`，ui-x 补 `./composables` `./types` exports |      AI Agent      |  1d  | EC-M1.2      |
-| EC-M1.4 合并 ui-x 分支       | 20 组件 + 13 测试 + docs/playground 接线合入（除 headless-x 外全部内容）                                                          | Soybean + AI Agent |  1d  | EC-M1.3      |
+| EC-M1.4 合并 ui-x 分支       | 20 组件 + 13 测试 + docs 接线合入（除 headless-x 外全部内容）                                                                     | Soybean + AI Agent |  1d  | EC-M1.3      |
 | EC-M1.5 合并 admin 分支      | 6 壳组件 + e2e + `navigation-menu` group 命名修复合入；接通 admin→chart optional peerDep                                          | Soybean + AI Agent |  1d  | EC-M1.2      |
 | EC-M1.6 合并后全量验证       | 每步合并后跑 `pnpm typecheck` + `pnpm test` + `pnpm build`；最后归档 / 删除三条临时分支                                           |      AI Agent      | 1.5d | EC-M1.2~M1.5 |
 | EC-A08 use-x-stream 上浮评估 | 按原子原语判据（跨 ≥2 域、无领域语义）出结论，记录 ADR                                                                            |      Soybean       | 0.5d | EC-M1.3      |
@@ -70,18 +70,18 @@
 | EC-M3.3 渲染组件适配       | `<ComponentApi>` / `<PlaygroundGallery>` 按路由命名空间定位子目录                          | AI Agent | 1.5d | EC-M3.1 |
 | EC-M3.4 api-translate 适配 | 翻译命令支持 `--package` 维度                                                              | AI Agent |  1d  | EC-M3.1 |
 
-### EC-M4 文档站与 playground 多包化
+### EC-M4 文档站多包化
 
-**目标**：docs / playground 支持四包（ui / ui-x / admin / chart）切换浏览。**负责人**：AI Agent。**预计工时**：10d。**依赖条件**：EC-M1.2（页面骨架与 header 入口已在 ecosystem 分支落地）。
+**目标**：docs 支持四包（ui / ui-x / admin / chart）切换浏览。**负责人**：AI Agent。**预计工时**：10d。**依赖条件**：EC-M1.2（页面骨架与 header 入口已在 ecosystem 分支落地）。
 
-| 子任务                    | 目标                                                                                                  |  负责人  | 工时 | 依赖         |
-| :------------------------ | :---------------------------------------------------------------------------------------------------- | :------: | :--: | :----------- |
-| EC-M4.1 包切换器          | docs 顶部下拉（UI / UI-X / Admin / Chart）+ `shouldShowSidebar` 适配 + 侧边栏 menu data 切换          | AI Agent |  2d  | —            |
-| EC-M4.2 docs 内容撰写     | 各包 index / installation / quick-start 实际文案（en/zh-CN）                                          | AI Agent |  2d  | —            |
-| EC-M4.3 组件文档          | 各组件 `[name].md` + `<UsageCode>` / `<PlaygroundGallery>` / `<ComponentApi>`（随 W2/W3/W4 组件产出） | AI Agent |  3d  | EC-M3.3      |
-| EC-M4.4 playground 包切换 | 顶部包切换器镜像 docs；`examples/<pkg>/` 导航                                                         | AI Agent | 1.5d | —            |
-| EC-M4.5 i18n 补齐         | docs locale 与 playground 示例标题 key（en/zh-CN）                                                    | AI Agent | 1.5d | EC-M4.2~M4.4 |
-| EC-M4.6 registry 页面     | `/registry` 按 package 分组展示 sbean 条目 + `sbean add` 命令                                         | AI Agent |  1d  | EC-M2.2      |
+| 子任务                | 目标                                                                                                  |  负责人  | 工时 | 依赖         |
+| :-------------------- | :---------------------------------------------------------------------------------------------------- | :------: | :--: | :----------- |
+| EC-M4.1 包切换器      | docs 顶部下拉（UI / UI-X / Admin / Chart）+ `shouldShowSidebar` 适配 + 侧边栏 menu data 切换          | AI Agent |  2d  | —            |
+| EC-M4.2 docs 内容撰写 | 各包 index / installation / quick-start 实际文案（en/zh-CN）                                          | AI Agent |  2d  | —            |
+| EC-M4.3 组件文档      | 各组件 `[name].md` + `<UsageCode>` / `<PlaygroundGallery>` / `<ComponentApi>`（随 W2/W3/W4 组件产出） | AI Agent |  3d  | EC-M3.3      |
+| EC-M4.4 示例包切换    | `examples/<pkg>/` 目录导航与包切换联动                                                                | AI Agent | 1.5d | —            |
+| EC-M4.5 i18n 补齐     | docs locale 与示例标题 key（en/zh-CN）                                                                | AI Agent | 1.5d | EC-M4.2~M4.4 |
+| EC-M4.6 registry 页面 | `/registry` 按 package 分组展示 sbean 条目 + `sbean add` 命令                                         | AI Agent |  1d  | EC-M2.2      |
 
 ### EC-M5 lockstep 发布
 
@@ -102,11 +102,11 @@
 
 **目标**：分支内容合并后达到可发布质量。**负责人**：AI Agent 实施、Soybean 验收。**预计工时**：4d。**依赖条件**：EC-M1.3 / EC-M1.4。
 
-| 子任务                      | 目标                                                                     |  负责人  | 工时 | 依赖                       |
-| :-------------------------- | :----------------------------------------------------------------------- | :------: | :--: | :------------------------- |
-| UX-1.1 composables 单测补齐 | 9 个 composables 至少各 1 个 spec（当前仅 use-sender 有）                | AI Agent |  2d  | —                          |
-| UX-1.2 examples 迁移        | 分支扁平 examples 迁入 `examples/ui-x/<component>/` 并接 playground 导航 | AI Agent |  1d  | —                          |
-| UX-1.3 验收清单核对         | 每组件全交付面（源码 / 测试 / 文档 / 示例 / API JSON / registry）核对    | Soybean  |  1d  | UX-1.1/1.2、EC-M3、EC-M4.3 |
+| 子任务                      | 目标                                                                   |  负责人  | 工时 | 依赖                       |
+| :-------------------------- | :--------------------------------------------------------------------- | :------: | :--: | :------------------------- |
+| UX-1.1 composables 单测补齐 | 9 个 composables 至少各 1 个 spec（当前仅 use-sender 有）              | AI Agent |  2d  | —                          |
+| UX-1.2 examples 迁移        | 分支扁平 examples 迁入 `examples/ui-x/<component>/` 并接 docs 示例导航 | AI Agent |  1d  | —                          |
+| UX-1.3 验收清单核对         | 每组件全交付面（源码 / 测试 / 文档 / 示例 / API JSON / registry）核对  | Soybean  |  1d  | UX-1.1/1.2、EC-M3、EC-M4.3 |
 
 ### UX-2 P3 组件迭代
 
@@ -132,7 +132,7 @@
 | :-------------------- | :----------------------------------------------------------- | :------: | :--: | :--------- |
 | AD-1.1 e2e 修复       | 解决 Vue 3.5 重渲染 bug 导致的断言拆分，app-shell e2e 通过   | AI Agent | 1.5d | —          |
 | AD-1.2 typecheck 解阻 | 配合 OPT-F8 统一 TS 版本；必要时临时 package 级 vue-tsc 门禁 | AI Agent |  1d  | OPT-F8     |
-| AD-1.3 M2 交付核对    | playground 后台壳 6 种模式逐一手验 + 交付清单勾选            | Soybean  | 0.5d | AD-1.1/1.2 |
+| AD-1.3 M2 交付核对    | docs 后台壳示例 6 种模式逐一手验 + 交付清单勾选              | Soybean  | 0.5d | AD-1.1/1.2 |
 
 ### AD-2 M3 实用组件（P0）
 
@@ -143,7 +143,7 @@
 | AD-2.1 SAppProForm    | AppFormSchema 驱动表单（复用核心 form 家族），含校验 / 联动 / 分组 | AI Agent |  4d  | —          |
 | AD-2.2 SAppProTable   | AppTableColumn 驱动表格 + 搜索表单 + 分页 + 工具栏                 | AI Agent |  4d  | AD-2.1     |
 | AD-2.3 sparkline 集成 | 表格内嵌 `SChartSparkline`（chart 就绪后）                         | AI Agent |  1d  | CH-1       |
-| AD-2.4 测试与示例     | 单测 + browser e2e + playground 示例（含真实数据场景）             | AI Agent |  1d  | AD-2.1/2.2 |
+| AD-2.4 测试与示例     | 单测 + browser e2e + docs 示例（含真实数据场景）                   | AI Agent |  1d  | AD-2.1/2.2 |
 
 ### AD-3 M4+ 组件（P1/P2）
 
@@ -223,7 +223,7 @@
 | 子任务                | 目标                                                                                     |  负责人  | 工时 | 依赖   |
 | :-------------------- | :--------------------------------------------------------------------------------------- | :------: | :--: | :----- |
 | ED-1.1 方案评审 + ADR | [editor.md](./ecosystem/editor.md) 评审；验证 Collaboration 扩展许可与兼容矩阵，输出 ADR | Soybean  |  1d  | —      |
-| ED-1.2 包骨架         | 复用 chart/admin 骨架模板；registry `packages` 元数据 + docs/playground 命名空间接线     | AI Agent |  1d  | ED-1.1 |
+| ED-1.2 包骨架         | 复用 chart/admin 骨架模板；registry `packages` 元数据 + docs 命名空间接线                | AI Agent |  1d  | ED-1.1 |
 | ED-1.3 内核 peer 接线 | `@tiptap/core` / `@tiptap/vue-3` peer 声明、neverBundle、依赖审计防误引入收费包          | AI Agent |  1d  | ED-1.2 |
 
 ### ED-2 P0 组件（最小闭环）
@@ -236,7 +236,7 @@
 | ED-2.2 SEditorContent    | ProseMirror 挂载 + SSR 只读降级（`getHTML()` 首帧）+ 亮暗联动                           | AI Agent |  2d  | ED-2.1     |
 | ED-2.3 SEditorToolbar    | 分组工具栏（复用 SButton/SIcon/SDropdownMenu），selection 状态联动                      | AI Agent |  3d  | ED-2.1     |
 | ED-2.4 SEditorBubbleMenu | 选中文本气泡（复用 SPopover 定位），含链接快捷编辑                                      | AI Agent |  2d  | ED-2.1     |
-| ED-2.5 测试与示例        | 单测 + browser e2e（键盘可达性必测）+ playground 示例 + 文档                            | AI Agent |  2d  | ED-2.1~2.4 |
+| ED-2.5 测试与示例        | 单测 + browser e2e（键盘可达性必测）+ docs 示例 + 文档                                  | AI Agent |  2d  | ED-2.1~2.4 |
 
 ### ED-3 P1 能力扩展
 
@@ -267,7 +267,7 @@
 | :------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------: | :--: | :-------- |
 | F1.1 直接依赖审计          | 扫描全部 workspace 直接 import，补齐 manifest 声明（ui 的 @vueuse/core、sbean 的 @soybeanjs/theme、unocss 的 lightningcss、docs/nuxt 的多项 preset、scripts 的 execa） | AI Agent |  2d  | —         |
 | F1.2 tarball smoke         | 六个发布包 `pnpm pack` 后在临时空项目安装并 import 每个公共入口                                                                                                        | AI Agent | 1.5d | F1.1      |
-| F1.3 filtered install 验证 | docs / playground / nuxt 仅安装声明依赖可构建                                                                                                                          | AI Agent |  1d  | F1.1      |
+| F1.3 filtered install 验证 | docs / nuxt 仅安装声明依赖可构建                                                                                                                                       | AI Agent |  1d  | F1.1      |
 | F1.4 shamefullyHoist 评估  | 尝试关闭；不能关闭则记录依赖 hoist 的工具清单与原因                                                                                                                    | Soybean  | 0.5d | F1.1~F1.3 |
 
 ### OPT-F2 PR CI 覆盖可发布 / 可部署（阶段 A，高）
@@ -285,13 +285,13 @@
 
 **目标**：任何公共组件不可能只出现在部分生成面；生成可确定性重放。**预计工时**：6d。**依赖条件**：无。
 
-| 子任务                    | 目标                                                                                                            |  负责人  | 工时 | 依赖      |
-| :------------------------ | :-------------------------------------------------------------------------------------------------------------- | :------: | :--: | :-------- |
-| F3.1 修复 Rating 缺口     | API / changelog 聚合 index、docs 菜单、双语文档补齐 rating                                                      | AI Agent |  1d  | —         |
-| F3.2 check:generated 命令 | 一次校验：公共组件集合 / API+changelog 文件 / 聚合 index / docs 菜单+locale+双语 Markdown / playground 示例入口 | AI Agent |  2d  | F3.1      |
-| F3.3 确定性生成           | `generatedAt` 支持 `SOURCE_DATE_EPOCH` 或比较时忽略；生成先写临时目录再原子替换                                 | AI Agent | 1.5d | —         |
-| F3.4 en/zh-CN 文件树对齐  | 判定中文 picker 文件为兼容别名还是删除，统一 canonical path；CI 加集合差检查                                    | AI Agent |  1d  | —         |
-| F3.5 CI 接入              | `check:generated` 进 PR CI；release 前显式验证 API 生成状态                                                     | AI Agent | 0.5d | F3.2/F3.3 |
+| 子任务                    | 目标                                                                                                      |  负责人  | 工时 | 依赖      |
+| :------------------------ | :-------------------------------------------------------------------------------------------------------- | :------: | :--: | :-------- |
+| F3.1 修复 Rating 缺口     | API / changelog 聚合 index、docs 菜单、双语文档补齐 rating                                                | AI Agent |  1d  | —         |
+| F3.2 check:generated 命令 | 一次校验：公共组件集合 / API+changelog 文件 / 聚合 index / docs 菜单+locale+双语 Markdown / docs 示例入口 | AI Agent |  2d  | F3.1      |
+| F3.3 确定性生成           | `generatedAt` 支持 `SOURCE_DATE_EPOCH` 或比较时忽略；生成先写临时目录再原子替换                           | AI Agent | 1.5d | —         |
+| F3.4 en/zh-CN 文件树对齐  | 判定中文 picker 文件为兼容别名还是删除，统一 canonical path；CI 加集合差检查                              | AI Agent |  1d  | —         |
+| F3.5 CI 接入              | `check:generated` 进 PR CI；release 前显式验证 API 生成状态                                               | AI Agent | 0.5d | F3.2/F3.3 |
 
 ### OPT-F6 高影响 seam 契约测试（阶段 C，高）
 
@@ -309,11 +309,11 @@
 
 **目标**：clean checkout 一个根 build 命令产出全部发布产物。**预计工时**：3d。**依赖条件**：OPT-F1。
 
-| 子任务            | 目标                                                                                                      |  负责人  | 工时 | 依赖 |
-| :---------------- | :-------------------------------------------------------------------------------------------------------- | :------: | :--: | :--- |
-| F7.1 单一编排入口 | 选定 pnpm 拓扑递归或 Vite Plus task graph 为单一事实源                                                    | Soybean  | 0.5d | —    |
-| F7.2 build 全覆盖 | 根 `build` 覆盖全部发布包（含生态新包）并按依赖图排序                                                     | AI Agent | 1.5d | F7.1 |
-| F7.3 app 构建依赖 | `build:docs` / `build:playground` / nuxt smoke 依赖同一 package build 任务；清理 `shared/**` 预留 pattern | AI Agent |  1d  | F7.2 |
+| 子任务            | 目标                                                                                 |  负责人  | 工时 | 依赖 |
+| :---------------- | :----------------------------------------------------------------------------------- | :------: | :--: | :--- |
+| F7.1 单一编排入口 | 选定 pnpm 拓扑递归或 Vite Plus task graph 为单一事实源                               | Soybean  | 0.5d | —    |
+| F7.2 build 全覆盖 | 根 `build` 覆盖全部发布包（含生态新包）并按依赖图排序                                | AI Agent | 1.5d | F7.1 |
+| F7.3 app 构建依赖 | `build:docs` / nuxt smoke 依赖同一 package build 任务；清理 `shared/**` 预留 pattern | AI Agent |  1d  | F7.2 |
 
 ### OPT-F8 TypeScript 版本统一（阶段 C，中）
 
@@ -327,11 +327,11 @@
 
 ### OPT-F4/F5 Docs 依赖与构建图（阶段 D，中）
 
-**目标**：消除 docs ↔ playground 反向边；demo / raw TS 按需加载。**预计工时**：8d。**依赖条件**：docs build 基线数据（构建时间 / 峰值内存 / chunk 尺寸）。
+**目标**：demo / raw TS 按需加载（docs ↔ playground 反向边已随 playground 并入 docs 消除）。**预计工时**：8d。**依赖条件**：docs build 基线数据（构建时间 / 峰值内存 / chunk 尺寸）。
 
 | 子任务                 | 目标                                                                                                |  负责人  | 工时 | 依赖 |
 | :--------------------- | :-------------------------------------------------------------------------------------------------- | :------: | :--: | :--- |
-| F4.1 catalog 所有权    | demo catalog / 排序规则 / 共享类型移入 playground；docs 单向消费；playground 移除 `@docs/*` import  | AI Agent |  2d  | —    |
+| F4.1 catalog 所有权    | 已完成：playground 并入 docs，demo catalog / 排序规则 / 共享类型归 `apps/docs` 所有                 | AI Agent |  —   | —    |
 | F4.2 Nuxt fixture 定界 | 明确 source-coupled smoke 或独立示例；补 locale 文件与 build smoke                                  | AI Agent | 1.5d | —    |
 | F5.1 基线采集          | docs build time / 峰值内存 / route chunk 基线与预算                                                 | AI Agent |  1d  | —    |
 | F5.2 demo 按需加载     | demo manifest 化，组件页只载对应示例；raw code 独立 lazy chunk                                      | AI Agent |  2d  | F5.1 |
@@ -349,7 +349,7 @@
 
 ## W8 核心组件路线（CMP）
 
-> 45 个活跃路线图组件（高 22 / 中 11 / 低 12），详见 [roadmap.md](./roadmap.md) 各详细条目。每个组件交付含：UI 源码、单测、playground 示例、双语文档、API/changelog 生成、registry 条目；**headless 仅在通过 admission 时创建**（全交付面验收，联动 OPT-F3.2 的 `check:generated`）。负责人默认 AI Agent 实施、Soybean 验收。
+> 45 个活跃路线图组件（高 22 / 中 11 / 低 12），详见 [roadmap.md](./roadmap.md) 各详细条目。每个组件交付含：UI 源码、单测、docs 示例、双语文档、API/changelog 生成、registry 条目；**headless 仅在通过 admission 时创建**（全交付面验收，联动 OPT-F3.2 的 `check:generated`）。负责人默认 AI Agent 实施、Soybean 验收。
 
 工时折算：Effort Low ≈ 1–2d、Medium ≈ 2–4d、High ≈ 5–8d（含测试与交付面）。
 

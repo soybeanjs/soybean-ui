@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/actions-feedback
 Markdown URL: https://ui.soybeanjs.cn/ui-x/actions-feedback.md
 Category: Actions
-Description: `SxActionsFeedback` is a like/dislike feedback control that lets users rate an AI response with two toggle buttons. Clicking the currently active polarity clears the selection back to `null`.
+Description: SxActionsFeedback is a like/dislike feedback control that lets users rate an AI response with two toggle buttons. Clicking the currently active polarity clears the selection back to null.
 
 ## Overview
 

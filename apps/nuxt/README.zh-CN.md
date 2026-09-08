@@ -43,8 +43,9 @@ pnpm preview
 ```
 apps/nuxt/
 ├── app/
-│   └── app.vue       # 嵌入 playground 首页与主题 context
-├── nuxt.config.ts    # UI module、i18n、UnoCSS 与源码 alias
+│   ├── app.vue       # SConfigProvider 包裹的最小演示页
+│   └── theme.ts      # 本地主题 context provider
+├── nuxt.config.ts    # UI module、i18n、UnoCSS
 ├── uno.config.ts     # 共享 SoybeanUI preset 栈
 ├── package.json
 └── tsconfig.json
@@ -52,7 +53,6 @@ apps/nuxt/
 
 ## 当前 Fixture 限制
 
-- `app.vue` 直接导入 `apps/playground` 源码，因此该应用目前不能独立部署。
 - Nuxt i18n 配置引用 `en.json` 与 `zh-CN.json`，但 `apps/nuxt` 下目前没有
   locale fixture 文件；将其作为 i18n 示例前需先补齐或验证解析路径。
 - 当前 workspace 没有专用 `typecheck` 脚本或集成测试。

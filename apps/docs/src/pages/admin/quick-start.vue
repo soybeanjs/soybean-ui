@@ -1,4 +1,5 @@
 <script setup lang="ts">
+definePage({ layout: 'default' });
 // TODO(admin): scaffold placeholder — render quick-start markdown.
 const path = 'admin/quick-start';
 </script>

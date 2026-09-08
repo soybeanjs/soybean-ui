@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/combobox
 Markdown URL: https://ui.soybeanjs.cn/components/combobox.md
 Category: Forms
-Description: A combobox for searching and selecting values from an option list, with an explicit anchor composition, clearable input, and complete popup/filtering behavior. The input filters options as you type and keyboard navigation follows the WAI-ARIA combobox pattern. Use it when users must type to filter a list; for selection without typing, use `SSelect`; for fuzzy-matching suggestions over text, use `SAutocomplete`.
+Description: A combobox for searching and selecting values from an option list, with an explicit anchor composition, clearable input, and complete popup/filtering behavior. The input filters options as you type and keyboard navigation follows the WAI-ARIA combobox pattern. Use it when users must type to filter a list; for selection without typing, use SSelect; for fuzzy-matching suggestions over text, use SAutocomplete.
 
 ## Overview
 

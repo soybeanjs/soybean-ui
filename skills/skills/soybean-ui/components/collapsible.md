@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/collapsible
 Markdown URL: https://ui.soybeanjs.cn/components/collapsible.md
 Category: Data Display
-Description: An interactive component that expands/collapses a panel. `SCollapsible` wraps the headless `CollapsibleRoot` with the `collapsibleVariants` style recipe (3 slots: root/trigger/content; 6 sizes), and the headless `CollapsibleTrigger`/`CollapsibleContent` primitives provide the toggle button and the animated panel.
+Description: An interactive component that expands/collapses a panel. SCollapsible wraps the headless CollapsibleRoot with the collapsibleVariants style recipe (3 slots: root/trigger/content; 6 sizes), and the headless CollapsibleTrigger/CollapsibleContent primitives provide the toggle button and the animated panel.
 
 ## Overview
 

@@ -1,13 +1,12 @@
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import path from 'node:path';
-import type { Plugin, ResolvedConfig, ViteDevServer } from 'vite';
+import type { Plugin, ResolvedConfig } from 'vite';
+import { resolveContentRoutePath, toPosixPath } from './docs-routes';
 
 type DocFile = {
   description: string;
-  outputPath: string;
   routePath: string;
-  sourcePath: string;
   title: string;
   value: string;
 };
@@ -51,11 +50,19 @@ const llmOnlyRegex = /<llm-only>([\s\S]*?)<\/llm-only>/giu;
 const llmExcludeRegex = /<llm-exclude>[\s\S]*?<\/llm-exclude>/giu;
 const htmlCommentRegex = /<!--([\s\S]*?)-->/gu;
 const genericVueTagRegex = /^<\/?[A-Z][^>]*>$/gmu;
-const docsDirSegments = ['src', 'docs', 'en'] as const;
-const overviewPrefix = '/overview';
-const componentsPrefix = '/components';
 
-export function soybeanDocsLlmsPlugin(): Plugin {
+/**
+ * llms.txt generation for the ubean docs site.
+ *
+ * Content now lives in `src/content/{en,zh}` with section folders
+ * (`ui` / `ui-x` / `admin` / `chart` / `sbean` / `headless`), and route mapping
+ * is shared with prerender/sitemap via `build/docs-routes.ts`.
+ *
+ * Dev: middleware answers `/llms.txt`, `/llms-full.txt`, and per-page `<route>.md`.
+ * Build: `closeBundle` writes the outputs into `dist/public` (the ubean SSG root)
+ * after the prerender phase has finished.
+ */
+export function docsLlmsPlugin(): Plugin {
   let config: ResolvedConfig | null = null;
   let isSsrBuild = false;
 
@@ -74,17 +81,17 @@ export function soybeanDocsLlmsPlugin(): Plugin {
           return;
         }
 
-        handleDevRequest(req, res, next, server, config);
+        handleDevRequest(req, res, next, config);
       });
     },
 
-    async writeBundle() {
+    async closeBundle() {
       if (!config || isSsrBuild) {
         return;
       }
 
-      const output = await createLlmsOutput(config.root, config.base);
-      const outDir = path.resolve(config.root, config.build.outDir);
+      const output = await createLlmsOutput(config.root);
+      const outDir = path.resolve(config.root, 'dist/public');
 
       await writeLlmsOutput(outDir, output);
     }
@@ -95,7 +102,6 @@ async function handleDevRequest(
   req: IncomingMessage & { url?: string },
   res: ServerResponse,
   next: () => void,
-  server: ViteDevServer,
   config: ResolvedConfig
 ): Promise<void> {
   const requestPath = stripQuery(req.url ?? '');
@@ -105,26 +111,19 @@ async function handleDevRequest(
     return;
   }
 
-  const normalizedBase = normalizeBase(config.base);
-  const relativeRequestPath = stripBase(requestPath, normalizedBase);
+  const output = await createLlmsOutput(config.root);
 
-  if (!relativeRequestPath) {
-    next();
-    return;
-  }
-
-  const output = await createLlmsOutput(config.root, config.base);
-  const page = output.pages.get(relativeRequestPath);
-
-  if (relativeRequestPath === '/llms.txt') {
+  if (requestPath === '/llms.txt') {
     respondWithText(res, output.index);
     return;
   }
 
-  if (relativeRequestPath === '/llms-full.txt') {
+  if (requestPath === '/llms-full.txt') {
     respondWithText(res, output.full);
     return;
   }
+
+  const page = output.pages.get(requestPath);
 
   if (page) {
     respondWithText(res, page);
@@ -148,16 +147,16 @@ async function writeLlmsOutput(outDir: string, output: LlmsOutput): Promise<void
   ]);
 }
 
-async function createLlmsOutput(rootDir: string, base: string): Promise<LlmsOutput> {
-  const docsDir = path.resolve(rootDir, ...docsDirSegments);
+async function createLlmsOutput(rootDir: string): Promise<LlmsOutput> {
+  const docsDir = path.join(rootDir, 'src/content/en');
   const docPaths = await collectMarkdownFiles(docsDir);
-  const docFiles = await Promise.all(docPaths.map(docPath => createDocFile(rootDir, docsDir, docPath, base)));
+  const docFiles = await Promise.all(docPaths.map(docPath => createDocFile(rootDir, docsDir, docPath)));
   const sortedDocFiles = docFiles.sort((left, right) => left.routePath.localeCompare(right.routePath));
-  const pages = new Map(sortedDocFiles.map(file => [file.outputPath, createPageContent(file, base)]));
+  const pages = new Map(sortedDocFiles.map(file => [`${file.routePath}.md`, createPageContent(file)]));
 
   return {
-    full: createLlmsFull(sortedDocFiles, base),
-    index: createLlmsIndex(sortedDocFiles, base),
+    full: createLlmsFull(sortedDocFiles),
+    index: createLlmsIndex(sortedDocFiles),
     pages
   };
 }
@@ -183,7 +182,7 @@ async function collectMarkdownFiles(directoryPath: string): Promise<string[]> {
   return nestedPaths.flat();
 }
 
-async function createDocFile(rootDir: string, docsDir: string, filePath: string, base: string): Promise<DocFile> {
+async function createDocFile(rootDir: string, docsDir: string, filePath: string): Promise<DocFile> {
   const relativePath = toPosixPath(path.relative(docsDir, filePath));
   const rawContent = await readFile(filePath, 'utf8');
   const { content, data } = parseFrontmatter(rawContent);
@@ -192,25 +191,21 @@ async function createDocFile(rootDir: string, docsDir: string, filePath: string,
   const normalizedContent = normalizeMarkdownContent(content, relativePath, apiSummary);
   const title = data.title || extractTitle(normalizedContent) || humanizeTitle(relativePath);
   const description = data.description || extractDescription(normalizedContent);
-  const routePath = resolveRoutePath(relativePath);
-  const outputPath = `${routePath}.md`;
-  const sourcePath = withBase(base, routePath);
+  const routePath = resolveContentRoutePath(relativePath.replace(/\.md$/u, ''));
 
   return {
     description,
-    outputPath,
     routePath,
-    sourcePath,
     title,
     value: normalizedContent
   };
 }
 
-function createLlmsIndex(docFiles: DocFile[], base: string): string {
+function createLlmsIndex(docFiles: DocFile[]): string {
   const toc = docFiles.map(file => {
     const descriptionSuffix = file.description ? `: ${file.description}` : '';
 
-    return `- [${file.title}](${withBase(base, file.outputPath)})${descriptionSuffix}`;
+    return `- [${file.title}](${file.routePath}.md)${descriptionSuffix}`;
   });
 
   return `${[
@@ -220,7 +215,7 @@ function createLlmsIndex(docFiles: DocFile[], base: string): string {
     '',
     '## Details',
     '',
-    '- Generated from docs/src/docs/en for the vite-ssg documentation site.',
+    '- Generated from src/content/en for the ubean documentation site.',
     '- Mirrors the current docs routing model: overview pages and component detail pages.',
     '- Markdown component placeholders are normalized into short textual hints for LLM consumption.',
     '',
@@ -232,12 +227,12 @@ function createLlmsIndex(docFiles: DocFile[], base: string): string {
     .trimEnd()}\n`;
 }
 
-function createLlmsFull(docFiles: DocFile[], base: string): string {
+function createLlmsFull(docFiles: DocFile[]): string {
   const sections = docFiles.flatMap(file => [
     `## ${file.title}`,
     '',
-    `- Page URL: ${withBase(base, file.routePath)}`,
-    `- Markdown URL: ${withBase(base, file.outputPath)}`,
+    `- Page URL: ${file.routePath}`,
+    `- Markdown URL: ${file.routePath}.md`,
     ...(file.description ? [`- Description: ${file.description}`] : []),
     '',
     file.value.trim(),
@@ -255,12 +250,12 @@ function createLlmsFull(docFiles: DocFile[], base: string): string {
     .trimEnd()}\n`;
 }
 
-function createPageContent(file: DocFile, base: string): string {
+function createPageContent(file: DocFile): string {
   return [
     `# ${file.title}`,
     '',
-    `Source URL: ${withBase(base, file.routePath)}`,
-    `Markdown URL: ${withBase(base, file.outputPath)}`,
+    `Source URL: ${file.routePath}`,
+    `Markdown URL: ${file.routePath}.md`,
     ...(file.description ? [`Description: ${file.description}`] : []),
     '',
     file.value.trim(),
@@ -305,8 +300,8 @@ function parseFrontmatter(source: string): FrontmatterResult {
   return { content, data };
 }
 
-function normalizeMarkdownContent(source: string, relativePath: string, apiSummary: string | null): string {
-  const normalized = source
+function normalizeMarkdownContent(source: string, _relativePath: string, apiSummary: string | null): string {
+  return source
     .replace(htmlCommentRegex, '')
     .replace(llmExcludeRegex, '')
     .replace(llmOnlyRegex, '$1')
@@ -321,8 +316,6 @@ function normalizeMarkdownContent(source: string, relativePath: string, apiSumma
     })
     .replace(genericVueTagRegex, '')
     .replace(/\n{3,}/g, '\n\n');
-
-  return normalized;
 }
 
 function resolveGeneratedApiPath(relativePath: string): string | null {
@@ -454,16 +447,6 @@ function extractDescription(source: string): string {
   return '';
 }
 
-function resolveRoutePath(relativePath: string): string {
-  const normalizedPath = relativePath.replace(/\.md$/u, '');
-
-  if (normalizedPath.startsWith('ui/components/')) {
-    return `${componentsPrefix}/${normalizedPath.slice('ui/components/'.length)}`;
-  }
-
-  return `${overviewPrefix}/${normalizedPath}`;
-}
-
 function humanizeTitle(relativePath: string): string {
   const fileName = path.basename(relativePath, '.md');
 
@@ -474,44 +457,8 @@ function humanizeTitle(relativePath: string): string {
     .join(' ');
 }
 
-function normalizeBase(base: string): string {
-  if (!base || base === '/') {
-    return '/';
-  }
-
-  return `/${base.replace(/^\/|\/$/g, '')}`;
-}
-
-function withBase(base: string, targetPath: string): string {
-  const normalizedBase = normalizeBase(base);
-
-  if (normalizedBase === '/') {
-    return targetPath;
-  }
-
-  return `${normalizedBase}${targetPath}`;
-}
-
-function stripBase(targetPath: string, base: string): string {
-  const normalizedBase = normalizeBase(base);
-
-  if (normalizedBase === '/') {
-    return targetPath;
-  }
-
-  if (!targetPath.startsWith(normalizedBase)) {
-    return '';
-  }
-
-  return targetPath.slice(normalizedBase.length) || '/';
-}
-
 function stripQuery(url: string): string {
   return url.split('?')[0] || '/';
-}
-
-function toPosixPath(filePath: string): string {
-  return filePath.split(path.sep).join('/');
 }
 
 function respondWithText(res: ServerResponse, content: string): void {

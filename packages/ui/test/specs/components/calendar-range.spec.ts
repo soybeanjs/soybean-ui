@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { nextTick } from 'vue';
 import { flushPromises, mount } from '@vue/test-utils';
-import { CalendarDate } from '@internationalized/date';
+import { CalendarDate, getLocalTimeZone, today } from '@internationalized/date';
 import type { DateValue } from '@internationalized/date';
 import SCalendarRange from '@/components/calendar-range/calendar-range.vue';
 import { getA11yViolations } from '../../shared/a11y';
@@ -57,7 +57,8 @@ describe('SCalendarRange', () => {
     });
 
     it('marks today with the data-today attribute', () => {
-      const wrapper = mountRange({ defaultPlaceholder: new CalendarDate(2026, 8, 18) });
+      const now = today(getLocalTimeZone());
+      const wrapper = mountRange({ defaultPlaceholder: new CalendarDate(now.year, now.month, now.day) });
 
       expect(wrapper.find('[data-today]').exists()).toBe(true);
       wrapper.unmount();

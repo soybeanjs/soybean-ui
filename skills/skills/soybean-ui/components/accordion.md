@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/accordion
 Markdown URL: https://ui.soybeanjs.cn/components/accordion.md
 Category: Data Display
-Description: A vertically (or horizontally) stacked set of interactive headings that each reveal a section of content, supporting single or multiple expansion. `SAccordion` combines an `AccordionRoot`/`AccordionItem`/`AccordionHeader`/`AccordionTrigger`/`AccordionContent`/`AccordionDescription` family of headless primitives (zero styles) with the `accordionVariants` style recipe (8 slots, 6 sizes).
+Description: A vertically (or horizontally) stacked set of interactive headings that each reveal a section of content, supporting single or multiple expansion. SAccordion combines an AccordionRoot/AccordionItem/AccordionHeader/AccordionTrigger/AccordionContent/AccordionDescription family of headless primitives (zero styles) with the accordionVariants style recipe (8 slots, 6 sizes).
 
 ## Overview
 

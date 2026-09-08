@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useGeneratedI18n } from '~/composables/use-generated-i18n';
 import { getComponentChangelogDocument } from '~/shared/generated-changelog';
 import type { GeneratedChangelogEntryType } from '~/shared/generated-changelog';

@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/date-range-field
 Markdown URL: https://ui.soybeanjs.cn/components/date-range-field.md
 Category: Forms
-Description: A segmented date range input that renders two groups of keyboard-editable date segments — one for the start date and one for the end date — while submitting native form values for both. Use it whenever a user must enter a bounded interval fast, such as booking stay dates, reporting windows, or filter ranges where typing beats calendar clicking. For a range chosen from a calendar popup, prefer `SDateRangePicker`; for a single date, use `SDateField`.
+Description: A segmented date range input that renders two groups of keyboard-editable date segments — one for the start date and one for the end date — while submitting native form values for both. Use it whenever a user must enter a bounded interval fast, such as booking stay dates, reporting windows, or filter ranges where typing beats calendar clicking. For a range chosen from a calendar popup, prefer SDateRangePicker; for a single date, use SDateField.
 
 ## Overview
 

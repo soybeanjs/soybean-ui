@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/notification
 Markdown URL: https://ui.soybeanjs.cn/ui-x/notification.md
 Category: Miscellaneous
-Description: `SxNotification` is a styled inline notification for AI output with four visual tones — `info`, `success`, `warning`, and `error`. It announces status with `role="status"` and pairs an icon, title, and optional description with a close button.
+Description: SxNotification is a styled inline notification for AI output with four visual tones — info, success, warning, and error. It announces status with role=\"status\" and pairs an icon, title, and optional description with a close button.
 
 ## Overview
 

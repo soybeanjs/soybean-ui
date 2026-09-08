@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/autocomplete
 Markdown URL: https://ui.soybeanjs.cn/components/autocomplete.md
 Category: Forms
-Description: An autocomplete that filters suggestion items from text input and quickly fills the input with a selected result. It opens as you type, fuzzy-matches options with Fuse, and supports grouping, a clearable input, and a data-driven compact API. Use it when users should type keywords to get suggestions over free text; when options come from a fixed list, prefer `SSelect`; when options come from a known set that benefits from type-to-filter, `SCombobox` is the closer sibling.
+Description: An autocomplete that filters suggestion items from text input and quickly fills the input with a selected result. It opens as you type, fuzzy-matches options with Fuse, and supports grouping, a clearable input, and a data-driven compact API. Use it when users should type keywords to get suggestions over free text; when options come from a fixed list, prefer SSelect; when options come from a known set that benefits from type-to-filter, SCombobox is the closer sibling.
 
 ## Overview
 

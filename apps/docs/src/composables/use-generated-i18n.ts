@@ -1,34 +1,66 @@
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-export function useGeneratedI18n() {
-  const { locale, messages } = useI18n({ useScope: 'global' });
+type LocaleMessages = Record<string, unknown>;
 
-  function resolveLocaleMessage(path: string) {
-    const segments = path.split('.');
-    const localeMessages = messages.value as Record<string, unknown>;
-    let current: unknown = localeMessages[locale.value];
+// Generated API / changelog descriptions live in `src/generated/{api,changelog}-locales/*.json`
+// (produced by `sui gen api --translate` / `sui gen changelog --translate`). The sui generator
+// writes `zh-CN.json` while the site locale code is `zh`, so resolve the file via an alias map
+// instead of relying on the global i18n messages merge.
+const GENERATED_LOCALE_FILES: Record<string, string> = {
+  zh: 'zh-CN'
+};
 
-    for (const segment of segments) {
-      if (!current || typeof current !== 'object' || !(segment in current)) {
-        return null;
-      }
+const generatedLocaleModules = import.meta.glob<LocaleMessages>('../generated/{api,changelog}-locales/*.json', {
+  eager: true,
+  import: 'default'
+});
 
-      current = current[segment as keyof typeof current];
+const generatedMessagesByFile = new Map<string, LocaleMessages>();
+
+for (const [path, messages] of Object.entries(generatedLocaleModules)) {
+  const fileName = path.match(/([\w-]+)\.json$/u)?.[1];
+
+  if (fileName) {
+    generatedMessagesByFile.set(fileName, messages);
+  }
+}
+
+function getGeneratedMessages(locale: string): LocaleMessages {
+  const fileName = GENERATED_LOCALE_FILES[locale] ?? locale;
+  const messages = generatedMessagesByFile.get(fileName);
+
+  if (!messages) {
+    return {};
+  }
+
+  return messages;
+}
+
+function readMessagePath(messages: LocaleMessages, path: string): string | null {
+  let current: unknown = messages;
+
+  for (const segment of path.split('.')) {
+    if (!current || typeof current !== 'object' || !(segment in current)) {
+      return null;
     }
 
-    return typeof current === 'string' ? current : null;
+    current = (current as Record<string, unknown>)[segment];
   }
+
+  return typeof current === 'string' ? current : null;
+}
+
+export function useGeneratedI18n() {
+  const { locale } = useI18n({ useScope: 'global' });
+  const generatedMessages = computed(() => getGeneratedMessages(locale.value));
 
   function resolveGeneratedText(text?: string | null, textKey?: string | null) {
     if (textKey) {
-      const translatedMessage = resolveLocaleMessage(textKey);
+      const translated = readMessagePath(generatedMessages.value, textKey)?.trim();
 
-      if (translatedMessage) {
-        const translated = translatedMessage.trim();
-
-        if (translated && translated !== textKey) {
-          return translated;
-        }
+      if (translated && translated !== textKey) {
+        return translated;
       }
     }
 

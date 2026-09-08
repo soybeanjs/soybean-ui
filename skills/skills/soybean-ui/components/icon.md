@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/icon
 Markdown URL: https://ui.soybeanjs.cn/components/icon.md
 Category: General
-Description: `SIcon` is a unified icon component built on top of [Iconify](https://iconify.design/). It supports rendering icons from the Iconify dataset or custom components/VNodes. It integrates with `SConfigProvider` for consistent sizing across the application.
+Description: SIcon is a unified icon component built on top of Iconify. It supports rendering icons from the Iconify dataset or custom components/VNodes. It integrates with SConfigProvider for consistent sizing across the application.
 
 ## Overview
 

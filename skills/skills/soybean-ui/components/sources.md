@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/sources
 Markdown URL: https://ui.soybeanjs.cn/ui-x/sources.md
 Category: Reasoning
-Description: `SxSources` is the AI citation list — a vertical list of reference sources used to answer a message. Each item is prefixed with a paperclip and either renders as an external link or a plain label.
+Description: SxSources is the AI citation list — a vertical list of reference sources used to answer a message. Each item is prefixed with a paperclip and either renders as an external link or a plain label.
 
 ## Overview
 

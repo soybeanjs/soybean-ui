@@ -7,17 +7,13 @@ export default defineConfig({
   },
   fmt: {
     ...fmt,
-    ignorePatterns: ['apps/playground/src/typings', 'apps/docs/src/typings']
+    ignorePatterns: ['apps/docs/src/typings']
   },
   lint,
   run: {
     tasks: {
       'build-ui': {
         command: 'pnpm --filter @soybeanjs/ui build',
-        dependsOn: ['build-headless']
-      },
-      'build-playground': {
-        command: 'pnpm --filter @soybeanjs/ui-playground build',
         dependsOn: ['build-headless']
       },
       'dev-docs': {

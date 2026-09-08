@@ -220,7 +220,9 @@ provideAnchorRootContext({
 });
 
 watch(
-  () => [registeredLinks.value, props.getContainer?.()] as const,
+  // NOTE: `props.getContainer` is a user callback that may touch `window`
+  // (e.g. `() => containerRef.value ?? window`); never invoke it during SSR.
+  () => [registeredLinks.value, isClient ? props.getContainer?.() : null] as const,
   () => {
     const container = getCurrentContainer();
     if (!container) {

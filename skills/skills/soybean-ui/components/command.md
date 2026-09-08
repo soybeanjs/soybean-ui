@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/command
 Markdown URL: https://ui.soybeanjs.cn/components/command.md
 Category: Navigation
-Description: Fast, composable, command menu for Vue. `SCommand` is a searchable command palette built on the headless listbox primitives with Fuse fuzzy matching. It delegates filtering, grouped item aggregation, and default item composition to the headless `CommandCompact`; the UI wrapper only injects styles.
+Description: Fast, composable, command menu for Vue. SCommand is a searchable command palette built on the headless listbox primitives with Fuse fuzzy matching. It delegates filtering, grouped item aggregation, and default item composition to the headless CommandCompact; the UI wrapper only injects styles.
 
 ## Overview
 

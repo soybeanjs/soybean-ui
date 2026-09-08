@@ -64,12 +64,12 @@
     "@soybeanjs/headless": "workspace:^",
     "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
-    "markstream-vue": "^2.0.8"
+    "markstream-vue": "^2.0.9"
   },
   "devDependencies": {
     "@nuxt/kit": "^4.5.2",
     "@soybeanjs/ui-uno": "workspace:^",
-    "@types/node": "^26.4.1",
+    "@types/node": "^26.5.0",
     "@unocss/cli": "^66.10.0",
     "@vitest/browser": "^5.0.0",
     "@vitest/browser-playwright": "^5.0.0",

@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/folder
 Markdown URL: https://ui.soybeanjs.cn/ui-x/folder.md
 Category: Miscellaneous
-Description: `SxFolder` is a collapsible folder component that presents a folder-style header (name, optional icon, and optional item-count badge) above a toggleable content area.
+Description: SxFolder is a collapsible folder component that presents a folder-style header (name, optional icon, and optional item-count badge) above a toggleable content area.
 
 ## Overview
 

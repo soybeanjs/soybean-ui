@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/input
 Markdown URL: https://ui.soybeanjs.cn/components/input.md
 Category: Forms
-Description: A single-line text input that collects user input, supporting standard input attributes, prefix/suffix slots, and clearable functionality. Use it for any short free-text entry — form fields, search boxes, filters. For multi-line text use `STextarea`; for sensitive values use `SPassword`; for numeric values use `SInputNumber`.
+Description: A single-line text input that collects user input, supporting standard input attributes, prefix/suffix slots, and clearable functionality. Use it for any short free-text entry — form fields, search boxes, filters. For multi-line text use STextarea; for sensitive values use SPassword; for numeric values use SInputNumber.
 
 ## Overview
 

@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/slider
 Markdown URL: https://ui.soybeanjs.cn/components/slider.md
 Category: Forms
-Description: A slider for picking one or more numeric values within a continuous range, supporting horizontal and vertical orientations, multi-thumb range mode, RTL and inverted directions, and complete keyboard navigation. Use it when the value belongs to a bounded numeric range and the user should adjust it with mouse or keyboard precision; when the value is free-form text or numbers, prefer `SInputNumber` instead.
+Description: A slider for picking one or more numeric values within a continuous range, supporting horizontal and vertical orientations, multi-thumb range mode, RTL and inverted directions, and complete keyboard navigation. Use it when the value belongs to a bounded numeric range and the user should adjust it with mouse or keyboard precision; when the value is free-form text or numbers, prefer SInputNumber instead.
 
 ## Overview
 

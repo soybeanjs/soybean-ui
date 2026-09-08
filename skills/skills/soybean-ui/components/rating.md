@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/rating
 Markdown URL: https://ui.soybeanjs.cn/components/rating.md
 Category: Other
-Description: A star-rating component built on a multi-slot headless core: `RatingRoot` provides the slider context, state, and keyboard handling, while each `RatingItem` renders a single star. Supports controlled and uncontrolled modes, half-star precision, clear-on-repeat-click, read-only and disabled states, horizontal/vertical orientation, RTL direction, and native form integration through a visually hidden input. Use it whenever users need to express a graded preference—product reviews, feedback surveys, or skill self-assessment.
+Description: A star-rating component built on a multi-slot headless core: RatingRoot provides the slider context, state, and keyboard handling, while each RatingItem renders a single star. Supports controlled and uncontrolled modes, half-star precision, clear-on-repeat-click, read-only and disabled states, horizontal/vertical orientation, RTL direction, and native form integration through a visually hidden input. Use it whenever users need to express a graded preference—product reviews, feedback surveys, or skill self-assessment.
 
 ## Overview
 

@@ -2,15 +2,15 @@
 
 Rules for playground examples, documentation, and tests. The companion [SKILL.md](SKILL.md) owns pattern classification, phase order, and guardrails; [layers.md](layers.md) owns implementation layer rules; [process.md](process.md) owns finish and commit rules.
 
-## Playground
+## Playground (examples)
 
-Applies to `apps/playground/src/examples/**/*.vue`.
+Applies to `apps/docs/src/examples/**/*.vue` — the demo examples rendered by `<PlaygroundGallery>` on the docs site. There is no separate playground app; examples are a docs delivery surface.
 
-Add playground only after the component body, exports, and major public capabilities are stable.
+Add examples only after the component body, exports, and major public capabilities are stable.
 
 ### Directory structure
 
-Each component's playground lives in `apps/playground/src/examples/ui/{component}/`.
+Each component's examples live in `apps/docs/src/examples/ui/{component}/`.
 
 Recommended structure:
 
@@ -47,11 +47,11 @@ Not every component needs every example, but each file demonstrates only one cap
 - Controlled state uses `ref` or `shallowRef`.
 - Static data uses `const`.
 
-### Routing and discovery
+### Discovery
 
-- Playground auto-discovers `examples/**/index.vue`.
-- No manual route registration after creating a component directory.
-- `PlaygroundGallery` auto-discovers all example files in the same directory except `index.vue`, extracts `order` during glob, and displays in ascending `order`.
+- Docs discovers all example SFCs through `import.meta.glob` in `apps/docs/src/constants/globs.ts`.
+- No manual registration after creating a component directory.
+- `PlaygroundGallery` looks up all example files in the same directory except `index.vue`, extracts `order` during glob, and displays in ascending `order`.
 - `UsageCode`, i18n title keys, and docs-side example lookup all use the prefix-stripped `name`, not the raw filename.
 
 ### Quality requirements
@@ -59,18 +59,18 @@ Not every component needs every example, but each file demonstrates only one cap
 - Examples cover major public capabilities; do not repeat the same scenario.
 - If the component exposes `color`, `size`, `disabled`, `ui`, etc., examples should reflect those capabilities.
 - The `name` part of sub-example filenames must accurately describe the capability point — it drives i18n title keys and display semantics.
-- Playground is a formal delivery surface, not an optional attachment.
+- Examples are a formal delivery surface, not an optional attachment.
 
 ## Docs
 
-Applies to `apps/docs/src/docs/**/*.md`.
+Applies to `apps/docs/src/content/**/*.md`.
 
 Add docs after the component API, exports, and playground are basically stable.
 
 ### Doc delivery surfaces
 
-- Chinese docs: `apps/docs/src/docs/zh-CN/ui/components/{component}.md`
-- English docs: `apps/docs/src/docs/en/ui/components/{component}.md`
+- Chinese docs: `apps/docs/src/content/zh/ui/components/{component}.md`
+- English docs: `apps/docs/src/content/en/ui/components/{component}.md`
 
 Both files must share the same structure; only the language may differ.
 
@@ -157,13 +157,13 @@ Common groups:
 
 - Doc content stays in sync with the actual component implementation.
 - All non-optional sections in the [Recommended structure](#recommended-structure) are present and follow the [Section content standards](#section-content-standards) contract; optional sections are omitted only when they do not apply.
-- zh-CN and en docs share the identical section order; a structure diff is empty.
+- zh and en docs share the identical section order; a structure diff is empty.
 - `<UsageCode>` and `<PlaygroundGallery>` `component` values match the component directory name.
 - If playground sub-examples carry order prefixes, the docs still use prefix-stripped example keys — never write raw filenames like `01-basic` into docs.
 - `<ComponentApi>` `component` value matches the real API data source; the generated table remains the authoritative source for prop/event/slot type definitions, default values, and required markers.
 - Demos progress basic → advanced and cover the component's major public capabilities; no duplicate scenes.
 - Notes include the architecture/benchmark-difference table and at least one caution; FAQ has 3–6 question/answer pairs.
-- Doc demo surfaces match `apps/playground/src/examples/ui/{component}/` real files.
+- Doc demo surfaces match `apps/docs/src/examples/ui/{component}/` real files.
 - Titles and API content do not lag behind the implementation.
 - New components default to both Chinese and English docs; do not ship single-language only.
 

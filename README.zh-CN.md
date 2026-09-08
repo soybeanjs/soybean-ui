@@ -51,8 +51,8 @@ UnoCSS 配置 ──> @soybeanjs/ui-uno
 
 Monorepo 还发布 `@soybeanjs/theme`、
 `@soybeanjs/ui-uno`、源码分发 CLI `sbean` 与
-`@soybeanjs/ui-skills`。三个私有应用分别承担文档站、playground 与 Nuxt 集成
-验证。
+`@soybeanjs/ui-skills`。两个私有应用分别承担文档站（同时承载交互式组件示例）
+与 Nuxt 集成验证。
 
 完整 workspace 地图、依赖图、构建/测试链路及事实源见
 [项目架构](./docs/architecture.md)；按优先级排列的改进项与验收条件见

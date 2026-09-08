@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/toast
 Markdown URL: https://ui.soybeanjs.cn/components/toast.md
 Category: Feedback
-Description: Transient notifications that appear in a viewport and auto-dismiss. `SToastProvider` renders the toast viewports and the `toast` imperative API creates, updates, dismisses, and inspects notifications. It supports six types, six positions, stacking/expansion, swipe-to-dismiss, promise toasts, rich color and inverted themes, and a keyboard hotkey to focus the list.
+Description: Transient notifications that appear in a viewport and auto-dismiss. SToastProvider renders the toast viewports and the toast imperative API creates, updates, dismisses, and inspects notifications. It supports six types, six positions, stacking/expansion, swipe-to-dismiss, promise toasts, rich color and inverted themes, and a keyboard hotkey to focus the list.
 
 ## Overview
 

@@ -1,0 +1,40 @@
+<script setup lang="ts">
+import { onBeforeUnmount } from 'vue';
+import { resetDocOutline } from '~/composables/use-doc-outline';
+
+definePage({ layout: 'default' });
+
+// TODO(headless): placeholder until the headless docs land (D8).
+
+const { t } = useI18n();
+
+onBeforeUnmount(() => {
+  resetDocOutline();
+});
+</script>
+
+<template>
+  <div class="mx-auto max-w-screen-2xl space-y-8 px-4 py-8 md:px-8 md:pt-12">
+    <div class="space-y-4">
+      <div
+        class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground"
+      >
+        <SIcon icon="lucide:code-xml" class="text-sm text-primary" />
+        <span>{{ t('layout.header.headless') }}</span>
+      </div>
+      <h1 class="text-[clamp(2.4rem,5vw,4rem)] font-black leading-[0.96] tracking-[-0.05em] text-foreground">
+        {{ t('headless.catalog.title') }}
+      </h1>
+      <p class="max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">
+        {{ t('headless.catalog.description') }}
+      </p>
+    </div>
+    <SAlert
+      color="info"
+      variant="soft"
+      icon="lucide:construction"
+      :title="t('headless.catalog.notice.title')"
+      :description="t('headless.catalog.notice.description')"
+    />
+  </div>
+</template>

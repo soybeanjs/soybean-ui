@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { computed, ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 import { pascalCase } from '@soybeanjs/headless/shared';
 import { useGeneratedI18n } from '~/composables/use-generated-i18n';
+import { useLocalePrefix } from '~/composables/use-locale-prefix';
 import { getReleaseChangelogDocument } from '~/shared/generated-changelog';
 import type {
   GeneratedChangelogEntryType,
@@ -8,10 +11,13 @@ import type {
   GeneratedReleaseChangelogVersion
 } from '~/shared/generated-changelog';
 
+definePage({ layout: 'default' });
+
 const route = useRoute();
 const router = useRouter();
 const { t } = useI18n();
 const { resolveGeneratedText } = useGeneratedI18n();
+const { localizedTo } = useLocalePrefix();
 
 const releaseDocument = computed(() => getReleaseChangelogDocument());
 const releases = computed(() => releaseDocument.value.releases);
@@ -139,7 +145,7 @@ const actionLinks = computed(() => {
     },
     {
       label: t('releases_page.actions.browse_components'),
-      to: '/components'
+      to: localizedTo('/components')
     }
   );
 
@@ -285,7 +291,7 @@ function getRemainingComponentCount(release: GeneratedReleaseChangelogVersion) {
 }
 
 function toComponentLink(component: string) {
-  return `/components/${component}`;
+  return localizedTo(`/components/${component}`);
 }
 
 function normalizeSearchValue(value: string) {
@@ -401,7 +407,8 @@ function syncRouteState(component: string, related: boolean) {
   }
 
   router.replace({
-    path: '/releases',
+    // keep the current (possibly `/zh`-prefixed) path when syncing filters
+    path: route.path,
     query: nextQuery
   });
 }
@@ -470,7 +477,7 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                     :control-props="{
                       onBlur: handleFilterInputBlur,
                       onFocus: handleFilterInputFocus,
-                      onKeydown: event => {
+                      onKeydown: (event: KeyboardEvent) => {
                         if (event.key === 'Enter') {
                           handleFilterInputEnter();
                         }

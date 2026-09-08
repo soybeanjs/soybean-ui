@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import ThemeConfigurator from '@playground/components/theme-configurator.vue';
+import { useI18n } from 'vue-i18n';
 import LocaleToggler from './locale-toggler.vue';
+import ThemeConfigurator from './theme-configurator.vue';
 import ThemeSchemaToggler from './theme-schema-toggler.vue';
 
 const { t } = useI18n();

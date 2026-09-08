@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/calendar-range
 Markdown URL: https://ui.soybeanjs.cn/components/calendar-range.md
 Category: Forms
-Description: CalendarRange displays one or more month grids and lets users pick a start and end date directly from the calendar surface. Selecting the first date starts the range, a live hover preview highlights the candidate range, and the second click commits it — with reversed selections sorted automatically. Use it for booking, scheduling, or any range-picking surface that needs a keyboard-navigable grid instead of two text inputs. Pair it with `SDateRangePicker` when you need a popup trigger, or use it standalone inside forms and custom layouts.
+Description: CalendarRange displays one or more month grids and lets users pick a start and end date directly from the calendar surface. Selecting the first date starts the range, a live hover preview highlights the candidate range, and the second click commits it — with reversed selections sorted automatically. Use it for booking, scheduling, or any range-picking surface that needs a keyboard-navigable grid instead of two text inputs. Pair it with SDateRangePicker when you need a popup trigger, or use it standalone inside forms and custom layouts.
 
 ## Overview
 

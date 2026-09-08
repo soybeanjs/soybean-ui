@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/attachments
 Markdown URL: https://ui.soybeanjs.cn/ui-x/attachments.md
 Category: Attachments
-Description: `SxAttachments` is the AI attachment strip — a vertical list of attachment previews with built-in select and remove actions. It renders one `SxFileCard` per attachment and delegates all visual details (icon, name, meta line) to that sibling component.
+Description: SxAttachments is the AI attachment strip — a vertical list of attachment previews with built-in select and remove actions. It renders one SxFileCard per attachment and delegates all visual details (icon, name, meta line) to that sibling component.
 
 ## Overview
 

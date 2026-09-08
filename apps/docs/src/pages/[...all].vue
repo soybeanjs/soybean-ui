@@ -1,14 +1,13 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
+
+definePage({ layout: '404' });
+
 const { t } = useI18n();
 </script>
 
 <template>
-  <div>
-    {{ t('not_found_page') }}
+  <div class="p-4 text-center">
+    <h3>{{ t('not_found_page') }}</h3>
   </div>
 </template>
-
-<route lang="yaml">
-meta:
-  layout: 404
-</route>

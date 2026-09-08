@@ -1,6 +1,6 @@
 import type { ComponentResolver } from 'unplugin-vue-components';
 import { components } from '../constants';
-import { kebabCase, pascalCase } from '../shared';
+import { keysOf, kebabCase, pascalCase } from '../shared';
 
 export interface ResolverOptions {
   /**
@@ -16,24 +16,30 @@ export interface ResolverOptions {
 }
 
 function createResolver(options: ResolverOptions = {}) {
+  const map = new Map<string, string>();
+  keysOf(components).forEach(key => {
+    components[key].forEach(component => {
+      map.set(component, key);
+    });
+  });
+
   const resolver: ComponentResolver = {
     type: 'component',
-    resolve: (name: string) => {
-      const values = Object.values(components).flat();
-      const $name = pascalCase(name);
+    resolve: (id: string) => {
+      const name = pascalCase(id);
 
-      if (values.includes($name)) {
-        const moduleName = kebabCase($name).split('-')[0];
+      const value = map.get(name);
 
-        const $from = options.standalone ? `@soybeanjs/headless/${moduleName}` : `@soybeanjs/headless`;
-
-        return {
-          name: $name,
-          from: $from
-        };
+      if (!value) {
+        return null;
       }
 
-      return null;
+      const path = kebabCase(value);
+
+      return {
+        name,
+        from: options.standalone ? `@soybeanjs/headless/${path}` : `@soybeanjs/headless`
+      };
     }
   };
 

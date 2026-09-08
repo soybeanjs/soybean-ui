@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/thought-chain
 Markdown URL: https://ui.soybeanjs.cn/ui-x/thought-chain.md
 Category: Reasoning
-Description: `SxThoughtChain` is a structured reasoning step display that renders an ordered list of AI thinking stages. Each step shows a status symbol, title, optional icon, and expandable body content for steps with details.
+Description: SxThoughtChain is a structured reasoning step display that renders an ordered list of AI thinking stages. Each step shows a status symbol, title, optional icon, and expandable body content for steps with details.
 
 ## Overview
 

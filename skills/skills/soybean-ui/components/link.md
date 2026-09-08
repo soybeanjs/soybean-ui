@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/link
 Markdown URL: https://ui.soybeanjs.cn/components/link.md
 Category: General
-Description: `SLink` is a polymorphic link component that supports internal routing (via `RouterLink`) and external links (via `<a>` tag). It automatically detects external links and sets safe `target` and `rel` attributes, supports disabled state and polymorphic rendering (`as`/`asChild`).
+Description: SLink is a polymorphic link component that supports internal routing (via RouterLink) and external links (via <a> tag). It automatically detects external links and sets safe target and rel attributes, supports disabled state and polymorphic rendering (as/asChild).
 
 ## Overview
 

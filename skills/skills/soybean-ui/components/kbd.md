@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/kbd
 Markdown URL: https://ui.soybeanjs.cn/components/kbd.md
 Category: Data Display
-Description: The `SKbd` component represents a keyboard input element, typically used to display keyboard shortcuts and key combinations. It wraps the native `<kbd>` element and optionally symbolizes key names (e.g., `shift` → `⇧`, `enter` → `↵`) with platform-aware resolution for modifier keys (`meta`, `alt`, `ctrl`).
+Description: The SKbd component represents a keyboard input element, typically used to display keyboard shortcuts and key combinations. It wraps the native <kbd> element and optionally symbolizes key names (e.g., shift → ⇧, enter → ↵) with platform-aware resolution for modifier keys (meta, alt, ctrl).
 
 ## Overview
 

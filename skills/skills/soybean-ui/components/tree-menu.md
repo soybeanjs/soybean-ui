@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/tree-menu
 Markdown URL: https://ui.soybeanjs.cn/components/tree-menu.md
 Category: Navigation
-Description: A collapsible sidebar navigation tree-menu component. `STreeMenu` combines the headless `TreeMenuCompact` family of composite components (`TreeMenuRoot`/`TreeMenuOptionCompact`/`TreeMenuSlotCompact`, zero-style) with the `TreeMenuRoot` context (controlled/uncontrolled activation and expansion, collapsed sidebar mode, flyout submenus when collapsed, action menus); the UI layer only injects the 8-step size recipe and slot classes. The recursive `items` data model ships with built-in `icon`/`badge`/`tag`/`actions`/`isGroup`/link fields, and node content can be freely customized through the `item`/`item-leading`/`item-trailing` slots.
+Description: A collapsible sidebar navigation tree-menu component. STreeMenu combines the headless TreeMenuCompact family of composite components (TreeMenuRoot/TreeMenuOptionCompact/TreeMenuSlotCompact, zero-style) with the TreeMenuRoot context (controlled/uncontrolled activation and expansion, collapsed sidebar mode, flyout submenus when collapsed, action menus); the UI layer only injects the 8-step size recipe and slot classes. The recursive items data model ships with built-in icon/badge/tag/actions/isGroup/link fields, and node content can be freely customized through the item/item-leading/item-trailing slots.
 
 ## Overview
 

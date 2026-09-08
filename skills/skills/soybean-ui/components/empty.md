@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/empty
 Markdown URL: https://ui.soybeanjs.cn/components/empty.md
 Category: Data Display
-Description: A lightweight empty-state component that highlights missing content and guides the user toward a next action. `SEmpty` combines an `EmptyRoot`/`EmptyHeader`/`EmptyMedia`/`EmptyTitle`/`EmptyDescription`/`EmptyContent` family of headless primitives (zero styles) with the `emptyVariants` style recipe (6 slots, 6 sizes).
+Description: A lightweight empty-state component that highlights missing content and guides the user toward a next action. SEmpty combines an EmptyRoot/EmptyHeader/EmptyMedia/EmptyTitle/EmptyDescription/EmptyContent family of headless primitives (zero styles) with the emptyVariants style recipe (6 slots, 6 sizes).
 
 ## Overview
 

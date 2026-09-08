@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { getComponentApiSections } from './tables/generated-api';
 import { provideTypeRenderContext, typeToVNode } from './tables/type-anchor';
 

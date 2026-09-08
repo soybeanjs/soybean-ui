@@ -1,3 +1,4 @@
+import { shallowRef } from 'vue';
 import type { AnchorOptionData } from '@soybeanjs/headless/anchor';
 
 const docOutlineItems = shallowRef<AnchorOptionData[]>([]);

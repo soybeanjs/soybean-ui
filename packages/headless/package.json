@@ -116,7 +116,7 @@
     "@internationalized/number": "^3.6.8",
     "@soybeanjs/colord": "^0.7.1",
     "@standard-schema/spec": "^1.1.0",
-    "@tanstack/vue-virtual": "^3.13.36",
+    "@tanstack/vue-virtual": "^3.13.37",
     "@vueuse/core": "^14.4.0",
     "embla-carousel": "^8.6.0"
   },

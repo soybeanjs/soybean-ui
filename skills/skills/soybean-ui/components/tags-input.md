@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/tags-input
 Markdown URL: https://ui.soybeanjs.cn/components/tags-input.md
 Category: Forms
-Description: A composable multi-value input for adding, displaying, and removing tags. Supports controlled/uncontrolled `string[]` values, tag creation via `Enter`/`Tab`/blur/delimiter typing/paste, full keyboard selection and removal (with RTL reversal), `max`/`duplicate` constraints, and hidden form-input serialization. Use it for keyword lists, email recipients, or any small-token collection that needs fast keyboard workflows instead of a plain text input.
+Description: A composable multi-value input for adding, displaying, and removing tags. Supports controlled/uncontrolled string[] values, tag creation via Enter/Tab/blur/delimiter typing/paste, full keyboard selection and removal (with RTL reversal), max/duplicate constraints, and hidden form-input serialization. Use it for keyword lists, email recipients, or any small-token collection that needs fast keyboard workflows instead of a plain text input.
 
 ## Overview
 

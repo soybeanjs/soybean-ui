@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/color-swatch-picker
 Markdown URL: https://ui.soybeanjs.cn/components/color-swatch-picker.md
 Category: Forms
-Description: Choose a color quickly from a preset palette, useful for theme panels and suggested color selections. `SColorSwatchPicker` combines the headless `ColorSwatchPickerRoot`/`Item`/`ItemSwatch`/`ItemIndicator` primitives (built on the listbox) with the `colorSwatchPickerVariants` style recipe (6 slots, 6 sizes × 2 shapes).
+Description: Choose a color quickly from a preset palette, useful for theme panels and suggested color selections. SColorSwatchPicker combines the headless ColorSwatchPickerRoot/Item/ItemSwatch/ItemIndicator primitives (built on the listbox) with the colorSwatchPickerVariants style recipe (6 slots, 6 sizes × 2 shapes).
 
 ## Overview
 

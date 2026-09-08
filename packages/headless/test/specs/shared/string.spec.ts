@@ -11,12 +11,19 @@ describe('case conversion', () => {
     expect(kebabCase('helloWorld')).toBe('hello-world');
     expect(kebabCase('hello_world')).toBe('hello-world');
     expect(kebabCase('Hello World')).toBe('hello-world');
+    expect(kebabCase('SButton')).toBe('s-button');
   });
 
   it('pascalCase converts kebab, snake, and space cases', () => {
     expect(pascalCase('hello-world')).toBe('HelloWorld');
     expect(pascalCase('hello_world')).toBe('HelloWorld');
     expect(pascalCase('hello world')).toBe('HelloWorld');
+  });
+
+  it('pascalCase preserves already-cased component names', () => {
+    expect(pascalCase('SButton')).toBe('SButton');
+    expect(pascalCase('SDialog')).toBe('SDialog');
+    expect(pascalCase('AccordionRoot')).toBe('AccordionRoot');
   });
 
   it('camelCase converts to lower camel case', () => {

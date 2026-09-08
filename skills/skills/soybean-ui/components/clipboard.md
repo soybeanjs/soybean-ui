@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/clipboard
 Markdown URL: https://ui.soybeanjs.cn/components/clipboard.md
 Category: General
-Description: `SClipboard` is a clipboard action component built on `SButton` that copies a plain-text value to the system clipboard with accessible button semantics and copied-state feedback.
+Description: SClipboard is a clipboard action component built on SButton that copies a plain-text value to the system clipboard with accessible button semantics and copied-state feedback.
 
 ## Overview
 

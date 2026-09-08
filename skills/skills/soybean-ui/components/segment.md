@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/segment
 Markdown URL: https://ui.soybeanjs.cn/components/segment.md
 Category: Forms
-Description: A linear set of two or more mutually exclusive options presented as a unified control, with a sliding indicator that follows the active option. Use it for compact segmented pickers — time ranges, view toggles, or any small set of single-choice options — where the selection should change immediately. For a set of independent two-state buttons (single or multiple), use `SToggleGroup`; for plain tabbed content panels, use `STabs`.
+Description: A linear set of two or more mutually exclusive options presented as a unified control, with a sliding indicator that follows the active option. Use it for compact segmented pickers — time ranges, view toggles, or any small set of single-choice options — where the selection should change immediately. For a set of independent two-state buttons (single or multiple), use SToggleGroup; for plain tabbed content panels, use STabs.
 
 ## Overview
 

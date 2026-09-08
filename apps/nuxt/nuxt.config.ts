@@ -1,4 +1,3 @@
-import { URL, fileURLToPath } from 'node:url';
 import { createThemeInitScript } from '@soybeanjs/theme/ssr';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -35,24 +34,10 @@ export default defineNuxtConfig({
   },
   vite: {
     resolve: {
-      tsconfigPaths: true,
-      alias: [
-        // The UI package is a linked workspace package. Point it (and its
-        // internal `@/styles/*` imports) at the sources so the SSR bundle keeps
-        // a single UI instance: playground sources already reference the UI
-        // sources, and mixing src + dist would duplicate contexts.
-        {
-          find: /^@soybeanjs\/ui$/,
-          replacement: fileURLToPath(new URL('../../packages/ui/src/index.ts', import.meta.url))
-        },
-        { find: '@', replacement: fileURLToPath(new URL('../../packages/ui/src', import.meta.url)) }
-      ]
+      tsconfigPaths: true
     },
     optimizeDeps: {
       include: ['@vue/devtools-core', '@vue/devtools-kit']
     }
-  },
-  alias: {
-    '@docs': fileURLToPath(new URL('../docs/src', import.meta.url))
   }
 });

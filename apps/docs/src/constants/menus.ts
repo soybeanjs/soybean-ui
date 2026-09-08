@@ -17,15 +17,9 @@ export const newlyComponentKeys = [
   'datePicker',
   'dateRangeField',
   'dateRangePicker',
-  'monthPicker',
-  'monthRangePicker',
   'calendarRange',
-  'yearPicker',
-  'yearRangePicker',
   'timeField',
-  'timePicker',
   'timeRangeField',
-  'timeRangePicker',
   'splitNav'
 ];
 
@@ -82,11 +76,7 @@ export const menuData: MenuData[] = [
       'dateRangeField',
       'dateRangePicker',
       'editable',
-      'monthPicker',
-      'monthRangePicker',
       'calendarRange',
-      'yearPicker',
-      'yearRangePicker',
       'form',
       'label',
       'input',
@@ -95,9 +85,7 @@ export const menuData: MenuData[] = [
       'password',
       'textarea',
       'timeField',
-      'timePicker',
       'timeRangeField',
-      'timeRangePicker',
       'checkbox',
       'radioGroup',
       'segment',
@@ -148,6 +136,12 @@ export const menuData: MenuData[] = [
     value: 'utilities',
     i18n: 'sidebar.utilities',
     items: ['arrow', 'visuallyHidden']
+  },
+  {
+    // headless product line — placeholder until headless docs land (D8)
+    value: 'headless',
+    i18n: 'sidebar.headless',
+    items: []
   }
 ];
 

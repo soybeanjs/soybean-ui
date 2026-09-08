@@ -6,12 +6,13 @@ Minimal Nuxt integration fixture for `@soybeanjs/ui`.
 
 ## 📖 Overview
 
-This app verifies the repository's Nuxt module and UnoCSS wiring. It is a thin
-shell around the shared playground home rather than a standalone example app:
+This app verifies the repository's Nuxt module and UnoCSS wiring. It is a
+self-contained minimal demo page rather than a full example app:
 
 - Auto-import of `S`-prefixed components via the Nuxt module
 - UnoCSS integration for utility-first styling
-- Reuse of the playground page and theme context
+- Local `SConfigProvider` theme context (`app/theme.ts`) with SSR-safe
+  initialization via `createThemeInitScript`
 - `@nuxtjs/i18n` module configuration for `en` and `zh-CN`
 
 ## 🛠 Development
@@ -43,8 +44,9 @@ pnpm preview
 ```
 apps/nuxt/
 ├── app/
-│   └── app.vue       # Embeds the playground home and theme context
-├── nuxt.config.ts    # UI module, i18n, UnoCSS, and source aliases
+│   ├── app.vue       # Minimal demo page wrapped in SConfigProvider
+│   └── theme.ts      # Local theme context provider
+├── nuxt.config.ts    # UI module, i18n, UnoCSS
 ├── uno.config.ts     # Shared SoybeanUI preset stack
 ├── package.json
 └── tsconfig.json
@@ -52,8 +54,6 @@ apps/nuxt/
 
 ## Current Fixture Limits
 
-- `app.vue` imports source directly from `apps/playground`; this app is not
-  independently deployable.
 - The Nuxt i18n configuration references `en.json` and `zh-CN.json`, but locale
   fixture files are not currently present under `apps/nuxt`. Validate or add
   them before using this as an i18n reference.

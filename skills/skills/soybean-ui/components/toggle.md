@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/toggle
 Markdown URL: https://ui.soybeanjs.cn/components/toggle.md
 Category: Forms
-Description: A two-state button that toggles between pressed (`on`) and unpressed (`off`) states, reflecting its state via `aria-pressed` and `data-state`. Use it for an immediate, exclusive on/off switch such as a formatting tool or a filter chip; when the choice belongs to a form that needs explicit submission, prefer `SCheckbox` instead.
+Description: A two-state button that toggles between pressed (on) and unpressed (off) states, reflecting its state via aria-pressed and data-state. Use it for an immediate, exclusive on/off switch such as a formatting tool or a filter chip; when the choice belongs to a form that needs explicit submission, prefer SCheckbox instead.
 
 ## Overview
 

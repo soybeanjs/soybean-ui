@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/arrow
 Markdown URL: https://ui.soybeanjs.cn/components/arrow.md
 Category: Utilities
-Description: `SArrow` is a primitive SVG component that renders a downward-pointing triangle, used as a visual pointer for popovers, tooltips, and other floating elements. It is primarily consumed internally by SoybeanUI overlay components (popover, tooltip, hover-card, etc.) but can be used directly when building custom floating UI.
+Description: SArrow is a primitive SVG component that renders a downward-pointing triangle, used as a visual pointer for popovers, tooltips, and other floating elements. It is primarily consumed internally by SoybeanUI overlay components (popover, tooltip, hover-card, etc.) but can be used directly when building custom floating UI.
 
 ## Overview
 

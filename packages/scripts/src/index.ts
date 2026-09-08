@@ -3,6 +3,7 @@ import { spawn } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
+import { resolveDocsTargets } from './shared/docs-targets';
 import { generateCatalog } from './commands/catalog';
 import type { CatalogTarget } from './commands/catalog';
 
@@ -75,6 +76,8 @@ Commands:
                         Sync the @soybeanjs/* version constant used by project templates
 
 Options:
+  --target <targets>    (gen api/changelog) Docs targets, comma-separated.
+                        Defaults to all configured targets (see shared/docs-targets.ts).
   --locales-only        (gen api) Skip extraction and only refresh locale templates
   --translate           Translate pending locale entries via DeepL (requires DEEPL_API_KEY)
   --locale <locale>     Locale to translate to
@@ -121,36 +124,56 @@ function translateArgs(locale: string | null): string[] {
 
 async function runGenApi(args: string[]): Promise<void> {
   const { localesOnly, translate, locale } = parseGenFlags(args);
+  const targets = resolveDocsTargets(args);
   const { generateApiData } = await import('./commands/api');
   const { generateApiLocaleTemplates } = await import('./commands/api-i18n');
 
-  if (!localesOnly) {
-    await generateApiData();
+  for (const target of targets) {
+    if (!localesOnly) {
+      await generateApiData(path.join(target.generatedDir, 'api'));
+    }
+
+    await generateApiLocaleTemplates(target);
   }
 
-  await generateApiLocaleTemplates();
-  await formatPaths(['apps/docs/src/generated/api/']);
+  await formatPaths(targets.map(target => `${path.relative(process.cwd(), target.generatedDir)}/api/`));
 
   if (translate) {
     const { translateApiLocales } = await import('./commands/api-i18n-translate');
 
-    await translateApiLocales(translateArgs(locale));
+    for (const target of targets) {
+      await translateApiLocales(target, translateArgs(locale));
+    }
+
+    await formatPaths(targets.map(target => `${path.relative(process.cwd(), target.generatedDir)}/api-locales/`));
   }
 }
 
 async function runGenChangelog(args: string[]): Promise<void> {
   const { translate, locale } = parseGenFlags(args);
+  const targets = resolveDocsTargets(args);
   const { generateChangelogData } = await import('./commands/changelog');
   const { generateChangelogLocaleTemplates } = await import('./commands/changelog-i18n');
 
-  await generateChangelogData();
-  await generateChangelogLocaleTemplates();
-  await formatPaths(['apps/docs/src/generated/changelog/', 'apps/docs/src/generated/changelog-locales/']);
+  for (const target of targets) {
+    await generateChangelogData(path.join(target.generatedDir, 'changelog'));
+    await generateChangelogLocaleTemplates(target);
+  }
+
+  await formatPaths(
+    targets.flatMap(target => {
+      const relative = path.relative(process.cwd(), target.generatedDir);
+
+      return [`${relative}/changelog/`, `${relative}/changelog-locales/`];
+    })
+  );
 
   if (translate) {
     const { translateChangelogLocales } = await import('./commands/changelog-i18n-translate');
 
-    await translateChangelogLocales(translateArgs(locale));
+    for (const target of targets) {
+      await translateChangelogLocales(target, translateArgs(locale));
+    }
   }
 }
 
@@ -180,7 +203,7 @@ async function runGen(args: string[]): Promise<void> {
   }
 
   if (object === 'schema') {
-    // ADR-008 — emits valibot→JSON-Schema into apps/docs/public/schema/.
+    // ADR-008 — emits valibot→JSON-Schema into the docs site's public/schema/.
     const { generateSchemaData } = await import('../../sbean/scripts/schema');
 
     await generateSchemaData('apps/docs/public/schema');

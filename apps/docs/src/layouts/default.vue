@@ -1,13 +1,17 @@
 <script setup lang="ts">
+import { computed, shallowRef } from 'vue';
+import { useRoute } from 'vue-router';
 import { useDocOutline } from '~/composables/use-doc-outline';
+import { useLocalePrefix } from '~/composables/use-locale-prefix';
 
 const visible = shallowRef(false);
 const docOutline = useDocOutline();
 const route = useRoute();
+const { barePath } = useLocalePrefix();
 const hasDocOutline = computed(() => docOutline.value.length > 0);
-const shouldReserveOutlineSpace = computed(() => !['/', '/releases'].includes(route.path));
+const shouldReserveOutlineSpace = computed(() => !['/', '/releases'].includes(barePath(route.path)));
 const shouldShowSidebar = computed(() =>
-  ['/overview', '/components', '/ui-x', '/admin', '/chart'].some(p => route.path.startsWith(p))
+  ['/overview', '/components', '/ui-x', '/admin', '/chart', '/headless'].some(p => barePath(route.path).startsWith(p))
 );
 
 const closeDrawer = () => {
@@ -53,7 +57,7 @@ const closeDrawer = () => {
         :class="shouldReserveOutlineSpace ? 'xl:grid xl:grid-cols-[minmax(0,1fr)_18rem] xl:items-start xl:gap-8' : ''"
       >
         <div class="min-w-0">
-          <RouterView />
+          <PageView />
         </div>
 
         <aside v-if="shouldReserveOutlineSpace" class="lt-xl:hidden xl:w-72 xl:min-w-0">

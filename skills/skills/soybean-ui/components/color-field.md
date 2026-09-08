@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/color-field
 Markdown URL: https://ui.soybeanjs.cn/components/color-field.md
 Category: Forms
-Description: An input for editing either a full color string or a single channel, with support for `hex`, `rgb`, `hsl`, and `oklch` output. `SColorField` combines the headless `ColorFieldRoot`/`ColorFieldInput` primitives with the `colorFieldVariants` style recipe (2 slots, 6 sizes).
+Description: An input for editing either a full color string or a single channel, with support for hex, rgb, hsl, and oklch output. SColorField combines the headless ColorFieldRoot/ColorFieldInput primitives with the colorFieldVariants style recipe (2 slots, 6 sizes).
 
 ## Overview
 

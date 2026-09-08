@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/navigation-menu
 Markdown URL: https://ui.soybeanjs.cn/components/navigation-menu.md
 Category: Navigation
-Description: > **⚠️ Deprecated:** `NavigationMenu` is superseded by [`NavMenu`](/components/nav-menu) as the single admitted navigation-menu family. It is frozen — no new slots, features, or prop additions, critical-bug fixes only — and will be removed in **v1.0**. New code should use `SNavMenu`; existing code can migrate now via [Migrating to NavMenu](#migrating-to-navmenu).
+Description: ⚠️ Deprecated: NavigationMenu is superseded by NavMenu as the single admitted navigation-menu family. It is frozen — no new slots, features, or prop additions, critical-bug fixes only — and will be removed in v1.0. New code should use SNavMenu; existing code can migrate now via Migrating to NavMenu.
 
 > **⚠️ Deprecated:** `NavigationMenu` is superseded by [`NavMenu`](/components/nav-menu) as the single admitted navigation-menu family. It is frozen — no new slots, features, or prop additions, critical-bug fixes only — and will be removed in **v1.0**. New code should use `SNavMenu`; existing code can migrate now via [Migrating to NavMenu](#migrating-to-navmenu).
 

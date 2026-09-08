@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/spinner
 Markdown URL: https://ui.soybeanjs.cn/components/spinner.md
 Category: General
-Description: `SSpinner` is a lightweight loading indicator built on top of `SIcon`. It defaults to the Iconify `svg-spinners` collection and is suitable for inline loading states such as button loading, content placeholders, and async fetch indicators. Use the `color` and `size` props to match the surrounding UI, or swap the `icon` prop for any `svg-spinners:*` animation.
+Description: SSpinner is a lightweight loading indicator built on top of SIcon. It defaults to the Iconify svg-spinners collection and is suitable for inline loading states such as button loading, content placeholders, and async fetch indicators. Use the color and size props to match the surrounding UI, or swap the icon prop for any svg-spinners:* animation.
 
 ## Overview
 

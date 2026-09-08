@@ -1,16 +1,15 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "types": ["node", "vite/client", "vite-plugin-vue-meta-layouts/client"],
+    "types": ["node", "vite/client"],
+    "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"],
       "@/*": ["../../packages/ui/src/*"],
-      "@playground/*": ["../playground/src/*"],
       "@soybeanjs/ui": ["../../packages/ui/src/index.ts"],
-      "@soybeanjs/ui-x": ["../../packages/ui-x/src/index.ts"],
-      "@soybeanjs/theme": ["../../packages/theme/src/index.ts"],
-      "@soybeanjs/theme/*": ["../../packages/theme/src/*"]
+      "@soybeanjs/ui-x": ["../../packages/ui-x/src/index.ts"]
     }
   },
-  "include": ["./**/*.ts", "./**/*.d.ts", "./**/*.tsx", "./**/*.vue"]
+  "include": ["./**/*", "./.ubean/*.d.ts"],
+  "exclude": ["node_modules", "dist", ".ubean/virtual"]
 }

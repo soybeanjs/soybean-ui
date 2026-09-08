@@ -698,7 +698,7 @@ type MessageStatus = 'local' | 'loading' | 'updating' | 'success' | 'error' | 'a
 
 | 交付面          | 方式                                                                  |
 | :-------------- | :-------------------------------------------------------------------- |
-| Playground      | 新增 `apps/playground/src/examples/[ai-*]/` 示例，供手动验证。        |
+| Playground      | 新增 `apps/docs/src/examples/[ai-*]/` 示例，供手动验证。              |
 | Docs            | 新增 `apps/docs/src/docs/[en\|zh-CN]/` 的 AI 组件文档页。             |
 | API 数据        | 接入 `pnpm sui gen api` 生成 AI 组件 API JSON。                       |
 | Nuxt / Resolver | `ui-x` 提供 `/nuxt` 与 `/resolver` 子路径导出。                       |

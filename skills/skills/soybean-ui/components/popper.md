@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/popper
 Markdown URL: https://ui.soybeanjs.cn/components/popper.md
 Category: Overlay
-Description: The low-level floating primitive that anchors content to a trigger element with full trigger, open/close and dismiss behavior. `SPopper` composes the headless `PopperRoot`/`PopperTrigger`/`PopperAnchor`/`PopperPositioner`/`PopperPopup`/`PopperArrow`/`PopperSub` family (built on Floating UI) with the `popperVariants` style recipe (6 slots, 3 sizes).
+Description: The low-level floating primitive that anchors content to a trigger element with full trigger, open/close and dismiss behavior. SPopper composes the headless PopperRoot/PopperTrigger/PopperAnchor/PopperPositioner/PopperPopup/PopperArrow/PopperSub family (built on Floating UI) with the popperVariants style recipe (6 slots, 3 sizes).
 
 ## Overview
 

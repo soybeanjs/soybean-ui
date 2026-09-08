@@ -1,16 +1,20 @@
 <script setup lang="ts">
+import { computed, onMounted, onUnmounted, shallowRef } from 'vue';
+import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
+import { useLocalePrefix } from '~/composables/use-locale-prefix';
 import pkg from '../../package.json' with { type: 'json' };
 import ToolBar from './tool-bar.vue';
 
 const { t } = useI18n();
 const route = useRoute();
+const { barePath, localizedTo } = useLocalePrefix();
 const isScrolled = shallowRef(false);
 let bodyObserver: MutationObserver | null = null;
 let viewport: VisualViewport | null = null;
 
 const { version } = pkg;
-const showTopBar = computed(() => route.path !== '/');
+const showTopBar = computed(() => barePath(route.path) !== '/');
 
 function readWindowScrollOffset() {
   return (
@@ -78,7 +82,7 @@ onUnmounted(() => {
       class="docs-header-frame mx-auto flex max-w-360 min-h-[--app-header-main] items-center justify-between gap-3 px-6 py-3 group-data-[scrolled=true]:min-h-0 lt-md:group-data-[scrolled=true]:py-2 transition-all-300 xl:gap-4"
     >
       <div class="flex min-w-0 items-center gap-4 lg:gap-6 xl:gap-8">
-        <SLink to="/" class="group flex items-center gap-3">
+        <SLink :to="localizedTo('/')" class="group flex items-center gap-3">
           <AppLogo class="size-8 transition-transform duration-300 group-hover:scale-110" />
           <h1
             class="text-lg font-bold bg-clip-text text-transparent whitespace-nowrap bg-gradient-to-r from-primary-600 to-primary dark:from-primary dark:to-primary-300"

@@ -17,7 +17,7 @@
 - `useUiContext` 把视觉 token 注入与行为实现隔离，是高杠杆的深模块。
 - `createTheme` 同时服务运行时主题和 UnoCSS 构建，避免两套 token
   生成逻辑。
-- `sbean`、组件包、文档站、playground、生成脚本均有明确用途。
+- `sbean`、组件包、文档站（含示例）、生成脚本均有明确用途。
 - TypeScript 严格模式、119 个 UI 单测文件、16 个 sbean 测试文件及
   browser e2e 已形成基础质量网。
 
@@ -27,7 +27,7 @@
 1. 若干直接依赖未在所属 workspace 声明，由 `shamefullyHoist` 掩盖。
 2. PR CI 会构建全部发布包（`pnpm build`），但仍不构建文档站，也不校验生成物
    是否为同一批次。
-3. docs 与 playground 存在双向源码导入，且使用全量 eager glob。
+3. docs 示例目录仍使用全量 eager glob（playground 已并入 docs，双向环已消除）。
 4. 两个高影响接口缺少直接契约测试。
 5. 文档、聚合索引和逐组件生成文件仍可能部分同步。
 6. 仅 Nuxt 缺独立 typecheck，双语 Markdown 文件树也未保持同构。
@@ -52,10 +52,10 @@
 - pnpm 识别 15 个 workspace project：私有根项目、14 个子 workspace。
 - 可发布包：9 个（admin、chart、headless、sbean、theme、ui、ui-uno、ui-x、ui-skills）。
 - 私有包：2 个（scripts、shared）。
-- 私有应用：3 个。
+- 私有应用：2 个（docs、nuxt）。
 - Headless：96 个目录、94 个公共组件入口、28 个 composable。
 - UI：96 个公共组件组、144 个 `S` 前缀导出。
-- Playground：583 个示例 SFC。
+- Docs 示例：582 个示例 SFC（`apps/docs/src/examples`）。
 - Browser e2e：11 个组件级 spec。
 
 ### 2.3 证据边界
@@ -135,7 +135,7 @@ install、隔离构建、发布 tarball 或不同包管理器消费时，可能�
    peer dependency。
 2. 对九个发布包（admin、chart、headless、sbean、theme、ui、ui-uno、ui-x、
    ui-skills）执行 `pnpm pack` 后在临时空项目中安装并 import 每个公共入口。
-3. 为 docs、playground、nuxt 分别执行 filtered install/build smoke test。
+3. 为 docs、nuxt 分别执行 filtered install/build smoke test。
 4. 完成闭包后再尝试关闭 `shamefullyHoist`；若暂时不能关闭，记录仍依赖 hoist
    的工具和原因。
 
@@ -196,7 +196,7 @@ install、隔离构建、发布 tarball 或不同包管理器消费时，可能�
 
 **事实：**
 
-- `rating` 已从 headless/UI 根 barrel 导出，并有 playground、单测、API JSON、
+- `rating` 已从 headless/UI 根 barrel 导出，并有 docs 示例、单测、API JSON、
   changelog JSON 和 locale 文案。
 - **已解决：** 此前 rating 在 API/changelog 聚合 index、docs 菜单、docs
   locale 与中英文组件 Markdown 的缺口均已补齐；生成输出现按包命名空间化
@@ -226,7 +226,7 @@ install、隔离构建、发布 tarball 或不同包管理器消费时，可能�
    - API/changelog 逐组件文件集合；
    - 两个聚合 index；
    - docs 菜单、locale、双语 Markdown；
-   - playground 示例入口。
+   - docs 示例入口。
 2. 生成器先写临时目录，全部成功后原子替换目标目录。
 3. 让 `generatedAt` 支持 `SOURCE_DATE_EPOCH`、Git commit time，或在一致性
    比较中忽略该字段。
@@ -246,43 +246,27 @@ install、隔离构建、发布 tarball 或不同包管理器消费时，可能�
 
 ## P1：近期治理
 
-### F4. 私有 Apps 存在未声明的双向与链式源码依赖
+### F4. 私有 Apps 源码依赖（已收敛）
 
-**严重度：Moderate · 置信度：高**
+**严重度：Low · 置信度：高**
 
 **事实：**
 
-- Docs 通过 `@playground/*` 导入 playground 的 theme、theme configurator 和
-  examples。
-- Playground 通过 `@docs/constants/globs` 反向导入 docs，并直接导入 docs
-  locale JSON。
-- Nuxt `app.vue` 直接导入 playground 首页与 theme；其 i18n 配置引用
-  `en.json`/`zh-CN.json`，但 `apps/nuxt` 当前没有 locale fixture 文件。
-- CodeGraph 显示 `getOrderedPlaygroundExamples` 同时被两个 app 的 gallery
-  使用。
-- 这些边由 tsconfig path 和相对 glob 表达，未进入 package manifest。
-
-**推断：**
-
-应用所有权和构建顺序不清晰；任意一侧移动文件都会影响另一侧。该结构也阻碍
-filtered build 与独立测试。
+- playground 已删除，demo catalog（examples、排序规则、共享类型）与 docs 页面
+  统一归 `apps/docs` 所有，docs/playground 双向源码环已消除。
+- Nuxt fixture 已自包含（本地 `theme.ts` + 最小演示页），不再导入 docs 或
+  playground 源码。
+- `apps/docs/src/constants/globs.ts` 仍以 eager `import.meta.glob` 引入全部
+  example SFC（见 F5）。
 
 **建议：**
 
-- 让 playground 拥有 demo catalog、排序规则和共享类型。
-- docs 可以单向消费 playground 的公开内部入口；playground 不再导入 docs。
-- 如果未来还会有 Storybook/视觉回归等第三个消费者，将 catalog 提取为私有
-  workspace；在只有两个消费者时，不必过早新建包。
-- 将共享 locale 的 owner 和入口显式化，避免 playground 通过相对路径读取 docs。
-- 明确 Nuxt 是 source-coupled smoke fixture 还是独立示例；前者应有构建测试，
-  后者应改用公开入口并补 locale 文件。
-- 在 root task graph 中显式表达 docs 对 demo catalog 的依赖。
+- 明确 Nuxt 是独立示例 fixture；补 locale 文件与可重复的 build smoke。
+- 在 root task graph 中显式表达 docs 对 package build 的依赖。
 
 **验收条件：**
 
-- `apps/playground` 中不存在 `@docs/*` import。
-- app 之间最多保留一个方向的依赖。
-- 共享入口有最小接口和独立测试。
+- app 之间不存在源码级相互 import。
 - Nuxt i18n 配置引用的文件可解析，且 fixture 有可重复的 build smoke。
 
 ### F5. Docs 构建图一次性 eager 引入过多源码
@@ -291,7 +275,7 @@ filtered build 与独立测试。
 
 **事实：**
 
-- Demo catalog 使用 eager glob 载入 583 个 Vue 示例及其 raw code。
+- Demo catalog 使用 eager glob 载入 582 个 Vue 示例及其 raw code。
 - `generated-api.ts` 使用 eager raw glob 载入 headless 的 438 个 TS 文件和 UI
   的 297 个 TS 文件，共 735 个源码文件。
 - `apps/docs/src/components/tables/generated-api.ts` 共 1,489 行，内部还包含
@@ -378,7 +362,7 @@ filtered build 与独立测试。
 
 - 选择一个现有编排入口作为单一事实源：pnpm 拓扑递归或 Vite Plus task graph。
 - 保持 `build` 覆盖所有发布包，并由依赖图推导顺序。
-- `build:docs`、`build:playground` 和 Nuxt smoke 应依赖相同 package build
+- `build:docs` 和 Nuxt smoke 应依赖相同 package build
   任务。
 - 先采集构建 profile；只有现有增量机制不足时再评估 Turbo 等额外系统。
 
@@ -520,11 +504,10 @@ filtered build 与独立测试。
 
 ### 阶段 D：Docs 可扩展性（需要基准数据后）
 
-1. 消除 docs ↔ playground 反向边。
-2. Demo catalog 分组件 lazy load。
-3. 将 raw TypeScript 解析迁移到 API generator。
-4. 明确 Nuxt fixture 所有权并补齐 locale/build smoke。
-5. 建立 docs build/bundle budget。
+1. Demo catalog 分组件 lazy load。
+2. 将 raw TypeScript 解析迁移到 API generator。
+3. 明确 Nuxt fixture 所有权并补齐 locale/build smoke。
+4. 建立 docs build/bundle budget。
 
 ## 6. 不建议立即执行的方案
 
@@ -533,7 +516,7 @@ filtered build 与独立测试。
 - **不建议自动生成所有 barrel。** 目前 barrel 是有意维护的公共接口，生成脚本
   从它派生 metadata。应校验遗漏，而不是让目录结构自动决定公共接口。
 - **不建议为两个消费者立刻新建 shared package。** 先把 demo catalog 所有权
-  移到 playground 并形成单向依赖；出现第三个稳定消费者后再提包。
+  保持在 docs 内；出现第二个稳定消费者后再提包。
 - **不建议用统一覆盖率数字代替风险测试。** Focus、Teleport、keyboard 和
   package exports 需要行为/安装测试。
 - **不建议把现有类型 escape 一次性全部重写。** 先禁止新增并按可复用问题簇收敛。
@@ -563,6 +546,6 @@ filtered build 与独立测试。
 - 每个 workspace 的 manifest 构成真实依赖闭包。
 - PR CI 同时证明“能检查、能测试、能打包、能构建文档”。
 - 公共组件的代码、metadata、API、changelog、docs、demo 集合自动一致。
-- docs/playground 依赖单向且在任务图中可见。
+- 示例目录所有权单一且在任务图中可见。
 - 高影响深模块有直接契约测试。
 - 构建与文档规模增长有可观察指标，而不是靠人工感觉判断。

@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/welcome
 Markdown URL: https://ui.soybeanjs.cn/ui-x/welcome.md
 Category: Conversation
-Description: `SxWelcome` is the AI chat greeting screen — a centered welcome panel with an optional title, description and a list of recommended prompts. It is the first thing a user sees in a fresh chat.
+Description: SxWelcome is the AI chat greeting screen — a centered welcome panel with an optional title, description and a list of recommended prompts. It is the first thing a user sees in a fresh chat.
 
 ## Overview
 

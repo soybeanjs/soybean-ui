@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/mermaid
 Markdown URL: https://ui.soybeanjs.cn/ui-x/mermaid.md
 Category: Content Rendering
-Description: `SxMermaid` is a styled Mermaid diagram renderer for AI output. It renders diagram source (`code`) into an inline SVG via `mermaid` and offers an image/code mode toggle.
+Description: SxMermaid is a styled Mermaid diagram renderer for AI output. It renders diagram source (code) into an inline SVG via mermaid and offers an image/code mode toggle.
 
 ## Overview
 

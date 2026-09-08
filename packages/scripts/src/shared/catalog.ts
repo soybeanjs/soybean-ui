@@ -1,5 +1,5 @@
 import type { SourceFile } from 'typescript';
-import { camelCase, pascalCase } from '#shared/string';
+import { camelCase, pascalCase } from '../../../headless/src/shared/string';
 import { getExportModuleSpecifier, getNamedExportNames } from './ast';
 
 export interface CatalogGroup {

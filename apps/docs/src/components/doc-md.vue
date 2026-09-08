@@ -1,13 +1,14 @@
 <script setup lang="ts">
+import { nextTick, onBeforeUnmount, onServerPrefetch, shallowRef, watchEffect } from 'vue';
 import type { Component } from 'vue';
 import type { AnchorOptionData } from '@soybeanjs/headless/anchor';
 import { resetDocOutline, setDocOutline } from '~/composables/use-doc-outline';
 
 interface Props {
   /**
-   * The path to the markdown file
+   * The path to the markdown file, relative to `src/content/{locale}/`
    *
-   * @example 'ui/components/button', 'quick-start'
+   * @example 'ui/components/button', 'ui/quick-start', 'sbean/index'
    */
   path: string;
 }
@@ -26,7 +27,7 @@ const emit = defineEmits<Emits>();
 
 const { locale } = useI18n();
 
-const mdModules = import.meta.glob<{ default: Component }>('./**/*.md', { base: '/src/docs' });
+const mdModules = import.meta.glob<{ default: Component }>('./**/*.md', { base: '/src/content' });
 
 const cp = shallowRef<Component | null>(null);
 const contentRef = shallowRef<HTMLElement | null>(null);
@@ -165,6 +166,10 @@ function toHeadingId(title: string) {
 onBeforeUnmount(() => {
   resetDocOutline();
 });
+
+// SSR (ubean SSG): the renderer only awaits `onServerPrefetch`, so the async glob
+// load must be hoisted here or the article renders empty in the prerendered HTML.
+onServerPrefetch(() => loadDoc());
 
 watchEffect(() => {
   loadDoc();

@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/color-picker
 Markdown URL: https://ui.soybeanjs.cn/components/color-picker.md
 Category: Forms
-Description: A composite color picker that combines a color area, hue/alpha sliders, formatted inputs, and preset swatches, with full `oklch` editing and output support. `SColorPicker` composes the headless color primitives (`ColorArea`/`ColorSlider`/`ColorField`/`ColorSwatch`/`ColorSwatchPicker`) inside a popover, with a `SegmentCompact` for format switching. Nested part styles are unified in `colorPickerVariants` and forwarded through `provideColorPickerUi`.
+Description: A composite color picker that combines a color area, hue/alpha sliders, formatted inputs, and preset swatches, with full oklch editing and output support. SColorPicker composes the headless color primitives (ColorArea/ColorSlider/ColorField/ColorSwatch/ColorSwatchPicker) inside a popover, with a SegmentCompact for format switching. Nested part styles are unified in colorPickerVariants and forwarded through provideColorPickerUi.
 
 ## Overview
 

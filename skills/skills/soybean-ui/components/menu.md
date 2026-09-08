@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/menu
 Markdown URL: https://ui.soybeanjs.cn/components/menu.md
 Category: Navigation
-Description: The Menu component family lets you build complex nested menus, including dropdowns and context menus. It provides a data-driven approach using `SMenuOptions`, `SMenuCheckboxOptions`, and `SMenuRadioOptions` for easy configuration of groups, submenus, checkboxes, radio items, separators, shortcuts, and link items. The logic layer reuses `@soybeanjs/headless/menu` with full WAI-ARIA menu semantics and roving-focus keyboard navigation.
+Description: The Menu component family lets you build complex nested menus, including dropdowns and context menus. It provides a data-driven approach using SMenuOptions, SMenuCheckboxOptions, and SMenuRadioOptions for easy configuration of groups, submenus, checkboxes, radio items, separators, shortcuts, and link items. The logic layer reuses @soybeanjs/headless/menu with full WAI-ARIA menu semantics and roving-focus keyboard navigation.
 
 ## Overview
 

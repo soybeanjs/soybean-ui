@@ -8,22 +8,27 @@ export function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-/** 'helloWorld' | 'hello_world' | 'Hello World' → 'hello-world' */
+/** 'helloWorld' | 'hello_world' | 'Hello World' | 'SButton' → 'hello-world' | 's-button' */
 export function kebabCase(str: string): string {
   return str
-    .replace(/([a-z0-9])([A-Z])|[\s_]+/g, (_m, a, b) => (b ? `${a}-${b}` : '-'))
+    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2')
+    .replace(/[\s_]+/g, '-')
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '')
     .toLowerCase();
 }
 
-/** 'hello-world' | 'hello_world' | 'hello world' → 'HelloWorld' */
+/**
+ * 'hello-world' | 'hello_world' | 'hello world' | 'SButton' | 'HTTPRequest' → 'HelloWorld' | 'SButton' | 'HTTPRequest'
+ *
+ * Splits on both separators and camel-case boundaries so already-cased names
+ * (e.g. 'SButton', 'AccordionRoot') keep their inner capitals.
+ */
 export function pascalCase(str: string): string {
-  return str
-    .split(/[-_\s]+/)
-    .filter(Boolean)
-    .map(word => capitalize(word.toLowerCase()))
-    .join('');
+  const words = str.match(/[A-Z]{2,}(?=[A-Z][a-z]+|\b)|[A-Z]?[a-z]+|[A-Z]|\d+/g) ?? [];
+
+  return words.map(word => capitalize(word)).join('');
 }
 
 /** 'hello-world' | 'hello_world' | 'Hello World' → 'helloWorld' */

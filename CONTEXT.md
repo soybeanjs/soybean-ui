@@ -82,9 +82,9 @@ ConfigProvider 上控制是否启用持久化主题读取（localStorage）的�
 
 主题 token 的组织维度：`base` / `primary` / `feedback` / `sidebar` / `chart`。仅用于组织覆盖与文档，不改变 `ThemeColors` 扁平键契约。feedback 为固定 classic 规则，不提供预设选择器，仅可按组覆盖。
 
-## playground 主题配置器（playground ThemeConfigurator）
+## 文档站主题配置器（docs ThemeConfigurator）
 
-playground 侧的主题入口组件（`apps/playground/src/components/theme-configurator.vue`）：一个薄 `SPopover` 包装，内部渲染库组件 `SThemeCustomizer`，将定制结果写回持久化预设并经 `SConfigProvider` 实时生效。它不是自包含编辑器，也不直接输出 raw css。
+文档站侧的主题入口组件（`apps/docs/src/components/theme-configurator.vue`）：一个薄 `SPopover` 包装，内部渲染库组件 `SThemeCustomizer`，将定制结果写回持久化预设并经 `SConfigProvider` 实时生效。它不是自包含编辑器，也不直接输出 raw css。
 
 ## 外围包（peripheral package）
 

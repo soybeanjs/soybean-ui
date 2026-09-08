@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/palette-picker
 Markdown URL: https://ui.soybeanjs.cn/components/palette-picker.md
 Category: Forms
-Description: `SPalettePicker` is a color picker that produces a full palette from a single base color. Its `modelValue` is a [`ColorValue`](../../../api/theme.md) — either a Tailwind palette key + level (e.g. `indigo.500`), a simple palette key (`black` / `white` / `transparent` …), or a raw custom color (`hsl(...)` / `oklch(...)`).
+Description: SPalettePicker is a color picker that produces a full palette from a single base color. Its modelValue is a ColorValue — either a Tailwind palette key + level (e.g. indigo.500), a simple palette key (black / white / transparent …), or a raw custom color (hsl(...) / oklch(...)).
 
 ## Overview
 

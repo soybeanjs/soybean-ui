@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/time-range-field
 Markdown URL: https://ui.soybeanjs.cn/components/time-range-field.md
 Category: Forms
-Description: A segmented time range input with independently editable start and end time segments (hour, minute, and optional second and day-period) while still submitting native form values for both sides. Use it whenever a user must enter a start and end time quickly and precisely — scheduling, booking, shift or time-window filtering. For a single time use `STimeField`; for a date and time range use `SDateRangeField` with a time granularity or `SDateRangePicker`.
+Description: A segmented time range input with independently editable start and end time segments (hour, minute, and optional second and day-period) while still submitting native form values for both sides. Use it whenever a user must enter a start and end time quickly and precisely — scheduling, booking, shift or time-window filtering. For a single time use STimeField; for a date and time range use SDateRangeField with a time granularity or SDateRangePicker.
 
 ## Overview
 

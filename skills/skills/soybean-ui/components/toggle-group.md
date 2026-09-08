@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/toggle-group
 Markdown URL: https://ui.soybeanjs.cn/components/toggle-group.md
 Category: Forms
-Description: A set of two-state buttons that can be toggled on or off as a group, supporting single and multiple selection. Use it for formatting toolbars, filter chips, or any exclusive (or multi-choice) segmented control where the selection changes immediately. For segmented _single_ options that must look like a unified control, `SSegment` may fit better; for a single independent on/off button, use `SToggle`.
+Description: A set of two-state buttons that can be toggled on or off as a group, supporting single and multiple selection. Use it for formatting toolbars, filter chips, or any exclusive (or multi-choice) segmented control where the selection changes immediately. For segmented _single_ options that must look like a unified control, SSegment may fit better; for a single independent on/off button, use SToggle.
 
 ## Overview
 

@@ -1,13 +1,8 @@
 import { mkdir, readdir } from 'node:fs/promises';
 import path from 'node:path';
-import process from 'node:process';
-import { collectKeyedTextEntries, listFileBasenames, readJsonObject, syncLocaleTemplateFiles } from '../shared/json';
-
-const rootDir = process.cwd();
-const apiDir = path.join(rootDir, 'apps/docs/src/generated/api');
-const localeDir = path.join(rootDir, 'apps/docs/locales');
-const outputDir = path.join(rootDir, 'apps/docs/src/generated/api-locales');
-const defaultLocale = 'en';
+import { defaultLocale } from '../shared/docs-targets';
+import type { DocsTarget } from '../shared/docs-targets';
+import { collectKeyedTextEntries, readJsonObject, syncLocaleTemplateFiles } from '../shared/json';
 
 function collectDescriptionEntries(value: unknown, collected: Map<string, string>): void {
   collectKeyedTextEntries(value, collected, {
@@ -36,7 +31,7 @@ async function listApiJsonFiles(directoryPath: string): Promise<string[]> {
   return jsonFilePaths;
 }
 
-async function collectApiDescriptionEntries(): Promise<Map<string, string>> {
+async function collectApiDescriptionEntries(apiDir: string): Promise<Map<string, string>> {
   const jsonFilePaths = await listApiJsonFiles(apiDir);
   const collected = new Map<string, string>();
 
@@ -48,20 +43,22 @@ async function collectApiDescriptionEntries(): Promise<Map<string, string>> {
   return collected;
 }
 
-export async function generateApiLocaleTemplates(): Promise<void> {
-  const [entries, locales] = await Promise.all([collectApiDescriptionEntries(), listFileBasenames(localeDir, '.json')]);
+export async function generateApiLocaleTemplates(target: DocsTarget): Promise<void> {
+  const apiDir = path.join(target.generatedDir, 'api');
+  const outputDir = path.join(target.generatedDir, 'api-locales');
+  const entries = await collectApiDescriptionEntries(apiDir);
 
   await mkdir(outputDir, { recursive: true });
 
   const { changedSourceKeys } = await syncLocaleTemplateFiles({
     entries,
-    locales,
+    locales: target.locales,
     outputDir,
     defaultLocale
   });
 
   console.log(
-    `Generated API locale templates for ${locales.join(', ')} with ${entries.size} translation keys.` +
+    `Generated API locale templates (${target.key}) for ${target.locales.join(', ')} with ${entries.size} translation keys.` +
       ` Reset ${changedSourceKeys.size} changed source keys for non-default locales.`
   );
 }

@@ -1,13 +1,8 @@
 import { mkdir, readdir } from 'node:fs/promises';
 import path from 'node:path';
-import process from 'node:process';
-import { collectKeyedTextEntries, listFileBasenames, readJsonObject, syncLocaleTemplateFiles } from '../shared/json';
-
-const rootDir = process.cwd();
-const changelogDir = path.join(rootDir, 'apps/docs/src/generated/changelog');
-const localeDir = path.join(rootDir, 'apps/docs/locales');
-const outputDir = path.join(rootDir, 'apps/docs/src/generated/changelog-locales');
-const defaultLocale = 'en';
+import { defaultLocale } from '../shared/docs-targets';
+import type { DocsTarget } from '../shared/docs-targets';
+import { collectKeyedTextEntries, readJsonObject, syncLocaleTemplateFiles } from '../shared/json';
 
 function collectSummaryEntries(value: unknown, collected: Map<string, string>): void {
   collectKeyedTextEntries(value, collected, {
@@ -16,7 +11,7 @@ function collectSummaryEntries(value: unknown, collected: Map<string, string>): 
   });
 }
 
-async function collectChangelogSummaryEntries(): Promise<Map<string, string>> {
+async function collectChangelogSummaryEntries(changelogDir: string): Promise<Map<string, string>> {
   const fileNames = await readdir(changelogDir);
   const jsonFileNames = fileNames.filter(fileName => fileName.endsWith('.json') && fileName !== 'index.json');
   const collected = new Map<string, string>();
@@ -29,23 +24,22 @@ async function collectChangelogSummaryEntries(): Promise<Map<string, string>> {
   return collected;
 }
 
-export async function generateChangelogLocaleTemplates(): Promise<void> {
-  const [entries, locales] = await Promise.all([
-    collectChangelogSummaryEntries(),
-    listFileBasenames(localeDir, '.json')
-  ]);
+export async function generateChangelogLocaleTemplates(target: DocsTarget): Promise<void> {
+  const changelogDir = path.join(target.generatedDir, 'changelog');
+  const outputDir = path.join(target.generatedDir, 'changelog-locales');
+  const entries = await collectChangelogSummaryEntries(changelogDir);
 
   await mkdir(outputDir, { recursive: true });
 
   const { changedSourceKeys } = await syncLocaleTemplateFiles({
     entries,
-    locales,
+    locales: target.locales,
     outputDir,
     defaultLocale
   });
 
   console.log(
-    `Generated changelog locale templates for ${locales.join(', ')} with ${entries.size} translation keys.` +
+    `Generated changelog locale templates (${target.key}) for ${target.locales.join(', ')} with ${entries.size} translation keys.` +
       ` Reset ${changedSourceKeys.size} changed source keys for non-default locales.`
   );
 }

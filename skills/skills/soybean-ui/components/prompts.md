@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/prompts
 Markdown URL: https://ui.soybeanjs.cn/ui-x/prompts.md
 Category: Conversation
-Description: `SxPrompts` is the AI prompt pill row — a responsive row of clickable prompt buttons that give users quick, one-tap starter questions. It is the reusable building block inside `SxWelcome` and can also be used standalone under a `SxSender`.
+Description: SxPrompts is the AI prompt pill row — a responsive row of clickable prompt buttons that give users quick, one-tap starter questions. It is the reusable building block inside SxWelcome and can also be used standalone under a SxSender.
 
 ## Overview
 

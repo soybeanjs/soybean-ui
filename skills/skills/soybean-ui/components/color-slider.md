@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/color-slider
 Markdown URL: https://ui.soybeanjs.cn/components/color-slider.md
 Category: Forms
-Description: A single-channel color slider for hue, alpha, and individual RGB/HSL/HSV/OKLCH channels. `SColorSlider` combines the headless `ColorSliderRoot`/`ColorSliderTrack`/`ColorSliderThumb` primitives with the shared `sliderVariants` style recipe (via `sliderVariants`).
+Description: A single-channel color slider for hue, alpha, and individual RGB/HSL/HSV/OKLCH channels. SColorSlider combines the headless ColorSliderRoot/ColorSliderTrack/ColorSliderThumb primitives with the shared sliderVariants style recipe (via sliderVariants).
 
 ## Overview
 

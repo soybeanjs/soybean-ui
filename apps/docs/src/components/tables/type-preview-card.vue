@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed, inject } from 'vue';
 import { SLink } from '@soybeanjs/ui';
 import CallableTypeTable from './callable-type-table.vue';
 import type { GeneratedApiTypePreview } from './generated-api';

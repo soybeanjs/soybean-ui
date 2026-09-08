@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { allPlaygroundComponents } from '../constants/globs';
+import { computed } from 'vue';
+import { allPlaygroundComponents } from '~/constants/globs';
 
 interface Props {
   component: string;

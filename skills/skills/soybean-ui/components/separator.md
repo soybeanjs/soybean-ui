@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/separator
 Markdown URL: https://ui.soybeanjs.cn/components/separator.md
 Category: Layout
-Description: The `SSeparator` component visually and semantically separates content sections. It renders a horizontal or vertical line, optionally with a label centered (or aligned) along it. Use it to divide related content blocks, group menu items, or structure form sections.
+Description: The SSeparator component visually and semantically separates content sections. It renders a horizontal or vertical line, optionally with a label centered (or aligned) along it. Use it to divide related content blocks, group menu items, or structure form sections.
 
 ## Overview
 

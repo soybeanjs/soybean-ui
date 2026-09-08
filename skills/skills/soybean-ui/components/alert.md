@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/alert
 Markdown URL: https://ui.soybeanjs.cn/components/alert.md
 Category: Feedback
-Description: A callout that surfaces important, time-sensitive information — warnings, errors, or confirmations — near the content it refers to. `SAlert` combines an `AlertRoot`/`AlertTitle`/`AlertDescription`/`AlertClose` family of headless primitives (zero styles) with the `alertVariants` style recipe (6 slots, 8 colors × 5 variants × 6 sizes).
+Description: A callout that surfaces important, time-sensitive information — warnings, errors, or confirmations — near the content it refers to. SAlert combines an AlertRoot/AlertTitle/AlertDescription/AlertClose family of headless primitives (zero styles) with the alertVariants style recipe (6 slots, 8 colors × 5 variants × 6 sizes).
 
 ## Overview
 

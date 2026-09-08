@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/split-nav
 Markdown URL: https://ui.soybeanjs.cn/components/split-nav.md
 Category: Navigation
-Description: A split navigation for admin layouts. `SSplitNav` takes one menu tree and renders it across independent first-level and nested panes, instead of nesting every level in a single sidebar. It ships four layout modes — `dual-vertical`, `vertical-horizontal`, `horizontal-vertical`, and `horizontal-dual-vertical`. The first-level rail is a dedicated RovingFocus menu (Menubar-like arrow keys; Enter/Space to activate; ArrowDown on a horizontal parent, ArrowLeft/ArrowRight on a vertical parent to open the nested pane). Nested vertical panes reuse `TreeMenuCompact`; the nested horizontal pane reuses `TreeNavCompact`.
+Description: A split navigation for admin layouts. SSplitNav takes one menu tree and renders it across independent first-level and nested panes, instead of nesting every level in a single sidebar. It ships four layout modes — dual-vertical, vertical-horizontal, horizontal-vertical, and horizontal-dual-vertical. The first-level rail is a dedicated RovingFocus menu (Menubar-like arrow keys; Enter/Space to activate; ArrowDown on a horizontal parent, ArrowLeft/ArrowRight on a vertical parent to open the nested pane). Nested vertical panes reuse TreeMenuCompact; the nested horizontal pane reuses TreeNavCompact.
 
 ## Overview
 

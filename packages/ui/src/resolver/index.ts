@@ -1,25 +1,33 @@
 import type { ComponentResolver } from 'unplugin-vue-components';
-//---import { keysOf, kebabCase } from '@soybeanjs/headless/shared';
+import { keysOf, kebabCase, pascalCase } from '@soybeanjs/headless/shared';
 import { components } from '../constants/components';
 
 function createResolver() {
+  const map = new Map<string, string>();
+
+  keysOf(components).forEach(key => {
+    components[key].forEach(component => {
+      map.set(component, key);
+    });
+  });
+
   const resolver: ComponentResolver = {
     type: 'component',
-    resolve: (name: string) => {
-      const $name = name.replace(/(^\w|-\w)/g, char => char.replace('-', '').toUpperCase());
+    resolve: (id: string) => {
+      const name = pascalCase(id);
 
-      const values = Object.values(components).flat();
+      const value = map.get(name);
 
-      if (values.includes($name)) {
-        //---const path = kebabCase(keysOf(components).find(key => components[key]?.includes($name))!);
-
-        return {
-          name: $name,
-          from: '@soybeanjs/ui'
-        };
+      if (!value) {
+        return null;
       }
 
-      return null;
+      const path = kebabCase(value);
+
+      return {
+        name,
+        from: `@soybeanjs/ui/${path}`
+      };
     }
   };
 

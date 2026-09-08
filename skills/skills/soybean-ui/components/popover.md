@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/popover
 Markdown URL: https://ui.soybeanjs.cn/components/popover.md
 Category: Overlay
-Description: Displays rich content in a portal, triggered by a button. `SPopover` combines the headless `PopoverRoot`/`PopoverTrigger`/`PopoverPositioner`/`PopoverPopup`/`PopoverArrow`/`PopoverClose` primitive family (built on the shared `Popper` + dialog-style dismissable/focus layers) with the `popoverVariants` style recipe (5 slots, 6 sizes).
+Description: Displays rich content in a portal, triggered by a button. SPopover combines the headless PopoverRoot/PopoverTrigger/PopoverPositioner/PopoverPopup/PopoverArrow/PopoverClose primitive family (built on the shared Popper + dialog-style dismissable/focus layers) with the popoverVariants style recipe (5 slots, 6 sizes).
 
 ## Overview
 

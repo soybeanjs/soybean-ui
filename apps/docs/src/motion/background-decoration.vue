@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+
 type PrimaryTone = 'primary' | '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | '950';
 
 function resolvePrimaryTone(tone: PrimaryTone, alpha: number) {

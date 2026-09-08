@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/color-area
 Markdown URL: https://ui.soybeanjs.cn/components/color-area.md
 Category: Forms
-Description: A two-dimensional color editor for saturation/lightness, saturation/brightness, or OKLCH chroma/lightness selection. `SColorArea` combines the headless `ColorAreaRoot`/`ColorAreaArea`/`ColorAreaThumb` primitives with the `colorAreaVariants` style recipe (3 slots, 6 sizes).
+Description: A two-dimensional color editor for saturation/lightness, saturation/brightness, or OKLCH chroma/lightness selection. SColorArea combines the headless ColorAreaRoot/ColorAreaArea/ColorAreaThumb primitives with the colorAreaVariants style recipe (3 slots, 6 sizes).
 
 ## Overview
 

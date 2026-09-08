@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/virtualizer
 Markdown URL: https://ui.soybeanjs.cn/components/virtualizer.md
 Category: Data Display
-Description: A virtual scrolling component that efficiently renders large lists by only rendering items currently in the viewport. `SVirtualizer` wraps the headless `VirtualizerRoot`/`VirtualizerContent` primitives (built on `@tanstack/vue-virtual`) — only the visible window of items is mounted into the DOM, keeping large lists fast.
+Description: A virtual scrolling component that efficiently renders large lists by only rendering items currently in the viewport. SVirtualizer wraps the headless VirtualizerRoot/VirtualizerContent primitives (built on @tanstack/vue-virtual) — only the visible window of items is mounted into the DOM, keeping large lists fast.
 
 ## Overview
 

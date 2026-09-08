@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/theme-mode-switch
 Markdown URL: https://ui.soybeanjs.cn/components/theme-mode-switch.md
 Category: Other
-Description: `SThemeModeSwitch` is a context-bound toggle bound to the active `SConfigProvider` theme. It reflects the current _effective_ scheme (so an `auto` preference shows the OS-resolved light/dark state) and pins an explicit `light` / `dark` preference when toggled. Use it as a quick, compact light/dark switch in a header or toolbar.
+Description: SThemeModeSwitch is a context-bound toggle bound to the active SConfigProvider theme. It reflects the current _effective_ scheme (so an auto preference shows the OS-resolved light/dark state) and pins an explicit light / dark preference when toggled. Use it as a quick, compact light/dark switch in a header or toolbar.
 
 ## Overview
 

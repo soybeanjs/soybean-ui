@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/list
 Markdown URL: https://ui.soybeanjs.cn/components/list.md
 Category: Data Display
-Description: A semantic container for displaying a vertical list of items. `SList` wraps the headless `ListRoot` (a `<ul>`) with the `listVariants` style recipe (5 slots: root/item/content/title/description; 6 sizes). `SListItem` composes the headless `ListItem`/`ListContent`/`ListTitle`/`ListDescription` primitives into a ready-made title + description row.
+Description: A semantic container for displaying a vertical list of items. SList wraps the headless ListRoot (a <ul>) with the listVariants style recipe (5 slots: root/item/content/title/description; 6 sizes). SListItem composes the headless ListItem/ListContent/ListTitle/ListDescription primitives into a ready-made title + description row.
 
 ## Overview
 

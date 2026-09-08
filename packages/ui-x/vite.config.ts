@@ -10,7 +10,14 @@ export default defineConfig({
   },
   plugins: [vue()],
   pack: {
-    entry: [...globSync('src/components/**/index.ts'), 'src/index.ts', 'src/nuxt/index.ts', 'src/resolver/index.ts'],
+    entry: [
+      ...globSync('src/components/**/index.ts'),
+      'src/index.ts',
+      'src/composables/index.ts',
+      'src/types/index.ts',
+      'src/nuxt/index.ts',
+      'src/resolver/index.ts'
+    ],
     platform: 'browser',
     deps: {
       neverBundle: ['@nuxt/kit', '@nuxt/schema', ...Object.keys(headlessPkg.dependencies)]

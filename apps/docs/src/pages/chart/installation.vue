@@ -1,4 +1,5 @@
 <script setup lang="ts">
+definePage({ layout: 'default' });
 // TODO(chart): scaffold placeholder — render installation markdown.
 const path = 'chart/installation';
 </script>

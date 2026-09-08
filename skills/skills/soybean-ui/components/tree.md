@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/tree
 Markdown URL: https://ui.soybeanjs.cn/components/tree.md
 Category: Navigation
-Description: A component for displaying hierarchical tree data with selection and expand/collapse support. `STree` combines the headless `TreeRoot` family of base primitives (`TreeRoot`/`TreeItem`/`TreeVirtualizerRoot`/`TreeVirtualizerItem`, zero-style) with the `TreeRoot` context (controlled/uncontrolled selection and expansion, single/multiple selection, cascading selection, Roving Focus keyboard navigation); `STreeVirtualizer` layers virtualization on top to smoothly handle 1000+ nodes. Node content is fully customized through the `item` slot — icons, checkboxes, indentation, and connector lines are all injected by the consumer.
+Description: A component for displaying hierarchical tree data with selection and expand/collapse support. STree combines the headless TreeRoot family of base primitives (TreeRoot/TreeItem/TreeVirtualizerRoot/TreeVirtualizerItem, zero-style) with the TreeRoot context (controlled/uncontrolled selection and expansion, single/multiple selection, cascading selection, Roving Focus keyboard navigation); STreeVirtualizer layers virtualization on top to smoothly handle 1000+ nodes. Node content is fully customized through the item slot — icons, checkboxes, indentation, and connector lines are all injected by the consumer.
 
 ## Overview
 

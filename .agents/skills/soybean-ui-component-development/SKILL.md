@@ -1,6 +1,6 @@
 ---
 name: soybean-ui-component-development
-description: Builds, updates, and audits SoybeanUI components with headless/UI split, delivery phases, and generation workflow. Invoke when adding, migrating, extending, standardizing, fixing, or auditing components, or when work touches packages/headless/src/components, packages/ui/src/components, apps/playground/src/examples, apps/docs/src/docs, or packages/ui/test/specs/components.
+description: Builds, updates, and audits SoybeanUI components with headless/UI split, delivery phases, and generation workflow. Invoke when adding, migrating, extending, standardizing, fixing, or auditing components, or when work touches packages/headless/src/components, packages/ui/src/components, apps/docs/src/examples, apps/docs/src/content, or packages/ui/test/specs/components.
 ---
 
 # SoybeanUI Component Development
@@ -74,9 +74,9 @@ Example: "audit the `dialog` component against industry baselines" means audit s
    - Run `pnpm sui gen catalog headless` and `pnpm sui gen catalog ui`.
    - Do not hand-edit generated files.
 4. **Complete delivery surfaces** unless the user explicitly narrows scope.
-   - `apps/playground/src/examples/ui/{component}/`
-   - `apps/docs/src/docs/en/ui/components/{component}.md`
-   - `apps/docs/src/docs/zh-CN/ui/components/{component}.md`
+   - `apps/docs/src/examples/ui/{component}/`
+   - `apps/docs/src/content/en/ui/components/{component}.md`
+   - `apps/docs/src/content/zh/ui/components/{component}.md`
    - `apps/docs/src/constants/menus.ts`
    - `packages/ui/test/specs/components/{component}.spec.ts`
    - Run `pnpm sui gen api` when public API changes; for non-English locales run `pnpm sui gen api --translate --locale <locale>`.
@@ -136,7 +136,7 @@ Execute in this order. Do not skip ahead until the current phase is done.
 
 ### Phase 5: Complete delivery surfaces
 
-- Playground: see [surfaces.md -> Playground](surfaces.md#playground).
+- Playground (examples): see [surfaces.md -> Playground (examples)](surfaces.md#playground-examples).
 - Docs: see [surfaces.md -> Docs](surfaces.md#docs).
 - Tests: see [surfaces.md -> Testing](surfaces.md#testing). For interactive components, also add a browser e2e spec — see [e2e.md](e2e.md).
 - If public API changed, run `pnpm sui gen api`; for non-English locales run `pnpm sui gen api --translate --locale <locale>`.
@@ -182,9 +182,9 @@ New components check every entry that applies; existing component changes sync a
 - `packages/ui/src/components/{component}/`
 - `packages/headless/src/index.ts` (admitted families)
 - `packages/ui/src/index.ts`
-- `apps/playground/src/examples/ui/{component}/`
-- `apps/docs/src/docs/en/ui/components/{component}.md`
-- `apps/docs/src/docs/zh-CN/ui/components/{component}.md`
+- `apps/docs/src/examples/ui/{component}/`
+- `apps/docs/src/content/en/ui/components/{component}.md`
+- `apps/docs/src/content/zh/ui/components/{component}.md`
 - `apps/docs/src/constants/menus.ts`
 - `packages/ui/test/specs/components/{component}.spec.ts`
 
@@ -203,8 +203,7 @@ Run these after the corresponding source changes. Never hand-edit generated outp
 ## Build and validation commands
 
 ```bash
-pnpm dev:playground   # Playground (Vite)
-pnpm dev:docs         # Documentation site (Vite SSG)
+pnpm dev:docs         # Documentation site (ubean dev)
 pnpm build            # libs (theme, ui-uno) -> headless -> ui -> ui-x -> admin -> chart -> sbean via Vite Plus pack
 pnpm build:libs       # theme -> ui-uno
 pnpm lint             # vp lint --fix && package Vue lint

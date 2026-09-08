@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/cascader
 Markdown URL: https://ui.soybeanjs.cn/components/cascader.md
 Category: Forms
-Description: A cascader for selecting values from hierarchical tree data. It renders a linked multi-column panel and supports single/multiple selection, full-path value mode, parent-child check-state propagation, local filtering and remote search, lazy loading of children, and virtual scrolling for large datasets. Use it when options are organized as a tree and selection must happen level by level; for flat option lists, prefer `SSelect` or `SCombobox`.
+Description: A cascader for selecting values from hierarchical tree data. It renders a linked multi-column panel and supports single/multiple selection, full-path value mode, parent-child check-state propagation, local filtering and remote search, lazy loading of children, and virtual scrolling for large datasets. Use it when options are organized as a tree and selection must happen level by level; for flat option lists, prefer SSelect or SCombobox.
 
 ## Overview
 

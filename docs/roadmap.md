@@ -1229,19 +1229,19 @@ Layer 1  主题与样式引擎         @soybeanjs/theme · @soybeanjs/unocss
 
 ### 优化项总览
 
-| ID  | 发现                                                                 |   严重度    | 阶段 | 优先级 |
-| :-- | :------------------------------------------------------------------- | :---------: | :--: | :----: |
-| F1  | Workspace 依赖闭包不完整（`shamefullyHoist` 掩盖未声明依赖）         |    Major    |  A   |   高   |
-| F2  | PR CI 未覆盖「可发布 / 可部署」（不 build、不查生成物）              |    Major    |  A   |   高   |
-| F3  | 生成物非原子批次，已有可复现漂移（Rating 半完成状态）                |    Major    |  B   |   高   |
-| F4  | 私有 apps 双向与链式源码依赖（docs ↔ playground）                    |  Moderate   |  D   |   中   |
-| F5  | Docs 构建图一次性 eager 引入 583 demo + 735 源文件                   |  Moderate   |  D   |   中   |
-| F6  | 高影响 seam（createTheme / presetUiUnocss / useUiContext）缺契约测试 |  Moderate   |  C   |   高   |
-| F7  | 构建图与 workspace 依赖图未对齐（theme 改动复用旧 dist 风险）        |  Moderate   |  C   |   中   |
-| F8  | TypeScript 声明 7.0.2 与锁定 6.0.3 分裂                              |    Minor    |  C   |   中   |
-| F9  | 类型逃逸（28 行 `as any` / `@ts-expect-error`）与书面约束不一致      |    Minor    |  —   |   低   |
-| F10 | 文档事实多手写副本，计数 / 版本已发生漂移                            |    Minor    |  B   |   低   |
-| F11 | 覆盖率策略未量化                                                     | Enhancement |  —   |   低   |
+| ID  | 发现                                                                              |   严重度    | 阶段 | 优先级 |
+| :-- | :-------------------------------------------------------------------------------- | :---------: | :--: | :----: |
+| F1  | Workspace 依赖闭包不完整（`shamefullyHoist` 掩盖未声明依赖）                      |    Major    |  A   |   高   |
+| F2  | PR CI 未覆盖「可发布 / 可部署」（不 build、不查生成物）                           |    Major    |  A   |   高   |
+| F3  | 生成物非原子批次，已有可复现漂移（Rating 半完成状态）                             |    Major    |  B   |   高   |
+| F4  | 私有 apps 双向与链式源码依赖（docs ↔ playground）——已随 playground 并入 docs 消除 |     Low     |  D   |   中   |
+| F5  | Docs 构建图一次性 eager 引入 582 demo + 735 源文件                                |  Moderate   |  D   |   中   |
+| F6  | 高影响 seam（createTheme / presetUiUnocss / useUiContext）缺契约测试              |  Moderate   |  C   |   高   |
+| F7  | 构建图与 workspace 依赖图未对齐（theme 改动复用旧 dist 风险）                     |  Moderate   |  C   |   中   |
+| F8  | TypeScript 声明 7.0.2 与锁定 6.0.3 分裂                                           |    Minor    |  C   |   中   |
+| F9  | 类型逃逸（28 行 `as any` / `@ts-expect-error`）与书面约束不一致                   |    Minor    |  —   |   低   |
+| F10 | 文档事实多手写副本，计数 / 版本已发生漂移                                         |    Minor    |  B   |   低   |
+| F11 | 覆盖率策略未量化                                                                  | Enhancement |  —   |   低   |
 
 ### 执行阶段与时间节点
 
@@ -1250,7 +1250,7 @@ Layer 1  主题与样式引擎         @soybeanjs/theme · @soybeanjs/unocss
 |  A   | 依赖与发布安全 | 直接依赖审计补齐；六包 pack/install/import smoke；CI lint 改非修改模式；PR CI 增加包构建与 docs SSG；headless/Nuxt 独立 typecheck | 2026-08-14 ~ 08-28          |
 |  B   | 生成一致性     | API/changelog 确定性重放；公共组件交付面集合校验；修复 Rating index/menu/docs 缺口；en/zh-CN 文件树对齐；CI 阻断半生成状态        | 2026-08-28 ~ 09-11          |
 |  C   | 高影响 seam    | theme / UnoCSS preset / `useUiContext` 直接契约测试；浏览器 e2e 扩展（浮层、键盘、颜色对比）；统一 root build 依赖图；TS 版本统一 | 2026-09-11 ~ 10-09          |
-|  D   | Docs 可扩展性  | 消除 docs↔playground 反向边；demo catalog 按组件 lazy；raw TS 解析迁移至 API generator；Nuxt fixture 所有权；docs build budget    | 2026-10-09 后（需基线数据） |
+|  D   | Docs 可扩展性  | demo catalog 按组件 lazy；raw TS 解析迁移至 API generator；Nuxt fixture 所有权；docs build budget                                 | 2026-10-09 后（需基线数据） |
 
 > 明确**不建议**立即执行的方案：引入 Turbo、自动生成全部 barrel、为两个消费者新建 shared package、统一覆盖率数字、一次性清零类型逃逸（理由见 [optimize.md §6](./optimize.md#6-不建议立即执行的方案)）。
 
