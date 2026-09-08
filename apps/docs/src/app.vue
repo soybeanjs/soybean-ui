@@ -3,7 +3,7 @@ import { SConfigProvider } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SConfigProvider>
+  <SConfigProvider persist-theme>
     <slot />
   </SConfigProvider>
 </template>

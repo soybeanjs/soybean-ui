@@ -1,4 +1,4 @@
-import { computed, defineComponent, h, onMounted, onUnmounted } from 'vue';
+import { computed, defineComponent, h, onMounted, onUnmounted, shallowRef } from 'vue';
 import { createTheme } from '@soybeanjs/theme';
 import { THEME_PRESETS_STORAGE_KEY, THEME_STORAGE_KEY } from '@soybeanjs/theme/storage';
 import type { ThemeConfigState } from '@soybeanjs/theme/storage';
@@ -18,8 +18,20 @@ const ThemeStyle = defineComponent({
     nonce: { type: String, default: undefined }
   },
   setup(styleProps) {
+    const styleRef = shallowRef<HTMLStyleElement | null>(null);
+
+    onMounted(() => {
+      // Hydration does not re-apply `innerHTML` to an existing node, so the
+      // SSR-rendered style keeps the server's default theme. Re-apply the
+      // reactive CSS here so a persisted (localStorage) theme survives refresh.
+      if (styleRef.value) {
+        styleRef.value.textContent = styleProps.css;
+      }
+    });
+
     return () =>
       h('style', {
+        ref: styleRef,
         id: '__SoybeanUI_theme',
         innerHTML: styleProps.css,
         nonce: styleProps.nonce

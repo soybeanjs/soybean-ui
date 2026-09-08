@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTheme } from '@soybeanjs/ui';
 
-const { mode } = useTheme('ThemeSchemaToggler');
+const { mode } = useTheme();
 </script>
 
 <template>

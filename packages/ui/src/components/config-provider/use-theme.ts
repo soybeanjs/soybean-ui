@@ -84,7 +84,10 @@ export interface ThemeContext {
   theme: ComputedRef<ThemeOptions>;
 }
 
-export const [provideThemeContext, useTheme] = useContext<ThemeContext>('UiThemeContext');
+export const [provideThemeContext, useThemeConsumer] = useContext<ThemeContext>('UiThemeContext');
+
+export const useTheme = (consumerName?: string | null, defaultValue?: ThemeContext) =>
+  useThemeConsumer(consumerName ?? 'ThemeConsumer', defaultValue);
 
 /** The internal theme context held by `SConfigProvider` (adds storage helpers). */
 export type ConfigProviderThemeContext = ThemeContext & {
