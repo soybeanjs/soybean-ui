@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useOmitProps } from '@soybeanjs/headless/composables';
 import { Link } from '@soybeanjs/headless/link';
 import { linkVariants } from '@/styles/link';
 import type { LinkProps } from './types';
@@ -18,11 +19,13 @@ const props = withDefaults(defineProps<LinkProps>(), {
   replace: undefined
 });
 
+const forwardedProps = useOmitProps(props, ['class']);
+
 const cls = computed(() => linkVariants(undefined, props.class));
 </script>
 
 <template>
-  <Link v-slot="slotProps" v-bind="props" :class="cls">
+  <Link v-slot="slotProps" v-bind="forwardedProps" :class="cls">
     <slot v-bind="slotProps" />
   </Link>
 </template>
