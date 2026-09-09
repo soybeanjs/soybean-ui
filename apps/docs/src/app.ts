@@ -1,7 +1,7 @@
 import { defineApp } from 'ubean/client';
 import { createThemeInitScript } from '@soybeanjs/theme/ssr';
 import { progress } from '@soybeanjs/ui';
-import '@soybeanjs/ui/styles.css';
+// import '@soybeanjs/ui/styles.css';
 import 'uno.css';
 import './styles/global.css';
 
