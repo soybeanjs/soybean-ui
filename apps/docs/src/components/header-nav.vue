@@ -56,6 +56,13 @@ const menus = computed<NavMenuOptionData[]>(() => {
       selected: path.startsWith('/chart')
     },
     {
+      value: 'playground',
+      label: t('layout.header.playground'),
+      icon: 'lucide:flask-conical',
+      to: '/playground',
+      selected: path.startsWith('/playground')
+    },
+    {
       value: 'releases',
       label: t('layout.header.releases'),
       icon: 'lucide:git-commit-horizontal',

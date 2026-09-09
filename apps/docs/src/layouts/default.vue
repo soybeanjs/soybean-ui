@@ -9,7 +9,7 @@ const docOutline = provideDocOutline();
 const route = useRoute();
 const hasDocOutline = computed(() => docOutline.value.length > 0);
 const barePath = computed(() => extractLocaleFromPath(route.path).pathWithoutLocale);
-const shouldReserveOutlineSpace = computed(() => !['/', '/releases'].includes(barePath.value));
+const shouldReserveOutlineSpace = computed(() => !['/', '/releases', '/playground'].includes(barePath.value));
 const shouldShowSidebar = computed(() =>
   ['/overview', '/components', '/ui-x', '/admin', '/chart', '/headless'].some(p => barePath.value.startsWith(p))
 );

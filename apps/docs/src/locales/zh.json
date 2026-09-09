@@ -14,6 +14,12 @@
   "not_found": "未找到",
   "not_found_page": "未找到页面",
   "playground": {
+    "title": "SoybeanUI 演练场",
+    "loading": "加载中...",
+    "empty": {
+      "title": "暂无示例",
+      "description": "该库的 Playground 示例即将推出。"
+    },
     "preview": "预览",
     "code": "代码",
     "examples": {
@@ -738,6 +744,7 @@
       "admin": "后台",
       "chart": "图表",
       "releases": "更新日志",
+      "playground": "演练场",
       "version": "版本",
       "github": "GitHub",
       "theme": "主题",
