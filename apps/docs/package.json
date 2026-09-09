@@ -19,7 +19,6 @@
     "typecheck": "vue-tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
-    "@fontsource-variable/manrope": "^5.3.0",
     "@iconify/vue": "^5.0.1",
     "@internationalized/date": "^3.12.4",
     "@soybeanjs/admin": "workspace:^",
@@ -34,7 +33,6 @@
     "@unovis/ts": "^1.6.7",
     "@unovis/vue": "^1.6.7",
     "@vueuse/core": "^14.4.0",
-    "es-toolkit": "^1.52.0",
     "shiki": "^4.4.3",
     "ubean": "^0.4.5",
     "valibot": "^1.4.2",

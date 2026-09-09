@@ -2,7 +2,7 @@
 @import './frosted.css';
 
 html {
-  --docs-font-sans: 'Manrope Variable', 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --docs-font-sans: ui-sans-serif, system-ui, sans-serif;
   --docs-page-bg-solid: rgb(244, 247, 255);
   --docs-page-bg: linear-gradient(
     180deg,
