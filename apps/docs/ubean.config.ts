@@ -2,80 +2,12 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'ubean';
 import UiResolver from '../../packages/ui/src/resolver';
-import { encodeBase64Utf8 } from './src/shared/encode';
 import { collectPrerenderRoutes } from './build/docs-routes';
+import { SHIKI_THEMES, createMarkdownHighlight } from './build/highlight';
 
 const rootDir = path.dirname(fileURLToPath(import.meta.url));
 
-const SHIKI_LANGS = [
-  'vue',
-  'ts',
-  'tsx',
-  'js',
-  'jsx',
-  'bash',
-  'json',
-  'jsonc',
-  'html',
-  'css',
-  'scss',
-  'yaml',
-  'markdown',
-  'text'
-];
-const SHIKI_THEMES = { light: 'one-light', dark: 'one-dark-pro' } as const;
-
-// Top-level await: shiki's codeToHtml is sync once the highlighter exists.
-const { createHighlighter } = await import('shiki');
-const shikiHighlighter = await createHighlighter({
-  themes: Object.values(SHIKI_THEMES),
-  langs: SHIKI_LANGS
-});
-
-/**
- * markdown-it `highlight` hook wired through `markdown.markdownExit`.
- * ubean@0.4.1 does not wire `markdown.theme` to shiki itself, so dual-theme
- * highlighting is provided here (same one-light / one-dark-pro pair the old
- * site used via @shikijs/markdown-exit; `defaultColor: false` emits
- * --shiki-light/--shiki-dark css vars consumed by src/styles/global.css).
- */
-function highlightCode(code: string, lang: string) {
-  const loaded = shikiHighlighter.getLoadedLanguages() as string[];
-  const language = loaded.includes(lang) ? lang : 'text';
-  const normalized = code.replace(/\n$/, '');
-
-  const html = shikiHighlighter.codeToHtml(normalized, {
-    lang: language,
-    themes: SHIKI_THEMES,
-    defaultColor: false
-  });
-
-  return wrapFenceWithCopyButton(html, lang, normalized);
-}
-
-/**
- * Fence-level CopyButton injection. ubean only spreads `markdownExit` into the
- * MarkdownIt constructor and never forwards `setupMarkdown`, so the old site's
- * `md.renderer.rules.fence` override is not available. markdown-exit renders a
- * `highlight()` result verbatim when it starts with `<pre`, so the panel
- * wrapper (`md-code-block` + `data-lang` badge) and the `<CopyButton>` usage
- * are injected here; `unplugin-vue-markdown` + component auto-import resolve
- * `<CopyButton>` when the `.md` is compiled into a Vue SFC.
- */
-function wrapFenceWithCopyButton(shikiHtml: string, lang: string, code: string) {
-  const openTag = shikiHtml.match(/^<pre([^>]*)>/);
-  if (!openTag) {
-    return shikiHtml;
-  }
-
-  const attrs = openTag[1]
-    .replace(/^ class="([^"]*)"/, ` class="$1 md-code-block" data-lang="${lang}"`)
-    .replace(/ tabindex="0"/, '');
-
-  const codeBase64 = encodeBase64Utf8(code);
-
-  return `<pre${attrs}><CopyButton code-base64="${codeBase64}" />${shikiHtml.slice(openTag[0].length)}`;
-}
+const highlightCode = await createMarkdownHighlight();
 
 /**
  * Concrete prerender routes: static shell pages + default-locale content slugs
@@ -98,7 +30,7 @@ export default defineConfig({
     strategy: 'prefix_except_default'
   },
   markdown: {
-    // enabled / wrapperClass / components.autoImport 均为 ubean 默认值,无需配置
+    wrapperClass: 'markdown-body',
     theme: {
       light: SHIKI_THEMES.light,
       dark: SHIKI_THEMES.dark
@@ -108,12 +40,9 @@ export default defineConfig({
     }
   },
   components: {
-    // dirs 默认即扫描 src/components,无需重复声明
     resolvers: [UiResolver()]
   },
   autoImports: {
-    // NOTE: `vue: true` injects a `vue/macros` preset that vue@3.5 does not
-    // export under node conditions (breaks SSR). Import vue APIs explicitly.
     vueRouter: true,
     vueI18n: true
   },
@@ -121,7 +50,6 @@ export default defineConfig({
   // disabling the built-in colorMode avoids a second, conflicting source.
   colorMode: false,
   prerender: {
-    // all / failOnError 均为默认值(false),无需配置
     include: prerenderRoutes,
     crawlLinks: true
   },
