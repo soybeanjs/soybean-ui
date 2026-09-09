@@ -60,25 +60,26 @@ const closeDrawer = () => {
           <PageView />
         </div>
 
-        <aside v-if="shouldReserveOutlineSpace" class="lt-xl:hidden xl:w-72 xl:min-w-0">
-          <!--
+        <ClientOnly>
+          <aside v-if="shouldReserveOutlineSpace" class="lt-xl:hidden xl:w-72 xl:min-w-0">
+            <!--
             The outline is filled asynchronously on the client (doc-md loads its
             markdown via an async glob), while SSR already rendered it from
             `onServerPrefetch`. The first client frame therefore differs in both
             the wrapper class and the anchor children; it self-heals once loaded.
           -->
-          <div
-            data-allow-mismatch="class"
-            class="fixed top-[calc(var(--app-header)+1.25rem)] end-8 z-40 w-72 transition-opacity duration-200"
-            :class="hasDocOutline ? 'opacity-100' : 'pointer-events-none opacity-0'"
-          >
             <div
-              class="max-h-[calc(100vh-var(--app-header)-2.5rem)] overflow-auto border border-border/50 dark:border-border p-3 rounded-xl"
+              class="fixed top-[calc(var(--app-header)+1.25rem)] end-8 z-40 w-72 transition-opacity duration-200"
+              :class="hasDocOutline ? 'opacity-100' : 'pointer-events-none opacity-0'"
             >
-              <SAnchor :items="docOutline" :offset-top="124" :target-offset="124" data-allow-mismatch="children" />
+              <div
+                class="max-h-[calc(100vh-var(--app-header)-2.5rem)] overflow-auto border border-border/50 dark:border-border p-3 rounded-xl"
+              >
+                <SAnchor :items="docOutline" :offset-top="124" :target-offset="124" />
+              </div>
             </div>
-          </div>
-        </aside>
+          </aside>
+        </ClientOnly>
       </div>
     </div>
   </div>

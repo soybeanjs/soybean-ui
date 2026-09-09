@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, onServerPrefetch, shallowRef, watchEffect } from 'vue';
 import type { Component } from 'vue';
+import { ClientOnly } from 'ubean/client';
 import type { AnchorOptionData } from '@soybeanjs/headless/anchor';
 import { useDocOutline } from '~/composables/use-doc-outline';
 import { toHeadingId } from '~/shared/heading';
@@ -168,26 +169,23 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div ref="contentRef" class="min-w-0" data-allow-mismatch="children">
-    <!--
- 内容组件由 async glob 在客户端加载,首帧水合时 cp 仍为 null,与 SSR
-         已渲染的 <article> 子节点不一致(加载完成后自愈)。声明允许 children
-         层 mismatch,避免每次刷新产生 hydration 告警。
--->
-    <article
-      v-if="cp"
-      :data-doc-path="path"
-      class="relative min-w-0 border border-border/50 dark:border-border rounded-xl overflow-hidden"
-    >
-      <div
-        aria-hidden="true"
-        class="pointer-events-none absolute inset-x-0 top-0 h-36 bg-linear-to-r from-primary/8 via-warning/6 to-info/8 opacity-80"
-      />
-      <div class="relative min-w-0 px-5 py-6 sm:px-8 sm:py-8 xl:px-10 xl:py-10">
-        <div class="min-w-0">
-          <component :is="cp" />
+  <div ref="contentRef" class="min-w-0">
+    <ClientOnly>
+      <article
+        v-if="cp"
+        :data-doc-path="path"
+        class="relative min-w-0 border border-border/50 dark:border-border rounded-xl overflow-hidden"
+      >
+        <div
+          aria-hidden="true"
+          class="pointer-events-none absolute inset-x-0 top-0 h-36 bg-linear-to-r from-primary/8 via-warning/6 to-info/8 opacity-80"
+        />
+        <div class="relative min-w-0 px-5 py-6 sm:px-8 sm:py-8 xl:px-10 xl:py-10">
+          <div class="min-w-0">
+            <component :is="cp" />
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </ClientOnly>
   </div>
 </template>
