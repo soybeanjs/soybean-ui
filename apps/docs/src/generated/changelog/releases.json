@@ -804,7 +804,13 @@
         "refactor": 12,
         "chore": 14
       },
-      "notes": [],
+      "notes": [
+        {
+          "type": "breaking",
+          "summary": "This release ships a rebuilt theme system with renamed packages. @soybeanjs/shadcn-theme is now @soybeanjs/theme (createShadcnTheme → createTheme), and @soybeanjs/unocss-shadcn is now @soybeanjs/ui-uno (presetShadcn → presetUiUnocss, ShadcnPresetOptions → UiUnocssOptions). The theme menu config (menuColor / menuAccent) is removed, and custom color overrides now use `overrides: { light, dark }` instead of the legacy preset object (presets can also be passed through SConfigProvider `theme.preset`). Please update your dependencies and imports accordingly.",
+          "summaryKey": "changelog.generated.note.v0.30.0.0"
+        }
+      ],
       "entries": [
         {
           "type": "feature",
