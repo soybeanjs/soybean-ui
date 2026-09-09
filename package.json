@@ -33,6 +33,7 @@
     "fmt": "vp fmt",
     "lint": "vp lint --fix && pnpm lint:vue",
     "lint:vue": "eslint packages/ --ext .vue --fix",
+    "preview": "pnpm --filter @soybeanjs/ui-docs preview",
     "publish-pkg": "pnpm publish -r --access public",
     "release": "soy release -e 'pnpm release-execute'",
     "release-execute": "pnpm soy changelog && pnpm sui gen skills && pnpm sui gen changelog --translate && pnpm sync-template-versions",
