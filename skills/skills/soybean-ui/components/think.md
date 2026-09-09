@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/ui-x/think
 Markdown URL: https://ui.soybeanjs.cn/ui-x/think.md
 Category: Reasoning
-Description: SxThink is a collapsible AI \"deep thinking\" panel that reveals the model's reasoning process behind an answer. It opens as a toggleable section with a header button and expandable content area, making it easy to show or hide the chain-of-thought trace.
+Description: SxThink is a collapsible AI "deep thinking" panel that reveals the model''s reasoning process behind an answer. It opens as a toggleable section with a header button and expandable content area, making it easy to show or hide the chain-of-thought trace.
 
 ## Overview
 

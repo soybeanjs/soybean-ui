@@ -12,6 +12,7 @@ Description: SLink is a polymorphic link component that supports internal routin
 ## Features
 
 - 🔗 **Smart Routing**: Automatically distinguishes internal routes (`to`) from external links (`href`), gracefully falls back to `<a>` when RouterLink is unavailable.
+- 🧩 **Pluggable Link Component**: Inject a framework-specific component (e.g. Nuxt `NuxtLink`) via `SConfigProvider` `linkComponent`.
 - 🛡️ **Safe Defaults**: External links automatically get `target="_blank"` and `rel="noopener noreferrer"` to prevent reverse tabnabbing.
 - 🔧 **Polymorphic**: Render as any element or component via `as`/`asChild`.
 - ♿ **Accessible Disabled**: Disabled state sets `aria-disabled`, `role="link"`, `tabindex="-1"`, and blocks click events.
@@ -120,6 +121,9 @@ Use `to` for internal route navigation (requires `RouterLink`) and `href` for ex
 
 **Can I use it without vue-router installed?**
 Yes. The component uses `resolveComponent('RouterLink')` to check if RouterLink is available. When unavailable, it automatically falls back to rendering an `<a>` tag.
+
+**Can I plug in a framework-specific link component (Nuxt `NuxtLink`, a locale-prefixing `Link`)?**
+Yes. Set `linkComponent` on `SConfigProvider` (same injection mechanism as `iconRender`); `Link` then renders internal links with that component instead of the global `RouterLink`. Framework-specific props that `LinkProps` does not declare (e.g. `locale`) fall through as attrs to the injected component, and you can type them via module augmentation of `LinkProps`. External links still render a native `<a>`.
 
 **How do I disable a link?**
 Set `disabled: true`. The component sets `aria-disabled="true"`, `tabindex="-1"`, `role="link"`, and calls `preventDefault()` to block click navigation. The `data-disabled` attribute is added to trigger `cursor-not-allowed` and `opacity-50` visually.

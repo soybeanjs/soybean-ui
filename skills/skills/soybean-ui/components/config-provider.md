@@ -227,6 +227,7 @@ Properties for the ConfigProvider component.
 - `nonce`: The global `nonce` value of your application. This will be inherited by the related components. (type `string`; optional)
 - `tooltip`: The global tooltip configuration of your application. This will be inherited by the related components. (type `Partial<TooltipProviderProps>`; optional)
 - `iconRender`: A function to render the icon. This is useful when you want to use a custom icon library or want to wrap the icon with a custom component. (type `((icon: IconValue) => VNode)`; optional)
+- `linkComponent`: The component used by `Link` to render internal links. This is useful when you want to integrate a framework-specific link component (e.g. Nuxt `NuxtLink`, a custom `RouterLink` wrapper, or a locale-prefixing `Link`) instead of the globally registered `RouterLink`. When omitted, `Link` resolves the global `RouterLink` and falls back to a native `<a>`. (type `Component`; optional)
 - `messages`: Overrides for built-in component locale messages. Merged on top of the locale selected by the `locale` prop, so you only need to supply the keys you want to change. (type `LocaleMessagesOverrides`; optional)
 
 ## Notes

@@ -3,7 +3,7 @@
 Source URL: https://ui.soybeanjs.cn/components/checkbox
 Markdown URL: https://ui.soybeanjs.cn/components/checkbox.md
 Category: Forms
-Description: A control that lets the user select or clear an option, with an indeterminate half-check state for partial selections. It ships as a standalone control, a roving-focus group, and data-driven card variants. Use it for independent toggles, multi-select lists, and \"select all\" scenarios with cascading half-check; for single-choice from a set, prefer SRadioGroup.
+Description: A control that lets the user select or clear an option, with an indeterminate half-check state for partial selections. It ships as a standalone control, a roving-focus group, and data-driven card variants. Use it for independent toggles, multi-select lists, and "select all" scenarios with cascading half-check; for single-choice from a set, prefer SRadioGroup.
 
 ## Overview
 
