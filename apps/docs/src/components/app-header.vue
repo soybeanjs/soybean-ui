@@ -98,7 +98,7 @@ onUnmounted(() => {
           <template #trigger>
             <SButtonIcon icon="lucide:menu" class="xl:!hidden text-xl" />
           </template>
-          <div class="flex flex-col gap-4 pt-4">
+          <div class="flex flex-col gap-4">
             <HeaderNav orientation="vertical" />
             <SSeparator />
             <ToolBar />

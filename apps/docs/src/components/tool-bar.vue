@@ -26,16 +26,10 @@ const toolbarActions = [
 </script>
 
 <template>
-  <div class="flex gap-4 lt-md:flex-col">
-    <div class="flex-y-center lt-md:justify-between">
-      <span class="md:hidden text-sm text-gray-500">{{ t('layout.header.github') }}</span>
-      <SLink href="https://github.com/soybeanjs/soybean-ui">
-        <SButtonIcon icon="mdi:github" size="lg" />
-      </SLink>
-    </div>
-    <div v-for="action in toolbarActions" :key="action.key" class="flex-y-center lt-md:justify-between">
-      <span class="md:hidden text-sm text-gray-500">{{ t(action.labelKey) }}</span>
-      <component :is="action.component" />
-    </div>
+  <div class="flex-y-center gap-4">
+    <SLink href="https://github.com/soybeanjs/soybean-ui" :aria-label="t('layout.header.github')">
+      <SButtonIcon icon="mdi:github" size="lg" />
+    </SLink>
+    <component :is="action.component" v-for="action in toolbarActions" :key="action.key" />
   </div>
 </template>

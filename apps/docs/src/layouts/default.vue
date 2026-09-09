@@ -20,9 +20,7 @@ const closeDrawer = () => {
 </script>
 
 <template>
-  <div
-    class="[--app-header-main:3.75rem] [--app-topbar:0rem] md:[--app-topbar:2.75rem] [--app-header:calc(var(--app-header-main)+var(--app-topbar))] min-h-full pt-[--app-header] text-sm"
-  >
+  <div class="[--app-header-main:3.75rem] [--app-header:--app-header-main] min-h-full pt-[--app-header] text-sm">
     <AppHeader />
     <div
       v-if="shouldShowSidebar"
@@ -48,10 +46,7 @@ const closeDrawer = () => {
         <SiderMenu @select="closeDrawer" />
       </SDrawer>
     </div>
-    <div
-      :class="shouldShowSidebar ? 'lt-md:ms-0 md:ms-55' : 'ms-0'"
-      class="px-4 py-5 md:px-8 md:pb-7 md:pt-5 xl:px-10 lt-md:pt-12!"
-    >
+    <div :class="shouldShowSidebar ? 'lt-md:ms-0 md:ms-55' : 'ms-0'" class="px-4 py-5 md:px-8 md:pb-7 md:pt-5 xl:px-10">
       <div
         class="mx-auto min-w-0"
         :class="shouldReserveOutlineSpace ? 'xl:grid xl:grid-cols-[minmax(0,1fr)_18rem] xl:items-start xl:gap-8' : ''"
