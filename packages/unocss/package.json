@@ -39,8 +39,8 @@
   },
   "dependencies": {
     "@soybeanjs/theme": "workspace:^",
-    "@unocss/preset-mini": "^66.10.0",
-    "unocss": "^66.10.0"
+    "@unocss/preset-mini": "^66.10.1",
+    "unocss": "^66.10.1"
   },
   "devDependencies": {
     "@soybeanjs/shared": "workspace:^",

@@ -16,7 +16,7 @@
     "@types/node": "^26.5.0",
     "tsx": "^4.23.13",
     "typedoc": "^0.28.20",
-    "typescript": "catalog:ts6",
+    "typescript": "catalog:",
     "vite-plus": "catalog:",
     "vitest": "5.0.0"
   }

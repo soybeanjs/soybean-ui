@@ -28,13 +28,13 @@
     "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
     "@soybeanjs/ui-x": "workspace:^",
-    "@tanstack/charts": "^0.16.0",
+    "@tanstack/charts": "^0.16.2",
     "@unhead/vue": "^3.4.0",
     "@unovis/ts": "^1.6.7",
     "@unovis/vue": "^1.6.7",
     "@vueuse/core": "^14.4.0",
     "shiki": "^4.4.3",
-    "ubean": "^0.4.5",
+    "ubean": "^0.4.6",
     "valibot": "^1.4.2",
     "vue": "^3.5.42",
     "vue-i18n": "^11.4.10",
@@ -45,8 +45,8 @@
     "@soybeanjs/ui-uno": "workspace:^",
     "@soybeanjs/unocss-preset": "^0.2.0",
     "@vitejs/plugin-vue-jsx": "^5.1.6",
-    "typescript": "catalog:ts6",
-    "unocss": "^66.10.0",
+    "typescript": "catalog:",
+    "unocss": "^66.10.1",
     "vite-plus": "catalog:"
   }
 }
