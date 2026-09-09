@@ -18,7 +18,6 @@ const items: TreeNavOptionData[] = [
 ];
 
 const handleSelect = (item: TreeNavOptionData) => {
-  // eslint-disable-next-line no-console
   console.log('selected:', item.value);
 };
 </script>

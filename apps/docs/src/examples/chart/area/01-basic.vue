@@ -23,7 +23,7 @@ const chartConfig = {
 
 const x = (d: Data) => d.month;
 const y = (d: Data) => d.desktop;
-const tickFormat = (d: number, index: number) => chartData[index]?.monthLabel.slice(0, 3) ?? '';
+const tickFormat = (_d: number, index: number) => chartData[index]?.monthLabel.slice(0, 3) ?? '';
 
 const tooltipTemplate = componentToString(chartConfig, SChartTooltipContent, { labelKey: 'monthLabel' });
 </script>

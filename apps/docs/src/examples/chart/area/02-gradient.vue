@@ -41,7 +41,7 @@ const areaY = [(d: Data) => d.mobile, (d: Data) => d.desktop];
 const areaColor = (_d: Data, i: number) => ['url(#fillMobile)', 'url(#fillDesktop)'][i];
 const lineY = [(d: Data) => d.mobile, (d: Data) => d.mobile + d.desktop];
 const lineColor = (_d: Data, i: number) => [chartConfig.mobile.color, chartConfig.desktop.color][i];
-const tickFormat = (d: number, index: number) => chartData[index]?.monthLabel.slice(0, 3) ?? '';
+const tickFormat = (_d: number, index: number) => chartData[index]?.monthLabel.slice(0, 3) ?? '';
 const yTickFormat = () => '';
 
 const tooltipTemplate = componentToString(chartConfig, SChartTooltipContent, { labelKey: 'monthLabel' });
