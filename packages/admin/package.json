@@ -50,7 +50,7 @@
   },
   "scripts": {
     "build": "vp pack && pnpm build:css",
-    "build:css": "unocss 'src/styles/**/*.ts' -o dist/styles.css --minify",
+    "build:css": "unocss --minify",
     "test": "vp test run",
     "test:coverage": "vp test run --coverage",
     "test:ui": "vp test --ui",

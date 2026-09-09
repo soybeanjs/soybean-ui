@@ -55,7 +55,7 @@
   },
   "scripts": {
     "build": "vp pack && pnpm build:css",
-    "build:css": "unocss 'src/styles/**/*.ts' -o dist/styles.css --minify",
+    "build:css": "unocss --minify",
     "test": "vp test run",
     "typecheck": "vue-tsc --noEmit --skipLibCheck"
   },
