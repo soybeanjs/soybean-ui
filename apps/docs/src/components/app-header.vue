@@ -71,7 +71,7 @@ onUnmounted(() => {
 <template>
   <header
     :data-scrolled="isScrolled"
-    class="docs-header-shell group fixed top-0 start-0 end-0 z-49 px-4 transition-all-800 data-[scrolled=true]:top-3 sm:px-6"
+    class="docs-header-shell group fixed top-0 start-0 end-0 z-49 px-4 transition-all-800 data-[scrolled=true]:top-3 data-[scrolled=false]:border-b sm:px-6"
   >
     <div
       class="docs-header-frame mx-auto flex max-w-360 min-h-[--app-header-main] items-center justify-between gap-3 px-6 py-3 group-data-[scrolled=true]:min-h-0 lt-md:group-data-[scrolled=true]:py-2 transition-all-300 xl:gap-4"
