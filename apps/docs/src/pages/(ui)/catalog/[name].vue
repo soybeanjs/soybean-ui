@@ -51,44 +51,6 @@ const sectionLinks = computed(() => {
   }));
 });
 
-interface ActionLink {
-  label: string;
-  href?: string;
-  to?: string;
-  target?: '_self' | '_blank';
-}
-
-const actionLinks = computed(() => {
-  const links: ActionLink[] = [
-    {
-      label: t('component_detail.actions.demos'),
-      href: `#${toHeadingId(t('component_detail.sections.demos'))}`,
-      target: '_self'
-    },
-    {
-      label: t('component_detail.actions.api'),
-      href: `#${toHeadingId(t('component_detail.sections.api'))}`,
-      target: '_self'
-    }
-  ];
-
-  if (hasChangelog.value) {
-    links.push({
-      label: t('component_detail.actions.changelog'),
-      href: `#${changelogSectionId.value}`,
-      target: '_self'
-    });
-  }
-
-  links.push({
-    label: t('component_detail.actions.catalog'),
-    to: '/components',
-    target: '_self'
-  });
-
-  return links;
-});
-
 const relatedComponents = computed(() => {
   return (
     currentGroup.value?.items
@@ -125,68 +87,39 @@ function onLoaded(isSuccess: boolean) {
       />
 
       <div class="relative grid gap-8 xl:grid-cols-[minmax(0,1.12fr)_22rem] xl:items-start">
-        <div class="space-y-5">
-          <div
-            class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground"
-          >
-            <SIcon icon="lucide:component" class="text-sm text-primary" />
-            <span>{{ t('component_detail.kicker') }}</span>
-          </div>
+        <div class="space-y-6">
+          <SButtonLink to="/components" size="sm" variant="ghost" color="accent" class="group -ml-2">
+            <SIcon icon="lucide:arrow-left" class="transition-transform duration-200 group-hover:-translate-x-1" />
+            {{ t('component_detail.actions.catalog') }}
+          </SButtonLink>
 
-          <div class="space-y-4">
-            <div class="flex flex-wrap items-center gap-2.5">
-              <span class="text-sm font-medium text-muted-foreground">{{ currentGroupLabel }}</span>
-              <div class="code-btn-outline">@soybeanjs/ui</div>
-              <div class="code-btn-outline">{{ importName }}</div>
-            </div>
-
-            <div class="space-y-3">
-              <p class="text-3xl font-black tracking-[-0.05em] text-foreground">
-                {{ componentName }}
-              </p>
-              <p class="max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">
-                {{ summary }}
-              </p>
-              <p class="max-w-3xl text-sm leading-7 text-muted-foreground">
-                {{ t('component_detail.helper') }}
-              </p>
-            </div>
-
-            <div class="grid gap-3 sm:grid-cols-2 xl:max-w-2xl">
-              <div class="docs-subtle-card px-4 py-3">
-                <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                  {{ t('component_detail.meta.category') }}
-                </div>
-                <div class="mt-2 text-sm font-medium text-foreground">{{ currentGroupLabel }}</div>
-              </div>
-              <div class="docs-subtle-card px-4 py-3">
-                <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                  {{ t('component_detail.meta.import') }}
-                </div>
-                <div class="mt-2 text-sm font-medium text-foreground">{{ importName }}</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-2 gap-3 lt-md:grid-cols-1">
-            <SButtonLink
-              v-for="action in actionLinks"
-              :key="action.label"
-              :href="action.href"
-              :to="action.to"
-              :target="action.target"
-              size="lg"
-              color="accent"
-              :variant="action.href ? 'ghost' : 'pure'"
-              shape="rounded"
-              class="group justify-between"
+          <div class="space-y-5">
+            <div
+              class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground"
             >
-              {{ action.label }}
-              <SIcon
-                :icon="action.href ? 'lucide:arrow-right' : 'lucide:layout-grid'"
-                class="transition-transform duration-200 group-hover:translate-x-1"
-              />
-            </SButtonLink>
+              <SIcon icon="lucide:component" class="text-sm text-primary" />
+              <span>{{ t('component_detail.kicker') }}</span>
+            </div>
+
+            <div class="space-y-4">
+              <div class="flex flex-wrap items-center gap-2.5">
+                <span class="text-sm font-medium text-muted-foreground">{{ currentGroupLabel }}</span>
+                <div class="code-btn-outline">@soybeanjs/ui</div>
+                <div class="code-btn-outline">{{ importName }}</div>
+              </div>
+
+              <div class="space-y-3">
+                <p class="text-3xl font-black tracking-[-0.05em] text-foreground">
+                  {{ componentName }}
+                </p>
+                <p class="max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">
+                  {{ summary }}
+                </p>
+                <p class="max-w-3xl text-sm leading-7 text-muted-foreground">
+                  {{ t('component_detail.helper') }}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 

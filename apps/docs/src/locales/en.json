@@ -1070,7 +1070,7 @@
   },
   "component_detail": {
     "kicker": "Component detail entry",
-    "helper": "Use the top shortcuts to reach overview, usage, demos, and API first, then continue through the full page.",
+    "helper": "Use the quick jump panel to reach overview, usage, demos, and API first, then continue through the full page.",
     "summary": "{component} belongs to the {category} category. Start with demos and usage, then use the API tables to finish integration and styling decisions.",
     "changelog": {
       "desc": "Version history is grouped by release so you can quickly see what changed for this component across published versions."
