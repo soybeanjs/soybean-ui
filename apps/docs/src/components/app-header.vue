@@ -1,77 +1,21 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, shallowRef } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useScrollState } from '~/composables/use-scroll-state';
 import pkg from '../../package.json' with { type: 'json' };
 import ToolBar from './tool-bar.vue';
 
 const { t } = useI18n();
-const isScrolled = shallowRef(false);
-let bodyObserver: MutationObserver | null = null;
-let viewport: VisualViewport | null = null;
 
 const { version } = pkg;
 
-function readWindowScrollOffset() {
-  return (
-    window.scrollY ||
-    window.pageYOffset ||
-    document.scrollingElement?.scrollTop ||
-    document.documentElement.scrollTop ||
-    document.body.scrollTop ||
-    0
-  );
-}
-
-function getScrollOffset() {
-  if (document.body.hasAttribute('data-scroll-lock')) {
-    const top = Number.parseFloat(document.body.style.top || '0');
-
-    if (!Number.isNaN(top) && top !== 0) {
-      return Math.abs(top);
-    }
-  }
-
-  return readWindowScrollOffset();
-}
-
-function syncScrollState() {
-  isScrolled.value = getScrollOffset() > 24;
-}
-
-onMounted(() => {
-  viewport = window.visualViewport;
-  syncScrollState();
-  requestAnimationFrame(syncScrollState);
-  window.addEventListener('scroll', syncScrollState, { passive: true });
-  document.addEventListener('scroll', syncScrollState, { passive: true });
-  window.addEventListener('resize', syncScrollState, { passive: true });
-  window.addEventListener('pageshow', syncScrollState);
-  viewport?.addEventListener('scroll', syncScrollState, { passive: true });
-  viewport?.addEventListener('resize', syncScrollState, { passive: true });
-  bodyObserver = new MutationObserver(syncScrollState);
-  bodyObserver.observe(document.body, {
-    attributes: true,
-    attributeFilter: ['style', 'data-scroll-lock']
-  });
-});
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', syncScrollState);
-  document.removeEventListener('scroll', syncScrollState);
-  window.removeEventListener('resize', syncScrollState);
-  window.removeEventListener('pageshow', syncScrollState);
-  viewport?.removeEventListener('scroll', syncScrollState);
-  viewport?.removeEventListener('resize', syncScrollState);
-  bodyObserver?.disconnect();
-  bodyObserver = null;
-  viewport = null;
-});
+const { isScrolled, isAtTop } = useScrollState();
 </script>
 
 <template>
   <header
     :data-scrolled="isScrolled"
-    class="docs-header-shell group fixed top-0 start-0 end-0 z-49 px-4 transition-all-800 data-[scrolled=true]:top-3 data-[scrolled=false]:border-b sm:px-6"
+    :data-at-top="isAtTop"
+    class="docs-header-shell group fixed top-0 start-0 end-0 z-49 px-4 transition-all-800 data-[scrolled=true]:top-3 after:content-empty after:pointer-events-none after:absolute after:bottom-0 after:start-0 after:end-0 after:h-px after:bg-border after:opacity-0 after:transition-opacity after:duration-300 data-[at-top=true]:after:opacity-100 sm:px-6"
   >
     <div
       class="docs-header-frame mx-auto flex max-w-360 min-h-[--app-header-main] items-center justify-between gap-3 px-6 py-3 group-data-[scrolled=true]:min-h-0 lt-md:group-data-[scrolled=true]:py-2 transition-all-300 xl:gap-4"
