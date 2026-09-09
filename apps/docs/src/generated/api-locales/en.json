@@ -11600,6 +11600,7 @@
             "iconify": "The iconify options.",
             "iconrender": "A function to render the icon. This is useful when you want to use a custom icon library or want to wrap the icon with a custom component.",
             "isserver": "Whether the component is running in a server environment.\n\nThe UI library is pre-built, so `import.meta.env.SSR` is baked at build\ntime and cannot detect the consumer's runtime. This defaults to runtime\ndetection (`typeof window === 'undefined'`), and can be overridden with\nthe app's own flag (e.g. Nuxt's `import.meta.server`) when the app is\nbundled for both server and client.",
+            "linkcomponent": "The component used by `Link` to render internal links. This is useful when you want to\nintegrate a framework-specific link component (e.g. Nuxt `NuxtLink`, a custom `RouterLink`\nwrapper, or a locale-prefixing `Link`) instead of the globally registered `RouterLink`.\n\nWhen omitted, `Link` resolves the global `RouterLink` and falls back to a native `<a>`.",
             "locale": "The global locale of your application. This will be inherited by all components.",
             "messages": "Overrides for built-in component locale messages. Merged on top of the locale selected by the\n`locale` prop, so you only need to supply the keys you want to change.",
             "nonce": "The global `nonce` value of your application. This will be inherited by the related components.",

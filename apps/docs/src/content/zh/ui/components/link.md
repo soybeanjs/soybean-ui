@@ -13,6 +13,7 @@ head:
 ## 特性
 
 - 🔗 **智能路由**：自动区分内部路由（`to`）与外部链接（`href`），无 RouterLink 环境下优雅降级为 `<a>`。
+- 🧩 **可插拔链接组件**：通过 `SConfigProvider` 的 `linkComponent` 注入框架专属组件（如 Nuxt `NuxtLink`）。
 - 🛡️ **安全默认值**：外部链接自动设置 `target="_blank"` 和 `rel="noopener noreferrer"`，防止反向链接攻击。
 - 🔧 **多态渲染**：通过 `as`/`asChild` 支持渲染为任意元素或组件。
 - ♿ **无障碍禁用**：禁用状态设置 `aria-disabled`、`role="link"`、`tabindex="-1"`，并阻止点击事件。
@@ -57,6 +58,9 @@ SoybeanUI 将链接拆分为 headless 层（路由检测、禁用处理、`Route
 
 **没有安装 vue-router 时能用吗？**
 可以。组件通过 `resolveComponent('RouterLink')` 检测 RouterLink 是否可用。不可用时自动降级为 `<a>` 标签渲染。
+
+**可以对接框架专属的链接组件吗（如 Nuxt `NuxtLink`、带语言前缀的 `Link`）？**
+可以。在 `SConfigProvider` 上设置 `linkComponent`（与 `iconRender` 相同的注入机制），`Link` 的内部链接将改用该组件渲染，替代全局 `RouterLink`。`LinkProps` 未声明的框架专属 props（如 `locale`）会以 attrs 透传给注入组件，可通过模块增强 `LinkProps` 获得类型提示。外部链接仍渲染原生 `<a>`。
 
 **如何禁用链接？**
 设置 `disabled: true`。组件会设置 `aria-disabled="true"`、`tabindex="-1"`、`role="link"`，并通过 `preventDefault()` 阻止点击导航。视觉上添加 `data-disabled` 属性触发 `cursor-not-allowed` 和 `opacity-50`。

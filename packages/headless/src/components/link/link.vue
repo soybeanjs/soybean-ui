@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { computed, resolveComponent, useAttrs } from 'vue';
+import { computed, inject, resolveComponent, useAttrs } from 'vue';
+import { CONFIG_PROVIDER_CONTEXT_KEY } from '../../constants/attr';
+import type { ConfigProviderContext } from '../config-provider/types';
 import { Primitive } from '../primitive';
 import type { LinkProps } from './types';
 
@@ -28,8 +30,14 @@ defineSlots<Slots>();
 
 const attrs = useAttrs();
 
+const config = inject<ConfigProviderContext>(CONFIG_PROVIDER_CONTEXT_KEY, {});
+
 const resolvedRouterLink = resolveComponent('RouterLink');
-const RouterLink = typeof resolvedRouterLink === 'string' ? null : resolvedRouterLink;
+const fallbackLink = typeof resolvedRouterLink === 'string' ? null : resolvedRouterLink;
+
+// An injected `linkComponent` (via ConfigProvider) wins over the globally
+// registered `RouterLink`, so the library can target Nuxt / custom link components.
+const RouterLink = computed(() => config.linkComponent ?? fallbackLink);
 
 const isHref = computed(() => {
   if (props.external || props.disabled) {
@@ -47,7 +55,7 @@ const isHref = computed(() => {
   return false;
 });
 
-const renderA = computed(() => isHref.value || !RouterLink);
+const renderA = computed(() => isHref.value || !RouterLink.value);
 
 const target = computed(() => {
   if (props.target) {

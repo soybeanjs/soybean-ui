@@ -11600,6 +11600,7 @@
             "iconify": "iconify 选项。",
             "iconrender": "一个用于渲染图标的函数。当您希望使用自定义图标库，或希望用自定义组件包裹图标时，此函数非常有用。",
             "isserver": "组件是否在服务器环境中运行。\n\n由于 UI 库是预编译的，因此 `import.meta.env.SSR` 在构建\n时已被固定，无法检测使用方的运行时环境。 默认情况下会进行运行时\n检测（`typeof window === 'undefined'`），当应用程序\n同时针对服务器和客户端进行打包时，可通过\n应用程序自身的标志（例如 Nuxt 的 `import.meta.server`）进行覆盖。",
+            "linkcomponent": "`Link` 用于渲染内部链接的组件。当您希望\n集成特定框架的链接组件（例如 Nuxt 的 `NuxtLink`、自定义的 `RouterLink`\n封装器，或带有语言前缀的 `Link`）而非全局注册的 `RouterLink` 时，此功能非常有用。\n\n若省略，`Link` 将解析全局 `RouterLink`，并回退到原生 `<a>`。",
             "locale": "应用程序的全局语言环境。所有组件将继承此设置。",
             "messages": "对内置组件语言环境消息的覆盖。这些覆盖内容将叠加在由\n`locale` 属性选定的语言环境之上，因此您只需提供需要修改的键值即可。",
             "nonce": "应用程序的全局 `nonce` 值。相关组件将继承此值。",

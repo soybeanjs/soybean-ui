@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "ConfigProviderProps",
         "type": "Interface ConfigProviderProps",
-        "resolvedType": "{ theme?: ConfigProviderThemeOptions; size?: ThemeSize; iconify?: IconifyOptions; progress?: Partial<ProgressProviderProps>; toast?: Partial<ToastProviderProps>; customToast?: boolean; persistTheme?: boolean; themeConfig?: ThemeConfigState; presetProvider?: ((name: string) => CustomThemeColorPreset | null); isServer?: boolean; dir?: Direction; locale?: string; nonce?: string; tooltip?: Partial<TooltipProviderProps>; iconRender?: ((icon: IconValue) => VNode); messages?: LocaleMessagesOverrides }",
+        "resolvedType": "{ theme?: ConfigProviderThemeOptions; size?: ThemeSize; iconify?: IconifyOptions; progress?: Partial<ProgressProviderProps>; toast?: Partial<ToastProviderProps>; customToast?: boolean; persistTheme?: boolean; themeConfig?: ThemeConfigState; presetProvider?: ((name: string) => CustomThemeColorPreset | null); isServer?: boolean; dir?: Direction; locale?: string; nonce?: string; tooltip?: Partial<TooltipProviderProps>; iconRender?: ((icon: IconValue) => VNode); linkComponent?: Component; messages?: LocaleMessagesOverrides }",
         "description": "Properties for the ConfigProvider component.",
         "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.props",
         "sourcePath": "packages/ui/src/components/config-provider/types.ts",
@@ -660,7 +660,7 @@
               {
                 "name": "IconValue",
                 "kind": "typeAlias",
-                "type": "string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "type": "string | Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
                 "resolvedType": null,
                 "description": "Type information for IconValue.",
                 "descriptionKey": "api.generated.packages_headless_src_components_icon_types.iconvalue",
@@ -682,6 +682,39 @@
                   "HostNode = RendererNode",
                   "HostElement = RendererElement",
                   "ExtraProps = {\n    [key: string]: any;\n}"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "linkComponent",
+            "type": "Component",
+            "required": false,
+            "description": "The component used by `Link` to render internal links. This is useful when you want to\nintegrate a framework-specific link component (e.g. Nuxt `NuxtLink`, a custom `RouterLink`\nwrapper, or a locale-prefixing `Link`) instead of the globally registered `RouterLink`.\n\nWhen omitted, `Link` resolves the global `RouterLink` and falls back to a native `<a>`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.linkcomponent",
+            "default": null,
+            "inheritedFrom": "_ConfigProviderProps.linkComponent",
+            "sourcePath": "packages/headless/src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
                 ],
                 "external": true,
                 "members": [],

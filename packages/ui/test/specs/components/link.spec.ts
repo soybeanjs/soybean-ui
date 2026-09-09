@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import { defineComponent, h } from 'vue';
 import { mount } from '@vue/test-utils';
+import { CONFIG_PROVIDER_CONTEXT_KEY } from '@soybeanjs/headless/constants';
 import SLink from '@/components/link/link.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -186,6 +188,57 @@ describe('SLink', () => {
 
       const link = wrapper.get('a');
       expect(link.attributes('data-disabled')).toBeDefined();
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('injected linkComponent', () => {
+    const FakeLink = defineComponent({
+      name: 'FakeLink',
+      props: { to: { type: [String, Object], default: undefined }, locale: { type: String, default: undefined } },
+      setup(_props, { slots }) {
+        return () => h('a', { 'data-fake-link': '', href: '/fake' }, slots.default?.({ isActive: true }));
+      }
+    });
+
+    it('renders internal links with the injected linkComponent', () => {
+      const wrapper = mount(SLink, {
+        props: { to: '/about' },
+        slots: { default: 'About' },
+        global: { provide: { [CONFIG_PROVIDER_CONTEXT_KEY as symbol]: { linkComponent: FakeLink } } },
+        attachTo: document.body
+      });
+
+      const link = wrapper.get('a');
+      expect(link.attributes('data-fake-link')).toBeDefined();
+      expect(link.text()).toBe('About');
+
+      wrapper.unmount();
+    });
+
+    it('forwards undeclared props (e.g. locale) to the injected linkComponent', () => {
+      const wrapper = mount(SLink, {
+        props: { to: '/about', locale: 'zh' },
+        global: { provide: { [CONFIG_PROVIDER_CONTEXT_KEY as symbol]: { linkComponent: FakeLink } } },
+        attachTo: document.body
+      });
+
+      expect(wrapper.findComponent(FakeLink).props('locale')).toBe('zh');
+
+      wrapper.unmount();
+    });
+
+    it('still renders a native anchor for external links when linkComponent is injected', () => {
+      const wrapper = mount(SLink, {
+        props: { href: 'https://example.com' },
+        global: { provide: { [CONFIG_PROVIDER_CONTEXT_KEY]: { linkComponent: FakeLink } } },
+        attachTo: document.body
+      });
+
+      const link = wrapper.get('a');
+      expect(link.attributes('href')).toBe('https://example.com');
+      expect(link.attributes('data-fake-link')).toBeUndefined();
 
       wrapper.unmount();
     });

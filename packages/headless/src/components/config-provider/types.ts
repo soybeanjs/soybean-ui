@@ -1,4 +1,4 @@
-import type { VNode } from 'vue';
+import type { VNode, Component } from 'vue';
 import type { LocaleMessagesOverrides } from '../../locale/types';
 import type { Direction } from '../../types';
 import type { IconValue } from '../_icon/types';
@@ -38,6 +38,14 @@ export interface ConfigProviderProps {
    * @param icon The icon to be rendered. It can be a string, a VNode, or a Component.
    */
   iconRender?: (icon: IconValue) => VNode;
+  /**
+   * The component used by `Link` to render internal links. This is useful when you want to
+   * integrate a framework-specific link component (e.g. Nuxt `NuxtLink`, a custom `RouterLink`
+   * wrapper, or a locale-prefixing `Link`) instead of the globally registered `RouterLink`.
+   *
+   * When omitted, `Link` resolves the global `RouterLink` and falls back to a native `<a>`.
+   */
+  linkComponent?: Component;
   /**
    * Overrides for built-in component locale messages. Merged on top of the locale selected by the
    * `locale` prop, so you only need to supply the keys you want to change.
