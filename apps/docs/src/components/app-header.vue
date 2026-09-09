@@ -1,19 +1,15 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, shallowRef } from 'vue';
-import { useRoute } from 'vue-router';
+import { onMounted, onUnmounted, shallowRef } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { extractLocaleFromPath } from 'ubean/client';
 import pkg from '../../package.json' with { type: 'json' };
 import ToolBar from './tool-bar.vue';
 
 const { t } = useI18n();
-const route = useRoute();
 const isScrolled = shallowRef(false);
 let bodyObserver: MutationObserver | null = null;
 let viewport: VisualViewport | null = null;
 
 const { version } = pkg;
-const showTopBar = computed(() => extractLocaleFromPath(route.path).pathWithoutLocale !== '/');
 
 function readWindowScrollOffset() {
   return (
@@ -93,7 +89,7 @@ onUnmounted(() => {
       </div>
 
       <div class="flex items-center gap-3 xl:gap-4">
-        <HeaderNav v-if="!showTopBar" class="lt-xl:!hidden" />
+        <HeaderNav class="lt-xl:!hidden" />
         <STag size="lg" variant="soft" color="carbon" shape="rounded" class="lt-xl:!hidden">v{{ version }}</STag>
         <SSeparator orientation="vertical" class="h-8 lt-xl:!hidden" />
         <ToolBar class="lt-xl:!hidden" />
@@ -111,16 +107,4 @@ onUnmounted(() => {
       </div>
     </div>
   </header>
-
-  <div
-    v-if="showTopBar"
-    :data-scrolled="isScrolled"
-    class="docs-topbar-shell fixed start-0 end-0 top-[--app-header-main] data-[scrolled=true]:top-[calc(var(--app-header-main)+0.5rem)] border border-border/50 data-[scrolled=true]:border-transparent dark:border-border z-48 transition-all-800 px-6 lt-md:hidden lt-sm:px-4"
-  >
-    <div class="mx-auto max-w-360 px-6">
-      <div class="docs-topbar-frame flex h-[--app-topbar] items-center px-4">
-        <TopBar class="min-w-0 flex-1" />
-      </div>
-    </div>
-  </div>
 </template>
