@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, watch } from 'vue';
 import { pascalCase } from '@soybeanjs/headless/shared';
-import { resetDocOutline, setDocOutline } from '~/composables/use-doc-outline';
+import { useDocOutline } from '~/composables/use-doc-outline';
 import { uiXMenuData } from '~/constants/menus';
 
 definePage({ layout: 'default' });
 
 const { t } = useI18n();
+
+const docOutline = useDocOutline();
 
 const componentGroups = computed(() =>
   uiXMenuData
@@ -25,18 +27,16 @@ const componentGroups = computed(() =>
 watch(
   componentGroups,
   groups => {
-    setDocOutline(
-      groups.map(group => ({
-        href: `#${group.value}-heading`,
-        title: group.label
-      }))
-    );
+    docOutline.value = groups.map(group => ({
+      href: `#${group.value}-heading`,
+      title: group.label
+    }));
   },
   { immediate: true }
 );
 
 onBeforeUnmount(() => {
-  resetDocOutline();
+  docOutline.value = [];
 });
 </script>
 

@@ -2,7 +2,7 @@
 import { nextTick, onBeforeUnmount, onServerPrefetch, shallowRef, watchEffect } from 'vue';
 import type { Component } from 'vue';
 import type { AnchorOptionData } from '@soybeanjs/headless/anchor';
-import { resetDocOutline, setDocOutline } from '~/composables/use-doc-outline';
+import { useDocOutline } from '~/composables/use-doc-outline';
 import { toHeadingId } from '~/shared/heading';
 
 interface Props {
@@ -28,6 +28,8 @@ const emit = defineEmits<Emits>();
 
 const { locale } = useI18n();
 
+const docOutline = useDocOutline();
+
 const mdModules = import.meta.glob<{ default: Component }>('./**/*.md', { base: '/src/content' });
 
 const cp = shallowRef<Component | null>(null);
@@ -51,7 +53,7 @@ async function loadDoc() {
 
   let isSuccess = false;
 
-  resetDocOutline();
+  docOutline.value = [];
 
   if (load) {
     const mod = await load();
@@ -76,7 +78,7 @@ function updateDocOutline() {
   const container = contentRef.value;
 
   if (!container) {
-    resetDocOutline();
+    docOutline.value = [];
     return;
   }
 
@@ -85,7 +87,7 @@ function updateDocOutline() {
   );
 
   if (!headings.length) {
-    resetDocOutline();
+    docOutline.value = [];
     return;
   }
 
@@ -125,7 +127,7 @@ function updateDocOutline() {
     };
   });
 
-  setDocOutline(buildAnchorItems(nodes));
+  docOutline.value = buildAnchorItems(nodes);
 }
 
 function buildAnchorItems(nodes: Array<{ level: number; item: AnchorOptionData }>) {
@@ -153,7 +155,7 @@ function buildAnchorItems(nodes: Array<{ level: number; item: AnchorOptionData }
 }
 
 onBeforeUnmount(() => {
-  resetDocOutline();
+  docOutline.value = [];
 });
 
 // SSR (ubean SSG): the renderer only awaits `onServerPrefetch`, so the async glob

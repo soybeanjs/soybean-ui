@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, watch } from 'vue';
 import { kebabCase, pascalCase } from '@soybeanjs/headless/shared';
-import { resetDocOutline, setDocOutline } from '~/composables/use-doc-outline';
+import { useDocOutline } from '~/composables/use-doc-outline';
 import { menuData, newlyComponentKeys } from '~/constants/menus';
 
 // NOTE: ubean ignores `pages/**/components/**` (colocation convention), so this
@@ -9,6 +9,8 @@ import { menuData, newlyComponentKeys } from '~/constants/menus';
 definePage({ name: 'ComponentsIndex', path: '/components', layout: 'default' });
 
 const { t } = useI18n();
+
+const docOutline = useDocOutline();
 
 const featuredComponentKeys = ['button', 'input', 'select', 'dialog', 'table', 'form'];
 
@@ -156,12 +158,10 @@ const summaryStats = computed(() => [
 watch(
   componentGroups,
   groups => {
-    setDocOutline(
-      groups.map(group => ({
-        href: `#${group.value}-heading`,
-        title: group.label
-      }))
-    );
+    docOutline.value = groups.map(group => ({
+      href: `#${group.value}-heading`,
+      title: group.label
+    }));
   },
   {
     immediate: true
@@ -169,7 +169,7 @@ watch(
 );
 
 onBeforeUnmount(() => {
-  resetDocOutline();
+  docOutline.value = [];
 });
 </script>
 

@@ -1,16 +1,9 @@
 <script setup lang="ts">
-import { onBeforeUnmount } from 'vue';
-import { resetDocOutline } from '~/composables/use-doc-outline';
-
 definePage({ layout: 'default' });
 
 // TODO(headless): placeholder until the headless docs land (D8).
 
 const { t } = useI18n();
-
-onBeforeUnmount(() => {
-  resetDocOutline();
-});
 </script>
 
 <template>
