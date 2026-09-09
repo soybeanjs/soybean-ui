@@ -221,6 +221,8 @@ export interface NavMenuOptionData extends LinkBaseProps {
   icon?: IconValue;
   /** Whether the option is disabled. */
   disabled?: boolean;
+  /** Whether the option is selected. */
+  selected?: boolean;
   /** The children of the option (rendered as links inside the submenu). */
   children?: NavMenuOptionData[];
 }

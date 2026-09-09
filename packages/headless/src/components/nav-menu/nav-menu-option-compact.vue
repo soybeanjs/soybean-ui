@@ -2,7 +2,6 @@
 import { computed } from 'vue';
 import { keysOf } from '../../shared';
 import Icon from '../_icon/icon.vue';
-import type { LinkProps } from '../link/types';
 import { useNavMenuRootContext, useNavMenuUi } from './context';
 import NavMenuContent from './nav-menu-content.vue';
 import NavMenuItem from './nav-menu-item.vue';
@@ -13,7 +12,8 @@ import type {
   NavMenuOptionCompactProps,
   NavMenuOptionData,
   NavMenuOptionCompactEmits,
-  NavMenuOptionCompactSlots
+  NavMenuOptionCompactSlots,
+  NavMenuLinkProps
 } from './types';
 
 defineOptions({
@@ -41,10 +41,11 @@ const onLeafPointerEnter = () => {
 
 const isLink = computed(() => Boolean(props.item.to || props.item.href));
 
-const linkProps = computed<LinkProps>(() =>
+const linkProps = computed<NavMenuLinkProps>(() =>
   isLink.value
     ? {
         ...props.linkProps,
+        selected: props.item.selected,
         disabled: props.item.disabled ?? props.linkProps?.disabled,
         to: props.item.to,
         href: props.item.href,
@@ -54,9 +55,11 @@ const linkProps = computed<LinkProps>(() =>
     : {}
 );
 
-function childLinkProps(child: NavMenuOptionData): LinkProps {
+function childLinkProps(child: NavMenuOptionData): NavMenuLinkProps {
   return {
     ...props.linkProps,
+    sub: true,
+    selected: child.selected,
     disabled: child.disabled ?? props.linkProps?.disabled,
     to: child.to,
     href: child.href,

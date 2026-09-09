@@ -13,7 +13,7 @@ export const navMenuVariants = scv({
     ],
     subList: `grid grid-cols-[auto_auto] list-none my-0`,
     item: `list-none m-0`,
-    itemIcon: 'shrink-0 text-muted-foreground',
+    itemIcon: 'shrink-0',
     trigger: [
       `group inline-flex items-center rounded-md bg-background font-medium transition-colors-200 decoration-none outline-none`,
       `hover:bg-accent hover:text-accent-foreground`,
@@ -23,13 +23,15 @@ export const navMenuVariants = scv({
     ],
     triggerIcon: `ms-auto transition duration-200 group-data-[state=open]:rotate-180`,
     link: [
-      `group relative w-full flex items-center rounded-md font-medium outline-none cursor-pointer decoration-none`,
-      `focus:bg-accent focus:text-accent-foreground hover:bg-accent hover:text-accent-foreground`,
+      `group relative w-full flex items-center rounded-md font-medium outline-none cursor-pointer decoration-none whitespace-nowrap`,
+      `data-[selected=true]:bg-primary/10 data-[selected=true]:text-primary`,
+      `data-[selected=false]:focus:bg-accent data-[selected=false]:hover:bg-accent`,
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     subLink: [
-      `flex items-start select-none rounded-md no-underline outline-none transition-colors-200 cursor-pointer decoration-none`,
-      `focus:bg-accent focus:text-accent-foreground hover:bg-accent hover:text-accent-foreground`,
+      `flex items-start select-none rounded-md no-underline outline-none transition-colors-200 cursor-pointer decoration-none whitespace-nowrap`,
+      `data-[selected=true]:bg-primary/10 data-[selected=true]:text-primary`,
+      `data-[selected=false]:focus:bg-accent data-[selected=false]:hover:bg-accent`,
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     subTrigger: [
@@ -38,7 +40,7 @@ export const navMenuVariants = scv({
       `data-[state=open]:bg-accent/50`,
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
-    subTriggerIcon: 'ms-auto shrink-0 text-muted-foreground',
+    subTriggerIcon: 'ms-auto shrink-0',
     subContent: ['min-w-8rem', overlaySurface, 'z-50 shadow-lg will-change-transform', overlayEnter],
     linkIcon: 'shrink-0 self-start text-muted-foreground rtl:rotate-270',
     subLinkContent: `grow flex flex-col items-start`,

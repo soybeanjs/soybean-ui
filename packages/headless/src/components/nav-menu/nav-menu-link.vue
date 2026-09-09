@@ -62,7 +62,7 @@ const onClick = async (event: MouseEvent) => {
     data-soybean-nav-menu-link
     data-soybean-collection-item
     :class="cls"
-    :data-selected="selected ? '' : undefined"
+    :data-selected="Boolean(selected)"
     :aria-current="selected ? 'page' : undefined"
     @click="onClick"
   >

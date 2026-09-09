@@ -2,7 +2,6 @@
 import { computed } from 'vue';
 import { keysOf } from '../../shared';
 import Icon from '../_icon/icon.vue';
-import type { LinkProps } from '../link/types';
 import { PopperSub } from '../popper';
 import { useNavMenuUi } from './context';
 import NavMenuLink from './nav-menu-link.vue';
@@ -12,7 +11,8 @@ import type {
   NavMenuSubOptionCompactProps,
   NavMenuOptionData,
   NavMenuSubOptionCompactEmits,
-  NavMenuSubOptionCompactSlots
+  NavMenuSubOptionCompactSlots,
+  NavMenuLinkProps
 } from './types';
 
 defineOptions({
@@ -29,9 +29,11 @@ const ui = useNavMenuUi();
 
 const slotNames = computed(() => keysOf(slots));
 
-function childLinkProps(child: NavMenuOptionData): LinkProps {
+function childLinkProps(child: NavMenuOptionData): NavMenuLinkProps {
   return {
     ...props.linkProps,
+    sub: true,
+    selected: child.selected,
     disabled: child.disabled ?? props.linkProps?.disabled,
     to: child.to,
     href: child.href,
