@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { onBeforeMount } from 'vue';
-import { useLocalePrefix } from '~/composables/use-locale-prefix';
+import { localizePath } from 'ubean/client';
 
 definePage({ layout: 'default' });
 
 const router = useRouter();
-const { localizedTo } = useLocalePrefix();
 
 onBeforeMount(() => {
-  router.replace(localizedTo('/overview/introduction'));
+  router.replace(localizePath('/overview/introduction'));
 });
 </script>
 

@@ -2,7 +2,6 @@
 import { computed, onBeforeUnmount, watch } from 'vue';
 import { kebabCase, pascalCase } from '@soybeanjs/headless/shared';
 import { resetDocOutline, setDocOutline } from '~/composables/use-doc-outline';
-import { useLocalePrefix } from '~/composables/use-locale-prefix';
 import { menuData, newlyComponentKeys } from '~/constants/menus';
 
 // NOTE: ubean ignores `pages/**/components/**` (colocation convention), so this
@@ -10,7 +9,6 @@ import { menuData, newlyComponentKeys } from '~/constants/menus';
 definePage({ name: 'ComponentsIndex', path: '/components', layout: 'default' });
 
 const { t } = useI18n();
-const { localizedTo } = useLocalePrefix();
 
 const featuredComponentKeys = ['button', 'input', 'select', 'dialog', 'table', 'form'];
 
@@ -88,7 +86,7 @@ const componentGroups = computed(() =>
       items: group.items.map(item => ({
         key: item,
         label: pascalCase(item),
-        path: localizedTo(`/components/${kebabCase(item)}`),
+        path: `/components/${kebabCase(item)}`,
         isNew: newlyComponentKeys.includes(item)
       }))
     }))
@@ -106,7 +104,7 @@ const featuredComponents = computed(() => {
     return {
       key: item,
       label: component?.label ?? pascalCase(item),
-      path: component?.path ?? localizedTo(`/components/${kebabCase(item)}`),
+      path: component?.path ?? `/components/${kebabCase(item)}`,
       groupLabel: group?.label ?? '',
       description: t(`components.catalog.featured.${item}`),
       icon: meta.icon,
@@ -119,19 +117,19 @@ const quickActions = computed(() => [
   {
     title: t('components.catalog.quick_actions.quick_start.title'),
     description: t('components.catalog.quick_actions.quick_start.desc'),
-    to: localizedTo('/overview/quick-start'),
+    to: '/overview/quick-start',
     icon: 'lucide:rocket'
   },
   {
     title: t('components.catalog.quick_actions.introduction.title'),
     description: t('components.catalog.quick_actions.introduction.desc'),
-    to: localizedTo('/overview/introduction'),
+    to: '/overview/introduction',
     icon: 'lucide:book-open-text'
   },
   {
     title: t('components.catalog.quick_actions.theming.title'),
     description: t('components.catalog.quick_actions.theming.desc'),
-    to: localizedTo('/overview/theming'),
+    to: '/overview/theming',
     icon: 'lucide:swatch-book'
   }
 ]);
@@ -206,10 +204,10 @@ onBeforeUnmount(() => {
           </p>
 
           <div class="flex flex-wrap gap-3">
-            <SButtonLink :to="localizedTo('/overview/quick-start')" size="lg" variant="solid" shape="rounded">
+            <SButtonLink to="/overview/quick-start" size="lg" variant="solid" shape="rounded">
               {{ t('components.catalog.actions.start') }}
             </SButtonLink>
-            <SButtonLink :to="localizedTo('/overview/introduction')" size="lg" variant="pure" shape="rounded">
+            <SButtonLink to="/overview/introduction" size="lg" variant="pure" shape="rounded">
               {{ t('components.catalog.actions.learn') }}
             </SButtonLink>
           </div>

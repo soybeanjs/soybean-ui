@@ -2,13 +2,11 @@
 import { computed, onBeforeUnmount, watch } from 'vue';
 import { pascalCase } from '@soybeanjs/headless/shared';
 import { resetDocOutline, setDocOutline } from '~/composables/use-doc-outline';
-import { useLocalePrefix } from '~/composables/use-locale-prefix';
 import { uiXMenuData } from '~/constants/menus';
 
 definePage({ layout: 'default' });
 
 const { t } = useI18n();
-const { localizedTo } = useLocalePrefix();
 
 const componentGroups = computed(() =>
   uiXMenuData
@@ -19,7 +17,7 @@ const componentGroups = computed(() =>
       items: group.items.map(item => ({
         key: item,
         label: pascalCase(item),
-        path: localizedTo(`/ui-x/${item}`)
+        path: `/ui-x/${item}`
       }))
     }))
 );
@@ -73,10 +71,10 @@ onBeforeUnmount(() => {
           :description="t('ui_x.catalog.notice.description')"
         />
         <div class="flex flex-wrap gap-3">
-          <SButtonLink :to="localizedTo('/ui-x/installation')" size="lg" variant="solid" shape="rounded">
+          <SButtonLink to="/ui-x/installation" size="lg" variant="solid" shape="rounded">
             {{ t('sidebar.ui_x_installation') }}
           </SButtonLink>
-          <SButtonLink :to="localizedTo('/ui-x/quick-start')" size="lg" variant="pure" shape="rounded">
+          <SButtonLink to="/ui-x/quick-start" size="lg" variant="pure" shape="rounded">
             {{ t('sidebar.ui_x_quick_start') }}
           </SButtonLink>
         </div>

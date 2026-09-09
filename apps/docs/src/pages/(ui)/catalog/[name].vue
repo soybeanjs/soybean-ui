@@ -2,7 +2,6 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { kebabCase, pascalCase } from '@soybeanjs/headless/shared';
-import { useLocalePrefix } from '~/composables/use-locale-prefix';
 import { menuData } from '~/constants/menus';
 import { getComponentChangelogMeta } from '~/shared/generated-changelog';
 import { toHeadingId } from '~/shared/heading';
@@ -14,7 +13,6 @@ definePage({ name: 'ComponentsName', path: '/components/:name', layout: 'default
 const router = useRouter();
 const route = useRoute();
 const { t } = useI18n();
-const { localizedTo } = useLocalePrefix();
 
 const name = computed(() => String((route.params as Record<string, string | string[]>).name ?? ''));
 
@@ -84,7 +82,7 @@ const actionLinks = computed(() => {
 
   links.push({
     label: t('component_detail.actions.catalog'),
-    to: localizedTo('/components'),
+    to: '/components',
     target: '_self'
   });
 
@@ -99,7 +97,7 @@ const relatedComponents = computed(() => {
       .map(item => ({
         key: item,
         label: pascalCase(item),
-        to: localizedTo(`/components/${kebabCase(item)}`)
+        to: `/components/${kebabCase(item)}`
       })) ?? []
   );
 });

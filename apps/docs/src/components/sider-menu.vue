@@ -2,9 +2,9 @@
 import { computed, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
+import { extractLocaleFromPath } from 'ubean/client';
 import { kebabCase, pascalCase } from '@soybeanjs/headless/shared';
 import type { TreeMenuOptionData } from '@soybeanjs/ui';
-import { useLocalePrefix } from '~/composables/use-locale-prefix';
 import {
   menuData,
   newlyComponentKeys,
@@ -24,7 +24,6 @@ const emit = defineEmits<Emits>();
 
 const route = useRoute();
 const { t } = useI18n();
-const { barePath, localizedTo } = useLocalePrefix();
 
 const expanded = ref<string[]>([]);
 
@@ -32,7 +31,9 @@ const selected = ref<string>('');
 
 const componentsOverviewValue = 'components-overview';
 
-const section = computed(() => barePath(route.path).split('/').filter(Boolean)[0] ?? '');
+const barePath = computed(() => extractLocaleFromPath(route.path).pathWithoutLocale);
+
+const section = computed(() => barePath.value.split('/').filter(Boolean)[0] ?? '');
 
 const componentMenus = computed<TreeMenuOptionData[]>(() =>
   menuData
@@ -43,7 +44,7 @@ const componentMenus = computed<TreeMenuOptionData[]>(() =>
       children: group.items.map(item => ({
         label: pascalCase(item),
         value: kebabCase(item),
-        to: localizedTo(`/components/${kebabCase(item)}`),
+        to: `/components/${kebabCase(item)}`,
         tag: newlyComponentKeys.includes(item) ? '🎉new' : undefined
       }))
     }))
@@ -56,7 +57,7 @@ const uiXComponentMenus = computed<TreeMenuOptionData[]>(() =>
     children: group.items.map(item => ({
       label: pascalCase(item),
       value: item,
-      to: localizedTo(`/ui-x/${item}`),
+      to: `/ui-x/${item}`,
       tag: uiXNewlyComponentKeys.includes(item) ? '🎉new' : undefined
     }))
   }))
@@ -69,7 +70,7 @@ const adminComponentMenus = computed<TreeMenuOptionData[]>(() =>
     children: group.items.map(item => ({
       label: pascalCase(item),
       value: item,
-      to: localizedTo(`/admin/${item}`),
+      to: `/admin/${item}`,
       tag: adminNewlyComponentKeys.includes(item) ? '🎉new' : undefined
     }))
   }))
@@ -82,7 +83,7 @@ const chartComponentMenus = computed<TreeMenuOptionData[]>(() =>
     children: group.items.map(item => ({
       label: pascalCase(item),
       value: item,
-      to: localizedTo(`/chart/${item}`),
+      to: `/chart/${item}`,
       tag: chartNewlyComponentKeys.includes(item) ? '🎉new' : undefined
     }))
   }))
@@ -98,37 +99,37 @@ const overviewMenus = computed<TreeMenuOptionData[]>(() => [
       {
         label: t('sidebar.installation'),
         value: 'installation',
-        to: localizedTo('/overview/installation')
+        to: '/overview/installation'
       },
       {
         label: t('sidebar.introduction'),
         value: 'introduction',
-        to: localizedTo('/overview/introduction')
+        to: '/overview/introduction'
       },
       {
         label: t('sidebar.quick_start'),
         value: 'quick-start',
-        to: localizedTo('/overview/quick-start')
+        to: '/overview/quick-start'
       },
       {
         label: t('sidebar.theming'),
         value: 'theming',
-        to: localizedTo('/overview/theming')
+        to: '/overview/theming'
       },
       {
         label: t('sidebar.llms'),
         value: 'llms',
-        to: localizedTo('/overview/llms')
+        to: '/overview/llms'
       },
       {
         label: t('sidebar.skills'),
         value: 'skills',
-        to: localizedTo('/overview/skills')
+        to: '/overview/skills'
       },
       {
         label: t('sidebar.cli'),
         value: 'cli',
-        to: localizedTo('/sbean')
+        to: '/sbean'
       }
     ]
   }
@@ -144,7 +145,7 @@ const componentsMenus = computed<TreeMenuOptionData[]>(() => [
       {
         label: t('components.catalog.title'),
         value: componentsOverviewValue,
-        to: localizedTo('/components')
+        to: '/components'
       },
       ...componentMenus.value
     ]
@@ -161,7 +162,7 @@ const uiXMenus = computed<TreeMenuOptionData[]>(() => [
       {
         label: t('ui_x.catalog.title'),
         value: 'ui-x-overview',
-        to: localizedTo('/ui-x')
+        to: '/ui-x'
       },
       ...uiXComponentMenus.value
     ]
@@ -178,7 +179,7 @@ const adminMenus = computed<TreeMenuOptionData[]>(() => [
       {
         label: t('admin.catalog.title'),
         value: 'admin-overview',
-        to: localizedTo('/admin')
+        to: '/admin'
       },
       ...adminComponentMenus.value
     ]
@@ -195,7 +196,7 @@ const chartMenus = computed<TreeMenuOptionData[]>(() => [
       {
         label: t('chart.catalog.title'),
         value: 'chart-overview',
-        to: localizedTo('/chart')
+        to: '/chart'
       },
       ...chartComponentMenus.value
     ]
@@ -213,7 +214,7 @@ const headlessMenus = computed<TreeMenuOptionData[]>(() => [
       {
         label: t('headless.catalog.title'),
         value: 'headless-overview',
-        to: localizedTo('/headless')
+        to: '/headless'
       }
     ]
   }
@@ -248,7 +249,7 @@ const menus = computed<TreeMenuOptionData[]>(() => {
 });
 
 watchEffect(() => {
-  const [dir, value] = barePath(route.path).split('/').filter(Boolean);
+  const [dir, value] = barePath.value.split('/').filter(Boolean);
 
   if (dir && !value) {
     const valueMap: Record<string, string> = {

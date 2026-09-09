@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { useLocalePrefix } from '~/composables/use-locale-prefix';
+import { extractLocaleFromPath } from 'ubean/client';
 
 interface Props {
   orientation?: 'horizontal' | 'vertical';
@@ -14,7 +14,6 @@ withDefaults(defineProps<Props>(), {
 
 const route = useRoute();
 const { t } = useI18n();
-const { barePath, localizedTo } = useLocalePrefix();
 
 interface HeaderNavItem {
   value: string;
@@ -25,7 +24,7 @@ interface HeaderNavItem {
 }
 
 const menus = computed<HeaderNavItem[]>(() => {
-  const path = barePath(route.path);
+  const path = extractLocaleFromPath(route.path).pathWithoutLocale;
 
   return [
     {
@@ -79,7 +78,7 @@ const menus = computed<HeaderNavItem[]>(() => {
     <SLink
       v-for="item in menus"
       :key="item.value"
-      :to="localizedTo(item.to)"
+      :to="item.to"
       :aria-current="item.isActive ? 'page' : undefined"
       class="flex items-center gap-2 rounded-md px-2 py-1.5 font-medium outline-none decoration-none hover:bg-accent focus-visible:ring-3 focus-visible:ring-primary/30 focus-visible:ring-offset-3"
       :class="item.isActive ? 'text-primary font-semibold bg-accent' : ''"

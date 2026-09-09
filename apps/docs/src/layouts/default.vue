@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
 import { useRoute } from 'vue-router';
+import { extractLocaleFromPath } from 'ubean/client';
 import { useDocOutline } from '~/composables/use-doc-outline';
-import { useLocalePrefix } from '~/composables/use-locale-prefix';
 
 const visible = shallowRef(false);
 const docOutline = useDocOutline();
 const route = useRoute();
-const { barePath } = useLocalePrefix();
 const hasDocOutline = computed(() => docOutline.value.length > 0);
-const shouldReserveOutlineSpace = computed(() => !['/', '/releases'].includes(barePath(route.path)));
+const barePath = computed(() => extractLocaleFromPath(route.path).pathWithoutLocale);
+const shouldReserveOutlineSpace = computed(() => !['/', '/releases'].includes(barePath.value));
 const shouldShowSidebar = computed(() =>
-  ['/overview', '/components', '/ui-x', '/admin', '/chart', '/headless'].some(p => barePath(route.path).startsWith(p))
+  ['/overview', '/components', '/ui-x', '/admin', '/chart', '/headless'].some(p => barePath.value.startsWith(p))
 );
 
 const closeDrawer = () => {

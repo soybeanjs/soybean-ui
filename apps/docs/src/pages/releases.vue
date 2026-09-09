@@ -3,7 +3,6 @@ import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { pascalCase } from '@soybeanjs/headless/shared';
 import { useGeneratedI18n } from '~/composables/use-generated-i18n';
-import { useLocalePrefix } from '~/composables/use-locale-prefix';
 import { getReleaseChangelogDocument } from '~/shared/generated-changelog';
 import type {
   GeneratedChangelogEntryType,
@@ -17,7 +16,6 @@ const route = useRoute();
 const router = useRouter();
 const { t } = useI18n();
 const { resolveGeneratedText } = useGeneratedI18n();
-const { localizedTo } = useLocalePrefix();
 
 const releaseDocument = computed(() => getReleaseChangelogDocument());
 const releases = computed(() => releaseDocument.value.releases);
@@ -145,7 +143,7 @@ const actionLinks = computed(() => {
     },
     {
       label: t('releases_page.actions.browse_components'),
-      to: localizedTo('/components')
+      to: '/components'
     }
   );
 
@@ -291,7 +289,7 @@ function getRemainingComponentCount(release: GeneratedReleaseChangelogVersion) {
 }
 
 function toComponentLink(component: string) {
-  return localizedTo(`/components/${component}`);
+  return `/components/${component}`;
 }
 
 function normalizeSearchValue(value: string) {

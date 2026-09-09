@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { kebabCase, pascalCase } from '@soybeanjs/headless/shared';
-import { useLocalePrefix } from '~/composables/use-locale-prefix';
 import { menuData } from '~/constants/menus';
 import BackgroundDecoration from '~/motion/background-decoration.vue';
 
 definePage({ layout: 'home' });
 
 const { t } = useI18n();
-const { localizedTo } = useLocalePrefix();
 
 const totalComponents = computed(() =>
   menuData.reduce((total, group) => total + (group.value === 'headless' ? 0 : group.items.length), 0)
@@ -90,25 +88,25 @@ const quickLinks = computed(() => [
   {
     title: t('components.home.quick_links.get_started.title'),
     description: t('components.home.quick_links.get_started.desc'),
-    to: localizedTo('/overview/quick-start'),
+    to: '/overview/quick-start',
     icon: 'lucide:rocket'
   },
   {
     title: t('components.home.quick_links.introduction.title'),
     description: t('components.home.quick_links.introduction.desc'),
-    to: localizedTo('/overview/introduction'),
+    to: '/overview/introduction',
     icon: 'lucide:book-open-text'
   },
   {
     title: t('components.home.quick_links.components.title'),
     description: t('components.home.quick_links.components.desc'),
-    to: localizedTo('/components'),
+    to: '/components',
     icon: 'lucide:layout-grid'
   },
   {
     title: t('components.home.quick_links.theming.title'),
     description: t('components.home.quick_links.theming.desc'),
-    to: localizedTo('/overview/theming'),
+    to: '/overview/theming',
     icon: 'lucide:swatch-book'
   }
 ]);
@@ -159,7 +157,7 @@ const featuredComponents = computed(() => {
     return {
       ...item,
       label: pascalCase(item.key),
-      to: localizedTo(`/components/${kebabCase(item.key)}`),
+      to: `/components/${kebabCase(item.key)}`,
       groupLabel: group ? (groupLabelMap.value.get(group.value) ?? '') : ''
     };
   });
@@ -173,7 +171,7 @@ const twoModes = computed(() => [
     description: t('components.home.sections.two_modes.npm.description'),
     features: Array.from({ length: 5 }, (_, i) => t(`components.home.sections.two_modes.npm.feature_${i}`)),
     cta: t('components.home.sections.two_modes.npm.cta'),
-    to: localizedTo('/overview/installation'),
+    to: '/overview/installation',
     icon: 'lucide:package',
     iconClass: 'text-primary bg-primary/10'
   },
@@ -184,7 +182,7 @@ const twoModes = computed(() => [
     description: t('components.home.sections.two_modes.cli.description'),
     features: Array.from({ length: 5 }, (_, i) => t(`components.home.sections.two_modes.cli.feature_${i}`)),
     cta: t('components.home.sections.two_modes.cli.cta'),
-    to: localizedTo('/sbean'),
+    to: '/sbean',
     icon: 'lucide:terminal',
     iconClass: 'text-warning bg-warning/10'
   }
@@ -223,7 +221,7 @@ const featuredGroups = computed(() =>
       items: group.items.slice(0, 4).map(item => ({
         key: item,
         label: pascalCase(item),
-        to: localizedTo(`/components/${kebabCase(item)}`)
+        to: `/components/${kebabCase(item)}`
       }))
     }))
 );
@@ -266,7 +264,7 @@ const featuredGroups = computed(() =>
 
             <div class="grid gap-4 lt-sm:grid-cols-1 lt-md:grid-cols-2 md:grid-cols-3 max-w-3xl">
               <SButtonLink
-                :to="localizedTo('/overview/installation')"
+                to="/overview/installation"
                 size="lg"
                 variant="solid"
                 shape="rounded"
@@ -275,13 +273,7 @@ const featuredGroups = computed(() =>
                 {{ t('components.home.actions.start') }}
                 <SIcon icon="lucide:arrow-right" class="transition-transform duration-200 group-hover:translate-x-1" />
               </SButtonLink>
-              <SButtonLink
-                :to="localizedTo('/components')"
-                size="lg"
-                variant="pure"
-                shape="rounded"
-                class="group whitespace-nowrap"
-              >
+              <SButtonLink to="/components" size="lg" variant="pure" shape="rounded" class="group whitespace-nowrap">
                 {{ t('components.home.actions.browse') }}
                 <SIcon icon="lucide:layout-grid" class="transition-transform duration-200 group-hover:translate-x-1" />
               </SButtonLink>
@@ -399,7 +391,7 @@ const featuredGroups = computed(() =>
         <template #description>{{ t('components.home.sections.featured.desc') }}</template>
 
         <template #extra>
-          <SButtonLink :to="localizedTo('/components')" size="lg" variant="pure" shape="rounded" class=" ">
+          <SButtonLink to="/components" size="lg" variant="pure" shape="rounded" class=" ">
             {{ t('components.home.actions.browse') }}
           </SButtonLink>
         </template>
@@ -437,7 +429,7 @@ const featuredGroups = computed(() =>
 
       <SCard :title="t('components.home.sections.categories.title')" split class="docs-card overflow-hidden">
         <template #extra>
-          <SButtonLink :to="localizedTo('/components')" size="lg" variant="pure" shape="rounded" class=" ">
+          <SButtonLink to="/components" size="lg" variant="pure" shape="rounded" class=" ">
             {{ t('components.home.actions.browse') }}
           </SButtonLink>
         </template>
