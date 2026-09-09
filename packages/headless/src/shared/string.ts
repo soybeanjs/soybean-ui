@@ -38,6 +38,10 @@ export function camelCase(str: string): string {
   return pascal.charAt(0).toLowerCase() + pascal.slice(1);
 }
 
+export function snakeCase(str: string): string {
+  return kebabCase(str).replace(/-/g, '_');
+}
+
 /**
  * Convert string to path
  *

@@ -1,5 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { camelCase, capitalize, interpolate, isKey, kebabCase, pascalCase, stringToPath } from '../../../src/shared';
+import {
+  camelCase,
+  capitalize,
+  interpolate,
+  isKey,
+  kebabCase,
+  pascalCase,
+  snakeCase,
+  stringToPath
+} from '../../../src/shared';
 
 describe('case conversion', () => {
   it('capitalize uppercases the first character', () => {
@@ -29,6 +38,11 @@ describe('case conversion', () => {
   it('camelCase converts to lower camel case', () => {
     expect(camelCase('hello-world')).toBe('helloWorld');
     expect(camelCase('hello_world')).toBe('helloWorld');
+  });
+
+  it('snakeCase converts to snake case', () => {
+    expect(snakeCase('helloWorld')).toBe('hello_world');
+    expect(snakeCase('hello_world')).toBe('hello_world');
   });
 });
 
