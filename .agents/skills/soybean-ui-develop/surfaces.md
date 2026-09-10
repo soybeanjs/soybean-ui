@@ -31,7 +31,7 @@ Not every component needs every example, but each file demonstrates only one cap
 
 ### index.vue
 
-- Standard pattern: import `../../components/playground-gallery.vue` and render `<PlaygroundGallery component="{component}" />`.
+- Standard pattern: import `../../../components/playground-gallery.vue` and render `<PlaygroundGallery component="{component}" />`.
 - `component` value uses the directory name itself (e.g. `accordion`, `date-range-picker`).
 - Do not manually import and assemble all sub-examples in `index.vue`.
 
@@ -90,7 +90,7 @@ Sections, in order. Sections marked optional are omitted only when they do not a
 8. `## Notes` — architecture and benchmark differences, cautions, constraints.
 9. `## FAQ` — common questions and solutions.
 
-Both zh-CN and en files MUST share this exact section order; only the language differs.
+Both `zh` and `en` files MUST share this exact section order; only the language differs.
 
 ### Section content standards
 
@@ -152,6 +152,11 @@ Common groups:
 - `feedback`
 - `overlay`
 - `utilities`
+- `headless`
+- `shell` (admin package)
+- `charts` (chart package)
+
+Peripheral packages use their own group sets: `ui-x-core` / `ui-x-content` / `ui-x-attachments` / `ui-x-conversation` / `ui-x-reasoning` / `ui-x-actions` / `ui-x-misc` for ui-x components.
 
 ### Quality requirements
 

@@ -12,6 +12,7 @@ Applies to `packages/headless/src/components/**/*.{ts,vue}`.
 - Never add UnoCSS classes, `<style>`, visual token styles, or utility classes (not even `hidden`, `sr-only`). Geometric inline styles that implement a layout contract are allowed; see [R8](#r8-layout-is-behavior).
 - Never import from `@soybeanjs/ui`.
 - Before writing new logic, check `packages/headless/src/composables/`, `packages/headless/src/shared/`, and `packages/headless/src/types/`.
+- Use `@vueuse/core` composables as-is (`refAutoReset`, `useDraggable`, `useResizeObserver`, …) — do not reimplement them in-repo. Prefer `packages/headless/src/shared/` for small pure helpers. Date math stays in `packages/headless/src/date/` (self-maintained on `@internationalized/date`); positioning, drag/drop, virtualization, carousel, and animation use the existing runtime deps (`@floating-ui/dom`, `@dnd-kit/*`, `@tanstack/vue-virtual`, `embla-carousel`, `@formkit/auto-animate`). Adding a new third-party dependency requires proving that `shared`, existing runtime deps, and `@vueuse/core` are all insufficient.
 - `role`, `aria-*`, `tabindex`, keyboard interaction, focus management, and `dir` semantics are headless responsibilities; concrete rules live in [A11y and RTL](#a11y-and-rtl).
 
 ### Headless admission
@@ -74,8 +75,8 @@ Geometric inline styles that implement the contract — aspect-ratio padding, af
 ### Step 2: context.ts
 
 - Context values must be reactive: `ComputedRef` or `ShallowRef`.
-- Prop-derived fields prefer `transformPropsToContext` or `PropsToContext`.
-- Need a new composable or state utility? Check `packages/headless/src/composables/` first, then `@vueuse/core`.
+- Prop-derived fields prefer `toContext` / `ToContext` (from `shared/vue`); use `fromContext` to snapshot a context back to plain values.
+- Need a new composable or state utility? Check `packages/headless/src/shared/` and `packages/headless/src/composables/` first, then existing runtime deps and `@vueuse/core`.
 - Direction-sensitive components resolve and propagate `dir` here; follow [A11y and RTL](#a11y-and-rtl).
 - Derived values needed outside the provider are computed in the component, then passed to `provideXContext`.
 - Infrastructure state for child consumption only (element ref, generated id) can be derived inside the `useContext` callback.
@@ -133,10 +134,10 @@ Typical headless-owned concerns:
 
 ### Step 6: Common implementation patterns
 
-- Use `transformPropsToContext(props, [...])` to keep props reactive in context.
+- Use `toContext(props, [...])` to keep props reactive in context.
 - Use `useControllableState(() => props.xxx, value => emit('update:xxx', value), defaultValue)` for controlled/uncontrolled modes.
 - When forwarding part of this component's UI slots to an internal child headless component, map and inject them inside the `useUiContext` callback.
-- Only add a new headless composable or shared helper when both repository `composables/shared/types` and `@vueuse/core` are insufficient.
+- Only add a new headless composable, shared helper, type, or third-party dependency when `packages/headless/src/shared/`, repository `composables/types`, existing runtime deps, and `@vueuse/core` are all insufficient.
 
 ### Step 7: Exports and registration
 

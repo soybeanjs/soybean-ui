@@ -42,6 +42,7 @@ Check in reverse: validate first, then delivery surfaces, then exports, then lay
 - No visual token styles, no `@soybeanjs/ui` imports. Geometric layout-contract inline styles follow admission R8.
 - Stable aggregation structure has been correctly sunk into `{Name}Compact`.
 - Slot root elements carry the correct `data-soybean-{name}` attributes.
+- UI-only families (admission refused) own structure and assembly in the wrapper and compose admitted headless primitives for behavior.
 
 ### UI
 
@@ -59,7 +60,7 @@ Check in reverse: validate first, then delivery surfaces, then exports, then lay
 
 ### Result reporting
 
-- If a new composable, shared helper, or type was added instead of reusing repository utilities or `@vueuse/core`, the reason is explicitly stated.
+- If a new composable, shared helper, type, or third-party dependency was added instead of reusing `packages/headless/src/shared/`, repository utilities, existing runtime deps, or `@vueuse/core`, the reason is explicitly stated.
 
 Any unfinished item must be listed explicitly in the delivery notes.
 

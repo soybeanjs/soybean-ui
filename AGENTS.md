@@ -25,7 +25,7 @@ If a nearer scoped `AGENTS.md` exists for your target path, use it only to narro
 
 **Generated:** 2026-09-06
 **Version:** 0.31.0
-**Monorepo:** pnpm workspaces (private root + 14 child workspaces: 10 packages + 3 apps + `skills/`; 9 publishable packages, 2 private packages — `@soybeanjs/scripts`, `@soybeanjs/shared` — and 3 private apps)
+**Monorepo:** pnpm workspaces (private root + 13 child workspaces: 10 packages + 2 apps + `skills/`; 9 publishable packages, 2 private packages — `@soybeanjs/scripts`, `@soybeanjs/shared` — and 2 private apps)
 **Stack:** Vue 3 + TypeScript (strict) + UnoCSS + @soybeanjs/cva
 
 ## ARCHITECTURE
@@ -153,7 +153,7 @@ pnpm sui sync-template-versions  # Sync the @soybeanjs/* version constant used b
 
 - **UiClass**: Use `UiClass<UiSlot>` (from `packages/headless/src/types`), not `Record<UiSlot, ClassValue>`
 - **Props**: Always `extends /** @vue-ignore */ HTMLAttributes` to suppress IDE noise
-- **Context values**: Must be reactive — use `transformPropsToContext(props, keys)` to wrap in `ComputedRef`
+- **Context values**: Must be reactive — use `toContext(props, keys)` (from headless `shared/vue`) to wrap in `ComputedRef`; `fromContext(context, keys)` snapshots back to plain values
 - **ui() two forms**: `use{Name}Ui('root')` → `ComputedRef<ClassValue>` (single slot); `use{Name}Ui()` → full map
 - **Recipe merges**: For multi-slot wrappers, pass `props.ui` and `{ root: props.class }` directly into the `scv()` recipe call
 - **Multi-slot**: `provide{Name}Ui(ui)` pattern; only export `provide`, not `use`

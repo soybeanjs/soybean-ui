@@ -11,12 +11,12 @@ For detailed rules, see [layers.md](layers.md) (headless admission, implementati
 
 ## Repository context
 
-- Monorepo: pnpm workspaces (private root + 9 child workspaces)
+- Monorepo: pnpm workspaces (private root + 13 child workspaces: 10 packages + 2 apps + `skills/`)
 - Stack: Vue 3 + TypeScript (strict) + UnoCSS + `@soybeanjs/cva`
 - Architecture: headless / styled separation. Compile-time dependency is `packages/ui` -> `packages/headless`; headless never imports UI.
 - `@soybeanjs/headless` (`packages/headless/`): Logic, state, a11y, structure. Zero styles.
 - `@soybeanjs/ui` (`packages/ui/`): Styled wrappers. UnoCSS + `cv()` / `scv()`. `S`-prefixed components.
-- `@soybeanjs/ui-docs` (`apps/docs/`): Vite + vite-ssg + unplugin-vue-markdown + markdown-exit. NOT VitePress.
+- `@soybeanjs/ui-docs` (`apps/docs/`): ubean SSG (`mode: 'ssg'`) with file routing, content collections, and built-in i18n (`en` + `zh`). NOT VitePress.
 
 ## Quick start
 
@@ -30,8 +30,8 @@ For detailed rules, see [layers.md](layers.md) (headless admission, implementati
    - For migration, preserve behavior, state, accessibility, slots, and public API before restructuring.
 3. **Reuse existing building blocks first.**
    - Prefer `packages/headless/src/composables/`, `packages/headless/src/shared/`, and `packages/headless/src/types/`.
-   - If the repository has no suitable composable, check `@vueuse/core`.
-   - Only add a new composable, helper, or type when both are insufficient, and state that reason in the result.
+   - Use `@vueuse/core` composables as-is; do not reimplement them in-repo. Date math goes through `packages/headless/src/date/`; drag/drop, positioning, virtualization, carousel, animation, and schema-standard integrations use the existing runtime deps (`@dnd-kit/*`, `@floating-ui/dom`, `@tanstack/vue-virtual`, `embla-carousel`, `@formkit/auto-animate`, `@standard-schema/spec`).
+   - Only add a new composable, helper, type, or third-party dependency when `shared`/`composables`/`types`, existing runtime deps, and `@vueuse/core` are all insufficient — and state that reason in the result.
 
 Example: "migrate a compound widget into SoybeanUI" usually means migration scenario + multi-slot or compact pattern + full delivery surface.
 
@@ -162,7 +162,7 @@ Execute in this order. Do not skip ahead until the current phase is done.
 
 - Use `UiClass<UiSlot>` (from `packages/headless/src/types`), not `Record<UiSlot, ClassValue>`.
 - Props always `extends /** @vue-ignore */ HTMLAttributes` to suppress IDE noise; if based on `Primitive`, `extends PrimitiveWithBaseProps`.
-- Context values must be reactive: `ComputedRef` or `ShallowRef`. Use `transformPropsToContext(props, keys)` for prop-derived fields.
+- Context values must be reactive: `ComputedRef` or `ShallowRef`. Use `toContext(props, keys)` (from headless `shared/vue`) for prop-derived fields; `fromContext(context, keys)` snapshots back to plain values when needed.
 - `use{Name}Ui('root')` -> `ComputedRef<ClassValue>` (single slot); `use{Name}Ui()` -> full map.
 - For multi-slot wrappers, pass `props.ui` and `{ root: props.class }` directly into the `scv()` recipe call.
 - Multi-slot: only export `provide{Name}Ui` from headless barrel; never export `use{Name}Ui`.
