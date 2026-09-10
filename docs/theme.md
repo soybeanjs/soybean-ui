@@ -2,7 +2,7 @@
 
 > 定位：说明 SoybeanUI 主题在 SSG / SSR 下的持久化差异、首帧闪烁（FOUC）成因与主流框架解法，供主题相关改动的方案选型与评审使用。
 > 状态：✅ 已实施（SSG 方案 A：CSS 快照 + 首帧注入）；SSR 方案为可选演进方向。
-> 基线：2026-09-09 · 分支：new-docs
+> 基线：2026-09-10 · 分支：v0.40.0
 
 主题引擎 API、存储子路径的权威说明见 [packages/theme/README.md](../packages/theme/README.md)；本文只覆盖「持久化 + 首帧一致性」策略。
 
