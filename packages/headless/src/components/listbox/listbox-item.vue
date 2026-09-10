@@ -86,7 +86,6 @@ provideListboxItemContext({
     v-bind="forwardedProps"
     :id="id"
     :ref="setItemElement"
-    v-memo="[isHighlighted, isSelected]"
     data-soybean-listbox-item
     data-soybean-collection-item
     :class="cls"

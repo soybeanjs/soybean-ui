@@ -155,6 +155,27 @@ describe('SCommand', () => {
       expect(wrapper.emitted('update:searchTerm')?.at(-1)).toEqual(['zzz-not-in-items']);
       wrapper.unmount();
     });
+
+    // Regression: ListboxItem previously used v-memo="[isHighlighted, isSelected]",
+    // which swallowed slot updates when the same value re-rendered with new content
+    // (e.g. search results refreshed for a longer query without hover interactions).
+    it('re-renders item content when items update with the same value', async () => {
+      const wrapper = mount(SCommand, {
+        props: {
+          items: [{ label: 'Calendar', value: 'calendar', description: 'before' }],
+          externalFilter: true
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.setProps({
+        items: [{ label: 'Calendar', value: 'calendar', description: 'after' }]
+      });
+
+      expect(document.body.textContent).toContain('after');
+      expect(document.body.textContent).not.toContain('before');
+      wrapper.unmount();
+    });
   });
 
   describe('disabled state', () => {
