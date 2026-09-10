@@ -3012,11 +3012,14 @@
             "disabled": "为`true`时，阻止用户与列表框交互",
             "emptylabel": "空标签。",
             "emptyprops": "属性转发到空元素。",
+            "externalfilter": "项目是否已由外部引擎进行过滤和排序\n（例如全文内容搜索）。当值为 true 时，将跳过内置的模糊过滤器，\n所有 `items` 均按原样渲染；`searchTerm` 仍通过\n`update:searchTerm` 进行同步，以便调用方可自行驱动搜索。",
             "fuseoptions": "Fuse 选项。",
             "grouplabelprops": "转发到组标签元素的属性。",
             "groupprops": "转发到组元素的属性。",
             "highlightonhover": "当 \"true \"时，将鼠标悬停在项目上会触发高亮显示",
             "inputprops": "转发到输入元素的属性。",
+            "itemcontentprops": "这些属性将传递给 item 内容元素（包含 label 和 description）。",
+            "itemdescriptionprops": "传递给项目描述元素的属性。",
             "itemlabelprops": "转发到项目标签元素的属性。",
             "itemprops": "转发到项目元素的属性。",
             "items": "组件呈现的项目。",
@@ -3040,14 +3043,21 @@
             "empty": "空槽的自定义内容。",
             "input_leading": "输入前导槽的自定义内容。",
             "input_trailing": "输入尾槽的自定义内容。",
+            "item_description": "项目描述字段的自定义内容。",
             "item_label": "自定义项目标签槽的内容。",
             "item_leading": "自定义项目前导槽的内容。",
             "item_trailing": "自定义项尾部槽的内容。"
           },
           "slots": "CommandCompact 组件的插槽。"
         },
+        "commanddescriptionprops": {
+          "props": "CommandDescription 组件的属性。"
+        },
         "commandemptyprops": {
           "props": "CommandEmpty 组件的属性。"
+        },
+        "commanditemcontentprops": {
+          "props": "CommandItemContent 组件的属性。"
         },
         "commanditemlabelprops": {
           "props": "CommandItemLabel 组件的属性。"
@@ -11555,11 +11565,14 @@
             "disabled": "当值为 `true` 时，禁止用户与列表框交互",
             "emptylabel": "空标签。",
             "emptyprops": "转发给空元素的属性。",
+            "externalfilter": "项目是否已由外部引擎进行过滤和排序\n（例如全文内容搜索）。当值为 true 时，将跳过内置的模糊过滤器，\n所有 `items` 均按原样渲染；`searchTerm` 仍通过\n`update:searchTerm` 进行同步，以便调用方可自行驱动搜索。",
             "fuseoptions": "Fuse 选项。",
             "grouplabelprops": "传递给组标签元素的属性。",
             "groupprops": "转发至 group 元素的属性。",
             "highlightonhover": "当值为 `true` 时，将鼠标悬停在项目上会触发高亮显示",
             "inputprops": "转发给输入元素的属性。",
+            "itemcontentprops": "这些属性将传递给 item 内容元素（包含 label 和 description）。",
+            "itemdescriptionprops": "传递给项目描述元素的属性。",
             "itemlabelprops": "传递给 item label 元素的属性。",
             "itemprops": "转发至 item 元素的属性。",
             "items": "由组件渲染的项。",
@@ -11585,6 +11598,7 @@
             "empty": "为空槽位添加自定义内容。",
             "input_leading": "输入首槽位的自定义内容。",
             "input_trailing": "输入末尾槽位的自定义内容。",
+            "item_description": "项目描述字段的自定义内容。",
             "item_label": "针对项标签槽位的自定义内容。",
             "item_leading": "为项目首行位置定制内容。",
             "item_trailing": "用于项尾部插槽的自定义内容。"

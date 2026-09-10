@@ -1,6 +1,7 @@
 import { existsSync } from 'node:fs';
 import { readdir } from 'node:fs/promises';
 import path from 'node:path';
+import { resolveContentRoutePath } from '../src/shared/content-route';
 
 /** locale code -> content directory name (aligned with i18n locale codes). */
 export const CONTENT_LOCALES = ['en', 'zh'] as const;
@@ -15,34 +16,7 @@ export function toPosixPath(filePath: string): string {
   return filePath.split(path.sep).join('/');
 }
 
-/**
- * Content slug (relative to `src/content/{locale}`, no `.md`) -> public route path.
- *
- * The mapping mirrors the shell pages under `src/pages`:
- * - `ui/components/<slug>`  -> `/components/<slug>`
- * - `ui/<slug>`             -> `/overview/<slug>`
- * - `<section>/components/<slug>` -> `/<section>/<slug>` (ui-x / admin / chart)
- * - `<section>/<slug>`      -> `/<section>/<slug>`
- */
-export function resolveContentRoutePath(inputSlug: string): string {
-  // `index.md` maps to its directory root (e.g. `sbean/index` -> `/sbean`).
-  const slug = inputSlug.replace(/\/index$/u, '').replace(/^index$/u, '');
-  const uiComponentsMatch = slug.match(/^ui\/components\/(.+)$/u);
-
-  if (uiComponentsMatch) {
-    return `/components/${uiComponentsMatch[1]}`;
-  }
-
-  if (slug === 'ui') {
-    return '/overview';
-  }
-
-  if (slug.startsWith('ui/')) {
-    return `/overview/${slug.slice('ui/'.length)}`;
-  }
-
-  return `/${slug}`;
-}
+export { resolveContentRoutePath };
 
 async function collectMarkdownSlugs(directoryPath: string, baseDir: string): Promise<string[]> {
   if (!existsSync(directoryPath)) {

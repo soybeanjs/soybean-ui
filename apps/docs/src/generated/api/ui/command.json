@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "CommandProps",
         "type": "Interface CommandProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<CommandUi>; items: CommandOptionData<T>[]; placeholder?: string; searchTerm?: string; clearable?: boolean; fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>; listProps?: CommandListProps; itemProps?: CommandItemProps; itemLabelProps?: CommandItemLabelProps; groupProps?: CommandGroupProps; groupLabelProps?: CommandGroupLabelProps; shortcutProps?: CommandShortcutProps; separatorProps?: CommandSeparatorProps; inputProps?: CommandInputProps; emptyProps?: CommandEmptyProps; emptyLabel?: string; modelValue?: string; defaultValue?: string; multiple?: false; selectionBehavior?: SelectionBehavior; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean; orientation?: DataOrientation }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<CommandUi>; items: CommandOptionData<T>[]; placeholder?: string; searchTerm?: string; externalFilter?: boolean; clearable?: boolean; fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>; listProps?: CommandListProps; itemProps?: CommandItemProps; itemLabelProps?: CommandItemLabelProps; itemContentProps?: CommandItemContentProps; itemDescriptionProps?: CommandDescriptionProps; groupProps?: CommandGroupProps; groupLabelProps?: CommandGroupLabelProps; shortcutProps?: CommandShortcutProps; separatorProps?: CommandSeparatorProps; inputProps?: CommandInputProps; emptyProps?: CommandEmptyProps; emptyLabel?: string; modelValue?: string; defaultValue?: string; multiple?: false; selectionBehavior?: SelectionBehavior; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean; orientation?: DataOrientation }",
         "description": "Properties for the Command component.",
         "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.props",
         "sourcePath": "packages/ui/src/components/command/types.ts",
@@ -75,7 +75,7 @@
               {
                 "name": "CommandUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; inputRoot: ClassValue; inputControl: ClassValue; group: ClassValue; groupLabel: ClassValue; empty: ClassValue; separator: ClassValue; list: ClassValue; inputIcon: ClassValue; inputClearable: ClassValue; itemLabel: ClassValue; shortcut: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; inputRoot: ClassValue; inputControl: ClassValue; group: ClassValue; groupLabel: ClassValue; empty: ClassValue; separator: ClassValue; list: ClassValue; inputIcon: ClassValue; inputClearable: ClassValue; itemLabel: ClassValue; itemContent: ClassValue; itemDescription: ClassValue; shortcut: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Command component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandui",
@@ -117,6 +117,17 @@
             "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.searchterm",
             "default": null,
             "inheritedFrom": "searchTerm",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "externalFilter",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the items are already filtered and ranked by an external engine\n(e.g. full-text content search). When true, the built-in fuzzy filter is\nskipped and all `items` render as-is; `searchTerm` still syncs via\n`update:searchTerm` so the caller can drive its own search.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.externalfilter",
+            "default": null,
+            "inheritedFrom": "externalFilter",
             "sourcePath": "packages/headless/src/components/command/types.ts",
             "referencedTypes": []
           },
@@ -302,6 +313,56 @@
                 "resolvedType": null,
                 "description": "Properties for the CommandItemLabel component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_command_types.commanditemlabelprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemContentProps",
+            "type": "CommandItemContentProps",
+            "required": false,
+            "description": "Properties forwarded to the item content element (wraps label + description).",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.itemcontentprops",
+            "default": null,
+            "inheritedFrom": "itemContentProps",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandItemContentProps",
+                "kind": "interface",
+                "type": "CommandItemContentProps",
+                "resolvedType": null,
+                "description": "Properties for the CommandItemContent component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commanditemcontentprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemDescriptionProps",
+            "type": "CommandDescriptionProps",
+            "required": false,
+            "description": "Properties forwarded to the item description element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.itemdescriptionprops",
+            "default": null,
+            "inheritedFrom": "itemDescriptionProps",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandDescriptionProps",
+                "kind": "interface",
+                "type": "CommandDescriptionProps",
+                "resolvedType": null,
+                "description": "Properties for the CommandDescription component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commanddescriptionprops",
                 "sourcePath": "packages/headless/src/components/command/types.ts",
                 "typeParameters": [],
                 "external": false,
@@ -1059,7 +1120,7 @@
         "kind": "slots",
         "name": "CommandSlots",
         "type": "TypeAlias CommandSlots<T>: CommandCompactSlots<T>",
-        "resolvedType": "{ \"input-leading\"?: ((props: CommandCompactInputSlotProps) => any); \"input-trailing\"?: ((props: CommandCompactInputSlotProps) => any); empty?: (() => any); \"item-leading\"?: ((props: CommandCompactItemSlotProps<T>) => any); \"item-trailing\"?: ((props: CommandCompactItemSlotProps<T>) => any); \"item-label\"?: ((props: CommandCompactItemSlotProps<T>) => any); bottom?: (() => any) }",
+        "resolvedType": "{ \"input-leading\"?: ((props: CommandCompactInputSlotProps) => any); \"input-trailing\"?: ((props: CommandCompactInputSlotProps) => any); empty?: (() => any); \"item-leading\"?: ((props: CommandCompactItemSlotProps<T>) => any); \"item-trailing\"?: ((props: CommandCompactItemSlotProps<T>) => any); \"item-label\"?: ((props: CommandCompactItemSlotProps<T>) => any); \"item-description\"?: ((props: CommandCompactItemSlotProps<T>) => any); bottom?: (() => any) }",
         "description": "Slots for the Command component.",
         "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandslots.slots",
         "sourcePath": "packages/ui/src/components/command/types.ts",
@@ -1197,6 +1258,30 @@
             ]
           },
           {
+            "name": "item-description",
+            "type": "((props: CommandCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: CommandCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item description slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandslots.callables.item_description",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandCompactItemSlotProps",
+                "kind": "interface",
+                "type": "CommandCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the CommandCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": ["T extends CommandSingleOptionData = CommandSingleOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "bottom",
             "type": "(() => any) | undefined",
             "parameters": "(() => any) | undefined",
@@ -1215,7 +1300,7 @@
         "kind": "props",
         "name": "CommandCompactProps",
         "type": "Interface CommandCompactProps<T>",
-        "resolvedType": "{ items: CommandOptionData<T>[]; placeholder?: string; searchTerm?: string; clearable?: boolean; fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>; listProps?: CommandListProps; itemProps?: CommandItemProps; itemLabelProps?: CommandItemLabelProps; groupProps?: CommandGroupProps; groupLabelProps?: CommandGroupLabelProps; shortcutProps?: CommandShortcutProps; separatorProps?: CommandSeparatorProps; inputProps?: CommandInputProps; emptyProps?: CommandEmptyProps; emptyLabel?: string; modelValue?: string; defaultValue?: string; multiple?: false; selectionBehavior?: SelectionBehavior; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean; orientation?: DataOrientation }",
+        "resolvedType": "{ items: CommandOptionData<T>[]; placeholder?: string; searchTerm?: string; externalFilter?: boolean; clearable?: boolean; fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>; listProps?: CommandListProps; itemProps?: CommandItemProps; itemLabelProps?: CommandItemLabelProps; itemContentProps?: CommandItemContentProps; itemDescriptionProps?: CommandDescriptionProps; groupProps?: CommandGroupProps; groupLabelProps?: CommandGroupLabelProps; shortcutProps?: CommandShortcutProps; separatorProps?: CommandSeparatorProps; inputProps?: CommandInputProps; emptyProps?: CommandEmptyProps; emptyLabel?: string; modelValue?: string; defaultValue?: string; multiple?: false; selectionBehavior?: SelectionBehavior; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean; orientation?: DataOrientation }",
         "description": "Properties for the CommandCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.props",
         "sourcePath": "packages/headless/src/components/command/types.ts",
@@ -1249,6 +1334,17 @@
             "required": false,
             "description": "Search term.",
             "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.searchterm",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "externalFilter",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the items are already filtered and ranked by an external engine\n(e.g. full-text content search). When true, the built-in fuzzy filter is\nskipped and all `items` render as-is; `searchTerm` still syncs via\n`update:searchTerm` so the caller can drive its own search.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.externalfilter",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/command/types.ts",
@@ -1436,6 +1532,56 @@
                 "resolvedType": null,
                 "description": "Properties for the CommandItemLabel component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_command_types.commanditemlabelprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemContentProps",
+            "type": "CommandItemContentProps",
+            "required": false,
+            "description": "Properties forwarded to the item content element (wraps label + description).",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.itemcontentprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandItemContentProps",
+                "kind": "interface",
+                "type": "CommandItemContentProps",
+                "resolvedType": null,
+                "description": "Properties for the CommandItemContent component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commanditemcontentprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemDescriptionProps",
+            "type": "CommandDescriptionProps",
+            "required": false,
+            "description": "Properties forwarded to the item description element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.itemdescriptionprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandDescriptionProps",
+                "kind": "interface",
+                "type": "CommandDescriptionProps",
+                "resolvedType": null,
+                "description": "Properties for the CommandDescription component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commanddescriptionprops",
                 "sourcePath": "packages/headless/src/components/command/types.ts",
                 "typeParameters": [],
                 "external": false,
@@ -2118,7 +2264,7 @@
         "kind": "slots",
         "name": "CommandCompactSlots",
         "type": "TypeAlias CommandCompactSlots<T>",
-        "resolvedType": "{ \"input-leading\"?: ((props: CommandCompactInputSlotProps) => any); \"input-trailing\"?: ((props: CommandCompactInputSlotProps) => any); empty?: (() => any); \"item-leading\"?: ((props: CommandCompactItemSlotProps<T>) => any); \"item-trailing\"?: ((props: CommandCompactItemSlotProps<T>) => any); \"item-label\"?: ((props: CommandCompactItemSlotProps<T>) => any); bottom?: (() => any) }",
+        "resolvedType": "{ \"input-leading\"?: ((props: CommandCompactInputSlotProps) => any); \"input-trailing\"?: ((props: CommandCompactInputSlotProps) => any); empty?: (() => any); \"item-leading\"?: ((props: CommandCompactItemSlotProps<T>) => any); \"item-trailing\"?: ((props: CommandCompactItemSlotProps<T>) => any); \"item-label\"?: ((props: CommandCompactItemSlotProps<T>) => any); \"item-description\"?: ((props: CommandCompactItemSlotProps<T>) => any); bottom?: (() => any) }",
         "description": "Slots for the CommandCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactslots.slots",
         "sourcePath": "packages/headless/src/components/command/types.ts",
@@ -2256,6 +2402,30 @@
             ]
           },
           {
+            "name": "item-description",
+            "type": "((props: CommandCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: CommandCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item description slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactslots.callables.item_description",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandCompactItemSlotProps",
+                "kind": "interface",
+                "type": "CommandCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the CommandCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": ["T extends CommandSingleOptionData = CommandSingleOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "bottom",
             "type": "(() => any) | undefined",
             "parameters": "(() => any) | undefined",
@@ -2269,6 +2439,21 @@
         "referencedTypes": []
       }
     },
+    "CommandDescription": {
+      "props": {
+        "kind": "props",
+        "name": "CommandDescriptionProps",
+        "type": "Interface CommandDescriptionProps",
+        "resolvedType": null,
+        "description": "Properties for the CommandDescription component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_command_types.commanddescriptionprops.props",
+        "sourcePath": "packages/headless/src/components/command/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "CommandEmpty": {
       "props": {
         "kind": "props",
@@ -2277,6 +2462,21 @@
         "resolvedType": null,
         "description": "Properties for the CommandEmpty component.",
         "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandemptyprops.props",
+        "sourcePath": "packages/headless/src/components/command/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "CommandItemContent": {
+      "props": {
+        "kind": "props",
+        "name": "CommandItemContentProps",
+        "type": "Interface CommandItemContentProps",
+        "resolvedType": null,
+        "description": "Properties for the CommandItemContent component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_command_types.commanditemcontentprops.props",
         "sourcePath": "packages/headless/src/components/command/types.ts",
         "typeParameters": [],
         "members": [],

@@ -100,7 +100,7 @@
               {
                 "name": "StepperUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; description: ClassValue; title: ClassValue; indicator: ClassValue; separator: ClassValue; indicatorIcon: ClassValue; itemContent: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; description: ClassValue; title: ClassValue; indicator: ClassValue; separator: ClassValue; itemContent: ClassValue; indicatorIcon: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Stepper component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_stepper_types.stepperui",

@@ -3012,11 +3012,14 @@
             "disabled": "When `true`, prevents the user from interacting with listbox",
             "emptylabel": "Empty label.",
             "emptyprops": "Properties forwarded to the empty element.",
+            "externalfilter": "Whether the items are already filtered and ranked by an external engine\n(e.g. full-text content search). When true, the built-in fuzzy filter is\nskipped and all `items` render as-is; `searchTerm` still syncs via\n`update:searchTerm` so the caller can drive its own search.",
             "fuseoptions": "Fuse options.",
             "grouplabelprops": "Properties forwarded to the group label element.",
             "groupprops": "Properties forwarded to the group element.",
             "highlightonhover": "When `true`, hover over item will trigger highlight",
             "inputprops": "Properties forwarded to the input element.",
+            "itemcontentprops": "Properties forwarded to the item content element (wraps label + description).",
+            "itemdescriptionprops": "Properties forwarded to the item description element.",
             "itemlabelprops": "Properties forwarded to the item label element.",
             "itemprops": "Properties forwarded to the item element.",
             "items": "Items rendered by the component.",
@@ -3040,14 +3043,21 @@
             "empty": "Custom content for the empty slot.",
             "input_leading": "Custom content for the input leading slot.",
             "input_trailing": "Custom content for the input trailing slot.",
+            "item_description": "Custom content for the item description slot.",
             "item_label": "Custom content for the item label slot.",
             "item_leading": "Custom content for the item leading slot.",
             "item_trailing": "Custom content for the item trailing slot."
           },
           "slots": "Slots for the CommandCompact component."
         },
+        "commanddescriptionprops": {
+          "props": "Properties for the CommandDescription component."
+        },
         "commandemptyprops": {
           "props": "Properties for the CommandEmpty component."
+        },
+        "commanditemcontentprops": {
+          "props": "Properties for the CommandItemContent component."
         },
         "commanditemlabelprops": {
           "props": "Properties for the CommandItemLabel component."
@@ -11555,11 +11565,14 @@
             "disabled": "When `true`, prevents the user from interacting with listbox",
             "emptylabel": "Empty label.",
             "emptyprops": "Properties forwarded to the empty element.",
+            "externalfilter": "Whether the items are already filtered and ranked by an external engine\n(e.g. full-text content search). When true, the built-in fuzzy filter is\nskipped and all `items` render as-is; `searchTerm` still syncs via\n`update:searchTerm` so the caller can drive its own search.",
             "fuseoptions": "Fuse options.",
             "grouplabelprops": "Properties forwarded to the group label element.",
             "groupprops": "Properties forwarded to the group element.",
             "highlightonhover": "When `true`, hover over item will trigger highlight",
             "inputprops": "Properties forwarded to the input element.",
+            "itemcontentprops": "Properties forwarded to the item content element (wraps label + description).",
+            "itemdescriptionprops": "Properties forwarded to the item description element.",
             "itemlabelprops": "Properties forwarded to the item label element.",
             "itemprops": "Properties forwarded to the item element.",
             "items": "Items rendered by the component.",
@@ -11585,6 +11598,7 @@
             "empty": "Custom content for the empty slot.",
             "input_leading": "Custom content for the input leading slot.",
             "input_trailing": "Custom content for the input trailing slot.",
+            "item_description": "Custom content for the item description slot.",
             "item_label": "Custom content for the item label slot.",
             "item_leading": "Custom content for the item leading slot.",
             "item_trailing": "Custom content for the item trailing slot."

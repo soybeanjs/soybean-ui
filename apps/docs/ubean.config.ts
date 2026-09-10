@@ -30,7 +30,7 @@ export default defineConfig({
     strategy: 'prefix_except_default'
   },
   markdown: {
-    wrapperClass: 'markdown-body',
+    wrapperClass: 'markdown-wrapper',
     theme: {
       light: SHIKI_THEMES.light,
       dark: SHIKI_THEMES.dark
@@ -49,15 +49,19 @@ export default defineConfig({
   // Theme state is owned by @soybeanjs/theme (createThemeInitScript in app.ts);
   // disabling the built-in colorMode avoids a second, conflicting source.
   colorMode: false,
+  // Full-text content search (@ubean/content, ubean@0.4.7).
+  // Each locale is its own collection so the client can filter by the active
+  // language: `__search.json` becomes `{ en: [...], zh: [...] }`. The zh source
+  // gets a `/zh` prefix so hit ids already carry the `prefix_except_default`
+  // locale prefix; the default (en) ids stay unprefixed.
+  content: {
+    sources: {
+      en: { dir: 'src/content/en' },
+      zh: { dir: 'src/content/zh', prefix: '/zh' }
+    }
+  },
   prerender: {
     include: prerenderRoutes,
     crawlLinks: true
-  },
-  security: {
-    headers: {
-      contentSecurityPolicy: {
-        'connect-src': ["'self'", 'ws:', 'wss:', 'https://api.iconify.design']
-      }
-    }
   }
 });

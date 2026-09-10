@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-09T16:55:23.416Z",
+  "generatedAt": "2026-09-10T04:34:09.152Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -315,7 +315,9 @@
       "symbols": [
         "Command",
         "CommandCompact",
+        "CommandDescription",
         "CommandEmpty",
+        "CommandItemContent",
         "CommandItemLabel",
         "CommandSeparator",
         "CommandShortcut"
