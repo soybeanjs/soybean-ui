@@ -139,37 +139,41 @@ onMounted(() => {
 </script>
 
 <template>
-  <SCard data-soybean-bottom-sheet-scale :title="t('playground.title')" class="bg-background">
-    <template #extra>
-      <SSelect v-model="activeLibrary" :items="libraryOptions" class="w-35">
-        <template #trigger-leading>
-          <SIcon :icon="activeIcon" />
-        </template>
-      </SSelect>
-    </template>
-    <SAlert
-      v-if="!filteredTabs.length"
-      color="info"
-      variant="soft"
-      icon="lucide:construction"
-      :title="t('playground.empty.title')"
-      :description="t('playground.empty.description')"
-    />
-    <STabs
-      v-else
-      v-model="activeTab"
-      :items="filteredTabs"
-      :enable-indicator="false"
-      :ui="{
-        root: 'md:h-full',
-        list: 'grid grid-cols-10 gap-y-1 lt-sm:grid-cols-4 lt-md:grid-cols-5 lt-lg:grid-cols-6',
-        content: 'overflow-auto'
-      }"
-    >
-      <template #content>
-        <component :is="loadedComponent" v-if="loadedComponent" />
-        <div v-else class="py-12 text-center text-muted-foreground">{{ t('playground.loading') }}</div>
+  <div class="space-y-6">
+    <SCard data-soybean-bottom-sheet-scale :title="t('playground.title')" class="bg-background">
+      <template #extra>
+        <SSelect v-model="activeLibrary" :items="libraryOptions" class="w-35">
+          <template #trigger-leading>
+            <SIcon :icon="activeIcon" />
+          </template>
+        </SSelect>
       </template>
-    </STabs>
-  </SCard>
+      <SAlert
+        v-if="!filteredTabs.length"
+        color="info"
+        variant="soft"
+        icon="lucide:construction"
+        :title="t('playground.empty.title')"
+        :description="t('playground.empty.description')"
+      />
+      <STabs
+        v-else
+        v-model="activeTab"
+        :items="filteredTabs"
+        :enable-indicator="false"
+        :ui="{
+          root: 'md:h-full',
+          list: 'grid grid-cols-10 gap-y-1 lt-sm:grid-cols-4 lt-md:grid-cols-5 lt-lg:grid-cols-6',
+          content: 'overflow-auto'
+        }"
+      >
+        <template #content>
+          <component :is="loadedComponent" v-if="loadedComponent" />
+          <div v-else class="py-12 text-center text-muted-foreground">{{ t('playground.loading') }}</div>
+        </template>
+      </STabs>
+    </SCard>
+
+    <DocMd path="playground" />
+  </div>
 </template>

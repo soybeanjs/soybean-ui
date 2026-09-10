@@ -1,19 +1,15 @@
 ---
 head:
   title: '@soybeanjs/admin'
-  description: SoybeanAdmin — admin shell components built on top of SoybeanUI.
+  description: Admin shell components built on SoybeanUI.
 ---
 
 # @soybeanjs/admin
 
-> SoybeanAdmin — admin shell components built on top of SoybeanUI.
+> Admin shell components built on SoybeanUI.
 
 ## Status
 
 This package is scaffolded. Component implementation is pending. See [ecosystem](/overview/introduction) for the architecture plan.
 
-## Install
-
-```bash
-pnpm add @soybeanjs/admin
-```
+See [installation](/admin/installation) and [quick start](/admin/quick-start) for setup steps.

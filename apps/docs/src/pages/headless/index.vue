@@ -15,11 +15,9 @@ const { t } = useI18n();
         <SIcon icon="lucide:code-xml" class="text-sm text-primary" />
         <span>{{ t('layout.header.headless') }}</span>
       </div>
-      <h1 class="text-[clamp(2.4rem,5vw,4rem)] font-black leading-[0.96] tracking-[-0.05em] text-foreground">
+      <!-- Hero title stays a paragraph: the markdown below owns the page's only h1. -->
+      <p class="text-[clamp(2.4rem,5vw,4rem)] font-black leading-[0.96] tracking-[-0.05em] text-foreground">
         {{ t('headless.catalog.title') }}
-      </h1>
-      <p class="max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">
-        {{ t('headless.catalog.description') }}
       </p>
     </div>
     <SAlert
@@ -29,5 +27,7 @@ const { t } = useI18n();
       :title="t('headless.catalog.notice.title')"
       :description="t('headless.catalog.notice.description')"
     />
+
+    <DocMd path="headless/index" />
   </div>
 </template>

@@ -1117,7 +1117,6 @@
     },
     "catalog": {
       "title": "SoybeanUI-X",
-      "description": "AI-native component library for building conversational interfaces, with streaming markdown, thought chains, attachments, and more.",
       "placeholder": {
         "title": "Coming Soon",
         "body": "Component catalog is being prepared."
@@ -1134,7 +1133,6 @@
     },
     "catalog": {
       "title": "SoybeanAdmin",
-      "description": "Admin shell components built on SoybeanUI.",
       "notice": {
         "title": "In development — coming soon",
         "description": "This package is still under active development and is scheduled to ship with the v0.40.0 release. Stay tuned!"
@@ -1151,7 +1149,6 @@
     },
     "catalog": {
       "title": "SoybeanChart",
-      "description": "Chart components built on SoybeanUI.",
       "notice": {
         "title": "In development — coming soon",
         "description": "This package is still under active development and is scheduled to ship with the v0.40.0 release. Stay tuned!"
@@ -1165,7 +1162,6 @@
   "headless": {
     "catalog": {
       "title": "Headless",
-      "description": "Unstyled, fully accessible component logic — the foundation {'@'}soybeanjs/ui is built on.",
       "notice": {
         "title": "Documentation in progress",
         "description": "Headless documentation is being written. Meanwhile, browse the styled API reference under Components."

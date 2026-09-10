@@ -55,14 +55,10 @@ onBeforeUnmount(() => {
           <SIcon icon="lucide:sparkles" class="text-sm text-primary" />
           <span>AI Components</span>
         </div>
-        <div class="max-w-3xl space-y-3">
-          <h1 class="text-[clamp(2.4rem,5vw,4rem)] font-black leading-[0.96] tracking-[-0.05em] text-foreground">
-            {{ t('layout.header.ui_x') }}
-          </h1>
-          <p class="text-sm leading-7 text-muted-foreground sm:text-base">
-            {{ t('ui_x.catalog.description') }}
-          </p>
-        </div>
+        <!-- Hero title stays a paragraph: the markdown below owns the page's only h1. -->
+        <p class="text-[clamp(2.4rem,5vw,4rem)] font-black leading-[0.96] tracking-[-0.05em] text-foreground">
+          {{ t('layout.header.ui_x') }}
+        </p>
         <SAlert
           color="info"
           variant="soft"
@@ -80,6 +76,8 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </section>
+
+    <DocMd path="ui-x/index" />
 
     <section class="space-y-4">
       <div class="grid gap-5">

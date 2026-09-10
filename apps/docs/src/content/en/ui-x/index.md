@@ -1,52 +1,16 @@
 ---
 head:
   title: '@soybeanjs/ui-x'
-  description: SoybeanUI-X — AI conversation UI components built on top of SoybeanUI.
+  description: AI-native component library for building conversational interfaces, with streaming markdown, thought chains, attachments, and more.
 ---
 
 # @soybeanjs/ui-x
 
-> SoybeanUI-X — AI conversation UI components built on top of SoybeanUI.
+> AI-native component library for building conversational interfaces, with streaming markdown, thought chains, attachments, and more.
 
-A collection of 20 styled components for building conversational AI interfaces: chat bubbles, streaming markdown, code blocks with syntax highlighting, mermaid diagrams, thought chains, file attachments, prompts, suggestions, and more. Built on `@soybeanjs/headless` + `@soybeanjs/ui` with `@soybeanjs/ui-x` composables for streaming, typing effects, and sender state.
+A collection of 20 styled components for building conversational AI interfaces: chat bubbles, streaming markdown (powered by markstream-vue), syntax-highlighted code blocks, mermaid diagrams, thought chains, file attachments, prompts, suggestions, and more. Built on `@soybeanjs/headless` + `@soybeanjs/ui` with `@soybeanjs/ui-x` composables for streaming, typing effects, and sender state.
 
-## Status
-
-20 components implemented — see the [component catalog](/ui-x) for the full list. Architecture plan: [ecosystem](/overview/introduction).
-
-## Components
-
-| Category     | Components                                                  |
-| ------------ | ----------------------------------------------------------- |
-| Core         | `SxBubble`, `SxBubbleList`, `SxSender`                      |
-| Content      | `SxMarkdown`, `SxCodeBlock`, `SxMermaid`                    |
-| Attachments  | `SxAttachments`, `SxFileCard`                               |
-| Conversation | `SxConversations`, `SxWelcome`, `SxPrompts`, `SxSuggestion` |
-| Reasoning    | `SxThink`, `SxThoughtChain`, `SxSources`                    |
-| Actions      | `SxActions`, `SxActionsCopy`, `SxActionsFeedback`           |
-| Misc         | `SxFolder`, `SxNotification`                                |
-
-## Install
-
-```bash
-pnpm add @soybeanjs/ui-x
-```
-
-## Quick Start
-
-```vue
-<script setup lang="ts">
-import { SxBubble, SxSender } from '@soybeanjs/ui-x';
-</script>
-
-<template>
-  <div class="space-y-3">
-    <SxBubble role="ai" placement="start" content="Hello! How can I help you today?" />
-    <SxBubble role="user" placement="end" content="I need help building a component." />
-    <SxSender placeholder="Type a message..." />
-  </div>
-</template>
-```
+See [installation](/ui-x/installation) and [quick start](/ui-x/quick-start) to get started, or browse the component groups below for the full list.
 
 ## Features
 

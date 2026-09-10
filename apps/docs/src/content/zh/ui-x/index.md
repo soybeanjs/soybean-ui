@@ -1,52 +1,16 @@
 ---
 head:
   title: '@soybeanjs/ui-x'
-  description: SoybeanUI-X —— 基于 SoybeanUI 的 AI 对话 UI 组件。
+  description: 面向 AI 对话场景的组件库，提供流式 Markdown、推理链、附件、会话管理等能力。
 ---
 
 # @soybeanjs/ui-x
 
-> SoybeanUI-X —— 基于 SoybeanUI 的 AI 对话 UI 组件。
+> 面向 AI 对话场景的组件库，提供流式 Markdown、推理链、附件、会话管理等能力。
 
 20 个样式组件，用于构建对话式 AI 界面：聊天气泡、流式 Markdown（含 markstream-vue 底层）、语法高亮代码块、Mermaid 图表、思考链、文件附件、提示与建议等。基于 `@soybeanjs/headless` + `@soybeanjs/ui` 构建，借助 `@soybeanjs/ui-x` 的 composable 实现流式、打字机效果和发送器状态管理。
 
-## 状态
-
-20 个组件已实现——详见[组件目录](/ui-x)。架构计划：[ecosystem](/overview/introduction)。
-
-## 组件
-
-| 分类 | 组件                                                        |
-| ---- | ----------------------------------------------------------- |
-| 核心 | `SxBubble`, `SxBubbleList`, `SxSender`                      |
-| 内容 | `SxMarkdown`, `SxCodeBlock`, `SxMermaid`                    |
-| 附件 | `SxAttachments`, `SxFileCard`                               |
-| 对话 | `SxConversations`, `SxWelcome`, `SxPrompts`, `SxSuggestion` |
-| 推理 | `SxThink`, `SxThoughtChain`, `SxSources`                    |
-| 操作 | `SxActions`, `SxActionsCopy`, `SxActionsFeedback`           |
-| 其他 | `SxFolder`, `SxNotification`                                |
-
-## 安装
-
-```bash
-pnpm add @soybeanjs/ui-x
-```
-
-## 快速开始
-
-```vue
-<script setup lang="ts">
-import { SxBubble, SxSender } from '@soybeanjs/ui-x';
-</script>
-
-<template>
-  <div class="space-y-3">
-    <SxBubble role="ai" placement="start" content="你好！有什么可以帮你的？" />
-    <SxBubble role="user" placement="end" content="我需要帮助构建一个组件。" />
-    <SxSender placeholder="输入消息..." />
-  </div>
-</template>
-```
+安装与首个界面见[安装](/ui-x/installation)与[快速开始](/ui-x/quick-start)；完整组件清单见下方的组件分类。
 
 ## 特性
 

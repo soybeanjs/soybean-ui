@@ -15,11 +15,9 @@ const { t } = useI18n();
         <SIcon icon="lucide:package" class="text-sm text-primary" />
         <span>{{ t('layout.header.admin') }}</span>
       </div>
-      <h1 class="text-[clamp(2.4rem,5vw,4rem)] font-black leading-[0.96] tracking-[-0.05em] text-foreground">
+      <!-- Hero title stays a paragraph: the markdown below owns the page's only h1. -->
+      <p class="text-[clamp(2.4rem,5vw,4rem)] font-black leading-[0.96] tracking-[-0.05em] text-foreground">
         {{ t('admin.catalog.title') }}
-      </h1>
-      <p class="max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">
-        {{ t('admin.catalog.description') }}
       </p>
     </div>
     <SAlert
@@ -29,6 +27,9 @@ const { t } = useI18n();
       :title="t('admin.catalog.notice.title')"
       :description="t('admin.catalog.notice.description')"
     />
+
+    <DocMd path="admin/index" />
+
     <SCard :title="t('admin.catalog.placeholder.title')" split class="docs-card">
       <template #default>
         <p class="text-sm text-muted-foreground">

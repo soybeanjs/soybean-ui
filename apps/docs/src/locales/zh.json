@@ -1109,7 +1109,6 @@
   "ui_x": {
     "catalog": {
       "title": "SoybeanUI-X",
-      "description": "面向 AI 对话场景的组件库，提供流式 Markdown、推理链、附件、会话管理等能力。",
       "placeholder": {
         "title": "即将推出",
         "body": "组件目录正在准备中。"
@@ -1129,7 +1128,6 @@
     },
     "catalog": {
       "title": "SoybeanAdmin",
-      "description": "基于 SoybeanUI 的后台管理壳组件。",
       "notice": {
         "title": "还在开发中，敬请期待",
         "description": "本包仍在积极开发中，计划于 v0.40.0 版本正式发布。届时敬请关注！"
@@ -1146,7 +1144,6 @@
     },
     "catalog": {
       "title": "SoybeanChart",
-      "description": "基于 SoybeanUI 的图表组件。",
       "notice": {
         "title": "还在开发中，敬请期待",
         "description": "本包仍在积极开发中，计划于 v0.40.0 版本正式发布。届时敬请关注！"
@@ -1160,7 +1157,6 @@
   "headless": {
     "catalog": {
       "title": "Headless",
-      "description": "无样式、完整可访问性的组件逻辑 —— {'@'}soybeanjs/ui 的底层基础。",
       "notice": {
         "title": "文档建设中",
         "description": "Headless 文档正在编写中，可先查阅组件（Components）下的样式化 API 参考。"
