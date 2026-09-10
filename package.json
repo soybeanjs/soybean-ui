@@ -18,9 +18,7 @@
   },
   "type": "module",
   "scripts": {
-    "build": "pnpm build:libs && pnpm build:headless && pnpm build:ui && pnpm build:ui-x && pnpm build:admin && pnpm build:chart && pnpm build:sbean",
-    "build:admin": "pnpm --filter @soybeanjs/admin build",
-    "build:chart": "pnpm --filter @soybeanjs/chart build",
+    "build": "pnpm build:libs && pnpm build:headless && pnpm build:ui && pnpm build:ui-x && pnpm build:sbean",
     "build:docs": "pnpm build:libs && pnpm --filter @soybeanjs/ui-docs build",
     "build:headless": "pnpm --filter @soybeanjs/headless build",
     "build:libs": "pnpm --filter @soybeanjs/theme build && pnpm --filter @soybeanjs/ui-uno build",

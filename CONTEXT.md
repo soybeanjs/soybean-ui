@@ -88,7 +88,7 @@ ConfigProvider 上控制是否启用持久化主题读取（localStorage）的�
 
 ## 外围包（peripheral package）
 
-围绕核心 `@soybeanjs/headless` + `@soybeanjs/ui` 构建的领域扩展包。当前包括 `@soybeanjs/ui-x`（AI 组件）、`@soybeanjs/admin`（后台应用壳）、`@soybeanjs/chart`（图表），未来可扩展 `@soybeanjs/ui-pro`、`@soybeanjs/ui-lowcode` 等。每个外围包为单一包（领域逻辑与样式同居），不另建"领域逻辑包"。
+围绕核心 `@soybeanjs/headless` + `@soybeanjs/ui` 构建的领域扩展包。当前仅有 `@soybeanjs/ui-x`（AI 组件）一条线；未来可扩展 `@soybeanjs/ui-pro`、`@soybeanjs/ui-lowcode` 等。每个外围包为单一包（领域逻辑与样式同居），不另建"领域逻辑包"。图表不作为外围包：文档站直接基于 [TanStack Charts](https://tanstack.com/charts) 展示 shadcn 风格示例（`@soybeanjs/admin`、`@soybeanjs/chart` 曾规划，已于 v0.40.0 移除）。
 
 ## 原子原语（atomic primitive）
 
@@ -100,8 +100,8 @@ ConfigProvider 上控制是否启用持久化主题读取（localStorage）的�
 
 ## 组件前缀（component prefix）
 
-跨包组件命名规则。核心 `@soybeanjs/ui` 用 `S`；具备强领域词汇表的包用 2 字母前缀（`@soybeanjs/ui-x` 用 `Sx`）；其余包用 `S` + 领域名词前缀（`@soybeanjs/admin` 用 `S` + `App*`，`@soybeanjs/chart` 用 `S` + `Chart*`）。判据是"领域词汇表强度"：当组件名构成该领域专属词汇表（如 AI 的 Bubble/Sender/ThoughtChain）时用 2 字母前缀，否则用领域名词前缀防撞。
+跨包组件命名规则。核心 `@soybeanjs/ui` 用 `S`；具备强领域词汇表的包用 2 字母前缀（`@soybeanjs/ui-x` 用 `Sx`）；其余未来外围包用 `S` + 领域名词前缀防撞（如 `S` + `App*`、`S` + `Chart*`）。判据是"领域词汇表强度"：当组件名构成该领域专属词汇表（如 AI 的 Bubble/Sender/ThoughtChain）时用 2 字母前缀，否则用领域名词前缀防撞。
 
 ## 命名空间 registry item（namespaced registry item）
 
-sbean registry 中的条目形式：name 以 `包名/组件名` 命名（如 `ui-x/bubble`、`admin/app-layout`、`chart/bar`），并附 `package` 字段标识归属。单一 `registry.json` 承载所有外围包条目，CLI 通过命名空间路径寻址（`sbean add ui-x/bubble`），文档站按 `package` 字段分组展示。
+sbean registry 中的条目形式：name 以 `包名/组件名` 命名（如 `ui-x/bubble`；未来外围包同理，如 `<pkg>/<component>`），并附 `package` 字段标识归属。单一 `registry.json` 承载所有外围包条目，CLI 通过命名空间路径寻址（`sbean add ui-x/bubble`），文档站按 `package` 字段分组展示。

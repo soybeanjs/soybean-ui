@@ -4,6 +4,8 @@
 
 accepted
 
+> 补注（v0.40.0）：`@soybeanjs/admin`、`@soybeanjs/chart` 后续已移除（图表改为文档站基于 TanStack Charts 的 shadcn 风格示例，不进核心库）。本 ADR 的单包分层模型不变，当前仅作用于 `@soybeanjs/ui-x`；下文涉及 admin / chart 的内容为当时背景，保留备查。
+
 ## 背景
 
 SoybeanUI 周边 UI 组件生态（ui-x / admin / chart …）在初始化时出现了两种不一致的分层：

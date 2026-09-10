@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { chartColors } from '@soybeanjs/chart';
 import { defineChart, dot } from '@tanstack/charts';
 import { scaleLinear } from '@tanstack/charts/scales/linear';
 import { tooltip } from '@tanstack/charts/tooltip';
 import { Chart } from '@tanstack/charts/vue';
+import { chartColors } from '~/components/chart/chart-config';
+import type { ChartConfig } from '~/components/chart/chart-config';
+import ChartContainer from '~/components/chart/chart-container.vue';
 
 interface ScatterDatum {
   income: number;
@@ -23,13 +25,20 @@ const chartData: ScatterDatum[] = [
   { income: 74, lifeExpectancy: 83 }
 ];
 
+const chartConfig = {
+  points: {
+    label: 'Countries',
+    color: chartColors[0]
+  }
+} satisfies ChartConfig;
+
 const chart = defineChart({
   marks: [
     dot(chartData, {
       x: 'income',
       y: 'lifeExpectancy',
       r: 4,
-      fill: chartColors[0]
+      fill: 'var(--color-points)'
     })
   ],
   scales: {
@@ -51,7 +60,7 @@ const chart = defineChart({
 </script>
 
 <template>
-  <div class="h-[250px]">
+  <ChartContainer :config="chartConfig" class="h-[250px]">
     <Chart :definition="chart" aria-label="Life expectancy by income" :height="250" />
-  </div>
+  </ChartContainer>
 </template>

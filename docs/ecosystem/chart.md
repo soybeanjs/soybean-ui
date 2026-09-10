@@ -1,6 +1,8 @@
 # @soybeanjs/chart — 图表组件技术方案
 
-> 定位：图表组件包（对标 [shadcn charts](https://ui.shadcn.com/charts)），为 SoybeanUI 生态提供与主题 token 深度集成的声明式图表。核心库路线图已明确把 `Chart` / `Heatmap` / `Sparkline` 划为「独立包范围」（见 [roadmap.md 范围外](../roadmap.md#范围外组件out-of-scope)），本包即该范围的落地。
+> **⚠️ 已取消（v0.40.0）：本提案未继续，`packages/chart` 已删除。** 图表不进入 SoybeanUI 核心/外围包体系，改为在文档站直接基于 [TanStack Charts](https://tanstack.com/charts) 提供 shadcn 风格示例（`apps/docs/src/examples/chart/` + 文档内 `components/chart/` 主题壳）。以下内容仅为历史技术方案，保留备查。
+
+> 定位：图表组件包（对标 [shadcn charts](https://ui.shadcn.com/charts)），为 SoybeanUI 生态提供与主题 token 深度集成的声明式图表。核心库路线图曾把 `Chart` / `Heatmap` / `Sparkline` 划为「独立包范围」（见 [roadmap.md 范围外](../roadmap.md#范围外组件out-of-scope)）。
 >
 > 状态：包已作为 workspace 包落地（`packages/chart`）并随核心版本发布。已实现 `chart-container` / `chart-tooltip-content` / `chart-legend-content` / `chart-style` 四个基础组件及 `chartColors` / `chartThemes` 工具；其余图表族（EC-C10/C11/C12）仍在扩展。
 

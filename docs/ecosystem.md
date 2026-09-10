@@ -1,8 +1,10 @@
 # SoybeanUI 生态架构方案
 
-> 本文记录 SoybeanUI 周边 UI 组件生态（ui-x / admin / chart 及未来 ui-pro / ui-lowcode 等）的依赖架构、文档展示、分发与扩展契约。
+> 本文记录 SoybeanUI 周边 UI 组件生态（ui-x 及未来 ui-pro / ui-lowcode 等）的依赖架构、文档展示、分发与扩展契约。
 > 决策来源：`/grilling` 会话（3 轮）+ `CONTEXT.md` 术语表 + `docs/adr/0001-peripheral-package-layering.md`。
 > 生成日期：2026-08-13。
+
+> **状态更新（v0.40.0）：`@soybeanjs/admin` 与 `@soybeanjs/chart` 已移除。** 二者不再作为独立包发布；图表改为在文档站直接基于 [TanStack Charts](https://tanstack.com/charts) 展示 shadcn 风格示例（见 `apps/docs/src/examples/chart/` 与文档内的 `components/chart/` 主题壳），不进入核心库。下文涉及 admin / chart 的分层、分发、文档命名空间等内容保留作为历史规划记录；当前外围包仅 `@soybeanjs/ui-x` 一条线，其单包自治分层契约（ADR-0001）仍然有效。
 
 ## 1. 背景与目标
 
@@ -11,8 +13,8 @@
 | 包                      | 领域                                        | 当前状态                                                                                               |
 | ----------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | `@soybeanjs/ui-x`       | AI 组件（Bubble/Sender/ThoughtChain…）      | 已落地 `packages/ui-x/`（ADR-0001 已执行：`headless-x` 已拆解，exports 含 `./composables`、`./types`） |
-| `@soybeanjs/admin`      | 后台应用壳（AppLayout/AppMenu/Breadcrumb…） | `admin` 分支已初始化，单包                                                                             |
-| `@soybeanjs/chart`      | 图表组件（对标 shadcn charts）              | 已落地 `packages/chart/`（`@soybeanjs/chart`，deps：headless/ui/theme/utils）                          |
+| `@soybeanjs/admin`      | 后台应用壳（AppLayout/AppMenu/Breadcrumb…） | **已移除（v0.40.0）**：不再独立成包                                                                    |
+| `@soybeanjs/chart`      | 图表组件（对标 shadcn charts）              | **已移除（v0.40.0）**：图表改为文档站基于 TanStack Charts 的 shadcn 风格示例，不进核心库               |
 | `@soybeanjs/editor`     | 富文本编辑器（Tiptap 内核，MIT 边界）       | 立项提案（见 [ecosystem/editor.md](./ecosystem/editor.md)）                                            |
 | `@soybeanjs/table`      | 高级数据网格 / ProTable                     | 立项提案（见 [ecosystem/table.md](./ecosystem/table.md)）                                              |
 | `@soybeanjs/form`       | Schema 驱动高级表单                         | 立项提案（见 [ecosystem/form.md](./ecosystem/form.md)）                                                |
@@ -29,12 +31,11 @@
 
 ```
 Layer 4 · 外围包（单包自治：领域逻辑 + 样式同居）
-   @soybeanjs/ui-x      @soybeanjs/admin ──► @soybeanjs/chart
-        │                      │                    ▲
-        │                      │                    │
-        └──────────┬───────────┴────────────────────┘
-                   │  (admin → chart：有向依赖, peerDep; 见 §5)
-                   ▼
+   @soybeanjs/ui-x
+        │
+        │   （admin / chart 已于 v0.40.0 移除；图表改为文档站 TanStack Charts 示例）
+        │
+        ▼
 Layer 3 · 核心样式层
                 @soybeanjs/ui
                    │
@@ -58,18 +59,18 @@ Layer 1 · 适配层                  @soybeanjs/ui-uno （消费 theme）
 
 ### 2.2 包清单与角色
 
-| 包                    | 层  | 运行时依赖                           | 前缀          | 独立逻辑层?      |
-| --------------------- | --- | ------------------------------------ | ------------- | ---------------- |
-| `@soybeanjs/theme`    | 2   | —                                    | —             | —                |
-| `@soybeanjs/headless` | 2   | —                                    | —             | 是（唯一逻辑层） |
-| `@soybeanjs/ui-uno`   | 1   | theme                                | —             | —                |
-| `@soybeanjs/ui`       | 3   | headless, theme                      | `S`           | —                |
-| `@soybeanjs/ui-x`     | 4   | headless, ui, theme                  | `Sx`          | 否（逻辑在包内） |
-| `@soybeanjs/admin`    | 4   | headless, ui, theme, **chart**(peer) | `S`+`App*`    | 否               |
-| `@soybeanjs/chart`    | 4   | headless, ui, theme                  | `S`+`Chart*`  | 否               |
-| `@soybeanjs/editor`   | 4   | headless, ui, theme（Tiptap peer）   | `S`+`Editor*` | 否（提案）       |
-| `@soybeanjs/table`    | 4   | headless, ui, theme, **form**(peer)  | `S`+`Table*`  | 否（提案）       |
-| `@soybeanjs/form`     | 4   | headless, ui, theme                  | `S`+`Form*`   | 否（提案）       |
+| 包                    | 层  | 运行时依赖                                         | 前缀          | 独立逻辑层?      |
+| --------------------- | --- | -------------------------------------------------- | ------------- | ---------------- |
+| `@soybeanjs/theme`    | 2   | —                                                  | —             | —                |
+| `@soybeanjs/headless` | 2   | —                                                  | —             | 是（唯一逻辑层） |
+| `@soybeanjs/ui-uno`   | 1   | theme                                              | —             | —                |
+| `@soybeanjs/ui`       | 3   | headless, theme                                    | `S`           | —                |
+| `@soybeanjs/ui-x`     | 4   | headless, ui, theme                                | `Sx`          | 否（逻辑在包内） |
+| `@soybeanjs/admin`    | —   | 已移除（v0.40.0）                                  | —             | —                |
+| `@soybeanjs/chart`    | —   | 已移除（v0.40.0）；图表用 TanStack Charts 文档示例 | —             | —                |
+| `@soybeanjs/editor`   | 4   | headless, ui, theme（Tiptap peer）                 | `S`+`Editor*` | 否（提案）       |
+| `@soybeanjs/table`    | 4   | headless, ui, theme, **form**(peer)                | `S`+`Table*`  | 否（提案）       |
+| `@soybeanjs/form`     | 4   | headless, ui, theme                                | `S`+`Form*`   | 否（提案）       |
 
 ## 3. 分层模型（核心决策，详见 ADR-0001）
 

@@ -705,7 +705,6 @@
       "getting_started": "开始使用",
       "components": "组件",
       "ui_x": "UI-X",
-      "admin": "后台",
       "chart": "图表",
       "releases": "更新日志",
       "playground": "演练场",
@@ -1086,36 +1085,19 @@
       "general": "通用"
     }
   },
-  "admin": {
-    "sidebar": {
-      "shell": "应用壳"
-    },
-    "catalog": {
-      "title": "SoybeanAdmin",
-      "notice": {
-        "title": "还在开发中，敬请期待",
-        "description": "本包仍在积极开发中，计划于 v0.40.0 版本正式发布。届时敬请关注！"
-      },
-      "placeholder": {
-        "title": "即将推出",
-        "body": "组件目录正在准备中。"
-      }
-    }
-  },
   "chart": {
     "sidebar": {
       "charts": "图表"
     },
     "catalog": {
-      "title": "SoybeanChart",
-      "notice": {
-        "title": "还在开发中，敬请期待",
-        "description": "本包仍在积极开发中，计划于 v0.40.0 版本正式发布。届时敬请关注！"
-      },
-      "placeholder": {
-        "title": "即将推出",
-        "body": "组件目录正在准备中。"
-      }
+      "title": "TanStack 图表示例"
+    },
+    "kinds": {
+      "area": "面积图：展示随时间变化的量级与趋势，支持堆叠。",
+      "bar": "柱状图：对比离散类目之间的数值。",
+      "line": "折线图：展示连续区间内的趋势变化，支持多系列。",
+      "pie": "环形图：展示各分类占整体的比例。",
+      "scatter": "散点图：展示两个数值维度之间的相关性。"
     }
   },
   "headless": {

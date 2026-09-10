@@ -705,7 +705,6 @@
       "getting_started": "Getting Started",
       "components": "Components",
       "ui_x": "UI-X",
-      "admin": "Admin",
       "chart": "Chart",
       "releases": "Releases",
       "playground": "Playground",
@@ -1091,36 +1090,19 @@
       }
     }
   },
-  "admin": {
-    "sidebar": {
-      "shell": "Shell"
-    },
-    "catalog": {
-      "title": "SoybeanAdmin",
-      "notice": {
-        "title": "In development — coming soon",
-        "description": "This package is still under active development and is scheduled to ship with the v0.40.0 release. Stay tuned!"
-      },
-      "placeholder": {
-        "title": "Coming Soon",
-        "body": "Component catalog is being prepared."
-      }
-    }
-  },
   "chart": {
     "sidebar": {
       "charts": "Charts"
     },
     "catalog": {
-      "title": "SoybeanChart",
-      "notice": {
-        "title": "In development — coming soon",
-        "description": "This package is still under active development and is scheduled to ship with the v0.40.0 release. Stay tuned!"
-      },
-      "placeholder": {
-        "title": "Coming Soon",
-        "body": "Component catalog is being prepared."
-      }
+      "title": "TanStack Chart Demos"
+    },
+    "kinds": {
+      "area": "Area chart: magnitude and trend over time, with stacking support.",
+      "bar": "Bar chart: compare values across discrete categories.",
+      "line": "Line chart: trend over a continuous interval, with multiple series.",
+      "pie": "Donut chart: each category's share of the whole.",
+      "scatter": "Scatter chart: correlation between two numeric dimensions."
     }
   },
   "headless": {

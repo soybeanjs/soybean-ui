@@ -1,21 +1,28 @@
 <script setup lang="ts">
-import { SChartContainer, SChartTooltipContent, chartColors, componentToString } from '@soybeanjs/chart';
-import type { ChartConfig } from '@soybeanjs/chart';
-import { Donut } from '@unovis/ts';
-import { VisDonut, VisSingleContainer, VisTooltip } from '@unovis/vue';
+import { colorLegend, defineChart } from '@tanstack/charts';
+import { pie, polar, radialArc } from '@tanstack/charts/polar';
+import { tooltip } from '@tanstack/charts/tooltip';
+import { Chart } from '@tanstack/charts/vue';
+import { chartColors } from '~/components/chart/chart-config';
+import type { ChartConfig } from '~/components/chart/chart-config';
+import ChartContainer from '~/components/chart/chart-container.vue';
 
-const chartData = [
-  { browser: 'chrome', visitors: 275, fill: 'var(--color-chrome)' },
-  { browser: 'safari', visitors: 200, fill: 'var(--color-safari)' },
-  { browser: 'firefox', visitors: 187, fill: 'var(--color-firefox)' },
-  { browser: 'edge', visitors: 173, fill: 'var(--color-edge)' },
-  { browser: 'other', visitors: 90, fill: 'var(--color-other)' }
+interface DonutDatum {
+  browser: string;
+  value: number;
+}
+
+const chartData: DonutDatum[] = [
+  { browser: 'chrome', value: 275 },
+  { browser: 'safari', value: 200 },
+  { browser: 'firefox', value: 187 },
+  { browser: 'edge', value: 173 },
+  { browser: 'other', value: 90 }
 ];
 
-type Data = (typeof chartData)[number];
+const browsers = chartData.map(d => d.browser);
 
 const chartConfig = {
-  visitors: { label: 'Visitors' },
   chrome: { label: 'Chrome', color: chartColors[0] },
   safari: { label: 'Safari', color: chartColors[1] },
   firefox: { label: 'Firefox', color: chartColors[2] },
@@ -23,23 +30,38 @@ const chartConfig = {
   other: { label: 'Other', color: chartColors[4] }
 } satisfies ChartConfig;
 
-const value = (d: Data) => d.visitors;
-const color = (d: Data) => d.fill;
+// `pie` allocates values into source-linked angular intervals;
+// `radialArc` renders them with a responsive inner radius for a donut.
+const slices = pie(chartData, { value: 'value' });
 
-const tooltipTemplate = componentToString(chartConfig, SChartTooltipContent, { hideLabel: true });
+const chart = defineChart({
+  marks: [
+    polar({
+      inset: 8,
+      radiusRatio: 0.85,
+      marks: [
+        radialArc(slices, {
+          innerRadius: ({ radius }) => radius * 0.58,
+          cornerRadius: 4,
+          color: 'browser',
+          key: 'browser'
+        })
+      ],
+      scales: { angle: null, radius: null }
+    })
+  ],
+  scales: { x: null, y: null },
+  color: {
+    domain: browsers,
+    range: browsers.map(b => `var(--color-${b})`),
+    legend: colorLegend({ label: 'Browser' })
+  },
+  tooltip
+});
 </script>
 
 <template>
-  <div class="mx-auto h-[250px] w-[250px]">
-    <SChartContainer :config="chartConfig">
-      <VisSingleContainer :data="chartData" :margin="{ top: 30, bottom: 30 }">
-        <VisDonut :value="value" :color="color" :arc-width="30" />
-        <VisTooltip
-          :triggers="{
-            [Donut.selectors.segment]: tooltipTemplate!
-          }"
-        />
-      </VisSingleContainer>
-    </SChartContainer>
-  </div>
+  <ChartContainer :config="chartConfig" class="h-[250px]">
+    <Chart :definition="chart" aria-label="Browser market share donut chart" :height="250" />
+  </ChartContainer>
 </template>

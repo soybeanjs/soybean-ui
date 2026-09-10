@@ -146,10 +146,9 @@ export const menuData: MenuData[] = [
 ];
 
 // Peripheral package menu data — items are placeholders to be filled as components are added.
-// TODO(ui-x/admin/chart): fill items arrays when components are implemented.
+// TODO(ui-x): fill items arrays when components are implemented.
 
 export const uiXNewlyComponentKeys: string[] = [];
-export const adminNewlyComponentKeys: string[] = [];
 export const chartNewlyComponentKeys: string[] = [];
 
 export const uiXMenuData: MenuData[] = [
@@ -190,18 +189,10 @@ export const uiXMenuData: MenuData[] = [
   }
 ];
 
-export const adminMenuData: MenuData[] = [
-  {
-    value: 'shell',
-    i18n: 'admin.sidebar.shell',
-    items: []
-  }
-];
-
 export const chartMenuData: MenuData[] = [
   {
     value: 'charts',
     i18n: 'chart.sidebar.charts',
-    items: []
+    items: ['area', 'bar', 'line', 'pie', 'scatter']
   }
 ];

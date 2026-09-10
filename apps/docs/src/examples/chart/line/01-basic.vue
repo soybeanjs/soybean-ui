@@ -1,54 +1,60 @@
 <script setup lang="ts">
-import { SChartContainer, SChartTooltipContent, chartColors, componentToString } from '@soybeanjs/chart';
-import type { ChartConfig } from '@soybeanjs/chart';
-import { CurveType } from '@unovis/ts';
-import { VisAxis, VisCrosshair, VisLine, VisTooltip, VisXYContainer } from '@unovis/vue';
+import { defineChart, lineY } from '@tanstack/charts';
+import { scaleLinear } from '@tanstack/charts/scales/linear';
+import { scalePoint } from '@tanstack/charts/scales/point';
+import { tooltip } from '@tanstack/charts/tooltip';
+import { Chart } from '@tanstack/charts/vue';
+import { chartColors } from '~/components/chart/chart-config';
+import type { ChartConfig } from '~/components/chart/chart-config';
+import ChartContainer from '~/components/chart/chart-container.vue';
 
-const chartData = [
-  { date: new Date('2024-01-01'), desktop: 186 },
-  { date: new Date('2024-02-01'), desktop: 305 },
-  { date: new Date('2024-03-01'), desktop: 237 },
-  { date: new Date('2024-04-01'), desktop: 73 },
-  { date: new Date('2024-05-01'), desktop: 209 },
-  { date: new Date('2024-06-01'), desktop: 214 }
+interface LineDatum {
+  month: string;
+  value: number;
+}
+
+const chartData: LineDatum[] = [
+  { month: 'Jan', value: 186 },
+  { month: 'Feb', value: 305 },
+  { month: 'Mar', value: 237 },
+  { month: 'Apr', value: 73 },
+  { month: 'May', value: 209 },
+  { month: 'Jun', value: 214 }
 ];
 
-type Data = (typeof chartData)[number];
-
 const chartConfig = {
-  desktop: {
-    label: 'Desktop',
+  value: {
+    label: 'Revenue',
     color: chartColors[0]
   }
 } satisfies ChartConfig;
 
-const tickValues = chartData.map(d => d.date);
-const x = (d: Data) => d.date;
-const y = (d: Data) => d.desktop;
-const tickFormat = (d: number) => new Date(d).toLocaleDateString('en-US', { month: 'short' });
-
-const tooltipTemplate = componentToString(chartConfig, SChartTooltipContent, { hideLabel: true });
+const chart = defineChart({
+  marks: [
+    lineY(chartData, {
+      x: 'month',
+      y: 'value',
+      stroke: 'var(--color-value)',
+      strokeWidth: 2,
+      points: true
+    })
+  ],
+  scales: {
+    x: {
+      scale: () => scalePoint<string>().padding(0.2)
+    },
+    y: {
+      scale: scaleLinear,
+      nice: true,
+      grid: true
+    }
+  },
+  tooltip
+});
 </script>
 
 <template>
-  <div class="h-[250px]">
-    <SChartContainer :config="chartConfig">
-      <VisXYContainer :data="chartData" :margin="{ left: -24 }" :y-domain="[0, undefined]">
-        <VisLine :x="x" :y="y" :color="chartConfig.desktop.color" :curve-type="CurveType.Natural" />
-        <VisAxis
-          type="x"
-          :x="x"
-          :tick-line="false"
-          :domain-line="false"
-          :grid-line="false"
-          :num-ticks="6"
-          :tick-format="tickFormat"
-          :tick-values="tickValues"
-        />
-        <VisAxis type="y" :num-ticks="3" :tick-line="false" :domain-line="false" />
-        <VisTooltip />
-        <VisCrosshair :template="tooltipTemplate" :color="chartConfig.desktop.color" />
-      </VisXYContainer>
-    </SChartContainer>
-  </div>
+  <ChartContainer :config="chartConfig" class="h-[250px]">
+    <Chart :definition="chart" aria-label="Revenue by month" :height="250" />
+  </ChartContainer>
 </template>

@@ -1153,7 +1153,7 @@ import { SButton, SButtonGroup } from '@soybeanjs/ui';
 
 ### 图表（独立包范围）
 
-`Chart`, `Heatmap`, `Sparkline` —— 图表是独立领域，有自身生态（ECharts、Chart.js、recharts），应属于独立的 `@soybeanjs/charts` 包，而非核心 UI 库。
+`Chart`, `Heatmap`, `Sparkline` —— 图表是独立领域，有自身生态（ECharts、Chart.js、recharts），不进核心 UI 库。**v0.40.0 最终决策：不发布 `@soybeanjs/charts` 包**，改为在文档站直接基于 [TanStack Charts](https://tanstack.com/charts) 提供 shadcn 风格示例（见 `apps/docs/src/examples/chart/`）。
 
 ### 业务专属（过于狭窄）
 
@@ -1171,7 +1171,9 @@ import { SButton, SButtonGroup } from '@soybeanjs/ui';
 
 ## 生态扩展路线（Ecosystem）
 
-SoybeanUI 正从单一组件库扩展为**组件生态**。外围包遵循「单包自治」分层模型（决策记录见 ecosystem 分支 [ADR-0001](./ecosystem/README.md)）：核心 `@soybeanjs/headless` 是唯一逻辑层；外围包不建独立逻辑包，领域逻辑与样式同居于单包内；外围包之间默认禁止依赖，仅允许白名单有向边（当前唯一一条：`admin → chart`）。版本策略为 **lockstep**（全包同版本、单主干 main、单 tag 发布）。
+SoybeanUI 正从单一组件库扩展为**组件生态**。外围包遵循「单包自治」分层模型（决策记录见 [ADR-0001](./adr/0001-peripheral-package-layering.md)）：核心 `@soybeanjs/headless` 是唯一逻辑层；外围包不建独立逻辑包，领域逻辑与样式同居于单包内；外围包之间默认禁止依赖，仅允许白名单有向边。版本策略为 **lockstep**（全包同版本、单主干 main、单 tag 发布）。
+
+> **v0.40.0 更新：下表与里程碑中 `admin` / `chart` 两条线已取消（包已删除，图表改用 TanStack Charts 文档示例）**；以下分层图、路线表与 M-EC3 / M-EC4 等里程碑保留为 2026-08 的历史规划。当前落地的外围包仅 `@soybeanjs/ui-x`。
 
 ### 分层架构总览
 

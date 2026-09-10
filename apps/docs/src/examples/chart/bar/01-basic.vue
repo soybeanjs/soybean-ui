@@ -1,18 +1,26 @@
 <script setup lang="ts">
-import { SChartContainer, SChartTooltipContent, chartColors, componentToString } from '@soybeanjs/chart';
-import type { ChartConfig } from '@soybeanjs/chart';
-import { VisAxis, VisCrosshair, VisGroupedBar, VisTooltip, VisXYContainer } from '@unovis/vue';
+import { barY, defineChart } from '@tanstack/charts';
+import { scaleBand } from '@tanstack/charts/scales/band';
+import { scaleLinear } from '@tanstack/charts/scales/linear';
+import { tooltip } from '@tanstack/charts/tooltip';
+import { Chart } from '@tanstack/charts/vue';
+import { chartColors } from '~/components/chart/chart-config';
+import type { ChartConfig } from '~/components/chart/chart-config';
+import ChartContainer from '~/components/chart/chart-container.vue';
 
-const chartData = [
-  { date: new Date('2024-01-01'), desktop: 186 },
-  { date: new Date('2024-02-01'), desktop: 305 },
-  { date: new Date('2024-03-01'), desktop: 237 },
-  { date: new Date('2024-04-01'), desktop: 73 },
-  { date: new Date('2024-05-01'), desktop: 209 },
-  { date: new Date('2024-06-01'), desktop: 214 }
+interface BarDatum {
+  month: string;
+  desktop: number;
+}
+
+const chartData: BarDatum[] = [
+  { month: 'Jan', desktop: 186 },
+  { month: 'Feb', desktop: 305 },
+  { month: 'Mar', desktop: 237 },
+  { month: 'Apr', desktop: 73 },
+  { month: 'May', desktop: 209 },
+  { month: 'Jun', desktop: 214 }
 ];
-
-type Data = (typeof chartData)[number];
 
 const chartConfig = {
   desktop: {
@@ -21,33 +29,31 @@ const chartConfig = {
   }
 } satisfies ChartConfig;
 
-const tickValues = chartData.map(d => d.date);
-const x = (d: Data) => d.date;
-const y = (d: Data) => d.desktop;
-const tickFormat = (d: number) => new Date(d).toLocaleDateString('en-US', { month: 'short' });
-
-const tooltipTemplate = componentToString(chartConfig, SChartTooltipContent, { hideLabel: true });
+const chart = defineChart({
+  marks: [
+    barY(chartData, {
+      x: 'month',
+      y: 'desktop',
+      fill: 'var(--color-desktop)',
+      inset: 2
+    })
+  ],
+  scales: {
+    x: {
+      scale: () => scaleBand<string>().padding(0.16)
+    },
+    y: {
+      scale: scaleLinear,
+      nice: true,
+      grid: true
+    }
+  },
+  tooltip
+});
 </script>
 
 <template>
-  <div class="h-[250px]">
-    <SChartContainer :config="chartConfig">
-      <VisXYContainer :data="chartData" :margin="{ left: -24 }" :y-domain="[0, undefined]">
-        <VisGroupedBar :x="x" :y="y" :color="chartConfig.desktop.color" :rounded-corners="10" />
-        <VisAxis
-          type="x"
-          :x="x"
-          :tick-line="false"
-          :domain-line="false"
-          :grid-line="false"
-          :num-ticks="6"
-          :tick-format="tickFormat"
-          :tick-values="tickValues"
-        />
-        <VisAxis type="y" :num-ticks="3" :tick-line="false" :domain-line="false" />
-        <VisTooltip />
-        <VisCrosshair :template="tooltipTemplate" color="#0000" />
-      </VisXYContainer>
-    </SChartContainer>
-  </div>
+  <ChartContainer :config="chartConfig" class="h-[250px]">
+    <Chart :definition="chart" aria-label="Desktop signups by month" :height="250" />
+  </ChartContainer>
 </template>

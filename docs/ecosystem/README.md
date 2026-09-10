@@ -2,21 +2,23 @@
 
 > 本目录存放各外围包（peripheral package）的技术方案文档，是 [roadmap.md](../roadmap.md)「生态扩展路线」的展开。基线日期：2026-08-14；基线分支：`main`（`ui-x` / `admin` / `ecosystem` 临时分支尚未合并）。
 >
+> **更新（v0.40.0）：`admin` / `chart` 两条线已取消，对应包已删除**，图表改为文档站基于 [TanStack Charts](https://tanstack.com/charts) 的 shadcn 风格示例。[admin.md](./admin.md) / [chart.md](./chart.md) 仅作历史提案保留；当前落地的外围包只有 `@soybeanjs/ui-x`。
+>
 > 导航：docs 总入口见 [../README.md](../README.md)；生态任务的落地跟踪见 [../ecosystem-tasks.md](../ecosystem-tasks.md)；调研依据见 [../research/README.md](../research/README.md)；文档治理规范见 [../GOVERNANCE.md](../GOVERNANCE.md)。
 
 ## 文档索引
 
-| 文档                                           | 包                       | 状态                         | 说明                             |
-| :--------------------------------------------- | :----------------------- | :--------------------------- | :------------------------------- |
-| [ui-x.md](./ui-x.md)                           | `@soybeanjs/ui-x`        | 分支已实现，待合并           | AI 对话交互组件                  |
-| [admin.md](./admin.md)                         | `@soybeanjs/admin`       | 分支已实现 M1/M2，M3+ 未开始 | 中后台复合 / 布局层              |
-| [chart.md](./chart.md)                         | `@soybeanjs/chart`       | 仅骨架，选型待定             | 图表组件                         |
-| [editor.md](./editor.md)                       | `@soybeanjs/editor`      | 立项提案（调研已完成）       | 富文本编辑器（Tiptap，MIT 边界） |
-| [table.md](./table.md)                         | `@soybeanjs/table`       | 立项提案（调研已完成）       | 高级数据网格 / ProTable          |
-| [form.md](./form.md)                           | `@soybeanjs/form`        | 立项提案（调研已完成）       | Schema 驱动高级表单              |
-| [ui-pro.md](./ui-pro.md)                       | `@soybeanjs/ui-pro`      | 探索性预留                   | 增值 / 高级组件                  |
-| [commercialization.md](./commercialization.md) | editor/table/form 三生态 | 策略建议（调研已完成）       | 商业化方向与执行建议             |
-| [sbean.md](./sbean.md)                         | `@soybeanjs/sbean`       | 核心功能完成（横切工具链）   | 源码分发 CLI 开发指南/完成度     |
+| 文档                                           | 包                       | 状态                                                 | 说明                             |
+| :--------------------------------------------- | :----------------------- | :--------------------------------------------------- | :------------------------------- |
+| [ui-x.md](./ui-x.md)                           | `@soybeanjs/ui-x`        | 已落地                                               | AI 对话交互组件                  |
+| [admin.md](./admin.md)                         | `@soybeanjs/admin`       | **已取消（v0.40.0，包已删除）**                      | 中后台复合 / 布局层（历史提案）  |
+| [chart.md](./chart.md)                         | `@soybeanjs/chart`       | **已取消（v0.40.0）**：改用 TanStack Charts 文档示例 | 图表组件（历史提案）             |
+| [editor.md](./editor.md)                       | `@soybeanjs/editor`      | 立项提案（调研已完成）                               | 富文本编辑器（Tiptap，MIT 边界） |
+| [table.md](./table.md)                         | `@soybeanjs/table`       | 立项提案（调研已完成）                               | 高级数据网格 / ProTable          |
+| [form.md](./form.md)                           | `@soybeanjs/form`        | 立项提案（调研已完成）                               | Schema 驱动高级表单              |
+| [ui-pro.md](./ui-pro.md)                       | `@soybeanjs/ui-pro`      | 探索性预留                                           | 增值 / 高级组件                  |
+| [commercialization.md](./commercialization.md) | editor/table/form 三生态 | 策略建议（调研已完成）                               | 商业化方向与执行建议             |
+| [sbean.md](./sbean.md)                         | `@soybeanjs/sbean`       | 核心功能完成（横切工具链）                           | 源码分发 CLI 开发指南/完成度     |
 
 > 包骨架接入契约见 [../ecosystem.md](../ecosystem.md) §10「新包接入清单」；每个新包立项时按 [../GOVERNANCE.md](../GOVERNANCE.md) 登记到本文档索引。
 

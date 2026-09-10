@@ -100,7 +100,7 @@ type ApiPackageConfig = {
 /** Packages for the docs target currently being generated (set per target run). */
 let currentApiPackages: ApiPackageConfig[] = [];
 
-/** Alias map shared by the peripheral packages (ui-x / chart / admin / headless). */
+/** Alias map shared by the peripheral packages (ui-x / headless). */
 const peripheralPackagePaths: Record<string, string[]> = {
   '@soybeanjs/ui': ['./packages/ui/src/index.ts'],
   '@soybeanjs/headless': ['./packages/headless/src/index.ts'],
@@ -146,31 +146,6 @@ function createApiPackages(apiRootDir: string): ApiPackageConfig[] {
         '@soybeanjs/headless/*': ['./packages/headless/src/*'],
         '@soybeanjs/theme': ['./packages/theme/src/index.ts'],
         '@soybeanjs/theme/*': ['./packages/theme/src/*']
-      }
-    },
-    {
-      key: 'chart',
-      entryPoint: 'packages/chart/src/index.ts',
-      outputDir: path.join(apiRootDir, 'chart'),
-      sourceRoots: ['packages/chart/src/'],
-      componentRoots: ['packages/chart/src/components'],
-      paths: {
-        // Like ui-x: `@/` must resolve to ui's source, because pulling in
-        // `@soybeanjs/ui` pulls in files that use ui's own `@/theme`,
-        // `@/styles/...` aliases. chart itself only uses relative imports.
-        '@/*': ['./packages/ui/src/*'],
-        ...peripheralPackagePaths
-      }
-    },
-    {
-      key: 'admin',
-      entryPoint: 'packages/admin/src/index.ts',
-      outputDir: path.join(apiRootDir, 'admin'),
-      sourceRoots: ['packages/admin/src/'],
-      componentRoots: ['packages/admin/src/components'],
-      paths: {
-        '@/*': ['./packages/ui/src/*'],
-        ...peripheralPackagePaths
       }
     },
     {

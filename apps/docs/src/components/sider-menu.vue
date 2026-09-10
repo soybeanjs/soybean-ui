@@ -10,8 +10,6 @@ import {
   newlyComponentKeys,
   uiXMenuData,
   uiXNewlyComponentKeys,
-  adminMenuData,
-  adminNewlyComponentKeys,
   chartMenuData,
   chartNewlyComponentKeys
 } from '~/constants/menus';
@@ -59,19 +57,6 @@ const uiXComponentMenus = computed<TreeMenuOptionData[]>(() =>
       value: item,
       to: `/ui-x/${item}`,
       tag: uiXNewlyComponentKeys.includes(item) ? '🎉new' : undefined
-    }))
-  }))
-);
-
-const adminComponentMenus = computed<TreeMenuOptionData[]>(() =>
-  adminMenuData.map(group => ({
-    label: t(`${group.i18n}`),
-    value: group.value,
-    children: group.items.map(item => ({
-      label: pascalCase(item),
-      value: item,
-      to: `/admin/${item}`,
-      tag: adminNewlyComponentKeys.includes(item) ? '🎉new' : undefined
     }))
   }))
 );
@@ -169,23 +154,6 @@ const uiXMenus = computed<TreeMenuOptionData[]>(() => [
   }
 ]);
 
-const adminMenus = computed<TreeMenuOptionData[]>(() => [
-  {
-    isGroup: true,
-    label: t('layout.header.admin'),
-    value: 'admin',
-    icon: 'lucide:layout-dashboard',
-    children: [
-      {
-        label: t('admin.catalog.title'),
-        value: 'admin-overview',
-        to: '/admin'
-      },
-      ...adminComponentMenus.value
-    ]
-  }
-]);
-
 const chartMenus = computed<TreeMenuOptionData[]>(() => [
   {
     isGroup: true,
@@ -233,10 +201,6 @@ const menus = computed<TreeMenuOptionData[]>(() => {
     return uiXMenus.value;
   }
 
-  if (section.value === 'admin') {
-    return adminMenus.value;
-  }
-
   if (section.value === 'chart') {
     return chartMenus.value;
   }
@@ -256,7 +220,6 @@ watchEffect(() => {
       overview: 'installation',
       components: componentsOverviewValue,
       'ui-x': 'ui-x-overview',
-      admin: 'admin-overview',
       chart: 'chart-overview',
       headless: 'headless-overview'
     };
