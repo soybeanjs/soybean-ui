@@ -343,18 +343,6 @@
         "basic": "基础",
         "vertical": "纵向"
       },
-      "month-picker": {
-        "basic": "基础",
-        "custom-styling": "自定义样式",
-        "disabled": "禁用",
-        "size": "尺寸"
-      },
-      "month-range-picker": {
-        "basic": "基础",
-        "custom-styling": "自定义样式",
-        "disabled": "禁用",
-        "size": "尺寸"
-      },
       "navigation-menu": {
         "basic": "基础",
         "horizontal": "水平",
@@ -552,23 +540,11 @@
         "disabled": "禁用",
         "seconds": "秒"
       },
-      "time-picker": {
-        "basic": "基础",
-        "custom-styling": "自定义样式",
-        "disabled": "禁用",
-        "size": "尺寸"
-      },
       "time-range-field": {
         "basic": "基础",
         "custom-styling": "自定义样式",
         "disabled": "禁用",
         "seconds": "秒"
-      },
-      "time-range-picker": {
-        "basic": "基础",
-        "custom-styling": "自定义样式",
-        "disabled": "禁用",
-        "size": "尺寸"
       },
       "toast": {
         "action": "操作",
@@ -627,18 +603,6 @@
       },
       "visually-hidden": {
         "basic": "基础"
-      },
-      "year-picker": {
-        "basic": "基础",
-        "custom-styling": "自定义样式",
-        "disabled": "禁用",
-        "size": "尺寸"
-      },
-      "year-range-picker": {
-        "basic": "基础",
-        "custom-styling": "自定义样式",
-        "disabled": "禁用",
-        "size": "尺寸"
       },
       "bubble": {
         "basic": "基础",

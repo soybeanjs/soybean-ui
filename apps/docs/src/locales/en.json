@@ -343,18 +343,6 @@
         "basic": "Basic",
         "vertical": "Vertical"
       },
-      "month-picker": {
-        "basic": "Basic",
-        "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
-        "size": "Size"
-      },
-      "month-range-picker": {
-        "basic": "Basic",
-        "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
-        "size": "Size"
-      },
       "navigation-menu": {
         "basic": "Basic",
         "horizontal": "Horizontal",
@@ -552,23 +540,11 @@
         "disabled": "Disabled",
         "seconds": "Seconds"
       },
-      "time-picker": {
-        "basic": "Basic",
-        "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
-        "size": "Size"
-      },
       "time-range-field": {
         "basic": "Basic",
         "custom-styling": "Custom Styling",
         "disabled": "Disabled",
         "seconds": "Seconds"
-      },
-      "time-range-picker": {
-        "basic": "Basic",
-        "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
-        "size": "Size"
       },
       "toast": {
         "action": "Action",
@@ -627,18 +603,6 @@
       },
       "visually-hidden": {
         "basic": "Basic"
-      },
-      "year-picker": {
-        "basic": "Basic",
-        "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
-        "size": "Size"
-      },
-      "year-range-picker": {
-        "basic": "Basic",
-        "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
-        "size": "Size"
       },
       "bubble": {
         "basic": "Basic",
