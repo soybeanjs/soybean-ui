@@ -1,0 +1,120 @@
+{
+  "component": "chart-container",
+  "symbols": {
+    "ChartContainer": {
+      "props": {
+        "kind": "props",
+        "name": "ChartContainerProps",
+        "type": "Interface ChartContainerProps",
+        "resolvedType": "{ config: { [x: string]: { label?: string | import(\"vue\").Component; icon?: string | import(\"vue\").Component; } & ({ color?: string; theme?: never; } | { color?: never; theme: Record<import(\"../..\").ChartThemeKey, string>; }); }; cursor?: boolean; class?: string | false | Record<string, any> | ClassValue[] | null }",
+        "description": "Properties for the SChartContainer component.",
+        "descriptionKey": "api.generated.packages_chart_src_components_chart_container_types.chartcontainerprops.props",
+        "sourcePath": "packages/chart/src/components/chart-container/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "config",
+            "type": "{ [x: string]: { label?: string | import(\"vue\").Component; icon?: string | import(\"vue\").Component; } & ({ color?: string; theme?: never; } | { color?: never; theme: Record<import(\"../..\").ChartThemeKey, string>; }); }",
+            "required": true,
+            "description": "Declarative chart configuration.",
+            "descriptionKey": "api.generated.packages_chart_src_components_chart_container_types.chartcontainerprops.members.config",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/chart/src/components/chart-container/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ChartConfig",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: { label?: string | import(\"vue\").Component; icon?: string | import(\"vue\").Component; } & ({ color?: string; theme?: never; } | { color?: never; theme: Record<import(\"../..\").ChartThemeKey, string>; }); }",
+                "resolvedType": "{ [x: string]: { label?: string | Component; icon?: string | Component; } & ({ color?: string; theme?: never; } | { color?: never; theme: Record<ChartThemeKey, string>; }); }",
+                "description": "Declarative configuration for a chart's data series.\n\nEach key maps a series/`dataKey` to its label, optional icon and color.\nColor can be a single CSS color or a per-theme map resolved at render time.",
+                "descriptionKey": "api.generated.packages_chart_src_types_index.chartconfig",
+                "sourcePath": "packages/chart/src/types/index.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "cursor",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to render a crosshair cursor on hover.",
+            "descriptionKey": "api.generated.packages_chart_src_components_chart_container_types.chartcontainerprops.members.cursor",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "packages/chart/src/components/chart-container/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Additional class names applied to the root element.",
+            "descriptionKey": "api.generated.packages_chart_src_components_chart_container_types.chartcontainerprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/chart/src/components/chart-container/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "ChartContainerSlots",
+        "type": "TypeAlias ChartContainerSlots",
+        "resolvedType": "{ default: (props: { id: string; config: ChartConfig; }) => any }",
+        "description": "Slot bindings for the SChartContainer component.",
+        "descriptionKey": "api.generated.packages_chart_src_components_chart_container_types.chartcontainerslots.slots",
+        "sourcePath": "packages/chart/src/components/chart-container/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(props: { id: string; config: ChartConfig; }) => any",
+            "parameters": "props: { id: string; config: ChartConfig; }",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_chart_src_components_chart_container_types.chartcontainerslots.callables.default",
+            "sourcePath": "packages/chart/src/components/chart-container/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ id: string; config: ChartConfig; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_chart_src_components_chart_container_types.type",
+                "sourcePath": "packages/chart/src/components/chart-container/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    }
+  }
+}

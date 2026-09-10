@@ -1,6 +1,61 @@
 {
   "api": {
     "generated": {
+      "packages_chart_src_components_chart_container_types": {
+        "chartcontainerprops": {
+          "members": {
+            "class": "Additional class names applied to the root element.",
+            "config": "Declarative chart configuration.",
+            "cursor": "Whether to render a crosshair cursor on hover."
+          },
+          "props": "Properties for the SChartContainer component."
+        },
+        "chartcontainerslots": {
+          "callables": {
+            "default": ""
+          },
+          "slots": "Slot bindings for the SChartContainer component."
+        },
+        "type": ""
+      },
+      "packages_chart_src_components_chart_legend_content_types": {
+        "chartlegendcontentprops": {
+          "members": {
+            "class": "Additional class names applied to the root element.",
+            "hideicon": "Whether to hide the series icon.",
+            "namekey": "Key of the series name within each config entry.",
+            "verticalalign": "Legend placement relative to the chart area."
+          },
+          "props": "Properties for the SChartLegendContent component."
+        }
+      },
+      "packages_chart_src_components_chart_style_types": {
+        "chartstyleprops": {
+          "members": {
+            "id": "Chart id used to scope the generated CSS selectors."
+          },
+          "props": "Properties for the SChartStyle component.\n\nInternal helper rendered by `SChartContainer`; it injects the scoped\n`--color-{key}` CSS variables for a single chart via a `<style>` element."
+        }
+      },
+      "packages_chart_src_components_chart_tooltip_content_types": {
+        "charttooltipcontentprops": {
+          "members": {
+            "class": "Additional class names applied to the root element.",
+            "config": "Chart config used to resolve series metadata.",
+            "hideindicator": "Whether to hide the series indicator.",
+            "hidelabel": "Whether to hide the tooltip label.",
+            "indicator": "Indicator style.",
+            "labelformatter": "Custom formatter for the tooltip label.",
+            "labelkey": "Key used to resolve the tooltip label from the config.",
+            "payload": "Payload entry provided by the chart library.",
+            "x": "X value of the hovered datum."
+          },
+          "props": "Properties for the SChartTooltipContent component."
+        }
+      },
+      "packages_chart_src_types_index": {
+        "chartconfig": "Declarative configuration for a chart's data series.\n\nEach key maps a series/`dataKey` to its label, optional icon and color.\nColor can be a single CSS color or a per-theme map resolved at render time."
+      },
       "packages_headless_src_components_accordion_types": {
         "accordioncompactemits": {
           "callables": {
@@ -7320,7 +7375,21 @@
         }
       },
       "packages_headless_src_components_primitive_types": {
-        "astag": "Type information for AsTag."
+        "astag": "Type information for AsTag.",
+        "primitiveprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior."
+          },
+          "props": "Properties for the Primitive component."
+        },
+        "primitivewithbaseprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior."
+          },
+          "props": "Properties for the Primitive component."
+        }
       },
       "packages_headless_src_components_progress_types": {
         "progresscirclecompactemits": {
@@ -10055,6 +10124,28 @@
             "options": "Options."
           },
           "props": "Properties for the VirtualizerRoot component."
+        }
+      },
+      "packages_headless_src_components_visually_hidden_types": {
+        "visuallyhiddenfeature": "Type information for VisuallyHiddenFeature.",
+        "visuallyhiddeninputprops": {
+          "members": {
+            "checked": "Whether the item is checked.",
+            "disabled": "Whether the component is disabled.",
+            "feature": "Feature.",
+            "name": "Name.",
+            "required": "Whether the value is required.",
+            "value": "Value associated with the current item."
+          },
+          "props": "Properties for the VisuallyHiddenInput component."
+        },
+        "visuallyhiddenprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "feature": "Feature."
+          },
+          "props": "Properties for the VisuallyHidden component."
         }
       },
       "packages_headless_src_components_watermark_types": {

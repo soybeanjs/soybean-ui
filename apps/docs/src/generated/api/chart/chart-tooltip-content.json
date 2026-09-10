@@ -1,0 +1,148 @@
+{
+  "component": "chart-tooltip-content",
+  "symbols": {
+    "ChartTooltipContent": {
+      "props": {
+        "kind": "props",
+        "name": "ChartTooltipContentProps",
+        "type": "Interface ChartTooltipContentProps",
+        "resolvedType": "{ hideLabel?: boolean; hideIndicator?: boolean; indicator?: 'line' | 'dot' | 'dashed'; labelKey?: string; labelFormatter?: ((d: number | Date) => string); payload?: Record<string, unknown>; config?: ChartConfig; x?: number | Date; class?: string | false | Record<string, any> | ClassValue[] | null }",
+        "description": "Properties for the SChartTooltipContent component.",
+        "descriptionKey": "api.generated.packages_chart_src_components_chart_tooltip_content_types.charttooltipcontentprops.props",
+        "sourcePath": "packages/chart/src/components/chart-tooltip-content/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "hideLabel",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to hide the tooltip label.",
+            "descriptionKey": "api.generated.packages_chart_src_components_chart_tooltip_content_types.charttooltipcontentprops.members.hidelabel",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/chart/src/components/chart-tooltip-content/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "hideIndicator",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to hide the series indicator.",
+            "descriptionKey": "api.generated.packages_chart_src_components_chart_tooltip_content_types.charttooltipcontentprops.members.hideindicator",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/chart/src/components/chart-tooltip-content/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "indicator",
+            "type": "'line' | 'dot' | 'dashed'",
+            "required": false,
+            "description": "Indicator style.",
+            "descriptionKey": "api.generated.packages_chart_src_components_chart_tooltip_content_types.charttooltipcontentprops.members.indicator",
+            "default": "'dot'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/chart/src/components/chart-tooltip-content/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "labelKey",
+            "type": "string",
+            "required": false,
+            "description": "Key used to resolve the tooltip label from the config.",
+            "descriptionKey": "api.generated.packages_chart_src_components_chart_tooltip_content_types.charttooltipcontentprops.members.labelkey",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/chart/src/components/chart-tooltip-content/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "labelFormatter",
+            "type": "((d: number | Date) => string)",
+            "required": false,
+            "description": "Custom formatter for the tooltip label.",
+            "descriptionKey": "api.generated.packages_chart_src_components_chart_tooltip_content_types.charttooltipcontentprops.members.labelformatter",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/chart/src/components/chart-tooltip-content/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "payload",
+            "type": "Record<string, unknown>",
+            "required": false,
+            "description": "Payload entry provided by the chart library.",
+            "descriptionKey": "api.generated.packages_chart_src_components_chart_tooltip_content_types.charttooltipcontentprops.members.payload",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/chart/src/components/chart-tooltip-content/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "config",
+            "type": "ChartConfig",
+            "required": false,
+            "description": "Chart config used to resolve series metadata.",
+            "descriptionKey": "api.generated.packages_chart_src_components_chart_tooltip_content_types.charttooltipcontentprops.members.config",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/chart/src/components/chart-tooltip-content/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ChartConfig",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: { label?: string | import(\"vue\").Component; icon?: string | import(\"vue\").Component; } & ({ color?: string; theme?: never; } | { color?: never; theme: Record<import(\"../..\").ChartThemeKey, string>; }); }",
+                "resolvedType": "{ [x: string]: { label?: string | Component; icon?: string | Component; } & ({ color?: string; theme?: never; } | { color?: never; theme: Record<ChartThemeKey, string>; }); }",
+                "description": "Declarative configuration for a chart's data series.\n\nEach key maps a series/`dataKey` to its label, optional icon and color.\nColor can be a single CSS color or a per-theme map resolved at render time.",
+                "descriptionKey": "api.generated.packages_chart_src_types_index.chartconfig",
+                "sourcePath": "packages/chart/src/types/index.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "x",
+            "type": "number | Date",
+            "required": false,
+            "description": "X value of the hovered datum.",
+            "descriptionKey": "api.generated.packages_chart_src_components_chart_tooltip_content_types.charttooltipcontentprops.members.x",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/chart/src/components/chart-tooltip-content/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Additional class names applied to the root element.",
+            "descriptionKey": "api.generated.packages_chart_src_components_chart_tooltip_content_types.charttooltipcontentprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/chart/src/components/chart-tooltip-content/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

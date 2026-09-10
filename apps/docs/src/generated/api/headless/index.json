@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-09-10T07:36:27.089Z",
+  "schemaVersion": 4,
+  "components": {
+    "primitive": {
+      "component": "primitive",
+      "file": "primitive.json",
+      "symbols": ["Primitive", "PrimitiveWithBase"]
+    },
+    "visually-hidden": {
+      "component": "visually-hidden",
+      "file": "visually-hidden.json",
+      "symbols": ["VisuallyHidden", "VisuallyHiddenInput"]
+    }
+  }
+}

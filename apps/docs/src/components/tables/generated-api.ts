@@ -142,38 +142,31 @@ const sourceTypeModules = {
   })
 };
 
-const componentApiDocuments = Object.fromEntries(
+/** `../../generated/api/<pkg>/<component>.json` -> `<pkg>`. */
+function resolveApiPackageKey(filePath: string): string {
+  return filePath.split('/').at(-2) ?? 'ui';
+}
+
+const componentApiEntries = Object.fromEntries(
   Object.entries(generatedApiModules)
-    .filter(([path]) => !path.endsWith('/index.json'))
-    .map(([, document]) => [document.component, document])
+    .filter(([filePath]) => !filePath.endsWith('/index.json'))
+    .map(([filePath, document]) => [document.component, { pkg: resolveApiPackageKey(filePath), document }])
+) as Record<string, { pkg: string; document: GeneratedApiDocument }>;
+
+const componentApiDocuments = Object.fromEntries(
+  Object.entries(componentApiEntries).map(([component, entry]) => [component, entry.document])
 ) as Record<string, GeneratedApiDocument>;
 
 const packageByComponent = Object.fromEntries(
-  Object.entries(componentApiDocuments).map(([component, document]) => [component, detectComponentPackage(document)])
+  Object.entries(componentApiEntries).map(([component, entry]) => [component, entry.pkg])
 ) as Record<string, string>;
 
 const packagePrefixMap: Record<string, string> = {
   ui: 'S',
-  'ui-x': 'Sx'
+  'ui-x': 'Sx',
+  chart: 'S',
+  admin: 'S'
 };
-
-function detectComponentPackage(document: GeneratedApiDocument): string {
-  for (const symbol of Object.values(document.symbols)) {
-    for (const entry of [symbol.props, symbol.emits, symbol.slots]) {
-      const sourcePath = entry?.sourcePath ?? '';
-
-      if (sourcePath.startsWith('packages/ui-x/')) {
-        return 'ui-x';
-      }
-
-      if (sourcePath.startsWith('packages/ui/') || sourcePath.startsWith('packages/headless/')) {
-        return 'ui';
-      }
-    }
-  }
-
-  return 'ui';
-}
 
 const sourceTypeFiles = Object.fromEntries(
   Object.entries(sourceTypeModules).map(([path, content]) => [normalizeSourceModulePath(path), content])

@@ -86,16 +86,34 @@ type ApiPackageConfig = {
   entryPoint: string;
   outputDir: string;
   sourceRoots: string[];
+  /** `<component>/types.ts` lookup roots used to complete symbol sections. */
+  componentRoots: string[];
+  /**
+   * Skip components already emitted by another package. The `headless` dataset
+   * only carries headless-only exports (e.g. `visually-hidden`), because every
+   * headless type reachable from `@soybeanjs/ui` is already in the `ui` dataset.
+   */
+  onlyMissingFrom?: string;
   paths: Record<string, string[]>;
 };
 
 /** Packages for the docs target currently being generated (set per target run). */
 let currentApiPackages: ApiPackageConfig[] = [];
 
+/** Alias map shared by the peripheral packages (ui-x / chart / admin / headless). */
+const peripheralPackagePaths: Record<string, string[]> = {
+  '@soybeanjs/ui': ['./packages/ui/src/index.ts'],
+  '@soybeanjs/headless': ['./packages/headless/src/index.ts'],
+  '@soybeanjs/headless/*': ['./packages/headless/src/*'],
+  '@soybeanjs/theme': ['./packages/theme/src/index.ts'],
+  '@soybeanjs/theme/*': ['./packages/theme/src/*']
+};
+
 /**
  * Build the per-package extraction config for a docs target's `api` output
  * directory. Each docs target gets its own set so `generateApiData` can write
- * into multiple targets per run.
+ * into multiple targets per run. Order matters: packages listed with
+ * `onlyMissingFrom` must run after the package they de-duplicate against.
  */
 function createApiPackages(apiRootDir: string): ApiPackageConfig[] {
   return [
@@ -104,6 +122,7 @@ function createApiPackages(apiRootDir: string): ApiPackageConfig[] {
       entryPoint: 'packages/ui/src/index.ts',
       outputDir: path.join(apiRootDir, 'ui'),
       sourceRoots: ['packages/ui/src/', 'packages/headless/src/'],
+      componentRoots: ['packages/ui/src/components', 'packages/headless/src/components'],
       paths: {
         '@/*': ['./packages/ui/src/*'],
         '@soybeanjs/ui': ['./packages/ui/src/index.ts'],
@@ -116,6 +135,7 @@ function createApiPackages(apiRootDir: string): ApiPackageConfig[] {
       entryPoint: 'packages/ui-x/src/index.ts',
       outputDir: path.join(apiRootDir, 'ui-x'),
       sourceRoots: ['packages/ui-x/src/'],
+      componentRoots: ['packages/ui-x/src/components'],
       paths: {
         // ui-x has no `@/` imports today; point the alias at the ui package source so
         // that pulling in `@soybeanjs/ui` source (for rich referenced-type resolution)
@@ -127,6 +147,40 @@ function createApiPackages(apiRootDir: string): ApiPackageConfig[] {
         '@soybeanjs/theme': ['./packages/theme/src/index.ts'],
         '@soybeanjs/theme/*': ['./packages/theme/src/*']
       }
+    },
+    {
+      key: 'chart',
+      entryPoint: 'packages/chart/src/index.ts',
+      outputDir: path.join(apiRootDir, 'chart'),
+      sourceRoots: ['packages/chart/src/'],
+      componentRoots: ['packages/chart/src/components'],
+      paths: {
+        // Like ui-x: `@/` must resolve to ui's source, because pulling in
+        // `@soybeanjs/ui` pulls in files that use ui's own `@/theme`,
+        // `@/styles/...` aliases. chart itself only uses relative imports.
+        '@/*': ['./packages/ui/src/*'],
+        ...peripheralPackagePaths
+      }
+    },
+    {
+      key: 'admin',
+      entryPoint: 'packages/admin/src/index.ts',
+      outputDir: path.join(apiRootDir, 'admin'),
+      sourceRoots: ['packages/admin/src/'],
+      componentRoots: ['packages/admin/src/components'],
+      paths: {
+        '@/*': ['./packages/ui/src/*'],
+        ...peripheralPackagePaths
+      }
+    },
+    {
+      key: 'headless',
+      entryPoint: 'packages/headless/src/index.ts',
+      outputDir: path.join(apiRootDir, 'headless'),
+      sourceRoots: ['packages/headless/src/'],
+      componentRoots: ['packages/headless/src/components'],
+      onlyMissingFrom: 'ui',
+      paths: { ...peripheralPackagePaths }
     }
   ];
 }
@@ -142,13 +196,10 @@ function createTypedocTsconfig(pkg: ApiPackageConfig): Record<string, unknown> {
       skipLibCheck: true,
       types: ['vite/client']
     },
-    include: [
-      'packages/scripts/src/typings/typedoc.d.ts',
-      'packages/ui-x/src/**/*',
-      'packages/ui/src/**/*',
-      'packages/headless/src/**/*',
-      'packages/theme/src/**/*'
-    ],
+    // Only the package's own sources are listed: everything else it needs
+    // (`@soybeanjs/ui`, `@soybeanjs/theme`, ...) is reachable through `paths`,
+    // which keeps each program scoped and avoids dragging unrelated packages in.
+    include: ['packages/scripts/src/typings/typedoc.d.ts', ...pkg.sourceRoots.map(sourceRoot => `${sourceRoot}**/*`)],
     exclude: ['apps/docs/**/*', 'test/**/*']
   };
 }
@@ -401,11 +452,20 @@ function getComponentKeyFromPath(sourcePath: string | null): string | null {
     return null;
   }
 
-  const match = sourcePath.match(
-    /(?:^|\/)(?:packages\/ui\/src|packages\/headless\/src|packages\/ui-x\/src)\/components\/([^/]+)\//
-  );
+  for (const componentRoot of getCurrentComponentRoots()) {
+    const match = sourcePath.match(new RegExp(`(?:^|/)${escapeRegExpForRegExp(componentRoot)}/([^/]+)/`));
 
-  return match?.[1] ?? null;
+    if (match?.[1]) {
+      return match[1];
+    }
+  }
+
+  return null;
+}
+
+/** Deduplicated component roots across the configured packages. */
+function getCurrentComponentRoots(): string[] {
+  return [...new Set(currentApiPackages.flatMap(pkg => pkg.componentRoots))];
 }
 
 function getSectionMeta(reflectionName: string): { sectionName: string; kind: ApiSectionKind } | null {
@@ -1471,10 +1531,7 @@ function sortEntries<T>(record: Record<string, T>): Record<string, T> {
 }
 
 function getComponentTypeFilePaths(componentKey: string): string[] {
-  return [
-    path.join(rootDir, 'packages/ui/src/components', componentKey, 'types.ts'),
-    path.join(rootDir, 'packages/headless/src/components', componentKey, 'types.ts')
-  ];
+  return getCurrentComponentRoots().map(componentRoot => path.join(rootDir, componentRoot, componentKey, 'types.ts'));
 }
 
 function getComponentSymbolDeclaration(
@@ -1635,6 +1692,7 @@ export async function generateApiData(apiRootDir: string): Promise<void> {
   const generatedAt = new Date().toISOString();
   const packages: Record<string, { file: string; components: ComponentApiIndex['components'] }> = {};
   const apiPackages = createApiPackages(apiRootDir);
+  const generatedComponentKeys = new Map<string, Set<string>>();
 
   currentApiPackages = apiPackages;
 
@@ -1665,13 +1723,21 @@ export async function generateApiData(apiRootDir: string): Promise<void> {
     const isSourceIncluded = (sourcePath: string | null): boolean =>
       sourcePath !== null && pkg.sourceRoots.some(sourceRoot => sourcePath.startsWith(sourceRoot));
 
-    const components = collectComponentApis(project, isSourceIncluded);
+    const coveredComponentKeys = pkg.onlyMissingFrom ? generatedComponentKeys.get(pkg.onlyMissingFrom) : undefined;
+    const components = Object.fromEntries(
+      Object.entries(collectComponentApis(project, isSourceIncluded)).filter(
+        ([componentKey]) => !coveredComponentKeys?.has(componentKey)
+      )
+    );
+
     const index = await writeOutputs(
       pkg,
       generatedAt,
       components,
       pkg.key === 'ui' ? [path.join(apiRootDir, 'component-api')] : []
     );
+
+    generatedComponentKeys.set(pkg.key, new Set(Object.keys(components)));
 
     packages[pkg.key] = {
       file: `${pkg.key}/index.json`,

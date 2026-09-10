@@ -1,0 +1,79 @@
+{
+  "component": "chart-legend-content",
+  "symbols": {
+    "ChartLegendContent": {
+      "props": {
+        "kind": "props",
+        "name": "ChartLegendContentProps",
+        "type": "Interface ChartLegendContentProps",
+        "resolvedType": "{ hideIcon?: boolean; nameKey?: string; verticalAlign?: 'bottom' | 'top'; class?: string | false | Record<string, any> | ClassValue[] | null }",
+        "description": "Properties for the SChartLegendContent component.",
+        "descriptionKey": "api.generated.packages_chart_src_components_chart_legend_content_types.chartlegendcontentprops.props",
+        "sourcePath": "packages/chart/src/components/chart-legend-content/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "hideIcon",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to hide the series icon.",
+            "descriptionKey": "api.generated.packages_chart_src_components_chart_legend_content_types.chartlegendcontentprops.members.hideicon",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/chart/src/components/chart-legend-content/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "nameKey",
+            "type": "string",
+            "required": false,
+            "description": "Key of the series name within each config entry.",
+            "descriptionKey": "api.generated.packages_chart_src_components_chart_legend_content_types.chartlegendcontentprops.members.namekey",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/chart/src/components/chart-legend-content/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "verticalAlign",
+            "type": "'bottom' | 'top'",
+            "required": false,
+            "description": "Legend placement relative to the chart area.",
+            "descriptionKey": "api.generated.packages_chart_src_components_chart_legend_content_types.chartlegendcontentprops.members.verticalalign",
+            "default": "'bottom'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/chart/src/components/chart-legend-content/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Additional class names applied to the root element.",
+            "descriptionKey": "api.generated.packages_chart_src_components_chart_legend_content_types.chartlegendcontentprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/chart/src/components/chart-legend-content/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

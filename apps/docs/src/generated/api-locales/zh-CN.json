@@ -1,6 +1,61 @@
 {
   "api": {
     "generated": {
+      "packages_chart_src_components_chart_container_types": {
+        "chartcontainerprops": {
+          "members": {
+            "class": "",
+            "config": "",
+            "cursor": ""
+          },
+          "props": ""
+        },
+        "chartcontainerslots": {
+          "callables": {
+            "default": ""
+          },
+          "slots": ""
+        },
+        "type": ""
+      },
+      "packages_chart_src_components_chart_legend_content_types": {
+        "chartlegendcontentprops": {
+          "members": {
+            "class": "",
+            "hideicon": "",
+            "namekey": "",
+            "verticalalign": ""
+          },
+          "props": ""
+        }
+      },
+      "packages_chart_src_components_chart_style_types": {
+        "chartstyleprops": {
+          "members": {
+            "id": ""
+          },
+          "props": ""
+        }
+      },
+      "packages_chart_src_components_chart_tooltip_content_types": {
+        "charttooltipcontentprops": {
+          "members": {
+            "class": "",
+            "config": "",
+            "hideindicator": "",
+            "hidelabel": "",
+            "indicator": "",
+            "labelformatter": "",
+            "labelkey": "",
+            "payload": "",
+            "x": ""
+          },
+          "props": ""
+        }
+      },
+      "packages_chart_src_types_index": {
+        "chartconfig": ""
+      },
       "packages_headless_src_components_accordion_types": {
         "accordioncompactemits": {
           "callables": {
@@ -7320,7 +7375,21 @@
         }
       },
       "packages_headless_src_components_primitive_types": {
-        "astag": "AsTag 的类型信息"
+        "astag": "AsTag 的类型信息",
+        "primitiveprops": {
+          "members": {
+            "as": "",
+            "aschild": ""
+          },
+          "props": ""
+        },
+        "primitivewithbaseprops": {
+          "members": {
+            "as": "",
+            "aschild": ""
+          },
+          "props": ""
+        }
       },
       "packages_headless_src_components_progress_types": {
         "progresscirclecompactemits": {
@@ -10055,6 +10124,28 @@
             "options": "选项"
           },
           "props": "VirtualizerRoot 组件的属性。"
+        }
+      },
+      "packages_headless_src_components_visually_hidden_types": {
+        "visuallyhiddenfeature": "",
+        "visuallyhiddeninputprops": {
+          "members": {
+            "checked": "",
+            "disabled": "",
+            "feature": "",
+            "name": "",
+            "required": "",
+            "value": ""
+          },
+          "props": ""
+        },
+        "visuallyhiddenprops": {
+          "members": {
+            "as": "",
+            "aschild": "",
+            "feature": ""
+          },
+          "props": ""
         }
       },
       "packages_headless_src_components_watermark_types": {

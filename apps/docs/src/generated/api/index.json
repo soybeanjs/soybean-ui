@@ -1,6 +1,50 @@
 {
-  "generatedAt": "2026-09-10T04:34:09.152Z",
+  "generatedAt": "2026-09-10T07:36:27.089Z",
   "packages": {
+    "admin": {
+      "components": {},
+      "file": "admin/index.json"
+    },
+    "chart": {
+      "components": {
+        "chart-container": {
+          "component": "chart-container",
+          "file": "chart-container.json",
+          "symbols": ["ChartContainer"]
+        },
+        "chart-legend-content": {
+          "component": "chart-legend-content",
+          "file": "chart-legend-content.json",
+          "symbols": ["ChartLegendContent"]
+        },
+        "chart-style": {
+          "component": "chart-style",
+          "file": "chart-style.json",
+          "symbols": ["ChartStyle"]
+        },
+        "chart-tooltip-content": {
+          "component": "chart-tooltip-content",
+          "file": "chart-tooltip-content.json",
+          "symbols": ["ChartTooltipContent"]
+        }
+      },
+      "file": "chart/index.json"
+    },
+    "headless": {
+      "components": {
+        "primitive": {
+          "component": "primitive",
+          "file": "primitive.json",
+          "symbols": ["Primitive", "PrimitiveWithBase"]
+        },
+        "visually-hidden": {
+          "component": "visually-hidden",
+          "file": "visually-hidden.json",
+          "symbols": ["VisuallyHidden", "VisuallyHiddenInput"]
+        }
+      },
+      "file": "headless/index.json"
+    },
     "ui": {
       "components": {
         "accordion": {
