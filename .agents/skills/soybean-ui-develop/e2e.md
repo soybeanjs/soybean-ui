@@ -22,7 +22,7 @@ SoybeanUI runs two Vitest tiers. Both stay in Vitest so tooling stays unified.
 
 ### Tier 2 — App-level smoke harness (documented, minimal)
 
-- Runs against the playground app (`apps/playground`) as a real built/dev server.
+- Runs against the docs app (`apps/docs`, ubean SSG) as a real built/dev server — the playground was merged into docs in v0.40.0; examples live under `apps/docs/src/examples/`. There is no separate playground app.
 - Owns cross-cutting flows no single component can verify: route navigation, theme switching via `SConfigProvider`, global providers (dialog/toast/progress/icon), and page-level a11y.
 - Keep this tier intentionally small. It is a smoke harness, not a feature matrix. Add a smoke test only when a behavior genuinely spans multiple components or the provider tree.
 - Scope and commands for tier 2 live in [Tier 2 — app-level smoke harness](#tier-2--app-level-smoke-harness). Tier 1 is the default; do not jump to tier 2 when tier 1 suffices.

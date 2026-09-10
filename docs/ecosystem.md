@@ -298,9 +298,9 @@ apps/docs/src/examples/
 
 docs 顶部包切换器切换时切到 `examples/<pkg>/` 入口与对应导航（playground 已并入 docs，不再有独立切换器）。
 
-### 8.3 playground 依赖（Q8c）
+### 8.3 docs 依赖（Q8c）
 
-每新增外围包都加入 `apps/playground/package.json` 的 `dependencies`（admin 已加；ui-x、chart 同步加）。
+v0.40.0 playground 已并入 docs：每新增外围包都加入 `apps/docs/package.json` 的 `dependencies`（admin、ui-x、chart 均已加）。
 
 ## 9. 版本 / 分支 / 发布（Q7）
 

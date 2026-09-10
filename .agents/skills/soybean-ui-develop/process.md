@@ -18,7 +18,7 @@ Check in reverse: validate first, then delivery surfaces, then exports, then lay
 
 ### Delivery surfaces
 
-- Playground examples demonstrate major public capabilities.
+- Playground examples demonstrate major public capabilities; no implemented-but-undemonstrated capability (imperative APIs, controlled bindings, advanced options each have a demo).
 - Chinese and English docs are structurally synced.
 - `apps/docs/src/constants/menus.ts` is updated.
 - If public API changed, `pnpm sui gen api` has run.
@@ -43,6 +43,9 @@ Check in reverse: validate first, then delivery surfaces, then exports, then lay
 - Stable aggregation structure has been correctly sunk into `{Name}Compact`.
 - Slot root elements carry the correct `data-soybean-{name}` attributes.
 - UI-only families (admission refused) own structure and assembly in the wrapper and compose admitted headless primitives for behavior.
+- Shared types are imported from `packages/headless/src/types/`; no family-local redeclaration of shared types, and barrels/namespaced do not re-export duplicates.
+- Referenced dependency families exist in-repo — no intermediate state referencing a missing component, no type contract downgraded locally (see [layers.md -> High-frequency regression points](layers.md#high-frequency-regression-points)).
+- Color classes in the UI recipe live in compound variants only, never on the variant base.
 
 ### UI
 
@@ -108,7 +111,7 @@ Examples:
 
 Suitable for shared infrastructure or truly cross-domain changes:
 
-- `ui`, `headless`, `composables`, `shared`, `types`, `theme`, `styles`, `docs`, `examples`, `playground`, `resolver`, `nuxt`, `deps`, `projects`, `workflow`, `build`, `test`, `config`
+- `ui`, `headless`, `composables`, `shared`, `types`, `theme`, `styles`, `docs`, `examples`, `resolver`, `nuxt`, `deps`, `projects`, `workflow`, `build`, `test`, `config`
 
 **3. Avoid vague scopes**
 

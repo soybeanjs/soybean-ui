@@ -59,6 +59,7 @@ Not every component needs every example, but each file demonstrates only one cap
 - Examples cover major public capabilities; do not repeat the same scenario.
 - If the component exposes `color`, `size`, `disabled`, `ui`, etc., examples should reflect those capabilities.
 - The `name` part of sub-example filenames must accurately describe the capability point — it drives i18n title keys and display semantics.
+- **Capability-demo parity.** Every major public capability has at least one demo. When a capability exists in the component (imperative service methods, controlled two-way bindings, advanced props/options) but no example demonstrates it, that is a delivery gap — file count is not coverage. Rewriting demo copy or data while the capability stays identical does not count as a new demo; when reviewing an example set, distinguish "capability missing" from "copy rewritten".
 - Examples are a formal delivery surface, not an optional attachment.
 
 ## Docs
@@ -166,7 +167,7 @@ Peripheral packages use their own group sets: `ui-x-core` / `ui-x-content` / `ui
 - `<UsageCode>` and `<PlaygroundGallery>` `component` values match the component directory name.
 - If playground sub-examples carry order prefixes, the docs still use prefix-stripped example keys — never write raw filenames like `01-basic` into docs.
 - `<ComponentApi>` `component` value matches the real API data source; the generated table remains the authoritative source for prop/event/slot type definitions, default values, and required markers.
-- Demos progress basic → advanced and cover the component's major public capabilities; no duplicate scenes.
+- Demos progress basic → advanced and cover the component's major public capabilities; no duplicate scenes; an implemented-but-undemonstrated capability is a delivery gap (see Playground [Quality requirements](#quality-requirements)).
 - Notes include the architecture/benchmark-difference table and at least one caution; FAQ has 3–6 question/answer pairs.
 - Doc demo surfaces match `apps/docs/src/examples/ui/{component}/` real files.
 - Titles and API content do not lag behind the implementation.

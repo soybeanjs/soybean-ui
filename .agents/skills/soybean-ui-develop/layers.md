@@ -40,13 +40,13 @@ Delete the proposed headless module. If keyboard, focus, ARIA, positioning, form
 | Locale-sensitive parse or format                         | DateField, TimeField, InputNumber |
 | Cross-browser layout contract that is not just CSS       | AspectRatio, Virtualizer, Affix   |
 
-**R3 · Refuse a new family when:** the component is visual-only; it can be expressed with CSS and slots and has no state; it is a themed composition of an existing primitive (Drawer is Dialog with a side; Card is Collapsible with chrome); or the only reason is that a styled library (Ant Design, Element) ships the same name.
+**R3 · Refuse a new family when:** the component is visual-only; it can be expressed with CSS and slots and has no state; it is a themed composition of an existing primitive (Card is Collapsible with chrome); or the only reason is that a styled library (Ant Design, Element) ships the same name. Note: a composed family that later grows its own domain state machine is re-admitted on its own merits (Drawer is an independent family from v0.50.0 — snap points / swipe dismiss / drag handle / nested scaling are not Dialog behavior).
 
 **R4 · Anatomy shell is not a template.** A thin headless shell (multi-slot `provideXUi` + Compact) is allowed only when the family already has one real semantic: dismissible state, a landmark/`role`, or a domain wrap of an admitted primitive. Empty and List fail this bar; freeze them, do not clone them.
 
 **R5 · Admission is per family; anatomy export follows Compact.** The two-gate rule: first judge whether the family needs headless at all (deletion test, R1–R3). If it passes, export every primitive its Compact composes, and let Compact compose only exported primitives — never re-declaring their markup — so hand-built and Compact composition share one DOM contract (`data-soybean-*` lives on the primitive). Additional anatomy primitives (items, portals, providers, arrows) may be exported beyond the Compact composition for hand-built use. Semantic slots keep `aria-labelledby` / `aria-describedby` / widget `role` on their own primitive (DialogTitle, DialogDescription); chrome that carries a real contract is a primitive too (DialogHeader is the drag handle, BottomSheetHandle is the gesture contract). If the family fails admission, it is UI-only: the UI layer composes admitted primitives and owns structure and assembly itself — Card is the exemplar (collapsible wiring from Collapsible primitives, chrome divs in `SCard`). Anatomy export is a consequence of admission, never a path to it (see R7).
 
-**R6 · Compose before a parallel family.** Alias inner slots with no domain semantics; wrap when the slot owns a11y, context, UI, or `data-soybean-{family-slot}`. Full rule: [Step 3.1](#step-31-composing-an-existing-family). Password, Command, and Drawer are the correct shape; a second menu family beside an existing one is not.
+**R6 · Compose before a parallel family.** Alias inner slots with no domain semantics; wrap when the slot owns a11y, context, UI, or `data-soybean-{family-slot}`. Full rule: [Step 3.1](#step-31-composing-an-existing-family). Password and Command are the correct shape; a second menu family beside an existing one is not.
 
 **R7 · Compact is not admission.** Sink aggregation into `{Name}Compact` only for a family that already passed R1–R2. UI wrappers must not iterate `items` or assemble default content once Compact exists. Adding Compact to an anatomy shell does not make that shell a valid new family.
 
@@ -161,6 +161,17 @@ Typical headless-owned concerns:
 - Exporting a primitive the family's Compact does not compose, or writing markup inside Compact for a node that exists as an exported primitive (breaks the single DOM contract).
 - Treating anatomy export as an admission path: a UI-only family keeps its structure and assembly in the UI layer instead of opening a headless directory for chrome.
 
+### High-frequency regression points
+
+Lessons distilled from shipped-family audits. Self-check item by item; each has produced real regressions:
+
+- **Dependency-first.** Before starting a family, scan its templates, imports, and slots for referenced components (Kbd, Link, Separator, Checkbox…). If a referenced family or its primitives do not exist in-repo yet, build that dependency first. Never ship an intermediate state referencing a missing component, and never downgrade a type contract locally because of it (e.g. widening `KbdValue` to `string` because Kbd is not built yet).
+- **Reuse before new code.** Use `@vueuse/core` composables as-is. At composable top level, never call `onWatcherCleanup` — effect scope cleanup uses `onScopeDispose` (or delegates to vueuse); `onWatcherCleanup` is only valid inside a watcher.
+- **Shared layer is the single source.** Shared types live in `packages/headless/src/types/common.ts`; families import them, never redeclare locally (e.g. `CheckedState`, `SelectionProps`, `Side`, `Align`). A family-local duplicate that gets re-exported from a barrel or the namespaced entry cements the wrong location — promote it to shared first, then import. Pure helpers reusable across families (`color`, `comparison`, `time-picker`, `tree-navigation`, `dom`) belong in `packages/headless/src/shared/`, not family-local files.
+- **Provider defaults must mirror types.** `withDefaults` key names must match the props interface exactly; when renaming a prop, sync both. The default-value chain needs an inheritance regression case (prop → ancestor Provider → built-in defaults).
+- **Config resolution order is fixed.** Do not delete or reorder any layer without an explicit recorded decision: prop → ancestor Provider → ConfigProvider global segment → built-in defaults.
+- **a11y contract is verified on DOM output.** Check `role`, `aria-*`, and `data-*` state attributes item by item against the rendered DOM — including disabled presentation (behavior-blocking only vs. rendered `aria-disabled` / `data-disabled`). Class-name `toContain` assertions cannot substitute for attribute assertions.
+
 ## UI layer
 
 Applies to `packages/ui/src/components/**/*.{ts,vue}`.
@@ -187,6 +198,7 @@ Applies to `packages/ui/src/components/**/*.{ts,vue}`.
 - Same-family recipes reuse via `extend` / `alias` / `extendBase`. Cross-family chrome fragments live in `_*.ts` next to recipes (`_field.ts`, `_overlay.ts`); compose those tokens instead of copying class strings. Do not extract a new `_*.ts` unless the same fragment is copied across unrelated recipes.
 - `slots` keys must match headless `{Name}UiSlot` exactly.
 - Custom CSS variables use the `--soybean-` prefix.
+- **Color classes live in compound variants only.** The variant base must not carry color classes that compound variants override: generated CSS renders styles in rule order, so a base color silently wins over later color schemes. This regression is invisible to `toContain` class assertions — assert the compound class structure or computed style directly.
 - Direction-related styles follow [A11y and RTL](#a11y-and-rtl): prefer logical properties and logical alignment classes; only use `rtl:` modifiers when logical properties cannot express the intent.
 
 ### Step 2: types.ts
@@ -261,6 +273,7 @@ If the wrapper still needs conditionals, default content decisions, slot selecti
 ### UI anti-patterns
 
 - `packages/ui/src/styles/{name}.ts` missing `// @unocss-include`.
+- Color classes on the variant base instead of compound variants (cascade silently eats later color schemes).
 - `slots` keys inconsistent with `{Name}UiSlot`.
 - `useOmitProps` missing `class`.
 - Recipe call missing `props.ui` or `{ root: props.class }`.
