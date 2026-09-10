@@ -19,6 +19,15 @@ export function resolveContentRoutePath(inputSlug: string): string {
     return `/components/${uiComponentsMatch[1]}`;
   }
 
+  // Peripheral packages keep their component docs under `<section>/components/`
+  // but expose them as single-segment `/<section>/:name` pages (see
+  // `pages/ui-x/[name].vue`), so the `components` segment must be dropped.
+  const sectionComponentsMatch = slug.match(/^([^/]+)\/components\/(.+)$/u);
+
+  if (sectionComponentsMatch) {
+    return `/${sectionComponentsMatch[1]}/${sectionComponentsMatch[2]}`;
+  }
+
   if (slug === 'ui') {
     return '/overview';
   }

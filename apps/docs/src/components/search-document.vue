@@ -8,16 +8,25 @@ import { useContentSearch } from '@ubean/content/vue';
 import type { CommandSingleOptionData, SelectEvent } from '@soybeanjs/ui';
 import { loadContentSearchSections } from '~/shared/api-search';
 import { resolveContentRoutePath } from '~/shared/content-route';
+import { createMatchSnippet, splitHighlight } from '~/shared/search-highlight';
+import type { HighlightSegment } from '~/shared/search-highlight';
 
 defineOptions({
   name: 'SearchDocument'
 });
 
-/** 搜索结果项：SCommand 的 items 元素；`crumbs` 由 `#item-label` 插槽消费（类型经 generic 推断）。 */
+/** 搜索结果项：SCommand 的 items 元素；`crumbs` / `*Parts` 由对应插槽消费（类型经 generic 推断）。 */
 interface SearchOption extends CommandSingleOptionData {
   /** 章节面包屑标题链（hit.titles）。 */
   crumbs?: string[];
+  /** 标题按命中词切分的高亮片段。 */
+  labelParts: HighlightSegment[];
+  /** 正文上下文片段按命中词切分的高亮片段。 */
+  descriptionParts: HighlightSegment[];
 }
+
+/** 命中词高亮样式，标题与正文片段共用。 */
+const HIGHLIGHT_CLASS = 'px-1 py-0.5 rounded-sm bg-primary/20 text-primary';
 
 const router = useRouter();
 const { t, locale } = useI18n();
@@ -29,13 +38,23 @@ const searchTerm = shallowRef('');
 // API data (@ubean/content 0.4.7). Lazy init: sections load on first client
 // interaction, never during SSR. minisearch enables prefix/fuzzy matching;
 // `processTerm` lowercases so searching "button" finds "Button" and prop names.
+//
+// `combineWith: 'AND'` is required: MiniSearch defaults to OR, and the shared
+// CJK tokenizer splits one Chinese sentence into several word tokens, so OR
+// matches any section containing a single token. "选择适合你工作流程的方式"
+// tokenizes to 7 terms and OR returns ~940 sections (~12 pages after route
+// dedup) versus 4 with AND. Single-token queries are unaffected.
 const { status, error, results, search, init } = useContentSearch({
   immediate: false,
   sections: loadContentSearchSections,
   searchOptions: {
     miniSearch: {
       processTerm: (term: string) => term.toLowerCase()
-    }
+    },
+    searchOptions: {
+      combineWith: 'AND'
+    },
+    loadMiniSearch: () => import('minisearch')
   }
 });
 
@@ -66,17 +85,22 @@ function toRoute(id: string): string {
 // 同一页面的多个 section 命中合并为一条（保留最高分 hit），避免重复 value 冲突。
 const commandItems = computed<SearchOption[]>(() => {
   const seen = new Map<string, SearchOption>();
+  const query = searchTerm.value;
 
   for (const hit of results.value) {
     if (!isCurrentLocaleHit(hit.id)) continue;
     const route = toRoute(hit.id);
 
     if (!seen.has(route)) {
+      const snippet = createMatchSnippet(hit.content, query);
+
       seen.set(route, {
         label: hit.title,
         value: route,
-        description: hit.content.slice(0, 96),
-        crumbs: hit.titles
+        description: snippet,
+        crumbs: hit.titles,
+        labelParts: splitHighlight(hit.title, query),
+        descriptionParts: splitHighlight(snippet, query)
       });
     }
   }
@@ -145,7 +169,24 @@ onMounted(() => {
         <template #item-label="{ item }">
           <span class="truncate">
             <span v-for="crumb in item.crumbs" :key="crumb" class="text-muted-foreground">{{ crumb }} ›</span>
-            {{ item.label }}
+            <span
+              v-for="(part, index) in item.labelParts"
+              :key="index"
+              :class="part.match ? HIGHLIGHT_CLASS : undefined"
+            >
+              {{ part.text }}
+            </span>
+          </span>
+        </template>
+        <template #item-description="{ item }">
+          <span>
+            <span
+              v-for="(part, index) in item.descriptionParts"
+              :key="index"
+              :class="part.match ? HIGHLIGHT_CLASS : undefined"
+            >
+              {{ part.text }}
+            </span>
           </span>
         </template>
         <template #bottom>
