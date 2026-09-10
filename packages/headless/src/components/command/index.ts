@@ -15,6 +15,8 @@ export type {
   CommandItemProps,
   CommandItemEmits,
   CommandItemLabelProps,
+  CommandItemContentProps,
+  CommandDescriptionProps,
   CommandShortcutProps,
   CommandSeparatorProps,
   CommandEmptyProps,

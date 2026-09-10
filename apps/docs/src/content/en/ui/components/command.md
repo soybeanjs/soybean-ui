@@ -20,9 +20,11 @@ Use a command for a ⌘K-style palette, searchable menus, or inline typeahead. F
 
 ## Features
 
-- 🔎 Fuzzy search — Fuse-powered matching over `label`/`groupLabel` with configurable `fuseOptions` (threshold, `resultLimit`, match-all-on-empty)
+- 🔎 Fuzzy search — Fuse-powered matching over `label`/`groupLabel`/`description` with configurable `fuseOptions` (threshold, `resultLimit`, match-all-on-empty)
 - 🧩 Headless/styled split — `CommandCompact` owns filtering, grouping and item composition; `SCommand` only injects styles
-- 📊 Grouped data — `items` with nested group `items` (label/value/icon/disabled/separator) and flat items
+- 📊 Grouped data — `items` with nested group `items` (label/value/icon/description/disabled/separator) and flat items
+- 🔍 Item descriptions — `description` renders as a secondary line under the label and is searchable by the built-in filter
+- 🚀 External filtering — `external-filter` bypasses the built-in fuzzy filter so items can be filtered and ranked by an external engine (e.g. full-text content search)
 - ⌨️ Keyboard nav — full listbox roving focus (arrow keys), selection and `highlight`/`select` events
 - 🏷️ Icons + shortcuts — `icon` per item and `shortcut` rendered as a `Kbd`
 - 🧹 Clearable — `clearable` shows a trailing clear control; `placeholder`/`emptyLabel` localize the empty state
@@ -124,4 +126,20 @@ Listen to `select` and `update:modelValue`:
 
 ```vue
 <SCommand :items="items" @select="value => run(value)" />
+```
+
+### How do I show an item description?
+
+Add a `description` to the item — it renders as a secondary line under the label and is included in the built-in fuzzy filter:
+
+```vue
+<SCommand :items="[{ label: 'Calendar', value: 'calendar', description: 'Schedule management view' }]" />
+```
+
+### How do I use an external search engine instead of the built-in filter?
+
+Set `external-filter`: the built-in fuzzy filter is skipped and `items` render as-is (preserving your ranking). `searchTerm` still syncs via `v-model:searchTerm` / `update:searchTerm` so you can drive your own search — for example a full-text content search:
+
+```vue
+<SCommand v-model:searchTerm="query" external-filter :items="results" @select="open" />
 ```

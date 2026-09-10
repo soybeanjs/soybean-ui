@@ -104,6 +104,59 @@ describe('SCommand', () => {
     });
   });
 
+  describe('description', () => {
+    const descriptionItems = [
+      { label: 'Calendar', value: 'calendar', description: 'schedule management view' },
+      { label: 'Help', value: 'help' }
+    ];
+
+    it('renders description text under the item label', () => {
+      const wrapper = mount(SCommand, {
+        props: {
+          items: descriptionItems
+        },
+        attachTo: document.body
+      });
+
+      expect(document.body.textContent).toContain('schedule management view');
+      wrapper.unmount();
+    });
+
+    it('filters by description when the label does not contain the query', async () => {
+      const wrapper = mount(SCommand, {
+        props: {
+          items: descriptionItems
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('input').setValue('schedule');
+
+      expect(document.body.textContent).toContain('Calendar');
+      expect(document.body.textContent).not.toContain('Help');
+      wrapper.unmount();
+    });
+  });
+
+  describe('external filter', () => {
+    it('keeps all items and still emits searchTerm when externalFilter is enabled', async () => {
+      const wrapper = mount(SCommand, {
+        props: {
+          items,
+          externalFilter: true
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('input').setValue('zzz-not-in-items');
+
+      expect(document.body.textContent).toContain('Calendar');
+      expect(document.body.textContent).toContain('Help');
+      expect(wrapper.emitted('update:searchTerm')?.at(-1)).toEqual(['zzz-not-in-items']);
+      wrapper.unmount();
+    });
+  });
+
   describe('disabled state', () => {
     it('disables the input and prevents selection', async () => {
       const wrapper = mount(SCommand, {

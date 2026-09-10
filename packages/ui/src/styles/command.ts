@@ -26,6 +26,8 @@ export const commandVariants = scv({
       `data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     itemLabel: '',
+    itemContent: 'flex min-w-0 flex-col',
+    itemDescription: 'text-xs text-muted-foreground line-clamp-2',
     itemIcon: 'shrink-0',
     separator: `h-px bg-border`,
     shortcut: `ms-auto`

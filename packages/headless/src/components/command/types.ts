@@ -28,6 +28,10 @@ export interface CommandSingleOptionData extends Pick<CommandItemProps, 'value' 
    */
   label: string;
   /**
+   * Secondary description text rendered under the label (also searchable by the built-in filter).
+   */
+  description?: string;
+  /**
    * Whether separator.
    */
   separator?: boolean;
@@ -61,6 +65,16 @@ export type CommandOptionData<T extends CommandSingleOptionData = CommandSingleO
  * Properties for the CommandItemLabel component.
  */
 export interface CommandItemLabelProps extends BaseProps {}
+
+/**
+ * Properties for the CommandItemContent component.
+ */
+export interface CommandItemContentProps extends BaseProps {}
+
+/**
+ * Properties for the CommandDescription component.
+ */
+export interface CommandDescriptionProps extends BaseProps {}
 
 /**
  * Properties for the CommandShortcut component.
@@ -106,6 +120,8 @@ export type CommandUiSlot =
   | 'inputIcon'
   | 'inputClearable'
   | 'itemLabel'
+  | 'itemContent'
+  | 'itemDescription'
   | 'shortcut'
   | 'separator'
   | 'empty';
@@ -135,6 +151,13 @@ export interface CommandCompactProps<T extends CommandSingleOptionData = Command
    */
   searchTerm?: string;
   /**
+   * Whether the items are already filtered and ranked by an external engine
+   * (e.g. full-text content search). When true, the built-in fuzzy filter is
+   * skipped and all `items` render as-is; `searchTerm` still syncs via
+   * `update:searchTerm` so the caller can drive its own search.
+   */
+  externalFilter?: boolean;
+  /**
    * Whether clearable.
    */
   clearable?: boolean;
@@ -154,6 +177,14 @@ export interface CommandCompactProps<T extends CommandSingleOptionData = Command
    * Properties forwarded to the item label element.
    */
   itemLabelProps?: CommandItemLabelProps;
+  /**
+   * Properties forwarded to the item content element (wraps label + description).
+   */
+  itemContentProps?: CommandItemContentProps;
+  /**
+   * Properties forwarded to the item description element.
+   */
+  itemDescriptionProps?: CommandDescriptionProps;
   /**
    * Properties forwarded to the group element.
    */
@@ -247,6 +278,10 @@ export type CommandCompactSlots<T extends CommandSingleOptionData = CommandSingl
    * Custom content for the item label slot.
    */
   'item-label'?: (props: CommandCompactItemSlotProps<T>) => any;
+  /**
+   * Custom content for the item description slot.
+   */
+  'item-description'?: (props: CommandCompactItemSlotProps<T>) => any;
   /**
    * Custom content for the bottom slot.
    */

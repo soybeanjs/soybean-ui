@@ -20,9 +20,11 @@ head:
 
 ## 特性
 
-- 🔎 模糊搜索 — 基于 Fuse 对 `label`/`groupLabel` 匹配，`fuseOptions` 可配置（threshold、`resultLimit`、空搜索全匹配）
+- 🔎 模糊搜索 — 基于 Fuse 对 `label`/`groupLabel`/`description` 匹配，`fuseOptions` 可配置（threshold、`resultLimit`、空搜索全匹配）
 - 🧩 Headless/样式分离 — `CommandCompact` 负责过滤、分组与条目组合；`SCommand` 只注入样式
-- 📊 分组数据 — `items` 支持嵌套组 `items`（label/value/icon/disabled/separator）与扁平条目
+- 📊 分组数据 — `items` 支持嵌套组 `items`（label/value/icon/description/disabled/separator）与扁平条目
+- 🔍 条目描述 — `description` 在标签下方渲染为次级文本，并参与内置过滤
+- 🚀 外部过滤 — `external-filter` 跳过内置模糊过滤，让 items 由外部引擎（如全文内容搜索）过滤与排序
 - ⌨️ 键盘导航 — 完整 listbox roving focus（方向键）、选择与 `highlight`/`select` 事件
 - 🏷️ 图标 + 快捷键 — 每项 `icon` 与 `shortcut`（渲染为 `Kbd`）
 - 🧹 可清空 — `clearable` 显示尾部清空控件；`placeholder`/`emptyLabel` 本地化空态
@@ -122,4 +124,20 @@ head:
 
 ```vue
 <SCommand :items="items" @select="value => run(value)" />
+```
+
+### 如何显示条目描述？
+
+给条目加 `description`——它会在标签下方渲染为次级文本，并参与内置模糊过滤：
+
+```vue
+<SCommand :items="[{ label: '日历', value: 'calendar', description: '日程管理视图' }]" />
+```
+
+### 如何用外部搜索引擎代替内置过滤？
+
+设置 `external-filter`：跳过内置模糊过滤，`items` 原样渲染（保留你自己的排序）。`searchTerm` 仍通过 `v-model:searchTerm` / `update:searchTerm` 同步，供你驱动自己的搜索——例如全文内容搜索：
+
+```vue
+<SCommand v-model:searchTerm="query" external-filter :items="results" @select="open" />
 ```
