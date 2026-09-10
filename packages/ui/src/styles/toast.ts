@@ -21,7 +21,7 @@ export const toastVariants = scv({
       'z-[--z-index] break-anywhere [--y:translateY(100%)] [--lift:1] [--lift-amount:calc(var(--lift)*var(--gap))] [transform:var(--y)]',
       '[transition:transform_400ms,opacity_400ms,height_400ms,box-shadow_200ms] [box-shadow:0_4px_12px_hsl(var(--foreground)/0.1)]',
       'focus-visible:[box-shadow:0_4px_12px_hsl(var(--foreground)/0.1),0_0_0_2px_hsl(var(--foreground)/0.2)] [&>*]:[transition:opacity_400ms]',
-      'data-[y-position=top]:top-0 data-[y-position=top]:[--y:translateY(-100%)] data-[mounted=true]:[--y:translateY(0)]',
+      'data-[y-position=top]:top-0 data-[mounted=false]:data-[y-position=top]:[--y:translateY(-100%)] data-[mounted=true]:[--y:translateY(0)]',
       'data-[y-position=bottom]:[--lift:-1] data-[y-position=bottom]:bottom-0',
       'data-[x-position=left]:start-0 data-[x-position=right]:end-0',
       'data-[swiping=true]:transition-none data-[swiping=true]:[transform:var(--y)_translateY(var(--swipe-amount-y,0px))_translateX(var(--swipe-amount-x,0px))]',
