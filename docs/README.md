@@ -67,7 +67,7 @@ components.md ──► roadmap.md ◄── optimize.md
 - **「某组件要不要做 / 排期如何」** → [roadmap.md](./roadmap.md)（高/中/低优先级）→ [components.md](./components.md)（评估明细）
 - **「当前做到哪了」** → [task-tracking.md](./task-tracking.md)
 - **「某个任务怎么拆」** → [tasks.md](./tasks.md)
-- **「这个组件该不该做 headless / 现有哪些违规」** → skill [layers.md Headless admission](../.agents/skills/soybean-ui-component-development/layers.md#headless-admission) → [headless-admission-remediation.md](./headless-admission-remediation.md)
+- **「这个组件该不该做 headless / 现有哪些违规」** → skill [layers.md Headless admission](../.agents/skills/soybean-ui-develop/layers.md#headless-admission) → [headless-admission-remediation.md](./headless-admission-remediation.md)
 - **「为什么这样分层」** → [adr/](./adr/README.md)
 - **「生态包怎么规划」** → [ecosystem/](./ecosystem/README.md)
 - **「竞品/市场依据」** → [research/](./research/README.md)

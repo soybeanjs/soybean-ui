@@ -33,7 +33,7 @@
 | `docs/research/`  | 市场/竞品调研                    | `README.md`         |
 | `docs/info/`      | 一次性/周期报告                  | `README.md`         |
 
-> 注：组件检查 / 审计（D1–D7）的**方法与交付面**由组件开发技能 `.agents/skills/soybean-ui-component-development/audit.md` 定义，历史检查报告（`docs/check-reports/`、`docs/check.md`）已于 2026-08-14 清理归档，不再在 `docs/` 维护。
+> 注：组件检查 / 审计（D1–D7）的**方法与交付面**由组件开发技能 `.agents/skills/soybean-ui-develop/audit.md` 定义，历史检查报告（`docs/check-reports/`、`docs/check.md`）已于 2026-08-14 清理归档，不再在 `docs/` 维护。
 
 ### 3.2 文件命名
 
@@ -78,7 +78,7 @@
 
 > **禁止**在任务拆解文档里维护状态（会造成双份状态漂移）；状态只存在于唯一的跟踪表。
 >
-> 组件级状态与检查由组件开发技能（`.agents/skills/soybean-ui-component-development/`）统一管理，不落 `docs/`。
+> 组件级状态与检查由组件开发技能（`.agents/skills/soybean-ui-develop/`）统一管理，不落 `docs/`。
 
 ### 5.2 单事实源清单
 
@@ -88,7 +88,7 @@
 | 工程质量改进项 | `docs/optimize.md`（F1–F11）                                                   |
 | 组件评估明细   | `docs/components.md`                                                           |
 | 任务状态       | `docs/task-tracking.md`（任务级）+ `docs/ecosystem-tasks.md`（生态架构落地级） |
-| 组件审计方法   | `.agents/skills/soybean-ui-component-development/audit.md`（D1–D7）            |
+| 组件审计方法   | `.agents/skills/soybean-ui-develop/audit.md`（D1–D7）                          |
 | 生态包方案     | `docs/ecosystem/`（每包一篇）                                                  |
 | 调研结论       | `docs/research/`                                                               |
 

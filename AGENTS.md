@@ -2,15 +2,15 @@
 
 ## AI ASSISTANT ENTRYPOINT
 
-Component development rules live in the self-contained skill at `.agents/skills/soybean-ui-component-development/`:
+Component development rules live in the self-contained skill at `.agents/skills/soybean-ui-develop/`:
 
-- [SKILL.md](.agents/skills/soybean-ui-component-development/SKILL.md) — pattern classification, phase order, workflows, guardrails, delivery surfaces, generation workflow.
-- [layers.md](.agents/skills/soybean-ui-component-development/layers.md) — headless admission, headless/UI layer rules, a11y/RTL.
-- [surfaces.md](.agents/skills/soybean-ui-component-development/surfaces.md) — playground, docs, testing delivery surface rules.
-- [e2e.md](.agents/skills/soybean-ui-component-development/e2e.md) — browser e2e testing (Tier 1 component-level + Tier 2 app-level smoke), env setup, core scenarios, assertion standards.
-- [process.md](.agents/skills/soybean-ui-component-development/process.md) — finish checklist, git commit convention.
-- [audit.md](.agents/skills/soybean-ui-component-development/audit.md) — assessment methodology, seven check dimensions (D1–D7, 106 items), severity, acceptance, regression flows for already-shipped components.
-- [EXAMPLES.md](.agents/skills/soybean-ui-component-development/EXAMPLES.md) — request shapes that trigger the skill.
+- [SKILL.md](.agents/skills/soybean-ui-develop/SKILL.md) — pattern classification, phase order, workflows, guardrails, delivery surfaces, generation workflow.
+- [layers.md](.agents/skills/soybean-ui-develop/layers.md) — headless admission, headless/UI layer rules, a11y/RTL.
+- [surfaces.md](.agents/skills/soybean-ui-develop/surfaces.md) — playground, docs, testing delivery surface rules.
+- [e2e.md](.agents/skills/soybean-ui-develop/e2e.md) — browser e2e testing (Tier 1 component-level + Tier 2 app-level smoke), env setup, core scenarios, assertion standards.
+- [process.md](.agents/skills/soybean-ui-develop/process.md) — finish checklist, git commit convention.
+- [audit.md](.agents/skills/soybean-ui-develop/audit.md) — assessment methodology, seven check dimensions (D1–D7, 106 items), severity, acceptance, regression flows for already-shipped components.
+- [EXAMPLES.md](.agents/skills/soybean-ui-develop/EXAMPLES.md) — request shapes that trigger the skill.
 
 **Global skill rules (mandatory for all agents, applied before any task):**
 
@@ -19,7 +19,7 @@ Component development rules live in the self-contained skill at `.agents/skills/
 
 Both skills are installed globally in the skills store and can be loaded from any project. They are the single source of truth for TypeScript functional style and Vue SFC structure; the component development skill does not restate their content.
 
-Load the component development skill for any task that creates, migrates, extends, standardizes, fixes, or audits a SoybeanUI component. For auditing or re-evaluating already-shipped components, load [audit.md](.agents/skills/soybean-ui-component-development/audit.md) for the assessment methodology.
+Load the component development skill for any task that creates, migrates, extends, standardizes, fixes, or audits a SoybeanUI component. For auditing or re-evaluating already-shipped components, load [audit.md](.agents/skills/soybean-ui-develop/audit.md) for the assessment methodology.
 
 If a nearer scoped `AGENTS.md` exists for your target path, use it only to narrow which skill sections apply.
 
@@ -84,7 +84,7 @@ Private packages and applications:
 | Browser e2e tests        | `packages/ui/test/browser/`                                               | `vitest.browser.config.ts` + `vitest-browser-vue` + `axe-core` (color-contrast on)        |
 | Workspace architecture   | `docs/architecture.md`                                                    | Package/app map, dependency graph, generation/build/test/release flows                    |
 | Architecture assessment  | `docs/optimize.md`                                                        | Evidence-ranked maintainability, scalability, and quality recommendations                 |
-| Component dev skill      | `.agents/skills/soybean-ui-component-development/`                        | SKILL.md + layers.md (admission) + surfaces.md + e2e.md + process.md + audit.md           |
+| Component dev skill      | `.agents/skills/soybean-ui-develop/`                                      | SKILL.md + layers.md (admission) + surfaces.md + e2e.md + process.md + audit.md           |
 | Headless admission gaps  | `docs/headless-admission-remediation.md`                                  | Anatomy shells, decorative slots, and parallel families to freeze or fix                  |
 
 ## BUILD & CI
@@ -175,7 +175,7 @@ pnpm sui sync-template-versions  # Sync the @soybeanjs/* version constant used b
 
 ## COMPONENT DEVELOPMENT
 
-组件开发规范入口：`.agents/skills/soybean-ui-component-development/SKILL.md`。
+组件开发规范入口：`.agents/skills/soybean-ui-develop/SKILL.md`。
 
 Minimal flow: headless types → headless context → headless base SFCs → optional Compact SFCs/hooks → UI style recipe in `packages/ui/src/styles` → UI wrapper → barrel exports.
 

@@ -1,5 +1,5 @@
 ---
-name: soybean-ui-component-development
+name: soybean-ui-develop
 description: Builds, updates, and audits SoybeanUI components with headless/UI split, delivery phases, and generation workflow. Invoke when adding, migrating, extending, standardizing, fixing, or auditing components, or when work touches packages/headless/src/components, packages/ui/src/components, apps/docs/src/examples, apps/docs/src/content, or packages/ui/test/specs/components.
 ---
 

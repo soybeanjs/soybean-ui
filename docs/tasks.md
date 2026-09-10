@@ -355,7 +355,7 @@
 
 ### CMP-1 P0 组件（高优先级第一批，9 个，共约 25d）
 
-**目标**：补齐关键缺口。**时间窗建议**：2026 Q4（生态首发后）。**依赖条件**：EC-M5 完成（避免与生态主线抢占）；组件间内部依赖见下表「依赖」列。每个组件 Phase 0 必须先过 [Headless admission](../.agents/skills/soybean-ui-component-development/layers.md#headless-admission)；`Statistic` / `Descriptions` / `Typography` 等视觉或解剖型组件很可能是 UI-only，不要先开 headless 目录。
+**目标**：补齐关键缺口。**时间窗建议**：2026 Q4（生态首发后）。**依赖条件**：EC-M5 完成（避免与生态主线抢占）；组件间内部依赖见下表「依赖」列。每个组件 Phase 0 必须先过 [Headless admission](../.agents/skills/soybean-ui-develop/layers.md#headless-admission)；`Statistic` / `Descriptions` / `Typography` 等视觉或解剖型组件很可能是 UI-only，不要先开 headless 目录。
 
 | 子任务  | 组件           | Effort  | 工时 | 依赖（核心库内部）                                        |
 | :------ | :------------- | :-----: | :--: | :-------------------------------------------------------- |
@@ -419,7 +419,7 @@
 
 ### CMP-6 Headless 准入整改
 
-**目标**：按 [layers.md Headless admission](../.agents/skills/soybean-ui-component-development/layers.md#headless-admission) 冻结解剖壳、补 Alert 语义、收敛装饰槽与平行家族；**禁止**再把 Empty / List / Badge / Skeleton 当新组件模板。组件级清单与证据见 [headless-admission-remediation.md](./headless-admission-remediation.md)。**负责人**：AI Agent 实施、Soybean 验收（HAD-C / HAD-D 需先决策）。**预计工时**：2.5d 决策与小修复；装饰槽/合并实施另估。**依赖条件**：规范已落地；不阻塞 CMP-1，但 CMP-1 起的新组件必须先过 admission。
+**目标**：按 [layers.md Headless admission](../.agents/skills/soybean-ui-develop/layers.md#headless-admission) 冻结解剖壳、补 Alert 语义、收敛装饰槽与平行家族；**禁止**再把 Empty / List / Badge / Skeleton 当新组件模板。组件级清单与证据见 [headless-admission-remediation.md](./headless-admission-remediation.md)。**负责人**：AI Agent 实施、Soybean 验收（HAD-C / HAD-D 需先决策）。**预计工时**：2.5d 决策与小修复；装饰槽/合并实施另估。**依赖条件**：规范已落地；不阻塞 CMP-1，但 CMP-1 起的新组件必须先过 admission。
 
 | 子任务  | 目标                                                                           |       负责人       | 工时 | 依赖           |
 | :------ | :----------------------------------------------------------------------------- | :----------------: | :--: | :------------- |

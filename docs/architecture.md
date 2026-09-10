@@ -4,7 +4,7 @@
 >
 > This document describes the repository as it exists today. It is the canonical
 > workspace-level architecture reference; component implementation rules remain
-> in `.agents/skills/soybean-ui-component-development/`.
+> in `.agents/skills/soybean-ui-develop/`.
 
 ## 1. Evidence and scope
 
@@ -384,7 +384,7 @@ Development and publication resolution differ:
 | Headless public groups        | `packages/headless/src/index.ts`                                      |
 | UI public groups              | `packages/ui/src/index.ts`                                            |
 | Generated component inventory | each package's `src/constants/components.ts`                          |
-| Component development rules   | `.agents/skills/soybean-ui-component-development/`                    |
+| Component development rules   | `.agents/skills/soybean-ui-develop/`                                  |
 | Unshipped-component roadmap   | `docs/roadmap.md`                                                     |
 | Workspace architecture        | this document                                                         |
 | Improvement backlog           | `docs/optimize.md`                                                    |

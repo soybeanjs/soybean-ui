@@ -101,11 +101,11 @@ consistently.
 
 ### Project-Local Skill
 
-| Skill                               | Trigger                                                     | What it does                                                                                                                                                                                  |
-| ----------------------------------- | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$soybean-ui-component-development` | Any component work (new, migrate, fix, extend, standardize) | Classifies the component pattern, enforces headless/UI split, guides through all six delivery phases, and checks boundary rules. Lives at `.agents/skills/soybean-ui-component-development/`. |
+| Skill                 | Trigger                                                     | What it does                                                                                                                                                                    |
+| --------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$soybean-ui-develop` | Any component work (new, migrate, fix, extend, standardize) | Classifies the component pattern, enforces headless/UI split, guides through all six delivery phases, and checks boundary rules. Lives at `.agents/skills/soybean-ui-develop/`. |
 
-When you invoke `$soybean-ui-component-development`, the skill:
+When you invoke `$soybean-ui-develop`, the skill:
 
 - Classifies the task (new component / migration / standards alignment).
 - Determines the component pattern (multi-slot / compact / single-class).
@@ -152,7 +152,7 @@ specialized review.
 ## Coding Conventions
 
 Normative component rules live in the project skill at
-`.agents/skills/soybean-ui-component-development/` (`SKILL.md` + `layers.md` + `surfaces.md` +
+`.agents/skills/soybean-ui-develop/` (`SKILL.md` + `layers.md` + `surfaces.md` +
 `process.md`). TypeScript functional style and Vue SFC structure are owned by the global
 `typescript-functional-style` and `vue-sfc-structure` skills (loaded automatically per file type).
 
@@ -182,7 +182,7 @@ Normative component rules live in the project skill at
 ## Component Development
 
 A new component goes through six phases. See
-`.agents/skills/soybean-ui-component-development/SKILL.md` for the full specification.
+`.agents/skills/soybean-ui-develop/SKILL.md` for the full specification.
 
 ### Phase 0 — Determine Mode & Scope
 
@@ -245,7 +245,7 @@ pnpm test
 ```
 
 If any step fails, fix it before opening a PR. See the full checklist in
-`.agents/skills/soybean-ui-component-development/process.md`.
+`.agents/skills/soybean-ui-develop/process.md`.
 
 ## Testing
 
@@ -299,7 +299,7 @@ is truly cross-cutting.
 
 **Subject:** imperative, specific, and outcome-oriented. No trailing period.
 
-Full rules: `.agents/skills/soybean-ui-component-development/process.md`.
+Full rules: `.agents/skills/soybean-ui-develop/process.md`.
 
 ### Pull Request Guidelines
 
@@ -403,11 +403,11 @@ pnpm dev
 
 ### 项目本地 Skill
 
-| Skill                               | 触发条件                                       | 功能                                                                                                                                         |
-| ----------------------------------- | ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$soybean-ui-component-development` | 任何组件工作（新建、迁移、修复、扩展、规范化） | 分类组件模式，强制执行 headless/UI 分层，引导完成全部六个交付阶段，并检查边界规则。位于 `.agents/skills/soybean-ui-component-development/`。 |
+| Skill                 | 触发条件                                       | 功能                                                                                                                           |
+| --------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `$soybean-ui-develop` | 任何组件工作（新建、迁移、修复、扩展、规范化） | 分类组件模式，强制执行 headless/UI 分层，引导完成全部六个交付阶段，并检查边界规则。位于 `.agents/skills/soybean-ui-develop/`。 |
 
-当你调用 `$soybean-ui-component-development` 时，该 skill 会：
+当你调用 `$soybean-ui-develop` 时，该 skill 会：
 
 - 分类任务（新建组件 / 迁移 / 规范化对齐）。
 - 确定组件模式（多 slot / compact 聚合 / 单类名）。
@@ -449,7 +449,7 @@ Codex 提供专门的 **agent 角色**（prompt 面），你可以将复杂子�
 
 ## 编码规范
 
-组件规范统一位于项目 skill `.agents/skills/soybean-ui-component-development/`（`SKILL.md` + `layers.md` + `surfaces.md` + `process.md`）。TypeScript 函数式风格与 Vue SFC 结构由全局 skill `typescript-functional-style` 和 `vue-sfc-structure` 负责（按文件类型自动加载）。
+组件规范统一位于项目 skill `.agents/skills/soybean-ui-develop/`（`SKILL.md` + `layers.md` + `surfaces.md` + `process.md`）。TypeScript 函数式风格与 Vue SFC 结构由全局 skill `typescript-functional-style` 和 `vue-sfc-structure` 负责（按文件类型自动加载）。
 
 | Skill 章节                                  | 适用范围                            |
 | ------------------------------------------- | ----------------------------------- |
@@ -476,7 +476,7 @@ Codex 提供专门的 **agent 角色**（prompt 面），你可以将复杂子�
 
 ## 组件开发
 
-一个新组件经过六个阶段。详见 `.agents/skills/soybean-ui-component-development/SKILL.md`。
+一个新组件经过六个阶段。详见 `.agents/skills/soybean-ui-develop/SKILL.md`。
 
 ### Phase 0 — 确定模式与范围
 
@@ -539,7 +539,7 @@ pnpm test
 ```
 
 任一步骤失败，请在提 PR 前修复。完整清单见
-`.agents/skills/soybean-ui-component-development/process.md`。
+`.agents/skills/soybean-ui-develop/process.md`。
 
 ## 测试
 
@@ -591,7 +591,7 @@ pnpm sui gen api --translate --locale zh-CN   # 翻译描述
 
 **Subject：** 祈使语气，具体，面向结果。不以句号结尾。
 
-完整规范：`.agents/skills/soybean-ui-component-development/process.md`。
+完整规范：`.agents/skills/soybean-ui-develop/process.md`。
 
 ### Pull Request 指南
 

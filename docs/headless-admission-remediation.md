@@ -1,6 +1,6 @@
 # Headless 准入整改清单
 
-> 定位：记录**已发布** headless 家族对 [Headless admission](../.agents/skills/soybean-ui-component-development/layers.md#headless-admission) 的违反项，以及处置方式。给执行整改的 Agent / 维护者看。
+> 定位：记录**已发布** headless 家族对 [Headless admission](../.agents/skills/soybean-ui-develop/layers.md#headless-admission) 的违反项，以及处置方式。给执行整改的 Agent / 维护者看。
 > 状态：🔵 进行中（2026-08-31 规则改版并完成全量重审；代码整改部分未开工）
 > 基线：2026-08-28 · 规则改版：2026-08-31（两段式规则）· 规则落点：`layers.md` Headless admission R1–R8
 >

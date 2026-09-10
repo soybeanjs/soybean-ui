@@ -114,7 +114,7 @@ ubean 是构建在 Vite-Plus 上的 Vue-first 全栈 meta-framework，主包 `ub
 | 组件              | `src/components/theme-configurator.vue`                                                                  | 旧站 tool-bar 跨 app 引用（`@playground/components/theme-configurator.vue`），依赖 `@vueuse/core` + `SThemeCustomizer`——迁移后 docs-new 本地化，Q2 关闭                                                                                 |
 | playground 自身   | `src/pages`、`src/router`、`src/i18n`、`src/app.ts`、`src/theme.ts`、`plugins`、`component-libraries.ts` | 独立 Vite 应用壳，**不迁移**，随 app 删除                                                                                                                                                                                               |
 
-**playground 在仓库中的引用面**（删除前置项）：根 scripts `dev`（默认即 `dev:playground`）、`dev:playground`、`build:playground`；`apps/docs`（旧站 globs/alias/tool-bar，随旧站删除自然消失）；`.agents/skills/soybean-ui-component-development/` 的 SKILL.md / surfaces.md / e2e.md / audit.md 将 playground 作为交付面与视觉验证载体——删除时需同步改写这些 skill 文档（demo 交付面改为 docs-new `src/examples`）。`@soybeanjs/ui-playground` 不在发布包之列（private app），无 npm 影响。
+**playground 在仓库中的引用面**（删除前置项）：根 scripts `dev`（默认即 `dev:playground`）、`dev:playground`、`build:playground`；`apps/docs`（旧站 globs/alias/tool-bar，随旧站删除自然消失）；`.agents/skills/soybean-ui-develop/` 的 SKILL.md / surfaces.md / e2e.md / audit.md 将 playground 作为交付面与视觉验证载体——删除时需同步改写这些 skill 文档（demo 交付面改为 docs-new `src/examples`）。`@soybeanjs/ui-playground` 不在发布包之列（private app），无 npm 影响。
 
 ---
 
@@ -186,7 +186,7 @@ i18n 配置已是 `code: 'zh'`。统一：文案文件 `zh-CN.json` → `zh.json
 - **依赖补齐**：docs-new 增加 `zod`、`valibot`、`@tanstack/charts`、`@unovis/vue`、`@unovis/ts`、`@internationalized/date`（版本对齐 playground package.json）。
 - **命名冲突**：docs-new 的 `src/components/playground-gallery.vue` 与被丢弃的 playground 同名组件无关，保留 docs 版本即可；`src/examples/` 与 docs-new 现有目录无冲突。
 
-删除时机：playground app 在 T6.5 删除（前置：docs-new 完成切换 + 旧站删除，确保无回退需求）。删除动作包括：`apps/playground/` 目录、根 scripts 的 `dev`（改为 `dev:docs:new`）、`dev:playground`、`build:playground`、`ci.yml` 相关 job（如有）、`.agents/skills/soybean-ui-component-development/` 四文档中 playground 交付面改写为 docs-new `src/examples`、`docs/architecture.md` 的 app 清单（14 child workspaces → 13）。
+删除时机：playground app 在 T6.5 删除（前置：docs-new 完成切换 + 旧站删除，确保无回退需求）。删除动作包括：`apps/playground/` 目录、根 scripts 的 `dev`（改为 `dev:docs:new`）、`dev:playground`、`build:playground`、`ci.yml` 相关 job（如有）、`.agents/skills/soybean-ui-develop/` 四文档中 playground 交付面改写为 docs-new `src/examples`、`docs/architecture.md` 的 app 清单（14 child workspaces → 13）。
 
 ### D8：目录分组与 DocMd path 约定
 
@@ -286,13 +286,13 @@ headless 分组本次只交付骨架：`pages/headless/index.vue`（占位页 + 
 
 ### Phase 6 — 验证、切换与 playground 下线
 
-| ID   | 任务                                                                                                                                                                                                                                                                                                       | 产物 / 验收                                               | 规模 | 前置      |
-| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ---- | --------- |
-| T6.1 | 质量门禁：`typecheck`、`lint`、`ubean build` 全绿；对照 `.agents/skills/soybean-ui-component-development/e2e.md` Tier 2 思路做 docs 冒烟（首页/组件页/demo 交互/搜索/双语/深色）                                                                                                                           | CI 可运行                                                 | M    | Phase 5   |
-| T6.2 | `sui gen api/changelog` 输出多目标化（D4），移除过渡复制；`--translate` 流程回归                                                                                                                                                                                                                           | 生成链路与新站闭环                                        | L    | T3.3      |
-| T6.3 | 文档与配置收尾：更新 `AGENTS.md`/`docs/architecture.md` 中 apps/docs 描述、根 scripts 指向新站、CI `ci.yml` docs 相关 job（如有）调整                                                                                                                                                                      | 文档一致                                                  | S    | T6.1      |
-| T6.4 | 切换：删除 `apps/docs`（含 `pages1`/`layouts1` 死目录随旧站一并消失）；docs-new 包名改回 `@soybeanjs/ui-docs`                                                                                                                                                                                              | 仓库仅存一个 docs 站                                      | S    | T6.1–T6.3 |
-| T6.5 | 删除 `apps/playground`（D7）：目录移除、根 scripts 删 `dev:playground`/`build:playground` 并把默认 `dev` 指向 `dev:docs`、`.agents/skills/soybean-ui-component-development/`（SKILL.md/surfaces.md/e2e.md/audit.md）demo 交付面改写为 docs-new `src/examples`、`docs/architecture.md` workspace 清单 14→13 | 全仓 grep 无 playground 残留引用；`pnpm install` 与 CI 绿 | M    | T6.4      |
+| ID   | 任务                                                                                                                                                                                                                                                                                         | 产物 / 验收                                               | 规模 | 前置      |
+| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ---- | --------- |
+| T6.1 | 质量门禁：`typecheck`、`lint`、`ubean build` 全绿；对照 `.agents/skills/soybean-ui-develop/e2e.md` Tier 2 思路做 docs 冒烟（首页/组件页/demo 交互/搜索/双语/深色）                                                                                                                           | CI 可运行                                                 | M    | Phase 5   |
+| T6.2 | `sui gen api/changelog` 输出多目标化（D4），移除过渡复制；`--translate` 流程回归                                                                                                                                                                                                             | 生成链路与新站闭环                                        | L    | T3.3      |
+| T6.3 | 文档与配置收尾：更新 `AGENTS.md`/`docs/architecture.md` 中 apps/docs 描述、根 scripts 指向新站、CI `ci.yml` docs 相关 job（如有）调整                                                                                                                                                        | 文档一致                                                  | S    | T6.1      |
+| T6.4 | 切换：删除 `apps/docs`（含 `pages1`/`layouts1` 死目录随旧站一并消失）；docs-new 包名改回 `@soybeanjs/ui-docs`                                                                                                                                                                                | 仓库仅存一个 docs 站                                      | S    | T6.1–T6.3 |
+| T6.5 | 删除 `apps/playground`（D7）：目录移除、根 scripts 删 `dev:playground`/`build:playground` 并把默认 `dev` 指向 `dev:docs`、`.agents/skills/soybean-ui-develop/`（SKILL.md/surfaces.md/e2e.md/audit.md）demo 交付面改写为 docs-new `src/examples`、`docs/architecture.md` workspace 清单 14→13 | 全仓 grep 无 playground 残留引用；`pnpm install` 与 CI 绿 | M    | T6.4      |
 
 ---
 

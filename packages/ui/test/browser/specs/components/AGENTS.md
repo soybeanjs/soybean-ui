@@ -5,7 +5,7 @@ This scoped AGENTS file is a routing bridge for assistants editing
 
 Before editing files here:
 
-1. Load the component development skill at `.agents/skills/soybean-ui-component-development/` — specifically [e2e.md](../../../../../.agents/skills/soybean-ui-component-development/e2e.md) for browser e2e design principles, core scenarios, assertion standards, and env setup.
+1. Load the component development skill at `.agents/skills/soybean-ui-develop/` — specifically [e2e.md](../../../../../.agents/skills/soybean-ui-develop/e2e.md) for browser e2e design principles, core scenarios, assertion standards, and env setup.
 2. For `**/*.{ts,tsx,js,jsx}` edits, also load the global `typescript-functional-style` skill.
 
 ## LOCAL CONTEXT
@@ -18,4 +18,4 @@ Before editing files here:
 - Use `page` and `userEvent` from `vitest/browser` for locators and real interactions; use `expect.element(locator)` for retryable assertions. Prefer role-based locators (`page.getByRole`).
 - Do NOT mock `ResizeObserver`, pointer capture, or `scrollIntoView` here — the whole point of browser e2e is to exercise the real implementations that the happy-dom select spec has to mock.
 
-Use this file only as routing and local path context. Normative e2e rules live in [e2e.md](../../../../../.agents/skills/soybean-ui-component-development/e2e.md).
+Use this file only as routing and local path context. Normative e2e rules live in [e2e.md](../../../../../.agents/skills/soybean-ui-develop/e2e.md).

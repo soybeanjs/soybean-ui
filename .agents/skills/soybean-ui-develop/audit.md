@@ -49,7 +49,7 @@ Seven dimensions and their item counts, sources, and benchmark mapping:
 
 | Dim | Name                   | Items | Primary source                                                                                          |
 | :-: | :--------------------- | :---: | :------------------------------------------------------------------------------------------------------ |
-| D1  | Functional compliance  |  19   | `soybean-ui-component-development` SKILL.md / layers.md / surfaces.md / process.md                      |
+| D1  | Functional compliance  |  19   | `soybean-ui-develop` SKILL.md / layers.md / surfaces.md / process.md                                    |
 | D2  | Industry benchmarking  |  12   | Feature matrix of the same component across the six benchmark libraries                                 |
 | D3  | API design             |  14   | Naming, parameter design, return value consistency, usability, extensibility                            |
 | D4  | TypeScript type system |  10   | `typescript-functional-style` + JSDoc rules                                                             |
@@ -63,7 +63,7 @@ Seven dimensions and their item counts, sources, and benchmark mapping:
 
 ### D1. Functional compliance
 
-**Goal:** ensure the component fully satisfies the functional, interaction, and performance requirements of the `soybean-ui-component-development` skill.
+**Goal:** ensure the component fully satisfies the functional, interaction, and performance requirements of the `soybean-ui-develop` skill.
 
 **Scope:** every shipped component.
 

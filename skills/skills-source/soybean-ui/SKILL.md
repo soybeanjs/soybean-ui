@@ -74,5 +74,5 @@ Components({
 
 ## Notes
 
-- For repo-internal component authoring or SoybeanUI source changes, use the `soybean-ui-component-development` skill instead.
+- For repo-internal component authoring or SoybeanUI source changes, use the `soybean-ui-develop` skill instead.
 - Regenerate the component reference files with `pnpm sui gen skills` after docs or generated API data changes.

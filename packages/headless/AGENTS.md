@@ -4,7 +4,7 @@
 
 For any AI assistant editing files under `packages/headless/`:
 
-1. Load the project skill at `.agents/skills/soybean-ui-component-development/` — start with `SKILL.md`, then `layers.md` (Headless section) as the task requires.
+1. Load the project skill at `.agents/skills/soybean-ui-develop/` — start with `SKILL.md`, then `layers.md` (Headless section) as the task requires.
 2. For `**/*.{ts,tsx,js,jsx}` edits, also load the global `typescript-functional-style` skill.
 3. For `**/*.vue` edits, also load the global `typescript-functional-style` and `vue-sfc-structure` skills.
 4. For `packages/headless/src/components/**`, the nearer `packages/headless/src/components/AGENTS.md` narrows the exact component-rule set.
@@ -12,7 +12,7 @@ For any AI assistant editing files under `packages/headless/`:
 The remaining content in this file is package knowledge and local context. Normative component rules live in the skill.
 
 **Package:** `packages/headless/` → publishes as `@soybeanjs/headless`
-**Role:** Logic layer. State, a11y, keyboard nav, focus management. Zero visual styles. Also hosts Compact aggregations when structure belongs in headless rather than the UI wrapper. New families must pass [Headless admission](../../.agents/skills/soybean-ui-component-development/layers.md#headless-admission).
+**Role:** Logic layer. State, a11y, keyboard nav, focus management. Zero visual styles. Also hosts Compact aggregations when structure belongs in headless rather than the UI wrapper. New families must pass [Headless admission](../../.agents/skills/soybean-ui-develop/layers.md#headless-admission).
 
 ## EXPORTS
 
@@ -28,7 +28,7 @@ After public export changes, rerun `pnpm sui gen catalog headless` so `packages/
 - **useControllableState**: Controlled/uncontrolled prop pattern. If initial prop is `undefined`, uses internal `shallowRef`; otherwise returns computed proxy.
 - **useForwardElement**: Exposes inner DOM element via `defineExpose`. Prefer over direct DOM access.
 - **Compact components**: Stable, data-driven compositions can live in headless as `{Name}Compact` only for a family that already passed Headless admission. Compact does not admit a new family.
-- **Composing another family**: Per-slot alias vs domain SFC. Rule lives in `.agents/skills/soybean-ui-component-development/layers.md` (Step 3.1). Remediations for Autocomplete, Segment, BottomSheet, and Combobox Anchor/GroupLabel/ItemIndicator are done; remaining aliases are documented Portal/Arrow/Menu-leaf cases.
+- **Composing another family**: Per-slot alias vs domain SFC. Rule lives in `.agents/skills/soybean-ui-develop/layers.md` (Step 3.1). Remediations for Autocomplete, Segment, BottomSheet, and Combobox Anchor/GroupLabel/ItemIndicator are done; remaining aliases are documented Portal/Arrow/Menu-leaf cases.
 - **Type export surface**: UI wrappers should prefer per-component sub-path type re-exports such as `@soybeanjs/headless/dialog`, not ad hoc deep imports.
 
 ## STRUCTURE

@@ -4,7 +4,7 @@
 
 For any AI assistant editing files under `packages/ui/`:
 
-1. Load the project skill at `.agents/skills/soybean-ui-component-development/` — start with `SKILL.md`, then `layers.md` (UI layer section) as the task requires.
+1. Load the project skill at `.agents/skills/soybean-ui-develop/` — start with `SKILL.md`, then `layers.md` (UI layer section) as the task requires.
 2. For `**/*.{ts,tsx,js,jsx}` edits, also load the global `typescript-functional-style` skill.
 3. For `**/*.vue` edits, also load the global `typescript-functional-style` and `vue-sfc-structure` skills.
 4. For `packages/ui/src/components/**`, the nearer `packages/ui/src/components/AGENTS.md` narrows the exact UI-component rule set.
