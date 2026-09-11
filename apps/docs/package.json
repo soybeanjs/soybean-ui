@@ -15,6 +15,7 @@
     "build:schema": "pnpm --filter sbean build:schema",
     "build:seo": "tsx build/seo.ts",
     "dev": "ubean dev",
+    "prepare": "ubean prepare",
     "preview": "ubean preview",
     "typecheck": "vue-tsc --noEmit --skipLibCheck"
   },
