@@ -23,6 +23,12 @@ export interface ReleaseChangelogNoteSource {
   type: 'breaking' | 'info';
   /** The note body (default locale, English). Translatable via `summaryKey`. */
   summary: string;
+  /**
+   * Optional content path of the upgrade guide for this release, relative to
+   * `src/content/{locale}/` (e.g. `ui/migration/v0.40.0`). When set, the
+   * releases page renders a link to `/overview/migration/<version>`.
+   */
+  docPath?: string;
 }
 
 export const releaseChangelogNotes: Record<string, ReleaseChangelogNoteSource[]> = {
@@ -36,6 +42,18 @@ export const releaseChangelogNotes: Record<string, ReleaseChangelogNoteSource[]>
         'The theme menu config (menuColor / menuAccent) is removed, and custom color overrides now use `overrides: { light, dark }` ' +
         'instead of the legacy preset object (presets can also be passed through SConfigProvider `theme.preset`). ' +
         'Please update your dependencies and imports accordingly.'
+    }
+  ],
+  'v0.40.0-beta.1': [
+    {
+      type: 'breaking',
+      summary:
+        'This release removes the published peripheral packages @soybeanjs/ui-x, @soybeanjs/admin and @soybeanjs/chart. ' +
+        'In headless, the RovingFocusGroup/RovingFocusItem components are replaced by the useRovingFocusGroup/useRovingFocusGroupItem ' +
+        'composables, PropsToContext is renamed to ToContext, and transformPropsToContext becomes toContext with plain (non-invoked) ' +
+        'function values. STable no longer rounds by default, and headless components stop injecting global helper classes. ' +
+        'See the upgrade guide for the full migration walkthrough.',
+      docPath: 'ui/migration/v0.40.0'
     }
   ]
 };

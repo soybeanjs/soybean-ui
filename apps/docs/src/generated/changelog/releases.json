@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T04:38:25.304Z",
+  "generatedAt": "2026-09-11T05:10:41.688Z",
   "schemaVersion": 1,
   "releases": [
     {
@@ -42,7 +42,14 @@
         "breaking": 1,
         "docs": 30
       },
-      "notes": [],
+      "notes": [
+        {
+          "type": "breaking",
+          "summary": "This release removes the published peripheral packages @soybeanjs/ui-x, @soybeanjs/admin and @soybeanjs/chart. In headless, the RovingFocusGroup/RovingFocusItem components are replaced by the useRovingFocusGroup/useRovingFocusGroupItem composables, PropsToContext is renamed to ToContext, and transformPropsToContext becomes toContext with plain (non-invoked) function values. STable no longer rounds by default, and headless components stop injecting global helper classes. See the upgrade guide for the full migration walkthrough.",
+          "summaryKey": "changelog.generated.note.v0.40.0-beta.1.0",
+          "docPath": "ui/migration/v0.40.0"
+        }
+      ],
       "entries": [
         {
           "type": "feature",

@@ -15,6 +15,8 @@ export interface DocsTarget {
   key: 'docs';
   /** Root of committed generated data, e.g. `apps/docs/src/generated`. */
   generatedDir: string;
+  /** Root of markdown content, e.g. `apps/docs/src/content` (holds `<locale>/**.md`). */
+  contentDir: string;
   /** Locale codes for generated locale templates (first is the source/default). */
   locales: string[];
 }
@@ -25,6 +27,7 @@ export const docsTargets: DocsTarget[] = [
   {
     key: 'docs',
     generatedDir: path.join(repoRoot, 'apps/docs/src/generated'),
+    contentDir: path.join(repoRoot, 'apps/docs/src/content'),
     locales: ['en', 'zh-CN']
   }
 ];

@@ -1,3 +1,4 @@
+import { existsSync, readdirSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
@@ -61,6 +62,8 @@ interface GeneratedReleaseChangelogNote {
   type: ReleaseChangelogNoteSource['type'];
   summary: string;
   summaryKey: string;
+  /** Content path of the upgrade guide, resolved against `src/content/{locale}/`. */
+  docPath?: string;
 }
 
 interface GeneratedReleaseChangelogVersion {
@@ -145,13 +148,16 @@ const sharedScopeRelevanceScoreMap: Record<string, number> = {
 /**
  * Parse `CHANGELOG.md` and write per-component + release changelog JSON into
  * `outputDir` (a docs target's `<generated>/changelog` directory).
+ *
+ * `contentDir` is the docs target's markdown root (`src/content`); it is used
+ * to validate that note `docPath` values point at real upgrade-guide pages.
  */
-export async function generateChangelogData(outputDir: string): Promise<void> {
+export async function generateChangelogData(outputDir: string, contentDir: string): Promise<void> {
   const changelogContent = await readFile(changelogPath, 'utf8');
   const generatedAt = new Date().toISOString();
   const versionBlocks = parseChangelog(changelogContent);
   const documents = createComponentDocuments(versionBlocks, generatedAt);
-  const releasesDocument = createReleaseDocument(versionBlocks, generatedAt);
+  const releasesDocument = createReleaseDocument(versionBlocks, generatedAt, contentDir);
 
   const index = createIndex(documents, generatedAt);
 
@@ -383,7 +389,8 @@ function createSummaryKey(entry: ParsedChangelogEntry): string | null {
 
 function createReleaseDocument(
   versionBlocks: ParsedVersionBlock[],
-  generatedAt: string
+  generatedAt: string,
+  contentDir: string
 ): GeneratedReleaseChangelogDocument {
   return {
     generatedAt,
@@ -453,7 +460,7 @@ function createReleaseDocument(
         components,
         newComponents: resolveIntroducedComponents(versionBlock.version),
         typeCounts,
-        notes: resolveReleaseNotes(versionBlock.version),
+        notes: resolveReleaseNotes(versionBlock.version, contentDir),
         entries
       } satisfies GeneratedReleaseChangelogVersion;
     })
@@ -464,18 +471,38 @@ function resolveIntroducedComponents(version: string): string[] {
   return releaseIntroducedComponents[version] ?? [];
 }
 
-function resolveReleaseNotes(version: string): GeneratedReleaseChangelogNote[] {
+function resolveReleaseNotes(version: string, contentDir: string): GeneratedReleaseChangelogNote[] {
   const notes = releaseChangelogNotes[version];
 
   if (!notes?.length) {
     return [];
   }
 
-  return notes.map((note, index) => ({
-    type: note.type,
-    summary: note.summary,
-    summaryKey: `changelog.generated.note.${version}.${index}`
-  }));
+  return notes.map((note, index) => {
+    const { docPath } = note;
+
+    if (docPath && !isExistingContentDoc(contentDir, docPath)) {
+      throw new Error(
+        `Release note "${version}[${index}]" points at missing upgrade guide: src/content/{locale}/${docPath}.md`
+      );
+    }
+
+    return {
+      type: note.type,
+      summary: note.summary,
+      summaryKey: `changelog.generated.note.${version}.${index}`,
+      ...(docPath ? { docPath } : {})
+    };
+  });
+}
+
+/** A note docPath is valid only when the markdown exists for every content locale. */
+function isExistingContentDoc(contentDir: string, docPath: string): boolean {
+  const locales = readdirSync(contentDir, { withFileTypes: true })
+    .filter(entry => entry.isDirectory())
+    .map(entry => entry.name);
+
+  return locales.length > 0 && locales.every(locale => existsSync(path.join(contentDir, locale, `${docPath}.md`)));
 }
 
 function resolveEntryComponents(entry: ParsedChangelogEntry): string[] {

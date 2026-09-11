@@ -156,7 +156,7 @@ async function runGenChangelog(args: string[]): Promise<void> {
   const { generateChangelogLocaleTemplates } = await import('./commands/changelog-i18n');
 
   for (const target of targets) {
-    await generateChangelogData(path.join(target.generatedDir, 'changelog'));
+    await generateChangelogData(path.join(target.generatedDir, 'changelog'), target.contentDir);
     await generateChangelogLocaleTemplates(target);
   }
 
