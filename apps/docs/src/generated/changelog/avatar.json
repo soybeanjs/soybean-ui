@@ -1,6 +1,6 @@
 {
   "component": "avatar",
-  "generatedAt": "2026-09-07T18:08:44.208Z",
+  "generatedAt": "2026-09-11T04:33:17.500Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -15,6 +15,23 @@
           "summaryKey": "changelog.generated.v0.18.0.7d59d",
           "commitHash": "7d59d",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7d59d36a",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.7",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.6...v0.0.7",
+      "date": "2025-12-09",
+      "entries": [
+        {
+          "type": "breaking",
+          "scope": "avatar",
+          "summary": "add image source and delay properties to AvatarProps for enhanced image handling",
+          "summaryKey": "changelog.generated.v0.0.7.f55e1",
+          "commitHash": "f55e1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f55e1e9d",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

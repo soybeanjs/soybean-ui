@@ -1,6 +1,6 @@
 {
   "component": "dialog",
-  "generatedAt": "2026-09-07T18:08:44.208Z",
+  "generatedAt": "2026-09-11T04:33:17.500Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -77,6 +77,16 @@
       "date": "2026-04-26",
       "entries": [
         {
+          "type": "breaking",
+          "scope": "dialog",
+          "summary": "Implement DialogCompact and refactor `useDialog`",
+          "summaryKey": "changelog.generated.v0.15.0.39019",
+          "commitHash": "39019",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/39019743",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
           "type": "feature",
           "scope": "dialog",
           "summary": "enable showConfirm prop in DialogCompact component",
@@ -103,6 +113,16 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3",
       "date": "2026-04-26",
       "entries": [
+        {
+          "type": "breaking",
+          "scope": "dialog",
+          "summary": "Implement DialogCompact and refactor `useDialog`",
+          "summaryKey": "changelog.generated.v0.15.0-beta.3.39019",
+          "commitHash": "39019",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/39019743",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
         {
           "type": "feature",
           "scope": "dialog",

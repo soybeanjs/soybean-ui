@@ -8,9 +8,6 @@
               "1": {
                 "0": "This release ships a rebuilt theme system with renamed packages. @soybeanjs/shadcn-theme is now @soybeanjs/theme (createShadcnTheme → createTheme), and @soybeanjs/unocss-shadcn is now @soybeanjs/ui-uno (presetShadcn → presetUiUnocss, ShadcnPresetOptions → UiUnocssOptions). The theme menu config (menuColor / menuAccent) is removed, and custom color overrides now use `overrides: { light, dark }` instead of the legacy preset object (presets can also be passed through SConfigProvider `theme.preset`). Please update your dependencies and imports accordingly."
               }
-            },
-            "0": {
-              "0": "This release ships a rebuilt theme system with renamed packages. @soybeanjs/shadcn-theme is now @soybeanjs/theme (createShadcnTheme → createTheme), and @soybeanjs/unocss-shadcn is now @soybeanjs/ui-uno (presetShadcn → presetUiUnocss, ShadcnPresetOptions → UiUnocssOptions). The theme menu config (menuColor / menuAccent) is removed, and custom color overrides now use `overrides: { light, dark }` instead of the legacy preset object (presets can also be passed through SConfigProvider `theme.preset`). Please update your dependencies and imports accordingly."
             }
           }
         }
@@ -73,7 +70,8 @@
             "e817f": "update border styles for selected button states in pagination variants",
             "e84da": "correct not-found page and simplify 404 layout",
             "ea6d4": "optimize playground examples",
-            "f0ce2": "introduce theme customizer component and update theme context for dynamic styling"
+            "f0ce2": "introduce theme customizer component and update theme context for dynamic styling",
+            "f55e1": "add image source and delay properties to AvatarProps for enhanced image handling"
           },
           "8": {
             "13132": "update CSS variable names in select popper for consistency and clarity",
@@ -176,11 +174,15 @@
           },
           "14": {
             "78876": "update deps",
+            "3718f": "replace mobile media query with isMobile boolean for improved layout handling",
             "bc59a": "modify Badge docs."
           },
           "15": {
             "0ef4c": "fix headless package.json exports",
             "76bf4": "update @soybeanjs/unocss-shadcn and adjust imports in theme customizer components"
+          },
+          "16": {
+            "4b6b3": "refactor theme"
           },
           "17": {
             "35273": "optimize docs theme configurator",
@@ -503,6 +505,7 @@
             "3832f": "update VirtualizerContent to extend PrimitiveProps",
             "3ded4": "update useSelection to support MaybeRefOrGetter for props",
             "643db": "fix code-block style",
+            "6de5a": "rename NumberInput to InputNumber",
             "78f2b": "conditionally render CheckboxLabel based on slot or label presence; update root variant style",
             "8dde2": "remove unused TableCaptionProps from types",
             "be24e": "update lint script to include eslint for code formatting",
@@ -580,7 +583,9 @@
         "12": {
           "0": {
             "08e1c": "add PopoverCloseEmits and beforeClose prop; update PopoverPositioner default props",
+            "65e59": "rename Action to Confirm, update props, update useDialog file position",
             "6e917": "implement component Popconfirm",
+            "9e741": "refactor `useContext` and update related usage",
             "e024c": "add default prop for avoidCollisions in TooltipPositioner; bind triggerProps to TooltipTrigger"
           },
           "1": {
@@ -678,6 +683,7 @@
             "22707": "reorganize imports and update slot structure for Accordion components",
             "33809": "Implement Spinner component",
             "35549": "update deps",
+            "39019": "Implement DialogCompact and refactor `useDialog`",
             "43638": "add requirement for component key insertion in sidebar menu",
             "46994": "add pnpm overrides for vite-ssg and update jsdom version",
             "50076": "enhance selection behavior and add boolean casting utility",
@@ -973,6 +979,7 @@
             "3": {
               "15609": "add shared headless date utilities for upcoming date components",
               "22707": "reorganize imports and update slot structure for Accordion components",
+              "39019": "Implement DialogCompact and refactor `useDialog`",
               "50076": "enhance selection behavior and add boolean casting utility",
               "54031": "update unocss order",
               "59664": "update component classes for consistent sizing",
@@ -1952,6 +1959,7 @@
             "01df5": "release popper-v2 body scroll lock on close instead of unmount",
             "072f7": "implement horizontal tree navigation component",
             "090e5": "remove useless ThemeGenerator",
+            "091f4": "rename popper-v2 to popper across packages, tests and playground",
             "09ea2": "wrap Combobox slots as domain primitives",
             "0b9f9": "deprecate family in favor of NavMenu",
             "11c20": "implement menubar-like keyboard for NavMenu",

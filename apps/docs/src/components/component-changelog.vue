@@ -17,6 +17,7 @@ const changelogDocument = computed(() => getComponentChangelogDocument(props.com
 const versions = computed(() => changelogDocument.value.versions);
 
 const typeKeyMap: Record<GeneratedChangelogEntryType, string> = {
+  breaking: 'changelog.types.breaking',
   feature: 'changelog.types.feature',
   fix: 'changelog.types.fix',
   optimization: 'changelog.types.optimization',
@@ -27,6 +28,7 @@ const typeKeyMap: Record<GeneratedChangelogEntryType, string> = {
 };
 
 const typeClassMap: Record<GeneratedChangelogEntryType, string> = {
+  breaking: 'border-destructive/60 bg-destructive/15 text-destructive font-bold',
   feature: 'border-primary/25 bg-primary/10 text-primary',
   fix: 'border-destructive/25 bg-destructive/10 text-destructive',
   optimization: 'border-info/25 bg-info/10 text-info',

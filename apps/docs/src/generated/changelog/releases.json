@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-07T18:08:44.208Z",
+  "generatedAt": "2026-09-11T04:33:17.500Z",
   "schemaVersion": 1,
   "releases": [
     {
       "version": "v0.31.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.31.0",
       "date": "2026-08-31",
-      "entryCount": 67,
+      "entryCount": 68,
       "componentCount": 14,
       "components": [
         "select",
@@ -31,6 +31,7 @@
         "refactor": 16,
         "chore": 3,
         "style": 4,
+        "breaking": 1,
         "fix": 10,
         "docs": 11
       },
@@ -244,6 +245,17 @@
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": ["menu"]
+        },
+        {
+          "type": "breaking",
+          "scope": "components",
+          "summary": "rename popper-v2 to popper across packages, tests and playground",
+          "summaryKey": "changelog.generated.v0.31.0.091f4",
+          "commitHash": "091f4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/091f4e1b0",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
         },
         {
           "type": "feature",
@@ -804,13 +816,7 @@
         "refactor": 12,
         "chore": 14
       },
-      "notes": [
-        {
-          "type": "breaking",
-          "summary": "This release ships a rebuilt theme system with renamed packages. @soybeanjs/shadcn-theme is now @soybeanjs/theme (createShadcnTheme → createTheme), and @soybeanjs/unocss-shadcn is now @soybeanjs/ui-uno (presetShadcn → presetUiUnocss, ShadcnPresetOptions → UiUnocssOptions). The theme menu config (menuColor / menuAccent) is removed, and custom color overrides now use `overrides: { light, dark }` instead of the legacy preset object (presets can also be passed through SConfigProvider `theme.preset`). Please update your dependencies and imports accordingly.",
-          "summaryKey": "changelog.generated.note.v0.30.0.0"
-        }
-      ],
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -10681,16 +10687,16 @@
       "version": "v0.15.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
       "date": "2026-04-26",
-      "entryCount": 152,
+      "entryCount": 153,
       "componentCount": 24,
       "components": [
         "table",
         "menu",
         "accordion",
         "affix",
+        "dialog",
         "progress",
         "toast",
-        "dialog",
         "combobox",
         "checkbox",
         "listbox",
@@ -10711,6 +10717,7 @@
       ],
       "newComponents": [],
       "typeCounts": {
+        "breaking": 1,
         "feature": 49,
         "fix": 17,
         "optimization": 20,
@@ -10721,6 +10728,17 @@
       },
       "notes": [],
       "entries": [
+        {
+          "type": "breaking",
+          "scope": "dialog",
+          "summary": "Implement DialogCompact and refactor `useDialog`",
+          "summaryKey": "changelog.generated.v0.15.0.39019",
+          "commitHash": "39019",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/39019743",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["dialog"]
+        },
         {
           "type": "feature",
           "scope": "accordion",
@@ -12425,11 +12443,11 @@
       "version": "v0.15.0-beta.3",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3",
       "date": "2026-04-26",
-      "entryCount": 40,
+      "entryCount": 41,
       "componentCount": 14,
       "components": [
-        "accordion",
         "dialog",
+        "accordion",
         "progress",
         "table",
         "listbox",
@@ -12445,6 +12463,7 @@
       ],
       "newComponents": [],
       "typeCounts": {
+        "breaking": 1,
         "feature": 13,
         "fix": 6,
         "optimization": 6,
@@ -12455,6 +12474,17 @@
       },
       "notes": [],
       "entries": [
+        {
+          "type": "breaking",
+          "scope": "dialog",
+          "summary": "Implement DialogCompact and refactor `useDialog`",
+          "summaryKey": "changelog.generated.v0.15.0-beta.3.39019",
+          "commitHash": "39019",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/39019743",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["dialog"]
+        },
         {
           "type": "feature",
           "scope": "accordion",
@@ -14920,13 +14950,14 @@
       "version": "v0.12.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.11.4...v0.12.0",
       "date": "2026-03-07",
-      "entryCount": 3,
+      "entryCount": 5,
       "componentCount": 2,
       "components": ["popover", "tooltip"],
       "newComponents": [],
       "typeCounts": {
         "feature": 2,
-        "optimization": 1
+        "optimization": 1,
+        "breaking": 2
       },
       "notes": [],
       "entries": [
@@ -14951,6 +14982,28 @@
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": ["tooltip"]
+        },
+        {
+          "type": "breaking",
+          "scope": "alert-dialog",
+          "summary": "rename Action to Confirm, update props, update useDialog file position",
+          "summaryKey": "changelog.generated.v0.12.0.65e59",
+          "commitHash": "65e59",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/65e59349",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "breaking",
+          "scope": "hooks",
+          "summary": "refactor `useContext` and update related usage",
+          "summaryKey": "changelog.generated.v0.12.0.9e741",
+          "commitHash": "9e741",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9e74124b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
         },
         {
           "type": "feature",
@@ -15546,13 +15599,14 @@
       "version": "v0.9.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.8.1...v0.9.0",
       "date": "2026-03-01",
-      "entryCount": 12,
+      "entryCount": 13,
       "componentCount": 2,
       "components": ["table", "checkbox"],
       "newComponents": [],
       "typeCounts": {
         "feature": 1,
         "fix": 5,
+        "breaking": 1,
         "optimization": 2,
         "chore": 3,
         "style": 1
@@ -15591,6 +15645,17 @@
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": ["table"]
+        },
+        {
+          "type": "breaking",
+          "scope": "components",
+          "summary": "rename NumberInput to InputNumber",
+          "summaryKey": "changelog.generated.v0.9.0.6de5a",
+          "commitHash": "6de5a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6de5a8f1",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
         },
         {
           "type": "optimization",
@@ -18189,13 +18254,27 @@
       "version": "v0.0.16",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.15...v0.0.16",
       "date": "2026-01-17",
-      "entryCount": 0,
+      "entryCount": 1,
       "componentCount": 0,
       "components": [],
       "newComponents": [],
-      "typeCounts": {},
+      "typeCounts": {
+        "breaking": 1
+      },
       "notes": [],
-      "entries": []
+      "entries": [
+        {
+          "type": "breaking",
+          "scope": "theme",
+          "summary": "refactor theme",
+          "summaryKey": "changelog.generated.v0.0.16.4b6b3",
+          "commitHash": "4b6b3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4b6b3faa",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
     },
     {
       "version": "v0.0.15",
@@ -18238,16 +18317,28 @@
       "version": "v0.0.14",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.13...v0.0.14",
       "date": "2026-01-14",
-      "entryCount": 2,
-      "componentCount": 0,
-      "components": [],
+      "entryCount": 3,
+      "componentCount": 1,
+      "components": ["layout"],
       "newComponents": [],
       "typeCounts": {
+        "breaking": 1,
         "docs": 1,
         "chore": 1
       },
       "notes": [],
       "entries": [
+        {
+          "type": "breaking",
+          "scope": "layout",
+          "summary": "replace mobile media query with isMobile boolean for improved layout handling",
+          "summaryKey": "changelog.generated.v0.0.14.3718f",
+          "commitHash": "3718f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3718f891",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["layout"]
+        },
         {
           "type": "docs",
           "scope": "components",
@@ -19352,11 +19443,12 @@
       "version": "v0.0.7",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.6...v0.0.7",
       "date": "2025-12-09",
-      "entryCount": 16,
-      "componentCount": 3,
-      "components": ["layout", "pagination", "breadcrumb"],
+      "entryCount": 17,
+      "componentCount": 4,
+      "components": ["avatar", "layout", "pagination", "breadcrumb"],
       "newComponents": [],
       "typeCounts": {
+        "breaking": 1,
         "fix": 4,
         "style": 3,
         "feature": 3,
@@ -19365,6 +19457,17 @@
       },
       "notes": [],
       "entries": [
+        {
+          "type": "breaking",
+          "scope": "avatar",
+          "summary": "add image source and delay properties to AvatarProps for enhanced image handling",
+          "summaryKey": "changelog.generated.v0.0.7.f55e1",
+          "commitHash": "f55e1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f55e1e9d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["avatar"]
+        },
         {
           "type": "fix",
           "scope": "layout",

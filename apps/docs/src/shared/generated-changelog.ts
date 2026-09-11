@@ -1,6 +1,14 @@
 import generatedChangelogIndex from '~/generated/changelog/index.json';
 
-export type GeneratedChangelogEntryType = 'feature' | 'fix' | 'optimization' | 'refactor' | 'docs' | 'chore' | 'style';
+export type GeneratedChangelogEntryType =
+  | 'breaking'
+  | 'feature'
+  | 'fix'
+  | 'optimization'
+  | 'refactor'
+  | 'docs'
+  | 'chore'
+  | 'style';
 
 export interface GeneratedChangelogEntry {
   type: GeneratedChangelogEntryType;

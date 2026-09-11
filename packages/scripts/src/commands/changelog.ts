@@ -8,7 +8,7 @@ import { releaseIntroducedComponents, releaseChangelogNotes } from './changelog-
 import type { ReleaseChangelogNoteSource } from './changelog-notes';
 import { componentChangelogOverrides } from './changelog-overrides';
 
-type ChangelogEntryType = 'feature' | 'fix' | 'optimization' | 'refactor' | 'docs' | 'chore' | 'style';
+type ChangelogEntryType = 'breaking' | 'feature' | 'fix' | 'optimization' | 'refactor' | 'docs' | 'chore' | 'style';
 
 interface ParsedVersionBlock {
   version: string;
@@ -104,6 +104,7 @@ const componentNames = Object.keys(headlessComponents)
 const componentNameSet = new Set(componentNames);
 
 const sectionTypeMap: Record<string, ChangelogEntryType> = {
+  'breaking changes': 'breaking',
   features: 'feature',
   'bug fixes': 'fix',
   optimizations: 'optimization',
@@ -113,6 +114,7 @@ const sectionTypeMap: Record<string, ChangelogEntryType> = {
   styles: 'style'
 };
 const typeRelevanceScoreMap: Record<ChangelogEntryType, number> = {
+  breaking: 100,
   feature: 70,
   fix: 60,
   optimization: 45,

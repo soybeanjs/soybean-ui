@@ -1,6 +1,6 @@
 {
   "component": "layout",
-  "generatedAt": "2026-09-07T18:08:44.208Z",
+  "generatedAt": "2026-09-11T04:33:17.500Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -161,6 +161,23 @@
           "summaryKey": "changelog.generated.v0.1.1.203e7",
           "commitHash": "203e7",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/203e7b0d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.14",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.13...v0.0.14",
+      "date": "2026-01-14",
+      "entries": [
+        {
+          "type": "breaking",
+          "scope": "layout",
+          "summary": "replace mobile media query with isMobile boolean for improved layout handling",
+          "summaryKey": "changelog.generated.v0.0.14.3718f",
+          "commitHash": "3718f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3718f891",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

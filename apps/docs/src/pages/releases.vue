@@ -69,6 +69,7 @@ const displayedReleases = computed<GeneratedReleaseChangelogVersion[]>(() => {
         return counts;
       },
       {
+        breaking: 0,
         feature: 0,
         fix: 0,
         optimization: 0,
@@ -100,6 +101,7 @@ const highlightedEntryCount = 4;
 const highlightedComponentCount = 8;
 
 const typeOrder: GeneratedChangelogEntryType[] = [
+  'breaking',
   'feature',
   'fix',
   'optimization',
@@ -110,6 +112,7 @@ const typeOrder: GeneratedChangelogEntryType[] = [
 ];
 
 const typeClassMap: Record<GeneratedChangelogEntryType, string> = {
+  breaking: 'border-destructive/60 bg-destructive/15 text-destructive font-bold',
   feature: 'border-primary/25 bg-primary/10 text-primary',
   fix: 'border-destructive/25 bg-destructive/10 text-destructive',
   optimization: 'border-info/25 bg-info/10 text-info',
@@ -726,6 +729,15 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
 
               <template #default>
                 <div class="space-y-5">
+                  <SAlert
+                    v-if="release.typeCounts.breaking"
+                    color="destructive"
+                    variant="soft"
+                    icon="lucide:triangle-alert"
+                    :title="t('releases_page.breaking_banner.title')"
+                    :description="t('releases_page.breaking_banner.desc', { count: release.typeCounts.breaking })"
+                  />
+
                   <div v-if="release.notes.length" class="space-y-3">
                     <SAlert
                       v-for="note in release.notes"

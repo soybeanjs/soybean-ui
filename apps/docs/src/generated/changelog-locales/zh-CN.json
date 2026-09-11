@@ -8,9 +8,6 @@
               "1": {
                 "0": "该版本带来了重建的主题系统和包重命名。@soybeanjs/shadcn-theme 已改名为 @soybeanjs/theme（createShadcnTheme → createTheme），@soybeanjs/unocss-shadcn 已改名为 @soybeanjs/ui-uno（presetShadcn → presetUiUnocss，ShadcnPresetOptions → UiUnocssOptions）。已移除主题的 menu 配置（menuColor / menuAccent），自定义颜色覆盖改用 `overrides: { light, dark }` 取代旧的 preset 对象（也可通过 SConfigProvider 的 `theme.preset` 传入 preset）。请相应更新你的依赖与导入。"
               }
-            },
-            "0": {
-              "0": "该版本带来了重建的主题系统和包重命名。@soybeanjs/shadcn-theme 已改名为 @soybeanjs/theme（createShadcnTheme → createTheme），@soybeanjs/unocss-shadcn 已改名为 @soybeanjs/ui-uno（presetShadcn → presetUiUnocss，ShadcnPresetOptions → UiUnocssOptions）。已移除主题的 menu 配置（menuColor / menuAccent），自定义颜色覆盖改用 `overrides: { light, dark }` 取代旧的 preset 对象（也可通过 SConfigProvider 的 `theme.preset` 传入 preset）。请相应更新你的依赖与导入。"
             }
           }
         }
@@ -73,7 +70,8 @@
             "e817f": "更新分页变量中选定按钮状态的边框样式",
             "e84da": "更正未找到页面并简化 404 布局",
             "ea6d4": "优化操场示例",
-            "f0ce2": "引入主题定制组件并更新主题上下文，以实现动态样式设计"
+            "f0ce2": "引入主题定制组件并更新主题上下文，以实现动态样式设计",
+            "f55e1": ""
           },
           "8": {
             "13132": "更新选择弹出器中的 CSS 变量名，使其更加一致和清晰",
@@ -176,11 +174,15 @@
           },
           "14": {
             "78876": "更新资料库",
+            "3718f": "",
             "bc59a": "修改徽章文档。"
           },
           "15": {
             "0ef4c": "修复无头 package.json 导出",
             "76bf4": "更新 @soybeanjs/unocss-shadcn 并调整主题自定义组件中的导入内容"
+          },
+          "16": {
+            "4b6b3": ""
           },
           "17": {
             "35273": "优化文档主题配置器",
@@ -503,6 +505,7 @@
             "3832f": "更新 VirtualizerContent 以扩展 PrimitiveProps",
             "3ded4": "更新 useSelection 以支持道具的 MaybeRefOrGetter",
             "643db": "修复代码块样式",
+            "6de5a": "",
             "78f2b": "根据槽或标签的存在有条件地渲染 CheckboxLabel；更新根变体样式",
             "8dde2": "从类型中移除未使用的 TableCaptionProps",
             "be24e": "更新 lint 脚本，加入 eslint 以调整代码格式",
@@ -580,7 +583,9 @@
         "12": {
           "0": {
             "08e1c": "添加 PopoverCloseEmits 和 beforeClose 命题；更新 PopoverPositioner 默认命题",
+            "65e59": "",
             "6e917": "执行组件 Popconfirm",
+            "9e741": "",
             "e024c": "在 TooltipPositioner 中为 avoidCollisions 添加默认道具；将 triggerProps 与 TooltipTrigger 绑定"
           },
           "1": {
@@ -678,6 +683,7 @@
             "22707": "为 Accordion 组件重组导入并更新插槽结构",
             "33809": "实施 Spinner 组件",
             "35549": "更新资料库",
+            "39019": "",
             "43638": "添加在侧边栏菜单中插入组件键的要求",
             "46994": "为 vite-ssg 添加 pnpm 覆盖项并更新 jsdom 版本",
             "50076": "增强选择行为并添加布尔运算工具",
@@ -973,6 +979,7 @@
             "3": {
               "15609": "为即将到来的日期组件添加共享的无头日期实用程序",
               "22707": "为 Accordion 组件重组导入并更新插槽结构",
+              "39019": "",
               "50076": "增强选择行为并添加布尔运算工具",
               "54031": "更新 UNOCSS 订单",
               "59664": "更新组件类，使大小一致",
@@ -1952,6 +1959,7 @@
             "01df5": "发布 popper-v2：关闭时锁定正文滚动条，而非解除挂载",
             "072f7": "实现水平树形导航组件",
             "090e5": "移除无用的 ThemeGenerator",
+            "091f4": "",
             "09ea2": "将下拉列表（Combobox）插槽包装为领域基本类型",
             "0b9f9": "弃用 family，改用 NavMenu",
             "11c20": "为 NavMenu 实现类似菜单栏的键盘快捷键",

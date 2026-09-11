@@ -958,6 +958,7 @@
       "desc": "当 CHANGELOG 条目使用该组件 scope，或被人工映射到该组件时，这里会展示对应版本变更。"
     },
     "types": {
+      "breaking": "破坏性变更",
       "feature": "新功能",
       "fix": "修复",
       "optimization": "优化",
@@ -972,6 +973,10 @@
     "title": "更新日志",
     "badges": {
       "new": "新增"
+    },
+    "breaking_banner": {
+      "title": "破坏性变更",
+      "desc": "本版本包含 {count} 项破坏性变更，升级前请先阅读。"
     },
     "summary": "用全局视角查看最近版本、受影响组件与升级入口，再按需跳回具体组件文档处理升级细节。",
     "filter": {

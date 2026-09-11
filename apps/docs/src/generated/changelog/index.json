@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T18:08:44.208Z",
+  "generatedAt": "2026-09-11T04:33:17.500Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -55,8 +55,8 @@
       "component": "avatar",
       "file": "avatar.json",
       "latestVersion": "v0.18.0",
-      "versionCount": 1,
-      "entryCount": 1
+      "versionCount": 2,
+      "entryCount": 2
     },
     "backtop": {
       "component": "backtop",
@@ -252,7 +252,7 @@
       "file": "dialog.json",
       "latestVersion": "v0.30.0",
       "versionCount": 13,
-      "entryCount": 16
+      "entryCount": 18
     },
     "dropdown-menu": {
       "component": "dropdown-menu",
@@ -328,8 +328,8 @@
       "component": "layout",
       "file": "layout.json",
       "latestVersion": "v0.22.3",
-      "versionCount": 15,
-      "entryCount": 16
+      "versionCount": 16,
+      "entryCount": 17
     },
     "link": {
       "component": "link",
