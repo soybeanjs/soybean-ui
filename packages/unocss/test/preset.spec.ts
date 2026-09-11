@@ -12,8 +12,9 @@ import type { UiUnocssOptions } from '../src/options';
  * Extract the generated theme CSS out of the self preset's preflight.
  *
  * The self preset (`soybean-ui-uno`) carries the theme layer as a preflight
- * whose `getCSS()` returns the minified CSS string produced by `createTheme`
- * (base tokens + light/dark color tokens).
+ * whose `getCSS()` returns the (unminified) CSS string produced by
+ * `createTheme` (base tokens + light/dark color tokens). The preset does not
+ * minify on purpose — the final bundle is minified at build time.
  */
 function getThemeCss(presets: Preset<Theme>[]): string {
   const self = presets.find(p => p.name === 'soybean-ui-uno');
@@ -32,14 +33,14 @@ describe('presetUiUnocss', () => {
 
   it('applies size/radius base tokens to the generated theme CSS', () => {
     const css = getThemeCss(presetUiUnocss({ uiCSS: true, size: 'lg', radius: 'sm' }));
-    expect(css).toContain('--size:18px');
-    expect(css).toContain('--radius:.5rem');
+    expect(css).toContain('--size: 18px');
+    expect(css).toContain('--radius: 0.5rem');
   });
 
   it('falls back to the engine defaults when no base tokens are given', () => {
     const css = getThemeCss(presetUiUnocss({ uiCSS: true }));
-    expect(css).toContain('--size:16px');
-    expect(css).toContain('--radius:.625rem');
+    expect(css).toContain('--size: 16px');
+    expect(css).toContain('--radius: 0.625rem');
   });
 });
 
@@ -152,8 +153,8 @@ describe('presetSbean', () => {
     });
 
     const css = getThemeCss(presetSbean({ cwd: dir }));
-    expect(css).toContain('--size:18px');
-    expect(css).toContain('--radius:.5rem');
+    expect(css).toContain('--size: 18px');
+    expect(css).toContain('--radius: 0.5rem');
 
     fs.rmSync(dir, { recursive: true, force: true });
   });
@@ -161,8 +162,8 @@ describe('presetSbean', () => {
   it('falls back to the default theme when sbean.json is missing', () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'sbean-empty-'));
     const css = getThemeCss(presetSbean({ cwd: dir }));
-    expect(css).toContain('--size:16px');
-    expect(css).toContain('--radius:.625rem');
+    expect(css).toContain('--size: 16px');
+    expect(css).toContain('--radius: 0.625rem');
     fs.rmSync(dir, { recursive: true, force: true });
   });
 
@@ -170,8 +171,8 @@ describe('presetSbean', () => {
     const dir = withConfig({ uno: { base: 'zinc', primary: 'indigo', size: 'sm', radius: 'md' } });
 
     const css = getThemeCss(presetSbean({ cwd: dir, overrides: { size: 'xl' } }));
-    expect(css).toContain('--size:20px');
-    expect(css).toContain('--radius:.625rem');
+    expect(css).toContain('--size: 20px');
+    expect(css).toContain('--radius: 0.625rem');
 
     fs.rmSync(dir, { recursive: true, force: true });
   });
