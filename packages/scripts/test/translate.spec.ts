@@ -67,6 +67,7 @@ async function removeTempDir(filePath: string): Promise<void> {
 describe('shared/translate', () => {
   afterEach(() => {
     vi.unstubAllGlobals();
+    vi.unstubAllEnvs();
   });
 
   describe('toDeepLLanguage', () => {
@@ -301,6 +302,11 @@ describe('shared/translate', () => {
 
   describe('translateJsonLocaleFile', () => {
     it('translates pending entries and writes them into the target file', async () => {
+      // The network layer is mocked below; stub a dummy key so the test does
+      // not depend on a real DEEPL_API_KEY being present in the environment
+      // (it must stay hermetic on CI, where no such secret exists).
+      vi.stubEnv('DEEPL_API_KEY', 'test-key');
+
       const sourcePath = await createTempFile('en.json', {
         root: { title: 'Hello', desc: 'World {x}' }
       });
