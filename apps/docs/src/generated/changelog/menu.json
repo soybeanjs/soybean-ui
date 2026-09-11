@@ -1,8 +1,25 @@
 {
   "component": "menu",
-  "generatedAt": "2026-09-11T04:33:17.500Z",
+  "generatedAt": "2026-09-11T04:38:25.304Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.40.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.40.0-beta.1",
+      "date": "2026-09-11",
+      "entries": [
+        {
+          "type": "style",
+          "scope": "menu",
+          "summary": "optimize menu space",
+          "summaryKey": "changelog.generated.v0.40.0-beta.1.5c0a5",
+          "commitHash": "5c0a5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5c0a57be4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.31.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.31.0",

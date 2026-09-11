@@ -1,6 +1,24 @@
 {
   "component": "nav-menu",
-  "generatedAt": "2026-09-11T04:33:17.500Z",
+  "generatedAt": "2026-09-11T04:38:25.304Z",
   "schemaVersion": 1,
-  "versions": []
+  "versions": [
+    {
+      "version": "v0.40.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.40.0-beta.1",
+      "date": "2026-09-11",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "nav-menu",
+          "summary": "add selected state support for nav menu options",
+          "summaryKey": "changelog.generated.v0.40.0-beta.1.b903d",
+          "commitHash": "b903d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b903de1b3",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
 }

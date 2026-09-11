@@ -1,8 +1,55 @@
 {
   "component": "split-nav",
-  "generatedAt": "2026-09-11T04:33:17.500Z",
+  "generatedAt": "2026-09-11T04:38:25.304Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.40.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.40.0-beta.1",
+      "date": "2026-09-11",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "split-nav",
+          "summary": "add open event forwarding full parent item on activation",
+          "summaryKey": "changelog.generated.v0.40.0-beta.1.40c02",
+          "commitHash": "40c02",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/40c02786b",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "split-nav",
+          "summary": "focus the first pane item on the forward expand key",
+          "summaryKey": "changelog.generated.v0.40.0-beta.1.25d28",
+          "commitHash": "25d28",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/25d288557",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "split-nav",
+          "summary": "fall back focus to the owning rail item via the backward key",
+          "summaryKey": "changelog.generated.v0.40.0-beta.1.f0e55",
+          "commitHash": "f0e55",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f0e554b93",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "split-nav",
+          "summary": "scope data-state to open state and add data-selected",
+          "summaryKey": "changelog.generated.v0.40.0-beta.1.68339",
+          "commitHash": "68339",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/683397b72",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.31.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.31.0",
