@@ -89,3 +89,12 @@ onBeforeUnmount(() => {
     />
   </div>
 </template>
+
+<style>
+/* TanStack 生成的 svg 自带 tabindex=0（键盘交互需要），鼠标点击聚焦时
+   浏览器会画默认 outline。这里只去掉鼠标/触摸聚焦的 outline，
+   键盘导航（:focus-visible）的焦点环保留。 */
+.ts-chart-surface > svg:focus:not(:focus-visible) {
+  outline: none;
+}
+</style>
