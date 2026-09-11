@@ -7,7 +7,7 @@
   "editor.formatOnSave": true,
   "eslint.validate": ["vue"],
   "i18n-ally.enabledFrameworks": ["vue"],
-  "i18n-ally.sourceLanguage": "zh",
+  "i18n-ally.displayLanguage": "zh",
   "i18n-ally.keystyle": "nested",
   "i18n-ally.localesPaths": "apps/docs/src/locales",
   "i18n-ally.sortKeys": true,
