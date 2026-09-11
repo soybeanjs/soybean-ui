@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { colorLegend, defineChart, lineY } from '@tanstack/charts';
+import { d3Curve, defineChart, lineY } from '@tanstack/charts';
 import { scaleLinear } from '@tanstack/charts/scales/linear';
 import { scalePoint } from '@tanstack/charts/scales/point';
-import { tooltip } from '@tanstack/charts/tooltip';
-import { Chart } from '@tanstack/charts/vue';
-import { chartColors } from '~/components/chart/chart-config';
+import { curveMonotoneX } from 'd3-shape';
+import { chartSvgTheme, chartTooltip, chartXAxisOptions } from '~/components/chart/chart-config';
 import type { ChartConfig } from '~/components/chart/chart-config';
 import ChartContainer from '~/components/chart/chart-container.vue';
+import ChartRenderer from '~/components/chart/chart-renderer.vue';
 
 interface MultiLineDatum {
   month: string;
@@ -32,42 +32,68 @@ const chartData: MultiLineDatum[] = [
 const devices = ['desktop', 'mobile'] as const;
 
 const chartConfig = {
-  desktop: { label: 'Desktop', color: chartColors[0] },
-  mobile: { label: 'Mobile', color: chartColors[1] }
+  desktop: { label: 'Desktop', color: 'hsl(var(--chart-1))' },
+  mobile: { label: 'Mobile', color: 'hsl(var(--chart-2))' }
 } satisfies ChartConfig;
 
 const chart = defineChart({
   marks: [
     lineY(chartData, {
+      id: 'visitor-lines',
       x: 'month',
       y: 'value',
       z: 'device',
       color: 'device',
-      points: true,
+      curve: d3Curve(curveMonotoneX),
       strokeWidth: 2
     })
   ],
   scales: {
     x: {
-      scale: () => scalePoint<string>().padding(0.2)
+      scale: () => scalePoint<string>().padding(0.2),
+      axis: chartXAxisOptions
     },
     y: {
       scale: scaleLinear,
       nice: true,
-      grid: true
+      grid: true,
+      axis: { line: false, ticks: false, tickLabels: false }
     }
   },
   color: {
     domain: [...devices],
-    range: ['var(--color-desktop)', 'var(--color-mobile)'],
-    legend: colorLegend({ label: 'Device' })
+    range: devices.map(device => `var(--color-${device})`)
   },
-  tooltip
+  margin: { top: 8, right: 12, bottom: 35, left: 12 },
+  theme: chartSvgTheme,
+  focus: 'group-x',
+  svgAnimation: false,
+  tooltip: chartTooltip
 });
 </script>
 
 <template>
-  <ChartContainer :config="chartConfig" class="h-[250px]">
-    <Chart :definition="chart" aria-label="Traffic by month and device" :height="250" />
+  <ChartContainer :config="chartConfig" title="Line Chart - Multiple" description="January - June 2024">
+    <ChartRenderer :definition="chart" aria-label="Visitors by month and device" :height="300" />
+
+    <template #footer>
+      <div class="flex items-center gap-2 font-medium">
+        Trending up by 5.2% this month
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="size-4"
+          aria-hidden="true"
+        >
+          <path d="m3 17 6-6 4 4 8-8" />
+          <path d="M14 7h7v7" />
+        </svg>
+      </div>
+      <div class="text-muted-foreground">Showing total visitors for the last 6 months</div>
+    </template>
   </ChartContainer>
 </template>

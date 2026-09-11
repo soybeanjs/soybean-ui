@@ -180,6 +180,9 @@ importers:
       '@vueuse/core':
         specifier: ^14.4.0
         version: 14.4.0(vue@3.5.42(typescript-native-bridge@6.0.3-bridge.16.tsgo.7.0.2))
+      d3-shape:
+        specifier: ^3.2.0
+        version: 3.2.0
       minisearch:
         specifier: ^7.2.0
         version: 7.2.0
@@ -211,6 +214,9 @@ importers:
       '@soybeanjs/unocss-preset':
         specifier: ^0.2.0
         version: 0.2.0(@devframes/hub@0.9.18(crossws@0.4.12(srvx@1.0.4))(devframe@0.9.18(cac@7.0.0)(srvx@1.0.4)))(@unocss/webpack@66.10.1(@voidzero-dev/vite-plus-core@0.3.1(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.13)(typescript-native-bridge@6.0.3-bridge.16.tsgo.7.0.2)(yaml@2.9.0))(esbuild@0.28.2)(rolldown@1.2.8)(rollup@4.63.1)(webpack@5.110.3(cssnano@8.0.10(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)))(@voidzero-dev/vite-plus-core@0.3.1(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.13)(typescript-native-bridge@6.0.3-bridge.16.tsgo.7.0.2)(yaml@2.9.0))(cac@7.0.0)(crossws@0.4.12(srvx@1.0.4))(rolldown@1.2.8)(rollup@4.63.1)(srvx@1.0.4)
+      '@types/d3-shape':
+        specifier: ^3.2.0
+        version: 3.2.0
       '@vitejs/plugin-vue-jsx':
         specifier: ^5.1.6
         version: 5.1.6(@voidzero-dev/vite-plus-core@0.3.1(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.13)(typescript-native-bridge@6.0.3-bridge.16.tsgo.7.0.2)(yaml@2.9.0))(supports-color@10.2.2)(vue@3.5.42(typescript-native-bridge@6.0.3-bridge.16.tsgo.7.0.2))

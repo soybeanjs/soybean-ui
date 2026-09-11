@@ -30,6 +30,7 @@
     "@ubean/content": "0.4.9",
     "@unhead/vue": "^3.4.0",
     "@vueuse/core": "^14.4.0",
+    "d3-shape": "^3.2.0",
     "minisearch": "^7.2.0",
     "shiki": "^4.4.3",
     "ubean": "^0.4.9",
@@ -42,6 +43,7 @@
   "devDependencies": {
     "@soybeanjs/ui-uno": "workspace:^",
     "@soybeanjs/unocss-preset": "^0.2.0",
+    "@types/d3-shape": "^3.2.0",
     "@vitejs/plugin-vue-jsx": "^5.1.6",
     "typescript": "catalog:",
     "unocss": "^66.10.1",

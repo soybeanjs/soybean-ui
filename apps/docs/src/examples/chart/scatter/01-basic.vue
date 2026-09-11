@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { defineChart, dot } from '@tanstack/charts';
 import { scaleLinear } from '@tanstack/charts/scales/linear';
-import { tooltip } from '@tanstack/charts/tooltip';
-import { Chart } from '@tanstack/charts/vue';
-import { chartColors } from '~/components/chart/chart-config';
+import { chartSvgTheme, chartTooltip } from '~/components/chart/chart-config';
 import type { ChartConfig } from '~/components/chart/chart-config';
 import ChartContainer from '~/components/chart/chart-container.vue';
+import ChartRenderer from '~/components/chart/chart-renderer.vue';
 
 interface ScatterDatum {
   income: number;
@@ -28,13 +27,19 @@ const chartData: ScatterDatum[] = [
 const chartConfig = {
   points: {
     label: 'Countries',
-    color: chartColors[0]
+    color: 'hsl(var(--chart-1))'
   }
 } satisfies ChartConfig;
+
+const scatterTooltip = {
+  ...chartTooltip,
+  anchor: 'point'
+} as const;
 
 const chart = defineChart({
   marks: [
     dot(chartData, {
+      id: 'countries-dots',
       x: 'income',
       y: 'lifeExpectancy',
       r: 4,
@@ -46,21 +51,29 @@ const chart = defineChart({
       scale: scaleLinear,
       nice: true,
       grid: true,
-      axis: { label: 'Income (USD thousands)' }
+      axis: { label: 'Income (USD thousands)', line: false, ticks: { size: 0, padding: 10 } }
     },
     y: {
       scale: scaleLinear,
       nice: true,
       grid: true,
-      axis: { label: 'Life expectancy' }
+      axis: { label: 'Life expectancy', line: false, ticks: { size: 0, padding: 10 } }
     }
   },
-  tooltip
+  color: {
+    domain: ['points'],
+    range: ['var(--color-points)']
+  },
+  margin: { top: 8, right: 16, bottom: 40, left: 50 },
+  theme: chartSvgTheme,
+  focus: 'nearest',
+  svgAnimation: false,
+  tooltip: scatterTooltip
 });
 </script>
 
 <template>
-  <ChartContainer :config="chartConfig" class="h-[250px]">
-    <Chart :definition="chart" aria-label="Life expectancy by income" :height="250" />
+  <ChartContainer :config="chartConfig" title="Scatter Chart" description="Life expectancy vs income">
+    <ChartRenderer :definition="chart" aria-label="Life expectancy by income" :height="300" />
   </ChartContainer>
 </template>
