@@ -13,8 +13,8 @@
 | 品牌名               | **VBean**，来源 **V**ue + Soy**bean**（V = Vue，bean = Soybean 的延续）                                                                                                                                   |
 | 逻辑层               | `@soybeanjs/headless` → **`@vbean/aria`**（沿用 v0.50.0 已确定的 aria 命名，只换 scope）                                                                                                                  |
 | 样式层               | `@soybeanjs/ui` → **`@vbean/ui`**                                                                                                                                                                         |
-| 主题 / UnoCSS / 技能 | `@soybeanjs/theme` → `@vbean/theme`；`@soybeanjs/ui-uno` → `@vbean/uno`；`@soybeanjs/ui-skills` → `@vbean/skills`                                                                                         |
-| 消费者 CLI           | `sbean` → **`vbean`**（裸名 `vbean` 已被本账号占坑，可直接用）；配置文件 `sbean.json` → `vbean.json`                                                                                                      |
+| 主题 / UnoCSS / 技能 | `@soybeanjs/theme` → `@vbean/theme`；`@soybeanjs/ui-uno` → `@vbean/unocss`；`@soybeanjs/ui-skills` → `@vbean/skills`                                                                                      |
+| 消费者 CLI           | `sbean` → **`@vbean/cli`** bin名称为vbean；配置文件 `sbean.json` → `vbean.json`                                                                                                                           |
 | **不变项**           | `--size`/`--radius`/`--primary` 等**无前缀设计令牌**、`@soybeanjs/cva`、`@soybeanjs/colord`、`Symbol.for('ConfigProvider')`、CHANGELOG 历史                                                               |
 | 组件前缀             | **保持 `S`，定义为 `Styled`**（样式封装层标识，与 aria 层的无前缀原语相对）；**不改 `V`**——实测成本 787 文件 / 4,984 处 + 全部下游，且 `V` 撞 Vuetify，见 [§7.5](#75-组件前缀保留-s定义为-styled不改-v)   |
 | 品牌混淆风险         | `vbean` 与 `vben`（`vue-vben-admin`，约 28k–33k star，技术栈与目标用户重合）编辑距离仅 **1** —— 品牌书写统一用 `VBean`，见 [§7.5.1](#751-附带发现vbean-与-vben-的品牌混淆风险)                            |
