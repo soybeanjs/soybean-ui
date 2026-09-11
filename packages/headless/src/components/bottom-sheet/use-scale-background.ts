@@ -63,6 +63,9 @@ export function useScaleBackground() {
           cleanupChain();
           wrapperStylesCleanup();
           timeoutIdRef.value = window.setTimeout(() => {
+            // The timer may outlive the test environment teardown; guard before touching the DOM.
+            if (typeof document === 'undefined') return;
+
             if (initialBackgroundColor.value) {
               document.body.style.background = initialBackgroundColor.value;
             } else {

@@ -340,6 +340,9 @@ export function useDrawer(props: BottomSheetRootContextParams): BottomSheetRootC
     if (!isOpen.value && shouldScaleBackground.value && isClient) {
       // Can't use `onAnimationEnd` as the component will be invisible by then
       const id = setTimeout(() => {
+        // The timer may outlive the test environment teardown; guard before touching the DOM.
+        if (typeof document === 'undefined') return;
+
         reset(document.body);
       }, 200);
 
