@@ -16,7 +16,7 @@ export const dialogVariants = scv({
       `data-[state=closed]:animate-out data-[state=closed]:fade-out-0`
     ],
     popup: [
-      `group fixed start-1/2 top-1/2 z-50 flex flex-col w-max lt-sm:w-full border bg-background shadow-lg outline-none duration-200 rounded-lg`,
+      `group fixed start-1/2 top-1/2 z-50 flex flex-col w-max lt-sm:w-full lt-sm:min-w-auto lt-sm:max-w-full border bg-background shadow-lg outline-none duration-200 rounded-lg`,
       `-translate-x-1/2 -translate-y-1/2 [&[dir=rtl]]:translate-x-1/2`,
       `data-[dragging]:transition-none data-[dragging]:select-none`,
       // Always present so the fullscreen visuals respond to the headless
