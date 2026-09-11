@@ -754,7 +754,7 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                       size="sm"
                       variant="link"
                       color="destructive"
-                      class="group -ml-2"
+                      class="group justify-start -ml-2"
                     >
                       {{ t('releases_page.actions.upgrade_guide') }}
                       <SIcon
@@ -779,7 +779,7 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                         :to="resolveNoteDocLink(note)"
                         size="sm"
                         variant="link"
-                        class="group -ml-2"
+                        class="group justify-start -ml-2"
                       >
                         {{ t('releases_page.actions.upgrade_guide') }}
                         <SIcon
