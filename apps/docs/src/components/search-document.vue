@@ -153,7 +153,7 @@ onMounted(() => {
       </SButton>
     </template>
 
-    <div ref="wrapperRef" class="border rounded-lg shadow-md">
+    <div ref="wrapperRef" class="w-150 lt-md:w-full border rounded-lg shadow-md">
       <SCommand
         v-model:search-term="searchTerm"
         external-filter
