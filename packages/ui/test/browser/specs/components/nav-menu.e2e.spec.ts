@@ -159,17 +159,47 @@ describe('SNavMenu (e2e)', () => {
   });
 
   it('aligns the horizontal viewport to the logical end in RTL (mirror of LTR bottom-start)', async () => {
-    const { unmount } = await renderComponent(SNavMenu, { props: { items, dir: 'rtl', delayDuration: 0 } });
+    // Keep the content narrow: with descriptions the viewport is wider than
+    // the space to the start edge and Floating UI's shift middleware pushes it
+    // back, which would mask the RTL end-alignment contract under test.
+    const rtlItems: NavMenuOptionData[] = [
+      {
+        value: 'one',
+        label: 'One',
+        href: '/one',
+        children: [
+          { value: 'one-a', label: 'One A', href: '/one-a' },
+          { value: 'one-b', label: 'One B', href: '/one-b' }
+        ]
+      },
+      {
+        value: 'two',
+        label: 'Two',
+        href: '/two',
+        children: [
+          { value: 'two-a', label: 'Two A', href: '/two-a' },
+          { value: 'two-b', label: 'Two B', href: '/two-b' }
+        ]
+      }
+    ];
+    const { unmount } = await renderComponent(SNavMenu, { props: { items: rtlItems, dir: 'rtl', delayDuration: 0 } });
     const oneTrigger = page.getByRole('link', { name: 'One' });
 
     await userEvent.hover(oneTrigger);
     await expect.element(page.getByText('One A')).toBeVisible();
 
-    // Floating UI aligns logically: `start` maps to the right edge in RTL, so the
-    // viewport's right edge must line up with the trigger's right edge.
-    const tr = oneTrigger.elements()[0]!.getBoundingClientRect();
-    const vr = document.querySelector('[data-soybean-nav-menu-viewport]')!.getBoundingClientRect();
-    expect(Math.abs(vr.right - tr.right)).toBeLessThan(2);
+    // Floating UI aligns logically: `start` maps to the right edge in RTL, so
+    // the viewport's right edge must line up with the trigger's right edge.
+    // The shared viewport animates its width/position when content first lands,
+    // so poll until placement settles instead of sampling a transition frame.
+    const measureAlignmentGap = () => {
+      const triggerRect = oneTrigger.elements()[0]!.getBoundingClientRect();
+      const viewportRect = document.querySelector('[data-soybean-nav-menu-viewport]')!.getBoundingClientRect();
+
+      return Math.abs(viewportRect.right - triggerRect.right);
+    };
+
+    await expect.poll(measureAlignmentGap, { timeout: 1000 }).toBeLessThan(2);
 
     unmount();
   });

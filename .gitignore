@@ -17,6 +17,8 @@ coverage
 /cypress/videos/
 /cypress/screenshots/
 .vitest-attachments/
+.vitest/attachments
+packages/ui/.vitest/attachments
 __screenshots__/
 
 # Editor directories and files

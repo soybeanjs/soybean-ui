@@ -7,8 +7,13 @@
  * whole reason browser-mode e2e exists (it removes the mocks that the happy-dom
  * select spec has to maintain).
  *
+ * The generated UnoCSS stylesheet must be imported explicitly: unlike a Vite
+ * app entry (where the plugin injects it into `index.html`), the Vitest
+ * browser page is provided by Vitest itself, so the virtual module is the only
+ * way to load the utility classes + theme preflights.
+ *
  * `vitest-browser-vue` registers its own `afterEach` cleanup that unmounts the
  * previously rendered component, so per-test teardown is automatic.
  */
 
-export {};
+import 'virtual:uno.css';

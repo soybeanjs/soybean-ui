@@ -88,6 +88,10 @@ describe('STextarea (e2e)', () => {
     const textarea = page.getByRole('textbox');
     await expect.element(textarea).toHaveValue('hello');
 
+    // The clear trigger is hover/focus-revealed (`hidden` +
+    // `group-hover/group-focus-within:inline-flex`); hover the field first,
+    // mirroring how a real user reveals and reaches it.
+    await userEvent.hover(textarea);
     await userEvent.click(page.getByRole('button', { name: 'Clear textarea' }));
 
     await expect.element(textarea).toHaveValue('');
