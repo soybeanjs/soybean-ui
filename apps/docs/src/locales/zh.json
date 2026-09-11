@@ -20,6 +20,10 @@
       "title": "暂无示例",
       "description": "该库的 Playground 示例即将推出。"
     },
+    "view": {
+      "docs": "文档",
+      "playground": "演练场"
+    },
     "preview": "预览",
     "code": "代码",
     "examples": {

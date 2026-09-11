@@ -20,6 +20,10 @@
       "title": "No examples yet",
       "description": "Playground examples for this library are coming soon."
     },
+    "view": {
+      "docs": "Docs",
+      "playground": "Playground"
+    },
     "preview": "Preview",
     "code": "Code",
     "examples": {

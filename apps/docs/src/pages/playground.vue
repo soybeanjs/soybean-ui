@@ -16,6 +16,8 @@ interface PlaygroundTab extends TabsOptionData<string> {
   load: () => Promise<{ default: Component }>;
 }
 
+type PlaygroundView = 'docs' | 'playground';
+
 const defaultLibrary = 'ui';
 
 const examplePathPattern = /examples\/([^/]+)\/([^/]+)\/index\.vue$/u;
@@ -28,6 +30,11 @@ const libraryOptions: SelectSingleOptionData<string>[] = [
   { label: 'Admin', value: 'admin', icon: 'lucide:layout-dashboard' },
   { label: 'Chart', value: 'chart', icon: 'lucide:bar-chart-3' }
 ];
+
+const viewTabs = computed<TabsOptionData<string>[]>(() => [
+  { label: t('playground.view.docs'), value: 'docs' },
+  { label: t('playground.view.playground'), value: 'playground' }
+]);
 
 function toPlaygroundTab(path: string, load: () => Promise<{ default: Component }>): PlaygroundTab | null {
   const match = path.match(examplePathPattern);
@@ -69,6 +76,7 @@ function resolveRouteTab(raw: unknown): PlaygroundTab | null {
 
 const defaultTab = findLibraryFirstTab(defaultLibrary);
 
+const activeView = shallowRef<PlaygroundView>('docs');
 const activeLibrary = ref(defaultTab?.library ?? defaultLibrary);
 const activeTab = shallowRef(defaultTab?.value ?? '');
 const loadedComponent = shallowRef<Component | null>(null);
@@ -99,7 +107,7 @@ function updateRouteQuery() {
   // change would remount the page; sync the address bar directly instead.
   const url = new URL(window.location.href);
 
-  if (activeTab.value) {
+  if (activeView.value === 'playground' && activeTab.value) {
     url.searchParams.set('tab', activeTab.value);
   } else {
     url.searchParams.delete('tab');
@@ -108,71 +116,80 @@ function updateRouteQuery() {
   window.history.replaceState(window.history.state, '', url);
 }
 
-function syncFromRoute(): boolean {
+function syncFromRoute() {
   const tab = resolveRouteTab(route.query.tab);
 
-  if (!tab || tab.value === activeTab.value) {
-    return false;
+  if (!tab) {
+    return;
   }
 
   activeLibrary.value = tab.library;
   activeTab.value = tab.value;
-
-  return true;
+  activeView.value = 'playground';
 }
 
 watch(activeLibrary, library => {
   activeTab.value = findLibraryFirstTab(library)?.value ?? '';
 });
 
-watch(activeTab, () => {
-  loadActiveComponent();
+watch([activeView, activeTab], ([view]) => {
   updateRouteQuery();
+
+  // the example module is only loaded on demand once the playground view opens
+  if (view === 'playground') {
+    loadActiveComponent();
+  }
 });
 
 onMounted(() => {
-  if (!syncFromRoute()) {
-    loadActiveComponent();
-  }
+  // a valid `tab` query deep-links into the playground view; otherwise the docs view stays default
+  syncFromRoute();
 });
 </script>
 
 <template>
-  <div class="space-y-6">
-    <SCard data-soybean-bottom-sheet-scale :title="t('playground.title')" class="bg-background">
-      <template #extra>
-        <SSelect v-model="activeLibrary" :items="libraryOptions" class="w-35">
-          <template #trigger-leading>
-            <SIcon :icon="activeIcon" />
-          </template>
-        </SSelect>
-      </template>
-      <SAlert
-        v-if="!filteredTabs.length"
-        color="info"
-        variant="soft"
-        icon="lucide:construction"
-        :title="t('playground.empty.title')"
-        :description="t('playground.empty.description')"
-      />
-      <STabs
-        v-else
-        v-model="activeTab"
-        :items="filteredTabs"
-        :enable-indicator="false"
-        :ui="{
-          root: 'md:h-full',
-          list: 'grid grid-cols-10 gap-y-1 lt-sm:grid-cols-4 lt-md:grid-cols-5 lt-lg:grid-cols-6',
-          content: 'overflow-auto'
-        }"
+  <STabs v-model="activeView" :items="viewTabs" :enable-indicator="false" shape="rounded" fill="auto">
+    <template #content>
+      <SCard
+        v-if="activeView === 'playground'"
+        data-soybean-bottom-sheet-scale
+        :title="t('playground.title')"
+        class="bg-background"
       >
-        <template #content>
-          <component :is="loadedComponent" v-if="loadedComponent" />
-          <div v-else class="py-12 text-center text-muted-foreground">{{ t('playground.loading') }}</div>
+        <template #extra>
+          <SSelect v-model="activeLibrary" :items="libraryOptions" class="w-35">
+            <template #trigger-leading>
+              <SIcon :icon="activeIcon" />
+            </template>
+          </SSelect>
         </template>
-      </STabs>
-    </SCard>
+        <SAlert
+          v-if="!filteredTabs.length"
+          color="info"
+          variant="soft"
+          icon="lucide:construction"
+          :title="t('playground.empty.title')"
+          :description="t('playground.empty.description')"
+        />
+        <STabs
+          v-else
+          v-model="activeTab"
+          :items="filteredTabs"
+          :enable-indicator="false"
+          :ui="{
+            root: 'md:h-full',
+            list: 'grid grid-cols-10 gap-y-1 lt-sm:grid-cols-4 lt-md:grid-cols-5 lt-lg:grid-cols-6',
+            content: 'overflow-auto'
+          }"
+        >
+          <template #content>
+            <component :is="loadedComponent" v-if="loadedComponent" />
+            <div v-else class="py-12 text-center text-muted-foreground">{{ t('playground.loading') }}</div>
+          </template>
+        </STabs>
+      </SCard>
 
-    <DocMd path="playground" />
-  </div>
+      <DocMd v-else path="playground" />
+    </template>
+  </STabs>
 </template>
