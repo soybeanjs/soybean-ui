@@ -22,7 +22,7 @@
 
 1. **复合且重**：体量相当于一个子领域（如编辑器的 Tiptap 级、表单设计器级），不适合进核心库或 admin。
 2. **不适合源码分发**：需要持续安全 / 兼容维护，或依赖闭源协作，sbean registry 模式不合适。
-3. **不与现有包重叠**：不满足 admin 的 S1–S5，也不是 chart / ui-x 领域。
+3. **不与现有包重叠**：不满足 admin 的 S1–S5，也不是 chart / AI 对话领域（AI/chat 组件属核心 headless/ui，见 [../ui-ai-roadmap.md](../ui-ai-roadmap.md)）。
 4. **通用无业务语义**：不含特定行业逻辑。
 
 ### 1.3 候选范围（按判据初筛，仅供立项讨论）
@@ -46,7 +46,7 @@ Layer 4  @soybeanjs/ui-pro ──► @soybeanjs/{ui, headless, theme}
 
 - **单包自治**：领域逻辑与样式同居包内，不建中间 headless 层。
 - **跨包依赖白名单**：默认不依赖其他外围包；如需图表能力走 `chart`，需先在 CONTEXT.md 白名单加边并出 ADR。
-- **前缀**：候选 `Sp`——`S` 系单字符已被 ui（`S`）与 ui-x（`Sx`）占用，`Sp` 表意 "soybean pro"；立项时与社区评审定案。
+- **前缀**：候选 `Sp`——核心库统一使用 `S` 前缀（含回归核心的 AI 组件；原 ui-x 的 `Sx` 已随包移除），`Sp` 表意 "soybean pro" 以示区分；立项时与社区评审定案。
 - **exports**：`.`、`./nuxt`、`./resolver`、`./styles.css`、`./*`（组件子路径），与 chart/admin 一致。
 - **版本**：lockstep 同版本；**分发模式待立项评审**（开源同仓 lockstep vs 独立仓库 / 商业授权，见 §5）。
 

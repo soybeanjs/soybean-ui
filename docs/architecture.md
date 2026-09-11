@@ -33,22 +33,24 @@ The pnpm workspace contains the private root project plus eleven child
 workspaces: seven publishable packages, two private packages, and two private
 applications.
 
-| Area                | Workspace              | Purpose                                                                              |
-| ------------------- | ---------------------- | ------------------------------------------------------------------------------------ |
-| Component logic     | `@soybeanjs/headless`  | State, behavior, a11y, focus, keyboard interaction, locale, and unstyled composition |
-| Styled components   | `@soybeanjs/ui`        | `S`-prefixed wrappers, UnoCSS recipes, theme-facing props, Nuxt module, and resolver |
-| Theme engine        | `@soybeanjs/theme`     | Theme option normalization, CSS-variable generation, dark derivation, SSR/storage    |
-| UnoCSS integration  | `@soybeanjs/ui-uno`    | UnoCSS preset, preflights, animations, fonts, and generated theme CSS                |
-| AI conversation UI  | `@soybeanjs/ui-x`      | AI conversation components (`Sx` prefix); peripheral single-package                  |
-| Source distribution | `sbean`                | CLI, registry, schemas, templates, and MCP tools for copy-source delivery            |
-| Repo service CLI    | `@soybeanjs/scripts`   | PRIVATE; `sui` CLI for metadata, API, changelog, locale, and skill generators        |
-| Shared utilities    | `@soybeanjs/shared`    | PRIVATE; shared utility helpers, not published                                       |
-| Agent distribution  | `@soybeanjs/ui-skills` | Generated, publishable SoybeanUI and Headless agent skills                           |
-| Documentation       | `@soybeanjs/ui-docs`   | ubean SSG documentation, API reference, changelog, and interactive demos             |
-| Integration fixture | `@soybeanjs/ui-nuxt`   | Self-contained minimal Nuxt/UnoCSS integration fixture                               |
+| Area                | Workspace               | Purpose                                                                                            |
+| ------------------- | ----------------------- | -------------------------------------------------------------------------------------------------- |
+| Component logic     | `@soybeanjs/headless`   | State, behavior, a11y, focus, keyboard interaction, locale, and unstyled composition               |
+| Styled components   | `@soybeanjs/ui`         | `S`-prefixed wrappers, UnoCSS recipes, theme-facing props, Nuxt module, and resolver               |
+| Theme engine        | `@soybeanjs/theme`      | Theme option normalization, CSS-variable generation, dark derivation, SSR/storage                  |
+| UnoCSS integration  | `@soybeanjs/ui-uno`     | UnoCSS preset, preflights, animations, fonts, and generated theme CSS                              |
+| AI conversation UI  | headless + ui (planned) | AI/chat components planned under the standard `S` prefix; see [ui-ai-roadmap.md](ui-ai-roadmap.md) |
+| Source distribution | `sbean`                 | CLI, registry, schemas, templates, and MCP tools for copy-source delivery                          |
+| Repo service CLI    | `@soybeanjs/scripts`    | PRIVATE; `sui` CLI for metadata, API, changelog, locale, and skill generators                      |
+| Shared utilities    | `@soybeanjs/shared`     | PRIVATE; shared utility helpers, not published                                                     |
+| Agent distribution  | `@soybeanjs/ui-skills`  | Generated, publishable SoybeanUI and Headless agent skills                                         |
+| Documentation       | `@soybeanjs/ui-docs`    | ubean SSG documentation, API reference, changelog, and interactive demos                           |
+| Integration fixture | `@soybeanjs/ui-nuxt`    | Self-contained minimal Nuxt/UnoCSS integration fixture                                             |
 
-There is no admin or chart package. Charts are deliberately outside the core
-library: the docs site renders shadcn-styled demos built directly on
+There is no admin, chart, or standalone AI package. AI/chat components are
+planned to ship inside headless + ui (see [ui-ai-roadmap.md](ui-ai-roadmap.md)).
+Charts are deliberately outside the core library: the docs site renders
+shadcn-styled demos built directly on
 [TanStack Charts](https://tanstack.com/charts), with a docs-local theming shell
 (`apps/docs/src/components/chart/`) bridging SoybeanUI `--chart-*` tokens.
 
@@ -84,7 +86,6 @@ soybean-ui/
 │   ├── shared/              # @soybeanjs/shared (private); shared utilities, not published
 │   ├── theme/               # @soybeanjs/theme
 │   ├── ui/                  # @soybeanjs/ui
-│   ├── ui-x/                # @soybeanjs/ui-x
 │   └── unocss/              # @soybeanjs/ui-uno
 ├── skills/                  # Generated @soybeanjs/ui-skills package
 ├── typings/                 # Root tool declarations
@@ -106,7 +107,6 @@ flowchart LR
   Theme["@soybeanjs/theme"]
   Uno["@soybeanjs/ui-uno"]
   Sbean["sbean"]
-  UiX["@soybeanjs/ui-x"]
   TanStackCharts["@tanstack/charts (external)"]
   Docs["apps/docs"]
   Nuxt["apps/nuxt"]
@@ -120,13 +120,9 @@ flowchart LR
   Docs --> Headless
   Docs --> Theme
   Docs --> Uno
-  Docs --> UiX
   Docs --> Sbean
   Docs --> TanStackCharts
   Nuxt --> UI
-  UiX --> UI
-  UiX --> Headless
-  UiX --> Theme
 ```
 
 ### 4.1 Hard package invariants
@@ -303,7 +299,7 @@ and 7.x for the rest.
 
 ### 8.2 Root commands
 
-- `pnpm build`: theme/ui-uno (build:libs) → headless → ui → ui-x → sbean.
+- `pnpm build`: theme/ui-uno (build:libs) → headless → ui → sbean.
 - `pnpm build:libs`: theme → ui-uno.
 - `pnpm build:docs`: root build, registry generation, then docs SSG.
 - `pnpm typecheck`: recursive workspace type checks.
@@ -325,8 +321,8 @@ At this snapshot:
 
 Headless behavior is primarily exercised through the UI test workspace. The
 browser suite enables axe-core checks in addition to interaction assertions.
-Headless (and ui-x) define `vue-tsc --noEmit --skipLibCheck`
-typecheck scripts; only `apps/nuxt` still lacks one, so recursive
+Headless defines a `vue-tsc --noEmit --skipLibCheck`
+typecheck script; only `apps/nuxt` still lacks one, so recursive
 `pnpm typecheck` does not validate it as an independent unit.
 
 ### 8.4 CI and release

@@ -7,6 +7,8 @@
 > **详细架构：** [architecture.md](./architecture.md)
 >
 > **方法：** CodeGraph 1.5.0 全量代码图谱 + workspace 清单、配置、生成物与文档交叉校验
+>
+> **2026-09 注记：** 本评估反映 2026-09-06 基线（含 admin / chart / ui-x 共 9 个发布包、14 个子 workspace）。其后 `@soybeanjs/ui-x` 整包移除（AI 组件回归核心 headless/ui，见 [ui-ai-roadmap.md](./ui-ai-roadmap.md)）；当前为 7 packages + 2 apps + skills 共 10 个子 workspace、6 个发布包（含 ui-skills）。下文中涉及 ui-x 的包清单、构建链（`… → ui-x → …`）与生成路径均为当时事实，阅读时按此注记折算。
 
 ## 1. 结论摘要
 

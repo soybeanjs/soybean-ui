@@ -119,13 +119,13 @@ describe('config management', () => {
         font: {},
         aliases: {
           ui: '#ui',
-          'ui-x': '#ui-x',
+          acme: '#acme',
           admin: './src/soybean-admin'
         }
       });
 
       expect(resolved.resolvedPaths.packages.ui).toBe(path.join(tmpDir, 'src', 'ui'));
-      expect(resolved.resolvedPaths.packages['ui-x']).toBe(path.join(tmpDir, 'src', 'ui-x'));
+      expect(resolved.resolvedPaths.packages.acme).toBe(path.join(tmpDir, 'src', 'acme'));
       expect(resolved.resolvedPaths.packages.admin).toBe(path.join(tmpDir, 'src', 'soybean-admin'));
     });
 
@@ -134,12 +134,12 @@ describe('config management', () => {
         iconLibrary: 'lucide',
         uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
         font: {},
-        aliases: { 'ui-x': '#ui-x' }
+        aliases: { acme: '#acme' }
       });
 
       // `ui` is always present even without an explicit alias
       expect(resolved.resolvedPaths.packages.ui).toBe(path.join(tmpDir, 'src', 'ui'));
-      expect(resolved.resolvedPaths.packages['ui-x']).toBe(path.join(tmpDir, 'src', 'ui-x'));
+      expect(resolved.resolvedPaths.packages.acme).toBe(path.join(tmpDir, 'src', 'acme'));
     });
   });
 

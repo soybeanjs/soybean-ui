@@ -1,7 +1,7 @@
 ---
 head:
   title: 演练场
-  description: '在浏览器里直接运行组件示例，并在 UI、UI-X、Chart 几个库之间切换。'
+  description: '在浏览器里直接运行组件示例，并在 UI、Chart 几个库之间切换。'
 ---
 
 # 演练场
@@ -12,7 +12,7 @@ head:
 
 ## 使用方式
 
-- **库切换** —— 卡片头部的下拉框在 `Headless`、`UI`、`UI-X`、`Admin`、`Chart` 之间切换。目前只有 `UI`、`UI-X`、`Chart` 有示例，其余库在示例补齐前显示空状态。
+- **库切换** —— 卡片头部的下拉框在 `Headless`、`UI`、`Admin`、`Chart` 之间切换。目前只有 `UI`、`Chart` 有示例，其余库在示例补齐前显示空状态。
 - **示例标签页** —— 每个示例目录（`apps/docs/src/examples/<library>/<component>/index.vue`）对应一个标签页。
 - **深链** —— 当前标签页会同步到 `?tab=` 查询参数，因此可以直接分享某个示例的链接。
 

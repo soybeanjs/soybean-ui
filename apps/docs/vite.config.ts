@@ -15,6 +15,6 @@ export default defineConfig({
   },
   plugins: [ubeanPlugin(), UnoCSS(), VueJsx(), docsLlmsPlugin()],
   optimizeDeps: {
-    exclude: ['@soybeanjs/ui', '@soybeanjs/headless', '@soybeanjs/ui-x']
+    exclude: ['@soybeanjs/ui', '@soybeanjs/headless']
   }
 });

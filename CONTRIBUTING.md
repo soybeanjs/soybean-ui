@@ -68,18 +68,18 @@ Open the docs URL shown in the terminal to preview your changes in real time.
 
 ### Common Commands
 
-| Command                         | Purpose                                                                   |
-| ------------------------------- | ------------------------------------------------------------------------- |
-| `pnpm dev`                      | Start docs site dev server                                                |
-| `pnpm build`                    | Build libs (theme, ui-uno) → headless → ui → ui-x → admin → chart → sbean |
-| `pnpm lint`                     | vp lint --fix + eslint (Vue)                                              |
-| `pnpm fmt`                      | vp fmt (formatter)                                                        |
-| `pnpm test`                     | recursive workspace tests (pnpm -r run test)                              |
-| `pnpm typecheck`                | recursive typecheck (pnpm -r typecheck)                                   |
-| `pnpm sui gen catalog headless` | Regenerate headless barrel constants                                      |
-| `pnpm sui gen catalog ui`       | Regenerate UI barrel constants                                            |
-| `pnpm sui gen api`              | Regenerate API reference data                                             |
-| `pnpm sui gen changelog`        | Regenerate changelog data                                                 |
+| Command                         | Purpose                                            |
+| ------------------------------- | -------------------------------------------------- |
+| `pnpm dev`                      | Start docs site dev server                         |
+| `pnpm build`                    | Build libs (theme, ui-uno) → headless → ui → sbean |
+| `pnpm lint`                     | vp lint --fix + eslint (Vue)                       |
+| `pnpm fmt`                      | vp fmt (formatter)                                 |
+| `pnpm test`                     | recursive workspace tests (pnpm -r run test)       |
+| `pnpm typecheck`                | recursive typecheck (pnpm -r typecheck)            |
+| `pnpm sui gen catalog headless` | Regenerate headless barrel constants               |
+| `pnpm sui gen catalog ui`       | Regenerate UI barrel constants                     |
+| `pnpm sui gen api`              | Regenerate API reference data                      |
+| `pnpm sui gen changelog`        | Regenerate changelog data                          |
 
 ## Development Workflow
 
@@ -371,18 +371,18 @@ pnpm dev
 
 ### 常用命令
 
-| 命令                            | 用途                                                                     |
-| ------------------------------- | ------------------------------------------------------------------------ |
-| `pnpm dev`                      | 启动文档站开发服务器                                                     |
-| `pnpm build`                    | 构建 libs（theme、ui-uno）→ headless → ui → ui-x → admin → chart → sbean |
-| `pnpm lint`                     | vp lint --fix + eslint（Vue）                                            |
-| `pnpm fmt`                      | vp fmt（格式化）                                                         |
-| `pnpm test`                     | 递归运行各 workspace 测试（pnpm -r run test）                            |
-| `pnpm typecheck`                | 递归类型检查（pnpm -r typecheck）                                        |
-| `pnpm sui gen catalog headless` | 重新生成 headless barrel 常量                                            |
-| `pnpm sui gen catalog ui`       | 重新生成 UI barrel 常量                                                  |
-| `pnpm sui gen api`              | 重新生成 API 参考数据                                                    |
-| `pnpm sui gen changelog`        | 重新生成 changelog 数据                                                  |
+| 命令                            | 用途                                              |
+| ------------------------------- | ------------------------------------------------- |
+| `pnpm dev`                      | 启动文档站开发服务器                              |
+| `pnpm build`                    | 构建 libs（theme、ui-uno）→ headless → ui → sbean |
+| `pnpm lint`                     | vp lint --fix + eslint（Vue）                     |
+| `pnpm fmt`                      | vp fmt（格式化）                                  |
+| `pnpm test`                     | 递归运行各 workspace 测试（pnpm -r run test）     |
+| `pnpm typecheck`                | 递归类型检查（pnpm -r typecheck）                 |
+| `pnpm sui gen catalog headless` | 重新生成 headless barrel 常量                     |
+| `pnpm sui gen catalog ui`       | 重新生成 UI barrel 常量                           |
+| `pnpm sui gen api`              | 重新生成 API 参考数据                             |
+| `pnpm sui gen changelog`        | 重新生成 changelog 数据                           |
 
 ## 开发流程
 

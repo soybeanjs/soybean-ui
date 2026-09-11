@@ -84,8 +84,8 @@ packages/sbean/src/
 - **BFS-queue 依赖解析 + 文件级源展开**：`expandRegistryItemFiles` 自动拉取同目录被 import 的源文件，`includeBarrelFiles` 补 barrel `index.ts`（保留 headless barrel 契约），`topologicallySortItems`（ADR-006）保证写入顺序确定、`--diff` 可复现。
 - **写入门控**：`WRITABLE_FILE_TYPES` 仅放行 `registry:ui/style/lib/theme`；`registry:component/block/hook/base/font` 及内部类型不可直接写入。
 - **依赖图验证**：`validateRegistryDependencies` 做 DFS 环检测 + 缺失依赖检测（shadcn 无此能力，见对标 §8）。
-- **命名空间 registry（EC-E02/E04）**：item 名形如 `<package>/<component>`（`ui/button`、`ui-x/bubble`…）并附 `package` 字段；`build` 按子路径落盘 `r/ui/button.json`；CLI 支持命名空间寻址，**核心 `ui` 包裸名免前缀（`sbean add button`），其他包必须带前缀（`sbean add ui-x/bubble`）**，裸名命中非核心包时抛 `PackageNamespaceRequiredError` 提示；`list --package` / `search --package` 按包过滤。
-- **多包落地路径（shadcn-vue 多别名方式，EC-E03）**：`sbean.json` 增 `aliases`（包名 → import 别名，如 `ui-x: "#ui-x"`），经 tsconfig `paths` 解析为各包输出目录（默认 `src/<package>`）；`resolveTargetPath` 按 `packages/<pkg>/src/` 段路由到对应包目录，并支持 shadcn v4.7 式 alias-aware `target`（`#ui-x/foo/bar.vue`）。核心 `ui` 保持 `src/ui` 不变。
+- **命名空间 registry（EC-E02/E04）**：item 名形如 `<package>/<component>`（当前仅有 `ui/button` 等；未来外围包按其包名扩展，如 `<pkg>/<component>`）并附 `package` 字段；`build` 按子路径落盘 `r/ui/button.json`；CLI 支持命名空间寻址，**核心 `ui` 包裸名免前缀（`sbean add button`），其他包必须带前缀（`sbean add <package>/<component>`）**，裸名命中非核心包时抛 `PackageNamespaceRequiredError` 提示；`list --package` / `search --package` 按包过滤。
+- **多包落地路径（shadcn-vue 多别名方式，EC-E03）**：`sbean.json` 增 `aliases`（包名 → import 别名，如 `<package>: "#<package>"`），经 tsconfig `paths` 解析为各包输出目录（默认 `src/<package>`）；`resolveTargetPath` 按 `packages/<pkg>/src/` 段路由到对应包目录，并支持 shadcn v4.7 式 alias-aware `target`（`#<package>/foo/bar.vue`）。核心 `ui` 保持 `src/ui` 不变。
 - **预设 code**：base62 位打包设计参数，`init --preset` / `preset show` 可用；版本 `b` 已移除 menu 体系。
 - **模板**：`vue-vite` / `nuxt` 两模板共享 `uno.config.ts` 与 `sbean.json` 片段，变量插值 `{{projectName}}/{{uiDir}}/{{resolverPath}}`，并复制 resolver / Nuxt module 进用户 `uiDir`。
 - **MCP**：官方 `@modelcontextprotocol/sdk` transport（ADR-011 已落地），8 个工具（7 个对标 parity + `explain_gap` 独有）。

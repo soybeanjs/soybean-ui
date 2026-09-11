@@ -41,14 +41,14 @@ describe('namespaced registry resolution (EC-E02/E04)', () => {
   describe('getItemBasename / getItemPackage', () => {
     it('splits namespaced names', () => {
       expect(getItemBasename('ui/accordion')).toBe('accordion');
-      expect(getItemBasename('ui-x/bubble')).toBe('bubble');
+      expect(getItemBasename('acme/widget')).toBe('widget');
       expect(getItemBasename('accordion')).toBe('accordion');
       expect(getItemBasename('@acme/foo')).toBe('foo');
     });
 
     it('derives the owning package', () => {
       expect(getItemPackage('ui/accordion')).toBe('ui');
-      expect(getItemPackage('ui-x/bubble')).toBe('ui-x');
+      expect(getItemPackage('acme/widget')).toBe('acme');
       expect(getItemPackage('admin/app-layout')).toBe('admin');
       expect(getItemPackage('accordion')).toBe('ui');
       expect(getItemPackage('@acme/foo')).toBe('ui');
@@ -59,13 +59,13 @@ describe('namespaced registry resolution (EC-E02/E04)', () => {
     const items = [
       { name: 'ui/button', type: 'registry:ui' },
       { name: 'ui/dialog', type: 'registry:ui' },
-      { name: 'ui-x/bubble', type: 'registry:ui' },
+      { name: 'acme/widget', type: 'registry:ui' },
       { name: 'admin/app-layout', type: 'registry:ui' }
     ] as RegistryItem[];
 
     it('passes through namespaced references', () => {
       expect(resolveRegistryItemName('ui/button', items)).toBe('ui/button');
-      expect(resolveRegistryItemName('ui-x/bubble', items)).toBe('ui-x/bubble');
+      expect(resolveRegistryItemName('acme/widget', items)).toBe('acme/widget');
     });
 
     it('passes through registry-namespace references', () => {
@@ -78,7 +78,7 @@ describe('namespaced registry resolution (EC-E02/E04)', () => {
     });
 
     it('requires the package prefix for non-core bare names', () => {
-      expect(() => resolveRegistryItemName('bubble', items)).toThrow(PackageNamespaceRequiredError);
+      expect(() => resolveRegistryItemName('widget', items)).toThrow(PackageNamespaceRequiredError);
       expect(() => resolveRegistryItemName('app-layout', items)).toThrow(PackageNamespaceRequiredError);
     });
 
@@ -86,14 +86,14 @@ describe('namespaced registry resolution (EC-E02/E04)', () => {
       const ambiguous = [
         ...items,
         { name: 'admin/dialog', type: 'registry:ui' } as RegistryItem,
-        { name: 'ui-x/dialog', type: 'registry:ui' } as RegistryItem
+        { name: 'acme/dialog', type: 'registry:ui' } as RegistryItem
       ];
       // ui/dialog wins for bare `dialog` (ui is the no-prefix default)
       expect(resolveRegistryItemName('dialog', ambiguous)).toBe('ui/dialog');
       // two non-core candidates with no ui match → ambiguous
       const nonCore = [
         { name: 'admin/panel', type: 'registry:ui' } as RegistryItem,
-        { name: 'ui-x/panel', type: 'registry:ui' } as RegistryItem
+        { name: 'acme/panel', type: 'registry:ui' } as RegistryItem
       ];
       expect(() => resolveRegistryItemName('panel', nonCore)).toThrow(AmbiguousComponentNameError);
     });
@@ -119,14 +119,14 @@ describe('namespaced registry resolution (EC-E02/E04)', () => {
     });
 
     it('requires the package prefix for non-core bare names', async () => {
-      await expect(fetchRegistryItem('bubble', undefined, server.url)).rejects.toThrow(PackageNamespaceRequiredError);
+      await expect(fetchRegistryItem('widget', undefined, server.url)).rejects.toThrow(PackageNamespaceRequiredError);
     });
 
     it('fetches a catalog with namespaced names', async () => {
       const catalog = await fetchRegistryCatalog(undefined, server.url);
       const names = catalog.map(i => i.name);
       expect(names).toContain('ui/button');
-      expect(names).toContain('ui-x/bubble');
+      expect(names).toContain('acme/widget');
       expect(names).toContain('admin/app-layout');
     });
   });

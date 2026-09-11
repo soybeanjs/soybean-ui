@@ -146,48 +146,8 @@ export const menuData: MenuData[] = [
 ];
 
 // Peripheral package menu data — items are placeholders to be filled as components are added.
-// TODO(ui-x): fill items arrays when components are implemented.
 
-export const uiXNewlyComponentKeys: string[] = [];
 export const chartNewlyComponentKeys: string[] = [];
-
-export const uiXMenuData: MenuData[] = [
-  {
-    value: 'ui-x-core',
-    i18n: 'sidebar.ui_x_core',
-    items: ['bubble', 'bubble-list', 'sender']
-  },
-  {
-    value: 'ui-x-content',
-    i18n: 'sidebar.ui_x_content',
-    items: ['markdown', 'code-block', 'mermaid']
-  },
-  {
-    value: 'ui-x-attachments',
-    i18n: 'sidebar.ui_x_attachments',
-    items: ['attachments', 'file-card']
-  },
-  {
-    value: 'ui-x-conversation',
-    i18n: 'sidebar.ui_x_conversation',
-    items: ['conversations', 'welcome', 'prompts', 'suggestion']
-  },
-  {
-    value: 'ui-x-reasoning',
-    i18n: 'sidebar.ui_x_reasoning',
-    items: ['think', 'thought-chain', 'sources']
-  },
-  {
-    value: 'ui-x-actions',
-    i18n: 'sidebar.ui_x_actions',
-    items: ['actions', 'actions-copy', 'actions-feedback']
-  },
-  {
-    value: 'ui-x-misc',
-    i18n: 'sidebar.ui_x_misc',
-    items: ['folder', 'notification']
-  }
-];
 
 export const chartMenuData: MenuData[] = [
   {

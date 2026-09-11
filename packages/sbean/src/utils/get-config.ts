@@ -72,7 +72,7 @@ export async function getConfig(cwd: string): Promise<Config | null> {
  *
  * Resolution order:
  *   1. `compilerOptions.paths` in `tsconfig.json` / `jsconfig.json`
- *      (e.g. `#ui-x/*` → `./src/ui-x/*`).
+ *      (e.g. `#admin/*` → `./src/admin/*`).
  *   2. Convention fallback: `#ui` / `@/ui` → `src/ui`; explicit relative
  *      (`./src/ui`, `src/ui`) used as-is; bare names → `src/<name>`.
  */

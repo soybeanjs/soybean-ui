@@ -273,7 +273,7 @@ After each category is complete (e.g. all "Forms" components), run a cross-compo
 After all components have been audited, run a full regression:
 
 - `pnpm typecheck` / `pnpm lint` / `pnpm fmt` / `pnpm test` all green
-- `pnpm build` (libs -> headless -> ui -> ui-x -> admin -> chart -> sbean) and `pnpm build:libs` (theme -> ui-uno) succeed
+- `pnpm build` (libs -> headless -> ui -> sbean) and `pnpm build:libs` (theme -> ui-uno) succeed
 - `pnpm sui gen catalog headless` / `pnpm sui gen catalog ui` / `pnpm sui gen api` / `pnpm sui gen changelog` all re-run; diff only from intended changes
 - Docs dev server starts cleanly; all examples render
 - Docs build cleanly; all component pages are reachable
@@ -349,6 +349,6 @@ pnpm sui gen changelog --translate --locale <locale>
 
 # Dev and build
 pnpm dev:docs           # documentation site (ubean dev)
-pnpm build              # libs -> headless -> ui -> ui-x -> admin -> chart -> sbean
+pnpm build              # libs -> headless -> ui -> sbean
 pnpm build:libs         # theme -> ui-uno
 ```

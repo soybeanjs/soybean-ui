@@ -154,10 +154,9 @@ Common groups:
 - `overlay`
 - `utilities`
 - `headless`
-- `shell` (admin package)
-- `charts` (chart package)
+- `charts` (docs-site TanStack Charts examples — there is no chart package)
 
-Peripheral packages use their own group sets: `ui-x-core` / `ui-x-content` / `ui-x-attachments` / `ui-x-conversation` / `ui-x-reasoning` / `ui-x-actions` / `ui-x-misc` for ui-x components.
+AI/chat components live in the core `@soybeanjs/headless` / `@soybeanjs/ui` packages (unified `S` prefix) and use the core group set above; there is no separate AI package. Component plan and group placement: [docs/ui-ai-roadmap.md](../../../../docs/ui-ai-roadmap.md).
 
 ### Quality requirements
 

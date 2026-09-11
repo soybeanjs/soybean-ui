@@ -163,7 +163,6 @@ const packageByComponent = Object.fromEntries(
 
 const packagePrefixMap: Record<string, string> = {
   ui: 'S',
-  'ui-x': 'Sx',
   chart: 'S',
   admin: 'S'
 };
@@ -1423,7 +1422,7 @@ export function getComponentApiSections(component: string): GeneratedApiLayerSec
     ].filter(layer => layer.symbols.length);
   }
 
-  // Peripheral packages (ui-x, admin, chart, ...) are single-package: render one layer.
+  // Peripheral packages (admin, chart, ...) are single-package: render one layer.
   return [
     {
       key: pkg,

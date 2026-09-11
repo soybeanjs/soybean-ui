@@ -3,7 +3,7 @@
 import type { Dirent } from 'node:fs';
 import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { menuData, uiXMenuData } from '../../../../apps/docs/src/constants/menus';
+import { menuData } from '../../../../apps/docs/src/constants/menus';
 import type { MenuData } from '../../../../apps/docs/src/constants/menus';
 
 type FrontmatterResult = {
@@ -79,17 +79,6 @@ const uiCategoryTitleMap: Record<string, string> = {
   other: 'Other'
 };
 
-const uiXCategoryTitleMap: Record<string, string> = {
-  'ui-x-core': 'Core',
-  'ui-x-content': 'Content Rendering',
-  'ui-x-attachments': 'Attachments',
-  'ui-x-conversation': 'Conversation',
-  'ui-x-reasoning': 'Reasoning',
-  'ui-x-actions': 'Actions',
-  'ui-x-misc': 'Miscellaneous',
-  other: 'Other'
-};
-
 const skillDocSources: SkillDocSource[] = [
   {
     key: 'ui',
@@ -98,14 +87,6 @@ const skillDocSources: SkillDocSource[] = [
     routePrefix: '/components',
     menu: menuData,
     categoryTitles: uiCategoryTitleMap
-  },
-  {
-    key: 'ui-x',
-    docsDir: path.resolve(repoRoot, 'apps/docs/src/content/en/ui-x/components'),
-    apiDir: 'ui-x',
-    routePrefix: '/ui-x',
-    menu: uiXMenuData,
-    categoryTitles: uiXCategoryTitleMap
   }
 ];
 

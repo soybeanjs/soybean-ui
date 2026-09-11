@@ -25,7 +25,6 @@ const exampleModules = import.meta.glob<{ default: Component }>('../examples/**/
 const libraryOptions: SelectSingleOptionData<string>[] = [
   { label: 'Headless', value: 'headless', icon: 'lucide:code-xml' },
   { label: 'UI', value: 'ui', icon: 'lucide:layout-grid' },
-  { label: 'UI-X', value: 'ui-x', icon: 'lucide:sparkles' },
   { label: 'Admin', value: 'admin', icon: 'lucide:layout-dashboard' },
   { label: 'Chart', value: 'chart', icon: 'lucide:bar-chart-3' }
 ];

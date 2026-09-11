@@ -704,7 +704,6 @@
       "docs": "Docs",
       "getting_started": "Getting Started",
       "components": "Components",
-      "ui_x": "UI-X",
       "chart": "Chart",
       "releases": "Releases",
       "playground": "Playground",
@@ -916,24 +915,11 @@
     "utilities": "Utilities",
     "installation": "Installation",
     "cli": "CLI",
-    "ui_x_overview": "Overview",
-    "ui_x_installation": "Installation",
-    "ui_x_quick_start": "Quick Start",
-    "ui_x_theming": "Theming",
-    "ui_x_i18n": "Internationalization",
-    "ui_x_core": "Core",
-    "ui_x_content": "Content Rendering",
-    "ui_x_attachments": "Attachments",
-    "ui_x_conversation": "Conversation",
-    "ui_x_reasoning": "Reasoning",
-    "ui_x_actions": "Actions",
-    "ui_x_misc": "Miscellaneous",
     "headless": "Headless"
   },
   "api": {
     "ui_layer": "UI Layer",
     "headless_layer": "Headless Layer",
-    "ui_x_layer": "UI-X Layer",
     "chart_layer": "Chart Layer",
     "admin_layer": "Admin Layer",
     "props": "Props",
@@ -1072,22 +1058,6 @@
     "related": {
       "title": "Related components",
       "desc": "If you are composing interactions in the same family, these components usually pair well together."
-    }
-  },
-  "ui_x": {
-    "sidebar": {
-      "general": "General"
-    },
-    "catalog": {
-      "title": "SoybeanUI-X",
-      "placeholder": {
-        "title": "Coming Soon",
-        "body": "Component catalog is being prepared."
-      },
-      "notice": {
-        "title": "In development — coming soon",
-        "description": "This package is still under active development and is scheduled to ship with the v0.40.0 release. Stay tuned!"
-      }
     }
   },
   "chart": {

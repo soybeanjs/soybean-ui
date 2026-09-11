@@ -35,13 +35,6 @@ const menus = computed<NavMenuOptionData[]>(() => {
       selected: path.startsWith('/components')
     },
     {
-      value: 'ui-x',
-      label: t('layout.header.ui_x'),
-      icon: 'lucide:sparkles',
-      to: '/ui-x',
-      selected: path.startsWith('/ui-x')
-    },
-    {
       value: 'chart',
       label: t('layout.header.chart'),
       icon: 'lucide:bar-chart-3',

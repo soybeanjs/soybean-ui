@@ -55,7 +55,7 @@ const genericVueTagRegex = /^<\/?[A-Z][^>]*>$/gmu;
  * llms.txt generation for the ubean docs site.
  *
  * Content now lives in `src/content/{en,zh}` with section folders
- * (`ui` / `ui-x` / `admin` / `chart` / `sbean` / `headless`), and route mapping
+ * (`ui` / `admin` / `chart` / `sbean` / `headless`), and route mapping
  * is shared with prerender/sitemap via `build/docs-routes.ts`.
  *
  * Dev: middleware answers `/llms.txt`, `/llms-full.txt`, and per-page `<route>.md`.
@@ -319,7 +319,7 @@ function normalizeMarkdownContent(source: string, _relativePath: string, apiSumm
 }
 
 function resolveGeneratedApiPath(relativePath: string): string | null {
-  const packageMatch = relativePath.match(/^(ui|ui-x|admin|chart)\/components\/([^/]+)\.md$/u);
+  const packageMatch = relativePath.match(/^(ui|admin|chart)\/components\/([^/]+)\.md$/u);
 
   if (!packageMatch) {
     return null;

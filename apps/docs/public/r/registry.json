@@ -6,11 +6,6 @@
       "name": "ui",
       "scope": "@soybeanjs/ui",
       "prefix": "S"
-    },
-    {
-      "name": "ui-x",
-      "scope": "@soybeanjs/ui-x",
-      "prefix": "Sx"
     }
   ],
   "items": [

@@ -12,7 +12,7 @@ export interface UpdateFilesOptions {
   silent?: boolean;
   /** Per-package output dirs (EC-E03): package namespace → absolute dir. */
   packages?: Record<string, string>;
-  /** Owning package namespace for this batch of files (e.g. `ui`, `ui-x`). */
+  /** Owning package namespace for this batch of files (e.g. `ui`, `admin`). */
   package?: string;
 }
 
@@ -21,7 +21,7 @@ interface ResolveTargetPathOptions {
   uiDir: string;
   /** Per-package output directories: package namespace → absolute dir. */
   packages?: Record<string, string>;
-  /** The owning package namespace, e.g. `ui`, `ui-x`, `admin`. */
+  /** The owning package namespace, e.g. `ui`, `admin`. */
   package?: string;
 }
 
@@ -150,7 +150,7 @@ export function resolveTargetPath(file: RegistryItemFile, options: ResolveTarget
   const baseDir = options.packages?.[options.package ?? 'ui'] ?? options.uiDir;
 
   if (file.target) {
-    // Alias-aware target (shadcn v4.7, issue #8169): `#ui-x/foo/bar.vue` →
+    // Alias-aware target (shadcn v4.7, issue #8169): `#admin/foo/bar.vue` →
     // resolve the alias prefix to a package directory.
     const aliasMatch = /^(#|@\/)?([a-z][a-z0-9-]*)\//.exec(file.target);
     if (aliasMatch) {

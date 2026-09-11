@@ -100,7 +100,7 @@ type ApiPackageConfig = {
 /** Packages for the docs target currently being generated (set per target run). */
 let currentApiPackages: ApiPackageConfig[] = [];
 
-/** Alias map shared by the peripheral packages (ui-x / headless). */
+/** Alias map shared by the peripheral package datasets (headless). */
 const peripheralPackagePaths: Record<string, string[]> = {
   '@soybeanjs/ui': ['./packages/ui/src/index.ts'],
   '@soybeanjs/headless': ['./packages/headless/src/index.ts'],
@@ -126,24 +126,6 @@ function createApiPackages(apiRootDir: string): ApiPackageConfig[] {
       paths: {
         '@/*': ['./packages/ui/src/*'],
         '@soybeanjs/ui': ['./packages/ui/src/index.ts'],
-        '@soybeanjs/theme': ['./packages/theme/src/index.ts'],
-        '@soybeanjs/theme/*': ['./packages/theme/src/*']
-      }
-    },
-    {
-      key: 'ui-x',
-      entryPoint: 'packages/ui-x/src/index.ts',
-      outputDir: path.join(apiRootDir, 'ui-x'),
-      sourceRoots: ['packages/ui-x/src/'],
-      componentRoots: ['packages/ui-x/src/components'],
-      paths: {
-        // ui-x has no `@/` imports today; point the alias at the ui package source so
-        // that pulling in `@soybeanjs/ui` source (for rich referenced-type resolution)
-        // also resolves ui's own internal aliases (`@/theme`, `@/styles`, ...).
-        '@/*': ['./packages/ui/src/*'],
-        '@soybeanjs/ui': ['./packages/ui/src/index.ts'],
-        '@soybeanjs/headless': ['./packages/headless/src/index.ts'],
-        '@soybeanjs/headless/*': ['./packages/headless/src/*'],
         '@soybeanjs/theme': ['./packages/theme/src/index.ts'],
         '@soybeanjs/theme/*': ['./packages/theme/src/*']
       }

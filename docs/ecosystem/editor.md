@@ -66,7 +66,7 @@ Layer 4  @soybeanjs/editor ──► @soybeanjs/{ui, headless, theme}
 
 - 单包自治（ADR-0001）：不建 headless-editor 中间层——Tiptap 本身就是 headless 内核，本包是「styled + 组合」层，角色类似 `packages/ui` 之于 headless，但内生于单包。
 - 跨包依赖：默认无；未来若需在 admin 表单中嵌入，由 admin 声明 `editor` optional peerDep（需先在 CONTEXT.md 白名单加边）。
-- **内核 peer 策略**：`@tiptap/core`、`@tiptap/vue-3` 为 peer dependency（用户自选版本）；`@tiptap/starter-kit` 等扩展按需 peer 或 optional peer（对齐 ui-x 对 shiki/mermaid 的模式）。
+- **内核 peer 策略**：`@tiptap/core`、`@tiptap/vue-3` 为 peer dependency（用户自选版本）；`@tiptap/starter-kit` 等扩展按需 peer 或 optional peer（对齐核心 AI markdown 组件对 shiki/mermaid 的 optional peer 模式，见 [../ui-ai-roadmap.md](../ui-ai-roadmap.md)）。
 
 ### 2.2 包结构（目标形态）
 
@@ -101,7 +101,7 @@ packages/editor/
 | 内核与扩展    | **仅使用 MIT 部分**：core / vue-3 / 全部基础扩展 + 2025-06 已开源的 8 个原 Pro 扩展（DragHandle、FileHandler、Mathematics、Emoji、Details、TableOfContents、InvisibleCharacters、UniqueID）  |
 | UI 层         | 全部自建（参考 MIT 社区项目 shadcn-tiptap / minimal-tiptap 的组件切分；官方付费 UI Components 仅作视觉参考，禁止抄代码）                                                                     |
 | 协作          | 官方 Collaboration / Cloud Documents 为付费 bundle——**不依赖**；提供 Y.js 集成点（用户自建 Hocuspocus OSS 或购买 Tiptap Cloud 均可，`@tiptap/extension-collaboration` 当前许可在立项时验证） |
-| AI            | Content AI 付费——不依赖；slash 命令与 ai-elements 式交互留集成点（可对接 ui-x 的 `SxSender`/流式能力自建免费方案）                                                                           |
+| AI            | Content AI 付费——不依赖；slash 命令与 ai-elements 式交互留集成点（可对接核心库 `SSender` / `useStream` 流式能力自建免费方案，见 [ui-ai-roadmap](../ui-ai-roadmap.md)）                       |
 | DOCX 导入导出 | Conversion 付费——不依赖；Markdown 双向自建（markdown-it / tiptap markdown 扩展，MIT）；DOCX 留待需求信号                                                                                     |
 
 ## 3. 核心功能
@@ -149,9 +149,9 @@ packages/editor/
 
 ## 7. 风险
 
-| 风险                                      | 缓解                                                                           |
-| :---------------------------------------- | :----------------------------------------------------------------------------- |
-| Tiptap 上游大版本破坏性变更（v2→v3 先例） | peer dep + 兼容矩阵 + 升级专项测试（13+ 单测 + e2e 回归）                      |
-| 官方未来收紧已开源扩展                    | 锁定具体版本范围；关键扩展（DragHandle/FileHandler）评估 fork 预案             |
-| 与官方付费 UI Components 的同质竞争       | 差异化：UnoCSS / theme token / Vue3 / 中文文档 / 与 ui-x AI 能力的免费集成路径 |
-| 编辑器交互复杂度导致交付面不完整          | P0 严格限定为「容器 + 内容 + 工具栏 + 气泡」最小闭环，其余渐进                 |
+| 风险                                      | 缓解                                                                                                     |
+| :---------------------------------------- | :------------------------------------------------------------------------------------------------------- |
+| Tiptap 上游大版本破坏性变更（v2→v3 先例） | peer dep + 兼容矩阵 + 升级专项测试（13+ 单测 + e2e 回归）                                                |
+| 官方未来收紧已开源扩展                    | 锁定具体版本范围；关键扩展（DragHandle/FileHandler）评估 fork 预案                                       |
+| 与官方付费 UI Components 的同质竞争       | 差异化：UnoCSS / theme token / Vue3 / 中文文档 / 与核心 AI 组件（`SSender` / `useStream`）的免费集成路径 |
+| 编辑器交互复杂度导致交付面不完整          | P0 严格限定为「容器 + 内容 + 工具栏 + 气泡」最小闭环，其余渐进                                           |

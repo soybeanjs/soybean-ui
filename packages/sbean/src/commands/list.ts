@@ -15,7 +15,7 @@ export const list = new Command()
   .name('list')
   .description('list registry items, optionally filtered by package')
   .option('-c, --cwd <cwd>', 'the working directory. defaults to the current directory.', process.cwd())
-  .option('--package <name>', 'filter items by package namespace (e.g. ui, ui-x, admin, chart)')
+  .option('--package <name>', 'filter items by package namespace (e.g. ui, admin, chart)')
   .option('--json', 'output as JSON', false)
   .action(async opts => {
     const options = v.parse(listOptionsSchema, {

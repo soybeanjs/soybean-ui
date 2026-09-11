@@ -1,0 +1,10 @@
+{
+  "name": "acme/widget",
+  "package": "acme",
+  "type": "registry:ui",
+  "description": "Fictional third-party widget used to exercise namespaced resolution.",
+  "dependencies": ["@soybeanjs/ui"],
+  "files": [
+    { "path": "components/widget/widget.vue", "type": "registry:ui", "content": "<template><div /></template>" }
+  ]
+}

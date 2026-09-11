@@ -3,7 +3,7 @@
   "homepage": "https://ui.soybeanjs.cn",
   "packages": [
     { "name": "ui", "scope": "@soybeanjs/ui", "prefix": "S" },
-    { "name": "ui-x", "scope": "@soybeanjs/ui-x", "prefix": "Sx" },
+    { "name": "acme", "scope": "@acme/ui", "prefix": "A" },
     { "name": "admin", "scope": "@soybeanjs/admin", "prefix": "S", "nounPrefix": "App" }
   ],
   "items": [
@@ -25,13 +25,13 @@
       "files": []
     },
     {
-      "name": "ui-x/bubble",
-      "package": "ui-x",
+      "name": "acme/widget",
+      "package": "acme",
       "type": "registry:ui",
-      "description": "AI conversation bubble.",
+      "description": "Fictional third-party widget used to exercise namespaced resolution.",
       "dependencies": ["@soybeanjs/ui"],
       "files": [
-        { "path": "components/bubble/bubble.vue", "type": "registry:ui", "content": "<template><div /></template>" }
+        { "path": "components/widget/widget.vue", "type": "registry:ui", "content": "<template><div /></template>" }
       ]
     },
     {

@@ -25,7 +25,6 @@
     "@soybeanjs/headless": "workspace:^",
     "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
-    "@soybeanjs/ui-x": "workspace:^",
     "@tanstack/charts": "^0.16.2",
     "@ubean/content": "0.4.9",
     "@unhead/vue": "^3.4.0",

@@ -4,6 +4,8 @@
 >
 > 事实依据：完整调研见 [research/commercialization-ecosystem.md](../research/commercialization-ecosystem.md)（先例定价/许可一手核实）；editor 的 Tiptap 收费边界见 [editor.md](./editor.md) §1.1；table/form 的 Pro 能力边界见 [table.md](./table.md) 与 [form.md](./form.md)。
 > 状态：**策略建议**（非执行承诺）。所有方向需先经需求信号验证（GitHub issue/讨论、企业询单）再立项。
+>
+> 2026-09 注：下文多处提及「复用 `@soybeanjs/ui-x` 流式能力 / `SxSender`」，该包已移除——AI 流式能力现规划在核心 headless/ui（`useStream` / `SSender`，见 [../ui-ai-roadmap.md](../ui-ai-roadmap.md)），策略含义不变，引用按此折算。
 
 ## 0. 总原则
 
@@ -50,10 +52,10 @@
 - **免费边界**：本地单机编辑器免费；只有托管文档/协同连接计入配额。
 - **风险**：云基础设施运营成本高（SLA/数据驻留/合规）；**建议先做企业自托管版（on-prem）再上云**，规避合规与带宽成本。
 
-### E3 · AI 写作/编辑功能订阅（对接 `@soybeanjs/ui-x` 流式能力）
+### E3 · AI 写作/编辑功能订阅（对接核心 AI 流式能力 `useStream` / `SSender`）
 
 - **目标客户**：内容密集型产品（文档、博客、客服、法务）团队。
-- **价值主张**：AI 续写/改写/翻译/摘要/校对；免费集成点（slash 命令 + 流式渲染，复用 ui-x 的 `SxSender`/`use-x-stream`）；**BYOK（自带 key）免费档 + 托管 AI 档**。
+- **价值主张**：AI 续写/改写/翻译/摘要/校对；免费集成点（slash 命令 + 流式渲染，复用核心库 `SSender` / `useStream`）；**BYOK（自带 key）免费档 + 托管 AI 档**。
 - **定价建议**：BYOK 免费（参考 Novel）；托管 AI 按 credits/月（参考 Retool），如 $19/$49/$199/月；AI Toolkit 级（面向 Agent 的文档读写）联系销售。
 - **免费边界**：AI 交互组件 MIT；**模型调用与用量**付费。
 - **风险**：AI 成本 pass-through 难定价（防滥用）；OpenAI/各家 SDK 降价竞争；合规（内容安全、个保法）在中国是硬要求。
@@ -115,7 +117,7 @@
 ### T5 · AI 数据网格（对标 AG Grid AI Toolkit）
 
 - **目标客户**：报表/BI 与运营分析团队。
-- **价值主张**：自然语言→查询/聚合、AI 洞察生成、异常标注、智能列建议、MCP Server 集成（参考 AG Grid AI Toolkit [官方](https://www.ag-grid.com/landing-pages/enterprise-data-grid/)）；复用 ui-x 流式能力。
+- **价值主张**：自然语言→查询/聚合、AI 洞察生成、异常标注、智能列建议、MCP Server 集成（参考 AG Grid AI Toolkit [官方](https://www.ag-grid.com/landing-pages/enterprise-data-grid/)）；复用核心 AI 流式能力。
 - **定价建议**：AI credits/月 或并入 Table Pro 高级档。
 - **免费边界**：AI 交互组件 MIT；**模型调用与用量**付费。
 - **风险**：AI 分析与数据安全在政企场景敏感（数据不出域）；大厂（Copilot/各家 BI）挤压。
@@ -161,7 +163,7 @@
 ### F5 · AI 表单生成与智能校验（横切付费点）
 
 - **目标客户**：希望「一句话建表 / 从数据库 Schema 自动出表单」的团队。
-- **价值主张**：自然语言/字段清单 → 生成 JSON Schema + 校验规则 + 联动；AI 校验规则补全、错误提示润色、自动填充组件选择——复用 ui-x 流式能力。
+- **价值主张**：自然语言/字段清单 → 生成 JSON Schema + 校验规则 + 联动；AI 校验规则补全、错误提示润色、自动填充组件选择——复用核心 AI 流式能力。
 - **定价建议**：AI credits/月 或并入 Pro 档（参考 Retool [官网](https://retool.com/pricing)、Jotform AI Agent）。
 - **免费边界**：生成结果渲染 MIT；**模型调用与用量**付费。
 - **风险**：AI 生成 Schema 的可信度（需人工复核兜底）；与低代码大厂（钉钉宜搭等）竞争。
@@ -179,7 +181,7 @@
 
 ### 5.2 sbean registry + 付费内容分发
 
-- 现有 registry 已命名空间化（`ui/*`、`ui-x/*`、`admin/*`、`chart/*`，见 [ecosystem.md](../ecosystem.md) §6）。扩展两级模式：
+- 现有 registry 已命名空间化（当前仅有 `ui/*`；未来外围包按 `<package>/*` 扩展，见 [sbean.md](./sbean.md)）。扩展两级模式：
   - **免费条目**：`sbean add <ns>/<name>` 直接拉源码。
   - **付费条目**：`type: "registry:ui-paid"` + 元数据（price/license/支持窗口），`sbean add` 时触发 license key 本地校验；可复用 Zeta + Polar「registry + 自动发 key」思路 [GitHub](https://github.com/rbadillap/zeta/)。
 - **文档站付费内容区**：docs 命名空间下新增 Pro 徽章 + 免费 vs 付费 feature matrix（参考 AG Grid Community vs Enterprise 对比 [官方](https://www.ag-grid.com/landing-pages/enterprise-data-grid/)），公开透明。
@@ -189,7 +191,7 @@
 
 1. **阶段一（0→1）**：赞助商位 + 模板市场（Metronic 式 $99–$299 一次性）+ 早期企业询单定制——验证付费信号。
 2. **阶段二（1→10）**：Pro 能力订阅（每开发者/月 或 项目一次性）+ license key；积累付费用户支持 SLA。
-3. **阶段三（10→100）**：托管服务（Editor Cloud / Table Cloud / 表单 SaaS）与 AI credits——复用 ui-x 能力，边际成本可控。
+3. **阶段三（10→100）**：托管服务（Editor Cloud / Table Cloud / 表单 SaaS）与 AI credits——复用核心 AI 流式能力，边际成本可控。
 
 ### 5.4 定价与生态联动
 

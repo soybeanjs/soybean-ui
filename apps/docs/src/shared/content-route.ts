@@ -4,7 +4,7 @@
  * The mapping mirrors the shell pages under `src/pages`:
  * - `ui/components/<slug>`       -> `/components/<slug>`
  * - `ui/<slug>`                  -> `/overview/<slug>`
- * - `<section>/components/<slug>` -> `/<section>/<slug>` (ui-x / admin / chart)
+ * - `<section>/components/<slug>` -> `/<section>/<slug>` (chart)
  * - `<section>/<slug>`           -> `/<section>/<slug>`
  * - trailing `index` collapses to its directory root (`sbean/index` -> `/sbean`)
  *
@@ -21,7 +21,7 @@ export function resolveContentRoutePath(inputSlug: string): string {
 
   // Peripheral packages keep their component docs under `<section>/components/`
   // but expose them as single-segment `/<section>/:name` pages (see
-  // `pages/ui-x/[name].vue`), so the `components` segment must be dropped.
+  // `pages/chart/[name].vue`), so the `components` segment must be dropped.
   const sectionComponentsMatch = slug.match(/^([^/]+)\/components\/(.+)$/u);
 
   if (sectionComponentsMatch) {

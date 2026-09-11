@@ -145,6 +145,6 @@ export const add = new Command()
     console.log('');
     console.log('  Component naming:');
     console.log('    Core ui components can be referenced without a prefix: "sbean add button".');
-    console.log('    Other packages require the namespace prefix: "sbean add ui-x/bubble".');
+    console.log('    Other packages require the namespace prefix: "sbean add admin/layout".');
     console.log('    Run "sbean list" to see all available components.');
   });

@@ -5,14 +5,7 @@ import { useI18n } from 'vue-i18n';
 import { extractLocaleFromPath } from 'ubean/client';
 import { kebabCase, pascalCase } from '@soybeanjs/headless/shared';
 import type { TreeMenuOptionData } from '@soybeanjs/ui';
-import {
-  menuData,
-  newlyComponentKeys,
-  uiXMenuData,
-  uiXNewlyComponentKeys,
-  chartMenuData,
-  chartNewlyComponentKeys
-} from '~/constants/menus';
+import { menuData, newlyComponentKeys, chartMenuData, chartNewlyComponentKeys } from '~/constants/menus';
 
 type Emits = {
   select: [];
@@ -46,19 +39,6 @@ const componentMenus = computed<TreeMenuOptionData[]>(() =>
         tag: newlyComponentKeys.includes(item) ? '🎉new' : undefined
       }))
     }))
-);
-
-const uiXComponentMenus = computed<TreeMenuOptionData[]>(() =>
-  uiXMenuData.map(group => ({
-    label: t(`${group.i18n}`),
-    value: group.value,
-    children: group.items.map(item => ({
-      label: pascalCase(item),
-      value: item,
-      to: `/ui-x/${item}`,
-      tag: uiXNewlyComponentKeys.includes(item) ? '🎉new' : undefined
-    }))
-  }))
 );
 
 const chartComponentMenus = computed<TreeMenuOptionData[]>(() =>
@@ -137,23 +117,6 @@ const componentsMenus = computed<TreeMenuOptionData[]>(() => [
   }
 ]);
 
-const uiXMenus = computed<TreeMenuOptionData[]>(() => [
-  {
-    isGroup: true,
-    label: t('layout.header.ui_x'),
-    value: 'ui-x',
-    icon: 'lucide:sparkles',
-    children: [
-      {
-        label: t('ui_x.catalog.title'),
-        value: 'ui-x-overview',
-        to: '/ui-x'
-      },
-      ...uiXComponentMenus.value
-    ]
-  }
-]);
-
 const chartMenus = computed<TreeMenuOptionData[]>(() => [
   {
     isGroup: true,
@@ -197,10 +160,6 @@ const menus = computed<TreeMenuOptionData[]>(() => {
     return componentsMenus.value;
   }
 
-  if (section.value === 'ui-x') {
-    return uiXMenus.value;
-  }
-
   if (section.value === 'chart') {
     return chartMenus.value;
   }
@@ -219,7 +178,6 @@ watchEffect(() => {
     const valueMap: Record<string, string> = {
       overview: 'installation',
       components: componentsOverviewValue,
-      'ui-x': 'ui-x-overview',
       chart: 'chart-overview',
       headless: 'headless-overview'
     };

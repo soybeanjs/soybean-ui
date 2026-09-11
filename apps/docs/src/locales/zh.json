@@ -704,7 +704,6 @@
       "docs": "文档",
       "getting_started": "开始使用",
       "components": "组件",
-      "ui_x": "UI-X",
       "chart": "图表",
       "releases": "更新日志",
       "playground": "演练场",
@@ -911,24 +910,11 @@
     "utilities": "工具",
     "installation": "安装",
     "cli": "CLI",
-    "ui_x_overview": "概览",
-    "ui_x_installation": "安装",
-    "ui_x_quick_start": "快速上手",
-    "ui_x_theming": "主题定制",
-    "ui_x_i18n": "国际化",
-    "ui_x_core": "核心",
-    "ui_x_content": "内容渲染",
-    "ui_x_attachments": "附件",
-    "ui_x_conversation": "会话管理",
-    "ui_x_reasoning": "推理",
-    "ui_x_actions": "动作",
-    "ui_x_misc": "其他",
     "headless": "Headless"
   },
   "api": {
     "ui_layer": "UI 层",
     "headless_layer": "Headless 层",
-    "ui_x_layer": "UI-X 层",
     "chart_layer": "Chart 层",
     "admin_layer": "Admin 层",
     "props": "属性",
@@ -1067,22 +1053,6 @@
     "related": {
       "title": "同分类组件",
       "desc": "如果你在同一类交互里做组合，这些组件通常会一起出现。"
-    }
-  },
-  "ui_x": {
-    "catalog": {
-      "title": "SoybeanUI-X",
-      "placeholder": {
-        "title": "即将推出",
-        "body": "组件目录正在准备中。"
-      },
-      "notice": {
-        "title": "还在开发中，敬请期待",
-        "description": "本包仍在积极开发中，计划于 v0.40.0 版本正式发布。届时敬请关注！"
-      }
-    },
-    "sidebar": {
-      "general": "通用"
     }
   },
   "chart": {

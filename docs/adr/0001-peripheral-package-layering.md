@@ -2,9 +2,11 @@
 
 ## 状态
 
-accepted
+superseded（对 AI 域失效；单包分层模型作为未来外围包的备选方案存档）
 
-> 补注（v0.40.0）：`@soybeanjs/admin`、`@soybeanjs/chart` 后续已移除（图表改为文档站基于 TanStack Charts 的 shadcn 风格示例，不进核心库）。本 ADR 的单包分层模型不变，当前仅作用于 `@soybeanjs/ui-x`；下文涉及 admin / chart 的内容为当时背景，保留备查。
+> 补注（v0.40.0）：`@soybeanjs/admin`、`@soybeanjs/chart` 后续已移除（图表改为文档站基于 TanStack Charts 的 shadcn 风格示例，不进核心库）。
+>
+> 补注（2026-09）：最后的单包外围实例 `@soybeanjs/ui-x` 已整包移除，AI/chat 组件改为按标准 headless/ui 两层契约在核心库内重新实现，统一 `S` 前缀，准入判据与迁移决策见 [`docs/ui-ai-roadmap.md`](../ui-ai-roadmap.md)（ADR A1）。自此仓库内不再有任何外围单包，本 ADR 对 AI 域失效；下文为历史决策记录，保留备查。
 
 ## 背景
 

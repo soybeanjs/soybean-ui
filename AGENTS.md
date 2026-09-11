@@ -25,7 +25,7 @@ If a nearer scoped `AGENTS.md` exists for your target path, use it only to narro
 
 **Generated:** 2026-09-06
 **Version:** 0.31.0
-**Monorepo:** pnpm workspaces (private root + 11 child workspaces: 8 packages + 2 apps + `skills/`; 7 publishable packages, 2 private packages — `@soybeanjs/scripts`, `@soybeanjs/shared` — and 2 private apps)
+**Monorepo:** pnpm workspaces (private root + 10 child workspaces: 7 packages + 2 apps + `skills/`; 5 publishable packages, 2 private packages — `@soybeanjs/scripts`, `@soybeanjs/shared` — and 2 private apps)
 **Stack:** Vue 3 + TypeScript (strict) + UnoCSS + @soybeanjs/cva
 
 ## ARCHITECTURE
@@ -51,9 +51,8 @@ Other publishable modules:
 - **@soybeanjs/ui-uno** (`packages/unocss/`): UnoCSS preset over `@soybeanjs/theme`.
 - **sbean** (`packages/sbean/`): source-distribution CLI, registry, schemas, templates, and MCP.
 - **@soybeanjs/ui-skills** (`skills/`): generated consumer-facing agent skills.
-- **@soybeanjs/ui-x** (`packages/ui-x/`): AI conversation UI components; prefix `Sx`; exports include `./composables` `./types` sub-paths. Peripheral package (single-package: domain logic + styles coexist).
 
-> There is **no** `@soybeanjs/admin` or `@soybeanjs/chart` package. Charts are not part of the core library: the docs site shows shadcn-styled demos built directly on [TanStack Charts](https://tanstack.com/charts) (see `apps/docs/src/examples/chart/` + the docs-local `apps/docs/src/components/chart/` theming shell).
+> There is **no** `@soybeanjs/admin` or `@soybeanjs/chart` package, and no standalone AI package: AI/chat components ship inside headless + ui under the standard `S` prefix — the component plan lives in [docs/ui-ai-roadmap.md](docs/ui-ai-roadmap.md). Charts are not part of the core library either: the docs site shows shadcn-styled demos built directly on [TanStack Charts](https://tanstack.com/charts) (see `apps/docs/src/examples/chart/` + the docs-local `apps/docs/src/components/chart/` theming shell).
 
 Private packages and applications:
 
@@ -91,7 +90,7 @@ Private packages and applications:
 
 ```bash
 pnpm dev:docs         # Docs site (ubean dev)
-pnpm build            # libs (theme, ui-uno) → headless → ui → ui-x → sbean via Vite Plus pack
+pnpm build            # libs (theme, ui-uno) → headless → ui → sbean via Vite Plus pack
 pnpm build:libs       # theme → ui-uno
 pnpm build:docs       # package build → sbean registry → docs SSG + SEO
 pnpm lint             # vp lint --fix && pnpm lint:vue (uses @soybeanjs/eslint-config-vue)

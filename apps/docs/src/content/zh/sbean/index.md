@@ -103,12 +103,12 @@ sbean search [query] [options]
 sbean list [options]
 ```
 
-| 选项               | 描述                                        |
-| ------------------ | ------------------------------------------- |
-| `--package <name>` | 按包命名空间过滤：ui / ui-x / admin / chart |
-| `--json`           | 以 JSON 格式输出                            |
+| 选项               | 描述                                                          |
+| ------------------ | ------------------------------------------------------------- |
+| `--package <name>` | 按包命名空间过滤（当前为 `ui`；未来外围包以各自命名空间加入） |
+| `--json`           | 以 JSON 格式输出                                              |
 
-条目按包命名空间区分（`ui/button`、`ui-x/bubble`、`admin/app-layout`、…）。
+条目按包命名空间区分（当前为 `ui/button`、`ui/accordion`、…；未来外围包遵循 `<package>/<component>`）。
 
 ### `sbean view`
 
@@ -177,17 +177,17 @@ sbean preset <preset>
 }
 ```
 
-| 字段           | 类型     | 描述                                                                                                        |
-| -------------- | -------- | ----------------------------------------------------------------------------------------------------------- |
-| `iconLibrary`  | `string` | 图标库前缀                                                                                                  |
-| `uno.base`     | `string` | 基础（中性）色                                                                                              |
-| `uno.primary`  | `string` | 主（品牌）色                                                                                                |
-| `uno.size`     | `string` | 基础组件尺寸                                                                                                |
-| `uno.radius`   | `string` | 圆角大小                                                                                                    |
-| `font.sans`    | `string` | 无衬线字体名称                                                                                              |
-| `font.heading` | `string` | 标题字体或 `"inherit"`                                                                                      |
-| `aliases`      | `object` | 各包 import 别名（`ui`/`ui-x`/`admin`/`chart`）——经 `tsconfig` paths 映射到输出目录（默认 `src/<package>`） |
-| `registries`   | `object` | 额外 registry 命名空间 → URL 映射                                                                           |
+| 字段           | 类型     | 描述                                                                                                    |
+| -------------- | -------- | ------------------------------------------------------------------------------------------------------- |
+| `iconLibrary`  | `string` | 图标库前缀                                                                                              |
+| `uno.base`     | `string` | 基础（中性）色                                                                                          |
+| `uno.primary`  | `string` | 主（品牌）色                                                                                            |
+| `uno.size`     | `string` | 基础组件尺寸                                                                                            |
+| `uno.radius`   | `string` | 圆角大小                                                                                                |
+| `font.sans`    | `string` | 无衬线字体名称                                                                                          |
+| `font.heading` | `string` | 标题字体或 `"inherit"`                                                                                  |
+| `aliases`      | `object` | 各包 import 别名（如 `ui`；未来外围包同理）——经 `tsconfig` paths 映射到输出目录（默认 `src/<package>`） |
+| `registries`   | `object` | 额外 registry 命名空间 → URL 映射                                                                       |
 
 ## 项目结构
 
@@ -250,4 +250,4 @@ import { buttonVariants } from '#ui/styles/button';
 
 ## 注册表
 
-SBean 从 SoybeanUI 注册表获取组件源码 `https://ui.soybeanjs.cn/r/{name}.json`。注册表条目**按包命名空间区分**——如 `ui/button` 由 `r/ui/button.json` 提供，`ui-x/bubble` 由 `r/ui-x/bubble.json` 提供。核心 `ui` 组件可省略前缀（`sbean add button`）；其他包的组件必须带命名空间前缀（`sbean add ui-x/bubble`）。本地缓存（`~/.sbean/cache`）保持 24 小时 TTL 并支持 ETag 条件请求。
+SBean 从 SoybeanUI 注册表获取组件源码 `https://ui.soybeanjs.cn/r/{name}.json`。注册表条目**按包命名空间区分**——如 `ui/button` 由 `r/ui/button.json` 提供。核心 `ui` 组件可省略前缀（`sbean add button`）；未来外围包的组件必须带命名空间前缀（`sbean add <package>/<component>`）。本地缓存（`~/.sbean/cache`）保持 24 小时 TTL 并支持 ETag 条件请求。

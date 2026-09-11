@@ -116,7 +116,7 @@
 
 ### 6.3 分支合并注意点
 
-- 当前 `ecosystem` / `ui-x` / `admin` 临时分支与 `main` 的 `docs/` 存在差异（如 `main` 有 `check.md`、`check-reports/`，`ecosystem` 有 `ecosystem.md`、`research/`、`info/`）。
+- 历史上 `ecosystem` / `ui-x` / `admin` 临时分支与 `main` 的 `docs/` 存在差异（如 `main` 有 `check.md`、`check-reports/`，`ecosystem` 有 `ecosystem.md`、`research/`、`info/`）；这些分支均已归档，ui-x 包于 2026-09 移除（见 [ui-ai-roadmap.md](./ui-ai-roadmap.md)），本条仅作合并期记录。
 - 合并前：确认 `docs/README.md`、各子目录 `README.md` 与目标分支的文档集一致；文档冲突优先取「内容完整、链接可解析」的一方，再补修引用。
 
 ## 7. 合并前检查清单（Checklist）

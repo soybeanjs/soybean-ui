@@ -52,20 +52,20 @@ describe('generated file mapping', () => {
 describe('multi-package path mapping (EC-E03)', () => {
   const packages = {
     ui: '/tmp/project/src/ui',
-    'ui-x': '/tmp/project/src/ui-x',
+    acme: '/tmp/project/src/acme',
     admin: '/tmp/project/src/admin'
   };
 
-  it('routes ui-x source paths into the ui-x package dir', () => {
+  it('routes acme source paths into the acme package dir', () => {
     const targetPath = resolveTargetPath(
       {
-        path: 'packages/ui-x/src/components/bubble/bubble.vue',
+        path: 'packages/acme/src/components/widget/widget.vue',
         type: 'registry:ui'
       },
       { uiDir: packages.ui, packages }
     );
 
-    expect(targetPath).toBe('/tmp/project/src/ui-x/components/bubble/bubble.vue');
+    expect(targetPath).toBe('/tmp/project/src/acme/components/widget/widget.vue');
   });
 
   it('routes admin source paths into the admin package dir', () => {
@@ -83,14 +83,14 @@ describe('multi-package path mapping (EC-E03)', () => {
   it('resolves an alias-aware target to the package dir (shadcn v4.7 style)', () => {
     const targetPath = resolveTargetPath(
       {
-        path: 'packages/ui-x/src/components/bubble/bubble.vue',
+        path: 'packages/acme/src/components/widget/widget.vue',
         type: 'registry:ui',
-        target: '#ui-x/custom/bubble.vue'
+        target: '#acme/custom/widget.vue'
       },
       { uiDir: packages.ui, packages }
     );
 
-    expect(targetPath).toBe('/tmp/project/src/ui-x/custom/bubble.vue');
+    expect(targetPath).toBe('/tmp/project/src/acme/custom/widget.vue');
   });
 
   it('keeps core ui mapping unchanged', () => {

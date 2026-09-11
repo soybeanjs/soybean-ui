@@ -3,6 +3,8 @@
 > **调研目的**：为 `@soybeanjs/editor`（富文本/块编辑器）、`@soybeanjs/table`（高级数据表格）、`@soybeanjs/form`（Schema 驱动表单）三个外围生态包寻找可落地的商业变现方向。
 > **调研日期**：2026-08-14（本地时区 Asia/Shanghai）。所有价格/许可信息基于 2025–2026 年公开资料核实，**价格可能随时变动**，下文对每条事实均标注来源与「已核实/待核实」状态。
 > **方法**：以 WebSearch + WebFetch 抓取一手来源（官方定价页、许可页、公司官网、GitHub 官方仓库）；二手来源（第三方对比文、行业综述）仅作佐证并明确标注。
+>
+> **2026-09 注**：下文引用的 `@soybeanjs/ui-x` / `SxSender` / `use-x-stream` 已随 ui-x 包移除，AI 流式能力改为核心 headless/ui 的 `useStream` / `SSender`（见 [../ui-ai-roadmap.md](../ui-ai-roadmap.md)）；调研结论与定价事实不受影响，引用按此折算。
 
 ---
 
@@ -15,7 +17,7 @@
 3. **商业化必须与「开源免费边界」严格切割**：SoybeanUI 核心（headless/ui/theme）保持 MIT；外围包的**基础能力保持 MIT**，**付费能力放入独立包/独立子路径**（如 `*-pro` 或 `*/pro` 子路径），用 license key 本地校验（参考 Handsontable/Zeta 先例），不破坏开源信任。
 4. **中国背景 = 差异化机会也是约束**：中国政企市场（私有化部署、信创、等保、发票合规、source escrow）是国外商业组件库服务不到/服务不好的空白；同时中国市场对「开源免费」的支付意愿低于欧美，需要**本地化定价（人民币）+ 企业服务**补足（参考 Univer 与 Element Plus 赞助模式）。
 5. **「赞助 + 生态位」只能作为起步收入**：Element Plus / Naive UI / TanStack 的赞助收入规模有限（Element Plus GitHub Sponsors 当前仅 3 个 sponsor 在档），TanStack 依赖企业合作赞助；真正的可持续收入必须来自企业付费产品/服务，而不是捐赠。
-6. **AI 是 2025–2026 年所有先例都在追加的付费点**：AG Grid 新出 AI Toolkit/MCP Server（企业版内）、Tiptap 的 AI Toolkit 为 add-on、Retool 卖 AI credits、Jotform 卖 AI Agent——SoybeanUI 可复用既有 `@soybeanjs/ui-x` 的流式 AI 能力，把「AI 功能订阅」作为横切付费项。
+6. **AI 是 2025–2026 年所有先例都在追加的付费点**：AG Grid 新出 AI Toolkit/MCP Server（企业版内）、Tiptap 的 AI Toolkit 为 add-on、Retool 卖 AI credits、Jotform 卖 AI Agent——SoybeanUI 可复用核心 headless/ui 的流式 AI 能力（`useStream` / `SSender`，见 [../ui-ai-roadmap.md](../ui-ai-roadmap.md)），把「AI 功能订阅」作为横切付费项。
 7. **风险预警**：头部先例（Tiptap）已在 2025-06 移除免费云计划并持续抬高付费墙（二手来源）；组件库赛道同质化严重，免费替代品（Lexical/BlockNote 等）众多；付费产品一旦上线，维护承诺（SLA、安全补丁、source escrow）会显著抬高运营成本，**需要先验证需求信号再投入**。
 
 ### 1.2 先例商业模式汇总表
@@ -224,10 +226,10 @@
 - 免费边界：本地单机编辑器免费；**只有托管文档/协同连接计入配额**（复制 Tiptap「本地文档不计入」规则 [FAQ](https://tiptap.dev/docs/pricing)）。
 - 风险：需要运营云基础设施（SLA、数据驻留、合规），成本高；与 Tiptap/Hocuspocus 官方竞争激烈；**建议先做企业自托管版（on-prem）再上云**，规避合规与带宽成本。
 
-**方向 E3：AI 写作/编辑功能订阅（对接 `@soybeanjs/ui-x` 流式能力）**
+**方向 E3：AI 写作/编辑功能订阅（对接核心 AI 流式能力 `useStream` / `SSender`）**
 
 - 目标客户：内容密集型产品（文档、博客、客服、法务）团队。
-- 价值主张：AI 续写/改写/翻译/摘要/校对，走免费集成点（slash 命令 + 流式渲染，复用 ui-x 的 SxSender/use-x-stream），BYOK（自带 key）免费档 + 托管 AI 档。
+- 价值主张：AI 续写/改写/翻译/摘要/校对，走免费集成点（slash 命令 + 流式渲染，复用核心库 `SSender` / `useStream`），BYOK（自带 key）免费档 + 托管 AI 档。
 - 定价建议：BYOK 免费（参考 Novel [二手](https://eddyter.com/blogs/tiptap-alternative)）；托管 AI 按 **credits/月**（参考 Retool AI credits [官网](https://retool.com/pricing)），如 $19/$49/$199/月；AI Toolkit 级能力（面向 Agent 的文档读写）联系销售（参考 Tiptap add-on [官方](https://tiptap.dev/pricing)）。
 - 免费边界：AI 交互组件（菜单、流式渲染、命令面板）MIT；**AI 模型调用与用量计费**为付费。
 - 风险：AI 成本 pass-through 难定价（需防滥用）；OpenAI/各家 SDK 与 v0 类工具降价竞争；合规（内容安全、个保法）在中国市场是硬要求。
@@ -285,7 +287,7 @@
 **方向 T5：AI 数据网格（对标 AG Grid AI Toolkit）**
 
 - 目标客户：报表/BI 与运营分析团队。
-- 价值主张：自然语言→查询/聚合、AI 洞察生成、异常标注、智能列建议、MCP Server 集成（参考 AG Grid AI Toolkit/MCP [官方](https://www.ag-grid.com/landing-pages/enterprise-data-grid/)）；复用 ui-x 流式能力。
+- 价值主张：自然语言→查询/聚合、AI 洞察生成、异常标注、智能列建议、MCP Server 集成（参考 AG Grid AI Toolkit/MCP [官方](https://www.ag-grid.com/landing-pages/enterprise-data-grid/)）；复用核心 AI 流式能力。
 - 定价建议：AI credits/月（参考 Retool [官网](https://retool.com/pricing)）或并入 Table Pro 高级档。
 - 免费边界：AI 交互组件 MIT；模型调用与用量付费。
 - 风险：AI 分析与数据安全在政企场景敏感（数据不出域）；大厂（Copilot/各家 BI）挤压。
@@ -327,7 +329,7 @@
 **方向 F5：AI 表单生成与智能校验（横切付费点）**
 
 - 目标客户：希望「一句话建表 / 从数据库 Schema 自动出表单」的团队。
-- 价值主张：自然语言/字段清单 → 生成 JSON Schema + 校验规则 + 联动；AI 校验规则补全、错误提示润色、自动填充组件选择——复用 ui-x 流式能力。
+- 价值主张：自然语言/字段清单 → 生成 JSON Schema + 校验规则 + 联动；AI 校验规则补全、错误提示润色、自动填充组件选择——复用核心 AI 流式能力。
 - 定价建议：AI credits/月 或并入 Pro 档（参考 Retool [官网](https://retool.com/pricing)、Jotform AI Agent [官网](https://www.jotform.com/pricing/)）。
 - 免费边界：生成结果渲染 MIT；**模型调用与用量**付费。
 - 风险：AI 生成 Schema 的可信度（需人工复核兜底）；与低代码大厂（钉钉宜搭等）竞争。
@@ -352,7 +354,7 @@
 
 ### 4.3 sbean registry + 付费内容分发
 
-- 现有 registry 已命名空间化（`ui/*`、`ui-x/*`、`admin/*`、`chart/*`，`docs/ecosystem.md` §6）。扩展两级模式：
+- 现有 registry 已命名空间化（2026-09 现状：仅 `ui/*`；未来外围包按 `<package>/*` 扩展，见 `docs/ecosystem/sbean.md`）。扩展两级模式：
   - **免费条目**：现有形态，`sbean add <ns>/<name>` 直接拉源码。
   - **付费条目**：`type: "registry:ui-paid"` + 元数据（price/license 类型/支持窗口），`sbean add` 时触发 license key 校验（本地校验，参考 Handsontable [文档](https://handsontable.com/docs/15.1/react-data-grid/license-key)）；可复用 Zeta + Polar 的「registry + 自动发 key」思路 [GitHub](https://github.com/rbadillap/zeta/)。
 - **文档站付费内容区**：docs 命名空间下新增 Pro 徽章与对比页（免费 vs 付费 feature matrix，参考 AG Grid Community vs Enterprise 对比 [官方](https://www.ag-grid.com/landing-pages/enterprise-data-grid/)），公开透明地展示边界。
@@ -363,7 +365,7 @@
 - **分三步走**：
   1. **阶段一（0→1）**：赞助 + 商位 + 模板市场（Metronic 式 $99–$299 一次性 [官方](https://keenthemes.com/products/metronic-composer)）+ 早期企业询单定制——验证付费信号。
   2. **阶段二（1→10）**：Pro 能力订阅（AG Grid/Tiptap 式每开发者/月或项目）+ license key；同步积累付费用户支持 SLA。
-  3. **阶段三（10→100）**：托管服务（Editor Cloud / Table Cloud / 表单 SaaS）与 AI credits——复用 ui-x 能力，边际成本可控。
+  3. **阶段三（10→100）**：托管服务（Editor Cloud / Table Cloud / 表单 SaaS）与 AI credits——复用核心 AI 流式能力，边际成本可控。
 - **价格建议**：美元 + 人民币双轨（国内开发者对美元订阅敏感，人民币+发票合规是采购门槛）；提供「社区免费 / 小团队 Pro / 企业年订阅」三档（参考 Tiptap Start/Team/Business [官方](https://tiptap.dev/pricing)）。
 - **支持与信任**：早期宁可「少承诺多交付」——SLA、escrow、私有化要从客户真正要求时才签（避免过重运维负担）。
 - **生态联动**：editor/table/form 三个 Pro 可打包「生态企业订阅」（类似 Syncfusion Essential Studio 全家桶 $2,495 或 Project License $495/月 [官方](https://www.syncfusion.com/jquery-ui-widgets)），提高客单价与留存。

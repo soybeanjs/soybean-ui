@@ -130,7 +130,7 @@ export const registryItemCommonSchema = v.object({
   $schema: v.optional(v.string()),
   extends: v.optional(v.string()),
   name: v.string(),
-  /** Namespaced ownership (ADR-006a): which package the item ships from, e.g. `ui`, `ui-x`, `admin`, `chart`. */
+  /** Namespaced ownership (ADR-006a): which package the item ships from, e.g. `ui`, `admin`, `chart`. */
   package: v.optional(v.string()),
   title: v.optional(v.string()),
   author: v.optional(v.pipe(v.string(), v.minLength(2))),

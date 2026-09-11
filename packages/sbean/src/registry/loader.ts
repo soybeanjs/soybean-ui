@@ -56,7 +56,7 @@ export function getItemBasename(itemName: string): string {
 /**
  * The package namespace of an item name. Registry-namespace references
  * (`@acme/foo`) and bare names default to the core `ui` package.
- * `ui-x/bubble` → `ui-x`; `@acme/foo` → `ui`; `accordion` → `ui`.
+ * `admin/layout` → `admin`; `@acme/foo` → `ui`; `accordion` → `ui`.
  */
 export function getItemPackage(itemName: string): string {
   if (itemName.startsWith('@')) return 'ui';
@@ -69,7 +69,7 @@ export function getItemPackage(itemName: string): string {
  *
  * Supports three forms (EC-E04 / EC-E05):
  *   - `@acme/foo`   registry-namespace — passes through unchanged (fetcher owns it)
- *   - `ui-x/bubble` namespaced package reference — passes through unchanged
+ *   - `admin/layout` namespaced package reference — passes through unchanged
  *   - `bubble`      bare alias — resolves ONLY to the core `ui` package
  *                   (`ui/bubble`). A bare name matching a non-core package
  *                   throws {@link PackageNamespaceRequiredError}; ambiguous

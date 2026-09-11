@@ -6,22 +6,24 @@
 >
 > 基线日期：2026-08-14；基线分支：`main`。
 
+> **2026-09 更新：W2（`UX-*`，ui-x）全部任务随 `@soybeanjs/ui-x` 整包移除而取消**，AI/chat 组件改为在核心 headless/ui 重新实现，新拆解以 [ui-ai-roadmap.md](./ui-ai-roadmap.md) 为准；W2 章节保留作历史记录。
+>
 > **v0.40.0 更新：拆解中 `admin` / `chart` 包相关任务已随包删除而取消**（图表改为文档站基于 TanStack Charts 的 shadcn 风格示例），对应章节保留作历史拆解，不再执行；详见 [roadmap.md 生态扩展路线](./roadmap.md)。
 
 ## 0. 约定
 
 ### ID 体系
 
-| 前缀    | 工作流            | 对应路线图板块                                                                 |
-| :------ | :---------------- | :----------------------------------------------------------------------------- |
-| `EC-*`  | W1 生态基础与合并 | 生态扩展路线（沿用 ecosystem 分支任务清单编号）                                |
-| `UX-*`  | W2 ui-x           | [ecosystem/ui-x.md](./ecosystem/ui-x.md)                                       |
-| `AD-*`  | W3 admin          | [ecosystem/admin.md](./ecosystem/admin.md)                                     |
-| `CH-*`  | W4 chart          | [ecosystem/chart.md](./ecosystem/chart.md)                                     |
-| `PRO-*` | W5 ui-pro         | [ecosystem/ui-pro.md](./ecosystem/ui-pro.md)                                   |
-| `ED-*`  | W6 editor         | [ecosystem/editor.md](./ecosystem/editor.md)                                   |
-| `OPT-*` | W7 工程优化       | [optimize.md](./optimize.md) F1–F11                                            |
-| `CMP-*` | W8 核心组件       | 核心组件路线（45 个活跃组件）+ [准入整改](./headless-admission-remediation.md) |
+| 前缀    | 工作流                                                             | 对应路线图板块                                                                 |
+| :------ | :----------------------------------------------------------------- | :----------------------------------------------------------------------------- |
+| `EC-*`  | W1 生态基础与合并                                                  | 生态扩展路线（沿用 ecosystem 分支任务清单编号）                                |
+| `UX-*`  | W2 ui-x（2026-09 取消，见 [ui-ai-roadmap.md](./ui-ai-roadmap.md)） | 历史：已移除的 AI 外围包                                                       |
+| `AD-*`  | W3 admin                                                           | [ecosystem/admin.md](./ecosystem/admin.md)                                     |
+| `CH-*`  | W4 chart                                                           | [ecosystem/chart.md](./ecosystem/chart.md)                                     |
+| `PRO-*` | W5 ui-pro                                                          | [ecosystem/ui-pro.md](./ecosystem/ui-pro.md)                                   |
+| `ED-*`  | W6 editor                                                          | [ecosystem/editor.md](./ecosystem/editor.md)                                   |
+| `OPT-*` | W7 工程优化                                                        | [optimize.md](./optimize.md) F1–F11                                            |
+| `CMP-*` | W8 核心组件                                                        | 核心组件路线（45 个活跃组件）+ [准入整改](./headless-admission-remediation.md) |
 
 ### 负责人约定（与 ecosystem 分支任务清单一致）
 
@@ -96,9 +98,9 @@
 
 ---
 
-## W2 ui-x（UX）
+## W2 ui-x（UX）—— 2026-09 取消，保留作历史记录
 
-> 20 组件 + 9 composables 已在分支实现，W2 主要是迁移收尾、验收与 P3 迭代。详见 [ecosystem/ui-x.md](./ecosystem/ui-x.md)。
+> 外围包已整包移除；AI/chat 组件在核心 headless/ui 的重新实现规划见 [ui-ai-roadmap.md](./ui-ai-roadmap.md)。以下为 2026-08 的历史拆解（当时 20 组件 + 9 composables 已在分支实现）。
 
 ### UX-1 迁移收尾与验收
 

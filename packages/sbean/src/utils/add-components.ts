@@ -141,7 +141,7 @@ export async function addComponents(
     dryRun: options.dryRun,
     diff: options.diff,
     silent,
-    // EC-E03: per-package output dirs, so ui-x/admin/chart items land in their
+    // EC-E03: per-package output dirs, so admin/chart items land in their
     // own directory instead of the core `src/ui`.
     packages: config.resolvedPaths.packages
   };
