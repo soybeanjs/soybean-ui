@@ -52,7 +52,7 @@ Other publishable modules:
 - **sbean** (`packages/sbean/`): source-distribution CLI, registry, schemas, templates, and MCP.
 - **@soybeanjs/ui-skills** (`skills/`): generated consumer-facing agent skills.
 
-> There is **no** `@soybeanjs/admin` or `@soybeanjs/chart` package, and no standalone AI package: AI/chat components ship inside headless + ui under the standard `S` prefix — the component plan lives in [docs/ui-ai-roadmap.md](docs/ui-ai-roadmap.md). Charts are not part of the core library either: the docs site shows shadcn-styled demos built directly on [TanStack Charts](https://tanstack.com/charts) (see `apps/docs/src/examples/chart/` + the docs-local `apps/docs/src/components/chart/` theming shell).
+> There is **no** `@soybeanjs/admin` or `@soybeanjs/chart` package, and no standalone AI package: AI/chat components ship inside headless + ui under the standard `S` prefix — the component plan lives in [docs/ui-ai-roadmap.md](docs/ui-ai-roadmap.md). The former admin direction returns as an in-core **shell domain** (headless `src/shell/` + ui composites such as `SLayoutShell`/`SPageHeader`), planned in [docs/ui-shell-roadmap.md](docs/ui-shell-roadmap.md). Charts are not part of the core library: the docs site shows shadcn-styled demos built directly on [TanStack Charts](https://tanstack.com/charts) (see `apps/docs/src/examples/chart/` + the docs-local `apps/docs/src/components/chart/` theming shell).
 
 Private packages and applications:
 

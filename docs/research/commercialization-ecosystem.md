@@ -4,7 +4,7 @@
 > **调研日期**：2026-08-14（本地时区 Asia/Shanghai）。所有价格/许可信息基于 2025–2026 年公开资料核实，**价格可能随时变动**，下文对每条事实均标注来源与「已核实/待核实」状态。
 > **方法**：以 WebSearch + WebFetch 抓取一手来源（官方定价页、许可页、公司官网、GitHub 官方仓库）；二手来源（第三方对比文、行业综述）仅作佐证并明确标注。
 >
-> **2026-09 注**：下文引用的 `@soybeanjs/ui-x` / `SxSender` / `use-x-stream` 已随 ui-x 包移除，AI 流式能力改为核心 headless/ui 的 `useStream` / `SSender`（见 [../ui-ai-roadmap.md](../ui-ai-roadmap.md)）；调研结论与定价事实不受影响，引用按此折算。
+> **2026-09 注**：下文引用的 `@soybeanjs/ui-x` / `SxSender` / `use-x-stream` 已随 ui-x 包移除，AI 流式能力改为核心 headless/ui 的 `useStream` / `SSender`（见 [../ui-ai-roadmap.md](../ui-ai-roadmap.md)）；`@soybeanjs/admin` / `SAppLayout` 亦已取消，中后台壳方向改为核心内 shell 领域（见 [../ui-shell-roadmap.md](../ui-shell-roadmap.md)）；editor/table/form 的独立包前提同步失效（见 [../ecosystem/README.md](../ecosystem/README.md)）。调研结论与定价事实不受影响，引用按此折算。
 
 ---
 
@@ -147,7 +147,7 @@
 
 **对 SoybeanUI 的启示**：
 
-- **registry = 分发与商业化的天然载体**：SoybeanUI 已有 `sbean` registry 且已命名空间化（见 `docs/ecosystem.md` §6），可扩展为「免费条目 + 付费条目（license key 校验）」两级 registry——这是 shadcn 生态（Zeta/Polar）已验证、但国内尚无玩家做到位的位点。
+- **registry = 分发与商业化的天然载体**：SoybeanUI 已有 `sbean` registry 且已命名空间化（见 [docs/ecosystem/sbean.md](../ecosystem/sbean.md)），可扩展为「免费条目 + 付费条目（license key 校验）」两级 registry——这是 shadcn 生态（Zeta/Polar）已验证、但国内尚无玩家做到位的位点。
 - 「免费做基础组件/源码，收费做设计资产/模板/高级 registry 内容」对 headless-first 项目尤其顺滑——因为用户已习惯「源码进仓库」，付费点自然落在「更高级的源码包与配套服务」。
 - 纯赞助（TanStack 路线）只适合极少数头部项目，不适合作为 SoybeanUI 的长期收入支柱。
 
@@ -348,7 +348,7 @@
 
 ### 4.2 lockstep 版本与双轨发布
 
-- 沿用现有 **lockstep 单版本 + 单 tag 全包发布**（`docs/ecosystem.md` §9）：免费包与付费包同版本号，`pnpm publish -r` 一次发布；付费包可用**独立 npm scope/tag（如 `next-pro`）或私有 registry**，避免误引。
+- 版本策略随立项时的形态决策确定（历史设想为 lockstep 单版本 + 单 tag 全包发布；2026-09 后仓库无外围包，见 [docs/ecosystem/README.md](../ecosystem/README.md)）：若未来采用独立付费包，可使用**独立 npm scope/tag（如 `next-pro`）或私有 registry**，避免误引。
 - **CI 依赖审计**（延续 `docs/ecosystem/editor.md` §6 的 OPT-F1 思路）：免费包 CI 中强制检查依赖闭包不含付费能力/收费内核（如 `ag-grid-enterprise`、`@tiptap/pro-*`），防止「免费包误绑定付费能力」与许可风险（AG Grid 禁止包装再分发 [官方](https://www.ag-grid.com/ecommerce/)）。
 - 付费包需要**双轨维护承诺**：免费包社区维护节奏；付费包 SLA（响应时效、安全补丁、支持窗口 12–24 个月，参考 Handsontable 支持政策 [官方](https://dev.handsontable.com/pricing)）。
 
@@ -433,6 +433,6 @@
 
 ### 仓库内既有资料
 
-- `docs/ecosystem.md` — SoybeanUI 生态架构与 sbean registry 命名空间方案
-- `docs/ecosystem/editor.md` — `@soybeanjs/editor` 技术方案（含 Tiptap 收费边界调研）
-- `docs/adr/0001-peripheral-package-layering.md` — 外围包分层模型 ADR
+- [docs/ecosystem/sbean.md](../ecosystem/sbean.md) — sbean registry 命名空间机制
+- [docs/ecosystem/editor.md](../ecosystem/editor.md) — editor 提案（含 Tiptap 收费边界调研）
+- [docs/adr/0001-peripheral-package-layering.md](../adr/0001-peripheral-package-layering.md) — 外围包分层模型 ADR（已 superseded，仅历史参考）

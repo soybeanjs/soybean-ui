@@ -5,7 +5,7 @@
 > 事实依据：完整调研见 [research/commercialization-ecosystem.md](../research/commercialization-ecosystem.md)（先例定价/许可一手核实）；editor 的 Tiptap 收费边界见 [editor.md](./editor.md) §1.1；table/form 的 Pro 能力边界见 [table.md](./table.md) 与 [form.md](./form.md)。
 > 状态：**策略建议**（非执行承诺）。所有方向需先经需求信号验证（GitHub issue/讨论、企业询单）再立项。
 >
-> 2026-09 注：下文多处提及「复用 `@soybeanjs/ui-x` 流式能力 / `SxSender`」，该包已移除——AI 流式能力现规划在核心 headless/ui（`useStream` / `SSender`，见 [../ui-ai-roadmap.md](../ui-ai-roadmap.md)），策略含义不变，引用按此折算。
+> **2026-09 前提变更：** 本文写于 editor/table/form 为「外围独立包」的规划时期；当前仓库无外围包（`@soybeanjs/ui-x` 已移除，AI 流式能力 `useStream` / `SSender` 改在核心 headless/ui 实现，见 [../ui-ai-roadmap.md](../ui-ai-roadmap.md)；`@soybeanjs/admin` 已取消，壳方向见 [../ui-shell-roadmap.md](../ui-shell-roadmap.md)）。下文市场调研、定价先例与免费/付费边界结论仍然有效；包结构、lockstep 发布、跨包依赖等设定失效，商业化载体（核心内能力 / 独立增值包 / sbean 付费条目 / 模板资产）须在立项时按 [README §立项时必须回答的问题](./README.md#立项时必须回答的问题) 重新决策。
 
 ## 0. 总原则
 
@@ -146,8 +146,8 @@
 
 ### F3 · 企业表单/低代码集成服务（BPM/后台联动）
 
-- **目标客户**：政企、需要「表单 + 审批流 + 后台管理」一体的团队（`@soybeanjs/admin` 生态联动）。
-- **价值主张**：将 `SForm`/`useForm` 与后台壳（`SAppLayout`）、工作流引擎集成，交付「业务表单应用」；含权限、审计、私有化部署。
+- **目标客户**：政企、需要「表单 + 审批流 + 后台管理」一体的团队（与中后台壳领域联动，见 [../ui-shell-roadmap.md](../ui-shell-roadmap.md)）。
+- **价值主张**：将 `SForm`/`useForm` 与后台壳（`SLayoutShell`）、工作流引擎集成，交付「业务表单应用」；含权限、审计、私有化部署。
 - **定价建议**：项目制 $10k–$100k + 年维护；或「表单+表格+后台」生态企业订阅（参考 Syncfusion Project License $495/月 [datasheet](https://syncfusion.info/wp-content/uploads/2026/01/Project-License-Datasheet-Limited-plan-FINAL.pdf)）。
 - **免费边界**：组件 MIT；**集成方案、工作流适配、私有化交付**付费。
 - **风险**：项目制重、交付周期长；需样板工程（starter kit）降低重复成本。
@@ -212,4 +212,4 @@
 
 - 本策略的事实依据与全部 URL 见 [research/commercialization-ecosystem.md](../research/commercialization-ecosystem.md)（§5 参考来源）。
 - 关键官方页面：AG Grid [定价](https://www.ag-grid.com/license-pricing/) · Tiptap [定价](https://tiptap.dev/pricing) · Handsontable [购买](https://dev.handsontable.com/pricing) · Syncfusion [官网](https://www.syncfusion.com/jquery-ui-widgets) · Jotform [定价](https://www.jotform.com/pricing/) · Retool [定价](https://retool.com/pricing) · Keenthemes [Metronic](https://keenthemes.com/products/metronic-composer)。
-- 仓库内既有资料：[editor.md](./editor.md)（Tiptap 收费边界）· [table.md](./table.md) · [form.md](./form.md) · [ecosystem.md](../ecosystem.md)（registry 命名空间化）。
+- 仓库内既有资料：[editor.md](./editor.md)（Tiptap 收费边界）· [table.md](./table.md) · [form.md](./form.md) · [sbean.md](./sbean.md)（registry 命名空间化）。

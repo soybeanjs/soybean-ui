@@ -1,8 +1,10 @@
-# @soybeanjs/editor — 富文本编辑器技术方案
+# editor — 富文本编辑器技术方案（提案）
 
-> 定位：SoybeanUI 生态第 5 个外围包，提供与主题 token 深度集成的**富文本 / 块编辑器**组件——基于 Tiptap 内核的 styled 封装层，对标社区 shadcn + Tiptap 方案（NiazMorhed2007/shadcn-tiptap、minimal-tiptap、Novel）在 Vue 3 + UnoCSS 体系下的等价物。
+> **2026-09 前提变更：** 本文写于「外围包单包自治」时期，标题中的 `@soybeanjs/editor` 是当时设想的包名；当前仓库无外围包，文中包结构、lockstep、跨包依赖等设定已不适用。**市场调研结论与能力设计仍然有效**；立项时须先按 [README §立项时必须回答的问题](./README.md#立项时必须回答的问题) 确定落地形态（并入核心 headless/ui、独立包、或 sbean 源码配方）。
+
+> 定位（提案）：提供与主题 token 深度集成的**富文本 / 块编辑器**组件——基于 Tiptap 内核的 styled 封装层，对标社区 shadcn + Tiptap 方案（NiazMorhed2007/shadcn-tiptap、minimal-tiptap、Novel）在 Vue 3 + UnoCSS 体系下的等价物。
 >
-> 状态：**立项提案**（本文档），无任何代码。原核心库路线图中 `RichTextEditor` 延后至组件市场的判断，升级为独立生态包（理由见 §1.3）。
+> 状态：**立项提案**（本文档），无任何代码。原核心库路线图中 `RichTextEditor` 延后至组件市场，本提案论证其升级为正式领域方向的理由（见 §1.3）。
 
 ## 1. 市场调研结论
 

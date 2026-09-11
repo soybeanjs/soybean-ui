@@ -33,23 +33,29 @@ The pnpm workspace contains the private root project plus eleven child
 workspaces: seven publishable packages, two private packages, and two private
 applications.
 
-| Area                | Workspace               | Purpose                                                                                            |
-| ------------------- | ----------------------- | -------------------------------------------------------------------------------------------------- |
-| Component logic     | `@soybeanjs/headless`   | State, behavior, a11y, focus, keyboard interaction, locale, and unstyled composition               |
-| Styled components   | `@soybeanjs/ui`         | `S`-prefixed wrappers, UnoCSS recipes, theme-facing props, Nuxt module, and resolver               |
-| Theme engine        | `@soybeanjs/theme`      | Theme option normalization, CSS-variable generation, dark derivation, SSR/storage                  |
-| UnoCSS integration  | `@soybeanjs/ui-uno`     | UnoCSS preset, preflights, animations, fonts, and generated theme CSS                              |
-| AI conversation UI  | headless + ui (planned) | AI/chat components planned under the standard `S` prefix; see [ui-ai-roadmap.md](ui-ai-roadmap.md) |
-| Source distribution | `sbean`                 | CLI, registry, schemas, templates, and MCP tools for copy-source delivery                          |
-| Repo service CLI    | `@soybeanjs/scripts`    | PRIVATE; `sui` CLI for metadata, API, changelog, locale, and skill generators                      |
-| Shared utilities    | `@soybeanjs/shared`     | PRIVATE; shared utility helpers, not published                                                     |
-| Agent distribution  | `@soybeanjs/ui-skills`  | Generated, publishable SoybeanUI and Headless agent skills                                         |
-| Documentation       | `@soybeanjs/ui-docs`    | ubean SSG documentation, API reference, changelog, and interactive demos                           |
-| Integration fixture | `@soybeanjs/ui-nuxt`    | Self-contained minimal Nuxt/UnoCSS integration fixture                                             |
+| Area                | Workspace               | Purpose                                                                                                                                                                                   |
+| ------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Component logic     | `@soybeanjs/headless`   | State, behavior, a11y, focus, keyboard interaction, locale, and unstyled composition                                                                                                      |
+| Styled components   | `@soybeanjs/ui`         | `S`-prefixed wrappers, UnoCSS recipes, theme-facing props, Nuxt module, and resolver                                                                                                      |
+| Theme engine        | `@soybeanjs/theme`      | Theme option normalization, CSS-variable generation, dark derivation, SSR/storage                                                                                                         |
+| UnoCSS integration  | `@soybeanjs/ui-uno`     | UnoCSS preset, preflights, animations, fonts, and generated theme CSS                                                                                                                     |
+| AI conversation UI  | headless + ui (planned) | AI/chat components planned under the standard `S` prefix; see [ui-ai-roadmap.md](ui-ai-roadmap.md)                                                                                        |
+| Admin shell domain  | headless + ui (planned) | Shell modes, navigation model, and tabs state in a headless `shell` domain; `SLayoutShell` / `SShellMenu` / `SPageHeader` / `SLogo` in ui; see [ui-shell-roadmap.md](ui-shell-roadmap.md) |
+| Source distribution | `sbean`                 | CLI, registry, schemas, templates, and MCP tools for copy-source delivery                                                                                                                 |
+| Repo service CLI    | `@soybeanjs/scripts`    | PRIVATE; `sui` CLI for metadata, API, changelog, locale, and skill generators                                                                                                             |
+| Shared utilities    | `@soybeanjs/shared`     | PRIVATE; shared utility helpers, not published                                                                                                                                            |
+| Agent distribution  | `@soybeanjs/ui-skills`  | Generated, publishable SoybeanUI and Headless agent skills                                                                                                                                |
+| Documentation       | `@soybeanjs/ui-docs`    | ubean SSG documentation, API reference, changelog, and interactive demos                                                                                                                  |
+| Integration fixture | `@soybeanjs/ui-nuxt`    | Self-contained minimal Nuxt/UnoCSS integration fixture                                                                                                                                    |
 
 There is no admin, chart, or standalone AI package. AI/chat components are
-planned to ship inside headless + ui (see [ui-ai-roadmap.md](ui-ai-roadmap.md)).
-Charts are deliberately outside the core library: the docs site renders
+planned to ship inside headless + ui under the standard `S` prefix, with domain
+logic in a headless `src/ai/` module (see [ui-ai-roadmap.md](ui-ai-roadmap.md)).
+The former admin direction returns as an in-core **shell domain**: shell mode
+orchestration, the unified navigation model, and router-agnostic tabs state
+land in a headless `src/shell/` module (subpath `/shell`), while composites
+ship in ui (see [ui-shell-roadmap.md](ui-shell-roadmap.md)).
+Charts are deliberately outside the library: the docs site renders
 shadcn-styled demos built directly on
 [TanStack Charts](https://tanstack.com/charts), with a docs-local theming shell
 (`apps/docs/src/components/chart/`) bridging SoybeanUI `--chart-*` tokens.
@@ -348,7 +354,9 @@ The staged configuration applies `vp check --fix` to staged files.
 
 `@soybeanjs/headless` exposes the root barrel plus `/constants`,
 `/composables`, `/date`, `/locale`, `/locale/*`, `/shared`, `/nuxt`,
-`/resolver`, `/namespaced`, `/types`, and per-component subpaths.
+`/resolver`, `/namespaced`, `/types`, and per-component subpaths. Domain
+modules follow the `/date` precedent: `/ai` and `/shell` subpaths are planned
+alongside `src/ai/` and `src/shell/` (see the two domain roadmaps).
 
 `@soybeanjs/ui` exposes its root barrel, `/nuxt`, `/resolver`, and
 `/styles.css`.

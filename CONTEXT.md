@@ -88,15 +88,15 @@ ConfigProvider 上控制是否启用持久化主题读取（localStorage）的�
 
 ## 外围包（peripheral package）
 
-围绕核心 `@soybeanjs/headless` + `@soybeanjs/ui` 构建的领域扩展包。**当前仓库没有外围包**：`@soybeanjs/ui-x`（AI 组件）已于 2026-09 整包移除，AI/chat 组件改为在核心 headless/ui 内按标准两层契约实现（统一 `S` 前缀，见 [docs/ui-ai-roadmap.md](./docs/ui-ai-roadmap.md)）；未来可扩展 `@soybeanjs/ui-pro`、`@soybeanjs/ui-lowcode` 等。每个外围包为单一包（领域逻辑与样式同居），不另建"领域逻辑包"。图表不作为外围包：文档站直接基于 [TanStack Charts](https://tanstack.com/charts) 展示 shadcn 风格示例（`@soybeanjs/admin`、`@soybeanjs/chart` 曾规划，已于 v0.40.0 移除）。
+围绕核心 `@soybeanjs/headless` + `@soybeanjs/ui` 构建的领域扩展包。**当前仓库没有外围包**：`@soybeanjs/ui-x`（AI 组件）已于 2026-09 整包移除，AI/chat 组件改为在核心 headless/ui 内按标准两层契约实现（统一 `S` 前缀，领域逻辑放 headless `src/ai/`，见 [docs/ui-ai-roadmap.md](./docs/ui-ai-roadmap.md)）；`@soybeanjs/admin` 中后台方向同样回迁为核心内**壳领域**（headless `src/shell/` + ui 复合组件，见 [docs/ui-shell-roadmap.md](./docs/ui-shell-roadmap.md)）。未来领域（editor/table/form/ui-pro 等）是否采用外围包形态须立项时按 [docs/ecosystem/README.md](./docs/ecosystem/README.md) 决策；若采用，每个外围包为单一包（领域逻辑与样式同居），不另建"领域逻辑包"。图表不作为任何包交付：文档站直接基于 [TanStack Charts](https://tanstack.com/charts) 展示 shadcn 风格示例（`@soybeanjs/chart` 曾规划，已于 v0.40.0 移除）。
 
 ## 原子原语（atomic primitive）
 
-具备全新原子功能（如新的无障碍模式、焦点管理变体、新交互原语）的组件。唯一允许进入核心 `@soybeanjs/headless` 的外围贡献类型。判断标准是"提供了 headless 现有 primitives 无法组合而成的新原子能力"；不满足该标准的组件一律作为包装型组件留在外围包内。
+具备全新原子功能（如新的无障碍模式、焦点管理变体、新交互原语）的组件。历史定义为「唯一允许进入核心 `@soybeanjs/headless` 的外围贡献类型」；2026-09 后 AI/壳等领域直接在核心内建设，准入统一按 headless admission R1–R8（删除测试）判定。判断标准是"提供了 headless 现有 primitives 无法组合而成的新原子能力"；不满足该标准的组件做 UI-only 或留在未来的外围包内。
 
 ## 包装型组件（wrapper component）
 
-由现有 headless primitives 组合/包装而成的外围组件，不引入新原子能力。外围包中绝大多数组件属于此类；其领域逻辑（composables/types）与样式同居于所属外围包内部，不下沉到核心 headless。
+由现有 headless primitives 组合/包装而成、不引入新原子能力的组件。历史上指外围包组件（其领域逻辑 composables/types 与样式同居包内）；在核心内领域（ai/shell）中，同型装配走 headless Compact 聚合 + ui 薄包装的标准两层契约，而不是单包同居。
 
 ## 组件前缀（component prefix）
 

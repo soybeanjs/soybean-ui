@@ -119,13 +119,13 @@ packages/sbean/src/
 
 ## 6. 真实剩余待办
 
-| 项                                                          | 优先级 |    状态     | 说明                                                                                                              |
-| ----------------------------------------------------------- | :----: | :---------: | ----------------------------------------------------------------------------------------------------------------- |
-| `migrate` 命令 + AST 能力                                   |  延后  | 📋 Deferred | ADR-004：等真实破坏性变更（如 `@soybeanjs/cva` v1、headless 上下文演进）再触发                                    |
-| 每 registry 认证（`{url,params,headers}` 对象形式）         |   P3   |   💡 Open   | 对标 G-9：私有/带认证 registry 尚不支持                                                                           |
-| registry 命名空间化（items → `ui/<name>` + `package` 字段） |   P0   |  🔵 进行中  | 见 [ecosystem.md §6](../ecosystem.md) 与 [ecosystem-tasks.md EC-E04/E05](../ecosystem-tasks.md)（CLI 适配未开始） |
-| README.md 精简补全                                          |   P2   |  📋 待排期  | 当前仅 7 命令表，缺 init/apply 等                                                                                 |
-| 性能优化专项                                                |   P3   |  📋 待排期  | 无明确计划                                                                                                        |
+| 项                                                          | 优先级 |    状态     | 说明                                                                                                   |
+| ----------------------------------------------------------- | :----: | :---------: | ------------------------------------------------------------------------------------------------------ |
+| `migrate` 命令 + AST 能力                                   |  延后  | 📋 Deferred | ADR-004：等真实破坏性变更（如 `@soybeanjs/cva` v1、headless 上下文演进）再触发                         |
+| 每 registry 认证（`{url,params,headers}` 对象形式）         |   P3   |   💡 Open   | 对标 G-9：私有/带认证 registry 尚不支持                                                                |
+| registry 命名空间化（items → `ui/<name>` + `package` 字段） |   P0   |  ✅ 已完成  | 已落地：当前 registry 条目均为 `ui/*`，CLI 支持命名空间寻址与 `--package` 过滤，见本文档 registry 小节 |
+| README.md 精简补全                                          |   P2   |  📋 待排期  | 当前仅 7 命令表，缺 init/apply 等                                                                      |
+| 性能优化专项                                                |   P3   |  📋 待排期  | 无明确计划                                                                                             |
 
 ## 7. 快速参考
 
@@ -176,6 +176,5 @@ sbean mcp init --client claude    # 写 MCP 客户端配置
 | [packages/sbean/docs/GLOSSARY.md](../../packages/sbean/docs/GLOSSARY.md)                                     | 术语表（附 file:line）                     |
 | [packages/sbean/docs/comparison-with-shadcn-vue.md](../../packages/sbean/docs/comparison-with-shadcn-vue.md) | vs shadcn-vue 能力对标与审计               |
 | [packages/sbean/README.md](../../packages/sbean/README.md)                                                   | 用户侧入门 README（精简）                  |
-| [ecosystem.md §6](../ecosystem.md)                                                                           | sbean registry 命名空间化方案              |
-| [ecosystem-tasks.md 阶段 E](../ecosystem-tasks.md)                                                           | 阶段 E：sbean registry 与 CLI 任务跟踪     |
+| [roadmap.md §配套基础设施](../roadmap.md)                                                                    | sbean 在整体路线中的定位                   |
 | [optimize.md §3.4](../optimize.md)                                                                           | sbean 模块边界评估与依赖声明改进项         |

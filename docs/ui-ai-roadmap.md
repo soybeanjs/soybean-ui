@@ -1,6 +1,6 @@
 # SoybeanUI AI 组件路线图（ui-ai-roadmap）
 
-> 本文档是 AI 对话组件族的**唯一现行规划**，取代并废止 [ui-x-roadmap.md](./ui-x-roadmap.md)（已删除）。
+> 本文档是 AI 对话组件族的**唯一现行规划**，取代并废止早期的 `ui-x-roadmap.md`（已删除，git 历史可查）。
 >
 > 编制依据（2026-09 重新探索）：`vuepont/ai-elements-vue`、`element-plus-x/Element-Plus-X`（v2）、`antdv-next/x`（v1.2）、`assistant-ui` primitives/runtime，以及本仓库 `.agents/skills/soybean-ui-develop/` 的 headless 准入纪律（R1–R8）。
 >

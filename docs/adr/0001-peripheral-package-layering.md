@@ -2,11 +2,16 @@
 
 ## 状态
 
-superseded（对 AI 域失效；单包分层模型作为未来外围包的备选方案存档）
+superseded（对 AI 域与 admin 壳域均失效；单包分层模型仅作为未来可能的外围包备选方案存档）
 
 > 补注（v0.40.0）：`@soybeanjs/admin`、`@soybeanjs/chart` 后续已移除（图表改为文档站基于 TanStack Charts 的 shadcn 风格示例，不进核心库）。
 >
-> 补注（2026-09）：最后的单包外围实例 `@soybeanjs/ui-x` 已整包移除，AI/chat 组件改为按标准 headless/ui 两层契约在核心库内重新实现，统一 `S` 前缀，准入判据与迁移决策见 [`docs/ui-ai-roadmap.md`](../ui-ai-roadmap.md)（ADR A1）。自此仓库内不再有任何外围单包，本 ADR 对 AI 域失效；下文为历史决策记录，保留备查。
+> 补注（2026-09）：
+>
+> 1. 最后的单包外围实例 `@soybeanjs/ui-x` 已整包移除，AI/chat 组件改为按标准 headless/ui 两层契约在核心库内重新实现，统一 `S` 前缀，准入判据与迁移决策见 [`docs/ui-ai-roadmap.md`](../ui-ai-roadmap.md)（决策 A1）。
+> 2. admin 壳组件回迁方向明确为**核心内领域**（不新建包）：领域逻辑进 `@soybeanjs/headless` 的 `shell` 域模块，复合组件进 `@soybeanjs/ui`，见 [`docs/ui-shell-roadmap.md`](../ui-shell-roadmap.md)（决策 S1/S2）。
+>
+> 自此仓库内不再有任何外围单包，本 ADR 全面 superseded；未来新领域立项时按 [`docs/ecosystem/README.md`](../ecosystem/README.md) 的形态决策（核心内 / 独立包 / sbean 配方）重新裁定。下文为历史决策记录，保留备查。
 
 ## 背景
 
@@ -32,11 +37,12 @@ SoybeanUI 周边 UI 组件生态（ui-x / admin / chart …）在初始化时出
 
 ## 后果
 
-- 外围包接入契约统一（见 `docs/ecosystem.md` §10）：绝大多数外围包无独立逻辑层。
+- 外围包接入契约统一（历史方案见已删除的 `docs/ecosystem.md`，git 历史可追溯；现行形态决策框架见 [`docs/ecosystem/README.md`](../ecosystem/README.md)）：绝大多数外围包无独立逻辑层。
 - `headless-x` 包删除是不可逆的发布决策（已发布版本需在 changelog 标注 deprecation）。
 - 核心 headless 的膨胀由"原子原语"判据约束（作者按规则自决，建议 PR 标注）。
 
 ## 相关
 
-- [`docs/ecosystem.md`](../ecosystem.md) —— 生态架构完整方案。
+- [`docs/ecosystem/README.md`](../ecosystem/README.md) —— 领域提案索引与落地形态决策框架。
+- [`docs/ui-ai-roadmap.md`](../ui-ai-roadmap.md) / [`docs/ui-shell-roadmap.md`](../ui-shell-roadmap.md) —— 两个核心内领域的现行规划。
 - [`CONTEXT.md`](../../CONTEXT.md) —— 外围包 / 原子原语 / 包装型组件 术语定义。

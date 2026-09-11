@@ -3,23 +3,22 @@
 > 本文档是项目的**总路线图**，覆盖三大板块：
 >
 > 1. **核心组件路线**（从 [components.md](./components.md) 提取整理）：按 **高 / 中 / 低** 三级优先级分类所有待实现组件，附「已实现组件参考」「延后至组件市场」与「范围外组件」清单。
-> 2. **生态扩展路线**：AI/chat 组件已确定在核心 headless/ui 内实现（见 [ui-ai-roadmap.md](./ui-ai-roadmap.md)）；外围包方向（editor / table / form / ui-pro 等提案，admin / chart 的历史规划）详见 [生态扩展路线](#生态扩展路线ecosystem) 与 [docs/ecosystem/](./ecosystem/)。
-> 3. **项目优化路线**：来自 [optimize.md](./optimize.md) 的 F1–F11 工程改进项及执行阶段，详见 [项目优化路线](#项目优化路线engineering-optimization)。
->
-> 具体任务的拆解（目标 / 负责人 / 工时 / 依赖）见 [tasks.md](./tasks.md)；实时状态与进度见 [task-tracking.md](./task-tracking.md)。
+> 2. **领域扩展路线**：AI/chat 与中后台壳均确定在核心 headless/ui 内实现，分别见 [ui-ai-roadmap.md](./ui-ai-roadmap.md) 与 [ui-shell-roadmap.md](./ui-shell-roadmap.md)；editor / table / form / ui-pro 保留为未来提案（落地形态待立项评估），见 [领域扩展路线](#领域扩展路线domains--proposals) 与 [docs/ecosystem/](./ecosystem/README.md)。
+> 3. **项目优化路线**：来自 [optimize.md](./optimize.md) 的 F1–F11 工程改进项及执行阶段，详见 [项目优化路线](#项目优化路线engineering-optimization)；当前执行口径以 [v0.50.0.md](./v0.50.0.md) 为准。
 
 ## 概述
 
-| 类别                  | 数量 | 说明                                                                                                                                                                                                    |
-| :-------------------- | :--: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 已发布（shipped）     |  96  | `accordion` … `watermark`，见 `packages/ui/src/index.ts`                                                                                                                                                |
-| 高优先级（P0 + P1）   |  22  | 关键缺口与强需求，优先实现（P0 × 9 + P1 × 13）                                                                                                                                                          |
-| 中优先级（P2）        |  11  | 有用且有一定需求，按计划推进                                                                                                                                                                            |
-| 低优先级（P3）        |  12  | 小众但功能独立，择机实现                                                                                                                                                                                |
-| 延后至组件市场        |  12  | 复合型 / 小众，将以源码形式分发                                                                                                                                                                         |
-| 范围外                | 60+  | 移动端专用、已被覆盖、图表、业务专属等                                                                                                                                                                  |
-| 生态扩展（提案/历史） |  4   | editor（富文本，提案）、table（高级数据网格，提案）、form（Schema 驱动表单，提案）、ui-pro（增值，规划中）；AI 组件回归核心库见 [ui-ai-roadmap.md](./ui-ai-roadmap.md)，ui-x/admin/chart 均已取消不发布 |
-| 工程优化项            |  11  | F1–F11，见 [optimize.md](./optimize.md)，分阶段 A–D 推进                                                                                                                                                |
+| 类别                   | 数量 | 说明                                                                                                                                                          |
+| :--------------------- | :--: | :------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 已发布（shipped）      |  96  | `accordion` … `watermark`，见 `packages/ui/src/index.ts`                                                                                                      |
+| 高优先级（P0 + P1）    |  22  | 关键缺口与强需求，优先实现（P0 × 9 + P1 × 13）                                                                                                                |
+| 中优先级（P2）         |  11  | 有用且有一定需求，按计划推进                                                                                                                                  |
+| 低优先级（P3）         |  12  | 小众但功能独立，择机实现                                                                                                                                      |
+| 延后至组件市场         |  12  | 复合型 / 小众，将以源码形式分发                                                                                                                               |
+| 范围外                 | 60+  | 移动端专用、已被覆盖、图表、业务专属等                                                                                                                        |
+| 核心内领域             |  2   | AI/chat（[ui-ai-roadmap.md](./ui-ai-roadmap.md)）、中后台壳（[ui-shell-roadmap.md](./ui-shell-roadmap.md)）——逻辑在 headless 域模块、组件在 ui，统一 `S` 前缀 |
+| 未来提案（形态待评估） |  4   | editor（富文本）、table（高级数据网格）、form（Schema 表单）、ui-pro（增值）；ui-x/admin/chart 已取消不发布，详见 [docs/ecosystem/](./ecosystem/README.md)    |
+| 工程优化项             |  11  | F1–F11，见 [optimize.md](./optimize.md)，分阶段 A–D 推进                                                                                                      |
 
 ### 优先级映射说明
 
@@ -1071,22 +1070,20 @@
 
 需要**大量原子组件组合**且**用例较为小众**的组件。这些组件不进入核心库，而是延后至未来的**源码分发组件市场**（类似 shadcn/ui 的 registry 模式）。
 
-组件市场将以可复制源码形式分发组合方案，用户获得完整源码控制权，同时避免核心包膨胀。共 **12** 个组件。
+组件市场将以可复制源码形式分发组合方案，用户获得完整源码控制权，同时避免核心包膨胀。当前共 **8** 个组件。
 
-| 组件                | 延后原因（复合 + 小众）                                                                                                                                                                   | 基于原子组件                                                | 需求度 |
-| :------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- | :----: |
-| `Tour`              | 引导 walkthrough — 高亮引擎 + 步骤管理 + popover 定位，小众（引导场景）。                                                                                                                 | `popover`, `dialog`, `button`, `icon`                       |  3/14  |
-| `TreeTable`         | 树形表格 — 扩展 table 支持展开/折叠行 + tree 状态，小众企业场景。                                                                                                                         | `table`, `tree`, `collapsible`                              |  3/14  |
-| `PageHeader`        | 页头复合 — breadcrumb + title + actions + back button，复合布局非原子。                                                                                                                   | `breadcrumb`, `button`, `typography`, `icon`                |  4/14  |
-| `Navbar`            | 顶部导航栏 — logo + nav links + actions + 响应式折叠，复合布局。                                                                                                                          | `link`, `button`, `menu`, `layout`, `icon`                  |  2/14  |
-| `Comment`           | 评论块 — avatar + author + content + actions + 嵌套回复，社交域小众。                                                                                                                     | `avatar`, `typography`, `button`, `tag`                     |  2/14  |
-| `Sidebar`           | 应用侧栏 — 可折叠导航 + 分区 + 头部 + 底部，shadcn 风格复合。                                                                                                                             | `navigation-menu`, `collapsible`, `layout`, `link`, `icon`  |  1/14  |
-| `AppShell`          | 应用布局壳 — header + sidebar + main + footer 组合，复合布局。                                                                                                                            | `layout`, `navbar`, `sidebar`                               |  1/14  |
-| `Galleria`          | 完整图库/灯箱 — carousel + 缩略图条 + zoom + 全屏，小众。                                                                                                                                 | `carousel`, `image`, `dialog`, `button`                     |  2/14  |
-| `OrganizationChart` | 组织架构图 — tree + 自定义节点渲染 + 连接线，小众企业场景。                                                                                                                               | `tree`, `card`, `icon`                                      |  2/14  |
-| `RichTextEditor`    | 所见即所得编辑器 — 工具栏 + contenteditable + 插件，体量大，通常独立成包。**已升级为独立生态包 `@soybeanjs/editor`**（见 [ecosystem/editor.md](./ecosystem/editor.md)），不再走市场分发。 | `toolbar`, `button`, `icon`, `tooltip` + Tiptap/ProseMirror |  3/14  |
-| `Dock`              | macOS 风格 Dock — 放大效果 + tooltip + 应用图标，小众平台特性。                                                                                                                           | `tooltip`, `icon`, `popover`                                |  2/14  |
-| `DynamicInput`      | 可编辑输入列表 — 增/删/排序多行表单字段，复合表单模式。                                                                                                                                   | `input`, `button`, `icon`, `list`                           |  1/14  |
+> **2026-09 更新：** 原表中的 `PageHeader`、`Navbar`、`Sidebar`、`AppShell` 已转入核心内壳领域规划（`SPageHeader`、`SLayoutShell`、`SShellMenu`、`SLogo` + headless `shell` 域模块），见 [ui-shell-roadmap.md](./ui-shell-roadmap.md)，不再走市场分发。
+
+| 组件                | 延后原因（复合 + 小众）                                                                                                                            | 基于原子组件                                                | 需求度 |
+| :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- | :----: |
+| `Tour`              | 引导 walkthrough — 高亮引擎 + 步骤管理 + popover 定位，小众（引导场景）。                                                                          | `popover`, `dialog`, `button`, `icon`                       |  3/14  |
+| `TreeTable`         | 树形表格 — 扩展 table 支持展开/折叠行 + tree 状态，小众企业场景。                                                                                  | `table`, `tree`, `collapsible`                              |  3/14  |
+| `Comment`           | 评论块 — avatar + author + content + actions + 嵌套回复，社交域小众。                                                                              | `avatar`, `typography`, `button`, `tag`                     |  2/14  |
+| `Galleria`          | 完整图库/灯箱 — carousel + 缩略图条 + zoom + 全屏，小众。                                                                                          | `carousel`, `image`, `dialog`, `button`                     |  2/14  |
+| `OrganizationChart` | 组织架构图 — tree + 自定义节点渲染 + 连接线，小众企业场景。                                                                                        | `tree`, `card`, `icon`                                      |  2/14  |
+| `RichTextEditor`    | 所见即所得编辑器 — 工具栏 + contenteditable + 插件，体量大。落地形态待评估（见 [ecosystem/editor.md](./ecosystem/editor.md) 提案），不走市场分发。 | `toolbar`, `button`, `icon`, `tooltip` + Tiptap/ProseMirror |  3/14  |
+| `Dock`              | macOS 风格 Dock — 放大效果 + tooltip + 应用图标，小众平台特性。                                                                                    | `tooltip`, `icon`, `popover`                                |  2/14  |
+| `DynamicInput`      | 可编辑输入列表 — 增/删/排序多行表单字段，复合表单模式。                                                                                            | `input`, `button`, `icon`, `list`                           |  1/14  |
 
 ### 市场设计说明
 
@@ -1151,9 +1148,9 @@ import { SButton, SButtonGroup } from '@soybeanjs/ui';
 
 `ScrollTop` (= `backtop`), `Inplace` (= `editable`), `PickList` (= `transfer`), `InputTag` / `DynamicTags` (= `tags-input`), `ColorInput` (= `color-field`), `HueSlider` / `AlphaSlider` (= `color-slider`), `Counter` / `Stepper` mobile (= `input-number`), `OtpInput` (= `input-otp`), `Text` / `Heading` / `Paragraph` (= `Typography`), `Box` / `Container` / `Stack` / `SimpleGrid` (= `layout` + UnoCSS), `Listbox` (= `select`), `Modal` (= `dialog`), `Sheet` (= `drawer`), `Notification` / `Sonner` / `Message` / `MessageBox` / `ConfirmDialog` / `ConfirmPopup` (= `toast` / `dialog` / `popconfirm`), `Direction` (= `config-provider`), `Portal` / `FocusTrap` (内部原语), `ThemeIcon` (= `icon`), `Paper` / `Elevation` (原始 styled div), `StyleProvider` (= `config-provider`), `NoSSR` (框架关注点), `ResizeObserver` / `ScrollObserver` (工具组合式), `ActionIcon` / `CopyButton` (`button` / `clipboard` 变体), `Burger` / `NavLink` (基于 `button`/`link` 的复合).
 
-### 图表（独立包范围）
+### 图表（不进库：文档示例）
 
-`Chart`, `Heatmap`, `Sparkline` —— 图表是独立领域，有自身生态（ECharts、Chart.js、recharts），不进核心 UI 库。**v0.40.0 最终决策：不发布 `@soybeanjs/charts` 包**，改为在文档站直接基于 [TanStack Charts](https://tanstack.com/charts) 提供 shadcn 风格示例（见 `apps/docs/src/examples/chart/`）。
+`Chart`, `Heatmap`, `Sparkline` —— 图表是独立领域，有自身生态（ECharts、Chart.js、recharts），不进核心 UI 库。**最终决策：不发布图表包**，文档站直接基于 [TanStack Charts](https://tanstack.com/charts) 提供 shadcn 风格示例（见 `apps/docs/src/examples/chart/`）。
 
 ### 业务专属（过于狭窄）
 
@@ -1169,61 +1166,47 @@ import { SButton, SButtonGroup } from '@soybeanjs/ui';
 
 ---
 
-## 生态扩展路线（Ecosystem）
+## 领域扩展路线（Domains & Proposals）
 
-SoybeanUI 正从单一组件库扩展为**组件生态**。外围包遵循「单包自治」分层模型（决策记录见 [ADR-0001](./adr/0001-peripheral-package-layering.md)，该 ADR 对 AI 域已 superseded）：核心 `@soybeanjs/headless` 是唯一逻辑层；外围包不建独立逻辑包，领域逻辑与样式同居于单包内；外围包之间默认禁止依赖，仅允许白名单有向边。版本策略为 **lockstep**（全包同版本、单主干 main、单 tag 发布）。
+SoybeanUI 当前是**单组件库 + 源码分发工具链**形态：仓库不包含任何外围 npm 包（`@soybeanjs/ui-x`、`@soybeanjs/admin`、`@soybeanjs/chart` 均已移除；[ADR-0001](./adr/0001-peripheral-package-layering.md) 的外围包分层模型相应 superseded）。新领域按两类推进：
 
-> **2026-09 更新：`@soybeanjs/ui-x` 已整包移除，仓库当前无外围包。** AI/chat 组件改为在核心 headless/ui 内按标准两层契约重新实现（统一 `S` 前缀），规划与里程碑以 [ui-ai-roadmap.md](./ui-ai-roadmap.md) 为准。
->
-> **v0.40.0 更新：下表与里程碑中 `admin` / `chart` 两条线已取消（包已删除，图表改用 TanStack Charts 文档示例）**；以下分层图、路线表与 M-EC3 / M-EC4 等里程碑保留为 2026-08 的历史规划。
+1. **核心内领域（in-core domains）**：通过 headless 准入（R1–R8）的领域逻辑放 `@soybeanjs/headless`（域模块 + composables，零样式），样式组件放 `@soybeanjs/ui`，统一 `S` 前缀，遵循同一套两层契约与发布节奏。
+2. **未来提案（proposals）**：editor / table / form / ui-pro 保留为方向与调研资产；落地形态（并入核心 ui、独立包、或仅 sbean 源码配方）立项时重新评估，不预设第三层包。
 
-### 分层架构总览
+### 分层现状
 
 ```
-Layer 4  外围包（单包自治）     （当前无；ui-x / admin / chart 均已移除）
-                                 @soybeanjs/editor（提案）· @soybeanjs/ui-pro（预留）
-Layer 3  样式组件层             @soybeanjs/ui（S 前缀，96 组 / 144 导出；AI 组件将加入此层与 Layer 2）
-Layer 2  无头逻辑层             @soybeanjs/headless（94 公共组件 / 28 composables）
-Layer 1  主题与样式引擎         @soybeanjs/theme · @soybeanjs/unocss
-横切     源码分发与文档生成     @soybeanjs/sbean（CLI / registry / MCP，非运行时依赖）
+Layer 3  样式组件层      @soybeanjs/ui（S 前缀，96 组 / 144 导出；AI、shell 领域组件加入此层）
+Layer 2  无头逻辑层      @soybeanjs/headless（94 公共组件 / 28 composables；领域模块 /ai、/shell 加入此层）
+Layer 1  主题与样式引擎  @soybeanjs/theme · @soybeanjs/unocss
+横切     源码分发与文档  @soybeanjs/sbean（CLI / registry / MCP，非运行时依赖）
 ```
 
-依赖铁律：外围 → 核心允许；外围 ↔ 外围仅白名单有向边；核心 → 外围禁止。
+依赖铁律不变：**ui → headless 单向**；headless 零样式；ARIA / 键盘语义不出 headless。
 
-### 各包扩展计划概要
+### 核心内领域
 
-| 包                    | 定位                                                          |     前缀      | 现状                                                                                                         | 技术方案                                     |
-| :-------------------- | :------------------------------------------------------------ | :-----------: | :----------------------------------------------------------------------------------------------------------- | :------------------------------------------- |
-| ~~`@soybeanjs/ui-x`~~ | ~~AI 对话交互组件（对标 Ant Design X / Element Plus X）~~     |   ~~`Sx`~~    | **已移除（2026-09）**：AI 组件转入核心 headless/ui，统一 `S` 前缀，见 [ui-ai-roadmap.md](./ui-ai-roadmap.md) | —                                            |
-| `@soybeanjs/admin`    | 中后台复合/布局层（以 soybean-admin 为蓝本，不依赖 Naive UI） |  `S`+`App*`   | `admin` 分支已实现 6 壳组件 + 6 菜单模式（M1 完成、M2 待验收），M3+ 未开始                                   | [ecosystem/admin.md](./ecosystem/admin.md)   |
-| `@soybeanjs/chart`    | 图表组件（对标 shadcn charts）                                | `S`+`Chart*`  | `ecosystem` 分支仅落地包骨架，功能 0%；选型待定                                                              | [ecosystem/chart.md](./ecosystem/chart.md)   |
-| `@soybeanjs/editor`   | 富文本编辑器（Tiptap 内核，仅 MIT 免费边界，UI 层自建）       | `S`+`Editor*` | 立项提案（2026-08-14 市场调研与收费边界核实完成），建议生态首发后启动                                        | [ecosystem/editor.md](./ecosystem/editor.md) |
-| `@soybeanjs/table`    | 高级数据网格 / ProTable（基于核心 `STable` 自建内核）         | `S`+`Table*`  | 立项提案（2026-08-14 调研完成）：服务端数据源抽象/查询/分页/编辑/列管理                                      | [ecosystem/table.md](./ecosystem/table.md)   |
-| `@soybeanjs/form`     | Schema 驱动高级表单（协议驱动渲染 + 声明式联动）              |  `S`+`Form*`  | 立项提案（2026-08-14 调研完成）：ISchema 渲染层 + 组件注册表 + 查询表单                                      | [ecosystem/form.md](./ecosystem/form.md)     |
-| `@soybeanjs/ui-pro`   | 增值 / 高级组件（探索性，与 ui-lowcode 一并预留）             |     待定      | 无代码，仅契约预留（EC-G07）                                                                                 | [ecosystem/ui-pro.md](./ecosystem/ui-pro.md) |
+| 领域      | 路线图                                       | Headless 准入                                                                     | 状态       |
+| :-------- | :------------------------------------------- | :-------------------------------------------------------------------------------- | :--------- |
+| AI / chat | [ui-ai-roadmap.md](./ui-ai-roadmap.md)       | 4 个组件族（thread / sender / thought-chain / conversations）+ `src/ai/` 域模块   | 规划 P0–P3 |
+| 中后台壳  | [ui-shell-roadmap.md](./ui-shell-roadmap.md) | 无新 DOM 家族；`src/shell/` 纯逻辑（`useMediaQuery` / `useShellNav` / `useTabs`） | 规划 M1–M4 |
 
-> 商业化：editor / table / form 三生态的分生态方向（Pro 订阅、托管服务、行业套件、AI 用量、企业定制等）与横向执行建议见 [ecosystem/commercialization.md](./ecosystem/commercialization.md)；市场调研原始结论见 [research/](./research/)（table-ecosystem / form-ecosystem / commercialization-ecosystem）。
+### 未来提案（落地形态待评估）
 
-### 分支合并计划
+| 提案     | 方向                                                    | 现状                                                         | 技术方案                                                                                                |
+| :------- | :------------------------------------------------------ | :----------------------------------------------------------- | :------------------------------------------------------------------------------------------------------ |
+| `editor` | 富文本编辑器（Tiptap 内核，仅 MIT 免费边界，UI 层自建） | 2026-08 完成市场调研与收费边界核实                           | [ecosystem/editor.md](./ecosystem/editor.md)                                                            |
+| `table`  | 高级数据网格 / ProTable                                 | 2026-08 调研完成；内核选型随 [v0.50.0.md](./v0.50.0.md) 推进 | [ecosystem/table.md](./ecosystem/table.md)                                                              |
+| `form`   | Schema 驱动高级表单（协议驱动渲染 + 声明式联动）        | 2026-08 调研完成                                             | [ecosystem/form.md](./ecosystem/form.md)                                                                |
+| `ui-pro` | 增值 / 高级组件（探索性，与商业化一并评估）             | 无代码，仅方向预留                                           | [ecosystem/ui-pro.md](./ecosystem/ui-pro.md) · [commercialization.md](./ecosystem/commercialization.md) |
 
-三条临时功能分支（`ui-x` / `admin` / `ecosystem`）均基于 `c96c7dfff` 切出，main 在其后将 `packages/ui-unocss` 重命名为 `packages/unocss`——**合并时所有 `@soybeanjs/ui-uno` 引用与 pnpm-lock 均为已知冲突点**，需先将各分支重定向到新包名再合并。
+> 这些提案写于「外围包单包自治」时期，文中包结构、lockstep、跨包白名单依赖等前提**已不适用**，阅读时以本页为准；立项必须先产出形态决策（核心内实现 / 独立包 / sbean 配方三选一），必要时新立 ADR。市场调研原始结论见 [research/](./research/README.md)。
 
-| 顺序 | 动作                                                                            | 时间窗             |
-| :--: | :------------------------------------------------------------------------------ | :----------------- |
-|  1   | 合并 `ecosystem`（三包骨架 + docs/playground 命名空间化 + 生成链路改造）        | 2026-08-14 ~ 08-20 |
-|  2   | 合并 `ui-x`（20 组件 + headless-x 拆解迁入 ui-x）                               | 2026-08-20 ~ 08-25 |
-|  3   | 合并 `admin`（6 壳组件 + admin→chart peerDep 接线）                             | 2026-08-25 ~ 08-31 |
-|  4   | chart 功能组件实现（与合并并行，见 [ecosystem/chart.md](./ecosystem/chart.md)） | 2026-08-14 ~ 08-31 |
-|  5   | 归档三条临时分支，后续走短生命周期 feature branch                               | 2026-09-01 ~ 09-05 |
-|  6   | lockstep 全包发布验证（`pnpm publish -r` + `release.yml`）                      | 2026-09-01 ~ 09-10 |
+### 配套基础设施（已就绪）
 
-### 配套基础设施
-
-生态扩展同时带动以下横向改造（详见 [tasks.md](./tasks.md) 工作流 W1）：
-
-- **sbean registry 命名空间化**：items 迁移为 `ui/accordion` 形式，外围包按 `<pkg>/*` 追加（当前仅 `ui`；未来包按需扩展）；CLI 保留无前缀别名兼容。
-- **`pnpm sui` 多包生成**：API / changelog 生成输出迁移至 `generated/api/<pkg>/`；`<ComponentApi>` / `<PlaygroundGallery>` 按路由命名空间定位。
-- **文档站与 playground 多包化**：顶部包切换器、`examples/<pkg>/` 目录结构、双语文档目录（ecosystem 分支已完成 468 个 playground 示例与 190 个 docs 页面的迁移）。
+- **sbean registry 命名空间化**：items 为 `ui/<name>` + `package` 字段，未来新增域/包可按 `<namespace>/<name>` 扩展；核心 `ui` 裸名免前缀。
+- **按包生成链路**：`pnpm sui gen api/changelog/skills` 按包输出，文档站按命名空间定位（`chart` 是非包的 TanStack Charts 文档示例命名空间，不对应 npm 包）。
+- **图表**：不发布包，文档站 `apps/docs/src/examples/chart/` 提供 TanStack Charts shadcn 风格示例。
 
 ---
 
@@ -1260,26 +1243,19 @@ Layer 1  主题与样式引擎         @soybeanjs/theme · @soybeanjs/unocss
 
 ---
 
-## 总体里程碑与时间节点
+## 总体里程碑
 
-以 2026-08-14 为基线，结合生态任务清单与优化阶段给出的**建议时间节点**：
+仅保留仍有效的批次，只定顺序不绑死日期；2026-08 的外围包分支合并里程碑（M-EC1–M-EC5）已随 ui-x/admin/chart 取消整体废止。
 
-| 里程碑                    | 内容                                                                                                  | 时间          | 关键验收                                   |
-| :------------------------ | :---------------------------------------------------------------------------------------------------- | :------------ | :----------------------------------------- |
-| **M-EC1** 生态骨架合入    | ecosystem 分支合并（三包骨架 + 命名空间化 + 生成链路）                                                | 08-14 ~ 08-20 | `pnpm typecheck` / `test` / `build` 全绿   |
-| **M-EC2** ~~AI 组件就绪~~ | ~~ui-x 分支合并 + headless-x 拆解迁入~~（2026-09 取消；AI 组件回归核心库，里程碑见 ui-ai-roadmap.md） | 08-20 ~ 08-25 | —                                          |
-| **M-EC3** 中后台壳就绪    | admin 分支合并 + M2 验收（e2e 通过）                                                                  | 08-25 ~ 08-31 | playground 可运行后台壳                    |
-| **M-EC4** 图表包 v1       | SChartBar / SChartLine 及核心图表                                                                     | 08-14 ~ 08-31 | 主题 token 集成 + SSR 安全                 |
-| **M-EC5** 生态首发        | 分支归档 + lockstep 全包发布                                                                          | 09-01 ~ 09-10 | `pnpm publish -r` + `release.yml` 全包同发 |
-| **M-OPT1** 发布安全       | 优化阶段 A（F1 / F2）                                                                                 | 08-14 ~ 08-28 | 六包 tarball 空目录可安装导入              |
-| **M-OPT2** 生成一致       | 优化阶段 B（F3 / F10）                                                                                | 08-28 ~ 09-11 | `check:generated` 进 CI                    |
-| **M-OPT3** 质量网         | 优化阶段 C（F6 / F7 / F8）                                                                            | 09-11 ~ 10-09 | 高影响 seam 直接契约测试                   |
-| **M-CMP1** 核心组件第一批 | P0 组件 9 个（Upload / Timeline / Typography 等）                                                     | 2026 Q4       | 每组件全交付面（源码/测试/文档/示例/API）  |
-| **M-CMP2** 核心组件第二批 | P1 组件 13 个                                                                                         | 2027 Q1       | 同上                                       |
-| **M-CMP3** 核心组件收尾   | P2 × 11 + P3 × 12，视容量穿插                                                                         | 2027 全年     | 同上；P2/P3 可转入组件市场                 |
-| **M-PRO** ui-pro 立项评估 | ui-pro / ui-lowcode 契约演练                                                                          | 2026 Q4       | 立项决策记录（ADR）                        |
-
-> 核心组件批次（M-CMP1/2/3）无既定官方时间，上表为按「P0 → P1 → P2 → P3」顺序与生态主线不抢占资源的**建议排期**；实际节奏以 [task-tracking.md](./task-tracking.md) 滚动更新为准。
+| 批次                      | 内容                                                        | 排期口径                                        | 关键验收                                  |
+| :------------------------ | :---------------------------------------------------------- | :---------------------------------------------- | :---------------------------------------- |
+| **M-AI** AI 核心组件      | P0–P3 批次，详见 [ui-ai-roadmap.md §11](./ui-ai-roadmap.md) | 以该路线图为准                                  | 每组件全交付面（源码/测试/文档/示例/API） |
+| **M-SH** 中后台壳         | M1–M4，详见 [ui-shell-roadmap.md §9](./ui-shell-roadmap.md) | 建议排在 v0.50 重构窗口之后                     | headless 逻辑单测 + shell Tier 2 冒烟 e2e |
+| **M-OPT** 工程优化        | F1–F11，阶段 A–D 见上节                                     | 当前执行口径以 [v0.50.0.md](./v0.50.0.md) 为准  | 见 [optimize.md](./optimize.md) 各 F 项   |
+| **M-CMP1** 核心组件第一批 | P0 组件 9 个（Upload / Timeline / Typography 等）           | 按「P0 → P1 → P2 → P3」顺序滚动，无既定官方时间 | 每组件全交付面                            |
+| **M-CMP2** 核心组件第二批 | P1 组件 13 个（含 `Result`，壳路线复用）                    | 同上                                            | 同上                                      |
+| **M-CMP3** 核心组件收尾   | P2 × 11 + P3 × 12，视容量穿插                               | 同上                                            | P2/P3 可转入组件市场                      |
+| **M-PRO** 提案立项评估    | editor / table / form / ui-pro 的形态三选一决策             | 有需求信号时启动                                | 形态决策 + 必要时新立 ADR                 |
 
 ---
 
@@ -1296,4 +1272,4 @@ Layer 1  主题与样式引擎         @soybeanjs/theme · @soybeanjs/unocss
 
 ---
 
-_本文档为项目总路线图。组件信息自 [components.md](./components.md) 提取（源文档最后更新：2026-08-02）。桌面优先范围；88 个组件已发布；45 个进入活跃路线图（高 22 / 中 11 / 低 12）；12 个延后至组件市场；60+ 个在范围外清单中被明确拒绝。生态扩展（4 包）与工程优化（F1–F11）路线更新于 2026-08-14。_
+_本文档为项目总路线图。组件信息自 [components.md](./components.md) 提取（源文档最后更新：2026-08-02）。桌面优先范围；96 个组件已发布；45 个进入活跃路线图（高 22 / 中 11 / 低 12）；8 个延后至组件市场（另有 `PageHeader` / `Navbar` / `Sidebar` / `AppShell` 4 个转入壳领域规划）；60+ 个在范围外清单中被明确拒绝。AI 与中后台壳两个核心内领域分别见 [ui-ai-roadmap.md](./ui-ai-roadmap.md) / [ui-shell-roadmap.md](./ui-shell-roadmap.md)；editor / table / form / ui-pro 为形态待评估的未来提案。_

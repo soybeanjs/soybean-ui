@@ -30,7 +30,8 @@
 - **Already shipped:** 96 component groups (`accordion` … `watermark`).
 - **Active roadmap below:** 45 components (single-focused, desktop-oriented).
 - **Already implemented references retained here:** `Rating` (historical P0 entry) and `ButtonGroup` (see [Implemented Component Reference](#implemented-component-reference)).
-- **Marketplace deferred:** 12 components (composite/niche — deferred to source-code marketplace).
+- **Marketplace deferred:** 8 components (composite/niche — deferred to source-code marketplace).
+- **Moved to the shell domain (2026-09):** `PageHeader`, `Navbar`, `Sidebar`, `AppShell` — now planned as in-core shell composites (`SPageHeader`, `SLayoutShell`, `SShellMenu`, `SLogo`); see [ui-shell-roadmap.md](./ui-shell-roadmap.md).
 - **Out of scope:** 60+ candidates rejected (mobile-only, redundant, business-specific, charting, directives).
 
 ### Evaluation Template
@@ -1096,18 +1097,16 @@ The marketplace will distribute ready-to-copy component recipes that compose exi
 
 ### Deferred Components
 
+> **2026-09 更新：** 原表中的 `PageHeader`、`Navbar`、`Sidebar`、`AppShell` 不再属于「延后市场」——它们已作为核心内壳领域（admin shell 回迁）的规划组件：`SPageHeader`（P0）、`SLayoutShell` / `SShellMenu` / `SLogo`（P0），配套 `shell` headless 域模块；完整清单与模式见 [ui-shell-roadmap.md](./ui-shell-roadmap.md)。
+
 | Component           | Why Deferred (Composite + Niche)                                                                             | Built From (Atoms)                                          | Demand |
 | :------------------ | :----------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- | :----: |
 | `Tour`              | Onboarding walkthrough — overlays highlight engine + step manager + popover positioning. Niche (onboarding). | `popover`, `dialog`, `button`, `icon`                       |  3/14  |
 | `TreeTable`         | Tree-structured table — extends table with expand/collapse rows + tree state. Niche enterprise.              | `table`, `tree`, `collapsible`                              |  3/14  |
-| `PageHeader`        | Page header composite — breadcrumb + title + actions + back button. Composite layout, not a primitive.       | `breadcrumb`, `button`, `typography`, `icon`                |  4/14  |
-| `Navbar`            | Top navigation bar — logo + nav links + actions + responsive collapse. Composite layout.                     | `link`, `button`, `menu`, `layout`, `icon`                  |  2/14  |
 | `Comment`           | Comment block — avatar + author + content + actions + reply nesting. Social-domain niche.                    | `avatar`, `typography`, `button`, `tag`                     |  2/14  |
-| `Sidebar`           | App sidebar — collapsible nav + sections + header + footer. shadcn-style composite.                          | `navigation-menu`, `collapsible`, `layout`, `link`, `icon`  |  1/14  |
-| `AppShell`          | App layout shell — header + sidebar + main + footer composition. Composite layout.                           | `layout`, `navbar`, `sidebar`                               |  1/14  |
 | `Galleria`          | Full image gallery/lightbox — carousel + thumbnail strip + zoom + fullscreen. Niche.                         | `carousel`, `image`, `dialog`, `button`                     |  2/14  |
 | `OrganizationChart` | Org chart — tree + custom node rendering + connectors. Niche enterprise.                                     | `tree`, `card`, `icon`                                      |  2/14  |
-| `RichTextEditor`    | WYSIWYG editor — toolbar + contenteditable + plugins. Large surface, usually a separate package.             | `toolbar`, `button`, `icon`, `tooltip` + Tiptap/ProseMirror |  3/14  |
+| `RichTextEditor`    | WYSIWYG editor — toolbar + contenteditable + plugins. Large surface; delivery form TBD per editor proposal.  | `toolbar`, `button`, `icon`, `tooltip` + Tiptap/ProseMirror |  3/14  |
 | `Dock`              | macOS-style dock — magnification + tooltip + app icons. Niche platform idiom.                                | `tooltip`, `icon`, `popover`                                |  2/14  |
 | `DynamicInput`      | Editable list of inputs — add/remove/sort rows of form fields. Composite form pattern.                       | `input`, `button`, `icon`, `list`                           |  1/14  |
 
@@ -1132,9 +1131,9 @@ Candidates considered and **explicitly rejected** from both the active roadmap a
 
 `ScrollTop` (= `backtop`), `Inplace` (= `editable`), `PickList` (= `transfer`), `InputTag` / `DynamicTags` (= `tags-input`), `ColorInput` (= `color-field`), `HueSlider` / `AlphaSlider` (= `color-slider`), `Counter` / `Stepper` mobile (= `input-number`), `OtpInput` (= `input-otp`), `Text` / `Heading` / `Paragraph` (= `Typography`), `Box` / `Container` / `Stack` / `SimpleGrid` (= `layout` + UnoCSS), `Listbox` (= `select`), `Modal` (= `dialog`), `Sheet` (= `drawer`), `Notification` / `Sonner` / `Message` / `MessageBox` / `ConfirmDialog` / `ConfirmPopup` (= `toast` / `dialog` / `popconfirm`), `Direction` (= `config-provider`), `Portal` / `FocusTrap` (internal primitives), `ThemeIcon` (= `icon`), `Paper` / `Elevation` (raw styled div), `StyleProvider` (= `config-provider`), `NoSSR` (framework concern), `ResizeObserver` / `ScrollObserver` (utility composables), `ActionIcon` / `CopyButton` (variants of `button` / `clipboard`), `Burger` / `NavLink` (composites built on `button`/`link`).
 
-### Charting (separate package scope)
+### Charting (not in the library — documentation examples)
 
-`Chart`, `Heatmap`, `Sparkline` — charting is a distinct domain with its own ecosystem (ECharts, Chart.js, recharts). Belongs in a separate `@soybeanjs/charts` package, not the core UI library.
+`Chart`, `Heatmap`, `Sparkline` — charting is a distinct domain with its own ecosystem. No chart component ships in the core library and no `@soybeanjs/charts` package exists; the docs site shows shadcn-styled examples built directly on [TanStack Charts](https://tanstack.com/charts) (`apps/docs/src/examples/chart/`). See [roadmap.md](./roadmap.md).
 
 ### Business-Specific (too narrow for a general library)
 
@@ -1374,4 +1373,4 @@ Maps each active roadmap component to its expected headless pattern (per the com
 
 ---
 
-_Last updated: 2026-08-02. Desktop-only scope. 96 component groups already shipped; 45 in the active roadmap; 12 deferred to the component marketplace; 60+ explicitly rejected in the Out-of-Scope section._
+_Last updated: 2026-08-02 (counts revised 2026-09). Desktop-only scope. 96 component groups already shipped; 45 in the active roadmap; 8 deferred to the component marketplace; 4 former marketplace candidates (`PageHeader`, `Navbar`, `Sidebar`, `AppShell`) moved to the in-core shell domain (see [ui-shell-roadmap.md](./ui-shell-roadmap.md)); 60+ explicitly rejected in the Out-of-Scope section._

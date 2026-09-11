@@ -1,6 +1,8 @@
-# @soybeanjs/form — Schema 驱动表单技术方案
+# form — Schema 驱动表单技术方案（提案）
 
-> 定位：SoybeanUI 生态第 7 个外围包，提供基于核心 `useForm` + `SForm` 原语的 **Schema 驱动高级表单**——「一份表单 Schema（协议）→ 自动渲染 + 声明式联动 + 组件注册表 + 校验（Standard Schema）」；并作为 `@soybeanjs/table` 查询工具栏的查询表单底座。对标 Formily 的深度能力，但以 Vue 3 一等公民 + TypeScript 类型安全 + UnoCSS 主题 + 中文生态差异化。
+> **2026-09 前提变更：** 本文写于「外围包单包自治」时期，标题中的 `@soybeanjs/form` 是当时设想的包名；当前仓库无外围包，文中包结构、lockstep、跨包依赖等设定已不适用。**市场调研结论与能力设计仍然有效**；立项时须先按 [README §立项时必须回答的问题](./README.md#立项时必须回答的问题) 确定落地形态（并入核心 headless/ui、独立包、或 sbean 源码配方）。
+
+> 定位（提案）：提供基于核心 `useForm` + `SForm` 原语的 **Schema 驱动高级表单**——「一份表单 Schema（协议）→ 自动渲染 + 声明式联动 + 组件注册表 + 校验（Standard Schema）」；并作为高级数据网格查询工具栏的查询表单底座。对标 Formily 的深度能力，但以 Vue 3 一等公民 + TypeScript 类型安全 + UnoCSS 主题 + 中文生态差异化。
 >
 > 状态：**立项提案**（本文档），无任何代码。市场调研已完成（见 [research/form-ecosystem.md](../research/form-ecosystem.md)）。
 
@@ -33,7 +35,7 @@ Formily 的 `x-reactions` 虽强大但不兼容标准 JSON Schema 校验器。`@
 
 ## 2. 现状盘点：核心 useForm / SForm 能力与局限
 
-> 基于 `packages/headless/src/components/form/`（`useForm` / `FormCompact` / `FormField*` / `core/use-form.ts` / `core/use-form-state.ts` / `core/use-field-array.ts`）与 `packages/ui/src/components/form/`，文档见 [apps/docs/src/docs/zh-CN/ui/components/form.md](../../apps/docs/src/docs/zh-CN/ui/components/form.md)。
+> 基于 `packages/headless/src/components/form/`（`useForm` / `FormCompact` / `FormField*` / `core/use-form.ts` / `core/use-form-state.ts` / `core/use-field-array.ts`）与 `packages/ui/src/components/form/`，文档见 [apps/docs/src/content/zh/ui/components/form.md](../../apps/docs/src/content/zh/ui/components/form.md)。
 
 ### 2.1 已具备（核心表单状态引擎，全部保留）
 

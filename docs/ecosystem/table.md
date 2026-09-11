@@ -1,6 +1,8 @@
-# @soybeanjs/table — 高级数据网格 / ProTable 技术方案
+# table — 高级数据网格 / ProTable 技术方案（提案）
 
-> 定位：SoybeanUI 生态第 6 个外围包，提供基于核心 `STable` 原语的**高级数据网格 / ProTable 级**组件——内置服务端数据源抽象、查询工具栏、分页一体化、可编辑单元格、列管理（显隐/固定/排序/偏好持久化）与导出等 Pro 级能力，对标 Ant Design `ProTable` / AG Grid Community，并保留「headless 逻辑层 + Styled UI 层」的生态招牌。
+> **2026-09 前提变更：** 本文写于「外围包单包自治」时期，标题中的 `@soybeanjs/table` 是当时设想的包名；当前仓库无外围包，文中包结构、lockstep、跨包依赖等设定已不适用。**市场调研结论与能力设计仍然有效**；表格内核选型与 [v0.50.0.md](../v0.50.0.md) 引擎更换联动，立项时须先按 [README §立项时必须回答的问题](./README.md#立项时必须回答的问题) 确定落地形态（并入核心 headless/ui、独立包、或 sbean 源码配方）。
+
+> 定位（提案）：提供基于核心 `STable` 原语的**高级数据网格 / ProTable 级**组件——内置服务端数据源抽象、查询工具栏、分页一体化、可编辑单元格、列管理（显隐/固定/排序/偏好持久化）与导出等 Pro 级能力，对标 Ant Design `ProTable` / AG Grid Community，并保留「headless 逻辑层 + Styled UI 层」的招牌。
 >
 > 状态：**立项提案**（本文档），无任何代码。市场调研已完成（见 [research/table-ecosystem.md](../research/table-ecosystem.md)）。
 
@@ -36,7 +38,7 @@ AG Grid（社区 MIT / 企业版 $999/开发者）与 Handsontable（非商业�
 
 ## 2. 现状盘点：核心 STable 能力与局限
 
-> 基于 `packages/headless/src/components/table/` 与 `packages/ui/src/components/table/`（含 `TableCompact` 聚合），文档见 [apps/docs/src/docs/zh-CN/ui/components/table.md](../../apps/docs/src/docs/zh-CN/ui/components/table.md)。
+> 基于 `packages/headless/src/components/table/` 与 `packages/ui/src/components/table/`（含 `TableCompact` 聚合），文档见 [apps/docs/src/content/zh/ui/components/table.md](../../apps/docs/src/content/zh/ui/components/table.md)。
 
 ### 2.1 已具备（核心原语能力，全部保留在核心层）
 
@@ -76,13 +78,13 @@ AG Grid（社区 MIT / 企业版 $999/开发者）与 Handsontable（非商业�
 
 ### 3.2 与现有包边界
 
-| 层       | 包                                        | 角色                                                                                            |
-| :------- | :---------------------------------------- | :---------------------------------------------------------------------------------------------- |
-| 原子原语 | `@soybeanjs/ui` `STable`                  | 配置式列模型、排序/筛选/选择/展开/树形/固定/缩放/虚拟滚动状态管线（**不新增**）                 |
-| 复合层   | `@soybeanjs/admin` `ProTable`（M3+ 规划） | 中后台复合层内的「查询列表页」装配（若 admin 需要，应**包装** `@soybeanjs/table` 而非重复实现） |
-| **本包** | `@soybeanjs/table`                        | 数据源抽象 + 查询/分页/编辑/列管理/导出等 Pro 能力                                              |
+| 层         | 包                                                  | 角色                                                                                  |
+| :--------- | :-------------------------------------------------- | :------------------------------------------------------------------------------------ |
+| 原子原语   | 核心 `@soybeanjs/ui` `STable`                       | 配置式列模型、排序/筛选/选择/展开/树形/固定/缩放/虚拟滚动状态管线（**不新增**）       |
+| 复合层     | 中后台「查询列表页」装配（历史 admin 方向，已取消） | 壳路线已明确 ProTable 不进壳，任何列表页装配都应**包装**本提案的 Pro 能力而非重复实现 |
+| **本提案** | 高级数据网格内核                                    | 数据源抽象 + 查询/分页/编辑/列管理/导出等 Pro 能力                                    |
 
-> 注：`docs/ecosystem/admin.md` M3+ 原规划了 `ProTable`；本方案建议 admin 的 ProTable 改为依赖 `@soybeanjs/table`（经跨包白名单新增有向边，见 §4.3），避免两处重复实现。
+> 注：已取消的 admin 方向（见 [ui-shell-roadmap.md §4.7](../ui-shell-roadmap.md)）曾规划壳内 ProTable；现行边界是 ProTable 不在壳组件范围内，其落地形态（并入核心 ui 或随本提案独立）在立项时统一决策，避免两处重复实现。
 
 ### 3.3 命名与前缀
 

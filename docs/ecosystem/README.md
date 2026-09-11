@@ -1,56 +1,51 @@
-# SoybeanUI 生态扩展技术方案
+# SoybeanUI 领域提案与生态工具链
 
-> 本目录存放各外围包（peripheral package）的技术方案文档，是 [roadmap.md](../roadmap.md)「生态扩展路线」的展开。基线日期：2026-08-14；基线分支：`main`（`ui-x` / `admin` / `ecosystem` 临时分支尚未合并）。
+> 本目录存放**未来领域提案**（editor / table / form / ui-pro）、商业化策略建议，以及 sbean 源码分发工具链文档，是 [roadmap.md](../roadmap.md)「领域扩展路线」的展开。
 >
-> **更新（v0.40.0）：`admin` / `chart` 两条线已取消，对应包已删除**，图表改为文档站基于 [TanStack Charts](https://tanstack.com/charts) 的 shadcn 风格示例。[admin.md](./admin.md) / [chart.md](./chart.md) 仅作历史提案保留。
+> **现状（2026-09）：仓库不包含任何外围 npm 包。**
 >
-> **更新（2026-09）：`@soybeanjs/ui-x` 整包移除，当前仓库没有外围包。** AI/chat 组件改为在核心 headless/ui 内按标准两层契约重新实现（统一 `S` 前缀），规划见 [../ui-ai-roadmap.md](../ui-ai-roadmap.md)；下文分层图、术语与决策中 ui-x/headless-x 相关表述均为历史记录。
+> - AI/chat 与中后台壳已确定为**核心内领域**，在 `@soybeanjs/headless` + `@soybeanjs/ui` 内实现，分别见 [ui-ai-roadmap.md](../ui-ai-roadmap.md) 与 [ui-shell-roadmap.md](../ui-shell-roadmap.md)。
+> - `@soybeanjs/ui-x`（2026-09 移除）、`@soybeanjs/admin` / `@soybeanjs/chart`（v0.40.0 取消）均不再存在；图表改为文档站基于 [TanStack Charts](https://tanstack.com/charts) 的 shadcn 风格示例（`apps/docs/src/examples/chart/`）。
+> - 下列提案写于「外围包单包自治」时期，**包形态、lockstep、跨包白名单等前提已不适用**：每个提案立项时必须先做形态决策（并入核心 ui / 独立包 / sbean 源码配方，三选一），必要时新立 ADR。调研结论与竞品分析仍然有效。
 >
-> 导航：docs 总入口见 [../README.md](../README.md)；生态任务的落地跟踪见 [../ecosystem-tasks.md](../ecosystem-tasks.md)；调研依据见 [../research/README.md](../research/README.md)；文档治理规范见 [../GOVERNANCE.md](../GOVERNANCE.md)。
+> 导航：docs 总入口见 [../README.md](../README.md)；调研依据见 [../research/README.md](../research/README.md)；文档治理规范见 [../GOVERNANCE.md](../GOVERNANCE.md)。
 
 ## 文档索引
 
-| 文档                                           | 包                       | 状态                                                 | 说明                                          |
-| :--------------------------------------------- | :----------------------- | :--------------------------------------------------- | :-------------------------------------------- |
-| ~~ui-x.md~~（已删除）                          | ~~`@soybeanjs/ui-x`~~    | **已移除（2026-09）**：AI 组件回归核心 headless/ui   | 新规划见 [ui-ai-roadmap](../ui-ai-roadmap.md) |
-| [admin.md](./admin.md)                         | `@soybeanjs/admin`       | **已取消（v0.40.0，包已删除）**                      | 中后台复合 / 布局层（历史提案）               |
-| [chart.md](./chart.md)                         | `@soybeanjs/chart`       | **已取消（v0.40.0）**：改用 TanStack Charts 文档示例 | 图表组件（历史提案）                          |
-| [editor.md](./editor.md)                       | `@soybeanjs/editor`      | 立项提案（调研已完成）                               | 富文本编辑器（Tiptap，MIT 边界）              |
-| [table.md](./table.md)                         | `@soybeanjs/table`       | 立项提案（调研已完成）                               | 高级数据网格 / ProTable                       |
-| [form.md](./form.md)                           | `@soybeanjs/form`        | 立项提案（调研已完成）                               | Schema 驱动高级表单                           |
-| [ui-pro.md](./ui-pro.md)                       | `@soybeanjs/ui-pro`      | 探索性预留                                           | 增值 / 高级组件                               |
-| [commercialization.md](./commercialization.md) | editor/table/form 三生态 | 策略建议（调研已完成）                               | 商业化方向与执行建议                          |
-| [sbean.md](./sbean.md)                         | `@soybeanjs/sbean`       | 核心功能完成（横切工具链）                           | 源码分发 CLI 开发指南/完成度                  |
+| 文档                                           | 方向                             | 状态               | 说明                                                                                             |
+| :--------------------------------------------- | :------------------------------- | :----------------- | :----------------------------------------------------------------------------------------------- |
+| [editor.md](./editor.md)                       | 富文本编辑器（Tiptap，MIT 边界） | 提案（调研已完成） | 内核 peer 策略、工具栏/斜杠命令、AI 集成点                                                       |
+| [table.md](./table.md)                         | 高级数据网格 / ProTable          | 提案（调研已完成） | 内核选型随 [v0.50.0.md](../v0.50.0.md) 表格引擎更换推进；服务端数据源/查询/分页/编辑/列管理      |
+| [form.md](./form.md)                           | Schema 驱动高级表单              | 提案（调研已完成） | ISchema 渲染层 + 组件注册表 + 声明式联动/查询表单                                                |
+| [ui-pro.md](./ui-pro.md)                       | 增值 / 高级组件                  | 探索性预留         | 收录标准（S1–S5）与前缀候选；与商业化一并评估                                                    |
+| [commercialization.md](./commercialization.md) | 增值订阅 / 托管服务 / AI 用量等  | 策略建议           | editor/table/form 方向的商业化选项与执行节奏；AI 流式能力引用以核心 `useStream` / `SSender` 为准 |
+| [sbean.md](./sbean.md)                         | 源码分发 CLI / registry / MCP    | 核心功能已落地     | 多命名空间 registry 与多包落地路径的通用机制（当前 registry 仅含 `ui` 命名空间）                 |
 
-> 包骨架接入契约见 [../ecosystem.md](../ecosystem.md) §10「新包接入清单」；每个新包立项时按 [../GOVERNANCE.md](../GOVERNANCE.md) 登记到本文档索引。
-
-## 分层模型（ADR-0001 摘要）
-
-> 完整决策记录见 `ecosystem` 分支 `docs/adr/0001-peripheral-package-layering.md`；该 ADR 随分支合并进入 main。
+## 当前分层（无外围包）
 
 ```
-Layer 4  外围包（单包自治）     （当前无；ui-x / admin / chart 均已移除）
-                                 @soybeanjs/editor（提案）· @soybeanjs/ui-pro（预留）
-Layer 3  样式组件层             @soybeanjs/ui
-Layer 2  无头逻辑层             @soybeanjs/headless（唯一逻辑层）
-Layer 1  主题与样式引擎         @soybeanjs/theme · @soybeanjs/unocss
-横切     源码分发与文档生成     @soybeanjs/sbean
+Layer 3  样式组件层      @soybeanjs/ui（S 前缀；AI、shell 领域组件加入此层）
+Layer 2  无头逻辑层      @soybeanjs/headless（唯一逻辑层；/ai、/shell 域模块加入此层）
+Layer 1  主题与样式引擎  @soybeanjs/theme · @soybeanjs/unocss
+横切     源码分发与文档  @soybeanjs/sbean（CLI / registry / MCP，非运行时依赖）
 ```
 
-核心决策：
+依赖铁律：**ui → headless 单向**；headless 零样式；ARIA / 键盘语义不出 headless。[ADR-0001](../adr/0001-peripheral-package-layering.md) 的「单包自治外围层」模型已对 ui-x / admin 全部 superseded，仅作为未来若再出现独立领域包时的历史参考。
 
-1. **核心 headless 是唯一逻辑层。** 外围包不建独立逻辑包（`headless-x` 已在方案中判死，其 composables / types 迁入 `ui-x` 包内）。
-2. **单包自治。** 外围包的领域逻辑与样式同居于一个包内（区别于核心的 headless/styled 两层拆分），避免包数量爆炸。
-3. **原子原语上浮判据。** 仅当某能力被 ≥2 个域共享且无领域语义时，才可上浮核心 headless（当前待评估：`use-x-stream`）。
-4. **跨包依赖白名单。** 外围包之间默认禁止依赖；唯一允许的有向边是 `admin → chart`（peerDependencies，optional，供仪表盘嵌图表）。新增边须更新 CONTEXT.md 白名单。
-5. **Lockstep 版本。** 全包同版本（当前 0.31.0），单主干 main，单 tag 发布。
+## 立项时必须回答的问题
+
+任一提案启动前，需给出书面决策：
+
+1. **形态**：并入核心 headless/ui（须过 headless 准入 R1–R8）、独立 npm 包（须新立 ADR，不能默认复用 ADR-0001），还是仅以 sbean 源码配方分发？
+2. **重依赖**：Tiptap / 表格内核等是否作为 peer / optional peer，核心库依赖树不被强绑定。
+3. **命名**：核心内实现统一 `S` 前缀；独立包需论证独立前缀（历史 `Sx`、`S`+`App*` 均已废止）。
+4. **sbean 接线**：若产出可分发组件，registry 按 `<namespace>/<component>` 登记，核心 `ui` 裸名免前缀。
 
 ## 术语
 
-| 术语                            | 含义                                                                                                                                                                                                                      |
-| :------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 外围包（peripheral package）    | Layer 4 的领域扩展包（历史：ui-x / admin / chart，均已移除；提案：editor / table / form / ui-pro）                                                                                                                        |
-| 原子原语（atomic primitive）    | 无领域语义、可跨域复用的最小组合式能力（如 `use-x-stream` 的 SSE 解析）                                                                                                                                                   |
-| 包装型组件（wrapper component） | 基于核心 `@soybeanjs/ui` 原子组件组合出的复合组件（如 `SAppBreadcrumb` = `SBreadcrumb` + `SDropdownMenu`）                                                                                                                |
-| 组件前缀                        | 导出命名空间：ui=`S`（含回归核心的 AI 组件）；历史：ui-x=`Sx`（已移除）、admin=`S`+`App*`、chart=`S`+`Chart*`；提案：editor=`S`+`Editor*`、table=`S`+`Table*`（旗舰 `STablePro`）、form=`S`+`Form*`（旗舰 `SFormSchema`） |
-| 命名空间 registry item          | sbean registry 条目的 `package/component` 形式（如 `ui/accordion`）                                                                                                                                                       |
+| 术语                            | 含义                                                                                            |
+| :------------------------------ | :---------------------------------------------------------------------------------------------- |
+| 核心内领域（in-core domain）    | 通过 headless 准入、逻辑在 `headless` 域模块、样式组件在 `ui` 的领域（当前：AI/chat、中后台壳） |
+| 领域提案（domain proposal）     | 本目录中 editor / table / form / ui-pro 等方向调研，落地形态待立项决策                          |
+| 包装型组件（wrapper component） | 基于核心原子组件组合出的复合组件（如壳路线的 `SShellMenu` 组合 nav/tree 菜单族）                |
+| 命名空间 registry item          | sbean registry 条目的 `<namespace>/<component>` 形式（当前全部为 `ui/*`；核心 `ui` 裸名免前缀） |
