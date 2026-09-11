@@ -26,19 +26,19 @@
     "@soybeanjs/headless": "workspace:^",
     "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
-    "@tanstack/charts": "^0.16.2",
-    "@ubean/content": "0.4.9",
+    "@tanstack/charts": "^0.18.0",
+    "@ubean/content": "0.4.10",
     "@unhead/vue": "^3.4.0",
     "@vueuse/core": "^14.4.0",
     "d3-shape": "^3.2.0",
     "minisearch": "^7.2.0",
     "shiki": "^4.4.3",
-    "ubean": "^0.4.9",
-    "valibot": "^1.4.2",
+    "ubean": "^0.4.10",
+    "valibot": "^1.5.0",
     "vue": "^3.5.42",
     "vue-i18n": "^11.4.10",
     "vue-router": "^5.3.1",
-    "zod": "^4.5.4"
+    "zod": "^4.6.2"
   },
   "devDependencies": {
     "@soybeanjs/ui-uno": "workspace:^",
@@ -46,7 +46,7 @@
     "@types/d3-shape": "^3.2.0",
     "@vitejs/plugin-vue-jsx": "^5.1.6",
     "typescript": "catalog:",
-    "unocss": "^66.10.1",
+    "unocss": "^66.10.2",
     "vite-plus": "catalog:"
   }
 }
