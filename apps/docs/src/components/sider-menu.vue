@@ -6,6 +6,7 @@ import { extractLocaleFromPath } from 'ubean/client';
 import { kebabCase, pascalCase } from '@soybeanjs/headless/shared';
 import type { TreeMenuOptionData } from '@soybeanjs/ui';
 import { menuData, newlyComponentKeys, chartMenuData, chartNewlyComponentKeys } from '~/constants/menus';
+import { getUpgradeGuides } from '~/shared/generated-changelog';
 
 type Emits = {
   select: [];
@@ -95,6 +96,15 @@ const overviewMenus = computed<TreeMenuOptionData[]>(() => [
         label: t('sidebar.cli'),
         value: 'cli',
         to: '/sbean'
+      },
+      {
+        label: t('sidebar.migration'),
+        value: 'migration',
+        children: getUpgradeGuides().map(guide => ({
+          label: guide.version,
+          value: guide.docPath.split('/').pop() ?? guide.version,
+          to: guide.path
+        }))
       }
     ]
   }
@@ -172,7 +182,13 @@ const menus = computed<TreeMenuOptionData[]>(() => {
 });
 
 watchEffect(() => {
-  const [dir, value] = barePath.value.split('/').filter(Boolean);
+  const [dir, value, leaf] = barePath.value.split('/').filter(Boolean);
+
+  if (dir === 'overview' && value === 'migration' && leaf) {
+    selected.value = leaf;
+
+    return;
+  }
 
   if (dir && !value) {
     const valueMap: Record<string, string> = {

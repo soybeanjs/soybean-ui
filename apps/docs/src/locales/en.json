@@ -915,7 +915,13 @@
     "utilities": "Utilities",
     "installation": "Installation",
     "cli": "CLI",
-    "headless": "Headless"
+    "headless": "Headless",
+    "migration": "Upgrade Guides"
+  },
+  "migration": {
+    "kicker": "Upgrade Guide",
+    "title": "Upgrading to {version}",
+    "helper": "This guide lists every breaking change in the release with the matching migration steps and code samples."
   },
   "api": {
     "ui_layer": "UI Layer",
@@ -1021,7 +1027,8 @@
       "full_changelog": "Full changelog",
       "browse_components": "Browse components",
       "view_full_release": "View full release",
-      "collapse_release": "Collapse full release"
+      "collapse_release": "Collapse full release",
+      "upgrade_guide": "Read the upgrade guide"
     },
     "empty": {
       "title": "No release data yet",

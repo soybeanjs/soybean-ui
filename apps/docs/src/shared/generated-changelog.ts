@@ -1,4 +1,5 @@
 import generatedChangelogIndex from '~/generated/changelog/index.json';
+import { resolveContentRoutePath } from './content-route';
 
 export type GeneratedChangelogEntryType =
   | 'breaking'
@@ -45,6 +46,8 @@ export interface GeneratedReleaseChangelogNote {
   type: GeneratedReleaseChangelogNoteType;
   summary: string;
   summaryKey: string;
+  /** Content path of the upgrade guide (e.g. `ui/migration/v0.40.0`), when one exists. */
+  docPath?: string;
 }
 
 export interface GeneratedReleaseChangelogVersion {
@@ -121,4 +124,45 @@ export function getComponentChangelogMeta(component: string): GeneratedChangelog
 
 export function getReleaseChangelogDocument(): GeneratedReleaseChangelogDocument {
   return generatedReleaseDocument;
+}
+
+export interface UpgradeGuideEntry {
+  /** Release version the guide belongs to (e.g. `v0.40.0-beta.1`). */
+  version: string;
+  /** Content path relative to `src/content/{locale}/` (e.g. `ui/migration/v0.40.0`). */
+  docPath: string;
+  /** Public route path of the guide (e.g. `/overview/migration/v0.40.0`). */
+  path: string;
+}
+
+/**
+ * Upgrade guides linked from release notes, newest first. Derived from
+ * `docPath` on generated notes, so the sidebar and the releases page always
+ * agree on which guides exist.
+ */
+export function getUpgradeGuides(): UpgradeGuideEntry[] {
+  const guides = new Map<string, UpgradeGuideEntry>();
+
+  for (const release of generatedReleaseDocument.releases) {
+    for (const note of release.notes) {
+      if (!note.docPath || guides.has(note.docPath)) {
+        continue;
+      }
+
+      guides.set(note.docPath, {
+        version: release.version,
+        docPath: note.docPath,
+        path: resolveContentRoutePath(note.docPath)
+      });
+    }
+  }
+
+  return Array.from(guides.values());
+}
+
+/** The guide whose `docPath` ends with the given version-ish slug, if any. */
+export function findUpgradeGuide(versionOrSlug: string): UpgradeGuideEntry | undefined {
+  return getUpgradeGuides().find(
+    guide => guide.docPath.endsWith(`/${versionOrSlug}`) || guide.version === versionOrSlug
+  );
 }

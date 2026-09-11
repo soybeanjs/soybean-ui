@@ -3,9 +3,11 @@ import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { pascalCase } from '@soybeanjs/headless/shared';
 import { useGeneratedI18n } from '~/composables/use-generated-i18n';
+import { resolveContentRoutePath } from '~/shared/content-route';
 import { getReleaseChangelogDocument } from '~/shared/generated-changelog';
 import type {
   GeneratedChangelogEntryType,
+  GeneratedReleaseChangelogNote,
   GeneratedReleaseChangelogNoteType,
   GeneratedReleaseChangelogVersion
 } from '~/shared/generated-changelog';
@@ -171,6 +173,15 @@ function resolveNoteLabel(type: GeneratedReleaseChangelogNoteType) {
 
 function resolveNoteSummary(summary: string, summaryKey: string) {
   return resolveGeneratedText(summary, summaryKey);
+}
+
+function resolveNoteDocLink(note: GeneratedReleaseChangelogNote) {
+  return note.docPath ? resolveContentRoutePath(note.docPath) : '';
+}
+
+/** The upgrade guide route of a release, when any of its notes links one. */
+function resolveReleaseDocLink(release: GeneratedReleaseChangelogVersion) {
+  return release.notes.map(resolveNoteDocLink).find(Boolean) ?? '';
 }
 
 function isNewComponent(release: GeneratedReleaseChangelogVersion, component: string) {
@@ -736,7 +747,22 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                     icon="lucide:triangle-alert"
                     :title="t('releases_page.breaking_banner.title')"
                     :description="t('releases_page.breaking_banner.desc', { count: release.typeCounts.breaking })"
-                  />
+                  >
+                    <SButtonLink
+                      v-if="resolveReleaseDocLink(release)"
+                      :to="resolveReleaseDocLink(release)"
+                      size="sm"
+                      variant="link"
+                      color="destructive"
+                      class="group -ml-2"
+                    >
+                      {{ t('releases_page.actions.upgrade_guide') }}
+                      <SIcon
+                        icon="lucide:arrow-right"
+                        class="text-sm transition-transform duration-200 group-hover:translate-x-1"
+                      />
+                    </SButtonLink>
+                  </SAlert>
 
                   <div v-if="release.notes.length" class="space-y-3">
                     <SAlert
@@ -747,7 +773,21 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                       :icon="resolveNoteConfig(note.type).icon"
                       :title="resolveNoteLabel(note.type)"
                       :description="resolveNoteSummary(note.summary, note.summaryKey)"
-                    />
+                    >
+                      <SButtonLink
+                        v-if="resolveNoteDocLink(note)"
+                        :to="resolveNoteDocLink(note)"
+                        size="sm"
+                        variant="link"
+                        class="group -ml-2"
+                      >
+                        {{ t('releases_page.actions.upgrade_guide') }}
+                        <SIcon
+                          icon="lucide:arrow-right"
+                          class="text-sm transition-transform duration-200 group-hover:translate-x-1"
+                        />
+                      </SButtonLink>
+                    </SAlert>
                   </div>
 
                   <div class="flex flex-wrap gap-2">

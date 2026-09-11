@@ -25,6 +25,7 @@ Check in reverse: validate first, then delivery surfaces, then exports, then lay
 - Non-English API descriptions synced via `pnpm sui gen api --translate --locale <locale>`, or the untranslated reason is stated.
 - If changelog mapping, version log display, or release page was touched, `pnpm sui gen changelog` has run.
 - Non-English changelog copy synced via `pnpm sui gen changelog --translate --locale <locale>`, or the untranslated reason is stated.
+- For a release with breaking changes: add a `breaking` note with `docPath` in `packages/scripts/src/commands/changelog-notes.ts`, and write the upgrade guide at `apps/docs/src/content/{en,zh}/<docPath>.md` (the generator fails if either locale is missing). The sidebar and releases page pick the guide up automatically from `getUpgradeGuides()`.
 - Component tests cover rendering, state, disabled, and accessibility core scenarios.
 
 ### Exports and generated files
