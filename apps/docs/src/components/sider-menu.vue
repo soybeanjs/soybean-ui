@@ -17,8 +17,6 @@ const emit = defineEmits<Emits>();
 const route = useRoute();
 const { t } = useI18n();
 
-const expanded = ref<string[]>([]);
-
 const selected = ref<string>('');
 
 const componentsOverviewValue = 'components-overview';
@@ -209,12 +207,6 @@ watchEffect(() => {
 
 <template>
   <div class="max-h-full overflow-auto md:border md:border-border/50 md:dark:border-border md:rounded-xl">
-    <STreeMenu
-      v-model:expanded="expanded"
-      :model-value="selected"
-      :items="menus"
-      :indent="4"
-      @update:model-value="emit('select')"
-    />
+    <STreeMenu :model-value="selected" :items="menus" :indent="4" @update:model-value="emit('select')" />
   </div>
 </template>
