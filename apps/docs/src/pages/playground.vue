@@ -147,7 +147,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <STabs v-model="activeView" :items="viewTabs" :enable-indicator="false" shape="rounded" fill="auto">
+  <STabs v-model="activeView" :items="viewTabs" shape="rounded" fill="auto">
     <template #content>
       <SCard
         v-if="activeView === 'playground'"
