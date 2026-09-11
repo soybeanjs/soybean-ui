@@ -135,7 +135,8 @@ const messages: LocaleMessages = {
     cancel: 'Отмена',
     confirm: 'Подтвердить',
     fullscreen: 'Во весь экран',
-    exitFullscreen: 'Выйти из полноэкранного режима'
+    exitFullscreen: 'Выйти из полноэкранного режима',
+    close: 'Закрыть'
   },
   rating: {
     ariaLabel: 'Оценка',

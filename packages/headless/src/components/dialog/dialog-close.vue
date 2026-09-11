@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed, useAttrs } from 'vue';
+import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
 import Button from '../button/button.vue';
 import { useDialogRootContext, useDialogUi } from './context';
@@ -14,9 +16,15 @@ const props = withDefaults(defineProps<DialogCloseProps>(), {
 
 const emit = defineEmits<DialogCloseEmits>();
 
+const attrs = useAttrs();
+
 const cls = useDialogUi('close');
 
 const { onOpenChange } = useDialogRootContext('DialogClose');
+
+const messages = useLocaleMessages();
+
+const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? messages.value.dialog.close);
 
 const onClose = async (event: MouseEvent) => {
   emit('close', event);
@@ -26,7 +34,7 @@ const onClose = async (event: MouseEvent) => {
 </script>
 
 <template>
-  <Button v-bind="props" data-soybean-dialog-close :class="cls" @click="onClose">
+  <Button v-bind="props" data-soybean-dialog-close :aria-label="ariaLabel" :class="cls" @click="onClose">
     <slot>
       <Icon icon="lucide:x" />
     </slot>

@@ -135,7 +135,8 @@ const messages: LocaleMessages = {
     cancel: '取消',
     confirm: '确认',
     fullscreen: '全屏',
-    exitFullscreen: '退出全屏'
+    exitFullscreen: '退出全屏',
+    close: '关闭'
   },
   rating: {
     ariaLabel: '评分',

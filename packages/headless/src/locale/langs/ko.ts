@@ -135,7 +135,8 @@ const messages: LocaleMessages = {
     cancel: '취소',
     confirm: '확인',
     fullscreen: '전체 화면',
-    exitFullscreen: '전체 화면 종료'
+    exitFullscreen: '전체 화면 종료',
+    close: '닫기'
   },
   rating: {
     ariaLabel: '평점',

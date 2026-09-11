@@ -135,7 +135,8 @@ const messages: LocaleMessages = {
     cancel: 'إلغاء',
     confirm: 'تأكيد',
     fullscreen: 'ملء الشاشة',
-    exitFullscreen: 'الخروج من ملء الشاشة'
+    exitFullscreen: 'الخروج من ملء الشاشة',
+    close: 'إغلاق'
   },
   rating: {
     ariaLabel: 'التقييم',
