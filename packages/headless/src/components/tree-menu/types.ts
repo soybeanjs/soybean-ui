@@ -43,7 +43,7 @@ export interface TreeMenuRootProps {
   /**
    * The expand strategy of the tree menu.
    *
-   * - `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus.
+   * - `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus. The collapsible ancestors of the selected menu are expanded on mount and whenever the selected menu changes from outside (e.g. driven by an external route), so it stays visible.
    * - `selected`: only expand the currently selected menu and all its ancestor menus; non-selected menus are collapsed when the selected menu changes.
    *
    * @default 'keep'

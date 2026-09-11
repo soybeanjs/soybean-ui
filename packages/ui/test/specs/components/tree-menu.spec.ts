@@ -471,6 +471,66 @@ describe('STreeMenu', () => {
       wrapper.unmount();
     });
 
+    it('expands the ancestors of the initial selected value under "keep"', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          modelValue: 'security'
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('true');
+      expect(wrapper.text()).toContain('Security');
+
+      wrapper.unmount();
+    });
+
+    it('expands the ancestors when the selected value changes from outside under "keep"', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          modelValue: 'overview'
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('false');
+
+      await wrapper.setProps({ modelValue: 'security' });
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('true');
+      expect(wrapper.emitted('update:expanded')?.at(-1)?.[0]).toEqual(['settings']);
+
+      wrapper.unmount();
+    });
+
+    it('never collapses user-managed branches when the selected value changes under "keep"', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          modelValue: 'profile',
+          defaultExpanded: ['settings']
+        },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      expect(wrapper.emitted('update:expanded')).toBeFalsy();
+
+      // activating a sibling leaf inside the same expanded branch adds nothing
+      await getButtonWithText(wrapper, 'Security').trigger('click');
+      await nextTick();
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toBe('security');
+      expect(wrapper.emitted('update:expanded')).toBeFalsy();
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('true');
+
+      wrapper.unmount();
+    });
+
     it('"active" strategy expands only the active menu and its ancestors on mount', async () => {
       const wrapper = mount(STreeMenu, {
         props: {

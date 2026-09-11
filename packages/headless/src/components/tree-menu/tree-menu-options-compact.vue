@@ -58,14 +58,41 @@ const selectedExpanded = computed(() => {
   return getActiveExpandValues(modelValue.value, items.value);
 });
 
+// Expansion sync --------------------------------------------------------------
+//
+// `selected` owns the whole expanded set: it is replaced by the selected chain
+// whenever the selection, the items, or the strategy changes. `keep` only
+// guarantees visibility: the collapsible ancestors of the selected value are
+// merged in additively — on mount and whenever the selection changes from
+// outside (route-driven navigation). User-managed branches are never
+// collapsed, and activating a visible item is a no-op because its ancestors
+// are already expanded.
+
 watch(
-  [collapsed, expandStrategy, selectedExpanded],
+  [collapsed, expandStrategy, selectedExpanded, modelValue],
   () => {
-    if (expandStrategy.value !== 'selected' || collapsed.value) {
+    if (collapsed.value) {
       return;
     }
 
-    onExpandedChange(selectedExpanded.value);
+    if (expandStrategy.value === 'selected') {
+      onExpandedChange(selectedExpanded.value);
+
+      return;
+    }
+
+    const value = modelValue.value;
+
+    if (!value) {
+      return;
+    }
+
+    const ancestors = getActiveExpandValues(value, items.value).filter(item => item !== value);
+    const missing = ancestors.filter(item => !expanded.value.includes(item));
+
+    if (missing.length) {
+      onExpandedChange([...expanded.value, ...missing]);
+    }
   },
   { immediate: true }
 );
