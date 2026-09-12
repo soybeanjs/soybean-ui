@@ -131,5 +131,26 @@ describe('SColorPicker', () => {
       expect(thumb?.className).toContain('data-test-area-thumb');
       wrapper.unmount();
     });
+
+    it('styles the format segment indicator body', async () => {
+      const wrapper = mount(SColorPicker, {
+        props: {
+          modelValue: '#7c3aed',
+          ui: { segmentIndicatorContent: 'data-test-segment-indicator-content' }
+        },
+        attachTo: document.body
+      });
+
+      await openPicker(wrapper);
+      await nextTick();
+
+      const indicator = document.body.querySelector('[data-soybean-segment-indicator]');
+      const indicatorContent = indicator?.firstElementChild;
+
+      expect(indicator).toBeTruthy();
+      expect(indicatorContent?.className).toContain('bg-background');
+      expect(indicatorContent?.className).toContain('data-test-segment-indicator-content');
+      wrapper.unmount();
+    });
   });
 });

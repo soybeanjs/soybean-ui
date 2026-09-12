@@ -5,7 +5,7 @@ import { provideColorSliderUi } from '../color-slider/context';
 import { provideColorSwatchPickerUi } from '../color-swatch-picker/context';
 import { provideColorSwatchUi } from '../color-swatch/context';
 import { providePopoverUi } from '../popover/context';
-import { provideTabsUi } from '../tabs/context';
+import { provideSegmentUi } from '../segment/context';
 import { useContext, useUiContext } from '../../composables';
 import type { ColorAreaUi } from '../color-area/types';
 import type { ColorFieldUi } from '../color-field/types';
@@ -13,7 +13,7 @@ import type { ColorSliderUi } from '../color-slider/types';
 import type { ColorSwatchPickerUi } from '../color-swatch-picker/types';
 import type { ColorSwatchUi } from '../color-swatch/types';
 import type { PopoverUi } from '../popover/types';
-import type { TabsUi } from '../tabs/types';
+import type { SegmentUi } from '../segment/types';
 import type { ColorPickerRootContext, ColorPickerUi, ColorPickerUiSlot } from './types';
 
 export const [provideColorPickerRootContext, useColorPickerRootContext] =
@@ -71,7 +71,7 @@ function toColorSwatchPickerUi(ui: Partial<ColorPickerUi>): Partial<ColorSwatchP
   };
 }
 
-function toSegmentUi(ui: Partial<ColorPickerUi>): Partial<TabsUi> {
+function toSegmentUi(ui: Partial<ColorPickerUi>): Partial<SegmentUi> {
   return {
     root: ui.segmentRoot,
     list: ui.segmentList,
@@ -88,7 +88,7 @@ export const [provideColorPickerUi, useColorPickerUi] = useUiContext<ColorPicker
   provideColorSliderUi(computed(() => toColorSliderUi(ui.value)));
   provideColorSwatchUi(computed(() => toColorSwatchUi(ui.value)));
   provideColorSwatchPickerUi(computed(() => toColorSwatchPickerUi(ui.value)));
-  provideTabsUi(computed(() => toSegmentUi(ui.value)));
+  provideSegmentUi(computed(() => toSegmentUi(ui.value)));
 
   return ui;
 });
