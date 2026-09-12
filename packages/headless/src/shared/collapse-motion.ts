@@ -1,5 +1,6 @@
 import { nextTick } from 'vue';
 import type { TransitionProps } from 'vue';
+import { prefersReducedMotion } from './dom';
 
 /**
  * Options for the collapse motion transition.
@@ -61,13 +62,14 @@ function cleanup(el: HTMLElement) {
  *
  * The hooks drive everything through inline styles, so no companion CSS is
  * required. Disabled in test environments: happy-dom has no CSS transition
- * support, and Vue would then stall waiting for `transitionend`.
+ * support, and Vue would then stall waiting for `transitionend`. Also
+ * disabled when the user prefers reduced motion.
  *
  * @param options Duration/easing/name overrides.
  * @returns Props to spread onto a `<Transition>`.
  */
 export function collapseMotion(options: CollapseMotionOptions = {}): TransitionProps {
-  if (import.meta.env.MODE === 'test') return {};
+  if (import.meta.env.MODE === 'test' || prefersReducedMotion()) return {};
 
   const {
     name = DEFAULT_NAME,
