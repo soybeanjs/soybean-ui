@@ -98,13 +98,13 @@ node tools/vbean-codemod/migrate.mjs . --profile=repo --write
 
 ## 覆盖不到的部分（脚本会打印清单）
 
-1. **目录改名**：`git mv packages/headless packages/aria`、`git mv packages/sbean packages/vbean`。
+1. **目录改名**：`git mv packages/headless packages/aria`（`sbean` 的目录已由 v0.50.0 Phase A 迁移为 `packages/cli`，此处只需改包名，不再动目录）。
 2. **lockfile**：删除后重装。
 3. **代码生成物**：`pnpm sui gen catalog aria`、`gen api`、`gen changelog` 全量重跑。
 4. **`packages/scripts/src/commands/catalog.ts`**：`CatalogTarget = 'headless' | 'ui'` 与 `srcDir` 需手改（类型层面，不是字符串替换）。
 5. **DNS / 301 / npm org / 徽章**：host 字符串已由 `--new-domain` 覆盖，但 DNS 解析、旧域名**路径保持型** 301（`/r/*`、`/schema/*`、`/llms*.txt` 必须逐路径保留，跳首页会让存量 CLI 直接坏掉）、npm org 改名、README 徽章仍需人工。
 6. **`sbean.json` 文件改名**：脚本只改内容引用，不改文件名。
-7. **生成物 diff 是表象**：`apps/docs/src/generated/**`、`apps/docs/public/r/**`、`packages/sbean/registry.json` 在重跑 `pnpm sui gen` 后会被覆盖，不必逐行审阅。
+7. **生成物 diff 是表象**：`apps/docs/src/generated/**`、`apps/docs/public/r/**`、`packages/cli/registry.json` 在重跑 `pnpm sui gen` 后会被覆盖，不必逐行审阅。
 
 ## 测试
 

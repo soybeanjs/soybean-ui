@@ -271,7 +271,7 @@ flowchart LR
   SUI --> API[Generated API JSON and locale templates]
   SUI --> Changelog[Generated changelog JSON and locale templates]
   SUI --> Skills[Publishable agent skills]
-  Registry["packages/sbean/registry.json"] --> SbeanBuild["sbean build"]
+  Registry["packages/cli/registry.json"] --> SbeanBuild["sbean build"]
   SbeanBuild --> RegistrySite["apps/docs/public/r"]
   API --> Docs
   Changelog --> Docs

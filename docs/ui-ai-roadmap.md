@@ -411,7 +411,7 @@ type MessagePart =
 | 根构建           | `package.json` 删除 `build:ui-x` 及 build 链中的步骤                                                                                             |
 | docs 应用        | 删除 `pages/ui-x/`、`examples/ui-x/`、`content/{en,zh}/ui-x/`、`generated/api/ui-x/`                                                             |
 | docs 接线        | menus 分组、header-nav、sider-menu、layouts、component-api、generated-api 表、content-route、llms.ts、vite.config、`apps/docs/package.json` 依赖 |
-| 生成数据         | 重跑 `sui gen api` / `sui gen skills`；registry 删除 ui-x 包与 items（`packages/sbean/registry.json` 与 `apps/docs/public/r/registry.json`）     |
+| 生成数据         | 重跑 `sui gen api` / `sui gen skills`；registry 删除 ui-x 包与 items（`packages/cli/registry.json` 与 `apps/docs/public/r/registry.json`）       |
 | 文档             | 删除 `docs/ui-x-roadmap.md`、`docs/ecosystem/ui-x.md`；更新 architecture/ecosystem/GOVERNANCE/AGENTS 等现行文档；ADR-0001 标注废止               |
 | playground       | 移除 ui-x 分区与 i18n 文案                                                                                                                       |
 | 锁文件           | `pnpm install` 更新 lock（markstream-vue 随 ui-x 移除，M3 重新加在 ui 包）                                                                       |

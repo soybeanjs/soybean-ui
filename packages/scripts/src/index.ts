@@ -204,7 +204,7 @@ async function runGen(args: string[]): Promise<void> {
 
   if (object === 'schema') {
     // ADR-008 — emits valibot→JSON-Schema into the docs site's public/schema/.
-    const { generateSchemaData } = await import('../../sbean/scripts/schema');
+    const { generateSchemaData } = await import('../../cli/scripts/schema');
 
     await generateSchemaData('apps/docs/public/schema');
     await formatPaths(['apps/docs/public/schema/']);

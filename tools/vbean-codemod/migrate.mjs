@@ -197,7 +197,7 @@ const DOMAIN_MANUAL_STEPS = [
 
 const REPO_MANUAL_STEPS = [
   'git mv packages/headless packages/aria',
-  'git mv packages/sbean packages/vbean（并改 package.json 的 bin.name）',
+  'packages/cli（原 sbean 目录，v0.50.0 Phase A 已迁移）：改 package.json 的 name → @vbean/cli 与 bin.name → vbean',
   'pnpm sui gen catalog aria && pnpm sui gen catalog ui',
   'pnpm sui gen api && pnpm sui gen api --translate --locale zh',
   'pnpm sui gen changelog && pnpm sui gen changelog --translate',

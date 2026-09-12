@@ -2,7 +2,7 @@
  * Syncs the @soybeanjs/* version constant used by project templates.
  *
  * Reads the current version from the root `package.json` and writes it to
- * `packages/sbean/src/templates/versions.ts`. This ensures that newly
+ * `packages/cli/src/templates/versions.ts`. This ensures that newly
  * scaffolded projects always reference the latest published version of
  * internal workspace packages.
  *
@@ -42,9 +42,9 @@ export async function runSyncTemplateVersions(): Promise<void> {
 export const SOYBEAN_VERSION = '${version}';
 `;
 
-  const versionsPath = path.join(rootDir, 'packages/sbean/src/templates/versions.ts');
+  const versionsPath = path.join(rootDir, 'packages/cli/src/templates/versions.ts');
   fs.writeFileSync(versionsPath, content, 'utf-8');
 
   console.log(`✔ Synced template versions to ${version}`);
-  console.log(`  Updated: packages/sbean/src/templates/versions.ts`);
+  console.log(`  Updated: packages/cli/src/templates/versions.ts`);
 }

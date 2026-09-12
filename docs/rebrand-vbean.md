@@ -137,16 +137,16 @@
 
 各包源码规模（`ts`/`vue`，排除 `node_modules`/`dist`/`generated`）：
 
-| 路径                | 文件数 | 说明                                            |
-| ------------------- | ------ | ----------------------------------------------- |
-| `packages/headless` | 1,022  | → `packages/aria`，改名后回归量最大             |
-| `apps/docs/src`     | 586    | 含 391 个 md 文档与中英双语内容                 |
-| `packages/ui`       | 565    | 样式层，import 面最广                           |
-| `packages/sbean`    | 59     | → `vbean` CLI，含 registry / templates          |
-| `apps/nuxt`         | 27     | 集成 fixture，需验证 Nuxt 模块 configKey        |
-| `packages/scripts`  | 26     | `sui` 生成器，`catalog.ts` 有 `headless` 硬编码 |
-| `packages/theme`    | 20     | 零 `--soybean-*`，改名几乎无风险                |
-| `packages/unocss`   | 11     | 含 16 处 `--soybean-*`                          |
+| 路径                | 文件数 | 说明                                                                                 |
+| ------------------- | ------ | ------------------------------------------------------------------------------------ |
+| `packages/headless` | 1,022  | → `packages/aria`，改名后回归量最大                                                  |
+| `apps/docs/src`     | 586    | 含 391 个 md 文档与中英双语内容                                                      |
+| `packages/ui`       | 565    | 样式层，import 面最广                                                                |
+| `packages/cli`      | 59     | 原 `sbean` 目录（v0.50.0 Phase A 已迁移）→ `@vbean/cli` CLI，含 registry / templates |
+| `apps/nuxt`         | 27     | 集成 fixture，需验证 Nuxt 模块 configKey                                             |
+| `packages/scripts`  | 26     | `sui` 生成器，`catalog.ts` 有 `headless` 硬编码                                      |
+| `packages/theme`    | 20     | 零 `--soybean-*`，改名几乎无风险                                                     |
+| `packages/unocss`   | 11     | 含 16 处 `--soybean-*`                                                               |
 
 ## 4. 平滑过渡策略
 
@@ -211,7 +211,7 @@ T0+6m ─ npm deprecate @soybeanjs/ui @soybeanjs/headless ... ─────┘
 2. 各 `package.json`：`name`、`description`、`repository`、`homepage`、`bugs`、`exports`/`publishConfig` 同步；workspace 依赖 `workspace:^` 自动跟随。
 3. 跑 codemod repo profile（`node tools/vbean-codemod/migrate.mjs . --profile=repo --write`）完成 A/B 层字符串替换。
 4. `packages/scripts`：`catalog.ts` 的 `CatalogTarget = 'headless' | 'ui'` → `'aria' | 'ui'`，`srcDir` 改 `packages/aria/src`；`index.ts` 帮助文本同步。
-5. `packages/sbean` → `vbean`：包名、`bin.vbean`、`REGISTRY_URL`/`DOCS_URL`/`GITHUB_SOURCE_URL`、`DEFAULT_REGISTRY_NAMESPACE = '@vbean'`、配置文件 `sbean.json` → `vbean.json`（schema 文件名跟随）。
+5. `packages/cli`（原 `sbean`，目录已在 v0.50.0 Phase A 就位）：包名 `sbean` → `@vbean/cli`、`bin.vbean`、`REGISTRY_URL`/`DOCS_URL`/`GITHUB_SOURCE_URL`、`DEFAULT_REGISTRY_NAMESPACE = '@vbean'`、配置文件 `sbean.json` → `vbean.json`（schema 文件名跟随）。
 6. Nuxt 模块：`meta.name` / `configKey` 从 `@soybeanjs/headless`、`@soybeanjs/ui` 改为 `@vbean/aria`、`@vbean/ui`（**这是用户 nuxt.config 里的键，必须写进升级指南**）。
 7. resolver 的 `from` 字符串同步。
 8. docs：`content/{en,zh}/headless` → `aria`；`constants/menus.ts` 分组值；locales 中英双语品牌词；`apps/nuxt` fixture。
@@ -356,7 +356,7 @@ node tools/vbean-codemod/migrate.mjs . --profile=repo --write --new-domain=vbean
 | 位置                      | 现值                                          | 规模与说明                                                        |
 | ------------------------- | --------------------------------------------- | ----------------------------------------------------------------- |
 | docs canonical/OG/sitemap | `ui.soybeanjs.cn`                             | 258 处引用（含生成物）                                            |
-| registry base             | `https://ui.soybeanjs.cn/r`                   | `packages/sbean` 的 `REGISTRY_URL` / `DOCS_URL`                   |
+| registry base             | `https://ui.soybeanjs.cn/r`                   | `packages/cli`（原 `sbean`）的 `REGISTRY_URL` / `DOCS_URL`        |
 | CDN 资产                  | `r2.soybeanjs.tech/soybeanjs/*`               | 10 处                                                             |
 | GitHub 仓库               | `github.com/soybeanjs/soybean-ui`             | 2,845 处，其中 2,766 在 `generated/changelog`（会重生成，可忽略） |
 | LLM 文档路由              | `/llms.txt`、`/llms*.txt`、`/components/*.md` | skills 内 193 处（生成物）                                        |

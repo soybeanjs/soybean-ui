@@ -5,7 +5,7 @@
 
 ## 1. Executive summary
 
-`sbean` (`packages/sbean`, v0.31.0) is the SoybeanUI ecosystem's counterpart to `shadcn-vue`'s `packages/cli`. Both are copy-paste component CLIs built on `commander`, with a registry-fetch + file-write core. sbean is **UnoCSS-first, Vue-ecosystem-bound, valibot-validated**; shadcn-vue is **Tailwind-first, multi-framework, zod-validated**.
+`sbean` (`packages/cli`, v0.31.0) is the SoybeanUI ecosystem's counterpart to `shadcn-vue`'s `packages/cli`. Both are copy-paste component CLIs built on `commander`, with a registry-fetch + file-write core. sbean is **UnoCSS-first, Vue-ecosystem-bound, valibot-validated**; shadcn-vue is **Tailwind-first, multi-framework, zod-validated**.
 
 **Headline findings:**
 
@@ -26,7 +26,7 @@
 
 |            | sbean                                                       | shadcn-vue                                    |
 | ---------- | ----------------------------------------------------------- | --------------------------------------------- |
-| Path       | `packages/sbean/`                                           | `packages/cli/` (in `shadcn-vue` repo)        |
+| Path       | `packages/cli/` (in `soybean-ui` repo)                      | `packages/cli/` (in `shadcn-vue` repo)        |
 | Version    | 0.31.0                                                      | (per `package.json`)                          |
 | Stack      | UnoCSS + `@soybeanjs/cva` + `@soybeanjs/headless` + valibot | Tailwind + zod + `ts-morph` + `vue-metamorph` |
 | Frameworks | Vue (Vite)                                                  | Vue (Vite/Nuxt/Laravel/Astro)                 |
@@ -249,11 +249,11 @@ To avoid framing sbean as merely "behind," these capabilities are **sbean advant
 
 ## 9. References
 
-- sbean schema: [packages/sbean/src/registry/schema.ts](../src/registry/schema.ts)
-- sbean resolver: [packages/sbean/src/utils/add-components.ts](../src/utils/add-components.ts)
-- sbean MCP: [packages/sbean/src/mcp/index.ts](../src/mcp/index.ts)
-- sbean templates: [packages/sbean/src/templates/templates.ts](../src/templates/templates.ts)
-- sbean registry.json: [packages/sbean/registry.json](../registry.json)
+- sbean schema: [packages/cli/src/registry/schema.ts](../src/registry/schema.ts)
+- sbean resolver: [packages/cli/src/utils/add-components.ts](../src/utils/add-components.ts)
+- sbean MCP: [packages/cli/src/mcp/index.ts](../src/mcp/index.ts)
+- sbean templates: [packages/cli/src/templates/templates.ts](../src/templates/templates.ts)
+- sbean registry.json: [packages/cli/registry.json](../registry.json)
 - shadcn-vue schema: `packages/cli/src/registry/schema.ts`
 - shadcn-vue resolver: `packages/cli/src/registry/resolver.ts`
 - shadcn-vue MCP: `packages/cli/src/mcp/index.ts`

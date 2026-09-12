@@ -7,7 +7,7 @@
  *
  * Usage:
  *   pnpm --filter sbean build:schema
- *   tsx packages/sbean/scripts/schema.ts --output apps/docs/public/schema
+ *   tsx packages/cli/scripts/schema.ts --output apps/docs/public/schema
  */
 
 import { mkdir, writeFile } from 'node:fs/promises';

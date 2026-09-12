@@ -2,7 +2,7 @@
   "name": "sbean",
   "version": "0.40.0-beta.3",
   "description": "CLI tool for adding SoybeanUI components to your Vue apps — copy-paste, like shadcn/ui.",
-  "homepage": "https://github.com/soybeanjs/soybean-ui/tree/main/packages/sbean",
+  "homepage": "https://github.com/soybeanjs/soybean-ui/tree/main/packages/cli",
   "bugs": {
     "url": "https://github.com/soybeanjs/soybean-ui/issues"
   },
@@ -15,7 +15,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/soybeanjs/soybean-ui.git",
-    "directory": "packages/sbean"
+    "directory": "packages/cli"
   },
   "bin": {
     "sbean": "./src/bin.js"
@@ -72,7 +72,7 @@
   },
   "scripts": {
     "build": "vp pack",
-    "build:registry": "tsx src/index.ts build packages/sbean/registry.json -o ../../apps/docs/public/r --cwd ../..",
+    "build:registry": "tsx src/index.ts build packages/cli/registry.json -o ../../apps/docs/public/r --cwd ../..",
     "build:schema": "tsx scripts/schema.ts",
     "clean": "rimraf dist",
     "dev": "tsx src/index.ts",

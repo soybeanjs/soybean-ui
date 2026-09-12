@@ -1,14 +1,14 @@
 # sbean — 源码分发 CLI 综合开发指南
 
-> 定位：`@soybeanjs/sbean`（`packages/sbean`）CLI 的开发指南——命令面、模块结构、完成度与待办。给 sbean 贡献者、生态开发者与 AI Agent 用。
+> 定位：`@soybeanjs/sbean`（`packages/cli`）CLI 的开发指南——命令面、模块结构、完成度与待办。给 sbean 贡献者、生态开发者与 AI Agent 用。
 > 状态：🔵 进行中（核心功能已完成，剩余项见 §6）
 > 基线：2026-09-06 · 版本：0.31.0
 >
 > 技术深度文档（ADR / 术语 / shadcn-vue 对标）已在包内独立维护，本文只做索引与摘要：
 >
-> - 决策记录：[packages/sbean/docs/adr.md](../../packages/sbean/docs/adr.md)（ADR-001~011）
-> - 术语表：[packages/sbean/docs/GLOSSARY.md](../../packages/sbean/docs/GLOSSARY.md)
-> - 对标分析：[packages/sbean/docs/comparison-with-shadcn-vue.md](../../packages/sbean/docs/comparison-with-shadcn-vue.md)
+> - 决策记录：[packages/cli/docs/adr.md](../../packages/cli/docs/adr.md)（ADR-001~011）
+> - 术语表：[packages/cli/docs/GLOSSARY.md](../../packages/cli/docs/GLOSSARY.md)
+> - 对标分析：[packages/cli/docs/comparison-with-shadcn-vue.md](../../packages/cli/docs/comparison-with-shadcn-vue.md)
 
 ---
 
@@ -53,7 +53,7 @@ sbean 是 SoybeanUI 生态的**源码分发（copy-paste）CLI**，对标 shadcn
 ## 3. 模块结构
 
 ```
-packages/sbean/src/
+packages/cli/src/
 ├── index.ts                    # CLI 入口（commander 注册 15 命令）
 ├── bin.js                      # tsx 加载入口
 ├── commands/                   # 15 个命令实现
@@ -102,8 +102,8 @@ packages/sbean/src/
 | Registry 类型完善（Meta/依赖/文件依赖验证）        | P1     |  ✅ 完成  | `registry/schema.ts`（15 类型 + `validateRegistryDependencies`） |
 | Transformer 集成                                   | P2     |  ✅ 完成  | `utils/updaters/update-files.ts`                                 |
 | Template 命令                                      | P2     |  ✅ 完成  | `commands/template.ts`（模板收敛为 2 种，见 §5）                 |
-| 文档更新                                           | P2     |  ⚠️ 部分  | README 仍精简；权威技术文档已沉淀到 `packages/sbean/docs/`       |
-| 测试补齐                                           | P3     |  ✅ 完成  | `packages/sbean/test/` 15 个 spec                                |
+| 文档更新                                           | P2     |  ⚠️ 部分  | README 仍精简；权威技术文档已沉淀到 `packages/cli/docs/`         |
+| 测试补齐                                           | P3     |  ✅ 完成  | `packages/cli/test/` 15 个 spec                                  |
 | 性能优化                                           | P3     | ⚠️ 未专项 | —                                                                |
 
 **结论**：旧指南的 P1/P2 待办已全部落地；P3 测试已补齐。旧指南整体过时，已被本文 + 包内 docs 取代。
@@ -170,11 +170,11 @@ sbean mcp init --client claude    # 写 MCP 客户端配置
 
 ## 8. 相关文档索引
 
-| 文档                                                                                                         | 内容                                       |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------ |
-| [packages/sbean/docs/adr.md](../../packages/sbean/docs/adr.md)                                               | ADR-001~011 决策记录（状态与实现逐条对应） |
-| [packages/sbean/docs/GLOSSARY.md](../../packages/sbean/docs/GLOSSARY.md)                                     | 术语表（附 file:line）                     |
-| [packages/sbean/docs/comparison-with-shadcn-vue.md](../../packages/sbean/docs/comparison-with-shadcn-vue.md) | vs shadcn-vue 能力对标与审计               |
-| [packages/sbean/README.md](../../packages/sbean/README.md)                                                   | 用户侧入门 README（精简）                  |
-| [roadmap.md §配套基础设施](../roadmap.md)                                                                    | sbean 在整体路线中的定位                   |
-| [optimize.md §3.4](../optimize.md)                                                                           | sbean 模块边界评估与依赖声明改进项         |
+| 文档                                                                                                     | 内容                                       |
+| -------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| [packages/cli/docs/adr.md](../../packages/cli/docs/adr.md)                                               | ADR-001~011 决策记录（状态与实现逐条对应） |
+| [packages/cli/docs/GLOSSARY.md](../../packages/cli/docs/GLOSSARY.md)                                     | 术语表（附 file:line）                     |
+| [packages/cli/docs/comparison-with-shadcn-vue.md](../../packages/cli/docs/comparison-with-shadcn-vue.md) | vs shadcn-vue 能力对标与审计               |
+| [packages/cli/README.md](../../packages/cli/README.md)                                                   | 用户侧入门 README（精简）                  |
+| [roadmap.md §配套基础设施](../roadmap.md)                                                                | sbean 在整体路线中的定位                   |
+| [optimize.md §3.4](../optimize.md)                                                                       | sbean 模块边界评估与依赖声明改进项         |

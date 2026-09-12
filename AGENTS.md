@@ -49,7 +49,7 @@ Other publishable modules:
 
 - **@soybeanjs/theme** (`packages/theme/`): theme engine — core tokens, deterministic derivation, light/dark levels, SSR/storage helpers.
 - **@soybeanjs/ui-uno** (`packages/unocss/`): UnoCSS preset over `@soybeanjs/theme`.
-- **sbean** (`packages/sbean/`): source-distribution CLI, registry, schemas, templates, and MCP.
+- **sbean** (`packages/cli/`): source-distribution CLI, registry, schemas, templates, and MCP.
 - **@soybeanjs/ui-skills** (`skills/`): generated consumer-facing agent skills.
 
 > There is **no** `@soybeanjs/admin` or `@soybeanjs/chart` package, and no standalone AI package: AI/chat components ship inside headless + ui under the standard `S` prefix — the component plan lives in [docs/ui-ai-roadmap.md](docs/ui-ai-roadmap.md). The former admin direction returns as an in-core **shell domain** (headless `src/shell/` + ui composites such as `SLayoutShell`/`SPageHeader`), planned in [docs/ui-shell-roadmap.md](docs/ui-shell-roadmap.md). Charts are not part of the core library: the docs site shows shadcn-styled demos built directly on [TanStack Charts](https://tanstack.com/charts) (see `apps/docs/src/examples/chart/` + the docs-local `apps/docs/src/components/chart/` theming shell).
@@ -72,7 +72,7 @@ Private packages and applications:
 | Theme/sizing             | `packages/ui/src/theme/`                                                  | `ThemeColor` (8), `ThemeSize` (xs…2xl)                                                    |
 | Theme CSS generation     | `packages/theme/`                                                         | `createTheme(options)` (returns CSS string)                                               |
 | UnoCSS adapter           | `packages/unocss/`                                                        | `presetUiUnocss()` / `presetSbean()`                                                      |
-| Source-distribution CLI  | `packages/sbean/`                                                         | commands → registry/schema/templates/MCP                                                  |
+| Source-distribution CLI  | `packages/cli/`                                                           | commands → registry/schema/templates/MCP                                                  |
 | Repo-service CLI (`sui`) | `packages/scripts/`                                                       | `gen catalog/api/changelog/locale/schema/skills`, `stub`, `reorder-imports`               |
 | Utility functions        | `packages/headless/src/shared/`                                           | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                               |
 | Global types             | `packages/headless/src/types/`                                            | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                       |

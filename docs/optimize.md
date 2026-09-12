@@ -116,7 +116,7 @@ utils 分开，并有 16 个测试文件及 ADR。
 
 - `pnpm-workspace.yaml` 设置了 `shamefullyHoist: true`。
 - `packages/ui` 的运行时代码直接导入 `@vueuse/core`，但 UI manifest 未声明。
-- `packages/sbean/src/registry/config.ts` 运行时导入
+- `packages/cli/src/registry/config.ts` 运行时导入
   `@soybeanjs/theme`，但 sbean manifest 未声明。
 - `apps/docs` 直接使用 `@soybeanjs/colord`、
   `@vueuse/core`、`unocss`、`unocss-preset-animations`、
