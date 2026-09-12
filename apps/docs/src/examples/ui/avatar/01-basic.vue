@@ -3,8 +3,5 @@ import { SAvatar } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SAvatar
-    src="https://soybeanjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/logo.png?v=202605281124"
-    fallback-label="S"
-  />
+  <SAvatar src="https://r2.soybeanjs.tech/soybeanjs/logo-soybean-ui.svg?v=202608192144" fallback-label="S" />
 </template>
