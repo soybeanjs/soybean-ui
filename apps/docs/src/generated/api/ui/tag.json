@@ -163,11 +163,11 @@
             "name": "open",
             "type": "boolean",
             "required": false,
-            "description": "Whether the component is open.",
+            "description": "Whether the component is open. Controlled when provided.",
             "descriptionKey": "api.generated.packages_ui_src_components_tag_types.tagprops.members.open",
             "default": null,
-            "inheritedFrom": "_TagProps.open",
-            "sourcePath": "packages/headless/src/components/tag/types.ts",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tag/types.ts",
             "referencedTypes": []
           }
         ],
@@ -180,8 +180,8 @@
         "type": "TypeAlias TagEmits",
         "resolvedType": "{ \"update:open\": [open: boolean] }",
         "description": "Events for the Tag component.",
-        "descriptionKey": "api.generated.packages_headless_src_components_tag_types.tagemits.emits",
-        "sourcePath": "packages/headless/src/components/tag/types.ts",
+        "descriptionKey": "api.generated.packages_ui_src_components_tag_types.tagemits.emits",
+        "sourcePath": "packages/ui/src/components/tag/types.ts",
         "typeParameters": [],
         "members": [],
         "callables": [
@@ -191,8 +191,8 @@
             "parameters": "open: boolean",
             "required": true,
             "description": "Emitted when the open state changes.",
-            "descriptionKey": "api.generated.packages_headless_src_components_tag_types.tagemits.callables.update_open",
-            "sourcePath": "packages/headless/src/components/tag/types.ts",
+            "descriptionKey": "api.generated.packages_ui_src_components_tag_types.tagemits.callables.update_open",
+            "sourcePath": "packages/ui/src/components/tag/types.ts",
             "referencedTypes": []
           }
         ],

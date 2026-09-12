@@ -8900,14 +8900,6 @@
         "tabsui": "标签组件的 UI 类重载。",
         "type": ""
       },
-      "packages_headless_src_components_tag_types": {
-        "tagemits": {
-          "callables": {
-            "update_open": "当打开状态发生变化时发出。"
-          },
-          "emits": "标签组件的事件"
-        }
-      },
       "packages_headless_src_components_tags_input_types": {
         "tagsinputclearprops": {
           "members": {
@@ -14253,13 +14245,19 @@
         }
       },
       "packages_ui_src_components_tag_types": {
+        "tagemits": {
+          "callables": {
+            "update_open": ""
+          },
+          "emits": ""
+        },
         "tagprops": {
           "members": {
             "class": "应用于根元素的额外类名。",
             "closable": "该组件是否可以闭合。",
             "color": "组件的主题颜色。",
             "content": "内容。",
-            "open": "该组件是否为开源。",
+            "open": "",
             "shape": "组件的结构。",
             "size": "组件的视觉尺寸。",
             "variant": "该组件的视觉变体。"
@@ -14766,7 +14764,7 @@
         "treevirtualizerprops": {
           "members": {
             "allowparentselect": "当值为 `true` 时，可选中父级。",
-            "animated": "当值为 `true` 时，在展开/折叠时启用平滑的高度过渡。将\nvirtualizer 设置为动态模式，并通过 auto-animate 对项目布局进行动画处理。",
+            "animated": "",
             "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖",
             "aschild": "将默认渲染元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
             "bubbleselect": "当值为 `true` 时，选择子节点将更新父节点的状态。",
