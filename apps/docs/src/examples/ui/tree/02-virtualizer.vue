@@ -66,7 +66,7 @@ const animated = ref(true);
           :style="{ 'padding-left': `${item.level - 0.5}rem` }"
           :value="item.value"
           :level="item.level"
-          class="flex items-center py-1 px-2 my-0.5 rounded outline-none focus:ring-primary/50 focus:ring-2 data-[selected]:bg-primary/15"
+          class="flex items-center py-1 px-2 rounded outline-none focus:ring-primary/50 focus:ring-2 data-[selected]:bg-primary/15"
         >
           <template v-if="item.hasChildren">
             <SIcon v-if="!isExpanded" icon="lucide:folder" />
