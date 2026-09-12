@@ -3,7 +3,6 @@ import { useForwardListeners } from '@soybeanjs/headless/composables';
 import { TreeRoot } from '@soybeanjs/headless/tree';
 import type { TreeRootProps, TreeItemData, TreeRootEmits } from '@soybeanjs/headless/tree';
 import type { MaybeArray } from '@soybeanjs/headless/types';
-import { vAutoAnimate } from '@formkit/auto-animate';
 
 defineOptions({
   name: 'STree'
@@ -19,7 +18,7 @@ const listeners = useForwardListeners(emit);
 </script>
 
 <template>
-  <TreeRoot v-slot="{ flattenItems, modelValue, expanded }" v-auto-animate v-bind="props" v-on="listeners">
+  <TreeRoot v-slot="{ flattenItems, modelValue, expanded }" v-bind="props" v-on="listeners">
     <slot name="top" />
     <slot
       v-for="item in flattenItems"

@@ -3,7 +3,6 @@ import { computed } from 'vue';
 import type { FlattenedItem, TreeItemData } from '@soybeanjs/headless/tree';
 import type { MaybeArray } from '@soybeanjs/headless/types';
 import type { VirtualItem } from '@tanstack/vue-virtual';
-import { vAutoAnimate } from '@formkit/auto-animate';
 
 defineOptions({
   name: 'STreeVirtualizerAnimated'
@@ -25,7 +24,7 @@ interface Props {
 const props = defineProps<Props>();
 
 // This component is rendered inside the virtualizer scroll container.
-// Visible items are rendered with "document flow + top and bottom padding": the padding provides scroll height (virtualization is retained, only visible items are rendered), and items are in normal document flow, so auto-animate can perform FLIP position transition for expand/collapse.
+// Visible items are rendered with "document flow + top and bottom padding": the padding provides scroll height (virtualization is retained, only visible items are rendered), and items stay in normal document flow so dynamic measurement keeps positions stable across expand/collapse.
 const topSpacer = computed(() => props.virtualItems[0]?.start ?? 0);
 
 const bottomSpacer = computed(() => {
@@ -40,10 +39,7 @@ function itemKey(index: number) {
 </script>
 
 <template>
-  <div
-    v-auto-animate
-    :style="{ position: 'relative', paddingTop: `${topSpacer}px`, paddingBottom: `${bottomSpacer}px` }"
-  >
+  <div :style="{ position: 'relative', paddingTop: `${topSpacer}px`, paddingBottom: `${bottomSpacer}px` }">
     <slot
       v-for="item in virtualItems"
       :key="itemKey(item.index)"
