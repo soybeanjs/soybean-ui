@@ -26,9 +26,16 @@ export interface CollapseMotionOptions {
   easing?: string;
 }
 
+/**
+ * Shared defaults for every collapse-motion variant (Transition-driven and
+ * content-observed), so all height animations stay visually in sync.
+ */
+export const COLLAPSE_MOTION_DEFAULTS = {
+  duration: '200ms',
+  easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+} as const;
+
 const DEFAULT_NAME = 'soybean-motion-collapse';
-const DEFAULT_DURATION = '200ms';
-const DEFAULT_EASING = 'cubic-bezier(0.4, 0, 0.2, 1)';
 
 function asHTMLElement(el: Element): HTMLElement {
   return el as HTMLElement;
@@ -62,7 +69,11 @@ function cleanup(el: HTMLElement) {
 export function collapseMotion(options: CollapseMotionOptions = {}): TransitionProps {
   if (import.meta.env.MODE === 'test') return {};
 
-  const { name = DEFAULT_NAME, duration = DEFAULT_DURATION, easing = DEFAULT_EASING } = options;
+  const {
+    name = DEFAULT_NAME,
+    duration = COLLAPSE_MOTION_DEFAULTS.duration,
+    easing = COLLAPSE_MOTION_DEFAULTS.easing
+  } = options;
   const transition = `height ${duration} ${easing}, opacity ${duration} ${easing}`;
 
   return {
