@@ -1,13 +1,36 @@
-import type {
-  ListContentProps,
-  ListDescriptionProps,
-  ListRootProps,
-  ListTitleProps,
-  ListUi,
-  ListItemProps as _ListItemProps
-} from '@soybeanjs/headless/list';
-import type { ClassValue } from '@soybeanjs/headless/types';
+import type { HTMLAttributes } from 'vue';
+import type { BaseProps, ClassValue, UiClass } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
+
+/**
+ * Properties for the list root element.
+ */
+export interface ListRootProps extends BaseProps<HTMLAttributes> {}
+
+/**
+ * Properties for the list content element.
+ */
+export interface ListContentProps extends BaseProps<HTMLAttributes> {}
+
+/**
+ * Properties for the list title element.
+ */
+export interface ListTitleProps extends BaseProps<HTMLAttributes> {}
+
+/**
+ * Properties for the list description element.
+ */
+export interface ListDescriptionProps extends BaseProps<HTMLAttributes> {}
+
+/**
+ * Available UI slots for the List component.
+ */
+export type ListUiSlot = 'root' | 'item' | 'content' | 'title' | 'description';
+
+/**
+ * UI class overrides for the List component.
+ */
+export type ListUi = UiClass<ListUiSlot>;
 
 /**
  * Properties for the List component.
@@ -30,7 +53,11 @@ export interface ListProps extends ListRootProps {
 /**
  * Properties for the ListItem component.
  */
-export interface ListItemProps extends _ListItemProps {
+export interface ListItemProps extends BaseProps<HTMLAttributes> {
+  /**
+   * Additional class names applied to the item element.
+   */
+  class?: ClassValue;
   /**
    * Title text rendered by the component.
    */
@@ -52,3 +79,29 @@ export interface ListItemProps extends _ListItemProps {
    */
   descriptionProps?: ListDescriptionProps;
 }
+
+/**
+ * Slots for the ListItem component.
+ */
+export type ListItemSlots = {
+  /**
+   * Custom content for the default slot.
+   */
+  default?: () => any;
+  /**
+   * Custom content for the leading slot.
+   */
+  leading?: () => any;
+  /**
+   * Custom content for the title slot.
+   */
+  title?: () => any;
+  /**
+   * Custom content for the description slot.
+   */
+  description?: () => any;
+  /**
+   * Custom content for the trailing slot.
+   */
+  trailing?: () => any;
+};

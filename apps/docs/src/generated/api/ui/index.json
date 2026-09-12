@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-12T12:40:27.080Z",
+  "generatedAt": "2026-09-12T16:40:21.931Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -74,7 +74,7 @@
     "badge": {
       "component": "badge",
       "file": "badge.json",
-      "symbols": ["Badge", "BadgeCompact", "BadgeContent", "BadgeRoot"]
+      "symbols": ["Badge", "BadgeContent", "BadgeRoot"]
     },
     "bottom-sheet": {
       "component": "bottom-sheet",
@@ -167,7 +167,6 @@
       "symbols": [
         "Card",
         "CardCollapsibleTrigger",
-        "CardCompact",
         "CardContent",
         "CardDescription",
         "CardFooter",
@@ -460,16 +459,7 @@
     "empty": {
       "component": "empty",
       "file": "empty.json",
-      "symbols": [
-        "Empty",
-        "EmptyCompact",
-        "EmptyContent",
-        "EmptyDescription",
-        "EmptyHeader",
-        "EmptyMedia",
-        "EmptyRoot",
-        "EmptyTitle"
-      ]
+      "symbols": ["Empty", "EmptyContent", "EmptyDescription", "EmptyHeader", "EmptyMedia", "EmptyRoot", "EmptyTitle"]
     },
     "form": {
       "component": "form",
@@ -1046,13 +1036,14 @@
     "tree": {
       "component": "tree",
       "file": "tree.json",
-      "symbols": ["TreeItem", "TreeRoot", "TreeVirtualizer", "TreeVirtualizerItem", "TreeVirtualizerRoot"]
+      "symbols": ["Tree", "TreeItem", "TreeRoot", "TreeVirtualizer", "TreeVirtualizerItem", "TreeVirtualizerRoot"]
     },
     "tree-menu": {
       "component": "tree-menu",
       "file": "tree-menu.json",
       "symbols": [
         "TreeMenu",
+        "TreeMenuBadge",
         "TreeMenuBaseItem",
         "TreeMenuButton",
         "TreeMenuCollapsible",

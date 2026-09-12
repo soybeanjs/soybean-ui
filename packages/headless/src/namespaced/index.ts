@@ -40,9 +40,6 @@ import {
   AvatarImage,
   AvatarRoot,
   Backtop,
-  BadgeCompact,
-  BadgeContent,
-  BadgeRoot,
   BreadcrumbCompact,
   BreadcrumbEllipsis,
   BreadcrumbItem,
@@ -79,15 +76,6 @@ import {
   CalendarRangePrev,
   CalendarRangeRoot,
   CalendarRoot,
-  CardCollapsibleTrigger,
-  CardCompact,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardRoot,
-  CardTitle,
-  CardTitleRoot,
   CarouselCompact,
   CarouselContainer,
   CarouselContent,
@@ -259,13 +247,6 @@ import {
   EditablePreview,
   EditableRoot,
   EditableSubmitTrigger,
-  EmptyCompact,
-  EmptyContent,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyRoot,
-  EmptyTitle,
   FormCompact,
   FormControl,
   FormDescription,
@@ -319,11 +300,6 @@ import {
   ListboxItemIndicator,
   ListboxRoot,
   ListboxVirtualizer,
-  ListContent,
-  ListDescription,
-  ListItem,
-  ListRoot,
-  ListTitle,
   MenuAnchor,
   MenuArrow,
   MenubarArrow,
@@ -694,16 +670,6 @@ export const Autocomplete = {
   Separator: typeof AutocompleteSeparator;
 };
 
-export const Badge = {
-  Compact: BadgeCompact,
-  Root: BadgeRoot,
-  Content: BadgeContent
-} as {
-  Compact: typeof BadgeCompact;
-  Root: typeof BadgeRoot;
-  Content: typeof BadgeContent;
-};
-
 export const Breadcrumb = {
   Root: BreadcrumbRoot,
   Compact: BreadcrumbCompact,
@@ -784,28 +750,6 @@ export const CalendarRange = {
   HeadCell: typeof CalendarRangeHeadCell;
   Cell: typeof CalendarRangeCell;
   CellTrigger: typeof CalendarRangeCellTrigger;
-};
-
-export const Card = {
-  Root: CardRoot,
-  Header: CardHeader,
-  Title: CardTitle,
-  TitleRoot: CardTitleRoot,
-  Description: CardDescription,
-  Content: CardContent,
-  Footer: CardFooter,
-  CollapsibleTrigger: CardCollapsibleTrigger,
-  Compact: CardCompact
-} as {
-  Root: typeof CardRoot;
-  Header: typeof CardHeader;
-  Title: typeof CardTitle;
-  TitleRoot: typeof CardTitleRoot;
-  Description: typeof CardDescription;
-  Content: typeof CardContent;
-  Footer: typeof CardFooter;
-  CollapsibleTrigger: typeof CardCollapsibleTrigger;
-  Compact: typeof CardCompact;
 };
 
 export const Carousel = {
@@ -1222,24 +1166,6 @@ export const Editable = {
   Compact: typeof EditableCompact;
 };
 
-export const Empty = {
-  Compact: EmptyCompact,
-  Root: EmptyRoot,
-  Header: EmptyHeader,
-  Media: EmptyMedia,
-  Content: EmptyContent,
-  Title: EmptyTitle,
-  Description: EmptyDescription
-} as {
-  Compact: typeof EmptyCompact;
-  Root: typeof EmptyRoot;
-  Header: typeof EmptyHeader;
-  Media: typeof EmptyMedia;
-  Content: typeof EmptyContent;
-  Title: typeof EmptyTitle;
-  Description: typeof EmptyDescription;
-};
-
 export const Form = {
   Compact: FormCompact,
   FieldCompact: FormFieldCompact,
@@ -1350,20 +1276,6 @@ export const Layout = {
   Mobile: typeof LayoutMobile;
   Placeholder: typeof LayoutPlaceholder;
   Trigger: typeof LayoutTrigger;
-};
-
-export const List = {
-  Root: ListRoot,
-  Item: ListItem,
-  Title: ListTitle,
-  Description: ListDescription,
-  Content: ListContent
-} as {
-  Root: typeof ListRoot;
-  Item: typeof ListItem;
-  Title: typeof ListTitle;
-  Description: typeof ListDescription;
-  Content: typeof ListContent;
 };
 
 export const Listbox = {

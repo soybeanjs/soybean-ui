@@ -1,18 +1,18 @@
 ---
 head:
   title: 徽章
-  description: 用于叠加在触发器（按钮、头像、导航项）上的小型状态/通知标记，用于指示数量、状态或新内容。SBadge 组合 BadgeRoot/BadgeContent 这一系列 headless 基础组件（零样式）与 badgeVariants 样式配方（2 个槽：root/content；8 种颜色 × 6 种尺寸 × 4 个位置）。
+  description: 用于叠加在触发器（按钮、头像、导航项）上的小型状态/通知标记，用于指示数量、状态或新内容。SBadge 是 UI-only 组件：相对定位的根节点 + 绝对定位的气泡 + 可控显隐，样式来自 badgeVariants 配方（2 个槽：root/content；8 种颜色 × 6 种尺寸 × 4 个位置）。
 ---
 
 # 徽章
 
 ## 概述
 
-用于叠加在触发器（按钮、头像、导航项）上的小型状态/通知标记，用于指示数量、状态或新内容。`SBadge` 组合 `BadgeRoot`/`BadgeContent` 这一系列 headless 基础组件（零样式）与 `badgeVariants` 样式配方（2 个槽：root/content；8 种颜色 × 6 种尺寸 × 4 个位置）。
+用于叠加在触发器（按钮、头像、导航项）上的小型状态/通知标记，用于指示数量、状态或新内容。`SBadge` 是 **UI-only** 组件：相对定位的根节点加绝对定位的气泡，样式来自 `badgeVariants` 配方（2 个槽：root/content；8 种颜色 × 6 种尺寸 × 4 个位置）。
 
 适用于未读数量、通知徽标、状态圆点，或任何锚定在宿主元素右上角（或其他角落）的小标签。独立的内联分类标签请优先使用 `tag`；需要承载更多内容的上下文反馈请优先使用 `alert`。
 
-`SBadge` 通过 `BadgeCompact` 聚合这些基础组件，提供以 `content` 为核心的 API，并通过 `v-model:open` 控制气泡的显隐。需要完全自定义组合时，可直接使用 headless 层的 `BadgeRoot`/`BadgeContent` 基础组件。
+`SBadge` 提供以 `content` 为核心的 API，并通过 `v-model:open` 控制气泡显隐。headless 层不存在 `badge` 家族：唯一的逻辑是受控 `open` 标志，由 UI 层直接用 `useControllableState` 持有。
 
 ## 用法
 
@@ -20,7 +20,7 @@ head:
 
 ## 特性
 
-- 🧩 Headless/样式分离 — `BadgeCompact` 聚合 `BadgeRoot`/`BadgeContent` 并暴露 `content` 插槽；`SBadge` 只注入样式并转发插槽/事件
+- 🧩 UI-only 薄壳 — `SBadge` 自持结构与受控 `open` 状态（`useControllableState`）；headless 层没有 `badge` 家族
 - 🔢 `content` prop / 插槽 — 通过 `content` 插槽在气泡内渲染纯文本或任意 VNode
 - 🎛️ 受控显隐 — `v-model:open` 切换气泡是否渲染（`useControllableState`，默认 `true`）
 - 🎨 8 种颜色 — `ThemeColor` 的 `primary`/`destructive`/`success`/`warning`/`info`/`carbon`/`secondary`/`accent`
@@ -31,10 +31,7 @@ head:
 
 ## 组件家族
 
-- `SBadge`（样式层）— 入口包装组件；`badgeVariants` 配方配合动态插槽转发
-- `BadgeRoot`（headless）— 容器；通过 `useControllableState` 与 `provideBadgeRootContext` 维护 `open` 状态
-- `BadgeContent`（headless）— 气泡；仅在 `open` 时渲染
-- `BadgeCompact`（headless）— 聚合组件；组合 root/content 并默认气泡内容
+`SBadge` 是单一导出。它渲染 `data-soybean-badge-root` 容器，并在 `open` 时渲染 `data-soybean-badge-content` 气泡；`class`/`ui` 与 `contentProps` 可作用到两个节点。
 
 ## 演示
 
@@ -48,7 +45,7 @@ head:
 
 ### 架构与对标差异
 
-`BadgeCompact` 负责显隐编排，所有基础组件保持零样式，仅由 UI 包装组件注入 `badgeVariants` 类。这与 shadcn/ui 的 headless/样式分离（其 Badge 为纯样式标签）及 Radix 的 `Badge` 原语一致；而 Ant Design、Element Plus、Naive UI 则提供单一样式化 `Badge` 组件（`count`/`max`/`dot`/`offset` prop）。SoybeanUI 通过 `content` prop/插槽暴露气泡，并提供受控的 `open` 状态，将数量格式化（`max`）与圆点/偏移等便捷能力留在核心之外——详见下方增强项。
+`SBadge` 在 UI 层自持显隐编排——徽章是一层薄壳，唯一逻辑是受控 `open` 标志，因此刻意没有 headless 家族。这与 shadcn/ui 的「组合优先」（其 Badge 为纯样式标签）及 Radix 的 `Badge` 原语一致；而 Ant Design、Element Plus、Naive UI 则提供单一样式化 `Badge` 组件（`count`/`max`/`dot`/`offset` prop）。SoybeanUI 通过 `content` prop/插槽暴露气泡，并提供受控的 `open` 状态，将数量格式化（`max`）与圆点/偏移等便捷能力留在核心之外——详见下方增强项。
 
 | 能力                  | SoybeanUI | shadcn/ui | Ant Design Badge | Element Plus Badge | Mantine Badge | Naive UI Badge |
 | :-------------------- | :-------: | :-------: | :--------------: | :----------------: | :-----------: | :------------: |

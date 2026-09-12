@@ -30,7 +30,6 @@ export const components = {
   ],
   avatar: ['AvatarCompact', 'AvatarRoot', 'AvatarImage', 'AvatarFallback'],
   backtop: ['Backtop'],
-  badge: ['BadgeCompact', 'BadgeRoot', 'BadgeContent'],
   breadcrumb: [
     'BreadcrumbRoot',
     'BreadcrumbCompact',
@@ -71,17 +70,6 @@ export const components = {
     'CalendarRangeHeadCell',
     'CalendarRangeCell',
     'CalendarRangeCellTrigger'
-  ],
-  card: [
-    'CardRoot',
-    'CardHeader',
-    'CardTitle',
-    'CardTitleRoot',
-    'CardDescription',
-    'CardContent',
-    'CardFooter',
-    'CardCollapsibleTrigger',
-    'CardCompact'
   ],
   carousel: [
     'CarouselCompact',
@@ -255,7 +243,6 @@ export const components = {
     'EditableSubmitTrigger',
     'EditableCompact'
   ],
-  empty: ['EmptyCompact', 'EmptyRoot', 'EmptyHeader', 'EmptyMedia', 'EmptyContent', 'EmptyTitle', 'EmptyDescription'],
   form: [
     'FormCompact',
     'FormFieldCompact',
@@ -303,7 +290,6 @@ export const components = {
     'LayoutTrigger'
   ],
   link: ['Link'],
-  list: ['ListRoot', 'ListItem', 'ListTitle', 'ListDescription', 'ListContent'],
   listbox: [
     'ListboxRoot',
     'ListboxContent',

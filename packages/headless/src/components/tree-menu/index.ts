@@ -33,6 +33,7 @@ export type {
   TreeMenuButtonProps,
   TreeMenuCollapsibleProps,
   TreeMenuSubProps,
+  TreeMenuBadgeProps,
   TreeMenuCollapsedState,
   TreeMenuExpandStrategy,
   TreeMenuOptionData,

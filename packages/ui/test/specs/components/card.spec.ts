@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import { h } from 'vue';
 import { mount } from '@vue/test-utils';
+import SCardCollapsibleTrigger from '@/components/card/card-collapsible-trigger.vue';
 import SCard from '@/components/card/card.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -31,21 +33,54 @@ describe('SCard', () => {
       wrapper.unmount();
     });
 
-    it('renders header, footer, and description slots', () => {
+    it('renders the card chrome with the owned data attributes', () => {
       const wrapper = mount(SCard, {
+        props: { title: 'Card Title', description: 'Card description' },
         slots: {
-          header: '<span data-header>Header</span>',
+          extra: '<span data-extra>Extra</span>',
           footer: '<span data-footer>Footer</span>',
-          description: '<span data-desc>Description</span>',
-          title: 'Card Title',
           default: '<p>Body</p>'
         },
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-header]').exists()).toBe(true);
-      // footer may only render if card is in non-collapsed state
-      expect(wrapper.text()).toContain('Body');
+      expect(wrapper.find('[data-soybean-card-header]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-card-title-root]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-card-title]').text()).toBe('Card Title');
+      expect(wrapper.find('[data-soybean-card-description]').text()).toBe('Card description');
+      expect(wrapper.find('[data-soybean-card-content]').text()).toContain('Body');
+      expect(wrapper.find('[data-soybean-card-footer]').text()).toContain('Footer');
+      expect(wrapper.find('[data-extra]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+
+    it('composes the collapsible primitives for the root and the content', () => {
+      const wrapper = mount(SCard, {
+        slots: { title: 'Title', default: '<p>Body</p>' },
+        attachTo: document.body
+      });
+
+      const root = wrapper.get('[data-soybean-card-root]');
+
+      expect(root.attributes('data-soybean-collapsible-root')).toBe('');
+      expect(root.attributes('data-header-visible')).toBe('true');
+      expect(root.attributes('data-footer-visible')).toBe('false');
+      expect(wrapper.get('[data-soybean-card-content]').attributes('data-soybean-collapsible-content')).toBe('');
+      expect(wrapper.get('[data-soybean-card-content]').attributes('tabindex')).toBe('-1');
+
+      wrapper.unmount();
+    });
+
+    it('omits the header when there is nothing to render', () => {
+      const wrapper = mount(SCard, {
+        slots: { default: '<p>Body only</p>' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-card-header]').exists()).toBe(false);
+      expect(wrapper.find('[data-soybean-card-footer]').exists()).toBe(false);
+      expect(wrapper.get('[data-soybean-card-root]').attributes('data-header-visible')).toBe('false');
 
       wrapper.unmount();
     });
@@ -65,18 +100,66 @@ describe('SCard', () => {
       wrapper.unmount();
     });
 
-    it('supports expand/collapse with title slot', () => {
+    it('merges per-part props and classes into the chrome nodes', () => {
       const wrapper = mount(SCard, {
-        props: { defaultOpen: true },
+        props: {
+          title: 'Card',
+          titleProps: { class: 'my-title' },
+          contentProps: { class: 'my-content' }
+        },
+        slots: { default: '<p>Content</p>' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[data-soybean-card-title]').classes()).toContain('my-title');
+      expect(wrapper.get('[data-soybean-card-content]').classes()).toContain('my-content');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('open state', () => {
+    it('is open by default', () => {
+      const wrapper = mount(SCard, {
+        slots: { title: 'Card', default: '<p>Body</p>' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[data-soybean-card-root]').attributes('data-state')).toBe('open');
+
+      wrapper.unmount();
+    });
+
+    it('reflects the controlled closed state', () => {
+      const wrapper = mount(SCard, {
+        props: { open: false },
+        slots: { title: 'Card', default: '<p>Body</p>' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[data-soybean-card-root]').attributes('data-state')).toBe('closed');
+
+      wrapper.unmount();
+    });
+
+    it('collapses through the collapsible trigger and emits update:open', async () => {
+      const wrapper = mount(SCard, {
+        props: { title: 'Card', defaultOpen: true },
         slots: {
-          title: 'Expandable Card',
-          default: '<p>Collapsible content</p>'
+          extra: () => h(SCardCollapsibleTrigger, { asChild: false }),
+          default: '<p>Body</p>'
         },
         attachTo: document.body
       });
 
-      expect(wrapper.text()).toContain('Expandable Card');
-      expect(wrapper.text()).toContain('Collapsible content');
+      const trigger = wrapper.get('[data-soybean-collapsible-trigger]');
+
+      expect(trigger.attributes('aria-expanded')).toBe('true');
+
+      await trigger.trigger('click');
+
+      expect(wrapper.emitted('update:open')?.[0]).toEqual([false]);
+      expect(wrapper.get('[data-soybean-card-root]').attributes('data-state')).toBe('closed');
 
       wrapper.unmount();
     });
@@ -87,6 +170,23 @@ describe('SCard', () => {
       const wrapper = mount(SCard, {
         slots: {
           title: 'Accessible Card',
+          default: '<p>Card body content</p>'
+        },
+        attachTo: document.body
+      });
+
+      const violations = await getA11yViolations(wrapper.element);
+      expect(violations).toHaveLength(0);
+
+      wrapper.unmount();
+    });
+
+    it('has no a11y violations with a collapsible trigger', async () => {
+      const wrapper = mount(SCard, {
+        props: { title: 'Collapsible Card', defaultOpen: true },
+        slots: {
+          // The trigger renders an icon-only button, so it needs a caller-provided accessible name.
+          extra: () => h(SCardCollapsibleTrigger, { 'aria-label': 'Toggle card content' }),
           default: '<p>Card body content</p>'
         },
         attachTo: document.body

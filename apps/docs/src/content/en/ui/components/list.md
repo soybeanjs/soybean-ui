@@ -1,16 +1,18 @@
 ---
 head:
   title: List
-  description: 'A semantic container for displaying a vertical list of items. SList wraps the headless ListRoot (a <ul>) with the listVariants style recipe (5 slots: root/item/content/title/description; 6 sizes). SListItem composes the headless ListItem/ListContent/ListTitle/ListDescription primitives into a ready-made title + description row.'
+  description: 'A semantic container for displaying a vertical list of items. SList and SListItem are UI-only components: they render the <ul>/<li> and item/content/title/description anatomy themselves, styled by the listVariants style recipe (5 slots: root/item/content/title/description; 6 sizes).'
 ---
 
 # List
 
 ## Overview
 
-A semantic container for displaying a vertical list of items. `SList` wraps the headless `ListRoot` (a `<ul>`) with the `listVariants` style recipe (5 slots: root/item/content/title/description; 6 sizes). `SListItem` composes the headless `ListItem`/`ListContent`/`ListTitle`/`ListDescription` primitives into a ready-made title + description row.
+A semantic container for displaying a vertical list of items. `SList` and `SListItem` are **UI-only**: they render the `<ul>`/`<li>` and the item/content/title/description anatomy themselves and share the `listVariants` style recipe (5 slots: root/item/content/title/description; 6 sizes) over a small UI-level context.
 
 Use it for user lists, settings/menu groups, notification feeds, or any simple vertical collection. Prefer `table` for tabular data with columns and sorting, `tree` for hierarchical data, and `select`/`combobox` for selectable option lists.
+
+There is no headless `list` family: a plain `ul`/`li` carries no keyboard, focus or ARIA-widget logic of its own, so it has no place in the headless layer. Interactive lists are served by the admitted `listbox` / `tree` families instead.
 
 ## Usage
 
@@ -18,7 +20,7 @@ Use it for user lists, settings/menu groups, notification feeds, or any simple v
 
 ## Features
 
-- 🧩 Headless/styled split — `SList`/`SListItem` wrap the headless `ListRoot`-family primitives and inject `listVariants` classes only
+- 🧩 UI-only anatomy shell — `SList`/`SListItem` own the markup and share `listVariants` classes through a UI-level `provideListUi` context; no headless `list` family exists
 - 📋 Semantic markup — renders a real `<ul>`/`<li>` with `data-soybean-list-*` hooks
 - 🏷️ Item composition — `SListItem` renders an optional `title` + `description` block via `title`/`description` props or slots
 - ↔️ Leading / trailing — `leading`/`trailing` slots on `SListItem` for icons, badges, avatars or actions
@@ -28,11 +30,8 @@ Use it for user lists, settings/menu groups, notification feeds, or any simple v
 
 ## Component family
 
-- `SList` (styled) — the list container; `listVariants` root slot
-- `SListItem` (styled) — the item row; composes the headless item/content/title/description parts and exposes `leading`/`trailing`/`title`/`description`/default slots
-- `ListRoot` (headless) — the `<ul>` root
-- `ListItem` (headless) — the `<li>` item
-- `ListContent` / `ListTitle` / `ListDescription` (headless) — the item's content, title and description parts
+- `SList` — the list container; renders the `<ul>` with the `root` slot and provides `listVariants` to its items
+- `SListItem` — the item row; renders the `<li>` plus the `item`/`content`/`title`/`description` nodes and exposes `leading`/`trailing`/`title`/`description`/default slots
 
 ## Demos
 
@@ -46,7 +45,7 @@ Use it for user lists, settings/menu groups, notification feeds, or any simple v
 
 ### Architecture and benchmark differences
 
-`SList`/`SListItem` are thin styled wrappers over headless list primitives that keep zero styles; all styling lives in `listVariants`. This mirrors shadcn/ui's headless split, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a config-driven list (`dataSource`/`renderItem`). SoybeanUI deliberately keeps `SList` a presentational container — data iteration stays with the consumer — so very large data is handled by the standalone `virtualizer` component rather than a built-in virtual scroll.
+`SList`/`SListItem` are UI-only: a plain `ul`/`li` anatomy shell failed the headless deletion test, so the family was removed from the headless layer and the markup now lives in the UI layer, with all styling in `listVariants` and the slot classes passed down through `provideListUi`. This mirrors shadcn/ui's composition-first approach, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a config-driven list (`dataSource`/`renderItem`). SoybeanUI deliberately keeps `SList` a presentational container — data iteration stays with the consumer — so very large data is handled by the standalone `virtualizer` component rather than a built-in virtual scroll. Interactive lists use `listbox` / `tree` instead of `SList`.
 
 | Capability                | SoybeanUI | shadcn/ui | Ant Design List | Element Plus | Mantine List | Naive UI |
 | :------------------------ | :-------: | :-------: | :-------------: | :----------: | :----------: | :------: |
@@ -64,7 +63,7 @@ Use it for user lists, settings/menu groups, notification feeds, or any simple v
 - `SList` is a presentational container: it does not own data iteration or virtual scrolling. For 1k+ items render the items directly or compose them with the standalone `virtualizer` component.
 - Items render as `<li>` inside a `<ul>`. Keep the direct children list items and avoid nesting full interactive blocks that break list semantics.
 - Use `SListItem` for a title + description row; for a plain list you can also drop raw `<li>` elements into `SList`.
-- The `title` renders as plain text inside `ListTitle` (a styled block, not a heading element); pair it with semantic headings if the content is a document outline.
+- The item `title` renders as an `<h3>` and the `description` as a `<p>`; if the list is part of a document outline, pick `size`/`class` or your own markup so the heading level still fits.
 
 ### Roadmap
 

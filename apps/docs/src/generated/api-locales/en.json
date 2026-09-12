@@ -588,45 +588,6 @@
           }
         }
       },
-      "packages_headless_src_components_badge_types": {
-        "badgecompactemits": {
-          "callables": {
-            "update_open": "Emitted when the open state changes."
-          },
-          "emits": "Events for the BadgeCompact component."
-        },
-        "badgecompactprops": {
-          "members": {
-            "content": "Content rendered inside the badge bubble when no content slot is provided.",
-            "contentprops": "Properties forwarded to the content element.",
-            "open": "Whether the component is open."
-          },
-          "props": "Properties for the BadgeCompact component."
-        },
-        "badgecompactslots": {
-          "callables": {
-            "content": "Custom content for the badge content slot.",
-            "default": "Custom content for the default slot."
-          },
-          "slots": "Slots for the BadgeCompact component."
-        },
-        "badgecontentprops": {
-          "props": "Properties for the BadgeContent component."
-        },
-        "badgerootemits": {
-          "callables": {
-            "update_open": "Emitted when the open state changes."
-          },
-          "emits": "Events for the BadgeRoot component."
-        },
-        "badgerootprops": {
-          "members": {
-            "open": "Whether the component is open."
-          },
-          "props": "Properties for the BadgeRoot component."
-        },
-        "badgeui": "UI class overrides for the Badge component."
-      },
       "packages_headless_src_components_bottom_sheet_index": {
         "bottomsheetoverlayprops": {
           "members": {
@@ -1506,97 +1467,6 @@
         },
         "calendarui": "UI class overrides for the Calendar component.",
         "type": ""
-      },
-      "packages_headless_src_components_card_types": {
-        "cardcollapsibletriggerprops": {
-          "members": {
-            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "disabled": "Whether the component is disabled.",
-            "disabledcollapsible": "When `true`, prevents the user from toggling the collapsible.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
-          },
-          "props": "Properties for the CardCollapsibleTrigger component."
-        },
-        "cardcompactemits": {
-          "callables": {
-            "update_open": "Event handler called when the open state of the collapsible changes."
-          },
-          "emits": "Events for the CardCompact component."
-        },
-        "cardcompactprops": {
-          "members": {
-            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "contentprops": "Properties forwarded to the content element.",
-            "defaultopen": "The open state of the collapsible when it is initially rendered.\n\nUse when you do not need to control its open state.",
-            "description": "Description text rendered by the component.",
-            "descriptionprops": "Properties forwarded to the description element.",
-            "disabled": "When `true`, prevents the user from interacting with the collapsible.",
-            "footerprops": "Properties forwarded to the footer element.",
-            "headerprops": "Properties forwarded to the header element.",
-            "open": "The controlled open state of the collapsible. Can be bound with `v-model`.",
-            "title": "Title text rendered by the component.",
-            "titleprops": "Properties forwarded to the title element.",
-            "titlerootprops": "Properties forwarded to the title root element.",
-            "unmountonhide": "When `true`, the element will be unmounted on closed state."
-          },
-          "props": "Properties for the CardCompact component."
-        },
-        "cardcompactslots": {
-          "callables": {
-            "default": "Custom content for the default slot.",
-            "description": "Custom content for the description slot.",
-            "extra": "Custom content for the extra slot.",
-            "footer": "Custom content for the footer slot.",
-            "header": "Custom content for the header slot.",
-            "title": "Custom content for the title slot.",
-            "title_leading": "Custom content for the title leading slot.",
-            "title_trailing": "Custom content for the title trailing slot."
-          },
-          "slots": "Slots for the CardCompact component."
-        },
-        "cardcontentprops": {
-          "members": {
-            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries."
-          },
-          "props": "Properties for the CardContent component."
-        },
-        "carddescriptionprops": {
-          "props": "Properties for the CardDescription component."
-        },
-        "cardfooterprops": {
-          "props": "Properties for the CardFooter component."
-        },
-        "cardheaderprops": {
-          "props": "Properties for the CardHeader component."
-        },
-        "cardrootemits": {
-          "callables": {
-            "update_open": "Event handler called when the open state of the collapsible changes."
-          },
-          "emits": "Events for the CardRoot component."
-        },
-        "cardrootprops": {
-          "members": {
-            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "defaultopen": "The open state of the collapsible when it is initially rendered.\n\nUse when you do not need to control its open state.",
-            "disabled": "When `true`, prevents the user from interacting with the collapsible.",
-            "open": "The controlled open state of the collapsible. Can be bound with `v-model`.",
-            "unmountonhide": "When `true`, the element will be unmounted on closed state."
-          },
-          "props": "Properties for the CardRoot component."
-        },
-        "cardtitleprops": {
-          "props": "Properties for the CardTitle component."
-        },
-        "cardtitlerootprops": {
-          "props": "Properties for the CardTitleRoot component."
-        },
-        "cardui": "UI class overrides for the Card component."
       },
       "packages_headless_src_components_carousel_types": {
         "carouselcompactemits": {
@@ -4590,50 +4460,6 @@
         },
         "editableui": "UI class overrides for the Editable component."
       },
-      "packages_headless_src_components_empty_types": {
-        "emptycompactprops": {
-          "members": {
-            "contentprops": "Properties forwarded to the content element.",
-            "description": "Description text rendered by the component.",
-            "descriptionprops": "Properties forwarded to the description element.",
-            "headerprops": "Properties forwarded to the header element.",
-            "icon": "Icon rendered by the component.",
-            "mediaprops": "Properties forwarded to the media element.",
-            "title": "Title text rendered by the component.",
-            "titleprops": "Properties forwarded to the title element."
-          },
-          "props": "Properties for the EmptyCompact component."
-        },
-        "emptycompactslots": {
-          "callables": {
-            "content": "Custom content for the content slot.",
-            "default": "Custom content for the default slot.",
-            "description": "Custom content for the description slot.",
-            "media": "Custom content for the media slot.",
-            "title": "Custom content for the title slot."
-          },
-          "slots": "Slots for the EmptyCompact component."
-        },
-        "emptycontentprops": {
-          "props": "Properties for the EmptyContent component."
-        },
-        "emptydescriptionprops": {
-          "props": "Properties for the EmptyDescription component."
-        },
-        "emptyheaderprops": {
-          "props": "Properties for the EmptyHeader component."
-        },
-        "emptymediaprops": {
-          "props": "Properties for the EmptyMedia component."
-        },
-        "emptyrootprops": {
-          "props": "Properties for the EmptyRoot component."
-        },
-        "emptytitleprops": {
-          "props": "Properties for the EmptyTitle component."
-        },
-        "emptyui": "UI class overrides for the Empty component."
-      },
       "packages_headless_src_components_form_core_types": {
         "formfieldarraystates": "Type information for FormFieldArrayStates.",
         "formfieldstate": "State values for FormFieldState.",
@@ -5365,21 +5191,6 @@
           "props": "Properties for the LinkExtra component."
         },
         "type": ""
-      },
-      "packages_headless_src_components_list_types": {
-        "listcontentprops": {
-          "props": "Properties for the ListContent component."
-        },
-        "listdescriptionprops": {
-          "props": "Properties for the ListDescription component."
-        },
-        "listrootprops": {
-          "props": "Properties for the ListRoot component."
-        },
-        "listtitleprops": {
-          "props": "Properties for the ListTitle component."
-        },
-        "listui": "UI class overrides for the List component."
       },
       "packages_headless_src_components_listbox_types": {
         "comboboxgroupprops": {
@@ -9667,6 +9478,13 @@
         }
       },
       "packages_headless_src_components_tree_menu_types": {
+        "treemenubadgeprops": {
+          "members": {
+            "contentprops": "Properties forwarded to the badge bubble element.",
+            "open": "Whether the badge bubble is rendered."
+          },
+          "props": "Properties for the badge markup rendered inside a TreeMenu option.\n\nThe `badge` family is UI-only (it failed headless admission), so the tree-menu renders its own\nbadge anatomy instead of composing a headless badge primitive. The shape mirrors the retired\n`BadgeCompactProps` minus `content`, which the option supplies through `TreeMenuBaseOptionData.badge`."
+        },
         "treemenubaseitemprops": {
           "members": {
             "disabled": "When `true`, prevents the user from interacting with the item.",
@@ -9787,7 +9605,7 @@
             "actionmenuprops": "Properties forwarded to the action dropdown menu.",
             "actions": "Action items rendered at the end of the option.",
             "badge": "Badge text rendered for the option.",
-            "badgeprops": "Properties forwarded to the badge component.",
+            "badgeprops": "Properties forwarded to the badge markup.",
             "children": "Child options.",
             "disabled": "When `true`, prevents the user from interacting with the item.",
             "dropdownmenuprops": "Properties forwarded to the collapsed dropdown menu.",
@@ -10653,6 +10471,9 @@
         }
       },
       "packages_ui_src_components_badge_types": {
+        "badgecontentprops": {
+          "props": "Properties for the badge content element."
+        },
         "badgeemits": {
           "callables": {
             "update_open": "Emitted when the open state changes."
@@ -10661,7 +10482,7 @@
         },
         "badgeprops": {
           "members": {
-            "class": "root class",
+            "class": "Additional class names applied to the root element.",
             "color": "Theme color of the component.",
             "content": "Content rendered inside the badge bubble when no content slot is provided.",
             "contentprops": "Properties forwarded to the content element.",
@@ -10671,7 +10492,27 @@
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the Badge component."
-        }
+        },
+        "badgerootemits": {
+          "callables": {
+            "update_open": "Emitted when the open state changes."
+          },
+          "emits": "Events for the badge root element."
+        },
+        "badgerootprops": {
+          "members": {
+            "open": "Whether the component is open."
+          },
+          "props": "Properties for the badge root element."
+        },
+        "badgeslots": {
+          "callables": {
+            "content": "Custom content for the badge content slot.",
+            "default": "Custom content for the default slot."
+          },
+          "slots": "Slots for the Badge component."
+        },
+        "badgeui": "UI class overrides for the Badge component."
       },
       "packages_ui_src_components_bottom_sheet_types": {
         "bottomsheetemits": {
@@ -11047,17 +10888,44 @@
         }
       },
       "packages_ui_src_components_card_types": {
+        "cardcollapsibletriggerprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "disabled": "Whether the component is disabled.",
+            "disabledcollapsible": "When `true`, prevents the user from toggling the collapsible.",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
+          },
+          "props": "Properties for the card collapsible trigger element."
+        },
+        "cardcontentprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries."
+          },
+          "props": "Properties for the card content element."
+        },
+        "carddescriptionprops": {
+          "props": "Properties for the card description element."
+        },
         "cardemits": {
           "callables": {
             "update_open": "Event handler called when the open state of the collapsible changes."
           },
           "emits": "Events for the Card component."
         },
+        "cardfooterprops": {
+          "props": "Properties for the card footer element."
+        },
+        "cardheaderprops": {
+          "props": "Properties for the card header element."
+        },
         "cardprops": {
           "members": {
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "class": "root class",
+            "class": "Additional class names applied to the root element.",
             "contentprops": "Properties forwarded to the content element.",
             "defaultopen": "The open state of the collapsible when it is initially rendered.\n\nUse when you do not need to control its open state.",
             "description": "Description text rendered by the component.",
@@ -11077,6 +10945,23 @@
           },
           "props": "Properties for the Card component."
         },
+        "cardrootemits": {
+          "callables": {
+            "update_open": "Event handler called when the open state of the collapsible changes."
+          },
+          "emits": "Events for the card root element."
+        },
+        "cardrootprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "defaultopen": "The open state of the collapsible when it is initially rendered.\n\nUse when you do not need to control its open state.",
+            "disabled": "When `true`, prevents the user from interacting with the collapsible.",
+            "open": "The controlled open state of the collapsible. Can be bound with `v-model`.",
+            "unmountonhide": "When `true`, the element will be unmounted on closed state."
+          },
+          "props": "Properties for the card root element. The card composes `CollapsibleRoot`, so the\ncollapsible open/disabled contract is shared with the collapsible family."
+        },
         "cardslots": {
           "callables": {
             "default": "Custom content for the default slot.",
@@ -11089,7 +10974,14 @@
             "title_trailing": "Custom content for the title trailing slot."
           },
           "slots": "Slots for the Card component."
-        }
+        },
+        "cardtitleprops": {
+          "props": "Properties for the card title element."
+        },
+        "cardtitlerootprops": {
+          "props": "Properties for the card title root element."
+        },
+        "cardui": "UI class overrides for the Card component."
       },
       "packages_ui_src_components_carousel_types": {
         "carouselemits": {
@@ -12650,6 +12542,18 @@
         }
       },
       "packages_ui_src_components_empty_types": {
+        "emptycontentprops": {
+          "props": "Properties for the empty content element."
+        },
+        "emptydescriptionprops": {
+          "props": "Properties for the empty description element."
+        },
+        "emptyheaderprops": {
+          "props": "Properties for the empty header element."
+        },
+        "emptymediaprops": {
+          "props": "Properties for the empty media element."
+        },
         "emptyprops": {
           "members": {
             "class": "Additional class names applied to the root element.",
@@ -12666,6 +12570,9 @@
           },
           "props": "Properties for the Empty component."
         },
+        "emptyrootprops": {
+          "props": "Properties for the empty root element."
+        },
         "emptyslots": {
           "callables": {
             "content": "Custom content for the content slot.",
@@ -12675,7 +12582,11 @@
             "title": "Custom content for the title slot."
           },
           "slots": "Slots for the Empty component."
-        }
+        },
+        "emptytitleprops": {
+          "props": "Properties for the empty title element."
+        },
+        "emptyui": "UI class overrides for the Empty component."
       },
       "packages_ui_src_components_form_types": {
         "formfieldslots": {
@@ -13015,8 +12926,15 @@
         }
       },
       "packages_ui_src_components_list_types": {
+        "listcontentprops": {
+          "props": "Properties for the list content element."
+        },
+        "listdescriptionprops": {
+          "props": "Properties for the list description element."
+        },
         "listitemprops": {
           "members": {
+            "class": "Additional class names applied to the item element.",
             "contentprops": "Properties forwarded to the content element.",
             "description": "Description text rendered by the component.",
             "descriptionprops": "Properties forwarded to the description element.",
@@ -13025,6 +12943,16 @@
           },
           "props": "Properties for the ListItem component."
         },
+        "listitemslots": {
+          "callables": {
+            "default": "Custom content for the default slot.",
+            "description": "Custom content for the description slot.",
+            "leading": "Custom content for the leading slot.",
+            "title": "Custom content for the title slot.",
+            "trailing": "Custom content for the trailing slot."
+          },
+          "slots": "Slots for the ListItem component."
+        },
         "listprops": {
           "members": {
             "class": "Additional class names applied to the root element.",
@@ -13032,7 +12960,14 @@
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the List component."
-        }
+        },
+        "listrootprops": {
+          "props": "Properties for the list root element."
+        },
+        "listtitleprops": {
+          "props": "Properties for the list title element."
+        },
+        "listui": "UI class overrides for the List component."
       },
       "packages_ui_src_components_menubar_types": {
         "menubaremits": {

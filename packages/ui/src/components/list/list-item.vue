@@ -1,29 +1,51 @@
 <script setup lang="ts">
-import { useSlots } from 'vue';
-import { ListContent, ListDescription, ListItem, ListTitle } from '@soybeanjs/headless/list';
-import type { ListItemProps } from './types';
+import { computed } from 'vue';
+import { useOmitProps } from '@soybeanjs/headless/composables';
+import { useListUi } from './context';
+import type { ListItemProps, ListItemSlots } from './types';
 
 defineOptions({
   name: 'SListItem'
 });
 
-defineProps<ListItemProps>();
+const props = defineProps<ListItemProps>();
 
-const slots = useSlots();
+const slots = defineSlots<ListItemSlots>();
+
+const forwardedProps = useOmitProps(props, [
+  'class',
+  'title',
+  'description',
+  'contentProps',
+  'titleProps',
+  'descriptionProps'
+]);
+
+const itemUi = useListUi('item');
+const contentUi = useListUi('content');
+const titleUi = useListUi('title');
+const descriptionUi = useListUi('description');
+
+const itemClass = computed(() => [itemUi.value, props.class]);
 </script>
 
 <template>
-  <ListItem>
+  <li v-bind="forwardedProps" data-soybean-list-item :class="itemClass">
     <slot name="leading" />
-    <ListContent v-bind="contentProps">
-      <ListTitle v-if="slots.title || title" v-bind="titleProps">
+    <div v-bind="contentProps" data-soybean-list-content :class="contentUi">
+      <h3 v-if="slots.title || title" v-bind="titleProps" data-soybean-list-title :class="titleUi">
         <slot name="title">{{ title }}</slot>
-      </ListTitle>
-      <ListDescription v-if="slots.description || description" v-bind="descriptionProps">
+      </h3>
+      <p
+        v-if="slots.description || description"
+        v-bind="descriptionProps"
+        data-soybean-list-description
+        :class="descriptionUi"
+      >
         <slot name="description">{{ description }}</slot>
-      </ListDescription>
+      </p>
       <slot />
-    </ListContent>
+    </div>
     <slot name="trailing" />
-  </ListItem>
+  </li>
 </template>

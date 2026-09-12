@@ -1073,6 +1073,58 @@
         "referencedTypes": []
       }
     },
+    "TreeMenuBadge": {
+      "props": {
+        "kind": "props",
+        "name": "TreeMenuBadgeProps",
+        "type": "Interface TreeMenuBadgeProps",
+        "resolvedType": "{ open?: boolean; contentProps?: BaseProps }",
+        "description": "Properties for the badge markup rendered inside a TreeMenu option.\n\nThe `badge` family is UI-only (it failed headless admission), so the tree-menu renders its own\nbadge anatomy instead of composing a headless badge primitive. The shape mirrors the retired\n`BadgeCompactProps` minus `content`, which the option supplies through `TreeMenuBaseOptionData.badge`.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubadgeprops.props",
+        "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "open",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the badge bubble is rendered.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubadgeprops.members.open",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "contentProps",
+            "type": "BaseProps",
+            "required": false,
+            "description": "Properties forwarded to the badge bubble element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubadgeprops.members.contentprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BaseProps",
+                "kind": "typeAlias",
+                "type": "import(\"../../types\").DataAttributes & import(\"vue\").HTMLAttributes",
+                "resolvedType": "DataAttributes & T",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_vue.baseprops",
+                "sourcePath": "packages/headless/src/types/vue.ts",
+                "typeParameters": ["T = HTMLAttributes"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "TreeMenuBaseItem": {
       "props": {
         "kind": "props",
@@ -2596,7 +2648,7 @@
                     "name": "badgeProps",
                     "type": "T['badgeProps']",
                     "required": false,
-                    "description": "Properties forwarded to the badge component.",
+                    "description": "Properties forwarded to the badge markup.",
                     "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenuoptiondata.members.badgeprops",
                     "default": null,
                     "inheritedFrom": null,
@@ -4097,7 +4149,7 @@
                     "name": "badgeProps",
                     "type": "T['badgeProps']",
                     "required": false,
-                    "description": "Properties forwarded to the badge component.",
+                    "description": "Properties forwarded to the badge markup.",
                     "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenuoptiondata.members.badgeprops",
                     "default": null,
                     "inheritedFrom": null,

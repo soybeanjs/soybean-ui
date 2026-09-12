@@ -1,18 +1,18 @@
 ---
 head:
   title: Card
-  description: 'A container that groups related content and actions into a bordered, shadowed surface. SCard combines a CardRoot/CardHeader/CardContent/CardFooter/CardTitle/CardDescription family of headless primitives (zero styles) with the cardVariants style recipe (8 slots, 6 sizes, scrollable/split flags).'
+  description: 'A container that groups related content and actions into a bordered, shadowed surface. SCard is a UI-only composition over the admitted collapsible primitives (CollapsibleRoot/CollapsibleContent/CollapsibleTrigger) plus its own header/title/description/footer chrome, styled by the cardVariants recipe (8 slots, 6 sizes, scrollable/split flags).'
 ---
 
 # Card
 
 ## Overview
 
-A container that groups related content and actions into a bordered, shadowed surface. `SCard` combines a `CardRoot`/`CardHeader`/`CardContent`/`CardFooter`/`CardTitle`/`CardDescription` family of headless primitives (zero styles) with the `cardVariants` style recipe (8 slots, 6 sizes, `scrollable`/`split` flags).
+A container that groups related content and actions into a bordered, shadowed surface. `SCard` is a **UI-only** component: it composes the admitted headless `collapsible` primitives (`CollapsibleRoot` / `CollapsibleContent` / `CollapsibleTrigger`) for the only real behavior a card has — collapsing — and owns its own header/title/description/footer chrome, styled by the `cardVariants` recipe (8 slots, 6 sizes, `scrollable`/`split` flags).
 
 Use it for dashboards, profile blocks, settings panels, or any content that benefits from a titled, sectioned container. Prefer `list` or `table` for repetitive data rows, and `popover`/`dialog` for floating or modal surfaces.
 
-`SCard` aggregates the primitives through `CardCompact` and is **collapsible** by default — the content area animates open/closed and can be driven with `v-model:open`. For fully custom compositions, fall back to the headless `CardRoot`-family primitives.
+The card is **collapsible by default** — the content area animates open/closed and can be driven with `v-model:open`. There is no headless `card` family: the chrome nodes are presentation-only, so they live in the UI layer and keep `data-soybean-card-*` attributes for styling and tests.
 
 ## Usage
 
@@ -20,7 +20,7 @@ Use it for dashboards, profile blocks, settings panels, or any content that bene
 
 ## Features
 
-- 🧩 Headless/styled split — `CardCompact` aggregates the 8 primitives and exposes per-part `*Props`; `SCard` only injects styles and forwards slots/events
+- 🧩 UI-only over admitted primitives — the collapsible behavior comes from the headless `collapsible` family; `SCard` owns the chrome and injects the `cardVariants` classes through `provideCollapsibleUi`
 - 🧱 Composite structure — `header`/`title`/`description`/`content`/`footer` plus `title-leading`/`title-trailing`/`extra` slots
 - 🔽 Collapsible — the content animates open/closed (`CollapsibleRoot`/`CollapsibleContent`), controlled with `v-model:open`/`defaultOpen`
 - ➗ Split sections — `split` adds `divide-y` dividers between title/content/footer
@@ -31,15 +31,8 @@ Use it for dashboards, profile blocks, settings panels, or any content that bene
 
 ## Component family
 
-- `SCard` (styled) — the entry wrapper; `cardVariants` recipe with dynamic slot forwarding
-- `CardRoot` (headless) — the collapsible container; owns the `open` state via `CollapsibleRoot`
-- `CardHeader` (headless) — the top section hosting title/description/extra
-- `CardTitleRoot` / `CardTitle` (headless) — the title row and the `<h3>` heading
-- `CardDescription` (headless) — the muted description under the title
-- `CardContent` (headless) — the main body; a `CollapsibleContent` (animates + focusable)
-- `CardFooter` (headless) — the bottom actions area
-- `CardCollapsibleTrigger` (headless) — a collapsible trigger bound to the card state
-- `CardCompact` (headless) — the aggregated composite; composes header/content/footer and the default title/description
+- `SCard` — the entry component; renders `CollapsibleRoot` (`defaultOpen: true`) plus the `header` / `title-root` / `title` / `description` / `content` / `footer` nodes, and feeds the `cardVariants` recipe to `provideCollapsibleUi`
+- `SCardCollapsibleTrigger` — the collapsible trigger bound to the card state; renders a chevron `SButtonIcon` by default and exposes the `open` state through its slot props
 
 ## Demos
 
@@ -53,7 +46,7 @@ Use it for dashboards, profile blocks, settings panels, or any content that bene
 
 ### Architecture and benchmark differences
 
-`CardCompact` owns the structure orchestration (header/content/footer visibility, default title/description) while every primitive stays style-free and only the UI wrapper injects the `cardVariants` classes. This mirrors shadcn/ui's headless/styled split, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a single styled card with `title`/`extra`/`actions` props. SoybeanUI makes the card **collapsible by default** through the `CollapsibleRoot` primitive, a deliberate extension most libraries do not offer on a card; `split` and `scrollable` are toggled via recipe variants rather than layout props.
+`Card` is the **UI-only** exemplar of the headless admission rule: its only real logic is collapsing, which the admitted `collapsible` family already provides, so no headless `card` family exists. `SCard` owns the structure orchestration (header/footer visibility, default title/description) and hands the recipe's `root` / `content` / `trigger` slots to `provideCollapsibleUi`, so `CollapsibleRoot` / `CollapsibleContent` / `CollapsibleTrigger` resolve their own classes from `cardVariants`. This mirrors shadcn/ui's composition-first approach, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a single styled card with `title`/`extra`/`actions` props. SoybeanUI makes the card **collapsible by default** through the `CollapsibleRoot` primitive, a deliberate extension most libraries do not offer on a card; `split` and `scrollable` are toggled via recipe variants rather than layout props.
 
 | Capability                   | SoybeanUI | shadcn/ui | Ant Design Card | Element Plus Card | Mantine Card | Naive UI Card |
 | :--------------------------- | :-------: | :-------: | :-------------: | :---------------: | :----------: | :-----------: |
@@ -72,8 +65,9 @@ Use it for dashboards, profile blocks, settings panels, or any content that bene
 ### Cautions
 
 - The card is collapsible and defaults to open (`defaultOpen: true`). When collapsed, the content (and footer) is removed from the flow; footer visibility depends on the open state.
-- `CardTitle` renders a fixed `<h3>`. If your page's heading hierarchy differs, wrap or restyle the title so it does not skip levels.
-- `CardContent` carries `tabindex="-1"` (from `CollapsibleContent`) so it can receive focus for scrolling; it is not an interactive control by itself.
+- The title renders as a fixed `<h3>`. If your page's heading hierarchy differs, wrap or restyle the title so it does not skip levels.
+- The content node carries `tabindex="-1"` so a scrollable body can receive programmatic focus; it is not an interactive control by itself. Override it through `contentProps`.
+- `SCardCollapsibleTrigger` renders an icon-only button, so pass `aria-label` (e.g. `aria-label="Toggle card content"`) to give it an accessible name.
 - `split` applies `divide-y`; combine it with a `size` to control the vertical rhythm. `scrollable` only takes effect when the card has a constrained height.
 - The content padding adjusts automatically based on `data-header-visible`/`data-footer-visible` (and the collapsible `data-state`) so a bare content-only card still looks balanced.
 
