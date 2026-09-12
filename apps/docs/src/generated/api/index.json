@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T12:48:54.293Z",
+  "generatedAt": "2026-09-12T04:10:55.055Z",
   "packages": {
     "headless": {
       "components": {
@@ -540,6 +540,7 @@
           "file": "input-number.json",
           "symbols": [
             "InputNumber",
+            "InputNumberClear",
             "InputNumberCompact",
             "InputNumberControl",
             "InputNumberDecrement",
@@ -573,6 +574,7 @@
             "LayoutHeader",
             "LayoutMain",
             "LayoutMobile",
+            "LayoutPlaceholder",
             "LayoutRail",
             "LayoutRoot",
             "LayoutSidebar",
@@ -657,6 +659,7 @@
             "MenubarItem",
             "MenubarItemIndicator",
             "MenubarMenu",
+            "MenubarMenus",
             "MenubarPortal",
             "MenubarRadioGroup",
             "MenubarRadioItem",
@@ -678,6 +681,7 @@
             "NavMenuItem",
             "NavMenuLink",
             "NavMenuList",
+            "NavMenuOptionCompact",
             "NavMenuRoot",
             "NavMenuSubContent",
             "NavMenuSubTrigger",
@@ -962,7 +966,8 @@
             "TableRow",
             "TableScroll",
             "TableSelection",
-            "TableTreeToggle"
+            "TableTreeToggle",
+            "TableVirtualSpacerRow"
           ]
         },
         "tabs": {

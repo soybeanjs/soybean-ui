@@ -1622,6 +1622,33 @@
         "referencedTypes": []
       }
     },
+    "LayoutPlaceholder": {
+      "props": {
+        "kind": "props",
+        "name": "LayoutPlaceholderProps",
+        "type": "Interface LayoutPlaceholderProps",
+        "resolvedType": "{ type: 'header' | 'footer' | 'tab' }",
+        "description": "Properties for the LayoutPlaceholder component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutplaceholderprops.props",
+        "sourcePath": "packages/headless/src/components/layout/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "type",
+            "type": "'header' | 'footer' | 'tab'",
+            "required": true,
+            "description": "Which region the placeholder reserves space for.",
+            "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutplaceholderprops.members.type",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "LayoutRail": {
       "props": {
         "kind": "props",

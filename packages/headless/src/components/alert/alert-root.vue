@@ -8,7 +8,8 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<AlertRootProps>(), {
-  open: undefined
+  open: undefined,
+  role: 'alert'
 });
 
 const emit = defineEmits<AlertRootEmits>();
@@ -29,7 +30,7 @@ provideAlertRootContext({
 </script>
 
 <template>
-  <div v-if="open" data-soybean-alert-root :class="cls">
+  <div v-if="open" data-soybean-alert-root :class="cls" :role="role">
     <slot />
   </div>
 </template>

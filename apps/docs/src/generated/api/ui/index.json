@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T18:22:59.126Z",
+  "generatedAt": "2026-09-12T04:10:55.055Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -516,6 +516,7 @@
       "file": "input-number.json",
       "symbols": [
         "InputNumber",
+        "InputNumberClear",
         "InputNumberCompact",
         "InputNumberControl",
         "InputNumberDecrement",
@@ -549,6 +550,7 @@
         "LayoutHeader",
         "LayoutMain",
         "LayoutMobile",
+        "LayoutPlaceholder",
         "LayoutRail",
         "LayoutRoot",
         "LayoutSidebar",
@@ -633,6 +635,7 @@
         "MenubarItem",
         "MenubarItemIndicator",
         "MenubarMenu",
+        "MenubarMenus",
         "MenubarPortal",
         "MenubarRadioGroup",
         "MenubarRadioItem",
@@ -654,6 +657,7 @@
         "NavMenuItem",
         "NavMenuLink",
         "NavMenuList",
+        "NavMenuOptionCompact",
         "NavMenuRoot",
         "NavMenuSubContent",
         "NavMenuSubTrigger",
@@ -938,7 +942,8 @@
         "TableRow",
         "TableScroll",
         "TableSelection",
-        "TableTreeToggle"
+        "TableTreeToggle",
+        "TableVirtualSpacerRow"
       ]
     },
     "tabs": {

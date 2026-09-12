@@ -100,8 +100,8 @@
               {
                 "name": "TableVariant",
                 "kind": "typeAlias",
-                "type": "'TableCell' | 'simple'",
-                "resolvedType": "'TableCell' | 'simple'",
+                "type": "'TableVirtualSpacerRow' | 'simple'",
+                "resolvedType": "'TableVirtualSpacerRow' | 'simple'",
                 "description": "",
                 "descriptionKey": "api.generated.packages_ui_src_styles_table.tablevariant",
                 "sourcePath": "packages/ui/src/styles/table.ts",
@@ -7814,6 +7814,66 @@
             "required": true,
             "description": "Toggle expand exposed in the slot scope.",
             "descriptionKey": "api.generated.packages_headless_src_components_table_types.tabletreetoggleslotprops.members.toggleexpand",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/table/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TableVirtualSpacerRow": {
+      "props": {
+        "kind": "props",
+        "name": "TableVirtualSpacerRowProps",
+        "type": "Interface TableVirtualSpacerRowProps",
+        "resolvedType": "{ isVirtual: boolean; colspan: number; paddingStart: number; paddingEnd: number }",
+        "description": "Properties for the TableVirtualSpacerRow component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_table_types.tablevirtualspacerrowprops.props",
+        "sourcePath": "packages/headless/src/components/table/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "isVirtual",
+            "type": "boolean",
+            "required": true,
+            "description": "Whether virtual scrolling is enabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_table_types.tablevirtualspacerrowprops.members.isvirtual",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "colspan",
+            "type": "number",
+            "required": true,
+            "description": "Number of columns the spacer spans.",
+            "descriptionKey": "api.generated.packages_headless_src_components_table_types.tablevirtualspacerrowprops.members.colspan",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "paddingStart",
+            "type": "number",
+            "required": true,
+            "description": "Padding applied before the start of the row.",
+            "descriptionKey": "api.generated.packages_headless_src_components_table_types.tablevirtualspacerrowprops.members.paddingstart",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "paddingEnd",
+            "type": "number",
+            "required": true,
+            "description": "Padding applied after the end of the row.",
+            "descriptionKey": "api.generated.packages_headless_src_components_table_types.tablevirtualspacerrowprops.members.paddingend",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/table/types.ts",

@@ -13,6 +13,14 @@ export interface AlertRootProps extends BaseProps {
    * @defaultValue true
    */
   open?: boolean;
+  /**
+   * The ARIA live region role of the alert. `role="alert"` implies an
+   * assertive live region (interrupting), while `role="status"` implies a
+   * polite one (non-interrupting).
+   *
+   * @defaultValue 'alert'
+   */
+  role?: 'alert' | 'status';
 }
 
 /**

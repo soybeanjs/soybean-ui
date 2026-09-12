@@ -729,7 +729,7 @@
           {
             "name": "InputNumberCompactEmits",
             "kind": "typeAlias",
-            "type": "import(\"@soybeanjs/headless\").InputNumberRootEmits & import(\"../../../node_modules/@soybeanjs/headless/src/components/input-number/types\").InputNumberClearEmits",
+            "type": "import(\"@soybeanjs/headless\").InputNumberRootEmits & import(\"@soybeanjs/headless\").InputNumberClearEmits",
             "resolvedType": "{ \"update:modelValue\": [val: number | null]; clear: [event: PointerEvent] }",
             "description": "Events for the InputNumberCompact component.",
             "descriptionKey": "api.generated.packages_headless_src_components_input_number_types.inputnumbercompactemits",
@@ -960,6 +960,140 @@
             ]
           }
         ]
+      }
+    },
+    "InputNumberClear": {
+      "props": {
+        "kind": "props",
+        "name": "InputNumberClearProps",
+        "type": "Interface InputNumberClearProps",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the InputNumberClear component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_input_number_types.inputnumberclearprops.props",
+        "sourcePath": "packages/headless/src/components/input-number/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_number_types.inputnumberclearprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "ButtonProps.type",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_button_types.buttontype",
+                "sourcePath": "packages/headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_number_types.inputnumberclearprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "ButtonProps.disabled",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_number_types.inputnumberclearprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "ButtonProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_number_types.inputnumberclearprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "ButtonProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "InputNumberClearEmits",
+        "type": "TypeAlias InputNumberClearEmits",
+        "resolvedType": "{ clear: [event: PointerEvent] }",
+        "description": "Events for the InputNumberClear component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_input_number_types.inputnumberclearemits.emits",
+        "sourcePath": "packages/headless/src/components/input-number/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "clear",
+            "type": "[event: PointerEvent]",
+            "parameters": "event: PointerEvent",
+            "required": true,
+            "description": "Emitted when the clear button is clicked.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_number_types.inputnumberclearemits.callables.clear",
+            "sourcePath": "packages/headless/src/components/input-number/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PointerEvent",
+                "kind": "interface",
+                "type": "PointerEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript-native-bridge@6.0.3-bridge.16.tsgo.7.0.2/node_modules/typescript-native-bridge/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
       }
     },
     "InputNumberCompact": {

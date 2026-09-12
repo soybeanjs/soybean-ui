@@ -69,6 +69,31 @@ describe('SAlert', () => {
   });
 
   describe('accessibility', () => {
+    it('renders role="alert" on the root by default', () => {
+      const wrapper = mount(SAlert, {
+        props: {
+          title: 'Heads up'
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-alert-root]').attributes('role')).toBe('alert');
+      wrapper.unmount();
+    });
+
+    it('renders role="status" when set', () => {
+      const wrapper = mount(SAlert, {
+        props: {
+          role: 'status',
+          title: 'Heads up'
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-alert-root]').attributes('role')).toBe('status');
+      wrapper.unmount();
+    });
+
     it('has no a11y violations', async () => {
       const wrapper = mount(SAlert, {
         props: {

@@ -174,6 +174,7 @@
             "descriptionprops": "Properties forwarded to the description element.",
             "icon": "Icon rendered by the component.",
             "open": "The controlled open state of the alert. Can be bound with `v-model:open`.",
+            "role": "The ARIA live region role of the alert. `role=\"alert\"` implies an\nassertive live region (interrupting), while `role=\"status\"` implies a\npolite one (non-interrupting).",
             "title": "Title text rendered by the component.",
             "titleprops": "Properties forwarded to the title element."
           },
@@ -204,7 +205,8 @@
         },
         "alertrootprops": {
           "members": {
-            "open": "The controlled open state of the alert. Can be bound with `v-model:open`."
+            "open": "The controlled open state of the alert. Can be bound with `v-model:open`.",
+            "role": "The ARIA live region role of the alert. `role=\"alert\"` implies an\nassertive live region (interrupting), while `role=\"status\"` implies a\npolite one (non-interrupting)."
           },
           "props": "Properties for the AlertRoot component."
         },
@@ -4847,6 +4849,21 @@
         "iconvalue": "Type information for IconValue."
       },
       "packages_headless_src_components_input_number_types": {
+        "inputnumberclearemits": {
+          "callables": {
+            "clear": "Emitted when the clear button is clicked."
+          },
+          "emits": "Events for the InputNumberClear component."
+        },
+        "inputnumberclearprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "disabled": "Whether the component is disabled.",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
+          },
+          "props": "Properties for the InputNumberClear component."
+        },
         "inputnumbercompactemits": {
           "callables": {
             "clear": "Emitted when the clear button is clicked.",
@@ -5249,6 +5266,12 @@
         },
         "layoutmobileprops": {
           "props": "Properties for the LayoutMobile component."
+        },
+        "layoutplaceholderprops": {
+          "members": {
+            "type": "Which region the placeholder reserves space for."
+          },
+          "props": "Properties for the LayoutPlaceholder component."
         },
         "layoutrailprops": {
           "props": "Properties for the LayoutRail component."
@@ -6046,6 +6069,23 @@
           },
           "props": "Properties for the MenubarMenu component."
         },
+        "menubarmenusprops": {
+          "members": {
+            "contentprops": "Props forwarded to the content of each menu.",
+            "gettriggerprops": "Resolve the effective props of a top-level trigger item.",
+            "items": "Top-level items rendered as visible triggers.",
+            "linkprops": "Props forwarded to link triggers.",
+            "listeners": "Listeners forwarded to the menubar root.",
+            "moreicon": "Icon of the trailing \"more\" trigger.",
+            "moreitems": "Items collapsed into the trailing \"more\" menu.",
+            "morelabel": "Label of the trailing \"more\" trigger.",
+            "moretriggerprops": "Props forwarded to the trailing \"more\" trigger.",
+            "optionsprops": "Props forwarded to the menu options of each open menu.",
+            "portalprops": "Props forwarded to the portal of each menu.",
+            "rootprops": "Props forwarded to the menubar root."
+          },
+          "props": "Properties for the MenubarMenus component (the internal list renderer used\nby `MenubarCompact`)."
+        },
         "menubarrootemits": {
           "callables": {
             "update_modelvalue": "Emitted when the model value changes."
@@ -6220,6 +6260,52 @@
         },
         "navmenulistprops": {
           "props": "Properties for the NavMenuList component."
+        },
+        "navmenuoptioncompactemits": {
+          "callables": {
+            "select": "Emitted when a link is selected."
+          },
+          "emits": "Events for the NavMenuOptionCompact component."
+        },
+        "navmenuoptioncompactprops": {
+          "members": {
+            "contentprops": "Properties forwarded to the content element.",
+            "item": "Current item data.",
+            "itemprops": "Properties forwarded to the item element.",
+            "linkprops": "Properties forwarded to the link element.",
+            "listprops": "Properties forwarded to the list element.",
+            "subcontentprops": "Properties forwarded to the nested flyout content element.",
+            "subtriggerprops": "Properties forwarded to the nested flyout trigger element.",
+            "triggerprops": "Properties forwarded to the trigger element.",
+            "viewportprops": "Properties forwarded to the viewport element."
+          },
+          "props": "Properties for the NavMenuOptionCompact component."
+        },
+        "navmenuoptioncompactslots": {
+          "callables": {
+            "item": "",
+            "item_children": "",
+            "item_leading": "",
+            "item_link_icon": "",
+            "item_trailing": "",
+            "item_trigger_icon": ""
+          },
+          "slots": "Slots for the NavMenuOptionCompact component."
+        },
+        "navmenuoptiondata": {
+          "members": {
+            "children": "The children of the option (rendered as links inside the submenu).",
+            "description": "The description of the option.",
+            "disabled": "Whether the option is disabled.",
+            "external": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
+            "href": "The URL the link should navigate to when clicked on.",
+            "icon": "The icon of the option.",
+            "label": "The label to display in the option.",
+            "selected": "Whether the option is selected.",
+            "target": "Where to display the linked URL, as the name for a browsing context.",
+            "to": "Route Location the link should navigate to when clicked on.",
+            "value": "The value of the option."
+          }
         },
         "navmenurootemits": {
           "callables": {
@@ -8722,6 +8808,15 @@
           },
           "slotprops": "Slot properties for the TableTreeToggle component."
         },
+        "tablevirtualspacerrowprops": {
+          "members": {
+            "colspan": "Number of columns the spacer spans.",
+            "isvirtual": "Whether virtual scrolling is enabled.",
+            "paddingend": "Padding applied after the end of the row.",
+            "paddingstart": "Padding applied before the start of the row."
+          },
+          "props": "Properties for the TableVirtualSpacerRow component."
+        },
         "type": ""
       },
       "packages_headless_src_components_tabs_types": {
@@ -10393,6 +10488,7 @@
             "descriptionprops": "Properties forwarded to the description element.",
             "icon": "Icon rendered by the component.",
             "open": "The controlled open state of the alert. Can be bound with `v-model:open`.",
+            "role": "The ARIA live region role of the alert. `role=\"alert\"` implies an\nassertive live region (interrupting), while `role=\"status\"` implies a\npolite one (non-interrupting).",
             "size": "Visual size of the component.",
             "title": "Title text rendered by the component.",
             "titleprops": "Properties forwarded to the title element.",

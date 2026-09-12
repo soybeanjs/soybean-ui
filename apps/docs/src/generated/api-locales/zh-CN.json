@@ -174,6 +174,7 @@
             "descriptionprops": "转发到描述元素的属性。",
             "icon": "组件呈现的图标。",
             "open": "警报的受控打开状态。可与 `v-model:open`绑定。",
+            "role": "alert 的 ARIA 动态区域角色。`role=\"alert\"` 表示\n强制性动态区域（会打断当前操作），而 `role=\"status\"` 表示\n礼貌型动态区域（不会打断当前操作）。",
             "title": "组件呈现的标题文本。",
             "titleprops": "属性转发到标题元素。"
           },
@@ -204,7 +205,8 @@
         },
         "alertrootprops": {
           "members": {
-            "open": "警报的受控打开状态。可与 `v-model:open`绑定。"
+            "open": "警报的受控打开状态。可与 `v-model:open`绑定。",
+            "role": "alert 的 ARIA 动态区域角色。`role=\"alert\"` 表示\n强制性动态区域（会打断当前操作），而 `role=\"status\"` 表示\n礼貌型动态区域（不会打断当前操作）。"
           },
           "props": "AlertRoot 组件的属性。"
         },
@@ -4847,6 +4849,21 @@
         "iconvalue": "IconValue 的类型信息。"
       },
       "packages_headless_src_components_input_number_types": {
+        "inputnumberclearemits": {
+          "callables": {
+            "clear": "点击“清除”按钮时触发。"
+          },
+          "emits": "InputNumberClear 组件的事件。"
+        },
+        "inputnumberclearprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "disabled": "该组件是否已禁用。",
+            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
+          },
+          "props": "InputNumberClear 组件的属性。"
+        },
         "inputnumbercompactemits": {
           "callables": {
             "clear": "点击清除按钮时输出。",
@@ -5249,6 +5266,12 @@
         },
         "layoutmobileprops": {
           "props": "LayoutMobile 组件的属性。"
+        },
+        "layoutplaceholderprops": {
+          "members": {
+            "type": "该占位符为哪个区域预留空间。"
+          },
+          "props": "LayoutPlaceholder 组件的属性。"
         },
         "layoutrailprops": {
           "props": "LayoutRail 组件的属性。"
@@ -6046,6 +6069,23 @@
           },
           "props": "MenubarMenu 组件的属性。"
         },
+        "menubarmenusprops": {
+          "members": {
+            "contentprops": "已将属性转发至各菜单的内容中。",
+            "gettriggerprops": "解析顶级触发项的有效 props。",
+            "items": "顶级项目应呈现为可见的触发器。",
+            "linkprops": "传递给 link 触发器的 props。",
+            "listeners": "将监听器转发至菜单栏根节点。",
+            "moreicon": "尾部“更多”触发按钮的图标。",
+            "moreitems": "项目已折叠至末尾的“更多”菜单中。",
+            "morelabel": "尾部“more”触发器的标签。",
+            "moretriggerprops": "将属性转发给末尾的“more”触发器。",
+            "optionsprops": "这些 prop 会转发到每个已展开菜单的菜单选项中。",
+            "portalprops": "转发至各菜单入口页面的 props。",
+            "rootprops": "转发至菜单栏根节点的属性。"
+          },
+          "props": "MenubarMenus 组件的属性（`MenubarCompact` 使用的内部列表渲染器\n）。"
+        },
         "menubarrootemits": {
           "callables": {
             "update_modelvalue": "当模型值发生变化时发出。"
@@ -6220,6 +6260,52 @@
         },
         "navmenulistprops": {
           "props": "NavMenuList 组件的属性。"
+        },
+        "navmenuoptioncompactemits": {
+          "callables": {
+            "select": "当选中链接时触发。"
+          },
+          "emits": "NavMenuOptionCompact 组件的事件。"
+        },
+        "navmenuoptioncompactprops": {
+          "members": {
+            "contentprops": "转发给内容元素的属性。",
+            "item": "当前条目数据。",
+            "itemprops": "转发给 item 元素的属性。",
+            "linkprops": "传递给 link 元素的属性。",
+            "listprops": "转发给列表元素的属性。",
+            "subcontentprops": "转发至嵌套的弹出内容元素的属性。",
+            "subtriggerprops": "转发给嵌套弹出触发器元素的属性。",
+            "triggerprops": "转发给触发元素的属性。",
+            "viewportprops": "转发给视口元素的属性。"
+          },
+          "props": "NavMenuOptionCompact 组件的属性。"
+        },
+        "navmenuoptioncompactslots": {
+          "callables": {
+            "item": "",
+            "item_children": "",
+            "item_leading": "",
+            "item_link_icon": "",
+            "item_trailing": "",
+            "item_trigger_icon": ""
+          },
+          "slots": "NavMenuOptionCompact 组件的插槽。"
+        },
+        "navmenuoptiondata": {
+          "members": {
+            "children": "该选项的子项（在子菜单中以链接形式显示）。",
+            "description": "该选项的描述。",
+            "disabled": "该选项是否已禁用。",
+            "external": "强制将链接视为外部链接（true）或内部链接（false）。这有助于处理边界情况",
+            "href": "点击该链接时应跳转到的 URL。",
+            "icon": "该选项的图标。",
+            "label": "要在选项中显示的标签。",
+            "selected": "该选项是否已被选中。",
+            "target": "将链接的 URL 作为浏览上下文的名称显示在何处。",
+            "to": "链接点击后应跳转到的目标位置。",
+            "value": "该选项的值。"
+          }
         },
         "navmenurootemits": {
           "callables": {
@@ -8722,6 +8808,15 @@
           },
           "slotprops": "TableTreeToggle 组件的槽属性。"
         },
+        "tablevirtualspacerrowprops": {
+          "members": {
+            "colspan": "分隔符所占的列数。",
+            "isvirtual": "是否启用了虚拟滚动。",
+            "paddingend": "在行尾添加填充。",
+            "paddingstart": "在行首添加填充。"
+          },
+          "props": "TableVirtualSpacerRow 组件的属性。"
+        },
         "type": ""
       },
       "packages_headless_src_components_tabs_types": {
@@ -10393,6 +10488,7 @@
             "descriptionprops": "已将属性转发至 description 元素。",
             "icon": "由组件渲染的图标。",
             "open": "alert 控件的“打开”状态。可通过 `v-model:open` 进行绑定。",
+            "role": "alert 的 ARIA 动态区域角色。`role=\"alert\"` 表示\n强制性动态区域（会打断当前操作），而 `role=\"status\"` 表示\n礼貌型动态区域（不会打断当前操作）。",
             "size": "组件的视觉尺寸。",
             "title": "由组件渲染的标题文本。",
             "titleprops": "传递给 title 元素的属性。",
