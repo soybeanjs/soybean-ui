@@ -169,7 +169,7 @@ dialog.warning('磁盘已满', { description: '请释放空间。' });
 
 ### 如何使用全屏模式？
 
-通过头部按钮切换（`showFullscreen`，默认开启），或用 `v-model:fullscreen` 驱动：
+通过头部按钮切换（`showFullscreen`，默认隐藏，需显式传 `show-fullscreen` 开启），或用 `v-model:fullscreen` 驱动：
 
 ```vue
 <SDialog v-model:fullscreen="fullscreen" title="面板">...</SDialog>

@@ -98,7 +98,7 @@ describe('SDialog', () => {
       wrapper.unmount();
     });
 
-    it('shows fullscreen toggle by default', async () => {
+    it('hides fullscreen toggle by default', async () => {
       const wrapper = mount(SDialog, {
         props: {
           open: true,
@@ -111,7 +111,7 @@ describe('SDialog', () => {
 
       await nextTick();
 
-      expect(wrapper.find('[data-soybean-dialog-fullscreen]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-dialog-fullscreen]').exists()).toBe(false);
 
       wrapper.unmount();
     });
@@ -199,6 +199,7 @@ describe('SDialog', () => {
         props: {
           open: true,
           title: 'Dialog',
+          showFullscreen: true,
           portalProps: { disabled: true }
         },
         slots,
@@ -220,6 +221,7 @@ describe('SDialog', () => {
         props: {
           open: true,
           title: 'Dialog',
+          showFullscreen: true,
           portalProps: { disabled: true }
         },
         slots,
@@ -270,6 +272,7 @@ describe('SDialog', () => {
         props: {
           open: true,
           title: 'Dialog',
+          showFullscreen: true,
           portalProps: { disabled: true }
         },
         slots,

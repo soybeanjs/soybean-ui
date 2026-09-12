@@ -7,6 +7,12 @@ import type { ThemeSize } from '@/theme';
  */
 export interface DialogProps extends DialogCompactProps {
   /**
+   * Whether show the fullscreen toggle button in the header of the dialog.
+   *
+   * @defaultValue false
+   */
+  showFullscreen?: boolean;
+  /**
    * the popup class of the dialog
    */
   class?: ClassValue;

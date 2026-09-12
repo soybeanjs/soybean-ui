@@ -169,7 +169,7 @@ Set `draggable` and drag the header to move the dialog. The position is kept unt
 
 ### How do I use the fullscreen mode?
 
-Toggle it with the header button (`showFullscreen`, on by default) or drive it with `v-model:fullscreen`:
+Toggle it with the header button (`showFullscreen`, hidden by default — pass `show-fullscreen` to opt in) or drive it with `v-model:fullscreen`:
 
 ```vue
 <SDialog v-model:fullscreen="fullscreen" title="Panel">...</SDialog>

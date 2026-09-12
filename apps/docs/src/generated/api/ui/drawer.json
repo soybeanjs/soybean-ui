@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "DrawerProps",
         "type": "Interface DrawerProps",
-        "resolvedType": "{ side?: Side; class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DialogUi>; title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; showFullscreen?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DialogOverlayProps; portalProps?: DialogPortalProps; popupProps?: DialogPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; fullscreenProps?: DialogFullscreenProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; draggable?: boolean; fullscreen?: boolean; defaultFullscreen?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
+        "resolvedType": "{ side?: Side; showFullscreen?: boolean; class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DialogUi>; title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DialogOverlayProps; portalProps?: DialogPortalProps; popupProps?: DialogPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; fullscreenProps?: DialogFullscreenProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; draggable?: boolean; fullscreen?: boolean; defaultFullscreen?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
         "description": "Properties for the Drawer component.",
         "descriptionKey": "api.generated.packages_ui_src_components_drawer_types.drawerprops.props",
         "sourcePath": "packages/ui/src/components/drawer/types.ts",
@@ -36,6 +36,17 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "showFullscreen",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether show the fullscreen toggle button in the header of the dialog.",
+            "descriptionKey": "api.generated.packages_ui_src_components_drawer_types.drawerprops.members.showfullscreen",
+            "default": "false",
+            "inheritedFrom": "showFullscreen",
+            "sourcePath": "packages/ui/src/components/dialog/types.ts",
+            "referencedTypes": []
           },
           {
             "name": "class",
@@ -167,17 +178,6 @@
             "descriptionKey": "api.generated.packages_ui_src_components_drawer_types.drawerprops.members.showclose",
             "default": "true",
             "inheritedFrom": "showClose",
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "showFullscreen",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether show the fullscreen toggle button in the header of the dialog.",
-            "descriptionKey": "api.generated.packages_ui_src_components_drawer_types.drawerprops.members.showfullscreen",
-            "default": "true",
-            "inheritedFrom": "showFullscreen",
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": []
           },

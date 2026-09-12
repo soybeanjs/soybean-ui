@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<DialogProps>(), {
   fullscreen: undefined,
   modal: true,
   showClose: true,
-  showFullscreen: true
+  showFullscreen: false
 });
 
 const emit = defineEmits<DialogEmits>();
