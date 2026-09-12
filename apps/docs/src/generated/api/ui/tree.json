@@ -581,7 +581,7 @@
             "name": "animated",
             "type": "boolean",
             "required": false,
-            "description": "When `true`, enables a smooth height transition on expand/collapse. Sets the\nvirtualizer to dynamic mode and animates item layout via auto-animate.",
+            "description": "When `true`, renders visible items in normal document flow (dynamic mode) so\nitem positions stay correct across expand/collapse without absolute offsets.",
             "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.animated",
             "default": "false",
             "inheritedFrom": null,

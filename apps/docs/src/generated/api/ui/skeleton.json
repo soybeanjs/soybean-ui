@@ -105,7 +105,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.packages_ui_src_components_skeleton_types.skeletonprops.members.aschild",
             "default": null,
-            "inheritedFrom": "_SkeletonProps.asChild",
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -116,7 +116,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.packages_ui_src_components_skeleton_types.skeletonprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "_SkeletonProps.as",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
