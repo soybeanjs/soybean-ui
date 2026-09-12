@@ -3023,7 +3023,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_tooltip_types.tooltiprootprops.members.dir",
             "default": null,
-            "inheritedFrom": "dir",
+            "inheritedFrom": "PopperRootProps.dir",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -3048,7 +3048,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_tooltip_types.tooltiprootprops.members.modal",
             "default": null,
-            "inheritedFrom": "modal",
+            "inheritedFrom": "PopperRootProps.modal",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },

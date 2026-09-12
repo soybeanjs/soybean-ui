@@ -48,7 +48,7 @@ Interactive demos for tree-menu are rendered on the site.
 
 Structured API summary generated from build-time component metadata.
 
-- Exported symbols (16): TreeMenu, TreeMenuBaseItem, TreeMenuButton, TreeMenuCollapsible, TreeMenuCompact, TreeMenuGroup, TreeMenuGroupLabel, TreeMenuGroupRoot, TreeMenuItem, TreeMenuOptionCompact, TreeMenuOptionsCompact, TreeMenuOptionSlotCompact, TreeMenuRoot, TreeMenuSlotCompact, TreeMenuStyledItem, TreeMenuSub.
+- Exported symbols (17): TreeMenu, TreeMenuBadge, TreeMenuBaseItem, TreeMenuButton, TreeMenuCollapsible, TreeMenuCompact, TreeMenuGroup, TreeMenuGroupLabel, TreeMenuGroupRoot, TreeMenuItem, TreeMenuOptionCompact, TreeMenuOptionsCompact, TreeMenuOptionSlotCompact, TreeMenuRoot, TreeMenuSlotCompact, TreeMenuStyledItem, TreeMenuSub.
 
 ### TreeMenu
 
@@ -100,6 +100,19 @@ Slots for the TreeMenu component.
 - `item`: Custom content for the item slot. (type `((props: { item: T; }) => any) | undefined`)
 - `item-leading`: Custom content for the item leading slot. (type `((props: { item: T; }) => any) | undefined`)
 - `item-trailing`: Custom content for the item trailing slot. (type `((props: { item: T; }) => any) | undefined`)
+
+### TreeMenuBadge
+
+#### Props
+
+Properties for the badge markup rendered inside a TreeMenu option.
+
+The `badge` family is UI-only (it failed headless admission), so the tree-menu renders its own
+badge anatomy instead of composing a headless badge primitive. The shape mirrors the retired
+`BadgeCompactProps` minus `content`, which the option supplies through `TreeMenuBaseOptionData.badge`.
+
+- `open`: Whether the badge bubble is rendered. (type `boolean`; default `true`; optional)
+- `contentProps`: Properties forwarded to the badge bubble element. (type `BaseProps`; optional)
 
 ### TreeMenuBaseItem
 

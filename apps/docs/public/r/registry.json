@@ -90,18 +90,6 @@
       "package": "ui"
     },
     {
-      "name": "ui/arrow",
-      "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
-      "files": [
-        {
-          "path": "packages/ui/src/components/arrow/index.ts",
-          "type": "registry:lib"
-        }
-      ],
-      "package": "ui"
-    },
-    {
       "name": "ui/aspect-ratio",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
@@ -189,26 +177,6 @@
         },
         {
           "path": "packages/ui/src/components/badge/index.ts",
-          "type": "registry:lib"
-        }
-      ],
-      "package": "ui"
-    },
-    {
-      "name": "ui/bottom-sheet",
-      "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
-      "files": [
-        {
-          "path": "packages/ui/src/components/bottom-sheet/bottom-sheet.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/bottom-sheet/types.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "packages/ui/src/components/bottom-sheet/index.ts",
           "type": "registry:lib"
         }
       ],
@@ -1134,26 +1102,6 @@
       "package": "ui"
     },
     {
-      "name": "ui/navigation-menu",
-      "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
-      "files": [
-        {
-          "path": "packages/ui/src/components/navigation-menu/navigation-menu.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/navigation-menu/types.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "packages/ui/src/components/navigation-menu/index.ts",
-          "type": "registry:lib"
-        }
-      ],
-      "package": "ui"
-    },
-    {
       "name": "ui/page-tabs",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
@@ -1775,7 +1723,7 @@
     {
       "name": "ui/tree",
       "type": "registry:ui",
-      "dependencies": ["@formkit/auto-animate", "@soybeanjs/headless"],
+      "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
           "path": "packages/ui/src/components/tree/tree-virtualizer.vue",

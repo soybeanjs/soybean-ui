@@ -1,7 +1,32 @@
 {
-  "generatedAt": "2026-09-12T16:40:21.931Z",
+  "generatedAt": "2026-09-12T17:29:03.871Z",
   "schemaVersion": 4,
   "components": {
+    "arrow": {
+      "component": "arrow",
+      "file": "arrow.json",
+      "symbols": ["Arrow"]
+    },
+    "popper": {
+      "component": "popper",
+      "file": "popper.json",
+      "symbols": [
+        "PopperAnchor",
+        "PopperArrow",
+        "PopperCompact",
+        "PopperPopup",
+        "PopperPortal",
+        "PopperPositioner",
+        "PopperPositionerImpl",
+        "PopperPositioningPopup",
+        "PopperPositioningPositioner",
+        "PopperPositioningRoot",
+        "PopperRoot",
+        "PopperSub",
+        "PopperSubTrigger",
+        "PopperTrigger"
+      ]
+    },
     "primitive": {
       "component": "primitive",
       "file": "primitive.json",

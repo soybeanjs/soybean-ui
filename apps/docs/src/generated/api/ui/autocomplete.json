@@ -3610,7 +3610,7 @@
           {
             "name": "ComboboxContentImplEmits",
             "kind": "typeAlias",
-            "type": "import(\"@/index\").DismissableLayerEmits & import(\"@/index\").FocusScopeEmits & import(\"@/index\").PopperPositioningPositionerEmits",
+            "type": "import(\"@/index\").DismissableLayerEmits & import(\"@/index\").FocusScopeEmits & import(\"../popper\").PopperPositioningPositionerEmits",
             "resolvedType": "{ escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; placed: [] }",
             "description": "Events for the ComboboxContentImpl component.",
             "descriptionKey": "api.generated.packages_headless_src_components_combobox_types.comboboxcontentimplemits",

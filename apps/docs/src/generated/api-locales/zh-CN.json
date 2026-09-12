@@ -588,244 +588,6 @@
           }
         }
       },
-      "packages_headless_src_components_bottom_sheet_index": {
-        "bottomsheetoverlayprops": {
-          "members": {
-            "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。"
-          },
-          "props": "DialogOverlay 组件的属性。"
-        },
-        "bottomsheetpopupemits": {
-          "emits": "DialogPopup 组件的事件。"
-        },
-        "bottomsheetpopupprops": {
-          "members": {
-            "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
-            "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
-            "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。"
-          },
-          "props": "DialogPopup 组件的属性。"
-        }
-      },
-      "packages_headless_src_components_bottom_sheet_types": {
-        "bottomsheetcancelemits": {
-          "callables": {
-            "cancel": "当请求取消对话框时调用的事件处理程序。"
-          },
-          "emits": "BottomSheetCancel 组件的事件。"
-        },
-        "bottomsheetcancelprops": {
-          "members": {
-            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
-            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
-            "disabled": "该组件是否被禁用。",
-            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
-          },
-          "props": "BottomSheetCancel 组件的属性。"
-        },
-        "bottomsheetcloseemits": {
-          "callables": {
-            "close": "当请求关闭对话框时调用的事件处理程序。"
-          },
-          "emits": "BottomSheetClose 组件的事件。"
-        },
-        "bottomsheetcloseprops": {
-          "members": {
-            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
-            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
-            "disabled": "该组件是否被禁用。",
-            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
-          },
-          "props": "BottomSheetClose 组件的属性。"
-        },
-        "bottomsheetcompactemits": {
-          "callables": {
-            "cancel": "请求取消对话框时调用事件处理程序。",
-            "click": "激活对话框触发器时调用事件处理程序。",
-            "close": "关闭时发出。",
-            "closeautofocus": "关闭时自动聚焦会调用事件处理程序。可以避免。",
-            "confirm": "通过确认请求关闭对话框时调用事件处理程序。",
-            "drag": "拖动时发出。",
-            "escapekeydown": "按下 Escape 键时调用事件处理程序。可以避免。",
-            "focusoutside": "当焦点移出 \"DismissableLayer \"时调用事件处理程序。可以防止。",
-            "fullscreen": "当请求切换对话框的全屏状态时，会调用此事件处理程序。",
-            "interactoutside": "当交互发生在 `DismissableLayer` 以外时，调用事件处理程序。具体来说，当`pointerdown\n事件发生或焦点移出时调用的事件处理程序。可以避免。",
-            "openautofocus": "打开时自动聚焦调用事件处理程序。可以避免。",
-            "pointerdownoutside": "当 \"DismissableLayer \"之外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。",
-            "release": "发布时输出。",
-            "update_activesnappoint": "当活动扣点值发生变化时发出。",
-            "update_fullscreen": "当对话框的全屏状态发生变化时调用的事件处理程序。",
-            "update_open": "当对话框的打开状态发生变化时，调用事件处理程序。"
-          },
-          "emits": "BottomSheetCompact 组件的事件。",
-          "members": {
-            "close": "关闭时发出。"
-          }
-        },
-        "bottomsheetcompactprops": {
-          "members": {
-            "activesnappoint": "活动扣点。",
-            "alerttype": "对话框的警报类型，当对话框是警报对话框时，它将决定默认图标和样式。",
-            "cancelprops": "转发到取消元素的属性。",
-            "canceltext": "取消按钮的文本。该文本用于可访问性目的，如果未提供 \"取消 \"槽，则将在对话框的页脚中显示。\n\n默认为来自 `ConfigProvider` 的本地化 `dialog.cancel` 消息。",
-            "closeprops": "属性转发到 close 元素。",
-            "closethreshold": "关闭阈值。",
-            "confirmprops": "属性转发到确认元素。",
-            "confirmtext": "确认按钮的文本。该文本用于可访问性目的，如果未提供 `confirm` 插槽，则将在对话框的页脚中呈现。\n\n默认为来自 `ConfigProvider` 的本地化 `dialog.confirm` 信息。",
-            "contentprops": "转发到内容元素的属性。",
-            "defaultfullscreen": "对话框初次渲染时的全屏状态。当您无需控制其全屏状态时使用此选项。",
-            "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
-            "description": "对话框说明。该说明用于辅助功能，如果未提供 `description` 插槽，则将在对话框内容中呈现。",
-            "descriptionprops": "转发到描述元素的属性。",
-            "dir": "对话框的文本方向",
-            "direction": "方向",
-            "dismissible": "是否可删除。",
-            "draggable": "是否可以通过拖动对话框标题来移动该对话框。",
-            "fadefromindex": "淡出索引。",
-            "fixed": "是否固定。",
-            "footerprops": "转发到页脚元素的属性。",
-            "fullscreen": "对话框的可控全屏状态。可通过 `v-model:fullscreen` 进行绑定。",
-            "fullscreenprops": "转发给全屏元素的属性。",
-            "handleonly": "是否只处理。",
-            "handleprops": "转发到句柄元素的属性。",
-            "headerprops": "转发到标题元素的属性。",
-            "icon": "对话框的图标。该图标用于可访问性目的，如果未提供 icon 插槽，则将在对话框的页眉中显示。",
-            "isalert": "对话框是否为警报对话框。警报对话框是一种中断用户工作流程以传达重要信息并要求用户做出响应的对话框。\n\n设置为 \"true \"时，对话框将具有 \"role=\"alertdialog\"\"，并要求提供 \"DialogTitle\"。这将用于可访问性目的。",
-            "modal": "对话框的模式。设置为 \"true \"时，与外部元素的交互将被禁用，屏幕阅读器只能看到对话框的内容。\n内容对屏幕阅读器可见。",
-            "nested": "是否嵌套",
-            "nobodystyles": "true \"时，\"body \"不会获得 Vaul 分配的任何样式。",
-            "open": "对话框的受控打开状态。可与 `v-model:open`绑定。",
-            "overlayprops": "转发到覆盖元素的属性。",
-            "popupprops": "转发到弹出元素的属性。",
-            "portalprops": "转发到门户元素的属性。",
-            "preventscrollrestoration": "是否防止滚动还原。",
-            "pure": "是否使用不包含页眉和页脚的纯文本对话框。\n如果您想完全控制对话框的内容，而又不需要内置的页眉和页脚，这将非常有用。",
-            "scrolllocktimeout": "滚动锁定超时。",
-            "setbackgroundcoloronscale": "当 `false` 时，当抽屉打开时，我们不会改变正文的背景颜色。",
-            "shouldscalebackground": "组件是否应缩放背景。",
-            "showcancel": "是否显示取消按钮\n\n设置为 \"onlyWarning \"时，只有当对话框是具有 \"alertType=\"warning\"\"的警报对话框时，才会显示取消按钮。\n设置为 `true` 时，将始终显示取消按钮。",
-            "showclose": "是否在对话框头部显示关闭按钮。",
-            "showconfirm": "当对话框为警报对话框时，是否显示确认按钮。\n\n当对话框为警报对话框时，默认值为 \"true\"。",
-            "showfullscreen": "是否在对话框的标题栏中显示全屏切换按钮。",
-            "snappoints": "扣分点。",
-            "title": "对话框的标题。该标题用于可访问性目的，如果未提供 `title` 插槽，则将在对话框的页眉中显示。",
-            "titleprops": "属性转发到标题元素。",
-            "triggerprops": "转发到触发器元素的属性。"
-          },
-          "props": "BottomSheetCompact 组件的属性。"
-        },
-        "bottomsheetcompactslots": {
-          "callables": {
-            "cancel": "取消槽的自定义内容。",
-            "close": "关闭槽的自定义内容。",
-            "confirm": "确认槽的自定义内容。",
-            "default": "默认插槽的自定义内容。",
-            "description": "自定义描述槽的内容。",
-            "footer": "页脚槽的自定义内容。",
-            "fullscreen": "全屏插槽的自定义内容。",
-            "title": "标题槽的自定义内容。",
-            "trigger": "触发槽的自定义内容。"
-          },
-          "slots": "BottomSheetCompact 组件的插槽。"
-        },
-        "bottomsheetconfirmemits": {
-          "callables": {
-            "confirm": "当通过确认操作请求关闭对话框时，会调用此事件处理程序。"
-          },
-          "emits": "BottomSheetConfirm 组件的事件。"
-        },
-        "bottomsheetconfirmprops": {
-          "members": {
-            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
-            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
-            "disabled": "该组件是否被禁用。",
-            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
-          },
-          "props": "BottomSheetConfirm 组件的属性。"
-        },
-        "bottomsheetcontentprops": {
-          "props": "BottomSheetContent 组件的属性。"
-        },
-        "bottomsheetdescriptionprops": {
-          "props": "BottomSheetDescription 组件的属性。"
-        },
-        "bottomsheetfooterprops": {
-          "props": "BottomSheetFooter 组件的属性。"
-        },
-        "bottomsheethandleprops": {
-          "members": {
-            "preventcycle": "是否防止循环。"
-          },
-          "props": "BottomSheetHandle 组件的属性。"
-        },
-        "bottomsheetheaderprops": {
-          "props": "BottomSheetHeader 组件的属性。"
-        },
-        "bottomsheetrootemits": {
-          "callables": {
-            "close": "关闭时发出。",
-            "drag": "拖动时发出。",
-            "release": "发布时输出。",
-            "update_activesnappoint": "当活动扣点值发生变化时发出。",
-            "update_open": "当对话框的打开状态发生变化时，调用事件处理程序。"
-          },
-          "emits": "BottomSheetRoot 组件的事件。"
-        },
-        "bottomsheetrootprops": {
-          "members": {
-            "activesnappoint": "活动扣点。",
-            "alerttype": "对话框的警报类型，当对话框是警报对话框时，它将决定默认图标和样式。",
-            "closethreshold": "关闭阈值。",
-            "defaultfullscreen": "对话框初次渲染时的全屏状态。当您无需控制其全屏状态时使用此选项。",
-            "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
-            "dir": "对话框的文本方向",
-            "direction": "方向",
-            "dismissible": "是否可删除。",
-            "draggable": "是否可以通过拖动对话框标题来移动该对话框。",
-            "fadefromindex": "淡出索引。",
-            "fixed": "是否固定。",
-            "fullscreen": "对话框的可控全屏状态。可通过 `v-model:fullscreen` 进行绑定。",
-            "handleonly": "是否只处理。",
-            "isalert": "对话框是否为警报对话框。警报对话框是一种中断用户工作流程以传达重要信息并要求用户做出响应的对话框。\n\n设置为 \"true \"时，对话框将具有 \"role=\"alertdialog\"\"，并要求提供 \"DialogTitle\"。这将用于可访问性目的。",
-            "modal": "对话框的模式。设置为 \"true \"时，与外部元素的交互将被禁用，屏幕阅读器只能看到对话框的内容。\n内容对屏幕阅读器可见。",
-            "nested": "是否嵌套",
-            "nobodystyles": "true \"时，\"body \"不会获得 Vaul 分配的任何样式。",
-            "open": "对话框的受控打开状态。可与 `v-model:open`绑定。",
-            "preventscrollrestoration": "是否防止滚动还原。",
-            "scrolllocktimeout": "滚动锁定超时。",
-            "setbackgroundcoloronscale": "当 `false` 时，当抽屉打开时，我们不会改变正文的背景颜色。",
-            "shouldscalebackground": "组件是否应缩放背景。",
-            "snappoints": "扣分点。"
-          },
-          "props": "BottomSheetRoot 组件的属性。"
-        },
-        "bottomsheetrootslots": {
-          "callables": {
-            "default": "默认插槽的自定义内容。"
-          },
-          "slots": "BottomSheetRoot 组件的插槽。"
-        },
-        "bottomsheettitleprops": {
-          "props": "BottomSheetTitle 组件的属性。"
-        },
-        "bottomsheettriggeremits": {
-          "callables": {
-            "click": "当对话框触发器被激活时调用的事件处理程序。"
-          },
-          "emits": "BottomSheetTrigger 组件的事件。"
-        },
-        "bottomsheettriggerprops": {
-          "members": {
-            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
-            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
-            "disabled": "该组件是否被禁用。",
-            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
-          },
-          "props": "BottomSheetTrigger 组件的属性。"
-        },
-        "bottomsheetui": "BottomSheet 组件的 UI 类重载。",
-        "type": ""
-      },
       "packages_headless_src_components_breadcrumb_types": {
         "breadcrumbcompactellipsisslotprops": {
           "members": {
@@ -3795,7 +3557,7 @@
             "headerprops": "转发到标题元素的属性。",
             "icon": "对话框的图标。该图标用于可访问性目的，如果未提供 icon 插槽，则将在对话框的页眉中显示。",
             "isalert": "对话框是否为警报对话框。警报对话框是一种中断用户工作流程以传达重要信息并要求用户做出响应的对话框。\n\n设置为 \"true \"时，对话框将具有 \"role=\"alertdialog\"\"，并要求提供 \"DialogTitle\"。这将用于可访问性目的。",
-            "modal": "对话框的模式。设置为 \"true \"时，与外部元素的交互将被禁用，屏幕阅读器只能看到对话框的内容。\n内容对屏幕阅读器可见。",
+            "modal": "对话框的模态属性。当设置为 `true` 时，将禁用与外部元素的交互，屏幕阅读器仅能读取\n对话框内容。\n\n设置为 `'trap-focus'` 可在锁定焦点的同时仍允许外部指针事件通过（非模态侧边面板，例如\n`'trap-focus'` 层级的 `Drawer`）。",
             "open": "对话框的受控打开状态。可与 `v-model:open`绑定。",
             "overlayprops": "转发到覆盖元素的属性。",
             "popupprops": "转发到弹出元素的属性。",
@@ -3868,7 +3630,7 @@
           "callables": {
             "update_fullscreen": "当对话框的全屏状态发生变化时调用的事件处理程序。"
           },
-          "emits": "对话框全屏状态的事件。与 `DialogRootEmits` 分开处理，\n因为后者还被其他展开控件（弹出框、菜单、底部面板）共享。"
+          "emits": "对话框全屏状态的相关事件。与 `DialogRootEmits` 分开处理，\n因为后者还被其他展开控件（弹出框、菜单、抽屉）共享。"
         },
         "dialogheaderprops": {
           "props": "DialogHeader 组件的属性。"
@@ -3923,7 +3685,7 @@
             "draggable": "是否可以通过拖动对话框标题来移动该对话框。",
             "fullscreen": "对话框的可控全屏状态。可通过 `v-model:fullscreen` 进行绑定。",
             "isalert": "对话框是否为警报对话框。警报对话框是一种中断用户工作流程以传达重要信息并要求用户做出响应的对话框。\n\n设置为 \"true \"时，对话框将具有 \"role=\"alertdialog\"\"，并要求提供 \"DialogTitle\"。这将用于可访问性目的。",
-            "modal": "对话框的模式。设置为 \"true \"时，与外部元素的交互将被禁用，屏幕阅读器只能看到对话框的内容。\n内容对屏幕阅读器可见。",
+            "modal": "对话框的模态属性。当设置为 `true` 时，将禁用与外部元素的交互，屏幕阅读器仅能读取\n对话框内容。\n\n设置为 `'trap-focus'` 可在锁定焦点的同时仍允许外部指针事件通过（非模态侧边面板，例如\n`'trap-focus'` 层级的 `Drawer`）。",
             "open": "对话框的受控打开状态。可与 `v-model:open`绑定。"
           },
           "props": "DialogRoot 组件的属性。"
@@ -3947,6 +3709,255 @@
           "props": "DialogTrigger 组件的属性。"
         },
         "dialogui": "对话框组件的 UI 类重载。"
+      },
+      "packages_headless_src_components_drawer_index": {
+        "draweroverlayprops": {
+          "members": {
+            "forcemount": "用于在需要更多控制时强制挂载。\n\n在使用 Vue 动画库控制动画时非常有用。"
+          }
+        },
+        "drawerpopupprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "forcemount": "用于在需要更多控制时强制挂载。\n\n在使用 Vue 动画库控制动画时非常有用。"
+          }
+        }
+      },
+      "packages_headless_src_components_drawer_types": {
+        "drawercancelemits": {
+          "callables": {
+            "cancel": "当请求取消对话框时调用的事件处理程序。"
+          },
+          "emits": "DrawerCancel 组件的事件。"
+        },
+        "drawercancelprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "disabled": "该组件是否被禁用。",
+            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
+          },
+          "props": "DrawerCancel 组件的属性。"
+        },
+        "drawercloseemits": {
+          "callables": {
+            "close": "当请求关闭对话框时调用的事件处理程序。"
+          },
+          "emits": "DrawerClose 组件的事件。"
+        },
+        "drawercloseprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "disabled": "该组件是否被禁用。",
+            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
+          },
+          "props": "DrawerClose 组件的属性。"
+        },
+        "drawercompactemits": {
+          "callables": {
+            "cancel": "当请求取消对话框时调用的事件处理程序。",
+            "click": "当对话框触发器被激活时调用的事件处理程序。",
+            "close": "在关闭时触发。",
+            "closeautofocus": "在关闭时自动聚焦时触发的事件处理程序。可被阻止。",
+            "confirm": "当通过确认操作请求关闭对话框时调用的事件处理程序。",
+            "drag": "在发生拖拽操作时触发。",
+            "escapekeydown": "按下Esc键时触发的事件处理程序。可被阻止。",
+            "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。可被阻止。",
+            "fullscreen": "当请求切换对话框的全屏状态时，会调用此事件处理程序。",
+            "interactoutside": "当在 `DismissableLayer` 外部发生交互时触发的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。此事件可被阻止。",
+            "openautofocus": "在打开页面时自动聚焦时触发的事件处理程序。可被阻止。",
+            "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。",
+            "release": "在发布时生成。",
+            "update_fullscreen": "当对话框的全屏状态发生变化时调用的事件处理程序。",
+            "update_open": "当对话框的打开状态发生变化时，会调用此事件处理程序。",
+            "update_snappoint": "当快照点值发生变化时触发。"
+          },
+          "emits": "DrawerCompact 组件的事件。",
+          "members": {
+            "close": "在关闭时触发。"
+          }
+        },
+        "drawercompactprops": {
+          "members": {
+            "alerttype": "对话框的警报类型，该类型决定了当对话框为警报对话框时默认的图标和样式。",
+            "cancelprops": "转发给 cancel 元素的属性。",
+            "canceltext": "“取消”按钮的文本。此文本用于辅助功能，若未提供 `cancel` 插槽，则会在对话框的页脚中显示。\n\n默认采用来自 `ConfigProvider` 的本地化 `dialog.cancel` 消息。",
+            "closeprops": "转发至 close 元素的属性。",
+            "closethreshold": "关闭阈值。",
+            "confirmprops": "转发给 confirm 元素的属性。",
+            "confirmtext": "确认按钮的文本。此文本用于辅助功能，若未提供 `confirm` 槽，则会在对话框的页脚中显示。\n\n默认采用来自 `ConfigProvider` 的本地化 `dialog.confirm` 消息。",
+            "contentprops": "转发给内容元素的属性。",
+            "defaultfullscreen": "对话框初次渲染时的全屏状态。当不需要控制其全屏状态时使用。",
+            "defaultopen": "对话框初次渲染时的打开状态。当无需控制其打开状态时使用。",
+            "defaultsnappoint": "抽屉初始渲染时使用的对齐点。当不需要对其进行控制时使用。",
+            "description": "对话框的描述。该内容用于辅助功能，若未提供 `description` 槽，则会显示在对话框的内容中。",
+            "descriptionprops": "已转发至 description 元素的属性。",
+            "dir": "对话框的文本方向",
+            "dismissible": "是否可关闭。",
+            "draggable": "是否可以通过拖动对话框的标题栏来移动该对话框。",
+            "fadefromindex": "从索引中淡出。",
+            "fixed": "是否已修正。",
+            "footerprops": "转发至页脚元素的属性。",
+            "fullscreen": "对话框的可控全屏状态。可通过 `v-model:fullscreen` 进行绑定。",
+            "fullscreenprops": "转发给全屏元素的属性。",
+            "handleonly": "仅处理“是否”一词。",
+            "handleprops": "转发至 handle 元素的属性。",
+            "headerprops": "转发至 header 元素的属性。",
+            "icon": "对话框的图标。该图标用于辅助功能，若未提供 `icon` 槽，则会显示在对话框的标题栏中。",
+            "isalert": "该对话框是否为警报对话框。警报对话框是指会中断用户工作流程以传达重要信息并需要用户做出响应的对话框。\n\n当设置为 `true` 时，对话框将具有 `role=\"alertdialog\"` 属性，并需要提供 `DialogTitle`。此设置用于辅助功能支持。",
+            "modal": "模态级别。`true` 会阻断外部指针事件，`'trap-focus'` 仅捕获焦点，\n`false` 保持界面非模态。",
+            "nested": "无论是否嵌套。",
+            "nobodystyles": "当 `true` 时，`body` 不会从 Vaul 继承任何样式",
+            "open": "对话框的受控打开状态。可通过 `v-model:open` 进行绑定。",
+            "overlayprops": "转发给覆盖元素的属性。",
+            "popupprops": "转发给弹出窗口元素的属性。",
+            "portalprops": "转发给 portal 元素的属性。",
+            "preventscrollrestoration": "是否阻止滚动恢复。",
+            "pure": "是否使用不包含页眉和页脚的“纯版”对话框。\n当您希望完全控制对话框内容且不需要内置页眉和页脚时，此选项非常有用。",
+            "scrolllocktimeout": "Scroll Lock 超时。",
+            "setbackgroundcoloronscale": "当 `false` 时，抽屉打开时不更改主体的背景色。",
+            "shouldscalebackground": "该组件是否应缩放背景。",
+            "showcancel": "是否显示“取消”按钮。\n\n当设置为 `onlyWarning` 时，只有当对话框是 `alertType=\"warning\"` 的警告对话框时，才会显示“取消”按钮。\n当设置为 `true` 时，将始终显示“取消”按钮。",
+            "showclose": "是否在对话框的标题栏中显示关闭按钮。",
+            "showconfirm": "当对话框为提示对话框时，是否显示确认按钮。\n\n当对话框为提示对话框时，默认值为 `true`。",
+            "showfullscreen": "是否在对话框的标题栏中显示全屏切换按钮。",
+            "side": "翻译方向。",
+            "snappoint": "受控的快照点。可通过 `v-model:snapPoint` 进行绑定。",
+            "snappoints": "断点。",
+            "snaptosequentialpoints": "当值为 `true` 时，跳转至下一个顺序快照点（每次一步）。\n当值为 `false` 时，跳转至距离最近的快照点。",
+            "swipeable": "在抽屉边缘渲染可选的“滑动打开”区域。",
+            "swipeareaprops": "转发给滑动区域元素的属性。",
+            "title": "对话框的标题。此标题用于辅助功能，若未提供 `title` 槽，则会显示在对话框的标题栏中。",
+            "titleprops": "传递给 title 元素的属性。",
+            "triggerprops": "转发给触发元素的属性。"
+          },
+          "props": "DrawerCompact 组件的属性。"
+        },
+        "drawercompactslots": {
+          "callables": {
+            "cancel": "“取消”插槽的自定义内容。",
+            "close": "close 插槽的自定义内容。",
+            "confirm": "用于“confirm”插槽的自定义内容。",
+            "default": "默认插槽的自定义内容。",
+            "description": "描述字段的自定义内容。",
+            "footer": "页脚位置的自定义内容。",
+            "fullscreen": "全屏插槽的自定义内容。",
+            "title": "标题槽位的自定义内容。",
+            "trigger": "触发槽的自定义内容。"
+          },
+          "slots": "DrawerCompact 组件的槽位。"
+        },
+        "drawerconfirmemits": {
+          "callables": {
+            "confirm": "当通过确认操作请求关闭对话框时调用的事件处理程序。"
+          },
+          "emits": "DrawerConfirm 组件的事件。"
+        },
+        "drawerconfirmprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "disabled": "该组件是否被禁用。",
+            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
+          },
+          "props": "DrawerConfirm 组件的属性。"
+        },
+        "drawercontentprops": {
+          "props": "DrawerContent 组件的属性。"
+        },
+        "drawerdescriptionprops": {
+          "props": "DrawerDescription 组件的属性。"
+        },
+        "drawerfooterprops": {
+          "props": "DrawerFooter 组件的属性。"
+        },
+        "drawerhandleprops": {
+          "members": {
+            "preventcycle": "是否防止循环。"
+          },
+          "props": "DrawerHandle 组件的属性。"
+        },
+        "drawerheaderprops": {
+          "props": "DrawerHeader 组件的属性。"
+        },
+        "drawerrootemits": {
+          "callables": {
+            "close": "在关闭时触发。",
+            "drag": "在发生拖拽操作时触发。",
+            "release": "在发布时生成。",
+            "update_open": "当对话框的打开状态发生变化时，会调用此事件处理程序。",
+            "update_snappoint": "当快照点值发生变化时触发。"
+          },
+          "emits": "DrawerRoot 组件的事件。"
+        },
+        "drawerrootprops": {
+          "members": {
+            "alerttype": "对话框的警报类型，该类型决定了当对话框为警报对话框时默认的图标和样式。",
+            "closethreshold": "关闭阈值。",
+            "defaultfullscreen": "对话框初次渲染时的全屏状态。当不需要控制其全屏状态时使用。",
+            "defaultopen": "对话框初次渲染时的打开状态。当无需控制其打开状态时使用。",
+            "defaultsnappoint": "抽屉初始渲染时使用的对齐点。当不需要对其进行控制时使用。",
+            "dir": "对话框的文本方向",
+            "dismissible": "是否可关闭。",
+            "draggable": "是否可以通过拖动对话框的标题栏来移动该对话框。",
+            "fadefromindex": "从索引中淡出。",
+            "fixed": "是否已修正。",
+            "fullscreen": "对话框的可控全屏状态。可通过 `v-model:fullscreen` 进行绑定。",
+            "handleonly": "仅处理“是否”一词。",
+            "isalert": "该对话框是否为警报对话框。警报对话框是指会中断用户工作流程以传达重要信息并需要用户做出响应的对话框。\n\n当设置为 `true` 时，对话框将具有 `role=\"alertdialog\"` 属性，并需要提供 `DialogTitle`。此设置用于辅助功能支持。",
+            "modal": "模态级别。`true` 会阻断外部指针事件，`'trap-focus'` 仅捕获焦点，\n`false` 保持界面非模态。",
+            "nested": "无论是否嵌套。",
+            "nobodystyles": "当 `true` 时，`body` 不会从 Vaul 继承任何样式",
+            "open": "对话框的受控打开状态。可通过 `v-model:open` 进行绑定。",
+            "preventscrollrestoration": "是否阻止滚动恢复。",
+            "scrolllocktimeout": "Scroll Lock 超时。",
+            "setbackgroundcoloronscale": "当 `false` 时，抽屉打开时不更改主体的背景色。",
+            "shouldscalebackground": "该组件是否应缩放背景。",
+            "side": "翻译方向。",
+            "snappoint": "受控的快照点。可通过 `v-model:snapPoint` 进行绑定。",
+            "snappoints": "断点。",
+            "snaptosequentialpoints": "当值为 `true` 时，跳转至下一个顺序快照点（每次一步）。\n当值为 `false` 时，跳转至距离最近的快照点。"
+          },
+          "props": "DrawerRoot 组件的属性。"
+        },
+        "drawerrootslots": {
+          "callables": {
+            "default": "默认插槽的自定义内容。"
+          },
+          "slots": "DrawerRoot 组件的插槽。"
+        },
+        "drawerswipeareaprops": {
+          "members": {
+            "disabled": "禁用“滑动打开”功能。",
+            "swipedirection": "覆盖用于打开抽屉的滑动方向。默认值与根 `side` 相反。"
+          },
+          "props": "DrawerSwipeArea 组件的属性。"
+        },
+        "drawertitleprops": {
+          "props": "DrawerTitle 组件的属性。"
+        },
+        "drawertriggeremits": {
+          "callables": {
+            "click": "当对话框触发器被激活时调用的事件处理程序。"
+          },
+          "emits": "DrawerTrigger 组件的事件。"
+        },
+        "drawertriggerprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "disabled": "该组件是否被禁用。",
+            "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
+          },
+          "props": "DrawerTrigger 组件的属性。"
+        },
+        "drawerui": "Drawer 组件的 UI 类重写。",
+        "drawerviewportprops": {
+          "props": "DrawerViewport 组件的属性。"
+        },
+        "type": ""
       },
       "packages_headless_src_components_dropdown_menu_index": {
         "dropdownmenucheckboxitemprops": {
@@ -6172,182 +6183,6 @@
         },
         "type": ""
       },
-      "packages_headless_src_components_navigation_menu_types": {
-        "navigationmenucompactemits": {
-          "callables": {
-            "escapekeydown": "按下 Escape 键时调用事件处理程序。可以避免。",
-            "focusoutside": "当焦点移出 \"DismissableLayer \"时调用事件处理程序。可以防止。",
-            "interactoutside": "当交互发生在 `DismissableLayer` 以外时，调用事件处理程序。具体来说，当`pointerdown\n事件发生或焦点移出时调用的事件处理程序。可以避免。",
-            "pointerdownoutside": "当 \"DismissableLayer \"之外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。",
-            "select": "发生选择时输出。",
-            "update_modelvalue": "当模型值发生变化时发出。"
-          },
-          "emits": "NavigationMenuCompact 组件的事件。"
-        },
-        "navigationmenucompactprops": {
-          "members": {
-            "contentprops": "转发到内容元素的属性。",
-            "defaultvalue": "初始渲染时应处于活动状态的菜单项的值。\n\n在不需要控制值的状态时使用。",
-            "delayduration": "从指针进入触发器到打开工具提示的持续时间。",
-            "dir": "组合框的阅读方向（如适用）。\n\n如果省略，则全局继承自 `ConfigProvider` 或假定为 LTR（从左到右）阅读模式。",
-            "disableclicktrigger": "如果 `true`，菜单不能通过点击触发器打开",
-            "disablehovertrigger": "如果 \"true\"，菜单不能通过触发器上的悬停打开",
-            "disablepointerleaveclose": "如果 \"true\"，菜单不会在指针离开事件中关闭",
-            "indicatorprops": "转发到指示器元素的属性。",
-            "itemprops": "转发到项目元素的属性。",
-            "items": "在导航菜单中呈现的项目。",
-            "linkprops": "转发到链接元素的属性。",
-            "listprops": "转发到列表元素的属性。",
-            "modelvalue": "要激活的菜单项的受控值。可用作 `v-model`。",
-            "orientation": "菜单的方向",
-            "skipdelayduration": "用户有多少时间输入另一个触发器而不会再次产生延迟。",
-            "subitemprops": "转发到子项目元素的属性。",
-            "sublistprops": "转发到子列表元素的属性。",
-            "triggerprops": "转发到触发器元素的属性。",
-            "unmountonhide": "true \"时，元素将在关闭状态下卸载。",
-            "viewportprops": "转发到视口元素的属性。"
-          },
-          "props": "NavigationMenuCompact 组件的属性。"
-        },
-        "navigationmenucompactslots": {
-          "callables": {
-            "item": "",
-            "item_children": "",
-            "item_leading": "",
-            "item_link_icon": "",
-            "item_trailing": "",
-            "item_trigger_icon": ""
-          },
-          "slots": "NavigationMenuCompact 组件的插槽。"
-        },
-        "navigationmenucontentemits": {
-          "callables": {
-            "escapekeydown": "按下 Escape 键时调用事件处理程序。可以避免。",
-            "focusoutside": "当焦点移出 \"DismissableLayer \"时调用事件处理程序。可以防止。",
-            "interactoutside": "当交互发生在 `DismissableLayer` 以外时，调用事件处理程序。具体来说，当`pointerdown\n事件发生或焦点移出时调用的事件处理程序。可以避免。",
-            "pointerdownoutside": "当 \"DismissableLayer \"之外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。"
-          },
-          "emits": "NavigationMenuContent 组件的事件。"
-        },
-        "navigationmenucontentprops": {
-          "members": {
-            "disableoutsidepointerevents": "当 \"true \"时，\"DismissableLayer \"以外的元素将禁用悬停/聚焦/点击交互。用户将\n用户需要点击外部元素两次才能与之交互：一次关闭 `DismissableLayer`，另一次触发元素。\n触发元素。",
-            "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。"
-          },
-          "props": "NavigationMenuContent 组件的属性。"
-        },
-        "navigationmenuindicatorprops": {
-          "members": {
-            "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。"
-          },
-          "props": "NavigationMenuIndicator 组件的属性。"
-        },
-        "navigationmenuitemprops": {
-          "members": {
-            "value": "与当前项目相关的值。"
-          },
-          "props": "NavigationMenuItem 组件的属性。"
-        },
-        "navigationmenulinkemits": {
-          "callables": {
-            "select": "发生选择时输出。"
-          },
-          "emits": "NavigationMenuLink 组件的事件。"
-        },
-        "navigationmenulinkprops": {
-          "members": {
-            "activeclass": "链接激活时应用的类",
-            "ariacurrentvalue": "当链接确切激活时，传递给属性 `aria-current` 的值。",
-            "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
-            "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
-            "disabled": "true \"时，链接被禁用。",
-            "exactactiveclass": "链接确切激活时应用的类",
-            "external": "强制将链接视为外部链接（true）或内部链接（false）。这有助于处理边缘情况",
-            "href": "点击链接时应导航到的 URL。",
-            "inactiveclass": "当链接处于非活动状态时，应用于链接的类。",
-            "noprefetch": "Escape hatch 可禁用 `prefetch` 属性。",
-            "norel": "如果设置为 true，将不会在链接中添加 rel 属性",
-            "prefetch": "启用后将预取视口中链接的中间件、布局和有效载荷。",
-            "prefetchedclass": "用于预检链接的类。",
-            "prefetchon": "允许控制何时预取链接。默认情况下，只有在可见时才会触发预取。",
-            "rel": "用于链接的 rel 属性值。外部链接默认为 \"noopener noreferrer\"。",
-            "replace": "调用 `router.replace` 代替 `router.push`.",
-            "selected": "用于将链接标识为当前选中的页面。",
-            "target": "显示链接 URL 的位置，作为浏览上下文的名称。",
-            "to": "路由 点击链接时应导航到的位置。",
-            "trailingslash": "为特定链接的 `href` 添加或删除尾部斜线的选项。\n如果提供，则覆盖全局 `trailingSlash` 选项。",
-            "viewtransition": "如果支持，将 `router.push()` 返回的承诺传递给 `document.startViewTransition()` 。"
-          },
-          "props": "NavigationMenuLink 组件的属性。"
-        },
-        "navigationmenulistprops": {
-          "props": "NavigationMenuList 组件的属性。"
-        },
-        "navigationmenuoptioncompactslots": {
-          "callables": {
-            "item": "",
-            "item_children": "",
-            "item_leading": "",
-            "item_link_icon": "",
-            "item_trailing": "",
-            "item_trigger_icon": ""
-          }
-        },
-        "navigationmenurootemits": {
-          "callables": {
-            "update_modelvalue": "当模型值发生变化时发出。"
-          },
-          "emits": "NavigationMenuRoot 组件的事件。"
-        },
-        "navigationmenurootprops": {
-          "members": {
-            "defaultvalue": "初始渲染时应处于活动状态的菜单项的值。\n\n在不需要控制值的状态时使用。",
-            "delayduration": "从指针进入触发器到打开工具提示的持续时间。",
-            "dir": "组合框的阅读方向（如适用）。\n\n如果省略，则全局继承自 `ConfigProvider` 或假定为 LTR（从左到右）阅读模式。",
-            "disableclicktrigger": "如果 `true`，菜单不能通过点击触发器打开",
-            "disablehovertrigger": "如果 \"true\"，菜单不能通过触发器上的悬停打开",
-            "disablepointerleaveclose": "如果 \"true\"，菜单不会在指针离开事件中关闭",
-            "modelvalue": "要激活的菜单项的受控值。可用作 `v-model`。",
-            "orientation": "菜单的方向",
-            "skipdelayduration": "用户有多少时间输入另一个触发器而不会再次产生延迟。",
-            "unmountonhide": "true \"时，元素将在关闭状态下卸载。"
-          },
-          "props": "NavigationMenuRoot 组件的属性。"
-        },
-        "navigationmenusubemits": {
-          "callables": {
-            "update_modelvalue": "当模型值发生变化时发出。"
-          },
-          "emits": "NavigationMenuSub 组件的事件。"
-        },
-        "navigationmenusublistprops": {
-          "props": "NavigationMenuSubList 组件的属性。"
-        },
-        "navigationmenusubprops": {
-          "members": {
-            "defaultvalue": "默认值。",
-            "modelvalue": "当前模型值。"
-          },
-          "props": "NavigationMenuSub 组件的属性。"
-        },
-        "navigationmenutriggerprops": {
-          "members": {
-            "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
-            "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
-            "disabled": "组件是否禁用。"
-          },
-          "props": "NavigationMenuTrigger 组件的属性。"
-        },
-        "navigationmenuui": "NavigationMenu 组件的 UI 类重载。",
-        "navigationmenuviewportprops": {
-          "members": {
-            "align": "对齐。",
-            "forcemount": "在需要更多控制时用于强制安装。\n\n在使用 Vue 动画库控制动画时非常有用。"
-          },
-          "props": "NavigationMenuViewport 组件的属性。"
-        },
-        "type": ""
-      },
       "packages_headless_src_components_page_tabs_types": {
         "pagetabscloseprops": {
           "members": {
@@ -6974,10 +6809,7 @@
             "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 之外时调用的事件处理程序。可被阻止。",
             "update_open": ""
           },
-          "emits": "",
-          "members": {
-            "placed": ""
-          }
+          "emits": ""
         },
         "poppercompactprops": {
           "members": {
@@ -7178,7 +7010,7 @@
             "trigger": "",
             "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
           },
-          "props": ""
+          "props": "Button 组件的属性。"
         },
         "poppertriggerariamode": "",
         "poppertriggerprops": {
@@ -7198,10 +7030,9 @@
             "trigger": "",
             "type": "按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。"
           },
-          "props": ""
+          "props": "Button 组件的属性。"
         },
-        "poppertriggertype": "",
-        "popperui": ""
+        "poppertriggertype": ""
       },
       "packages_headless_src_components_portal_types": {
         "autocompleteportalprops": {
@@ -10162,19 +9993,11 @@
         "direction": "",
         "horizontalside": "",
         "maybepromise": "",
+        "modalitytier": "分层表面的模态级别。\n\n- `true` — 全模态：捕获焦点并阻断外部指针事件\n- `'trap-focus'` — 捕获焦点但保持外部指针事件有效\n- `false` — 非模态",
         "placement": "",
         "selectionbehavior": "",
-        "side": ""
-      },
-      "packages_headless_src_types_component": {
-        "dismissablelayeremits": {
-          "callables": {
-            "escapekeydown": "按下 Escape 键时调用事件处理程序。可以避免。",
-            "focusoutside": "当焦点移出 \"DismissableLayer \"时调用事件处理程序。可以防止。",
-            "interactoutside": "当交互发生在 `DismissableLayer` 以外时，调用事件处理程序。具体来说，当`pointerdown\n事件发生或焦点移出时调用的事件处理程序。可以避免。",
-            "pointerdownoutside": "当 \"DismissableLayer \"之外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。"
-          }
-        }
+        "side": "",
+        "swipedirection": ""
       },
       "packages_headless_src_types_dom": {
         "imageloadingstatus": ""
@@ -10513,98 +10336,6 @@
           "slots": "Badge 组件的槽位。"
         },
         "badgeui": "Badge 组件的 UI 类重写。"
-      },
-      "packages_ui_src_components_bottom_sheet_types": {
-        "bottomsheetemits": {
-          "callables": {
-            "cancel": "当请求取消对话框时调用的事件处理程序。",
-            "click": "当对话框触发器被激活时调用的事件处理程序。",
-            "close": "在关闭时触发。",
-            "closeautofocus": "在关闭时自动聚焦时触发的事件处理程序。可被阻止。",
-            "confirm": "当通过确认操作请求关闭对话框时调用的事件处理程序。",
-            "drag": "在发生拖拽操作时触发。",
-            "escapekeydown": "当Esc键被按下时调用的事件处理程序。可被阻止。",
-            "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。可被阻止。",
-            "fullscreen": "当请求切换对话框的全屏状态时，会调用此事件处理程序。",
-            "interactoutside": "当交互发生在 `DismissableLayer` 外部时触发的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。可被阻止。",
-            "openautofocus": "在打开页面时自动聚焦时触发的事件处理程序。可被阻止。",
-            "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。",
-            "release": "在发布时生成。",
-            "update_activesnappoint": "当活动快照点的值发生变化时触发。",
-            "update_fullscreen": "当对话框的全屏状态发生变化时调用的事件处理程序。",
-            "update_open": "当对话框的打开状态发生变化时调用的事件处理程序。"
-          },
-          "emits": "BottomSheet 组件的事件。"
-        },
-        "bottomsheetprops": {
-          "members": {
-            "activesnappoint": "活动快照点。",
-            "alerttype": "对话框的 alert 类型，该属性决定当对话框为提示框时默认使用的图标和样式。",
-            "cancelprops": "转发给 cancel 元素的属性。",
-            "canceltext": "“取消”按钮的文本。此文本用于辅助功能，若未提供 `cancel` 槽，则会在对话框的页脚中显示。\n\n默认使用来自 `ConfigProvider` 的本地化 `dialog.cancel` 消息。",
-            "class": "对话框的 popup 类",
-            "closeprops": "传递给 close 元素的属性。",
-            "closethreshold": "关闭阈值。",
-            "confirmprops": "传递给 confirm 元素的属性。",
-            "confirmtext": "确认按钮的文本。此文本用于辅助功能，若未提供 `confirm` 插槽，则会在对话框的页脚中显示。\n\n默认使用来自 `ConfigProvider` 的本地化 `dialog.confirm` 消息。",
-            "contentprops": "转发至内容元素的属性。",
-            "defaultfullscreen": "对话框初次渲染时的全屏状态。当您无需控制其全屏状态时使用此选项。",
-            "defaultopen": "对话框在初始渲染时的打开状态。当您无需控制其打开状态时使用。",
-            "description": "对话框的描述。此内容用于辅助功能，若未提供 `description` 槽，则会在对话框内容中显示。",
-            "descriptionprops": "已将属性转发至 description 元素。",
-            "dir": "对话框的文本方向",
-            "direction": "翻译方向。",
-            "dismissible": "是否可关闭。",
-            "draggable": "是否可以通过拖动对话框标题来移动该对话框。",
-            "fadefromindex": "从索引中淡出。",
-            "fixed": "是否已修复。",
-            "footerprops": "传递给页脚元素的属性。",
-            "fullscreen": "对话框的可控全屏状态。可通过 `v-model:fullscreen` 进行绑定。",
-            "fullscreenprops": "转发给全屏元素的属性。",
-            "handleonly": "仅处理“whether”一词。",
-            "handleprops": "转发至 handle 元素的属性。",
-            "headerprops": "传递给 header 元素的属性。",
-            "icon": "对话框的图标。此图标用于辅助功能，若未提供 `icon` 槽，则会在对话框的标题栏中显示。",
-            "isalert": "该对话框是否为警报对话框。警报对话框是一种会中断用户工作流程以传达重要信息并需要用户响应的对话框。\n\n当设置为 `true` 时，对话框将具有 `role=\"alertdialog\"` 属性，并需要提供 `DialogTitle`。此设置用于辅助功能支持。",
-            "modal": "对话框的模态属性。当设置为 `true` 时，将禁用与外部元素的交互，屏幕阅读器仅能读取对话框\n内容。",
-            "nested": "无论是否嵌套。",
-            "nobodystyles": "当 `true` 时，`body` 不会从 Vaul 继承任何样式",
-            "open": "对话框的受控打开状态。可通过 `v-model:open` 进行绑定。",
-            "overlayprops": "转发给覆盖元素的属性。",
-            "popupprops": "转发给弹出元素的属性。",
-            "portalprops": "转发至 portal 元素的属性。",
-            "preventscrollrestoration": "是否阻止滚动恢复。",
-            "pure": "是否使用不包含页眉和页脚的纯对话框版本。\n当您希望完全控制对话框内容且不需要内置页眉和页脚时，此选项非常有用。",
-            "scrolllocktimeout": "滚动锁定超时。",
-            "setbackgroundcoloronscale": "当 `false` 时，在抽屉菜单打开时不更改主体的背景颜色。",
-            "shouldscalebackground": "该组件是否应缩放背景。",
-            "showcancel": "是否显示取消按钮。\n\n当设置为 `onlyWarning` 时，只有当对话框是 `alertType=\"warning\"` 的警告对话框时，才会显示取消按钮。\n当设置为 `true` 时，取消按钮将始终显示。",
-            "showclose": "是否在对话框的标题栏中显示关闭按钮。",
-            "showconfirm": "当对话框为提示对话框时，是否显示确认按钮。\n\n当对话框为提示对话框时，默认值为 `true`。",
-            "showfullscreen": "是否在对话框的标题栏中显示全屏切换按钮。",
-            "size": "组件的视觉尺寸。",
-            "snappoints": "对齐点。",
-            "title": "对话框的标题。此标题用于辅助功能，若未提供 `title` 槽，则会显示在对话框的标题栏中。",
-            "titleprops": "传递给 title 元素的属性。",
-            "triggerprops": "转发给触发元素的属性。",
-            "ui": "针对该组件的按槽位类重写。"
-          },
-          "props": "BottomSheet 组件的属性。"
-        },
-        "bottomsheetslots": {
-          "callables": {
-            "cancel": "取消槽位的自定义内容。",
-            "close": "close 插槽的自定义内容。",
-            "confirm": "用于 confirm 插槽的自定义内容。",
-            "default": "默认插槽的自定义内容。",
-            "description": "描述字段的自定义内容。",
-            "footer": "页脚位置的自定义内容。",
-            "fullscreen": "全屏插槽的自定义内容。",
-            "title": "标题槽位的自定义内容。",
-            "trigger": "触发槽的自定义内容。"
-          },
-          "slots": "BottomSheet 组件的插槽。"
-        }
       },
       "packages_ui_src_components_breadcrumb_types": {
         "breadcrumbemits": {
@@ -12165,7 +11896,7 @@
             "headerprops": "传递给 header 元素的属性。",
             "icon": "对话框的图标。此图标用于辅助功能，若未提供 `icon` 槽，则会在对话框的标题栏中显示。",
             "isalert": "该对话框是否为警报对话框。警报对话框是一种会中断用户工作流程以传达重要信息并需要用户响应的对话框。\n\n当设置为 `true` 时，对话框将具有 `role=\"alertdialog\"` 属性，并需要提供 `DialogTitle`。此设置用于辅助功能支持。",
-            "modal": "对话框的模态属性。当设置为 `true` 时，将禁用与外部元素的交互，屏幕阅读器仅能读取对话框\n内容。",
+            "modal": "对话框的模态属性。当设置为 `true` 时，将禁用与外部元素的交互，屏幕阅读器仅能读取\n对话框内容。\n\n设置为 `'trap-focus'` 可在锁定焦点的同时仍允许外部指针事件通过（非模态侧边面板，例如\n`'trap-focus'` 层级的 `Drawer`）。",
             "open": "对话框的受控打开状态。可通过 `v-model:open` 进行绑定。",
             "overlayprops": "转发给覆盖元素的属性。",
             "popupprops": "转发给弹出元素的属性。",
@@ -12203,17 +11934,20 @@
           "callables": {
             "cancel": "当请求取消对话框时调用的事件处理程序。",
             "click": "当对话框触发器被激活时调用的事件处理程序。",
-            "close": "当请求关闭对话框时调用的事件处理程序。",
+            "close": "在关闭时触发。",
             "closeautofocus": "在关闭时自动聚焦时触发的事件处理程序。可被阻止。",
             "confirm": "当通过确认操作请求关闭对话框时调用的事件处理程序。",
+            "drag": "在发生拖拽操作时触发。",
             "escapekeydown": "当Esc键被按下时调用的事件处理程序。可被阻止。",
             "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。可被阻止。",
             "fullscreen": "当请求切换对话框的全屏状态时，会调用此事件处理程序。",
             "interactoutside": "当交互发生在 `DismissableLayer` 外部时触发的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。可被阻止。",
             "openautofocus": "在打开页面时自动聚焦时触发的事件处理程序。可被阻止。",
             "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。",
+            "release": "在发布时生成。",
             "update_fullscreen": "当对话框的全屏状态发生变化时调用的事件处理程序。",
-            "update_open": "当对话框的打开状态发生变化时调用的事件处理程序。"
+            "update_open": "当对话框的打开状态发生变化时调用的事件处理程序。",
+            "update_snappoint": "当快照点值发生变化时触发。"
           },
           "emits": "Drawer 组件的事件。"
         },
@@ -12222,35 +11956,53 @@
             "alerttype": "对话框的 alert 类型，该属性决定当对话框为提示框时默认使用的图标和样式。",
             "cancelprops": "转发给 cancel 元素的属性。",
             "canceltext": "“取消”按钮的文本。此文本用于辅助功能，若未提供 `cancel` 槽，则会在对话框的页脚中显示。\n\n默认使用来自 `ConfigProvider` 的本地化 `dialog.cancel` 消息。",
-            "class": "对话框的 popup 类",
+            "class": "drawer 的 popup 类",
             "closeprops": "传递给 close 元素的属性。",
+            "closethreshold": "关闭阈值。",
             "confirmprops": "传递给 confirm 元素的属性。",
             "confirmtext": "确认按钮的文本。此文本用于辅助功能，若未提供 `confirm` 插槽，则会在对话框的页脚中显示。\n\n默认使用来自 `ConfigProvider` 的本地化 `dialog.confirm` 消息。",
             "contentprops": "转发至内容元素的属性。",
             "defaultfullscreen": "对话框初次渲染时的全屏状态。当您无需控制其全屏状态时使用此选项。",
             "defaultopen": "对话框在初始渲染时的打开状态。当您无需控制其打开状态时使用。",
+            "defaultsnappoint": "抽屉初始渲染时使用的对齐点。当不需要对其进行控制时使用。",
             "description": "对话框的描述。此内容用于辅助功能，若未提供 `description` 槽，则会在对话框内容中显示。",
             "descriptionprops": "已将属性转发至 description 元素。",
             "dir": "对话框的文本方向",
+            "dismissible": "是否可关闭。",
             "draggable": "是否可以通过拖动对话框标题来移动该对话框。",
+            "fadefromindex": "从索引中淡出。",
+            "fixed": "是否已修正。",
             "footerprops": "传递给页脚元素的属性。",
             "fullscreen": "对话框的可控全屏状态。可通过 `v-model:fullscreen` 进行绑定。",
             "fullscreenprops": "转发给全屏元素的属性。",
+            "handleonly": "仅处理“是否”一词。",
+            "handleprops": "转发至 handle 元素的属性。",
             "headerprops": "传递给 header 元素的属性。",
             "icon": "对话框的图标。此图标用于辅助功能，若未提供 `icon` 槽，则会在对话框的标题栏中显示。",
             "isalert": "该对话框是否为警报对话框。警报对话框是一种会中断用户工作流程以传达重要信息并需要用户响应的对话框。\n\n当设置为 `true` 时，对话框将具有 `role=\"alertdialog\"` 属性，并需要提供 `DialogTitle`。此设置用于辅助功能支持。",
-            "modal": "对话框的模态属性。当设置为 `true` 时，将禁用与外部元素的交互，屏幕阅读器仅能读取对话框\n内容。",
+            "modal": "模态级别。`true` 会阻断外部指针事件，`'trap-focus'` 仅捕获焦点，\n`false` 保持界面非模态。",
+            "nested": "无论是否嵌套。",
+            "nobodystyles": "当 `true` 时，`body` 不会从 Vaul 继承任何样式",
             "open": "对话框的受控打开状态。可通过 `v-model:open` 进行绑定。",
             "overlayprops": "转发给覆盖元素的属性。",
             "popupprops": "转发给弹出元素的属性。",
             "portalprops": "转发至 portal 元素的属性。",
+            "preventscrollrestoration": "是否阻止滚动恢复。",
             "pure": "是否使用不包含页眉和页脚的纯对话框版本。\n当您希望完全控制对话框内容且不需要内置页眉和页脚时，此选项非常有用。",
+            "scrolllocktimeout": "Scroll Lock 超时。",
+            "setbackgroundcoloronscale": "当 `false` 时，抽屉打开时不更改主体的背景色。",
+            "shouldscalebackground": "该组件是否应缩放背景。",
             "showcancel": "是否显示取消按钮。\n\n当设置为 `onlyWarning` 时，只有当对话框是 `alertType=\"warning\"` 的警告对话框时，才会显示取消按钮。\n当设置为 `true` 时，取消按钮将始终显示。",
             "showclose": "是否在对话框的标题栏中显示关闭按钮。",
             "showconfirm": "当对话框为提示对话框时，是否显示确认按钮。\n\n当对话框为提示对话框时，默认值为 `true`。",
             "showfullscreen": "是否在对话框的标题栏中显示全屏切换按钮。",
-            "side": "组件的侧边布局。",
+            "side": "翻译方向。",
             "size": "组件的视觉尺寸。",
+            "snappoint": "受控的快照点。可通过 `v-model:snapPoint` 进行绑定。",
+            "snappoints": "断点。",
+            "snaptosequentialpoints": "当值为 `true` 时，跳转至下一个顺序快照点（每次一步）。\n当值为 `false` 时，跳转至距离最近的快照点。",
+            "swipeable": "在抽屉边缘渲染可选的“滑动打开”区域。",
+            "swipeareaprops": "转发给滑动区域元素的属性。",
             "title": "对话框的标题。此标题用于辅助功能，若未提供 `title` 槽，则会显示在对话框的标题栏中。",
             "titleprops": "传递给 title 元素的属性。",
             "triggerprops": "转发给触发元素的属性。",
@@ -13085,58 +12837,6 @@
           "slots": "NavMenu 组件的插槽。"
         }
       },
-      "packages_ui_src_components_navigation_menu_types": {
-        "navigationmenuemits": {
-          "callables": {
-            "escapekeydown": "当Esc键被按下时调用的事件处理程序。可被阻止。",
-            "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。可被阻止。",
-            "interactoutside": "当交互发生在 `DismissableLayer` 外部时触发的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。可被阻止。",
-            "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。",
-            "select": "在发生 select 事件时触发。",
-            "update_modelvalue": "当模型值发生变化时触发。"
-          },
-          "emits": "NavigationMenu 组件的事件。"
-        },
-        "navigationmenuprops": {
-          "members": {
-            "class": "应用于根元素的额外类名。",
-            "contentprops": "转发至内容元素的属性。",
-            "defaultvalue": "初始渲染时应处于活动状态的菜单项值。\n\n当您无需控制值的状态时使用。",
-            "delayduration": "指针进入触发器到工具提示打开之间的时间间隔。",
-            "dir": "下拉列表的阅读方向（如适用）。\n\n若省略，则从全局 `ConfigProvider` 继承，或默认采用 LTR（从左到右）阅读模式。",
-            "disableclicktrigger": "如果为 `true`，则无法通过点击触发器打开菜单",
-            "disablehovertrigger": "若为 `true`，则无法通过悬停在触发器上打开菜单",
-            "disablepointerleaveclose": "如果为 `true`，则在光标移出事件发生时菜单不会关闭",
-            "indicatorprops": "转发至 indicator 元素的属性。",
-            "itemprops": "转发至 item 元素的属性。",
-            "items": "导航菜单中要显示的项目。",
-            "linkprops": "传递给 link 元素的属性。",
-            "listprops": "转发给列表元素的属性。",
-            "modelvalue": "要激活的菜单项的受控值。可作为 `v-model` 使用。",
-            "orientation": "菜单的排列方向。",
-            "size": "组件的视觉尺寸。",
-            "skipdelayduration": "用户在触发延迟之前，有多少时间可以再次输入另一个触发条件。",
-            "subitemprops": "传递给子项元素的属性。",
-            "sublistprops": "转发给子列表元素的属性。",
-            "triggerprops": "转发给触发元素的属性。",
-            "ui": "针对该组件的按槽位类重写。",
-            "unmountonhide": "当值为 `true` 时，该元素将在关闭状态下被卸载。",
-            "viewportprops": "传递给视口元素的属性。"
-          },
-          "props": "NavigationMenu 组件的属性。"
-        },
-        "navigationmenuslots": {
-          "callables": {
-            "item": "",
-            "item_children": "",
-            "item_leading": "",
-            "item_link_icon": "",
-            "item_trailing": "",
-            "item_trigger_icon": ""
-          },
-          "slots": "NavigationMenu 组件的插槽。"
-        }
-      },
       "packages_ui_src_components_page_tabs_types": {
         "pagetabsemits": {
           "emits": "PageTabs 组件的事件。"
@@ -13394,55 +13094,6 @@
             "trigger": "触发槽的自定义内容。"
           },
           "slots": "Popover 组件的插槽。"
-        }
-      },
-      "packages_ui_src_components_popper_types": {
-        "popperemits": {
-          "callables": {
-            "closeautofocus": "在关闭时自动聚焦时触发的事件处理程序。可被阻止。",
-            "escapekeydown": "按下Esc键时触发的事件处理程序。可被阻止。",
-            "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。该事件可被阻止。",
-            "interactoutside": "当在 `DismissableLayer` 外部发生交互时调用的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。此事件可被阻止。",
-            "openautofocus": "在打开页面时自动获得焦点时触发的事件处理程序。可阻止该行为。",
-            "placed": "",
-            "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 之外时调用的事件处理程序。可被阻止。",
-            "update_open": ""
-          },
-          "emits": "Popper 组件的事件。"
-        },
-        "popperprops": {
-          "members": {
-            "arrowprops": "",
-            "class": "弹出窗口类",
-            "closedelay": "",
-            "defaultopen": "",
-            "dir": "",
-            "disabled": "",
-            "modal": "",
-            "open": "",
-            "opendelay": "",
-            "openonfocus": "",
-            "placement": "",
-            "popupprops": "",
-            "portalprops": "",
-            "positionerprops": "",
-            "pressopendelay": "",
-            "showarrow": "",
-            "size": "组件的视觉尺寸。",
-            "skipdelayduration": "",
-            "trigger": "",
-            "triggerprops": "",
-            "ui": "该组件的按槽位类重写。"
-          },
-          "props": "Popper 组件的属性。"
-        },
-        "poppersize": "",
-        "popperslots": {
-          "callables": {
-            "default": "",
-            "trigger": ""
-          },
-          "slots": "Popper 组件的插槽。"
         }
       },
       "packages_ui_src_components_progress_types": {
@@ -13758,6 +13409,81 @@
             "ui": "针对该组件的按槽位类重写。"
           },
           "props": "Separator 组件的属性。"
+        }
+      },
+      "packages_ui_src_components_sheet_types": {
+        "sheetemits": {
+          "callables": {
+            "cancel": "当请求取消对话框时调用的事件处理程序。",
+            "click": "当对话框触发器被激活时调用的事件处理程序。",
+            "close": "当请求关闭对话框时调用的事件处理程序。",
+            "closeautofocus": "在关闭时自动聚焦时触发的事件处理程序。可被阻止。",
+            "confirm": "当通过确认操作请求关闭对话框时调用的事件处理程序。",
+            "escapekeydown": "按下Esc键时触发的事件处理程序。可被阻止。",
+            "focusoutside": "当焦点移出 `DismissableLayer` 时触发的事件处理程序。可被阻止。",
+            "fullscreen": "当请求切换对话框的全屏状态时，会调用此事件处理程序。",
+            "interactoutside": "当在 `DismissableLayer` 外部发生交互时触发的事件处理程序。具体而言，当 `pointerdown`\n事件发生在该区域外部，或焦点移出该区域时触发。此事件可被阻止。",
+            "openautofocus": "在打开页面时自动聚焦时触发的事件处理程序。可被阻止。",
+            "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。",
+            "update_fullscreen": "当对话框的全屏状态发生变化时调用的事件处理程序。",
+            "update_open": "当对话框的打开状态发生变化时，会调用此事件处理程序。"
+          },
+          "emits": "Sheet 组件的事件。"
+        },
+        "sheetprops": {
+          "members": {
+            "alerttype": "对话框的警报类型，该类型决定了当对话框为警报对话框时默认的图标和样式。",
+            "cancelprops": "转发给 cancel 元素的属性。",
+            "canceltext": "“取消”按钮的文本。此文本用于辅助功能，若未提供 `cancel` 插槽，则会在对话框的页脚中显示。\n\n默认采用来自 `ConfigProvider` 的本地化 `dialog.cancel` 消息。",
+            "class": "对话框的 popup 类",
+            "closeprops": "转发至 close 元素的属性。",
+            "confirmprops": "转发给 confirm 元素的属性。",
+            "confirmtext": "确认按钮的文本。此文本用于辅助功能，若未提供 `confirm` 槽，则会在对话框的页脚中显示。\n\n默认采用来自 `ConfigProvider` 的本地化 `dialog.confirm` 消息。",
+            "contentprops": "转发给内容元素的属性。",
+            "defaultfullscreen": "对话框初次渲染时的全屏状态。当不需要控制其全屏状态时使用。",
+            "defaultopen": "对话框初次渲染时的打开状态。当无需控制其打开状态时使用。",
+            "description": "对话框的描述。该内容用于辅助功能，若未提供 `description` 槽，则会显示在对话框的内容中。",
+            "descriptionprops": "已转发至 description 元素的属性。",
+            "dir": "对话框的文本方向",
+            "draggable": "是否可以通过拖动对话框的标题栏来移动该对话框。",
+            "footerprops": "转发至页脚元素的属性。",
+            "fullscreen": "对话框的可控全屏状态。可通过 `v-model:fullscreen` 进行绑定。",
+            "fullscreenprops": "转发给全屏元素的属性。",
+            "headerprops": "转发至 header 元素的属性。",
+            "icon": "对话框的图标。该图标用于辅助功能，若未提供 `icon` 槽，则会显示在对话框的标题栏中。",
+            "isalert": "该对话框是否为警报对话框。警报对话框是指会中断用户工作流程以传达重要信息并需要用户做出响应的对话框。\n\n当设置为 `true` 时，对话框将具有 `role=\"alertdialog\"` 属性，并需要提供 `DialogTitle`。此设置用于辅助功能支持。",
+            "modal": "对话框的模态属性。当设置为 `true` 时，将禁用与外部元素的交互，屏幕阅读器仅能读取\n对话框内容。\n\n设置为 `'trap-focus'` 可在锁定焦点的同时仍允许外部指针事件通过（非模态侧边面板，例如\n`'trap-focus'` 层级的 `Drawer`）。",
+            "open": "对话框的受控打开状态。可通过 `v-model:open` 进行绑定。",
+            "overlayprops": "转发给覆盖元素的属性。",
+            "popupprops": "转发给弹出窗口元素的属性。",
+            "portalprops": "转发给 portal 元素的属性。",
+            "pure": "是否使用不包含页眉和页脚的“纯版”对话框。\n当您希望完全控制对话框内容且不需要内置页眉和页脚时，此选项非常有用。",
+            "showcancel": "是否显示“取消”按钮。\n\n当设置为 `onlyWarning` 时，只有当对话框是 `alertType=\"warning\"` 的警告对话框时，才会显示“取消”按钮。\n当设置为 `true` 时，将始终显示“取消”按钮。",
+            "showclose": "是否在对话框的标题栏中显示关闭按钮。",
+            "showconfirm": "当对话框为提示对话框时，是否显示确认按钮。\n\n当对话框为提示对话框时，默认值为 `true`。",
+            "showfullscreen": "是否在对话框的标题栏中显示全屏切换按钮。",
+            "side": "组件的侧边布局。",
+            "size": "组件的视觉尺寸。",
+            "title": "对话框的标题。此标题用于辅助功能，若未提供 `title` 槽，则会显示在对话框的标题栏中。",
+            "titleprops": "传递给 title 元素的属性。",
+            "triggerprops": "转发给触发元素的属性。",
+            "ui": "该组件的按槽类重写。"
+          },
+          "props": "Sheet 组件的属性。"
+        },
+        "sheetslots": {
+          "callables": {
+            "cancel": "“取消”插槽的自定义内容。",
+            "close": "close 插槽的自定义内容。",
+            "confirm": "用于“confirm”插槽的自定义内容。",
+            "default": "默认插槽的自定义内容。",
+            "description": "描述字段的自定义内容。",
+            "footer": "页脚位置的自定义内容。",
+            "fullscreen": "全屏插槽的自定义内容。",
+            "title": "标题槽位的自定义内容。",
+            "trigger": "触发槽的自定义内容。"
+          },
+          "slots": "Sheet 组件的槽位。"
         }
       },
       "packages_ui_src_components_skeleton_types": {
