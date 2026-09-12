@@ -109,8 +109,6 @@
     "typecheck": "vue-tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
-    "@dnd-kit/dom": "^0.5.0",
-    "@dnd-kit/vue": "^0.5.0",
     "@floating-ui/dom": "^1.8.0",
     "@internationalized/date": "^3.12.4",
     "@internationalized/number": "^3.6.8",

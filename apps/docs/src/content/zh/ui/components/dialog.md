@@ -51,7 +51,7 @@ function openWarningDialog() {
 - ⚠️ 警告模式 — `isAlert` 切换为 `role="alertdialog"`，并加入类型图标与 `aria-live`（`polite`/`assertive`）
 - 🏷️ 无障碍标题/描述 — `title`/`description` 连接 `aria-labelledby`/`aria-describedby`
 - ❌ 可关闭 — `showClose` 渲染关闭控件；Escape、外部指针/焦点与关闭按钮均可关闭
-- 🖐️ 可拖拽 — `draggable` 支持拖动头部移动对话框（基于 `@dnd-kit/vue`）
+- 🖐️ 可拖拽 — `draggable` 支持拖动头部移动对话框（基于 `@vueuse/core` 的 `useDraggable`）
 - ⛶ 全屏 — `showFullscreen` 渲染切换按钮；`fullscreen`/`defaultFullscreen` 驱动 `v-model:fullscreen` 状态
 - 🔘 取消/确认 — `showCancel`/`showConfirm`，`cancelText`/`confirmText` 取自 `dialog.cancel`/`dialog.confirm` 本地化消息
 - 🧹 纯净模式 — `pure` 移除头部与底部，用于完全自定义内容

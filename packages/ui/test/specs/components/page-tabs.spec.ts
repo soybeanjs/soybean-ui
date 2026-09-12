@@ -1,8 +1,12 @@
 import { describe, expect, it } from 'vitest';
+import { defineComponent, nextTick, ref } from 'vue';
 import { mount } from '@vue/test-utils';
+import type { VueWrapper } from '@vue/test-utils';
 import SConfigProvider from '@/components/config-provider/config-provider.vue';
 import SPageTabs from '@/components/page-tabs/page-tabs.vue';
 import { getA11yViolations } from '../../shared/a11y';
+
+const TAB_ITEM = '[data-soybean-page-tabs-item]';
 
 const createItems = () => [
   { value: 'home', label: 'Home', pinned: true, hidePinnedIcon: true },
@@ -476,6 +480,252 @@ describe('SPageTabs', () => {
       const violations = await getA11yViolations(wrapper.element);
 
       expect(violations).toHaveLength(0);
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('drag sorting', () => {
+    interface DragHostItem {
+      value: string;
+      label: string;
+      pinned?: boolean;
+      draggable?: boolean;
+    }
+
+    // happy-dom reports a zero box for every element, so the harness drives the
+    // hit-testing from stubbed 100px slots. Each stub resolves the element's
+    // *current* DOM position, so the geometry keeps following the reorder.
+    const createRect = (index: number): DOMRect =>
+      ({
+        x: index * 100,
+        y: 0,
+        left: index * 100,
+        top: 0,
+        width: 100,
+        height: 40,
+        right: index * 100 + 100,
+        bottom: 40,
+        toJSON: () => ({})
+      }) as DOMRect;
+
+    const fire = (target: EventTarget, type: string, init: Record<string, unknown>) => {
+      const event = new Event(type, { bubbles: true, cancelable: true });
+
+      Object.assign(event, init);
+      target.dispatchEvent(event);
+    };
+
+    const createHost = (initial: DragHostItem[], modelValue: string) => {
+      const items = ref<DragHostItem[]>(initial);
+      const active = ref(modelValue);
+
+      const Host = defineComponent({
+        components: { SPageTabs },
+        setup: () => ({ items, active }),
+        template: `<SPageTabs v-model="active" v-model:items="items" draggable />`
+      });
+
+      const wrapper = mount(Host, { attachTo: document.body });
+      const tabs = wrapper.findAll(TAB_ITEM);
+
+      tabs.forEach(tab => {
+        tab.element.getBoundingClientRect = () => {
+          const index = wrapper.findAll(TAB_ITEM).findIndex(item => item.element === tab.element);
+
+          return createRect(index);
+        };
+      });
+
+      return {
+        wrapper,
+        tabs,
+        // `getComponent` loses the wrapper type for these generic SFCs.
+        pageTabs: wrapper.getComponent(SPageTabs) as unknown as VueWrapper,
+        order: () => items.value.map(item => item.value),
+        modelValue: active
+      };
+    };
+
+    it('reorders a tab past its neighbours and emits the drag lifecycle', async () => {
+      const { wrapper, tabs, pageTabs, order } = createHost(
+        [
+          { value: 'a', label: 'A' },
+          { value: 'b', label: 'B' },
+          { value: 'c', label: 'C' },
+          { value: 'd', label: 'D' }
+        ],
+        'a'
+      );
+
+      fire(tabs[0].element, 'pointerdown', { clientX: 50, clientY: 20, pointerId: 1, button: 0 });
+      fire(window, 'pointermove', { clientX: 260, clientY: 20, pointerId: 1 });
+
+      await nextTick();
+
+      expect(order()).toEqual(['b', 'c', 'a', 'd']);
+      expect(pageTabs.emitted('tabDragStart')).toHaveLength(1);
+      expect(pageTabs.emitted('tabDragStart')![0][0]).toMatchObject({ index: 0 });
+      expect(pageTabs.emitted('tabDragReorder')).toHaveLength(1);
+      expect(pageTabs.emitted('tabDragReorder')![0][0]).toMatchObject({ index: 2 });
+      expect(pageTabs.emitted('tabDragEnd')).toBeFalsy();
+
+      fire(window, 'pointerup', { clientX: 260, clientY: 20, pointerId: 1 });
+
+      await nextTick();
+
+      expect(pageTabs.emitted('tabDragEnd')).toHaveLength(1);
+
+      wrapper.unmount();
+    });
+
+    it('ignores pointer travel below the activation distance', async () => {
+      const { wrapper, tabs, pageTabs, order } = createHost(
+        [
+          { value: 'a', label: 'A' },
+          { value: 'b', label: 'B' },
+          { value: 'c', label: 'C' }
+        ],
+        'a'
+      );
+
+      fire(tabs[0].element, 'pointerdown', { clientX: 50, clientY: 20, pointerId: 2, button: 0 });
+      fire(window, 'pointermove', { clientX: 52, clientY: 20, pointerId: 2 });
+
+      await nextTick();
+
+      expect(order()).toEqual(['a', 'b', 'c']);
+      expect(pageTabs.emitted('tabDragStart')).toBeFalsy();
+
+      fire(window, 'pointerup', { clientX: 52, clientY: 20, pointerId: 2 });
+
+      wrapper.unmount();
+    });
+
+    it('keeps an unpinned tab from crossing into the pinned zone', async () => {
+      const { wrapper, tabs, pageTabs, order } = createHost(
+        [
+          { value: 'p1', label: 'P1', pinned: true },
+          { value: 'p2', label: 'P2', pinned: true },
+          { value: 'u1', label: 'U1' },
+          { value: 'u2', label: 'U2' }
+        ],
+        'u1'
+      );
+
+      // u1 sits at index 2; pulling far left must halt at the pinned boundary.
+      fire(tabs[2].element, 'pointerdown', { clientX: 250, clientY: 20, pointerId: 3, button: 0 });
+      fire(window, 'pointermove', { clientX: -500, clientY: 20, pointerId: 3 });
+
+      await nextTick();
+
+      expect(order()).toEqual(['p1', 'p2', 'u1', 'u2']);
+      expect(pageTabs.emitted('tabDragReorder')).toBeFalsy();
+
+      fire(window, 'pointerup', { clientX: -500, clientY: 20, pointerId: 3 });
+
+      wrapper.unmount();
+    });
+
+    it('locks an item marked draggable: false in place', async () => {
+      const { wrapper, tabs, pageTabs, order } = createHost(
+        [
+          { value: 'locked', label: 'Locked', draggable: false },
+          { value: 'b', label: 'B' },
+          { value: 'c', label: 'C' }
+        ],
+        'locked'
+      );
+
+      fire(tabs[1].element, 'pointerdown', { clientX: 150, clientY: 20, pointerId: 4, button: 0 });
+      fire(window, 'pointermove', { clientX: -500, clientY: 20, pointerId: 4 });
+
+      await nextTick();
+
+      expect(order()).toEqual(['locked', 'b', 'c']);
+      expect(pageTabs.emitted('tabDragReorder')).toBeFalsy();
+
+      fire(window, 'pointerup', { clientX: -500, clientY: 20, pointerId: 4 });
+
+      wrapper.unmount();
+    });
+
+    it('swallows the click that concludes a drag', async () => {
+      const { wrapper, tabs, pageTabs, order } = createHost(
+        [
+          { value: 'a', label: 'A' },
+          { value: 'b', label: 'B' },
+          { value: 'c', label: 'C' }
+        ],
+        'c'
+      );
+
+      fire(tabs[0].element, 'pointerdown', { clientX: 50, clientY: 20, pointerId: 5, button: 0 });
+      fire(window, 'pointermove', { clientX: 160, clientY: 20, pointerId: 5 });
+
+      await nextTick();
+
+      fire(window, 'pointerup', { clientX: 160, clientY: 20, pointerId: 5 });
+
+      await nextTick();
+      await tabs[0].trigger('click');
+
+      expect(order()).toEqual(['b', 'a', 'c']);
+      expect(pageTabs.emitted('update:modelValue')).toBeFalsy();
+
+      wrapper.unmount();
+    });
+
+    it('reorders with Space and the arrow keys', async () => {
+      const { wrapper, tabs, pageTabs, order } = createHost(
+        [
+          { value: 'a', label: 'A' },
+          { value: 'b', label: 'B' },
+          { value: 'c', label: 'C' }
+        ],
+        'a'
+      );
+
+      fire(tabs[0].element, 'keydown', { key: ' ' });
+      fire(tabs[0].element, 'keydown', { key: 'ArrowRight' });
+
+      await nextTick();
+
+      expect(order()).toEqual(['b', 'a', 'c']);
+      expect(pageTabs.emitted('tabDragStart')).toHaveLength(1);
+
+      fire(tabs[0].element, 'keydown', { key: ' ' });
+
+      await nextTick();
+
+      expect(pageTabs.emitted('tabDragEnd')).toHaveLength(1);
+
+      wrapper.unmount();
+    });
+
+    it('restores the original order on Escape', async () => {
+      const { wrapper, tabs, pageTabs, order } = createHost(
+        [
+          { value: 'a', label: 'A' },
+          { value: 'b', label: 'B' },
+          { value: 'c', label: 'C' }
+        ],
+        'a'
+      );
+
+      fire(tabs[0].element, 'pointerdown', { clientX: 50, clientY: 20, pointerId: 6, button: 0 });
+      fire(window, 'pointermove', { clientX: 260, clientY: 20, pointerId: 6 });
+
+      await nextTick();
+
+      expect(order()).toEqual(['b', 'c', 'a']);
+
+      fire(window, 'keydown', { key: 'Escape' });
+
+      await nextTick();
+
+      expect(order()).toEqual(['a', 'b', 'c']);
+      expect(pageTabs.emitted('tabDragEnd')).toBeFalsy();
 
       wrapper.unmount();
     });

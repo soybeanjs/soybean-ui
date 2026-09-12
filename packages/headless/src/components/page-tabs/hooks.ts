@@ -15,8 +15,10 @@ interface UsePageTabsStateOptions<T extends PageTabsOptionData> {
  * dragging within their own zone only, which keeps the pinned group
  * aggregated at the front. `hidePinnedIcon` is display-only and never
  * affects the zone, so all pinned tabs reorder among themselves.
+ *
+ * The zone doubles as the reorder group handed to `useSortableList`.
  */
-export function getPageTabZone(tab: PageTabsOptionData): number {
+export function getPageTabZone(tab: Pick<PageTabsOptionData, 'pinned'>): number {
   return tab.pinned ? 0 : 1;
 }
 

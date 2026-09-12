@@ -51,7 +51,7 @@ function openWarningDialog() {
 - ⚠️ Alert mode — `isAlert` switches to `role="alertdialog"`, adds the type icon and `aria-live` (`polite`/`assertive`)
 - 🏷️ Accessible title/description — `title`/`description` wire `aria-labelledby`/`aria-describedby`
 - ❌ Closable — `showClose` renders a close control; Escape, outside pointer/focus and the close button all dismiss
-- 🖐️ Draggable — `draggable` lets you move the dialog by dragging its header (powered by `@dnd-kit/vue`)
+- 🖐️ Draggable — `draggable` lets you move the dialog by dragging its header (powered by `useDraggable` from `@vueuse/core`)
 - ⛶ Fullscreen — `showFullscreen` renders a toggle; `fullscreen`/`defaultFullscreen` drive a `v-model:fullscreen` state
 - 🔘 Cancel/confirm — `showCancel`/`showConfirm` with localized `cancelText`/`confirmText` from `dialog.cancel`/`dialog.confirm`
 - 🧹 Pure mode — `pure` drops the header/footer for fully custom content
