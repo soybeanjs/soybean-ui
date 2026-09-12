@@ -107,6 +107,7 @@ watch(
         motionState.value = null;
       } else {
         motionState.value = {
+          key: change.key,
           type: change.add ? 'show' : 'hide',
           items: spliceMotionSentinel(shorter, change.key),
           blockItems,
