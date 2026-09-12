@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useLocaleMessages } from '@soybeanjs/headless';
-import { Tag } from '@soybeanjs/headless/tag';
+import { useControllableState } from '@soybeanjs/headless/composables';
 import { tagVariants } from '@/styles/tag';
 import Icon from '../icon/icon.vue';
 import type { TagProps, TagEmits } from './types';
@@ -17,6 +17,18 @@ const props = withDefaults(defineProps<TagProps>(), {
 const emit = defineEmits<TagEmits>();
 
 const messages = useLocaleMessages();
+
+const open = useControllableState(
+  () => props.open,
+  value => {
+    emit('update:open', value);
+  },
+  true
+);
+
+const close = () => {
+  open.value = false;
+};
 
 const closeLabel = computed(() =>
   props.content
@@ -38,7 +50,7 @@ const cls = computed(() =>
 </script>
 
 <template>
-  <Tag v-slot="{ close }" :open="open" :class="cls" @update:open="emit('update:open', $event)">
+  <div v-if="open" data-soybean-tag :class="cls">
     <slot name="leading" />
     <slot>{{ content }}</slot>
     <slot name="trailing" />
@@ -52,5 +64,5 @@ const cls = computed(() =>
         <Icon icon="lucide:x" />
       </button>
     </slot>
-  </Tag>
+  </div>
 </template>

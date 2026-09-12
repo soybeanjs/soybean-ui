@@ -521,7 +521,6 @@ export const components = {
     'TableVirtualSpacerRow'
   ],
   tabs: ['TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator', 'TabsCompact'],
-  tag: ['Tag'],
   tagsInput: [
     'TagsInputCompact',
     'TagsInputRoot',
