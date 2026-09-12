@@ -112,7 +112,6 @@
     "@dnd-kit/dom": "^0.5.0",
     "@dnd-kit/vue": "^0.5.0",
     "@floating-ui/dom": "^1.8.0",
-    "@formkit/auto-animate": "^0.10.0",
     "@internationalized/date": "^3.12.4",
     "@internationalized/number": "^3.6.8",
     "@soybeanjs/colord": "^0.7.1",
