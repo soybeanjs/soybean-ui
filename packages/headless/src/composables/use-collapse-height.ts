@@ -1,6 +1,6 @@
 import { onScopeDispose, watch } from 'vue';
 import { useMutationObserver } from '@vueuse/core';
-import { COLLAPSE_MOTION_DEFAULTS } from '../shared';
+import { COLLAPSE_MOTION_DEFAULTS, prefersReducedMotion } from '../shared';
 import { useForwardElement } from './use-forward-element';
 
 /**
@@ -47,6 +47,35 @@ export function hasStructuralChildChange(records: ReadonlyArray<StructuralChange
   );
 }
 
+function parsePixels(value: string): number {
+  return value.endsWith('px') ? Number.parseFloat(value) : 0;
+}
+
+/**
+ * Natural (auto) border-box height of the node, measurable even while an
+ * inline height pins the box: a Range over the contents ignores the box's own
+ * clipping, unlike `scrollHeight`, which never reports below the visible box
+ * and would make chained changes mid-animation measure the clipped height.
+ * Padding and border are added back to match what writing `height` renders
+ * under the animation's forced `box-sizing: border-box`.
+ */
+function measureNaturalHeight(node: HTMLElement): number {
+  const range = document.createRange();
+
+  range.selectNodeContents(node);
+
+  const box = range.getBoundingClientRect();
+  const style = getComputedStyle(node);
+
+  return (
+    box.height +
+    parsePixels(style.paddingTop) +
+    parsePixels(style.paddingBottom) +
+    parsePixels(style.borderTopWidth) +
+    parsePixels(style.borderBottomWidth)
+  );
+}
+
 /**
  * Animates a persistent container's height when its direct-child content
  * changes structurally (rows or items added or removed): pins the previous
@@ -56,9 +85,10 @@ export function hasStructuralChildChange(records: ReadonlyArray<StructuralChange
  * The observation cannot be expressed with `<Transition>`: children render
  * through consumer slots as fragments, so the container is the only stable
  * element to animate. Everything is driven through inline styles, so no
- * companion CSS is required. Observation is disabled in test environments:
- * happy-dom has no CSS transition support, so the pinned styles would never
- * settle through `transitionend`.
+ * companion CSS is required. Users with `prefers-reduced-motion: reduce`
+ * get the instant height change instead. Observation is disabled in test
+ * environments: happy-dom has no CSS transition support, so the pinned
+ * styles would never settle through `transitionend`.
  *
  * @param options Duration/easing overrides.
  * @returns `setElementRef` binds onto the container element (function ref);
@@ -78,6 +108,7 @@ export function useCollapseHeight(options: UseCollapseHeightOptions = {}) {
     node.style.height = '';
     node.style.overflow = '';
     node.style.transition = '';
+    node.style.boxSizing = '';
 
     if (clearTimer !== null) {
       clearTimeout(clearTimer);
@@ -100,6 +131,9 @@ export function useCollapseHeight(options: UseCollapseHeightOptions = {}) {
     clearCollapse(node);
 
     node.style.overflow = 'hidden';
+    // Pin as border-box so the measured border-box start/end heights render
+    // exactly, whatever box model the container's own styles declare.
+    node.style.boxSizing = 'border-box';
     node.style.height = `${current}px`;
     // Force a style recalc so the browser interpolates from the pinned height.
     void node.scrollHeight;
@@ -115,7 +149,15 @@ export function useCollapseHeight(options: UseCollapseHeightOptions = {}) {
 
     if (!node || !hasStructuralChildChange(records)) return;
 
-    const next = node.scrollHeight;
+    const next = measureNaturalHeight(node);
+
+    if (prefersReducedMotion()) {
+      // Reduced-motion users get the instant height change, no transition.
+      lastHeight = next;
+      clearCollapse(node);
+      return;
+    }
+
     // While a collapse is in flight the element still carries its pinned
     // inline height, so `offsetHeight` reports the interpolated value and
     // chained changes animate smoothly. Otherwise the layout already jumped
@@ -132,7 +174,7 @@ export function useCollapseHeight(options: UseCollapseHeightOptions = {}) {
     elementRef,
     node => {
       if (node) {
-        lastHeight = node.scrollHeight;
+        lastHeight = measureNaturalHeight(node);
       }
     },
     { flush: 'post' }

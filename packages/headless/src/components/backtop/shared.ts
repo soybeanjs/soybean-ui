@@ -85,10 +85,4 @@ export function easeInOutCubic(value: number) {
   return 1 - (-2 * value + 2) ** 3 / 2;
 }
 
-export function prefersReducedMotion() {
-  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
-    return false;
-  }
-
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
+export { prefersReducedMotion } from '../../shared';
