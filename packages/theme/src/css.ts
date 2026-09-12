@@ -1,5 +1,4 @@
 import { generatePalette } from '@soybeanjs/colord/palette';
-import { keysOf } from '#shared/guard';
 import {
   resolveColorValue,
   isUnTransformedColor,
@@ -7,6 +6,7 @@ import {
   resolveRadiusValue,
   resolveSizeValue
 } from './shared';
+import { keysOf } from './utils';
 import type {
   BaseGenerateCSSOptions,
   ColorFormat,

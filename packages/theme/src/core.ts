@@ -1,5 +1,5 @@
-import { defu } from '#shared/object';
 import { getDarkSelector } from './shared';
+import { defu } from './utils';
 import { generateCss } from './css';
 import { DEFAULT_PRESET_OPTIONS } from './defaults';
 import { resolveTheme } from './preset';

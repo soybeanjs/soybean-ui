@@ -1,5 +1,4 @@
-import { keysOf } from '#shared/guard';
-import { defu } from '#shared/object';
+import { defu, keysOf } from './utils';
 import { DEFAULT_PRESET_OPTIONS } from './defaults';
 import { deriveBasePreset, deriveDarkFromLight, derivePrimaryPreset } from './derive';
 import { getRegistry } from './registry';

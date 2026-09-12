@@ -1,10 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "types": ["node", "vitest/globals"],
-    "paths": {
-      "#shared/*": ["../headless/src/shared/*"]
-    }
+    "types": ["node", "vitest/globals"]
   },
   "include": ["src", "test"]
 }
