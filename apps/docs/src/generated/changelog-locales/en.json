@@ -2203,6 +2203,34 @@
               "fd792": "update api docs and schema",
               "fdc47": "merge 404 page into catch-all with blank layout",
               "fe08d": "update ts version and update deps"
+            },
+            "2": {
+              "23221": "update deps",
+              "40873": "drop admin option from playground library selector",
+              "68629": "suppress mouse focus outline on chart svg surface",
+              "82539": "stub DEEPL_API_KEY in translate test to stay hermetic on ci",
+              "030cf": "add v0.50.0 rebrand upgrade guide",
+              "06a8a": "constrain dialog popup width on small screens",
+              "081aa": "restyle chart demos and add spring-animated chart tooltip",
+              "08d6c": "align theme css assertions with unminified output",
+              "235aa": "fix display default language",
+              "479b9": "add vbean rename codemod scripts",
+              "5e9f9": "keep tree-menu selection visible under keep strategy",
+              "603a9": "add prepare script to package.json",
+              "730af": "add VBean rename migration plan",
+              "77eba": "drop sidebar expanded workaround handled by tree-menu",
+              "84b8a": "add justify-start to upgrade guide button classes",
+              "94c82": "attach upgrade guide docPath to release notes",
+              "a214c": "update rebrand-vbean.md",
+              "a30be": "remove unused enable-indicator prop of STabs",
+              "abe07": "label the icon-only close trigger via locale",
+              "b0481": "guard bottom-sheet timers against env teardown in tests",
+              "b4d4c": "give search dialog a desktop width and full width on mobile",
+              "b96f1": "ignore .workbuddy workspace directory",
+              "d2587": "align rename with vbean rebrand and drop removed packages",
+              "d838c": "switch playground page to tabbed views with docs as default",
+              "df90d": "add upgrade guide pages linked from breaking releases",
+              "e48e7": "make browser e2e suite pass under the vitest 5 page"
             }
           }
         }

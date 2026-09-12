@@ -1,8 +1,25 @@
 {
   "component": "dialog",
-  "generatedAt": "2026-09-11T04:38:25.304Z",
+  "generatedAt": "2026-09-12T03:41:06.024Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.40.0-beta.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.0-beta.1...v0.40.0-beta.2",
+      "date": "2026-09-12",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "dialog",
+          "summary": "label the icon-only close trigger via locale",
+          "summaryKey": "changelog.generated.v0.40.0-beta.2.abe07",
+          "commitHash": "abe07",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/abe07ea74",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.30.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0",

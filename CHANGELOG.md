@@ -1,5 +1,70 @@
 # Changelog
 
+## [v0.40.0-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.40.0-beta.1...v0.40.0-beta.2) (2026-09-12)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **docs**:
+  - add upgrade guide pages linked from breaking releases &nbsp;-&nbsp; by @soybeanjs [<samp>(df90d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/df90dcc97)
+  - switch playground page to tabbed views with docs as default &nbsp;-&nbsp; by **soybeanfe** [<samp>(d838c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d838cf125)
+  - restyle chart demos and add spring-animated chart tooltip &nbsp;-&nbsp; by **soybeanfe** [<samp>(081aa)</samp>](https://github.com/soybeanjs/soybean-ui/commit/081aa170f)
+- **scripts**:
+  - attach upgrade guide docPath to release notes &nbsp;-&nbsp; by @soybeanjs [<samp>(94c82)</samp>](https://github.com/soybeanjs/soybean-ui/commit/94c821557)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **dialog**:
+  - label the icon-only close trigger via locale &nbsp;-&nbsp; by **soybeanfe** [<samp>(abe07)</samp>](https://github.com/soybeanjs/soybean-ui/commit/abe07ea74)
+- **docs**:
+  - give search dialog a desktop width and full width on mobile &nbsp;-&nbsp; by **soybeanfe** [<samp>(b4d4c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b4d4c76f9)
+  - suppress mouse focus outline on chart svg surface &nbsp;-&nbsp; by **soybeanfe** [<samp>(68629)</samp>](https://github.com/soybeanjs/soybean-ui/commit/68629c907)
+- **headless**:
+  - keep tree-menu selection visible under keep strategy &nbsp;-&nbsp; by **soybeanfe** [<samp>(5e9f9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5e9f93f3c)
+  - guard bottom-sheet timers against env teardown in tests &nbsp;-&nbsp; by @soybeanjs [<samp>(b0481)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b048135e4)
+- **ui**:
+  - constrain dialog popup width on small screens &nbsp;-&nbsp; by **soybeanfe** [<samp>(06a8a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/06a8abdbf)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **docs**: drop sidebar expanded workaround handled by tree-menu &nbsp;-&nbsp; by **soybeanfe** [<samp>(77eba)</samp>](https://github.com/soybeanjs/soybean-ui/commit/77eba6080)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **migration**: add v0.50.0 rebrand upgrade guide &nbsp;-&nbsp; by **soybeanfe** [<samp>(030cf)</samp>](https://github.com/soybeanjs/soybean-ui/commit/030cf55d1)
+- **rebrand**: add VBean rename migration plan &nbsp;-&nbsp; by **soybeanfe** [<samp>(730af)</samp>](https://github.com/soybeanjs/soybean-ui/commit/730afb0d9)
+- **v0.50.0**: align rename with vbean rebrand and drop removed packages &nbsp;-&nbsp; by @soybeanjs [<samp>(d2587)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d25874804)
+- **vbean**: update rebrand-vbean.md &nbsp;-&nbsp; by @soybeanjs [<samp>(a214c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a214ce72d)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **.vscode**:
+  - fix display default language &nbsp;-&nbsp; by **soybeanfe** [<samp>(235aa)</samp>](https://github.com/soybeanjs/soybean-ui/commit/235aa387b)
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(23221)</samp>](https://github.com/soybeanjs/soybean-ui/commit/232218f9d)
+- **docs**:
+  - add prepare script to package.json &nbsp;-&nbsp; by **soybeanfe** [<samp>(603a9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/603a93576)
+  - drop admin option from playground library selector &nbsp;-&nbsp; by **soybeanfe** [<samp>(40873)</samp>](https://github.com/soybeanjs/soybean-ui/commit/408732f5c)
+- **git**:
+  - ignore .workbuddy workspace directory &nbsp;-&nbsp; by **soybeanfe** [<samp>(b96f1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b96f113d3)
+- **tools**:
+  - add vbean rename codemod scripts &nbsp;-&nbsp; by **soybeanfe** [<samp>(479b9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/479b9ccf7)
+
+### &nbsp;&nbsp;&nbsp;✅ Tests
+
+- **scripts**: stub DEEPL_API_KEY in translate test to stay hermetic on ci &nbsp;-&nbsp; by **soybeanfe** [<samp>(82539)</samp>](https://github.com/soybeanjs/soybean-ui/commit/825399182)
+- **ui**: make browser e2e suite pass under the vitest 5 page &nbsp;-&nbsp; by **soybeanfe** [<samp>(e48e7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e48e70f27)
+- **uno**: align theme css assertions with unminified output &nbsp;-&nbsp; by **soybeanfe** [<samp>(08d6c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/08d6cf39e)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **playground**: remove unused enable-indicator prop of STabs &nbsp;-&nbsp; by **soybeanfe** [<samp>(a30be)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a30be03d0)
+- **releases page**: add justify-start to upgrade guide button classes &nbsp;-&nbsp; by **soybeanfe** [<samp>(84b8a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/84b8ae60f)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.40.0-beta.1](https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.40.0-beta.1) (2026-09-11)
 
 ### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes

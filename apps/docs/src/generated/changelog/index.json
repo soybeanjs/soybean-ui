@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T04:38:25.304Z",
+  "generatedAt": "2026-09-12T03:41:06.024Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -250,9 +250,9 @@
     "dialog": {
       "component": "dialog",
       "file": "dialog.json",
-      "latestVersion": "v0.30.0",
-      "versionCount": 13,
-      "entryCount": 18
+      "latestVersion": "v0.40.0-beta.2",
+      "versionCount": 14,
+      "entryCount": 19
     },
     "dropdown-menu": {
       "component": "dropdown-menu",
