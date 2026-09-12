@@ -1,6 +1,6 @@
 # HEADLESS COMPOSABLES
 
-**28 hooks** shared across all headless primitives. Pure Vue Composition API.
+**29 hooks** shared across all headless primitives. Pure Vue Composition API.
 
 ## CATEGORIES
 
@@ -12,6 +12,7 @@
 | **Floating**  | `use-floating`, `use-grace-area`, `use-popup-events`                              | Positioning (floating-ui), hover grace zones, popup triggers                |
 | **DOM**       | `use-forward-element`, `use-exposed-element`, `use-hide-others`                   | Ref forwarding, `aria-hidden` siblings                                      |
 | **Selection** | `use-selection`, `use-collection`, `use-typeahead`, `use-fuse`                    | Multi-select state, item registration, type-to-search, fuzzy search         |
+| **Sortable**  | `use-sortable-list`                                                               | Pointer + keyboard list reordering, insertion window, FLIP slide            |
 | **Bridge**    | `use-ui-context`, `use-props`, `use-forward-listeners`                            | UI↔headless class injection, prop utilities, event forwarding               |
 | **Misc**      | `use-presence`, `use-image-loading-status`, `use-is-using-keyboard`, `use-kbd`    | Enter/exit animation, image load state, input modality, key constants       |
 

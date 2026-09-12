@@ -24,6 +24,7 @@ export * from './use-presence';
 export * from './use-props';
 export * from './use-roving-focus';
 export * from './use-selection';
+export * from './use-sortable-list';
 export * from './use-state-machine';
 export * from './use-typeahead';
 export * from './use-ui-context';
