@@ -1,12 +1,11 @@
-import type { TagEmits, TagProps as _TagProps } from '@soybeanjs/headless/tag';
-import type { ClassValue } from '@soybeanjs/headless/types';
+import type { BaseProps, ClassValue } from '@soybeanjs/headless/types';
 import type { TagShape, TagVariant } from '@/styles/tag';
 import type { ThemeColor, ThemeSize } from '@/theme';
 
 /**
  * Properties for the Tag component.
  */
-export interface TagProps extends _TagProps {
+export interface TagProps extends BaseProps {
   /**
    * Additional class names applied to the root element.
    */
@@ -35,6 +34,20 @@ export interface TagProps extends _TagProps {
    * Whether the component can be closed.
    */
   closable?: boolean;
+  /**
+   * Whether the component is open. Controlled when provided.
+   */
+  open?: boolean;
 }
 
-export type { TagEmits, TagVariant, TagShape };
+/**
+ * Events for the Tag component.
+ */
+export type TagEmits = {
+  /**
+   * Emitted when the open state changes.
+   */
+  'update:open': [open: boolean];
+};
+
+export type { TagVariant, TagShape };

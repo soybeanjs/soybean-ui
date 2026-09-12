@@ -528,7 +528,6 @@ import {
   TabsList,
   TabsRoot,
   TabsTrigger,
-  Tag,
   TagsInputClear,
   TagsInputCompact,
   TagsInputControl,
@@ -1892,8 +1891,6 @@ export const Tabs = {
   Indicator: typeof TabsIndicator;
   Compact: typeof TabsCompact;
 };
-
-export { Tag };
 
 export const TagsInput = {
   Compact: TagsInputCompact,
