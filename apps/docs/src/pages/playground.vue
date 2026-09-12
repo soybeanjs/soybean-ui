@@ -149,12 +149,7 @@ onMounted(() => {
 <template>
   <STabs v-model="activeView" :items="viewTabs" shape="rounded" fill="auto">
     <template #content>
-      <SCard
-        v-if="activeView === 'playground'"
-        data-soybean-bottom-sheet-scale
-        :title="t('playground.title')"
-        class="bg-background"
-      >
+      <SCard v-if="activeView === 'playground'" :title="t('playground.title')" class="bg-background">
         <template #extra>
           <SSelect v-model="activeLibrary" :items="libraryOptions" class="w-35">
             <template #trigger-leading>
