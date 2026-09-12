@@ -1,6 +1,5 @@
 <script setup lang="ts" generic="T extends TreeItemData">
-import { computed } from 'vue';
-import { isTreeMotionItem } from '@soybeanjs/headless/tree';
+import { computed, watchEffect } from 'vue';
 import type { FlattenedItem, TreeItemData, TreeMotionState } from '@soybeanjs/headless/tree';
 import type { MaybeArray } from '@soybeanjs/headless/types';
 import type { VirtualItem } from '@tanstack/vue-virtual';
@@ -27,29 +26,124 @@ interface Props {
 
 const props = defineProps<Props>();
 
-// This component is rendered inside the virtualizer scroll container.
 // Visible items are rendered with "document flow + top and bottom padding": the padding provides scroll height (virtualization is retained, only visible items are rendered), and items stay in normal document flow so dynamic measurement keeps positions stable across expand/collapse.
-// While a motion is running the full transition list renders in document flow (spacers collapse to zero), then windowing resumes when the motion ends.
-const topSpacer = computed(() => (props.motion ? 0 : (props.virtualItems[0]?.start ?? 0)));
+// While a motion runs the window keeps rendering from the current flattened list; only the animated subtree is swapped for a height-collapsing block, clipped to the visible window so large trees stay O(window) during the animation.
+const topSpacer = computed(() => props.virtualItems[0]?.start ?? 0);
 
 const bottomSpacer = computed(() => {
-  if (props.motion) return 0;
-
   const items = props.virtualItems;
 
   return items.length ? Math.max(0, props.totalSize - items[items.length - 1].end) : 0;
+});
+
+/**
+ * Flat range of the animated subtree inside the current flattened list: for
+ * `show` the block items' own positions; for `hide` the virtual positions
+ * right after the parent (the children are no longer in the list).
+ */
+const blockRange = computed(() => {
+  const motion = props.motion;
+
+  if (!motion) return null;
+
+  const anchor = motion.type === 'show' ? motion.blockItems[0]?.value : motion.key;
+  const start = props.flattenItems.findIndex(item => item.value === anchor) + (motion.type === 'show' ? 0 : 1);
+
+  if (start < 0) return null;
+
+  return { start, end: start + motion.blockItems.length };
+});
+
+/**
+ * The slice of the animated subtree that intersects the current window, so
+ * motion rendering stays bounded on large trees (off-screen block items are
+ * never mounted, exactly like the off-screen window items).
+ */
+const visibleBlockItems = computed(() => {
+  const motion = props.motion;
+  const range = blockRange.value;
+
+  if (!motion || !range) return [];
+
+  const windowStart = props.virtualItems[0]?.index ?? 0;
+  const windowEnd = (props.virtualItems[props.virtualItems.length - 1]?.index ?? -1) + 1;
+  const from = Math.max(0, windowStart - range.start);
+  const to = Math.max(0, windowEnd - range.start);
+
+  return motion.blockItems.slice(from, to);
+});
+
+// A motion whose block falls entirely outside the window has nothing to
+// animate — finish it immediately so the tree cannot stay in motion state.
+watchEffect(() => {
+  if (props.motion && blockRange.value && visibleBlockItems.value.length === 0) {
+    props.motion.end();
+  }
+});
+
+interface MotionEntry {
+  key: string;
+  item?: FlattenedItem<T>;
+  virtualItem?: VirtualItem;
+  blockItems?: FlattenedItem<T>[];
+}
+
+/**
+ * Composed motion render list: the visible window items, with the animated
+ * subtree replaced by a single block entry. For `show` the window items inside
+ * the block range are skipped (the block replaces them); for `hide` the block
+ * renders right after the parent and every window item stays.
+ */
+const motionRender = computed(() => {
+  const motion = props.motion;
+
+  if (!motion) return null;
+
+  const range = blockRange.value;
+
+  if (!range) return null;
+
+  const entries: MotionEntry[] = [];
+  let blockRendered = false;
+
+  for (const virtualItem of props.virtualItems) {
+    const flat = virtualItem.index;
+    const inBlockRange = flat >= range.start && flat < range.end;
+
+    if (motion.type === 'show' && inBlockRange) {
+      if (!blockRendered) {
+        blockRendered = true;
+        entries.push({ key: `motion-${flat}`, blockItems: visibleBlockItems.value });
+      }
+
+      continue;
+    }
+
+    const item = props.flattenItems[flat];
+
+    if (!item) continue;
+
+    entries.push({ key: item.value, item, virtualItem });
+
+    if (motion.type === 'hide' && !blockRendered && item.value === motion.key) {
+      blockRendered = true;
+      entries.push({ key: `motion-${flat + 1}`, blockItems: visibleBlockItems.value });
+    }
+  }
+
+  return entries;
 });
 
 function itemKey(index: number) {
   return props.flattenItems[index]?.value ?? index;
 }
 
-// Motion entries render through the same consumer item slot as virtualized
+// Motion block items render through the same consumer item slot as virtualized
 // items, and that slot expects a virtual item shape (VirtualizerItem reads
-// `data.index`). Synthesize one for the transition list: during dynamic flow
-// it carries no positioning, only `data-index`/`aria-posinset`. Items from the
-// collapsed-side snapshot (hide motion) may not exist in the current flat
-// list, so their index falls back to -1 for the brief animation window.
+// `data.index`). Synthesize one: during dynamic flow it carries no
+// positioning, only `data-index`/`aria-posinset`. Collapsed-side snapshot
+// items may not exist in the current flattened list, so their index falls
+// back to -1 for the brief animation window.
 function motionVirtualItem(item: FlattenedItem<T>): VirtualItem {
   return {
     index: props.flattenItems.findIndex(flattenItem => flattenItem.value === item.value),
@@ -64,17 +158,9 @@ function motionVirtualItem(item: FlattenedItem<T>): VirtualItem {
 
 <template>
   <div :style="{ position: 'relative', paddingTop: `${topSpacer}px`, paddingBottom: `${bottomSpacer}px` }">
-    <template v-if="motion">
-      <template
-        v-for="listItem in motion.items"
-        :key="isTreeMotionItem(listItem) ? '__soybean_tree_motion__' : listItem.value"
-      >
-        <STreeMotionBlock
-          v-if="isTreeMotionItem(listItem)"
-          :type="motion.type"
-          :items="motion.blockItems"
-          @end="motion.end()"
-        >
+    <template v-if="motion && motionRender">
+      <template v-for="entry in motionRender" :key="entry.key">
+        <STreeMotionBlock v-if="entry.blockItems" :type="motion.type" :items="entry.blockItems" @end="motion.end()">
           <template #item="{ item }">
             <slot
               name="item"
@@ -88,8 +174,8 @@ function motionVirtualItem(item: FlattenedItem<T>): VirtualItem {
         <slot
           v-else
           name="item"
-          :item="listItem"
-          :virtual-item="motionVirtualItem(listItem)"
+          :item="entry.item"
+          :virtual-item="entry.virtualItem"
           :model-value="modelValue"
           :expanded="expanded"
         />

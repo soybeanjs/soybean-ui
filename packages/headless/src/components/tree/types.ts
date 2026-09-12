@@ -125,6 +125,10 @@ export type TreeMotionListItem<T extends TreeItemData> = FlattenedItem<T> | Tree
  */
 export interface TreeMotionState<T extends TreeItemData = TreeItemData> {
   /**
+   * Value of the expanded/collapsed parent item whose subtree is animating.
+   */
+  key: string;
+  /**
    * Whether the motion expands (`show`) or collapses (`hide`) the subtree.
    */
   type: TreeMotionType;
