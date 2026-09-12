@@ -1,6 +1,66 @@
 {
   "component": "tree",
   "symbols": {
+    "Tree": {
+      "slots": {
+        "kind": "slots",
+        "name": "TreeSlots",
+        "type": "Interface TreeSlots<T>",
+        "resolvedType": "{ top?: (() => any); bottom?: (() => any); item?: ((props: { item: FlattenedItem<T>; modelValue: MaybeArray<string>; expanded: string[]; }) => any) }",
+        "description": "Slots for the Tree component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treeslots.slots",
+        "sourcePath": "packages/ui/src/components/tree/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "top",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Content rendered before the tree items.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treeslots.callables.top",
+            "sourcePath": "packages/ui/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "bottom",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Content rendered after the tree items.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treeslots.callables.bottom",
+            "sourcePath": "packages/ui/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "item",
+            "type": "((props: { item: FlattenedItem<T>; modelValue: MaybeArray<string> | undefined; expanded: string[]; }) => any) | undefined",
+            "parameters": "((props: { item: FlattenedItem<T>; modelValue: MaybeArray<string> | undefined; expanded: string[]; }) => any) | undefined",
+            "required": false,
+            "description": "Content for a single tree item.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treeslots.callables.item",
+            "sourcePath": "packages/ui/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: FlattenedItem<T>; modelValue: MaybeArray<string> | undefined; expanded: string[]; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_components_tree_types.type",
+                "sourcePath": "packages/ui/src/components/tree/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
     "TreeItem": {
       "props": {
         "kind": "props",

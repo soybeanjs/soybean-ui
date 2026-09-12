@@ -1,6 +1,29 @@
-import type { TreeItemData, TreeVirtualizerRootEmits, TreeVirtualizerRootProps } from '@soybeanjs/headless/tree';
+import type {
+  FlattenedItem,
+  TreeItemData,
+  TreeVirtualizerRootEmits,
+  TreeVirtualizerRootProps
+} from '@soybeanjs/headless/tree';
 import type { MaybeArray } from '@soybeanjs/headless/types';
 import type { VirtualizerContentProps, VirtualizerDynamicContentProps } from '@soybeanjs/headless/virtualizer';
+
+/**
+ * Slots for the Tree component.
+ */
+export interface TreeSlots<T extends TreeItemData> {
+  /**
+   * Content rendered before the tree items.
+   */
+  top?: () => any;
+  /**
+   * Content rendered after the tree items.
+   */
+  bottom?: () => any;
+  /**
+   * Content for a single tree item.
+   */
+  item?: (props: { item: FlattenedItem<T>; modelValue: MaybeArray<string> | undefined; expanded: string[] }) => any;
+}
 
 /**
  * Properties for the TreeVirtualizer component.
