@@ -1,22 +1,31 @@
-import type { Side } from '@soybeanjs/headless/types';
-import type { DialogEmits, DialogProps, DialogSlots } from '../dialog/types';
+import type { DrawerCompactProps, DrawerCompactEmits, DrawerCompactSlots, DrawerUi } from '@soybeanjs/headless/drawer';
+import type { ClassValue } from '@soybeanjs/headless/types';
+import type { ThemeSize } from '@/theme';
 
 /**
  * Properties for the Drawer component.
  */
-export interface DrawerProps extends DialogProps {
+export type DrawerProps = DrawerCompactProps & {
   /**
-   * Side placement of the component.
+   * the popup class of the drawer
    */
-  side?: Side;
-}
+  class?: ClassValue;
+  /**
+   * Visual size of the component.
+   */
+  size?: ThemeSize;
+  /**
+   * Per-slot class overrides for the component.
+   */
+  ui?: Partial<DrawerUi>;
+};
 
 /**
  * Events for the Drawer component.
  */
-export type DrawerEmits = DialogEmits;
+export type DrawerEmits = DrawerCompactEmits;
 
 /**
  * Slots for the Drawer component.
  */
-export type DrawerSlots = DialogSlots;
+export type DrawerSlots = DrawerCompactSlots;

@@ -28,7 +28,7 @@ After public export changes, rerun `pnpm sui gen catalog headless` so `packages/
 - **useControllableState**: Controlled/uncontrolled prop pattern. If initial prop is `undefined`, uses internal `shallowRef`; otherwise returns computed proxy.
 - **useForwardElement**: Exposes inner DOM element via `defineExpose`. Prefer over direct DOM access.
 - **Compact components**: Stable, data-driven compositions can live in headless as `{Name}Compact` only for a family that already passed Headless admission. Compact does not admit a new family.
-- **Composing another family**: Per-slot alias vs domain SFC. Rule lives in `.agents/skills/soybean-ui-develop/layers.md` (Step 3.1). Remediations for Autocomplete, Segment, BottomSheet, and Combobox Anchor/GroupLabel/ItemIndicator are done; remaining aliases are documented Portal/Arrow/Menu-leaf cases.
+- **Composing another family**: Per-slot alias vs domain SFC. Rule lives in `.agents/skills/soybean-ui-develop/layers.md` (Step 3.1). Remediations for Autocomplete, Segment, Drawer, and Combobox Anchor/GroupLabel/ItemIndicator are done; remaining aliases are documented Portal/Arrow/Menu-leaf cases.
 - **Type export surface**: UI wrappers should prefer per-component sub-path type re-exports such as `@soybeanjs/headless/dialog`, not ad hoc deep imports.
 
 ## STRUCTURE

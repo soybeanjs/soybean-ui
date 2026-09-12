@@ -342,7 +342,7 @@ Slot properties for the TableExpandedRow component.
 Properties for the TableFilterPopover component.
 
 - `size`: Visual size of the component. (type `ThemeSize`; optional)
-- `ui`: Per-slot class overrides for the component. (type `{ root: ClassValue; header: ClassValue; content: ClassValue; fixed: ClassValue; footer: ClassValue; cell: ClassValue;...`; required)
+- `ui`: Per-slot class overrides for the component. (type `{ root: ClassValue; header: ClassValue; content: ClassValue; fixed: ClassValue; cell: ClassValue; footer: ClassValue;...`; required)
 - `column`: Column exposed in the slot scope. (type `TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>`; required)
 - `filterValue`: Filter value exposed in the slot scope. (type `string`; required)
 - `filterValues`: Filter values exposed in the slot scope. (type `string[]`; required)

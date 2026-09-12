@@ -117,9 +117,12 @@
         "position": "位置",
         "slot": "插槽"
       },
-      "bottom-sheet": {
+      "drawer": {
         "basic": "基础",
-        "nested": "嵌套"
+        "side": "侧边",
+        "nested": "嵌套",
+        "snap-points": "吸附点",
+        "swipe": "滑动"
       },
       "breadcrumb": {
         "basic": "基础",
@@ -261,7 +264,7 @@
         "pure": "纯净",
         "state": "状态"
       },
-      "drawer": {
+      "sheet": {
         "basic": "基础",
         "scroll": "滚动",
         "side": "侧边"

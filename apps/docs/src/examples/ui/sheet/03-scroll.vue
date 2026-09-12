@@ -1,0 +1,16 @@
+<script setup lang="ts">
+import { SButton, SSheet } from '@soybeanjs/ui';
+</script>
+
+<template>
+  <SSheet title="Drawer Title" description="Drawer Description">
+    <template #trigger>
+      <SButton variant="pure">Scrollable</SButton>
+    </template>
+    <div v-for="i in 100" :key="i" class="h-10">Item {{ i }}</div>
+
+    <template #footer="{ close }">
+      <SButton @click="close">Confirm</SButton>
+    </template>
+  </SSheet>
+</template>

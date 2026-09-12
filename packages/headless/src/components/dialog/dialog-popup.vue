@@ -22,7 +22,11 @@ const { popupElement, open, modal, isAlert, triggerElement } = useDialogRootCont
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(popupElement, open);
 
-const trapFocus = computed(() => modal.value && open.value);
+// Modality tiers: `true` traps focus and blocks outside pointer events, `'trap-focus'`
+// traps focus only, `false` is fully non-modal.
+const trapFocus = computed(() => modal.value !== false && open.value);
+
+const disableOutsidePointerEvents = computed(() => modal.value === true);
 
 const { onFocusOutside, onInteractOutside, onCloseAutoFocus } = usePopupEvents({
   modal,
@@ -36,7 +40,7 @@ const handlePointerDownOutside = (event: PointerDownOutsideEvent) => {
     return;
   }
 
-  if (!modal.value) return;
+  if (modal.value === false) return;
 
   const originalEvent = event.detail.originalEvent;
   const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
@@ -63,7 +67,7 @@ const handleInteractOutside = (event: PointerDownOutsideEvent | FocusOutsideEven
     v-bind="forwardedProps"
     data-soybean-dialog-popup
     :trap-focus="trapFocus"
-    :disable-outside-pointer-events="modal"
+    :disable-outside-pointer-events="disableOutsidePointerEvents"
     v-on="listeners"
     @pointer-down-outside="handlePointerDownOutside"
     @focus-outside="onFocusOutside"

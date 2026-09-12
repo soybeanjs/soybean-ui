@@ -1,11 +1,12 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../types';
+import type { FocusOutsideEvent, ModalityTier, PointerDownOutsideEvent } from '../types';
 
 export interface UsePopupEventsOptions {
   /**
-   * Whether the popup is modal.
+   * The modality tier of the popup. `true` blocks outside pointer events, `'trap-focus'`
+   * only traps focus, `false` is fully non-modal.
    */
-  modal: ComputedRef<boolean | undefined>;
+  modal: ComputedRef<ModalityTier | undefined>;
   /**
    * The trigger element.
    */
@@ -19,6 +20,7 @@ export function usePopupEvents(options: UsePopupEventsOptions) {
   let hasPointerDownOutsideRef = false;
 
   const onFocusOutside = (event: FocusOutsideEvent) => {
+    // `'trap-focus'` traps focus just like a full modal does.
     if (!modal.value) return;
 
     // When focus is trapped, a `focusout` event may still happen.
@@ -27,7 +29,8 @@ export function usePopupEvents(options: UsePopupEventsOptions) {
   };
 
   const onInteractOutside = (event: PointerDownOutsideEvent | FocusOutsideEvent) => {
-    if (modal.value) return;
+    // Only a full modal swallows outside interaction; `'trap-focus'` lets it through.
+    if (modal.value === true) return;
 
     if (!event.defaultPrevented) {
       hasInteractedOutsideRef = true;

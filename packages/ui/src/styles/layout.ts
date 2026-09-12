@@ -2,12 +2,12 @@
 import { scv } from '@soybeanjs/cva';
 import type { VariantProps } from '@soybeanjs/cva';
 import { buttonIconVariants } from './button';
-import { drawerVariants } from './drawer';
+import { sheetVariants } from './sheet';
 
 export const layoutVariants = scv({
   extendBase: props => ({
     trigger: buttonIconVariants({ size: props.size }),
-    mobileDrawer: drawerVariants({ size: props.size, side: props.side }).popup
+    mobileDrawer: sheetVariants({ size: props.size, side: props.side }).popup
   }),
   slots: {
     // --sl-* 是本库的间距/gap 别名(headless 注入的 --soybean-layout-* 保持不变),在 root 上按状态计算,各槽位直接应用

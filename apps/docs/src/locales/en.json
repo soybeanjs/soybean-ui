@@ -117,9 +117,12 @@
         "position": "Position",
         "slot": "Slot"
       },
-      "bottom-sheet": {
+      "drawer": {
         "basic": "Basic",
-        "nested": "Nested"
+        "side": "Side",
+        "nested": "Nested",
+        "snap-points": "Snap Points",
+        "swipe": "Swipe"
       },
       "breadcrumb": {
         "basic": "Basic",
@@ -261,7 +264,7 @@
         "pure": "Pure",
         "state": "State"
       },
-      "drawer": {
+      "sheet": {
         "basic": "Basic",
         "scroll": "Scroll",
         "side": "Side"
