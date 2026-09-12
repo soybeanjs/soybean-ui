@@ -122,6 +122,9 @@ describe('STreeVirtualizer (e2e)', () => {
     await clickFirstItem(container);
     await waitForSettled(container, { childVisible: 'Item 1-1' });
     expect(container.querySelectorAll('[data-soybean-tree-item]').length).toBeGreaterThan(2);
+    // The windowed item keys survive the motion swap, so the clicked element
+    // must keep DOM focus instead of being rebuilt (focus ring stays).
+    expect(container.contains(document.activeElement)).toBe(true);
 
     await clickFirstItem(container);
     await waitForSettled(container);

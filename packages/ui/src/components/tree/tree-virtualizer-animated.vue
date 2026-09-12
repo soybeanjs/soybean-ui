@@ -81,29 +81,40 @@ watchEffect(() => {
   }
 });
 
-interface MotionEntry {
-  key: string;
-  item?: FlattenedItem<T>;
-  virtualItem?: VirtualItem;
-  blockItems?: FlattenedItem<T>[];
+type RenderEntry =
+  | { key: string; kind: 'item'; item: FlattenedItem<T>; virtualItem: VirtualItem }
+  | { key: string; kind: 'block'; blockItems: FlattenedItem<T>[] };
+
+function windowEntries(): RenderEntry[] {
+  const entries: RenderEntry[] = [];
+
+  for (const virtualItem of props.virtualItems) {
+    const item = props.flattenItems[virtualItem.index];
+
+    if (item) {
+      entries.push({ key: item.value, kind: 'item', item, virtualItem });
+    }
+  }
+
+  return entries;
 }
 
 /**
- * Composed motion render list: the visible window items, with the animated
- * subtree replaced by a single block entry. For `show` the window items inside
- * the block range are skipped (the block replaces them); for `hide` the block
- * renders right after the parent and every window item stays.
+ * Single keyed render list for both the idle and the motion state. Idle renders
+ * the plain window; motion composes the window with the animated subtree block.
+ * One list means same-key items patch in place across motion start and end, so
+ * click focus is never lost to an element rebuild.
  */
-const motionRender = computed(() => {
+const renderList = computed<RenderEntry[]>(() => {
   const motion = props.motion;
 
-  if (!motion) return null;
+  if (!motion) return windowEntries();
 
   const range = blockRange.value;
 
-  if (!range) return null;
+  if (!range) return windowEntries();
 
-  const entries: MotionEntry[] = [];
+  const entries: RenderEntry[] = [];
   let blockRendered = false;
 
   for (const virtualItem of props.virtualItems) {
@@ -113,7 +124,7 @@ const motionRender = computed(() => {
     if (motion.type === 'show' && inBlockRange) {
       if (!blockRendered) {
         blockRendered = true;
-        entries.push({ key: `motion-${flat}`, blockItems: visibleBlockItems.value });
+        entries.push({ key: `motion-${flat}`, kind: 'block', blockItems: visibleBlockItems.value });
       }
 
       continue;
@@ -123,20 +134,16 @@ const motionRender = computed(() => {
 
     if (!item) continue;
 
-    entries.push({ key: item.value, item, virtualItem });
+    entries.push({ key: item.value, kind: 'item', item, virtualItem });
 
     if (motion.type === 'hide' && !blockRendered && item.value === motion.key) {
       blockRendered = true;
-      entries.push({ key: `motion-${flat + 1}`, blockItems: visibleBlockItems.value });
+      entries.push({ key: `motion-${flat + 1}`, kind: 'block', blockItems: visibleBlockItems.value });
     }
   }
 
   return entries;
 });
-
-function itemKey(index: number) {
-  return props.flattenItems[index]?.value ?? index;
-}
 
 // Motion block items render through the same consumer item slot as virtualized
 // items, and that slot expects a virtual item shape (VirtualizerItem reads
@@ -158,36 +165,28 @@ function motionVirtualItem(item: FlattenedItem<T>): VirtualItem {
 
 <template>
   <div :style="{ position: 'relative', paddingTop: `${topSpacer}px`, paddingBottom: `${bottomSpacer}px` }">
-    <template v-if="motion && motionRender">
-      <template v-for="entry in motionRender" :key="entry.key">
-        <STreeMotionBlock v-if="entry.blockItems" :type="motion.type" :items="entry.blockItems" @end="motion.end()">
-          <template #item="{ item }">
-            <slot
-              name="item"
-              :item="item"
-              :virtual-item="motionVirtualItem(item)"
-              :model-value="modelValue"
-              :expanded="expanded"
-            />
-          </template>
-        </STreeMotionBlock>
-        <slot
-          v-else
-          name="item"
-          :item="entry.item"
-          :virtual-item="entry.virtualItem"
-          :model-value="modelValue"
-          :expanded="expanded"
-        />
-      </template>
-    </template>
-    <template v-else>
+    <template v-for="entry in renderList" :key="entry.key">
+      <STreeMotionBlock
+        v-if="entry.kind === 'block' && motion"
+        :type="motion.type"
+        :items="entry.blockItems"
+        @end="motion.end()"
+      >
+        <template #item="{ item }">
+          <slot
+            name="item"
+            :item="item"
+            :virtual-item="motionVirtualItem(item)"
+            :model-value="modelValue"
+            :expanded="expanded"
+          />
+        </template>
+      </STreeMotionBlock>
       <slot
-        v-for="item in virtualItems"
-        :key="itemKey(item.index)"
+        v-else-if="entry.kind === 'item'"
         name="item"
-        :item="flattenItems[item.index]"
-        :virtual-item="item"
+        :item="entry.item"
+        :virtual-item="entry.virtualItem"
         :model-value="modelValue"
         :expanded="expanded"
       />
