@@ -1,17 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useLayoutRootContext, useLayoutUi } from './context';
+import type { LayoutPlaceholderProps } from './types';
 
 defineOptions({
   name: 'LayoutPlaceholder',
   inheritAttrs: false
 });
 
-interface Props {
-  type: 'header' | 'tab' | 'footer';
-}
-
-const props = defineProps<Props>();
+const props = defineProps<LayoutPlaceholderProps>();
 
 const cls = useLayoutUi(`${props.type}Placeholder`);
 

@@ -2,20 +2,14 @@
 import { computed } from 'vue';
 import { getTableSpacerCellStyle } from './shared';
 import TableRow from './table-row.vue';
+import type { TableVirtualSpacerRowProps } from './types';
 
 defineOptions({
   name: 'TableVirtualSpacerRow',
   inheritAttrs: false
 });
 
-interface Props {
-  isVirtual: boolean;
-  colspan: number;
-  paddingStart: number;
-  paddingEnd: number;
-}
-
-const props = defineProps<Props>();
+const props = defineProps<TableVirtualSpacerRowProps>();
 
 const startStyle = computed(() => getTableSpacerCellStyle(props.paddingStart));
 const endStyle = computed(() => getTableSpacerCellStyle(props.paddingEnd));

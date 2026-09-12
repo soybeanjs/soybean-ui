@@ -8,6 +8,7 @@ export { default as NavMenuLink } from './nav-menu-link.vue';
 export { default as NavMenuViewport } from './nav-menu-viewport.vue';
 export { default as NavMenuSubTrigger } from './nav-menu-sub-trigger.vue';
 export { default as NavMenuSubContent } from './nav-menu-sub-content.vue';
+export { default as NavMenuOptionCompact } from './nav-menu-option-compact.vue';
 
 export { provideNavMenuUi } from './context';
 
@@ -27,6 +28,9 @@ export type {
   NavMenuLinkEmits,
   NavMenuSubTriggerProps,
   NavMenuSubContentProps,
+  NavMenuOptionCompactProps,
+  NavMenuOptionCompactEmits,
+  NavMenuOptionCompactSlots,
   NavMenuOptionData,
   NavMenuUiSlot,
   NavMenuUi

@@ -283,6 +283,7 @@ import {
   InputClear,
   InputCompact,
   InputControl,
+  InputNumberClear,
   InputNumberCompact,
   InputNumberControl,
   InputNumberDecrement,
@@ -301,6 +302,7 @@ import {
   LayoutHeader,
   LayoutMain,
   LayoutMobile,
+  LayoutPlaceholder,
   LayoutRail,
   LayoutRoot,
   LayoutSidebar,
@@ -332,6 +334,7 @@ import {
   MenubarItem,
   MenubarItemIndicator,
   MenubarMenu,
+  MenubarMenus,
   MenubarPortal,
   MenubarRadioGroup,
   MenubarRadioItem,
@@ -375,6 +378,7 @@ import {
   NavMenuItem,
   NavMenuLink,
   NavMenuList,
+  NavMenuOptionCompact,
   NavMenuRoot,
   NavMenuSubContent,
   NavMenuSubTrigger,
@@ -509,6 +513,8 @@ import {
   TableBody,
   TableCell,
   TableCompact,
+  TableCompactHead,
+  TableCompactRow,
   TableContent,
   TableFooter,
   TableHead,
@@ -516,6 +522,7 @@ import {
   TableRoot,
   TableRow,
   TableScroll,
+  TableVirtualSpacerRow,
   TabsCompact,
   TabsContent,
   TabsIndicator,
@@ -1296,13 +1303,15 @@ export const InputNumber = {
   Root: InputNumberRoot,
   Control: InputNumberControl,
   Increment: InputNumberIncrement,
-  Decrement: InputNumberDecrement
+  Decrement: InputNumberDecrement,
+  Clear: InputNumberClear
 } as {
   Compact: typeof InputNumberCompact;
   Root: typeof InputNumberRoot;
   Control: typeof InputNumberControl;
   Increment: typeof InputNumberIncrement;
   Decrement: typeof InputNumberDecrement;
+  Clear: typeof InputNumberClear;
 };
 
 export const InputOtp = {
@@ -1332,6 +1341,7 @@ export const Layout = {
   Content: LayoutContent,
   Footer: LayoutFooter,
   Mobile: LayoutMobile,
+  Placeholder: LayoutPlaceholder,
   Trigger: LayoutTrigger
 } as {
   Compact: typeof LayoutCompact;
@@ -1344,6 +1354,7 @@ export const Layout = {
   Content: typeof LayoutContent;
   Footer: typeof LayoutFooter;
   Mobile: typeof LayoutMobile;
+  Placeholder: typeof LayoutPlaceholder;
   Trigger: typeof LayoutTrigger;
 };
 
@@ -1448,7 +1459,8 @@ export const Menubar = {
   Separator: MenubarSeparator,
   CheckboxGroup: MenubarCheckboxGroup,
   RadioGroup: MenubarRadioGroup,
-  Compact: MenubarCompact
+  Compact: MenubarCompact,
+  Menus: MenubarMenus
 } as {
   Root: typeof MenubarRoot;
   Menu: typeof MenubarMenu;
@@ -1469,6 +1481,7 @@ export const Menubar = {
   CheckboxGroup: typeof MenubarCheckboxGroup;
   RadioGroup: typeof MenubarRadioGroup;
   Compact: typeof MenubarCompact;
+  Menus: typeof MenubarMenus;
 };
 
 export const NavMenu = {
@@ -1481,7 +1494,8 @@ export const NavMenu = {
   Link: NavMenuLink,
   Viewport: NavMenuViewport,
   SubTrigger: NavMenuSubTrigger,
-  SubContent: NavMenuSubContent
+  SubContent: NavMenuSubContent,
+  OptionCompact: NavMenuOptionCompact
 } as {
   Compact: typeof NavMenuCompact;
   Root: typeof NavMenuRoot;
@@ -1493,6 +1507,7 @@ export const NavMenu = {
   Viewport: typeof NavMenuViewport;
   SubTrigger: typeof NavMenuSubTrigger;
   SubContent: typeof NavMenuSubContent;
+  OptionCompact: typeof NavMenuOptionCompact;
 };
 
 export const NavigationMenu = {
@@ -1845,7 +1860,10 @@ export const Table = {
   Footer: TableFooter,
   Row: TableRow,
   Head: TableHead,
-  Cell: TableCell
+  Cell: TableCell,
+  CompactHead: TableCompactHead,
+  CompactRow: TableCompactRow,
+  VirtualSpacerRow: TableVirtualSpacerRow
 } as {
   Compact: typeof TableCompact;
   Root: typeof TableRoot;
@@ -1857,6 +1875,9 @@ export const Table = {
   Row: typeof TableRow;
   Head: typeof TableHead;
   Cell: typeof TableCell;
+  CompactHead: typeof TableCompactHead;
+  CompactRow: typeof TableCompactRow;
+  VirtualSpacerRow: typeof TableVirtualSpacerRow;
 };
 
 export const Tabs = {

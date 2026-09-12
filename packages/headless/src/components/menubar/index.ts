@@ -17,23 +17,25 @@ export { MenuSeparator as MenubarSeparator } from '../menu/index';
 export { MenuCheckboxGroup as MenubarCheckboxGroup } from '../menu/index';
 export { MenuRadioGroup as MenubarRadioGroup } from '../menu/index';
 export { default as MenubarCompact } from './menubar-compact.vue';
+export { default as MenubarMenus } from './menubar-menus.vue';
 
 export { provideMenubarUi } from './context';
 
 export type {
+  MenubarCompactProps,
+  MenubarCompactEmits,
+  MenubarCompactSlots,
+  MenubarMenusProps,
   MenubarRootProps,
   MenubarRootEmits,
   MenubarMenuProps,
-  MenubarTriggerType,
   MenubarTriggerProps,
   MenubarContentProps,
   MenubarContentEmits,
-  MenubarUiSlot,
-  MenubarUi,
   MenubarSubTriggerProps,
   MenubarSubContentProps,
   MenubarSubContentEmits,
-  MenubarCompactProps,
-  MenubarCompactEmits,
-  MenubarCompactSlots
+  MenubarTriggerType,
+  MenubarUi,
+  MenubarUiSlot
 } from './types';

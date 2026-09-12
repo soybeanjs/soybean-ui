@@ -575,6 +575,28 @@ export interface TableCompactRowProps {
 }
 
 /**
+ * Properties for the TableVirtualSpacerRow component.
+ */
+export interface TableVirtualSpacerRowProps {
+  /**
+   * Whether virtual scrolling is enabled.
+   */
+  isVirtual: boolean;
+  /**
+   * Number of columns the spacer spans.
+   */
+  colspan: number;
+  /**
+   * Padding applied before the start of the row.
+   */
+  paddingStart: number;
+  /**
+   * Padding applied after the end of the row.
+   */
+  paddingEnd: number;
+}
+
+/**
  * Slots for the TableCompactCell component.
  */
 export type TableCompactCellSlots<T extends TableBaseData> = {

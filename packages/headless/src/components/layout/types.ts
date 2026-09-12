@@ -210,6 +210,16 @@ export interface LayoutTriggerProps extends ButtonProps {}
 export interface LayoutMobileProps extends BaseProps {}
 
 /**
+ * Properties for the LayoutPlaceholder component.
+ */
+export interface LayoutPlaceholderProps {
+  /**
+   * Which region the placeholder reserves space for.
+   */
+  type: 'header' | 'tab' | 'footer';
+}
+
+/**
  * Properties for the Layout Others component.
  */
 interface LayoutOthersProps {

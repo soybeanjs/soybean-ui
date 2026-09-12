@@ -280,7 +280,8 @@ export const components = {
     'InputNumberRoot',
     'InputNumberControl',
     'InputNumberIncrement',
-    'InputNumberDecrement'
+    'InputNumberDecrement',
+    'InputNumberClear'
   ],
   inputOtp: ['InputOtpCompact', 'InputOtpInput', 'InputOtpPositioner', 'InputOtpRoot'],
   kbd: ['Kbd'],
@@ -296,6 +297,7 @@ export const components = {
     'LayoutContent',
     'LayoutFooter',
     'LayoutMobile',
+    'LayoutPlaceholder',
     'LayoutTrigger'
   ],
   link: ['Link'],
@@ -352,7 +354,8 @@ export const components = {
     'MenubarSeparator',
     'MenubarCheckboxGroup',
     'MenubarRadioGroup',
-    'MenubarCompact'
+    'MenubarCompact',
+    'MenubarMenus'
   ],
   navigationMenu: [
     'NavigationMenuCompact',
@@ -376,7 +379,8 @@ export const components = {
     'NavMenuLink',
     'NavMenuViewport',
     'NavMenuSubTrigger',
-    'NavMenuSubContent'
+    'NavMenuSubContent',
+    'NavMenuOptionCompact'
   ],
   pageTabs: ['PageTabsRoot', 'PageTabsItem', 'PageTabsClose', 'PageTabsPin', 'PageTabsCompact'],
   pagination: [
@@ -512,7 +516,10 @@ export const components = {
     'TableFooter',
     'TableRow',
     'TableHead',
-    'TableCell'
+    'TableCell',
+    'TableCompactHead',
+    'TableCompactRow',
+    'TableVirtualSpacerRow'
   ],
   tabs: ['TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator', 'TabsCompact'],
   tag: ['Tag'],

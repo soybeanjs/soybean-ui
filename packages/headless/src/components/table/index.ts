@@ -8,6 +8,9 @@ export { default as TableFooter } from './table-footer.vue';
 export { default as TableRow } from './table-row.vue';
 export { default as TableHead } from './table-head.vue';
 export { default as TableCell } from './table-cell.vue';
+export { default as TableCompactHead } from './table-compact-head.vue';
+export { default as TableCompactRow } from './table-compact-row.vue';
+export { default as TableVirtualSpacerRow } from './table-virtual-spacer-row.vue';
 
 export { provideTableUi } from './context';
 export {

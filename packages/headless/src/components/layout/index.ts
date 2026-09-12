@@ -8,6 +8,7 @@ export { default as LayoutTab } from './layout-tab.vue';
 export { default as LayoutContent } from './layout-content.vue';
 export { default as LayoutFooter } from './layout-footer.vue';
 export { default as LayoutMobile } from './layout-mobile.vue';
+export { default as LayoutPlaceholder } from './layout-placeholder.vue';
 export { default as LayoutTrigger } from './layout-trigger.vue';
 
 export { provideLayoutUi } from './context';
@@ -27,6 +28,7 @@ export type {
   LayoutFooterProps,
   LayoutTriggerProps,
   LayoutMobileProps,
+  LayoutPlaceholderProps,
   LayoutVariant,
   LayoutSide,
   LayoutCollapsible,

@@ -2,6 +2,7 @@ import type { ComputedRef, ShallowRef } from 'vue';
 import type { DefinedValue, Direction, Placement, ToContext, UiClass } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type { ButtonProps } from '../button/types';
+import type { LinkExtraProps } from '../link/types';
 import type {
   MenuPopupProps,
   MenuPortalProps,
@@ -201,6 +202,61 @@ export type MenubarCompactSlots<T extends DefinedValue = DefinedValue> = MenuOpt
    */
   'more-trigger'?: () => any;
 };
+
+/**
+ * Properties for the MenubarMenus component (the internal list renderer used
+ * by `MenubarCompact`).
+ */
+export interface MenubarMenusProps<T extends DefinedValue = DefinedValue> {
+  /**
+   * Top-level items rendered as visible triggers.
+   */
+  items: MenuOptionData<T>[];
+  /**
+   * Items collapsed into the trailing "more" menu.
+   */
+  moreItems: MenuOptionData<T>[];
+  /**
+   * Props forwarded to the menubar root.
+   */
+  rootProps: Record<string, unknown>;
+  /**
+   * Listeners forwarded to the menubar root.
+   */
+  listeners: Record<string, unknown>;
+  /**
+   * Props forwarded to the menu options of each open menu.
+   */
+  optionsProps: Record<string, unknown>;
+  /**
+   * Props forwarded to link triggers.
+   */
+  linkProps?: LinkExtraProps;
+  /**
+   * Props forwarded to the content of each menu.
+   */
+  contentProps: MenubarContentProps;
+  /**
+   * Props forwarded to the portal of each menu.
+   */
+  portalProps?: MenuPortalProps;
+  /**
+   * Resolve the effective props of a top-level trigger item.
+   */
+  getTriggerProps: (item: MenuOptionData<T>) => MenubarTriggerProps;
+  /**
+   * Props forwarded to the trailing "more" trigger.
+   */
+  moreTriggerProps: Record<string, unknown>;
+  /**
+   * Label of the trailing "more" trigger.
+   */
+  moreLabel?: string;
+  /**
+   * Icon of the trailing "more" trigger.
+   */
+  moreIcon?: IconValue;
+}
 
 /**
  * Parameters used to create the MenubarRoot context.
