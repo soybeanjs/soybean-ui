@@ -25,6 +25,7 @@ export type {
   DialogCompactBaseSlotProps,
   DialogRootProps,
   DialogRootEmits,
+  DialogModal,
   DialogFullscreenStateEmits,
   DialogTriggerProps,
   DialogOverlayProps,

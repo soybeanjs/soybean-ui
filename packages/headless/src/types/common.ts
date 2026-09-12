@@ -59,6 +59,15 @@ export type Side = 'top' | 'right' | 'bottom' | 'left';
 
 export type SwipeDirection = 'up' | 'down' | 'left' | 'right';
 
+/**
+ * Modality tier of a layered surface.
+ *
+ * - `true` — full modal: focus trap plus blocking of outside pointer events
+ * - `'trap-focus'` — traps focus but keeps outside pointer events alive
+ * - `false` — non-modal
+ */
+export type ModalityTier = boolean | 'trap-focus';
+
 export type HorizontalSide = Extract<Side, 'left' | 'right'>;
 
 export type Align = 'start' | 'center' | 'end';

@@ -43,22 +43,6 @@ import {
   BadgeCompact,
   BadgeContent,
   BadgeRoot,
-  BottomSheetCancel,
-  BottomSheetClose,
-  BottomSheetCompact,
-  BottomSheetConfirm,
-  BottomSheetContent,
-  BottomSheetDescription,
-  BottomSheetFooter,
-  BottomSheetHandle,
-  BottomSheetHeader,
-  BottomSheetOverlay,
-  BottomSheetPopup,
-  BottomSheetPortal,
-  BottomSheetRoot,
-  BottomSheetRootNested,
-  BottomSheetTitle,
-  BottomSheetTrigger,
   BreadcrumbCompact,
   BreadcrumbEllipsis,
   BreadcrumbItem,
@@ -227,6 +211,24 @@ import {
   DialogRoot,
   DialogTitle,
   DialogTrigger,
+  DrawerCancel,
+  DrawerClose,
+  DrawerCompact,
+  DrawerConfirm,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHandle,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerPopup,
+  DrawerPortal,
+  DrawerRoot,
+  DrawerRootNested,
+  DrawerSwipeArea,
+  DrawerTitle,
+  DrawerTrigger,
+  DrawerViewport,
   DropdownMenuAnchor,
   DropdownMenuArrow,
   DropdownMenuCheckboxCompact,
@@ -712,42 +714,6 @@ export const Badge = {
   Content: typeof BadgeContent;
 };
 
-export const BottomSheet = {
-  Portal: BottomSheetPortal,
-  Compact: BottomSheetCompact,
-  Root: BottomSheetRoot,
-  RootNested: BottomSheetRootNested,
-  Trigger: BottomSheetTrigger,
-  Popup: BottomSheetPopup,
-  Overlay: BottomSheetOverlay,
-  Handle: BottomSheetHandle,
-  Header: BottomSheetHeader,
-  Content: BottomSheetContent,
-  Footer: BottomSheetFooter,
-  Title: BottomSheetTitle,
-  Description: BottomSheetDescription,
-  Close: BottomSheetClose,
-  Cancel: BottomSheetCancel,
-  Confirm: BottomSheetConfirm
-} as {
-  Portal: typeof BottomSheetPortal;
-  Compact: typeof BottomSheetCompact;
-  Root: typeof BottomSheetRoot;
-  RootNested: typeof BottomSheetRootNested;
-  Trigger: typeof BottomSheetTrigger;
-  Popup: typeof BottomSheetPopup;
-  Overlay: typeof BottomSheetOverlay;
-  Handle: typeof BottomSheetHandle;
-  Header: typeof BottomSheetHeader;
-  Content: typeof BottomSheetContent;
-  Footer: typeof BottomSheetFooter;
-  Title: typeof BottomSheetTitle;
-  Description: typeof BottomSheetDescription;
-  Close: typeof BottomSheetClose;
-  Cancel: typeof BottomSheetCancel;
-  Confirm: typeof BottomSheetConfirm;
-};
-
 export const Breadcrumb = {
   Root: BreadcrumbRoot,
   Compact: BreadcrumbCompact,
@@ -1156,6 +1122,46 @@ export const Dialog = {
   Fullscreen: typeof DialogFullscreen;
   Cancel: typeof DialogCancel;
   Confirm: typeof DialogConfirm;
+};
+
+export const Drawer = {
+  Portal: DrawerPortal,
+  Compact: DrawerCompact,
+  Root: DrawerRoot,
+  RootNested: DrawerRootNested,
+  Trigger: DrawerTrigger,
+  Popup: DrawerPopup,
+  Overlay: DrawerOverlay,
+  Viewport: DrawerViewport,
+  SwipeArea: DrawerSwipeArea,
+  Handle: DrawerHandle,
+  Header: DrawerHeader,
+  Content: DrawerContent,
+  Footer: DrawerFooter,
+  Title: DrawerTitle,
+  Description: DrawerDescription,
+  Close: DrawerClose,
+  Cancel: DrawerCancel,
+  Confirm: DrawerConfirm
+} as {
+  Portal: typeof DrawerPortal;
+  Compact: typeof DrawerCompact;
+  Root: typeof DrawerRoot;
+  RootNested: typeof DrawerRootNested;
+  Trigger: typeof DrawerTrigger;
+  Popup: typeof DrawerPopup;
+  Overlay: typeof DrawerOverlay;
+  Viewport: typeof DrawerViewport;
+  SwipeArea: typeof DrawerSwipeArea;
+  Handle: typeof DrawerHandle;
+  Header: typeof DrawerHeader;
+  Content: typeof DrawerContent;
+  Footer: typeof DrawerFooter;
+  Title: typeof DrawerTitle;
+  Description: typeof DrawerDescription;
+  Close: typeof DrawerClose;
+  Cancel: typeof DrawerCancel;
+  Confirm: typeof DrawerConfirm;
 };
 
 export const DropdownMenu = {

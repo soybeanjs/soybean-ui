@@ -65,9 +65,9 @@ Properties for the FormCompact component.
 - `fieldProps`: No description. (type `FormFieldProps`; optional)
 - `fieldArrayProps`: No description. (type `FormFieldProps`; optional)
 - `orientation`: Orientation of the form field. (type `DataOrientation`; default `'vertical'`; optional)
+- `descriptionProps`: Properties forwarded to the description element. (type `FormDescriptionProps`; optional)
 - `labelProps`: Properties forwarded to the label element. (type `FormLabelProps`; optional)
 - `controlProps`: Properties forwarded to the control element. (type `FormControlProps`; optional)
-- `descriptionProps`: Properties forwarded to the description element. (type `FormDescriptionProps`; optional)
 - `errorProps`: Properties forwarded to the error element. (type `FormErrorProps`; optional)
 
 ### FormCompact
@@ -79,9 +79,9 @@ Properties for the FormCompact component.
 - `fieldProps`: No description. (type `FormFieldProps`; optional)
 - `fieldArrayProps`: No description. (type `FormFieldProps`; optional)
 - `orientation`: Orientation of the form field. (type `DataOrientation`; default `'vertical'`; optional)
+- `descriptionProps`: Properties forwarded to the description element. (type `FormDescriptionProps`; optional)
 - `labelProps`: Properties forwarded to the label element. (type `FormLabelProps`; optional)
 - `controlProps`: Properties forwarded to the control element. (type `FormControlProps`; optional)
-- `descriptionProps`: Properties forwarded to the description element. (type `FormDescriptionProps`; optional)
 - `errorProps`: Properties forwarded to the error element. (type `FormErrorProps`; optional)
 
 ### FormControl

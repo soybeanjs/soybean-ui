@@ -125,7 +125,12 @@ const preserveTriggerElement = () => {
 // Make sure the whole tree has focus guards as our `Dialog` will be
 // the last element in the DOM (because of the `Portal`)
 useFocusGuards();
-useHideOthers(popupElement, modal);
+// Only a full modal hides the rest of the tree; the `'trap-focus'` tier keeps
+// outside content reachable by pointer and assistive technology.
+useHideOthers(
+  popupElement,
+  computed(() => modal.value === true)
+);
 initPopupId();
 onMounted(() => {
   preserveTriggerElement();

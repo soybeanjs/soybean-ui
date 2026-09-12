@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { DialogCompact, provideDialogUi } from '@soybeanjs/headless/dialog';
+import { DrawerCompact, provideDrawerUi } from '@soybeanjs/headless/drawer';
 import { keysOf } from '@soybeanjs/headless/shared';
 import { drawerVariants } from '@/styles/drawer';
 import type { DrawerProps, DrawerEmits, DrawerSlots } from './types';
@@ -13,7 +13,11 @@ defineOptions({
 const props = withDefaults(defineProps<DrawerProps>(), {
   open: undefined,
   modal: true,
-  showClose: true
+  shouldScaleBackground: true,
+  setBackgroundColorOnScale: true,
+  dismissible: true,
+  showClose: true,
+  showConfirm: true
 });
 
 const emit = defineEmits<DrawerEmits>();
@@ -28,13 +32,13 @@ const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => drawerVariants({ size: props.size, side: props.side }, props.ui, { popup: props.class }));
 
-provideDialogUi(ui);
+provideDrawerUi(ui);
 </script>
 
 <template>
-  <DialogCompact v-bind="forwardedProps" v-on="listeners">
+  <DrawerCompact v-bind="forwardedProps" v-on="listeners">
     <template v-for="slotName in slotNames" #[slotName]="slotProps">
       <slot :name="slotName" v-bind="slotProps" />
     </template>
-  </DialogCompact>
+  </DrawerCompact>
 </template>

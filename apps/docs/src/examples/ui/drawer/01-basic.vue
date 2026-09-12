@@ -5,12 +5,8 @@ import { SButton, SDrawer } from '@soybeanjs/ui';
 <template>
   <SDrawer title="Drawer Title" description="Drawer Description">
     <template #trigger>
-      <SButton variant="pure">Scrollable</SButton>
+      <SButton variant="pure">Open</SButton>
     </template>
-    <div v-for="i in 100" :key="i" class="h-10">Item {{ i }}</div>
-
-    <template #footer="{ close }">
-      <SButton @click="close">Confirm</SButton>
-    </template>
+    <div>Drawer Content</div>
   </SDrawer>
 </template>

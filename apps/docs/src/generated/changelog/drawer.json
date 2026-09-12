@@ -1,0 +1,41 @@
+{
+  "component": "drawer",
+  "generatedAt": "2026-09-12T16:03:23.697Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.20.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.19.0...v0.20.0",
+      "date": "2026-05-12",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "drawer",
+          "summary": "simplify variant assignment in computed property",
+          "summaryKey": "changelog.generated.v0.20.0.b55f5",
+          "commitHash": "b55f5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b55f5032",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.10",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.9...v0.0.10",
+      "date": "2026-01-07",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "drawer",
+          "summary": "update drawer component structure and styling, replacing drawerContentVariants with drawerVariants for improved UI management",
+          "summaryKey": "changelog.generated.v0.0.10.cfb41",
+          "commitHash": "cfb41",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cfb4111d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

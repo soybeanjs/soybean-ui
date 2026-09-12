@@ -6,6 +6,7 @@ import type {
   DismissableLayerProps,
   FocusScopeEmits,
   ForceMountProps,
+  ModalityTier,
   ToContext,
   TrapFocusProps,
   UiClass
@@ -19,6 +20,15 @@ import type { PrimitiveWithBaseProps } from '../primitive/types';
  * Supported dialog alert values.
  */
 export type DialogAlertType = 'default' | 'info' | 'success' | 'warning' | 'error';
+
+/**
+ * Modality tier of a dialog-like surface.
+ *
+ * - `true` — full modal: focus trap plus blocking of outside pointer events
+ * - `'trap-focus'` — traps focus but keeps outside pointer events alive
+ * - `false` — non-modal
+ */
+export type DialogModal = ModalityTier;
 
 /**
  * Properties for the DialogBase component.
@@ -48,7 +58,17 @@ export interface DialogBaseProps {
 /**
  * Properties for the DialogRoot component.
  */
-export interface DialogRootProps extends DialogBaseProps {
+export interface DialogRootProps extends Omit<DialogBaseProps, 'modal'> {
+  /**
+   * The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog
+   * content will be visible to screen readers.
+   *
+   * Set to `'trap-focus'` to trap focus while still letting outside pointer events through (non-modal side panels such
+   * as `Drawer` in the `'trap-focus'` tier).
+   *
+   * @defaultValue true
+   */
+  modal?: DialogModal;
   /**
    * The text direction of the dialog
    */
@@ -94,7 +114,7 @@ export type DialogRootEmits = {
 
 /**
  * Events for the fullscreen state of the dialog. Kept separate from `DialogRootEmits`
- * because the latter is shared by other disclosure primitives (popover, menu, bottom-sheet).
+ * because the latter is shared by other disclosure primitives (popover, menu, drawer).
  */
 export type DialogFullscreenStateEmits = {
   /** Event handler called when the fullscreen state of the dialog changes. */

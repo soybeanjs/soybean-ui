@@ -114,6 +114,7 @@ Properties for the Dialog component.
 - `fullscreenProps`: Properties forwarded to the fullscreen element. (type `DialogFullscreenProps`; optional)
 - `cancelProps`: Properties forwarded to the cancel element. (type `DialogCancelProps`; optional)
 - `confirmProps`: Properties forwarded to the confirm element. (type `DialogConfirmProps`; optional)
+- `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. Set to `'trap-focus'` to trap focus while still letting outside pointer events through (non-modal side panels such as `Drawer` in the `'trap-focus'` tier). (type `ModalityTier`; default `true`; optional)
 - `dir`: The text direction of the dialog (type `Direction`; optional)
 - `isAlert`: Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response. When set to `true`, the dialog will have `role="alertdialog"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes. (type `boolean`; default `false`; optional)
 - `alertType`: The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog. (type `DialogAlertType`; optional)
@@ -122,7 +123,6 @@ Properties for the Dialog component.
 - `defaultFullscreen`: The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state. (type `boolean`; default `false`; optional)
 - `open`: The controlled open state of the dialog. Can be bound with `v-model:open`. (type `boolean`; default `undefined`; optional)
 - `defaultOpen`: The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; default `false`; optional)
-- `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. (type `boolean`; default `true`; optional)
 
 #### Emits
 
@@ -219,6 +219,7 @@ Properties for the DialogCompact component.
 - `fullscreenProps`: Properties forwarded to the fullscreen element. (type `DialogFullscreenProps`; optional)
 - `cancelProps`: Properties forwarded to the cancel element. (type `DialogCancelProps`; optional)
 - `confirmProps`: Properties forwarded to the confirm element. (type `DialogConfirmProps`; optional)
+- `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. Set to `'trap-focus'` to trap focus while still letting outside pointer events through (non-modal side panels such as `Drawer` in the `'trap-focus'` tier). (type `ModalityTier`; default `true`; optional)
 - `dir`: The text direction of the dialog (type `Direction`; optional)
 - `isAlert`: Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response. When set to `true`, the dialog will have `role="alertdialog"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes. (type `boolean`; default `false`; optional)
 - `alertType`: The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog. (type `DialogAlertType`; optional)
@@ -227,7 +228,6 @@ Properties for the DialogCompact component.
 - `defaultFullscreen`: The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state. (type `boolean`; default `false`; optional)
 - `open`: The controlled open state of the dialog. Can be bound with `v-model:open`. (type `boolean`; default `undefined`; optional)
 - `defaultOpen`: The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; default `false`; optional)
-- `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. (type `boolean`; default `true`; optional)
 
 #### Emits
 
@@ -321,7 +321,7 @@ Events for the DialogFullscreen component.
 #### Emits
 
 Events for the fullscreen state of the dialog. Kept separate from `DialogRootEmits`
-because the latter is shared by other disclosure primitives (popover, menu, bottom-sheet).
+because the latter is shared by other disclosure primitives (popover, menu, drawer).
 
 - `update:fullscreen`: Event handler called when the fullscreen state of the dialog changes. (type `[value: boolean]`; parameters `value: boolean`)
 
@@ -372,6 +372,7 @@ Events for the DialogPopup component.
 
 Properties for the DialogRoot component.
 
+- `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. Set to `'trap-focus'` to trap focus while still letting outside pointer events through (non-modal side panels such as `Drawer` in the `'trap-focus'` tier). (type `ModalityTier`; default `true`; optional)
 - `dir`: The text direction of the dialog (type `Direction`; optional)
 - `isAlert`: Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response. When set to `true`, the dialog will have `role="alertdialog"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes. (type `boolean`; default `false`; optional)
 - `alertType`: The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog. (type `DialogAlertType`; optional)
@@ -380,7 +381,6 @@ Properties for the DialogRoot component.
 - `defaultFullscreen`: The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state. (type `boolean`; default `false`; optional)
 - `open`: The controlled open state of the dialog. Can be bound with `v-model:open`. (type `boolean`; default `undefined`; optional)
 - `defaultOpen`: The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; default `false`; optional)
-- `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. (type `boolean`; default `true`; optional)
 
 #### Emits
 
