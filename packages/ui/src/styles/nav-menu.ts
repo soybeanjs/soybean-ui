@@ -29,7 +29,7 @@ export const navMenuVariants = scv({
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     subLink: [
-      `flex items-start select-none rounded-md no-underline outline-none transition-colors-200 cursor-pointer decoration-none whitespace-nowrap`,
+      `flex items-start select-none rounded-md no-underline outline-none transition-colors-200 cursor-pointer decoration-none`,
       `data-[selected=true]:bg-primary/10 data-[selected=true]:text-primary`,
       `data-[selected=false]:focus:bg-accent data-[selected=false]:hover:bg-accent`,
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
