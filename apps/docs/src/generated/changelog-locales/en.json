@@ -2238,6 +2238,10 @@
               "4643d": "mark tree-shake config checks done, track executed tasks",
               "4894f": "convert refactor plan into task checklist with status tracking",
               "ead51": "add role prop to AlertRoot for live-region semantics"
+            },
+            "4": {
+              "4a5bd": "migrate package directory to packages/cli",
+              "b9acf": "add sbean -> cli directory/package rename plan"
             }
           }
         }

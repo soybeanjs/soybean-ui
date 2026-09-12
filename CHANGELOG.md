@@ -1,5 +1,19 @@
 # Changelog
 
+## [v0.40.0-beta.4](https://github.com/soybeanjs/soybean-ui/compare/v0.40.0-beta.3...v0.40.0-beta.4) (2026-09-12)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **sbean**: migrate package directory to packages/cli &nbsp;-&nbsp; by @soybeanjs [<samp>(4a5bd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4a5bdeb7d)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **v0.50.0**: add sbean -> cli directory/package rename plan &nbsp;-&nbsp; by @soybeanjs [<samp>(b9acf)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b9acf428b)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.40.0-beta.3](https://github.com/soybeanjs/soybean-ui/compare/v0.40.0-beta.2...v0.40.0-beta.3) (2026-09-12)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
