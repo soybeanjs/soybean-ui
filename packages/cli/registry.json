@@ -1775,7 +1775,7 @@
     {
       "name": "ui/tree",
       "type": "registry:ui",
-      "dependencies": ["@formkit/auto-animate", "@soybeanjs/headless"],
+      "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
           "path": "packages/ui/src/components/tree/tree-virtualizer.vue",
