@@ -4,6 +4,7 @@ import { useOmitProps } from '@soybeanjs/headless/composables';
 import { FormFieldArrayCompact, provideFormFieldUi } from '@soybeanjs/headless/form';
 import { keysOf } from '@soybeanjs/headless/shared';
 import { formVariants } from '@/styles/form';
+import FormFieldArrayCollapse from './form-field-array-collapse.vue';
 import type { FormFieldArrayProps, FormFieldArraySlots } from './types';
 
 defineOptions({
@@ -26,7 +27,11 @@ provideFormFieldUi(ui);
 <template>
   <FormFieldArrayCompact v-bind="forwardedProps">
     <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
-      <slot :name="slotName" v-bind="slotProps" />
+      <!-- Array rows collapse/expand smoothly when the field array changes. -->
+      <FormFieldArrayCollapse v-if="slotName === 'default'">
+        <slot :name="slotName" v-bind="slotProps" />
+      </FormFieldArrayCollapse>
+      <slot v-else :name="slotName" v-bind="slotProps" />
     </template>
   </FormFieldArrayCompact>
 </template>
