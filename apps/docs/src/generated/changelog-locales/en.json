@@ -2242,6 +2242,11 @@
             "4": {
               "4a5bd": "migrate package directory to packages/cli",
               "b9acf": "add sbean -> cli directory/package rename plan"
+            },
+            "5": {
+              "71992": "inline build helpers and drop packages/shared",
+              "6d387": "align ui-uno target name to @vbean/unocss",
+              "a126a": "drop #shared alias and inline shared utils"
             }
           }
         }

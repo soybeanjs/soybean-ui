@@ -1,7 +1,56 @@
 {
-  "generatedAt": "2026-09-12T04:31:56.994Z",
+  "generatedAt": "2026-09-12T04:50:00.519Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.40.0-beta.5",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.0-beta.4...v0.40.0-beta.5",
+      "date": "2026-09-12",
+      "entryCount": 3,
+      "componentCount": 0,
+      "components": [],
+      "newComponents": [],
+      "typeCounts": {
+        "refactor": 2,
+        "docs": 1
+      },
+      "notes": [],
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "shared",
+          "summary": "inline build helpers and drop packages/shared",
+          "summaryKey": "changelog.generated.v0.40.0-beta.5.71992",
+          "commitHash": "71992",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/71992225c",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "theme",
+          "summary": "drop #shared alias and inline shared utils",
+          "summaryKey": "changelog.generated.v0.40.0-beta.5.a126a",
+          "commitHash": "a126a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a126a372e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "rebrand",
+          "summary": "align ui-uno target name to @vbean/unocss",
+          "summaryKey": "changelog.generated.v0.40.0-beta.5.6d387",
+          "commitHash": "6d387",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6d3879bc8",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.40.0-beta.4",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.0-beta.3...v0.40.0-beta.4",

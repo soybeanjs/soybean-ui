@@ -2242,6 +2242,11 @@
             "4": {
               "4a5bd": "将 package 目录迁移至 packages/cli",
               "b9acf": "添加 sbean -> 命令行接口 (CLI) 目录/包重命名计划"
+            },
+            "5": {
+              "71992": "内联构建辅助函数，并移除 packages/shared 目录",
+              "6d387": "将 ui-uno 的目标名称调整为 @vbean/unocss",
+              "a126a": "移除 #shared 别名及内联的共享工具函数"
             }
           }
         }

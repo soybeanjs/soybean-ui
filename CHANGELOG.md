@@ -1,5 +1,20 @@
 # Changelog
 
+## [v0.40.0-beta.5](https://github.com/soybeanjs/soybean-ui/compare/v0.40.0-beta.4...v0.40.0-beta.5) (2026-09-12)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **shared**: inline build helpers and drop packages/shared &nbsp;-&nbsp; by @soybeanjs [<samp>(71992)</samp>](https://github.com/soybeanjs/soybean-ui/commit/71992225c)
+- **theme**: drop #shared alias and inline shared utils &nbsp;-&nbsp; by @soybeanjs [<samp>(a126a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a126a372e)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **rebrand**: align ui-uno target name to @vbean/unocss &nbsp;-&nbsp; by @soybeanjs [<samp>(6d387)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6d3879bc8)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.40.0-beta.4](https://github.com/soybeanjs/soybean-ui/compare/v0.40.0-beta.3...v0.40.0-beta.4) (2026-09-12)
 
 ### &nbsp;&nbsp;&nbsp;💅 Refactors
