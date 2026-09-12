@@ -1,16 +1,18 @@
 ---
 head:
   title: 列表
-  description: '用于展示垂直列表项列表的语义化容器。SList 包裹 headless 层 ListRoot（<ul>），并注入 listVariants 样式配方（5 个槽：root/item/content/title/description；6 种尺寸）。SListItem 组合 headless 层 ListItem/ListContent/ListTitle/ListDescription 基础组件，形成现成的「标题 + 描述」行。'
+  description: '用于展示垂直列表项列表的语义化容器。SList 与 SListItem 是 UI-only 组件：自绘 <ul>/<li> 与 item/content/title/description 解剖节点，样式来自 listVariants 配方（5 个槽：root/item/content/title/description；6 种尺寸）。'
 ---
 
 # 列表
 
 ## 概述
 
-用于展示垂直列表项列表的语义化容器。`SList` 包裹 headless 层 `ListRoot`（`<ul>`），并注入 `listVariants` 样式配方（5 个槽：root/item/content/title/description；6 种尺寸）。`SListItem` 组合 headless 层 `ListItem`/`ListContent`/`ListTitle`/`ListDescription` 基础组件，形成现成的「标题 + 描述」行。
+用于展示垂直列表项列表的语义化容器。`SList` 与 `SListItem` 是 **UI-only** 组件：自绘 `<ul>`/`<li>` 与 item/content/title/description 解剖节点，并通过 UI 层的小型上下文共享 `listVariants` 样式配方（5 个槽：root/item/content/title/description；6 种尺寸）。
 
 适用于用户列表、设置/菜单分组、通知流，或任何简单的垂直集合。表格化、带列与排序的数据请优先使用 `table`；层级数据请优先使用 `tree`；可选的选项列表请优先使用 `select`/`combobox`。
+
+headless 层不存在 `list` 家族：纯 `ul`/`li` 不含自身的键盘、焦点或 ARIA widget 逻辑，不应留在 headless 层。需要交互的列表请改用已准入的 `listbox` / `tree` 家族。
 
 ## 用法
 
@@ -18,7 +20,7 @@ head:
 
 ## 特性
 
-- 🧩 Headless/样式分离 — `SList`/`SListItem` 包裹 headless 层 `ListRoot` 系列基础组件，仅注入 `listVariants` 类
+- 🧩 UI-only 解剖壳 — `SList`/`SListItem` 自持结构，通过 UI 层的 `provideListUi` 上下文共享 `listVariants` 类；headless 层没有 `list` 家族
 - 📋 语义化标记 — 渲染真实的 `<ul>`/`<li>`，带 `data-soybean-list-*` 钩子
 - 🏷️ 条目组合 — `SListItem` 通过 `title`/`description` prop 或插槽渲染可选的标题 + 描述区块
 - ↔️ 前导 / 尾随 — `SListItem` 上的 `leading`/`trailing` 插槽，用于图标、徽标、头像或操作
@@ -28,11 +30,8 @@ head:
 
 ## 组件家族
 
-- `SList`（样式层）— 列表容器；`listVariants` 的 root 槽
-- `SListItem`（样式层）— 条目行；组合 headless 层的 item/content/title/description 部件，暴露 `leading`/`trailing`/`title`/`description`/默认插槽
-- `ListRoot`（headless）— `<ul>` 根
-- `ListItem`（headless）— `<li>` 条目
-- `ListContent` / `ListTitle` / `ListDescription`（headless）— 条目的内容、标题与描述部件
+- `SList` — 列表容器；渲染带 `root` 槽的 `<ul>`，并向条目下发 `listVariants`
+- `SListItem` — 条目行；渲染 `<li>` 及 `item`/`content`/`title`/`description` 节点，暴露 `leading`/`trailing`/`title`/`description`/默认插槽
 
 ## 演示
 
@@ -46,7 +45,7 @@ head:
 
 ### 架构与对标差异
 
-`SList`/`SListItem` 是包裹 headless 列表基础组件的薄样式包装，全部样式收敛于 `listVariants`。这与 shadcn/ui 的 headless 分离一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供配置驱动的列表（`dataSource`/`renderItem`）。SoybeanUI 刻意将 `SList` 保持为展示型容器——数据迭代由使用者负责——因此超大数据的虚拟滚动由独立的 `virtualizer` 组件承担，而非内置虚拟滚动。
+`SList`/`SListItem` 是 UI-only 组件：纯 `ul`/`li` 解剖壳未通过 headless 删除测试，因此该家族已从 headless 层移除，结构留在 UI 层，样式全部收敛于 `listVariants`，槽位类通过 `provideListUi` 下发。这与 shadcn/ui 的「组合优先」一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供配置驱动的列表（`dataSource`/`renderItem`）。SoybeanUI 刻意将 `SList` 保持为展示型容器——数据迭代由使用者负责——因此超大数据的虚拟滚动由独立的 `virtualizer` 组件承担，而非内置虚拟滚动。需要交互的列表请使用 `listbox` / `tree`，而非 `SList`。
 
 | 能力              | SoybeanUI | shadcn/ui | Ant Design List | Element Plus | Mantine List | Naive UI |
 | :---------------- | :-------: | :-------: | :-------------: | :----------: | :----------: | :------: |
@@ -64,7 +63,7 @@ head:
 - `SList` 是展示型容器：不持有数据迭代或虚拟滚动。1k+ 条目请直接渲染条目，或与独立的 `virtualizer` 组件组合。
 - 条目渲染为 `<ul>` 内的 `<li>`。请保持直接子节点为列表项，避免嵌套会破坏列表语义的完整交互块。
 - 需要「标题 + 描述」行时使用 `SListItem`；简单列表也可直接在 `SList` 中放置原生 `<li>` 元素。
-- `title` 以纯文本渲染在 `ListTitle` 中（带样式的块，非标题元素）；若内容属于文档大纲，请配合语义化标题使用。
+- 条目标题渲染为 `<h3>`、描述渲染为 `<p>`；若列表属于文档大纲，请通过 `size`/`class` 或自定义结构让标题层级保持合理。
 
 ### Roadmap
 

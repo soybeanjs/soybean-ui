@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { computed, useSlots } from 'vue';
-import { BadgeCompact, provideBadgeUi } from '@soybeanjs/headless/badge';
-import { useOmitProps } from '@soybeanjs/headless/composables';
-import { keysOf } from '@soybeanjs/headless/shared';
+import { computed } from 'vue';
+import { useControllableState, useOmitProps } from '@soybeanjs/headless/composables';
 import { badgeVariants } from '@/styles/badge';
-import type { BadgeProps, BadgeEmits } from './types';
+import type { BadgeEmits, BadgeProps, BadgeSlots } from './types';
 
 defineOptions({
   name: 'SBadge'
@@ -16,11 +14,26 @@ const props = withDefaults(defineProps<BadgeProps>(), {
 
 const emit = defineEmits<BadgeEmits>();
 
-const slots = useSlots();
+defineSlots<BadgeSlots>();
 
-const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'ui', 'position']);
+const forwardedProps = useOmitProps(props, [
+  'class',
+  'color',
+  'size',
+  'ui',
+  'position',
+  'open',
+  'content',
+  'contentProps'
+]);
 
-const slotNames = computed(() => keysOf(slots));
+const open = useControllableState(
+  () => props.open,
+  value => {
+    emit('update:open', value);
+  },
+  true
+);
 
 const ui = computed(() =>
   badgeVariants(
@@ -33,14 +46,13 @@ const ui = computed(() =>
     { root: props.class }
   )
 );
-
-provideBadgeUi(ui);
 </script>
 
 <template>
-  <BadgeCompact v-bind="forwardedProps" @update:open="emit('update:open', $event)">
-    <template v-for="slotName in slotNames" #[slotName]>
-      <slot :name="slotName" />
-    </template>
-  </BadgeCompact>
+  <div v-bind="forwardedProps" data-soybean-badge-root :class="ui.root">
+    <slot />
+    <span v-if="open" v-bind="contentProps" data-soybean-badge-content :class="ui.content">
+      <slot name="content">{{ content }}</slot>
+    </span>
+  </div>
 </template>

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-12T12:40:27.080Z",
+  "generatedAt": "2026-09-12T16:40:21.931Z",
   "packages": {
     "headless": {
       "components": {
@@ -98,7 +98,7 @@
         "badge": {
           "component": "badge",
           "file": "badge.json",
-          "symbols": ["Badge", "BadgeCompact", "BadgeContent", "BadgeRoot"]
+          "symbols": ["Badge", "BadgeContent", "BadgeRoot"]
         },
         "bottom-sheet": {
           "component": "bottom-sheet",
@@ -191,7 +191,6 @@
           "symbols": [
             "Card",
             "CardCollapsibleTrigger",
-            "CardCompact",
             "CardContent",
             "CardDescription",
             "CardFooter",
@@ -486,7 +485,6 @@
           "file": "empty.json",
           "symbols": [
             "Empty",
-            "EmptyCompact",
             "EmptyContent",
             "EmptyDescription",
             "EmptyHeader",
@@ -1077,13 +1075,14 @@
         "tree": {
           "component": "tree",
           "file": "tree.json",
-          "symbols": ["TreeItem", "TreeRoot", "TreeVirtualizer", "TreeVirtualizerItem", "TreeVirtualizerRoot"]
+          "symbols": ["Tree", "TreeItem", "TreeRoot", "TreeVirtualizer", "TreeVirtualizerItem", "TreeVirtualizerRoot"]
         },
         "tree-menu": {
           "component": "tree-menu",
           "file": "tree-menu.json",
           "symbols": [
             "TreeMenu",
+            "TreeMenuBadge",
             "TreeMenuBaseItem",
             "TreeMenuButton",
             "TreeMenuCollapsible",

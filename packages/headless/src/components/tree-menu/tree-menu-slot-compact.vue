@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { provideBadgeUi } from '../badge/context';
+import { omit } from '../../shared';
 import Icon from '../_icon/icon.vue';
-import BadgeCompact from '../badge/badge-compact.vue';
 import { useTreeMenuUi } from './context';
 import type { TreeMenuOptionSlotCompactProps } from './types';
 
@@ -16,12 +15,13 @@ const ui = useTreeMenuUi();
 
 const hasChildren = computed(() => Boolean(props.item.children?.some(child => !child.hidden)));
 
-const badgeUi = computed(() => ({
-  root: ui.value?.badgeRoot,
-  content: ui.value?.badgeContent
-}));
+// The badge family is UI-only, so the option renders its own badge anatomy. `open` / `contentProps`
+// are consumed here instead of being forwarded to the DOM as attributes.
+const badgeOpen = computed(() => props.item.badgeProps?.open ?? true);
 
-provideBadgeUi(badgeUi);
+const badgeRootProps = computed(() => omit(props.item.badgeProps ?? {}, ['open', 'contentProps']));
+
+const badgeContentProps = computed(() => props.item.badgeProps?.contentProps);
 </script>
 
 <template>
@@ -30,9 +30,12 @@ provideBadgeUi(badgeUi);
   </slot>
 
   <slot name="item" :item="item">
-    <BadgeCompact v-if="item.badge" v-bind="item.badgeProps" :content="item.badge">
+    <div v-if="item.badge" v-bind="badgeRootProps" data-soybean-tree-menu-badge-root :class="ui.badgeRoot">
       <span :class="ui.itemLabel">{{ item.label }}</span>
-    </BadgeCompact>
+      <span v-if="badgeOpen" v-bind="badgeContentProps" data-soybean-tree-menu-badge-content :class="ui.badgeContent">
+        {{ item.badge }}
+      </span>
+    </div>
     <span v-else :class="ui.itemLabel">{{ item.label }}</span>
   </slot>
 

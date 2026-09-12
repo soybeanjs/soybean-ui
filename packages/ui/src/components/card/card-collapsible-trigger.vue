@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { CardCollapsibleTrigger } from '@soybeanjs/headless/card';
-import type { CardCollapsibleTriggerProps } from '@soybeanjs/headless/card';
+import { CollapsibleTrigger } from '@soybeanjs/headless/collapsible';
 import ButtonIcon from '../button/button-icon.vue';
+import type { CardCollapsibleTriggerProps } from './types';
 
 defineOptions({
   name: 'SCardCollapsibleTrigger'
@@ -13,10 +13,10 @@ const props = withDefaults(defineProps<CardCollapsibleTriggerProps>(), {
 </script>
 
 <template>
-  <CardCollapsibleTrigger v-slot="{ open }" v-bind="props">
+  <CollapsibleTrigger v-slot="{ open }" v-bind="props" data-soybean-card-collapsible-trigger>
     <slot :open="open">
       <ButtonIcon v-if="open" icon="lucide:chevron-down" />
       <ButtonIcon v-else icon="lucide:chevron-right" />
     </slot>
-  </CardCollapsibleTrigger>
+  </CollapsibleTrigger>
 </template>

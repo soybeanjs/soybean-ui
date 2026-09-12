@@ -2,7 +2,6 @@ import type { ComputedRef, ShallowRef } from 'vue';
 import type { TreeNavigationNode } from '../../shared';
 import type { BaseProps, HorizontalSide, UiClass } from '../../types';
 import type { IconValue } from '../_icon/types';
-import type { BadgeCompactProps } from '../badge/types';
 import type { ButtonProps } from '../button/types';
 import type { DropdownMenuCompactProps } from '../dropdown-menu/types';
 import type { LinkBaseProps, LinkExtraProps } from '../link/types';
@@ -161,6 +160,26 @@ export interface TreeMenuCollapsibleProps extends PrimitiveWithBaseProps {
 export interface TreeMenuSubProps extends PrimitiveWithBaseProps {}
 
 /**
+ * Properties for the badge markup rendered inside a TreeMenu option.
+ *
+ * The `badge` family is UI-only (it failed headless admission), so the tree-menu renders its own
+ * badge anatomy instead of composing a headless badge primitive. The shape mirrors the retired
+ * `BadgeCompactProps` minus `content`, which the option supplies through `TreeMenuBaseOptionData.badge`.
+ */
+export interface TreeMenuBadgeProps extends BaseProps {
+  /**
+   * Whether the badge bubble is rendered.
+   *
+   * @default true
+   */
+  open?: boolean;
+  /**
+   * Properties forwarded to the badge bubble element.
+   */
+  contentProps?: BaseProps;
+}
+
+/**
  * Option data for the TreeMenu component.
  */
 export interface TreeMenuBaseOptionData extends TreeMenuBaseItemProps, LinkBaseProps {
@@ -185,9 +204,9 @@ export interface TreeMenuBaseOptionData extends TreeMenuBaseItemProps, LinkBaseP
    */
   badge?: string;
   /**
-   * Properties forwarded to the badge component.
+   * Properties forwarded to the badge markup.
    */
-  badgeProps?: Omit<BadgeCompactProps, 'content'>;
+  badgeProps?: TreeMenuBadgeProps;
   /**
    * Tag text rendered for the option.
    */

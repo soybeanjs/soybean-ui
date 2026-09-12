@@ -1,18 +1,18 @@
 ---
 head:
   title: Badge
-  description: 'A small status/notification marker that overlays a trigger (button, avatar, nav item) to indicate a count, a state, or new content. SBadge combines a BadgeRoot/BadgeContent family of headless primitives (zero styles) with the badgeVariants style recipe (2 slots: root/content; 8 colors × 6 sizes × 4 positions).'
+  description: 'A small status/notification marker that overlays a trigger (button, avatar, nav item) to indicate a count, a state, or new content. SBadge is a UI-only component: a relative root plus an absolutely positioned bubble with controllable visibility, styled by the badgeVariants style recipe (2 slots: root/content; 8 colors × 6 sizes × 4 positions).'
 ---
 
 # Badge
 
 ## Overview
 
-A small status/notification marker that overlays a trigger (button, avatar, nav item) to indicate a count, a state, or new content. `SBadge` combines a `BadgeRoot`/`BadgeContent` family of headless primitives (zero styles) with the `badgeVariants` style recipe (2 slots: root/content; 8 colors × 6 sizes × 4 positions).
+A small status/notification marker that overlays a trigger (button, avatar, nav item) to indicate a count, a state, or new content. `SBadge` is a **UI-only** component: a relatively positioned root plus an absolutely positioned bubble, styled by the `badgeVariants` recipe (2 slots: root/content; 8 colors × 6 sizes × 4 positions).
 
 Use it for unread counts, notification badges, status dots, or any small label anchored to the top-right (or another corner) of a host element. Prefer `tag` for standalone inline category labels, and `alert` for contextual feedback with more content.
 
-`SBadge` aggregates the primitives through `BadgeCompact` and exposes a `content`-driven API with `v-model:open` control over the bubble's visibility. For fully custom compositions, fall back to the headless `BadgeRoot`/`BadgeContent` primitives.
+`SBadge` exposes a `content`-driven API with `v-model:open` control over the bubble's visibility. There is no headless `badge` family: the only logic is a controlled `open` flag, which the UI layer owns directly through `useControllableState`.
 
 ## Usage
 
@@ -20,7 +20,7 @@ Use it for unread counts, notification badges, status dots, or any small label a
 
 ## Features
 
-- 🧩 Headless/styled split — `BadgeCompact` aggregates `BadgeRoot`/`BadgeContent` and exposes a `content` slot; `SBadge` only injects styles and forwards slots/events
+- 🧩 UI-only thin shell — `SBadge` owns markup and the controlled `open` state (`useControllableState`); no headless `badge` family exists
 - 🔢 `content` prop / slot — a plain string or arbitrary VNode inside the bubble via the `content` slot
 - 🎛️ Controlled visibility — `v-model:open` toggles whether the bubble renders (`useControllableState`, default `true`)
 - 🎨 8 colors — `primary`/`destructive`/`success`/`warning`/`info`/`carbon`/`secondary`/`accent` from `ThemeColor`
@@ -31,10 +31,7 @@ Use it for unread counts, notification badges, status dots, or any small label a
 
 ## Component family
 
-- `SBadge` (styled) — the entry wrapper; `badgeVariants` recipe with dynamic slot forwarding
-- `BadgeRoot` (headless) — the container; owns the `open` state via `useControllableState` and `provideBadgeRootContext`
-- `BadgeContent` (headless) — the bubble; rendered only while `open`
-- `BadgeCompact` (headless) — the aggregated composite; composes root/content and defaults the bubble content
+`SBadge` is a single export. It renders the `data-soybean-badge-root` container and, while `open`, the `data-soybean-badge-content` bubble; `class`/`ui` and `contentProps` reach both nodes.
 
 ## Demos
 
@@ -48,7 +45,7 @@ Use it for unread counts, notification badges, status dots, or any small label a
 
 ### Architecture and benchmark differences
 
-`BadgeCompact` owns the visibility orchestration while every primitive stays style-free and only the UI wrapper injects the `badgeVariants` classes. This mirrors shadcn/ui's headless/styled split (a plain styled label there) and Radix's `Badge` primitive, unlike Ant Design, Element Plus and Naive UI which ship a single styled `Badge` with `count`/`max`/`dot`/`offset` props. SoybeanUI exposes the bubble through a `content` prop/slot and a controlled `open` state, leaving count formatting (`max`) and dot/offset convenience out of the core — see the enhancement list below.
+`SBadge` owns the visibility orchestration in the UI layer — a badge is a thin shell whose only logic is a controlled `open` flag, so it deliberately has no headless family. This mirrors shadcn/ui's composition-first approach (a plain styled label there) and Radix's `Badge` primitive, unlike Ant Design, Element Plus and Naive UI which ship a single styled `Badge` with `count`/`max`/`dot`/`offset` props. SoybeanUI exposes the bubble through a `content` prop/slot and a controlled `open` state, leaving count formatting (`max`) and dot/offset convenience out of the core — see the enhancement list below.
 
 | Capability                     | SoybeanUI | shadcn/ui | Ant Design Badge | Element Plus Badge | Mantine Badge | Naive UI Badge |
 | :----------------------------- | :-------: | :-------: | :--------------: | :----------------: | :-----------: | :------------: |
