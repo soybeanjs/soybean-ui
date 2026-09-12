@@ -5,7 +5,7 @@ import type { FormCompactProps } from './types';
 import { provideFormSub } from './use-form';
 
 defineOptions({
-  name: 'SFormCompact'
+  name: 'FormCompact'
 });
 
 const props = withDefaults(defineProps<FormCompactProps>(), {

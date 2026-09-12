@@ -3,7 +3,7 @@ import { useControllableState } from '../../composables';
 import type { TagProps, TagEmits } from './types';
 
 defineOptions({
-  name: 'STag'
+  name: 'Tag'
 });
 
 const props = withDefaults(defineProps<TagProps>(), {
