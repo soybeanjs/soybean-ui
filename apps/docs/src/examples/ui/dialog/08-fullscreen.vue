@@ -8,6 +8,7 @@ const fullscreen = ref(false);
 <template>
   <SDialog
     v-model:fullscreen="fullscreen"
+    show-fullscreen
     title="Fullscreen Dialog"
     description="Toggle the fullscreen button in the header."
   >
