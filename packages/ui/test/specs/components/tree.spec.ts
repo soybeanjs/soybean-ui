@@ -466,4 +466,53 @@ describe('STreeVirtualizer', () => {
     wrapper.unmount();
     cleanup();
   });
+
+  it('expands a node in the animated virtualizer with virtual item data', async () => {
+    const { getInstance, cleanup } = setupVirtualizerResizeObserver();
+    const wrapper = mountVirtualizer({ animated: true });
+
+    getInstance()?.trigger([
+      createMockResizeObserverEntry(wrapper.find('[data-soybean-tree-virtualizer-root]').element, {
+        width: 224,
+        height: 240
+      })
+    ]);
+    await delay(30);
+    await nextTick();
+
+    await wrapper.findAll('[data-soybean-tree-item]')[0].trigger('click');
+    await nextTick();
+
+    const labels = wrapper.findAll('.virtual-label').map(label => label.text());
+
+    expect(labels).toContain('1-1:1');
+    expect(labels).toContain('1-2:2');
+    expect(labels.every(text => /:\d+$/.test(text))).toBe(true);
+    wrapper.unmount();
+    cleanup();
+  });
+
+  it('collapses a node in the animated virtualizer with virtual item data', async () => {
+    const { getInstance, cleanup } = setupVirtualizerResizeObserver();
+    const wrapper = mountVirtualizer({ animated: true, defaultExpanded: ['1'] });
+
+    getInstance()?.trigger([
+      createMockResizeObserverEntry(wrapper.find('[data-soybean-tree-virtualizer-root]').element, {
+        width: 224,
+        height: 240
+      })
+    ]);
+    await delay(30);
+    await nextTick();
+
+    await wrapper.findAll('[data-soybean-tree-item]')[0].trigger('click');
+    await nextTick();
+
+    const labels = wrapper.findAll('.virtual-label').map(label => label.text());
+
+    expect(labels).not.toContain('1-1:1');
+    expect(labels.every(text => /:\d+$/.test(text))).toBe(true);
+    wrapper.unmount();
+    cleanup();
+  });
 });
