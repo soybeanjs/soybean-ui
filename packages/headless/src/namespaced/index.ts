@@ -487,7 +487,6 @@ import {
   SeparatorCompact,
   SeparatorLabel,
   SeparatorRoot,
-  Skeleton,
   SliderCompact,
   SliderRange,
   SliderRoot,
@@ -1787,8 +1786,6 @@ export const Separator = {
   Root: typeof SeparatorRoot;
   Label: typeof SeparatorLabel;
 };
-
-export { Skeleton };
 
 export const Slider = {
   Compact: SliderCompact,

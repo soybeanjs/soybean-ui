@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, useAttrs } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { Skeleton } from '@soybeanjs/headless/skeleton';
+import { Primitive } from '@soybeanjs/headless/primitive';
 import { skeletonVariants } from '@/styles/skeleton';
 import type { SkeletonProps } from './types';
 
@@ -13,7 +13,11 @@ const props = withDefaults(defineProps<SkeletonProps>(), {
   animated: true
 });
 
+const attrs = useAttrs();
+
 const forwardedProps = useOmitProps(props, ['class', 'size', 'animated', 'shape']);
+
+const ariaHidden = computed(() => attrs['aria-hidden'] ?? true);
 
 const cls = computed(() =>
   skeletonVariants(
@@ -28,7 +32,7 @@ const cls = computed(() =>
 </script>
 
 <template>
-  <Skeleton v-bind="forwardedProps" :class="cls">
+  <Primitive v-bind="forwardedProps" data-soybean-skeleton :class="cls" :aria-hidden="ariaHidden">
     <slot />
-  </Skeleton>
+  </Primitive>
 </template>

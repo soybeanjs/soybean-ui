@@ -490,7 +490,6 @@ export const components = {
     'SelectArrow'
   ],
   separator: ['SeparatorCompact', 'SeparatorRoot', 'SeparatorLabel'],
-  skeleton: ['Skeleton'],
   slider: ['SliderCompact', 'SliderRoot', 'SliderTrack', 'SliderRange', 'SliderThumb'],
   slot: ['Slot'],
   splitNav: ['SplitNavRoot'],

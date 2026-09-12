@@ -67,7 +67,6 @@ export * from './components/scroll-area';
 export * from './components/segment';
 export * from './components/select';
 export * from './components/separator';
-export * from './components/skeleton';
 export * from './components/slider';
 export * from './components/split-nav';
 export * from './components/splitter';
