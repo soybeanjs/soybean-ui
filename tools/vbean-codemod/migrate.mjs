@@ -101,7 +101,7 @@ const MAX_FILE_BYTES = 4 * 1024 * 1024;
  */
 const PACKAGE_RULES = [
   { id: 'pkg:headless', re: /@soybeanjs\/headless(?![\w-])/g, to: '@vbean/aria' },
-  { id: 'pkg:ui-uno', re: /@soybeanjs\/ui-uno(?![\w-])/g, to: '@vbean/uno' },
+  { id: 'pkg:ui-uno', re: /@soybeanjs\/ui-uno(?![\w-])/g, to: '@vbean/unocss' },
   { id: 'pkg:ui-skills', re: /@soybeanjs\/ui-skills(?![\w-])/g, to: '@vbean/skills' },
   { id: 'pkg:ui', re: /@soybeanjs\/ui(?![\w-])/g, to: '@vbean/ui' },
   { id: 'pkg:theme', re: /@soybeanjs\/theme(?![\w-])/g, to: '@vbean/theme' },
@@ -182,7 +182,7 @@ const MANUAL_STEPS = [
   '删除 lockfile 后重装依赖（pnpm-lock.yaml / package-lock.json 未被改写）',
   '安装新包：pnpm add @vbean/ui @vbean/aria  # 并移除 @soybeanjs/ui @soybeanjs/headless',
   'Nuxt 项目：确认 nuxt.config 中 modules 的 "@vbean/ui/nuxt" 与 imports.transform.exclude 的 /aria\\/dist\\//',
-  'UnoCSS 项目：uno.config 中 preset 的导入来源改为 @vbean/uno',
+  'UnoCSS 项目：uno.config 中 preset 的导入来源改为 @vbean/unocss',
   '若在 CSS / e2e 选择器里用过 [data-soybean-*] 或 var(--soybean-*)：加 --runtime-contract 重跑，或手工替换',
   'CLI 用户：sbean.json 重命名为 vbean.json；命令 sbean → vbean',
   '自定义 registry / 镜像：registry 地址切换到新域名（旧路径 /r/* 与 /schema/* 在过渡期内保持可用）'

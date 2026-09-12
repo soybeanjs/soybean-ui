@@ -48,7 +48,7 @@ node tools/vbean-codemod/migrate.mjs . --profile=repo --write
 | `@soybeanjs/headless`                 | `@vbean/aria`    |
 | `@soybeanjs/ui`                       | `@vbean/ui`      |
 | `@soybeanjs/theme`                    | `@vbean/theme`   |
-| `@soybeanjs/ui-uno`                   | `@vbean/uno`     |
+| `@soybeanjs/ui-uno`                   | `@vbean/unocss`  |
 | `@soybeanjs/ui-skills`                | `@vbean/skills`  |
 | `/headless\/dist\//`（Nuxt 排除路径） | `/aria\/dist\//` |
 

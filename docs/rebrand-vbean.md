@@ -81,7 +81,7 @@
 | `@soybeanjs/ui/{component}`                                                                            | `@vbean/ui/{component}`        | 🚨 破坏 |
 | `@soybeanjs/theme`                                                                                     | `@vbean/theme`                 | 🚨 破坏 |
 | `@soybeanjs/theme/storage`\|`/ssr`                                                                     | `@vbean/theme/storage`\|`/ssr` | 🚨 破坏 |
-| `@soybeanjs/ui-uno`                                                                                    | `@vbean/uno`                   | 🚨 破坏 |
+| `@soybeanjs/ui-uno`                                                                                    | `@vbean/unocss`                | 🚨 破坏 |
 | `@soybeanjs/ui-skills`                                                                                 | `@vbean/skills`                | 🚨 破坏 |
 | `sbean`（npm 包 + bin）                                                                                | `vbean`（npm 包 + bin）        | 🚨 破坏 |
 | `packages/headless/`                                                                                   | `packages/aria/`               | 🟡 内部 |
@@ -231,7 +231,7 @@ rg -n "headless" packages/scripts/src packages/aria/AGENTS.md                   
 
 1. `pnpm sui gen tombstone`（新增命令，见下）生成 4 个旧包的转发实现。
 2. 依赖方向：墓碑包 `dependencies` → `@vbean/*@workspace:^`。
-3. 发布顺序：`@vbean/theme` → `@vbean/uno` → `@vbean/aria` → `@vbean/ui` → `@vbean/skills` → `vbean`（CLI） → 4 个墓碑包。**必须按拓扑序**，否则 `workspace:^` 会指向未发布版本。
+3. 发布顺序：`@vbean/theme` → `@vbean/unocss` → `@vbean/aria` → `@vbean/ui` → `@vbean/skills` → `vbean`（CLI） → 4 个墓碑包。**必须按拓扑序**，否则 `workspace:^` 会指向未发布版本。
 4. `changelog-notes.ts` 增加 `v0.50.0` breaking 条目 + `docPath`。
 5. 新文档站上线，旧站保留并加 banner。
 
@@ -324,7 +324,7 @@ node tools/vbean-codemod/migrate.mjs . --profile=repo --write --new-domain=vbean
 
 1. **身份一致性**：`@vbean/*`（scope）｜`vbean`（CLI）｜`vbean.dev`（站点）｜`soybeanjs/vbean`（仓库），每一层都读作 `vbean`。5 层身份里 4 层是裸名 `vbean`，唯一带后缀的就是域名——该对齐的是域名，不是其他四层。
 2. **生态惯例是 scope 名 == 域名**，这条赛道尤其整齐：`@radix-ui/*` ↔ radix-ui.com、`@base-ui-components/*` ↔ base-ui.com、`@headlessui/*` ↔ headlessui.com、`@tanstack/*` ↔ tanstack.com。
-3. **命名不该窄于它承载的东西**（与 §7.1 同一条原则）：`vbean-ui.com` 只点了 `@vbean/ui` 一个包，但这个站要同时承载 `@vbean/aria`（无样式层）、`@vbean/theme`、`@vbean/uno` 与 `vbean` CLI。`chakra-ui.com` / `mui.com` 能用 `-ui` 后缀，是因为它们**整个产品**就叫 Chakra UI / MUI；这里伞形产品叫 VBean，只有其中一个包叫 UI。
+3. **命名不该窄于它承载的东西**（与 §7.1 同一条原则）：`vbean-ui.com` 只点了 `@vbean/ui` 一个包，但这个站要同时承载 `@vbean/aria`（无样式层）、`@vbean/theme`、`@vbean/unocss` 与 `vbean` CLI。`chakra-ui.com` / `mui.com` 能用 `-ui` 后缀，是因为它们**整个产品**就叫 Chakra UI / MUI；这里伞形产品叫 VBean，只有其中一个包叫 UI。
 4. **`.dev` 预置 HSTS**（Google 注册局，TLD 级）：浏览器层面禁止 http 明文访问，免费拿到强制 HTTPS 与信任加成。**代价要说清**：该域不能用作本地开发别名（无法把 `vbean.dev` 指向 localhost 起明文服务）。对本项目影响 ≈ 0——文档站与 registry 本来就必须跑 HTTPS。
 5. **价格不构成差异**：`.dev` $12 vs `.com` $11，差 **$1/年**。选 `.com` 的理由不能是"省钱"，只能落在命名或受众上——而这两条都指向 `.dev`。
 6. **`vbean-ui.com` 的价值是防御，不是主力**：它挡的是 `vbean-ui` / `vbeanui` 这条混淆与抢注路径。这是**主动付出的防御成本**，不是需要被"用掉"的沉没成本——所以它不构成"既然买了就用它"的理由。
@@ -465,15 +465,15 @@ GitHub star（soybean-admin 15k）与新品牌的关联会断开。
 
 `docs/v0.50.0.md` 已规划 `@soybeanjs/headless → @soybeanjs/aria`（scope 不变）与一轮引擎级重构。**本方案不是替代它，而是替换其中的命名维度**：
 
-| 议题                    | docs/v0.50.0.md 原定                      | 本方案覆盖为                              |
-| ----------------------- | ----------------------------------------- | ----------------------------------------- |
-| 逻辑层改名              | `@soybeanjs/headless` → `@soybeanjs/aria` | `@soybeanjs/headless` → **`@vbean/aria`** |
-| UI 包                   | `@soybeanjs/ui` 不变                      | → **`@vbean/ui`**                         |
-| theme / ui-uno / sbean  | 全部不变                                  | → `@vbean/theme` / `@vbean/uno` / `vbean` |
-| `data-soybean-*`        | 明确「不改」                              | → **改** 为 `data-vbean-*`                |
-| `--soybean-*`           | 明确「不改」                              | → **改** 为 `--vbean-*`                   |
-| `S` 前缀                | 不改                                      | **一致，不改**                            |
-| 依赖最小化 / 引擎更换   | 本方案不涉及                              | 原样保留                                  |
-| Drawer / BottomSheet 等 | 本方案不涉及                              | 原样保留                                  |
+| 议题                    | docs/v0.50.0.md 原定                      | 本方案覆盖为                                 |
+| ----------------------- | ----------------------------------------- | -------------------------------------------- |
+| 逻辑层改名              | `@soybeanjs/headless` → `@soybeanjs/aria` | `@soybeanjs/headless` → **`@vbean/aria`**    |
+| UI 包                   | `@soybeanjs/ui` 不变                      | → **`@vbean/ui`**                            |
+| theme / ui-uno / sbean  | 全部不变                                  | → `@vbean/theme` / `@vbean/unocss` / `vbean` |
+| `data-soybean-*`        | 明确「不改」                              | → **改** 为 `data-vbean-*`                   |
+| `--soybean-*`           | 明确「不改」                              | → **改** 为 `--vbean-*`                      |
+| `S` 前缀                | 不改                                      | **一致，不改**                               |
+| 依赖最小化 / 引擎更换   | 本方案不涉及                              | 原样保留                                     |
+| Drawer / BottomSheet 等 | 本方案不涉及                              | 原样保留                                     |
 
 执行时以**本方案的命名映射** + **v0.50.0 的结构重构** 合成单一 PR。建议把 `docs/v0.50.0.md` 的 §2「改名」章节替换为指向本文的链接并标注「已升级为品牌级改名」，避免两份文档给出不同映射。
