@@ -1,4 +1,5 @@
 export * from './guard';
+export * from './collapse-motion';
 export * from './object';
 export * from './string';
 export * from './array';
