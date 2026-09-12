@@ -50,7 +50,7 @@ function openWarningDialog() {
 - ⚠️ Alert mode — `isAlert` switches to `role="alertdialog"`, adds the type icon and `aria-live` (`polite`/`assertive`)
 - 🏷️ Accessible title/description — `title`/`description` wire `aria-labelledby`/`aria-describedby`
 - ❌ Closable — `showClose` renders a close control; Escape, outside pointer/focus and the close button all dismiss
-- 🖐️ Draggable — `draggable` lets you move the dialog by dragging its header (powered by `@dnd-kit/vue`)
+- 🖐️ Draggable — `draggable` lets you move the dialog by dragging its header (powered by `useDraggable` from `@vueuse/core`)
 - ⛶ Fullscreen — `showFullscreen` renders a toggle; `fullscreen`/`defaultFullscreen` drive a `v-model:fullscreen` state
 - 🔘 Cancel/confirm — `showCancel`/`showConfirm` with localized `cancelText`/`confirmText` from `dialog.cancel`/`dialog.confirm`
 - 🧹 Pure mode — `pure` drops the header/footer for fully custom content
@@ -88,6 +88,7 @@ Structured API summary generated from build-time component metadata.
 
 Properties for the Dialog component.
 
+- `showFullscreen`: Whether show the fullscreen toggle button in the header of the dialog. (type `boolean`; default `false`; optional)
 - `class`: the popup class of the dialog (type `string | false | Record<string, any> | ClassValue[] | null`; optional)
 - `size`: Visual size of the component. (type `ThemeSize`; optional)
 - `ui`: Per-slot class overrides for the component. (type `Partial<DialogUi>`; optional)
@@ -95,7 +96,6 @@ Properties for the Dialog component.
 - `description`: The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided. (type `string`; optional)
 - `icon`: The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided. (type `string | import("vue").Component | VNode<import("vue").RendererNode, import("vue").RendererElement, { [key: string]: ...`; optional)
 - `showClose`: Whether show the close button in the header of the dialog. (type `boolean`; default `true`; optional)
-- `showFullscreen`: Whether show the fullscreen toggle button in the header of the dialog. (type `boolean`; default `true`; optional)
 - `pure`: Whether to use the pure version of the dialog, which does not include the header and footer. This is useful when you want to fully control the content of the dialog and do not need the built-in header and footer. (type `boolean`; default `false`; optional)
 - `showCancel`: Whether to show the cancel button. When set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType="warning"`. When set to `true`, the cancel button will always be shown. (type `boolean | 'onlyWarning'`; default `'onlyWarning'`; optional)
 - `cancelText`: The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided. Defaults to the localized `dialog.cancel` message from `ConfigProvider`. (type `string`; optional)
@@ -491,7 +491,7 @@ Set `draggable` and drag the header to move the dialog. The position is kept unt
 
 ### How do I use the fullscreen mode?
 
-Toggle it with the header button (`showFullscreen`, on by default) or drive it with `v-model:fullscreen`:
+Toggle it with the header button (`showFullscreen`, hidden by default — pass `show-fullscreen` to opt in) or drive it with `v-model:fullscreen`:
 
 ```vue
 <SDialog v-model:fullscreen="fullscreen" title="Panel">...</SDialog>

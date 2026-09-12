@@ -56,7 +56,7 @@ Properties for the Tag component.
 - `shape`: Shape of the component. (type `TagShape`; optional)
 - `content`: Content. (type `string`; optional)
 - `closable`: Whether the component can be closed. (type `boolean`; optional)
-- `open`: Whether the component is open. (type `boolean`; optional)
+- `open`: Whether the component is open. Controlled when provided. (type `boolean`; optional)
 
 #### Emits
 

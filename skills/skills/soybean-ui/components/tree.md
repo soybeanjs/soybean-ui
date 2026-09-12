@@ -44,7 +44,17 @@ Interactive demos for tree are rendered on the site.
 
 Structured API summary generated from build-time component metadata.
 
-- Exported symbols (5): TreeItem, TreeRoot, TreeVirtualizer, TreeVirtualizerItem, TreeVirtualizerRoot.
+- Exported symbols (6): Tree, TreeItem, TreeRoot, TreeVirtualizer, TreeVirtualizerItem, TreeVirtualizerRoot.
+
+### Tree
+
+#### Slots
+
+Slots for the Tree component.
+
+- `top`: Content rendered before the tree items. (type `(() => any) | undefined`)
+- `bottom`: Content rendered after the tree items. (type `(() => any) | undefined`)
+- `item`: Content for a single tree item. (type `((props: { item: FlattenedItem<T>; modelValue: MaybeArray<string> | undefined; expanded: string[]; }) => any) | undef...`)
 
 ### TreeItem
 
@@ -105,7 +115,7 @@ Properties for the TreeVirtualizer component.
 
 - `contentProps`: Properties forwarded to the content element. (type `VirtualizerContentProps`; optional)
 - `dynamicContentProps`: Properties forwarded to the dynamic content element. (type `VirtualizerDynamicContentProps`; optional)
-- `animated`: When `true`, enables a smooth height transition on expand/collapse. Sets the virtualizer to dynamic mode and animates item layout via auto-animate. (type `boolean`; default `false`; optional)
+- `animated`: When `true`, renders visible items in normal document flow (dynamic mode) so item positions stay correct across expand/collapse without absolute offsets. (type `boolean`; default `false`; optional)
 - `modelValue`: The controlled value of the tree. Can be bound-with with `v-model`. (type `U`; optional)
 - `defaultValue`: The value of the tree when initially rendered. Use when you do not need to control the state of the tree (type `U`; optional)
 - `multiple`: Determines whether a "single" or "multiple" items can be selected at a time. (type `IsMultiple<U, M>`; optional)
@@ -219,7 +229,7 @@ Events for the TreeVirtualizerRoot component.
 - With `toggleBehavior: 'single'`, expansion is accordion-like — only one branch stays expanded (`findParentPath` rebuilds the path).
 - `loop` defaults to `true` (keyboard focus wraps around); both `STree` and `STreeVirtualizer` mirror this default in their wrappers, so no extra work is needed when using the headless `TreeRoot` directly.
 - Virtualization requires a `height`; the `STreeVirtualizer` `item` slot additionally provides `virtualItem` (for `:data` passthrough and absolute-position styling).
-- `STreeVirtualizer` has an opt-in `animated` prop for a smooth expand/collapse height transition (switches to dynamic mode and animates layout via auto-animate). It is off by default since dynamic measuring is heavier for very large datasets.
+- Expand and collapse animate with a height-collapsing transition on the moved subtree. `STreeVirtualizer` has an opt-in `animated` prop that renders visible items in normal document flow (dynamic mode) so item positions stay correct across expand/collapse without absolute offsets — it is off by default since dynamic measuring is heavier for very large datasets, and while a motion runs the transition list renders fully in document flow before windowing resumes.
 - Node text is fully provided by slots — the component has no hardcoded copy, so no localization is needed.
 
 ## FAQ
