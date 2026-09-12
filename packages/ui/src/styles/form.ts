@@ -16,7 +16,7 @@ export const formVariants = scv({
       'flex items-center whitespace-nowrap',
       'group-data-[orientation=horizontal]:justify-end group-data-[orientation=horizontal]:shrink-0'
     ],
-    control: 'group-data-[orientation=horizontal]:flex-1 group-data-[orientation=horizontal]:min-w-0',
+    control: `group-data-[orientation=horizontal]:relative group-data-[orientation=horizontal]:flex-1 group-data-[orientation=horizontal]:min-w-0`,
     description: `text-muted-foreground m-0 group-data-[orientation=horizontal]:w-full`,
     error: [
       'font-medium text-destructive m-0',
