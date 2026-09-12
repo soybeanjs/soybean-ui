@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends TreeItemData, U extends MaybeArray<string> | undefined, M extends boolean">
-import { computed, nextTick, shallowRef } from 'vue';
+import { computed, nextTick, shallowRef, watch } from 'vue';
 import type { ComputedRef, ShallowRef } from 'vue';
 import { createEventHook } from '@vueuse/core';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../../constants';
@@ -10,7 +10,8 @@ import { Primitive } from '../primitive';
 import { findParentPath, flattenItems } from './shared';
 import { provideTreeRootContext } from './context';
 import { useSelectionBehavior } from './hooks';
-import type { TreeRootProps, FlattenedItem, TreeItemData, TreeRootEmits } from './types';
+import { findExpandedKeyChange, getMotionRange, spliceMotionSentinel } from './tree-motion';
+import type { TreeRootProps, FlattenedItem, TreeItemData, TreeMotionState, TreeRootEmits } from './types';
 
 defineOptions({
   name: 'TreeRoot'
@@ -69,6 +70,55 @@ const expanded = useControllableState(
 ) as ShallowRef<string[]>;
 
 const expandedItems = computed(() => flattenItems(props.items, expanded.value));
+
+// Expand/collapse motion state: diffs expanded-key snapshots and exposes a
+// transition render list (with the motion sentinel at the subtree position)
+// plus the descendant items to animate. UI layers render the sentinel as a
+// height-collapsing block and call `end` from the transition finish hooks.
+const motionState = shallowRef<TreeMotionState<T> | null>(null);
+const prevExpandedKeys = shallowRef<string[]>([]);
+const prevExpandedItems = shallowRef<FlattenedItem<T>[]>([]);
+
+prevExpandedKeys.value = [...expanded.value];
+prevExpandedItems.value = expandedItems.value;
+
+function endMotion() {
+  prevExpandedKeys.value = [...expanded.value];
+  prevExpandedItems.value = expandedItems.value;
+  motionState.value = null;
+}
+
+watch(
+  [expanded, () => props.items],
+  () => {
+    const currentItems = expandedItems.value;
+    const change = findExpandedKeyChange(prevExpandedKeys.value, expanded.value);
+
+    if (change.key === null) {
+      prevExpandedItems.value = currentItems;
+      motionState.value = null;
+    } else {
+      const shorter = change.add ? prevExpandedItems.value : currentItems;
+      const longer = change.add ? currentItems : prevExpandedItems.value;
+      const blockItems = getMotionRange(shorter, longer, change.key);
+
+      if (blockItems.length === 0) {
+        prevExpandedItems.value = currentItems;
+        motionState.value = null;
+      } else {
+        motionState.value = {
+          type: change.add ? 'show' : 'hide',
+          items: spliceMotionSentinel(shorter, change.key),
+          blockItems,
+          end: endMotion
+        };
+      }
+    }
+
+    prevExpandedKeys.value = [...expanded.value];
+  },
+  { flush: 'post' }
+);
 
 // Roving focus group as a hook: the tree container doubles as the group container and items
 // self-register against it (typeahead + shift-range selection read the ordered collection).
@@ -229,6 +279,7 @@ provideTreeRootContext({
       :flatten-items="expandedItems"
       :model-value="modelValue"
       :expanded="expanded"
+      :motion="motionState"
       :select="onSelect"
       :toggle="onToggle"
     />

@@ -3,6 +3,8 @@ export { default as TreeItem } from './tree-item.vue';
 export { default as TreeVirtualizerRoot } from './tree-virtualizer-root.vue';
 export { default as TreeVirtualizerItem } from './tree-virtualizer-item.vue';
 
+export { isTreeMotionItem } from './tree-motion';
+
 export type {
   TreeRootProps,
   TreeRootEmits,
@@ -16,5 +18,9 @@ export type {
   TreeVirtualizerRootEmits,
   TreeVirtualizerItemProps,
   TreeVirtualizerItemEmits,
-  FlattenedItem
+  FlattenedItem,
+  TreeMotionType,
+  TreeMotionListItem,
+  TreeMotionState,
+  TreeMotionSentinel
 } from './types';

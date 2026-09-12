@@ -23,7 +23,7 @@ const listeners = useForwardListeners(emit);
 </script>
 
 <template>
-  <TreeRoot v-slot="{ flattenItems, modelValue, expanded }" v-bind="forwardedProps" as-child v-on="listeners">
+  <TreeRoot v-slot="{ flattenItems, modelValue, expanded, motion }" v-bind="forwardedProps" as-child v-on="listeners">
     <VirtualizerRoot
       v-slot="{ virtualItems, totalSize }"
       :as="as"
@@ -40,6 +40,7 @@ const listeners = useForwardListeners(emit);
         :flatten-items="flattenItems"
         :model-value="modelValue"
         :expanded="expanded"
+        :motion="motion"
       />
     </VirtualizerRoot>
   </TreeRoot>
