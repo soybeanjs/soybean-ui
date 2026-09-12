@@ -1,5 +1,27 @@
 # Changelog
 
+## [v0.40.0-beta.3](https://github.com/soybeanjs/soybean-ui/compare/v0.40.0-beta.2...v0.40.0-beta.3) (2026-09-12)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **headless**:
+  - expose Gate 2 assembly nodes from family barrels &nbsp;-&nbsp; by @soybeanjs [<samp>(2eb26)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2eb26d6fd)
+  - add role prop to AlertRoot for live-region semantics &nbsp;-&nbsp; by @soybeanjs [<samp>(ead51)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ead5175b0)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **headless**: drop S-prefixed component names from headless layer &nbsp;-&nbsp; by @soybeanjs [<samp>(3d9ed)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3d9ed813d)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **v0.50.0**:
+  - convert refactor plan into task checklist with status tracking &nbsp;-&nbsp; by @soybeanjs [<samp>(4894f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4894f7f93)
+  - mark tree-shake config checks done, track executed tasks &nbsp;-&nbsp; by @soybeanjs [<samp>(4643d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4643db15f)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.40.0-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.40.0-beta.1...v0.40.0-beta.2) (2026-09-12)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

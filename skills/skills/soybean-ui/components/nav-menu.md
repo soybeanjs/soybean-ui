@@ -39,7 +39,7 @@ Interactive demos for nav-menu are rendered on the site.
 
 Structured API summary generated from build-time component metadata.
 
-- Exported symbols (11): NavMenu, NavMenuCompact, NavMenuContent, NavMenuItem, NavMenuLink, NavMenuList, NavMenuRoot, NavMenuSubContent, NavMenuSubTrigger, NavMenuTrigger, NavMenuViewport.
+- Exported symbols (12): NavMenu, NavMenuCompact, NavMenuContent, NavMenuItem, NavMenuLink, NavMenuList, NavMenuOptionCompact, NavMenuRoot, NavMenuSubContent, NavMenuSubTrigger, NavMenuTrigger, NavMenuViewport.
 
 ### NavMenu
 
@@ -184,6 +184,39 @@ Events for the NavMenuLink component.
 ### NavMenuList
 
 - No documented props, emits, slots, or slot props were available.
+
+### NavMenuOptionCompact
+
+#### Props
+
+Properties for the NavMenuOptionCompact component.
+
+- `item`: Current item data. (type `NavMenuOptionData`; required)
+- `itemProps`: Properties forwarded to the item element. (type `NavMenuItemProps`; optional)
+- `linkProps`: Properties forwarded to the link element. (type `Omit<NavMenuLinkProps, LinkBasePropsKey>`; optional)
+- `triggerProps`: Properties forwarded to the trigger element. (type `NavMenuTriggerProps`; optional)
+- `contentProps`: Properties forwarded to the content element. (type `NavMenuContentProps`; optional)
+- `viewportProps`: Properties forwarded to the viewport element. (type `NavMenuViewportProps`; optional)
+- `listProps`: Properties forwarded to the list element. (type `NavMenuListProps`; optional)
+- `subTriggerProps`: Properties forwarded to the nested flyout trigger element. (type `NavMenuSubTriggerProps`; optional)
+- `subContentProps`: Properties forwarded to the nested flyout content element. (type `NavMenuSubContentProps`; optional)
+
+#### Emits
+
+Events for the NavMenuOptionCompact component.
+
+- `select`: Emitted when a link is selected. (type `[payload: CustomEvent<{ originalEvent: Event; }>]`; parameters `payload: CustomEvent<{ originalEvent: Event; }>`)
+
+#### Slots
+
+Slots for the NavMenuOptionCompact component.
+
+- `item`: No description. (type `(props: { item: NavMenuOptionData; isTrigger?: boolean; }) => any`; parameters `props: { item: NavMenuOptionData; isTrigger?: boolean; }`)
+- `item-leading`: No description. (type `(props: { item: NavMenuOptionData; }) => any`; parameters `props: { item: NavMenuOptionData; }`)
+- `item-trailing`: No description. (type `(props: { item: NavMenuOptionData; }) => any`; parameters `props: { item: NavMenuOptionData; }`)
+- `item-link-icon`: No description. (type `(props: { item: NavMenuOptionData; }) => any`; parameters `props: { item: NavMenuOptionData; }`)
+- `item-trigger-icon`: No description. (type `(props: { item: NavMenuOptionData; }) => any`; parameters `props: { item: NavMenuOptionData; }`)
+- `item-children`: No description. (type `(props: { item: NavMenuOptionData; }) => any`; parameters `props: { item: NavMenuOptionData; }`)
 
 ### NavMenuRoot
 

@@ -66,6 +66,7 @@ Properties for the Alert component.
 - `descriptionProps`: Properties forwarded to the description element. (type `AlertDescriptionProps`; optional)
 - `closeProps`: Properties forwarded to the close element. (type `AlertCloseProps`; optional)
 - `open`: The controlled open state of the alert. Can be bound with `v-model:open`. (type `boolean`; default `true`; optional)
+- `role`: The ARIA live region role of the alert. `role="alert"` implies an assertive live region (interrupting), while `role="status"` implies a polite one (non-interrupting). (type `'alert' | 'status'`; default `'alert'`; optional)
 
 #### Emits
 
@@ -117,6 +118,7 @@ Properties for the AlertCompact component.
 - `descriptionProps`: Properties forwarded to the description element. (type `AlertDescriptionProps`; optional)
 - `closeProps`: Properties forwarded to the close element. (type `AlertCloseProps`; optional)
 - `open`: The controlled open state of the alert. Can be bound with `v-model:open`. (type `boolean`; default `true`; optional)
+- `role`: The ARIA live region role of the alert. `role="alert"` implies an assertive live region (interrupting), while `role="status"` implies a polite one (non-interrupting). (type `'alert' | 'status'`; default `'alert'`; optional)
 
 #### Emits
 
@@ -151,6 +153,7 @@ Slots for the AlertCompact component.
 Properties for the AlertRoot component.
 
 - `open`: The controlled open state of the alert. Can be bound with `v-model:open`. (type `boolean`; default `true`; optional)
+- `role`: The ARIA live region role of the alert. `role="alert"` implies an assertive live region (interrupting), while `role="status"` implies a polite one (non-interrupting). (type `'alert' | 'status'`; default `'alert'`; optional)
 
 #### Emits
 

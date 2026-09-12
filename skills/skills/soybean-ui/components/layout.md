@@ -39,7 +39,7 @@ Interactive demos for layout are rendered on the site.
 
 Structured API summary generated from build-time component metadata.
 
-- Exported symbols (12): Layout, LayoutCompact, LayoutContent, LayoutFooter, LayoutHeader, LayoutMain, LayoutMobile, LayoutRail, LayoutRoot, LayoutSidebar, LayoutTab, LayoutTrigger.
+- Exported symbols (13): Layout, LayoutCompact, LayoutContent, LayoutFooter, LayoutHeader, LayoutMain, LayoutMobile, LayoutPlaceholder, LayoutRail, LayoutRoot, LayoutSidebar, LayoutTab, LayoutTrigger.
 
 ### Layout
 
@@ -177,6 +177,14 @@ Slots for the LayoutCompact component.
 ### LayoutMobile
 
 - No documented props, emits, slots, or slot props were available.
+
+### LayoutPlaceholder
+
+#### Props
+
+Properties for the LayoutPlaceholder component.
+
+- `type`: Which region the placeholder reserves space for. (type `'header' | 'footer' | 'tab'`; required)
 
 ### LayoutRail
 

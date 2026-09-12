@@ -64,7 +64,7 @@ Interactive demos for table are rendered on the site.
 
 Structured API summary generated from build-time component metadata.
 
-- Exported symbols (28): Table, TableBody, TableCell, TableCompact, TableCompactCell, TableCompactExpandedRow, TableCompactHead, TableCompactRow, TableContent, TableDataCell, TableEmpty, TableExpand, TableExpandedRow, TableFilterPopover, TableFooter, TableHead, TableHeader, TableHeaderFilter, TableHeaderResize, TableHeaderSelection, TableHeaderSort, TableIndex, TableRadio, TableRoot, TableRow, TableScroll, TableSelection, TableTreeToggle.
+- Exported symbols (29): Table, TableBody, TableCell, TableCompact, TableCompactCell, TableCompactExpandedRow, TableCompactHead, TableCompactRow, TableContent, TableDataCell, TableEmpty, TableExpand, TableExpandedRow, TableFilterPopover, TableFooter, TableHead, TableHeader, TableHeaderFilter, TableHeaderResize, TableHeaderSelection, TableHeaderSort, TableIndex, TableRadio, TableRoot, TableRow, TableScroll, TableSelection, TableTreeToggle, TableVirtualSpacerRow.
 
 ### Table
 
@@ -526,6 +526,17 @@ Slot properties for the TableTreeToggle component.
 - `hasChildren`: Whether the component has children. (type `boolean`; required)
 - `expanded`: Whether expanded. (type `boolean`; required)
 - `toggleExpand`: Toggle expand exposed in the slot scope. (type `() => void`; required)
+
+### TableVirtualSpacerRow
+
+#### Props
+
+Properties for the TableVirtualSpacerRow component.
+
+- `isVirtual`: Whether virtual scrolling is enabled. (type `boolean`; required)
+- `colspan`: Number of columns the spacer spans. (type `number`; required)
+- `paddingStart`: Padding applied before the start of the row. (type `number`; required)
+- `paddingEnd`: Padding applied after the end of the row. (type `number`; required)
 
 ## Notes
 

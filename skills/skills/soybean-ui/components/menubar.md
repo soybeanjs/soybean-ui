@@ -42,7 +42,7 @@ Interactive demos for menubar are rendered on the site.
 
 Structured API summary generated from build-time component metadata.
 
-- Exported symbols (20): Menubar, MenubarArrow, MenubarCheckboxGroup, MenubarCheckboxItem, MenubarCompact, MenubarContent, MenubarGroup, MenubarGroupLabel, MenubarItem, MenubarItemIndicator, MenubarMenu, MenubarPortal, MenubarRadioGroup, MenubarRadioItem, MenubarRoot, MenubarSeparator, MenubarSub, MenubarSubContent, MenubarSubTrigger, MenubarTrigger.
+- Exported symbols (21): Menubar, MenubarArrow, MenubarCheckboxGroup, MenubarCheckboxItem, MenubarCompact, MenubarContent, MenubarGroup, MenubarGroupLabel, MenubarItem, MenubarItemIndicator, MenubarMenu, MenubarMenus, MenubarPortal, MenubarRadioGroup, MenubarRadioItem, MenubarRoot, MenubarSeparator, MenubarSub, MenubarSubContent, MenubarSubTrigger, MenubarTrigger.
 
 ### Menubar
 
@@ -259,6 +259,26 @@ Events for the MenubarContent component.
 Properties for the MenubarMenu component.
 
 - `value`: A unique value that associates the trigger with the active root value when controlled. (type `DefinedValue`; optional)
+
+### MenubarMenus
+
+#### Props
+
+Properties for the MenubarMenus component (the internal list renderer used
+by `MenubarCompact`).
+
+- `items`: Top-level items rendered as visible triggers. (type `MenuOptionData<T>[]`; required)
+- `moreItems`: Items collapsed into the trailing "more" menu. (type `MenuOptionData<T>[]`; required)
+- `rootProps`: Props forwarded to the menubar root. (type `{ [x: string]: unknown; }`; required)
+- `listeners`: Listeners forwarded to the menubar root. (type `{ [x: string]: unknown; }`; required)
+- `optionsProps`: Props forwarded to the menu options of each open menu. (type `{ [x: string]: unknown; }`; required)
+- `linkProps`: Props forwarded to link triggers. (type `LinkExtraProps`; optional)
+- `contentProps`: Props forwarded to the content of each menu. (type `MenubarContentProps`; required)
+- `portalProps`: Props forwarded to the portal of each menu. (type `MenuPortalProps`; optional)
+- `getTriggerProps`: Resolve the effective props of a top-level trigger item. (type `(item: MenuOptionData<T>) => MenubarTriggerProps`; required)
+- `moreTriggerProps`: Props forwarded to the trailing "more" trigger. (type `{ [x: string]: unknown; }`; required)
+- `moreLabel`: Label of the trailing "more" trigger. (type `string`; optional)
+- `moreIcon`: Icon of the trailing "more" trigger. (type `string | import("vue").Component | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, { [...`; optional)
 
 ### MenubarPortal
 

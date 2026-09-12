@@ -1,7 +1,79 @@
 {
-  "generatedAt": "2026-09-12T03:41:06.024Z",
+  "generatedAt": "2026-09-12T04:14:14.496Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.40.0-beta.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.0-beta.2...v0.40.0-beta.3",
+      "date": "2026-09-12",
+      "entryCount": 5,
+      "componentCount": 0,
+      "components": [],
+      "newComponents": [],
+      "typeCounts": {
+        "feature": 2,
+        "fix": 1,
+        "docs": 2
+      },
+      "notes": [],
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "headless",
+          "summary": "expose Gate 2 assembly nodes from family barrels",
+          "summaryKey": "changelog.generated.v0.40.0-beta.3.2eb26",
+          "commitHash": "2eb26",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2eb26d6fd",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "headless",
+          "summary": "add role prop to AlertRoot for live-region semantics",
+          "summaryKey": "changelog.generated.v0.40.0-beta.3.ead51",
+          "commitHash": "ead51",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ead5175b0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "headless",
+          "summary": "drop S-prefixed component names from headless layer",
+          "summaryKey": "changelog.generated.v0.40.0-beta.3.3d9ed",
+          "commitHash": "3d9ed",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3d9ed813d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "v0.50.0",
+          "summary": "convert refactor plan into task checklist with status tracking",
+          "summaryKey": "changelog.generated.v0.40.0-beta.3.4894f",
+          "commitHash": "4894f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4894f7f93",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "v0.50.0",
+          "summary": "mark tree-shake config checks done, track executed tasks",
+          "summaryKey": "changelog.generated.v0.40.0-beta.3.4643d",
+          "commitHash": "4643d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4643db15f",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.40.0-beta.2",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.0-beta.1...v0.40.0-beta.2",

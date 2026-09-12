@@ -2231,6 +2231,13 @@
               "d838c": "switch playground page to tabbed views with docs as default",
               "df90d": "add upgrade guide pages linked from breaking releases",
               "e48e7": "make browser e2e suite pass under the vitest 5 page"
+            },
+            "3": {
+              "2eb26": "expose Gate 2 assembly nodes from family barrels",
+              "3d9ed": "drop S-prefixed component names from headless layer",
+              "4643d": "mark tree-shake config checks done, track executed tasks",
+              "4894f": "convert refactor plan into task checklist with status tracking",
+              "ead51": "add role prop to AlertRoot for live-region semantics"
             }
           }
         }

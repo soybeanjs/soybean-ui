@@ -32,7 +32,7 @@ Interactive demos for input-number are rendered on the site.
 
 Structured API summary generated from build-time component metadata.
 
-- Exported symbols (6): InputNumber, InputNumberCompact, InputNumberControl, InputNumberDecrement, InputNumberIncrement, InputNumberRoot.
+- Exported symbols (7): InputNumber, InputNumberClear, InputNumberCompact, InputNumberControl, InputNumberDecrement, InputNumberIncrement, InputNumberRoot.
 
 ### InputNumber
 
@@ -91,6 +91,23 @@ Slots for the InputNumber component.
 - `clear`: Custom content for the clear slot. (type `((props: InputNumberCompactSlotProps) => any) | undefined`)
 - `decrement`: Custom content for the decrement slot. (type `((props: InputNumberCompactSlotProps) => any) | undefined`)
 - `increment`: Custom content for the increment slot. (type `((props: InputNumberCompactSlotProps) => any) | undefined`)
+
+### InputNumberClear
+
+#### Props
+
+Properties for the InputNumberClear component.
+
+- `type`: The type of the button element. Can be one of 'button', 'submit', or 'reset'. (type `ButtonType`; default `'button'`; optional)
+- `disabled`: Whether the component is disabled. (type `boolean`; optional)
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
+
+#### Emits
+
+Events for the InputNumberClear component.
+
+- `clear`: Emitted when the clear button is clicked. (type `[event: PointerEvent]`; parameters `event: PointerEvent`)
 
 ### InputNumberCompact
 
