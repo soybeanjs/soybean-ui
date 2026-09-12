@@ -100,6 +100,51 @@ export type TreeRootEmits<M extends boolean | undefined> = {
 };
 
 /**
+ * Marker object spliced into the tree motion render list at the position where
+ * the animated subtree block should mount. UI layers replace it with the
+ * motion block; it never renders as a regular tree item.
+ */
+export interface TreeMotionSentinel {
+  readonly __soybeanTreeMotionSentinel__: true;
+}
+
+/**
+ * Direction of the current tree expand/collapse motion.
+ */
+export type TreeMotionType = 'show' | 'hide';
+
+/**
+ * A single entry of the tree motion render list: either a regular flattened
+ * item or the motion sentinel that UI layers replace with the animated
+ * subtree block.
+ */
+export type TreeMotionListItem<T extends TreeItemData> = FlattenedItem<T> | TreeMotionSentinel;
+
+/**
+ * State of the running expand/collapse motion of a tree. `null` when idle.
+ */
+export interface TreeMotionState<T extends TreeItemData = TreeItemData> {
+  /**
+   * Whether the motion expands (`show`) or collapses (`hide`) the subtree.
+   */
+  type: TreeMotionType;
+  /**
+   * Render list: the flattened items of the transition snapshot with the
+   * motion sentinel spliced in at the animated subtree position.
+   */
+  items: Array<TreeMotionListItem<T>>;
+  /**
+   * Descendant items rendered inside the animated subtree block.
+   */
+  blockItems: FlattenedItem<T>[];
+  /**
+   * Ends the current motion and restores the plain flattened render list.
+   * Call it from the motion block transition finish hooks.
+   */
+  end: () => void;
+}
+
+/**
  * Type information for FlattenedItem.
  */
 export type FlattenedItem<T extends TreeItemData> = {

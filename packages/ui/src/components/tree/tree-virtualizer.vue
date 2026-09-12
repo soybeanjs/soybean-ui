@@ -26,7 +26,7 @@ const listeners = useForwardListeners(emit);
 
 <template>
   <TreeVirtualizerRoot
-    v-slot="{ virtualItems, totalSize, flattenItems, modelValue, expanded }"
+    v-slot="{ virtualItems, totalSize, flattenItems, modelValue, expanded, motion }"
     v-bind="forwardedProps"
     :dynamic="props.animated || props.dynamic"
     v-on="listeners"
@@ -54,6 +54,7 @@ const listeners = useForwardListeners(emit);
       :total-size="totalSize"
       :model-value="modelValue"
       :expanded="expanded"
+      :motion="motion"
     >
       <template #item="{ item, virtualItem }">
         <slot name="item" :item="item" :virtual-item="virtualItem" :model-value="modelValue" :expanded="expanded" />
