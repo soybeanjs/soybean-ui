@@ -75,7 +75,7 @@ A component for displaying hierarchical tree data with selection and expand/coll
 - With `toggleBehavior: 'single'`, expansion is accordion-like — only one branch stays expanded (`findParentPath` rebuilds the path).
 - `loop` defaults to `true` (keyboard focus wraps around); both `STree` and `STreeVirtualizer` mirror this default in their wrappers, so no extra work is needed when using the headless `TreeRoot` directly.
 - Virtualization requires a `height`; the `STreeVirtualizer` `item` slot additionally provides `virtualItem` (for `:data` passthrough and absolute-position styling).
-- `STreeVirtualizer` has an opt-in `animated` prop that renders visible items in normal document flow (dynamic mode) so item positions stay correct across expand/collapse without absolute offsets. It is off by default since dynamic measuring is heavier for very large datasets.
+- Expand and collapse animate with a height-collapsing transition on the moved subtree. `STreeVirtualizer` has an opt-in `animated` prop that renders visible items in normal document flow (dynamic mode) so item positions stay correct across expand/collapse without absolute offsets — it is off by default since dynamic measuring is heavier for very large datasets, and while a motion runs the transition list renders fully in document flow before windowing resumes.
 - Node text is fully provided by slots — the component has no hardcoded copy, so no localization is needed.
 
 ## FAQ
