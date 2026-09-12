@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, useSlots, mergeProps } from 'vue';
-import { useForwardElement, useOmitProps, usePresence } from '../../composables';
+import { collapseMotion } from '../../shared';
+import { useOmitProps } from '../../composables';
 import { useFormCompactContext } from './context';
 import FormControl from './form-control.vue';
 import FormDescription from './form-description.vue';
@@ -32,11 +33,9 @@ const context = useFormCompactContext('FormFieldCompact');
 
 const orientation = computed(() => props.orientation ?? context.orientation.value ?? 'vertical');
 
-const [errorElement, setErrorElement] = useForwardElement<HTMLElement>();
-
-// Keep the error element mounted while its exit animation plays (data-state="closed");
-// without an enter/exit animation configured by the style layer this unmounts instantly.
-const isPresent = usePresence(errorElement, () => Boolean(props.error));
+// Height-collapsing enter/leave for the error message; disabled in test
+// environments where CSS transitions cannot run.
+const errorMotion = collapseMotion();
 
 const fieldProps = computed(() => {
   const p = props.isFieldArray ? context.fieldArrayProps.value : context.fieldProps.value;
@@ -64,9 +63,9 @@ const errorProps = computed(() => mergeProps({ ...context.errorProps.value }, { 
     </FormLabel>
     <FormControl v-bind="controlProps">
       <slot v-bind="slotProps" />
-      <FormError v-if="isPresent" :ref="setErrorElement" v-bind="errorProps" :data-state="error ? 'open' : 'closed'">
-        {{ error }}
-      </FormError>
+      <Transition v-bind="errorMotion">
+        <FormError v-if="error" v-bind="errorProps">{{ error }}</FormError>
+      </Transition>
     </FormControl>
     <FormDescription v-if="slots.description || description" v-bind="descriptionProps">
       <slot name="description">{{ description }}</slot>
