@@ -114,7 +114,7 @@ const HISTORY_PATTERNS = [/(^|\/)CHANGELOG\.md$/i, /(^|\/)migration(\/|$)/i, /(^
 const MAX_FILE_BYTES = 4 * 1024 * 1024;
 
 /**
- * The 144 components exported by @vbean/ui.
+ * The 141 components exported by @vbean/ui.
  * Extracted from packages/ui/dist/**\/*.d.ts (`… as SButton`), cross-checked
  * against packages/ui/src/components/<name>/index.ts.
  *
@@ -125,7 +125,6 @@ const S_EXPORTS = [
   'SAffix',
   'SAlert',
   'SAnchor',
-  'SArrow',
   'SAspectRatio',
   'SAutocomplete',
   'SAvatar',
@@ -199,7 +198,6 @@ const S_EXPORTS = [
   'SMenuCheckboxOptions',
   'SMenuOptions',
   'SMenuRadioOptions',
-  'SNavigationMenu',
   'SNavMenu',
   'SPageTabs',
   'SPagination',
@@ -209,7 +207,6 @@ const S_EXPORTS = [
   'SPopconfirmCancel',
   'SPopconfirmConfirm',
   'SPopover',
-  'SPopper',
   'SProgress',
   'SProgressCircle',
   'SProgressProvider',

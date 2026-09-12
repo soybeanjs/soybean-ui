@@ -51,7 +51,6 @@ export * from './components/link';
 export * from './components/menu';
 export * from './components/menubar';
 export * from './components/nav-menu';
-export * from './components/navigation-menu';
 export * from './components/page-tabs';
 export * from './components/pagination';
 export * from './components/password';

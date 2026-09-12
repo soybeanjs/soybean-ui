@@ -10,7 +10,7 @@ head:
 
 由按钮触发向用户展示的菜单，例如一组操作或功能入口。`SDropdownMenu` 是基于 headless menu 基础组件（`MenuOptions`/`MenuItem`/…）构建的数据驱动菜单，经共享 popover portal 渲染。家族还提供复选（`SDropdownMenuCheckbox`，多选）、单选（`SDropdownMenuRadio`，单选）与自定义（`SDropdownMenuWrapper`）变体。
 
-下拉菜单适合紧凑的操作菜单。导航菜单请用 `navigation-menu`；丰富的悬停预览请用 `hover-card`。
+下拉菜单适合紧凑的操作菜单。导航菜单请用 `nav-menu`；丰富的悬停预览请用 `hover-card`。
 
 ## 用法
 

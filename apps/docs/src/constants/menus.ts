@@ -10,7 +10,6 @@ export const newlyComponentKeys = [
   'colorSwatch',
   'colorSwatchPicker',
   'colorPicker',
-  'popper',
   'pageTabs',
   'calendar',
   'dateField',
@@ -130,12 +129,12 @@ export const menuData: MenuData[] = [
   {
     value: 'overlay',
     i18n: 'sidebar.overlay',
-    items: ['dialog', 'drawer', 'hoverCard', 'popconfirm', 'popover', 'popper', 'sheet', 'tooltip']
+    items: ['dialog', 'drawer', 'hoverCard', 'popconfirm', 'popover', 'sheet', 'tooltip']
   },
   {
     value: 'utilities',
     i18n: 'sidebar.utilities',
-    items: ['arrow', 'visuallyHidden']
+    items: ['visuallyHidden']
   },
   {
     // headless product line — placeholder until headless docs land (D8)
