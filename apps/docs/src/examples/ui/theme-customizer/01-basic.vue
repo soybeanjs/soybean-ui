@@ -6,7 +6,7 @@ const isMobile = useMediaQuery('(max-width: 768px)');
 </script>
 
 <template>
-  <SPopover :modal="false" :placement="isMobile ? 'left' : 'bottom-end'">
+  <SPopover :modal="false" :placement="isMobile ? 'left' : 'bottom-start'">
     <template #trigger>
       <SButtonIcon icon="lucide:settings-2" size="lg" />
     </template>
