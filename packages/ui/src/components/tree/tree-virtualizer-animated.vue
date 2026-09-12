@@ -43,6 +43,23 @@ const bottomSpacer = computed(() => {
 function itemKey(index: number) {
   return props.flattenItems[index]?.value ?? index;
 }
+
+// Motion entries render through the same consumer item slot as virtualized
+// items, and that slot expects a virtual item shape (VirtualizerItem reads
+// `data.index`). Synthesize one for the transition list: during dynamic flow
+// it carries no positioning, only `data-index`/`aria-posinset`. Items from the
+// collapsed-side snapshot (hide motion) may not exist in the current flat
+// list, so their index falls back to -1 for the brief animation window.
+function motionVirtualItem(item: FlattenedItem<T>): VirtualItem {
+  return {
+    index: props.flattenItems.findIndex(flattenItem => flattenItem.value === item.value),
+    key: item.value,
+    start: 0,
+    end: 0,
+    size: 0,
+    lane: 0
+  };
+}
 </script>
 
 <template>
@@ -59,10 +76,23 @@ function itemKey(index: number) {
           @end="motion.end()"
         >
           <template #item="{ item }">
-            <slot name="item" :item="item" :model-value="modelValue" :expanded="expanded" />
+            <slot
+              name="item"
+              :item="item"
+              :virtual-item="motionVirtualItem(item)"
+              :model-value="modelValue"
+              :expanded="expanded"
+            />
           </template>
         </STreeMotionBlock>
-        <slot v-else name="item" :item="listItem" :model-value="modelValue" :expanded="expanded" />
+        <slot
+          v-else
+          name="item"
+          :item="listItem"
+          :virtual-item="motionVirtualItem(listItem)"
+          :model-value="modelValue"
+          :expanded="expanded"
+        />
       </template>
     </template>
     <template v-else>
