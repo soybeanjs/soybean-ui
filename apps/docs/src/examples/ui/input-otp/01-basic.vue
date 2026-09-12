@@ -11,13 +11,7 @@ const onComplete = () => {
 
 <template>
   <div class="w-70 lt-md:w-auto">
-    <SInputOtp
-      v-model="otp"
-      :maxlength="6"
-      placeholder="000000"
-      aria-label="Verification code"
-      @complete="onComplete"
-    />
+    <SInputOtp v-model="otp" :maxlength="6" aria-label="Verification code" @complete="onComplete" />
   </div>
   <p class="text-sm text-muted-foreground">Value: {{ otp || '-' }}</p>
 </template>
