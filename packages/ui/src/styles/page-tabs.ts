@@ -11,9 +11,7 @@ export const pageTabsVariants = scv({
       `data-[selected=false]:hover:bg-accent data-[selected=false]:focus:bg-accent`,
       `dark:data-[selected=true]:bg-accent dark:data-[selected=true]:text-foreground`,
       `data-[draggable=true]:cursor-grab`,
-      `data-[dragging=true]:opacity-50`,
-      `data-[dragging=true]:[.dnd-kit-preview_&]:opacity-100`,
-      `[.dnd-kit-preview_&]:shadow-lg`
+      `data-[dragging=true]:z-3 data-[dragging=true]:cursor-grabbing data-[dragging=true]:shadow-lg`
     ],
     itemText: 'grow truncate',
     close: [

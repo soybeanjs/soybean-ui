@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useSortable } from '@dnd-kit/vue/sortable';
+import { computed, mergeProps } from 'vue';
 import { toContext } from '../../shared';
-import { useForwardElement, useRovingFocusGroupItem } from '../../composables';
+import { useRovingFocusGroupItem, useSortableListItem } from '../../composables';
 import type { VNodeRef } from '../../types';
 import { usePageTabsUi, usePageTabsRootContext, providePageTabsItemContext } from './context';
 import type { PageTabsItemProps, PageTabsItemEmits } from './types';
@@ -24,33 +23,42 @@ const { middleClickClose, modelValue } = usePageTabsRootContext('PageTabsItem');
 const isSelected = computed(() => props.value === modelValue.value);
 const closable = computed(() => !props.pinned);
 
-// Drag wiring — enabled only when the compact owns a DragDropProvider.
-// A non-draggable tab is fully disabled (boolean form): it cannot be dragged
-// AND it is excluded from collision candidates, so no other tab can be
-// dropped onto it — the tab is locked in place. Pinned tabs stay sortable
-// and reorder within the pinned zone only (cross-zone drops are blocked by
-// the compact layer through the dragover hook).
-const [itemElement, setSortableElement] = useForwardElement<HTMLElement>();
-
 // Roving focus item as a hook: registers the tab with the root group and exposes the
 // collection item + roving-focus data attributes (alongside `data-soybean-page-tabs-item`).
-const { setItemElement: setRovingItemElement, itemProps } = useRovingFocusGroupItem({
+const { setItemElement: setRovingItemElement, itemProps: rovingItemProps } = useRovingFocusGroupItem({
   active: computed(() => isSelected.value)
+});
+
+// Drag wiring — the item registers with the `useSortableList` engine owned by the
+// compact. A non-draggable tab is `disabled`: it cannot be dragged AND it acts
+// as a barrier, so no other tab can be inserted before, onto, or after it.
+// Pinned tabs reorder within the pinned zone only — the engine keeps the pinned
+// group aggregated by bounding the insertion window at the zone change itself.
+const {
+  setItemElement: setSortableItemElement,
+  itemProps: sortableItemProps,
+  dragging,
+  consumeDragClick
+} = useSortableListItem({
+  id: computed(() => props.value),
+  index: computed(() => props.index ?? 0),
+  group: computed(() => (props.pinned ? 0 : 1)),
+  disabled: computed(() => !props.draggable)
 });
 
 function setItemRef(nodeRef: VNodeRef) {
   setRovingItemElement(nodeRef);
-  setSortableElement(nodeRef);
+  setSortableItemElement(nodeRef);
 }
 
-const { isDragging, isDropTarget, isDragSource } = useSortable({
-  id: computed(() => props.value),
-  index: computed(() => props.index ?? 0),
-  disabled: computed(() => !props.draggable),
-  element: itemElement
-});
+// Roving focus owns the item's keyboard/collection bindings, the sortable list
+// owns the pointer binding — merge them into a single spread.
+const itemProps = computed(() => mergeProps(rovingItemProps.value, sortableItemProps.value));
 
 const onClick = () => {
+  // A drag concluded on this tab: the pointerup already placed it, so the
+  // trailing click must not also select it.
+  if (consumeDragClick()) return;
   if (isSelected.value) return;
 
   modelValue.value = props.value;
@@ -103,9 +111,7 @@ providePageTabsItemContext({
     :data-selected="isSelected"
     :data-pinned="pinned"
     :data-draggable="draggable"
-    :data-dragging="isDragging"
-    :data-drop-target="isDropTarget || undefined"
-    :data-drag-source="isDragSource || undefined"
+    :data-dragging="dragging"
     @click="onClick"
     @mousedown="onMouseDown"
     @keydown.enter.backspace="onKeydown"

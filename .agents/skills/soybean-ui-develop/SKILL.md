@@ -30,7 +30,7 @@ For detailed rules, see [layers.md](layers.md) (headless admission, implementati
    - For migration, preserve behavior, state, accessibility, slots, and public API before restructuring.
 3. **Reuse existing building blocks first.**
    - Prefer `packages/headless/src/composables/`, `packages/headless/src/shared/`, and `packages/headless/src/types/`.
-   - Use `@vueuse/core` composables as-is; do not reimplement them in-repo. Date math goes through `packages/headless/src/date/`; drag/drop, positioning, virtualization, carousel, animation, and schema-standard integrations use the existing runtime deps (`@dnd-kit/*`, `@floating-ui/dom`, `@tanstack/vue-virtual`, `embla-carousel`, `@formkit/auto-animate`, `@standard-schema/spec`).
+   - Use `@vueuse/core` composables as-is; do not reimplement them in-repo. Date math goes through `packages/headless/src/date/`; positioning, virtualization, carousel, and schema-standard integrations use the existing runtime deps (`@floating-ui/dom`, `@tanstack/vue-virtual`, `embla-carousel`, `@standard-schema/spec`); drag/drop and motion are self-maintained in-repo (`composables/use-sortable-list.ts`, `shared/collapse-motion.ts`).
    - Only add a new composable, helper, type, or third-party dependency when `shared`/`composables`/`types`, existing runtime deps, and `@vueuse/core` are all insufficient — and state that reason in the result.
 
 Example: "migrate a compound widget into SoybeanUI" usually means migration scenario + multi-slot or compact pattern + full delivery surface.
