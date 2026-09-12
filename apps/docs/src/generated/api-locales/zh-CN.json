@@ -14247,9 +14247,9 @@
       "packages_ui_src_components_tag_types": {
         "tagemits": {
           "callables": {
-            "update_open": ""
+            "update_open": "在打开状态发生变化时触发。"
           },
-          "emits": ""
+          "emits": "Tag 组件的事件。"
         },
         "tagprops": {
           "members": {
@@ -14257,7 +14257,7 @@
             "closable": "该组件是否可以闭合。",
             "color": "组件的主题颜色。",
             "content": "内容。",
-            "open": "",
+            "open": "该组件是否为开源。若提供，则受控。",
             "shape": "组件的结构。",
             "size": "组件的视觉尺寸。",
             "variant": "该组件的视觉变体。"
@@ -14754,6 +14754,14 @@
         }
       },
       "packages_ui_src_components_tree_types": {
+        "treeslots": {
+          "callables": {
+            "bottom": "树项之后渲染的内容。",
+            "item": "单个树节点的内容。",
+            "top": "树节点渲染前的内容。"
+          },
+          "slots": "Tree 组件的插槽。"
+        },
         "treevirtualizeremits": {
           "callables": {
             "update_expanded": "在展开状态发生变化时触发。",
@@ -14764,7 +14772,7 @@
         "treevirtualizerprops": {
           "members": {
             "allowparentselect": "当值为 `true` 时，可选中父级。",
-            "animated": "",
+            "animated": "当值为 `true` 时，将可见项目渲染在正常文档流中（动态模式），因此\n在展开/折叠操作中，项目位置将保持正确，无需绝对偏移量。",
             "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖",
             "aschild": "将默认渲染元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
             "bubbleselect": "当值为 `true` 时，选择子节点将更新父节点的状态。",
@@ -14787,7 +14795,8 @@
             "togglebehavior": "用于确定一次可以切换“单个”还是“多个”项目。"
           },
           "props": "TreeVirtualizer 组件的属性。"
-        }
+        },
+        "type": ""
       },
       "packages_ui_src_components_virtualizer_types": {
         "virtualizerprops": {

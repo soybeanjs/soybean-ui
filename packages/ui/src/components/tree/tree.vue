@@ -4,6 +4,7 @@ import { isTreeMotionItem, TreeRoot } from '@soybeanjs/headless/tree';
 import type { TreeRootProps, TreeItemData, TreeRootEmits } from '@soybeanjs/headless/tree';
 import type { MaybeArray } from '@soybeanjs/headless/types';
 import STreeMotionBlock from './tree-motion-block.vue';
+import type { TreeSlots } from './types';
 
 defineOptions({
   name: 'STree'
@@ -16,6 +17,8 @@ const props = withDefaults(defineProps<TreeRootProps<T, U, M>>(), {
 const emit = defineEmits<TreeRootEmits<TreeRootProps<T, U, M>['multiple']>>();
 
 const listeners = useForwardListeners(emit);
+
+defineSlots<TreeSlots<T>>();
 </script>
 
 <template>
@@ -35,7 +38,13 @@ const listeners = useForwardListeners(emit);
           <slot name="item" :item="item" :model-value="modelValue" :expanded="expanded" />
         </template>
       </STreeMotionBlock>
-      <slot v-else name="item" :item="listItem" :model-value="modelValue" :expanded="expanded" />
+      <slot
+        v-else-if="!isTreeMotionItem(listItem)"
+        name="item"
+        :item="listItem"
+        :model-value="modelValue"
+        :expanded="expanded"
+      />
     </template>
     <slot name="bottom" />
   </TreeRoot>

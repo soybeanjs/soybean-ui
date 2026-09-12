@@ -14754,6 +14754,14 @@
         }
       },
       "packages_ui_src_components_tree_types": {
+        "treeslots": {
+          "callables": {
+            "bottom": "Content rendered after the tree items.",
+            "item": "Content for a single tree item.",
+            "top": "Content rendered before the tree items."
+          },
+          "slots": "Slots for the Tree component."
+        },
         "treevirtualizeremits": {
           "callables": {
             "update_expanded": "Emitted when the expanded state changes.",
@@ -14787,7 +14795,8 @@
             "togglebehavior": "Determines whether a \"single\" or \"multiple\" items can be toggled at a time."
           },
           "props": "Properties for the TreeVirtualizer component."
-        }
+        },
+        "type": ""
       },
       "packages_ui_src_components_virtualizer_types": {
         "virtualizerprops": {
