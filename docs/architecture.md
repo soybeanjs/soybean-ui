@@ -43,7 +43,6 @@ applications.
 | Admin shell domain  | headless + ui (planned) | Shell modes, navigation model, and tabs state in a headless `shell` domain; `SLayoutShell` / `SShellMenu` / `SPageHeader` / `SLogo` in ui; see [ui-shell-roadmap.md](ui-shell-roadmap.md) |
 | Source distribution | `sbean`                 | CLI, registry, schemas, templates, and MCP tools for copy-source delivery                                                                                                                 |
 | Repo service CLI    | `@soybeanjs/scripts`    | PRIVATE; `sui` CLI for metadata, API, changelog, locale, and skill generators                                                                                                             |
-| Shared utilities    | `@soybeanjs/shared`     | PRIVATE; shared utility helpers, not published                                                                                                                                            |
 | Agent distribution  | `@soybeanjs/ui-skills`  | Generated, publishable SoybeanUI and Headless agent skills                                                                                                                                |
 | Documentation       | `@soybeanjs/ui-docs`    | ubean SSG documentation, API reference, changelog, and interactive demos                                                                                                                  |
 | Integration fixture | `@soybeanjs/ui-nuxt`    | Self-contained minimal Nuxt/UnoCSS integration fixture                                                                                                                                    |
@@ -87,9 +86,8 @@ soybean-ui/
 │   └── components.md        # Detailed roadmap source material
 ├── packages/
 │   ├── headless/            # @soybeanjs/headless
-│   ├── sbean/               # sbean CLI and registry system
+│   ├── cli/                 # sbean CLI and registry system
 │   ├── scripts/             # @soybeanjs/scripts (private); sui CLI for metadata, API, changelog, locale, and skill generators
-│   ├── shared/              # @soybeanjs/shared (private); shared utilities, not published
 │   ├── theme/               # @soybeanjs/theme
 │   ├── ui/                  # @soybeanjs/ui
 │   └── unocss/              # @soybeanjs/ui-uno
@@ -300,7 +298,7 @@ depends on component-delivery work or an explicit pre-release check.
 
 Package manifests split TypeScript across two catalogs: `catalog:ts6` pins
 TypeScript `^6.0.3` for most packages, while `catalog:` requests `^7.0.2`
-(theme, shared, sbean, unocss). The lockfile resolves `6.0.3` for the ts6 group
+(theme, sbean, unocss). The lockfile resolves `6.0.3` for the ts6 group
 and 7.x for the rest.
 
 ### 8.2 Root commands

@@ -25,7 +25,7 @@ If a nearer scoped `AGENTS.md` exists for your target path, use it only to narro
 
 **Generated:** 2026-09-06
 **Version:** 0.31.0
-**Monorepo:** pnpm workspaces (private root + 10 child workspaces: 7 packages + 2 apps + `skills/`; 5 publishable packages, 2 private packages — `@soybeanjs/scripts`, `@soybeanjs/shared` — and 2 private apps)
+**Monorepo:** pnpm workspaces (private root + 9 child workspaces: 6 packages + 2 apps + `skills/`; 5 publishable packages, 1 private package — `@soybeanjs/scripts` — and 2 private apps)
 **Stack:** Vue 3 + TypeScript (strict) + UnoCSS + @soybeanjs/cva
 
 ## ARCHITECTURE
@@ -57,7 +57,6 @@ Other publishable modules:
 Private packages and applications:
 
 - **@soybeanjs/scripts** (`packages/scripts/`): private repo-service CLI `sui` (generators, stub, template sync). NOT published; do not merge with the consumer-facing `sbean` CLI.
-- **@soybeanjs/shared** (`packages/shared/`): private shared utils (e.g. `vite.ts` build helpers). NOT published.
 - **@soybeanjs/ui-docs** (`apps/docs/`): ubean-based documentation site (SSG, Markdown, i18n). Owns the demo examples under `apps/docs/src/examples/`.
 - **@soybeanjs/ui-nuxt** (`apps/nuxt/`): Nuxt integration fixture.
 

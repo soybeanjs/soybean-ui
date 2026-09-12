@@ -464,33 +464,12 @@ importers:
         specifier: 5.0.0
         version: 5.0.0(@types/node@26.5.1)(@vitest/browser-playwright@5.0.0)(@vitest/browser-preview@4.1.11)(@vitest/ui@5.0.0)(@voidzero-dev/vite-plus-core@0.3.1(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.13)(typescript-native-bridge@6.0.3-bridge.16.tsgo.7.0.2)(yaml@2.9.0))(happy-dom@20.14.3)
 
-  packages/shared:
-    devDependencies:
-      '@types/node':
-        specifier: ^26.5.0
-        version: 26.5.1
-      tsx:
-        specifier: ^4.23.13
-        version: 4.23.13
-      typescript:
-        specifier: npm:typescript-native-bridge@latest
-        version: typescript-native-bridge@6.0.3-bridge.16.tsgo.7.0.2
-      vite-plus:
-        specifier: 'catalog:'
-        version: 0.3.1(@types/node@26.5.1)(@vitest/ui@5.0.0)(esbuild@0.28.2)(happy-dom@20.14.3)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.13)(typescript-native-bridge@6.0.3-bridge.16.tsgo.7.0.2)(yaml@2.9.0)
-      vitest:
-        specifier: 5.0.0
-        version: 5.0.0(@types/node@26.5.1)(@vitest/browser-playwright@5.0.0)(@vitest/browser-preview@4.1.11)(@vitest/ui@5.0.0)(@voidzero-dev/vite-plus-core@0.3.1(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.13)(typescript-native-bridge@6.0.3-bridge.16.tsgo.7.0.2)(yaml@2.9.0))(happy-dom@20.14.3)
-
   packages/theme:
     dependencies:
       '@soybeanjs/colord':
         specifier: ^0.7.1
         version: 0.7.1
     devDependencies:
-      '@soybeanjs/shared':
-        specifier: workspace:^
-        version: link:../shared
       happy-dom:
         specifier: ^20.14.3
         version: 20.14.3
@@ -601,9 +580,6 @@ importers:
         specifier: ^66.10.2
         version: 66.10.2(@devframes/hub@0.9.18(crossws@0.4.12(srvx@1.0.4))(devframe@0.9.18(cac@7.0.0)(srvx@1.0.4)))(@unocss/webpack@66.10.2(@voidzero-dev/vite-plus-core@0.3.1(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.13)(typescript-native-bridge@6.0.3-bridge.16.tsgo.7.0.2)(yaml@2.9.0))(esbuild@0.28.2)(rolldown@1.2.8)(rollup@4.63.1)(webpack@5.110.3(cssnano@8.0.10(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)))(@voidzero-dev/vite-plus-core@0.3.1(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.13)(typescript-native-bridge@6.0.3-bridge.16.tsgo.7.0.2)(yaml@2.9.0))(cac@7.0.0)(crossws@0.4.12(srvx@1.0.4))(rolldown@1.2.8)(rollup@4.63.1)(srvx@1.0.4)
     devDependencies:
-      '@soybeanjs/shared':
-        specifier: workspace:^
-        version: link:../shared
       typescript:
         specifier: npm:typescript-native-bridge@latest
         version: typescript-native-bridge@6.0.3-bridge.16.tsgo.7.0.2
