@@ -61,12 +61,6 @@ Structured API summary generated from build-time component metadata.
 
 Properties for the Drawer component.
 
-- `side`: Side placement of the component. (type `Side`; optional)
-- `showFullscreen`: Whether show the fullscreen toggle button in the header of the dialog. (type `boolean`; default `false`; optional)
-- `class`: the popup class of the dialog (type `string | false | Record<string, any> | ClassValue[] | null`; optional)
-- `size`: Visual size of the component. (type `ThemeSize`; optional)
-- `ui`: Per-slot class overrides for the component. (type `Partial<DialogUi>`; optional)
-- `title`: The title of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `title` slot is not provided. (type `string`; optional)
 - `description`: The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided. (type `string`; optional)
 - `open`: The controlled open state of the dialog. Can be bound with `v-model:open`. (type `boolean`; default `undefined`; optional)
 - `defaultOpen`: The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; default `false`; optional)
@@ -79,6 +73,7 @@ Properties for the Drawer component.
 - `portalProps`: Properties forwarded to the portal element. (type `DrawerPortalProps`; optional)
 - `fullscreen`: The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`. (type `boolean`; default `undefined`; optional)
 - `showClose`: Whether show the close button in the header of the dialog. (type `boolean`; default `true`; optional)
+- `showFullscreen`: Whether show the fullscreen toggle button in the header of the dialog. (type `boolean`; default `true`; optional)
 - `showCancel`: Whether to show the cancel button. When set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType="warning"`. When set to `true`, the cancel button will always be shown. (type `boolean | 'onlyWarning'`; default `'onlyWarning'`; optional)
 - `cancelText`: The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided. Defaults to the localized `dialog.cancel` message from `ConfigProvider`. (type `string`; optional)
 - `showConfirm`: Whether to show the confirm button when the dialog is an alert dialog. The default value is `true` when the dialog is an alert dialog. (type `boolean`; optional)

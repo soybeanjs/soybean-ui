@@ -365,16 +365,6 @@ import {
   MenuSub,
   MenuSubContent,
   MenuSubTrigger,
-  NavigationMenuCompact,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuRoot,
-  NavigationMenuSubList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
   NavMenuCompact,
   NavMenuContent,
   NavMenuItem,
@@ -1512,30 +1502,6 @@ export const NavMenu = {
   SubTrigger: typeof NavMenuSubTrigger;
   SubContent: typeof NavMenuSubContent;
   OptionCompact: typeof NavMenuOptionCompact;
-};
-
-export const NavigationMenu = {
-  Compact: NavigationMenuCompact,
-  Root: NavigationMenuRoot,
-  List: NavigationMenuList,
-  Item: NavigationMenuItem,
-  Trigger: NavigationMenuTrigger,
-  Content: NavigationMenuContent,
-  Link: NavigationMenuLink,
-  SubList: NavigationMenuSubList,
-  Viewport: NavigationMenuViewport,
-  Indicator: NavigationMenuIndicator
-} as {
-  Compact: typeof NavigationMenuCompact;
-  Root: typeof NavigationMenuRoot;
-  List: typeof NavigationMenuList;
-  Item: typeof NavigationMenuItem;
-  Trigger: typeof NavigationMenuTrigger;
-  Content: typeof NavigationMenuContent;
-  Link: typeof NavigationMenuLink;
-  SubList: typeof NavigationMenuSubList;
-  Viewport: typeof NavigationMenuViewport;
-  Indicator: typeof NavigationMenuIndicator;
 };
 
 export const PageTabs = {

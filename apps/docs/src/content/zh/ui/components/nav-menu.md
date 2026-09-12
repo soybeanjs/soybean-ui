@@ -1,14 +1,14 @@
 ---
 head:
   title: NavMenu
-  description: 'NavMenu 用于构建站点级横向或纵向导航,共享一个浮层表面。与 Radix 移植的 NavigationMenu 不同,它直接建模在 Popper 原语之上:整个 viewport 就是单个 PopperPositioner,其 reference 动态切换到激活触发器,所有悬停时序运行在单个共享 Popper 悬停状态机上,并通过 pendingValue 做值路由。'
+  description: 'NavMenu 用于构建站点级横向或纵向导航,共享一个浮层表面。它接替了已退役的 NavigationMenu 家族(见 NavMenu 迁移指南),直接建模在 Popper 原语之上:整个 viewport 就是单个 PopperPositioner,其 reference 动态切换到激活触发器,所有悬停时序运行在单个共享 Popper 悬停状态机上,并通过 pendingValue 做值路由。'
 ---
 
 # NavMenu
 
 ## 概览
 
-NavMenu 用于构建站点级横向或纵向导航,共享一个浮层表面。与 Radix 移植的 `NavigationMenu` 不同,它直接建模在 Popper 原语之上:整个 viewport 就是单个 `PopperPositioner`,其 reference 动态切换到激活触发器,所有悬停时序运行在单个共享 Popper 悬停状态机上,并通过 `pendingValue` 做值路由。
+NavMenu 用于构建站点级横向或纵向导航,共享一个浮层表面。它接替了已退役的 `NavigationMenu` 家族(见 [NavMenu 迁移指南](/components/navigation-menu)),直接建模在 Popper 原语之上:整个 viewport 就是单个 `PopperPositioner`,其 reference 动态切换到激活触发器,所有悬停时序运行在单个共享 Popper 悬停状态机上,并通过 `pendingValue` 做值路由。
 
 `SNavMenu` 是数据驱动组合:传 `items` 数组即可渲染 `nav > ul > li` 结构、触发器/内容对、指示器与浮动 viewport。样式通过 `scv()` recipe 注入。
 
@@ -62,9 +62,9 @@ NavMenu 用于构建站点级横向或纵向导航,共享一个浮层表面。�
 
 ## FAQ
 
-### NavMenu 与 NavigationMenu 有何不同?
+### NavMenu 与已退役的 NavigationMenu 家族有何不同?
 
-NavMenu 放弃了共享测量尺寸的 viewport 与每项 hover root,改用 Popper 原生的单 Root + positioner 模型:Floating UI 定位 viewport,grace 走廊与关闭来自 positioner。代价是用标准浮动弹层取代了旧的尺寸/移动方向动画。
+NavMenu 放弃了共享测量尺寸的 viewport 与每项 hover root,改用 Popper 原生的单 Root + positioner 模型:Floating UI 定位 viewport,grace 走廊与关闭来自 positioner。代价是用标准浮动弹层取代了旧的尺寸/移动方向动画。`NavigationMenu` 与 `SNavigationMenu` 已于 v0.50.0 移除——见[迁移指南](/components/navigation-menu)。
 
 ### 如何只保留点击触发?
 

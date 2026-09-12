@@ -19,7 +19,7 @@
 
 部分多插槽组件还会暴露 `Compact` 聚合层，例如 `AccordionCompact` 和 `TableCompact`。这些 headless 入口负责条目遍历以及默认内容 / 图标组合，而样式包装层只专注于类名和 props 转发。
 
-目前这类 Compact 约定式组合还覆盖了 card、date-field、dialog、editable、hover-card、layout、navigation-menu、pagination、popover、stepper 等稳定结构。
+目前这类 Compact 约定式组合还覆盖了 card、date-field、dialog、editable、hover-card、layout、nav-menu、pagination、popover、stepper 等稳定结构。
 
 ## 📦 安装
 

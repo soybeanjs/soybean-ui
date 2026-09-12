@@ -45,12 +45,12 @@ TreeNav is a data-driven horizontal navigation bar with a persistent selection s
 
 ### When to use which navigation component
 
-| Component         | State model                                   | Layout     | Use for                               |
-| :---------------- | :-------------------------------------------- | :--------- | :------------------------------------ |
-| `SMenubar`        | open menu (`modelValue` = which menu is open) | horizontal | application command menus (File/Edit) |
-| `SNavigationMenu` | none                                          | horizontal | Radix-style content panels            |
-| `STreeMenu`       | persistent selection                          | vertical   | sidebar navigation                    |
-| `STreeNav`        | persistent selection                          | horizontal | top navigation bars                   |
+| Component   | State model                                   | Layout     | Use for                               |
+| :---------- | :-------------------------------------------- | :--------- | :------------------------------------ |
+| `SMenubar`  | open menu (`modelValue` = which menu is open) | horizontal | application command menus (File/Edit) |
+| `SNavMenu`  | highlighted item (`modelValue`)               | horizontal | site-level nav with flyout panels     |
+| `STreeMenu` | persistent selection                          | vertical   | sidebar navigation                    |
+| `STreeNav`  | persistent selection                          | horizontal | top navigation bars                   |
 
 ### Runtime considerations
 

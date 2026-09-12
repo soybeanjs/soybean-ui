@@ -86,22 +86,22 @@
 
 ## 5. 桶 D — 平行家族
 
-| ID     | 组件                            | 证据                                                                                                                                 | 违反 | 处置                                                                                                                                                                                                                                                                                                                                                   |                 状态                  |
-| :----- | :------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------- | :--- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----------------------------------: |
-| HAD-D1 | `nav-menu` vs `navigation-menu` | 两者 Root props 同构（`modelValue`、`delayDuration`、`orientation`、hover/click 开关）。Radix / Base / Reka 只有一套 Navigation Menu | R6   | `NavMenu` 为唯一准人家族；`NavigationMenu` 全链路 `@deprecated`（类型 / 组件导出 / 文档迁移指南），**v0.50.0 W2 全链路移除**（aria / UI 导出、双语 docs、菜单 IA、catalog/api 生成数据；原计划 v1.0，借改名+引擎大版本窗口提前）。双语迁移指南保留一个版本周期指向 `nav-menu`。迁移指南：`apps/docs/src/docs/{en,zh}/ui/components/navigation-menu.md` | 📋（冻结已落地；移除排期 v0.50.0 W2） |
+| ID     | 组件                            | 证据                                                                                                                                 | 违反 | 处置                                                                                                                                                                                                                                                                                                                                                   |              状态               |
+| :----- | :------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------- | :--- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----------------------------: |
+| HAD-D1 | `nav-menu` vs `navigation-menu` | 两者 Root props 同构（`modelValue`、`delayDuration`、`orientation`、hover/click 开关）。Radix / Base / Reka 只有一套 Navigation Menu | R6   | `NavMenu` 为唯一准人家族；`NavigationMenu` 全链路 `@deprecated`（类型 / 组件导出 / 文档迁移指南），**v0.50.0 W2 全链路移除**（aria / UI 导出、双语 docs、菜单 IA、catalog/api 生成数据；原计划 v1.0，借改名+引擎大版本窗口提前）。双语迁移指南保留一个版本周期指向 `nav-menu`。迁移指南：`apps/docs/src/docs/{en,zh}/ui/components/navigation-menu.md` | ✅（2026-09-12 全链路移除完成） |
 
 ## 6. 桶 E — Compact 私有节点（Gate 2 单一 DOM 合同违规，2026-08-31 全量重扫发现）
 
 Compact 组合了**未导出**的内部节点：该节点承担家族解剖合同（`data-soybean-*`、槽位类、交互），却没有公开原语身份，导致 Compact 与手拼组合的 DOM 合同分叉。修复方式统一为**补导出**（`index.ts` + `packages/headless/src/index.ts` + `pnpm sui gen catalog headless`）。反向情形（导出超出 Compact 组合，如 `FormField`、`SelectPortal`、`ComboboxArrow/Virtualizer`、`DialogProvider/Portal`、`TooltipProvider`、`ProgressProvider/ProgressCircle`、各 menu 的 item 集合）是手拼解剖与基础设施导出，**合规**。
 
-| ID     | 家族              | Compact 组合的未导出节点                                       | 处置                                 | 状态 |
-| :----- | :---------------- | :------------------------------------------------------------- | :----------------------------------- | :--: |
-| HAD-E1 | `input-number`    | `InputNumberClear`                                             | 补导出（v0.50.0 W2）                 |  📋  |
-| HAD-E2 | `layout`          | `LayoutPlaceholder`                                            | 补导出（v0.50.0 W2）                 |  📋  |
-| HAD-E3 | `menubar`         | `MenubarMenus`（内部装配组件）                                 | 补导出（v0.50.0 W2）                 |  📋  |
-| HAD-E4 | `nav-menu`        | `NavMenuOptionCompact`                                         | 补导出（v0.50.0 W2）                 |  📋  |
-| HAD-E5 | `table`           | `TableCompactHead`、`TableCompactRow`、`TableVirtualSpacerRow` | 补导出（v0.50.0 W2）                 |  📋  |
-| HAD-E6 | `navigation-menu` | `NavigationMenuOptionCompact`                                  | 不修——家族 v0.50.0 W2 移除（HAD-D1） |  ✅  |
+| ID     | 家族              | Compact 组合的未导出节点                                       | 处置                                 |    状态     |
+| :----- | :---------------- | :------------------------------------------------------------- | :----------------------------------- | :---------: |
+| HAD-E1 | `input-number`    | `InputNumberClear`                                             | 补导出（v0.50.0 W2）                 | ✅ 已补导出 |
+| HAD-E2 | `layout`          | `LayoutPlaceholder`                                            | 补导出（v0.50.0 W2）                 | ✅ 已补导出 |
+| HAD-E3 | `menubar`         | `MenubarMenus`（内部装配组件）                                 | 补导出（v0.50.0 W2）                 | ✅ 已补导出 |
+| HAD-E4 | `nav-menu`        | `NavMenuOptionCompact`                                         | 补导出（v0.50.0 W2）                 | ✅ 已补导出 |
+| HAD-E5 | `table`           | `TableCompactHead`、`TableCompactRow`、`TableVirtualSpacerRow` | 补导出（v0.50.0 W2）                 | ✅ 已补导出 |
+| HAD-E6 | `navigation-menu` | `NavigationMenuOptionCompact`                                  | 不修——家族 v0.50.0 W2 移除（HAD-D1） |     ✅      |
 
 命名一致性提醒（非违规）：`anchor-compact.vue` 以 `AnchorCompactItem` 本地名导入 `anchor-item-compact.vue`（导出名 `AnchorItemCompact`）；`context-menu-compact.vue` / `dropdown-menu-compact.vue` 分别以 `SContextMenuWrapper` / `DropdownMenuWrapper` 本地名导入已导出的 `ContextMenuWrapperCompact` / `DropdownMenuWrapperCompact`。统一本地名与导出名即可。
 
@@ -133,16 +133,16 @@ Compact 组合了**未导出**的内部节点：该节点承担家族解剖合�
 
 ## 9. 子任务（范围拆解；原编号 CMP-6 保留以便追溯）
 
-| 子任务  | 范围                                                                                                 |               执行窗口               | 依赖              |
-| :------ | :--------------------------------------------------------------------------------------------------- | :----------------------------------: | :---------------- |
-| CMP-6.1 | 桶 A：Empty 下沉 UI-only、List 删除家族、Skeleton 下沉 UI-only（规范侧已完成）                       |          v0.50.0 W2（0.5d）          | —                 |
-| CMP-6.2 | 桶 B：Badge/Tag 下沉 UI-only；Alert 补 `role="alert"/"status"`；修正 headless 组件名 `STag` → `Tag`  |          v0.50.0 W2（0.5d）          | —                 |
-| CMP-6.3 | HAD-C1–C2 处置决策——**已决策：保留公开**，无代码改动；HAD-C3 bottom-sheet 退役见 CMP-6.7             |                已完成                | Soybean 决策 ✅   |
-| CMP-6.4 | HAD-D1 NavigationMenu 冻结/deprecated（已决策，2026-08-29 落地）；全链路移除见 CMP-6.8               |    0.5d 决策 ✅ + 移除随 CMP-6.8     | Soybean 决策      |
-| CMP-6.5 | HAD-C4 Card 家族退役：删 headless/card，SCard 改 UI-only 组合 Collapsible（breaking，不做兼容层）    |          v0.50.0 W2（1–2d）          | 0.x breaking 窗口 |
-| CMP-6.6 | 桶 E 补导出：input-number / layout / menubar / nav-menu / table（navigation-menu 不修，随 6.8 移除） |          v0.50.0 W2（0.5d）          | —                 |
-| CMP-6.7 | HAD-C3 Drawer 升级独立 aria 家族（snap/swipe/handle/nested）+ bottom-sheet 退役，行为合同对位迁移    | v0.50.0 W2（编排见 v0.50.0.md §4.1） | —                 |
-| CMP-6.8 | HAD-D1 NavigationMenu 全链路移除（aria/UI 导出、双语 docs、菜单 IA、catalog/api 生成数据）           |              v0.50.0 W2              | CMP-6.6 后        |
+| 子任务  | 范围                                                                                                 |               执行窗口               | 依赖               |
+| :------ | :--------------------------------------------------------------------------------------------------- | :----------------------------------: | :----------------- |
+| CMP-6.1 | 桶 A：Empty 下沉 UI-only、List 删除家族、Skeleton 下沉 UI-only（规范侧已完成）                       |          v0.50.0 W2（0.5d）          | —                  |
+| CMP-6.2 | 桶 B：Badge/Tag 下沉 UI-only；Alert 补 `role="alert"/"status"`；修正 headless 组件名 `STag` → `Tag`  |          v0.50.0 W2（0.5d）          | —                  |
+| CMP-6.3 | HAD-C1–C2 处置决策——**已决策：保留公开**，无代码改动；HAD-C3 bottom-sheet 退役见 CMP-6.7             |                已完成                | Soybean 决策 ✅    |
+| CMP-6.4 | HAD-D1 NavigationMenu 冻结/deprecated（已决策，2026-08-29 落地）；全链路移除见 CMP-6.8               |    0.5d 决策 ✅ + 移除随 CMP-6.8     | Soybean 决策       |
+| CMP-6.5 | HAD-C4 Card 家族退役：删 headless/card，SCard 改 UI-only 组合 Collapsible（breaking，不做兼容层）    |          v0.50.0 W2（1–2d）          | 0.x breaking 窗口  |
+| CMP-6.6 | 桶 E 补导出：input-number / layout / menubar / nav-menu / table（navigation-menu 不修，随 6.8 移除） |          v0.50.0 W2（0.5d）          | —                  |
+| CMP-6.7 | HAD-C3 Drawer 升级独立 aria 家族（snap/swipe/handle/nested）+ bottom-sheet 退役，行为合同对位迁移    | v0.50.0 W2（编排见 v0.50.0.md §4.1） | —                  |
+| CMP-6.8 | HAD-D1 NavigationMenu 全链路移除（aria/UI 导出、双语 docs、菜单 IA、catalog/api 生成数据）           |              v0.50.0 W2              | ✅ 2026-09-12 完成 |
 
 ## 10. 最近更新
 
@@ -150,3 +150,4 @@ Compact 组合了**未导出**的内部节点：该节点承担家族解剖合�
 - **2026-08-29**：HAD-D1 决策落地——`NavMenu` 为唯一准人家族；`NavigationMenu` 全链路 `@deprecated`（headless/ui 类型与组件导出、SFC、双语迁移指南），冻结至 v1.0 移除。
 - **2026-08-31**：**准入规则改版为两段式**（Gate 1 家族删除测试 / Gate 2 解剖导出跟随 Compact），`layers.md` R5 重写、R3 增补 Card 判例、UI 层责任边界补 UI-only 装配权、反模式新增单一 DOM 合同条款，`audit.md` D1-19 同步。**全量重审 94 个 headless 家族**：HAD-C1–C3 翻转为保留公开；card 改判 UI-only（HAD-C4，CMP-6.5）；新增桶 E 六族 Compact 私有节点违规（CMP-6.6）；已合规表新增 clipboard / segment / backtop / tree-nav / split-nav。
 - **2026-09-10**：全部处置排期 **v0.50.0 W2** 执行（总方案见 [v0.50.0.md](./v0.50.0.md)）。**Drawer 决策反转**：snap points / swipe 进度 / 拖拽手柄 / 嵌套缩放构成独立领域状态机，「Drawer = Dialog with a side」作废——Drawer 升独立 aria 家族（CMP-6.7），bottom-sheet 退役（HAD-C3）；桶 A（Empty/List/Skeleton）定为下沉 UI-only 与删除家族；桶 B（Badge/Tag 下沉 UI-only、Alert 补 live 语义）定案；NavigationMenu 移除从 v1.0 提前至 v0.50.0 W2（CMP-6.8）。
+- **2026-09-12**：**CMP-6.6（桶 E Gate 2 补导出）与 CMP-6.8（HAD-D1 NavigationMenu 全链路移除）执行完成**——HAD-E1–E5（`InputNumberClear` / `LayoutPlaceholder` / `MenubarMenus` / `NavMenuOptionCompact` / `TableCompactHead`·`TableCompactRow`·`TableVirtualSpacerRow`）已入家族 barrel 并重生成 catalog；`navigation-menu` 家族（headless 18 文件、UI 包装、`styles/navigation-menu.ts`、双语 docs、示例目录与 locales、菜单 `sbean` 注册表项、catalog/api/changelog/skills）全部移除，双语文档改为「已移除，迁移到 nav-menu」指南保留一个版本周期。**同日另有两项 UI 公开面收口**：`packages/ui/src/components/{arrow,popper}` 零样式转发与 `styles/popper.ts` 删除，`SArrow` / `SPopper` 不再公开导出，公开样式面由 popover / tooltip / hover-card 承担，零样式原语仍从 `@soybeanjs/headless/popper`、`@soybeanjs/headless/arrow` 取。桶 A/B（CMP-6.1/CMP-6.2）、CMP-6.5、CMP-6.7 仍未完成，W2 波次未关闭。

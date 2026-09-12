@@ -10,7 +10,7 @@ head:
 
 Displays a menu to the user—such as a set of actions or functions—triggered by a button. `SDropdownMenu` is a data-driven menu built on the headless menu primitives (`MenuOptions`/`MenuItem`/…), rendered through the shared popover portal. The family also ships checkbox (`SDropdownMenuCheckbox`, multi-select), radio (`SDropdownMenuRadio`, single-select) and custom (`SDropdownMenuWrapper`) variants.
 
-Use a dropdown for a compact action menu. For navigation menus use `navigation-menu`; for a rich hover preview use `hover-card`.
+Use a dropdown for a compact action menu. For navigation menus use `nav-menu`; for a rich hover preview use `hover-card`.
 
 ## Usage
 

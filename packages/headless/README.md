@@ -19,7 +19,7 @@ A collection of unstyled, accessible UI primitives for Vue 3.
 
 Some multi-slot components also expose `Compact` aggregators, such as `AccordionCompact` and `TableCompact`. These headless entry points own item iteration and default content/icon composition, while styled wrappers stay focused on classes and prop forwarding.
 
-Current Compact coverage also includes stable structures such as card, date-field, dialog, editable, hover-card, layout, navigation-menu, pagination, popover, and stepper.
+Current Compact coverage also includes stable structures such as card, date-field, dialog, editable, hover-card, layout, nav-menu, pagination, popover, and stepper.
 
 ## 📦 Installation
 

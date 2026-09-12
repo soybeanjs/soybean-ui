@@ -1,14 +1,14 @@
 ---
 head:
   title: NavMenu
-  description: 'NavMenu builds site-level horizontal or vertical navigation with a single shared floating surface. Unlike the Radix-derived NavigationMenu, it is modeled directly on the Popper primitives: the whole viewport is one PopperPositioner, its reference switches to the active trigger, and all hover timing runs on a single shared Popper hover machine with value routing through pendingValue.'
+  description: 'NavMenu builds site-level horizontal or vertical navigation with a single shared floating surface. It replaces the retired NavigationMenu family (see the NavMenu migration guide) and is modeled directly on the Popper primitives: the whole viewport is one PopperPositioner, its reference switches to the active trigger, and all hover timing runs on a single shared Popper hover machine with value routing through pendingValue.'
 ---
 
 # NavMenu
 
 ## Overview
 
-NavMenu builds site-level horizontal or vertical navigation with a single shared floating surface. Unlike the Radix-derived `NavigationMenu`, it is modeled directly on the Popper primitives: the whole viewport is one `PopperPositioner`, its reference switches to the active trigger, and all hover timing runs on a single shared Popper hover machine with value routing through `pendingValue`.
+NavMenu builds site-level horizontal or vertical navigation with a single shared floating surface. It replaces the retired `NavigationMenu` family (see the [NavMenu migration guide](/components/navigation-menu)) and is modeled directly on the Popper primitives: the whole viewport is one `PopperPositioner`, its reference switches to the active trigger, and all hover timing runs on a single shared Popper hover machine with value routing through `pendingValue`.
 
 `SNavMenu` is a data-driven composite: pass an `items` array and it renders the `nav > ul > li` structure, trigger/content pairs, indicator, and the floating viewport. Styles are injected through an `scv()` recipe.
 
@@ -62,9 +62,9 @@ NavMenu builds site-level horizontal or vertical navigation with a single shared
 
 ## FAQ
 
-### How is NavMenu different from NavigationMenu?
+### How does NavMenu differ from the retired NavigationMenu family?
 
-NavMenu drops the shared measured-size viewport and per-item hover roots in favor of Popper's native single-root + positioner model: Floating UI positions the viewport, and the grace corridor / dismissal come from the positioner. It trades the old size/motion-direction transitions for a standard floating popup.
+NavMenu drops the shared measured-size viewport and per-item hover roots in favor of Popper's native single-root + positioner model: Floating UI positions the viewport, and the grace corridor / dismissal come from the positioner. It trades the old size/motion-direction transitions for a standard floating popup. `NavigationMenu` and `SNavigationMenu` were removed in v0.50.0 — see the [migration guide](/components/navigation-menu).
 
 ### How do I keep only click triggers?
 

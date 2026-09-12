@@ -90,18 +90,6 @@
       "package": "ui"
     },
     {
-      "name": "ui/arrow",
-      "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
-      "files": [
-        {
-          "path": "packages/ui/src/components/arrow/index.ts",
-          "type": "registry:lib"
-        }
-      ],
-      "package": "ui"
-    },
-    {
       "name": "ui/aspect-ratio",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
@@ -1128,26 +1116,6 @@
         },
         {
           "path": "packages/ui/src/components/menubar/index.ts",
-          "type": "registry:lib"
-        }
-      ],
-      "package": "ui"
-    },
-    {
-      "name": "ui/navigation-menu",
-      "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
-      "files": [
-        {
-          "path": "packages/ui/src/components/navigation-menu/navigation-menu.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/navigation-menu/types.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "packages/ui/src/components/navigation-menu/index.ts",
           "type": "registry:lib"
         }
       ],
