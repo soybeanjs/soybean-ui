@@ -37,7 +37,7 @@ Prioritized structural findings and acceptance criteria live in
 
 Core Headless/Styled separation:
 
-- **@soybeanjs/headless** (`packages/headless/`): Logic, state, a11y. Zero styles. 96 component directories (94 publicly exported; `_common`/`_icon` are internal), 28 composables. Includes base primitives, date utilities, and Compact aggregations.
+- **@soybeanjs/headless** (`packages/headless/`): Logic, state, a11y. Zero styles. 96 component directories (94 publicly exported; `_common`/`_icon` are internal), 29 composables. Includes base primitives, date utilities, and Compact aggregations.
 - **@soybeanjs/ui** (`packages/ui/`): Styled wrappers. UnoCSS + `cv()` / `scv()`. 96 component directories / 144 S-prefixed exports.
 
 Compile-time dependency direction is **UI → Headless**: UI imports public
@@ -67,7 +67,7 @@ Private packages and applications:
 | New component (logic)    | `packages/headless/src/components/[name]/`                                | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts              |
 | New component (styled)   | `packages/ui/src/components/[name]/` + `packages/ui/src/styles/[name].ts` | style recipe → types.ts → `*.vue` → index.ts                                              |
 | Variant definitions      | `packages/ui/src/styles/[name].ts`                                        | `cv()` / `scv()` with `// @unocss-include` at top                                         |
-| Shared hooks             | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (28 total)                                               |
+| Shared hooks             | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (29 total)                                               |
 | Theme/sizing             | `packages/ui/src/theme/`                                                  | `ThemeColor` (8), `ThemeSize` (xs…2xl)                                                    |
 | Theme CSS generation     | `packages/theme/`                                                         | `createTheme(options)` (returns CSS string)                                               |
 | UnoCSS adapter           | `packages/unocss/`                                                        | `presetUiUnocss()` / `presetSbean()`                                                      |
@@ -122,7 +122,7 @@ pnpm sui sync-template-versions  # Sync the @soybeanjs/* version constant used b
 **@soybeanjs/headless** sub-path exports:
 
 - `.` → all components + types
-- `./composables` → 28 composables (useContext, useControllableState, useUiContext, …)
+- `./composables` → 29 composables (useContext, useControllableState, useCollapseHeight, useUiContext, …)
 - `./shared` → pure TS utilities
 - `./constants` → ARIA constants, component keys
 - `./date` → shared date utilities and calendar helpers
