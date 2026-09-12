@@ -3774,7 +3774,7 @@
             "description": "Whether the floating layer is open. Drives the positioning lifecycle (`isPositioned`\nresets when open flips); the positioning primitive itself has no open state, so\nconsumers wire their own open state here.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercontentprops.members.open",
             "default": "true",
-            "inheritedFrom": "open",
+            "inheritedFrom": "PopperPositioningPositionerProps.open",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -3785,7 +3785,7 @@
             "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercontentprops.members.placement",
             "default": "undefined",
-            "inheritedFrom": "placement",
+            "inheritedFrom": "PopperPositioningPositionerProps.placement",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -3810,7 +3810,7 @@
             "description": "The preferred side of the anchor to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercontentprops.members.side",
             "default": "'bottom'",
-            "inheritedFrom": "side",
+            "inheritedFrom": "PopperPositioningPositionerProps.side",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -3835,7 +3835,7 @@
             "description": "The distance in pixels from the anchor.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercontentprops.members.sideoffset",
             "default": "0",
-            "inheritedFrom": "sideOffset",
+            "inheritedFrom": "PopperPositioningPositionerProps.sideOffset",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -3846,7 +3846,7 @@
             "description": "Flip to the opposite side when colliding with boundary.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercontentprops.members.sideflip",
             "default": "true",
-            "inheritedFrom": "sideFlip",
+            "inheritedFrom": "PopperPositioningPositionerProps.sideFlip",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -3857,7 +3857,7 @@
             "description": "The preferred alignment against the anchor. May change when collisions occur.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercontentprops.members.align",
             "default": "'center'",
-            "inheritedFrom": "align",
+            "inheritedFrom": "PopperPositioningPositionerProps.align",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -3882,7 +3882,7 @@
             "description": "An offset in pixels from the `start` or `end` alignment options.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercontentprops.members.alignoffset",
             "default": "0",
-            "inheritedFrom": "alignOffset",
+            "inheritedFrom": "PopperPositioningPositionerProps.alignOffset",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -3893,7 +3893,7 @@
             "description": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercontentprops.members.alignflip",
             "default": "true",
-            "inheritedFrom": "alignFlip",
+            "inheritedFrom": "PopperPositioningPositionerProps.alignFlip",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -3904,7 +3904,7 @@
             "description": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercontentprops.members.avoidcollisions",
             "default": "true",
-            "inheritedFrom": "avoidCollisions",
+            "inheritedFrom": "PopperPositioningPositionerProps.avoidCollisions",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -3940,7 +3940,7 @@
             "description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercontentprops.members.collisionpadding",
             "default": "0",
-            "inheritedFrom": "collisionPadding",
+            "inheritedFrom": "PopperPositioningPositionerProps.collisionPadding",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -3965,7 +3965,7 @@
             "description": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercontentprops.members.arrowpadding",
             "default": "0",
-            "inheritedFrom": "arrowPadding",
+            "inheritedFrom": "PopperPositioningPositionerProps.arrowPadding",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -3976,7 +3976,7 @@
             "description": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercontentprops.members.hideshiftedarrow",
             "default": "false",
-            "inheritedFrom": "hideShiftedArrow",
+            "inheritedFrom": "PopperPositioningPositionerProps.hideShiftedArrow",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -3998,7 +3998,7 @@
             "description": "Whether to hide the content when the anchor becomes fully occluded.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercontentprops.members.hidewhendetached",
             "default": "false",
-            "inheritedFrom": "hideWhenDetached",
+            "inheritedFrom": "PopperPositioningPositionerProps.hideWhenDetached",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4031,7 +4031,7 @@
             "description": "Whether to disable the update position for the content when the layout shifted.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercontentprops.members.disableupdateonlayoutshift",
             "default": "false",
-            "inheritedFrom": "disableUpdateOnLayoutShift",
+            "inheritedFrom": "PopperPositioningPositionerProps.disableUpdateOnLayoutShift",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4042,7 +4042,7 @@
             "description": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercontentprops.members.prioritizeposition",
             "default": "false",
-            "inheritedFrom": "prioritizePosition",
+            "inheritedFrom": "PopperPositioningPositionerProps.prioritizePosition",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4053,7 +4053,7 @@
             "description": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
             "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascadercontentprops.members.reference",
             "default": null,
-            "inheritedFrom": "reference",
+            "inheritedFrom": "PopperPositioningPositionerProps.reference",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {

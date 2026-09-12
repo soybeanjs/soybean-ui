@@ -3946,7 +3946,7 @@
             "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.placement",
             "default": "undefined",
-            "inheritedFrom": "placement",
+            "inheritedFrom": "PopperPositionerProps.placement",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -3971,7 +3971,7 @@
             "description": "The preferred side of the trigger to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.side",
             "default": "'bottom'",
-            "inheritedFrom": "side",
+            "inheritedFrom": "PopperPositionerProps.side",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -3996,7 +3996,7 @@
             "description": "The distance in pixels from the trigger.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.sideoffset",
             "default": "0",
-            "inheritedFrom": "sideOffset",
+            "inheritedFrom": "PopperPositionerProps.sideOffset",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4007,7 +4007,7 @@
             "description": "Flip to the opposite side when colliding with boundary.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.sideflip",
             "default": "true",
-            "inheritedFrom": "sideFlip",
+            "inheritedFrom": "PopperPositionerProps.sideFlip",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4018,7 +4018,7 @@
             "description": "The preferred alignment against the trigger. May change when collisions occur.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.align",
             "default": "'center'",
-            "inheritedFrom": "align",
+            "inheritedFrom": "PopperPositionerProps.align",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -4043,7 +4043,7 @@
             "description": "An offset in pixels from the `start` or `end` alignment options.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.alignoffset",
             "default": "0",
-            "inheritedFrom": "alignOffset",
+            "inheritedFrom": "PopperPositionerProps.alignOffset",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4054,7 +4054,7 @@
             "description": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.alignflip",
             "default": "true",
-            "inheritedFrom": "alignFlip",
+            "inheritedFrom": "PopperPositionerProps.alignFlip",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4065,7 +4065,7 @@
             "description": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.avoidcollisions",
             "default": "true",
-            "inheritedFrom": "avoidCollisions",
+            "inheritedFrom": "PopperPositionerProps.avoidCollisions",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4101,7 +4101,7 @@
             "description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.collisionpadding",
             "default": "0",
-            "inheritedFrom": "collisionPadding",
+            "inheritedFrom": "PopperPositionerProps.collisionPadding",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -4126,7 +4126,7 @@
             "description": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.arrowpadding",
             "default": "0",
-            "inheritedFrom": "arrowPadding",
+            "inheritedFrom": "PopperPositionerProps.arrowPadding",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4137,7 +4137,7 @@
             "description": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.hideshiftedarrow",
             "default": "true",
-            "inheritedFrom": "hideShiftedArrow",
+            "inheritedFrom": "PopperPositionerProps.hideShiftedArrow",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4159,7 +4159,7 @@
             "description": "Whether to hide the content when the trigger becomes fully occluded.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.hidewhendetached",
             "default": "false",
-            "inheritedFrom": "hideWhenDetached",
+            "inheritedFrom": "PopperPositionerProps.hideWhenDetached",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4192,7 +4192,7 @@
             "description": "Whether to disable the update position for the content when the layout shifted.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.disableupdateonlayoutshift",
             "default": "false",
-            "inheritedFrom": "disableUpdateOnLayoutShift",
+            "inheritedFrom": "PopperPositionerProps.disableUpdateOnLayoutShift",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4203,7 +4203,7 @@
             "description": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.prioritizeposition",
             "default": "false",
-            "inheritedFrom": "prioritizePosition",
+            "inheritedFrom": "PopperPositionerProps.prioritizePosition",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4214,7 +4214,7 @@
             "description": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.reference",
             "default": null,
-            "inheritedFrom": "reference",
+            "inheritedFrom": "PopperPositionerProps.reference",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -4239,7 +4239,7 @@
             "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.trapfocus",
             "default": "modal",
-            "inheritedFrom": "trapFocus",
+            "inheritedFrom": "PopperPositionerProps.trapFocus",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4250,7 +4250,7 @@
             "description": "When `true`, hovering the popup closes instead of keeping it open (the grace area is disabled,\nso leaving the trigger closes the layer immediately).",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.disablehoverablecontent",
             "default": "false",
-            "inheritedFrom": "disableHoverableContent",
+            "inheritedFrom": "PopperPositionerProps.disableHoverableContent",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4261,7 +4261,7 @@
             "description": "Callback invoked when the pointer finally leaves the grace area. Lets an upper layer (e.g.\nTooltip) run area-scoped close logic without registering its own second grace area.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.ongracepointerexit",
             "default": null,
-            "inheritedFrom": "onGracePointerExit",
+            "inheritedFrom": "PopperPositionerProps.onGracePointerExit",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4272,7 +4272,7 @@
             "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmpositionerprops.members.forcemount",
             "default": null,
-            "inheritedFrom": "forceMount",
+            "inheritedFrom": "PopperPositionerProps.forceMount",
             "sourcePath": "packages/headless/src/types/component.ts",
             "referencedTypes": []
           }
@@ -4567,7 +4567,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmrootprops.members.dir",
             "default": null,
-            "inheritedFrom": "dir",
+            "inheritedFrom": "PopperRootProps.dir",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -4592,7 +4592,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmrootprops.members.open",
             "default": null,
-            "inheritedFrom": "open",
+            "inheritedFrom": "PopperRootProps.open",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4603,7 +4603,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmrootprops.members.defaultopen",
             "default": null,
-            "inheritedFrom": "defaultOpen",
+            "inheritedFrom": "PopperRootProps.defaultOpen",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4614,7 +4614,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmrootprops.members.modal",
             "default": null,
-            "inheritedFrom": "modal",
+            "inheritedFrom": "PopperRootProps.modal",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4625,7 +4625,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmrootprops.members.disabled",
             "default": null,
-            "inheritedFrom": "disabled",
+            "inheritedFrom": "PopperRootProps.disabled",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           }
@@ -4673,7 +4673,7 @@
           {
             "name": "PopperRootEmits",
             "kind": "typeAlias",
-            "type": "{ 'update:open': [value: boolean, reason: import(\"@/index\").PopperOpenChangeReason]; }",
+            "type": "{ 'update:open': [value: boolean, reason: import(\"../popper\").PopperOpenChangeReason]; }",
             "resolvedType": "{ \"update:open\": [value: boolean, reason: PopperOpenChangeReason] }",
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popper_types.popperrootemits",
@@ -4730,7 +4730,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmtriggerprops.members.trigger",
             "default": null,
-            "inheritedFrom": "trigger",
+            "inheritedFrom": "PopperTriggerProps.trigger",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -4755,7 +4755,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmtriggerprops.members.reference",
             "default": null,
-            "inheritedFrom": "reference",
+            "inheritedFrom": "PopperTriggerProps.reference",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -4780,7 +4780,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmtriggerprops.members.opendelay",
             "default": null,
-            "inheritedFrom": "openDelay",
+            "inheritedFrom": "PopperTriggerProps.openDelay",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4791,7 +4791,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmtriggerprops.members.closedelay",
             "default": null,
-            "inheritedFrom": "closeDelay",
+            "inheritedFrom": "PopperTriggerProps.closeDelay",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4802,7 +4802,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmtriggerprops.members.skipdelayduration",
             "default": null,
-            "inheritedFrom": "skipDelayDuration",
+            "inheritedFrom": "PopperTriggerProps.skipDelayDuration",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4813,7 +4813,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmtriggerprops.members.pressopendelay",
             "default": null,
-            "inheritedFrom": "pressOpenDelay",
+            "inheritedFrom": "PopperTriggerProps.pressOpenDelay",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4824,7 +4824,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmtriggerprops.members.openonfocus",
             "default": null,
-            "inheritedFrom": "openOnFocus",
+            "inheritedFrom": "PopperTriggerProps.openOnFocus",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4835,7 +4835,7 @@
             "description": "Open delay applied to focus-driven opens. Defaults to `openDelay`; set `0` to open\ninstantly on focus (Tooltip semantics).",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmtriggerprops.members.focusopendelay",
             "default": "inherit from `openDelay`",
-            "inheritedFrom": "focusOpenDelay",
+            "inheritedFrom": "PopperTriggerProps.focusOpenDelay",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4846,7 +4846,7 @@
             "description": "When `true`, focus-driven opening only responds to keyboard/programmatic focus\n(`:focus-visible`), ignoring pointer-derived focus.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmtriggerprops.members.focusvisibleonly",
             "default": "false",
-            "inheritedFrom": "focusVisibleOnly",
+            "inheritedFrom": "PopperTriggerProps.focusVisibleOnly",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -4857,7 +4857,7 @@
             "description": "How the trigger references its popup for assistive technology.\n\n- `controls`: `aria-expanded` + `aria-controls` (expandable widgets: popover / menu)\n- `describedby`: `aria-describedby` while open (tooltip-like descriptions)\n- `none`: no popup-reference attributes",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmtriggerprops.members.ariamode",
             "default": "'controls'",
-            "inheritedFrom": "ariaMode",
+            "inheritedFrom": "PopperTriggerProps.ariaMode",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -4882,7 +4882,7 @@
             "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmtriggerprops.members.type",
             "default": "'button'",
-            "inheritedFrom": "type",
+            "inheritedFrom": "PopperTriggerProps.type",
             "sourcePath": "packages/headless/src/components/button/types.ts",
             "referencedTypes": [
               {
@@ -4907,7 +4907,7 @@
             "description": "Whether the component is disabled.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmtriggerprops.members.disabled",
             "default": null,
-            "inheritedFrom": "disabled",
+            "inheritedFrom": "PopperTriggerProps.disabled",
             "sourcePath": "packages/headless/src/components/button/types.ts",
             "referencedTypes": []
           },
@@ -4918,7 +4918,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmtriggerprops.members.aschild",
             "default": null,
-            "inheritedFrom": "asChild",
+            "inheritedFrom": "PopperTriggerProps.asChild",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -4929,7 +4929,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmtriggerprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "as",
+            "inheritedFrom": "PopperTriggerProps.as",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {

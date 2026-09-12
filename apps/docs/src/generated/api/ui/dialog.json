@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "DialogProps",
         "type": "Interface DialogProps",
-        "resolvedType": "{ showFullscreen?: boolean; class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DialogUi>; title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DialogOverlayProps; portalProps?: DialogPortalProps; popupProps?: DialogPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; fullscreenProps?: DialogFullscreenProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; draggable?: boolean; fullscreen?: boolean; defaultFullscreen?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
+        "resolvedType": "{ showFullscreen?: boolean; class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DialogUi>; title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DialogOverlayProps; portalProps?: DialogPortalProps; popupProps?: DialogPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; fullscreenProps?: DialogFullscreenProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; modal?: ModalityTier; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; draggable?: boolean; fullscreen?: boolean; defaultFullscreen?: boolean; open?: boolean; defaultOpen?: boolean }",
         "description": "Properties for the Dialog component.",
         "descriptionKey": "api.generated.packages_ui_src_components_dialog_types.dialogprops.props",
         "sourcePath": "packages/ui/src/components/dialog/types.ts",
@@ -86,7 +86,7 @@
               {
                 "name": "DialogUi",
                 "kind": "typeAlias",
-                "type": "{ header: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; icon: ClassValue; close: ClassValue; popup: ClassValue; cancel: ClassValue; overlay: ClassValue; footer: ClassValue; fullscreen: ClassValue; confirm: ClassValue; }",
+                "type": "{ header: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; icon: ClassValue; close: ClassValue; popup: ClassValue; cancel: ClassValue; footer: ClassValue; overlay: ClassValue; fullscreen: ClassValue; confirm: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Dialog component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogui",
@@ -853,6 +853,31 @@
             ]
           },
           {
+            "name": "modal",
+            "type": "ModalityTier",
+            "required": false,
+            "description": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.\n\nSet to `'trap-focus'` to trap focus while still letting outside pointer events through (non-modal side panels such\nas `Drawer` in the `'trap-focus'` tier).",
+            "descriptionKey": "api.generated.packages_ui_src_components_dialog_types.dialogprops.members.modal",
+            "default": "true",
+            "inheritedFrom": "modal",
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ModalityTier",
+                "kind": "typeAlias",
+                "type": "boolean | 'trap-focus'",
+                "resolvedType": "boolean | 'trap-focus'",
+                "description": "Modality tier of a layered surface.\n\n- `true` — full modal: focus trap plus blocking of outside pointer events\n- `'trap-focus'` — traps focus but keeps outside pointer events alive\n- `false` — non-modal",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.modalitytier",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "dir",
             "type": "Direction",
             "required": false,
@@ -965,17 +990,6 @@
             "descriptionKey": "api.generated.packages_ui_src_components_dialog_types.dialogprops.members.defaultopen",
             "default": "false",
             "inheritedFrom": "defaultOpen",
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "modal",
-            "type": "boolean",
-            "required": false,
-            "description": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
-            "descriptionKey": "api.generated.packages_ui_src_components_dialog_types.dialogprops.members.modal",
-            "default": "true",
-            "inheritedFrom": "modal",
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": []
           }
@@ -2048,7 +2062,7 @@
         "kind": "props",
         "name": "DialogCompactProps",
         "type": "Interface DialogCompactProps",
-        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; showFullscreen?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DialogOverlayProps; portalProps?: DialogPortalProps; popupProps?: DialogPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; fullscreenProps?: DialogFullscreenProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; draggable?: boolean; fullscreen?: boolean; defaultFullscreen?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
+        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; showFullscreen?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DialogOverlayProps; portalProps?: DialogPortalProps; popupProps?: DialogPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; fullscreenProps?: DialogFullscreenProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; modal?: ModalityTier; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; draggable?: boolean; fullscreen?: boolean; defaultFullscreen?: boolean; open?: boolean; defaultOpen?: boolean }",
         "description": "Properties for the DialogCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcompactprops.props",
         "sourcePath": "packages/headless/src/components/dialog/types.ts",
@@ -2820,6 +2834,31 @@
             ]
           },
           {
+            "name": "modal",
+            "type": "ModalityTier",
+            "required": false,
+            "description": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.\n\nSet to `'trap-focus'` to trap focus while still letting outside pointer events through (non-modal side panels such\nas `Drawer` in the `'trap-focus'` tier).",
+            "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcompactprops.members.modal",
+            "default": "true",
+            "inheritedFrom": "modal",
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ModalityTier",
+                "kind": "typeAlias",
+                "type": "boolean | 'trap-focus'",
+                "resolvedType": "boolean | 'trap-focus'",
+                "description": "Modality tier of a layered surface.\n\n- `true` — full modal: focus trap plus blocking of outside pointer events\n- `'trap-focus'` — traps focus but keeps outside pointer events alive\n- `false` — non-modal",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.modalitytier",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "dir",
             "type": "Direction",
             "required": false,
@@ -2932,17 +2971,6 @@
             "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcompactprops.members.defaultopen",
             "default": "false",
             "inheritedFrom": "defaultOpen",
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "modal",
-            "type": "boolean",
-            "required": false,
-            "description": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
-            "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcompactprops.members.modal",
-            "default": "true",
-            "inheritedFrom": "modal",
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": []
           }
@@ -3849,7 +3877,7 @@
         "name": "DialogFullscreenStateEmits",
         "type": "TypeAlias DialogFullscreenStateEmits",
         "resolvedType": "{ \"update:fullscreen\": [value: boolean] }",
-        "description": "Events for the fullscreen state of the dialog. Kept separate from `DialogRootEmits`\nbecause the latter is shared by other disclosure primitives (popover, menu, bottom-sheet).",
+        "description": "Events for the fullscreen state of the dialog. Kept separate from `DialogRootEmits`\nbecause the latter is shared by other disclosure primitives (popover, menu, drawer).",
         "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogfullscreenstateemits.emits",
         "sourcePath": "packages/headless/src/components/dialog/types.ts",
         "typeParameters": [],
@@ -3902,7 +3930,7 @@
             "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogoverlayprops.members.forcemount",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "forceMount",
             "sourcePath": "packages/headless/src/types/component.ts",
             "referencedTypes": []
           }
@@ -3929,7 +3957,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogpopupprops.members.aschild",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "asChild",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -3940,7 +3968,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogpopupprops.members.as",
             "default": "'div'",
-            "inheritedFrom": null,
+            "inheritedFrom": "as",
             "sourcePath": "packages/headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -3973,7 +4001,7 @@
             "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
             "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogpopupprops.members.forcemount",
             "default": null,
-            "inheritedFrom": null,
+            "inheritedFrom": "forceMount",
             "sourcePath": "packages/headless/src/types/component.ts",
             "referencedTypes": []
           }
@@ -3984,7 +4012,7 @@
       "emits": {
         "kind": "emits",
         "name": "DialogPopupEmits",
-        "type": "TypeAlias DialogPopupEmits",
+        "type": "TypeAlias DialogPopupEmits: DialogPopupImplEmits",
         "resolvedType": "{ escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event] }",
         "description": "Events for the DialogPopup component.",
         "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogpopupemits.emits",
@@ -4235,12 +4263,37 @@
         "kind": "props",
         "name": "DialogRootProps",
         "type": "Interface DialogRootProps",
-        "resolvedType": "{ dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; draggable?: boolean; fullscreen?: boolean; defaultFullscreen?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
+        "resolvedType": "{ modal?: ModalityTier; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; draggable?: boolean; fullscreen?: boolean; defaultFullscreen?: boolean; open?: boolean; defaultOpen?: boolean }",
         "description": "Properties for the DialogRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogrootprops.props",
         "sourcePath": "packages/headless/src/components/dialog/types.ts",
         "typeParameters": [],
         "members": [
+          {
+            "name": "modal",
+            "type": "ModalityTier",
+            "required": false,
+            "description": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.\n\nSet to `'trap-focus'` to trap focus while still letting outside pointer events through (non-modal side panels such\nas `Drawer` in the `'trap-focus'` tier).",
+            "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogrootprops.members.modal",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ModalityTier",
+                "kind": "typeAlias",
+                "type": "boolean | 'trap-focus'",
+                "resolvedType": "boolean | 'trap-focus'",
+                "description": "Modality tier of a layered surface.\n\n- `true` — full modal: focus trap plus blocking of outside pointer events\n- `'trap-focus'` — traps focus but keeps outside pointer events alive\n- `false` — non-modal",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.modalitytier",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
           {
             "name": "dir",
             "type": "Direction",
@@ -4342,7 +4395,7 @@
             "description": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
             "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogrootprops.members.open",
             "default": "undefined",
-            "inheritedFrom": "DialogBaseProps.open",
+            "inheritedFrom": "open",
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": []
           },
@@ -4353,18 +4406,7 @@
             "description": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogrootprops.members.defaultopen",
             "default": "false",
-            "inheritedFrom": "DialogBaseProps.defaultOpen",
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "modal",
-            "type": "boolean",
-            "required": false,
-            "description": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
-            "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogrootprops.members.modal",
-            "default": "true",
-            "inheritedFrom": "DialogBaseProps.modal",
+            "inheritedFrom": "defaultOpen",
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": []
           }

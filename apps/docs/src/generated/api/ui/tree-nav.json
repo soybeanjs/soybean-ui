@@ -705,24 +705,13 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ trapFocus?: boolean; placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
+                "resolvedType": "{ placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "packages/headless/src/components/menu/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
-                  {
-                    "name": "trapFocus",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.trapfocus",
-                    "default": "modal",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
                   {
                     "name": "placement",
                     "type": "Placement",
@@ -928,6 +917,17 @@
                     "description": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
                     "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.reference",
                     "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "trapFocus",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.trapfocus",
+                    "default": "modal",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/popper/types.ts",
                     "referencedTypes": []
@@ -2308,24 +2308,13 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ trapFocus?: boolean; placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
+                "resolvedType": "{ placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "packages/headless/src/components/menu/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
-                  {
-                    "name": "trapFocus",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.trapfocus",
-                    "default": "modal",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
                   {
                     "name": "placement",
                     "type": "Placement",
@@ -2531,6 +2520,17 @@
                     "description": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
                     "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.reference",
                     "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "trapFocus",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.trapfocus",
+                    "default": "modal",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/popper/types.ts",
                     "referencedTypes": []
@@ -4426,24 +4426,13 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ trapFocus?: boolean; placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
+                "resolvedType": "{ placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "packages/headless/src/components/menu/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
-                  {
-                    "name": "trapFocus",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.trapfocus",
-                    "default": "modal",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
                   {
                     "name": "placement",
                     "type": "Placement",
@@ -4649,6 +4638,17 @@
                     "description": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
                     "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.reference",
                     "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "trapFocus",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether focus is trapped inside the popup while open (Tab cycles within the layer and body\nscroll is locked for modal layers).",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.trapfocus",
+                    "default": "modal",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/popper/types.ts",
                     "referencedTypes": []

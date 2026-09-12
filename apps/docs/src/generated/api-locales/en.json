@@ -588,244 +588,6 @@
           }
         }
       },
-      "packages_headless_src_components_bottom_sheet_index": {
-        "bottomsheetoverlayprops": {
-          "members": {
-            "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries."
-          },
-          "props": "Properties for the DialogOverlay component."
-        },
-        "bottomsheetpopupemits": {
-          "emits": "Events for the DialogPopup component."
-        },
-        "bottomsheetpopupprops": {
-          "members": {
-            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries."
-          },
-          "props": "Properties for the DialogPopup component."
-        }
-      },
-      "packages_headless_src_components_bottom_sheet_types": {
-        "bottomsheetcancelemits": {
-          "callables": {
-            "cancel": "Event handler called when the dialog is requested to be canceled."
-          },
-          "emits": "Events for the BottomSheetCancel component."
-        },
-        "bottomsheetcancelprops": {
-          "members": {
-            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "disabled": "Whether the component is disabled.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
-          },
-          "props": "Properties for the BottomSheetCancel component."
-        },
-        "bottomsheetcloseemits": {
-          "callables": {
-            "close": "Event handler called when the dialog is requested to be closed."
-          },
-          "emits": "Events for the BottomSheetClose component."
-        },
-        "bottomsheetcloseprops": {
-          "members": {
-            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "disabled": "Whether the component is disabled.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
-          },
-          "props": "Properties for the BottomSheetClose component."
-        },
-        "bottomsheetcompactemits": {
-          "callables": {
-            "cancel": "Event handler called when the dialog is requested to be canceled.",
-            "click": "Event handler called when the dialog trigger is activated.",
-            "close": "Emitted when close occurs.",
-            "closeautofocus": "Event handler called when auto-focusing on close. Can be prevented.",
-            "confirm": "Event handler called when the dialog is requested to be closed by confirming.",
-            "drag": "Emitted when drag occurs.",
-            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
-            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
-            "fullscreen": "Event handler called when the fullscreen state of the dialog is requested to be toggled.",
-            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
-            "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
-            "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
-            "release": "Emitted when release occurs.",
-            "update_activesnappoint": "Emitted when the active snap point value changes.",
-            "update_fullscreen": "Event handler called when the fullscreen state of the dialog changes.",
-            "update_open": "Event handler called when the open state of the dialog changes."
-          },
-          "emits": "Events for the BottomSheetCompact component.",
-          "members": {
-            "close": "Emitted when close occurs."
-          }
-        },
-        "bottomsheetcompactprops": {
-          "members": {
-            "activesnappoint": "Active snap point.",
-            "alerttype": "The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog.",
-            "cancelprops": "Properties forwarded to the cancel element.",
-            "canceltext": "The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided.\n\nDefaults to the localized `dialog.cancel` message from `ConfigProvider`.",
-            "closeprops": "Properties forwarded to the close element.",
-            "closethreshold": "Close threshold.",
-            "confirmprops": "Properties forwarded to the confirm element.",
-            "confirmtext": "The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.\n\nDefaults to the localized `dialog.confirm` message from `ConfigProvider`.",
-            "contentprops": "Properties forwarded to the content element.",
-            "defaultfullscreen": "The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.",
-            "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
-            "description": "The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided.",
-            "descriptionprops": "Properties forwarded to the description element.",
-            "dir": "The text direction of the dialog",
-            "direction": "Direction.",
-            "dismissible": "Whether dismissible.",
-            "draggable": "Whether the dialog can be moved by dragging its header.",
-            "fadefromindex": "Fade from index.",
-            "fixed": "Whether fixed.",
-            "footerprops": "Properties forwarded to the footer element.",
-            "fullscreen": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
-            "fullscreenprops": "Properties forwarded to the fullscreen element.",
-            "handleonly": "Whether handle only.",
-            "handleprops": "Properties forwarded to the handle element.",
-            "headerprops": "Properties forwarded to the header element.",
-            "icon": "The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided.",
-            "isalert": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
-            "nested": "Whether nested.",
-            "nobodystyles": "When `true` the `body` doesn't get any styles assigned from Vaul",
-            "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
-            "overlayprops": "Properties forwarded to the overlay element.",
-            "popupprops": "Properties forwarded to the popup element.",
-            "portalprops": "Properties forwarded to the portal element.",
-            "preventscrollrestoration": "Whether prevent scroll restoration.",
-            "pure": "Whether to use the pure version of the dialog, which does not include the header and footer.\nThis is useful when you want to fully control the content of the dialog and do not need the built-in header and footer.",
-            "scrolllocktimeout": "Scroll lock timeout.",
-            "setbackgroundcoloronscale": "When `false` we don't change body's background color when the drawer is open.",
-            "shouldscalebackground": "Whether the component should scale background.",
-            "showcancel": "Whether to show the cancel button.\n\nWhen set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType=\"warning\"`.\nWhen set to `true`, the cancel button will always be shown.",
-            "showclose": "Whether show the close button in the header of the dialog.",
-            "showconfirm": "Whether to show the confirm button when the dialog is an alert dialog.\n\nThe default value is `true` when the dialog is an alert dialog.",
-            "showfullscreen": "Whether show the fullscreen toggle button in the header of the dialog.",
-            "snappoints": "Snap points.",
-            "title": "The title of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `title` slot is not provided.",
-            "titleprops": "Properties forwarded to the title element.",
-            "triggerprops": "Properties forwarded to the trigger element."
-          },
-          "props": "Properties for the BottomSheetCompact component."
-        },
-        "bottomsheetcompactslots": {
-          "callables": {
-            "cancel": "Custom content for the cancel slot.",
-            "close": "Custom content for the close slot.",
-            "confirm": "Custom content for the confirm slot.",
-            "default": "Custom content for the default slot.",
-            "description": "Custom content for the description slot.",
-            "footer": "Custom content for the footer slot.",
-            "fullscreen": "Custom content for the fullscreen slot.",
-            "title": "Custom content for the title slot.",
-            "trigger": "Custom content for the trigger slot."
-          },
-          "slots": "Slots for the BottomSheetCompact component."
-        },
-        "bottomsheetconfirmemits": {
-          "callables": {
-            "confirm": "Event handler called when the dialog is requested to be closed by confirming."
-          },
-          "emits": "Events for the BottomSheetConfirm component."
-        },
-        "bottomsheetconfirmprops": {
-          "members": {
-            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "disabled": "Whether the component is disabled.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
-          },
-          "props": "Properties for the BottomSheetConfirm component."
-        },
-        "bottomsheetcontentprops": {
-          "props": "Properties for the BottomSheetContent component."
-        },
-        "bottomsheetdescriptionprops": {
-          "props": "Properties for the BottomSheetDescription component."
-        },
-        "bottomsheetfooterprops": {
-          "props": "Properties for the BottomSheetFooter component."
-        },
-        "bottomsheethandleprops": {
-          "members": {
-            "preventcycle": "Whether prevent cycle."
-          },
-          "props": "Properties for the BottomSheetHandle component."
-        },
-        "bottomsheetheaderprops": {
-          "props": "Properties for the BottomSheetHeader component."
-        },
-        "bottomsheetrootemits": {
-          "callables": {
-            "close": "Emitted when close occurs.",
-            "drag": "Emitted when drag occurs.",
-            "release": "Emitted when release occurs.",
-            "update_activesnappoint": "Emitted when the active snap point value changes.",
-            "update_open": "Event handler called when the open state of the dialog changes."
-          },
-          "emits": "Events for the BottomSheetRoot component."
-        },
-        "bottomsheetrootprops": {
-          "members": {
-            "activesnappoint": "Active snap point.",
-            "alerttype": "The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog.",
-            "closethreshold": "Close threshold.",
-            "defaultfullscreen": "The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.",
-            "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
-            "dir": "The text direction of the dialog",
-            "direction": "Direction.",
-            "dismissible": "Whether dismissible.",
-            "draggable": "Whether the dialog can be moved by dragging its header.",
-            "fadefromindex": "Fade from index.",
-            "fixed": "Whether fixed.",
-            "fullscreen": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
-            "handleonly": "Whether handle only.",
-            "isalert": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
-            "nested": "Whether nested.",
-            "nobodystyles": "When `true` the `body` doesn't get any styles assigned from Vaul",
-            "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
-            "preventscrollrestoration": "Whether prevent scroll restoration.",
-            "scrolllocktimeout": "Scroll lock timeout.",
-            "setbackgroundcoloronscale": "When `false` we don't change body's background color when the drawer is open.",
-            "shouldscalebackground": "Whether the component should scale background.",
-            "snappoints": "Snap points."
-          },
-          "props": "Properties for the BottomSheetRoot component."
-        },
-        "bottomsheetrootslots": {
-          "callables": {
-            "default": "Custom content for the default slot."
-          },
-          "slots": "Slots for the BottomSheetRoot component."
-        },
-        "bottomsheettitleprops": {
-          "props": "Properties for the BottomSheetTitle component."
-        },
-        "bottomsheettriggeremits": {
-          "callables": {
-            "click": "Event handler called when the dialog trigger is activated."
-          },
-          "emits": "Events for the BottomSheetTrigger component."
-        },
-        "bottomsheettriggerprops": {
-          "members": {
-            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "disabled": "Whether the component is disabled.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
-          },
-          "props": "Properties for the BottomSheetTrigger component."
-        },
-        "bottomsheetui": "UI class overrides for the BottomSheet component.",
-        "type": ""
-      },
       "packages_headless_src_components_breadcrumb_types": {
         "breadcrumbcompactellipsisslotprops": {
           "members": {
@@ -3795,7 +3557,7 @@
             "headerprops": "Properties forwarded to the header element.",
             "icon": "The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided.",
             "isalert": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
+            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.\n\nSet to `'trap-focus'` to trap focus while still letting outside pointer events through (non-modal side panels such\nas `Drawer` in the `'trap-focus'` tier).",
             "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
             "overlayprops": "Properties forwarded to the overlay element.",
             "popupprops": "Properties forwarded to the popup element.",
@@ -3868,7 +3630,7 @@
           "callables": {
             "update_fullscreen": "Event handler called when the fullscreen state of the dialog changes."
           },
-          "emits": "Events for the fullscreen state of the dialog. Kept separate from `DialogRootEmits`\nbecause the latter is shared by other disclosure primitives (popover, menu, bottom-sheet)."
+          "emits": "Events for the fullscreen state of the dialog. Kept separate from `DialogRootEmits`\nbecause the latter is shared by other disclosure primitives (popover, menu, drawer)."
         },
         "dialogheaderprops": {
           "props": "Properties for the DialogHeader component."
@@ -3923,7 +3685,7 @@
             "draggable": "Whether the dialog can be moved by dragging its header.",
             "fullscreen": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
             "isalert": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
+            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.\n\nSet to `'trap-focus'` to trap focus while still letting outside pointer events through (non-modal side panels such\nas `Drawer` in the `'trap-focus'` tier).",
             "open": "The controlled open state of the dialog. Can be bound with `v-model:open`."
           },
           "props": "Properties for the DialogRoot component."
@@ -3947,6 +3709,255 @@
           "props": "Properties for the DialogTrigger component."
         },
         "dialogui": "UI class overrides for the Dialog component."
+      },
+      "packages_headless_src_components_drawer_index": {
+        "draweroverlayprops": {
+          "members": {
+            "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries."
+          }
+        },
+        "drawerpopupprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries."
+          }
+        }
+      },
+      "packages_headless_src_components_drawer_types": {
+        "drawercancelemits": {
+          "callables": {
+            "cancel": "Event handler called when the dialog is requested to be canceled."
+          },
+          "emits": "Events for the DrawerCancel component."
+        },
+        "drawercancelprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "disabled": "Whether the component is disabled.",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
+          },
+          "props": "Properties for the DrawerCancel component."
+        },
+        "drawercloseemits": {
+          "callables": {
+            "close": "Event handler called when the dialog is requested to be closed."
+          },
+          "emits": "Events for the DrawerClose component."
+        },
+        "drawercloseprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "disabled": "Whether the component is disabled.",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
+          },
+          "props": "Properties for the DrawerClose component."
+        },
+        "drawercompactemits": {
+          "callables": {
+            "cancel": "Event handler called when the dialog is requested to be canceled.",
+            "click": "Event handler called when the dialog trigger is activated.",
+            "close": "Emitted when close occurs.",
+            "closeautofocus": "Event handler called when auto-focusing on close. Can be prevented.",
+            "confirm": "Event handler called when the dialog is requested to be closed by confirming.",
+            "drag": "Emitted when drag occurs.",
+            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
+            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "fullscreen": "Event handler called when the fullscreen state of the dialog is requested to be toggled.",
+            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
+            "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+            "release": "Emitted when release occurs.",
+            "update_fullscreen": "Event handler called when the fullscreen state of the dialog changes.",
+            "update_open": "Event handler called when the open state of the dialog changes.",
+            "update_snappoint": "Emitted when the snap point value changes."
+          },
+          "emits": "Events for the DrawerCompact component.",
+          "members": {
+            "close": "Emitted when close occurs."
+          }
+        },
+        "drawercompactprops": {
+          "members": {
+            "alerttype": "The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog.",
+            "cancelprops": "Properties forwarded to the cancel element.",
+            "canceltext": "The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided.\n\nDefaults to the localized `dialog.cancel` message from `ConfigProvider`.",
+            "closeprops": "Properties forwarded to the close element.",
+            "closethreshold": "Close threshold.",
+            "confirmprops": "Properties forwarded to the confirm element.",
+            "confirmtext": "The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.\n\nDefaults to the localized `dialog.confirm` message from `ConfigProvider`.",
+            "contentprops": "Properties forwarded to the content element.",
+            "defaultfullscreen": "The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.",
+            "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "defaultsnappoint": "The snap point used when the drawer is initially rendered. Use when you do not need to control it.",
+            "description": "The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided.",
+            "descriptionprops": "Properties forwarded to the description element.",
+            "dir": "The text direction of the dialog",
+            "dismissible": "Whether dismissible.",
+            "draggable": "Whether the dialog can be moved by dragging its header.",
+            "fadefromindex": "Fade from index.",
+            "fixed": "Whether fixed.",
+            "footerprops": "Properties forwarded to the footer element.",
+            "fullscreen": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
+            "fullscreenprops": "Properties forwarded to the fullscreen element.",
+            "handleonly": "Whether handle only.",
+            "handleprops": "Properties forwarded to the handle element.",
+            "headerprops": "Properties forwarded to the header element.",
+            "icon": "The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided.",
+            "isalert": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
+            "modal": "Modality tier. `true` blocks outside pointer events, `'trap-focus'` only traps focus,\n`false` keeps the surface non-modal.",
+            "nested": "Whether nested.",
+            "nobodystyles": "When `true` the `body` doesn't get any styles assigned from Vaul",
+            "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+            "overlayprops": "Properties forwarded to the overlay element.",
+            "popupprops": "Properties forwarded to the popup element.",
+            "portalprops": "Properties forwarded to the portal element.",
+            "preventscrollrestoration": "Whether prevent scroll restoration.",
+            "pure": "Whether to use the pure version of the dialog, which does not include the header and footer.\nThis is useful when you want to fully control the content of the dialog and do not need the built-in header and footer.",
+            "scrolllocktimeout": "Scroll lock timeout.",
+            "setbackgroundcoloronscale": "When `false` we don't change body's background color when the drawer is open.",
+            "shouldscalebackground": "Whether the component should scale background.",
+            "showcancel": "Whether to show the cancel button.\n\nWhen set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType=\"warning\"`.\nWhen set to `true`, the cancel button will always be shown.",
+            "showclose": "Whether show the close button in the header of the dialog.",
+            "showconfirm": "Whether to show the confirm button when the dialog is an alert dialog.\n\nThe default value is `true` when the dialog is an alert dialog.",
+            "showfullscreen": "Whether show the fullscreen toggle button in the header of the dialog.",
+            "side": "Direction.",
+            "snappoint": "The controlled snap point. Can be bound with `v-model:snapPoint`.",
+            "snappoints": "Snap points.",
+            "snaptosequentialpoints": "When `true`, snaps to the next sequential snap point (one step at a time).\nWhen `false`, snaps to the nearest snap point by distance.",
+            "swipeable": "Render the opt-in swipe-to-open area at the drawer's edge.",
+            "swipeareaprops": "Properties forwarded to the swipe area element.",
+            "title": "The title of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `title` slot is not provided.",
+            "titleprops": "Properties forwarded to the title element.",
+            "triggerprops": "Properties forwarded to the trigger element."
+          },
+          "props": "Properties for the DrawerCompact component."
+        },
+        "drawercompactslots": {
+          "callables": {
+            "cancel": "Custom content for the cancel slot.",
+            "close": "Custom content for the close slot.",
+            "confirm": "Custom content for the confirm slot.",
+            "default": "Custom content for the default slot.",
+            "description": "Custom content for the description slot.",
+            "footer": "Custom content for the footer slot.",
+            "fullscreen": "Custom content for the fullscreen slot.",
+            "title": "Custom content for the title slot.",
+            "trigger": "Custom content for the trigger slot."
+          },
+          "slots": "Slots for the DrawerCompact component."
+        },
+        "drawerconfirmemits": {
+          "callables": {
+            "confirm": "Event handler called when the dialog is requested to be closed by confirming."
+          },
+          "emits": "Events for the DrawerConfirm component."
+        },
+        "drawerconfirmprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "disabled": "Whether the component is disabled.",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
+          },
+          "props": "Properties for the DrawerConfirm component."
+        },
+        "drawercontentprops": {
+          "props": "Properties for the DrawerContent component."
+        },
+        "drawerdescriptionprops": {
+          "props": "Properties for the DrawerDescription component."
+        },
+        "drawerfooterprops": {
+          "props": "Properties for the DrawerFooter component."
+        },
+        "drawerhandleprops": {
+          "members": {
+            "preventcycle": "Whether prevent cycle."
+          },
+          "props": "Properties for the DrawerHandle component."
+        },
+        "drawerheaderprops": {
+          "props": "Properties for the DrawerHeader component."
+        },
+        "drawerrootemits": {
+          "callables": {
+            "close": "Emitted when close occurs.",
+            "drag": "Emitted when drag occurs.",
+            "release": "Emitted when release occurs.",
+            "update_open": "Event handler called when the open state of the dialog changes.",
+            "update_snappoint": "Emitted when the snap point value changes."
+          },
+          "emits": "Events for the DrawerRoot component."
+        },
+        "drawerrootprops": {
+          "members": {
+            "alerttype": "The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog.",
+            "closethreshold": "Close threshold.",
+            "defaultfullscreen": "The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.",
+            "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "defaultsnappoint": "The snap point used when the drawer is initially rendered. Use when you do not need to control it.",
+            "dir": "The text direction of the dialog",
+            "dismissible": "Whether dismissible.",
+            "draggable": "Whether the dialog can be moved by dragging its header.",
+            "fadefromindex": "Fade from index.",
+            "fixed": "Whether fixed.",
+            "fullscreen": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
+            "handleonly": "Whether handle only.",
+            "isalert": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
+            "modal": "Modality tier. `true` blocks outside pointer events, `'trap-focus'` only traps focus,\n`false` keeps the surface non-modal.",
+            "nested": "Whether nested.",
+            "nobodystyles": "When `true` the `body` doesn't get any styles assigned from Vaul",
+            "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+            "preventscrollrestoration": "Whether prevent scroll restoration.",
+            "scrolllocktimeout": "Scroll lock timeout.",
+            "setbackgroundcoloronscale": "When `false` we don't change body's background color when the drawer is open.",
+            "shouldscalebackground": "Whether the component should scale background.",
+            "side": "Direction.",
+            "snappoint": "The controlled snap point. Can be bound with `v-model:snapPoint`.",
+            "snappoints": "Snap points.",
+            "snaptosequentialpoints": "When `true`, snaps to the next sequential snap point (one step at a time).\nWhen `false`, snaps to the nearest snap point by distance."
+          },
+          "props": "Properties for the DrawerRoot component."
+        },
+        "drawerrootslots": {
+          "callables": {
+            "default": "Custom content for the default slot."
+          },
+          "slots": "Slots for the DrawerRoot component."
+        },
+        "drawerswipeareaprops": {
+          "members": {
+            "disabled": "Disable swipe-to-open.",
+            "swipedirection": "Override the swipe side that opens the drawer. Defaults to the opposite of the root `side`."
+          },
+          "props": "Properties for the DrawerSwipeArea component."
+        },
+        "drawertitleprops": {
+          "props": "Properties for the DrawerTitle component."
+        },
+        "drawertriggeremits": {
+          "callables": {
+            "click": "Event handler called when the dialog trigger is activated."
+          },
+          "emits": "Events for the DrawerTrigger component."
+        },
+        "drawertriggerprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "disabled": "Whether the component is disabled.",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
+          },
+          "props": "Properties for the DrawerTrigger component."
+        },
+        "drawerui": "UI class overrides for the Drawer component.",
+        "drawerviewportprops": {
+          "props": "Properties for the DrawerViewport component."
+        },
+        "type": ""
       },
       "packages_headless_src_components_dropdown_menu_index": {
         "dropdownmenucheckboxitemprops": {
@@ -6172,182 +6183,6 @@
         },
         "type": ""
       },
-      "packages_headless_src_components_navigation_menu_types": {
-        "navigationmenucompactemits": {
-          "callables": {
-            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
-            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
-            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
-            "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
-            "select": "Emitted when select occurs.",
-            "update_modelvalue": "Emitted when the model value changes."
-          },
-          "emits": "Events for the NavigationMenuCompact component."
-        },
-        "navigationmenucompactprops": {
-          "members": {
-            "contentprops": "Properties forwarded to the content element.",
-            "defaultvalue": "The value of the menu item that should be active when initially rendered.\n\nUse when you do not need to control the value state.",
-            "delayduration": "The duration from when the pointer enters the trigger until the tooltip gets opened.",
-            "dir": "The reading direction of the combobox when applicable.\n\nIf omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode.",
-            "disableclicktrigger": "If `true`, menu cannot be open by click on trigger",
-            "disablehovertrigger": "If `true`, menu cannot be open by hover on trigger",
-            "disablepointerleaveclose": "If `true`, menu will not close during pointer leave event",
-            "indicatorprops": "Properties forwarded to the indicator element.",
-            "itemprops": "Properties forwarded to the item element.",
-            "items": "The items to render in the navigation menu.",
-            "linkprops": "Properties forwarded to the link element.",
-            "listprops": "Properties forwarded to the list element.",
-            "modelvalue": "The controlled value of the menu item to activate. Can be used as `v-model`.",
-            "orientation": "The orientation of the menu.",
-            "skipdelayduration": "How much time a user has to enter another trigger without incurring a delay again.",
-            "subitemprops": "Properties forwarded to the sub item element.",
-            "sublistprops": "Properties forwarded to the sub list element.",
-            "triggerprops": "Properties forwarded to the trigger element.",
-            "unmountonhide": "When `true`, the element will be unmounted on closed state.",
-            "viewportprops": "Properties forwarded to the viewport element."
-          },
-          "props": "Properties for the NavigationMenuCompact component."
-        },
-        "navigationmenucompactslots": {
-          "callables": {
-            "item": "",
-            "item_children": "",
-            "item_leading": "",
-            "item_link_icon": "",
-            "item_trailing": "",
-            "item_trigger_icon": ""
-          },
-          "slots": "Slots for the NavigationMenuCompact component."
-        },
-        "navigationmenucontentemits": {
-          "callables": {
-            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
-            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
-            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
-            "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented."
-          },
-          "emits": "Events for the NavigationMenuContent component."
-        },
-        "navigationmenucontentprops": {
-          "members": {
-            "disableoutsidepointerevents": "When `true`, hover/focus/click interactions will be disabled on elements outside the `DismissableLayer`. Users will\nneed to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to\ntrigger the element.",
-            "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries."
-          },
-          "props": "Properties for the NavigationMenuContent component."
-        },
-        "navigationmenuindicatorprops": {
-          "members": {
-            "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries."
-          },
-          "props": "Properties for the NavigationMenuIndicator component."
-        },
-        "navigationmenuitemprops": {
-          "members": {
-            "value": "Value associated with the current item."
-          },
-          "props": "Properties for the NavigationMenuItem component."
-        },
-        "navigationmenulinkemits": {
-          "callables": {
-            "select": "Emitted when select occurs."
-          },
-          "emits": "Events for the NavigationMenuLink component."
-        },
-        "navigationmenulinkprops": {
-          "members": {
-            "activeclass": "Class to apply when the link is active",
-            "ariacurrentvalue": "Value passed to the attribute `aria-current` when the link is exact active.",
-            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "disabled": "When `true`, the link is disabled.",
-            "exactactiveclass": "Class to apply when the link is exact active",
-            "external": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
-            "href": "The URL the link should navigate to when clicked on.",
-            "inactiveclass": "The class to apply to the link when it is inactive.",
-            "noprefetch": "Escape hatch to disable `prefetch` attribute.",
-            "norel": "If set to true, no rel attribute will be added to the link",
-            "prefetch": "When enabled will prefetch middleware, layouts and payloads of links in the viewport.",
-            "prefetchedclass": "A class to apply to links that have been prefetched.",
-            "prefetchon": "Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.",
-            "rel": "A rel attribute value to apply on the link. Defaults to \"noopener noreferrer\" for external links.",
-            "replace": "Calls `router.replace` instead of `router.push`.",
-            "selected": "Used to identify the link as the currently selected page.",
-            "target": "Where to display the linked URL, as the name for a browsing context.",
-            "to": "Route Location the link should navigate to when clicked on.",
-            "trailingslash": "An option to either add or remove trailing slashes in the `href` for this specific link.\nOverrides the global `trailingSlash` option if provided.",
-            "viewtransition": "Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported."
-          },
-          "props": "Properties for the NavigationMenuLink component."
-        },
-        "navigationmenulistprops": {
-          "props": "Properties for the NavigationMenuList component."
-        },
-        "navigationmenuoptioncompactslots": {
-          "callables": {
-            "item": "",
-            "item_children": "",
-            "item_leading": "",
-            "item_link_icon": "",
-            "item_trailing": "",
-            "item_trigger_icon": ""
-          }
-        },
-        "navigationmenurootemits": {
-          "callables": {
-            "update_modelvalue": "Emitted when the model value changes."
-          },
-          "emits": "Events for the NavigationMenuRoot component."
-        },
-        "navigationmenurootprops": {
-          "members": {
-            "defaultvalue": "The value of the menu item that should be active when initially rendered.\n\nUse when you do not need to control the value state.",
-            "delayduration": "The duration from when the pointer enters the trigger until the tooltip gets opened.",
-            "dir": "The reading direction of the combobox when applicable.\n\nIf omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode.",
-            "disableclicktrigger": "If `true`, menu cannot be open by click on trigger",
-            "disablehovertrigger": "If `true`, menu cannot be open by hover on trigger",
-            "disablepointerleaveclose": "If `true`, menu will not close during pointer leave event",
-            "modelvalue": "The controlled value of the menu item to activate. Can be used as `v-model`.",
-            "orientation": "The orientation of the menu.",
-            "skipdelayduration": "How much time a user has to enter another trigger without incurring a delay again.",
-            "unmountonhide": "When `true`, the element will be unmounted on closed state."
-          },
-          "props": "Properties for the NavigationMenuRoot component."
-        },
-        "navigationmenusubemits": {
-          "callables": {
-            "update_modelvalue": "Emitted when the model value changes."
-          },
-          "emits": "Events for the NavigationMenuSub component."
-        },
-        "navigationmenusublistprops": {
-          "props": "Properties for the NavigationMenuSubList component."
-        },
-        "navigationmenusubprops": {
-          "members": {
-            "defaultvalue": "Default value.",
-            "modelvalue": "Current model value."
-          },
-          "props": "Properties for the NavigationMenuSub component."
-        },
-        "navigationmenutriggerprops": {
-          "members": {
-            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "disabled": "Whether the component is disabled."
-          },
-          "props": "Properties for the NavigationMenuTrigger component."
-        },
-        "navigationmenuui": "UI class overrides for the NavigationMenu component.",
-        "navigationmenuviewportprops": {
-          "members": {
-            "align": "Align.",
-            "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries."
-          },
-          "props": "Properties for the NavigationMenuViewport component."
-        },
-        "type": ""
-      },
       "packages_headless_src_components_page_tabs_types": {
         "pagetabscloseprops": {
           "members": {
@@ -6974,10 +6809,7 @@
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
             "update_open": ""
           },
-          "emits": "",
-          "members": {
-            "placed": ""
-          }
+          "emits": ""
         },
         "poppercompactprops": {
           "members": {
@@ -7178,7 +7010,7 @@
             "trigger": "",
             "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
           },
-          "props": ""
+          "props": "Properties for the Button component."
         },
         "poppertriggerariamode": "",
         "poppertriggerprops": {
@@ -7198,10 +7030,9 @@
             "trigger": "",
             "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
           },
-          "props": ""
+          "props": "Properties for the Button component."
         },
-        "poppertriggertype": "",
-        "popperui": ""
+        "poppertriggertype": ""
       },
       "packages_headless_src_components_portal_types": {
         "autocompleteportalprops": {
@@ -10162,19 +9993,11 @@
         "direction": "",
         "horizontalside": "",
         "maybepromise": "",
+        "modalitytier": "Modality tier of a layered surface.\n\n- `true` — full modal: focus trap plus blocking of outside pointer events\n- `'trap-focus'` — traps focus but keeps outside pointer events alive\n- `false` — non-modal",
         "placement": "",
         "selectionbehavior": "",
-        "side": ""
-      },
-      "packages_headless_src_types_component": {
-        "dismissablelayeremits": {
-          "callables": {
-            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
-            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
-            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
-            "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented."
-          }
-        }
+        "side": "",
+        "swipedirection": ""
       },
       "packages_headless_src_types_dom": {
         "imageloadingstatus": ""
@@ -10513,98 +10336,6 @@
           "slots": "Slots for the Badge component."
         },
         "badgeui": "UI class overrides for the Badge component."
-      },
-      "packages_ui_src_components_bottom_sheet_types": {
-        "bottomsheetemits": {
-          "callables": {
-            "cancel": "Event handler called when the dialog is requested to be canceled.",
-            "click": "Event handler called when the dialog trigger is activated.",
-            "close": "Emitted when close occurs.",
-            "closeautofocus": "Event handler called when auto-focusing on close. Can be prevented.",
-            "confirm": "Event handler called when the dialog is requested to be closed by confirming.",
-            "drag": "Emitted when drag occurs.",
-            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
-            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
-            "fullscreen": "Event handler called when the fullscreen state of the dialog is requested to be toggled.",
-            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
-            "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
-            "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
-            "release": "Emitted when release occurs.",
-            "update_activesnappoint": "Emitted when the active snap point value changes.",
-            "update_fullscreen": "Event handler called when the fullscreen state of the dialog changes.",
-            "update_open": "Event handler called when the open state of the dialog changes."
-          },
-          "emits": "Events for the BottomSheet component."
-        },
-        "bottomsheetprops": {
-          "members": {
-            "activesnappoint": "Active snap point.",
-            "alerttype": "The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog.",
-            "cancelprops": "Properties forwarded to the cancel element.",
-            "canceltext": "The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided.\n\nDefaults to the localized `dialog.cancel` message from `ConfigProvider`.",
-            "class": "the popup class of the dialog",
-            "closeprops": "Properties forwarded to the close element.",
-            "closethreshold": "Close threshold.",
-            "confirmprops": "Properties forwarded to the confirm element.",
-            "confirmtext": "The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.\n\nDefaults to the localized `dialog.confirm` message from `ConfigProvider`.",
-            "contentprops": "Properties forwarded to the content element.",
-            "defaultfullscreen": "The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.",
-            "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
-            "description": "The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided.",
-            "descriptionprops": "Properties forwarded to the description element.",
-            "dir": "The text direction of the dialog",
-            "direction": "Direction.",
-            "dismissible": "Whether dismissible.",
-            "draggable": "Whether the dialog can be moved by dragging its header.",
-            "fadefromindex": "Fade from index.",
-            "fixed": "Whether fixed.",
-            "footerprops": "Properties forwarded to the footer element.",
-            "fullscreen": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
-            "fullscreenprops": "Properties forwarded to the fullscreen element.",
-            "handleonly": "Whether handle only.",
-            "handleprops": "Properties forwarded to the handle element.",
-            "headerprops": "Properties forwarded to the header element.",
-            "icon": "The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided.",
-            "isalert": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
-            "nested": "Whether nested.",
-            "nobodystyles": "When `true` the `body` doesn't get any styles assigned from Vaul",
-            "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
-            "overlayprops": "Properties forwarded to the overlay element.",
-            "popupprops": "Properties forwarded to the popup element.",
-            "portalprops": "Properties forwarded to the portal element.",
-            "preventscrollrestoration": "Whether prevent scroll restoration.",
-            "pure": "Whether to use the pure version of the dialog, which does not include the header and footer.\nThis is useful when you want to fully control the content of the dialog and do not need the built-in header and footer.",
-            "scrolllocktimeout": "Scroll lock timeout.",
-            "setbackgroundcoloronscale": "When `false` we don't change body's background color when the drawer is open.",
-            "shouldscalebackground": "Whether the component should scale background.",
-            "showcancel": "Whether to show the cancel button.\n\nWhen set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType=\"warning\"`.\nWhen set to `true`, the cancel button will always be shown.",
-            "showclose": "Whether show the close button in the header of the dialog.",
-            "showconfirm": "Whether to show the confirm button when the dialog is an alert dialog.\n\nThe default value is `true` when the dialog is an alert dialog.",
-            "showfullscreen": "Whether show the fullscreen toggle button in the header of the dialog.",
-            "size": "Visual size of the component.",
-            "snappoints": "Snap points.",
-            "title": "The title of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `title` slot is not provided.",
-            "titleprops": "Properties forwarded to the title element.",
-            "triggerprops": "Properties forwarded to the trigger element.",
-            "ui": "Per-slot class overrides for the component."
-          },
-          "props": "Properties for the BottomSheet component."
-        },
-        "bottomsheetslots": {
-          "callables": {
-            "cancel": "Custom content for the cancel slot.",
-            "close": "Custom content for the close slot.",
-            "confirm": "Custom content for the confirm slot.",
-            "default": "Custom content for the default slot.",
-            "description": "Custom content for the description slot.",
-            "footer": "Custom content for the footer slot.",
-            "fullscreen": "Custom content for the fullscreen slot.",
-            "title": "Custom content for the title slot.",
-            "trigger": "Custom content for the trigger slot."
-          },
-          "slots": "Slots for the BottomSheet component."
-        }
       },
       "packages_ui_src_components_breadcrumb_types": {
         "breadcrumbemits": {
@@ -12165,7 +11896,7 @@
             "headerprops": "Properties forwarded to the header element.",
             "icon": "The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided.",
             "isalert": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
+            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.\n\nSet to `'trap-focus'` to trap focus while still letting outside pointer events through (non-modal side panels such\nas `Drawer` in the `'trap-focus'` tier).",
             "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
             "overlayprops": "Properties forwarded to the overlay element.",
             "popupprops": "Properties forwarded to the popup element.",
@@ -12203,17 +11934,20 @@
           "callables": {
             "cancel": "Event handler called when the dialog is requested to be canceled.",
             "click": "Event handler called when the dialog trigger is activated.",
-            "close": "Event handler called when the dialog is requested to be closed.",
+            "close": "Emitted when close occurs.",
             "closeautofocus": "Event handler called when auto-focusing on close. Can be prevented.",
             "confirm": "Event handler called when the dialog is requested to be closed by confirming.",
+            "drag": "Emitted when drag occurs.",
             "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
             "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
             "fullscreen": "Event handler called when the fullscreen state of the dialog is requested to be toggled.",
             "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
             "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
             "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+            "release": "Emitted when release occurs.",
             "update_fullscreen": "Event handler called when the fullscreen state of the dialog changes.",
-            "update_open": "Event handler called when the open state of the dialog changes."
+            "update_open": "Event handler called when the open state of the dialog changes.",
+            "update_snappoint": "Emitted when the snap point value changes."
           },
           "emits": "Events for the Drawer component."
         },
@@ -12222,35 +11956,53 @@
             "alerttype": "The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog.",
             "cancelprops": "Properties forwarded to the cancel element.",
             "canceltext": "The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided.\n\nDefaults to the localized `dialog.cancel` message from `ConfigProvider`.",
-            "class": "the popup class of the dialog",
+            "class": "the popup class of the drawer",
             "closeprops": "Properties forwarded to the close element.",
+            "closethreshold": "Close threshold.",
             "confirmprops": "Properties forwarded to the confirm element.",
             "confirmtext": "The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.\n\nDefaults to the localized `dialog.confirm` message from `ConfigProvider`.",
             "contentprops": "Properties forwarded to the content element.",
             "defaultfullscreen": "The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.",
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "defaultsnappoint": "The snap point used when the drawer is initially rendered. Use when you do not need to control it.",
             "description": "The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided.",
             "descriptionprops": "Properties forwarded to the description element.",
             "dir": "The text direction of the dialog",
+            "dismissible": "Whether dismissible.",
             "draggable": "Whether the dialog can be moved by dragging its header.",
+            "fadefromindex": "Fade from index.",
+            "fixed": "Whether fixed.",
             "footerprops": "Properties forwarded to the footer element.",
             "fullscreen": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
             "fullscreenprops": "Properties forwarded to the fullscreen element.",
+            "handleonly": "Whether handle only.",
+            "handleprops": "Properties forwarded to the handle element.",
             "headerprops": "Properties forwarded to the header element.",
             "icon": "The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided.",
             "isalert": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
-            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
+            "modal": "Modality tier. `true` blocks outside pointer events, `'trap-focus'` only traps focus,\n`false` keeps the surface non-modal.",
+            "nested": "Whether nested.",
+            "nobodystyles": "When `true` the `body` doesn't get any styles assigned from Vaul",
             "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
             "overlayprops": "Properties forwarded to the overlay element.",
             "popupprops": "Properties forwarded to the popup element.",
             "portalprops": "Properties forwarded to the portal element.",
+            "preventscrollrestoration": "Whether prevent scroll restoration.",
             "pure": "Whether to use the pure version of the dialog, which does not include the header and footer.\nThis is useful when you want to fully control the content of the dialog and do not need the built-in header and footer.",
+            "scrolllocktimeout": "Scroll lock timeout.",
+            "setbackgroundcoloronscale": "When `false` we don't change body's background color when the drawer is open.",
+            "shouldscalebackground": "Whether the component should scale background.",
             "showcancel": "Whether to show the cancel button.\n\nWhen set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType=\"warning\"`.\nWhen set to `true`, the cancel button will always be shown.",
             "showclose": "Whether show the close button in the header of the dialog.",
             "showconfirm": "Whether to show the confirm button when the dialog is an alert dialog.\n\nThe default value is `true` when the dialog is an alert dialog.",
             "showfullscreen": "Whether show the fullscreen toggle button in the header of the dialog.",
-            "side": "Side placement of the component.",
+            "side": "Direction.",
             "size": "Visual size of the component.",
+            "snappoint": "The controlled snap point. Can be bound with `v-model:snapPoint`.",
+            "snappoints": "Snap points.",
+            "snaptosequentialpoints": "When `true`, snaps to the next sequential snap point (one step at a time).\nWhen `false`, snaps to the nearest snap point by distance.",
+            "swipeable": "Render the opt-in swipe-to-open area at the drawer's edge.",
+            "swipeareaprops": "Properties forwarded to the swipe area element.",
             "title": "The title of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `title` slot is not provided.",
             "titleprops": "Properties forwarded to the title element.",
             "triggerprops": "Properties forwarded to the trigger element.",
@@ -13085,58 +12837,6 @@
           "slots": "Slots for the NavMenu component."
         }
       },
-      "packages_ui_src_components_navigation_menu_types": {
-        "navigationmenuemits": {
-          "callables": {
-            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
-            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
-            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
-            "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
-            "select": "Emitted when select occurs.",
-            "update_modelvalue": "Emitted when the model value changes."
-          },
-          "emits": "Events for the NavigationMenu component."
-        },
-        "navigationmenuprops": {
-          "members": {
-            "class": "Additional class names applied to the root element.",
-            "contentprops": "Properties forwarded to the content element.",
-            "defaultvalue": "The value of the menu item that should be active when initially rendered.\n\nUse when you do not need to control the value state.",
-            "delayduration": "The duration from when the pointer enters the trigger until the tooltip gets opened.",
-            "dir": "The reading direction of the combobox when applicable.\n\nIf omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode.",
-            "disableclicktrigger": "If `true`, menu cannot be open by click on trigger",
-            "disablehovertrigger": "If `true`, menu cannot be open by hover on trigger",
-            "disablepointerleaveclose": "If `true`, menu will not close during pointer leave event",
-            "indicatorprops": "Properties forwarded to the indicator element.",
-            "itemprops": "Properties forwarded to the item element.",
-            "items": "The items to render in the navigation menu.",
-            "linkprops": "Properties forwarded to the link element.",
-            "listprops": "Properties forwarded to the list element.",
-            "modelvalue": "The controlled value of the menu item to activate. Can be used as `v-model`.",
-            "orientation": "The orientation of the menu.",
-            "size": "Visual size of the component.",
-            "skipdelayduration": "How much time a user has to enter another trigger without incurring a delay again.",
-            "subitemprops": "Properties forwarded to the sub item element.",
-            "sublistprops": "Properties forwarded to the sub list element.",
-            "triggerprops": "Properties forwarded to the trigger element.",
-            "ui": "Per-slot class overrides for the component.",
-            "unmountonhide": "When `true`, the element will be unmounted on closed state.",
-            "viewportprops": "Properties forwarded to the viewport element."
-          },
-          "props": "Properties for the NavigationMenu component."
-        },
-        "navigationmenuslots": {
-          "callables": {
-            "item": "",
-            "item_children": "",
-            "item_leading": "",
-            "item_link_icon": "",
-            "item_trailing": "",
-            "item_trigger_icon": ""
-          },
-          "slots": "Slots for the NavigationMenu component."
-        }
-      },
       "packages_ui_src_components_page_tabs_types": {
         "pagetabsemits": {
           "emits": "Events for the PageTabs component."
@@ -13394,55 +13094,6 @@
             "trigger": "Custom content for the trigger slot."
           },
           "slots": "Slots for the Popover component."
-        }
-      },
-      "packages_ui_src_components_popper_types": {
-        "popperemits": {
-          "callables": {
-            "closeautofocus": "Event handler called when auto-focusing on close. Can be prevented.",
-            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
-            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
-            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
-            "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
-            "placed": "",
-            "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
-            "update_open": ""
-          },
-          "emits": "Events for the Popper component."
-        },
-        "popperprops": {
-          "members": {
-            "arrowprops": "",
-            "class": "class of popup",
-            "closedelay": "",
-            "defaultopen": "",
-            "dir": "",
-            "disabled": "",
-            "modal": "",
-            "open": "",
-            "opendelay": "",
-            "openonfocus": "",
-            "placement": "",
-            "popupprops": "",
-            "portalprops": "",
-            "positionerprops": "",
-            "pressopendelay": "",
-            "showarrow": "",
-            "size": "Visual size of the component.",
-            "skipdelayduration": "",
-            "trigger": "",
-            "triggerprops": "",
-            "ui": "Per-slot class overrides for the component."
-          },
-          "props": "Properties for the Popper component."
-        },
-        "poppersize": "",
-        "popperslots": {
-          "callables": {
-            "default": "",
-            "trigger": ""
-          },
-          "slots": "Slots for the Popper component."
         }
       },
       "packages_ui_src_components_progress_types": {
@@ -13758,6 +13409,81 @@
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the Separator component."
+        }
+      },
+      "packages_ui_src_components_sheet_types": {
+        "sheetemits": {
+          "callables": {
+            "cancel": "Event handler called when the dialog is requested to be canceled.",
+            "click": "Event handler called when the dialog trigger is activated.",
+            "close": "Event handler called when the dialog is requested to be closed.",
+            "closeautofocus": "Event handler called when auto-focusing on close. Can be prevented.",
+            "confirm": "Event handler called when the dialog is requested to be closed by confirming.",
+            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
+            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "fullscreen": "Event handler called when the fullscreen state of the dialog is requested to be toggled.",
+            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
+            "openautofocus": "Event handler called when auto-focusing on open. Can be prevented.",
+            "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+            "update_fullscreen": "Event handler called when the fullscreen state of the dialog changes.",
+            "update_open": "Event handler called when the open state of the dialog changes."
+          },
+          "emits": "Events for the Sheet component."
+        },
+        "sheetprops": {
+          "members": {
+            "alerttype": "The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog.",
+            "cancelprops": "Properties forwarded to the cancel element.",
+            "canceltext": "The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided.\n\nDefaults to the localized `dialog.cancel` message from `ConfigProvider`.",
+            "class": "the popup class of the dialog",
+            "closeprops": "Properties forwarded to the close element.",
+            "confirmprops": "Properties forwarded to the confirm element.",
+            "confirmtext": "The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.\n\nDefaults to the localized `dialog.confirm` message from `ConfigProvider`.",
+            "contentprops": "Properties forwarded to the content element.",
+            "defaultfullscreen": "The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state.",
+            "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "description": "The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided.",
+            "descriptionprops": "Properties forwarded to the description element.",
+            "dir": "The text direction of the dialog",
+            "draggable": "Whether the dialog can be moved by dragging its header.",
+            "footerprops": "Properties forwarded to the footer element.",
+            "fullscreen": "The controlled fullscreen state of the dialog. Can be bound with `v-model:fullscreen`.",
+            "fullscreenprops": "Properties forwarded to the fullscreen element.",
+            "headerprops": "Properties forwarded to the header element.",
+            "icon": "The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided.",
+            "isalert": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
+            "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.\n\nSet to `'trap-focus'` to trap focus while still letting outside pointer events through (non-modal side panels such\nas `Drawer` in the `'trap-focus'` tier).",
+            "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+            "overlayprops": "Properties forwarded to the overlay element.",
+            "popupprops": "Properties forwarded to the popup element.",
+            "portalprops": "Properties forwarded to the portal element.",
+            "pure": "Whether to use the pure version of the dialog, which does not include the header and footer.\nThis is useful when you want to fully control the content of the dialog and do not need the built-in header and footer.",
+            "showcancel": "Whether to show the cancel button.\n\nWhen set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType=\"warning\"`.\nWhen set to `true`, the cancel button will always be shown.",
+            "showclose": "Whether show the close button in the header of the dialog.",
+            "showconfirm": "Whether to show the confirm button when the dialog is an alert dialog.\n\nThe default value is `true` when the dialog is an alert dialog.",
+            "showfullscreen": "Whether show the fullscreen toggle button in the header of the dialog.",
+            "side": "Side placement of the component.",
+            "size": "Visual size of the component.",
+            "title": "The title of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `title` slot is not provided.",
+            "titleprops": "Properties forwarded to the title element.",
+            "triggerprops": "Properties forwarded to the trigger element.",
+            "ui": "Per-slot class overrides for the component."
+          },
+          "props": "Properties for the Sheet component."
+        },
+        "sheetslots": {
+          "callables": {
+            "cancel": "Custom content for the cancel slot.",
+            "close": "Custom content for the close slot.",
+            "confirm": "Custom content for the confirm slot.",
+            "default": "Custom content for the default slot.",
+            "description": "Custom content for the description slot.",
+            "footer": "Custom content for the footer slot.",
+            "fullscreen": "Custom content for the fullscreen slot.",
+            "title": "Custom content for the title slot.",
+            "trigger": "Custom content for the trigger slot."
+          },
+          "slots": "Slots for the Sheet component."
         }
       },
       "packages_ui_src_components_skeleton_types": {

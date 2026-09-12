@@ -2163,7 +2163,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardrootprops.members.dir",
             "default": null,
-            "inheritedFrom": "dir",
+            "inheritedFrom": "PopperRootProps.dir",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": [
               {
@@ -2188,7 +2188,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardrootprops.members.modal",
             "default": null,
-            "inheritedFrom": "modal",
+            "inheritedFrom": "PopperRootProps.modal",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           },
@@ -2199,7 +2199,7 @@
             "description": "",
             "descriptionKey": "api.generated.packages_headless_src_components_hover_card_types.hovercardrootprops.members.disabled",
             "default": null,
-            "inheritedFrom": "disabled",
+            "inheritedFrom": "PopperRootProps.disabled",
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
           }
