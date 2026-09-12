@@ -1,4 +1,4 @@
-import type { SkeletonProps as _SkeletonProps } from '@soybeanjs/headless/skeleton';
+import type { PrimitiveWithBaseProps } from '@soybeanjs/headless/primitive';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { SkeletonShape } from '@/styles/skeleton';
 import type { ThemeSize } from '@/theme';
@@ -6,7 +6,7 @@ import type { ThemeSize } from '@/theme';
 /**
  * Properties for the Skeleton component.
  */
-export interface SkeletonProps extends _SkeletonProps {
+export interface SkeletonProps extends PrimitiveWithBaseProps {
   /**
    * Additional class names applied to the root element.
    */
