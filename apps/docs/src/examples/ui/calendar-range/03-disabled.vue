@@ -1,14 +1,13 @@
 <script setup lang="ts">
+import { createDate } from '@soybeanjs/headless/date';
 import { SCalendarRange } from '@soybeanjs/ui';
-import { CalendarDate } from '@internationalized/date';
-import type { DateValue } from '@internationalized/date';
 
 const value = {
-  start: new CalendarDate(2026, 4, 18),
-  end: new CalendarDate(2026, 4, 22)
+  start: createDate(2026, 4, 18),
+  end: createDate(2026, 4, 22)
 };
 
-const isDateDisabled = (date: DateValue) => date.day === 20;
+const isDateDisabled = (date: Date) => date.getDate() === 20;
 </script>
 
 <template>

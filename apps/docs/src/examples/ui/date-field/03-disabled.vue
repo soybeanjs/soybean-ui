@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import { createDate } from '@soybeanjs/headless/date';
 import { SDateField } from '@soybeanjs/ui';
-import { CalendarDate } from '@internationalized/date';
 
-const value = new CalendarDate(2026, 4, 19);
+const value = createDate(2026, 4, 19);
 </script>
 
 <template>

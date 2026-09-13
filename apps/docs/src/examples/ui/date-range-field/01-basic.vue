@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
+import { createDate } from '@soybeanjs/headless/date';
 import { SDateRangeField } from '@soybeanjs/ui';
-import { CalendarDate } from '@internationalized/date';
 
 const value = shallowRef({
-  start: new CalendarDate(2026, 4, 19),
-  end: new CalendarDate(2026, 4, 26)
+  start: createDate(2026, 4, 19),
+  end: createDate(2026, 4, 26)
 });
 </script>
 

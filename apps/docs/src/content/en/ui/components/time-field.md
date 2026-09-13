@@ -64,7 +64,7 @@ A segmented time input that renders individually editable hour, minute, and opti
 
 ### Cautions
 
-- The value is a `TimeValue` from `@internationalized/date` — a `Time` or `CalendarDateTime`, not a native `string`. Use it with the other date-family components.
+- The value is a `TimeValue` — a native `Date` whose hour/minute/second parts are meaningful (the date part is normalized), not a `string`. Use it with the other date-family components.
 - `defaultValue` is only read on mount — use `v-model` for external control.
 - When the value is empty the segments display the placeholder time (derived from `defaultValue`/`defaultPlaceholder` or the current time) — the submitted form value is still empty until the user types.
 - `granularity` defaults to `'minute'`; pass `'second'` for seconds segments or `'hour'` to hide the minute segment.
@@ -91,4 +91,4 @@ Pass `minValue`/`maxValue` — times outside are marked `data-invalid` and rejec
 
 ### How is `STimeField` different from `SDateField` with `granularity: 'minute'`?
 
-`STimeField` is a pure time input — it never renders date segments. `SDateField` with a time granularity renders the full date and time together (for example `2026/04/19 14:30`) and accepts a `CalendarDateTime` value.
+`STimeField` is a pure time input — it never renders date segments. `SDateField` with a time granularity renders the full date and time together (for example `2026/04/19 14:30`) and accepts a `{ date, time }` value.

@@ -599,7 +599,7 @@
                 "name": "CalendarCellProps",
                 "kind": "interface",
                 "type": "CalendarCellProps",
-                "resolvedType": "{ date: import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime; asChild?: boolean; as?: AsTag | Component }",
+                "resolvedType": "{ date: Date; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CalendarCell component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarcellprops",
                 "sourcePath": "packages/headless/src/components/calendar/types.ts",
@@ -608,7 +608,7 @@
                 "members": [
                   {
                     "name": "date",
-                    "type": "import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime",
+                    "type": "Date",
                     "required": true,
                     "description": "Date.",
                     "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarcellprops.members.date",
@@ -658,7 +658,7 @@
                 "name": "CalendarCellTriggerProps",
                 "kind": "interface",
                 "type": "CalendarCellTriggerProps",
-                "resolvedType": "{ day: import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime; month: import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "resolvedType": "{ day: Date; month: Date; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CalendarCellTrigger component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarcelltriggerprops",
                 "sourcePath": "packages/headless/src/components/calendar/types.ts",
@@ -667,7 +667,7 @@
                 "members": [
                   {
                     "name": "day",
-                    "type": "import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime",
+                    "type": "Date",
                     "required": true,
                     "description": "Day.",
                     "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarcelltriggerprops.members.day",
@@ -678,7 +678,7 @@
                   },
                   {
                     "name": "month",
-                    "type": "import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime",
+                    "type": "Date",
                     "required": true,
                     "description": "Month.",
                     "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarcelltriggerprops.members.month",
@@ -844,15 +844,51 @@
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
+                "name": "DateTimeValue",
+                "kind": "interface",
+                "type": "import(\"../../date\").DateTimeValue",
+                "resolvedType": "{ date: Date; time?: Date }",
+                "description": "A date with an optional time-of-day part. `date` carries the calendar day\n(local 00:00 by convention); `time` carries the time-of-day when the value\nhas time granularity.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "date",
+                    "type": "Date",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.date",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "time",
+                    "type": "Date",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.time",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              },
+              {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "type": "Date | import(\"../../date\").DateTimeValue",
+                "resolvedType": "Date | DateTimeValue",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -869,15 +905,51 @@
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
+                "name": "DateTimeValue",
+                "kind": "interface",
+                "type": "import(\"../../date\").DateTimeValue",
+                "resolvedType": "{ date: Date; time?: Date }",
+                "description": "A date with an optional time-of-day part. `date` carries the calendar day\n(local 00:00 by convention); `time` carries the time-of-day when the value\nhas time granularity.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "date",
+                    "type": "Date",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.date",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "time",
+                    "type": "Date",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.time",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              },
+              {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "type": "Date | import(\"../../date\").DateTimeValue",
+                "resolvedType": "Date | DateTimeValue",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -1010,15 +1082,51 @@
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
+                "name": "DateTimeValue",
+                "kind": "interface",
+                "type": "import(\"../../date\").DateTimeValue",
+                "resolvedType": "{ date: Date; time?: Date }",
+                "description": "A date with an optional time-of-day part. `date` carries the calendar day\n(local 00:00 by convention); `time` carries the time-of-day when the value\nhas time granularity.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "date",
+                    "type": "Date",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.date",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "time",
+                    "type": "Date",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.time",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              },
+              {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "type": "Date | import(\"../../date\").DateTimeValue",
+                "resolvedType": "Date | DateTimeValue",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -1035,15 +1143,51 @@
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
+                "name": "DateTimeValue",
+                "kind": "interface",
+                "type": "import(\"../../date\").DateTimeValue",
+                "resolvedType": "{ date: Date; time?: Date }",
+                "description": "A date with an optional time-of-day part. `date` carries the calendar day\n(local 00:00 by convention); `time` carries the time-of-day when the value\nhas time granularity.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "date",
+                    "type": "Date",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.date",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "time",
+                    "type": "Date",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.time",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              },
+              {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "type": "Date | import(\"../../date\").DateTimeValue",
+                "resolvedType": "Date | DateTimeValue",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -1084,8 +1228,8 @@
               {
                 "name": "DateMatcher",
                 "kind": "typeAlias",
-                "type": "(date: DateValue) => boolean",
-                "resolvedType": "(date: import(\"@internationalized/date\").CalendarDate | CalendarDateTime | ZonedDateTime) => boolean",
+                "type": "(date: Date) => boolean",
+                "resolvedType": "(date: Date) => boolean",
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.datematcher",
                 "sourcePath": "packages/headless/src/date/types.ts",
@@ -1109,8 +1253,8 @@
               {
                 "name": "DateMatcher",
                 "kind": "typeAlias",
-                "type": "(date: DateValue) => boolean",
-                "resolvedType": "(date: import(\"@internationalized/date\").CalendarDate | CalendarDateTime | ZonedDateTime) => boolean",
+                "type": "(date: Date) => boolean",
+                "resolvedType": "(date: Date) => boolean",
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.datematcher",
                 "sourcePath": "packages/headless/src/date/types.ts",
@@ -1134,13 +1278,13 @@
               {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
+                "type": "Date | import(\"../../date\").DateTimeValue",
                 "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -1159,13 +1303,13 @@
               {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
+                "type": "Date | import(\"../../date\").DateTimeValue",
                 "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -1275,15 +1419,28 @@
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
+                "name": "DateTimeValue",
+                "kind": "interface",
+                "type": "import(\"../../date\").DateTimeValue",
+                "resolvedType": null,
+                "description": "A date with an optional time-of-day part. `date` carries the calendar day\n(local 00:00 by convention); `time` carries the time-of-day when the value\nhas time granularity.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
+                "type": "Date | import(\"../../date\").DateTimeValue",
                 "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -1296,7 +1453,7 @@
         "kind": "slots",
         "name": "CalendarSlots",
         "type": "TypeAlias CalendarSlots<M>: CalendarCompactSlots<M>",
-        "resolvedType": "{ CalendarCellTrigger?: ((props: { modelValue: CalendarModelValue<M>; }) => any); prev?: ((props: { disabled: boolean; }) => any); heading?: ((props: CalendarHeadingSlotProps) => any); next?: ((props: { disabled: boolean; }) => any); \"head-cell\"?: ((props: { date: DateValue; index: number; label: string; }) => any); day?: ((props: CalendarDaySlotProps) => any) }",
+        "resolvedType": "{ CalendarCellTrigger?: ((props: { modelValue: CalendarModelValue<M>; }) => any); prev?: ((props: { disabled: boolean; }) => any); heading?: ((props: CalendarHeadingSlotProps) => any); next?: ((props: { disabled: boolean; }) => any); \"head-cell\"?: ((props: { date: Date; index: number; label: string; }) => any); day?: ((props: CalendarDaySlotProps) => any) }",
         "description": "Slots for the Calendar component.",
         "descriptionKey": "api.generated.packages_ui_src_components_calendar_types.calendarslots.slots",
         "sourcePath": "packages/ui/src/components/calendar/types.ts",
@@ -1401,8 +1558,8 @@
           },
           {
             "name": "head-cell",
-            "type": "((props: { date: DateValue; index: number; label: string; }) => any) | undefined",
-            "parameters": "((props: { date: DateValue; index: number; label: string; }) => any) | undefined",
+            "type": "((props: { date: Date; index: number; label: string; }) => any) | undefined",
+            "parameters": "((props: { date: Date; index: number; label: string; }) => any) | undefined",
             "required": false,
             "description": "Custom content for the head cell slot.",
             "descriptionKey": "api.generated.packages_ui_src_components_calendar_types.calendarslots.callables.head_cell",
@@ -1411,26 +1568,13 @@
               {
                 "name": "__type",
                 "kind": "typeLiteral",
-                "type": "{ date: DateValue; index: number; label: string; }",
+                "type": "{ date: Date; index: number; label: string; }",
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.type",
                 "sourcePath": "packages/headless/src/components/calendar/types.ts",
                 "typeParameters": [],
                 "external": false,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
                 "members": [],
                 "callables": []
               }
@@ -1469,7 +1613,7 @@
         "kind": "props",
         "name": "CalendarCellProps",
         "type": "Interface CalendarCellProps",
-        "resolvedType": "{ date: import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ date: Date; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the CalendarCell component.",
         "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarcellprops.props",
         "sourcePath": "packages/headless/src/components/calendar/types.ts",
@@ -1477,28 +1621,14 @@
         "members": [
           {
             "name": "date",
-            "type": "import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime",
+            "type": "Date",
             "required": true,
             "description": "Date.",
             "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarcellprops.members.date",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "asChild",
@@ -1554,7 +1684,7 @@
         "kind": "props",
         "name": "CalendarCellTriggerProps",
         "type": "Interface CalendarCellTriggerProps",
-        "resolvedType": "{ day: import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime; month: import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ day: Date; month: Date; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the CalendarCellTrigger component.",
         "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarcelltriggerprops.props",
         "sourcePath": "packages/headless/src/components/calendar/types.ts",
@@ -1562,53 +1692,25 @@
         "members": [
           {
             "name": "day",
-            "type": "import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime",
+            "type": "Date",
             "required": true,
             "description": "Day.",
             "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarcelltriggerprops.members.day",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "month",
-            "type": "import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime",
+            "type": "Date",
             "required": true,
             "description": "Month.",
             "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarcelltriggerprops.members.month",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "type",
@@ -2347,7 +2449,7 @@
                 "name": "CalendarCellProps",
                 "kind": "interface",
                 "type": "CalendarCellProps",
-                "resolvedType": "{ date: import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime; asChild?: boolean; as?: AsTag | Component }",
+                "resolvedType": "{ date: Date; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CalendarCell component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarcellprops",
                 "sourcePath": "packages/headless/src/components/calendar/types.ts",
@@ -2356,7 +2458,7 @@
                 "members": [
                   {
                     "name": "date",
-                    "type": "import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime",
+                    "type": "Date",
                     "required": true,
                     "description": "Date.",
                     "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarcellprops.members.date",
@@ -2406,7 +2508,7 @@
                 "name": "CalendarCellTriggerProps",
                 "kind": "interface",
                 "type": "CalendarCellTriggerProps",
-                "resolvedType": "{ day: import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime; month: import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "resolvedType": "{ day: Date; month: Date; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CalendarCellTrigger component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarcelltriggerprops",
                 "sourcePath": "packages/headless/src/components/calendar/types.ts",
@@ -2415,7 +2517,7 @@
                 "members": [
                   {
                     "name": "day",
-                    "type": "import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime",
+                    "type": "Date",
                     "required": true,
                     "description": "Day.",
                     "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarcelltriggerprops.members.day",
@@ -2426,7 +2528,7 @@
                   },
                   {
                     "name": "month",
-                    "type": "import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime",
+                    "type": "Date",
                     "required": true,
                     "description": "Month.",
                     "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarcelltriggerprops.members.month",
@@ -2592,15 +2694,51 @@
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
+                "name": "DateTimeValue",
+                "kind": "interface",
+                "type": "import(\"../../date\").DateTimeValue",
+                "resolvedType": "{ date: Date; time?: Date }",
+                "description": "A date with an optional time-of-day part. `date` carries the calendar day\n(local 00:00 by convention); `time` carries the time-of-day when the value\nhas time granularity.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "date",
+                    "type": "Date",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.date",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "time",
+                    "type": "Date",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.time",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              },
+              {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "type": "Date | import(\"../../date\").DateTimeValue",
+                "resolvedType": "Date | DateTimeValue",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -2617,15 +2755,51 @@
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
+                "name": "DateTimeValue",
+                "kind": "interface",
+                "type": "import(\"../../date\").DateTimeValue",
+                "resolvedType": "{ date: Date; time?: Date }",
+                "description": "A date with an optional time-of-day part. `date` carries the calendar day\n(local 00:00 by convention); `time` carries the time-of-day when the value\nhas time granularity.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "date",
+                    "type": "Date",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.date",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "time",
+                    "type": "Date",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.time",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              },
+              {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "type": "Date | import(\"../../date\").DateTimeValue",
+                "resolvedType": "Date | DateTimeValue",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -2758,15 +2932,51 @@
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
+                "name": "DateTimeValue",
+                "kind": "interface",
+                "type": "import(\"../../date\").DateTimeValue",
+                "resolvedType": "{ date: Date; time?: Date }",
+                "description": "A date with an optional time-of-day part. `date` carries the calendar day\n(local 00:00 by convention); `time` carries the time-of-day when the value\nhas time granularity.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "date",
+                    "type": "Date",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.date",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "time",
+                    "type": "Date",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.time",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              },
+              {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "type": "Date | import(\"../../date\").DateTimeValue",
+                "resolvedType": "Date | DateTimeValue",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -2783,15 +2993,51 @@
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
+                "name": "DateTimeValue",
+                "kind": "interface",
+                "type": "import(\"../../date\").DateTimeValue",
+                "resolvedType": "{ date: Date; time?: Date }",
+                "description": "A date with an optional time-of-day part. `date` carries the calendar day\n(local 00:00 by convention); `time` carries the time-of-day when the value\nhas time granularity.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "date",
+                    "type": "Date",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.date",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "time",
+                    "type": "Date",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.time",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              },
+              {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "type": "Date | import(\"../../date\").DateTimeValue",
+                "resolvedType": "Date | DateTimeValue",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -2832,8 +3078,8 @@
               {
                 "name": "DateMatcher",
                 "kind": "typeAlias",
-                "type": "(date: DateValue) => boolean",
-                "resolvedType": "(date: import(\"@internationalized/date\").CalendarDate | CalendarDateTime | ZonedDateTime) => boolean",
+                "type": "(date: Date) => boolean",
+                "resolvedType": "(date: Date) => boolean",
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.datematcher",
                 "sourcePath": "packages/headless/src/date/types.ts",
@@ -2857,8 +3103,8 @@
               {
                 "name": "DateMatcher",
                 "kind": "typeAlias",
-                "type": "(date: DateValue) => boolean",
-                "resolvedType": "(date: import(\"@internationalized/date\").CalendarDate | CalendarDateTime | ZonedDateTime) => boolean",
+                "type": "(date: Date) => boolean",
+                "resolvedType": "(date: Date) => boolean",
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.datematcher",
                 "sourcePath": "packages/headless/src/date/types.ts",
@@ -2882,13 +3128,13 @@
               {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
+                "type": "Date | import(\"../../date\").DateTimeValue",
                 "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -2907,13 +3153,13 @@
               {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
+                "type": "Date | import(\"../../date\").DateTimeValue",
                 "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -3023,15 +3269,28 @@
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
+                "name": "DateTimeValue",
+                "kind": "interface",
+                "type": "import(\"../../date\").DateTimeValue",
+                "resolvedType": null,
+                "description": "A date with an optional time-of-day part. `date` carries the calendar day\n(local 00:00 by convention); `time` carries the time-of-day when the value\nhas time granularity.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
+                "type": "Date | import(\"../../date\").DateTimeValue",
                 "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -3044,7 +3303,7 @@
         "kind": "slots",
         "name": "CalendarCompactSlots",
         "type": "TypeAlias CalendarCompactSlots<M>",
-        "resolvedType": "{ CalendarCellTrigger?: ((props: { modelValue: CalendarModelValue<M>; }) => any); prev?: ((props: { disabled: boolean; }) => any); heading?: ((props: CalendarHeadingSlotProps) => any); next?: ((props: { disabled: boolean; }) => any); \"head-cell\"?: ((props: { date: DateValue; index: number; label: string; }) => any); day?: ((props: CalendarDaySlotProps) => any) }",
+        "resolvedType": "{ CalendarCellTrigger?: ((props: { modelValue: CalendarModelValue<M>; }) => any); prev?: ((props: { disabled: boolean; }) => any); heading?: ((props: CalendarHeadingSlotProps) => any); next?: ((props: { disabled: boolean; }) => any); \"head-cell\"?: ((props: { date: Date; index: number; label: string; }) => any); day?: ((props: CalendarDaySlotProps) => any) }",
         "description": "Slots for the CalendarCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarcompactslots.slots",
         "sourcePath": "packages/headless/src/components/calendar/types.ts",
@@ -3149,8 +3408,8 @@
           },
           {
             "name": "head-cell",
-            "type": "((props: { date: DateValue; index: number; label: string; }) => any) | undefined",
-            "parameters": "((props: { date: DateValue; index: number; label: string; }) => any) | undefined",
+            "type": "((props: { date: Date; index: number; label: string; }) => any) | undefined",
+            "parameters": "((props: { date: Date; index: number; label: string; }) => any) | undefined",
             "required": false,
             "description": "Custom content for the head cell slot.",
             "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarcompactslots.callables.head_cell",
@@ -3159,26 +3418,13 @@
               {
                 "name": "__type",
                 "kind": "typeLiteral",
-                "type": "{ date: DateValue; index: number; label: string; }",
+                "type": "{ date: Date; index: number; label: string; }",
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.type",
                 "sourcePath": "packages/headless/src/components/calendar/types.ts",
                 "typeParameters": [],
                 "external": false,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
                 "members": [],
                 "callables": []
               }
@@ -3747,13 +3993,13 @@
               {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
+                "type": "Date | import(\"../../date\").DateTimeValue",
                 "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -3868,13 +4114,13 @@
               {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
+                "type": "Date | import(\"../../date\").DateTimeValue",
                 "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -4084,15 +4330,51 @@
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
+                "name": "DateTimeValue",
+                "kind": "interface",
+                "type": "import(\"../../date\").DateTimeValue",
+                "resolvedType": "{ date: Date; time?: Date }",
+                "description": "A date with an optional time-of-day part. `date` carries the calendar day\n(local 00:00 by convention); `time` carries the time-of-day when the value\nhas time granularity.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "date",
+                    "type": "Date",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.date",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "time",
+                    "type": "Date",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.time",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              },
+              {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "type": "Date | import(\"../../date\").DateTimeValue",
+                "resolvedType": "Date | DateTimeValue",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -4109,15 +4391,51 @@
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
+                "name": "DateTimeValue",
+                "kind": "interface",
+                "type": "import(\"../../date\").DateTimeValue",
+                "resolvedType": "{ date: Date; time?: Date }",
+                "description": "A date with an optional time-of-day part. `date` carries the calendar day\n(local 00:00 by convention); `time` carries the time-of-day when the value\nhas time granularity.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "date",
+                    "type": "Date",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.date",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "time",
+                    "type": "Date",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.time",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              },
+              {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "type": "Date | import(\"../../date\").DateTimeValue",
+                "resolvedType": "Date | DateTimeValue",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -4250,15 +4568,51 @@
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
+                "name": "DateTimeValue",
+                "kind": "interface",
+                "type": "import(\"../../date\").DateTimeValue",
+                "resolvedType": "{ date: Date; time?: Date }",
+                "description": "A date with an optional time-of-day part. `date` carries the calendar day\n(local 00:00 by convention); `time` carries the time-of-day when the value\nhas time granularity.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "date",
+                    "type": "Date",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.date",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "time",
+                    "type": "Date",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.time",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              },
+              {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "type": "Date | import(\"../../date\").DateTimeValue",
+                "resolvedType": "Date | DateTimeValue",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -4275,15 +4629,51 @@
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
+                "name": "DateTimeValue",
+                "kind": "interface",
+                "type": "import(\"../../date\").DateTimeValue",
+                "resolvedType": "{ date: Date; time?: Date }",
+                "description": "A date with an optional time-of-day part. `date` carries the calendar day\n(local 00:00 by convention); `time` carries the time-of-day when the value\nhas time granularity.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "date",
+                    "type": "Date",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.date",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "time",
+                    "type": "Date",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.time",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              },
+              {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "type": "Date | import(\"../../date\").DateTimeValue",
+                "resolvedType": "Date | DateTimeValue",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -4324,8 +4714,8 @@
               {
                 "name": "DateMatcher",
                 "kind": "typeAlias",
-                "type": "(date: DateValue) => boolean",
-                "resolvedType": "(date: import(\"@internationalized/date\").CalendarDate | CalendarDateTime | ZonedDateTime) => boolean",
+                "type": "(date: Date) => boolean",
+                "resolvedType": "(date: Date) => boolean",
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.datematcher",
                 "sourcePath": "packages/headless/src/date/types.ts",
@@ -4349,8 +4739,8 @@
               {
                 "name": "DateMatcher",
                 "kind": "typeAlias",
-                "type": "(date: DateValue) => boolean",
-                "resolvedType": "(date: import(\"@internationalized/date\").CalendarDate | CalendarDateTime | ZonedDateTime) => boolean",
+                "type": "(date: Date) => boolean",
+                "resolvedType": "(date: Date) => boolean",
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.datematcher",
                 "sourcePath": "packages/headless/src/date/types.ts",
@@ -4374,13 +4764,13 @@
               {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
+                "type": "Date | import(\"../../date\").DateTimeValue",
                 "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -4399,13 +4789,13 @@
               {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
+                "type": "Date | import(\"../../date\").DateTimeValue",
                 "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -4515,15 +4905,28 @@
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
+                "name": "DateTimeValue",
+                "kind": "interface",
+                "type": "import(\"../../date\").DateTimeValue",
+                "resolvedType": null,
+                "description": "A date with an optional time-of-day part. `date` carries the calendar day\n(local 00:00 by convention); `time` carries the time-of-day when the value\nhas time granularity.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
+                "type": "Date | import(\"../../date\").DateTimeValue",
                 "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -4536,7 +4939,7 @@
         "kind": "slotProps",
         "name": "CalendarRootSlotProps",
         "type": "Interface CalendarRootSlotProps<M>",
-        "resolvedType": "{ date: import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime; headingValue: string; placeholder: import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime; grid: DateGrid<DateValue>[]; weekDays: string[]; weekStartsOn: number; locale: string; fixedWeeks: boolean; modelValue: M extends true ? DateValue[] | undefined : DateValue | undefined; formatter: Formatter; minValue: DateValue | undefined; maxValue: DateValue | undefined; disabled: boolean; onPlaceholderChange: (date: DateValue) => void; yearOptions: SelectOptionData<number>[]; onYearChange: (value?: number | undefined) => void; monthOptions: SelectOptionData<number>[]; onMonthChange: (value?: number | undefined) => void }",
+        "resolvedType": "{ date: Date | import(\"../../date\").DateTimeValue; headingValue: string; placeholder: Date | import(\"../../date\").DateTimeValue; grid: DateGrid<Date>[]; weekDays: string[]; weekStartsOn: number; locale: string; fixedWeeks: boolean; modelValue: M extends true ? DateValue[] | undefined : DateValue | undefined; formatter: Formatter; minValue: DateValue | undefined; maxValue: DateValue | undefined; disabled: boolean; onPlaceholderChange: (date: DateValue) => void; yearOptions: SelectOptionData<number>[]; onYearChange: (value?: number | undefined) => void; monthOptions: SelectOptionData<number>[]; onMonthChange: (value?: number | undefined) => void }",
         "description": "Slot properties for the CalendarRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarrootslotprops.slotprops",
         "sourcePath": "packages/headless/src/components/calendar/types.ts",
@@ -4544,7 +4947,7 @@
         "members": [
           {
             "name": "date",
-            "type": "import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime",
+            "type": "Date | import(\"../../date\").DateTimeValue",
             "required": true,
             "description": "Date exposed in the slot scope.",
             "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarrootslotprops.members.date",
@@ -4555,13 +4958,13 @@
               {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "type": "Date | import(\"../../date\").DateTimeValue",
+                "resolvedType": "Date | DateTimeValue",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -4580,7 +4983,7 @@
           },
           {
             "name": "placeholder",
-            "type": "import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime",
+            "type": "Date | import(\"../../date\").DateTimeValue",
             "required": true,
             "description": "Placeholder exposed in the slot scope.",
             "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarrootslotprops.members.placeholder",
@@ -4591,13 +4994,13 @@
               {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "type": "Date | import(\"../../date\").DateTimeValue",
+                "resolvedType": "Date | DateTimeValue",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -4605,28 +5008,14 @@
           },
           {
             "name": "grid",
-            "type": "DateGrid<DateValue>[]",
+            "type": "DateGrid<Date>[]",
             "required": true,
             "description": "Grid exposed in the slot scope.",
             "descriptionKey": "api.generated.packages_headless_src_components_calendar_types.calendarrootslotprops.members.grid",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "weekDays",
@@ -4711,7 +5100,7 @@
                 "name": "Formatter",
                 "kind": "interface",
                 "type": "Formatter",
-                "resolvedType": "{ getLocale: () => string; setLocale: (newLocale: string) => void; custom: (date: Date, options: DateFormatterOptions) => string; selectedDate: (date: DateValue | TimeValue, includeTime?: boolean) => string; dayOfWeek: (date: Date, length?: DateFormatterOptions['weekday']) => string; fullMonthAndYear: (date: Date, options?: DateFormatterOptions) => string; fullMonth: (date: Date, options?: DateFormatterOptions) => string; fullYear: (date: Date, options?: DateFormatterOptions) => string; dayPeriod: (date: Date) => string; part: (dateObj: DateValue | TimeValue, type: Intl.DateTimeFormatPartTypes, options?: DateFormatterOptions) => string; toParts: (date: DateValue | TimeValue, options?: DateFormatterOptions) => Intl.DateTimeFormatPart[]; getMonths: () => { label: string; value: number; }[] }",
+                "resolvedType": "{ getLocale: () => string; setLocale: (newLocale: string) => void; custom: (date: Date, options: DateFormatterOptions) => string; selectedDate: (date: DateValue, includeTime?: boolean) => string; dayOfWeek: (date: Date, length?: DateFormatterOptions['weekday']) => string; fullMonthAndYear: (date: Date, options?: DateFormatterOptions) => string; fullMonth: (date: Date, options?: DateFormatterOptions) => string; fullYear: (date: Date, options?: DateFormatterOptions) => string; dayPeriod: (date: Date) => string; part: (date: Date, type: Intl.DateTimeFormatPartTypes, options?: DateFormatterOptions) => string; toParts: (date: Date, options?: DateFormatterOptions) => Intl.DateTimeFormatPart[]; getMonths: () => { label: string; value: number; }[] }",
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_date_formatter.formatter",
                 "sourcePath": "packages/headless/src/date/formatter.ts",
@@ -4764,8 +5153,8 @@
                   },
                   {
                     "name": "selectedDate",
-                    "type": "(date: DateValue | TimeValue, includeTime?: boolean) => string",
-                    "parameters": "date: import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | ZonedDateTime | import(\"@internationalized/date\").Time, includeTime?: boolean | undefined",
+                    "type": "(date: DateValue, includeTime?: boolean) => string",
+                    "parameters": "date: Date | import(\"./types\").DateTimeValue, includeTime?: boolean | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_date_formatter.formatter.callables.selecteddate",
@@ -4824,8 +5213,8 @@
                   },
                   {
                     "name": "part",
-                    "type": "(dateObj: DateValue | TimeValue, type: Intl.DateTimeFormatPartTypes, options?: DateFormatterOptions) => string",
-                    "parameters": "dateObj: import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | ZonedDateTime | import(\"@internationalized/date\").Time, type: keyof Intl.DateTimeFormatPartTypesRegistry, options?: DateFormatterOptions | undefined",
+                    "type": "(date: Date, type: Intl.DateTimeFormatPartTypes, options?: DateFormatterOptions) => string",
+                    "parameters": "date: Date, type: keyof Intl.DateTimeFormatPartTypesRegistry, options?: DateFormatterOptions | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_date_formatter.formatter.callables.part",
@@ -4834,8 +5223,8 @@
                   },
                   {
                     "name": "toParts",
-                    "type": "(date: DateValue | TimeValue, options?: DateFormatterOptions) => Intl.DateTimeFormatPart[]",
-                    "parameters": "date: import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | ZonedDateTime | import(\"@internationalized/date\").Time, options?: DateFormatterOptions | undefined",
+                    "type": "(date: Date, options?: DateFormatterOptions) => Intl.DateTimeFormatPart[]",
+                    "parameters": "date: Date, options?: DateFormatterOptions | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_date_formatter.formatter.callables.toparts",
@@ -4857,16 +5246,39 @@
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "name": "DateTimeValue",
+                "kind": "interface",
+                "type": "import(\"../../date\").DateTimeValue",
+                "resolvedType": "{ date: Date; time?: Date }",
+                "description": "A date with an optional time-of-day part. `date` carries the calendar day\n(local 00:00 by convention); `time` carries the time-of-day when the value\nhas time granularity.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
-                "members": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "date",
+                    "type": "Date",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.date",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "time",
+                    "type": "Date",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.time",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
                 "callables": []
               }
             ]
@@ -4882,16 +5294,39 @@
             "sourcePath": "packages/headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "name": "DateTimeValue",
+                "kind": "interface",
+                "type": "import(\"../../date\").DateTimeValue",
+                "resolvedType": "{ date: Date; time?: Date }",
+                "description": "A date with an optional time-of-day part. `date` carries the calendar day\n(local 00:00 by convention); `time` carries the time-of-day when the value\nhas time granularity.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
-                "members": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "date",
+                    "type": "Date",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.date",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "time",
+                    "type": "Date",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_date_types.datetimevalue.members.time",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/date/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
                 "callables": []
               }
             ]
@@ -4920,13 +5355,13 @@
               {
                 "name": "DateValue",
                 "kind": "typeAlias",
-                "type": "DateValue",
+                "type": "Date | import(\"../../date\").DateTimeValue",
                 "resolvedType": null,
-                "description": "",
-                "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.4/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "description": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
+                "descriptionKey": "api.generated.packages_headless_src_date_types.datevalue",
+                "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }

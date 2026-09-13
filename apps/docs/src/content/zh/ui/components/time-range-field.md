@@ -63,7 +63,7 @@ TimeRangeField 是一个分段式时间范围输入组件，提供独立的开�
 
 ### 运行时注意事项
 
-- 值是来自 `@internationalized/date` 的 `TimeRange`（`Time` 或 `CalendarDateTime` 对），而非原生 `string`。请与其他日期家族组件搭配使用。
+- 值是 `TimeRange`——由 `TimeValue`（时间部分有意义的原生 `Date`）组成的 `{ start, end }` 对象，而非 `string`。请与其他日期家族组件搭配使用。
 - `defaultValue` 仅在挂载时读取——外部控制请使用 `v-model`。
 - 某一侧为空时，其分段显示占位时间（由 `defaultValue`/`defaultPlaceholder` 或当前时间派生）——提交的表单值在用户键入前仍为空。
 - `granularity` 默认 `'minute'`；传入 `'second'` 可在两侧渲染秒分段。
@@ -91,4 +91,4 @@ TimeRangeField 是一个分段式时间范围输入组件，提供独立的开�
 
 ### `STimeRangeField` 与 `SDateRangeField` 有何区别？
 
-`STimeRangeField` 是纯时间范围输入——绝不渲染日期分段。`SDateRangeField` 渲染完整日期（可通过粒度带时间）并接受 `CalendarDate`/`CalendarDateTime` 对。
+`STimeRangeField` 是纯时间范围输入——绝不渲染日期分段。`SDateRangeField` 渲染完整日期（可通过粒度带时间）并接受 `DateValue` 对。

@@ -67,7 +67,7 @@ CalendarRange 会渲染一个或多个按月排列的日期网格，用户可直
 
 ### Cautions
 
-- 值为 `@internationalized/date` 的 `DateValue` 组成的 `DateRange`（`CalendarDate`/`CalendarDateTime`），而非原生 `Date`/字符串对；需要互操作时用 `toDate`/`fromDate` 工具转换。
+- 值为 `DateRange`——由 `DateValue`（本地零点的原生 `Date`）组成的 `{ start, end }` 对象，而非字符串。
 - 默认拒绝存在缺口的范围（第二次点击会使选择在点击日重新开始）；需要允许缺口时传 `allowNonContiguousRanges`。
 - `defaultValue`/`defaultPlaceholder` 仅在挂载时读取——外部控制请使用 `v-model`。
 - `isDateDisabled` 与 `isDateUnavailable` 不同：禁用日期按策略不可选，不可用日期额外以视觉标记（默认样式中 `line-through`）。

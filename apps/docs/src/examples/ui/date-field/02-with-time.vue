@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
+import { createDate, createTime } from '@soybeanjs/headless/date';
 import { SDateField } from '@soybeanjs/ui';
-import { CalendarDateTime } from '@internationalized/date';
 
-const value = shallowRef(new CalendarDateTime(2026, 4, 19, 14, 30, 0));
+const value = shallowRef({ date: createDate(2026, 4, 19), time: createTime(14, 30, 0) });
 
 const formattedValue = computed(() => {
   if (!value.value) return '-';

@@ -62,7 +62,7 @@ A date picker that pairs a keyboard-editable segmented date field with a calenda
 
 ### Cautions
 
-- The value is a `DateValue` from `@internationalized/date` — not a native `string`. Use it with `SDateField`, `SCalendar`, and the other date-family components.
+- The value is a `DateValue` (`Date` or `{ date, time? }`) — not a `string`. Use it with `SDateField`, `SCalendar`, and the other date-family components.
 - `defaultValue`/`defaultOpen` are only read on mount — use `v-model`/`open` for external control.
 - The toggle button is the calendar icon; its default `aria-label` (locale `toggle`) can be overridden through `triggerProps['aria-label']`. The icon itself is fixed — to render a custom trigger, compose `DatePickerCompact` from `@soybeanjs/headless/date-picker` with your own popover content.
 - The popup `role="dialog"` gets its accessible name from the locale `popupLabel` message; override it through `popupProps['aria-label']`.

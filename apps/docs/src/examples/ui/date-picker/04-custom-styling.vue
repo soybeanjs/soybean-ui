@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { createDate } from '@soybeanjs/headless/date';
 import { SDatePicker } from '@soybeanjs/ui';
-import { CalendarDate } from '@internationalized/date';
 
 const selectedDate = ref<any>();
 </script>
@@ -9,7 +9,7 @@ const selectedDate = ref<any>();
 <template>
   <SDatePicker
     v-model="selectedDate"
-    :default-placeholder="new CalendarDate(2024, 1, 1)"
+    :default-placeholder="createDate(2024, 1, 1)"
     :ui="{
       trigger: 'border-primary/50 bg-primary/5 hover:bg-primary/10',
       popup: 'border-primary/30'

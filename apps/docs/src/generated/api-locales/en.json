@@ -9926,6 +9926,13 @@
             "year": ""
           }
         },
+        "datetimevalue": {
+          "members": {
+            "date": "",
+            "time": ""
+          }
+        },
+        "datevalue": "Public date value model: a plain `Date` for day-granularity values (local\n00:00), or `{ date, time? }` when a time part is present.",
         "granularity": "",
         "hourcycle": "",
         "segmentpart": "",
@@ -9937,7 +9944,6 @@
             "start": ""
           }
         },
-        "timevalue": "",
         "weekdayformat": "",
         "weekstartson": ""
       },

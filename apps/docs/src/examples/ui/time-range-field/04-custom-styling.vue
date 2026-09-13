@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
+import { createTime } from '@soybeanjs/headless/date';
 import { STimeRangeField } from '@soybeanjs/ui';
-import { Time } from '@internationalized/date';
 
 const value = shallowRef({
-  start: new Time(10, 0, 0),
-  end: new Time(18, 0, 0)
+  start: createTime(10, 0, 0),
+  end: createTime(18, 0, 0)
 });
 </script>
 

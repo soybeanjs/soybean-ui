@@ -62,7 +62,7 @@ head:
 
 ### 使用注意
 
-- 值是 `@internationalized/date` 的 `DateValue`，不是原生 `string`——请与 `SDateField`、`SCalendar` 及日期族系其他组件搭配使用。
+- 值是 `DateValue`（`Date` 或 `{ date, time? }`），不是 `string`——请与 `SDateField`、`SCalendar` 及日期族系其他组件搭配使用。
 - `defaultValue`/`defaultOpen` 仅在挂载时读取——外部控制请使用 `v-model`/`open`。
 - 开关按钮就是日历图标；其默认 `aria-label`（locale `toggle`）可通过 `triggerProps['aria-label']` 覆盖。图标本身固定——需要自定义触发器时，请用 `@soybeanjs/headless/date-picker` 组合 `DatePickerCompact` 并自行渲染 Popover 内容。
 - 弹层 `role="dialog"` 的可访问名称来自 locale `popupLabel` 消息；可通过 `popupProps['aria-label']` 覆盖。

@@ -63,7 +63,7 @@ A segmented time range input with independently editable start and end time segm
 
 ### Cautions
 
-- The value is a `TimeRange` of `TimeValue` from `@internationalized/date` — `Time` or `CalendarDateTime` pairs, not native `string`s. Use it with the other date-family components.
+- The value is a `TimeRange` — `{ start, end }` of `TimeValue`s (native `Date`s whose time-of-day parts are meaningful), not `string`s. Use it with the other date-family components.
 - `defaultValue` is only read on mount — use `v-model` for external control.
 - When a side is empty its segments display the placeholder time (derived from `defaultValue`/`defaultPlaceholder` or the current time) — the submitted form value is still empty until the user types.
 - `granularity` defaults to `'minute'`; pass `'second'` for seconds segments on both sides.
@@ -91,4 +91,4 @@ The component marks the root `data-invalid` automatically when `end` is before `
 
 ### How is `STimeRangeField` different from `SDateRangeField`?
 
-`STimeRangeField` is a pure time range input — it never renders date segments. `SDateRangeField` renders full dates (with optional time via granularity) and accepts `CalendarDate`/`CalendarDateTime` pairs.
+`STimeRangeField` is a pure time range input — it never renders date segments. `SDateRangeField` renders full dates (with optional time via granularity) and accepts `DateValue` pairs.

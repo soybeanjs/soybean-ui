@@ -65,7 +65,7 @@ head:
 
 ### 运行时注意事项
 
-- 值是来自 `@internationalized/date` 的 `DateValue`（`CalendarDate`/`CalendarDateTime`），绝非原生 `Date` 或字符串。需要互操作时用 `toDate`/`fromDate` 工具转换。
+- 值是本地零点的原生 `Date`（即 `DateValue` 模型：`Date` 或 `{ date, time? }`）。格式化/转换直接使用 `date-fns` 或 `Intl`。
 - `multiple` 会把模型形状变为 `DateValue[]`；`M` 泛型由 prop 推断。
 - `defaultValue`/`defaultPlaceholder` 仅在挂载时读取——外部控制请使用 `v-model`。
 - `isDateDisabled` 与 `isDateUnavailable` 不同：禁用日期是策略性不可选，不可用日期还会被视觉标记（默认样式 `line-through`）。
@@ -81,7 +81,7 @@ head:
 
 ### 如何禁止今天之前的日期？
 
-传入 `minValue={new CalendarDate(2026, 1, 1)}`（任意 `DateValue`）。越界日期被禁用，prev 按钮在边界处自动禁用。
+传入 `minValue={new Date(2026, 0, 1)}`（任意 `DateValue`）。越界日期被禁用，prev 按钮在边界处自动禁用。
 
 ### 如何同时展示多个月？
 

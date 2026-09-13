@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "TimeRangeFieldProps",
         "type": "Interface TimeRangeFieldProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TimeRangeFieldUi>; inputProps?: TimeRangeFieldInputProps; separator?: string; defaultValue?: TimeRange; modelValue?: TimeRange; startName?: string; endName?: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; id?: string; placeholder?: TimeValue; name?: string; required?: boolean; readonly?: boolean; step?: DateStep; locale?: string; defaultPlaceholder?: TimeValue; maxValue?: TimeValue; minValue?: TimeValue; granularity?: TimeGranularity; hourCycle?: 12 | 24; hideTimeZone?: boolean; isTimeUnavailable?: TimeMatcher }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TimeRangeFieldUi>; inputProps?: TimeRangeFieldInputProps; separator?: string; defaultValue?: TimeRange; modelValue?: TimeRange; startName?: string; endName?: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; id?: string; placeholder?: Date; name?: string; required?: boolean; readonly?: boolean; step?: DateStep; locale?: string; defaultPlaceholder?: Date; maxValue?: Date; minValue?: Date; granularity?: TimeGranularity; hourCycle?: 12 | 24; hideTimeZone?: boolean; isTimeUnavailable?: TimeMatcher }",
         "description": "Properties for the TimeRangeField component.",
         "descriptionKey": "api.generated.packages_ui_src_components_time_range_field_types.timerangefieldprops.props",
         "sourcePath": "packages/ui/src/components/time-range-field/types.ts",
@@ -182,8 +182,8 @@
                 "name": "TimeRange",
                 "kind": "interface",
                 "type": "TimeRange",
-                "resolvedType": "{ start?: TimeValue; end?: TimeValue }",
-                "description": "",
+                "resolvedType": "{ start?: Date | null; end?: Date | null }",
+                "description": "Time-of-day range with nullable bounds. Members accept `null` (empty bound)\nand tolerate omission for partial ranges.",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.timerange",
                 "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
@@ -191,7 +191,7 @@
                 "members": [
                   {
                     "name": "start",
-                    "type": "TimeValue",
+                    "type": "Date | null",
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_date_types.timerange.members.start",
@@ -202,7 +202,7 @@
                   },
                   {
                     "name": "end",
-                    "type": "TimeValue",
+                    "type": "Date | null",
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_date_types.timerange.members.end",
@@ -230,8 +230,8 @@
                 "name": "TimeRange",
                 "kind": "interface",
                 "type": "TimeRange",
-                "resolvedType": "{ start?: TimeValue; end?: TimeValue }",
-                "description": "",
+                "resolvedType": "{ start?: Date | null; end?: Date | null }",
+                "description": "Time-of-day range with nullable bounds. Members accept `null` (empty bound)\nand tolerate omission for partial ranges.",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.timerange",
                 "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
@@ -239,7 +239,7 @@
                 "members": [
                   {
                     "name": "start",
-                    "type": "TimeValue",
+                    "type": "Date | null",
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_date_types.timerange.members.start",
@@ -250,7 +250,7 @@
                   },
                   {
                     "name": "end",
-                    "type": "TimeValue",
+                    "type": "Date | null",
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_date_types.timerange.members.end",
@@ -379,28 +379,14 @@
           },
           {
             "name": "placeholder",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Placeholder.",
             "descriptionKey": "api.generated.packages_ui_src_components_time_range_field_types.timerangefieldprops.members.placeholder",
             "default": null,
             "inheritedFrom": "placeholder",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "name",
@@ -551,78 +537,36 @@
           },
           {
             "name": "defaultPlaceholder",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Default placeholder.",
             "descriptionKey": "api.generated.packages_ui_src_components_time_range_field_types.timerangefieldprops.members.defaultplaceholder",
             "default": null,
             "inheritedFrom": "defaultPlaceholder",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "maxValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Max value.",
             "descriptionKey": "api.generated.packages_ui_src_components_time_range_field_types.timerangefieldprops.members.maxvalue",
             "default": null,
             "inheritedFrom": "maxValue",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "minValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Min value.",
             "descriptionKey": "api.generated.packages_ui_src_components_time_range_field_types.timerangefieldprops.members.minvalue",
             "default": null,
             "inheritedFrom": "minValue",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "granularity",
@@ -698,8 +642,8 @@
               {
                 "name": "TimeMatcher",
                 "kind": "typeAlias",
-                "type": "(time: TimeValue) => boolean",
-                "resolvedType": "(time: CalendarDateTime | ZonedDateTime | Time) => boolean",
+                "type": "(time: Date) => boolean",
+                "resolvedType": "(time: Date) => boolean",
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.timematcher",
                 "sourcePath": "packages/headless/src/date/types.ts",
@@ -718,7 +662,7 @@
         "kind": "emits",
         "name": "TimeRangeFieldEmits",
         "type": "TypeAlias TimeRangeFieldEmits: TimeRangeFieldCompactEmits",
-        "resolvedType": "{ \"update:modelValue\": [range: TimeRange]; \"update:placeholder\": [time: TimeValue]; \"update:startValue\": [time: TimeValue | undefined]; \"update:endValue\": [time: TimeValue | undefined] }",
+        "resolvedType": "{ \"update:modelValue\": [range: TimeRange]; \"update:placeholder\": [time: Date]; \"update:startValue\": [time: Date | null]; \"update:endValue\": [time: Date | null] }",
         "description": "Events for the TimeRangeField component.",
         "descriptionKey": "api.generated.packages_ui_src_components_time_range_field_types.timerangefieldemits.emits",
         "sourcePath": "packages/ui/src/components/time-range-field/types.ts",
@@ -739,7 +683,7 @@
                 "kind": "interface",
                 "type": "TimeRange",
                 "resolvedType": null,
-                "description": "",
+                "description": "Time-of-day range with nullable bounds. Members accept `null` (empty bound)\nand tolerate omission for partial ranges.",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.timerange",
                 "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
@@ -751,32 +695,18 @@
           },
           {
             "name": "update:placeholder",
-            "type": "[time: TimeValue]",
-            "parameters": "time: TimeValue",
+            "type": "[time: Date]",
+            "parameters": "time: Date",
             "required": true,
             "description": "Emitted when the placeholder value changes.",
             "descriptionKey": "api.generated.packages_ui_src_components_time_range_field_types.timerangefieldemits.callables.update_placeholder",
             "sourcePath": "packages/headless/src/components/time-range-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "update:startValue",
-            "type": "[time: TimeValue | undefined]",
-            "parameters": "time: TimeValue | undefined",
+            "type": "[time: Date | null]",
+            "parameters": "time: Date | null",
             "required": true,
             "description": "Emitted when the start value changes.",
             "descriptionKey": "api.generated.packages_ui_src_components_time_range_field_types.timerangefieldemits.callables.update_startvalue",
@@ -785,8 +715,8 @@
           },
           {
             "name": "update:endValue",
-            "type": "[time: TimeValue | undefined]",
-            "parameters": "time: TimeValue | undefined",
+            "type": "[time: Date | null]",
+            "parameters": "time: Date | null",
             "required": true,
             "description": "Emitted when the end value changes.",
             "descriptionKey": "api.generated.packages_ui_src_components_time_range_field_types.timerangefieldemits.callables.update_endvalue",
@@ -798,8 +728,8 @@
           {
             "name": "TimeRangeFieldRootEmits",
             "kind": "typeAlias",
-            "type": "{ 'update:modelValue': [range: import(\"@soybeanjs/headless/date\").TimeRange]; 'update:placeholder': [time: import(\"@soybeanjs/headless\").TimeValue]; 'update:startValue': [time: import(\"@soybeanjs/headless\").TimeValue | undefined]; 'update:endValue': [time: import(\"@soybeanjs/headless\").TimeValue | undefined]; }",
-            "resolvedType": "{ \"update:modelValue\": [range: TimeRange]; \"update:placeholder\": [time: TimeValue]; \"update:startValue\": [time: TimeValue | undefined]; \"update:endValue\": [time: TimeValue | undefined] }",
+            "type": "{ 'update:modelValue': [range: import(\"@soybeanjs/headless/date\").TimeRange]; 'update:placeholder': [time: import(\"@soybeanjs/headless\").TimeValue]; 'update:startValue': [time: import(\"@soybeanjs/headless\").TimeValue | null]; 'update:endValue': [time: import(\"@soybeanjs/headless\").TimeValue | null]; }",
+            "resolvedType": "{ \"update:modelValue\": [range: TimeRange]; \"update:placeholder\": [time: Date]; \"update:startValue\": [time: Date | null]; \"update:endValue\": [time: Date | null] }",
             "description": "Events for the TimeRangeFieldRoot component.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldrootemits",
             "sourcePath": "packages/headless/src/components/time-range-field/types.ts",
@@ -819,8 +749,8 @@
               },
               {
                 "name": "update:placeholder",
-                "type": "[time: TimeValue]",
-                "parameters": "time: TimeValue",
+                "type": "[time: Date]",
+                "parameters": "time: Date",
                 "required": true,
                 "description": "Emitted when the placeholder value changes.",
                 "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldrootemits.callables.update_placeholder",
@@ -829,8 +759,8 @@
               },
               {
                 "name": "update:startValue",
-                "type": "[time: TimeValue | undefined]",
-                "parameters": "time: TimeValue | undefined",
+                "type": "[time: Date | null]",
+                "parameters": "time: Date | null",
                 "required": true,
                 "description": "Emitted when the start value changes.",
                 "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldrootemits.callables.update_startvalue",
@@ -839,8 +769,8 @@
               },
               {
                 "name": "update:endValue",
-                "type": "[time: TimeValue | undefined]",
-                "parameters": "time: TimeValue | undefined",
+                "type": "[time: Date | null]",
+                "parameters": "time: Date | null",
                 "required": true,
                 "description": "Emitted when the end value changes.",
                 "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldrootemits.callables.update_endvalue",
@@ -964,8 +894,8 @@
                 "name": "TimeRange",
                 "kind": "interface",
                 "type": "TimeRange",
-                "resolvedType": "{ start?: TimeValue; end?: TimeValue }",
-                "description": "",
+                "resolvedType": "{ start?: Date | null; end?: Date | null }",
+                "description": "Time-of-day range with nullable bounds. Members accept `null` (empty bound)\nand tolerate omission for partial ranges.",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.timerange",
                 "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
@@ -973,7 +903,7 @@
                 "members": [
                   {
                     "name": "start",
-                    "type": "TimeValue",
+                    "type": "Date | null",
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_date_types.timerange.members.start",
@@ -984,7 +914,7 @@
                   },
                   {
                     "name": "end",
-                    "type": "TimeValue",
+                    "type": "Date | null",
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_date_types.timerange.members.end",
@@ -1041,7 +971,7 @@
         "kind": "props",
         "name": "TimeRangeFieldCompactProps",
         "type": "Interface TimeRangeFieldCompactProps",
-        "resolvedType": "{ inputProps?: TimeRangeFieldInputProps; separator?: string; defaultValue?: TimeRange; modelValue?: TimeRange; startName?: string; endName?: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; id?: string; placeholder?: TimeValue; name?: string; required?: boolean; readonly?: boolean; step?: DateStep; locale?: string; defaultPlaceholder?: TimeValue; maxValue?: TimeValue; minValue?: TimeValue; granularity?: TimeGranularity; hourCycle?: 12 | 24; hideTimeZone?: boolean; isTimeUnavailable?: TimeMatcher }",
+        "resolvedType": "{ inputProps?: TimeRangeFieldInputProps; separator?: string; defaultValue?: TimeRange; modelValue?: TimeRange; startName?: string; endName?: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; id?: string; placeholder?: Date; name?: string; required?: boolean; readonly?: boolean; step?: DateStep; locale?: string; defaultPlaceholder?: Date; maxValue?: Date; minValue?: Date; granularity?: TimeGranularity; hourCycle?: 12 | 24; hideTimeZone?: boolean; isTimeUnavailable?: TimeMatcher }",
         "description": "Properties for the TimeRangeFieldCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldcompactprops.props",
         "sourcePath": "packages/headless/src/components/time-range-field/types.ts",
@@ -1142,8 +1072,8 @@
                 "name": "TimeRange",
                 "kind": "interface",
                 "type": "TimeRange",
-                "resolvedType": "{ start?: TimeValue; end?: TimeValue }",
-                "description": "",
+                "resolvedType": "{ start?: Date | null; end?: Date | null }",
+                "description": "Time-of-day range with nullable bounds. Members accept `null` (empty bound)\nand tolerate omission for partial ranges.",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.timerange",
                 "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
@@ -1151,7 +1081,7 @@
                 "members": [
                   {
                     "name": "start",
-                    "type": "TimeValue",
+                    "type": "Date | null",
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_date_types.timerange.members.start",
@@ -1162,7 +1092,7 @@
                   },
                   {
                     "name": "end",
-                    "type": "TimeValue",
+                    "type": "Date | null",
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_date_types.timerange.members.end",
@@ -1190,8 +1120,8 @@
                 "name": "TimeRange",
                 "kind": "interface",
                 "type": "TimeRange",
-                "resolvedType": "{ start?: TimeValue; end?: TimeValue }",
-                "description": "",
+                "resolvedType": "{ start?: Date | null; end?: Date | null }",
+                "description": "Time-of-day range with nullable bounds. Members accept `null` (empty bound)\nand tolerate omission for partial ranges.",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.timerange",
                 "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
@@ -1199,7 +1129,7 @@
                 "members": [
                   {
                     "name": "start",
-                    "type": "TimeValue",
+                    "type": "Date | null",
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_date_types.timerange.members.start",
@@ -1210,7 +1140,7 @@
                   },
                   {
                     "name": "end",
-                    "type": "TimeValue",
+                    "type": "Date | null",
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_date_types.timerange.members.end",
@@ -1339,28 +1269,14 @@
           },
           {
             "name": "placeholder",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Placeholder.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldcompactprops.members.placeholder",
             "default": null,
             "inheritedFrom": "placeholder",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "name",
@@ -1511,78 +1427,36 @@
           },
           {
             "name": "defaultPlaceholder",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Default placeholder.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldcompactprops.members.defaultplaceholder",
             "default": null,
             "inheritedFrom": "defaultPlaceholder",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "maxValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Max value.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldcompactprops.members.maxvalue",
             "default": null,
             "inheritedFrom": "maxValue",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "minValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Min value.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldcompactprops.members.minvalue",
             "default": null,
             "inheritedFrom": "minValue",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "granularity",
@@ -1658,8 +1532,8 @@
               {
                 "name": "TimeMatcher",
                 "kind": "typeAlias",
-                "type": "(time: TimeValue) => boolean",
-                "resolvedType": "(time: CalendarDateTime | ZonedDateTime | Time) => boolean",
+                "type": "(time: Date) => boolean",
+                "resolvedType": "(time: Date) => boolean",
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.timematcher",
                 "sourcePath": "packages/headless/src/date/types.ts",
@@ -1678,7 +1552,7 @@
         "kind": "emits",
         "name": "TimeRangeFieldCompactEmits",
         "type": "TypeAlias TimeRangeFieldCompactEmits: TimeRangeFieldRootEmits",
-        "resolvedType": "{ \"update:modelValue\": [range: TimeRange]; \"update:placeholder\": [time: TimeValue]; \"update:startValue\": [time: TimeValue | undefined]; \"update:endValue\": [time: TimeValue | undefined] }",
+        "resolvedType": "{ \"update:modelValue\": [range: TimeRange]; \"update:placeholder\": [time: Date]; \"update:startValue\": [time: Date | null]; \"update:endValue\": [time: Date | null] }",
         "description": "Events for the TimeRangeFieldCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldcompactemits.emits",
         "sourcePath": "packages/headless/src/components/time-range-field/types.ts",
@@ -1699,7 +1573,7 @@
                 "kind": "interface",
                 "type": "TimeRange",
                 "resolvedType": null,
-                "description": "",
+                "description": "Time-of-day range with nullable bounds. Members accept `null` (empty bound)\nand tolerate omission for partial ranges.",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.timerange",
                 "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
@@ -1711,32 +1585,18 @@
           },
           {
             "name": "update:placeholder",
-            "type": "[time: TimeValue]",
-            "parameters": "time: TimeValue",
+            "type": "[time: Date]",
+            "parameters": "time: Date",
             "required": true,
             "description": "Emitted when the placeholder value changes.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldcompactemits.callables.update_placeholder",
             "sourcePath": "packages/headless/src/components/time-range-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "update:startValue",
-            "type": "[time: TimeValue | undefined]",
-            "parameters": "time: TimeValue | undefined",
+            "type": "[time: Date | null]",
+            "parameters": "time: Date | null",
             "required": true,
             "description": "Emitted when the start value changes.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldcompactemits.callables.update_startvalue",
@@ -1745,8 +1605,8 @@
           },
           {
             "name": "update:endValue",
-            "type": "[time: TimeValue | undefined]",
-            "parameters": "time: TimeValue | undefined",
+            "type": "[time: Date | null]",
+            "parameters": "time: Date | null",
             "required": true,
             "description": "Emitted when the end value changes.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldcompactemits.callables.update_endvalue",
@@ -1758,8 +1618,8 @@
           {
             "name": "TimeRangeFieldRootEmits",
             "kind": "typeAlias",
-            "type": "{ 'update:modelValue': [range: TimeRange]; 'update:placeholder': [time: TimeValue]; 'update:startValue': [time: TimeValue | undefined]; 'update:endValue': [time: TimeValue | undefined]; }",
-            "resolvedType": "{ \"update:modelValue\": [range: TimeRange]; \"update:placeholder\": [time: TimeValue]; \"update:startValue\": [time: TimeValue | undefined]; \"update:endValue\": [time: TimeValue | undefined] }",
+            "type": "{ 'update:modelValue': [range: TimeRange]; 'update:placeholder': [time: TimeValue]; 'update:startValue': [time: TimeValue | null]; 'update:endValue': [time: TimeValue | null]; }",
+            "resolvedType": "{ \"update:modelValue\": [range: TimeRange]; \"update:placeholder\": [time: Date]; \"update:startValue\": [time: Date | null]; \"update:endValue\": [time: Date | null] }",
             "description": "Events for the TimeRangeFieldRoot component.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldrootemits",
             "sourcePath": "packages/headless/src/components/time-range-field/types.ts",
@@ -1779,8 +1639,8 @@
               },
               {
                 "name": "update:placeholder",
-                "type": "[time: TimeValue]",
-                "parameters": "time: TimeValue",
+                "type": "[time: Date]",
+                "parameters": "time: Date",
                 "required": true,
                 "description": "Emitted when the placeholder value changes.",
                 "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldrootemits.callables.update_placeholder",
@@ -1789,8 +1649,8 @@
               },
               {
                 "name": "update:startValue",
-                "type": "[time: TimeValue | undefined]",
-                "parameters": "time: TimeValue | undefined",
+                "type": "[time: Date | null]",
+                "parameters": "time: Date | null",
                 "required": true,
                 "description": "Emitted when the start value changes.",
                 "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldrootemits.callables.update_startvalue",
@@ -1799,8 +1659,8 @@
               },
               {
                 "name": "update:endValue",
-                "type": "[time: TimeValue | undefined]",
-                "parameters": "time: TimeValue | undefined",
+                "type": "[time: Date | null]",
+                "parameters": "time: Date | null",
                 "required": true,
                 "description": "Emitted when the end value changes.",
                 "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldrootemits.callables.update_endvalue",
@@ -1957,7 +1817,7 @@
         "kind": "props",
         "name": "TimeRangeFieldRootProps",
         "type": "Interface TimeRangeFieldRootProps",
-        "resolvedType": "{ defaultValue?: TimeRange; modelValue?: TimeRange; startName?: string; endName?: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; id?: string; placeholder?: TimeValue; name?: string; required?: boolean; readonly?: boolean; step?: DateStep; locale?: string; defaultPlaceholder?: TimeValue; maxValue?: TimeValue; minValue?: TimeValue; granularity?: TimeGranularity; hourCycle?: 12 | 24; hideTimeZone?: boolean; isTimeUnavailable?: TimeMatcher }",
+        "resolvedType": "{ defaultValue?: TimeRange; modelValue?: TimeRange; startName?: string; endName?: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; id?: string; placeholder?: Date; name?: string; required?: boolean; readonly?: boolean; step?: DateStep; locale?: string; defaultPlaceholder?: Date; maxValue?: Date; minValue?: Date; granularity?: TimeGranularity; hourCycle?: 12 | 24; hideTimeZone?: boolean; isTimeUnavailable?: TimeMatcher }",
         "description": "Properties for the TimeRangeFieldRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldrootprops.props",
         "sourcePath": "packages/headless/src/components/time-range-field/types.ts",
@@ -1977,8 +1837,8 @@
                 "name": "TimeRange",
                 "kind": "interface",
                 "type": "TimeRange",
-                "resolvedType": "{ start?: TimeValue; end?: TimeValue }",
-                "description": "",
+                "resolvedType": "{ start?: Date | null; end?: Date | null }",
+                "description": "Time-of-day range with nullable bounds. Members accept `null` (empty bound)\nand tolerate omission for partial ranges.",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.timerange",
                 "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
@@ -1986,7 +1846,7 @@
                 "members": [
                   {
                     "name": "start",
-                    "type": "TimeValue",
+                    "type": "Date | null",
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_date_types.timerange.members.start",
@@ -1997,7 +1857,7 @@
                   },
                   {
                     "name": "end",
-                    "type": "TimeValue",
+                    "type": "Date | null",
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_date_types.timerange.members.end",
@@ -2025,8 +1885,8 @@
                 "name": "TimeRange",
                 "kind": "interface",
                 "type": "TimeRange",
-                "resolvedType": "{ start?: TimeValue; end?: TimeValue }",
-                "description": "",
+                "resolvedType": "{ start?: Date | null; end?: Date | null }",
+                "description": "Time-of-day range with nullable bounds. Members accept `null` (empty bound)\nand tolerate omission for partial ranges.",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.timerange",
                 "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
@@ -2034,7 +1894,7 @@
                 "members": [
                   {
                     "name": "start",
-                    "type": "TimeValue",
+                    "type": "Date | null",
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_date_types.timerange.members.start",
@@ -2045,7 +1905,7 @@
                   },
                   {
                     "name": "end",
-                    "type": "TimeValue",
+                    "type": "Date | null",
                     "required": false,
                     "description": "",
                     "descriptionKey": "api.generated.packages_headless_src_date_types.timerange.members.end",
@@ -2174,28 +2034,14 @@
           },
           {
             "name": "placeholder",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Placeholder.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldrootprops.members.placeholder",
             "default": null,
             "inheritedFrom": "placeholder",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "name",
@@ -2346,78 +2192,36 @@
           },
           {
             "name": "defaultPlaceholder",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Default placeholder.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldrootprops.members.defaultplaceholder",
             "default": null,
             "inheritedFrom": "defaultPlaceholder",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "maxValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Max value.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldrootprops.members.maxvalue",
             "default": null,
             "inheritedFrom": "maxValue",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "minValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Min value.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldrootprops.members.minvalue",
             "default": null,
             "inheritedFrom": "minValue",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "granularity",
@@ -2493,8 +2297,8 @@
               {
                 "name": "TimeMatcher",
                 "kind": "typeAlias",
-                "type": "(time: TimeValue) => boolean",
-                "resolvedType": "(time: CalendarDateTime | ZonedDateTime | Time) => boolean",
+                "type": "(time: Date) => boolean",
+                "resolvedType": "(time: Date) => boolean",
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.timematcher",
                 "sourcePath": "packages/headless/src/date/types.ts",
@@ -2513,7 +2317,7 @@
         "kind": "emits",
         "name": "TimeRangeFieldRootEmits",
         "type": "TypeAlias TimeRangeFieldRootEmits",
-        "resolvedType": "{ \"update:modelValue\": [range: TimeRange]; \"update:placeholder\": [time: TimeValue]; \"update:startValue\": [time: TimeValue | undefined]; \"update:endValue\": [time: TimeValue | undefined] }",
+        "resolvedType": "{ \"update:modelValue\": [range: TimeRange]; \"update:placeholder\": [time: Date]; \"update:startValue\": [time: Date | null]; \"update:endValue\": [time: Date | null] }",
         "description": "Events for the TimeRangeFieldRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldrootemits.emits",
         "sourcePath": "packages/headless/src/components/time-range-field/types.ts",
@@ -2534,7 +2338,7 @@
                 "kind": "interface",
                 "type": "TimeRange",
                 "resolvedType": null,
-                "description": "",
+                "description": "Time-of-day range with nullable bounds. Members accept `null` (empty bound)\nand tolerate omission for partial ranges.",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.timerange",
                 "sourcePath": "packages/headless/src/date/types.ts",
                 "typeParameters": [],
@@ -2546,32 +2350,18 @@
           },
           {
             "name": "update:placeholder",
-            "type": "[time: TimeValue]",
-            "parameters": "time: TimeValue",
+            "type": "[time: Date]",
+            "parameters": "time: Date",
             "required": true,
             "description": "Emitted when the placeholder value changes.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldrootemits.callables.update_placeholder",
             "sourcePath": "packages/headless/src/components/time-range-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "update:startValue",
-            "type": "[time: TimeValue | undefined]",
-            "parameters": "time: TimeValue | undefined",
+            "type": "[time: Date | null]",
+            "parameters": "time: Date | null",
             "required": true,
             "description": "Emitted when the start value changes.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldrootemits.callables.update_startvalue",
@@ -2580,8 +2370,8 @@
           },
           {
             "name": "update:endValue",
-            "type": "[time: TimeValue | undefined]",
-            "parameters": "time: TimeValue | undefined",
+            "type": "[time: Date | null]",
+            "parameters": "time: Date | null",
             "required": true,
             "description": "Emitted when the end value changes.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_range_field_types.timerangefieldrootemits.callables.update_endvalue",

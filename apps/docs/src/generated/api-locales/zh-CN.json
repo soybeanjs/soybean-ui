@@ -9926,6 +9926,13 @@
             "year": ""
           }
         },
+        "datetimevalue": {
+          "members": {
+            "date": "",
+            "time": ""
+          }
+        },
+        "datevalue": "",
         "granularity": "",
         "hourcycle": "",
         "segmentpart": "",
@@ -9937,7 +9944,6 @@
             "start": ""
           }
         },
-        "timevalue": "",
         "weekdayformat": "",
         "weekstartson": ""
       },

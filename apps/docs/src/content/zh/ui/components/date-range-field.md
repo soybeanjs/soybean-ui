@@ -62,7 +62,7 @@ head:
 
 ### 使用注意
 
-- 值是 `DateRange`——`@internationalized/date` 的 `DateValue` 组成的 `{ start, end }` 对象，而非原生 `string`。请与日期族系其他组件搭配使用。
+- 值是 `DateRange`——`DateValue` 组成的 `{ start, end }` 对象，而非 `string`。请与日期族系其他组件搭配使用。
 - `defaultValue` 仅在挂载时读取——外部控制请使用 `v-model`。
 - 开始晚于结束会被标记无效，但两个值**不会**被自动交换——请在父组件中清空或纠正。
 - 表单提交使用两个隐藏输入：开始侧取 `startName`（或共享的 `name`），结束侧取 `endName`。为提交不同字段请同时设置两者；`required`/`min`/`max` 会反射但不执行自定义校验。

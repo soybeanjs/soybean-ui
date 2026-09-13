@@ -67,7 +67,7 @@ CalendarRange displays one or more month grids and lets users pick a start and e
 
 ### Cautions
 
-- The value is a `DateRange` of `DateValue`s from `@internationalized/date` (`CalendarDate`/`CalendarDateTime`), never native `Date`/string pairs. Convert with `toDate`/`fromDate` utilities when interop is needed.
+- The value is a `DateRange` — `{ start, end }` of `DateValue`s (native `Date` at local midnight), never strings.
 - A range with gaps is rejected by default (the second click restarts the range at the clicked day); pass `allowNonContiguousRanges` to allow gaps.
 - `defaultValue`/`defaultPlaceholder` are read on mount only — use `v-model` for external control.
 - `isDateDisabled` and `isDateUnavailable` differ: disabled dates are unselectable by policy, unavailable dates are additionally marked visually (`line-through` in the default style).

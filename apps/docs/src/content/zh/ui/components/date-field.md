@@ -43,7 +43,7 @@ head:
 
 ### 架构与行业对标差异
 
-`DateFieldRoot` 通过 `useControllableState` 持有值，用 `@internationalized/date` 的 formatter 推导分段布局，并经 `isInvalid` 完成校验。每个 `DateFieldInput` 绑定 `useDateField` 组合式——它实现 per-part 键盘逻辑（增减/输入/自动前进/删除），由 `time-field` 族共享。编辑时原地变更 `segmentValues` shallowRef；root 在全部段填满后提交组装出的 `DateValue`。分段式日期输入模式源自 reka-ui（Radix）；各对标库的日期输入通常是纯文本框加选择弹层，而非分段形式。
+`DateFieldRoot` 通过 `useControllableState` 持有值，用 `Intl.DateTimeFormat` formatter 推导分段布局，并经 `isInvalid` 完成校验。每个 `DateFieldInput` 绑定 `useDateField` 组合式——它实现 per-part 键盘逻辑（增减/输入/自动前进/删除），由 `time-field` 族共享。编辑时原地变更 `segmentValues` shallowRef；root 在全部段填满后提交组装出的 `DateValue`。分段式日期输入模式源自 reka-ui（Radix）；各对标库的日期输入通常是纯文本框加选择弹层，而非分段形式。
 
 | 能力                      | SoybeanUI | Ant Design | Element Plus | Mantine | Naive UI | shadcn |
 | :------------------------ | :-------: | :--------: | :----------: | :-----: | :------: | :----: |

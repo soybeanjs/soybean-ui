@@ -64,7 +64,7 @@ head:
 
 ### 使用注意
 
-- 值是 `@internationalized/date` 的 `TimeValue`（`Time` 或 `CalendarDateTime`），不是原生 `string`——请与日期族系其他组件搭配使用。
+- 值是 `TimeValue`——一个原生 `Date`，仅小时/分钟/秒部分有意义（日期部分被归一化），不是 `string`。请与日期族系其他组件搭配使用。
 - `defaultValue` 仅在挂载时读取——外部控制请使用 `v-model`。
 - 值为空时分段显示占位时间（由 `defaultValue`/`defaultPlaceholder` 或当前时间推导）——提交的表单值在键入前仍为空。
 - `granularity` 默认为 `'minute'`；传 `'second'` 渲染秒分段，传 `'hour'` 隐藏分钟分段。
@@ -91,4 +91,4 @@ Tab 进入字段并键入数字——分段填满后自动进位。`ArrowUp`/`Ar
 
 ### `STimeField` 与 `granularity: 'minute'` 的 `SDateField` 有什么区别？
 
-`STimeField` 是纯时间输入——从不渲染日期分段。`SDateField` 在时间粒度下会整体渲染日期与时间（如 `2026/04/19 14:30`），并接受 `CalendarDateTime` 值。
+`STimeField` 是纯时间输入——从不渲染日期分段。`SDateField` 在时间粒度下会整体渲染日期与时间（如 `2026/04/19 14:30`），并接受 `{ date, time }` 值。

@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "TimeFieldProps",
         "type": "Interface TimeFieldProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TimeFieldUi>; inputProps?: TimeFieldInputProps; defaultValue?: TimeValue; modelValue?: TimeValue; defaultPlaceholder?: TimeValue; placeholder?: TimeValue; granularity?: TimeGranularity; maxValue?: TimeValue; minValue?: TimeValue; isTimeUnavailable?: TimeMatcher; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; id?: string; name?: string; required?: boolean; readonly?: boolean; step?: DateStep; locale?: string; hourCycle?: 12 | 24; hideTimeZone?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TimeFieldUi>; inputProps?: TimeFieldInputProps; defaultValue?: Date; modelValue?: Date; defaultPlaceholder?: Date; placeholder?: Date; granularity?: TimeGranularity; maxValue?: Date; minValue?: Date; isTimeUnavailable?: TimeMatcher; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; id?: string; name?: string; required?: boolean; readonly?: boolean; step?: DateStep; locale?: string; hourCycle?: 12 | 24; hideTimeZone?: boolean }",
         "description": "Properties for the TimeField component.",
         "descriptionKey": "api.generated.packages_ui_src_components_time_field_types.timefieldprops.props",
         "sourcePath": "packages/ui/src/components/time-field/types.ts",
@@ -148,103 +148,47 @@
           },
           {
             "name": "defaultValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Default value for the time field.",
             "descriptionKey": "api.generated.packages_ui_src_components_time_field_types.timefieldprops.members.defaultvalue",
             "default": null,
             "inheritedFrom": "defaultValue",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "modelValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Current model value.",
             "descriptionKey": "api.generated.packages_ui_src_components_time_field_types.timefieldprops.members.modelvalue",
             "default": null,
             "inheritedFrom": "modelValue",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "defaultPlaceholder",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Default placeholder.",
             "descriptionKey": "api.generated.packages_ui_src_components_time_field_types.timefieldprops.members.defaultplaceholder",
             "default": null,
             "inheritedFrom": "defaultPlaceholder",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "placeholder",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Placeholder.",
             "descriptionKey": "api.generated.packages_ui_src_components_time_field_types.timefieldprops.members.placeholder",
             "default": null,
             "inheritedFrom": "placeholder",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "granularity",
@@ -273,53 +217,25 @@
           },
           {
             "name": "maxValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Max value.",
             "descriptionKey": "api.generated.packages_ui_src_components_time_field_types.timefieldprops.members.maxvalue",
             "default": null,
             "inheritedFrom": "maxValue",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "minValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Min value.",
             "descriptionKey": "api.generated.packages_ui_src_components_time_field_types.timefieldprops.members.minvalue",
             "default": null,
             "inheritedFrom": "minValue",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "isTimeUnavailable",
@@ -334,8 +250,8 @@
               {
                 "name": "TimeMatcher",
                 "kind": "typeAlias",
-                "type": "(time: TimeValue) => boolean",
-                "resolvedType": "(time: CalendarDateTime | ZonedDateTime | Time) => boolean",
+                "type": "(time: Date) => boolean",
+                "resolvedType": "(time: Date) => boolean",
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.timematcher",
                 "sourcePath": "packages/headless/src/date/types.ts",
@@ -628,7 +544,7 @@
         "kind": "emits",
         "name": "TimeFieldEmits",
         "type": "TypeAlias TimeFieldEmits: TimeFieldCompactEmits",
-        "resolvedType": "{ \"update:modelValue\": [time: TimeValue | undefined]; \"update:placeholder\": [time: TimeValue] }",
+        "resolvedType": "{ \"update:modelValue\": [time: Date | undefined]; \"update:placeholder\": [time: Date] }",
         "description": "Events for the TimeField component.",
         "descriptionKey": "api.generated.packages_ui_src_components_time_field_types.timefieldemits.emits",
         "sourcePath": "packages/ui/src/components/time-field/types.ts",
@@ -637,8 +553,8 @@
         "callables": [
           {
             "name": "update:modelValue",
-            "type": "[time: TimeValue | undefined]",
-            "parameters": "time: TimeValue | undefined",
+            "type": "[time: Date | undefined]",
+            "parameters": "time: Date | undefined",
             "required": true,
             "description": "Emitted when the model value changes.",
             "descriptionKey": "api.generated.packages_ui_src_components_time_field_types.timefieldemits.callables.update_modelvalue",
@@ -647,27 +563,13 @@
           },
           {
             "name": "update:placeholder",
-            "type": "[time: TimeValue]",
-            "parameters": "time: TimeValue",
+            "type": "[time: Date]",
+            "parameters": "time: Date",
             "required": true,
             "description": "Emitted when the placeholder value changes.",
             "descriptionKey": "api.generated.packages_ui_src_components_time_field_types.timefieldemits.callables.update_placeholder",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           }
         ],
         "referencedTypes": [
@@ -675,7 +577,7 @@
             "name": "TimeFieldRootEmits",
             "kind": "typeAlias",
             "type": "{ 'update:modelValue': [time: import(\"@soybeanjs/headless\").TimeValue | undefined]; 'update:placeholder': [time: import(\"@soybeanjs/headless\").TimeValue]; }",
-            "resolvedType": "{ \"update:modelValue\": [time: TimeValue | undefined]; \"update:placeholder\": [time: TimeValue] }",
+            "resolvedType": "{ \"update:modelValue\": [time: Date | undefined]; \"update:placeholder\": [time: Date] }",
             "description": "Events for the TimeFieldRoot component.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootemits",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
@@ -685,8 +587,8 @@
             "callables": [
               {
                 "name": "update:modelValue",
-                "type": "[time: TimeValue | undefined]",
-                "parameters": "time: TimeValue | undefined",
+                "type": "[time: Date | undefined]",
+                "parameters": "time: Date | undefined",
                 "required": true,
                 "description": "Emitted when the model value changes.",
                 "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootemits.callables.update_modelvalue",
@@ -695,8 +597,8 @@
               },
               {
                 "name": "update:placeholder",
-                "type": "[time: TimeValue]",
-                "parameters": "time: TimeValue",
+                "type": "[time: Date]",
+                "parameters": "time: Date",
                 "required": true,
                 "description": "Emitted when the placeholder value changes.",
                 "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootemits.callables.update_placeholder",
@@ -747,7 +649,7 @@
         "kind": "props",
         "name": "TimeFieldCompactProps",
         "type": "Interface TimeFieldCompactProps",
-        "resolvedType": "{ inputProps?: TimeFieldInputProps; defaultValue?: TimeValue; modelValue?: TimeValue; defaultPlaceholder?: TimeValue; placeholder?: TimeValue; granularity?: TimeGranularity; maxValue?: TimeValue; minValue?: TimeValue; isTimeUnavailable?: TimeMatcher; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; id?: string; name?: string; required?: boolean; readonly?: boolean; step?: DateStep; locale?: string; hourCycle?: 12 | 24; hideTimeZone?: boolean }",
+        "resolvedType": "{ inputProps?: TimeFieldInputProps; defaultValue?: Date; modelValue?: Date; defaultPlaceholder?: Date; placeholder?: Date; granularity?: TimeGranularity; maxValue?: Date; minValue?: Date; isTimeUnavailable?: TimeMatcher; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; id?: string; name?: string; required?: boolean; readonly?: boolean; step?: DateStep; locale?: string; hourCycle?: 12 | 24; hideTimeZone?: boolean }",
         "description": "Properties for the time field compact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldcompactprops.props",
         "sourcePath": "packages/headless/src/components/time-field/types.ts",
@@ -814,103 +716,47 @@
           },
           {
             "name": "defaultValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Default value for the time field.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldcompactprops.members.defaultvalue",
             "default": null,
             "inheritedFrom": "defaultValue",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "modelValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Current model value.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldcompactprops.members.modelvalue",
             "default": null,
             "inheritedFrom": "modelValue",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "defaultPlaceholder",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Default placeholder.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldcompactprops.members.defaultplaceholder",
             "default": null,
             "inheritedFrom": "defaultPlaceholder",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "placeholder",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Placeholder.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldcompactprops.members.placeholder",
             "default": null,
             "inheritedFrom": "placeholder",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "granularity",
@@ -939,53 +785,25 @@
           },
           {
             "name": "maxValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Max value.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldcompactprops.members.maxvalue",
             "default": null,
             "inheritedFrom": "maxValue",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "minValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Min value.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldcompactprops.members.minvalue",
             "default": null,
             "inheritedFrom": "minValue",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "isTimeUnavailable",
@@ -1000,8 +818,8 @@
               {
                 "name": "TimeMatcher",
                 "kind": "typeAlias",
-                "type": "(time: TimeValue) => boolean",
-                "resolvedType": "(time: CalendarDateTime | ZonedDateTime | Time) => boolean",
+                "type": "(time: Date) => boolean",
+                "resolvedType": "(time: Date) => boolean",
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.timematcher",
                 "sourcePath": "packages/headless/src/date/types.ts",
@@ -1294,7 +1112,7 @@
         "kind": "emits",
         "name": "TimeFieldCompactEmits",
         "type": "TypeAlias TimeFieldCompactEmits: TimeFieldRootEmits",
-        "resolvedType": "{ \"update:modelValue\": [time: TimeValue | undefined]; \"update:placeholder\": [time: TimeValue] }",
+        "resolvedType": "{ \"update:modelValue\": [time: Date | undefined]; \"update:placeholder\": [time: Date] }",
         "description": "Events for the time field compact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldcompactemits.emits",
         "sourcePath": "packages/headless/src/components/time-field/types.ts",
@@ -1303,8 +1121,8 @@
         "callables": [
           {
             "name": "update:modelValue",
-            "type": "[time: TimeValue | undefined]",
-            "parameters": "time: TimeValue | undefined",
+            "type": "[time: Date | undefined]",
+            "parameters": "time: Date | undefined",
             "required": true,
             "description": "Emitted when the model value changes.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldcompactemits.callables.update_modelvalue",
@@ -1313,27 +1131,13 @@
           },
           {
             "name": "update:placeholder",
-            "type": "[time: TimeValue]",
-            "parameters": "time: TimeValue",
+            "type": "[time: Date]",
+            "parameters": "time: Date",
             "required": true,
             "description": "Emitted when the placeholder value changes.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldcompactemits.callables.update_placeholder",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           }
         ],
         "referencedTypes": [
@@ -1341,7 +1145,7 @@
             "name": "TimeFieldRootEmits",
             "kind": "typeAlias",
             "type": "{ 'update:modelValue': [time: TimeValue | undefined]; 'update:placeholder': [time: TimeValue]; }",
-            "resolvedType": "{ \"update:modelValue\": [time: TimeValue | undefined]; \"update:placeholder\": [time: TimeValue] }",
+            "resolvedType": "{ \"update:modelValue\": [time: Date | undefined]; \"update:placeholder\": [time: Date] }",
             "description": "Events for the TimeFieldRoot component.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootemits",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
@@ -1351,8 +1155,8 @@
             "callables": [
               {
                 "name": "update:modelValue",
-                "type": "[time: TimeValue | undefined]",
-                "parameters": "time: TimeValue | undefined",
+                "type": "[time: Date | undefined]",
+                "parameters": "time: Date | undefined",
                 "required": true,
                 "description": "Emitted when the model value changes.",
                 "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootemits.callables.update_modelvalue",
@@ -1361,8 +1165,8 @@
               },
               {
                 "name": "update:placeholder",
-                "type": "[time: TimeValue]",
-                "parameters": "time: TimeValue",
+                "type": "[time: Date]",
+                "parameters": "time: Date",
                 "required": true,
                 "description": "Emitted when the placeholder value changes.",
                 "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootemits.callables.update_placeholder",
@@ -1414,7 +1218,7 @@
         "kind": "props",
         "name": "TimeFieldRootProps",
         "type": "Interface TimeFieldRootProps",
-        "resolvedType": "{ defaultValue?: TimeValue; modelValue?: TimeValue; defaultPlaceholder?: TimeValue; placeholder?: TimeValue; granularity?: TimeGranularity; maxValue?: TimeValue; minValue?: TimeValue; isTimeUnavailable?: TimeMatcher; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; id?: string; name?: string; required?: boolean; readonly?: boolean; step?: DateStep; locale?: string; hourCycle?: 12 | 24; hideTimeZone?: boolean }",
+        "resolvedType": "{ defaultValue?: Date; modelValue?: Date; defaultPlaceholder?: Date; placeholder?: Date; granularity?: TimeGranularity; maxValue?: Date; minValue?: Date; isTimeUnavailable?: TimeMatcher; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; id?: string; name?: string; required?: boolean; readonly?: boolean; step?: DateStep; locale?: string; hourCycle?: 12 | 24; hideTimeZone?: boolean }",
         "description": "Properties for the TimeFieldRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootprops.props",
         "sourcePath": "packages/headless/src/components/time-field/types.ts",
@@ -1422,103 +1226,47 @@
         "members": [
           {
             "name": "defaultValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Default value for the time field.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootprops.members.defaultvalue",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "modelValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Current model value.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootprops.members.modelvalue",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "defaultPlaceholder",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Default placeholder.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootprops.members.defaultplaceholder",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "placeholder",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Placeholder.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootprops.members.placeholder",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "granularity",
@@ -1547,53 +1295,25 @@
           },
           {
             "name": "maxValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Max value.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootprops.members.maxvalue",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "minValue",
-            "type": "TimeValue",
+            "type": "Date",
             "required": false,
             "description": "Min value.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootprops.members.minvalue",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": "CalendarDateTime | ZonedDateTime | Time",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "isTimeUnavailable",
@@ -1608,8 +1328,8 @@
               {
                 "name": "TimeMatcher",
                 "kind": "typeAlias",
-                "type": "(time: TimeValue) => boolean",
-                "resolvedType": "(time: CalendarDateTime | ZonedDateTime | Time) => boolean",
+                "type": "(time: Date) => boolean",
+                "resolvedType": "(time: Date) => boolean",
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_date_types.timematcher",
                 "sourcePath": "packages/headless/src/date/types.ts",
@@ -1902,7 +1622,7 @@
         "kind": "emits",
         "name": "TimeFieldRootEmits",
         "type": "TypeAlias TimeFieldRootEmits",
-        "resolvedType": "{ \"update:modelValue\": [time: TimeValue | undefined]; \"update:placeholder\": [time: TimeValue] }",
+        "resolvedType": "{ \"update:modelValue\": [time: Date | undefined]; \"update:placeholder\": [time: Date] }",
         "description": "Events for the TimeFieldRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootemits.emits",
         "sourcePath": "packages/headless/src/components/time-field/types.ts",
@@ -1911,8 +1631,8 @@
         "callables": [
           {
             "name": "update:modelValue",
-            "type": "[time: TimeValue | undefined]",
-            "parameters": "time: TimeValue | undefined",
+            "type": "[time: Date | undefined]",
+            "parameters": "time: Date | undefined",
             "required": true,
             "description": "Emitted when the model value changes.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootemits.callables.update_modelvalue",
@@ -1921,27 +1641,13 @@
           },
           {
             "name": "update:placeholder",
-            "type": "[time: TimeValue]",
-            "parameters": "time: TimeValue",
+            "type": "[time: Date]",
+            "parameters": "time: Date",
             "required": true,
             "description": "Emitted when the placeholder value changes.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootemits.callables.update_placeholder",
             "sourcePath": "packages/headless/src/components/time-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TimeValue",
-                "kind": "typeAlias",
-                "type": "import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime | import(\"@internationalized/date\").Time",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_date_types.timevalue",
-                "sourcePath": "packages/headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           }
         ],
         "referencedTypes": []
@@ -1988,7 +1694,7 @@
         "kind": "slotProps",
         "name": "TimeFieldRootSlotProps",
         "type": "Interface TimeFieldRootSlotProps",
-        "resolvedType": "{ modelValue: TimeValue | undefined; segments: DateFieldSegment[]; isInvalid: boolean }",
+        "resolvedType": "{ modelValue: Date | undefined; segments: DateFieldSegment[]; isInvalid: boolean }",
         "description": "Slot properties for the TimeFieldRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootslotprops.slotprops",
         "sourcePath": "packages/headless/src/components/time-field/types.ts",
@@ -1996,7 +1702,7 @@
         "members": [
           {
             "name": "modelValue",
-            "type": "TimeValue | undefined",
+            "type": "Date | undefined",
             "required": true,
             "description": "Current model value.",
             "descriptionKey": "api.generated.packages_headless_src_components_time_field_types.timefieldrootslotprops.members.modelvalue",

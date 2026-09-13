@@ -62,7 +62,7 @@ A segmented date range input that renders two groups of keyboard-editable date s
 
 ### Cautions
 
-- The value is a `DateRange` — an object `{ start, end }` of `DateValue` from `@internationalized/date`, not a native `string`. Use it with the other date-family components.
+- The value is a `DateRange` — an object `{ start, end }` of `DateValue`s, not a `string`. Use it with the other date-family components.
 - `defaultValue` is only read on mount — use `v-model` for external control.
 - A start later than end is marked invalid but the values are never swapped automatically — clear or correct them in the parent.
 - Form submission uses two hidden inputs: the start one takes `startName` (or the shared `name`), the end one takes `endName`. Set both to submit distinct fields; `required`/`min`/`max` are reflected but do not run custom validation.

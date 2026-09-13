@@ -63,7 +63,7 @@ A date range picker that pairs a keyboard-editable dual segmented date range fie
 
 ### Cautions
 
-- The value is a `DateRange` — an object `{ start, end }` of `DateValue` from `@internationalized/date`, not a native `string`. Use it with `SDateRangeField`, `SCalendarRange`, and the other date-family components.
+- The value is a `DateRange` — an object `{ start, end }` of `DateValue`s, not a `string`. Use it with `SDateRangeField`, `SCalendarRange`, and the other date-family components.
 - `defaultValue`/`defaultOpen` are only read on mount — use `v-model`/`open` for external control.
 - The toggle button is the calendar icon; its default `aria-label` (locale `toggle`) can be overridden through `triggerProps['aria-label']`. The icon itself is fixed — to render a custom trigger, compose `DateRangePickerCompact` from `@soybeanjs/headless/date-range-picker` with your own popover content.
 - The popup `role="dialog"` gets its accessible name from the locale `popupLabel` message; override it through `popupProps['aria-label']`.

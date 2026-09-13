@@ -65,7 +65,7 @@ A monthly date grid that supports single or multiple selection, disabled and una
 
 ### Cautions
 
-- The value is a `DateValue` from `@internationalized/date` (`CalendarDate`/`CalendarDateTime`), never a native `Date` or string. Convert with `toDate`/`fromDate` utilities when interop is needed.
+- The value is a native `Date` at local midnight (the `DateValue` model: `Date` or `{ date, time? }`). Use `date-fns` or `Intl` when formatting or converting.
 - `multiple` changes the model shape to `DateValue[]`; the `M` generic infers it from the prop.
 - `defaultValue`/`defaultPlaceholder` are read on mount only — use `v-model` for external control.
 - `isDateDisabled` and `isDateUnavailable` differ: disabled dates are unselectable by policy, unavailable dates are additionally marked visually (`line-through` in the default style).
@@ -81,7 +81,7 @@ Pass `multiple` (boolean shorthand works in templates) and bind `v-model` to an 
 
 ### How do I prevent dates before today?
 
-Pass `minValue={new CalendarDate(2026, 1, 1)}` (or any `DateValue`). Out-of-range dates are disabled and the prev button auto-disables at the bound.
+Pass `minValue={new Date(2026, 0, 1)}` (or any `DateValue`). Out-of-range dates are disabled and the prev button auto-disables at the bound.
 
 ### How do I show several months at once?
 

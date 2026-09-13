@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
+import { createTime } from '@soybeanjs/headless/date';
 import { STimeField } from '@soybeanjs/ui';
-import { Time } from '@internationalized/date';
 
-const value = shallowRef(new Time(18, 15, 0));
+const value = shallowRef(createTime(18, 15, 0));
 </script>
 
 <template>
