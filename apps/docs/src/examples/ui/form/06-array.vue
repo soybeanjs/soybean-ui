@@ -34,8 +34,8 @@ const { handleSubmit, SFormField, SFormFieldArray } = useForm({
         <div v-for="(_, index) in fields" :key="index" class="flex items-center gap-8px">
           <span class="w-20px text-right text-sm">{{ index + 1 }}.</span>
           <SInput :placeholder="`Email ${index + 1}`" />
-          <SButtonIcon icon="lucide:minus" class="flex-shrink-0" @click="remove(index)" />
-          <SButtonIcon icon="lucide:plus" class="flex-shrink-0" @click="append('')" />
+          <SButtonIcon icon="lucide:minus" class="shrink-0" @click="remove(index)" />
+          <SButtonIcon icon="lucide:plus" class="shrink-0" @click="append('')" />
           <div class="flex flex-col">
             <SButtonIcon icon="lucide:chevron-up" size="xs" :disabled="index === 0" @click="move(index, index - 1)" />
             <SButtonIcon
