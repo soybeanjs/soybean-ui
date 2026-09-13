@@ -203,6 +203,11 @@ function buildShortcuts(options: PresetAnimationsOptions): Shortcut<Theme>[] {
     {
       'animation-name': EXIT_ANIMATION_NAME,
       ...sharedAnimationProps(theme, options),
+      // Hold the exit keyframe after it finishes: the element stays mounted
+      // until the presence layer hears `animationend`, and without a fill the
+      // final frame would paint the resting style for a frame first — a visible
+      // flash when dismissing a drawer mid-drag.
+      'animation-fill-mode': options.fillMode ?? 'forwards',
       [`${CSS_VARIABLE_PREFIX}-exit-opacity`]: 'initial',
       [`${CSS_VARIABLE_PREFIX}-exit-scale`]: 'initial',
       [`${CSS_VARIABLE_PREFIX}-exit-rotate`]: 'initial',

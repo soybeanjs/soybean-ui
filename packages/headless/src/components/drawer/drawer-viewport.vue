@@ -11,13 +11,15 @@ defineProps<DrawerViewportProps>();
 
 const { dataState } = useDialogRootContext('DrawerViewport');
 
-const { hasSnapPoints, snapPointsOffset } = useDrawerRootContext('DrawerViewport');
+const { hasSnapPoints, snapPointsOffset, swipeDirection, swiping } = useDrawerRootContext('DrawerViewport');
 </script>
 
 <template>
   <div
     data-soybean-drawer-viewport
     :data-state="dataState"
+    :data-soybean-drawer-swipe-direction="swipeDirection"
+    :data-soybean-swiping="swiping ? 'true' : undefined"
     :data-soybean-snap-points="hasSnapPoints ? 'true' : 'false'"
     :data-soybean-snap-points-offset="snapPointsOffset.length ? snapPointsOffset.join(',') : undefined"
   >

@@ -2,9 +2,8 @@
 import { computed, toRefs } from 'vue';
 import { useControllableState } from '../../composables';
 import { DialogRoot } from '../dialog';
-import { CLOSE_THRESHOLD, SCROLL_LOCK_TIMEOUT } from './shared';
 import { provideDrawerRootContext } from './context';
-import type { DrawerRootProps, DrawerRootEmits, DrawerRootSlots, DrawerEmitHandlers } from './types';
+import type { DrawerRootProps, DrawerRootEmits, DrawerRootSlots } from './types';
 
 defineOptions({
   name: 'DrawerRoot'
@@ -19,13 +18,10 @@ const props = withDefaults(defineProps<DrawerRootProps>(), {
   defaultSnapPoint: undefined,
   snapPoints: undefined,
   snapToSequentialPoints: false,
-  shouldScaleBackground: undefined,
-  setBackgroundColorOnScale: true,
-  closeThreshold: CLOSE_THRESHOLD,
-  fadeFromIndex: undefined,
+  swipeDirection: undefined,
+  closeThreshold: 0.25,
   nested: false,
   modal: true,
-  scrollLockTimeout: SCROLL_LOCK_TIMEOUT,
   side: 'bottom',
   handleOnly: false
 });
@@ -42,41 +38,37 @@ const open = useControllableState(
   props.defaultOpen ?? false
 );
 
+const snapPoints = computed(() => props.snapPoints);
+
+const defaultSnapPoint = computed(() => props.defaultSnapPoint ?? props.snapPoints?.[0] ?? null);
+
 const snapPoint = useControllableState(
   () => props.snapPoint,
   value => {
     emit('update:snapPoint', value);
   },
-  props.defaultSnapPoint ?? null
+  defaultSnapPoint.value
 );
 
-const fadeFromIndex = computed(() => {
-  if (props.fadeFromIndex !== undefined) {
-    return props.fadeFromIndex;
-  }
-
-  if (!props.snapPoints?.length) {
-    return undefined;
-  }
-
-  return props.snapPoints.length - 1;
-});
-
-const emitHandlers: DrawerEmitHandlers = {
+const emitHandlers = {
   emitDrag: (percentageDragged: number) => emit('drag', percentageDragged),
   emitRelease: (openState: boolean) => emit('release', openState),
   emitClose: () => emit('close'),
   emitOpenChange: (openState: boolean) => {
     emit('update:open', openState);
+  },
+  emitSnapPointChange: (value: DrawerRootProps['snapPoint']) => {
+    emit('update:snapPoint', value ?? null);
   }
 };
 
-const { closeDrawer, hasBeenOpened, modal, isOpen } = provideDrawerRootContext({
+const { isOpen, closeDrawer } = provideDrawerRootContext({
   ...emitHandlers,
   ...toRefs(props),
+  open,
+  snapPoints,
   snapPoint,
-  fadeFromIndex,
-  open
+  defaultSnapPoint
 });
 
 function handleOpenChange(openState: boolean) {
@@ -85,18 +77,17 @@ function handleOpenChange(openState: boolean) {
     return;
   }
 
-  isOpen.value = openState;
-
-  if (openState) {
-    hasBeenOpened.value = true;
-  } else {
-    closeDrawer();
-  }
+  open.value = openState;
 }
 </script>
 
 <template>
+  <!--
+ The dialog binds the internal `isOpen` mirror: swipe dismissal closes the
+       drawer immediately, in uncontrolled mode too, without waiting for a
+       parent `update:open` round-trip. 
+-->
   <DialogRoot :open="isOpen" :modal="modal" @update:open="handleOpenChange">
-    <slot :open="isOpen" />
+    <slot :open="isOpen" :close="closeDrawer" />
   </DialogRoot>
 </template>

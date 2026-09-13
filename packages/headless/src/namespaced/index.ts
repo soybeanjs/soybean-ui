@@ -208,6 +208,8 @@ import {
   DrawerFooter,
   DrawerHandle,
   DrawerHeader,
+  DrawerIndent,
+  DrawerIndentBackground,
   DrawerOverlay,
   DrawerPopup,
   DrawerPortal,
@@ -1069,6 +1071,8 @@ export const Drawer = {
   Viewport: DrawerViewport,
   SwipeArea: DrawerSwipeArea,
   Handle: DrawerHandle,
+  Indent: DrawerIndent,
+  IndentBackground: DrawerIndentBackground,
   Header: DrawerHeader,
   Content: DrawerContent,
   Footer: DrawerFooter,
@@ -1088,6 +1092,8 @@ export const Drawer = {
   Viewport: typeof DrawerViewport;
   SwipeArea: typeof DrawerSwipeArea;
   Handle: typeof DrawerHandle;
+  Indent: typeof DrawerIndent;
+  IndentBackground: typeof DrawerIndentBackground;
   Header: typeof DrawerHeader;
   Content: typeof DrawerContent;
   Footer: typeof DrawerFooter;

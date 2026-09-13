@@ -8,6 +8,8 @@ export { default as DrawerOverlay } from './drawer-overlay.vue';
 export { default as DrawerViewport } from './drawer-viewport.vue';
 export { default as DrawerSwipeArea } from './drawer-swipe-area.vue';
 export { default as DrawerHandle } from './drawer-handle.vue';
+export { default as DrawerIndent } from './drawer-indent.vue';
+export { default as DrawerIndentBackground } from './drawer-indent-background.vue';
 export { default as DrawerHeader } from './drawer-header.vue';
 export { default as DrawerContent } from './drawer-content.vue';
 export { default as DrawerFooter } from './drawer-footer.vue';
@@ -50,6 +52,9 @@ export type {
   DrawerViewportProps,
   DrawerSwipeAreaProps,
   DrawerHandleProps,
+  DrawerIndentProps,
+  DrawerIndentBackgroundProps,
   DrawerUiSlot,
   DrawerUi
 } from './types';
+export type { ResolvedDrawerSnapPoint } from './use-drawer-snap-points';

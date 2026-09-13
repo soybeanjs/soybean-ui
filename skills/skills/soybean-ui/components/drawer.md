@@ -19,11 +19,11 @@ Usage examples for drawer are rendered on the site.
 
 - 🧩 Dialog-backed modality — inherits the dialog contract (`open`/`defaultOpen`, focus trap, focus restoration, Escape/outside dismissal) while adding the drawer state machine
 - 🧭 4 sides — `side="top"`/`"bottom"`/`"left"`/`"right"` (default `bottom`); horizontal sides are mirrored under RTL, vertical sides cap their height and scroll their content
-- 📏 Snap points — `snapPoints` accepts fractions (`0.5`), pixel offsets or CSS lengths; bind the active level with `v-model:snap-point`
+- 📏 Snap points — `snapPoints` accepts fractions (`0.5`), pixel offsets or CSS lengths; bind the active level with `v-model:snap-point`; the drawer opens at the first snap point and resets to it when closed
 - 🪜 Sequential snapping — `snapToSequentialPoints` walks one level at a time instead of jumping to the nearest point
-- 🖐️ Swipe dismiss — dragging the panel or the handle past `closeThreshold` closes it; `dismissible={false}` forces an explicit action
+- 🖐️ Swipe dismiss — dragging the panel or the handle past `closeThreshold` closes it; `dismissible={false}` forces an explicit action; `swipeDirection` overrides the dismiss direction
 - 👉 Swipe to open — opt into an edge gesture strip with `swipeable` (`DrawerSwipeArea`), with axis locking, direction damping, sampled velocity and scroll yielding
-- 🎭 Background scale — `shouldScaleBackground`/`setBackgroundColorOnScale` scale and tint the page behind the drawer
+- 🖼️ Page indent — `DrawerIndent` / `DrawerIndentBackground` scale, shift and round the page behind the drawer following the live swipe progress (CSS-variable driven)
 - 🧲 Handle-only dragging — `handleOnly` restricts the gesture to the handle; `fixed` pins the panel while its content scrolls
 - 🪗 Nested drawers — `nested` renders through `DrawerRootNested` so drag, release and open state stay coordinated with the parent
 - 🎛️ Modality tiers — `modal` accepts `true` (full modal), `'trap-focus'` (focus trapped, outside pointer events alive) or `false`
@@ -34,14 +34,15 @@ Usage examples for drawer are rendered on the site.
 ## Component family
 
 - `SDrawer` (styled) — the entry wrapper; `drawerVariants` recipe with dynamic slot forwarding
-- `DrawerRoot` / `DrawerRootNested` (headless) — the state owner; `open`, `snapPoints`, `snapPoint`, `dismissible`, `nested`, drag/swipe/scale state
+- `DrawerRoot` / `DrawerRootNested` (headless) — the state owner; `open`, `snapPoints`, `snapPoint`, `dismissible`, `nested`, drag/swipe state
 - `DrawerTrigger` (headless) — the opener, wired to `aria-haspopup`/`aria-expanded`
 - `DrawerPortal` (headless) — the teleport boundary
-- `DrawerOverlay` (headless) — the dimmed backdrop
-- `DrawerPopup` (headless) — the focus-trapped, draggable, dismissable surface
+- `DrawerOverlay` (headless) — the dimmed backdrop; fades with the live swipe progress
+- `DrawerPopup` (headless) — the focus-trapped surface and the drag gesture host; its position is driven entirely by CSS variables (`--soybean-drawer-snap-point-offset` + `--soybean-drawer-swipe-movement-x/y`)
 - `DrawerViewport` (headless) — the scrollable region that carries snap-point state
 - `DrawerSwipeArea` (headless) — the opt-in edge strip that opens the drawer by swipe
-- `DrawerHandle` (headless) — the grab handle; double-tap cycles snap points
+- `DrawerHandle` (headless) — the grab handle; double-tap cycles snap points. `DrawerCompact` renders it only for `side="bottom"`
+- `DrawerIndent` / `DrawerIndentBackground` (headless) — wrap the page behind the drawer to get the indent effect; `data-active` marks an open drawer and `--soybean-drawer-swipe-progress` carries the live progress
 - `DrawerHeader` / `DrawerContent` / `DrawerFooter` / `DrawerTitle` / `DrawerDescription` / `DrawerClose` / `DrawerCancel` / `DrawerConfirm` (headless) — chrome primitives wrapping Dialog; DOM uses `data-soybean-drawer-*`
 - `DrawerCompact` (headless) — the aggregated composite; composes handle, swipe area, header, content and footer and exposes the slots
 
@@ -53,7 +54,7 @@ Interactive demos for drawer are rendered on the site.
 
 Structured API summary generated from build-time component metadata.
 
-- Exported symbols (19): Drawer, DrawerCancel, DrawerClose, DrawerCompact, DrawerConfirm, DrawerContent, DrawerDescription, DrawerFooter, DrawerHandle, DrawerHeader, DrawerOverlay, DrawerPopup, DrawerPortal, DrawerRoot, DrawerRootNested, DrawerSwipeArea, DrawerTitle, DrawerTrigger, DrawerViewport.
+- Exported symbols (21): Drawer, DrawerCancel, DrawerClose, DrawerCompact, DrawerConfirm, DrawerContent, DrawerDescription, DrawerFooter, DrawerHandle, DrawerHeader, DrawerIndent, DrawerIndentBackground, DrawerOverlay, DrawerPopup, DrawerPortal, DrawerRoot, DrawerRootNested, DrawerSwipeArea, DrawerTitle, DrawerTrigger, DrawerViewport.
 
 ### Drawer
 
@@ -94,21 +95,18 @@ Properties for the Drawer component.
 - `defaultFullscreen`: The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state. (type `boolean`; default `false`; optional)
 - `modal`: Modality tier. `true` blocks outside pointer events, `'trap-focus'` only traps focus, `false` keeps the surface non-modal. (type `import("../../types").ModalityTier`; default `true`; optional)
 - `snapPoint`: The controlled snap point. Can be bound with `v-model:snapPoint`. (type `DrawerSnapPoint | null`; optional)
-- `defaultSnapPoint`: The snap point used when the drawer is initially rendered. Use when you do not need to control it. (type `DrawerSnapPoint | null`; optional)
+- `defaultSnapPoint`: The snap point used when the drawer is initially rendered. Use when you do not need to control it. Defaults to the first entry of `snapPoints`. (type `DrawerSnapPoint | null`; optional)
 - `snapToSequentialPoints`: When `true`, snaps to the next sequential snap point (one step at a time). When `false`, snaps to the nearest snap point by distance. (type `boolean`; default `false`; optional)
-- `closeThreshold`: Close threshold. (type `number`; optional)
-- `shouldScaleBackground`: Whether the component should scale background. (type `boolean`; optional)
-- `setBackgroundColorOnScale`: When `false` we don't change body's background color when the drawer is open. (type `boolean`; default `true`; optional)
-- `scrollLockTimeout`: Scroll lock timeout. (type `number`; optional)
+- `closeThreshold`: Close threshold as a fraction of the drawer size (0–1). (type `number`; default `0.25`; optional)
+- `swipeDirection`: The swipe direction that dismisses the drawer. Defaults to the direction opposite the drawer's entry edge (`side`). (type `SwipeDirection`; optional)
 - `fixed`: Whether fixed. (type `boolean`; optional)
-- `dismissible`: Whether dismissible. (type `boolean`; optional)
-- `nested`: Whether nested. (type `boolean`; optional)
-- `side`: Direction. (type `Side`; optional)
-- `noBodyStyles`: When `true` the `body` doesn't get any styles assigned from Vaul (type `boolean`; optional)
-- `handleOnly`: Whether handle only. (type `boolean`; optional)
+- `dismissible`: Whether dismissible. (type `boolean`; default `true`; optional)
+- `nested`: Whether nested. (type `boolean`; default `false`; optional)
+- `side`: Direction. (type `Side`; default `'bottom'`; optional)
+- `noBodyStyles`: When `true` the `body` doesn't get any styles assigned from the drawer (type `boolean`; optional)
+- `handleOnly`: Whether handle only. (type `boolean`; default `false`; optional)
 - `preventScrollRestoration`: Whether prevent scroll restoration. (type `boolean`; optional)
-- `snapPoints`: Snap points. (type `DrawerSnapPoint[]`; optional)
-- `fadeFromIndex`: Fade from index. (type `number`; optional)
+- `snapPoints`: Snap points used to position the drawer. Use numbers between 0 and 1 to represent fractions of the viewport height, numbers greater than 1 as pixel values, or strings in `px`/`rem` units. (type `DrawerSnapPoint[]`; optional)
 - `handleProps`: Properties forwarded to the handle element. (type `DrawerHandleProps`; optional)
 - `swipeable`: Render the opt-in swipe-to-open area at the drawer's edge. (type `boolean`; default `false`; optional)
 - `swipeAreaProps`: Properties forwarded to the swipe area element. (type `DrawerSwipeAreaProps`; optional)
@@ -132,8 +130,8 @@ Events for the Drawer component.
 - `interactOutside`: Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown` event happens outside or focus moves outside of it. Can be prevented. (type `[event: PointerDownOutsideEvent | FocusOutsideEvent]`; parameters `event: PointerDownOutsideEvent | FocusOutsideEvent`)
 - `openAutoFocus`: Event handler called when auto-focusing on open. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
 - `closeAutoFocus`: Event handler called when auto-focusing on close. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
-- `drag`: Emitted when drag occurs. (type `[percentageDragged: number]`; parameters `percentageDragged: number`)
-- `release`: Emitted when release occurs. (type `[open: boolean]`; parameters `open: boolean`)
+- `drag`: Emitted while dragging with the live progress: 0 fully open, 1 closed. (type `[percentageDragged: number]`; parameters `percentageDragged: number`)
+- `release`: Emitted when a drag gesture releases; `true` when the drawer stays open. (type `[open: boolean]`; parameters `open: boolean`)
 - `close`: Emitted when close occurs. (type `[]`)
 - `update:snapPoint`: Emitted when the snap point value changes. (type `[val: DrawerSnapPoint | null]`; parameters `val: DrawerSnapPoint | null`)
 
@@ -224,21 +222,18 @@ Properties for the DrawerCompact component.
 - `defaultFullscreen`: The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state. (type `boolean`; default `false`; optional)
 - `modal`: Modality tier. `true` blocks outside pointer events, `'trap-focus'` only traps focus, `false` keeps the surface non-modal. (type `import("../../types").ModalityTier`; default `true`; optional)
 - `snapPoint`: The controlled snap point. Can be bound with `v-model:snapPoint`. (type `DrawerSnapPoint | null`; optional)
-- `defaultSnapPoint`: The snap point used when the drawer is initially rendered. Use when you do not need to control it. (type `DrawerSnapPoint | null`; optional)
+- `defaultSnapPoint`: The snap point used when the drawer is initially rendered. Use when you do not need to control it. Defaults to the first entry of `snapPoints`. (type `DrawerSnapPoint | null`; optional)
 - `snapToSequentialPoints`: When `true`, snaps to the next sequential snap point (one step at a time). When `false`, snaps to the nearest snap point by distance. (type `boolean`; default `false`; optional)
-- `closeThreshold`: Close threshold. (type `number`; optional)
-- `shouldScaleBackground`: Whether the component should scale background. (type `boolean`; optional)
-- `setBackgroundColorOnScale`: When `false` we don't change body's background color when the drawer is open. (type `boolean`; default `true`; optional)
-- `scrollLockTimeout`: Scroll lock timeout. (type `number`; optional)
+- `closeThreshold`: Close threshold as a fraction of the drawer size (0–1). (type `number`; default `0.25`; optional)
+- `swipeDirection`: The swipe direction that dismisses the drawer. Defaults to the direction opposite the drawer's entry edge (`side`). (type `SwipeDirection`; optional)
 - `fixed`: Whether fixed. (type `boolean`; optional)
-- `dismissible`: Whether dismissible. (type `boolean`; optional)
-- `nested`: Whether nested. (type `boolean`; optional)
-- `side`: Direction. (type `Side`; optional)
-- `noBodyStyles`: When `true` the `body` doesn't get any styles assigned from Vaul (type `boolean`; optional)
-- `handleOnly`: Whether handle only. (type `boolean`; optional)
+- `dismissible`: Whether dismissible. (type `boolean`; default `true`; optional)
+- `nested`: Whether nested. (type `boolean`; default `false`; optional)
+- `side`: Direction. (type `Side`; default `'bottom'`; optional)
+- `noBodyStyles`: When `true` the `body` doesn't get any styles assigned from the drawer (type `boolean`; optional)
+- `handleOnly`: Whether handle only. (type `boolean`; default `false`; optional)
 - `preventScrollRestoration`: Whether prevent scroll restoration. (type `boolean`; optional)
-- `snapPoints`: Snap points. (type `DrawerSnapPoint[]`; optional)
-- `fadeFromIndex`: Fade from index. (type `number`; optional)
+- `snapPoints`: Snap points used to position the drawer. Use numbers between 0 and 1 to represent fractions of the viewport height, numbers greater than 1 as pixel values, or strings in `px`/`rem` units. (type `DrawerSnapPoint[]`; optional)
 - `handleProps`: Properties forwarded to the handle element. (type `DrawerHandleProps`; optional)
 - `swipeable`: Render the opt-in swipe-to-open area at the drawer's edge. (type `boolean`; default `false`; optional)
 - `swipeAreaProps`: Properties forwarded to the swipe area element. (type `DrawerSwipeAreaProps`; optional)
@@ -259,8 +254,8 @@ Events for the DrawerCompact component.
 - `interactOutside`: Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown` event happens outside or focus moves outside of it. Can be prevented. (type `[event: PointerDownOutsideEvent | FocusOutsideEvent]`; parameters `event: PointerDownOutsideEvent | FocusOutsideEvent`)
 - `openAutoFocus`: Event handler called when auto-focusing on open. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
 - `closeAutoFocus`: Event handler called when auto-focusing on close. Can be prevented. (type `[event: Event]`; parameters `event: Event`)
-- `drag`: Emitted when drag occurs. (type `[percentageDragged: number]`; parameters `percentageDragged: number`)
-- `release`: Emitted when release occurs. (type `[open: boolean]`; parameters `open: boolean`)
+- `drag`: Emitted while dragging with the live progress: 0 fully open, 1 closed. (type `[percentageDragged: number]`; parameters `percentageDragged: number`)
+- `release`: Emitted when a drag gesture releases; `true` when the drawer stays open. (type `[open: boolean]`; parameters `open: boolean`)
 - `close`: Emitted when close occurs. (type `[]`)
 - `update:snapPoint`: Emitted when the snap point value changes. (type `[val: DrawerSnapPoint | null]`; parameters `val: DrawerSnapPoint | null`)
 
@@ -319,6 +314,14 @@ Properties for the DrawerHandle component.
 
 - No documented props, emits, slots, or slot props were available.
 
+### DrawerIndent
+
+- No documented props, emits, slots, or slot props were available.
+
+### DrawerIndentBackground
+
+- No documented props, emits, slots, or slot props were available.
+
 ### DrawerOverlay
 
 - No documented props, emits, slots, or slot props were available.
@@ -347,29 +350,26 @@ Properties for the DrawerRoot component.
 - `defaultFullscreen`: The fullscreen state of the dialog when it is initially rendered. Use when you do not need to control its fullscreen state. (type `boolean`; default `false`; optional)
 - `modal`: Modality tier. `true` blocks outside pointer events, `'trap-focus'` only traps focus, `false` keeps the surface non-modal. (type `import("../../types").ModalityTier`; default `true`; optional)
 - `snapPoint`: The controlled snap point. Can be bound with `v-model:snapPoint`. (type `DrawerSnapPoint | null`; optional)
-- `defaultSnapPoint`: The snap point used when the drawer is initially rendered. Use when you do not need to control it. (type `DrawerSnapPoint | null`; optional)
+- `defaultSnapPoint`: The snap point used when the drawer is initially rendered. Use when you do not need to control it. Defaults to the first entry of `snapPoints`. (type `DrawerSnapPoint | null`; optional)
 - `snapToSequentialPoints`: When `true`, snaps to the next sequential snap point (one step at a time). When `false`, snaps to the nearest snap point by distance. (type `boolean`; default `false`; optional)
-- `closeThreshold`: Close threshold. (type `number`; optional)
-- `shouldScaleBackground`: Whether the component should scale background. (type `boolean`; optional)
-- `setBackgroundColorOnScale`: When `false` we don't change body's background color when the drawer is open. (type `boolean`; default `true`; optional)
-- `scrollLockTimeout`: Scroll lock timeout. (type `number`; optional)
+- `closeThreshold`: Close threshold as a fraction of the drawer size (0–1). (type `number`; default `0.25`; optional)
+- `swipeDirection`: The swipe direction that dismisses the drawer. Defaults to the direction opposite the drawer's entry edge (`side`). (type `SwipeDirection`; optional)
 - `fixed`: Whether fixed. (type `boolean`; optional)
-- `dismissible`: Whether dismissible. (type `boolean`; optional)
-- `nested`: Whether nested. (type `boolean`; optional)
-- `side`: Direction. (type `Side`; optional)
-- `noBodyStyles`: When `true` the `body` doesn't get any styles assigned from Vaul (type `boolean`; optional)
-- `handleOnly`: Whether handle only. (type `boolean`; optional)
+- `dismissible`: Whether dismissible. (type `boolean`; default `true`; optional)
+- `nested`: Whether nested. (type `boolean`; default `false`; optional)
+- `side`: Direction. (type `Side`; default `'bottom'`; optional)
+- `noBodyStyles`: When `true` the `body` doesn't get any styles assigned from the drawer (type `boolean`; optional)
+- `handleOnly`: Whether handle only. (type `boolean`; default `false`; optional)
 - `preventScrollRestoration`: Whether prevent scroll restoration. (type `boolean`; optional)
-- `snapPoints`: Snap points. (type `DrawerSnapPoint[]`; optional)
-- `fadeFromIndex`: Fade from index. (type `number`; optional)
+- `snapPoints`: Snap points used to position the drawer. Use numbers between 0 and 1 to represent fractions of the viewport height, numbers greater than 1 as pixel values, or strings in `px`/`rem` units. (type `DrawerSnapPoint[]`; optional)
 
 #### Emits
 
 Events for the DrawerRoot component.
 
 - `update:open`: Event handler called when the open state of the dialog changes. (type `[value: boolean]`; parameters `value: boolean`)
-- `drag`: Emitted when drag occurs. (type `[percentageDragged: number]`; parameters `percentageDragged: number`)
-- `release`: Emitted when release occurs. (type `[open: boolean]`; parameters `open: boolean`)
+- `drag`: Emitted while dragging with the live progress: 0 fully open, 1 closed. (type `[percentageDragged: number]`; parameters `percentageDragged: number`)
+- `release`: Emitted when a drag gesture releases; `true` when the drawer stays open. (type `[open: boolean]`; parameters `open: boolean`)
 - `close`: Emitted when close occurs. (type `[]`)
 - `update:snapPoint`: Emitted when the snap point value changes. (type `[val: DrawerSnapPoint | null]`; parameters `val: DrawerSnapPoint | null`)
 
@@ -377,7 +377,7 @@ Events for the DrawerRoot component.
 
 Slots for the DrawerRoot component.
 
-- `default`: Custom content for the default slot. (type `((props: { open: boolean; }) => any) | undefined`)
+- `default`: Custom content for the default slot. (type `((props: { open: boolean; close: () => void; }) => any) | undefined`)
 
 ### DrawerRootNested
 
@@ -389,7 +389,7 @@ Slots for the DrawerRoot component.
 
 Properties for the DrawerSwipeArea component.
 
-- `swipeDirection`: Override the swipe side that opens the drawer. Defaults to the opposite of the root `side`. (type `SwipeDirection`; optional)
+- `swipeDirection`: Override the swipe side that opens the drawer. Defaults to the opposite of the root swipe direction. (type `SwipeDirection`; optional)
 - `disabled`: Disable swipe-to-open. (type `boolean`; default `false`; optional)
 
 ### DrawerTitle
@@ -421,19 +421,19 @@ Events for the DrawerTrigger component.
 
 ### Architecture and benchmark differences
 
-`DrawerCompact` owns the handle/swipe-area/overlay/popup/header/content/footer composition and the drag/snap/scale state flow (via `useSnapPoints`, `useScaleBackground` and `useSwipeDismiss`), while every primitive stays style-free and only the UI wrapper injects the `drawerVariants` classes. This mirrors the vaul / reka-ui Drawer headless split. Ant Design, Element Plus, Mantine and Naive UI ship a single styled drawer; a dedicated draggable panel with `snapPoints` is typically a separate library (vaul, Base UI Drawer). SoybeanUI exposes per-slot `*Props`, a `size` scale, and the snap/scale/drag/swipe model inline.
+`DrawerCompact` owns the handle/swipe-area/overlay/popup/header/content/footer composition and the drag/snap state flow (via `useDrawerSnapPoints` and `useSwipeDismiss`), while every primitive stays style-free and only the UI wrapper injects the `drawerVariants` classes. The popup transform is CSS-variable driven — the gesture layer writes variables, never inline transforms — so snap settling, release bounce and dismissal all resolve through CSS transitions. This mirrors the Base UI Drawer model. Ant Design, Element Plus, Mantine and Naive UI ship a single styled drawer; a dedicated draggable panel with `snapPoints` is typically a separate library (vaul, Base UI Drawer). SoybeanUI exposes per-slot `*Props`, a `size` scale, and the snap/indent/drag/swipe model inline.
 
-| Capability               | SoybeanUI | shadcn/ui + vaul | reka-ui Drawer | Ant Design | Element Plus | Mantine |
-| :----------------------- | :-------: | :--------------: | :------------: | :--------: | :----------: | :-----: |
-| Reuses dialog primitives |    ✅     |        ✅        |       ✅       |     —      |      —       |    —    |
-| Headless/styled split    |    ✅     |        ✅        |       ✅       |     —      |      —       |    —    |
-| Drag-to-dismiss          |    ✅     |        ✅        |       ✅       |     —      |      —       |   ✅    |
-| Snap points              |    ✅     |        ✅        |       ✅       |     —      |      —       |    —    |
-| Swipe-to-open area       |    ✅     |        —         |       ✅       |     —      |      —       |    —    |
-| Background scale         |    ✅     |        ✅        |       —        |     —      |      —       |    —    |
-| Nested drawers           |    ✅     |        ✅        |       ✅       |     —      |      —       |    —    |
-| Modality tiers           |    ✅     |        —         |       ✅       |     —      |      —       |    —    |
-| Sizes (6)                |    ✅     |        —         |       —        |     —      |      —       |    —    |
+| Capability               | SoybeanUI | shadcn/ui + vaul | reka-ui Drawer | Base UI | Ant Design | Element Plus | Mantine |
+| :----------------------- | :-------: | :--------------: | :------------: | :-----: | :--------: | :----------: | :-----: |
+| Reuses dialog primitives |    ✅     |        ✅        |       ✅       |   ✅    |     —      |      —       |    —    |
+| Headless/styled split    |    ✅     |        ✅        |       ✅       |   ✅    |     —      |      —       |    —    |
+| Drag-to-dismiss          |    ✅     |        ✅        |       ✅       |   ✅    |     —      |      —       |   ✅    |
+| Snap points              |    ✅     |        ✅        |       ✅       |   ✅    |     —      |      —       |    —    |
+| Swipe-to-open area       |    ✅     |        —         |       ✅       |   ✅    |     —      |      —       |    —    |
+| Page indent effect       |    ✅     |        ✅        |       —        |   ✅    |     —      |      —       |    —    |
+| Nested drawers           |    ✅     |        ✅        |       ✅       |   ✅    |     —      |      —       |    —    |
+| Modality tiers           |    ✅     |        —         |       ✅       |   ✅    |     —      |      —       |    —    |
+| Sizes (6)                |    ✅     |        —         |       —        |    —    |     —      |      —       |    —    |
 
 `—` = unsupported or a different interaction model.
 
@@ -441,9 +441,10 @@ Events for the DrawerTrigger component.
 
 - `modal` defaults to `true`; the panel teleports to `document.body` and body scroll is locked by the hide-others layer. The `'trap-focus'` tier keeps outside pointer events alive but still traps focus.
 - `side` picks the anchored edge. Vertical sides (`top`/`bottom`) cap the panel at `calc(100dvh - 2rem)` so a long body scrolls inside the `content` slot instead of growing past the viewport; horizontal sides fill the viewport height and cap their width.
-- Drag-to-dismiss uses pointer capture; `dismissible` (default `true`) allows releasing past `closeThreshold` to close. Set `false` to force explicit actions.
-- Horizontal sides ship **vertical snap only** in this release — `snapPoints` resolves against the inline axis, so `left`/`right` snap behaviour is not yet supported.
-- `snapPoints` accepts fractions (0–1), pixel values (> 1) or CSS length strings; `snapPoint` tracks the current level and is bound with `v-model:snap-point`.
+- Drag-to-dismiss uses pointer capture; `dismissible` (default `true`) allows releasing past `closeThreshold` to close. Set `false` to force explicit actions. `swipeDirection` overrides the dismiss direction (defaults to the direction opposite the entry edge).
+- Horizontal sides ship **vertical snap only** in this release — `snapPoints` resolves against the vertical axis, so `left`/`right` snap behaviour is not yet supported.
+- `snapPoints` accepts fractions (0–1), pixel values (> 1) or CSS length strings; `snapPoint` tracks the current level and is bound with `v-model:snap-point`. The drawer opens at the first snap point and resets to it on close.
+- The drag handle is rendered only for `side="bottom"` in `DrawerCompact`; compose `DrawerHandle` manually for other sides.
 - `handleOnly` restricts dragging to the handle; `fixed` keeps the panel in place while inner content scrolls.
 - `swipeable` renders a gesture strip at the drawer's edge; it is inert while the drawer is open.
 - `nested` renders via `DrawerRootNested`; each nested drawer coordinates drag and release with its parent.
@@ -465,9 +466,28 @@ v0.50.0 renamed the whole family — the name `bottom-sheet` is retired.
 | `direction` prop (headless)                                                            | `side` prop                                                        |
 | `@soybeanjs/headless/bottom-sheet`                                                     | `@soybeanjs/headless/drawer`                                       |
 | `data-soybean-bottom-sheet-*`, `soybean-bottom-sheet-dragging`                         | `data-soybean-drawer-*`, `soybean-drawer-dragging`                 |
-| `data-soybean-bottom-sheet-scale`                                                      | `data-soybean-drawer-scale`                                        |
+| `data-soybean-bottom-sheet-scale`                                                      | removed with the scale-background engine (see below)               |
 
 The old `SDrawer` (a dialog with a side) was renamed to `SSheet`. See [Sheet](/components/sheet) for the side-panel API.
+
+### Migrating from the vaul-style engine
+
+v0.50.0 replaced the vaul-derived engine with a Base UI-style one. The public surface changes:
+
+| Before                                                | After                                                                                       |
+| :---------------------------------------------------- | :------------------------------------------------------------------------------------------ |
+| `shouldScaleBackground` / `setBackgroundColorOnScale` | removed. Wrap the page in `DrawerIndent` + `DrawerIndentBackground` inside `DrawerRoot`     |
+| `fadeFromIndex`                                       | removed; the overlay fades continuously with the swipe progress                             |
+| `snapPoint` defaulting to `null`                      | defaults to the first entry of `snapPoints` (the drawer opens positioned at a snap point)   |
+| implicit drag direction from `side`                   | still the default, overridable with `swipeDirection`                                        |
+| imperative transforms                                 | CSS variables (`--soybean-drawer-snap-point-offset`, `--soybean-drawer-swipe-movement-x/y`) |
+
+```vue
+<div data-soybean-drawer-scale>Page</div>
+
+<DrawerIndent class="page-indent">Page</DrawerIndent>
+<template #trigger><SButton>Open</SButton></template>
+```
 
 ```vue
 <template #trigger><SButton>Open</SButton></template>
@@ -479,7 +499,7 @@ Content
 
 ### Roadmap
 
-Horizontal snap points, and a `DrawerIndent`/`DrawerIndentBackground` pair for the Base UI indent animation.
+Horizontal snap points, the full native touchmove capture pipeline for mobile, and iOS virtual keyboard coordination.
 
 ## FAQ
 

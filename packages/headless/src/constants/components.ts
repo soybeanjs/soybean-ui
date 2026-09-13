@@ -200,6 +200,8 @@ export const components = {
     'DrawerViewport',
     'DrawerSwipeArea',
     'DrawerHandle',
+    'DrawerIndent',
+    'DrawerIndentBackground',
     'DrawerHeader',
     'DrawerContent',
     'DrawerFooter',

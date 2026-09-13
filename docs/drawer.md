@@ -1,7 +1,7 @@
 # Drawer 重构方案:采纳 Base UI 模型重写 headless drawer
 
 > 定位:v0.50.0 窗口内对 headless `drawer` 家族(原 bottom-sheet,commit de5cb8680 落地)的**二次重构执行清单**——解决交付后暴露的手势/吸附缺陷,采纳 [Base UI Drawer](https://github.com/mui/base-ui/tree/v1.8.0/packages/react/src/drawer) 的核心架构模型。
-> 状态:⬜ 待办(方案版,2026-09-13)。
+> 状态:🚧 执行中(2026-09-13:D1/D2/D3.1/D3.2/D3.3/D4 已完成;D3.4 真机矩阵与 D4.3 测试合同批量移植待收尾)。
 > 分析基线:Base UI v1.8.0 源码实读(非测试源码约 4700 行,含 1159 行共享手势引擎 `useSwipeDismiss`)+ 本仓 `packages/headless/src/components/drawer/`(约 2900 行,Vaul 移植)实读。
 > 组件规范:[`.agents/skills/soybean-ui-develop/`](../.agents/skills/soybean-ui-develop/SKILL.md)。
 
@@ -56,50 +56,50 @@
 
 | #    | 任务                                                                                                                                                                                      | 验收                                                                 | 状态 |
 | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ---- |
-| D1.1 | popup transform 改 CSS 变量驱动:headless 写 `--soybean-drawer-snap-point-offset` / `--soybean-drawer-swipe-movement-x/y`,`styles/sheet.ts` popup 槽声明 calc transform 与 transition      | 拖拽全程无 JS 写 `transform` 字符串;松手弹回无卡滞                   | ⬜   |
-| D1.2 | 新建 `use-drawer-snap-points.ts`(值解析 ≤1 比例 / >1 px / 字符串单位 → {value,height,offset},ResizeObserver 实测,clamp + 去重),替换 `use-snap-points.ts`;`snapPoint` 默认 `snapPoints[0]` | 打开即定位第一档;换档 = 变量变化,CSS transition 动画;无 500ms 定时器 | ⬜   |
-| D1.3 | 释放判定移植:`targetOffset = clamp(offset + dragDelta + velocity×300)` 取最近;离关闭更近或快扫关闭;`snapToSequentialPoints` 逐级                                                          | 快扫/慢拖/反向收回判定正确                                           | ⬜   |
-| D1.4 | overlay 声明式化:透明度/进度由 `--soybean-drawer-swipe-progress` + `data-state` 承担,删除 WeakMap `set/reset` 对 overlay 的命令式写入                                                     | 遮罩不再消失/闪烁                                                    | ⬜   |
-| D1.5 | handle 按 side 条件渲染:headless Compact 仅 `side === 'bottom'` 渲染 handle;`drawerVariants` handle 样式收敛到 bottom 分支                                                                | top/left/right 无 handle;bottom 不回归                               | ⬜   |
-| D1.6 | `--soybean-drawer-height` 实测接线(popup ResizeObserver 上报);popup/viewport 状态属性对齐(`data-swiping` / `data-swipe-direction` / `data-expanded`)                                      | 高度变化(内容增删)不破坏定位                                         | ⬜   |
+| D1.1 | popup transform 改 CSS 变量驱动:headless 写 `--soybean-drawer-snap-point-offset` / `--soybean-drawer-swipe-movement-x/y`,`styles/sheet.ts` popup 槽声明 calc transform 与 transition      | 拖拽全程无 JS 写 `transform` 字符串;松手弹回无卡滞                   | ✅   |
+| D1.2 | 新建 `use-drawer-snap-points.ts`(值解析 ≤1 比例 / >1 px / 字符串单位 → {value,height,offset},ResizeObserver 实测,clamp + 去重),替换 `use-snap-points.ts`;`snapPoint` 默认 `snapPoints[0]` | 打开即定位第一档;换档 = 变量变化,CSS transition 动画;无 500ms 定时器 | ✅   |
+| D1.3 | 释放判定移植:`targetOffset = clamp(offset + dragDelta + velocity×300)` 取最近;离关闭更近或快扫关闭;`snapToSequentialPoints` 逐级                                                          | 快扫/慢拖/反向收回判定正确                                           | ✅   |
+| D1.4 | overlay 声明式化:透明度/进度由 `--soybean-drawer-swipe-progress` + `data-state` 承担,删除 WeakMap `set/reset` 对 overlay 的命令式写入                                                     | 遮罩不再消失/闪烁                                                    | ✅   |
+| D1.5 | handle 按 side 条件渲染:headless Compact 仅 `side === 'bottom'` 渲染 handle;`drawerVariants` handle 样式收敛到 bottom 分支                                                                | top/left/right 无 handle;bottom 不回归                               | ✅   |
+| D1.6 | `--soybean-drawer-height` 实测接线(popup ResizeObserver 上报);popup/viewport 状态属性对齐(`data-swiping` / `data-swipe-direction` / `data-expanded`)                                      | 高度变化(内容增删)不破坏定位                                         | ✅   |
 
 ### D2 手势引擎全量化(约 1–2 天)
 
 | #    | 任务                                                                                                                                                                                           | 验收                                      | 状态 |
 | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | ---- |
-| D2.1 | 扩展 [use-swipe-dismiss.ts](../packages/headless/src/components/drawer/use-swipe-dismiss.ts):反向「反悔取消」阈值、速度尾样本 + 80ms 时效、pending-start、首帧位移吸收(iOS touchmove 起步偏移) | 快扫尾速不被末帧抖动污染;反向拖 10px 收回 | ⬜   |
-| D2.2 | scroll-edge 起滑与滚动仲裁:滚动容器边缘可起滑、非 cancelable touchmove 让位、跨轴锁定(6px slop + bias)                                                                                         | 内容滚动与抽屉拖拽不互相吞                | ⬜   |
-| D2.3 | 交互元素/选区豁免:`button,a,input,textarea,[role=button]` 上不起滑(触摸可配)、选区/range input 豁免                                                                                            | 表单控件内拖拽不误触                      | ⬜   |
+| D2.1 | 扩展 [use-swipe-dismiss.ts](../packages/headless/src/components/drawer/use-swipe-dismiss.ts):反向「反悔取消」阈值、速度尾样本 + 80ms 时效、pending-start、首帧位移吸收(iOS touchmove 起步偏移) | 快扫尾速不被末帧抖动污染;反向拖 10px 收回 | ✅   |
+| D2.2 | scroll-edge 起滑与滚动仲裁:滚动容器边缘可起滑、非 cancelable touchmove 让位、跨轴锁定(6px slop + bias)                                                                                         | 内容滚动与抽屉拖拽不互相吞                | ✅   |
+| D2.3 | 交互元素/选区豁免:`button,a,input,textarea,[role=button]` 上不起滑(触摸可配)、选区/range input 豁免                                                                                            | 表单控件内拖拽不误触                      | ✅   |
 
 ### D3 触摸管线 + SwipeArea(约 2–3 天)
 
-| #    | 任务                                                                                                                                                             | 验收                                        | 状态 |
-| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- | ---- |
-| D3.1 | Viewport 原生 capture touchmove 管线:`addEventListener(touchmove, {passive:false, capture:true})` → 灌入手势引擎 + `stopPropagation`,TouchScrollState 仲裁状态机 | 触摸拖拽帧稳定不抖;页面滚动不被误锁         | ⬜   |
-| D3.2 | SwipeArea 打开手势改吃统一引擎:`trackDrag=false` + sqrt 阻尼跟手、50% 距离或速度开档、松手 click 守卫(capture pointerdown/click 恢复 outside-press)              | 边缘滑开不闪;松手不会立刻误关               | ⬜   |
-| D3.3 | 层级感接线:backdrop swipe-progress + `Drawer.Indent` / `Drawer.IndentBackground` 原语(visualStateStore 同步 `swipeProgress` / `frontmostHeight`,缩进量由消费者 CSS calc 声明),替代 scale-background 的命令式缩放 | 拖拽时 backdrop 与页面内容缩进跟随进度;嵌套抽屉进度不互串 | ⬜   |
-| D3.4 | 真机验证:iOS Safari / Android Chrome / 移动 Firefox,滚动让位、双指缩放豁免、键盘弹起场景                                                                         | 三平台核心手势无回退                        | ⬜   |
+| #    | 任务                                                                                                                                                                                                             | 验收                                                      | 状态 |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ---- |
+| D3.1 | Viewport 原生 capture touchmove 管线:`addEventListener(touchmove, {passive:false, capture:true})` → 灌入手势引擎 + `stopPropagation`,TouchScrollState 仲裁状态机                                                 | 触摸拖拽帧稳定不抖;页面滚动不被误锁                       | ✅   |
+| D3.2 | SwipeArea 打开手势改吃统一引擎:`trackDrag=false` + sqrt 阻尼跟手、50% 距离或速度开档、松手 click 守卫(capture pointerdown/click 恢复 outside-press)                                                              | 边缘滑开不闪;松手不会立刻误关                             | ✅   |
+| D3.3 | 层级感接线:backdrop swipe-progress + `Drawer.Indent` / `Drawer.IndentBackground` 原语(visualStateStore 同步 `swipeProgress` / `frontmostHeight`,缩进量由消费者 CSS calc 声明),替代 scale-background 的命令式缩放 | 拖拽时 backdrop 与页面内容缩进跟随进度;嵌套抽屉进度不互串 | ✅   |
+| D3.4 | 真机验证:iOS Safari / Android Chrome / 移动 Firefox,滚动让位、双指缩放豁免、键盘弹起场景                                                                                                                         | 三平台核心手势无回退                                      | ⬜   |
 
 ### D4 收尾与合同(约 1 天)
 
-| #    | 任务                                                                                                                                                   | 验收                                                 | 状态 |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- | ---- |
-| D4.1 | 删除 scale-background 全链路:`use-scale-background.ts`、`DRAWER_SCALE_SELECTOR`、`shouldScaleBackground` / `setBackgroundColorOnScale` props、相关样式 | `grep scale-background packages` 为 0                | ⬜   |
-| D4.2 | 迁移对照文档(双语):`swipeDirection`、snapPoints 值语义、scale-background → Indent 原语(`Drawer.Indent` / `Drawer.IndentBackground` + CSS 变量)、handle 渲染策略变化                                  | 双语文档进 `content/{en,zh}/ui/components/drawer.md` | ⬜   |
-| D4.3 | 测试合同:从 Base UI `DrawerRoot.test.tsx` / `DrawerViewport.test.tsx` 移植核心场景(开合、snap 点判定、滚动仲裁、SwipeArea、嵌套)到 vitest browser mode | 行为合同单测全绿;axe 通过                            | ⬜   |
-| D4.4 | 重生成:`pnpm sui gen catalog headless` / `gen catalog ui` / `gen api` / `gen changelog` / `gen skills`;e2e 用例更新                                    | catalog/api 无 drift                                 | ⬜   |
+| #    | 任务                                                                                                                                                                | 验收                                                 | 状态 |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ---- |
+| D4.1 | 删除 scale-background 全链路:`use-scale-background.ts`、`DRAWER_SCALE_SELECTOR`、`shouldScaleBackground` / `setBackgroundColorOnScale` props、相关样式              | `grep scale-background packages` 为 0                | ✅   |
+| D4.2 | 迁移对照文档(双语):`swipeDirection`、snapPoints 值语义、scale-background → Indent 原语(`Drawer.Indent` / `Drawer.IndentBackground` + CSS 变量)、handle 渲染策略变化 | 双语文档进 `content/{en,zh}/ui/components/drawer.md` | ✅   |
+| D4.3 | 测试合同:从 Base UI `DrawerRoot.test.tsx` / `DrawerViewport.test.tsx` 移植核心场景(开合、snap 点判定、滚动仲裁、SwipeArea、嵌套)到 vitest browser mode              | 行为合同单测全绿;axe 通过                            | 🚧   |
+| D4.4 | 重生成:`pnpm sui gen catalog headless` / `gen catalog ui` / `gen api` / `gen changelog` / `gen skills`;e2e 用例更新                                                 | catalog/api 无 drift                                 | ✅   |
 
 ## 5. API 变化对照(breaking,v0.50.0 窗口内)
 
-| 项                                                    | 现状(Vaul 移植)         | 目标(Base UI 模型)                                                           |
-| ----------------------------------------------------- | ----------------------- | ---------------------------------------------------------------------------- |
-| 拖拽方向                                              | 从 `side` 隐式推导      | 显式 `swipeDirection` prop(默认 `'down'`),有 snapPoints 时垂直方向自动双向   |
-| snapPoints 值                                         | 数字 ≤1 为比例,>1 px    | 不变,另支持 `'148px'` / `'30rem'` 字符串                                     |
-| `snapPoint` 默认值                                    | `null`(打开不定位)      | `snapPoints[0]`(打开即定位)                                                  |
-| 关闭表示                                              | `open=false`            | `open=false`;snap point 模型下关闭 = `activeSnapPoint=null` + swipe 关闭动画 |
+| 项                                                    | 现状(Vaul 移植)         | 目标(Base UI 模型)                                                                                                              |
+| ----------------------------------------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| 拖拽方向                                              | 从 `side` 隐式推导      | 显式 `swipeDirection` prop(默认 `'down'`),有 snapPoints 时垂直方向自动双向                                                      |
+| snapPoints 值                                         | 数字 ≤1 为比例,>1 px    | 不变,另支持 `'148px'` / `'30rem'` 字符串                                                                                        |
+| `snapPoint` 默认值                                    | `null`(打开不定位)      | `snapPoints[0]`(打开即定位)                                                                                                     |
+| 关闭表示                                              | `open=false`            | `open=false`;snap point 模型下关闭 = `activeSnapPoint=null` + swipe 关闭动画                                                    |
 | `shouldScaleBackground` / `setBackgroundColorOnScale` | 存在(Vaul 遗产)         | **删除命令式实现**,由 `Drawer.Indent` / `Drawer.IndentBackground` + `--soybean-drawer-swipe-progress` 承接(与 Base UI 同名机制) |
-| handle                                                | 所有 side 渲染          | 仅 `side='bottom'` 渲染(Compact);headless 保持为独立可组合 part              |
-| `onSnapPointChange`                                   | `update:snapPoint` 事件 | 保留 `update:snapPoint`,补可取消 details(reason: swipe 等)                   |
+| handle                                                | 所有 side 渲染          | 仅 `side='bottom'` 渲染(Compact);headless 保持为独立可组合 part                                                                 |
+| `onSnapPointChange`                                   | `update:snapPoint` 事件 | 保留 `update:snapPoint`,补可取消 details(reason: swipe 等)                                                                      |
 
 ## 6. 明确不做(第一期)
 
@@ -109,19 +109,19 @@
 
 ## 7. 风险
 
-| 风险                                            | 缓解                                                                        |
-| ----------------------------------------------- | --------------------------------------------------------------------------- |
-| 触摸管线平台敏感(capture/滚动仲裁/iOS 起步偏移) | D3.4 真机矩阵;Base UI 测试场景作为合同先行移植;触摸路径与指针路径分阶段上线 |
+| 风险                                            | 缓解                                                                                   |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------- |
+| 触摸管线平台敏感(capture/滚动仲裁/iOS 起步偏移) | D3.4 真机矩阵;Base UI 测试场景作为合同先行移植;触摸路径与指针路径分阶段上线            |
 | 删 scale-background 引发视觉回退                | D3.3 Indent 原语 + backdrop 进度先行接线,与 scale-background 并存一版,验收后再删(D4.1) |
-| 与 Dialog 过渡生命周期的竞态(问题 3 病灶)       | 模型切换后 JS 不再写 overlay/transform 样式,竞态面消失;保留竞态专项用例     |
-| API breaking 面扩大                             | 全部 breaking 收敛在 v0.50.0 迁移文档(D4.2),不建兼容层(见 v0.50.0.md §11)   |
+| 与 Dialog 过渡生命周期的竞态(问题 3 病灶)       | 模型切换后 JS 不再写 overlay/transform 样式,竞态面消失;保留竞态专项用例                |
+| API breaking 面扩大                             | 全部 breaking 收敛在 v0.50.0 迁移文档(D4.2),不建兼容层(见 v0.50.0.md §11)              |
 
 ## 8. 工作量与排期
 
-| 阶段 | 内容                          | 估算     |
-| ---- | ----------------------------- | -------- |
-| D1   | 模型切换(修三缺陷,指针路径)   | 3–4 天   |
-| D2   | 手势引擎全量化                | 1–2 天   |
-| D3   | 触摸管线 + SwipeArea + 真机   | 2–3 天   |
-| D4   | 收尾、迁移文档、测试合同      | 1 天     |
+| 阶段 | 内容                            | 估算     |
+| ---- | ------------------------------- | -------- |
+| D1   | 模型切换(修三缺陷,指针路径)     | 3–4 天   |
+| D2   | 手势引擎全量化                  | 1–2 天   |
+| D3   | 触摸管线 + SwipeArea + 真机     | 2–3 天   |
+| D4   | 收尾、迁移文档、测试合同        | 1 天     |
 | 合计 | 完整核心(不含虚拟键盘 provider) | 1.5–2 周 |

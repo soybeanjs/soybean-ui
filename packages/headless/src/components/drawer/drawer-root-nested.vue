@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { watch } from 'vue';
 import { useForwardListeners } from '../../composables';
 import { useDrawerRootContext } from './context';
 import DrawerRoot from './drawer-root.vue';
@@ -27,6 +28,16 @@ function onDrag(p: number) {
 function onOpenChange(o: boolean) {
   if (o) onNestedOpenChange(o);
 }
+
+// A child opened through a controlled `open` prop never flows through the
+// dialog's `update:open`, so the parent scale would stay untouched; watch the
+// prop directly to cover that path too.
+watch(
+  () => props.open,
+  value => {
+    if (value) onNestedOpenChange(true);
+  }
+);
 </script>
 
 <template>

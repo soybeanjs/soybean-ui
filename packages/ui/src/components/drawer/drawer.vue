@@ -13,8 +13,6 @@ defineOptions({
 const props = withDefaults(defineProps<DrawerProps>(), {
   open: undefined,
   modal: true,
-  shouldScaleBackground: true,
-  setBackgroundColorOnScale: true,
   dismissible: true,
   showClose: true,
   showConfirm: true

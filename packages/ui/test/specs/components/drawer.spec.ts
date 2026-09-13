@@ -250,7 +250,7 @@ describe('SDrawer', () => {
 
       expect(popup.exists()).toBe(true);
       expect(popup.attributes('data-soybean-snap-points')).toBe('true');
-      expect(popup.attributes('style')).toContain('--snap-point-height');
+      expect(popup.attributes('data-soybean-drawer-side')).toBe('bottom');
 
       wrapper.unmount();
     });
@@ -267,61 +267,6 @@ describe('SDrawer', () => {
       expect(wrapper.find('[data-soybean-drawer-popup]').attributes('data-soybean-snap-points')).toBe('false');
 
       wrapper.unmount();
-    });
-  });
-
-  describe('scale background', () => {
-    it('scales the marked wrapper while the drawer is open', async () => {
-      const scaleTarget = document.createElement('div');
-
-      scaleTarget.setAttribute('data-soybean-drawer-scale', '');
-      document.body.appendChild(scaleTarget);
-
-      const wrapper = mount(SDrawer, {
-        props: {
-          open: true,
-          title: 'Drawer',
-          shouldScaleBackground: true,
-          portalProps: { disabled: true }
-        },
-        slots,
-        attachTo: document.body
-      });
-
-      await nextTick();
-      await nextTick();
-
-      expect(scaleTarget.style.transform).toContain('scale');
-      expect(scaleTarget.style.borderRadius).not.toBe('');
-
-      wrapper.unmount();
-      scaleTarget.remove();
-    });
-
-    it('leaves the background untouched when scale background is off', async () => {
-      const scaleTarget = document.createElement('div');
-
-      scaleTarget.setAttribute('data-soybean-drawer-scale', '');
-      document.body.appendChild(scaleTarget);
-
-      const wrapper = mount(SDrawer, {
-        props: {
-          open: true,
-          title: 'Drawer',
-          shouldScaleBackground: false,
-          portalProps: { disabled: true }
-        },
-        slots,
-        attachTo: document.body
-      });
-
-      await nextTick();
-      await nextTick();
-
-      expect(scaleTarget.style.transform).toBe('');
-
-      wrapper.unmount();
-      scaleTarget.remove();
     });
   });
 

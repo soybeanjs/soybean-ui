@@ -16,18 +16,8 @@ const cls = useDrawerUi('handle');
 const LONG_HANDLE_PRESS_TIMEOUT = 250;
 const DOUBLE_TAP_TIMEOUT = 120;
 
-const {
-  onPress,
-  onDrag,
-  setHandleRef,
-  handleOnly,
-  isOpen,
-  snapPoints,
-  snapPoint,
-  isDragging,
-  dismissible,
-  closeDrawer
-} = useDrawerRootContext('DrawerHandle');
+const { swiping, snapPoints, snapPoint, dismissible, closeDrawer, setActiveSnapPoint } =
+  useDrawerRootContext('DrawerHandle');
 
 const closeTimeoutId = ref<number | null>(null);
 const shouldCancelInteraction = ref(false);
@@ -46,7 +36,7 @@ function handleStartCycle() {
 
 function handleCycleSnapPoints() {
   // Prevent accidental taps while resizing drawer
-  if (isDragging.value || props.preventCycle || shouldCancelInteraction.value) {
+  if (swiping.value || props.preventCycle || shouldCancelInteraction.value) {
     handleCancelInteraction();
     return;
   }
@@ -73,7 +63,7 @@ function handleCycleSnapPoints() {
 
   const nextSnapPointIndex = isLastSnapPoint ? 0 : currentSnapIndex + 1;
 
-  snapPoint.value = snapPoints.value[nextSnapPointIndex];
+  setActiveSnapPoint(snapPoints.value[nextSnapPointIndex] ?? null);
 }
 
 function handleStartInteraction() {
@@ -89,27 +79,19 @@ function handleCancelInteraction() {
   shouldCancelInteraction.value = false;
 }
 
-function handlePointerDown(event: PointerEvent) {
-  if (handleOnly.value) onPress(event);
+function handlePointerDown() {
   handleStartInteraction();
-}
-
-function handleOnDrag(event: PointerEvent) {
-  if (handleOnly.value) onDrag(event);
 }
 </script>
 
 <template>
   <div
-    :ref="setHandleRef"
     :class="cls"
-    :data-soybean-drawer-visible="isOpen ? 'true' : 'false'"
     data-soybean-handle
     aria-hidden="true"
     @click="handleStartCycle"
     @pointercancel="handleCancelInteraction"
     @pointerdown="handlePointerDown"
-    @pointermove="handleOnDrag"
   >
     <span data-soybean-handle-hit-area="" aria-hidden="true">
       <slot />

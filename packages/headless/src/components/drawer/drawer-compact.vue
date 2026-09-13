@@ -38,7 +38,8 @@ const props = withDefaults(defineProps<DrawerCompactProps>(), {
   showConfirm: true,
   swipeable: false,
   alertType: 'default',
-  showCancel: 'onlyWarning'
+  showCancel: 'onlyWarning',
+  side: 'bottom'
 });
 
 const forwardedProps = useOmitProps(props, [
@@ -128,6 +129,7 @@ const confirmText = computed(() => props.confirmText ?? messages.value.dialog.co
     v-slot="slotProps"
     v-bind="forwardedProps"
     @update:open="emit('update:open', $event)"
+    @close="emit('close')"
   >
     <DrawerTrigger v-bind="triggerProps">
       <slot name="trigger" v-bind="slotProps" />
@@ -136,7 +138,7 @@ const confirmText = computed(() => props.confirmText ?? messages.value.dialog.co
     <DrawerPortal v-bind="portalProps">
       <DrawerOverlay v-bind="overlayProps" />
       <DrawerPopup v-bind="popupProps" v-on="listeners">
-        <DrawerHandle v-bind="handleProps" />
+        <DrawerHandle v-if="side === 'bottom'" v-bind="handleProps" />
         <DrawerHeader v-if="!pure" v-bind="headerProps">
           <DrawerTitle v-bind="titleProps">
             <Icon v-if="icon" :icon="icon" :class="ui.icon" />
@@ -147,14 +149,14 @@ const confirmText = computed(() => props.confirmText ?? messages.value.dialog.co
           <DrawerDescription v-if="slots.description || description" v-bind="descriptionProps">
             <slot name="description" v-bind="slotProps">{{ description }}</slot>
           </DrawerDescription>
-          <DrawerClose v-if="!isAlert && showClose" @close="emit('close')">
+          <DrawerClose v-if="!isAlert && showClose">
             <slot name="close" v-bind="slotProps" />
           </DrawerClose>
         </DrawerHeader>
         <DrawerContent v-bind="contentProps">
           <slot v-bind="slotProps" />
         </DrawerContent>
-        <DrawerClose v-if="pure && !isAlert && showClose" @close="emit('close')">
+        <DrawerClose v-if="pure && !isAlert && showClose">
           <slot name="close" v-bind="slotProps" />
         </DrawerClose>
         <DrawerFooter v-if="showFooter" v-bind="footerProps">
