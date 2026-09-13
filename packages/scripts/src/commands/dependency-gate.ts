@@ -1,3 +1,7 @@
+import { readdirSync, readFileSync, existsSync } from 'node:fs';
+import { join, relative } from 'node:path';
+import process from 'node:process';
+
 /**
  * Dependency gate (v0.50.0 T8.5).
  *
@@ -12,18 +16,9 @@
  *    take runtime dependencies from the §3.2 whitelist (docs/v0.50.0.md). Heavy engines
  *    must stay out of the UI package entirely.
  *
- * Run via `pnpm check:deps`. Exits non-zero and lists violations on failure.
+ * Run via `pnpm check:deps` (sui check-deps). Exits non-zero and lists violations on failure.
  */
-import { readdirSync, readFileSync, existsSync } from 'node:fs';
-import { join, relative } from 'node:path';
 
-const repoRoot = new URL('..', import.meta.url).pathname;
-
-/**
- * Banned module specifiers. Prefix fragments match at the start of the specifier, so
- * scoped families (`@dnd-kit/...`) are covered without matching bare attribute strings
- * like `setAttribute('aria-hidden', ...)`.
- */
 const BANNED_SPECIFIER_PATTERN =
   /(?:\bfrom\s*['"]|\bimport\s*['"]|\bimport\s*\(\s*['"]|\brequire\s*\(\s*['"])(@dnd-kit|@formkit\/auto-animate|@internationalized|fuse\.js|defu|klona|ohash|aria-hidden|@standard-schema\/spec|@soybeanjs\/hooks|@soybeanjs\/utils)/;
 
@@ -63,15 +58,17 @@ interface Violation {
   readonly detail: string;
 }
 
+interface PackageManifest {
+  readonly name?: string;
+  readonly dependencies?: Readonly<Record<string, string>>;
+  readonly peerDependencies?: Readonly<Record<string, string>>;
+  readonly optionalDependencies?: Readonly<Record<string, string>>;
+}
+
 interface PackageInfo {
   readonly name: string;
   readonly dir: string;
-  readonly manifest: {
-    readonly name?: string;
-    readonly dependencies?: Readonly<Record<string, string>>;
-    readonly peerDependencies?: Readonly<Record<string, string>>;
-    readonly optionalDependencies?: Readonly<Record<string, string>>;
-  };
+  readonly manifest: PackageManifest;
 }
 
 const isSourceFile = (fileName: string): boolean => SOURCE_EXTENSIONS.has(fileName.slice(fileName.lastIndexOf('.')));
@@ -85,16 +82,16 @@ const listSourceFiles = (dir: string): readonly string[] =>
     return isSourceFile(entry.name) ? [entryPath] : [];
   });
 
-const readPackages = (): readonly PackageInfo[] =>
-  readdirSync(join(repoRoot, 'packages'), { withFileTypes: true })
-    .filter(entry => entry.isDirectory() && existsSync(join(repoRoot, 'packages', entry.name, 'package.json')))
+const readPackages = (rootDir: string): readonly PackageInfo[] =>
+  readdirSync(join(rootDir, 'packages'), { withFileTypes: true })
+    .filter(entry => entry.isDirectory() && existsSync(join(rootDir, 'packages', entry.name, 'package.json')))
     .map(entry => {
-      const dir = join(repoRoot, 'packages', entry.name);
-      const manifest = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8')) as PackageInfo['manifest'];
+      const dir = join(rootDir, 'packages', entry.name);
+      const manifest = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8')) as PackageManifest;
       return { name: manifest.name ?? entry.name, dir, manifest };
     });
 
-const scanSourceImports = (pkg: PackageInfo): readonly Violation[] => {
+const scanSourceImports = (rootDir: string, pkg: PackageInfo): readonly Violation[] => {
   const srcDir = join(pkg.dir, 'src');
 
   return listSourceFiles(srcDir).flatMap(file => {
@@ -107,7 +104,7 @@ const scanSourceImports = (pkg: PackageInfo): readonly Violation[] => {
       const specifier = line.match(BANNED_SPECIFIER_PATTERN)?.[1] ?? 'unknown';
       return [
         {
-          scope: relative(repoRoot, file),
+          scope: relative(rootDir, file),
           detail: `line ${index + 1}: banned import "${specifier}" — ${line.trim().slice(0, 160)}`
         }
       ];
@@ -147,17 +144,25 @@ const scanAllowlist = (pkg: PackageInfo): readonly Violation[] => {
   });
 };
 
-const run = (): readonly Violation[] =>
-  readPackages().flatMap(pkg => [...scanSourceImports(pkg), ...scanDependencies(pkg), ...scanAllowlist(pkg)]);
+const collectViolations = (rootDir: string): readonly Violation[] =>
+  readPackages(rootDir).flatMap(pkg => [
+    ...scanSourceImports(rootDir, pkg),
+    ...scanDependencies(pkg),
+    ...scanAllowlist(pkg)
+  ]);
 
-const violations = run();
+export function runDependencyGate(): void {
+  const rootDir = process.cwd();
+  const violations = collectViolations(rootDir);
 
-if (violations.length > 0) {
-  console.error(`dependency gate failed with ${violations.length} violation(s):\n`);
-  for (const violation of violations) {
-    console.error(`  [${violation.scope}]\n    ${violation.detail}\n`);
+  if (violations.length > 0) {
+    console.error(`dependency gate failed with ${violations.length} violation(s):\n`);
+    for (const violation of violations) {
+      console.error(`  [${violation.scope}]\n    ${violation.detail}\n`);
+    }
+    process.exitCode = 1;
+    return;
   }
-  process.exit(1);
-}
 
-console.log('dependency gate passed: no banned imports, runtime deps within whitelists.');
+  console.log('dependency gate passed: no banned imports, runtime deps within whitelists.');
+}

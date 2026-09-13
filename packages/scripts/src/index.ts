@@ -74,6 +74,7 @@ Commands:
   stub [--reset]        Switch headless development exports to src (--reset restores dist exports)
   sync-template-versions
                         Sync the @soybeanjs/* version constant used by project templates
+  check-deps            Enforce the dependency gate: banned import scan + headless/ui runtime dependency whitelists
 
 Options:
   --target <targets>    (gen api/changelog) Docs targets, comma-separated.
@@ -269,6 +270,13 @@ async function main(): Promise<void> {
     const { runSyncTemplateVersions } = await import('./commands/sync-template-versions');
 
     await runSyncTemplateVersions();
+    return;
+  }
+
+  if (command === 'check-deps') {
+    const { runDependencyGate } = await import('./commands/dependency-gate');
+
+    runDependencyGate();
     return;
   }
 

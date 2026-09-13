@@ -24,7 +24,7 @@
     "build:libs": "pnpm --filter @soybeanjs/theme build && pnpm --filter @soybeanjs/ui-uno build",
     "build:sbean": "pnpm --filter sbean build",
     "build:ui": "pnpm --filter @soybeanjs/ui build",
-    "check:deps": "tsx scripts/dependency-gate.ts",
+    "check:deps": "pnpm sui check-deps",
     "commit": "soy git-commit",
     "dev": "pnpm dev:docs",
     "dev:docs": "pnpm --filter @soybeanjs/ui-docs dev",
