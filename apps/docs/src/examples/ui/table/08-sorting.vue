@@ -17,9 +17,14 @@ const groupedTableData: GroupedTableData[] = [
 ];
 
 const sortableColumns: TableColumn<GroupedTableData>[] = [
-  { title: 'Name', dataIndex: 'name', sorter: true },
-  { title: 'Age', dataIndex: 'age', align: 'center', sorter: true },
-  { title: 'Score', dataIndex: 'score', align: 'center', sorter: (prev, next) => prev.score - next.score }
+  { header: 'Name', accessorKey: 'name', enableSorting: true },
+  { header: 'Age', accessorKey: 'age', align: 'center', enableSorting: true },
+  {
+    header: 'Score',
+    accessorKey: 'score',
+    align: 'center',
+    sortFn: (rowA, rowB) => rowA.original.score - rowB.original.score
+  }
 ];
 </script>
 

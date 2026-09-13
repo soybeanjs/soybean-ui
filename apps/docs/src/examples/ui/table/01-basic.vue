@@ -14,11 +14,11 @@ interface TableData {
 }
 
 const columns: TableColumn<TableData>[] = [
-  { type: 'index', width: '50px' },
-  { title: 'Name', dataIndex: 'name' },
-  { title: 'Age', dataIndex: 'age', align: 'center' },
-  { title: 'Address', dataIndex: 'address' },
-  { title: 'Details', dataIndex: 'details.description' }
+  { type: 'index', size: 50 },
+  { header: 'Name', accessorKey: 'name' },
+  { header: 'Age', accessorKey: 'age', align: 'center' },
+  { header: 'Address', accessorKey: 'address' },
+  { header: 'Details', accessorKey: 'details.description' }
 ];
 
 const data: TableData[] = [

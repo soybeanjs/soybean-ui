@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { useLocaleMessages } from '@soybeanjs/headless';
 import { interpolate } from '@soybeanjs/headless/shared';
+import { getTableColumnLabel } from '@soybeanjs/headless/table';
 import { miniSizeMap } from '@/theme';
 import SButtonIcon from '../button/button-icon.vue';
 import SButton from '../button/button.vue';
@@ -18,7 +19,7 @@ const props = defineProps<TableFilterPopoverProps<T>>();
 
 const messages = useLocaleMessages();
 
-const columnLabel = computed(() => props.column.title ?? props.column.key ?? props.column.dataIndex ?? 'column');
+const columnLabel = computed(() => getTableColumnLabel(props.column));
 
 const filteredOptions = computed(() => {
   const keyword = props.filterValue.trim().toLowerCase();

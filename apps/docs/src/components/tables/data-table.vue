@@ -127,20 +127,19 @@ const resolvedColumns = computed<DataTableColumn<any>[]>(() => {
   return buildPresetColumns(props.preset);
 });
 
-const columnMinWidthMap: Record<string, string> = {
-  name: '144px',
-  type: '176px',
-  parameters: '176px',
-  defaultValue: '136px',
-  description: '240px'
+const columnMinWidthMap: Record<string, number> = {
+  name: 144,
+  type: 176,
+  parameters: 176,
+  defaultValue: 136,
+  description: 240
 };
 
 const tableColumns = computed<TableColumn<TableRow>[]>(() => {
   return resolvedColumns.value.map(column => ({
-    key: column.key,
-    dataIndex: column.key,
-    title: column.title,
-    minWidth: columnMinWidthMap[column.key] ?? '140px'
+    accessorKey: column.key,
+    header: column.title,
+    minSize: columnMinWidthMap[column.key] ?? 140
   }));
 });
 

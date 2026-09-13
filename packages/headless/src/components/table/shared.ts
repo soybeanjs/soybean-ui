@@ -1,33 +1,33 @@
 import type { CSSProperties } from 'vue';
+import type { ColumnFilter, ColumnFiltersState, ExpandedState, HeaderGroup } from '@tanstack/table-core';
 import { interpolate } from '../../shared';
 import type { LocaleTableMessages } from '../../locale/types';
-import type { CheckedState, Direction, Path, PathValue } from '../../types';
+import type { CheckedState, Direction } from '../../types';
+import {
+  getTableColumnKey,
+  getTableLeafColumns,
+  getTableRowValueByPath,
+  isTableDataColumn,
+  normalizeTableFilterValue
+} from './columns';
+
+export { getTableRowValueByPath };
+import type { SoybeanTableFeatures } from './features';
 import type {
   TableBaseData,
   TableColumn,
-  TableColumnFilterOption,
-  TableColumnWidthState,
-  TableDataColumn,
+  TableEngineHeader,
+  TableFilterValue,
   TableFixedColumnOffsets,
   TableFixedState,
-  TableFilterState,
-  TableFilterValue,
-  TableGroupColumn,
   TableHeaderCell,
-  TableRowChildrenResolver,
-  TableRowValue,
   TableSortOrder,
-  TableSortState,
-  TableTreeNode,
   TableTreeRow,
+  TableUnifiedKey,
+  TableVirtualMeasurement,
   TableVirtualRange,
-  TableVisibleRow,
-  TableVirtualMeasurement
+  TableVisibleRow
 } from './types';
-
-const tableColumnFallbackKeys = new WeakMap<object, string>();
-
-let tableColumnFallbackKeyCount = 0;
 
 /**
  * Get a human-readable row label for built-in table a11y text.
@@ -44,7 +44,7 @@ export function getTableRowLabel<T extends TableBaseData, R extends string | num
   return String(rowKey(row));
 }
 
-export function getTableRowChildren<T extends TableBaseData>(row: T, getChildren?: TableRowChildrenResolver<T>) {
+export function getTableRowChildren<T extends TableBaseData>(row: T, getChildren?: (row: T) => T[] | undefined): T[] {
   if (getChildren) {
     return getChildren(row) ?? [];
   }
@@ -52,296 +52,359 @@ export function getTableRowChildren<T extends TableBaseData>(row: T, getChildren
   return Array.isArray(row.children) ? (row.children as T[]) : [];
 }
 
-export function buildTableTree<T extends TableBaseData, R extends string | number>(
+export function getTableTreeRows<T extends TableBaseData>(rows: T[], getChildren?: (row: T) => T[] | undefined): T[] {
+  return rows.flatMap(row => [row, ...getTableTreeRows(getTableRowChildren(row, getChildren), getChildren)]);
+}
+
+//#region expanded state
+export function collectTableExpandableKeys<T extends TableBaseData>(
   rows: T[],
-  rowKey: (row: T) => R,
-  getChildren?: TableRowChildrenResolver<T>,
-  level: number = 1,
-  parentKey?: R
-): TableTreeNode<T, R>[] {
-  return rows.map(row => {
-    const key = rowKey(row);
-    const children = buildTableTree(getTableRowChildren(row, getChildren), rowKey, getChildren, level + 1, key);
-
-    return {
-      key,
-      row,
-      level,
-      parentKey,
-      children,
-      hasChildren: children.length > 0
-    };
-  });
-}
-
-export function flattenTableTree<T extends TableBaseData, R extends string | number>(
-  nodes: TableTreeNode<T, R>[],
-  expandedKeys: R[]
-): TableTreeRow<T, R>[] {
-  const expandedKeySet = new Set(expandedKeys);
-  const rows: TableTreeRow<T, R>[] = [];
-
-  function walk(items: TableTreeNode<T, R>[]) {
-    items.forEach(item => {
-      rows.push({
-        key: item.key,
-        row: item.row,
-        level: item.level,
-        parentKey: item.parentKey,
-        hasChildren: item.hasChildren
-      });
-
-      if (item.hasChildren && expandedKeySet.has(item.key)) {
-        walk(item.children);
-      }
-    });
-  }
-
-  walk(nodes);
-
-  return rows;
-}
-
-export function filterTableTree<T extends TableBaseData, R extends string | number>(
-  nodes: TableTreeNode<T, R>[],
-  predicate: (row: T) => boolean
-): TableTreeNode<T, R>[] {
-  return nodes.reduce<TableTreeNode<T, R>[]>((acc, node) => {
-    const children = filterTableTree(node.children, predicate);
-    const matched = predicate(node.row);
-
-    if (!matched && children.length === 0) {
-      return acc;
-    }
-
-    acc.push({
-      ...node,
-      children,
-      hasChildren: children.length > 0
-    });
-
-    return acc;
-  }, []);
-}
-
-export function sortTableTree<T extends TableBaseData, R extends string | number>(
-  nodes: TableTreeNode<T, R>[],
-  column: TableDataColumn<T>,
-  sortState: TableSortState | undefined
-): TableTreeNode<T, R>[] {
-  const sorted = [...nodes].sort((current, next) => {
-    const compareResult =
-      typeof column.sorter === 'function'
-        ? column.sorter(current.row, next.row)
-        : getTableDefaultSortCompare(
-            getTableRowValueByDataIndex(current.row, column.dataIndex),
-            getTableRowValueByDataIndex(next.row, column.dataIndex)
-          );
-
-    return sortState?.order === 'desc' ? compareResult * -1 : compareResult;
-  });
-
-  return sorted.map(node => ({
-    ...node,
-    children: sortTableTree(node.children, column, sortState)
-  }));
-}
-
-export function collectTableTreeExpandableKeys<T extends TableBaseData, R extends string | number>(
-  nodes: TableTreeNode<T, R>[],
+  getKey: (row: T) => string,
+  getChildren?: (row: T) => T[] | undefined,
   includeLeaves: boolean = false
-): R[] {
-  return nodes.flatMap(node => {
-    const keys = includeLeaves || node.hasChildren ? [node.key] : [];
+): string[] {
+  return rows.flatMap(row => {
+    const children = getTableRowChildren(row, getChildren);
+    const keys = includeLeaves || children.length > 0 ? [getKey(row)] : [];
 
-    return [...keys, ...collectTableTreeExpandableKeys(node.children, includeLeaves)];
+    return [...keys, ...collectTableExpandableKeys(children, getKey, getChildren, includeLeaves)];
   });
 }
 
-export function hasTableTreeChildren<T extends TableBaseData, R extends string | number>(
-  nodes: TableTreeNode<T, R>[]
-): boolean {
-  return nodes.some(node => node.hasChildren || hasTableTreeChildren(node.children));
+export function toTableExpandedState(keys: string[]): ExpandedState {
+  return keys.reduce<Record<string, boolean>>((state, key) => {
+    state[key] = true;
+    return state;
+  }, {});
 }
 
-export function getTableTreeRows<T extends TableBaseData, R extends string | number>(
-  nodes: TableTreeNode<T, R>[]
-): T[] {
-  return nodes.flatMap(node => [node.row, ...getTableTreeRows(node.children)]);
-}
-
-export function getTableRowValueByDataIndex<T extends TableBaseData, K extends Path<TableRowValue<T>>>(
-  row: T,
-  dataIndex: K
-): PathValue<TableRowValue<T>, K> {
-  const keys = dataIndex.split('.');
-  let value: any = row;
-
-  for (const key of keys) {
-    if (value == null) {
-      return undefined as PathValue<TableRowValue<T>, K>;
-    }
-
-    value = value[key];
+export function isTableRowExpanded(state: ExpandedState, id: string): boolean {
+  if (state === true) {
+    return true;
   }
 
-  return value as PathValue<TableRowValue<T>, K>;
+  return Boolean(state[id]);
 }
 
-export function getTableColumnKey<T extends TableBaseData>(column: TableColumn<T>) {
-  if (column.key) {
-    return column.key;
-  }
-
-  if (column.dataIndex) {
-    return column.dataIndex;
-  }
-
-  if (column.type) {
-    return `__${column.type}`;
-  }
-
-  const cachedKey = tableColumnFallbackKeys.get(column);
-
-  if (cachedKey) {
-    return cachedKey;
-  }
-
-  tableColumnFallbackKeyCount += 1;
-
-  const fallbackKey = `__group-${tableColumnFallbackKeyCount}`;
-
-  tableColumnFallbackKeys.set(column, fallbackKey);
-
-  return fallbackKey;
-}
-
-export function isTableGroupColumn<T extends TableBaseData>(column: TableColumn<T>): column is TableGroupColumn<T> {
-  return Array.isArray(column.children) && column.children.length > 0;
-}
-
-export function isTableDataColumn<T extends TableBaseData>(column: TableColumn<T>): column is TableDataColumn<T> {
-  return typeof column.dataIndex === 'string';
-}
-
-export function isTableColumnResizable<T extends TableBaseData>(column: TableColumn<T>): boolean {
-  return !isTableGroupColumn(column) && Boolean(column.resizable);
-}
-
-export function isTableSortableColumn<T extends TableBaseData>(column: TableColumn<T>): column is TableDataColumn<T> {
-  return isTableDataColumn(column) && Boolean(column.sorter);
-}
-
-export function isTableFilterableColumn<T extends TableBaseData>(column: TableColumn<T>): column is TableDataColumn<T> {
-  return isTableDataColumn(column) && Boolean(column.filter);
-}
-
-export function filterTableColumns<T extends TableBaseData>(columns: TableColumn<T>[]): TableColumn<T>[] {
-  return columns.reduce<TableColumn<T>[]>((acc, column) => {
-    if (column.hidden) {
-      return acc;
+export function toggleTableExpandedState(state: ExpandedState, id: string): ExpandedState {
+  if (isTableRowExpanded(state, id)) {
+    if (state === true) {
+      return state;
     }
 
-    if (!isTableGroupColumn(column)) {
-      acc.push(column);
-      return acc;
-    }
+    const nextState = { ...state };
 
-    const children = filterTableColumns(column.children);
+    delete nextState[id];
 
-    if (children.length > 0) {
-      acc.push({
-        ...column,
-        children
-      });
-    }
+    return nextState;
+  }
 
-    return acc;
-  }, []);
+  return { ...(state === true ? {} : state), [id]: true };
+}
+//#endregion
+
+//#region filter values
+export function getTableColumnFilterEntry(
+  state: ColumnFiltersState | undefined,
+  id: string
+): TableFilterValue | undefined {
+  const entry = state?.find(filter => filter.id === id);
+
+  return entry?.value as TableFilterValue | undefined;
 }
 
-export function getTableLeafColumns<T extends TableBaseData>(columns: TableColumn<T>[]): TableColumn<T>[] {
-  return columns.flatMap(column => {
-    if (isTableGroupColumn(column)) {
-      return getTableLeafColumns(column.children);
-    }
+export function getTableColumnFilterValue(state: ColumnFiltersState | undefined, id: string): string {
+  return normalizeTableFilterValue(getTableColumnFilterEntry(state, id)).keyword;
+}
 
-    return [column];
+export function getTableColumnFilterValues(state: ColumnFiltersState | undefined, id: string): string[] {
+  return normalizeTableFilterValue(getTableColumnFilterEntry(state, id)).values;
+}
+
+export function isTableColumnFiltered(state: ColumnFiltersState | undefined, id: string): boolean {
+  const value = normalizeTableFilterValue(getTableColumnFilterEntry(state, id));
+
+  return value.keyword.length > 0 || value.values.length > 0;
+}
+
+export function setTableColumnFilterEntry(
+  state: ColumnFiltersState,
+  id: string,
+  value: TableFilterValue | undefined
+): ColumnFiltersState {
+  const normalizedValue = normalizeTableFilterValue(value);
+  const isEmptied = normalizedValue.keyword.length === 0 && normalizedValue.values.length === 0;
+  const nextEntry = isEmptied
+    ? undefined
+    : ({
+        id,
+        value: toTableFilterStateValue(normalizedValue)
+      } satisfies ColumnFilter);
+  const existingIndex = state.findIndex(filter => filter.id === id);
+
+  if (existingIndex < 0) {
+    return nextEntry ? [...state, nextEntry] : state;
+  }
+
+  if (!nextEntry) {
+    return state.filter((_, index) => index !== existingIndex);
+  }
+
+  return state.map((filter, index) => (index === existingIndex ? nextEntry : filter));
+}
+
+function toTableFilterStateValue(value: { keyword: string; values: string[] }): TableFilterValue {
+  if (value.values.length === 0) {
+    return value.keyword;
+  }
+
+  return {
+    keyword: value.keyword || undefined,
+    values: value.values
+  };
+}
+
+export function toggleTableFilterOption(state: ColumnFiltersState, id: string, value: string): ColumnFiltersState {
+  const currentValues = getTableColumnFilterValues(state, id);
+  const nextValues = currentValues.includes(value)
+    ? currentValues.filter(currentValue => currentValue !== value)
+    : [...currentValues, value];
+
+  return setTableColumnFilterEntry(state, id, {
+    ...normalizeTableFilterValue(getTableColumnFilterEntry(state, id)),
+    values: nextValues
   });
 }
 
-export function getTableHeaderRows<T extends TableBaseData>(columns: TableColumn<T>[]) {
-  const rows: TableHeaderCell<T>[][] = [];
-  const maxDepth = getTableColumnMaxDepth(columns);
-
-  walkHeaderRows(columns, rows, maxDepth, 0);
-
-  return rows;
+export function isTableFilterOptionSelected(state: ColumnFiltersState | undefined, id: string, value: string): boolean {
+  return getTableColumnFilterValues(state, id).includes(value);
 }
+//#endregion
 
-function walkHeaderRows<T extends TableBaseData>(
-  columns: TableColumn<T>[],
-  rows: TableHeaderCell<T>[][],
-  maxDepth: number,
-  depth: number
-) {
-  rows[depth] ??= [];
+//#region header rows
+export function getTableHeaderRows<T extends TableBaseData>(
+  headerGroups: HeaderGroup<SoybeanTableFeatures, T>[],
+  getColumnDef: (engineColumn: { id?: string; columnDef: unknown }) => TableColumn<T>
+): TableHeaderCell<T>[][] {
+  return headerGroups.map(headerGroup =>
+    headerGroup.headers
+      .filter(header => (header.rowSpan ?? 1) > 0)
+      .map(header => ({
+        key: header.id,
+        header: header as unknown as TableEngineHeader<T>,
+        column: getColumnDef(header.column),
+        colSpan: header.colSpan,
+        rowSpan: header.rowSpan ?? 1
+      }))
+  );
+}
+//#endregion
 
-  columns.forEach(column => {
+//#region sticky fixed columns
+export function getTableFixedColumnOffsets(
+  leafColumns: TableColumn<any>[],
+  getWidth: (column: TableColumn<any>) => number
+): TableFixedColumnOffsets {
+  const startFixedColumns = leafColumns.filter(column => column.fixed === 'start');
+  const endFixedColumns = leafColumns.filter(column => column.fixed === 'end');
+  const startOffsets: Record<string, number> = {};
+  const endOffsets: Record<string, number> = {};
+  let accumulatedStart = 0;
+  let accumulatedEnd = 0;
+
+  startFixedColumns.forEach(column => {
     const key = getTableColumnKey(column);
-
-    if (isTableGroupColumn(column)) {
-      rows[depth].push({
-        key,
-        column,
-        colSpan: getTableLeafColumns(column.children).length,
-        rowSpan: 1
-      });
-
-      walkHeaderRows(column.children, rows, maxDepth, depth + 1);
-      return;
-    }
-
-    rows[depth].push({
-      key,
-      column,
-      colSpan: 1,
-      rowSpan: maxDepth - depth
-    });
+    startOffsets[key] = accumulatedStart;
+    accumulatedStart += getWidth(column);
   });
+
+  [...endFixedColumns].reverse().forEach(column => {
+    const key = getTableColumnKey(column);
+    endOffsets[key] = accumulatedEnd;
+    accumulatedEnd += getWidth(column);
+  });
+
+  return {
+    startOffsets,
+    endOffsets,
+    lastStartKey: startFixedColumns.at(-1) ? getTableColumnKey(startFixedColumns.at(-1)!) : undefined,
+    firstEndKey: endFixedColumns[0] ? getTableColumnKey(endFixedColumns[0]) : undefined
+  };
 }
 
-function getTableColumnMaxDepth<T extends TableBaseData>(columns: TableColumn<T>[]): number {
-  return columns.reduce((maxDepth, column) => {
-    if (!isTableGroupColumn(column)) {
-      return maxDepth;
-    }
+export function getTableLeafFixedState(
+  column: TableColumn<any>,
+  offsets: TableFixedColumnOffsets
+): TableFixedState | undefined {
+  const key = getTableColumnKey(column);
 
-    return Math.max(maxDepth, getTableColumnMaxDepth(column.children) + 1);
-  }, 1);
-}
+  if (column.fixed === 'start') {
+    return {
+      side: 'start',
+      offset: offsets.startOffsets[key] ?? 0,
+      isLastStart: offsets.lastStartKey === key,
+      isFirstEnd: false
+    };
+  }
 
-export function getTableColumnByKey<T extends TableBaseData>(
-  columns: TableColumn<T>[],
-  key: string
-): TableColumn<T> | undefined {
-  for (const column of columns) {
-    if (getTableColumnKey(column) === key) {
-      return column;
-    }
-
-    if (isTableGroupColumn(column)) {
-      const childColumn = getTableColumnByKey(column.children, key);
-
-      if (childColumn) {
-        return childColumn;
-      }
-    }
+  if (column.fixed === 'end') {
+    return {
+      side: 'end',
+      offset: offsets.endOffsets[key] ?? 0,
+      isLastStart: false,
+      isFirstEnd: offsets.firstEndKey === key
+    };
   }
 
   return undefined;
 }
 
+export function getTableHeaderFixedState(
+  column: TableColumn<any>,
+  offsets: TableFixedColumnOffsets
+): TableFixedState | undefined {
+  const groupColumns = (column as TableColumn<any> & { columns?: TableColumn<any>[] }).columns;
+
+  if (!Array.isArray(groupColumns)) {
+    return getTableLeafFixedState(column, offsets);
+  }
+
+  const leaves = getTableLeafColumns([column]);
+  const fixedSides = [
+    ...new Set(leaves.map(leaf => leaf.fixed).filter((side): side is 'start' | 'end' => Boolean(side)))
+  ];
+
+  if (fixedSides.length !== 1) {
+    return undefined;
+  }
+
+  const boundaryColumn = fixedSides[0] === 'start' ? leaves[0] : leaves.at(-1);
+
+  if (!boundaryColumn) {
+    return undefined;
+  }
+
+  const boundaryState = getTableLeafFixedState(boundaryColumn, offsets);
+
+  if (!boundaryState) {
+    return undefined;
+  }
+
+  return {
+    ...boundaryState,
+    isLastStart: leaves.some(leaf => getTableColumnKey(leaf) === offsets.lastStartKey),
+    isFirstEnd: leaves.some(leaf => getTableColumnKey(leaf) === offsets.firstEndKey)
+  };
+}
+
+export function getTableCellStyle(params: {
+  width?: number;
+  minWidth?: number;
+  textAlign?: CSSProperties['textAlign'];
+  fixedState?: TableFixedState;
+  zIndex?: number;
+}): CSSProperties {
+  return {
+    width: params.width === undefined ? undefined : `${params.width}px`,
+    minWidth: params.minWidth === undefined ? undefined : `${params.minWidth}px`,
+    textAlign: params.textAlign,
+    position: params.fixedState ? 'sticky' : undefined,
+    insetInlineStart: params.fixedState?.side === 'start' ? `${params.fixedState.offset}px` : undefined,
+    insetInlineEnd: params.fixedState?.side === 'end' ? `${params.fixedState.offset}px` : undefined,
+    zIndex: params.fixedState ? params.zIndex : undefined
+  };
+}
+
+export function getTableSpacerCellStyle(height: number): CSSProperties {
+  return {
+    height: `${height}px`,
+    padding: 0,
+    border: 0
+  };
+}
+//#endregion
+
+//#region column sizing
+export function getNextTableColumnSizing(
+  state: Record<string, number>,
+  key: string,
+  width: number
+): Record<string, number> {
+  return {
+    ...state,
+    [key]: Math.round(width)
+  };
+}
+
+export function getTableColumnResizeMinWidth(minSize?: number): number {
+  return minSize ?? 80;
+}
+
+export function getTableMeasuredColumnWidth<T extends TableBaseData>(
+  column: TableColumn<T>,
+  columnSizing: Record<string, number>,
+  measuredColumnWidths: Record<string, number>,
+  fallbackWidth: number = 160
+): number {
+  const key = getTableColumnKey(column);
+  const sizingWidth = columnSizing[key] ?? (typeof column.size === 'number' ? column.size : undefined);
+  const measuredWidth = measuredColumnWidths[key];
+  const resolvedMeasuredWidth = measuredWidth && measuredWidth > 0 ? measuredWidth : undefined;
+
+  return resolvedMeasuredWidth ?? sizingWidth ?? fallbackWidth;
+}
+
+export function getTableMeasuredColumnWidths<T extends TableBaseData>(
+  leafColumns: TableColumn<T>[],
+  params: {
+    columnSizing: Record<string, number>;
+    headCellElements: Record<string, HTMLElement | null>;
+    measuredColumnWidths: Record<string, number>;
+  }
+): Record<string, number> {
+  return leafColumns.reduce<Record<string, number>>((acc, column) => {
+    const key = getTableColumnKey(column);
+    const sizingWidth = params.columnSizing[key] ?? (typeof column.size === 'number' ? column.size : undefined);
+    const measuredWidth = params.headCellElements[key]?.getBoundingClientRect().width;
+    const resolvedMeasuredWidth = measuredWidth && measuredWidth > 0 ? measuredWidth : undefined;
+
+    acc[key] =
+      resolvedMeasuredWidth ??
+      sizingWidth ??
+      getTableMeasuredColumnWidth(column, params.columnSizing, params.measuredColumnWidths);
+
+    return acc;
+  }, {});
+}
+
+export function getNextTablePointerResizeWidth(
+  startWidth: number,
+  startX: number,
+  currentX: number,
+  minWidth: number,
+  dir: Direction = 'ltr'
+): number {
+  const delta = currentX - startX;
+  const resolvedDelta = dir === 'rtl' ? -delta : delta;
+
+  return Math.max(minWidth, startWidth + resolvedDelta);
+}
+
+export function getNextTableKeyboardResizeWidth(
+  currentWidth: number,
+  direction: 'decrease' | 'increase',
+  minWidth: number,
+  dir: Direction = 'ltr',
+  step: number = 16
+): number {
+  const resolvedDirection = dir === 'rtl' ? (direction === 'increase' ? 'decrease' : 'increase') : direction;
+  const delta = resolvedDirection === 'increase' ? step : -step;
+
+  return Math.max(minWidth, currentWidth + delta);
+}
+//#endregion
+
+//#region virtual rows
 export function getTableScrollStyle(isVirtual: boolean, height?: number | string): CSSProperties {
   if (!isVirtual) {
     return {};
@@ -350,76 +413,6 @@ export function getTableScrollStyle(isVirtual: boolean, height?: number | string
   return {
     height: typeof height === 'number' ? `${height}px` : height
   };
-}
-
-export function getDefaultTableExpandedKeys<T extends TableBaseData, R extends string | number>(
-  rows: T[],
-  rowKey: (row: T) => R,
-  options: {
-    getChildren?: TableRowChildrenResolver<T>;
-    defaultExpandAll?: boolean;
-    defaultExpanded?: R[];
-    includeLeaves?: boolean;
-  }
-): R[] {
-  if (options.defaultExpandAll) {
-    return collectTableTreeExpandableKeys(
-      buildTableTree(rows, rowKey, options.getChildren),
-      options.includeLeaves ?? false
-    );
-  }
-
-  return options.defaultExpanded ?? [];
-}
-
-export function getProcessedTableTree<T extends TableBaseData, R extends string | number>(
-  sourceTree: TableTreeNode<T, R>[],
-  filterState: TableFilterState,
-  columnMap: Map<string, TableColumn<T>>,
-  sortState: TableSortState | undefined
-): TableTreeNode<T, R>[] {
-  const filtered = filterTableTree(sourceTree, row => {
-    return Object.entries(filterState).every(([key, filterValue]) => {
-      const column = columnMap.get(key);
-
-      if (!column || !isTableDataColumn(column) || !column.filter) {
-        return true;
-      }
-
-      return matchesTableColumnFilter(row, column, filterValue);
-    });
-  });
-
-  if (!sortState) {
-    return filtered;
-  }
-
-  const column = columnMap.get(sortState.key);
-
-  if (!column || !isTableDataColumn(column) || !column.sorter) {
-    return filtered;
-  }
-
-  return sortTableTree(filtered, column, sortState);
-}
-
-export function getTableVisibleExpandedKeys<T extends TableBaseData, R extends string | number>(
-  hasTreeRows: boolean,
-  isFiltering: boolean,
-  expandedKeys: R[],
-  processedTree: TableTreeNode<T, R>[]
-): R[] {
-  if (!hasTreeRows || !isFiltering) {
-    return expandedKeys;
-  }
-
-  return [...new Set([...expandedKeys, ...collectTableTreeExpandableKeys(processedTree)])];
-}
-
-export function getTableTreeColumnKey<T extends TableBaseData>(leafColumns: TableColumn<T>[]) {
-  const column = leafColumns.find(isTableDataColumn);
-
-  return column ? getTableColumnKey(column) : undefined;
 }
 
 export function getTableResolvedHeight(viewportHeight: number, height?: number | string): number {
@@ -468,7 +461,7 @@ export function findTableVirtualStartIndex(measurements: TableVirtualMeasurement
   return result;
 }
 
-export function getTableVirtualMeasurements<T extends TableBaseData, R extends string | number>(
+export function getTableVirtualMeasurements<T extends TableBaseData, R extends TableUnifiedKey>(
   rows: TableTreeRow<T, R>[],
   estimateSize: number | ((index: number, row: T) => number) | undefined
 ): TableVirtualMeasurement[] {
@@ -556,7 +549,7 @@ export function getTableVirtualPaddingEnd(
   return Math.max(totalSize - end, 0);
 }
 
-export function getTableVisibleRows<T extends TableBaseData, R extends string | number>(
+export function getTableVisibleRows<T extends TableBaseData, R extends TableUnifiedKey>(
   rows: TableTreeRow<T, R>[],
   isVirtual: boolean,
   range: TableVirtualRange
@@ -577,20 +570,74 @@ export function getTableVisibleRows<T extends TableBaseData, R extends string | 
     item
   }));
 }
+//#endregion
 
-export function getNextTableExpandedKeys<R extends string | number>(expandedKeys: R[], key: R): R[] {
-  if (expandedKeys.includes(key)) {
-    return expandedKeys.filter(expandedKey => expandedKey !== key);
+//#region tree rendering helpers
+export function getTableTreeColumnKey<T extends TableBaseData>(leafColumns: TableColumn<T>[]) {
+  const column = leafColumns.find(isTableDataColumnColumn);
+
+  return column ? getTableColumnKey(column) : undefined;
+}
+
+function isTableDataColumnColumn<T extends TableBaseData>(column: TableColumn<T>): boolean {
+  const groupColumns = (column as TableColumn<any> & { columns?: TableColumn<any>[] }).columns;
+
+  return !column.type && !Array.isArray(groupColumns) && isTableDataColumn(column);
+}
+
+export function getTableTreeCellStyle(hasTreeRows: boolean, level: number, indent: number): CSSProperties | undefined {
+  if (!hasTreeRows) {
+    return undefined;
   }
 
-  return [...expandedKeys, key];
+  return {
+    paddingInlineStart: `${Math.max(level - 1, 0) * indent}px`
+  };
 }
 
-export function isTableRowExpanded<R extends string | number>(expandedKeys: R[], key: R): boolean {
-  return expandedKeys.includes(key);
+export function isTableTreeColumn<T extends TableBaseData>(
+  column: TableColumn<T>,
+  hasTreeRows: boolean,
+  treeColumnKey: string | undefined
+): boolean {
+  return isTableDataColumn(column) && hasTreeRows && getTableColumnKey(column) === treeColumnKey;
 }
 
-export function getTableHeaderSelectionState<R extends string | number>(
+export function shouldShowTableInlineTreeToggle<T extends TableBaseData>(
+  column: TableColumn<T>,
+  hasTreeRows: boolean,
+  treeColumnKey: string | undefined,
+  hasExpandColumn: boolean
+): boolean {
+  return isTableTreeColumn(column, hasTreeRows, treeColumnKey) && !hasExpandColumn;
+}
+
+export function canTableExpandRow<T extends TableBaseData, R extends TableUnifiedKey>(
+  row: TableTreeRow<T, R>,
+  hasExpandedRowSlot: boolean
+): boolean {
+  return row.hasChildren || hasExpandedRowSlot;
+}
+
+export function shouldRenderTableExpandedRow<T extends TableBaseData, R extends TableUnifiedKey>(
+  row: TableTreeRow<T, R>,
+  options: {
+    hasExpandColumn: boolean;
+    hasExpandedRowSlot: boolean;
+    expanded: ExpandedState;
+  }
+): boolean {
+  return (
+    options.hasExpandColumn &&
+    options.hasExpandedRowSlot &&
+    !row.hasChildren &&
+    isTableRowExpanded(options.expanded, row.id)
+  );
+}
+//#endregion
+
+//#region selection
+export function getTableHeaderSelectionState<R extends TableUnifiedKey>(
   selectedValues: R | R[] | undefined,
   visibleRowKeys: R[]
 ): CheckedState {
@@ -611,240 +658,14 @@ export function getTableHeaderSelectionState<R extends string | number>(
 
   return 'indeterminate';
 }
+//#endregion
 
-export function isTableTreeColumn<T extends TableBaseData>(
-  column: TableColumn<T>,
-  hasTreeRows: boolean,
-  treeColumnKey: string | undefined
-): boolean {
-  return isTableDataColumn(column) && hasTreeRows && getTableColumnKey(column) === treeColumnKey;
-}
+//#region a11y labels
+export function getTableAriaSort(order?: TableSortOrder) {
+  if (order === 'asc') return 'ascending';
+  if (order === 'desc') return 'descending';
 
-export function shouldShowTableInlineTreeToggle<T extends TableBaseData>(
-  column: TableColumn<T>,
-  hasTreeRows: boolean,
-  treeColumnKey: string | undefined,
-  hasExpandColumn: boolean
-): boolean {
-  return isTableTreeColumn(column, hasTreeRows, treeColumnKey) && !hasExpandColumn;
-}
-
-export function getTableTreeCellStyle(hasTreeRows: boolean, level: number, indent: number): CSSProperties | undefined {
-  if (!hasTreeRows) {
-    return undefined;
-  }
-
-  return {
-    paddingInlineStart: `${Math.max(level - 1, 0) * indent}px`
-  };
-}
-
-export function canTableExpandRow<T extends TableBaseData, R extends string | number>(
-  row: TableTreeRow<T, R>,
-  hasExpandedRowSlot: boolean
-): boolean {
-  return row.hasChildren || hasExpandedRowSlot;
-}
-
-export function shouldRenderTableExpandedRow<T extends TableBaseData, R extends string | number>(
-  row: TableTreeRow<T, R>,
-  options: {
-    hasExpandColumn: boolean;
-    hasExpandedRowSlot: boolean;
-    expandedKeys: R[];
-  }
-): boolean {
-  return (
-    options.hasExpandColumn &&
-    options.hasExpandedRowSlot &&
-    !row.hasChildren &&
-    isTableRowExpanded(options.expandedKeys, row.key)
-  );
-}
-
-export function getTableFixedColumnOffsets<T extends TableBaseData>(
-  leafColumns: TableColumn<T>[],
-  getWidth: (column: TableColumn<T>) => number
-): TableFixedColumnOffsets {
-  const startFixedColumns = leafColumns.filter(column => column.fixed === 'start');
-  const endFixedColumns = leafColumns.filter(column => column.fixed === 'end');
-  const startOffsets: Record<string, number> = {};
-  const endOffsets: Record<string, number> = {};
-  let accumulatedStart = 0;
-  let accumulatedEnd = 0;
-
-  startFixedColumns.forEach(column => {
-    const key = getTableColumnKey(column);
-    startOffsets[key] = accumulatedStart;
-    accumulatedStart += getWidth(column);
-  });
-
-  [...endFixedColumns].reverse().forEach(column => {
-    const key = getTableColumnKey(column);
-    endOffsets[key] = accumulatedEnd;
-    accumulatedEnd += getWidth(column);
-  });
-
-  return {
-    startOffsets,
-    endOffsets,
-    lastStartKey: startFixedColumns.at(-1) ? getTableColumnKey(startFixedColumns.at(-1)!) : undefined,
-    firstEndKey: endFixedColumns[0] ? getTableColumnKey(endFixedColumns[0]) : undefined
-  };
-}
-
-export function getTableLeafFixedState<T extends TableBaseData>(
-  column: TableColumn<T>,
-  offsets: TableFixedColumnOffsets
-): TableFixedState | undefined {
-  const key = getTableColumnKey(column);
-
-  if (column.fixed === 'start') {
-    return {
-      side: 'start',
-      offset: offsets.startOffsets[key] ?? 0,
-      isLastStart: offsets.lastStartKey === key,
-      isFirstEnd: false
-    };
-  }
-
-  if (column.fixed === 'end') {
-    return {
-      side: 'end',
-      offset: offsets.endOffsets[key] ?? 0,
-      isLastStart: false,
-      isFirstEnd: offsets.firstEndKey === key
-    };
-  }
-
-  return undefined;
-}
-
-export function getTableHeaderFixedState<T extends TableBaseData>(
-  column: TableColumn<T>,
-  offsets: TableFixedColumnOffsets
-): TableFixedState | undefined {
-  if (!isTableGroupColumn(column)) {
-    return getTableLeafFixedState(column, offsets);
-  }
-
-  const leaves = getTableLeafColumns([column]);
-  const fixedSides = [
-    ...new Set(leaves.map(leaf => leaf.fixed).filter((side): side is 'start' | 'end' => Boolean(side)))
-  ];
-
-  if (fixedSides.length !== 1) {
-    return undefined;
-  }
-
-  const boundaryColumn = fixedSides[0] === 'start' ? leaves[0] : leaves.at(-1);
-
-  if (!boundaryColumn) {
-    return undefined;
-  }
-
-  const boundaryState = getTableLeafFixedState(boundaryColumn, offsets);
-
-  if (!boundaryState) {
-    return undefined;
-  }
-
-  return {
-    ...boundaryState,
-    isLastStart: leaves.some(leaf => getTableColumnKey(leaf) === offsets.lastStartKey),
-    isFirstEnd: leaves.some(leaf => getTableColumnKey(leaf) === offsets.firstEndKey)
-  };
-}
-
-export function getTableCellStyle(params: {
-  width?: string;
-  minWidth?: string;
-  textAlign?: CSSProperties['textAlign'];
-  fixedState?: TableFixedState;
-  zIndex?: number;
-}): CSSProperties {
-  return {
-    width: params.width,
-    minWidth: params.minWidth,
-    textAlign: params.textAlign,
-    position: params.fixedState ? 'sticky' : undefined,
-    insetInlineStart: params.fixedState?.side === 'start' ? `${params.fixedState.offset}px` : undefined,
-    insetInlineEnd: params.fixedState?.side === 'end' ? `${params.fixedState.offset}px` : undefined,
-    zIndex: params.fixedState ? params.zIndex : undefined
-  };
-}
-
-export function getTableSpacerCellStyle(height: number): CSSProperties {
-  return {
-    height: `${height}px`,
-    padding: 0,
-    border: 0
-  };
-}
-
-export function getNextTableColumnWidths(
-  state: TableColumnWidthState,
-  key: string,
-  width: number
-): TableColumnWidthState {
-  return {
-    ...state,
-    [key]: `${Math.round(width)}px`
-  };
-}
-
-export function getTableColumnResizeMinWidth(minWidth?: string): number {
-  return parseTableColumnWidth(minWidth) ?? 80;
-}
-
-export function getTableMeasuredColumnWidth<T extends TableBaseData>(
-  column: TableColumn<T>,
-  columnWidths: TableColumnWidthState,
-  measuredColumnWidths: Record<string, number>,
-  fallbackWidth: number = 160
-): number {
-  const key = getTableColumnKey(column);
-  const parsedWidth = parseTableColumnWidth(getTableColumnWidthValue(column, columnWidths));
-  const measuredWidth = measuredColumnWidths[key];
-  const resolvedMeasuredWidth = measuredWidth > 0 ? measuredWidth : undefined;
-
-  return resolvedMeasuredWidth ?? parsedWidth ?? fallbackWidth;
-}
-
-export function getTableMeasuredColumnWidths<T extends TableBaseData>(
-  leafColumns: TableColumn<T>[],
-  params: {
-    columnWidths: TableColumnWidthState;
-    headCellElements: Record<string, HTMLElement | null>;
-    measuredColumnWidths: Record<string, number>;
-  }
-): Record<string, number> {
-  return leafColumns.reduce<Record<string, number>>((acc, column) => {
-    const key = getTableColumnKey(column);
-    const parsedWidth = parseTableColumnWidth(getTableColumnWidthValue(column, params.columnWidths));
-    const measuredWidth = params.headCellElements[key]?.getBoundingClientRect().width;
-    const resolvedMeasuredWidth = measuredWidth && measuredWidth > 0 ? measuredWidth : undefined;
-
-    acc[key] =
-      resolvedMeasuredWidth ??
-      parsedWidth ??
-      getTableMeasuredColumnWidth(column, params.columnWidths, params.measuredColumnWidths);
-
-    return acc;
-  }, {});
-}
-
-export function getTableColumnSortOrder<T extends TableBaseData>(
-  column: TableColumn<T>,
-  sortState: TableSortState | undefined
-): TableSortOrder | undefined {
-  if (!isTableSortableColumn(column)) {
-    return undefined;
-  }
-
-  const key = getTableColumnKey(column);
-
-  return sortState?.key === key ? sortState.order : undefined;
+  return 'none';
 }
 
 export function getTableSortIndicator(order: TableSortOrder | undefined): string {
@@ -852,10 +673,6 @@ export function getTableSortIndicator(order: TableSortOrder | undefined): string
   if (order === 'desc') return '↓';
 
   return '↕';
-}
-
-export function getTableColumnLabel<T extends TableBaseData>(column: TableColumn<T>): string {
-  return column.title ?? getTableColumnKey(column);
 }
 
 export function getTableSortButtonLabel(
@@ -892,287 +709,4 @@ export function getTableRowExpandLabel(
 export function getTableSelectRowLabel(rowLabel: string, messages: Pick<LocaleTableMessages, 'selectRow'>): string {
   return interpolate(messages.selectRow, { row: rowLabel });
 }
-
-export function getNextTablePointerResizeWidth(
-  startWidth: number,
-  startX: number,
-  currentX: number,
-  minWidth: number,
-  dir: Direction = 'ltr'
-): number {
-  const delta = currentX - startX;
-  const resolvedDelta = dir === 'rtl' ? -delta : delta;
-
-  return Math.max(minWidth, startWidth + resolvedDelta);
-}
-
-export function getNextTableKeyboardResizeWidth(
-  currentWidth: number,
-  direction: 'decrease' | 'increase',
-  minWidth: number,
-  dir: Direction = 'ltr',
-  step: number = 16
-): number {
-  const resolvedDirection = dir === 'rtl' ? (direction === 'increase' ? 'decrease' : 'increase') : direction;
-  const delta = resolvedDirection === 'increase' ? step : -step;
-
-  return Math.max(minWidth, currentWidth + delta);
-}
-
-export function getTableColumnFilterValue(state: TableFilterState, key: string): string {
-  return normalizeTableColumnFilterValue(state[key]).keyword ?? '';
-}
-
-export function getTableColumnFilterValues(state: TableFilterState, key: string): string[] {
-  return normalizeTableColumnFilterValue(state[key]).values;
-}
-
-export function getTableColumnFilterStateValue(state: TableFilterState, key: string): TableFilterValue | undefined {
-  return state[key];
-}
-
-export function isTableColumnFiltered(state: TableFilterState, key: string): boolean {
-  const value = normalizeTableColumnFilterValue(state[key]);
-
-  return value.keyword.length > 0 || value.values.length > 0;
-}
-
-export function toggleTableSortState(current: TableSortState | undefined, key: string): TableSortState | undefined {
-  if (!current || current.key !== key) {
-    return { key, order: 'asc' };
-  }
-
-  if (current.order === 'asc') {
-    return { key, order: 'desc' };
-  }
-
-  return undefined;
-}
-
-export function getNextTableFilterState(
-  state: TableFilterState,
-  key: string,
-  value: TableFilterValue | undefined
-): TableFilterState {
-  const nextState = { ...state };
-  const normalizedValue = normalizeTableColumnFilterValue(value);
-
-  if (normalizedValue.keyword.length === 0 && normalizedValue.values.length === 0) {
-    delete nextState[key];
-    return nextState;
-  }
-
-  nextState[key] = toTableFilterStateValue(normalizedValue);
-
-  return nextState;
-}
-
-export function getNextTableFilterKeywordState(
-  state: TableFilterState,
-  key: string,
-  keyword: string
-): TableFilterState {
-  return getNextTableFilterState(state, key, {
-    ...normalizeTableColumnFilterValue(state[key]),
-    keyword
-  });
-}
-
-export function getNextTableFilterValuesState(
-  state: TableFilterState,
-  key: string,
-  values: string[]
-): TableFilterState {
-  return getNextTableFilterState(state, key, {
-    ...normalizeTableColumnFilterValue(state[key]),
-    values
-  });
-}
-
-export function toggleTableFilterOption(state: TableFilterState, key: string, value: string): TableFilterState {
-  const currentValues = getTableColumnFilterValues(state, key);
-  const nextValues = currentValues.includes(value)
-    ? currentValues.filter(currentValue => currentValue !== value)
-    : [...currentValues, value];
-
-  return getNextTableFilterValuesState(state, key, nextValues);
-}
-
-export function isTableFilterOptionSelected(state: TableFilterState, key: string, value: string): boolean {
-  return getTableColumnFilterValues(state, key).includes(value);
-}
-
-export function getTableDefaultSortCompare(a: unknown, b: unknown) {
-  if ((a === null || a === undefined) && (b === null || b === undefined)) return 0;
-  if (a === null || a === undefined) return 1;
-  if (b === null || b === undefined) return -1;
-
-  if (typeof a === 'number' && typeof b === 'number') {
-    return a - b;
-  }
-
-  return String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: 'base' });
-}
-
-export function sortTableData<T extends TableBaseData>(
-  data: T[],
-  column: TableDataColumn<T>,
-  sortState: TableSortState | undefined
-) {
-  if (!sortState) {
-    return data;
-  }
-
-  const sorted = [...data].sort((current, next) => {
-    const compareResult =
-      typeof column.sorter === 'function'
-        ? column.sorter(current, next)
-        : getTableDefaultSortCompare(
-            getTableRowValueByDataIndex(current, column.dataIndex),
-            getTableRowValueByDataIndex(next, column.dataIndex)
-          );
-
-    return sortState.order === 'desc' ? compareResult * -1 : compareResult;
-  });
-
-  return sorted;
-}
-
-export function getTableFilterPlaceholder<T extends TableBaseData>(column: TableDataColumn<T>) {
-  if (typeof column.filter === 'object') {
-    return column.filter.placeholder;
-  }
-
-  return undefined;
-}
-
-export function getTableColumnFilterOptions<T extends TableBaseData>(
-  rows: T[],
-  column: TableDataColumn<T>
-): TableColumnFilterOption[] {
-  if (typeof column.filter === 'object' && column.filter.options) {
-    return typeof column.filter.options === 'function'
-      ? column.filter.options({ rows, column })
-      : column.filter.options;
-  }
-
-  const seenValues = new Set<string>();
-
-  return rows.reduce<TableColumnFilterOption[]>((acc, row) => {
-    const optionValue = String(getTableRowValueByDataIndex(row, column.dataIndex) ?? '');
-
-    if (!optionValue || seenValues.has(optionValue)) {
-      return acc;
-    }
-
-    seenValues.add(optionValue);
-    acc.push({
-      label: optionValue,
-      value: optionValue
-    });
-
-    return acc;
-  }, []);
-}
-
-export function matchesTableColumnFilter<T extends TableBaseData>(
-  row: T,
-  column: TableDataColumn<T>,
-  filterValue: TableFilterValue | undefined
-) {
-  const value = getTableRowValueByDataIndex(row, column.dataIndex);
-  const normalizedValue = normalizeTableColumnFilterValue(filterValue);
-
-  if (typeof column.filter === 'object' && column.filter.match) {
-    return column.filter.match({
-      filterValue: normalizedValue,
-      keyword: normalizedValue.keyword,
-      values: normalizedValue.values,
-      row,
-      value,
-      column
-    });
-  }
-
-  const normalizedRowValue = String(value ?? '');
-  const matchesKeyword =
-    normalizedValue.keyword.length === 0 ||
-    normalizedRowValue.toLowerCase().includes(normalizedValue.keyword.toLowerCase());
-  const matchesValues = normalizedValue.values.length === 0 || normalizedValue.values.includes(normalizedRowValue);
-
-  return matchesKeyword && matchesValues;
-}
-
-export function normalizeTableColumnFilterValue(value: TableFilterValue | undefined): {
-  keyword: string;
-  values: string[];
-} {
-  if (typeof value === 'string') {
-    return {
-      keyword: value,
-      values: []
-    };
-  }
-
-  return {
-    keyword: value?.keyword ?? '',
-    values: Array.isArray(value?.values) ? [...new Set(value.values.filter(Boolean))] : []
-  };
-}
-
-function toTableFilterStateValue(value: { keyword: string; values: string[] }): TableFilterValue {
-  if (value.values.length === 0) {
-    return value.keyword;
-  }
-
-  return {
-    keyword: value.keyword || undefined,
-    values: value.values
-  };
-}
-
-export function getTableAriaSort(order?: TableSortOrder) {
-  if (order === 'asc') return 'ascending';
-  if (order === 'desc') return 'descending';
-
-  return 'none';
-}
-
-export function parseTableColumnWidth(width?: string) {
-  if (!width) {
-    return undefined;
-  }
-
-  const normalizedWidth = width.trim();
-
-  if (!normalizedWidth) {
-    return undefined;
-  }
-
-  if (normalizedWidth.endsWith('px')) {
-    const parsedWidth = Number.parseFloat(normalizedWidth.slice(0, -2));
-
-    return Number.isFinite(parsedWidth) ? parsedWidth : undefined;
-  }
-
-  const parsedWidth = Number.parseFloat(normalizedWidth);
-
-  return Number.isFinite(parsedWidth) ? parsedWidth : undefined;
-}
-
-export function getTableColumnWidthValue<T extends TableBaseData>(
-  column: TableColumn<T>,
-  columnWidths?: TableColumnWidthState
-) {
-  const key = getTableColumnKey(column);
-
-  return columnWidths?.[key] ?? column.width;
-}
-
-export function getTableAlign(column: TableColumn): CSSProperties['textAlign'] {
-  if (!column.align) {
-    return column.type ? 'center' : 'start';
-  }
-
-  return column.align;
-}
+//#endregion

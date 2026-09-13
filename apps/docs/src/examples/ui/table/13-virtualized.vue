@@ -10,10 +10,10 @@ interface TableRowData {
 }
 
 const columns: TableColumn<TableRowData>[] = [
-  { type: 'index', width: '56px' },
-  { title: 'Name', dataIndex: 'name', width: '180px' },
-  { title: 'Age', dataIndex: 'age', align: 'center', width: '100px' },
-  { title: 'Address', dataIndex: 'address', width: '260px' }
+  { type: 'index', size: 56 },
+  { header: 'Name', accessorKey: 'name', size: 180 },
+  { header: 'Age', accessorKey: 'age', align: 'center', size: 100 },
+  { header: 'Address', accessorKey: 'address', size: 260 }
 ];
 
 const data: TableRowData[] = Array.from({ length: 1000 }, (_, index) => ({

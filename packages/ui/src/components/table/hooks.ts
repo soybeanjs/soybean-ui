@@ -1,6 +1,6 @@
 import { computed, ref, shallowRef, watch } from 'vue';
 import type { Component, Ref, VNode } from 'vue';
-import { getTableColumnKey, isTableGroupColumn } from '@soybeanjs/headless/table';
+import { getTableColumnKey, getTableLeafColumns, isTableGroupColumn } from '@soybeanjs/headless/table';
 import type { TableBaseData, TableColumn, TableColumnType } from './types';
 
 export type TableColumnCheckTitle = VNode | Component | string;
@@ -115,8 +115,18 @@ export function useTable<ResponseData, ApiData extends TableBaseData>(
 ) {
   const result = useTableState<ResponseData, ApiData, TableColumn<ApiData>, false>({
     ...options,
-    getColumnChecks: getDefaultColumnChecks,
-    getColumns: getDefaultColumns
+    getColumnChecks: getDefaultColumnChecks as UseTableBaseOptions<
+      ResponseData,
+      ApiData,
+      TableColumn<ApiData>,
+      false
+    >['getColumnChecks'],
+    getColumns: getDefaultColumns as UseTableBaseOptions<
+      ResponseData,
+      ApiData,
+      TableColumn<ApiData>,
+      false
+    >['getColumns']
   });
 
   return result;
@@ -153,8 +163,18 @@ export function usePaginatedTable<ResponseData, ApiData extends TableBaseData>(
   const result = useTableState<ResponseData, ApiData, TableColumn<ApiData>, true>({
     ...options,
     pagination: true,
-    getColumnChecks: getDefaultColumnChecks,
-    getColumns: getDefaultColumns,
+    getColumnChecks: getDefaultColumnChecks as UseTableBaseOptions<
+      ResponseData,
+      ApiData,
+      TableColumn<ApiData>,
+      true
+    >['getColumnChecks'],
+    getColumns: getDefaultColumns as UseTableBaseOptions<
+      ResponseData,
+      ApiData,
+      TableColumn<ApiData>,
+      true
+    >['getColumns'],
     onFetched: data => {
       if (data.total && data.total !== total.value) {
         total.value = data.total;
@@ -188,27 +208,27 @@ export function usePaginatedTable<ResponseData, ApiData extends TableBaseData>(
   };
 }
 
-function getDefaultColumnChecks<T extends TableColumn<any>>(columns: T[]) {
+function getDefaultColumnChecks(columns: TableColumn<any>[]) {
   const cols: TableColumnCheck[] = [];
 
   columns.forEach(col => {
     if (isTableGroupColumn(col)) {
-      cols.push(...getDefaultColumnChecks(col.children));
+      cols.push(...getDefaultColumnChecks(getTableLeafColumns([col])));
       return;
     }
 
-    const { type, title, hidden } = col;
+    const { type, header } = col;
+    const rawCol = col as TableColumn<any> & { accessorKey?: string };
 
     // Group columns are flattened above, so only leaf data columns participate in visibility checks.
-    if (type || !col.dataIndex) return;
+    if (type || !rawCol.accessorKey) return;
 
     const key = getTableColumnKey(col);
 
     const column: TableColumnCheck = {
       key,
-      title: title || key,
-      checked: true,
-      hidden
+      title: (typeof header === 'string' && header) || key,
+      checked: true
     };
 
     cols.push(column);
@@ -217,8 +237,8 @@ function getDefaultColumnChecks<T extends TableColumn<any>>(columns: T[]) {
   return cols;
 }
 
-function getDefaultColumns<T extends TableColumn<any>>(columns: T[], checks: TableColumnCheck[]) {
-  const typeColumnsMap = new Map<TableColumnType, { column: T; index: number }>();
+function getDefaultColumns(columns: TableColumn<any>[], checks: TableColumnCheck[]): TableColumn<any>[] {
+  const typeColumnsMap = new Map<TableColumnType, { column: TableColumn<any>; index: number }>();
   const checksMap = new Map(checks.map(check => [check.key, check]));
   const checksOrderMap = new Map(checks.map((check, i) => [check.key, i]));
 
@@ -228,9 +248,13 @@ function getDefaultColumns<T extends TableColumn<any>>(columns: T[], checks: Tab
     }
   });
 
+  function getGroupColumns(column: TableColumn<any>): TableColumn<any>[] {
+    return (column as TableColumn<any> & { columns?: TableColumn<any>[] }).columns ?? [];
+  }
+
   function getMinCheckOrder(column: TableColumn<any>): number {
     if (isTableGroupColumn(column)) {
-      const childOrders = column.children.map(child => getMinCheckOrder(child));
+      const childOrders = getGroupColumns(column).map(child => getMinCheckOrder(child));
       return childOrders.length > 0 ? Math.min(...childOrders) : Infinity;
     }
     return checksOrderMap.get(getTableColumnKey(column)) ?? Infinity;
@@ -239,12 +263,12 @@ function getDefaultColumns<T extends TableColumn<any>>(columns: T[], checks: Tab
   const nonTypeColumns = columns.filter(col => !col.type);
   const sortedNonType = [...nonTypeColumns].sort((a, b) => getMinCheckOrder(a) - getMinCheckOrder(b));
 
-  const result = sortedNonType.reduce<T[]>((acc, column) => {
+  const result = sortedNonType.reduce<TableColumn<any>[]>((acc, column) => {
     if (isTableGroupColumn(column)) {
-      const nextChildren = getDefaultColumns(column.children, checks);
+      const nextChildren = getDefaultColumns(getGroupColumns(column), checks);
 
       if (nextChildren.length > 0) {
-        acc.push({ ...column, children: nextChildren });
+        acc.push({ ...column, columns: nextChildren });
       }
 
       return acc;

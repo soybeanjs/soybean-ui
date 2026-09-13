@@ -11,7 +11,13 @@ import { computed, useSlots } from 'vue';
 import { toContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { provideTableCompactContext } from './context';
-import { useTableCompactData, useTableCompactResize, useTableCompactState, useTableCompactVirtual } from './hooks';
+import {
+  useTableCompactData,
+  useTableCompactResize,
+  useTableCompactState,
+  useTableCompactTable,
+  useTableCompactVirtual
+} from './hooks';
 import TableBody from './table-body.vue';
 import TableCell from './table-cell.vue';
 import TableCompactHead from './table-compact-head.vue';
@@ -38,10 +44,20 @@ defineOptions({
 
 const props = withDefaults(defineProps<TableCompactProps<T, R, M>>(), {
   expanded: undefined,
+  sorting: undefined,
   sortState: undefined,
-  filterState: undefined,
-  columnWidths: undefined,
+  columnFilters: undefined,
+  columnPinning: undefined,
+  columnSizing: undefined,
   selected: undefined,
+  // `ExpandedState` includes the literal `true`, which triggers Vue's Boolean
+  // casting for absent props; explicit undefined defaults keep them optional.
+  defaultExpanded: undefined,
+  defaultSorting: undefined,
+  defaultSortState: undefined,
+  defaultColumnFilters: undefined,
+  defaultColumnPinning: undefined,
+  defaultColumnSizing: undefined,
   multiple: () => true as M,
   indent: 16
 });
@@ -61,10 +77,11 @@ const contextProps = props as TableCompactProps;
 const dir = useDirection(() => props.dir);
 
 const {
+  sorting,
+  columnFilters,
   expanded,
-  sortState,
-  filterState,
-  columnWidths,
+  columnPinning,
+  columnSizing,
   selected,
   multiple,
   onSelectedChange,
@@ -77,25 +94,37 @@ const {
   hasExpandedRowSlot
 });
 
+const isFiltering = computed(() => columnFilters.value.length > 0);
+
+const visibleExpanded = computed(() => (isFiltering.value ? true : expanded.value));
+
+const { table, columnDefs } = useTableCompactTable({
+  props: contextProps,
+  sorting,
+  columnFilters,
+  expanded,
+  visibleExpanded,
+  columnPinning,
+  columnSizing
+});
+
 const {
-  leafColumns,
   headerRows,
+  leafColumns,
   sourceRows,
   hasTreeRows,
-  visibleExpandedKeys,
+  displayRows,
   visibleRowKeys,
   treeColumnKey,
   hasExpandColumn,
   isHeaderSelectionDisabled,
-  headerSelection,
-  displayRows
+  headerSelection
 } = useTableCompactData({
   props: contextProps,
-  expanded,
-  sortState,
-  filterState,
-  selected,
-  hasExpandedRowSlot
+  table,
+  columnDefs,
+  visibleExpanded,
+  selected
 });
 
 const {
@@ -107,7 +136,7 @@ const {
   fixedColumnStates
 } = useTableCompactResize({
   leafColumns,
-  columnWidths
+  columnSizing
 });
 
 const { isVirtual, setTableScrollRef, tableScrollStyle, virtualPaddingStart, virtualPaddingEnd, visibleRows } =
@@ -149,10 +178,14 @@ provideTableCompactContext({
   ...toContext(props, ['indent', 'headProps', 'cellProps', 'rowProps']),
   dir,
   rowKey: props.rowKey as (row: TableBaseData) => TableUnifiedKey,
+  table,
+  sorting,
+  columnFilters,
   expanded,
-  sortState,
-  filterState,
-  columnWidths,
+  visibleExpanded,
+  columnPinning,
+  columnSizing,
+  isFiltering,
   selected,
   multiple,
   onSelectedChange,
@@ -165,7 +198,6 @@ provideTableCompactContext({
   treeColumnKey,
   hasExpandColumn,
   hasExpandedRowSlot,
-  visibleExpandedKeys,
   visibleRowKeys,
   isHeaderSelectionDisabled,
   headerSelection,
@@ -173,6 +205,14 @@ provideTableCompactContext({
   resizingColumnKey,
   measuredColumnWidths,
   headCellElements
+});
+
+defineExpose({
+  /**
+   * The TanStack table engine instance (full API: row models, grouping,
+   * pagination, selection models, faceted values...).
+   */
+  table
 });
 </script>
 
@@ -182,13 +222,7 @@ provideTableCompactContext({
       <TableContent :ref="setTableContentRef" v-bind="contentProps">
         <TableHeader v-bind="headerProps">
           <TableRow v-for="(headerRow, headerRowIndex) in headerRows" :key="headerRowIndex" v-bind="rowProps">
-            <TableCompactHead
-              v-for="headerCell in headerRow"
-              :key="headerCell.key"
-              :column="headerCell.column"
-              :col-span="headerCell.colSpan"
-              :row-span="headerCell.rowSpan"
-            >
+            <TableCompactHead v-for="headerCell in headerRow" :key="headerCell.key" :header="headerCell.header">
               <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
                 <slot :name="slotName" v-bind="slotProps" />
               </template>

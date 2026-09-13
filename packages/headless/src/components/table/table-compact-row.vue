@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
 import { toContext } from '../../shared';
-import { getTableColumnKey } from './shared';
 import { useTableCompactExpandedRow } from './hooks';
+import { getTableColumnKey } from './columns';
 import TableCell from './table-cell.vue';
 import TableCompactCell from './table-compact-cell.vue';
 import TableRow from './table-row.vue';

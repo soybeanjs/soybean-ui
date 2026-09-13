@@ -1,7 +1,6 @@
 import type {
   TableBaseData,
   TableColumn,
-  TableColumnFilter,
   TableColumnFilterOption,
   TableColumnFilterValue,
   TableColumnType,
@@ -105,24 +104,6 @@ export interface TableRadioProps {
 }
 
 /**
- * Type information for TableFilterPopoverColumnMeta.
- */
-export interface TableFilterPopoverColumnMeta {
-  /**
-   * Title text rendered by the component.
-   */
-  title?: string;
-  /**
-   * Key.
-   */
-  key?: string;
-  /**
-   * Data index.
-   */
-  dataIndex?: string;
-}
-
-/**
  * Type information for TableFilterPopoverOption.
  */
 export interface TableFilterPopoverOption {
@@ -159,7 +140,6 @@ export interface TableFilterPopoverProps<
 export type {
   TableBaseData,
   TableColumn,
-  TableColumnFilter,
   TableColumnFilterOption,
   TableColumnFilterValue,
   TableColumnType,

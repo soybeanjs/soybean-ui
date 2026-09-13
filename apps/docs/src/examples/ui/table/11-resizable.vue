@@ -103,19 +103,19 @@ const employeeTableData: EmployeeTableData[] = [
 ];
 
 const resizableColumns: TableColumn<EmployeeTableData>[] = [
-  { title: 'Employee ID', dataIndex: 'employeeId', width: '140px', resizable: true },
-  { title: 'Name', dataIndex: 'name', width: '180px', resizable: true },
-  { title: 'Role', dataIndex: 'role', width: '180px', resizable: true },
-  { title: 'Team', dataIndex: 'team', width: '160px', resizable: true },
-  { title: 'Status', dataIndex: 'status', width: '140px', align: 'center', resizable: true },
-  { title: 'Location', dataIndex: 'location', width: '180px', resizable: true },
-  { title: 'Timezone', dataIndex: 'timezone', width: '140px', resizable: true },
-  { title: 'Email', dataIndex: 'email', width: '240px', resizable: true },
-  { title: 'Phone', dataIndex: 'phone', width: '160px', resizable: true },
-  { title: 'Projects', dataIndex: 'projects', width: '120px', align: 'center', resizable: true },
-  { title: 'Utilization', dataIndex: 'utilization', width: '140px', align: 'center', resizable: true },
-  { title: 'Last Updated', dataIndex: 'lastUpdated', width: '160px', resizable: true },
-  { title: 'Score', dataIndex: 'score', width: '120px', align: 'center', resizable: true }
+  { header: 'Employee ID', accessorKey: 'employeeId', size: 140, resizable: true },
+  { header: 'Name', accessorKey: 'name', size: 180, resizable: true },
+  { header: 'Role', accessorKey: 'role', size: 180, resizable: true },
+  { header: 'Team', accessorKey: 'team', size: 160, resizable: true },
+  { header: 'Status', accessorKey: 'status', size: 140, align: 'center', resizable: true },
+  { header: 'Location', accessorKey: 'location', size: 180, resizable: true },
+  { header: 'Timezone', accessorKey: 'timezone', size: 140, resizable: true },
+  { header: 'Email', accessorKey: 'email', size: 240, resizable: true },
+  { header: 'Phone', accessorKey: 'phone', size: 160, resizable: true },
+  { header: 'Projects', accessorKey: 'projects', size: 120, align: 'center', resizable: true },
+  { header: 'Utilization', accessorKey: 'utilization', size: 140, align: 'center', resizable: true },
+  { header: 'Last Updated', accessorKey: 'lastUpdated', size: 160, resizable: true },
+  { header: 'Score', accessorKey: 'score', size: 120, align: 'center', resizable: true }
 ];
 </script>
 

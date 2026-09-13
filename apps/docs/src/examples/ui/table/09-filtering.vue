@@ -17,9 +17,9 @@ const groupedTableData: GroupedTableData[] = [
 ];
 
 const filterableColumns: TableColumn<GroupedTableData>[] = [
-  { title: 'Name', dataIndex: 'name', filter: { placeholder: 'Filter by name' } },
-  { title: 'City', dataIndex: 'city', filter: true },
-  { title: 'Score', dataIndex: 'score', align: 'center' }
+  { header: 'Name', accessorKey: 'name', enableColumnFilter: true, filterPlaceholder: 'Filter by name' },
+  { header: 'City', accessorKey: 'city', enableColumnFilter: true },
+  { header: 'Score', accessorKey: 'score', align: 'center' }
 ];
 </script>
 

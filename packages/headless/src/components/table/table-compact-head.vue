@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { FlexRender } from '@tanstack/vue-table';
 import { toContext } from '../../shared';
 import { useTableCompactHead } from './hooks';
 import TableHead from './table-head.vue';
@@ -18,6 +19,10 @@ const {
   headerFilterSlotProps,
   sortSlotProps,
   resizeSlotProps,
+  header,
+  column,
+  columnLabel,
+  hasHeaderRenderer,
   columnSlotName,
   sortable,
   filterable,
@@ -30,16 +35,17 @@ const {
     <slot name="header" v-bind="headerSlotProps">
       <slot :name="`header-${columnSlotName}`" v-bind="headerSlotProps">
         <template v-if="column.type === 'index'">
-          {{ column.title ?? '#' }}
+          {{ columnLabel }}
         </template>
         <template v-else-if="column.type === 'selection'">
           <slot name="header-selection" v-bind="headerSelectionSlotProps" />
         </template>
         <template v-else-if="column.type === 'expand'">
-          {{ column.title }}
+          {{ columnLabel }}
         </template>
         <template v-else>
-          <span>{{ column.title }}</span>
+          <FlexRender v-if="hasHeaderRenderer" :header="header" />
+          <span v-else>{{ columnLabel }}</span>
           <slot v-if="sortable" name="header-sort" v-bind="sortSlotProps" />
           <slot v-if="filterable" name="header-filter" v-bind="headerFilterSlotProps" />
           <slot v-if="resizable" name="header-resize" v-bind="resizeSlotProps" />

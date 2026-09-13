@@ -12,12 +12,12 @@ interface DepartmentRow {
 }
 
 const columns: TableColumn<DepartmentRow>[] = [
-  { title: 'Name', dataIndex: 'name', width: '220px' },
-  { title: 'Age', dataIndex: 'age', align: 'center', width: '100px' },
-  { title: 'Role', dataIndex: 'role', width: '180px' }
+  { header: 'Name', accessorKey: 'name', size: 220 },
+  { header: 'Age', accessorKey: 'age', align: 'center', size: 100 },
+  { header: 'Role', accessorKey: 'role', size: 180 }
 ];
 
-const expanded = ref<number[]>([1]);
+const expanded = ref<Record<string, boolean>>({ '1': true });
 
 const data: DepartmentRow[] = [
   {

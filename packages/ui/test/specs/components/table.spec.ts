@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { h, nextTick } from 'vue';
+import { defineComponent, h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
+import { useTableEngine } from '@soybeanjs/headless/table';
 import SConfigProvider from '@/components/config-provider/config-provider.vue';
 import STable from '@/components/table/table.vue';
 import type { TableColumn } from '@/components/table/types';
@@ -14,45 +15,45 @@ interface TableRowData {
   children?: TableRowData[];
 }
 
-const columns: TableColumn<TableRowData>[] = [
-  { title: 'Name', dataIndex: 'name' },
-  { title: 'Age', dataIndex: 'age', align: 'center' as const }
+const columns: TableColumn[] = [
+  { header: 'Name', accessorKey: 'name' },
+  { header: 'Age', accessorKey: 'age', align: 'center' as const }
 ];
 
-const groupedColumns: TableColumn<TableRowData>[] = [
+const groupedColumns: TableColumn[] = [
   {
-    title: 'Profile',
-    key: 'profile',
-    children: [
-      { title: 'Name', dataIndex: 'name' },
-      { title: 'Age', dataIndex: 'age', align: 'center' }
+    id: 'profile',
+    header: 'Profile',
+    columns: [
+      { header: 'Name', accessorKey: 'name' },
+      { header: 'Age', accessorKey: 'age', align: 'center' as const }
     ]
   }
 ];
 
-const sortableColumns: TableColumn<TableRowData>[] = [
-  { title: 'Name', dataIndex: 'name' },
-  { title: 'Age', dataIndex: 'age', align: 'center', sorter: true }
+const sortableColumns: TableColumn[] = [
+  { header: 'Name', accessorKey: 'name' },
+  { header: 'Age', accessorKey: 'age', align: 'center' as const, enableSorting: true }
 ];
 
-const filterableColumns: TableColumn<TableRowData>[] = [
-  { title: 'Name', dataIndex: 'name', filter: true },
-  { title: 'Age', dataIndex: 'age', align: 'center' }
+const filterableColumns: TableColumn[] = [
+  { header: 'Name', accessorKey: 'name', enableColumnFilter: true },
+  { header: 'Age', accessorKey: 'age', align: 'center' as const }
 ];
 
-const fixedColumns: TableColumn<TableRowData>[] = [
-  { title: 'Name', dataIndex: 'name', width: '140px', fixed: 'start' },
-  { title: 'Age', dataIndex: 'age', width: '96px', align: 'center', fixed: 'end' }
+const fixedColumns: TableColumn[] = [
+  { header: 'Name', accessorKey: 'name', size: 140, fixed: 'start' },
+  { header: 'Age', accessorKey: 'age', size: 96, align: 'center' as const, fixed: 'end' }
 ];
 
-const resizableColumns: TableColumn<TableRowData>[] = [
-  { title: 'Name', dataIndex: 'name', width: '140px', minWidth: '100px', resizable: true },
-  { title: 'Age', dataIndex: 'age', align: 'center', width: '96px' }
+const resizableColumns: TableColumn[] = [
+  { header: 'Name', accessorKey: 'name', size: 140, minSize: 100, resizable: true },
+  { header: 'Age', accessorKey: 'age', align: 'center' as const, size: 96 }
 ];
 
-const selectionColumns = [{ type: 'selection' as const, width: '48px' }, ...columns];
+const selectionColumns: TableColumn[] = [{ type: 'selection' as const, size: 48 }, ...columns];
 
-const expandableColumns = [{ type: 'expand' as const, width: '48px' }, ...columns];
+const expandableColumns: TableColumn[] = [{ type: 'expand' as const, size: 48 }, ...columns];
 
 const data: TableRowData[] = [
   { id: 1, name: 'Ada', age: 32 },
@@ -140,7 +141,7 @@ describe('STable', () => {
     it('renders column headers and cell values', () => {
       const wrapper = mount(STable, {
         props: {
-          columns: columns as TableColumn[],
+          columns,
           data,
           rowKey: row => row.id
         },
@@ -157,7 +158,7 @@ describe('STable', () => {
     it('renders grouped headers within a single semantic table', () => {
       const wrapper = mount(STable, {
         props: {
-          columns: groupedColumns as TableColumn[],
+          columns: groupedColumns,
           data,
           rowKey: row => row.id
         },
@@ -173,7 +174,7 @@ describe('STable', () => {
     it('forwards custom cell slots to the headless data table', () => {
       const wrapper = mount(STable, {
         props: {
-          columns: columns as TableColumn[],
+          columns,
           data,
           rowKey: row => row.id
         },
@@ -192,10 +193,29 @@ describe('STable', () => {
       wrapper.unmount();
     });
 
+    it('renders type column headers without leaking generated ids', () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: [...expandableColumns, { type: 'index' as const }] as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      const heads = wrapper.findAll('thead th');
+
+      expect(heads[0].text()).toBe('');
+      expect(heads.at(-1)?.text()).toBe('#');
+      expect(wrapper.find('thead').text()).not.toContain('__index');
+      expect(wrapper.find('thead').text()).not.toContain('__expand');
+      wrapper.unmount();
+    });
+
     it('renders the default empty state when there are no rows', () => {
       const wrapper = mount(STable, {
         props: {
-          columns: columns as TableColumn[],
+          columns,
           data: [],
           rowKey: row => row.id
         },
@@ -213,7 +233,7 @@ describe('STable', () => {
     it('allows overriding the empty state with the empty slot', () => {
       const wrapper = mount(STable, {
         props: {
-          columns: columns as TableColumn[],
+          columns,
           data: [],
           rowKey: row => row.id
         },
@@ -233,16 +253,16 @@ describe('STable', () => {
     });
 
     it('uses dir on the root element and css text-align for logical alignment', () => {
-      const alignedColumns: TableColumn<TableRowData>[] = [
-        { title: 'Name', dataIndex: 'name' },
-        { title: 'Age', dataIndex: 'age', align: 'end' },
-        { title: 'Index', type: 'index', width: '48px' }
+      const alignedColumns: TableColumn[] = [
+        { header: 'Name', accessorKey: 'name' },
+        { header: 'Age', accessorKey: 'age', align: 'end' },
+        { header: '#', type: 'index', size: 48 }
       ];
 
       const wrapper = mount(STable, {
         props: {
           dir: 'rtl',
-          columns: alignedColumns as TableColumn[],
+          columns: alignedColumns,
           data,
           rowKey: row => row.id
         },
@@ -269,7 +289,7 @@ describe('STable', () => {
     it('emits row interaction events with row metadata', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: columns as TableColumn[],
+          columns,
           data,
           rowKey: row => row.id
         },
@@ -306,7 +326,7 @@ describe('STable', () => {
     it('uses the UI header-selection slot to toggle all visible rows', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: selectionColumns as TableColumn[],
+          columns: selectionColumns,
           data,
           rowKey: row => row.id
         },
@@ -322,7 +342,7 @@ describe('STable', () => {
     it('emits update:selected when a row checkbox is clicked', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: selectionColumns as TableColumn[],
+          columns: selectionColumns,
           data,
           rowKey: row => row.id
         },
@@ -339,7 +359,7 @@ describe('STable', () => {
     it('uses pressed button semantics for single-selection controls', () => {
       const wrapper = mount(STable, {
         props: {
-          columns: selectionColumns as TableColumn[],
+          columns: selectionColumns,
           data,
           rowKey: row => row.id,
           multiple: false,
@@ -377,7 +397,7 @@ describe('STable', () => {
 
       const wrapper = mount(STable, {
         props: {
-          columns: sortableColumns as TableColumn[],
+          columns: sortableColumns,
           data,
           rowKey: row => row.id
         },
@@ -393,10 +413,10 @@ describe('STable', () => {
       wrapper.unmount();
     });
 
-    it('sorts rows when a sortable header is activated', async () => {
+    it('sorts rows when a sortable header is activated and emits update:sorting', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: sortableColumns as TableColumn[],
+          columns: sortableColumns,
           data,
           rowKey: row => row.id
         },
@@ -405,15 +425,15 @@ describe('STable', () => {
 
       await wrapper.get('button[aria-label="Sort by Age"]').trigger('click');
 
-      expect(wrapper.emitted('update:sortState')?.[0]?.[0]).toEqual({ key: 'age', order: 'asc' });
+      expect(wrapper.emitted('update:sorting')?.[0]?.[0]).toEqual([{ id: 'age', desc: false }]);
       expect(wrapper.findAll('tbody tr')[0].text()).toContain('Linus');
       wrapper.unmount();
     });
 
-    it('emits undefined when clearing sort state after cycling the sortable header', async () => {
+    it('emits an empty sorting state after cycling the sortable header', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: sortableColumns as TableColumn[],
+          columns: sortableColumns,
           data,
           rowKey: row => row.id
         },
@@ -426,14 +446,35 @@ describe('STable', () => {
       await sortTrigger.trigger('click');
       await sortTrigger.trigger('click');
 
-      expect(wrapper.emitted('update:sortState')?.[2]?.[0]).toBeUndefined();
+      expect(wrapper.emitted('update:sorting')?.[0]?.[0]).toEqual([{ id: 'age', desc: false }]);
+      expect(wrapper.emitted('update:sorting')?.[1]?.[0]).toEqual([{ id: 'age', desc: true }]);
+      expect(wrapper.emitted('update:sorting')?.[2]?.[0]).toEqual([]);
+      wrapper.unmount();
+    });
+
+    it('keeps controlled sort state until the parent writes back', async () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: sortableColumns,
+          data,
+          rowKey: row => row.id,
+          sorting: [{ id: 'age', desc: false }]
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('button[aria-label="Sort by Age, currently ascending"]').trigger('click');
+
+      expect(wrapper.emitted('update:sorting')?.[0]?.[0]).toEqual([{ id: 'age', desc: true }]);
+      expect(wrapper.findAll('tbody tr')[0].text()).toContain('Linus');
+
       wrapper.unmount();
     });
 
     it('filters rows when using the floating filter search input', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: filterableColumns as TableColumn[],
+          columns: filterableColumns,
           data,
           rowKey: row => row.id
         },
@@ -443,7 +484,7 @@ describe('STable', () => {
       await openTableFilter(wrapper, 'Name');
       await setTeleportedInputValue('Search filter options for Name', 'Lin');
 
-      expect(wrapper.emitted('update:filterState')?.[0]?.[0]).toEqual({ name: 'Lin' });
+      expect(wrapper.emitted('update:columnFilters')?.at(-1)?.[0]).toEqual([{ id: 'name', value: 'Lin' }]);
       expect(wrapper.findAll('tbody tr')).toHaveLength(1);
       expect(wrapper.get('tbody').text()).toContain('Linus');
       expect(wrapper.get('tbody').text()).not.toContain('Ada');
@@ -453,7 +494,7 @@ describe('STable', () => {
     it('filters rows when selecting options from the floating filter panel', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: filterableColumns as TableColumn[],
+          columns: filterableColumns,
           data,
           rowKey: row => row.id
         },
@@ -463,11 +504,9 @@ describe('STable', () => {
       await openTableFilter(wrapper, 'Name');
       await clickTeleportedControl('Select Linus');
 
-      expect(wrapper.emitted('update:filterState')?.[0]?.[0]).toEqual({
-        name: {
-          values: ['Linus']
-        }
-      });
+      expect(wrapper.emitted('update:columnFilters')?.at(-1)?.[0]).toEqual([
+        { id: 'name', value: { values: ['Linus'] } }
+      ]);
       expect(wrapper.findAll('tbody tr')).toHaveLength(1);
       expect(wrapper.get('tbody').text()).toContain('Linus');
       expect(wrapper.get('tbody').text()).not.toContain('Ada');
@@ -477,7 +516,7 @@ describe('STable', () => {
     it('clears floating filter selections when clicking clear', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: filterableColumns as TableColumn[],
+          columns: filterableColumns,
           data,
           rowKey: row => row.id
         },
@@ -488,7 +527,7 @@ describe('STable', () => {
       await clickTeleportedControl('Select Linus');
       await clickTeleportedControl('Clear');
 
-      expect(wrapper.emitted('update:filterState')?.at(-1)?.[0]).toEqual({});
+      expect(wrapper.emitted('update:columnFilters')?.at(-1)?.[0]).toEqual([]);
       expect(wrapper.findAll('tbody tr')).toHaveLength(2);
       expect(wrapper.get('tbody').text()).toContain('Ada');
       expect(wrapper.get('tbody').text()).toContain('Linus');
@@ -525,7 +564,7 @@ describe('STable', () => {
 
       const wrapper = mount(STable, {
         props: {
-          columns: filterableColumns as TableColumn[],
+          columns: filterableColumns,
           data,
           rowKey: row => row.id
         },
@@ -535,11 +574,9 @@ describe('STable', () => {
 
       await wrapper.get('[data-testid="filter-option-Linus"]').trigger('click');
 
-      expect(wrapper.emitted('update:filterState')?.[0]?.[0]).toEqual({
-        name: {
-          values: ['Linus']
-        }
-      });
+      expect(wrapper.emitted('update:columnFilters')?.at(-1)?.[0]).toEqual([
+        { id: 'name', value: { values: ['Linus'] } }
+      ]);
       expect(wrapper.findAll('tbody tr')).toHaveLength(1);
       expect(wrapper.get('tbody').text()).toContain('Linus');
       expect(wrapper.get('tbody').text()).not.toContain('Ada');
@@ -551,7 +588,7 @@ describe('STable', () => {
     it('applies sticky offsets to fixed columns', () => {
       const wrapper = mount(STable, {
         props: {
-          columns: fixedColumns as TableColumn[],
+          columns: fixedColumns,
           data,
           rowKey: row => row.id
         },
@@ -572,7 +609,7 @@ describe('STable', () => {
       const wrapper = mount(STable, {
         props: {
           dir: 'rtl',
-          columns: fixedColumns as TableColumn[],
+          columns: fixedColumns,
           data,
           rowKey: row => row.id
         },
@@ -599,16 +636,16 @@ describe('STable', () => {
         }
       }
 
-      const measuredFixedColumns: TableColumn<TableRowData>[] = [
-        { title: 'Name', dataIndex: 'name', width: '140px', fixed: 'start' },
-        { title: 'Age', dataIndex: 'age', width: '96px', align: 'center', fixed: 'start' },
-        { title: 'Id', dataIndex: 'id', width: '120px' }
+      const measuredFixedColumns: TableColumn[] = [
+        { header: 'Name', accessorKey: 'name', size: 140, fixed: 'start' },
+        { header: 'Age', accessorKey: 'age', size: 96, align: 'center' as const, fixed: 'start' },
+        { header: 'Id', accessorKey: 'id', size: 120 }
       ];
 
       const cleanup = setupMock('ResizeObserver', TestResizeObserver as unknown as typeof ResizeObserver);
       const wrapper = mount(STable, {
         props: {
-          columns: measuredFixedColumns as TableColumn[],
+          columns: measuredFixedColumns,
           data,
           rowKey: row => row.id
         },
@@ -651,17 +688,17 @@ describe('STable', () => {
         }
       }
 
-      const measuredFixedColumns: TableColumn<TableRowData>[] = [
-        { title: 'Name', dataIndex: 'name', width: '140px', fixed: 'start' },
-        { title: 'Age', dataIndex: 'age', width: '96px', align: 'center', fixed: 'start' },
-        { title: 'Id', dataIndex: 'id', width: '120px' }
+      const measuredFixedColumns: TableColumn[] = [
+        { header: 'Name', accessorKey: 'name', size: 140, fixed: 'start' },
+        { header: 'Age', accessorKey: 'age', size: 96, align: 'center' as const, fixed: 'start' },
+        { header: 'Id', accessorKey: 'id', size: 120 }
       ];
 
       const cleanup = setupMock('ResizeObserver', TestResizeObserver as unknown as typeof ResizeObserver);
       const wrapper = mount(STable, {
         props: {
           dir: 'rtl',
-          columns: measuredFixedColumns as TableColumn[],
+          columns: measuredFixedColumns,
           data,
           rowKey: row => row.id
         },
@@ -695,17 +732,17 @@ describe('STable', () => {
     });
 
     it('marks the last start fixed and first end fixed columns for styling', () => {
-      const bidirectionalFixedColumns: TableColumn<TableRowData>[] = [
-        { title: 'Name', dataIndex: 'name', width: '140px', fixed: 'start' },
-        { title: 'Age', dataIndex: 'age', width: '96px', align: 'center', fixed: 'start' },
-        { title: 'Id', dataIndex: 'id', width: '120px' },
-        { title: 'Name Copy', dataIndex: 'name', width: '140px', fixed: 'end' },
-        { title: 'Id', dataIndex: 'id', width: '120px', fixed: 'end' }
+      const bidirectionalFixedColumns: TableColumn[] = [
+        { header: 'Name', accessorKey: 'name', size: 140, fixed: 'start' },
+        { header: 'Age', accessorKey: 'age', size: 96, align: 'center' as const, fixed: 'start' },
+        { header: 'Id', accessorKey: 'id', size: 120 },
+        { header: 'Name Copy', accessorFn: row => row.name, id: 'name-copy', size: 140, fixed: 'end' },
+        { header: 'Id Copy', accessorFn: row => row.id, id: 'id-copy', size: 120, fixed: 'end' }
       ];
 
       const wrapper = mount(STable, {
         props: {
-          columns: bidirectionalFixedColumns as TableColumn[],
+          columns: bidirectionalFixedColumns,
           data,
           rowKey: row => row.id
         },
@@ -733,7 +770,7 @@ describe('STable', () => {
       const wrapper = mount(STable, {
         props: {
           dir: 'rtl',
-          columns: resizableColumns as TableColumn[],
+          columns: resizableColumns,
           data,
           rowKey: row => row.id
         },
@@ -755,7 +792,7 @@ describe('STable', () => {
 
       await nextTick();
 
-      expect(wrapper.emitted('update:columnWidths')?.at(-1)?.[0]).toEqual({ name: '180px' });
+      expect(wrapper.emitted('update:columnSizing')?.at(-1)?.[0]).toEqual({ name: 180 });
       expect(head.attributes('style')).toContain('width: 180px;');
       wrapper.unmount();
     });
@@ -763,7 +800,7 @@ describe('STable', () => {
     it('updates column widths when a resize handle is dragged', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: resizableColumns as TableColumn[],
+          columns: resizableColumns,
           data,
           rowKey: row => row.id
         },
@@ -785,7 +822,7 @@ describe('STable', () => {
 
       await nextTick();
 
-      expect(wrapper.emitted('update:columnWidths')?.at(-1)?.[0]).toEqual({ name: '180px' });
+      expect(wrapper.emitted('update:columnSizing')?.at(-1)?.[0]).toEqual({ name: 180 });
       expect(head.attributes('style')).toContain('width: 180px;');
       wrapper.unmount();
     });
@@ -808,7 +845,7 @@ describe('STable', () => {
           virtual: true,
           height: 120,
           estimateSize: 30,
-          columns: columns as TableColumn[],
+          columns,
           data: virtualizedData,
           rowKey: row => row.id
         },
@@ -875,7 +912,7 @@ describe('STable', () => {
     it('emits update:expanded and renders expanded row content', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: expandableColumns as TableColumn[],
+          columns: expandableColumns,
           data,
           rowKey: row => row.id
         },
@@ -892,7 +929,7 @@ describe('STable', () => {
       await wrapper.find('[aria-label="Expand row Ada"]').trigger('click');
 
       expect(wrapper.emitted('update:expanded')).toBeTruthy();
-      expect(wrapper.emitted('update:expanded')?.[0]?.[0]).toEqual([1]);
+      expect(wrapper.emitted('update:expanded')?.[0]?.[0]).toEqual({ '1': true });
       expect(wrapper.find('[data-testid="expanded-1"]').text()).toContain('Expanded Ada');
       wrapper.unmount();
     });
@@ -902,7 +939,7 @@ describe('STable', () => {
     it('renders nested rows and toggles children from the first data column', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: columns as TableColumn[],
+          columns,
           data: treeData,
           rowKey: row => row.id
         },
@@ -914,7 +951,7 @@ describe('STable', () => {
 
       await wrapper.get('[aria-label="Expand row Ada"]').trigger('click');
 
-      expect(wrapper.emitted('update:expanded')?.[0]?.[0]).toEqual([1]);
+      expect(wrapper.emitted('update:expanded')?.[0]?.[0]).toEqual({ '1': true });
       expect(wrapper.text()).toContain('Ada Child');
       expect(wrapper.get('tbody tr[data-level="2"]').text()).toContain('Ada Child');
 
@@ -924,7 +961,7 @@ describe('STable', () => {
     it('keeps ancestor rows visible when filtering matches descendants', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: filterableColumns as TableColumn[],
+          columns: filterableColumns,
           data: treeData,
           rowKey: row => row.id
         },
@@ -946,7 +983,7 @@ describe('STable', () => {
     it('renders multi-select checkboxes by default without passing multiple', () => {
       const wrapper = mount(STable, {
         props: {
-          columns: selectionColumns as TableColumn[],
+          columns: selectionColumns,
           data,
           rowKey: row => row.id
         },
@@ -963,7 +1000,7 @@ describe('STable', () => {
     it('renders row radios and hides select-all when multiple is false', () => {
       const wrapper = mount(STable, {
         props: {
-          columns: selectionColumns as TableColumn[],
+          columns: selectionColumns,
           data,
           rowKey: row => row.id,
           multiple: false
@@ -979,29 +1016,10 @@ describe('STable', () => {
   });
 
   describe('controlled state', () => {
-    it('keeps controlled sort state until the parent writes back', async () => {
-      const wrapper = mount(STable, {
-        props: {
-          columns: sortableColumns as TableColumn[],
-          data,
-          rowKey: row => row.id,
-          sortState: { key: 'age', order: 'asc' }
-        },
-        attachTo: document.body
-      });
-
-      await wrapper.get('button[aria-label="Sort by Age, currently ascending"]').trigger('click');
-
-      expect(wrapper.emitted('update:sortState')?.[0]?.[0]).toEqual({ key: 'age', order: 'desc' });
-      expect(wrapper.findAll('tbody tr')[0].text()).toContain('Linus');
-
-      wrapper.unmount();
-    });
-
     it('keeps controlled selection without internal mutation', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: selectionColumns as TableColumn[],
+          columns: selectionColumns,
           data,
           rowKey: row => row.id,
           selected: [1]
@@ -1022,7 +1040,7 @@ describe('STable', () => {
     it('renders data-soybean-table-* attributes without leaking as/asChild', () => {
       const wrapper = mount(STable, {
         props: {
-          columns: columns as TableColumn[],
+          columns,
           data,
           rowKey: row => row.id
         },
@@ -1053,7 +1071,7 @@ describe('STable', () => {
         props: { locale: 'zh-CN' },
         slots: {
           default: h(STable, {
-            columns: filterableColumns as TableColumn[],
+            columns: filterableColumns,
             data,
             rowKey: row => row.id
           })
@@ -1079,7 +1097,7 @@ describe('STable', () => {
 
       await clickTeleportedControl('清除');
 
-      expect(wrapper.findComponent({ name: 'STable' }).emitted('update:filterState')?.at(-1)?.[0]).toEqual({});
+      expect(wrapper.findComponent({ name: 'STable' }).emitted('update:columnFilters')?.at(-1)?.[0]).toEqual([]);
 
       wrapper.unmount();
     });
@@ -1089,7 +1107,7 @@ describe('STable', () => {
         props: { locale: 'zh-CN' },
         slots: {
           default: h(STable, {
-            columns: columns as TableColumn[],
+            columns,
             data: [],
             rowKey: row => row.id
           })
@@ -1109,7 +1127,7 @@ describe('STable', () => {
     it('has no a11y violations', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: selectionColumns as TableColumn[],
+          columns: selectionColumns,
           data,
           rowKey: row => row.id
         },
@@ -1119,6 +1137,167 @@ describe('STable', () => {
       const violations = await getA11yViolations(wrapper.element);
 
       expect(violations).toHaveLength(0);
+      wrapper.unmount();
+    });
+  });
+
+  describe('engine escape hatch', () => {
+    it('falls back to the columnDef.cell render function when no slot matches', () => {
+      const renderColumns: TableColumn[] = [
+        { header: 'Name', accessorKey: 'name' },
+        {
+          header: 'Age',
+          accessorKey: 'age',
+          cell: info => h('span', { 'data-testid': 'cell-render' }, `Age:${info.getValue()}`)
+        }
+      ];
+
+      const wrapper = mount(STable, {
+        props: {
+          columns: renderColumns,
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.findAll('[data-testid="cell-render"]')).toHaveLength(2);
+      expect(wrapper.text()).toContain('Age:32');
+      wrapper.unmount();
+    });
+
+    it('falls back to the columnDef.header render function when no slot matches', () => {
+      const renderColumns: TableColumn[] = [
+        {
+          header: (props: any) => h('span', { 'data-testid': 'header-render' }, `H:${props.column.id}`),
+          accessorKey: 'name'
+        },
+        { header: 'Age', accessorKey: 'age' }
+      ];
+
+      const wrapper = mount(STable, {
+        props: {
+          columns: renderColumns,
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[data-testid="header-render"]').text()).toBe('H:name');
+      wrapper.unmount();
+    });
+
+    it('exposes slot props with the engine table and column instances', () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns,
+          data,
+          rowKey: row => row.id
+        },
+        slots: {
+          name: props => {
+            const { table, engineColumn } = props as {
+              table?: { getRowModel?: unknown };
+              engineColumn?: { id?: string };
+            };
+
+            return h('span', { 'data-testid': 'engine-probe' }, `${typeof table?.getRowModel}:${engineColumn?.id}`);
+          }
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[data-testid="engine-probe"]').text()).toBe('function:name');
+      wrapper.unmount();
+    });
+
+    it('injects the engine instance via useTableEngine inside slot content', () => {
+      const EngineProbe = defineComponent({
+        setup() {
+          const table = useTableEngine();
+
+          return () => h('span', { 'data-testid': 'inject-probe' }, String(table.getRow('1').original.name));
+        }
+      });
+
+      const wrapper = mount(STable, {
+        props: {
+          columns,
+          data,
+          rowKey: row => row.id
+        },
+        slots: {
+          name: () => h(EngineProbe)
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[data-testid="inject-probe"]').text()).toBe('Ada');
+      wrapper.unmount();
+    });
+
+    it('exposes the engine instance as the exposed root', async () => {
+      const Probe = defineComponent({
+        setup() {
+          const engine = useTableEngine();
+
+          return () =>
+            h(
+              'span',
+              { 'data-testid': 'engine-sort-probe' },
+              engine
+                .getSortedRowModel()
+                .rows.map(row => row.original.name)
+                .join(',')
+            );
+        }
+      });
+
+      const wrapper = mount(STable, {
+        props: {
+          columns,
+          data,
+          rowKey: row => row.id
+        },
+        slots: {
+          name: () => h(Probe)
+        },
+        attachTo: document.body
+      });
+
+      const exposed = wrapper.vm as unknown as Record<string, unknown>;
+
+      expect(typeof exposed.getRowModel).toBe('function');
+      expect(typeof exposed.setSorting).toBe('function');
+
+      (exposed.setSorting as (updater: unknown) => void)([{ id: 'age', desc: false }]);
+      await nextTick();
+      // external changes take a second tick: state write-back syncs the engine
+      // atoms, then the memoized row model recomputes and the render flushes
+      await nextTick();
+
+      expect(wrapper.emitted('update:sorting')?.[0]?.[0]).toEqual([{ id: 'age', desc: false }]);
+      expect(wrapper.findAll('tbody tr')[0].text()).toContain('Linus');
+      expect(wrapper.get('[data-testid="engine-sort-probe"]').text()).toContain('Linus');
+      wrapper.unmount();
+    });
+
+    it('passes engine options through the tableOptions prop', () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns,
+          data,
+          rowKey: row => row.id,
+          tableOptions: {
+            initialState: { columnVisibility: { age: false } }
+          }
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.findAll('thead th')).toHaveLength(1);
+      expect(wrapper.text()).not.toContain('Age');
       wrapper.unmount();
     });
   });

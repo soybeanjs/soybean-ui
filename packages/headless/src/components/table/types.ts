@@ -1,6 +1,81 @@
 import type { ShallowRef, ComputedRef, TableHTMLAttributes, TdHTMLAttributes, ThHTMLAttributes } from 'vue';
+import type {
+  Column,
+  ColumnDef,
+  IdentifiedColumnDef,
+  ColumnFiltersState,
+  ColumnPinningState,
+  ColumnSizingState,
+  ExpandedState,
+  FilterFn,
+  Header,
+  Row,
+  SortDirection,
+  SortingState,
+  Table as TanStackTable,
+  TableOptions
+} from '@tanstack/table-core';
 import type { BaseProps, CheckedState, Direction, Path, PathValue, ToContext, UiClass } from '../../types';
 import type { VirtualizerOptions } from '../virtualizer/types';
+import type { SoybeanTableFeatures } from './features';
+
+export type {
+  ColumnDef,
+  ColumnFiltersState,
+  ColumnPinningState,
+  ColumnSizingState,
+  ExpandedState,
+  FilterFn,
+  SortDirection,
+  SortingState
+} from '@tanstack/table-core';
+
+/**
+ * Engine options accepted by the `tableOptions` prop. Keys owned by the
+ * component (data, columns, state wiring, owned change handlers, and the
+ * behavior flags it tunes) are omitted; everything else passes through to
+ * the TanStack `useTable` call, unlocking features the component does not
+ * wire explicitly (pagination, row selection models, manual modes, meta...).
+ */
+export type TableEngineOptions = Omit<
+  Partial<TableOptions<SoybeanTableFeatures, TableBaseData>>,
+  | 'features'
+  | 'data'
+  | 'columns'
+  | 'state'
+  | 'atoms'
+  | 'getRowId'
+  | 'getSubRows'
+  | 'onSortingChange'
+  | 'onColumnFiltersChange'
+  | 'onExpandedChange'
+  | 'onColumnPinningChange'
+  | 'onColumnSizingChange'
+  | 'filterFromLeafRows'
+  | 'sortDescFirst'
+  | 'autoResetExpanded'
+  | 'mergeOptions'
+>;
+
+/**
+ * Engine column instance exposed by the TanStack table.
+ */
+export type TableEngineColumn<T extends TableBaseData = TableBaseData> = Column<SoybeanTableFeatures, T, any>;
+
+/**
+ * Engine row instance exposed by the TanStack table.
+ */
+export type TableEngineRow<T extends TableBaseData = TableBaseData> = Row<SoybeanTableFeatures, T>;
+
+/**
+ * Engine table instance exposed by the TanStack table.
+ */
+export type TableEngineTable<T extends TableBaseData = TableBaseData> = TanStackTable<SoybeanTableFeatures, T>;
+
+/**
+ * Engine header instance exposed by the TanStack table.
+ */
+export type TableEngineHeader<T extends TableBaseData = TableBaseData> = Header<SoybeanTableFeatures, T, any>;
 
 /**
  * Properties for the TableRoot component.
@@ -101,7 +176,7 @@ export type TableColumnType = 'index' | 'selection' | 'expand';
 /**
  * Type information for TableSortOrder.
  */
-export type TableSortOrder = 'asc' | 'desc';
+export type TableSortOrder = SortDirection;
 
 /**
  * Type information for TableUnifiedKey.
@@ -109,21 +184,7 @@ export type TableSortOrder = 'asc' | 'desc';
 export type TableUnifiedKey = string | number;
 
 /**
- * State values for TableSortState.
- */
-export interface TableSortState {
-  /**
-   * Key.
-   */
-  key: string;
-  /**
-   * Order.
-   */
-  order: TableSortOrder;
-}
-
-/**
- * Type information for TableColumnFilterValue.
+ * Compound filter value stored in `ColumnFiltersState` entries.
  */
 export interface TableColumnFilterValue {
   /**
@@ -137,324 +198,12 @@ export interface TableColumnFilterValue {
 }
 
 /**
- * Type information for TableFilterValue.
+ * Filter value accepted by the built-in compound filter function.
  */
 export type TableFilterValue = string | TableColumnFilterValue;
 
 /**
- * State values for TableFilterState.
- */
-export type TableFilterState = Record<string, TableFilterValue>;
-
-/**
- * State values for TableColumnWidthState.
- */
-export type TableColumnWidthState = Record<string, string>;
-
-/**
- * Type information for TableRowChildrenResolver.
- */
-export type TableRowChildrenResolver<T extends TableBaseData = TableBaseData> = (row: T) => T[] | undefined;
-
-/**
- * Type information for TableVirtualMeasurement.
- */
-export interface TableVirtualMeasurement {
-  /**
-   * Index of the current item.
-   */
-  index: number;
-  /**
-   * Start.
-   */
-  start: number;
-  /**
-   * End.
-   */
-  end: number;
-}
-
-/**
- * Type information for TableVirtualRange.
- */
-export interface TableVirtualRange {
-  /**
-   * Start index.
-   */
-  startIndex: number;
-  /**
-   * End index.
-   */
-  endIndex: number;
-}
-
-/**
- * Type information for TableTreeNode.
- */
-export interface TableTreeNode<T extends TableBaseData = TableBaseData, R extends TableUnifiedKey = TableUnifiedKey> {
-  /**
-   * Key.
-   */
-  key: R;
-  /**
-   * Row.
-   */
-  row: T;
-  /**
-   * Level.
-   */
-  level: number;
-  /**
-   * Parent key.
-   */
-  parentKey?: R;
-  /**
-   * Nested child items.
-   */
-  children: TableTreeNode<T, R>[];
-  /**
-   * Whether the component has children.
-   */
-  hasChildren: boolean;
-}
-
-/**
- * Type information for TableTreeRow.
- */
-export interface TableTreeRow<T extends TableBaseData = TableBaseData, R extends TableUnifiedKey = TableUnifiedKey> {
-  /**
-   * Key.
-   */
-  key: R;
-  /**
-   * Row.
-   */
-  row: T;
-  /**
-   * Level.
-   */
-  level: number;
-  /**
-   * Parent key.
-   */
-  parentKey?: R;
-  /**
-   * Whether the component has children.
-   */
-  hasChildren: boolean;
-}
-
-/**
- * Type information for TableVisibleRow.
- */
-export interface TableVisibleRow<T extends TableBaseData = TableBaseData, R extends TableUnifiedKey = TableUnifiedKey> {
-  /**
-   * Index of the current item.
-   */
-  index: number;
-  /**
-   * Current item data.
-   */
-  item: TableTreeRow<T, R>;
-}
-
-/**
- * Type information for TableColumnFilter.
- */
-export interface TableColumnFilter<T extends TableBaseData = TableBaseData> {
-  /**
-   * Placeholder.
-   */
-  placeholder?: string;
-  /**
-   * Options.
-   */
-  options?:
-    | TableColumnFilterOption[]
-    | ((params: { rows: T[]; column: TableDataColumn<T> }) => TableColumnFilterOption[]);
-  /**
-   * Match.
-   */
-  match?: (params: {
-    filterValue: TableColumnFilterValue;
-    keyword: string;
-    values: string[];
-    row: T;
-    value: unknown;
-    column: TableDataColumn<T>;
-  }) => boolean;
-}
-
-/**
- * Type information for TableColumnFilterOption.
- */
-export interface TableColumnFilterOption {
-  /**
-   * Label text rendered by the component.
-   */
-  label: string;
-  /**
-   * Value associated with the current item.
-   */
-  value: string;
-  /**
-   * Whether the component is disabled.
-   */
-  disabled?: boolean;
-}
-
-/**
- * Type information for TableColumnBase.
- */
-export interface TableColumnBase {
-  /**
-   * Key.
-   */
-  key?: string;
-  /**
-   * Title text rendered by the component.
-   */
-  title?: string;
-  /**
-   * Type.
-   */
-  type?: TableColumnType;
-  /**
-   * Align.
-   */
-  align?: TableAlign;
-  /**
-   * Width.
-   */
-  width?: string;
-  /**
-   * Min width.
-   */
-  minWidth?: string;
-  /**
-   * Whether the item is hidden.
-   */
-  hidden?: boolean;
-  /**
-   * Fixed.
-   */
-  fixed?: 'start' | 'end';
-  /**
-   * Whether resizable.
-   */
-  resizable?: boolean;
-}
-
-/**
- * Type information for TableTypeColumn.
- */
-export interface TableTypeColumn extends TableColumnBase {
-  /**
-   * Type.
-   */
-  type: TableColumnType;
-  /**
-   * Data index.
-   */
-  dataIndex?: never;
-  /**
-   * Nested child items.
-   */
-  children?: never;
-  /**
-   * Sorter.
-   */
-  sorter?: never;
-  /**
-   * Filter.
-   */
-  filter?: never;
-}
-
-/**
- * Type information for TableDataColumn.
- */
-export interface TableDataColumn<T extends TableBaseData = TableBaseData> extends TableColumnBase {
-  /**
-   * Data index.
-   */
-  dataIndex: Path<TableRowValue<T>>;
-  /**
-   * Type.
-   */
-  type?: never;
-  /**
-   * Nested child items.
-   */
-  children?: never;
-  /**
-   * Sorter.
-   */
-  sorter?: boolean | ((a: T, b: T) => number);
-  /**
-   * Filter.
-   */
-  filter?: boolean | TableColumnFilter<T>;
-}
-
-/**
- * Type information for TableGroupColumn.
- */
-export interface TableGroupColumn<T extends TableBaseData = TableBaseData> extends TableColumnBase {
-  /**
-   * Nested child items.
-   */
-  children: TableColumn<T>[];
-  /**
-   * Type.
-   */
-  type?: never;
-  /**
-   * Data index.
-   */
-  dataIndex?: never;
-  /**
-   * Sorter.
-   */
-  sorter?: never;
-  /**
-   * Filter.
-   */
-  filter?: never;
-}
-
-/**
- * Type information for TableColumn.
- */
-export type TableColumn<T extends TableBaseData = TableBaseData> =
-  | TableTypeColumn
-  | TableDataColumn<T>
-  | TableGroupColumn<T>;
-
-/**
- * Type information for TableHeaderCell.
- */
-export interface TableHeaderCell<T extends TableBaseData = TableBaseData> {
-  /**
-   * Key.
-   */
-  key: string;
-  /**
-   * Column.
-   */
-  column: TableColumn<T>;
-  /**
-   * Col span.
-   */
-  colSpan: number;
-  /**
-   * Row span.
-   */
-  rowSpan: number;
-}
-
-/**
- * State values for TableFixedState.
+ * Type information for TableFixedState.
  */
 export interface TableFixedState {
   /**
@@ -498,6 +247,192 @@ export interface TableFixedColumnOffsets {
 }
 
 /**
+ * Filter option items rendered by the filter popover.
+ */
+export interface TableColumnFilterOption {
+  /**
+   * Label text rendered by the component.
+   */
+  label: string;
+  /**
+   * Value associated with the current item.
+   */
+  value: string;
+  /**
+   * Whether the component is disabled.
+   */
+  disabled?: boolean;
+}
+
+/**
+ * SoybeanUI-specific column extensions layered on top of the TanStack column definition.
+ */
+export interface TableColumnExtension<T extends TableBaseData = TableBaseData> {
+  /**
+   * Nested child columns of a group column, carrying SoybeanUI extensions.
+   */
+  columns?: TableColumn<T>[];
+  /**
+   * Deep data path of the column value, derived from the row data shape
+   * (tree `children` excluded). Overrides the engine's top-level-only
+   * `keyof TData` constraint.
+   */
+  accessorKey?: Path<TableRowValue<T>>;
+  /**
+   * Text alignment of the column.
+   */
+  align?: TableAlign;
+  /**
+   * Built-in column type.
+   */
+  type?: TableColumnType;
+  /**
+   * Logical pinned side of the column. Maps to TanStack column pinning state.
+   */
+  fixed?: 'start' | 'end';
+  /**
+   * Whether the column is hidden from the table.
+   */
+  hidden?: boolean;
+  /**
+   * Whether the column can be resized.
+   */
+  resizable?: boolean;
+  /**
+   * Placeholder text of the filter popover.
+   */
+  filterPlaceholder?: string;
+  /**
+   * Filter options rendered by the filter popover. When omitted, options are
+   * derived from the source rows.
+   */
+  filterOptions?:
+    | TableColumnFilterOption[]
+    | ((params: { rows: T[]; column: TableColumn<T> }) => TableColumnFilterOption[]);
+}
+
+/**
+ * Column definition of the table. TanStack `ColumnDef` is the first citizen;
+ * SoybeanUI-specific presentation fields ride along as extensions. Built-in
+ * type columns (`index` / `selection` / `expand`) and id-less group columns are
+ * accepted without an explicit id — the engine layer generates stable ids.
+ */
+export type TableColumn<T extends TableBaseData = TableBaseData> =
+  | (ColumnDef<SoybeanTableFeatures, T, any> & TableColumnExtension<T>)
+  | (IdentifiedColumnDef<SoybeanTableFeatures, T, any> & TableColumnExtension<T>);
+
+/**
+ * Default compound filter function for `{ keyword, values }` filter values.
+ */
+export type TableColumnFilterFn<T extends TableBaseData = TableBaseData> = FilterFn<SoybeanTableFeatures, T>;
+
+/**
+ * Renderable header cell derived from the TanStack header groups.
+ */
+export interface TableHeaderCell<T extends TableBaseData = TableBaseData> {
+  /**
+   * Header id.
+   */
+  key: string;
+  /**
+   * Engine header instance.
+   */
+  header: TableEngineHeader<T>;
+  /**
+   * Column definition exposed in the slot scope.
+   */
+  column: TableColumn<T>;
+  /**
+   * Col span.
+   */
+  colSpan: number;
+  /**
+   * Row span.
+   */
+  rowSpan: number;
+}
+
+/**
+ * Flattened visible row model shared by the compact assembly.
+ */
+export interface TableTreeRow<T extends TableBaseData = TableBaseData, R extends TableUnifiedKey = TableUnifiedKey> {
+  /**
+   * Row key resolved by `rowKey`.
+   */
+  key: R;
+  /**
+   * Row id used by the engine (string form of the row key).
+   */
+  id: string;
+  /**
+   * Original row data.
+   */
+  row: T;
+  /**
+   * Engine row instance.
+   */
+  sourceRow: TableEngineRow<T>;
+  /**
+   * Nesting level starting from 1.
+   */
+  level: number;
+  /**
+   * Parent row key.
+   */
+  parentKey?: R;
+  /**
+   * Whether the row has nested children.
+   */
+  hasChildren: boolean;
+}
+
+/**
+ * Virtual measurement of a flattened row.
+ */
+export interface TableVirtualMeasurement {
+  /**
+   * Index of the current item.
+   */
+  index: number;
+  /**
+   * Start.
+   */
+  start: number;
+  /**
+   * End.
+   */
+  end: number;
+}
+
+/**
+ * Virtual window of rendered rows.
+ */
+export interface TableVirtualRange {
+  /**
+   * Start index.
+   */
+  startIndex: number;
+  /**
+   * End index.
+   */
+  endIndex: number;
+}
+
+/**
+ * Type information for TableVisibleRow.
+ */
+export interface TableVisibleRow<T extends TableBaseData = TableBaseData, R extends TableUnifiedKey = TableUnifiedKey> {
+  /**
+   * Index of the current item.
+   */
+  index: number;
+  /**
+   * Current item data.
+   */
+  item: TableTreeRow<T, R>;
+}
+
+/**
  * Properties for the TableSelection component.
  */
 export interface TableSelectionProps<R extends TableUnifiedKey = TableUnifiedKey, M extends boolean = false> {
@@ -520,7 +455,7 @@ export interface TableSelectionProps<R extends TableUnifiedKey = TableUnifiedKey
  */
 export interface TableCompactCellProps {
   /**
-   * Column.
+   * Column definition.
    */
   column: TableColumn;
   /**
@@ -554,7 +489,12 @@ export interface TableCompactExpandedRowProps {
 /**
  * Properties for the TableCompactHead component.
  */
-export interface TableCompactHeadProps extends Omit<TableHeaderCell, 'key'> {}
+export interface TableCompactHeadProps {
+  /**
+   * Engine header instance.
+   */
+  header: TableEngineHeader;
+}
 
 /**
  * Properties for the TableCompactRow component.
@@ -625,9 +565,17 @@ export type TableCompactCellSlots<T extends TableBaseData> = {
  */
 export interface TableHeaderSlotProps<T extends TableBaseData = TableBaseData> {
   /**
-   * Column exposed in the slot scope.
+   * Column definition exposed in the slot scope.
    */
   column: TableColumn<T>;
+  /**
+   * Engine column instance exposed in the slot scope.
+   */
+  engineColumn: TableEngineColumn<T>;
+  /**
+   * Engine table instance exposed in the slot scope (full TanStack API).
+   */
+  table?: TableEngineTable<T>;
   /**
    * Col span exposed in the slot scope.
    */
@@ -850,9 +798,17 @@ export interface TableCellSlotProps<T extends TableBaseData = TableBaseData> {
    */
   index: number;
   /**
-   * Column exposed in the slot scope.
+   * Column definition exposed in the slot scope.
    */
   column: TableColumn<T>;
+  /**
+   * Engine column instance exposed in the slot scope.
+   */
+  engineColumn?: TableEngineColumn<T>;
+  /**
+   * Engine table instance exposed in the slot scope (full TanStack API).
+   */
+  table?: TableEngineTable<T>;
   /**
    * Row exposed in the slot scope.
    */
@@ -996,7 +952,7 @@ export interface TableCompactProps<
 >
   extends TableRootProps, TableSelectionProps<R, M> {
   /**
-   * Columns.
+   * Column definitions. TanStack column defs are the first citizens.
    */
   columns: TableColumn<T>[];
   /**
@@ -1008,33 +964,62 @@ export interface TableCompactProps<
    */
   rowKey: (row: T) => R;
   /**
-   * Default sort state.
+   * Nested children resolver used as the engine `getSubRows`.
    */
-  defaultSortState?: TableSortState;
+  getChildren?: (row: T) => T[] | undefined;
   /**
-   * Sort state.
+   * Sorting state (TanStack `SortingState`).
    */
-  sortState?: TableSortState;
+  sorting?: SortingState;
   /**
-   * Default filter state.
+   * Default sorting state.
    */
-  defaultFilterState?: TableFilterState;
+  defaultSorting?: SortingState;
   /**
-   * Filter state.
+   * Engine options passed through to the TanStack `useTable` call. Keys the
+   * component owns (data, columns, state wiring, owned change handlers) are
+   * overridden by the component; everything else unlocks the full engine
+   * surface (pagination, row selection, manual modes, meta, initialState...).
    */
-  filterState?: TableFilterState;
+  tableOptions?: TableEngineOptions;
   /**
-   * Default column widths.
+   * Column filters state (TanStack `ColumnFiltersState`). Filter values accept
+   * the compound `{ keyword, values }` shape handled by the built-in filter.
    */
-  defaultColumnWidths?: TableColumnWidthState;
+  columnFilters?: ColumnFiltersState;
   /**
-   * Column widths.
+   * Default column filters state.
    */
-  columnWidths?: TableColumnWidthState;
+  defaultColumnFilters?: ColumnFiltersState;
   /**
-   * Get children.
+   * Expanded state (TanStack `ExpandedState`).
    */
-  getChildren?: TableRowChildrenResolver<T>;
+  expanded?: ExpandedState;
+  /**
+   * Default expanded state.
+   */
+  defaultExpanded?: ExpandedState;
+  /**
+   * Whether to expand all rows by default.
+   */
+  defaultExpandAll?: boolean;
+  /**
+   * Column pinning state (TanStack `ColumnPinningState`). Column `fixed`
+   * fields seed the default state when this prop is absent.
+   */
+  columnPinning?: ColumnPinningState;
+  /**
+   * Default column pinning state.
+   */
+  defaultColumnPinning?: ColumnPinningState;
+  /**
+   * Column sizing state (TanStack `ColumnSizingState`, px keyed by column id).
+   */
+  columnSizing?: ColumnSizingState;
+  /**
+   * Default column sizing state.
+   */
+  defaultColumnSizing?: ColumnSizingState;
   /**
    * Indent width applied to nested items.
    */
@@ -1055,18 +1040,6 @@ export interface TableCompactProps<
    * Virtualizer options.
    */
   virtualizerOptions?: VirtualizerOptions;
-  /**
-   * Default expanded.
-   */
-  defaultExpanded?: R[];
-  /**
-   * Expanded.
-   */
-  expanded?: R[];
-  /**
-   * Whether default expand all.
-   */
-  defaultExpandAll?: boolean;
   /**
    * Properties forwarded to the content element.
    */
@@ -1106,21 +1079,25 @@ export type TableCompactEmits<
   M extends boolean = false
 > = {
   /**
-   * Emitted when the sort state value changes.
+   * Emitted when the sorting state value changes.
    */
-  'update:sortState': [state: TableSortState | undefined];
+  'update:sorting': [state: SortingState];
   /**
-   * Emitted when the filter state value changes.
+   * Emitted when the column filters state value changes.
    */
-  'update:filterState': [state: TableFilterState];
+  'update:columnFilters': [state: ColumnFiltersState];
   /**
-   * Emitted when the column widths value changes.
+   * Emitted when the expanded state value changes.
    */
-  'update:columnWidths': [state: TableColumnWidthState];
+  'update:expanded': [state: ExpandedState];
   /**
-   * Emitted when the expanded state changes.
+   * Emitted when the column pinning state value changes.
    */
-  'update:expanded': [expanded: R[]];
+  'update:columnPinning': [state: ColumnPinningState];
+  /**
+   * Emitted when the column sizing state value changes.
+   */
+  'update:columnSizing': [state: ColumnSizingState];
   /**
    * Emitted when the selected state changes.
    */
@@ -1233,23 +1210,39 @@ export interface TableCompactContext extends ToContext<
    */
   rowKey: (row: TableBaseData) => TableUnifiedKey;
   /**
-   * Expanded used by the component context.
+   * Engine table instance.
    */
-  expanded: ShallowRef<TableUnifiedKey[]>;
+  table: TableEngineTable;
   /**
-   * Sort state used by the component context.
+   * Sorting state used by the component context.
    */
-  sortState: ShallowRef<TableSortState | undefined>;
+  sorting: ShallowRef<SortingState>;
   /**
-   * Filter state used by the component context.
+   * Column filters state used by the component context.
    */
-  filterState: ShallowRef<TableFilterState>;
+  columnFilters: ShallowRef<ColumnFiltersState>;
   /**
-   * Column widths used by the component context.
+   * Expanded state used by the component context.
    */
-  columnWidths: ShallowRef<TableColumnWidthState>;
+  expanded: ShallowRef<ExpandedState>;
   /**
-   * Whether the item is selected.
+   * Expanded state visible to the renderer (forces expansion while filtering).
+   */
+  visibleExpanded: ComputedRef<ExpandedState>;
+  /**
+   * Column pinning state used by the component context.
+   */
+  columnPinning: ShallowRef<ColumnPinningState>;
+  /**
+   * Column sizing state used by the component context.
+   */
+  columnSizing: ShallowRef<ColumnSizingState>;
+  /**
+   * Whether the component is filtering.
+   */
+  isFiltering: ComputedRef<boolean>;
+  /**
+   * Selected used by the component context.
    */
   selected: ShallowRef<TableUnifiedKey[] | TableUnifiedKey | undefined>;
   /**
@@ -1296,10 +1289,6 @@ export interface TableCompactContext extends ToContext<
    * Whether the component has expanded row slot.
    */
   hasExpandedRowSlot: ComputedRef<boolean>;
-  /**
-   * Visible expanded keys used by the component context.
-   */
-  visibleExpandedKeys: ComputedRef<TableUnifiedKey[]>;
   /**
    * Visible row keys used by the component context.
    */

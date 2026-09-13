@@ -1,99 +1,102 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, shallowRef, toValue, watch, mergeProps } from 'vue';
 import type { ComputedRef, MaybeRefOrGetter, ShallowRef } from 'vue';
 import { useEventListener, useResizeObserver } from '@vueuse/core';
+import type {
+  ColumnDef,
+  ColumnFiltersState,
+  ColumnPinningState,
+  ColumnSizingState,
+  ExpandedState,
+  SortingState,
+  Updater
+} from '@tanstack/table-core';
+import { useTable } from '@tanstack/vue-table';
 import { getElFromTemplateRef, getMergedRefsValue, pick } from '../../shared';
 import { useControllableState, useForwardElement, useSelection } from '../../composables';
 import { useLocaleMessages } from '../../locale';
 import type { CheckedState, VNodeRef, ToContext } from '../../types';
 import {
-  buildTableTree,
-  filterTableColumns,
-  flattenTableTree,
-  getDefaultTableExpandedKeys,
-  getNextTableColumnWidths,
-  getNextTableExpandedKeys,
-  getNextTableFilterKeywordState,
-  getNextTableFilterState,
-  getNextTableFilterValuesState,
-  getProcessedTableTree,
+  collectTableExpandableKeys,
   getTableAriaSort,
   getTableCellStyle,
-  getTableColumnFilterOptions,
-  getTableColumnFilterStateValue,
+  getTableColumnFilterEntry,
   getTableColumnFilterValue,
   getTableColumnFilterValues,
-  getTableColumnWidthValue,
-  getTableColumnLabel,
-  getTableColumnSortOrder,
+  getTableColumnResizeMinWidth,
   getTableFixedColumnOffsets,
+  getTableHeaderFixedState,
   getTableHeaderRows,
   getTableHeaderSelectionState,
-  getTableHeaderFixedState,
-  getTableLeafColumns,
   getTableLeafFixedState,
   getTableMeasuredColumnWidth,
   getTableMeasuredColumnWidths,
+  getNextTableColumnSizing,
+  getNextTableKeyboardResizeWidth,
+  getNextTablePointerResizeWidth,
   getTableResizeHandleLabel,
   getTableResolvedHeight,
+  getTableRowChildren,
   getTableRowExpandLabel,
-  getTableSelectRowLabel,
   getTableRowLabel,
-  getTableRowValueByDataIndex,
+  getTableRowValueByPath,
+  getTableScrollStyle,
+  getTableSelectRowLabel,
   getTableSortButtonLabel,
-  getTableTreeRows,
   getTableTreeCellStyle,
   getTableTreeColumnKey,
   getTableVirtualMeasurements,
   getTableVirtualPaddingEnd,
   getTableVirtualPaddingStart,
   getTableVirtualRange,
-  getTableVisibleExpandedKeys,
   getTableVisibleRows,
-  hasTableTreeChildren,
   isTableColumnFiltered,
-  isTableDataColumn,
-  getTableColumnKey,
-  getNextTableKeyboardResizeWidth,
-  getNextTablePointerResizeWidth,
-  getTableColumnResizeMinWidth,
-  getTableAlign,
-  getTableScrollStyle,
-  isTableColumnResizable,
-  isTableFilterOptionSelected,
-  isTableFilterableColumn,
   isTableRowExpanded,
-  isTableSortableColumn,
   isTableTreeColumn,
+  setTableColumnFilterEntry,
   shouldRenderTableExpandedRow,
   shouldShowTableInlineTreeToggle,
+  toTableExpandedState,
+  toggleTableExpandedState,
   toggleTableFilterOption,
-  toggleTableSortState
+  isTableFilterOptionSelected
 } from './shared';
 import { useTableCompactContext, useTableUi } from './context';
+import {
+  getTableAlign,
+  getTableColumnFilterOptions,
+  getTableColumnKey,
+  getTableColumnLabel,
+  getTablePinningFromColumns,
+  isTableDataColumn,
+  normalizeTableColumns,
+  normalizeTableFilterValue
+} from './columns';
+import { soybeanTableFeatures } from './features';
+import type { SoybeanTableFeatures } from './features';
 import type {
   TableBaseData,
   TableCellSlotProps,
-  TableColumnWidthState,
   TableColumn,
-  TableDataCellSlotProps,
+  TableEngineColumn,
   TableCompactEmits,
+  TableCompactHeadProps,
+  TableCompactProps,
+  TableDataCellSlotProps,
+  TableEngineTable,
   TableExpandSlotProps,
-  TableFilterState,
+  TableEngineOptions,
   TableFilterValue,
   TableHeaderFilterSlotProps,
+  TableHeaderResizeSlotProps,
   TableHeaderSelectionSlotProps,
   TableHeaderSlotProps,
-  TableIndexSlotProps,
-  TableCompactProps,
-  TableHeaderResizeSlotProps,
-  TableSelectionSlotProps,
   TableHeaderSortSlotProps,
-  TableSortState,
+  TableIndexSlotProps,
+  TableSelectionSlotProps,
   TableTreeRow,
   TableTreeToggleSlotProps,
   TableVisibleRow,
-  TableUnifiedKey,
-  TableCompactHeadProps
+  TableUnifiedKey
 } from './types';
 
 type TableCompactEmitFn<
@@ -101,6 +104,41 @@ type TableCompactEmitFn<
   R extends string | number = string | number,
   M extends boolean = boolean
 > = <K extends keyof TableCompactEmits<T, R, M>>(event: K, ...args: TableCompactEmits<T, R, M>[K]) => void;
+
+function resolveUpdater<T>(updater: Updater<T>, previous: T): T {
+  return typeof updater === 'function' ? (updater as (old: T) => T)(previous) : updater;
+}
+
+/**
+ * Convert user `tableOptions` into per-key computed entries so the engine
+ * adapter tracks each field reactively. Keys owned by the component are
+ * overridden later by the component's own option entries.
+ */
+function toReactiveTableOptions(options: TableEngineOptions | undefined): Record<string, unknown> {
+  if (!options) {
+    return {};
+  }
+
+  return Object.fromEntries(
+    (Object.keys(options) as Array<keyof TableEngineOptions>).map(key => [key, computed(() => options[key])])
+  );
+}
+
+function getColumnWidthValue(column: TableColumn, columnSizing: ColumnSizingState): number | undefined {
+  const key = getTableColumnKey(column);
+
+  return columnSizing[key] ?? (typeof column.size === 'number' ? column.size : undefined);
+}
+
+function readRowValueByColumn<T extends TableBaseData>(row: T, column: TableColumn<T>): unknown {
+  const rawColumn = column as TableColumn<T> & { accessorKey?: string };
+
+  return typeof rawColumn.accessorKey === 'string' ? getTableRowValueByPath(row, rawColumn.accessorKey) : undefined;
+}
+
+function readCellValue(row: TableTreeRow, column: TableColumn): unknown {
+  return row.sourceRow.getValue(getTableColumnKey(column));
+}
 
 interface UseTableCompactStateOptions<
   T extends TableBaseData = TableBaseData,
@@ -119,43 +157,75 @@ export function useTableCompactState<
 >(options: UseTableCompactStateOptions<T, R, M>) {
   const { props, emit, hasExpandedRowSlot } = options;
 
-  const expanded = useControllableState(
+  const sorting = useControllableState<SortingState | undefined, true>(
+    () => props.sorting,
+    value => {
+      emit('update:sorting', value ?? []);
+    },
+    props.defaultSorting ?? [],
+    true
+  ) as ShallowRef<SortingState>;
+
+  const columnFilters = useControllableState<ColumnFiltersState | undefined, true>(
+    () => props.columnFilters,
+    value => {
+      emit('update:columnFilters', value ?? []);
+    },
+    props.defaultColumnFilters ?? [],
+    true
+  ) as ShallowRef<ColumnFiltersState>;
+
+  const defaultExpanded = computed<ExpandedState>(() => {
+    if (!props.defaultExpandAll) {
+      return props.defaultExpanded ?? {};
+    }
+
+    const keys = collectTableExpandableKeys(
+      props.data,
+      row => String(props.rowKey(row)),
+      props.getChildren,
+      Boolean(toValue(hasExpandedRowSlot))
+    );
+
+    return toTableExpandedState(keys);
+  });
+
+  const expanded = useControllableState<ExpandedState | undefined, true>(
     () => props.expanded,
     value => {
-      emit('update:expanded', value);
+      emit('update:expanded', value ?? {});
     },
-    getDefaultTableExpandedKeys(props.data, props.rowKey, {
-      getChildren: props.getChildren,
-      defaultExpandAll: props.defaultExpandAll,
-      defaultExpanded: props.defaultExpanded,
-      includeLeaves: Boolean(toValue(hasExpandedRowSlot))
-    })
-  );
-
-  const sortState = useControllableState(
-    () => props.sortState,
-    value => {
-      emit('update:sortState', value);
-    },
-    props.defaultSortState,
+    defaultExpanded.value,
     true
+  ) as ShallowRef<ExpandedState>;
+
+  watch(defaultExpanded, value => {
+    if (props.expanded === undefined && props.defaultExpandAll) {
+      expanded.value = value;
+    }
+  });
+
+  const defaultColumnPinning = computed<ColumnPinningState | undefined>(
+    () => props.defaultColumnPinning ?? getTablePinningFromColumns(props.columns)
   );
 
-  const filterState = useControllableState(
-    () => props.filterState,
+  const columnPinning = useControllableState<ColumnPinningState | undefined, true>(
+    () => props.columnPinning,
     value => {
-      emit('update:filterState', value);
+      emit('update:columnPinning', value ?? { start: [], end: [] });
     },
-    props.defaultFilterState ?? {}
-  );
+    defaultColumnPinning.value ?? { start: [], end: [] },
+    true
+  ) as ShallowRef<ColumnPinningState>;
 
-  const columnWidths = useControllableState(
-    () => props.columnWidths,
+  const columnSizing = useControllableState<ColumnSizingState | undefined, true>(
+    () => props.columnSizing,
     value => {
-      emit('update:columnWidths', value);
+      emit('update:columnSizing', value ?? {});
     },
-    props.defaultColumnWidths ?? {}
-  );
+    props.defaultColumnSizing ?? {},
+    true
+  ) as ShallowRef<ColumnSizingState>;
 
   const {
     modelValue: selected,
@@ -176,10 +246,11 @@ export function useTableCompactState<
   );
 
   return {
+    sorting,
+    columnFilters,
     expanded,
-    sortState,
-    filterState,
-    columnWidths,
+    columnPinning,
+    columnSizing,
     selected,
     multiple,
     onSelectedChange,
@@ -189,76 +260,155 @@ export function useTableCompactState<
   };
 }
 
-interface UseTableCompactDataOptions {
-  props: TableCompactProps;
-  expanded: ShallowRef<TableUnifiedKey[]>;
-  sortState: ShallowRef<TableSortState | undefined>;
-  filterState: ShallowRef<TableFilterState>;
-  selected: ShallowRef<TableUnifiedKey[] | TableUnifiedKey | undefined>;
-  hasExpandedRowSlot: ComputedRef<boolean>;
+interface UseTableCompactTableOptions<T extends TableBaseData = TableBaseData> {
+  props: TableCompactProps<T, string | number, boolean>;
+  sorting: ShallowRef<SortingState>;
+  columnFilters: ShallowRef<ColumnFiltersState>;
+  expanded: ShallowRef<ExpandedState>;
+  visibleExpanded: ComputedRef<ExpandedState>;
+  columnPinning: ShallowRef<ColumnPinningState>;
+  columnSizing: ShallowRef<ColumnSizingState>;
 }
 
-export function useTableCompactData(options: UseTableCompactDataOptions) {
-  const { props, expanded, sortState, filterState, selected, hasExpandedRowSlot } = options;
+export interface UseTableCompactTableResult<T extends TableBaseData = TableBaseData> {
+  table: TableEngineTable<T>;
+  /**
+   * Normalized (engine-ready) column definitions keyed by column id. The
+   * engine's `column.columnDef` is a defaults-merged resolution, so the
+   * original definitions are kept here for rendering and slot scopes.
+   */
+  columnDefs: ComputedRef<Map<string, TableColumn<T>>>;
+}
 
-  const visibleColumns = computed(() => filterTableColumns(props.columns));
-  const leafColumns = computed(() => getTableLeafColumns(visibleColumns.value));
-  const headerRows = computed(() => getTableHeaderRows(visibleColumns.value));
+export function useTableCompactTable<T extends TableBaseData = TableBaseData>(
+  options: UseTableCompactTableOptions<T>
+): UseTableCompactTableResult<T> {
+  const { props, sorting, columnFilters, expanded, visibleExpanded, columnPinning, columnSizing } = options;
 
-  const columnMap = computed(() => {
-    return new Map(leafColumns.value.map(column => [getTableColumnKey(column), column]));
+  const columns = computed(() => normalizeTableColumns(props.columns));
+
+  const columnDefs = computed(() => new Map(columns.value.map(column => [getTableColumnKey(column), column])));
+
+  const table = useTable<SoybeanTableFeatures, T>({
+    ...toReactiveTableOptions(props.tableOptions),
+    features: soybeanTableFeatures,
+    data: computed(() => props.data),
+    columns: columns as unknown as ComputedRef<ColumnDef<SoybeanTableFeatures, T, unknown>[]>,
+    getRowId: row => String(props.rowKey(row)),
+    getSubRows: row => getTableRowChildren(row, props.getChildren),
+    filterFromLeafRows: true,
+    sortDescFirst: false,
+    autoResetExpanded: false,
+    state: computed(() => ({
+      sorting: sorting.value,
+      columnFilters: columnFilters.value,
+      expanded: visibleExpanded.value,
+      columnPinning: columnPinning.value,
+      columnSizing: columnSizing.value
+    })),
+    onSortingChange: updater => {
+      sorting.value = resolveUpdater(updater, sorting.value);
+    },
+    onColumnFiltersChange: updater => {
+      columnFilters.value = resolveUpdater(updater, columnFilters.value);
+    },
+    onExpandedChange: updater => {
+      expanded.value = resolveUpdater(updater, expanded.value);
+    },
+    onColumnPinningChange: updater => {
+      columnPinning.value = resolveUpdater(updater, columnPinning.value);
+    },
+    onColumnSizingChange: updater => {
+      columnSizing.value = resolveUpdater(updater, columnSizing.value);
+    }
   });
 
-  const sourceTree = computed(() => buildTableTree(props.data, props.rowKey, props.getChildren));
-  const hasTreeRows = computed(() => hasTableTreeChildren(sourceTree.value));
-  const sourceRows = computed(() => getTableTreeRows(sourceTree.value));
+  return { table, columnDefs };
+}
 
-  const processedTree = computed(() =>
-    getProcessedTableTree(sourceTree.value, filterState.value, columnMap.value, sortState.value)
+interface UseTableCompactDataOptions<
+  T extends TableBaseData = TableBaseData,
+  R extends TableUnifiedKey = TableUnifiedKey,
+  M extends boolean = boolean
+> {
+  props: TableCompactProps<T, R, M>;
+  table: TableEngineTable<T>;
+  columnDefs: ComputedRef<Map<string, TableColumn<T>>>;
+  visibleExpanded: ComputedRef<ExpandedState>;
+  selected: ShallowRef<TableUnifiedKey[] | TableUnifiedKey | undefined>;
+}
+
+export function useTableCompactData<
+  T extends TableBaseData = TableBaseData,
+  R extends TableUnifiedKey = TableUnifiedKey,
+  M extends boolean = boolean
+>(options: UseTableCompactDataOptions<T, R, M>) {
+  const { props, table, columnDefs, visibleExpanded, selected } = options;
+
+  const headerRows = computed(() =>
+    getTableHeaderRows<T>(table.getHeaderGroups(), engineColumn => {
+      const originalDef = columnDefs.value.get(engineColumn.id ?? '');
+
+      return (originalDef ?? engineColumn.columnDef) as TableColumn<T>;
+    })
   );
 
-  const isFiltering = computed(() => Object.keys(filterState.value).length > 0);
+  const leafColumns = computed(() =>
+    table
+      .getVisibleLeafColumns()
+      .map(engineColumn => columnDefs.value.get(engineColumn.id) ?? (engineColumn.columnDef as TableColumn<T>))
+  );
 
-  const visibleExpandedKeys = computed(() => {
-    return getTableVisibleExpandedKeys(hasTreeRows.value, isFiltering.value, expanded.value, processedTree.value);
-  });
+  const sourceRows = computed(() => table.getCoreRowModel().flatRows.map(row => row.original));
 
-  const displayRows = computed(() => flattenTableTree(processedTree.value, visibleExpandedKeys.value));
+  const hasTreeRows = computed(() => table.getCoreRowModel().flatRows.some(row => row.depth > 0));
+
+  const displayRows = computed<TableTreeRow<T, R>[]>(() =>
+    table.getRowModel().rows.map(engineRow => ({
+      key: props.rowKey(engineRow.original),
+      id: engineRow.id,
+      row: engineRow.original,
+      sourceRow: engineRow,
+      level: engineRow.depth + 1,
+      parentKey: engineRow.parentId ? props.rowKey(table.getRow(engineRow.parentId).original) : undefined,
+      hasChildren: engineRow.subRows.length > 0
+    }))
+  );
+
   const visibleRowKeys = computed(() => displayRows.value.map(row => row.key));
+
   const treeColumnKey = computed(() => getTableTreeColumnKey(leafColumns.value));
+
   const hasExpandColumn = computed(() => leafColumns.value.some(column => column.type === 'expand'));
+
   const isHeaderSelectionDisabled = computed(() => displayRows.value.length === 0);
+
   const headerSelection = computed<CheckedState>(() =>
     getTableHeaderSelectionState(selected.value, visibleRowKeys.value)
   );
 
   return {
-    visibleColumns,
-    leafColumns,
+    visibleExpanded,
     headerRows,
-    sourceTree,
-    hasTreeRows,
+    leafColumns,
     sourceRows,
-    processedTree,
-    isFiltering,
-    visibleExpandedKeys,
+    hasTreeRows,
     displayRows,
     visibleRowKeys,
     treeColumnKey,
     hasExpandColumn,
     isHeaderSelectionDisabled,
-    headerSelection,
-    hasExpandedRowSlot
+    headerSelection
   };
 }
 
 interface UseTableCompactResizeOptions {
   leafColumns: ComputedRef<TableColumn[]>;
-  columnWidths: ShallowRef<TableColumnWidthState>;
+  columnSizing: ShallowRef<ColumnSizingState>;
 }
 
 export function useTableCompactResize(options: UseTableCompactResizeOptions) {
-  const { leafColumns, columnWidths } = options;
+  const { leafColumns, columnSizing } = options;
 
   const [tableContentTarget, setTableContentRef] = useForwardElement<HTMLElement>();
   const measuredColumnWidths = shallowRef<Record<string, number>>({});
@@ -267,7 +417,7 @@ export function useTableCompactResize(options: UseTableCompactResizeOptions) {
 
   function syncMeasuredColumnWidths() {
     measuredColumnWidths.value = getTableMeasuredColumnWidths(leafColumns.value, {
-      columnWidths: columnWidths.value,
+      columnSizing: columnSizing.value,
       headCellElements,
       measuredColumnWidths: measuredColumnWidths.value
     });
@@ -275,12 +425,12 @@ export function useTableCompactResize(options: UseTableCompactResizeOptions) {
 
   const fixedColumnStates = computed(() =>
     getTableFixedColumnOffsets(leafColumns.value, column =>
-      getTableMeasuredColumnWidth(column, columnWidths.value, measuredColumnWidths.value)
+      getTableMeasuredColumnWidth(column, columnSizing.value, measuredColumnWidths.value)
     )
   );
 
   watch(
-    [leafColumns, columnWidths],
+    [leafColumns, columnSizing],
     () => {
       nextTick(syncMeasuredColumnWidths);
     },
@@ -449,11 +599,11 @@ export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
     dir,
     headProps,
     headCellElements,
-    columnWidths,
+    table,
+    columnSizing,
     measuredColumnWidths,
     fixedColumnStates,
-    sortState,
-    filterState: contextFilterState,
+    columnFilters,
     sourceRows,
     selected,
     multiple,
@@ -463,15 +613,32 @@ export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
     isHeaderSelectionDisabled: disabled
   } = useTableCompactContext('TableCompactHead');
   const ui = useTableUi();
-  const { column, colSpan, rowSpan } = options;
+  const { header } = options;
   const messages = useLocaleMessages();
 
-  const columnKey = computed(() => getTableColumnKey(column.value));
-  const sortOrder = computed(() => getTableColumnSortOrder(column.value, sortState.value));
-  const sortable = computed(() => isTableSortableColumn(column.value));
-  const filterable = computed(() => isTableFilterableColumn(column.value));
-  const resizable = computed(() => isTableColumnResizable(column.value));
-  const columnLabel = computed(() => getTableColumnLabel(column.value));
+  const engineColumn = computed(() => header.value.column);
+  const column = computed(() => engineColumn.value.columnDef as TableColumn);
+  const columnKey = computed(() => engineColumn.value.id);
+  const sortOrder = computed(() => engineColumn.value.getIsSorted() || undefined);
+  const sortable = computed(() => engineColumn.value.getCanSort());
+  const filterable = computed(() => engineColumn.value.getCanFilter());
+  const resizable = computed(() => engineColumn.value.getCanResize());
+  const columnLabel = computed(() => {
+    const def = column.value;
+    const headerText = def.header;
+
+    if (typeof headerText === 'string' && headerText.length > 0) {
+      return headerText;
+    }
+
+    // type columns have generated ids (`__index`/`__expand`); never show them
+    if (def.type === 'index') {
+      return '#';
+    }
+
+    return def.type ? '' : getTableColumnLabel(def);
+  });
+  const hasHeaderRenderer = computed(() => typeof header.value.column.columnDef.header === 'function');
   const sortAriaLabel = computed(() =>
     getTableSortButtonLabel(columnLabel.value, sortOrder.value, messages.value.table)
   );
@@ -481,28 +648,28 @@ export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
       return '';
     }
 
-    return getTableColumnFilterValue(contextFilterState.value, columnKey.value);
+    return getTableColumnFilterValue(columnFilters.value, columnKey.value);
   });
   const filterValues = computed(() => {
     if (!filterable.value) {
       return [];
     }
 
-    return getTableColumnFilterValues(contextFilterState.value, columnKey.value);
+    return getTableColumnFilterValues(columnFilters.value, columnKey.value);
   });
   const filterState = computed(() => {
     if (!filterable.value) {
       return undefined;
     }
-    return getTableColumnFilterStateValue(contextFilterState.value, columnKey.value);
+    return getTableColumnFilterEntry(columnFilters.value, columnKey.value);
   });
 
   const filterOptions = computed(() => {
-    if (!isTableFilterableColumn(column.value)) {
+    if (!filterable.value) {
       return [];
     }
 
-    return getTableColumnFilterOptions(sourceRows.value, column.value);
+    return getTableColumnFilterOptions(sourceRows.value, column.value, readRowValueByColumn);
   });
 
   const filtered = computed(() => {
@@ -510,7 +677,7 @@ export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
       return false;
     }
 
-    return isTableColumnFiltered(contextFilterState.value, columnKey.value);
+    return isTableColumnFiltered(columnFilters.value, columnKey.value);
   });
 
   const toggleSort = () => {
@@ -518,7 +685,11 @@ export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
       return;
     }
 
-    sortState.value = toggleTableSortState(sortState.value, columnKey.value);
+    engineColumn.value.toggleSorting();
+  };
+
+  const writeFilterState = (value: TableFilterValue | undefined) => {
+    columnFilters.value = setTableColumnFilterEntry(columnFilters.value, columnKey.value, value);
   };
 
   const setFilterValue = (value: string) => {
@@ -526,7 +697,9 @@ export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
       return;
     }
 
-    contextFilterState.value = getNextTableFilterKeywordState(contextFilterState.value, columnKey.value, value);
+    const current = normalizeTableFilterValue(getTableColumnFilterEntry(columnFilters.value, columnKey.value));
+
+    writeFilterState({ ...current, keyword: value });
   };
 
   const setFilterValues = (values: string[]) => {
@@ -534,7 +707,9 @@ export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
       return;
     }
 
-    contextFilterState.value = getNextTableFilterValuesState(contextFilterState.value, columnKey.value, values);
+    const current = normalizeTableFilterValue(getTableColumnFilterEntry(columnFilters.value, columnKey.value));
+
+    writeFilterState({ ...current, values });
   };
 
   const setFilterState = (value: TableFilterValue | undefined) => {
@@ -542,7 +717,7 @@ export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
       return;
     }
 
-    contextFilterState.value = getNextTableFilterState(contextFilterState.value, columnKey.value, value);
+    writeFilterState(value);
   };
 
   const toggleFilterOption = (value: string) => {
@@ -550,7 +725,7 @@ export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
       return;
     }
 
-    contextFilterState.value = toggleTableFilterOption(contextFilterState.value, columnKey.value, value);
+    columnFilters.value = toggleTableFilterOption(columnFilters.value, columnKey.value, value);
   };
 
   const isFilterOptionSelected = (value: string) => {
@@ -558,7 +733,7 @@ export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
       return false;
     }
 
-    return isTableFilterOptionSelected(contextFilterState.value, columnKey.value, value);
+    return isTableFilterOptionSelected(columnFilters.value, columnKey.value, value);
   };
 
   const clearFilter = () => {
@@ -581,8 +756,8 @@ export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
   const bindProps = computed(() => {
     const fixedState = getTableHeaderFixedState(column.value, fixedColumnStates.value);
     const headCellStyle = getTableCellStyle({
-      width: getTableColumnWidthValue(column.value, columnWidths.value),
-      minWidth: column.value.minWidth,
+      width: getColumnWidthValue(column.value, columnSizing.value),
+      minWidth: column.value.minSize,
       textAlign: getTableAlign(column.value),
       fixedState,
       zIndex: 3
@@ -593,8 +768,8 @@ export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
       {
         class: fixedState ? ui.value.fixed : undefined,
         style: headCellStyle,
-        colspan: colSpan.value,
-        rowspan: rowSpan.value,
+        colspan: header.value.colSpan,
+        rowspan: header.value.rowSpan ?? 1,
         'aria-sort': headerAriaSort.value,
         'data-fixed': fixedState ? '' : undefined,
         'data-fixed-side': fixedState?.side,
@@ -608,8 +783,10 @@ export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
     return {
       ...getMergedRefsValue({
         column,
-        colSpan,
-        rowSpan,
+        engineColumn,
+        table,
+        colSpan: computed(() => header.value.colSpan),
+        rowSpan: computed(() => header.value.rowSpan ?? 1),
         sortable,
         filterable,
         filtered,
@@ -689,8 +866,8 @@ export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
     const startX = event.clientX;
     const startWidth =
       headCellElements[key]?.getBoundingClientRect().width ??
-      getTableMeasuredColumnWidth(column.value, columnWidths.value, measuredColumnWidths.value);
-    const minWidth = getTableColumnResizeMinWidth(column.value.minWidth);
+      getTableMeasuredColumnWidth(column.value, columnSizing.value, measuredColumnWidths.value);
+    const minWidth = getTableColumnResizeMinWidth(column.value.minSize);
     const ownerDocument = headCellElements[key]?.ownerDocument;
 
     if (!ownerDocument) {
@@ -702,7 +879,7 @@ export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
     const handlePointerMove = (pointerEvent: PointerEvent) => {
       const nextWidth = getNextTablePointerResizeWidth(startWidth, startX, pointerEvent.clientX, minWidth, dir.value);
 
-      columnWidths.value = getNextTableColumnWidths(columnWidths.value, key, nextWidth);
+      columnSizing.value = getNextTableColumnSizing(columnSizing.value, key, nextWidth);
     };
 
     const handlePointerUp = () => {
@@ -733,15 +910,15 @@ export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
     event.stopPropagation();
 
     const key = columnKey.value;
-    const currentWidth = getTableMeasuredColumnWidth(column.value, columnWidths.value, measuredColumnWidths.value);
+    const currentWidth = getTableMeasuredColumnWidth(column.value, columnSizing.value, measuredColumnWidths.value);
     const nextWidth = getNextTableKeyboardResizeWidth(
       currentWidth,
       event.key === 'ArrowRight' ? 'increase' : 'decrease',
-      getTableColumnResizeMinWidth(column.value.minWidth),
+      getTableColumnResizeMinWidth(column.value.minSize),
       dir.value
     );
 
-    columnWidths.value = getNextTableColumnWidths(columnWidths.value, key, nextWidth);
+    columnSizing.value = getNextTableColumnSizing(columnSizing.value, key, nextWidth);
   };
 
   const setElementRef = (nodeRef: VNodeRef) => {
@@ -761,6 +938,10 @@ export function useTableCompactHead(options: ToContext<TableCompactHeadProps>) {
     headerFilterSlotProps,
     sortSlotProps,
     resizeSlotProps,
+    header,
+    column,
+    columnLabel,
+    hasHeaderRenderer,
     columnSlotName: columnKey,
     sortable,
     filterable,
@@ -778,10 +959,11 @@ export function useTableCompactCell(options: ToContext<TableCompactCellOptions>)
   const {
     indent,
     rowKey,
-    columnWidths,
+    table,
+    columnSizing,
     fixedColumnStates,
-    visibleExpandedKeys,
     expanded,
+    visibleExpanded,
     hasTreeRows,
     treeColumnKey,
     hasExpandColumn,
@@ -795,27 +977,39 @@ export function useTableCompactCell(options: ToContext<TableCompactCellOptions>)
   const { column, row, index } = options;
   const messages = useLocaleMessages();
 
-  const toggleExpand = (key: TableUnifiedKey) => {
-    expanded.value = getNextTableExpandedKeys(expanded.value, key);
+  const toggleExpand = (id: string) => {
+    expanded.value = toggleTableExpandedState(expanded.value, id);
   };
 
   const getCellSlotProps = ($column: TableColumn, $row: TableTreeRow, $index: number) => {
+    const engineColumn = table.getColumn(getTableColumnKey($column)) as TableEngineColumn;
+
     return {
       index: $index,
       column: $column,
+      engineColumn,
+      table,
       row: $row.row,
       level: $row.level,
       hasChildren: $row.hasChildren,
-      expanded: isTableRowExpanded(visibleExpandedKeys.value, $row.key),
-      toggleExpand: () => toggleExpand($row.key)
+      expanded: isTableRowExpanded(visibleExpanded.value, $row.id),
+      toggleExpand: () => toggleExpand($row.id)
     } satisfies TableCellSlotProps;
   };
+
+  const engineColumn = computed(() => table.getColumn(getTableColumnKey(column.value)) as TableEngineColumn);
+
+  const engineCell = computed(() =>
+    column.value.id ? row.value.sourceRow.getAllCellsByColumnId()[column.value.id] : undefined
+  );
+
+  const hasCellRenderer = computed(() => typeof engineColumn.value.columnDef.cell === 'function');
 
   const bindProps = computed(() => {
     const fixedState = getTableLeafFixedState(column.value, fixedColumnStates.value);
     const bodyCellStyle = getTableCellStyle({
-      width: getTableColumnWidthValue(column.value, columnWidths.value),
-      minWidth: column.value.minWidth,
+      width: getColumnWidthValue(column.value, columnSizing.value),
+      minWidth: column.value.minSize,
       textAlign: getTableAlign(column.value),
       fixedState,
       zIndex: 2
@@ -834,16 +1028,16 @@ export function useTableCompactCell(options: ToContext<TableCompactCellOptions>)
     );
   });
 
-  const dataColumn = computed(() => (isTableDataColumn(column.value) ? column.value : undefined));
+  const isDataColumn = computed(() => isTableDataColumn(column.value));
 
   const dataCellSlotProps = computed(() => {
-    if (!dataColumn.value) {
+    if (!isDataColumn.value) {
       return undefined;
     }
 
     return {
-      ...getCellSlotProps(dataColumn.value, row.value, index.value),
-      value: getTableRowValueByDataIndex(row.value.row, dataColumn.value.dataIndex)
+      ...getCellSlotProps(column.value, row.value, index.value),
+      value: readCellValue(row.value, column.value)
     } satisfies TableDataCellSlotProps;
   });
 
@@ -859,7 +1053,7 @@ export function useTableCompactCell(options: ToContext<TableCompactCellOptions>)
     ...getCellSlotProps(column.value, row.value, index.value),
     ariaLabel: getTableRowExpandLabel(
       getTableRowLabel(row.value.row, rowKey),
-      isTableRowExpanded(visibleExpandedKeys.value, row.value.key),
+      isTableRowExpanded(visibleExpanded.value, row.value.id),
       messages.value.table
     )
   }));
@@ -884,18 +1078,20 @@ export function useTableCompactCell(options: ToContext<TableCompactCellOptions>)
     ...getCellSlotProps(column.value, row.value, index.value),
     ariaLabel: getTableRowExpandLabel(
       getTableRowLabel(row.value.row, rowKey),
-      isTableRowExpanded(visibleExpandedKeys.value, row.value.key),
+      isTableRowExpanded(visibleExpanded.value, row.value.id),
       messages.value.table
     )
   }));
 
   return {
     bindProps,
-    dataColumn,
+    isDataColumn,
     isTreeColumn,
     showInlineTreeToggle,
     treeCellStyle,
     dataCellSlotProps,
+    engineCell,
+    hasCellRenderer,
     indexSlotProps,
     selectionSlotProps,
     expandSlotProps,
@@ -909,7 +1105,7 @@ interface TableCompactExpandedRowOptions {
 }
 
 export function useTableCompactExpandedRow(options: ToContext<TableCompactExpandedRowOptions>) {
-  const { hasExpandColumn, hasExpandedRowSlot, visibleExpandedKeys, rowProps, cellProps } =
+  const { hasExpandColumn, hasExpandedRowSlot, visibleExpanded, rowProps, cellProps } =
     useTableCompactContext('TableCompactExpandedRow');
 
   const { row: treeRow, index } = options;
@@ -920,7 +1116,7 @@ export function useTableCompactExpandedRow(options: ToContext<TableCompactExpand
       getMergedRefsValue({
         hasExpandColumn,
         hasExpandedRowSlot,
-        expandedKeys: visibleExpandedKeys
+        expanded: visibleExpanded
       })
     )
   );

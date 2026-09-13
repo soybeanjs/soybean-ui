@@ -12,35 +12,57 @@ export { default as TableCompactHead } from './table-compact-head.vue';
 export { default as TableCompactRow } from './table-compact-row.vue';
 export { default as TableVirtualSpacerRow } from './table-virtual-spacer-row.vue';
 
-export { provideTableUi } from './context';
+export { provideTableUi, useTableEngine } from './context';
+export { soybeanTableFeatures } from './features';
 export {
-  filterTableColumns,
-  getNextTableFilterKeywordState,
-  getNextTableFilterState,
-  getNextTableFilterValuesState,
-  getTableAriaSort,
-  getTableColumnByKey,
+  defaultTableFilterFn,
+  getTableAlign,
   getTableColumnFilterOptions,
   getTableColumnKey,
-  getTableColumnFilterStateValue,
+  getTableColumnLabel,
+  getTableFilterPlaceholder,
+  getTableLeafColumns,
+  getTablePinningFromColumns,
+  isTableColumnResizable,
+  isTableDataColumn,
+  isTableFilterableColumn,
+  isTableGroupColumn,
+  isTableSortableColumn,
+  normalizeTableColumns,
+  normalizeTableFilterValue
+} from './columns';
+export {
+  collectTableExpandableKeys,
+  getTableAriaSort,
+  getTableCellStyle,
+  getTableColumnFilterEntry,
   getTableColumnFilterValue,
   getTableColumnFilterValues,
-  getTableColumnWidthValue,
-  getTableFilterPlaceholder,
+  getTableColumnResizeMinWidth,
+  getTableFixedColumnOffsets,
+  getTableHeaderFixedState,
   getTableHeaderRows,
-  getTableLeafColumns,
+  getTableHeaderSelectionState,
+  getTableLeafFixedState,
+  getTableMeasuredColumnWidth,
+  getTableMeasuredColumnWidths,
+  getNextTableColumnSizing,
+  getNextTableKeyboardResizeWidth,
+  getNextTablePointerResizeWidth,
   getTableRowLabel,
-  getTableRowValueByDataIndex,
+  getTableRowValueByPath,
+  getTableScrollStyle,
+  getTableSortButtonLabel,
+  getTableSortIndicator,
+  getTableTreeColumnKey,
   getTableTreeRows,
-  isTableDataColumn,
   isTableColumnFiltered,
-  isTableGroupColumn,
   isTableFilterOptionSelected,
-  matchesTableColumnFilter,
-  parseTableColumnWidth,
-  sortTableData,
-  toggleTableFilterOption,
-  toggleTableSortState
+  isTableRowExpanded,
+  setTableColumnFilterEntry,
+  toTableExpandedState,
+  toggleTableExpandedState,
+  toggleTableFilterOption
 } from './shared';
 
 export type * from './types';

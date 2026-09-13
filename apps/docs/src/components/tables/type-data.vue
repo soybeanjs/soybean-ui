@@ -33,22 +33,19 @@ type TableRow = TypeFieldDef & {
 
 const columns = computed<TableColumn<TableRow>[]>(() => [
   {
-    key: 'name',
-    dataIndex: 'name',
-    title: t('api.columns.field_name'),
-    minWidth: '144px'
+    accessorKey: 'name',
+    header: t('api.columns.field_name'),
+    minSize: 144
   },
   {
-    key: 'type',
-    dataIndex: 'type',
-    title: t('api.columns.type'),
-    minWidth: '176px'
+    accessorKey: 'type',
+    header: t('api.columns.type'),
+    minSize: 176
   },
   {
-    key: 'description',
-    dataIndex: 'description',
-    title: t('api.columns.description'),
-    minWidth: '240px'
+    accessorKey: 'description',
+    header: t('api.columns.description'),
+    minSize: 240
   }
 ]);
 

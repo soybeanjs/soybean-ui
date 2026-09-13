@@ -7,11 +7,11 @@
     M extends boolean = boolean
   "
 >
-import { computed } from 'vue';
+import { computed, useTemplateRef } from 'vue';
 import { useLocaleMessages } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { provideTableUi, TableCompact } from '@soybeanjs/headless/table';
-import type { TableSortOrder } from '@soybeanjs/headless/table';
+import type { TableEngineTable, TableSortOrder } from '@soybeanjs/headless/table';
 import { tableVariants } from '@/styles/table';
 import { miniSizeMap } from '@/theme';
 import SButtonIcon from '../button/button-icon.vue';
@@ -26,6 +26,10 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<TableProps<T, R, M>>(), {
+  // `ExpandedState` includes the literal `true`, which triggers Vue's Boolean
+  // casting for absent props; explicit undefined defaults keep them optional.
+  expanded: undefined,
+  defaultExpanded: undefined,
   multiple: () => true as M
 });
 
@@ -34,6 +38,8 @@ const emit = defineEmits<TableEmits<T, R, M>>();
 const slots = defineSlots<TableSlots<T>>();
 
 const forwardedProps = useOmitProps(props, ['class', 'ui', 'size', 'variant', 'bordered', 'rounded', 'striped']);
+
+const tableCompactRef = useTemplateRef<{ table: TableEngineTable<T> }>('tableCompactRef');
 
 const listeners = useForwardListeners(emit);
 
@@ -62,10 +68,26 @@ const getOrderIcon = (sortOrder?: TableSortOrder) => {
 };
 
 provideTableUi(ui);
+
+// Forward the engine instance as the whole exposed surface, so consumers call
+// `tableRef.value.previousPage()` instead of `tableRef.value.table.previousPage()`.
+// The instance exists only after the inner TableCompact mounts, hence the lazy
+// forwarding; engine methods close over their own instance (no `this`), so
+// unbound forwarding is safe.
+defineExpose(
+  new Proxy({} as TableEngineTable<T>, {
+    get: (_, key) => tableCompactRef.value?.table?.[key as keyof TableEngineTable<T>],
+    has: (_, key) => {
+      const table = tableCompactRef.value?.table;
+
+      return Boolean(table) && key in table!;
+    }
+  })
+);
 </script>
 
 <template>
-  <TableCompact v-bind="forwardedProps" v-on="listeners">
+  <TableCompact ref="tableCompactRef" v-bind="forwardedProps" v-on="listeners">
     <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
       <slot :name="slotName" v-bind="slotProps" />
     </template>

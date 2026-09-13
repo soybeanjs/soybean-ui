@@ -18,9 +18,9 @@ interface RowEventState {
 }
 
 const columns: TableColumn<TableData>[] = [
-  { title: 'Name', dataIndex: 'name' },
-  { title: 'Role', dataIndex: 'role' },
-  { title: 'Region', dataIndex: 'region' }
+  { header: 'Name', accessorKey: 'name' },
+  { header: 'Role', accessorKey: 'role' },
+  { header: 'Region', accessorKey: 'region' }
 ];
 
 const data: TableData[] = [

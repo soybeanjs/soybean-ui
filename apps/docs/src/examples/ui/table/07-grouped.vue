@@ -18,19 +18,19 @@ const groupedTableData: GroupedTableData[] = [
 
 const groupedColumns: TableColumn<GroupedTableData>[] = [
   {
-    title: 'Profile',
-    key: 'profile',
-    children: [
-      { title: 'Name', dataIndex: 'name' },
-      { title: 'City', dataIndex: 'city' }
+    id: 'profile',
+    header: 'Profile',
+    columns: [
+      { header: 'Name', accessorKey: 'name' },
+      { header: 'City', accessorKey: 'city' }
     ]
   },
   {
-    title: 'Metrics',
-    key: 'metrics',
-    children: [
-      { title: 'Age', dataIndex: 'age', align: 'center' },
-      { title: 'Score', dataIndex: 'score', align: 'center' }
+    id: 'metrics',
+    header: 'Metrics',
+    columns: [
+      { header: 'Age', accessorKey: 'age', align: 'center' },
+      { header: 'Score', accessorKey: 'score', align: 'center' }
     ]
   }
 ];

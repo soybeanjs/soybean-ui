@@ -103,19 +103,19 @@ const employeeTableData: EmployeeTableData[] = [
 ];
 
 const fixedColumns: TableColumn<EmployeeTableData>[] = [
-  { title: 'Employee ID', dataIndex: 'employeeId', width: '140px', fixed: 'start' },
-  { title: 'Name', dataIndex: 'name', width: '180px', fixed: 'start' },
-  { title: 'Role', dataIndex: 'role', width: '180px' },
-  { title: 'Team', dataIndex: 'team', width: '160px' },
-  { title: 'Status', dataIndex: 'status', width: '140px', align: 'center' },
-  { title: 'Location', dataIndex: 'location', width: '180px' },
-  { title: 'Timezone', dataIndex: 'timezone', width: '140px' },
-  { title: 'Email', dataIndex: 'email', width: '240px' },
-  { title: 'Phone', dataIndex: 'phone', width: '160px' },
-  { title: 'Projects', dataIndex: 'projects', width: '120px', align: 'center' },
-  { title: 'Utilization', dataIndex: 'utilization', width: '140px', align: 'center' },
-  { title: 'Last Updated', dataIndex: 'lastUpdated', width: '160px' },
-  { title: 'Score', dataIndex: 'score', width: '120px', align: 'center', fixed: 'end' }
+  { header: 'Employee ID', accessorKey: 'employeeId', size: 140, fixed: 'start' },
+  { header: 'Name', accessorKey: 'name', size: 180, fixed: 'start' },
+  { header: 'Role', accessorKey: 'role', size: 180 },
+  { header: 'Team', accessorKey: 'team', size: 160 },
+  { header: 'Status', accessorKey: 'status', size: 140, align: 'center' },
+  { header: 'Location', accessorKey: 'location', size: 180 },
+  { header: 'Timezone', accessorKey: 'timezone', size: 140 },
+  { header: 'Email', accessorKey: 'email', size: 240 },
+  { header: 'Phone', accessorKey: 'phone', size: 160 },
+  { header: 'Projects', accessorKey: 'projects', size: 120, align: 'center' },
+  { header: 'Utilization', accessorKey: 'utilization', size: 140, align: 'center' },
+  { header: 'Last Updated', accessorKey: 'lastUpdated', size: 160 },
+  { header: 'Score', accessorKey: 'score', size: 120, align: 'center', fixed: 'end' }
 ];
 </script>
 
