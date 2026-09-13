@@ -14,7 +14,7 @@ const props = defineProps<FormFieldCompactProps<any, any>>();
 
 const slots = defineSlots<FormFieldCompactSlots<any, any>>();
 
-const { useField, setFieldValue } = useFormSub();
+const { useField } = useFormSub();
 
 const forwardedProps = useOmitProps(props, ['name', 'validate', 'reset']);
 
@@ -24,10 +24,6 @@ const state = useField(props.name, {
 });
 
 const error = computed(() => state.value.meta.error);
-
-function handleUpdateModelValue(value: unknown) {
-  setFieldValue(props.name, value);
-}
 </script>
 
 <template>
@@ -42,16 +38,17 @@ function handleUpdateModelValue(value: unknown) {
         :aria-invalid="slotProps.ariaInvalid"
         :name="name"
         :model-value="state.value"
-        @update:model-value="handleUpdateModelValue"
-        @blur="state.onBlur($event, props.name)"
-        @change="state.onChange"
-        @input="state.onInput"
+        @update:model-value="state.handleChange"
+        @blur="state.onBlur"
       >
         <slot v-bind="state" />
       </Slot>
     </template>
     <template #description>
       <slot v-if="slots.description || description" name="description" v-bind="state" />
+    </template>
+    <template v-if="slots.error" #error="errorScope">
+      <slot name="error" v-bind="errorScope" />
     </template>
   </FormFieldBaseCompact>
 </template>

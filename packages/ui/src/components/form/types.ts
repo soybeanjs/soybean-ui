@@ -7,11 +7,13 @@ import type {
   FormFieldBaseCompactSlots,
   FormUi,
   FormFieldUi,
-  UseHeadlessFormOptions as UseFormOptions,
-  UseHeadlessFormReturn,
-  FormValues,
+  UseFormOptions as HeadlessUseFormOptions,
+  UseFormReturn as HeadlessUseFormReturn,
   FormFieldComponent,
-  FormFieldArrayComponent
+  FormFieldArrayComponent,
+  FormValues,
+  InferStandardSchemaInput,
+  StandardSchemaV1
 } from '@soybeanjs/headless/form';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
@@ -79,9 +81,18 @@ export interface FormFieldBaseProps extends FormFieldBaseCompactProps, FormField
  */
 export type FormFieldBaseSlots = FormFieldBaseCompactSlots;
 
-export interface UseFormReturn<Values extends FormValues> extends UseHeadlessFormReturn<Values> {
+export type UseFormOptions<
+  S extends StandardSchemaV1<FormValues, FormValues>,
+  Values extends FormValues = InferStandardSchemaInput<S>
+> = HeadlessUseFormOptions<S, Values>;
+
+export interface UseFormReturn<Values extends FormValues = FormValues> extends HeadlessUseFormReturn<Values> {
+  /**
+   * Styled form field component bound to the form context and typed by the schema values.
+   */
   SFormField: FormFieldComponent<Values, FormFieldExtraProps>;
+  /**
+   * Styled form field array component bound to the form context and typed by the schema values.
+   */
   SFormFieldArray: FormFieldArrayComponent<Values, FormFieldExtraProps>;
 }
-
-export type { UseFormOptions };

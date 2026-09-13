@@ -4,6 +4,7 @@ import { useOmitProps } from '@soybeanjs/headless/composables';
 import { FormFieldBaseCompact, provideFormFieldUi } from '@soybeanjs/headless/form';
 import { keysOf } from '@soybeanjs/headless/shared';
 import { formVariants } from '@/styles/form';
+import FormErrorMotion from './form-error-motion.vue';
 import type { FormFieldBaseProps, FormFieldBaseSlots } from './types';
 
 defineOptions({
@@ -16,7 +17,7 @@ const slots = defineSlots<FormFieldBaseSlots>();
 
 const forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);
 
-const slotNames = computed(() => keysOf(slots));
+const slotNames = computed(() => keysOf(slots).filter(name => name !== 'error'));
 
 const ui = computed(() => formVariants({ size: props.size }, props.ui, { field: props.class }));
 
@@ -27,6 +28,11 @@ provideFormFieldUi(ui);
   <FormFieldBaseCompact v-bind="forwardedProps">
     <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
       <slot :name="slotName" v-bind="slotProps" />
+    </template>
+    <template #error="errorScope">
+      <slot name="error" v-bind="errorScope">
+        <FormErrorMotion :error="errorScope.error" :error-props="errorScope.errorProps" />
+      </slot>
     </template>
   </FormFieldBaseCompact>
 </template>

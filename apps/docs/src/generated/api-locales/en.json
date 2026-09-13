@@ -4471,11 +4471,6 @@
         },
         "editableui": "UI class overrides for the Editable component."
       },
-      "packages_headless_src_components_form_core_types": {
-        "formfieldarraystates": "Type information for FormFieldArrayStates.",
-        "formfieldstate": "State values for FormFieldState.",
-        "formfieldvalidator": "Type information for FormFieldValidator."
-      },
       "packages_headless_src_components_form_types": {
         "formcompactprops": {
           "members": {
@@ -4502,10 +4497,12 @@
           "callables": {
             "default": "Custom content for the default slot.",
             "description": "Custom content for the description slot.",
+            "error": "Custom content for the error slot.",
             "label": "Custom content for the label slot."
           },
           "slots": "Slots for the FormFieldArrayCompact component."
         },
+        "formfieldarraystates": "State and operations exposed to a field array slot.",
         "formfieldbasecompactprops": {
           "members": {
             "controlprops": "Properties forwarded to the control element.",
@@ -4524,6 +4521,7 @@
           "callables": {
             "default": "Custom content for the default slot.",
             "description": "Custom content for the description slot.",
+            "error": "Custom content for the error slot; falls back to a plain FormError.",
             "label": "Custom content for the label slot."
           },
           "slots": "Slots for the FormFieldBaseCompact component."
@@ -4534,19 +4532,21 @@
             "description": "Description text rendered by the component.",
             "descriptionprops": "Properties forwarded to the description element.",
             "errorprops": "Properties forwarded to the error element.",
+            "isfieldarray": "Whether the field is an array.",
             "label": "Label text rendered by the component.",
             "labelprops": "Properties forwarded to the label element.",
             "name": "The name of the form field, used for registration and value retrieval.",
             "orientation": "Orientation of the form field.",
-            "reset": "Reset.",
-            "validate": "Validate."
+            "reset": "Hook invoked after the form resets.",
+            "validate": "Field-level validator."
           },
-          "props": "State and methods provided by the form field context."
+          "props": "Properties for the FormFieldCompact component."
         },
         "formfieldcompactslots": {
           "callables": {
             "default": "Custom content for the default slot.",
             "description": "Custom content for the description slot.",
+            "error": "Custom content for the error slot.",
             "label": "Custom content for the label slot."
           },
           "slots": "Slots for the FormFieldCompact component."
@@ -4558,13 +4558,16 @@
           },
           "props": "Properties for the FormField component."
         },
+        "formfieldstate": "Reactive state exposed to a field slot.",
+        "formfieldvalidator": "Field-level validator function. Return a string to flag the field as invalid.",
         "formlabelprops": {
           "members": {
             "for": "The id of the element the label is associated with."
           },
           "props": "Properties for the FormLabel component."
         },
-        "formui": ""
+        "formui": "",
+        "type": ""
       },
       "packages_headless_src_components_hover_card_index": {
         "hovercardarrowprops": "",
@@ -12345,6 +12348,7 @@
           "callables": {
             "default": "Custom content for the default slot.",
             "description": "Custom content for the description slot.",
+            "error": "Custom content for the error slot.",
             "label": "Custom content for the label slot."
           },
           "slots": "Slots for the FormField component."

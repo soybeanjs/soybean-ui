@@ -86,10 +86,10 @@ const citiesItems: SelectOptionData<string>[] = [
       </template>
       <template #default="{ fields, append, remove }">
         <div v-for="(field, index) in fields" :key="index" class="flex gap-12px">
-          <SFormField :name="`${field.name}.${index}.name`" label="Name">
+          <SFormField :name="`${field.name}[${index}].name`" label="Name">
             <SInput />
           </SFormField>
-          <SFormField :name="`${field.name}.${index}.url`" label="URL">
+          <SFormField :name="`${field.name}[${index}].url`" label="URL">
             <SInput />
           </SFormField>
           <SButtonIcon icon="lucide:minus" class="shrink-0" @click="remove(index)" />

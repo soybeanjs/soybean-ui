@@ -1,21 +1,293 @@
 import type {
-  ComputedRef,
-  FormHTMLAttributes,
   ComponentOptionsMixin,
+  ComputedRef,
   CreateComponentPublicInstanceWithMixins,
   EmitsOptions,
+  FormHTMLAttributes,
   PublicProps,
+  Ref,
   SlotsType
 } from 'vue';
-import type { BaseProps, DataOrientation, Path, PathValue, ToContext, UiClass } from '../../types';
+import type { DeepKeys, DeepKeysOfType, DeepValue, FormApi, StandardSchemaV1, VueFormApi } from '@tanstack/vue-form';
+import type { BaseProps, DataOrientation, MaybePromise, ToContext, UiClass } from '../../types';
 import type { LabelProps } from '../label/types';
-import type {
-  UseHeadlessFormReturn,
-  FormValues,
-  FormRegisterOptions,
-  FormFieldState,
-  FormFieldArrayStates
-} from './core/types';
+
+export type { StandardSchemaV1 } from '@tanstack/vue-form';
+
+/**
+ * Form values shape, compatible with Standard Schema validators (Zod / Valibot / ...).
+ */
+export type FormValues = Record<string, any>;
+
+/**
+ * Standard Schema validator accepted by the form engine.
+ */
+export type FormValuesSchema = StandardSchemaV1<FormValues, FormValues>;
+
+/**
+ * When validation runs relative to user interaction.
+ */
+export type FormValidateMode = 'blur' | 'input' | 'change' | 'submit';
+
+/**
+ * Field-level validator function. Return a string to flag the field as invalid.
+ */
+export type FormFieldValidator<Value> = (value: Value) => MaybePromise<string | undefined>;
+
+/**
+ * Flattened form errors keyed by field path.
+ */
+export type FormErrors = Record<string, string>;
+
+/**
+ * Type information for InferStandardSchemaInput.
+ */
+export type InferStandardSchemaInput<S extends StandardSchemaV1<FormValues, FormValues>> = NonNullable<
+  S['~standard']['types']
+>['input'];
+
+/**
+ * Display state of a single field, derived from the TanStack field meta.
+ */
+export interface FormFieldMeta {
+  /**
+   * Whether the field value differs from its default value.
+   */
+  dirty: boolean;
+  /**
+   * First error message of the field, if any.
+   */
+  error: string | undefined;
+  /**
+   * Whether the field has been blurred.
+   */
+  touched: boolean;
+}
+
+/**
+ * Options for the TanStack-backed `useForm`.
+ */
+export interface UseFormOptions<
+  S extends FormValuesSchema = FormValuesSchema,
+  Values extends FormValues = InferStandardSchemaInput<S>
+> {
+  /**
+   * Standard Schema compatible validator (Zod / Valibot / ...).
+   */
+  schema: S;
+  /**
+   * Initial values of the form.
+   */
+  initialValues?: NoInfer<Values>;
+  /**
+   * Validation timing before the first submit attempt.
+   *
+   * @default 'submit'
+   */
+  validateMode?: FormValidateMode;
+  /**
+   * Validation timing after the first submit attempt.
+   *
+   * @default 'change'
+   */
+  reValidateMode?: FormValidateMode;
+  /**
+   * Whether to validate when the form mounts.
+   */
+  validateOnMounted?: boolean;
+  /**
+   * Callback invoked with the form values when submission succeeds.
+   */
+  onSubmit?: (values: NoInfer<Values>) => any | Promise<any>;
+  /**
+   * Callback invoked with flattened errors when submission fails.
+   */
+  onInvalid?: (errors: FormErrors) => void;
+}
+
+/**
+ * Registration options of a single field.
+ */
+export interface FormFieldRegisterOptions<Value> {
+  /**
+   * Field-level validator.
+   */
+  validate?: FormFieldValidator<Value>;
+  /**
+   * Hook invoked after the form resets.
+   */
+  reset?: () => void;
+}
+
+/**
+ * Reactive state exposed to a field slot.
+ */
+export interface FormFieldState<Values extends FormValues, Name extends DeepKeys<Values>> {
+  /**
+   * Field name.
+   */
+  name: Name;
+  /**
+   * Current field value.
+   */
+  value: DeepValue<Values, Name>;
+  /**
+   * Field meta.
+   */
+  meta: FormFieldMeta;
+  /**
+   * Change handler, wires the value and change-cause validation.
+   */
+  handleChange: (value: DeepValue<Values, Name>) => void;
+  /**
+   * Blur handler, wires touched state and blur validation.
+   */
+  onBlur: () => void;
+}
+
+/**
+ * A single entry of a field array.
+ */
+export interface FormFieldArrayState<Values extends FormValues, Name extends DeepKeys<Values>> {
+  /**
+   * Stable key for list rendering.
+   */
+  key: string;
+  /**
+   * Name of the array field.
+   */
+  name: Name;
+  /**
+   * Value of the entry.
+   */
+  value: unknown;
+}
+
+/**
+ * State and operations exposed to a field array slot.
+ */
+export interface FormFieldArrayStates<Values extends FormValues, Name extends DeepKeys<Values>> {
+  /**
+   * Name of the array field.
+   */
+  name: Name;
+  /**
+   * Entries of the array.
+   */
+  fields: readonly FormFieldArrayState<Values, Name>[];
+  /**
+   * Meta of the array field itself.
+   */
+  meta: FormFieldMeta;
+  /**
+   * Append an entry to the end.
+   */
+  append: (value: FormFieldArrayState<Values, Name>['value']) => void;
+  /**
+   * Prepend an entry to the beginning.
+   */
+  prepend: (value: FormFieldArrayState<Values, Name>['value']) => void;
+  /**
+   * Remove the entry at the given index (defaults to the last one).
+   */
+  remove: (index?: number) => void;
+  /**
+   * Swap two entries.
+   */
+  swap: (indexA: number, indexB: number) => void;
+  /**
+   * Move an entry to another position.
+   */
+  move: (from: number, to: number) => void;
+  /**
+   * Insert an entry at the given index.
+   */
+  insert: (index: number, value: FormFieldArrayState<Values, Name>['value']) => void;
+  /**
+   * Replace the entry at the given index.
+   */
+  update: (index: number, value: FormFieldArrayState<Values, Name>['value']) => void;
+  /**
+   * Replace the whole array.
+   */
+  replace: (values: FormFieldArrayState<Values, Name>['value'][]) => void;
+}
+
+/**
+ * Return of the headless `useForm`, TanStack FormApi first.
+ */
+export interface UseFormReturn<Values extends FormValues = FormValues> {
+  /**
+   * TanStack FormApi (Vue flavored, with `Field` / `Subscribe` / `useSelector`).
+   */
+  form: FormApiOf<Values>;
+  /**
+   * Reactive form state of the TanStack form (values / isSubmitting / submissionAttempts / errorMap / fieldMeta...).
+   */
+  state: FormApiOf<Values>['state'];
+  /**
+   * Whether the form is currently submitting.
+   */
+  isSubmitting: Readonly<Ref<boolean>>;
+  /**
+   * Current validation timing, `validateMode` before the first submit attempt, `reValidateMode` after.
+   */
+  validateTiming: ComputedRef<FormValidateMode>;
+  /**
+   * Submit handler bound to the form element.
+   */
+  handleSubmit: (event?: Event) => Promise<void>;
+  /**
+   * Reset handler bound to the form element.
+   */
+  handleReset: (event?: Event) => void;
+  /**
+   * Register a field and subscribe to its state.
+   */
+  useField: <Name extends DeepKeys<Values>>(
+    name: Name,
+    opts?: FormFieldRegisterOptions<DeepValue<Values, Name>>
+  ) => ComputedRef<FormFieldState<Values, Name>>;
+  /**
+   * Register an array field and subscribe to its entries.
+   */
+  useFieldArray: <Name extends DeepKeys<Values> & DeepKeysOfType<Values, readonly any[]>>(
+    name: Name,
+    opts?: FormFieldRegisterOptions<DeepValue<Values, Name>>
+  ) => ComputedRef<FormFieldArrayStates<Values, Name>>;
+}
+
+/**
+ * TanStack FormApi instantiation used by SoybeanUI forms.
+ */
+export type FormApiOf<Values extends FormValues = FormValues> = FormApi<
+  Values,
+  StandardSchemaV1<Values, unknown> | undefined,
+  StandardSchemaV1<Values, unknown> | undefined,
+  undefined,
+  StandardSchemaV1<Values, unknown> | undefined,
+  undefined,
+  StandardSchemaV1<Values, unknown> | undefined,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  never
+> &
+  VueFormApi<
+    Values,
+    StandardSchemaV1<Values, unknown> | undefined,
+    StandardSchemaV1<Values, unknown> | undefined,
+    undefined,
+    StandardSchemaV1<Values, unknown> | undefined,
+    undefined,
+    StandardSchemaV1<Values, unknown> | undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    never
+  >;
 
 /**
  * Properties for the FormField component.
@@ -118,16 +390,17 @@ export type FormFieldBaseCompactSlots = {
    * Custom content for the description slot.
    */
   description?: () => any;
+  /**
+   * Custom content for the error slot; falls back to a plain FormError.
+   */
+  error?: (props: { error: string | undefined; errorProps: FormErrorProps }) => any;
 };
 
 /**
- * State and methods provided by the form field context.
+ * Properties for the FormFieldCompact component.
  */
-export interface FormFieldCompactProps<Values extends FormValues, Name extends Path<Values>>
-  extends
-    Omit<FormFieldProps, 'error' | 'isFieldArray'>,
-    FormFieldCommonProps,
-    FormRegisterOptions<PathValue<Values, Name>> {
+export interface FormFieldCompactProps<Values extends FormValues, Name extends DeepKeys<Values>>
+  extends Omit<FormFieldProps, 'error'>, FormFieldCommonProps, FormFieldRegisterOptions<DeepValue<Values, Name>> {
   /**
    * The name of the form field, used for registration and value retrieval.
    */
@@ -137,7 +410,7 @@ export interface FormFieldCompactProps<Values extends FormValues, Name extends P
 /**
  * Slots for the FormFieldCompact component.
  */
-export type FormFieldCompactSlots<Values extends FormValues, Name extends Path<Values>> = {
+export type FormFieldCompactSlots<Values extends FormValues, Name extends DeepKeys<Values>> = {
   /**
    * Custom content for the default slot.
    */
@@ -150,13 +423,39 @@ export type FormFieldCompactSlots<Values extends FormValues, Name extends Path<V
    * Custom content for the description slot.
    */
   description?: (props: FormFieldState<Values, Name>) => any;
+  /**
+   * Custom content for the error slot.
+   */
+  error?: (props: { error: string | undefined; errorProps: FormErrorProps }) => any;
 };
 
 /**
- * Type information for FormFieldComponent.
+ * Slots for the FormFieldArrayCompact component.
+ */
+export type FormFieldArrayCompactSlots<Values extends FormValues, Name extends DeepKeys<Values>> = {
+  /**
+   * Custom content for the default slot.
+   */
+  default?: (props: FormFieldArrayStates<Values, Name>) => any;
+  /**
+   * Custom content for the label slot.
+   */
+  label?: (props: FormFieldArrayStates<Values, Name>) => any;
+  /**
+   * Custom content for the description slot.
+   */
+  description?: (props: FormFieldArrayStates<Values, Name>) => any;
+  /**
+   * Custom content for the error slot.
+   */
+  error?: (props: { error: string | undefined; errorProps: FormErrorProps }) => any;
+};
+
+/**
+ * Typed constructor of the FormFieldCompact component, bound to the schema-inferred values.
  */
 export type FormFieldComponent<Values extends FormValues, ExtraProps extends Record<string, any> = {}> = new <
-  Name extends Path<Values>
+  Name extends DeepKeys<Values>
 >(
   props: FormFieldCompactProps<Values, Name> & PublicProps & ExtraProps
 ) => CreateComponentPublicInstanceWithMixins<
@@ -176,28 +475,10 @@ export type FormFieldComponent<Values extends FormValues, ExtraProps extends Rec
 >;
 
 /**
- * Slots for the FormFieldArrayCompact component.
- */
-export type FormFieldArrayCompactSlots<Values extends FormValues, Name extends Path<Values>> = {
-  /**
-   * Custom content for the default slot.
-   */
-  default?: (props: FormFieldArrayStates<Values, Name>) => any;
-  /**
-   * Custom content for the label slot.
-   */
-  label?: (props: FormFieldArrayStates<Values, Name>) => any;
-  /**
-   * Custom content for the description slot.
-   */
-  description?: (props: FormFieldArrayStates<Values, Name>) => any;
-};
-
-/**
- * Type information for FormFieldArrayComponent.
+ * Typed constructor of the FormFieldArrayCompact component, bound to the schema-inferred values.
  */
 export type FormFieldArrayComponent<Values extends FormValues, ExtraProps extends Record<string, any> = {}> = new <
-  Name extends Path<Values>
+  Name extends DeepKeys<Values>
 >(
   props: FormFieldCompactProps<Values, Name> & PublicProps & ExtraProps
 ) => CreateComponentPublicInstanceWithMixins<
@@ -234,16 +515,6 @@ export interface FormCompactContext extends ToContext<
   FormCompactProps,
   'orientation' | 'fieldProps' | 'fieldArrayProps' | 'labelProps' | 'controlProps' | 'descriptionProps' | 'errorProps'
 > {}
-
-export type UseFormReturn<
-  Values extends FormValues,
-  FieldExtraProps extends Record<string, any> = {},
-  FieldArrayExtraProps extends Record<string, any> = {}
-> = [
-  UseHeadlessFormReturn<Values>,
-  Field: FormFieldComponent<Values, FieldExtraProps>,
-  FieldArray: FormFieldArrayComponent<Values, FieldArrayExtraProps>
-];
 
 /**
  * Available UI slots for the FormField component.

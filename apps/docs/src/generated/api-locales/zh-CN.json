@@ -4471,19 +4471,14 @@
         },
         "editableui": "可编辑组件的 UI 类重载。"
       },
-      "packages_headless_src_components_form_core_types": {
-        "formfieldarraystates": "FormFieldArrayStates 的类型信息。",
-        "formfieldstate": "FormFieldState 的状态值。",
-        "formfieldvalidator": "FormFieldValidator 的类型信息。"
-      },
       "packages_headless_src_components_form_types": {
         "formcompactprops": {
           "members": {
             "controlprops": "转发到控制元素的属性。",
             "descriptionprops": "转发到描述元素的属性。",
             "errorprops": "属性转发到错误元素。",
-            "fieldarrayprops": "",
-            "fieldprops": "",
+            "fieldarrayprops": "转发到字段数组元素的属性。",
+            "fieldprops": "转发到字段的属性。",
             "labelprops": "转发到标签元素的属性。",
             "orientation": "表单字段的方向。"
           },
@@ -4502,10 +4497,12 @@
           "callables": {
             "default": "默认插槽的自定义内容。",
             "description": "自定义描述槽的内容。",
+            "error": "错误插槽的自定义内容。",
             "label": "标签槽的自定义内容。"
           },
           "slots": "FormFieldArrayCompact 组件的插槽。"
         },
+        "formfieldarraystates": "暴露给字段数组插槽的状态与操作。",
         "formfieldbasecompactprops": {
           "members": {
             "controlprops": "转发到控制元素的属性。",
@@ -4524,6 +4521,7 @@
           "callables": {
             "default": "默认插槽的自定义内容。",
             "description": "自定义描述槽的内容。",
+            "error": "错误插槽的自定义内容；缺省回退为普通 FormError。",
             "label": "标签槽的自定义内容。"
           },
           "slots": "FormFieldBaseCompact 组件的插槽。"
@@ -4534,19 +4532,21 @@
             "description": "组件呈现的描述文本。",
             "descriptionprops": "转发到描述元素的属性。",
             "errorprops": "属性转发到错误元素。",
+            "isfieldarray": "该字段是否为数组。",
             "label": "为组件呈现的文本添加标签。",
             "labelprops": "转发到标签元素的属性。",
             "name": "表单字段的名称，用于注册和数值检索。",
             "orientation": "表单字段的方向。",
-            "reset": "重置。",
-            "validate": "验证。"
+            "reset": "表单重置后调用的钩子。",
+            "validate": "字段级校验器。"
           },
-          "props": "表单字段上下文提供的状态和方法。"
+          "props": "FormFieldCompact 组件的属性。"
         },
         "formfieldcompactslots": {
           "callables": {
             "default": "默认插槽的自定义内容。",
             "description": "自定义描述槽的内容。",
+            "error": "错误插槽的自定义内容。",
             "label": "标签槽的自定义内容。"
           },
           "slots": "FormFieldCompact 组件的插槽。"
@@ -4558,13 +4558,16 @@
           },
           "props": "FormField 组件的属性。"
         },
+        "formfieldstate": "暴露给字段插槽的响应式状态。",
+        "formfieldvalidator": "FormFieldValidator 的类型信息。",
         "formlabelprops": {
           "members": {
             "for": "标签关联元素的 id。"
           },
           "props": "FormLabel 组件的属性。"
         },
-        "formui": ""
+        "formui": "Form 组件的 UI 类重载。",
+        "type": "类型信息。"
       },
       "packages_headless_src_components_hover_card_index": {
         "hovercardarrowprops": "",
@@ -12345,6 +12348,7 @@
           "callables": {
             "default": "默认插槽的自定义内容。",
             "description": "描述字段的自定义内容。",
+            "error": "错误插槽的自定义内容。",
             "label": "标签槽位的自定义内容。"
           },
           "slots": "FormField 组件的插槽。"
@@ -12355,8 +12359,8 @@
             "controlprops": "转发给控件的属性。",
             "descriptionprops": "已将属性转发至 description 元素。",
             "errorprops": "转发至 error 元素的属性。",
-            "fieldarrayprops": "",
-            "fieldprops": "",
+            "fieldarrayprops": "转发到字段数组元素的属性。",
+            "fieldprops": "转发到字段的属性。",
             "labelprops": "传递给 label 元素的属性。",
             "orientation": "表单字段的排列方向。",
             "size": "组件的视觉尺寸。",

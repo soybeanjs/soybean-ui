@@ -9,9 +9,9 @@ export { default as FormDescription } from './form-description.vue';
 export { default as FormError } from './form-error.vue';
 
 export { provideFormUi, provideFormFieldUi } from './context';
-export { useForm } from './use-form';
+export { useForm, provideFormSub, useFormSub } from './use-form';
 
-export type { StandardSchemaV1 } from '@standard-schema/spec';
+export type { StandardSchemaV1 } from '@tanstack/vue-form';
 export type {
   FormCompactProps,
   FormFieldCompactProps,
@@ -28,29 +28,22 @@ export type {
   FormFieldUi,
   FormUiSlot,
   FormUi,
+  FormFieldContext,
+  FormCompactContext,
+  FormValues,
+  FormValuesSchema,
+  FormValidateMode,
+  FormFieldValidator,
+  FormErrors,
+  FormFieldMeta,
+  FormFieldRegisterOptions,
+  FormFieldState,
+  FormFieldArrayState,
+  FormFieldArrayStates,
+  UseFormOptions,
+  UseFormReturn,
+  FormApiOf,
   FormFieldComponent,
   FormFieldArrayComponent,
-  UseFormReturn
+  InferStandardSchemaInput
 } from './types';
-export type {
-  InferStandardSchemaInput,
-  FormValues,
-  FormFieldArrayState,
-  FormFieldState,
-  FormRegisterOptions,
-  FormResetState,
-  FormValidateMode,
-  FormErrors,
-  FormTouched,
-  FormFieldMeta,
-  FormMessage,
-  FormState,
-  FormFieldArrayStates,
-  FormSubmitHelper,
-  FormFieldValidator,
-  FormEventHandler,
-  UseFormStateReturn,
-  UseRegisterFieldArrayOptions,
-  UseHeadlessFormOptions,
-  UseHeadlessFormReturn
-} from './core/types';

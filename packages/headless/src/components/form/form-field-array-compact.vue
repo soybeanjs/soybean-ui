@@ -23,7 +23,7 @@ const state = useFieldArray(props.name, {
   reset: props.reset
 });
 
-const slotNames = computed(() => keysOf(slots));
+const slotNames = computed(() => keysOf(slots).filter(name => name !== 'error'));
 
 const error = computed(() => state.value.meta.error);
 </script>
@@ -32,6 +32,9 @@ const error = computed(() => state.value.meta.error);
   <FormFieldBaseCompact data-soybean-form-field-array v-bind="forwardedProps" :error="error" :is-field-array="true">
     <template v-for="slotName in slotNames" :key="slotName" #[slotName]>
       <slot :name="slotName" v-bind="state" />
+    </template>
+    <template v-if="slots.error" #error="errorScope">
+      <slot name="error" v-bind="errorScope" />
     </template>
   </FormFieldBaseCompact>
 </template>
