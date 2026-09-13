@@ -209,16 +209,16 @@ tableRef.value.previousPage();
 
 ## 从 v0.4x 迁移
 
-v0.50.0 将自研列模型更换为 [`@tanstack/vue-table`](https://tanstack.com/table)。TanStack 命名为第一公民，最高频的旧字段映射如下：
+v0.50.0 将自研列模型更换为 [`@tanstack/vue-table`](https://tanstack.com/table)。TanStack 命名为第一公民，旧字段不保留别名（`dataIndex` / `sortState` 等需按下表手动重命名），最高频的旧字段映射如下：
 
 | v0.4x（旧）                               | v0.50.0（TanStack 优先）                                           |
 | :---------------------------------------- | :----------------------------------------------------------------- |
-| `{ title, dataIndex }`                    | `{ header, accessorKey }`（`dataIndex` 仍作为别名接受）            |
+| `{ title, dataIndex }`                    | `{ header, accessorKey }`（`dataIndex` 别名已移除）                |
 | `sorter: true` / `sorter(a, b)`           | `enableSorting: true` / `sortFn: (rowA, rowB) => number`           |
 | `filter: true` / `filter: { ... }`        | `enableColumnFilter: true` / `filterPlaceholder` / `filterOptions` |
 | `width: '140px'` / `minWidth`             | `size: 140` / `minSize`（px 数值）                                 |
 | 分组列 `{ key, children }`                | `{ id, columns }`（TanStack 分组形状）                             |
-| `sortState` / `defaultSortState`          | `sorting` / `defaultSorting`（`SortingState`）—— 保留别名          |
+| `sortState` / `defaultSortState`          | `sorting` / `defaultSorting`（`SortingState`）—— 别名已移除        |
 | `filterState` / `defaultFilterState`      | `columnFilters` / `defaultColumnFilters`（`ColumnFiltersState`）   |
 | `columnWidths` / `defaultColumnWidths`    | `columnSizing` / `defaultColumnSizing`（`Record<string, number>`） |
 | `expanded: R[]`                           | `expanded: ExpandedState`（`{ '1': true }` 或 `true`）             |

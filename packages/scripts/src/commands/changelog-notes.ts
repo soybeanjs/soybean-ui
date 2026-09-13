@@ -55,6 +55,26 @@ export const releaseChangelogNotes: Record<string, ReleaseChangelogNoteSource[]>
         'See the upgrade guide for the full migration walkthrough.',
       docPath: 'ui/migration/v0.40.0'
     }
+  ],
+  'v0.50.0': [
+    {
+      type: 'breaking',
+      summary:
+        'This release swaps all three engines and renames two families. The date engine moves from @internationalized/date to ' +
+        'date-fns with native Date values; the table engine is rebuilt on @tanstack/vue-table (TanStack column/state naming, no legacy aliases); ' +
+        'the form engine is rebuilt on @tanstack/vue-form (useForm returns a context object, initialValues becomes defaultValues). ' +
+        'NavigationMenu is removed in favor of NavMenu; SDrawer renames to SSheet while SBottomSheet becomes the new gesture-driven SDrawer; ' +
+        'presentation-only headless families (card/empty/list/skeleton/badge/tag) are removed, and SPopper/SArrow are no longer exported ' +
+        'from the UI package. See the upgrade guide for the full migration walkthrough.',
+      docPath: 'ui/migration/v0.50.0'
+    },
+    {
+      type: 'info',
+      summary:
+        'Date components (Calendar, DateField, DatePicker, TimeField and their range variants) now operate on native Date values built ' +
+        'on date-fns. The dedicated date guide maps CalendarDate/Time/DateTime values, calendar math and formatting/parsing to the new model.',
+      docPath: 'ui/migration/v0.50.0-date'
+    }
   ]
 };
 

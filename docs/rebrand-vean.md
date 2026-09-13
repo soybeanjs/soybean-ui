@@ -4,7 +4,7 @@
 > 状态：💡 提案
 > 基线：2026-09-11 · 当前版本 v0.40.0-beta.1
 > 下游依赖：[docs/v0.50.0.md](./v0.50.0.md)（v0.50.0 原地重构总方案，已规划 `headless → aria`）。**本方案与 v0.50.0 合并为同一次 breaking 发布执行**，理由见 [§8](#8-与-docsv0500md-的合并关系)。
-> 配套交付：`tools/vean-codemod/`（消费者迁移脚本）；`apps/docs/src/content/{zh,en}/ui/migration/v0.50.0.md`（升级指南）。
+> 配套交付：`tools/vean-codemod/`（消费者迁移脚本）；`apps/docs/src/content/{zh,en}/ui/migration/rebrand.md`（升级指南）。
 
 ## 0. 结论先行
 
@@ -177,14 +177,14 @@ T0+6m ─ npm deprecate @soybeanjs/ui @soybeanjs/headless ... ─────┘
 
 ### 4.2 公告与迁移支持的组合拳
 
-| 渠道                    | 内容                                                                       | 时机         |
-| ----------------------- | -------------------------------------------------------------------------- | ------------ |
-| 升级指南（docs 站内页） | 全量 diff 对照 + codemod 用法 + B 层契约清单                               | v0.50.0 同步 |
-| releases 页 breaking 条 | `changelog-notes.ts` 加 `v0.50.0` 条目 + `docPath: 'ui/migration/v0.50.0'` | v0.50.0 同步 |
-| 终端 / 阅读器警告       | 旧包导入时 `console.warn`（开发态 only）                                   | v0.50.0      |
-| GitHub README 顶部横幅  | 「项目已改名为 Vean，本仓转入维护模式」                                    | v0.50.0      |
-| 旧文档站顶部 banner     | 自动重定向到新站对应页（保留路径映射）                                     | v0.50.0      |
-| npm deprecate           | 旧包全域标记                                                               | T0+6m        |
+| 渠道                    | 内容                                                                        | 时机         |
+| ----------------------- | --------------------------------------------------------------------------- | ------------ |
+| 升级指南（docs 站内页） | 全量 diff 对照 + codemod 用法 + B 层契约清单                                | v0.50.0 同步 |
+| releases 页 breaking 条 | `changelog-notes.ts` 加改名发布版本条目 + `docPath: 'ui/migration/rebrand'` | 改名发布同步 |
+| 终端 / 阅读器警告       | 旧包导入时 `console.warn`（开发态 only）                                    | v0.50.0      |
+| GitHub README 顶部横幅  | 「项目已改名为 Vean，本仓转入维护模式」                                     | v0.50.0      |
+| 旧文档站顶部 banner     | 自动重定向到新站对应页（保留路径映射）                                      | v0.50.0      |
+| npm deprecate           | 旧包全域标记                                                                | T0+6m        |
 
 ### 4.3 明确不做的事
 
@@ -237,7 +237,7 @@ rg -n "headless" packages/scripts/src packages/aria/AGENTS.md                   
 
 ### Phase 4 — 收尾（T0+6m）
 
-- `npm deprecate` 全部旧包，消息统一为 `Renamed to @vean/ui. See https://<new-domain>/ui/migration/v0.50.0`。
+- `npm deprecate` 全部旧包，消息统一为 `Renamed to @vean/ui. See https://<new-domain>/overview/migration/rebrand`。
 - 旧 registry（`ui.soybeanjs.cn/r`）下线，旧域名 301 到新域名。
 - 删除墓碑包源目录，保留 tag 与 CHANGELOG 条目。
 

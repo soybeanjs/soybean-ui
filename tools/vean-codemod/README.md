@@ -3,7 +3,7 @@
 SoybeanUI → Vean 重命名的迁移脚本。零运行时依赖，Node 18+，**默认 dry-run**。
 
 方案背景与完整影响面：见 [`docs/rebrand-vean.md`](../../docs/rebrand-vean.md)。
-面向消费者的升级步骤：见 `apps/docs/src/content/{zh,en}/ui/migration/v0.50.0.md`。
+面向消费者的升级步骤：见 `apps/docs/src/content/{zh,en}/ui/migration/rebrand.md`。
 
 ## 用法
 

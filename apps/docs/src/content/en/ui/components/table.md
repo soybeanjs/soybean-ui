@@ -208,16 +208,16 @@ Cell customization priority: named slot > `columnDef.cell` render function (TanS
 
 ## Migration from v0.4x
 
-v0.50.0 replaces the hand-rolled column model with [`@tanstack/vue-table`](https://tanstack.com/table). TanStack naming is the first citizen; the most frequent legacy fields map as follows:
+v0.50.0 replaces the hand-rolled column model with [`@tanstack/vue-table`](https://tanstack.com/table). TanStack naming is the first citizen and legacy fields get no aliases (`dataIndex` / `sortState` and friends must be renamed by hand); the most frequent legacy fields map as follows:
 
 | v0.4x (legacy)                            | v0.50.0 (TanStack-first)                                           |
 | :---------------------------------------- | :----------------------------------------------------------------- |
-| `{ title, dataIndex }`                    | `{ header, accessorKey }` (`dataIndex` still accepted as alias)    |
+| `{ title, dataIndex }`                    | `{ header, accessorKey }` (`dataIndex` alias removed)              |
 | `sorter: true` / `sorter(a, b)`           | `enableSorting: true` / `sortFn: (rowA, rowB) => number`           |
 | `filter: true` / `filter: { ... }`        | `enableColumnFilter: true` / `filterPlaceholder` / `filterOptions` |
 | `width: '140px'` / `minWidth`             | `size: 140` / `minSize` (px numbers)                               |
 | group column `{ key, children }`          | `{ id, columns }` (TanStack group shape)                           |
-| `sortState` / `defaultSortState`          | `sorting` / `defaultSorting` (`SortingState`) — alias kept         |
+| `sortState` / `defaultSortState`          | `sorting` / `defaultSorting` (`SortingState`) — alias removed      |
 | `filterState` / `defaultFilterState`      | `columnFilters` / `defaultColumnFilters` (`ColumnFiltersState`)    |
 | `columnWidths` / `defaultColumnWidths`    | `columnSizing` / `defaultColumnSizing` (`Record<string, number>`)  |
 | `expanded: R[]`                           | `expanded: ExpandedState` (`{ '1': true }` or `true`)              |
