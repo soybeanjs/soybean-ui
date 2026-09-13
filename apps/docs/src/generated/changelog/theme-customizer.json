@@ -1,0 +1,41 @@
+{
+  "component": "theme-customizer",
+  "generatedAt": "2026-09-13T16:50:13.758Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.30.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0",
+      "date": "2026-08-20",
+      "entries": [
+        {
+          "type": "style",
+          "scope": "theme-customizer",
+          "summary": "change width to 100",
+          "summaryKey": "changelog.generated.v0.30.0.7a3a7",
+          "commitHash": "7a3a7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7a3a758e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.30.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0-beta.1",
+      "date": "2026-08-19",
+      "entries": [
+        {
+          "type": "style",
+          "scope": "theme-customizer",
+          "summary": "change width to 100",
+          "summaryKey": "changelog.generated.v0.30.0-beta.1.7a3a7",
+          "commitHash": "7a3a7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7a3a758e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

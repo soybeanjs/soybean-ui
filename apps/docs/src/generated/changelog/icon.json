@@ -1,0 +1,173 @@
+{
+  "component": "icon",
+  "generatedAt": "2026-09-13T16:50:13.758Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.40.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.40.0-beta.1",
+      "date": "2026-09-11",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "icon",
+          "summary": "allow hydration mismatch for async-loaded icons",
+          "summaryKey": "changelog.generated.v0.40.0-beta.1.17a16",
+          "commitHash": "17a16",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/17a16fa53",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.30.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0",
+      "date": "2026-08-20",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "icon",
+          "summary": "optimize icon props",
+          "summaryKey": "changelog.generated.v0.30.0.206c5",
+          "commitHash": "206c5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/206c56b4",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "icon",
+          "summary": "fix aria-hidden, aria-label, shrink-0 and data-soybean-icon attributes",
+          "summaryKey": "changelog.generated.v0.30.0.cf042",
+          "commitHash": "cf042",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cf042323",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.30.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0-beta.1",
+      "date": "2026-08-19",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "icon",
+          "summary": "optimize icon props",
+          "summaryKey": "changelog.generated.v0.30.0-beta.1.206c5",
+          "commitHash": "206c5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/206c56b4",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "icon",
+          "summary": "fix aria-hidden, aria-label, shrink-0 and data-soybean-icon attributes",
+          "summaryKey": "changelog.generated.v0.30.0-beta.1.cf042",
+          "commitHash": "cf042",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cf042323",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.29.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.28.2...v0.29.0",
+      "date": "2026-06-18",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "icon",
+          "summary": "correct import path for useConfigProvider",
+          "summaryKey": "changelog.generated.v0.29.0.7ad9c",
+          "commitHash": "7ad9c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7ad9ca875",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.29.0-beta.9",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.8...v0.29.0-beta.9",
+      "date": "2026-06-15",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "icon",
+          "summary": "correct import path for useConfigProvider",
+          "summaryKey": "changelog.generated.v0.29.0-beta.9.7ad9c",
+          "commitHash": "7ad9c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7ad9ca87",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.28.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.28.1...v0.28.2",
+      "date": "2026-05-30",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "icon",
+          "summary": "simplify icon handling and remove Nuxt-specific logic",
+          "summaryKey": "changelog.generated.v0.28.2.63725",
+          "commitHash": "63725",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/637257084",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.26.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.25.4...v0.26.0",
+      "date": "2026-05-27",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "icon",
+          "summary": "update icon prop type to IconValue and enhance Nuxt support",
+          "summaryKey": "changelog.generated.v0.26.0.b372a",
+          "commitHash": "b372a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b372a8c47",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "icon",
+          "summary": "improve Nuxt icon handling and condition checks",
+          "summaryKey": "changelog.generated.v0.26.0.8002e",
+          "commitHash": "8002e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8002e2c83",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.20",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.19...v0.0.20",
+      "date": "2026-01-21",
+      "entries": [
+        {
+          "type": "docs",
+          "scope": "icon",
+          "summary": "update type definition format for IconValue prop",
+          "summaryKey": "changelog.generated.v0.0.20.58ec2",
+          "commitHash": "58ec2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/58ec2303",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

@@ -79,6 +79,19 @@ export const releaseChangelogNotes: Record<string, ReleaseChangelogNoteSource[]>
 };
 
 /**
+ * Component renames applied when attributing changelog entries: entries scoped
+ * to the old name follow the successor, so a wholesale rename keeps its history
+ * on one component page (e.g. `bottom-sheet` history lives under `drawer`).
+ *
+ * Only map true 1:1 renames. Removed families with no successor (e.g.
+ * `navigation-menu`) must not be listed — their entries simply stop being
+ * attributed, and their history remains in `CHANGELOG.md`.
+ */
+export const componentRenameMap: Record<string, string> = {
+  'bottom-sheet': 'drawer'
+};
+
+/**
  * Components newly introduced in a given release version (i.e. they did not
  * exist in any earlier version). Keyed by the version string, same as
  * `releaseChangelogNotes`.

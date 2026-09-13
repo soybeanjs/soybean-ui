@@ -3,9 +3,10 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 import { components as headlessComponents } from '../../../headless/src/constants/components';
+import { components as uiComponents } from '../../../ui/src/constants/components';
 import { kebabCase } from '../../../headless/src/shared/string';
 import { writeGeneratedJsonDirectory } from '../shared/json';
-import { releaseIntroducedComponents, releaseChangelogNotes } from './changelog-notes';
+import { componentRenameMap, releaseIntroducedComponents, releaseChangelogNotes } from './changelog-notes';
 import type { ReleaseChangelogNoteSource } from './changelog-notes';
 import { componentChangelogOverrides } from './changelog-overrides';
 
@@ -101,10 +102,31 @@ interface GeneratedComponentChangelogIndex {
 
 const rootDir = process.cwd();
 const changelogPath = path.join(rootDir, 'CHANGELOG.md');
-const componentNames = Object.keys(headlessComponents)
+/**
+ * The changelog tracks the whole consumer surface: headless families plus
+ * UI-only components. Admission remediation (v0.50.0) moved presentation-only
+ * shells (badge/card/empty/skeleton/tag…) to the UI layer, so a component may
+ * legitimately exist without a headless family.
+ */
+const componentNames = Array.from(new Set([...Object.keys(headlessComponents), ...Object.keys(uiComponents)]))
   .map(component => kebabCase(component))
   .sort((left, right) => left.localeCompare(right));
 const componentNameSet = new Set(componentNames);
+
+/**
+ * Resolve a changelog commit scope to a catalog component, following renames
+ * (`componentRenameMap`). Returns null for scopes that match no component —
+ * such entries stay release-level only and never reach a component page.
+ */
+export function resolveChangelogComponent(scope: string): string | null {
+  const renamed = componentRenameMap[scope];
+
+  if (renamed) {
+    return componentNameSet.has(renamed) ? renamed : null;
+  }
+
+  return componentNameSet.has(scope) ? scope : null;
+}
 
 const sectionTypeMap: Record<string, ChangelogEntryType> = {
   'breaking changes': 'breaking',
@@ -506,8 +528,10 @@ function isExistingContentDoc(contentDir: string, docPath: string): boolean {
 }
 
 function resolveEntryComponents(entry: ParsedChangelogEntry): string[] {
-  if (componentNameSet.has(entry.scope)) {
-    return [entry.scope];
+  const component = resolveChangelogComponent(entry.scope);
+
+  if (component) {
+    return [component];
   }
 
   const overrideKey = `${entry.version}:${entry.commitHash ?? ''}`;
@@ -527,7 +551,7 @@ function getReleaseEntryRelevanceScore(entry: ParsedChangelogEntry, components: 
     score += 100 + components.length * 8;
   }
 
-  if (componentNameSet.has(entry.scope)) {
+  if (resolveChangelogComponent(entry.scope)) {
     score += 24;
   }
 
