@@ -285,7 +285,7 @@
 
 ### &nbsp;&nbsp;&nbsp;📖 Documentation
 
-- **rebrand**: align ui-uno target name to @vbean/unocss &nbsp;-&nbsp; by @soybeanjs [<samp>(6d387)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6d3879bc8)
+- **rebrand**: align ui-uno target name to @vean/unocss &nbsp;-&nbsp; by @soybeanjs [<samp>(6d387)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6d3879bc8)
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
@@ -358,9 +358,9 @@
 ### &nbsp;&nbsp;&nbsp;📖 Documentation
 
 - **migration**: add v0.50.0 rebrand upgrade guide &nbsp;-&nbsp; by **soybeanfe** [<samp>(030cf)</samp>](https://github.com/soybeanjs/soybean-ui/commit/030cf55d1)
-- **rebrand**: add VBean rename migration plan &nbsp;-&nbsp; by **soybeanfe** [<samp>(730af)</samp>](https://github.com/soybeanjs/soybean-ui/commit/730afb0d9)
-- **v0.50.0**: align rename with vbean rebrand and drop removed packages &nbsp;-&nbsp; by @soybeanjs [<samp>(d2587)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d25874804)
-- **vbean**: update rebrand-vbean.md &nbsp;-&nbsp; by @soybeanjs [<samp>(a214c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a214ce72d)
+- **rebrand**: add Vean rename migration plan &nbsp;-&nbsp; by **soybeanfe** [<samp>(730af)</samp>](https://github.com/soybeanjs/soybean-ui/commit/730afb0d9)
+- **v0.50.0**: align rename with vean rebrand and drop removed packages &nbsp;-&nbsp; by @soybeanjs [<samp>(d2587)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d25874804)
+- **vean**: update rebrand-vean.md &nbsp;-&nbsp; by @soybeanjs [<samp>(a214c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a214ce72d)
 
 ### &nbsp;&nbsp;&nbsp;🏡 Chore
 
@@ -374,7 +374,7 @@
 - **git**:
   - ignore .workbuddy workspace directory &nbsp;-&nbsp; by **soybeanfe** [<samp>(b96f1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b96f113d3)
 - **tools**:
-  - add vbean rename codemod scripts &nbsp;-&nbsp; by **soybeanfe** [<samp>(479b9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/479b9ccf7)
+  - add vean rename codemod scripts &nbsp;-&nbsp; by **soybeanfe** [<samp>(479b9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/479b9ccf7)
 
 ### &nbsp;&nbsp;&nbsp;✅ Tests
 

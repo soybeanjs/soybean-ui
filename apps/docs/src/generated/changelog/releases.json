@@ -1784,7 +1784,7 @@
         {
           "type": "docs",
           "scope": "rebrand",
-          "summary": "align ui-uno target name to @vbean/unocss",
+          "summary": "align ui-uno target name to @vean/unocss",
           "summaryKey": "changelog.generated.v0.40.0-beta.5.6d387",
           "commitHash": "6d387",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6d3879bc8",
@@ -2068,7 +2068,7 @@
         {
           "type": "docs",
           "scope": "rebrand",
-          "summary": "add VBean rename migration plan",
+          "summary": "add Vean rename migration plan",
           "summaryKey": "changelog.generated.v0.40.0-beta.2.730af",
           "commitHash": "730af",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/730afb0d9",
@@ -2079,7 +2079,7 @@
         {
           "type": "docs",
           "scope": "v0.50.0",
-          "summary": "align rename with vbean rebrand and drop removed packages",
+          "summary": "align rename with vean rebrand and drop removed packages",
           "summaryKey": "changelog.generated.v0.40.0-beta.2.d2587",
           "commitHash": "d2587",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d25874804",
@@ -2089,8 +2089,8 @@
         },
         {
           "type": "docs",
-          "scope": "vbean",
-          "summary": "update rebrand-vbean.md",
+          "scope": "vean",
+          "summary": "update rebrand-vean.md",
           "summaryKey": "changelog.generated.v0.40.0-beta.2.a214c",
           "commitHash": "a214c",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a214ce72d",
@@ -2123,7 +2123,7 @@
         {
           "type": "chore",
           "scope": "tools",
-          "summary": "add vbean rename codemod scripts",
+          "summary": "add vean rename codemod scripts",
           "summaryKey": "changelog.generated.v0.40.0-beta.2.479b9",
           "commitHash": "479b9",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/479b9ccf7",

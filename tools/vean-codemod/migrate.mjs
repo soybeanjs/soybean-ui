@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * vbean-codemod — SoybeanUI → VBean migration codemod.
+ * vean-codemod — SoybeanUI → Vean migration codemod.
  *
  * Zero runtime dependencies. Node 18+. Dry-run by default.
  *
@@ -95,16 +95,16 @@ const MAX_FILE_BYTES = 4 * 1024 * 1024;
  * Tier A — package / import specifiers. Applied in array order.
  *
  * The `(?![-\w])` lookahead is load-bearing: without it `@soybeanjs/ui-uno`
- * would be half-rewritten into `@vbean/ui-uno`, and unrelated packages in the
+ * would be half-rewritten into `@vean/ui-uno`, and unrelated packages in the
  * same scope (`@soybeanjs/ui-x`, `@soybeanjs/ui-docs`, `@soybeanjs/cva`,
  * `@soybeanjs/colord`) would be mangled.
  */
 const PACKAGE_RULES = [
-  { id: 'pkg:headless', re: /@soybeanjs\/headless(?![\w-])/g, to: '@vbean/aria' },
-  { id: 'pkg:ui-uno', re: /@soybeanjs\/ui-uno(?![\w-])/g, to: '@vbean/unocss' },
-  { id: 'pkg:ui-skills', re: /@soybeanjs\/ui-skills(?![\w-])/g, to: '@vbean/skills' },
-  { id: 'pkg:ui', re: /@soybeanjs\/ui(?![\w-])/g, to: '@vbean/ui' },
-  { id: 'pkg:theme', re: /@soybeanjs\/theme(?![\w-])/g, to: '@vbean/theme' },
+  { id: 'pkg:headless', re: /@soybeanjs\/headless(?![\w-])/g, to: '@vean/aria' },
+  { id: 'pkg:ui-uno', re: /@soybeanjs\/ui-uno(?![\w-])/g, to: '@vean/unocss' },
+  { id: 'pkg:ui-skills', re: /@soybeanjs\/ui-skills(?![\w-])/g, to: '@vean/skills' },
+  { id: 'pkg:ui', re: /@soybeanjs\/ui(?![\w-])/g, to: '@vean/ui' },
+  { id: 'pkg:theme', re: /@soybeanjs\/theme(?![\w-])/g, to: '@vean/theme' },
   // Nuxt `imports.transform.exclude` patterns reference the resolved dist path,
   // not the package specifier, so they survive the rules above.
   { id: 'path:aria-dist-escaped', re: /headless\\\/dist\\\//g, to: 'aria\\/dist\\/' },
@@ -113,32 +113,32 @@ const PACKAGE_RULES = [
 
 /** Tier B — runtime contract. Opt-in: these break consumer CSS selectors. */
 const RUNTIME_RULES = [
-  { id: 'rt:data-attr', re: /data-soybean-/g, to: 'data-vbean-' },
-  { id: 'rt:css-var', re: /--soybean-/g, to: '--vbean-' }
+  { id: 'rt:data-attr', re: /data-soybean-/g, to: 'data-vean-' },
+  { id: 'rt:css-var', re: /--soybean-/g, to: '--vean-' }
 ];
 
 /** CLI rename. Opt-in: the `sbean` binary is a separate product surface. */
 const CLI_RULES = [
-  { id: 'cli:config-file', re: /\bsbean\.json\b/g, to: 'vbean.json' },
-  { id: 'cli:runner', re: /\b(npx|pnpm\s+dlx|pnpm|yarn|bunx|bun)\s+sbean\b/g, to: '$1 vbean' },
-  { id: 'cli:binary', re: /\bfilter\s+sbean\b/g, to: 'filter vbean' }
+  { id: 'cli:config-file', re: /\bsbean\.json\b/g, to: 'vean.json' },
+  { id: 'cli:runner', re: /\b(npx|pnpm\s+dlx|pnpm|yarn|bunx|bun)\s+sbean\b/g, to: '$1 vean' },
+  { id: 'cli:binary', re: /\bfilter\s+sbean\b/g, to: 'filter vean' }
 ];
 
 /** Tier C — brand copy and internal (private) package names. Repo profile only. */
 const REPO_RULES = [
-  { id: 'repo:private-pkgs', re: /@soybeanjs\/scripts(?![\w-])/g, to: '@vbean/scripts' },
-  { id: 'repo:private-shared', re: /@soybeanjs\/shared(?![\w-])/g, to: '@vbean/shared' },
-  { id: 'repo:private-docs', re: /@soybeanjs\/ui-docs(?![\w-])/g, to: '@vbean/docs' },
-  { id: 'repo:private-nuxt', re: /@soybeanjs\/ui-nuxt(?![\w-])/g, to: '@vbean/nuxt' },
-  { id: 'repo:preset-name', re: /soybean-ui-uno/g, to: 'vbean-uno' },
-  { id: 'repo:logo-ui', re: /logo-soybean-ui\.svg/g, to: 'logo-vbean-ui.svg' },
-  { id: 'repo:logo-aria', re: /logo-soybean-headless\.svg/g, to: 'logo-vbean-aria.svg' },
-  { id: 'repo:logo-cli', re: /logo-sbean\.svg/g, to: 'logo-vbean.svg' },
+  { id: 'repo:private-pkgs', re: /@soybeanjs\/scripts(?![\w-])/g, to: '@vean/scripts' },
+  { id: 'repo:private-shared', re: /@soybeanjs\/shared(?![\w-])/g, to: '@vean/shared' },
+  { id: 'repo:private-docs', re: /@soybeanjs\/ui-docs(?![\w-])/g, to: '@vean/docs' },
+  { id: 'repo:private-nuxt', re: /@soybeanjs\/ui-nuxt(?![\w-])/g, to: '@vean/nuxt' },
+  { id: 'repo:preset-name', re: /soybean-ui-uno/g, to: 'vean-uno' },
+  { id: 'repo:logo-ui', re: /logo-soybean-ui\.svg/g, to: 'logo-vean-ui.svg' },
+  { id: 'repo:logo-aria', re: /logo-soybean-headless\.svg/g, to: 'logo-vean-aria.svg' },
+  { id: 'repo:logo-cli', re: /logo-sbean\.svg/g, to: 'logo-vean.svg' },
   // Longest/most specific brand strings first: `SoybeanHeadless` must not be
   // left behind by the `SoybeanUI` rule (and neither touches `author.name`,
   // which is the person "Soybean", not the brand).
-  { id: 'repo:brand-headless', re: /SoybeanHeadless/g, to: 'VBean Aria' },
-  { id: 'repo:brand-ui', re: /SoybeanUI/g, to: 'VBean' }
+  { id: 'repo:brand-headless', re: /SoybeanHeadless/g, to: 'Vean Aria' },
+  { id: 'repo:brand-ui', re: /SoybeanUI/g, to: 'Vean' }
 ];
 
 /**
@@ -153,7 +153,7 @@ const REPO_RULES = [
  * The R2 object-path prefix (`r2.soybeanjs.tech/soybeanjs/...`) is deliberately
  * NOT rewritten: it names an object inside the bucket, and rewriting it without
  * actually copying the objects produces 404s. Attach the custom domain to the
- * existing bucket instead — see docs/rebrand-vbean.md §7.4.
+ * existing bucket instead — see docs/rebrand-vean.md §7.4.
  */
 function buildDomainRules({ newDomain, newCdn, repoSlug }) {
   if (!newDomain) return [];
@@ -176,15 +176,15 @@ function buildDomainRules({ newDomain, newCdn, repoSlug }) {
 
 /**
  * Manual steps this script cannot do. Printed at the end of every run.
- * Kept in sync with docs/rebrand-vbean.md §5.
+ * Kept in sync with docs/rebrand-vean.md §5.
  */
 const MANUAL_STEPS = [
   '删除 lockfile 后重装依赖（pnpm-lock.yaml / package-lock.json 未被改写）',
-  '安装新包：pnpm add @vbean/ui @vbean/aria  # 并移除 @soybeanjs/ui @soybeanjs/headless',
-  'Nuxt 项目：确认 nuxt.config 中 modules 的 "@vbean/ui/nuxt" 与 imports.transform.exclude 的 /aria\\/dist\\//',
-  'UnoCSS 项目：uno.config 中 preset 的导入来源改为 @vbean/unocss',
+  '安装新包：pnpm add @vean/ui @vean/aria  # 并移除 @soybeanjs/ui @soybeanjs/headless',
+  'Nuxt 项目：确认 nuxt.config 中 modules 的 "@vean/ui/nuxt" 与 imports.transform.exclude 的 /aria\\/dist\\//',
+  'UnoCSS 项目：uno.config 中 preset 的导入来源改为 @vean/unocss',
   '若在 CSS / e2e 选择器里用过 [data-soybean-*] 或 var(--soybean-*)：加 --runtime-contract 重跑，或手工替换',
-  'CLI 用户：sbean.json 重命名为 vbean.json；命令 sbean → vbean',
+  'CLI 用户：sbean.json 重命名为 vean.json；命令 sbean → vean',
   '自定义 registry / 镜像：registry 地址切换到新域名（旧路径 /r/* 与 /schema/* 在过渡期内保持可用）'
 ];
 
@@ -197,14 +197,14 @@ const DOMAIN_MANUAL_STEPS = [
 
 const REPO_MANUAL_STEPS = [
   'git mv packages/headless packages/aria',
-  'packages/cli（原 sbean 目录，v0.50.0 Phase A 已迁移）：改 package.json 的 name → @vbean/cli 与 bin.name → vbean',
+  'packages/cli（原 sbean 目录，v0.50.0 Phase A 已迁移）：改 package.json 的 name → @vean/cli 与 bin.name → vean',
   'pnpm sui gen catalog aria && pnpm sui gen catalog ui',
   'pnpm sui gen api && pnpm sui gen api --translate --locale zh',
   'pnpm sui gen changelog && pnpm sui gen changelog --translate',
   'packages/scripts/src/commands/catalog.ts: CatalogTarget 与 srcDir 改为 aria',
   'docs content 目录 content/{en,zh}/headless → aria；constants/menus.ts 分组值',
   '.agents/skills/soybean-ui-develop/* + AGENTS.md：层名 headless → aria',
-  '上传新品牌 logo 资产到 CDN（logo-vbean-ui.svg / logo-vbean-aria.svg / logo-vbean.svg）'
+  '上传新品牌 logo 资产到 CDN（logo-vean-ui.svg / logo-vean-aria.svg / logo-vean.svg）'
 ];
 
 // ---------------------------------------------------------------------------
@@ -315,7 +315,7 @@ function truncate(value, max = 108) {
 // CLI
 // ---------------------------------------------------------------------------
 
-const HELP = `vbean-codemod — SoybeanUI → VBean 迁移脚本
+const HELP = `vean-codemod — SoybeanUI → Vean 迁移脚本
 
 用法:
   node migrate.mjs [目录] [选项]
@@ -323,7 +323,7 @@ const HELP = `vbean-codemod — SoybeanUI → VBean 迁移脚本
 选项:
   --write                  真正写入文件（默认只预览，不写盘）
   --profile=<name>         consumer（默认）| repo
-  --runtime-contract       同时改写 data-soybean-* → data-vbean-*、--soybean-* → --vbean-*
+  --runtime-contract       同时改写 data-soybean-* → data-vean-*、--soybean-* → --vean-*
   --cli                    同时改写 sbean CLI 相关引用（sbean.json、npx sbean …）
   --new-domain=<域名>      同时改写域名引用：ui.soybeanjs.cn → <域名>、r2.soybeanjs.tech → assets.<域名>
   --new-cdn=<主机名>       覆盖 CDN 目标（默认 assets.<新域名>）
@@ -335,7 +335,7 @@ const HELP = `vbean-codemod — SoybeanUI → VBean 迁移脚本
   node migrate.mjs .                                      # 预览
   node migrate.mjs . --write                              # 写入
   node migrate.mjs . --write --runtime-contract           # 写入 + 运行时契约
-  node migrate.mjs . --write --cli --new-domain=vbean.dev # 写入 + CLI + 域名
+  node migrate.mjs . --write --cli --new-domain=veanui.com # 写入 + CLI + 域名
   node migrate.mjs . --profile=repo --write               # 本仓库自改
 
 退出码:
@@ -473,7 +473,7 @@ async function main() {
   // ---- report ------------------------------------------------------------
   const mode = options.write ? '已写入' : '预览（未写入）';
   const domainNote = options.newDomain ? ` · domain=${options.newDomain}` : '';
-  console.log(`\n  vbean-codemod · profile=${options.profile}${domainNote} · ${mode}`);
+  console.log(`\n  vean-codemod · profile=${options.profile}${domainNote} · ${mode}`);
   console.log(`  扫描目录: ${options.target}`);
   console.log(`  扫描文件: ${files.length}`);
 

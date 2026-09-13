@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 /**
- * vbean-codemod · components — rename the styled-layer component prefix.
+ * vean-codemod · components — rename the styled-layer component prefix.
  *
  * Zero runtime dependencies. Node 18+. Dry-run by default.
  *
- * @vbean/ui exports components with an `S` prefix (SButton, SDialog, …) while
- * @vbean/aria exports the same primitives unprefixed (Button, Dialog, …). The
+ * @vean/ui exports components with an `S` prefix (SButton, SDialog, …) while
+ * @vean/aria exports the same primitives unprefixed (Button, Dialog, …). The
  * prefix is what keeps the two layers apart in one file:
  *
- *   import { Button } from '@vbean/aria'   // unstyled behaviour
- *   import { SButton } from '@vbean/ui'    // styled wrapper
+ *   import { Button } from '@vean/aria'   // unstyled behaviour
+ *   import { SButton } from '@vean/ui'    // styled wrapper
  *
  * So the question is never "prefix or no prefix" — it is "which letter".
  * This script swaps the letter across sources, templates, component `name`
@@ -27,7 +27,7 @@
  *   SeparatorRoot   → VeparatorRoot     SwitchRoot  → WitchRoot
  *
  * Every one of those is a genuine identifier. Only the 144 names actually
- * exported by @vbean/ui may be rewritten, so that is what this script matches.
+ * exported by @vean/ui may be rewritten, so that is what this script matches.
  *
  * kebab-case is guarded too: it is rewritten ONLY inside tag position
  * (`<s-button>` / `</s-button>`), never globally — `border-s` and
@@ -109,12 +109,12 @@ const ALWAYS_SKIP_FILES = new Set([
  * Files that record the past and must not be rewritten, even with --docs.
  * Renaming history makes it lie. Override with --include-history.
  */
-const HISTORY_PATTERNS = [/(^|\/)CHANGELOG\.md$/i, /(^|\/)migration(\/|$)/i, /(^|\/)rebrand-vbean\.md$/i];
+const HISTORY_PATTERNS = [/(^|\/)CHANGELOG\.md$/i, /(^|\/)migration(\/|$)/i, /(^|\/)rebrand-vean\.md$/i];
 
 const MAX_FILE_BYTES = 4 * 1024 * 1024;
 
 /**
- * The 141 components exported by @vbean/ui.
+ * The 141 components exported by @vean/ui.
  * Extracted from packages/ui/dist/**\/*.d.ts (`… as SButton`), cross-checked
  * against packages/ui/src/components/<name>/index.ts.
  *
@@ -398,7 +398,7 @@ async function statSafe(target) {
 // CLI
 // ---------------------------------------------------------------------------
 
-const HELP = `vbean-codemod · components —— 组件前缀重命名（默认 S → V）
+const HELP = `vean-codemod · components —— 组件前缀重命名（默认 S → V）
 
 用法:
   node rename-components.mjs [目标目录] [选项]
@@ -418,7 +418,7 @@ const HELP = `vbean-codemod · components —— 组件前缀重命名（默认 
   node rename-components.mjs . --write --docs         # 连文档一起改
   node rename-components.mjs . --to=VB --write        # 改成别的前缀
 
-注意: 本脚本默认跳过 CHANGELOG.md、*/migration/* 与 rebrand-vbean.md ——
+注意: 本脚本默认跳过 CHANGELOG.md、*/migration/* 与 rebrand-vean.md ——
 改写历史记录会让它们失真。确需覆盖时加 --include-history。
 `;
 
@@ -544,7 +544,7 @@ async function main() {
 
   // ---- report --------------------------------------------------------------
   const mode = options.write ? '已写入' : '预览（未写入）';
-  console.log(`\n  vbean-codemod · components=${options.from}→${options.to} · ${mode}`);
+  console.log(`\n  vean-codemod · components=${options.from}→${options.to} · ${mode}`);
   console.log(`  扫描目录: ${options.target}`);
   console.log(`  扫描文件: ${files.length}`);
   console.log(`  白名单组件: ${S_EXPORTS.length}`);
@@ -591,7 +591,7 @@ async function main() {
   }
 
   if (!options.includeHistory) {
-    console.log('    · 已跳过 CHANGELOG.md、*/migration/*、rebrand-vbean.md —— 历史记录不宜改写');
+    console.log('    · 已跳过 CHANGELOG.md、*/migration/*、rebrand-vean.md —— 历史记录不宜改写');
   }
 
   console.log('');
