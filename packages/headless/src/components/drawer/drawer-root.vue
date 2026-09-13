@@ -50,13 +50,26 @@ const snapPoint = useControllableState(
   defaultSnapPoint.value
 );
 
+/**
+ * Open-state requests branch on controlled mode: a controlled drawer reports
+ * the intent via `update:open` and waits for the parent, an uncontrolled one
+ * flips the internal state directly. Shared by the dialog wiring and the
+ * swipe area's open gesture, so both respect the same contract.
+ */
+function requestOpenState(openState: boolean) {
+  if (props.open !== undefined) {
+    emit('update:open', openState);
+    return;
+  }
+
+  open.value = openState;
+}
+
 const emitHandlers = {
   emitDrag: (percentageDragged: number) => emit('drag', percentageDragged),
   emitRelease: (openState: boolean) => emit('release', openState),
   emitClose: () => emit('close'),
-  emitOpenChange: (openState: boolean) => {
-    emit('update:open', openState);
-  },
+  emitOpenChange: requestOpenState,
   emitSnapPointChange: (value: DrawerRootProps['snapPoint']) => {
     emit('update:snapPoint', value ?? null);
   }
@@ -72,12 +85,7 @@ const { isOpen, closeDrawer } = provideDrawerRootContext({
 });
 
 function handleOpenChange(openState: boolean) {
-  if (props.open !== undefined) {
-    emitHandlers.emitOpenChange(openState);
-    return;
-  }
-
-  open.value = openState;
+  requestOpenState(openState);
 }
 </script>
 

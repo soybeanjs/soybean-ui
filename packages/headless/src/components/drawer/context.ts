@@ -28,8 +28,7 @@ export function useDrawer(params: DrawerRootContextParams): DrawerRootContext {
     emitDrag,
     emitRelease,
     emitClose,
-    emitOpenChange,
-    emitSnapPointChange
+    emitOpenChange
   } = params;
 
   const [overlayRef, setOverlayRef] = useForwardElement();
@@ -80,8 +79,10 @@ export function useDrawer(params: DrawerRootContextParams): DrawerRootContext {
   function setActiveSnapPoint(value: DrawerSnapPoint | null) {
     if (snapPoint.value === value) return;
 
+    // The controllable `snapPoint` state already emits `update:snapPoint` on
+    // write (controlled: via the computed setter; uncontrolled: via the proxy
+    // watcher), so no extra emission here — it would double-fire the event.
     snapPoint.value = value;
-    emitSnapPointChange(value);
   }
 
   function setPopupHeight(height: number) {

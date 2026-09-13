@@ -457,7 +457,8 @@ export function useSwipeDismiss(options: UseSwipeDismissOptions) {
   }
 
   function touchPoint(event: TouchEvent) {
-    const touch = event.touches[0];
+    // `touches` is empty on touchend; the release position lives in changedTouches.
+    const touch = event.touches[0] ?? event.changedTouches[0];
 
     return touch ? { x: touch.clientX, y: touch.clientY } : null;
   }
@@ -467,6 +468,8 @@ export function useSwipeDismiss(options: UseSwipeDismissOptions) {
     if ('button' in event && event.button !== 0) return;
     // Touch is driven by the touch handlers; the pointer pipeline is for mouse/pen.
     if (!('touches' in event) && event.pointerType === 'touch') return;
+    // A multi-touch start is a pinch/zoom gesture; the drawer never claims it.
+    if ('touches' in event && event.touches.length > 1) return;
 
     const position = 'touches' in event ? touchPoint(event) : { x: event.clientX, y: event.clientY };
     if (!position) return;
@@ -572,7 +575,10 @@ export function useSwipeDismiss(options: UseSwipeDismissOptions) {
     };
 
     syncDragStyles(true);
-    sampleVelocity({ time: event.timeStamp, x: dragOffset.x, y: dragOffset.y });
+    // Velocity is sampled from raw pointer positions (one consistent frame);
+    // sampling the damped transform output would blend the popup's initial
+    // transform offset into the delta and corrupt short-window velocities.
+    sampleVelocity({ time: event.timeStamp, x: position.x, y: position.y });
 
     const dragDeltaX = dragOffset.x - initialTransform.x;
     const dragDeltaY = dragOffset.y - initialTransform.y;
@@ -607,6 +613,14 @@ export function useSwipeDismiss(options: UseSwipeDismissOptions) {
 
     // Touch is driven by the touch handlers; the pointer pipeline is for mouse/pen.
     if (!('touches' in event) && event.pointerType === 'touch') return;
+
+    // A drag that grew a second finger became a pinch/zoom; abandon it and
+    // leave the gesture to the browser.
+    if ('touches' in event && event.touches.length > 1) {
+      if (origin) cancelSwipe(event);
+
+      return;
+    }
 
     const position = 'touches' in event ? touchPoint(event) : { x: event.clientX, y: event.clientY };
 
@@ -731,6 +745,7 @@ export function useSwipeDismiss(options: UseSwipeDismissOptions) {
     setSwiping(false);
 
     const element = options.elementRef.value;
+    const position = 'touches' in event ? touchPoint(event) : { x: event.clientX, y: event.clientY };
 
     if (element && 'pointerId' in event) capturePointer(element, event.pointerId, 'releasePointerCapture');
 
@@ -745,16 +760,19 @@ export function useSwipeDismiss(options: UseSwipeDismissOptions) {
     let releaseVelocityX = lastDragVelocity.x;
     let releaseVelocityY = lastDragVelocity.y;
 
-    if (lastSample && endTime >= lastSample.time) {
+    if (lastSample && position && endTime >= lastSample.time) {
       const age = endTime - lastSample.time;
 
       if (age > MAX_RELEASE_VELOCITY_AGE_MS) {
         releaseVelocityX = 0;
         releaseVelocityY = 0;
       } else {
+        // Tail velocity: from the final sampled move to the release position,
+        // so a flick keeps its momentum even though `dragOffset` freezes at the
+        // last move event.
         const sampleDuration = Math.max(age, 16);
-        releaseVelocityX = (dragOffset.x - lastSample.x) / sampleDuration;
-        releaseVelocityY = (dragOffset.y - lastSample.y) / sampleDuration;
+        releaseVelocityX = (position.x - lastSample.x) / sampleDuration;
+        releaseVelocityY = (position.y - lastSample.y) / sampleDuration;
       }
     }
 
@@ -781,7 +799,7 @@ export function useSwipeDismiss(options: UseSwipeDismissOptions) {
         if (travel >= threshold) {
           shouldDismiss = true;
         } else {
-          const velocity = sampleVelocity({ time: endTime, x: dragOffset.x, y: dragOffset.y });
+          const velocity = position ? sampleVelocity({ time: endTime, x: position.x, y: position.y }) : 0;
 
           shouldDismiss = Math.abs(velocity) >= SWIPE_GESTURE.VELOCITY_THRESHOLD;
         }
