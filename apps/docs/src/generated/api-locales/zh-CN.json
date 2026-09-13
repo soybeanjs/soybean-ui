@@ -4537,7 +4537,7 @@
             "labelprops": "转发到标签元素的属性。",
             "name": "表单字段的名称，用于注册和数值检索。",
             "orientation": "表单字段的方向。",
-            "validate": ""
+            "validate": "字段级验证器。可以是同步或异步函数、标准模式\n验证器，或是上述任一类型的 Ref / ComputedRef，用于响应式重新绑定。"
           },
           "props": "FormFieldCompact 组件的属性。"
         },
@@ -4558,7 +4558,7 @@
           "props": "FormField 组件的属性。"
         },
         "formfieldstate": "暴露给字段插槽的响应式状态。",
-        "formfieldvalidatesource": "",
+        "formfieldvalidatesource": "字段级验证器的有效形式包括：验证器本身，或其 Ref /\nComputedRef（未设置时解析为 `undefined`），用于响应式重新绑定。",
         "formfieldvalidator": "FormFieldValidator 的类型信息。",
         "formlabelprops": {
           "members": {
@@ -8099,33 +8099,31 @@
         },
         "tablecellslotprops": {
           "members": {
-            "column": "在插槽范围内暴露的列。",
+            "column": "在插槽作用域中暴露的列定义。",
+            "enginecolumn": "在插槽作用域中暴露的引擎列实例。",
             "expanded": "是否扩展。",
             "haschildren": "组件是否有子组件。",
             "index": "当前项目的索引。",
             "level": "在插槽范围内暴露级别。",
             "row": "在插槽范围内暴露行。",
+            "table": "在插槽作用域中暴露的引擎表实例（完整的 TanStack API）。",
             "toggleexpand": "在插槽范围内切换扩展。"
           },
           "slotprops": "TableCell 组件的槽属性。"
         },
         "tablecolumn": {
           "callables": {
-            "sorter": "分类器"
+            "columns": "包含 SoybeanUI 扩展的组列中的嵌套子列。",
+            "filteroptions": "由过滤器弹出窗口渲染的过滤选项。若省略，则选项将\n从源行中推导出来。"
           },
           "members": {
-            "align": "对齐。",
-            "children": "嵌套子项。",
-            "dataindex": "数据索引。",
-            "filter": "过滤",
-            "fixed": "已修复。",
-            "hidden": "项目是否隐藏。",
-            "key": "关键字",
-            "minwidth": "最小宽度",
-            "resizable": "是否可调整大小。",
-            "title": "组件呈现的标题文本。",
-            "type": "类型",
-            "width": "宽度"
+            "accessorkey": "列值的深层数据路径，源自行数据的结构\n（不包括树状 `children`）。该属性覆盖了引擎仅限顶级元素的\n`keyof TData` 约束。",
+            "align": "保持文本在栏目中的对齐方式。",
+            "filterplaceholder": "过滤器弹出窗口的占位文本。",
+            "fixed": "列的逻辑固定侧。与 TanStack 列固定状态相对应。",
+            "hidden": "该列在表格中是否被隐藏。",
+            "resizable": "该列是否可以调整大小。",
+            "type": "内置列类型。"
           }
         },
         "tablecolumnfiltervalue": {
@@ -8134,10 +8132,9 @@
             "values": "值。"
           }
         },
-        "tablecolumnwidthstate": "TableColumnWidthState 的状态值。",
         "tablecompactcellprops": {
           "members": {
-            "column": "专栏",
+            "column": "列定义。",
             "index": "当前项目的索引。",
             "row": "行"
           },
@@ -8159,11 +8156,12 @@
             "rowdblclick": "当双击一行时发出。",
             "rowmouseenter": "当指针进入一行时发出。",
             "rowmouseleave": "当指针离开一行时发出。",
-            "update_columnwidths": "在列宽值发生变化时发出。",
-            "update_expanded": "当扩展状态发生变化时输出。",
-            "update_filterstate": "当过滤器状态值发生变化时发出。",
+            "update_columnfilters": "当列过滤器的状态值发生变化时触发。",
+            "update_columnpinning": "当列固定状态值发生变化时触发。",
+            "update_columnsizing": "当列宽调整状态值发生变化时触发。",
+            "update_expanded": "当展开后的状态值发生变化时触发。",
             "update_selected": "当所选状态发生变化时发出。",
-            "update_sortstate": "当排序状态值发生变化时发出。"
+            "update_sorting": "在排序状态值发生变化时触发。"
           },
           "emits": "TableCompact 组件的事件。"
         },
@@ -8177,9 +8175,7 @@
         },
         "tablecompactheadprops": {
           "members": {
-            "colspan": "Col span.",
-            "column": "专栏",
-            "rowspan": "行跨度。"
+            "header": "引擎头文件实例。"
           },
           "props": "TableCompactHead 组件的属性。"
         },
@@ -8187,22 +8183,24 @@
           "members": {
             "bodyprops": "属性转发到正文元素。",
             "cellprops": "转发到单元格元素的属性。",
-            "columns": "列。",
-            "columnwidths": "列宽。",
+            "columnfilters": "列过滤器状态（TanStack `ColumnFiltersState`）。过滤器值接受\n由内置过滤器处理的 `{ 关键词, 值 }` 复合格式。",
+            "columnpinning": "列固定状态（TanStack `ColumnPinningState`）。当此属性缺失时，列的 `fixed`\n字段将作为默认状态的初始值。",
+            "columns": "列定义。TanStack 列定义具有最高优先级。",
+            "columnsizing": "列宽调整状态（TanStack `ColumnSizingState`，以列 ID 为键的 px 单位）。",
             "contentprops": "转发到内容元素的属性。",
             "data": "数据",
-            "defaultcolumnwidths": "默认列宽。",
-            "defaultexpandall": "是否默认全部展开。",
-            "defaultexpanded": "默认已扩展。",
-            "defaultfilterstate": "默认过滤状态。",
+            "defaultcolumnfilters": "默认列过滤器状态。",
+            "defaultcolumnpinning": "默认列固定状态。",
+            "defaultcolumnsizing": "默认列宽设置状态。",
+            "defaultexpandall": "是否默认展开所有行。",
+            "defaultexpanded": "默认展开状态。",
             "defaultselected": "默认选择",
-            "defaultsortstate": "默认排序状态。",
+            "defaultsorting": "默认排序状态。",
             "dir": "组件的阅读方向。",
             "estimatesize": "估计大小。",
-            "expanded": "已扩展。",
-            "filterstate": "过滤状态。",
+            "expanded": "展开状态（TanStack `ExpandedState`）。",
             "footerprops": "转发到页脚元素的属性。",
-            "getchildren": "获取子代",
+            "getchildren": "嵌套子节点解析器用作引擎的 `getSubRows`。",
             "headerprops": "转发到标题元素的属性。",
             "headprops": "属性转发到头部元素。",
             "height": "高度",
@@ -8211,7 +8209,8 @@
             "rowkey": "行键。",
             "rowprops": "转发到行元素的属性。",
             "selected": "项目是否被选中。",
-            "sortstate": "排序状态。",
+            "sorting": "排序状态（TanStack `SortingState`）。",
+            "tableoptions": "通过 TanStack `useTable` 调用传递的引擎选项。该\n组件拥有的键（data、columns、state wiring、owned change handlers）将\n被该组件覆盖；其余所有内容将完全启用引擎\n的所有功能（分页、行选择、手动模式、meta、initialState...）。",
             "virtual": "是否虚拟",
             "virtualizeroptions": "虚拟化器选项。"
           },
@@ -8250,12 +8249,14 @@
         },
         "tabledatacellslotprops": {
           "members": {
-            "column": "在插槽范围内暴露的列。",
+            "column": "在插槽作用域中暴露的列定义。",
+            "enginecolumn": "在插槽作用域中暴露的引擎列实例。",
             "expanded": "是否扩展。",
             "haschildren": "组件是否有子组件。",
             "index": "当前项目的索引。",
             "level": "在插槽范围内暴露级别。",
             "row": "在插槽范围内暴露行。",
+            "table": "在插槽作用域中暴露的引擎表实例（完整的 TanStack API）。",
             "toggleexpand": "在插槽范围内切换扩展。",
             "value": "与当前项目相关的值。"
           },
@@ -8267,6 +8268,29 @@
           },
           "slotprops": "TableEmpty 组件的槽属性。"
         },
+        "tableenginecolumn": "TanStack 表所暴露的 Engine 列实例。",
+        "tableengineheader": "由 TanStack 表暴露的引擎头实例。",
+        "tableengineoptions": {
+          "members": {
+            "debugcolumnfilteringfeature": "",
+            "debugcolumngroupingfeature": "",
+            "debugcolumnorderingfeature": "",
+            "debugcolumnpinningfeature": "",
+            "debugcolumnresizingfeature": "",
+            "debugcolumnsizingfeature": "",
+            "debugcolumnvisibilityfeature": "",
+            "debugcorecellsfeature": "",
+            "debugcorecolumnsfeature": "",
+            "debugcoreheadersfeature": "",
+            "debugcorereactivityfeature": "",
+            "debugcorerowmodelsfeature": "",
+            "debugcorerowsfeature": "",
+            "debugcoretablesfeature": "",
+            "debugrowexpandingfeature": "",
+            "debugrowsortingfeature": ""
+          }
+        },
+        "tableenginetable": "由 TanStack 表暴露的引擎表实例。",
         "tableexpandedrowslotprops": {
           "members": {
             "haschildren": "组件是否有子组件。",
@@ -8279,25 +8303,26 @@
         "tableexpandslotprops": {
           "members": {
             "arialabel": "在槽作用域中暴露的 Aria 标签。",
-            "column": "在插槽范围内暴露的列。",
+            "column": "在插槽作用域中暴露的列定义。",
+            "enginecolumn": "在插槽作用域中暴露的引擎列实例。",
             "expanded": "是否扩展。",
             "haschildren": "组件是否有子组件。",
             "index": "当前项目的索引。",
             "level": "在插槽范围内暴露级别。",
             "row": "在插槽范围内暴露行。",
+            "table": "在插槽作用域中暴露的引擎表实例（完整的 TanStack API）。",
             "toggleexpand": "在插槽范围内切换扩展。"
           },
           "slotprops": "TableExpand 组件的槽属性。"
         },
-        "tablefilterstate": "TableFilterState 的状态值。",
-        "tablefiltervalue": "TableFilterValue 的类型信息。",
+        "tablefiltervalue": "由内置复合过滤器函数接受的值。",
         "tablefooterprops": {
           "props": "TableFooter 组件的属性。"
         },
         "tableheaderfilterslotprops": {
           "members": {
             "clearfilter": "清除槽作用域中暴露的过滤器。",
-            "column": "在插槽范围内暴露的列。",
+            "column": "在插槽作用域中暴露的列定义。",
             "filtered": "是否经过过滤",
             "filteroptions": "过滤在槽作用域中暴露的选项。",
             "filterstate": "过滤在槽作用域中暴露的状态。",
@@ -8340,8 +8365,9 @@
             "checked": "项目是否被选中。",
             "clearfilter": "清除槽作用域中暴露的过滤器。",
             "colspan": "在槽作用域中暴露 Col span。",
-            "column": "在插槽范围内暴露的列。",
+            "column": "在插槽作用域中暴露的列定义。",
             "disabled": "组件是否禁用。",
+            "enginecolumn": "在插槽作用域中暴露的引擎列实例。",
             "filterable": "是否可过滤。",
             "filtered": "是否经过过滤",
             "filteroptions": "过滤在槽作用域中暴露的选项。",
@@ -8357,6 +8383,7 @@
             "setfiltervalues": "设置在槽范围内暴露的过滤值。",
             "sortable": "是否可排序。",
             "sortorder": "在插槽范围内暴露的排序顺序。",
+            "table": "在插槽作用域中暴露的引擎表实例（完整的 TanStack API）。",
             "togglefilteroption": "在插槽范围内切换显示的过滤选项。",
             "togglesort": "在插槽范围内切换已暴露的排序。",
             "updatechecked": "更新已检查的槽范围。"
@@ -8391,7 +8418,6 @@
           },
           "props": "TableRoot 组件的属性。"
         },
-        "tablerowchildrenresolver": "TableRowChildrenResolver 的类型信息。",
         "tableroweventpayload": "表行交互事件的有效载荷。",
         "tablerowprops": {
           "props": "TableRow 组件的属性。"
@@ -8412,43 +8438,44 @@
           "members": {
             "arialabel": "在槽作用域中暴露的 Aria 标签。",
             "checked": "项目是否被选中。",
-            "column": "在插槽范围内暴露的列。",
+            "column": "在插槽作用域中暴露的列定义。",
+            "enginecolumn": "在插槽作用域中暴露的引擎列实例。",
             "expanded": "是否扩展。",
             "haschildren": "组件是否有子组件。",
             "index": "当前项目的索引。",
             "level": "在插槽范围内暴露级别。",
             "multiple": "是否支持多值。",
             "row": "在插槽范围内暴露行。",
+            "table": "在插槽作用域中暴露的引擎表实例（完整的 TanStack API）。",
             "toggleexpand": "在插槽范围内切换扩展。",
             "toggleselect": "在插槽范围内切换已暴露的选择。"
           },
           "slotprops": "TableSelection 组件的槽属性。"
         },
-        "tablesortorder": "TableSortOrder 的类型信息。",
-        "tablesortstate": {
-          "members": {
-            "key": "关键字",
-            "order": "顺序"
-          }
-        },
         "tabletreerow": {
+          "callables": {
+            "sourcerow": "引擎行实例。"
+          },
           "members": {
-            "haschildren": "组件是否有子组件。",
-            "key": "关键字",
-            "level": "级别",
-            "parentkey": "父键",
-            "row": "行"
+            "haschildren": "该行是否包含嵌套子元素。",
+            "id": "引擎使用的行 ID（行键的字符串形式）。",
+            "key": "行键由 `rowKey` 解析。",
+            "level": "嵌套级别从 1 开始。",
+            "parentkey": "父行键。",
+            "row": "原始行数据。"
           }
         },
         "tabletreetoggleslotprops": {
           "members": {
             "arialabel": "在槽作用域中暴露的 Aria 标签。",
-            "column": "在插槽范围内暴露的列。",
+            "column": "在插槽作用域中暴露的列定义。",
+            "enginecolumn": "在插槽作用域中暴露的引擎列实例。",
             "expanded": "是否扩展。",
             "haschildren": "组件是否有子组件。",
             "index": "当前项目的索引。",
             "level": "在插槽范围内暴露级别。",
             "row": "在插槽范围内暴露行。",
+            "table": "在插槽作用域中暴露的引擎表实例（完整的 TanStack API）。",
             "toggleexpand": "在插槽范围内切换扩展。"
           },
           "slotprops": "TableTreeToggle 组件的槽属性。"
@@ -13746,11 +13773,12 @@
             "rowdblclick": "当行被双击时触发。",
             "rowmouseenter": "当指针进入行时触发。",
             "rowmouseleave": "当指针离开一行时触发。",
-            "update_columnwidths": "当列宽值发生变化时触发。",
-            "update_expanded": "在展开状态发生变化时触发。",
-            "update_filterstate": "当过滤器状态值发生变化时触发。",
+            "update_columnfilters": "当列过滤器的状态值发生变化时触发。",
+            "update_columnpinning": "当列固定状态值发生变化时触发。",
+            "update_columnsizing": "当列宽调整状态值发生变化时触发。",
+            "update_expanded": "当展开后的状态值发生变化时触发。",
             "update_selected": "当选定状态发生变化时触发。",
-            "update_sortstate": "当排序状态值发生变化时触发。"
+            "update_sorting": "在排序状态值发生变化时触发。"
           },
           "emits": "Table 组件的事件。"
         },
@@ -13788,7 +13816,7 @@
         "tablefilterpopoverprops": {
           "members": {
             "clearfilter": "清除在插槽作用域中暴露的过滤器。",
-            "column": "在插槽作用域中暴露的列。",
+            "column": "在插槽作用域中暴露的列定义。",
             "filtered": "是否经过过滤。",
             "filteroptions": "过滤在插槽作用域中暴露的选项。",
             "filterstate": "过滤在插槽作用域中暴露的状态。",
@@ -13810,22 +13838,24 @@
             "bordered": "是否带边框。",
             "cellprops": "转发给 cell 元素的属性。",
             "class": "需应用于表格的额外类名。",
-            "columns": "分栏。",
-            "columnwidths": "列宽。",
+            "columnfilters": "列过滤器状态（TanStack `ColumnFiltersState`）。过滤器值接受\n由内置过滤器处理的 `{ 关键词, 值 }` 复合格式。",
+            "columnpinning": "列固定状态（TanStack `ColumnPinningState`）。当此属性缺失时，列的 `fixed`\n字段将作为默认状态的初始值。",
+            "columns": "列定义。TanStack 列定义具有最高优先级。",
+            "columnsizing": "列宽调整状态（TanStack `ColumnSizingState`，以列 ID 为键的 px 单位）。",
             "contentprops": "转发至内容元素的属性。",
             "data": "数据。",
-            "defaultcolumnwidths": "使用默认列宽。",
-            "defaultexpandall": "默认是否展开所有内容。",
-            "defaultexpanded": "默认展开。",
-            "defaultfilterstate": "默认过滤器状态。",
+            "defaultcolumnfilters": "默认列过滤器状态。",
+            "defaultcolumnpinning": "默认列固定状态。",
+            "defaultcolumnsizing": "默认列宽设置状态。",
+            "defaultexpandall": "是否默认展开所有行。",
+            "defaultexpanded": "默认展开状态。",
             "defaultselected": "默认选中。",
-            "defaultsortstate": "默认排序状态。",
+            "defaultsorting": "默认排序状态。",
             "dir": "组件的阅读方向。",
             "estimatesize": "估算文档篇幅。",
-            "expanded": "展开。",
-            "filterstate": "过滤状态。",
+            "expanded": "展开状态（TanStack `ExpandedState`）。",
             "footerprops": "传递给页脚元素的属性。",
-            "getchildren": "获取子节点。",
+            "getchildren": "嵌套子节点解析器用作引擎的 `getSubRows`。",
             "headerprops": "传递给 header 元素的属性。",
             "headprops": "传递给 head 元素的属性。",
             "height": "高度。",
@@ -13836,8 +13866,9 @@
             "rowprops": "转发给 row 元素的属性。",
             "selected": "该项是否被选中。",
             "size": "组件的视觉尺寸。",
-            "sortstate": "整理状态。",
+            "sorting": "排序状态（TanStack `SortingState`）。",
             "striped": "是否采用条纹样式。",
+            "tableoptions": "通过 TanStack `useTable` 调用传递的引擎选项。该\n组件拥有的键（data、columns、state wiring、owned change handlers）将\n被该组件覆盖；其余所有内容将完全启用引擎\n的所有功能（分页、行选择、手动模式、meta、initialState...）。",
             "ui": "针对该组件的按槽位类重写。",
             "variant": "该组件的视觉变体。",
             "virtual": "是否为虚拟。",

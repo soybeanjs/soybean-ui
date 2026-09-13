@@ -100,7 +100,7 @@ Events for the CalendarRange component.
 
 - `update:modelValue`: Emitted when the model value changes. (type `[range: DateRange]`; parameters `range: DateRange`)
 - `update:placeholder`: Emitted when the placeholder value changes. (type `[date: DateValue]`; parameters `date: DateValue`)
-- `update:startValue`: Emitted when the start value changes. (type `[date: DateValue | undefined]`; parameters `date: DateValue | undefined`)
+- `update:startValue`: Emitted when the start value changes. (type `[date: DateValue | null]`; parameters `date: DateValue | null`)
 
 #### Slots
 
@@ -110,7 +110,7 @@ Slots for the CalendarRange component.
 - `prev`: Custom content for the prev slot. (type `((props: { disabled: boolean; }) => any) | undefined`)
 - `heading`: Custom content for the heading slot. (type `((props: CalendarRangeHeadingSlotProps) => any) | undefined`)
 - `next`: Custom content for the next slot. (type `((props: { disabled: boolean; }) => any) | undefined`)
-- `head-cell`: Custom content for the head cell slot. (type `((props: { date: DateValue; index: number; label: string; }) => any) | undefined`)
+- `head-cell`: Custom content for the head cell slot. (type `((props: { date: Date; index: number; label: string; }) => any) | undefined`)
 - `day`: Custom content for the day slot. (type `((props: CalendarRangeDaySlotProps) => any) | undefined`)
 
 ### CalendarRangeCell
@@ -119,7 +119,7 @@ Slots for the CalendarRange component.
 
 Properties for the CalendarRangeCell component.
 
-- `date`: Date. (type `import("@internationalized/date").CalendarDate | import("@internationalized/date").CalendarDateTime | import("@intern...`; required)
+- `date`: Date. (type `Date | import("../../date").DateTimeValue`; required)
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
 - `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 
@@ -129,8 +129,8 @@ Properties for the CalendarRangeCell component.
 
 Properties for the CalendarRangeCellTrigger component.
 
-- `day`: Day. (type `import("@internationalized/date").CalendarDate | import("@internationalized/date").CalendarDateTime | import("@intern...`; required)
-- `month`: Month. (type `import("@internationalized/date").CalendarDate | import("@internationalized/date").CalendarDateTime | import("@intern...`; required)
+- `day`: Day. (type `Date`; required)
+- `month`: Month. (type `Date`; required)
 - `type`: The type of the button element. Can be one of 'button', 'submit', or 'reset'. (type `ButtonType`; default `'button'`; optional)
 - `disabled`: Whether the component is disabled. (type `boolean`; optional)
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
@@ -212,7 +212,7 @@ Events for the CalendarRangeCompact component.
 
 - `update:modelValue`: Emitted when the model value changes. (type `[range: DateRange]`; parameters `range: DateRange`)
 - `update:placeholder`: Emitted when the placeholder value changes. (type `[date: DateValue]`; parameters `date: DateValue`)
-- `update:startValue`: Emitted when the start value changes. (type `[date: DateValue | undefined]`; parameters `date: DateValue | undefined`)
+- `update:startValue`: Emitted when the start value changes. (type `[date: DateValue | null]`; parameters `date: DateValue | null`)
 
 #### Slots
 
@@ -222,7 +222,7 @@ Slots for the CalendarRangeCompact component.
 - `prev`: Custom content for the prev slot. (type `((props: { disabled: boolean; }) => any) | undefined`)
 - `heading`: Custom content for the heading slot. (type `((props: CalendarRangeHeadingSlotProps) => any) | undefined`)
 - `next`: Custom content for the next slot. (type `((props: { disabled: boolean; }) => any) | undefined`)
-- `head-cell`: Custom content for the head cell slot. (type `((props: { date: DateValue; index: number; label: string; }) => any) | undefined`)
+- `head-cell`: Custom content for the head cell slot. (type `((props: { date: Date; index: number; label: string; }) => any) | undefined`)
 - `day`: Custom content for the day slot. (type `((props: CalendarRangeDaySlotProps) => any) | undefined`)
 
 ### CalendarRangeGrid
@@ -366,7 +366,7 @@ Events for the CalendarRangeRoot component.
 
 - `update:modelValue`: Emitted when the model value changes. (type `[range: DateRange]`; parameters `range: DateRange`)
 - `update:placeholder`: Emitted when the placeholder value changes. (type `[date: DateValue]`; parameters `date: DateValue`)
-- `update:startValue`: Emitted when the start value changes. (type `[date: DateValue | undefined]`; parameters `date: DateValue | undefined`)
+- `update:startValue`: Emitted when the start value changes. (type `[date: DateValue | null]`; parameters `date: DateValue | null`)
 
 #### Slots
 
@@ -376,10 +376,10 @@ Slots for the CalendarRangeRoot component.
 
 #### Slot Props
 
-- `date`: Date exposed in the slot scope. (type `import("@internationalized/date").CalendarDate | import("@internationalized/date").CalendarDateTime | import("@intern...`; required)
+- `date`: Date exposed in the slot scope. (type `Date | import("../../date").DateTimeValue`; required)
 - `headingValue`: Heading value exposed in the slot scope. (type `string`; required)
-- `placeholder`: Placeholder exposed in the slot scope. (type `import("@internationalized/date").CalendarDate | import("@internationalized/date").CalendarDateTime | import("@intern...`; required)
-- `grid`: Grid exposed in the slot scope. (type `DateGrid<DateValue>[]`; required)
+- `placeholder`: Placeholder exposed in the slot scope. (type `Date | import("../../date").DateTimeValue`; required)
+- `grid`: Grid exposed in the slot scope. (type `DateGrid<Date>[]`; required)
 - `weekDays`: Week days exposed in the slot scope. (type `string[]`; required)
 - `weekStartsOn`: Week starts on exposed in the slot scope. (type `number`; required)
 - `locale`: Locale exposed in the slot scope. (type `string`; required)
@@ -419,7 +419,7 @@ Slots for the CalendarRangeRoot component.
 
 ### Cautions
 
-- The value is a `DateRange` of `DateValue`s from `@internationalized/date` (`CalendarDate`/`CalendarDateTime`), never native `Date`/string pairs. Convert with `toDate`/`fromDate` utilities when interop is needed.
+- The value is a `DateRange` — `{ start, end }` of `DateValue`s (native `Date` at local midnight), never strings.
 - A range with gaps is rejected by default (the second click restarts the range at the clicked day); pass `allowNonContiguousRanges` to allow gaps.
 - `defaultValue`/`defaultPlaceholder` are read on mount only — use `v-model` for external control.
 - `isDateDisabled` and `isDateUnavailable` differ: disabled dates are unselectable by policy, unavailable dates are additionally marked visually (`line-through` in the default style).

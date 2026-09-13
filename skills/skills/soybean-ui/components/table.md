@@ -15,19 +15,20 @@ Usage examples for table are rendered on the site.
 
 ## Features
 
-- 📋 Config-driven columns — `columns: TableColumn<T>[]` with grouped headers (`children`), `index`/`selection`/`expand` type columns, `fixed`/`width`/`align`/`hidden`; `rowKey` keeps row identity stable
-- 🔀 Sorting — `sorter: true` or a custom comparator; controlled `sortState` / `v-model:sortState` or uncontrolled `defaultSortState`; `aria-sort` + localized sort-button `aria-label`
-- 🔍 Filtering — `filter: true` or a `TableColumnFilter` (options + keyword matching + custom `match`); keyword search, option multi-select, summary count, and clear action are all localized
+- 📋 Config-driven columns — TanStack-first `columns: TableColumn<T>[]` (`accessorKey`/`header`/`size`/`minSize` + SoybeanUI `align`/`type`/`fixed`/`hidden` extensions), grouped headers (`columns`), `index`/`selection`/`expand` type columns; `rowKey` keeps row identity stable
+- 🔀 Sorting — `enableSorting: true` (or `sortFn` comparator) on a column; controlled `sorting` / `v-model:sorting` (TanStack `SortingState`); `aria-sort` + localized sort-button `aria-label`
+- 🔍 Filtering — `enableColumnFilter: true` (+ `filterPlaceholder`/`filterOptions`); compound `{ keyword, values }` filter values, keyword search, option multi-select, summary count, and clear action are all localized; state is TanStack `ColumnFiltersState` (`v-model:columnFilters`)
 - ✅ Selection — multi-select by default (`multiple` defaults to `true`, checkboxes + header select-all); `multiple={false}` switches to single-select (row radio); controlled `selected` / `v-model:selected`
-- 🧩 Expandable & tree rows — `expand` type column or the `expanded-row` slot renders expanded rows; `children`/`getChildren` drive tree rows with an inline `tree-toggle`
-- 📐 Fixed & resizable — `fixed: 'start' | 'end'` fixed columns with gradient shadow indicators; `resizable` columns support pointer drag and arrow-key resizing (localized `aria-label`)
+- 🧩 Expandable & tree rows — `expand` type column or the `expanded-row` slot renders expanded rows; `children`/`getChildren` drive tree rows (engine `getSubRows`); `expanded` follows TanStack `ExpandedState`
+- 📐 Fixed & resizable — `fixed: 'start' | 'end'` seeds TanStack column pinning with gradient shadow indicators; `resizable` columns support pointer drag and arrow-key resizing writing TanStack `columnSizing` (localized `aria-label`)
 - ⚡ Performance — `virtual` + `height` enable virtualization (custom `estimateSize`/`virtualizerOptions`), rendering only visible rows
+- 🎛️ Engine escape hatch — slot props carry `table`/`engineColumn` engine instances, `useTableEngine()` injects the engine anywhere inside the table subtree, the template ref exposes `table`, and the `tableOptions` prop passes raw TanStack options through (pagination, row selection, manual modes, meta, `initialState`...)
 - 🌐 Localized by default — empty state, sort/filter/select/expand/resize `aria-label`s, and the filter popover copy all use `useLocaleMessages` (21 `table.*` messages across 14 language packs)
 
 ## Component family
 
 - `STable` (styled) — entry wrapper; `tableVariants` recipe (29 slots = 16 headless slots + 11 filter/selection extra slots + 2 internal radio slots); `useOmitProps` forwarding + `useForwardListeners` event merging + full slot passthrough; injects default `header-selection`/`selection`/`header-sort`/`header-filter`/`header-resize`/`tree-toggle`/`expand`/`empty` slot content
-- `TableCompact` (headless) — aggregation state owner: `useTableCompactState` (`expanded`/`sortState`/`filterState`/`columnWidths` via `useControllableState`, `selected`/`multiple` via `useSelection`), `useTableCompactData` (tree build/sort/filter/flatten), `useTableCompactResize` (pointer + keyboard column widths), `useTableCompactVirtual`; `provideTableCompactContext` bridges the 9 primitives
+- `TableCompact` (headless) — aggregation state owner over the **`@tanstack/vue-table` engine**: `useTableCompactState` (`sorting`/`columnFilters`/`expanded`/`columnPinning`/`columnSizing` via `useControllableState`, `selected`/`multiple` via `useSelection`), `useTableCompactTable` (engine instance wiring), `useTableCompactData` (header groups/leaf columns/row model), `useTableCompactResize` (pointer + keyboard column widths), `useTableCompactVirtual`; `provideTableCompactContext` bridges the 9 primitives
 - `TableRoot` (headless) — root element, `dir` direction, renders `data-soybean-table-root` and the table semantic container
 - `TableScroll` / `TableContent` / `TableHeader` / `TableBody` / `TableFooter` / `TableRow` / `TableHead` / `TableCell` (headless) — 9 base primitives, all zero-style, each rendering `data-soybean-table-*` data attributes
 - `TableCompactHead` / `TableCompactRow` / `TableCompactCell` / `TableCompactExpandedRow` / `TableVirtualSpacerRow` (headless internal) — composition and rendering components inside the Compact aggregation (not publicly exported)
@@ -45,12 +46,12 @@ Interactive demos for table are rendered on the site.
 - 04 Rounded — `rounded` toggle
 - 05 Striped — `striped` zebra rows
 - 06 Empty — empty state (default `SEmpty` and custom `empty` slot)
-- 07 Grouped — grouped headers (`children`)
-- 08 Sorting — `sorter` with controlled/uncontrolled sorting
-- 09 Filtering — `filter` options and the keyword filter popover
+- 07 Grouped — grouped headers (`columns`)
+- 08 Sorting — `enableSorting` + `sortFn` with controlled/uncontrolled sorting
+- 09 Filtering — `enableColumnFilter` options and the keyword filter popover
 - 10 Fixed — `fixed: 'start' | 'end'` fixed columns
 - 11 Resizable — `resizable` drag/keyboard column resize
-- 12 Tree — tree rows (`children` + `tree-toggle`)
+- 12 Tree — tree rows (`children` data + `tree-toggle`)
 - 13 Virtualized — `virtual` + `height` virtualization
 - 14 Expandable — `expand` column and `expanded-row` slot
 - 15 Footer — `footer` summary slot
@@ -79,24 +80,27 @@ Properties for the Table component.
 - `bordered`: Whether bordered. (type `boolean`; optional)
 - `rounded`: Whether rounded. (type `boolean`; optional)
 - `striped`: Whether striped. (type `boolean`; optional)
-- `columns`: Columns. (type `TableColumn<T>[]`; required)
+- `columns`: Column definitions. TanStack column defs are the first citizens. (type `TableColumn<T>[]`; required)
 - `data`: Data. (type `T[]`; required)
 - `rowKey`: Row key. (type `(row: T) => R`; required)
-- `defaultSortState`: Default sort state. (type `TableSortState`; optional)
-- `sortState`: Sort state. (type `TableSortState`; optional)
-- `defaultFilterState`: Default filter state. (type `TableFilterState`; optional)
-- `filterState`: Filter state. (type `TableFilterState`; optional)
-- `defaultColumnWidths`: Default column widths. (type `TableColumnWidthState`; optional)
-- `columnWidths`: Column widths. (type `TableColumnWidthState`; optional)
-- `getChildren`: Get children. (type `TableRowChildrenResolver<T>`; optional)
+- `getChildren`: Nested children resolver used as the engine `getSubRows`. (type `((row: T) => T[])`; optional)
+- `sorting`: Sorting state (TanStack `SortingState`). (type `SortingState`; optional)
+- `defaultSorting`: Default sorting state. (type `SortingState`; optional)
+- `tableOptions`: Engine options passed through to the TanStack `useTable` call. Keys the component owns (data, columns, state wiring, owned change handlers) are overridden by the component; everything else unlocks the full engine surface (pagination, row selection, manual modes, meta, initialState...). (type `TableEngineOptions`; optional)
+- `columnFilters`: Column filters state (TanStack `ColumnFiltersState`). Filter values accept the compound `{ keyword, values }` shape handled by the built-in filter. (type `ColumnFiltersState`; optional)
+- `defaultColumnFilters`: Default column filters state. (type `ColumnFiltersState`; optional)
+- `expanded`: Expanded state (TanStack `ExpandedState`). (type `ExpandedState`; optional)
+- `defaultExpanded`: Default expanded state. (type `ExpandedState`; optional)
+- `defaultExpandAll`: Whether to expand all rows by default. (type `boolean`; optional)
+- `columnPinning`: Column pinning state (TanStack `ColumnPinningState`). Column `fixed` fields seed the default state when this prop is absent. (type `ColumnPinningState`; optional)
+- `defaultColumnPinning`: Default column pinning state. (type `ColumnPinningState`; optional)
+- `columnSizing`: Column sizing state (TanStack `ColumnSizingState`, px keyed by column id). (type `ColumnSizingState`; optional)
+- `defaultColumnSizing`: Default column sizing state. (type `ColumnSizingState`; optional)
 - `indent`: Indent width applied to nested items. (type `number`; optional)
 - `virtual`: Whether virtual. (type `boolean`; optional)
 - `height`: Height. (type `string | number`; optional)
 - `estimateSize`: Estimate size. (type `number | ((index: number, row: T) => number)`; optional)
 - `virtualizerOptions`: Virtualizer options. (type `VirtualizerOptions`; optional)
-- `defaultExpanded`: Default expanded. (type `R[]`; optional)
-- `expanded`: Expanded. (type `R[]`; optional)
-- `defaultExpandAll`: Whether default expand all. (type `boolean`; optional)
 - `contentProps`: Properties forwarded to the content element. (type `TableContentProps`; optional)
 - `headerProps`: Properties forwarded to the header element. (type `TableHeaderProps`; optional)
 - `bodyProps`: Properties forwarded to the body element. (type `TableBodyProps`; optional)
@@ -113,10 +117,11 @@ Properties for the Table component.
 
 Events for the Table component.
 
-- `update:sortState`: Emitted when the sort state value changes. (type `[state: TableSortState | undefined]`; parameters `state: TableSortState | undefined`)
-- `update:filterState`: Emitted when the filter state value changes. (type `[state: TableFilterState]`; parameters `state: TableFilterState`)
-- `update:columnWidths`: Emitted when the column widths value changes. (type `[state: TableColumnWidthState]`; parameters `state: TableColumnWidthState`)
-- `update:expanded`: Emitted when the expanded state changes. (type `[expanded: R[]]`; parameters `expanded: R[]`)
+- `update:sorting`: Emitted when the sorting state value changes. (type `[state: SortingState]`; parameters `state: SortingState`)
+- `update:columnFilters`: Emitted when the column filters state value changes. (type `[state: ColumnFiltersState]`; parameters `state: ColumnFiltersState`)
+- `update:expanded`: Emitted when the expanded state value changes. (type `[state: ExpandedState]`; parameters `state: ExpandedState`)
+- `update:columnPinning`: Emitted when the column pinning state value changes. (type `[state: ColumnPinningState]`; parameters `state: ColumnPinningState`)
+- `update:columnSizing`: Emitted when the column sizing state value changes. (type `[state: ColumnSizingState]`; parameters `state: ColumnSizingState`)
 - `update:selected`: Emitted when the selected state changes. (type `[selected: M extends true ? R[] : R | undefined]`; parameters `selected: M extends true ? R[] : R | undefined`)
 - `rowClick`: Emitted when a row is clicked. (type `[event: MouseEvent, payload: TableRowEventPayload<T, R>]`; parameters `event: MouseEvent, payload: TableRowEventPayload<T, R>`)
 - `rowDblclick`: Emitted when a row is double clicked. (type `[event: MouseEvent, payload: TableRowEventPayload<T, R>]`; parameters `event: MouseEvent, payload: TableRowEventPayload<T, R>`)
@@ -155,7 +160,9 @@ Slots for the Table component.
 Slot properties for the TableCell component.
 
 - `index`: Index of the current item. (type `number`; required)
-- `column`: Column exposed in the slot scope. (type `TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>`; required)
+- `column`: Column definition exposed in the slot scope. (type `(ColumnDef<{ columnFilteringFeature: import("@tanstack/table-core").TableFeature; columnGroupingFeature: import("@tan...`; required)
+- `engineColumn`: Engine column instance exposed in the slot scope. (type `TableEngineColumn<T>`; optional)
+- `table`: Engine table instance exposed in the slot scope (full TanStack API). (type `TableEngineTable<T>`; optional)
 - `row`: Row exposed in the slot scope. (type `T`; required)
 - `level`: Level exposed in the slot scope. (type `number`; required)
 - `hasChildren`: Whether the component has children. (type `boolean`; required)
@@ -168,24 +175,27 @@ Slot properties for the TableCell component.
 
 Properties for the TableCompact component.
 
-- `columns`: Columns. (type `TableColumn<T>[]`; required)
+- `columns`: Column definitions. TanStack column defs are the first citizens. (type `TableColumn<T>[]`; required)
 - `data`: Data. (type `T[]`; required)
 - `rowKey`: Row key. (type `(row: T) => R`; required)
-- `defaultSortState`: Default sort state. (type `TableSortState`; optional)
-- `sortState`: Sort state. (type `TableSortState`; optional)
-- `defaultFilterState`: Default filter state. (type `TableFilterState`; optional)
-- `filterState`: Filter state. (type `TableFilterState`; optional)
-- `defaultColumnWidths`: Default column widths. (type `TableColumnWidthState`; optional)
-- `columnWidths`: Column widths. (type `TableColumnWidthState`; optional)
-- `getChildren`: Get children. (type `TableRowChildrenResolver<T>`; optional)
+- `getChildren`: Nested children resolver used as the engine `getSubRows`. (type `((row: T) => T[])`; optional)
+- `sorting`: Sorting state (TanStack `SortingState`). (type `SortingState`; optional)
+- `defaultSorting`: Default sorting state. (type `SortingState`; optional)
+- `tableOptions`: Engine options passed through to the TanStack `useTable` call. Keys the component owns (data, columns, state wiring, owned change handlers) are overridden by the component; everything else unlocks the full engine surface (pagination, row selection, manual modes, meta, initialState...). (type `TableEngineOptions`; optional)
+- `columnFilters`: Column filters state (TanStack `ColumnFiltersState`). Filter values accept the compound `{ keyword, values }` shape handled by the built-in filter. (type `ColumnFiltersState`; optional)
+- `defaultColumnFilters`: Default column filters state. (type `ColumnFiltersState`; optional)
+- `expanded`: Expanded state (TanStack `ExpandedState`). (type `ExpandedState`; optional)
+- `defaultExpanded`: Default expanded state. (type `ExpandedState`; optional)
+- `defaultExpandAll`: Whether to expand all rows by default. (type `boolean`; optional)
+- `columnPinning`: Column pinning state (TanStack `ColumnPinningState`). Column `fixed` fields seed the default state when this prop is absent. (type `ColumnPinningState`; optional)
+- `defaultColumnPinning`: Default column pinning state. (type `ColumnPinningState`; optional)
+- `columnSizing`: Column sizing state (TanStack `ColumnSizingState`, px keyed by column id). (type `ColumnSizingState`; optional)
+- `defaultColumnSizing`: Default column sizing state. (type `ColumnSizingState`; optional)
 - `indent`: Indent width applied to nested items. (type `number`; optional)
 - `virtual`: Whether virtual. (type `boolean`; optional)
 - `height`: Height. (type `string | number`; optional)
 - `estimateSize`: Estimate size. (type `number | ((index: number, row: T) => number)`; optional)
 - `virtualizerOptions`: Virtualizer options. (type `VirtualizerOptions`; optional)
-- `defaultExpanded`: Default expanded. (type `R[]`; optional)
-- `expanded`: Expanded. (type `R[]`; optional)
-- `defaultExpandAll`: Whether default expand all. (type `boolean`; optional)
 - `contentProps`: Properties forwarded to the content element. (type `TableContentProps`; optional)
 - `headerProps`: Properties forwarded to the header element. (type `TableHeaderProps`; optional)
 - `bodyProps`: Properties forwarded to the body element. (type `TableBodyProps`; optional)
@@ -202,10 +212,11 @@ Properties for the TableCompact component.
 
 Events for the TableCompact component.
 
-- `update:sortState`: Emitted when the sort state value changes. (type `[state: TableSortState | undefined]`; parameters `state: TableSortState | undefined`)
-- `update:filterState`: Emitted when the filter state value changes. (type `[state: TableFilterState]`; parameters `state: TableFilterState`)
-- `update:columnWidths`: Emitted when the column widths value changes. (type `[state: TableColumnWidthState]`; parameters `state: TableColumnWidthState`)
-- `update:expanded`: Emitted when the expanded state changes. (type `[expanded: R[]]`; parameters `expanded: R[]`)
+- `update:sorting`: Emitted when the sorting state value changes. (type `[state: SortingState]`; parameters `state: SortingState`)
+- `update:columnFilters`: Emitted when the column filters state value changes. (type `[state: ColumnFiltersState]`; parameters `state: ColumnFiltersState`)
+- `update:expanded`: Emitted when the expanded state value changes. (type `[state: ExpandedState]`; parameters `state: ExpandedState`)
+- `update:columnPinning`: Emitted when the column pinning state value changes. (type `[state: ColumnPinningState]`; parameters `state: ColumnPinningState`)
+- `update:columnSizing`: Emitted when the column sizing state value changes. (type `[state: ColumnSizingState]`; parameters `state: ColumnSizingState`)
 - `update:selected`: Emitted when the selected state changes. (type `[selected: M extends true ? R[] : R | undefined]`; parameters `selected: M extends true ? R[] : R | undefined`)
 - `rowClick`: Emitted when a row is clicked. (type `[event: MouseEvent, payload: TableRowEventPayload<T, R>]`; parameters `event: MouseEvent, payload: TableRowEventPayload<T, R>`)
 - `rowDblclick`: Emitted when a row is double clicked. (type `[event: MouseEvent, payload: TableRowEventPayload<T, R>]`; parameters `event: MouseEvent, payload: TableRowEventPayload<T, R>`)
@@ -239,7 +250,7 @@ Slots for the TableCompact component.
 
 Properties for the TableCompactCell component.
 
-- `column`: Column. (type `TableTypeColumn | TableDataColumn<TableBaseData> | TableGroupColumn<TableBaseData>`; required)
+- `column`: Column definition. (type `(ColumnDef<{ columnFilteringFeature: import("@tanstack/table-core").TableFeature; columnGroupingFeature: import("@tan...`; required)
 - `row`: Row. (type `TableTreeRow<TableBaseData, TableUnifiedKey>`; required)
 - `index`: Index of the current item. (type `number`; required)
 
@@ -268,9 +279,7 @@ Properties for the TableCompactExpandedRow component.
 
 Properties for the TableCompactHead component.
 
-- `column`: Column. (type `TableTypeColumn | TableDataColumn<TableBaseData> | TableGroupColumn<TableBaseData>`; required)
-- `colSpan`: Col span. (type `number`; required)
-- `rowSpan`: Row span. (type `number`; required)
+- `header`: Engine header instance. (type `import("@tanstack/table-core").Header_Core<{ columnFilteringFeature: import("@tanstack/table-core").TableFeature; col...`; required)
 
 ### TableCompactRow
 
@@ -294,7 +303,9 @@ Slot properties for the TableDataCell component.
 
 - `value`: Value associated with the current item. (type `TableRowValue<T> extends any ? K extends `${infer Key}.${infer Rest}` ? Key extends Exclude<keyof T, 'children'> ? Re...`; required)
 - `index`: Index of the current item. (type `number`; required)
-- `column`: Column exposed in the slot scope. (type `TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>`; required)
+- `column`: Column definition exposed in the slot scope. (type `(ColumnDef<{ columnFilteringFeature: import("@tanstack/table-core").TableFeature; columnGroupingFeature: import("@tan...`; required)
+- `engineColumn`: Engine column instance exposed in the slot scope. (type `TableEngineColumn<T>`; optional)
+- `table`: Engine table instance exposed in the slot scope (full TanStack API). (type `TableEngineTable<T>`; optional)
 - `row`: Row exposed in the slot scope. (type `T`; required)
 - `level`: Level exposed in the slot scope. (type `number`; required)
 - `hasChildren`: Whether the component has children. (type `boolean`; required)
@@ -317,7 +328,9 @@ Slot properties for the TableExpand component.
 
 - `ariaLabel`: Aria label exposed in the slot scope. (type `string`; required)
 - `index`: Index of the current item. (type `number`; required)
-- `column`: Column exposed in the slot scope. (type `TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>`; required)
+- `column`: Column definition exposed in the slot scope. (type `(ColumnDef<{ columnFilteringFeature: import("@tanstack/table-core").TableFeature; columnGroupingFeature: import("@tan...`; required)
+- `engineColumn`: Engine column instance exposed in the slot scope. (type `TableEngineColumn<T>`; optional)
+- `table`: Engine table instance exposed in the slot scope (full TanStack API). (type `TableEngineTable<T>`; optional)
 - `row`: Row exposed in the slot scope. (type `T`; required)
 - `level`: Level exposed in the slot scope. (type `number`; required)
 - `hasChildren`: Whether the component has children. (type `boolean`; required)
@@ -343,7 +356,7 @@ Properties for the TableFilterPopover component.
 
 - `size`: Visual size of the component. (type `ThemeSize`; optional)
 - `ui`: Per-slot class overrides for the component. (type `{ root: ClassValue; header: ClassValue; content: ClassValue; fixed: ClassValue; cell: ClassValue; footer: ClassValue;...`; required)
-- `column`: Column exposed in the slot scope. (type `TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>`; required)
+- `column`: Column definition exposed in the slot scope. (type `(ColumnDef<{ columnFilteringFeature: import("@tanstack/table-core").TableFeature; columnGroupingFeature: import("@tan...`; required)
 - `filterValue`: Filter value exposed in the slot scope. (type `string`; required)
 - `filterValues`: Filter values exposed in the slot scope. (type `string[]`; required)
 - `filterState`: Filter state exposed in the slot scope. (type `TableFilterValue`; optional)
@@ -370,14 +383,16 @@ Properties for the TableFilterPopover component.
 
 Slot properties for the TableHeader component.
 
-- `column`: Column exposed in the slot scope. (type `TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>`; required)
+- `column`: Column definition exposed in the slot scope. (type `(ColumnDef<{ columnFilteringFeature: import("@tanstack/table-core").TableFeature; columnGroupingFeature: import("@tan...`; required)
+- `engineColumn`: Engine column instance exposed in the slot scope. (type `import("@tanstack/table-core").Column_Core<{ columnFilteringFeature: import("@tanstack/table-core").TableFeature; col...`; required)
+- `table`: Engine table instance exposed in the slot scope (full TanStack API). (type `TableEngineTable<T>`; optional)
 - `colSpan`: Col span exposed in the slot scope. (type `number`; required)
 - `rowSpan`: Row span exposed in the slot scope. (type `number`; required)
 - `sortable`: Whether sortable. (type `boolean`; required)
 - `filterable`: Whether filterable. (type `boolean`; required)
 - `filtered`: Whether filtered. (type `boolean`; required)
 - `resizable`: Whether resizable. (type `boolean`; required)
-- `sortOrder`: Sort order exposed in the slot scope. (type `TableSortOrder`; optional)
+- `sortOrder`: Sort order exposed in the slot scope. (type `SortDirection`; optional)
 - `multiple`: Whether multiple values are supported. (type `boolean`; optional)
 - `checked`: Whether the item is checked. (type `CheckedState`; optional)
 - `disabled`: Whether the component is disabled. (type `boolean`; optional)
@@ -400,7 +415,7 @@ Slot properties for the TableHeader component.
 
 Slot properties for the TableHeaderFilter component.
 
-- `column`: Column exposed in the slot scope. (type `TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>`; required)
+- `column`: Column definition exposed in the slot scope. (type `(ColumnDef<{ columnFilteringFeature: import("@tanstack/table-core").TableFeature; columnGroupingFeature: import("@tan...`; required)
 - `filterValue`: Filter value exposed in the slot scope. (type `string`; required)
 - `filterValues`: Filter values exposed in the slot scope. (type `string[]`; required)
 - `filterState`: Filter state exposed in the slot scope. (type `TableFilterValue`; optional)
@@ -419,7 +434,7 @@ Slot properties for the TableHeaderFilter component.
 
 Slot properties for the TableHeaderResize component.
 
-- `column`: Column exposed in the slot scope. (type `TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>`; required)
+- `column`: Column exposed in the slot scope. (type `(ColumnDef<{ columnFilteringFeature: import("@tanstack/table-core").TableFeature; columnGroupingFeature: import("@tan...`; required)
 - `resizing`: Whether resizing. (type `boolean`; required)
 - `ariaLabel`: Aria label exposed in the slot scope. (type `string`; required)
 - `onPointerdown`: Callback invoked when the pointerdown event fires. (type `(event: PointerEvent) => void`; required)
@@ -431,7 +446,7 @@ Slot properties for the TableHeaderResize component.
 
 Slot properties for the TableHeaderSelection component.
 
-- `column`: Column exposed in the slot scope. (type `TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>`; required)
+- `column`: Column exposed in the slot scope. (type `(ColumnDef<{ columnFilteringFeature: import("@tanstack/table-core").TableFeature; columnGroupingFeature: import("@tan...`; required)
 - `multiple`: Whether multiple values are supported. (type `boolean`; required)
 - `checked`: Whether the item is checked. (type `boolean | 'indeterminate'`; required)
 - `disabled`: Whether the component is disabled. (type `boolean`; required)
@@ -445,8 +460,8 @@ Slot properties for the TableHeaderSelection component.
 Slot properties for the TableHeaderSort component.
 
 - `ariaLabel`: Aria label exposed in the slot scope. (type `string`; required)
-- `column`: Column exposed in the slot scope. (type `TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>`; required)
-- `sortOrder`: Sort order exposed in the slot scope. (type `TableSortOrder`; optional)
+- `column`: Column exposed in the slot scope. (type `(ColumnDef<{ columnFilteringFeature: import("@tanstack/table-core").TableFeature; columnGroupingFeature: import("@tan...`; required)
+- `sortOrder`: Sort order exposed in the slot scope. (type `SortDirection`; optional)
 - `toggleSort`: Toggle sort exposed in the slot scope. (type `() => void`; required)
 
 ### TableIndex
@@ -456,7 +471,7 @@ Slot properties for the TableHeaderSort component.
 Slot properties for the TableIndex component.
 
 - `index`: Index of the current item. (type `number`; required)
-- `column`: Column exposed in the slot scope. (type `TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>`; required)
+- `column`: Column exposed in the slot scope. (type `(ColumnDef<{ columnFilteringFeature: import("@tanstack/table-core").TableFeature; columnGroupingFeature: import("@tan...`; required)
 - `row`: Row exposed in the slot scope. (type `T`; required)
 - `level`: Level exposed in the slot scope. (type `number`; required)
 - `hasChildren`: Whether the component has children. (type `boolean`; required)
@@ -505,7 +520,9 @@ Slot properties for the TableSelection component.
 - `ariaLabel`: Aria label exposed in the slot scope. (type `string`; required)
 - `toggleSelect`: Toggle select exposed in the slot scope. (type `() => void`; required)
 - `index`: Index of the current item. (type `number`; required)
-- `column`: Column exposed in the slot scope. (type `TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>`; required)
+- `column`: Column definition exposed in the slot scope. (type `(ColumnDef<{ columnFilteringFeature: import("@tanstack/table-core").TableFeature; columnGroupingFeature: import("@tan...`; required)
+- `engineColumn`: Engine column instance exposed in the slot scope. (type `TableEngineColumn<T>`; optional)
+- `table`: Engine table instance exposed in the slot scope (full TanStack API). (type `TableEngineTable<T>`; optional)
 - `row`: Row exposed in the slot scope. (type `T`; required)
 - `level`: Level exposed in the slot scope. (type `number`; required)
 - `hasChildren`: Whether the component has children. (type `boolean`; required)
@@ -520,7 +537,9 @@ Slot properties for the TableTreeToggle component.
 
 - `ariaLabel`: Aria label exposed in the slot scope. (type `string`; required)
 - `index`: Index of the current item. (type `number`; required)
-- `column`: Column exposed in the slot scope. (type `TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>`; required)
+- `column`: Column definition exposed in the slot scope. (type `(ColumnDef<{ columnFilteringFeature: import("@tanstack/table-core").TableFeature; columnGroupingFeature: import("@tan...`; required)
+- `engineColumn`: Engine column instance exposed in the slot scope. (type `TableEngineColumn<T>`; optional)
+- `table`: Engine table instance exposed in the slot scope (full TanStack API). (type `TableEngineTable<T>`; optional)
 - `row`: Row exposed in the slot scope. (type `T`; required)
 - `level`: Level exposed in the slot scope. (type `number`; required)
 - `hasChildren`: Whether the component has children. (type `boolean`; required)
@@ -542,7 +561,7 @@ Properties for the TableVirtualSpacerRow component.
 
 ### Architecture and benchmark differences
 
-`TableCompact` owns all state and the data pipeline (`useControllableState` controlled/uncontrolled dual channels + `useSelection` multi/single selection + tree build/sort/filter/virtualization); all base primitives stay zero-style and only the UI wrapper injects `tableVariants` classes. The filter popover and single-select radio are UI-internal components consumed by default slots, but consumers can replace them entirely via same-name slots (`header-filter`/`selection`, etc.). Sort buttons and filter triggers are absolutely-positioned icon buttons with localized `aria-label`s; column resizing supports both pointer (`PointerEvent`) and keyboard (arrow-key) channels. Virtualization uses the built-in `@soybeanjs/headless` virtualizer, rendering only visible rows while syncing measured column widths. Ant Design / Element Plus tables are declarative component instances (`el-table-column`) whose fixed columns rely on config classes; SoybeanUI's controlled state, `aria-sort` semantics, and full-chain localization (including the filter popover) exceed most mainstream libraries.
+The table engine is [`@tanstack/vue-table`](https://tanstack.com/table) (v9): column defs, sorting, filtering, expanding, pinning, and sizing follow TanStack state contracts (`SortingState`, `ColumnFiltersState`, `ExpandedState`, `ColumnPinningState`, `ColumnSizingState`), and all of them are controlled/uncontrolled dual channels via `useControllableState` + `useSelection`; all base primitives stay zero-style and only the UI wrapper injects `tableVariants` classes. The filter popover and single-select radio are UI-internal components consumed by default slots, but consumers can replace them entirely via same-name slots (`header-filter`/`selection`, etc.). Sort buttons and filter triggers are absolutely-positioned icon buttons with localized `aria-label`s; column resizing supports both pointer (`PointerEvent`) and keyboard (arrow-key) channels. Virtualization uses the built-in `@soybeanjs/headless` virtualizer, rendering only visible rows while syncing measured column widths. Ant Design / Element Plus tables are declarative component instances (`el-table-column`) whose fixed columns rely on config classes; SoybeanUI's controlled state, `aria-sort` semantics, and full-chain localization (including the filter popover) exceed most mainstream libraries.
 
 | Capability                            | SoybeanUI | Ant Design | Element Plus | Naive UI | Mantine Table |
 | :------------------------------------ | :-------: | :--------: | :----------: | :------: | :-----------: |
@@ -560,13 +579,16 @@ Properties for the TableVirtualSpacerRow component.
 
 ### Cautions
 
-- `dataIndex` in `columns` is a type-safe path (`Path<TableRowValue<T>>`) strictly bound to the `T` row shape; group columns (`children`) cannot declare `dataIndex`/`sorter`/`filter` at the same time.
+- Columns are TanStack `ColumnDef`s first: data columns use `accessorKey` (or `accessorFn`), `header` for the label, `size`/`minSize` for pixel widths. The legacy `dataIndex`/`title` fields have been removed — rename them to `accessorKey`/`header`.
+- Sorting, filtering, and resizing are opt-in per column: `enableSorting`, `enableColumnFilter`, `resizable` (all default `false`).
+- Group columns nest via `columns` (TanStack shape); tree rows nest via the row `children` field or `getChildren` — these are different concepts and different fields.
 - `multiple` defaults to `true` (multi-select); setting it to `false` renders row radios, makes `selected` a single value (`R | undefined`), and hides the header select-all checkbox.
-- Sorting/filtering/column-widths/expansion/selection are all **controlled/uncontrolled dual channels**: when passing `sortState` (etc.) you must also listen for the matching `update:sortState` (or use `v-model:sortState`) to write back, otherwise state does not update.
-- The controlled `expanded` state is keyed by row `rowKey`; `defaultExpandAll` only applies when expansion is uncontrolled (no `expanded` prop).
+- Sorting/filtering/expansion/pinning/sizing are all **controlled/uncontrolled dual channels**: when passing `sorting` (etc.) you must also listen for the matching `update:sorting` (or use `v-model:sorting`) to write back, otherwise state does not update.
+- The controlled `expanded` state is a TanStack `ExpandedState` keyed by `String(rowKey(row))` (`{ '1': true }`, or `true` for all); `defaultExpandAll` only applies when expansion is uncontrolled.
+- While a column filter is active, tree rows are force-expanded so filtered ancestors stay visible.
 - Virtualization requires `height`; without it `virtual` is ignored (falls back to normal rendering).
 - Fixed columns inject a background on `data-fixed` cells; fixed-column shadows are drawn via the `data-fixed-last-start`/`data-fixed-first-end` data attributes — keep these attributes when customizing `cell`/`row` slots to preserve the visuals.
-- Filter popover copy (summary, keyword, options, clear) and the empty state follow the `ConfigProvider` locale; the column label falls back through `title` → `key` → `dataIndex`.
+- Filter popover copy (summary, keyword, options, clear) and the empty state follow the `ConfigProvider` locale; the column label falls back through `header` → `id`/`accessorKey`.
 
 ## FAQ
 
@@ -602,15 +624,15 @@ Replace the default `STableFilterPopover` entirely with the `header-filter` slot
 
 ### How do I set the initial sort/filter state?
 
-Seed the uncontrolled `defaultSortState`/`defaultFilterState`, then let the component maintain state internally; switch to the controlled channels and listen for `update:sortState`/`update:filterState` when you need external sync:
+Seed the uncontrolled `defaultSorting`/`defaultColumnFilters`, then let the component maintain state internally; switch to the controlled channels and listen for `update:sorting`/`update:columnFilters` when you need external sync:
 
 ```vue
-<STable :columns="columns" :data="data" :row-key="row => row.id" :default-sort-state="{ key: 'age', order: 'asc' }" />
+<STable :columns="columns" :data="data" :row-key="row => row.id" :default-sorting="[{ id: 'age', desc: false }]" />
 ```
 
 ### How do I handle large datasets?
 
-Enable virtualization (`virtual` + `height`) and tune `estimateSize` as needed; the sort/filter pipeline is pure functions with `shallowRef` state, so 1000-row workloads need no extra handling.
+Enable virtualization (`virtual` + `height`) and tune `estimateSize` as needed; the engine row models are memoized, so 1000-row workloads need no extra handling.
 
 ### How do I render a summary/footer row?
 
@@ -629,3 +651,85 @@ Use the `footer` slot — it receives `columnSize`, letting you render summary c
 ### How do I localize table copy?
 
 The empty state and all interaction `aria-label`s (sort/filter/select/expand/resize) follow the `ConfigProvider` `locale` (`table.*` messages, 14 language packs); override per instance via `ConfigProvider` `messages`, or use the same-name slots for fully custom content.
+
+## Engine escape hatch
+
+`STable` is a component-driven wrapper, but the TanStack engine is never locked away — four graded escape hatches:
+
+1. **Slot props** — every header/data-cell slot receives `table` (the engine table instance) and `engineColumn` (the engine column instance) alongside `column`/`row`/`value`:
+
+```vue
+<STable :columns="columns" :data="data" :row-key="row => row.id">
+  <template #age="{ value, table }">
+    {{ value }} ({{ table.getPreFilteredRowModel().flatRows.length }} rows total)
+  </template>
+
+```
+
+2. **`useTableEngine()`** — inject the engine from any component rendered inside the table subtree (deep custom cells, toolbar widgets):
+
+```ts
+import { useTableEngine } from '@soybeanjs/headless/table';
+
+const table = useTableEngine();
+
+table.value.setGrouping([{ id: 'city' }]);
+```
+
+3. **Template ref** — the engine instance is the exposed root, so control the table directly from outside:
+
+```ts
+const tableRef = useTemplateRef<TableEngineTable>('tableRef');
+
+tableRef.value.previousPage();
+```
+
+4. **`tableOptions` prop** — pass raw TanStack table options through for everything the component does not wire explicitly (pagination, row selection models, manual server modes, `meta`, `initialState`, faceted values...). Keys the component owns (state wiring, change handlers) take precedence:
+
+```vue
+<STable
+  :columns="columns"
+  :data="data"
+  :row-key="row => row.id"
+  :table-options="{ enableRowSelection: true, getFilteredSelectedRowModel: createFilteredSelectedRowModel() }"
+/>
+```
+
+Cell customization priority: named slot > `columnDef.cell` render function (TanStack-native, rendered via `FlexRender`) > plain value text. Headers follow the same chain with `columnDef.header`.
+
+## Migration from v0.4x
+
+v0.50.0 replaces the hand-rolled column model with [`@tanstack/vue-table`](https://tanstack.com/table). TanStack naming is the first citizen; the most frequent legacy fields map as follows:
+
+| v0.4x (legacy)                            | v0.50.0 (TanStack-first)                                           |
+| :---------------------------------------- | :----------------------------------------------------------------- |
+| `{ title, dataIndex }`                    | `{ header, accessorKey }` (`dataIndex` still accepted as alias)    |
+| `sorter: true` / `sorter(a, b)`           | `enableSorting: true` / `sortFn: (rowA, rowB) => number`           |
+| `filter: true` / `filter: { ... }`        | `enableColumnFilter: true` / `filterPlaceholder` / `filterOptions` |
+| `width: '140px'` / `minWidth`             | `size: 140` / `minSize` (px numbers)                               |
+| group column `{ key, children }`          | `{ id, columns }` (TanStack group shape)                           |
+| `sortState` / `defaultSortState`          | `sorting` / `defaultSorting` (`SortingState`) — alias kept         |
+| `filterState` / `defaultFilterState`      | `columnFilters` / `defaultColumnFilters` (`ColumnFiltersState`)    |
+| `columnWidths` / `defaultColumnWidths`    | `columnSizing` / `defaultColumnSizing` (`Record<string, number>`)  |
+| `expanded: R[]`                           | `expanded: ExpandedState` (`{ '1': true }` or `true`)              |
+| `update:sortState` / `update:filterState` | `update:sorting` / `update:columnFilters`                          |
+
+### Before / after
+
+```vue
+<script setup>
+const columns = [
+  { title: 'Name', dataIndex: 'name', sorter: true, width: '180px' },
+  { title: 'Age', dataIndex: 'age', align: 'center', filter: true }
+];
+const expanded = ref([1]);
+</script>
+
+<script setup>
+const columns = [
+  { header: 'Name', accessorKey: 'name', enableSorting: true, size: 180 },
+  { header: 'Age', accessorKey: 'age', align: 'center', enableColumnFilter: true }
+];
+const expanded = ref({ 1: true });
+</script>
+```

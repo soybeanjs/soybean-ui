@@ -117,7 +117,7 @@ Events for the DateRangePicker component.
 - `placed`: No description. (type `[]`)
 - `update:modelValue`: Emitted when the model value changes. (type `[range: DateRange]`; parameters `range: DateRange`)
 - `update:placeholder`: Emitted when the placeholder value changes. (type `[date: DateValue]`; parameters `date: DateValue`)
-- `update:startValue`: Emitted when the start value changes. (type `[date: DateValue | undefined]`; parameters `date: DateValue | undefined`)
+- `update:startValue`: Emitted when the start value changes. (type `[date: DateValue | null]`; parameters `date: DateValue | null`)
 
 #### Slots
 
@@ -199,7 +199,7 @@ Events for the DateRangePickerCompact component.
 - `placed`: No description. (type `[]`)
 - `update:modelValue`: Emitted when the model value changes. (type `[range: DateRange]`; parameters `range: DateRange`)
 - `update:placeholder`: Emitted when the placeholder value changes. (type `[date: DateValue]`; parameters `date: DateValue`)
-- `update:startValue`: Emitted when the start value changes. (type `[date: DateValue | undefined]`; parameters `date: DateValue | undefined`)
+- `update:startValue`: Emitted when the start value changes. (type `[date: DateValue | null]`; parameters `date: DateValue | null`)
 
 #### Slots
 
@@ -241,7 +241,7 @@ Slots for the DateRangePickerCompact component.
 
 ### Cautions
 
-- The value is a `DateRange` — an object `{ start, end }` of `DateValue` from `@internationalized/date`, not a native `string`. Use it with `SDateRangeField`, `SCalendarRange`, and the other date-family components.
+- The value is a `DateRange` — an object `{ start, end }` of `DateValue`s, not a `string`. Use it with `SDateRangeField`, `SCalendarRange`, and the other date-family components.
 - `defaultValue`/`defaultOpen` are only read on mount — use `v-model`/`open` for external control.
 - The toggle button is the calendar icon; its default `aria-label` (locale `toggle`) can be overridden through `triggerProps['aria-label']`. The icon itself is fixed — to render a custom trigger, compose `DateRangePickerCompact` from `@soybeanjs/headless/date-range-picker` with your own popover content.
 - The popup `role="dialog"` gets its accessible name from the locale `popupLabel` message; override it through `popupProps['aria-label']`.

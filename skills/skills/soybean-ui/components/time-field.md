@@ -51,13 +51,13 @@ Properties for the TimeField component.
 - `size`: Visual size of the component. (type `ThemeSize`; optional)
 - `ui`: Per-slot class overrides for the component. (type `Partial<TimeFieldUi>`; optional)
 - `inputProps`: Properties forwarded to the input element. (type `TimeFieldInputProps`; optional)
-- `defaultValue`: Default value for the time field. (type `TimeValue`; optional)
-- `modelValue`: Current model value. (type `TimeValue`; optional)
-- `defaultPlaceholder`: Default placeholder. (type `TimeValue`; optional)
-- `placeholder`: Placeholder. (type `TimeValue`; optional)
+- `defaultValue`: Default value for the time field. (type `Date`; optional)
+- `modelValue`: Current model value. (type `Date`; optional)
+- `defaultPlaceholder`: Default placeholder. (type `Date`; optional)
+- `placeholder`: Placeholder. (type `Date`; optional)
 - `granularity`: Granularity. (type `TimeGranularity`; optional)
-- `maxValue`: Max value. (type `TimeValue`; optional)
-- `minValue`: Min value. (type `TimeValue`; optional)
+- `maxValue`: Max value. (type `Date`; optional)
+- `minValue`: Min value. (type `Date`; optional)
 - `isTimeUnavailable`: Whether the time is unavailable. (type `TimeMatcher`; optional)
 - `disabled`: Whether the component is disabled. (type `boolean`; optional)
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
@@ -76,8 +76,8 @@ Properties for the TimeField component.
 
 Events for the TimeField component.
 
-- `update:modelValue`: Emitted when the model value changes. (type `[time: TimeValue | undefined]`; parameters `time: TimeValue | undefined`)
-- `update:placeholder`: Emitted when the placeholder value changes. (type `[time: TimeValue]`; parameters `time: TimeValue`)
+- `update:modelValue`: Emitted when the model value changes. (type `[time: Date | undefined]`; parameters `time: Date | undefined`)
+- `update:placeholder`: Emitted when the placeholder value changes. (type `[time: Date]`; parameters `time: Date`)
 
 #### Slots
 
@@ -93,13 +93,13 @@ Slots for the TimeField component.
 Properties for the time field compact component.
 
 - `inputProps`: Properties forwarded to the input element. (type `TimeFieldInputProps`; optional)
-- `defaultValue`: Default value for the time field. (type `TimeValue`; optional)
-- `modelValue`: Current model value. (type `TimeValue`; optional)
-- `defaultPlaceholder`: Default placeholder. (type `TimeValue`; optional)
-- `placeholder`: Placeholder. (type `TimeValue`; optional)
+- `defaultValue`: Default value for the time field. (type `Date`; optional)
+- `modelValue`: Current model value. (type `Date`; optional)
+- `defaultPlaceholder`: Default placeholder. (type `Date`; optional)
+- `placeholder`: Placeholder. (type `Date`; optional)
 - `granularity`: Granularity. (type `TimeGranularity`; optional)
-- `maxValue`: Max value. (type `TimeValue`; optional)
-- `minValue`: Min value. (type `TimeValue`; optional)
+- `maxValue`: Max value. (type `Date`; optional)
+- `minValue`: Min value. (type `Date`; optional)
 - `isTimeUnavailable`: Whether the time is unavailable. (type `TimeMatcher`; optional)
 - `disabled`: Whether the component is disabled. (type `boolean`; optional)
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
@@ -118,8 +118,8 @@ Properties for the time field compact component.
 
 Events for the time field compact component.
 
-- `update:modelValue`: Emitted when the model value changes. (type `[time: TimeValue | undefined]`; parameters `time: TimeValue | undefined`)
-- `update:placeholder`: Emitted when the placeholder value changes. (type `[time: TimeValue]`; parameters `time: TimeValue`)
+- `update:modelValue`: Emitted when the model value changes. (type `[time: Date | undefined]`; parameters `time: Date | undefined`)
+- `update:placeholder`: Emitted when the placeholder value changes. (type `[time: Date]`; parameters `time: Date`)
 
 #### Slots
 
@@ -138,13 +138,13 @@ Slots for the TimeFieldCompact component.
 
 Properties for the TimeFieldRoot component.
 
-- `defaultValue`: Default value for the time field. (type `TimeValue`; optional)
-- `modelValue`: Current model value. (type `TimeValue`; optional)
-- `defaultPlaceholder`: Default placeholder. (type `TimeValue`; optional)
-- `placeholder`: Placeholder. (type `TimeValue`; optional)
+- `defaultValue`: Default value for the time field. (type `Date`; optional)
+- `modelValue`: Current model value. (type `Date`; optional)
+- `defaultPlaceholder`: Default placeholder. (type `Date`; optional)
+- `placeholder`: Placeholder. (type `Date`; optional)
 - `granularity`: Granularity. (type `TimeGranularity`; optional)
-- `maxValue`: Max value. (type `TimeValue`; optional)
-- `minValue`: Min value. (type `TimeValue`; optional)
+- `maxValue`: Max value. (type `Date`; optional)
+- `minValue`: Min value. (type `Date`; optional)
 - `isTimeUnavailable`: Whether the time is unavailable. (type `TimeMatcher`; optional)
 - `disabled`: Whether the component is disabled. (type `boolean`; optional)
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
@@ -163,8 +163,8 @@ Properties for the TimeFieldRoot component.
 
 Events for the TimeFieldRoot component.
 
-- `update:modelValue`: Emitted when the model value changes. (type `[time: TimeValue | undefined]`; parameters `time: TimeValue | undefined`)
-- `update:placeholder`: Emitted when the placeholder value changes. (type `[time: TimeValue]`; parameters `time: TimeValue`)
+- `update:modelValue`: Emitted when the model value changes. (type `[time: Date | undefined]`; parameters `time: Date | undefined`)
+- `update:placeholder`: Emitted when the placeholder value changes. (type `[time: Date]`; parameters `time: Date`)
 
 #### Slots
 
@@ -176,7 +176,7 @@ Slots for the TimeFieldRoot component.
 
 Slot properties for the TimeFieldRoot component.
 
-- `modelValue`: Current model value. (type `TimeValue | undefined`; required)
+- `modelValue`: Current model value. (type `Date | undefined`; required)
 - `segments`: Segments used by the default slot. (type `DateFieldSegment[]`; required)
 - `isInvalid`: Whether the current value is invalid. (type `boolean`; required)
 
@@ -204,7 +204,7 @@ Slot properties for the TimeFieldRoot component.
 
 ### Cautions
 
-- The value is a `TimeValue` from `@internationalized/date` — a `Time` or `CalendarDateTime`, not a native `string`. Use it with the other date-family components.
+- The value is a `TimeValue` — a native `Date` whose hour/minute/second parts are meaningful (the date part is normalized), not a `string`. Use it with the other date-family components.
 - `defaultValue` is only read on mount — use `v-model` for external control.
 - When the value is empty the segments display the placeholder time (derived from `defaultValue`/`defaultPlaceholder` or the current time) — the submitted form value is still empty until the user types.
 - `granularity` defaults to `'minute'`; pass `'second'` for seconds segments or `'hour'` to hide the minute segment.
@@ -231,4 +231,4 @@ Pass `minValue`/`maxValue` — times outside are marked `data-invalid` and rejec
 
 ### How is `STimeField` different from `SDateField` with `granularity: 'minute'`?
 
-`STimeField` is a pure time input — it never renders date segments. `SDateField` with a time granularity renders the full date and time together (for example `2026/04/19 14:30`) and accepts a `CalendarDateTime` value.
+`STimeField` is a pure time input — it never renders date segments. `SDateField` with a time granularity renders the full date and time together (for example `2026/04/19 14:30`) and accepts a `{ date, time }` value.

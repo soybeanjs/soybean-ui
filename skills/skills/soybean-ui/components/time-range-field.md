@@ -61,15 +61,15 @@ Properties for the TimeRangeField component.
 - `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 - `dir`: Reading direction of the component. (type `Direction`; optional)
 - `id`: Id. (type `string`; optional)
-- `placeholder`: Placeholder. (type `TimeValue`; optional)
+- `placeholder`: Placeholder. (type `Date`; optional)
 - `name`: The name of the field. Submitted with its owning form as part of a name/value pair. (type `string`; optional)
 - `required`: When `true`, indicates that the user must set the value before the owning form can be submitted. (type `boolean`; optional)
 - `readonly`: Whether the component is readonly. (type `boolean`; optional)
 - `step`: Step. (type `DateStep`; optional)
 - `locale`: Locale. (type `string`; optional)
-- `defaultPlaceholder`: Default placeholder. (type `TimeValue`; optional)
-- `maxValue`: Max value. (type `TimeValue`; optional)
-- `minValue`: Min value. (type `TimeValue`; optional)
+- `defaultPlaceholder`: Default placeholder. (type `Date`; optional)
+- `maxValue`: Max value. (type `Date`; optional)
+- `minValue`: Min value. (type `Date`; optional)
 - `granularity`: Granularity. (type `TimeGranularity`; optional)
 - `hourCycle`: Hour cycle. (type `12 | 24`; optional)
 - `hideTimeZone`: Whether hide time zone. (type `boolean`; optional)
@@ -80,9 +80,9 @@ Properties for the TimeRangeField component.
 Events for the TimeRangeField component.
 
 - `update:modelValue`: Emitted when the model value changes. (type `[range: TimeRange]`; parameters `range: TimeRange`)
-- `update:placeholder`: Emitted when the placeholder value changes. (type `[time: TimeValue]`; parameters `time: TimeValue`)
-- `update:startValue`: Emitted when the start value changes. (type `[time: TimeValue | undefined]`; parameters `time: TimeValue | undefined`)
-- `update:endValue`: Emitted when the end value changes. (type `[time: TimeValue | undefined]`; parameters `time: TimeValue | undefined`)
+- `update:placeholder`: Emitted when the placeholder value changes. (type `[time: Date]`; parameters `time: Date`)
+- `update:startValue`: Emitted when the start value changes. (type `[time: Date | null]`; parameters `time: Date | null`)
+- `update:endValue`: Emitted when the end value changes. (type `[time: Date | null]`; parameters `time: Date | null`)
 
 #### Slots
 
@@ -118,15 +118,15 @@ Properties for the TimeRangeFieldCompact component.
 - `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 - `dir`: Reading direction of the component. (type `Direction`; optional)
 - `id`: Id. (type `string`; optional)
-- `placeholder`: Placeholder. (type `TimeValue`; optional)
+- `placeholder`: Placeholder. (type `Date`; optional)
 - `name`: The name of the field. Submitted with its owning form as part of a name/value pair. (type `string`; optional)
 - `required`: When `true`, indicates that the user must set the value before the owning form can be submitted. (type `boolean`; optional)
 - `readonly`: Whether the component is readonly. (type `boolean`; optional)
 - `step`: Step. (type `DateStep`; optional)
 - `locale`: Locale. (type `string`; optional)
-- `defaultPlaceholder`: Default placeholder. (type `TimeValue`; optional)
-- `maxValue`: Max value. (type `TimeValue`; optional)
-- `minValue`: Min value. (type `TimeValue`; optional)
+- `defaultPlaceholder`: Default placeholder. (type `Date`; optional)
+- `maxValue`: Max value. (type `Date`; optional)
+- `minValue`: Min value. (type `Date`; optional)
 - `granularity`: Granularity. (type `TimeGranularity`; optional)
 - `hourCycle`: Hour cycle. (type `12 | 24`; optional)
 - `hideTimeZone`: Whether hide time zone. (type `boolean`; optional)
@@ -137,9 +137,9 @@ Properties for the TimeRangeFieldCompact component.
 Events for the TimeRangeFieldCompact component.
 
 - `update:modelValue`: Emitted when the model value changes. (type `[range: TimeRange]`; parameters `range: TimeRange`)
-- `update:placeholder`: Emitted when the placeholder value changes. (type `[time: TimeValue]`; parameters `time: TimeValue`)
-- `update:startValue`: Emitted when the start value changes. (type `[time: TimeValue | undefined]`; parameters `time: TimeValue | undefined`)
-- `update:endValue`: Emitted when the end value changes. (type `[time: TimeValue | undefined]`; parameters `time: TimeValue | undefined`)
+- `update:placeholder`: Emitted when the placeholder value changes. (type `[time: Date]`; parameters `time: Date`)
+- `update:startValue`: Emitted when the start value changes. (type `[time: Date | null]`; parameters `time: Date | null`)
+- `update:endValue`: Emitted when the end value changes. (type `[time: Date | null]`; parameters `time: Date | null`)
 
 #### Slots
 
@@ -175,15 +175,15 @@ Properties for the TimeRangeFieldRoot component.
 - `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 - `dir`: Reading direction of the component. (type `Direction`; optional)
 - `id`: Id. (type `string`; optional)
-- `placeholder`: Placeholder. (type `TimeValue`; optional)
+- `placeholder`: Placeholder. (type `Date`; optional)
 - `name`: The name of the field. Submitted with its owning form as part of a name/value pair. (type `string`; optional)
 - `required`: When `true`, indicates that the user must set the value before the owning form can be submitted. (type `boolean`; optional)
 - `readonly`: Whether the component is readonly. (type `boolean`; optional)
 - `step`: Step. (type `DateStep`; optional)
 - `locale`: Locale. (type `string`; optional)
-- `defaultPlaceholder`: Default placeholder. (type `TimeValue`; optional)
-- `maxValue`: Max value. (type `TimeValue`; optional)
-- `minValue`: Min value. (type `TimeValue`; optional)
+- `defaultPlaceholder`: Default placeholder. (type `Date`; optional)
+- `maxValue`: Max value. (type `Date`; optional)
+- `minValue`: Min value. (type `Date`; optional)
 - `granularity`: Granularity. (type `TimeGranularity`; optional)
 - `hourCycle`: Hour cycle. (type `12 | 24`; optional)
 - `hideTimeZone`: Whether hide time zone. (type `boolean`; optional)
@@ -194,9 +194,9 @@ Properties for the TimeRangeFieldRoot component.
 Events for the TimeRangeFieldRoot component.
 
 - `update:modelValue`: Emitted when the model value changes. (type `[range: TimeRange]`; parameters `range: TimeRange`)
-- `update:placeholder`: Emitted when the placeholder value changes. (type `[time: TimeValue]`; parameters `time: TimeValue`)
-- `update:startValue`: Emitted when the start value changes. (type `[time: TimeValue | undefined]`; parameters `time: TimeValue | undefined`)
-- `update:endValue`: Emitted when the end value changes. (type `[time: TimeValue | undefined]`; parameters `time: TimeValue | undefined`)
+- `update:placeholder`: Emitted when the placeholder value changes. (type `[time: Date]`; parameters `time: Date`)
+- `update:startValue`: Emitted when the start value changes. (type `[time: Date | null]`; parameters `time: Date | null`)
+- `update:endValue`: Emitted when the end value changes. (type `[time: Date | null]`; parameters `time: Date | null`)
 
 #### Slots
 
@@ -227,7 +227,7 @@ Slots for the TimeRangeField component.
 
 ### Cautions
 
-- The value is a `TimeRange` of `TimeValue` from `@internationalized/date` — `Time` or `CalendarDateTime` pairs, not native `string`s. Use it with the other date-family components.
+- The value is a `TimeRange` — `{ start, end }` of `TimeValue`s (native `Date`s whose time-of-day parts are meaningful), not `string`s. Use it with the other date-family components.
 - `defaultValue` is only read on mount — use `v-model` for external control.
 - When a side is empty its segments display the placeholder time (derived from `defaultValue`/`defaultPlaceholder` or the current time) — the submitted form value is still empty until the user types.
 - `granularity` defaults to `'minute'`; pass `'second'` for seconds segments on both sides.
@@ -255,4 +255,4 @@ The component marks the root `data-invalid` automatically when `end` is before `
 
 ### How is `STimeRangeField` different from `SDateRangeField`?
 
-`STimeRangeField` is a pure time range input — it never renders date segments. `SDateRangeField` renders full dates (with optional time via granularity) and accepts `CalendarDate`/`CalendarDateTime` pairs.
+`STimeRangeField` is a pure time range input — it never renders date segments. `SDateRangeField` renders full dates (with optional time via granularity) and accepts `DateValue` pairs.

@@ -105,7 +105,7 @@ Slots for the Calendar component.
 - `prev`: Custom content for the prev slot. (type `((props: { disabled: boolean; }) => any) | undefined`)
 - `heading`: Custom content for the heading slot. (type `((props: CalendarHeadingSlotProps) => any) | undefined`)
 - `next`: Custom content for the next slot. (type `((props: { disabled: boolean; }) => any) | undefined`)
-- `head-cell`: Custom content for the head cell slot. (type `((props: { date: DateValue; index: number; label: string; }) => any) | undefined`)
+- `head-cell`: Custom content for the head cell slot. (type `((props: { date: Date; index: number; label: string; }) => any) | undefined`)
 - `day`: Custom content for the day slot. (type `((props: CalendarDaySlotProps) => any) | undefined`)
 
 ### CalendarCell
@@ -114,7 +114,7 @@ Slots for the Calendar component.
 
 Properties for the CalendarCell component.
 
-- `date`: Date. (type `import("@internationalized/date").CalendarDate | import("@internationalized/date").CalendarDateTime | import("@intern...`; required)
+- `date`: Date. (type `Date`; required)
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
 - `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 
@@ -124,8 +124,8 @@ Properties for the CalendarCell component.
 
 Properties for the CalendarCellTrigger component.
 
-- `day`: Day. (type `import("@internationalized/date").CalendarDate | import("@internationalized/date").CalendarDateTime | import("@intern...`; required)
-- `month`: Month. (type `import("@internationalized/date").CalendarDate | import("@internationalized/date").CalendarDateTime | import("@intern...`; required)
+- `day`: Day. (type `Date`; required)
+- `month`: Month. (type `Date`; required)
 - `type`: The type of the button element. Can be one of 'button', 'submit', or 'reset'. (type `ButtonType`; default `'button'`; optional)
 - `disabled`: Whether the component is disabled. (type `boolean`; optional)
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
@@ -208,7 +208,7 @@ Slots for the CalendarCompact component.
 - `prev`: Custom content for the prev slot. (type `((props: { disabled: boolean; }) => any) | undefined`)
 - `heading`: Custom content for the heading slot. (type `((props: CalendarHeadingSlotProps) => any) | undefined`)
 - `next`: Custom content for the next slot. (type `((props: { disabled: boolean; }) => any) | undefined`)
-- `head-cell`: Custom content for the head cell slot. (type `((props: { date: DateValue; index: number; label: string; }) => any) | undefined`)
+- `head-cell`: Custom content for the head cell slot. (type `((props: { date: Date; index: number; label: string; }) => any) | undefined`)
 - `day`: Custom content for the day slot. (type `((props: CalendarDaySlotProps) => any) | undefined`)
 
 ### CalendarGrid
@@ -360,10 +360,10 @@ Slots for the Calendar component.
 
 Slot properties for the CalendarRoot component.
 
-- `date`: Date exposed in the slot scope. (type `import("@internationalized/date").CalendarDate | import("@internationalized/date").CalendarDateTime | import("@intern...`; required)
+- `date`: Date exposed in the slot scope. (type `Date | import("../../date").DateTimeValue`; required)
 - `headingValue`: Heading value exposed in the slot scope. (type `string`; required)
-- `placeholder`: Placeholder exposed in the slot scope. (type `import("@internationalized/date").CalendarDate | import("@internationalized/date").CalendarDateTime | import("@intern...`; required)
-- `grid`: Grid exposed in the slot scope. (type `DateGrid<DateValue>[]`; required)
+- `placeholder`: Placeholder exposed in the slot scope. (type `Date | import("../../date").DateTimeValue`; required)
+- `grid`: Grid exposed in the slot scope. (type `DateGrid<Date>[]`; required)
 - `weekDays`: Week days exposed in the slot scope. (type `string[]`; required)
 - `weekStartsOn`: Week starts on exposed in the slot scope. (type `number`; required)
 - `locale`: Locale exposed in the slot scope. (type `string`; required)
@@ -402,7 +402,7 @@ Slot properties for the CalendarRoot component.
 
 ### Cautions
 
-- The value is a `DateValue` from `@internationalized/date` (`CalendarDate`/`CalendarDateTime`), never a native `Date` or string. Convert with `toDate`/`fromDate` utilities when interop is needed.
+- The value is a native `Date` at local midnight (the `DateValue` model: `Date` or `{ date, time? }`). Use `date-fns` or `Intl` when formatting or converting.
 - `multiple` changes the model shape to `DateValue[]`; the `M` generic infers it from the prop.
 - `defaultValue`/`defaultPlaceholder` are read on mount only — use `v-model` for external control.
 - `isDateDisabled` and `isDateUnavailable` differ: disabled dates are unselectable by policy, unavailable dates are additionally marked visually (`line-through` in the default style).
@@ -418,7 +418,7 @@ Pass `multiple` (boolean shorthand works in templates) and bind `v-model` to an 
 
 ### How do I prevent dates before today?
 
-Pass `minValue={new CalendarDate(2026, 1, 1)}` (or any `DateValue`). Out-of-range dates are disabled and the prev button auto-disables at the bound.
+Pass `minValue={new Date(2026, 0, 1)}` (or any `DateValue`). Out-of-range dates are disabled and the prev button auto-disables at the bound.
 
 ### How do I show several months at once?
 

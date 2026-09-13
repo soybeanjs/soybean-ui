@@ -175,7 +175,7 @@ Properties for the DateFieldRoot slot.
 
 ### Architecture and benchmark differences
 
-`DateFieldRoot` owns the value (via `useControllableState`), derives the segment layout with `@internationalized/date` formatters, and runs validation through `isInvalid`. Each `DateFieldInput` binds the `useDateField` composable, which implements per-part keydown logic (increment/decrement/typing/auto-advance/delete) shared by the `time-field` family. Editing mutates a `segmentValues` shallowRef; the root commits the assembled `DateValue` once every segment is filled. The segmented date-field pattern originates from reka-ui (Radix); the benchmark libraries express date input as a plain text input plus a picker popup instead.
+`DateFieldRoot` owns the value (via `useControllableState`), derives the segment layout with `Intl.DateTimeFormat` formatters, and runs validation through `isInvalid`. Each `DateFieldInput` binds the `useDateField` composable, which implements per-part keydown logic (increment/decrement/typing/auto-advance/delete) shared by the `time-field` family. Editing mutates a `segmentValues` shallowRef; the root commits the assembled `DateValue` once every segment is filled. The segmented date-field pattern originates from reka-ui (Radix); the benchmark libraries express date input as a plain text input plus a picker popup instead.
 
 | Capability                  | SoybeanUI | Ant Design | Element Plus | Mantine | Naive UI | shadcn |
 | :-------------------------- | :-------: | :--------: | :----------: | :-----: | :------: | :----: |

@@ -499,7 +499,7 @@ Content
 
 ### Roadmap
 
-Horizontal snap points, the full native touchmove capture pipeline for mobile, and iOS virtual keyboard coordination.
+Horizontal snap points, on-device verification of the touch pipeline (iOS Safari / Android Chrome), and iOS virtual keyboard coordination.
 
 ## FAQ
 

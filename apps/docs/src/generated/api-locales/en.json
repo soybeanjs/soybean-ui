@@ -8099,33 +8099,31 @@
         },
         "tablecellslotprops": {
           "members": {
-            "column": "Column exposed in the slot scope.",
+            "column": "Column definition exposed in the slot scope.",
+            "enginecolumn": "Engine column instance exposed in the slot scope.",
             "expanded": "Whether expanded.",
             "haschildren": "Whether the component has children.",
             "index": "Index of the current item.",
             "level": "Level exposed in the slot scope.",
             "row": "Row exposed in the slot scope.",
+            "table": "Engine table instance exposed in the slot scope (full TanStack API).",
             "toggleexpand": "Toggle expand exposed in the slot scope."
           },
           "slotprops": "Slot properties for the TableCell component."
         },
         "tablecolumn": {
           "callables": {
-            "sorter": "Sorter."
+            "columns": "Nested child columns of a group column, carrying SoybeanUI extensions.",
+            "filteroptions": "Filter options rendered by the filter popover. When omitted, options are\nderived from the source rows."
           },
           "members": {
-            "align": "Align.",
-            "children": "Nested child items.",
-            "dataindex": "Data index.",
-            "filter": "Filter.",
-            "fixed": "Fixed.",
-            "hidden": "Whether the item is hidden.",
-            "key": "Key.",
-            "minwidth": "Min width.",
-            "resizable": "Whether resizable.",
-            "title": "Title text rendered by the component.",
-            "type": "Type.",
-            "width": "Width."
+            "accessorkey": "Deep data path of the column value, derived from the row data shape\n(tree `children` excluded). Overrides the engine's top-level-only\n`keyof TData` constraint.",
+            "align": "Text alignment of the column.",
+            "filterplaceholder": "Placeholder text of the filter popover.",
+            "fixed": "Logical pinned side of the column. Maps to TanStack column pinning state.",
+            "hidden": "Whether the column is hidden from the table.",
+            "resizable": "Whether the column can be resized.",
+            "type": "Built-in column type."
           }
         },
         "tablecolumnfiltervalue": {
@@ -8134,10 +8132,9 @@
             "values": "Values."
           }
         },
-        "tablecolumnwidthstate": "State values for TableColumnWidthState.",
         "tablecompactcellprops": {
           "members": {
-            "column": "Column.",
+            "column": "Column definition.",
             "index": "Index of the current item.",
             "row": "Row."
           },
@@ -8159,11 +8156,12 @@
             "rowdblclick": "Emitted when a row is double clicked.",
             "rowmouseenter": "Emitted when the pointer enters a row.",
             "rowmouseleave": "Emitted when the pointer leaves a row.",
-            "update_columnwidths": "Emitted when the column widths value changes.",
-            "update_expanded": "Emitted when the expanded state changes.",
-            "update_filterstate": "Emitted when the filter state value changes.",
+            "update_columnfilters": "Emitted when the column filters state value changes.",
+            "update_columnpinning": "Emitted when the column pinning state value changes.",
+            "update_columnsizing": "Emitted when the column sizing state value changes.",
+            "update_expanded": "Emitted when the expanded state value changes.",
             "update_selected": "Emitted when the selected state changes.",
-            "update_sortstate": "Emitted when the sort state value changes."
+            "update_sorting": "Emitted when the sorting state value changes."
           },
           "emits": "Events for the TableCompact component."
         },
@@ -8177,9 +8175,7 @@
         },
         "tablecompactheadprops": {
           "members": {
-            "colspan": "Col span.",
-            "column": "Column.",
-            "rowspan": "Row span."
+            "header": "Engine header instance."
           },
           "props": "Properties for the TableCompactHead component."
         },
@@ -8187,22 +8183,24 @@
           "members": {
             "bodyprops": "Properties forwarded to the body element.",
             "cellprops": "Properties forwarded to the cell element.",
-            "columns": "Columns.",
-            "columnwidths": "Column widths.",
+            "columnfilters": "Column filters state (TanStack `ColumnFiltersState`). Filter values accept\nthe compound `{ keyword, values }` shape handled by the built-in filter.",
+            "columnpinning": "Column pinning state (TanStack `ColumnPinningState`). Column `fixed`\nfields seed the default state when this prop is absent.",
+            "columns": "Column definitions. TanStack column defs are the first citizens.",
+            "columnsizing": "Column sizing state (TanStack `ColumnSizingState`, px keyed by column id).",
             "contentprops": "Properties forwarded to the content element.",
             "data": "Data.",
-            "defaultcolumnwidths": "Default column widths.",
-            "defaultexpandall": "Whether default expand all.",
-            "defaultexpanded": "Default expanded.",
-            "defaultfilterstate": "Default filter state.",
+            "defaultcolumnfilters": "Default column filters state.",
+            "defaultcolumnpinning": "Default column pinning state.",
+            "defaultcolumnsizing": "Default column sizing state.",
+            "defaultexpandall": "Whether to expand all rows by default.",
+            "defaultexpanded": "Default expanded state.",
             "defaultselected": "Default selected.",
-            "defaultsortstate": "Default sort state.",
+            "defaultsorting": "Default sorting state.",
             "dir": "Reading direction of the component.",
             "estimatesize": "Estimate size.",
-            "expanded": "Expanded.",
-            "filterstate": "Filter state.",
+            "expanded": "Expanded state (TanStack `ExpandedState`).",
             "footerprops": "Properties forwarded to the footer element.",
-            "getchildren": "Get children.",
+            "getchildren": "Nested children resolver used as the engine `getSubRows`.",
             "headerprops": "Properties forwarded to the header element.",
             "headprops": "Properties forwarded to the head element.",
             "height": "Height.",
@@ -8211,7 +8209,8 @@
             "rowkey": "Row key.",
             "rowprops": "Properties forwarded to the row element.",
             "selected": "Whether the item is selected.",
-            "sortstate": "Sort state.",
+            "sorting": "Sorting state (TanStack `SortingState`).",
+            "tableoptions": "Engine options passed through to the TanStack `useTable` call. Keys the\ncomponent owns (data, columns, state wiring, owned change handlers) are\noverridden by the component; everything else unlocks the full engine\nsurface (pagination, row selection, manual modes, meta, initialState...).",
             "virtual": "Whether virtual.",
             "virtualizeroptions": "Virtualizer options."
           },
@@ -8250,12 +8249,14 @@
         },
         "tabledatacellslotprops": {
           "members": {
-            "column": "Column exposed in the slot scope.",
+            "column": "Column definition exposed in the slot scope.",
+            "enginecolumn": "Engine column instance exposed in the slot scope.",
             "expanded": "Whether expanded.",
             "haschildren": "Whether the component has children.",
             "index": "Index of the current item.",
             "level": "Level exposed in the slot scope.",
             "row": "Row exposed in the slot scope.",
+            "table": "Engine table instance exposed in the slot scope (full TanStack API).",
             "toggleexpand": "Toggle expand exposed in the slot scope.",
             "value": "Value associated with the current item."
           },
@@ -8267,6 +8268,29 @@
           },
           "slotprops": "Slot properties for the TableEmpty component."
         },
+        "tableenginecolumn": "Engine column instance exposed by the TanStack table.",
+        "tableengineheader": "Engine header instance exposed by the TanStack table.",
+        "tableengineoptions": {
+          "members": {
+            "debugcolumnfilteringfeature": "",
+            "debugcolumngroupingfeature": "",
+            "debugcolumnorderingfeature": "",
+            "debugcolumnpinningfeature": "",
+            "debugcolumnresizingfeature": "",
+            "debugcolumnsizingfeature": "",
+            "debugcolumnvisibilityfeature": "",
+            "debugcorecellsfeature": "",
+            "debugcorecolumnsfeature": "",
+            "debugcoreheadersfeature": "",
+            "debugcorereactivityfeature": "",
+            "debugcorerowmodelsfeature": "",
+            "debugcorerowsfeature": "",
+            "debugcoretablesfeature": "",
+            "debugrowexpandingfeature": "",
+            "debugrowsortingfeature": ""
+          }
+        },
+        "tableenginetable": "Engine table instance exposed by the TanStack table.",
         "tableexpandedrowslotprops": {
           "members": {
             "haschildren": "Whether the component has children.",
@@ -8279,25 +8303,26 @@
         "tableexpandslotprops": {
           "members": {
             "arialabel": "Aria label exposed in the slot scope.",
-            "column": "Column exposed in the slot scope.",
+            "column": "Column definition exposed in the slot scope.",
+            "enginecolumn": "Engine column instance exposed in the slot scope.",
             "expanded": "Whether expanded.",
             "haschildren": "Whether the component has children.",
             "index": "Index of the current item.",
             "level": "Level exposed in the slot scope.",
             "row": "Row exposed in the slot scope.",
+            "table": "Engine table instance exposed in the slot scope (full TanStack API).",
             "toggleexpand": "Toggle expand exposed in the slot scope."
           },
           "slotprops": "Slot properties for the TableExpand component."
         },
-        "tablefilterstate": "State values for TableFilterState.",
-        "tablefiltervalue": "Type information for TableFilterValue.",
+        "tablefiltervalue": "Filter value accepted by the built-in compound filter function.",
         "tablefooterprops": {
           "props": "Properties for the TableFooter component."
         },
         "tableheaderfilterslotprops": {
           "members": {
             "clearfilter": "Clear filter exposed in the slot scope.",
-            "column": "Column exposed in the slot scope.",
+            "column": "Column definition exposed in the slot scope.",
             "filtered": "Whether filtered.",
             "filteroptions": "Filter options exposed in the slot scope.",
             "filterstate": "Filter state exposed in the slot scope.",
@@ -8340,8 +8365,9 @@
             "checked": "Whether the item is checked.",
             "clearfilter": "Clear filter exposed in the slot scope.",
             "colspan": "Col span exposed in the slot scope.",
-            "column": "Column exposed in the slot scope.",
+            "column": "Column definition exposed in the slot scope.",
             "disabled": "Whether the component is disabled.",
+            "enginecolumn": "Engine column instance exposed in the slot scope.",
             "filterable": "Whether filterable.",
             "filtered": "Whether filtered.",
             "filteroptions": "Filter options exposed in the slot scope.",
@@ -8357,6 +8383,7 @@
             "setfiltervalues": "Set filter values exposed in the slot scope.",
             "sortable": "Whether sortable.",
             "sortorder": "Sort order exposed in the slot scope.",
+            "table": "Engine table instance exposed in the slot scope (full TanStack API).",
             "togglefilteroption": "Toggle filter option exposed in the slot scope.",
             "togglesort": "Toggle sort exposed in the slot scope.",
             "updatechecked": "Update checked exposed in the slot scope."
@@ -8391,7 +8418,6 @@
           },
           "props": "Properties for the TableRoot component."
         },
-        "tablerowchildrenresolver": "Type information for TableRowChildrenResolver.",
         "tableroweventpayload": "Payload emitted for table row interaction events.",
         "tablerowprops": {
           "props": "Properties for the TableRow component."
@@ -8412,43 +8438,44 @@
           "members": {
             "arialabel": "Aria label exposed in the slot scope.",
             "checked": "Whether the item is checked.",
-            "column": "Column exposed in the slot scope.",
+            "column": "Column definition exposed in the slot scope.",
+            "enginecolumn": "Engine column instance exposed in the slot scope.",
             "expanded": "Whether expanded.",
             "haschildren": "Whether the component has children.",
             "index": "Index of the current item.",
             "level": "Level exposed in the slot scope.",
             "multiple": "Whether multiple values are supported.",
             "row": "Row exposed in the slot scope.",
+            "table": "Engine table instance exposed in the slot scope (full TanStack API).",
             "toggleexpand": "Toggle expand exposed in the slot scope.",
             "toggleselect": "Toggle select exposed in the slot scope."
           },
           "slotprops": "Slot properties for the TableSelection component."
         },
-        "tablesortorder": "Type information for TableSortOrder.",
-        "tablesortstate": {
-          "members": {
-            "key": "Key.",
-            "order": "Order."
-          }
-        },
         "tabletreerow": {
+          "callables": {
+            "sourcerow": "Engine row instance."
+          },
           "members": {
-            "haschildren": "Whether the component has children.",
-            "key": "Key.",
-            "level": "Level.",
-            "parentkey": "Parent key.",
-            "row": "Row."
+            "haschildren": "Whether the row has nested children.",
+            "id": "Row id used by the engine (string form of the row key).",
+            "key": "Row key resolved by `rowKey`.",
+            "level": "Nesting level starting from 1.",
+            "parentkey": "Parent row key.",
+            "row": "Original row data."
           }
         },
         "tabletreetoggleslotprops": {
           "members": {
             "arialabel": "Aria label exposed in the slot scope.",
-            "column": "Column exposed in the slot scope.",
+            "column": "Column definition exposed in the slot scope.",
+            "enginecolumn": "Engine column instance exposed in the slot scope.",
             "expanded": "Whether expanded.",
             "haschildren": "Whether the component has children.",
             "index": "Index of the current item.",
             "level": "Level exposed in the slot scope.",
             "row": "Row exposed in the slot scope.",
+            "table": "Engine table instance exposed in the slot scope (full TanStack API).",
             "toggleexpand": "Toggle expand exposed in the slot scope."
           },
           "slotprops": "Slot properties for the TableTreeToggle component."
@@ -13746,11 +13773,12 @@
             "rowdblclick": "Emitted when a row is double clicked.",
             "rowmouseenter": "Emitted when the pointer enters a row.",
             "rowmouseleave": "Emitted when the pointer leaves a row.",
-            "update_columnwidths": "Emitted when the column widths value changes.",
-            "update_expanded": "Emitted when the expanded state changes.",
-            "update_filterstate": "Emitted when the filter state value changes.",
+            "update_columnfilters": "Emitted when the column filters state value changes.",
+            "update_columnpinning": "Emitted when the column pinning state value changes.",
+            "update_columnsizing": "Emitted when the column sizing state value changes.",
+            "update_expanded": "Emitted when the expanded state value changes.",
             "update_selected": "Emitted when the selected state changes.",
-            "update_sortstate": "Emitted when the sort state value changes."
+            "update_sorting": "Emitted when the sorting state value changes."
           },
           "emits": "Events for the Table component."
         },
@@ -13788,7 +13816,7 @@
         "tablefilterpopoverprops": {
           "members": {
             "clearfilter": "Clear filter exposed in the slot scope.",
-            "column": "Column exposed in the slot scope.",
+            "column": "Column definition exposed in the slot scope.",
             "filtered": "Whether filtered.",
             "filteroptions": "Filter options exposed in the slot scope.",
             "filterstate": "Filter state exposed in the slot scope.",
@@ -13810,22 +13838,24 @@
             "bordered": "Whether bordered.",
             "cellprops": "Properties forwarded to the cell element.",
             "class": "Additional class names to apply to the table.",
-            "columns": "Columns.",
-            "columnwidths": "Column widths.",
+            "columnfilters": "Column filters state (TanStack `ColumnFiltersState`). Filter values accept\nthe compound `{ keyword, values }` shape handled by the built-in filter.",
+            "columnpinning": "Column pinning state (TanStack `ColumnPinningState`). Column `fixed`\nfields seed the default state when this prop is absent.",
+            "columns": "Column definitions. TanStack column defs are the first citizens.",
+            "columnsizing": "Column sizing state (TanStack `ColumnSizingState`, px keyed by column id).",
             "contentprops": "Properties forwarded to the content element.",
             "data": "Data.",
-            "defaultcolumnwidths": "Default column widths.",
-            "defaultexpandall": "Whether default expand all.",
-            "defaultexpanded": "Default expanded.",
-            "defaultfilterstate": "Default filter state.",
+            "defaultcolumnfilters": "Default column filters state.",
+            "defaultcolumnpinning": "Default column pinning state.",
+            "defaultcolumnsizing": "Default column sizing state.",
+            "defaultexpandall": "Whether to expand all rows by default.",
+            "defaultexpanded": "Default expanded state.",
             "defaultselected": "Default selected.",
-            "defaultsortstate": "Default sort state.",
+            "defaultsorting": "Default sorting state.",
             "dir": "Reading direction of the component.",
             "estimatesize": "Estimate size.",
-            "expanded": "Expanded.",
-            "filterstate": "Filter state.",
+            "expanded": "Expanded state (TanStack `ExpandedState`).",
             "footerprops": "Properties forwarded to the footer element.",
-            "getchildren": "Get children.",
+            "getchildren": "Nested children resolver used as the engine `getSubRows`.",
             "headerprops": "Properties forwarded to the header element.",
             "headprops": "Properties forwarded to the head element.",
             "height": "Height.",
@@ -13836,8 +13866,9 @@
             "rowprops": "Properties forwarded to the row element.",
             "selected": "Whether the item is selected.",
             "size": "Visual size of the component.",
-            "sortstate": "Sort state.",
+            "sorting": "Sorting state (TanStack `SortingState`).",
             "striped": "Whether striped.",
+            "tableoptions": "Engine options passed through to the TanStack `useTable` call. Keys the\ncomponent owns (data, columns, state wiring, owned change handlers) are\noverridden by the component; everything else unlocks the full engine\nsurface (pagination, row selection, manual modes, meta, initialState...).",
             "ui": "Per-slot class overrides for the component.",
             "variant": "Visual variant of the component.",
             "virtual": "Whether virtual.",
