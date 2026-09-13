@@ -26,18 +26,18 @@
     "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
     "@tanstack/charts": "^0.18.0",
-    "@ubean/content": "0.4.10",
+    "@ubean/content": "0.5.1",
     "@unhead/vue": "^3.4.0",
     "@vueuse/core": "^14.4.0",
     "d3-shape": "^3.2.0",
     "minisearch": "^7.2.0",
     "shiki": "^4.4.3",
-    "ubean": "^0.4.10",
+    "ubean": "^0.5.1",
     "valibot": "^1.5.0",
     "vue": "^3.5.42",
     "vue-i18n": "^11.4.10",
     "vue-router": "^5.3.1",
-    "zod": "^4.6.2"
+    "zod": "^4.6.4"
   },
   "devDependencies": {
     "@soybeanjs/ui-uno": "workspace:^",

@@ -44,10 +44,10 @@
     "upkg": "soy ncu"
   },
   "devDependencies": {
-    "@soybeanjs/cli": "^1.8.2",
+    "@soybeanjs/cli": "^1.8.3",
     "@soybeanjs/eslint-config-vue": "^0.1.1",
     "@soybeanjs/oxc-config": "^0.2.6",
-    "@types/node": "^26.5.0",
+    "@types/node": "^26.5.1",
     "eslint": "^10.10.0",
     "tsx": "^4.23.13",
     "typedoc": "^0.28.20",
