@@ -102,7 +102,13 @@ watch(popupElement, element => {
     measureTimer = setTimeout(measure, 100);
   };
 
-  report();
+  // The first measurement must land before the popup's first paint: the snap
+  // offset var does not exist until `popupHeight` is known, and a debounced
+  // first measurement lets the entry animation play at the unmeasured resting
+  // position before flashing into the active snap point. ResizeObserver events
+  // keep the debounce — they fire mid-layout-change, where the delay guards
+  // against measuring a stretched or settling box.
+  measure();
 
   if (typeof ResizeObserver !== 'function') return;
 

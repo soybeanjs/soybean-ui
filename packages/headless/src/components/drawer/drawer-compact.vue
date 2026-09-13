@@ -124,20 +124,14 @@ const confirmText = computed(() => props.confirmText ?? messages.value.dialog.co
 </script>
 
 <template>
-  <component
-    :is="nested ? DrawerRootNested : DrawerRoot"
-    v-slot="slotProps"
-    v-bind="forwardedProps"
-    @update:open="emit('update:open', $event)"
-    @close="emit('close')"
-  >
+  <component :is="nested ? DrawerRootNested : DrawerRoot" v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
     <DrawerTrigger v-bind="triggerProps">
       <slot name="trigger" v-bind="slotProps" />
     </DrawerTrigger>
     <DrawerSwipeArea v-if="swipeable" v-bind="swipeAreaProps" />
     <DrawerPortal v-bind="portalProps">
       <DrawerOverlay v-bind="overlayProps" />
-      <DrawerPopup v-bind="popupProps" v-on="listeners">
+      <DrawerPopup v-bind="popupProps">
         <DrawerHandle v-if="side === 'bottom'" v-bind="handleProps" />
         <DrawerHeader v-if="!pure" v-bind="headerProps">
           <DrawerTitle v-bind="titleProps">

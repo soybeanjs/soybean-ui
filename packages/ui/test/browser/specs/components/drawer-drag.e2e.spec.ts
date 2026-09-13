@@ -129,6 +129,92 @@ describe('SDrawer drag (e2e)', () => {
     unmount();
   });
 
+  it('carries the snap offset var from the first painted frame on open', async () => {
+    // Regression: the debounced first height measurement left the snap offset
+    // var unset for ~150ms, so the entry animation played at the unmeasured
+    // resting position before flashing into the active snap point.
+    const { unmount } = await renderComponent(SDrawer, {
+      props: { open: true, title: 'First Frame Snap', snapPoints: [0.25, 0.5, 0.75] },
+      slots: { default: '<div v-for="i in 40" :key="i" class="h-8">Item</div>' }
+    });
+
+    const popup = getPopups()[0]!;
+
+    const firstFrameOffset = Number.parseFloat(popup.style.getPropertyValue('--soybean-drawer-snap-point-offset'));
+
+    expect(firstFrameOffset).not.toBeNaN();
+
+    await sleep(700);
+
+    const settledOffset = Number.parseFloat(
+      getPopups()[0]!.style.getPropertyValue('--soybean-drawer-snap-point-offset')
+    );
+
+    expect(settledOffset).toBeCloseTo(firstFrameOffset, 0);
+
+    unmount();
+  });
+
+  it('settles a controlled v-model:snap-point drawer on the dragged snap point', async () => {
+    // Regression: the compact layer bound the forwarded listeners to the popup
+    // instead of the root, so `update:snapPoint` never reached the parent and
+    // the controlled snap point always snapped back to its initial value.
+    const seenSnapPoints: (number | string | null)[] = [];
+
+    const ControlledSnapHarness = defineComponent({
+      name: 'DrawerControlledSnapHarness',
+      setup() {
+        const snapPoint = ref<number | string | null>(0.5);
+
+        return () =>
+          h(
+            SDrawer,
+            {
+              open: true,
+              snapPoints: [0.25, 0.5, 0.75],
+              snapPoint: snapPoint.value,
+              'onUpdate:snapPoint': (value: number | string | null) => {
+                seenSnapPoints.push(value);
+                snapPoint.value = value;
+              },
+              title: 'Controlled Snap'
+            },
+            { default: () => Array.from({ length: 40 }, (_, index) => h('div', { key: index }, 'Item')) }
+          );
+      }
+    });
+
+    const { unmount } = await renderComponent(ControlledSnapHarness);
+
+    await sleep(700);
+
+    // the controlled 0.5 snap point must not be clobbered on open
+    expect(seenSnapPoints).toHaveLength(0);
+
+    const popup = getPopups()[0]!;
+    const popupHeightValue = Number.parseFloat(popup.style.getPropertyValue('--soybean-drawer-height'));
+    const expectedOffset = (fraction: number) => popupHeightValue - fraction * window.innerHeight;
+
+    expect(Number.parseFloat(popup.style.getPropertyValue('--soybean-drawer-snap-point-offset'))).toBeCloseTo(
+      expectedOffset(0.5),
+      0
+    );
+
+    const from = popupDragPoint(popup);
+
+    // drag down 25% of the viewport: 0.5 -> 0.25
+    await drag(from, { x: from.x, y: from.y + Math.round(window.innerHeight * 0.25) });
+    await sleep(700);
+
+    expect(seenSnapPoints.at(-1)).toBe(0.25);
+    expect(Number.parseFloat(getPopups()[0]!.style.getPropertyValue('--soybean-drawer-snap-point-offset'))).toBeCloseTo(
+      expectedOffset(0.25),
+      0
+    );
+
+    unmount();
+  });
+
   it('fades the overlay while dragging towards close and restores it on release', async () => {
     const { unmount } = await renderComponent(SDrawer, {
       props: {

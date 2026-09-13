@@ -11,8 +11,8 @@ const snapPoint = ref<number | string | null>(0.5);
     v-model:open="open"
     v-model:snap-point="snapPoint"
     title="Snap Points"
-    description="Drag the handle, or release the drawer, to move between the 50% and 90% snap levels."
-    :snap-points="[0.5, 0.9]"
+    description="Drag the handle, or release the drawer, to move between the 25%, 50%, and 75% snap levels."
+    :snap-points="[0.25, 0.5, 0.75]"
   >
     <template #trigger>
       <SButton variant="pure">Open</SButton>

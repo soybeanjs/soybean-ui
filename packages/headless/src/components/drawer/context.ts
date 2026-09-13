@@ -109,9 +109,11 @@ export function useDrawer(params: DrawerRootContextParams): DrawerRootContext {
       hasBeenOpened.value = true;
       swipeAreaActive.value = false;
       applySwipeProgress(0);
-      // Reopening starts from the default snap. Resetting here (not on close)
+      // An already-active snap point (bound via the controlled prop or left
+      // over from the previous session) persists across reopen; the default
+      // snap only fills in when none is active. Resetting here (not on close)
       // keeps layout vars stable while the exit animation is still running.
-      setActiveSnapPoint(defaultSnapPoint.value ?? null);
+      setActiveSnapPoint(snapPoint.value ?? defaultSnapPoint.value ?? null);
       return;
     }
 
