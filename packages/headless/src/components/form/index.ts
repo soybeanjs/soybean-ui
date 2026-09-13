@@ -9,7 +9,7 @@ export { default as FormDescription } from './form-description.vue';
 export { default as FormError } from './form-error.vue';
 
 export { provideFormUi, provideFormFieldUi } from './context';
-export { useForm, provideFormSub, useFormSub } from './use-form';
+export { useForm, useFormSub } from './use-form';
 
 export type { StandardSchemaV1 } from '@tanstack/vue-form';
 export type {
@@ -34,6 +34,8 @@ export type {
   FormValuesSchema,
   FormValidateMode,
   FormFieldValidator,
+  FormFieldValidate,
+  FormFieldValidateSource,
   FormErrors,
   FormFieldMeta,
   FormFieldRegisterOptions,
@@ -43,6 +45,7 @@ export type {
   UseFormOptions,
   UseFormReturn,
   FormApiOf,
+  FormOptionsOf,
   FormFieldComponent,
   FormFieldArrayComponent,
   InferStandardSchemaInput

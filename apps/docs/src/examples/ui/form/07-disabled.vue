@@ -11,7 +11,7 @@ const user = z.object({
 
 const { handleSubmit, SFormField } = useForm({
   schema: user,
-  initialValues: {
+  defaultValues: {
     username: 'soybean',
     city: 'shanghai',
     agreement: true

@@ -1,13 +1,18 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { defineComponent, h, nextTick, ref } from 'vue';
 import type { Ref } from 'vue';
 import { flushPromises, mount } from '@vue/test-utils';
+import type { FormFieldValidate } from '@soybeanjs/headless/form';
 import { z } from 'zod';
 import SFormFieldBase from '@/components/form/form-field-base.vue';
 import SForm from '@/components/form/form.vue';
 import { useForm } from '@/components/form/use-form';
 import SInput from '@/components/input/input.vue';
 import { getA11yViolations } from '../../shared/a11y';
+
+type Equal<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2 ? true : false;
+
+const probeSchema = z.object({ name: z.string(), count: z.number() });
 
 const schema = z.object({
   username: z.string().nonempty('Username is required'),
@@ -16,9 +21,10 @@ const schema = z.object({
 });
 
 type HarnessOptions = {
-  initialValues?: Record<string, unknown>;
-  validate?: (value: unknown) => string | undefined | Promise<string | undefined>;
+  defaultValues?: Record<string, unknown>;
+  validate?: FormFieldValidate<any> | Ref<FormFieldValidate<any>>;
   onSubmitDelay?: number;
+  formOptions?: Record<string, unknown>;
 };
 
 /** 完整字段表单（校验 + 提交捕获） */
@@ -26,6 +32,7 @@ function mountFieldForm(options: HarnessOptions = {}) {
   const submitted = ref<any[]>([]);
   const invalidErrors = ref<Record<string, string> | null>(null);
   let isSubmitting: Ref<boolean> | undefined;
+  let form: any;
 
   const Form = defineComponent({
     setup() {
@@ -33,11 +40,13 @@ function mountFieldForm(options: HarnessOptions = {}) {
         handleSubmit,
         handleReset,
         SFormField,
-        isSubmitting: submitting
+        isSubmitting: submitting,
+        form: formApi
       } = useForm({
         schema,
-        initialValues: options.initialValues as any,
+        defaultValues: options.defaultValues as any,
         validateOnMounted: false,
+        ...(options.formOptions ? { formOptions: options.formOptions as any } : {}),
         onSubmit: async (values: any) => {
           if (options.onSubmitDelay) {
             await new Promise(resolve => setTimeout(resolve, options.onSubmitDelay));
@@ -49,6 +58,7 @@ function mountFieldForm(options: HarnessOptions = {}) {
         }
       });
       isSubmitting = submitting;
+      form = formApi;
       return { handleSubmit, handleReset, SFormField };
     },
     render() {
@@ -76,7 +86,7 @@ function mountFieldForm(options: HarnessOptions = {}) {
 
   const wrapper = mount(Form, { attachTo: document.body });
 
-  return { wrapper, submitted, invalidErrors, isSubmitting };
+  return { wrapper, submitted, invalidErrors, isSubmitting, form };
 }
 
 /** 数组字段表单 */
@@ -85,7 +95,7 @@ function mountArrayForm(options: HarnessOptions = {}) {
     setup() {
       const { handleSubmit, SFormField, SFormFieldArray } = useForm({
         schema,
-        initialValues: (options.initialValues || { emails: ['a@example.com'] }) as any,
+        defaultValues: (options.defaultValues || { emails: ['a@example.com'] }) as any,
         onSubmit: async () => {}
       });
       return { handleSubmit, SFormField, SFormFieldArray };
@@ -103,7 +113,7 @@ function mountArrayForm(options: HarnessOptions = {}) {
                 label: (props: any) => h('span', { 'data-test': 'array-label' }, `Emails (${props.fields.length})`),
                 default: (props: any) => [
                   props.fields.map((field: any, index: number) =>
-                    h('div', { key: index, 'data-test': 'array-item' }, [
+                    h('div', { key: index, 'data-test': 'array-item', 'data-key': field.key }, [
                       h(SInput, { placeholder: `Email ${index + 1}` }),
                       h('button', { type: 'button', onClick: () => props.remove(index) }, 'Remove')
                     ])
@@ -124,6 +134,9 @@ function mountArrayForm(options: HarnessOptions = {}) {
 
 async function submitForm(wrapper: ReturnType<typeof mount>) {
   await wrapper.find('form').trigger('submit');
+  // Schema 和字段级 validator 走引擎的异步槽（带 debounce setTimeout），提交生命周期
+  // 跨真实宏任务，断言前需先刷定时器。
+  await new Promise(resolve => setTimeout(resolve, 10));
   await flushPromises();
   await nextTick();
 }
@@ -167,13 +180,12 @@ describe('SForm', () => {
       wrapper.unmount();
     });
 
-    it('does not leak name / validate / reset to the field wrapper DOM', () => {
+    it('does not leak name / validate to the field wrapper DOM', () => {
       const { wrapper } = mountFieldForm({ validate: value => (value ? undefined : 'custom error') });
       const attrs = wrapper.find('[data-soybean-form-field]').attributes();
 
       expect(attrs.name).toBeUndefined();
       expect(attrs.validate).toBeUndefined();
-      expect(attrs.reset).toBeUndefined();
       wrapper.unmount();
     });
 
@@ -251,6 +263,13 @@ describe('SForm', () => {
       const wrapper = mount(Form);
 
       expect(wrapper.find('[data-soybean-form-label]').attributes('data-probe')).toBe('label-probe');
+      wrapper.unmount();
+    });
+
+    it('forwards advanced TanStack options via formOptions', () => {
+      const { wrapper, form } = mountFieldForm({ formOptions: { formId: 'spec-form' } });
+
+      expect(form.formId).toBe('spec-form');
       wrapper.unmount();
     });
 
@@ -389,8 +408,55 @@ describe('SForm', () => {
       wrapper.unmount();
     });
 
+    it('invokes an async field-level validator once per submit', async () => {
+      let calls = 0;
+      const { wrapper, submitted } = mountFieldForm({
+        validate: value =>
+          new Promise<string | undefined>(resolve => {
+            calls += 1;
+            setTimeout(() => resolve(String(value).length >= 3 ? undefined : 'Too short'), 5);
+          })
+      });
+
+      await wrapper.find('input[placeholder="username"]').setValue('soybean');
+      await wrapper.find('input[placeholder="age"]').setValue(18);
+      await submitForm(wrapper);
+
+      expect(calls).toBe(1);
+      await vi.waitFor(() => expect(submitted.value).toHaveLength(1));
+      wrapper.unmount();
+    });
+
+    it('accepts a Standard Schema as the field-level validate', async () => {
+      const { wrapper, invalidErrors } = mountFieldForm({ validate: z.string().min(5, 'Too short') });
+
+      await wrapper.find('input[placeholder="username"]').setValue('ab');
+      await wrapper.find('input[placeholder="age"]').setValue(18);
+      await submitForm(wrapper);
+
+      expect(invalidErrors.value?.['username']).toBe('Too short');
+      wrapper.unmount();
+    });
+
+    it('rebinds a reactive field-level validate', async () => {
+      const rule = ref<(value: unknown) => string | undefined>(() => undefined);
+      const { wrapper, invalidErrors } = mountFieldForm({ validate: rule });
+
+      await wrapper.find('input[placeholder="username"]').setValue('soybean');
+      await wrapper.find('input[placeholder="age"]').setValue(18);
+      await submitForm(wrapper);
+      expect(invalidErrors.value).toBeNull();
+
+      rule.value = () => 'Changed rule';
+      await wrapper.find('input[placeholder="username"]').setValue('ab');
+      await submitForm(wrapper);
+
+      expect(invalidErrors.value?.['username']).toBe('Changed rule');
+      wrapper.unmount();
+    });
+
     it('resets field values on form reset', async () => {
-      const { wrapper } = mountFieldForm({ initialValues: { username: 'initial', age: 20 } });
+      const { wrapper } = mountFieldForm({ defaultValues: { username: 'initial', age: 20 } });
 
       await wrapper.find('input[placeholder="username"]').setValue('changed');
       expect((wrapper.find('input[placeholder="username"]').element as HTMLInputElement).value).toBe('changed');
@@ -423,7 +489,7 @@ describe('SForm', () => {
 
   describe('field array', () => {
     it('renders array entries from initial values', () => {
-      const wrapper = mountArrayForm({ initialValues: { emails: ['a@example.com', 'b@example.com'] } });
+      const wrapper = mountArrayForm({ defaultValues: { emails: ['a@example.com', 'b@example.com'] } });
 
       expect(wrapper.findAll('[data-test="array-item"]')).toHaveLength(2);
       expect(wrapper.find('[data-test="array-label"]').text()).toBe('Emails (2)');
@@ -431,7 +497,7 @@ describe('SForm', () => {
     });
 
     it('appends a new array entry', async () => {
-      const wrapper = mountArrayForm({ initialValues: { emails: ['a@example.com'] } });
+      const wrapper = mountArrayForm({ defaultValues: { emails: ['a@example.com'] } });
 
       await wrapper.get('[data-test="append-btn"]').trigger('click');
       await nextTick();
@@ -441,7 +507,7 @@ describe('SForm', () => {
     });
 
     it('removes an array entry', async () => {
-      const wrapper = mountArrayForm({ initialValues: { emails: ['a@example.com', 'b@example.com'] } });
+      const wrapper = mountArrayForm({ defaultValues: { emails: ['a@example.com', 'b@example.com'] } });
 
       await wrapper
         .findAll('button[type="button"]')
@@ -453,14 +519,82 @@ describe('SForm', () => {
       wrapper.unmount();
     });
 
-    it('validates array field values', async () => {
-      const wrapper = mountArrayForm({ initialValues: { emails: [] } });
+    it('keeps array entry keys stable across removal', async () => {
+      const wrapper = mountArrayForm({ defaultValues: { emails: ['a@example.com', 'b@example.com'] } });
 
-      await wrapper.find('form').trigger('submit');
-      await flushPromises();
+      const keysBefore = wrapper.findAll('[data-test="array-item"]').map(item => item.attributes('data-key'));
+
+      await wrapper
+        .findAll('button[type="button"]')
+        .find(b => b.text() === 'Remove')!
+        .trigger('click');
       await nextTick();
 
+      const keysAfter = wrapper.findAll('[data-test="array-item"]').map(item => item.attributes('data-key'));
+
+      expect(keysAfter).toEqual(keysBefore.slice(1));
+      wrapper.unmount();
+    });
+
+    it('validates array field values', async () => {
+      const wrapper = mountArrayForm({ defaultValues: { emails: [] } });
+
+      await submitForm(wrapper);
+
       expect(wrapper.find('[data-soybean-form-error]').text()).toBe('At least one email is required');
+      wrapper.unmount();
+    });
+  });
+
+  describe('type inference', () => {
+    it('infers Values from the schema', async () => {
+      const submitted: any[] = [];
+      const Form = defineComponent({
+        setup() {
+          const ctx = useForm({
+            schema: probeSchema,
+            defaultValues: { name: 'probe', count: 1 },
+            onSubmit: async values => {
+              const check: Equal<typeof values, { name: string; count: number }> = true;
+              void check;
+              submitted.push(values);
+            }
+          });
+          return { handleSubmit: ctx.handleSubmit };
+        },
+        render() {
+          return h('form', { onSubmit: this.handleSubmit });
+        }
+      });
+      const wrapper = mount(Form, { attachTo: document.body });
+      await submitForm(wrapper);
+
+      expect(submitted).toEqual([{ name: 'probe', count: 1 }]);
+      wrapper.unmount();
+    });
+
+    it('infers Values from defaultValues when no schema is given', async () => {
+      const submitted: any[] = [];
+      const Form = defineComponent({
+        setup() {
+          const ctx = useForm({
+            defaultValues: { name: 'probe', count: 1 },
+            onSubmit: async values => {
+              const check: Equal<typeof values, { name: string; count: number }> = true;
+              void check;
+              submitted.push(values);
+            }
+          });
+          return { handleSubmit: ctx.handleSubmit };
+        },
+        render() {
+          return h('form', { onSubmit: this.handleSubmit });
+        }
+      });
+      const wrapper = mount(Form, { attachTo: document.body });
+      await submitForm(wrapper);
+
+      expect(submitted).toEqual([{ name: 'probe', count: 1 }]);
       wrapper.unmount();
     });
   });

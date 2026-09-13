@@ -8,7 +8,15 @@ import type {
   Ref,
   SlotsType
 } from 'vue';
-import type { DeepKeys, DeepKeysOfType, DeepValue, FormApi, StandardSchemaV1, VueFormApi } from '@tanstack/vue-form';
+import type {
+  DeepKeys,
+  DeepKeysOfType,
+  DeepValue,
+  FormApi,
+  FormOptions,
+  StandardSchemaV1,
+  VueFormApi
+} from '@tanstack/vue-form';
 import type { BaseProps, DataOrientation, MaybePromise, ToContext, UiClass } from '../../types';
 import type { LabelProps } from '../label/types';
 
@@ -27,7 +35,7 @@ export type FormValuesSchema = StandardSchemaV1<FormValues, FormValues>;
 /**
  * When validation runs relative to user interaction.
  */
-export type FormValidateMode = 'blur' | 'input' | 'change' | 'submit';
+export type FormValidateMode = 'blur' | 'change' | 'submit';
 
 /**
  * Field-level validator function. Return a string to flag the field as invalid.
@@ -35,7 +43,8 @@ export type FormValidateMode = 'blur' | 'input' | 'change' | 'submit';
 export type FormFieldValidator<Value> = (value: Value) => MaybePromise<string | undefined>;
 
 /**
- * Flattened form errors keyed by field path.
+ * Flattened form errors keyed by field path. Root-level schema issues (no field path)
+ * are exposed under the `_form` key.
  */
 export type FormErrors = Record<string, string>;
 
@@ -65,32 +74,27 @@ export interface FormFieldMeta {
 }
 
 /**
- * Options for the TanStack-backed `useForm`.
+ * Options for the TanStack-backed `useForm`. `Values` is inferred from `schema` when
+ * provided, otherwise from `defaultValues`.
  */
-export interface UseFormOptions<
-  S extends FormValuesSchema = FormValuesSchema,
-  Values extends FormValues = InferStandardSchemaInput<S>
-> {
+export interface UseFormOptions<Values extends FormValues = FormValues> {
   /**
-   * Standard Schema compatible validator (Zod / Valibot / ...).
+   * Standard Schema compatible validator (Zod / Valibot / ...). When omitted the form
+   * runs on field-level validators only and `Values` falls back to the open
+   * `FormValues` record unless inferred from `defaultValues` or provided explicitly.
    */
-  schema: S;
+  schema?: StandardSchemaV1<Values, unknown>;
   /**
-   * Initial values of the form.
+   * Default values of the form; also the baseline restored by `handleReset`
+   * (TanStack `defaultValues` internally).
    */
-  initialValues?: NoInfer<Values>;
+  defaultValues?: NoInfer<Values>;
   /**
-   * Validation timing before the first submit attempt.
+   * Validation timing of the schema and field-level validators.
    *
    * @default 'submit'
    */
   validateMode?: FormValidateMode;
-  /**
-   * Validation timing after the first submit attempt.
-   *
-   * @default 'change'
-   */
-  reValidateMode?: FormValidateMode;
   /**
    * Whether to validate when the form mounts.
    */
@@ -103,20 +107,39 @@ export interface UseFormOptions<
    * Callback invoked with flattened errors when submission fails.
    */
   onInvalid?: (errors: FormErrors) => void;
+  /**
+   * TanStack `FormOptions` passthrough for advanced tuning (`asyncDebounceMs`,
+   * `canSubmitWhenInvalid`, `listeners`, `formId`, ...). Applied before the
+   * wrapper-owned fields, which always win; validation stays driven by `schema`,
+   * `validateMode` and field-level `validate`.
+   */
+  formOptions?: FormOptionsOf<Values>;
 }
+
+/**
+ * Field-level validator: a sync or async function, or a Standard Schema validator
+ * (Zod / Valibot / ...) run by the engine against the field value.
+ */
+export type FormFieldValidate<Value> = FormFieldValidator<Value> | StandardSchemaV1<Value, unknown>;
+
+/**
+ * Accepted shapes of a field-level validator: the validator itself, or a Ref /
+ * ComputedRef of it (resolving to `undefined` when unset) for reactive rebinding.
+ */
+export type FormFieldValidateSource<Value> =
+  | FormFieldValidate<Value>
+  | Ref<FormFieldValidate<Value> | undefined>
+  | ComputedRef<FormFieldValidate<Value> | undefined>;
 
 /**
  * Registration options of a single field.
  */
 export interface FormFieldRegisterOptions<Value> {
   /**
-   * Field-level validator.
+   * Field-level validator. May be a sync or async function, a Standard Schema
+   * validator, or a Ref / ComputedRef of either for reactive rebinding.
    */
-  validate?: FormFieldValidator<Value>;
-  /**
-   * Hook invoked after the form resets.
-   */
-  reset?: () => void;
+  validate?: FormFieldValidateSource<Value>;
 }
 
 /**
@@ -219,26 +242,20 @@ export interface FormFieldArrayStates<Values extends FormValues, Name extends De
 export interface UseFormReturn<Values extends FormValues = FormValues> {
   /**
    * TanStack FormApi (Vue flavored, with `Field` / `Subscribe` / `useSelector`).
+   * For reactive state reads use `form.useSelector(state => ...)`; `form.state`
+   * itself is a TanStack Store snapshot without Vue reactivity.
    */
   form: FormApiOf<Values>;
-  /**
-   * Reactive form state of the TanStack form (values / isSubmitting / submissionAttempts / errorMap / fieldMeta...).
-   */
-  state: FormApiOf<Values>['state'];
   /**
    * Whether the form is currently submitting.
    */
   isSubmitting: Readonly<Ref<boolean>>;
   /**
-   * Current validation timing, `validateMode` before the first submit attempt, `reValidateMode` after.
-   */
-  validateTiming: ComputedRef<FormValidateMode>;
-  /**
    * Submit handler bound to the form element.
    */
   handleSubmit: (event?: Event) => Promise<void>;
   /**
-   * Reset handler bound to the form element.
+   * Reset handler bound to the form element; restores `defaultValues`.
    */
   handleReset: (event?: Event) => void;
   /**
@@ -258,17 +275,42 @@ export interface UseFormReturn<Values extends FormValues = FormValues> {
 }
 
 /**
- * TanStack FormApi instantiation used by SoybeanUI forms.
+ * TanStack `FormOptions` passthrough accepted by SoybeanUI forms: instantiated with the
+ * same validator slots as `FormApiOf`, minus the fields the wrapper owns
+ * (`defaultValues` / `validators` / `onSubmit` / `onSubmitInvalid`).
+ */
+export type FormOptionsOf<Values extends FormValues = FormValues> = Omit<
+  FormOptions<
+    Values,
+    StandardSchemaV1<Values, unknown> | undefined,
+    undefined,
+    StandardSchemaV1<Values, unknown> | undefined,
+    undefined,
+    StandardSchemaV1<Values, unknown> | undefined,
+    undefined,
+    StandardSchemaV1<Values, unknown> | undefined,
+    undefined,
+    undefined,
+    undefined,
+    never
+  >,
+  'defaultValues' | 'validators' | 'onSubmit' | 'onSubmitInvalid'
+>;
+
+/**
+ * TanStack FormApi instantiation used by SoybeanUI forms: the schema is registered on
+ * the async validator slots (which also accept sync returns) and, with
+ * `validateOnMounted`, on the sync `onMount` slot.
  */
 export type FormApiOf<Values extends FormValues = FormValues> = FormApi<
   Values,
   StandardSchemaV1<Values, unknown> | undefined,
-  StandardSchemaV1<Values, unknown> | undefined,
   undefined,
   StandardSchemaV1<Values, unknown> | undefined,
   undefined,
   StandardSchemaV1<Values, unknown> | undefined,
   undefined,
+  StandardSchemaV1<Values, unknown> | undefined,
   undefined,
   undefined,
   undefined,
@@ -277,12 +319,12 @@ export type FormApiOf<Values extends FormValues = FormValues> = FormApi<
   VueFormApi<
     Values,
     StandardSchemaV1<Values, unknown> | undefined,
-    StandardSchemaV1<Values, unknown> | undefined,
     undefined,
     StandardSchemaV1<Values, unknown> | undefined,
     undefined,
     StandardSchemaV1<Values, unknown> | undefined,
     undefined,
+    StandardSchemaV1<Values, unknown> | undefined,
     undefined,
     undefined,
     undefined,

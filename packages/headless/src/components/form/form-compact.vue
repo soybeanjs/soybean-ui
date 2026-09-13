@@ -2,7 +2,6 @@
 import { toContext } from '../../shared';
 import { provideFormCompactContext, useFormUi } from './context';
 import type { FormCompactProps } from './types';
-import { provideFormSub } from './use-form';
 
 defineOptions({
   name: 'FormCompact'
@@ -25,8 +24,6 @@ provideFormCompactContext({
     'errorProps'
   ])
 });
-
-provideFormSub();
 </script>
 
 <template>

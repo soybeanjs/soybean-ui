@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, isRef } from 'vue';
 import { keysOf } from '../../shared';
 import { useOmitProps } from '../../composables';
 import FormFieldBaseCompact from './form-field-base-compact.vue';
@@ -16,12 +16,13 @@ const slots = defineSlots<FormFieldArrayCompactSlots<any, any>>();
 
 const { useFieldArray } = useFormSub();
 
-const forwardedProps = useOmitProps(props, ['name', 'validate', 'reset']);
+const forwardedProps = useOmitProps(props, ['name', 'validate']);
 
-const state = useFieldArray(props.name, {
-  validate: props.validate,
-  reset: props.reset
-});
+// Unwrap the Ref branch of `validate` and keep it reactive so runtime rule swaps
+// rebind the field validators.
+const validateSource = computed(() => (isRef(props.validate) ? props.validate.value : props.validate));
+
+const state = useFieldArray(props.name, { validate: validateSource });
 
 const slotNames = computed(() => keysOf(slots).filter(name => name !== 'error'));
 

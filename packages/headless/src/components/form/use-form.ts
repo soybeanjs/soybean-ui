@@ -1,4 +1,4 @@
-import { computed, inject, provide, watch } from 'vue';
+import { computed, inject, isRef, provide, watch } from 'vue';
 import type { ComputedRef } from 'vue';
 import { useField as useTanStackField, useForm as useTanStackForm } from '@tanstack/vue-form';
 import type { DeepKeys, DeepValue, StandardSchemaV1 } from '@tanstack/vue-form';
@@ -9,7 +9,8 @@ import type {
   FormFieldMeta,
   FormFieldRegisterOptions,
   FormFieldState,
-  FormFieldValidator,
+  FormFieldValidate,
+  FormFieldValidateSource,
   FormValidateMode,
   FormValues,
   FormValuesSchema,
@@ -19,15 +20,24 @@ import type {
 } from './types';
 
 const USE_FORM_CONTEXT_KEY = Symbol('UseFormContext');
-const USE_FORM_SUB_CONTEXT_KEY = Symbol('UseFormSubContext');
+
+const FORM_ERROR_CAUSES = ['onMount', 'onChange', 'onBlur', 'onSubmit'] as const;
 
 type FormContext = UseFormReturn<FormValues>;
 
-type FormValidator = StandardSchemaV1<FormValues, unknown> | undefined;
+type SchemaValidator<Values extends FormValues> = StandardSchemaV1<Values, unknown>;
 
 type FieldErrorResult = string | undefined | Promise<string | undefined>;
 
-type FieldValidatorAdapter<Value> = (props: { value: Value }) => FieldErrorResult;
+type FieldAsyncValidator<Value> = (props: { value: Value }) => FieldErrorResult;
+
+type FieldValidateSlot<Value> = FieldAsyncValidator<Value> | StandardSchemaV1<Value, unknown>;
+
+type FieldValidatorSlots<Value> = {
+  onChangeAsync?: FieldValidateSlot<Value>;
+  onBlurAsync?: FieldValidateSlot<Value>;
+  onSubmitAsync?: FieldValidateSlot<Value>;
+};
 
 /**
  * TanStack's array ops are typed against resolved `DeepValue` paths; with the open
@@ -76,79 +86,96 @@ function toFieldMeta(meta: { isDirty: boolean; isTouched: boolean; errors: reado
   };
 }
 
-function buildFieldValidators<Value>(mode: FormValidateMode, validate?: FormFieldValidator<Value>) {
-  const validators: Partial<
-    Record<
-      'onChange' | 'onChangeAsync' | 'onBlur' | 'onBlurAsync' | 'onSubmit' | 'onSubmitAsync',
-      FieldValidatorAdapter<Value>
-    >
-  > = {};
-  if (!validate) return validators;
+function isStandardSchema<Value>(validate: FormFieldValidate<Value>): validate is StandardSchemaV1<Value, unknown> {
+  return typeof validate === 'object' && '~standard' in validate;
+}
 
-  const key = toValidatorKey(mode);
-
-  // A validator may return a promise; sync slots must stay sync, so the same adapter is
-  // registered on the matching async slots where TanStack awaits the result.
-  const syncAdapter: FieldValidatorAdapter<Value> = props => {
-    const result = validate(props.value);
-    if (result && typeof (result as PromiseLike<unknown>).then === 'function') return undefined;
-    return result;
-  };
-  const asyncAdapter: FieldValidatorAdapter<Value> = props => Promise.resolve(validate(props.value));
-
-  // Submit-cause validators are always attached so `handleSubmit` awaits field validation.
-  validators.onSubmit = syncAdapter;
-  validators.onSubmitAsync = asyncAdapter;
-  if (key !== 'onSubmit') {
-    validators[key] = syncAdapter;
-    validators[`${key}Async`] = asyncAdapter;
+/** Unwraps Ref / ComputedRef validate sources; plain functions and schemas pass through. */
+function resolveValidateOption<Value>(
+  validate: FormFieldValidateSource<Value> | undefined
+): FormFieldValidate<Value> | undefined {
+  let source = validate;
+  while (isRef(source)) {
+    source = source.value;
   }
+  return source;
+}
 
-  return validators;
+function buildFieldValidators<Value>(
+  mode: FormValidateMode,
+  validate?: FormFieldValidate<Value>
+): FieldValidatorSlots<Value> {
+  // Standard Schema validators are handed to the engine untouched (its async slots run
+  // them natively); functions are wrapped. The async slots accept both returns, so each
+  // validation cause runs the validator exactly once. Submit-cause slots are always
+  // attached so `handleSubmit` awaits field validation.
+  if (!validate) return {};
+  const adapter: FieldValidateSlot<Value> = isStandardSchema(validate) ? validate : props => validate(props.value);
+  const key = toValidatorKey(mode);
+  if (key === 'onSubmit') return { onSubmitAsync: adapter };
+  if (key === 'onBlur') return { onBlurAsync: adapter, onSubmitAsync: adapter };
+  return { onChangeAsync: adapter, onSubmitAsync: adapter };
+}
+
+/** Root-level schema issues carry no field path; the engine groups them under `''`. */
+function rootIssuesOf(formError: unknown): readonly unknown[] | undefined {
+  if (!formError || typeof formError !== 'object') return undefined;
+  return (formError as Record<string, readonly unknown[] | undefined>)[''];
 }
 
 export function useForm<S extends FormValuesSchema, Values extends FormValues = InferStandardSchemaInput<S>>(
-  options: UseFormOptions<S, Values>
+  options: Omit<UseFormOptions<Values>, 'schema'> & { schema: S }
+): UseFormReturn<Values>;
+export function useForm<Values extends FormValues = FormValues>(
+  options: Omit<UseFormOptions<Values>, 'defaultValues'> & { schema?: undefined; defaultValues?: Values }
+): UseFormReturn<Values>;
+export function useForm<Values extends FormValues = FormValues>(
+  options: Omit<UseFormOptions<Values>, 'schema'> & { schema?: FormValuesSchema }
 ): UseFormReturn<Values> {
-  const { schema, validateMode = 'submit', reValidateMode = 'change', validateOnMounted = false } = options;
+  const { validateMode = 'submit', validateOnMounted = false } = options;
 
-  const defaultValues = klona(options.initialValues ?? {}) as FormValues;
+  const defaultValues = klona(options.defaultValues ?? {}) as Values;
 
-  const buildSchemaValidators = (mode: FormValidateMode, includeMount: boolean) => {
-    const key = toValidatorKey(mode);
-    const validators: Partial<
-      Record<'onMount' | 'onChange' | 'onBlur' | 'onSubmit', StandardSchemaV1<FormValues, unknown>>
-    > = {
-      onSubmit: schema
-    };
-    if (key !== 'onSubmit') validators[key] = schema;
-    if (includeMount) validators.onMount = schema;
+  // The overload keeps the schema typed by its own `S`; the engine needs it as a
+  // validator for `Values`, and Standard Schema's covariant `types.input` makes this
+  // the single variance bridge.
+  const schemaValidator = options.schema as SchemaValidator<Values> | undefined;
+
+  const buildSchemaValidators = () => {
+    const key = toValidatorKey(validateMode);
+    const validators: {
+      onMount?: SchemaValidator<Values>;
+      onChangeAsync?: SchemaValidator<Values>;
+      onBlurAsync?: SchemaValidator<Values>;
+      onSubmitAsync?: SchemaValidator<Values>;
+    } = { onSubmitAsync: schemaValidator };
+    if (key === 'onBlur') validators.onBlurAsync = schemaValidator;
+    if (key === 'onChange') validators.onChangeAsync = schemaValidator;
+    if (validateOnMounted) validators.onMount = schemaValidator;
     return validators;
   };
 
-  // `FormApi.update` replaces the whole options object, so keep one reference around to
-  // re-apply `onSubmit` / `onInvalid` when the validation timing switches.
-  const tanStackOptions = {
-    defaultValues,
-    validators: buildSchemaValidators(validateMode, validateOnMounted),
-    onSubmit: ({ value }: { value: FormValues }) => options.onSubmit?.(value as Values),
-    onSubmitInvalid: () => options.onInvalid?.(collectErrors())
-  };
-
   const form = useTanStackForm<
-    FormValues,
-    FormValidator,
-    FormValidator,
+    Values,
+    SchemaValidator<Values> | undefined,
     undefined,
-    FormValidator,
+    SchemaValidator<Values> | undefined,
     undefined,
-    FormValidator,
+    SchemaValidator<Values> | undefined,
     undefined,
+    SchemaValidator<Values> | undefined,
     undefined,
     undefined,
     undefined,
     never
-  >(tanStackOptions);
+  >({
+    // The passthrough spreads first so wrapper-owned fields always win.
+    ...options.formOptions,
+    defaultValues,
+    validators: buildSchemaValidators(),
+    onSubmit: ({ value }) => options.onSubmit?.(value),
+    onSubmitInvalid: () => options.onInvalid?.(collectErrors())
+  });
 
   function collectErrors(): FormErrors {
     const errors: FormErrors = {};
@@ -159,39 +186,31 @@ export function useForm<S extends FormValuesSchema, Values extends FormValues = 
         errors[name] = message;
       }
     });
+    const errorMap = form.state.errorMap as Record<string, unknown>;
+    FORM_ERROR_CAUSES.forEach(cause => {
+      const formError = errorMap[cause];
+      const message = typeof formError === 'string' ? formError : firstErrorMessage(rootIssuesOf(formError));
+      if (message) {
+        errors._form ??= message;
+      }
+    });
     return errors;
   }
 
-  // `form.state` is a plain TanStack Store snapshot without Vue reactivity; reactive
-  // reads must go through `useSelector`.
-  const submissionAttempts = form.useSelector(state => state.submissionAttempts);
-  const validateTiming = computed<FormValidateMode>(() =>
-    submissionAttempts.value > 0 ? reValidateMode : validateMode
-  );
-
-  watch(validateTiming, timing => {
-    form.update({ ...tanStackOptions, validators: buildSchemaValidators(timing, false) });
-  });
-
-  const resetCallbacks: (() => void)[] = [];
-
-  function useField<Name extends DeepKeys<FormValues>>(
+  function useField<Name extends DeepKeys<Values>>(
     name: Name,
-    opts?: FormFieldRegisterOptions<DeepValue<FormValues, Name>>
-  ): ComputedRef<FormFieldState<FormValues, Name>> {
-    const validators = computed(() => buildFieldValidators(validateTiming.value, opts?.validate));
+    opts?: FormFieldRegisterOptions<DeepValue<Values, Name>>
+  ): ComputedRef<FormFieldState<Values, Name>> {
+    const resolveValidate = () => resolveValidateOption(opts?.validate);
+    const field = useTanStackField({ form, name, validators: buildFieldValidators(validateMode, resolveValidate()) });
 
-    const field = useTanStackField({ form, name, validators: validators.value });
-
-    watch(validators, value => {
-      field.api.update({ form, name, validators: value });
+    // Ref / ComputedRef validate sources rebind the field validators on change; plain
+    // functions resolve to the same reference and never trigger.
+    watch(resolveValidate, value => {
+      field.api.update({ form, name, validators: buildFieldValidators(validateMode, value) });
     });
 
-    if (opts?.reset) {
-      resetCallbacks.push(opts.reset);
-    }
-
-    return computed<FormFieldState<FormValues, Name>>(() => ({
+    return computed<FormFieldState<Values, Name>>(() => ({
       name,
       value: field.state.value,
       meta: toFieldMeta(field.state.meta),
@@ -200,41 +219,74 @@ export function useForm<S extends FormValuesSchema, Values extends FormValues = 
     }));
   }
 
-  function useFieldArray<Name extends DeepKeys<FormValues>>(
+  function useFieldArray<Name extends DeepKeys<Values>>(
     name: Name,
-    opts?: FormFieldRegisterOptions<DeepValue<FormValues, Name>>
-  ): ComputedRef<FormFieldArrayStates<FormValues, Name>> {
-    const validators = computed(() => buildFieldValidators(validateTiming.value, opts?.validate));
-
-    const field = useTanStackField({ form, name, mode: 'array', validators: validators.value });
-
-    watch(validators, value => {
-      field.api.update({ form, name, validators: value });
+    opts?: FormFieldRegisterOptions<DeepValue<Values, Name>>
+  ): ComputedRef<FormFieldArrayStates<Values, Name>> {
+    const resolveValidate = () => resolveValidateOption(opts?.validate);
+    const field = useTanStackField({
+      form,
+      name,
+      mode: 'array',
+      validators: buildFieldValidators(validateMode, resolveValidate())
     });
 
-    if (opts?.reset) {
-      resetCallbacks.push(opts.reset);
-    }
+    watch(resolveValidate, value => {
+      field.api.update({ form, name, validators: buildFieldValidators(validateMode, value) });
+    });
 
     const arrayOps = form as unknown as ArrayValueOps;
 
-    return computed<FormFieldArrayStates<FormValues, Name>>(() => {
+    // Entry keys must survive remove / insert / move, so every op adjusts a parallel key
+    // list positionally; length drift from external mutations (setFieldValue / reset)
+    // is re-synced on read.
+    let keySeed = 0;
+    let entryKeys: string[] = [];
+    const nextKey = () => `${String(name)}-${keySeed++}`;
+
+    return computed<FormFieldArrayStates<Values, Name>>(() => {
       const value: unknown = field.state.value;
       const items = Array.isArray(value) ? [...value] : [];
-      const entryOf = (item: unknown, index: number) => ({ key: `${String(name)}-${index}`, name, value: item });
+      entryKeys = entryKeys.slice(0, items.length);
+      while (entryKeys.length < items.length) {
+        entryKeys.push(nextKey());
+      }
 
       return {
         name,
-        fields: items.map(entryOf),
+        fields: items.map((item, index) => ({ key: entryKeys[index]!, name, value: item })),
         meta: toFieldMeta(field.state.meta),
-        append: item => arrayOps.pushFieldValue(name, item),
-        prepend: item => arrayOps.insertFieldValue(name, 0, item),
-        insert: (index, item) => arrayOps.insertFieldValue(name, index, item),
-        remove: index => arrayOps.removeFieldValue(name, index ?? Math.max(items.length - 1, 0)),
-        swap: (indexA, indexB) => arrayOps.swapFieldValues(name, indexA, indexB),
-        move: (from, to) => arrayOps.moveFieldValues(name, from, to),
+        append: item => {
+          entryKeys.push(nextKey());
+          arrayOps.pushFieldValue(name, item);
+        },
+        prepend: item => {
+          entryKeys.unshift(nextKey());
+          arrayOps.insertFieldValue(name, 0, item);
+        },
+        insert: (index, item) => {
+          entryKeys.splice(index, 0, nextKey());
+          arrayOps.insertFieldValue(name, index, item);
+        },
+        remove: index => {
+          const target = index ?? Math.max(items.length - 1, 0);
+          entryKeys.splice(target, 1);
+          arrayOps.removeFieldValue(name, target);
+        },
+        swap: (indexA, indexB) => {
+          [entryKeys[indexA], entryKeys[indexB]] = [entryKeys[indexB]!, entryKeys[indexA]!];
+          arrayOps.swapFieldValues(name, indexA, indexB);
+        },
+        move: (from, to) => {
+          const [key] = entryKeys.splice(from, 1);
+          entryKeys.splice(to, 0, key!);
+          arrayOps.moveFieldValues(name, from, to);
+        },
         update: (index, item) => arrayOps.replaceFieldValue(name, index, item),
-        replace: nextItems => arrayOps.setFieldValue(name, nextItems)
+        replace: nextItems => {
+          entryKeys = nextItems.map(() => nextKey());
+          arrayOps.setFieldValue(name, nextItems);
+        }
       };
     });
   }
@@ -247,14 +299,11 @@ export function useForm<S extends FormValuesSchema, Values extends FormValues = 
   function handleReset(event?: Event) {
     event?.preventDefault();
     form.reset();
-    resetCallbacks.forEach(reset => reset());
   }
 
-  const context: UseFormReturn<FormValues> = {
+  const context: UseFormReturn<Values> = {
     form,
-    state: form.state,
     isSubmitting: form.useSelector(state => state.isSubmitting),
-    validateTiming,
     handleSubmit,
     handleReset,
     useField,
@@ -263,27 +312,13 @@ export function useForm<S extends FormValuesSchema, Values extends FormValues = 
 
   provide(USE_FORM_CONTEXT_KEY, context);
 
-  // The engine runs on the open `FormValues` record while the public surface re-types the
-  // context with the schema-inferred values; this is the single variance bridge.
-  return context as unknown as UseFormReturn<Values>;
+  return context;
 }
 
 export function useFormSub(): FormContext {
-  const context = inject<FormContext | undefined>(USE_FORM_SUB_CONTEXT_KEY);
+  const context = inject<FormContext | undefined>(USE_FORM_CONTEXT_KEY);
   if (!context) {
     throw new Error('useFormSub must be used within a useForm provider');
   }
   return context;
-}
-
-export function provideFormSub(): FormContext {
-  const parentContext = inject<FormContext | null>(USE_FORM_CONTEXT_KEY, null);
-
-  if (!parentContext) {
-    throw new Error('useFormSub must be used within a useForm provider');
-  }
-
-  provide(USE_FORM_SUB_CONTEXT_KEY, parentContext);
-
-  return parentContext;
 }

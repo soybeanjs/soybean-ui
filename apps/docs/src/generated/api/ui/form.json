@@ -1149,7 +1149,7 @@
         "kind": "props",
         "name": "FormFieldCompactProps",
         "type": "Interface FormFieldCompactProps<Values, Name>",
-        "resolvedType": "{ name: Name; isFieldArray?: boolean; orientation?: DataOrientation; label?: string; description?: string; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps; validate?: FormFieldValidator<DeepValue<Values, Name>>; reset?: (() => void) }",
+        "resolvedType": "{ name: Name; isFieldArray?: boolean; orientation?: DataOrientation; label?: string; description?: string; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps; validate?: FormFieldValidateSource<DeepValue<Values, Name>> }",
         "description": "Properties for the FormFieldCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactprops.props",
         "sourcePath": "packages/headless/src/components/form/types.ts",
@@ -1338,18 +1338,31 @@
           },
           {
             "name": "validate",
-            "type": "FormFieldValidator<DeepValue<Values, Name>>",
+            "type": "FormFieldValidateSource<DeepValue<Values, Name>>",
             "required": false,
-            "description": "Field-level validator.",
+            "description": "Field-level validator. May be a sync or async function, a Standard Schema\nvalidator, or a Ref / ComputedRef of either for reactive rebinding.",
             "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactprops.members.validate",
             "default": null,
             "inheritedFrom": "validate",
             "sourcePath": "packages/headless/src/components/form/types.ts",
             "referencedTypes": [
               {
+                "name": "FormFieldValidateSource",
+                "kind": "typeAlias",
+                "type": "FormFieldValidate<Value> | Ref<FormFieldValidate<Value> | undefined, FormFieldValidate<Value> | undefined> | ComputedRef<FormFieldValidate<Value> | undefined>",
+                "resolvedType": "FormFieldValidate<Value> | Ref<FormFieldValidate<Value> | undefined, FormFieldValidate<Value> | undefined> | ComputedRef<FormFieldValidate<Value> | undefined>",
+                "description": "Accepted shapes of a field-level validator: the validator itself, or a Ref /\nComputedRef of it (resolving to `undefined` when unset) for reactive rebinding.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldvalidatesource",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": ["Value"],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
                 "name": "FormFieldValidator",
                 "kind": "typeAlias",
-                "type": "(value: Value) => MaybePromise<string | undefined>",
+                "type": "(value: DeepValue<Values, Name>) => MaybePromise<string | undefined>",
                 "resolvedType": "(value: Value) => string | Promise<string | undefined> | undefined",
                 "description": "Field-level validator function. Return a string to flag the field as invalid.",
                 "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldvalidator",
@@ -1360,17 +1373,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "reset",
-            "type": "(() => void)",
-            "required": false,
-            "description": "Hook invoked after the form resets.",
-            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactprops.members.reset",
-            "default": null,
-            "inheritedFrom": "reset",
-            "sourcePath": "packages/headless/src/components/form/types.ts",
-            "referencedTypes": []
           }
         ],
         "callables": [],

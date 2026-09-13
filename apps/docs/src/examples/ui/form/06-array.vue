@@ -9,7 +9,7 @@ const user = z.object({
 
 const { handleSubmit, SFormField, SFormFieldArray } = useForm({
   schema: user,
-  initialValues: {
+  defaultValues: {
     name: '',
     emails: ['a@example.com']
   },

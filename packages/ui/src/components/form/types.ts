@@ -11,9 +11,7 @@ import type {
   UseFormReturn as HeadlessUseFormReturn,
   FormFieldComponent,
   FormFieldArrayComponent,
-  FormValues,
-  InferStandardSchemaInput,
-  StandardSchemaV1
+  FormValues
 } from '@soybeanjs/headless/form';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
@@ -81,10 +79,7 @@ export interface FormFieldBaseProps extends FormFieldBaseCompactProps, FormField
  */
 export type FormFieldBaseSlots = FormFieldBaseCompactSlots;
 
-export type UseFormOptions<
-  S extends StandardSchemaV1<FormValues, FormValues>,
-  Values extends FormValues = InferStandardSchemaInput<S>
-> = HeadlessUseFormOptions<S, Values>;
+export type UseFormOptions<Values extends FormValues = FormValues> = HeadlessUseFormOptions<Values>;
 
 export interface UseFormReturn<Values extends FormValues = FormValues> extends HeadlessUseFormReturn<Values> {
   /**
