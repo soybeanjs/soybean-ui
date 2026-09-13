@@ -1,1 +1,1 @@
-export type { ThemeColor, ThemeSize } from '@soybeanjs/theme';
+export type { ThemeColor, ThemeSize } from '@vean/theme';

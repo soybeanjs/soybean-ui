@@ -50,7 +50,7 @@ describe('STimeField', () => {
       const leading = wrapper.find('[data-test="leading"]');
 
       expect(leading.exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-time-field-root]').find('[data-test="leading"]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-time-field-root]').find('[data-test="leading"]').exists()).toBe(true);
 
       wrapper.unmount();
     });
@@ -165,7 +165,7 @@ describe('STimeField', () => {
       await hour.trigger('keydown', { key: 'ArrowRight', preventDefault() {} });
       await nextTick();
 
-      expect(document.activeElement?.getAttribute('data-soybean-date-field-segment')).not.toBe('hour');
+      expect(document.activeElement?.getAttribute('data-vean-date-field-segment')).not.toBe('hour');
 
       wrapper.unmount();
     });
@@ -180,7 +180,7 @@ describe('STimeField', () => {
       await nextTick();
 
       // RTL swaps the physical arrow keys: ArrowLeft moves forward, like ArrowRight in LTR.
-      expect(document.activeElement?.getAttribute('data-soybean-date-field-segment')).not.toBe('hour');
+      expect(document.activeElement?.getAttribute('data-vean-date-field-segment')).not.toBe('hour');
 
       wrapper.unmount();
     });
@@ -264,7 +264,7 @@ describe('STimeField', () => {
     it('applies size variants to the root', () => {
       const wrapper = mountTimeField({ size: 'sm' });
 
-      expect(wrapper.find('[data-soybean-time-field-root]').classes()).toContain('h-7');
+      expect(wrapper.find('[data-vean-time-field-root]').classes()).toContain('h-7');
 
       wrapper.unmount();
     });

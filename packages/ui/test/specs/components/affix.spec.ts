@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { computed, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
-import { AffixContent, AffixPlaceholder, AffixRoot, provideAffixUi } from '@soybeanjs/headless/affix';
+import { AffixContent, AffixPlaceholder, AffixRoot, provideAffixUi } from '@vean/aria/affix';
 import SAffix from '@/components/affix/affix.vue';
 import { getA11yViolations } from '../../shared/a11y';
 

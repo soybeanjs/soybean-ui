@@ -1,11 +1,11 @@
-import { useForm as _useForm } from '@soybeanjs/headless/form';
+import { useForm as _useForm } from '@vean/aria/form';
 import type {
   FormFieldArrayComponent,
   FormFieldComponent,
   FormValues,
   FormValuesSchema,
   InferStandardSchemaInput
-} from '@soybeanjs/headless/form';
+} from '@vean/aria/form';
 import SFormFieldArray from './form-field-array.vue';
 import SFormField from './form-field.vue';
 import type { FormFieldExtraProps, UseFormOptions, UseFormReturn } from './types';

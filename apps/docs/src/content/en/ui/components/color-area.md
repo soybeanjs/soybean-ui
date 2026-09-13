@@ -46,16 +46,16 @@ Use a color area for a saturation/lightness plane inside a color picker (typical
 
 ### Architecture and benchmark differences
 
-`ColorAreaCompact` owns the area/thumb composition while every primitive stays style-free and only the UI wrapper injects the `colorAreaVariants` classes. This mirrors radix-ui-color/shadcn-ui headless split. Ant Design, Element Plus, Mantine and Naive UI ship a full color-picker with an embedded saturation plane; SoybeanUI exposes the area as a standalone configurable primitive with axis-channel, color-space and format control, plus native form inputs and a `size` scale.
+`ColorAreaCompact` owns the area/thumb composition while every primitive stays style-free and only the UI wrapper injects the `colorAreaVariants` classes. This mirrors radix-ui-color/shadcn-ui headless split. Ant Design, Element Plus, Mantine and Naive UI ship a full color-picker with an embedded saturation plane; Vean exposes the area as a standalone configurable primitive with axis-channel, color-space and format control, plus native form inputs and a `size` scale.
 
-| Capability            | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :-------------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| Headless/styled split |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Configurable axes     |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Multiple color spaces |    ✅     |    ✅     |     —      |      —       |   ✅    |    —     |
-| Keyboard interaction  |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| Native form inputs    |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Sizes (6)             |    ✅     |     —     |     —      |      —       |    —    |    —     |
+| Capability            | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :-------------------- | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| Headless/styled split |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Configurable axes     |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Multiple color spaces |  ✅  |    ✅     |     —      |      —       |   ✅    |    —     |
+| Keyboard interaction  |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| Native form inputs    |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Sizes (6)             |  ✅  |     —     |     —      |      —       |    —    |    —     |
 
 `—` = unsupported or a different interaction model (most ship a single combined color-picker).
 

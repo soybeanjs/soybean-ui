@@ -37,7 +37,7 @@ head:
 
 `SSpinner` 是 UI-only 组件——无 headless 层，因为它是 `SIcon`（已有 headless 层）的轻量预设。它应用 `spinnerVariants` `cv()` 配方（color/size）并将其他 `IconProps` 转发给 `SIcon`。这与 shadcn/ui `Spinner` 以图标封装预设样式的做法一致。
 
-| 维度       | SoybeanUI                                 | shadcn/ui `Spinner` | MUI `CircularProgress` | Mantine `Loader` | Ant Design `Spin` |
+| 维度       | Vean                                      | shadcn/ui `Spinner` | MUI `CircularProgress` | Mantine `Loader` | Ant Design `Spin` |
 | :--------- | :---------------------------------------- | :------------------ | :--------------------- | :--------------- | :---------------- |
 | 架构       | UI-only 预设，封装 `SIcon`                | styled SVG          | styled SVG             | styled SVG       | 组件 + 提示文字   |
 | 图标来源   | Iconify `svg-spinners`（可替换）          | 内联 SVG（固定）    | 内联 SVG（固定）       | 内联 SVG（固定） | 内联 SVG（固定）  |

@@ -43,16 +43,16 @@ head:
 
 ### 架构与对标差异
 
-headless 层 `Skeleton` 是无状态基础组件，仅负责装饰性 `aria-hidden` 默认与多态；`SSkeleton` 将全部样式收敛于 `skeletonVariants`。这与 shadcn/ui 的 headless/样式分离一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供带 `paragraph`/`avatar`/`title` 组合 prop 的单一样式化骨架屏。SoybeanUI 保持最小化（单一基础组件），期望使用者以 grid/flex 组合占位——`size` 尺寸体系与 `rounded` 胶囊形状覆盖了单包库作为预设暴露的常见场景。
+headless 层 `Skeleton` 是无状态基础组件，仅负责装饰性 `aria-hidden` 默认与多态；`SSkeleton` 将全部样式收敛于 `skeletonVariants`。这与 shadcn/ui 的 headless/样式分离一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供带 `paragraph`/`avatar`/`title` 组合 prop 的单一样式化骨架屏。Vean 保持最小化（单一基础组件），期望使用者以 grid/flex 组合占位——`size` 尺寸体系与 `rounded` 胶囊形状覆盖了单包库作为预设暴露的常见场景。
 
-| 能力               | SoybeanUI | shadcn/ui | Ant Design Skeleton | Element Plus Skeleton | Mantine Skeleton | Naive UI Skeleton |
-| :----------------- | :-------: | :-------: | :-----------------: | :-------------------: | :--------------: | :---------------: |
-| Headless/样式分离  |    ✅     |    ✅     |          —          |           —           |        —         |         —         |
-| 动画 pulse         |    ✅     |    ✅     |         ✅          |          ✅           |        ✅        |        ✅         |
-| 尺寸变体（6）      |    ✅     |     —     |          —          |          ✅           |        ✅        |         —         |
-| 形状（圆角/胶囊）  |    ✅     |     —     |          —          |           —           |        —         |         —         |
-| 默认 `aria-hidden` |    ✅     |     —     |          —          |           —           |        —         |         —         |
-| `as`/`asChild`     |    ✅     |    ✅     |          —          |           —           |        —         |         —         |
+| 能力               | Vean | shadcn/ui | Ant Design Skeleton | Element Plus Skeleton | Mantine Skeleton | Naive UI Skeleton |
+| :----------------- | :--: | :-------: | :-----------------: | :-------------------: | :--------------: | :---------------: |
+| Headless/样式分离  |  ✅  |    ✅     |          —          |           —           |        —         |         —         |
+| 动画 pulse         |  ✅  |    ✅     |         ✅          |          ✅           |        ✅        |        ✅         |
+| 尺寸变体（6）      |  ✅  |     —     |          —          |          ✅           |        ✅        |         —         |
+| 形状（圆角/胶囊）  |  ✅  |     —     |          —          |           —           |        —         |         —         |
+| 默认 `aria-hidden` |  ✅  |     —     |          —          |           —           |        —         |         —         |
+| `as`/`asChild`     |  ✅  |    ✅     |          —          |           —           |        —         |         —         |
 
 `—` = 不支持或采用不同交互模型。
 

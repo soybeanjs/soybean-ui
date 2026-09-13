@@ -38,9 +38,9 @@ describe('SButton', () => {
       expect(wrapper.find('[data-testid="trailing"]').exists()).toBe(true);
     });
 
-    it('carries the data-soybean-button attribute', () => {
+    it('carries the data-vean-button attribute', () => {
       const wrapper = mount(SButton);
-      expect(wrapper.find('button').attributes('data-soybean-button')).toBeDefined();
+      expect(wrapper.find('button').attributes('data-vean-button')).toBeDefined();
     });
   });
 
@@ -350,9 +350,9 @@ describe('SButtonGroup', () => {
     wrapper.unmount();
   });
 
-  it('carries the data-soybean-button-group attribute', () => {
+  it('carries the data-vean-button-group attribute', () => {
     const wrapper = mountGroup();
-    expect(wrapper.find('.group-root').attributes('data-soybean-button-group')).toBeDefined();
+    expect(wrapper.find('.group-root').attributes('data-vean-button-group')).toBeDefined();
     wrapper.unmount();
   });
 

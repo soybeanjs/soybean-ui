@@ -49,17 +49,17 @@ head:
 
 ### 架构与对标差异
 
-`PopoverCompact` 负责定位器/弹层/箭头/关闭组合，所有基础组件保持零样式，仅由 UI 包装组件注入 `popoverVariants` 类。这与 radix-ui/shadcn-ui 的 headless/样式分离一致，构建于共享 `Popper` 基础组件之上。Ant Design、Element Plus、Mantine、Naive UI 提供带 `placement`/`trigger`/`width` prop 的单一样式化弹出层；SoybeanUI 额外暴露逐槽 `*Props`、`size` 尺寸体系、箭头开关与单包库弹出层通常缺失的 `modal` 模式。
+`PopoverCompact` 负责定位器/弹层/箭头/关闭组合，所有基础组件保持零样式，仅由 UI 包装组件注入 `popoverVariants` 类。这与 radix-ui/shadcn-ui 的 headless/样式分离一致，构建于共享 `Popper` 基础组件之上。Ant Design、Element Plus、Mantine、Naive UI 提供带 `placement`/`trigger`/`width` prop 的单一样式化弹出层；Vean 额外暴露逐槽 `*Props`、`size` 尺寸体系、箭头开关与单包库弹出层通常缺失的 `modal` 模式。
 
-| 能力              | SoybeanUI | shadcn/ui | Ant Design Popover | Element Plus Popover | Mantine Popover | Naive UI Popover |
-| :---------------- | :-------: | :-------: | :----------------: | :------------------: | :-------------: | :--------------: |
-| Headless/样式分离 |    ✅     |    ✅     |         —          |          —           |        —        |        —         |
-| Popper 定位（12） |    ✅     |    ✅     |         ✅         |          ✅          |       ✅        |        ✅        |
-| 箭头              |    ✅     |    ✅     |         —          |          —           |        —        |        —         |
-| 模态模式          |    ✅     |    ✅     |         —          |          —           |        —        |        —         |
-| 关闭按钮          |    ✅     |    ✅     |         —          |          —           |        —        |        —         |
-| 尺寸（6）         |    ✅     |     —     |         —          |          —           |        —        |        —         |
-| 焦点陷阱 + 循环   |    ✅     |    ✅     |         —          |          —           |        —        |        —         |
+| 能力              | Vean | shadcn/ui | Ant Design Popover | Element Plus Popover | Mantine Popover | Naive UI Popover |
+| :---------------- | :--: | :-------: | :----------------: | :------------------: | :-------------: | :--------------: |
+| Headless/样式分离 |  ✅  |    ✅     |         —          |          —           |        —        |        —         |
+| Popper 定位（12） |  ✅  |    ✅     |         ✅         |          ✅          |       ✅        |        ✅        |
+| 箭头              |  ✅  |    ✅     |         —          |          —           |        —        |        —         |
+| 模态模式          |  ✅  |    ✅     |         —          |          —           |        —        |        —         |
+| 关闭按钮          |  ✅  |    ✅     |         —          |          —           |        —        |        —         |
+| 尺寸（6）         |  ✅  |     —     |         —          |          —           |        —        |        —         |
+| 焦点陷阱 + 循环   |  ✅  |    ✅     |         —          |          —           |        —        |        —         |
 
 `—` = 不支持或采用不同交互模型。
 

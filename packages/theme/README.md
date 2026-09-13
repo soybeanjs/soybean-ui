@@ -1,8 +1,8 @@
-# @soybeanjs/theme
+# @vean/theme
 
-Soybean UI 的轻量主题引擎：**最小核心 token → 确定性派生 → 确定性 CSS 生成 → 运行时注入 / SSR 同步**。
+Vean 的轻量主题引擎：**最小核心 token → 确定性派生 → 确定性 CSS 生成 → 运行时注入 / SSR 同步**。
 
-它不依赖运行时魔法，也不做副作用的 DOM 操作。输入一组 `ThemeOptions`，输出一段可直接注入的 CSS 字符串，并附带一套可选的持久化 / SSR 工具，供 `@soybeanjs/ui` 的 `SConfigProvider` 在运行时注入主题。
+它不依赖运行时魔法，也不做副作用的 DOM 操作。输入一组 `ThemeOptions`，输出一段可直接注入的 CSS 字符串，并附带一套可选的持久化 / SSR 工具，供 `@vean/ui` 的 `SConfigProvider` 在运行时注入主题。
 
 ## 特性
 
@@ -16,7 +16,7 @@ Soybean UI 的轻量主题引擎：**最小核心 token → 确定性派生 → 
 ## 安装
 
 ```bash
-pnpm add @soybeanjs/theme
+pnpm add @vean/theme
 ```
 
 ## 快速开始
@@ -24,7 +24,7 @@ pnpm add @soybeanjs/theme
 最直接的使用方式：调用 `createTheme` 生成 CSS 并注入。
 
 ```ts
-import { createTheme } from '@soybeanjs/theme';
+import { createTheme } from '@vean/theme';
 
 const css = createTheme({
   base: 'zinc',
@@ -40,13 +40,13 @@ const css = createTheme({
 document.head.insertAdjacentHTML('beforeend', `<style>${css}</style>`);
 ```
 
-###### 在 `@soybeanjs/ui` 中使用
+###### 在 `@vean/ui` 中使用
 
 大多数场景下你不需要手动调用 `createTheme`。`SConfigProvider` 已内置主题注入，只要你传入 `theme` 配置即可：
 
 ```vue
 <script setup lang="ts">
-import { SConfigProvider } from '@soybeanjs/ui';
+import { SConfigProvider } from '@vean/ui';
 </script>
 
 <template>
@@ -103,7 +103,7 @@ createTheme({
 
 ## API 参考
 
-### 主入口 `@soybeanjs/theme`
+### 主入口 `@vean/theme`
 
 | 导出                                                 | 说明                                            |
 | ---------------------------------------------------- | ----------------------------------------------- |
@@ -115,7 +115,7 @@ createTheme({
 
 类型：`ThemeOptions`、`ThemeConfigState`、`ThemeColor`、`ThemeSize`、`ThemeRadius`、`MenuColor`、`MenuAccent`、`CustomThemeColorPreset`、`StoredThemePreset`、`ThemePresetInput` … 等。
 
-### 子路径 `@soybeanjs/theme/storage`
+### 子路径 `@vean/theme/storage`
 
 本地存储持久化（localStorage，SSR-safe）。
 
@@ -130,7 +130,7 @@ createTheme({
 | `getStoredThemePresets`                                                     | 读取 preset 表                                |
 | `setStoredThemePreset` / `removeStoredThemePreset`                          | 增删单个 preset                               |
 
-### 子路径 `@soybeanjs/theme/ssr`
+### 子路径 `@vean/theme/ssr`
 
 SSR/SSG 兼容工具。
 
@@ -161,7 +161,7 @@ createThemeInitScript({ injectCss: true });
 
 ### 2. 推荐：直接交给 `SConfigProvider`
 
-上述逻辑在 `@soybeanjs/ui` 的 `SConfigProvider` 中已全部封装。应用只需传入环境标志：
+上述逻辑在 `@vean/ui` 的 `SConfigProvider` 中已全部封装。应用只需传入环境标志：
 
 ```vue
 <template>
@@ -173,11 +173,11 @@ createThemeInitScript({ injectCss: true });
 
 设置持久化、CSS 注入、暗色 class 切换均由内部完成；如需首帧应用持久化主题，可在 `<head>` 内联 `createThemeInitScript()`。
 
-## 与 `@soybeanjs/ui` 集成
+## 与 `@vean/ui` 集成
 
 - 运行时主题注入入口：`SConfigProvider`（唯一入口，不额外提供独立 `ThemeProvider`）。
 - 持久化：设置 `persist-theme` 后，主题状态写入 localStorage；`{ name }` 引用解析依赖 `persistTheme`。
-- 主题 UI 消费：在 `SConfigProvider` 后代中使用 `useTheme`（来自 `@soybeanjs/ui`）读取/修改 `base` / `primary` / `radius` / `size` / `mode` 与 preset，无需 prop drilling。
+- 主题 UI 消费：在 `SConfigProvider` 后代中使用 `useTheme`（来自 `@vean/ui`）读取/修改 `base` / `primary` / `radius` / `size` / `mode` 与 preset，无需 prop drilling。
 
 ## 目录结构
 
@@ -200,11 +200,11 @@ packages/theme/src/
 ## 测试
 
 ```bash
-pnpm --filter @soybeanjs/theme test
+pnpm --filter @vean/theme test
 ```
 
 覆盖核心派生确定性、级别偏移、SSR 解析、存储读写等，含快照测试。
 
 ## License
 
-[MIT](https://github.com/soybeanjs/soybean-ui/blob/main/LICENSE)
+[MIT](https://github.com/soybeanjs/vean/blob/main/LICENSE)

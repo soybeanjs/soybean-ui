@@ -52,19 +52,19 @@ head:
 
 ### 架构与对标差异
 
-`AccordionCompact` 负责 `items` 迭代与默认内容装配，所有基础组件保持零样式，仅由 UI 包装组件注入 `accordionVariants` 类。这与 shadcn/ui 的 headless 分离及 Radix 的 `Accordion` 原语一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供 `defaultActiveKey`/`activeKey` 配置驱动的折叠。SoybeanUI 的根使用 `useSelection`，使单选/多选共享同一状态模型，方向键导航复用菜单家族一致的 `useArrowNavigation` 组合式函数。
+`AccordionCompact` 负责 `items` 迭代与默认内容装配，所有基础组件保持零样式，仅由 UI 包装组件注入 `accordionVariants` 类。这与 shadcn/ui 的 headless 分离及 Radix 的 `Accordion` 原语一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供 `defaultActiveKey`/`activeKey` 配置驱动的折叠。Vean 的根使用 `useSelection`，使单选/多选共享同一状态模型，方向键导航复用菜单家族一致的 `useArrowNavigation` 组合式函数。
 
-| 能力                        | SoybeanUI | shadcn/ui | Ant Design Collapse | Element Plus Collapse | Mantine Accordion | Naive UI Collapse |
-| :-------------------------- | :-------: | :-------: | :-----------------: | :-------------------: | :---------------: | :---------------: |
-| Headless/样式分离           |    ✅     |    ✅     |          —          |           —           |         —         |         —         |
-| 单选 / 多选                 |    ✅     |    ✅     |         ✅          |          ✅           |        ✅         |        ✅         |
-| 可全部关闭                  |    ✅     |    ✅     |         ✅          |          ✅           |        ✅         |        ✅         |
-| 方向键导航                  |    ✅     |    ✅     |         ✅          |          ✅           |        ✅         |        ✅         |
-| 自定义触发器图标            |    ✅     |     —     |         ✅          |          ✅           |        ✅         |        ✅         |
-| 数据驱动 `items`（Compact） |    ✅     |     —     |         ✅          |          ✅           |        ✅         |        ✅         |
-| 禁用条目                    |    ✅     |    ✅     |         ✅          |          ✅           |        ✅         |        ✅         |
-| 方向（v/h）                 |    ✅     |     —     |         ✅          |          ✅           |         —         |         —         |
-| `as`/`asChild` 触发器       |    ✅     |    ✅     |          —          |           —           |         —         |         —         |
+| 能力                        | Vean | shadcn/ui | Ant Design Collapse | Element Plus Collapse | Mantine Accordion | Naive UI Collapse |
+| :-------------------------- | :--: | :-------: | :-----------------: | :-------------------: | :---------------: | :---------------: |
+| Headless/样式分离           |  ✅  |    ✅     |          —          |           —           |         —         |         —         |
+| 单选 / 多选                 |  ✅  |    ✅     |         ✅          |          ✅           |        ✅         |        ✅         |
+| 可全部关闭                  |  ✅  |    ✅     |         ✅          |          ✅           |        ✅         |        ✅         |
+| 方向键导航                  |  ✅  |    ✅     |         ✅          |          ✅           |        ✅         |        ✅         |
+| 自定义触发器图标            |  ✅  |     —     |         ✅          |          ✅           |        ✅         |        ✅         |
+| 数据驱动 `items`（Compact） |  ✅  |     —     |         ✅          |          ✅           |        ✅         |        ✅         |
+| 禁用条目                    |  ✅  |    ✅     |         ✅          |          ✅           |        ✅         |        ✅         |
+| 方向（v/h）                 |  ✅  |     —     |         ✅          |          ✅           |         —         |         —         |
+| `as`/`asChild` 触发器       |  ✅  |    ✅     |          —          |           —           |         —         |         —         |
 
 `—` = 不支持或采用不同交互模型。
 

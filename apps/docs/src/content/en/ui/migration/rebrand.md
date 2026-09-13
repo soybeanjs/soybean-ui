@@ -169,10 +169,10 @@ The script is zero-dependency, Node 18+, dry-run by default, idempotent, and ski
 
 ```diff
 - npx sbean add button
-+ npx vean add button
++ npx @vean/cli@latest add button
 
 - pnpm sbean init
-+ pnpm vean init
++ pnpm dlx @vean/cli@latest init
 ```
 
 Rename the config file as well:

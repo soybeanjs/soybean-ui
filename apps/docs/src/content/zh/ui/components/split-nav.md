@@ -27,7 +27,7 @@ head:
 - 🧩 复用 `TreeMenuCompact`（竖向子级）与 `TreeNavCompact`（横向子级）
 - 🎨 6 档尺寸 + 样式注入 — `size` 从 xs 到 2xl；`class` / `ui` 覆盖各命名插槽
 - ✏️ 高度可定制 — `first-level-item` / `item` / `item-leading` / `item-trailing` 插槽
-- ♿ 无障碍 — `role="menubar"` / `menuitem`、`data-soybean-split-nav-*` 数据属性、RTL `dir`
+- ♿ 无障碍 — `role="menubar"` / `menuitem`、`data-vean-split-nav-*` 数据属性、RTL `dir`
 
 ## 组件家族
 
@@ -58,12 +58,12 @@ head:
 
 `SSplitNav` 是薄样式包装。无样式的 `SplitNavRoot` 负责 mode 切换、激活路径（`findActivePath`）以及叶子/父级选择语义。一级菜单是独立的 RovingFocus 列表，而不是 TreeMenu，因此父级用于切换子面板而不是就地展开，也**不会**把自己写成选中叶子。竖向一级是「上图标、下文本」的紧凑轨道（超出文本省略）；横向一级仍是图标+文本横排。竖向子级交给 `TreeMenuCompact`，用 `treeMenuVariants` 注入，并带独立栏宽和 `v-model:collapsed`；横向子级交给 `TreeNavCompact`，用 `treeNavVariants` 注入，外观与 `STreeNav` 一致。`class` 作用在独立的 `dual-vertical` 面板上；混合模式以各自 Teleport 片段渲染。
 
-| 能力              | SoybeanUI | Ant Design | Element Plus | Naive UI |
-| :---------------- | :-------: | :--------: | :----------: | :------: |
-| 多种布局模式      |    ✅     |     ⚠️     |      ⚠️      |    —     |
-| 挂载到外部元素    |    ✅     |     —      |      —       |    —     |
-| headless/样式分离 |    ✅     |     —      |      —       |    —     |
-| 一级方向键导航    |    ✅     |     ⚠️     |      ⚠️      |    —     |
+| 能力              | Vean | Ant Design | Element Plus | Naive UI |
+| :---------------- | :--: | :--------: | :----------: | :------: |
+| 多种布局模式      |  ✅  |     ⚠️     |      ⚠️      |    —     |
+| 挂载到外部元素    |  ✅  |     —      |      —       |    —     |
+| headless/样式分离 |  ✅  |     —      |      —       |    —     |
+| 一级方向键导航    |  ✅  |     ⚠️     |      ⚠️      |    —     |
 
 ### 注意事项
 
@@ -105,8 +105,8 @@ head:
 ```vue
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SSplitNav } from '@soybeanjs/ui';
-import type { SplitNavOptionData } from '@soybeanjs/ui';
+import { SSplitNav } from '@vean/ui';
+import type { SplitNavOptionData } from '@vean/ui';
 
 const active = shallowRef('');
 

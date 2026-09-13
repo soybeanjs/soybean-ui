@@ -169,10 +169,10 @@ node path/to/vean-codemod/migrate.mjs . --write --new-domain=veanui.com
 
 ```diff
 - npx sbean add button
-+ npx vean add button
++ npx @vean/cli@latest add button
 
 - pnpm sbean init
-+ pnpm vean init
++ pnpm dlx @vean/cli@latest init
 ```
 
 配置文件同步改名：

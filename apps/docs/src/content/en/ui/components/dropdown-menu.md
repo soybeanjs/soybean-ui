@@ -50,17 +50,17 @@ Use a dropdown for a compact action menu. For navigation menus use `nav-menu`; f
 
 ### Architecture and benchmark differences
 
-The dropdown-menu family composes the shared `menu` primitives (`MenuOptions`/`MenuItem`) inside a popover portal; the UI wrappers only inject the shared `menuVariants` classes (via `provideMenuUi`) and forward props/slots. This mirrors radix-ui/shadcn-ui's headless menu split. Ant Design, Element Plus, Mantine and Naive UI ship a single styled dropdown with `items`/`onSelect` props; SoybeanUI additionally exposes dedicated checkbox/radio/wrapper variants, a `size` scale, and full keyboard/typeahead behavior through the shared menu layer.
+The dropdown-menu family composes the shared `menu` primitives (`MenuOptions`/`MenuItem`) inside a popover portal; the UI wrappers only inject the shared `menuVariants` classes (via `provideMenuUi`) and forward props/slots. This mirrors radix-ui/shadcn-ui's headless menu split. Ant Design, Element Plus, Mantine and Naive UI ship a single styled dropdown with `items`/`onSelect` props; Vean additionally exposes dedicated checkbox/radio/wrapper variants, a `size` scale, and full keyboard/typeahead behavior through the shared menu layer.
 
-| Capability            | SoybeanUI | shadcn/ui | Ant Design Dropdown | Element Plus Dropdown | Mantine Menu | Naive UI Dropdown |
-| :-------------------- | :-------: | :-------: | :-----------------: | :-------------------: | :----------: | :---------------: |
-| Headless/styled split |    ✅     |    ✅     |          —          |           —           |      —       |         —         |
-| Data-driven items     |    ✅     |    ✅     |         ✅          |          ✅           |      ✅      |        ✅         |
-| Checkbox / radio      |    ✅     |    ✅     |          —          |           —           |      ✅      |         —         |
-| Trigger click/hover   |    ✅     |    ✅     |         ✅          |          ✅           |      ✅      |        ✅         |
-| Keyboard + typeahead  |    ✅     |    ✅     |          —          |           —           |      —       |         —         |
-| Submenu               |    ✅     |    ✅     |         ✅          |          ✅           |      ✅      |        ✅         |
-| Sizes (6)             |    ✅     |     —     |          —          |           —           |      —       |         —         |
+| Capability            | Vean | shadcn/ui | Ant Design Dropdown | Element Plus Dropdown | Mantine Menu | Naive UI Dropdown |
+| :-------------------- | :--: | :-------: | :-----------------: | :-------------------: | :----------: | :---------------: |
+| Headless/styled split |  ✅  |    ✅     |          —          |           —           |      —       |         —         |
+| Data-driven items     |  ✅  |    ✅     |         ✅          |          ✅           |      ✅      |        ✅         |
+| Checkbox / radio      |  ✅  |    ✅     |          —          |           —           |      ✅      |         —         |
+| Trigger click/hover   |  ✅  |    ✅     |         ✅          |          ✅           |      ✅      |        ✅         |
+| Keyboard + typeahead  |  ✅  |    ✅     |          —          |           —           |      —       |         —         |
+| Submenu               |  ✅  |    ✅     |         ✅          |          ✅           |      ✅      |        ✅         |
+| Sizes (6)             |  ✅  |     —     |          —          |           —           |      —       |         —         |
 
 `—` = unsupported or a different interaction model.
 

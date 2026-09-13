@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButton, SPopover } from '@soybeanjs/ui';
-import type { Placement } from '@soybeanjs/ui';
+import { SButton, SPopover } from '@vean/ui';
+import type { Placement } from '@vean/ui';
 
 const placements: Placement[] = [
   'top-start',

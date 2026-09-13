@@ -46,15 +46,15 @@ head:
 
 ### 架构与对标差异
 
-`VirtualizerRoot` 持有 `@tanstack/vue-virtual` 实例并计算 `virtualItems`/`totalSize`/`contentStyle`，`SVirtualizer` 只把虚拟条目迭代进 `item` 插槽。这把测量/定位引擎委托给行业标准的 TanStack Virtual（shadcn-ui/TanStack 亦采用同一引擎）。Ant Design（`rc-virtual-list`）、Element Plus（`el-table-v2`）、Mantine（`ListVirtualization`）与 Naive UI（`virtual-list`）提供各自虚拟引擎；SoybeanUI 暴露薄封装、引擎无关的包装组件，任意 `@tanstack/vue-virtual` 选项均可透传。
+`VirtualizerRoot` 持有 `@tanstack/vue-virtual` 实例并计算 `virtualItems`/`totalSize`/`contentStyle`，`SVirtualizer` 只把虚拟条目迭代进 `item` 插槽。这把测量/定位引擎委托给行业标准的 TanStack Virtual（shadcn-ui/TanStack 亦采用同一引擎）。Ant Design（`rc-virtual-list`）、Element Plus（`el-table-v2`）、Mantine（`ListVirtualization`）与 Naive UI（`virtual-list`）提供各自虚拟引擎；Vean 暴露薄封装、引擎无关的包装组件，任意 `@tanstack/vue-virtual` 选项均可透传。
 
-| 能力         | SoybeanUI | TanStack | Ant Design | Element Plus | Mantine | Naive UI |
-| :----------- | :-------: | :------: | :--------: | :----------: | :-----: | :------: |
-| 虚拟引擎     |    ✅     |    ✅    |     ✅     |      ✅      |   ✅    |    ✅    |
-| 数据驱动条目 |    ✅     |    ✅    |     ✅     |      ✅      |   ✅    |    ✅    |
-| 水平模式     |    ✅     |    ✅    |     ✅     |      ✅      |    —    |    —     |
-| 动态测量     |    ✅     |    ✅    |     —      |      —       |    —    |    —     |
-| 完整引擎选项 |    ✅     |    ✅    |     —      |      —       |    —    |    —     |
+| 能力         | Vean | TanStack | Ant Design | Element Plus | Mantine | Naive UI |
+| :----------- | :--: | :------: | :--------: | :----------: | :-----: | :------: |
+| 虚拟引擎     |  ✅  |    ✅    |     ✅     |      ✅      |   ✅    |    ✅    |
+| 数据驱动条目 |  ✅  |    ✅    |     ✅     |      ✅      |   ✅    |    ✅    |
+| 水平模式     |  ✅  |    ✅    |     ✅     |      ✅      |    —    |    —     |
+| 动态测量     |  ✅  |    ✅    |     —      |      —       |    —    |    —     |
+| 完整引擎选项 |  ✅  |    ✅    |     —      |      —       |    —    |    —     |
 
 `—` = 不支持或采用不同交互模型。
 

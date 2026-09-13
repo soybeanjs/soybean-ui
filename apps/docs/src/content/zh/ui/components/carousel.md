@@ -53,17 +53,17 @@ head:
 
 ### 架构与对标差异
 
-`CarouselRoot` 拥有 Embla 实例的完整生命周期（初始化/重初始化/销毁、`select`/`reInit` 事件同步滚动状态），所有基础组件保持零样式，仅 UI 包装注入 `carouselVariants` 类名。这与 shadcn/ui 的 headless/styled 分离一致，区别于 Ant Design、Element Plus、Mantine、Naive UI 等把轮播作为单一「带样式组件 + 配置 prop」的单包方案。SoybeanUI 刻意把 `autoplay`、`loop`、`align` 等行为交由 `options` 透传给 Embla 插件体系，而不是逐个声明为顶层 prop，从而保持 API 精简并让用户接入任意 Embla 插件。前后翻页按钮默认 `disabled` 在到达边界时由 `canScrollNext`/`canScrollPrev` 派生，而非依赖 `loop` 配置。
+`CarouselRoot` 拥有 Embla 实例的完整生命周期（初始化/重初始化/销毁、`select`/`reInit` 事件同步滚动状态），所有基础组件保持零样式，仅 UI 包装注入 `carouselVariants` 类名。这与 shadcn/ui 的 headless/styled 分离一致，区别于 Ant Design、Element Plus、Mantine、Naive UI 等把轮播作为单一「带样式组件 + 配置 prop」的单包方案。Vean 刻意把 `autoplay`、`loop`、`align` 等行为交由 `options` 透传给 Embla 插件体系，而不是逐个声明为顶层 prop，从而保持 API 精简并让用户接入任意 Embla 插件。前后翻页按钮默认 `disabled` 在到达边界时由 `canScrollNext`/`canScrollPrev` 派生，而非依赖 `loop` 配置。
 
-| 能力                           | SoybeanUI | shadcn/ui | Ant Design Carousel | Element Plus Carousel | Mantine Carousel | Naive UI Carousel |
-| :----------------------------- | :-------: | :-------: | :-----------------: | :-------------------: | :--------------: | :---------------: |
-| headless/样式拆分              |    ✅     |    ✅     |          —          |           —           |        —         |         —         |
-| 水平 / 垂直方向                |    ✅     |     —     |         ✅          |          ✅           |        ✅        |        ✅         |
-| 感知书写方向（RTL）            |    ✅     |    ✅     |         ✅          |           —           |        —         |         —         |
-| 方向键导航                     |    ✅     |     —     |         ✅          |          ✅           |        —         |         —         |
-| 本地化按钮 / 区域 `aria-label` |    ✅     |     —     |          —          |           —           |        —         |         —         |
-| `autoplay` / `loop` / 对齐     |  options  |  options  |        props        |         props         |      props       |       props       |
-| 复合组件 + 逐部件 props        |    ✅     |    ✅     |          —          |           —           |        —         |         —         |
+| 能力                           |  Vean   | shadcn/ui | Ant Design Carousel | Element Plus Carousel | Mantine Carousel | Naive UI Carousel |
+| :----------------------------- | :-----: | :-------: | :-----------------: | :-------------------: | :--------------: | :---------------: |
+| headless/样式拆分              |   ✅    |    ✅     |          —          |           —           |        —         |         —         |
+| 水平 / 垂直方向                |   ✅    |     —     |         ✅          |          ✅           |        ✅        |        ✅         |
+| 感知书写方向（RTL）            |   ✅    |    ✅     |         ✅          |           —           |        —         |         —         |
+| 方向键导航                     |   ✅    |     —     |         ✅          |          ✅           |        —         |         —         |
+| 本地化按钮 / 区域 `aria-label` |   ✅    |     —     |          —          |           —           |        —         |         —         |
+| `autoplay` / `loop` / 对齐     | options |  options  |        props        |         props         |      props       |       props       |
+| 复合组件 + 逐部件 props        |   ✅    |    ✅     |          —          |           —           |        —         |         —         |
 
 `—` = 不支持或非同一交互模型（AntD/Element Plus/Mantine/Naive UI 为单包配置式轮播；shadcn/ui 的 Carousel 区块为复制源码的 headless 组合，但导航按钮文本硬编码且无方向键导航）。
 

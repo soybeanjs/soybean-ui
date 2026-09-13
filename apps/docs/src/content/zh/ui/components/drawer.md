@@ -39,12 +39,12 @@ head:
 - `DrawerTrigger`（headless）— 打开者，接入 `aria-haspopup`/`aria-expanded`
 - `DrawerPortal`（headless）— 传送边界
 - `DrawerOverlay`（headless）— 变暗的背景遮罩；透明度随实时滑动进度衰减
-- `DrawerPopup`（headless）— 焦点陷阱表面与拖拽手势宿主；位置完全由 CSS 变量驱动（`--soybean-drawer-snap-point-offset` + `--soybean-drawer-swipe-movement-x/y`）
+- `DrawerPopup`（headless）— 焦点陷阱表面与拖拽手势宿主；位置完全由 CSS 变量驱动（`--vean-drawer-snap-point-offset` + `--vean-drawer-swipe-movement-x/y`）
 - `DrawerViewport`（headless）— 携带吸附点状态的可滚动区域
 - `DrawerSwipeArea`（headless）— 可选边缘手势条，滑动打开抽屉
 - `DrawerHandle`（headless）— 抓手柄；双击循环吸附点。`DrawerCompact` 仅在 `side="bottom"` 时渲染
-- `DrawerIndent` / `DrawerIndentBackground`（headless）— 包裹抽屉背后的页面获得缩进效果；`data-active` 标记打开状态，`--soybean-drawer-swipe-progress` 承载实时进度
-- `DrawerHeader` / `DrawerContent` / `DrawerFooter` / `DrawerTitle` / `DrawerDescription` / `DrawerClose` / `DrawerCancel` / `DrawerConfirm`（headless）— 包装 Dialog 的 chrome 基元；DOM 使用 `data-soybean-drawer-*`
+- `DrawerIndent` / `DrawerIndentBackground`（headless）— 包裹抽屉背后的页面获得缩进效果；`data-active` 标记打开状态，`--vean-drawer-swipe-progress` 承载实时进度
+- `DrawerHeader` / `DrawerContent` / `DrawerFooter` / `DrawerTitle` / `DrawerDescription` / `DrawerClose` / `DrawerCancel` / `DrawerConfirm`（headless）— 包装 Dialog 的 chrome 基元；DOM 使用 `data-vean-drawer-*`
 - `DrawerCompact`（headless）— 聚合组件；组合手柄、手势条、头部、内容与底部并暴露各插槽
 
 ## 演示
@@ -59,19 +59,19 @@ head:
 
 ### 架构与对标差异
 
-`DrawerCompact` 负责手柄/手势条/遮罩/弹层/头部/内容/底部组合与拖拽/吸附状态流（经 `useDrawerSnapPoints` 与 `useSwipeDismiss`），所有基础组件保持零样式，仅由 UI 包装组件注入 `drawerVariants` 类。弹层 transform 完全由 CSS 变量驱动——手势层只写变量、从不写内联 transform——吸附归位、松手回弹与关闭退出都由 CSS transition 承接。这与 Base UI Drawer 的模型一致。Ant Design、Element Plus、Mantine、Naive UI 提供单一样式化抽屉；带 `snapPoints` 的专用可拖拽面板通常是独立库（vaul、Base UI Drawer）。SoybeanUI 内联暴露逐槽 `*Props`、`size` 尺寸体系与吸附/缩进/拖拽/滑动模型。
+`DrawerCompact` 负责手柄/手势条/遮罩/弹层/头部/内容/底部组合与拖拽/吸附状态流（经 `useDrawerSnapPoints` 与 `useSwipeDismiss`），所有基础组件保持零样式，仅由 UI 包装组件注入 `drawerVariants` 类。弹层 transform 完全由 CSS 变量驱动——手势层只写变量、从不写内联 transform——吸附归位、松手回弹与关闭退出都由 CSS transition 承接。这与 Base UI Drawer 的模型一致。Ant Design、Element Plus、Mantine、Naive UI 提供单一样式化抽屉；带 `snapPoints` 的专用可拖拽面板通常是独立库（vaul、Base UI Drawer）。Vean 内联暴露逐槽 `*Props`、`size` 尺寸体系与吸附/缩进/拖拽/滑动模型。
 
-| 能力              | SoybeanUI | shadcn/ui + vaul | reka-ui Drawer | Base UI | Ant Design | Element Plus | Mantine |
-| :---------------- | :-------: | :--------------: | :------------: | :-----: | :--------: | :----------: | :-----: |
-| 复用 dialog 原语  |    ✅     |        ✅        |       ✅       |   ✅    |     —      |      —       |    —    |
-| Headless/样式分离 |    ✅     |        ✅        |       ✅       |   ✅    |     —      |      —       |    —    |
-| 拖拽关闭          |    ✅     |        ✅        |       ✅       |   ✅    |     —      |      —       |   ✅    |
-| 吸附点            |    ✅     |        ✅        |       ✅       |   ✅    |     —      |      —       |    —    |
-| 滑动打开区域      |    ✅     |        —         |       ✅       |   ✅    |     —      |      —       |    —    |
-| 页面缩进效果      |    ✅     |        ✅        |       —        |   ✅    |     —      |      —       |    —    |
-| 嵌套抽屉          |    ✅     |        ✅        |       ✅       |   ✅    |     —      |      —       |    —    |
-| 模态三层级        |    ✅     |        —         |       ✅       |   ✅    |     —      |      —       |    —    |
-| 尺寸（6）         |    ✅     |        —         |       —        |    —    |     —      |      —       |    —    |
+| 能力              | Vean | shadcn/ui + vaul | reka-ui Drawer | Base UI | Ant Design | Element Plus | Mantine |
+| :---------------- | :--: | :--------------: | :------------: | :-----: | :--------: | :----------: | :-----: |
+| 复用 dialog 原语  |  ✅  |        ✅        |       ✅       |   ✅    |     —      |      —       |    —    |
+| Headless/样式分离 |  ✅  |        ✅        |       ✅       |   ✅    |     —      |      —       |    —    |
+| 拖拽关闭          |  ✅  |        ✅        |       ✅       |   ✅    |     —      |      —       |   ✅    |
+| 吸附点            |  ✅  |        ✅        |       ✅       |   ✅    |     —      |      —       |    —    |
+| 滑动打开区域      |  ✅  |        —         |       ✅       |   ✅    |     —      |      —       |    —    |
+| 页面缩进效果      |  ✅  |        ✅        |       —        |   ✅    |     —      |      —       |    —    |
+| 嵌套抽屉          |  ✅  |        ✅        |       ✅       |   ✅    |     —      |      —       |    —    |
+| 模态三层级        |  ✅  |        —         |       ✅       |   ✅    |     —      |      —       |    —    |
+| 尺寸（6）         |  ✅  |        —         |       —        |    —    |     —      |      —       |    —    |
 
 `—` = 不支持或采用不同交互模型。
 
@@ -102,9 +102,9 @@ v0.50.0 对整个家族做了更名——`bottom-sheet` 名称已退役。
 | `BottomSheetTrigger` / `BottomSheetClose` / `BottomSheetCancel` / `BottomSheetConfirm` | `DrawerTrigger` / `DrawerClose` / `DrawerCancel` / `DrawerConfirm` |
 | `v-model:active-snap-point`                                                            | `v-model:snap-point`                                               |
 | `direction` prop（headless）                                                           | `side` prop                                                        |
-| `@soybeanjs/headless/bottom-sheet`                                                     | `@soybeanjs/headless/drawer`                                       |
-| `data-soybean-bottom-sheet-*`、`soybean-bottom-sheet-dragging`                         | `data-soybean-drawer-*`、`soybean-drawer-dragging`                 |
-| `data-soybean-bottom-sheet-scale`                                                      | 随 scale-background 引擎移除（见下）                               |
+| `@vean/aria/bottom-sheet`                                                              | `@vean/aria/drawer`                                                |
+| `data-vean-bottom-sheet-*`、`soybean-bottom-sheet-dragging`                            | `data-vean-drawer-*`、`soybean-drawer-dragging`                    |
+| `data-vean-bottom-sheet-scale`                                                         | 随 scale-background 引擎移除（见下）                               |
 
 原 `SDrawer`（带侧边的 dialog）已更名为 `SSheet`。侧边面板 API 见 [Sheet](/components/sheet)。
 
@@ -112,13 +112,13 @@ v0.50.0 对整个家族做了更名——`bottom-sheet` 名称已退役。
 
 v0.50.0 以 Base UI 风格引擎替换了 vaul 式内核，公开面变化：
 
-| 旧                                                    | 新                                                                                      |
-| :---------------------------------------------------- | :-------------------------------------------------------------------------------------- |
-| `shouldScaleBackground` / `setBackgroundColorOnScale` | 已移除。在 `DrawerRoot` 内用 `DrawerIndent` + `DrawerIndentBackground` 包裹页面         |
-| `fadeFromIndex`                                       | 已移除；遮罩透明度随滑动进度连续衰减                                                    |
-| `snapPoint` 默认 `null`                               | 默认取 `snapPoints` 第一项（打开即定位在吸附点上）                                      |
-| 拖拽方向从 `side` 隐式推导                            | 仍为默认行为，可用 `swipeDirection` 覆盖                                                |
-| 命令式 transform                                      | CSS 变量（`--soybean-drawer-snap-point-offset`、`--soybean-drawer-swipe-movement-x/y`） |
+| 旧                                                    | 新                                                                                |
+| :---------------------------------------------------- | :-------------------------------------------------------------------------------- |
+| `shouldScaleBackground` / `setBackgroundColorOnScale` | 已移除。在 `DrawerRoot` 内用 `DrawerIndent` + `DrawerIndentBackground` 包裹页面   |
+| `fadeFromIndex`                                       | 已移除；遮罩透明度随滑动进度连续衰减                                              |
+| `snapPoint` 默认 `null`                               | 默认取 `snapPoints` 第一项（打开即定位在吸附点上）                                |
+| 拖拽方向从 `side` 隐式推导                            | 仍为默认行为，可用 `swipeDirection` 覆盖                                          |
+| 命令式 transform                                      | CSS 变量（`--vean-drawer-snap-point-offset`、`--vean-drawer-swipe-movement-x/y`） |
 
 ```vue
 <!-- 旧 -->
@@ -139,7 +139,7 @@ v0.50.0 以 Base UI 风格引擎替换了 vaul 式内核，公开面变化：
 ```vue
 <!-- 旧 -->
 <SBottomSheet v-model:open="open" should-scale-background>
-  <div data-soybean-drawer-scale>页面</div>
+  <div data-vean-drawer-scale>页面</div>
 </SBottomSheet>
 
 <!-- 新 -->

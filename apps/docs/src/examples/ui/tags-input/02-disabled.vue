@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { STagsInput } from '@soybeanjs/ui';
+import { STagsInput } from '@vean/ui';
 
 const tags = ref(['Vue', 'React', 'Angular']);
 </script>

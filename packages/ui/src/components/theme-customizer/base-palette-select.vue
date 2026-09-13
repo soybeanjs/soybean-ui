@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { PaletteColorLevel } from '@soybeanjs/colord/palette';
-import { getRegistry } from '@soybeanjs/theme';
-import type { BaseColorKey } from '@soybeanjs/theme';
+import { getRegistry } from '@vean/theme';
+import type { BaseColorKey } from '@vean/theme';
 import SSelect from '../select/select.vue';
 import type { SelectOptionData } from '../select/types';
 import ColorDecorator from './color-decorator.vue';

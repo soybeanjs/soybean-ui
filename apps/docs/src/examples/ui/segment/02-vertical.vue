@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SSegment } from '@soybeanjs/ui';
-import type { SegmentOptionData } from '@soybeanjs/ui';
+import { SSegment } from '@vean/ui';
+import type { SegmentOptionData } from '@vean/ui';
 
 const day = shallowRef('monday');
 

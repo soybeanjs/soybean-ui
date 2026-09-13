@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SInput } from '@soybeanjs/ui';
+import { SInput } from '@vean/ui';
 </script>
 
 <template>

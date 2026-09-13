@@ -16,7 +16,7 @@ head:
 
 <UsageCode component="command" />
 
-> `SCommand` 现在会把过滤、分组条目聚合与默认条目组合逻辑委托给 headless `CommandCompact`。如果需要无样式、数据驱动的组合入口，可从 `@soybeanjs/headless/command` 直接导入 `CommandCompact`。
+> `SCommand` 现在会把过滤、分组条目聚合与默认条目组合逻辑委托给 headless `CommandCompact`。如果需要无样式、数据驱动的组合入口，可从 `@vean/aria/command` 直接导入 `CommandCompact`。
 
 ## 特性
 
@@ -50,16 +50,16 @@ head:
 
 ### 架构与对标差异
 
-`CommandCompact` 负责 Fuse 搜索、分组条目聚合与默认条目组合，底层 listbox 基础组件保持零样式，仅由 UI 包装组件注入 `commandVariants` 类。这与 cmdk/shadcn-ui 的 headless command 分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供 select/autocomplete 而非专用命令面板；SoybeanUI 提供真正的 `⌘K` 式命令面板，带 Fuse 模糊搜索、分组数据、图标/快捷键与完整 listbox 键盘行为。
+`CommandCompact` 负责 Fuse 搜索、分组条目聚合与默认条目组合，底层 listbox 基础组件保持零样式，仅由 UI 包装组件注入 `commandVariants` 类。这与 cmdk/shadcn-ui 的 headless command 分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供 select/autocomplete 而非专用命令面板；Vean 提供真正的 `⌘K` 式命令面板，带 Fuse 模糊搜索、分组数据、图标/快捷键与完整 listbox 键盘行为。
 
-| 能力              | SoybeanUI | shadcn/ui (cmdk) | Ant Design | Element Plus | Mantine | Naive UI |
-| :---------------- | :-------: | :--------------: | :--------: | :----------: | :-----: | :------: |
-| Headless/样式分离 |    ✅     |        ✅        |     —      |      —       |    —    |    —     |
-| 模糊搜索（Fuse）  |    ✅     |        ✅        |     —      |      —       |    —    |    —     |
-| 分组数据          |    ✅     |        ✅        |     ✅     |      ✅      |   ✅    |    ✅    |
-| 图标 + 快捷键     |    ✅     |        ✅        |     —      |      —       |   ✅    |    —     |
-| 键盘导航          |    ✅     |        ✅        |     ✅     |      ✅      |   ✅    |    ✅    |
-| 空态              |    ✅     |        ✅        |     ✅     |      ✅      |   ✅    |    ✅    |
+| 能力              | Vean | shadcn/ui (cmdk) | Ant Design | Element Plus | Mantine | Naive UI |
+| :---------------- | :--: | :--------------: | :--------: | :----------: | :-----: | :------: |
+| Headless/样式分离 |  ✅  |        ✅        |     —      |      —       |    —    |    —     |
+| 模糊搜索（Fuse）  |  ✅  |        ✅        |     —      |      —       |    —    |    —     |
+| 分组数据          |  ✅  |        ✅        |     ✅     |      ✅      |   ✅    |    ✅    |
+| 图标 + 快捷键     |  ✅  |        ✅        |     —      |      —       |   ✅    |    —     |
+| 键盘导航          |  ✅  |        ✅        |     ✅     |      ✅      |   ✅    |    ✅    |
+| 空态              |  ✅  |        ✅        |     ✅     |      ✅      |   ✅    |    ✅    |
 
 `—` = 不支持或采用不同交互模型。
 

@@ -18,17 +18,17 @@ A set of layered sections of content—known as tab panels—that are displayed 
 - **Two activation modes** — `activationMode: 'automatic'` activates a tab on focus (ARIA default); `'manual'` activates only on click / `Enter` / `Space`.
 - **Full keyboard navigation** — the `useRovingFocusGroup` hook provides arrow-key (and Home/End) movement that skips disabled tabs; `Enter` / `Space` activates the focused tab.
 - **Presence-based content mounting** — `unmountOnHide: true` (default) unmounts inactive panels after the exit animation; `false` keeps every panel mounted but `hidden`; `forceMount` keeps a panel in the DOM unconditionally.
-- **Animated indicator** — a sliding indicator tracks the active tab with CSS variables (`--soybean-tabs-indicator-size` / `--soybean-tabs-indicator-position`), measured via `ResizeObserver` and re-positioned on value/direction changes; RTL offsets are mirrored automatically.
+- **Animated indicator** — a sliding indicator tracks the active tab with CSS variables (`--vean-tabs-indicator-size` / `--vean-tabs-indicator-position`), measured via `ResizeObserver` and re-positioned on value/direction changes; RTL offsets are mirrored automatically.
 - **Horizontal and vertical layouts** — `orientation: 'vertical'` stacks the list and runs the indicator along the block axis.
 - **Three customization slots** — `trigger` (scoped `{ ...item, active }`), `content` (scoped `{ ...item, active }`), and `indicator`.
 - **Six visual variants** — `size` (xs…2xl), `orientation` (horizontal / vertical), `shape` (square / rounded), `fill` (full / auto), and `enableIndicator` (falls back to a solid active-trigger style) via the `tabsVariants` `scv()` recipe.
-- **Headless composition** — `TabsRoot` / `TabsList` / `TabsTrigger` / `TabsContent` / `TabsIndicator` / `TabsCompact` are exported from `@soybeanjs/headless/tabs` for fully custom styled builds.
+- **Headless composition** — `TabsRoot` / `TabsList` / `TabsTrigger` / `TabsContent` / `TabsIndicator` / `TabsCompact` are exported from `@vean/aria/tabs` for fully custom styled builds.
 
 ## Usage
 
 <UsageCode component="tabs" />
 
-> `STabs` now delegates item iteration, default trigger/content composition, and indicator rendering to headless `TabsCompact`. For unstyled, data-driven usage, import `TabsCompact` from `@soybeanjs/headless/tabs`.
+> `STabs` now delegates item iteration, default trigger/content composition, and indicator rendering to headless `TabsCompact`. For unstyled, data-driven usage, import `TabsCompact` from `@vean/aria/tabs`.
 
 ## Demos
 
@@ -42,9 +42,9 @@ A set of layered sections of content—known as tab panels—that are displayed 
 
 ### Architecture and benchmark comparison
 
-| Concern                           | SoybeanUI                                          | shadcn-vue / Radix `Tabs`           | Ant Design `Tabs`                   | Element Plus `Tabs`   |
+| Concern                           | Vean                                               | shadcn-vue / Radix `Tabs`           | Ant Design `Tabs`                   | Element Plus `Tabs`   |
 | :-------------------------------- | :------------------------------------------------- | :---------------------------------- | :---------------------------------- | :-------------------- |
-| Headless / styled separation      | ✅ `@soybeanjs/headless/tabs` + `scv()`            | ✅ headless primitives              | ❌ single package                   | ❌ single package     |
+| Headless / styled separation      | ✅ `@vean/aria/tabs` + `scv()`                     | ✅ headless primitives              | ❌ single package                   | ❌ single package     |
 | Data-driven compact API           | ✅ generic `TabsCompact<T>` + `items`              | ✅ `TabList`/`Tab`/`TabPanel` parts | ✅ config-driven (items)            | ✅ config-driven      |
 | Controlled / uncontrolled         | ✅ `modelValue` / `defaultValue`                   | ✅ `modelValue` / `defaultValue`    | ✅ `activeKey` / `defaultActiveKey` | ✅ `v-model`          |
 | Activation mode                   | ✅ `automatic` / `manual`                          | ✅                                  | ❌ (always automatic)               | ❌ (always automatic) |
@@ -87,7 +87,7 @@ The list is a roving-focus group: `ArrowLeft`/`ArrowRight` (or `ArrowUp`/`ArrowD
 
 ### Can I fully customize the tab rendering?
 
-Yes — the `trigger` slot receives scoped `{ ...item, active }` props, the `content` slot `{ ...item, active }`, and `indicator` replaces the indicator body. For a completely custom structure, compose `TabsRoot` / `TabsList` / `TabsTrigger` / `TabsContent` / `TabsIndicator` from `@soybeanjs/headless/tabs` and inject styles via `provideTabsUi` (or `STabs`'s `ui` prop).
+Yes — the `trigger` slot receives scoped `{ ...item, active }` props, the `content` slot `{ ...item, active }`, and `indicator` replaces the indicator body. For a completely custom structure, compose `TabsRoot` / `TabsList` / `TabsTrigger` / `TabsContent` / `TabsIndicator` from `@vean/aria/tabs` and inject styles via `provideTabsUi` (or `STabs`'s `ui` prop).
 
 ### Do I need to wire `aria-controls` myself?
 

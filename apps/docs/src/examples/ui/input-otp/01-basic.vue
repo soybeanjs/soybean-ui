@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SInputOtp, toast } from '@soybeanjs/ui';
+import { SInputOtp, toast } from '@vean/ui';
 
 const otp = ref('');
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
 import { useToggle } from '@vueuse/core';
-import { SSelect, STreeMenu } from '@soybeanjs/ui';
-import type { TreeMenuExpandStrategy } from '@soybeanjs/ui';
+import { SSelect, STreeMenu } from '@vean/ui';
+import type { TreeMenuExpandStrategy } from '@vean/ui';
 import { treeMenuItems } from './data';
 
 const [collapsed, toggleCollapsible] = useToggle(false);

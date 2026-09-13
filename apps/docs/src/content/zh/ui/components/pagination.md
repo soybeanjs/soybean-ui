@@ -23,13 +23,13 @@ head:
 - **完整 ARIA 语义** — 根元素为 `nav`；当前页带有 `aria-current="page"` 与选中态属性；每个按钮都有本地化的 `aria-label`。
 - **本地化无障碍文案** — 操作按钮文案与页码标签模板来自 locale 注册表（`pageLabel` 支持 `{value}` 占位符），内置 13 种语言。
 - **RTL 支持** — 操作按钮图标通过 `rtl:[&>svg]:rotate-180` 自动镜像。
-- **Headless 组合** — `PaginationRoot` / `PaginationList` / `PaginationListItem` / `PaginationEllipsis` / `PaginationFirst` / `PaginationPrev` / `PaginationNext` / `PaginationLast` 均可从 `@soybeanjs/headless/pagination` 导入，用于完全自定义样式构建。
+- **Headless 组合** — `PaginationRoot` / `PaginationList` / `PaginationListItem` / `PaginationEllipsis` / `PaginationFirst` / `PaginationPrev` / `PaginationNext` / `PaginationLast` 均可从 `@vean/aria/pagination` 导入，用于完全自定义样式构建。
 
 ## 用法
 
 <UsageCode component="pagination" />
 
-> `SPagination` 将页码窗口计算委托给 headless 的 `PaginationCompact`。如需无样式、数据驱动的组合，请从 `@soybeanjs/headless/pagination` 导入 `PaginationCompact`。
+> `SPagination` 将页码窗口计算委托给 headless 的 `PaginationCompact`。如需无样式、数据驱动的组合，请从 `@vean/aria/pagination` 导入 `PaginationCompact`。
 
 ## 演示
 
@@ -43,9 +43,9 @@ head:
 
 ### 架构与竞品对比
 
-| 关注点                  | SoybeanUI                                                        | shadcn-vue `Pagination`                 | Ant Design `Pagination`         | Element Plus `Pagination`    |
+| 关注点                  | Vean                                                             | shadcn-vue `Pagination`                 | Ant Design `Pagination`         | Element Plus `Pagination`    |
 | :---------------------- | :--------------------------------------------------------------- | :-------------------------------------- | :------------------------------ | :--------------------------- |
-| Headless / 样式双层分离 | ✅ `@soybeanjs/headless/pagination` + `scv()`                    | ❌ 单一包                               | ❌ 单一包                       | ❌ 单一包                    |
+| Headless / 样式双层分离 | ✅ `@vean/aria/pagination` + `scv()`                             | ❌ 单一包                               | ❌ 单一包                       | ❌ 单一包                    |
 | 数据驱动 Compact API    | ✅ `PaginationCompact` + 8 个类型化插槽                          | ✅ `Pagination` + `PaginationItem` 部件 | ✅ 配置驱动（total, current）   | ✅ layout / components       |
 | 受控/非受控             | ✅ `page`/`defaultPage`、`pageSize`/`defaultPageSize`            | ✅ `v-model`                            | ✅ `current` / `defaultCurrent` | ✅ `v-model`                 |
 | 省略号与固定首尾页      | ✅ `showEdges` + 自动单/双省略号                                 | ✅ `PaginationItem` 的 `showEdges`      | ✅ `showLessItems` / 自动省略号 | ✅ `pager-count`             |
@@ -95,4 +95,4 @@ head:
 
 ### 能构建完全自定义的分页吗？
 
-可以 — 从 `@soybeanjs/headless/pagination` 组合 `PaginationRoot` / `PaginationList` / `PaginationListItem` / `PaginationEllipsis` / `PaginationFirst` / `PaginationPrev` / `PaginationNext` / `PaginationLast`，并通过 `providePaginationUi`（或 `SPagination` 的 `ui` prop）注入样式。
+可以 — 从 `@vean/aria/pagination` 组合 `PaginationRoot` / `PaginationList` / `PaginationListItem` / `PaginationEllipsis` / `PaginationFirst` / `PaginationPrev` / `PaginationNext` / `PaginationLast`，并通过 `providePaginationUi`（或 `SPagination` 的 `ui` prop）注入样式。

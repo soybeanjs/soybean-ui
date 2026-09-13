@@ -1,18 +1,18 @@
 ---
 head:
   title: Theming
-  description: "Soybean UI provides a flexible theming system that allows you to customize the appearance of components to match your application's design requirements. You can easily adjust colors, radius and global size settings."
+  description: "Vean provides a flexible theming system that allows you to customize the appearance of components to match your application's design requirements. You can easily adjust colors, radius and global size settings."
 ---
 
 # Theming
 
 ## Overview
 
-Soybean UI provides a flexible theming system that allows you to customize the appearance of components to match your application's design requirements. You can easily adjust colors, radius and global size settings.
+Vean provides a flexible theming system that allows you to customize the appearance of components to match your application's design requirements. You can easily adjust colors, radius and global size settings.
 
 ## Implementation Principle
 
-Use [@soybeanjs/theme](https://github.com/soybeanjs/soybean-ui) — the standalone theme engine — to create rich themes. Its `createTheme(options)` pure function returns a CSS string that `SConfigProvider` inlines into the page at runtime based on the `theme` prop.
+Use [@vean/theme](https://github.com/soybeanjs/vean) — the standalone theme engine — to create rich themes. Its `createTheme(options)` pure function returns a CSS string that `SConfigProvider` inlines into the page at runtime based on the `theme` prop.
 
 ## Theme Configuration
 
@@ -20,7 +20,7 @@ You can configure the theme by passing a theme object to the `SConfigProvider` a
 
 ```vue
 <script setup lang="ts">
-import { SConfigProvider } from '@soybeanjs/ui';
+import { SConfigProvider } from '@vean/ui';
 </script>
 
 <template>
@@ -144,7 +144,7 @@ Multi-slot components support overriding each slot's style classes via the `ui` 
 
 ```vue
 <script setup lang="ts">
-import { SAccordion } from '@soybeanjs/ui';
+import { SAccordion } from '@vean/ui';
 
 const items = [
   { title: 'Title 1', value: 'item-1', description: 'Content 1' },

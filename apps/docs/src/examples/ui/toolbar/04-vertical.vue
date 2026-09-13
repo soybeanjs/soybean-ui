@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SToolbar, SToolbarButton, SToolbarSeparator, SToolbarToggleGroup, SToolbarToggleItem } from '@soybeanjs/ui';
+import { SToolbar, SToolbarButton, SToolbarSeparator, SToolbarToggleGroup, SToolbarToggleItem } from '@vean/ui';
 </script>
 
 <template>

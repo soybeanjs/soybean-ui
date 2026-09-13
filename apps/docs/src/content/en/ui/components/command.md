@@ -16,7 +16,7 @@ Use a command for a ⌘K-style palette, searchable menus, or inline typeahead. F
 
 <UsageCode component="command" />
 
-> `SCommand` now delegates filtering, grouped item aggregation, and default item composition to headless `CommandCompact`. For unstyled, data-driven usage, import `CommandCompact` from `@soybeanjs/headless/command`.
+> `SCommand` now delegates filtering, grouped item aggregation, and default item composition to headless `CommandCompact`. For unstyled, data-driven usage, import `CommandCompact` from `@vean/aria/command`.
 
 ## Features
 
@@ -50,16 +50,16 @@ Use a command for a ⌘K-style palette, searchable menus, or inline typeahead. F
 
 ### Architecture and benchmark differences
 
-`CommandCompact` owns the Fuse search, grouped-item aggregation and default item composition while the underlying listbox primitives stay style-free and only the UI wrapper injects the `commandVariants` classes. This mirrors the cmdk/shadcn-ui headless command split. Ant Design, Element Plus, Mantine and Naive UI ship a select/autocomplete rather than a dedicated command palette; SoybeanUI provides a true `⌘K`-style command with Fuse fuzzy search, grouped data, icons/shortcuts, and full listbox keyboard behavior.
+`CommandCompact` owns the Fuse search, grouped-item aggregation and default item composition while the underlying listbox primitives stay style-free and only the UI wrapper injects the `commandVariants` classes. This mirrors the cmdk/shadcn-ui headless command split. Ant Design, Element Plus, Mantine and Naive UI ship a select/autocomplete rather than a dedicated command palette; Vean provides a true `⌘K`-style command with Fuse fuzzy search, grouped data, icons/shortcuts, and full listbox keyboard behavior.
 
-| Capability            | SoybeanUI | shadcn/ui (cmdk) | Ant Design | Element Plus | Mantine | Naive UI |
-| :-------------------- | :-------: | :--------------: | :--------: | :----------: | :-----: | :------: |
-| Headless/styled split |    ✅     |        ✅        |     —      |      —       |    —    |    —     |
-| Fuzzy search (Fuse)   |    ✅     |        ✅        |     —      |      —       |    —    |    —     |
-| Grouped data          |    ✅     |        ✅        |     ✅     |      ✅      |   ✅    |    ✅    |
-| Icons + shortcuts     |    ✅     |        ✅        |     —      |      —       |   ✅    |    —     |
-| Keyboard nav          |    ✅     |        ✅        |     ✅     |      ✅      |   ✅    |    ✅    |
-| Empty state           |    ✅     |        ✅        |     ✅     |      ✅      |   ✅    |    ✅    |
+| Capability            | Vean | shadcn/ui (cmdk) | Ant Design | Element Plus | Mantine | Naive UI |
+| :-------------------- | :--: | :--------------: | :--------: | :----------: | :-----: | :------: |
+| Headless/styled split |  ✅  |        ✅        |     —      |      —       |    —    |    —     |
+| Fuzzy search (Fuse)   |  ✅  |        ✅        |     —      |      —       |    —    |    —     |
+| Grouped data          |  ✅  |        ✅        |     ✅     |      ✅      |   ✅    |    ✅    |
+| Icons + shortcuts     |  ✅  |        ✅        |     —      |      —       |   ✅    |    —     |
+| Keyboard nav          |  ✅  |        ✅        |     ✅     |      ✅      |   ✅    |    ✅    |
+| Empty state           |  ✅  |        ✅        |     ✅     |      ✅      |   ✅    |    ✅    |
 
 `—` = unsupported or a different interaction model.
 

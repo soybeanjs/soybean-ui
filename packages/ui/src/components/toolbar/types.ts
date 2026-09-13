@@ -1,5 +1,5 @@
-import type { ToolbarRootProps as HeadlessToolbarRootProps, ToolbarUi } from '@soybeanjs/headless/toolbar';
-import type { ClassValue } from '@soybeanjs/headless/types';
+import type { ToolbarRootProps as HeadlessToolbarRootProps, ToolbarUi } from '@vean/aria/toolbar';
+import type { ClassValue } from '@vean/aria/types';
 import type { ThemeSize } from '@/theme';
 
 /**

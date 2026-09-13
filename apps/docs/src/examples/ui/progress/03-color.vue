@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SProgress } from '@soybeanjs/ui';
-import type { ThemeColor } from '@soybeanjs/ui';
+import { SProgress } from '@vean/ui';
+import type { ThemeColor } from '@vean/ui';
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
 </script>

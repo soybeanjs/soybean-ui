@@ -22,8 +22,8 @@ process.on('SIGTERM', () => process.exit(0));
 
 async function main() {
   const program = new Command()
-    .name('sbean')
-    .description('add SoybeanUI components to your Vue apps')
+    .name('vean')
+    .description('add Vean components to your Vue apps')
     .version(pkg.version || '0.1.0', '-v, --version', 'display the version number');
 
   program

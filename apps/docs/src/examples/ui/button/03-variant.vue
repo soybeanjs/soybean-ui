@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButton } from '@soybeanjs/ui';
-import type { ButtonVariant } from '@soybeanjs/ui';
+import { SButton } from '@vean/ui';
+import type { ButtonVariant } from '@vean/ui';
 
 const variants: ButtonVariant[] = ['solid', 'pure', 'plain', 'outline', 'dashed', 'soft', 'ghost', 'link'];
 </script>

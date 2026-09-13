@@ -1,5 +1,5 @@
-import { COLOR_VARIABLES, EXTENDED_THEME_VARIABLES } from '@soybeanjs/theme';
-import type { ColorFormat, ColorKey } from '@soybeanjs/theme';
+import { COLOR_VARIABLES, EXTENDED_THEME_VARIABLES } from '@vean/theme';
+import type { ColorFormat, ColorKey } from '@vean/theme';
 
 /** 'sidebarBorder' → 'sidebar-border'（camelCase token 键转 CSS 风格 kebab 键） */
 function kebabCase(str: string): string {
@@ -33,9 +33,9 @@ const PALETTE_LEVELS = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950] as
 const PALETTE_KEYS = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon'] as const;
 
 /**
- * 从 `@soybeanjs/theme` 的 `COLOR_VARIABLES` 派生 UnoCSS theme.colors（kebab-case 键）。
+ * 从 `@vean/theme` 的 `COLOR_VARIABLES` 派生 UnoCSS theme.colors（kebab-case 键）。
  *
- * `@soybeanjs/theme` 的 token 是唯一权威；preset 只做适配，把变量名映射成
+ * `@vean/theme` 的 token 是唯一权威；preset 只做适配，把变量名映射成
  * theme.colors，不另起一套 token。
  */
 export function buildThemeColors(format: ColorFormat): Record<string, string> {

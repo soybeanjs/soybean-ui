@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SToggleGroup, SToggleGroupItem } from '@soybeanjs/ui';
+import { SToggleGroup, SToggleGroupItem } from '@vean/ui';
 </script>
 
 <template>

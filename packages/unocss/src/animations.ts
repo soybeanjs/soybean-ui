@@ -7,7 +7,7 @@
  * - `fade-in/out[-n]`、`zoom-in/out[-n]`、`slide-in-from-*` / `slide-out-to-*`
  *
  * CSS 变量前缀 `--soybean` 与 keyframe 名 `soybean-in` / `soybean-out` 与项目
- * 品牌一致（对齐 `--soybean-*` token），行为上沿用 tailwindcss-animate 生态约定。
+ * 品牌一致（对齐 `--vean-*` token），行为上沿用 tailwindcss-animate 生态约定。
  */
 import type { CSSObject, Preset, Rule, Shortcut } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
@@ -224,7 +224,7 @@ function buildShortcuts(options: PresetAnimationsOptions): Shortcut<Theme>[] {
 
 // ---- theme -----------------------------------------------------------------
 
-/** enter/exit 的 @keyframes 定义，与 `--soybean-*` 变量联动 */
+/** enter/exit 的 @keyframes 定义，与 `--vean-*` 变量联动 */
 const ANIMATION_THEME = {
   animation: {
     keyframes: {
@@ -245,7 +245,7 @@ const ANIMATION_THEME = {
  */
 export function presetAnimations(options: PresetAnimationsOptions = {}): Preset {
   return {
-    name: 'soybean-ui-uno-animations',
+    name: 'vean-uno-animations',
     theme: ANIMATION_THEME,
     layers: { [ANIMATION_LAYER]: -999 },
     shortcuts: buildShortcuts(options),

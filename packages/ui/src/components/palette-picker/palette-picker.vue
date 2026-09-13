@@ -2,7 +2,7 @@
 import { computed, nextTick, ref, watch } from 'vue';
 import { generateNearestPalette, generatePalette, tailwindPalette } from '@soybeanjs/colord/palette';
 import type { PaletteColorLevel, SimplePaletteKey, TailwindPaletteKey } from '@soybeanjs/colord/palette';
-import type { ColorValue } from '@soybeanjs/theme';
+import type { ColorValue } from '@vean/theme';
 import SColorPicker from '../color-picker/color-picker.vue';
 import SSelect from '../select/select.vue';
 import type { SelectOptionData } from '../select/types';

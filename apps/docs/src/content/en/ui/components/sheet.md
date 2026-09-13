@@ -48,15 +48,15 @@ A panel that slides out from the edge of the screen. It reuses the declarative A
 
 `SSheet` is a thin styled wrapper: it forwards every prop/slot/event to the headless `DialogCompact` and only supplies the `sheetVariants` recipe that extends `dialogVariants` with side-specific `popup` classes. This keeps sheet and dialog behavior identical while varying only presentation — the same headless/styled split as shadcn-ui/vaul-style panels, versus Ant Design's `drawer` (single styled component with `placement`/`width`/`closable`/`mask` props) and Element Plus/Mantine/Naive UI equivalents.
 
-| Capability                | SoybeanUI | shadcn/ui | Ant Design Drawer | Element Plus Drawer | Mantine Drawer | Naive UI Drawer |
-| :------------------------ | :-------: | :-------: | :---------------: | :-----------------: | :------------: | :-------------: |
-| Reuses dialog base        |    ✅     |    ✅     |         —         |          —          |       —        |        —        |
-| Headless/styled split     |    ✅     |    ✅     |         —         |          —          |       —        |        —        |
-| 4 placements (side)       |    ✅     |    ✅     |        ✅         |         ✅          |       ✅       |       ✅        |
-| Modal (aria-modal + trap) |    ✅     |    ✅     |        ✅         |         ✅          |       ✅       |       ✅        |
-| Focus return on close     |    ✅     |    ✅     |        ✅         |         ✅          |       ✅       |       ✅        |
-| Sizes (6)                 |    ✅     |     —     |         —         |          —          |       —        |        —        |
-| Pure (no header/footer)   |    ✅     |     —     |         —         |          —          |       —        |        —        |
+| Capability                | Vean | shadcn/ui | Ant Design Drawer | Element Plus Drawer | Mantine Drawer | Naive UI Drawer |
+| :------------------------ | :--: | :-------: | :---------------: | :-----------------: | :------------: | :-------------: |
+| Reuses dialog base        |  ✅  |    ✅     |         —         |          —          |       —        |        —        |
+| Headless/styled split     |  ✅  |    ✅     |         —         |          —          |       —        |        —        |
+| 4 placements (side)       |  ✅  |    ✅     |        ✅         |         ✅          |       ✅       |       ✅        |
+| Modal (aria-modal + trap) |  ✅  |    ✅     |        ✅         |         ✅          |       ✅       |       ✅        |
+| Focus return on close     |  ✅  |    ✅     |        ✅         |         ✅          |       ✅       |       ✅        |
+| Sizes (6)                 |  ✅  |     —     |         —         |          —          |       —        |        —        |
+| Pure (no header/footer)   |  ✅  |     —     |         —         |          —          |       —        |        —        |
 
 `—` = unsupported or a different interaction model.
 
@@ -74,7 +74,7 @@ The name `SDrawer` now belongs to the gesture-driven [Drawer](/components/drawer
 | Before                                        | After                                      |
 | :-------------------------------------------- | :----------------------------------------- |
 | `SDrawer` (side panel)                        | `SSheet`                                   |
-| `@soybeanjs/ui` → `SDrawer`                   | `@soybeanjs/ui` → `SSheet`                 |
+| `@vean/ui` → `SDrawer`                        | `@vean/ui` → `SSheet`                      |
 | `drawerVariants`                              | `sheetVariants`                            |
 | `DrawerProps` / `DrawerEmits` / `DrawerSlots` | `SheetProps` / `SheetEmits` / `SheetSlots` |
 

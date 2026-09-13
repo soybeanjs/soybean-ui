@@ -42,7 +42,7 @@ head:
 
 `SWatermark` splits into a headless layer that owns canvas generation, overlay state, and defense logic, and a styled layer that owns the `watermarkVariants` `scv()` recipe (root: `relative`, overlay: `absolute inset-0 pointer-events-none bg-repeat`). The headless `WatermarkCompact` composes `WatermarkRoot` + `WatermarkOverlay` and provides the `repairOverlay` function for defense.
 
-| Aspect              | SoybeanUI                                   | Ant Design `Watermark` | Element Plus `Watermark` | MUI Watermark |
+| Aspect              | Vean                                        | Ant Design `Watermark` | Element Plus `Watermark` | MUI Watermark |
 | :------------------ | :------------------------------------------ | :--------------------- | :----------------------- | :------------ |
 | Architecture        | headless + styled split                     | styled only            | styled only              | styled only   |
 | Text watermark      | ✅                                          | ✅                     | ✅                       | ✅            |
@@ -58,17 +58,17 @@ head:
 - **Canvas requirement**: Watermark generation uses `<canvas>` and `canvas.toDataURL()`. In environments without canvas support (e.g., some SSR setups), the overlay will not render — `generateWatermarkDataUrl` returns `undefined`.
 - **CORS for images**: Image watermarks use `crossOrigin = 'anonymous'`. The image server must send appropriate CORS headers (`Access-Control-Allow-Origin`), otherwise the canvas becomes tainted and `toDataURL()` throws.
 - **Defense is opt-in**: The `defense` prop defaults to `false`. Enable it with `defense: true` to activate `MutationObserver`-based tamper detection. Defense has a small performance cost due to observer callbacks.
-- **Defense scope**: The defense mechanism detects overlay removal (via root's `childList` observer) and attribute tampering (via overlay's `attributes` observer). It checks `aria-hidden`, `class`, `style`, `hidden`, and `data-soybean-watermark-overlay` attribute. If any is modified, the overlay is re-rendered via a `:key` increment.
+- **Defense scope**: The defense mechanism detects overlay removal (via root's `childList` observer) and attribute tampering (via overlay's `attributes` observer). It checks `aria-hidden`, `class`, `style`, `hidden`, and `data-vean-watermark-overlay` attribute. If any is modified, the overlay is re-rendered via a `:key` increment.
 - **`fullscreen` positioning**: When `fullscreen: true`, the overlay switches from `absolute inset-0` (parent-relative) to `fixed inset-0 z-9999` (viewport-fixed), covering the entire screen.
 
 ### Headless Composition
 
-When the default root/overlay structure is enough, import `WatermarkCompact` from `@soybeanjs/headless/watermark`. If you need separate control over the root and overlay elements, compose the headless primitives directly:
+When the default root/overlay structure is enough, import `WatermarkCompact` from `@vean/aria/watermark`. If you need separate control over the root and overlay elements, compose the headless primitives directly:
 
 ```vue
 <script setup lang="ts">
 import { computed } from 'vue';
-import { WatermarkOverlay, WatermarkRoot, provideWatermarkUi } from '@soybeanjs/headless';
+import { WatermarkOverlay, WatermarkRoot, provideWatermarkUi } from '@vean/aria';
 
 const ui = computed(() => ({
   root: 'relative',

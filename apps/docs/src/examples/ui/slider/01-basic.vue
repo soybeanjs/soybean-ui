@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SSlider } from '@soybeanjs/ui';
+import { SSlider } from '@vean/ui';
 
 const value = ref([40]);
 </script>

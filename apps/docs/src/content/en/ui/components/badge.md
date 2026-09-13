@@ -31,7 +31,7 @@ Use it for unread counts, notification badges, status dots, or any small label a
 
 ## Component family
 
-`SBadge` is a single export. It renders the `data-soybean-badge-root` container and, while `open`, the `data-soybean-badge-content` bubble; `class`/`ui` and `contentProps` reach both nodes.
+`SBadge` is a single export. It renders the `data-vean-badge-root` container and, while `open`, the `data-vean-badge-content` bubble; `class`/`ui` and `contentProps` reach both nodes.
 
 ## Demos
 
@@ -45,19 +45,19 @@ Use it for unread counts, notification badges, status dots, or any small label a
 
 ### Architecture and benchmark differences
 
-`SBadge` owns the visibility orchestration in the UI layer — a badge is a thin shell whose only logic is a controlled `open` flag, so it deliberately has no headless family. This mirrors shadcn/ui's composition-first approach (a plain styled label there) and Radix's `Badge` primitive, unlike Ant Design, Element Plus and Naive UI which ship a single styled `Badge` with `count`/`max`/`dot`/`offset` props. SoybeanUI exposes the bubble through a `content` prop/slot and a controlled `open` state, leaving count formatting (`max`) and dot/offset convenience out of the core — see the enhancement list below.
+`SBadge` owns the visibility orchestration in the UI layer — a badge is a thin shell whose only logic is a controlled `open` flag, so it deliberately has no headless family. This mirrors shadcn/ui's composition-first approach (a plain styled label there) and Radix's `Badge` primitive, unlike Ant Design, Element Plus and Naive UI which ship a single styled `Badge` with `count`/`max`/`dot`/`offset` props. Vean exposes the bubble through a `content` prop/slot and a controlled `open` state, leaving count formatting (`max`) and dot/offset convenience out of the core — see the enhancement list below.
 
-| Capability                     | SoybeanUI | shadcn/ui | Ant Design Badge | Element Plus Badge | Mantine Badge | Naive UI Badge |
-| :----------------------------- | :-------: | :-------: | :--------------: | :----------------: | :-----------: | :------------: |
-| Headless/styled split          |    ✅     |    ✅     |        —         |         —          |       —       |       —        |
-| Content / notification bubble  |    ✅     |     —     |        ✅        |         ✅         |       —       |       ✅       |
-| Position (corner placement)    |    ✅     |     —     |        ✅        |         ✅         |       —       |       ✅       |
-| Color variants (8)             |    ✅     |    ✅     |        ✅        |         ✅         |      ✅       |       ✅       |
-| Size variants (6)              |    ✅     |     —     |        ✅        |         ✅         |      ✅       |       ✅       |
-| RTL-aware placement            |    ✅     |     —     |        —         |         —          |       —       |       —        |
-| Controlled visibility (`open`) |    ✅     |     —     |        ✅        |         ✅         |       —       |       ✅       |
-| `max` count cap (99+)          |    ➕     |     —     |        ✅        |         ✅         |       —       |       ✅       |
-| `dot` mode / `offset`          |    ➕     |     —     |        ✅        |         ✅         |       —       |       ✅       |
+| Capability                     | Vean | shadcn/ui | Ant Design Badge | Element Plus Badge | Mantine Badge | Naive UI Badge |
+| :----------------------------- | :--: | :-------: | :--------------: | :----------------: | :-----------: | :------------: |
+| Headless/styled split          |  ✅  |    ✅     |        —         |         —          |       —       |       —        |
+| Content / notification bubble  |  ✅  |     —     |        ✅        |         ✅         |       —       |       ✅       |
+| Position (corner placement)    |  ✅  |     —     |        ✅        |         ✅         |       —       |       ✅       |
+| Color variants (8)             |  ✅  |    ✅     |        ✅        |         ✅         |      ✅       |       ✅       |
+| Size variants (6)              |  ✅  |     —     |        ✅        |         ✅         |      ✅       |       ✅       |
+| RTL-aware placement            |  ✅  |     —     |        —         |         —          |       —       |       —        |
+| Controlled visibility (`open`) |  ✅  |     —     |        ✅        |         ✅         |       —       |       ✅       |
+| `max` count cap (99+)          |  ➕  |     —     |        ✅        |         ✅         |       —       |       ✅       |
+| `dot` mode / `offset`          |  ➕  |     —     |        ✅        |         ✅         |       —       |       ✅       |
 
 `—` = unsupported or a different interaction model; `➕` = valuable enhancement not yet provided (see below).
 

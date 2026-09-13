@@ -48,15 +48,15 @@ head:
 
 `SSheet` 是薄样式包装组件：它把每个 prop/插槽/事件转发给 headless `DialogCompact`，仅提供继承 `dialogVariants` 并按方向定制 `popup` 类的 `sheetVariants` 配方。这使得侧边面板与对话框行为一致而仅表现不同——与 shadcn-ui/vaul 式面板相同的 headless/样式分离；而 Ant Design 的 `drawer`（带 `placement`/`width`/`closable`/`mask` prop 的单一样式化组件）及 Element Plus/Mantine/Naive UI 为另一模型。
 
-| 能力                    | SoybeanUI | shadcn/ui | Ant Design Drawer | Element Plus Drawer | Mantine Drawer | Naive UI Drawer |
-| :---------------------- | :-------: | :-------: | :---------------: | :-----------------: | :------------: | :-------------: |
-| 复用 dialog 基座        |    ✅     |    ✅     |         —         |          —          |       —        |        —        |
-| Headless/样式分离       |    ✅     |    ✅     |         —         |          —          |       —        |        —        |
-| 4 个方向（side）        |    ✅     |    ✅     |        ✅         |         ✅          |       ✅       |       ✅        |
-| 模态（aria-modal+陷阱） |    ✅     |    ✅     |        ✅         |         ✅          |       ✅       |       ✅        |
-| 关闭时焦点还原          |    ✅     |    ✅     |        ✅         |         ✅          |       ✅       |       ✅        |
-| 尺寸（6）               |    ✅     |     —     |         —         |          —          |       —        |        —        |
-| 纯净（无头/底部）       |    ✅     |     —     |         —         |          —          |       —        |        —        |
+| 能力                    | Vean | shadcn/ui | Ant Design Drawer | Element Plus Drawer | Mantine Drawer | Naive UI Drawer |
+| :---------------------- | :--: | :-------: | :---------------: | :-----------------: | :------------: | :-------------: |
+| 复用 dialog 基座        |  ✅  |    ✅     |         —         |          —          |       —        |        —        |
+| Headless/样式分离       |  ✅  |    ✅     |         —         |          —          |       —        |        —        |
+| 4 个方向（side）        |  ✅  |    ✅     |        ✅         |         ✅          |       ✅       |       ✅        |
+| 模态（aria-modal+陷阱） |  ✅  |    ✅     |        ✅         |         ✅          |       ✅       |       ✅        |
+| 关闭时焦点还原          |  ✅  |    ✅     |        ✅         |         ✅          |       ✅       |       ✅        |
+| 尺寸（6）               |  ✅  |     —     |         —         |          —          |       —        |        —        |
+| 纯净（无头/底部）       |  ✅  |     —     |         —         |          —          |       —        |        —        |
 
 `—` = 不支持或采用不同交互模型。
 
@@ -74,7 +74,7 @@ head:
 | 旧名                                          | 新名                                       |
 | :-------------------------------------------- | :----------------------------------------- |
 | `SDrawer`（侧边面板）                         | `SSheet`                                   |
-| `@soybeanjs/ui` → `SDrawer`                   | `@soybeanjs/ui` → `SSheet`                 |
+| `@vean/ui` → `SDrawer`                        | `@vean/ui` → `SSheet`                      |
 | `drawerVariants`                              | `sheetVariants`                            |
 | `DrawerProps` / `DrawerEmits` / `DrawerSlots` | `SheetProps` / `SheetEmits` / `SheetSlots` |
 

@@ -1,4 +1,4 @@
-import { useUiContext } from '@soybeanjs/headless/composables';
+import { useUiContext } from '@vean/aria/composables';
 import type { ListUiSlot } from './types';
 
 /**

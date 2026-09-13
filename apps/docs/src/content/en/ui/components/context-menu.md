@@ -48,16 +48,16 @@ Use a context menu for pointer-relative actions (files, canvas, tree nodes). For
 
 ### Architecture and benchmark differences
 
-The context-menu family composes the shared `menu` primitives inside a pointer-anchored popover portal; the UI wrappers only inject the shared `menuVariants` classes (via `provideMenuUi`) and forward props/slots. This mirrors radix-ui/shadcn-ui's headless menu split. Ant Design, Element Plus, Mantine and Naive UI ship a single styled context-menu (or reuse their dropdown with `trigger="contextmenu"`); SoybeanUI additionally exposes checkbox/radio/wrapper variants, a `size` scale, and full keyboard/typeahead behavior through the shared menu layer.
+The context-menu family composes the shared `menu` primitives inside a pointer-anchored popover portal; the UI wrappers only inject the shared `menuVariants` classes (via `provideMenuUi`) and forward props/slots. This mirrors radix-ui/shadcn-ui's headless menu split. Ant Design, Element Plus, Mantine and Naive UI ship a single styled context-menu (or reuse their dropdown with `trigger="contextmenu"`); Vean additionally exposes checkbox/radio/wrapper variants, a `size` scale, and full keyboard/typeahead behavior through the shared menu layer.
 
-| Capability             | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :--------------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| Pointer-positioned     |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |
-| Right-click trigger    |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |
-| Press-and-hold (touch) |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Checkbox / radio       |    ✅     |    ✅     |     —      |      —       |   ✅    |    —     |
-| Keyboard + typeahead   |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Sizes (6)              |    ✅     |     —     |     —      |      —       |    —    |    —     |
+| Capability             | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :--------------------- | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| Pointer-positioned     |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |
+| Right-click trigger    |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |
+| Press-and-hold (touch) |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Checkbox / radio       |  ✅  |    ✅     |     —      |      —       |   ✅    |    —     |
+| Keyboard + typeahead   |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Sizes (6)              |  ✅  |     —     |     —      |      —       |    —    |    —     |
 
 `—` = unsupported or a different interaction model.
 

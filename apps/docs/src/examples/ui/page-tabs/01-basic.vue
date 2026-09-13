@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { Ref } from 'vue';
-import { SPageTabs, SSelect } from '@soybeanjs/ui';
+import { SPageTabs, SSelect } from '@vean/ui';
 import type {
   PageTabsOptionData,
   SelectOptionData,
@@ -9,7 +9,7 @@ import type {
   PageTabsState,
   PageTabsContextMenuOptionData,
   SButton
-} from '@soybeanjs/ui';
+} from '@vean/ui';
 
 const variant = ref<PageTabsVariant>('chrome');
 

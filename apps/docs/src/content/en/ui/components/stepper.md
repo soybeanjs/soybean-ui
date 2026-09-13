@@ -55,16 +55,16 @@ Displays progress through a multi-step workflow. `SStepper` combines a `StepperR
 
 `StepperRoot` owns the whole state machine (controllable state, ordered item collection, linear gating) while every primitive stays style-free and only the UI wrapper injects the `stepperVariants` classes. `isFocusable` is derived per item (`disabled || (!linear && step > currentStep + 1)`) and mirrored into the DOM as `disabled`/`data-disabled`/`tabindex`, so unreachable steps are both non-clickable and out of the tab order. Arrow navigation uses `useArrowNavigation` with `loop: false` and respects `orientation`/`dir`; in linear mode focus cannot land on a disabled future step. The completed check icon requires a ConfigProvider `iconRender` (default: the `Icon` component renders nothing), otherwise completed steps fall back to their number. The live region and `aria-label` fallback are localized via `useLocaleMessages`, unlike shadcn/ui's stepper block which hardcodes English strings.
 
-| Capability                                 | SoybeanUI | shadcn/ui (blocks) | Ant Design Steps | Element Plus Steps | Mantine Stepper |
-| :----------------------------------------- | :-------: | :----------------: | :--------------: | :----------------: | :-------------: |
-| headless/styled split                      |    ✅     |         —          |        —         |         —          |        —        |
-| Linear mode (ordered completion)           |    ✅     |         ✅         |        ⚠️        |         ✅         |       ✅        |
-| Orientation (horizontal/vertical)          |    ✅     |         ✅         |        ✅        |         ✅         |       ✅        |
-| Arrow-key navigation (Home/End)            |    ✅     |         —          |        —         |         —          |        —        |
-| Localized live region + group `aria-label` |    ✅     |         ⚠️         |        —         |         —          |        —        |
-| Controlled/uncontrolled                    |    ✅     |         —          |        ⚠️        |         ⚠️         |       ✅        |
-| Compact composite with per-part props      |    ✅     |         —          |        —         |         —          |        —        |
-| `completed`/`disabled` per step            |    ✅     |         ✅         |        ✅        |         ✅         |       ✅        |
+| Capability                                 | Vean | shadcn/ui (blocks) | Ant Design Steps | Element Plus Steps | Mantine Stepper |
+| :----------------------------------------- | :--: | :----------------: | :--------------: | :----------------: | :-------------: |
+| headless/styled split                      |  ✅  |         —          |        —         |         —          |        —        |
+| Linear mode (ordered completion)           |  ✅  |         ✅         |        ⚠️        |         ✅         |       ✅        |
+| Orientation (horizontal/vertical)          |  ✅  |         ✅         |        ✅        |         ✅         |       ✅        |
+| Arrow-key navigation (Home/End)            |  ✅  |         —          |        —         |         —          |        —        |
+| Localized live region + group `aria-label` |  ✅  |         ⚠️         |        —         |         —          |        —        |
+| Controlled/uncontrolled                    |  ✅  |         —          |        ⚠️        |         ⚠️         |       ✅        |
+| Compact composite with per-part props      |  ✅  |         —          |        —         |         —          |        —        |
+| `completed`/`disabled` per step            |  ✅  |         ✅         |        ✅        |         ✅         |       ✅        |
 
 `⚠️` = partial (AntD uses a `status` prop instead of a linear gate; Element Plus exposes `process-status`/`finish-status` without a navigation gate; shadcn/ui's stepper block renders the status text with hardcoded English and is not a library component).
 

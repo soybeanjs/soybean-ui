@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SBacktop } from '@soybeanjs/ui';
+import { SBacktop } from '@vean/ui';
 
 const scrollTarget = shallowRef<HTMLDivElement | null>(null);
 </script>

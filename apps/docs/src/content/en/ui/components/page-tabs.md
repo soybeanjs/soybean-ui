@@ -23,13 +23,13 @@ A tabbed interface designed for navigating between different pages or views. It 
 - **Three visual variants** — `variant` (`chrome` / `card` / `slider`) with per-variant indicators (chrome corner SVGs / slider underline) and `size` (xs…2xl) via the `pageTabsVariants` `scv()` recipe.
 - **Six customization slots** — `item` (scoped `{ item, index, active, closable }`), `icon`, `label`, `indicator`, `pin-icon`, `close-icon`.
 - **Localized accessibility text** — the close / pin buttons fall back to localized `aria-label`s (`closeTab` / `pinTab` / `unpinTab`) across 13 built-in languages, overridable per button via `aria-label`.
-- **Headless composition** — `PageTabsRoot` / `PageTabsItem` / `PageTabsClose` / `PageTabsPin` / `PageTabsCompact` are exported from `@soybeanjs/headless/page-tabs` for fully custom styled builds.
+- **Headless composition** — `PageTabsRoot` / `PageTabsItem` / `PageTabsClose` / `PageTabsPin` / `PageTabsCompact` are exported from `@vean/aria/page-tabs` for fully custom styled builds.
 
 ## Usage
 
 <UsageCode component="page-tabs" />
 
-> `SPageTabs` delegates its tab management to headless `PageTabsCompact`. For unstyled, data-driven composition, import `PageTabsCompact` from `@soybeanjs/headless/page-tabs`.
+> `SPageTabs` delegates its tab management to headless `PageTabsCompact`. For unstyled, data-driven composition, import `PageTabsCompact` from `@vean/aria/page-tabs`.
 
 ## Demos
 
@@ -43,9 +43,9 @@ A tabbed interface designed for navigating between different pages or views. It 
 
 ### Architecture and benchmark comparison
 
-| Concern                                   | SoybeanUI                                        | Ant Design `Tabs`                   | Element Plus `Tabs`            | tags-view (vue-element-admin style) |
+| Concern                                   | Vean                                             | Ant Design `Tabs`                   | Element Plus `Tabs`            | tags-view (vue-element-admin style) |
 | :---------------------------------------- | :----------------------------------------------- | :---------------------------------- | :----------------------------- | :---------------------------------- |
-| Headless / styled separation              | ✅ `@soybeanjs/headless/page-tabs` + `scv()`     | ❌ single package                   | ❌ single package              | ❌ custom per app                   |
+| Headless / styled separation              | ✅ `@vean/aria/page-tabs` + `scv()`              | ❌ single package                   | ❌ single package              | ❌ custom per app                   |
 | Data-driven compact API                   | ✅ generic `PageTabsCompact<T>` + `items`        | ✅ config-driven (items)            | ✅ config-driven               | ✅ per app                          |
 | Controlled / uncontrolled                 | ✅ `modelValue`/`items` + `useControllableState` | ✅ `activeKey` / `defaultActiveKey` | ✅ `v-model`                   | —                                   |
 | Closable + async guard                    | ✅ `beforeClose` (false / Promise\<false>)       | ✅ `onEdit` + `beforeChange`        | ✅ `closable` / `before-leave` | ✅ `before-close`                   |
@@ -94,7 +94,7 @@ Arrow keys move focus through tabs (roving focus), `Enter` activates the focused
 
 ### Can I build a fully custom page tabs?
 
-Yes — compose `PageTabsRoot` / `PageTabsItem` / `PageTabsClose` / `PageTabsPin` / `PageTabsCompact` from `@soybeanjs/headless/page-tabs` and inject styles via `providePageTabsUi` (or `SPageTabs`'s `ui` prop). The `item` slot receives `{ item, index, active, closable }` scoped props for per-tab rendering.
+Yes — compose `PageTabsRoot` / `PageTabsItem` / `PageTabsClose` / `PageTabsPin` / `PageTabsCompact` from `@vean/aria/page-tabs` and inject styles via `providePageTabsUi` (or `SPageTabs`'s `ui` prop). The `item` slot receives `{ item, index, active, closable }` scoped props for per-tab rendering.
 
 ### How do I enable drag-to-reorder?
 

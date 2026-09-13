@@ -50,16 +50,16 @@ Use a tooltip for a short, non-interactive hint. For rich hover content use `hov
 
 ### Architecture and benchmark differences
 
-`TooltipCompact` owns the trigger/positioner/popup/arrow composition while every primitive stays style-free and only the UI wrapper injects the `tooltipVariants` classes. This mirrors radix-ui/shadcn-ui's headless split, built on the shared `Popper` primitives. Ant Design, Element Plus, Mantine and Naive UI ship a single styled tooltip with `title`/`placement` props; SoybeanUI additionally exposes per-slot `*Props`, a `size` scale, an arrow toggle, a `delayDuration`/`skipDelayDuration` tuning model with `ConfigProvider` global defaults, and an accessible visually-hidden `role="tooltip"` node.
+`TooltipCompact` owns the trigger/positioner/popup/arrow composition while every primitive stays style-free and only the UI wrapper injects the `tooltipVariants` classes. This mirrors radix-ui/shadcn-ui's headless split, built on the shared `Popper` primitives. Ant Design, Element Plus, Mantine and Naive UI ship a single styled tooltip with `title`/`placement` props; Vean additionally exposes per-slot `*Props`, a `size` scale, an arrow toggle, a `delayDuration`/`skipDelayDuration` tuning model with `ConfigProvider` global defaults, and an accessible visually-hidden `role="tooltip"` node.
 
-| Capability            | SoybeanUI | shadcn/ui | Ant Design Tooltip | Element Plus Tooltip | Mantine Tooltip | Naive UI Tooltip |
-| :-------------------- | :-------: | :-------: | :----------------: | :------------------: | :-------------: | :--------------: |
-| Headless/styled split |    ✅     |    ✅     |         —          |          —           |        —        |        —         |
-| Popper placement (12) |    ✅     |    ✅     |         ✅         |          ✅          |       ✅        |        ✅        |
-| Delay tuning          |    ✅     |    ✅     |         —          |          ✅          |       ✅        |        —         |
-| Arrow                 |    ✅     |    ✅     |         —          |          —           |        —        |        —         |
-| Sizes (6)             |    ✅     |     —     |         —          |          —           |        —        |        —         |
-| Focus trigger         |    ✅     |    ✅     |         ✅         |          ✅          |       ✅        |        ✅        |
+| Capability            | Vean | shadcn/ui | Ant Design Tooltip | Element Plus Tooltip | Mantine Tooltip | Naive UI Tooltip |
+| :-------------------- | :--: | :-------: | :----------------: | :------------------: | :-------------: | :--------------: |
+| Headless/styled split |  ✅  |    ✅     |         —          |          —           |        —        |        —         |
+| Popper placement (12) |  ✅  |    ✅     |         ✅         |          ✅          |       ✅        |        ✅        |
+| Delay tuning          |  ✅  |    ✅     |         —          |          ✅          |       ✅        |        —         |
+| Arrow                 |  ✅  |    ✅     |         —          |          —           |        —        |        —         |
+| Sizes (6)             |  ✅  |     —     |         —          |          —           |        —        |        —         |
+| Focus trigger         |  ✅  |    ✅     |         ✅         |          ✅          |       ✅        |        ✅        |
 
 `—` = unsupported or a different interaction model.
 

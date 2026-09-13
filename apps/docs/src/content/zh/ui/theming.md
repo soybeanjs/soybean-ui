@@ -1,18 +1,18 @@
 ---
 head:
   title: 主题
-  description: Soybean UI 提供了灵活的主题系统，允许你根据应用的设计需求自定义组件外观。你可以轻松调整颜色、圆角以及全局尺寸等设置。
+  description: Vean 提供了灵活的主题系统，允许你根据应用的设计需求自定义组件外观。你可以轻松调整颜色、圆角以及全局尺寸等设置。
 ---
 
 # 主题
 
 ## 概览
 
-Soybean UI 提供了灵活的主题系统，允许你根据应用的设计需求自定义组件外观。你可以轻松调整颜色、圆角以及全局尺寸等设置。
+Vean 提供了灵活的主题系统，允许你根据应用的设计需求自定义组件外观。你可以轻松调整颜色、圆角以及全局尺寸等设置。
 
 ## 实现原理
 
-使用独立的主题引擎 [@soybeanjs/theme](https://github.com/soybeanjs/soybean-ui) 来创建丰富的主题。其 `createTheme(options)` 纯函数返回一段 CSS 字符串，`SConfigProvider` 会根据 `theme` prop 在运行时将其内联到页面中。
+使用独立的主题引擎 [@vean/theme](https://github.com/soybeanjs/vean) 来创建丰富的主题。其 `createTheme(options)` 纯函数返回一段 CSS 字符串，`SConfigProvider` 会根据 `theme` prop 在运行时将其内联到页面中。
 
 ## 主题配置
 
@@ -20,7 +20,7 @@ Soybean UI 提供了灵活的主题系统，允许你根据应用的设计需求
 
 ```vue
 <script setup lang="ts">
-import { SConfigProvider } from '@soybeanjs/ui';
+import { SConfigProvider } from '@vean/ui';
 </script>
 
 <template>
@@ -144,7 +144,7 @@ createTheme({
 
 ```vue
 <script setup lang="ts">
-import { SAccordion } from '@soybeanjs/ui';
+import { SAccordion } from '@vean/ui';
 
 const items = [
   { title: '标题 1', value: 'item-1', description: '内容 1' },

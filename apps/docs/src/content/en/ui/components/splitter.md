@@ -26,7 +26,7 @@ A composable layout component that divides an area into resizable panels.
 - **Size scaling** — `size` (xs…2xl) scales the resize handle's visual grip width via `splitterVariants`.
 - **Custom handle content** — pass a default slot to `SSplitterResizeHandle` for a fully custom grip, or use `withHandle` for the built-in dotted grip.
 - **State reflection** — panels expose `data-state="collapsed|expanded"` (when collapsible), `data-panel-size`, `data-panel-collapsible`; handles expose `data-state="drag|hover|inactive"`, `data-disabled`, `data-orientation`.
-- **Headless composition** — `SplitterGroup`, `SplitterPanel`, `SplitterResizeHandle` are exported from `@soybeanjs/headless/splitter` for custom styled builds.
+- **Headless composition** — `SplitterGroup`, `SplitterPanel`, `SplitterResizeHandle` are exported from `@vean/aria/splitter` for custom styled builds.
 
 ## Usage
 
@@ -44,9 +44,9 @@ A composable layout component that divides an area into resizable panels.
 
 ### Architecture and benchmark comparison
 
-| Concern                      | SoybeanUI                                                                                  | react-resizable-panels                                  | Ant Design `ResizeBox` / `Splitter` |
+| Concern                      | Vean                                                                                       | react-resizable-panels                                  | Ant Design `ResizeBox` / `Splitter` |
 | :--------------------------- | :----------------------------------------------------------------------------------------- | :------------------------------------------------------ | :---------------------------------- |
-| Headless / styled separation | ✅ `@soybeanjs/headless/splitter` ships logic; `@soybeanjs/ui` ships `scv()` recipe        | ❌ React-only, no headless layer                        | ❌ single styled package            |
+| Headless / styled separation | ✅ `@vean/aria/splitter` ships logic; `@vean/ui` ships `scv()` recipe                      | ❌ React-only, no headless layer                        | ❌ single styled package            |
 | Panel size constraints       | `defaultSize` / `minSize` / `maxSize` / `collapsedSize`                                    | `defaultSize` / `minSize` / `maxSize` / `collapsedSize` | `min` / `max`                       |
 | Collapsible panels           | `collapsible` + Enter key + imperative API                                                 | `collapsible` + `onCollapse` / `onExpand`               | —                                   |
 | Panel `order`                | `order` prop controls logical sequence for layout mapping                                  | `order` prop                                            | —                                   |
@@ -80,7 +80,7 @@ Set `collapsible` on `SSplitterPanel` and provide a `collapsedSize` (default `0`
 
 ### How do I persist the layout?
 
-Listen to the `layout` event on `SSplitterGroup` and save the array (e.g., to `localStorage`). On next mount, pass the saved array as `defaultLayout`. Unlike react-resizable-panels' `autoSaveId`, SoybeanUI leaves persistence to the consumer for flexibility.
+Listen to the `layout` event on `SSplitterGroup` and save the array (e.g., to `localStorage`). On next mount, pass the saved array as `defaultLayout`. Unlike react-resizable-panels' `autoSaveId`, Vean leaves persistence to the consumer for flexibility.
 
 ### Can I disable a resize handle?
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { ColorValue } from '@soybeanjs/theme';
-import { SPalettePicker } from '@soybeanjs/ui';
-import type { PaletteChangePayload } from '@soybeanjs/ui';
+import type { ColorValue } from '@vean/theme';
+import { SPalettePicker } from '@vean/ui';
+import type { PaletteChangePayload } from '@vean/ui';
 
 const value = ref<ColorValue>('white');
 const payload = ref<PaletteChangePayload | null>(null);

@@ -48,16 +48,16 @@ head:
 
 ### 架构与对标差异
 
-`AvatarCompact` 负责加载状态编排（何时显示哪一部分），所有基础组件保持零样式，仅由 UI 包装组件注入 `avatarVariants` 类。这与 shadcn/ui 的 `Avatar`/`AvatarImage`/`AvatarFallback` headless 三件套及 Radix 的 `Avatar` 原语一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供单一样式化 `Avatar` 组件（`alt`/`src` prop）。SoybeanUI 刻意将回退文本与图片 `alt` 统一收敛到聚合层（`fallback-label`），使加载后的图片无需使用者重复声明即可拥有可访问名称。
+`AvatarCompact` 负责加载状态编排（何时显示哪一部分），所有基础组件保持零样式，仅由 UI 包装组件注入 `avatarVariants` 类。这与 shadcn/ui 的 `Avatar`/`AvatarImage`/`AvatarFallback` headless 三件套及 Radix 的 `Avatar` 原语一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供单一样式化 `Avatar` 组件（`alt`/`src` prop）。Vean 刻意将回退文本与图片 `alt` 统一收敛到聚合层（`fallback-label`），使加载后的图片无需使用者重复声明即可拥有可访问名称。
 
-| 能力                    | SoybeanUI | shadcn/ui | Ant Design Avatar | Element Plus Avatar | Mantine Avatar | Naive UI Avatar |
-| :---------------------- | :-------: | :-------: | :---------------: | :-----------------: | :------------: | :-------------: |
-| Headless/样式分离       |    ✅     |    ✅     |         —         |          —          |       —        |        —        |
-| 图片 + 回退文本/插槽    |    ✅     |    ✅     |        ✅         |         ✅          |       ✅       |       ✅        |
-| 回退延迟（`delay-ms`）  |    ✅     |    ✅     |         —         |          —          |       —        |        —        |
-| 可访问名称自动派生      |    ✅     |     —     |         —         |          —          |       —        |        —        |
-| 复合组件 + 逐部件 props |    ✅     |    ✅     |         —         |          —          |       —        |        —        |
-| 可配置尺寸（ThemeSize） |    ✅     |   class   |        ✅         |         ✅          |       ✅       |       ✅        |
+| 能力                    | Vean | shadcn/ui | Ant Design Avatar | Element Plus Avatar | Mantine Avatar | Naive UI Avatar |
+| :---------------------- | :--: | :-------: | :---------------: | :-----------------: | :------------: | :-------------: |
+| Headless/样式分离       |  ✅  |    ✅     |         —         |          —          |       —        |        —        |
+| 图片 + 回退文本/插槽    |  ✅  |    ✅     |        ✅         |         ✅          |       ✅       |       ✅        |
+| 回退延迟（`delay-ms`）  |  ✅  |    ✅     |         —         |          —          |       —        |        —        |
+| 可访问名称自动派生      |  ✅  |     —     |         —         |          —          |       —        |        —        |
+| 复合组件 + 逐部件 props |  ✅  |    ✅     |         —         |          —          |       —        |        —        |
+| 可配置尺寸（ThemeSize） |  ✅  |   class   |        ✅         |         ✅          |       ✅       |       ✅        |
 
 `—` = 不支持或采用不同交互模型（AntD/Element Plus/Mantine/Naive UI 为单一样式化组件；shadcn/ui 将图片 `alt` 交由使用者处理且无回退延迟）。
 

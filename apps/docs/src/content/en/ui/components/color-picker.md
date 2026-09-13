@@ -48,16 +48,16 @@ Use a color picker for a full-featured color selection UI (format tabs, saturati
 
 ### Architecture and benchmark differences
 
-`ColorPickerCompact` owns the cross-primitive composition (root state + popover + area + sliders + fields + swatches + segment) while every underlying primitive stays style-free. The UI wrapper injects a single `colorPickerVariants` map through `provideColorPickerUi`, which remaps aliased slots onto the nested `provide*Ui` contexts. This mirrors radix-ui-color/shadcn-ui's headless split. Ant Design, Element Plus, Mantine and Naive UI ship a single styled color-picker with `showAlpha`/`presets` props; SoybeanUI exposes a composite with explicit format tabs, full `oklch` editing and a `size` scale.
+`ColorPickerCompact` owns the cross-primitive composition (root state + popover + area + sliders + fields + swatches + segment) while every underlying primitive stays style-free. The UI wrapper injects a single `colorPickerVariants` map through `provideColorPickerUi`, which remaps aliased slots onto the nested `provide*Ui` contexts. This mirrors radix-ui-color/shadcn-ui's headless split. Ant Design, Element Plus, Mantine and Naive UI ship a single styled color-picker with `showAlpha`/`presets` props; Vean exposes a composite with explicit format tabs, full `oklch` editing and a `size` scale.
 
-| Capability           | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :------------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| Composite primitives |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Format tabs          |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Full oklch editing   |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Hue + alpha sliders  |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| Preset swatches      |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| Sizes (6)            |    ✅     |     —     |     —      |      —       |    —    |    —     |
+| Capability           | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :------------------- | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| Composite primitives |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Format tabs          |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Full oklch editing   |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Hue + alpha sliders  |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| Preset swatches      |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| Sizes (6)            |  ✅  |     —     |     —      |      —       |    —    |    —     |
 
 `—` = unsupported or a different interaction model.
 

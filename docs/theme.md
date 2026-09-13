@@ -1,6 +1,6 @@
 # 主题持久化与 FOUC 策略
 
-> 定位：说明 SoybeanUI 主题在 SSG / SSR 下的持久化差异、首帧闪烁（FOUC）成因与主流框架解法，供主题相关改动的方案选型与评审使用。
+> 定位：说明 Vean 主题在 SSG / SSR 下的持久化差异、首帧闪烁（FOUC）成因与主流框架解法，供主题相关改动的方案选型与评审使用。
 > 状态：✅ 已实施（SSG 方案 A：CSS 快照 + 首帧注入）；SSR 方案为可选演进方向。
 > 基线：2026-09-10 · 分支：v0.40.0
 
@@ -22,7 +22,7 @@ SSR 与 SSG 的持久化实现差异只有一条主线：**服务端能否知道
 1. `SConfigProvider` 开启 `persistTheme` 后，客户端从 localStorage 读取主题配置，并用 `createTheme()` 派生 CSS。
 2. 派生出的 CSS 通过 `setStoredThemeCss` 写入 `__SOYBEAN_THEME_CSS`（[hooks.ts](../packages/ui/src/components/config-provider/hooks.ts)）。
 3. `<head>` 内联脚本 `createThemeInitScript({ injectCss: true })` 在首次绘制前读取该快照，给每条自定义属性加 `!important` 后注入 `<style id="__SOYBEAN_THEME_INIT">`（[ssr.ts](../packages/theme/src/ssr.ts)）。
-4. `!important` 用于压过 SSR 渲染的默认主题 `<style id="__SoybeanUI_theme">`——它在 `<body>` 内，文档顺序在后，同优先级会覆盖 `<head>` 的注入。
+4. `!important` 用于压过 SSR 渲染的默认主题 `<style id="__Vean_theme">`——它在 `<body>` 内，文档顺序在后，同优先级会覆盖 `<head>` 的注入。
 5. hydration 后 `ThemeStyle` 把响应式 CSS 写入 body 内的 `<style>`，随后移除首帧注入样式，运行时切换不再受 `!important` 影响。
 
 为什么要绕这一圈：我们的主题不是「有限主题集」——`base` / `primary` / `radius` / `size` 会派生出一整份 CSS，无法像 light/dark 那样只切一个 class。

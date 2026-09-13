@@ -27,7 +27,7 @@ Use it when a layout needs a first-level switcher plus a nested tree or horizont
 - 🧩 Reuses `TreeMenuCompact` (nested vertical) and `TreeNavCompact` (nested horizontal)
 - 🎨 6 sizes + style injection — `size` from xs to 2xl; `class` / `ui` overrides across named slots
 - ✏️ Customizable — `first-level-item` / `item` / `item-leading` / `item-trailing` slots
-- ♿ Accessibility — `role="menubar"` / `menuitem`, `data-soybean-split-nav-*` attributes, RTL-aware `dir`
+- ♿ Accessibility — `role="menubar"` / `menuitem`, `data-vean-split-nav-*` attributes, RTL-aware `dir`
 
 ## Component family
 
@@ -58,12 +58,12 @@ Use it when a layout needs a first-level switcher plus a nested tree or horizont
 
 `SSplitNav` is a thin styled wrapper. Headless `SplitNavRoot` owns mode switching, the active path (`findActivePath`), and leaf-vs-parent selection. First-level items are a dedicated RovingFocus list — not a TreeMenu — so parent nodes switch the nested pane instead of expanding in place, and they **do not** take on the selected-leaf style. Vertical first-level items stack icon above label in a compact rail (overflowing labels ellipsize); horizontal first-level items stay icon-then-label in a row. Nested vertical content is `TreeMenuCompact` styled with `treeMenuVariants`, including a dedicated pane width and `v-model:collapsed`; nested horizontal content is `TreeNavCompact` styled with `treeNavVariants` so it matches `STreeNav`. `class` applies to the standalone `dual-vertical` pane; mixed modes render as independent teleported fragments.
 
-| Capability                | SoybeanUI | Ant Design | Element Plus | Naive UI |
-| :------------------------ | :-------: | :--------: | :----------: | :------: |
-| Multiple layout modes     |    ✅     |     ⚠️     |      ⚠️      |    —     |
-| Teleport to external el   |    ✅     |     —      |      —       |    —     |
-| Headless/style separation |    ✅     |     —      |      —       |    —     |
-| First-level roving keys   |    ✅     |     ⚠️     |      ⚠️      |    —     |
+| Capability                | Vean | Ant Design | Element Plus | Naive UI |
+| :------------------------ | :--: | :--------: | :----------: | :------: |
+| Multiple layout modes     |  ✅  |     ⚠️     |      ⚠️      |    —     |
+| Teleport to external el   |  ✅  |     —      |      —       |    —     |
+| Headless/style separation |  ✅  |     —      |      —       |    —     |
+| First-level roving keys   |  ✅  |     ⚠️     |      ⚠️      |    —     |
 
 ### Cautions
 
@@ -105,8 +105,8 @@ Listen to the `open` event: it carries the complete option data of the activated
 ```vue
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SSplitNav } from '@soybeanjs/ui';
-import type { SplitNavOptionData } from '@soybeanjs/ui';
+import { SSplitNav } from '@vean/ui';
+import type { SplitNavOptionData } from '@vean/ui';
 
 const active = shallowRef('');
 

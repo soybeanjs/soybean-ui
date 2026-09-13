@@ -47,16 +47,16 @@ head:
 
 ### 架构与对标差异
 
-`ColorSliderCompact` 负责轨道/滑块组合，所有基础组件保持零样式，仅由 UI 包装组件注入共享 `sliderVariants` 类。这与 radix-ui-color/shadcn-ui 的 headless 分离一致。Ant Design、Element Plus、Mantine、Naive UI 将色相/透明度滑块内嵌于颜色选择器；SoybeanUI 暴露独立的单通道滑块，带颜色空间/通道控制、键盘交互、原生表单输入与 `size` 尺寸体系。
+`ColorSliderCompact` 负责轨道/滑块组合，所有基础组件保持零样式，仅由 UI 包装组件注入共享 `sliderVariants` 类。这与 radix-ui-color/shadcn-ui 的 headless 分离一致。Ant Design、Element Plus、Mantine、Naive UI 将色相/透明度滑块内嵌于颜色选择器；Vean 暴露独立的单通道滑块，带颜色空间/通道控制、键盘交互、原生表单输入与 `size` 尺寸体系。
 
-| 能力                   | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :--------------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| Headless/样式分离      |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 任意通道（hue/alpha…） |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 多种颜色空间           |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 键盘交互               |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| 原生表单输入           |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 尺寸（6）              |    ✅     |     —     |     —      |      —       |    —    |    —     |
+| 能力                   | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :--------------------- | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| Headless/样式分离      |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 任意通道（hue/alpha…） |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 多种颜色空间           |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 键盘交互               |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| 原生表单输入           |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 尺寸（6）              |  ✅  |     —     |     —      |      —       |    —    |    —     |
 
 `—` = 不支持或采用不同交互模型。
 

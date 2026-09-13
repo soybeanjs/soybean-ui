@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SButton, SProgress } from '@soybeanjs/ui';
+import { SButton, SProgress } from '@vean/ui';
 
 const value = shallowRef<number | null | undefined>(45);
 </script>

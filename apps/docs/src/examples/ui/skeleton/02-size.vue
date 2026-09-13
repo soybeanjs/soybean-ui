@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SSkeleton } from '@soybeanjs/ui';
-import type { ThemeSize } from '@soybeanjs/ui';
+import { SSkeleton } from '@vean/ui';
+import type { ThemeSize } from '@vean/ui';
 
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 </script>

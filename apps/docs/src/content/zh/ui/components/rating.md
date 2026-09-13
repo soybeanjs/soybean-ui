@@ -41,21 +41,21 @@ head:
 
 ### 架构与行业对标
 
-SoybeanUI 将评分拆分为 headless `RatingRoot`（slider 上下文、`useControllableState`、键盘导航、ARIA 反射、半步指针解析、`VisuallyHiddenInput` 表单绑定）与 headless `RatingItem`（从上下文渲染每颗星星，暴露 `state` 供插槽驱动图标）。UI 包装 `SRating` 通过标准多插槽 `provide*Ui` / `useUiContext` 模式注入 `ratingVariants` 与 `ratingItemVariants` 类；状态与视觉通过 `data-[state=...]` 选择器解耦。与 AntD `Rate`、Element Plus `el-rate`、Mantine `Rating`、Naive UI `n-rate` 相比，SoybeanUI 是唯一同时具备 headless/styled 分离、RTL 支持、垂直方向与原生表单集成的对标库；shadcn 未提供评分组件。
+Vean 将评分拆分为 headless `RatingRoot`（slider 上下文、`useControllableState`、键盘导航、ARIA 反射、半步指针解析、`VisuallyHiddenInput` 表单绑定）与 headless `RatingItem`（从上下文渲染每颗星星，暴露 `state` 供插槽驱动图标）。UI 包装 `SRating` 通过标准多插槽 `provide*Ui` / `useUiContext` 模式注入 `ratingVariants` 与 `ratingItemVariants` 类；状态与视觉通过 `data-[state=...]` 选择器解耦。与 AntD `Rate`、Element Plus `el-rate`、Mantine `Rating`、Naive UI `n-rate` 相比，Vean 是唯一同时具备 headless/styled 分离、RTL 支持、垂直方向与原生表单集成的对标库；shadcn 未提供评分组件。
 
-| 能力                 | SoybeanUI |   Ant Design    |  Element Plus   |     Mantine     |  Naive UI  | shadcn |
-| :------------------- | :-------: | :-------------: | :-------------: | :-------------: | :--------: | :----: |
-| headless/styled 分离 |    ✅     |        —        |        —        |        —        |     —      |   —    |
-| 受控/非受控          |    ✅     |       ✅        |       ✅        |       ✅        |     ✅     |   —    |
-| 半星精度             |    ✅     |       ✅        |       ✅        | ✅（fractions） |     ✅     |   —    |
-| 允许清除             |    ✅     |       ✅        |       ✅        |       ✅        |     ✅     |   —    |
-| 只读模式             |    ✅     |       ✅        |       ✅        |       ✅        |     ✅     |   —    |
-| 自定义图标（插槽）   |    ✅     | ✅（character） | ✅（iconClass） |       ✅        |     ✅     |   —    |
-| 键盘导航             |    ✅     |        —        |        —        |       ✅        |     —      |   —    |
-| RTL 支持             |    ✅     |        —        |        —        |        —        |     —      |   —    |
-| 垂直方向             |    ✅     |        —        |        —        |       ✅        |     —      |   —    |
-| 表单集成             |    ✅     |        —        |        —        |       ✅        |     —      |   —    |
-| 颜色/尺寸变体        |    ✅     |      size       |      size       |      size       | size/color |   —    |
+| 能力                 | Vean |   Ant Design    |  Element Plus   |     Mantine     |  Naive UI  | shadcn |
+| :------------------- | :--: | :-------------: | :-------------: | :-------------: | :--------: | :----: |
+| headless/styled 分离 |  ✅  |        —        |        —        |        —        |     —      |   —    |
+| 受控/非受控          |  ✅  |       ✅        |       ✅        |       ✅        |     ✅     |   —    |
+| 半星精度             |  ✅  |       ✅        |       ✅        | ✅（fractions） |     ✅     |   —    |
+| 允许清除             |  ✅  |       ✅        |       ✅        |       ✅        |     ✅     |   —    |
+| 只读模式             |  ✅  |       ✅        |       ✅        |       ✅        |     ✅     |   —    |
+| 自定义图标（插槽）   |  ✅  | ✅（character） | ✅（iconClass） |       ✅        |     ✅     |   —    |
+| 键盘导航             |  ✅  |        —        |        —        |       ✅        |     —      |   —    |
+| RTL 支持             |  ✅  |        —        |        —        |        —        |     —      |   —    |
+| 垂直方向             |  ✅  |        —        |        —        |       ✅        |     —      |   —    |
+| 表单集成             |  ✅  |        —        |        —        |       ✅        |     —      |   —    |
+| 颜色/尺寸变体        |  ✅  |      size       |      size       |      size       | size/color |   —    |
 
 ### 使用注意
 

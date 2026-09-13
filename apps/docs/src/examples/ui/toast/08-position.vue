@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButton, toast } from '@soybeanjs/ui';
-import type { ToastPosition } from '@soybeanjs/ui';
+import { SButton, toast } from '@vean/ui';
+import type { ToastPosition } from '@vean/ui';
 
 const positions: ToastPosition[] = [
   'top-left',

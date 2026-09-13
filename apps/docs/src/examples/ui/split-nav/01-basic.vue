@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SButtonIcon, SSelect, SSplitNav } from '@soybeanjs/ui';
-import type { ThemeSize } from '@soybeanjs/ui';
+import { SButtonIcon, SSelect, SSplitNav } from '@vean/ui';
+import type { ThemeSize } from '@vean/ui';
 import { themeSizeOptions } from '~/constants/theme';
 import { splitNavItems } from './data';
 
-const active = shallowRef('soybean-ui');
+const active = shallowRef('vean-ui');
 const collapsed = shallowRef(false);
 const size = shallowRef<ThemeSize>('md');
 

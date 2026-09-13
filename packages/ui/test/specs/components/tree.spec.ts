@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
-import { TreeItem, TreeVirtualizerItem } from '@soybeanjs/headless/tree';
+import { TreeItem, TreeVirtualizerItem } from '@vean/aria/tree';
 import STreeVirtualizer from '@/components/tree/tree-virtualizer.vue';
 import STree from '@/components/tree/tree.vue';
 import { MockResizeObserver, createMockResizeObserverEntry, delay, setupMock } from '../../shared';
@@ -49,8 +49,8 @@ describe('STree', () => {
     it('renders the tree root with items data', () => {
       const wrapper = mountTree();
 
-      expect(wrapper.find('[data-soybean-tree-root]').exists()).toBe(true);
-      expect(wrapper.findAll('[data-soybean-tree-item]')).toHaveLength(2);
+      expect(wrapper.find('[data-vean-tree-root]').exists()).toBe(true);
+      expect(wrapper.findAll('[data-vean-tree-item]')).toHaveLength(2);
       expect(wrapper.find('.tree-label').text()).toBe('Item 1');
       wrapper.unmount();
     });
@@ -66,7 +66,7 @@ describe('STree', () => {
     it('renders nested children when default-expanded', () => {
       const wrapper = mountTree({ defaultExpanded: ['1'] });
 
-      expect(wrapper.findAll('[data-soybean-tree-item]')).toHaveLength(4);
+      expect(wrapper.findAll('[data-vean-tree-item]')).toHaveLength(4);
       expect(wrapper.text()).toContain('Item 1-1');
       expect(wrapper.text()).toContain('Item 1-2');
       wrapper.unmount();
@@ -106,9 +106,9 @@ describe('STree', () => {
   });
 
   describe('data attributes and aria', () => {
-    it('renders the data-soybean-tree-item attributes', () => {
+    it('renders the data-vean-tree-item attributes', () => {
       const wrapper = mountTree();
-      const item = wrapper.find('[data-soybean-tree-item]');
+      const item = wrapper.find('[data-vean-tree-item]');
 
       expect(item.attributes('data-indent')).toBe('1');
       expect(item.attributes('data-expanded')).toBeUndefined();
@@ -118,12 +118,12 @@ describe('STree', () => {
 
     it('applies tree roles and aria attributes to the tree', () => {
       const wrapper = mountTree();
-      const root = wrapper.find('[data-soybean-tree-root]');
+      const root = wrapper.find('[data-vean-tree-root]');
 
       expect(root.attributes('role')).toBe('tree');
       expect(root.attributes('aria-multiselectable')).toBeUndefined();
 
-      const item = wrapper.find('[data-soybean-tree-item]');
+      const item = wrapper.find('[data-vean-tree-item]');
 
       expect(item.attributes('role')).toBe('treeitem');
       expect(item.attributes('aria-level')).toBe('1');
@@ -135,13 +135,13 @@ describe('STree', () => {
     it('marks the root as multiselectable when multiple is enabled', () => {
       const wrapper = mountTree({ multiple: true });
 
-      expect(wrapper.find('[data-soybean-tree-root]').attributes('aria-multiselectable')).toBe('true');
+      expect(wrapper.find('[data-vean-tree-root]').attributes('aria-multiselectable')).toBe('true');
       wrapper.unmount();
     });
 
     it('sets aria-expanded and data-expanded when a node is expanded', () => {
       const wrapper = mountTree({ defaultExpanded: ['1'] });
-      const firstItem = wrapper.findAll('[data-soybean-tree-item]')[0];
+      const firstItem = wrapper.findAll('[data-vean-tree-item]')[0];
 
       expect(firstItem.attributes('aria-expanded')).toBe('true');
       expect(firstItem.attributes('data-expanded')).toBe('');
@@ -150,7 +150,7 @@ describe('STree', () => {
 
     it('sets aria-selected and data-selected for the selected item', () => {
       const wrapper = mountTree({ modelValue: '2' });
-      const items = wrapper.findAll('[data-soybean-tree-item]');
+      const items = wrapper.findAll('[data-vean-tree-item]');
 
       expect(items[0].attributes('aria-selected')).toBe('false');
       expect(items[1].attributes('aria-selected')).toBe('true');
@@ -172,7 +172,7 @@ describe('STree', () => {
     it('selects a leaf item on click', async () => {
       const wrapper = mountTree();
 
-      await wrapper.findAll('[data-soybean-tree-item]')[1].trigger('click');
+      await wrapper.findAll('[data-vean-tree-item]')[1].trigger('click');
 
       expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toBe('2');
       wrapper.unmount();
@@ -181,7 +181,7 @@ describe('STree', () => {
     it('toggles the selection off when the selected item is clicked again', async () => {
       const wrapper = mountTree({ modelValue: '2' });
 
-      await wrapper.findAll('[data-soybean-tree-item]')[1].trigger('click');
+      await wrapper.findAll('[data-vean-tree-item]')[1].trigger('click');
 
       expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toBeUndefined();
       wrapper.unmount();
@@ -190,8 +190,8 @@ describe('STree', () => {
     it('keeps multiple items selected in multiple mode', async () => {
       const wrapper = mountTree({ multiple: true, defaultExpanded: ['1'] });
 
-      await wrapper.findAll('[data-soybean-tree-item]')[1].trigger('click');
-      await wrapper.findAll('[data-soybean-tree-item]')[3].trigger('click');
+      await wrapper.findAll('[data-vean-tree-item]')[1].trigger('click');
+      await wrapper.findAll('[data-vean-tree-item]')[3].trigger('click');
 
       expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toEqual(['1-1', '2']);
       wrapper.unmount();
@@ -200,8 +200,8 @@ describe('STree', () => {
     it('keeps a single value with the replace selection behavior', async () => {
       const wrapper = mountTree({ multiple: true, selectionBehavior: 'replace', defaultExpanded: ['1'] });
 
-      await wrapper.findAll('[data-soybean-tree-item]')[1].trigger('click');
-      await wrapper.findAll('[data-soybean-tree-item]')[3].trigger('click');
+      await wrapper.findAll('[data-vean-tree-item]')[1].trigger('click');
+      await wrapper.findAll('[data-vean-tree-item]')[3].trigger('click');
 
       expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toEqual(['2']);
       wrapper.unmount();
@@ -210,7 +210,7 @@ describe('STree', () => {
     it('respects a controlled modelValue', async () => {
       const wrapper = mountTree({ modelValue: '2', defaultExpanded: ['1'] });
 
-      await wrapper.findAll('[data-soybean-tree-item]')[1].trigger('click');
+      await wrapper.findAll('[data-vean-tree-item]')[1].trigger('click');
 
       expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toBe('1-1');
       wrapper.unmount();
@@ -219,7 +219,7 @@ describe('STree', () => {
     it('selects descendants when propagateSelect is enabled', async () => {
       const wrapper = mountTree({ multiple: true, allowParentSelect: true, propagateSelect: true });
 
-      await wrapper.findAll('[data-soybean-tree-item]')[0].trigger('click');
+      await wrapper.findAll('[data-vean-tree-item]')[0].trigger('click');
 
       expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toEqual(['1', '1-1', '1-2']);
       wrapper.unmount();
@@ -228,8 +228,8 @@ describe('STree', () => {
     it('selects the parent when all its children are selected with bubbleSelect', async () => {
       const wrapper = mountTree({ multiple: true, bubbleSelect: true, defaultExpanded: ['1'] });
 
-      await wrapper.findAll('[data-soybean-tree-item]')[1].trigger('click');
-      await wrapper.findAll('[data-soybean-tree-item]')[2].trigger('click');
+      await wrapper.findAll('[data-vean-tree-item]')[1].trigger('click');
+      await wrapper.findAll('[data-vean-tree-item]')[2].trigger('click');
 
       expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toEqual(['1-1', '1-2', '1']);
       wrapper.unmount();
@@ -238,7 +238,7 @@ describe('STree', () => {
     it('skips a parent node when allowParentSelect is false', async () => {
       const wrapper = mountTree();
 
-      await wrapper.findAll('[data-soybean-tree-item]')[0].trigger('click');
+      await wrapper.findAll('[data-vean-tree-item]')[0].trigger('click');
 
       expect(wrapper.emitted('update:modelValue')).toBeFalsy();
       wrapper.unmount();
@@ -249,22 +249,22 @@ describe('STree', () => {
     it('expands a collapsed node on click', async () => {
       const wrapper = mountTree();
 
-      expect(wrapper.findAll('[data-soybean-tree-item]')).toHaveLength(2);
+      expect(wrapper.findAll('[data-vean-tree-item]')).toHaveLength(2);
 
-      await wrapper.findAll('[data-soybean-tree-item]')[0].trigger('click');
+      await wrapper.findAll('[data-vean-tree-item]')[0].trigger('click');
 
-      expect(wrapper.findAll('[data-soybean-tree-item]')).toHaveLength(4);
-      expect(wrapper.findAll('[data-soybean-tree-item]')[0].attributes('aria-expanded')).toBe('true');
+      expect(wrapper.findAll('[data-vean-tree-item]')).toHaveLength(4);
+      expect(wrapper.findAll('[data-vean-tree-item]')[0].attributes('aria-expanded')).toBe('true');
       wrapper.unmount();
     });
 
     it('collapses an expanded node on click', async () => {
       const wrapper = mountTree({ defaultExpanded: ['1'] });
 
-      await wrapper.findAll('[data-soybean-tree-item]')[0].trigger('click');
+      await wrapper.findAll('[data-vean-tree-item]')[0].trigger('click');
 
-      expect(wrapper.findAll('[data-soybean-tree-item]')).toHaveLength(2);
-      expect(wrapper.findAll('[data-soybean-tree-item]')[0].attributes('aria-expanded')).toBe('false');
+      expect(wrapper.findAll('[data-vean-tree-item]')).toHaveLength(2);
+      expect(wrapper.findAll('[data-vean-tree-item]')[0].attributes('aria-expanded')).toBe('false');
       wrapper.unmount();
     });
 
@@ -279,14 +279,14 @@ describe('STree', () => {
         attachTo: document.body
       });
 
-      await wrapper.findAll('[data-soybean-tree-item]')[0].trigger('click');
-      expect(wrapper.findAll('[data-soybean-tree-item]')[0].attributes('aria-expanded')).toBe('true');
+      await wrapper.findAll('[data-vean-tree-item]')[0].trigger('click');
+      expect(wrapper.findAll('[data-vean-tree-item]')[0].attributes('aria-expanded')).toBe('true');
 
       // 展开 'a' 后可见项为 [a, a-1, b]，点击索引 2 即 'b'
-      await wrapper.findAll('[data-soybean-tree-item]')[2].trigger('click');
+      await wrapper.findAll('[data-vean-tree-item]')[2].trigger('click');
       await nextTick();
 
-      const items = wrapper.findAll('[data-soybean-tree-item]');
+      const items = wrapper.findAll('[data-vean-tree-item]');
 
       expect(items[0].attributes('aria-expanded')).toBe('false');
       expect(items[1].attributes('aria-expanded')).toBe('true');
@@ -296,7 +296,7 @@ describe('STree', () => {
     it('emits update:expanded for a controlled expanded state', async () => {
       const wrapper = mountTree();
 
-      await wrapper.findAll('[data-soybean-tree-item]')[0].trigger('click');
+      await wrapper.findAll('[data-vean-tree-item]')[0].trigger('click');
 
       expect(wrapper.emitted('update:expanded')?.at(-1)?.[0]).toEqual(['1']);
       wrapper.unmount();
@@ -307,11 +307,11 @@ describe('STree', () => {
     it('blocks selection and expansion when the root is disabled', async () => {
       const wrapper = mountTree({ disabled: true });
 
-      await wrapper.findAll('[data-soybean-tree-item]')[0].trigger('click');
+      await wrapper.findAll('[data-vean-tree-item]')[0].trigger('click');
 
       expect(wrapper.emitted('update:modelValue')).toBeFalsy();
       expect(wrapper.emitted('update:expanded')).toBeFalsy();
-      expect(wrapper.find('[data-soybean-tree-root]').attributes('aria-disabled')).toBe('true');
+      expect(wrapper.find('[data-vean-tree-root]').attributes('aria-disabled')).toBe('true');
       wrapper.unmount();
     });
   });
@@ -319,7 +319,7 @@ describe('STree', () => {
   describe('keyboard navigation', () => {
     it('moves focus to the next item with ArrowDown', async () => {
       const wrapper = mountTree();
-      const items = wrapper.findAll('[data-soybean-tree-item]');
+      const items = wrapper.findAll('[data-vean-tree-item]');
 
       await items[0].trigger('keydown', { key: 'ArrowDown' });
 
@@ -330,15 +330,15 @@ describe('STree', () => {
     it('expands a collapsed node with ArrowRight', async () => {
       const wrapper = mountTree();
 
-      await wrapper.findAll('[data-soybean-tree-item]')[0].trigger('keydown', { key: 'ArrowRight' });
+      await wrapper.findAll('[data-vean-tree-item]')[0].trigger('keydown', { key: 'ArrowRight' });
 
-      expect(wrapper.findAll('[data-soybean-tree-item]')).toHaveLength(4);
+      expect(wrapper.findAll('[data-vean-tree-item]')).toHaveLength(4);
       wrapper.unmount();
     });
 
     it('moves focus to the parent with ArrowLeft on a collapsed node', async () => {
       const wrapper = mountTree({ defaultExpanded: ['1'] });
-      const items = wrapper.findAll('[data-soybean-tree-item]');
+      const items = wrapper.findAll('[data-vean-tree-item]');
 
       await items[1].trigger('keydown', { key: 'ArrowLeft' });
 
@@ -349,7 +349,7 @@ describe('STree', () => {
     it('selects an item with Enter', async () => {
       const wrapper = mountTree();
 
-      await wrapper.findAll('[data-soybean-tree-item]')[1].trigger('keydown', { key: 'Enter' });
+      await wrapper.findAll('[data-vean-tree-item]')[1].trigger('keydown', { key: 'Enter' });
 
       expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toBe('2');
       wrapper.unmount();
@@ -357,9 +357,9 @@ describe('STree', () => {
 
     it('loops focus from the last item back to the first with the default loop behavior', async () => {
       const wrapper = mountTree();
-      const items = wrapper.findAll('[data-soybean-tree-item]');
+      const items = wrapper.findAll('[data-vean-tree-item]');
 
-      expect(wrapper.find('[data-soybean-tree-root]').attributes('data-loop')).toBe('');
+      expect(wrapper.find('[data-vean-tree-root]').attributes('data-loop')).toBe('');
 
       await items[1].trigger('keydown', { key: 'ArrowDown' });
 
@@ -407,7 +407,7 @@ describe('STreeVirtualizer', () => {
     const wrapper = mountVirtualizer();
 
     getInstance()?.trigger([
-      createMockResizeObserverEntry(wrapper.find('[data-soybean-tree-virtualizer-root]').element, {
+      createMockResizeObserverEntry(wrapper.find('[data-vean-tree-virtualizer-root]').element, {
         width: 224,
         height: 240
       })
@@ -415,8 +415,8 @@ describe('STreeVirtualizer', () => {
     await delay(30);
     await nextTick();
 
-    expect(wrapper.find('[data-soybean-tree-virtualizer-root]').exists()).toBe(true);
-    expect(wrapper.findAll('[data-soybean-tree-item]').length).toBeGreaterThan(0);
+    expect(wrapper.find('[data-vean-tree-virtualizer-root]').exists()).toBe(true);
+    expect(wrapper.findAll('[data-vean-tree-item]').length).toBeGreaterThan(0);
     wrapper.unmount();
     cleanup();
   });
@@ -426,7 +426,7 @@ describe('STreeVirtualizer', () => {
     // prop to `false`, overriding the headless TreeRoot `loop: true` default.
     const wrapper = mountVirtualizer();
 
-    expect(wrapper.find('[data-soybean-tree-virtualizer-root]').attributes('data-loop')).toBe('');
+    expect(wrapper.find('[data-vean-tree-virtualizer-root]').attributes('data-loop')).toBe('');
     wrapper.unmount();
   });
 
@@ -435,7 +435,7 @@ describe('STreeVirtualizer', () => {
     const wrapper = mountVirtualizer();
 
     getInstance()?.trigger([
-      createMockResizeObserverEntry(wrapper.find('[data-soybean-tree-virtualizer-root]').element, {
+      createMockResizeObserverEntry(wrapper.find('[data-vean-tree-virtualizer-root]').element, {
         width: 224,
         height: 240
       })
@@ -453,7 +453,7 @@ describe('STreeVirtualizer', () => {
     const wrapper = mountVirtualizer({ animated: true });
 
     getInstance()?.trigger([
-      createMockResizeObserverEntry(wrapper.find('[data-soybean-tree-virtualizer-root]').element, {
+      createMockResizeObserverEntry(wrapper.find('[data-vean-tree-virtualizer-root]').element, {
         width: 224,
         height: 240
       })
@@ -461,8 +461,8 @@ describe('STreeVirtualizer', () => {
     await delay(30);
     await nextTick();
 
-    expect(wrapper.find('[data-soybean-tree-virtualizer-root]').exists()).toBe(true);
-    expect(wrapper.findAll('[data-soybean-tree-item]').length).toBeGreaterThan(0);
+    expect(wrapper.find('[data-vean-tree-virtualizer-root]').exists()).toBe(true);
+    expect(wrapper.findAll('[data-vean-tree-item]').length).toBeGreaterThan(0);
     wrapper.unmount();
     cleanup();
   });
@@ -472,7 +472,7 @@ describe('STreeVirtualizer', () => {
     const wrapper = mountVirtualizer({ animated: true });
 
     getInstance()?.trigger([
-      createMockResizeObserverEntry(wrapper.find('[data-soybean-tree-virtualizer-root]').element, {
+      createMockResizeObserverEntry(wrapper.find('[data-vean-tree-virtualizer-root]').element, {
         width: 224,
         height: 240
       })
@@ -480,7 +480,7 @@ describe('STreeVirtualizer', () => {
     await delay(30);
     await nextTick();
 
-    await wrapper.findAll('[data-soybean-tree-item]')[0].trigger('click');
+    await wrapper.findAll('[data-vean-tree-item]')[0].trigger('click');
     await nextTick();
 
     const labels = wrapper.findAll('.virtual-label').map(label => label.text());
@@ -497,7 +497,7 @@ describe('STreeVirtualizer', () => {
     const wrapper = mountVirtualizer({ animated: true, defaultExpanded: ['1'] });
 
     getInstance()?.trigger([
-      createMockResizeObserverEntry(wrapper.find('[data-soybean-tree-virtualizer-root]').element, {
+      createMockResizeObserverEntry(wrapper.find('[data-vean-tree-virtualizer-root]').element, {
         width: 224,
         height: 240
       })
@@ -505,7 +505,7 @@ describe('STreeVirtualizer', () => {
     await delay(30);
     await nextTick();
 
-    await wrapper.findAll('[data-soybean-tree-item]')[0].trigger('click');
+    await wrapper.findAll('[data-vean-tree-item]')[0].trigger('click');
     await nextTick();
 
     const labels = wrapper.findAll('.virtual-label').map(label => label.text());

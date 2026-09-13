@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { SButton, SCheckbox, SForm, SFormFieldBase, SInput, SSelect, useForm } from '@soybeanjs/ui';
-import type { SelectOptionData } from '@soybeanjs/ui';
 import { z } from 'zod';
+import { SButton, SCheckbox, SForm, SFormFieldBase, SInput, SSelect, useForm } from '@vean/ui';
+import type { SelectOptionData } from '@vean/ui';
 
 const user = z.object({
   username: z.string().nonempty('Username is required'),

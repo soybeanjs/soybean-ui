@@ -1,7 +1,7 @@
 /**
  * Tree-shake bundle fixture (v0.50.0 T8.3).
  *
- * Bundles `import { SButton } from '@soybeanjs/ui'` (the package-root consumer surface)
+ * Bundles `import { SButton } from '@vean/ui'` (the package-root consumer surface)
  * with Vite/Rolldown and asserts the retained module graph contains no heavy-engine code:
  * table, form, date (headless date kernel + date-fns), embla carousel, or markstream.
  *

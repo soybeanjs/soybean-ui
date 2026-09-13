@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButtonIcon, SCollapsible, SCollapsibleContent, SCollapsibleTrigger } from '@soybeanjs/ui';
+import { SButtonIcon, SCollapsible, SCollapsibleContent, SCollapsibleTrigger } from '@vean/ui';
 </script>
 
 <template>
@@ -16,9 +16,9 @@ import { SButtonIcon, SCollapsible, SCollapsibleContent, SCollapsibleTrigger } f
         <SButtonIcon :icon="open ? 'lucide:chevron-up' : 'lucide:chevron-down'" />
       </SCollapsibleTrigger>
     </div>
-    <div class="border rounded-md px-4 py-3 text-sm font-mono">soybean-headless</div>
+    <div class="border rounded-md px-4 py-3 text-sm font-mono">vean-aria</div>
     <SCollapsibleContent>
-      <div class="border rounded-md px-4 py-3 text-sm font-mono">soybean-ui</div>
+      <div class="border rounded-md px-4 py-3 text-sm font-mono">vean-ui</div>
       <div class="border rounded-md px-4 py-3 text-sm font-mono">soybean-market</div>
     </SCollapsibleContent>
   </SCollapsible>

@@ -35,9 +35,9 @@ head:
 
 ### 架构与对标差异
 
-SoybeanUI 将 `Label` 拆分为 headless 层（`@soybeanjs/headless/label`，负责 `<label>` 元素、`for` 关联、双击阻止文本选中）与 styled 层（`@soybeanjs/ui`，负责 `cv()` 变体配方（size））。这与 shadcn/ui 的 headless/styled 分离一致，后者源自 Radix UI 的 Label 原语。
+Vean 将 `Label` 拆分为 headless 层（`@vean/aria/label`，负责 `<label>` 元素、`for` 关联、双击阻止文本选中）与 styled 层（`@vean/ui`，负责 `cv()` 变体配方（size））。这与 shadcn/ui 的 headless/styled 分离一致，后者源自 Radix UI 的 Label 原语。
 
-| 维度           | SoybeanUI                     | shadcn/ui `Label` | Ant Design `Form.Label` | Element Plus `FormLabel` | MUI `InputLabel` |
+| 维度           | Vean                          | shadcn/ui `Label` | Ant Design `Form.Label` | Element Plus `FormLabel` | MUI `InputLabel` |
 | :------------- | :---------------------------- | :---------------- | :---------------------- | :----------------------- | :--------------- |
 | 架构           | headless + styled 分离        | headless + styled | 表单耦合                | 表单耦合                 | 仅 styled        |
 | 原生 `<label>` | ✅                            | ✅                | ✅（Form 内）           | ✅（Form 内）            | ✅               |

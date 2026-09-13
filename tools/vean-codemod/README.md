@@ -61,7 +61,7 @@ node tools/vean-codemod/migrate.mjs . --profile=repo --write
 
 **Tier C — 品牌文案与私有包（`--profile=repo`）**
 
-`SoybeanUI → Vean`、`SoybeanHeadless → Vean Aria`、`soybean-ui-uno → vean-uno`、
+`SoybeanUI → Vean`、`SoybeanHeadless → Vean Aria`、`soybean-ui-uno → vean-unocss`、
 `@soybeanjs/{scripts,shared,ui-docs,ui-nuxt} → @vean/*`、logo 资产名。
 
 **Tier D — 域名与 URL（`--new-domain`，不传则完全不生效）**
@@ -93,7 +93,7 @@ node tools/vean-codemod/migrate.mjs . --profile=repo --write
 
 - **默认不写盘**，`--write` 才落盘，并打印逐文件 diff 摘要。
 - **幂等**：跑第二次是 0 变更（已验证）。
-- **负向前瞻**：`@soybeanjs/ui(?![-\w])` 保证 `@soybeanjs/ui-uno`、`@soybeanjs/ui-docs`、`@soybeanjs/ui-x` 不被半替换为 `@vean/ui-uno` 之类。
+- **负向前瞻**：`@soybeanjs/ui(?![-\w])` 保证 `@soybeanjs/ui-uno`、`@soybeanjs/ui-docs`、`@soybeanjs/ui-x` 不被半替换为 `@vean/unocss` 之类。
 - **二进制防护**：含 `\u0000` 的文件跳过；超过 4 MB 的文件跳过。
 
 ## 覆盖不到的部分（脚本会打印清单）

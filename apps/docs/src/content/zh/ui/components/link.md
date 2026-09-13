@@ -40,9 +40,9 @@ head:
 
 ### 架构与基准差异
 
-SoybeanUI 将链接拆分为 headless 层（路由检测、禁用处理、`RouterLink` 集成）和 styled 层（`linkVariants` 样式）。这不同于 Nuxt Link、React Router Link 等单包方案。
+Vean 将链接拆分为 headless 层（路由检测、禁用处理、`RouterLink` 集成）和 styled 层（`linkVariants` 样式）。这不同于 Nuxt Link、React Router Link 等单包方案。
 
-| 方面     | SoybeanUI                                                | Nuxt Link / React Router Link / Next.js Link |
+| 方面     | Vean                                                     | Nuxt Link / React Router Link / Next.js Link |
 | :------- | :------------------------------------------------------- | :------------------------------------------- |
 | 架构     | headless + styled 分层                                   | 单包                                         |
 | 路由检测 | 自动检测 `http` 前缀、`external` prop、RouterLink 可用性 | 显式 `<NuxtLink>` / `<Link>`                 |

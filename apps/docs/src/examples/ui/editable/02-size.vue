@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SEditable } from '@soybeanjs/ui';
+import { SEditable } from '@vean/ui';
 import { themeSizeOptions } from '~/constants/theme';
 </script>
 

@@ -47,16 +47,16 @@ head:
 
 ### 架构与对标差异
 
-工具栏家族是多槽组合：`ToolbarRoot` 提供 roving focus + 方向上下文，每个部分（按钮/链接/分隔线/切换组）复用 button、link、separator、toggle-group 基础组件，UI 包装组件按槽注入 `toolbarVariants` 类。这与 radix-ui/shadcn-ui 的 headless toolbar/toggle-group 分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供按钮/分段控件而非带方向感知分隔线的专用 roving-focus 工具栏容器；SoybeanUI 提供带 `loop`/RTL 支持与 `size` 尺寸体系的完整工具栏。
+工具栏家族是多槽组合：`ToolbarRoot` 提供 roving focus + 方向上下文，每个部分（按钮/链接/分隔线/切换组）复用 button、link、separator、toggle-group 基础组件，UI 包装组件按槽注入 `toolbarVariants` 类。这与 radix-ui/shadcn-ui 的 headless toolbar/toggle-group 分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供按钮/分段控件而非带方向感知分隔线的专用 roving-focus 工具栏容器；Vean 提供带 `loop`/RTL 支持与 `size` 尺寸体系的完整工具栏。
 
-| 能力                | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :------------------ | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| Headless/样式分离   |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Roving focus + loop |    ✅     |    ✅     |     —      |      —       |   ✅    |    —     |
-| 方向感知            |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 切换组              |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| 链接支持            |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 尺寸（6）           |    ✅     |     —     |     —      |      —       |    —    |    —     |
+| 能力                | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :------------------ | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| Headless/样式分离   |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Roving focus + loop |  ✅  |    ✅     |     —      |      —       |   ✅    |    —     |
+| 方向感知            |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 切换组              |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| 链接支持            |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 尺寸（6）           |  ✅  |     —     |     —      |      —       |    —    |    —     |
 
 `—` = 不支持或采用不同交互模型。
 

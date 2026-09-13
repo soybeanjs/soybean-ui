@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SRadioGroup } from '@soybeanjs/ui';
+import { SRadioGroup } from '@vean/ui';
 
 const value = ref('option-1');
 const items = [

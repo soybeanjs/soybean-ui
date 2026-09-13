@@ -45,16 +45,16 @@ Use a color field for typed color entry or for editing a single channel numerica
 
 ### Architecture and benchmark differences
 
-`ColorFieldCompact` owns the root/input composition while every primitive stays style-free and only the UI wrapper injects the `colorFieldVariants` classes. This mirrors radix-ui-color/shadcn-ui headless split. Ant Design, Element Plus, Mantine and Naive UI ship a single color-picker with a hex input; SoybeanUI exposes a standalone color field with full format/channel control, keyboard/wheel editing and a native form input.
+`ColorFieldCompact` owns the root/input composition while every primitive stays style-free and only the UI wrapper injects the `colorFieldVariants` classes. This mirrors radix-ui-color/shadcn-ui headless split. Ant Design, Element Plus, Mantine and Naive UI ship a single color-picker with a hex input; Vean exposes a standalone color field with full format/channel control, keyboard/wheel editing and a native form input.
 
-| Capability            | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :-------------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| Headless/styled split |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Multiple formats      |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| Single-channel edit   |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Keyboard + wheel      |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Native form input     |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Sizes (6)             |    ✅     |     —     |     —      |      —       |    —    |    —     |
+| Capability            | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :-------------------- | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| Headless/styled split |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Multiple formats      |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| Single-channel edit   |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Keyboard + wheel      |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Native form input     |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Sizes (6)             |  ✅  |     —     |     —      |      —       |    —    |    —     |
 
 `—` = unsupported or a different interaction model.
 

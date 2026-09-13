@@ -1,8 +1,8 @@
 {
-  "name": "@soybeanjs/scripts",
+  "name": "@vean/scripts",
   "version": "0.40.1",
   "private": true,
-  "description": "SoybeanUI repo generators (api / changelog / metadata / skills), not published. Binary: sui.",
+  "description": "Vean repo generators (api / changelog / metadata / skills), not published. Binary: sui.",
   "license": "MIT",
   "bin": {
     "sui": "./bin/index.js"

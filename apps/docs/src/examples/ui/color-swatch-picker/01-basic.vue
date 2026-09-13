@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SColorSwatch, SColorSwatchPicker, SSeparator } from '@soybeanjs/ui';
+import { SColorSwatch, SColorSwatchPicker, SSeparator } from '@vean/ui';
 
 const colors = ['#7c3aed', '#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#0f172a'];
 const value = ref(colors[0]);

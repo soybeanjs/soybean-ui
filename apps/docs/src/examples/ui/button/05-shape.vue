@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButton, SButtonIcon } from '@soybeanjs/ui';
+import { SButton, SButtonIcon } from '@vean/ui';
 </script>
 
 <template>

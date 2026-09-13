@@ -22,13 +22,13 @@ Breadcrumbs allow users to navigate through the hierarchy of pages. It displays 
 - **Icon support** — each item can carry an `icon` (rendered via the `item-leading` slot default) with `IconValue` typing.
 - **Disabled items** — `disabled: true` on an item disables the link and suppresses click emission.
 - **Size scaling** — `size` (xs…2xl) scales typography and spacing via `breadcrumbVariants`.
-- **Headless composition** — `BreadcrumbRoot` / `BreadcrumbList` / `BreadcrumbItem` / `BreadcrumbLink` / `BreadcrumbPage` / `BreadcrumbSeparator` / `BreadcrumbEllipsis` are exported from `@soybeanjs/headless/breadcrumb` for fully custom styled builds.
+- **Headless composition** — `BreadcrumbRoot` / `BreadcrumbList` / `BreadcrumbItem` / `BreadcrumbLink` / `BreadcrumbPage` / `BreadcrumbSeparator` / `BreadcrumbEllipsis` are exported from `@vean/aria/breadcrumb` for fully custom styled builds.
 
 ## Usage
 
 <UsageCode component="breadcrumb" />
 
-> `SBreadcrumb` delegates its list aggregation to headless `BreadcrumbCompact`. For unstyled, data-driven composition, import `BreadcrumbCompact` from `@soybeanjs/headless/breadcrumb`.
+> `SBreadcrumb` delegates its list aggregation to headless `BreadcrumbCompact`. For unstyled, data-driven composition, import `BreadcrumbCompact` from `@vean/aria/breadcrumb`.
 
 ## Demos
 
@@ -42,9 +42,9 @@ Breadcrumbs allow users to navigate through the hierarchy of pages. It displays 
 
 ### Architecture and benchmark comparison
 
-| Concern                       | SoybeanUI                                             | shadcn-vue `Breadcrumb`                       | Ant Design `Breadcrumb`            | Element Plus `Breadcrumb`     |
+| Concern                       | Vean                                                  | shadcn-vue `Breadcrumb`                       | Ant Design `Breadcrumb`            | Element Plus `Breadcrumb`     |
 | :---------------------------- | :---------------------------------------------------- | :-------------------------------------------- | :--------------------------------- | :---------------------------- |
-| Headless / styled separation  | ✅ `@soybeanjs/headless/breadcrumb` + `scv()`         | ❌ single package                             | ❌ single package                  | ❌ single package             |
+| Headless / styled separation  | ✅ `@vean/aria/breadcrumb` + `scv()`                  | ❌ single package                             | ❌ single package                  | ❌ single package             |
 | Data-driven compact API       | ✅ `items` + `ellipsis` + `click`                     | ❌ slot/component composition only            | ✅ `routes` / `items`              | ✅ `breadcrumb-item` loop     |
 | Ellipsis collapsing           | ✅ `true` (5+ items) or custom `[start, end]`         | ❌ manual ellipsis item                       | ✅ `ellipsis` (4+ count)           | ❌ manual                     |
 | Link vs. current page         | ✅ `to`/`href` → Link; trailing → `aria-current` page | ✅ separate `BreadcrumbLink`/`BreadcrumbPage` | ✅ `BreadcrumbItem` last = current | ✅ last item auto current     |
@@ -92,4 +92,4 @@ Yes — the root is a `nav` with a localized `aria-label`, the list is an `ol`, 
 
 ### Can I build a fully custom breadcrumb?
 
-Yes — compose `BreadcrumbRoot` / `BreadcrumbList` / `BreadcrumbItem` / `BreadcrumbLink` / `BreadcrumbPage` / `BreadcrumbSeparator` / `BreadcrumbEllipsis` from `@soybeanjs/headless/breadcrumb` and inject styles via `provideBreadcrumbUi` (or `SBreadcrumb`'s `ui` prop).
+Yes — compose `BreadcrumbRoot` / `BreadcrumbList` / `BreadcrumbItem` / `BreadcrumbLink` / `BreadcrumbPage` / `BreadcrumbSeparator` / `BreadcrumbEllipsis` from `@vean/aria/breadcrumb` and inject styles via `provideBreadcrumbUi` (or `SBreadcrumb`'s `ui` prop).

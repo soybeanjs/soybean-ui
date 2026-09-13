@@ -42,9 +42,9 @@ head:
 
 ### 架构与对标差异
 
-SoybeanUI 将 clipboard 拆分为 headless 层（`@soybeanjs/headless/clipboard`，负责复制状态、按钮语义与插槽参数）和 styled 层（`@soybeanjs/ui`，复用 button 的 variant recipe）。这与 `shadcn/ui` 的 headless/styled 分离思路一致，不同于 Ant Design、Element Plus、MUI、Mantine、Naive UI 等单包组件库。
+Vean 将 clipboard 拆分为 headless 层（`@vean/aria/clipboard`，负责复制状态、按钮语义与插槽参数）和 styled 层（`@vean/ui`，复用 button 的 variant recipe）。这与 `shadcn/ui` 的 headless/styled 分离思路一致，不同于 Ant Design、Element Plus、MUI、Mantine、Naive UI 等单包组件库。
 
-| 维度 | SoybeanUI                                                                | Ant Design / Element Plus / MUI / Mantine / Naive UI |
+| 维度 | Vean                                                                     | Ant Design / Element Plus / MUI / Mantine / Naive UI |
 | :--- | :----------------------------------------------------------------------- | :--------------------------------------------------- |
 | 架构 | 基于 `Button` 的 headless + styled 分离                                  | 单包 `CopyButton` / `Typography.Paragraph copyable`  |
 | 样式 | 通过共享 `buttonVariants` recipe 使用 UnoCSS                             | CSS-in-JS / SCSS / CSS 变量                          |

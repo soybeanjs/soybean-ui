@@ -1,8 +1,8 @@
-import { themeSizeKeys, themeRadiusKeys, builtinBasePresetKeys, builtinPrimaryPresetKeys } from '@soybeanjs/theme';
 import * as v from 'valibot';
+import { themeSizeKeys, themeRadiusKeys, builtinBasePresetKeys, builtinPrimaryPresetKeys } from '@vean/theme';
 
 // ---------------------------------------------------------------------------
-// SBean config (sbean.json) — the user-facing project config
+// Vean config (vean.json) — the user-facing project config
 // ---------------------------------------------------------------------------
 
 export const PRESET_ICON_LIBRARIES = ['lucide', 'material-symbols', 'ph', 'tabler', 'solar', 'radix-icons'] as const;

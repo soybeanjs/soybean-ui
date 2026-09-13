@@ -50,17 +50,17 @@ head:
 
 ### 架构与对标差异
 
-下拉菜单家族在 popover portal 内组合共享 `menu` 基础组件（`MenuOptions`/`MenuItem`）；UI 包装组件只注入共享 `menuVariants` 类（经 `provideMenuUi`）并转发 prop/插槽。这与 radix-ui/shadcn-ui 的 headless menu 分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供带 `items`/`onSelect` prop 的单一样式化下拉；SoybeanUI 额外提供专用复选/单选/自定义变体、`size` 尺寸体系，以及经共享 menu 层的完整键盘/类型过滤行为。
+下拉菜单家族在 popover portal 内组合共享 `menu` 基础组件（`MenuOptions`/`MenuItem`）；UI 包装组件只注入共享 `menuVariants` 类（经 `provideMenuUi`）并转发 prop/插槽。这与 radix-ui/shadcn-ui 的 headless menu 分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供带 `items`/`onSelect` prop 的单一样式化下拉；Vean 额外提供专用复选/单选/自定义变体、`size` 尺寸体系，以及经共享 menu 层的完整键盘/类型过滤行为。
 
-| 能力              | SoybeanUI | shadcn/ui | Ant Design Dropdown | Element Plus Dropdown | Mantine Menu | Naive UI Dropdown |
-| :---------------- | :-------: | :-------: | :-----------------: | :-------------------: | :----------: | :---------------: |
-| Headless/样式分离 |    ✅     |    ✅     |          —          |           —           |      —       |         —         |
-| 数据驱动条目      |    ✅     |    ✅     |         ✅          |          ✅           |      ✅      |        ✅         |
-| 复选 / 单选       |    ✅     |    ✅     |          —          |           —           |      ✅      |         —         |
-| 触发 click/hover  |    ✅     |    ✅     |         ✅          |          ✅           |      ✅      |        ✅         |
-| 键盘 + 类型过滤   |    ✅     |    ✅     |          —          |           —           |      —       |         —         |
-| 子菜单            |    ✅     |    ✅     |         ✅          |          ✅           |      ✅      |        ✅         |
-| 尺寸（6）         |    ✅     |     —     |          —          |           —           |      —       |         —         |
+| 能力              | Vean | shadcn/ui | Ant Design Dropdown | Element Plus Dropdown | Mantine Menu | Naive UI Dropdown |
+| :---------------- | :--: | :-------: | :-----------------: | :-------------------: | :----------: | :---------------: |
+| Headless/样式分离 |  ✅  |    ✅     |          —          |           —           |      —       |         —         |
+| 数据驱动条目      |  ✅  |    ✅     |         ✅          |          ✅           |      ✅      |        ✅         |
+| 复选 / 单选       |  ✅  |    ✅     |          —          |           —           |      ✅      |         —         |
+| 触发 click/hover  |  ✅  |    ✅     |         ✅          |          ✅           |      ✅      |        ✅         |
+| 键盘 + 类型过滤   |  ✅  |    ✅     |          —          |           —           |      —       |         —         |
+| 子菜单            |  ✅  |    ✅     |         ✅          |          ✅           |      ✅      |        ✅         |
+| 尺寸（6）         |  ✅  |     —     |          —          |           —           |      —       |         —         |
 
 `—` = 不支持或采用不同交互模型。
 

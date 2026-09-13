@@ -24,7 +24,7 @@ Affix 可以在页面或自定义滚动容器滚动时，将内容固定在顶�
 - **动态目标切换** — `target` prop 变化时，监听器从旧目标解绑并绑定到新目标（`onWatcherCleanup`）。
 - **命令式 API** — `AffixRoot` 通过 `defineExpose` 暴露 `affixed` 与 `updatePosition()`。
 - **SSR 安全** — `window` / `document` 访问均有守卫（`getDefaultTarget` / `queryTargetSelector` / `measurePosition`），监听器仅客户端激活。
-- **Headless 组合** — `AffixRoot` / `AffixPlaceholder` / `AffixContent` / `AffixCompact` 从 `@soybeanjs/headless/affix` 导出，可完全自定义样式构建。
+- **Headless 组合** — `AffixRoot` / `AffixPlaceholder` / `AffixContent` / `AffixCompact` 从 `@vean/aria/affix` 导出，可完全自定义样式构建。
 
 ## 用法
 
@@ -42,19 +42,19 @@ Affix 可以在页面或自定义滚动容器滚动时，将内容固定在顶�
 
 ### 架构与行业对标
 
-| 关注点                | SoybeanUI                                     | Ant Design `Affix`              | Element Plus `Affix`  |
-| :-------------------- | :-------------------------------------------- | :------------------------------ | :-------------------- |
-| Headless / 样式分离   | ✅ `@soybeanjs/headless/affix` + `scv()` 配方 | ❌ 单一样式包                   | ❌ 单一样式包         |
-| 固定顶部 / 底部       | ✅ `offsetTop` / `offsetBottom`               | ✅ `offsetTop` / `offsetBottom` | ✅ `offset`           |
-| 自定义 target         | ✅ 元素 / 选择器 / window                     | ✅ `target`（函数）             | ✅ `target`（函数）   |
-| 占位保留              | ✅ 隐藏占位节点保留空间                       | ✅ `placeholder` 节点           | ✅ `placeholder` 节点 |
-| `change` 状态切换事件 | ✅ 仅在状态变化时触发                         | ✅ `onChange`                   | ✅ `on-change`        |
-| rAF 节流测量          | ✅ `useRafFn` 帧合并                          | ✅ rAF 循环                     | ✅ rAF 循环           |
-| 触摸事件              | ✅ scroll + touchstart/move/end               | ✅ 触摸支持                     | —                     |
-| 动态目标切换          | ✅ `onWatcherCleanup` 清理监听                | ✅ `updatePosition` 重新初始化  | ✅ `update`           |
-| 零尺寸保护            | ✅ rect 全零时跳过                            | —                               | —                     |
-| 命令式 API            | ✅ `affixed` + `updatePosition()`             | ✅ `updatePosition`             | —                     |
-| SSR 安全              | ✅ `window` / `document` 守卫                 | 部分                            | 部分                  |
+| 关注点                | Vean                                 | Ant Design `Affix`              | Element Plus `Affix`  |
+| :-------------------- | :----------------------------------- | :------------------------------ | :-------------------- |
+| Headless / 样式分离   | ✅ `@vean/aria/affix` + `scv()` 配方 | ❌ 单一样式包                   | ❌ 单一样式包         |
+| 固定顶部 / 底部       | ✅ `offsetTop` / `offsetBottom`      | ✅ `offsetTop` / `offsetBottom` | ✅ `offset`           |
+| 自定义 target         | ✅ 元素 / 选择器 / window            | ✅ `target`（函数）             | ✅ `target`（函数）   |
+| 占位保留              | ✅ 隐藏占位节点保留空间              | ✅ `placeholder` 节点           | ✅ `placeholder` 节点 |
+| `change` 状态切换事件 | ✅ 仅在状态变化时触发                | ✅ `onChange`                   | ✅ `on-change`        |
+| rAF 节流测量          | ✅ `useRafFn` 帧合并                 | ✅ rAF 循环                     | ✅ rAF 循环           |
+| 触摸事件              | ✅ scroll + touchstart/move/end      | ✅ 触摸支持                     | —                     |
+| 动态目标切换          | ✅ `onWatcherCleanup` 清理监听       | ✅ `updatePosition` 重新初始化  | ✅ `update`           |
+| 零尺寸保护            | ✅ rect 全零时跳过                   | —                               | —                     |
+| 命令式 API            | ✅ `affixed` + `updatePosition()`    | ✅ `updatePosition`             | —                     |
+| SSR 安全              | ✅ `window` / `document` 守卫        | 部分                            | 部分                  |
 
 ### 运行时注意事项
 
@@ -97,12 +97,12 @@ Affix 可以在页面或自定义滚动容器滚动时，将内容固定在顶�
 
 ## Headless 组合
 
-当默认的占位/内容结构已经满足需求时，可以直接从 `@soybeanjs/headless/affix` 使用 `AffixCompact`。如果你需要分别控制根节点、占位节点和内容节点，则可以直接组合 headless 原语组件：
+当默认的占位/内容结构已经满足需求时，可以直接从 `@vean/aria/affix` 使用 `AffixCompact`。如果你需要分别控制根节点、占位节点和内容节点，则可以直接组合 headless 原语组件：
 
 ```vue
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AffixContent, AffixPlaceholder, AffixRoot, provideAffixUi } from '@soybeanjs/headless';
+import { AffixContent, AffixPlaceholder, AffixRoot, provideAffixUi } from '@vean/aria';
 
 const ui = computed(() => ({
   content: 'data-[state=fixed]:z-50'

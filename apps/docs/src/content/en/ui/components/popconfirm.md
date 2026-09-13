@@ -47,17 +47,17 @@ Use it for a quick inline confirm (delete, destructive action) next to the trigg
 
 ### Architecture and benchmark differences
 
-`PopconfirmCompact` composes the popper trigger/positioner/popup with a confirm-style header, content and footer, while every primitive stays style-free and only the UI wrapper injects the `popconfirmVariants` classes. This mirrors radix-ui/shadcn-ui's headless split. Ant Design, Element Plus, Mantine and Naive UI ship a single styled popconfirm with `title`/`description`/`okText`/`cancelText`/`onConfirm` props; SoybeanUI additionally exposes per-slot `*Props`, a `size` scale, a `type` color/icon system, and localized action labels.
+`PopconfirmCompact` composes the popper trigger/positioner/popup with a confirm-style header, content and footer, while every primitive stays style-free and only the UI wrapper injects the `popconfirmVariants` classes. This mirrors radix-ui/shadcn-ui's headless split. Ant Design, Element Plus, Mantine and Naive UI ship a single styled popconfirm with `title`/`description`/`okText`/`cancelText`/`onConfirm` props; Vean additionally exposes per-slot `*Props`, a `size` scale, a `type` color/icon system, and localized action labels.
 
-| Capability               | SoybeanUI | shadcn/ui | Ant Design Popconfirm | Element Plus Popconfirm | Mantine Popconfirm | Naive UI Popconfirm |
-| :----------------------- | :-------: | :-------: | :-------------------: | :---------------------: | :----------------: | :-----------------: |
-| Built on Popper          |    ✅     |    ✅     |           —           |            —            |         —          |          —          |
-| Headless/styled split    |    ✅     |    ✅     |           —           |            —            |         —          |          —          |
-| Type icon + color        |    ✅     |     —     |           —           |           ✅            |         —          |          —          |
-| Title + description      |    ✅     |    ✅     |          ✅           |           ✅            |         ✅         |         ✅          |
-| Localized confirm/cancel |    ✅     |     —     |           —           |            —            |         —          |          —          |
-| Sizes (6)                |    ✅     |     —     |           —           |            —            |         —          |          —          |
-| Placement (popper)       |    ✅     |    ✅     |          ✅           |           ✅            |         ✅         |         ✅          |
+| Capability               | Vean | shadcn/ui | Ant Design Popconfirm | Element Plus Popconfirm | Mantine Popconfirm | Naive UI Popconfirm |
+| :----------------------- | :--: | :-------: | :-------------------: | :---------------------: | :----------------: | :-----------------: |
+| Built on Popper          |  ✅  |    ✅     |           —           |            —            |         —          |          —          |
+| Headless/styled split    |  ✅  |    ✅     |           —           |            —            |         —          |          —          |
+| Type icon + color        |  ✅  |     —     |           —           |           ✅            |         —          |          —          |
+| Title + description      |  ✅  |    ✅     |          ✅           |           ✅            |         ✅         |         ✅          |
+| Localized confirm/cancel |  ✅  |     —     |           —           |            —            |         —          |          —          |
+| Sizes (6)                |  ✅  |     —     |           —           |            —            |         —          |          —          |
+| Placement (popper)       |  ✅  |    ✅     |          ✅           |           ✅            |         ✅         |         ✅          |
 
 `—` = unsupported or a different interaction model.
 

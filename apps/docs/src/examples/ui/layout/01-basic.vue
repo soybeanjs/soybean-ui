@@ -15,7 +15,7 @@ import {
   SSeparator,
   STreeMenu,
   STreeMenuStyledItem
-} from '@soybeanjs/ui';
+} from '@vean/ui';
 import type {
   DataOrientation,
   BreadcrumbOptionData,
@@ -26,7 +26,7 @@ import type {
   MenuOptionData,
   SelectOptionData,
   ThemeSize
-} from '@soybeanjs/ui';
+} from '@vean/ui';
 import { themeSizeOptions } from '~/constants/theme';
 import { treeMenuItems } from '../tree-menu/data';
 
@@ -240,7 +240,7 @@ const fullContent = shallowRef(false);
                 :size="size"
                 :side="open ? 'bottom' : 'right'"
                 :items="frameworks"
-                :ui="{ popup: 'w-[var(--soybean-popper-anchor-width)]' }"
+                :ui="{ popup: 'w-[var(--vean-popper-anchor-width)]' }"
                 @select="setActiveFramework"
               >
                 <template #trigger>
@@ -264,7 +264,7 @@ const fullContent = shallowRef(false);
               @select="setActiveFramework"
             >
               <template #trigger>
-                <div class="flex-y-center gap-3 w-[--soybean-sidebar-width] px-[--sl-spacing] cursor-pointer">
+                <div class="flex-y-center gap-3 w-[--vean-sidebar-width] px-[--sl-spacing] cursor-pointer">
                   <SIcon :icon="activeFramework.icon" class="text-primary" />
                   <span class="truncate font-medium">{{ activeFramework.label }}</span>
                   <SIcon icon="lucide:chevrons-up-down" class="ms-auto" />

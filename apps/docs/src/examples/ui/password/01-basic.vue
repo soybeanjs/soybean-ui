@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SPassword } from '@soybeanjs/ui';
+import { SPassword } from '@vean/ui';
 
 const modelValue = ref('abc123');
 </script>

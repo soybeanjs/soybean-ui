@@ -46,19 +46,19 @@ head:
 
 ### 架构与对标差异
 
-headless 层 `Tag` 是最小的显隐/关闭状态基础组件，`STag` 将全部样式收敛到 `tagVariants` 配方，并提供默认关闭控件。这与 shadcn/ui 的 headless/样式分离一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供带 `closable`/`onClose` prop 的单一样式化标签。SoybeanUI 的关闭按钮是可聚焦的真实 `<button>`，其 `aria-label` 由 `tag.remove`（如 `Remove {label}`）本地化而来；多个对标库则依赖对屏幕阅读器不够健壮的纯 `×` 字形。
+headless 层 `Tag` 是最小的显隐/关闭状态基础组件，`STag` 将全部样式收敛到 `tagVariants` 配方，并提供默认关闭控件。这与 shadcn/ui 的 headless/样式分离一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供带 `closable`/`onClose` prop 的单一样式化标签。Vean 的关闭按钮是可聚焦的真实 `<button>`，其 `aria-label` 由 `tag.remove`（如 `Remove {label}`）本地化而来；多个对标库则依赖对屏幕阅读器不够健壮的纯 `×` 字形。
 
-| 能力                       | SoybeanUI | shadcn/ui | Ant Design Tag | Element Plus Tag | Mantine Badge | Naive UI Tag |
-| :------------------------- | :-------: | :-------: | :------------: | :--------------: | :-----------: | :----------: |
-| Headless/样式分离          |    ✅     |    ✅     |       —        |        —         |       —       |      —       |
-| 颜色变体（8）              |    ✅     |    ✅     |       ✅       |        ✅        |      ✅       |      ✅      |
-| 变体（solid/outline/soft） |    ✅     |    ✅     |       ✅       |        ✅        |      ✅       |      ✅      |
-| 尺寸变体（6）              |    ✅     |     —     |       ✅       |        ✅        |      ✅       |      ✅      |
-| 形状（auto / 胶囊）        |    ✅     |    ✅     |       ✅       |        ✅        |      ✅       |      ✅      |
-| 可关闭标签                 |    ✅     |     —     |       ✅       |        ✅        |       —       |      ✅      |
-| 本地化关闭 `aria-label`    |    ✅     |     —     |       —        |        ✅        |       —       |      —       |
-| 受控显隐（`open`）         |    ✅     |     —     |       —        |        —         |       —       |      —       |
-| RTL 就绪                   |    ✅     |    ✅     |       ✅       |        —         |       —       |      ✅      |
+| 能力                       | Vean | shadcn/ui | Ant Design Tag | Element Plus Tag | Mantine Badge | Naive UI Tag |
+| :------------------------- | :--: | :-------: | :------------: | :--------------: | :-----------: | :----------: |
+| Headless/样式分离          |  ✅  |    ✅     |       —        |        —         |       —       |      —       |
+| 颜色变体（8）              |  ✅  |    ✅     |       ✅       |        ✅        |      ✅       |      ✅      |
+| 变体（solid/outline/soft） |  ✅  |    ✅     |       ✅       |        ✅        |      ✅       |      ✅      |
+| 尺寸变体（6）              |  ✅  |     —     |       ✅       |        ✅        |      ✅       |      ✅      |
+| 形状（auto / 胶囊）        |  ✅  |    ✅     |       ✅       |        ✅        |      ✅       |      ✅      |
+| 可关闭标签                 |  ✅  |     —     |       ✅       |        ✅        |       —       |      ✅      |
+| 本地化关闭 `aria-label`    |  ✅  |     —     |       —        |        ✅        |       —       |      —       |
+| 受控显隐（`open`）         |  ✅  |     —     |       —        |        —         |       —       |      —       |
+| RTL 就绪                   |  ✅  |    ✅     |       ✅       |        —         |       —       |      ✅      |
 
 `—` = 不支持或采用不同交互模型。
 

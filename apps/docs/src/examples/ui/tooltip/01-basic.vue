@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButton, STooltip } from '@soybeanjs/ui';
-import type { Placement } from '@soybeanjs/ui';
+import { SButton, STooltip } from '@vean/ui';
+import type { Placement } from '@vean/ui';
 
 defineOptions({
   name: 'DemoTooltip'

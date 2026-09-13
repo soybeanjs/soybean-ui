@@ -1,6 +1,6 @@
 import { computed, onMounted, onUnmounted, reactive, ref, watch } from 'vue';
 import type { ComputedRef, Ref, ShallowRef } from 'vue';
-import { useContext } from '@soybeanjs/headless/composables';
+import { useContext } from '@vean/aria/composables';
 import type {
   ColorValue,
   DarkSelectorValue,
@@ -13,21 +13,21 @@ import type {
   ThemeSizeValue,
   BaseColorKey,
   PrimaryColorKey
-} from '@soybeanjs/theme';
-import { isServerRuntime } from '@soybeanjs/theme/ssr';
+} from '@vean/theme';
+import { isServerRuntime } from '@vean/theme/ssr';
 import {
   getStoredThemeConfig,
   getStoredThemePresets,
   removeStoredThemePreset,
   setStoredThemeConfig,
   setStoredThemePreset
-} from '@soybeanjs/theme/storage';
+} from '@vean/theme/storage';
 import type {
   CustomThemeColorPreset,
   StoredThemePreset,
   ThemeConfigState,
   ThemePresetInput
-} from '@soybeanjs/theme/storage';
+} from '@vean/theme/storage';
 import type { ConfigProviderProps } from './types';
 
 const DEFAULT_BASE: BaseColorKey = 'zinc';

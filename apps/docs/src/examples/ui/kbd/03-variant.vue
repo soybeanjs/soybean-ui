@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SKbd } from '@soybeanjs/ui';
-import type { KbdVariant } from '@soybeanjs/ui';
+import { SKbd } from '@vean/ui';
+import type { KbdVariant } from '@vean/ui';
 
 const variants: KbdVariant[] = ['solid', 'outline', 'ghost'];
 </script>

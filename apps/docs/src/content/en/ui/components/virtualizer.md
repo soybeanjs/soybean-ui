@@ -46,15 +46,15 @@ Use a virtualizer for long lists/tables where rendering all rows would be slow. 
 
 ### Architecture and benchmark differences
 
-`VirtualizerRoot` owns the `@tanstack/vue-virtual` instance and computes `virtualItems`/`totalSize`/`contentStyle`, while `SVirtualizer` only iterates the virtual items into the `item` slot. This delegates the measurement/positioning engine to the industry-standard TanStack Virtual (the same engine used by shadcn-ui/TanStack). Ant Design (`rc-virtual-list`), Element Plus (`el-table-v2`), Mantine (`ListVirtualization`) and Naive UI (`virtual-list`) provide their own virtual engines; SoybeanUI exposes a thin, engine-agnostic wrapper so any `@tanstack/vue-virtual` option can flow through.
+`VirtualizerRoot` owns the `@tanstack/vue-virtual` instance and computes `virtualItems`/`totalSize`/`contentStyle`, while `SVirtualizer` only iterates the virtual items into the `item` slot. This delegates the measurement/positioning engine to the industry-standard TanStack Virtual (the same engine used by shadcn-ui/TanStack). Ant Design (`rc-virtual-list`), Element Plus (`el-table-v2`), Mantine (`ListVirtualization`) and Naive UI (`virtual-list`) provide their own virtual engines; Vean exposes a thin, engine-agnostic wrapper so any `@tanstack/vue-virtual` option can flow through.
 
-| Capability          | SoybeanUI | TanStack | Ant Design | Element Plus | Mantine | Naive UI |
-| :------------------ | :-------: | :------: | :--------: | :----------: | :-----: | :------: |
-| Virtual engine      |    ✅     |    ✅    |     ✅     |      ✅      |   ✅    |    ✅    |
-| Data-driven items   |    ✅     |    ✅    |     ✅     |      ✅      |   ✅    |    ✅    |
-| Horizontal mode     |    ✅     |    ✅    |     ✅     |      ✅      |    —    |    —     |
-| Dynamic measurement |    ✅     |    ✅    |     —      |      —       |    —    |    —     |
-| Full engine options |    ✅     |    ✅    |     —      |      —       |    —    |    —     |
+| Capability          | Vean | TanStack | Ant Design | Element Plus | Mantine | Naive UI |
+| :------------------ | :--: | :------: | :--------: | :----------: | :-----: | :------: |
+| Virtual engine      |  ✅  |    ✅    |     ✅     |      ✅      |   ✅    |    ✅    |
+| Data-driven items   |  ✅  |    ✅    |     ✅     |      ✅      |   ✅    |    ✅    |
+| Horizontal mode     |  ✅  |    ✅    |     ✅     |      ✅      |    —    |    —     |
+| Dynamic measurement |  ✅  |    ✅    |     —      |      —       |    —    |    —     |
+| Full engine options |  ✅  |    ✅    |     —      |      —       |    —    |    —     |
 
 `—` = unsupported or a different interaction model.
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SSwitch } from '@soybeanjs/ui';
+import { SSwitch } from '@vean/ui';
 import { themeColorOptions, themeSizeOptions } from '~/constants/theme';
 </script>
 

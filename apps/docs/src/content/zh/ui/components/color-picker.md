@@ -48,16 +48,16 @@ head:
 
 ### 架构与对标差异
 
-`ColorPickerCompact` 负责跨基础组件组合（根状态 + popover + 区域 + 滑块 + 输入框 + 色板 + 页签），所有底层基础组件保持零样式。UI 包装组件通过 `provideColorPickerUi` 注入一份 `colorPickerVariants` map，再把别名 slot 映射到各子树的 `provide*Ui`。这与 radix-ui-color/shadcn-ui 的 headless 分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供带 `showAlpha`/`presets` prop 的单一样式化颜色选择器；SoybeanUI 暴露带显式格式页签、完整 `oklch` 编辑与 `size` 尺寸体系的组合式选择器。
+`ColorPickerCompact` 负责跨基础组件组合（根状态 + popover + 区域 + 滑块 + 输入框 + 色板 + 页签），所有底层基础组件保持零样式。UI 包装组件通过 `provideColorPickerUi` 注入一份 `colorPickerVariants` map，再把别名 slot 映射到各子树的 `provide*Ui`。这与 radix-ui-color/shadcn-ui 的 headless 分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供带 `showAlpha`/`presets` prop 的单一样式化颜色选择器；Vean 暴露带显式格式页签、完整 `oklch` 编辑与 `size` 尺寸体系的组合式选择器。
 
-| 能力              | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :---------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| 组合式基础组件    |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 格式页签          |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 完整 oklch 编辑   |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 色相 + 透明度滑块 |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| 预设色板          |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| 尺寸（6）         |    ✅     |     —     |     —      |      —       |    —    |    —     |
+| 能力              | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :---------------- | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| 组合式基础组件    |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 格式页签          |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 完整 oklch 编辑   |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 色相 + 透明度滑块 |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| 预设色板          |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| 尺寸（6）         |  ✅  |     —     |     —      |      —       |    —    |    —     |
 
 `—` = 不支持或采用不同交互模型。
 

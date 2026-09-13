@@ -47,16 +47,16 @@ Use a swatch picker for a compact, clickable preset palette (theme panels, brand
 
 ### Architecture and benchmark differences
 
-`ColorSwatchPickerCompact` owns the palette iteration (item + swatch + indicator) while every primitive stays style-free and only the UI wrapper injects the `colorSwatchPickerVariants` classes. This mirrors radix-ui-color/shadcn-ui headless split, built on the shared listbox primitives. Ant Design, Element Plus, Mantine and Naive UI ship a single color-picker with a preset row; SoybeanUI exposes a standalone listbox-based swatch picker with single/multiple selection, a check indicator, shape/size control and full slot overrides.
+`ColorSwatchPickerCompact` owns the palette iteration (item + swatch + indicator) while every primitive stays style-free and only the UI wrapper injects the `colorSwatchPickerVariants` classes. This mirrors radix-ui-color/shadcn-ui headless split, built on the shared listbox primitives. Ant Design, Element Plus, Mantine and Naive UI ship a single color-picker with a preset row; Vean exposes a standalone listbox-based swatch picker with single/multiple selection, a check indicator, shape/size control and full slot overrides.
 
-| Capability             | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :--------------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| Headless/listbox based |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Single/multiple        |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| Check indicator        |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Roving focus           |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Shape (square/circle)  |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| Sizes (6)              |    ✅     |     —     |     —      |      —       |    —    |    —     |
+| Capability             | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :--------------------- | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| Headless/listbox based |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Single/multiple        |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| Check indicator        |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Roving focus           |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Shape (square/circle)  |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| Sizes (6)              |  ✅  |     —     |     —      |      —       |    —    |    —     |
 
 `—` = unsupported or a different interaction model.
 

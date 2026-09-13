@@ -1,34 +1,34 @@
 <p align="center">
-  <a href="https://github.com/soybeanjs/soybean-ui">
-    <img src="https://r2.soybeanjs.tech/soybeanjs/logo-sbean.svg?v=202608192144" alt="Logo" width="150" />
+  <a href="https://github.com/soybeanjs/vean">
+    <img src="https://r2.veanui.com/imgs/logo-vean-ui.svg?v=202609141212" alt="Logo" width="150" />
   </a>
 </p>
 
-# sbean
+# Vean CLI
 
-CLI tool for adding SoybeanUI components to your Vue apps — copy-paste, like shadcn/ui.
+CLI tool for adding Vean components to your Vue apps — copy-paste, like shadcn/ui.
 
 ## Usage
 
 ```bash
 # Initialize your project
-npx sbean init
+npx @vean/cli@latest init
 
 # Add a component
-npx sbean add button
+npx @vean/cli@latest add button
 
 # Search components
-npx sbean search dialog
+npx @vean/cli@latest search dialog
 
 # View a component
-npx sbean view button
+npx @vean/cli@latest view button
 ```
 
 ## Commands
 
 | Command           | Description                                     |
 | ----------------- | ----------------------------------------------- |
-| `init` / `create` | Initialize your project with sbean.json         |
+| `init` / `create` | Initialize your project with vean.json          |
 | `add`             | Add components to your project                  |
 | `build`           | Build registry JSON from UI layer source        |
 | `diff`            | Show diff between local and registry components |

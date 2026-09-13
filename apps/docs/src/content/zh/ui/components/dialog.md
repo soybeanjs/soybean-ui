@@ -25,7 +25,7 @@ head:
 ```vue
 <script setup lang="ts">
 import { h } from 'vue';
-import { SButton, SDialogProvider, dialog } from '@soybeanjs/ui';
+import { SButton, SDialogProvider, dialog } from '@vean/ui';
 
 function openWarningDialog() {
   dialog.warning('删除项目', {
@@ -85,18 +85,18 @@ function openWarningDialog() {
 
 ### 架构与对标差异
 
-`DialogCompact` 负责遮罩/弹层/头部/内容/底部组合与命令式 `dialog(...)` 状态流，所有基础组件保持零样式，仅由 UI 包装组件注入 `dialogVariants` 类。这与 radix-ui/shadcn-ui 的 headless/样式分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供带 `mask`/`closable`/`keyboard`/`width` prop 的单一样式化对话框；SoybeanUI 额外暴露逐槽 `*Props` 通道、`size` 尺寸体系，以及单包库通常收敛为静态服务的命令式 provider API（`dialog.*`）。
+`DialogCompact` 负责遮罩/弹层/头部/内容/底部组合与命令式 `dialog(...)` 状态流，所有基础组件保持零样式，仅由 UI 包装组件注入 `dialogVariants` 类。这与 radix-ui/shadcn-ui 的 headless/样式分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供带 `mask`/`closable`/`keyboard`/`width` prop 的单一样式化对话框；Vean 额外暴露逐槽 `*Props` 通道、`size` 尺寸体系，以及单包库通常收敛为静态服务的命令式 provider API（`dialog.*`）。
 
-| 能力                    | SoybeanUI | shadcn/ui | Ant Design Modal | Element Plus Dialog | Mantine Modal | Naive UI Dialog |
-| :---------------------- | :-------: | :-------: | :--------------: | :-----------------: | :-----------: | :-------------: |
-| Headless/样式分离       |    ✅     |    ✅     |        —         |          —          |       —       |        —        |
-| 命令式 API              |    ✅     |     —     |        ✅        |         ✅          |      ✅       |       ✅        |
-| 模态（aria-modal+陷阱） |    ✅     |    ✅     |        ✅        |         ✅          |      ✅       |       ✅        |
-| 警告模式（alertdialog） |    ✅     |    ✅     |        ✅        |          —          |       —       |       ✅        |
-| 关闭时焦点还原          |    ✅     |    ✅     |        ✅        |         ✅          |      ✅       |       ✅        |
-| 尺寸（6）               |    ✅     |     —     |        —         |          —          |       —       |        —        |
-| 本地化取消/确认文本     |    ✅     |     —     |        —         |          —          |       —       |        —        |
-| 纯净（无头/底部）       |    ✅     |     —     |        —         |          —          |       —       |        —        |
+| 能力                    | Vean | shadcn/ui | Ant Design Modal | Element Plus Dialog | Mantine Modal | Naive UI Dialog |
+| :---------------------- | :--: | :-------: | :--------------: | :-----------------: | :-----------: | :-------------: |
+| Headless/样式分离       |  ✅  |    ✅     |        —         |          —          |       —       |        —        |
+| 命令式 API              |  ✅  |     —     |        ✅        |         ✅          |      ✅       |       ✅        |
+| 模态（aria-modal+陷阱） |  ✅  |    ✅     |        ✅        |         ✅          |      ✅       |       ✅        |
+| 警告模式（alertdialog） |  ✅  |    ✅     |        ✅        |          —          |       —       |       ✅        |
+| 关闭时焦点还原          |  ✅  |    ✅     |        ✅        |         ✅          |      ✅       |       ✅        |
+| 尺寸（6）               |  ✅  |     —     |        —         |          —          |       —       |        —        |
+| 本地化取消/确认文本     |  ✅  |     —     |        —         |          —          |       —       |        —        |
+| 纯净（无头/底部）       |  ✅  |     —     |        —         |          —          |       —       |        —        |
 
 `—` = 不支持或采用不同交互模型。
 
@@ -134,7 +134,7 @@ function openWarningDialog() {
 挂载一次 `SDialogProvider`，然后在任意位置调用 `dialog.*`（完整示例见「概述」）：
 
 ```ts
-import { dialog } from '@soybeanjs/ui';
+import { dialog } from '@vean/ui';
 dialog.warning('磁盘已满', { description: '请释放空间。' });
 ```
 

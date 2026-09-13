@@ -23,13 +23,13 @@ head:
 - **三种视觉变体** — `variant`（`chrome` / `card` / `slider`）带各变体指示器（chrome 圆角 SVG / slider 下划线）与 `size`（xs…2xl），通过 `pageTabsVariants` 的 `scv()` 配方应用。
 - **六个自定义插槽** — `item`（scoped `{ item, index, active, closable }`）、`icon`、`label`、`indicator`、`pin-icon`、`close-icon`。
 - **本地化无障碍文案** — 关闭/固定按钮回退到本地化的 `aria-label`（`closeTab` / `pinTab` / `unpinTab`），内置 13 种语言；每个按钮可通过 `aria-label` 覆盖。
-- **Headless 组合** — `PageTabsRoot` / `PageTabsItem` / `PageTabsClose` / `PageTabsPin` / `PageTabsCompact` 均可从 `@soybeanjs/headless/page-tabs` 导入，用于完全自定义样式构建。
+- **Headless 组合** — `PageTabsRoot` / `PageTabsItem` / `PageTabsClose` / `PageTabsPin` / `PageTabsCompact` 均可从 `@vean/aria/page-tabs` 导入，用于完全自定义样式构建。
 
 ## 用法
 
 <UsageCode component="page-tabs" />
 
-> `SPageTabs` 将标签管理委托给 headless 的 `PageTabsCompact`。如需无样式、数据驱动的组合，请从 `@soybeanjs/headless/page-tabs` 导入 `PageTabsCompact`。
+> `SPageTabs` 将标签管理委托给 headless 的 `PageTabsCompact`。如需无样式、数据驱动的组合，请从 `@vean/aria/page-tabs` 导入 `PageTabsCompact`。
 
 ## 演示
 
@@ -43,9 +43,9 @@ head:
 
 ### 架构与竞品对比
 
-| 关注点                                 | SoybeanUI                                        | Ant Design `Tabs`                   | Element Plus `Tabs`            | tags-view（vue-element-admin 风格） |
+| 关注点                                 | Vean                                             | Ant Design `Tabs`                   | Element Plus `Tabs`            | tags-view（vue-element-admin 风格） |
 | :------------------------------------- | :----------------------------------------------- | :---------------------------------- | :----------------------------- | :---------------------------------- |
-| Headless / 样式双层分离                | ✅ `@soybeanjs/headless/page-tabs` + `scv()`     | ❌ 单一包                           | ❌ 单一包                      | ❌ 各应用自研                       |
+| Headless / 样式双层分离                | ✅ `@vean/aria/page-tabs` + `scv()`              | ❌ 单一包                           | ❌ 单一包                      | ❌ 各应用自研                       |
 | 数据驱动 Compact API                   | ✅ 泛型 `PageTabsCompact<T>` + `items`           | ✅ 配置驱动（items）                | ✅ 配置驱动                    | ✅ 各应用自研                       |
 | 受控/非受控                            | ✅ `modelValue`/`items` + `useControllableState` | ✅ `activeKey` / `defaultActiveKey` | ✅ `v-model`                   | —                                   |
 | 可关闭 + 异步守卫                      | ✅ `beforeClose`（false / Promise\<false>）      | ✅ `onEdit` + `beforeChange`        | ✅ `closable` / `before-leave` | ✅ `before-close`                   |
@@ -94,7 +94,7 @@ head:
 
 ### 能构建完全自定义的页面标签吗？
 
-可以——从 `@soybeanjs/headless/page-tabs` 组合 `PageTabsRoot` / `PageTabsItem` / `PageTabsClose` / `PageTabsPin` / `PageTabsCompact`，并通过 `providePageTabsUi`（或 `SPageTabs` 的 `ui` prop）注入样式。`item` 插槽接收 `{ item, index, active, closable }` scoped props 用于逐标签渲染。
+可以——从 `@vean/aria/page-tabs` 组合 `PageTabsRoot` / `PageTabsItem` / `PageTabsClose` / `PageTabsPin` / `PageTabsCompact`，并通过 `providePageTabsUi`（或 `SPageTabs` 的 `ui` prop）注入样式。`item` 插槽接收 `{ item, index, active, closable }` scoped props 用于逐标签渲染。
 
 ### 如何启用拖拽调整顺序？
 

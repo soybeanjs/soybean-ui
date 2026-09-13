@@ -50,16 +50,16 @@ head:
 
 ### 架构与对标差异
 
-`TooltipCompact` 负责触发器/定位器/弹层/箭头组合，所有基础组件保持零样式，仅由 UI 包装组件注入 `tooltipVariants` 类。这与 radix-ui/shadcn-ui 的 headless 分离一致，构建于共享 `Popper` 基础组件之上。Ant Design、Element Plus、Mantine、Naive UI 提供带 `title`/`placement` prop 的单一样式化提示；SoybeanUI 额外暴露逐槽 `*Props`、`size` 尺寸体系、箭头开关、带 `ConfigProvider` 全局默认的 `delayDuration`/`skipDelayDuration` 调节模型，以及无障碍的视觉隐藏 `role="tooltip"` 节点。
+`TooltipCompact` 负责触发器/定位器/弹层/箭头组合，所有基础组件保持零样式，仅由 UI 包装组件注入 `tooltipVariants` 类。这与 radix-ui/shadcn-ui 的 headless 分离一致，构建于共享 `Popper` 基础组件之上。Ant Design、Element Plus、Mantine、Naive UI 提供带 `title`/`placement` prop 的单一样式化提示；Vean 额外暴露逐槽 `*Props`、`size` 尺寸体系、箭头开关、带 `ConfigProvider` 全局默认的 `delayDuration`/`skipDelayDuration` 调节模型，以及无障碍的视觉隐藏 `role="tooltip"` 节点。
 
-| 能力              | SoybeanUI | shadcn/ui | Ant Design Tooltip | Element Plus Tooltip | Mantine Tooltip | Naive UI Tooltip |
-| :---------------- | :-------: | :-------: | :----------------: | :------------------: | :-------------: | :--------------: |
-| Headless/样式分离 |    ✅     |    ✅     |         —          |          —           |        —        |        —         |
-| Popper 定位（12） |    ✅     |    ✅     |         ✅         |          ✅          |       ✅        |        ✅        |
-| 延迟调节          |    ✅     |    ✅     |         —          |          ✅          |       ✅        |        —         |
-| 箭头              |    ✅     |    ✅     |         —          |          —           |        —        |        —         |
-| 尺寸（6）         |    ✅     |     —     |         —          |          —           |        —        |        —         |
-| 焦点触发          |    ✅     |    ✅     |         ✅         |          ✅          |       ✅        |        ✅        |
+| 能力              | Vean | shadcn/ui | Ant Design Tooltip | Element Plus Tooltip | Mantine Tooltip | Naive UI Tooltip |
+| :---------------- | :--: | :-------: | :----------------: | :------------------: | :-------------: | :--------------: |
+| Headless/样式分离 |  ✅  |    ✅     |         —          |          —           |        —        |        —         |
+| Popper 定位（12） |  ✅  |    ✅     |         ✅         |          ✅          |       ✅        |        ✅        |
+| 延迟调节          |  ✅  |    ✅     |         —          |          ✅          |       ✅        |        —         |
+| 箭头              |  ✅  |    ✅     |         —          |          —           |        —        |        —         |
+| 尺寸（6）         |  ✅  |     —     |         —          |          —           |        —        |        —         |
+| 焦点触发          |  ✅  |    ✅     |         ✅         |          ✅          |       ✅        |        ✅        |
 
 `—` = 不支持或采用不同交互模型。
 

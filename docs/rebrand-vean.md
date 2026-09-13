@@ -73,24 +73,24 @@
 
 ### 2.1 npm 包与代码标识
 
-| 现状                                                                                                   | 目标                          | 破坏性  |
-| ------------------------------------------------------------------------------------------------------ | ----------------------------- | ------- |
-| `@soybeanjs/headless`                                                                                  | `@vean/aria`                  | 🚨 破坏 |
-| `@soybeanjs/headless/shared`\|`/date`\|`/composables`\|`/locale`\|`/nuxt`\|`/resolver`\|`/{component}` | `@vean/aria/*` 同名跟随       | 🚨 破坏 |
-| `@soybeanjs/ui`                                                                                        | `@vean/ui`                    | 🚨 破坏 |
-| `@soybeanjs/ui/{component}`                                                                            | `@vean/ui/{component}`        | 🚨 破坏 |
-| `@soybeanjs/theme`                                                                                     | `@vean/theme`                 | 🚨 破坏 |
-| `@soybeanjs/theme/storage`\|`/ssr`                                                                     | `@vean/theme/storage`\|`/ssr` | 🚨 破坏 |
-| `@soybeanjs/ui-uno`                                                                                    | `@vean/unocss`                | 🚨 破坏 |
-| `@soybeanjs/ui-skills`                                                                                 | `@vean/skills`                | 🚨 破坏 |
-| `sbean`（npm 包 + bin）                                                                                | `vean`（npm 包 + bin）        | 🚨 破坏 |
-| `packages/headless/`                                                                                   | `packages/aria/`              | 🟡 内部 |
-| namespaced `Headless.*`                                                                                | `Aria.*`                      | 🚨 破坏 |
-| `pnpm sui gen catalog headless`                                                                        | `pnpm sui gen catalog aria`   | 🟡 内部 |
-| `presetUiUnocss()` / `UiUnocssOptions`                                                                 | **不变**（函数名不含品牌）    | —       |
-| docs content `content/{en,zh}/headless/`                                                               | `content/{en,zh}/aria/`       | 🟡 内部 |
-| `apps/docs` 包名 `@soybeanjs/ui-docs`                                                                  | `@vean/docs`（私有）          | —       |
-| `@soybeanjs/scripts`（私有）                                                                           | `@vean/scripts`（私有）       | —       |
+| 现状                                                                                                   | 目标                             | 破坏性  |
+| ------------------------------------------------------------------------------------------------------ | -------------------------------- | ------- |
+| `@soybeanjs/headless`                                                                                  | `@vean/aria`                     | 🚨 破坏 |
+| `@soybeanjs/headless/shared`\|`/date`\|`/composables`\|`/locale`\|`/nuxt`\|`/resolver`\|`/{component}` | `@vean/aria/*` 同名跟随          | 🚨 破坏 |
+| `@soybeanjs/ui`                                                                                        | `@vean/ui`                       | 🚨 破坏 |
+| `@soybeanjs/ui/{component}`                                                                            | `@vean/ui/{component}`           | 🚨 破坏 |
+| `@soybeanjs/theme`                                                                                     | `@vean/theme`                    | 🚨 破坏 |
+| `@soybeanjs/theme/storage`\|`/ssr`                                                                     | `@vean/theme/storage`\|`/ssr`    | 🚨 破坏 |
+| `@soybeanjs/ui-uno`                                                                                    | `@vean/unocss`                   | 🚨 破坏 |
+| `@soybeanjs/ui-skills`                                                                                 | `@vean/skills`                   | 🚨 破坏 |
+| `sbean`（npm 包 + bin）                                                                                | `@vean/cli`（包）+ `vean`（bin） | 🚨 破坏 |
+| `packages/headless/`                                                                                   | `packages/aria/`                 | 🟡 内部 |
+| namespaced `Headless.*`                                                                                | `Aria.*`                         | 🚨 破坏 |
+| `pnpm sui gen catalog headless`                                                                        | `pnpm sui gen catalog aria`      | 🟡 内部 |
+| `presetUiUnocss()` / `UiUnocssOptions`                                                                 | **不变**（函数名不含品牌）       | —       |
+| docs content `content/{en,zh}/headless/`                                                               | `content/{en,zh}/aria/`          | 🟡 内部 |
+| `apps/docs` 包名 `@soybeanjs/ui-docs`                                                                  | `@vean/docs`（私有）             | —       |
+| `@soybeanjs/scripts`（私有）                                                                           | `@vean/scripts`（私有）          | —       |
 
 ### 2.2 明确不变（防止过度改名）
 
@@ -197,13 +197,14 @@ T0+6m ─ npm deprecate @soybeanjs/ui @soybeanjs/headless ... ─────┘
 
 ### Phase 0 — 前置占位（现在就能做，0 风险）
 
-| 序号 | 动作                                                                                                                                                                                                                                               | 验收                                                                       |
-| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| 0.1  | npm org `vean` **已注册，`@vean/*` scope 归属已确认 ✅**；可选：发一个最小占位（如 `@vean/aria@0.0.1`）建立对外可见性                                                                                                                              | 能 `npm publish` 到 `@vean/*`                                              |
-| 0.2  | 裸名 `vean` 占位（`vean@0.0.1`）**保留并升版为真实 CLI**；`vean-ui@0.0.1` 补一版指路 README 并 `npm deprecate`（见 [§7.7](#77-npm-占位包与-vean-scope-归属)）                                                                                      | 可 `npm publish vean@0.50.0`；`npm i vean-ui` 能看到指向 `@vean/ui` 的说明 |
-| 0.3  | 域名（**`veanui.com` 已注册持有**，`vean.dev` 未注册不采用）：将 `veanui.com` 配置为 canonical（主站 / 文档 / registry）并配 DNS；`vean.soybeanjs.cn` 301 → `veanui.com`；`ui.soybeanjs.cn` 做路径保持型 301；可选补注 `vean-ui.com` 作 301 防御域 | 新域名可访问，`/r/*`、`/schema/*`、`/llms*.txt` 在旧域名上仍可解析         |
-| 0.4  | 在旧包 release note 提前一轮预告改名（用户有心理预期）                                                                                                                                                                                             | v0.40.0 正式版 release note 含预告                                         |
-| 0.5  | 备好回滚：记录 v0.40.x 最后一个可用 tag 与 tarball 校验和                                                                                                                                                                                          | 可从零重建旧版本                                                           |
+| 序号 | 动作                                                                                                                                                                                                                                                                                                                                                                                          | 验收                                                                                                                               |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| 0.1  | npm org `vean` **已注册，`@vean/*` scope 归属已确认 ✅**；可选：发一个最小占位（如 `@vean/aria@0.0.1`）建立对外可见性                                                                                                                                                                                                                                                                         | 能 `npm publish` 到 `@vean/*`                                                                                                      |
+| 0.2  | `vean-ui@0.0.1` 补一版**指路版**（README + description 指向 `@vean/ui`）并 `npm deprecate`（见 [§7.7](#77-npm-占位包裸名-vean-与-vean-scope-归属)）；**裸名 `vean` 改为不可获得**——registry 名称相似度检查拒绝发布，CLI 包名固定 `@vean/cli`（bin 为 `vean`）                                                                                                                                 | `npm i vean-ui` 能看到指向 `@vean/ui` 的说明；仓库内不存在指向裸名 `vean` 的安装指令                                               |
+| 0.3  | 域名（**`veanui.com` 已注册持有**，`vean.dev` 未注册不采用）：将 `veanui.com` 配置为 canonical（主站 / 文档 / registry）并配 DNS；`vean.soybeanjs.cn` 301 → `veanui.com`；`ui.soybeanjs.cn` 做路径保持型 301；可选补注 `vean-ui.com` 作 301 防御域                                                                                                                                            | 新域名可访问，`/r/*`、`/schema/*`、`/llms*.txt` 在旧域名上仍可解析                                                                 |
+| 0.4  | 在旧包 release note 提前一轮预告改名（用户有心理预期）                                                                                                                                                                                                                                                                                                                                        | v0.40.0 正式版 release note 含预告                                                                                                 |
+| 0.5  | 备好回滚：记录 v0.40.x 最后一个可用 tag 与 tarball 校验和                                                                                                                                                                                                                                                                                                                                     | 可从零重建旧版本                                                                                                                   |
+| 0.6  | **GitHub 仓库改名 `soybeanjs/soybean-ui` → `soybeanjs/vean`**。仓库内已有 38 个文件引用新 slug（README / CONTRIBUTING / 各 `package.json` 的 homepage·bugs·repository / docs 内容 / 测试夹具），改名后这些链接才生效，旧 URL 由 GitHub 自动 301。技能分发（`npx skills add`）完全走 GitHub、不经 npm，因此这一步是技能可安装的前置条件，见 [§7.7](#77-npm-占位包裸名-vean-与-vean-scope-归属) | `github.com/soybeanjs/vean` 可访问、旧址 301 到新址；`npx skills add soybeanjs/vean/skills --list` 能列出 `vean-ui` 与 `vean-aria` |
 
 ### Phase 1 — 仓库内改名（一个 PR，机械改动不做长期分支）
 
@@ -231,7 +232,7 @@ rg -n "headless" packages/scripts/src packages/aria/AGENTS.md                   
 
 1. `pnpm sui gen tombstone`（新增命令，见下）生成 4 个旧包的转发实现。
 2. 依赖方向：墓碑包 `dependencies` → `@vean/*@workspace:^`。
-3. 发布顺序：`@vean/theme` → `@vean/unocss` → `@vean/aria` → `@vean/ui` → `@vean/skills` → `vean`（CLI） → 4 个墓碑包。**必须按拓扑序**，否则 `workspace:^` 会指向未发布版本。
+3. 发布顺序：`@vean/theme` → `@vean/unocss` → `@vean/aria` → `@vean/ui` → `@vean/skills` → `@vean/cli`（CLI） → 4 个墓碑包。**必须按拓扑序**，否则 `workspace:^` 会指向未发布版本。裸名 `vean` 不参与发布，见 [§7.7](#77-npm-占位包裸名-vean-与-vean-scope-归属)。
 4. `changelog-notes.ts` 增加 `v0.50.0` breaking 条目 + `docPath`。
 5. 新文档站上线，旧站保留并加 banner。
 
@@ -306,11 +307,13 @@ node tools/vean-codemod/migrate.mjs . --profile=repo --write --new-domain=veanui
 
 | 命名空间   | 短名 `vean`                                                                                                    | 带后缀 `vean-ui`                                                                       | 备注                                                                                                                         |
 | ---------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| npm 包名   | ✅ 你持有（占位 `vean@0.0.1`）                                                                                 | ✅ 你持有（占位 `vean-ui@0.0.1`）                                                      | 均为 1.3 KB 空包，见 [§7.7](#77-npm-占位包与-vean-scope-归属)                                                                |
-| npm scope  | `@vean/*`                                                                                                      | —                                                                                      | ✅ 你持有（npm org `vean` 已注册）；registry 上尚无包，见 [§7.7](#77-npm-占位包与-vean-scope-归属)                           |
+| npm 包名   | ❌ **不可获得**（registry 名称相似度检查拦截；`GET /vean` → 404）                                              | ✅ 你持有（占位 `vean-ui@0.0.1`）                                                      | `vean-ui` 为 1.3 KB 空包；裸名 `vean` 从未发布成功，见 [§7.7](#77-npm-占位包裸名-vean-与-vean-scope-归属)                    |
+| npm scope  | `@vean/*`                                                                                                      | —                                                                                      | ✅ 你持有（npm org `vean` 已注册）；registry 上尚无包，见 [§7.7](#77-npm-占位包裸名-vean-与-vean-scope-归属)                 |
 | GitHub     | ❌ 用户/组织名已被他人占用                                                                                     | ✅ 你持有                                                                              | ⚠️ 但**不影响**——仓库挂在团队 org `soybeanjs` 下（`soybeanjs/vean`），GitHub 端不需要 `vean` 这个名字                        |
 | 域名       | `vean.com` **第三方持有**（2013-09-24 注册，**2026-09-24 到期**，注册局四锁）；`vean.dev` **未注册**（$12/年） | `vean-ui.com` **未注册**（$11/年）；`veanui.com` ✅ **已注册（我方持有，2026-09-13）** | 2026-09-11 复核时两个候选域均空置（价格仅差 $1/年，不存在"选便宜的"论据）；**2026-09-13 注册 `veanui.com` 并定为 canonical** |
 | 团队自有域 | —                                                                                                              | —                                                                                      | `soybeanjs.cn`（站点在 Cloudflare）                                                                                          |
+
+> **更正（2026-09-14）**：本表 2026-09-11 版把裸名 `vean` 记为「✅ 你持有（占位 `vean@0.0.1`）」，**不成立**——`GET https://registry.npmjs.org/vean` → **404**，该占位包从未发布成功，且 registry 的名称相似度检查会拒绝后续发布尝试（详见 [§7.7](#77-npm-占位包裸名-vean-与-vean-scope-归属)）。裸名 `vean` 按**不可获得**处理，CLI 包名固定 `@vean/cli`。
 
 **结论（2026-09-13 更新）：canonical 用 `veanui.com`（已注册持有）；`vean.dev` 未注册，不采用；`vean-ui.com` 作为可选 301 防御域；`vean.soybeanjs.cn` 只作过渡入口。**
 
@@ -323,7 +326,7 @@ node tools/vean-codemod/migrate.mjs . --profile=repo --write --new-domain=veanui
 > | v3             | `vean.dev`               | 身份一致性（见下 6 条）          | 同时是**数据更正**：v2 表格误写 `vean-ui.com` 为"已持有"，2026-09-11 22:01 RDAP 复核为**未注册**——两个候选域其实都空置   |
 > | **v4（现行）** | **`veanui.com`**         | 域名实际注册落地                 | `vean.dev` 购买计划未执行（至今未注册），2026-09-13 实际注册 `veanui.com` 并定为 canonical；`vean-ui.com` 防御域转为可选 |
 
-> **v4 注**：以下 6 条为 v3（`vean.dev`）方案的选型依据，自 v4 起存档保留——`vean.dev` 未注册、不执行，canonical 以 `veanui.com` 为准。
+> **v4 注**：以下 6 条为 v3（`vean.dev`）方案的选型依据，自 v4 起存档保留——`vean.dev` 未注册、不执行，canonical 以 `veanui.com` 为准。**2026-09-14 补注**：第 1 条「5 层身份里 4 层是裸名 `vean`」的前提已失效——裸名 `vean` 在 npm 上不可获得，CLI 层是 `@vean/cli`（见 [§7.7](#77-npm-占位包裸名-vean-与-vean-scope-归属)）；其余 5 条论证的对象是域名，结论不受影响。
 
 1. **身份一致性**：`@vean/*`（scope）｜`vean`（CLI）｜`vean.dev`（站点）｜`soybeanjs/vean`（仓库），每一层都读作 `vean`。5 层身份里 4 层是裸名 `vean`，唯一带后缀的就是域名——该对齐的是域名，不是其他四层。
 2. **生态惯例是 scope 名 == 域名**，这条赛道尤其整齐：`@radix-ui/*` ↔ radix-ui.com、`@base-ui-components/*` ↔ base-ui.com、`@headlessui/*` ↔ headlessui.com、`@tanstack/*` ↔ tanstack.com。
@@ -443,40 +446,59 @@ GitHub star（soybean-admin 15k）与新品牌的关联会断开。
 
 - **对策**：README 顶部明确 "Vean — by the SoybeanJS team (soybean-admin 同一作者)"；在新站保留 "formerly SoybeanUI" 字样以承接搜索流量；`docs/` 内保留本方案作为改名沿革记录。
 
-### 7.7 npm 占位包与 `@vean` scope 归属
+### 7.7 npm 占位包、裸名 `vean` 与 `@vean` scope 归属
 
-实测两个占位包（2026-08-18 发布）都是**空包**：
+**实测（2026-09-14）：只有一个占位包真实存在；裸名 `vean` 从未发布成功，且在 registry 层面不可获得。**
 
-| 包        | 版本    | 内容                                                            | 影响                                                                                                                                                                    |
-| --------- | ------- | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `vean`    | `0.0.1` | 1,356 B；`main: ./dist/index.js`，无 description / README / bin | 未来作为 CLI 的真实版本会覆盖它（发 ≥ 0.50.0 即可），无需特殊处理                                                                                                       |
-| `vean-ui` | `0.0.1` | 1,359 B；同上                                                   | ⚠️ 它**不会**成为包名（真包是 `@vean/ui`），但 `vean-ui` 极易被自然尝试——`-ui` 是组件库最常见的后缀，且 `vean-ui.com` 无论自持还是被抢注都会强化这个联想 → 直接装到空包 |
+| 包        | registry 实测                                                | 影响                                                                                                                                                                    |
+| --------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `vean`    | ❌ **不存在**（`GET https://registry.npmjs.org/vean` → 404） | 名称相似度检查会拒绝发布，按**不可获得**处理；CLI 包名固定 `@vean/cli`，见下                                                                                            |
+| `vean-ui` | ✅ `0.0.1`（2026-09-10 发布，author `honghuangdc`）          | ⚠️ 它**不会**成为包名（真包是 `@vean/ui`），但 `vean-ui` 极易被自然尝试——`-ui` 是组件库最常见的后缀，且 `vean-ui.com` 无论自持还是被抢注都会强化这个联想 → 直接装到空包 |
+
+> **更正（2026-09-14）**：本节早前把「两个占位包（2026-08-18 发布）」记为实测事实，并给出对策「裸名 `vean` 无需处理——真实 CLI 发布后占位被更高版本取代」。两处均不成立：`vean` 在 registry 上不存在，也从未发布成功——发布尝试被 npm 的名称相似度检查拒绝（403）。原 `vean@0.0.1` 一行及其对策已作废。
+
+**裸名 `vean` 不可获得——原因与边界**
+
+首次发布 `vean` 会得到 registry 的 403：
+
+```
+Package name too similar to existing package(s) <清单>; try renaming your package
+to '@<你的账号>/vean' and publishing with 'npm publish --access=public' instead
+```
+
+这是 registry 侧的**防误植（typosquat）相似度检查**，判定依据只有名字本身：
+
+- **与发布者无关**：换账号、换 token、换版本号都不改变结果。npm 文档确认过同名作者也会被拦（`audio-encode` vs `audio-decode`）；`caura` 一方用户名、`@caura` scope、域名全持有，照样被 `csurf` 拦住。
+- **无官方覆盖渠道**：npm support 的答复是「we are not able to manually whitelist or override that block, even if the project is legitimate and unrelated to the existing package」。2018 年有过人工开包的前例，但那不是现行政策；名称争议（disputes）政策也不覆盖这类拦截。
+- **`npm view vean` 返回 404 ≠ 可发布**：它只说明名字未被占用。`npm publish --dry-run` 同样不会触发该检查（npm 只在真实 PUT 时报错），所以「先 dry-run 试一下」测不出任何东西，必须真发一次才知道。
+
+**结论：CLI 包名固定 `@vean/cli`（bin 为 `vean`），不再考虑裸名。** 这恰好也是 npm 报错本身给出的建议（改用 scoped 名 + `--access=public`）；`@vean/*` 是 scoped，不触发该检查，5 个包都能正常发布。
 
 **对策（Phase 0 就做）**
 
 1. 给 `vean-ui` 补一版**指路版**（如 `0.0.2`）：README + description 写明"名称预留；组件库是 `@vean/ui`，文档 https://veanui.com"，随后 `npm deprecate vean-ui "Name reservation. Use @vean/ui instead."`。把一次"点击到空包"的体验坑，变成 npm 搜索里可见的指路牌。
-2. `vean` 无需处理——真实 CLI 发布后占位被更高版本取代；顺手 `npm deprecate vean@0.0.1` 避免有人锁死老版本。
+2. 裸名 `vean` **不再有任何待办**，也不要再尝试发布。仓库内凡指向裸名安装的指令一律改为 `@vean/cli`（`packages/cli/README.md` 已于 2026-09-14 修正）。
 
 **`@vean` scope 归属：✅ 已确认（2026-09-11，npm org `vean` 已注册）。**
 
 因为 npm 的**组织名与用户名共用同一命名空间**，注册了 org `vean` 就意味着不存在（也不可能再出现）同名的用户账号，`@vean/*` 这个 scope 已完全落到团队手里，不会被第三方抢注。公共 registry 上仍是 **0 个 `@vean/*` 包**，这不影响归属，只影响"外部可见性"——在发出第一个包之前，社区看不到这个名字已被占用。
 
 - **剩余动作（低优先级，可与 Phase 3 合并）**：发第一个 `@vean/*` 包时即完成对外占位。若希望更早建立可见性，可在 Phase 0 发一个最小占位 `@vean/aria@0.0.1`（真实版本用 `0.50.0`，不冲突）。
-- **权限自查**：确认 org 成员都有 2FA、且发布者具备 publish 权限；免费 org 可无限发布**公开**包，本方案不涉及私有包，无需付费计划。
+- **权限自查**：确认 org 成员都有 2FA、且发布者具备 publish 权限；免费 org 可无限发布**公开**包，本方案不涉及私有包，无需付费计划。**注意一个假信号**：granular token 若未授予 `org:read`，`npm org ls vean` 会返回 403 —— 这不代表 org 不属于你（2026-09-14 曾据此误判一次）。判断归属的可靠方式是实际 `npm publish` 一个 `@vean/*` 包。
 
 ## 8. 与 docs/v0.50.0.md 的合并关系
 
 `docs/v0.50.0.md` 已规划 `@soybeanjs/headless → @soybeanjs/aria`（scope 不变）与一轮引擎级重构。**本方案不是替代它，而是替换其中的命名维度**：
 
-| 议题                    | docs/v0.50.0.md 原定                      | 本方案覆盖为                              |
-| ----------------------- | ----------------------------------------- | ----------------------------------------- |
-| 逻辑层改名              | `@soybeanjs/headless` → `@soybeanjs/aria` | `@soybeanjs/headless` → **`@vean/aria`**  |
-| UI 包                   | `@soybeanjs/ui` 不变                      | → **`@vean/ui`**                          |
-| theme / ui-uno / sbean  | 全部不变                                  | → `@vean/theme` / `@vean/unocss` / `vean` |
-| `data-soybean-*`        | 明确「不改」                              | → **改** 为 `data-vean-*`                 |
-| `--soybean-*`           | 明确「不改」                              | → **改** 为 `--vean-*`                    |
-| `S` 前缀                | 不改                                      | **一致，不改**                            |
-| 依赖最小化 / 引擎更换   | 本方案不涉及                              | 原样保留                                  |
-| Drawer / BottomSheet 等 | 本方案不涉及                              | 原样保留                                  |
+| 议题                    | docs/v0.50.0.md 原定                      | 本方案覆盖为                                   |
+| ----------------------- | ----------------------------------------- | ---------------------------------------------- |
+| 逻辑层改名              | `@soybeanjs/headless` → `@soybeanjs/aria` | `@soybeanjs/headless` → **`@vean/aria`**       |
+| UI 包                   | `@soybeanjs/ui` 不变                      | → **`@vean/ui`**                               |
+| theme / ui-uno / sbean  | 全部不变                                  | → `@vean/theme` / `@vean/unocss` / `@vean/cli` |
+| `data-soybean-*`        | 明确「不改」                              | → **改** 为 `data-vean-*`                      |
+| `--soybean-*`           | 明确「不改」                              | → **改** 为 `--vean-*`                         |
+| `S` 前缀                | 不改                                      | **一致，不改**                                 |
+| 依赖最小化 / 引擎更换   | 本方案不涉及                              | 原样保留                                       |
+| Drawer / BottomSheet 等 | 本方案不涉及                              | 原样保留                                       |
 
 执行时以**本方案的命名映射** + **v0.50.0 的结构重构** 合成单一 PR。建议把 `docs/v0.50.0.md` 的 §2「改名」章节替换为指向本文的链接并标注「已升级为品牌级改名」，避免两份文档给出不同映射。

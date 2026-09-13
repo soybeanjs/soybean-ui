@@ -25,7 +25,7 @@ The layout component structure for admin dashboards or complex applications. It 
 - **Scroll behaviors** — `scrollBehavior="content"` scrolls only the content region; `scrollBehavior="wrapper"` scrolls the entire main wrapper.
 - **Fixed header/footer** — `fixedTop` and `fixedFooter` keep the header/footer pinned during content scroll, with automatic placeholder elements to prevent overlap.
 - **Base z-index control** — `baseZIndex` derives the stacking order of sidebar, header, tab, and footer so multiple layouts compose predictably.
-- **Headless composition** — every region (`LayoutRoot`, `LayoutSidebar`, `LayoutRail`, `LayoutHeader`, `LayoutTab`, `LayoutContent`, `LayoutFooter`, `LayoutMobile`, `LayoutTrigger`) is exported from `@soybeanjs/headless/layout` for custom styled builds.
+- **Headless composition** — every region (`LayoutRoot`, `LayoutSidebar`, `LayoutRail`, `LayoutHeader`, `LayoutTab`, `LayoutContent`, `LayoutFooter`, `LayoutMobile`, `LayoutTrigger`) is exported from `@vean/aria/layout` for custom styled builds.
 - **SSR safe** — no `window`/`document` access in setup; `useId()` generates stable scroll ids for server rendering.
 
 ## Usage
@@ -44,19 +44,19 @@ The layout component structure for admin dashboards or complex applications. It 
 
 ### Architecture and benchmark comparison
 
-| Concern                      | SoybeanUI                                                                                      | Ant Design `Layout`/`Header`/`Sider`/`Content`/`Footer` | Element Plus `ElContainer`/`ElHeader`/`ElAside`/`ElMain`/`ElFooter` |
-| :--------------------------- | :--------------------------------------------------------------------------------------------- | :------------------------------------------------------ | :------------------------------------------------------------------ |
-| Headless / styled separation | ✅ `@soybeanjs/headless/layout` ships logic + structure; `@soybeanjs/ui` ships `scv()` recipes | ❌ single styled package                                | ❌ single styled package                                            |
-| Sidebar variants             | `sidebar` / `floating` / `inset`                                                               | `sider` only                                            | `aside` only                                                        |
-| Collapsible modes            | `icon` (rail) + `offcanvas` (slide out)                                                        | `collapsible` + `collapsedWidth`                        | —                                                                   |
-| Mobile drawer                | built-in `Dialog`-based drawer (`isMobile` prop)                                               | requires `Drawer` composition                           | requires `Drawer` composition                                       |
-| Fixed header/footer          | `Layout` with `fixedTop` / `fixedFooter` + automatic placeholders                              | requires manual sticky CSS                              | requires manual sticky CSS                                          |
-| Orientation                  | `Layout` `orientation="horizontal" \| "vertical"`                                              | —                                                       | —                                                                   |
-| Scroll behavior              | `wrapper` / `content` on `Layout`                                                              | —                                                       | —                                                                   |
-| CSS-variable dimensions      | `--soybean-sidebar-width`, `--soybean-layout-header-height`, etc.                              | inline width on `Sider`                                 | inline width on `Aside`                                             |
-| RTL support                  | logical properties (`start-*`, `end-*`, `ps-*`, `pe-*`) + `rtl:` variants on rail              | —                                                       | —                                                                   |
-| Z-index orchestration        | `baseZIndex` derives sidebar/header/tab/footer z-index                                         | manual                                                  | manual                                                              |
-| Region visibility            | `sidebarVisible` / `headerVisible` / `tabVisible` / `footerVisible` props                      | remove the component                                    | remove the component                                                |
+| Concern                      | Vean                                                                              | Ant Design `Layout`/`Header`/`Sider`/`Content`/`Footer` | Element Plus `ElContainer`/`ElHeader`/`ElAside`/`ElMain`/`ElFooter` |
+| :--------------------------- | :-------------------------------------------------------------------------------- | :------------------------------------------------------ | :------------------------------------------------------------------ |
+| Headless / styled separation | ✅ `@vean/aria/layout` ships logic + structure; `@vean/ui` ships `scv()` recipes  | ❌ single styled package                                | ❌ single styled package                                            |
+| Sidebar variants             | `sidebar` / `floating` / `inset`                                                  | `sider` only                                            | `aside` only                                                        |
+| Collapsible modes            | `icon` (rail) + `offcanvas` (slide out)                                           | `collapsible` + `collapsedWidth`                        | —                                                                   |
+| Mobile drawer                | built-in `Dialog`-based drawer (`isMobile` prop)                                  | requires `Drawer` composition                           | requires `Drawer` composition                                       |
+| Fixed header/footer          | `Layout` with `fixedTop` / `fixedFooter` + automatic placeholders                 | requires manual sticky CSS                              | requires manual sticky CSS                                          |
+| Orientation                  | `Layout` `orientation="horizontal" \| "vertical"`                                 | —                                                       | —                                                                   |
+| Scroll behavior              | `wrapper` / `content` on `Layout`                                                 | —                                                       | —                                                                   |
+| CSS-variable dimensions      | `--vean-sidebar-width`, `--vean-layout-header-height`, etc.                       | inline width on `Sider`                                 | inline width on `Aside`                                             |
+| RTL support                  | logical properties (`start-*`, `end-*`, `ps-*`, `pe-*`) + `rtl:` variants on rail | —                                                       | —                                                                   |
+| Z-index orchestration        | `baseZIndex` derives sidebar/header/tab/footer z-index                            | manual                                                  | manual                                                              |
+| Region visibility            | `sidebarVisible` / `headerVisible` / `tabVisible` / `footerVisible` props         | remove the component                                    | remove the component                                                |
 
 ### Runtime considerations
 
@@ -64,7 +64,7 @@ The layout component structure for admin dashboards or complex applications. It 
 2. **`size` scales spacing and typography** — the UI wrapper multiplies pixel dimensions by `themeSizeRatio[size] / themeSizeMap.md`, so `size="xs"` shrinks both text and sidebar width proportionally.
 3. **Mobile detection is declarative** — `isMobile` is a prop (not internal logic). Pair it with `@vueuse/core`'s `useMediaQuery` or a server-side detection to toggle the drawer.
 4. **`LayoutTrigger` vs `LayoutRail`** — `LayoutTrigger` is a focusable button in the header for keyboard users; `LayoutRail` is the edge drag affordance with `tabindex="-1"` (click-only). Both reflect `aria-expanded`.
-5. **`Layout` placeholder elements** — when `fixedTop` or `fixedFooter` is enabled, `LayoutPlaceholder` renders empty spacer divs (`data-soybean-layout-{header|tab|footer}-placeholder`) to prevent content from sliding under the fixed region.
+5. **`Layout` placeholder elements** — when `fixedTop` or `fixedFooter` is enabled, `LayoutPlaceholder` renders empty spacer divs (`data-vean-layout-{header|tab|footer}-placeholder`) to prevent content from sliding under the fixed region.
 6. **`scrollId` for scroll restoration** — `Layout` generates a stable `soybean-layout-scroll-{id}` on the scrolling element (wrapper or content depending on `scrollBehavior`). Pass `scrollId` to make it deterministic across SSR/CSR.
 
 ## FAQ
@@ -91,7 +91,7 @@ Yes — set `side="right"`. The layout uses RTL-aware logical properties (`start
 
 ### How are z-index values coordinated?
 
-`Layout` accepts a `baseZIndex` (default `50`). The sidebar, header, tab, and footer z-index values are derived from this base so they stack predictably. The derived values are exposed as `--soybean-layout-{sidebar|header|tab|footer}-z-index` CSS variables.
+`Layout` accepts a `baseZIndex` (default `50`). The sidebar, header, tab, and footer z-index values are derived from this base so they stack predictably. The derived values are exposed as `--vean-layout-{sidebar|header|tab|footer}-z-index` CSS variables.
 
 ### How do I customize region-level attributes?
 

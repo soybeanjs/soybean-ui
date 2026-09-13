@@ -53,17 +53,17 @@ Use it for image galleries, product/article carousels, banner rotators, or any "
 
 ### Architecture and benchmark differences
 
-`CarouselRoot` owns the full Embla instance lifecycle (init/re-init/destroy, `select`/`reInit` events syncing scroll state) while every primitive stays style-free and only the UI wrapper injects the `carouselVariants` classes. This mirrors shadcn/ui's headless/styled split, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a carousel as a single styled component with configuration props. SoybeanUI deliberately routes behaviors such as `autoplay`, `loop` and `align` through `options` into Embla's plugin system instead of declaring them as top-level props, keeping the API lean and letting users plug in any Embla plugin. The prev/next buttons default to `disabled` at the boundaries, derived from `canScrollNext`/`canScrollPrev` rather than depending on the `loop` configuration.
+`CarouselRoot` owns the full Embla instance lifecycle (init/re-init/destroy, `select`/`reInit` events syncing scroll state) while every primitive stays style-free and only the UI wrapper injects the `carouselVariants` classes. This mirrors shadcn/ui's headless/styled split, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a carousel as a single styled component with configuration props. Vean deliberately routes behaviors such as `autoplay`, `loop` and `align` through `options` into Embla's plugin system instead of declaring them as top-level props, keeping the API lean and letting users plug in any Embla plugin. The prev/next buttons default to `disabled` at the boundaries, derived from `canScrollNext`/`canScrollPrev` rather than depending on the `loop` configuration.
 
-| Capability                           | SoybeanUI | shadcn/ui | Ant Design Carousel | Element Plus Carousel | Mantine Carousel | Naive UI Carousel |
-| :----------------------------------- | :-------: | :-------: | :-----------------: | :-------------------: | :--------------: | :---------------: |
-| Headless/styled split                |    ✅     |    ✅     |          —          |           —           |        —         |         —         |
-| Horizontal / vertical orientation    |    ✅     |     —     |         ✅          |          ✅           |        ✅        |        ✅         |
-| Direction-aware (RTL)                |    ✅     |    ✅     |         ✅          |           —           |        —         |         —         |
-| Arrow-key navigation                 |    ✅     |     —     |         ✅          |          ✅           |        —         |         —         |
-| Localized button/region `aria-label` |    ✅     |     —     |          —          |           —           |        —         |         —         |
-| `autoplay` / `loop` / alignment      |  options  |  options  |        props        |         props         |      props       |       props       |
-| Composite with per-part props        |    ✅     |    ✅     |          —          |           —           |        —         |         —         |
+| Capability                           |  Vean   | shadcn/ui | Ant Design Carousel | Element Plus Carousel | Mantine Carousel | Naive UI Carousel |
+| :----------------------------------- | :-----: | :-------: | :-----------------: | :-------------------: | :--------------: | :---------------: |
+| Headless/styled split                |   ✅    |    ✅     |          —          |           —           |        —         |         —         |
+| Horizontal / vertical orientation    |   ✅    |     —     |         ✅          |          ✅           |        ✅        |        ✅         |
+| Direction-aware (RTL)                |   ✅    |    ✅     |         ✅          |           —           |        —         |         —         |
+| Arrow-key navigation                 |   ✅    |     —     |         ✅          |          ✅           |        —         |         —         |
+| Localized button/region `aria-label` |   ✅    |     —     |          —          |           —           |        —         |         —         |
+| `autoplay` / `loop` / alignment      | options |  options  |        props        |         props         |      props       |       props       |
+| Composite with per-part props        |   ✅    |    ✅     |          —          |           —           |        —         |         —         |
 
 `—` = unsupported or a different interaction model (AntD/Element Plus/Mantine/Naive UI are single-package config-driven carousels; shadcn/ui's Carousel block is a copy-source headless composition but hardcodes the nav button text and lacks arrow-key navigation).
 

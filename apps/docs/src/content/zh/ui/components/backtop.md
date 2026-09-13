@@ -39,9 +39,9 @@ head:
 
 ### 架构与对标差异
 
-`SBacktop` 拆分为 headless 层（负责滚动追踪、目标解析、动画和可见性状态）和 styled 层（负责 `backtopVariants` 配方，扩展 `buttonVariants` 加 `fixed z-50` 和基于尺寸的 `bottom-* end-*` 定位）。遵循 SoybeanUI headless/styled 分离模式。
+`SBacktop` 拆分为 headless 层（负责滚动追踪、目标解析、动画和可见性状态）和 styled 层（负责 `backtopVariants` 配方，扩展 `buttonVariants` 加 `fixed z-50` 和基于尺寸的 `bottom-* end-*` 定位）。遵循 Vean headless/styled 分离模式。
 
-| 维度          | SoybeanUI                                     | Ant Design `BackTop`         | Element Plus `Backtop`       | Naive UI `BackTop`           |
+| 维度          | Vean                                          | Ant Design `BackTop`         | Element Plus `Backtop`       | Naive UI `BackTop`           |
 | :------------ | :-------------------------------------------- | :--------------------------- | :--------------------------- | :--------------------------- |
 | 架构          | headless + styled 分离                        | 仅 styled                    | 仅 styled                    | 仅 styled                    |
 | 平滑滚动      | `requestAnimationFrame` + `easeInOutCubic`    | `requestAnimationFrame`      | `requestAnimationFrame`      | `requestAnimationFrame`      |
@@ -68,11 +68,11 @@ head:
 设 `duration={0}`：`<SBacktop :duration="0" />`。用户启用 `prefers-reduced-motion: reduce` 时组件也会自动跳过动画。
 
 **可以使用自定义按钮替代默认样式吗？**
-可以。从 `@soybeanjs/headless/backtop` 导入 headless `Backtop`，用自定义按钮组合：
+可以。从 `@vean/aria/backtop` 导入 headless `Backtop`，用自定义按钮组合：
 
 ```vue
 <script setup lang="ts">
-import { Backtop } from '@soybeanjs/headless/backtop';
+import { Backtop } from '@vean/aria/backtop';
 </script>
 
 <template>

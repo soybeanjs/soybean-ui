@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SSpinner } from '@soybeanjs/ui';
-import type { ThemeSize } from '@soybeanjs/ui';
+import { SSpinner } from '@vean/ui';
+import type { ThemeSize } from '@vean/ui';
 
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] satisfies ThemeSize[];
 </script>

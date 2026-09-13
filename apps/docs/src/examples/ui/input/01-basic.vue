@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SInput } from '@soybeanjs/ui';
+import { SInput } from '@vean/ui';
 
 const modelValue = ref('');
 

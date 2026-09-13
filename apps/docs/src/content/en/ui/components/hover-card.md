@@ -48,16 +48,16 @@ Use a hover card for a non-blocking, hover-triggered preview (user profiles, rep
 
 ### Architecture and benchmark differences
 
-`HoverCardCompact` owns the trigger/positioner/popup/arrow composition while every primitive stays style-free and only the UI wrapper injects the `hoverCardVariants` classes. This mirrors radix-ui/shadcn-ui's headless split, built on the shared `Popper` primitives. Ant Design, Element Plus, Mantine and Naive UI ship a single styled popover used for hover previews; SoybeanUI exposes a dedicated hover-card with configurable `openDelay`/`closeDelay`, per-slot `*Props`, an arrow toggle and a `size` scale the single-package libraries generally omit.
+`HoverCardCompact` owns the trigger/positioner/popup/arrow composition while every primitive stays style-free and only the UI wrapper injects the `hoverCardVariants` classes. This mirrors radix-ui/shadcn-ui's headless split, built on the shared `Popper` primitives. Ant Design, Element Plus, Mantine and Naive UI ship a single styled popover used for hover previews; Vean exposes a dedicated hover-card with configurable `openDelay`/`closeDelay`, per-slot `*Props`, an arrow toggle and a `size` scale the single-package libraries generally omit.
 
-| Capability            | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :-------------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| Headless/styled split |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Open/close delay      |    ✅     |    ✅     |     —      |      —       |   ✅    |    —     |
-| Popper placement (12) |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |
-| Arrow                 |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Sizes (6)             |    ✅     |     —     |     —      |      —       |    —    |    —     |
-| Focus trigger         |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |
+| Capability            | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :-------------------- | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| Headless/styled split |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Open/close delay      |  ✅  |    ✅     |     —      |      —       |   ✅    |    —     |
+| Popper placement (12) |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |
+| Arrow                 |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Sizes (6)             |  ✅  |     —     |     —      |      —       |    —    |    —     |
+| Focus trigger         |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |
 
 `—` = unsupported or a different interaction model (hover previews fold into the generic popover).
 

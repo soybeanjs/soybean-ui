@@ -37,7 +37,7 @@ head:
 
 `SSpinner` is a UI-only component — it has no headless layer because it is a thin preset over `SIcon` (which already has a headless layer). It applies the `spinnerVariants` `cv()` recipe (color/size) and forwards all other `IconProps` to `SIcon`. This matches the shadcn/ui `Spinner` approach of wrapping an icon with preset styling.
 
-| Aspect         | SoybeanUI                                     | shadcn/ui `Spinner` | MUI `CircularProgress` | Mantine `Loader`   | Ant Design `Spin`  |
+| Aspect         | Vean                                          | shadcn/ui `Spinner` | MUI `CircularProgress` | Mantine `Loader`   | Ant Design `Spin`  |
 | :------------- | :-------------------------------------------- | :------------------ | :--------------------- | :----------------- | :----------------- |
 | Architecture   | UI-only preset over `SIcon`                   | styled SVG          | styled SVG             | styled SVG         | component + tip    |
 | Icon source    | Iconify `svg-spinners` (swappable)            | inline SVG (fixed)  | inline SVG (fixed)     | inline SVG (fixed) | inline SVG (fixed) |

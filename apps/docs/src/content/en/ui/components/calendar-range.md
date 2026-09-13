@@ -31,7 +31,7 @@ CalendarRange displays one or more month grids and lets users pick a start and e
 ## Component family
 
 - `SCalendarRange` — the styled wrapper that forwards props to the headless compact, injects `calendarRangeVariants` classes (12 slots, shared button icon recipes), and renders the default month/year Select controls in the heading
-- `CalendarRangeCompact` (headless) — data-driven composition of `CalendarRangeRoot` + header (prev/heading/next) + one grid per month (grid head/body rows of `CalendarRangeCellTrigger`); import from `@soybeanjs/headless/calendar-range` for unstyled usage
+- `CalendarRangeCompact` (headless) — data-driven composition of `CalendarRangeRoot` + header (prev/heading/next) + one grid per month (grid head/body rows of `CalendarRangeCellTrigger`); import from `@vean/aria/calendar-range` for unstyled usage
 - `CalendarRangeRoot` (headless) — state owner: `useControllableState` for `DateRange`/placeholder, `useCalendar` for grid/month pages, `useCalendarRangeState` for selected/highlighted/invalid state and candidate-range validation
 - `CalendarRangeCellTrigger` / `CalendarRangeCell` / `CalendarRangeGrid*` (headless) — the editable day button (keyboard handling, focus management, range data attributes) and its semantic grid cell wrappers
 
@@ -49,21 +49,21 @@ CalendarRange displays one or more month grids and lets users pick a start and e
 
 `CalendarRangeRoot` owns the value via `useControllableState` (`DateRange` = `{ start, end }`), keeps the placeholder for grid paging, and delegates grid creation to `useCalendar` (shared with `calendar`). `useCalendarRangeState` derives selected/highlighted state and exposes `isRangeInvalid(start, end)` — a candidate-range validator used both by the derived `data-invalid` state and by `onDateChange` when committing a new range (so a non-contiguous range is rejected based on the candidate, not the previously committed state). `CalendarRangeCellTrigger` is the only interactive piece: it reads the shared context, computes `data-selection-start`/`data-selection-end`/`data-highlighted`/`data-selected`/`data-today`/`data-unavailable`/`data-outside-view`, handles Arrow/Enter/Space keys with `dir`-aware direction (RTL flips ArrowLeft/ArrowRight), and pages to adjacent months when navigation crosses the grid boundary. Most benchmark libraries ship a monolithic range panel; the headless/styled split, per-part `*Props` passthrough, hover preview, and candidate-range validation are the differentiators.
 
-| Capability                     | SoybeanUI | Ant Design | Element Plus | Mantine | Naive UI | shadcn |
-| :----------------------------- | :-------: | :--------: | :----------: | :-----: | :------: | :----: |
-| headless/styled split          |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| Range picking (start + end)    |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
-| Hover range preview            |    ✅     |     —      |      —       |   ✅    |    —     |   —    |
-| Keyboard grid navigation       |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |   ✅   |
-| RTL direction reversal         |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| `numberOfMonths` grid          |    ✅     |     —      |      —       |   ✅    |    —     |   —    |
-| `allowNonContiguousRanges`     |    ✅     |     —      |      ✅      |   ✅    |    —     |   —    |
-| `maximumDays` cap              |    ✅     |     —      |      —       |   ✅    |    —     |   —    |
-| `fixedDate` pinned end         |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| `minValue`/`maxValue` bounds   |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
-| `isDateDisabled` / unavailable |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
-| Month/year Select controls     |    ✅     |     ✅     |      ✅      |    —    |    —     |   —    |
-| Candidate-range validation     |    ✅     |     —      |      —       |    —    |    —     |   —    |
+| Capability                     | Vean | Ant Design | Element Plus | Mantine | Naive UI | shadcn |
+| :----------------------------- | :--: | :--------: | :----------: | :-----: | :------: | :----: |
+| headless/styled split          |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| Range picking (start + end)    |  ✅  |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
+| Hover range preview            |  ✅  |     —      |      —       |   ✅    |    —     |   —    |
+| Keyboard grid navigation       |  ✅  |     ✅     |      ✅      |   ✅    |    ✅    |   ✅   |
+| RTL direction reversal         |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| `numberOfMonths` grid          |  ✅  |     —      |      —       |   ✅    |    —     |   —    |
+| `allowNonContiguousRanges`     |  ✅  |     —      |      ✅      |   ✅    |    —     |   —    |
+| `maximumDays` cap              |  ✅  |     —      |      —       |   ✅    |    —     |   —    |
+| `fixedDate` pinned end         |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| `minValue`/`maxValue` bounds   |  ✅  |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
+| `isDateDisabled` / unavailable |  ✅  |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
+| Month/year Select controls     |  ✅  |     ✅     |      ✅      |    —    |    —     |   —    |
+| Candidate-range validation     |  ✅  |     —      |      —       |    —    |    —     |   —    |
 
 ### Cautions
 

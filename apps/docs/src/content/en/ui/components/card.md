@@ -12,7 +12,7 @@ A container that groups related content and actions into a bordered, shadowed su
 
 Use it for dashboards, profile blocks, settings panels, or any content that benefits from a titled, sectioned container. Prefer `list` or `table` for repetitive data rows, and `popover`/`dialog` for floating or modal surfaces.
 
-The card is **collapsible by default** — the content area animates open/closed and can be driven with `v-model:open`. There is no headless `card` family: the chrome nodes are presentation-only, so they live in the UI layer and keep `data-soybean-card-*` attributes for styling and tests.
+The card is **collapsible by default** — the content area animates open/closed and can be driven with `v-model:open`. There is no headless `card` family: the chrome nodes are presentation-only, so they live in the UI layer and keep `data-vean-card-*` attributes for styling and tests.
 
 ## Usage
 
@@ -46,19 +46,19 @@ The card is **collapsible by default** — the content area animates open/closed
 
 ### Architecture and benchmark differences
 
-`Card` is the **UI-only** exemplar of the headless admission rule: its only real logic is collapsing, which the admitted `collapsible` family already provides, so no headless `card` family exists. `SCard` owns the structure orchestration (header/footer visibility, default title/description) and hands the recipe's `root` / `content` / `trigger` slots to `provideCollapsibleUi`, so `CollapsibleRoot` / `CollapsibleContent` / `CollapsibleTrigger` resolve their own classes from `cardVariants`. This mirrors shadcn/ui's composition-first approach, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a single styled card with `title`/`extra`/`actions` props. SoybeanUI makes the card **collapsible by default** through the `CollapsibleRoot` primitive, a deliberate extension most libraries do not offer on a card; `split` and `scrollable` are toggled via recipe variants rather than layout props.
+`Card` is the **UI-only** exemplar of the headless admission rule: its only real logic is collapsing, which the admitted `collapsible` family already provides, so no headless `card` family exists. `SCard` owns the structure orchestration (header/footer visibility, default title/description) and hands the recipe's `root` / `content` / `trigger` slots to `provideCollapsibleUi`, so `CollapsibleRoot` / `CollapsibleContent` / `CollapsibleTrigger` resolve their own classes from `cardVariants`. This mirrors shadcn/ui's composition-first approach, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a single styled card with `title`/`extra`/`actions` props. Vean makes the card **collapsible by default** through the `CollapsibleRoot` primitive, a deliberate extension most libraries do not offer on a card; `split` and `scrollable` are toggled via recipe variants rather than layout props.
 
-| Capability                   | SoybeanUI | shadcn/ui | Ant Design Card | Element Plus Card | Mantine Card | Naive UI Card |
-| :--------------------------- | :-------: | :-------: | :-------------: | :---------------: | :----------: | :-----------: |
-| Headless/styled split        |    ✅     |    ✅     |        —        |         —         |      —       |       —       |
-| Header / title / description |    ✅     |    ✅     |       ✅        |        ✅         |      ✅      |      ✅       |
-| Footer                       |    ✅     |    ✅     |       ✅        |        ✅         |      ✅      |      ✅       |
-| Extra (actions) slot         |    ✅     |     —     |       ✅        |        ✅         |      ✅      |      ✅       |
-| Collapsible content          |    ✅     |     —     |        —        |         —         |      —       |       —       |
-| Split / divider              |    ✅     |     —     |       ✅        |        ✅         |      ✅      |       —       |
-| Scrollable content           |    ✅     |     —     |       ✅        |         —         |      —       |      ✅       |
-| Size variants (6)            |    ✅     |     —     |       ✅        |        ✅         |      ✅      |      ✅       |
-| Per-part `*Props` channels   |    ✅     |    ✅     |        —        |         —         |      —       |       —       |
+| Capability                   | Vean | shadcn/ui | Ant Design Card | Element Plus Card | Mantine Card | Naive UI Card |
+| :--------------------------- | :--: | :-------: | :-------------: | :---------------: | :----------: | :-----------: |
+| Headless/styled split        |  ✅  |    ✅     |        —        |         —         |      —       |       —       |
+| Header / title / description |  ✅  |    ✅     |       ✅        |        ✅         |      ✅      |      ✅       |
+| Footer                       |  ✅  |    ✅     |       ✅        |        ✅         |      ✅      |      ✅       |
+| Extra (actions) slot         |  ✅  |     —     |       ✅        |        ✅         |      ✅      |      ✅       |
+| Collapsible content          |  ✅  |     —     |        —        |         —         |      —       |       —       |
+| Split / divider              |  ✅  |     —     |       ✅        |        ✅         |      ✅      |       —       |
+| Scrollable content           |  ✅  |     —     |       ✅        |         —         |      —       |      ✅       |
+| Size variants (6)            |  ✅  |     —     |       ✅        |        ✅         |      ✅      |      ✅       |
+| Per-part `*Props` channels   |  ✅  |    ✅     |        —        |         —         |      —       |       —       |
 
 `—` = unsupported or a different interaction model.
 

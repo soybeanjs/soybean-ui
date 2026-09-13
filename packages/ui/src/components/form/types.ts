@@ -12,8 +12,8 @@ import type {
   FormFieldComponent,
   FormFieldArrayComponent,
   FormValues
-} from '@soybeanjs/headless/form';
-import type { ClassValue } from '@soybeanjs/headless/types';
+} from '@vean/aria/form';
+import type { ClassValue } from '@vean/aria/types';
 import type { ThemeSize } from '@/theme';
 
 export interface FormProps extends FormCompactProps {

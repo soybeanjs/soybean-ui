@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-13T14:09:41.258Z",
+  "generatedAt": "2026-09-13T19:05:57.132Z",
   "packages": {
-    "headless": {
+    "aria": {
       "components": {
         "arrow": {
           "component": "arrow",
@@ -39,7 +39,7 @@
           "symbols": ["VisuallyHidden", "VisuallyHiddenInput"]
         }
       },
-      "file": "headless/index.json"
+      "file": "aria/index.json"
     },
     "ui": {
       "components": {

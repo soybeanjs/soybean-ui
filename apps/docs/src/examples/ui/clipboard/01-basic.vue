@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { SClipboard } from '@soybeanjs/ui';
+import { SClipboard } from '@vean/ui';
 
-const value = 'pnpm add @soybeanjs/ui';
+const value = 'pnpm add @vean/ui';
 </script>
 
 <template>

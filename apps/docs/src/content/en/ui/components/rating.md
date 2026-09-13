@@ -41,21 +41,21 @@ A star-rating component built on a multi-slot headless core: `RatingRoot` provid
 
 ### Architecture and benchmark differences
 
-SoybeanUI splits the rating into headless `RatingRoot` (slider context, `useControllableState`, keyboard navigation, ARIA reflection, half-step pointer resolution, `VisuallyHiddenInput` form binding) and headless `RatingItem` (renders each star from context, exposes `state` for slot-driven icons). The UI wrapper `SRating` injects `ratingVariants` and `ratingItemVariants` classes via the standard multi-slot `provide*Ui` / `useUiContext` pattern; state and visuals stay decoupled through `data-[state=...]` selectors. Compared with AntD `Rate`, Element Plus `el-rate`, Mantine `Rating`, and Naive UI `n-rate`, SoybeanUI is the only benchmarked library with a headless/styled split, RTL support, vertical orientation, and native form integration; shadcn ships no rating component.
+Vean splits the rating into headless `RatingRoot` (slider context, `useControllableState`, keyboard navigation, ARIA reflection, half-step pointer resolution, `VisuallyHiddenInput` form binding) and headless `RatingItem` (renders each star from context, exposes `state` for slot-driven icons). The UI wrapper `SRating` injects `ratingVariants` and `ratingItemVariants` classes via the standard multi-slot `provide*Ui` / `useUiContext` pattern; state and visuals stay decoupled through `data-[state=...]` selectors. Compared with AntD `Rate`, Element Plus `el-rate`, Mantine `Rating`, and Naive UI `n-rate`, Vean is the only benchmarked library with a headless/styled split, RTL support, vertical orientation, and native form integration; shadcn ships no rating component.
 
-| Capability              | SoybeanUI |   Ant Design   |  Element Plus  |    Mantine     |  Naive UI  | shadcn |
-| :---------------------- | :-------: | :------------: | :------------: | :------------: | :--------: | :----: |
-| headless/styled split   |    ✅     |       —        |       —        |       —        |     —      |   —    |
-| Controlled/uncontrolled |    ✅     |       ✅       |       ✅       |       ✅       |     ✅     |   —    |
-| Half-star precision     |    ✅     |       ✅       |       ✅       | ✅ (fractions) |     ✅     |   —    |
-| Allow clear             |    ✅     |       ✅       |       ✅       |       ✅       |     ✅     |   —    |
-| Read-only mode          |    ✅     |       ✅       |       ✅       |       ✅       |     ✅     |   —    |
-| Custom icon (slot)      |    ✅     | ✅ (character) | ✅ (iconClass) |       ✅       |     ✅     |   —    |
-| Keyboard navigation     |    ✅     |       —        |       —        |       ✅       |     —      |   —    |
-| RTL support             |    ✅     |       —        |       —        |       —        |     —      |   —    |
-| Vertical orientation    |    ✅     |       —        |       —        |       ✅       |     —      |   —    |
-| Form integration        |    ✅     |       —        |       —        |       ✅       |     —      |   —    |
-| Color/size variants     |    ✅     |      size      |      size      |      size      | size/color |   —    |
+| Capability              | Vean |   Ant Design   |  Element Plus  |    Mantine     |  Naive UI  | shadcn |
+| :---------------------- | :--: | :------------: | :------------: | :------------: | :--------: | :----: |
+| headless/styled split   |  ✅  |       —        |       —        |       —        |     —      |   —    |
+| Controlled/uncontrolled |  ✅  |       ✅       |       ✅       |       ✅       |     ✅     |   —    |
+| Half-star precision     |  ✅  |       ✅       |       ✅       | ✅ (fractions) |     ✅     |   —    |
+| Allow clear             |  ✅  |       ✅       |       ✅       |       ✅       |     ✅     |   —    |
+| Read-only mode          |  ✅  |       ✅       |       ✅       |       ✅       |     ✅     |   —    |
+| Custom icon (slot)      |  ✅  | ✅ (character) | ✅ (iconClass) |       ✅       |     ✅     |   —    |
+| Keyboard navigation     |  ✅  |       —        |       —        |       ✅       |     —      |   —    |
+| RTL support             |  ✅  |       —        |       —        |       —        |     —      |   —    |
+| Vertical orientation    |  ✅  |       —        |       —        |       ✅       |     —      |   —    |
+| Form integration        |  ✅  |       —        |       —        |       ✅       |     —      |   —    |
+| Color/size variants     |  ✅  |      size      |      size      |      size      | size/color |   —    |
 
 ### Cautions
 

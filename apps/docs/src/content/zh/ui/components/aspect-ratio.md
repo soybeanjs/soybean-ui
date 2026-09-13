@@ -41,7 +41,7 @@ head:
 
 ### 对标差异
 
-| 维度       | SoybeanUI                  | shadcn/ui `AspectRatio`   | MUI `AspectRatio`         | Ant Design |
+| 维度       | Vean                       | shadcn/ui `AspectRatio`   | MUI `AspectRatio`         | Ant Design |
 | :--------- | :------------------------- | :------------------------ | :------------------------ | :--------- |
 | 架构       | headless + UI 重新导出     | headless + styled         | 仅 styled                 | —          |
 | 技术       | padding-bottom + absolute  | padding-bottom + absolute | padding-bottom + absolute | —          |

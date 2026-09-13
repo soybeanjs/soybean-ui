@@ -36,7 +36,7 @@ head:
 - `ToastProvider`（headless）— `Toaster` 的薄包装
 - `Toaster`（headless）— 状态所有者；订阅 `ToastState`，管理堆叠/展开/焦点，渲染 6 个视口
 - `Toast`（headless）— 单条通知；自动关闭计时、滑动逻辑、高度测量、action/cancel/close
-- `toast`（命令式）— 暴露在 `@soybeanjs/ui` 上的共享 `toast` 控制器（`ToastState` 观察者）
+- `toast`（命令式）— 暴露在 `@vean/ui` 上的共享 `toast` 控制器（`ToastState` 观察者）
 
 ## 演示
 
@@ -64,19 +64,19 @@ head:
 
 ### 架构与对标差异
 
-`Toaster` 是自包含的状态所有者，订阅模块级 `ToastState` 观察者并驱动堆叠/展开、滑动、焦点管理与自动关闭计时；`SToastProvider` 只注入配方类与动画样式表。这是命令式优先模型，类似 Ant Design 的 `message`/`notification`、Element Plus `ElMessage`、Mantine `notifications` 与 Naive UI `useMessage`——而 shadcn/ui 没有全局通知原语。SoybeanUI 的差异化能力是堆叠/可展开通知、滑动关闭、Promise 通知与焦点快捷键，对标 Sonner 的交互体验，同时保持 headless/样式分离。
+`Toaster` 是自包含的状态所有者，订阅模块级 `ToastState` 观察者并驱动堆叠/展开、滑动、焦点管理与自动关闭计时；`SToastProvider` 只注入配方类与动画样式表。这是命令式优先模型，类似 Ant Design 的 `message`/`notification`、Element Plus `ElMessage`、Mantine `notifications` 与 Naive UI `useMessage`——而 shadcn/ui 没有全局通知原语。Vean 的差异化能力是堆叠/可展开通知、滑动关闭、Promise 通知与焦点快捷键，对标 Sonner 的交互体验，同时保持 headless/样式分离。
 
-| 能力                    | SoybeanUI | shadcn/ui | Ant Design message | Element Plus ElMessage | Mantine notifications | Naive UI useMessage |
-| :---------------------- | :-------: | :-------: | :----------------: | :--------------------: | :-------------------: | :-----------------: |
-| 命令式 API              |    ✅     |     —     |         ✅         |           ✅           |          ✅           |         ✅          |
-| 类型（success/error/…） |    ✅     |     —     |         ✅         |           ✅           |          ✅           |         ✅          |
-| 位置（6）               |    ✅     |     —     |         ✅         |           ✅           |          ✅           |         ✅          |
-| 堆叠 / 展开             |    ✅     |     —     |         —          |           —            |          ✅           |          —          |
-| 滑动关闭                |    ✅     |     —     |         —          |           —            |           —           |          —          |
-| Promise 通知            |    ✅     |     —     |         ✅         |           —            |          ✅           |         ✅          |
-| 富色 / 反转             |    ✅     |     —     |         ✅         |           —            |           —           |          —          |
-| 悬停/隐藏时暂停         |    ✅     |     —     |         ✅         |           ✅           |          ✅           |         ✅          |
-| 焦点快捷键              |    ✅     |     —     |         —          |           —            |           —           |          —          |
+| 能力                    | Vean | shadcn/ui | Ant Design message | Element Plus ElMessage | Mantine notifications | Naive UI useMessage |
+| :---------------------- | :--: | :-------: | :----------------: | :--------------------: | :-------------------: | :-----------------: |
+| 命令式 API              |  ✅  |     —     |         ✅         |           ✅           |          ✅           |         ✅          |
+| 类型（success/error/…） |  ✅  |     —     |         ✅         |           ✅           |          ✅           |         ✅          |
+| 位置（6）               |  ✅  |     —     |         ✅         |           ✅           |          ✅           |         ✅          |
+| 堆叠 / 展开             |  ✅  |     —     |         —          |           —            |          ✅           |          —          |
+| 滑动关闭                |  ✅  |     —     |         —          |           —            |           —           |          —          |
+| Promise 通知            |  ✅  |     —     |         ✅         |           —            |          ✅           |         ✅          |
+| 富色 / 反转             |  ✅  |     —     |         ✅         |           —            |           —           |          —          |
+| 悬停/隐藏时暂停         |  ✅  |     —     |         ✅         |           ✅           |          ✅           |         ✅          |
+| 焦点快捷键              |  ✅  |     —     |         —          |           —            |           —           |          —          |
 
 `—` = 不支持或采用不同交互模型。
 
@@ -97,7 +97,7 @@ head:
 ### 如何显示基础通知？
 
 ```ts
-import { toast } from '@soybeanjs/ui';
+import { toast } from '@vean/ui';
 
 toast('更改已保存');
 ```
