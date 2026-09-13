@@ -37,14 +37,8 @@ export const sheetVariants = scv({
   extend: [dialogVariants],
   // The drawer redefines both slots: the popup drives its position from the
   // gesture CSS vars, and the overlay tracks the swipe progress with a
-  // lighter backdrop than the centered dialog.
-  extendIgnore: ['popup', 'overlay'],
+  extendIgnore: ['popup'],
   slots: {
-    overlay: [
-      `fixed inset-0 z-50 bg-black/25`,
-      `data-[state=open]:animate-in data-[state=open]:fade-in-0`,
-      `data-[state=closed]:animate-out data-[state=closed]:fade-out-0`
-    ],
     popup: [
       `fixed z-50 flex flex-col justify-between items-stretch border bg-background outline-none`,
       POPUP_TRANSITION,
