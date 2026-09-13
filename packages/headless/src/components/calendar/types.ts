@@ -167,7 +167,7 @@ export interface CalendarCellProps extends PrimitiveWithBaseProps {
   /**
    * Date.
    */
-  date: DateValue;
+  date: Date;
 }
 
 /**
@@ -177,11 +177,11 @@ export interface CalendarCellTriggerProps extends ButtonProps {
   /**
    * Day.
    */
-  day: DateValue;
+  day: Date;
   /**
    * Month.
    */
-  month: DateValue;
+  month: Date;
 }
 
 /**
@@ -293,7 +293,7 @@ export interface CalendarRootContext extends ToContext<
   /**
    * Grid used by the component context.
    */
-  grid: ShallowRef<DateGrid<DateValue>[]>;
+  grid: ShallowRef<DateGrid<Date>[]>;
   /**
    * Parent element used by the component context.
    */
@@ -399,7 +399,7 @@ export interface CalendarRootSlotProps<M extends boolean = false> {
   /**
    * Grid exposed in the slot scope.
    */
-  grid: DateGrid<DateValue>[];
+  grid: DateGrid<Date>[];
   /**
    * Week days exposed in the slot scope.
    */
@@ -563,11 +563,11 @@ export interface CalendarDaySlotProps extends CalendarCellTriggerSlotProps {
   /**
    * Day value exposed in the slot scope.
    */
-  day: DateValue;
+  day: Date;
   /**
    * Month value exposed in the slot scope.
    */
-  month: DateValue;
+  month: Date;
 }
 
 /**
@@ -593,7 +593,7 @@ export type CalendarCompactSlots<M extends boolean = false> = {
   /**
    * Custom content for the head cell slot.
    */
-  'head-cell'?: (props: { date: DateValue; index: number; label: string }) => any;
+  'head-cell'?: (props: { date: Date; index: number; label: string }) => any;
   /**
    * Custom content for the day slot.
    */

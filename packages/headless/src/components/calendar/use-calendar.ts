@@ -1,9 +1,30 @@
 import { computed, shallowRef, watch } from 'vue';
 import type { ShallowRef } from 'vue';
-import { isEqualMonth, isSameDay, isSameMonth } from '@internationalized/date';
-import type { DateFields, DateValue } from '@internationalized/date';
-import { createMonths, getDaysInMonth, isAfter, isBefore, toDate, useDateFormatter } from '../../date';
-import type { DateFormatterOptions, DateMatcher, DateGrid, WeekDayFormat, WeekStartsOn } from '../../date';
+import { addMonths } from 'date-fns/addMonths';
+import {
+  createMonths,
+  getDaysInMonth,
+  isAfter,
+  isBefore,
+  isSameMonth,
+  setSegmentParts,
+  toDate,
+  useDateFormatter
+} from '../../date';
+import type { DateMatcher, DateGrid, DateValue, WeekDayFormat, WeekStartsOn } from '../../date';
+
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+function isSameDayValue(a: DateValue, b: DateValue) {
+  const aDay = toDate(a);
+  const bDay = toDate(b);
+
+  return (
+    aDay.getFullYear() === bDay.getFullYear() &&
+    aDay.getMonth() === bDay.getMonth() &&
+    aDay.getDate() === bDay.getDate()
+  );
+}
 
 export interface UseCalendarOptions {
   locale: ShallowRef<string>;
@@ -34,14 +55,14 @@ export function useCalendarState(options: UseCalendarStateOptions) {
 
   function isDateSelected(dateObj: DateValue) {
     if (Array.isArray(date.value)) {
-      return date.value.some(item => isSameDay(item, dateObj));
+      return date.value.some(item => isSameDayValue(item, dateObj));
     }
 
     if (!date.value) {
       return false;
     }
 
-    return isSameDay(date.value, dateObj);
+    return isSameDayValue(date.value, dateObj);
   }
 
   const isInvalid = computed(() => {
@@ -50,14 +71,14 @@ export function useCalendarState(options: UseCalendarStateOptions) {
         return false;
       }
 
-      return date.value.some(dateObj => isDateDisabled?.(dateObj) || isDateUnavailable?.(dateObj));
+      return date.value.some(dateObj => isDateDisabled?.(toDate(dateObj)) || isDateUnavailable?.(toDate(dateObj)));
     }
 
     if (!date.value) {
       return false;
     }
 
-    return Boolean(isDateDisabled?.(date.value) || isDateUnavailable?.(date.value));
+    return Boolean(isDateDisabled?.(toDate(date.value)) || isDateUnavailable?.(toDate(date.value)));
   });
 
   const hasSelectedDate = computed(() => {
@@ -70,14 +91,14 @@ export function useCalendarState(options: UseCalendarStateOptions) {
         return false;
       }
 
-      return date.value.some(dateObj => isDateDisabled?.(dateObj));
+      return date.value.some(dateObj => isDateDisabled?.(toDate(dateObj)));
     }
 
     if (!date.value) {
       return false;
     }
 
-    return Boolean(isDateDisabled?.(date.value));
+    return Boolean(isDateDisabled?.(toDate(date.value)));
   });
 
   return {
@@ -88,34 +109,42 @@ export function useCalendarState(options: UseCalendarStateOptions) {
   };
 }
 
-function handleNextDisabled(lastPeriodInView: DateValue, nextPageFunc: (date: DateValue) => DateValue): DateValue {
-  const firstPeriodOfNextPage = nextPageFunc(lastPeriodInView);
-  const diff = firstPeriodOfNextPage.compare(lastPeriodInView);
-  const duration: DateFields = {};
-
-  if (diff >= 7) {
-    duration.day = 1;
-  }
-  if (diff >= getDaysInMonth(lastPeriodInView)) {
-    duration.month = 1;
-  }
-
-  return firstPeriodOfNextPage.set({ ...duration });
+function dayDiff(later: Date, earlier: Date) {
+  return Math.round((startOfDayOf(later).getTime() - startOfDayOf(earlier).getTime()) / DAY_MS);
 }
 
-function handlePrevDisabled(firstPeriodInView: DateValue, prevPageFunc: (date: DateValue) => DateValue): DateValue {
-  const lastPeriodOfPrevPage = prevPageFunc(firstPeriodInView);
-  const diff = firstPeriodInView.compare(lastPeriodOfPrevPage);
-  const duration: DateFields = {};
+function startOfDayOf(date: Date) {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+}
+
+function handleNextDisabled(lastPeriodInView: Date, nextPageFunc: (date: DateValue) => DateValue): Date {
+  const firstPeriodOfNextPage = toDate(nextPageFunc(lastPeriodInView));
+  const diff = dayDiff(firstPeriodOfNextPage, lastPeriodInView);
+  const parts: { day?: number; month?: number } = {};
 
   if (diff >= 7) {
-    duration.day = 35;
+    parts.day = 1;
   }
-  if (diff >= getDaysInMonth(firstPeriodInView)) {
-    duration.month = 13;
+  if (diff >= getDaysInMonth(lastPeriodInView)) {
+    parts.month = 1;
   }
 
-  return lastPeriodOfPrevPage.set({ ...duration });
+  return setSegmentParts(firstPeriodOfNextPage, parts);
+}
+
+function handlePrevDisabled(firstPeriodInView: Date, prevPageFunc: (date: DateValue) => DateValue): Date {
+  const lastPeriodOfPrevPage = toDate(prevPageFunc(firstPeriodInView));
+  const diff = dayDiff(firstPeriodInView, lastPeriodOfPrevPage);
+  const parts: { day?: number; month?: number } = {};
+
+  if (diff >= 7) {
+    parts.day = 35;
+  }
+  if (diff >= getDaysInMonth(firstPeriodInView)) {
+    parts.month = 13;
+  }
+
+  return setSegmentParts(lastPeriodOfPrevPage, parts);
 }
 
 export function useCalendar(options: UseCalendarOptions) {
@@ -137,21 +166,9 @@ export function useCalendar(options: UseCalendarOptions) {
 
   const formatter = useDateFormatter(locale.value);
 
-  const headingFormatOptions = computed<DateFormatterOptions>(() => {
-    const opts: DateFormatterOptions = {
-      calendar: placeholder.value.calendar.identifier
-    };
-
-    if (placeholder.value.calendar.identifier === 'gregory' && placeholder.value.era === 'BC') {
-      opts.era = 'short';
-    }
-
-    return opts;
-  });
-
-  const grid = shallowRef<DateGrid<DateValue>[]>(
+  const grid = shallowRef<DateGrid<Date>[]>(
     createMonths({
-      dateObj: placeholder.value,
+      dateObj: toDate(placeholder.value),
       weekStartsOn: weekStartsOn.value,
       locale: locale.value,
       fixedWeeks: fixedWeeks.value,
@@ -162,7 +179,7 @@ export function useCalendar(options: UseCalendarOptions) {
   const visibleView = computed(() => grid.value.map(month => month.value));
 
   function isOutsideVisibleView(date: DateValue) {
-    return !visibleView.value.some(month => isEqualMonth(date, month));
+    return !visibleView.value.some(month => isSameMonth(toDate(date), month));
   }
 
   const isNextButtonDisabled = (nextPageFunc?: (date: DateValue) => DateValue) => {
@@ -176,7 +193,7 @@ export function useCalendar(options: UseCalendarOptions) {
     const lastPeriodInView = grid.value.at(-1)!.value;
 
     if (!nextPageFunc && !nextPage.value) {
-      const firstPeriodOfNextPage = lastPeriodInView.add({ months: 1 }).set({ day: 1 });
+      const firstPeriodOfNextPage = setSegmentParts(addMonths(lastPeriodInView, 1), { day: 1 });
       return isAfter(firstPeriodOfNextPage, maxValue.value);
     }
 
@@ -195,7 +212,7 @@ export function useCalendar(options: UseCalendarOptions) {
     const firstPeriodInView = grid.value[0].value;
 
     if (!prevPageFunc && !prevPage.value) {
-      const lastPeriodOfPrevPage = firstPeriodInView.subtract({ months: 1 }).set({ day: 35 });
+      const lastPeriodOfPrevPage = setSegmentParts(addMonths(firstPeriodInView, -1), { day: 35 });
       return isBefore(lastPeriodOfPrevPage, minValue.value);
     }
 
@@ -204,7 +221,7 @@ export function useCalendar(options: UseCalendarOptions) {
   };
 
   function isDateDisabled(dateObj: DateValue) {
-    if (options.isDateDisabled?.(dateObj) || disabled.value) {
+    if (options.isDateDisabled?.(toDate(dateObj)) || disabled.value) {
       return true;
     }
     if (maxValue.value && isAfter(dateObj, maxValue.value)) {
@@ -217,21 +234,21 @@ export function useCalendar(options: UseCalendarOptions) {
     return false;
   }
 
-  const isDateUnavailable = (date: DateValue) => Boolean(options.isDateUnavailable?.(date));
+  const isDateUnavailable = (date: DateValue) => Boolean(options.isDateUnavailable?.(toDate(date)));
 
   const weekdays = computed(() => {
     if (!grid.value.length) {
       return [];
     }
 
-    return grid.value[0].rows[0].map(date => formatter.dayOfWeek(toDate(date), weekdayFormat.value));
+    return grid.value[0].rows[0].map(date => formatter.dayOfWeek(date, weekdayFormat.value));
   });
 
   const handleNextPage = (nextPageFunc?: (date: DateValue) => DateValue) => {
     const firstDate = grid.value[0].value;
 
     if (!nextPageFunc && !nextPage.value) {
-      const newDate = firstDate.add({ months: pagedNavigation.value ? numberOfMonths.value : 1 });
+      const newDate = addMonths(firstDate, pagedNavigation.value ? numberOfMonths.value : 1);
       const newGrid = createMonths({
         dateObj: newDate,
         weekStartsOn: weekStartsOn.value,
@@ -241,11 +258,11 @@ export function useCalendar(options: UseCalendarOptions) {
       });
 
       grid.value = newGrid;
-      placeholder.value = newGrid[0].value.set({ day: 1 });
+      placeholder.value = setSegmentParts(newGrid[0].value, { day: 1 });
       return;
     }
 
-    const newDate = (nextPageFunc || nextPage.value!)(firstDate);
+    const newDate = toDate((nextPageFunc || nextPage.value!)(firstDate));
     const newGrid = createMonths({
       dateObj: newDate,
       weekStartsOn: weekStartsOn.value,
@@ -256,26 +273,26 @@ export function useCalendar(options: UseCalendarOptions) {
 
     grid.value = newGrid;
 
-    const duration: DateFields = {};
+    const parts: { day?: number; month?: number } = {};
 
     if (!nextPageFunc) {
-      const diff = newGrid[0].value.compare(firstDate);
+      const diff = dayDiff(newGrid[0].value, firstDate);
       if (diff >= getDaysInMonth(firstDate)) {
-        duration.day = 1;
+        parts.day = 1;
       }
       if (diff >= 365) {
-        duration.month = 1;
+        parts.month = 1;
       }
     }
 
-    placeholder.value = newGrid[0].value.set({ ...duration });
+    placeholder.value = setSegmentParts(newGrid[0].value, parts);
   };
 
   const handlePrevPage = (prevPageFunc?: (date: DateValue) => DateValue) => {
     const firstDate = grid.value[0].value;
 
     if (!prevPageFunc && !prevPage.value) {
-      const newDate = firstDate.subtract({ months: pagedNavigation.value ? numberOfMonths.value : 1 });
+      const newDate = addMonths(firstDate, -(pagedNavigation.value ? numberOfMonths.value : 1));
       const newGrid = createMonths({
         dateObj: newDate,
         weekStartsOn: weekStartsOn.value,
@@ -285,11 +302,11 @@ export function useCalendar(options: UseCalendarOptions) {
       });
 
       grid.value = newGrid;
-      placeholder.value = newGrid[0].value.set({ day: 1 });
+      placeholder.value = setSegmentParts(newGrid[0].value, { day: 1 });
       return;
     }
 
-    const newDate = (prevPageFunc || prevPage.value!)(firstDate);
+    const newDate = toDate((prevPageFunc || prevPage.value!)(firstDate));
     const newGrid = createMonths({
       dateObj: newDate,
       weekStartsOn: weekStartsOn.value,
@@ -300,28 +317,28 @@ export function useCalendar(options: UseCalendarOptions) {
 
     grid.value = newGrid;
 
-    const duration: DateFields = {};
+    const parts: { day?: number; month?: number } = {};
 
     if (!prevPageFunc) {
-      const diff = firstDate.compare(newGrid[0].value);
+      const diff = dayDiff(firstDate, newGrid[0].value);
       if (diff >= getDaysInMonth(firstDate)) {
-        duration.day = 1;
+        parts.day = 1;
       }
       if (diff >= 365) {
-        duration.month = 1;
+        parts.month = 1;
       }
     }
 
-    placeholder.value = newGrid[0].value.set({ ...duration });
+    placeholder.value = setSegmentParts(newGrid[0].value, parts);
   };
 
   watch(placeholder, value => {
-    if (visibleView.value.some(month => isEqualMonth(month, value))) {
+    if (visibleView.value.some(month => isSameMonth(toDate(value), month))) {
       return;
     }
 
     grid.value = createMonths({
-      dateObj: value,
+      dateObj: toDate(value),
       weekStartsOn: weekStartsOn.value,
       locale: locale.value,
       fixedWeeks: fixedWeeks.value,
@@ -331,7 +348,7 @@ export function useCalendar(options: UseCalendarOptions) {
 
   watch([locale, weekStartsOn, fixedWeeks, numberOfMonths], () => {
     grid.value = createMonths({
-      dateObj: placeholder.value,
+      dateObj: toDate(placeholder.value),
       weekStartsOn: weekStartsOn.value,
       locale: locale.value,
       fixedWeeks: fixedWeeks.value,
@@ -349,15 +366,15 @@ export function useCalendar(options: UseCalendarOptions) {
     }
 
     if (grid.value.length === 1) {
-      return formatter.fullMonthAndYear(toDate(grid.value[0].value), headingFormatOptions.value);
+      return formatter.fullMonthAndYear(grid.value[0].value);
     }
 
-    const startMonth = toDate(grid.value[0].value);
-    const endMonth = toDate(grid.value.at(-1)!.value);
-    const startMonthName = formatter.fullMonth(startMonth, headingFormatOptions.value);
-    const endMonthName = formatter.fullMonth(endMonth, headingFormatOptions.value);
-    const startMonthYear = formatter.fullYear(startMonth, headingFormatOptions.value);
-    const endMonthYear = formatter.fullYear(endMonth, headingFormatOptions.value);
+    const startMonth = grid.value[0].value;
+    const endMonth = grid.value.at(-1)!.value;
+    const startMonthName = formatter.fullMonth(startMonth);
+    const endMonthName = formatter.fullMonth(endMonth);
+    const startMonthYear = formatter.fullYear(startMonth);
+    const endMonthYear = formatter.fullYear(endMonth);
 
     if (startMonthYear === endMonthYear) {
       return `${startMonthName} - ${endMonthName} ${endMonthYear}`;
@@ -383,11 +400,12 @@ export function useCalendar(options: UseCalendarOptions) {
       }
 
       const daysInMonth = getDaysInMonth(month.value);
-      const startDay = minValue.value && isSameMonth(minValue.value, month.value) ? minValue.value.day : 1;
+      const minValueDay = minValue.value ? toDate(minValue.value) : undefined;
+      const startDay = minValueDay && isSameMonth(minValueDay, month.value) ? minValueDay.getDate() : 1;
 
       for (let day = startDay; day <= daysInMonth; day += 1) {
-        const date = month.value.set({ day });
-        if (isDateDisabled(date) || isDateUnavailable?.(date)) {
+        const date = setSegmentParts(month.value, { day });
+        if (isDateDisabled(date) || isDateUnavailable(date)) {
           continue;
         }
 

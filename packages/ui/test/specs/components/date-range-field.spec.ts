@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
+import { toISODateString } from '@soybeanjs/headless/date';
 import type { DateRange } from '@soybeanjs/headless/date';
-import { CalendarDate, CalendarDateTime } from '@internationalized/date';
 import SDateRangeField from '@/components/date-range-field/date-range-field.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
-const start = new CalendarDate(2026, 4, 19);
-const end = new CalendarDate(2026, 4, 26);
+const start = new Date(2026, 4 - 1, 19);
+const end = new Date(2026, 4 - 1, 26);
 const range = { start, end };
 
 function mountRangeField(props?: Record<string, unknown>, slots?: Record<string, string>) {
@@ -37,8 +37,8 @@ describe('SDateRangeField', () => {
     it('renders time segments when using date-time values', () => {
       const wrapper = mountRangeField({
         modelValue: {
-          start: new CalendarDateTime(2026, 4, 19, 9, 0),
-          end: new CalendarDateTime(2026, 4, 19, 17, 30)
+          start: { date: new Date(2026, 4 - 1, 19), time: new Date(2000, 0, 1, 9, 0) },
+          end: { date: new Date(2026, 4 - 1, 19), time: new Date(2000, 0, 1, 17, 30) }
         },
         granularity: 'minute'
       });
@@ -110,7 +110,9 @@ describe('SDateRangeField', () => {
       await day.trigger('keydown', { key: 'ArrowUp', preventDefault() {} });
 
       const emitted = wrapper.emitted('update:modelValue');
-      expect((emitted?.at(-1)?.[0] as DateRange)?.end?.toString()).toBe('2026-04-27');
+      expect(toISODateString(((emitted?.at(-1)?.[0] as DateRange)?.end as Date | null) ?? new Date(NaN))).toBe(
+        '2026-04-27'
+      );
       wrapper.unmount();
     });
 
@@ -124,7 +126,7 @@ describe('SDateRangeField', () => {
     });
 
     it('marks the root invalid when a value exceeds maxValue', () => {
-      const wrapper = mountRangeField({ maxValue: new CalendarDate(2026, 4, 18) });
+      const wrapper = mountRangeField({ maxValue: new Date(2026, 4 - 1, 18) });
 
       expect(wrapper.attributes('data-invalid')).toBeDefined();
       wrapper.unmount();
@@ -132,7 +134,7 @@ describe('SDateRangeField', () => {
 
     it('marks the root invalid when isDateUnavailable matches', () => {
       const wrapper = mountRangeField({
-        isDateUnavailable: (item: CalendarDate) => item.day === 19
+        isDateUnavailable: (item: Date) => item.getDate() === 19
       });
 
       expect(wrapper.attributes('data-invalid')).toBeDefined();
@@ -143,7 +145,7 @@ describe('SDateRangeField', () => {
       const wrapper = mountRangeField();
 
       await wrapper.setProps({
-        modelValue: { start: new CalendarDate(2026, 12, 1), end: new CalendarDate(2026, 12, 8) }
+        modelValue: { start: new Date(2026, 12 - 1, 1), end: new Date(2026, 12 - 1, 8) }
       });
       await nextTick();
 
@@ -164,7 +166,11 @@ describe('SDateRangeField', () => {
       await day.trigger('focusin');
       await day.trigger('keydown', { key: 'ArrowUp', preventDefault() {} });
 
-      expect((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as DateRange)?.start?.toString()).toBe('2026-04-20');
+      expect(
+        toISODateString(
+          ((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as DateRange)?.start as Date | null) ?? new Date(NaN)
+        )
+      ).toBe('2026-04-20');
       wrapper.unmount();
     });
   });
@@ -218,7 +224,7 @@ describe('SDateRangeField', () => {
       await day.trigger('keydown', { key: 'Backspace', preventDefault() {} });
       await day.trigger('keydown', { key: 'Backspace', preventDefault() {} });
 
-      expect((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as DateRange)?.start).toBeUndefined();
+      expect((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as DateRange)?.start).toBeNull();
       await nextTick();
       expect(partOf(wrapper, 'start').find('[data-segment="day"]').attributes('data-placeholder')).toBeDefined();
       wrapper.unmount();
@@ -234,7 +240,11 @@ describe('SDateRangeField', () => {
       await day.trigger('keydown', { key: '2', preventDefault() {} });
       await day.trigger('keydown', { key: '0', preventDefault() {} });
 
-      expect((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as DateRange)?.start?.toString()).toBe('2026-04-20');
+      expect(
+        toISODateString(
+          ((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as DateRange)?.start as Date | null) ?? new Date(NaN)
+        )
+      ).toBe('2026-04-20');
       wrapper.unmount();
     });
   });
@@ -272,8 +282,8 @@ describe('SDateRangeField', () => {
         startName: 'event-start',
         endName: 'event-end',
         required: true,
-        minValue: new CalendarDate(2026, 1, 1),
-        maxValue: new CalendarDate(2026, 12, 31)
+        minValue: new Date(2026, 1 - 1, 1),
+        maxValue: new Date(2026, 12 - 1, 31)
       });
       const inputs = wrapper.findAll('input[data-soybean-visually-hidden]');
 
@@ -332,8 +342,8 @@ describe('SDateRangeField', () => {
     it('has no a11y violations with date-time values', async () => {
       const wrapper = mountRangeField({
         modelValue: {
-          start: new CalendarDateTime(2026, 4, 19, 9, 0),
-          end: new CalendarDateTime(2026, 4, 19, 17, 30)
+          start: { date: new Date(2026, 4 - 1, 19), time: new Date(2000, 0, 1, 9, 0) },
+          end: { date: new Date(2026, 4 - 1, 19), time: new Date(2000, 0, 1, 17, 30) }
         },
         granularity: 'minute',
         'aria-label': 'Accessible time range'

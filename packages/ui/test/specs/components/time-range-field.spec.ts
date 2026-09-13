@@ -2,12 +2,15 @@ import { describe, expect, it } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import type { TimeRange } from '@soybeanjs/headless/date';
-import { Time } from '@internationalized/date';
 import STimeRangeField from '@/components/time-range-field/time-range-field.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
-const start = new Time(9, 0, 0);
-const end = new Time(17, 30, 0);
+function timeString(value?: Date | null) {
+  return value ? value.toTimeString().slice(0, 8) : '';
+}
+
+const start = new Date(2000, 0, 1, 9, 0, 0);
+const end = new Date(2000, 0, 1, 17, 30, 0);
 const timeRange = { start, end };
 
 function mountRangeField(props?: Record<string, unknown>, slots?: Record<string, string>) {
@@ -46,8 +49,8 @@ describe('STimeRangeField', () => {
     it('renders second segments when using second granularity', () => {
       const wrapper = mountRangeField({
         modelValue: {
-          start: new Time(9, 0, 15),
-          end: new Time(17, 30, 45)
+          start: new Date(2000, 0, 1, 9, 0, 15),
+          end: new Date(2000, 0, 1, 17, 30, 45)
         },
         granularity: 'second'
       });
@@ -119,15 +122,15 @@ describe('STimeRangeField', () => {
       const emitted = wrapper.emitted('update:modelValue');
 
       expect(emitted).toBeTruthy();
-      expect((emitted?.at(-1)?.[0] as TimeRange)?.start?.toString()).toBe('09:45:00');
+      expect(timeString((emitted?.at(-1)?.[0] as TimeRange)?.start)).toBe('09:45:00');
       wrapper.unmount();
     });
 
     it('validates that end time is not before start time', () => {
       const wrapper = mountRangeField({
         modelValue: {
-          start: new Time(17, 30, 0),
-          end: new Time(9, 0, 0)
+          start: new Date(2000, 0, 1, 17, 30, 0),
+          end: new Date(2000, 0, 1, 9, 0, 0)
         }
       });
 
@@ -140,7 +143,7 @@ describe('STimeRangeField', () => {
       const wrapper = mountRangeField();
 
       await wrapper.setProps({
-        modelValue: { start: new Time(8, 15, 0), end: new Time(18, 45, 0) }
+        modelValue: { start: new Date(2000, 0, 1, 8, 15, 0), end: new Date(2000, 0, 1, 18, 45, 0) }
       });
 
       expect(partOf(wrapper, 'start').find('[data-segment="hour"]').text()).toBe('8');
@@ -152,7 +155,7 @@ describe('STimeRangeField', () => {
     it('uses defaultValue when uncontrolled', () => {
       const wrapper = mount(STimeRangeField, {
         props: {
-          defaultValue: { start: new Time(6, 30, 0), end: new Time(22, 0, 0) },
+          defaultValue: { start: new Date(2000, 0, 1, 6, 30, 0), end: new Date(2000, 0, 1, 22, 0, 0) },
           'aria-label': 'Default range'
         },
         attachTo: document.body
@@ -165,7 +168,7 @@ describe('STimeRangeField', () => {
 
     it('marks invalid when isTimeUnavailable matches a value', () => {
       const wrapper = mountRangeField({
-        isTimeUnavailable: (time: Time) => time.hour === 9
+        isTimeUnavailable: (time: Date) => time.getHours() === 9
       });
 
       expect(wrapper.attributes('data-invalid')).toBeDefined();
@@ -174,7 +177,7 @@ describe('STimeRangeField', () => {
 
     it('marks invalid when a value is outside minValue/maxValue', () => {
       const wrapper = mountRangeField({
-        maxValue: new Time(12, 0, 0)
+        maxValue: new Date(2000, 0, 1, 12, 0, 0)
       });
 
       expect(wrapper.attributes('data-invalid')).toBeDefined();
@@ -192,7 +195,7 @@ describe('STimeRangeField', () => {
       await hour.trigger('keydown', { key: 'ArrowUp', preventDefault() {} });
       await nextTick();
 
-      expect((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as TimeRange)?.end?.toString()).toBe('18:30:00');
+      expect(timeString((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as TimeRange)?.end)).toBe('18:30:00');
       wrapper.unmount();
     });
 
@@ -259,7 +262,7 @@ describe('STimeRangeField', () => {
       await minute.trigger('keydown', { key: 'Backspace', preventDefault() {} });
       await nextTick();
 
-      expect((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as TimeRange)?.start).toBeUndefined();
+      expect((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as TimeRange)?.start).toBeNull();
       wrapper.unmount();
     });
   });

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useForwardListeners, useOmitProps } from '../../composables';
+import { getMonthNumber, getYearNumber, toISODateString } from '../../date';
 import Icon from '../_icon/icon.vue';
 import CalendarRangeCellTrigger from './calendar-range-cell-trigger.vue';
 import CalendarRangeCell from './calendar-range-cell.vue';
@@ -58,8 +59,8 @@ const listeners = useForwardListeners(emit);
             <slot
               name="heading"
               :heading-value="slotProps.headingValue"
-              :selected-month="slotProps.placeholder.month"
-              :selected-year="slotProps.placeholder.year"
+              :selected-month="getMonthNumber(slotProps.placeholder)"
+              :selected-year="getYearNumber(slotProps.placeholder)"
               :year-options="slotProps.yearOptions"
               :on-year-change="slotProps.onYearChange"
               :month-options="slotProps.monthOptions"
@@ -77,12 +78,12 @@ const listeners = useForwardListeners(emit);
           </template>
         </CalendarRangeNext>
       </CalendarRangeHeader>
-      <CalendarRangeGrid v-for="month in slotProps.grid" :key="month.value.toString()" v-bind="gridProps">
+      <CalendarRangeGrid v-for="month in slotProps.grid" :key="toISODateString(month.value)" v-bind="gridProps">
         <CalendarRangeGridHead v-bind="gridHeadProps">
           <CalendarRangeGridRow v-bind="gridRowProps">
             <CalendarRangeHeadCell
               v-for="(weekDay, index) in slotProps.weekDays"
-              :key="`${month.value.toString()}-${weekDay}-${index}`"
+              :key="`${toISODateString(month.value)}-${weekDay}-${index}`"
               v-bind="headCellProps"
             >
               <slot name="head-cell" :date="month.value" :index="index" :label="weekDay">
@@ -94,12 +95,12 @@ const listeners = useForwardListeners(emit);
         <CalendarRangeGridBody v-bind="gridBodyProps">
           <CalendarRangeGridRow
             v-for="(week, weekIndex) in month.rows"
-            :key="`${month.value.toString()}-${weekIndex}`"
+            :key="`${toISODateString(month.value)}-${weekIndex}`"
             v-bind="gridRowProps"
           >
             <CalendarRangeCell
               v-for="dateValue in week"
-              :key="dateValue.toString()"
+              :key="toISODateString(dateValue)"
               :date="dateValue"
               v-bind="cellProps"
             >

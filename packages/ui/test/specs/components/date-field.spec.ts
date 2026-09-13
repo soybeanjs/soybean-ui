@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
+import { toISODateString } from '@soybeanjs/headless/date';
 import { DateFieldRoot } from '@soybeanjs/headless/date-field';
-import { CalendarDate, CalendarDateTime } from '@internationalized/date';
 import SDateField from '@/components/date-field/date-field.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
-const date = new CalendarDate(2026, 4, 19);
-const dateTime = new CalendarDateTime(2026, 4, 19, 14, 30, 0);
+const date = new Date(2026, 4 - 1, 19);
+const dateTime = { date: new Date(2026, 4 - 1, 19), time: new Date(2000, 0, 1, 14, 30, 0) };
 
 function mountDateField(props?: Record<string, unknown>) {
   return mount(SDateField, {
@@ -48,12 +48,16 @@ describe('SDateField', () => {
         {
           components: { DateFieldRoot },
           data() {
-            return { value: date, unavailable: (item: CalendarDate) => item.day === 19 };
+            return {
+              value: date,
+              unavailable: (item: Date) => item.getDate() === 19,
+              iso: (v: Date | { date: Date }) => toISODateString(v instanceof Date ? v : v.date)
+            };
           },
           template: `
             <DateFieldRoot v-slot="{ modelValue, segments, isInvalid }" :model-value="value" :is-date-unavailable="unavailable">
               <span data-test="slot-count">{{ segments.length }}</span>
-              <span data-test="slot-model">{{ modelValue?.toString() }}</span>
+              <span data-test="slot-model">{{ modelValue ? iso(modelValue) : '' }}</span>
               <span data-test="slot-invalid">{{ isInvalid ? 'invalid' : 'valid' }}</span>
             </DateFieldRoot>
           `
@@ -112,7 +116,7 @@ describe('SDateField', () => {
       await day.trigger('keydown', { key: 'ArrowUp', preventDefault() {} });
 
       const emitted = wrapper.emitted('update:modelValue');
-      expect((emitted?.at(-1)?.[0] as CalendarDate)?.toString()).toBe('2026-04-20');
+      expect(toISODateString(emitted?.at(-1)?.[0] as Date)).toBe('2026-04-20');
       wrapper.unmount();
     });
 
@@ -123,14 +127,16 @@ describe('SDateField', () => {
       await day.trigger('focusin');
       await day.trigger('keydown', { key: 'ArrowDown', preventDefault() {} });
 
-      expect((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as CalendarDate)?.toString()).toBe('2026-04-18');
+      expect(toISODateString((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as Date) ?? new Date(NaN))).toBe(
+        '2026-04-18'
+      );
       wrapper.unmount();
     });
 
     it('syncs segments when the controlled modelValue changes externally', async () => {
       const wrapper = mountDateField();
 
-      await wrapper.setProps({ modelValue: new CalendarDate(2026, 12, 25) });
+      await wrapper.setProps({ modelValue: new Date(2026, 12 - 1, 25) });
       await nextTick();
 
       expect(wrapper.find('[data-segment="day"]').text()).toContain('25');
@@ -150,7 +156,9 @@ describe('SDateField', () => {
       await day.trigger('focusin');
       await day.trigger('keydown', { key: 'ArrowUp', preventDefault() {} });
 
-      expect((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as CalendarDate)?.toString()).toBe('2026-04-20');
+      expect(toISODateString((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as Date) ?? new Date(NaN))).toBe(
+        '2026-04-20'
+      );
       wrapper.unmount();
     });
   });
@@ -189,7 +197,9 @@ describe('SDateField', () => {
       await day.trigger('keydown', { key: '9', preventDefault() {} });
 
       expect(document.activeElement?.getAttribute('data-soybean-date-field-segment')).toBe('year');
-      expect((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as CalendarDate)?.toString()).toBe('2026-04-19');
+      expect(toISODateString((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as Date) ?? new Date(NaN))).toBe(
+        '2026-04-19'
+      );
       wrapper.unmount();
     });
 
@@ -220,14 +230,16 @@ describe('SDateField', () => {
       await day.trigger('keydown', { key: '2', preventDefault() {} });
       await day.trigger('keydown', { key: '0', preventDefault() {} });
 
-      expect((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as CalendarDate)?.toString()).toBe('2026-04-20');
+      expect(toISODateString((wrapper.emitted('update:modelValue')?.at(-1)?.[0] as Date) ?? new Date(NaN))).toBe(
+        '2026-04-20'
+      );
       wrapper.unmount();
     });
   });
 
   describe('invalid state', () => {
     it('marks the root and segments as invalid when the value exceeds maxValue', () => {
-      const wrapper = mountDateField({ maxValue: new CalendarDate(2026, 4, 18) });
+      const wrapper = mountDateField({ maxValue: new Date(2026, 4 - 1, 18) });
 
       expect(wrapper.find('[data-soybean-date-field-root]').attributes('data-invalid')).toBeDefined();
       expect(wrapper.find('[data-segment="day"]').attributes('aria-invalid')).toBe('true');
@@ -235,7 +247,7 @@ describe('SDateField', () => {
     });
 
     it('marks the root as invalid when isDateUnavailable matches', () => {
-      const wrapper = mountDateField({ isDateUnavailable: (item: CalendarDate) => item.day === 19 });
+      const wrapper = mountDateField({ isDateUnavailable: (item: Date) => item.getDate() === 19 });
 
       expect(wrapper.find('[data-soybean-date-field-root]').attributes('data-invalid')).toBeDefined();
       wrapper.unmount();
@@ -271,8 +283,8 @@ describe('SDateField', () => {
       const wrapper = mountDateField({
         name: 'birthday',
         required: true,
-        minValue: new CalendarDate(2026, 1, 1),
-        maxValue: new CalendarDate(2026, 12, 31)
+        minValue: new Date(2026, 1 - 1, 1),
+        maxValue: new Date(2026, 12 - 1, 31)
       });
       const input = wrapper.find('input[data-soybean-visually-hidden]');
 

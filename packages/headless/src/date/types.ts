@@ -1,25 +1,51 @@
-import type { DateValue, Time, CalendarDateTime, CalendarIdentifier, ZonedDateTime } from '@internationalized/date';
+/**
+ * A date with an optional time-of-day part. `date` carries the calendar day
+ * (local 00:00 by convention); `time` carries the time-of-day when the value
+ * has time granularity.
+ */
+export interface DateTimeValue {
+  date: Date;
+  time?: Date;
+}
 
-export type TimeValue = Time | CalendarDateTime | ZonedDateTime;
+/**
+ * Public date value model: a plain `Date` for day-granularity values (local
+ * 00:00), or `{ date, time? }` when a time part is present.
+ */
+export type DateValue = Date | DateTimeValue;
+
+/**
+ * Range value with nullable bounds. Members accept `null` (empty bound) and
+ * tolerate omission for partial ranges.
+ */
+export interface DateRange {
+  start?: DateValue | null;
+  end?: DateValue | null;
+}
+
+/**
+ * A time-of-day value. Only the hour/minute/second parts are meaningful; the
+ * date part is normalized to a fixed local epoch.
+ */
+export type TimeValue = Date;
+
+/**
+ * Time-of-day range with nullable bounds. Members accept `null` (empty bound)
+ * and tolerate omission for partial ranges.
+ */
+export interface TimeRange {
+  start?: Date | null;
+  end?: Date | null;
+}
 
 export type DayOfWeek = 'sun' | 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat';
 
-export type DateMatcher = (date: DateValue) => boolean;
+export type DateMatcher = (date: Date) => boolean;
 
-export type TimeMatcher = (time: TimeValue) => boolean;
-
-export interface DateRange {
-  start?: DateValue;
-  end?: DateValue;
-}
-
-export interface TimeRange {
-  start?: TimeValue;
-  end?: TimeValue;
-}
+export type TimeMatcher = (time: Date) => boolean;
 
 export interface DateGrid<T> {
-  value: DateValue;
+  value: Date;
   rows: T[][];
   cells: T[];
 }
@@ -62,5 +88,3 @@ export type DateInputType = 'date' | 'datetime-local';
 export type TimeInputType = 'time';
 export type TimeGranularity = 'hour' | 'minute' | 'second';
 export type Granularity = 'day' | TimeGranularity;
-
-export type { DateValue, CalendarIdentifier };

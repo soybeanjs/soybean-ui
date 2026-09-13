@@ -11,6 +11,7 @@ export * from './dom';
 export * from './focus';
 export * from './fuzzy';
 export * from './mark-others';
+export * from './number';
 export * from './vue';
 export * from './env';
 export * from './event';

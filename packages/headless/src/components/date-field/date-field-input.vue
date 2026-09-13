@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { useDateField } from '../../date';
+import { toDate, useDateField } from '../../date';
+import { makeDateValue } from '../../date/value';
 import { Primitive } from '../primitive';
 import { useDateFieldRootContext, useDateFieldUi } from './context';
 import type { DateFieldInputProps } from './types';
@@ -31,10 +32,25 @@ const {
 const hasLeftFocus = ref(true);
 const lastKeyZero = ref(false);
 
+// The segment engine operates on plain `Date` instants; the public model value
+// keeps the `{ date, time? }` shape whenever time segments are present.
+const internalPlaceholder = computed(() => toDate(placeholder.value));
+const internalModelValue = computed<Date | undefined>({
+  get: () => (modelValue.value ? toDate(modelValue.value) : undefined),
+  set: value => {
+    if (!value) {
+      modelValue.value = undefined;
+      return;
+    }
+
+    modelValue.value = 'hour' in segmentValues.value ? makeDateValue(value, value) : makeDateValue(value);
+  }
+});
+
 const { attributes, handleSegmentClick, handleSegmentFocusOut, handleSegmentKeydown } = useDateField({
   hasLeftFocus,
   lastKeyZero,
-  placeholder,
+  placeholder: internalPlaceholder,
   hourCycle,
   step,
   segmentValues,
@@ -43,7 +59,7 @@ const { attributes, handleSegmentClick, handleSegmentFocusOut, handleSegmentKeyd
   disabled,
   readonly,
   focusNext,
-  modelValue
+  modelValue: internalModelValue
 });
 
 const contentEditable = computed(() => {

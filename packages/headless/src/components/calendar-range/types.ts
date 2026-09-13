@@ -134,7 +134,7 @@ export type CalendarRangeRootEmits = {
   /**
    * Emitted when the start value changes.
    */
-  'update:startValue': [date: DateValue | undefined];
+  'update:startValue': [date: DateValue | null];
 };
 
 export interface CalendarRangeRootSlotProps {
@@ -153,7 +153,7 @@ export interface CalendarRangeRootSlotProps {
   /**
    * Grid exposed in the slot scope.
    */
-  grid: DateGrid<DateValue>[];
+  grid: DateGrid<Date>[];
   /**
    * Week days exposed in the slot scope.
    */
@@ -280,11 +280,11 @@ export interface CalendarRangeCellTriggerProps extends ButtonProps {
   /**
    * Day.
    */
-  day: DateValue;
+  day: Date;
   /**
    * Month.
    */
-  month: DateValue;
+  month: Date;
 }
 
 /**
@@ -410,7 +410,7 @@ export interface CalendarRangeRootContext extends ToContext<
   /**
    * Grid used by the component context.
    */
-  grid: ShallowRef<DateGrid<DateValue>[]>;
+  grid: ShallowRef<DateGrid<Date>[]>;
   /**
    * Parent element used by the component context.
    */
@@ -625,11 +625,11 @@ export interface CalendarRangeDaySlotProps extends CalendarRangeCellTriggerSlotP
   /**
    * Day exposed in the slot scope.
    */
-  day: DateValue;
+  day: Date;
   /**
    * Month exposed in the slot scope.
    */
-  month: DateValue;
+  month: Date;
 }
 
 /**
@@ -655,7 +655,7 @@ export type CalendarRangeCompactSlots = {
   /**
    * Custom content for the head cell slot.
    */
-  'head-cell'?: (props: { date: DateValue; index: number; label: string }) => any;
+  'head-cell'?: (props: { date: Date; index: number; label: string }) => any;
   /**
    * Custom content for the day slot.
    */

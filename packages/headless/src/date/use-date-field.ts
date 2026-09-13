@@ -1,27 +1,20 @@
 import { computed } from 'vue';
 import type { Ref } from 'vue';
-import { DateFormatter } from '@internationalized/date';
-import type { CalendarDateTime, Time, TimeFields } from '@internationalized/date';
 import { useLocaleMessages } from '../locale';
 import type { LocaleDateMessages } from '../locale/types';
 import { getDaysInMonth } from './comparators';
 import type { Formatter } from './formatter';
+import { cycleSegment, getSegmentNumber, setSegmentParts } from './operations';
+import type { NumericSegmentPart } from './operations';
 import { isAcceptableSegmentKey, isNumberString, isSegmentNavigationKey } from './segment';
-import type {
-  DateValue,
-  TimeValue,
-  AnyExceptLiteral,
-  DateStep,
-  HourCycle,
-  SegmentPart,
-  SegmentValueObj
-} from './types';
+import type { DateStep, HourCycle, SegmentPart, SegmentValueObj } from './types';
+import { getMonthNumber, getDayNumber, getYearNumber } from './value';
 
 type SegmentAttrOptions = {
   disabled?: boolean;
   segmentValues: SegmentValueObj;
   hourCycle: HourCycle;
-  placeholder: DateValue | TimeValue;
+  placeholder: Date;
   formatter: Formatter;
   messages: LocaleDateMessages;
 };
@@ -42,12 +35,14 @@ const uses12HourFormat = (hourCycle: HourCycle, locale: string) => {
     return hourCycle === 12;
   }
 
-  const resolvedHourCycle = new DateFormatter(locale, { hour: 'numeric' }).resolvedOptions().hourCycle;
+  const resolved = new Intl.DateTimeFormat(locale, { hour: 'numeric' }).resolvedOptions();
+  const resolvedHourCycle = (resolved as { hourCycle?: string }).hourCycle;
+
   return resolvedHourCycle === 'h11' || resolvedHourCycle === 'h12';
 };
 
 const getAccessibleHourValue = (props: SegmentAttrOptions) => {
-  const rawHour = 'hour' in props.placeholder ? props.placeholder.hour : 0;
+  const rawHour = props.placeholder.getHours();
 
   if (!uses12HourFormat(props.hourCycle, props.formatter.getLocale())) {
     return rawHour;
@@ -62,10 +57,9 @@ const segmentBuilders = {
       ...commonSegmentAttrs(props.disabled),
       'aria-label': props.messages.daySegment,
       'aria-valuemin': 1,
-      'aria-valuemax': getDaysInMonth(props.placeholder as DateValue),
-      'aria-valuenow': (props.placeholder as DateValue).day,
-      'aria-valuetext':
-        props.segmentValues.day === null ? props.messages.empty : `${(props.placeholder as DateValue).day}`,
+      'aria-valuemax': getDaysInMonth(props.placeholder),
+      'aria-valuenow': getDayNumber(props.placeholder),
+      'aria-valuetext': props.segmentValues.day === null ? props.messages.empty : `${getDayNumber(props.placeholder)}`,
       'data-placeholder': props.segmentValues.day === null ? '' : undefined
     })
   },
@@ -75,11 +69,11 @@ const segmentBuilders = {
       'aria-label': props.messages.monthSegment,
       'aria-valuemin': 1,
       'aria-valuemax': 12,
-      'aria-valuenow': (props.placeholder as DateValue).month,
+      'aria-valuenow': getMonthNumber(props.placeholder),
       'aria-valuetext':
         props.segmentValues.month === null
           ? props.messages.empty
-          : `${(props.placeholder as DateValue).month} - ${props.formatter.fullMonth((props.placeholder as DateValue).toDate('UTC'))}`,
+          : `${getMonthNumber(props.placeholder)} - ${props.formatter.fullMonth(props.placeholder)}`,
       'data-placeholder': props.segmentValues.month === null ? '' : undefined
     })
   },
@@ -89,9 +83,9 @@ const segmentBuilders = {
       'aria-label': props.messages.yearSegment,
       'aria-valuemin': 1,
       'aria-valuemax': 9999,
-      'aria-valuenow': (props.placeholder as DateValue).year,
+      'aria-valuenow': getYearNumber(props.placeholder),
       'aria-valuetext':
-        props.segmentValues.year === null ? props.messages.empty : `${(props.placeholder as DateValue).year}`,
+        props.segmentValues.year === null ? props.messages.empty : `${getYearNumber(props.placeholder)}`,
       'data-placeholder': props.segmentValues.year === null ? '' : undefined
     })
   },
@@ -115,11 +109,11 @@ const segmentBuilders = {
       'aria-label': props.messages.minuteSegment,
       'aria-valuemin': 0,
       'aria-valuemax': 59,
-      'aria-valuenow': 'minute' in props.placeholder ? props.placeholder.minute : 0,
+      'aria-valuenow': props.placeholder.getMinutes(),
       'aria-valuetext':
         'minute' in props.segmentValues && props.segmentValues.minute === null
           ? props.messages.empty
-          : `${'minute' in props.placeholder ? props.placeholder.minute : 0}`,
+          : `${props.placeholder.getMinutes()}`,
       'data-placeholder': 'minute' in props.segmentValues && props.segmentValues.minute === null ? '' : undefined
     })
   },
@@ -129,11 +123,11 @@ const segmentBuilders = {
       'aria-label': props.messages.secondSegment,
       'aria-valuemin': 0,
       'aria-valuemax': 59,
-      'aria-valuenow': 'second' in props.placeholder ? props.placeholder.second : 0,
+      'aria-valuenow': props.placeholder.getSeconds(),
       'aria-valuetext':
         'second' in props.segmentValues && props.segmentValues.second === null
           ? props.messages.empty
-          : `${'second' in props.placeholder ? props.placeholder.second : 0}`,
+          : `${props.placeholder.getSeconds()}`,
       'data-placeholder': 'second' in props.segmentValues && props.segmentValues.second === null ? '' : undefined
     })
   },
@@ -168,7 +162,7 @@ const segmentBuilders = {
 export type UseDateFieldOptions = {
   hasLeftFocus: Ref<boolean>;
   lastKeyZero: Ref<boolean>;
-  placeholder: Ref<DateValue | TimeValue>;
+  placeholder: Ref<Date>;
   hourCycle: HourCycle;
   step: Ref<DateStep>;
   formatter: Formatter;
@@ -176,9 +170,11 @@ export type UseDateFieldOptions = {
   disabled: Ref<boolean | undefined>;
   readonly: Ref<boolean | undefined>;
   part: SegmentPart;
-  modelValue: Ref<DateValue | TimeValue | undefined>;
+  modelValue: Ref<Date | undefined>;
   focusNext: () => void;
 };
+
+const NUMERIC_SEGMENT_PARTS: readonly NumericSegmentPart[] = ['year', 'month', 'day', 'hour', 'minute', 'second'];
 
 export function useDateField(props: UseDateFieldOptions) {
   const messages = useLocaleMessages();
@@ -211,71 +207,16 @@ export function useDateField(props: UseDateFieldOptions) {
     return Number.parseInt(str.slice(0, -1));
   };
 
-  const minuteSecondIncrementation = (
-    event: KeyboardEvent,
-    part: keyof TimeFields,
-    dateRef: TimeValue,
-    prevValue: number | null
-  ) => {
+  const incrementSegment = (part: NumericSegmentPart, dateRef: Date, prevValue: number | null, sign: number) => {
     const step = props.step.value[part] ?? 1;
-    const sign = event.key === 'ArrowUp' ? step : -step;
-    const min = 0;
-    const max = 59;
 
     if (prevValue === null) {
-      return sign > 0 ? min : max;
+      return getSegmentNumber(dateRef, part);
     }
 
-    return (dateRef as CalendarDateTime | Time).set({ [part]: prevValue }).cycle(part, sign)[part] as number;
-  };
+    const base = setSegmentParts(dateRef, { [part]: prevValue });
 
-  const dateTimeValueIncrementation = (
-    event: KeyboardEvent,
-    part: 'day' | 'month' | 'year' | 'hour',
-    dateRef: DateValue | TimeValue,
-    prevValue: number | null
-  ) => {
-    const step = props.step.value[part] ?? 1;
-    const sign = event.key === 'ArrowUp' ? step : -step;
-
-    if (prevValue === null) {
-      if (part === 'hour' && 'hour' in dateRef) {
-        return dateRef.hour;
-      }
-
-      const dateValue = dateRef as DateValue;
-
-      if (part === 'day') {
-        return dateValue.day;
-      }
-
-      if (part === 'month') {
-        return dateValue.month;
-      }
-
-      return dateValue.year;
-    }
-
-    if (part === 'hour' && 'hour' in dateRef) {
-      return dateRef.set({ [part]: prevValue }).cycle(part, sign)[part] as number;
-    }
-
-    const dateValue = dateRef as DateValue;
-
-    if (part === 'day') {
-      return dateValue
-        .set({
-          [part]: prevValue,
-          month: props.segmentValues.value.month ?? 1
-        })
-        .cycle(part, sign)[part] as number;
-    }
-
-    if (part === 'month') {
-      return dateValue.set({ month: prevValue }).cycle('month', sign).month;
-    }
-
-    return dateValue.set({ year: prevValue }).cycle('year', sign).year;
+    return getSegmentNumber(cycleSegment(base, part, sign * step), part);
   };
 
   const updateDayOrMonth = (max: number, num: number, prev: number | null) => {
@@ -435,14 +376,16 @@ export function useDateField(props: UseDateFieldOptions) {
     const prevValue = props.segmentValues.value.day;
 
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-      props.segmentValues.value.day = dateTimeValueIncrementation(event, 'day', props.placeholder.value, prevValue);
+      const sign = event.key === 'ArrowUp' ? 1 : -1;
+
+      props.segmentValues.value.day = incrementSegment('day', props.placeholder.value, prevValue, sign);
       return;
     }
 
     if (isNumberString(event.key)) {
       const num = Number.parseInt(event.key);
       const month = props.segmentValues.value.month;
-      const daysInMonth = month ? getDaysInMonth((props.placeholder.value as DateValue).set({ month })) : 31;
+      const daysInMonth = month ? getDaysInMonth(setSegmentParts(props.placeholder.value, { month })) : 31;
       const { moveToNext, value } = updateDayOrMonth(daysInMonth, num, prevValue);
 
       props.segmentValues.value.day = value;
@@ -465,7 +408,9 @@ export function useDateField(props: UseDateFieldOptions) {
     const prevValue = props.segmentValues.value.month;
 
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-      props.segmentValues.value.month = dateTimeValueIncrementation(event, 'month', props.placeholder.value, prevValue);
+      const sign = event.key === 'ArrowUp' ? 1 : -1;
+
+      props.segmentValues.value.month = incrementSegment('month', props.placeholder.value, prevValue, sign);
       return;
     }
 
@@ -492,7 +437,9 @@ export function useDateField(props: UseDateFieldOptions) {
     const prevValue = props.segmentValues.value.year;
 
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-      props.segmentValues.value.year = dateTimeValueIncrementation(event, 'year', props.placeholder.value, prevValue);
+      const sign = event.key === 'ArrowUp' ? 1 : -1;
+
+      props.segmentValues.value.year = incrementSegment('year', props.placeholder.value, prevValue, sign);
       return;
     }
 
@@ -515,7 +462,6 @@ export function useDateField(props: UseDateFieldOptions) {
     if (
       !isAcceptableSegmentKey(event.key) ||
       isSegmentNavigationKey(event.key) ||
-      !('hour' in props.placeholder.value) ||
       !('hour' in props.segmentValues.value)
     ) {
       return;
@@ -524,7 +470,8 @@ export function useDateField(props: UseDateFieldOptions) {
     const prevValue = props.segmentValues.value.hour;
 
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-      const nextHour = dateTimeValueIncrementation(event, 'hour', props.placeholder.value, prevValue);
+      const sign = event.key === 'ArrowUp' ? 1 : -1;
+      const nextHour = incrementSegment('hour', props.placeholder.value, prevValue, sign);
 
       props.segmentValues.value.hour = nextHour;
 
@@ -576,7 +523,6 @@ export function useDateField(props: UseDateFieldOptions) {
     if (
       !isAcceptableSegmentKey(event.key) ||
       isSegmentNavigationKey(event.key) ||
-      !('minute' in props.placeholder.value) ||
       !('minute' in props.segmentValues.value)
     ) {
       return;
@@ -585,12 +531,9 @@ export function useDateField(props: UseDateFieldOptions) {
     const prevValue = props.segmentValues.value.minute;
 
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-      props.segmentValues.value.minute = minuteSecondIncrementation(
-        event,
-        'minute',
-        props.placeholder.value,
-        prevValue
-      );
+      const sign = event.key === 'ArrowUp' ? 1 : -1;
+
+      props.segmentValues.value.minute = incrementSegment('minute', props.placeholder.value, prevValue, sign);
       return;
     }
 
@@ -613,7 +556,6 @@ export function useDateField(props: UseDateFieldOptions) {
     if (
       !isAcceptableSegmentKey(event.key) ||
       isSegmentNavigationKey(event.key) ||
-      !('second' in props.placeholder.value) ||
       !('second' in props.segmentValues.value)
     ) {
       return;
@@ -622,12 +564,9 @@ export function useDateField(props: UseDateFieldOptions) {
     const prevValue = props.segmentValues.value.second;
 
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-      props.segmentValues.value.second = minuteSecondIncrementation(
-        event,
-        'second',
-        props.placeholder.value,
-        prevValue
-      );
+      const sign = event.key === 'ArrowUp' ? 1 : -1;
+
+      props.segmentValues.value.second = incrementSegment('second', props.placeholder.value, prevValue, sign);
       return;
     }
 
@@ -650,7 +589,6 @@ export function useDateField(props: UseDateFieldOptions) {
     if (
       ((!isAcceptableSegmentKey(event.key) || isSegmentNavigationKey(event.key)) &&
         !['a', 'A', 'p', 'P'].includes(event.key)) ||
-      !('hour' in props.placeholder.value) ||
       !('dayPeriod' in props.segmentValues.value)
     ) {
       return;
@@ -686,6 +624,21 @@ export function useDateField(props: UseDateFieldOptions) {
     }
   };
 
+  const composeModelValue = () => {
+    const segmentValues = props.segmentValues.value as Record<string, number | 'AM' | 'PM' | null>;
+    const parts = NUMERIC_SEGMENT_PARTS.reduce<Record<string, number>>((acc, part) => {
+      const value = segmentValues[part];
+
+      if (typeof value === 'number') {
+        acc[part] = value;
+      }
+
+      return acc;
+    }, {});
+
+    return setSegmentParts(props.placeholder.value, parts);
+  };
+
   const handleSegmentKeydown = (event: KeyboardEvent) => {
     if (props.disabled.value || props.readonly.value) {
       return;
@@ -717,11 +670,7 @@ export function useDateField(props: UseDateFieldOptions) {
       isAcceptableSegmentKey(event.key) &&
       Object.values(props.segmentValues.value).every(value => value !== null)
     ) {
-      props.modelValue.value = props.placeholder.value
-        .set({
-          ...(props.segmentValues.value as Record<AnyExceptLiteral, number>)
-        })
-        .copy();
+      props.modelValue.value = composeModelValue();
     }
   };
 
@@ -730,8 +679,7 @@ export function useDateField(props: UseDateFieldOptions) {
       return;
     }
 
-    const dateRef = props.placeholder.value.set({ ...(props.segmentValues.value as Record<AnyExceptLiteral, number>) });
-    props.modelValue.value = dateRef.copy();
+    props.modelValue.value = composeModelValue();
   };
 
   return {

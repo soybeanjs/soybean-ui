@@ -1,8 +1,7 @@
 import { computed } from 'vue';
 import type { HTMLAttributes } from 'vue';
 import { reactiveComputed } from '@vueuse/core';
-import { NumberFormatter, NumberParser } from '@internationalized/number';
-import { clamp, isNullish, snapValueToStep } from '../../shared';
+import { clamp, createNumberFormatter, createNumberParser, isNullish, snapValueToStep } from '../../shared';
 import { useLocale } from '../config-provider/context';
 import { useContext, useForwardElement, useUiContext } from '../../composables';
 import { handleDecimalOperation } from './shared';
@@ -16,8 +15,8 @@ export const [provideInputNumberRootContext, useInputNumberRootContext] = useCon
     const [inputElement, setInputElement] = useForwardElement<HTMLInputElement>();
 
     const locale = useLocale(params.locale);
-    const numberParser = reactiveComputed(() => new NumberParser(locale.value, formatOptions.value));
-    const numberFormatter = reactiveComputed(() => new NumberFormatter(locale.value, formatOptions.value));
+    const numberParser = reactiveComputed(() => createNumberParser(locale.value, formatOptions.value ?? {}));
+    const numberFormatter = reactiveComputed(() => createNumberFormatter(locale.value, formatOptions.value ?? {}));
 
     const inputMode = computed<HTMLAttributes['inputmode']>(() => {
       // The inputMode attribute influences the software keyboard that is shown on touch devices.
@@ -49,7 +48,7 @@ export const [provideInputNumberRootContext, useInputNumberRootContext] = useCon
 
     // Replace negative textValue formatted using currencySign: 'accounting'
     // with a textValue that can be announced using a minus sign.
-    const textValueFormatter = reactiveComputed(() => new NumberFormatter(locale.value, formatOptions.value));
+    const textValueFormatter = reactiveComputed(() => createNumberFormatter(locale.value, formatOptions.value ?? {}));
     const textValue = computed(() =>
       isNullish(modelValue.value) || Number.isNaN(modelValue.value) ? '' : textValueFormatter.format(modelValue.value)
     );

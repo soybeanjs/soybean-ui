@@ -1,216 +1,192 @@
+import { addDays } from 'date-fns/addDays';
+import { getDaysInMonth as getDaysInMonthFns } from 'date-fns/getDaysInMonth';
+import { getMonth as getMonthOf } from 'date-fns/getMonth';
+import { getYear as getYearOf } from 'date-fns/getYear';
+import { isSameDay as isSameDayFns } from 'date-fns/isSameDay';
+import { isSameMonth as isSameMonthFns } from 'date-fns/isSameMonth';
+import { isSameYear as isSameYearFns } from 'date-fns/isSameYear';
+import { parseISO } from 'date-fns/parseISO';
+import { startOfDay } from 'date-fns/startOfDay';
+import { startOfToday } from 'date-fns/startOfToday';
+import { setSegmentParts } from './operations';
+import type { DateMatcher, DateValue, Granularity, TimeValue } from './types';
 import {
-  CalendarDate,
-  CalendarDateTime,
-  createCalendar,
-  DateFormatter,
-  getDayOfWeek,
-  getLocalTimeZone,
-  parseDate,
-  parseDateTime,
-  parseZonedDateTime,
-  Time,
-  toCalendar,
-  ZonedDateTime
-} from '@internationalized/date';
-import type { DateValue, CalendarIdentifier, Granularity, DateMatcher, TimeValue } from './types';
+  cloneDate,
+  cloneDateValue,
+  getDatePart,
+  isDateTimeValue,
+  makeDateValue,
+  mergeDateValue,
+  createTime
+} from './value';
 
+const TIME_DESIGNATOR_PATTERN = /T\d{2}|\s\d{2}:\d{2}/;
+
+export function isSameDay(a: DateValue, b: DateValue): boolean {
+  return isSameDayFns(getDatePart(a), getDatePart(b));
+}
+
+export function isSameMonth(a: DateValue, b: DateValue): boolean {
+  return isSameMonthFns(getDatePart(a), getDatePart(b));
+}
+
+export function isSameYear(a: DateValue, b: DateValue): boolean {
+  return isSameYearFns(getDatePart(a), getDatePart(b));
+}
+
+export function isEqualDay(a: DateValue, b: DateValue): boolean {
+  return isSameDayFns(getDatePart(a), getDatePart(b));
+}
+
+export function isEqualMonth(a: DateValue, b: DateValue): boolean {
+  return isSameMonthFns(getDatePart(a), getDatePart(b));
+}
+
+export function isToday(date: DateValue): boolean {
+  return isSameDayFns(getDatePart(date), startOfToday());
+}
+
+export function getDaysInMonth(date: DateValue): number {
+  return getDaysInMonthFns(getDatePart(date));
+}
+
+/**
+ * Converts a date value into a single local `Date` instant, merging the
+ * time-of-day part when present.
+ */
+export function toDate(value: DateValue): Date {
+  return mergeDateValue(value);
+}
+
+export function isBefore(a: DateValue, b: DateValue): boolean {
+  return toDate(a).getTime() < toDate(b).getTime();
+}
+
+export function isAfter(a: DateValue, b: DateValue): boolean {
+  return toDate(a).getTime() > toDate(b).getTime();
+}
+
+export function isBeforeOrSame(a: DateValue, b: DateValue): boolean {
+  return toDate(a).getTime() <= toDate(b).getTime();
+}
+
+export function isAfterOrSame(a: DateValue, b: DateValue): boolean {
+  return toDate(a).getTime() >= toDate(b).getTime();
+}
+
+export function isEqualValue(a: DateValue, b: DateValue): boolean {
+  return toDate(a).getTime() === toDate(b).getTime();
+}
+
+export function isBetweenInclusive(date: DateValue, start: DateValue, end: DateValue): boolean {
+  return isAfterOrSame(date, start) && isBeforeOrSame(date, end);
+}
+
+export function isBetween(date: DateValue, start: DateValue, end: DateValue): boolean {
+  return isAfter(date, start) && isBefore(date, end);
+}
+
+/**
+ * Parses an ISO-like date string into a date value matching the reference
+ * value's shape: a `{ date, time }` reference keeps the parsed time-of-day
+ * (or the reference's own time when the string is date-only), while a plain
+ * `Date` reference yields a local-midnight `Date`.
+ */
 export function parseStringToDateValue(dateStr: string, referenceValue: DateValue): DateValue {
-  let dateValue: DateValue;
+  const parsed = parseISO(dateStr);
+  const instant = Number.isNaN(parsed.getTime()) ? new Date(dateStr) : parsed;
 
-  if (isZonedDateTime(referenceValue)) {
-    dateValue = parseZonedDateTime(dateStr);
-  } else if (isCalendarDateTime(referenceValue)) {
-    dateValue = parseDateTime(dateStr);
-  } else {
-    dateValue = parseDate(dateStr);
+  if (Number.isNaN(instant.getTime())) {
+    return cloneDateValue(referenceValue);
   }
 
-  if (dateValue.calendar !== referenceValue.calendar) {
-    return toCalendar(dateValue, referenceValue.calendar);
+  if (isDateTimeValue(referenceValue)) {
+    if (TIME_DESIGNATOR_PATTERN.test(dateStr)) {
+      return makeDateValue(instant, instant);
+    }
+
+    return makeDateValue(instant, referenceValue.time);
   }
 
-  return dateValue;
-}
-
-export function isTime(dateValue: DateValue | TimeValue): dateValue is Time {
-  return dateValue instanceof Time;
-}
-
-export function toDate(dateValue: DateValue | TimeValue, tz: string = getLocalTimeZone()) {
-  if (isTime(dateValue)) {
-    const now = new Date();
-    return new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate(),
-      dateValue.hour,
-      dateValue.minute,
-      dateValue.second,
-      dateValue.millisecond
-    );
-  }
-
-  if (isZonedDateTime(dateValue)) {
-    return dateValue.toDate();
-  }
-
-  return dateValue.toDate(tz);
-}
-
-export function isCalendarDateTime(dateValue: DateValue | TimeValue): dateValue is CalendarDateTime {
-  return dateValue instanceof CalendarDateTime;
-}
-
-export function isZonedDateTime(dateValue: DateValue | TimeValue): dateValue is ZonedDateTime {
-  return dateValue instanceof ZonedDateTime;
-}
-
-export function hasTime(dateValue: DateValue | TimeValue) {
-  return isTime(dateValue) || isCalendarDateTime(dateValue) || isZonedDateTime(dateValue);
-}
-
-export function getDaysInMonth(date: Date | DateValue) {
-  if (date instanceof Date) {
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-
-    return new Date(year, month, 0).getDate();
-  }
-
-  return date.set({ day: 100 }).day;
+  return startOfDay(instant);
 }
 
 export function getDefaultDate(props: {
-  defaultValue?: DateValue | DateValue[];
-  defaultPlaceholder?: DateValue;
-  granularity?: Granularity;
-  locale?: string;
+  defaultValue?: DateValue | DateValue[] | undefined;
+  defaultPlaceholder?: DateValue | undefined;
+  granularity?: Granularity | undefined;
+  locale?: string | undefined;
 }): DateValue {
-  const { defaultValue, defaultPlaceholder, granularity = 'day', locale = 'en' } = props;
+  const { defaultValue, defaultPlaceholder, granularity = 'day' } = props;
+  const timeGranularities: readonly string[] = ['hour', 'minute', 'second'];
 
   if (Array.isArray(defaultValue) && defaultValue.length) {
-    return defaultValue.at(-1)!.copy();
+    return cloneDateValue(defaultValue.at(-1)!);
   }
 
   if (defaultValue && !Array.isArray(defaultValue)) {
-    return defaultValue.copy();
+    return cloneDateValue(defaultValue);
   }
 
   if (defaultPlaceholder) {
-    return defaultPlaceholder.copy();
+    return cloneDateValue(defaultPlaceholder);
   }
 
   const now = new Date();
-  const formatter = new DateFormatter(locale);
-  const calendar = createCalendar(formatter.resolvedOptions().calendar as CalendarIdentifier);
-  const timeGranularities = ['hour', 'minute', 'second'];
+  const today = startOfDay(now);
 
   if (timeGranularities.includes(granularity)) {
-    return toCalendar(new CalendarDateTime(now.getFullYear(), now.getMonth() + 1, now.getDate(), 0, 0, 0), calendar);
+    return makeDateValue(today, createTime(0));
   }
 
-  return toCalendar(new CalendarDate(now.getFullYear(), now.getMonth() + 1, now.getDate()), calendar);
+  return today;
 }
 
 export function getDefaultTime(props: { defaultValue?: TimeValue; defaultPlaceholder?: TimeValue }): TimeValue {
   if (props.defaultValue) {
-    return props.defaultValue.copy();
+    return cloneDate(props.defaultValue);
   }
 
   if (props.defaultPlaceholder) {
-    return props.defaultPlaceholder.copy();
+    return cloneDate(props.defaultPlaceholder);
   }
 
-  return new Time(0, 0, 0);
+  return createTime(0);
 }
 
-export function isBefore(dateToCompare: DateValue | TimeValue, referenceDate: DateValue | TimeValue) {
-  if (isTime(dateToCompare) && isTime(referenceDate)) {
-    return dateToCompare.compare(referenceDate) < 0;
-  }
-
-  return (dateToCompare as DateValue).compare(referenceDate as DateValue) < 0;
-}
-
-export function isAfter(dateToCompare: DateValue | TimeValue, referenceDate: DateValue | TimeValue) {
-  if (isTime(dateToCompare) && isTime(referenceDate)) {
-    return dateToCompare.compare(referenceDate) > 0;
-  }
-
-  return (dateToCompare as DateValue).compare(referenceDate as DateValue) > 0;
-}
-
-export function isBeforeOrSame(dateToCompare: DateValue | TimeValue, referenceDate: DateValue | TimeValue) {
-  if (isTime(dateToCompare) && isTime(referenceDate)) {
-    return dateToCompare.compare(referenceDate) <= 0;
-  }
-
-  return (dateToCompare as DateValue).compare(referenceDate as DateValue) <= 0;
-}
-
-export function isAfterOrSame(dateToCompare: DateValue | TimeValue, referenceDate: DateValue | TimeValue) {
-  if (isTime(dateToCompare) && isTime(referenceDate)) {
-    return dateToCompare.compare(referenceDate) >= 0;
-  }
-
-  return (dateToCompare as DateValue).compare(referenceDate as DateValue) >= 0;
-}
-
-export function isEqualValue(a: DateValue | TimeValue, b: DateValue | TimeValue) {
-  return a.toString() === b.toString();
-}
-
-export function isBetweenInclusive(date: DateValue, start: DateValue, end: DateValue) {
-  return isAfterOrSame(date, start) && isBeforeOrSame(date, end);
-}
-
-export function isBetween(date: DateValue, start: DateValue, end: DateValue) {
-  return isAfter(date, start) && isBefore(date, end);
-}
-
-export function getLastFirstDayOfWeek<T extends DateValue = DateValue>(
-  date: T,
-  firstDayOfWeek: number,
-  locale: string
-): T {
-  const day = getDayOfWeek(date, locale, 'sun');
+export function getLastFirstDayOfWeek(date: Date, firstDayOfWeek: number): Date {
+  const day = date.getDay();
 
   if (firstDayOfWeek > day) {
-    return date.subtract({ days: day + 7 - firstDayOfWeek }) as T;
+    return setSegmentParts(date, { day: date.getDate() - (day + 7 - firstDayOfWeek) });
   }
 
   if (firstDayOfWeek === day) {
-    return date as T;
+    return date;
   }
 
-  return date.subtract({ days: day - firstDayOfWeek }) as T;
+  return setSegmentParts(date, { day: date.getDate() - (day - firstDayOfWeek) });
 }
 
-export function getNextLastDayOfWeek<T extends DateValue = DateValue>(
-  date: T,
-  firstDayOfWeek: number,
-  locale: string
-): T {
-  const day = getDayOfWeek(date, locale, 'sun');
+export function getNextLastDayOfWeek(date: Date, firstDayOfWeek: number): Date {
+  const day = date.getDay();
   const lastDayOfWeek = firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1;
 
   if (day === lastDayOfWeek) {
-    return date as T;
+    return date;
   }
 
   if (day > lastDayOfWeek) {
-    return date.add({ days: 7 - day + lastDayOfWeek }) as T;
+    return setSegmentParts(date, { day: date.getDate() + (7 - day + lastDayOfWeek) });
   }
 
-  return date.add({ days: lastDayOfWeek - day }) as T;
+  return setSegmentParts(date, { day: date.getDate() + (lastDayOfWeek - day) });
 }
 
 export function isSameYearMonth(a: DateValue, b: DateValue): boolean {
-  return a.year === b.year && a.month === b.month;
-}
-
-export function isSameYear(a: DateValue, b: DateValue): boolean {
-  return a.year === b.year;
+  return (
+    getYearOf(getDatePart(a)) === getYearOf(getDatePart(b)) && getMonthOf(getDatePart(a)) === getMonthOf(getDatePart(b))
+  );
 }
 
 export function areAllDaysBetweenValid(
@@ -219,31 +195,34 @@ export function areAllDaysBetweenValid(
   isUnavailable: DateMatcher | undefined,
   isDisabled: DateMatcher | undefined,
   isHighlightable?: DateMatcher | undefined
-) {
+): boolean {
   if (isUnavailable === undefined && isDisabled === undefined && isHighlightable === undefined) {
     return true;
   }
 
-  let current = start.add({ days: 1 });
-  const isInvalidDay = (date: DateValue) => (isDisabled?.(date) || isUnavailable?.(date)) && !isHighlightable?.(date);
+  const endDay = startOfDay(getDatePart(end));
+  let current = addDays(getDatePart(start), 1);
+  const isInvalidDay = (date: Date) => (isDisabled?.(date) || isUnavailable?.(date)) && !isHighlightable?.(date);
 
-  while (current.compare(end) < 0) {
+  while (current.getTime() < endDay.getTime()) {
     if (isInvalidDay(current)) {
       return false;
     }
 
-    current = current.add({ days: 1 });
+    current = addDays(current, 1);
   }
 
   return true;
 }
 
 export function compareYearMonth(a: DateValue, b: DateValue): number {
-  if (a.year !== b.year) {
-    return a.year - b.year;
+  const yearDiff = getYearOf(getDatePart(a)) - getYearOf(getDatePart(b));
+
+  if (yearDiff !== 0) {
+    return yearDiff;
   }
 
-  return a.month - b.month;
+  return getMonthOf(getDatePart(a)) - getMonthOf(getDatePart(b));
 }
 
 export function isMonthBetweenInclusive(date: DateValue, start: DateValue, end: DateValue): boolean {
@@ -251,9 +230,16 @@ export function isMonthBetweenInclusive(date: DateValue, start: DateValue, end: 
 }
 
 export function isYearBetweenInclusive(date: DateValue, start: DateValue, end: DateValue): boolean {
-  return date.year >= start.year && date.year <= end.year;
+  return (
+    getYearOf(getDatePart(date)) >= getYearOf(getDatePart(start)) &&
+    getYearOf(getDatePart(date)) <= getYearOf(getDatePart(end))
+  );
 }
 
 export function getMonthsBetween(start: DateValue, end: DateValue): number {
-  return (end.year - start.year) * 12 + (end.month - start.month) + 1;
+  return (
+    (getYearOf(getDatePart(end)) - getYearOf(getDatePart(start))) * 12 +
+    (getMonthOf(getDatePart(end)) - getMonthOf(getDatePart(start))) +
+    1
+  );
 }

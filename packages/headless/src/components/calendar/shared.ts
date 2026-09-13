@@ -1,5 +1,7 @@
 import type { DateValue } from '../../date';
-import { compareYearMonth } from '../../date/comparators';
+import { compareYearMonth, toDate } from '../../date/comparators';
+import { setSegmentParts } from '../../date/operations';
+import { cloneDate, getYearNumber } from '../../date/value';
 import type { CalendarRootSlotProps } from './types';
 
 export function getMonthOptions(
@@ -8,7 +10,11 @@ export function getMonthOptions(
   const { formatter, placeholder, disabled, minValue, maxValue } = options;
 
   return formatter.getMonths().map(item => ({
-    disabled: isMonthDisabled(placeholder.set({ day: 1, month: item.value }), { disabled, minValue, maxValue }),
+    disabled: isMonthDisabled(setSegmentParts(placeholder, { day: 1, month: item.value }), {
+      disabled,
+      minValue,
+      maxValue
+    }),
     label: item.label,
     value: item.value
   }));
@@ -17,8 +23,8 @@ export function getMonthOptions(
 export function getYearOptions(options: Pick<CalendarRootSlotProps, 'placeholder' | 'minValue' | 'maxValue'>) {
   const { placeholder, minValue, maxValue } = options;
 
-  const startYear = normalizeMonthBoundary(minValue)?.year ?? placeholder.year - 100;
-  const endYear = normalizeMonthBoundary(maxValue)?.year ?? placeholder.year + 100;
+  const startYear = minValue ? getYearNumber(toDate(minValue)) : getYearNumber(placeholder) - 100;
+  const endYear = maxValue ? getYearNumber(toDate(maxValue)) : getYearNumber(placeholder) + 100;
 
   return Array.from({ length: endYear - startYear + 1 }, (_, index) => {
     const year = startYear + index;
@@ -41,7 +47,7 @@ export function handleMonthChange(
   }
   const { placeholder, onPlaceholderChange, disabled, minValue, maxValue } = options;
 
-  const nextDate = placeholder.set({ day: 1, month: value });
+  const nextDate = setSegmentParts(placeholder, { day: 1, month: value });
 
   if (isMonthDisabled(nextDate, { disabled, minValue, maxValue })) {
     return;
@@ -62,7 +68,7 @@ export function handleYearChange(
 
   const { placeholder, onPlaceholderChange, minValue, maxValue } = options;
 
-  updatePlaceholder(placeholder.set({ day: 1, year: value }), onPlaceholderChange, minValue, maxValue);
+  updatePlaceholder(setSegmentParts(placeholder, { day: 1, year: value }), onPlaceholderChange, minValue, maxValue);
 }
 
 function updatePlaceholder(
@@ -75,19 +81,19 @@ function updatePlaceholder(
 }
 
 function clampPlaceholder(date: DateValue, minValue?: DateValue, maxValue?: DateValue) {
-  const nextDate = date.set({ day: 1 });
+  const nextDate = setSegmentParts(date, { day: 1 });
   const normalizedMinValue = normalizeMonthBoundary(minValue);
   const normalizedMaxValue = normalizeMonthBoundary(maxValue);
 
   if (normalizedMinValue && compareYearMonth(nextDate, normalizedMinValue) < 0) {
-    return normalizedMinValue.copy();
+    return cloneDate(normalizedMinValue);
   }
 
   if (normalizedMaxValue && compareYearMonth(nextDate, normalizedMaxValue) > 0) {
-    return normalizedMaxValue.copy();
+    return cloneDate(normalizedMaxValue);
   }
 
-  return nextDate.copy();
+  return cloneDate(nextDate);
 }
 
 function isMonthDisabled(date: DateValue, options: Pick<CalendarRootSlotProps, 'disabled' | 'minValue' | 'maxValue'>) {
@@ -112,5 +118,5 @@ function isMonthDisabled(date: DateValue, options: Pick<CalendarRootSlotProps, '
 }
 
 function normalizeMonthBoundary(date?: DateValue) {
-  return date?.set({ day: 1 });
+  return date ? setSegmentParts(date, { day: 1 }) : undefined;
 }

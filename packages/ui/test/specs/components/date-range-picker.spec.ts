@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
-import { CalendarDate } from '@internationalized/date';
+import { toISODateString } from '@soybeanjs/headless/date';
 import SDateRangePicker from '@/components/date-range-picker/date-range-picker.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -15,7 +15,7 @@ describe('SDateRangePicker', () => {
     mount(SDateRangePicker, {
       attachTo: document.body,
       props: {
-        defaultPlaceholder: new CalendarDate(2024, 1, 1),
+        defaultPlaceholder: new Date(2024, 1 - 1, 1),
         ...props
       },
       slots
@@ -198,7 +198,7 @@ describe('SDateRangePicker', () => {
     it('forwards minValue and maxValue to the calendar', async () => {
       const wrapper = mountRangePicker({
         defaultOpen: true,
-        minValue: new CalendarDate(2024, 1, 2)
+        minValue: new Date(2024, 1 - 1, 2)
       });
 
       await nextTick();
@@ -215,7 +215,7 @@ describe('SDateRangePicker', () => {
     it('forwards isDateUnavailable to the calendar', async () => {
       const wrapper = mountRangePicker({
         defaultOpen: true,
-        isDateUnavailable: (item: CalendarDate) => item.day === 3
+        isDateUnavailable: (item: Date) => item.getDate() === 3
       });
 
       await nextTick();
@@ -279,18 +279,16 @@ describe('SDateRangePicker', () => {
 
       expect(emitted).toBeTruthy();
       expect(
-        (
-          (emitted as NonNullable<typeof emitted>)[0][0] as {
-            start?: CalendarDate;
-          }
-        ).start?.toString()
+        toISODateString(
+          (((emitted as NonNullable<typeof emitted>)[0][0] as { start?: Date | null }).start as Date | null) ??
+            new Date(NaN)
+        )
       ).toBe('2024-01-02');
       expect(
-        (
-          (emitted as NonNullable<typeof emitted>)[1][0] as {
-            end?: CalendarDate;
-          }
-        ).end?.toString()
+        toISODateString(
+          (((emitted as NonNullable<typeof emitted>)[1][0] as { end?: Date | null }).end as Date | null) ??
+            new Date(NaN)
+        )
       ).toBe('2024-01-05');
       expect(findPopup()).toBeNull();
 
@@ -298,8 +296,8 @@ describe('SDateRangePicker', () => {
     });
 
     it('displays the formatted date range', () => {
-      const start = new CalendarDate(2024, 1, 1);
-      const end = new CalendarDate(2024, 1, 31);
+      const start = new Date(2024, 1 - 1, 1);
+      const end = new Date(2024, 1 - 1, 31);
 
       const wrapper = mountRangePicker({ modelValue: { start, end } });
 

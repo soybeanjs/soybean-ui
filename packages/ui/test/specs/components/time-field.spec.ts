@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
-import { Time } from '@internationalized/date';
 import STimeField from '@/components/time-field/time-field.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -18,7 +17,7 @@ describe('STimeField', () => {
 
   describe('rendering', () => {
     it('renders the default hour/minute segments and custom class', () => {
-      const wrapper = mountTimeField({ class: 'test-time-field', modelValue: new Time(9, 30) });
+      const wrapper = mountTimeField({ class: 'test-time-field', modelValue: new Date(2000, 0, 1, 9, 30) });
 
       expect(wrapper.classes()).toContain('test-time-field');
       expect(wrapper.find('[data-segment="hour"]').exists()).toBe(true);
@@ -28,7 +27,7 @@ describe('STimeField', () => {
     });
 
     it('renders second and day-period segments when needed', () => {
-      const wrapper = mountTimeField({ modelValue: new Time(9, 30, 15), granularity: 'second' });
+      const wrapper = mountTimeField({ modelValue: new Date(2000, 0, 1, 9, 30, 15), granularity: 'second' });
 
       expect(wrapper.find('[data-segment="second"]').exists()).toBe(true);
       expect(wrapper.find('[data-segment="dayPeriod"]').exists()).toBe(true);
@@ -37,7 +36,7 @@ describe('STimeField', () => {
     });
 
     it('renders the day-period segment in a 12-hour cycle', () => {
-      const wrapper = mountTimeField({ modelValue: new Time(14, 30), hourCycle: 12 });
+      const wrapper = mountTimeField({ modelValue: new Date(2000, 0, 1, 14, 30), hourCycle: 12 });
 
       expect(wrapper.find('[data-segment="dayPeriod"]').exists()).toBe(true);
       expect(wrapper.find('[data-segment="dayPeriod"]').text()).toMatch(/PM/i);
@@ -65,7 +64,7 @@ describe('STimeField', () => {
     });
 
     it('renders a hidden native time input with the value and name', () => {
-      const wrapper = mountTimeField({ modelValue: new Time(9, 30), name: 'meeting' });
+      const wrapper = mountTimeField({ modelValue: new Date(2000, 0, 1, 9, 30), name: 'meeting' });
 
       const input = wrapper.find('input[type="time"]');
 
@@ -80,7 +79,7 @@ describe('STimeField', () => {
 
   describe('state', () => {
     it('emits update:modelValue after keyboard editing a segment', async () => {
-      const wrapper = mountTimeField({ modelValue: new Time(9, 30) });
+      const wrapper = mountTimeField({ modelValue: new Date(2000, 0, 1, 9, 30) });
 
       const minute = wrapper.find('[data-segment="minute"]');
 
@@ -94,9 +93,9 @@ describe('STimeField', () => {
     });
 
     it('syncs the displayed segments with a controlled modelValue', async () => {
-      const wrapper = mountTimeField({ modelValue: new Time(9, 30) });
+      const wrapper = mountTimeField({ modelValue: new Date(2000, 0, 1, 9, 30) });
 
-      await wrapper.setProps({ modelValue: new Time(10, 45) });
+      await wrapper.setProps({ modelValue: new Date(2000, 0, 1, 10, 45) });
       await nextTick();
 
       expect(wrapper.find('[data-segment="hour"]').text()).toBe('10');
@@ -106,7 +105,7 @@ describe('STimeField', () => {
     });
 
     it('uses defaultValue when uncontrolled', async () => {
-      const wrapper = mountTimeField({ defaultValue: new Time(8, 15) });
+      const wrapper = mountTimeField({ defaultValue: new Date(2000, 0, 1, 8, 15) });
 
       await nextTick();
 
@@ -117,7 +116,10 @@ describe('STimeField', () => {
     });
 
     it('marks the root invalid when the value is below minValue', () => {
-      const wrapper = mountTimeField({ modelValue: new Time(9, 30), minValue: new Time(10, 0) });
+      const wrapper = mountTimeField({
+        modelValue: new Date(2000, 0, 1, 9, 30),
+        minValue: new Date(2000, 0, 1, 10, 0)
+      });
 
       expect(wrapper.attributes('data-invalid')).toBeDefined();
 
@@ -126,8 +128,8 @@ describe('STimeField', () => {
 
     it('marks the root invalid when the value is unavailable', () => {
       const wrapper = mountTimeField({
-        modelValue: new Time(9, 30),
-        isTimeUnavailable: (time: Time) => time.hour === 9
+        modelValue: new Date(2000, 0, 1, 9, 30),
+        isTimeUnavailable: (time: Date) => time.getHours() === 9
       });
 
       expect(wrapper.attributes('data-invalid')).toBeDefined();
@@ -138,7 +140,7 @@ describe('STimeField', () => {
 
   describe('keyboard', () => {
     it('increments a segment with ArrowUp', async () => {
-      const wrapper = mountTimeField({ defaultValue: new Time(9, 30) });
+      const wrapper = mountTimeField({ defaultValue: new Date(2000, 0, 1, 9, 30) });
 
       const hour = wrapper.find('[data-segment="hour"]');
 
@@ -149,13 +151,13 @@ describe('STimeField', () => {
       const emitted = wrapper.emitted('update:modelValue');
 
       expect(emitted).toBeTruthy();
-      expect((emitted?.at(-1)?.[0] as Time)?.hour).toBe(10);
+      expect((emitted?.at(-1)?.[0] as Date)?.getHours()).toBe(10);
 
       wrapper.unmount();
     });
 
     it('moves focus to the next segment with ArrowRight', async () => {
-      const wrapper = mountTimeField({ modelValue: new Time(9, 30) });
+      const wrapper = mountTimeField({ modelValue: new Date(2000, 0, 1, 9, 30) });
 
       const hour = wrapper.find('[data-segment="hour"]');
 
@@ -169,7 +171,7 @@ describe('STimeField', () => {
     });
 
     it('reverses the arrow direction in RTL', async () => {
-      const wrapper = mountTimeField({ modelValue: new Time(9, 30), dir: 'rtl' });
+      const wrapper = mountTimeField({ modelValue: new Date(2000, 0, 1, 9, 30), dir: 'rtl' });
 
       const hour = wrapper.find('[data-segment="hour"]');
 
@@ -184,7 +186,7 @@ describe('STimeField', () => {
     });
 
     it('clears the value with Backspace and emits undefined', async () => {
-      const wrapper = mountTimeField({ defaultValue: new Time(9, 30) });
+      const wrapper = mountTimeField({ defaultValue: new Date(2000, 0, 1, 9, 30) });
 
       const minute = wrapper.find('[data-segment="minute"]');
 
@@ -204,7 +206,7 @@ describe('STimeField', () => {
 
   describe('disabled and readonly', () => {
     it('disables segments and blocks tab focus when disabled', () => {
-      const wrapper = mountTimeField({ disabled: true, modelValue: new Time(9, 30) });
+      const wrapper = mountTimeField({ disabled: true, modelValue: new Date(2000, 0, 1, 9, 30) });
 
       const hour = wrapper.find('[data-segment="hour"]');
 
@@ -216,7 +218,7 @@ describe('STimeField', () => {
     });
 
     it('prevents editing when readonly', async () => {
-      const wrapper = mountTimeField({ readonly: true, defaultValue: new Time(9, 30) });
+      const wrapper = mountTimeField({ readonly: true, defaultValue: new Date(2000, 0, 1, 9, 30) });
 
       const minute = wrapper.find('[data-segment="minute"]');
 
@@ -231,7 +233,7 @@ describe('STimeField', () => {
     });
 
     it('disables the hidden input and reflects required', () => {
-      const wrapper = mountTimeField({ disabled: true, required: true, modelValue: new Time(9, 30) });
+      const wrapper = mountTimeField({ disabled: true, required: true, modelValue: new Date(2000, 0, 1, 9, 30) });
 
       const input = wrapper.find('input[type="time"]');
 
@@ -270,7 +272,7 @@ describe('STimeField', () => {
 
   describe('accessibility', () => {
     it('has no a11y violations in the default state', async () => {
-      const wrapper = mountTimeField({ modelValue: new Time(9, 30) });
+      const wrapper = mountTimeField({ modelValue: new Date(2000, 0, 1, 9, 30) });
 
       const violations = await getA11yViolations(wrapper.element);
 
@@ -280,7 +282,7 @@ describe('STimeField', () => {
     });
 
     it('has no a11y violations in the 12-hour cycle state', async () => {
-      const wrapper = mountTimeField({ modelValue: new Time(14, 30), hourCycle: 12 });
+      const wrapper = mountTimeField({ modelValue: new Date(2000, 0, 1, 14, 30), hourCycle: 12 });
 
       const violations = await getA11yViolations(wrapper.element);
 
@@ -290,7 +292,7 @@ describe('STimeField', () => {
     });
 
     it('gives the time segments accessible names from the locale', () => {
-      const wrapper = mountTimeField({ modelValue: new Time(9, 30) });
+      const wrapper = mountTimeField({ modelValue: new Date(2000, 0, 1, 9, 30) });
 
       expect(wrapper.find('[data-segment="hour"]').attributes('aria-label')).toMatch(/^hour/);
       expect(wrapper.find('[data-segment="minute"]').attributes('aria-label')).toMatch(/^minute/);

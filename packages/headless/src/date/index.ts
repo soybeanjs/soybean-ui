@@ -1,6 +1,7 @@
 export * from './calendar';
 export * from './comparators';
 export * from './formatter';
+export * from './operations';
 export * from './parser';
 export * from './parts';
 export * from './placeholders';
@@ -8,3 +9,4 @@ export * from './segment';
 export * from './types';
 export * from './use-date-field';
 export * from './utils';
+export * from './value';

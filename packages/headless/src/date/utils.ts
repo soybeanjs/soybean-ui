@@ -1,5 +1,17 @@
-import { defu } from '../shared';
-import type { TimeValue, DateStep, DateValue, Granularity, HourCycle, TimeGranularity, TimeInputType } from './types';
+import { getDate } from 'date-fns/getDate';
+import { getHours } from 'date-fns/getHours';
+import { getMinutes } from 'date-fns/getMinutes';
+import { getSeconds } from 'date-fns/getSeconds';
+import type { Granularity, HourCycle, TimeGranularity, TimeInputType } from './types';
+
+/** Local-time ISO date string (yyyy-MM-dd), used as stable day keys. */
+export function toISODateString(date: Date): string {
+  const year = String(date.getFullYear()).padStart(4, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(getDate(date)).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+}
 
 export function getOptsByGranularity(granularity: Granularity, hourCycle: HourCycle, isTimeValue = false) {
   const options: Intl.DateTimeFormatOptions = {
@@ -9,7 +21,6 @@ export function getOptsByGranularity(granularity: Granularity, hourCycle: HourCy
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
-    timeZoneName: 'short',
     hourCycle: normalizeHourCycle(hourCycle),
     hour12: normalizeHour12(hourCycle)
   };
@@ -24,7 +35,6 @@ export function getOptsByGranularity(granularity: Granularity, hourCycle: HourCy
     delete options.hour;
     delete options.minute;
     delete options.second;
-    delete options.timeZoneName;
   }
 
   if (granularity === 'hour') {
@@ -37,18 +47,6 @@ export function getOptsByGranularity(granularity: Granularity, hourCycle: HourCy
   }
 
   return options;
-}
-
-export function normalizeDateStep(step?: DateStep): DateStep {
-  return defu(step, {
-    year: 1,
-    month: 1,
-    day: 1,
-    hour: 1,
-    minute: 1,
-    second: 1,
-    millisecond: 1
-  });
 }
 
 export function handleCalendarInitialFocus(calendar: HTMLElement) {
@@ -98,25 +96,25 @@ export function getInputType(granularity: Granularity) {
   return granularity === 'day' ? 'date' : 'datetime-local';
 }
 
-export function normalizeInputValue(date: DateValue | undefined, granularity: Granularity): string {
+export function normalizeInputValue(date: Date | undefined, granularity: Granularity): string {
   if (!date) {
     return '';
   }
 
   const type = getInputType(granularity);
-  const year = String(date.year).padStart(4, '0');
-  const month = String(date.month).padStart(2, '0');
-  const day = String(date.day).padStart(2, '0');
+  const year = String(date.getFullYear()).padStart(4, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(getDate(date)).padStart(2, '0');
 
   if (type === 'date') {
     return `${year}-${month}-${day}`;
   }
 
-  const hour = String('hour' in date ? date.hour : 0).padStart(2, '0');
-  const minute = String('minute' in date ? date.minute : 0).padStart(2, '0');
+  const hour = String(getHours(date)).padStart(2, '0');
+  const minute = String(getMinutes(date)).padStart(2, '0');
 
   if (granularity === 'second') {
-    const second = String('second' in date ? date.second : 0).padStart(2, '0');
+    const second = String(getSeconds(date)).padStart(2, '0');
     return `${year}-${month}-${day}T${hour}:${minute}:${second}`;
   }
 
@@ -127,16 +125,16 @@ export function getTimeInputType(_granularity: TimeGranularity): TimeInputType {
   return 'time';
 }
 
-export function normalizeTimeInputValue(time: TimeValue | undefined, granularity: TimeGranularity): string {
+export function normalizeTimeInputValue(time: Date | undefined, granularity: TimeGranularity): string {
   if (!time) {
     return '';
   }
 
-  const hour = String(time.hour).padStart(2, '0');
-  const minute = String(time.minute).padStart(2, '0');
+  const hour = String(getHours(time)).padStart(2, '0');
+  const minute = String(getMinutes(time)).padStart(2, '0');
 
   if (granularity === 'second') {
-    const second = String(time.second).padStart(2, '0');
+    const second = String(getSeconds(time)).padStart(2, '0');
     return `${hour}:${minute}:${second}`;
   }
 

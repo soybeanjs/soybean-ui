@@ -1,6 +1,5 @@
 import type { ShallowRef } from 'vue';
-import type { DateValue } from '@internationalized/date';
-import type { DateRange, SegmentValueObj } from '../../date';
+import type { DateRange, DateValue, SegmentValueObj } from '../../date';
 import type { UiClass } from '../../types';
 import type {
   DateFieldRootProps,
@@ -46,11 +45,11 @@ export type DateRangeFieldRootEmits = {
   /**
    * Emitted when the start value changes.
    */
-  'update:startValue': [date: DateValue | undefined];
+  'update:startValue': [date: DateValue | null];
   /**
    * Emitted when the end value changes.
    */
-  'update:endValue': [date: DateValue | undefined];
+  'update:endValue': [date: DateValue | null];
 };
 
 /**

@@ -1,13 +1,7 @@
-import {
-  getOptsByGranularity,
-  isAfter,
-  isAfterOrSame,
-  isBefore,
-  isBeforeOrSame,
-  isEqualValue,
-  isTime,
-  isZonedDateTime
-} from '../date';
+import { isEqual } from 'date-fns/isEqual';
+import { set } from 'date-fns/set';
+import { getOptsByGranularity } from '../date/utils';
+import { isAfter, isBefore, isBetweenInclusive } from '../date';
 import type { DateStep, Formatter, HourCycle, TimeGranularity, TimeMatcher, TimeValue } from '../date';
 
 export interface TimePickerOption {
@@ -19,7 +13,6 @@ export interface TimePickerOption {
 export interface FormatTimeValueProps {
   formatter: Formatter;
   granularity: TimeGranularity;
-  hideTimeZone?: boolean;
   hourCycle?: HourCycle;
   value: TimeValue;
 }
@@ -45,23 +38,12 @@ export function compareTimeValues(a: TimeValue, b: TimeValue): number {
 }
 
 export function isTimeBetweenInclusive(date: TimeValue, start: TimeValue, end: TimeValue): boolean {
-  return isAfterOrSame(date, start) && isBeforeOrSame(date, end);
+  return isBetweenInclusive(date, start, end);
 }
 
 export function formatTimeValue(props: FormatTimeValueProps): string {
   return props.formatter
     .toParts(props.value, getOptsByGranularity(props.granularity, props.hourCycle, true))
-    .filter(part => {
-      if (part.type !== 'timeZoneName') {
-        return true;
-      }
-
-      if (props.hideTimeZone) {
-        return false;
-      }
-
-      return !isTime(props.value) && isZonedDateTime(props.value);
-    })
     .map(part => part.value)
     .join('');
 }
@@ -75,18 +57,17 @@ export function createTimeOptions(props: CreateTimeOptionsProps): TimePickerOpti
     const hour = Math.floor(totalSeconds / 3600) % 24;
     const minute = Math.floor((totalSeconds % 3600) / 60);
     const second = totalSeconds % 60;
-    const value = props.reference.set({ hour, minute, second, millisecond: 0 }) as TimeValue;
+    const value = set(props.reference, { hours: hour, minutes: minute, seconds: second, milliseconds: 0 });
 
     return {
       value,
       label: formatTimeValue({
         formatter: props.formatter,
         granularity: props.granularity,
-        hideTimeZone: props.hideTimeZone,
         hourCycle: props.hourCycle,
         value
       }),
-      key: value.toString()
+      key: String(value.getTime())
     };
   }).filter(option => {
     if (props.minValue && isBefore(option.value, props.minValue)) {
@@ -110,7 +91,7 @@ export function findClosestTimeOption(options: TimePickerOption[], value: TimeVa
     return options[0];
   }
 
-  return options.find(option => isEqualValue(option.value, value)) ?? options[0];
+  return options.find(option => isEqual(option.value, value)) ?? options[0];
 }
 
 function resolveTimeOptionStep(granularity: TimeGranularity, step?: DateStep) {

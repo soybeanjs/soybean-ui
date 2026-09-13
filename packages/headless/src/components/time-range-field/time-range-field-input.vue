@@ -51,12 +51,14 @@ const { attributes, handleSegmentClick, handleSegmentFocusOut, handleSegmentKeyd
   readonly,
   focusNext: () => focusNext(props.type),
   modelValue: computed({
-    get: () => (props.type === 'start' ? modelValue.value.start : modelValue.value.end),
+    get: () => (props.type === 'start' ? modelValue.value.start : modelValue.value.end) ?? undefined,
     set: (value: TimeValue | undefined) => {
+      const next = value ?? null;
+
       if (props.type === 'start') {
-        modelValue.value = { ...modelValue.value, start: value };
+        modelValue.value = { ...modelValue.value, start: next };
       } else {
-        modelValue.value = { ...modelValue.value, end: value };
+        modelValue.value = { ...modelValue.value, end: next };
       }
     }
   })

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { useDateField } from '../../date';
-import type { DateValue } from '../../date';
+import { toDate, useDateField } from '../../date';
+import { makeDateValue } from '../../date/value';
 import { Primitive } from '../primitive';
 import { useDateRangeFieldRootContext, useDateRangeFieldUi } from './context';
 import type { DateRangeFieldInputProps } from './types';
@@ -38,10 +38,30 @@ const segmentValues = computed(() => {
   return props.type === 'start' ? startSegmentValues.value : endSegmentValues.value;
 });
 
+// The segment engine operates on plain `Date` instants; the public range keeps
+// the `{ date, time? }` shape whenever time segments are present.
+const internalPlaceholder = computed(() => toDate(placeholder.value));
+const boundValue = computed<Date | undefined>({
+  get: () => {
+    const bound = props.type === 'start' ? modelValue.value.start : modelValue.value.end;
+
+    return bound ? toDate(bound) : undefined;
+  },
+  set: value => {
+    const next = value ? ('hour' in segmentValues.value ? makeDateValue(value, value) : makeDateValue(value)) : null;
+
+    if (props.type === 'start') {
+      modelValue.value = { ...modelValue.value, start: next };
+    } else {
+      modelValue.value = { ...modelValue.value, end: next };
+    }
+  }
+});
+
 const { attributes, handleSegmentClick, handleSegmentFocusOut, handleSegmentKeydown } = useDateField({
   hasLeftFocus,
   lastKeyZero,
-  placeholder,
+  placeholder: internalPlaceholder,
   hourCycle,
   step,
   segmentValues,
@@ -50,16 +70,7 @@ const { attributes, handleSegmentClick, handleSegmentFocusOut, handleSegmentKeyd
   disabled,
   readonly,
   focusNext: () => focusNext(props.type),
-  modelValue: computed({
-    get: () => (props.type === 'start' ? modelValue.value.start : modelValue.value.end),
-    set: (value: DateValue | undefined) => {
-      if (props.type === 'start') {
-        modelValue.value = { ...modelValue.value, start: value };
-      } else {
-        modelValue.value = { ...modelValue.value, end: value };
-      }
-    }
-  })
+  modelValue: boundValue
 });
 
 const contentEditable = computed(() => {

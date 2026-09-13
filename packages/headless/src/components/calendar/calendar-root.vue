@@ -1,11 +1,11 @@
 <script setup lang="ts" generic="M extends boolean = false">
 import { computed, onMounted, watch } from 'vue';
-import { isEqualDay, isSameDay } from '@internationalized/date';
-import type { DateValue } from '@internationalized/date';
 import { getVueBooleanCasting, toContext } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { useControllableState, useForwardElement } from '../../composables';
-import { getDefaultDate, getWeekStartsOn, handleCalendarInitialFocus } from '../../date';
+import { isEqualDay, isSameDay, getDefaultDate, getWeekStartsOn, handleCalendarInitialFocus } from '../../date';
+import type { DateValue } from '../../date';
+import { cloneDateValue } from '../../date/value';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
 import { getMonthOptions, getYearOptions, handleMonthChange, handleYearChange } from './shared';
@@ -59,7 +59,7 @@ const placeholder = useControllableState(
   value => {
     emit('update:placeholder', value);
   },
-  props.defaultPlaceholder ?? defaultDate.copy()
+  props.defaultPlaceholder ?? cloneDateValue(defaultDate)
 );
 
 const {
@@ -142,18 +142,18 @@ watch(modelValue, value => {
   if (Array.isArray(value) && value.length) {
     const lastValue = value.at(-1);
     if (lastValue && !isEqualDay(placeholder.value, lastValue)) {
-      placeholder.value = lastValue.copy();
+      placeholder.value = cloneDateValue(lastValue);
     }
     return;
   }
 
   if (!Array.isArray(value) && value && !isEqualDay(placeholder.value, value)) {
-    placeholder.value = value.copy();
+    placeholder.value = cloneDateValue(value);
   }
 });
 
 function onPlaceholderChange(value: DateValue) {
-  placeholder.value = value.copy();
+  placeholder.value = cloneDateValue(value);
 }
 
 function onDateChange(value: DateValue) {
@@ -163,22 +163,22 @@ function onDateChange(value: DateValue) {
 
   if (!multiple.value) {
     if (!modelValue.value) {
-      modelValue.value = value.copy() as CalendarModelValue<M>;
+      modelValue.value = cloneDateValue(value) as CalendarModelValue<M>;
       return;
     }
 
     if (!props.preventDeselect && isSameDay(modelValue.value as DateValue, value)) {
-      placeholder.value = value.copy();
+      placeholder.value = cloneDateValue(value);
       modelValue.value = undefined;
       return;
     }
 
-    modelValue.value = value.copy() as CalendarModelValue<M>;
+    modelValue.value = cloneDateValue(value) as CalendarModelValue<M>;
     return;
   }
 
   if (!modelValue.value) {
-    modelValue.value = [value.copy()] as CalendarModelValue<M>;
+    modelValue.value = [cloneDateValue(value)] as CalendarModelValue<M>;
     return;
   }
 
@@ -186,15 +186,15 @@ function onDateChange(value: DateValue) {
     const index = modelValue.value.findIndex(date => isSameDay(date, value));
 
     if (index === -1) {
-      modelValue.value = [...modelValue.value, value.copy()] as CalendarModelValue<M>;
+      modelValue.value = [...modelValue.value, cloneDateValue(value)] as CalendarModelValue<M>;
       return;
     }
 
     if (!props.preventDeselect) {
-      const nextValue = modelValue.value.filter(date => !isSameDay(date, value)).map(date => date.copy());
+      const nextValue = modelValue.value.filter(date => !isSameDay(date, value)).map(cloneDateValue);
 
       if (!nextValue.length) {
-        placeholder.value = value.copy();
+        placeholder.value = cloneDateValue(value);
         modelValue.value = undefined;
         return;
       }

@@ -1,11 +1,12 @@
 import { computed } from 'vue';
 import type { ComputedRef, ShallowRef } from 'vue';
 import { areAllDaysBetweenValid, isBefore, isBetweenInclusive } from '../../date';
-import type { DateValue, DateRange, DateMatcher } from '../../date';
+import type { DateRange, DateMatcher, DateValue } from '../../date';
+import { cloneDateValue } from '../../date/value';
 
 export interface UseCalendarRangeStateProps {
-  start: ComputedRef<DateValue | undefined>;
-  end: ComputedRef<DateValue | undefined>;
+  start: ComputedRef<DateValue | null | undefined>;
+  end: ComputedRef<DateValue | null | undefined>;
   hoveredDate: ShallowRef<DateValue | undefined>;
   isDateDisabled: DateMatcher;
   isDateUnavailable: DateMatcher;
@@ -16,17 +17,27 @@ export interface UseCalendarRangeStateProps {
 
 function sortRange(a: DateValue, b: DateValue): DateRange {
   if (isBefore(b, a)) {
-    return { start: b.copy(), end: a.copy() };
+    return { start: cloneDateValue(b), end: cloneDateValue(a) };
   }
 
-  return { start: a.copy(), end: b.copy() };
+  return { start: cloneDateValue(a), end: cloneDateValue(b) };
 }
 
 function getInclusiveRangeDays(start: DateValue, end: DateValue) {
-  const startTime = start.toDate('UTC').getTime();
-  const endTime = end.toDate('UTC').getTime();
+  const startTime = startOfDayTimestamp(start);
+  const endTime = startOfDayTimestamp(end);
 
   return Math.floor((endTime - startTime) / 86400000) + 1;
+}
+
+function dayPartOf(date: DateValue) {
+  return date instanceof Date ? date : date.date;
+}
+
+function startOfDayTimestamp(date: DateValue) {
+  const value = dayPartOf(date);
+
+  return new Date(value.getFullYear(), value.getMonth(), value.getDate()).getTime();
 }
 
 /**
@@ -42,11 +53,11 @@ function isRangeInvalid(
     maximumDays: number | undefined;
   }
 ) {
-  if (options.isDateDisabled(start) || options.isDateUnavailable(start)) {
+  if (options.isDateDisabled(dayPartOf(start)) || options.isDateUnavailable(dayPartOf(start))) {
     return true;
   }
 
-  if (options.isDateDisabled(end) || options.isDateUnavailable(end)) {
+  if (options.isDateDisabled(dayPartOf(end)) || options.isDateUnavailable(dayPartOf(end))) {
     return true;
   }
 
@@ -86,25 +97,25 @@ export function useCalendarRangeState(props: UseCalendarRangeStateProps) {
     }
 
     if (!props.end.value) {
-      return props.start.value.compare(date) === 0;
+      return isSameDateValue(props.start.value, date);
     }
 
     return isBetweenInclusive(date, props.start.value, props.end.value);
   };
 
-  const isSelectionStart = (date: DateValue) => Boolean(props.start.value && props.start.value.compare(date) === 0);
-  const isSelectionEnd = (date: DateValue) => Boolean(props.end.value && props.end.value.compare(date) === 0);
+  const isSelectionStart = (date: DateValue) => Boolean(props.start.value && isSameDateValue(props.start.value, date));
+  const isSelectionEnd = (date: DateValue) => Boolean(props.end.value && isSameDateValue(props.end.value, date));
   const isHighlightedStart = (date: DateValue) =>
-    Boolean(highlightedRange.value?.start && highlightedRange.value.start.compare(date) === 0);
+    Boolean(highlightedRange.value?.start && isSameDateValue(highlightedRange.value.start, date));
   const isHighlightedEnd = (date: DateValue) =>
-    Boolean(highlightedRange.value?.end && highlightedRange.value.end.compare(date) === 0);
+    Boolean(highlightedRange.value?.end && isSameDateValue(highlightedRange.value.end, date));
 
   const hasSelectedDate = computed(() => Boolean(props.start.value));
-  const selectedFocusableDate = computed(() => props.start.value?.copy());
+  const selectedFocusableDate = computed(() => (props.start.value ? cloneDateValue(props.start.value) : undefined));
   const isSelectedDateDisabled = computed(() => {
     return Boolean(
-      (props.start.value && props.isDateDisabled(props.start.value)) ||
-      (props.end.value && props.isDateDisabled(props.end.value))
+      (props.start.value && props.isDateDisabled(dayPartOf(props.start.value))) ||
+      (props.end.value && props.isDateDisabled(dayPartOf(props.end.value)))
     );
   });
 
@@ -137,4 +148,15 @@ export function useCalendarRangeState(props: UseCalendarRangeStateProps) {
     getInclusiveRangeDays,
     isRangeInvalid
   };
+}
+
+function isSameDateValue(a: DateValue, b: DateValue) {
+  const aDay = a instanceof Date ? a : a.date;
+  const bDay = b instanceof Date ? b : b.date;
+
+  return (
+    aDay.getFullYear() === bDay.getFullYear() &&
+    aDay.getMonth() === bDay.getMonth() &&
+    aDay.getDate() === bDay.getDate()
+  );
 }

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, nextTick } from 'vue';
-import { getLocalTimeZone, isSameDay, isSameMonth, isToday } from '@internationalized/date';
-import type { DateValue } from '@internationalized/date';
+import { addDays } from 'date-fns/addDays';
 import { useOmitProps, useForwardElement } from '../../composables';
-import { toDate } from '../../date';
+import { isSameDay, isSameMonth, isToday, toISODateString, toDate } from '../../date';
+import type { DateValue } from '../../date';
 import Button from '../button/button.vue';
 import { useCalendarRootContext, useCalendarUi } from './context';
 import type { CalendarCellTriggerProps, CalendarCellTriggerSlots } from './types';
@@ -48,9 +48,9 @@ const {
 } = useCalendarRootContext('CalendarCellTrigger');
 const [_, setElement] = useForwardElement();
 
-const dayValue = computed(() => props.day.day.toLocaleString(locale.value));
+const dayValue = computed(() => props.day.getDate().toLocaleString(locale.value));
 const labelText = computed(() => {
-  return formatter.custom(toDate(props.day), {
+  return formatter.custom(props.day, {
     weekday: 'long',
     month: 'long',
     day: 'numeric',
@@ -58,7 +58,7 @@ const labelText = computed(() => {
   });
 });
 const isUnavailable = computed(() => isDateUnavailable?.(props.day) ?? false);
-const isDateToday = computed(() => isToday(props.day, getLocalTimeZone()));
+const isDateToday = computed(() => isToday(props.day));
 const isOutsideView = computed(() => !isSameMonth(props.day, props.month));
 const isOutsideVisibleView = computed(() => checkOutsideVisibleView(props.day));
 const isDisabled = computed(() => {
@@ -83,7 +83,7 @@ const changeDate = (date: DateValue) => {
   if (readonly.value) {
     return;
   }
-  if (isDateDisabled(date) || isDateUnavailable?.(date)) {
+  if (isDateDisabled(toDate(date)) || isDateUnavailable?.(toDate(date))) {
     return;
   }
 
@@ -91,17 +91,17 @@ const changeDate = (date: DateValue) => {
 };
 
 const shiftFocus = (day: DateValue, add: number) => {
-  const candidateDayValue = day.add({ days: add });
+  const candidateDayValue = addDays(toDate(day), add);
 
   if (
-    (minValue.value && candidateDayValue.compare(minValue.value) < 0) ||
-    (maxValue.value && candidateDayValue.compare(maxValue.value) > 0)
+    (minValue.value && candidateDayValue.getTime() < toDate(minValue.value).getTime()) ||
+    (maxValue.value && candidateDayValue.getTime() > toDate(maxValue.value).getTime())
   ) {
     return;
   }
 
   const candidateDay = parentElement.value?.querySelector<HTMLElement>(
-    `[data-value='${candidateDayValue.toString()}']:not([data-outside-view])`
+    `[data-value='${toISODateString(candidateDayValue)}']:not([data-outside-view])`
   );
 
   if (!candidateDay) {
@@ -185,7 +185,7 @@ const handleKeydown = (event: KeyboardEvent) => {
     :data-selected="isSelectedDate ? '' : undefined"
     :data-today="isDateToday ? '' : undefined"
     :data-unavailable="isUnavailable ? '' : undefined"
-    :data-value="day.toString()"
+    :data-value="toISODateString(day)"
     :tabindex="isFocusedDate ? 0 : isOutsideView || isDisabled ? undefined : -1"
     @click="handleClick"
     @keydown="handleKeydown"

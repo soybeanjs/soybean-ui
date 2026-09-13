@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { toDate } from '../../date';
 import { Primitive } from '../primitive';
 import { useCalendarRangeRootContext, useCalendarRangeUi } from './context';
 import type { CalendarRangeCellProps } from './types';
@@ -15,8 +16,8 @@ const props = withDefaults(defineProps<CalendarRangeCellProps>(), {
 const cls = useCalendarRangeUi('cell');
 const { isDateSelected, isDateDisabled, isDateUnavailable } = useCalendarRangeRootContext('CalendarRangeCell');
 
-const selected = computed(() => isDateSelected(props.date));
-const disabled = computed(() => isDateDisabled(props.date) || isDateUnavailable?.(props.date));
+const selected = computed(() => isDateSelected(toDate(props.date)));
+const disabled = computed(() => isDateDisabled(toDate(props.date)) || isDateUnavailable?.(toDate(props.date)));
 </script>
 
 <template>

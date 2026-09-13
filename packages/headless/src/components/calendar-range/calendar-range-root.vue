@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import { computed, onMounted, shallowRef, watch } from 'vue';
-import { isSameDay } from '@internationalized/date';
 import { toContext } from '../../shared';
 import { getMonthOptions, getYearOptions, handleMonthChange, handleYearChange } from '../calendar/shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { useControllableState, useForwardElement } from '../../composables';
-import { getDefaultDate, getWeekStartsOn, handleCalendarInitialFocus, isBefore, useDateFormatter } from '../../date';
+import {
+  isSameDay,
+  getDefaultDate,
+  getWeekStartsOn,
+  handleCalendarInitialFocus,
+  isBefore,
+  useDateFormatter
+} from '../../date';
 import type { DateValue } from '../../date';
+import { cloneDateValue } from '../../date/value';
 import { useCalendar } from '../calendar/use-calendar';
 import { Primitive } from '../primitive';
 import { provideCalendarRangeRootContext, useCalendarRangeUi } from './context';
@@ -18,7 +25,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<CalendarRangeRootProps>(), {
-  defaultValue: () => ({ start: undefined, end: undefined }),
+  defaultValue: () => ({ start: null, end: null }),
   defaultPlaceholder: undefined,
   placeholder: undefined,
   allowNonContiguousRanges: false,
@@ -54,14 +61,14 @@ const modelValue = useControllableState(
   () => props.modelValue,
   value => {
     emit('update:modelValue', value);
-    emit('update:startValue', value.start);
+    emit('update:startValue', value.start ?? null);
   },
-  props.defaultValue ?? {}
+  props.defaultValue ?? { start: null, end: null }
 );
 
 const defaultDate = getDefaultDate({
   defaultPlaceholder: props.placeholder,
-  defaultValue: modelValue.value.start,
+  defaultValue: modelValue.value.start ?? undefined,
   locale: props.locale
 });
 
@@ -70,11 +77,11 @@ const placeholder = useControllableState(
   value => {
     emit('update:placeholder', value);
   },
-  props.defaultPlaceholder ?? defaultDate.copy()
+  props.defaultPlaceholder ?? cloneDateValue(defaultDate)
 );
 
-const startValue = computed(() => modelValue.value.start);
-const endValue = computed(() => modelValue.value.end);
+const startValue = computed(() => modelValue.value.start ?? undefined);
+const endValue = computed(() => modelValue.value.end ?? undefined);
 const hoveredDate = shallowRef<DateValue | undefined>();
 
 const {
@@ -181,13 +188,13 @@ watch(
   () => modelValue.value.start,
   value => {
     if (value && !isSameDay(placeholder.value, value)) {
-      placeholder.value = value.copy();
+      placeholder.value = cloneDateValue(value);
     }
   }
 );
 
 function onPlaceholderChange(value: DateValue) {
-  placeholder.value = value.copy();
+  placeholder.value = cloneDateValue(value);
 }
 
 function onDateChange(value: DateValue) {
@@ -198,14 +205,14 @@ function onDateChange(value: DateValue) {
   const { start, end } = modelValue.value;
 
   if (!start) {
-    modelValue.value = { start: value.copy(), end: undefined };
+    modelValue.value = { start: cloneDateValue(value), end: null };
     return;
   }
 
   if (!end) {
     if (!props.preventDeselect && isSameDay(start, value)) {
-      modelValue.value = { start: undefined, end: undefined };
-      placeholder.value = value.copy();
+      modelValue.value = { start: null, end: null };
+      placeholder.value = cloneDateValue(value);
       hoveredDate.value = undefined;
       return;
     }
@@ -218,7 +225,7 @@ function onDateChange(value: DateValue) {
       nextRange.end &&
       getInclusiveRangeDays(nextRange.start, nextRange.end) > props.maximumDays
     ) {
-      modelValue.value = { start: value.copy(), end: undefined };
+      modelValue.value = { start: cloneDateValue(value), end: null };
       return;
     }
 
@@ -234,7 +241,7 @@ function onDateChange(value: DateValue) {
         maximumDays: props.maximumDays
       })
     ) {
-      modelValue.value = { start: value.copy(), end: undefined };
+      modelValue.value = { start: cloneDateValue(value), end: null };
       return;
     }
 
@@ -245,21 +252,21 @@ function onDateChange(value: DateValue) {
 
   if (props.fixedDate === 'start') {
     modelValue.value = isBefore(value, start)
-      ? { start: value.copy(), end: start.copy() }
-      : { start: start.copy(), end: value.copy() };
+      ? { start: cloneDateValue(value), end: cloneDateValue(start) }
+      : { start: cloneDateValue(start), end: cloneDateValue(value) };
     hoveredDate.value = undefined;
     return;
   }
 
   if (props.fixedDate === 'end') {
     modelValue.value = isBefore(end, value)
-      ? { start: end.copy(), end: value.copy() }
-      : { start: value.copy(), end: end.copy() };
+      ? { start: cloneDateValue(end), end: cloneDateValue(value) }
+      : { start: cloneDateValue(value), end: cloneDateValue(end) };
     hoveredDate.value = undefined;
     return;
   }
 
-  modelValue.value = { start: value.copy(), end: undefined };
+  modelValue.value = { start: cloneDateValue(value), end: null };
   hoveredDate.value = undefined;
 }
 
@@ -298,7 +305,7 @@ provideCalendarRangeRootContext({
   isHighlightedEnd,
   isOutsideVisibleView,
   setHoveredDate(date) {
-    hoveredDate.value = date?.copy();
+    hoveredDate.value = date ? cloneDateValue(date) : undefined;
   },
   hoveredDate,
   prevPage,

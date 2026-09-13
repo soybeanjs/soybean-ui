@@ -11,12 +11,15 @@ import {
   hasTime,
   initializeSegmentValues,
   isBefore,
+  isEqualValue,
   normalizeDateStep,
   normalizeHourCycle,
   normalizeInputValue,
   syncSegmentValues,
+  toDate,
   useDateFormatter
 } from '../../date';
+import { cloneDateValue } from '../../date/value';
 import { useLocaleMessages } from '../../locale';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
@@ -60,15 +63,15 @@ const modelValue = useControllableState(
   () => props.modelValue,
   value => {
     emit('update:modelValue', value);
-    emit('update:startValue', value.start);
-    emit('update:endValue', value.end);
+    emit('update:startValue', value.start ?? null);
+    emit('update:endValue', value.end ?? null);
   },
-  props.defaultValue ?? {}
+  props.defaultValue ?? { start: null, end: null }
 );
 
 const defaultDate = getDefaultDate({
   defaultPlaceholder: props.placeholder,
-  defaultValue: modelValue.value.start,
+  defaultValue: modelValue.value.start ?? undefined,
   granularity: props.granularity,
   locale: props.locale
 });
@@ -76,7 +79,7 @@ const defaultDate = getDefaultDate({
 const placeholder = useControllableState(
   () => props.placeholder,
   value => emit('update:placeholder', value),
-  props.defaultPlaceholder ?? defaultDate.copy()
+  props.defaultPlaceholder ?? cloneDateValue(defaultDate)
 );
 
 const step = computed(() => normalizeDateStep(props.step));
@@ -96,7 +99,7 @@ const isInvalid = computed(() => {
   }
 
   if (start) {
-    if (props.isDateUnavailable?.(start)) {
+    if (props.isDateUnavailable?.(toDate(start))) {
       return true;
     }
 
@@ -110,7 +113,7 @@ const isInvalid = computed(() => {
   }
 
   if (end) {
-    if (props.isDateUnavailable?.(end)) {
+    if (props.isDateUnavailable?.(toDate(end))) {
       return true;
     }
 
@@ -144,7 +147,6 @@ const startSegmentContents = computed(
       granularity: inferredGranularity.value,
       dateRef: placeholder.value,
       formatter,
-      hideTimeZone: props.hideTimeZone,
       hourCycle: props.hourCycle,
       segmentValues: startSegmentValues.value,
       locale,
@@ -158,7 +160,6 @@ const endSegmentContents = computed(
       granularity: inferredGranularity.value,
       dateRef: placeholder.value,
       formatter,
-      hideTimeZone: props.hideTimeZone,
       hourCycle: props.hourCycle,
       segmentValues: endSegmentValues.value,
       locale,
@@ -199,8 +200,8 @@ watch(locale, value => {
 watch(
   () => modelValue.value.start,
   value => {
-    if (!isNullish(value) && placeholder.value.compare(value) !== 0) {
-      placeholder.value = value.copy();
+    if (!isNullish(value) && !isEqualValue(placeholder.value, value)) {
+      placeholder.value = cloneDateValue(value);
     }
   }
 );
@@ -259,13 +260,17 @@ const moveFocus = (type: 'start' | 'end', direction: 'next' | 'prev') => {
 };
 
 const inputType = computed(() => getInputType(inferredGranularity.value));
-const startInputValue = computed(() => normalizeInputValue(modelValue.value.start, inferredGranularity.value));
-const endInputValue = computed(() => normalizeInputValue(modelValue.value.end, inferredGranularity.value));
+const startInputValue = computed(() =>
+  normalizeInputValue(modelValue.value.start ? toDate(modelValue.value.start) : undefined, inferredGranularity.value)
+);
+const endInputValue = computed(() =>
+  normalizeInputValue(modelValue.value.end ? toDate(modelValue.value.end) : undefined, inferredGranularity.value)
+);
 const inputMaxValue = computed(() =>
-  props.maxValue ? normalizeInputValue(props.maxValue, inferredGranularity.value) : undefined
+  props.maxValue ? normalizeInputValue(toDate(props.maxValue), inferredGranularity.value) : undefined
 );
 const inputMinValue = computed(() =>
-  props.minValue ? normalizeInputValue(props.minValue, inferredGranularity.value) : undefined
+  props.minValue ? normalizeInputValue(toDate(props.minValue), inferredGranularity.value) : undefined
 );
 
 const handleRootKeydown = (event: KeyboardEvent) => {

@@ -11,12 +11,15 @@ import {
   hasTime,
   initializeSegmentValues,
   isBefore,
+  isEqualValue,
   normalizeDateStep,
   normalizeHourCycle,
   normalizeInputValue,
   syncSegmentValues,
+  toDate,
   useDateFormatter
 } from '../../date';
+import { cloneDateValue } from '../../date/value';
 import { useLocaleMessages } from '../../locale';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
@@ -71,7 +74,7 @@ const defaultDate = getDefaultDate({
 const placeholder = useControllableState(
   () => props.placeholder,
   value => emit('update:placeholder', value),
-  props.defaultPlaceholder ?? defaultDate.copy()
+  props.defaultPlaceholder ?? cloneDateValue(defaultDate)
 );
 
 const step = computed(() => normalizeDateStep(props.step));
@@ -89,7 +92,7 @@ const isInvalid = computed(() => {
     return false;
   }
 
-  if (props.isDateUnavailable?.(modelValue.value)) {
+  if (props.isDateUnavailable?.(toDate(modelValue.value))) {
     return true;
   }
 
@@ -114,9 +117,8 @@ const segmentContents = computed(
   () =>
     createContent({
       granularity: inferredGranularity.value,
-      dateRef: placeholder.value,
+      dateRef: toDate(placeholder.value),
       formatter,
-      hideTimeZone: props.hideTimeZone,
       hourCycle: props.hourCycle,
       segmentValues: segmentValues.value,
       locale,
@@ -144,8 +146,8 @@ watch(locale, value => {
 });
 
 watch(modelValue, value => {
-  if (!isNullish(value) && placeholder.value.compare(value) !== 0) {
-    placeholder.value = value.copy();
+  if (!isNullish(value) && !isEqualValue(placeholder.value, value)) {
+    placeholder.value = cloneDateValue(value);
   }
 });
 
@@ -177,12 +179,14 @@ const moveFocus = (direction: 'next' | 'prev') => {
 };
 
 const inputType = computed(() => getInputType(inferredGranularity.value));
-const inputValue = computed(() => normalizeInputValue(modelValue.value, inferredGranularity.value));
+const inputValue = computed(() =>
+  normalizeInputValue(modelValue.value ? toDate(modelValue.value) : undefined, inferredGranularity.value)
+);
 const inputMaxValue = computed(() =>
-  props.maxValue ? normalizeInputValue(props.maxValue, inferredGranularity.value) : undefined
+  props.maxValue ? normalizeInputValue(toDate(props.maxValue), inferredGranularity.value) : undefined
 );
 const inputMinValue = computed(() =>
-  props.minValue ? normalizeInputValue(props.minValue, inferredGranularity.value) : undefined
+  props.minValue ? normalizeInputValue(toDate(props.minValue), inferredGranularity.value) : undefined
 );
 
 const handleRootKeydown = (event: KeyboardEvent) => {

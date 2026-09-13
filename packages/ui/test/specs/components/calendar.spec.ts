@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import { defineComponent, nextTick, shallowRef } from 'vue';
 import { DOMWrapper, flushPromises, mount } from '@vue/test-utils';
-import { CalendarDate, getLocalTimeZone, today } from '@internationalized/date';
-import type { DateValue } from '@internationalized/date';
+import { toISODateString } from '@soybeanjs/headless/date';
+import { addMonths } from 'date-fns/addMonths';
 import SCalendar from '@/components/calendar/calendar.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
 function mountCalendar(props?: Record<string, unknown>) {
   return mount(SCalendar, {
-    props: { defaultPlaceholder: new CalendarDate(2026, 4, 18), ...props },
+    props: { defaultPlaceholder: new Date(2026, 4 - 1, 18), ...props },
     attachTo: document.body
   });
 }
@@ -43,7 +43,7 @@ describe('SCalendar', () => {
     });
 
     it('renders a fixed number of weeks when fixedWeeks is enabled', () => {
-      const wrapper = mountCalendar({ fixedWeeks: true, defaultPlaceholder: new CalendarDate(2026, 2, 1) });
+      const wrapper = mountCalendar({ fixedWeeks: true, defaultPlaceholder: new Date(2026, 2 - 1, 1) });
 
       const bodyRows = wrapper.find('[data-soybean-calendar-grid-body]').findAll('tr');
 
@@ -52,8 +52,8 @@ describe('SCalendar', () => {
     });
 
     it('marks today with the data-today attribute', () => {
-      const now = today(getLocalTimeZone());
-      const wrapper = mountCalendar({ defaultPlaceholder: new CalendarDate(now.year, now.month, now.day) });
+      const now = new Date();
+      const wrapper = mountCalendar({ defaultPlaceholder: new Date(now.getFullYear(), now.getMonth(), now.getDate()) });
 
       expect(wrapper.find('[data-today]').exists()).toBe(true);
       wrapper.unmount();
@@ -113,7 +113,7 @@ describe('SCalendar', () => {
     });
 
     it('marks the controlled date as selected', () => {
-      const wrapper = mountCalendar({ modelValue: new CalendarDate(2026, 4, 18) });
+      const wrapper = mountCalendar({ modelValue: new Date(2026, 4 - 1, 18) });
 
       expect(focusableValue(wrapper, '2026-04-18').attributes('data-selected')).toBeDefined();
       wrapper.unmount();
@@ -122,8 +122,8 @@ describe('SCalendar', () => {
     it('uses defaultValue when uncontrolled', () => {
       const wrapper = mount(SCalendar, {
         props: {
-          defaultValue: new CalendarDate(2026, 4, 21),
-          defaultPlaceholder: new CalendarDate(2026, 4, 18)
+          defaultValue: new Date(2026, 4 - 1, 21),
+          defaultPlaceholder: new Date(2026, 4 - 1, 18)
         },
         attachTo: document.body
       });
@@ -139,14 +139,14 @@ describe('SCalendar', () => {
       const emitted = wrapper.emitted('update:modelValue');
 
       expect(emitted).toBeTruthy();
-      expect(((emitted as NonNullable<typeof emitted>)[0][0] as CalendarDate).toString()).toBe('2026-04-20');
+      expect(toISODateString((emitted as NonNullable<typeof emitted>)[0][0] as Date)).toBe('2026-04-20');
       wrapper.unmount();
     });
 
     it('updates multiple selection when a date is clicked', async () => {
       const wrapper = mountCalendar({
         multiple: true,
-        modelValue: [new CalendarDate(2026, 4, 18), new CalendarDate(2026, 4, 21)]
+        modelValue: [new Date(2026, 4 - 1, 18), new Date(2026, 4 - 1, 21)]
       });
 
       await wrapper.get('[data-value="2026-04-20"]').trigger('click');
@@ -154,7 +154,7 @@ describe('SCalendar', () => {
       const emitted = wrapper.emitted('update:modelValue');
 
       expect(emitted).toBeTruthy();
-      expect(((emitted as NonNullable<typeof emitted>)[0][0] as CalendarDate[]).map(date => date.toString())).toEqual([
+      expect(((emitted as NonNullable<typeof emitted>)[0][0] as Date[]).map(date => toISODateString(date))).toEqual([
         '2026-04-18',
         '2026-04-21',
         '2026-04-20'
@@ -169,7 +169,7 @@ describe('SCalendar', () => {
           SCalendar
         },
         setup() {
-          const value = shallowRef([new CalendarDate(2026, 4, 18), new CalendarDate(2026, 4, 21)]);
+          const value = shallowRef([new Date(2026, 4 - 1, 18), new Date(2026, 4 - 1, 21)]);
 
           return {
             value
@@ -196,7 +196,7 @@ describe('SCalendar', () => {
     it('syncs the controlled modelValue from outside', async () => {
       const wrapper = mountCalendar();
 
-      await wrapper.setProps({ modelValue: new CalendarDate(2026, 4, 15) });
+      await wrapper.setProps({ modelValue: new Date(2026, 4 - 1, 15) });
       await nextTick();
 
       expect(wrapper.get('[data-value="2026-04-15"]').attributes('data-selected')).toBeDefined();
@@ -206,7 +206,7 @@ describe('SCalendar', () => {
     it('keeps the selected date when preventDeselect is enabled', async () => {
       const wrapper = mountCalendar({
         preventDeselect: true,
-        modelValue: new CalendarDate(2026, 4, 18)
+        modelValue: new Date(2026, 4 - 1, 18)
       });
 
       await wrapper.get('[data-value="2026-04-18"]').trigger('click');
@@ -214,7 +214,7 @@ describe('SCalendar', () => {
       const emitted = wrapper.emitted('update:modelValue');
 
       expect(emitted).toBeTruthy();
-      expect((emitted![0][0] as CalendarDate).toString()).toBe('2026-04-18');
+      expect(toISODateString(emitted![0][0] as Date)).toBe('2026-04-18');
       wrapper.unmount();
     });
 
@@ -229,7 +229,7 @@ describe('SCalendar', () => {
 
     it('marks unavailable dates and prevents selection', async () => {
       const wrapper = mountCalendar({
-        isDateUnavailable: (date: DateValue) => date.day === 20
+        isDateUnavailable: (date: Date) => date.getDate() === 20
       });
 
       const unavailable = wrapper.get('[data-value="2026-04-20"]');
@@ -315,18 +315,18 @@ describe('SCalendar', () => {
 
       const emitted = wrapper.emitted('update:modelValue');
 
-      expect((emitted![0][0] as CalendarDate).toString()).toBe('2026-04-18');
+      expect(toISODateString(emitted![0][0] as Date)).toBe('2026-04-18');
 
       await focusableValue(wrapper, '2026-04-20').trigger('focusin');
       await focusableValue(wrapper, '2026-04-20').trigger('keydown', { key: ' ' });
 
-      expect((wrapper.emitted('update:modelValue')!.at(-1)![0] as CalendarDate).toString()).toBe('2026-04-20');
+      expect(toISODateString(wrapper.emitted('update:modelValue')!.at(-1)![0] as Date)).toBe('2026-04-20');
       wrapper.unmount();
     });
 
     it('skips disabled dates when navigating', async () => {
       const wrapper = mountCalendar({
-        isDateDisabled: (date: DateValue) => date.day === 19
+        isDateDisabled: (date: Date) => date.getDate() === 19
       });
 
       await focusableValue(wrapper, '2026-04-18').trigger('focusin');
@@ -339,8 +339,8 @@ describe('SCalendar', () => {
 
     it('moves focus to the first focusable date when the selected date is disabled', async () => {
       const wrapper = mountCalendar({
-        modelValue: new CalendarDate(2026, 4, 18),
-        isDateDisabled: (date: DateValue) => date.day === 18
+        modelValue: new Date(2026, 4 - 1, 18),
+        isDateDisabled: (date: Date) => date.getDate() === 18
       });
 
       const focused = wrapper.get('[data-soybean-calendar-cell-trigger][tabindex="0"]');
@@ -373,8 +373,8 @@ describe('SCalendar', () => {
 
     it('disables navigation buttons when out of minValue/maxValue bounds', () => {
       const wrapper = mountCalendar({
-        minValue: new CalendarDate(2026, 4, 1),
-        maxValue: new CalendarDate(2026, 4, 30)
+        minValue: new Date(2026, 4 - 1, 1),
+        maxValue: new Date(2026, 4 - 1, 30)
       });
 
       expect((wrapper.get('[data-soybean-calendar-prev]').element as HTMLButtonElement).disabled).toBe(true);
@@ -384,7 +384,7 @@ describe('SCalendar', () => {
 
     it('uses a custom page function and does not leak it to the DOM', async () => {
       const wrapper = mountCalendar({
-        prevProps: { prevPage: (date: DateValue) => date.subtract({ months: 2 }) }
+        prevProps: { prevPage: (date: Date) => addMonths(date, -2) }
       });
 
       const prevButton = wrapper.get('[data-soybean-calendar-prev]');
@@ -420,7 +420,7 @@ describe('SCalendar', () => {
   describe('disabled state', () => {
     it('disables matching dates and prevents selection', async () => {
       const wrapper = mountCalendar({
-        isDateDisabled: (date: DateValue) => date.day === 18
+        isDateDisabled: (date: Date) => date.getDate() === 18
       });
 
       const disabled = wrapper.get('[data-value="2026-04-18"]');
@@ -435,8 +435,8 @@ describe('SCalendar', () => {
 
     it('disables dates outside minValue/maxValue bounds', () => {
       const wrapper = mountCalendar({
-        minValue: new CalendarDate(2026, 4, 10),
-        maxValue: new CalendarDate(2026, 4, 20)
+        minValue: new Date(2026, 4 - 1, 10),
+        maxValue: new Date(2026, 4 - 1, 20)
       });
 
       expect(wrapper.get('[data-value="2026-04-05"]').attributes('data-disabled')).toBeDefined();
@@ -465,7 +465,7 @@ describe('SCalendar', () => {
     });
 
     it('has no a11y violations in multiple mode', async () => {
-      const wrapper = mountCalendar({ multiple: true, modelValue: [new CalendarDate(2026, 4, 18)] });
+      const wrapper = mountCalendar({ multiple: true, modelValue: [new Date(2026, 4 - 1, 18)] });
 
       const violations = await getA11yViolations(wrapper.element);
 

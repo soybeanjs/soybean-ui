@@ -16,6 +16,7 @@ import {
   syncTimeSegmentValues,
   useDateFormatter
 } from '../../date';
+import { cloneDate } from '../../date/value';
 import { useLocaleMessages } from '../../locale';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
@@ -59,21 +60,21 @@ const modelValue = useControllableState(
   () => props.modelValue,
   value => {
     emit('update:modelValue', value);
-    emit('update:startValue', value.start);
-    emit('update:endValue', value.end);
+    emit('update:startValue', value.start ?? null);
+    emit('update:endValue', value.end ?? null);
   },
-  props.defaultValue ?? {}
+  props.defaultValue ?? { start: null, end: null }
 );
 
 const defaultTime = getDefaultTime({
   defaultPlaceholder: props.placeholder,
-  defaultValue: modelValue.value.start
+  defaultValue: modelValue.value.start ?? undefined
 });
 
 const placeholder = useControllableState(
   () => props.placeholder,
   value => emit('update:placeholder', value),
-  props.defaultPlaceholder ?? defaultTime.copy()
+  props.defaultPlaceholder ?? cloneDate(defaultTime)
 );
 
 const step = computed(() => normalizeDateStep(props.step));
@@ -135,7 +136,6 @@ const startSegmentContents = computed(
       granularity: inferredGranularity.value,
       dateRef: placeholder.value,
       formatter,
-      hideTimeZone: props.hideTimeZone,
       hourCycle: props.hourCycle,
       segmentValues: startSegmentValues.value,
       locale,
@@ -150,7 +150,6 @@ const endSegmentContents = computed(
       granularity: inferredGranularity.value,
       dateRef: placeholder.value,
       formatter,
-      hideTimeZone: props.hideTimeZone,
       hourCycle: props.hourCycle,
       segmentValues: endSegmentValues.value,
       locale,
@@ -193,7 +192,7 @@ watch(
   () => modelValue.value.start,
   value => {
     if (!isNullish(value) && !isEqualValue(placeholder.value, value)) {
-      placeholder.value = value.copy();
+      placeholder.value = cloneDate(value);
     }
   }
 );
@@ -246,8 +245,12 @@ const moveFocus = (type: 'start' | 'end', direction: 'next' | 'prev') => {
 };
 
 const inputType = computed(() => getTimeInputType(inferredGranularity.value));
-const startInputValue = computed(() => normalizeTimeInputValue(modelValue.value.start, inferredGranularity.value));
-const endInputValue = computed(() => normalizeTimeInputValue(modelValue.value.end, inferredGranularity.value));
+const startInputValue = computed(() =>
+  normalizeTimeInputValue(modelValue.value.start ?? undefined, inferredGranularity.value)
+);
+const endInputValue = computed(() =>
+  normalizeTimeInputValue(modelValue.value.end ?? undefined, inferredGranularity.value)
+);
 const inputMaxValue = computed(() =>
   props.maxValue ? normalizeTimeInputValue(props.maxValue, inferredGranularity.value) : undefined
 );

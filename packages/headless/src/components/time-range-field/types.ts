@@ -41,11 +41,11 @@ export type TimeRangeFieldRootEmits = {
   /**
    * Emitted when the start value changes.
    */
-  'update:startValue': [time: TimeValue | undefined];
+  'update:startValue': [time: TimeValue | null];
   /**
    * Emitted when the end value changes.
    */
-  'update:endValue': [time: TimeValue | undefined];
+  'update:endValue': [time: TimeValue | null];
 };
 
 /**

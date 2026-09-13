@@ -1,8 +1,11 @@
 import type { Ref } from 'vue';
+import { getHours } from 'date-fns/getHours';
+import { getMinutes } from 'date-fns/getMinutes';
+import { getSeconds } from 'date-fns/getSeconds';
 import type { LocaleDateMessages } from '../locale/types';
 import { getOptsByGranularity, normalizeHourCycle } from './utils';
-import { isTime, isZonedDateTime, toDate } from './comparators';
 import type { Formatter } from './formatter';
+import { setSegmentParts } from './operations';
 import {
   DATE_SEGMENT_PARTS,
   EDITABLE_SEGMENT_PARTS,
@@ -22,31 +25,62 @@ import type {
   SegmentValueObj,
   TimeSegmentPart
 } from './types';
+import { mergeDateValue, getDayNumber, getMonthNumber, getYearNumber, hasTime, isDateTimeValue } from './value';
 
-export function syncTimeSegmentValues(props: { value: DateValue | TimeValue; formatter: Formatter }) {
+export function syncTimeSegmentValues(props: { value: TimeValue; formatter: Formatter }) {
   return Object.fromEntries(
     TIME_SEGMENT_PARTS.map(part => {
       if (part === 'dayPeriod') {
-        return [part, props.formatter.dayPeriod(toDate(props.value))];
+        return [part, props.formatter.dayPeriod(props.value)];
       }
 
-      return [part, props.value[part as keyof typeof props.value]];
+      if (part === 'hour') {
+        return [part, getHours(props.value)];
+      }
+
+      if (part === 'minute') {
+        return [part, getMinutes(props.value)];
+      }
+
+      return [part, getSeconds(props.value)];
     })
   ) as SegmentValueObj;
 }
 
 export function syncSegmentValues(props: { value: DateValue; formatter: Formatter }) {
-  const dateValues = DATE_SEGMENT_PARTS.map(part => [part, props.value[part]]);
+  const dateValues = DATE_SEGMENT_PARTS.map(part => [part, getSegmentNumberValue(part, props.value)]);
 
-  if ('hour' in props.value) {
-    return { ...Object.fromEntries(dateValues), ...syncTimeSegmentValues(props) } as SegmentValueObj;
+  if (hasTime(props.value)) {
+    const dateTime = isDateTimeValue(props.value) ? props.value : undefined;
+    const timeValue = dateTime?.time;
+
+    if (timeValue) {
+      return {
+        ...Object.fromEntries(dateValues),
+        ...syncTimeSegmentValues({ value: timeValue, formatter: props.formatter })
+      } as SegmentValueObj;
+    }
   }
 
   return Object.fromEntries(dateValues) as SegmentValueObj;
 }
 
+function getSegmentNumberValue(part: DateSegmentPart, value: DateValue): number {
+  const date = isDateTimeValue(value) ? value.date : value;
+
+  if (part === 'year') {
+    return getYearNumber(date);
+  }
+
+  if (part === 'month') {
+    return getMonthNumber(date);
+  }
+
+  return getDayNumber(date);
+}
+
 export function initializeSegmentValues(granularity: Granularity): SegmentValueObj {
-  const timeGranularities = ['hour', 'minute', 'second'];
+  const timeGranularities: readonly string[] = ['hour', 'minute', 'second'];
   const initialParts = EDITABLE_SEGMENT_PARTS.map(part => {
     if (part === 'dayPeriod') {
       return [part, 'AM'];
@@ -74,9 +108,8 @@ export function initializeSegmentValues(granularity: Granularity): SegmentValueO
 
 type CreateContentOptions = {
   granularity: Granularity;
-  dateRef: DateValue | TimeValue;
+  dateRef: DateValue;
   formatter: Formatter;
-  hideTimeZone: boolean;
   hourCycle: HourCycle;
   segmentValues: SegmentValueObj;
   locale: Ref<string>;
@@ -85,7 +118,8 @@ type CreateContentOptions = {
 };
 
 function createContentObj(options: CreateContentOptions) {
-  const { segmentValues, dateRef, formatter, hourCycle, locale } = options;
+  const { segmentValues, formatter, hourCycle, locale } = options;
+  const dateRef = mergeDateValue(options.dateRef);
 
   const resolvePlaceholder = (part: DateSegmentPart | TimeSegmentPart): string => {
     const m = options.dateMessages;
@@ -105,8 +139,8 @@ function createContentObj(options: CreateContentOptions) {
       if (value !== null) {
         if (part === 'day') {
           return formatter.part(
-            dateRef.set({
-              [part]: value as number,
+            setSegmentParts(dateRef, {
+              day: value as number,
               month: 'month' in segmentValues ? (segmentValues.month ?? 1) : 1
             }),
             part,
@@ -114,7 +148,7 @@ function createContentObj(options: CreateContentOptions) {
           );
         }
 
-        return formatter.part(dateRef.set({ [part]: value as number }), part, {
+        return formatter.part(setSegmentParts(dateRef, { [part]: value as number }), part, {
           hourCycle: normalizeHourCycle(hourCycle)
         });
       }
@@ -126,10 +160,13 @@ function createContentObj(options: CreateContentOptions) {
       const value = numericSegmentValues[part];
       if (value !== null) {
         if (part === 'day') {
-          return formatter.part(dateRef.set({ [part]: value as number, month: segmentValues.month ?? 1 }), part);
+          return formatter.part(
+            setSegmentParts(dateRef, { day: value as number, month: segmentValues.month ?? 1 }),
+            part
+          );
         }
 
-        return formatter.part(dateRef.set({ [part]: value as number }), part);
+        return formatter.part(setSegmentParts(dateRef, { [part]: value as number }), part);
       }
 
       return resolvePlaceholder(part);
@@ -161,13 +198,14 @@ function createContentValue(
 }
 
 export function createContent(options: CreateContentOptions) {
-  const { formatter, dateRef, hourCycle, hideTimeZone } = options;
+  const { formatter, hourCycle } = options;
+  const dateRef = mergeDateValue(options.dateRef);
 
   const contentObj = createContentObj(options);
   const parts = formatter.toParts(dateRef, getOptsByGranularity(options.granularity, hourCycle, options.isTimeValue));
   const arr = parts
     .map(part => {
-      if (part.type === 'literal' || part.type === 'timeZoneName' || part.type === null || !isSegmentPart(part.type)) {
+      if (part.type === 'literal' || part.type === null || !isSegmentPart(part.type)) {
         return {
           part: part.type,
           value: part.value
@@ -181,14 +219,6 @@ export function createContent(options: CreateContentOptions) {
     })
     .filter((segment): segment is { part: SegmentPart; value: string } => {
       if (segment.part === null || segment.value === null) {
-        return false;
-      }
-
-      if (segment.part === 'timeZoneName' && (isTime(dateRef) || !isZonedDateTime(dateRef))) {
-        return false;
-      }
-
-      if (segment.part === 'timeZoneName' && hideTimeZone) {
         return false;
       }
 

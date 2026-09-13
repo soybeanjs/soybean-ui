@@ -16,6 +16,7 @@ import {
   syncTimeSegmentValues,
   useDateFormatter
 } from '../../date';
+import { cloneDate } from '../../date/value';
 import { useLocaleMessages } from '../../locale';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
@@ -68,7 +69,7 @@ const defaultTime = getDefaultTime({
 const placeholder = useControllableState(
   () => props.placeholder,
   value => emit('update:placeholder', value),
-  props.defaultPlaceholder ?? defaultTime.copy()
+  props.defaultPlaceholder ?? cloneDate(defaultTime)
 );
 
 const inferredGranularity = computed(() => props.granularity ?? 'minute');
@@ -106,7 +107,6 @@ const segmentContents = computed(
       granularity: inferredGranularity.value,
       dateRef: placeholder.value,
       formatter,
-      hideTimeZone: props.hideTimeZone,
       hourCycle: props.hourCycle,
       segmentValues: segmentValues.value,
       locale,
@@ -136,7 +136,7 @@ watch(locale, value => {
 
 watch(modelValue, value => {
   if (!isNullish(value) && !isEqualValue(placeholder.value, value)) {
-    placeholder.value = value.copy();
+    placeholder.value = cloneDate(value);
   }
 });
 

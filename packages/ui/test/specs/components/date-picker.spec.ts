@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
-import { CalendarDate } from '@internationalized/date';
+import { toISODateString } from '@soybeanjs/headless/date';
 import { SDatePicker } from '@/components/date-picker';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -15,7 +15,7 @@ describe('sDatePicker', () => {
     mount(SDatePicker, {
       attachTo: document.body,
       props: {
-        defaultPlaceholder: new CalendarDate(2024, 1, 1),
+        defaultPlaceholder: new Date(2024, 1 - 1, 1),
         ...props
       },
       slots
@@ -197,7 +197,7 @@ describe('sDatePicker', () => {
     it('should forward minValue and maxValue to the calendar', async () => {
       const wrapper = mountDatePicker({
         defaultOpen: true,
-        minValue: new CalendarDate(2024, 1, 2)
+        minValue: new Date(2024, 1 - 1, 2)
       });
 
       await nextTick();
@@ -214,7 +214,7 @@ describe('sDatePicker', () => {
     it('should forward isDateUnavailable to the calendar', async () => {
       const wrapper = mountDatePicker({
         defaultOpen: true,
-        isDateUnavailable: (item: CalendarDate) => item.day === 3
+        isDateUnavailable: (item: Date) => item.getDate() === 3
       });
 
       await nextTick();
@@ -280,7 +280,7 @@ describe('sDatePicker', () => {
       const emitted = wrapper.emitted('update:modelValue');
 
       expect(emitted).toBeTruthy();
-      expect((emitted?.at(-1)?.[0] as CalendarDate)?.toString()).toBe('2024-01-02');
+      expect(toISODateString(emitted?.at(-1)?.[0] as Date)).toBe('2024-01-02');
       expect(findPopup()).toBeNull();
 
       wrapper.unmount();
