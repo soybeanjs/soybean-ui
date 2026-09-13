@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
-import { Backtop } from '@soybeanjs/headless/backtop';
+import { Backtop } from '@vean/aria/backtop';
 import SBacktop from '@/components/backtop/backtop.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -126,7 +126,7 @@ describe('SBacktop', () => {
       const button = wrapper.find('button');
 
       expect(button.classes()).toContain('headless-backtop');
-      expect(button.attributes('data-soybean-backtop')).toBe('');
+      expect(button.attributes('data-vean-backtop')).toBe('');
 
       wrapper.unmount();
       target.remove();

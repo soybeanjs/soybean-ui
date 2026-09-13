@@ -47,17 +47,17 @@ head:
 
 ### 架构与对标差异
 
-`PopconfirmCompact` 组合 popper 触发器/定位器/弹层与确认式头部、内容、底部，所有基础组件保持零样式，仅由 UI 包装组件注入 `popconfirmVariants` 类。这与 radix-ui/shadcn-ui 的 headless 分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供带 `title`/`description`/`okText`/`cancelText`/`onConfirm` prop 的单一样式化气泡确认框；SoybeanUI 额外暴露逐槽 `*Props`、`size` 尺寸体系、`type` 颜色/图标系统与本地化操作标签。
+`PopconfirmCompact` 组合 popper 触发器/定位器/弹层与确认式头部、内容、底部，所有基础组件保持零样式，仅由 UI 包装组件注入 `popconfirmVariants` 类。这与 radix-ui/shadcn-ui 的 headless 分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供带 `title`/`description`/`okText`/`cancelText`/`onConfirm` prop 的单一样式化气泡确认框；Vean 额外暴露逐槽 `*Props`、`size` 尺寸体系、`type` 颜色/图标系统与本地化操作标签。
 
-| 能力              | SoybeanUI | shadcn/ui | Ant Design Popconfirm | Element Plus Popconfirm | Mantine Popconfirm | Naive UI Popconfirm |
-| :---------------- | :-------: | :-------: | :-------------------: | :---------------------: | :----------------: | :-----------------: |
-| 基于 Popper       |    ✅     |    ✅     |           —           |            —            |         —          |          —          |
-| Headless/样式分离 |    ✅     |    ✅     |           —           |            —            |         —          |          —          |
-| 类型图标 + 颜色   |    ✅     |     —     |           —           |           ✅            |         —          |          —          |
-| 标题 + 描述       |    ✅     |    ✅     |          ✅           |           ✅            |         ✅         |         ✅          |
-| 本地化确认/取消   |    ✅     |     —     |           —           |            —            |         —          |          —          |
-| 尺寸（6）         |    ✅     |     —     |           —           |            —            |         —          |          —          |
-| 定位（popper）    |    ✅     |    ✅     |          ✅           |           ✅            |         ✅         |         ✅          |
+| 能力              | Vean | shadcn/ui | Ant Design Popconfirm | Element Plus Popconfirm | Mantine Popconfirm | Naive UI Popconfirm |
+| :---------------- | :--: | :-------: | :-------------------: | :---------------------: | :----------------: | :-----------------: |
+| 基于 Popper       |  ✅  |    ✅     |           —           |            —            |         —          |          —          |
+| Headless/样式分离 |  ✅  |    ✅     |           —           |            —            |         —          |          —          |
+| 类型图标 + 颜色   |  ✅  |     —     |           —           |           ✅            |         —          |          —          |
+| 标题 + 描述       |  ✅  |    ✅     |          ✅           |           ✅            |         ✅         |         ✅          |
+| 本地化确认/取消   |  ✅  |     —     |           —           |            —            |         —          |          —          |
+| 尺寸（6）         |  ✅  |     —     |           —           |            —            |         —          |          —          |
+| 定位（popper）    |  ✅  |    ✅     |          ✅           |           ✅            |         ✅         |         ✅          |
 
 `—` = 不支持或采用不同交互模型。
 

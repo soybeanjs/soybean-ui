@@ -31,7 +31,7 @@ head:
 
 ## 组件家族
 
-`SBadge` 是单一导出。它渲染 `data-soybean-badge-root` 容器，并在 `open` 时渲染 `data-soybean-badge-content` 气泡；`class`/`ui` 与 `contentProps` 可作用到两个节点。
+`SBadge` 是单一导出。它渲染 `data-vean-badge-root` 容器，并在 `open` 时渲染 `data-vean-badge-content` 气泡；`class`/`ui` 与 `contentProps` 可作用到两个节点。
 
 ## 演示
 
@@ -45,19 +45,19 @@ head:
 
 ### 架构与对标差异
 
-`SBadge` 在 UI 层自持显隐编排——徽章是一层薄壳，唯一逻辑是受控 `open` 标志，因此刻意没有 headless 家族。这与 shadcn/ui 的「组合优先」（其 Badge 为纯样式标签）及 Radix 的 `Badge` 原语一致；而 Ant Design、Element Plus、Naive UI 则提供单一样式化 `Badge` 组件（`count`/`max`/`dot`/`offset` prop）。SoybeanUI 通过 `content` prop/插槽暴露气泡，并提供受控的 `open` 状态，将数量格式化（`max`）与圆点/偏移等便捷能力留在核心之外——详见下方增强项。
+`SBadge` 在 UI 层自持显隐编排——徽章是一层薄壳，唯一逻辑是受控 `open` 标志，因此刻意没有 headless 家族。这与 shadcn/ui 的「组合优先」（其 Badge 为纯样式标签）及 Radix 的 `Badge` 原语一致；而 Ant Design、Element Plus、Naive UI 则提供单一样式化 `Badge` 组件（`count`/`max`/`dot`/`offset` prop）。Vean 通过 `content` prop/插槽暴露气泡，并提供受控的 `open` 状态，将数量格式化（`max`）与圆点/偏移等便捷能力留在核心之外——详见下方增强项。
 
-| 能力                  | SoybeanUI | shadcn/ui | Ant Design Badge | Element Plus Badge | Mantine Badge | Naive UI Badge |
-| :-------------------- | :-------: | :-------: | :--------------: | :----------------: | :-----------: | :------------: |
-| Headless/样式分离     |    ✅     |    ✅     |        —         |         —          |       —       |       —        |
-| 内容 / 通知气泡       |    ✅     |     —     |        ✅        |         ✅         |       —       |       ✅       |
-| 位置（角落定位）      |    ✅     |     —     |        ✅        |         ✅         |       —       |       ✅       |
-| 颜色变体（8）         |    ✅     |    ✅     |        ✅        |         ✅         |      ✅       |       ✅       |
-| 尺寸变体（6）         |    ✅     |     —     |        ✅        |         ✅         |      ✅       |       ✅       |
-| RTL 感知定位          |    ✅     |     —     |        —         |         —          |       —       |       —        |
-| 受控显隐（`open`）    |    ✅     |     —     |        ✅        |         ✅         |       —       |       ✅       |
-| `max` 数量封顶（99+） |    ➕     |     —     |        ✅        |         ✅         |       —       |       ✅       |
-| `dot` 模式 / `offset` |    ➕     |     —     |        ✅        |         ✅         |       —       |       ✅       |
+| 能力                  | Vean | shadcn/ui | Ant Design Badge | Element Plus Badge | Mantine Badge | Naive UI Badge |
+| :-------------------- | :--: | :-------: | :--------------: | :----------------: | :-----------: | :------------: |
+| Headless/样式分离     |  ✅  |    ✅     |        —         |         —          |       —       |       —        |
+| 内容 / 通知气泡       |  ✅  |     —     |        ✅        |         ✅         |       —       |       ✅       |
+| 位置（角落定位）      |  ✅  |     —     |        ✅        |         ✅         |       —       |       ✅       |
+| 颜色变体（8）         |  ✅  |    ✅     |        ✅        |         ✅         |      ✅       |       ✅       |
+| 尺寸变体（6）         |  ✅  |     —     |        ✅        |         ✅         |      ✅       |       ✅       |
+| RTL 感知定位          |  ✅  |     —     |        —         |         —          |       —       |       —        |
+| 受控显隐（`open`）    |  ✅  |     —     |        ✅        |         ✅         |       —       |       ✅       |
+| `max` 数量封顶（99+） |  ➕  |     —     |        ✅        |         ✅         |       —       |       ✅       |
+| `dot` 模式 / `offset` |  ➕  |     —     |        ✅        |         ✅         |       —       |       ✅       |
 
 `—` = 不支持或采用不同交互模型；`➕` = 有价值但尚未提供的增强项（见下）。
 

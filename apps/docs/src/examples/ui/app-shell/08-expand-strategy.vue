@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SAppShell, SIcon, SSelect } from '@soybeanjs/ui';
-import type { TreeMenuExpandStrategy } from '@soybeanjs/ui';
+import { SAppShell, SIcon, SSelect } from '@vean/ui';
+import type { TreeMenuExpandStrategy } from '@vean/ui';
 import { appShellItems } from './menu';
 
 const active = shallowRef('soybean-ui');

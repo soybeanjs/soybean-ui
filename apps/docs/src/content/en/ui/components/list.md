@@ -21,7 +21,7 @@ There is no headless `list` family: a plain `ul`/`li` carries no keyboard, focus
 ## Features
 
 - 🧩 UI-only anatomy shell — `SList`/`SListItem` own the markup and share `listVariants` classes through a UI-level `provideListUi` context; no headless `list` family exists
-- 📋 Semantic markup — renders a real `<ul>`/`<li>` with `data-soybean-list-*` hooks
+- 📋 Semantic markup — renders a real `<ul>`/`<li>` with `data-vean-list-*` hooks
 - 🏷️ Item composition — `SListItem` renders an optional `title` + `description` block via `title`/`description` props or slots
 - ↔️ Leading / trailing — `leading`/`trailing` slots on `SListItem` for icons, badges, avatars or actions
 - 🎨 6 sizes — xs–2xl `size` matching `ThemeSize`
@@ -45,16 +45,16 @@ There is no headless `list` family: a plain `ul`/`li` carries no keyboard, focus
 
 ### Architecture and benchmark differences
 
-`SList`/`SListItem` are UI-only: a plain `ul`/`li` anatomy shell failed the headless deletion test, so the family was removed from the headless layer and the markup now lives in the UI layer, with all styling in `listVariants` and the slot classes passed down through `provideListUi`. This mirrors shadcn/ui's composition-first approach, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a config-driven list (`dataSource`/`renderItem`). SoybeanUI deliberately keeps `SList` a presentational container — data iteration stays with the consumer — so very large data is handled by the standalone `virtualizer` component rather than a built-in virtual scroll. Interactive lists use `listbox` / `tree` instead of `SList`.
+`SList`/`SListItem` are UI-only: a plain `ul`/`li` anatomy shell failed the headless deletion test, so the family was removed from the headless layer and the markup now lives in the UI layer, with all styling in `listVariants` and the slot classes passed down through `provideListUi`. This mirrors shadcn/ui's composition-first approach, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a config-driven list (`dataSource`/`renderItem`). Vean deliberately keeps `SList` a presentational container — data iteration stays with the consumer — so very large data is handled by the standalone `virtualizer` component rather than a built-in virtual scroll. Interactive lists use `listbox` / `tree` instead of `SList`.
 
-| Capability                | SoybeanUI | shadcn/ui | Ant Design List | Element Plus | Mantine List | Naive UI |
-| :------------------------ | :-------: | :-------: | :-------------: | :----------: | :----------: | :------: |
-| Headless/styled split     |    ✅     |    ✅     |        —        |      —       |      —       |    —     |
-| Semantic `ul`/`li` markup |    ✅     |    ✅     |       ✅        |      ✅      |      ✅      |    ✅    |
-| Title + description item  |    ✅     |     —     |       ✅        |      ✅      |      ✅      |    ✅    |
-| Leading / trailing slots  |    ✅     |     —     |       ✅        |      ✅      |      ✅      |    ✅    |
-| Size variants (6)         |    ✅     |     —     |       ✅        |      ✅      |      ✅      |    ✅    |
-| Built-in virtual scroll   |    ➕     |     —     |       ✅        |      —       |      ✅      |    ✅    |
+| Capability                | Vean | shadcn/ui | Ant Design List | Element Plus | Mantine List | Naive UI |
+| :------------------------ | :--: | :-------: | :-------------: | :----------: | :----------: | :------: |
+| Headless/styled split     |  ✅  |    ✅     |        —        |      —       |      —       |    —     |
+| Semantic `ul`/`li` markup |  ✅  |    ✅     |       ✅        |      ✅      |      ✅      |    ✅    |
+| Title + description item  |  ✅  |     —     |       ✅        |      ✅      |      ✅      |    ✅    |
+| Leading / trailing slots  |  ✅  |     —     |       ✅        |      ✅      |      ✅      |    ✅    |
+| Size variants (6)         |  ✅  |     —     |       ✅        |      ✅      |      ✅      |    ✅    |
+| Built-in virtual scroll   |  ➕  |     —     |       ✅        |      —       |      ✅      |    ✅    |
 
 `—` = unsupported or a different interaction model; `➕` = valuable enhancement (delegated to `virtualizer`).
 

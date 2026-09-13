@@ -4,8 +4,8 @@ import type {
   TreeMenuCompactProps,
   TreeMenuCompactSlots,
   TreeMenuUiSlot
-} from '@soybeanjs/headless/tree-menu';
-import type { BaseProps, ClassValue } from '@soybeanjs/headless/types';
+} from '@vean/aria/tree-menu';
+import type { BaseProps, ClassValue } from '@vean/aria/types';
 import type { ThemeSize } from '@/theme';
 
 /**

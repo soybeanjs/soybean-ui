@@ -1,7 +1,7 @@
 {
   "api": {
     "generated": {
-      "packages_headless_src_components_accordion_types": {
+      "packages_aria_src_components_accordion_types": {
         "accordioncompactemits": {
           "callables": {
             "update_modelvalue": ""
@@ -103,7 +103,7 @@
         },
         "accordionui": "Accordion 组件的 UI 类重载。"
       },
-      "packages_headless_src_components_affix_types": {
+      "packages_aria_src_components_affix_types": {
         "affixcompactemits": {
           "callables": {
             "change": "发生变化时输出。"
@@ -142,7 +142,7 @@
         },
         "affixui": "Affix 组件的 UI 类重载。"
       },
-      "packages_headless_src_components_alert_types": {
+      "packages_aria_src_components_alert_types": {
         "alertcloseemits": {
           "callables": {
             "close": "点击关闭按钮时输出。"
@@ -215,7 +215,7 @@
         },
         "alertui": "警报组件的 UI 类重载。"
       },
-      "packages_headless_src_components_anchor_types": {
+      "packages_aria_src_components_anchor_types": {
         "anchorcompactemits": {
           "callables": {
             "activechange": "主动更改发生时输出。",
@@ -303,12 +303,12 @@
         },
         "type": ""
       },
-      "packages_headless_src_components_arrow_types": {
+      "packages_aria_src_components_arrow_types": {
         "arrowprops": {
           "props": "箭头组件的属性"
         }
       },
-      "packages_headless_src_components_aspect_ratio_types": {
+      "packages_aria_src_components_aspect_ratio_types": {
         "aspectratioprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
@@ -318,7 +318,7 @@
           "props": "AspectRatio 组件的属性。"
         }
       },
-      "packages_headless_src_components_autocomplete_types": {
+      "packages_aria_src_components_autocomplete_types": {
         "autocompleteanchorprops": {
           "members": {
             "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
@@ -529,7 +529,7 @@
         },
         "type": ""
       },
-      "packages_headless_src_components_avatar_types": {
+      "packages_aria_src_components_avatar_types": {
         "avatarcompactemits": {
           "callables": {
             "loadingstatuschange": "当图片加载状态发生变化时，调用事件处理程序。这对控制图片加载过程中的渲染非常有用。\n图像加载时的渲染内容。"
@@ -580,7 +580,7 @@
         },
         "avatarui": "阿凡达组件的用户界面类重载。"
       },
-      "packages_headless_src_components_backtop_types": {
+      "packages_aria_src_components_backtop_types": {
         "backtopemits": {
           "callables": {
             "change": "发生变化时输出。",
@@ -588,7 +588,7 @@
           }
         }
       },
-      "packages_headless_src_components_breadcrumb_types": {
+      "packages_aria_src_components_breadcrumb_types": {
         "breadcrumbcompactellipsisslotprops": {
           "members": {
             "ellipsisitems": "当前显示的省略号项目数组。"
@@ -680,7 +680,7 @@
         },
         "breadcrumbui": "面包屑组件的 UI 类重载。"
       },
-      "packages_headless_src_components_button_types": {
+      "packages_aria_src_components_button_types": {
         "buttonemits": {
           "callables": {
             "click": "点击时发出。"
@@ -697,7 +697,7 @@
         },
         "buttontype": "支持的按钮值"
       },
-      "packages_headless_src_components_calendar_range_types": {
+      "packages_aria_src_components_calendar_range_types": {
         "calendarrangecellprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
@@ -970,7 +970,7 @@
         "calendarrangeui": "CalendarRange 组件的 UI 类重载。",
         "type": ""
       },
-      "packages_headless_src_components_calendar_types": {
+      "packages_aria_src_components_calendar_types": {
         "calendarcellprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
@@ -1231,7 +1231,7 @@
         "calendarui": "日历组件的 UI 类重载。",
         "type": ""
       },
-      "packages_headless_src_components_carousel_types": {
+      "packages_aria_src_components_carousel_types": {
         "carouselcompactemits": {
           "callables": {
             "init": "发生 init 时发出。"
@@ -1335,10 +1335,10 @@
         "carouselui": "旋转木马组件的 UI 类重载。",
         "type": ""
       },
-      "packages_headless_src_components_cascader_index": {
+      "packages_aria_src_components_cascader_index": {
         "cascadervalue": "Cascader 组件的值类型。\n\n- `M = false`：单选。`P = false` -> `T`，`P = true` -> `T[]`（单路径）。\n- `M = true`：多选。`P = false` -> `T[]`，`P = true` -> `T[][]`（多路径）。"
       },
-      "packages_headless_src_components_cascader_types": {
+      "packages_aria_src_components_cascader_types": {
         "cascaderarrowprops": {
           "props": "cascader arrow 组件所使用的 popper arrow 属性别名。"
         },
@@ -1624,7 +1624,7 @@
           "props": "CascaderValue 组件的属性。"
         }
       },
-      "packages_headless_src_components_checkbox_types": {
+      "packages_aria_src_components_checkbox_types": {
         "checkboxcardcompactemits": {
           "callables": {
             "update_modelvalue": "当复选框的值发生变化时，调用事件处理程序。"
@@ -1780,7 +1780,7 @@
         },
         "checkboxui": "复选框组件的 UI 类重载。"
       },
-      "packages_headless_src_components_clipboard_types": {
+      "packages_aria_src_components_clipboard_types": {
         "clipboardemits": {
           "callables": {
             "click": "点击时发出。",
@@ -1811,7 +1811,7 @@
         },
         "clipboardstate": "ClipboardState 的状态值"
       },
-      "packages_headless_src_components_collapsible_types": {
+      "packages_aria_src_components_collapsible_types": {
         "collapsiblecontentprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
@@ -1849,7 +1849,7 @@
         },
         "collapsibleui": "可折叠组件的 UI 类重载。"
       },
-      "packages_headless_src_components_color_area_types": {
+      "packages_aria_src_components_color_area_types": {
         "colorareaareaprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
@@ -1923,7 +1923,7 @@
         },
         "colorareaui": "ColorArea 组件的 UI 类重载。"
       },
-      "packages_headless_src_components_color_field_types": {
+      "packages_aria_src_components_color_field_types": {
         "colorfieldcompactemits": {
           "callables": {
             "update_color": "当颜色值发生变化时发出。",
@@ -1982,7 +1982,7 @@
         },
         "colorfieldui": "ColorField 组件的 UI 类重载。"
       },
-      "packages_headless_src_components_color_picker_types": {
+      "packages_aria_src_components_color_picker_types": {
         "colorpickercompactemits": {
           "callables": {
             "change": "发生变化时输出。",
@@ -2087,7 +2087,7 @@
         },
         "colorpickerui": "ColorPicker 组件的 UI 类重载。"
       },
-      "packages_headless_src_components_color_slider_types": {
+      "packages_aria_src_components_color_slider_types": {
         "colorslidercompactemits": {
           "callables": {
             "change": "发生变化时输出。",
@@ -2162,7 +2162,7 @@
         },
         "colorsliderui": "ColorSlider 组件的 UI 类重载。"
       },
-      "packages_headless_src_components_color_swatch_picker_types": {
+      "packages_aria_src_components_color_swatch_picker_types": {
         "colorswatchpickercompactcolorslotprops": {
           "members": {
             "color": "当前的色块颜色。"
@@ -2272,7 +2272,7 @@
           "props": "ColorSwatchPickerRoot 组件的属性。"
         }
       },
-      "packages_headless_src_components_color_swatch_types": {
+      "packages_aria_src_components_color_swatch_types": {
         "colorswatchcheckerprops": {
           "props": "ColorSwatch 组件的事件。"
         },
@@ -2320,7 +2320,7 @@
         },
         "colorswatchui": "ColorSwatch 组件的用户界面类。"
       },
-      "packages_headless_src_components_combobox_index": {
+      "packages_aria_src_components_combobox_index": {
         "comboboxportalprops": {
           "members": {
             "defer": "推迟解析 Teleport 目标，直到应用程序的其他部分安装完毕（需要 Vue 3.5.0 以上版本）\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
@@ -2330,7 +2330,7 @@
           }
         }
       },
-      "packages_headless_src_components_combobox_types": {
+      "packages_aria_src_components_combobox_types": {
         "comboboxanchorprops": {
           "members": {
             "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
@@ -2625,7 +2625,7 @@
           "props": "ComboboxVirtualizer 组件的属性。"
         }
       },
-      "packages_headless_src_components_command_types": {
+      "packages_aria_src_components_command_types": {
         "commandcompactemits": {
           "callables": {
             "entryfocus": "容器聚焦时调用事件处理程序。可以避免。",
@@ -2712,7 +2712,7 @@
         },
         "commandui": "命令组件的 UI 类重载。"
       },
-      "packages_headless_src_components_context_menu_index": {
+      "packages_aria_src_components_context_menu_index": {
         "contextmenuanchorprops": {
           "props": "锚点（引用）元素的属性，可选地覆盖引用。"
         },
@@ -2846,7 +2846,7 @@
         },
         "contextmenuui": "菜单组件的 UI 类重载。"
       },
-      "packages_headless_src_components_context_menu_types": {
+      "packages_aria_src_components_context_menu_types": {
         "contextmenucheckboxcompactemits": {
           "callables": {
             "closeautofocus": "关闭时自动聚焦会调用事件处理程序。可以避免。",
@@ -3091,7 +3091,7 @@
           "props": "ContextMenuWrapperCompact 组件的属性。"
         }
       },
-      "packages_headless_src_components_date_field_types": {
+      "packages_aria_src_components_date_field_types": {
         "datefieldcompactemits": {
           "callables": {
             "update_modelvalue": "当模型值发生变化时发出。",
@@ -3181,7 +3181,7 @@
         },
         "datefieldui": "DateField 组件的 UI 类重载。"
       },
-      "packages_headless_src_components_date_picker_types": {
+      "packages_aria_src_components_date_picker_types": {
         "datepickercompactemits": {
           "callables": {
             "closeautofocus": "关闭时自动聚焦会调用事件处理程序。可以避免。",
@@ -3273,7 +3273,7 @@
         },
         "datepickerui": "DatePicker 组件的 UI 类。"
       },
-      "packages_headless_src_components_date_range_field_types": {
+      "packages_aria_src_components_date_range_field_types": {
         "daterangefieldcompactemits": {
           "callables": {
             "update_endvalue": "在端值发生变化时输出。",
@@ -3383,7 +3383,7 @@
         "daterangefieldui": "DateRangeField 组件的 UI 类重载。",
         "daterangetype": ""
       },
-      "packages_headless_src_components_date_range_picker_types": {
+      "packages_aria_src_components_date_range_picker_types": {
         "daterangepickercompactemits": {
           "callables": {
             "closeautofocus": "关闭时自动聚焦会调用事件处理程序。可以避免。",
@@ -3480,7 +3480,7 @@
         },
         "daterangepickerui": "DateRangePicker 组件的 UI 类。"
       },
-      "packages_headless_src_components_dialog_types": {
+      "packages_aria_src_components_dialog_types": {
         "dialogalerttype": "支持的对话框提示值。",
         "dialogcancelemits": {
           "callables": {
@@ -3711,7 +3711,7 @@
         },
         "dialogui": "对话框组件的 UI 类重载。"
       },
-      "packages_headless_src_components_drawer_index": {
+      "packages_aria_src_components_drawer_index": {
         "draweroverlayprops": {
           "members": {
             "forcemount": "用于在需要更多控制时强制挂载。\n\n在使用 Vue 动画库控制动画时非常有用。"
@@ -3725,7 +3725,7 @@
           }
         }
       },
-      "packages_headless_src_components_drawer_types": {
+      "packages_aria_src_components_drawer_types": {
         "drawercancelemits": {
           "callables": {
             "cancel": "当请求取消对话框时调用的事件处理程序。"
@@ -3960,7 +3960,7 @@
         },
         "type": ""
       },
-      "packages_headless_src_components_dropdown_menu_index": {
+      "packages_aria_src_components_dropdown_menu_index": {
         "dropdownmenucheckboxitemprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
@@ -4048,7 +4048,7 @@
         },
         "dropdownmenuui": "菜单组件的 UI 类重载。"
       },
-      "packages_headless_src_components_dropdown_menu_types": {
+      "packages_aria_src_components_dropdown_menu_types": {
         "dropdownmenucheckboxcompactemits": {
           "callables": {
             "closeautofocus": "关闭时自动聚焦会调用事件处理程序。可以避免。",
@@ -4322,7 +4322,7 @@
           "props": "DropdownMenuWrapperCompact 组件的属性。"
         }
       },
-      "packages_headless_src_components_editable_types": {
+      "packages_aria_src_components_editable_types": {
         "editableactivationmode": "EditableActivationMode 的类型信息。",
         "editableareaprops": {
           "members": {
@@ -4472,7 +4472,7 @@
         },
         "editableui": "可编辑组件的 UI 类重载。"
       },
-      "packages_headless_src_components_form_types": {
+      "packages_aria_src_components_form_types": {
         "formcompactprops": {
           "members": {
             "controlprops": "转发到控制元素的属性。",
@@ -4570,7 +4570,7 @@
         "formui": "Form 组件的 UI 类重载。",
         "type": "类型信息。"
       },
-      "packages_headless_src_components_hover_card_index": {
+      "packages_aria_src_components_hover_card_index": {
         "hovercardarrowprops": "",
         "hovercardportalprops": {
           "members": {
@@ -4582,7 +4582,7 @@
         },
         "hovercardui": ""
       },
-      "packages_headless_src_components_hover_card_types": {
+      "packages_aria_src_components_hover_card_types": {
         "hovercardcompactemits": {
           "callables": {
             "escapekeydown": "按下 Escape 键时调用事件处理程序。可以避免。",
@@ -4686,10 +4686,10 @@
           "props": "HoverCardRoot 组件的属性。"
         }
       },
-      "packages_headless_src_components_icon_types": {
+      "packages_aria_src_components_icon_types": {
         "iconvalue": "IconValue 的类型信息。"
       },
-      "packages_headless_src_components_input_number_types": {
+      "packages_aria_src_components_input_number_types": {
         "inputnumberclearemits": {
           "callables": {
             "clear": "点击“清除”按钮时触发。"
@@ -4822,7 +4822,7 @@
         },
         "inputnumberui": "InputNumber 组件的 UI 类重载。"
       },
-      "packages_headless_src_components_input_otp_types": {
+      "packages_aria_src_components_input_otp_types": {
         "inputotpcompactemits": {
           "callables": {
             "blur": "发生模糊时发出。",
@@ -4930,7 +4930,7 @@
         },
         "inputotpui": "InputOtp 组件的 UI 类重载。"
       },
-      "packages_headless_src_components_input_types": {
+      "packages_aria_src_components_input_types": {
         "autocompleteinputemits": {
           "emits": "InputRoot 组件的事件。"
         },
@@ -5026,7 +5026,7 @@
         },
         "inputui": "输入组件的 UI 类重载。"
       },
-      "packages_headless_src_components_label_types": {
+      "packages_aria_src_components_label_types": {
         "checkboxlabelprops": {
           "props": "标签组件的属性"
         },
@@ -5036,7 +5036,7 @@
           }
         }
       },
-      "packages_headless_src_components_layout_types": {
+      "packages_aria_src_components_layout_types": {
         "layoutcollapsible": "LayoutCollapsible 的类型信息。",
         "layoutcompactemits": {
           "callables": {
@@ -5173,7 +5173,7 @@
         "layoutvariant": "LayoutVariant 的类型信息。",
         "type": ""
       },
-      "packages_headless_src_components_link_types": {
+      "packages_aria_src_components_link_types": {
         "linkbaseprops": {
           "members": {
             "external": "强制将链接视为外部链接（true）或内部链接（false）。这有助于处理边缘情况",
@@ -5207,7 +5207,7 @@
         },
         "type": ""
       },
-      "packages_headless_src_components_listbox_types": {
+      "packages_aria_src_components_listbox_types": {
         "comboboxgroupprops": {
           "props": "ListboxGroup 组件的属性。"
         },
@@ -5336,7 +5336,7 @@
         },
         "listboxvirtualizerslotsprops": "ListboxVirtualizerSlots 组件的属性。"
       },
-      "packages_headless_src_components_menu_index": {
+      "packages_aria_src_components_menu_index": {
         "menuseparatorprops": {
           "members": {
             "decorative": "组件是否纯粹是装饰性的。<br>当 \"true \"时，与可访问性相关的属性将被更新，以便\n使呈现的元素从可访问性树中移除。",
@@ -5344,7 +5344,7 @@
           }
         }
       },
-      "packages_headless_src_components_menu_types": {
+      "packages_aria_src_components_menu_types": {
         "menucheckboxgroupemits": {
           "callables": {
             "update_modelvalue": "当复选框组的值发生变化时，调用事件处理程序。"
@@ -5780,7 +5780,7 @@
         },
         "type": ""
       },
-      "packages_headless_src_components_menubar_types": {
+      "packages_aria_src_components_menubar_types": {
         "menubarcompactemits": {
           "callables": {
             "closeautofocus": "关闭时自动聚焦会调用事件处理程序。可以避免。",
@@ -5995,7 +5995,7 @@
         "menubarui": "Menubar 组件的 UI 类重载。",
         "type": ""
       },
-      "packages_headless_src_components_nav_menu_types": {
+      "packages_aria_src_components_nav_menu_types": {
         "navmenucompactemits": {
           "callables": {
             "select": "当选中链接时触发。",
@@ -6189,7 +6189,7 @@
         },
         "type": ""
       },
-      "packages_headless_src_components_page_tabs_types": {
+      "packages_aria_src_components_page_tabs_types": {
         "pagetabscloseprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
@@ -6289,7 +6289,7 @@
         "pagetabsstate": "PageTabsState 的状态值。",
         "pagetabsui": "PageTabs 组件的 UI 类重载。"
       },
-      "packages_headless_src_components_pagination_types": {
+      "packages_aria_src_components_pagination_types": {
         "paginationbuttonprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
@@ -6377,7 +6377,7 @@
         },
         "paginationui": "分页组件的 UI 类重载。"
       },
-      "packages_headless_src_components_password_types": {
+      "packages_aria_src_components_password_types": {
         "passwordcompactemits": {
           "callables": {
             "clear": "点击清除按钮时输出。",
@@ -6433,7 +6433,7 @@
         },
         "passwordui": "密码组件的用户界面类重载。"
       },
-      "packages_headless_src_components_popconfirm_types": {
+      "packages_aria_src_components_popconfirm_types": {
         "popconfirmanchorprops": {
           "members": {
             "as": "该组件应渲染为的元素或组件。可通过 `asChild` 覆盖。",
@@ -6649,7 +6649,7 @@
         "popconfirmtype": "支持的 popconfirm 值。",
         "popconfirmui": "Popconfirm 组件的 UI 类重载。"
       },
-      "packages_headless_src_components_popover_index": {
+      "packages_aria_src_components_popover_index": {
         "popoverarrowprops": "",
         "popoverportalprops": {
           "members": {
@@ -6660,7 +6660,7 @@
           }
         }
       },
-      "packages_headless_src_components_popover_types": {
+      "packages_aria_src_components_popover_types": {
         "popovercloseemits": {
           "callables": {
             "close": "关闭时发出。"
@@ -6792,7 +6792,7 @@
         "popoverui": "Popover 组件的 UI 类重载。",
         "type": ""
       },
-      "packages_headless_src_components_popper_types": {
+      "packages_aria_src_components_popper_types": {
         "comboboxarrowprops": {
           "props": ""
         },
@@ -7043,7 +7043,7 @@
         },
         "poppertriggertype": ""
       },
-      "packages_headless_src_components_portal_types": {
+      "packages_aria_src_components_portal_types": {
         "autocompleteportalprops": {
           "props": "门户组件的属性。"
         },
@@ -7056,7 +7056,7 @@
           }
         }
       },
-      "packages_headless_src_components_primitive_types": {
+      "packages_aria_src_components_primitive_types": {
         "astag": "AsTag 的类型信息",
         "primitiveprops": {
           "members": {
@@ -7073,7 +7073,7 @@
           "props": "Primitive 组件的属性。"
         }
       },
-      "packages_headless_src_components_progress_types": {
+      "packages_aria_src_components_progress_types": {
         "progresscirclecompactemits": {
           "callables": {
             "update_max": "当最大值发生变化时发出。",
@@ -7183,7 +7183,7 @@
         "progressstate": "ProgressState 的状态值。",
         "progressui": "Progress 组件的 UI 类重载。"
       },
-      "packages_headless_src_components_radio_group_types": {
+      "packages_aria_src_components_radio_group_types": {
         "radiogroupcardcompactemits": {
           "callables": {
             "update_modelvalue": "单选组值发生变化时调用的事件处理程序"
@@ -7298,7 +7298,7 @@
         "radioselectevent": "RadioSelectEvent 的类型信息。",
         "type": ""
       },
-      "packages_headless_src_components_rating_types": {
+      "packages_aria_src_components_rating_types": {
         "ratingitememits": {
           "emits": "RatingItem 组件的事件。"
         },
@@ -7337,7 +7337,7 @@
           "props": "RatingRoot 组件的属性。"
         }
       },
-      "packages_headless_src_components_scroll_area_types": {
+      "packages_aria_src_components_scroll_area_types": {
         "scrollareacompactemits": {
           "emits": "ScrollAreaCompact 组件的事件。"
         },
@@ -7409,7 +7409,7 @@
           "props": "ScrollAreaViewport 组件的属性。"
         }
       },
-      "packages_headless_src_components_segment_types": {
+      "packages_aria_src_components_segment_types": {
         "segmentcompactemits": {
           "callables": {
             "update_modelvalue": "值发生变化时调用事件处理程序"
@@ -7480,7 +7480,7 @@
         "segmentui": "为 Segment 组件重写用户界面类。",
         "type": ""
       },
-      "packages_headless_src_components_select_index": {
+      "packages_aria_src_components_select_index": {
         "selectportalprops": {
           "members": {
             "defer": "推迟解析 Teleport 目标，直到应用程序的其他部分安装完毕（需要 Vue 3.5.0 以上版本）\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
@@ -7490,7 +7490,7 @@
           }
         }
       },
-      "packages_headless_src_components_select_types": {
+      "packages_aria_src_components_select_types": {
         "selectclearprops": {
           "members": {
             "arialabel": "“清除”按钮的 ARIA 标签。",
@@ -7725,7 +7725,7 @@
           "props": "SelectViewport 组件的属性。"
         }
       },
-      "packages_headless_src_components_separator_types": {
+      "packages_aria_src_components_separator_types": {
         "separatorcompactprops": {
           "members": {
             "decorative": "组件是否纯粹是装饰性的。<br>当 \"true \"时，与可访问性相关的属性将被更新，以便\n使呈现的元素从可访问性树中移除。",
@@ -7753,7 +7753,7 @@
         },
         "separatorui": "分隔符组件的 UI 类重载。"
       },
-      "packages_headless_src_components_slider_types": {
+      "packages_aria_src_components_slider_types": {
         "slidercompactemits": {
           "callables": {
             "update_modelvalue": "当滑块值发生变化时，调用事件处理程序。",
@@ -7850,7 +7850,7 @@
         },
         "sliderui": "滑块组件的 UI 类重载。"
       },
-      "packages_headless_src_components_split_nav_types": {
+      "packages_aria_src_components_split_nav_types": {
         "splitnavmode": "SplitNav 组件可用的菜单样式。\n\n- `dual-vertical`：一级垂直 + 其余树状结构垂直。\n- `vertical-horizontal`：一级垂直布局 + 嵌套的 TreeNav。\n- `horizontal-vertical`：一级水平布局 + 嵌套的 TreeMenu。\n- `horizontal-dual-vertical`：一级水平布局 + 嵌套的双垂直布局。",
         "splitnavoptiondata": "SplitNav 组件的递归选项数据。",
         "splitnavrootemits": {
@@ -7895,7 +7895,7 @@
         "splitnavui": "SplitNav 组件的 UI 类重写。",
         "type": ""
       },
-      "packages_headless_src_components_splitter_types": {
+      "packages_aria_src_components_splitter_types": {
         "splittergroupemits": {
           "callables": {
             "layout": "当组布局发生变化时，调用事件处理程序。"
@@ -7917,7 +7917,7 @@
         },
         "splitterui": "分割器组件的 UI 类重载。"
       },
-      "packages_headless_src_components_stepper_types": {
+      "packages_aria_src_components_stepper_types": {
         "steppercompactemits": {
           "callables": {
             "update_modelvalue": "当模型值发生变化时发出。"
@@ -8020,7 +8020,7 @@
         "stepperui": "步进组件的 UI 类重载。",
         "type": ""
       },
-      "packages_headless_src_components_switch_types": {
+      "packages_aria_src_components_switch_types": {
         "switchcompactemits": {
           "callables": {
             "update_modelvalue": "当开关的值发生变化时，调用事件处理程序。"
@@ -8096,7 +8096,7 @@
         },
         "switchui": "Switch 组件的 UI 类重载。"
       },
-      "packages_headless_src_components_table_types": {
+      "packages_aria_src_components_table_types": {
         "tablebasedata": "TableBaseData 的类型信息。",
         "tablebodyprops": {
           "props": "TableBody 组件的属性。"
@@ -8498,7 +8498,7 @@
         },
         "type": ""
       },
-      "packages_headless_src_components_tabs_types": {
+      "packages_aria_src_components_tabs_types": {
         "tabsactivationmode": "TabsActivationMode 的类型信息。",
         "tabscompactemits": {
           "callables": {
@@ -8579,7 +8579,7 @@
         "tabsui": "标签组件的 UI 类重载。",
         "type": ""
       },
-      "packages_headless_src_components_tags_input_types": {
+      "packages_aria_src_components_tags_input_types": {
         "tagsinputclearprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
@@ -8713,7 +8713,7 @@
         },
         "tagsinputui": "标签输入组件的 UI 类重载。"
       },
-      "packages_headless_src_components_textarea_types": {
+      "packages_aria_src_components_textarea_types": {
         "textareaautosizeoptions": {
           "members": {
             "maxrows": "显示的最大行数",
@@ -8813,7 +8813,7 @@
         },
         "textareaui": "文本区组件的 UI 类重载。"
       },
-      "packages_headless_src_components_time_field_types": {
+      "packages_aria_src_components_time_field_types": {
         "timefieldcompactemits": {
           "callables": {
             "update_modelvalue": "当模型值发生变化时发出。",
@@ -8902,7 +8902,7 @@
         },
         "timefieldui": "TimeField 组件的 UI 类重载。"
       },
-      "packages_headless_src_components_time_range_field_types": {
+      "packages_aria_src_components_time_range_field_types": {
         "timerangefieldcompactemits": {
           "callables": {
             "update_endvalue": "在端值发生变化时输出。",
@@ -9011,7 +9011,7 @@
         },
         "timerangefieldui": "TimeRangeField 组件的 UI 类重载。"
       },
-      "packages_headless_src_components_toast_types": {
+      "packages_aria_src_components_toast_types": {
         "toasterprops": {
           "members": {
             "actionprops": "转发到操作元素的属性。",
@@ -9061,7 +9061,7 @@
           }
         }
       },
-      "packages_headless_src_components_toggle_group_types": {
+      "packages_aria_src_components_toggle_group_types": {
         "togglegroupitemprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
@@ -9099,7 +9099,7 @@
         },
         "togglegroupui": "ToggleGroup 组件的 UI 类重载。"
       },
-      "packages_headless_src_components_toggle_types": {
+      "packages_aria_src_components_toggle_types": {
         "toggleemits": {
           "callables": {
             "update_modelvalue": "当按下状态发生变化时，调用事件处理程序。"
@@ -9107,7 +9107,7 @@
           "emits": "切换组件的事件"
         }
       },
-      "packages_headless_src_components_toolbar_types": {
+      "packages_aria_src_components_toolbar_types": {
         "toolbarbuttonemits": {
           "callables": {
             "click": "点击时发出。"
@@ -9202,7 +9202,7 @@
         },
         "toolbarui": "工具栏组件的 UI 类重载。"
       },
-      "packages_headless_src_components_tooltip_index": {
+      "packages_aria_src_components_tooltip_index": {
         "tooltiparrowprops": "",
         "tooltipportalprops": {
           "members": {
@@ -9214,7 +9214,7 @@
         },
         "tooltipui": ""
       },
-      "packages_headless_src_components_tooltip_types": {
+      "packages_aria_src_components_tooltip_types": {
         "tooltipcompactemits": {
           "callables": {
             "closeautofocus": "在关闭时自动聚焦时触发的事件处理程序。可被阻止。",
@@ -9345,13 +9345,13 @@
           "props": "TooltipRoot 组件的属性。"
         }
       },
-      "packages_headless_src_components_tree_menu_types": {
+      "packages_aria_src_components_tree_menu_types": {
         "treemenubadgeprops": {
           "members": {
             "contentprops": "转发给徽章气泡元素的属性。",
             "open": "是否渲染徽章气泡。"
           },
-          "props": "用于在 TreeMenu 选项内部渲染的徽章标记属性。\n\n`badge` 系列仅用于 UI（其未通过无头模式测试），因此树状菜单会渲染其自身的\n徽章结构，而非组合无头徽章基元。该结构与已弃用的\n`BadgeCompactProps` 一致（不包含 `content`），该属性由选项通过 `TreeMenuBaseOptionData.badge` 提供。"
+          "props": "TreeMenu 选项内渲染的徽章标记属性。\n\n`badge` 系列仅用于 UI（因其未通过 aria 认证），因此树形菜单会渲染其自身的\n徽章结构，而非组合 aria 徽章基元。其结构与已弃用的\n`BadgeCompactProps` 相同，但不包含 `content` 属性——该属性由选项通过 `TreeMenuBaseOptionData.badge` 提供。"
         },
         "treemenubaseitemprops": {
           "members": {
@@ -9562,7 +9562,7 @@
         "treemenuuislot": "TreeMenu 组件的可用 UI 插槽。",
         "type": ""
       },
-      "packages_headless_src_components_tree_nav_types": {
+      "packages_aria_src_components_tree_nav_types": {
         "treenavbaseoptiondata": "TreeNav 条目的基础选项数据。\n\n除以下字段之外的项目自定义（徽章、标签、工具提示、\n操作等）应通过插槽（slots）实现，而非额外的数据字段。",
         "treenavcompactemits": {
           "callables": {
@@ -9706,7 +9706,7 @@
         },
         "treenavui": "TreeNav 组件的 UI 类重写。"
       },
-      "packages_headless_src_components_tree_types": {
+      "packages_aria_src_components_tree_types": {
         "ismultiple": "",
         "treeitememits": {
           "callables": {
@@ -9810,7 +9810,7 @@
           "props": "TreeVirtualizerRoot 组件的属性。"
         }
       },
-      "packages_headless_src_components_virtualizer_types": {
+      "packages_aria_src_components_virtualizer_types": {
         "virtualizercontentprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
@@ -9844,7 +9844,7 @@
           "props": "VirtualizerRoot 组件的属性。"
         }
       },
-      "packages_headless_src_components_visually_hidden_types": {
+      "packages_aria_src_components_visually_hidden_types": {
         "visuallyhiddenfeature": "VisuallyHiddenFeature 的类型信息。",
         "visuallyhiddeninputprops": {
           "members": {
@@ -9866,7 +9866,7 @@
           "props": "VisuallyHidden 组件的属性。"
         }
       },
-      "packages_headless_src_components_watermark_types": {
+      "packages_aria_src_components_watermark_types": {
         "watermarkcompactprops": {
           "members": {
             "content": "水印的文本内容。",
@@ -9909,10 +9909,10 @@
         },
         "watermarkui": "水印组件的 UI 类重载。"
       },
-      "packages_headless_src_composables_use_collection": {
+      "packages_aria_src_composables_use_collection": {
         "collectionitemdata": ""
       },
-      "packages_headless_src_composables_use_fuse": {
+      "packages_aria_src_composables_use_fuse": {
         "usefuseoptions": {
           "members": {
             "fuseoptions": "",
@@ -9921,7 +9921,7 @@
           }
         }
       },
-      "packages_headless_src_date_formatter": {
+      "packages_aria_src_date_formatter": {
         "formatter": {
           "callables": {
             "custom": "",
@@ -9941,7 +9941,7 @@
           }
         }
       },
-      "packages_headless_src_date_types": {
+      "packages_aria_src_date_types": {
         "datematcher": "",
         "daterange": {
           "members": {
@@ -9981,7 +9981,7 @@
         "weekdayformat": "",
         "weekstartson": ""
       },
-      "packages_headless_src_locale_types": {
+      "packages_aria_src_locale_types": {
         "localemessagesoverrides": {
           "members": {
             "alert": "",
@@ -10018,13 +10018,13 @@
           }
         }
       },
-      "packages_headless_src_types_color": {
+      "packages_aria_src_types_color": {
         "colorchannel": "",
         "colorformat": "",
         "colorspace": "",
         "normalizedcolor": ""
       },
-      "packages_headless_src_types_common": {
+      "packages_aria_src_types_common": {
         "acceptablebooleanvalue": "",
         "align": "",
         "alignside": "",
@@ -10043,20 +10043,20 @@
         "swipedirection": "",
         "uiclass": ""
       },
-      "packages_headless_src_types_dom": {
+      "packages_aria_src_types_dom": {
         "imageloadingstatus": ""
       },
-      "packages_headless_src_types_event": {
+      "packages_aria_src_types_event": {
         "focusoutsideevent": "",
         "pointerdownoutsideevent": "",
         "selectevent": "",
         "treeselectevent": "",
         "treetoggleevent": ""
       },
-      "packages_headless_src_types_path": {
+      "packages_aria_src_types_path": {
         "pathvalue": ""
       },
-      "packages_headless_src_types_vue": {
+      "packages_aria_src_types_vue": {
         "baseprops": ""
       },
       "packages_theme_src_storage": {

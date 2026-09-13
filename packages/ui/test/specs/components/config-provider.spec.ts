@@ -1,9 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
-import { createTheme } from '@soybeanjs/theme';
-import { THEME_INIT_STYLE_ID } from '@soybeanjs/theme/ssr';
-import { THEME_CSS_STORAGE_KEY, THEME_STORAGE_KEY, getStoredThemeConfig } from '@soybeanjs/theme/storage';
+import { createTheme } from '@vean/theme';
+import { THEME_INIT_STYLE_ID } from '@vean/theme/ssr';
+import { THEME_CSS_STORAGE_KEY, THEME_STORAGE_KEY, getStoredThemeConfig } from '@vean/theme/storage';
 import SAccordion from '@/components/accordion/accordion.vue';
 import SConfigProvider from '@/components/config-provider/config-provider.vue';
 import SIcon from '@/components/icon/icon.vue';
@@ -11,8 +11,8 @@ import { getA11yViolations } from '../../shared/a11y';
 
 // 部分 mock 主题引擎：保留真实实现，仅包装 createTheme / getStoredThemeConfig
 // 以便断言派生与存储读取的次数。
-vi.mock('@soybeanjs/theme', async importOriginal => {
-  const actual = await importOriginal<typeof import('@soybeanjs/theme')>();
+vi.mock('@vean/theme', async importOriginal => {
+  const actual = await importOriginal<typeof import('@vean/theme')>();
 
   return {
     ...actual,
@@ -20,8 +20,8 @@ vi.mock('@soybeanjs/theme', async importOriginal => {
   };
 });
 
-vi.mock('@soybeanjs/theme/storage', async importOriginal => {
-  const actual = await importOriginal<typeof import('@soybeanjs/theme/storage')>();
+vi.mock('@vean/theme/storage', async importOriginal => {
+  const actual = await importOriginal<typeof import('@vean/theme/storage')>();
 
   return {
     ...actual,
@@ -40,9 +40,9 @@ describe('SConfigProvider', () => {
     // useStyleTag (headless utilities) leaves style elements in <head>; the
     // inline theme <style> is removed with the component tree on unmount. Clear
     // leftovers between tests so assertions are not polluted by prior mounts.
-    getStyleEl('__SoybeanUI_theme')?.remove();
-    getStyleEl('__SoybeanHeadless_Styles')?.remove();
-    getStyleEl('__SoybeanUI_toastStyle')?.remove();
+    getStyleEl('__Vean_theme')?.remove();
+    getStyleEl('__Vean Aria_Styles')?.remove();
+    getStyleEl('__Vean_toastStyle')?.remove();
     getStyleEl(THEME_INIT_STYLE_ID)?.remove();
   });
 
@@ -80,7 +80,7 @@ describe('SConfigProvider', () => {
         attachTo: document.body
       });
 
-      const styleEl = getStyleEl('__SoybeanUI_theme');
+      const styleEl = getStyleEl('__Vean_theme');
       expect(styleEl).toBeTruthy();
       expect(styleEl!.textContent).toContain('--');
 
@@ -94,11 +94,11 @@ describe('SConfigProvider', () => {
         attachTo: document.body
       });
 
-      const firstCss = getStyleEl('__SoybeanUI_theme')?.textContent ?? '';
+      const firstCss = getStyleEl('__Vean_theme')?.textContent ?? '';
 
       await wrapper.setProps({ theme: { base: 'slate', primary: 'blue' } });
 
-      const secondCss = getStyleEl('__SoybeanUI_theme')?.textContent ?? '';
+      const secondCss = getStyleEl('__Vean_theme')?.textContent ?? '';
       expect(secondCss).toBeTruthy();
       expect(secondCss).not.toBe(firstCss);
 
@@ -117,7 +117,7 @@ describe('SConfigProvider', () => {
         { attachTo: document.body }
       );
 
-      expect(wrapper.find('[data-soybean-accordion-root]').attributes('dir')).toBe('rtl');
+      expect(wrapper.find('[data-vean-accordion-root]').attributes('dir')).toBe('rtl');
 
       wrapper.unmount();
     });
@@ -132,7 +132,7 @@ describe('SConfigProvider', () => {
         { attachTo: document.body }
       );
 
-      expect(wrapper.find('[data-soybean-accordion-root]').attributes('dir')).toBe('ltr');
+      expect(wrapper.find('[data-vean-accordion-root]').attributes('dir')).toBe('ltr');
 
       wrapper.unmount();
     });
@@ -147,7 +147,7 @@ describe('SConfigProvider', () => {
         { attachTo: document.body }
       );
 
-      expect(wrapper.find('[data-soybean-accordion-root]').attributes('dir')).toBe('ltr');
+      expect(wrapper.find('[data-vean-accordion-root]').attributes('dir')).toBe('ltr');
 
       wrapper.unmount();
     });
@@ -162,7 +162,7 @@ describe('SConfigProvider', () => {
         { attachTo: document.body }
       );
 
-      expect(wrapper.find('[data-soybean-accordion-root]').attributes('dir')).toBe('ltr');
+      expect(wrapper.find('[data-vean-accordion-root]').attributes('dir')).toBe('ltr');
 
       wrapper.unmount();
     });
@@ -175,7 +175,7 @@ describe('SConfigProvider', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-toast-provider]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-toast-provider]').exists()).toBe(true);
 
       wrapper.unmount();
     });
@@ -187,7 +187,7 @@ describe('SConfigProvider', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-toast-provider]').exists()).toBe(false);
+      expect(wrapper.find('[data-vean-toast-provider]').exists()).toBe(false);
 
       wrapper.unmount();
     });
@@ -312,7 +312,7 @@ describe('SConfigProvider', () => {
 
     it('prefers an inline preset over a stored { name } reference', () => {
       window.localStorage.setItem(
-        'soybean-ui-theme-presets',
+        'vean-theme-presets',
         JSON.stringify({
           version: 1,
           presets: {
@@ -359,7 +359,7 @@ describe('SConfigProvider', () => {
       expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('preset "missing" not found'));
 
       // 回退内置：仍生成主题 CSS
-      expect(getStyleEl('__SoybeanUI_theme')?.textContent).toContain('--');
+      expect(getStyleEl('__Vean_theme')?.textContent).toContain('--');
 
       warnSpy.mockRestore();
       wrapper.unmount();
@@ -396,7 +396,7 @@ describe('SConfigProvider', () => {
       const snapshot = window.localStorage.getItem(THEME_CSS_STORAGE_KEY);
 
       expect(snapshot).toContain('--');
-      expect(snapshot).toBe(getStyleEl('__SoybeanUI_theme')?.textContent);
+      expect(snapshot).toBe(getStyleEl('__Vean_theme')?.textContent);
 
       wrapper.unmount();
     });

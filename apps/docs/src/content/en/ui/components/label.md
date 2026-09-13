@@ -35,9 +35,9 @@ The `SLabel` component renders a native `<label>` element that provides an acces
 
 ### Architecture and benchmark differences
 
-SoybeanUI splits `Label` into a headless layer (`@soybeanjs/headless/label`) that owns the `<label>` element, `for` association, and double-click text-selection prevention, and a styled layer (`@soybeanjs/ui`) that owns the `cv()` variant recipe (size). This follows the shadcn/ui headless/styled separation, which itself derives from Radix UI's Label primitive.
+Vean splits `Label` into a headless layer (`@vean/aria/label`) that owns the `<label>` element, `for` association, and double-click text-selection prevention, and a styled layer (`@vean/ui`) that owns the `cv()` variant recipe (size). This follows the shadcn/ui headless/styled separation, which itself derives from Radix UI's Label primitive.
 
-| Aspect               | SoybeanUI                     | shadcn/ui `Label` | Ant Design `Form.Label` | Element Plus `FormLabel` | MUI `InputLabel` |
+| Aspect               | Vean                          | shadcn/ui `Label` | Ant Design `Form.Label` | Element Plus `FormLabel` | MUI `InputLabel` |
 | :------------------- | :---------------------------- | :---------------- | :---------------------- | :----------------------- | :--------------- |
 | Architecture         | headless + styled split       | headless + styled | form-coupled            | form-coupled             | styled only      |
 | Native `<label>`     | ✅                            | ✅                | ✅ (within Form)        | ✅ (within Form)         | ✅               |

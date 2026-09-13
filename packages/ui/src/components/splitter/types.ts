@@ -6,8 +6,8 @@ import type {
   SplitterResizeHandleEmits as HeadlessSplitterResizeHandleEmits,
   SplitterResizeHandleProps as HeadlessSplitterResizeHandleProps,
   SplitterUi
-} from '@soybeanjs/headless/splitter';
-import type { ClassValue } from '@soybeanjs/headless/types';
+} from '@vean/aria/splitter';
+import type { ClassValue } from '@vean/aria/types';
 import type { ThemeSize } from '@/theme';
 
 /**

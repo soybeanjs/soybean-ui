@@ -1,7 +1,7 @@
-import type { ConfigProviderProps as _ConfigProviderProps } from '@soybeanjs/headless/config-provider';
-import type { ProgressProviderProps } from '@soybeanjs/headless/progress';
-import type { ThemeOptions } from '@soybeanjs/theme';
-import type { CustomThemeColorPreset, ThemeConfigState, ThemePresetInput } from '@soybeanjs/theme/storage';
+import type { ConfigProviderProps as _ConfigProviderProps } from '@vean/aria/config-provider';
+import type { ProgressProviderProps } from '@vean/aria/progress';
+import type { ThemeOptions } from '@vean/theme';
+import type { CustomThemeColorPreset, ThemeConfigState, ThemePresetInput } from '@vean/theme/storage';
 import type { ThemeSize } from '@/theme';
 import type { ToastProviderProps } from '../toast/types';
 

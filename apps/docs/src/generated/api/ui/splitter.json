@@ -28,8 +28,8 @@
                 "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
-                "sourcePath": "packages/headless/src/types/common.ts",
+                "descriptionKey": "api.generated.packages_aria_src_types_common.classvalue",
+                "sourcePath": "packages/aria/src/types/common.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -53,8 +53,8 @@
                 "type": "{ root: ClassValue; panel: ClassValue; resizeHandle: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Splitter component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_splitter_types.splitterui",
-                "sourcePath": "packages/headless/src/components/splitter/types.ts",
+                "descriptionKey": "api.generated.packages_aria_src_components_splitter_types.splitterui",
+                "sourcePath": "packages/aria/src/components/splitter/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -95,7 +95,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splittergroupprops.members.direction",
             "default": null,
             "inheritedFrom": "HeadlessSplitterGroupProps.direction",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "referencedTypes": [
               {
                 "name": "DataOrientation",
@@ -103,8 +103,8 @@
                 "type": "'vertical' | 'horizontal'",
                 "resolvedType": "'vertical' | 'horizontal'",
                 "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
-                "sourcePath": "packages/headless/src/types/common.ts",
+                "descriptionKey": "api.generated.packages_aria_src_types_common.dataorientation",
+                "sourcePath": "packages/aria/src/types/common.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -120,7 +120,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splittergroupprops.members.dir",
             "default": null,
             "inheritedFrom": "HeadlessSplitterGroupProps.dir",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "referencedTypes": [
               {
                 "name": "Direction",
@@ -128,8 +128,8 @@
                 "type": "'ltr' | 'rtl'",
                 "resolvedType": "'ltr' | 'rtl'",
                 "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
-                "sourcePath": "packages/headless/src/types/common.ts",
+                "descriptionKey": "api.generated.packages_aria_src_types_common.direction",
+                "sourcePath": "packages/aria/src/types/common.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -145,7 +145,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splittergroupprops.members.defaultlayout",
             "default": null,
             "inheritedFrom": "HeadlessSplitterGroupProps.defaultLayout",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "referencedTypes": []
           },
           {
@@ -156,7 +156,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splittergroupprops.members.keyboardresizeby",
             "default": null,
             "inheritedFrom": "HeadlessSplitterGroupProps.keyboardResizeBy",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "referencedTypes": []
           },
           {
@@ -167,7 +167,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splittergroupprops.members.aschild",
             "default": null,
             "inheritedFrom": "HeadlessSplitterGroupProps.asChild",
-            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "sourcePath": "packages/aria/src/components/primitive/types.ts",
             "referencedTypes": []
           },
           {
@@ -178,7 +178,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splittergroupprops.members.as",
             "default": "'div'",
             "inheritedFrom": "HeadlessSplitterGroupProps.as",
-            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "sourcePath": "packages/aria/src/components/primitive/types.ts",
             "referencedTypes": [
               {
                 "name": "Component",
@@ -225,7 +225,7 @@
             "required": true,
             "description": "Event handler called when the group layout changes.",
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splittergroupemits.callables.layout",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "referencedTypes": []
           }
         ],
@@ -236,8 +236,8 @@
             "type": "{ layout: [value: number[]]; }",
             "resolvedType": "{ layout: [value: number[]] }",
             "description": "Events for the SplitterGroup component.",
-            "descriptionKey": "api.generated.packages_headless_src_components_splitter_types.splittergroupemits",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "descriptionKey": "api.generated.packages_aria_src_components_splitter_types.splittergroupemits",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "typeParameters": [],
             "external": false,
             "members": [],
@@ -248,8 +248,8 @@
                 "parameters": "value: number[]",
                 "required": true,
                 "description": "Event handler called when the group layout changes.",
-                "descriptionKey": "api.generated.packages_headless_src_components_splitter_types.splittergroupemits.callables.layout",
-                "sourcePath": "packages/headless/src/components/splitter/types.ts",
+                "descriptionKey": "api.generated.packages_aria_src_components_splitter_types.splittergroupemits.callables.layout",
+                "sourcePath": "packages/aria/src/components/splitter/types.ts",
                 "referencedTypes": []
               }
             ]
@@ -284,8 +284,8 @@
                 "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
-                "sourcePath": "packages/headless/src/types/common.ts",
+                "descriptionKey": "api.generated.packages_aria_src_types_common.classvalue",
+                "sourcePath": "packages/aria/src/types/common.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -301,7 +301,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splitterpanelprops.members.defaultsize",
             "default": null,
             "inheritedFrom": "HeadlessSplitterPanelProps.defaultSize",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "referencedTypes": []
           },
           {
@@ -312,7 +312,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splitterpanelprops.members.collapsible",
             "default": null,
             "inheritedFrom": "HeadlessSplitterPanelProps.collapsible",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "referencedTypes": []
           },
           {
@@ -323,7 +323,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splitterpanelprops.members.collapsedsize",
             "default": null,
             "inheritedFrom": "HeadlessSplitterPanelProps.collapsedSize",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "referencedTypes": []
           },
           {
@@ -334,7 +334,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splitterpanelprops.members.maxsize",
             "default": null,
             "inheritedFrom": "HeadlessSplitterPanelProps.maxSize",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "referencedTypes": []
           },
           {
@@ -345,7 +345,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splitterpanelprops.members.minsize",
             "default": null,
             "inheritedFrom": "HeadlessSplitterPanelProps.minSize",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "referencedTypes": []
           },
           {
@@ -356,7 +356,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splitterpanelprops.members.order",
             "default": null,
             "inheritedFrom": "HeadlessSplitterPanelProps.order",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "referencedTypes": []
           },
           {
@@ -367,7 +367,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splitterpanelprops.members.aschild",
             "default": null,
             "inheritedFrom": "HeadlessSplitterPanelProps.asChild",
-            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "sourcePath": "packages/aria/src/components/primitive/types.ts",
             "referencedTypes": []
           },
           {
@@ -378,7 +378,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splitterpanelprops.members.as",
             "default": "'div'",
             "inheritedFrom": "HeadlessSplitterPanelProps.as",
-            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "sourcePath": "packages/aria/src/components/primitive/types.ts",
             "referencedTypes": [
               {
                 "name": "Component",
@@ -425,7 +425,7 @@
             "required": true,
             "description": "Event handler called when the panel collapses.",
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splitterpanelemits.callables.collapse",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "referencedTypes": []
           },
           {
@@ -435,7 +435,7 @@
             "required": true,
             "description": "Event handler called when the panel expands.",
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splitterpanelemits.callables.expand",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "referencedTypes": []
           },
           {
@@ -445,7 +445,7 @@
             "required": true,
             "description": "Event handler called when the panel size changes.",
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splitterpanelemits.callables.resize",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "referencedTypes": []
           }
         ],
@@ -456,8 +456,8 @@
             "type": "{ collapse: []; expand: []; resize: [size: number, prevSize: number | undefined]; }",
             "resolvedType": "{ collapse: []; expand: []; resize: [size: number, prevSize: number | undefined] }",
             "description": "Events for the SplitterPanel component.",
-            "descriptionKey": "api.generated.packages_headless_src_components_splitter_types.splitterpanelemits",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "descriptionKey": "api.generated.packages_aria_src_components_splitter_types.splitterpanelemits",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "typeParameters": [],
             "external": false,
             "members": [
@@ -466,10 +466,10 @@
                 "type": "[]",
                 "required": true,
                 "description": "Event handler called when the panel collapses.",
-                "descriptionKey": "api.generated.packages_headless_src_components_splitter_types.splitterpanelemits.members.collapse",
+                "descriptionKey": "api.generated.packages_aria_src_components_splitter_types.splitterpanelemits.members.collapse",
                 "default": null,
                 "inheritedFrom": null,
-                "sourcePath": "packages/headless/src/components/splitter/types.ts",
+                "sourcePath": "packages/aria/src/components/splitter/types.ts",
                 "referencedTypes": []
               },
               {
@@ -477,10 +477,10 @@
                 "type": "[]",
                 "required": true,
                 "description": "Event handler called when the panel expands.",
-                "descriptionKey": "api.generated.packages_headless_src_components_splitter_types.splitterpanelemits.members.expand",
+                "descriptionKey": "api.generated.packages_aria_src_components_splitter_types.splitterpanelemits.members.expand",
                 "default": null,
                 "inheritedFrom": null,
-                "sourcePath": "packages/headless/src/components/splitter/types.ts",
+                "sourcePath": "packages/aria/src/components/splitter/types.ts",
                 "referencedTypes": []
               }
             ],
@@ -491,8 +491,8 @@
                 "parameters": "size: number, prevSize: number | undefined",
                 "required": true,
                 "description": "Event handler called when the panel size changes.",
-                "descriptionKey": "api.generated.packages_headless_src_components_splitter_types.splitterpanelemits.callables.resize",
-                "sourcePath": "packages/headless/src/components/splitter/types.ts",
+                "descriptionKey": "api.generated.packages_aria_src_components_splitter_types.splitterpanelemits.callables.resize",
+                "sourcePath": "packages/aria/src/components/splitter/types.ts",
                 "referencedTypes": []
               }
             ]
@@ -527,8 +527,8 @@
                 "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
-                "sourcePath": "packages/headless/src/types/common.ts",
+                "descriptionKey": "api.generated.packages_aria_src_types_common.classvalue",
+                "sourcePath": "packages/aria/src/types/common.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -555,7 +555,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splitterresizehandleprops.members.disabled",
             "default": null,
             "inheritedFrom": "HeadlessSplitterResizeHandleProps.disabled",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "referencedTypes": []
           },
           {
@@ -566,7 +566,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splitterresizehandleprops.members.tabindex",
             "default": null,
             "inheritedFrom": "HeadlessSplitterResizeHandleProps.tabindex",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "referencedTypes": []
           },
           {
@@ -577,7 +577,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splitterresizehandleprops.members.aschild",
             "default": null,
             "inheritedFrom": "HeadlessSplitterResizeHandleProps.asChild",
-            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "sourcePath": "packages/aria/src/components/primitive/types.ts",
             "referencedTypes": []
           },
           {
@@ -588,7 +588,7 @@
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splitterresizehandleprops.members.as",
             "default": "'div'",
             "inheritedFrom": "HeadlessSplitterResizeHandleProps.as",
-            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "sourcePath": "packages/aria/src/components/primitive/types.ts",
             "referencedTypes": [
               {
                 "name": "Component",
@@ -635,7 +635,7 @@
             "required": true,
             "description": "Event handler called when dragging state changes.",
             "descriptionKey": "api.generated.packages_ui_src_components_splitter_types.splitterresizehandleemits.callables.dragging",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "referencedTypes": []
           }
         ],
@@ -646,8 +646,8 @@
             "type": "{ dragging: [value: boolean]; }",
             "resolvedType": "{ dragging: [value: boolean] }",
             "description": "Events for the SplitterResizeHandle component.",
-            "descriptionKey": "api.generated.packages_headless_src_components_splitter_types.splitterresizehandleemits",
-            "sourcePath": "packages/headless/src/components/splitter/types.ts",
+            "descriptionKey": "api.generated.packages_aria_src_components_splitter_types.splitterresizehandleemits",
+            "sourcePath": "packages/aria/src/components/splitter/types.ts",
             "typeParameters": [],
             "external": false,
             "members": [],
@@ -658,8 +658,8 @@
                 "parameters": "value: boolean",
                 "required": true,
                 "description": "Event handler called when dragging state changes.",
-                "descriptionKey": "api.generated.packages_headless_src_components_splitter_types.splitterresizehandleemits.callables.dragging",
-                "sourcePath": "packages/headless/src/components/splitter/types.ts",
+                "descriptionKey": "api.generated.packages_aria_src_components_splitter_types.splitterresizehandleemits.callables.dragging",
+                "sourcePath": "packages/aria/src/components/splitter/types.ts",
                 "referencedTypes": []
               }
             ]

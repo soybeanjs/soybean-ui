@@ -62,8 +62,8 @@ describe('SDrawer (e2e)', () => {
     await userEvent.click(page.getByRole('button', { name: 'Open Drawer' }));
     await expect.element(page.getByRole('dialog')).toBeVisible();
 
-    const trigger = document.querySelector('[data-soybean-drawer-trigger]');
-    const popup = document.querySelector('[data-soybean-drawer-popup]');
+    const trigger = document.querySelector('[data-vean-drawer-trigger]');
+    const popup = document.querySelector('[data-vean-drawer-popup]');
 
     expect(trigger?.getAttribute('aria-controls')).toBe(popup?.getAttribute('id'));
     expect(trigger?.getAttribute('aria-expanded')).toBe('true');

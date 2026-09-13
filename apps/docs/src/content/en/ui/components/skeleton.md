@@ -43,16 +43,16 @@ Use it to reserve space and reduce layout shift while data loads — cards, tabl
 
 ### Architecture and benchmark differences
 
-The headless `Skeleton` is a state-free primitive that only owns the decorative `aria-hidden` default and polymorphism, while `SSkeleton` keeps all styling in `skeletonVariants`. This mirrors shadcn/ui's headless/styled split, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a single styled skeleton with `paragraph`/`avatar`/`title` composition props. SoybeanUI stays minimal (one primitive) and expects consumers to compose placeholders with grid/flex — the `size` scale and `rounded` pill shape cover the common cases the single-package libraries expose as presets.
+The headless `Skeleton` is a state-free primitive that only owns the decorative `aria-hidden` default and polymorphism, while `SSkeleton` keeps all styling in `skeletonVariants`. This mirrors shadcn/ui's headless/styled split, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a single styled skeleton with `paragraph`/`avatar`/`title` composition props. Vean stays minimal (one primitive) and expects consumers to compose placeholders with grid/flex — the `size` scale and `rounded` pill shape cover the common cases the single-package libraries expose as presets.
 
-| Capability               | SoybeanUI | shadcn/ui | Ant Design Skeleton | Element Plus Skeleton | Mantine Skeleton | Naive UI Skeleton |
-| :----------------------- | :-------: | :-------: | :-----------------: | :-------------------: | :--------------: | :---------------: |
-| Headless/styled split    |    ✅     |    ✅     |          —          |           —           |        —         |         —         |
-| Animated pulse           |    ✅     |    ✅     |         ✅          |          ✅           |        ✅        |        ✅         |
-| Size variants (6)        |    ✅     |     —     |          —          |          ✅           |        ✅        |         —         |
-| Shape (rounded / pill)   |    ✅     |     —     |          —          |           —           |        —         |         —         |
-| `aria-hidden` by default |    ✅     |     —     |          —          |           —           |        —         |         —         |
-| `as`/`asChild`           |    ✅     |    ✅     |          —          |           —           |        —         |         —         |
+| Capability               | Vean | shadcn/ui | Ant Design Skeleton | Element Plus Skeleton | Mantine Skeleton | Naive UI Skeleton |
+| :----------------------- | :--: | :-------: | :-----------------: | :-------------------: | :--------------: | :---------------: |
+| Headless/styled split    |  ✅  |    ✅     |          —          |           —           |        —         |         —         |
+| Animated pulse           |  ✅  |    ✅     |         ✅          |          ✅           |        ✅        |        ✅         |
+| Size variants (6)        |  ✅  |     —     |          —          |          ✅           |        ✅        |         —         |
+| Shape (rounded / pill)   |  ✅  |     —     |          —          |           —           |        —         |         —         |
+| `aria-hidden` by default |  ✅  |     —     |          —          |           —           |        —         |         —         |
+| `as`/`asChild`           |  ✅  |    ✅     |          —          |           —           |        —         |         —         |
 
 `—` = unsupported or a different interaction model.
 

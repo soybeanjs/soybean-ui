@@ -47,16 +47,16 @@ head:
 
 ### 架构与对标差异
 
-`ColorSwatchPickerCompact` 负责色板迭代（条目 + 色块 + 指示器），所有基础组件保持零样式，仅由 UI 包装组件注入 `colorSwatchPickerVariants` 类。这与 radix-ui-color/shadcn-ui 的 headless 分离一致，构建于共享 listbox 基础组件之上。Ant Design、Element Plus、Mantine、Naive UI 在单个颜色选择器中提供预设行；SoybeanUI 暴露独立的基于 listbox 的色块选择器，带单选/多选、勾选指示器、形状/尺寸控制与完整插槽覆盖。
+`ColorSwatchPickerCompact` 负责色板迭代（条目 + 色块 + 指示器），所有基础组件保持零样式，仅由 UI 包装组件注入 `colorSwatchPickerVariants` 类。这与 radix-ui-color/shadcn-ui 的 headless 分离一致，构建于共享 listbox 基础组件之上。Ant Design、Element Plus、Mantine、Naive UI 在单个颜色选择器中提供预设行；Vean 暴露独立的基于 listbox 的色块选择器，带单选/多选、勾选指示器、形状/尺寸控制与完整插槽覆盖。
 
-| 能力                  | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :-------------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| 基于 headless listbox |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 单选/多选             |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| 勾选指示器            |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Roving focus          |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 形状（方/圆）         |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| 尺寸（6）             |    ✅     |     —     |     —      |      —       |    —    |    —     |
+| 能力                  | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :-------------------- | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| 基于 headless listbox |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 单选/多选             |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| 勾选指示器            |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Roving focus          |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 形状（方/圆）         |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| 尺寸（6）             |  ✅  |     —     |     —      |      —       |    —    |    —     |
 
 `—` = 不支持或采用不同交互模型。
 

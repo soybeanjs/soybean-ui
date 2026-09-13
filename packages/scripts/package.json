@@ -1,8 +1,8 @@
 {
-  "name": "@soybeanjs/scripts",
+  "name": "@vean/scripts",
   "version": "0.50.0-beta.1",
   "private": true,
-  "description": "SoybeanUI repo generators (api / changelog / metadata / skills), not published. Binary: sui.",
+  "description": "Vean repo generators (api / changelog / metadata / skills), not published. Binary: sui.",
   "license": "MIT",
   "bin": {
     "sui": "./bin/index.js"
@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit --skipLibCheck"
   },
   "devDependencies": {
-    "@types/node": "^26.5.1",
+    "@types/node": "^26.6.1",
     "cac": "^7.0.0",
     "tsx": "^4.23.13",
     "typedoc": "^0.28.20",

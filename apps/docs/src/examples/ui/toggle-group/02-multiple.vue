@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SToggleGroup, SToggleGroupItem } from '@soybeanjs/ui';
+import { SToggleGroup, SToggleGroupItem } from '@vean/ui';
 
 const value = ref(['left']);
 </script>

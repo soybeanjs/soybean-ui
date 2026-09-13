@@ -1,14 +1,14 @@
 ---
 head:
   title: 可编辑文本
-  description: '用于在预览态与编辑态之间切换的内联文本编辑组件。预览态以可聚焦文本呈现（或占位符），聚焦/双击/点击编辑按钮后切换为编辑态，提交（回车/blur/提交按钮）或取消（Esc/取消按钮）后回到预览态。采用 headless 核心 + 样式封装的结构：@soybeanjs/headless 中的 EditableRoot 等 8 个组件（零样式）实现完整状态机，SEditable 封装注入 editableVariants 样式（8 个插槽：root/area/preview/input/controls/editTrigger/submitTrigger/cancelTrigger）。'
+  description: '用于在预览态与编辑态之间切换的内联文本编辑组件。预览态以可聚焦文本呈现（或占位符），聚焦/双击/点击编辑按钮后切换为编辑态，提交（回车/blur/提交按钮）或取消（Esc/取消按钮）后回到预览态。采用 headless 核心 + 样式封装的结构：@vean/aria 中的 EditableRoot 等 8 个组件（零样式）实现完整状态机，SEditable 封装注入 editableVariants 样式（8 个插槽：root/area/preview/input/controls/editTrigger/submitTrigger/cancelTrigger）。'
 ---
 
 # 可编辑文本
 
 ## 概述
 
-用于在预览态与编辑态之间切换的内联文本编辑组件。预览态以可聚焦文本呈现（或占位符），聚焦/双击/点击编辑按钮后切换为编辑态，提交（回车/blur/提交按钮）或取消（Esc/取消按钮）后回到预览态。采用 headless 核心 + 样式封装的结构：`@soybeanjs/headless` 中的 `EditableRoot` 等 8 个组件（零样式）实现完整状态机，`SEditable` 封装注入 `editableVariants` 样式（8 个插槽：root/area/preview/input/controls/editTrigger/submitTrigger/cancelTrigger）。
+用于在预览态与编辑态之间切换的内联文本编辑组件。预览态以可聚焦文本呈现（或占位符），聚焦/双击/点击编辑按钮后切换为编辑态，提交（回车/blur/提交按钮）或取消（Esc/取消按钮）后回到预览态。采用 headless 核心 + 样式封装的结构：`@vean/aria` 中的 `EditableRoot` 等 8 个组件（零样式）实现完整状态机，`SEditable` 封装注入 `editableVariants` 样式（8 个插槽：root/area/preview/input/controls/editTrigger/submitTrigger/cancelTrigger）。
 
 ## 用法
 
@@ -55,20 +55,20 @@ head:
 
 `EditableRoot` 用 `useControllableState` 统一受控/非受控；`inputValue`（编辑缓冲）与 `modelValue`（提交值）分离，`currentValue` 按状态取其一。编辑态下外部 `modelValue` 推送不会覆盖正在输入的内容（提交/取消时才回写），避免受控父组件更新打断输入。激活（focus/dblclick/edit trigger）与提交（blur/enter/提交按钮）双向解耦，`useFocusOutside`/`usePointerdownOutside` 以 `isEditing` 为门控实现失焦提交。`autoResize` 用 inline-grid + `grid-template-columns: auto` 让输入框贴内容宽度。与 reka-ui `Editable` 同源设计（激活/提交模式、`selectOnFocus`、`startWithEditMode`、表单代理一应俱全）；Ant Design 的 `Typography` editable 仅按钮激活 + 受控 editing；Element Plus 与 shadcn/ui 无对应组件；Mantine `EditableText` 覆盖激活/提交的子集。
 
-| 能力                             | SoybeanUI | reka-ui | Ant Design Typography | Mantine EditableText | Element Plus | shadcn/ui |
-| :------------------------------- | :-------: | :-----: | :-------------------: | :------------------: | :----------: | :-------: |
-| headless/styled 分离             |    ✅     |   ✅    |           —           |          —           |      —       |     —     |
-| 激活模式（focus/dblclick/none）  |    ✅     |   ✅    |           —           |          ⚠️          |      —       |     —     |
-| 提交模式（blur/enter/none/both） |    ✅     |   ✅    |           —           |          ⚠️          |      —       |     —     |
-| Esc 取消                         |    ✅     |   ✅    |          ⚠️           |          ✅          |      —       |     —     |
-| `selectOnFocus`                  |    ✅     |   ✅    |           —           |          ✅          |      —       |     —     |
-| `startWithEditMode`              |    ✅     |   ✅    |          ⚠️           |          ✅          |      —       |     —     |
-| `autoResize`（自适应宽度）       |    ✅     |   ✅    |           —           |          —           |      —       |     —     |
-| 表单代理（name + form 隐藏输入） |    ✅     |   ✅    |           —           |          —           |      —       |     —     |
-| 触发按钮本地化 `aria-label`      |    ✅     |   ⚠️    |           —           |          —           |      —       |     —     |
-| 受控/非受控 + 提交事件           |    ✅     |   ✅    |          ✅           |          ✅          |      —       |     —     |
+| 能力                             | Vean | reka-ui | Ant Design Typography | Mantine EditableText | Element Plus | shadcn/ui |
+| :------------------------------- | :--: | :-----: | :-------------------: | :------------------: | :----------: | :-------: |
+| headless/styled 分离             |  ✅  |   ✅    |           —           |          —           |      —       |     —     |
+| 激活模式（focus/dblclick/none）  |  ✅  |   ✅    |           —           |          ⚠️          |      —       |     —     |
+| 提交模式（blur/enter/none/both） |  ✅  |   ✅    |           —           |          ⚠️          |      —       |     —     |
+| Esc 取消                         |  ✅  |   ✅    |          ⚠️           |          ✅          |      —       |     —     |
+| `selectOnFocus`                  |  ✅  |   ✅    |           —           |          ✅          |      —       |     —     |
+| `startWithEditMode`              |  ✅  |   ✅    |          ⚠️           |          ✅          |      —       |     —     |
+| `autoResize`（自适应宽度）       |  ✅  |   ✅    |           —           |          —           |      —       |     —     |
+| 表单代理（name + form 隐藏输入） |  ✅  |   ✅    |           —           |          —           |      —       |     —     |
+| 触发按钮本地化 `aria-label`      |  ✅  |   ⚠️    |           —           |          —           |      —       |     —     |
+| 受控/非受控 + 提交事件           |  ✅  |   ✅    |          ✅           |          ✅          |      —       |     —     |
 
-`⚠️` = 部分支持（Mantine 经 `activateOnFocus`/`submitOnBlur` 覆盖激活与提交子集；AntD 经受控 `editing` 覆盖 `startWithEditMode` 类行为；reka-ui 触发按钮 `aria-label` 硬编码，SoybeanUI 用 `useLocaleMessages` 本地化）。
+`⚠️` = 部分支持（Mantine 经 `activateOnFocus`/`submitOnBlur` 覆盖激活与提交子集；AntD 经受控 `editing` 覆盖 `startWithEditMode` 类行为；reka-ui 触发按钮 `aria-label` 硬编码，Vean 用 `useLocaleMessages` 本地化）。
 
 ### 注意事项
 

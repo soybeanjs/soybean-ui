@@ -1,7 +1,7 @@
 ---
 head:
   title: Brand Migration Guide — SoybeanUI to Vean
-  description: Full migration guide for the SoybeanUI → Vean rename, covering package names and scope, the runtime contract renames (data-soybean-* / --soybean-*), Nuxt and UnoCSS config updates, CLI migration, and the bundled codemod.
+  description: Full migration guide for the SoybeanUI → Vean rename, covering package names and scope, the runtime contract renames (data-soybean-* / --soybean-*), Nuxt and UnoCSS config updates, CLI migration, plus the global replacement and verification checklists.
 ---
 
 # Upgrade Guide: SoybeanUI → Vean
@@ -116,7 +116,7 @@ Component **slot marker attributes** and **scoped CSS variables** are rebranded 
 }
 ```
 
-If your project leans on `data-soybean-*` or `--soybean-*`, run the codemod below with `--runtime-contract` to rewrite them in one pass.
+If your project leans on `data-soybean-*` or `--soybean-*`, `--runtime-contract` in §6 rewrites them in one pass.
 
 ## 5. What explicitly does not change
 
@@ -137,42 +137,74 @@ If your project leans on `data-soybean-*` or `--soybean-*`, run the codemod belo
 >
 > The prefix is unrelated to branding, so it **does not change with the rename**. Switching it to `V` would cost every downstream project a full rename for zero benefit, and would collide with Vuetify's `VBtn` / `VCard` prefix.
 
-## 6. Migrate with the codemod
+## 6. Migrate with `vean migrate` (or by hand)
 
 ```bash
-# Preview changes, write nothing
-node path/to/vean-codemod/migrate.mjs .
+# Preview — nothing is written by default
+npx @vean/cli@latest migrate rebrand
 
 # Apply
-node path/to/vean-codemod/migrate.mjs . --write
+npx @vean/cli@latest migrate rebrand --write
 
 # If your code contains [data-soybean-*] selectors or var(--soybean-*)
-node path/to/vean-codemod/migrate.mjs . --write --runtime-contract
+npx @vean/cli@latest migrate rebrand --write --runtime-contract
 
-# Also migrate sbean CLI references
-node path/to/vean-codemod/migrate.mjs . --write --cli
+# Also migrate sbean CLI references (renames sbean.json to vean.json)
+npx @vean/cli@latest migrate rebrand --write --cli
 
-# If you hardcoded the old site or CDN host (ui.soybeanjs.cn, r2.soybeanjs.tech)
-node path/to/vean-codemod/migrate.mjs . --write --new-domain=veanui.com
+# If you hardcoded the old site, CDN or repository URLs
+npx @vean/cli@latest migrate rebrand --write --new-domain veanui.com --repo-slug soybeanjs/vean
 ```
 
-The script is zero-dependency, Node 18+, dry-run by default, idempotent, and skips `node_modules` / `dist` / lockfiles. See the `README.md` inside the script directory for details.
+The command is a **rule-based text rewrite** (not an AST transform): package specifiers always
+apply, while the runtime-contract, CLI and hostname tiers are opt-in. It is dry-run by default,
+idempotent, and never touches `node_modules`, build output, lock files or `CHANGELOG.md`.
+Hostnames: `ui.soybeanjs.cn` → `--new-domain`, `r2.soybeanjs.tech` → `assets.<new-domain>`
+(override with `--new-cdn`); the CDN object-path prefix `/soybeanjs/` is deliberately preserved —
+rewriting it without moving the objects would 404. Full option list: [`vean migrate`](/cli#vean-migrate).
 
-**What the script will not do** (do these by hand):
+The command **only targets SoybeanUI-era projects**: a preflight looks for `@soybeanjs/*`
+dependencies in `package.json`, a `sbean.json`, `@soybeanjs/*` specifiers in source,
+`data-soybean-*` / `--soybean-*` contracts and `sbean` invocations. When none are present it refuses
+to run — exit code 1, nothing written; a project with only old hostname links is refused as well
+unless a hostname flag was passed explicitly. Use `--force` if you really need to override. Every run
+ends with two project-specific blocks: **Worth adding** (opt-in flags that still match something) and
+**Still manual** (only the steps that apply).
 
-1. Delete `pnpm-lock.yaml` / `package-lock.json` and reinstall.
-2. Rename the config file `sbean.json` to `vean.json` (only references are rewritten).
-3. Verify the Nuxt `imports.transform.exclude` now reads `/aria\/dist\//`.
-4. Update custom registry / mirror URLs to the new domain.
+**Equivalent manual replacements** (if you would rather not run the command, replace these
+longest-first; `@soybeanjs/ui` is a prefix of `@soybeanjs/ui-uno` / `@soybeanjs/ui-skills`, so the
+order matters):
+
+| From                   | To             | Applies to                                                          |
+| ---------------------- | -------------- | ------------------------------------------------------------------- |
+| `@soybeanjs/headless`  | `@vean/aria`   | imports, Nuxt `modules`, docs                                       |
+| `@soybeanjs/ui-uno`    | `@vean/unocss` | imports, UnoCSS config                                              |
+| `@soybeanjs/ui-skills` | `@vean/skills` | imports                                                             |
+| `@soybeanjs/ui`        | `@vean/ui`     | imports, `css`, Nuxt `modules`, module `configKey`                  |
+| `@soybeanjs/theme`     | `@vean/theme`  | imports                                                             |
+| `data-soybean-`        | `data-vean-`   | custom CSS selectors, e2e selectors, scripts (§4)                   |
+| `--soybean-`           | `--vean-`      | custom CSS variables (§4)                                           |
+| `sbean`                | `vean`         | CLI commands and references (the config file name is handled below) |
+
+> Do not touch `@soybeanjs/cva` / `@soybeanjs/colord`, which stay in the original scope.
+
+**Still manual after the command:**
+
+1. Delete `pnpm-lock.yaml` / `package-lock.json`, reinstall and swap packages: `pnpm remove @soybeanjs/ui @soybeanjs/headless && pnpm add @vean/ui @vean/aria`.
+2. Verify the Nuxt `imports.transform.exclude` reads `/aria\/dist\//` (the command rewrites that string; double-check the config itself).
+3. Update custom registry / mirror URLs to the new domain; the old host serves path-preserving redirects during the transition (§9).
+4. `sbean.json`: with `--cli` the command renames it to `vean.json`; if a `vean.json` already exists the command keeps both and you merge them by hand.
+
+Finish with the verification checklist in §8.
 
 ## 7. CLI migration (`sbean` → `vean`)
 
 ```diff
 - npx sbean add button
-+ npx vean add button
++ npx @vean/cli@latest add button
 
 - pnpm sbean init
-+ pnpm vean init
++ pnpm dlx @vean/cli@latest init
 ```
 
 Rename the config file as well:

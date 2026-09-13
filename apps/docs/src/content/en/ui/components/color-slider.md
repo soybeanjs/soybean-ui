@@ -47,16 +47,16 @@ Use a color slider for a single color channel — typically the hue or alpha cha
 
 ### Architecture and benchmark differences
 
-`ColorSliderCompact` owns the track/thumb composition while every primitive stays style-free and only the UI wrapper injects the shared `sliderVariants` classes. This mirrors radix-ui-color/shadcn-ui headless split. Ant Design, Element Plus, Mantine and Naive UI embed the hue/alpha slider inside the color-picker; SoybeanUI exposes a standalone single-channel slider with color-space/channel control, keyboard interaction, native form input and a `size` scale.
+`ColorSliderCompact` owns the track/thumb composition while every primitive stays style-free and only the UI wrapper injects the shared `sliderVariants` classes. This mirrors radix-ui-color/shadcn-ui headless split. Ant Design, Element Plus, Mantine and Naive UI embed the hue/alpha slider inside the color-picker; Vean exposes a standalone single-channel slider with color-space/channel control, keyboard interaction, native form input and a `size` scale.
 
-| Capability               | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :----------------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| Headless/styled split    |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Any channel (hue/alpha…) |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Multiple color spaces    |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Keyboard interaction     |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| Native form input        |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Sizes (6)                |    ✅     |     —     |     —      |      —       |    —    |    —     |
+| Capability               | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :----------------------- | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| Headless/styled split    |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Any channel (hue/alpha…) |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Multiple color spaces    |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Keyboard interaction     |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| Native form input        |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Sizes (6)                |  ✅  |     —     |     —      |      —       |    —    |    —     |
 
 `—` = unsupported or a different interaction model.
 

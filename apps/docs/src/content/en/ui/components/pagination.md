@@ -23,13 +23,13 @@ Pagination is used for splitting up content or data into several pages, with a c
 - **Full ARIA semantics** — the root is a `nav`; the active page carries `aria-current="page"` and the selected state attribute; every button gets a localized `aria-label`.
 - **Localized accessibility text** — action labels and the page label template come from the locale registry (`pageLabel` supports the `{value}` placeholder) across 13 built-in languages.
 - **RTL support** — action icons are mirrored automatically via `rtl:[&>svg]:rotate-180`.
-- **Headless composition** — `PaginationRoot` / `PaginationList` / `PaginationListItem` / `PaginationEllipsis` / `PaginationFirst` / `PaginationPrev` / `PaginationNext` / `PaginationLast` are exported from `@soybeanjs/headless/pagination` for fully custom styled builds.
+- **Headless composition** — `PaginationRoot` / `PaginationList` / `PaginationListItem` / `PaginationEllipsis` / `PaginationFirst` / `PaginationPrev` / `PaginationNext` / `PaginationLast` are exported from `@vean/aria/pagination` for fully custom styled builds.
 
 ## Usage
 
 <UsageCode component="pagination" />
 
-> `SPagination` delegates its page windowing to headless `PaginationCompact`. For unstyled, data-driven composition, import `PaginationCompact` from `@soybeanjs/headless/pagination`.
+> `SPagination` delegates its page windowing to headless `PaginationCompact`. For unstyled, data-driven composition, import `PaginationCompact` from `@vean/aria/pagination`.
 
 ## Demos
 
@@ -43,9 +43,9 @@ Pagination is used for splitting up content or data into several pages, with a c
 
 ### Architecture and benchmark comparison
 
-| Concern                      | SoybeanUI                                                        | shadcn-vue `Pagination`                  | Ant Design `Pagination`            | Element Plus `Pagination`    |
+| Concern                      | Vean                                                             | shadcn-vue `Pagination`                  | Ant Design `Pagination`            | Element Plus `Pagination`    |
 | :--------------------------- | :--------------------------------------------------------------- | :--------------------------------------- | :--------------------------------- | :--------------------------- |
-| Headless / styled separation | ✅ `@soybeanjs/headless/pagination` + `scv()`                    | ❌ single package                        | ❌ single package                  | ❌ single package            |
+| Headless / styled separation | ✅ `@vean/aria/pagination` + `scv()`                             | ❌ single package                        | ❌ single package                  | ❌ single package            |
 | Compact data-driven API      | ✅ `PaginationCompact` + 8 typed slots                           | ✅ `Pagination` + `PaginationItem` parts | ✅ config-driven (total, current)  | ✅ layout / components       |
 | Controlled / uncontrolled    | ✅ `page`/`defaultPage`, `pageSize`/`defaultPageSize`            | ✅ `v-model`                             | ✅ `current` / `defaultCurrent`    | ✅ `v-model`                 |
 | Ellipsis + pinned edges      | ✅ `showEdges` + automatic single/double ellipsis                | ✅ `showEdges` on `PaginationItem`       | ✅ `showLessItems` / auto ellipsis | ✅ `pager-count`             |
@@ -95,4 +95,4 @@ The root is a `nav` landmark; every button carries a localized `aria-label` (the
 
 ### Can I build a fully custom pagination?
 
-Yes — compose `PaginationRoot` / `PaginationList` / `PaginationListItem` / `PaginationEllipsis` / `PaginationFirst` / `PaginationPrev` / `PaginationNext` / `PaginationLast` from `@soybeanjs/headless/pagination` and inject styles via `providePaginationUi` (or `SPagination`'s `ui` prop).
+Yes — compose `PaginationRoot` / `PaginationList` / `PaginationListItem` / `PaginationEllipsis` / `PaginationFirst` / `PaginationPrev` / `PaginationNext` / `PaginationLast` from `@vean/aria/pagination` and inject styles via `providePaginationUi` (or `SPagination`'s `ui` prop).

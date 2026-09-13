@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SIcon, STree, STreeItem } from '@soybeanjs/ui';
-import type { TreeItemData } from '@soybeanjs/ui';
+import { SIcon, STree, STreeItem } from '@vean/ui';
+import type { TreeItemData } from '@vean/ui';
 
 type DemoTree = TreeItemData<{
   value: string;

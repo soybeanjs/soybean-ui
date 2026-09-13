@@ -1,7 +1,7 @@
 /**
- * Dependency-free object utilities copied from `@soybeanjs/headless/shared`
+ * Dependency-free object utilities copied from `@vean/aria/shared`
  * (`defu` from `object.ts`, `keysOf` from `guard.ts`). Kept here so the theme
- * package does not reference headless sources at build time.
+ * package does not reference aria sources at build time.
  */
 
 function isObject(value: unknown): value is Record<string, unknown> {

@@ -46,16 +46,16 @@ head:
 
 ### 架构与对标差异
 
-`ColorSwatchCompact` 负责棋盘/填充组合，所有基础组件保持零样式，仅由 UI 包装组件注入 `colorSwatchVariants` 类。这与 radix-ui-color/shadcn-ui 的 headless 分离一致。Ant Design、Element Plus、Mantine、Naive UI 用普通着色 `<span>` 渲染色块；SoybeanUI 暴露带透明棋盘、形状/尺寸控制与暴露解析后颜色/alpha 的插槽作用域的无障碍 `role="img"` 预览。
+`ColorSwatchCompact` 负责棋盘/填充组合，所有基础组件保持零样式，仅由 UI 包装组件注入 `colorSwatchVariants` 类。这与 radix-ui-color/shadcn-ui 的 headless 分离一致。Ant Design、Element Plus、Mantine、Naive UI 用普通着色 `<span>` 渲染色块；Vean 暴露带透明棋盘、形状/尺寸控制与暴露解析后颜色/alpha 的插槽作用域的无障碍 `role="img"` 预览。
 
-| 能力               | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :----------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| Headless/样式分离  |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 透明棋盘           |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| OKLCH / alpha 支持 |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| 无障碍 role/img    |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 形状（方/圆）      |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| 尺寸（6）          |    ✅     |     —     |     —      |      —       |    —    |    —     |
+| 能力               | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :----------------- | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| Headless/样式分离  |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 透明棋盘           |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| OKLCH / alpha 支持 |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| 无障碍 role/img    |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 形状（方/圆）      |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| 尺寸（6）          |  ✅  |     —     |     —      |      —       |    —    |    —     |
 
 `—` = 不支持或采用不同交互模型。
 

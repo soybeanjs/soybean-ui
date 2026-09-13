@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
-import { LayoutTrigger, LayoutRail } from '@soybeanjs/headless/layout';
+import { LayoutTrigger, LayoutRail } from '@vean/aria/layout';
 import SLayout from '@/components/layout/layout.vue';
 
 describe('SLayout', () => {
@@ -18,7 +18,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-root]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-layout-root]').exists()).toBe(true);
       expect(wrapper.find('[data-header]').exists()).toBe(true);
       expect(wrapper.find('[data-tab]').exists()).toBe(true);
       expect(wrapper.find('[data-sidebar]').exists()).toBe(true);
@@ -76,7 +76,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      const root = wrapper.find('[data-soybean-layout-root]');
+      const root = wrapper.find('[data-vean-layout-root]');
       expect(root.attributes('data-orientation')).toBe('horizontal');
       expect(root.attributes('data-variant')).toBe('sidebar');
       expect(root.attributes('data-state')).toBe('expanded');
@@ -96,7 +96,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-orientation')).toBe('vertical');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-orientation')).toBe('vertical');
 
       wrapper.unmount();
     });
@@ -111,7 +111,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-scroll-behavior')).toBe('wrapper');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-scroll-behavior')).toBe('wrapper');
 
       wrapper.unmount();
     });
@@ -126,7 +126,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-fixed-top')).toBe('true');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-fixed-top')).toBe('true');
 
       wrapper.unmount();
     });
@@ -141,7 +141,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-fixed-footer')).toBe('true');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-fixed-footer')).toBe('true');
 
       wrapper.unmount();
     });
@@ -156,7 +156,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-stretch-footer')).toBe('false');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-stretch-footer')).toBe('false');
 
       wrapper.unmount();
     });
@@ -171,7 +171,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-state')).toBe('expanded');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-state')).toBe('expanded');
 
       wrapper.unmount();
     });
@@ -186,7 +186,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-state')).toBe('collapsed');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-state')).toBe('collapsed');
 
       wrapper.unmount();
     });
@@ -201,7 +201,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-side')).toBe('right');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-side')).toBe('right');
 
       wrapper.unmount();
     });
@@ -216,7 +216,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-variant')).toBe('floating');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-variant')).toBe('floating');
 
       wrapper.unmount();
     });
@@ -231,7 +231,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      const root = wrapper.find('[data-soybean-layout-root]');
+      const root = wrapper.find('[data-vean-layout-root]');
       expect(root.attributes('data-state')).toBe('collapsed');
       expect(root.attributes('data-collapsible')).toBe('offcanvas');
 
@@ -255,7 +255,7 @@ describe('SLayout', () => {
 
       await nextTick();
 
-      const trigger = wrapper.find('[data-soybean-layout-trigger]');
+      const trigger = wrapper.find('[data-vean-layout-trigger]');
       await trigger.trigger('click');
       await nextTick();
 
@@ -276,10 +276,10 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      const root = wrapper.find('[data-soybean-layout-root]');
+      const root = wrapper.find('[data-vean-layout-root]');
       expect(root.attributes('data-state')).toBe('collapsed');
 
-      await wrapper.find('[data-soybean-layout-trigger]').trigger('click');
+      await wrapper.find('[data-vean-layout-trigger]').trigger('click');
       await nextTick();
 
       expect(root.attributes('data-state')).toBe('expanded');
@@ -298,7 +298,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-variant')).toBe('sidebar');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-variant')).toBe('sidebar');
 
       wrapper.unmount();
     });
@@ -313,7 +313,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-variant')).toBe('floating');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-variant')).toBe('floating');
 
       wrapper.unmount();
     });
@@ -328,7 +328,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-variant')).toBe('inset');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-variant')).toBe('inset');
 
       wrapper.unmount();
     });
@@ -424,7 +424,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-full-content')).toBe('true');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-full-content')).toBe('true');
 
       wrapper.unmount();
     });
@@ -438,7 +438,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-full-content')).toBe('false');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-full-content')).toBe('false');
 
       wrapper.unmount();
     });
@@ -455,7 +455,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-mobile]').exists()).toBe(false);
+      expect(wrapper.find('[data-vean-layout-mobile]').exists()).toBe(false);
 
       wrapper.unmount();
     });
@@ -470,7 +470,7 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-mobile')).toBe('true');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-mobile')).toBe('true');
 
       wrapper.unmount();
     });
@@ -486,8 +486,8 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      const style = wrapper.find('[data-soybean-layout-root]').attributes('style') || '';
-      expect(style).toContain('--soybean-layout-start-gap: 15rem');
+      const style = wrapper.find('[data-vean-layout-root]').attributes('style') || '';
+      expect(style).toContain('--vean-layout-start-gap: 15rem');
 
       wrapper.unmount();
     });
@@ -502,8 +502,8 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      const style = wrapper.find('[data-soybean-layout-root]').attributes('style') || '';
-      expect(style).toContain('--soybean-layout-start-gap: 3.125rem');
+      const style = wrapper.find('[data-vean-layout-root]').attributes('style') || '';
+      expect(style).toContain('--vean-layout-start-gap: 3.125rem');
 
       wrapper.unmount();
     });
@@ -518,8 +518,8 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      const style = wrapper.find('[data-soybean-layout-root]').attributes('style') || '';
-      expect(style).toContain('--soybean-layout-start-gap: 0rem');
+      const style = wrapper.find('[data-vean-layout-root]').attributes('style') || '';
+      expect(style).toContain('--vean-layout-start-gap: 0rem');
 
       wrapper.unmount();
     });
@@ -535,8 +535,8 @@ describe('SLayout', () => {
           attachTo: document.body
         });
 
-        const style = wrapper.find('[data-soybean-layout-root]').attributes('style') || '';
-        expect(style).toContain('--soybean-layout-start-gap: 15rem');
+        const style = wrapper.find('[data-vean-layout-root]').attributes('style') || '';
+        expect(style).toContain('--vean-layout-start-gap: 15rem');
 
         wrapper.unmount();
       }
@@ -552,8 +552,8 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      const style = wrapper.find('[data-soybean-layout-root]').attributes('style') || '';
-      expect(style).toContain('--soybean-layout-start-gap: 0px');
+      const style = wrapper.find('[data-vean-layout-root]').attributes('style') || '';
+      expect(style).toContain('--vean-layout-start-gap: 0px');
 
       wrapper.unmount();
     });
@@ -570,8 +570,8 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      const style = wrapper.find('[data-soybean-layout-root]').attributes('style') || '';
-      expect(style).toContain('--soybean-sidebar-width');
+      const style = wrapper.find('[data-vean-layout-root]').attributes('style') || '';
+      expect(style).toContain('--vean-sidebar-width');
 
       wrapper.unmount();
     });
@@ -586,8 +586,8 @@ describe('SLayout', () => {
         attachTo: document.body
       });
 
-      const style = wrapper.find('[data-soybean-layout-root]').attributes('style') || '';
-      expect(style).toContain('--soybean-layout-header-height');
+      const style = wrapper.find('[data-vean-layout-root]').attributes('style') || '';
+      expect(style).toContain('--vean-layout-header-height');
 
       wrapper.unmount();
     });
@@ -608,7 +608,7 @@ describe('LayoutTrigger', () => {
 
     await nextTick();
 
-    const trigger = wrapper.find('[data-soybean-layout-trigger]');
+    const trigger = wrapper.find('[data-vean-layout-trigger]');
     expect(trigger.exists()).toBe(true);
     expect(trigger.attributes('aria-expanded')).toBe('true');
 
@@ -628,7 +628,7 @@ describe('LayoutTrigger', () => {
 
     await nextTick();
 
-    const trigger = wrapper.find('[data-soybean-layout-trigger]');
+    const trigger = wrapper.find('[data-vean-layout-trigger]');
     expect(trigger.attributes('aria-expanded')).toBe('false');
 
     wrapper.unmount();
@@ -647,7 +647,7 @@ describe('LayoutTrigger', () => {
 
     await nextTick();
 
-    const trigger = wrapper.find('[data-soybean-layout-trigger]');
+    const trigger = wrapper.find('[data-vean-layout-trigger]');
     expect(trigger.attributes('aria-expanded')).toBe('false');
 
     await trigger.trigger('click');
@@ -672,7 +672,7 @@ describe('LayoutRail', () => {
 
     await nextTick();
 
-    const rail = wrapper.find('[data-soybean-layout-rail]');
+    const rail = wrapper.find('[data-vean-layout-rail]');
     expect(rail.exists()).toBe(true);
     expect(rail.attributes('aria-expanded')).toBe('true');
     expect(rail.attributes('tabindex')).toBe('-1');
@@ -692,7 +692,7 @@ describe('LayoutRail', () => {
 
     await nextTick();
 
-    const rail = wrapper.find('[data-soybean-layout-rail]');
+    const rail = wrapper.find('[data-vean-layout-rail]');
     expect(rail.attributes('aria-expanded')).toBe('false');
 
     wrapper.unmount();
@@ -710,7 +710,7 @@ describe('LayoutRail', () => {
 
     await nextTick();
 
-    const rail = wrapper.find('[data-soybean-layout-rail]');
+    const rail = wrapper.find('[data-vean-layout-rail]');
     expect(rail.attributes('aria-expanded')).toBe('true');
 
     await rail.trigger('click');

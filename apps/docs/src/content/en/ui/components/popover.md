@@ -49,17 +49,17 @@ Use a popover for contextual, non-critical rich content (menus of actions, setti
 
 ### Architecture and benchmark differences
 
-`PopoverCompact` owns the positioner/popup/arrow/close composition while every primitive stays style-free and only the UI wrapper injects the `popoverVariants` classes. This mirrors radix-ui/shadcn-ui's headless/styled split, built on the shared `Popper` primitives. Ant Design, Element Plus, Mantine and Naive UI ship a single styled popover with `placement`/`trigger`/`width` props; SoybeanUI additionally exposes per-slot `*Props`, a `size` scale, an arrow toggle, and a `modal` mode the single-package popovers generally lack.
+`PopoverCompact` owns the positioner/popup/arrow/close composition while every primitive stays style-free and only the UI wrapper injects the `popoverVariants` classes. This mirrors radix-ui/shadcn-ui's headless/styled split, built on the shared `Popper` primitives. Ant Design, Element Plus, Mantine and Naive UI ship a single styled popover with `placement`/`trigger`/`width` props; Vean additionally exposes per-slot `*Props`, a `size` scale, an arrow toggle, and a `modal` mode the single-package popovers generally lack.
 
-| Capability            | SoybeanUI | shadcn/ui | Ant Design Popover | Element Plus Popover | Mantine Popover | Naive UI Popover |
-| :-------------------- | :-------: | :-------: | :----------------: | :------------------: | :-------------: | :--------------: |
-| Headless/styled split |    ✅     |    ✅     |         —          |          —           |        —        |        —         |
-| Popper placement (12) |    ✅     |    ✅     |         ✅         |          ✅          |       ✅        |        ✅        |
-| Arrow                 |    ✅     |    ✅     |         —          |          —           |        —        |        —         |
-| Modal mode            |    ✅     |    ✅     |         —          |          —           |        —        |        —         |
-| Close button          |    ✅     |    ✅     |         —          |          —           |        —        |        —         |
-| Sizes (6)             |    ✅     |     —     |         —          |          —           |        —        |        —         |
-| Focus trap + loop     |    ✅     |    ✅     |         —          |          —           |        —        |        —         |
+| Capability            | Vean | shadcn/ui | Ant Design Popover | Element Plus Popover | Mantine Popover | Naive UI Popover |
+| :-------------------- | :--: | :-------: | :----------------: | :------------------: | :-------------: | :--------------: |
+| Headless/styled split |  ✅  |    ✅     |         —          |          —           |        —        |        —         |
+| Popper placement (12) |  ✅  |    ✅     |         ✅         |          ✅          |       ✅        |        ✅        |
+| Arrow                 |  ✅  |    ✅     |         —          |          —           |        —        |        —         |
+| Modal mode            |  ✅  |    ✅     |         —          |          —           |        —        |        —         |
+| Close button          |  ✅  |    ✅     |         —          |          —           |        —        |        —         |
+| Sizes (6)             |  ✅  |     —     |         —          |          —           |        —        |        —         |
+| Focus trap + loop     |  ✅  |    ✅     |         —          |          —           |        —        |        —         |
 
 `—` = unsupported or a different interaction model.
 

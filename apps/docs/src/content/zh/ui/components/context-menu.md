@@ -49,16 +49,16 @@ head:
 
 ### 架构与对标差异
 
-右键菜单家族在指针锚定的 popover portal 内组合共享 `menu` 基础组件；UI 包装组件只注入共享 `menuVariants` 类（经 `provideMenuUi`）并转发 prop/插槽。这与 radix-ui/shadcn-ui 的 headless menu 分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供单一样式化右键菜单（或复用其下拉的 `trigger="contextmenu"`）；SoybeanUI 额外提供复选/单选/自定义变体、`size` 尺寸体系，以及经共享 menu 层的完整键盘/类型过滤行为。
+右键菜单家族在指针锚定的 popover portal 内组合共享 `menu` 基础组件；UI 包装组件只注入共享 `menuVariants` 类（经 `provideMenuUi`）并转发 prop/插槽。这与 radix-ui/shadcn-ui 的 headless menu 分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供单一样式化右键菜单（或复用其下拉的 `trigger="contextmenu"`）；Vean 额外提供复选/单选/自定义变体、`size` 尺寸体系，以及经共享 menu 层的完整键盘/类型过滤行为。
 
-| 能力            | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :-------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| 指针定位        |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |
-| 右键触发        |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |
-| 长按（触屏）    |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 复选 / 单选     |    ✅     |    ✅     |     —      |      —       |   ✅    |    —     |
-| 键盘 + 类型过滤 |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 尺寸（6）       |    ✅     |     —     |     —      |      —       |    —    |    —     |
+| 能力            | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :-------------- | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| 指针定位        |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |
+| 右键触发        |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |
+| 长按（触屏）    |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 复选 / 单选     |  ✅  |    ✅     |     —      |      —       |   ✅    |    —     |
+| 键盘 + 类型过滤 |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 尺寸（6）       |  ✅  |     —     |     —      |      —       |    —    |    —     |
 
 `—` = 不支持或采用不同交互模型。
 

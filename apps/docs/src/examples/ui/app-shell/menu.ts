@@ -1,4 +1,4 @@
-import type { AppShellMenuItem } from '@soybeanjs/ui';
+import type { AppShellMenuItem } from '@vean/ui';
 
 export const appShellItems: AppShellMenuItem[] = [
   {

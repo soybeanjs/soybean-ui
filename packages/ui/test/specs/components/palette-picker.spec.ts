@@ -2,13 +2,12 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { nextTick } from 'vue';
 import { DOMWrapper, flushPromises, mount } from '@vue/test-utils';
 import { colord } from '@soybeanjs/colord';
-import { tailwindPalette } from '@soybeanjs/colord/palette';
+import { paletteColorLevels, tailwindPalette } from '@soybeanjs/colord/palette';
 import SColorPicker from '@/components/color-picker/color-picker.vue';
 import SConfigProvider from '@/components/config-provider/config-provider.vue';
 import SPalettePicker from '@/components/palette-picker/palette-picker.vue';
 import {
   DEFAULT_LEVEL,
-  PALETTE_LEVELS,
   deriveNearestLevel,
   deriveSelectValue,
   deriveTailLevel,
@@ -140,7 +139,7 @@ const switchControlOf = (rootSelector: string): Element => {
   const root = document.body.querySelector(rootSelector);
   expect(root, `switch "${rootSelector}" should be rendered`).toBeTruthy();
 
-  const control = root?.querySelector('[data-soybean-switch-control]');
+  const control = root?.querySelector('[data-vean-switch-control]');
   expect(control, `switch control "${rootSelector}" should be rendered`).toBeTruthy();
 
   return control as Element;
@@ -239,7 +238,7 @@ describe('SPalettePicker', () => {
     await enableCustom(wrapper);
 
     const levelButtons = document.body.querySelectorAll('button[aria-label^="level"]');
-    expect(levelButtons.length).toBe(PALETTE_LEVELS.length);
+    expect(levelButtons.length).toBe(paletteColorLevels.length);
 
     // default active level is 500
     expect(levelButtons[5].classList).toContain('ring-primary');

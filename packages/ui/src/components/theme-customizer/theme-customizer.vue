@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { THEME_RADIUS, themeRadiusKeys, themeSizeKeys } from '@soybeanjs/theme';
+import { THEME_RADIUS, themeRadiusKeys, themeSizeKeys } from '@vean/theme';
 import type {
   BaseColorKey,
   ChartSchemeKey,
@@ -13,7 +13,7 @@ import type {
   SidebarSchemeKey,
   ThemeRadius,
   ThemeSize
-} from '@soybeanjs/theme';
+} from '@vean/theme';
 import { useThemeSettings } from '@/theme/use-theme-settings';
 import { useThemeVariants } from '@/theme/use-theme-variants';
 import SButton from '../button/button.vue';

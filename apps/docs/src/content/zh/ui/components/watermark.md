@@ -42,7 +42,7 @@ head:
 
 `SWatermark` 拆分为 headless 层（负责 canvas 生成、overlay 状态和防篡改逻辑）和 styled 层（负责 `watermarkVariants` `scv()` 配方，root: `relative`，overlay: `absolute inset-0 pointer-events-none bg-repeat`）。headless `WatermarkCompact` 组合 `WatermarkRoot` + `WatermarkOverlay`，并提供 `repairOverlay` 函数用于防篡改。
 
-| 维度            | SoybeanUI                            | Ant Design `Watermark` | Element Plus `Watermark` | MUI Watermark |
+| 维度            | Vean                                 | Ant Design `Watermark` | Element Plus `Watermark` | MUI Watermark |
 | :-------------- | :----------------------------------- | :--------------------- | :----------------------- | :------------ |
 | 架构            | headless + styled 分离               | 仅 styled              | 仅 styled                | 仅 styled     |
 | 文字水印        | ✅                                   | ✅                     | ✅                       | ✅            |
@@ -58,17 +58,17 @@ head:
 - **Canvas 依赖**：水印生成使用 `<canvas>` 和 `canvas.toDataURL()`。在不支持 canvas 的环境（如某些 SSR 设置）中，overlay 不会渲染——`generateWatermarkDataUrl` 返回 `undefined`。
 - **图片 CORS**：图片水印使用 `crossOrigin = 'anonymous'`。图片服务器必须发送适当的 CORS 头（`Access-Control-Allow-Origin`），否则 canvas 会被污染，`toDataURL()` 会抛错。
 - **防篡改默认关闭**：`defense` prop 默认 `false`。设 `defense: true` 启用基于 `MutationObserver` 的篡改检测。防篡固有较小的性能开销（observer 回调）。
-- **防篡改范围**：防篡改机制检测 overlay 删除（通过 root 的 `childList` observer）和属性篡改（通过 overlay 的 `attributes` observer）。检查 `aria-hidden`、`class`、`style`、`hidden` 和 `data-soybean-watermark-overlay` 属性。如发现修改，通过 `:key` 递增重新渲染 overlay。
+- **防篡改范围**：防篡改机制检测 overlay 删除（通过 root 的 `childList` observer）和属性篡改（通过 overlay 的 `attributes` observer）。检查 `aria-hidden`、`class`、`style`、`hidden` 和 `data-vean-watermark-overlay` 属性。如发现修改，通过 `:key` 递增重新渲染 overlay。
 - **`fullscreen` 定位**：当 `fullscreen: true` 时，overlay 从 `absolute inset-0`（相对父容器）切换到 `fixed inset-0 z-9999`（固定视口），覆盖整个屏幕。
 
 ### Headless 组合
 
-如果默认的 root/overlay 结构足够使用，可以从 `@soybeanjs/headless/watermark` 导入 `WatermarkCompact`。如果需要独立控制 root 和 overlay 元素，可以直接组合 headless 原语：
+如果默认的 root/overlay 结构足够使用，可以从 `@vean/aria/watermark` 导入 `WatermarkCompact`。如果需要独立控制 root 和 overlay 元素，可以直接组合 headless 原语：
 
 ```vue
 <script setup lang="ts">
 import { computed } from 'vue';
-import { WatermarkOverlay, WatermarkRoot, provideWatermarkUi } from '@soybeanjs/headless';
+import { WatermarkOverlay, WatermarkRoot, provideWatermarkUi } from '@vean/aria';
 
 const ui = computed(() => ({
   root: 'relative',

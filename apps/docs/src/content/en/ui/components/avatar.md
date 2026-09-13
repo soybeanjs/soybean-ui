@@ -48,16 +48,16 @@ Use it for user profiles, team/participant lists, or any spot that needs an iden
 
 ### Architecture and benchmark differences
 
-`AvatarCompact` owns the load-state orchestration (which part shows when) while every primitive stays style-free and only the UI wrapper injects the `avatarVariants` classes. This mirrors shadcn/ui's `Avatar`/`AvatarImage`/`AvatarFallback` headless trio and Radix's `Avatar` primitive, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a single styled `Avatar` component with an `alt`/`src` prop. SoybeanUI deliberately routes the fallback text and image `alt` through the aggregate (`fallback-label`), so the loaded image keeps an accessible name without forcing consumers to repeat it.
+`AvatarCompact` owns the load-state orchestration (which part shows when) while every primitive stays style-free and only the UI wrapper injects the `avatarVariants` classes. This mirrors shadcn/ui's `Avatar`/`AvatarImage`/`AvatarFallback` headless trio and Radix's `Avatar` primitive, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a single styled `Avatar` component with an `alt`/`src` prop. Vean deliberately routes the fallback text and image `alt` through the aggregate (`fallback-label`), so the loaded image keeps an accessible name without forcing consumers to repeat it.
 
-| Capability                    | SoybeanUI | shadcn/ui | Ant Design Avatar | Element Plus Avatar | Mantine Avatar | Naive UI Avatar |
-| :---------------------------- | :-------: | :-------: | :---------------: | :-----------------: | :------------: | :-------------: |
-| Headless/styled split         |    ✅     |    ✅     |         —         |          —          |       —        |        —        |
-| Image + fallback text/slot    |    ✅     |    ✅     |        ✅         |         ✅          |       ✅       |       ✅        |
-| Fallback delay (`delay-ms`)   |    ✅     |    ✅     |         —         |          —          |       —        |        —        |
-| Accessible name auto-derived  |    ✅     |     —     |         —         |          —          |       —        |        —        |
-| Composite with per-part props |    ✅     |    ✅     |         —         |          —          |       —        |        —        |
-| Configurable size (ThemeSize) |    ✅     |   class   |        ✅         |         ✅          |       ✅       |       ✅        |
+| Capability                    | Vean | shadcn/ui | Ant Design Avatar | Element Plus Avatar | Mantine Avatar | Naive UI Avatar |
+| :---------------------------- | :--: | :-------: | :---------------: | :-----------------: | :------------: | :-------------: |
+| Headless/styled split         |  ✅  |    ✅     |         —         |          —          |       —        |        —        |
+| Image + fallback text/slot    |  ✅  |    ✅     |        ✅         |         ✅          |       ✅       |       ✅        |
+| Fallback delay (`delay-ms`)   |  ✅  |    ✅     |         —         |          —          |       —        |        —        |
+| Accessible name auto-derived  |  ✅  |     —     |         —         |          —          |       —        |        —        |
+| Composite with per-part props |  ✅  |    ✅     |         —         |          —          |       —        |        —        |
+| Configurable size (ThemeSize) |  ✅  |   class   |        ✅         |         ✅          |       ✅       |       ✅        |
 
 `—` = unsupported or a different interaction model (AntD/Element Plus/Mantine/Naive UI ship a single styled component; shadcn/ui leaves the image `alt` to the consumer and provides no fallback delay).
 

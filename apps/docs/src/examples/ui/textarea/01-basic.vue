@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { STextarea } from '@soybeanjs/ui';
+import { STextarea } from '@vean/ui';
 
 const modelValue = ref('');
 </script>

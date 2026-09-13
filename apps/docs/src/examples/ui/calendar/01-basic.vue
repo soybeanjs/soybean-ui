@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { createDate } from '@soybeanjs/headless/date';
-import { SCalendar } from '@soybeanjs/ui';
+import { createDate } from '@vean/aria/date';
+import { SCalendar } from '@vean/ui';
 
 const value = shallowRef(createDate(2026, 4, 18));
 </script>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SColorSwatch } from '@soybeanjs/ui';
+import { SColorSwatch } from '@vean/ui';
 
 const colors = ['#7c3aed', '#06b6d4', '#f97316', 'oklch(62% 0.22 312)', 'rgba(15, 23, 42, 0.35)'];
 </script>

@@ -28,7 +28,7 @@ TreeNav 是一个数据驱动的水平导航栏，携带持久选择态：顶层
 - **隐藏项** — `item.hidden` 将条目及其子树从导航栏与弹层中移除；子项全部隐藏的分支按普通叶子渲染。
 - **六种尺寸与两种变体** — `size`（xs…2xl）加 `variant="default"`（浅色卡片底）或 `variant="nav"`（纯净无框）。
 - **插槽透传** — `item` / `item-leading` / `item-trailing` / `item-trigger-icon` / `item-link-icon` 同时透传到顶层与弹层内部。
-- **Headless 组合** — 无样式数据驱动用法可导入 `@soybeanjs/headless/tree-nav`；弹层选项复用 `MenuOptionsCompact`。
+- **Headless 组合** — 无样式数据驱动用法可导入 `@vean/aria/tree-nav`；弹层选项复用 `MenuOptionsCompact`。
 
 ## 用法
 

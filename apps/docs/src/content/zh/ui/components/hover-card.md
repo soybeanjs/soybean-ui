@@ -48,16 +48,16 @@ head:
 
 ### 架构与对标差异
 
-`HoverCardCompact` 负责触发器/定位器/弹层/箭头组合，所有基础组件保持零样式，仅由 UI 包装组件注入 `hoverCardVariants` 类。这与 radix-ui/shadcn-ui 的 headless 分离一致，构建于共享 `Popper` 基础组件之上。Ant Design、Element Plus、Mantine、Naive UI 用单一样式化 popover 做悬停预览；SoybeanUI 提供专用的悬停卡片，带可配置 `openDelay`/`closeDelay`、逐槽 `*Props`、箭头开关与单包库通常缺失的 `size` 尺寸体系。
+`HoverCardCompact` 负责触发器/定位器/弹层/箭头组合，所有基础组件保持零样式，仅由 UI 包装组件注入 `hoverCardVariants` 类。这与 radix-ui/shadcn-ui 的 headless 分离一致，构建于共享 `Popper` 基础组件之上。Ant Design、Element Plus、Mantine、Naive UI 用单一样式化 popover 做悬停预览；Vean 提供专用的悬停卡片，带可配置 `openDelay`/`closeDelay`、逐槽 `*Props`、箭头开关与单包库通常缺失的 `size` 尺寸体系。
 
-| 能力              | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :---------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| Headless/样式分离 |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 打开/关闭延迟     |    ✅     |    ✅     |     —      |      —       |   ✅    |    —     |
-| Popper 定位（12） |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |
-| 箭头              |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 尺寸（6）         |    ✅     |     —     |     —      |      —       |    —    |    —     |
-| 焦点触发          |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |
+| 能力              | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :---------------- | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| Headless/样式分离 |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 打开/关闭延迟     |  ✅  |    ✅     |     —      |      —       |   ✅    |    —     |
+| Popper 定位（12） |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |
+| 箭头              |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 尺寸（6）         |  ✅  |     —     |     —      |      —       |    —    |    —     |
+| 焦点触发          |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |
 
 `—` = 不支持或采用不同交互模型（悬停预览并入通用 popover）。
 

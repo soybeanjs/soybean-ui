@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SColorArea, SColorSwatch } from '@soybeanjs/ui';
+import { SColorArea, SColorSwatch } from '@vean/ui';
 
 const color = ref('#7c3aed');
 </script>

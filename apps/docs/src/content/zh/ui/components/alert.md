@@ -49,18 +49,18 @@ head:
 
 ### 架构与对标差异
 
-`AlertCompact` 负责图标/标题/描述/关闭的默认装配，所有基础组件保持零样式，仅由 UI 包装组件注入 `alertVariants` 类。这与 shadcn/ui 的 headless/样式分离一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供带 `type`/`closable`/`showIcon` prop 的单一样式化提示。SoybeanUI 暴露完整的逐槽 `*Props` 通道与单包库通常缺失的 `size` 尺寸体系，并将关闭按钮的 `aria-label` 本地化（`alert.close`），而非依赖纯 `×` 字形。
+`AlertCompact` 负责图标/标题/描述/关闭的默认装配，所有基础组件保持零样式，仅由 UI 包装组件注入 `alertVariants` 类。这与 shadcn/ui 的 headless/样式分离一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供带 `type`/`closable`/`showIcon` prop 的单一样式化提示。Vean 暴露完整的逐槽 `*Props` 通道与单包库通常缺失的 `size` 尺寸体系，并将关闭按钮的 `aria-label` 本地化（`alert.close`），而非依赖纯 `×` 字形。
 
-| 能力                     | SoybeanUI | shadcn/ui | Ant Design Alert | Element Plus Alert | Mantine Alert | Naive UI Alert |
-| :----------------------- | :-------: | :-------: | :--------------: | :----------------: | :-----------: | :------------: |
-| Headless/样式分离        |    ✅     |    ✅     |        —         |         —          |       —       |       —        |
-| 标题 + 描述              |    ✅     |    ✅     |        ✅        |         ✅         |      ✅       |       ✅       |
-| 可关闭                   |    ✅     |     —     |        ✅        |         ✅         |      ✅       |       ✅       |
-| 前导图标                 |    ✅     |     —     |        ✅        |         ✅         |      ✅       |       ✅       |
-| 变体（solid/soft/ghost） |    ✅     |    ✅     |        —         |         —          |       —       |       —        |
-| 颜色（8）                |    ✅     |    ✅     |        ✅        |         ✅         |      ✅       |       ✅       |
-| 尺寸（6）                |    ✅     |     —     |        —         |         —          |       —       |       —        |
-| 本地化关闭标签           |    ✅     |     —     |        —         |         ✅         |       —       |       —        |
+| 能力                     | Vean | shadcn/ui | Ant Design Alert | Element Plus Alert | Mantine Alert | Naive UI Alert |
+| :----------------------- | :--: | :-------: | :--------------: | :----------------: | :-----------: | :------------: |
+| Headless/样式分离        |  ✅  |    ✅     |        —         |         —          |       —       |       —        |
+| 标题 + 描述              |  ✅  |    ✅     |        ✅        |         ✅         |      ✅       |       ✅       |
+| 可关闭                   |  ✅  |     —     |        ✅        |         ✅         |      ✅       |       ✅       |
+| 前导图标                 |  ✅  |     —     |        ✅        |         ✅         |      ✅       |       ✅       |
+| 变体（solid/soft/ghost） |  ✅  |    ✅     |        —         |         —          |       —       |       —        |
+| 颜色（8）                |  ✅  |    ✅     |        ✅        |         ✅         |      ✅       |       ✅       |
+| 尺寸（6）                |  ✅  |     —     |        —         |         —          |       —       |       —        |
+| 本地化关闭标签           |  ✅  |     —     |        —         |         ✅         |       —       |       —        |
 
 `—` = 不支持或采用不同交互模型。
 

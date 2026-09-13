@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { ClassValue } from '@soybeanjs/headless/types';
+import type { ClassValue } from '@vean/aria/types';
 import type { AppShellBrandLayout } from './shared';
 import type { AppShellBrandSlotProps, AppShellLogoPlacementResolved } from './types';
 
@@ -69,7 +69,7 @@ const showTitle = computed(() => Boolean(slots.title) && props.layout.titleVisib
 <template>
   <div
     :class="regionClass"
-    data-soybean-app-shell-logo
+    data-vean-app-shell-logo
     :data-placement="placement"
     :data-aligned="aligned ? 'true' : undefined"
     :data-centered="centered ? 'true' : undefined"
@@ -79,11 +79,11 @@ const showTitle = computed(() => Boolean(slots.title) && props.layout.titleVisib
       :class="markClass"
       :style="markStyle"
       :data-divider="aligned ? 'true' : undefined"
-      data-soybean-app-shell-logo-mark
+      data-vean-app-shell-logo-mark
     >
       <slot name="logo" v-bind="slotProps" />
     </div>
-    <div v-if="showTitle" :class="titleClass" :style="titleStyle" data-soybean-app-shell-logo-title>
+    <div v-if="showTitle" :class="titleClass" :style="titleStyle" data-vean-app-shell-logo-title>
       <slot name="title" v-bind="slotProps" />
     </div>
   </div>

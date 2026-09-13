@@ -46,16 +46,16 @@ head:
 
 ### 架构与对标差异
 
-`ColorAreaCompact` 负责区域/滑块组合，所有基础组件保持零样式，仅由 UI 包装组件注入 `colorAreaVariants` 类。这与 radix-ui-color/shadcn-ui 的 headless 分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供内嵌饱和度平面的完整颜色选择器；SoybeanUI 将区域作为独立可配置基础组件暴露，带轴通道、颜色空间与格式控制、原生表单输入与 `size` 尺寸体系。
+`ColorAreaCompact` 负责区域/滑块组合，所有基础组件保持零样式，仅由 UI 包装组件注入 `colorAreaVariants` 类。这与 radix-ui-color/shadcn-ui 的 headless 分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供内嵌饱和度平面的完整颜色选择器；Vean 将区域作为独立可配置基础组件暴露，带轴通道、颜色空间与格式控制、原生表单输入与 `size` 尺寸体系。
 
-| 能力              | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :---------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| Headless/样式分离 |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 可配置轴          |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 多种颜色空间      |    ✅     |    ✅     |     —      |      —       |   ✅    |    —     |
-| 键盘交互          |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| 原生表单输入      |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 尺寸（6）         |    ✅     |     —     |     —      |      —       |    —    |    —     |
+| 能力              | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :---------------- | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| Headless/样式分离 |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 可配置轴          |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 多种颜色空间      |  ✅  |    ✅     |     —      |      —       |   ✅    |    —     |
+| 键盘交互          |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| 原生表单输入      |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 尺寸（6）         |  ✅  |     —     |     —      |      —       |    —    |    —     |
 
 `—` = 不支持或采用不同交互模型（多数仅提供合并的颜色选择器）。
 

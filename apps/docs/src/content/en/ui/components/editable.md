@@ -1,14 +1,14 @@
 ---
 head:
   title: Editable
-  description: 'An inline text editor that switches between preview and edit states. In preview mode the value is shown as a focusable text node (or a placeholder); focusing, double-clicking, or clicking the edit button enters edit mode, then submitting (Enter/blur/submit trigger) or cancelling (Esc/cancel trigger) returns to preview. The structure follows the headless core + styled wrapper split: the 8 EditableRoot-family components in @soybeanjs/headless (zero styles) own the full state machine, and SEditable injects the editableVariants styles (8 slots: root/area/preview/input/controls/editTrigger/submitTrigger/cancelTrigger).'
+  description: 'An inline text editor that switches between preview and edit states. In preview mode the value is shown as a focusable text node (or a placeholder); focusing, double-clicking, or clicking the edit button enters edit mode, then submitting (Enter/blur/submit trigger) or cancelling (Esc/cancel trigger) returns to preview. The structure follows the headless core + styled wrapper split: the 8 EditableRoot-family components in @vean/aria (zero styles) own the full state machine, and SEditable injects the editableVariants styles (8 slots: root/area/preview/input/controls/editTrigger/submitTrigger/cancelTrigger).'
 ---
 
 # Editable
 
 ## Overview
 
-An inline text editor that switches between preview and edit states. In preview mode the value is shown as a focusable text node (or a placeholder); focusing, double-clicking, or clicking the edit button enters edit mode, then submitting (Enter/blur/submit trigger) or cancelling (Esc/cancel trigger) returns to preview. The structure follows the headless core + styled wrapper split: the 8 `EditableRoot`-family components in `@soybeanjs/headless` (zero styles) own the full state machine, and `SEditable` injects the `editableVariants` styles (8 slots: root/area/preview/input/controls/editTrigger/submitTrigger/cancelTrigger).
+An inline text editor that switches between preview and edit states. In preview mode the value is shown as a focusable text node (or a placeholder); focusing, double-clicking, or clicking the edit button enters edit mode, then submitting (Enter/blur/submit trigger) or cancelling (Esc/cancel trigger) returns to preview. The structure follows the headless core + styled wrapper split: the 8 `EditableRoot`-family components in `@vean/aria` (zero styles) own the full state machine, and `SEditable` injects the `editableVariants` styles (8 slots: root/area/preview/input/controls/editTrigger/submitTrigger/cancelTrigger).
 
 ## Usage
 
@@ -55,20 +55,20 @@ An inline text editor that switches between preview and edit states. In preview 
 
 `EditableRoot` uses `useControllableState` to unify controlled/uncontrolled; `inputValue` (the edit buffer) is separate from `modelValue` (the committed value), and `currentValue` picks one based on the state. While editing, an external `modelValue` push does not overwrite the in-progress input (it is written back only on submit/cancel), so a controlled parent cannot stomp the user's typing. Activation (focus/dblclick/edit trigger) and submission (blur/enter/submit trigger) are decoupled both ways; `useFocusOutside`/`usePointerdownOutside` gate on `isEditing` to implement submit-on-blur. `autoResize` uses an inline-grid + `grid-template-columns: auto` layout so the input hugs its content. The API is co-designed with reka-ui's `Editable` (activation/submit modes, `selectOnFocus`, `startWithEditMode`, and the form proxy are all present); Ant Design's `Typography` editable only offers button activation plus a controlled `editing` flag; Element Plus and shadcn/ui have no equivalent component; Mantine's `EditableText` covers a subset of the activation/submit behavior.
 
-| Capability                              | SoybeanUI | reka-ui | Ant Design Typography | Mantine EditableText | Element Plus | shadcn/ui |
-| :-------------------------------------- | :-------: | :-----: | :-------------------: | :------------------: | :----------: | :-------: |
-| headless/styled split                   |    ✅     |   ✅    |           —           |          —           |      —       |     —     |
-| Activation mode (focus/dblclick/none)   |    ✅     |   ✅    |           —           |          ⚠️          |      —       |     —     |
-| Submit mode (blur/enter/none/both)      |    ✅     |   ✅    |           —           |          ⚠️          |      —       |     —     |
-| Esc to cancel                           |    ✅     |   ✅    |          ⚠️           |          ✅          |      —       |     —     |
-| `selectOnFocus`                         |    ✅     |   ✅    |           —           |          ✅          |      —       |     —     |
-| `startWithEditMode`                     |    ✅     |   ✅    |          ⚠️           |          ✅          |      —       |     —     |
-| `autoResize` (width fits content)       |    ✅     |   ✅    |           —           |          —           |      —       |     —     |
-| Form proxy (`name` + form hidden input) |    ✅     |   ✅    |           —           |          —           |      —       |     —     |
-| Localized trigger `aria-label`          |    ✅     |   ⚠️    |           —           |          —           |      —       |     —     |
-| Controlled/uncontrolled + submit event  |    ✅     |   ✅    |          ✅           |          ✅          |      —       |     —     |
+| Capability                              | Vean | reka-ui | Ant Design Typography | Mantine EditableText | Element Plus | shadcn/ui |
+| :-------------------------------------- | :--: | :-----: | :-------------------: | :------------------: | :----------: | :-------: |
+| headless/styled split                   |  ✅  |   ✅    |           —           |          —           |      —       |     —     |
+| Activation mode (focus/dblclick/none)   |  ✅  |   ✅    |           —           |          ⚠️          |      —       |     —     |
+| Submit mode (blur/enter/none/both)      |  ✅  |   ✅    |           —           |          ⚠️          |      —       |     —     |
+| Esc to cancel                           |  ✅  |   ✅    |          ⚠️           |          ✅          |      —       |     —     |
+| `selectOnFocus`                         |  ✅  |   ✅    |           —           |          ✅          |      —       |     —     |
+| `startWithEditMode`                     |  ✅  |   ✅    |          ⚠️           |          ✅          |      —       |     —     |
+| `autoResize` (width fits content)       |  ✅  |   ✅    |           —           |          —           |      —       |     —     |
+| Form proxy (`name` + form hidden input) |  ✅  |   ✅    |           —           |          —           |      —       |     —     |
+| Localized trigger `aria-label`          |  ✅  |   ⚠️    |           —           |          —           |      —       |     —     |
+| Controlled/uncontrolled + submit event  |  ✅  |   ✅    |          ✅           |          ✅          |      —       |     —     |
 
-`⚠️` = partial (Mantine covers activation/submit subsets via `activateOnFocus`/`submitOnBlur`; AntD covers `startWithEditMode`-like behavior through the controlled `editing` flag; reka-ui hardcodes the trigger `aria-label`, while SoybeanUI localizes it with `useLocaleMessages`).
+`⚠️` = partial (Mantine covers activation/submit subsets via `activateOnFocus`/`submitOnBlur`; AntD covers `startWithEditMode`-like behavior through the controlled `editing` flag; reka-ui hardcodes the trigger `aria-label`, while Vean localizes it with `useLocaleMessages`).
 
 ### Cautions
 

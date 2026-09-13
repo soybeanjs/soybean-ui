@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SRadioGroup } from '@soybeanjs/ui';
-import type { RadioGroupOptionData } from '@soybeanjs/ui';
+import { SRadioGroup } from '@vean/ui';
+import type { RadioGroupOptionData } from '@vean/ui';
 import { themeSizeOptions } from '~/constants/theme';
 
 const items: RadioGroupOptionData<string>[] = [

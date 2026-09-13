@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { STextarea } from '@soybeanjs/ui';
+import { STextarea } from '@vean/ui';
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { STag } from '@soybeanjs/ui';
+import { STag } from '@vean/ui';
 import { themeSizeOptions } from '~/constants/theme';
 </script>
 

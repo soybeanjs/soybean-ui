@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SKbd } from '@soybeanjs/ui';
+import { SKbd } from '@vean/ui';
 </script>
 
 <template>

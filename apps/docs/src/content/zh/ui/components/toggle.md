@@ -36,20 +36,20 @@ head:
 
 ### 架构与行业对标
 
-SoybeanUI 由 headless 层 `Toggle`（`useControllableState` + `Button` 基座 + `aria-pressed`/`data-state` 反射 + 禁用守卫点击）与薄包装 `SToggle`（仅计算 `toggleVariants` 类并转发 `update:modelValue`）组成。`data-state` 属性通过 UnoCSS `data-[state=on]:*` 选择器驱动按下态样式，状态与视觉解耦。`toggle` 是 Radix/shadcn 原生模式；其余对标库多以「按钮 + 状态」或分段控件表达相同交互。
+Vean 由 headless 层 `Toggle`（`useControllableState` + `Button` 基座 + `aria-pressed`/`data-state` 反射 + 禁用守卫点击）与薄包装 `SToggle`（仅计算 `toggleVariants` 类并转发 `update:modelValue`）组成。`data-state` 属性通过 UnoCSS `data-[state=on]:*` 选择器驱动按下态样式，状态与视觉解耦。`toggle` 是 Radix/shadcn 原生模式；其余对标库多以「按钮 + 状态」或分段控件表达相同交互。
 
-| 能力                          | SoybeanUI | Ant Design | Element Plus | Mantine | Naive UI | shadcn `Toggle` |
-| :---------------------------- | :-------: | :--------: | :----------: | :-----: | :------: | :-------------: |
-| headless/styled 分离          |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
-| 按下/未按下状态               |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
-| 受控/非受控                   |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
-| `aria-pressed` + `data-state` |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
-| 变体（outline/soft/ghost）    |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
-| 尺寸/形状（6 尺寸 × 4）       |    ✅     |     —      |      —       |    —    |    —     |        —        |
-| 键盘（Enter/Space）           |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
-| 禁用态                        |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
-| axe 零违规                    |    ✅     |     —      |      —       |    —    |    —     |        —        |
-| 按下态图标动画                |    ➕     |     ✅     |      —       |    —    |    —     |        —        |
+| 能力                          | Vean | Ant Design | Element Plus | Mantine | Naive UI | shadcn `Toggle` |
+| :---------------------------- | :--: | :--------: | :----------: | :-----: | :------: | :-------------: |
+| headless/styled 分离          |  ✅  |     —      |      —       |    —    |    —     |       ✅        |
+| 按下/未按下状态               |  ✅  |     —      |      —       |    —    |    —     |       ✅        |
+| 受控/非受控                   |  ✅  |     —      |      —       |    —    |    —     |       ✅        |
+| `aria-pressed` + `data-state` |  ✅  |     —      |      —       |    —    |    —     |       ✅        |
+| 变体（outline/soft/ghost）    |  ✅  |     —      |      —       |    —    |    —     |       ✅        |
+| 尺寸/形状（6 尺寸 × 4）       |  ✅  |     —      |      —       |    —    |    —     |        —        |
+| 键盘（Enter/Space）           |  ✅  |     —      |      —       |    —    |    —     |       ✅        |
+| 禁用态                        |  ✅  |     —      |      —       |    —    |    —     |       ✅        |
+| axe 零违规                    |  ✅  |     —      |      —       |    —    |    —     |        —        |
+| 按下态图标动画                |  ➕  |     ✅     |      —       |    —    |    —     |        —        |
 
 ### 使用注意
 

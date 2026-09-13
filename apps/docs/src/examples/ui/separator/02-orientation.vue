@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SSeparator } from '@soybeanjs/ui';
+import { SSeparator } from '@vean/ui';
 </script>
 
 <template>
@@ -7,8 +7,8 @@ import { SSeparator } from '@soybeanjs/ui';
   <div class="flex items-center gap-2 h-6 mt-4">
     <div>Vue</div>
     <SSeparator orientation="vertical" />
-    <div>SoybeanHeadless</div>
+    <div>Vean Aria</div>
     <SSeparator orientation="vertical" />
-    <div>SoybeanUI</div>
+    <div>Vean</div>
   </div>
 </template>

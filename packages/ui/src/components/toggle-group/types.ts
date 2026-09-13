@@ -2,8 +2,8 @@ import type {
   ToggleGroupRootEmits as HeadlessToggleGroupRootEmits,
   ToggleGroupRootProps as HeadlessToggleGroupRootProps,
   ToggleGroupUi
-} from '@soybeanjs/headless/toggle-group';
-import type { ClassValue, DefinedValue } from '@soybeanjs/headless/types';
+} from '@vean/aria/toggle-group';
+import type { ClassValue, DefinedValue } from '@vean/aria/types';
 import type { ToggleGroupVariant } from '@/styles/toggle-group';
 import type { ThemeColor, ThemeSize } from '@/theme';
 

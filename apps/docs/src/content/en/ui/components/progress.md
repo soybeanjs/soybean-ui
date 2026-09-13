@@ -45,7 +45,7 @@ Use it for uploads, downloads, multi-step flows, or top-of-page loading bars. Pr
 
 ```vue
 <script setup lang="ts">
-import { SProgressCircle } from '@soybeanjs/ui';
+import { SProgressCircle } from '@vean/ui';
 </script>
 
 <template>
@@ -67,7 +67,7 @@ Mount `SProgressProvider` once near your app root before calling the imperative 
 
 ```vue
 <script setup lang="ts">
-import { SButton, SProgressProvider, progress } from '@soybeanjs/ui';
+import { SButton, SProgressProvider, progress } from '@vean/ui';
 
 const handleClick = () => {
   progress.start();
@@ -111,18 +111,18 @@ const handleClick = () => {
 
 ### Architecture and benchmark differences
 
-`ProgressRoot` owns the value normalization (`getValidMax`/`getValidModelValue`), state derivation (`indeterminate`/`loading`/`complete`) and the `role="progressbar"` ARIA contract, while the primitives stay style-free and only the UI wrapper injects the recipe classes. This mirrors shadcn/ui's headless/styled split, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a single config-driven progress. SoybeanUI's distinguishing feature is the `nprogress`-style imperative controller (`progress.start()`/`done()`) and the `SProgressCircle` gauge, both of which the single-package libraries handle as separate components or omit.
+`ProgressRoot` owns the value normalization (`getValidMax`/`getValidModelValue`), state derivation (`indeterminate`/`loading`/`complete`) and the `role="progressbar"` ARIA contract, while the primitives stay style-free and only the UI wrapper injects the recipe classes. This mirrors shadcn/ui's headless/styled split, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a single config-driven progress. Vean's distinguishing feature is the `nprogress`-style imperative controller (`progress.start()`/`done()`) and the `SProgressCircle` gauge, both of which the single-package libraries handle as separate components or omit.
 
-| Capability                      | SoybeanUI | shadcn/ui | Ant Design Progress | Element Plus Progress | Mantine Progress | Naive UI Progress |
-| :------------------------------ | :-------: | :-------: | :-----------------: | :-------------------: | :--------------: | :---------------: |
-| Linear progress                 |    ✅     |    ✅     |         ✅          |          ✅           |        ✅        |        ✅         |
-| Circle progress                 |    ✅     |     —     |         ✅          |          ✅           |        ✅        |        ✅         |
-| Indeterminate                   |    ✅     |     —     |         ✅          |          ✅           |        ✅        |        ✅         |
-| Imperative API (`start`/`done`) |    ✅     |     —     |          —          |           —           |        —         |         —         |
-| Color variants (8)              |    ✅     |    ✅     |         ✅          |          ✅           |        ✅        |        ✅         |
-| Size variants (6)               |    ✅     |     —     |          —          |           —           |        —         |         —         |
-| `role="progressbar"` ARIA       |    ✅     |    ✅     |         ✅          |          ✅           |        ✅        |        ✅         |
-| Custom value label              |    ✅     |     —     |          —          |          ✅           |        ✅        |        ✅         |
+| Capability                      | Vean | shadcn/ui | Ant Design Progress | Element Plus Progress | Mantine Progress | Naive UI Progress |
+| :------------------------------ | :--: | :-------: | :-----------------: | :-------------------: | :--------------: | :---------------: |
+| Linear progress                 |  ✅  |    ✅     |         ✅          |          ✅           |        ✅        |        ✅         |
+| Circle progress                 |  ✅  |     —     |         ✅          |          ✅           |        ✅        |        ✅         |
+| Indeterminate                   |  ✅  |     —     |         ✅          |          ✅           |        ✅        |        ✅         |
+| Imperative API (`start`/`done`) |  ✅  |     —     |          —          |           —           |        —         |         —         |
+| Color variants (8)              |  ✅  |    ✅     |         ✅          |          ✅           |        ✅        |        ✅         |
+| Size variants (6)               |  ✅  |     —     |          —          |           —           |        —         |         —         |
+| `role="progressbar"` ARIA       |  ✅  |    ✅     |         ✅          |          ✅           |        ✅        |        ✅         |
+| Custom value label              |  ✅  |     —     |          —          |          ✅           |        ✅        |        ✅         |
 
 `—` = unsupported or a different interaction model.
 

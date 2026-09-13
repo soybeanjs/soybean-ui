@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SPagination } from '@soybeanjs/ui';
+import { SPagination } from '@vean/ui';
 
 const page = ref(1);
 </script>

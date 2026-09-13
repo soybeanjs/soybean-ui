@@ -1,14 +1,9 @@
 import { computed, ref } from 'vue';
 import type { ComputedRef, Ref } from 'vue';
-import { DEFAULT_PRESET_OPTIONS } from '@soybeanjs/theme';
-import type { ColorKey, ColorValue, ThemeOptions, ThemeOverrides } from '@soybeanjs/theme';
-import {
-  getStoredThemeConfig,
-  isValidColorValue,
-  setStoredThemeConfig,
-  THEME_STORAGE_KEY
-} from '@soybeanjs/theme/storage';
-import type { ThemeConfigState } from '@soybeanjs/theme/storage';
+import { DEFAULT_PRESET_OPTIONS } from '@vean/theme';
+import type { ColorKey, ColorValue, ThemeOptions, ThemeOverrides } from '@vean/theme';
+import { getStoredThemeConfig, isValidColorValue, setStoredThemeConfig, THEME_STORAGE_KEY } from '@vean/theme/storage';
+import type { ThemeConfigState } from '@vean/theme/storage';
 
 /**
  * Options for `useThemeSettings`.

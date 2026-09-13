@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SAnchor } from '@soybeanjs/ui';
+import { SAnchor } from '@vean/ui';
 import { createAnchorItems, createAnchorSections } from './shared';
 
 const containerRef = shallowRef<HTMLElement>();

@@ -28,7 +28,7 @@ A segmented date input that keeps day, month, year, and optional time values as 
 ## Component family
 
 - `SDateField` — the styled wrapper that forwards props to the headless compact and injects `dateFieldVariants` classes
-- `DateFieldCompact` (headless) — data-driven composition of `DateFieldRoot` + per-segment `DateFieldInput`; import from `@soybeanjs/headless/date-field` for unstyled usage
+- `DateFieldCompact` (headless) — data-driven composition of `DateFieldRoot` + per-segment `DateFieldInput`; import from `@vean/aria/date-field` for unstyled usage
 - `DateFieldRoot` / `DateFieldInput` (headless) — the state owner (segments, validation, hidden input) and a single editable segment
 
 ## Demos
@@ -45,20 +45,20 @@ A segmented date input that keeps day, month, year, and optional time values as 
 
 `DateFieldRoot` owns the value (via `useControllableState`), derives the segment layout with `Intl.DateTimeFormat` formatters, and runs validation through `isInvalid`. Each `DateFieldInput` binds the `useDateField` composable, which implements per-part keydown logic (increment/decrement/typing/auto-advance/delete) shared by the `time-field` family. Editing mutates a `segmentValues` shallowRef; the root commits the assembled `DateValue` once every segment is filled. The segmented date-field pattern originates from reka-ui (Radix); the benchmark libraries express date input as a plain text input plus a picker popup instead.
 
-| Capability                  | SoybeanUI | Ant Design | Element Plus | Mantine | Naive UI | shadcn |
-| :-------------------------- | :-------: | :--------: | :----------: | :-----: | :------: | :----: |
-| headless/styled split       |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| Segmented editable parts    |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| Controlled / uncontrolled   |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
-| Keyboard increment/typing   |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| Auto-advance between parts  |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| Range validation            |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
-| `isDateUnavailable`         |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| Granularity (minute/second) |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| 12/24-hour `dayPeriod`      |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| Disabled / readonly         |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
-| Native form submission      |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
-| `leading`/`trailing` slots  |    ✅     |     —      |      —       |    —    |    —     |   —    |
+| Capability                  | Vean | Ant Design | Element Plus | Mantine | Naive UI | shadcn |
+| :-------------------------- | :--: | :--------: | :----------: | :-----: | :------: | :----: |
+| headless/styled split       |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| Segmented editable parts    |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| Controlled / uncontrolled   |  ✅  |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
+| Keyboard increment/typing   |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| Auto-advance between parts  |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| Range validation            |  ✅  |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
+| `isDateUnavailable`         |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| Granularity (minute/second) |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| 12/24-hour `dayPeriod`      |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| Disabled / readonly         |  ✅  |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
+| Native form submission      |  ✅  |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
+| `leading`/`trailing` slots  |  ✅  |     —      |      —       |    —    |    —     |   —    |
 
 ### Cautions
 
@@ -89,4 +89,4 @@ Pass `hourCycle={12}` (or let it follow the locale) — the hour segment becomes
 
 ### How do I customize the look?
 
-Use `ui.root`/`ui.input` for class overrides, or `leading`/`trailing` slots to place icons/units around the segments. For fully unstyled control, compose `DateFieldRoot`/`DateFieldInput` from `@soybeanjs/headless/date-field`.
+Use `ui.root`/`ui.input` for class overrides, or `leading`/`trailing` slots to place icons/units around the segments. For fully unstyled control, compose `DateFieldRoot`/`DateFieldInput` from `@vean/aria/date-field`.

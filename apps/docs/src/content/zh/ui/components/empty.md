@@ -12,7 +12,7 @@ head:
 
 适用于「无结果」、空收件箱、空表格或引导提示。关于状态的纯内联反馈请优先使用 `alert`；内容仍在加载（而非缺失）时请优先使用 `skeleton`。
 
-headless 层不存在 `empty` 家族：空状态不含需要在多个包装层之间复用的键盘、焦点、ARIA 或状态逻辑，因此整份装配留在 UI 层，并保留 `data-soybean-empty-*` 属性供样式与测试使用。
+headless 层不存在 `empty` 家族：空状态不含需要在多个包装层之间复用的键盘、焦点、ARIA 或状态逻辑，因此整份装配留在 UI 层，并保留 `data-vean-empty-*` 属性供样式与测试使用。
 
 ## 用法
 
@@ -30,7 +30,7 @@ headless 层不存在 `empty` 家族：空状态不含需要在多个包装层�
 
 ## 组件家族
 
-`SEmpty` 是单一导出。它自绘整份解剖结构，并在对应节点上暴露 `data-soybean-empty-root` / `-header` / `-media` / `-title` / `-description` / `-content`，因此 `class`/`ui` 与逐部件 `*Props` 可以作用到每个部件。
+`SEmpty` 是单一导出。它自绘整份解剖结构，并在对应节点上暴露 `data-vean-empty-root` / `-header` / `-media` / `-title` / `-description` / `-content`，因此 `class`/`ui` 与逐部件 `*Props` 可以作用到每个部件。
 
 ## 演示
 
@@ -44,17 +44,17 @@ headless 层不存在 `empty` 家族：空状态不含需要在多个包装层�
 
 ### 架构与对标差异
 
-`SEmpty` 在 UI 层自持 header/media/title/description 编排——空状态是一个没有行为支撑的解剖壳，因此刻意没有 headless 家族。这与 shadcn/ui 的「组合优先」一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供带 `image`/`description` prop 的单一样式化 `Empty`。SoybeanUI 提供完整的逐部件 `*Props` 通道与单包库通常缺失的 `size` 尺寸体系，默认媒体由 `SIcon` 渲染。
+`SEmpty` 在 UI 层自持 header/media/title/description 编排——空状态是一个没有行为支撑的解剖壳，因此刻意没有 headless 家族。这与 shadcn/ui 的「组合优先」一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供带 `image`/`description` prop 的单一样式化 `Empty`。Vean 提供完整的逐部件 `*Props` 通道与单包库通常缺失的 `size` 尺寸体系，默认媒体由 `SIcon` 渲染。
 
-| 能力              | SoybeanUI | shadcn/ui | Ant Design Empty | Element Plus Empty | Mantine | Naive UI Empty |
-| :---------------- | :-------: | :-------: | :--------------: | :----------------: | :-----: | :------------: |
-| Headless/样式分离 |    ✅     |    ✅     |        —         |         —          |    —    |       —        |
-| 媒体 / 图标       |    ✅     |    ✅     |        ✅        |         ✅         |   ✅    |       ✅       |
-| 标题              |    ✅     |     —     |        ✅        |         ✅         |   ✅    |       ✅       |
-| 描述              |    ✅     |     —     |        ✅        |         ✅         |   ✅    |       ✅       |
-| 操作 / 内容插槽   |    ✅     |     —     |        ✅        |         ✅         |   ✅    |       ✅       |
-| 尺寸变体（6）     |    ✅     |     —     |        —         |         —          |    —    |       —        |
-| 逐部件 `*Props`   |    ✅     |    ✅     |        —         |         —          |    —    |       —        |
+| 能力              | Vean | shadcn/ui | Ant Design Empty | Element Plus Empty | Mantine | Naive UI Empty |
+| :---------------- | :--: | :-------: | :--------------: | :----------------: | :-----: | :------------: |
+| Headless/样式分离 |  ✅  |    ✅     |        —         |         —          |    —    |       —        |
+| 媒体 / 图标       |  ✅  |    ✅     |        ✅        |         ✅         |   ✅    |       ✅       |
+| 标题              |  ✅  |     —     |        ✅        |         ✅         |   ✅    |       ✅       |
+| 描述              |  ✅  |     —     |        ✅        |         ✅         |   ✅    |       ✅       |
+| 操作 / 内容插槽   |  ✅  |     —     |        ✅        |         ✅         |   ✅    |       ✅       |
+| 尺寸变体（6）     |  ✅  |     —     |        —         |         —          |    —    |       —        |
+| 逐部件 `*Props`   |  ✅  |    ✅     |        —         |         —          |    —    |       —        |
 
 `—` = 不支持或采用不同交互模型。
 

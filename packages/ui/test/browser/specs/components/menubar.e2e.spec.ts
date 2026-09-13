@@ -35,7 +35,7 @@ const items: MenuOptionData<string>[] = [
   {
     value: 'github',
     label: 'GitHub',
-    href: 'https://github.com/soybeanjs/soybean-ui'
+    href: 'https://github.com/soybeanjs/vean'
   }
 ];
 
@@ -426,8 +426,8 @@ describe('SMenubar (e2e)', () => {
     await expect.element(moreTrigger).toBeVisible();
 
     // The menubar content always fits inside the measurement wrapper.
-    const menubarEl = document.querySelector('[data-soybean-menubar-root]');
-    const wrapperEl = menubarEl?.closest('[data-soybean-menubar-overflow]');
+    const menubarEl = document.querySelector('[data-vean-menubar-root]');
+    const wrapperEl = menubarEl?.closest('[data-vean-menubar-overflow]');
     expect(menubarEl).not.toBeNull();
     expect(wrapperEl).not.toBeNull();
     if (menubarEl && wrapperEl) {

@@ -71,7 +71,7 @@ export const info = new Command()
     console.log();
 
     if (config) {
-      console.log('  sbean.json Config');
+      console.log('  vean.json Config');
       console.log('  ─────────────────');
 
       console.log(`  Base color:     ${config.uno.base}`);
@@ -105,7 +105,7 @@ export const info = new Command()
         console.log(`    ${pkg.padEnd(8)} ${alias.padEnd(10)} → ${dir}`);
       }
     } else {
-      console.log('  No sbean.json found. Run "sbean init" to create one.');
+      console.log('  No vean.json found. Run "vean init" to create one.');
     }
 
     console.log();

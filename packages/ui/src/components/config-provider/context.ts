@@ -1,4 +1,4 @@
-import { useContext } from '@soybeanjs/headless/composables';
+import { useContext } from '@vean/aria/composables';
 import { UI_CONFIG_PROVIDER_CONTEXT_KEY } from '../../constants';
 import type { ConfigProviderContext } from './types';
 

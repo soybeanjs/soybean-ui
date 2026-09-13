@@ -29,7 +29,7 @@ A segmented time range input with independently editable start and end time segm
 ## Component family
 
 - `STimeRangeField` — the styled wrapper that forwards props to the headless compact and injects `dateRangeFieldVariants` (shared with `SDateRangeField`) classes
-- `TimeRangeFieldCompact` (headless) — data-driven composition of `TimeRangeFieldRoot` + one `TimeRangeFieldInput` per segment in two groups, plus `leading`/`separator`/`trailing` slots; import from `@soybeanjs/headless/time-range-field` for unstyled usage
+- `TimeRangeFieldCompact` (headless) — data-driven composition of `TimeRangeFieldRoot` + one `TimeRangeFieldInput` per segment in two groups, plus `leading`/`separator`/`trailing` slots; import from `@vean/aria/time-range-field` for unstyled usage
 - `TimeRangeFieldRoot` / `TimeRangeFieldInput` (headless) — the state owner (segment values, range validation, two hidden inputs, cross-group focus management) and a single editable segment bound to the shared `useDateField` composable
 
 ## Demos
@@ -46,20 +46,20 @@ A segmented time range input with independently editable start and end time segm
 
 `TimeRangeFieldRoot` owns the `TimeRange` via `useControllableState`, keeps `startSegmentValues`/`endSegmentValues` as two shallowRefs, and runs range validation through `isInvalid` (start after end, `minValue`/`maxValue`, `isTimeUnavailable`). Each `TimeRangeFieldInput` binds the same `useDateField` composable used by the `date-field` family; `TimeRangeFieldCompact` iterates the segments produced by `createContent` and renders one input per segment inside two `data-time-range-field-part` groups separated by the `separator` slot. Cross-group focus movement is handled by the root's `moveFocus`, mapping the physical arrow key from `dir` so RTL swaps `ArrowLeft`/`ArrowRight` — the group boundary is crossed on the physical direction (`delta`), not the semantic key. Most benchmark libraries ship two independent text inputs (or a plain picker); the dual segmented spinbutton groups with cross-boundary keyboard navigation and the headless/styled split are the differentiators.
 
-| Capability                     | SoybeanUI | Ant Design | Element Plus | Mantine | Naive UI | shadcn |
-| :----------------------------- | :-------: | :--------: | :----------: | :-----: | :------: | :----: |
-| headless/styled split          |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| Dual segmented editable groups |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| Cross-group focus movement     |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| RTL direction reversal         |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| Controlled / uncontrolled      |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
-| Keyboard increment/typing      |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| Range validation (start ≤ end) |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
-| `isTimeUnavailable`            |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| Granularity (second)           |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| Two native form values         |    ✅     |     ✅     |      ✅      |   ✅    |    —     |   —    |
-| Separator prop / slot          |    ✅     |     —      |      —       |    —    |    —     |   —    |
-| Disabled / readonly            |    ✅     |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
+| Capability                     | Vean | Ant Design | Element Plus | Mantine | Naive UI | shadcn |
+| :----------------------------- | :--: | :--------: | :----------: | :-----: | :------: | :----: |
+| headless/styled split          |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| Dual segmented editable groups |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| Cross-group focus movement     |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| RTL direction reversal         |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| Controlled / uncontrolled      |  ✅  |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
+| Keyboard increment/typing      |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| Range validation (start ≤ end) |  ✅  |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
+| `isTimeUnavailable`            |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| Granularity (second)           |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| Two native form values         |  ✅  |     ✅     |      ✅      |   ✅    |    —     |   —    |
+| Separator prop / slot          |  ✅  |     —      |      —       |    —    |    —     |   —    |
+| Disabled / readonly            |  ✅  |     ✅     |      ✅      |   ✅    |    ✅    |   —    |
 
 ### Cautions
 

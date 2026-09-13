@@ -45,16 +45,16 @@ head:
 
 ### 架构与对标差异
 
-`ColorFieldCompact` 负责根/输入组合，所有基础组件保持零样式，仅由 UI 包装组件注入 `colorFieldVariants` 类。这与 radix-ui-color/shadcn-ui 的 headless 分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供带 hex 输入的单一样式化颜色选择器；SoybeanUI 暴露独立的颜色输入框，带完整格式/通道控制、键盘/滚轮编辑与原生表单输入。
+`ColorFieldCompact` 负责根/输入组合，所有基础组件保持零样式，仅由 UI 包装组件注入 `colorFieldVariants` 类。这与 radix-ui-color/shadcn-ui 的 headless 分离一致。Ant Design、Element Plus、Mantine、Naive UI 提供带 hex 输入的单一样式化颜色选择器；Vean 暴露独立的颜色输入框，带完整格式/通道控制、键盘/滚轮编辑与原生表单输入。
 
-| 能力              | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :---------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| Headless/样式分离 |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 多种格式          |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| 单通道编辑        |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 键盘 + 滚轮       |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 原生表单输入      |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| 尺寸（6）         |    ✅     |     —     |     —      |      —       |    —    |    —     |
+| 能力              | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :---------------- | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| Headless/样式分离 |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 多种格式          |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| 单通道编辑        |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 键盘 + 滚轮       |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 原生表单输入      |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| 尺寸（6）         |  ✅  |     —     |     —      |      —       |    —    |    —     |
 
 `—` = 不支持或采用不同交互模型。
 

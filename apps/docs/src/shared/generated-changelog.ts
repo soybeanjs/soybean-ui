@@ -133,6 +133,25 @@ export interface UpgradeGuideEntry {
   docPath: string;
   /** Public route path of the guide (e.g. `/overview/migration/v0.40.0`). */
   path: string;
+  /**
+   * Display label. The release's main guide shows the version alone; secondary
+   * guides append their slug so several guides for one release stay apart
+   * (e.g. `v0.50.0` / `v0.50.0 · date` / `v0.50.0 · rebrand`).
+   */
+  label: string;
+}
+
+/** `ui/migration/v0.50.0-date` for release `v0.50.0` labels as `v0.50.0 · date`. */
+function resolveGuideLabel(version: string, docPath: string): string {
+  const slug = docPath.split('/').pop() ?? version;
+
+  if (slug === version) {
+    return version;
+  }
+
+  const suffix = slug.startsWith(`${version}-`) ? slug.slice(version.length + 1) : slug;
+
+  return `${version} · ${suffix}`;
 }
 
 /**
@@ -152,7 +171,8 @@ export function getUpgradeGuides(): UpgradeGuideEntry[] {
       guides.set(note.docPath, {
         version: release.version,
         docPath: note.docPath,
-        path: resolveContentRoutePath(note.docPath)
+        path: resolveContentRoutePath(note.docPath),
+        label: resolveGuideLabel(release.version, note.docPath)
       });
     }
   }

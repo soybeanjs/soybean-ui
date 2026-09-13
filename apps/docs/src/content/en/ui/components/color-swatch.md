@@ -46,16 +46,16 @@ Use a color swatch to display a color value (with an optional transparency check
 
 ### Architecture and benchmark differences
 
-`ColorSwatchCompact` owns the checker/fill composition while every primitive stays style-free and only the UI wrapper injects the `colorSwatchVariants` classes. This mirrors radix-ui-color/shadcn-ui headless split. Ant Design, Element Plus, Mantine and Naive UI render a plain colored `<span>` for swatches; SoybeanUI exposes an accessible `role="img"` preview with a transparency checker, shape/size control and a slot scope exposing the parsed color/alpha.
+`ColorSwatchCompact` owns the checker/fill composition while every primitive stays style-free and only the UI wrapper injects the `colorSwatchVariants` classes. This mirrors radix-ui-color/shadcn-ui headless split. Ant Design, Element Plus, Mantine and Naive UI render a plain colored `<span>` for swatches; Vean exposes an accessible `role="img"` preview with a transparency checker, shape/size control and a slot scope exposing the parsed color/alpha.
 
-| Capability            | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :-------------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| Headless/styled split |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Transparency checker  |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| OKLCH / alpha support |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| Accessible role/img   |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Shape (square/circle) |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| Sizes (6)             |    ✅     |     —     |     —      |      —       |    —    |    —     |
+| Capability            | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :-------------------- | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| Headless/styled split |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Transparency checker  |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| OKLCH / alpha support |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| Accessible role/img   |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Shape (square/circle) |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| Sizes (6)             |  ✅  |     —     |     —      |      —       |    —    |    —     |
 
 `—` = unsupported or a different interaction model.
 

@@ -35,12 +35,12 @@ describe('SPagination', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-pagination-first]').exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-pagination-prev]').exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-pagination-next]').exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-pagination-last]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-pagination-first]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-pagination-prev]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-pagination-next]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-pagination-last]').exists()).toBe(true);
       // 10 pages: 1-10 visible (showEdges defaults to false, 10 < itemCount 2*2+1=5? no, 10 > 5)
-      const pageItems = wrapper.findAll('[data-soybean-pagination-list-item]');
+      const pageItems = wrapper.findAll('[data-vean-pagination-list-item]');
 
       expect(pageItems.length).toBe(5);
       expect(pageItems[0].text()).toBe('1');
@@ -69,7 +69,7 @@ describe('SPagination', () => {
         attachTo: document.body
       });
 
-      const pageItems = wrapper.findAll('[data-soybean-pagination-list-item]');
+      const pageItems = wrapper.findAll('[data-vean-pagination-list-item]');
 
       expect(pageItems.length).toBe(3);
       expect(pageItems.map(item => item.text())).toEqual(['1', '2', '3']);
@@ -83,10 +83,10 @@ describe('SPagination', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-pagination-first]').exists()).toBe(false);
-      expect(wrapper.find('[data-soybean-pagination-last]').exists()).toBe(false);
-      expect(wrapper.find('[data-soybean-pagination-prev]').exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-pagination-next]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-pagination-first]').exists()).toBe(false);
+      expect(wrapper.find('[data-vean-pagination-last]').exists()).toBe(false);
+      expect(wrapper.find('[data-vean-pagination-prev]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-pagination-next]').exists()).toBe(true);
 
       wrapper.unmount();
     });
@@ -99,7 +99,7 @@ describe('SPagination', () => {
         attachTo: document.body
       });
 
-      await wrapper.findAll('[data-soybean-pagination-list-item]')[2].trigger('click');
+      await wrapper.findAll('[data-vean-pagination-list-item]')[2].trigger('click');
 
       expect(wrapper.emitted('update:page')).toEqual([[3]]);
 
@@ -120,13 +120,13 @@ describe('SPagination', () => {
         attachTo: document.body
       });
 
-      await wrapper.find('[data-soybean-pagination-prev]').trigger('click');
+      await wrapper.find('[data-vean-pagination-prev]').trigger('click');
       expect(page.value).toBe(2);
 
       // sync the prop so the internal page state updates before the next click
       await wrapper.setProps({ page: page.value });
 
-      await wrapper.find('[data-soybean-pagination-next]').trigger('click');
+      await wrapper.find('[data-vean-pagination-next]').trigger('click');
       expect(page.value).toBe(3);
 
       wrapper.unmount();
@@ -146,10 +146,10 @@ describe('SPagination', () => {
         attachTo: document.body
       });
 
-      await wrapper.find('[data-soybean-pagination-first]').trigger('click');
+      await wrapper.find('[data-vean-pagination-first]').trigger('click');
       expect(page.value).toBe(1);
 
-      await wrapper.find('[data-soybean-pagination-last]').trigger('click');
+      await wrapper.find('[data-vean-pagination-last]').trigger('click');
       expect(page.value).toBe(10);
 
       wrapper.unmount();
@@ -161,9 +161,9 @@ describe('SPagination', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-pagination-prev]').attributes('disabled')).toBeDefined();
-      expect(wrapper.find('[data-soybean-pagination-first]').attributes('disabled')).toBeDefined();
-      expect(wrapper.find('[data-soybean-pagination-next]').attributes('disabled')).toBeUndefined();
+      expect(wrapper.find('[data-vean-pagination-prev]').attributes('disabled')).toBeDefined();
+      expect(wrapper.find('[data-vean-pagination-first]').attributes('disabled')).toBeDefined();
+      expect(wrapper.find('[data-vean-pagination-next]').attributes('disabled')).toBeUndefined();
 
       wrapper.unmount();
     });
@@ -183,8 +183,8 @@ describe('SPagination', () => {
         attachTo: document.body
       });
 
-      await wrapper.findAll('[data-soybean-pagination-list-item]')[0].trigger('click');
-      await wrapper.find('[data-soybean-pagination-next]').trigger('click');
+      await wrapper.findAll('[data-vean-pagination-list-item]')[0].trigger('click');
+      await wrapper.find('[data-vean-pagination-next]').trigger('click');
 
       expect(page.value).toBe(1);
       expect(wrapper.emitted('update:page')).toBeUndefined();
@@ -208,7 +208,7 @@ describe('SPagination', () => {
 
       expect(wrapper.find('[data-selected]').text()).toBe('2');
 
-      await wrapper.findAll('[data-soybean-pagination-list-item]')[4].trigger('click');
+      await wrapper.findAll('[data-vean-pagination-list-item]')[4].trigger('click');
 
       expect(page.value).toBe(5);
 
@@ -231,9 +231,9 @@ describe('SPagination', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.findAll('[data-soybean-pagination-ellipsis]').length).toBe(2);
+      expect(wrapper.findAll('[data-vean-pagination-ellipsis]').length).toBe(2);
       // 1, ellipsis, 48, 49, 50, 51, 52, ellipsis, 100
-      const pageItems = wrapper.findAll('[data-soybean-pagination-list-item]');
+      const pageItems = wrapper.findAll('[data-vean-pagination-list-item]');
 
       expect(pageItems.map(item => item.text())).toEqual(['1', '48', '49', '50', '51', '52', '100']);
 
@@ -247,7 +247,7 @@ describe('SPagination', () => {
       });
 
       // showEdges false: only middle window rendered without edges
-      const pageItems = wrapper.findAll('[data-soybean-pagination-list-item]');
+      const pageItems = wrapper.findAll('[data-vean-pagination-list-item]');
 
       expect(pageItems.map(item => item.text())).toEqual(['3', '4', '5', '6', '7']);
 
@@ -262,7 +262,7 @@ describe('SPagination', () => {
         attachTo: document.body
       });
 
-      const pageItems = wrapper.findAll('[data-soybean-pagination-list-item]');
+      const pageItems = wrapper.findAll('[data-vean-pagination-list-item]');
 
       expect(pageItems.map(item => item.text())).toEqual(['4', '5', '6']);
 
@@ -277,10 +277,10 @@ describe('SPagination', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-pagination-first]').attributes('aria-label')).toBe('First page');
-      expect(wrapper.find('[data-soybean-pagination-prev]').attributes('aria-label')).toBe('Previous page');
-      expect(wrapper.find('[data-soybean-pagination-next]').attributes('aria-label')).toBe('Next page');
-      expect(wrapper.find('[data-soybean-pagination-last]').attributes('aria-label')).toBe('Last page');
+      expect(wrapper.find('[data-vean-pagination-first]').attributes('aria-label')).toBe('First page');
+      expect(wrapper.find('[data-vean-pagination-prev]').attributes('aria-label')).toBe('Previous page');
+      expect(wrapper.find('[data-vean-pagination-next]').attributes('aria-label')).toBe('Next page');
+      expect(wrapper.find('[data-vean-pagination-last]').attributes('aria-label')).toBe('Last page');
 
       wrapper.unmount();
     });
@@ -291,7 +291,7 @@ describe('SPagination', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.findAll('[data-soybean-pagination-list-item]')[0].attributes('aria-label')).toBe('Page 1');
+      expect(wrapper.findAll('[data-vean-pagination-list-item]')[0].attributes('aria-label')).toBe('Page 1');
 
       wrapper.unmount();
     });
@@ -309,8 +309,8 @@ describe('SPagination', () => {
         { attachTo: document.body }
       );
 
-      expect(wrapper.find('[data-soybean-pagination-first]').attributes('aria-label')).toBe('第一页');
-      expect(wrapper.findAll('[data-soybean-pagination-list-item]')[0].attributes('aria-label')).toBe('第 1 页');
+      expect(wrapper.find('[data-vean-pagination-first]').attributes('aria-label')).toBe('第一页');
+      expect(wrapper.findAll('[data-vean-pagination-list-item]')[0].attributes('aria-label')).toBe('第 1 页');
 
       wrapper.unmount();
     });

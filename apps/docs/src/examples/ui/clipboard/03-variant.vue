@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SClipboard } from '@soybeanjs/ui';
-import type { ClipboardVariant } from '@soybeanjs/ui';
+import { SClipboard } from '@vean/ui';
+import type { ClipboardVariant } from '@vean/ui';
 
 const variants: ClipboardVariant[] = ['solid', 'outline', 'dashed', 'soft', 'ghost', 'link', 'plain', 'pure'];
 </script>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SAppShell, SButtonIcon, SIcon } from '@soybeanjs/ui';
+import { SAppShell, SButtonIcon, SIcon } from '@vean/ui';
 import { appShellItems } from './menu';
 
 const active = ref('overview');

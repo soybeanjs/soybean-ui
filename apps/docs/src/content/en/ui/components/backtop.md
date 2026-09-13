@@ -39,9 +39,9 @@ head:
 
 ### Architecture and benchmark differences
 
-`SBacktop` splits into a headless layer that owns scroll tracking, target resolution, animation, and visibility state, and a styled layer that owns the `backtopVariants` recipe (extends `buttonVariants` with `fixed z-50` and size-based `bottom-* end-*` positioning). This follows the SoybeanUI headless/styled separation pattern.
+`SBacktop` splits into a headless layer that owns scroll tracking, target resolution, animation, and visibility state, and a styled layer that owns the `backtopVariants` recipe (extends `buttonVariants` with `fixed z-50` and size-based `bottom-* end-*` positioning). This follows the Vean headless/styled separation pattern.
 
-| Aspect               | SoybeanUI                                       | Ant Design `BackTop`        | Element Plus `Backtop`      | Naive UI `BackTop`          |
+| Aspect               | Vean                                            | Ant Design `BackTop`        | Element Plus `Backtop`      | Naive UI `BackTop`          |
 | :------------------- | :---------------------------------------------- | :-------------------------- | :-------------------------- | :-------------------------- |
 | Architecture         | headless + styled split                         | styled only                 | styled only                 | styled only                 |
 | Smooth scrolling     | `requestAnimationFrame` + `easeInOutCubic`      | `requestAnimationFrame`     | `requestAnimationFrame`     | `requestAnimationFrame`     |
@@ -68,11 +68,11 @@ Pass the element or a CSS selector: `<SBacktop target="#my-scroll-container" />`
 Set `duration={0}`: `<SBacktop :duration="0" />`. The component also automatically skips animation when the user has `prefers-reduced-motion: reduce` enabled.
 
 **Can I use a custom button instead of the default?**
-Yes. Import the headless `Backtop` from `@soybeanjs/headless/backtop` and compose it with your own button:
+Yes. Import the headless `Backtop` from `@vean/aria/backtop` and compose it with your own button:
 
 ```vue
 <script setup lang="ts">
-import { Backtop } from '@soybeanjs/headless/backtop';
+import { Backtop } from '@vean/aria/backtop';
 </script>
 
 <template>

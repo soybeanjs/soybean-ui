@@ -47,16 +47,16 @@ Use a toolbar for a dense, keyboard-navigable row of actions. For a single actio
 
 ### Architecture and benchmark differences
 
-The toolbar family is a multi-slot composition: `ToolbarRoot` provides the roving-focus + orientation context while each part (button/link/separator/toggle-group) reuses the button, link, separator and toggle-group primitives, with the UI wrapper injecting `toolbarVariants` classes per slot. This mirrors radix-ui/shadcn-ui's headless toolbar/toggle-group split. Ant Design, Element Plus, Mantine and Naive UI ship a button/segmented-control but not a dedicated roving-focus toolbar container with orientation-aware separators; SoybeanUI provides a complete toolbar with `loop`/RTL support and a `size` scale.
+The toolbar family is a multi-slot composition: `ToolbarRoot` provides the roving-focus + orientation context while each part (button/link/separator/toggle-group) reuses the button, link, separator and toggle-group primitives, with the UI wrapper injecting `toolbarVariants` classes per slot. This mirrors radix-ui/shadcn-ui's headless toolbar/toggle-group split. Ant Design, Element Plus, Mantine and Naive UI ship a button/segmented-control but not a dedicated roving-focus toolbar container with orientation-aware separators; Vean provides a complete toolbar with `loop`/RTL support and a `size` scale.
 
-| Capability            | SoybeanUI | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
-| :-------------------- | :-------: | :-------: | :--------: | :----------: | :-----: | :------: |
-| Headless/styled split |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Roving focus + loop   |    ✅     |    ✅     |     —      |      —       |   ✅    |    —     |
-| Orientation-aware     |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Toggle group          |    ✅     |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
-| Link support          |    ✅     |    ✅     |     —      |      —       |    —    |    —     |
-| Sizes (6)             |    ✅     |     —     |     —      |      —       |    —    |    —     |
+| Capability            | Vean | shadcn/ui | Ant Design | Element Plus | Mantine | Naive UI |
+| :-------------------- | :--: | :-------: | :--------: | :----------: | :-----: | :------: |
+| Headless/styled split |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Roving focus + loop   |  ✅  |    ✅     |     —      |      —       |   ✅    |    —     |
+| Orientation-aware     |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Toggle group          |  ✅  |    ✅     |     ✅     |      ✅      |   ✅    |    —     |
+| Link support          |  ✅  |    ✅     |     —      |      —       |    —    |    —     |
+| Sizes (6)             |  ✅  |     —     |     —      |      —       |    —    |    —     |
 
 `—` = unsupported or a different interaction model.
 

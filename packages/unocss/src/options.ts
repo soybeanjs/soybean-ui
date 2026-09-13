@@ -1,7 +1,7 @@
 import type { Preflight } from 'unocss';
 import type { WebFontsOptions } from 'unocss/preset-web-fonts';
 import type { PresetWind3Options } from 'unocss/preset-wind3';
-import type { BaseTokens, ThemeOptions } from '@soybeanjs/theme';
+import type { BaseTokens, ThemeOptions } from '@vean/theme';
 import type { PresetAnimationsOptions } from './animations';
 import type { PresetScrollbarOptions } from './scrollbar';
 

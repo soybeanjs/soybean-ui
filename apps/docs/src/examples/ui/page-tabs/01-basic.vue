@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { Ref } from 'vue';
-import { SPageTabs, SSelect, SButton } from '@soybeanjs/ui';
+import { SPageTabs, SSelect, SButton } from '@vean/ui';
 import type {
   PageTabsOptionData,
   SelectOptionData,
   PageTabsVariant,
   PageTabsState,
   PageTabsContextMenuOptionData
-} from '@soybeanjs/ui';
+} from '@vean/ui';
 
 const variant = ref<PageTabsVariant>('chrome');
 

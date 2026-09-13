@@ -1,8 +1,8 @@
 import { computed, defineComponent, h, onMounted, onUnmounted, shallowRef, watch } from 'vue';
-import { createTheme } from '@soybeanjs/theme';
-import { THEME_INIT_STYLE_ID } from '@soybeanjs/theme/ssr';
-import { setStoredThemeCss, THEME_PRESETS_STORAGE_KEY, THEME_STORAGE_KEY } from '@soybeanjs/theme/storage';
-import type { ThemeConfigState } from '@soybeanjs/theme/storage';
+import { createTheme } from '@vean/theme';
+import { THEME_INIT_STYLE_ID } from '@vean/theme/ssr';
+import { setStoredThemeCss, THEME_PRESETS_STORAGE_KEY, THEME_STORAGE_KEY } from '@vean/theme/storage';
+import type { ThemeConfigState } from '@vean/theme/storage';
 import type { ConfigProviderProps } from './types';
 import { createThemeContext, provideThemeContext } from './use-theme';
 
@@ -12,7 +12,7 @@ import { createThemeContext, provideThemeContext } from './use-theme';
  * component templates (they are treated as side-effect tags).
  */
 const ThemeStyle = defineComponent({
-  name: 'SoybeanUIThemeStyle',
+  name: 'VeanThemeStyle',
   inheritAttrs: false,
   props: {
     css: { type: String, required: true },
@@ -37,7 +37,7 @@ const ThemeStyle = defineComponent({
     return () =>
       h('style', {
         ref: styleRef,
-        id: '__SoybeanUI_theme',
+        id: '__Vean_theme',
         innerHTML: styleProps.css,
         nonce: styleProps.nonce
       });

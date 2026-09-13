@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
-import { StepperRoot, StepperItem, StepperTrigger } from '@soybeanjs/headless/stepper';
+import { StepperRoot, StepperItem, StepperTrigger } from '@vean/aria/stepper';
 import SConfigProvider from '@/components/config-provider/config-provider.vue';
 import SStepper from '@/components/stepper/stepper.vue';
 import { getA11yViolations } from '../../shared/a11y';
@@ -78,7 +78,7 @@ describe('SStepper', () => {
         props: { items },
         attachTo: document.body
       });
-      const root = wrapper.find('[data-soybean-stepper-root]');
+      const root = wrapper.find('[data-vean-stepper-root]');
 
       expect(root.attributes('data-orientation')).toBe('horizontal');
       expect(root.attributes('data-linear')).toBe('');
@@ -339,7 +339,7 @@ describe('SStepper', () => {
         props: { items, itemProps: { class: 'custom-item', 'data-test': 'step-item' } },
         attachTo: document.body
       });
-      const item = wrapper.find('[data-soybean-stepper-item]');
+      const item = wrapper.find('[data-vean-stepper-item]');
 
       expect(item.classes()).toContain('custom-item');
       expect(item.attributes('data-test')).toBe('step-item');
@@ -413,7 +413,7 @@ describe('SStepper', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-stepper-indicator]').classes()).toContain('size-6');
+      expect(wrapper.find('[data-vean-stepper-indicator]').classes()).toContain('size-6');
       wrapper.unmount();
     });
 
@@ -423,7 +423,7 @@ describe('SStepper', () => {
         attachTo: document.body
       });
 
-      const indicators = wrapper.findAll('[data-soybean-stepper-indicator]');
+      const indicators = wrapper.findAll('[data-vean-stepper-indicator]');
 
       expect(indicators.length).toBeGreaterThan(0);
       expect(indicators[0].element.tagName).toBe('SPAN');

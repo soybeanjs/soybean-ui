@@ -127,7 +127,7 @@ export type {
   TreeToggleEvent,
   VNodeRef,
   ToContext
-} from '@soybeanjs/headless';
+} from '@vean/aria';
 
 export * from './theme';
 

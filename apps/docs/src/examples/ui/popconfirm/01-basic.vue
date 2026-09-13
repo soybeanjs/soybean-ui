@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButton, SPopconfirm } from '@soybeanjs/ui';
+import { SButton, SPopconfirm } from '@vean/ui';
 
 function handleConfirm() {
   console.log('Confirmed!');

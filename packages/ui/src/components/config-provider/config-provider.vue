@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { h, shallowReadonly } from 'vue';
-import { useOmitProps } from '@soybeanjs/headless/composables';
-import { ConfigProvider } from '@soybeanjs/headless/config-provider';
-import { isServerRuntime } from '@soybeanjs/theme/ssr';
+import { useOmitProps } from '@vean/aria/composables';
+import { ConfigProvider } from '@vean/aria/config-provider';
+import { isServerRuntime } from '@vean/theme/ssr';
 import DialogProvider from '../dialog/dialog-provider.vue';
 import IconComponent from '../icon/icon.vue';
 import type { IconValue } from '../icon/types';

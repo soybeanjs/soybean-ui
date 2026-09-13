@@ -10,13 +10,13 @@ export const layoutVariants = scv({
     mobileDrawer: sheetVariants({ size: props.size, side: props.side }).popup
   }),
   slots: {
-    // --sl-* 是本库的间距/gap 别名(headless 注入的 --soybean-layout-* 保持不变),在 root 上按状态计算,各槽位直接应用
+    // --sl-* 是本库的间距/gap 别名(headless 注入的 --vean-layout-* 保持不变),在 root 上按状态计算,各槽位直接应用
     root: [
       'group/layout relative h-full transition-all-300',
       '[--sl-half-spacing:calc(var(--sl-spacing)/2)]',
-      '[--sl-main-gap:var(--soybean-layout-start-gap)]',
-      '[--sl-header-gap:var(--soybean-layout-header-start-gap)]',
-      '[--sl-footer-gap:var(--soybean-layout-footer-start-gap)]',
+      '[--sl-main-gap:var(--vean-layout-start-gap)]',
+      '[--sl-header-gap:var(--vean-layout-header-start-gap)]',
+      '[--sl-footer-gap:var(--vean-layout-footer-start-gap)]',
       '[--sl-end-gap:0px]'
     ],
     main: 'flex flex-col h-full group-data-[scroll-behavior=wrapper]/layout:overflow-y-auto transition-all-300',
@@ -29,7 +29,7 @@ export const layoutVariants = scv({
       `flex flex-col w-full h-full bg-sidebar`,
       `group-data-[variant=floating]/layout:rounded-lg group-data-[variant=floating]/layout:border group-data-[variant=floating]/layout:border-border group-data-[variant=floating]/layout:border-solid group-data-[variant=floating]/layout:shadow`
     ],
-    mobileDrawer: 'w-[--soybean-sidebar-width] bg-sidebar p-0',
+    mobileDrawer: 'w-[--vean-sidebar-width] bg-sidebar p-0',
     mobileOverlay: [
       `fixed inset-0 z-50 bg-black/80`,
       `data-[state=open]:animate-in data-[state=open]:fade-in-0`,
@@ -53,7 +53,7 @@ export const layoutVariants = scv({
       'shrink-0 h-[--soybean-layout-footer-height] transition-all-300',
       'group-data-[fixed-footer=true]/layout:absolute z-[--soybean-layout-footer-z-index] inset-x-0 bottom-0'
     ],
-    footerPlaceholder: 'shrink-0 h-[--soybean-layout-footer-height] overflow-hidden'
+    footerPlaceholder: 'shrink-0 h-[--vean-layout-footer-height] overflow-hidden'
   },
   variants: {
     size: {
@@ -113,12 +113,12 @@ export const layoutVariants = scv({
       },
       floating: {
         root: [
-          'data-[state=expanded]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
-          'data-[state=expanded]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
-          'data-[collapsible=icon]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
-          'data-[collapsible=icon]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
-          'data-[state=expanded]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
-          'data-[collapsible=icon]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
+          'data-[state=expanded]:[--sl-main-gap:calc(var(--vean-layout-start-gap)+var(--sl-spacing))]',
+          'data-[state=expanded]:[--sl-footer-gap:calc(var(--vean-layout-footer-start-gap)+var(--sl-spacing))]',
+          'data-[collapsible=icon]:[--sl-main-gap:calc(var(--vean-layout-start-gap)+var(--sl-spacing))]',
+          'data-[collapsible=icon]:[--sl-footer-gap:calc(var(--vean-layout-footer-start-gap)+var(--sl-spacing))]',
+          'data-[state=expanded]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--vean-layout-header-start-gap)+var(--sl-spacing))]',
+          'data-[collapsible=icon]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--vean-layout-header-start-gap)+var(--sl-spacing))]',
           'data-[orientation=vertical]:data-[stretch-footer=true]:[--sl-footer-gap:0px]'
         ],
         sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))]`,
@@ -128,9 +128,9 @@ export const layoutVariants = scv({
         root: [
           'py-[--sl-half-spacing] bg-sidebar',
           // data-[variant=inset] 前缀用于保证特异性高于 base 上的默认值
-          'data-[variant=inset]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
-          'data-[variant=inset]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
-          'data-[variant=inset]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
+          'data-[variant=inset]:[--sl-main-gap:calc(var(--vean-layout-start-gap)+var(--sl-spacing))]',
+          'data-[variant=inset]:[--sl-footer-gap:calc(var(--vean-layout-footer-start-gap)+var(--sl-spacing))]',
+          'data-[variant=inset]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--vean-layout-header-start-gap)+var(--sl-spacing))]',
           'data-[variant=inset]:data-[orientation=vertical]:[--sl-header-gap:var(--sl-half-spacing)]',
           'data-[variant=inset]:[--sl-end-gap:var(--sl-half-spacing)]',
           'data-[variant=inset]:data-[orientation=vertical]:data-[stretch-footer=true]:[--sl-footer-gap:var(--sl-half-spacing)]'
@@ -143,7 +143,7 @@ export const layoutVariants = scv({
           `group-data-[orientation=vertical]/layout:border-0`,
           `group-data-[orientation=vertical]/layout:shadow group-data-[orientation=vertical]/layout:rounded-xl`
         ],
-        tab: `top-[calc(var(--soybean-layout-header-height)+var(--sl-half-spacing))]`,
+        tab: `top-[calc(var(--vean-layout-header-height)+var(--sl-half-spacing))]`,
         footer: [
           'bottom-[--sl-half-spacing] rounded-b-xl',
           `group-data-[orientation=vertical]/layout:shadow group-data-[orientation=vertical]/layout:rounded-xl`,

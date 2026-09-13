@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SBreadcrumb, SIcon, SLayout, SLayoutTrigger, STreeMenu } from '@soybeanjs/ui';
-import type { BreadcrumbOptionData } from '@soybeanjs/ui';
+import { SBreadcrumb, SIcon, SLayout, SLayoutTrigger, STreeMenu } from '@vean/ui';
+import type { BreadcrumbOptionData } from '@vean/ui';
 import { appShellItems } from './menu';
 
 const open = ref(true);

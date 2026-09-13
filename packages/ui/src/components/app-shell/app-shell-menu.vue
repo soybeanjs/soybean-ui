@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { LayoutSide } from '@soybeanjs/headless/layout';
-import type { SplitNavOptionData } from '@soybeanjs/headless/split-nav';
-import type { TreeMenuExpandStrategy } from '@soybeanjs/headless/tree-menu';
+import type { LayoutSide } from '@vean/aria/layout';
+import type { SplitNavOptionData } from '@vean/aria/split-nav';
+import type { TreeMenuExpandStrategy } from '@vean/aria/tree-menu';
 import type { ThemeSize } from '@/theme';
 import SSplitNav from '../split-nav/split-nav.vue';
 import STreeMenu from '../tree-menu/tree-menu.vue';
@@ -61,7 +61,10 @@ const treeProps = computed(() => ({
   ...props.menuProps?.tree
 }));
 
-const splitProps = computed(() => ({ expandStrategy: props.expandStrategy, ...props.menuProps?.split }));
+const splitProps = computed(() => ({
+  expandStrategy: props.expandStrategy,
+  ...props.menuProps?.split
+}));
 
 const treeNavProps = computed(() => props.menuProps?.treeNav ?? {});
 

@@ -19,15 +19,15 @@ import { generateSkillsDistribution } from './skills';
 export type GenTarget = 'catalog' | 'api' | 'changelog' | 'schema' | 'skills';
 
 const genTargets: GenTarget[] = ['catalog', 'api', 'changelog', 'schema', 'skills'];
-const catalogTargets: CatalogTarget[] = ['headless', 'ui'];
+const catalogTargets: CatalogTarget[] = ['aria', 'ui'];
 
 /**
  * Every committed path the `gen` targets write. `sui check generated` diffs
  * exactly this set, so a new generator must add its outputs here.
  */
 export const generatedDataPaths = [
-  'packages/headless/src/constants/components.ts',
-  'packages/headless/src/namespaced/index.ts',
+  'packages/aria/src/constants/components.ts',
+  'packages/aria/src/namespaced/index.ts',
   'packages/ui/src/constants/components.ts',
   'apps/docs/src/generated',
   'apps/docs/public/schema',

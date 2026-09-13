@@ -83,13 +83,13 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-app-shell]').attributes('data-mode')).toBe('sidebar');
-      expect(wrapper.find('[data-soybean-app-shell-sidebar]').exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-app-shell-header]').exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-app-shell-menu-sidebar]').exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-app-shell-content]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-app-shell]').attributes('data-mode')).toBe('sidebar');
+      expect(wrapper.find('[data-vean-app-shell-sidebar]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-app-shell-header]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-app-shell-menu-sidebar]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-app-shell-content]').exists()).toBe(true);
       expect(wrapper.findComponent(STreeMenu).exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-orientation')).toBe('horizontal');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-orientation')).toBe('horizontal');
 
       wrapper.unmount();
     });
@@ -100,7 +100,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      expect(withoutLogo.find('[data-soybean-app-shell-logo]').exists()).toBe(false);
+      expect(withoutLogo.find('[data-vean-app-shell-logo]').exists()).toBe(false);
 
       withoutLogo.unmount();
 
@@ -110,7 +110,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      expect(withLogo.find('[data-soybean-app-shell-logo]').exists()).toBe(true);
+      expect(withLogo.find('[data-vean-app-shell-logo]').exists()).toBe(true);
       expect(withLogo.find('[data-logo]').exists()).toBe(true);
 
       withLogo.unmount();
@@ -149,14 +149,14 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const crumbs = wrapper.findAll('[data-soybean-breadcrumb-item]');
+      const crumbs = wrapper.findAll('[data-vean-breadcrumb-item]');
 
       expect(crumbs).toHaveLength(3);
       // Ancestors whose menu has children become menu buttons; the last crumb is the page.
       expect(crumbs[0].find('button').attributes('aria-haspopup')).toBe('menu');
       expect(crumbs[1].find('button').attributes('aria-haspopup')).toBe('menu');
       expect(crumbs[2].find('button').exists()).toBe(false);
-      expect(crumbs[2].find('[data-soybean-breadcrumb-page]').exists()).toBe(true);
+      expect(crumbs[2].find('[data-vean-breadcrumb-page]').exists()).toBe(true);
 
       wrapper.unmount();
     });
@@ -239,9 +239,9 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-app-shell]').classes()).toContain('my-shell');
-      expect(wrapper.find('[data-soybean-app-shell-header]').classes()).toContain('custom-header');
-      expect(wrapper.find('[data-soybean-layout-tab]').classes()).toContain('custom-layout-tab');
+      expect(wrapper.find('[data-vean-app-shell]').classes()).toContain('my-shell');
+      expect(wrapper.find('[data-vean-app-shell-header]').classes()).toContain('custom-header');
+      expect(wrapper.find('[data-vean-layout-tab]').classes()).toContain('custom-layout-tab');
 
       wrapper.unmount();
     });
@@ -255,7 +255,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const headerClasses = wrapper.find('[data-soybean-layout-header]').classes();
+      const headerClasses = wrapper.find('[data-vean-layout-header]').classes();
 
       expect(headerClasses).toContain('override-header');
       expect(headerClasses).not.toContain('bg-background');
@@ -272,11 +272,11 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-app-shell-sidebar]').exists()).toBe(false);
+      expect(wrapper.find('[data-vean-app-shell-sidebar]').exists()).toBe(false);
       expect(wrapper.findComponent(STreeNav).exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-orientation')).toBe('vertical');
-      expect(wrapper.find('[data-soybean-layout-trigger]').exists()).toBe(false);
-      expect(wrapper.find('[data-soybean-app-shell-header] [data-logo]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-orientation')).toBe('vertical');
+      expect(wrapper.find('[data-vean-layout-trigger]').exists()).toBe(false);
+      expect(wrapper.find('[data-vean-app-shell-header] [data-logo]').exists()).toBe(true);
 
       wrapper.unmount();
     });
@@ -301,10 +301,10 @@ describe('SAppShell', () => {
       });
 
       expect(wrapper.findComponent(SSplitNav).exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-app-shell-menu-sidebar] [data-soybean-split-nav-root]').exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-split-nav-dual-vertical]').exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-app-shell-mount-vertical]').exists()).toBe(false);
-      expect(wrapper.find('[data-soybean-app-shell-mount-horizontal]').exists()).toBe(false);
+      expect(wrapper.find('[data-vean-app-shell-menu-sidebar] [data-vean-split-nav-root]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-split-nav-dual-vertical]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-app-shell-mount-vertical]').exists()).toBe(false);
+      expect(wrapper.find('[data-vean-app-shell-mount-horizontal]').exists()).toBe(false);
 
       wrapper.unmount();
     });
@@ -313,18 +313,18 @@ describe('SAppShell', () => {
       const scenes: { mode: AppShellMode; header: string; sidebar: string }[] = [
         {
           mode: 'vertical-horizontal',
-          header: '[data-soybean-split-nav-sub-horizontal]',
-          sidebar: '[data-soybean-split-nav-vertical-first-level]'
+          header: '[data-vean-split-nav-sub-horizontal]',
+          sidebar: '[data-vean-split-nav-vertical-first-level]'
         },
         {
           mode: 'horizontal-vertical',
-          header: '[data-soybean-split-nav-horizontal-first-level]',
-          sidebar: '[data-soybean-split-nav-sub-vertical]'
+          header: '[data-vean-split-nav-horizontal-first-level]',
+          sidebar: '[data-vean-split-nav-sub-vertical]'
         },
         {
           mode: 'horizontal-dual-vertical',
-          header: '[data-soybean-split-nav-horizontal-first-level]',
-          sidebar: '[data-soybean-split-nav-dual-vertical]'
+          header: '[data-vean-split-nav-horizontal-first-level]',
+          sidebar: '[data-vean-split-nav-dual-vertical]'
         }
       ];
 
@@ -334,8 +334,8 @@ describe('SAppShell', () => {
           attachTo: document.body
         });
 
-        expect(wrapper.find(`[data-soybean-app-shell-mount-horizontal] ${scene.header}`).exists()).toBe(true);
-        expect(wrapper.find(`[data-soybean-app-shell-mount-vertical] ${scene.sidebar}`).exists()).toBe(true);
+        expect(wrapper.find(`[data-vean-app-shell-mount-horizontal] ${scene.header}`).exists()).toBe(true);
+        expect(wrapper.find(`[data-vean-app-shell-mount-vertical] ${scene.sidebar}`).exists()).toBe(true);
 
         wrapper.unmount();
       }
@@ -349,7 +349,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const bar = wrapper.find('[data-soybean-tree-nav]');
+      const bar = wrapper.find('[data-vean-tree-nav]');
 
       expect(bar.exists()).toBe(true);
       expect(bar.text()).toContain('Workbench');
@@ -364,7 +364,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const bar = wrapper.find('[data-soybean-tree-nav]');
+      const bar = wrapper.find('[data-vean-tree-nav]');
       const active = bar.findAll('[data-selected="true"]');
 
       expect(active).toHaveLength(1);
@@ -379,7 +379,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      await wrapper.find('[data-soybean-tree-nav] [data-selected="true"]').trigger('click');
+      await wrapper.find('[data-vean-tree-nav] [data-selected="true"]').trigger('click');
 
       expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['overview']);
       expect(wrapper.emitted('select')?.at(-1)?.[0]).toBe('overview');
@@ -397,7 +397,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const branch = wrapper.findAll('[data-soybean-tree-nav] button').find(node => node.text().includes('Workbench'));
+      const branch = wrapper.findAll('[data-vean-tree-nav] button').find(node => node.text().includes('Workbench'));
 
       expect(branch).toBeDefined();
 
@@ -416,13 +416,13 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-state')).toBe('collapsed');
-      expect(wrapper.find('[data-soybean-tree-menu-root]').attributes('data-state')).toBe('collapsed');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-state')).toBe('collapsed');
+      expect(wrapper.find('[data-vean-tree-menu-root]').attributes('data-state')).toBe('collapsed');
 
       await wrapper.setProps({ open: true });
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-state')).toBe('expanded');
-      expect(wrapper.find('[data-soybean-tree-menu-root]').attributes('data-state')).toBe('expanded');
+      expect(wrapper.find('[data-vean-layout-root]').attributes('data-state')).toBe('expanded');
+      expect(wrapper.find('[data-vean-tree-menu-root]').attributes('data-state')).toBe('expanded');
 
       wrapper.unmount();
     });
@@ -434,7 +434,7 @@ describe('SAppShell', () => {
       });
 
       await nextTick();
-      await wrapper.find('[data-soybean-layout-trigger]').trigger('click');
+      await wrapper.find('[data-vean-layout-trigger]').trigger('click');
       await nextTick();
 
       expect(wrapper.emitted('update:open')?.at(-1)).toEqual([true]);
@@ -448,9 +448,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const leaf = wrapper
-        .findAll('[data-soybean-tree-menu-button]')
-        .find(button => button.text().includes('Overview'));
+      const leaf = wrapper.findAll('[data-vean-tree-menu-button]').find(button => button.text().includes('Overview'));
 
       expect(leaf).toBeDefined();
 
@@ -470,7 +468,7 @@ describe('SAppShell', () => {
       });
 
       const railItem = wrapper
-        .findAll('[data-soybean-split-nav-first-level-item]')
+        .findAll('[data-vean-split-nav-first-level-item]')
         .find(item => item.text().includes('Workbench'));
 
       expect(railItem).toBeDefined();
@@ -489,15 +487,15 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const region = wrapper.find('[data-soybean-app-shell-menu-sidebar]');
-      const pane = region.find('[data-soybean-split-nav-sub-vertical]');
+      const region = wrapper.find('[data-vean-app-shell-menu-sidebar]');
+      const pane = region.find('[data-vean-split-nav-sub-vertical]');
 
       // The pane stays in the shell's menu region and collapses in place; the
       // tree inside it renders its icon rail, not the expanded tree.
       expect(pane.exists()).toBe(true);
       expect(pane.attributes('data-state')).toBe('collapsed');
       expect(pane.classes()).not.toContain('absolute');
-      expect(region.find('[data-soybean-tree-menu-root]').attributes('data-state')).toBe('collapsed');
+      expect(region.find('[data-vean-tree-menu-root]').attributes('data-state')).toBe('collapsed');
 
       wrapper.unmount();
     });
@@ -517,7 +515,7 @@ describe('SAppShell', () => {
       // back the same value is a no-op.
       async function activate(text: string) {
         const railItem = wrapper
-          .findAll('[data-soybean-split-nav-first-level-item]')
+          .findAll('[data-vean-split-nav-first-level-item]')
           .find(item => item.text().includes(text));
 
         expect(railItem).toBeDefined();
@@ -534,8 +532,8 @@ describe('SAppShell', () => {
         await nextTick();
       }
 
-      const paneExists = () => wrapper.find('[data-soybean-split-nav-sub-vertical]').exists();
-      const sidebarStyle = () => wrapper.find('[data-soybean-layout-root]').attributes('style') ?? '';
+      const paneExists = () => wrapper.find('[data-vean-split-nav-sub-vertical]').exists();
+      const sidebarStyle = () => wrapper.find('[data-vean-layout-root]').attributes('style') ?? '';
 
       // The active route sits in the pane, so it renders.
       expect(paneExists()).toBe(true);
@@ -576,13 +574,13 @@ describe('SAppShell', () => {
       });
 
       const railItem = wrapper
-        .findAll('[data-soybean-split-nav-first-level-item]')
+        .findAll('[data-vean-split-nav-first-level-item]')
         .find(item => item.text().includes('Workbench'));
 
       await railItem?.trigger('click');
       await nextTick();
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('style') ?? '').toContain(
+      expect(wrapper.find('[data-vean-layout-root]').attributes('style') ?? '').toContain(
         '--soybean-sidebar-width: 20rem'
       );
 
@@ -591,7 +589,7 @@ describe('SAppShell', () => {
       await wrapper.setProps({ mode: 'horizontal-dual-vertical' });
       await nextTick();
 
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('style') ?? '').toContain(
+      expect(wrapper.find('[data-vean-layout-root]').attributes('style') ?? '').toContain(
         '--soybean-sidebar-width: 0rem'
       );
 
@@ -604,10 +602,10 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-split-nav-sub-vertical]').exists()).toBe(false);
+      expect(wrapper.find('[data-vean-split-nav-sub-vertical]').exists()).toBe(false);
 
       const railItem = wrapper
-        .findAll('[data-soybean-split-nav-first-level-item]')
+        .findAll('[data-vean-split-nav-first-level-item]')
         .find(item => item.text().includes('Workbench'));
 
       expect(railItem).toBeDefined();
@@ -615,10 +613,10 @@ describe('SAppShell', () => {
       await railItem?.trigger('click');
       await nextTick();
 
-      expect(wrapper.find('[data-soybean-split-nav-sub-vertical]').attributes('data-state')).toBe('collapsed');
+      expect(wrapper.find('[data-vean-split-nav-sub-vertical]').attributes('data-state')).toBe('collapsed');
       // A collapsed sidebar reserves the rail plus the folded pane, so the pane
       // is never squeezed into the rail or left covering the content.
-      expect(wrapper.find('[data-soybean-layout-root]').attributes('style') ?? '').toContain(
+      expect(wrapper.find('[data-vean-layout-root]').attributes('style') ?? '').toContain(
         '--soybean-layout-start-gap: 8.125rem'
       );
 
@@ -654,10 +652,10 @@ describe('SAppShell', () => {
 
       /** Columns the sidebar renders, expressed as the width they take at `md`. */
       function renderedColumns(wrapper: ReturnType<typeof mount>) {
-        const sidebar = wrapper.find('[data-soybean-app-shell-sidebar]');
+        const sidebar = wrapper.find('[data-vean-app-shell-sidebar]');
         const metrics = splitNavPaneMetrics.md;
-        const rail = sidebar.find('[data-soybean-split-nav-vertical-first-level]').exists();
-        const pane = sidebar.find('[data-soybean-split-nav-sub-vertical]').exists();
+        const rail = sidebar.find('[data-vean-split-nav-vertical-first-level]').exists();
+        const pane = sidebar.find('[data-vean-split-nav-sub-vertical]').exists();
 
         return {
           width: (rail ? metrics.rail : 0) + (pane ? metrics.tree : 0),
@@ -667,7 +665,7 @@ describe('SAppShell', () => {
       }
 
       function reservedWidths(wrapper: ReturnType<typeof mount>) {
-        const style = wrapper.find('[data-soybean-layout-root]').attributes('style') ?? '';
+        const style = wrapper.find('[data-vean-layout-root]').attributes('style') ?? '';
 
         return {
           width: remOf(style, 'soybean-sidebar-width'),
@@ -720,7 +718,7 @@ describe('SAppShell', () => {
 
           const clickFirstLevel = async (text: string) => {
             const item = wrapper
-              .findAll('[data-soybean-split-nav-first-level-item]')
+              .findAll('[data-vean-split-nav-first-level-item]')
               .find(node => node.text().includes(text));
 
             await item?.trigger('click');
@@ -771,7 +769,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const tab = wrapper.findAll('[data-soybean-page-tabs-item]').find(item => item.text().includes('Projects'));
+      const tab = wrapper.findAll('[data-vean-page-tabs-item]').find(item => item.text().includes('Projects'));
 
       expect(tab).toBeDefined();
 
@@ -781,7 +779,7 @@ describe('SAppShell', () => {
       expect(wrapper.emitted('update:tabValue')?.at(-1)?.[0]).toBe('projects');
       expect(wrapper.emitted('tabClick')?.at(-1)?.[0]).toMatchObject({ value: 'projects' });
 
-      await tab?.find('[data-soybean-page-tabs-close]').trigger('click');
+      await tab?.find('[data-vean-page-tabs-close]').trigger('click');
       await nextTick();
 
       expect(wrapper.emitted('tabClose')?.at(-1)?.[0]).toMatchObject({ value: 'projects' });
@@ -800,7 +798,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const sidebarStyle = sidebar.find('[data-soybean-layout-root]').attributes('style') ?? '';
+      const sidebarStyle = sidebar.find('[data-vean-layout-root]').attributes('style') ?? '';
 
       expect(sidebarStyle).toContain('--soybean-sidebar-width: 15rem');
       expect(sidebarStyle).toContain('--soybean-collapsed-sidebar-width: 3.125rem');
@@ -812,7 +810,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      expect(top.find('[data-soybean-layout-root]').attributes('style') ?? '').toContain(
+      expect(top.find('[data-vean-layout-root]').attributes('style') ?? '').toContain(
         '--soybean-layout-start-gap: 0px'
       );
 
@@ -825,7 +823,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const style = wrapper.find('[data-soybean-layout-root]').attributes('style') ?? '';
+      const style = wrapper.find('[data-vean-layout-root]').attributes('style') ?? '';
 
       expect(style).toContain('--soybean-sidebar-width: 5rem');
       expect(style).toContain('--soybean-collapsed-sidebar-width: 5rem');
@@ -839,7 +837,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const expandedStyle = expanded.find('[data-soybean-layout-root]').attributes('style') ?? '';
+      const expandedStyle = expanded.find('[data-vean-layout-root]').attributes('style') ?? '';
 
       expect(expandedStyle).toContain('--soybean-sidebar-width: 20rem');
       // Collapsed the pane folds into its icon rail, so the sidebar takes the
@@ -853,7 +851,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const collapsedStyle = collapsed.find('[data-soybean-layout-root]').attributes('style') ?? '';
+      const collapsedStyle = collapsed.find('[data-vean-layout-root]').attributes('style') ?? '';
 
       expect(collapsedStyle).toContain('--soybean-layout-start-gap: 8.125rem');
 
@@ -866,7 +864,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      expect(expanded.find('[data-soybean-layout-root]').attributes('style') ?? '').toContain(
+      expect(expanded.find('[data-vean-layout-root]').attributes('style') ?? '').toContain(
         '--soybean-sidebar-width: 15rem'
       );
 
@@ -878,7 +876,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      expect(collapsed.find('[data-soybean-layout-root]').attributes('style') ?? '').toContain(
+      expect(collapsed.find('[data-vean-layout-root]').attributes('style') ?? '').toContain(
         '--soybean-layout-start-gap: 3.125rem'
       );
 
@@ -890,7 +888,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      expect(empty.find('[data-soybean-layout-root]').attributes('style') ?? '').toContain(
+      expect(empty.find('[data-vean-layout-root]').attributes('style') ?? '').toContain(
         '--soybean-sidebar-width: 0rem'
       );
 
@@ -904,7 +902,7 @@ describe('SAppShell', () => {
      */
     it('sizes the horizontal-dual-vertical sidebar to the columns it renders', async () => {
       const sidebarWidth = (wrapper: ReturnType<typeof mount>) => {
-        const style = wrapper.find('[data-soybean-layout-root]').attributes('style') ?? '';
+        const style = wrapper.find('[data-vean-layout-root]').attributes('style') ?? '';
 
         return style.match(/--soybean-sidebar-width: ([^;]+)/)?.[1];
       };
@@ -916,8 +914,8 @@ describe('SAppShell', () => {
       });
 
       expect(sidebarWidth(leaf)).toBe('0rem');
-      expect(leaf.find('[data-soybean-split-nav-vertical-first-level]').exists()).toBe(false);
-      expect(leaf.find('[data-soybean-split-nav-sub-vertical]').exists()).toBe(false);
+      expect(leaf.find('[data-vean-split-nav-vertical-first-level]').exists()).toBe(false);
+      expect(leaf.find('[data-vean-split-nav-sub-vertical]').exists()).toBe(false);
 
       leaf.unmount();
 
@@ -929,8 +927,8 @@ describe('SAppShell', () => {
       });
 
       const headerItem = rail
-        .find('[data-soybean-split-nav-horizontal-first-level]')
-        .findAll('[data-soybean-split-nav-first-level-item]')
+        .find('[data-vean-split-nav-horizontal-first-level]')
+        .findAll('[data-vean-split-nav-first-level-item]')
         .find(item => item.text().includes('Workbench'));
 
       expect(headerItem).toBeDefined();
@@ -938,9 +936,9 @@ describe('SAppShell', () => {
       await headerItem?.trigger('click');
       await nextTick();
 
-      expect(rail.find('[data-soybean-split-nav-vertical-first-level]').text()).toContain('Projects');
+      expect(rail.find('[data-vean-split-nav-vertical-first-level]').text()).toContain('Projects');
       expect(sidebarWidth(rail)).toBe('5rem');
-      expect(rail.find('[data-soybean-split-nav-sub-vertical]').exists()).toBe(false);
+      expect(rail.find('[data-vean-split-nav-sub-vertical]').exists()).toBe(false);
 
       rail.unmount();
 
@@ -951,8 +949,8 @@ describe('SAppShell', () => {
       });
 
       expect(sidebarWidth(nested)).toBe('20rem');
-      expect(nested.find('[data-soybean-split-nav-vertical-first-level]').exists()).toBe(true);
-      expect(nested.find('[data-soybean-split-nav-sub-vertical]').exists()).toBe(true);
+      expect(nested.find('[data-vean-split-nav-vertical-first-level]').exists()).toBe(true);
+      expect(nested.find('[data-vean-split-nav-sub-vertical]').exists()).toBe(true);
 
       nested.unmount();
     });
@@ -983,10 +981,10 @@ describe('SAppShell', () => {
 
       await nextTick();
 
-      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="workbench"]').attributes('aria-expanded')).toBe(
+      expect(wrapper.find('[data-vean-tree-menu-button][data-value="workbench"]').attributes('aria-expanded')).toBe(
         'true'
       );
-      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
+      expect(wrapper.find('[data-vean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
         'true'
       );
 
@@ -995,10 +993,10 @@ describe('SAppShell', () => {
 
       // `workbench` stays open — it is the branch the new selection sits in —
       // while the branch the selection left collapses.
-      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="workbench"]').attributes('aria-expanded')).toBe(
+      expect(wrapper.find('[data-vean-tree-menu-button][data-value="workbench"]').attributes('aria-expanded')).toBe(
         'true'
       );
-      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
+      expect(wrapper.find('[data-vean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
         'false'
       );
       expect(wrapper.text()).not.toContain('Soybean UI');
@@ -1016,7 +1014,7 @@ describe('SAppShell', () => {
       await wrapper.setProps({ modelValue: 'tasks' });
       await nextTick();
 
-      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
+      expect(wrapper.find('[data-vean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
         'true'
       );
       expect(wrapper.text()).toContain('Soybean UI');
@@ -1032,14 +1030,14 @@ describe('SAppShell', () => {
 
       await nextTick();
 
-      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
+      expect(wrapper.find('[data-vean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
         'true'
       );
 
       await wrapper.setProps({ modelValue: 'tasks' });
       await nextTick();
 
-      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
+      expect(wrapper.find('[data-vean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
         'false'
       );
 
@@ -1061,7 +1059,7 @@ describe('SAppShell', () => {
       await wrapper.setProps({ modelValue: 'tasks' });
       await nextTick();
 
-      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
+      expect(wrapper.find('[data-vean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
         'false'
       );
 
@@ -1084,7 +1082,7 @@ describe('SAppShell', () => {
       await wrapper.setProps({ modelValue: 'tasks' });
       await nextTick();
 
-      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
+      expect(wrapper.find('[data-vean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
         'false'
       );
 
@@ -1118,10 +1116,10 @@ describe('SAppShell', () => {
           attachTo: document.body
         });
 
-        const sidebar = wrapper.find('[data-soybean-app-shell-sidebar]').element;
+        const sidebar = wrapper.find('[data-vean-app-shell-sidebar]').element;
 
-        expect(sidebar.lastElementChild).toBe(wrapper.find('[data-soybean-app-shell-trigger-row]').element);
-        expect(wrapper.find('[data-soybean-app-shell-header] [data-soybean-layout-trigger]').exists()).toBe(false);
+        expect(sidebar.lastElementChild).toBe(wrapper.find('[data-vean-app-shell-trigger-row]').element);
+        expect(wrapper.find('[data-vean-app-shell-header] [data-vean-layout-trigger]').exists()).toBe(false);
 
         wrapper.unmount();
       }
@@ -1133,7 +1131,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const cell = wrapper.find('[data-soybean-app-shell-trigger-cell]');
+      const cell = wrapper.find('[data-vean-app-shell-trigger-cell]');
 
       // The sidebar is the rail plus the folded pane, so the trigger takes the
       // folded column instead of centering across both.
@@ -1149,10 +1147,10 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const cell = wrapper.find('[data-soybean-app-shell-trigger-cell]');
+      const cell = wrapper.find('[data-vean-app-shell-trigger-cell]');
 
       // No rail: the folded pane is the entire sidebar, so its cell is the row.
-      expect(wrapper.find('[data-soybean-app-shell-trigger-rail]').exists()).toBe(false);
+      expect(wrapper.find('[data-vean-app-shell-trigger-rail]').exists()).toBe(false);
       expect(cell.attributes('data-centered')).toBe('true');
       expect(cell.attributes('style')).toContain(`width: ${foldedPane}`);
 
@@ -1168,7 +1166,7 @@ describe('SAppShell', () => {
           attachTo: document.body
         });
 
-        expect(closed.find('[data-soybean-app-shell-trigger-row]').exists()).toBe(false);
+        expect(closed.find('[data-vean-app-shell-trigger-row]').exists()).toBe(false);
 
         closed.unmount();
 
@@ -1177,7 +1175,7 @@ describe('SAppShell', () => {
           attachTo: document.body
         });
 
-        expect(open.find('[data-soybean-app-shell-trigger-row]').exists()).toBe(true);
+        expect(open.find('[data-vean-app-shell-trigger-row]').exists()).toBe(true);
 
         open.unmount();
       }
@@ -1189,7 +1187,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const railCell = dualVertical.find('[data-soybean-app-shell-trigger-rail]');
+      const railCell = dualVertical.find('[data-vean-app-shell-trigger-rail]');
 
       // The same column width as the rail above, so the divider runs on through
       // the row instead of stopping at the menu.
@@ -1203,7 +1201,7 @@ describe('SAppShell', () => {
       });
 
       // A rail-less sidebar has no divider to continue.
-      expect(railLess.find('[data-soybean-app-shell-trigger-rail]').exists()).toBe(false);
+      expect(railLess.find('[data-vean-app-shell-trigger-rail]').exists()).toBe(false);
 
       railLess.unmount();
     });
@@ -1214,8 +1212,8 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-app-shell-header] [data-soybean-layout-trigger]').exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-app-shell-trigger-row]').exists()).toBe(false);
+      expect(wrapper.find('[data-vean-app-shell-header] [data-vean-layout-trigger]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-app-shell-trigger-row]').exists()).toBe(false);
 
       wrapper.unmount();
     });
@@ -1226,7 +1224,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-layout-trigger]').exists()).toBe(false);
+      expect(wrapper.find('[data-vean-layout-trigger]').exists()).toBe(false);
 
       wrapper.unmount();
     });
@@ -1246,13 +1244,13 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const region = wrapper.find('[data-soybean-app-shell-logo]');
+      const region = wrapper.find('[data-vean-app-shell-logo]');
 
       expect(region.attributes('data-placement')).toBe('sidebar');
       expect(region.attributes('data-aligned')).toBe('true');
       expect(region.attributes('data-centered')).toBeUndefined();
-      expect(wrapper.find('[data-soybean-app-shell-logo-mark]').attributes('style')).toContain(`width: ${rail}`);
-      expect(wrapper.find('[data-soybean-app-shell-logo-title]').attributes('style')).toContain(`width: ${pane}`);
+      expect(wrapper.find('[data-vean-app-shell-logo-mark]').attributes('style')).toContain(`width: ${rail}`);
+      expect(wrapper.find('[data-vean-app-shell-logo-title]').attributes('style')).toContain(`width: ${pane}`);
 
       wrapper.unmount();
     });
@@ -1264,14 +1262,14 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const region = wrapper.find('[data-soybean-app-shell-logo]');
+      const region = wrapper.find('[data-vean-app-shell-logo]');
 
       // The rail keeps its column, so the mark stays on it instead of centering
       // in the folded sidebar; the title's column is folded away.
       expect(region.attributes('data-aligned')).toBe('true');
       expect(region.attributes('data-centered')).toBeUndefined();
-      expect(wrapper.find('[data-soybean-app-shell-logo-mark]').attributes('style')).toContain(`width: ${rail}`);
-      expect(wrapper.find('[data-soybean-app-shell-logo-title]').exists()).toBe(false);
+      expect(wrapper.find('[data-vean-app-shell-logo-mark]').attributes('style')).toContain(`width: ${rail}`);
+      expect(wrapper.find('[data-vean-app-shell-logo-title]').exists()).toBe(false);
 
       wrapper.unmount();
     });
@@ -1283,12 +1281,12 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const region = wrapper.find('[data-soybean-app-shell-logo]');
+      const region = wrapper.find('[data-vean-app-shell-logo]');
 
       expect(region.attributes('data-aligned')).toBeUndefined();
       expect(region.attributes('data-centered')).toBe('true');
-      expect(wrapper.find('[data-soybean-app-shell-logo-mark]').attributes('style')).toBeUndefined();
-      expect(wrapper.find('[data-soybean-app-shell-logo-title]').exists()).toBe(false);
+      expect(wrapper.find('[data-vean-app-shell-logo-mark]').attributes('style')).toBeUndefined();
+      expect(wrapper.find('[data-vean-app-shell-logo-title]').exists()).toBe(false);
 
       wrapper.unmount();
     });
@@ -1302,8 +1300,8 @@ describe('SAppShell', () => {
 
       // The active first-level menu has no children: the sidebar is the rail
       // alone, so there is no second column for the title to sit on.
-      expect(wrapper.find('[data-soybean-app-shell-logo-mark]').exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-app-shell-logo-title]').exists()).toBe(false);
+      expect(wrapper.find('[data-vean-app-shell-logo-mark]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-app-shell-logo-title]').exists()).toBe(false);
 
       wrapper.unmount();
     });
@@ -1315,12 +1313,12 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const sidebar = wrapper.find('[data-soybean-app-shell-sidebar]').element;
-      const region = wrapper.find('[data-soybean-app-shell-logo]');
+      const sidebar = wrapper.find('[data-vean-app-shell-sidebar]').element;
+      const region = wrapper.find('[data-vean-app-shell-logo]');
 
       expect(region.attributes('data-placement')).toBe('sidebar-bottom');
       expect(sidebar.lastElementChild).toBe(region.element);
-      expect(sidebar.lastElementChild).not.toBe(wrapper.find('[data-soybean-app-shell-menu-sidebar]').element);
+      expect(sidebar.lastElementChild).not.toBe(wrapper.find('[data-vean-app-shell-menu-sidebar]').element);
 
       wrapper.unmount();
     });
@@ -1332,9 +1330,9 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const sidebar = wrapper.find('[data-soybean-app-shell-sidebar]').element;
+      const sidebar = wrapper.find('[data-vean-app-shell-sidebar]').element;
 
-      expect(sidebar.firstElementChild).toBe(wrapper.find('[data-soybean-app-shell-logo]').element);
+      expect(sidebar.firstElementChild).toBe(wrapper.find('[data-vean-app-shell-logo]').element);
 
       wrapper.unmount();
     });
@@ -1352,7 +1350,7 @@ describe('SAppShell', () => {
           attachTo: document.body
         });
 
-        expect(wrapper.find('[data-soybean-app-shell-logo]').attributes('data-placement')).toBe(expected);
+        expect(wrapper.find('[data-vean-app-shell-logo]').attributes('data-placement')).toBe(expected);
 
         wrapper.unmount();
       }
@@ -1365,12 +1363,12 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const region = wrapper.find('[data-soybean-app-shell-header] [data-soybean-app-shell-logo]');
+      const region = wrapper.find('[data-vean-app-shell-header] [data-vean-app-shell-logo]');
 
       expect(region.attributes('data-placement')).toBe('header');
       expect(region.attributes('data-aligned')).toBeUndefined();
-      expect(wrapper.find('[data-soybean-app-shell-logo-mark]').attributes('style')).toBeUndefined();
-      expect(wrapper.find('[data-soybean-app-shell-logo-title]').attributes('style')).toBeUndefined();
+      expect(wrapper.find('[data-vean-app-shell-logo-mark]').attributes('style')).toBeUndefined();
+      expect(wrapper.find('[data-vean-app-shell-logo-title]').attributes('style')).toBeUndefined();
 
       wrapper.unmount();
     });
@@ -1384,7 +1382,7 @@ describe('SAppShell', () => {
 
       // The rail below the brand carries the divider, so the mark cell continues
       // it instead of breaking the line at the brand row.
-      expect(dualVertical.find('[data-soybean-app-shell-logo-mark]').attributes('data-divider')).toBe('true');
+      expect(dualVertical.find('[data-vean-app-shell-logo-mark]').attributes('data-divider')).toBe('true');
 
       dualVertical.unmount();
 
@@ -1395,7 +1393,7 @@ describe('SAppShell', () => {
       });
 
       // A single-column sidebar has no divider to continue.
-      expect(sidebar.find('[data-soybean-app-shell-logo-mark]').attributes('data-divider')).toBeUndefined();
+      expect(sidebar.find('[data-vean-app-shell-logo-mark]').attributes('data-divider')).toBeUndefined();
 
       sidebar.unmount();
     });
@@ -1407,7 +1405,7 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-app-shell-logo]').exists()).toBe(false);
+      expect(wrapper.find('[data-vean-app-shell-logo]').exists()).toBe(false);
       expect(wrapper.find('[data-title]').exists()).toBe(false);
 
       wrapper.unmount();

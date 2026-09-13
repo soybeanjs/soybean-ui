@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SSpinner } from '@soybeanjs/ui';
-import type { SpinnerIcon } from '@soybeanjs/ui';
+import { SSpinner } from '@vean/ui';
+import type { SpinnerIcon } from '@vean/ui';
 
 const icons: SpinnerIcon[] = [
   'svg-spinners:270-ring',

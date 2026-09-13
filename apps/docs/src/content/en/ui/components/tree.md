@@ -23,7 +23,7 @@ A component for displaying hierarchical tree data with selection and expand/coll
 - 📂 Expansion strategy — `toggleBehavior: 'multiple' | 'single'` (multiple expanded nodes by default; `single` collapses the previous node when expanding a new one, accordion-like)
 - ⌨️ Keyboard navigation — Roving Focus: `↑/↓` move focus, `→/←` expand/collapse or enter/return to a parent level, `Enter`/`Space` select, character typeahead for quick location; `loop` (default `true`) wraps around; full RTL support
 - ⚡ Virtualization — `STreeVirtualizer` + `height` renders only visible nodes, staying smooth with 1000+ nodes
-- ♿ Accessibility — `role="tree"`/`treeitem` with `aria-expanded`/`aria-selected`/`aria-level`/`aria-setsize`/`aria-posinset`/`aria-multiselectable`/`aria-disabled`, plus `data-soybean-tree-*` data attributes
+- ♿ Accessibility — `role="tree"`/`treeitem` with `aria-expanded`/`aria-selected`/`aria-level`/`aria-setsize`/`aria-posinset`/`aria-multiselectable`/`aria-disabled`, plus `data-vean-tree-*` data attributes
 
 ## Component family
 
@@ -32,7 +32,7 @@ A component for displaying hierarchical tree data with selection and expand/coll
 - `TreeRoot` (headless) — root component; `useControllableState` manages selection/expansion, `useSelectionBehavior` handles single/multi/range selection, `useRovingFocusGroup` + `useTypeahead` implement keyboard navigation; `provideTreeRootContext` bridges child items
 - `TreeItem` (headless) — single node; `useRovingFocusGroupItem` manages focus, renders `aria-*` and `data-*` attributes, dispatches `select`/`toggle` events via `handleAndDispatchCustomEvent`
 - `TreeVirtualizerRoot` (headless) — virtualized root; `VirtualizerRoot` + TanStack Virtual, forwards flattened `flattenItems`
-- `TreeVirtualizerItem` (headless) — virtualized node; combines `TreeItem` + `VirtualizerItem` (`data-soybean-tree-virtualizer-item`)
+- `TreeVirtualizerItem` (headless) — virtualized node; combines `TreeItem` + `VirtualizerItem` (`data-vean-tree-virtualizer-item`)
 
 ## Demos
 
@@ -49,22 +49,22 @@ A component for displaying hierarchical tree data with selection and expand/coll
 
 ### Architecture and benchmark differences
 
-`TreeRoot` owns all state (selection/expansion through the `useControllableState` controlled/uncontrolled dual channels) and the selection strategy (`useSelectionBehavior`'s toggle/replace/range selection); all base primitives stay zero-style. `STree`/`STreeVirtualizer` only mirror the `loop` default and pass through slots — the node visuals are fully composed inside the `item` slot via `STreeItem`/`STreeVirtualizerItem` (indentation, icons, checkboxes, focus states all injected through classes). Keyboard navigation builds on Roving Focus (`↑/↓` move, `→/←` expand/collapse, typeahead) and additionally supports `Shift` range selection — an interaction beyond the default contract of most mainstream tree components. Virtualization builds on the `@soybeanjs/headless` virtualizer and renders only visible nodes.
+`TreeRoot` owns all state (selection/expansion through the `useControllableState` controlled/uncontrolled dual channels) and the selection strategy (`useSelectionBehavior`'s toggle/replace/range selection); all base primitives stay zero-style. `STree`/`STreeVirtualizer` only mirror the `loop` default and pass through slots — the node visuals are fully composed inside the `item` slot via `STreeItem`/`STreeVirtualizerItem` (indentation, icons, checkboxes, focus states all injected through classes). Keyboard navigation builds on Roving Focus (`↑/↓` move, `→/←` expand/collapse, typeahead) and additionally supports `Shift` range selection — an interaction beyond the default contract of most mainstream tree components. Virtualization builds on the `@vean/aria` virtualizer and renders only visible nodes.
 
-| Capability                                      | SoybeanUI | Ant Design | Element Plus | Naive UI |
-| :---------------------------------------------- | :-------: | :--------: | :----------: | :------: |
-| headless/style separation                       |    ✅     |     —      |      —       |    —     |
-| Single/multiple selection (toggle/replace)      |    ✅     |     ✅     |      ✅      |    ✅    |
-| Expansion strategy (single/multiple toggle)     |    ✅     |     ✅     |      ✅      |    ✅    |
-| Cascading selection (propagate/bubble/parent)   |    ✅     |     ✅     |      ✅      |    ⚠️    |
-| Keyboard navigation (arrows + loop + typeahead) |    ✅     |     ✅     |      ✅      |    ⚠️    |
-| Virtualization (1k nodes)                       |    ✅     |     ✅     |      ⚠️      |    ✅    |
-| Checkable mode (checkbox)                       |    ⚠️     |     ✅     |      ✅      |    ✅    |
-| Draggable reordering                            |     —     |     ✅     |      ✅      |    ✅    |
-| Async child loading (loadData)                  |     —     |     ✅     |      ✅      |    ✅    |
-| Search filtering (searchValue)                  |     —     |     ✅     |      ✅      |    —     |
+| Capability                                      | Vean | Ant Design | Element Plus | Naive UI |
+| :---------------------------------------------- | :--: | :--------: | :----------: | :------: |
+| headless/style separation                       |  ✅  |     —      |      —       |    —     |
+| Single/multiple selection (toggle/replace)      |  ✅  |     ✅     |      ✅      |    ✅    |
+| Expansion strategy (single/multiple toggle)     |  ✅  |     ✅     |      ✅      |    ✅    |
+| Cascading selection (propagate/bubble/parent)   |  ✅  |     ✅     |      ✅      |    ⚠️    |
+| Keyboard navigation (arrows + loop + typeahead) |  ✅  |     ✅     |      ✅      |    ⚠️    |
+| Virtualization (1k nodes)                       |  ✅  |     ✅     |      ⚠️      |    ✅    |
+| Checkable mode (checkbox)                       |  ⚠️  |     ✅     |      ✅      |    ✅    |
+| Draggable reordering                            |  —   |     ✅     |      ✅      |    ✅    |
+| Async child loading (loadData)                  |  —   |     ✅     |      ✅      |    ✅    |
+| Search filtering (searchValue)                  |  —   |     ✅     |      ✅      |    —     |
 
-`⚠️` = partial support (SoybeanUI checkable can be built via `multiple` + a custom `item` slot checkbox icon + the `data-selected`/`data-contains-selected` states; Naive UI has no built-in range selection or character location).
+`⚠️` = partial support (Vean checkable can be built via `multiple` + a custom `item` slot checkbox icon + the `data-selected`/`data-contains-selected` states; Naive UI has no built-in range selection or character location).
 
 ### Cautions
 

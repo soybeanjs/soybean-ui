@@ -2,7 +2,7 @@
 import { nextTick, onBeforeUnmount, onServerPrefetch, shallowRef, watchEffect } from 'vue';
 import type { Component } from 'vue';
 import { ClientOnly } from 'ubean/client';
-import type { AnchorOptionData } from '@soybeanjs/headless/anchor';
+import type { AnchorOptionData } from '@vean/aria/anchor';
 import { useDocOutline } from '~/composables/use-doc-outline';
 import { toHeadingId } from '~/shared/heading';
 
@@ -10,7 +10,7 @@ interface Props {
   /**
    * The path to the markdown file, relative to `src/content/{locale}/`
    *
-   * @example 'ui/components/button', 'ui/quick-start', 'sbean/index'
+   * @example 'ui/components/button', 'ui/quick-start', 'vean/index'
    */
   path: string;
 }

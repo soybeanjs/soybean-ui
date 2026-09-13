@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SScrollArea } from '@soybeanjs/ui';
-import type { ScrollAreaType } from '@soybeanjs/ui';
+import { SScrollArea } from '@vean/ui';
+import type { ScrollAreaType } from '@vean/ui';
 
 const types: ScrollAreaType[] = ['auto', 'always', 'hover', 'scroll', 'glimpse'];
 const items = Array.from({ length: 20 }, (_, index) => `Item ${index + 1}`);

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { STable } from '@soybeanjs/ui';
-import type { TableColumn } from '@soybeanjs/ui';
+import { STable } from '@vean/ui';
+import type { TableColumn } from '@vean/ui';
 import { themeSizeOptions } from '~/constants/theme';
 
 interface TableData {

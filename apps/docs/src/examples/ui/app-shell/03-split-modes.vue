@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, shallowRef } from 'vue';
-import { SAppShell, SIcon, SSelect, SSwitch } from '@soybeanjs/ui';
-import type { AppShellMode, SelectOptionData } from '@soybeanjs/ui';
+import { SAppShell, SIcon, SSelect, SSwitch } from '@vean/ui';
+import type { AppShellMode, SelectOptionData } from '@vean/ui';
 import { appShellItems } from './menu';
 
 const modes: SelectOptionData<AppShellMode>[] = [

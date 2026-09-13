@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import * as v from 'valibot';
 import {
   SButton,
   SButtonIcon,
@@ -10,9 +11,8 @@ import {
   SSelect,
   SSwitch,
   useForm
-} from '@soybeanjs/ui';
-import type { CheckboxGroupOptionData, RadioGroupOptionData, SelectOptionData } from '@soybeanjs/ui';
-import * as v from 'valibot';
+} from '@vean/ui';
+import type { CheckboxGroupOptionData, RadioGroupOptionData, SelectOptionData } from '@vean/ui';
 
 const user = v.object({
   username: v.pipe(v.string('Username is required'), v.nonEmpty('Username is required')),

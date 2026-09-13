@@ -46,19 +46,19 @@ Use it for status labels, category chips, keywords, or filterable metadata. Pref
 
 ### Architecture and benchmark differences
 
-The headless `Tag` is a minimal present/close state primitive, and `STag` keeps all styling in the `tagVariants` recipe while providing the default close control. This mirrors shadcn/ui's headless/styled split, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a single styled tag with `closable`/`onClose` props. SoybeanUI's close button is a real focusable `<button>` whose `aria-label` is localized from `tag.remove` (e.g. `Remove {label}`), whereas several libraries rely on a plain `×` glyph that is less robust for screen readers.
+The headless `Tag` is a minimal present/close state primitive, and `STag` keeps all styling in the `tagVariants` recipe while providing the default close control. This mirrors shadcn/ui's headless/styled split, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a single styled tag with `closable`/`onClose` props. Vean's close button is a real focusable `<button>` whose `aria-label` is localized from `tag.remove` (e.g. `Remove {label}`), whereas several libraries rely on a plain `×` glyph that is less robust for screen readers.
 
-| Capability                     | SoybeanUI | shadcn/ui | Ant Design Tag | Element Plus Tag | Mantine Badge | Naive UI Tag |
-| :----------------------------- | :-------: | :-------: | :------------: | :--------------: | :-----------: | :----------: |
-| Headless/styled split          |    ✅     |    ✅     |       —        |        —         |       —       |      —       |
-| Color variants (8)             |    ✅     |    ✅     |       ✅       |        ✅        |      ✅       |      ✅      |
-| Variants (solid/outline/soft)  |    ✅     |    ✅     |       ✅       |        ✅        |      ✅       |      ✅      |
-| Size variants (6)              |    ✅     |     —     |       ✅       |        ✅        |      ✅       |      ✅      |
-| Shape (auto / pill)            |    ✅     |    ✅     |       ✅       |        ✅        |      ✅       |      ✅      |
-| Closable tag                   |    ✅     |     —     |       ✅       |        ✅        |       —       |      ✅      |
-| Localized close `aria-label`   |    ✅     |     —     |       —        |        ✅        |       —       |      —       |
-| Controlled visibility (`open`) |    ✅     |     —     |       —        |        —         |       —       |      —       |
-| RTL-ready                      |    ✅     |    ✅     |       ✅       |        —         |       —       |      ✅      |
+| Capability                     | Vean | shadcn/ui | Ant Design Tag | Element Plus Tag | Mantine Badge | Naive UI Tag |
+| :----------------------------- | :--: | :-------: | :------------: | :--------------: | :-----------: | :----------: |
+| Headless/styled split          |  ✅  |    ✅     |       —        |        —         |       —       |      —       |
+| Color variants (8)             |  ✅  |    ✅     |       ✅       |        ✅        |      ✅       |      ✅      |
+| Variants (solid/outline/soft)  |  ✅  |    ✅     |       ✅       |        ✅        |      ✅       |      ✅      |
+| Size variants (6)              |  ✅  |     —     |       ✅       |        ✅        |      ✅       |      ✅      |
+| Shape (auto / pill)            |  ✅  |    ✅     |       ✅       |        ✅        |      ✅       |      ✅      |
+| Closable tag                   |  ✅  |     —     |       ✅       |        ✅        |       —       |      ✅      |
+| Localized close `aria-label`   |  ✅  |     —     |       —        |        ✅        |       —       |      —       |
+| Controlled visibility (`open`) |  ✅  |     —     |       —        |        —         |       —       |      —       |
+| RTL-ready                      |  ✅  |    ✅     |       ✅       |        —         |       —       |      ✅      |
 
 `—` = unsupported or a different interaction model.
 

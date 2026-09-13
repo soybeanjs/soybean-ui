@@ -45,17 +45,17 @@ head:
 
 ### 架构与对标差异
 
-`SCollapsible` 是薄样式包装；headless 基础组件负责打开状态（`useControllableState`）、presence/动画循环（`usePresence` + `getBoundingClientRect` 尺寸测量）与无障碍接线（`aria-expanded`/`aria-controls`/`data-state`）。这与 shadcn/ui 及 Radix 的 headless `Collapsible` 一致；而 Ant Design、Element Plus、Mantine 则提供配置驱动的折叠。SoybeanUI 将触发器接入其 `Button` 基础组件，从而复用样式化 `Button` 变体，而非自造切换控件。
+`SCollapsible` 是薄样式包装；headless 基础组件负责打开状态（`useControllableState`）、presence/动画循环（`usePresence` + `getBoundingClientRect` 尺寸测量）与无障碍接线（`aria-expanded`/`aria-controls`/`data-state`）。这与 shadcn/ui 及 Radix 的 headless `Collapsible` 一致；而 Ant Design、Element Plus、Mantine 则提供配置驱动的折叠。Vean 将触发器接入其 `Button` 基础组件，从而复用样式化 `Button` 变体，而非自造切换控件。
 
-| 能力              | SoybeanUI | shadcn/ui | Radix Collapsible | Ant Design | Element Plus | Mantine |
-| :---------------- | :-------: | :-------: | :---------------: | :--------: | :----------: | :-----: |
-| Headless/样式分离 |    ✅     |    ✅     |        ✅         |     —      |      —       |    —    |
-| 受控 / 非受控     |    ✅     |    ✅     |        ✅         |     ✅     |      ✅      |   ✅    |
-| 高度动画          |    ✅     |    ✅     |        ✅         |     ✅     |      ✅      |   ✅    |
-| `unmountOnHide`   |    ✅     |    ✅     |        ✅         |     —      |      —       |    —    |
-| `forceMount`      |    ✅     |    ✅     |        ✅         |     —      |      —       |    —    |
-| `as`/`asChild`    |    ✅     |    ✅     |        ✅         |     —      |      —       |    —    |
-| 触发器复用 Button |    ✅     |     —     |         —         |     —      |      —       |    —    |
+| 能力              | Vean | shadcn/ui | Radix Collapsible | Ant Design | Element Plus | Mantine |
+| :---------------- | :--: | :-------: | :---------------: | :--------: | :----------: | :-----: |
+| Headless/样式分离 |  ✅  |    ✅     |        ✅         |     —      |      —       |    —    |
+| 受控 / 非受控     |  ✅  |    ✅     |        ✅         |     ✅     |      ✅      |   ✅    |
+| 高度动画          |  ✅  |    ✅     |        ✅         |     ✅     |      ✅      |   ✅    |
+| `unmountOnHide`   |  ✅  |    ✅     |        ✅         |     —      |      —       |    —    |
+| `forceMount`      |  ✅  |    ✅     |        ✅         |     —      |      —       |    —    |
+| `as`/`asChild`    |  ✅  |    ✅     |        ✅         |     —      |      —       |    —    |
+| 触发器复用 Button |  ✅  |     —     |         —         |     —      |      —       |    —    |
 
 `—` = 不支持或采用不同交互模型。
 

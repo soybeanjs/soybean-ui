@@ -2,15 +2,15 @@
 
 ## AI ASSISTANT ENTRYPOINT
 
-Component development rules live in the self-contained skill at `.agents/skills/soybean-ui-develop/`:
+Component development rules live in the self-contained skill at `.agents/skills/vean-develop/`:
 
-- [SKILL.md](.agents/skills/soybean-ui-develop/SKILL.md) — pattern classification, phase order, workflows, guardrails, delivery surfaces, generation workflow.
-- [layers.md](.agents/skills/soybean-ui-develop/layers.md) — headless admission, headless/UI layer rules, a11y/RTL.
-- [surfaces.md](.agents/skills/soybean-ui-develop/surfaces.md) — playground, docs, testing delivery surface rules.
-- [e2e.md](.agents/skills/soybean-ui-develop/e2e.md) — browser e2e testing (Tier 1 component-level + Tier 2 app-level smoke), env setup, core scenarios, assertion standards.
-- [process.md](.agents/skills/soybean-ui-develop/process.md) — finish checklist, git commit convention.
-- [audit.md](.agents/skills/soybean-ui-develop/audit.md) — assessment methodology, seven check dimensions (D1–D7, 106 items), severity, acceptance, regression flows for already-shipped components.
-- [EXAMPLES.md](.agents/skills/soybean-ui-develop/EXAMPLES.md) — request shapes that trigger the skill.
+- [SKILL.md](.agents/skills/vean-develop/SKILL.md) — pattern classification, phase order, workflows, guardrails, delivery surfaces, generation workflow.
+- [layers.md](.agents/skills/vean-develop/layers.md) — aria admission, aria/UI layer rules, a11y/RTL.
+- [surfaces.md](.agents/skills/vean-develop/surfaces.md) — playground, docs, testing delivery surface rules.
+- [e2e.md](.agents/skills/vean-develop/e2e.md) — browser e2e testing (Tier 1 component-level + Tier 2 app-level smoke), env setup, core scenarios, assertion standards.
+- [process.md](.agents/skills/vean-develop/process.md) — finish checklist, git commit convention.
+- [audit.md](.agents/skills/vean-develop/audit.md) — assessment methodology, seven check dimensions (D1–D7, 106 items), severity, acceptance, regression flows for already-shipped components.
+- [EXAMPLES.md](.agents/skills/vean-develop/EXAMPLES.md) — request shapes that trigger the skill.
 
 **Global skill rules (mandatory for all agents, applied before any task):**
 
@@ -19,13 +19,13 @@ Component development rules live in the self-contained skill at `.agents/skills/
 
 Both skills are installed globally in the skills store and can be loaded from any project. They are the single source of truth for TypeScript functional style and Vue SFC structure; the component development skill does not restate their content.
 
-Load the component development skill for any task that creates, migrates, extends, standardizes, fixes, or audits a SoybeanUI component. For auditing or re-evaluating already-shipped components, load [audit.md](.agents/skills/soybean-ui-develop/audit.md) for the assessment methodology.
+Load the component development skill for any task that creates, migrates, extends, standardizes, fixes, or audits a Vean component. For auditing or re-evaluating already-shipped components, load [audit.md](.agents/skills/vean-develop/audit.md) for the assessment methodology.
 
 If a nearer scoped `AGENTS.md` exists for your target path, use it only to narrow which skill sections apply.
 
 **Generated:** 2026-09-06
 **Version:** 0.31.0
-**Monorepo:** pnpm workspaces (private root + 9 child workspaces: 6 packages + 2 apps + `skills/`; 5 publishable packages, 1 private package — `@soybeanjs/scripts` — and 2 private apps)
+**Monorepo:** pnpm workspaces (private root + 9 child workspaces: 6 packages + 2 apps + `skills/`; 5 publishable packages, 1 private package — `@vean/scripts` — and 2 private apps)
 **Stack:** Vue 3 + TypeScript (strict) + UnoCSS + @soybeanjs/cva
 
 ## ARCHITECTURE
@@ -35,46 +35,46 @@ sources of truth live in [docs/architecture.md](docs/architecture.md).
 Prioritized structural findings and acceptance criteria live in
 [docs/optimize.md](docs/optimize.md).
 
-Core Headless/Styled separation:
+Core Aria/Styled separation:
 
-- **@soybeanjs/headless** (`packages/headless/`): Logic, state, a11y. Zero styles. 96 component directories (94 publicly exported; `_common`/`_icon` are internal), 29 composables. Includes base primitives, date utilities, and Compact aggregations.
-- **@soybeanjs/ui** (`packages/ui/`): Styled wrappers. UnoCSS + `cv()` / `scv()`. 96 component directories / 144 S-prefixed exports.
+- **@vean/aria** (`packages/aria/`): Logic, state, a11y. Zero styles. 96 component directories (94 publicly exported; `_common`/`_icon` are internal), 29 composables. Includes base primitives, date utilities, and Compact aggregations.
+- **@vean/ui** (`packages/ui/`): Styled wrappers. UnoCSS + `cv()` / `scv()`. 96 component directories / 144 S-prefixed exports.
 
-Compile-time dependency direction is **UI → Headless**: UI imports public
-headless entry points; headless MUST NOT import UI. Runtime class injection goes
-from the styled wrapper to its nested headless parts via `provideXUi(ui)` and
+Compile-time dependency direction is **UI → Aria**: UI imports public
+aria entry points; aria MUST NOT import UI. Runtime class injection goes
+from the styled wrapper to its nested aria parts via `provideXUi(ui)` and
 `useUiContext`.
 
 Other publishable modules:
 
-- **@soybeanjs/theme** (`packages/theme/`): theme engine — core tokens, deterministic derivation, light/dark levels, SSR/storage helpers.
-- **@soybeanjs/ui-uno** (`packages/unocss/`): UnoCSS preset over `@soybeanjs/theme`.
-- **sbean** (`packages/cli/`): source-distribution CLI, registry, schemas, templates, and MCP.
-- **@soybeanjs/ui-skills** (`skills/`): generated consumer-facing agent skills.
+- **@vean/theme** (`packages/theme/`): theme engine — core tokens, deterministic derivation, light/dark levels, SSR/storage helpers.
+- **@vean/unocss** (`packages/unocss/`): UnoCSS preset over `@vean/theme`.
+- **@vean/cli** (`packages/cli/`, bin `vean`): source-distribution CLI, registry, schemas, templates, and MCP.
+- **@vean/skills** (`skills/`): generated consumer-facing agent skills.
 
-> There is **no** `@soybeanjs/admin` or `@soybeanjs/chart` package, and no standalone AI package: AI/chat components ship inside headless + ui under the standard `S` prefix — the component plan lives in [docs/ui-ai-roadmap.md](docs/ui-ai-roadmap.md). The former admin direction returns as an in-core **shell domain** (headless `src/shell/` + ui composites such as `SLayoutShell`/`SPageHeader`), planned in [docs/ui-shell-roadmap.md](docs/ui-shell-roadmap.md). Charts are not part of the core library: the docs site shows shadcn-styled demos built directly on [TanStack Charts](https://tanstack.com/charts) (see `apps/docs/src/examples/chart/` + the docs-local `apps/docs/src/components/chart/` theming shell).
+> There is **no** `@soybeanjs/admin` or `@soybeanjs/chart` package, and no standalone AI package: AI/chat components ship inside aria + ui under the standard `S` prefix — the component plan lives in [docs/ui-ai-roadmap.md](docs/ui-ai-roadmap.md). The former admin direction returns as an in-core **shell domain** (aria `src/shell/` + ui composites such as `SLayoutShell`/`SPageHeader`), planned in [docs/ui-shell-roadmap.md](docs/ui-shell-roadmap.md). Charts are not part of the core library: the docs site shows shadcn-styled demos built directly on [TanStack Charts](https://tanstack.com/charts) (see `apps/docs/src/examples/chart/` + the docs-local `apps/docs/src/components/chart/` theming shell).
 
 Private packages and applications:
 
-- **@soybeanjs/scripts** (`packages/scripts/`): private repo-service CLI `sui` (generators, stub, template sync). NOT published; do not merge with the consumer-facing `sbean` CLI.
-- **@soybeanjs/ui-docs** (`apps/docs/`): ubean-based documentation site (SSG, Markdown, i18n). Owns the demo examples under `apps/docs/src/examples/`.
-- **@soybeanjs/ui-nuxt** (`apps/nuxt/`): Nuxt integration fixture.
+- **@vean/scripts** (`packages/scripts/`): private repo-service CLI `sui` (generators, stub, template sync). NOT published; do not merge with the consumer-facing `vean` CLI.
+- **@vean/docs** (`apps/docs/`): ubean-based documentation site (SSG, Markdown, i18n). Owns the demo examples under `apps/docs/src/examples/`.
+- **@vean/nuxt** (`apps/nuxt/`): Nuxt integration fixture.
 
 ## WHERE TO LOOK
 
 | Task                     | Location                                                                  | Key Pattern                                                                          |
 | ------------------------ | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| New component (logic)    | `packages/headless/src/components/[name]/`                                | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts         |
+| New component (logic)    | `packages/aria/src/components/[name]/`                                    | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts         |
 | New component (styled)   | `packages/ui/src/components/[name]/` + `packages/ui/src/styles/[name].ts` | style recipe → types.ts → `*.vue` → index.ts                                         |
 | Variant definitions      | `packages/ui/src/styles/[name].ts`                                        | `cv()` / `scv()` with `// @unocss-include` at top                                    |
-| Shared hooks             | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (29 total)                                          |
+| Shared hooks             | `packages/aria/src/composables/`                                          | `use-*.ts`, pure Vue composables (29 total)                                          |
 | Theme/sizing             | `packages/ui/src/theme/`                                                  | `ThemeColor` (8), `ThemeSize` (xs…2xl)                                               |
 | Theme CSS generation     | `packages/theme/`                                                         | `createTheme(options)` (returns CSS string)                                          |
-| UnoCSS adapter           | `packages/unocss/`                                                        | `presetUiUnocss()` / `presetSbean()`                                                 |
+| UnoCSS adapter           | `packages/unocss/`                                                        | `presetUiUnocss()` / `presetVean()`                                                  |
 | Source-distribution CLI  | `packages/cli/`                                                           | commands → registry/schema/templates/MCP                                             |
 | Repo-service CLI (`sui`) | `packages/scripts/`                                                       | `gen` (offline) / `translate` (DeepL) / `check` groups, `stub`, `reorder-imports`    |
-| Utility functions        | `packages/headless/src/shared/`                                           | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                          |
-| Global types             | `packages/headless/src/types/`                                            | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                  |
+| Utility functions        | `packages/aria/src/shared/`                                               | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                          |
+| Global types             | `packages/aria/src/types/`                                                | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                  |
 | Generated API data       | `apps/docs/src/generated/api/`                                            | `pnpm sui gen api` baseline + `pnpm sui translate api --locale <locale>` locale text |
 | Generated changelog data | `apps/docs/src/generated/changelog/`                                      | `pnpm sui gen changelog` baseline + `pnpm sui translate changelog` locale summaries  |
 | Docs content             | `apps/docs/src/docs/[en\|zh-CN]/`                                         | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`            |
@@ -82,29 +82,29 @@ Private packages and applications:
 | Browser e2e tests        | `packages/ui/test/browser/`                                               | `vitest.browser.config.ts` + `vitest-browser-vue` + `axe-core` (color-contrast on)   |
 | Workspace architecture   | `docs/architecture.md`                                                    | Package/app map, dependency graph, generation/build/test/release flows               |
 | Architecture assessment  | `docs/optimize.md`                                                        | Evidence-ranked maintainability, scalability, and quality recommendations            |
-| Component dev skill      | `.agents/skills/soybean-ui-develop/`                                      | SKILL.md + layers.md (admission) + surfaces.md + e2e.md + process.md + audit.md      |
-| Headless admission gaps  | `docs/headless-admission-remediation.md`                                  | Anatomy shells, decorative slots, and parallel families to freeze or fix             |
+| Component dev skill      | `.agents/skills/vean-develop/`                                            | SKILL.md + layers.md (admission) + surfaces.md + e2e.md + process.md + audit.md      |
+| Aria admission gaps      | `docs/aria-admission-remediation.md`                                      | Anatomy shells, decorative slots, and parallel families to freeze or fix             |
 
 ## BUILD & CI
 
 ```bash
 pnpm dev:docs         # Docs site (ubean dev)
-pnpm build            # libs (theme, ui-uno) → headless → ui → sbean via Vite Plus pack
-pnpm build:libs       # theme → ui-uno
-pnpm build:docs       # package build → sbean registry → docs SSG + SEO
+pnpm build            # libs (theme, unocss) → aria → ui → @vean/cli via Vite Plus pack
+pnpm build:libs       # theme → unocss
+pnpm build:docs       # package build → vean registry → docs SSG + SEO
 pnpm lint             # vp lint --fix && pnpm lint:vue (uses @soybeanjs/eslint-config-vue)
 pnpm fmt              # vp fmt (formatter)
-pnpm test             # recursive workspace unit tests (UI/headless + sbean)
+pnpm test             # recursive workspace unit tests (UI/aria + @vean/cli)
 pnpm test:e2e         # browser e2e (Vitest Browser Mode + playwright chromium; run `pnpm exec playwright install chromium` first)
 pnpm typecheck        # pnpm -r typecheck (per-workspace vue-tsc / tsc)
 pnpm release          # Generate changelog + sync templates + publish (soy release)
-pnpm stub             # switch headless development exports to src (`--reset` restores dist exports)
-pnpm sui gen catalog           # Regenerate component catalogs: headless constants/namespaced + ui constants
+pnpm stub             # switch aria development exports to src (`--reset` restores dist exports)
+pnpm sui gen catalog           # Regenerate component catalogs: aria constants/namespaced + ui constants
 pnpm sui gen catalog ui        # Regenerate only packages/ui/src/constants/components.ts
 pnpm sui gen api               # Regenerate apps/docs/src/generated/api/*.json and apps/docs/src/generated/api-locales/*.json
 pnpm sui gen api --force       # Regenerate even when the source fingerprint still matches the committed data
 pnpm sui gen changelog         # Regenerate apps/docs/src/generated/changelog/*.json and changelog-locales/*.json
-pnpm sui gen schema            # Generate sbean JSON Schemas (sbean.json, registry-item.json, registry.json)
+pnpm sui gen schema            # Generate vean JSON Schemas (vean.json, registry-item.json, registry.json)
 pnpm sui gen skills            # Generate skill docs and distribution files (skills/skills from skills/skills-source)
 pnpm sui gen all               # Regenerate every surface above
 pnpm sui translate <api|changelog|locale|all> [--locale <locale>]  # Fill pending translations via DeepL (needs DEEPL_API_KEY)
@@ -120,7 +120,7 @@ pnpm sui sync-template-versions  # Sync the @soybeanjs/* version constant used b
 
 ## PACKAGE EXPORTS
 
-**@soybeanjs/headless** sub-path exports:
+**@vean/aria** sub-path exports:
 
 - `.` → all components + types
 - `./composables` → 29 composables (useContext, useControllableState, useCollapseHeight, useUiContext, …)
@@ -130,11 +130,11 @@ pnpm sui sync-template-versions  # Sync the @soybeanjs/* version constant used b
 - `./locale` and `./locale/*` → locale registry and language bundles
 - `./nuxt` → Nuxt auto-registration module
 - `./resolver` → unplugin-vue-components resolver
-- `./namespaced` → named-export namespace (e.g. `Headless.AccordionRoot`)
+- `./namespaced` → named-export namespace (e.g. `Aria.AccordionRoot`)
 - `./types` → shared type surface for component, DOM, and utility types
-- `./*` → `./components/*/index.ts` (per-component sub-path: `@soybeanjs/headless/accordion`)
+- `./*` → `./components/*/index.ts` (per-component sub-path: `@vean/aria/accordion`)
 
-**@soybeanjs/ui** sub-path exports:
+**@vean/ui** sub-path exports:
 
 - `.` → all S-prefixed components + theme utilities
 - `./nuxt` → Nuxt auto-registration module
@@ -143,47 +143,47 @@ pnpm sui sync-template-versions  # Sync the @soybeanjs/* version constant used b
 
 ## DEPENDENCY RULES
 
-- `packages/ui` → imports public `@soybeanjs/headless` entry points
-- `packages/headless` → MUST NOT import from `@soybeanjs/ui` (would create a circular dependency)
-- `packages/unocss` → imports `@soybeanjs/theme`; token ownership stays in the theme package
-- Components re-exported from barrel files: `packages/headless/src/index.ts`, `packages/ui/src/index.ts`
+- `packages/ui` → imports public `@vean/aria` entry points
+- `packages/aria` → MUST NOT import from `@vean/ui` (would create a circular dependency)
+- `packages/unocss` → imports `@vean/theme`; token ownership stays in the theme package
+- Components re-exported from barrel files: `packages/aria/src/index.ts`, `packages/ui/src/index.ts`
 
 ## KEY PATTERNS (verified from source)
 
-- **UiClass**: Use `UiClass<UiSlot>` (from `packages/headless/src/types`), not `Record<UiSlot, ClassValue>`
+- **UiClass**: Use `UiClass<UiSlot>` (from `packages/aria/src/types`), not `Record<UiSlot, ClassValue>`
 - **Props**: Always `extends /** @vue-ignore */ HTMLAttributes` to suppress IDE noise
-- **Context values**: Must be reactive — use `toContext(props, keys)` (from headless `shared/vue`) to wrap in `ComputedRef`; `fromContext(context, keys)` snapshots back to plain values
+- **Context values**: Must be reactive — use `toContext(props, keys)` (from aria `shared/vue`) to wrap in `ComputedRef`; `fromContext(context, keys)` snapshots back to plain values
 - **ui() two forms**: `use{Name}Ui('root')` → `ComputedRef<ClassValue>` (single slot); `use{Name}Ui()` → full map
 - **Recipe merges**: For multi-slot wrappers, pass `props.ui` and `{ root: props.class }` directly into the `scv()` recipe call
 - **Multi-slot**: `provide{Name}Ui(ui)` pattern; only export `provide`, not `use`
-- **Compact aggregations**: For stable, data-driven composites, headless owns iteration, default content, and internal composition; UI wrappers stay thin and only handle variants, class injection, and prop/slot forwarding. Current examples span accordion, card, date-field, dialog, editable, hover-card, layout, navigation-menu, pagination, popover, stepper, and table flows.
+- **Compact aggregations**: For stable, data-driven composites, aria owns iteration, default content, and internal composition; UI wrappers stay thin and only handle variants, class injection, and prop/slot forwarding. Current examples span accordion, card, date-field, dialog, editable, hover-card, layout, navigation-menu, pagination, popover, stepper, and table flows.
 - **Single-class**: No UiContext; use `{name}Variants({...}, props.class)` directly
-- **index.ts re-exports**: UI component barrels re-export headless types from sub-path `@soybeanjs/headless/{component}`; `types.ts` should follow the established import style of neighboring components instead of mixing arbitrary paths
+- **index.ts re-exports**: UI component barrels re-export aria types from sub-path `@vean/aria/{component}`; `types.ts` should follow the established import style of neighboring components instead of mixing arbitrary paths
 - **Generated metadata**: after public export, API, or changelog mapping/docs-surface changes, rerun `pnpm sui gen all` (or the specific `gen` target) as needed; for non-English generated text also run `pnpm sui translate <api|changelog>`, and `pnpm sui check generated` proves the committed data matches the sources.
 - **CLI declaration**: `packages/scripts/src/cli.ts` declares every `sui` command with [cac](https://github.com/cacjs/cac) and passes parsed options into each action, so no command re-parses `process.argv` and `--help` / `--version` / unknown-option / missing-argument handling lives in one place. Add a command there and pin its surface in `packages/scripts/test/cli.spec.ts`; `index.ts` only parses and awaits.
 - **Offline generation**: `gen` is deterministic and never touches the network; `translate` is the only networked group (DeepL) and the only one that needs `DEEPL_API_KEY`.
 - **Stable `generatedAt`**: generators compare the produced payload against the committed file and skip the write when only `generatedAt` would differ, so a no-op regeneration produces no diff and the field keeps meaning "when the data last changed". Never hand-edit generated timestamps.
-- **Fingerprint-guarded extraction**: `gen api` hashes its inputs (ui/headless/theme/scripts sources, tsconfigs, lockfile) plus the on-disk output, and skips the TypeDoc pass (~40s → ~0.15s) only when both match the recorded entry. The entry lives in `node_modules/.cache/sui/` and is never committed; `--force` bypasses the check.
+- **Fingerprint-guarded extraction**: `gen api` hashes its inputs (ui/aria/theme/scripts sources, tsconfigs, lockfile) plus the on-disk output, and skips the TypeDoc pass (~40s → ~0.15s) only when both match the recorded entry. The entry lives in `node_modules/.cache/sui/` and is never committed; `--force` bypasses the check.
 
 ## ANTI-PATTERNS
 
-- **DO NOT** add styles/classes to `packages/headless` components (not even `hidden`, `sr-only`)
+- **DO NOT** add styles/classes to `packages/aria` components (not even `hidden`, `sr-only`)
 - **DO NOT** put ARIA/state logic in `packages/ui` (UI) layer
 - **DO NOT** use raw CSS/SCSS — UnoCSS utility classes only
 - **DO NOT** use `as any` / `@ts-ignore` / `@ts-expect-error`
 - **DO NOT** store non-reactive values in context (breaks reactivity)
 - **DO NOT** modify `typed-router.d.ts` (auto-generated)
-- **DO NOT** export `use{Name}Ui` from headless index (internal only; export only `provide{Name}Ui`)
+- **DO NOT** export `use{Name}Ui` from aria index (internal only; export only `provide{Name}Ui`)
 - **DO NOT** omit `class` from `useOmitProps` list (causes double-binding)
 
 ## COMPONENT DEVELOPMENT
 
-组件开发规范入口：`.agents/skills/soybean-ui-develop/SKILL.md`。
+组件开发规范入口：`.agents/skills/vean-develop/SKILL.md`。
 
-Minimal flow: headless types → headless context → headless base SFCs → optional Compact SFCs/hooks → UI style recipe in `packages/ui/src/styles` → UI wrapper → barrel exports.
+Minimal flow: aria types → aria context → aria base SFCs → optional Compact SFCs/hooks → UI style recipe in `packages/ui/src/styles` → UI wrapper → barrel exports.
 
 Three component patterns:
 
 - **Multi-slot base components** (badge, accordion, dialog…): has `UiSlot` + `UiClass`, uses `scv()` results merged directly in the wrapper
-- **Compact aggregations** (`AccordionCompact`, `TableCompact`): live in headless, compose base primitives, and expose `*CompactProps` / `*CompactEmits` / `*CompactSlots`
+- **Compact aggregations** (`AccordionCompact`, `TableCompact`): live in aria, compose base primitives, and expose `*CompactProps` / `*CompactEmits` / `*CompactSlots`
 - **Single-class** (button, link…): no UiContext, uses `{name}Variants({...}, props.class)` directly

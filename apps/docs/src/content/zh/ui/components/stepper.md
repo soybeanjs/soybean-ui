@@ -55,16 +55,16 @@ head:
 
 `StepperRoot` 拥有完整状态机（受控状态、有序 item 集合、线性门控），所有基础组件保持零样式，仅 UI 包装注入 `stepperVariants` 类名。`isFocusable` 逐项推导（`disabled || (!linear && step > currentStep + 1)`）并镜像为 DOM 上的 `disabled`/`data-disabled`/`tabindex`，因此不可达步骤既不可点击也不在 Tab 序列中。方向键导航使用 `useArrowNavigation`（`loop: false`）并遵循 `orientation`/`dir`；线性模式下焦点不会落在被禁用的未来步骤上。完成对勾图标需要 ConfigProvider 提供 `iconRender`（默认 `Icon` 组件不渲染任何内容），否则已完成步骤回退为序号。实时区域与 `aria-label` 回退经 `useLocaleMessages` 本地化，而 shadcn/ui 的 stepper 区块硬编码了英文文本。
 
-| 能力                             | SoybeanUI | shadcn/ui (blocks) | Ant Design Steps | Element Plus Steps | Mantine Stepper |
-| :------------------------------- | :-------: | :----------------: | :--------------: | :----------------: | :-------------: |
-| headless/样式拆分                |    ✅     |         —          |        —         |         —          |        —        |
-| 线性模式（按顺序完成）           |    ✅     |         ✅         |        ⚠️        |         ✅         |       ✅        |
-| 水平 / 垂直方向                  |    ✅     |         ✅         |        ✅        |         ✅         |       ✅        |
-| 方向键导航（Home/End）           |    ✅     |         —          |        —         |         —          |        —        |
-| 本地化实时区域 + 组 `aria-label` |    ✅     |         ⚠️         |        —         |         —          |        —        |
-| 受控 / 非受控                    |    ✅     |         —          |        ⚠️        |         ⚠️         |       ✅        |
-| 复合组件 + 逐部件 props          |    ✅     |         —          |        —         |         —          |        —        |
-| 每步 `completed`/`disabled`      |    ✅     |         ✅         |        ✅        |         ✅         |       ✅        |
+| 能力                             | Vean | shadcn/ui (blocks) | Ant Design Steps | Element Plus Steps | Mantine Stepper |
+| :------------------------------- | :--: | :----------------: | :--------------: | :----------------: | :-------------: |
+| headless/样式拆分                |  ✅  |         —          |        —         |         —          |        —        |
+| 线性模式（按顺序完成）           |  ✅  |         ✅         |        ⚠️        |         ✅         |       ✅        |
+| 水平 / 垂直方向                  |  ✅  |         ✅         |        ✅        |         ✅         |       ✅        |
+| 方向键导航（Home/End）           |  ✅  |         —          |        —         |         —          |        —        |
+| 本地化实时区域 + 组 `aria-label` |  ✅  |         ⚠️         |        —         |         —          |        —        |
+| 受控 / 非受控                    |  ✅  |         —          |        ⚠️        |         ⚠️         |       ✅        |
+| 复合组件 + 逐部件 props          |  ✅  |         —          |        —         |         —          |        —        |
+| 每步 `completed`/`disabled`      |  ✅  |         ✅         |        ✅        |         ✅         |       ✅        |
 
 `⚠️` = 部分支持（AntD 用 `status` prop 代替线性门控；Element Plus 提供 `process-status`/`finish-status` 但没有导航门控；shadcn/ui 的 stepper 区块用硬编码英文渲染状态文本，且不是库组件）。
 

@@ -45,7 +45,7 @@ head:
 
 ```vue
 <script setup lang="ts">
-import { SProgressCircle } from '@soybeanjs/ui';
+import { SProgressCircle } from '@vean/ui';
 </script>
 
 <template>
@@ -67,7 +67,7 @@ import { SProgressCircle } from '@soybeanjs/ui';
 
 ```vue
 <script setup lang="ts">
-import { SButton, SProgressProvider, progress } from '@soybeanjs/ui';
+import { SButton, SProgressProvider, progress } from '@vean/ui';
 
 const handleClick = () => {
   progress.start();
@@ -111,18 +111,18 @@ const handleClick = () => {
 
 ### 架构与对标差异
 
-`ProgressRoot` 负责数值规范化（`getValidMax`/`getValidModelValue`）、状态派生（`indeterminate`/`loading`/`complete`）与 `role="progressbar"` ARIA 契约，基础组件保持零样式，仅由 UI 包装组件注入配方类。这与 shadcn/ui 的 headless/样式分离一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供单一样式化进度组件。SoybeanUI 的差异化能力是 `nprogress` 风格的命令式控制器（`progress.start()`/`done()`）与 `SProgressCircle` 环形仪表盘——单包库通常将其作为独立组件处理或直接缺失。
+`ProgressRoot` 负责数值规范化（`getValidMax`/`getValidModelValue`）、状态派生（`indeterminate`/`loading`/`complete`）与 `role="progressbar"` ARIA 契约，基础组件保持零样式，仅由 UI 包装组件注入配方类。这与 shadcn/ui 的 headless/样式分离一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供单一样式化进度组件。Vean 的差异化能力是 `nprogress` 风格的命令式控制器（`progress.start()`/`done()`）与 `SProgressCircle` 环形仪表盘——单包库通常将其作为独立组件处理或直接缺失。
 
-| 能力                         | SoybeanUI | shadcn/ui | Ant Design Progress | Element Plus Progress | Mantine Progress | Naive UI Progress |
-| :--------------------------- | :-------: | :-------: | :-----------------: | :-------------------: | :--------------: | :---------------: |
-| 线性进度                     |    ✅     |    ✅     |         ✅          |          ✅           |        ✅        |        ✅         |
-| 环形进度                     |    ✅     |     —     |         ✅          |          ✅           |        ✅        |        ✅         |
-| 不确定状态                   |    ✅     |     —     |         ✅          |          ✅           |        ✅        |        ✅         |
-| 命令式 API（`start`/`done`） |    ✅     |     —     |          —          |           —           |        —         |         —         |
-| 颜色变体（8）                |    ✅     |    ✅     |         ✅          |          ✅           |        ✅        |        ✅         |
-| 尺寸变体（6）                |    ✅     |     —     |          —          |           —           |        —         |         —         |
-| `role="progressbar"` ARIA    |    ✅     |    ✅     |         ✅          |          ✅           |        ✅        |        ✅         |
-| 自定义数值标签               |    ✅     |     —     |          —          |          ✅           |        ✅        |        ✅         |
+| 能力                         | Vean | shadcn/ui | Ant Design Progress | Element Plus Progress | Mantine Progress | Naive UI Progress |
+| :--------------------------- | :--: | :-------: | :-----------------: | :-------------------: | :--------------: | :---------------: |
+| 线性进度                     |  ✅  |    ✅     |         ✅          |          ✅           |        ✅        |        ✅         |
+| 环形进度                     |  ✅  |     —     |         ✅          |          ✅           |        ✅        |        ✅         |
+| 不确定状态                   |  ✅  |     —     |         ✅          |          ✅           |        ✅        |        ✅         |
+| 命令式 API（`start`/`done`） |  ✅  |     —     |          —          |           —           |        —         |         —         |
+| 颜色变体（8）                |  ✅  |    ✅     |         ✅          |          ✅           |        ✅        |        ✅         |
+| 尺寸变体（6）                |  ✅  |     —     |          —          |           —           |        —         |         —         |
+| `role="progressbar"` ARIA    |  ✅  |    ✅     |         ✅          |          ✅           |        ✅        |        ✅         |
+| 自定义数值标签               |  ✅  |     —     |          —          |          ✅           |        ✅        |        ✅         |
 
 `—` = 不支持或采用不同交互模型。
 

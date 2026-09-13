@@ -42,9 +42,9 @@ Built on `SButton`, it inherits the same `color`/`size`/`variant`/`shape` theme 
 
 ### Architecture and benchmark differences
 
-SoybeanUI splits the clipboard into a headless layer (`@soybeanjs/headless/clipboard`) that owns copy state, button semantics, and slot props, and a styled layer (`@soybeanjs/ui`) that reuses the button variant recipe. This mirrors the headless/styled split used by `shadcn/ui` copy patterns and differs from single-package libraries such as Ant Design, Element Plus, MUI, Mantine, and Naive UI.
+Vean splits the clipboard into a headless layer (`@vean/aria/clipboard`) that owns copy state, button semantics, and slot props, and a styled layer (`@vean/ui`) that reuses the button variant recipe. This mirrors the headless/styled split used by `shadcn/ui` copy patterns and differs from single-package libraries such as Ant Design, Element Plus, MUI, Mantine, and Naive UI.
 
-| Aspect        | SoybeanUI                                                                              | Ant Design / Element Plus / MUI / Mantine / Naive UI          |
+| Aspect        | Vean                                                                                   | Ant Design / Element Plus / MUI / Mantine / Naive UI          |
 | :------------ | :------------------------------------------------------------------------------------- | :------------------------------------------------------------ |
 | Architecture  | headless + styled split on top of `Button`                                             | single-package `CopyButton` / `Typography.Paragraph copyable` |
 | Styling       | UnoCSS utilities via shared `buttonVariants` recipe                                    | CSS-in-JS / SCSS / CSS vars                                   |

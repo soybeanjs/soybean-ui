@@ -52,19 +52,19 @@ Use it for FAQs, settings groups, collapsible navigation, or any "expand to reve
 
 ### Architecture and benchmark differences
 
-`AccordionCompact` owns the `items` iteration and default content assembly while every primitive stays style-free and only the UI wrapper injects the `accordionVariants` classes. This mirrors shadcn/ui's headless split and Radix's `Accordion` primitive, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a config-driven collapse with `defaultActiveKey`/`activeKey`. SoybeanUI's root uses `useSelection` so single/multiple modes share one state model, and arrow-key navigation is driven by the same `useArrowNavigation` composable used across the menu family for consistency.
+`AccordionCompact` owns the `items` iteration and default content assembly while every primitive stays style-free and only the UI wrapper injects the `accordionVariants` classes. This mirrors shadcn/ui's headless split and Radix's `Accordion` primitive, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a config-driven collapse with `defaultActiveKey`/`activeKey`. Vean's root uses `useSelection` so single/multiple modes share one state model, and arrow-key navigation is driven by the same `useArrowNavigation` composable used across the menu family for consistency.
 
-| Capability                    | SoybeanUI | shadcn/ui | Ant Design Collapse | Element Plus Collapse | Mantine Accordion | Naive UI Collapse |
-| :---------------------------- | :-------: | :-------: | :-----------------: | :-------------------: | :---------------: | :---------------: |
-| Headless/styled split         |    ✅     |    ✅     |          —          |           —           |         —         |         —         |
-| Single / multiple             |    ✅     |    ✅     |         ✅          |          ✅           |        ✅         |        ✅         |
-| Collapsible (all closed)      |    ✅     |    ✅     |         ✅          |          ✅           |        ✅         |        ✅         |
-| Keyboard arrow navigation     |    ✅     |    ✅     |         ✅          |          ✅           |        ✅         |        ✅         |
-| Custom trigger icon           |    ✅     |     —     |         ✅          |          ✅           |        ✅         |        ✅         |
-| Data-driven `items` (Compact) |    ✅     |     —     |         ✅          |          ✅           |        ✅         |        ✅         |
-| Disabled item                 |    ✅     |    ✅     |         ✅          |          ✅           |        ✅         |        ✅         |
-| Orientation (v/h)             |    ✅     |     —     |         ✅          |          ✅           |         —         |         —         |
-| `as`/`asChild` trigger        |    ✅     |    ✅     |          —          |           —           |         —         |         —         |
+| Capability                    | Vean | shadcn/ui | Ant Design Collapse | Element Plus Collapse | Mantine Accordion | Naive UI Collapse |
+| :---------------------------- | :--: | :-------: | :-----------------: | :-------------------: | :---------------: | :---------------: |
+| Headless/styled split         |  ✅  |    ✅     |          —          |           —           |         —         |         —         |
+| Single / multiple             |  ✅  |    ✅     |         ✅          |          ✅           |        ✅         |        ✅         |
+| Collapsible (all closed)      |  ✅  |    ✅     |         ✅          |          ✅           |        ✅         |        ✅         |
+| Keyboard arrow navigation     |  ✅  |    ✅     |         ✅          |          ✅           |        ✅         |        ✅         |
+| Custom trigger icon           |  ✅  |     —     |         ✅          |          ✅           |        ✅         |        ✅         |
+| Data-driven `items` (Compact) |  ✅  |     —     |         ✅          |          ✅           |        ✅         |        ✅         |
+| Disabled item                 |  ✅  |    ✅     |         ✅          |          ✅           |        ✅         |        ✅         |
+| Orientation (v/h)             |  ✅  |     —     |         ✅          |          ✅           |         —         |         —         |
+| `as`/`asChild` trigger        |  ✅  |    ✅     |          —          |           —           |         —         |         —         |
 
 `—` = unsupported or a different interaction model.
 

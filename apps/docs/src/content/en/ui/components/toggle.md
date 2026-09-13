@@ -36,20 +36,20 @@ A two-state button that toggles between pressed (`on`) and unpressed (`off`) sta
 
 ### Architecture and benchmark differences
 
-SoybeanUI builds the toggle from the headless `Toggle` (`useControllableState` + `Button` base + `aria-pressed`/`data-state` reflection + disabled-guarded click) and a thin UI wrapper `SToggle` that only computes `toggleVariants` classes and forwards `update:modelValue`. The `data-state` attribute drives the pressed styling through UnoCSS `data-[state=on]:*` selectors, keeping state and visuals decoupled. `toggle` is a Radix/shadcn-native pattern; the other benchmark libraries express the same interaction through button-plus-state or segmented controls.
+Vean builds the toggle from the headless `Toggle` (`useControllableState` + `Button` base + `aria-pressed`/`data-state` reflection + disabled-guarded click) and a thin UI wrapper `SToggle` that only computes `toggleVariants` classes and forwards `update:modelValue`. The `data-state` attribute drives the pressed styling through UnoCSS `data-[state=on]:*` selectors, keeping state and visuals decoupled. `toggle` is a Radix/shadcn-native pattern; the other benchmark libraries express the same interaction through button-plus-state or segmented controls.
 
-| Capability                    | SoybeanUI | Ant Design | Element Plus | Mantine | Naive UI | shadcn `Toggle` |
-| :---------------------------- | :-------: | :--------: | :----------: | :-----: | :------: | :-------------: |
-| headless/styled split         |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
-| Pressed/unpressed state       |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
-| Controlled/uncontrolled       |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
-| `aria-pressed` + `data-state` |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
-| Variants (outline/soft/ghost) |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
-| Sizes/shapes (6 sizes × 4)    |    ✅     |     —      |      —       |    —    |    —     |        —        |
-| Keyboard (Enter/Space)        |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
-| Disabled                      |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
-| Axe-clean                     |    ✅     |     —      |      —       |    —    |    —     |        —        |
-| Pressed-state icon animation  |    ➕     |     ✅     |      —       |    —    |    —     |        —        |
+| Capability                    | Vean | Ant Design | Element Plus | Mantine | Naive UI | shadcn `Toggle` |
+| :---------------------------- | :--: | :--------: | :----------: | :-----: | :------: | :-------------: |
+| headless/styled split         |  ✅  |     —      |      —       |    —    |    —     |       ✅        |
+| Pressed/unpressed state       |  ✅  |     —      |      —       |    —    |    —     |       ✅        |
+| Controlled/uncontrolled       |  ✅  |     —      |      —       |    —    |    —     |       ✅        |
+| `aria-pressed` + `data-state` |  ✅  |     —      |      —       |    —    |    —     |       ✅        |
+| Variants (outline/soft/ghost) |  ✅  |     —      |      —       |    —    |    —     |       ✅        |
+| Sizes/shapes (6 sizes × 4)    |  ✅  |     —      |      —       |    —    |    —     |        —        |
+| Keyboard (Enter/Space)        |  ✅  |     —      |      —       |    —    |    —     |       ✅        |
+| Disabled                      |  ✅  |     —      |      —       |    —    |    —     |       ✅        |
+| Axe-clean                     |  ✅  |     —      |      —       |    —    |    —     |        —        |
+| Pressed-state icon animation  |  ➕  |     ✅     |      —       |    —    |    —     |        —        |
 
 ### Cautions
 

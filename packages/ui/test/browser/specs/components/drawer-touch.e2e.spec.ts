@@ -58,7 +58,7 @@ describe('SDrawer touch scroll arbitration (e2e)', () => {
     dispatchTouch('touchmove', box, [{ ...point, y: point.y + 30 }], { timeStamp: 1030 });
     await sleep(50);
 
-    expect(popup.getAttribute('data-soybean-swiping')).toBe('true');
+    expect(popup.getAttribute('data-vean-swiping')).toBe('true');
     expect(Number.parseFloat(popup.style.getPropertyValue(MOVEMENT_Y_VAR))).toBeGreaterThan(0);
 
     unmount();
@@ -78,7 +78,7 @@ describe('SDrawer touch scroll arbitration (e2e)', () => {
     const move = dispatchTouch('touchmove', box, [{ ...point, y: point.y + 30 }], { timeStamp: 1030 });
 
     expect(move.defaultPrevented).toBe(false);
-    expect(popup.hasAttribute('data-soybean-swiping')).toBe(false);
+    expect(popup.hasAttribute('data-vean-swiping')).toBe(false);
     expect(popup.style.getPropertyValue(MOVEMENT_Y_VAR)).toBe('');
 
     unmount();
@@ -135,7 +135,7 @@ describe('SDrawer touch scroll arbitration (e2e)', () => {
     });
 
     expect(move.defaultPrevented).toBe(false);
-    expect(popup.hasAttribute('data-soybean-swiping')).toBe(false);
+    expect(popup.hasAttribute('data-vean-swiping')).toBe(false);
     expect(popup.style.getPropertyValue(MOVEMENT_Y_VAR)).toBe('');
 
     unmount();
@@ -155,7 +155,7 @@ describe('SDrawer touch scroll arbitration (e2e)', () => {
     const move = dispatchTouch('touchmove', input, [{ ...point, y: point.y + 30 }], { timeStamp: 1030 });
 
     expect(move.defaultPrevented).toBe(false);
-    expect(popup.hasAttribute('data-soybean-swiping')).toBe(false);
+    expect(popup.hasAttribute('data-vean-swiping')).toBe(false);
     expect(popup.style.getPropertyValue(MOVEMENT_Y_VAR)).toBe('');
 
     unmount();
@@ -181,7 +181,7 @@ describe('SDrawer touch scroll arbitration (e2e)', () => {
     );
 
     expect(pinch.defaultPrevented).toBe(false);
-    expect(popup.hasAttribute('data-soybean-swiping')).toBe(false);
+    expect(popup.hasAttribute('data-vean-swiping')).toBe(false);
     expect(popup.style.getPropertyValue(MOVEMENT_Y_VAR)).toBe('');
 
     unmount();

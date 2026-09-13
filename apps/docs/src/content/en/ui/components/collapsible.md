@@ -45,17 +45,17 @@ Use it for a single "expand to reveal" section, FAQ items, or inline collapsible
 
 ### Architecture and benchmark differences
 
-`SCollapsible` is a thin styled wrapper; the headless primitives own the open state (`useControllableState`), the presence/animation cycle (`usePresence` + `getBoundingClientRect` dimension measurement) and the accessibility wiring (`aria-expanded`/`aria-controls`/`data-state`). This mirrors shadcn/ui and Radix's headless `Collapsible`, unlike Ant Design, Element Plus and Mantine which ship a config-driven collapsible or fold. SoybeanUI routes the trigger through its `Button` primitive so the styled `Button` variants are reused instead of a bespoke toggle.
+`SCollapsible` is a thin styled wrapper; the headless primitives own the open state (`useControllableState`), the presence/animation cycle (`usePresence` + `getBoundingClientRect` dimension measurement) and the accessibility wiring (`aria-expanded`/`aria-controls`/`data-state`). This mirrors shadcn/ui and Radix's headless `Collapsible`, unlike Ant Design, Element Plus and Mantine which ship a config-driven collapsible or fold. Vean routes the trigger through its `Button` primitive so the styled `Button` variants are reused instead of a bespoke toggle.
 
-| Capability              | SoybeanUI | shadcn/ui | Radix Collapsible | Ant Design | Element Plus | Mantine |
-| :---------------------- | :-------: | :-------: | :---------------: | :--------: | :----------: | :-----: |
-| Headless/styled split   |    ✅     |    ✅     |        ✅         |     —      |      —       |    —    |
-| Controlled/uncontrolled |    ✅     |    ✅     |        ✅         |     ✅     |      ✅      |   ✅    |
-| Height animation        |    ✅     |    ✅     |        ✅         |     ✅     |      ✅      |   ✅    |
-| `unmountOnHide`         |    ✅     |    ✅     |        ✅         |     —      |      —       |    —    |
-| `forceMount`            |    ✅     |    ✅     |        ✅         |     —      |      —       |    —    |
-| `as`/`asChild`          |    ✅     |    ✅     |        ✅         |     —      |      —       |    —    |
-| Trigger reuses Button   |    ✅     |     —     |         —         |     —      |      —       |    —    |
+| Capability              | Vean | shadcn/ui | Radix Collapsible | Ant Design | Element Plus | Mantine |
+| :---------------------- | :--: | :-------: | :---------------: | :--------: | :----------: | :-----: |
+| Headless/styled split   |  ✅  |    ✅     |        ✅         |     —      |      —       |    —    |
+| Controlled/uncontrolled |  ✅  |    ✅     |        ✅         |     ✅     |      ✅      |   ✅    |
+| Height animation        |  ✅  |    ✅     |        ✅         |     ✅     |      ✅      |   ✅    |
+| `unmountOnHide`         |  ✅  |    ✅     |        ✅         |     —      |      —       |    —    |
+| `forceMount`            |  ✅  |    ✅     |        ✅         |     —      |      —       |    —    |
+| `as`/`asChild`          |  ✅  |    ✅     |        ✅         |     —      |      —       |    —    |
+| Trigger reuses Button   |  ✅  |     —     |         —         |     —      |      —       |    —    |
 
 `—` = unsupported or a different interaction model.
 

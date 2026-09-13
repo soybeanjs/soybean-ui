@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SAlert } from '@soybeanjs/ui';
+import { SAlert } from '@vean/ui';
 import { themeColorOptions, themeSizeOptions } from '~/constants/theme';
 </script>
 

@@ -28,7 +28,7 @@ TreeNav is a data-driven horizontal navigation bar with a persistent selection s
 - **Hidden items** — `item.hidden` drops the entry and its subtree from the bar and its popup; a branch whose children are all hidden renders as a plain leaf.
 - **Six sizes & two variants** — `size` (xs…2xl) plus `variant="default"` (subtle card surface) or `variant="nav"` (bare bar).
 - **Slot passthrough** — `item` / `item-leading` / `item-trailing` / `item-trigger-icon` / `item-link-icon` forward into both the top level and popups.
-- **Headless composition** — import from `@soybeanjs/headless/tree-nav` for unstyled data-driven usage; popup options reuse `MenuOptionsCompact`.
+- **Headless composition** — import from `@vean/aria/tree-nav` for unstyled data-driven usage; popup options reuse `MenuOptionsCompact`.
 
 ## Usage
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { createTime } from '@soybeanjs/headless/date';
-import { STimeRangeField } from '@soybeanjs/ui';
+import { createTime } from '@vean/aria/date';
+import { STimeRangeField } from '@vean/ui';
 
 const value = {
   start: createTime(9, 0, 0),

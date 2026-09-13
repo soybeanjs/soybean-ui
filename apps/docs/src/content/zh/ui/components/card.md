@@ -12,7 +12,7 @@ head:
 
 适用于仪表盘、资料卡片、设置面板，或任何需要「带标题、分区块」的容器内容。重复性的数据行请优先使用 `list` 或 `table`；浮动或模态表面请优先使用 `popover`/`dialog`。
 
-卡片**默认可折叠**——内容区带动画展开/收起，可用 `v-model:open` 驱动。headless 层不存在 `card` 家族：装饰节点仅为呈现服务，因此留在 UI 层，并保留 `data-soybean-card-*` 属性供样式与测试使用。
+卡片**默认可折叠**——内容区带动画展开/收起，可用 `v-model:open` 驱动。headless 层不存在 `card` 家族：装饰节点仅为呈现服务，因此留在 UI 层，并保留 `data-vean-card-*` 属性供样式与测试使用。
 
 ## 用法
 
@@ -46,19 +46,19 @@ head:
 
 ### 架构与对标差异
 
-`Card` 是 headless 准入规则的 **UI-only 判例**：它唯一的真实逻辑是折叠，而已准入的 `collapsible` 家族已经提供，因此 headless 层不存在 `card` 家族。`SCard` 负责结构编排（header/footer 显隐、默认标题/描述），并把配方的 `root` / `content` / `trigger` 槽交给 `provideCollapsibleUi`，让 `CollapsibleRoot` / `CollapsibleContent` / `CollapsibleTrigger` 从 `cardVariants` 解析各自的类。这与 shadcn/ui 的「组合优先」一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供带 `title`/`extra`/`actions` prop 的单一样式化卡片。SoybeanUI 通过 `CollapsibleRoot` 使卡片**默认可折叠**——这是多数对标库未提供的刻意扩展；`split` 与 `scrollable` 通过配方变体而非布局 prop 切换。
+`Card` 是 headless 准入规则的 **UI-only 判例**：它唯一的真实逻辑是折叠，而已准入的 `collapsible` 家族已经提供，因此 headless 层不存在 `card` 家族。`SCard` 负责结构编排（header/footer 显隐、默认标题/描述），并把配方的 `root` / `content` / `trigger` 槽交给 `provideCollapsibleUi`，让 `CollapsibleRoot` / `CollapsibleContent` / `CollapsibleTrigger` 从 `cardVariants` 解析各自的类。这与 shadcn/ui 的「组合优先」一致；而 Ant Design、Element Plus、Mantine、Naive UI 则提供带 `title`/`extra`/`actions` prop 的单一样式化卡片。Vean 通过 `CollapsibleRoot` 使卡片**默认可折叠**——这是多数对标库未提供的刻意扩展；`split` 与 `scrollable` 通过配方变体而非布局 prop 切换。
 
-| 能力                 | SoybeanUI | shadcn/ui | Ant Design Card | Element Plus Card | Mantine Card | Naive UI Card |
-| :------------------- | :-------: | :-------: | :-------------: | :---------------: | :----------: | :-----------: |
-| Headless/样式分离    |    ✅     |    ✅     |        —        |         —         |      —       |       —       |
-| 标题 / 描述          |    ✅     |    ✅     |       ✅        |        ✅         |      ✅      |      ✅       |
-| 底部                 |    ✅     |    ✅     |       ✅        |        ✅         |      ✅      |      ✅       |
-| 操作（extra）插槽    |    ✅     |     —     |       ✅        |        ✅         |      ✅      |      ✅       |
-| 可折叠内容           |    ✅     |     —     |        —        |         —         |      —       |       —       |
-| 分区 / 分隔线        |    ✅     |     —     |       ✅        |        ✅         |      ✅      |       —       |
-| 可滚动内容           |    ✅     |     —     |       ✅        |         —         |      —       |      ✅       |
-| 尺寸变体（6）        |    ✅     |     —     |       ✅        |        ✅         |      ✅      |      ✅       |
-| 逐部件 `*Props` 通道 |    ✅     |    ✅     |        —        |         —         |      —       |       —       |
+| 能力                 | Vean | shadcn/ui | Ant Design Card | Element Plus Card | Mantine Card | Naive UI Card |
+| :------------------- | :--: | :-------: | :-------------: | :---------------: | :----------: | :-----------: |
+| Headless/样式分离    |  ✅  |    ✅     |        —        |         —         |      —       |       —       |
+| 标题 / 描述          |  ✅  |    ✅     |       ✅        |        ✅         |      ✅      |      ✅       |
+| 底部                 |  ✅  |    ✅     |       ✅        |        ✅         |      ✅      |      ✅       |
+| 操作（extra）插槽    |  ✅  |     —     |       ✅        |        ✅         |      ✅      |      ✅       |
+| 可折叠内容           |  ✅  |     —     |        —        |         —         |      —       |       —       |
+| 分区 / 分隔线        |  ✅  |     —     |       ✅        |        ✅         |      ✅      |       —       |
+| 可滚动内容           |  ✅  |     —     |       ✅        |         —         |      —       |      ✅       |
+| 尺寸变体（6）        |  ✅  |     —     |       ✅        |        ✅         |      ✅      |      ✅       |
+| 逐部件 `*Props` 通道 |  ✅  |    ✅     |        —        |         —         |      —       |       —       |
 
 `—` = 不支持或采用不同交互模型。
 

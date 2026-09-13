@@ -18,7 +18,7 @@ export {
 export { generateThemePreset } from './preset';
 export { getDarkSelector, resolveColorValue } from './shared';
 // re-exported so packages that must not depend on `@soybeanjs/colord` directly
-// (e.g. `@soybeanjs/ui-uno`) can still read the palette ramp levels from one source.
+// (e.g. `@vean/unocss`) can still read the palette ramp levels from one source.
 export { paletteColorLevels } from '@soybeanjs/colord/palette';
 export {
   SIZE_VARIABLE,

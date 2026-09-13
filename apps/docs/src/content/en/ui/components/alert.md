@@ -49,18 +49,18 @@ Use it for inline feedback that must not be missed. Prefer `toast` for transient
 
 ### Architecture and benchmark differences
 
-`AlertCompact` owns the icon/title/description/close composition while every primitive stays style-free and only the UI wrapper injects the `alertVariants` classes. This mirrors shadcn/ui's headless/styled split, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a single styled alert with `type`/`closable`/`showIcon` props. SoybeanUI exposes the full per-slot `*Props` channels and a `size` scale the single-package libraries generally omit, and localizes the close button's `aria-label` (via `alert.close`) instead of relying on a plain `×` glyph.
+`AlertCompact` owns the icon/title/description/close composition while every primitive stays style-free and only the UI wrapper injects the `alertVariants` classes. This mirrors shadcn/ui's headless/styled split, unlike Ant Design, Element Plus, Mantine and Naive UI which ship a single styled alert with `type`/`closable`/`showIcon` props. Vean exposes the full per-slot `*Props` channels and a `size` scale the single-package libraries generally omit, and localizes the close button's `aria-label` (via `alert.close`) instead of relying on a plain `×` glyph.
 
-| Capability                  | SoybeanUI | shadcn/ui | Ant Design Alert | Element Plus Alert | Mantine Alert | Naive UI Alert |
-| :-------------------------- | :-------: | :-------: | :--------------: | :----------------: | :-----------: | :------------: |
-| Headless/styled split       |    ✅     |    ✅     |        —         |         —          |       —       |       —        |
-| Title + description         |    ✅     |    ✅     |        ✅        |         ✅         |      ✅       |       ✅       |
-| Closable                    |    ✅     |     —     |        ✅        |         ✅         |      ✅       |       ✅       |
-| Leading icon                |    ✅     |     —     |        ✅        |         ✅         |      ✅       |       ✅       |
-| Variants (solid/soft/ghost) |    ✅     |    ✅     |        —         |         —          |       —       |       —        |
-| Colors (8)                  |    ✅     |    ✅     |        ✅        |         ✅         |      ✅       |       ✅       |
-| Sizes (6)                   |    ✅     |     —     |        —         |         —          |       —       |       —        |
-| Localized close label       |    ✅     |     —     |        —         |         ✅         |       —       |       —        |
+| Capability                  | Vean | shadcn/ui | Ant Design Alert | Element Plus Alert | Mantine Alert | Naive UI Alert |
+| :-------------------------- | :--: | :-------: | :--------------: | :----------------: | :-----------: | :------------: |
+| Headless/styled split       |  ✅  |    ✅     |        —         |         —          |       —       |       —        |
+| Title + description         |  ✅  |    ✅     |        ✅        |         ✅         |      ✅       |       ✅       |
+| Closable                    |  ✅  |     —     |        ✅        |         ✅         |      ✅       |       ✅       |
+| Leading icon                |  ✅  |     —     |        ✅        |         ✅         |      ✅       |       ✅       |
+| Variants (solid/soft/ghost) |  ✅  |    ✅     |        —         |         —          |       —       |       —        |
+| Colors (8)                  |  ✅  |    ✅     |        ✅        |         ✅         |      ✅       |       ✅       |
+| Sizes (6)                   |  ✅  |     —     |        —         |         —          |       —       |       —        |
+| Localized close label       |  ✅  |     —     |        —         |         ✅         |       —       |       —        |
 
 `—` = unsupported or a different interaction model.
 

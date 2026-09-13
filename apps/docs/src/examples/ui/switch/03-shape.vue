@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SSwitch } from '@soybeanjs/ui';
-import type { SwitchShape } from '@soybeanjs/ui';
+import { SSwitch } from '@vean/ui';
+import type { SwitchShape } from '@vean/ui';
 
 const shapes: SwitchShape[] = ['rounded', 'square'];
 </script>

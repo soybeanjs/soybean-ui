@@ -41,7 +41,7 @@ The inline positioning styles (`position: relative`, `position: absolute; inset:
 
 ### Benchmark differences
 
-| Aspect       | SoybeanUI                 | shadcn/ui `AspectRatio`   | MUI `AspectRatio`         | Ant Design |
+| Aspect       | Vean                      | shadcn/ui `AspectRatio`   | MUI `AspectRatio`         | Ant Design |
 | :----------- | :------------------------ | :------------------------ | :------------------------ | :--------- |
 | Architecture | headless + UI re-export   | headless + styled         | styled only               | —          |
 | Technique    | padding-bottom + absolute | padding-bottom + absolute | padding-bottom + absolute | —          |

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useMediaQuery } from '@vueuse/core';
-import { SAppShell, SIcon, SSwitch } from '@soybeanjs/ui';
+import { SAppShell, SIcon, SSwitch } from '@vean/ui';
 import { appShellItems } from './menu';
 
 const open = ref(true);

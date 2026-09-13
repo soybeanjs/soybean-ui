@@ -1,7 +1,7 @@
 import { computed } from 'vue';
 import type { ComputedRef, Ref, WritableComputedRef } from 'vue';
-import { resolveTheme } from '@soybeanjs/theme';
-import type { ColorKey, ColorValue } from '@soybeanjs/theme';
+import { resolveTheme } from '@vean/theme';
+import type { ColorKey, ColorValue } from '@vean/theme';
 import type { UseThemeSettingsReturn } from './use-theme-settings';
 
 /**

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { Ref } from 'vue';
-import { SAppShell, SButton, SIcon } from '@soybeanjs/ui';
+import { SAppShell, SButton, SIcon } from '@vean/ui';
 import type {
   AppShellProps,
   BreadcrumbOptionData,
@@ -9,7 +9,7 @@ import type {
   PageTabsDragEvent,
   PageTabsOptionData,
   PageTabsState
-} from '@soybeanjs/ui';
+} from '@vean/ui';
 import { appShellItems } from './menu';
 
 // The active menu drives the breadcrumb: the trail down to `soybean-ui`, with
