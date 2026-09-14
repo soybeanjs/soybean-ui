@@ -14,11 +14,10 @@ docs/
 ├── architecture.md      # 工作区架构（唯一架构真相源）
 ├── optimize.md          # 工程质量评估（F1–F11 改进项与验收，2026-09-06 基线）
 ├── theme.md             # 主题持久化与 FOUC 策略（SSG / SSR）
-├── roadmap.md           # 总路线图（核心组件 / 核心内领域 / 未来提案 / 优化）
+├── roadmap.md           # 总路线图 + 组件评估明细（核心组件 / 核心内领域 / 未来提案 / 优化）
 ├── ui-ai-roadmap.md     # AI/chat 组件路线图（核心 headless/ui 内实现）
 ├── ui-shell-roadmap.md  # 中后台壳组件路线图（核心 headless/ui 内实现）
 ├── v0.50.0.md           # v0.50.0 重构方案（aria 改名 / 依赖最小化 / 准入整改 / 引擎更换）
-├── components.md        # 组件路线图源材料（45 活跃组件评估明细）
 ├── headless-admission-remediation.md  # Headless 准入整改（组件级清单）
 ├── adr/                 # 架构决策记录（ADR）
 │   ├── README.md        # ADR 索引与模板
@@ -37,7 +36,7 @@ docs/
 | :------------- | :------------------------------------------------------------------------------------- | :----------------------------------------------------------- | :----------------- |
 | **架构与质量** | [architecture.md](./architecture.md) · [optimize.md](./optimize.md)                    | 仓库现状真相源 + 工程质量评估                                | 架构师、新成员     |
 | **主题策略**   | [theme.md](./theme.md)                                                                 | 主题持久化 / FOUC 策略（SSG vs SSR）                         | 主题维护者、架构师 |
-| **路线与规划** | [roadmap.md](./roadmap.md) · [components.md](./components.md)                          | 总路线图 + 组件评估                                          | 规划者、贡献者     |
+| **路线与规划** | [roadmap.md](./roadmap.md)                                                             | 总路线图 + 组件评估明细                                      | 规划者、贡献者     |
 | **核心内领域** | [ui-ai-roadmap.md](./ui-ai-roadmap.md) · [ui-shell-roadmap.md](./ui-shell-roadmap.md)  | AI/chat 与中后台壳组件的回迁规划（headless 准入）            | 组件开发者         |
 | **版本重构**   | [v0.50.0.md](./v0.50.0.md)                                                             | v0.50.0 重构方案（aria 改名 / 依赖 / 准入 / 引擎）           | 维护者、执行者     |
 | **准入整改**   | [headless-admission-remediation.md](./headless-admission-remediation.md)               | headless 准入违规组件级清单                                  | 组件开发者         |
@@ -49,22 +48,22 @@ docs/
 ## 核心文档关系图
 
 ```
-components.md ──► roadmap.md ◄── optimize.md ──► v0.50.0.md（当前执行口径）
-      │                ▲
-      └── 评估明细      │
-            ui-ai-roadmap.md / ui-shell-roadmap.md（核心内领域，遵循 headless 准入）
-                        │
-                        ▼
-        ecosystem/（未来提案）◄── research/（调研依据）
-                        │
-                        └── adr/（决策固化；过期决策标记 superseded）
+roadmap.md（组件路线图 + 评估明细）◄── optimize.md ──► v0.50.0.md（当前执行口径）
+                  ▲
+                  │
+    ui-ai-roadmap.md / ui-shell-roadmap.md（核心内领域，遵循 headless 准入）
+                  │
+                  ▼
+    ecosystem/（未来提案）◄── research/（调研依据）
+                  │
+                  └── adr/（决策固化；过期决策标记 superseded）
 ```
 
 > 依赖方向：**调研/评估（源）→ 方案/路线（规划）→ 决策（固化）**。任务拆解与状态跟踪不设常驻文档，按需要使用临时计划 / issue；已完成或已取消的历史规划不在 docs 保留（可经 git 历史追溯）。新增文档时按此链路落位，避免「多份手工副本」漂移（对应 optimize.md F10）。
 
 ## 常用查询路径
 
-- **「某组件要不要做 / 排期如何」** → [roadmap.md](./roadmap.md)（高/中/低优先级）→ [components.md](./components.md)（评估明细）
+- **「某组件要不要做 / 排期如何」** → [roadmap.md](./roadmap.md)（高/中/低优先级 + 组件评估明细）
 - **「AI 对话组件怎么做」** → [ui-ai-roadmap.md](./ui-ai-roadmap.md)
 - **「后台壳 / 多模式布局 / 菜单 / 多页签怎么做」** → [ui-shell-roadmap.md](./ui-shell-roadmap.md)
 - **「下一版本重构什么 / aria 改名怎么落地」** → [v0.50.0.md](./v0.50.0.md)

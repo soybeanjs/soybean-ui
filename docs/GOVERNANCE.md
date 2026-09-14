@@ -85,7 +85,7 @@
 | :------------- | :---------------------------------------------------- |
 | 工作区架构     | `docs/architecture.md`                                |
 | 工程质量改进项 | `docs/optimize.md`（F1–F11）                          |
-| 组件评估明细   | `docs/components.md`                                  |
+| 组件评估明细   | `docs/roadmap.md`                                     |
 | 核心内领域规划 | `docs/ui-ai-roadmap.md` · `docs/ui-shell-roadmap.md`  |
 | 组件审计方法   | `.agents/skills/soybean-ui-develop/audit.md`（D1–D7） |
 | 未来领域提案   | `docs/ecosystem/`（每方向一篇，立项时确定落地形态）   |

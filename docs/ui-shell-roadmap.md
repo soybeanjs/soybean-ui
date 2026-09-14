@@ -3,7 +3,7 @@
 > 状态：**Accepted · 2026-09**
 > 适用仓库：`@soybeanjs/headless` + `@soybeanjs/ui`（核心两层，不新增任何包）
 > 规范约束：组件开发 skill（[.agents/skills/soybean-ui-develop/](../.agents/skills/soybean-ui-develop/SKILL.md)），尤其是 [layers.md Headless admission（R1–R8）](../.agents/skills/soybean-ui-develop/layers.md#headless-admission)
-> 关联文档：[ui-ai-roadmap.md](./ui-ai-roadmap.md)（AI 域同款决策）· [v0.50.0.md](./v0.50.0.md)（table/form 引擎重构）· [components.md](./components.md)（原子组件评估）
+> 关联文档：[ui-ai-roadmap.md](./ui-ai-roadmap.md)（AI 域同款决策）· [v0.50.0.md](./v0.50.0.md)（table/form 引擎重构）· [roadmap.md](./roadmap.md)（原子组件评估）
 
 ## 1. 背景与目标
 
@@ -41,7 +41,7 @@
 | 面包屑       | `SBreadcrumb` + `SDropdownMenu`（子级溢出可组合）                                                                                                                                                                                                                                                                                                   | `SAppBreadcrumb`                               |
 | 命令面板底座 | `SCommand`（fuzzy 过滤已内置，`useFuse` 在 headless）、`SCombobox`、`SDialog`                                                                                                                                                                                                                                                                       | `SAppCommandPalette`                           |
 | 分栏         | `SSplitter`                                                                                                                                                                                                                                                                                                                                         | `SAppSplitPanel`                               |
-| 空态/结果    | `SEmpty`；`SResult` 在 [components.md](./components.md) P1 计划中                                                                                                                                                                                                                                                                                   | `SAppEmptyState`、`SAppResult`                 |
+| 空态/结果    | `SEmpty`；`SResult` 在 [roadmap.md](./roadmap.md) P1 计划中                                                                                                                                                                                                                                                                                         | `SAppEmptyState`、`SAppResult`                 |
 | 主题         | `SThemeCustomizer`、`SThemeModeSelect`、`SThemeModeSwitch`                                                                                                                                                                                                                                                                                          | `SAppThemeDrawer`                              |
 | 页脚         | `SLayoutFooter`（layout 插槽）                                                                                                                                                                                                                                                                                                                      | `SAppFooter`                                   |
 
@@ -79,7 +79,7 @@
 
 ### 3.3 不新建组件：复用或配方交付
 
-- 页脚 → `SLayoutFooter` 插槽；分栏 → `SSplitter`；空态 → `SEmpty`；结果页 → 已在 [components.md](./components.md) P1 的 `SResult`。
+- 页脚 → `SLayoutFooter` 插槽；分栏 → `SSplitter`；空态 → `SEmpty`；结果页 → 已在 [roadmap.md](./roadmap.md) P1 的 `SResult`。
 - `SCommandPalette` / 主题抽屉 / 面包屑溢出 / router-tabs 适配 → 以文档示例 + 可选 sbean 源码配方交付，不进库导出（见 §7.2）。
 - 面包屑激活路径不新增组件：`useShellNav` 的 `activeTrail` 输出直接喂给既有 `SBreadcrumb`。
 
@@ -164,13 +164,13 @@ schema 驱动的查询表格 / 表单依赖 table/form 引擎选型（[v0.50.0.m
 
 ## 5. P0 — 主链路（5 项）
 
-|  #  | 交付物                                                                          | 层                    | 验收要点                                                                                                       |
-| :-: | :------------------------------------------------------------------------------ | :-------------------- | :------------------------------------------------------------------------------------------------------------- |
-|  1  | `useMediaQuery`                                                                 | headless composable   | 单测覆盖订阅/清理/SSR 回退；从 `./composables` 导出                                                            |
-|  2  | shell 导航模型 + `useShellNav`（`ShellNavNode`、裁剪、激活匹配、`activeTrail`） | headless `shell` 模块 | 纯函数单测（嵌套、隐藏节点仍参与匹配、最长前缀）；`@soybeanjs/headless/shell` 子路径 + barrel/catalog 生成     |
-|  3  | `SLayoutShell`（`vertical` + `horizontal`）                                     | ui 复合               | 复用 LayoutCompact/Placeholder；受控 `mode`/`isMobile`/`open`；零新增 ARIA；recipe 走 `scv()`                  |
-|  4  | `SShellMenu`（两模式）                                                          | ui 复合               | 消费 `useShellNav` 输出；侧栏折叠联动；顶栏挂载点渲染；键盘语义由菜单族保证                                    |
-|  5  | `SPageHeader`                                                                   | ui 单类/少槽复合      | 标题/描述/面包屑插槽/返回事件/操作区；同步从 [components.md](./components.md) 「延后市场」表移除 PageHeader 行 |
+|  #  | 交付物                                                                          | 层                    | 验收要点                                                                                                   |
+| :-: | :------------------------------------------------------------------------------ | :-------------------- | :--------------------------------------------------------------------------------------------------------- |
+|  1  | `useMediaQuery`                                                                 | headless composable   | 单测覆盖订阅/清理/SSR 回退；从 `./composables` 导出                                                        |
+|  2  | shell 导航模型 + `useShellNav`（`ShellNavNode`、裁剪、激活匹配、`activeTrail`） | headless `shell` 模块 | 纯函数单测（嵌套、隐藏节点仍参与匹配、最长前缀）；`@soybeanjs/headless/shell` 子路径 + barrel/catalog 生成 |
+|  3  | `SLayoutShell`（`vertical` + `horizontal`）                                     | ui 复合               | 复用 LayoutCompact/Placeholder；受控 `mode`/`isMobile`/`open`；零新增 ARIA；recipe 走 `scv()`              |
+|  4  | `SShellMenu`（两模式）                                                          | ui 复合               | 消费 `useShellNav` 输出；侧栏折叠联动；顶栏挂载点渲染；键盘语义由菜单族保证                                |
+|  5  | `SPageHeader`                                                                   | ui 单类/少槽复合      | 标题/描述/面包屑插槽/返回事件/操作区；同步从 [roadmap.md](./roadmap.md) 「延后市场」表移除 PageHeader 行   |
 
 每个组件按 skill 流程交付：headless 单测 → ui 包装 → playground → docs 示例（en/zh）→ browser e2e（Tier 1）→ `gen catalog/api`。
 
@@ -217,7 +217,7 @@ schema 驱动的查询表格 / 表单依赖 table/form 引擎选型（[v0.50.0.m
 | `SAppThemeDrawer`              | 主题抽屉配方（P2）            | docs 示例                                   |
 | `SAppSplitPanel`               | `SSplitter`                   | 已有                                        |
 | `SAppEmptyState`               | `SEmpty`                      | 已有                                        |
-| `SAppResult`                   | `SResult`                     | 已在 components.md P1                       |
+| `SAppResult`                   | `SResult`                     | 已在 roadmap.md P1                          |
 | `SAppPermissionButton`         | —                             | 范围外                                      |
 | `SAppProTable` / `SAppProForm` | —                             | 另见 v0.50 + table/form 提案                |
 

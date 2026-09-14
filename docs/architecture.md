@@ -82,8 +82,7 @@ soybean-ui/
 ├── docs/
 │   ├── architecture.md      # This workspace architecture reference
 │   ├── optimize.md          # Prioritized architecture/quality assessment
-│   ├── roadmap.md           # Active component roadmap
-│   └── components.md        # Detailed roadmap source material
+│   ├── roadmap.md           # Active component roadmap (includes evaluation detail)
 ├── packages/
 │   ├── headless/            # @soybeanjs/headless
 │   ├── cli/                 # sbean CLI and registry system

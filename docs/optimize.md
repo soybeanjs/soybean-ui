@@ -210,7 +210,8 @@ install、隔离构建、发布 tarball 或不同包管理器消费时，可能�
   命名分歧已解决。`DocMd` 按相同 path 切换 locale，剩余差异仍可能导致语言
   切换 404。
 - **已解决：** `docs/roadmap.md` 与 `docs/components.md` 曾以不同 shipped
-  计数为基线（87/88），现已统一；rating 的应用生成面缺口已消除。
+  计数为基线（87/88），现已统一；rating 的应用生成面缺口已消除。（`components.md`
+  已于 2026-09 并入 `roadmap.md`，两文档手工双维护的根因随之消除。）
 - API/changelog 生成器把当前时间写入 `generatedAt`，直接“重新生成后 git
   diff”并非完全确定性检查。
 - `release-execute` 会刷新 skills/changelog，但不会运行 `pnpm sui gen api` 或

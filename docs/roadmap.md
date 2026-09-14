@@ -2,7 +2,7 @@
 
 > 本文档是项目的**总路线图**，覆盖三大板块：
 >
-> 1. **核心组件路线**（从 [components.md](./components.md) 提取整理）：按 **高 / 中 / 低** 三级优先级分类所有待实现组件，附「已实现组件参考」「延后至组件市场」与「范围外组件」清单。
+> 1. **核心组件路线**：按 **高 / 中 / 低** 三级优先级分类所有待实现组件，附「已实现组件参考」「延后至组件市场」与「范围外组件」清单；调研方法与调研库清单见「[调研方法与评估维度](#调研方法与评估维度)」与「[附录 A](#附录-a--调研的组件库14-个)」。
 > 2. **领域扩展路线**：AI/chat 与中后台壳均确定在核心 headless/ui 内实现，分别见 [ui-ai-roadmap.md](./ui-ai-roadmap.md) 与 [ui-shell-roadmap.md](./ui-shell-roadmap.md)；editor / table / form / ui-pro 保留为未来提案（落地形态待立项评估），见 [领域扩展路线](#领域扩展路线domains--proposals) 与 [docs/ecosystem/](./ecosystem/README.md)。
 > 3. **项目优化路线**：来自 [optimize.md](./optimize.md) 的 F1–F11 工程改进项及执行阶段，详见 [项目优化路线](#项目优化路线engineering-optimization)；当前执行口径以 [v0.50.0.md](./v0.50.0.md) 为准。
 
@@ -30,9 +30,16 @@
 | **中优先级** | P2 Medium             | 有用、中等需求，容量允许时安排   |
 | **低优先级** | P3 Low                | 小众但功能独立，暂缓或择机实现   |
 
-### 评估维度
+### 调研方法与评估维度
 
-每个组件基于以下维度评估（详见源文档 Methodology）：
+调研口径：
+
+1. **取 14 个主流 UI 库**（10k+ star，含 React 与 Vue 两栈）作为对比基准，清单与各库组件数见 [附录 A](#附录-a--调研的组件库14-个)。
+2. **与已发布组件做差集** — 对照 `packages/ui/src/index.ts` 的 96 个组件组，只保留差距项。
+3. **桌面优先范围** — 移动端专用模式（多源自 Vant / Varlet）不进入活跃路线图。
+4. **市场延后规则** — 需要大量原子组件组合、且使用场景小众者，延后到未来以源码形式分发的组件市场（见 [延后至组件市场](#延后至组件市场deferred-to-marketplace)）。
+
+每个候选组件基于以下维度评估：
 
 - **功能独立性 (Functional independence)** — 单一聚焦职责。
 - **可复用性 (Reusability)** — 能否独立使用，无需大量原子组件组合。
@@ -1096,7 +1103,7 @@
 
 ## 已实现组件参考（Implemented Reference）
 
-已在 `@soybeanjs/ui` 中发布并整理了详细 API 文档的组件。完整文档见源文档 [components.md — Implemented Component Reference](./components.md#implemented-component-reference)。
+已在 `@soybeanjs/ui` 中发布并整理了详细 API 文档的组件。
 
 > **约定：** 所有组件以 `S` 为前缀（如 `SButton`、`SButtonGroup`），从 `@soybeanjs/ui` 导入。
 
@@ -1132,7 +1139,163 @@ import { SButton, SButtonGroup } from '@soybeanjs/ui';
 </template>
 ```
 
-> 更多示例（垂直方向、混合 variant、禁用、图标按钮、多态根）见源文档。
+#### 属性（Props）
+
+`ButtonGroupProps` extends `ButtonProps` (which extends the headless `ButtonProps`), inheriting all button styling props. The group-specific props are:
+
+| Prop          | Type                         | Default                          | Description                                                                   |
+| :------------ | :--------------------------- | :------------------------------- | :---------------------------------------------------------------------------- |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'`                   | Layout direction of the button cluster.                                       |
+| `dir`         | `'ltr' \| 'rtl'`             | `'ltr'` (from `SConfigProvider`) | Text direction. Falls back to the `SConfigProvider`'s `dir` value if not set. |
+
+**Inherited styling props** (propagated to all child `SButton` via context):
+
+| Prop         | Type                                                                                                    | Default     | Description                                                                            |
+| :----------- | :------------------------------------------------------------------------------------------------------ | :---------- | :------------------------------------------------------------------------------------- |
+| `color`      | `'primary' \| 'destructive' \| 'success' \| 'warning' \| 'info' \| 'carbon' \| 'secondary' \| 'accent'` | `'primary'` | Theme colour shared by all children.                                                   |
+| `size`       | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`                                                         | `'md'`      | Visual size shared by all children.                                                    |
+| `variant`    | `'solid' \| 'pure' \| 'plain' \| 'outline' \| 'dashed' \| 'soft' \| 'ghost' \| 'link'`                  | `'solid'`   | Visual variant shared by all children.                                                 |
+| `shape`      | `'auto' \| 'rounded' \| 'square' \| 'circle'`                                                           | `'auto'`    | Button shape shared by all children.                                                   |
+| `shadow`     | `'none' \| 'sm' \| 'md' \| 'lg'`                                                                        | `'sm'`      | Shadow style shared by all children.                                                   |
+| `fitContent` | `boolean`                                                                                               | `false`     | Whether buttons fit their content width (no full-width stretch).                       |
+| `disabled`   | `boolean`                                                                                               | `undefined` | If `true`, **all** children are disabled (OR'd with each child's own `disabled` prop). |
+
+**Inherited from headless `ButtonProps` / `PrimitiveProps`:**
+
+| Prop      | Type                              | Default     | Description                                                                           |
+| :-------- | :-------------------------------- | :---------- | :------------------------------------------------------------------------------------ |
+| `type`    | `'button' \| 'submit' \| 'reset'` | `'button'`  | Native `<button>` type (forwarded to the root element).                               |
+| `as`      | `string`                          | `'div'`     | Polymorphic root element tag (via `Primitive`).                                       |
+| `asChild` | `boolean`                         | `false`     | If `true`, merges props onto the single child element instead of rendering a wrapper. |
+| `class`   | `ClassValue`                      | `undefined` | Additional UnoCSS classes applied to the root element.                                |
+
+> All remaining HTML attributes (e.g. `id`, `data-*`, `aria-*`) are forwarded to the root element via `v-bind="forwardedProps"`.
+
+#### 事件（Events）
+
+`SButtonGroup` has **no custom events**. It is a presentational container — click events are handled by the individual child `SButton` components (which emit `click: [event: PointerEvent]`).
+
+#### 插槽（Slots）
+
+| Slot      | Description                                                                                       |
+| :-------- | :------------------------------------------------------------------------------------------------ |
+| `default` | One or more `SButton` (or `SButtonIcon`, `SButtonLoading`, `SButtonLink`) components as children. |
+
+#### 上下文传播（Context Propagation）
+
+`SButtonGroup` provides a reactive context via `provideButtonGroupContext()`. Child `SButton` components read this context via `useButtonGroupContext()`:
+
+| Prop         | Propagation Rule                                                                                |
+| :----------- | :---------------------------------------------------------------------------------------------- |
+| `color`      | Child's own `color` prop takes **precedence** if explicitly set; otherwise inherits from group. |
+| `size`       | Same — child prop overrides, otherwise inherits.                                                |
+| `variant`    | Same — child prop overrides, otherwise inherits.                                                |
+| `shape`      | Same — child prop overrides, otherwise inherits.                                                |
+| `shadow`     | Same — child prop overrides, otherwise inherits.                                                |
+| `fitContent` | Same — child prop overrides, otherwise inherits.                                                |
+| `disabled`   | **OR logic** — child is disabled if **either** the group **or** the child has `disabled: true`. |
+
+#### 样式（Styling）
+
+The `buttonGroupVariants` recipe (from [styles/button.ts](../packages/ui/src/styles/button.ts)) applies connector classes to children via descendant selectors:
+
+- **Base:** `[&>*]:relative focus-visible:[&>*]:z-2 not-first:not-last:[&>*]:rounded-0` — positions children relatively, raises focused child z-index, removes rounding from middle children.
+- **Horizontal:** `inline-flex` — removes the trailing border from all but the last child; removes the start rounding from the first child and the end rounding from the last child.
+- **Vertical:** `flex flex-col` — same logic but for vertical borders/rounding.
+
+This means the group itself does not render visible borders — it relies on each child `SButton`'s own border (from `variant: 'outline' | 'pure' | 'plain' | 'dashed'`).
+
+#### 示例（Code Examples）
+
+**Basic — horizontal group with shared variant:**
+
+```vue
+<script setup lang="ts">
+import { SButton, SButtonGroup } from '@soybeanjs/ui';
+</script>
+
+<template>
+  <SButtonGroup variant="pure" color="accent">
+    <SButton>Save</SButton>
+    <SButton>Cancel</SButton>
+    <SButton>Delete</SButton>
+  </SButtonGroup>
+</template>
+```
+
+**Vertical orientation:**
+
+```vue
+<template>
+  <SButtonGroup orientation="vertical" variant="outline" color="warning" class="w-30">
+    <SButton>Button 1</SButton>
+    <SButton>Button 2</SButton>
+    <SButton>Button 3</SButton>
+  </SButtonGroup>
+</template>
+```
+
+**Mixed variants — child overrides group defaults:**
+
+The group sets `variant="solid"` and `color="primary"`, but individual children can override:
+
+```vue
+<template>
+  <SButtonGroup variant="solid" color="primary" size="sm">
+    <!-- Inherits solid/primary/sm from group -->
+    <SButton>Save</SButton>
+    <!-- Overrides variant to outline -->
+    <SButton variant="outline">Preview</SButton>
+    <!-- Overrides color to destructive -->
+    <SButton color="destructive">Delete</SButton>
+  </SButtonGroup>
+</template>
+```
+
+**Disabled group — all children disabled:**
+
+```vue
+<template>
+  <SButtonGroup variant="outline" disabled>
+    <SButton>Save</SButton>
+    <SButton>Cancel</SButton>
+    <SButton>Delete</SButton>
+  </SButtonGroup>
+</template>
+```
+
+**With icon buttons and different shapes:**
+
+```vue
+<template>
+  <SButtonGroup variant="soft" color="info" shape="rounded">
+    <SButtonIcon icon="mdi:format-align-left" />
+    <SButtonIcon icon="mdi:format-align-center" />
+    <SButtonIcon icon="mdi:format-align-right" />
+    <SButtonIcon icon="mdi:format-align-justify" />
+  </SButtonGroup>
+</template>
+```
+
+**Polymorphic root — render as a `<div>` with custom attributes:**
+
+```vue
+<template>
+  <SButtonGroup as="div" class="my-toolbar" data-role="toolbar" variant="plain" size="lg">
+    <SButton>Action 1</SButton>
+    <SButton>Action 2</SButton>
+  </SButtonGroup>
+</template>
+```
+
+#### 实现说明（Implementation Notes）
+
+- **Pattern:** Context-provider — `SButtonGroup` calls `provideButtonGroupContext(transformPropsToContext(props, [...keys]))` to expose reactive `ComputedRef` values. Child `SButton` reads them via `useButtonGroupContext()` (returns `undefined` if not inside a group, so `SButton` works standalone too).
+- **No `UiContext`:** The group does not use `provideButtonGroupUi()` — it has no slot-level class injection. Styling is applied entirely through the `buttonGroupVariants` recipe on the root, which targets children via UnoCSS descendant selectors (`[&>*]`).
+- **Direction support:** `dir` falls back to `SConfigProvider`'s `dir` value, enabling RTL layouts without prop drilling.
+- **Headless layer:** `SButtonGroup` lives in the UI layer only — the headless `Button` primitive does not have a group concept. The context is UI-layer-specific (`packages/ui/src/components/button/context.ts`).
+
+---
 
 ---
 
@@ -1259,17 +1422,50 @@ Layer 1  主题与样式引擎  @soybeanjs/theme · @soybeanjs/unocss
 
 ---
 
-## 附录 — 实现模式速查
+## 附录 A — 调研的组件库（14 个）
+
+调研基准为 14 个主流 UI 库（10k+ star）；移动端库（Vant / Varlet）仅作移动端对照，不进入桌面优先路线图。
+
+| Library      | Stack | Components | Stars (approx.) |
+| :----------- | :---- | :--------: | :-------------: |
+| MUI          | React |     59     |       95k       |
+| Ant Design   | React |     71     |       92k       |
+| Mantine      | React | 117 + ext  |       27k       |
+| Chakra UI v2 | React |     54     |       38k       |
+| shadcn/ui    | React |     59     |       75k       |
+| Radix UI     | React |     30     |       16k       |
+| Headless UI  | React |     16     |       25k       |
+| PrimeReact   | React |     90     |      6k\*       |
+| MUI Base     | React |     20     |    (bundled)    |
+| Element Plus | Vue   |     82     |       25k       |
+| Naive UI     | Vue   |    ~80     |       16k       |
+| Vuetify      | Vue   |    ~70     |       40k       |
+| Quasar       | Vue   |    ~80     |       26k       |
+| PrimeVue     | Vue   |     95     |       10k       |
+| Arco Design  | Vue   |     73     |      5k\*       |
+| TDesign      | Vue   |     72     |      3k\*       |
+| Vant         | Vue   |     73     |       23k       |
+| Varlet       | Vue   |     70     |      5k\*       |
+
+\* Included for completeness despite <10k stars due to strong ecosystem influence (PrimeReact/PrimeVue share a component surface; Arco/TDesign are major Chinese enterprise ecosystems; Varlet paired with Vant for mobile comparison).
+
+## 附录 B — 通用组件（已发布）
+
+以下 24 个组件概念同时出现在 MUI / Ant Design / Mantine / Chakra 与 Element Plus / Naive UI / Vuetify / Quasar —— 任何 UI 组件库的 table-stakes，且均已随 `@soybeanjs/ui` 发布：
+
+`Button`, `Input`, `Select`, `Checkbox`, `Radio`, `Switch`, `Slider`, `Form`, `Table`, `Card`, `Dialog/Modal`, `Tabs`, `Menu`, `Pagination`, `Avatar`, `Badge`, `Tooltip`, `Carousel`, `Skeleton`, `Progress`, `Alert`, `Accordion/Collapse`, `Stepper/Steps`, `Tag`.
+
+## 附录 C — 实现模式速查
 
 将各路线图组件映射至预期的 headless 模式（依据组件开发规范）：
 
 | 模式                          | 组件                                                                                                                                                                                                                                                                                  |
 | :---------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 单类 (`cv()`)                 | `QRCode`, `VisuallyHidden`, `Banner`, `Backdrop`, `Space`, `NativeSelect`, `GradientText`, `Indicator`, `Spoiler`, `Marquee`, `Blockquote`, `Highlight`, `NumberFormatter`                                                                                                            |
+| 单类 (`cv()`)                 | `Rating`, `QRCode`, `VisuallyHidden`, `Banner`, `Backdrop`, `Space`, `NativeSelect`, `GradientText`, `Indicator`, `Spoiler`, `Marquee`, `Blockquote`, `Highlight`, `NumberFormatter`                                                                                                  |
 | 多槽 (`scv()` + `provide*Ui`) | `Upload`, `Timeline`, `Typography`, `Descriptions`, `TreeSelect`, `Statistic`, `Code`, `Image`, `Transfer`, `Mention`, `AvatarGroup`, `RangeSlider`, `SplitButton`, `Fieldset`, `InputGroup`, `Dropzone`, `Masonry`, `FloatingActionButton`, `LoadingBar`, `OverflowList`, `Terminal` |
 | 组合式优先                    | `NumberAnimation` (`useNumberAnimation`), `Countdown` (`useCountdown`), `InfiniteScroll` (`useInfiniteScroll`), `Ellipsis` (`useOverflow`), `InputMask` (`useInputMask`)                                                                                                              |
 | 现有组件扩展                  | `CurrencyInput` (→ `input-number`), `TriStateCheckbox` (→ `checkbox`), `Equation` (KaTeX wrapper), `Knob` (SVG + `useKnob`), `Signature` (canvas + `useSignature`)                                                                                                                    |
 
 ---
 
-_本文档为项目总路线图。组件信息自 [components.md](./components.md) 提取（源文档最后更新：2026-08-02）。桌面优先范围；96 个组件已发布；45 个进入活跃路线图（高 22 / 中 11 / 低 12）；8 个延后至组件市场（另有 `PageHeader` / `Navbar` / `Sidebar` / `AppShell` 4 个转入壳领域规划）；60+ 个在范围外清单中被明确拒绝。AI 与中后台壳两个核心内领域分别见 [ui-ai-roadmap.md](./ui-ai-roadmap.md) / [ui-shell-roadmap.md](./ui-shell-roadmap.md)；editor / table / form / ui-pro 为形态待评估的未来提案。_
+_本文档为项目总路线图，同时是**组件评估明细的唯一来源**（原 `components.md` 已并入本文件）。桌面优先范围；96 个组件已发布；45 个进入活跃路线图（高 22 / 中 11 / 低 12）；8 个延后至组件市场（另有 `PageHeader` / `Navbar` / `Sidebar` / `AppShell` 4 个转入壳领域规划）；60+ 个在范围外清单中被明确拒绝。AI 与中后台壳两个核心内领域分别见 [ui-ai-roadmap.md](./ui-ai-roadmap.md) / [ui-shell-roadmap.md](./ui-shell-roadmap.md)；editor / table / form / ui-pro 为形态待评估的未来提案。_
