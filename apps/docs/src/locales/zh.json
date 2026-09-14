@@ -123,7 +123,8 @@
         "side": "侧边",
         "nested": "嵌套",
         "snap-points": "吸附点",
-        "swipe": "滑动"
+        "swipe": "滑动",
+        "form-inputs": "表单输入"
       },
       "breadcrumb": {
         "basic": "基础",

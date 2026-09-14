@@ -123,7 +123,8 @@
         "side": "Side",
         "nested": "Nested",
         "snap-points": "Snap Points",
-        "swipe": "Swipe"
+        "swipe": "Swipe",
+        "form-inputs": "Form Inputs"
       },
       "breadcrumb": {
         "basic": "Basic",
