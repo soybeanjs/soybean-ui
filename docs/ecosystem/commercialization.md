@@ -2,7 +2,8 @@
 
 > 本文档针对 `@soybeanjs/editor`（富文本/块编辑器）、`@soybeanjs/table`（高级数据网格）、`@soybeanjs/form`（Schema 驱动表单）三个外围生态包，基于市场与商业先例调研，给出**分生态的商业化方向（每生态 3–5 个）**与横向执行建议。
 >
-> 事实依据：完整调研见 [research/commercialization-ecosystem.md](../research/commercialization-ecosystem.md)（先例定价/许可一手核实）；editor 的 Tiptap 收费边界见 [editor.md](./editor.md) §1.1；table/form 的 Pro 能力边界见 [table.md](./table.md) 与 [form.md](./form.md)。
+> 事实依据：完整调研见 [research/commercialization-ecosystem.md](../research/commercialization-ecosystem.md)（先例定价/许可一手核实；该报告自 2026-09 起只保留调研事实与来源清单）；editor 的 Tiptap 收费边界见 [editor.md](./editor.md) §1.1；table/form 的 Pro 能力边界见 [table.md](./table.md) 与 [form.md](./form.md)。
+> **本文档是分生态商业化方向与横向建议的唯一来源**（2026-09 起，research 报告中的同名小节已收敛至此）。
 > 状态：**策略建议**（非执行承诺）。所有方向需先经需求信号验证（GitHub issue/讨论、企业询单）再立项。
 >
 > **2026-09 前提变更：** 本文写于 editor/table/form 为「外围独立包」的规划时期；当前仓库无外围包（`@soybeanjs/ui-x` 已移除，AI 流式能力 `useStream` / `SSender` 改在核心 headless/ui 实现，见 [../ui-ai-roadmap.md](../ui-ai-roadmap.md)；`@soybeanjs/admin` 已取消，壳方向见 [../ui-shell-roadmap.md](../ui-shell-roadmap.md)）。下文市场调研、定价先例与免费/付费边界结论仍然有效；包结构、lockstep 发布、跨包依赖等设定失效，商业化载体（核心内能力 / 独立增值包 / sbean 付费条目 / 模板资产）须在立项时按 [README §立项时必须回答的问题](./README.md#立项时必须回答的问题) 重新决策。
@@ -42,7 +43,7 @@
 - **价值主张**：基础编辑器 MIT 免费；Pro 提供「协作（Y.js/Hocuspocus）、DOCX/PDF 转换、修订跟踪、目录/数学/拖拽增强」等难做能力，一次集成。
 - **定价建议**：类 Tiptap 按开发者席位或项目订阅（如 $49/$149/$999 三档），或一次性 per-project（$500–$5,000）。
 - **免费边界**：`SEditor`/`SEditorToolbar`/`SEditorBubbleMenu`/图片上传/Markdown 双向等 P0–P1 能力 MIT（[editor.md](./editor.md) §2.4）；Pro = 协同/转换/修订跟踪/AI 等 P2+。
-- **风险**：Tiptap 官方同类能力已定价且 2025-06 起收紧；用户可能直接用 Tiptap Cloud——以「Vue3 + UnoCSS + 中文 + 免费 UI 层」差异化。
+- **风险**：Tiptap 官方同类能力已定价且 2025-06 起收紧（免费云计划移除 [二手](https://eddyter.com/blogs/tiptap-vs-quill-2026)）；用户可能直接用 Tiptap Cloud——以「Vue3 + UnoCSS + 中文 + 免费 UI 层」差异化。
 
 ### E2 · Editor Cloud 托管协作服务（对标 Tiptap Cloud）
 
@@ -56,7 +57,7 @@
 
 - **目标客户**：内容密集型产品（文档、博客、客服、法务）团队。
 - **价值主张**：AI 续写/改写/翻译/摘要/校对；免费集成点（slash 命令 + 流式渲染，复用核心库 `SSender` / `useStream`）；**BYOK（自带 key）免费档 + 托管 AI 档**。
-- **定价建议**：BYOK 免费（参考 Novel）；托管 AI 按 credits/月（参考 Retool），如 $19/$49/$199/月；AI Toolkit 级（面向 Agent 的文档读写）联系销售。
+- **定价建议**：BYOK 免费（参考 Novel [二手](https://eddyter.com/blogs/tiptap-alternative)）；托管 AI 按 credits/月（参考 Retool），如 $19/$49/$199/月；AI Toolkit 级（面向 Agent 的文档读写）联系销售。
 - **免费边界**：AI 交互组件 MIT；**模型调用与用量**付费。
 - **风险**：AI 成本 pass-through 难定价（防滥用）；OpenAI/各家 SDK 降价竞争；合规（内容安全、个保法）在中国是硬要求。
 
@@ -64,7 +65,7 @@
 
 - **目标客户**：政企、知识库/CMS 厂商、需深度定制（自定义块、业务 schema、私有化）的团队。
 - **价值主张**：实施、定制扩展开发、a11y/性能优化、培训、SLA 响应、私有化部署支持。
-- **定价建议**：实施项目一次性 $5k–$50k；年维护合同 = 首年费用 20%–30%（参考 DevExpress 续费率形态 [官网](https://www.devexpress.com/products/net/controls/winforms/)）。
+- **定价建议**：实施项目一次性 $5k–$50k（第三方「Tiptap 定制 UI build $20,000、维护 $2,400/年」[二手](https://eddyter.com/blogs/tiptap-vs-quill-2026)）；年维护合同 = 首年费用 20%–30%（参考 DevExpress 续费率形态 [官网](https://www.devexpress.com/products/net/controls/winforms/)）。
 - **免费边界**：全部编辑器组件 MIT；**服务与定制产物**付费。
 - **风险**：人力密集型、规模化难；需建立可复用定制模板/预设库摊薄成本。
 

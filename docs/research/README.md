@@ -8,12 +8,12 @@
 
 ## 索引
 
-| 报告                                                               | 领域                         | 日期       | 结论摘要                                                                                      |
-| :----------------------------------------------------------------- | :--------------------------- | :--------- | :-------------------------------------------------------------------------------------------- |
-| [table-ecosystem.md](./table-ecosystem.md)                         | 高级表格 / 数据网格          | 2026-08-14 | Vue 生态缺「Headless 高级网格 + 服务端数据源抽象」；ProTable `request`+`valueType` 是黄金标准 |
-| [form-ecosystem.md](./form-ecosystem.md)                           | Schema 驱动高级表单          | 2026-08-14 | Vue 生态「schema 驱动 + 自动渲染」空白；Standard Schema v1 已是事实标准                       |
-| [commercialization-ecosystem.md](./commercialization-ecosystem.md) | editor/table/form 商业化     | 2026-08-14 | 「免费核心 + 付费高级层/托管/服务」是验证过的模型；分生态各 5 个方向                          |
-| [nuxt-theme.md](./nuxt-theme.md)                                   | Nuxt UI 主题系统（技术调研） | 2026-09-09 | Nuxt UI v4 主题四层结构与 Theme Studio 分享链接机制；与 [theme.md](../theme.md) 方案对比      |
+| 报告                                                               | 领域                         | 日期       | 结论摘要                                                                                                                                  |
+| :----------------------------------------------------------------- | :--------------------------- | :--------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
+| [table-ecosystem.md](./table-ecosystem.md)                         | 高级表格 / 数据网格          | 2026-08-14 | Vue 生态缺「Headless 高级网格 + 服务端数据源抽象」；ProTable `request`+`valueType` 是黄金标准                                             |
+| [form-ecosystem.md](./form-ecosystem.md)                           | Schema 驱动高级表单          | 2026-08-14 | Vue 生态「schema 驱动 + 自动渲染」空白；Standard Schema v1 已是事实标准                                                                   |
+| [commercialization-ecosystem.md](./commercialization-ecosystem.md) | editor/table/form 商业化     | 2026-08-14 | 「免费核心 + 付费高级层/托管/服务」是验证过的模型（分生态方向已迁至 [ecosystem/commercialization.md](../ecosystem/commercialization.md)） |
+| [nuxt-theme.md](./nuxt-theme.md)                                   | Nuxt UI 主题系统（技术调研） | 2026-09-09 | Nuxt UI v4 主题四层结构与 Theme Studio 分享链接机制；与 [theme.md](../theme.md) 方案对比                                                  |
 
 ## 调研 → 落地的链路
 

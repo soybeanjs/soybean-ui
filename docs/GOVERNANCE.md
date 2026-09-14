@@ -81,15 +81,16 @@
 
 ### 5.2 单事实源清单
 
-| 事实           | 唯一权威文档/文件                                     |
-| :------------- | :---------------------------------------------------- |
-| 工作区架构     | `docs/architecture.md`                                |
-| 工程质量改进项 | `docs/optimize.md`（F1–F11）                          |
-| 组件评估明细   | `docs/roadmap.md`                                     |
-| 核心内领域规划 | `docs/ui-ai-roadmap.md` · `docs/ui-shell-roadmap.md`  |
-| 组件审计方法   | `.agents/skills/soybean-ui-develop/audit.md`（D1–D7） |
-| 未来领域提案   | `docs/ecosystem/`（每方向一篇，立项时确定落地形态）   |
-| 调研结论       | `docs/research/`                                      |
+| 事实           | 唯一权威文档/文件                                       |
+| :------------- | :------------------------------------------------------ |
+| 工作区架构     | `docs/architecture.md`                                  |
+| 工程质量改进项 | `docs/optimize.md`（F1–F11）                            |
+| 组件评估明细   | `docs/roadmap.md`                                       |
+| 核心内领域规划 | `docs/ui-ai-roadmap.md` · `docs/ui-shell-roadmap.md`    |
+| 组件审计方法   | `.agents/skills/soybean-ui-develop/audit.md`（D1–D7）   |
+| 未来领域提案   | `docs/ecosystem/`（每方向一篇，立项时确定落地形态）     |
+| 商业化策略     | `docs/ecosystem/commercialization.md`（方向与横向建议） |
+| 调研结论       | `docs/research/`                                        |
 
 ### 5.3 交叉引用维护（强制）
 
