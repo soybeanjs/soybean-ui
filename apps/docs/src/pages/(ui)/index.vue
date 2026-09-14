@@ -182,7 +182,7 @@ const twoModes = computed(() => [
     description: t('components.home.sections.two_modes.cli.description'),
     features: Array.from({ length: 5 }, (_, i) => t(`components.home.sections.two_modes.cli.feature_${i}`)),
     cta: t('components.home.sections.two_modes.cli.cta'),
-    to: '/sbean',
+    to: '/cli',
     icon: 'lucide:terminal',
     iconClass: 'text-warning bg-warning/10'
   }

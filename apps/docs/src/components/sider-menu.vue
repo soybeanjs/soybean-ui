@@ -93,7 +93,7 @@ const overviewMenus = computed<TreeMenuOptionData[]>(() => [
       {
         label: t('sidebar.cli'),
         value: 'cli',
-        to: '/sbean'
+        to: '/cli'
       },
       {
         label: t('sidebar.migration'),

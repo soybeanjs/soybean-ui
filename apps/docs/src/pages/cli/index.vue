@@ -3,5 +3,5 @@ definePage({ layout: 'default' });
 </script>
 
 <template>
-  <DocMd path="sbean/index" />
+  <DocMd path="cli/index" />
 </template>

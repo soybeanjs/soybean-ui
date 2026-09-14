@@ -6,7 +6,7 @@
  * - `ui/<slug>`                  -> `/overview/<slug>`
  * - `<section>/components/<slug>` -> `/<section>/<slug>` (chart)
  * - `<section>/<slug>`           -> `/<section>/<slug>`
- * - trailing `index` collapses to its directory root (`sbean/index` -> `/sbean`)
+ * - trailing `index` collapses to its directory root (`cli/index` -> `/cli`)
  *
  * Shared by the SSG preroute collector (`build/docs-routes.ts`) and the
  * client-side content search, so indexed hits always lead to real routes.

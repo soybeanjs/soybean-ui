@@ -1,10 +1,10 @@
 ---
 head:
-  title: SBean CLI
+  title: SoybeanUI CLI
   description: 'sbean is the command-line tool for SoybeanUI. It helps you initialize projects, add components, and manage your UI configuration.'
 ---
 
-# SBean CLI
+# SoybeanUI CLI
 
 `sbean` is the command-line tool for SoybeanUI. It helps you initialize projects, add components, and manage your UI configuration.
 

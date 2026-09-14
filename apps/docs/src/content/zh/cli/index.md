@@ -1,10 +1,10 @@
 ---
 head:
-  title: SBean CLI
+  title: SoybeanUI CLI
   description: sbean 是 SoybeanUI 的命令行工具，用于初始化项目、添加组件和管理 UI 配置。
 ---
 
-# SBean CLI
+# SoybeanUI CLI
 
 `sbean` 是 SoybeanUI 的命令行工具，用于初始化项目、添加组件和管理 UI 配置。
 
