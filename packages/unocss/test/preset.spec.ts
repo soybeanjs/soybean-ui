@@ -42,6 +42,24 @@ describe('presetUiUnocss', () => {
     expect(css).toContain('--size: 16px');
     expect(css).toContain('--radius: 0.625rem');
   });
+
+  it('floors the field font size on coarse pointers so iOS does not zoom on focus', () => {
+    const css = getThemeCss(presetUiUnocss({ globalCSS: true, uiCSS: true }));
+
+    expect(css).toContain('@media(hover:none) and (pointer:coarse)');
+    expect(css).toContain('font-size:max(16px,1em)');
+
+    // Each selector needs its own `:not(…)` list: that specificity is what
+    // outranks the preflight's `font-size: inherit`. A bare `textarea`/`select`
+    // loses that tie on source order and silently keeps the iOS zoom.
+    expect(css).toContain('input:not([type=button]');
+    expect(css).toContain('textarea:not([disabled])');
+    expect(css).toContain('select:not([disabled])');
+  });
+
+  it('keeps the field font floor out of the stylesheet without globalCSS', () => {
+    expect(getThemeCss(presetUiUnocss({ uiCSS: true }))).not.toContain('max(16px,1em)');
+  });
 });
 
 describe('presetScrollbar', () => {
