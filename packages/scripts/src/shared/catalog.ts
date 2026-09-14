@@ -89,7 +89,14 @@ function hasRootCollision(group: CatalogGroup): boolean {
 }
 
 function emitNamespaceObject(group: CatalogGroup): string {
-  const members = group.exports.map(exportName => `  ${getNamespaceMemberName(group.name, exportName)}: ${exportName}`);
+  // Emit the shorthand when the member keeps its exported name: that is what the
+  // repo's `object-shorthand` lint rule rewrites it to, and generated files must
+  // survive `pnpm lint` unchanged.
+  const members = group.exports.map(exportName => {
+    const memberName = getNamespaceMemberName(group.name, exportName);
+
+    return memberName === exportName ? `  ${exportName}` : `  ${memberName}: ${exportName}`;
+  });
   const types = group.exports.map(
     exportName => `  ${getNamespaceMemberName(group.name, exportName)}: typeof ${exportName};`
   );
