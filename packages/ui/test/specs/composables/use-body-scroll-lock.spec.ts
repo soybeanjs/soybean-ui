@@ -320,6 +320,31 @@ describe('useBodyScrollLock', () => {
       unlock();
       expect(globalThis.document.removeEventListener).toHaveBeenCalledWith('touchmove', expect.any(Function));
     });
+
+    it('leaves the body unstyled on iOS so the browser chrome stays put', async () => {
+      const { useBodyScrollLock, refreshIOSDetection } = await loadLock();
+      refreshIOSDetection();
+
+      vi.mocked(globalThis.document.getElementById).mockReturnValue(null);
+      globalThis.document.createElement = vi.fn().mockReturnValue({ id: '', textContent: '' });
+
+      const unlock = useBodyScrollLock();
+
+      // `position: fixed` collapses the document height, which makes iOS Safari
+      // reveal its toolbar and shift every fixed layer by the chrome height
+      // mid-open. The document touchmove guard already blocks background
+      // scrolling there, so the body itself is left alone.
+      expect(mockBody.style.top).toBeUndefined();
+      expect(mockBody.classList.add).not.toHaveBeenCalledWith('scroll-lock-body');
+      expect(mockDocumentElement.classList.add).not.toHaveBeenCalledWith('scroll-lock-html');
+      expect(mockBody.setAttribute).not.toHaveBeenCalled();
+
+      unlock();
+
+      // The page never moved, so the scroll position must not be rewritten.
+      expect(globalThis.window.scrollTo).not.toHaveBeenCalled();
+      expect(mockBody.classList.remove).not.toHaveBeenCalled();
+    });
   });
 
   describe('non-iOS devices', () => {

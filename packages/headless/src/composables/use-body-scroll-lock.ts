@@ -50,19 +50,29 @@ export function useBodyScrollLock(): () => void {
 
   if (lockCount === 1) {
     const body = document.body;
+    const locksBodyStyles = shouldLockBodyStyles();
 
-    ensureScrollLockCSS();
+    let scrollY = 0;
 
-    const scrollY = window.scrollY;
-    const shouldShowScrollbar = shouldShowVerticalScrollbar();
+    if (locksBodyStyles) {
+      ensureScrollLockCSS();
 
-    // Apply scroll lock
-    applyScrollLock(body, scrollY, shouldShowScrollbar);
+      scrollY = window.scrollY;
+
+      // Apply scroll lock
+      applyScrollLock(body, scrollY, shouldShowVerticalScrollbar());
+    }
 
     // Setup iOS-specific touch prevention
     const stopTouchMoveListener = isIOS() ? setupIOSTouchPrevention() : undefined;
 
-    releaseLock = () => unlockScroll(body, scrollY, stopTouchMoveListener);
+    releaseLock = () => {
+      if (locksBodyStyles) {
+        unlockScroll(body, scrollY);
+      }
+
+      stopTouchMoveListener?.();
+    };
   }
 
   // Idempotent: a double-invoked cleanup must not over-decrement the count.
@@ -79,6 +89,19 @@ export function useBodyScrollLock(): () => void {
   };
 }
 
+/**
+ * iOS Safari reveals its browser chrome once the body stops being scrollable —
+ * `position: fixed` collapses the document height and the toolbar slides back
+ * in, shrinking the visual viewport under every fixed layer. Opening a drawer
+ * would therefore shift the page (and the drawer) by the chrome height, and
+ * re-frame the snap geometry mid-open. Background touch scrolling is already
+ * blocked by {@link setupIOSTouchPrevention}, so iOS keeps its scroll state —
+ * and its chrome — untouched.
+ */
+function shouldLockBodyStyles(): boolean {
+  return !isIOS();
+}
+
 /** Apply scroll lock to the body element */
 function applyScrollLock(body: HTMLElement, scrollY: number, showScrollbar: boolean): void {
   body.style.top = `-${scrollY}px`;
@@ -93,7 +116,7 @@ function applyScrollLock(body: HTMLElement, scrollY: number, showScrollbar: bool
 }
 
 /** Remove scroll lock from the body element */
-function unlockScroll(body: HTMLElement, scrollY: number, stopTouchMoveListener?: () => void): void {
+function unlockScroll(body: HTMLElement, scrollY: number): void {
   // Remove CSS classes
   body.classList.remove(CSS_CLASSES.BODY, CSS_CLASSES.BODY_WITH_SCROLLBAR);
   document.documentElement.classList.remove(CSS_CLASSES.HTML);
@@ -104,8 +127,6 @@ function unlockScroll(body: HTMLElement, scrollY: number, stopTouchMoveListener?
 
   // Restore scroll position
   window.scrollTo(0, scrollY);
-
-  stopTouchMoveListener?.();
 }
 
 /** Determines if vertical scrollbar should be shown */

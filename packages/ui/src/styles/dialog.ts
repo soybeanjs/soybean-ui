@@ -38,7 +38,10 @@ export const dialogVariants = scv({
     description: `text-muted-foreground m-0`,
     close: `absolute`,
     fullscreen: `absolute`,
-    content: `grow overflow-auto`,
+    // `overscroll-behavior: contain` keeps a scroll that reaches the content's
+    // edge from chaining to the page behind — the body is deliberately left
+    // scrollable on iOS so the browser chrome does not re-appear mid-open.
+    content: `grow overflow-auto [overscroll-behavior:contain]`,
     footer: `flex justify-end lt-sm:flex-col-reverse`,
     cancel: '',
     confirm: ''
