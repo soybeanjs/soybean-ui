@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.40.1](https://github.com/soybeanjs/soybean-ui/compare/v0.40.0...v0.40.1) (2026-09-14)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
 ## [v0.40.0](https://github.com/soybeanjs/soybean-ui/compare/v0.31.0...v0.40.0) (2026-09-14)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
