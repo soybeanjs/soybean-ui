@@ -9,7 +9,8 @@
     "go": "确定",
     "home": "首页",
     "toggle_dark": "切换深色模式",
-    "toggle_langs": "切换语言"
+    "toggle_langs": "切换语言",
+    "back_to_home": "返回首页"
   },
   "not_found": "未找到",
   "not_found_page": "未找到页面",

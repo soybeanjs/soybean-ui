@@ -9,7 +9,8 @@
     "go": "GO",
     "home": "Home",
     "toggle_dark": "Toggle dark mode",
-    "toggle_langs": "Change languages"
+    "toggle_langs": "Change languages",
+    "back_to_home": "Back to Home"
   },
   "not_found": "Not found",
   "not_found_page": "Not found page",
