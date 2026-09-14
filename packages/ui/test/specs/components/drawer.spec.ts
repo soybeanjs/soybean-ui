@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import SDrawer from '@/components/drawer/drawer.vue';
@@ -267,6 +267,63 @@ describe('SDrawer', () => {
       expect(wrapper.find('[data-soybean-drawer-popup]').attributes('data-soybean-snap-points')).toBe('false');
 
       wrapper.unmount();
+    });
+
+    it('re-measures the popup box when the viewport changes', async () => {
+      const descriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
+
+      // Model the popup's `dvh`-capped box: its height follows the viewport.
+      Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+        configurable: true,
+        get: () => Math.min(1000, Math.max(0, (window.innerHeight ?? 0) - 32))
+      });
+
+      const innerHeightSpy = vi.spyOn(window, 'innerHeight', 'get').mockReturnValue(1000);
+
+      try {
+        const wrapper = mount(SDrawer, {
+          props: {
+            open: true,
+            title: 'Drawer',
+            snapPoints: [0.25, 0.5, 0.75],
+            snapPoint: 0.5,
+            portalProps: { disabled: true }
+          },
+          slots,
+          attachTo: document.body
+        });
+
+        await nextTick();
+        await nextTick();
+
+        const popup = wrapper.find('[data-soybean-drawer-popup]');
+
+        // Box: min(1000, 1000 − 32) = 968; offset: 968 − 0.5 × 1000 = 468.
+        expect(popup.attributes('style') ?? '').toMatch(/--soybean-drawer-height:\s*968px/);
+        expect(popup.attributes('style') ?? '').toMatch(/--soybean-drawer-snap-point-offset:\s*468px/);
+
+        // A viewport change while open re-measures the box in the same tick. The
+        // published height and the viewport-derived offset must never disagree,
+        // or the drawer rests at the wrong snap level until the observer's
+        // debounced correction lands.
+        innerHeightSpy.mockReturnValue(1200);
+        window.dispatchEvent(new Event('resize'));
+        await nextTick();
+
+        // Box: min(1000, 1200 − 32) = 1000; offset: 1000 − 0.5 × 1200 = 400.
+        expect(popup.attributes('style') ?? '').toMatch(/--soybean-drawer-height:\s*1000px/);
+        expect(popup.attributes('style') ?? '').toMatch(/--soybean-drawer-snap-point-offset:\s*400px/);
+
+        wrapper.unmount();
+      } finally {
+        innerHeightSpy.mockRestore();
+
+        if (descriptor) {
+          Object.defineProperty(HTMLElement.prototype, 'offsetHeight', descriptor);
+        } else {
+          Reflect.deleteProperty(HTMLElement.prototype, 'offsetHeight');
+        }
+      }
     });
   });
 

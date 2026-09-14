@@ -74,11 +74,18 @@ export function getSnapPointSwipeMovement(baseOffset: number, movementValue: num
 export function useDrawerSnapPoints({ snapPoints, activeSnapPoint, popupHeight, side }: UseDrawerSnapPointsOptions) {
   const viewportSize = ref(0);
   const rootFontSize = ref(16);
+  /** Bumped whenever the measured viewport actually changes. */
+  const viewportRevision = ref(0);
 
   function measure() {
     if (typeof window === 'undefined') return;
 
-    viewportSize.value = side.value === 'left' || side.value === 'right' ? window.innerWidth : window.innerHeight;
+    const nextSize = side.value === 'left' || side.value === 'right' ? window.innerWidth : window.innerHeight;
+
+    if (nextSize !== viewportSize.value) {
+      viewportSize.value = nextSize;
+      viewportRevision.value += 1;
+    }
 
     const fontSize = Number.parseFloat(window.getComputedStyle(document.documentElement).fontSize);
 
@@ -88,10 +95,15 @@ export function useDrawerSnapPoints({ snapPoints, activeSnapPoint, popupHeight, 
   onMounted(() => {
     measure();
     window.addEventListener('resize', measure);
+    // iOS does not always fire `resize` when its dynamic viewport changes, so
+    // the visual viewport is watched as well; the snap heights are computed
+    // from `innerHeight`, which only this signal keeps up to date.
+    window.visualViewport?.addEventListener('resize', measure);
   });
 
   onBeforeUnmount(() => {
     window.removeEventListener('resize', measure);
+    window.visualViewport?.removeEventListener('resize', measure);
   });
 
   const resolvedSnapPoints = computed<ResolvedDrawerSnapPoint[]>(() => {
@@ -146,6 +158,7 @@ export function useDrawerSnapPoints({ snapPoints, activeSnapPoint, popupHeight, 
 
   return {
     resolvedSnapPoints,
-    activeSnapPointOffset
+    activeSnapPointOffset,
+    viewportRevision
   };
 }

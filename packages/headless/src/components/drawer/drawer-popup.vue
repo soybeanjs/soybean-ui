@@ -44,6 +44,7 @@ const {
   snapToSequentialPoints,
   activeSnapPointOffset,
   resolvedSnapPoints,
+  viewportRevision,
   popupHeight,
   closeThreshold,
   swiping,
@@ -69,12 +70,26 @@ watchEffect(() => {
 
 let resizeObserver: ResizeObserver | undefined;
 let measureTimer: ReturnType<typeof setTimeout> | undefined;
+let measureBox: (() => void) | undefined;
+
+/**
+ * A viewport change re-frames both the box (its `dvh`-driven size) and the
+ * snap heights. Measuring straight away keeps the published height in step with
+ * the new viewport; waiting for the observer's debounce publishes an offset
+ * derived from the new viewport and the old box, which rests the drawer at the
+ * wrong place until the correction lands — the "opens at one snap level, then
+ * flashes to another" defect.
+ */
+watch(viewportRevision, () => {
+  measureBox?.();
+});
 
 watch(popupElement, element => {
   resizeObserver?.disconnect();
   resizeObserver = undefined;
   clearTimeout(measureTimer);
   measureTimer = undefined;
+  measureBox = undefined;
 
   if (!element) return;
 
@@ -101,6 +116,8 @@ watch(popupElement, element => {
     clearTimeout(measureTimer);
     measureTimer = setTimeout(measure, 100);
   };
+
+  measureBox = measure;
 
   // The first measurement must land before the popup's first paint: the snap
   // offset var does not exist until `popupHeight` is known, and a debounced

@@ -206,6 +206,12 @@ export interface DrawerRootContext {
    */
   activeSnapPointOffset: Ref<number | null>;
   /**
+   * Bumped whenever the measured viewport changes. The popup re-measures its
+   * box on every bump so the published height and the viewport-derived snap
+   * heights stay consistent instead of disagreeing for a debounce window.
+   */
+  viewportRevision: Ref<number>;
+  /**
    * Measured popup height in px.
    */
   popupHeight: Ref<number>;
