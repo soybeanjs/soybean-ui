@@ -3,7 +3,6 @@ packages:
   - 'apps/**'
   # ubean writes a runtime package.json into `dist/server`; keep build output out of the workspace.
   - '!apps/**/dist/**'
-  - 'skills'
 catalog:
   vite: npm:@voidzero-dev/vite-plus-core@latest
   vite-plus: latest
