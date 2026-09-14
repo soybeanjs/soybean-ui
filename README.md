@@ -154,14 +154,20 @@ import '@soybeanjs/ui/styles.css'; // pre-built UnoCSS stylesheet
 If you contribute new public components, exports, or API descriptions, keep generated surfaces in sync through the official scripts instead of editing generated files by hand.
 
 ```bash
-pnpm sui gen catalog headless                 # sync headless component names and namespaced exports
-pnpm sui gen catalog ui                       # sync ui component names
-pnpm sui gen api                              # regenerate docs api json and locale baseline data
-pnpm sui gen api --locales-only               # refresh api locale template data only
-pnpm sui gen changelog                        # regenerate docs changelog json and locale baseline data
-pnpm sui gen api --translate --locale zh-CN
-pnpm sui gen changelog --translate --locale zh-CN
+pnpm sui gen catalog                          # sync component catalogs (headless + ui)
+pnpm sui gen api                              # regenerate docs api json + locale template data
+pnpm sui gen api --force                      # extract even when the source fingerprint is unchanged
+pnpm sui gen changelog                        # regenerate docs changelog json + locale template data
+pnpm sui gen schema                           # regenerate the sbean JSON Schemas
+pnpm sui gen skills                           # regenerate the skills distribution
+pnpm sui translate api --locale zh-CN         # translate pending api descriptions
+pnpm sui translate changelog --locale zh-CN   # translate pending changelog summaries
+pnpm sui check generated                      # verify the committed generated data matches the sources
 ```
+
+Generation (`sui gen`) is deterministic and offline; translation (`sui translate`) is the only networked step. Regeneration is content-aware: a generated file whose payload did not change keeps its previous `generatedAt` and is not rewritten, so a no-op run leaves no diff behind. `pnpm sui check generated` regenerates every surface and diffs it against git, and CI runs it, so committed generated data cannot drift silently.
+
+API extraction runs TypeDoc over both packages (~40s), so `gen api` skips it when a fingerprint of its inputs and its on-disk output still matches the last run (~0.15s). The fingerprint lives under `node_modules/.cache/` and is never committed; `--force` bypasses it. Because generation and translation are separate verbs, `sui translate <api|changelog|locale|all>` refreshes the surface it translates and then fills pending entries through DeepL (requires `DEEPL_API_KEY`); add `--dry-run` to see pending counts without spending API calls.
 
 The docs site now renders component docs through `UsageCode`, `PlaygroundGallery`, and `ComponentApi`. Component detail pages and `/releases` also read generated changelog data from `apps/docs/src/generated/changelog/` and `apps/docs/src/generated/changelog-locales/`.
 

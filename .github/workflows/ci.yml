@@ -36,6 +36,9 @@ jobs:
       - name: Dependency gate
         run: pnpm check:deps
 
+      - name: Generated data drift
+        run: pnpm check:generated
+
       - name: Type check
         run: pnpm typecheck
 

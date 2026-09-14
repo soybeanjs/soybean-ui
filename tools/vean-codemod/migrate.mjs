@@ -198,9 +198,9 @@ const DOMAIN_MANUAL_STEPS = [
 const REPO_MANUAL_STEPS = [
   'git mv packages/headless packages/aria',
   'packages/cli（原 sbean 目录，v0.50.0 Phase A 已迁移）：改 package.json 的 name → @vean/cli 与 bin.name → vean',
-  'pnpm sui gen catalog aria && pnpm sui gen catalog ui',
-  'pnpm sui gen api && pnpm sui gen api --translate --locale zh',
-  'pnpm sui gen changelog && pnpm sui gen changelog --translate',
+  'pnpm sui gen catalog',
+  'pnpm sui gen api && pnpm sui translate api --locale zh',
+  'pnpm sui gen changelog && pnpm sui translate changelog',
   'packages/scripts/src/commands/catalog.ts: CatalogTarget 与 srcDir 改为 aria',
   'docs content 目录 content/{en,zh}/headless → aria；constants/menus.ts 分组值',
   '.agents/skills/soybean-ui-develop/* + AGENTS.md：层名 headless → aria',

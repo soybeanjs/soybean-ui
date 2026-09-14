@@ -16,7 +16,7 @@ import process from 'node:process';
  *    take runtime dependencies from the §3.2 whitelist (docs/v0.50.0.md). Heavy engines
  *    must stay out of the UI package entirely.
  *
- * Run via `pnpm check:deps` (sui check-deps). Exits non-zero and lists violations on failure.
+ * Run via `pnpm check:deps` (sui check deps). Exits non-zero and lists violations on failure.
  */
 
 const BANNED_SPECIFIER_PATTERN =

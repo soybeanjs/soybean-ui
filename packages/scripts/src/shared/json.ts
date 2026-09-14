@@ -76,19 +76,105 @@ export async function readJsonObject(filePath: string): Promise<JsonObject> {
   }
 }
 
+/**
+ * Metadata stamped by generators to record when a payload last *changed*.
+ * It is deliberately excluded from change detection: a regeneration that
+ * produces identical content must not move the timestamp, otherwise every run
+ * leaves a timestamp-only diff behind (and generated-output drift checks can
+ * never be clean).
+ */
+const generatedAtField = 'generatedAt';
+
+function stripGeneratedAt(value: JsonValue): JsonValue {
+  if (Array.isArray(value)) {
+    return value.map(item => stripGeneratedAt(item as JsonValue));
+  }
+
+  if (!isJsonObject(value)) {
+    return value;
+  }
+
+  return Object.fromEntries(
+    Object.entries(value)
+      .filter(([key]) => key !== generatedAtField)
+      .map(([key, item]) => [key, stripGeneratedAt(item as JsonValue)])
+  );
+}
+
+/** Canonical form, so key order alone never counts as a content change. */
+function isSameGeneratedContent(left: JsonValue, right: JsonValue): boolean {
+  return (
+    JSON.stringify(sortJsonValue(stripGeneratedAt(left))) === JSON.stringify(sortJsonValue(stripGeneratedAt(right)))
+  );
+}
+
+async function readJsonValue(filePath: string): Promise<JsonValue | null> {
+  let content: string;
+
+  try {
+    content = await readFile(filePath, 'utf8');
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+      return null;
+    }
+
+    throw error;
+  }
+
+  try {
+    return JSON.parse(content) as JsonValue;
+  } catch {
+    // Unparseable output is stale by definition: treat it as changed.
+    return null;
+  }
+}
+
+/**
+ * Write `value` as formatted JSON. Returns whether the file was written.
+ *
+ * With `preserveGeneratedAt` an existing document is left untouched — including
+ * its `generatedAt` — when the rest of its content is unchanged.
+ */
 export async function writeJsonFile(
   filePath: string,
   value: JsonValue,
   options?: {
     sort?: boolean;
+    preserveGeneratedAt?: boolean;
   }
-): Promise<void> {
+): Promise<boolean> {
   const outputValue = options?.sort ? sortJsonValue(value) : value;
+
+  if (options?.preserveGeneratedAt) {
+    const existingValue = await readJsonValue(filePath);
+
+    if (existingValue !== null && isSameGeneratedContent(existingValue, outputValue)) {
+      return false;
+    }
+  }
+
   const content = `${JSON.stringify(outputValue, null, 2)}\n`;
 
   await writeFile(filePath, content, 'utf8');
+
+  return true;
 }
 
+export interface GeneratedJsonDirectoryWriteResult {
+  /** Documents whose content changed and were (re)written. */
+  written: string[];
+  /** Documents left untouched because their content was already up to date. */
+  unchanged: string[];
+}
+
+/**
+ * Write a generated-data directory, preserving `generatedAt` on documents whose
+ * payload did not change.
+ *
+ * The directory is *not* wiped first: unchanged documents are skipped and only
+ * files that are no longer produced (a removed component, a retired index) are
+ * deleted. `resetPaths` still removes retired directories outright.
+ */
 export async function writeGeneratedJsonDirectory(options: {
   outputDir: string;
   resetPaths?: string[];
@@ -96,18 +182,32 @@ export async function writeGeneratedJsonDirectory(options: {
     fileName: string;
     value: unknown;
   }>;
-}): Promise<void> {
-  const resetPaths = Array.from(new Set([options.outputDir, ...(options.resetPaths ?? [])]));
-
-  await Promise.all(resetPaths.map(filePath => rm(filePath, { recursive: true, force: true })));
+}): Promise<GeneratedJsonDirectoryWriteResult> {
+  await Promise.all((options.resetPaths ?? []).map(filePath => rm(filePath, { recursive: true, force: true })));
   await mkdir(options.outputDir, { recursive: true });
-  await Promise.all(
-    options.documents.map(document => {
-      const content = `${JSON.stringify(document.value, null, 2)}\n`;
 
-      return writeFile(path.join(options.outputDir, document.fileName), content, 'utf8');
-    })
+  const producedFileNames = new Set(options.documents.map(document => document.fileName));
+  const existingEntries = await readdir(options.outputDir, { withFileTypes: true });
+
+  await Promise.all(
+    existingEntries
+      .filter(entry => !entry.isDirectory() && !producedFileNames.has(entry.name))
+      .map(entry => rm(path.join(options.outputDir, entry.name), { force: true }))
   );
+
+  const results = await Promise.all(
+    options.documents.map(async document => ({
+      fileName: document.fileName,
+      written: await writeJsonFile(path.join(options.outputDir, document.fileName), document.value as JsonValue, {
+        preserveGeneratedAt: true
+      })
+    }))
+  );
+
+  return {
+    written: results.filter(result => result.written).map(result => result.fileName),
+    unchanged: results.filter(result => !result.written).map(result => result.fileName)
+  };
 }
 
 export function getNestedString(messages: JsonObject, key: string): string | null {

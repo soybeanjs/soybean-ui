@@ -183,7 +183,7 @@ export async function generateChangelogData(outputDir: string, contentDir: strin
 
   const index = createIndex(documents, generatedAt);
 
-  await writeGeneratedJsonDirectory({
+  const writeResult = await writeGeneratedJsonDirectory({
     outputDir,
     documents: [
       {
@@ -200,6 +200,11 @@ export async function generateChangelogData(outputDir: string, contentDir: strin
       }))
     ]
   });
+
+  console.log(
+    `Generated changelog data (${path.relative(rootDir, outputDir)}).` +
+      ` Updated ${writeResult.written.length} of ${writeResult.written.length + writeResult.unchanged.length} files.`
+  );
 }
 
 function parseChangelog(content: string): ParsedVersionBlock[] {

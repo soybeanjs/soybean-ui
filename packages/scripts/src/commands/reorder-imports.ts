@@ -2,25 +2,10 @@ import { readdir, readFile, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 
-type CliOptions = {
-  checkOnly: boolean;
-  targets: string[];
-};
-
 const rootDir = process.cwd();
 const defaultTargets = ['.'];
 const ignoredDirectories = new Set(['.git', '.output', '.turbo', '.vercel', 'coverage', 'dist', 'node_modules']);
 const importRegex = /import\s+type\s*\{([\s\S]*?)\}\s*from\s*(['"][^'"]+['"])(;?)/g;
-
-function parseCliOptions(args: string[]): CliOptions {
-  const checkOnly = args.includes('--check');
-  const targets = args.filter(arg => arg !== '--check');
-
-  return {
-    checkOnly,
-    targets: targets.length ? targets : defaultTargets
-  };
-}
 
 async function safeStat(targetPath: string) {
   try {
@@ -157,8 +142,9 @@ export function reorderImports(sourceText: string): { changed: boolean; content:
   };
 }
 
-export async function runReorderImports(args: string[]): Promise<void> {
-  const { checkOnly, targets } = parseCliOptions(args);
+export async function runReorderImports(options: { check: boolean; targets: string[] }): Promise<void> {
+  const checkOnly = options.check;
+  const targets = options.targets.length ? options.targets : defaultTargets;
   const files = await resolveVueFiles(targets);
   let changedFileCount = 0;
 

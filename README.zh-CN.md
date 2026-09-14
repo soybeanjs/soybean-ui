@@ -151,14 +151,20 @@ import '@soybeanjs/ui/styles.css'; // 预构建的 UnoCSS 样式表
 如果您在仓库内新增公共组件、调整导出入口或修改 API 描述，请通过官方脚本同步生成产物，而不是手动编辑生成文件。
 
 ```bash
-pnpm sui gen catalog headless                 # 同步 headless 组件名称与命名空间导出
-pnpm sui gen catalog ui                       # 同步 ui 组件名称
-pnpm sui gen api                              # 重新生成 docs api json 与 locale 英文基线数据
-pnpm sui gen api --locales-only               # 仅刷新 api locale 模板数据
-pnpm sui gen changelog                        # 重新生成 docs changelog json 与 locale 英文基线数据
-pnpm sui gen api --translate --locale zh-CN
-pnpm sui gen changelog --translate --locale zh-CN
+pnpm sui gen catalog                          # 同步组件目录（headless + ui）
+pnpm sui gen api                              # 重新生成 docs api json 与 locale 模板数据
+pnpm sui gen api --force                      # 即使源码指纹未变化也强制抽取
+pnpm sui gen changelog                        # 重新生成 docs changelog json 与 locale 模板数据
+pnpm sui gen schema                           # 重新生成 sbean JSON Schema
+pnpm sui gen skills                           # 重新生成 skills 分发产物
+pnpm sui translate api --locale zh-CN         # 翻译待译 API 描述
+pnpm sui translate changelog --locale zh-CN   # 翻译待译 changelog 摘要
+pnpm sui check generated                      # 校验已提交生成数据与源码是否一致
 ```
+
+生成（`sui gen`）是确定性且离线的；翻译（`sui translate`）是唯一联网的步骤。重新生成是内容感知的：内容未变化的生成文件会保留原有的 `generatedAt` 且不被重写，因此空跑不会产生任何 diff。`pnpm sui check generated` 会重跑全部生成目标并与 git 对比，CI 也会执行，因此已提交的生成数据不会再静默漂移。
+
+API 抽取需要用 TypeDoc 编译两个包（约 40s），因此当输入与磁盘产物的指纹与上次一致时会直接跳过（约 0.15s）。指纹存放在 `node_modules/.cache/` 下且不提交；`--force` 可绕过该检查。由于生成与翻译已拆成两个动词，`sui translate <api|changelog|locale|all>` 会先刷新它要翻译的那个面，再通过 DeepL 填充待译条目（需要 `DEEPL_API_KEY`）；加 `--dry-run` 可以在不花费翻译额度的前提下查看待译数量。
 
 当前文档站默认通过 `UsageCode`、`PlaygroundGallery` 与 `ComponentApi` 渲染组件文档；组件详情页与 `/releases` 还会消费 `apps/docs/src/generated/changelog/` 和 `apps/docs/src/generated/changelog-locales/` 下的版本日志生成数据。
 

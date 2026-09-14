@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-09-14T12:24:49.342Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -71,13 +71,6 @@
       "latestVersion": "v0.18.0",
       "versionCount": 2,
       "entryCount": 2
-    },
-    "bottom-sheet": {
-      "component": "bottom-sheet",
-      "file": "bottom-sheet.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 5,
-      "entryCount": 5
     },
     "breadcrumb": {
       "component": "breadcrumb",
@@ -254,6 +247,13 @@
       "versionCount": 15,
       "entryCount": 23
     },
+    "drawer": {
+      "component": "drawer",
+      "file": "drawer.json",
+      "latestVersion": "v0.40.0-beta.1",
+      "versionCount": 6,
+      "entryCount": 7
+    },
     "dropdown-menu": {
       "component": "dropdown-menu",
       "file": "dropdown-menu.json",
@@ -288,6 +288,13 @@
       "latestVersion": "v0.20.0",
       "versionCount": 3,
       "entryCount": 6
+    },
+    "icon": {
+      "component": "icon",
+      "file": "icon.json",
+      "latestVersion": "v0.40.0",
+      "versionCount": 9,
+      "entryCount": 12
     },
     "input": {
       "component": "input",
@@ -373,13 +380,6 @@
       "versionCount": 2,
       "entryCount": 3
     },
-    "navigation-menu": {
-      "component": "navigation-menu",
-      "file": "navigation-menu.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 8,
-      "entryCount": 9
-    },
     "page-tabs": {
       "component": "page-tabs",
       "file": "page-tabs.json",
@@ -393,6 +393,13 @@
       "latestVersion": "v0.20.0",
       "versionCount": 5,
       "entryCount": 5
+    },
+    "palette-picker": {
+      "component": "palette-picker",
+      "file": "palette-picker.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
     },
     "password": {
       "component": "password",
@@ -485,6 +492,13 @@
       "versionCount": 1,
       "entryCount": 2
     },
+    "sheet": {
+      "component": "sheet",
+      "file": "sheet.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
     "skeleton": {
       "component": "skeleton",
       "file": "skeleton.json",
@@ -505,6 +519,13 @@
       "latestVersion": null,
       "versionCount": 0,
       "entryCount": 0
+    },
+    "spinner": {
+      "component": "spinner",
+      "file": "spinner.json",
+      "latestVersion": "v0.15.0",
+      "versionCount": 2,
+      "entryCount": 2
     },
     "split-nav": {
       "component": "split-nav",
@@ -568,6 +589,27 @@
       "latestVersion": "v0.19.0",
       "versionCount": 1,
       "entryCount": 1
+    },
+    "theme-customizer": {
+      "component": "theme-customizer",
+      "file": "theme-customizer.json",
+      "latestVersion": "v0.40.0",
+      "versionCount": 3,
+      "entryCount": 3
+    },
+    "theme-mode-select": {
+      "component": "theme-mode-select",
+      "file": "theme-mode-select.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "theme-mode-switch": {
+      "component": "theme-mode-switch",
+      "file": "theme-mode-switch.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
     },
     "time-field": {
       "component": "time-field",

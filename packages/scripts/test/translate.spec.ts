@@ -5,9 +5,9 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { JsonObject } from '../src/shared/json';
 import {
   getPendingEntries,
-  parseTranslateCliOptions,
   requestTranslations,
   resolveTargetLocales,
+  resolveTranslateOptions,
   toDeepLLanguage,
   translateJsonLocaleFile
 } from '../src/shared/translate';
@@ -85,39 +85,54 @@ describe('shared/translate', () => {
     });
   });
 
-  describe('parseTranslateCliOptions', () => {
+  describe('resolveTranslateOptions', () => {
     it('applies defaults', () => {
-      expect(parseTranslateCliOptions([])).toEqual({
+      expect(resolveTranslateOptions()).toEqual({
         locale: '',
         sourceLocale: 'en',
         batchSize: 20,
         limit: null,
         overwrite: false,
-        dryRun: false,
-        help: false
+        dryRun: false
       });
     });
 
-    it('parses locale, batch-size and flags', () => {
-      const options = parseTranslateCliOptions([
-        '--locale',
-        'zh',
-        '--source-locale',
-        'en',
-        '--batch-size',
-        '5',
-        '--limit',
-        '10',
-        '--overwrite',
-        '--dry-run'
-      ]);
+    it('maps CLI option values and flags', () => {
+      expect(
+        resolveTranslateOptions({
+          locale: 'zh',
+          sourceLocale: 'en',
+          batchSize: '5',
+          limit: '10',
+          overwrite: true,
+          dryRun: true
+        })
+      ).toEqual({
+        locale: 'zh',
+        sourceLocale: 'en',
+        batchSize: 5,
+        limit: 10,
+        overwrite: true,
+        dryRun: true
+      });
+    });
 
-      expect(options.locale).toBe('zh');
-      expect(options.sourceLocale).toBe('en');
-      expect(options.batchSize).toBe(5);
-      expect(options.limit).toBe(10);
-      expect(options.overwrite).toBe(true);
-      expect(options.dryRun).toBe(true);
+    it('falls back to defaults for non-positive numbers', () => {
+      expect(resolveTranslateOptions({ batchSize: '0', limit: '0' })).toMatchObject({
+        batchSize: 20,
+        limit: null
+      });
+      expect(resolveTranslateOptions({ batchSize: 'nope', limit: 'nope' })).toMatchObject({
+        batchSize: 20,
+        limit: null
+      });
+    });
+
+    it('treats an empty locale or source locale as unset', () => {
+      expect(resolveTranslateOptions({ locale: '  ', sourceLocale: '  ' })).toMatchObject({
+        locale: '',
+        sourceLocale: 'en'
+      });
     });
   });
 

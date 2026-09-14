@@ -2,7 +2,6 @@ import process from 'node:process';
 import {
   chunkArray,
   flattenJsonMessages,
-  getEnvNumber,
   readJsonObject,
   readResponseText,
   setNestedValue,
@@ -16,12 +15,33 @@ export interface TranslateCliOptions {
   limit: number | null;
   overwrite: boolean;
   dryRun: boolean;
-  help: boolean;
 }
 
 export interface TranslationEntry {
   key: string;
   source: string;
+}
+
+/**
+ * Surfaces `sui translate` can fill: the two generated docs datasets and the
+ * headless locale bundles.
+ */
+export type TranslateTargetKey = 'api' | 'changelog' | 'locale';
+
+export const translateTargetKeys: TranslateTargetKey[] = ['api', 'changelog', 'locale'];
+
+export function resolveTranslateTargetKeys(requested: string): TranslateTargetKey[] {
+  if (requested === 'all') {
+    return translateTargetKeys;
+  }
+
+  const targetKey = translateTargetKeys.find(key => key === requested);
+
+  if (!targetKey) {
+    throw new Error(`Unknown translate target: ${requested}. Expected one of: api | changelog | locale | all.`);
+  }
+
+  return [targetKey];
 }
 
 interface PreparedTranslationEntry extends TranslationEntry {
@@ -87,74 +107,51 @@ const deepLLanguageMap = new Map<string, string>([
   ['zh-hant', 'ZH']
 ]);
 
-export function printTranslateUsage(command: string, localeDescription: string): void {
-  console.log(`Usage: pnpm ${command} -- [--locale <locale>] [options]
+/**
+ * Retry tuning accepts both prefixes: `TRANSLATE_*` is the documented one, while
+ * `DEEPL_*` is kept working for setups that predate it.
+ */
+function getRetryEnvNumber(names: string[], fallback: number): number {
+  for (const name of names) {
+    const value = Number(process.env[name]?.trim());
 
-Options:
-  --locale <locale>         ${localeDescription}
-  --source-locale <locale>  Source locale file, default: en
-  --batch-size <number>     Number of entries per translation request, default: 20
-  --limit <number>          Only translate the first N pending entries
-  --overwrite               Re-translate entries that already have a target value
-  --dry-run                 Show pending translation counts without writing files
-  --help                    Show this help message
-
-Environment:
-  DEEPL_API_KEY             Required. DeepL API key
-  DEEPL_BASE_URL            Optional. Defaults to https://api-free.deepl.com/v2
-  TRANSLATE_API_KEY         Optional fallback for DEEPL_API_KEY
-  TRANSLATE_BASE_URL        Optional fallback for DEEPL_BASE_URL
-`);
-}
-
-export function parseTranslateCliOptions(argv: string[]): TranslateCliOptions {
-  const options: TranslateCliOptions = {
-    locale: '',
-    sourceLocale: 'en',
-    batchSize: 20,
-    limit: null,
-    overwrite: false,
-    dryRun: false,
-    help: false
-  };
-
-  for (let index = 0; index < argv.length; index += 1) {
-    const arg = argv[index];
-    const nextArg = argv[index + 1];
-
-    switch (arg) {
-      case '--locale':
-        options.locale = nextArg ?? '';
-        index += 1;
-        break;
-      case '--source-locale':
-        options.sourceLocale = nextArg ?? options.sourceLocale;
-        index += 1;
-        break;
-      case '--batch-size':
-        options.batchSize = Number(nextArg) || options.batchSize;
-        index += 1;
-        break;
-      case '--limit':
-        options.limit = Number(nextArg) || null;
-        index += 1;
-        break;
-      case '--overwrite':
-        options.overwrite = true;
-        break;
-      case '--dry-run':
-        options.dryRun = true;
-        break;
-      case '--help':
-      case '-h':
-        options.help = true;
-        break;
-      default:
-        break;
+    if (Number.isFinite(value) && value >= 0) {
+      return value;
     }
   }
 
-  return options;
+  return fallback;
+}
+
+export const DEFAULT_TRANSLATE_BATCH_SIZE = 20;
+export const DEFAULT_TRANSLATE_SOURCE_LOCALE = 'en';
+
+/**
+ * Raw option values as the CLI hands them over: declared value options arrive as
+ * strings, flags as booleans, and anything the caller omitted as undefined.
+ */
+export interface TranslateOptionInput {
+  locale?: string;
+  sourceLocale?: string;
+  batchSize?: string | number;
+  limit?: string | number;
+  overwrite?: boolean;
+  dryRun?: boolean;
+}
+
+/** Coerce CLI options into the shape the translation driver consumes. */
+export function resolveTranslateOptions(input: TranslateOptionInput = {}): TranslateCliOptions {
+  const batchSize = Number(input.batchSize);
+  const limit = Number(input.limit);
+
+  return {
+    locale: input.locale?.trim() ?? '',
+    sourceLocale: input.sourceLocale?.trim() || DEFAULT_TRANSLATE_SOURCE_LOCALE,
+    batchSize: batchSize > 0 ? batchSize : DEFAULT_TRANSLATE_BATCH_SIZE,
+    limit: limit > 0 ? limit : null,
+    overwrite: Boolean(input.overwrite),
+    dryRun: Boolean(input.dryRun)
+  };
 }
 
 export function getPendingEntries(
@@ -396,17 +393,15 @@ export async function translateEntries(options: {
   targetLocale: string;
   createContext: (entries: TranslationEntry[]) => string;
   apiKeyErrorMessage?: string;
-  retryCountEnvName?: string;
-  retryDelayEnvName?: string;
   sourceLanguage?: string;
   protectPlaceholders?: boolean;
   onBatchStart?: (context: { batchIndex: number; batchCount: number; entryCount: number; locale: string }) => void;
 }): Promise<Map<string, string>> {
   const apiKey = getTranslateApiKey(options.apiKeyErrorMessage);
   const baseUrl = getTranslateBaseUrl();
-  const retryCount = getEnvNumber(options.retryCountEnvName ?? 'TRANSLATE_RETRY_COUNT', DEFAULT_TRANSLATE_RETRY_COUNT);
-  const retryDelayMs = getEnvNumber(
-    options.retryDelayEnvName ?? 'TRANSLATE_RETRY_DELAY_MS',
+  const retryCount = getRetryEnvNumber(['TRANSLATE_RETRY_COUNT', 'DEEPL_RETRY_COUNT'], DEFAULT_TRANSLATE_RETRY_COUNT);
+  const retryDelayMs = getRetryEnvNumber(
+    ['TRANSLATE_RETRY_DELAY_MS', 'DEEPL_RETRY_DELAY_MS'],
     DEFAULT_TRANSLATE_RETRY_DELAY_MS
   );
   const translatedTextCache = new Map<string, string>();
@@ -468,8 +463,6 @@ export async function translateJsonLocaleFile(options: {
   createContext: (entries: TranslationEntry[]) => string;
   shouldIncludeKey?: (key: string) => boolean;
   apiKeyErrorMessage?: string;
-  retryCountEnvName?: string;
-  retryDelayEnvName?: string;
   sourceLanguage?: string;
   protectPlaceholders?: boolean;
   onPendingResolved?: (context: { locale: string; pendingCount: number }) => void;
@@ -510,8 +503,6 @@ export async function translateJsonLocaleFile(options: {
     targetLocale: options.targetLocale,
     createContext: options.createContext,
     apiKeyErrorMessage: options.apiKeyErrorMessage,
-    retryCountEnvName: options.retryCountEnvName,
-    retryDelayEnvName: options.retryDelayEnvName,
     sourceLanguage: options.sourceLanguage,
     protectPlaceholders: options.protectPlaceholders,
     onBatchStart: options.onBatchStart

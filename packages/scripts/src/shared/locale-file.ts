@@ -2,17 +2,15 @@ import { writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 import { pathToFileURL } from 'node:url';
-import { cloneJsonObject, flattenJsonMessages, isJsonObject, listFileBasenames } from '../shared/json';
+import { cloneJsonObject, isJsonObject, listFileBasenames } from '../shared/json';
 import type { JsonObject, JsonValue } from '../shared/json';
-import {
-  getPendingEntries,
-  parseTranslateCliOptions,
-  printTranslateUsage,
-  resolveTargetLocales,
-  translateEntries
-} from '../shared/translate';
-import type { TranslateCliOptions, TranslationEntry } from '../shared/translate';
+import type { TranslationEntry } from '../shared/translate';
 
+/**
+ * File-format layer for the headless locale registry
+ * (`packages/headless/src/locale/langs/*.ts`): reading, rebuilding, and
+ * serializing these modules, plus the copy guidance used when translating them.
+ */
 interface LocaleRegistryDocument {
   name: string;
   key: string;
@@ -21,14 +19,12 @@ interface LocaleRegistryDocument {
 }
 
 const rootDir = process.cwd();
-const localeDir = path.join(rootDir, 'packages/headless/src/locale/langs');
+export const localeDir = path.join(rootDir, 'packages/headless/src/locale/langs');
+
 const rtlLanguageCodes = new Set(['ar', 'fa', 'he', 'ur']);
 
-function printUsage() {
-  printTranslateUsage(
-    'sui gen locale',
-    'Target locale, for example de, pt-BR, or zh-TW. If omitted, translates all locale files in packages/headless/src/locale/langs except the source locale.'
-  );
+export async function listLocaleNames(): Promise<string[]> {
+  return listFileBasenames(localeDir, '.ts');
 }
 
 function isMissingModuleError(error: unknown, filePath: string): boolean {
@@ -99,12 +95,12 @@ function toLocaleExportName(locale: string): string {
   return `${firstSegment.toLowerCase()}${remainingSegments.map(segment => segment.toUpperCase()).join('')}`;
 }
 
-async function resolveAvailableLocales(): Promise<string[]> {
-  return listFileBasenames(localeDir, '.ts');
+export function getLocaleFilePath(locale: string): string {
+  return path.join(localeDir, `${locale}.ts`);
 }
 
-async function readLocaleMessages(locale: string): Promise<JsonObject> {
-  const filePath = path.join(localeDir, `${locale}.ts`);
+export async function readLocaleMessages(locale: string): Promise<JsonObject> {
+  const filePath = getLocaleFilePath(locale);
 
   try {
     const localeModule = (await import(pathToFileURL(filePath).href)) as Record<string, unknown>;
@@ -122,11 +118,13 @@ async function readLocaleMessages(locale: string): Promise<JsonObject> {
   }
 }
 
-function shouldTranslateKey(key: string): boolean {
+/** `date.placeholder.*` mirrors the date format of the source locale verbatim. */
+export function shouldTranslateKey(key: string): boolean {
   return !key.startsWith('date.placeholder.');
 }
 
-function rebuildLocaleMessages(
+/** Rebuild the source message tree, substituting the translated leaves. */
+export function rebuildLocaleMessages(
   sourceMessages: JsonObject,
   translatedMessages: Map<string, string>,
   prefix: string = ''
@@ -147,6 +145,67 @@ function rebuildLocaleMessages(
   }
 
   return output;
+}
+
+function formatObjectKey(key: string): string {
+  return /^[A-Za-z_$][\w$]*$/u.test(key) ? key : JSON.stringify(key);
+}
+
+function escapeString(value: string): string {
+  return value.replace(/\\/gu, '\\\\').replace(/'/gu, "\\'").replace(/\n/gu, '\\n');
+}
+
+function serializeTsValue(value: JsonValue, indentLevel: number = 0): string {
+  if (typeof value === 'string') {
+    return `'${escapeString(value)}'`;
+  }
+
+  if (typeof value === 'number' || typeof value === 'boolean') {
+    return String(value);
+  }
+
+  if (value === null) {
+    return 'null';
+  }
+
+  if (Array.isArray(value)) {
+    if (!value.length) {
+      return '[]';
+    }
+
+    const indent = '  '.repeat(indentLevel);
+    const childIndent = '  '.repeat(indentLevel + 1);
+
+    return `[
+${value.map(item => `${childIndent}${serializeTsValue(item, indentLevel + 1)}`).join(',\n')}
+${indent}]`;
+  }
+
+  const entries = Object.entries(value);
+
+  if (!entries.length) {
+    return '{}';
+  }
+
+  const indent = '  '.repeat(indentLevel);
+  const childIndent = '  '.repeat(indentLevel + 1);
+
+  return `{
+${entries.map(([key, item]) => `${childIndent}${formatObjectKey(key)}: ${serializeTsValue(item, indentLevel + 1)}`).join(',\n')}
+${indent}}`;
+}
+
+export async function writeLocaleMessages(locale: string, messages: JsonObject): Promise<void> {
+  const exportName = toLocaleExportName(locale);
+  const localeRegistry = {
+    name: resolveLocaleDisplayName(locale),
+    key: locale,
+    dir: resolveLocaleDirection(locale),
+    messages
+  };
+  const content = `import type { LocaleRegistry } from '../types';\n\nconst ${exportName}: LocaleRegistry = ${serializeTsValue(localeRegistry)};\n\nexport default ${exportName};\n`;
+
+  await writeFile(getLocaleFilePath(locale), content, 'utf8');
 }
 
 function getEntryDescription(key: string): string {
@@ -261,7 +320,7 @@ function getEntryDescription(key: string): string {
   }
 }
 
-function createTranslationContext(locale: string, entries: TranslationEntry[]): string {
+export function createLocaleTranslationContext(locale: string, entries: TranslationEntry[]): string {
   return [
     `Target locale: ${locale}.`,
     'Translate short built-in UI copy for a Vue component library.',
@@ -272,153 +331,4 @@ function createTranslationContext(locale: string, entries: TranslationEntry[]): 
     'Translate naturally for interface labels, empty states, and button text.',
     ...entries.map(entry => `${entry.key}: ${getEntryDescription(entry.key)}`)
   ].join(' ');
-}
-
-function formatObjectKey(key: string): string {
-  return /^[A-Za-z_$][\w$]*$/u.test(key) ? key : JSON.stringify(key);
-}
-
-function escapeString(value: string): string {
-  return value.replace(/\\/gu, '\\\\').replace(/'/gu, "\\'").replace(/\n/gu, '\\n');
-}
-
-function serializeTsValue(value: JsonValue, indentLevel: number = 0): string {
-  if (typeof value === 'string') {
-    return `'${escapeString(value)}'`;
-  }
-
-  if (typeof value === 'number' || typeof value === 'boolean') {
-    return String(value);
-  }
-
-  if (value === null) {
-    return 'null';
-  }
-
-  if (Array.isArray(value)) {
-    if (!value.length) {
-      return '[]';
-    }
-
-    const indent = '  '.repeat(indentLevel);
-    const childIndent = '  '.repeat(indentLevel + 1);
-
-    return `[
-${value.map(item => `${childIndent}${serializeTsValue(item, indentLevel + 1)}`).join(',\n')}
-${indent}]`;
-  }
-
-  const entries = Object.entries(value);
-
-  if (!entries.length) {
-    return '{}';
-  }
-
-  const indent = '  '.repeat(indentLevel);
-  const childIndent = '  '.repeat(indentLevel + 1);
-
-  return `{
-${entries.map(([key, item]) => `${childIndent}${formatObjectKey(key)}: ${serializeTsValue(item, indentLevel + 1)}`).join(',\n')}
-${indent}}`;
-}
-
-async function writeLocaleMessages(locale: string, messages: JsonObject): Promise<void> {
-  const exportName = toLocaleExportName(locale);
-  const filePath = path.join(localeDir, `${locale}.ts`);
-  const localeRegistry = {
-    name: resolveLocaleDisplayName(locale),
-    key: locale,
-    dir: resolveLocaleDirection(locale),
-    messages
-  };
-  const content = `import type { LocaleRegistry } from '../types';\n\nconst ${exportName}: LocaleRegistry = ${serializeTsValue(localeRegistry)};\n\nexport default ${exportName};\n`;
-
-  await writeFile(filePath, content, 'utf8');
-}
-
-async function translateLocale(locale: string, options: TranslateCliOptions): Promise<void> {
-  const sourceMessagesDocument = await readLocaleMessages(options.sourceLocale);
-
-  if (!Object.keys(sourceMessagesDocument).length) {
-    throw new Error(`Unable to find source locale: ${options.sourceLocale}`);
-  }
-
-  const targetMessagesDocument = await readLocaleMessages(locale);
-  const flattenedSourceMessages = flattenJsonMessages(sourceMessagesDocument);
-  const flattenedTargetMessages = flattenJsonMessages(targetMessagesDocument);
-  const pendingEntries = getPendingEntries(
-    flattenedSourceMessages,
-    flattenedTargetMessages,
-    options.overwrite,
-    options.limit,
-    shouldTranslateKey
-  );
-
-  if (!pendingEntries.length) {
-    console.log(`No pending translations for ${locale}.`);
-    return;
-  }
-
-  console.log(`Found ${pendingEntries.length} pending translations for ${locale}.`);
-
-  if (options.dryRun) {
-    return;
-  }
-
-  const translatedEntries = await translateEntries({
-    entries: pendingEntries,
-    batchSize: options.batchSize,
-    sourceLocale: options.sourceLocale,
-    targetLocale: locale,
-    createContext: entries => createTranslationContext(locale, entries),
-    sourceLanguage: process.env.DEEPL_SOURCE_LANG?.trim() || undefined,
-    protectPlaceholders: true,
-    onBatchStart: context => {
-      console.log(
-        `Translating ${context.locale} batch ${context.batchIndex + 1}/${context.batchCount} (${context.entryCount} entries)...`
-      );
-    }
-  });
-
-  pendingEntries.forEach(entry => {
-    const translatedValue = translatedEntries.get(entry.key);
-
-    if (translatedValue === undefined) {
-      throw new Error(`Missing translated value for key: ${entry.key}`);
-    }
-
-    flattenedTargetMessages.set(entry.key, translatedValue);
-  });
-
-  const outputDocument = rebuildLocaleMessages(sourceMessagesDocument, flattenedTargetMessages);
-
-  await writeLocaleMessages(locale, outputDocument);
-  console.log(
-    `Updated ${path.relative(rootDir, path.join(localeDir, `${locale}.ts`))} with ${pendingEntries.length} translations.`
-  );
-}
-
-export async function translateHeadlessLocales(argv: string[] = process.argv.slice(2)): Promise<void> {
-  const options = parseTranslateCliOptions(argv);
-
-  if (options.help) {
-    printUsage();
-    return;
-  }
-
-  if (options.batchSize <= 0) {
-    throw new Error('--batch-size must be greater than 0.');
-  }
-
-  const availableLocales = await resolveAvailableLocales();
-  const targetLocales = resolveTargetLocales({
-    availableLocales,
-    sourceLocale: options.sourceLocale,
-    requestedLocale: options.locale,
-    emptyMessage: 'No target locales found.'
-  });
-
-  for (const locale of targetLocales) {
-    await translateLocale(locale, options);
-  }
 }

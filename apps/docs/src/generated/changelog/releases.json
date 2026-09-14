@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-09-14T12:24:49.342Z",
   "schemaVersion": 1,
   "releases": [
     {
@@ -19,7 +19,7 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.31.0...v0.40.0",
       "date": "2026-09-14",
       "entryCount": 154,
-      "componentCount": 15,
+      "componentCount": 17,
       "components": [
         "dialog",
         "split-nav",
@@ -30,10 +30,12 @@
         "anchor",
         "color-picker",
         "dropdown-menu",
+        "icon",
         "progress",
         "toast",
         "avatar",
         "input-otp",
+        "theme-customizer",
         "form",
         "table"
       ],
@@ -172,6 +174,17 @@
         },
         {
           "type": "fix",
+          "scope": "icon",
+          "summary": "allow hydration mismatch for async-loaded icons",
+          "summaryKey": "changelog.generated.v0.40.0.17a16",
+          "commitHash": "17a16",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/17a16fa53",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["icon"]
+        },
+        {
+          "type": "fix",
           "scope": "nav-menu",
           "summary": "allow sub link label to wrap",
           "summaryKey": "changelog.generated.v0.40.0.ad3a7",
@@ -268,6 +281,17 @@
           "authors": ["soybeanfe"],
           "source": "exact-scope",
           "components": ["input-otp"]
+        },
+        {
+          "type": "docs",
+          "scope": "theme-customizer",
+          "summary": "switch popover placement to bottom-start",
+          "summaryKey": "changelog.generated.v0.40.0.db819",
+          "commitHash": "db819",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/db8193d15",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["theme-customizer"]
         },
         {
           "type": "style",
@@ -562,17 +586,6 @@
           "summaryKey": "changelog.generated.v0.40.0.081aa",
           "commitHash": "081aa",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/081aa170f",
-          "authors": ["soybeanfe"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "fix",
-          "scope": "icon",
-          "summary": "allow hydration mismatch for async-loaded icons",
-          "summaryKey": "changelog.generated.v0.40.0.17a16",
-          "commitHash": "17a16",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/17a16fa53",
           "authors": ["soybeanfe"],
           "source": "exact-scope",
           "components": []
@@ -1245,17 +1258,6 @@
           "commitHash": "a7998",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a7998aa71",
           "authors": ["soybeanjs"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "docs",
-          "scope": "theme-customizer",
-          "summary": "switch popover placement to bottom-start",
-          "summaryKey": "changelog.generated.v0.40.0.db819",
-          "commitHash": "db819",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/db8193d15",
-          "authors": ["soybeanfe"],
           "source": "exact-scope",
           "components": []
         },
@@ -2228,11 +2230,11 @@
         "nav-menu",
         "anchor",
         "dropdown-menu",
+        "icon",
         "progress",
         "cascader",
         "autocomplete",
-        "bottom-sheet",
-        "navigation-menu",
+        "drawer",
         "popconfirm",
         "segment",
         "input-otp",
@@ -2360,6 +2362,17 @@
         },
         {
           "type": "fix",
+          "scope": "icon",
+          "summary": "allow hydration mismatch for async-loaded icons",
+          "summaryKey": "changelog.generated.v0.40.0-beta.1.17a16",
+          "commitHash": "17a16",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/17a16fa53",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["icon"]
+        },
+        {
+          "type": "fix",
           "scope": "progress",
           "summary": "fix progress hydration style",
           "summaryKey": "changelog.generated.v0.40.0-beta.1.3f9c7",
@@ -2466,7 +2479,7 @@
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ddd66441a",
           "authors": ["soybeanfe", "cursoragent"],
           "source": "exact-scope",
-          "components": ["bottom-sheet"]
+          "components": ["drawer"]
         },
         {
           "type": "refactor",
@@ -2489,17 +2502,6 @@
           "authors": ["soybeanfe", "cursoragent"],
           "source": "exact-scope",
           "components": ["combobox"]
-        },
-        {
-          "type": "refactor",
-          "scope": "navigation-menu",
-          "summary": "deprecate family in favor of NavMenu",
-          "summaryKey": "changelog.generated.v0.40.0-beta.1.0b9f9",
-          "commitHash": "0b9f9",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0b9f93338",
-          "authors": ["soybeanjs"],
-          "source": "exact-scope",
-          "components": ["navigation-menu"]
         },
         {
           "type": "refactor",
@@ -3053,17 +3055,6 @@
         },
         {
           "type": "fix",
-          "scope": "icon",
-          "summary": "allow hydration mismatch for async-loaded icons",
-          "summaryKey": "changelog.generated.v0.40.0-beta.1.17a16",
-          "commitHash": "17a16",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/17a16fa53",
-          "authors": ["soybeanfe"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "fix",
           "scope": "locale",
           "summary": "fix locale-toggler and unify locale code",
           "summaryKey": "changelog.generated.v0.40.0-beta.1.27a41",
@@ -3356,6 +3347,17 @@
           "commitHash": "65f67",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/65f67d4ed",
           "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "navigation-menu",
+          "summary": "deprecate family in favor of NavMenu",
+          "summaryKey": "changelog.generated.v0.40.0-beta.1.0b9f9",
+          "commitHash": "0b9f9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0b9f93338",
+          "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": []
         },
@@ -4191,7 +4193,7 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.31.0",
       "date": "2026-08-31",
       "entryCount": 68,
-      "componentCount": 14,
+      "componentCount": 13,
       "components": [
         "select",
         "split-nav",
@@ -4200,8 +4202,7 @@
         "cascader",
         "tree-menu",
         "autocomplete",
-        "bottom-sheet",
-        "navigation-menu",
+        "drawer",
         "popconfirm",
         "segment",
         "toast",
@@ -4318,7 +4319,7 @@
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ddd66441a",
           "authors": ["soybeanfe", "cursoragent"],
           "source": "exact-scope",
-          "components": ["bottom-sheet"]
+          "components": ["drawer"]
         },
         {
           "type": "refactor",
@@ -4341,17 +4342,6 @@
           "authors": ["soybeanfe", "cursoragent"],
           "source": "exact-scope",
           "components": ["combobox"]
-        },
-        {
-          "type": "refactor",
-          "scope": "navigation-menu",
-          "summary": "deprecate family in favor of NavMenu",
-          "summaryKey": "changelog.generated.v0.31.0.0b9f9",
-          "commitHash": "0b9f9",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0b9f93338",
-          "authors": ["soybeanjs"],
-          "source": "exact-scope",
-          "components": ["navigation-menu"]
         },
         {
           "type": "refactor",
@@ -4805,6 +4795,17 @@
           "components": []
         },
         {
+          "type": "refactor",
+          "scope": "navigation-menu",
+          "summary": "deprecate family in favor of NavMenu",
+          "summaryKey": "changelog.generated.v0.31.0.0b9f9",
+          "commitHash": "0b9f9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0b9f93338",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
           "type": "docs",
           "scope": "headless",
           "summary": "record per-slot alias vs domain-SFC composition rule",
@@ -4976,9 +4977,10 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0",
       "date": "2026-08-20",
       "entryCount": 120,
-      "componentCount": 11,
+      "componentCount": 13,
       "components": [
         "menubar",
+        "icon",
         "cascader",
         "menu",
         "dialog",
@@ -4988,6 +4990,7 @@
         "select",
         "calendar-range",
         "stepper",
+        "theme-customizer",
         "toggle-group"
       ],
       "newComponents": [],
@@ -5012,6 +5015,17 @@
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": ["dialog"]
+        },
+        {
+          "type": "feature",
+          "scope": "icon",
+          "summary": "optimize icon props",
+          "summaryKey": "changelog.generated.v0.30.0.206c5",
+          "commitHash": "206c5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/206c56b4",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["icon"]
         },
         {
           "type": "feature",
@@ -5067,6 +5081,17 @@
           "authors": ["soybeanfe"],
           "source": "exact-scope",
           "components": ["config-provider"]
+        },
+        {
+          "type": "fix",
+          "scope": "icon",
+          "summary": "fix aria-hidden, aria-label, shrink-0 and data-soybean-icon attributes",
+          "summaryKey": "changelog.generated.v0.30.0.cf042",
+          "commitHash": "cf042",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cf042323",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["icon"]
         },
         {
           "type": "fix",
@@ -5169,6 +5194,17 @@
         },
         {
           "type": "style",
+          "scope": "theme-customizer",
+          "summary": "change width to 100",
+          "summaryKey": "changelog.generated.v0.30.0.7a3a7",
+          "commitHash": "7a3a7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7a3a758e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["theme-customizer"]
+        },
+        {
+          "type": "style",
           "scope": "toggle-group",
           "summary": "fix demo class",
           "summaryKey": "changelog.generated.v0.30.0.e27e0",
@@ -5252,17 +5288,6 @@
           "commitHash": "61ba2",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/61ba26d6",
           "authors": ["soybeanjs"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "feature",
-          "scope": "icon",
-          "summary": "optimize icon props",
-          "summaryKey": "changelog.generated.v0.30.0.206c5",
-          "commitHash": "206c5",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/206c56b4",
-          "authors": ["soybeanfe"],
           "source": "exact-scope",
           "components": []
         },
@@ -5526,17 +5551,6 @@
           "summaryKey": "changelog.generated.v0.30.0.ff2c7",
           "commitHash": "ff2c7",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ff2c7076",
-          "authors": ["soybeanjs"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "fix",
-          "scope": "icon",
-          "summary": "fix aria-hidden, aria-label, shrink-0 and data-soybean-icon attributes",
-          "summaryKey": "changelog.generated.v0.30.0.cf042",
-          "commitHash": "cf042",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cf042323",
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": []
@@ -5945,17 +5959,6 @@
           "commitHash": "4f0f0",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4f0f09ee",
           "authors": ["soybeanfe"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "style",
-          "scope": "theme-customizer",
-          "summary": "change width to 100",
-          "summaryKey": "changelog.generated.v0.30.0.7a3a7",
-          "commitHash": "7a3a7",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7a3a758e",
-          "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": []
         },
@@ -6428,15 +6431,17 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0-beta.1",
       "date": "2026-08-19",
       "entryCount": 113,
-      "componentCount": 8,
+      "componentCount": 10,
       "components": [
         "menubar",
+        "icon",
         "menu",
         "page-tabs",
         "tree-menu",
         "config-provider",
         "select",
         "cascader",
+        "theme-customizer",
         "toggle-group"
       ],
       "newComponents": [
@@ -6464,6 +6469,17 @@
         }
       ],
       "entries": [
+        {
+          "type": "feature",
+          "scope": "icon",
+          "summary": "optimize icon props",
+          "summaryKey": "changelog.generated.v0.30.0-beta.1.206c5",
+          "commitHash": "206c5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/206c56b4",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["icon"]
+        },
         {
           "type": "feature",
           "scope": "menubar",
@@ -6507,6 +6523,17 @@
           "authors": ["soybeanfe"],
           "source": "exact-scope",
           "components": ["config-provider"]
+        },
+        {
+          "type": "fix",
+          "scope": "icon",
+          "summary": "fix aria-hidden, aria-label, shrink-0 and data-soybean-icon attributes",
+          "summaryKey": "changelog.generated.v0.30.0-beta.1.cf042",
+          "commitHash": "cf042",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cf042323",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["icon"]
         },
         {
           "type": "fix",
@@ -6584,6 +6611,17 @@
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": ["menubar"]
+        },
+        {
+          "type": "style",
+          "scope": "theme-customizer",
+          "summary": "change width to 100",
+          "summaryKey": "changelog.generated.v0.30.0-beta.1.7a3a7",
+          "commitHash": "7a3a7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7a3a758e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["theme-customizer"]
         },
         {
           "type": "style",
@@ -6670,17 +6708,6 @@
           "commitHash": "61ba2",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/61ba26d6",
           "authors": ["soybeanjs"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "feature",
-          "scope": "icon",
-          "summary": "optimize icon props",
-          "summaryKey": "changelog.generated.v0.30.0-beta.1.206c5",
-          "commitHash": "206c5",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/206c56b4",
-          "authors": ["soybeanfe"],
           "source": "exact-scope",
           "components": []
         },
@@ -6944,17 +6971,6 @@
           "summaryKey": "changelog.generated.v0.30.0-beta.1.ff2c7",
           "commitHash": "ff2c7",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ff2c7076",
-          "authors": ["soybeanjs"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "fix",
-          "scope": "icon",
-          "summary": "fix aria-hidden, aria-label, shrink-0 and data-soybean-icon attributes",
-          "summaryKey": "changelog.generated.v0.30.0-beta.1.cf042",
-          "commitHash": "cf042",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cf042323",
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": []
@@ -7363,17 +7379,6 @@
           "commitHash": "4f0f0",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4f0f09ee",
           "authors": ["soybeanfe"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "style",
-          "scope": "theme-customizer",
-          "summary": "change width to 100",
-          "summaryKey": "changelog.generated.v0.30.0-beta.1.7a3a7",
-          "commitHash": "7a3a7",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7a3a758e",
-          "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": []
         },
@@ -7875,13 +7880,13 @@
       "date": "2026-06-18",
       "entryCount": 87,
       "componentCount": 2,
-      "components": ["config-provider", "navigation-menu"],
+      "components": ["config-provider", "icon"],
       "newComponents": [],
       "typeCounts": {
         "feature": 25,
         "fix": 10,
-        "optimization": 18,
         "refactor": 14,
+        "optimization": 18,
         "chore": 9,
         "style": 11
       },
@@ -7910,15 +7915,15 @@
           "components": ["config-provider"]
         },
         {
-          "type": "optimization",
-          "scope": "navigation-menu",
-          "summary": "enhance viewport positioning with active trigger element and add transition effects",
-          "summaryKey": "changelog.generated.v0.29.0.02dfc",
-          "commitHash": "02dfc",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/02dfc0fe3",
-          "authors": ["soybeanfe"],
+          "type": "fix",
+          "scope": "icon",
+          "summary": "correct import path for useConfigProvider",
+          "summaryKey": "changelog.generated.v0.29.0.7ad9c",
+          "commitHash": "7ad9c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7ad9ca875",
+          "authors": ["soybeanjs"],
           "source": "exact-scope",
-          "components": ["navigation-menu"]
+          "components": ["icon"]
         },
         {
           "type": "refactor",
@@ -8219,17 +8224,6 @@
         },
         {
           "type": "fix",
-          "scope": "icon",
-          "summary": "correct import path for useConfigProvider",
-          "summaryKey": "changelog.generated.v0.29.0.7ad9c",
-          "commitHash": "7ad9c",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7ad9ca875",
-          "authors": ["soybeanjs"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "fix",
           "scope": "init",
           "summary": "correct JSON syntax in TypeScript configuration generation",
           "summaryKey": "changelog.generated.v0.29.0.68994",
@@ -8279,6 +8273,17 @@
           "summaryKey": "changelog.generated.v0.29.0.c43e8",
           "commitHash": "c43e8",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c43e87f6a",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "navigation-menu",
+          "summary": "enhance viewport positioning with active trigger element and add transition effects",
+          "summaryKey": "changelog.generated.v0.29.0.02dfc",
+          "commitHash": "02dfc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/02dfc0fe3",
           "authors": ["soybeanfe"],
           "source": "exact-scope",
           "components": []
@@ -9160,8 +9165,8 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.8...v0.29.0-beta.9",
       "date": "2026-06-15",
       "entryCount": 8,
-      "componentCount": 1,
-      "components": ["config-provider"],
+      "componentCount": 2,
+      "components": ["config-provider", "icon"],
       "newComponents": [],
       "typeCounts": {
         "feature": 3,
@@ -9184,6 +9189,17 @@
           "components": ["config-provider"]
         },
         {
+          "type": "fix",
+          "scope": "icon",
+          "summary": "correct import path for useConfigProvider",
+          "summaryKey": "changelog.generated.v0.29.0-beta.9.7ad9c",
+          "commitHash": "7ad9c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7ad9ca87",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["icon"]
+        },
+        {
           "type": "feature",
           "scope": "registry",
           "summary": "update sbean registry",
@@ -9201,17 +9217,6 @@
           "summaryKey": "changelog.generated.v0.29.0-beta.9.5ac6c",
           "commitHash": "5ac6c",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5ac6c6d6",
-          "authors": ["soybeanjs"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "fix",
-          "scope": "icon",
-          "summary": "correct import path for useConfigProvider",
-          "summaryKey": "changelog.generated.v0.29.0-beta.9.7ad9c",
-          "commitHash": "7ad9c",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7ad9ca87",
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": []
@@ -9851,8 +9856,8 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.1...v0.29.0-beta.2",
       "date": "2026-06-10",
       "entryCount": 2,
-      "componentCount": 1,
-      "components": ["navigation-menu"],
+      "componentCount": 0,
+      "components": [],
       "newComponents": [],
       "typeCounts": {
         "optimization": 2
@@ -9861,22 +9866,22 @@
       "entries": [
         {
           "type": "optimization",
-          "scope": "navigation-menu",
-          "summary": "enhance viewport positioning with active trigger element and add transition effects",
-          "summaryKey": "changelog.generated.v0.29.0-beta.2.02dfc",
-          "commitHash": "02dfc",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/02dfc0fe3",
-          "authors": ["soybeanfe"],
-          "source": "exact-scope",
-          "components": ["navigation-menu"]
-        },
-        {
-          "type": "optimization",
           "scope": "imports",
           "summary": "update type imports to remove .js extension across components",
           "summaryKey": "changelog.generated.v0.29.0-beta.2.c43e8",
           "commitHash": "c43e8",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c43e87f6a",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "navigation-menu",
+          "summary": "enhance viewport positioning with active trigger element and add transition effects",
+          "summaryKey": "changelog.generated.v0.29.0-beta.2.02dfc",
+          "commitHash": "02dfc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/02dfc0fe3",
           "authors": ["soybeanfe"],
           "source": "exact-scope",
           "components": []
@@ -10017,14 +10022,14 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.28.1...v0.28.2",
       "date": "2026-05-30",
       "entryCount": 8,
-      "componentCount": 1,
-      "components": ["affix"],
+      "componentCount": 2,
+      "components": ["affix", "icon"],
       "newComponents": [],
       "typeCounts": {
         "optimization": 1,
+        "refactor": 1,
         "fix": 3,
         "feature": 1,
-        "refactor": 1,
         "chore": 2
       },
       "notes": [],
@@ -10039,6 +10044,17 @@
           "authors": ["soybeanfe"],
           "source": "exact-scope",
           "components": ["affix"]
+        },
+        {
+          "type": "refactor",
+          "scope": "icon",
+          "summary": "simplify icon handling and remove Nuxt-specific logic",
+          "summaryKey": "changelog.generated.v0.28.2.63725",
+          "commitHash": "63725",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/637257084",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["icon"]
         },
         {
           "type": "fix",
@@ -10080,17 +10096,6 @@
           "summaryKey": "changelog.generated.v0.28.2.f8a09",
           "commitHash": "f8a09",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f8a09efd9",
-          "authors": ["soybeanfe"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "refactor",
-          "scope": "icon",
-          "summary": "simplify icon handling and remove Nuxt-specific logic",
-          "summaryKey": "changelog.generated.v0.28.2.63725",
-          "commitHash": "63725",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/637257084",
           "authors": ["soybeanfe"],
           "source": "exact-scope",
           "components": []
@@ -10570,13 +10575,13 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.25.4...v0.26.0",
       "date": "2026-05-27",
       "entryCount": 9,
-      "componentCount": 2,
-      "components": ["config-provider", "tree-menu"],
+      "componentCount": 3,
+      "components": ["icon", "config-provider", "tree-menu"],
       "newComponents": [],
       "typeCounts": {
         "feature": 4,
-        "optimization": 2,
-        "fix": 3
+        "fix": 3,
+        "optimization": 2
       },
       "notes": [],
       "entries": [
@@ -10590,6 +10595,28 @@
           "authors": ["soybeanfe"],
           "source": "exact-scope",
           "components": ["config-provider"]
+        },
+        {
+          "type": "fix",
+          "scope": "icon",
+          "summary": "update icon prop type to IconValue and enhance Nuxt support",
+          "summaryKey": "changelog.generated.v0.26.0.b372a",
+          "commitHash": "b372a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b372a8c47",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["icon"]
+        },
+        {
+          "type": "fix",
+          "scope": "icon",
+          "summary": "improve Nuxt icon handling and condition checks",
+          "summaryKey": "changelog.generated.v0.26.0.8002e",
+          "commitHash": "8002e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8002e2c83",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["icon"]
         },
         {
           "type": "optimization",
@@ -10631,28 +10658,6 @@
           "summaryKey": "changelog.generated.v0.26.0.cfb01",
           "commitHash": "cfb01",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cfb01f625",
-          "authors": ["soybeanfe"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "fix",
-          "scope": "icon",
-          "summary": "update icon prop type to IconValue and enhance Nuxt support",
-          "summaryKey": "changelog.generated.v0.26.0.b372a",
-          "commitHash": "b372a",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b372a8c47",
-          "authors": ["soybeanfe"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "fix",
-          "scope": "icon",
-          "summary": "improve Nuxt icon handling and condition checks",
-          "summaryKey": "changelog.generated.v0.26.0.8002e",
-          "commitHash": "8002e",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8002e2c83",
           "authors": ["soybeanfe"],
           "source": "exact-scope",
           "components": []
@@ -12112,14 +12117,13 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.19.0...v0.20.0",
       "date": "2026-05-12",
       "entryCount": 39,
-      "componentCount": 14,
+      "componentCount": 13,
       "components": [
         "hover-card",
+        "drawer",
         "editable",
-        "navigation-menu",
         "stepper",
         "switch",
-        "bottom-sheet",
         "empty",
         "progress",
         "config-provider",
@@ -12141,17 +12145,6 @@
       },
       "notes": [],
       "entries": [
-        {
-          "type": "feature",
-          "scope": "navigation-menu",
-          "summary": "implement NavigationMenuCompact",
-          "summaryKey": "changelog.generated.v0.20.0.33b01",
-          "commitHash": "33b01",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/33b01bc9",
-          "authors": ["soybeanfe"],
-          "source": "exact-scope",
-          "components": ["navigation-menu"]
-        },
         {
           "type": "feature",
           "scope": "stepper",
@@ -12183,7 +12176,18 @@
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e96e7f76",
           "authors": ["soybeanjs"],
           "source": "exact-scope",
-          "components": ["bottom-sheet"]
+          "components": ["drawer"]
+        },
+        {
+          "type": "fix",
+          "scope": "drawer",
+          "summary": "simplify variant assignment in computed property",
+          "summaryKey": "changelog.generated.v0.20.0.b55f5",
+          "commitHash": "b55f5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b55f5032",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["drawer"]
         },
         {
           "type": "fix",
@@ -12329,6 +12333,17 @@
           "components": ["editable"]
         },
         {
+          "type": "feature",
+          "scope": "navigation-menu",
+          "summary": "implement NavigationMenuCompact",
+          "summaryKey": "changelog.generated.v0.20.0.33b01",
+          "commitHash": "33b01",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/33b01bc9",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
           "type": "optimization",
           "scope": "components",
           "summary": "support RTL",
@@ -12368,17 +12383,6 @@
           "summaryKey": "changelog.generated.v0.20.0.aa79d",
           "commitHash": "aa79d",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/aa79df1f",
-          "authors": ["soybeanjs"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "fix",
-          "scope": "drawer",
-          "summary": "simplify variant assignment in computed property",
-          "summaryKey": "changelog.generated.v0.20.0.b55f5",
-          "commitHash": "b55f5",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b55f5032",
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": []
@@ -12594,9 +12598,9 @@
         "tags-input",
         "textarea",
         "tree-menu",
-        "bottom-sheet",
         "color-picker",
         "color-swatch-picker",
+        "drawer",
         "input-number",
         "button",
         "toggle-group"
@@ -12786,7 +12790,7 @@
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/76d82408",
           "authors": ["soybeanfe"],
           "source": "exact-scope",
-          "components": ["bottom-sheet"]
+          "components": ["drawer"]
         },
         {
           "type": "fix",
@@ -14278,13 +14282,12 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.5...v0.16.0",
       "date": "2026-05-01",
       "entryCount": 20,
-      "componentCount": 13,
+      "componentCount": 12,
       "components": [
         "hover-card",
         "combobox",
         "card",
         "editable",
-        "navigation-menu",
         "pagination",
         "popover",
         "stepper",
@@ -14314,7 +14317,7 @@
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6cbdcee7",
           "authors": ["soybeanjs"],
           "source": "exact-scope",
-          "components": ["card", "editable", "hover-card", "navigation-menu", "pagination", "popover", "stepper"]
+          "components": ["card", "editable", "hover-card", "pagination", "popover", "stepper"]
         },
         {
           "type": "optimization",
@@ -14559,7 +14562,7 @@
       "date": "2026-04-30",
       "entryCount": 3,
       "componentCount": 1,
-      "components": ["bottom-sheet"],
+      "components": ["drawer"],
       "newComponents": [],
       "typeCounts": {
         "feature": 1,
@@ -14577,7 +14580,7 @@
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/fb274b91",
           "authors": ["soybeanjs", "MicrosoftCopilot"],
           "source": "exact-scope",
-          "components": ["bottom-sheet"]
+          "components": ["drawer"]
         },
         {
           "type": "optimization",
@@ -14872,7 +14875,7 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
       "date": "2026-04-26",
       "entryCount": 153,
-      "componentCount": 24,
+      "componentCount": 25,
       "components": [
         "table",
         "menu",
@@ -14886,6 +14889,7 @@
         "listbox",
         "form",
         "select",
+        "spinner",
         "toggle",
         "tree-menu",
         "alert",
@@ -15054,6 +15058,17 @@
           "authors": ["soybeanfe"],
           "source": "exact-scope",
           "components": ["select"]
+        },
+        {
+          "type": "fix",
+          "scope": "spinner",
+          "summary": "update secondary and accent color variants to include opacity",
+          "summaryKey": "changelog.generated.v0.15.0.132e9",
+          "commitHash": "132e9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/132e9896",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["spinner"]
         },
         {
           "type": "fix",
@@ -15987,17 +16002,6 @@
           "commitHash": "540de",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/540de77a",
           "authors": ["soybeanfe"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "fix",
-          "scope": "spinner",
-          "summary": "update secondary and accent color variants to include opacity",
-          "summaryKey": "changelog.generated.v0.15.0.132e9",
-          "commitHash": "132e9",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/132e9896",
-          "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": []
         },
@@ -17142,13 +17146,14 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
       "date": "2026-04-18",
       "entryCount": 105,
-      "componentCount": 15,
+      "componentCount": 16,
       "components": [
         "table",
         "menu",
         "affix",
         "accordion",
         "toast",
+        "spinner",
         "toggle",
         "tree-menu",
         "anchor",
@@ -17226,6 +17231,17 @@
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": ["menu"]
+        },
+        {
+          "type": "fix",
+          "scope": "spinner",
+          "summary": "update secondary and accent color variants to include opacity",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.132e9",
+          "commitHash": "132e9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/132e9896",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["spinner"]
         },
         {
           "type": "fix",
@@ -17894,17 +17910,6 @@
           "summaryKey": "changelog.generated.v0.15.0-beta.1.1b635",
           "commitHash": "1b635",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1b635bec",
-          "authors": ["soybeanjs"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "fix",
-          "scope": "spinner",
-          "summary": "update secondary and accent color variants to include opacity",
-          "summaryKey": "changelog.generated.v0.15.0-beta.1.132e9",
-          "commitHash": "132e9",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/132e9896",
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": []
@@ -19996,18 +20001,8 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.7.1...v0.8.0",
       "date": "2026-02-10",
       "entryCount": 15,
-      "componentCount": 9,
-      "components": [
-        "listbox",
-        "popper",
-        "tabs",
-        "toast",
-        "accordion",
-        "navigation-menu",
-        "context-menu",
-        "select",
-        "tooltip"
-      ],
+      "componentCount": 8,
+      "components": ["listbox", "popper", "tabs", "toast", "accordion", "context-menu", "select", "tooltip"],
       "newComponents": [],
       "typeCounts": {
         "feature": 4,
@@ -20085,17 +20080,6 @@
           "components": ["listbox"]
         },
         {
-          "type": "fix",
-          "scope": "navigation-menu",
-          "summary": "add event listener for root content dismiss in context",
-          "summaryKey": "changelog.generated.v0.8.0.0e1cf",
-          "commitHash": "0e1cf",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0e1cf983",
-          "authors": ["soybeanjs"],
-          "source": "exact-scope",
-          "components": ["navigation-menu"]
-        },
-        {
           "type": "optimization",
           "scope": "context-menu",
           "summary": "remove unused triggerElement from context menu props",
@@ -20135,6 +20119,17 @@
           "summaryKey": "changelog.generated.v0.8.0.38523",
           "commitHash": "38523",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/38523803",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "navigation-menu",
+          "summary": "add event listener for root content dismiss in context",
+          "summaryKey": "changelog.generated.v0.8.0.0e1cf",
+          "commitHash": "0e1cf",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0e1cf983",
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": []
@@ -21962,8 +21957,8 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.19...v0.0.20",
       "date": "2026-01-21",
       "entryCount": 24,
-      "componentCount": 4,
-      "components": ["link", "menu", "button", "checkbox"],
+      "componentCount": 5,
+      "components": ["link", "menu", "button", "checkbox", "icon"],
       "newComponents": [],
       "typeCounts": {
         "feature": 7,
@@ -22019,6 +22014,17 @@
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": ["checkbox"]
+        },
+        {
+          "type": "docs",
+          "scope": "icon",
+          "summary": "update type definition format for IconValue prop",
+          "summaryKey": "changelog.generated.v0.0.20.58ec2",
+          "commitHash": "58ec2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/58ec2303",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["icon"]
         },
         {
           "type": "feature",
@@ -22170,17 +22176,6 @@
           "summaryKey": "changelog.generated.v0.0.20.a681b",
           "commitHash": "a681b",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a681bf34",
-          "authors": ["soybeanjs"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "docs",
-          "scope": "icon",
-          "summary": "update type definition format for IconValue prop",
-          "summaryKey": "changelog.generated.v0.0.20.58ec2",
-          "commitHash": "58ec2",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/58ec2303",
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": []
@@ -22744,8 +22739,8 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.9...v0.0.10",
       "date": "2026-01-07",
       "entryCount": 17,
-      "componentCount": 3,
-      "components": ["form", "input", "layout"],
+      "componentCount": 4,
+      "components": ["form", "input", "drawer", "layout"],
       "newComponents": [],
       "typeCounts": {
         "feature": 3,
@@ -22778,6 +22773,17 @@
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": ["input"]
+        },
+        {
+          "type": "refactor",
+          "scope": "drawer",
+          "summary": "update drawer component structure and styling, replacing drawerContentVariants with drawerVariants for improved UI management",
+          "summaryKey": "changelog.generated.v0.0.10.cfb41",
+          "commitHash": "cfb41",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cfb4111d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["drawer"]
         },
         {
           "type": "refactor",
@@ -22863,17 +22869,6 @@
           "summaryKey": "changelog.generated.v0.0.10.b2fbb",
           "commitHash": "b2fbb",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b2fbbf3e",
-          "authors": ["soybeanjs"],
-          "source": "exact-scope",
-          "components": []
-        },
-        {
-          "type": "refactor",
-          "scope": "drawer",
-          "summary": "update drawer component structure and styling, replacing drawerContentVariants with drawerVariants for improved UI management",
-          "summaryKey": "changelog.generated.v0.0.10.cfb41",
-          "commitHash": "cfb41",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cfb4111d",
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": []
@@ -23033,7 +23028,7 @@
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.7...v0.0.8",
       "date": "2026-01-01",
       "entryCount": 51,
-      "componentCount": 12,
+      "componentCount": 11,
       "components": [
         "dropdown-menu",
         "menu",
@@ -23041,7 +23036,6 @@
         "popper",
         "select",
         "tooltip",
-        "navigation-menu",
         "dialog",
         "layout",
         "context-menu",
@@ -23050,27 +23044,16 @@
       ],
       "newComponents": [],
       "typeCounts": {
-        "feature": 5,
         "fix": 7,
         "optimization": 13,
         "refactor": 12,
         "style": 2,
+        "feature": 5,
         "docs": 8,
         "chore": 4
       },
       "notes": [],
       "entries": [
-        {
-          "type": "feature",
-          "scope": "navigation-menu",
-          "summary": "add support for horizontal and vertical orientations, update examples and documentation",
-          "summaryKey": "changelog.generated.v0.0.8.30ba7",
-          "commitHash": "30ba7",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/30ba7787",
-          "authors": ["soybeanjs"],
-          "source": "exact-scope",
-          "components": ["navigation-menu"]
-        },
         {
           "type": "fix",
           "scope": "dropdown-menu",
@@ -23260,17 +23243,6 @@
         },
         {
           "type": "style",
-          "scope": "navigation-menu",
-          "summary": "add margin reset to item and subItem styles for consistent layout",
-          "summaryKey": "changelog.generated.v0.0.8.a27cd",
-          "commitHash": "a27cd",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a27cd045",
-          "authors": ["soybeanjs"],
-          "source": "exact-scope",
-          "components": ["navigation-menu"]
-        },
-        {
-          "type": "style",
           "scope": "tree-menu",
           "summary": "add margin reset to root style for improved layout consistency",
           "summaryKey": "changelog.generated.v0.0.8.5ff20",
@@ -23287,6 +23259,17 @@
           "summaryKey": "changelog.generated.v0.0.8.61e0a",
           "commitHash": "61e0a",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/61e0a8e1",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "navigation-menu",
+          "summary": "add support for horizontal and vertical orientations, update examples and documentation",
+          "summaryKey": "changelog.generated.v0.0.8.30ba7",
+          "commitHash": "30ba7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/30ba7787",
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": []
@@ -23584,6 +23567,17 @@
           "summaryKey": "changelog.generated.v0.0.8.efd93",
           "commitHash": "efd93",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/efd9325b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "style",
+          "scope": "navigation-menu",
+          "summary": "add margin reset to item and subItem styles for consistent layout",
+          "summaryKey": "changelog.generated.v0.0.8.a27cd",
+          "commitHash": "a27cd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a27cd045",
           "authors": ["soybeanjs"],
           "source": "exact-scope",
           "components": []

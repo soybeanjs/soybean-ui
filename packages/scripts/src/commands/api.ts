@@ -5,7 +5,14 @@ import type { Comment, DeclarationReflection, ProjectReflection, Reflection, Sig
 import ts from 'typescript';
 import { components as headlessComponents } from '../../../headless/src/constants/components';
 import { kebabCase } from '../../../headless/src/shared/string';
+import {
+  hashGenerationInputs,
+  hashGenerationOutputs,
+  isGenerationUpToDate,
+  writeGenerationFingerprint
+} from '../shared/generation-cache';
 import { writeGeneratedJsonDirectory, writeJsonFile } from '../shared/json';
+import type { GeneratedJsonDirectoryWriteResult } from '../shared/json';
 
 type ApiSectionKind = 'props' | 'emits' | 'slots' | 'slotProps';
 
@@ -81,6 +88,31 @@ type ComponentApiIndex = {
 
 const rootDir = process.cwd();
 
+/**
+ * Declaration file that lets the TypeScript and TypeDoc programs resolve `.vue`
+ * imports. Passed explicitly as a program root name, because the programs are
+ * otherwise built from the package entry point alone.
+ */
+const vueModuleShimPath = 'packages/scripts/src/typings/typedoc.d.ts';
+
+/**
+ * Everything that can change the extracted API data: the packages whose
+ * declarations reach it, the compiler configs that resolve them, and the
+ * generator itself. The lockfile stands in for the dependency versions that
+ * supply external types.
+ */
+const apiInputPaths = [
+  'packages/ui/src',
+  'packages/headless/src',
+  'packages/theme/src',
+  'packages/scripts/src',
+  'tsconfig.json',
+  'packages/ui/tsconfig.json',
+  'packages/headless/tsconfig.json',
+  'package.json',
+  'pnpm-lock.yaml'
+];
+
 type ApiPackageConfig = {
   key: string;
   entryPoint: string;
@@ -153,7 +185,7 @@ function createTypedocTsconfig(pkg: ApiPackageConfig): Record<string, unknown> {
     // Only the package's own sources are listed: everything else it needs
     // (`@soybeanjs/ui`, `@soybeanjs/theme`, ...) is reachable through `paths`,
     // which keeps each program scoped and avoids dragging unrelated packages in.
-    include: ['packages/scripts/src/typings/typedoc.d.ts', ...pkg.sourceRoots.map(sourceRoot => `${sourceRoot}**/*`)],
+    include: [vueModuleShimPath, ...pkg.sourceRoots.map(sourceRoot => `${sourceRoot}**/*`)],
     exclude: ['apps/docs/**/*', 'test/**/*']
   };
 }
@@ -1617,10 +1649,10 @@ async function writeOutputs(
   generatedAt: string,
   components: Record<string, ComponentApi>,
   resetPaths: string[]
-): Promise<ComponentApiIndex> {
+): Promise<{ index: ComponentApiIndex; writeResult: GeneratedJsonDirectoryWriteResult }> {
   const index = createComponentApiIndex(generatedAt, components);
 
-  await writeGeneratedJsonDirectory({
+  const writeResult = await writeGeneratedJsonDirectory({
     outputDir: pkg.outputDir,
     resetPaths,
     documents: [
@@ -1635,18 +1667,44 @@ async function writeOutputs(
     ]
   });
 
-  return index;
+  return { index, writeResult };
+}
+
+/** Local cache path, one entry per docs target's API output directory. */
+function createApiCacheFilePath(apiRootDir: string): string {
+  const slug = path.relative(rootDir, apiRootDir).replace(/[^a-zA-Z0-9]+/gu, '-');
+
+  return path.join(rootDir, 'node_modules/.cache/sui', `gen-api-${slug}.json`);
 }
 
 /**
  * Extract component API JSON into `apiRootDir` (a docs target's
  * `<generated>/api` directory).
+ *
+ * Extraction is a TypeDoc conversion of both packages, so it is skipped
+ * entirely when the recorded fingerprint proves the run would reproduce the
+ * committed data byte for byte. `force` bypasses the check.
  */
-export async function generateApiData(apiRootDir: string): Promise<void> {
+export async function generateApiData(apiRootDir: string, options: { force?: boolean } = {}): Promise<void> {
+  const cacheFilePath = createApiCacheFilePath(apiRootDir);
+  const inputHash = await hashGenerationInputs(apiInputPaths, rootDir);
+
+  if (
+    !options.force &&
+    (await isGenerationUpToDate({ cacheFilePath, inputHash, outputDirectory: apiRootDir, rootDir }))
+  ) {
+    console.log(
+      `API data is already up to date (${path.relative(rootDir, apiRootDir)}): skipped extraction.` +
+        ` Pass --force to regenerate anyway.`
+    );
+    return;
+  }
+
   const generatedAt = new Date().toISOString();
   const packages: Record<string, { file: string; components: ComponentApiIndex['components'] }> = {};
   const apiPackages = createApiPackages(apiRootDir);
   const generatedComponentKeys = new Map<string, Set<string>>();
+  const documentCounts = { written: 0, total: 0 };
 
   currentApiPackages = apiPackages;
 
@@ -1662,8 +1720,12 @@ export async function generateApiData(apiRootDir: string): Promise<void> {
       []
     );
 
+    // The entry point plus the shim is all each program needs — everything else
+    // is reached through imports. Listing every source file as a root name made
+    // the program (and its diagnostics) span the whole package, which dominated
+    // the run time without changing a single extracted symbol.
     app.options.setCompilerOptions(
-      parsedTypedocConfig.fileNames,
+      [vueModuleShimPath, pkg.entryPoint],
       parsedTypedocConfig.options,
       parsedTypedocConfig.projectReferences
     );
@@ -1684,12 +1746,15 @@ export async function generateApiData(apiRootDir: string): Promise<void> {
       )
     );
 
-    const index = await writeOutputs(
+    const { index, writeResult } = await writeOutputs(
       pkg,
       generatedAt,
       components,
       pkg.key === 'ui' ? [path.join(apiRootDir, 'component-api')] : []
     );
+
+    documentCounts.written += writeResult.written.length;
+    documentCounts.total += writeResult.written.length + writeResult.unchanged.length;
 
     generatedComponentKeys.set(pkg.key, new Set(Object.keys(components)));
 
@@ -1699,17 +1764,26 @@ export async function generateApiData(apiRootDir: string): Promise<void> {
     };
   }
 
-  await writeJsonFile(
+  const rootIndexWritten = await writeJsonFile(
     path.join(apiRootDir, 'index.json'),
     {
       generatedAt,
       schemaVersion: 4,
       packages
     },
-    { sort: true }
+    { sort: true, preserveGeneratedAt: true }
   );
 
+  documentCounts.written += Number(rootIndexWritten);
+  documentCounts.total += 1;
+
+  await writeGenerationFingerprint(cacheFilePath, {
+    inputs: inputHash,
+    outputs: (await hashGenerationOutputs(apiRootDir, rootDir)) ?? ''
+  });
+
   console.log(
-    `Generated API data (${path.relative(rootDir, apiRootDir)}) for packages: ${Object.keys(packages).join(', ')}.`
+    `Generated API data (${path.relative(rootDir, apiRootDir)}) for packages: ${Object.keys(packages).join(', ')}.` +
+      ` Updated ${documentCounts.written} of ${documentCounts.total} files.`
   );
 }

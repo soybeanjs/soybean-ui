@@ -436,6 +436,9 @@ importers:
       '@types/node':
         specifier: ^26.5.1
         version: 26.5.1
+      cac:
+        specifier: ^7.0.0
+        version: 7.0.0
       tsx:
         specifier: ^4.23.13
         version: 4.23.13
