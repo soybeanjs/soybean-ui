@@ -147,7 +147,7 @@
 
 **对 SoybeanUI 的启示**：
 
-- **registry = 分发与商业化的天然载体**：SoybeanUI 已有 `sbean` registry 且已命名空间化（见 [docs/ecosystem/sbean.md](../ecosystem/sbean.md)），可扩展为「免费条目 + 付费条目（license key 校验）」两级 registry——这是 shadcn 生态（Zeta/Polar）已验证、但国内尚无玩家做到位的位点。
+- **registry = 分发与商业化的天然载体**：SoybeanUI 已有 `sbean` registry 且已命名空间化（见 [docs/ecosystem/cli.md](../ecosystem/cli.md)），可扩展为「免费条目 + 付费条目（license key 校验）」两级 registry——这是 shadcn 生态（Zeta/Polar）已验证、但国内尚无玩家做到位的位点。
 - 「免费做基础组件/源码，收费做设计资产/模板/高级 registry 内容」对 headless-first 项目尤其顺滑——因为用户已习惯「源码进仓库」，付费点自然落在「更高级的源码包与配套服务」。
 - 纯赞助（TanStack 路线）只适合极少数头部项目，不适合作为 SoybeanUI 的长期收入支柱。
 
@@ -354,7 +354,7 @@
 
 ### 4.3 sbean registry + 付费内容分发
 
-- 现有 registry 已命名空间化（2026-09 现状：仅 `ui/*`；未来外围包按 `<package>/*` 扩展，见 `docs/ecosystem/sbean.md`）。扩展两级模式：
+- 现有 registry 已命名空间化（2026-09 现状：仅 `ui/*`；未来外围包按 `<package>/*` 扩展，见 `docs/ecosystem/cli.md`）。扩展两级模式：
   - **免费条目**：现有形态，`sbean add <ns>/<name>` 直接拉源码。
   - **付费条目**：`type: "registry:ui-paid"` + 元数据（price/license 类型/支持窗口），`sbean add` 时触发 license key 校验（本地校验，参考 Handsontable [文档](https://handsontable.com/docs/15.1/react-data-grid/license-key)）；可复用 Zeta + Polar 的「registry + 自动发 key」思路 [GitHub](https://github.com/rbadillap/zeta/)。
 - **文档站付费内容区**：docs 命名空间下新增 Pro 徽章与对比页（免费 vs 付费 feature matrix，参考 AG Grid Community vs Enterprise 对比 [官方](https://www.ag-grid.com/landing-pages/enterprise-data-grid/)），公开透明地展示边界。
@@ -433,6 +433,6 @@
 
 ### 仓库内既有资料
 
-- [docs/ecosystem/sbean.md](../ecosystem/sbean.md) — sbean registry 命名空间机制
+- [docs/ecosystem/cli.md](../ecosystem/cli.md) — sbean registry 命名空间机制
 - [docs/ecosystem/editor.md](../ecosystem/editor.md) — editor 提案（含 Tiptap 收费边界调研）
 - [docs/adr/0001-peripheral-package-layering.md](../adr/0001-peripheral-package-layering.md) — 外围包分层模型 ADR（已 superseded，仅历史参考）

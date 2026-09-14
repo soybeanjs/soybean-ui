@@ -181,7 +181,7 @@
 
 ### 5.2 sbean registry + 付费内容分发
 
-- 现有 registry 已命名空间化（当前仅有 `ui/*`；未来外围包按 `<package>/*` 扩展，见 [sbean.md](./sbean.md)）。扩展两级模式：
+- 现有 registry 已命名空间化（当前仅有 `ui/*`；未来外围包按 `<package>/*` 扩展，见 [cli.md](./cli.md)）。扩展两级模式：
   - **免费条目**：`sbean add <ns>/<name>` 直接拉源码。
   - **付费条目**：`type: "registry:ui-paid"` + 元数据（price/license/支持窗口），`sbean add` 时触发 license key 本地校验；可复用 Zeta + Polar「registry + 自动发 key」思路 [GitHub](https://github.com/rbadillap/zeta/)。
 - **文档站付费内容区**：docs 命名空间下新增 Pro 徽章 + 免费 vs 付费 feature matrix（参考 AG Grid Community vs Enterprise 对比 [官方](https://www.ag-grid.com/landing-pages/enterprise-data-grid/)），公开透明。
@@ -212,4 +212,4 @@
 
 - 本策略的事实依据与全部 URL 见 [research/commercialization-ecosystem.md](../research/commercialization-ecosystem.md)（§5 参考来源）。
 - 关键官方页面：AG Grid [定价](https://www.ag-grid.com/license-pricing/) · Tiptap [定价](https://tiptap.dev/pricing) · Handsontable [购买](https://dev.handsontable.com/pricing) · Syncfusion [官网](https://www.syncfusion.com/jquery-ui-widgets) · Jotform [定价](https://www.jotform.com/pricing/) · Retool [定价](https://retool.com/pricing) · Keenthemes [Metronic](https://keenthemes.com/products/metronic-composer)。
-- 仓库内既有资料：[editor.md](./editor.md)（Tiptap 收费边界）· [table.md](./table.md) · [form.md](./form.md) · [sbean.md](./sbean.md)（registry 命名空间化）。
+- 仓库内既有资料：[editor.md](./editor.md)（Tiptap 收费边界）· [table.md](./table.md) · [form.md](./form.md) · [cli.md](./cli.md)（registry 命名空间化）。

@@ -19,7 +19,7 @@
 | [form.md](./form.md)                           | Schema 驱动高级表单              | 提案（调研已完成） | ISchema 渲染层 + 组件注册表 + 声明式联动/查询表单                                                |
 | [ui-pro.md](./ui-pro.md)                       | 增值 / 高级组件                  | 探索性预留         | 收录标准（S1–S5）与前缀候选；与商业化一并评估                                                    |
 | [commercialization.md](./commercialization.md) | 增值订阅 / 托管服务 / AI 用量等  | 策略建议           | editor/table/form 方向的商业化选项与执行节奏；AI 流式能力引用以核心 `useStream` / `SSender` 为准 |
-| [sbean.md](./sbean.md)                         | 源码分发 CLI / registry / MCP    | 核心功能已落地     | 多命名空间 registry 与多包落地路径的通用机制（当前 registry 仅含 `ui` 命名空间）                 |
+| [cli.md](./cli.md)                             | 源码分发 CLI / registry / MCP    | 核心功能已落地     | 多命名空间 registry 与多包落地路径的通用机制（当前 registry 仅含 `ui` 命名空间）                 |
 
 ## 当前分层（无外围包）
 
