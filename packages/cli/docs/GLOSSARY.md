@@ -44,7 +44,7 @@ Terms are grouped by domain. Each entry is grounded in the sbean codebase unless
 
 **registry item type** — The `type` discriminator on a registry item. sbean defines 9 ([schema.ts:27-37](../src/registry/schema.ts#L27-L37)); shadcn-vue defines 15. Per ADR-002, sbean adopts the 6 missing types verbatim.
 
-**registry namespace** — A `@`-prefixed alias for a registry URL (e.g., `@soybean=https://ui.soybeanjs.cn/r/{name}.json`). Managed by `sbean registry` ([registry.ts:19-138](../src/commands/registry.ts#L19-L138)). shadcn-vue additionally supports `{url, params, headers}` object form for auth (gap, G-9).
+**registry namespace** — A `@`-prefixed alias for a registry URL (e.g., `@soybean=https://ui.soybeanjs.cn/r/{name}.json`, where `{name}` is the namespace-qualified item name such as `ui/button`). Managed by `sbean registry` ([registry.ts:19-138](../src/commands/registry.ts#L19-L138)). shadcn-vue additionally supports `{url, params, headers}` object form for auth (gap, G-9).
 
 ## S–U
 

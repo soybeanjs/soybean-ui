@@ -109,7 +109,9 @@ function attachRegistryMeta(
  * Fetch a single registry item from the remote registry.
  * Checks local cache first, falls back to network if not cached.
  *
- * URL pattern: https://ui.soybeanjs.cn/r/{name}.json
+ * URL pattern: `https://ui.soybeanjs.cn/r/{name}.json`, where `{name}` is the
+ * namespace-qualified item name (`ui/button`, served from `r/ui/button.json`);
+ * the catalog index lives at `https://ui.soybeanjs.cn/r/registry.json`.
  */
 export async function fetchRegistryItem(
   name: string,

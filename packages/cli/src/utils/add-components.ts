@@ -120,7 +120,8 @@ export function topologicallySortItems(items: ResolvedRegistryItem[]): ResolvedR
  * - diff: show differences between existing files and registry
  *
  * First tries the local registry.json, then falls back to remote fetching
- * from https://ui.soybeanjs.cn/r/{name}.json.
+ * from https://ui.soybeanjs.cn/r/<package>/<component>.json
+ * (e.g. https://ui.soybeanjs.cn/r/ui/button.json).
  */
 export async function addComponents(
   componentNames: string[],

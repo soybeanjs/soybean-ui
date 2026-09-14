@@ -250,4 +250,4 @@ import { buttonVariants } from '#ui/styles/button';
 
 ## 注册表
 
-SBean 从 SoybeanUI 注册表获取组件源码 `https://ui.soybeanjs.cn/r/{name}.json`。注册表条目**按包命名空间区分**——如 `ui/button` 由 `r/ui/button.json` 提供。核心 `ui` 组件可省略前缀（`sbean add button`）；未来外围包的组件必须带命名空间前缀（`sbean add <package>/<component>`）。本地缓存（`~/.sbean/cache`）保持 24 小时 TTL 并支持 ETag 条件请求。
+Vean 从 Vean 注册表获取组件源码，地址为 `https://ui.soybeanjs.cn/r/<package>/<component>.json`——核心 `ui` 包由 `r/ui/{name}.json` 提供（如 `r/ui/button.json`），目录索引在 `r/registry.json`。注册表条目**按包命名空间区分**，因此注册表 URL 模板里的 `{name}` 是带命名空间的条目名（`ui/button`），而不是裸组件名。核心 `ui` 组件可省略前缀（`sbean add button`）；未来外围包的组件必须带命名空间前缀（`sbean add <package>/<component>`）。本地缓存（`~/.sbean/cache`）保持 24 小时 TTL 并支持 ETag 条件请求。
