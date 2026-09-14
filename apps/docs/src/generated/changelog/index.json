@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-12T04:50:00.519Z",
+  "generatedAt": "2026-09-14T04:42:10.085Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -26,9 +26,9 @@
     "anchor": {
       "component": "anchor",
       "file": "anchor.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 4,
-      "entryCount": 4
+      "latestVersion": "v0.40.0",
+      "versionCount": 5,
+      "entryCount": 5
     },
     "arrow": {
       "component": "arrow",
@@ -54,9 +54,9 @@
     "avatar": {
       "component": "avatar",
       "file": "avatar.json",
-      "latestVersion": "v0.18.0",
-      "versionCount": 2,
-      "entryCount": 2
+      "latestVersion": "v0.40.0",
+      "versionCount": 3,
+      "entryCount": 3
     },
     "backtop": {
       "component": "backtop",
@@ -166,9 +166,9 @@
     "color-picker": {
       "component": "color-picker",
       "file": "color-picker.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 7,
-      "entryCount": 9
+      "latestVersion": "v0.40.0",
+      "versionCount": 8,
+      "entryCount": 10
     },
     "color-slider": {
       "component": "color-slider",
@@ -250,16 +250,16 @@
     "dialog": {
       "component": "dialog",
       "file": "dialog.json",
-      "latestVersion": "v0.40.0-beta.2",
-      "versionCount": 14,
-      "entryCount": 19
+      "latestVersion": "v0.40.0",
+      "versionCount": 15,
+      "entryCount": 23
     },
     "dropdown-menu": {
       "component": "dropdown-menu",
       "file": "dropdown-menu.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 3,
-      "entryCount": 4
+      "latestVersion": "v0.40.0",
+      "versionCount": 4,
+      "entryCount": 5
     },
     "editable": {
       "component": "editable",
@@ -278,9 +278,9 @@
     "form": {
       "component": "form",
       "file": "form.json",
-      "latestVersion": "v0.18.0",
-      "versionCount": 10,
-      "entryCount": 11
+      "latestVersion": "v0.40.0",
+      "versionCount": 11,
+      "entryCount": 12
     },
     "hover-card": {
       "component": "hover-card",
@@ -306,9 +306,9 @@
     "input-otp": {
       "component": "input-otp",
       "file": "input-otp.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 2,
-      "entryCount": 2
+      "latestVersion": "v0.40.0",
+      "versionCount": 3,
+      "entryCount": 3
     },
     "kbd": {
       "component": "kbd",
@@ -334,9 +334,9 @@
     "link": {
       "component": "link",
       "file": "link.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 11,
-      "entryCount": 11
+      "latestVersion": "v0.40.0",
+      "versionCount": 12,
+      "entryCount": 12
     },
     "list": {
       "component": "list",
@@ -369,9 +369,9 @@
     "nav-menu": {
       "component": "nav-menu",
       "file": "nav-menu.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 1,
-      "entryCount": 1
+      "latestVersion": "v0.40.0",
+      "versionCount": 2,
+      "entryCount": 3
     },
     "navigation-menu": {
       "component": "navigation-menu",
@@ -439,9 +439,9 @@
     "progress": {
       "component": "progress",
       "file": "progress.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 7,
-      "entryCount": 10
+      "latestVersion": "v0.40.0",
+      "versionCount": 8,
+      "entryCount": 11
     },
     "radio-group": {
       "component": "radio-group",
@@ -509,9 +509,9 @@
     "split-nav": {
       "component": "split-nav",
       "file": "split-nav.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 2,
-      "entryCount": 6
+      "latestVersion": "v0.40.0",
+      "versionCount": 3,
+      "entryCount": 8
     },
     "splitter": {
       "component": "splitter",
@@ -537,9 +537,9 @@
     "table": {
       "component": "table",
       "file": "table.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 16,
-      "entryCount": 41
+      "latestVersion": "v0.40.0",
+      "versionCount": 17,
+      "entryCount": 42
     },
     "tabs": {
       "component": "tabs",
@@ -586,9 +586,9 @@
     "toast": {
       "component": "toast",
       "file": "toast.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 8,
-      "entryCount": 13
+      "latestVersion": "v0.40.0",
+      "versionCount": 9,
+      "entryCount": 14
     },
     "toggle": {
       "component": "toggle",
@@ -628,16 +628,16 @@
     "tree-menu": {
       "component": "tree-menu",
       "file": "tree-menu.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 32,
-      "entryCount": 38
+      "latestVersion": "v0.40.0",
+      "versionCount": 33,
+      "entryCount": 40
     },
     "tree-nav": {
       "component": "tree-nav",
       "file": "tree-nav.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 1,
-      "entryCount": 2
+      "latestVersion": "v0.40.0",
+      "versionCount": 2,
+      "entryCount": 4
     },
     "virtualizer": {
       "component": "virtualizer",

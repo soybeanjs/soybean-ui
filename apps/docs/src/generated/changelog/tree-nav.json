@@ -1,8 +1,35 @@
 {
   "component": "tree-nav",
-  "generatedAt": "2026-09-12T04:50:00.519Z",
+  "generatedAt": "2026-09-14T04:42:10.085Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.40.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.31.0...v0.40.0",
+      "date": "2026-09-14",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "tree-nav",
+          "summary": "menubar-style arrow switching for open branch popups",
+          "summaryKey": "changelog.generated.v0.40.0.f136e",
+          "commitHash": "f136e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f136eb2dd",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "tree-nav",
+          "summary": "extract TreeNavOverflow and refine selected-state styling",
+          "summaryKey": "changelog.generated.v0.40.0.a0ea9",
+          "commitHash": "a0ea9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a0ea9a507",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.40.0-beta.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.40.0-beta.1",

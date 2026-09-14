@@ -1,8 +1,35 @@
 {
   "component": "split-nav",
-  "generatedAt": "2026-09-12T04:50:00.519Z",
+  "generatedAt": "2026-09-14T04:42:10.085Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.40.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.31.0...v0.40.0",
+      "date": "2026-09-14",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "split-nav",
+          "summary": "focus the first pane item on the forward expand key",
+          "summaryKey": "changelog.generated.v0.40.0.25d28",
+          "commitHash": "25d28",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/25d288557",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "split-nav",
+          "summary": "fall back focus to the owning rail item via the backward key",
+          "summaryKey": "changelog.generated.v0.40.0.f0e55",
+          "commitHash": "f0e55",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f0e554b93",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.40.0-beta.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.40.0-beta.1",

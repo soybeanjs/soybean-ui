@@ -48,6 +48,7 @@ Structured API summary generated from build-time component metadata.
 Properties for the Drawer component.
 
 - `side`: Side placement of the component. (type `Side`; optional)
+- `showFullscreen`: Whether show the fullscreen toggle button in the header of the dialog. (type `boolean`; default `false`; optional)
 - `class`: the popup class of the dialog (type `string | false | Record<string, any> | ClassValue[] | null`; optional)
 - `size`: Visual size of the component. (type `ThemeSize`; optional)
 - `ui`: Per-slot class overrides for the component. (type `Partial<DialogUi>`; optional)
@@ -55,7 +56,6 @@ Properties for the Drawer component.
 - `description`: The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided. (type `string`; optional)
 - `icon`: The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided. (type `string | import("vue").Component | VNode<import("vue").RendererNode, import("vue").RendererElement, { [key: string]: ...`; optional)
 - `showClose`: Whether show the close button in the header of the dialog. (type `boolean`; default `true`; optional)
-- `showFullscreen`: Whether show the fullscreen toggle button in the header of the dialog. (type `boolean`; default `true`; optional)
 - `pure`: Whether to use the pure version of the dialog, which does not include the header and footer. This is useful when you want to fully control the content of the dialog and do not need the built-in header and footer. (type `boolean`; default `false`; optional)
 - `showCancel`: Whether to show the cancel button. When set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType="warning"`. When set to `true`, the cancel button will always be shown. (type `boolean | 'onlyWarning'`; default `'onlyWarning'`; optional)
 - `cancelText`: The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided. Defaults to the localized `dialog.cancel` message from `ConfigProvider`. (type `string`; optional)

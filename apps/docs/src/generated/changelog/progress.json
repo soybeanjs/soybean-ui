@@ -1,8 +1,25 @@
 {
   "component": "progress",
-  "generatedAt": "2026-09-12T04:50:00.519Z",
+  "generatedAt": "2026-09-14T04:42:10.085Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.40.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.31.0...v0.40.0",
+      "date": "2026-09-14",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "progress",
+          "summary": "fix progress hydration style",
+          "summaryKey": "changelog.generated.v0.40.0.3f9c7",
+          "commitHash": "3f9c7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3f9c7a42d",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.40.0-beta.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.40.0-beta.1",

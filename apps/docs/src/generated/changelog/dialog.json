@@ -1,8 +1,55 @@
 {
   "component": "dialog",
-  "generatedAt": "2026-09-12T04:50:00.519Z",
+  "generatedAt": "2026-09-14T04:42:10.085Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.40.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.31.0...v0.40.0",
+      "date": "2026-09-14",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "dialog",
+          "summary": "label the icon-only close trigger via locale",
+          "summaryKey": "changelog.generated.v0.40.0.abe07",
+          "commitHash": "abe07",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/abe07ea74",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "dialog",
+          "summary": "restore fullscreen toggle visible by default",
+          "summaryKey": "changelog.generated.v0.40.0.600a0",
+          "commitHash": "600a0",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/600a06669",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "dialog",
+          "summary": "hide fullscreen toggle by default",
+          "summaryKey": "changelog.generated.v0.40.0.3ae1c",
+          "commitHash": "3ae1c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3ae1c91e1",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "dialog",
+          "summary": "remove redundant showFullscreen default",
+          "summaryKey": "changelog.generated.v0.40.0.956d7",
+          "commitHash": "956d7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/956d75938",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.40.0-beta.2",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.0-beta.1...v0.40.0-beta.2",
