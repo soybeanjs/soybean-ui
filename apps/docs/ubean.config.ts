@@ -63,5 +63,8 @@ export default defineConfig({
   prerender: {
     include: prerenderRoutes,
     crawlLinks: true
+  },
+  dev: {
+    host: '0.0.0.0'
   }
 });
