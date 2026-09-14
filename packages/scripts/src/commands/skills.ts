@@ -31,6 +31,7 @@ type DistributionPackageManifest = {
   keywords: string[];
   license: string;
   name: string;
+  private: true;
   publishConfig: {
     access: 'public';
     registry: 'https://registry.npmjs.org/';
@@ -135,6 +136,7 @@ function createDistributionPackageManifest(rootPackage: RootPackageManifest): Di
     keywords: distributionKeywords,
     license: rootPackage.license ?? 'MIT',
     name: distributionPackageName,
+    private: true,
     publishConfig: {
       access: 'public',
       registry: 'https://registry.npmjs.org/'
