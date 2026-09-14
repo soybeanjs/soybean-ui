@@ -1,6 +1,8 @@
 import type { SearchSection } from '@ubean/content';
 import { getReleaseChangelogDocument } from './generated-changelog';
 import type { GeneratedReleaseChangelogVersion } from './generated-changelog';
+import { readGeneratedMessagePath, resolveGeneratedLocaleFileName } from './generated-messages';
+import type { GeneratedMessages } from './generated-messages';
 
 /**
  * 将生成的 changelog 数据（apps/docs/src/generated/changelog/releases.json）
@@ -23,44 +25,20 @@ const RELEASE_CRUMBS: Record<string, string[]> = {
   zh: ['更新日志']
 };
 
-const changelogLocaleModules = import.meta.glob<Record<string, unknown>>('../generated/changelog-locales/*.json', {
+const changelogLocaleModules = import.meta.glob<GeneratedMessages>('../generated/changelog-locales/*.json', {
   eager: true,
   import: 'default'
 });
-
-/** sui 生成 `zh-CN.json`，站点 locale code 是 `zh`（与 use-generated-i18n 同一映射）。 */
-const GENERATED_LOCALE_FILES: Record<string, string> = {
-  zh: 'zh-CN'
-};
 
 const localeMessages = Object.fromEntries(
   Object.entries(changelogLocaleModules).map(([path, messages]) => [
     path.match(/([\w-]+)\.json$/u)?.[1] ?? path,
     messages
   ])
-) as Record<string, Record<string, unknown>>;
+) as Record<string, GeneratedMessages>;
 
-/** 按 `a.b.c` 路径读取生成译文，缺失时返回 null。 */
-function readGeneratedText(messages: Record<string, unknown>, key: string | null): string | null {
-  if (!key) {
-    return null;
-  }
-
-  let current: unknown = messages;
-
-  for (const segment of key.split('.')) {
-    if (!current || typeof current !== 'object' || !(segment in current)) {
-      return null;
-    }
-
-    current = (current as Record<string, unknown>)[segment];
-  }
-
-  return typeof current === 'string' ? current : null;
-}
-
-function resolveGeneratedText(messages: Record<string, unknown>, fallback: string, key: string | null): string {
-  return readGeneratedText(messages, key)?.trim() || fallback.trim();
+function resolveGeneratedText(messages: GeneratedMessages, fallback: string, key: string | null): string {
+  return readGeneratedMessagePath(messages, key)?.trim() || fallback.trim();
 }
 
 /** 版本 → 可检索正文：版本号 + 日期 + 破坏性说明 + 逐条变更（`scope summary`）。 */
@@ -74,7 +52,7 @@ function buildReleaseContent(release: GeneratedReleaseChangelogVersion, messages
 }
 
 function buildReleaseSections(releases: GeneratedReleaseChangelogVersion[], locale: string): SearchSection[] {
-  const messages = localeMessages[GENERATED_LOCALE_FILES[locale] ?? locale] ?? {};
+  const messages = localeMessages[resolveGeneratedLocaleFileName(locale)] ?? {};
   const localePathPrefix = locale === 'en' ? '' : `/${locale}`;
   const crumbs = RELEASE_CRUMBS[locale] ?? RELEASE_CRUMBS.en;
 

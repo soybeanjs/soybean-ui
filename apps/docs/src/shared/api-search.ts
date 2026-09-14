@@ -1,5 +1,7 @@
 import type { SearchSection } from '@ubean/content';
 import { resolveContentRoutePath } from './content-route';
+import { readGeneratedMessagePath } from './generated-messages';
+import type { GeneratedMessages } from './generated-messages';
 import { buildReleaseSearchSections } from './release-search';
 
 /**
@@ -39,13 +41,8 @@ interface ApiFile {
   symbols?: Record<string, Record<string, ApiKindDef>>;
 }
 
-interface ApiLocalesFile {
-  /** descriptionKey -> 本地化描述 */
-  [key: string]: string;
-}
-
 const apiModules = import.meta.glob<{ default: ApiFile }>('../generated/api/*/*.json');
-const zhLocaleModules = import.meta.glob<{ default: ApiLocalesFile }>('../generated/api-locales/zh-CN.json');
+const zhLocaleModules = import.meta.glob<{ default: GeneratedMessages }>('../generated/api-locales/zh-CN.json');
 
 /**
  * `../generated/api/<pkg>/<name>.json` 的 glob key → 组件文档路由前缀。
@@ -177,15 +174,12 @@ export async function loadContentSearchSections(): Promise<SearchSection[]> {
   const zhContentSections = contentSections.filter(section => section.id.startsWith('/zh/'));
   const enContentSections = contentSections.filter(section => !section.id.startsWith('/zh/'));
 
+  // 译文文件按 `a.b.c` 点号路径嵌套，必须逐段下钻读取（曾是直接 `locale[key]`，
+  // 导致中文 API 搜索静默回退到英文描述）。
   const resolve =
-    (locale: ApiLocalesFile | null) =>
-    (key: string | undefined, fallback: string | undefined): string => {
-      if (key && locale?.[key]) {
-        return locale[key];
-      }
-
-      return fallback ?? '';
-    };
+    (locale: GeneratedMessages | null) =>
+    (key: string | undefined, fallback: string | undefined): string =>
+      (key ? readGeneratedMessagePath(locale ?? {}, key)?.trim() : '') || (fallback ?? '');
 
   const enApiSections = buildApiSectionsForLocale(
     apiEntries,
