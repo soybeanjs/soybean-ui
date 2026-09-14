@@ -113,7 +113,7 @@
     "@soybeanjs/colord": "^0.7.1",
     "@tanstack/vue-form": "^1.33.5",
     "@tanstack/vue-table": "^9.2.4",
-    "@tanstack/vue-virtual": "^3.13.38",
+    "@tanstack/vue-virtual": "^3.13.39",
     "@vueuse/core": "^14.4.0",
     "date-fns": "^4.4.0",
     "embla-carousel": "^8.6.0"
