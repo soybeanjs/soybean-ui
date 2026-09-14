@@ -44,6 +44,7 @@ const {
   snapToSequentialPoints,
   activeSnapPointOffset,
   resolvedSnapPoints,
+  maxSnapPointSize,
   viewportRevision,
   popupHeight,
   closeThreshold,
@@ -560,6 +561,16 @@ const popupStyle = computed(() => {
 
   if (popupHeight.value > 0) {
     style[DRAWER_CSS_VARS.height] = `${popupHeight.value}px`;
+  }
+
+  // The box must not rest taller than the largest snap point: a resting position
+  // is reached by translating the box down, so any size past the viewport edge
+  // puts the end of the scrolling content below the fold, where no snap level can
+  // bring it back into view.
+  const maxSize = maxSnapPointSize.value;
+
+  if (maxSize !== null && maxSize > 0) {
+    style[isVertical(side.value) ? DRAWER_CSS_VARS.maxHeight : DRAWER_CSS_VARS.maxWidth] = `${maxSize}px`;
   }
 
   if (nestedScale.value !== 1) {

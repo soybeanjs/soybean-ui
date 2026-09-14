@@ -46,6 +46,8 @@ export const DRAWER_CSS_VARS = {
   swipeMovementY: '--soybean-drawer-swipe-movement-y',
   swipeProgress: '--soybean-drawer-swipe-progress',
   height: '--soybean-drawer-height',
+  maxHeight: '--soybean-drawer-max-height',
+  maxWidth: '--soybean-drawer-max-width',
   nestedScale: '--soybean-drawer-nested-scale'
 } as const;
 

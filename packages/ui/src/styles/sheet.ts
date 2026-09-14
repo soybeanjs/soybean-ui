@@ -32,6 +32,25 @@ const POPUP_TRANSFORM_HORIZONTAL =
   '[transform:translateX(calc(var(--soybean-drawer-snap-point-offset,0px)_+_var(--soybean-drawer-swipe-movement-x,0px)))_scale(var(--soybean-drawer-nested-scale,1))]';
 const POPUP_TRANSITION =
   '[transition:transform_0.5s_cubic-bezier(0.32,0.72,0,1),height_0.5s_cubic-bezier(0.32,0.72,0,1),opacity_0.5s_cubic-bezier(0.32,0.72,0,1)]';
+/**
+ * `dvh` follows the mobile browser chrome as it hides and shows, so it keeps a
+ * bottom sheet's top edge on screen while the address bar animates. Browsers
+ * without it (Chrome < 108, older WebViews) drop the whole declaration instead
+ * of falling back on their own, which leaves the panel uncapped and taller than
+ * the screen. The `@supports not` guard makes exactly one of the two win, so
+ * newer browsers keep the `dvh` behaviour.
+ *
+ * A snap-point drawer replaces the viewport cap with its largest snap point: a
+ * resting position is reached by translating the box down, so a box taller than
+ * the largest snap leaves its far edge below the viewport, hiding the end of the
+ * scrolling content from every snap level. Both declarations therefore read the
+ * same variable, which equals when it is set — the `@supports` guard only has to
+ * disambiguate the fallback.
+ */
+const POPUP_VIEWPORT_MAX_HEIGHT =
+  'max-h-[var(--soybean-drawer-max-height,calc(100dvh-2rem))] [@supports(not_(height:100dvh))]:max-h-[var(--soybean-drawer-max-height,calc(100vh-2rem))]';
+/** The horizontal counterpart, used by the `start`/`end` sides. */
+const POPUP_VIEWPORT_MAX_WIDTH = 'max-w-[var(--soybean-drawer-max-width,100%)]';
 
 export const sheetVariants = scv({
   extend: [dialogVariants],
@@ -73,7 +92,7 @@ export const sheetVariants = scv({
         // without a cap a long body grows past the viewport and the `overflow-auto`
         // content slot never scrolls.
         popup: [
-          `inset-x-0 top-0 max-h-[calc(100dvh-2rem)] origin-top border-b rounded-b-md`,
+          `inset-x-0 top-0 ${POPUP_VIEWPORT_MAX_HEIGHT} origin-top border-b rounded-b-md`,
           POPUP_TRANSFORM_VERTICAL_TOP,
           POPUP_HEIGHT_GROWTH_TOP,
           `data-[state=open]:slide-in-from-top data-[state=closed]:slide-out-to-top`
@@ -81,7 +100,7 @@ export const sheetVariants = scv({
       },
       bottom: {
         popup: [
-          `inset-x-0 bottom-0 max-h-[calc(100dvh-2rem)] origin-bottom border-t rounded-t-md`,
+          `inset-x-0 bottom-0 ${POPUP_VIEWPORT_MAX_HEIGHT} origin-bottom border-t rounded-t-md`,
           POPUP_TRANSFORM_VERTICAL_BOTTOM,
           POPUP_HEIGHT_GROWTH_BOTTOM,
           `data-[state=open]:slide-in-from-bottom data-[state=closed]:slide-out-to-bottom`
@@ -89,7 +108,7 @@ export const sheetVariants = scv({
       },
       left: {
         popup: [
-          `inset-y-0 start-0 h-full origin-left sm:max-w-sm w-3/4 border-e rounded-e-md`,
+          `inset-y-0 start-0 h-full origin-left sm:max-w-sm w-3/4 border-e rounded-e-md ${POPUP_VIEWPORT_MAX_WIDTH}`,
           POPUP_TRANSFORM_HORIZONTAL,
           `data-[state=open]:slide-in-from-left data-[state=closed]:slide-out-to-left`,
           `[&[dir=rtl]]:data-[state=open]:slide-in-from-right [&[dir=rtl]]:data-[state=closed]:slide-out-to-right`
@@ -97,7 +116,7 @@ export const sheetVariants = scv({
       },
       right: {
         popup: [
-          `inset-y-0 end-0 h-full origin-right sm:max-w-sm w-3/4 border-s rounded-s-md`,
+          `inset-y-0 end-0 h-full origin-right sm:max-w-sm w-3/4 border-s rounded-s-md ${POPUP_VIEWPORT_MAX_WIDTH}`,
           POPUP_TRANSFORM_HORIZONTAL,
           `data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right`,
           `[&[dir=rtl]]:data-[state=open]:slide-in-from-left [&[dir=rtl]]:data-[state=closed]:slide-out-to-left`

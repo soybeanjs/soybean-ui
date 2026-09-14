@@ -325,6 +325,104 @@ describe('SDrawer', () => {
         }
       }
     });
+
+    it('caps the box at the largest snap point so the far end of the content stays reachable', async () => {
+      const descriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
+
+      // Model the stylesheet: the box is its content height clamped by the cap the
+      // popup publishes, which is what `max-height: var(--soybean-drawer-max-height)`
+      // resolves to in a browser.
+      Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+        configurable: true,
+        get(this: HTMLElement) {
+          const cap = Number.parseFloat(this.style.getPropertyValue('--soybean-drawer-max-height'));
+
+          return Number.isFinite(cap)
+            ? Math.min(cap, 1600)
+            : Math.min(1600, Math.max(0, (window.innerHeight ?? 0) - 32));
+        }
+      });
+
+      const innerHeightSpy = vi.spyOn(window, 'innerHeight', 'get').mockReturnValue(1000);
+
+      const mountAt = async (snapPoint: number) => {
+        const wrapper = mount(SDrawer, {
+          props: {
+            open: true,
+            title: 'Drawer',
+            snapPoints: [0.25, 0.5, 0.75],
+            snapPoint,
+            portalProps: { disabled: true }
+          },
+          slots,
+          attachTo: document.body
+        });
+
+        await nextTick();
+        await nextTick();
+
+        const style = wrapper.find('[data-soybean-drawer-popup]').attributes('style') ?? '';
+
+        wrapper.unmount();
+
+        return style;
+      };
+
+      try {
+        // Cap: 0.75 × 1000 = 750. At the largest snap the box rests flush against
+        // the viewport edge (offset 0), so its whole scrolling window is on screen.
+        const largest = await mountAt(0.75);
+
+        expect(largest).toMatch(/--soybean-drawer-max-height:\s*750px/);
+        expect(largest).toMatch(/--soybean-drawer-height:\s*750px/);
+        expect(largest).toMatch(/--soybean-drawer-snap-point-offset:\s*0px/);
+
+        // A partial snap keeps the same visible extent as before the cap — it only
+        // stops the box from hanging past the viewport edge: 750 − 250 = 0.5 × 1000.
+        const half = await mountAt(0.5);
+
+        expect(half).toMatch(/--soybean-drawer-height:\s*750px/);
+        expect(half).toMatch(/--soybean-drawer-snap-point-offset:\s*250px/);
+      } finally {
+        innerHeightSpy.mockRestore();
+
+        if (descriptor) {
+          Object.defineProperty(HTMLElement.prototype, 'offsetHeight', descriptor);
+        } else {
+          Reflect.deleteProperty(HTMLElement.prototype, 'offsetHeight');
+        }
+      }
+    });
+
+    it('caps a horizontal drawer box by width instead of height', async () => {
+      const innerWidthSpy = vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(400);
+
+      try {
+        const wrapper = mount(SDrawer, {
+          props: {
+            open: true,
+            title: 'Drawer',
+            side: 'right',
+            snapPoints: [0.5, 0.75],
+            snapPoint: 0.5,
+            portalProps: { disabled: true }
+          },
+          slots,
+          attachTo: document.body
+        });
+
+        await nextTick();
+
+        const style = wrapper.find('[data-soybean-drawer-popup]').attributes('style') ?? '';
+
+        expect(style).toMatch(/--soybean-drawer-max-width:\s*300px/);
+        expect(style).not.toMatch(/--soybean-drawer-max-height/);
+
+        wrapper.unmount();
+      } finally {
+        innerWidthSpy.mockRestore();
+      }
+    });
   });
 
   describe('modality tiers', () => {

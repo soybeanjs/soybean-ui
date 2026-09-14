@@ -92,6 +92,12 @@ export function useDrawerSnapPoints({ snapPoints, activeSnapPoint, popupHeight, 
     if (Number.isFinite(fontSize) && fontSize > 0) rootFontSize.value = fontSize;
   }
 
+  // Measured during setup, not only on mount: the cap derived from the viewport
+  // has to be on the popup before the popup's first height measurement runs,
+  // otherwise that first measurement publishes the uncapped box and the drawer
+  // visibly corrects once the observer catches up.
+  measure();
+
   onMounted(() => {
     measure();
     window.addEventListener('resize', measure);
@@ -156,9 +162,32 @@ export function useDrawerSnapPoints({ snapPoints, activeSnapPoint, popupHeight, 
     );
   });
 
+  /**
+   * The largest snap point size in px, or `null` when none resolves. Read from
+   * the raw values instead of `resolvedSnapPoints` on purpose: those heights are
+   * clamped by the measured box, so a cap taken from them could never let the box
+   * grow back after the viewport does — the previous, smaller measurement would
+   * keep pinning it — and it would not exist yet for the very measurement that
+   * first sizes the box.
+   */
+  const maxSnapPointSize = computed(() => {
+    const values = snapPoints.value;
+
+    if (!values?.length || viewportSize.value <= 0) return null;
+
+    const sizes = values
+      .map(value => resolveSnapPointValue(value, viewportSize.value, rootFontSize.value))
+      .filter((size): size is number => size !== null && size > 0);
+
+    if (!sizes.length) return null;
+
+    return Math.min(Math.max(...sizes), viewportSize.value);
+  });
+
   return {
     resolvedSnapPoints,
     activeSnapPointOffset,
+    maxSnapPointSize,
     viewportRevision
   };
 }

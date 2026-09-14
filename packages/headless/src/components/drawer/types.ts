@@ -206,6 +206,12 @@ export interface DrawerRootContext {
    */
   activeSnapPointOffset: Ref<number | null>;
   /**
+   * Largest resolvable snap point size in px along the drawer's axis, or `null`
+   * without snap points. Caps the popup box so its far edge cannot rest past the
+   * viewport edge and hide the end of the scrolling content from every snap level.
+   */
+  maxSnapPointSize: Ref<number | null>;
+  /**
    * Bumped whenever the measured viewport changes. The popup re-measures its
    * box on every bump so the published height and the viewport-derived snap
    * heights stay consistent instead of disagreeing for a debounce window.

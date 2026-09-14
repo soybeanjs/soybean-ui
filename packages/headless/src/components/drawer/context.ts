@@ -46,7 +46,7 @@ export function useDrawer(params: DrawerRootContextParams): DrawerRootContext {
 
   const resolvedSwipeDirection = computed<SwipeDirection>(() => swipeDirection.value ?? SWIPE_TO_DISMISS[side.value]);
 
-  const { resolvedSnapPoints, activeSnapPointOffset, viewportRevision } = useDrawerSnapPoints({
+  const { resolvedSnapPoints, activeSnapPointOffset, maxSnapPointSize, viewportRevision } = useDrawerSnapPoints({
     snapPoints,
     activeSnapPoint: snapPoint,
     popupHeight,
@@ -177,6 +177,7 @@ export function useDrawer(params: DrawerRootContextParams): DrawerRootContext {
     snapPointRange,
     snapPointProgress,
     activeSnapPointOffset,
+    maxSnapPointSize,
     viewportRevision,
     popupHeight,
     setPopupHeight,
