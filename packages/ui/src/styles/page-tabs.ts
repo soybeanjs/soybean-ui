@@ -21,11 +21,11 @@ export const pageTabsVariants = scv({
     ],
     pin: 'outline-none',
     chromeBgLeft: [
-      `absolute end-full bottom-0 fill-transparent`,
+      `absolute end-full bottom-0 fill-transparent size-0.5714em`, // 8/14 = 0.5714
       `group-hover/item:fill-accent group-data-[selected=true]/item:fill-primary-50 dark:group-data-[selected=true]/item:fill-accent group-data-[selected=true]/item:z-2`
     ],
     chromeBgRight: [
-      `absolute start-full bottom-0 fill-transparent`,
+      `absolute start-full bottom-0 fill-transparent size-0.5714em`, // 8/14 = 0.5714
       `group-hover/item:fill-accent group-data-[selected=true]/item:fill-primary-50 dark:group-data-[selected=true]/item:fill-accent group-data-[selected=true]/item:z-2`
     ],
     sliderIndicator: `absolute bottom-0 start-0 w-full h-0.5 group-data-[selected=true]/item:bg-primary`
@@ -33,34 +33,34 @@ export const pageTabsVariants = scv({
   variants: {
     size: {
       xs: {
-        root: 'text-2xs',
+        root: 'text-2xs px-1.5',
         item: 'gap-2 px-1 py-1',
         itemText: 'max-w-50'
       },
       sm: {
-        root: 'text-xs',
+        root: 'text-xs px-1.75',
         item: 'gap-2.5 px-1.5 py-1',
         itemText: 'max-w-55'
       },
       md: {
-        root: 'text-sm',
+        root: 'text-sm px-2',
         item: 'gap-3 px-2 py-1.5',
         itemText: 'max-w-60',
         chromeBgLeft: 'w-2 h-2',
         chromeBgRight: 'w-2 h-2'
       },
       lg: {
-        root: 'text-base',
+        root: 'text-base px-2.5',
         item: 'gap-3.5 px-2.5 py-1.5',
         itemText: 'max-w-65'
       },
       xl: {
-        root: 'text-lg',
+        root: 'text-lg px-3',
         item: 'gap-4 px-3 py-2',
         itemText: 'max-w-70'
       },
       '2xl': {
-        root: 'text-xl',
+        root: 'text-xl px-4',
         item: 'gap-4.5 px-3.5 py-2.5',
         itemText: 'max-w-75'
       }

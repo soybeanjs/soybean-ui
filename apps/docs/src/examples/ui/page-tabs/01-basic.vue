@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { Ref } from 'vue';
-import { SPageTabs, SSelect } from '@soybeanjs/ui';
+import { SPageTabs, SSelect, SButton } from '@soybeanjs/ui';
 import type {
   PageTabsOptionData,
   SelectOptionData,
   PageTabsVariant,
   PageTabsState,
-  PageTabsContextMenuOptionData,
-  SButton
+  PageTabsContextMenuOptionData
 } from '@soybeanjs/ui';
 
 const variant = ref<PageTabsVariant>('chrome');
@@ -123,7 +122,7 @@ const menuFactory = (tab: PageTabsOptionData, state: PageTabsState) => {
     v-model:items="items"
     :variant="variant"
     :menu-factory="menuFactory"
-    class="h-12 px-2 border rounded-sm"
+    class="h-12 border rounded-sm"
   />
   <SButton variant="pure" class="mt-4" @click="addTab">Add Tab</SButton>
 </template>

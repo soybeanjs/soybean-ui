@@ -13,6 +13,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<PageTabsProps<T>>(), {
+  size: 'md',
   variant: 'chrome',
   loop: true
 });
@@ -52,10 +53,10 @@ providePageTabsUi(ui);
     </template>
     <template #indicator>
       <template v-if="variant === 'chrome'">
-        <svg height="100%" width="100%" viewBox="0 0 8 8" :class="ui.chromeBgLeft">
+        <svg viewBox="0 0 8 8" :class="ui.chromeBgLeft">
           <path d="M 0 8 A 8 8 0 0 0 8 0 L 8 8 Z" />
         </svg>
-        <svg height="100%" width="100%" viewBox="0 0 8 8" :class="ui.chromeBgRight">
+        <svg viewBox="0 0 8 8" :class="ui.chromeBgRight">
           <path d="M 0 0 A 8 8 0 0 0 8 8 L 0 8 Z" />
         </svg>
       </template>
