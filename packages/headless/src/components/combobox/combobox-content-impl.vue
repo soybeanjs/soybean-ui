@@ -69,6 +69,8 @@ function isEventTargetWithinCombobox(target: EventTarget | null) {
 
 const { pointerEvents, onFocusCapture, onBlurCapture } = useDismissableLayer(contentElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
+  // A closed (still exit-animating) layer must not dismiss the interaction that re-opens it.
+  enable: () => open.value,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
   },

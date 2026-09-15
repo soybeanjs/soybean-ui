@@ -38,6 +38,70 @@ async function mountLayer(disable = true, present = true): Promise<VueWrapper> {
 
 const flush = () => Promise.resolve().then(() => nextTick());
 
+// Outside listeners are attached on a macrotask (so the interaction that mounts a layer is never
+// read as an outside one), which a test has to let through before pressing.
+const flushPendingTimers = () => new Promise<void>(resolve => void setTimeout(resolve, 0));
+
+// Layer whose closure is reported, so a test can drive `enable` independently of presence —
+// mirroring a popup that stays mounted through its exit animation after `open` turns false.
+const GatedLayer = defineComponent({
+  props: {
+    enable: { type: Boolean, default: true }
+  },
+  emits: ['dismiss'],
+  setup(props, { emit }) {
+    const layerElement = shallowRef<HTMLElement | undefined>();
+
+    useDismissableLayer(layerElement, {
+      enable: () => props.enable,
+      onDismiss: () => emit('dismiss')
+    });
+
+    return () => h('div', { ref: layerElement, 'data-dismissable-layer': '' });
+  }
+});
+
+const pressOutside = () => document.body.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }));
+
+describe('useDismissableLayer enable gate', () => {
+  beforeEach(() => {
+    document.body.innerHTML = '';
+  });
+
+  afterEach(() => {
+    wrappers.forEach(wrapper => wrapper.unmount());
+    wrappers = [];
+  });
+
+  it('only dismisses outside presses that begin while the layer is enabled', async () => {
+    const wrapper = mount(GatedLayer, { props: { enable: true }, attachTo: document.body });
+    wrappers.push(wrapper);
+    await nextTick();
+    await nextTick();
+    await flushPendingTimers();
+
+    pressOutside();
+    expect(wrapper.emitted('dismiss')).toHaveLength(1);
+
+    // Closing keeps the layer mounted while its exit animation runs: outside presses are ignored.
+    await wrapper.setProps({ enable: false });
+    await nextTick();
+    pressOutside();
+    expect(wrapper.emitted('dismiss')).toHaveLength(1);
+
+    // The press that re-enables the layer must not dismiss the layer it just re-opened — the
+    // listener is only re-attached once the current task is over.
+    await wrapper.setProps({ enable: true });
+    await nextTick();
+    pressOutside();
+    expect(wrapper.emitted('dismiss')).toHaveLength(1);
+
+    await flushPendingTimers();
+    pressOutside();
+    expect(wrapper.emitted('dismiss')).toHaveLength(2);
+  });
+});
+
 describe('useDismissableLayer body pointer-events', () => {
   beforeEach(() => {
     document.body.innerHTML = '';

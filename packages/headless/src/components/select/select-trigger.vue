@@ -49,11 +49,14 @@ const onOpen = () => {
 const onPointerOpen = (event: PointerEvent) => {
   onOpen();
 
-  const { pageX, pageY } = event;
+  const { clientX, clientY } = event;
 
+  // Recorded in viewport coordinates: opening the content locks the body scroll, which zeroes
+  // `window.scrollY` while the press is still in flight. Page coordinates would then differ from
+  // the release position by the whole scroll offset and read as a drag.
   setTriggerPointerDownPosition({
-    x: Math.round(pageX),
-    y: Math.round(pageY)
+    x: Math.round(clientX),
+    y: Math.round(clientY)
   });
 };
 

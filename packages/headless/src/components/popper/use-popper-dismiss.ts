@@ -132,6 +132,8 @@ export function usePopperDismiss(options: UsePopperDismissOptions) {
   return {
     ...useDismissableLayer(layerElement, {
       disableOutsidePointerEvents: context.modal,
+      // A closed (still exit-animating) layer must not dismiss the interaction that re-opens it.
+      enable: context.open,
       onEscapeKeyDown,
       onPointerDownOutside,
       onFocusOutside,

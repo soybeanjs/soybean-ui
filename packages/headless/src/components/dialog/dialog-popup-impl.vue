@@ -23,6 +23,7 @@ const {
   alertType,
   draggable,
   fullscreen,
+  open,
   onOpenChange,
   setTriggerElement,
   popupElement,
@@ -38,6 +39,8 @@ const {
 
 const { pointerEvents, onFocusCapture, onBlurCapture } = useDismissableLayer(popupElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
+  // A closed (still exit-animating) popup must not dismiss the interaction that re-opens it.
+  enable: () => Boolean(open.value),
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
   },

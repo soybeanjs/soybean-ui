@@ -81,6 +81,8 @@ const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentEleme
 
 const { pointerEvents, onFocusCapture, onBlurCapture } = useDismissableLayer(positionerElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
+  // A closed (still exit-animating) layer must not dismiss the interaction that re-opens it.
+  enable: () => Boolean(open.value),
   onEscapeKeyDown: event => emit('escapeKeyDown', event),
   onPointerDownOutside: event => emit('pointerDownOutside', event),
   onFocusOutside: event => event.preventDefault(),

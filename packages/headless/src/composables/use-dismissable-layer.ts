@@ -25,6 +25,18 @@ export interface UseDismissableLayerOptions extends EmitsToHookProps<Dismissable
    * trigger the element.
    */
   disableOutsidePointerEvents?: MaybeRefOrGetter<boolean>;
+  /**
+   * Whether the layer currently counts as open. Outside interactions (`pointerdown`, focus) are only handled while this
+   * is `true`, and it should be wired to the caller's `open` state for any layer kept mounted by an exit animation.
+   *
+   * A closed-but-still-mounted layer would otherwise keep dismissing outside interactions, and the interaction that
+   * re-opens the layer is itself an outside one: the trigger's `pointerdown` opens the layer, the same event then
+   * reaches the document, and the closing layer dismisses the layer it just re-opened — the popup flashes open and
+   * closes again. Handling only interactions that begin while the layer is open keeps that reopen intact.
+   *
+   * @defaultValue true
+   */
+  enable?: MaybeRefOrGetter<boolean>;
   /** Handler called when the `DismissableLayer` should be dismissed */
   onDismiss?: () => void;
 }
@@ -50,6 +62,7 @@ export function useDismissableLayer(
 ) {
   const {
     disableOutsidePointerEvents,
+    enable = true,
     onEscapeKeyDown,
     onPointerDownOutside,
     onFocusOutside,
@@ -80,35 +93,43 @@ export function useDismissableLayer(
     return isPointerEventsEnabled.value ? 'auto' : 'none';
   });
 
-  const { onPointerdownCapture } = usePointerdownOutside(layerElement, event => {
-    if (!isPointerEventsEnabled.value) return;
+  const { onPointerdownCapture } = usePointerdownOutside(
+    layerElement,
+    event => {
+      if (!isPointerEventsEnabled.value) return;
 
-    const target = event.target as HTMLElement;
+      const target = event.target as HTMLElement;
 
-    const isPointerdownOnBranch = [...layerContext.branches].some(branch => branch.contains(target));
-    if (isPointerdownOnBranch) return;
+      const isPointerdownOnBranch = [...layerContext.branches].some(branch => branch.contains(target));
+      if (isPointerdownOnBranch) return;
 
-    onPointerDownOutside?.(event);
-    onInteractOutside?.(event);
+      onPointerDownOutside?.(event);
+      onInteractOutside?.(event);
 
-    if (!event.defaultPrevented) {
-      onDismiss?.();
-    }
-  });
+      if (!event.defaultPrevented) {
+        onDismiss?.();
+      }
+    },
+    enable
+  );
 
-  const { onFocusCapture, onBlurCapture } = useFocusOutside(layerElement, event => {
-    const target = event.target as HTMLElement;
+  const { onFocusCapture, onBlurCapture } = useFocusOutside(
+    layerElement,
+    event => {
+      const target = event.target as HTMLElement;
 
-    const isFocusInBranch = [...layerContext.branches].some(branch => branch.contains(target));
-    if (isFocusInBranch) return;
+      const isFocusInBranch = [...layerContext.branches].some(branch => branch.contains(target));
+      if (isFocusInBranch) return;
 
-    onFocusOutside?.(event);
-    onInteractOutside?.(event);
+      onFocusOutside?.(event);
+      onInteractOutside?.(event);
 
-    if (!event.defaultPrevented) {
-      onDismiss?.();
-    }
-  });
+      if (!event.defaultPrevented) {
+        onDismiss?.();
+      }
+    },
+    enable
+  );
 
   useEscapeKeyDown(ownerDocument, event => {
     const isHighestLayer = index.value === layerContext.layers.size - 1;
@@ -212,6 +233,9 @@ export function useDismissableLayerBranch(branchElementRef: ShallowRef<HTMLEleme
 /**
  * Listens for `pointerdown` outside a DOM subtree. We use `pointerdown` rather than `pointerup` to mimic layer
  * dismissing behavior present in OS. Returns props to pass to the node we want to check for outside events.
+ *
+ * `enable` gates the listener itself: while it is `false` no outside `pointerdown` is observed at all, so a layer that
+ * is dismissing must pass its `open` state here rather than filtering inside the callback.
  */
 export function usePointerdownOutside(
   node: ShallowRef<HTMLElement | undefined>,

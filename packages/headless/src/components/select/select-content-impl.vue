@@ -64,6 +64,9 @@ const { search, handleTypeaheadSearch } = useTypeahead();
 
 const { pointerEvents, onFocusCapture, onBlurCapture } = useDismissableLayer(positionerElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
+  // The exit animation keeps this content mounted after `open` turns false. A closed layer must not dismiss outside
+  // interactions, or the very `pointerdown` that re-opens the select from the trigger closes it again.
+  enable: () => Boolean(open.value),
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
   },
@@ -176,9 +179,12 @@ watchEffect(() => {
   const onPointerMove = (event: PointerEvent) => {
     const { x, y } = triggerPointerDownPosition.value ?? { x: 0, y: 0 };
 
+    // Measured in the same viewport space the trigger recorded in (see
+    // `setTriggerPointerDownPosition`); the body scroll lock zeroes `window.scrollY` while open, so
+    // page coordinates would report the scroll offset as pointer movement.
     pointerMoveDelta = {
-      x: Math.abs(Math.round(event.pageX) - x),
-      y: Math.abs(Math.round(event.pageY) - y)
+      x: Math.abs(Math.round(event.clientX) - x),
+      y: Math.abs(Math.round(event.clientY) - y)
     };
   };
 
