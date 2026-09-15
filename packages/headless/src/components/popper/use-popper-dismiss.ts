@@ -30,7 +30,10 @@ export function usePopperDismiss(options: UsePopperDismissOptions) {
   const { layerElement, context } = options;
   const popupEvents = usePopupEvents({
     modal: context.modal,
-    triggerElement: context.triggerElement
+    triggerElement: context.triggerElement,
+    // A contextmenu trigger opens on a right click and is never toggled by a left click, so a
+    // left press on it is an ordinary outside press and has to dismiss the layer.
+    swallowTriggerPointerDown: computed(() => context.triggerType.value !== 'contextmenu')
   });
 
   let dismissReason: Extract<PopperOpenChangeReason, 'dismiss-outside' | 'dismiss-escape'> = 'dismiss-outside';

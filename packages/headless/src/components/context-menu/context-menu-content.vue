@@ -31,8 +31,11 @@ function onCloseAutoFocus(event: Event) {
 
 function onInteractOutside(event: PointerDownOutsideEvent | FocusOutsideEvent) {
   const originalEvent = event.detail.originalEvent as PointerEvent;
-  // Prevent closing when right click (button=2) with the trigger element
-  if (originalEvent.button === 2 && event.target === triggerElement.value) {
+  const target = event.target as HTMLElement;
+  // A right click is the gesture that opened the menu, so it repositions the open menu instead
+  // of closing it. It counts anywhere inside the trigger: a real right click lands on the
+  // trigger's inner content, not on the trigger node itself.
+  if (originalEvent.button === 2 && triggerElement.value?.contains(target)) {
     event.preventDefault();
   }
 

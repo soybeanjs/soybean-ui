@@ -208,8 +208,6 @@ watchEffect(() => {
       :items="contextMenus"
       :trigger-props="{ reference }"
       @select="handleSelect"
-    >
-      <template #trigger />
-    </ContextMenuCompact>
+    />
   </PageTabsRoot>
 </template>

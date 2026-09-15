@@ -1,4 +1,5 @@
-import type { ComputedRef, ShallowRef } from 'vue';
+import { toValue } from 'vue';
+import type { ComputedRef, MaybeRefOrGetter, ShallowRef } from 'vue';
 import type { FocusOutsideEvent, ModalityTier, PointerDownOutsideEvent } from '../types';
 
 export interface UsePopupEventsOptions {
@@ -11,10 +12,18 @@ export interface UsePopupEventsOptions {
    * The trigger element.
    */
   triggerElement: ShallowRef<HTMLElement | undefined>;
+  /**
+   * Whether an outside pointerdown landing on the trigger element is swallowed instead of
+   * dismissing the layer. Keep it on for triggers that toggle on click: the trigger already
+   * closes the popup, so dismissing here would close and immediately reopen. A contextmenu
+   * trigger is opened by a right click and never toggled by a left click, so a press on it
+   * dismisses like any other outside press and turns this off.
+   */
+  swallowTriggerPointerDown?: MaybeRefOrGetter<boolean>;
 }
 
 export function usePopupEvents(options: UsePopupEventsOptions) {
-  const { modal, triggerElement } = options;
+  const { modal, triggerElement, swallowTriggerPointerDown } = options;
 
   let hasInteractedOutsideRef = false;
   let hasPointerDownOutsideRef = false;
@@ -39,11 +48,11 @@ export function usePopupEvents(options: UsePopupEventsOptions) {
       }
     }
 
-    // Prevent dismissing when clicking the trigger.
-    // As the trigger is already setup to close, without doing so would
-    // cause it to close and immediately open.
+    // Prevent dismissing when clicking a trigger that is already setup to close the popup,
+    // without doing so it would close and immediately open again.
     const target = event.target as HTMLElement;
-    const targetIsTrigger = triggerElement.value?.contains(target);
+    const swallowsTriggerPress = toValue(swallowTriggerPointerDown ?? true);
+    const targetIsTrigger = swallowsTriggerPress && Boolean(triggerElement.value?.contains(target));
     if (targetIsTrigger) {
       event.preventDefault();
     }
