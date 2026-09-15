@@ -668,6 +668,7 @@
         "breadcrumblistprops": {
           "props": "BreadcrumbList 组件的属性。"
         },
+        "breadcrumboptiondata": "",
         "breadcrumbpageprops": {
           "props": "BreadcrumbPage 组件的属性。"
         },
@@ -6241,6 +6242,8 @@
           },
           "slots": "PageTabsCompact 组件的插槽。"
         },
+        "pagetabscontextmenuoptiondata": "",
+        "pagetabsdragevent": "",
         "pagetabsitememits": {
           "emits": "PageTabsItem 组件的事件。"
         },
@@ -6253,6 +6256,7 @@
           },
           "props": "PageTabsItem 组件的属性。"
         },
+        "pagetabsoptiondata": "",
         "pagetabspinprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
@@ -10033,7 +10037,8 @@
         "placement": "",
         "selectionbehavior": "",
         "side": "",
-        "swipedirection": ""
+        "swipedirection": "",
+        "uiclass": ""
       },
       "packages_headless_src_types_dom": {
         "imageloadingstatus": ""
@@ -10214,6 +10219,114 @@
           },
           "props": "Anchor 组件的属性。"
         }
+      },
+      "packages_ui_src_components_app_shell_types": {
+        "appshellemits": {
+          "callables": {
+            "breadcrumbclick": "",
+            "open": "",
+            "select": "",
+            "tabclick": "",
+            "tabclose": "",
+            "tabcontextmenu": "",
+            "tabdragend": "",
+            "tabdragmove": "",
+            "tabdragreorder": "",
+            "tabdragstart": "",
+            "tabpin": "",
+            "tabselectcontextmenu": "",
+            "update_modelvalue": "",
+            "update_open": "",
+            "update_tabs": "",
+            "update_tabvalue": ""
+          },
+          "emits": ""
+        },
+        "appshelllogoplacement": "",
+        "appshelllogoplacementresolved": "",
+        "appshelllogoslotprops": {
+          "members": {
+            "collapsed": "",
+            "placement": ""
+          },
+          "slotprops": ""
+        },
+        "appshellmenuitem": "",
+        "appshellmenuprops": {
+          "members": {
+            "nav": "",
+            "split": "",
+            "tree": ""
+          },
+          "props": ""
+        },
+        "appshellmenuslotprops": {
+          "members": {
+            "collapsed": "",
+            "collapsedwidth": "",
+            "headermountid": "",
+            "mode": "",
+            "side": "",
+            "sidebarmountid": ""
+          },
+          "slotprops": ""
+        },
+        "appshellmenuui": {
+          "members": {
+            "nav": "",
+            "split": "",
+            "tree": ""
+          }
+        },
+        "appshellmode": "",
+        "appshellprops": {
+          "members": {
+            "breadcrumbprops": "",
+            "breadcrumbs": "",
+            "breadcrumbui": "",
+            "breadcrumbvisible": "",
+            "class": "",
+            "defaultopen": "",
+            "defaultvalue": "",
+            "ismobile": "",
+            "items": "",
+            "layoutprops": "",
+            "layoutui": "",
+            "logoplacement": "",
+            "menuprops": "",
+            "menuui": "",
+            "mode": "",
+            "modelvalue": "",
+            "open": "",
+            "side": "",
+            "size": "",
+            "tabprops": "",
+            "tabs": "",
+            "tabui": "",
+            "tabvalue": "",
+            "triggervisible": "",
+            "ui": ""
+          },
+          "props": ""
+        },
+        "appshellslots": {
+          "callables": {
+            "breadcrumb": "",
+            "default": "",
+            "footer": "",
+            "header": "",
+            "header_end": "",
+            "header_start": "",
+            "logo": "",
+            "menu": "",
+            "sidebar_end": "",
+            "sidebar_start": "",
+            "tabs": ""
+          },
+          "slots": ""
+        },
+        "appshelluislot": "",
+        "type": ""
       },
       "packages_ui_src_components_autocomplete_types": {
         "autocompleteemits": {

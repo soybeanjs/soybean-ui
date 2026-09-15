@@ -80,10 +80,10 @@ Properties for the Command component.
 - `selectionBehavior`: How multiple selection should behave in the collection. (type `SelectionBehavior`; default `'toggle'`; optional)
 - `disabled`: When `true`, prevents the user from interacting with listbox (type `boolean`; optional)
 - `dir`: The reading direction of the listbox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode. (type `Direction`; optional)
+- `orientation`: The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 - `name`: The name of the field. Submitted with its owning form as part of a name/value pair. (type `string`; optional)
 - `highlightOnHover`: When `true`, hover over item will trigger highlight (type `boolean`; optional)
 - `required`: When `true`, indicates that the user must set the value before the owning form can be submitted. (type `boolean`; optional)
-- `orientation`: The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 
 #### Emits
 
@@ -139,10 +139,10 @@ Properties for the CommandCompact component.
 - `selectionBehavior`: How multiple selection should behave in the collection. (type `SelectionBehavior`; default `'toggle'`; optional)
 - `disabled`: When `true`, prevents the user from interacting with listbox (type `boolean`; optional)
 - `dir`: The reading direction of the listbox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode. (type `Direction`; optional)
+- `orientation`: The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 - `name`: The name of the field. Submitted with its owning form as part of a name/value pair. (type `string`; optional)
 - `highlightOnHover`: When `true`, hover over item will trigger highlight (type `boolean`; optional)
 - `required`: When `true`, indicates that the user must set the value before the owning form can be submitted. (type `boolean`; optional)
-- `orientation`: The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 
 #### Emits
 

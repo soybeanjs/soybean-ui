@@ -88,6 +88,15 @@
       "arrow": {
         "basic": "基础"
       },
+      "app-shell": {
+        "basic": "基础",
+        "collapse-mobile": "折叠与移动端",
+        "custom-slots": "自定义插槽",
+        "layout-composition": "布局手写对照",
+        "split-modes": "分栏模式",
+        "tabs-breadcrumb": "页签与面包屑",
+        "top": "顶部菜单"
+      },
       "aspect-ratio": {
         "basic": "基础"
       },

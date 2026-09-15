@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "SegmentProps",
         "type": "Interface SegmentProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<SegmentUi>; size?: ThemeSize; shape?: SegmentShape; fill?: SegmentFill; items: T[]; enableIndicator?: boolean; listProps?: SegmentListProps; triggerProps?: SegmentTriggerProps; indicatorProps?: SegmentIndicatorProps; modelValue?: T['value'] | null; defaultValue?: T['value'] | null; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<SegmentUi>; size?: ThemeSize; shape?: SegmentShape; fill?: SegmentFill; items: T[]; enableIndicator?: boolean; listProps?: SegmentListProps; triggerProps?: SegmentTriggerProps; indicatorProps?: SegmentIndicatorProps; modelValue?: T['value'] | null; defaultValue?: T['value'] | null; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation }",
         "description": "Properties for the Segment component.",
         "descriptionKey": "api.generated.packages_ui_src_components_segment_types.segmentprops.props",
         "sourcePath": "packages/ui/src/components/segment/types.ts",
@@ -386,6 +386,17 @@
             ]
           },
           {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_ui_src_components_segment_types.segmentprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "orientation",
             "type": "DataOrientation",
             "required": false,
@@ -409,17 +420,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "loop",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether keyboard navigation should loop around",
-            "descriptionKey": "api.generated.packages_ui_src_components_segment_types.segmentprops.members.loop",
-            "default": "false",
-            "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
-            "referencedTypes": []
           }
         ],
         "callables": [],
@@ -503,7 +503,7 @@
         "kind": "props",
         "name": "SegmentCompactProps",
         "type": "Interface SegmentCompactProps<T>",
-        "resolvedType": "{ items: T[]; enableIndicator?: boolean; listProps?: SegmentListProps; triggerProps?: SegmentTriggerProps; indicatorProps?: SegmentIndicatorProps; modelValue?: T['value'] | null; defaultValue?: T['value'] | null; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean }",
+        "resolvedType": "{ items: T[]; enableIndicator?: boolean; listProps?: SegmentListProps; triggerProps?: SegmentTriggerProps; indicatorProps?: SegmentIndicatorProps; modelValue?: T['value'] | null; defaultValue?: T['value'] | null; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation }",
         "description": "Properties for the SegmentCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentcompactprops.props",
         "sourcePath": "packages/headless/src/components/segment/types.ts",
@@ -758,6 +758,17 @@
             ]
           },
           {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentcompactprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "orientation",
             "type": "DataOrientation",
             "required": false,
@@ -781,17 +792,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "loop",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether keyboard navigation should loop around",
-            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentcompactprops.members.loop",
-            "default": "false",
-            "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
-            "referencedTypes": []
           }
         ],
         "callables": [],
@@ -950,7 +950,7 @@
         "kind": "props",
         "name": "SegmentRootProps",
         "type": "Interface SegmentRootProps<T>",
-        "resolvedType": "{ modelValue?: T; defaultValue?: T; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean }",
+        "resolvedType": "{ modelValue?: T; defaultValue?: T; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation }",
         "description": "Properties for the SegmentRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentrootprops.props",
         "sourcePath": "packages/headless/src/components/segment/types.ts",
@@ -1040,6 +1040,17 @@
             ]
           },
           {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentrootprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "orientation",
             "type": "DataOrientation",
             "required": false,
@@ -1063,17 +1074,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "loop",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether keyboard navigation should loop around",
-            "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentrootprops.members.loop",
-            "default": "false",
-            "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
-            "referencedTypes": []
           }
         ],
         "callables": [],

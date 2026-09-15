@@ -19,7 +19,8 @@ export const newlyComponentKeys = [
   'calendarRange',
   'timeField',
   'timeRangeField',
-  'splitNav'
+  'splitNav',
+  'appShell'
 ];
 
 export const menuData: MenuData[] = [
@@ -31,7 +32,7 @@ export const menuData: MenuData[] = [
   {
     value: 'groupLayout',
     i18n: 'sidebar.layout',
-    items: ['aspectRatio', 'layout', 'separator', 'splitter', 'toolbar']
+    items: ['appShell', 'aspectRatio', 'layout', 'separator', 'splitter', 'toolbar']
   },
   {
     value: 'navigation',

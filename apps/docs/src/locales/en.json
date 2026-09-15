@@ -88,6 +88,15 @@
       "arrow": {
         "basic": "Basic"
       },
+      "app-shell": {
+        "basic": "Basic",
+        "collapse-mobile": "Collapse & Mobile",
+        "custom-slots": "Custom Slots",
+        "layout-composition": "Layout Composition",
+        "split-modes": "Split Modes",
+        "tabs-breadcrumb": "Tabs & Breadcrumb",
+        "top": "Top Menu"
+      },
       "aspect-ratio": {
         "basic": "Basic"
       },

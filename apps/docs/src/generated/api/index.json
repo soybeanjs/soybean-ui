@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-13T14:09:41.258Z",
+  "generatedAt": "2026-09-14T16:18:40.230Z",
   "packages": {
     "headless": {
       "components": {
@@ -79,6 +79,11 @@
           "component": "anchor",
           "file": "anchor.json",
           "symbols": ["Anchor", "AnchorCompact", "AnchorItemCompact", "AnchorLink", "AnchorRoot"]
+        },
+        "app-shell": {
+          "component": "app-shell",
+          "file": "app-shell.json",
+          "symbols": ["AppShell", "AppShellLogo", "AppShellMenu"]
         },
         "aspect-ratio": {
           "component": "aspect-ratio",

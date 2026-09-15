@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "TreeMenuProps",
         "type": "Interface TreeMenuProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<Record<TreeMenuUiSlot, ClassValue>>; modelValue?: string; defaultValue?: string; expanded?: string[]; defaultExpanded?: string[]; expandStrategy?: TreeMenuExpandStrategy; collapsed?: boolean; defaultCollapsed?: boolean; collapsedWidth?: number; indent?: number; pxToRem?: ((px: number) => number); items: TreeMenuOptionData<T>[]; groupRootProps?: TreeMenuGroupRootProps; groupProps?: TreeMenuGroupProps; groupLabelProps?: TreeMenuGroupLabelProps; showGroupIcon?: boolean; side?: HorizontalSide; itemProps?: TreeMenuItemProps; linkProps?: LinkExtraProps; subProps?: TreeMenuSubProps; buttonProps?: TreeMenuButtonProps; collapsibleProps?: TreeMenuCollapsibleProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<Record<TreeMenuUiSlot, ClassValue>>; modelValue?: string; defaultValue?: string; expanded?: string[]; defaultExpanded?: string[]; expandStrategy?: TreeMenuExpandStrategy; collapsed?: boolean; defaultCollapsed?: boolean; collapsedWidth?: number; indent?: number; pxToRem?: ((px: number) => number); items: TreeMenuOptionData<T>[]; groupRootProps?: TreeMenuGroupRootProps; groupProps?: TreeMenuGroupProps; groupLabelProps?: TreeMenuGroupLabelProps; showGroupIcon?: boolean; side?: HorizontalSide; itemProps?: TreeMenuItemProps; buttonProps?: TreeMenuButtonProps; linkProps?: LinkExtraProps; collapsibleProps?: TreeMenuCollapsibleProps; subProps?: TreeMenuSubProps }",
         "description": "Properties for the TreeMenu component.",
         "descriptionKey": "api.generated.packages_ui_src_components_tree_menu_types.treemenuprops.props",
         "sourcePath": "packages/ui/src/components/tree-menu/types.ts",
@@ -88,7 +88,7 @@
               {
                 "name": "TreeMenuUiSlot",
                 "kind": "typeAlias",
-                "type": "'root' | 'item' | 'button' | 'sub' | 'group' | 'groupLabel' | 'groupRoot' | 'itemLabel' | 'itemLinkIcon' | 'itemAbsolute' | 'itemTag' | 'itemAction' | 'collapsibleIcon' | 'collapsibleRoot' | 'collapsibleTrigger' | 'collapsibleContent' | 'tooltipPositioner' | 'tooltipPopup' | 'tooltipArrow' | 'badgeRoot' | 'badgeContent'",
+                "type": "'root' | 'item' | 'button' | 'sub' | 'groupRoot' | 'groupLabel' | 'group' | 'itemLabel' | 'itemAbsolute' | 'itemTag' | 'itemAction' | 'itemLinkIcon' | 'collapsibleIcon' | 'collapsibleRoot' | 'collapsibleTrigger' | 'collapsibleContent' | 'tooltipPositioner' | 'tooltipPopup' | 'tooltipArrow' | 'badgeRoot' | 'badgeContent'",
                 "resolvedType": null,
                 "description": "Available UI slots for the TreeMenu component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenuuislot",
@@ -440,6 +440,87 @@
             ]
           },
           {
+            "name": "buttonProps",
+            "type": "TreeMenuButtonProps",
+            "required": false,
+            "description": "Properties forwarded to the button element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_menu_types.treemenuprops.members.buttonprops",
+            "default": null,
+            "inheritedFrom": "buttonProps",
+            "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuButtonProps",
+                "kind": "interface",
+                "type": "TreeMenuButtonProps",
+                "resolvedType": "{ disabledSelect?: boolean; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TreeMenuButton component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops",
+                "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabledSelect",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from selecting the item.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.disabledselect",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "linkProps",
             "type": "LinkExtraProps",
             "required": false,
@@ -453,7 +534,7 @@
                 "name": "LinkExtraProps",
                 "kind": "interface",
                 "type": "LinkExtraProps",
-                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
+                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
                 "description": "Properties for the LinkExtra component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops",
                 "sourcePath": "packages/headless/src/components/link/types.ts",
@@ -550,7 +631,7 @@
                   },
                   {
                     "name": "ariaCurrentValue",
-                    "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+                    "type": "'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'",
                     "required": false,
                     "description": "Value passed to the attribute `aria-current` when the link is exact active.",
                     "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops.members.ariacurrentvalue",
@@ -642,135 +723,6 @@
             ]
           },
           {
-            "name": "subProps",
-            "type": "TreeMenuSubProps",
-            "required": false,
-            "description": "Properties forwarded to the sub element.",
-            "descriptionKey": "api.generated.packages_ui_src_components_tree_menu_types.treemenuprops.members.subprops",
-            "default": null,
-            "inheritedFrom": "subProps",
-            "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TreeMenuSubProps",
-                "kind": "interface",
-                "type": "TreeMenuSubProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the TreeMenuSub component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops",
-                "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "asChild",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops.members.aschild",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "as",
-                    "type": "AsTag | Component",
-                    "required": false,
-                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops.members.as",
-                    "default": "'div'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "buttonProps",
-            "type": "TreeMenuButtonProps",
-            "required": false,
-            "description": "Properties forwarded to the button element.",
-            "descriptionKey": "api.generated.packages_ui_src_components_tree_menu_types.treemenuprops.members.buttonprops",
-            "default": null,
-            "inheritedFrom": "buttonProps",
-            "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TreeMenuButtonProps",
-                "kind": "interface",
-                "type": "TreeMenuButtonProps",
-                "resolvedType": "{ disabledSelect?: boolean; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the TreeMenuButton component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops",
-                "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "disabledSelect",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "When `true`, prevents the user from selecting the item.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.disabledselect",
-                    "default": "false",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "type",
-                    "type": "ButtonType",
-                    "required": false,
-                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.type",
-                    "default": "'button'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/button/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "disabled",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether the component is disabled.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.disabled",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/button/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "asChild",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.aschild",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "as",
-                    "type": "AsTag | Component",
-                    "required": false,
-                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.as",
-                    "default": "'div'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "collapsibleProps",
             "type": "TreeMenuCollapsibleProps",
             "required": false,
@@ -819,6 +771,54 @@
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
                     "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenucollapsibleprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "subProps",
+            "type": "TreeMenuSubProps",
+            "required": false,
+            "description": "Properties forwarded to the sub element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_menu_types.treemenuprops.members.subprops",
+            "default": null,
+            "inheritedFrom": "subProps",
+            "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuSubProps",
+                "kind": "interface",
+                "type": "TreeMenuSubProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TreeMenuSub component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops",
+                "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -1346,7 +1346,7 @@
         "kind": "props",
         "name": "TreeMenuCompactProps",
         "type": "Interface TreeMenuCompactProps<T>",
-        "resolvedType": "{ modelValue?: string; defaultValue?: string; expanded?: string[]; defaultExpanded?: string[]; expandStrategy?: TreeMenuExpandStrategy; collapsed?: boolean; defaultCollapsed?: boolean; collapsedWidth?: number; indent?: number; pxToRem?: ((px: number) => number); items: TreeMenuOptionData<T>[]; groupRootProps?: TreeMenuGroupRootProps; groupProps?: TreeMenuGroupProps; groupLabelProps?: TreeMenuGroupLabelProps; showGroupIcon?: boolean; side?: HorizontalSide; itemProps?: TreeMenuItemProps; linkProps?: LinkExtraProps; subProps?: TreeMenuSubProps; buttonProps?: TreeMenuButtonProps; collapsibleProps?: TreeMenuCollapsibleProps }",
+        "resolvedType": "{ modelValue?: string; defaultValue?: string; expanded?: string[]; defaultExpanded?: string[]; expandStrategy?: TreeMenuExpandStrategy; collapsed?: boolean; defaultCollapsed?: boolean; collapsedWidth?: number; indent?: number; pxToRem?: ((px: number) => number); items: TreeMenuOptionData<T>[]; groupRootProps?: TreeMenuGroupRootProps; groupProps?: TreeMenuGroupProps; groupLabelProps?: TreeMenuGroupLabelProps; showGroupIcon?: boolean; side?: HorizontalSide; itemProps?: TreeMenuItemProps; buttonProps?: TreeMenuButtonProps; linkProps?: LinkExtraProps; collapsibleProps?: TreeMenuCollapsibleProps; subProps?: TreeMenuSubProps }",
         "description": "Properties for the TreeMenuCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenucompactprops.props",
         "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
@@ -1692,6 +1692,87 @@
             ]
           },
           {
+            "name": "buttonProps",
+            "type": "TreeMenuButtonProps",
+            "required": false,
+            "description": "Properties forwarded to the button element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenucompactprops.members.buttonprops",
+            "default": null,
+            "inheritedFrom": "buttonProps",
+            "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuButtonProps",
+                "kind": "interface",
+                "type": "TreeMenuButtonProps",
+                "resolvedType": "{ disabledSelect?: boolean; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TreeMenuButton component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops",
+                "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabledSelect",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from selecting the item.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.disabledselect",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "linkProps",
             "type": "LinkExtraProps",
             "required": false,
@@ -1705,7 +1786,7 @@
                 "name": "LinkExtraProps",
                 "kind": "interface",
                 "type": "LinkExtraProps",
-                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
+                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
                 "description": "Properties for the LinkExtra component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops",
                 "sourcePath": "packages/headless/src/components/link/types.ts",
@@ -1802,7 +1883,7 @@
                   },
                   {
                     "name": "ariaCurrentValue",
-                    "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+                    "type": "'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'",
                     "required": false,
                     "description": "Value passed to the attribute `aria-current` when the link is exact active.",
                     "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops.members.ariacurrentvalue",
@@ -1894,135 +1975,6 @@
             ]
           },
           {
-            "name": "subProps",
-            "type": "TreeMenuSubProps",
-            "required": false,
-            "description": "Properties forwarded to the sub element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenucompactprops.members.subprops",
-            "default": null,
-            "inheritedFrom": "subProps",
-            "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TreeMenuSubProps",
-                "kind": "interface",
-                "type": "TreeMenuSubProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the TreeMenuSub component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops",
-                "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "asChild",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops.members.aschild",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "as",
-                    "type": "AsTag | Component",
-                    "required": false,
-                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops.members.as",
-                    "default": "'div'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "buttonProps",
-            "type": "TreeMenuButtonProps",
-            "required": false,
-            "description": "Properties forwarded to the button element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenucompactprops.members.buttonprops",
-            "default": null,
-            "inheritedFrom": "buttonProps",
-            "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TreeMenuButtonProps",
-                "kind": "interface",
-                "type": "TreeMenuButtonProps",
-                "resolvedType": "{ disabledSelect?: boolean; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the TreeMenuButton component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops",
-                "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "disabledSelect",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "When `true`, prevents the user from selecting the item.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.disabledselect",
-                    "default": "false",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "type",
-                    "type": "ButtonType",
-                    "required": false,
-                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.type",
-                    "default": "'button'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/button/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "disabled",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether the component is disabled.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.disabled",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/button/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "asChild",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.aschild",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "as",
-                    "type": "AsTag | Component",
-                    "required": false,
-                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.as",
-                    "default": "'div'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "collapsibleProps",
             "type": "TreeMenuCollapsibleProps",
             "required": false,
@@ -2071,6 +2023,54 @@
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
                     "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenucollapsibleprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "subProps",
+            "type": "TreeMenuSubProps",
+            "required": false,
+            "description": "Properties forwarded to the sub element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenucompactprops.members.subprops",
+            "default": null,
+            "inheritedFrom": "subProps",
+            "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuSubProps",
+                "kind": "interface",
+                "type": "TreeMenuSubProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TreeMenuSub component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops",
+                "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -2938,7 +2938,7 @@
                 "name": "LinkExtraProps",
                 "kind": "interface",
                 "type": "LinkExtraProps",
-                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
+                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
                 "description": "Properties for the LinkExtra component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops",
                 "sourcePath": "packages/headless/src/components/link/types.ts",
@@ -3035,7 +3035,7 @@
                   },
                   {
                     "name": "ariaCurrentValue",
-                    "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+                    "type": "'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'",
                     "required": false,
                     "description": "Value passed to the attribute `aria-current` when the link is exact active.",
                     "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops.members.ariacurrentvalue",
@@ -3316,7 +3316,7 @@
         "kind": "props",
         "name": "TreeMenuOptionsCompactProps",
         "type": "Interface TreeMenuOptionsCompactProps<T>",
-        "resolvedType": "{ items: TreeMenuOptionData<T>[]; groupRootProps?: TreeMenuGroupRootProps; groupProps?: TreeMenuGroupProps; groupLabelProps?: TreeMenuGroupLabelProps; showGroupIcon?: boolean; side?: HorizontalSide; itemProps?: TreeMenuItemProps; linkProps?: LinkExtraProps; subProps?: TreeMenuSubProps; buttonProps?: TreeMenuButtonProps; collapsibleProps?: TreeMenuCollapsibleProps }",
+        "resolvedType": "{ items: TreeMenuOptionData<T>[]; groupRootProps?: TreeMenuGroupRootProps; groupProps?: TreeMenuGroupProps; groupLabelProps?: TreeMenuGroupLabelProps; showGroupIcon?: boolean; side?: HorizontalSide; itemProps?: TreeMenuItemProps; buttonProps?: TreeMenuButtonProps; linkProps?: LinkExtraProps; collapsibleProps?: TreeMenuCollapsibleProps; subProps?: TreeMenuSubProps }",
         "description": "Properties for the TreeMenuOptionsCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenuoptionscompactprops.props",
         "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
@@ -3538,6 +3538,87 @@
             ]
           },
           {
+            "name": "buttonProps",
+            "type": "TreeMenuButtonProps",
+            "required": false,
+            "description": "Properties forwarded to the button element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenuoptionscompactprops.members.buttonprops",
+            "default": null,
+            "inheritedFrom": "buttonProps",
+            "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuButtonProps",
+                "kind": "interface",
+                "type": "TreeMenuButtonProps",
+                "resolvedType": "{ disabledSelect?: boolean; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TreeMenuButton component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops",
+                "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabledSelect",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from selecting the item.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.disabledselect",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "linkProps",
             "type": "LinkExtraProps",
             "required": false,
@@ -3551,7 +3632,7 @@
                 "name": "LinkExtraProps",
                 "kind": "interface",
                 "type": "LinkExtraProps",
-                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
+                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
                 "description": "Properties for the LinkExtra component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops",
                 "sourcePath": "packages/headless/src/components/link/types.ts",
@@ -3648,7 +3729,7 @@
                   },
                   {
                     "name": "ariaCurrentValue",
-                    "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+                    "type": "'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'",
                     "required": false,
                     "description": "Value passed to the attribute `aria-current` when the link is exact active.",
                     "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops.members.ariacurrentvalue",
@@ -3740,135 +3821,6 @@
             ]
           },
           {
-            "name": "subProps",
-            "type": "TreeMenuSubProps",
-            "required": false,
-            "description": "Properties forwarded to the sub element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenuoptionscompactprops.members.subprops",
-            "default": null,
-            "inheritedFrom": "subProps",
-            "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TreeMenuSubProps",
-                "kind": "interface",
-                "type": "TreeMenuSubProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the TreeMenuSub component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops",
-                "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "asChild",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops.members.aschild",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "as",
-                    "type": "AsTag | Component",
-                    "required": false,
-                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops.members.as",
-                    "default": "'div'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "buttonProps",
-            "type": "TreeMenuButtonProps",
-            "required": false,
-            "description": "Properties forwarded to the button element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenuoptionscompactprops.members.buttonprops",
-            "default": null,
-            "inheritedFrom": "buttonProps",
-            "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "TreeMenuButtonProps",
-                "kind": "interface",
-                "type": "TreeMenuButtonProps",
-                "resolvedType": "{ disabledSelect?: boolean; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the TreeMenuButton component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops",
-                "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "disabledSelect",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "When `true`, prevents the user from selecting the item.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.disabledselect",
-                    "default": "false",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "type",
-                    "type": "ButtonType",
-                    "required": false,
-                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.type",
-                    "default": "'button'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/button/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "disabled",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether the component is disabled.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.disabled",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/button/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "asChild",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.aschild",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "as",
-                    "type": "AsTag | Component",
-                    "required": false,
-                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenubuttonprops.members.as",
-                    "default": "'div'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "collapsibleProps",
             "type": "TreeMenuCollapsibleProps",
             "required": false,
@@ -3917,6 +3869,54 @@
                     "required": false,
                     "description": "The element or component this component should render as. Can be overwrite by `asChild`",
                     "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenucollapsibleprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "subProps",
+            "type": "TreeMenuSubProps",
+            "required": false,
+            "description": "Properties forwarded to the sub element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenuoptionscompactprops.members.subprops",
+            "default": null,
+            "inheritedFrom": "subProps",
+            "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuSubProps",
+                "kind": "interface",
+                "type": "TreeMenuSubProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TreeMenuSub component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops",
+                "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenusubprops.members.as",
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/primitive/types.ts",
@@ -4439,7 +4439,7 @@
                 "name": "LinkExtraProps",
                 "kind": "interface",
                 "type": "LinkExtraProps",
-                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
+                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
                 "description": "Properties for the LinkExtra component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops",
                 "sourcePath": "packages/headless/src/components/link/types.ts",
@@ -4536,7 +4536,7 @@
                   },
                   {
                     "name": "ariaCurrentValue",
-                    "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+                    "type": "'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'",
                     "required": false,
                     "description": "Value passed to the attribute `aria-current` when the link is exact active.",
                     "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops.members.ariacurrentvalue",

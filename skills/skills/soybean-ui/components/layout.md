@@ -184,7 +184,7 @@ Slots for the LayoutCompact component.
 
 Properties for the LayoutPlaceholder component.
 
-- `type`: Which region the placeholder reserves space for. (type `'header' | 'footer' | 'tab'`; required)
+- `type`: Which region the placeholder reserves space for. (type `'header' | 'tab' | 'footer'`; required)
 
 ### LayoutRail
 

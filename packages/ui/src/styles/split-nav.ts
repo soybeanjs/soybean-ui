@@ -1,5 +1,35 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
+import type { ThemeSize } from '@/theme';
+
+/**
+ * Width of the first-level rail and the nested tree pane, in rem, per size.
+ */
+export interface SplitNavPaneMetric {
+  /** First-level rail width. */
+  rail: number;
+  /** Nested vertical tree pane width. */
+  tree: number;
+}
+
+/**
+ * Rail / tree pane widths of `splitNavVariants`, per size.
+ *
+ * The recipe keeps the authoritative literal utility classes
+ * (`[--soybean-split-nav-first-level-width:5rem]`); these numbers exist so a
+ * consumer that must size an outer container to the panes — `SAppShell`
+ * aligning the layout sidebar — can do it without measuring the DOM, which
+ * would be unavailable during SSR. The app-shell unit spec asserts the two
+ * stay in sync.
+ */
+export const splitNavPaneMetrics: Record<ThemeSize, SplitNavPaneMetric> = {
+  xs: { rail: 4, tree: 11.25 },
+  sm: { rail: 4.5, tree: 13.125 },
+  md: { rail: 5, tree: 15 },
+  lg: { rail: 5.5, tree: 16.875 },
+  xl: { rail: 6, tree: 18.75 },
+  '2xl': { rail: 6.5, tree: 22.5 }
+};
 
 export const splitNavVariants = scv({
   slots: {

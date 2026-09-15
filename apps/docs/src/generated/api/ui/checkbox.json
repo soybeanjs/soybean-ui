@@ -50,7 +50,7 @@
               {
                 "name": "CheckboxUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; label: ClassValue; indicator: ClassValue; control: ClassValue; groupRoot: ClassValue; \"indicator-icon\": ClassValue; }",
+                "type": "{ root: ClassValue; label: ClassValue; indicator: ClassValue; groupRoot: ClassValue; control: ClassValue; \"indicator-icon\": ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Checkbox component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_checkbox_types.checkboxui",
@@ -533,7 +533,7 @@
               {
                 "name": "CheckboxCardUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; content: ClassValue; description: ClassValue; label: ClassValue; icon: ClassValue; indicator: ClassValue; control: ClassValue; groupRoot: ClassValue; \"indicator-icon\": ClassValue; textContent: ClassValue; }",
+                "type": "{ root: ClassValue; content: ClassValue; description: ClassValue; label: ClassValue; icon: ClassValue; indicator: ClassValue; groupRoot: ClassValue; control: ClassValue; \"indicator-icon\": ClassValue; textContent: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the CheckboxCard component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_checkbox_types.checkboxcardui",
@@ -1388,7 +1388,7 @@
         "kind": "props",
         "name": "CheckboxCardGroupProps",
         "type": "Interface CheckboxCardGroupProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<CheckboxCardUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<CheckboxCardUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation; name?: string; required?: boolean }",
         "description": "Properties for the CheckboxCardGroup component.",
         "descriptionKey": "api.generated.packages_ui_src_components_checkbox_types.checkboxcardgroupprops.props",
         "sourcePath": "packages/ui/src/components/checkbox/types.ts",
@@ -1432,7 +1432,7 @@
               {
                 "name": "CheckboxCardUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; content: ClassValue; description: ClassValue; label: ClassValue; icon: ClassValue; indicator: ClassValue; control: ClassValue; groupRoot: ClassValue; \"indicator-icon\": ClassValue; textContent: ClassValue; }",
+                "type": "{ root: ClassValue; content: ClassValue; description: ClassValue; label: ClassValue; icon: ClassValue; indicator: ClassValue; groupRoot: ClassValue; control: ClassValue; \"indicator-icon\": ClassValue; textContent: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the CheckboxCard component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_checkbox_types.checkboxcardui",
@@ -1880,6 +1880,17 @@
             ]
           },
           {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_ui_src_components_checkbox_types.checkboxcardgroupprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "orientation",
             "type": "DataOrientation",
             "required": false,
@@ -1903,17 +1914,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "loop",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether keyboard navigation should loop around",
-            "descriptionKey": "api.generated.packages_ui_src_components_checkbox_types.checkboxcardgroupprops.members.loop",
-            "default": "false",
-            "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
-            "referencedTypes": []
           },
           {
             "name": "name",
@@ -1971,7 +1971,7 @@
         "kind": "props",
         "name": "CheckboxCardGroupCompactProps",
         "type": "Interface CheckboxCardGroupCompactProps<T>",
-        "resolvedType": "{ items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation; name?: string; required?: boolean }",
         "description": "Properties for the CheckboxCardGroupCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_checkbox_types.checkboxcardgroupcompactprops.props",
         "sourcePath": "packages/headless/src/components/checkbox/types.ts",
@@ -2338,6 +2338,17 @@
             ]
           },
           {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_headless_src_components_checkbox_types.checkboxcardgroupcompactprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "orientation",
             "type": "DataOrientation",
             "required": false,
@@ -2361,17 +2372,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "loop",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether keyboard navigation should loop around",
-            "descriptionKey": "api.generated.packages_headless_src_components_checkbox_types.checkboxcardgroupcompactprops.members.loop",
-            "default": "false",
-            "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
-            "referencedTypes": []
           },
           {
             "name": "name",
@@ -2894,7 +2894,7 @@
         "kind": "props",
         "name": "CheckboxGroupProps",
         "type": "Interface CheckboxGroupProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<CheckboxUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<CheckboxUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation; name?: string; required?: boolean }",
         "description": "Properties for the CheckboxGroup component.",
         "descriptionKey": "api.generated.packages_ui_src_components_checkbox_types.checkboxgroupprops.props",
         "sourcePath": "packages/ui/src/components/checkbox/types.ts",
@@ -2938,7 +2938,7 @@
               {
                 "name": "CheckboxUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; label: ClassValue; indicator: ClassValue; control: ClassValue; groupRoot: ClassValue; \"indicator-icon\": ClassValue; }",
+                "type": "{ root: ClassValue; label: ClassValue; indicator: ClassValue; groupRoot: ClassValue; control: ClassValue; \"indicator-icon\": ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Checkbox component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_checkbox_types.checkboxui",
@@ -3386,6 +3386,17 @@
             ]
           },
           {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_ui_src_components_checkbox_types.checkboxgroupprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "orientation",
             "type": "DataOrientation",
             "required": false,
@@ -3409,17 +3420,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "loop",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether keyboard navigation should loop around",
-            "descriptionKey": "api.generated.packages_ui_src_components_checkbox_types.checkboxgroupprops.members.loop",
-            "default": "false",
-            "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
-            "referencedTypes": []
           },
           {
             "name": "name",
@@ -3477,7 +3477,7 @@
         "kind": "props",
         "name": "CheckboxGroupCompactProps",
         "type": "Interface CheckboxGroupCompactProps<T>",
-        "resolvedType": "{ items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation; name?: string; required?: boolean }",
         "description": "Properties for the CheckboxGroupCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_checkbox_types.checkboxgroupcompactprops.props",
         "sourcePath": "packages/headless/src/components/checkbox/types.ts",
@@ -3844,6 +3844,17 @@
             ]
           },
           {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_headless_src_components_checkbox_types.checkboxgroupcompactprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "orientation",
             "type": "DataOrientation",
             "required": false,
@@ -3867,17 +3878,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "loop",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether keyboard navigation should loop around",
-            "descriptionKey": "api.generated.packages_headless_src_components_checkbox_types.checkboxgroupcompactprops.members.loop",
-            "default": "false",
-            "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
-            "referencedTypes": []
           },
           {
             "name": "name",
@@ -3935,7 +3935,7 @@
         "kind": "props",
         "name": "CheckboxGroupRootProps",
         "type": "Interface CheckboxGroupRootProps<T>",
-        "resolvedType": "{ modelValue?: T[]; defaultValue?: T[]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ modelValue?: T[]; defaultValue?: T[]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation; name?: string; required?: boolean }",
         "description": "Properties for the CheckboxGroupRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_checkbox_types.checkboxgrouprootprops.props",
         "sourcePath": "packages/headless/src/components/checkbox/types.ts",
@@ -4011,6 +4011,17 @@
             ]
           },
           {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_headless_src_components_checkbox_types.checkboxgrouprootprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "Omit.loop",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "orientation",
             "type": "DataOrientation",
             "required": false,
@@ -4034,17 +4045,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "loop",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether keyboard navigation should loop around",
-            "descriptionKey": "api.generated.packages_headless_src_components_checkbox_types.checkboxgrouprootprops.members.loop",
-            "default": "false",
-            "inheritedFrom": "Omit.loop",
-            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
-            "referencedTypes": []
           },
           {
             "name": "name",

@@ -100,7 +100,7 @@
               {
                 "name": "InputOtpUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; placeholder: ClassValue; input: ClassValue; positioner: ClassValue; group: ClassValue; slot: ClassValue; char: ClassValue; caret: ClassValue; }",
+                "type": "{ root: ClassValue; placeholder: ClassValue; input: ClassValue; group: ClassValue; positioner: ClassValue; slot: ClassValue; char: ClassValue; caret: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the InputOtp component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpui",

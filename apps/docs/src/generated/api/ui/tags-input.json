@@ -75,7 +75,7 @@
               {
                 "name": "TagsInputUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; clear: ClassValue; control: ClassValue; itemText: ClassValue; itemDelete: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; clear: ClassValue; itemText: ClassValue; control: ClassValue; itemDelete: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the TagsInput component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_tags_input_types.tagsinputui",

@@ -63,10 +63,10 @@ Properties for the PageTabs component.
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
 - `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 - `dir`: The direction of navigation between items. (type `Direction`; optional)
+- `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
 - `currentTabStopId`: The controlled value of the current stop item. Can be bound as `v-model`. (type `string | null`; optional)
 - `defaultCurrentTabStopId`: The value of the current stop item. Use when you do not need to control the state of the stop item. (type `string`; optional)
 - `preventScrollOnEntryFocus`: When `true`, will prevent scrolling to the focus item when focused. (type `boolean`; optional)
-- `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
 
 #### Slots
 
@@ -109,10 +109,10 @@ Properties for the PageTabsCompact component.
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
 - `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 - `dir`: The direction of navigation between items. (type `Direction`; optional)
+- `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
 - `currentTabStopId`: The controlled value of the current stop item. Can be bound as `v-model`. (type `string | null`; optional)
 - `defaultCurrentTabStopId`: The value of the current stop item. Use when you do not need to control the state of the stop item. (type `string`; optional)
 - `preventScrollOnEntryFocus`: When `true`, will prevent scrolling to the focus item when focused. (type `boolean`; optional)
-- `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
 
 #### Slots
 
@@ -170,10 +170,10 @@ Properties for the PageTabsRoot component.
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
 - `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 - `dir`: The direction of navigation between items. (type `Direction`; optional)
+- `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
 - `currentTabStopId`: The controlled value of the current stop item. Can be bound as `v-model`. (type `string | null`; optional)
 - `defaultCurrentTabStopId`: The value of the current stop item. Use when you do not need to control the state of the stop item. (type `string`; optional)
 - `preventScrollOnEntryFocus`: When `true`, will prevent scrolling to the focus item when focused. (type `boolean`; optional)
-- `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
 
 ## Notes
 

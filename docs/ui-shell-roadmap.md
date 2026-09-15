@@ -1,6 +1,6 @@
 # SoybeanUI 中后台壳组件路线图（ui-shell-roadmap）
 
-> 状态：**Accepted · 2026-09**
+> 状态：**Accepted · 2026-09**（§11 为 2026-09 实施修订：四个 ui 复合组件收窄为一个 `SAppShell`）
 > 适用仓库：`@soybeanjs/headless` + `@soybeanjs/ui`（核心两层，不新增任何包）
 > 规范约束：组件开发 skill（[.agents/skills/soybean-ui-develop/](../.agents/skills/soybean-ui-develop/SKILL.md)），尤其是 [layers.md Headless admission（R1–R8）](../.agents/skills/soybean-ui-develop/layers.md#headless-admission)
 > 关联文档：[ui-ai-roadmap.md](./ui-ai-roadmap.md)（AI 域同款决策）· [v0.50.0.md](./v0.50.0.md)（table/form 引擎重构）· [roadmap.md](./roadmap.md)（原子组件评估）
@@ -232,14 +232,85 @@ schema 驱动的查询表格 / 表单依赖 table/form 引擎选型（[v0.50.0.m
 
 ## 10. 决策记录
 
-| ID  | 决策                                                                                          |
-| :-- | :-------------------------------------------------------------------------------------------- |
-| S1  | 不新增包；壳逻辑放 headless `src/shell/` 域模块（`./shell` 子路径），组件在 ui，统一 `S` 前缀 |
-| S2  | 不使用 `App*` / `App.*` 命名；采用 `SLayoutShell` 等核心词汇与 `Shell.*` 类型空间             |
-| S3  | 6 模式词汇沿用 admin 分支已验证成果；P0 只交付 2 主模式，契约先行                             |
-| S4  | 导航模型路由无关（`ShellNavNode` + href/key），vue-router 仅出现在文档适配示例                |
-| S5  | 响应式由通用 `useMediaQuery` 承担，`isMobile` 可受控；SSR 桌面态回退                          |
-| S6  | `useTabs` 只管标签集合状态；keep-alive/路由同步属宿主适配层                                   |
-| S7  | ProTable/ProForm/权限按钮不搭车，分别由 v0.50 与各提案决策、或列范围外                        |
+| ID  | 决策                                                                                                                                                                                                                         |
+| :-- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| S1  | 不新增包；壳逻辑放 headless `src/shell/` 域模块（`./shell` 子路径），组件在 ui，统一 `S` 前缀                                                                                                                                |
+| S2  | 不使用 `App*` / `App.*` 命名；采用 `SLayoutShell` 等核心词汇与 `Shell.*` 类型空间                                                                                                                                            |
+| S3  | 6 模式词汇沿用 admin 分支已验证成果；P0 只交付 2 主模式，契约先行                                                                                                                                                            |
+| S4  | 导航模型路由无关（`ShellNavNode` + href/key），vue-router 仅出现在文档适配示例                                                                                                                                               |
+| S5  | 响应式由通用 `useMediaQuery` 承担，`isMobile` 可受控；SSR 桌面态回退                                                                                                                                                         |
+| S6  | `useTabs` 只管标签集合状态；keep-alive/路由同步属宿主适配层                                                                                                                                                                  |
+| S7  | ProTable/ProForm/权限按钮不搭车，分别由 v0.50 与各提案决策、或列范围外                                                                                                                                                       |
+| S8  | **修订（§11）**：四个 ui 复合组件合并为一个聚合组件 `SAppShell`；命名例外采用 `App*`（`SAppShell`、`app-shell`），不再新增 `SLayoutShell` / `SShellMenu` / `SPageHeader` / `SLogo`                                           |
+| S9  | **修订（§11）**：AppShell 仅落 UI 层，H1–H3 headless 准入项本期不实现；`isMobile` 只受控、面包屑与页签为纯数据输入                                                                                                           |
+| S10 | **修订（§11）**：模式词汇直接继承 `SplitNavMode`（4 值逐字复用）+ 两个单面板模式 `sidebar` / `top`；`AppShellMode ⊇ SplitNavMode`                                                                                            |
+| S11 | **修订（§11.4）**：单面板模式归属 `SAppShell`，不并入 `SSplitNav`；两个模式名固定为 `sidebar` / `top`（评估过 `tree` / `nav` 与 `vertical` / `horizontal`）；`SSplitNav` 保留 4 个分栏模式与原名，改名属破坏性变更，本次不做 |
 
 > ADR 状态：[ADR-0001 外围包单包分层](./adr/0001-peripheral-package-layering.md) 对 admin 域同样标记为 superseded；若未来出现真正独立的领域包提案，须新立 ADR 而非复用该模型。
+
+## 11. 交付记录：AppShell（2026-09 修订）
+
+§3–§9 的原始规划（headless shell 域模块 + 四个 ui 复合组件）在实施前被收窄为**一个 UI 层聚合组件**。本节记录实际交付与偏差依据。
+
+### 11.1 实际交付
+
+| 交付物             | 位置                                                                                                                                                                                   | 形态                                                                  |
+| :----------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------- |
+| `SAppShell`        | `packages/ui/src/components/app-shell/`（`app-shell.vue` + 内部 `app-shell-menu.vue` + `shared.ts` + `types.ts`）                                                                      | UI 层聚合组件，模式驱动布局骨架 + 菜单渲染器                          |
+| 样式配方           | `packages/ui/src/styles/app-shell.ts`                                                                                                                                                  | `scv()`，含注入给 `layoutVariants` 的 `layout*` 槽位                  |
+| 分栏面板度量       | `packages/ui/src/styles/split-nav.ts` 的 `splitNavPaneMetrics`                                                                                                                         | rail/tree rem 数值导出，供侧栏宽度推导；单测断言与配方字面量同步      |
+| 示例 / 文档 / 测试 | `apps/docs/src/examples/ui/app-shell/`、`content/{en,zh}/ui/components/app-shell.md`、`test/specs/components/app-shell.spec.ts`、`test/browser/specs/components/app-shell.e2e.spec.ts` | 7 个示例、双语文档、20 项单测、7 项浏览器 e2e（含侧栏几何与传送落点） |
+
+### 11.2 偏差与理由
+
+| 原始规划                                                         | 实际做法                                                                 | 理由                                                                                                                |
+| :--------------------------------------------------------------- | :----------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------ |
+| H1 `useMediaQuery`（headless）                                   | 不做；`isMobile` 只接受受控属性                                          | `packages/ui` 运行时依赖白名单（`sui check deps`）不含 `@vueuse/core`；`isMobile` 受控与 `SLayout` 既有契约一致     |
+| H2 shell 导航模型 + `useShellNav`                                | 不做；菜单为 `items` 数据输入，面包屑为 `breadcrumbs` 数据输入           | 激活路径/裁剪/拆分属逻辑，未建 headless 模块；宿主可从路由推导，后续可无破坏性下沉                                  |
+| H3 `useTabs`                                                     | 不做；`tabs` 数组 + `v-model:tabs` + `v-model:tab-value`                 | 页签集合状态（关闭/固定/affix）由宿主决定，`SPageTabs` 已内置固定与右键菜单                                         |
+| `SLayoutShell` / `SShellMenu` / `SPageHeader` / `SLogo` 四个组件 | 合并为一个 `SAppShell`，品牌区改为插槽注入；不提供 `SPageHeader`         | 一次编排即可覆盖全部能力，拆分为四个组件会重复传递同一份模式与折叠状态；页头未纳入范围                              |
+| 6 模式词汇（S3）                                                 | 采用，且 4 个分栏模式**逐字复用 `SplitNavMode`**；新增 `sidebar` / `top` | 用户在 `SSplitNav` 学到的 4 个值在外壳中语义一致；`vertical`/`horizontal` 会与 `SLayout.orientation` 的反向语义撞名 |
+| P0 只交付 2 主模式（S3）                                         | 6 模式一次性交付                                                         | 4 个分栏模式只是 `SSplitNav` 的委托 + 挂载点/宽度推导，分阶段反而会发布「类型允许但运行时不支持」的假契约           |
+
+### 11.3 新增模式映射
+
+| `AppShellMode`             | 一级位置 | 渲染器      | `SLayout.orientation` | 侧栏宽度                      | 品牌区 | 菜单挂载                       |
+| :------------------------- | :------- | :---------- | :-------------------- | :---------------------------- | :----- | :----------------------------- |
+| `sidebar`                  | 侧栏     | `STreeMenu` | `horizontal`          | 布局默认（240 / 50）          | 侧栏   | 就地                           |
+| `top`                      | 顶栏     | `SNavMenu`  | `vertical`            | 无侧栏                        | 顶栏   | 就地                           |
+| `dual-vertical`            | 侧栏     | `SSplitNav` | `horizontal`          | rail + tree / rail + 折叠面板 | 侧栏   | 就地（`dual-vertical` 独立块） |
+| `vertical-horizontal`      | 侧栏     | `SSplitNav` | `horizontal`          | rail（`offcanvas` 折叠）      | 顶栏   | 传送：纵向→侧栏、横向→顶栏     |
+| `horizontal-vertical`      | 顶栏     | `SSplitNav` | `vertical`            | tree / 折叠面板               | 顶栏   | 传送：横向→顶栏、纵向→侧栏     |
+| `horizontal-dual-vertical` | 顶栏     | `SSplitNav` | `vertical`            | rail + tree / rail + 折叠面板 | 顶栏   | 传送：横向→顶栏、纵向→侧栏     |
+
+侧栏宽度按 `size` 从 `splitNavPaneMetrics` 反推像素入参（`rem * 16 / themeSizeRatio[size]`），并由外壳统一注入的 `pxToRem` 换算回原 rem，从而与菜单面板逐像素对齐；浏览器 e2e 断言 `rail + tree === sidebar`。
+
+### 11.4 决策：单面板模式不并入 SplitNav（S11）
+
+评审时提出过一个替代方案：把 `sidebar` / `top` 也实现进 `SSplitNav`，让一个组件承载 6 种形态（并把它们命名为 `vertical` / `horizontal`），`mode` 词汇全库统一。**结论是维持现状**，理由如下。
+
+1. **事件语义不同，不能共用一套状态机。** `SplitNavRoot` 的四个分栏模式共享 `openPath` + `firstLevelItems`/`childItems` 切片 + rail 注册表 + panes 焦点回退，并有一条硬语义：点有可见子节点的父级只展开面板并 `emit('open')`，不写 `modelValue`。`sidebar`（单棵嵌套树）里点父级应由 `TreeMenuCompact` 就地展开、不发 `open`；`top`（单条弹出菜单）连 `openPath` / rail 都不存在，`verticalMountedId` / `horizontalMountedId` / `collapsed` / `collapsedWidth` 全数失效。并入即意味着按模式分叉事件语义与"部分 prop 失效"的文档负担。
+2. **两个模式是既有能力的别名。** `sidebar` ≈ `STreeMenu` 固定默认值，`top` ≈ `SNavMenu`；不新增任何能力，却让库内出现两条通往同一 DOM 契约的入口。而"单一 mode 词汇"的需求来自 `SAppShell` 只有一个 `mode` prop——需求属于 shell。
+3. **命名会二次撞车。** `vertical` / `horizontal` 已是共享类型 `DataOrientation` 的字面量，且 `SLayout.orientation` 的 `horizontal`（侧栏满高）与"顶栏横向菜单"含义相反；同名不同义会把 AppShell 文档注意事项 1 的坑复制到菜单组件。`sidebar` / `top` 描述落点，无歧义。
+4. **改名是破坏性变更而收益纯属命名。** `SSplitNav` 已随 0.40.1 发布，波及约 40 个手写文件（headless 家族 12 + ui 包装/配方 + 双语文档 + 迁移指南 + 7 个示例 + 2 个测试 + AppShell 三处）与生成物，并按 `process.md` 需要 `breaking` 说明与 en/zh 升级指南。
+
+**若未来重新评估**：只有当 `SSplitNav` 的产品定位升级为"可独立分发的六形态后台导航组件"（而非 `SAppShell` 的零件）时，吸收单面板形态才值回成本；届时应同时选定中性名（避免 `AppMenu` 这类与 `SMenu` / `SNavMenu` / `SMenubar` / `STreeMenu` 家族无区分度的名字），并单独走破坏性变更流程。
+
+### 11.5 交付后修复（2026-09-15）
+
+评审发现三个问题，均已修复并补测试。
+
+1. **布局根的裸 `group` 泄漏（跨组件）**：`layoutVariants` 的 root 是裸 `group` 且带 `data-orientation` / `data-state` / `data-variant`，而 CSS 的 `group-data-*` 是"任意匹配祖先"而非"最近祖先"，因此布局内部任何组件的裸 `group-data-[orientation=…]` 都会被布局根匹配。后果：`top` 模式下 `SNavMenu` 的列表被翻成纵向列（本次报告的问题 2），`horizontal-*` 模式的横向面板同样中招，侧栏折叠时 `data-state=collapsed` 还会污染内层树菜单的折叠样式。修复：布局根改为命名组 `group/layout`，并把 `layout.ts` 中 55 处 `group-data-…` 全部限定为 `group-data-…/layout`。这是**跨组件修复**（不改任何 API），受影响的其它族无需改动；未做的是反向清理——其它配方里仍有裸 `group-data-`，只要不再有"带同名 data 属性的通用祖先"就不会再撞。
+2. **面包屑改为由菜单数据推导**：省略 `breadcrumbs` 时，外壳用 `items` + 激活值推导"根 → 激活菜单"的路径；其中每个自身有子菜单的上级渲染为下拉触发器，下拉项即该上级的子菜单（也就包含了激活项的同级），选中效果与点菜单一致（叶子发 `select` / `update:modelValue`，父级发 `open`）。显式传 `breadcrumbs` 仍是纯数据渲染，`#breadcrumb` 插槽可完全接管。实现落在 `app-shell/shared.ts` 的纯函数 `findMenuTrail` / `findMenuItem` / `hasVisibleChild`（`ui` 层，不新增 headless 模块）。
+3. **分栏模式的侧栏宽度改为跟随面板**：原先按 mode+size 静态推导（`rail + tree` 恒定），导致激活无子菜单的一级菜单时仍保留一列空面板。现在 `resolveShellWidths` 按"面板当前是否存在"推导：`dual-vertical` / `horizontal-dual-vertical` 有子菜单时 `rail + tree`、否则仅 `rail`；`horizontal-vertical` 有内容时为 `tree`、否则为 `0`。侧栏折叠时只保留轨道，嵌套面板脱离文档流以浮层贴在轨道外侧（`ui.menuOverlay` + `menu-region data-overlay`），因此折叠状态下点另一个有子菜单的一级菜单仍能看到面板——与参考实现 `soybean-admin/src/layouts/modules/global-menu/modules/vertical-mix-menu.vue` 的 `hasChildMenus` 行为一致。代价：外壳需要镜像 `SSplitNav` 的 `openPath`（其内部状态），只镜像"面板归属的一级菜单 key"，并在 `modelValue` 变化时按 `SSplitNav` 自身的重置规则清空。
+
+### 11.6 遗留项（未纳入本次交付）
+
+1. **Compact 下沉评估**（§3.2 条款）：外壳的模式矩阵已是稳定数据表（`appShellSkeletons`），但默认内容仍由插槽注入，暂不满足下沉条件；如后续演化出数据驱动的默认内容，按既有规则只扩 `layout` 家族。
+2. **H1–H3 的后续下沉**：三个 headless 准入项仍可按原规划实现，且能在不改动 `SAppShell` 公共 API 的前提下接管 `isMobile`、面包屑派生与页签集合状态。
+3. **sbean 注册表登记**：`SAppShell` 未加入 `packages/cli/registry.json`（手工清单，83 条目）。外壳的源码分发需先定清 `registryDependencies`（layout / menu / split-nav / tree-menu / nav-menu / page-tabs / breadcrumb 等），否则 `sbean add` 会缺件；按 §7.2 在 sbean 组件市场配方阶段处理。
+4. **上游组件发现（本次未修，属其他族）**：
+   - `SPageTabs` 选中项为 `text-primary` on `bg-primary-50`，默认 indigo 调色板下对比度 3.99:1，低于 WCAG AA 4.5:1。
+   - `SPageTabs` 关闭页签 / 切换 `pinned`（`usePageTabsState` 的 `removeTab` / `pinTab`）直接修改传入的 `items` 数组，不触发 `update:items`；只有 `removeTabs` / `sortTabs` 的赋值路径才 emit。
+   - headless `layout` 的侧栏区域没有地标角色（`<main>`/`<header>` 有），因此侧栏插槽内容不被任何地标包含，axe `region` 规则会报错。
+   - `SSplitNav` 的折叠面板宽度用固定 `px / 16`（`useSplitNavTreePane`），而嵌套 `STreeMenu` 的折叠宽度按 `size` 缩放，`size` 非 `md` 时面板会裁剪内部轨道。

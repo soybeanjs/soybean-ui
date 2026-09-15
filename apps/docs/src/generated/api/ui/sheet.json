@@ -111,7 +111,7 @@
               {
                 "name": "DialogUi",
                 "kind": "typeAlias",
-                "type": "{ header: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; icon: ClassValue; close: ClassValue; popup: ClassValue; cancel: ClassValue; footer: ClassValue; overlay: ClassValue; fullscreen: ClassValue; confirm: ClassValue; }",
+                "type": "{ header: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; icon: ClassValue; close: ClassValue; footer: ClassValue; popup: ClassValue; cancel: ClassValue; overlay: ClassValue; fullscreen: ClassValue; confirm: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Dialog component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogui",

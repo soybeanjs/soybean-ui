@@ -50,7 +50,7 @@
               {
                 "name": "CascaderUi",
                 "kind": "typeAlias",
-                "type": "{ trigger: ClassValue; triggerIcon: ClassValue; clear: ClassValue; value: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; empty: ClassValue; tag: ClassValue; searchInput: ClassValue; panel: ClassValue; menu: ClassValue; option: ClassValue; optionText: ClassValue; optionCheck: ClassValue; optionArrow: ClassValue; }",
+                "type": "{ trigger: ClassValue; triggerIcon: ClassValue; clear: ClassValue; arrow: ClassValue; positioner: ClassValue; value: ClassValue; popup: ClassValue; empty: ClassValue; tag: ClassValue; searchInput: ClassValue; panel: ClassValue; menu: ClassValue; option: ClassValue; optionText: ClassValue; optionCheck: ClassValue; optionArrow: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Cascader component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_cascader_types.cascaderui",

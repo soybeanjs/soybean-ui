@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "TabsProps",
         "type": "Interface TabsProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TabsUi>; fill?: TabsFill; shape?: TabsShape; items: T[]; enableIndicator?: boolean; listProps?: TabsListProps; triggerProps?: TabsTriggerProps; contentProps?: TabsContentProps; indicatorProps?: TabsIndicatorProps; modelValue?: T['value'] | null; defaultValue?: T['value'] | null; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TabsUi>; fill?: TabsFill; shape?: TabsShape; items: T[]; enableIndicator?: boolean; listProps?: TabsListProps; triggerProps?: TabsTriggerProps; contentProps?: TabsContentProps; indicatorProps?: TabsIndicatorProps; modelValue?: T['value'] | null; defaultValue?: T['value'] | null; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation }",
         "description": "Properties for the Tabs component.",
         "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.props",
         "sourcePath": "packages/ui/src/components/tabs/types.ts",
@@ -434,6 +434,17 @@
             ]
           },
           {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "orientation",
             "type": "DataOrientation",
             "required": false,
@@ -457,17 +468,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "loop",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether keyboard navigation should loop around",
-            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.loop",
-            "default": "false",
-            "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
-            "referencedTypes": []
           }
         ],
         "callables": [],
@@ -575,7 +575,7 @@
         "kind": "props",
         "name": "TabsCompactProps",
         "type": "Interface TabsCompactProps<T>",
-        "resolvedType": "{ items: T[]; enableIndicator?: boolean; listProps?: TabsListProps; triggerProps?: TabsTriggerProps; contentProps?: TabsContentProps; indicatorProps?: TabsIndicatorProps; modelValue?: T['value'] | null; defaultValue?: T['value'] | null; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean }",
+        "resolvedType": "{ items: T[]; enableIndicator?: boolean; listProps?: TabsListProps; triggerProps?: TabsTriggerProps; contentProps?: TabsContentProps; indicatorProps?: TabsIndicatorProps; modelValue?: T['value'] | null; defaultValue?: T['value'] | null; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation }",
         "description": "Properties for the TabsCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.props",
         "sourcePath": "packages/headless/src/components/tabs/types.ts",
@@ -878,6 +878,17 @@
             ]
           },
           {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "orientation",
             "type": "DataOrientation",
             "required": false,
@@ -901,17 +912,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "loop",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether keyboard navigation should loop around",
-            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.loop",
-            "default": "false",
-            "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
-            "referencedTypes": []
           }
         ],
         "callables": [],
@@ -1146,7 +1146,7 @@
         "kind": "props",
         "name": "TabsRootProps",
         "type": "Interface TabsRootProps<T>",
-        "resolvedType": "{ modelValue?: T; defaultValue?: T; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean }",
+        "resolvedType": "{ modelValue?: T; defaultValue?: T; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation }",
         "description": "Properties for the TabsRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.props",
         "sourcePath": "packages/headless/src/components/tabs/types.ts",
@@ -1236,6 +1236,17 @@
             ]
           },
           {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "Omit.loop",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "orientation",
             "type": "DataOrientation",
             "required": false,
@@ -1259,17 +1270,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "loop",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether keyboard navigation should loop around",
-            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.members.loop",
-            "default": "false",
-            "inheritedFrom": "Omit.loop",
-            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
-            "referencedTypes": []
           }
         ],
         "callables": [],

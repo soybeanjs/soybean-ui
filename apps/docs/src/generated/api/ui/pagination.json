@@ -50,7 +50,7 @@
               {
                 "name": "PaginationUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; list: ClassValue; ellipsis: ClassValue; prev: ClassValue; next: ClassValue; listItem: ClassValue; first: ClassValue; last: ClassValue; }",
+                "type": "{ root: ClassValue; ellipsis: ClassValue; list: ClassValue; prev: ClassValue; next: ClassValue; listItem: ClassValue; first: ClassValue; last: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Pagination component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationui",

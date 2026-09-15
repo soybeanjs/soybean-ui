@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "PageTabsProps",
         "type": "Interface PageTabsProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; variant?: PageTabsVariant; ui?: Partial<PageTabsUi>; items: T[]; menuFactory?: ((tab: T, state: PageTabsState) => PageTabsContextMenuOptionData[]); beforeClose?: ((value: string) => MaybePromise<boolean | void>); itemProps?: BaseProps; pinProps?: BaseProps; closeProps?: BaseProps; contextMenuProps?: Omit<ContextMenuCompactProps<import(\"@/index\").DefinedValue>, 'options'>; modelValue?: string; middleClickClose?: boolean; draggable?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; currentTabStopId?: string | null; defaultCurrentTabStopId?: string; preventScrollOnEntryFocus?: boolean; loop?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; variant?: PageTabsVariant; ui?: Partial<PageTabsUi>; items: T[]; menuFactory?: ((tab: T, state: PageTabsState) => PageTabsContextMenuOptionData[]); beforeClose?: ((value: string) => MaybePromise<boolean | void>); itemProps?: BaseProps; pinProps?: BaseProps; closeProps?: BaseProps; contextMenuProps?: Omit<ContextMenuCompactProps<import(\"@/index\").DefinedValue>, 'options'>; modelValue?: string; middleClickClose?: boolean; draggable?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; loop?: boolean; currentTabStopId?: string | null; defaultCurrentTabStopId?: string; preventScrollOnEntryFocus?: boolean }",
         "description": "Properties for the PageTabs component.",
         "descriptionKey": "api.generated.packages_ui_src_components_page_tabs_types.pagetabsprops.props",
         "sourcePath": "packages/ui/src/components/page-tabs/types.ts",
@@ -100,7 +100,7 @@
               {
                 "name": "PageTabsUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; close: ClassValue; itemText: ClassValue; pin: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; close: ClassValue; pin: ClassValue; itemText: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the PageTabs component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabsui",
@@ -376,6 +376,17 @@
             ]
           },
           {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_ui_src_components_page_tabs_types.pagetabsprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "currentTabStopId",
             "type": "string | null",
             "required": false,
@@ -405,17 +416,6 @@
             "descriptionKey": "api.generated.packages_ui_src_components_page_tabs_types.pagetabsprops.members.preventscrollonentryfocus",
             "default": null,
             "inheritedFrom": "preventScrollOnEntryFocus",
-            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "loop",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether keyboard navigation should loop around",
-            "descriptionKey": "api.generated.packages_ui_src_components_page_tabs_types.pagetabsprops.members.loop",
-            "default": "false",
-            "inheritedFrom": "loop",
             "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           }
@@ -668,7 +668,7 @@
         "kind": "props",
         "name": "PageTabsCompactProps",
         "type": "Interface PageTabsCompactProps<T>",
-        "resolvedType": "{ items: T[]; menuFactory?: ((tab: T, state: PageTabsState) => PageTabsContextMenuOptionData[]); beforeClose?: ((value: string) => MaybePromise<boolean | void>); itemProps?: BaseProps; pinProps?: BaseProps; closeProps?: BaseProps; contextMenuProps?: Omit<ContextMenuCompactProps<import(\"@/index\").DefinedValue>, 'options'>; modelValue?: string; middleClickClose?: boolean; draggable?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; currentTabStopId?: string | null; defaultCurrentTabStopId?: string; preventScrollOnEntryFocus?: boolean; loop?: boolean }",
+        "resolvedType": "{ items: T[]; menuFactory?: ((tab: T, state: PageTabsState) => PageTabsContextMenuOptionData[]); beforeClose?: ((value: string) => MaybePromise<boolean | void>); itemProps?: BaseProps; pinProps?: BaseProps; closeProps?: BaseProps; contextMenuProps?: Omit<ContextMenuCompactProps<import(\"@/index\").DefinedValue>, 'options'>; modelValue?: string; middleClickClose?: boolean; draggable?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; loop?: boolean; currentTabStopId?: string | null; defaultCurrentTabStopId?: string; preventScrollOnEntryFocus?: boolean }",
         "description": "Properties for the PageTabsCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabscompactprops.props",
         "sourcePath": "packages/headless/src/components/page-tabs/types.ts",
@@ -938,6 +938,17 @@
             ]
           },
           {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabscompactprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "currentTabStopId",
             "type": "string | null",
             "required": false,
@@ -967,17 +978,6 @@
             "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabscompactprops.members.preventscrollonentryfocus",
             "default": null,
             "inheritedFrom": "preventScrollOnEntryFocus",
-            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "loop",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether keyboard navigation should loop around",
-            "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabscompactprops.members.loop",
-            "default": "false",
-            "inheritedFrom": "loop",
             "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           }
@@ -1363,7 +1363,7 @@
         "kind": "props",
         "name": "PageTabsRootProps",
         "type": "Interface PageTabsRootProps",
-        "resolvedType": "{ modelValue?: string; middleClickClose?: boolean; draggable?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; currentTabStopId?: string | null; defaultCurrentTabStopId?: string; preventScrollOnEntryFocus?: boolean; loop?: boolean }",
+        "resolvedType": "{ modelValue?: string; middleClickClose?: boolean; draggable?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; loop?: boolean; currentTabStopId?: string | null; defaultCurrentTabStopId?: string; preventScrollOnEntryFocus?: boolean }",
         "description": "Properties for the PageTabsRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabsrootprops.props",
         "sourcePath": "packages/headless/src/components/page-tabs/types.ts",
@@ -1472,6 +1472,17 @@
             ]
           },
           {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabsrootprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "Pick.loop",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "currentTabStopId",
             "type": "string | null",
             "required": false,
@@ -1501,17 +1512,6 @@
             "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabsrootprops.members.preventscrollonentryfocus",
             "default": null,
             "inheritedFrom": "Pick.preventScrollOnEntryFocus",
-            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "loop",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether keyboard navigation should loop around",
-            "descriptionKey": "api.generated.packages_headless_src_components_page_tabs_types.pagetabsrootprops.members.loop",
-            "default": "false",
-            "inheritedFrom": "Pick.loop",
             "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
             "referencedTypes": []
           }
