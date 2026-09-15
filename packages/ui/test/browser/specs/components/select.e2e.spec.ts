@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { page, userEvent } from 'vitest/browser';
+import type { Locator } from 'vitest/browser';
 import SSelect from '@/components/select/select.vue';
 import { getA11yViolations } from '../../shared/a11y';
 import { renderComponent } from '../../shared/render';
@@ -40,6 +41,19 @@ function renderSelectWithOutsideTarget() {
   });
 }
 
+/**
+ * Presses an element that the open content's outside pointer lock makes untouchable.
+ *
+ * While the content is open it sets `pointer-events: none` on the body, so the browser resolves such a
+ * press to the document root instead of the element painted there — the element dismisses the content
+ * without ever seeing the press, which is exactly the documented "click twice" behavior. Playwright
+ * refuses to act on an element that cannot receive events, so `force` is what puts the press at those
+ * coordinates.
+ */
+async function forcePress(locator: Locator) {
+  await locator.click({ force: true });
+}
+
 describe('SSelect (e2e)', () => {
   it('stays open when the trigger is pressed on a scrolled page and the pointer drifts', async () => {
     const { unmount } = await renderComponent({
@@ -49,7 +63,11 @@ describe('SSelect (e2e)', () => {
         <div>
           <div style="height: 60rem"></div>
           <div style="width: 12rem">
-            <SSelect :items="items" placeholder="Pick fruit" />
+            <SSelect
+              :items="items"
+              placeholder="Pick fruit"
+              :content-props="{ disableOutsidePointerEvents: false }"
+            />
           </div>
           <div style="height: 60rem"></div>
         </div>
@@ -64,6 +82,9 @@ describe('SSelect (e2e)', () => {
     trigger.scrollIntoView({ block: 'center' });
     expect(window.scrollY).toBeGreaterThan(100);
 
+    // The pointer lock is opted out here so the probe below stays pressable for the harness; the
+    // mechanism under test — the body scroll lock shifting the page offset mid-press — is untouched
+    // by it.
     // A 3px probe inside the trigger: dragging onto it presses and releases on the trigger itself
     // with a few pixels of real pointer travel in between — the drift of an ordinary hand click.
     const probe = document.createElement('span');
@@ -124,6 +145,33 @@ describe('SSelect (e2e)', () => {
     unmount();
   });
 
+  it('holds the outside pointer lock while open and releases it on close', async () => {
+    const { unmount } = await renderSelectWithOutsideTarget();
+
+    const trigger = page.getByRole('combobox');
+    const outside = page.getByRole('button', { name: 'Outside' });
+    const listbox = page.getByRole('listbox');
+
+    await userEvent.click(trigger);
+    await expect.element(listbox).toBeVisible();
+
+    // The documented contract: while the content is open, elements outside it cannot be interacted
+    // with, so a press there only dismisses the content.
+    expect(document.body.style.pointerEvents).toBe('none');
+
+    await forcePress(outside);
+    await expect.element(listbox).not.toBeInTheDocument();
+
+    // ... and the page is handed back as soon as the content closes, not when its exit animation
+    // finishes: otherwise the press that reopens the select would be swallowed by the lock.
+    expect(document.body.style.pointerEvents).toBe('');
+
+    await userEvent.click(trigger);
+    await expect.element(listbox).toBeVisible();
+
+    unmount();
+  });
+
   it('closes when the trigger is pressed while the content is open', async () => {
     const { unmount } = await renderSelectWithOutsideTarget();
 
@@ -131,7 +179,9 @@ describe('SSelect (e2e)', () => {
     await userEvent.click(trigger);
     await expect.element(page.getByRole('listbox')).toBeVisible();
 
-    await userEvent.click(trigger);
+    // The trigger sits outside the content, so while the content is open the lock keeps the press
+    // from reaching it — the press still dismisses the content.
+    await forcePress(trigger);
     await expect.element(page.getByRole('listbox')).not.toBeInTheDocument();
 
     unmount();
@@ -152,7 +202,7 @@ describe('SSelect (e2e)', () => {
     await expect.element(listbox).toBeVisible();
 
     for (let cycle = 0; cycle < 3; cycle += 1) {
-      await userEvent.click(outside);
+      await forcePress(outside);
       await userEvent.click(trigger);
 
       // Wait out the exit animation so a close that only shows up slightly later cannot pass by

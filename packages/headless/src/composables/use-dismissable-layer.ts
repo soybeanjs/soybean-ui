@@ -149,9 +149,13 @@ export function useDismissableLayer(
    * `disableOutsidePointerEvents` change. Reading `layerContext.layersWithOutsidePointerEventsDisabled.size` inside the
    * callback must NOT be reactive: otherwise adding/removing any other layer would re-run this effect and its cleanup
    * could prematurely restore the body's `pointer-events` while an ancestor layer is still open.
+   *
+   * The lock is only in force while the layer counts as open (`enable`). Its whole point is that the first outside
+   * press dismisses the layer instead of activating whatever sits under the pointer — a press that lands after the
+   * layer closed must not be eaten, or the exit animation turns every reopen into a click that goes nowhere.
    */
   watch(
-    [layerElement, () => toValue(disableOutsidePointerEvents)],
+    [layerElement, () => toValue(enable) && toValue(disableOutsidePointerEvents)],
     ([nodeVal, shouldDisableOutsidePointerEvents], _, onCleanup) => {
       if (!nodeVal) return;
 

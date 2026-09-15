@@ -15,7 +15,11 @@ const props = withDefaults(defineProps<SelectContentProps>(), {
   position: 'popper',
   avoidCollisions: true,
   prioritizePosition: true,
-  bodyLock: true
+  bodyLock: true,
+  // Mirrored from `SelectContentImpl` on purpose: this layer forwards its own resolved props down, and a
+  // Boolean prop without a default resolves to `false` when absent (Vue boolean casting), which would then
+  // be forwarded as an explicit `false` and beat the impl's own `true`.
+  disableOutsidePointerEvents: true
 });
 
 const emit = defineEmits<SelectContentEmits>();

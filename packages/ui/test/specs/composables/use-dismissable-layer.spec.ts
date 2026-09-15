@@ -9,13 +9,15 @@ import { useDismissableLayer } from '../../../../headless/src/composables/use-di
 const TestLayer = defineComponent({
   props: {
     disable: { type: Boolean, default: false },
-    present: { type: Boolean, default: true }
+    present: { type: Boolean, default: true },
+    enable: { type: Boolean, default: true }
   },
   setup(props) {
     const layerElement = shallowRef<HTMLElement | undefined>();
 
     useDismissableLayer(layerElement, {
-      disableOutsidePointerEvents: () => props.disable
+      disableOutsidePointerEvents: () => props.disable,
+      enable: () => props.enable
     });
 
     return () => (props.present ? h('div', { ref: layerElement, 'data-dismissable-layer': '' }) : null);
@@ -123,6 +125,21 @@ describe('useDismissableLayer body pointer-events', () => {
     await wrapper.setProps({ present: false });
     await flush();
     expect(document.body.style.pointerEvents).toBe('');
+  });
+
+  it('releases the body lock as soon as the layer closes, not when it unmounts', async () => {
+    const wrapper = await mountLayer(true, true);
+    expect(document.body.style.pointerEvents).toBe('none');
+
+    // A closed layer can still be mounted (exit animation in flight). The page has to be handed back
+    // then, or the lock swallows the next press — typically the one that reopens the layer.
+    await wrapper.setProps({ enable: false });
+    await flush();
+    expect(document.body.style.pointerEvents).toBe('');
+
+    await wrapper.setProps({ enable: true });
+    await flush();
+    expect(document.body.style.pointerEvents).toBe('none');
   });
 
   it('keeps body pointer-events locked when a nested layer closes while an outer layer stays open', async () => {
