@@ -3,6 +3,7 @@ export const components = {
   affix: ['SAffix'],
   alert: ['SAlert'],
   anchor: ['SAnchor'],
+  appShell: ['SAppShell'],
   aspectRatio: ['SAspectRatio'],
   autocomplete: ['SAutocomplete'],
   avatar: ['SAvatar'],

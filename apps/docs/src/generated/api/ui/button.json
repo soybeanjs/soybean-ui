@@ -915,7 +915,7 @@
         "kind": "props",
         "name": "ButtonLinkProps",
         "type": "TypeAlias ButtonLinkProps: ButtonProps & LinkProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; color?: 'primary' | 'secondary' | 'accent' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon'; size?: ThemeSize; variant?: ButtonVariant; shape?: ButtonShape; shadow?: ButtonShadow; fitContent?: boolean; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; replace?: boolean; href?: string; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; target?: (string & {}) | '_blank' | '_parent' | '_self' | '_top' | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; color?: 'primary' | 'secondary' | 'accent' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon'; size?: ThemeSize; variant?: ButtonVariant; shape?: ButtonShape; shadow?: ButtonShadow; fitContent?: boolean; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; replace?: boolean; href?: string; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'; viewTransition?: boolean; target?: (string & {}) | '_blank' | '_parent' | '_self' | '_top' | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
         "description": "Properties for the ButtonLink component.",
         "descriptionKey": "api.generated.packages_ui_src_components_button_types.buttonlinkprops.props",
         "sourcePath": "packages/ui/src/components/button/types.ts",
@@ -1266,7 +1266,7 @@
           },
           {
             "name": "ariaCurrentValue",
-            "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+            "type": "'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'",
             "required": false,
             "description": "Value passed to the attribute `aria-current` when the link is exact active.",
             "descriptionKey": "api.generated.packages_ui_src_components_button_types.buttonlinkprops.members.ariacurrentvalue",

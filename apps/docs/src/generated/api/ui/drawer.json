@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "DrawerProps",
         "type": "TypeAlias DrawerProps: DrawerCompactProps & { class?: ClassValue; size?: ThemeSize; ui?: Partial<DrawerUi> }",
-        "resolvedType": "{ description?: string; open?: boolean; defaultOpen?: boolean; dir?: Direction; draggable?: boolean; title?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; pure?: boolean; popupProps?: DrawerPopupProps; portalProps?: DrawerPortalProps; fullscreen?: boolean; showClose?: boolean; showFullscreen?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DrawerOverlayProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; fullscreenProps?: DialogFullscreenProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; isAlert?: boolean; alertType?: DialogAlertType; defaultFullscreen?: boolean; modal?: import(\"../../types\").ModalityTier; snapPoint?: DrawerSnapPoint | null; defaultSnapPoint?: DrawerSnapPoint | null; snapToSequentialPoints?: boolean; closeThreshold?: number; swipeDirection?: SwipeDirection; fixed?: boolean; dismissible?: boolean; nested?: boolean; side?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: DrawerSnapPoint[]; handleProps?: DrawerHandleProps; swipeable?: boolean; swipeAreaProps?: DrawerSwipeAreaProps; class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DrawerUi> }",
+        "resolvedType": "{ description?: string; open?: boolean; defaultOpen?: boolean; dir?: Direction; draggable?: boolean; title?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; pure?: boolean; triggerProps?: DialogTriggerProps; contentProps?: DialogContentProps; headerProps?: DialogHeaderProps; footerProps?: DialogFooterProps; closeProps?: DialogCloseProps; popupProps?: DrawerPopupProps; portalProps?: DrawerPortalProps; fullscreen?: boolean; showClose?: boolean; showFullscreen?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; overlayProps?: DrawerOverlayProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; fullscreenProps?: DialogFullscreenProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; isAlert?: boolean; alertType?: DialogAlertType; defaultFullscreen?: boolean; modal?: import(\"../../types\").ModalityTier; snapPoint?: DrawerSnapPoint | null; defaultSnapPoint?: DrawerSnapPoint | null; snapToSequentialPoints?: boolean; closeThreshold?: number; swipeDirection?: SwipeDirection; fixed?: boolean; dismissible?: boolean; nested?: boolean; side?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: DrawerSnapPoint[]; handleProps?: DrawerHandleProps; swipeable?: boolean; swipeAreaProps?: DrawerSwipeAreaProps; class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DrawerUi> }",
         "description": "Properties for the Drawer component.",
         "descriptionKey": "api.generated.packages_ui_src_components_drawer_types.drawerprops.props",
         "sourcePath": "packages/ui/src/components/drawer/types.ts",
@@ -127,6 +127,221 @@
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "triggerProps",
+            "type": "DialogTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the trigger element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_drawer_types.drawerprops.members.triggerprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DialogTriggerProps",
+                "kind": "interface",
+                "type": "DialogTriggerProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the DialogTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contentProps",
+            "type": "DialogContentProps",
+            "required": false,
+            "description": "Properties forwarded to the content element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_drawer_types.drawerprops.members.contentprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DialogContentProps",
+                "kind": "interface",
+                "type": "DialogContentProps",
+                "resolvedType": null,
+                "description": "Properties for the DialogContent component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcontentprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "headerProps",
+            "type": "DialogHeaderProps",
+            "required": false,
+            "description": "Properties forwarded to the header element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_drawer_types.drawerprops.members.headerprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DialogHeaderProps",
+                "kind": "interface",
+                "type": "DialogHeaderProps",
+                "resolvedType": null,
+                "description": "Properties for the DialogHeader component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogheaderprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "footerProps",
+            "type": "DialogFooterProps",
+            "required": false,
+            "description": "Properties forwarded to the footer element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_drawer_types.drawerprops.members.footerprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DialogFooterProps",
+                "kind": "interface",
+                "type": "DialogFooterProps",
+                "resolvedType": null,
+                "description": "Properties for the DialogFooter component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogfooterprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "closeProps",
+            "type": "DialogCloseProps",
+            "required": false,
+            "description": "Properties forwarded to the close element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_drawer_types.drawerprops.members.closeprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DialogCloseProps",
+                "kind": "interface",
+                "type": "DialogCloseProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the DialogClose component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "popupProps",
@@ -335,76 +550,6 @@
             "referencedTypes": []
           },
           {
-            "name": "triggerProps",
-            "type": "DialogTriggerProps",
-            "required": false,
-            "description": "Properties forwarded to the trigger element.",
-            "descriptionKey": "api.generated.packages_ui_src_components_drawer_types.drawerprops.members.triggerprops",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DialogTriggerProps",
-                "kind": "interface",
-                "type": "DialogTriggerProps",
-                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the DialogTrigger component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops",
-                "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "type",
-                    "type": "ButtonType",
-                    "required": false,
-                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.type",
-                    "default": "'button'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/button/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "disabled",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether the component is disabled.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.disabled",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/button/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "asChild",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.aschild",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "as",
-                    "type": "AsTag | Component",
-                    "required": false,
-                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.as",
-                    "default": "'div'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "overlayProps",
             "type": "DrawerOverlayProps",
             "required": false,
@@ -437,81 +582,6 @@
                     "referencedTypes": []
                   }
                 ],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "headerProps",
-            "type": "DialogHeaderProps",
-            "required": false,
-            "description": "Properties forwarded to the header element.",
-            "descriptionKey": "api.generated.packages_ui_src_components_drawer_types.drawerprops.members.headerprops",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DialogHeaderProps",
-                "kind": "interface",
-                "type": "DialogHeaderProps",
-                "resolvedType": null,
-                "description": "Properties for the DialogHeader component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogheaderprops",
-                "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "contentProps",
-            "type": "DialogContentProps",
-            "required": false,
-            "description": "Properties forwarded to the content element.",
-            "descriptionKey": "api.generated.packages_ui_src_components_drawer_types.drawerprops.members.contentprops",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DialogContentProps",
-                "kind": "interface",
-                "type": "DialogContentProps",
-                "resolvedType": null,
-                "description": "Properties for the DialogContent component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcontentprops",
-                "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "footerProps",
-            "type": "DialogFooterProps",
-            "required": false,
-            "description": "Properties forwarded to the footer element.",
-            "descriptionKey": "api.generated.packages_ui_src_components_drawer_types.drawerprops.members.footerprops",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DialogFooterProps",
-                "kind": "interface",
-                "type": "DialogFooterProps",
-                "resolvedType": null,
-                "description": "Properties for the DialogFooter component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogfooterprops",
-                "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
                 "callables": []
               }
             ]
@@ -562,76 +632,6 @@
                 "typeParameters": [],
                 "external": false,
                 "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "closeProps",
-            "type": "DialogCloseProps",
-            "required": false,
-            "description": "Properties forwarded to the close element.",
-            "descriptionKey": "api.generated.packages_ui_src_components_drawer_types.drawerprops.members.closeprops",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DialogCloseProps",
-                "kind": "interface",
-                "type": "DialogCloseProps",
-                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the DialogClose component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops",
-                "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "type",
-                    "type": "ButtonType",
-                    "required": false,
-                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.type",
-                    "default": "'button'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/button/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "disabled",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether the component is disabled.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.disabled",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/button/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "asChild",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.aschild",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "as",
-                    "type": "AsTag | Component",
-                    "required": false,
-                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.as",
-                    "default": "'div'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
                 "callables": []
               }
             ]
@@ -1248,7 +1248,7 @@
               {
                 "name": "DrawerUi",
                 "kind": "typeAlias",
-                "type": "{ header: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; icon: ClassValue; close: ClassValue; popup: ClassValue; cancel: ClassValue; footer: ClassValue; overlay: ClassValue; fullscreen: ClassValue; confirm: ClassValue; handle: ClassValue; swipeArea: ClassValue; indent: ClassValue; indentBackground: ClassValue; }",
+                "type": "{ header: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; icon: ClassValue; close: ClassValue; indent: ClassValue; footer: ClassValue; popup: ClassValue; cancel: ClassValue; overlay: ClassValue; fullscreen: ClassValue; confirm: ClassValue; handle: ClassValue; swipeArea: ClassValue; indentBackground: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Drawer component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_drawer_types.drawerui",
@@ -2427,7 +2427,7 @@
         "kind": "props",
         "name": "DrawerCompactProps",
         "type": "TypeAlias DrawerCompactProps: Omit<DialogCompactProps, \"modal\"> & DrawerRootProps & { handleProps?: DrawerHandleProps; swipeable?: boolean; swipeAreaProps?: DrawerSwipeAreaProps }",
-        "resolvedType": "{ description?: string; open?: boolean; defaultOpen?: boolean; dir?: Direction; draggable?: boolean; title?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; pure?: boolean; popupProps?: DrawerPopupProps; portalProps?: DrawerPortalProps; fullscreen?: boolean; showClose?: boolean; showFullscreen?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DrawerOverlayProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; fullscreenProps?: DialogFullscreenProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; isAlert?: boolean; alertType?: DialogAlertType; defaultFullscreen?: boolean; modal?: import(\"../../types\").ModalityTier; snapPoint?: DrawerSnapPoint | null; defaultSnapPoint?: DrawerSnapPoint | null; snapToSequentialPoints?: boolean; closeThreshold?: number; swipeDirection?: SwipeDirection; fixed?: boolean; dismissible?: boolean; nested?: boolean; side?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: DrawerSnapPoint[]; handleProps?: DrawerHandleProps; swipeable?: boolean; swipeAreaProps?: DrawerSwipeAreaProps }",
+        "resolvedType": "{ description?: string; open?: boolean; defaultOpen?: boolean; dir?: Direction; draggable?: boolean; title?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; pure?: boolean; triggerProps?: DialogTriggerProps; contentProps?: DialogContentProps; headerProps?: DialogHeaderProps; footerProps?: DialogFooterProps; closeProps?: DialogCloseProps; popupProps?: DrawerPopupProps; portalProps?: DrawerPortalProps; fullscreen?: boolean; showClose?: boolean; showFullscreen?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; overlayProps?: DrawerOverlayProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; fullscreenProps?: DialogFullscreenProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; isAlert?: boolean; alertType?: DialogAlertType; defaultFullscreen?: boolean; modal?: import(\"../../types\").ModalityTier; snapPoint?: DrawerSnapPoint | null; defaultSnapPoint?: DrawerSnapPoint | null; snapToSequentialPoints?: boolean; closeThreshold?: number; swipeDirection?: SwipeDirection; fixed?: boolean; dismissible?: boolean; nested?: boolean; side?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: DrawerSnapPoint[]; handleProps?: DrawerHandleProps; swipeable?: boolean; swipeAreaProps?: DrawerSwipeAreaProps }",
         "description": "Properties for the DrawerCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_drawer_types.drawercompactprops.props",
         "sourcePath": "packages/headless/src/components/drawer/types.ts",
@@ -2548,6 +2548,221 @@
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "triggerProps",
+            "type": "DialogTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the trigger element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_drawer_types.drawercompactprops.members.triggerprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DialogTriggerProps",
+                "kind": "interface",
+                "type": "DialogTriggerProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the DialogTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contentProps",
+            "type": "DialogContentProps",
+            "required": false,
+            "description": "Properties forwarded to the content element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_drawer_types.drawercompactprops.members.contentprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DialogContentProps",
+                "kind": "interface",
+                "type": "DialogContentProps",
+                "resolvedType": null,
+                "description": "Properties for the DialogContent component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcontentprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "headerProps",
+            "type": "DialogHeaderProps",
+            "required": false,
+            "description": "Properties forwarded to the header element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_drawer_types.drawercompactprops.members.headerprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DialogHeaderProps",
+                "kind": "interface",
+                "type": "DialogHeaderProps",
+                "resolvedType": null,
+                "description": "Properties for the DialogHeader component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogheaderprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "footerProps",
+            "type": "DialogFooterProps",
+            "required": false,
+            "description": "Properties forwarded to the footer element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_drawer_types.drawercompactprops.members.footerprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DialogFooterProps",
+                "kind": "interface",
+                "type": "DialogFooterProps",
+                "resolvedType": null,
+                "description": "Properties for the DialogFooter component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogfooterprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "closeProps",
+            "type": "DialogCloseProps",
+            "required": false,
+            "description": "Properties forwarded to the close element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_drawer_types.drawercompactprops.members.closeprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DialogCloseProps",
+                "kind": "interface",
+                "type": "DialogCloseProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the DialogClose component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops",
+                "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "popupProps",
@@ -2756,76 +2971,6 @@
             "referencedTypes": []
           },
           {
-            "name": "triggerProps",
-            "type": "DialogTriggerProps",
-            "required": false,
-            "description": "Properties forwarded to the trigger element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_drawer_types.drawercompactprops.members.triggerprops",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DialogTriggerProps",
-                "kind": "interface",
-                "type": "DialogTriggerProps",
-                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the DialogTrigger component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops",
-                "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "type",
-                    "type": "ButtonType",
-                    "required": false,
-                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.type",
-                    "default": "'button'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/button/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "disabled",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether the component is disabled.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.disabled",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/button/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "asChild",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.aschild",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "as",
-                    "type": "AsTag | Component",
-                    "required": false,
-                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogtriggerprops.members.as",
-                    "default": "'div'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "overlayProps",
             "type": "DrawerOverlayProps",
             "required": false,
@@ -2858,81 +3003,6 @@
                     "referencedTypes": []
                   }
                 ],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "headerProps",
-            "type": "DialogHeaderProps",
-            "required": false,
-            "description": "Properties forwarded to the header element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_drawer_types.drawercompactprops.members.headerprops",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DialogHeaderProps",
-                "kind": "interface",
-                "type": "DialogHeaderProps",
-                "resolvedType": null,
-                "description": "Properties for the DialogHeader component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogheaderprops",
-                "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "contentProps",
-            "type": "DialogContentProps",
-            "required": false,
-            "description": "Properties forwarded to the content element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_drawer_types.drawercompactprops.members.contentprops",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DialogContentProps",
-                "kind": "interface",
-                "type": "DialogContentProps",
-                "resolvedType": null,
-                "description": "Properties for the DialogContent component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcontentprops",
-                "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "footerProps",
-            "type": "DialogFooterProps",
-            "required": false,
-            "description": "Properties forwarded to the footer element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_drawer_types.drawercompactprops.members.footerprops",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DialogFooterProps",
-                "kind": "interface",
-                "type": "DialogFooterProps",
-                "resolvedType": null,
-                "description": "Properties for the DialogFooter component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogfooterprops",
-                "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
                 "callables": []
               }
             ]
@@ -2983,76 +3053,6 @@
                 "typeParameters": [],
                 "external": false,
                 "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "closeProps",
-            "type": "DialogCloseProps",
-            "required": false,
-            "description": "Properties forwarded to the close element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_drawer_types.drawercompactprops.members.closeprops",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DialogCloseProps",
-                "kind": "interface",
-                "type": "DialogCloseProps",
-                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the DialogClose component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops",
-                "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "type",
-                    "type": "ButtonType",
-                    "required": false,
-                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.type",
-                    "default": "'button'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/button/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "disabled",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether the component is disabled.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.disabled",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/button/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "asChild",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.aschild",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "as",
-                    "type": "AsTag | Component",
-                    "required": false,
-                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dialog_types.dialogcloseprops.members.as",
-                    "default": "'div'",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
                 "callables": []
               }
             ]

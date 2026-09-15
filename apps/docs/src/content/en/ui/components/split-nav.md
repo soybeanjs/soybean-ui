@@ -76,6 +76,7 @@ Use it when a layout needs a first-level switcher plus a nested tree or horizont
 - Activating a parent item (click or keyboard) emits `open` with the complete option data of that parent, children included; it fires only for parents with visible children and never for leaves.
 - The nested pane keeps its own expanded state while it stays mounted, so with the default `expandStrategy="keep"` a branch you expanded under one first-level item is still expanded when you come back to it. The state resets when the pane unmounts, which happens whenever the active first-level item has no visible children.
 - Flex layout per `mode` lives in the UI style recipe; the headless layer carries no layout classes.
+- The vertical columns of a sidebar only exist while the current state fills them. `resolveSplitNavSidebarColumns({ mode, items, modelValue, openPath })` answers which of them exist: `dual-vertical` and `horizontal-dual-vertical` use up to two columns (the latter's being the second and third level of the tree), `vertical-horizontal` keeps the rail alone in the sidebar, and `horizontal-vertical` the pane alone. A consumer that has to fix a container's width before rendering — `SAppShell` reserving its sidebar — derives it from there instead of measuring the DOM, which is unavailable during server rendering.
 
 ## FAQ
 
@@ -97,6 +98,20 @@ Give the target element an `id` and pass it to `horizontalMountedId` / `vertical
 ```
 
 The pane is then rendered into `#app-header` / `#app-sider` through `Teleport` (`defer` keeps late-mounted targets safe).
+
+### How do I size a container around the panes?
+
+`resolveSplitNavSidebarColumns` reports the vertical columns a mode renders, so a container can reserve exactly their width before rendering:
+
+```ts
+import { computed } from 'vue';
+import { resolveSplitNavSidebarColumns } from '@soybeanjs/headless/split-nav';
+
+// `rail` and `pane` say whether each of the two sidebar columns exists.
+const columns = computed(() => resolveSplitNavSidebarColumns({ mode, items, modelValue: active.value }));
+```
+
+Resolving from the selected value covers a container driven by the active route. Pass `openPath` as well to follow a menu that is only _opened_ — the user browsing a parent without selecting a leaf yet. `SplitNavRoot` keeps that path internal, so mirror it from the `open` event and clear it whenever the model value changes; that is what `SAppShell` does to size its layout around the columns.
 
 ### How do I know when a leaf is chosen?
 

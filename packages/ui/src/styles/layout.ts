@@ -12,22 +12,22 @@ export const layoutVariants = scv({
   slots: {
     // --sl-* 是本库的间距/gap 别名(headless 注入的 --soybean-layout-* 保持不变),在 root 上按状态计算,各槽位直接应用
     root: [
-      'group relative h-full transition-all-300',
+      'group/layout relative h-full transition-all-300',
       '[--sl-half-spacing:calc(var(--sl-spacing)/2)]',
       '[--sl-main-gap:var(--soybean-layout-start-gap)]',
       '[--sl-header-gap:var(--soybean-layout-header-start-gap)]',
       '[--sl-footer-gap:var(--soybean-layout-footer-start-gap)]',
       '[--sl-end-gap:0px]'
     ],
-    main: 'flex flex-col h-full group-data-[scroll-behavior=wrapper]:overflow-y-auto transition-all-300',
+    main: 'flex flex-col h-full group-data-[scroll-behavior=wrapper]/layout:overflow-y-auto transition-all-300',
     sidebarRoot: 'lt-md:hidden',
     sidebarWrapper: [
       `absolute inset-y-0 z-[--soybean-layout-sidebar-z-index] flex h-[--soybean-layout-sidebar-height] w-[--soybean-sidebar-width] transition-[width,opacity] duration-200 ease-linear lt-md:hidden`,
-      'group-data-[state=collapsed]:w-[--soybean-collapsed-sidebar-width] mt-[--soybean-layout-sidebar-top-gap] mb-[--soybean-layout-sidebar-bottom-gap]'
+      'group-data-[state=collapsed]/layout:w-[--soybean-collapsed-sidebar-width] mt-[--soybean-layout-sidebar-top-gap] mb-[--soybean-layout-sidebar-bottom-gap]'
     ],
     sidebar: [
       `flex flex-col w-full h-full bg-sidebar`,
-      `group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-border group-data-[variant=floating]:border-solid group-data-[variant=floating]:shadow`
+      `group-data-[variant=floating]/layout:rounded-lg group-data-[variant=floating]/layout:border group-data-[variant=floating]/layout:border-border group-data-[variant=floating]/layout:border-solid group-data-[variant=floating]/layout:shadow`
     ],
     mobileDrawer: 'w-[--soybean-sidebar-width] bg-sidebar p-0',
     mobileOverlay: [
@@ -43,15 +43,15 @@ export const layoutVariants = scv({
     trigger: '',
     header: [
       'shrink-0 flex items-center h-[--soybean-layout-header-height] transition-all-300',
-      'group-data-[fixed-top=true]:absolute z-[--soybean-layout-header-z-index] top-0 inset-x-0'
+      'group-data-[fixed-top=true]/layout:absolute z-[--soybean-layout-header-z-index] top-0 inset-x-0'
     ],
     headerPlaceholder: 'shrink-0 h-[--soybean-layout-header-height] overflow-hidden',
-    tab: 'group-data-[fixed-top=true]:absolute inset-x-0 top-[--soybean-layout-header-height] shrink-0 h-[--soybean-layout-tab-height] z-[--soybean-layout-tab-z-index] transition-all-300',
+    tab: 'group-data-[fixed-top=true]/layout:absolute inset-x-0 top-[--soybean-layout-header-height] shrink-0 h-[--soybean-layout-tab-height] z-[--soybean-layout-tab-z-index] transition-all-300',
     tabPlaceholder: 'shrink-0 h-[--soybean-layout-tab-height] overflow-hidden',
-    content: `relative grow bg-background group-data-[scroll-behavior=content]:overflow-y-auto`,
+    content: `relative grow bg-background group-data-[scroll-behavior=content]/layout:overflow-y-auto`,
     footer: [
       'shrink-0 h-[--soybean-layout-footer-height] transition-all-300',
-      'group-data-[fixed-footer=true]:absolute z-[--soybean-layout-footer-z-index] inset-x-0 bottom-0'
+      'group-data-[fixed-footer=true]/layout:absolute z-[--soybean-layout-footer-z-index] inset-x-0 bottom-0'
     ],
     footerPlaceholder: 'shrink-0 h-[--soybean-layout-footer-height] overflow-hidden'
   },
@@ -80,36 +80,36 @@ export const layoutVariants = scv({
       left: {
         main: ['ms-[var(--sl-main-gap)]', 'me-[var(--sl-end-gap)]'],
         sidebarWrapper: 'start-0 border-e',
-        rail: 'cursor-w-resize group-data-[state=collapsed]:cursor-e-resize -end-[var(--sl-spacing)]',
-        header: ['group-data-[fixed-top=true]:ms-[var(--sl-header-gap)]', 'me-[var(--sl-end-gap)]'],
+        rail: 'cursor-w-resize group-data-[state=collapsed]/layout:cursor-e-resize -end-[var(--sl-spacing)]',
+        header: ['group-data-[fixed-top=true]/layout:ms-[var(--sl-header-gap)]', 'me-[var(--sl-end-gap)]'],
         tab: [
-          'group-data-[full-content=false]:group-data-[fixed-top=true]:ms-[var(--sl-main-gap)]',
-          'group-data-[full-content=false]:group-data-[fixed-top=true]:me-[var(--sl-end-gap)]'
+          'group-data-[full-content=false]/layout:group-data-[fixed-top=true]/layout:ms-[var(--sl-main-gap)]',
+          'group-data-[full-content=false]/layout:group-data-[fixed-top=true]/layout:me-[var(--sl-end-gap)]'
         ],
         footer: [
-          'group-data-[fixed-footer=true]:ms-[var(--sl-footer-gap)]',
-          'group-data-[fixed-footer=true]:me-[var(--sl-end-gap)]'
+          'group-data-[fixed-footer=true]/layout:ms-[var(--sl-footer-gap)]',
+          'group-data-[fixed-footer=true]/layout:me-[var(--sl-end-gap)]'
         ]
       },
       right: {
         main: ['me-[var(--sl-main-gap)]', 'ms-[var(--sl-end-gap)]'],
         sidebarWrapper: 'end-0 border-s',
-        rail: 'cursor-e-resize group-data-[state=collapsed]:cursor-w-resize start-0',
-        header: ['group-data-[fixed-top=true]:me-[var(--sl-header-gap)]', 'ms-[var(--sl-end-gap)]'],
+        rail: 'cursor-e-resize group-data-[state=collapsed]/layout:cursor-w-resize start-0',
+        header: ['group-data-[fixed-top=true]/layout:me-[var(--sl-header-gap)]', 'ms-[var(--sl-end-gap)]'],
         tab: [
-          'group-data-[full-content=false]:group-data-[fixed-top=true]:me-[var(--sl-main-gap)]',
-          'group-data-[full-content=false]:group-data-[fixed-top=true]:ms-[var(--sl-end-gap)]'
+          'group-data-[full-content=false]/layout:group-data-[fixed-top=true]/layout:me-[var(--sl-main-gap)]',
+          'group-data-[full-content=false]/layout:group-data-[fixed-top=true]/layout:ms-[var(--sl-end-gap)]'
         ],
         footer: [
-          'group-data-[fixed-footer=true]:me-[var(--sl-footer-gap)]',
-          'group-data-[fixed-footer=true]:ms-[var(--sl-end-gap)]'
+          'group-data-[fixed-footer=true]/layout:me-[var(--sl-footer-gap)]',
+          'group-data-[fixed-footer=true]/layout:ms-[var(--sl-end-gap)]'
         ]
       }
     },
     variant: {
       sidebar: {
-        sidebarGapHandler: 'group-data-[collapsible=icon]:w-[--soybean-collapsed-sidebar-width]',
-        sidebarWrapper: `group-data-[collapsible=icon]:w-[--soybean-collapsed-sidebar-width] group-data-[side=left]:border-e group-data-[side=right]:border-s`
+        sidebarGapHandler: 'group-data-[collapsible=icon]/layout:w-[--soybean-collapsed-sidebar-width]',
+        sidebarWrapper: `group-data-[collapsible=icon]/layout:w-[--soybean-collapsed-sidebar-width] group-data-[side=left]/layout:border-e group-data-[side=right]/layout:border-s`
       },
       floating: {
         root: [
@@ -121,8 +121,8 @@ export const layoutVariants = scv({
           'data-[collapsible=icon]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
           'data-[orientation=vertical]:data-[stretch-footer=true]:[--sl-footer-gap:0px]'
         ],
-        sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]:group-data-[state=collapsed]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))]`,
-        sidebarWrapper: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] p-[--sl-half-spacing] group-data-[collapsible=icon]:group-data-[state=collapsed]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))] border-e-0`
+        sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))]`,
+        sidebarWrapper: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] p-[--sl-half-spacing] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))] border-e-0`
       },
       inset: {
         root: [
@@ -135,33 +135,33 @@ export const layoutVariants = scv({
           'data-[variant=inset]:[--sl-end-gap:var(--sl-half-spacing)]',
           'data-[variant=inset]:data-[orientation=vertical]:data-[stretch-footer=true]:[--sl-footer-gap:var(--sl-half-spacing)]'
         ],
-        sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]:group-data-[state=collapsed]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))]`,
-        sidebarWrapper: `p-[--sl-half-spacing] w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]:group-data-[state=collapsed]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))] border-e-0`,
+        sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))]`,
+        sidebarWrapper: `p-[--sl-half-spacing] w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))] border-e-0`,
         main: `rounded-xl shadow`,
         header: [
           `top-[--sl-half-spacing] rounded-t-xl`,
-          `group-data-[orientation=vertical]:border-0`,
-          `group-data-[orientation=vertical]:shadow group-data-[orientation=vertical]:rounded-xl`
+          `group-data-[orientation=vertical]/layout:border-0`,
+          `group-data-[orientation=vertical]/layout:shadow group-data-[orientation=vertical]/layout:rounded-xl`
         ],
         tab: `top-[calc(var(--soybean-layout-header-height)+var(--sl-half-spacing))]`,
         footer: [
           'bottom-[--sl-half-spacing] rounded-b-xl',
-          `group-data-[orientation=vertical]:shadow group-data-[orientation=vertical]:rounded-xl`,
-          `group-data-[orientation=vertical]:group-data-[stretch-footer=true]:bottom-[calc(var(--sl-half-spacing)-2px)]`
+          `group-data-[orientation=vertical]/layout:shadow group-data-[orientation=vertical]/layout:rounded-xl`,
+          `group-data-[orientation=vertical]/layout:group-data-[stretch-footer=true]/layout:bottom-[calc(var(--sl-half-spacing)-2px)]`
         ]
       }
     },
     collapsible: {
       offcanvas: {
-        sidebarWrapper: 'group-data-[state=collapsed]:opacity-0 group-data-[state=collapsed]:z-0',
+        sidebarWrapper: 'group-data-[state=collapsed]/layout:opacity-0 group-data-[state=collapsed]/layout:z-0',
         rail: `translate-x-0 after:start-full hover:bg-sidebar`
       },
       icon: {}
     },
     fullContent: {
       true: {
-        tab: ['fixed top-0 z-[--soybean-layout-base-z-index] rounded-none', 'group-data-[fixed-top=true]:fixed'],
-        content: `fixed inset-0 z-[--soybean-layout-base-z-index] group-data-[tab-visible=true]:mt-[--soybean-layout-tab-height] overflow-auto`
+        tab: ['fixed top-0 z-[--soybean-layout-base-z-index] rounded-none', 'group-data-[fixed-top=true]/layout:fixed'],
+        content: `fixed inset-0 z-[--soybean-layout-base-z-index] group-data-[tab-visible=true]/layout:mt-[--soybean-layout-tab-height] overflow-auto`
       }
     }
   },
@@ -185,7 +185,7 @@ export const layoutVariants = scv({
       variant: 'inset',
       collapsible: 'offcanvas',
       class: {
-        rail: 'group-data-[state=collapsed]:end-0'
+        rail: 'group-data-[state=collapsed]/layout:end-0'
       }
     },
     {
@@ -193,7 +193,7 @@ export const layoutVariants = scv({
       variant: 'inset',
       collapsible: 'offcanvas',
       class: {
-        rail: 'group-data-[state=collapsed]:start-0'
+        rail: 'group-data-[state=collapsed]/layout:start-0'
       }
     },
     {
@@ -201,7 +201,7 @@ export const layoutVariants = scv({
       variant: 'floating',
       collapsible: 'offcanvas',
       class: {
-        rail: 'group-data-[state=collapsed]:end-[--sl-half-spacing]'
+        rail: 'group-data-[state=collapsed]/layout:end-[--sl-half-spacing]'
       }
     },
     {
@@ -209,14 +209,14 @@ export const layoutVariants = scv({
       variant: 'floating',
       collapsible: 'offcanvas',
       class: {
-        rail: 'group-data-[state=collapsed]:start-[--sl-half-spacing]'
+        rail: 'group-data-[state=collapsed]/layout:start-[--sl-half-spacing]'
       }
     },
     {
       variant: 'inset',
       collapsible: 'offcanvas',
       class: {
-        main: 'md:group-data-[state=collapsed]:ms-[--sl-half-spacing]'
+        main: 'md:group-data-[state=collapsed]/layout:ms-[--sl-half-spacing]'
       }
     }
   ],

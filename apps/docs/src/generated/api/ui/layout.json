@@ -75,7 +75,7 @@
               {
                 "name": "LayoutUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; header: ClassValue; trigger: ClassValue; content: ClassValue; sidebar: ClassValue; footer: ClassValue; tab: ClassValue; sidebarRoot: ClassValue; sidebarWrapper: ClassValue; sidebarGapHandler: ClassValue; main: ClassValue; rail: ClassValue; mobile: ClassValue; mobileDrawer: ClassValue; mobileOverlay: ClassValue; headerPlaceholder: ClassValue; tabPlaceholder: ClassValue; footerPlaceholder: ClassValue; }",
+                "type": "{ root: ClassValue; header: ClassValue; trigger: ClassValue; content: ClassValue; sidebar: ClassValue; tab: ClassValue; footer: ClassValue; sidebarRoot: ClassValue; sidebarWrapper: ClassValue; sidebarGapHandler: ClassValue; main: ClassValue; rail: ClassValue; mobile: ClassValue; mobileDrawer: ClassValue; mobileOverlay: ClassValue; headerPlaceholder: ClassValue; tabPlaceholder: ClassValue; footerPlaceholder: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Layout component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutui",
@@ -1627,7 +1627,7 @@
         "kind": "props",
         "name": "LayoutPlaceholderProps",
         "type": "Interface LayoutPlaceholderProps",
-        "resolvedType": "{ type: 'header' | 'footer' | 'tab' }",
+        "resolvedType": "{ type: 'header' | 'tab' | 'footer' }",
         "description": "Properties for the LayoutPlaceholder component.",
         "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutplaceholderprops.props",
         "sourcePath": "packages/headless/src/components/layout/types.ts",
@@ -1635,7 +1635,7 @@
         "members": [
           {
             "name": "type",
-            "type": "'header' | 'footer' | 'tab'",
+            "type": "'header' | 'tab' | 'footer'",
             "required": true,
             "description": "Which region the placeholder reserves space for.",
             "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutplaceholderprops.members.type",

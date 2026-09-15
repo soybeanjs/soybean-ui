@@ -75,7 +75,7 @@
               {
                 "name": "TreeNavUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; itemIcon: ClassValue; itemLinkIcon: ClassValue; overflow: ClassValue; itemTriggerIcon: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; itemLinkIcon: ClassValue; itemIcon: ClassValue; overflow: ClassValue; itemTriggerIcon: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the TreeNav component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_tree_nav_types.treenavui",
@@ -253,7 +253,7 @@
                 "name": "LinkExtraProps",
                 "kind": "interface",
                 "type": "LinkExtraProps",
-                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
+                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
                 "description": "Properties for the LinkExtra component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops",
                 "sourcePath": "packages/headless/src/components/link/types.ts",
@@ -350,7 +350,7 @@
                   },
                   {
                     "name": "ariaCurrentValue",
-                    "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+                    "type": "'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'",
                     "required": false,
                     "description": "Value passed to the attribute `aria-current` when the link is exact active.",
                     "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops.members.ariacurrentvalue",
@@ -705,24 +705,13 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
+                "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "packages/headless/src/components/menu/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
-                  {
-                    "name": "placement",
-                    "type": "Placement",
-                    "required": false,
-                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.placement",
-                    "default": "undefined",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
                   {
                     "name": "loop",
                     "type": "boolean",
@@ -732,6 +721,17 @@
                     "default": "false",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "placement",
+                    "type": "Placement",
+                    "required": false,
+                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.placement",
+                    "default": "undefined",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -1856,7 +1856,7 @@
                 "name": "LinkExtraProps",
                 "kind": "interface",
                 "type": "LinkExtraProps",
-                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
+                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
                 "description": "Properties for the LinkExtra component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops",
                 "sourcePath": "packages/headless/src/components/link/types.ts",
@@ -1953,7 +1953,7 @@
                   },
                   {
                     "name": "ariaCurrentValue",
-                    "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+                    "type": "'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'",
                     "required": false,
                     "description": "Value passed to the attribute `aria-current` when the link is exact active.",
                     "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops.members.ariacurrentvalue",
@@ -2308,24 +2308,13 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
+                "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "packages/headless/src/components/menu/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
-                  {
-                    "name": "placement",
-                    "type": "Placement",
-                    "required": false,
-                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.placement",
-                    "default": "undefined",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
                   {
                     "name": "loop",
                     "type": "boolean",
@@ -2335,6 +2324,17 @@
                     "default": "false",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "placement",
+                    "type": "Placement",
+                    "required": false,
+                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.placement",
+                    "default": "undefined",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -3320,7 +3320,7 @@
                 "name": "TreeNavOptionData",
                 "kind": "typeAlias",
                 "type": "Omit<TreeNavBaseOptionData, 'children'> & { children?: TreeNavOptionData<TreeNavBaseOptionData>[] | undefined; }",
-                "resolvedType": "{ disabled?: T['disabled']; hidden?: T['hidden']; label: T['label']; icon?: T['icon']; href?: T['href']; to?: T['to']; external?: T['external']; target?: T['target']; value: T['value']; separator?: T['separator']; shortcut?: T['shortcut']; isGroup?: T['isGroup']; children?: TreeNavOptionData<T>[] }",
+                "resolvedType": "{ disabled?: T['disabled']; hidden?: T['hidden']; label: T['label']; icon?: T['icon']; href?: T['href']; to?: T['to']; external?: T['external']; target?: T['target']; separator?: T['separator']; value: T['value']; shortcut?: T['shortcut']; isGroup?: T['isGroup']; children?: TreeNavOptionData<T>[] }",
                 "description": "Recursive option data for the TreeNav component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_tree_nav_types.treenavoptiondata",
                 "sourcePath": "packages/headless/src/components/tree-nav/types.ts",
@@ -3416,17 +3416,6 @@
                     "referencedTypes": []
                   },
                   {
-                    "name": "value",
-                    "type": "T['value']",
-                    "required": true,
-                    "description": "The unique value of the item.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_tree_nav_types.treenavoptiondata.members.value",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
                     "name": "separator",
                     "type": "T['separator']",
                     "required": false,
@@ -3435,6 +3424,17 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/tree-nav/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "value",
+                    "type": "T['value']",
+                    "required": true,
+                    "description": "The unique value of the item.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tree_nav_types.treenavoptiondata.members.value",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -3974,7 +3974,7 @@
                 "name": "LinkExtraProps",
                 "kind": "interface",
                 "type": "LinkExtraProps",
-                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
+                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
                 "description": "Properties for the LinkExtra component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops",
                 "sourcePath": "packages/headless/src/components/link/types.ts",
@@ -4071,7 +4071,7 @@
                   },
                   {
                     "name": "ariaCurrentValue",
-                    "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+                    "type": "'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'",
                     "required": false,
                     "description": "Value passed to the attribute `aria-current` when the link is exact active.",
                     "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops.members.ariacurrentvalue",
@@ -4426,24 +4426,13 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
+                "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "packages/headless/src/components/menu/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
-                  {
-                    "name": "placement",
-                    "type": "Placement",
-                    "required": false,
-                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.placement",
-                    "default": "undefined",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
                   {
                     "name": "loop",
                     "type": "boolean",
@@ -4453,6 +4442,17 @@
                     "default": "false",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "placement",
+                    "type": "Placement",
+                    "required": false,
+                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.placement",
+                    "default": "undefined",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
                     "referencedTypes": []
                   },
                   {

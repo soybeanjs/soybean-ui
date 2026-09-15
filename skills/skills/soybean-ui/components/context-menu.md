@@ -69,9 +69,9 @@ Properties for the ContextMenu component.
 - `selectedValue`: The selected value of the menu. (type `T`; optional)
 - `itemProps`: Properties forwarded to the item element. (type `ContextMenuItemProps`; optional)
 - `linkProps`: Properties forwarded to the link element. (type `LinkExtraProps`; optional)
+- `subProps`: Properties forwarded to the sub element. (type `ContextMenuSubProps`; optional)
 - `groupProps`: Properties forwarded to the group element. (type `ContextMenuGroupProps`; optional)
 - `groupLabelProps`: Properties forwarded to the group label element. (type `ContextMenuGroupLabelProps`; optional)
-- `subProps`: Properties forwarded to the sub element. (type `ContextMenuSubProps`; optional)
 - `subTriggerProps`: Properties forwarded to the sub trigger element. (type `ContextMenuSubTriggerProps`; optional)
 - `subContentProps`: Properties forwarded to the sub content element. (type `ContextMenuSubContentProps`; optional)
 - `separatorProps`: Properties forwarded to the separator element. (type `ContextMenuSeparatorProps`; optional)
@@ -246,9 +246,9 @@ Properties for the ContextMenuCompact component.
 - `selectedValue`: The selected value of the menu. (type `T`; optional)
 - `itemProps`: Properties forwarded to the item element. (type `ContextMenuItemProps`; optional)
 - `linkProps`: Properties forwarded to the link element. (type `LinkExtraProps`; optional)
+- `subProps`: Properties forwarded to the sub element. (type `ContextMenuSubProps`; optional)
 - `groupProps`: Properties forwarded to the group element. (type `ContextMenuGroupProps`; optional)
 - `groupLabelProps`: Properties forwarded to the group label element. (type `ContextMenuGroupLabelProps`; optional)
-- `subProps`: Properties forwarded to the sub element. (type `ContextMenuSubProps`; optional)
 - `subTriggerProps`: Properties forwarded to the sub trigger element. (type `ContextMenuSubTriggerProps`; optional)
 - `subContentProps`: Properties forwarded to the sub content element. (type `ContextMenuSubContentProps`; optional)
 - `separatorProps`: Properties forwarded to the separator element. (type `ContextMenuSeparatorProps`; optional)
@@ -285,8 +285,8 @@ Slots for the ContextMenuCompact component.
 
 Properties for the ContextMenuContent component.
 
-- `placement`: The placement of the floating element. If used, it will override the `side` and `align` props. (type `Placement`; default `undefined`; optional)
 - `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
+- `placement`: The placement of the floating element. If used, it will override the `side` and `align` props. (type `Placement`; default `undefined`; optional)
 - `popupProps`: Properties forwarded to the popup element. (type `ContextMenuPopupProps`; optional)
 - `sideFlip`: Flip to the opposite side when colliding with boundary. (type `boolean`; default `true`; optional)
 - `alignOffset`: An offset in pixels from the `start` or `end` alignment options. (type `number`; default `0`; optional)

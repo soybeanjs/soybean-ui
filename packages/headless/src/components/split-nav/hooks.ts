@@ -1,13 +1,6 @@
 import { computed, toValue } from 'vue';
 import type { ComputedRef, CSSProperties, MaybeRefOrGetter } from 'vue';
-import {
-  findActiveInLevel,
-  findActivePath,
-  flattenFirstLevelItems,
-  isFirstLevelBackwardExpandKey,
-  isPaneBoundaryKey,
-  toVisibleOptions
-} from './shared';
+import { isFirstLevelBackwardExpandKey, isPaneBoundaryKey, resolveSplitNavLevels } from './shared';
 import { useSplitNavRootContext } from './context';
 import type { SplitNavBaseOptionData, SplitNavOptionData } from './types';
 
@@ -22,36 +15,21 @@ export function useSplitNavDerived<T extends SplitNavBaseOptionData = SplitNavBa
 ) {
   const { items: rootItems, modelValue, openPath } = useSplitNavRootContext('useSplitNavDerived');
 
-  const sourceItems = computed(() => {
-    const override = toValue(items);
-
-    return toVisibleOptions((override ?? rootItems.value) as SplitNavOptionData<T>[]);
-  });
-
-  const firstLevelItems = computed(() => flattenFirstLevelItems(sourceItems.value));
-
-  const selectionPath = computed(() => findActivePath(rootItems.value as SplitNavOptionData<T>[], modelValue.value));
-
-  const activeItem = computed(
-    () =>
-      findActiveInLevel(firstLevelItems.value, openPath.value) ??
-      findActiveInLevel(firstLevelItems.value, selectionPath.value)
+  const levels = computed(() =>
+    resolveSplitNavLevels<T>({
+      items: rootItems.value as SplitNavOptionData<T>[],
+      levelItems: toValue(items) as SplitNavOptionData<T>[] | undefined,
+      modelValue: modelValue.value,
+      openPath: openPath.value
+    })
   );
 
-  const childItems = computed(() => {
-    if (!activeItem.value?.children?.length) {
-      return [];
-    }
-
-    return toVisibleOptions(activeItem.value.children as SplitNavOptionData<T>[]);
-  });
-
   return {
-    sourceItems,
-    firstLevelItems,
-    selectionPath,
-    activeItem,
-    childItems
+    sourceItems: computed(() => levels.value.sourceItems),
+    firstLevelItems: computed(() => levels.value.firstLevelItems),
+    selectionPath: computed(() => levels.value.selectionPath),
+    activeItem: computed(() => levels.value.activeItem),
+    childItems: computed(() => levels.value.childItems)
   };
 }
 

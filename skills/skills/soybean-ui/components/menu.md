@@ -279,13 +279,13 @@ Properties for the MenuOptionsCompact component.
 - `selectedValue`: The selected value of the menu. (type `T`; optional)
 - `itemProps`: Properties forwarded to the item element. (type `MenuItemProps`; optional)
 - `linkProps`: Properties forwarded to the link element. (type `LinkExtraProps`; optional)
+- `subProps`: Properties forwarded to the sub element. (type `MenuSubProps`; optional)
 - `groupProps`: Properties forwarded to the group element. (type `MenuGroupProps`; optional)
 - `groupLabelProps`: Properties forwarded to the group label element. (type `MenuGroupLabelProps`; optional)
-- `subProps`: Properties forwarded to the sub element. (type `MenuSubProps`; optional)
 - `subTriggerProps`: Properties forwarded to the sub trigger element. (type `MenuSubTriggerProps`; optional)
-- `portalProps`: Properties forwarded to the portal element. (type `MenuPortalProps`; optional)
 - `subContentProps`: Properties forwarded to the sub content element. (type `MenuSubContentProps`; optional)
 - `separatorProps`: Properties forwarded to the separator element. (type `MenuSeparatorProps`; optional)
+- `portalProps`: Properties forwarded to the portal element. (type `MenuPortalProps`; optional)
 - `shortcutProps`: Properties forwarded to the shortcut element. (type `MenuShortcutProps`; optional)
 
 #### Emits
@@ -444,8 +444,8 @@ Events for the MenuSub component.
 
 Properties for the MenuSubContent component.
 
-- `placement`: The placement of the floating element. If used, it will override the `side` and `align` props. (type `Placement`; default `undefined`; optional)
 - `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
+- `placement`: The placement of the floating element. If used, it will override the `side` and `align` props. (type `Placement`; default `undefined`; optional)
 - `sideOffset`: The distance in pixels from the trigger. (type `number`; default `0`; optional)
 - `arrowPadding`: The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it from overflowing the corners. (type `number`; default `0`; optional)
 - `updatePositionStrategy`: Strategy to update the position of the floating element on every animation frame. (type `'always' | 'optimized'`; default `'optimized'`; optional)

@@ -76,10 +76,10 @@ Properties for the TreeMenu component.
 - `showGroupIcon`: Whether to show the group icon. (type `boolean`; default `false`; optional)
 - `side`: Horizontal side. (type `HorizontalSide`; optional)
 - `itemProps`: Properties forwarded to the item element. (type `TreeMenuItemProps`; optional)
-- `linkProps`: Properties forwarded to the link element. (type `LinkExtraProps`; optional)
-- `subProps`: Properties forwarded to the sub element. (type `TreeMenuSubProps`; optional)
 - `buttonProps`: Properties forwarded to the button element. (type `TreeMenuButtonProps`; optional)
+- `linkProps`: Properties forwarded to the link element. (type `LinkExtraProps`; optional)
 - `collapsibleProps`: Properties forwarded to the collapsible element. (type `TreeMenuCollapsibleProps`; optional)
+- `subProps`: Properties forwarded to the sub element. (type `TreeMenuSubProps`; optional)
 
 #### Emits
 
@@ -168,10 +168,10 @@ Properties for the TreeMenuCompact component.
 - `showGroupIcon`: Whether to show the group icon. (type `boolean`; default `false`; optional)
 - `side`: Horizontal side. (type `HorizontalSide`; optional)
 - `itemProps`: Properties forwarded to the item element. (type `TreeMenuItemProps`; optional)
-- `linkProps`: Properties forwarded to the link element. (type `LinkExtraProps`; optional)
-- `subProps`: Properties forwarded to the sub element. (type `TreeMenuSubProps`; optional)
 - `buttonProps`: Properties forwarded to the button element. (type `TreeMenuButtonProps`; optional)
+- `linkProps`: Properties forwarded to the link element. (type `LinkExtraProps`; optional)
 - `collapsibleProps`: Properties forwarded to the collapsible element. (type `TreeMenuCollapsibleProps`; optional)
+- `subProps`: Properties forwarded to the sub element. (type `TreeMenuSubProps`; optional)
 
 #### Emits
 
@@ -256,10 +256,10 @@ Properties for the TreeMenuOptionsCompact component.
 - `showGroupIcon`: Whether to show the group icon. (type `boolean`; default `false`; optional)
 - `side`: Horizontal side. (type `HorizontalSide`; optional)
 - `itemProps`: Properties forwarded to the item element. (type `TreeMenuItemProps`; optional)
-- `linkProps`: Properties forwarded to the link element. (type `LinkExtraProps`; optional)
-- `subProps`: Properties forwarded to the sub element. (type `TreeMenuSubProps`; optional)
 - `buttonProps`: Properties forwarded to the button element. (type `TreeMenuButtonProps`; optional)
+- `linkProps`: Properties forwarded to the link element. (type `LinkExtraProps`; optional)
 - `collapsibleProps`: Properties forwarded to the collapsible element. (type `TreeMenuCollapsibleProps`; optional)
+- `subProps`: Properties forwarded to the sub element. (type `TreeMenuSubProps`; optional)
 
 #### Emits
 

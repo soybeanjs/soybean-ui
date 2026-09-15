@@ -668,6 +668,7 @@
         "breadcrumblistprops": {
           "props": "BreadcrumbList 组件的属性。"
         },
+        "breadcrumboptiondata": "Breadcrumb 组件的选项数据。",
         "breadcrumbpageprops": {
           "props": "BreadcrumbPage 组件的属性。"
         },
@@ -5554,7 +5555,7 @@
             "children": "选项的子选项",
             "disabled": "true \"时，阻止用户与项目交互。",
             "external": "强制将链接视为外部链接（true）或内部链接（false）。这有助于处理边缘情况",
-            "hidden": "",
+            "hidden": "该选项是否被隐藏。",
             "href": "点击链接时应导航到的 URL。",
             "icon": "在标签前显示图标。",
             "isgrouplabel": "选项是否应显示为组标签。",
@@ -6124,7 +6125,7 @@
             "description": "该选项的描述。",
             "disabled": "该选项是否已禁用。",
             "external": "强制将链接视为外部链接（true）或内部链接（false）。这有助于处理边界情况",
-            "hidden": "",
+            "hidden": "该选项是否被隐藏。",
             "href": "点击该链接时应跳转到的 URL。",
             "icon": "该选项的图标。",
             "label": "要在选项中显示的标签。",
@@ -6243,6 +6244,8 @@
           },
           "slots": "PageTabsCompact 组件的插槽。"
         },
+        "pagetabscontextmenuoptiondata": "PageTabs 上下文菜单的选项数据。",
+        "pagetabsdragevent": "标签拖动操作的事件负载。",
         "pagetabsitememits": {
           "emits": "PageTabsItem 组件的事件。"
         },
@@ -6255,6 +6258,7 @@
           },
           "props": "PageTabsItem 组件的属性。"
         },
+        "pagetabsoptiondata": "PageTabs 组件的选项数据。",
         "pagetabspinprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
@@ -7867,7 +7871,7 @@
             "defaultcollapsed": "嵌套的 TreeMenu 窗格在初始渲染时的折叠状态。",
             "defaultvalue": "初始渲染时选中的叶节点。当不需要控制状态时使用。",
             "dir": "菜单的阅读方向（如适用）。\n\n若省略，则从全局 `ConfigProvider` 继承，或默认采用从左到右（LTR）方向。",
-            "expandstrategy": "",
+            "expandstrategy": "嵌套垂直 TreeMenu 窗格的展开策略。\n\n- `keep`：保持当前展开状态；手动展开或折叠的菜单不会因激活其他菜单而受影响。选中菜单的可折叠父级菜单会在挂载时以及每次选中菜单从外部发生变化时（例如由外部路由驱动）展开，从而保持其可见性。\n- `selected`：仅展开当前选中的菜单及其所有父级菜单；当选中菜单发生变化时，未选中的菜单将被折叠。\n\n仅适用于嵌套的 `TreeMenuCompact`；嵌套的水平窗格\n（`TreeNavCompact`）没有展开策略。",
             "horizontalmountedid": "用于挂载水平菜单的元素 ID（通过 `Teleport` 渲染）。\n\n若未设置，水平菜单将就地渲染。传递元素 ID 时请勿包含 `#`。",
             "items": "SplitNav 组件的选项数据。",
             "loop": "一级键盘导航是否会在最后一项与第一项之间循环往复。",
@@ -10036,7 +10040,8 @@
         "placement": "",
         "selectionbehavior": "",
         "side": "",
-        "swipedirection": ""
+        "swipedirection": "",
+        "uiclass": ""
       },
       "packages_headless_src_types_dom": {
         "imageloadingstatus": ""
@@ -10217,6 +10222,115 @@
           },
           "props": "Anchor 组件的属性。"
         }
+      },
+      "packages_ui_src_components_app_shell_types": {
+        "appshellbrandslotprops": {
+          "members": {
+            "collapsed": "侧边栏是否已折叠。",
+            "placement": "品牌显示所在的地区。"
+          },
+          "slotprops": "品牌插槽的插槽属性。"
+        },
+        "appshellemits": {
+          "callables": {
+            "breadcrumbclick": "在点击面包屑导航项时触发。",
+            "open": "当菜单父节点打开其嵌套窗格时触发。",
+            "select": "当选中菜单叶节点时触发。",
+            "tabclick": "点击选项卡时触发。",
+            "tabclose": "在关闭标签页时触发。",
+            "tabcontextmenu": "当制表符右键菜单的目标发生变化时触发。",
+            "tabdragend": "在拖动标签页结束时触发。",
+            "tabdragmove": "在拖动选项卡时触发。",
+            "tabdragreorder": "当被拖动的标签页就地重新排序时触发。",
+            "tabdragstart": "在开始拖动选项卡时触发。",
+            "tabpin": "在固定或取消固定标签页时触发。",
+            "tabselectcontextmenu": "当选中“制表符”上下文菜单项时触发。",
+            "update_modelvalue": "当活动菜单值发生变化时触发。",
+            "update_open": "当侧边栏的展开状态发生变化时触发。",
+            "update_tabs": "当标签页集合发生变化时触发（关闭、固定、拖动重新排序）。",
+            "update_tabvalue": "当活动标签页发生变化时触发。"
+          },
+          "emits": "AppShell 组件的事件。"
+        },
+        "appshelllogoplacement": "徽标插槽位置。\n\n- `auto`：该模式自身的默认位置——对于单侧边栏和\n  双垂直布局，位于侧边栏；对于其余布局，位于页眉。\n- `sidebar`：侧边栏顶部。\n- `sidebar-bottom`：侧边栏底部，位于菜单和\n  `sidebar-end` 下方。仅当侧边栏始终作为独立一列显示的模式\n  才支持此选项（`sidebar`、`dual-vertical`）；其他所有模式均保留默认\n  位置，而非将品牌标识固定在可能被遮挡的位置。\n- `header`：页眉。",
+        "appshelllogoplacementresolved": "当 `logoPlacement` 设置为 `'auto'` 时，徽标插槽的渲染位置。",
+        "appshellmenuitem": "`SAppShell` 菜单的选项数据。\n\n这是 `TreeMenu` / `TreeNav` / `SplitNav` 选项数据的超集，因此一个树结构\n可同时为嵌套侧边栏、顶部栏和拆分面板提供数据。",
+        "appshellmenuprops": {
+          "members": {
+            "split": "已转发至 `SSplitNav`（四种拆分模式）。",
+            "tree": "转发至嵌套的 `STreeMenu`（`sidebar` 模式）。",
+            "treenav": "已转发至 `STreeNav`（`top` 模式）。"
+          },
+          "props": "由外壳转发给其渲染的菜单的、针对每个渲染器的 props。"
+        },
+        "appshellmenuslotprops": {
+          "members": {
+            "collapsed": "侧边栏是否已折叠。",
+            "collapsedwidth": "侧边栏折叠后的宽度（单位：像素）。",
+            "headermountid": "当模式将其传送时，水平面板挂载到的标题元素的 ID。",
+            "mode": "当前处于 shell 模式。",
+            "side": "侧边栏所在的侧边。",
+            "sidebarmountid": "当模式将其传送时，垂直窗格挂载到的侧边栏元素的 ID。"
+          },
+          "slotprops": "菜单插槽的插槽属性。"
+        },
+        "appshellmenuui": {
+          "members": {
+            "split": "`SSplitNav` 的插槽类（四种拆分模式）。",
+            "tree": "嵌套 `STreeMenu`（`sidebar` 模式）的插槽类。",
+            "treenav": "`STreeNav` 的插槽类（`top` 模式）。"
+          }
+        },
+        "appshellmode": "`SAppShell` 组件的 Shell 骨架。\n\n四个 `SplitNavMode` 字面量会被原样传递给 `SSplitNav` ——\n外壳仅决定每个窗格的挂载位置。`sidebar` 和 `top` 是\n单窗格外壳（一个嵌套的 `STreeMenu`，或一个水平排列的 `STreeNav`）。\n\n模式名称描述的是**菜单形状**，而非布局方向。\n布局方向由模式决定：若第一级为垂直布局，则\n侧边栏将占据整个高度（`orientation=\"horizontal\"`）；若第一级为\n水平布局，则标题栏位于顶部（`orientation=\"vertical\"`）。",
+        "appshellprops": {
+          "members": {
+            "breadcrumbprops": "属性已转发至 `SBreadcrumb`。",
+            "breadcrumbs": "在页眉中渲染的面包屑导航项。\n\n若需省略，可从 `items` 和当前选中项推导出面包屑路径：该\n路径从根菜单延伸至当前选中项，其中每个祖先\n菜单若包含子项，将展开包含这些子项的下拉菜单——其嵌套结构\n与菜单本身一致，因此包含子项的条目会保留自己的子菜单。\n提供此选项可改用您自己的数据渲染普通面包屑导航。",
+            "breadcrumbui": "针对 `SBreadcrumb` 的按槽类重写。",
+            "breadcrumbvisible": "当导航路径不为空时，是否渲染面包屑区域。",
+            "class": "应用于 shell 根元素的额外类名。",
+            "defaultopen": "侧边栏在初次渲染时的展开状态。",
+            "expandstrategy": "渲染菜单的展开策略。\n\n- `keep`：保持当前展开状态；手动展开或折叠的菜单不会因激活其他菜单而受影响。选中菜单的可折叠父菜单会在挂载时以及选中菜单从外部发生变化时（例如由外部路由驱动）展开，从而保持其可见性。\n- `selected`：仅展开当前选中的菜单及其所有父菜单；当选中菜单发生变化时，未选中的菜单将被折叠。\n\nShell 的默认行为是 `selected`：导航反映当前路由，\n因此一条路径保持展开状态，且活动条目会保留其位置，而非\n与会话中较早打开的分支相互竞争。\n\n适用于单个 `STreeMenu`（`sidebar` 模式）以及 `SSplitNav` 的嵌套垂直\n窗格（拆分模式）。`top` 模式渲染 `STreeNav`，该组件\n没有展开策略。 `menuProps.tree` / `menuProps.split` 的优先级\n高于此属性。",
+            "ismobile": "外壳是否处于移动视图模式。声明式——需配合\n`@vueuse/core` 中的 `useMediaQuery` 或服务器端检测使用。",
+            "items": "由 shell 渲染的菜单树。",
+            "layoutprops": "转发给 `SLayout` 的属性。\n\nShell 拥有的选项（`open`、`orientation`、`sidebarVisible`、`isMobile`、\n`pxToRem`）由 `mode` 衍生而来；`sidebarWidth` 和\n`collapsedSidebarWidth` 默认采用该模式所需的宽度——仅当菜单面板无需对齐时才覆盖\n这些值。",
+            "layoutui": "针对内部 `SLayout` 的按插槽类重写。优先于\nshell 的 `layout*` UI 插槽。",
+            "logoplacement": "品牌区域的位置。\n\n`auto` 遵循当前模式；`sidebar` 和 `sidebar-bottom` 需要一种模式，其\n侧边栏始终作为独立的一列显示——请参阅 `AppShellLogoPlacement` 以了解\n支持底部放置的模式。",
+            "menuprops": "转发至渲染菜单的属性。",
+            "menuui": "按槽位覆盖的类将转发至渲染后的菜单。",
+            "mode": "Shell 骨架，同时控制布局区域和菜单形状。",
+            "modelvalue": "受控的活动菜单值。可通过 `v-model` 进行绑定。\n\n活动菜单仅受控：壳层在渲染前会根据该值推导出侧边栏的几何尺寸\n和面包屑导航，因此它会读取给定的值\n，而非保留自己的值。",
+            "open": "侧边栏的可控展开状态。可通过 `v-model:open` 进行绑定。",
+            "side": "侧边栏所在的侧边。",
+            "size": "组件的视觉尺寸。",
+            "tabprops": "转发至 `SPageTabs` 的属性。",
+            "tabs": "页面标签在标签区域中渲染。",
+            "tabui": "针对 `SPageTabs` 的按槽类重写。",
+            "tabvalue": "受控的活动选项卡值。可通过 `v-model:tabValue` 进行绑定。",
+            "triggervisible": "侧边栏触发器是否在页眉中渲染。",
+            "ui": "该组件的按槽类覆盖。"
+          },
+          "props": "AppShell 组件的属性。"
+        },
+        "appshellslots": {
+          "callables": {
+            "breadcrumb": "面包屑导航区域的自定义内容。",
+            "default": "默认插槽的自定义内容——即页面内容。",
+            "footer": "页脚区域的自定义内容。",
+            "header": "页眉中央区域的自定义内容。",
+            "header_end": "页眉末尾区域的自定义内容。",
+            "header_start": "页眉引言区域的自定义内容。",
+            "logo": "品牌标识的自定义内容。\n\nShell 会将其渲染在独立的单元格中，以便品牌标识与\n菜单对齐：在轨道模式下位于一级轨道上方，而在\n侧边栏折叠时居中显示。只要提供此插槽，该区域就会立即渲染；\n`title` 为可选。",
+            "menu": "菜单的自定义内容。替换菜单实例，而非挂载目标。",
+            "sidebar_end": "侧边栏底部渲染的自定义内容。",
+            "sidebar_start": "侧边栏顶部渲染的自定义内容。",
+            "tabs": "标签页区域的自定义内容。",
+            "title": "品牌标题的自定义内容。\n\n在“轨道”模式下，该内容显示在标记旁边，并与侧边栏的第二列（嵌套窗格）\n对齐。当侧边栏折叠时（即其对齐的\n列被折叠隐藏），以及在没有可供对齐的窗格\n列的布局中，该内容将被隐藏。"
+          },
+          "slots": "AppShell 组件的插槽。"
+        },
+        "appshelluislot": "AppShell 组件可用的 UI 插槽。\n\n`layout*` 插槽会被合并到 `SLayout` 的 `ui` 映射中，而非\n直接渲染：它们用于为 Shell 不拥有其\n标记的布局区域应用主题样式。`layoutUi` 的优先级高于它们。",
+        "type": ""
       },
       "packages_ui_src_components_autocomplete_types": {
         "autocompleteemits": {
@@ -13606,7 +13720,7 @@
             "defaultcollapsed": "嵌套的 TreeMenu 窗格在初始渲染时的折叠状态。",
             "defaultvalue": "初始渲染时选中的叶节点。当不需要控制状态时使用。",
             "dir": "菜单的阅读方向（如适用）。\n\n若省略，则从全局 `ConfigProvider` 继承，或默认采用从左到右（LTR）方向。",
-            "expandstrategy": "",
+            "expandstrategy": "嵌套垂直 TreeMenu 窗格的展开策略。\n\n- `keep`：保持当前展开状态；手动展开或折叠的菜单不会因激活其他菜单而受影响。选中菜单的可折叠父级菜单会在挂载时以及每次选中菜单从外部发生变化时（例如由外部路由驱动）展开，从而保持其可见性。\n- `selected`：仅展开当前选中的菜单及其所有父级菜单；当选中菜单发生变化时，未选中的菜单将被折叠。\n\n仅适用于嵌套的 `TreeMenuCompact`；嵌套的水平窗格\n（`TreeNavCompact`）没有展开策略。",
             "horizontalmountedid": "用于挂载水平菜单的元素 ID（通过 `Teleport` 渲染）。\n\n若未设置，水平菜单将就地渲染。传递元素 ID 时请勿包含 `#`。",
             "items": "SplitNav 组件的选项数据。",
             "loop": "一级键盘导航是否会在最后一项与第一项之间循环往复。",

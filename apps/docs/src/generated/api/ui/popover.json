@@ -75,7 +75,7 @@
               {
                 "name": "PopoverUi",
                 "kind": "typeAlias",
-                "type": "{ trigger: ClassValue; anchor: ClassValue; close: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; }",
+                "type": "{ trigger: ClassValue; anchor: ClassValue; close: ClassValue; subTrigger: ClassValue; arrow: ClassValue; positioner: ClassValue; popup: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Popover component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_popover_types.popoverui",

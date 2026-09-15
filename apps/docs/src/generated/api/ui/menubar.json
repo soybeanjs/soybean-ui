@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "MenubarProps",
         "type": "Interface MenubarProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<MenubarUi>; indicatorPosition?: AlignSide; disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: MenubarTriggerProps; collapsible?: boolean; moreLabel?: string; moreIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; moreProps?: MenubarTriggerProps; portalProps?: MenuPortalProps; contentProps?: MenubarContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; trigger?: MenubarTriggerType; delayDuration?: number; skipDelayDuration?: number; asChild?: boolean; as?: AsTag | Component; items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: MenuItemProps; linkProps?: LinkExtraProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<MenubarUi>; indicatorPosition?: AlignSide; disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: MenubarTriggerProps; collapsible?: boolean; moreLabel?: string; moreIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; moreProps?: MenubarTriggerProps; portalProps?: MenuPortalProps; contentProps?: MenubarContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; trigger?: MenubarTriggerType; delayDuration?: number; skipDelayDuration?: number; asChild?: boolean; as?: AsTag | Component; items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: MenuItemProps; linkProps?: LinkExtraProps; subProps?: MenuSubProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
         "description": "Properties for the Menubar component.",
         "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarprops.props",
         "sourcePath": "packages/ui/src/components/menubar/types.ts",
@@ -75,7 +75,7 @@
               {
                 "name": "MenubarUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIndicator: ClassValue; separator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemIcon: ClassValue; itemLink: ClassValue; itemLinkIcon: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; subTriggerIcon: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; separator: ClassValue; groupLabel: ClassValue; group: ClassValue; itemLinkIcon: ClassValue; subTrigger: ClassValue; subTriggerIcon: ClassValue; itemIcon: ClassValue; arrow: ClassValue; positioner: ClassValue; popup: ClassValue; itemIndicator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemLink: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Menubar component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarui",
@@ -1022,7 +1022,7 @@
                 "name": "LinkExtraProps",
                 "kind": "interface",
                 "type": "LinkExtraProps",
-                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
+                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
                 "description": "Properties for the LinkExtra component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops",
                 "sourcePath": "packages/headless/src/components/link/types.ts",
@@ -1119,7 +1119,7 @@
                   },
                   {
                     "name": "ariaCurrentValue",
-                    "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+                    "type": "'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'",
                     "required": false,
                     "description": "Value passed to the attribute `aria-current` when the link is exact active.",
                     "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops.members.ariacurrentvalue",
@@ -1211,6 +1211,54 @@
             ]
           },
           {
+            "name": "subProps",
+            "type": "MenuSubProps",
+            "required": false,
+            "description": "Properties forwarded to the sub element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarprops.members.subprops",
+            "default": null,
+            "inheritedFrom": "subProps",
+            "sourcePath": "packages/headless/src/components/menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MenuSubProps",
+                "kind": "interface",
+                "type": "MenuSubProps",
+                "resolvedType": "{ open?: boolean; defaultOpen?: boolean }",
+                "description": "Properties for the MenuSub component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubprops",
+                "sourcePath": "packages/headless/src/components/menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "open",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubprops.members.open",
+                    "default": "undefined",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "defaultOpen",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubprops.members.defaultopen",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "groupProps",
             "type": "MenuGroupProps",
             "required": false,
@@ -1279,54 +1327,6 @@
                 "typeParameters": [],
                 "external": false,
                 "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "subProps",
-            "type": "MenuSubProps",
-            "required": false,
-            "description": "Properties forwarded to the sub element.",
-            "descriptionKey": "api.generated.packages_ui_src_components_menubar_types.menubarprops.members.subprops",
-            "default": null,
-            "inheritedFrom": "subProps",
-            "sourcePath": "packages/headless/src/components/menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MenuSubProps",
-                "kind": "interface",
-                "type": "MenuSubProps",
-                "resolvedType": "{ open?: boolean; defaultOpen?: boolean }",
-                "description": "Properties for the MenuSub component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubprops",
-                "sourcePath": "packages/headless/src/components/menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "open",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubprops.members.open",
-                    "default": "undefined",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "defaultOpen",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubprops.members.defaultopen",
-                    "default": "false",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
                 "callables": []
               }
             ]
@@ -1415,24 +1415,13 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
+                "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "packages/headless/src/components/menu/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
-                  {
-                    "name": "placement",
-                    "type": "Placement",
-                    "required": false,
-                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.placement",
-                    "default": "undefined",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
                   {
                     "name": "loop",
                     "type": "boolean",
@@ -1442,6 +1431,17 @@
                     "default": "false",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "placement",
+                    "type": "Placement",
+                    "required": false,
+                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.placement",
+                    "default": "undefined",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -2198,7 +2198,7 @@
         "kind": "props",
         "name": "MenubarCompactProps",
         "type": "Interface MenubarCompactProps<T>",
-        "resolvedType": "{ disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: MenubarTriggerProps; collapsible?: boolean; moreLabel?: string; moreIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; moreProps?: MenubarTriggerProps; portalProps?: MenuPortalProps; contentProps?: MenubarContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; trigger?: MenubarTriggerType; delayDuration?: number; skipDelayDuration?: number; asChild?: boolean; as?: AsTag | Component; items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: MenuItemProps; linkProps?: LinkExtraProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
+        "resolvedType": "{ disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: MenubarTriggerProps; collapsible?: boolean; moreLabel?: string; moreIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; moreProps?: MenubarTriggerProps; portalProps?: MenuPortalProps; contentProps?: MenubarContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; trigger?: MenubarTriggerType; delayDuration?: number; skipDelayDuration?: number; asChild?: boolean; as?: AsTag | Component; items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: MenuItemProps; linkProps?: LinkExtraProps; subProps?: MenuSubProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
         "description": "Properties for the MenubarCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactprops.props",
         "sourcePath": "packages/headless/src/components/menubar/types.ts",
@@ -3114,7 +3114,7 @@
                 "name": "LinkExtraProps",
                 "kind": "interface",
                 "type": "LinkExtraProps",
-                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
+                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
                 "description": "Properties for the LinkExtra component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops",
                 "sourcePath": "packages/headless/src/components/link/types.ts",
@@ -3211,7 +3211,7 @@
                   },
                   {
                     "name": "ariaCurrentValue",
-                    "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+                    "type": "'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'",
                     "required": false,
                     "description": "Value passed to the attribute `aria-current` when the link is exact active.",
                     "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops.members.ariacurrentvalue",
@@ -3303,6 +3303,54 @@
             ]
           },
           {
+            "name": "subProps",
+            "type": "MenuSubProps",
+            "required": false,
+            "description": "Properties forwarded to the sub element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactprops.members.subprops",
+            "default": null,
+            "inheritedFrom": "subProps",
+            "sourcePath": "packages/headless/src/components/menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MenuSubProps",
+                "kind": "interface",
+                "type": "MenuSubProps",
+                "resolvedType": "{ open?: boolean; defaultOpen?: boolean }",
+                "description": "Properties for the MenuSub component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubprops",
+                "sourcePath": "packages/headless/src/components/menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "open",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubprops.members.open",
+                    "default": "undefined",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "defaultOpen",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubprops.members.defaultopen",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "groupProps",
             "type": "MenuGroupProps",
             "required": false,
@@ -3371,54 +3419,6 @@
                 "typeParameters": [],
                 "external": false,
                 "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "subProps",
-            "type": "MenuSubProps",
-            "required": false,
-            "description": "Properties forwarded to the sub element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarcompactprops.members.subprops",
-            "default": null,
-            "inheritedFrom": "subProps",
-            "sourcePath": "packages/headless/src/components/menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MenuSubProps",
-                "kind": "interface",
-                "type": "MenuSubProps",
-                "resolvedType": "{ open?: boolean; defaultOpen?: boolean }",
-                "description": "Properties for the MenuSub component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubprops",
-                "sourcePath": "packages/headless/src/components/menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "open",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubprops.members.open",
-                    "default": "undefined",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "defaultOpen",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubprops.members.defaultopen",
-                    "default": "false",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
                 "callables": []
               }
             ]
@@ -3507,24 +3507,13 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
+                "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "packages/headless/src/components/menu/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
-                  {
-                    "name": "placement",
-                    "type": "Placement",
-                    "required": false,
-                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.placement",
-                    "default": "undefined",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
                   {
                     "name": "loop",
                     "type": "boolean",
@@ -3534,6 +3523,17 @@
                     "default": "false",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "placement",
+                    "type": "Placement",
+                    "required": false,
+                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.placement",
+                    "default": "undefined",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -5076,7 +5076,7 @@
                 "name": "LinkExtraProps",
                 "kind": "interface",
                 "type": "LinkExtraProps",
-                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
+                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
                 "description": "Properties for the LinkExtra component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops",
                 "sourcePath": "packages/headless/src/components/link/types.ts",
@@ -5173,7 +5173,7 @@
                   },
                   {
                     "name": "ariaCurrentValue",
-                    "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+                    "type": "'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'",
                     "required": false,
                     "description": "Value passed to the attribute `aria-current` when the link is exact active.",
                     "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops.members.ariacurrentvalue",
@@ -5924,12 +5924,23 @@
         "kind": "props",
         "name": "MenubarSubContentProps",
         "type": "Interface MenubarSubContentProps",
-        "resolvedType": "{ placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
+        "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
         "description": "Properties for the MenubarSubContent component.",
         "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarsubcontentprops.props",
         "sourcePath": "packages/headless/src/components/menubar/types.ts",
         "typeParameters": [],
         "members": [
+          {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarsubcontentprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": []
+          },
           {
             "name": "placement",
             "type": "Placement",
@@ -5954,17 +5965,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "loop",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether keyboard navigation should loop around",
-            "descriptionKey": "api.generated.packages_headless_src_components_menubar_types.menubarsubcontentprops.members.loop",
-            "default": "false",
-            "inheritedFrom": "loop",
-            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
-            "referencedTypes": []
           },
           {
             "name": "sideOffset",

@@ -668,6 +668,7 @@
         "breadcrumblistprops": {
           "props": "Properties for the BreadcrumbList component."
         },
+        "breadcrumboptiondata": "Option data for the Breadcrumb component.",
         "breadcrumbpageprops": {
           "props": "Properties for the BreadcrumbPage component."
         },
@@ -6243,6 +6244,8 @@
           },
           "slots": "Slots for the PageTabsCompact component."
         },
+        "pagetabscontextmenuoptiondata": "Option data for the PageTabs context menu.",
+        "pagetabsdragevent": "Event payload for tab drag operations.",
         "pagetabsitememits": {
           "emits": "Events for the PageTabsItem component."
         },
@@ -6255,6 +6258,7 @@
           },
           "props": "Properties for the PageTabsItem component."
         },
+        "pagetabsoptiondata": "Option data for the PageTabs component.",
         "pagetabspinprops": {
           "members": {
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
@@ -10036,7 +10040,8 @@
         "placement": "",
         "selectionbehavior": "",
         "side": "",
-        "swipedirection": ""
+        "swipedirection": "",
+        "uiclass": ""
       },
       "packages_headless_src_types_dom": {
         "imageloadingstatus": ""
@@ -10217,6 +10222,115 @@
           },
           "props": "Properties for the Anchor component."
         }
+      },
+      "packages_ui_src_components_app_shell_types": {
+        "appshellbrandslotprops": {
+          "members": {
+            "collapsed": "Whether the sidebar is collapsed.",
+            "placement": "Region the brand is rendered in."
+          },
+          "slotprops": "Slot properties of the brand slots."
+        },
+        "appshellemits": {
+          "callables": {
+            "breadcrumbclick": "Emitted when a breadcrumb item is clicked.",
+            "open": "Emitted when a menu parent opens its nested pane.",
+            "select": "Emitted when a menu leaf is selected.",
+            "tabclick": "Emitted when a tab is clicked.",
+            "tabclose": "Emitted when a tab is closed.",
+            "tabcontextmenu": "Emitted when the tab context menu target changes.",
+            "tabdragend": "Emitted when dragging a tab ends.",
+            "tabdragmove": "Emitted while a tab is being dragged.",
+            "tabdragreorder": "Emitted when the dragged tab is reordered in place.",
+            "tabdragstart": "Emitted when dragging a tab starts.",
+            "tabpin": "Emitted when a tab is pinned or unpinned.",
+            "tabselectcontextmenu": "Emitted when a tab context menu item is selected.",
+            "update_modelvalue": "Emitted when the active menu value changes.",
+            "update_open": "Emitted when the sidebar expanded state changes.",
+            "update_tabs": "Emitted when the tab collection changes (close, pin, drag reorder).",
+            "update_tabvalue": "Emitted when the active tab changes."
+          },
+          "emits": "Events for the AppShell component."
+        },
+        "appshelllogoplacement": "Logo slot placement.\n\n- `auto`: the mode's own default — the sidebar for the single-sidebar and\n  dual-vertical shapes, the header for the rest.\n- `sidebar`: the top of the sidebar.\n- `sidebar-bottom`: the bottom of the sidebar, under the menu and\n  `sidebar-end`. Only the modes whose sidebar is always a column of its own\n  support it (`sidebar`, `dual-vertical`); every other mode keeps its default\n  placement instead of pinning the brand where it can disappear.\n- `header`: the header.",
+        "appshelllogoplacementresolved": "Where the logo slot is rendered when `logoPlacement` is `'auto'`.",
+        "appshellmenuitem": "Option data for the `SAppShell` menu.\n\nA superset of the `TreeMenu` / `TreeNav` / `SplitNav` option data, so one tree\nfeeds the nested sidebar, the top bar, and the split panes alike.",
+        "appshellmenuprops": {
+          "members": {
+            "split": "Forwarded to `SSplitNav` (the four split modes).",
+            "tree": "Forwarded to the nested `STreeMenu` (`sidebar` mode).",
+            "treenav": "Forwarded to `STreeNav` (`top` mode)."
+          },
+          "props": "Per-renderer props forwarded by the shell to the menu it renders."
+        },
+        "appshellmenuslotprops": {
+          "members": {
+            "collapsed": "Whether the sidebar is collapsed.",
+            "collapsedwidth": "Collapsed width of the sidebar, in pixels.",
+            "headermountid": "Id of the header element the horizontal pane mounts into, when the mode teleports it.",
+            "mode": "Current shell mode.",
+            "side": "Side the sidebar is placed on.",
+            "sidebarmountid": "Id of the sidebar element the vertical pane mounts into, when the mode teleports it."
+          },
+          "slotprops": "Slot properties of the menu slot."
+        },
+        "appshellmenuui": {
+          "members": {
+            "split": "Slot classes for `SSplitNav` (the four split modes).",
+            "tree": "Slot classes for the nested `STreeMenu` (`sidebar` mode).",
+            "treenav": "Slot classes for `STreeNav` (`top` mode)."
+          }
+        },
+        "appshellmode": "Shell skeleton of the `SAppShell` component.\n\nThe four `SplitNavMode` literals are forwarded to `SSplitNav` unchanged — the\nshell only decides where each pane is mounted. `sidebar` and `top` are the\nsingle-pane shells (one nested `STreeMenu`, or one horizontal `STreeNav`).\n\nMode names describe the **menu shape**, not the layout orientation. The\nlayout orientation is derived from the mode: a vertical first level makes the\nsidebar span the full height (`orientation=\"horizontal\"`), a horizontal first\nlevel puts the header across the top (`orientation=\"vertical\"`).",
+        "appshellprops": {
+          "members": {
+            "breadcrumbprops": "Properties forwarded to `SBreadcrumb`.",
+            "breadcrumbs": "Breadcrumb items rendered in the header.\n\nOmit it to derive the breadcrumb from `items` and the active value: the\ntrail from the root menu down to the active item, where every ancestor\nwhose menu has children opens a dropdown of those children — nested like\nthe menu itself, so an entry that has children keeps its own submenu.\nProvide it to render a plain breadcrumb from your own data instead.",
+            "breadcrumbui": "Per-slot class overrides for `SBreadcrumb`.",
+            "breadcrumbvisible": "Whether the breadcrumb region renders when the trail is not empty.",
+            "class": "Additional class names applied to the shell root element.",
+            "defaultopen": "The expanded state of the sidebar when initially rendered.",
+            "expandstrategy": "The expand strategy of the rendered menu.\n\n- `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus. The collapsible ancestors of the selected menu are expanded on mount and whenever the selected menu changes from outside (e.g. driven by an external route), so it stays visible.\n- `selected`: only expand the currently selected menu and all its ancestor menus; non-selected menus are collapsed when the selected menu changes.\n\nThe shell defaults to `selected`: the navigation mirrors the current route,\nso one path stays expanded and the active entry keeps its place instead of\ncompeting with the branches opened earlier in the session.\n\nApplies to the single `STreeMenu` (`sidebar` mode) and to the nested vertical\npanes of `SSplitNav` (the split modes). `top` mode renders `STreeNav`, which\nhas no expand strategy. `menuProps.tree` / `menuProps.split` take precedence\nover this prop.",
+            "ismobile": "Whether the shell is in mobile view. Declarative — pair it with\n`useMediaQuery` from `@vueuse/core` or a server-side detection.",
+            "items": "Menu tree rendered by the shell.",
+            "layoutprops": "Properties forwarded to `SLayout`.\n\nShell-owned options (`open`, `orientation`, `sidebarVisible`, `isMobile`,\n`pxToRem`) are derived from `mode`; `sidebarWidth` and\n`collapsedSidebarWidth` default to the widths the mode requires — override\nthem only when the menu panes do not need to line up.",
+            "layoutui": "Per-slot class overrides for the internal `SLayout`. Takes precedence over\nthe shell's `layout*` UI slots.",
+            "logoplacement": "Placement of the brand region.\n\n`auto` follows the mode; `sidebar` and `sidebar-bottom` need a mode whose\nsidebar is always a column of its own — see `AppShellLogoPlacement` for the\nmodes that support the bottom placement.",
+            "menuprops": "Properties forwarded to the rendered menu.",
+            "menuui": "Per-slot class overrides forwarded to the rendered menu.",
+            "mode": "Shell skeleton, driving both the layout regions and the menu shape.",
+            "modelvalue": "The controlled active menu value. Can be bound with `v-model`.\n\nThe active menu is controlled only: the shell derives the sidebar geometry\nand the breadcrumb from it before rendering, so it reads the value it is\ngiven rather than keeping one of its own.",
+            "open": "The controlled expanded state of the sidebar. Can be bound with `v-model:open`.",
+            "side": "Side the sidebar is placed on.",
+            "size": "Visual size of the component.",
+            "tabprops": "Properties forwarded to `SPageTabs`.",
+            "tabs": "Page tabs rendered in the tab region.",
+            "tabui": "Per-slot class overrides for `SPageTabs`.",
+            "tabvalue": "The controlled active tab value. Can be bound with `v-model:tabValue`.",
+            "triggervisible": "Whether the sidebar trigger renders in the header.",
+            "ui": "Per-slot class overrides for the component."
+          },
+          "props": "Properties for the AppShell component."
+        },
+        "appshellslots": {
+          "callables": {
+            "breadcrumb": "Custom content for the breadcrumb region.",
+            "default": "Custom content for the default slot — the page content.",
+            "footer": "Custom content for the footer region.",
+            "header": "Custom content for the header center region.",
+            "header_end": "Custom content for the header trailing region.",
+            "header_start": "Custom content for the header leading region.",
+            "logo": "Custom content for the brand mark.\n\nThe shell renders it in a cell of its own so the brand lines up with the\nmenu: over the first-level rail of the rail modes, and centered while the\nsidebar is collapsed. The region renders as soon as this slot is provided;\n`title` is optional.",
+            "menu": "Custom content for the menu. Replaces the menu instance, not the mount targets.",
+            "sidebar_end": "Custom content rendered at the bottom of the sidebar.",
+            "sidebar_start": "Custom content rendered at the top of the sidebar.",
+            "tabs": "Custom content for the tab region.",
+            "title": "Custom content for the brand title.\n\nRendered next to the mark, and aligned to the sidebar's second (nested pane)\ncolumn in the rail modes. It is hidden while the sidebar is collapsed — the\ncolumn it aligns to is folded away — and in placements that have no pane\ncolumn to align to."
+          },
+          "slots": "Slots for the AppShell component."
+        },
+        "appshelluislot": "Available UI slots for the AppShell component.\n\n`layout*` slots are merged into the `SLayout` `ui` map instead of being\nrendered directly: they theme layout regions the shell does not own the\nmarkup of. `layoutUi` takes precedence over them.",
+        "type": ""
       },
       "packages_ui_src_components_autocomplete_types": {
         "autocompleteemits": {

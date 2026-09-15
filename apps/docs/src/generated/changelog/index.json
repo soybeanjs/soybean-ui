@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-14T12:24:49.342Z",
+  "generatedAt": "2026-09-14T16:24:20.768Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -29,6 +29,13 @@
       "latestVersion": "v0.40.0",
       "versionCount": 5,
       "entryCount": 5
+    },
+    "app-shell": {
+      "component": "app-shell",
+      "file": "app-shell.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
     },
     "arrow": {
       "component": "arrow",

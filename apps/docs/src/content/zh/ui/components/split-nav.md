@@ -76,6 +76,7 @@ head:
 - 激活父级（点击或键盘）会触发 `open` 事件，携带该父级的完整菜单数据（含子级）；只有带可见子级的父级会触发，叶子不会。
 - 只要子面板还挂载着，它就会保留自己的展开状态：默认 `expandStrategy="keep"` 下，你在某个一级项里展开过的分支，切回来时仍是展开的。当激活的一级项没有可见子级时子面板会卸载，该状态随之重置。
 - 各 `mode` 的 flex 布局定义在 UI 样式配方中；无样式层不携带任何布局类。
+- 侧栏里的竖栏只在当前状态真的装得下东西时才存在。`resolveSplitNavSidebarColumns({ mode, items, modelValue, openPath })` 直接回答某个模式下"轨道列 / 面板列"各自是否存在：`dual-vertical` 与 `horizontal-dual-vertical` 最多占两列（后者的两列分别是二级与三级），`vertical-horizontal` 侧栏只有轨道，`horizontal-vertical` 侧栏只有面板。需要在渲染前就定下容器宽度的消费者（例如 `SAppShell` 为布局预留侧栏宽度）用它推导，而不是去量 DOM——服务端渲染时量不到。
 
 ## 常见问题
 
@@ -97,6 +98,20 @@ head:
 ```
 
 面板会通过 `Teleport` 渲染到 `#app-header` / `#app-sider`（`defer` 保证晚出现的挂载点也安全）。
+
+### 如何给面板容器定宽？
+
+`resolveSplitNavSidebarColumns` 会告诉你某个模式下竖栏的构成，容器就能在渲染前先留好宽度：
+
+```ts
+import { computed } from 'vue';
+import { resolveSplitNavSidebarColumns } from '@soybeanjs/headless/split-nav';
+
+// rail 与 pane 分别表示侧栏的两列是否存在
+const columns = computed(() => resolveSplitNavSidebarColumns({ mode, items, modelValue: active.value }));
+```
+
+只按激活值推导，适用于由路由驱动的容器。若还要跟随"只是被展开、尚未选中叶子"的菜单，再传 `openPath`：这条路径由 `SplitNavRoot` 内部维护，因此需要从 `open` 事件镜像，并在 `modelValue` 变化时清空——`SAppShell` 就是这样做来为布局预留侧栏宽度的。
 
 ### 如何知道叶子被选中？
 

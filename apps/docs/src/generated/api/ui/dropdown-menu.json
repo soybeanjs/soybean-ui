@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "DropdownMenuProps",
         "type": "TypeAlias DropdownMenuProps<T>: Omit<MenuUiBaseProps, \"indicatorPosition\"> & DropdownMenuCompactProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DropdownMenuUi>; disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: DropdownMenuTriggerProps; portalProps?: DropdownMenuPortalProps; contentProps?: DropdownMenuContentProps; popupProps?: DropdownMenuPopupProps; arrowProps?: DropdownMenuArrowProps; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: DropdownMenuItemProps; linkProps?: LinkExtraProps; groupProps?: DropdownMenuGroupProps; groupLabelProps?: DropdownMenuGroupLabelProps; subProps?: DropdownMenuSubProps; subTriggerProps?: DropdownMenuSubTriggerProps; subContentProps?: DropdownMenuSubContentProps; separatorProps?: DropdownMenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DropdownMenuUi>; disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: DropdownMenuTriggerProps; portalProps?: DropdownMenuPortalProps; contentProps?: DropdownMenuContentProps; popupProps?: DropdownMenuPopupProps; arrowProps?: DropdownMenuArrowProps; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: DropdownMenuItemProps; linkProps?: LinkExtraProps; subProps?: DropdownMenuSubProps; groupProps?: DropdownMenuGroupProps; groupLabelProps?: DropdownMenuGroupLabelProps; subTriggerProps?: DropdownMenuSubTriggerProps; subContentProps?: DropdownMenuSubContentProps; separatorProps?: DropdownMenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
         "description": "Properties for the DropdownMenu component.",
         "descriptionKey": "api.generated.packages_ui_src_components_dropdown_menu_types.dropdownmenuprops.props",
         "sourcePath": "packages/ui/src/components/dropdown-menu/types.ts",
@@ -75,7 +75,7 @@
               {
                 "name": "DropdownMenuUi",
                 "kind": "typeAlias",
-                "type": "{ item: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIndicator: ClassValue; separator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemIcon: ClassValue; itemLink: ClassValue; itemLinkIcon: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; subTriggerIcon: ClassValue; }",
+                "type": "{ item: ClassValue; separator: ClassValue; groupLabel: ClassValue; group: ClassValue; itemLinkIcon: ClassValue; subTrigger: ClassValue; subTriggerIcon: ClassValue; itemIcon: ClassValue; arrow: ClassValue; positioner: ClassValue; popup: ClassValue; itemIndicator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemLink: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Menu component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenuui",
@@ -836,7 +836,7 @@
                 "name": "LinkExtraProps",
                 "kind": "interface",
                 "type": "LinkExtraProps",
-                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
+                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
                 "description": "Properties for the LinkExtra component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops",
                 "sourcePath": "packages/headless/src/components/link/types.ts",
@@ -933,7 +933,7 @@
                   },
                   {
                     "name": "ariaCurrentValue",
-                    "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+                    "type": "'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'",
                     "required": false,
                     "description": "Value passed to the attribute `aria-current` when the link is exact active.",
                     "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops.members.ariacurrentvalue",
@@ -1025,6 +1025,54 @@
             ]
           },
           {
+            "name": "subProps",
+            "type": "DropdownMenuSubProps",
+            "required": false,
+            "description": "Properties forwarded to the sub element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_dropdown_menu_types.dropdownmenuprops.members.subprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DropdownMenuSubProps",
+                "kind": "interface",
+                "type": "DropdownMenuSubProps",
+                "resolvedType": "{ open?: boolean; defaultOpen?: boolean }",
+                "description": "Properties for the MenuSub component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubprops",
+                "sourcePath": "packages/headless/src/components/dropdown-menu/index.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "open",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubprops.members.open",
+                    "default": "undefined",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "defaultOpen",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubprops.members.defaultopen",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "groupProps",
             "type": "DropdownMenuGroupProps",
             "required": false,
@@ -1093,54 +1141,6 @@
                 "typeParameters": [],
                 "external": false,
                 "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "subProps",
-            "type": "DropdownMenuSubProps",
-            "required": false,
-            "description": "Properties forwarded to the sub element.",
-            "descriptionKey": "api.generated.packages_ui_src_components_dropdown_menu_types.dropdownmenuprops.members.subprops",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DropdownMenuSubProps",
-                "kind": "interface",
-                "type": "DropdownMenuSubProps",
-                "resolvedType": "{ open?: boolean; defaultOpen?: boolean }",
-                "description": "Properties for the MenuSub component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubprops",
-                "sourcePath": "packages/headless/src/components/dropdown-menu/index.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "open",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubprops.members.open",
-                    "default": "undefined",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "defaultOpen",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubprops.members.defaultopen",
-                    "default": "false",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
                 "callables": []
               }
             ]
@@ -1229,24 +1229,13 @@
                 "name": "DropdownMenuSubContentProps",
                 "kind": "interface",
                 "type": "DropdownMenuSubContentProps",
-                "resolvedType": "{ placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: DropdownMenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
+                "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: DropdownMenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubcontentprops",
                 "sourcePath": "packages/headless/src/components/dropdown-menu/index.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
-                  {
-                    "name": "placement",
-                    "type": "Placement",
-                    "required": false,
-                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubcontentprops.members.placement",
-                    "default": "undefined",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
                   {
                     "name": "loop",
                     "type": "boolean",
@@ -1256,6 +1245,17 @@
                     "default": "false",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "placement",
+                    "type": "Placement",
+                    "required": false,
+                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubcontentprops.members.placement",
+                    "default": "undefined",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -2046,7 +2046,7 @@
               {
                 "name": "DropdownMenuUi",
                 "kind": "typeAlias",
-                "type": "{ item: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIndicator: ClassValue; separator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemIcon: ClassValue; itemLink: ClassValue; itemLinkIcon: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; subTriggerIcon: ClassValue; }",
+                "type": "{ item: ClassValue; separator: ClassValue; groupLabel: ClassValue; group: ClassValue; itemLinkIcon: ClassValue; subTrigger: ClassValue; subTriggerIcon: ClassValue; itemIcon: ClassValue; arrow: ClassValue; positioner: ClassValue; popup: ClassValue; itemIndicator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemLink: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Menu component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenuui",
@@ -5059,7 +5059,7 @@
         "kind": "props",
         "name": "DropdownMenuCompactProps",
         "type": "Interface DropdownMenuCompactProps<T>",
-        "resolvedType": "{ disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: DropdownMenuTriggerProps; portalProps?: DropdownMenuPortalProps; contentProps?: DropdownMenuContentProps; popupProps?: DropdownMenuPopupProps; arrowProps?: DropdownMenuArrowProps; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: DropdownMenuItemProps; linkProps?: LinkExtraProps; groupProps?: DropdownMenuGroupProps; groupLabelProps?: DropdownMenuGroupLabelProps; subProps?: DropdownMenuSubProps; subTriggerProps?: DropdownMenuSubTriggerProps; subContentProps?: DropdownMenuSubContentProps; separatorProps?: DropdownMenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
+        "resolvedType": "{ disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: DropdownMenuTriggerProps; portalProps?: DropdownMenuPortalProps; contentProps?: DropdownMenuContentProps; popupProps?: DropdownMenuPopupProps; arrowProps?: DropdownMenuArrowProps; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: DropdownMenuItemProps; linkProps?: LinkExtraProps; subProps?: DropdownMenuSubProps; groupProps?: DropdownMenuGroupProps; groupLabelProps?: DropdownMenuGroupLabelProps; subTriggerProps?: DropdownMenuSubTriggerProps; subContentProps?: DropdownMenuSubContentProps; separatorProps?: DropdownMenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
         "description": "Properties for the DropdownMenuCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucompactprops.props",
         "sourcePath": "packages/headless/src/components/dropdown-menu/types.ts",
@@ -5814,7 +5814,7 @@
                 "name": "LinkExtraProps",
                 "kind": "interface",
                 "type": "LinkExtraProps",
-                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
+                "resolvedType": "{ replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; ariaCurrentValue?: 'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'; viewTransition?: boolean; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
                 "description": "Properties for the LinkExtra component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops",
                 "sourcePath": "packages/headless/src/components/link/types.ts",
@@ -5911,7 +5911,7 @@
                   },
                   {
                     "name": "ariaCurrentValue",
-                    "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+                    "type": "'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'",
                     "required": false,
                     "description": "Value passed to the attribute `aria-current` when the link is exact active.",
                     "descriptionKey": "api.generated.packages_headless_src_components_link_types.linkextraprops.members.ariacurrentvalue",
@@ -6003,6 +6003,54 @@
             ]
           },
           {
+            "name": "subProps",
+            "type": "DropdownMenuSubProps",
+            "required": false,
+            "description": "Properties forwarded to the sub element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucompactprops.members.subprops",
+            "default": null,
+            "inheritedFrom": "subProps",
+            "sourcePath": "packages/headless/src/components/menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DropdownMenuSubProps",
+                "kind": "interface",
+                "type": "DropdownMenuSubProps",
+                "resolvedType": "{ open?: boolean; defaultOpen?: boolean }",
+                "description": "Properties for the MenuSub component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubprops",
+                "sourcePath": "packages/headless/src/components/dropdown-menu/index.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "open",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubprops.members.open",
+                    "default": "undefined",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "defaultOpen",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubprops.members.defaultopen",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/dialog/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "groupProps",
             "type": "DropdownMenuGroupProps",
             "required": false,
@@ -6071,54 +6119,6 @@
                 "typeParameters": [],
                 "external": false,
                 "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "subProps",
-            "type": "DropdownMenuSubProps",
-            "required": false,
-            "description": "Properties forwarded to the sub element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucompactprops.members.subprops",
-            "default": null,
-            "inheritedFrom": "subProps",
-            "sourcePath": "packages/headless/src/components/menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DropdownMenuSubProps",
-                "kind": "interface",
-                "type": "DropdownMenuSubProps",
-                "resolvedType": "{ open?: boolean; defaultOpen?: boolean }",
-                "description": "Properties for the MenuSub component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubprops",
-                "sourcePath": "packages/headless/src/components/dropdown-menu/index.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "open",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubprops.members.open",
-                    "default": "undefined",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "defaultOpen",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubprops.members.defaultopen",
-                    "default": "false",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/dialog/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
                 "callables": []
               }
             ]
@@ -6207,24 +6207,13 @@
                 "name": "DropdownMenuSubContentProps",
                 "kind": "interface",
                 "type": "DropdownMenuSubContentProps",
-                "resolvedType": "{ placement?: Placement; loop?: boolean; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: DropdownMenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
+                "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: DropdownMenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubcontentprops",
                 "sourcePath": "packages/headless/src/components/dropdown-menu/index.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
-                  {
-                    "name": "placement",
-                    "type": "Placement",
-                    "required": false,
-                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubcontentprops.members.placement",
-                    "default": "undefined",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
                   {
                     "name": "loop",
                     "type": "boolean",
@@ -6234,6 +6223,17 @@
                     "default": "false",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "placement",
+                    "type": "Placement",
+                    "required": false,
+                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubcontentprops.members.placement",
+                    "default": "undefined",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/popper/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -7454,7 +7454,7 @@
               {
                 "name": "DropdownMenuUi",
                 "kind": "typeAlias",
-                "type": "{ item: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIndicator: ClassValue; separator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemIcon: ClassValue; itemLink: ClassValue; itemLinkIcon: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; subTriggerIcon: ClassValue; }",
+                "type": "{ item: ClassValue; separator: ClassValue; groupLabel: ClassValue; group: ClassValue; itemLinkIcon: ClassValue; subTrigger: ClassValue; subTriggerIcon: ClassValue; itemIcon: ClassValue; arrow: ClassValue; positioner: ClassValue; popup: ClassValue; itemIndicator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemLink: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Menu component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenuui",
@@ -10542,7 +10542,7 @@
               {
                 "name": "DropdownMenuUi",
                 "kind": "typeAlias",
-                "type": "{ item: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIndicator: ClassValue; separator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemIcon: ClassValue; itemLink: ClassValue; itemLinkIcon: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; subTriggerIcon: ClassValue; }",
+                "type": "{ item: ClassValue; separator: ClassValue; groupLabel: ClassValue; group: ClassValue; itemLinkIcon: ClassValue; subTrigger: ClassValue; subTriggerIcon: ClassValue; itemIcon: ClassValue; arrow: ClassValue; positioner: ClassValue; popup: ClassValue; itemIndicator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemLink: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Menu component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenuui",

@@ -63,12 +63,12 @@ Properties for the NavMenu component.
 - `disablePointerLeaveClose`: If `true`, the menu will not close when the pointer leaves the content. (type `boolean`; default `false`; optional)
 - `itemProps`: Properties forwarded to the item element. (type `NavMenuItemProps`; optional)
 - `linkProps`: Properties forwarded to the link element. (type `Omit<NavMenuLinkProps, LinkBasePropsKey>`; optional)
-- `subTriggerProps`: Properties forwarded to the nested flyout trigger element. (type `NavMenuSubTriggerProps`; optional)
-- `subContentProps`: Properties forwarded to the nested flyout content element. (type `NavMenuSubContentProps`; optional)
 - `triggerProps`: Properties forwarded to the trigger element. (type `NavMenuTriggerProps`; optional)
 - `contentProps`: Properties forwarded to the content element. (type `NavMenuContentProps`; optional)
 - `viewportProps`: Properties forwarded to the viewport element. (type `NavMenuViewportProps`; optional)
 - `listProps`: Properties forwarded to the list element. (type `NavMenuListProps`; optional)
+- `subTriggerProps`: Properties forwarded to the nested flyout trigger element. (type `NavMenuSubTriggerProps`; optional)
+- `subContentProps`: Properties forwarded to the nested flyout content element. (type `NavMenuSubContentProps`; optional)
 
 #### Emits
 
@@ -106,12 +106,12 @@ Properties for the NavMenuCompact component.
 - `disablePointerLeaveClose`: If `true`, the menu will not close when the pointer leaves the content. (type `boolean`; default `false`; optional)
 - `itemProps`: Properties forwarded to the item element. (type `NavMenuItemProps`; optional)
 - `linkProps`: Properties forwarded to the link element. (type `Omit<NavMenuLinkProps, LinkBasePropsKey>`; optional)
-- `subTriggerProps`: Properties forwarded to the nested flyout trigger element. (type `NavMenuSubTriggerProps`; optional)
-- `subContentProps`: Properties forwarded to the nested flyout content element. (type `NavMenuSubContentProps`; optional)
 - `triggerProps`: Properties forwarded to the trigger element. (type `NavMenuTriggerProps`; optional)
 - `contentProps`: Properties forwarded to the content element. (type `NavMenuContentProps`; optional)
 - `viewportProps`: Properties forwarded to the viewport element. (type `NavMenuViewportProps`; optional)
 - `listProps`: Properties forwarded to the list element. (type `NavMenuListProps`; optional)
+- `subTriggerProps`: Properties forwarded to the nested flyout trigger element. (type `NavMenuSubTriggerProps`; optional)
+- `subContentProps`: Properties forwarded to the nested flyout content element. (type `NavMenuSubContentProps`; optional)
 
 #### Emits
 
@@ -166,7 +166,7 @@ Properties for the NavMenuLink component.
 - `inactiveClass`: The class to apply to the link when it is inactive. (type `string`; optional)
 - `prefetchedClass`: A class to apply to links that have been prefetched. (type `string`; optional)
 - `external`: Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases (type `boolean`; optional)
-- `ariaCurrentValue`: Value passed to the attribute `aria-current` when the link is exact active. (type `'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'`; default `'page'`; optional)
+- `ariaCurrentValue`: Value passed to the attribute `aria-current` when the link is exact active. (type `'true' | 'false' | 'page' | 'date' | 'time' | 'step' | 'location'`; default `'page'`; optional)
 - `viewTransition`: Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported. (type `boolean`; optional)
 - `target`: Where to display the linked URL, as the name for a browsing context. (type `(string & {}) | '_blank' | '_parent' | '_self' | '_top' | null`; optional)
 - `rel`: A rel attribute value to apply on the link. Defaults to "noopener noreferrer" for external links. (type `(string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null`; default `'noopener noreferrer'`; optional)

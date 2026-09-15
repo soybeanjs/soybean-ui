@@ -563,8 +563,8 @@
               {
                 "name": "ToastUi",
                 "kind": "typeAlias",
-                "type": "{ content: import(\"@soybeanjs/headless\").ClassValue; description: import(\"@soybeanjs/headless\").ClassValue; title: import(\"@soybeanjs/headless\").ClassValue; icon: import(\"@soybeanjs/headless\").ClassValue; close: import(\"@soybeanjs/headless\").ClassValue; cancel: import(\"@soybeanjs/headless\").ClassValue; footer: import(\"@soybeanjs/headless\").ClassValue; wrapper: import(\"@soybeanjs/headless\").ClassValue; toaster: import(\"@soybeanjs/headless\").ClassValue; toast: import(\"@soybeanjs/headless\").ClassValue; action: import(\"@soybeanjs/headless\").ClassValue; }",
-                "resolvedType": "{ content: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; description: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; title: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; icon: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; close: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; cancel: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; footer: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; wrapper: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; toaster: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; toast: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; action: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined }",
+                "type": "{ content: import(\"@soybeanjs/headless\").ClassValue; description: import(\"@soybeanjs/headless\").ClassValue; title: import(\"@soybeanjs/headless\").ClassValue; icon: import(\"@soybeanjs/headless\").ClassValue; close: import(\"@soybeanjs/headless\").ClassValue; footer: import(\"@soybeanjs/headless\").ClassValue; cancel: import(\"@soybeanjs/headless\").ClassValue; wrapper: import(\"@soybeanjs/headless\").ClassValue; toaster: import(\"@soybeanjs/headless\").ClassValue; toast: import(\"@soybeanjs/headless\").ClassValue; action: import(\"@soybeanjs/headless\").ClassValue; }",
+                "resolvedType": "{ content: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; description: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; title: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; icon: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; close: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; footer: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; cancel: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; wrapper: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; toaster: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; toast: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; action: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined }",
                 "description": "UI class overrides for the Toast component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastui",
                 "sourcePath": "packages/headless/src/components/toast/types.ts",
@@ -627,22 +627,22 @@
                     "referencedTypes": []
                   },
                   {
-                    "name": "cancel",
+                    "name": "footer",
                     "type": "string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
-                    "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastui.members.cancel",
+                    "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastui.members.footer",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": null,
                     "referencedTypes": []
                   },
                   {
-                    "name": "footer",
+                    "name": "cancel",
                     "type": "string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
-                    "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastui.members.footer",
+                    "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastui.members.cancel",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": null,

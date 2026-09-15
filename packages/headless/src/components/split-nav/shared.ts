@@ -266,7 +266,7 @@ export function isPaneBoundaryKey(
  */
 export function findActiveInLevel<T extends SplitNavBaseOptionData = SplitNavBaseOptionData>(
   levelItems: SplitNavOptionData<T>[],
-  activePath: string[]
+  activePath: readonly string[]
 ): SplitNavOptionData<T> | undefined {
   return levelItems.find(item => activePath.includes(item.value));
 }
@@ -354,4 +354,111 @@ export function toTreeNavOptions<T extends SplitNavBaseOptionData = SplitNavBase
       children: children?.length ? children : undefined
     };
   });
+}
+
+/**
+ * Levels one pane or rail renders for a state.
+ */
+export interface SplitNavLevels<T extends SplitNavBaseOptionData = SplitNavBaseOptionData> {
+  /** Source items of the level, with hidden nodes dropped. */
+  sourceItems: SplitNavOptionData<T>[];
+  /** Selectable items of the level: `isGroup` nodes are flattened into their children. */
+  firstLevelItems: SplitNavOptionData<T>[];
+  /** Ancestry of the selected value in the root tree. */
+  selectionPath: string[];
+  /** Item of the level the open path or the selection path selects. */
+  activeItem: SplitNavOptionData<T> | undefined;
+  /** Visible children of `activeItem`: the items the pane below this level renders. */
+  childItems: SplitNavOptionData<T>[];
+}
+
+/**
+ * Derive the levels a pane or rail renders from a state.
+ *
+ * `useSplitNavDerived` wraps this in computeds. It is also the core of
+ * `resolveSplitNavSidebarColumns`, so a consumer that sizes a container around
+ * the panes resolves the very same levels instead of restating the rules.
+ *
+ * `levelItems` renders a nested pane: its items are a subtree rather than the
+ * root tree, while the selection path keeps being resolved against the root.
+ */
+export function resolveSplitNavLevels<T extends SplitNavBaseOptionData = SplitNavBaseOptionData>(options: {
+  /** Root tree of the instance. */
+  items: SplitNavOptionData<T>[];
+  /** Source items of this level. Defaults to the root tree. */
+  levelItems?: SplitNavOptionData<T>[];
+  /** Selected leaf value. */
+  modelValue: string;
+  /** Path of the parents whose panes are open. */
+  openPath: readonly string[];
+}): SplitNavLevels<T> {
+  const { items, levelItems, modelValue, openPath } = options;
+
+  const sourceItems = toVisibleOptions((levelItems ?? items) as SplitNavOptionData<T>[]);
+  const firstLevelItems = flattenFirstLevelItems(sourceItems);
+  const selectionPath = findActivePath(items, modelValue);
+  const activeItem = findActiveInLevel(firstLevelItems, openPath) ?? findActiveInLevel(firstLevelItems, selectionPath);
+
+  return {
+    sourceItems,
+    firstLevelItems,
+    selectionPath,
+    activeItem,
+    childItems: activeItem?.children?.length ? toVisibleOptions(activeItem.children as SplitNavOptionData<T>[]) : []
+  };
+}
+
+/**
+ * Vertical panes a mode renders inside a sidebar, outermost first.
+ */
+export interface SplitNavSidebarColumns {
+  /** Whether the sidebar renders its first-level rail column. */
+  rail: boolean;
+  /** Whether the sidebar renders the pane column of the next level. */
+  pane: boolean;
+}
+
+/**
+ * Which sidebar columns a mode renders for a state.
+ *
+ * `SplitNavRoot` fills the sidebar with one or two vertical panes, and which of
+ * them exist depends on the state: the mode decides which levels of the tree the
+ * panes show, and a level only exists once the item above it is active and has
+ * children. A consumer that has to size a container around those panes — the
+ * `SAppShell` sidebar, which sizes the layout before rendering and cannot
+ * measure during server rendering — asks here instead of restating the rules.
+ *
+ * - `dual-vertical`: the rail is the root level, the pane the level below it.
+ * - `vertical-horizontal`: the sidebar is the rail alone, the pane renders in the header.
+ * - `horizontal-vertical`: the sidebar is the pane alone.
+ * - `horizontal-dual-vertical`: the sidebar hosts a dual-vertical pane of the active
+ *   first-level item, so its rail is the second level and its pane the third.
+ *
+ * `openPath` is the path `SplitNavRoot` keeps internally; a consumer mirroring it
+ * passes it here, and omitting it falls back to the selected value alone.
+ */
+export function resolveSplitNavSidebarColumns<T extends SplitNavBaseOptionData = SplitNavBaseOptionData>(options: {
+  mode: SplitNavMode;
+  items: SplitNavOptionData<T>[];
+  modelValue: string;
+  openPath?: readonly string[];
+}): SplitNavSidebarColumns {
+  const { mode, items, modelValue, openPath = [] } = options;
+  const firstLevel = resolveSplitNavLevels({ items, modelValue, openPath });
+
+  if (mode === 'vertical-horizontal') {
+    return { rail: firstLevel.firstLevelItems.length > 0, pane: false };
+  }
+
+  if (mode === 'horizontal-vertical') {
+    return { rail: false, pane: firstLevel.childItems.length > 0 };
+  }
+
+  if (mode === 'horizontal-dual-vertical') {
+    const nested = resolveSplitNavLevels({ items, levelItems: firstLevel.childItems, modelValue, openPath });
+
+    return { rail: firstLevel.childItems.length > 0, pane: nested.childItems.length > 0 };
+  }
+
+  return { rail: firstLevel.firstLevelItems.length > 0, pane: firstLevel.childItems.length > 0 };
 }

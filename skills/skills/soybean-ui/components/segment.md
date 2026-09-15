@@ -61,8 +61,8 @@ Properties for the Segment component.
 - `activationMode`: Whether a tab is activated automatically (on focus) or manually (on click). (type `TabsActivationMode`; default `automatic`; optional)
 - `unmountOnHide`: When `true`, the element will be unmounted on closed state. (type `boolean`; default `true`; optional)
 - `dir`: The direction of navigation between items. (type `Direction`; optional)
-- `orientation`: The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 - `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
+- `orientation`: The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 
 #### Emits
 
@@ -93,8 +93,8 @@ Properties for the SegmentCompact component.
 - `activationMode`: Whether a tab is activated automatically (on focus) or manually (on click). (type `TabsActivationMode`; default `automatic`; optional)
 - `unmountOnHide`: When `true`, the element will be unmounted on closed state. (type `boolean`; default `true`; optional)
 - `dir`: The direction of navigation between items. (type `Direction`; optional)
-- `orientation`: The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 - `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
+- `orientation`: The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 
 #### Emits
 
@@ -133,8 +133,8 @@ Properties for the SegmentRoot component.
 - `activationMode`: Whether a tab is activated automatically (on focus) or manually (on click). (type `TabsActivationMode`; default `automatic`; optional)
 - `unmountOnHide`: When `true`, the element will be unmounted on closed state. (type `boolean`; default `true`; optional)
 - `dir`: The direction of navigation between items. (type `Direction`; optional)
-- `orientation`: The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 - `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
+- `orientation`: The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 
 #### Emits
 

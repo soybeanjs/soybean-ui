@@ -75,7 +75,7 @@
               {
                 "name": "DateRangePickerUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; trigger: ClassValue; input: ClassValue; anchor: ClassValue; close: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; separator: ClassValue; startRoot: ClassValue; endRoot: ClassValue; }",
+                "type": "{ root: ClassValue; trigger: ClassValue; input: ClassValue; anchor: ClassValue; close: ClassValue; separator: ClassValue; subTrigger: ClassValue; arrow: ClassValue; positioner: ClassValue; popup: ClassValue; startRoot: ClassValue; endRoot: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class for the DateRangePicker component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_date_range_picker_types.daterangepickerui",

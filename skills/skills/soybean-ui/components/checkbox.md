@@ -148,8 +148,8 @@ Properties for the CheckboxCardGroup component.
 - `rovingFocus`: When `false`, navigating through the items using arrow keys will be disabled. (type `boolean`; default `true`; optional)
 - `disabled`: When `true`, prevents the user from interacting with the checkboxes (type `boolean`; default `false`; optional)
 - `dir`: The direction of navigation between items. (type `Direction`; optional)
-- `orientation`: The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 - `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
+- `orientation`: The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 - `name`: The name of the field. Submitted with its owning form as part of a name/value pair. (type `string`; optional)
 - `required`: When `true`, indicates that the user must set the value before the owning form can be submitted. (type `boolean`; optional)
 
@@ -175,8 +175,8 @@ Properties for the CheckboxCardGroupCompact component.
 - `rovingFocus`: When `false`, navigating through the items using arrow keys will be disabled. (type `boolean`; default `true`; optional)
 - `disabled`: When `true`, prevents the user from interacting with the checkboxes (type `boolean`; default `false`; optional)
 - `dir`: The direction of navigation between items. (type `Direction`; optional)
-- `orientation`: The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 - `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
+- `orientation`: The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 - `name`: The name of the field. Submitted with its owning form as part of a name/value pair. (type `string`; optional)
 - `required`: When `true`, indicates that the user must set the value before the owning form can be submitted. (type `boolean`; optional)
 
@@ -243,8 +243,8 @@ Properties for the CheckboxGroup component.
 - `rovingFocus`: When `false`, navigating through the items using arrow keys will be disabled. (type `boolean`; default `true`; optional)
 - `disabled`: When `true`, prevents the user from interacting with the checkboxes (type `boolean`; default `false`; optional)
 - `dir`: The direction of navigation between items. (type `Direction`; optional)
-- `orientation`: The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 - `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
+- `orientation`: The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 - `name`: The name of the field. Submitted with its owning form as part of a name/value pair. (type `string`; optional)
 - `required`: When `true`, indicates that the user must set the value before the owning form can be submitted. (type `boolean`; optional)
 
@@ -270,8 +270,8 @@ Properties for the CheckboxGroupCompact component.
 - `rovingFocus`: When `false`, navigating through the items using arrow keys will be disabled. (type `boolean`; default `true`; optional)
 - `disabled`: When `true`, prevents the user from interacting with the checkboxes (type `boolean`; default `false`; optional)
 - `dir`: The direction of navigation between items. (type `Direction`; optional)
-- `orientation`: The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 - `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
+- `orientation`: The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 - `name`: The name of the field. Submitted with its owning form as part of a name/value pair. (type `string`; optional)
 - `required`: When `true`, indicates that the user must set the value before the owning form can be submitted. (type `boolean`; optional)
 
@@ -292,8 +292,8 @@ Properties for the CheckboxGroupRoot component.
 - `rovingFocus`: When `false`, navigating through the items using arrow keys will be disabled. (type `boolean`; default `true`; optional)
 - `disabled`: When `true`, prevents the user from interacting with the checkboxes (type `boolean`; default `false`; optional)
 - `dir`: The direction of navigation between items. (type `Direction`; optional)
-- `orientation`: The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 - `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
+- `orientation`: The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
 - `name`: The name of the field. Submitted with its owning form as part of a name/value pair. (type `string`; optional)
 - `required`: When `true`, indicates that the user must set the value before the owning form can be submitted. (type `boolean`; optional)
 

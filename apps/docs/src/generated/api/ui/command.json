@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "CommandProps",
         "type": "Interface CommandProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<CommandUi>; items: CommandOptionData<T>[]; placeholder?: string; searchTerm?: string; externalFilter?: boolean; clearable?: boolean; fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>; listProps?: CommandListProps; itemProps?: CommandItemProps; itemLabelProps?: CommandItemLabelProps; itemContentProps?: CommandItemContentProps; itemDescriptionProps?: CommandDescriptionProps; groupProps?: CommandGroupProps; groupLabelProps?: CommandGroupLabelProps; shortcutProps?: CommandShortcutProps; separatorProps?: CommandSeparatorProps; inputProps?: CommandInputProps; emptyProps?: CommandEmptyProps; emptyLabel?: string; modelValue?: string; defaultValue?: string; multiple?: false; selectionBehavior?: SelectionBehavior; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean; orientation?: DataOrientation }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<CommandUi>; items: CommandOptionData<T>[]; placeholder?: string; searchTerm?: string; externalFilter?: boolean; clearable?: boolean; fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>; listProps?: CommandListProps; itemProps?: CommandItemProps; itemLabelProps?: CommandItemLabelProps; itemContentProps?: CommandItemContentProps; itemDescriptionProps?: CommandDescriptionProps; groupProps?: CommandGroupProps; groupLabelProps?: CommandGroupLabelProps; shortcutProps?: CommandShortcutProps; separatorProps?: CommandSeparatorProps; inputProps?: CommandInputProps; emptyProps?: CommandEmptyProps; emptyLabel?: string; modelValue?: string; defaultValue?: string; multiple?: false; selectionBehavior?: SelectionBehavior; disabled?: boolean; dir?: Direction; orientation?: DataOrientation; name?: string; highlightOnHover?: boolean; required?: boolean }",
         "description": "Properties for the Command component.",
         "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.props",
         "sourcePath": "packages/ui/src/components/command/types.ts",
@@ -75,7 +75,7 @@
               {
                 "name": "CommandUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; inputRoot: ClassValue; inputControl: ClassValue; group: ClassValue; groupLabel: ClassValue; empty: ClassValue; separator: ClassValue; list: ClassValue; inputIcon: ClassValue; inputClearable: ClassValue; itemLabel: ClassValue; itemContent: ClassValue; itemDescription: ClassValue; shortcut: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; list: ClassValue; separator: ClassValue; groupLabel: ClassValue; group: ClassValue; itemLabel: ClassValue; inputRoot: ClassValue; inputControl: ClassValue; empty: ClassValue; inputIcon: ClassValue; inputClearable: ClassValue; itemContent: ClassValue; itemDescription: ClassValue; shortcut: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Command component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandui",
@@ -850,6 +850,31 @@
             ]
           },
           {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.orientation",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "name",
             "type": "string",
             "required": false,
@@ -881,31 +906,6 @@
             "inheritedFrom": "required",
             "sourcePath": "packages/headless/src/types/component.ts",
             "referencedTypes": []
-          },
-          {
-            "name": "orientation",
-            "type": "DataOrientation",
-            "required": false,
-            "description": "The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
-            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.orientation",
-            "default": null,
-            "inheritedFrom": "orientation",
-            "sourcePath": "packages/headless/src/components/listbox/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DataOrientation",
-                "kind": "typeAlias",
-                "type": "'vertical' | 'horizontal'",
-                "resolvedType": "'vertical' | 'horizontal'",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
-                "sourcePath": "packages/headless/src/types/common.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
           }
         ],
         "callables": [],
@@ -1300,7 +1300,7 @@
         "kind": "props",
         "name": "CommandCompactProps",
         "type": "Interface CommandCompactProps<T>",
-        "resolvedType": "{ items: CommandOptionData<T>[]; placeholder?: string; searchTerm?: string; externalFilter?: boolean; clearable?: boolean; fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>; listProps?: CommandListProps; itemProps?: CommandItemProps; itemLabelProps?: CommandItemLabelProps; itemContentProps?: CommandItemContentProps; itemDescriptionProps?: CommandDescriptionProps; groupProps?: CommandGroupProps; groupLabelProps?: CommandGroupLabelProps; shortcutProps?: CommandShortcutProps; separatorProps?: CommandSeparatorProps; inputProps?: CommandInputProps; emptyProps?: CommandEmptyProps; emptyLabel?: string; modelValue?: string; defaultValue?: string; multiple?: false; selectionBehavior?: SelectionBehavior; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean; orientation?: DataOrientation }",
+        "resolvedType": "{ items: CommandOptionData<T>[]; placeholder?: string; searchTerm?: string; externalFilter?: boolean; clearable?: boolean; fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>; listProps?: CommandListProps; itemProps?: CommandItemProps; itemLabelProps?: CommandItemLabelProps; itemContentProps?: CommandItemContentProps; itemDescriptionProps?: CommandDescriptionProps; groupProps?: CommandGroupProps; groupLabelProps?: CommandGroupLabelProps; shortcutProps?: CommandShortcutProps; separatorProps?: CommandSeparatorProps; inputProps?: CommandInputProps; emptyProps?: CommandEmptyProps; emptyLabel?: string; modelValue?: string; defaultValue?: string; multiple?: false; selectionBehavior?: SelectionBehavior; disabled?: boolean; dir?: Direction; orientation?: DataOrientation; name?: string; highlightOnHover?: boolean; required?: boolean }",
         "description": "Properties for the CommandCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.props",
         "sourcePath": "packages/headless/src/components/command/types.ts",
@@ -2069,6 +2069,31 @@
             ]
           },
           {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.orientation",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "name",
             "type": "string",
             "required": false,
@@ -2100,31 +2125,6 @@
             "inheritedFrom": "required",
             "sourcePath": "packages/headless/src/types/component.ts",
             "referencedTypes": []
-          },
-          {
-            "name": "orientation",
-            "type": "DataOrientation",
-            "required": false,
-            "description": "The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
-            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.orientation",
-            "default": null,
-            "inheritedFrom": "orientation",
-            "sourcePath": "packages/headless/src/components/listbox/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DataOrientation",
-                "kind": "typeAlias",
-                "type": "'vertical' | 'horizontal'",
-                "resolvedType": "'vertical' | 'horizontal'",
-                "description": "",
-                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
-                "sourcePath": "packages/headless/src/types/common.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
           }
         ],
         "callables": [],

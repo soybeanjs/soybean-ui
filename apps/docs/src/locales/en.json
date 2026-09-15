@@ -88,6 +88,17 @@
       "arrow": {
         "basic": "Basic"
       },
+      "app-shell": {
+        "basic": "Basic",
+        "brand-placement": "Brand Placement",
+        "collapse-mobile": "Collapse & Mobile",
+        "custom-slots": "Custom Slots",
+        "expand-strategy": "Expand Strategy",
+        "layout-composition": "Layout Composition",
+        "split-modes": "Split Modes",
+        "tabs-breadcrumb": "Tabs & Breadcrumb",
+        "top": "Top Menu"
+      },
       "aspect-ratio": {
         "basic": "Basic"
       },
