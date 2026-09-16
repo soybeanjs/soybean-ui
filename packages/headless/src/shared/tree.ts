@@ -8,6 +8,29 @@ type Tree<T extends DefinedValue = DefinedValue, S extends BaseTree<T> = BaseTre
   children?: S[];
 };
 
+/**
+ * Recursively drop the nodes flagged as `hidden`, keeping the shape of the tree
+ * the renderer should see: a hidden branch takes its whole subtree with it, and a
+ * node whose children are all hidden becomes a leaf.
+ */
+export function filterHiddenTreeNodes<N extends { hidden?: boolean; children?: N[] }>(items?: N[]): N[] {
+  if (!items) {
+    return [];
+  }
+
+  return items
+    .filter(item => !item.hidden)
+    .map(item => {
+      const { children } = item;
+
+      if (!children?.length) {
+        return item;
+      }
+
+      return { ...item, children: filterHiddenTreeNodes(children) };
+    });
+}
+
 export function getTreePaths<T extends DefinedValue = DefinedValue, S extends BaseTree<T> = BaseTree<T>>(
   targetValue: T,
   items: Tree<T, S>[]

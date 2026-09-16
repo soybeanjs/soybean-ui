@@ -1,5 +1,5 @@
 import { COLLECTION_ITEM_ATTRIBUTE } from '../../constants';
-import { getTreePaths } from '../../shared';
+import { filterHiddenTreeNodes, getTreePaths } from '../../shared';
 import type { TreeNavigationNode } from '../../shared';
 import type { Direction } from '../../types';
 import type { TreeMenuBaseOptionData, TreeMenuOptionData } from './types';
@@ -36,22 +36,14 @@ export function getActiveExpandValues<T extends TreeMenuBaseOptionData>(
   return paths.filter(value => !groupValues.has(value));
 }
 
+/**
+ * Recursively remove options flagged as `hidden`, so rendering, the active path
+ * search and the keyboard navigation all agree on the visible tree.
+ */
 export function filterHiddenTreeMenuOptions<T extends TreeMenuBaseOptionData>(
   items?: TreeMenuOptionData<T>[]
 ): TreeMenuOptionData<T>[] {
-  if (!items) {
-    return [];
-  }
-
-  return items
-    ?.filter(item => !item.hidden)
-    .map(item => {
-      const newItem = { ...item };
-      if (newItem.children && newItem.children.length > 0) {
-        newItem.children = filterHiddenTreeMenuOptions(newItem.children);
-      }
-      return newItem;
-    });
+  return filterHiddenTreeNodes(items);
 }
 
 /**

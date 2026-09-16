@@ -1,10 +1,15 @@
 import { computed, mergeProps } from 'vue';
+import { filterHiddenTreeNodes } from '../../shared';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
 import type { LinkProps, LinkExtraProps } from '../link/types';
 import type { MenuOptionData } from '../menu';
 import type { TreeNavOptionData, TreeNavRootContextParams } from './types';
 
-export const hasChildren = (item: TreeNavOptionData): boolean => Boolean(item.children?.length);
+/**
+ * Whether the item exposes at least one visible child, so a branch whose
+ * children are all hidden renders as a plain leaf (aligned with TreeMenu).
+ */
+export const hasChildren = (item: TreeNavOptionData): boolean => Boolean(item.children?.some(child => !child.hidden));
 
 export const isLinkItem = (item: TreeNavOptionData): boolean => Boolean(item.to || item.href);
 
@@ -36,15 +41,7 @@ function guardTreeNavPopupDismiss(event: FocusOutsideEvent | PointerDownOutsideE
  * Recursively remove options flagged as `hidden`, aligned with TreeMenu.
  */
 export function filterHiddenTreeNavOptions(items?: TreeNavOptionData[]): TreeNavOptionData[] {
-  if (!items) return [];
-
-  return items
-    .filter(item => !item.hidden)
-    .map(item => {
-      if (!item.children?.length) return item;
-
-      return { ...item, children: filterHiddenTreeNavOptions(item.children) };
-    });
+  return filterHiddenTreeNodes(items);
 }
 
 /**
