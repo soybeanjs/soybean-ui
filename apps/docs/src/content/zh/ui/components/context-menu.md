@@ -21,7 +21,8 @@ head:
 - 🖱️ 右键触发 — 经 `contextmenu` 事件在指针位置打开；`event.preventDefault()` 阻止原生菜单
 - 📱 长按触发 — `pressOpenDelay`（默认 700ms）在触屏/触控笔上长按打开
 - 🧩 基于 headless menu — 构建于共享 menu 基础组件，带完整键盘导航、类型过滤与 roving focus
-- 📊 数据驱动 — 传入 `items`（含 `value`/`label`/`icon`/`disabled`/`separator`…）或使用条目插槽
+- 📊 数据驱动 — 传入 `items`（含 `value`/`label`/`icon`/`disabled`/`hidden`/`separator`…）或使用条目插槽
+- 🙈 隐藏项 — 条目标记 `hidden` 后（连同整棵子树）不会出现在菜单中
 - ☑️ 复选 / 🔘 单选变体 — `SContextMenuCheckbox`/`SContextMenuRadio` 用于可选择的菜单
 - 🧩 自定义变体 — `SContextMenuWrapper` 用于完全自定义菜单内容
 - 🎭 模态 — `modal` 控制外部指针拦截与焦点陷阱

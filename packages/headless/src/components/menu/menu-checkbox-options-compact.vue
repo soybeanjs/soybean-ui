@@ -1,4 +1,6 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
+import { computed } from 'vue';
+import { filterHiddenTreeNodes } from '../../shared';
 import { useOmitProps } from '../../composables';
 import type { DefinedValue } from '../../types';
 import Icon from '../_icon/icon.vue';
@@ -38,12 +40,14 @@ const forwardedProps = useOmitProps(props, [
 
 const commonSlotNames = useCommonSlotNames(slots);
 
+const filteredItems = computed(() => filterHiddenTreeNodes(props.items));
+
 const ui = useMenuUi();
 </script>
 
 <template>
   <MenuCheckboxGroup v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
-    <template v-for="item in items" :key="item.value">
+    <template v-for="item in filteredItems" :key="item.value">
       <MenuGroupLabel v-if="item.isGroupLabel" v-bind="groupLabelProps">
         <MenuItemSlotCompact :icon="item.icon" :label="item.label">
           <template v-for="slotName in commonSlotNames">

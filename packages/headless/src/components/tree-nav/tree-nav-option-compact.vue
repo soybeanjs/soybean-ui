@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { keysOf } from '../../shared';
+import { filterHiddenTreeNodes, keysOf } from '../../shared';
 import { useRovingFocusGroupItem } from '../../composables';
 import Icon from '../_icon/icon.vue';
 import Button from '../button/button.vue';
@@ -60,8 +60,9 @@ const { setItemElement, itemProps } = useRovingFocusGroupItem({
 });
 
 // Pinned to `MenuOptionData<string>` so the generic dropdown compact resolves
-// its `T` to string instead of falling back to `DefinedValue`.
-const branchItems = computed<MenuOptionData<string>[]>(() => props.item.children ?? []);
+// its `T` to string instead of falling back to `DefinedValue`. Children are
+// filtered so a standalone tree-nav item matches the compact list output.
+const branchItems = computed<MenuOptionData<string>[]>(() => filterHiddenTreeNodes(props.item.children));
 
 // Link bindings merged after `itemProps` so the href/to props win on the link leaf.
 const linkBindings = computed(() => ({ ...itemProps.value, ...linkBind.value }));

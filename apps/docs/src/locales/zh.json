@@ -341,7 +341,8 @@
         "basic": "基础"
       },
       "menu": {
-        "basic": "基础"
+        "basic": "基础",
+        "hidden": "隐藏项"
       },
       "menubar": {
         "basic": "基础",

@@ -139,6 +139,90 @@ describe('SMenuOptions', () => {
     });
   });
 
+  describe('hidden items', () => {
+    it('drops hidden items from the rendered list', async () => {
+      const wrapper = mountMenu({
+        items: [
+          { value: 'new-tab', label: 'New Tab' },
+          { value: 'print', label: 'Print', hidden: true },
+          { value: 'share', label: 'Share' }
+        ]
+      });
+
+      await openMenu(wrapper);
+
+      const labels = wrapper.findAll('[role="menuitem"]').map(item => item.text());
+
+      expect(labels).toEqual(['New Tab', 'Share']);
+
+      wrapper.unmount();
+    });
+
+    it('drops hidden children of a submenu', async () => {
+      const wrapper = mountMenu({
+        items: [
+          {
+            value: 'share',
+            label: 'Share',
+            children: [
+              { value: 'mail', label: 'Email' },
+              { value: 'chat', label: 'Chat', hidden: true }
+            ]
+          }
+        ]
+      });
+
+      await openMenu(wrapper);
+
+      await wrapper.find('[role="menu"]').findAll('[role="menuitem"]')[0].trigger('keydown', { key: 'ArrowRight' });
+      await nextTick();
+      await nextTick();
+
+      const subMenuItems = wrapper.findAll('[role="menu"][data-state="open"]')[1]?.findAll('[role="menuitem"]') ?? [];
+
+      expect(subMenuItems.map(item => item.text())).toEqual(['Email']);
+
+      wrapper.unmount();
+    });
+
+    it('renders an item whose children are all hidden as a leaf', async () => {
+      const wrapper = mountMenu({
+        items: [{ value: 'share', label: 'Share', children: [{ value: 'mail', label: 'Email', hidden: true }] }]
+      });
+
+      await openMenu(wrapper);
+
+      const menuItems = wrapper.findAll('[role="menuitem"]');
+
+      expect(menuItems).toHaveLength(1);
+      expect(menuItems[0]?.attributes('aria-haspopup')).toBeUndefined();
+
+      wrapper.unmount();
+    });
+
+    it('ignores a hidden descendant when resolving the active path', async () => {
+      const wrapper = mountMenu({
+        items: [
+          {
+            value: 'share',
+            label: 'Share',
+            children: [
+              { value: 'mail', label: 'Email' },
+              { value: 'chat', label: 'Chat', hidden: true }
+            ]
+          }
+        ],
+        menuProps: { selectedValue: 'chat' }
+      });
+
+      await openMenu(wrapper);
+
+      expect(wrapper.find('[role="menuitem"]').attributes('data-child-selected')).toBeUndefined();
+
+      wrapper.unmount();
+    });
+  });
+
   describe('disabled fallback', () => {
     it('applies itemProps.disabled to items without an explicit value', async () => {
       const wrapper = mountMenu({
@@ -432,6 +516,48 @@ describe('SMenuCheckboxOptions', () => {
     wrapper.unmount();
   });
 
+  it('drops hidden items from the rendered list', async () => {
+    const wrapper = mount(
+      {
+        components: {
+          SConfigProvider,
+          SDropdownMenuWrapper,
+          SMenuCheckboxOptions
+        },
+        setup() {
+          return {
+            items: [
+              { value: 'bold', label: 'Bold' },
+              { value: 'italic', label: 'Italic', hidden: true },
+              { value: 'underline', label: 'Underline' }
+            ] satisfies MenuCheckboxOptionData<string>[]
+          };
+        },
+        template: `
+          <SConfigProvider>
+            <SDropdownMenuWrapper :portal-props="{ disabled: true }">
+              <template #trigger>
+                <button type="button">Open menu</button>
+              </template>
+              <SMenuCheckboxOptions :items="items" :portal-props="{ disabled: true }" />
+            </SDropdownMenuWrapper>
+          </SConfigProvider>
+        `
+      },
+      { attachTo: document.body }
+    );
+
+    await wrapper.find('button').trigger('click', { button: 0, ctrlKey: false });
+    await nextTick();
+    await nextTick();
+
+    const labels = wrapper.findAll('[role="menuitemcheckbox"]').map(item => item.text());
+
+    expect(labels).toEqual(['Bold', 'Underline']);
+
+    wrapper.unmount();
+  });
+
   it('applies checkboxItemProps.disabled fallback and item.disabled precedence', async () => {
     const wrapper = mount(
       {
@@ -518,6 +644,48 @@ describe('SMenuRadioOptions', () => {
     await nextTick();
 
     expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toBe('light');
+
+    wrapper.unmount();
+  });
+
+  it('drops hidden items from the rendered list', async () => {
+    const wrapper = mount(
+      {
+        components: {
+          SConfigProvider,
+          SDropdownMenuWrapper,
+          SMenuRadioOptions
+        },
+        setup() {
+          return {
+            items: [
+              { value: 'light', label: 'Light' },
+              { value: 'dark', label: 'Dark', hidden: true },
+              { value: 'system', label: 'System' }
+            ] satisfies MenuRadioOptionData<string>[]
+          };
+        },
+        template: `
+          <SConfigProvider>
+            <SDropdownMenuWrapper :portal-props="{ disabled: true }">
+              <template #trigger>
+                <button type="button">Open menu</button>
+              </template>
+              <SMenuRadioOptions :items="items" :portal-props="{ disabled: true }" />
+            </SDropdownMenuWrapper>
+          </SConfigProvider>
+        `
+      },
+      { attachTo: document.body }
+    );
+
+    await wrapper.find('button').trigger('click', { button: 0, ctrlKey: false });
+    await nextTick();
+    await nextTick();
+
+    const labels = wrapper.findAll('[role="menuitemradio"]').map(item => item.text());
+
+    expect(labels).toEqual(['Light', 'System']);
 
     wrapper.unmount();
   });

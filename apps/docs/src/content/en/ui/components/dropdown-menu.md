@@ -20,13 +20,14 @@ Use a dropdown for a compact action menu. For navigation menus use `nav-menu`; f
 
 - 🧩 Headless/menu based — built on the shared menu primitives with full keyboard navigation (arrow/Home/End/PageUp/PageDown), typeahead and roving focus
 - 🖱️ Trigger modes — `trigger="click"` or `"hover"`; `delayDuration`/`skipDelayDuration` tune hover latency
-- 📊 Data-driven — pass `items` (with `value`/`label`/`icon`/`disabled`/`separator`…) or use the item slots
+- 📊 Data-driven — pass `items` (with `value`/`label`/`icon`/`disabled`/`hidden`/`separator`…) or use the item slots
 - ☑️ Checkbox variant — `SDropdownMenuCheckbox` for multi-select with `v-model`
 - 🔘 Radio variant — `SDropdownMenuRadio` for single-select with `v-model`
 - 🧩 Wrapper variant — `SDropdownMenuWrapper` for fully custom menu content
 - 🎯 Placement — popper `placement` + `showArrow`
 - 🎭 Modal — `modal` controls outside-pointer blocking and focus trapping
 - 🪜 Submenus — nested submenu support with side-aware open/close keys (RTL-aware)
+- 🙈 Hidden items — an item flagged `hidden` (and its whole subtree) is dropped from the menu
 - ♿ Accessible — `role="menu"`/`menuitem`, `aria-checked` on checkbox/radio, `axe-core` clean
 
 ## Component family

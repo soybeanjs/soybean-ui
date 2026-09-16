@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { computed, nextTick, onMounted, shallowRef, useTemplateRef, watch } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import { keysOf, isClient } from '../../shared';
+import { filterHiddenTreeNodes, keysOf, isClient } from '../../shared';
 import { usePickProps, useForwardListeners } from '../../composables';
 import type { DefinedValue } from '../../types';
 import type { MenuOptionData } from '../menu';
@@ -100,9 +100,13 @@ const overflowElement = useTemplateRef<HTMLElement>('overflowElement');
 
 const collapsedCount = shallowRef(0);
 
-const hiddenCount = computed(() => Math.min(collapsedCount.value, props.items.length));
-const visibleItems = computed(() => props.items.slice(0, props.items.length - hiddenCount.value));
-const moreItems = computed(() => props.items.slice(props.items.length - hiddenCount.value));
+// Hidden options are filtered before layout math so the reflow loop counts
+// exactly what `MenubarMenus` renders.
+const items = computed(() => filterHiddenTreeNodes(props.items));
+
+const hiddenCount = computed(() => Math.min(collapsedCount.value, items.value.length));
+const visibleItems = computed(() => items.value.slice(0, items.value.length - hiddenCount.value));
+const moreItems = computed(() => items.value.slice(items.value.length - hiddenCount.value));
 
 const moreTriggerProps = computed(() => {
   return {
@@ -152,7 +156,7 @@ async function reflow() {
     }
 
     // Collapse trailing items while the content overflows the container.
-    while (collapsedCount.value < props.items.length && isOverflowing(container)) {
+    while (collapsedCount.value < items.value.length && isOverflowing(container)) {
       collapsedCount.value += 1;
       await nextTick();
     }

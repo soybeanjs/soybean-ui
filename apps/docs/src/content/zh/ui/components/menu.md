@@ -20,6 +20,7 @@ Menu 组件家族用于构建复杂的嵌套菜单（支持下拉菜单与右键
 - **分组与分隔** — `isGroupLabel` 渲染 `MenuGroupLabel` 分组标题，`separator` 渲染分隔线，`shortcut` 渲染快捷键提示。
 - **浮层生命周期** — dismissable layer（点击外部/Esc 关闭）、Presence（退出动画 + `forceMount`）、body scroll lock、focus scope/trap、modal 模式。
 - **禁用项** — 逐项 `disabled` 与 `itemProps.disabled` 全局兜底（显式项值优先），`aria-disabled` + `tabindex="-1"`。
+- **隐藏项** — 逐项 `hidden` 将该条目及其整棵子树从渲染结果、激活路径查找与键盘导航中移除；子项全部隐藏的条目按叶子节点渲染。
 - **Headless 组合** — `MenuRoot` / `MenuContent` / `MenuItem` / `MenuCheckboxItem` / `MenuRadioItem` / `MenuSub` / `MenuGroup` 等从 `@soybeanjs/headless/menu` 导出，供下拉菜单、右键菜单、菜单栏复用。
 
 ## 组件家族

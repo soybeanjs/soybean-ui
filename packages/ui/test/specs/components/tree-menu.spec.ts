@@ -307,6 +307,54 @@ describe('STreeMenu', () => {
     });
   });
 
+  describe('hidden options', () => {
+    it('drops hidden options and their subtrees from the rendered tree', () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items: [
+            { value: 'overview', label: 'Overview' },
+            { value: 'secret', label: 'Secret', hidden: true },
+            {
+              value: 'workspace',
+              label: 'Workspace',
+              children: [
+                { value: 'projects', label: 'Projects' },
+                { value: 'internal', label: 'Internal', hidden: true }
+              ]
+            }
+          ],
+          expanded: ['workspace']
+        }
+      });
+
+      expect(wrapper.text()).toContain('Overview');
+      expect(wrapper.text()).toContain('Projects');
+      expect(wrapper.text()).not.toContain('Secret');
+      expect(wrapper.text()).not.toContain('Internal');
+
+      wrapper.unmount();
+    });
+
+    it('renders a branch whose children are all hidden without a collapsible trigger', () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items: [
+            {
+              value: 'workspace',
+              label: 'Workspace',
+              children: [{ value: 'projects', label: 'Projects', hidden: true }]
+            }
+          ]
+        }
+      });
+
+      expect(wrapper.findAll('[data-soybean-tree-menu-collapsible-root]')).toHaveLength(0);
+      expect(wrapper.text()).toContain('Workspace');
+
+      wrapper.unmount();
+    });
+  });
+
   describe('state', () => {
     it('activates the default value on mount', () => {
       const wrapper = mount(STreeMenu, {

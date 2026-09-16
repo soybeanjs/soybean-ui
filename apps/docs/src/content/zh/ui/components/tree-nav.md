@@ -25,6 +25,7 @@ TreeNav 是一个数据驱动的水平导航栏，携带持久选择态：顶层
 - **导航语义** — 根元素渲染 `<nav>`（可用 `as` 覆写）；触发器的 `aria-haspopup` / `aria-expanded`、Escape 关闭等语义继承自 DropdownMenu 层。
 - **键盘导航** — 顶层是单一 roving Tab 停留点：←/→ 对所有条目一视同仁地漫游（跳过禁用项、首尾不循环），Home/End 跳转首尾条目；分支弹层的打开走显式按键——Enter/Space（原生按钮语义）或 ↓——弹层一旦打开，按键全部归属 Menu 机制。
 - **逐项与整体禁用** — `item.disabled` 使单个条目惰性；栏级 `disabled` 一次禁用全部。
+- **隐藏项** — `item.hidden` 将条目及其子树从导航栏与弹层中移除；子项全部隐藏的分支按普通叶子渲染。
 - **六种尺寸与两种变体** — `size`（xs…2xl）加 `variant="default"`（浅色卡片底）或 `variant="nav"`（纯净无框）。
 - **插槽透传** — `item` / `item-leading` / `item-trailing` / `item-trigger-icon` / `item-link-icon` 同时透传到顶层与弹层内部。
 - **Headless 组合** — 无样式数据驱动用法可导入 `@soybeanjs/headless/tree-nav`；弹层选项复用 `MenuOptionsCompact`。

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { keysOf } from '../../shared';
+import { filterHiddenTreeNodes, keysOf } from '../../shared';
 import Icon from '../_icon/icon.vue';
 import { PopperSub } from '../popper';
 import { useNavMenuUi } from './context';
@@ -29,6 +29,10 @@ const ui = useNavMenuUi();
 
 const slotNames = computed(() => keysOf(slots));
 
+// Children are filtered here too, so using this component standalone and using it
+// through the compact list resolve the same leaf/flyout shape.
+const children = computed(() => filterHiddenTreeNodes(props.item.children));
+
 function childLinkProps(child: NavMenuOptionData): NavMenuLinkProps {
   return {
     ...props.linkProps,
@@ -45,7 +49,7 @@ function childLinkProps(child: NavMenuOptionData): NavMenuLinkProps {
 
 <template>
   <!-- leaf sub item: a plain link -->
-  <NavMenuLink v-if="!item.children?.length" v-slot="slotProps" v-bind="linkProps" sub @select="emit('select', $event)">
+  <NavMenuLink v-if="!children.length" v-slot="slotProps" v-bind="linkProps" sub @select="emit('select', $event)">
     <slot name="item" :item="item">
       <slot name="item-leading" :item="item">
         <Icon v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />
@@ -79,7 +83,7 @@ function childLinkProps(child: NavMenuOptionData): NavMenuLinkProps {
     <NavMenuSubContent v-bind="subContentProps">
       <ul :class="ui.subList" data-soybean-nav-menu-sub-list>
         <NavMenuSubOptionCompact
-          v-for="child in item.children"
+          v-for="child in children"
           :key="child.value"
           :item="child"
           :link-props="childLinkProps(child)"

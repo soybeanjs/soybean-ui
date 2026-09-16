@@ -26,6 +26,7 @@ Menubar 用于构建常驻应用顶部的横向菜单栏：顶层为一组可横
 - **嵌套子菜单** — 子项通过 `MenuSub` 组合渲染任意层级子菜单，支持方向键进入 / 退出、指针宽限区防抖（100ms 打开延迟）。
 - **受控 / 非受控** — 提供 `modelValue` 时打开的菜单跟随 prop 并触发 `update:modelValue`；否则使用 `defaultValue` 做非受控初始值。
 - **逐项与整体禁用** — `item.disabled` 使单个顶层项完全惰性（`aria-disabled` + 移出 Tab 顺序 + 阻断交互）；紧凑组件级 `disabled` 一次禁用全部触发器（含链接型）。
+- **隐藏项** — `item.hidden` 移除整个顶层项及其下拉菜单；隐藏项在溢出计算之前就被过滤，因此 `collapsible` 只统计可见触发器。子项标记 `hidden` 则从其下拉菜单中移除。
 - **双向方向** — `dir` 支持 LTR / RTL，方向键与子菜单滑入方向均按逻辑方向处理；`portalProps` 控制内容是否传送到 body。
 - **六种尺寸** — `size`（xs…2xl）变体覆盖根节点与触发器的间距、内边距与字号。
 - **菜单槽位透传** — `item-leading` / `item-trailing` / `trigger` / `item-link-icon` 等插槽透传至菜单层，可按项定制内容；`ui` prop 覆盖根节点与触发器槽位。

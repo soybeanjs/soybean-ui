@@ -20,13 +20,14 @@ head:
 
 - 🧩 基于 headless menu — 构建于共享 menu 基础组件，带完整键盘导航（方向键/Home/End/PageUp/PageDown）、类型过滤与 roving focus
 - 🖱️ 触发模式 — `trigger="click"` 或 `"hover"`；`delayDuration`/`skipDelayDuration` 调节悬停延迟
-- 📊 数据驱动 — 传入 `items`（含 `value`/`label`/`icon`/`disabled`/`separator`…）或使用条目插槽
+- 📊 数据驱动 — 传入 `items`（含 `value`/`label`/`icon`/`disabled`/`hidden`/`separator`…）或使用条目插槽
 - ☑️ 复选变体 — `SDropdownMenuCheckbox` 用 `v-model` 实现多选
 - 🔘 单选变体 — `SDropdownMenuRadio` 用 `v-model` 实现单选
 - 🧩 自定义变体 — `SDropdownMenuWrapper` 用于完全自定义菜单内容
 - 🎯 定位 — popper `placement` + `showArrow`
 - 🎭 模态 — `modal` 控制外部指针拦截与焦点陷阱
 - 🪜 子菜单 — 嵌套子菜单，按侧打开/关闭键（RTL 感知）
+- 🙈 隐藏项 — 条目标记 `hidden` 后（连同整棵子树）不会出现在菜单中
 - ♿ 无障碍 — `role="menu"`/`menuitem`、复选/单选 `aria-checked`、`axe-core` 零违规
 
 ## 组件家族

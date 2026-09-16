@@ -256,6 +256,8 @@ export interface MenuOptionData<T extends DefinedValue = DefinedValue>
   isGroupLabel?: boolean;
   /** The icon rendered before the label. */
   icon?: IconValue;
+  /** Whether the option is hidden. */
+  hidden?: boolean;
   /** Whether to show a separator after this option. */
   separator?: boolean;
   /** The shortcut rendered at the end of the option. */
@@ -478,6 +480,8 @@ export interface MenuRadioOptionData<T extends AcceptableBooleanValue = Acceptab
   isGroupLabel?: boolean;
   /** The icon rendered before the label. */
   icon?: IconValue;
+  /** Whether the option is hidden. */
+  hidden?: boolean;
   /** Whether to show a separator after this option. */
   separator?: boolean;
   /** The shortcut rendered at the end of the option. */

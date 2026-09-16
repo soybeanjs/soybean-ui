@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { keysOf } from '../../shared';
+import { filterHiddenTreeNodes, keysOf } from '../../shared';
 import { useForwardListeners, useOmitProps, usePickProps } from '../../composables';
 import NavMenuList from './nav-menu-list.vue';
 import NavMenuOptionCompact from './nav-menu-option-compact.vue';
@@ -36,13 +36,17 @@ const forwardedOptionProps = usePickProps(props, [...optionPropKeys]);
 const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots));
+
+// Hidden options are dropped before rendering so the root list, the nested
+// flyouts and the active value all agree on the same visible tree.
+const filteredItems = computed(() => filterHiddenTreeNodes(props.items));
 </script>
 
 <template>
   <NavMenuRoot v-bind="forwardedRootProps" @update:model-value="emit('update:modelValue', $event)">
     <NavMenuList v-bind="listProps">
       <NavMenuOptionCompact
-        v-for="item in items"
+        v-for="item in filteredItems"
         :key="item.value"
         v-bind="forwardedOptionProps"
         :item="item"

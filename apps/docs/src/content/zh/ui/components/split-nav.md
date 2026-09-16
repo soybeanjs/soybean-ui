@@ -25,6 +25,7 @@ head:
 - 🔄 受控/非受控 — `modelValue` / `defaultValue` 只表示选中的叶子；点击父级只展开子面板，不会改 `v-model`，也不会带上选中样式
 - 📢 展开事件 — 激活父级时触发 `open`，携带该父级的完整菜单数据（含子级），可用于同时激活子级第一项
 - 🧩 复用 `TreeMenuCompact`（竖向子级）与 `TreeNavCompact`（横向子级）
+- 🙈 隐藏项 — `hidden` 将条目及其子树从一级栏与子面板中移除；子项全部隐藏的父级按叶子渲染
 - 🎨 6 档尺寸 + 样式注入 — `size` 从 xs 到 2xl；`class` / `ui` 覆盖各命名插槽
 - ✏️ 高度可定制 — `first-level-item` / `item` / `item-leading` / `item-trailing` 插槽
 - ♿ 无障碍 — `role="menubar"` / `menuitem`、`data-soybean-split-nav-*` 数据属性、RTL `dir`

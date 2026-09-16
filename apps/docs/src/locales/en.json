@@ -341,7 +341,8 @@
         "basic": "Basic"
       },
       "menu": {
-        "basic": "Basic"
+        "basic": "Basic",
+        "hidden": "Hidden items"
       },
       "menubar": {
         "basic": "Basic",

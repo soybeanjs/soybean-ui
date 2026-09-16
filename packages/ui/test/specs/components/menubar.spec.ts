@@ -72,6 +72,52 @@ describe('SMenubar', () => {
     });
   });
 
+  describe('hidden items', () => {
+    it('drops hidden triggers and hidden menu options', async () => {
+      const wrapper = mount(
+        {
+          components: { SConfigProvider, SMenubar },
+          setup() {
+            return {
+              items: [
+                {
+                  value: 'file',
+                  label: 'File',
+                  children: [
+                    { value: 'new-tab', label: 'New Tab' },
+                    { value: 'print', label: 'Print', hidden: true }
+                  ]
+                },
+                { value: 'hidden-menu', label: 'Hidden Menu', children: [{ value: 'x', label: 'X' }], hidden: true },
+                { value: 'edit', label: 'Edit', children: [{ value: 'undo', label: 'Undo' }] }
+              ] satisfies MenuOptionData<string>[]
+            };
+          },
+          template: `
+            <SConfigProvider>
+              <SMenubar :items="items" :portal-props="{ disabled: true }" />
+            </SConfigProvider>
+          `
+        },
+        { attachTo: document.body }
+      );
+
+      expect(wrapper.findAll('[role="menuitem"]')).toHaveLength(2);
+      expect(wrapper.text()).not.toContain('Hidden Menu');
+
+      const trigger = wrapper.find('[data-soybean-menubar-trigger][data-value="file"]');
+
+      await trigger.trigger('pointerdown', { button: 0, ctrlKey: false });
+      await nextTick();
+      await nextTick();
+
+      expect(wrapper.text()).toContain('New Tab');
+      expect(wrapper.text()).not.toContain('Print');
+
+      wrapper.unmount();
+    });
+  });
+
   describe('open state', () => {
     it('opens the menu on pointerdown and reflects aria-expanded', async () => {
       const wrapper = mountMenubar();

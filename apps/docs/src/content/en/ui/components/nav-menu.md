@@ -21,6 +21,7 @@ NavMenu builds site-level horizontal or vertical navigation with a single shared
 - **Hover / click triggers** — hover opens and click toggles by default; `disableClickTrigger` / `disableHoverTrigger` turn each trigger mode off independently.
 - **Grace corridor** — moving between a trigger and the open viewport is protected by a real geometric corridor (no debounce), with `skipDelayDuration` and `disablePointerLeaveClose` tuning closing behavior.
 - **Submenu surfaces** — items with `children` open a floating viewport anchored to their trigger, with an arrow indicator and `unmountOnHide` control.
+- **Hidden items** — `hidden` drops an item and its whole subtree from the root list and from the nested flyouts; an item whose children are all hidden renders as a leaf link.
 - **Keyboard navigation** — arrow keys move focus across items; `Enter` / `Space` activate a link or toggle a submenu; the entry arrow key moves focus into the content; `Escape` closes and restores focus to the trigger.
 - **Popup arrow** — the viewport carries a `PopperArrow` that points at the active trigger; its placement and rotation come from Floating UI's `arrow` middleware, and it slides with the viewport on trigger switch.
 - **Controlled / uncontrolled** — with `modelValue`, highlight follows the prop and `update:modelValue` fires; otherwise `defaultValue` seeds the initial open item.

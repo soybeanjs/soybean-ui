@@ -606,6 +606,40 @@ describe('SSplitNav', () => {
     });
   });
 
+  describe('hidden options', () => {
+    it('drops hidden first-level items and hidden children of a nested pane', async () => {
+      const wrapper = mount(SSplitNav, {
+        props: {
+          mode: 'dual-vertical',
+          items: [
+            { value: 'overview', label: 'Overview' },
+            { value: 'secret', label: 'Secret', hidden: true },
+            {
+              value: 'workspace',
+              label: 'Workspace',
+              children: [
+                { value: 'projects', label: 'Projects' },
+                { value: 'internal', label: 'Internal', hidden: true }
+              ]
+            }
+          ]
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.findAll('[data-soybean-split-nav-first-level-item]')).toHaveLength(2);
+      expect(wrapper.text()).not.toContain('Secret');
+
+      await wrapper.find('[data-soybean-split-nav-first-level-item][data-value="workspace"]').trigger('click');
+
+      const pane = wrapper.find('[data-soybean-split-nav-sub-vertical]');
+      expect(pane.text()).toContain('Projects');
+      expect(pane.text()).not.toContain('Internal');
+
+      wrapper.unmount();
+    });
+  });
+
   describe('disabled', () => {
     it('blocks activation for a disabled first-level item', async () => {
       const wrapper = mount(SSplitNav, {

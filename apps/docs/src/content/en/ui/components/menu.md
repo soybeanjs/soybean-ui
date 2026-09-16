@@ -20,6 +20,7 @@ The Menu component family lets you build complex nested menus, including dropdow
 - **Grouping & separators** — `isGroupLabel` renders a `MenuGroupLabel` heading, `separator` renders a divider, and `shortcut` renders a keyboard hint.
 - **Floating lifecycle** — dismissable layer (outside pointer / Esc close), Presence (exit animation + `forceMount`), body scroll lock, focus scope/trap, and modal mode.
 - **Disabled items** — per-item `disabled` with `itemProps.disabled` fallback (explicit value wins), `aria-disabled` + `tabindex="-1"`.
+- **Hidden items** — per-item `hidden` drops the option (and its whole subtree) from rendering, the active-path search and keyboard navigation; an item whose children are all hidden renders as a leaf.
 - **Headless composition** — `MenuRoot` / `MenuContent` / `MenuItem` / `MenuCheckboxItem` / `MenuRadioItem` / `MenuSub` / `MenuGroup` exported from `@soybeanjs/headless/menu`, reused by dropdown-menu, context-menu, and menubar.
 
 ## Component family

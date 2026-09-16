@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, shallowRef, watch } from 'vue';
-import { keysOf } from '../../shared';
+import { filterHiddenTreeNodes, keysOf } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { useOmitProps } from '../../composables';
 import { useLocaleMessages } from '../../locale';
@@ -55,7 +55,9 @@ const { collapsed, modelValue, onModelValueChange } = useTreeMenuRootContext('Tr
 
 const dir = useDirection();
 
-const children = computed(() => props.item.children ?? []);
+// Children are filtered here as well, so using this component standalone and
+// using it through `TreeMenuOptionsCompact` resolve the same branch/leaf shape.
+const children = computed(() => filterHiddenTreeNodes(props.item.children));
 
 const hasChildren = computed(() => Boolean(children.value.length));
 

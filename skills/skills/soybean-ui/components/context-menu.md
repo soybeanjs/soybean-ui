@@ -20,7 +20,8 @@ Usage examples for context-menu are rendered on the site.
 - 🖱️ Right-click trigger — opens at the pointer via the `contextmenu` event; `event.preventDefault()` prevents the native menu
 - 📱 Press-and-hold — `pressOpenDelay` (default 700ms) opens on long-press for touch/pen
 - 🧩 Headless/menu based — built on the shared menu primitives with full keyboard navigation, typeahead and roving focus
-- 📊 Data-driven — pass `items` (with `value`/`label`/`icon`/`disabled`/`separator`…) or use the item slots
+- 📊 Data-driven — pass `items` (with `value`/`label`/`icon`/`disabled`/`hidden`/`separator`…) or use the item slots
+- 🙈 Hidden items — an item flagged `hidden` (and its whole subtree) is dropped from the menu
 - ☑️ Checkbox / 🔘 Radio variants — `SContextMenuCheckbox`/`SContextMenuRadio` for selectable menus
 - 🧩 Wrapper variant — `SContextMenuWrapper` for fully custom menu content
 - 🎭 Modal — `modal` controls outside-pointer blocking and focus trapping

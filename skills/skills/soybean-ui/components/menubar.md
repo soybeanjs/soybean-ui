@@ -25,6 +25,7 @@ Menubar builds a persistent horizontal menu bar for application chrome: a row of
 - **Nested submenus** — child items render arbitrarily deep submenus via `MenuSub`, with arrow-key entry/exit and a pointer-grace debounce (100ms open delay).
 - **Controlled / uncontrolled** — with `modelValue`, the open menu follows the prop and emits `update:modelValue`; otherwise `defaultValue` seeds the initial state.
 - **Per-item and whole-bar disabling** — `item.disabled` makes a single top-level trigger fully inert (`aria-disabled` + out of tab order + blocked interaction); the compact-level `disabled` prop disables every trigger at once, including link triggers.
+- **Hidden items** — `item.hidden` drops a top-level trigger and its dropdown; hidden items are filtered before the overflow math, so `collapsible` only counts visible triggers. Hidden child items are dropped from their dropdown.
 - **Bidirectional direction** — `dir` supports LTR / RTL; arrow keys and submenu slide direction follow logical direction; `portalProps` controls whether content teleports to `body`.
 - **Six sizes** — `size` (xs…2xl) variants cover root and trigger spacing, padding, and font size.
 - **Menu slot passthrough** — `item-leading` / `item-trailing` / `trigger` / `item-link-icon` slots forward to the menu layer for per-item customization; the `ui` prop overrides root and trigger slots.

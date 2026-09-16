@@ -48,6 +48,61 @@ describe('SNavMenu', () => {
     });
   });
 
+  describe('hidden items', () => {
+    it('drops hidden items and hidden sub items', async () => {
+      const wrapper = mount(SNavMenu, {
+        props: {
+          items: [
+            { value: 'guide', label: 'Guide', href: '/guide' },
+            { value: 'secret', label: 'Secret', href: '/secret', hidden: true },
+            {
+              value: 'components',
+              label: 'Components',
+              href: '/components',
+              children: [
+                { value: 'button', label: 'Button', href: '/components/button' },
+                { value: 'internal', label: 'Internal', href: '/internal', hidden: true }
+              ]
+            }
+          ]
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.findAll('[data-soybean-nav-menu-item]')).toHaveLength(2);
+      expect(wrapper.text()).not.toContain('Secret');
+
+      await wrapper.find('[data-soybean-nav-menu-trigger]').trigger('click');
+      await nextTick();
+
+      expect(wrapper.text()).toContain('Button');
+      expect(wrapper.text()).not.toContain('Internal');
+
+      wrapper.unmount();
+    });
+
+    it('renders an item whose children are all hidden as a leaf link', () => {
+      const wrapper = mount(SNavMenu, {
+        props: {
+          items: [
+            {
+              value: 'components',
+              label: 'Components',
+              href: '/components',
+              children: [{ value: 'button', label: 'Button', href: '/components/button', hidden: true }]
+            }
+          ]
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.findAll('[data-soybean-nav-menu-trigger]')).toHaveLength(0);
+      expect(wrapper.find('a[href="/components"]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+  });
+
   describe('open state', () => {
     it('opens the submenu on trigger click and toggles it closed again', async () => {
       const wrapper = mount(SNavMenu, {

@@ -1,4 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableBooleanValue = AcceptableBooleanValue">
+import { computed } from 'vue';
+import { filterHiddenTreeNodes } from '../../shared';
 import { useOmitProps, useForwardListeners } from '../../composables';
 import type { AcceptableBooleanValue } from '../../types';
 import Icon from '../_icon/icon.vue';
@@ -36,12 +38,14 @@ const listeners = useForwardListeners(emit);
 
 const commonSlotNames = useCommonSlotNames(slots);
 
+const filteredItems = computed(() => filterHiddenTreeNodes(props.items));
+
 const ui = useMenuUi();
 </script>
 
 <template>
   <MenuRadioGroup v-bind="forwardedProps" v-on="listeners">
-    <template v-for="item in items" :key="String(item.value)">
+    <template v-for="item in filteredItems" :key="String(item.value)">
       <MenuGroupLabel v-if="item.isGroupLabel" v-bind="groupLabelProps">
         <MenuItemSlotCompact :icon="item.icon" :label="item.label">
           <template v-for="slotName in commonSlotNames">

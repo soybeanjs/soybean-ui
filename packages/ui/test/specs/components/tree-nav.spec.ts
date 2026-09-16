@@ -133,6 +133,36 @@ describe('STreeNav', () => {
 
       wrapper.unmount();
     });
+
+    it('renders a branch whose children are all hidden as a plain leaf', async () => {
+      const wrapper = mount(STreeNav, {
+        props: {
+          trigger: 'click',
+          portalProps: { disabled: true },
+          items: [
+            { value: 'visible', label: 'Visible' },
+            {
+              value: 'hidden-only-branch',
+              label: 'Hidden Only Branch',
+              children: [{ value: 'dropped', label: 'Dropped', hidden: true }]
+            }
+          ]
+        },
+        attachTo: document.body
+      });
+
+      // No dropdown trigger is left for a branch with nothing visible to show.
+      expect(wrapper.findAll('[data-soybean-dropdown-menu-trigger]')).toHaveLength(0);
+
+      const leaf = wrapper.findAll('button').find(button => button.text() === 'Hidden Only Branch');
+      expect(leaf).toBeTruthy();
+
+      await leaf!.trigger('click');
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['hidden-only-branch']);
+
+      wrapper.unmount();
+    });
   });
 
   describe('selection state', () => {

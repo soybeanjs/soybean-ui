@@ -21,6 +21,7 @@ NavMenu 用于构建站点级横向或纵向导航,共享一个浮层表面。�
 - **点击 / 悬停双触发** — 默认悬停打开、点击切换;`disableClickTrigger` / `disableHoverTrigger` 可单独关闭某一种触发方式。
 - **Grace 走廊** — 触发器与打开的 viewport 之间由真实几何走廊保护(无防抖),`skipDelayDuration` 与 `disablePointerLeaveClose` 调节关闭行为。
 - **子菜单浮层** — 带 `children` 的项在其触发器旁打开浮动 viewport,支持箭头指示器与 `unmountOnHide` 控制卸载。
+- **隐藏项** — `hidden` 将条目及其整棵子树从根列表与嵌套浮层中移除;子项全部隐藏的条目按叶子链接渲染。
 - **键盘导航** — 方向键在项间移动焦点;`Enter` / `Space` 激活链接或切换子菜单;入口方向键将焦点送入内容;`Escape` 关闭并归还焦点到触发器。
 - **弹层箭头** — viewport 携带 `PopperArrow` 指向激活触发器;其摆放与旋转由 Floating UI 的 `arrow` middleware 决定,切换触发器时随 viewport 一起滑动。
 - **受控 / 非受控** — 提供 `modelValue` 时高亮跟随 prop 并触发 `update:modelValue`;否则用 `defaultValue` 做非受控初始值。

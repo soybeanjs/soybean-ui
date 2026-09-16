@@ -219,6 +219,8 @@ export interface NavMenuOptionData extends LinkBaseProps {
   description?: string;
   /** The icon of the option. */
   icon?: IconValue;
+  /** Whether the option is hidden. */
+  hidden?: boolean;
   /** Whether the option is disabled. */
   disabled?: boolean;
   /** Whether the option is selected. */

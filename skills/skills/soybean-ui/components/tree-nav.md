@@ -24,6 +24,7 @@ TreeNav is a data-driven horizontal navigation bar with a persistent selection s
 - **Navigation semantics** — root renders as `<nav>` (`as` overridable); popup trigger semantics (`aria-haspopup` / `aria-expanded`, Escape handling) are inherited from the DropdownMenu layer.
 - **Keyboard navigation** — the top level is a single roving tab stop: ←/→ roam all entries alike (skipping disabled, no wrap), Home/End jump to the first/last entry; branch popups open through the explicit keys — Enter/Space (native button semantics) or ArrowDown — and once a popup is open its keys are owned by the Menu machinery.
 - **Per-item and whole-bar disabling** — `item.disabled` makes a single entry inert; the bar-level `disabled` disables everything.
+- **Hidden items** — `item.hidden` drops the entry and its subtree from the bar and its popup; a branch whose children are all hidden renders as a plain leaf.
 - **Six sizes & two variants** — `size` (xs…2xl) plus `variant="default"` (subtle card surface) or `variant="nav"` (bare bar).
 - **Slot passthrough** — `item` / `item-leading` / `item-trailing` / `item-trigger-icon` / `item-link-icon` forward into both the top level and popups.
 - **Headless composition** — import from `@soybeanjs/headless/tree-nav` for unstyled data-driven usage; popup options reuse `MenuOptionsCompact`.

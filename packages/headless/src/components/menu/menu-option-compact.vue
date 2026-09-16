@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { computed } from 'vue';
-import { keysOf } from '../../shared';
+import { filterHiddenTreeNodes, keysOf } from '../../shared';
 import { useForwardListeners, useOmitProps } from '../../composables';
 import type { DefinedValue } from '../../types';
 import Icon from '../_icon/icon.vue';
@@ -47,6 +47,10 @@ const isSelected = computed(() => selectedValue.value === props.item.value);
 
 const hasChildSelected = computed(() => selectedPaths.value.includes(props.item.value));
 
+// Children are filtered here too, so using this component standalone and using
+// it through `MenuOptionsCompact` resolve the same leaf/submenu shape.
+const children = computed(() => filterHiddenTreeNodes(props.item.children));
+
 const linkProps = computed<LinkProps>(() =>
   props.item.to || props.item.href
     ? {
@@ -92,7 +96,7 @@ const linkProps = computed<LinkProps>(() =>
     </Link>
   </MenuItem>
   <MenuItem
-    v-else-if="!item.children?.length"
+    v-else-if="!children.length"
     v-bind="itemProps"
     :disabled="item.disabled ?? itemProps?.disabled"
     :text-value="item.textValue"
@@ -131,7 +135,7 @@ const linkProps = computed<LinkProps>(() =>
       <MenuSubContent v-bind="subContentProps" v-on="forwardedListeners">
         <MenuGroup v-bind="groupProps">
           <MenuOptionCompact
-            v-for="child in item.children"
+            v-for="child in children"
             :key="child.value"
             v-bind="forwardedItemProps"
             :item="child"
@@ -145,5 +149,5 @@ const linkProps = computed<LinkProps>(() =>
       </MenuSubContent>
     </MenuPortal>
   </MenuSub>
-  <MenuSeparator v-if="item.separator && !item.children?.length" v-bind="separatorProps" />
+  <MenuSeparator v-if="item.separator && !children.length" v-bind="separatorProps" />
 </template>

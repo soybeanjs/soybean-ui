@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { keysOf } from '../../shared';
+import { filterHiddenTreeNodes, keysOf } from '../../shared';
 import Icon from '../_icon/icon.vue';
 import { useNavMenuRootContext, useNavMenuUi } from './context';
 import NavMenuContent from './nav-menu-content.vue';
@@ -41,6 +41,10 @@ const onLeafPointerEnter = () => {
 
 const isLink = computed(() => Boolean(props.item.to || props.item.href));
 
+// Children are filtered here too, so using this component standalone and using it
+// through `NavMenuCompact` resolve the same leaf/flyout shape.
+const children = computed(() => filterHiddenTreeNodes(props.item.children));
+
 const linkProps = computed<NavMenuLinkProps>(() =>
   isLink.value
     ? {
@@ -73,7 +77,7 @@ function childLinkProps(child: NavMenuOptionData): NavMenuLinkProps {
   <NavMenuItem v-bind="itemProps" :value="item.value">
     <!-- leaf item: a single link; entering it closes any open menu -->
     <NavMenuLink
-      v-if="!item.children?.length"
+      v-if="!children.length"
       v-bind="linkProps"
       @pointerenter="onLeafPointerEnter"
       @select="emit('select', $event)"
@@ -106,7 +110,7 @@ function childLinkProps(child: NavMenuOptionData): NavMenuLinkProps {
       <NavMenuContent v-bind="contentProps">
         <ul :class="ui.subList" data-soybean-nav-menu-sub-list>
           <NavMenuSubOptionCompact
-            v-for="child in item.children"
+            v-for="child in children"
             :key="child.value"
             :item="child"
             :link-props="childLinkProps(child)"
