@@ -40,12 +40,12 @@
   },
   "dependencies": {
     "@soybeanjs/theme": "workspace:^",
-    "@unocss/preset-mini": "^66.10.2",
-    "unocss": "^66.10.2"
+    "@unocss/preset-mini": "^66.10.5",
+    "unocss": "^66.10.5"
   },
   "devDependencies": {
     "typescript": "catalog:",
     "vite-plus": "catalog:",
-    "vitest": "5.0.0"
+    "vitest": "5.0.1"
   }
 }

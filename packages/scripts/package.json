@@ -19,6 +19,6 @@
     "typedoc": "^0.28.20",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
-    "vitest": "5.0.0"
+    "vitest": "5.0.1"
   }
 }

@@ -55,6 +55,6 @@
     "happy-dom": "^20.14.5",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
-    "vitest": "5.0.0"
+    "vitest": "5.0.1"
   }
 }
