@@ -2591,7 +2591,7 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
+                "resolvedType": "{ loop?: boolean; placement?: Placement; popupProps?: MenuPopupProps; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "packages/headless/src/components/menu/types.ts",
@@ -2618,6 +2618,17 @@
                     "default": "undefined",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "popupProps",
+                    "type": "MenuPopupProps",
+                    "required": false,
+                    "description": "Properties forwarded to the popup element.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.popupprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/menu/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -2651,17 +2662,6 @@
                     "default": "'optimized'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "popupProps",
-                    "type": "MenuPopupProps",
-                    "required": false,
-                    "description": "Properties forwarded to the popup element.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.popupprops",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/menu/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -3380,7 +3380,7 @@
         "kind": "props",
         "name": "MenuOptionsCompactProps",
         "type": "Interface MenuOptionsCompactProps<T>",
-        "resolvedType": "{ items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: MenuItemProps; linkProps?: LinkExtraProps; subProps?: MenuSubProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; portalProps?: MenuPortalProps; shortcutProps?: MenuShortcutProps }",
+        "resolvedType": "{ items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: MenuItemProps; linkProps?: LinkExtraProps; subProps?: MenuSubProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; shortcutProps?: MenuShortcutProps; separatorProps?: MenuSeparatorProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; portalProps?: MenuPortalProps }",
         "description": "Properties for the MenuOptionsCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuoptionscompactprops.props",
         "sourcePath": "packages/headless/src/components/menu/types.ts",
@@ -3802,6 +3802,91 @@
             ]
           },
           {
+            "name": "shortcutProps",
+            "type": "MenuShortcutProps",
+            "required": false,
+            "description": "Properties forwarded to the shortcut element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuoptionscompactprops.members.shortcutprops",
+            "default": null,
+            "inheritedFrom": "Omit.shortcutProps",
+            "sourcePath": "packages/headless/src/components/menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MenuShortcutProps",
+                "kind": "interface",
+                "type": "MenuShortcutProps",
+                "resolvedType": "{ symbolize?: boolean }",
+                "description": "Properties for the MenuShortcut component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menushortcutprops",
+                "sourcePath": "packages/headless/src/components/menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "symbolize",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to convert the command value to symbol representation.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menushortcutprops.members.symbolize",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/kbd/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "separatorProps",
+            "type": "MenuSeparatorProps",
+            "required": false,
+            "description": "Properties forwarded to the separator element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuoptionscompactprops.members.separatorprops",
+            "default": null,
+            "inheritedFrom": "Omit.separatorProps",
+            "sourcePath": "packages/headless/src/components/menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MenuSeparatorProps",
+                "kind": "interface",
+                "type": "MenuSeparatorProps",
+                "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
+                "description": "Properties for the SeparatorRoot component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_menu_index.menuseparatorprops",
+                "sourcePath": "packages/headless/src/components/menu/index.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "orientation",
+                    "type": "DataOrientation",
+                    "required": false,
+                    "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_index.menuseparatorprops.members.orientation",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/separator/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "decorative",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_index.menuseparatorprops.members.decorative",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/separator/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "subTriggerProps",
             "type": "MenuSubTriggerProps",
             "required": false,
@@ -3885,7 +3970,7 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
+                "resolvedType": "{ loop?: boolean; placement?: Placement; popupProps?: MenuPopupProps; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "packages/headless/src/components/menu/types.ts",
@@ -3912,6 +3997,17 @@
                     "default": "undefined",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "popupProps",
+                    "type": "MenuPopupProps",
+                    "required": false,
+                    "description": "Properties forwarded to the popup element.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.popupprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/menu/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -3945,17 +4041,6 @@
                     "default": "'optimized'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "popupProps",
-                    "type": "MenuPopupProps",
-                    "required": false,
-                    "description": "Properties forwarded to the popup element.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.popupprops",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/menu/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -4151,54 +4236,6 @@
             ]
           },
           {
-            "name": "separatorProps",
-            "type": "MenuSeparatorProps",
-            "required": false,
-            "description": "Properties forwarded to the separator element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuoptionscompactprops.members.separatorprops",
-            "default": null,
-            "inheritedFrom": "Omit.separatorProps",
-            "sourcePath": "packages/headless/src/components/menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MenuSeparatorProps",
-                "kind": "interface",
-                "type": "MenuSeparatorProps",
-                "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
-                "description": "Properties for the SeparatorRoot component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_menu_index.menuseparatorprops",
-                "sourcePath": "packages/headless/src/components/menu/index.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "orientation",
-                    "type": "DataOrientation",
-                    "required": false,
-                    "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_index.menuseparatorprops.members.orientation",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/separator/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "decorative",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_index.menuseparatorprops.members.decorative",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/separator/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "portalProps",
             "type": "MenuPortalProps",
             "required": false,
@@ -4261,43 +4298,6 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/types/component.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "shortcutProps",
-            "type": "MenuShortcutProps",
-            "required": false,
-            "description": "Properties forwarded to the shortcut element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menuoptionscompactprops.members.shortcutprops",
-            "default": null,
-            "inheritedFrom": "Omit.shortcutProps",
-            "sourcePath": "packages/headless/src/components/menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MenuShortcutProps",
-                "kind": "interface",
-                "type": "MenuShortcutProps",
-                "resolvedType": "{ symbolize?: boolean }",
-                "description": "Properties for the MenuShortcut component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menushortcutprops",
-                "sourcePath": "packages/headless/src/components/menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "symbolize",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether to convert the command value to symbol representation.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menushortcutprops.members.symbolize",
-                    "default": "true",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/kbd/types.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -5795,7 +5795,7 @@
         "kind": "props",
         "name": "MenuSubContentProps",
         "type": "Interface MenuSubContentProps",
-        "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
+        "resolvedType": "{ loop?: boolean; placement?: Placement; popupProps?: MenuPopupProps; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
         "description": "Properties for the MenuSubContent component.",
         "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.props",
         "sourcePath": "packages/headless/src/components/menu/types.ts",
@@ -5838,6 +5838,31 @@
             ]
           },
           {
+            "name": "popupProps",
+            "type": "MenuPopupProps",
+            "required": false,
+            "description": "Properties forwarded to the popup element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.popupprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MenuPopupProps",
+                "kind": "interface",
+                "type": "MenuPopupProps",
+                "resolvedType": null,
+                "description": "Properties for the MenuPopup component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menupopupprops",
+                "sourcePath": "packages/headless/src/components/menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "sideOffset",
             "type": "number",
             "required": false,
@@ -5869,31 +5894,6 @@
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/popper/types.ts",
             "referencedTypes": []
-          },
-          {
-            "name": "popupProps",
-            "type": "MenuPopupProps",
-            "required": false,
-            "description": "Properties forwarded to the popup element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menusubcontentprops.members.popupprops",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MenuPopupProps",
-                "kind": "interface",
-                "type": "MenuPopupProps",
-                "resolvedType": null,
-                "description": "Properties for the MenuPopup component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menupopupprops",
-                "sourcePath": "packages/headless/src/components/menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
           },
           {
             "name": "sideFlip",

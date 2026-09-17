@@ -75,7 +75,7 @@
               {
                 "name": "HoverCardUi",
                 "kind": "typeAlias",
-                "type": "{ trigger: ClassValue; anchor: ClassValue; subTrigger: ClassValue; arrow: ClassValue; positioner: ClassValue; popup: ClassValue; }",
+                "type": "{ trigger: ClassValue; anchor: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; }",
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_hover_card_index.hovercardui",

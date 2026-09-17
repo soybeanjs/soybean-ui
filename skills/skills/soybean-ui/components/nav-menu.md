@@ -63,12 +63,12 @@ Properties for the NavMenu component.
 - `disablePointerLeaveClose`: If `true`, the menu will not close when the pointer leaves the content. (type `boolean`; default `false`; optional)
 - `itemProps`: Properties forwarded to the item element. (type `NavMenuItemProps`; optional)
 - `linkProps`: Properties forwarded to the link element. (type `Omit<NavMenuLinkProps, LinkBasePropsKey>`; optional)
-- `triggerProps`: Properties forwarded to the trigger element. (type `NavMenuTriggerProps`; optional)
-- `contentProps`: Properties forwarded to the content element. (type `NavMenuContentProps`; optional)
-- `viewportProps`: Properties forwarded to the viewport element. (type `NavMenuViewportProps`; optional)
-- `listProps`: Properties forwarded to the list element. (type `NavMenuListProps`; optional)
 - `subTriggerProps`: Properties forwarded to the nested flyout trigger element. (type `NavMenuSubTriggerProps`; optional)
 - `subContentProps`: Properties forwarded to the nested flyout content element. (type `NavMenuSubContentProps`; optional)
+- `triggerProps`: Properties forwarded to the trigger element. (type `NavMenuTriggerProps`; optional)
+- `contentProps`: Properties forwarded to the content element. (type `NavMenuContentProps`; optional)
+- `listProps`: Properties forwarded to the list element. (type `NavMenuListProps`; optional)
+- `viewportProps`: Properties forwarded to the viewport element. (type `NavMenuViewportProps`; optional)
 
 #### Emits
 
@@ -106,12 +106,12 @@ Properties for the NavMenuCompact component.
 - `disablePointerLeaveClose`: If `true`, the menu will not close when the pointer leaves the content. (type `boolean`; default `false`; optional)
 - `itemProps`: Properties forwarded to the item element. (type `NavMenuItemProps`; optional)
 - `linkProps`: Properties forwarded to the link element. (type `Omit<NavMenuLinkProps, LinkBasePropsKey>`; optional)
-- `triggerProps`: Properties forwarded to the trigger element. (type `NavMenuTriggerProps`; optional)
-- `contentProps`: Properties forwarded to the content element. (type `NavMenuContentProps`; optional)
-- `viewportProps`: Properties forwarded to the viewport element. (type `NavMenuViewportProps`; optional)
-- `listProps`: Properties forwarded to the list element. (type `NavMenuListProps`; optional)
 - `subTriggerProps`: Properties forwarded to the nested flyout trigger element. (type `NavMenuSubTriggerProps`; optional)
 - `subContentProps`: Properties forwarded to the nested flyout content element. (type `NavMenuSubContentProps`; optional)
+- `triggerProps`: Properties forwarded to the trigger element. (type `NavMenuTriggerProps`; optional)
+- `contentProps`: Properties forwarded to the content element. (type `NavMenuContentProps`; optional)
+- `listProps`: Properties forwarded to the list element. (type `NavMenuListProps`; optional)
+- `viewportProps`: Properties forwarded to the viewport element. (type `NavMenuViewportProps`; optional)
 
 #### Emits
 

@@ -9,11 +9,11 @@ import NavMenuLink from './nav-menu-link.vue';
 import NavMenuSubOptionCompact from './nav-menu-sub-option-compact.vue';
 import NavMenuTrigger from './nav-menu-trigger.vue';
 import type {
+  NavMenuLinkProps,
   NavMenuOptionCompactProps,
-  NavMenuOptionData,
   NavMenuOptionCompactEmits,
   NavMenuOptionCompactSlots,
-  NavMenuLinkProps
+  NavMenuOptionData
 } from './types';
 
 defineOptions({

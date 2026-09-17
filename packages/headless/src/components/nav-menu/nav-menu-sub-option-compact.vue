@@ -8,11 +8,11 @@ import NavMenuLink from './nav-menu-link.vue';
 import NavMenuSubContent from './nav-menu-sub-content.vue';
 import NavMenuSubTrigger from './nav-menu-sub-trigger.vue';
 import type {
+  NavMenuLinkProps,
   NavMenuSubOptionCompactProps,
-  NavMenuOptionData,
   NavMenuSubOptionCompactEmits,
   NavMenuSubOptionCompactSlots,
-  NavMenuLinkProps
+  NavMenuOptionData
 } from './types';
 
 defineOptions({

@@ -157,8 +157,8 @@
               {
                 "name": "TreeMenuExpandStrategy",
                 "kind": "typeAlias",
-                "type": "'selected' | 'keep'",
-                "resolvedType": "'selected' | 'keep'",
+                "type": "'keep' | 'selected'",
+                "resolvedType": "'keep' | 'selected'",
                 "description": "Expand strategy of the TreeMenu component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenuexpandstrategy",
                 "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
@@ -1409,8 +1409,8 @@
               {
                 "name": "TreeMenuExpandStrategy",
                 "kind": "typeAlias",
-                "type": "'selected' | 'keep'",
-                "resolvedType": "'selected' | 'keep'",
+                "type": "'keep' | 'selected'",
+                "resolvedType": "'keep' | 'selected'",
                 "description": "Expand strategy of the TreeMenu component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenuexpandstrategy",
                 "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
@@ -4807,8 +4807,8 @@
               {
                 "name": "TreeMenuExpandStrategy",
                 "kind": "typeAlias",
-                "type": "'selected' | 'keep'",
-                "resolvedType": "'selected' | 'keep'",
+                "type": "'keep' | 'selected'",
+                "resolvedType": "'keep' | 'selected'",
                 "description": "Expand strategy of the TreeMenu component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenuexpandstrategy",
                 "sourcePath": "packages/headless/src/components/tree-menu/types.ts",

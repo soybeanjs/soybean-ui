@@ -75,7 +75,7 @@
               {
                 "name": "DatePickerUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; trigger: ClassValue; input: ClassValue; anchor: ClassValue; close: ClassValue; subTrigger: ClassValue; arrow: ClassValue; positioner: ClassValue; popup: ClassValue; }",
+                "type": "{ root: ClassValue; trigger: ClassValue; input: ClassValue; anchor: ClassValue; close: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class for the DatePicker component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_date_picker_types.datepickerui",

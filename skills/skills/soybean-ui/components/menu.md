@@ -282,11 +282,11 @@ Properties for the MenuOptionsCompact component.
 - `subProps`: Properties forwarded to the sub element. (type `MenuSubProps`; optional)
 - `groupProps`: Properties forwarded to the group element. (type `MenuGroupProps`; optional)
 - `groupLabelProps`: Properties forwarded to the group label element. (type `MenuGroupLabelProps`; optional)
+- `shortcutProps`: Properties forwarded to the shortcut element. (type `MenuShortcutProps`; optional)
+- `separatorProps`: Properties forwarded to the separator element. (type `MenuSeparatorProps`; optional)
 - `subTriggerProps`: Properties forwarded to the sub trigger element. (type `MenuSubTriggerProps`; optional)
 - `subContentProps`: Properties forwarded to the sub content element. (type `MenuSubContentProps`; optional)
-- `separatorProps`: Properties forwarded to the separator element. (type `MenuSeparatorProps`; optional)
 - `portalProps`: Properties forwarded to the portal element. (type `MenuPortalProps`; optional)
-- `shortcutProps`: Properties forwarded to the shortcut element. (type `MenuShortcutProps`; optional)
 
 #### Emits
 
@@ -446,10 +446,10 @@ Properties for the MenuSubContent component.
 
 - `loop`: Whether keyboard navigation should loop around (type `boolean`; default `false`; optional)
 - `placement`: The placement of the floating element. If used, it will override the `side` and `align` props. (type `Placement`; default `undefined`; optional)
+- `popupProps`: Properties forwarded to the popup element. (type `MenuPopupProps`; optional)
 - `sideOffset`: The distance in pixels from the trigger. (type `number`; default `0`; optional)
 - `arrowPadding`: The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it from overflowing the corners. (type `number`; default `0`; optional)
 - `updatePositionStrategy`: Strategy to update the position of the floating element on every animation frame. (type `'always' | 'optimized'`; default `'optimized'`; optional)
-- `popupProps`: Properties forwarded to the popup element. (type `MenuPopupProps`; optional)
 - `sideFlip`: Flip to the opposite side when colliding with boundary. (type `boolean`; default `true`; optional)
 - `alignOffset`: An offset in pixels from the `start` or `end` alignment options. (type `number`; default `0`; optional)
 - `alignFlip`: Flip alignment when colliding with boundary. May only occur when `prioritizePosition` is true. (type `boolean`; default `true`; optional)

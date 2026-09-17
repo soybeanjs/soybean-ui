@@ -75,7 +75,7 @@
               {
                 "name": "PopconfirmUi",
                 "kind": "typeAlias",
-                "type": "{ header: ClassValue; trigger: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; anchor: ClassValue; icon: ClassValue; close: ClassValue; footer: ClassValue; subTrigger: ClassValue; arrow: ClassValue; positioner: ClassValue; popup: ClassValue; cancel: ClassValue; confirm: ClassValue; }",
+                "type": "{ header: ClassValue; trigger: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; anchor: ClassValue; icon: ClassValue; close: ClassValue; footer: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; cancel: ClassValue; confirm: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Popconfirm component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_popconfirm_types.popconfirmui",

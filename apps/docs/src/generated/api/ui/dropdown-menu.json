@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "DropdownMenuProps",
         "type": "TypeAlias DropdownMenuProps<T>: Omit<MenuUiBaseProps, \"indicatorPosition\"> & DropdownMenuCompactProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DropdownMenuUi>; disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: DropdownMenuTriggerProps; portalProps?: DropdownMenuPortalProps; contentProps?: DropdownMenuContentProps; popupProps?: DropdownMenuPopupProps; arrowProps?: DropdownMenuArrowProps; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: DropdownMenuItemProps; linkProps?: LinkExtraProps; subProps?: DropdownMenuSubProps; groupProps?: DropdownMenuGroupProps; groupLabelProps?: DropdownMenuGroupLabelProps; subTriggerProps?: DropdownMenuSubTriggerProps; subContentProps?: DropdownMenuSubContentProps; separatorProps?: DropdownMenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DropdownMenuUi>; disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: DropdownMenuTriggerProps; portalProps?: DropdownMenuPortalProps; contentProps?: DropdownMenuContentProps; popupProps?: DropdownMenuPopupProps; arrowProps?: DropdownMenuArrowProps; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: DropdownMenuItemProps; linkProps?: LinkExtraProps; subProps?: DropdownMenuSubProps; groupProps?: DropdownMenuGroupProps; groupLabelProps?: DropdownMenuGroupLabelProps; shortcutProps?: MenuShortcutProps; separatorProps?: DropdownMenuSeparatorProps; subTriggerProps?: DropdownMenuSubTriggerProps; subContentProps?: DropdownMenuSubContentProps }",
         "description": "Properties for the DropdownMenu component.",
         "descriptionKey": "api.generated.packages_ui_src_components_dropdown_menu_types.dropdownmenuprops.props",
         "sourcePath": "packages/ui/src/components/dropdown-menu/types.ts",
@@ -75,7 +75,7 @@
               {
                 "name": "DropdownMenuUi",
                 "kind": "typeAlias",
-                "type": "{ item: ClassValue; separator: ClassValue; groupLabel: ClassValue; group: ClassValue; itemLinkIcon: ClassValue; subTrigger: ClassValue; subTriggerIcon: ClassValue; itemIcon: ClassValue; arrow: ClassValue; positioner: ClassValue; popup: ClassValue; itemIndicator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemLink: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; }",
+                "type": "{ item: ClassValue; separator: ClassValue; groupLabel: ClassValue; group: ClassValue; itemLinkIcon: ClassValue; itemIcon: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; itemIndicator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemLink: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; subTriggerIcon: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Menu component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenuui",
@@ -1146,6 +1146,91 @@
             ]
           },
           {
+            "name": "shortcutProps",
+            "type": "MenuShortcutProps",
+            "required": false,
+            "description": "Properties forwarded to the shortcut element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_dropdown_menu_types.dropdownmenuprops.members.shortcutprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MenuShortcutProps",
+                "kind": "interface",
+                "type": "MenuShortcutProps",
+                "resolvedType": "{ symbolize?: boolean }",
+                "description": "Properties for the MenuShortcut component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menushortcutprops",
+                "sourcePath": "packages/headless/src/components/menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "symbolize",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to convert the command value to symbol representation.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menushortcutprops.members.symbolize",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/kbd/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "separatorProps",
+            "type": "DropdownMenuSeparatorProps",
+            "required": false,
+            "description": "Properties forwarded to the separator element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_dropdown_menu_types.dropdownmenuprops.members.separatorprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SeparatorRootProps",
+                "kind": "interface",
+                "type": "SeparatorRootProps",
+                "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
+                "description": "Properties for the SeparatorRoot component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_separator_types.separatorrootprops",
+                "sourcePath": "packages/headless/src/components/separator/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "orientation",
+                    "type": "DataOrientation",
+                    "required": false,
+                    "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_separator_types.separatorrootprops.members.orientation",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/separator/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "decorative",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_separator_types.separatorrootprops.members.decorative",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/separator/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "subTriggerProps",
             "type": "DropdownMenuSubTriggerProps",
             "required": false,
@@ -1229,7 +1314,7 @@
                 "name": "DropdownMenuSubContentProps",
                 "kind": "interface",
                 "type": "DropdownMenuSubContentProps",
-                "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: DropdownMenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
+                "resolvedType": "{ loop?: boolean; placement?: Placement; popupProps?: DropdownMenuPopupProps; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubcontentprops",
                 "sourcePath": "packages/headless/src/components/dropdown-menu/index.ts",
@@ -1256,6 +1341,17 @@
                     "default": "undefined",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "popupProps",
+                    "type": "DropdownMenuPopupProps",
+                    "required": false,
+                    "description": "Properties forwarded to the popup element.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubcontentprops.members.popupprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/menu/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -1289,17 +1385,6 @@
                     "default": "'optimized'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "popupProps",
-                    "type": "DropdownMenuPopupProps",
-                    "required": false,
-                    "description": "Properties forwarded to the popup element.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubcontentprops.members.popupprops",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/menu/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -1491,91 +1576,6 @@
                     "referencedTypes": []
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "name": "separatorProps",
-            "type": "DropdownMenuSeparatorProps",
-            "required": false,
-            "description": "Properties forwarded to the separator element.",
-            "descriptionKey": "api.generated.packages_ui_src_components_dropdown_menu_types.dropdownmenuprops.members.separatorprops",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "SeparatorRootProps",
-                "kind": "interface",
-                "type": "SeparatorRootProps",
-                "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
-                "description": "Properties for the SeparatorRoot component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_separator_types.separatorrootprops",
-                "sourcePath": "packages/headless/src/components/separator/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "orientation",
-                    "type": "DataOrientation",
-                    "required": false,
-                    "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_separator_types.separatorrootprops.members.orientation",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/separator/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "decorative",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_separator_types.separatorrootprops.members.decorative",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/separator/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "shortcutProps",
-            "type": "MenuShortcutProps",
-            "required": false,
-            "description": "Properties forwarded to the shortcut element.",
-            "descriptionKey": "api.generated.packages_ui_src_components_dropdown_menu_types.dropdownmenuprops.members.shortcutprops",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "packages/headless/src/components/menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MenuShortcutProps",
-                "kind": "interface",
-                "type": "MenuShortcutProps",
-                "resolvedType": "{ symbolize?: boolean }",
-                "description": "Properties for the MenuShortcut component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menushortcutprops",
-                "sourcePath": "packages/headless/src/components/menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "symbolize",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether to convert the command value to symbol representation.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menushortcutprops.members.symbolize",
-                    "default": "true",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/kbd/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
               }
             ]
           }
@@ -2046,7 +2046,7 @@
               {
                 "name": "DropdownMenuUi",
                 "kind": "typeAlias",
-                "type": "{ item: ClassValue; separator: ClassValue; groupLabel: ClassValue; group: ClassValue; itemLinkIcon: ClassValue; subTrigger: ClassValue; subTriggerIcon: ClassValue; itemIcon: ClassValue; arrow: ClassValue; positioner: ClassValue; popup: ClassValue; itemIndicator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemLink: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; }",
+                "type": "{ item: ClassValue; separator: ClassValue; groupLabel: ClassValue; group: ClassValue; itemLinkIcon: ClassValue; itemIcon: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; itemIndicator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemLink: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; subTriggerIcon: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Menu component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenuui",
@@ -5059,7 +5059,7 @@
         "kind": "props",
         "name": "DropdownMenuCompactProps",
         "type": "Interface DropdownMenuCompactProps<T>",
-        "resolvedType": "{ disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: DropdownMenuTriggerProps; portalProps?: DropdownMenuPortalProps; contentProps?: DropdownMenuContentProps; popupProps?: DropdownMenuPopupProps; arrowProps?: DropdownMenuArrowProps; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: DropdownMenuItemProps; linkProps?: LinkExtraProps; subProps?: DropdownMenuSubProps; groupProps?: DropdownMenuGroupProps; groupLabelProps?: DropdownMenuGroupLabelProps; subTriggerProps?: DropdownMenuSubTriggerProps; subContentProps?: DropdownMenuSubContentProps; separatorProps?: DropdownMenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
+        "resolvedType": "{ disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: DropdownMenuTriggerProps; portalProps?: DropdownMenuPortalProps; contentProps?: DropdownMenuContentProps; popupProps?: DropdownMenuPopupProps; arrowProps?: DropdownMenuArrowProps; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; items: MenuOptionData<T>[]; selectedValue?: T; itemProps?: DropdownMenuItemProps; linkProps?: LinkExtraProps; subProps?: DropdownMenuSubProps; groupProps?: DropdownMenuGroupProps; groupLabelProps?: DropdownMenuGroupLabelProps; shortcutProps?: MenuShortcutProps; separatorProps?: DropdownMenuSeparatorProps; subTriggerProps?: DropdownMenuSubTriggerProps; subContentProps?: DropdownMenuSubContentProps }",
         "description": "Properties for the DropdownMenuCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucompactprops.props",
         "sourcePath": "packages/headless/src/components/dropdown-menu/types.ts",
@@ -6124,6 +6124,91 @@
             ]
           },
           {
+            "name": "shortcutProps",
+            "type": "MenuShortcutProps",
+            "required": false,
+            "description": "Properties forwarded to the shortcut element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucompactprops.members.shortcutprops",
+            "default": null,
+            "inheritedFrom": "shortcutProps",
+            "sourcePath": "packages/headless/src/components/menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MenuShortcutProps",
+                "kind": "interface",
+                "type": "MenuShortcutProps",
+                "resolvedType": "{ symbolize?: boolean }",
+                "description": "Properties for the MenuShortcut component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menushortcutprops",
+                "sourcePath": "packages/headless/src/components/menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "symbolize",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to convert the command value to symbol representation.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menushortcutprops.members.symbolize",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/kbd/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "separatorProps",
+            "type": "DropdownMenuSeparatorProps",
+            "required": false,
+            "description": "Properties forwarded to the separator element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucompactprops.members.separatorprops",
+            "default": null,
+            "inheritedFrom": "separatorProps",
+            "sourcePath": "packages/headless/src/components/menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SeparatorRootProps",
+                "kind": "interface",
+                "type": "SeparatorRootProps",
+                "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
+                "description": "Properties for the SeparatorRoot component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_separator_types.separatorrootprops",
+                "sourcePath": "packages/headless/src/components/separator/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "orientation",
+                    "type": "DataOrientation",
+                    "required": false,
+                    "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_separator_types.separatorrootprops.members.orientation",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/separator/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "decorative",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_separator_types.separatorrootprops.members.decorative",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/separator/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "subTriggerProps",
             "type": "DropdownMenuSubTriggerProps",
             "required": false,
@@ -6207,7 +6292,7 @@
                 "name": "DropdownMenuSubContentProps",
                 "kind": "interface",
                 "type": "DropdownMenuSubContentProps",
-                "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: DropdownMenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
+                "resolvedType": "{ loop?: boolean; placement?: Placement; popupProps?: DropdownMenuPopupProps; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; trapFocus?: boolean; disableHoverableContent?: boolean; onGracePointerExit?: (() => void); forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubcontentprops",
                 "sourcePath": "packages/headless/src/components/dropdown-menu/index.ts",
@@ -6234,6 +6319,17 @@
                     "default": "undefined",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "popupProps",
+                    "type": "DropdownMenuPopupProps",
+                    "required": false,
+                    "description": "Properties forwarded to the popup element.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubcontentprops.members.popupprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/menu/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -6267,17 +6363,6 @@
                     "default": "'optimized'",
                     "inheritedFrom": null,
                     "sourcePath": "packages/headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "popupProps",
-                    "type": "DropdownMenuPopupProps",
-                    "required": false,
-                    "description": "Properties forwarded to the popup element.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenusubcontentprops.members.popupprops",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/menu/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -6469,91 +6554,6 @@
                     "referencedTypes": []
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "name": "separatorProps",
-            "type": "DropdownMenuSeparatorProps",
-            "required": false,
-            "description": "Properties forwarded to the separator element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucompactprops.members.separatorprops",
-            "default": null,
-            "inheritedFrom": "separatorProps",
-            "sourcePath": "packages/headless/src/components/menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "SeparatorRootProps",
-                "kind": "interface",
-                "type": "SeparatorRootProps",
-                "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
-                "description": "Properties for the SeparatorRoot component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_separator_types.separatorrootprops",
-                "sourcePath": "packages/headless/src/components/separator/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "orientation",
-                    "type": "DataOrientation",
-                    "required": false,
-                    "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_separator_types.separatorrootprops.members.orientation",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/separator/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "decorative",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_separator_types.separatorrootprops.members.decorative",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/separator/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "shortcutProps",
-            "type": "MenuShortcutProps",
-            "required": false,
-            "description": "Properties forwarded to the shortcut element.",
-            "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_types.dropdownmenucompactprops.members.shortcutprops",
-            "default": null,
-            "inheritedFrom": "shortcutProps",
-            "sourcePath": "packages/headless/src/components/menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MenuShortcutProps",
-                "kind": "interface",
-                "type": "MenuShortcutProps",
-                "resolvedType": "{ symbolize?: boolean }",
-                "description": "Properties for the MenuShortcut component.",
-                "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menushortcutprops",
-                "sourcePath": "packages/headless/src/components/menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "symbolize",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether to convert the command value to symbol representation.",
-                    "descriptionKey": "api.generated.packages_headless_src_components_menu_types.menushortcutprops.members.symbolize",
-                    "default": "true",
-                    "inheritedFrom": null,
-                    "sourcePath": "packages/headless/src/components/kbd/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
               }
             ]
           }
@@ -7454,7 +7454,7 @@
               {
                 "name": "DropdownMenuUi",
                 "kind": "typeAlias",
-                "type": "{ item: ClassValue; separator: ClassValue; groupLabel: ClassValue; group: ClassValue; itemLinkIcon: ClassValue; subTrigger: ClassValue; subTriggerIcon: ClassValue; itemIcon: ClassValue; arrow: ClassValue; positioner: ClassValue; popup: ClassValue; itemIndicator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemLink: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; }",
+                "type": "{ item: ClassValue; separator: ClassValue; groupLabel: ClassValue; group: ClassValue; itemLinkIcon: ClassValue; itemIcon: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; itemIndicator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemLink: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; subTriggerIcon: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Menu component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenuui",
@@ -10542,7 +10542,7 @@
               {
                 "name": "DropdownMenuUi",
                 "kind": "typeAlias",
-                "type": "{ item: ClassValue; separator: ClassValue; groupLabel: ClassValue; group: ClassValue; itemLinkIcon: ClassValue; subTrigger: ClassValue; subTriggerIcon: ClassValue; itemIcon: ClassValue; arrow: ClassValue; positioner: ClassValue; popup: ClassValue; itemIndicator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemLink: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; }",
+                "type": "{ item: ClassValue; separator: ClassValue; groupLabel: ClassValue; group: ClassValue; itemLinkIcon: ClassValue; itemIcon: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; subTrigger: ClassValue; itemIndicator: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; itemLink: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; subTriggerIcon: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Menu component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_dropdown_menu_index.dropdownmenuui",

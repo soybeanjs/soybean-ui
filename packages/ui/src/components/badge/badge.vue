@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useControllableState, useOmitProps } from '@soybeanjs/headless/composables';
 import { badgeVariants } from '@/styles/badge';
-import type { BadgeEmits, BadgeProps, BadgeSlots } from './types';
+import type { BadgeProps, BadgeEmits, BadgeSlots } from './types';
 
 defineOptions({
   name: 'SBadge'

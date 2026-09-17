@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-14T16:18:40.230Z",
+  "generatedAt": "2026-09-17T12:47:25.441Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -34,7 +34,7 @@
     "app-shell": {
       "component": "app-shell",
       "file": "app-shell.json",
-      "symbols": ["AppShell", "AppShellLogo", "AppShellMenu"]
+      "symbols": ["AppShell", "AppShellBrand", "AppShellMenu"]
     },
     "aspect-ratio": {
       "component": "aspect-ratio",

@@ -384,8 +384,8 @@
               {
                 "name": "SliderThumbAlignment",
                 "kind": "typeAlias",
-                "type": "'contain' | 'overflow'",
-                "resolvedType": "'contain' | 'overflow'",
+                "type": "'overflow' | 'contain'",
+                "resolvedType": "'overflow' | 'contain'",
                 "description": "Type information for SliderThumbAlignment.",
                 "descriptionKey": "api.generated.packages_headless_src_components_slider_types.sliderthumbalignment",
                 "sourcePath": "packages/headless/src/components/slider/types.ts",
@@ -819,8 +819,8 @@
               {
                 "name": "SliderThumbAlignment",
                 "kind": "typeAlias",
-                "type": "'contain' | 'overflow'",
-                "resolvedType": "'contain' | 'overflow'",
+                "type": "'overflow' | 'contain'",
+                "resolvedType": "'overflow' | 'contain'",
                 "description": "Type information for SliderThumbAlignment.",
                 "descriptionKey": "api.generated.packages_headless_src_components_slider_types.sliderthumbalignment",
                 "sourcePath": "packages/headless/src/components/slider/types.ts",
@@ -1278,8 +1278,8 @@
               {
                 "name": "SliderThumbAlignment",
                 "kind": "typeAlias",
-                "type": "'contain' | 'overflow'",
-                "resolvedType": "'contain' | 'overflow'",
+                "type": "'overflow' | 'contain'",
+                "resolvedType": "'overflow' | 'contain'",
                 "description": "Type information for SliderThumbAlignment.",
                 "descriptionKey": "api.generated.packages_headless_src_components_slider_types.sliderthumbalignment",
                 "sourcePath": "packages/headless/src/components/slider/types.ts",

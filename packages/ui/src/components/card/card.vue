@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { CollapsibleContent, CollapsibleRoot, provideCollapsibleUi } from '@soybeanjs/headless/collapsible';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { cardVariants } from '@/styles/card';
-import type { CardEmits, CardProps, CardSlots } from './types';
+import type { CardProps, CardEmits, CardSlots } from './types';
 
 defineOptions({
   name: 'SCard'

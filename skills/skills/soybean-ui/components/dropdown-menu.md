@@ -79,10 +79,10 @@ Properties for the DropdownMenu component.
 - `subProps`: Properties forwarded to the sub element. (type `DropdownMenuSubProps`; optional)
 - `groupProps`: Properties forwarded to the group element. (type `DropdownMenuGroupProps`; optional)
 - `groupLabelProps`: Properties forwarded to the group label element. (type `DropdownMenuGroupLabelProps`; optional)
+- `shortcutProps`: Properties forwarded to the shortcut element. (type `MenuShortcutProps`; optional)
+- `separatorProps`: Properties forwarded to the separator element. (type `DropdownMenuSeparatorProps`; optional)
 - `subTriggerProps`: Properties forwarded to the sub trigger element. (type `DropdownMenuSubTriggerProps`; optional)
 - `subContentProps`: Properties forwarded to the sub content element. (type `DropdownMenuSubContentProps`; optional)
-- `separatorProps`: Properties forwarded to the separator element. (type `DropdownMenuSeparatorProps`; optional)
-- `shortcutProps`: Properties forwarded to the shortcut element. (type `MenuShortcutProps`; optional)
 
 #### Emits
 
@@ -271,10 +271,10 @@ Properties for the DropdownMenuCompact component.
 - `subProps`: Properties forwarded to the sub element. (type `DropdownMenuSubProps`; optional)
 - `groupProps`: Properties forwarded to the group element. (type `DropdownMenuGroupProps`; optional)
 - `groupLabelProps`: Properties forwarded to the group label element. (type `DropdownMenuGroupLabelProps`; optional)
+- `shortcutProps`: Properties forwarded to the shortcut element. (type `MenuShortcutProps`; optional)
+- `separatorProps`: Properties forwarded to the separator element. (type `DropdownMenuSeparatorProps`; optional)
 - `subTriggerProps`: Properties forwarded to the sub trigger element. (type `DropdownMenuSubTriggerProps`; optional)
 - `subContentProps`: Properties forwarded to the sub content element. (type `DropdownMenuSubContentProps`; optional)
-- `separatorProps`: Properties forwarded to the separator element. (type `DropdownMenuSeparatorProps`; optional)
-- `shortcutProps`: Properties forwarded to the shortcut element. (type `MenuShortcutProps`; optional)
 
 #### Emits
 
