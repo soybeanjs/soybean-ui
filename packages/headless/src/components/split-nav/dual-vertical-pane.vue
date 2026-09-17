@@ -40,8 +40,16 @@ const { activeItem, firstLevelItems, childItems } = useSplitNavDerived(() => pro
 
 const { onPaneKeydown } = useSplitNavPaneFallback(activeItem);
 
-const { collapsed, collapsedWidth, modelValue, treePaneState, treePaneStyle, handleTreeSelect, handleCollapsedChange } =
-  useSplitNavTreePane();
+const {
+  collapsed,
+  collapsedWidth,
+  expandStrategy,
+  modelValue,
+  treePaneState,
+  treePaneStyle,
+  handleTreeSelect,
+  handleCollapsedChange
+} = useSplitNavTreePane();
 
 const treeItems = computed(() => toTreeMenuOptions(childItems.value));
 
@@ -104,9 +112,9 @@ function handlePaneKeydownCapture(event: KeyboardEvent) {
         <TreeMenuCompact
           :items="treeItems"
           :model-value="modelValue"
+          :expand-strategy="expandStrategy"
           :collapsed="collapsed"
           :collapsed-width="collapsedWidth"
-          expand-strategy="selected"
           @update:model-value="handleTreeSelect"
           @update:collapsed="handleCollapsedChange"
         >

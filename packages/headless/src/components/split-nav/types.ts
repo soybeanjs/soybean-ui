@@ -2,7 +2,7 @@ import type { ComputedRef, ShallowRef } from 'vue';
 import type { DataOrientation, Direction, ToContext, UiClass } from '../../types';
 import type { KbdValue } from '../kbd/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
-import type { TreeMenuBaseOptionData } from '../tree-menu/types';
+import type { TreeMenuBaseOptionData, TreeMenuExpandStrategy } from '../tree-menu/types';
 
 /**
  * Available menu shapes for the SplitNav component.
@@ -92,6 +92,18 @@ export interface SplitNavRootProps<T extends SplitNavBaseOptionData = SplitNavBa
    * @default true
    */
   loop?: boolean;
+  /**
+   * The expand strategy of the nested vertical TreeMenu pane.
+   *
+   * - `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus. The collapsible ancestors of the selected menu are expanded on mount and whenever the selected menu changes from outside (e.g. driven by an external route), so it stays visible.
+   * - `selected`: only expand the currently selected menu and all its ancestor menus; non-selected menus are collapsed when the selected menu changes.
+   *
+   * Only applies to the nested `TreeMenuCompact`; the nested horizontal pane
+   * (`TreeNavCompact`) has no expand strategy.
+   *
+   * @default 'keep'
+   */
+  expandStrategy?: TreeMenuExpandStrategy;
   /**
    * Whether the nested vertical TreeMenu pane is collapsed.
    *
@@ -236,7 +248,7 @@ export interface DualVerticalPaneProps {
  */
 export interface SplitNavRootContextParams extends ToContext<
   SplitNavRootProps,
-  'mode' | 'items' | 'horizontalMountedId' | 'verticalMountedId' | 'loop' | 'collapsedWidth'
+  'mode' | 'items' | 'horizontalMountedId' | 'verticalMountedId' | 'loop' | 'expandStrategy' | 'collapsedWidth'
 > {
   /**
    * Current model value.

@@ -22,6 +22,7 @@ Usage examples for split-nav are rendered on the site.
 - 🪟 Teleport mounting — `verticalMountedId` / `horizontalMountedId` mount panes into `#id` elements (`dual-vertical` teleports as one block)
 - 🪜 Path slicing — `openPath` drives nested panes; `modelValue` is the selected leaf only
 - 🔄 Controlled/uncontrolled — `modelValue` / `defaultValue` store the selected leaf; clicking a parent only opens its pane, without changing `v-model` or applying the selected style
+- 🌲 Expand strategy — `expandStrategy` (`keep` by default, or `selected`) is forwarded to the nested `TreeMenuCompact`
 - 📢 Open event — activating a parent emits `open` with its complete option data (children included), e.g. to activate the first child at the same time
 - 🧩 Reuses `TreeMenuCompact` (nested vertical) and `TreeNavCompact` (nested horizontal)
 - 🙈 Hidden options — `hidden` drops an entry and its subtree from the first-level rail and from the nested panes; a parent whose children are all hidden renders as a leaf
@@ -47,6 +48,7 @@ Interactive demos for split-nav are rendered on the site.
 - 05 Teleport — mount panes into external `#id` elements
 - 06 Custom — override first-level and nested item content through slots
 - 07 Open Event — listen to `open` and activate the first child when a parent is clicked
+- 08 Expand Strategy — switch the nested `TreeMenuCompact` between `keep` and `selected`
 
 ## API
 
@@ -71,6 +73,7 @@ Properties for the SplitNav component.
 - `horizontalMountedId`: The id of the element to mount horizontal menus into (rendered via `Teleport`). When unset, the horizontal menus render in place. Pass the element id without `#`. (type `string`; optional)
 - `verticalMountedId`: The id of the element to mount vertical menus into (rendered via `Teleport`). When unset, the vertical menus render in place. Pass the element id without `#`. (type `string`; optional)
 - `loop`: Whether first-level keyboard navigation loops from last item to first and vice versa. (type `boolean`; default `true`; optional)
+- `expandStrategy`: The expand strategy of the nested vertical TreeMenu pane. - `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus. The collapsible ancestors of the selected menu are expanded on mount and whenever the selected menu changes from outside (e.g. driven by an external route), so it stays visible. - `selected`: only expand the currently selected menu and all its ancestor menus; non-selected menus are collapsed when the selected menu changes. Only applies to the nested `TreeMenuCompact`; the nested horizontal pane (`TreeNavCompact`) has no expand strategy. (type `TreeMenuExpandStrategy`; default `'keep'`; optional)
 - `collapsed`: Whether the nested vertical TreeMenu pane is collapsed. Can be bound with `v-model:collapsed`. (type `boolean`; optional)
 - `defaultCollapsed`: The collapsed state of the nested TreeMenu pane when initially rendered. (type `boolean`; default `false`; optional)
 - `collapsedWidth`: The width of the nested TreeMenu pane when it is collapsed, in pixels. (type `number`; default `50`; optional)
@@ -111,6 +114,7 @@ Properties for the SplitNavRoot component.
 - `horizontalMountedId`: The id of the element to mount horizontal menus into (rendered via `Teleport`). When unset, the horizontal menus render in place. Pass the element id without `#`. (type `string`; optional)
 - `verticalMountedId`: The id of the element to mount vertical menus into (rendered via `Teleport`). When unset, the vertical menus render in place. Pass the element id without `#`. (type `string`; optional)
 - `loop`: Whether first-level keyboard navigation loops from last item to first and vice versa. (type `boolean`; default `true`; optional)
+- `expandStrategy`: The expand strategy of the nested vertical TreeMenu pane. - `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus. The collapsible ancestors of the selected menu are expanded on mount and whenever the selected menu changes from outside (e.g. driven by an external route), so it stays visible. - `selected`: only expand the currently selected menu and all its ancestor menus; non-selected menus are collapsed when the selected menu changes. Only applies to the nested `TreeMenuCompact`; the nested horizontal pane (`TreeNavCompact`) has no expand strategy. (type `TreeMenuExpandStrategy`; default `'keep'`; optional)
 - `collapsed`: Whether the nested vertical TreeMenu pane is collapsed. Can be bound with `v-model:collapsed`. (type `boolean`; optional)
 - `defaultCollapsed`: The collapsed state of the nested TreeMenu pane when initially rendered. (type `boolean`; default `false`; optional)
 - `collapsedWidth`: The width of the nested TreeMenu pane when it is collapsed, in pixels. (type `number`; default `50`; optional)
@@ -141,7 +145,7 @@ Slots for the SplitNavRoot component.
 
 ### Architecture
 
-`SSplitNav` is a thin styled wrapper. Headless `SplitNavRoot` owns mode switching, the active path (`findActivePath`), and leaf-vs-parent selection. First-level items are a dedicated RovingFocus list — not a TreeMenu — so parent nodes switch the nested pane instead of expanding in place, and they **do not** take on the selected-leaf style. Vertical first-level items stack icon above label in a compact rail (overflowing labels ellipsize); horizontal first-level items stay icon-then-label in a row. Nested vertical content is `TreeMenuCompact` styled with `treeMenuVariants`, including a dedicated pane width and `v-model:collapsed`; nested horizontal content is `TreeNavCompact` styled with `treeNavVariants` so it matches `STreeNav`. `class` applies to the standalone `dual-vertical` pane; mixed modes render as independent teleported fragments.
+`SSplitNav` is a thin styled wrapper. Headless `SplitNavRoot` owns mode switching, the active path (`findActivePath`), and leaf-vs-parent selection. First-level items are a dedicated RovingFocus list — not a TreeMenu — so parent nodes switch the nested pane instead of expanding in place, and they **do not** take on the selected-leaf style. Vertical first-level items stack icon above label in a compact rail (overflowing labels ellipsize); horizontal first-level items stay icon-then-label in a row. Nested vertical content is `TreeMenuCompact` styled with `treeMenuVariants`, including a dedicated pane width, `v-model:collapsed`, and the `expandStrategy` you pass to the root; nested horizontal content is `TreeNavCompact` styled with `treeNavVariants` so it matches `STreeNav`. `class` applies to the standalone `dual-vertical` pane; mixed modes render as independent teleported fragments.
 
 | Capability                | SoybeanUI | Ant Design | Element Plus | Naive UI |
 | :------------------------ | :-------: | :--------: | :----------: | :------: |
@@ -156,6 +160,7 @@ Slots for the SplitNavRoot component.
 - In `dual-vertical` and the nested dual-vertical of `horizontal-dual-vertical`, the two vertical columns teleport together via `verticalMountedId`. Mixed modes teleport the first-level and nested panes independently.
 - Clicking a parent item only opens the nested pane (`data-state="open"`); it does not change `v-model` or set `data-selected`. Clicking a leaf updates `v-model` and emits `select`; the selected leaf renders `data-selected="true"` and `data-state="closed"`. A parent whose descendant is selected also gets `data-child-selected`.
 - Activating a parent item (click or keyboard) emits `open` with the complete option data of that parent, children included; it fires only for parents with visible children and never for leaves.
+- The nested pane keeps its own expanded state while it stays mounted, so with the default `expandStrategy="keep"` a branch you expanded under one first-level item is still expanded when you come back to it. The state resets when the pane unmounts, which happens whenever the active first-level item has no visible children.
 - Flex layout per `mode` lives in the UI style recipe; the headless layer carries no layout classes.
 
 ## FAQ
@@ -209,6 +214,19 @@ function handleOpen(item: SplitNavOptionData) {
 ### Can I customize each item's content?
 
 Yes — use `first-level-item` for the first-level rail, and `item` / `item-leading` / `item-trailing` for nested TreeMenu and TreeNav items.
+
+### Which branches stay expanded in the nested pane?
+
+`expandStrategy` controls the nested `TreeMenuCompact` and defaults to `keep`.
+
+- `keep` (default) — a branch you expanded by hand stays expanded: selecting another leaf, or switching first-level parents and coming back, does not collapse it. The ancestors of the selected leaf are still expanded on mount and whenever the selection changes from outside (for example when a route drives `v-model`), so the active leaf stays visible.
+- `selected` — the expanded set always follows the selection: only the selected leaf and its ancestors stay expanded, and every other branch collapses as soon as the selection changes.
+
+```vue
+
+```
+
+Only the nested vertical pane (`TreeMenuCompact`) has an expand strategy; the nested horizontal pane (`TreeNavCompact`) has none.
 
 ### Does it support route links?
 

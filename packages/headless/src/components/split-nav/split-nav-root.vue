@@ -26,6 +26,7 @@ const props = withDefaults(defineProps<SplitNavRootProps<T>>(), {
   mode: 'dual-vertical',
   defaultValue: '',
   loop: true,
+  expandStrategy: 'keep',
   collapsed: undefined,
   defaultCollapsed: false,
   collapsedWidth: 50,
@@ -49,6 +50,7 @@ const rootAttrs = useOmitProps(
     'verticalMountedId',
     'dir',
     'loop',
+    'expandStrategy',
     'collapsed',
     'defaultCollapsed',
     'collapsedWidth'
@@ -119,7 +121,16 @@ provideSplitNavRootContext({
   rootAttrs,
   railItemElements,
   onItemActivate,
-  ...toContext(props, ['mode', 'items', 'horizontalMountedId', 'verticalMountedId', 'loop', 'dir', 'collapsedWidth'])
+  ...toContext(props, [
+    'mode',
+    'items',
+    'horizontalMountedId',
+    'verticalMountedId',
+    'loop',
+    'expandStrategy',
+    'dir',
+    'collapsedWidth'
+  ])
 });
 
 watch(modelValue, value => {

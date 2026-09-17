@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "SplitNavProps",
         "type": "Interface SplitNavProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<SplitNavUi>; dir?: Direction; mode?: SplitNavMode; modelValue?: string; defaultValue?: string; items: SplitNavOptionData<T>[]; horizontalMountedId?: string; verticalMountedId?: string; loop?: boolean; collapsed?: boolean; defaultCollapsed?: boolean; collapsedWidth?: number; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<SplitNavUi>; dir?: Direction; mode?: SplitNavMode; modelValue?: string; defaultValue?: string; items: SplitNavOptionData<T>[]; horizontalMountedId?: string; verticalMountedId?: string; loop?: boolean; expandStrategy?: TreeMenuExpandStrategy; collapsed?: boolean; defaultCollapsed?: boolean; collapsedWidth?: number; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the SplitNav component.",
         "descriptionKey": "api.generated.packages_ui_src_components_split_nav_types.splitnavprops.props",
         "sourcePath": "packages/ui/src/components/split-nav/types.ts",
@@ -202,6 +202,31 @@
             "inheritedFrom": "loop",
             "sourcePath": "packages/headless/src/components/split-nav/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "expandStrategy",
+            "type": "TreeMenuExpandStrategy",
+            "required": false,
+            "description": "The expand strategy of the nested vertical TreeMenu pane.\n\n- `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus. The collapsible ancestors of the selected menu are expanded on mount and whenever the selected menu changes from outside (e.g. driven by an external route), so it stays visible.\n- `selected`: only expand the currently selected menu and all its ancestor menus; non-selected menus are collapsed when the selected menu changes.\n\nOnly applies to the nested `TreeMenuCompact`; the nested horizontal pane\n(`TreeNavCompact`) has no expand strategy.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_nav_types.splitnavprops.members.expandstrategy",
+            "default": "'keep'",
+            "inheritedFrom": "expandStrategy",
+            "sourcePath": "packages/headless/src/components/split-nav/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuExpandStrategy",
+                "kind": "typeAlias",
+                "type": "'selected' | 'keep'",
+                "resolvedType": "'selected' | 'keep'",
+                "description": "Expand strategy of the TreeMenu component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenuexpandstrategy",
+                "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "collapsed",
@@ -543,7 +568,7 @@
         "kind": "props",
         "name": "SplitNavRootProps",
         "type": "Interface SplitNavRootProps<T>",
-        "resolvedType": "{ dir?: Direction; mode?: SplitNavMode; modelValue?: string; defaultValue?: string; items: SplitNavOptionData<T>[]; horizontalMountedId?: string; verticalMountedId?: string; loop?: boolean; collapsed?: boolean; defaultCollapsed?: boolean; collapsedWidth?: number; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ dir?: Direction; mode?: SplitNavMode; modelValue?: string; defaultValue?: string; items: SplitNavOptionData<T>[]; horizontalMountedId?: string; verticalMountedId?: string; loop?: boolean; expandStrategy?: TreeMenuExpandStrategy; collapsed?: boolean; defaultCollapsed?: boolean; collapsedWidth?: number; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the SplitNavRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.splitnavrootprops.props",
         "sourcePath": "packages/headless/src/components/split-nav/types.ts",
@@ -664,6 +689,31 @@
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/split-nav/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "expandStrategy",
+            "type": "TreeMenuExpandStrategy",
+            "required": false,
+            "description": "The expand strategy of the nested vertical TreeMenu pane.\n\n- `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus. The collapsible ancestors of the selected menu are expanded on mount and whenever the selected menu changes from outside (e.g. driven by an external route), so it stays visible.\n- `selected`: only expand the currently selected menu and all its ancestor menus; non-selected menus are collapsed when the selected menu changes.\n\nOnly applies to the nested `TreeMenuCompact`; the nested horizontal pane\n(`TreeNavCompact`) has no expand strategy.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.splitnavrootprops.members.expandstrategy",
+            "default": "'keep'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/split-nav/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuExpandStrategy",
+                "kind": "typeAlias",
+                "type": "'selected' | 'keep'",
+                "resolvedType": "'selected' | 'keep'",
+                "description": "Expand strategy of the TreeMenu component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_menu_types.treemenuexpandstrategy",
+                "sourcePath": "packages/headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "collapsed",

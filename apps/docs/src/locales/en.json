@@ -467,6 +467,7 @@
       "split-nav": {
         "basic": "Basic",
         "custom": "Custom",
+        "expand-strategy": "Expand Strategy",
         "horizontal-dual-vertical": "Horizontal Dual Vertical",
         "horizontal-vertical": "Horizontal Vertical",
         "open-event": "Open Event",

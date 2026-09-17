@@ -23,6 +23,7 @@ head:
 - 🪟 Teleport 挂载 — `verticalMountedId` / `horizontalMountedId` 将面板挂到 `#id` 元素（`dual-vertical` 整块挂载）
 - 🪜 路径切分 — `openPath` 控制子面板展开，`modelValue` 只表示选中的叶子
 - 🔄 受控/非受控 — `modelValue` / `defaultValue` 只表示选中的叶子；点击父级只展开子面板，不会改 `v-model`，也不会带上选中样式
+- 🌲 展开策略 — `expandStrategy`（默认 `keep`，可选 `selected`）透传给嵌套的 `TreeMenuCompact`
 - 📢 展开事件 — 激活父级时触发 `open`，携带该父级的完整菜单数据（含子级），可用于同时激活子级第一项
 - 🧩 复用 `TreeMenuCompact`（竖向子级）与 `TreeNavCompact`（横向子级）
 - 🙈 隐藏项 — `hidden` 将条目及其子树从一级栏与子面板中移除；子项全部隐藏的父级按叶子渲染
@@ -48,6 +49,7 @@ head:
 - 05 挂载 — 将面板挂载到外部 `#id` 元素
 - 06 定制 — 通过插槽自定义一级与子级内容
 - 07 展开事件 — 监听 `open`，点击父级时同时激活子级第一项
+- 08 展开策略 — 在 `keep` 与 `selected` 之间切换嵌套 `TreeMenuCompact` 的展开行为
 
 ## API
 
@@ -57,7 +59,7 @@ head:
 
 ### 架构
 
-`SSplitNav` 是薄样式包装。无样式的 `SplitNavRoot` 负责 mode 切换、激活路径（`findActivePath`）以及叶子/父级选择语义。一级菜单是独立的 RovingFocus 列表，而不是 TreeMenu，因此父级用于切换子面板而不是就地展开，也**不会**把自己写成选中叶子。竖向一级是「上图标、下文本」的紧凑轨道（超出文本省略）；横向一级仍是图标+文本横排。竖向子级交给 `TreeMenuCompact`，用 `treeMenuVariants` 注入，并带独立栏宽和 `v-model:collapsed`；横向子级交给 `TreeNavCompact`，用 `treeNavVariants` 注入，外观与 `STreeNav` 一致。`class` 作用在独立的 `dual-vertical` 面板上；混合模式以各自 Teleport 片段渲染。
+`SSplitNav` 是薄样式包装。无样式的 `SplitNavRoot` 负责 mode 切换、激活路径（`findActivePath`）以及叶子/父级选择语义。一级菜单是独立的 RovingFocus 列表，而不是 TreeMenu，因此父级用于切换子面板而不是就地展开，也**不会**把自己写成选中叶子。竖向一级是「上图标、下文本」的紧凑轨道（超出文本省略）；横向一级仍是图标+文本横排。竖向子级交给 `TreeMenuCompact`，用 `treeMenuVariants` 注入，并带独立栏宽、`v-model:collapsed` 以及从根传下来的 `expandStrategy`；横向子级交给 `TreeNavCompact`，用 `treeNavVariants` 注入，外观与 `STreeNav` 一致。`class` 作用在独立的 `dual-vertical` 面板上；混合模式以各自 Teleport 片段渲染。
 
 | 能力              | SoybeanUI | Ant Design | Element Plus | Naive UI |
 | :---------------- | :-------: | :--------: | :----------: | :------: |
@@ -72,6 +74,7 @@ head:
 - `dual-vertical` 以及 `horizontal-dual-vertical` 里嵌套的 dual-vertical，两列竖栏会通过 `verticalMountedId` **整块**挂载。混合模式则一级与子级独立挂载。
 - 点击父级只会展开子面板（`data-state="open"`），不会改 `v-model`，也不会设置 `data-selected`；点击叶子才会更新 `v-model` 并触发 `select`，选中的叶子渲染 `data-selected="true"`。
 - 激活父级（点击或键盘）会触发 `open` 事件，携带该父级的完整菜单数据（含子级）；只有带可见子级的父级会触发，叶子不会。
+- 只要子面板还挂载着，它就会保留自己的展开状态：默认 `expandStrategy="keep"` 下，你在某个一级项里展开过的分支，切回来时仍是展开的。当激活的一级项没有可见子级时子面板会卸载，该状态随之重置。
 - 各 `mode` 的 flex 布局定义在 UI 样式配方中；无样式层不携带任何布局类。
 
 ## 常见问题
@@ -130,6 +133,19 @@ function handleOpen(item: SplitNavOptionData) {
 ### 能否自定义每项内容？
 
 可以 — 用 `first-level-item` 自定义一级，用 `item` / `item-leading` / `item-trailing` 自定义嵌套 TreeMenu 与 TreeNav。
+
+### 子面板里哪些分支会保持展开？
+
+`expandStrategy` 控制嵌套的 `TreeMenuCompact`，默认值为 `keep`。
+
+- `keep`（默认）— 手动展开的分支会保持展开：选中别的叶子、或切换到别的一级项再切回来，都不会把它收起。同时，选中叶子的祖先分支会在挂载时以及选中值被外部改变时（例如由路由驱动 `v-model`）自动展开，保证当前叶子可见。
+- `selected` — 展开集合始终跟随选中项：只有选中叶子及其祖先保持展开，选中项一旦变化，其它分支立即收起。
+
+```vue
+<SSplitNav v-model="active" expand-strategy="selected" :items="items" />
+```
+
+只有竖向子面板（`TreeMenuCompact`）有展开策略；横向子面板（`TreeNavCompact`）没有该概念。
 
 ### 是否支持路由链接？
 

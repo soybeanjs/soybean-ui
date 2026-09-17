@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { defineComponent, h, ref, shallowRef } from 'vue';
+import { defineComponent, h, nextTick, ref, shallowRef } from 'vue';
 import { mount } from '@vue/test-utils';
 import SSplitNav from '@/components/split-nav/split-nav.vue';
 import { getA11yViolations } from '../../shared/a11y';
@@ -48,6 +48,50 @@ const disabledItems = [
     value: 'locked',
     label: 'Locked',
     disabled: true
+  }
+];
+
+const expandItems = [
+  {
+    value: 'dashboard',
+    label: 'Dashboard',
+    icon: 'lucide:house'
+  },
+  {
+    value: 'workbench',
+    label: 'Workbench',
+    icon: 'lucide:layout-grid',
+    children: [
+      {
+        value: 'projects',
+        label: 'Projects',
+        children: [{ value: 'soybean-ui', label: 'Soybean UI' }]
+      },
+      {
+        value: 'tasks',
+        label: 'Tasks'
+      },
+      {
+        value: 'calendar',
+        label: 'Calendar'
+      }
+    ]
+  },
+  {
+    value: 'system',
+    label: 'System',
+    icon: 'lucide:settings',
+    children: [
+      {
+        value: 'users',
+        label: 'Users',
+        children: [{ value: 'admins', label: 'Admins' }]
+      },
+      {
+        value: 'roles',
+        label: 'Roles'
+      }
+    ]
   }
 ];
 
@@ -488,6 +532,180 @@ describe('SSplitNav', () => {
 
       expect(wrapper.find('[data-soybean-split-nav-sub-vertical]').attributes('data-state')).toBe('collapsed');
       expect(wrapper.find('[data-soybean-tree-menu-root]').attributes('data-state')).toBe('collapsed');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('expand strategy', () => {
+    it('expands the selected chain on mount by default', async () => {
+      const wrapper = mount(SSplitNav, {
+        props: {
+          items: expandItems,
+          mode: 'dual-vertical',
+          defaultValue: 'soybean-ui'
+        },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
+        'true'
+      );
+      expect(wrapper.text()).toContain('Soybean UI');
+
+      wrapper.unmount();
+    });
+
+    it('keeps a manually expanded branch when another leaf is selected', async () => {
+      const wrapper = mount(SSplitNav, {
+        props: {
+          items: expandItems,
+          mode: 'dual-vertical',
+          defaultValue: 'calendar'
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
+        'false'
+      );
+
+      await wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').trigger('click');
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
+        'true'
+      );
+
+      await wrapper.find('[data-soybean-tree-menu-button][data-value="tasks"]').trigger('click');
+      await nextTick();
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toBe('tasks');
+      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
+        'true'
+      );
+
+      wrapper.unmount();
+    });
+
+    it('restores a branch expanded before switching first-level parents', async () => {
+      const wrapper = mount(SSplitNav, {
+        props: {
+          items: expandItems,
+          mode: 'dual-vertical',
+          defaultValue: 'tasks'
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').trigger('click');
+      await nextTick();
+
+      await wrapper.find('[data-soybean-split-nav-first-level-item][data-value="system"]').trigger('click');
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').exists()).toBe(false);
+      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="users"]').attributes('aria-expanded')).toBe(
+        'false'
+      );
+
+      await wrapper.find('[data-soybean-split-nav-first-level-item][data-value="workbench"]').trigger('click');
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
+        'true'
+      );
+      expect(wrapper.text()).toContain('Soybean UI');
+
+      wrapper.unmount();
+    });
+
+    it('expands only the selected chain with expandStrategy="selected"', async () => {
+      const wrapper = mount(SSplitNav, {
+        props: {
+          items: expandItems,
+          mode: 'dual-vertical',
+          defaultValue: 'soybean-ui',
+          expandStrategy: 'selected'
+        },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
+        'true'
+      );
+      expect(wrapper.text()).toContain('Soybean UI');
+
+      wrapper.unmount();
+    });
+
+    it('collapses a non-selected branch with expandStrategy="selected"', async () => {
+      const wrapper = mount(SSplitNav, {
+        props: {
+          items: expandItems,
+          mode: 'dual-vertical',
+          defaultValue: 'calendar',
+          expandStrategy: 'selected'
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').trigger('click');
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
+        'true'
+      );
+
+      await wrapper.find('[data-soybean-tree-menu-button][data-value="tasks"]').trigger('click');
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
+        'false'
+      );
+      expect(wrapper.text()).not.toContain('Soybean UI');
+
+      wrapper.unmount();
+    });
+
+    it('forwards expandStrategy to the nested TreeMenu of horizontal-vertical mode', async () => {
+      const wrapper = mount(SSplitNav, {
+        props: {
+          items: expandItems,
+          mode: 'horizontal-vertical',
+          defaultValue: 'calendar',
+          expandStrategy: 'selected'
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').trigger('click');
+      await nextTick();
+
+      await wrapper.find('[data-soybean-tree-menu-button][data-value="tasks"]').trigger('click');
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-button][data-value="projects"]').attributes('aria-expanded')).toBe(
+        'false'
+      );
+
+      wrapper.unmount();
+    });
+
+    it('does not leak expandStrategy to the DOM', () => {
+      const wrapper = mount(SSplitNav, {
+        props: {
+          items: expandItems,
+          expandStrategy: 'selected'
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-split-nav-root]').attributes('expandstrategy')).toBeUndefined();
 
       wrapper.unmount();
     });

@@ -56,10 +56,11 @@ export function useSplitNavDerived<T extends SplitNavBaseOptionData = SplitNavBa
 }
 
 /**
- * Collapsed state and layout tokens for the nested TreeMenu pane.
+ * Collapsed state, expand strategy, and layout tokens for the nested TreeMenu pane.
  */
 export function useSplitNavTreePane() {
-  const { collapsed, collapsedWidth, modelValue, onItemActivate } = useSplitNavRootContext('useSplitNavTreePane');
+  const { collapsed, collapsedWidth, expandStrategy, modelValue, onItemActivate } =
+    useSplitNavRootContext('useSplitNavTreePane');
 
   const treePaneState = computed(() => (collapsed.value ? 'collapsed' : 'expanded'));
 
@@ -78,6 +79,7 @@ export function useSplitNavTreePane() {
   return {
     collapsed,
     collapsedWidth,
+    expandStrategy,
     modelValue,
     treePaneState,
     treePaneStyle,
