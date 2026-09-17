@@ -400,11 +400,8 @@ describe('SForm', () => {
       await wrapper.find('input[placeholder="age"]').setValue(18);
       await submitForm(wrapper);
 
-      // 等待字段级异步校验的定时器真实完成
-      await new Promise(resolve => setTimeout(resolve, 15));
-      await nextTick();
-
-      expect(invalidErrors.value?.['username']).toBe('Taken');
+      // 同为定时器竞态：睡 15ms 等一个 10ms 的校验器只剩 5ms 余量，改为轮询。
+      await vi.waitFor(() => expect(invalidErrors.value?.['username']).toBe('Taken'));
       wrapper.unmount();
     });
 
@@ -478,11 +475,9 @@ describe('SForm', () => {
 
       expect(isSubmitting!.value).toBe(true);
 
-      await new Promise(resolve => setTimeout(resolve, 40));
-      await flushPromises();
-      await nextTick();
-
-      expect(isSubmitting!.value).toBe(false);
+      // 轮询而不是睡过 30ms 的提交延迟：固定睡眠是在和定时器赛跑，CI 拥塞时定时器
+      // 晚触发的量级足以吃掉任何预留余量（40ms 等 30ms 曾在 CI 上稳定翻车）。
+      await vi.waitFor(() => expect(isSubmitting!.value).toBe(false));
       wrapper.unmount();
     });
   });
