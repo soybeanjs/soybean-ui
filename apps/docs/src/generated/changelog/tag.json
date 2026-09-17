@@ -1,8 +1,25 @@
 {
   "component": "tag",
-  "generatedAt": "2026-09-13T16:50:13.758Z",
+  "generatedAt": "2026-09-17T14:01:29.350Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.50.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.1...v0.50.0-beta.1",
+      "date": "2026-09-17",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "tag",
+          "summary": "sink tag to ui-only family",
+          "summaryKey": "changelog.generated.v0.50.0-beta.1.30fea",
+          "commitHash": "30fea",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/30fea6481",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.26.2",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.26.1...v0.26.2",

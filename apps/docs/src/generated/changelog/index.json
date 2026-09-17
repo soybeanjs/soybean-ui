@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-14T16:24:20.768Z",
+  "generatedAt": "2026-09-17T14:01:29.350Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -215,9 +215,9 @@
     "context-menu": {
       "component": "context-menu",
       "file": "context-menu.json",
-      "latestVersion": "v0.8.0",
-      "versionCount": 2,
-      "entryCount": 2
+      "latestVersion": "v0.50.0-beta.1",
+      "versionCount": 3,
+      "entryCount": 3
     },
     "date-field": {
       "component": "date-field",
@@ -257,9 +257,9 @@
     "drawer": {
       "component": "drawer",
       "file": "drawer.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 6,
-      "entryCount": 7
+      "latestVersion": "v0.50.0-beta.1",
+      "versionCount": 7,
+      "entryCount": 17
     },
     "dropdown-menu": {
       "component": "dropdown-menu",
@@ -285,9 +285,9 @@
     "form": {
       "component": "form",
       "file": "form.json",
-      "latestVersion": "v0.40.0",
-      "versionCount": 11,
-      "entryCount": 12
+      "latestVersion": "v0.50.0-beta.1",
+      "versionCount": 12,
+      "entryCount": 19
     },
     "hover-card": {
       "component": "hover-card",
@@ -390,9 +390,9 @@
     "page-tabs": {
       "component": "page-tabs",
       "file": "page-tabs.json",
-      "latestVersion": "v0.30.0",
-      "versionCount": 10,
-      "entryCount": 10
+      "latestVersion": "v0.50.0-beta.1",
+      "versionCount": 11,
+      "entryCount": 11
     },
     "pagination": {
       "component": "pagination",
@@ -488,9 +488,9 @@
     "select": {
       "component": "select",
       "file": "select.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 12,
-      "entryCount": 20
+      "latestVersion": "v0.50.0-beta.1",
+      "versionCount": 13,
+      "entryCount": 22
     },
     "separator": {
       "component": "separator",
@@ -509,9 +509,9 @@
     "skeleton": {
       "component": "skeleton",
       "file": "skeleton.json",
-      "latestVersion": "v0.15.0",
-      "versionCount": 2,
-      "entryCount": 2
+      "latestVersion": "v0.50.0-beta.1",
+      "versionCount": 3,
+      "entryCount": 3
     },
     "slider": {
       "component": "slider",
@@ -537,9 +537,9 @@
     "split-nav": {
       "component": "split-nav",
       "file": "split-nav.json",
-      "latestVersion": "v0.40.0",
-      "versionCount": 3,
-      "entryCount": 8
+      "latestVersion": "v0.50.0-beta.1",
+      "versionCount": 4,
+      "entryCount": 9
     },
     "splitter": {
       "component": "splitter",
@@ -565,23 +565,23 @@
     "table": {
       "component": "table",
       "file": "table.json",
-      "latestVersion": "v0.40.0",
-      "versionCount": 17,
-      "entryCount": 42
+      "latestVersion": "v0.50.0-beta.1",
+      "versionCount": 18,
+      "entryCount": 43
     },
     "tabs": {
       "component": "tabs",
       "file": "tabs.json",
-      "latestVersion": "v0.8.0",
-      "versionCount": 2,
-      "entryCount": 2
+      "latestVersion": "v0.50.0-beta.1",
+      "versionCount": 3,
+      "entryCount": 3
     },
     "tag": {
       "component": "tag",
       "file": "tag.json",
-      "latestVersion": "v0.26.2",
-      "versionCount": 1,
-      "entryCount": 1
+      "latestVersion": "v0.50.0-beta.1",
+      "versionCount": 2,
+      "entryCount": 2
     },
     "tags-input": {
       "component": "tags-input",
@@ -670,9 +670,9 @@
     "tree": {
       "component": "tree",
       "file": "tree.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.50.0-beta.1",
+      "versionCount": 1,
+      "entryCount": 6
     },
     "tree-menu": {
       "component": "tree-menu",

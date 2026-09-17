@@ -1,8 +1,25 @@
 {
   "component": "split-nav",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-09-17T14:01:29.350Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.50.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.1...v0.50.0-beta.1",
+      "date": "2026-09-17",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "split-nav",
+          "summary": "drive the nested tree pane expansion via expandStrategy",
+          "summaryKey": "changelog.generated.v0.50.0-beta.1.08290",
+          "commitHash": "08290",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/08290d19c",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.40.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.31.0...v0.40.0",

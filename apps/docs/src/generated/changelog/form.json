@@ -1,8 +1,85 @@
 {
   "component": "form",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-09-17T14:01:29.350Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.50.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.1...v0.50.0-beta.1",
+      "date": "2026-09-17",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "form",
+          "summary": "collapse form field array content height on row changes",
+          "summaryKey": "changelog.generated.v0.50.0-beta.1.0c763",
+          "commitHash": "0c763",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0c76346bb",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "form",
+          "summary": "extract array-row collapse into useCollapseHeight composable",
+          "summaryKey": "changelog.generated.v0.50.0-beta.1.58fe3",
+          "commitHash": "58fe3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/58fe364f8",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "form",
+          "summary": "replace auto-animate error animation with presence-driven transition",
+          "summaryKey": "changelog.generated.v0.50.0-beta.1.acb5b",
+          "commitHash": "acb5b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/acb5b8cd3",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "form",
+          "summary": "restore height-collapsing error transition",
+          "summaryKey": "changelog.generated.v0.50.0-beta.1.e8fd3",
+          "commitHash": "e8fd3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e8fd3cdf7",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "form",
+          "summary": "replace self-built form engine with @tanstack/vue-form",
+          "summaryKey": "changelog.generated.v0.50.0-beta.1.2568a",
+          "commitHash": "2568a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2568a54f9",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "form",
+          "summary": "rebuild useForm on TanStack-native contracts and dual-source inference",
+          "summaryKey": "changelog.generated.v0.50.0-beta.1.575dc",
+          "commitHash": "575dc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/575dcd27a",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "chore",
+          "scope": "form",
+          "summary": "replace setTimeout with polling for async validation checks",
+          "summaryKey": "changelog.generated.v0.50.0-beta.1.bf551",
+          "commitHash": "bf551",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bf5515afd",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.40.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.31.0...v0.40.0",

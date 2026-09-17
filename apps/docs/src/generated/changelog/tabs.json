@@ -1,8 +1,25 @@
 {
   "component": "tabs",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-09-17T14:01:29.350Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.50.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.1...v0.50.0-beta.1",
+      "date": "2026-09-17",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "tabs",
+          "summary": "add size prop and adjust styles for page tabs",
+          "summaryKey": "changelog.generated.v0.50.0-beta.1.c6aee",
+          "commitHash": "c6aee",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c6aeed0a4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.8.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.7.1...v0.8.0",

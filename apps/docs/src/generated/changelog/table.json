@@ -1,8 +1,25 @@
 {
   "component": "table",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-09-17T14:01:29.350Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.50.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.1...v0.50.0-beta.1",
+      "date": "2026-09-17",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "table",
+          "summary": "rebuild table engine on @tanstack/vue-table",
+          "summaryKey": "changelog.generated.v0.50.0-beta.1.19b7d",
+          "commitHash": "19b7d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/19b7d7315",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.40.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.31.0...v0.40.0",

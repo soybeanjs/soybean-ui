@@ -1,8 +1,35 @@
 {
   "component": "select",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-09-17T14:01:29.350Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.50.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.1...v0.50.0-beta.1",
+      "date": "2026-09-17",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "select",
+          "summary": "stop the popup from closing right after it opens",
+          "summaryKey": "changelog.generated.v0.50.0-beta.1.7d929",
+          "commitHash": "7d929",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7d929e113",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "select",
+          "summary": "honor the outside pointer lock and hand the page back on close",
+          "summaryKey": "changelog.generated.v0.50.0-beta.1.f873c",
+          "commitHash": "f873c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f873cdb52",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.40.0-beta.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.40.0-beta.1",
