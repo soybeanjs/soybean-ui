@@ -872,10 +872,17 @@ describe('SAppShell (e2e)', () => {
   });
 
   describe('breadcrumb', () => {
+    /**
+     * The breadcrumb is mode-scoped: it renders only in the two modes whose
+     * header carries neither the menu nor the brand. `top` mounts the menu tree
+     * there instead, so a crumb scene has to use one of those two modes.
+     */
     it('opens the sibling menu from an ancestor crumb and activates it', async () => {
       const onUpdate = vi.fn();
       const { unmount } = await renderComponent(
-        createHarness({ items, mode: 'top', modelValue: 'projects' }, undefined, { 'onUpdate:modelValue': onUpdate })
+        createHarness({ items, mode: 'sidebar', modelValue: 'projects' }, undefined, {
+          'onUpdate:modelValue': onUpdate
+        })
       );
 
       const trigger = crumbTrigger(0);

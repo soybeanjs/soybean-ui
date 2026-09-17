@@ -64,6 +64,7 @@
     "test:coverage": "vp test run --coverage",
     "test:e2e": "vitest run --config vitest.browser.config.ts",
     "test:e2e:ui": "vitest --ui --config vitest.browser.config.ts",
+    "test:e2e:update": "vitest run --config vitest.browser.config.ts --update",
     "test:e2e:watch": "vitest watch --config vitest.browser.config.ts",
     "test:ui": "vp test --ui",
     "test:watch": "vp test watch",

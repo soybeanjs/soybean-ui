@@ -29,7 +29,28 @@ export default defineConfig({
       enabled: true,
       headless: true,
       provider: playwright(),
-      instances: [{ browser: 'chromium' }]
+      instances: [{ browser: 'chromium' }],
+      expect: {
+        toMatchScreenshot: {
+          /**
+           * Visual-regression baselines are committed, so they must NOT live in the
+           * default `__screenshots__/` folder: the root `.gitignore` ignores that
+           * name wholesale, and it still catches legacy failure-artifact folders
+           * from older Vitest versions. Keeping baselines in `__vrt__/` separates
+           * the two concerns by path instead of by ignore-rule negation.
+           *
+           * This value is a folder name joined relative to each test file's
+           * directory (not to the repo root), so a spec at
+           * `test/browser/specs/components/x.e2e.spec.ts` stores its baselines in
+           * `test/browser/specs/components/__vrt__/x.e2e.spec.ts/`.
+           *
+           * Baselines are suffixed with browser + platform (`-chromium-darwin`),
+           * so a baseline generated on macOS is not reused on Linux CI. Generate
+           * or refresh them with `pnpm test:e2e:update`.
+           */
+          screenshotDirectory: '__vrt__'
+        }
+      }
     }
   }
 });

@@ -186,6 +186,13 @@ const breadcrumbItems = computed<BreadcrumbOptionData[]>(() => {
 
 const currentCrumbValue = computed(() => breadcrumbItems.value.at(-1)?.value);
 
+/**
+ * Breadcrumb visibility is mode-scoped by design: it renders only in the two
+ * modes whose header carries neither the menu nor the brand — `sidebar` and
+ * `dual-vertical`. `top` puts the whole menu tree in the header, and every
+ * split mode puts the brand there; see `appShellSkeletons` in `./shared` for
+ * the per-mode header contents.
+ */
 const showBreadcrumb = computed(
   () =>
     props.breadcrumbVisible &&

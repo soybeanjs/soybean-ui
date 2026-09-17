@@ -119,7 +119,8 @@ A Tier 1 e2e spec for an interactive component should cover, as applicable:
 - Use **`toBeVisible()`** for "is this shown to the user" and **`toBeInTheDocument()`** for "is this in the DOM at all". They answer different questions; pick the right one.
 - Use **`toBeFocused()`** for focus assertions instead of reading `document.activeElement` manually.
 - Assert **observable user-facing outcomes** (trigger text changed, overlay visible, focus moved) rather than internal state.
-- Pass event handlers as `onClick` / `onChange` props (Vue compiles `@click` to `onClick`) and assert with a `vi.fn()` spy — `vitest-browser-vue` does not reliably expose `emitted()` the way `@vue/test-utils` does.
+- Pass event handlers as `onClick` / `onChange` props (Vue compiles `@click` to `onClick`) and assert with a `vi.fn()` spy when you only care that the listener fired.
+- For components that declare `emits`, prefer `emitted()` on the render result: `const { emitted } = await renderComponent(X); expect(emitted('confirmed')).toEqual([['payload']])`. This IS supported — `vitest-browser-vue` 3.1.0 exposes `emitted()` and it was verified working in this repo. Two traps: `render` is **async** in v3, so destructuring `emitted` without `await` yields `undefined` (this is almost certainly the origin of the older "does not reliably expose `emitted()`" note); and `emitted()` also records bubbled native DOM events (`pointerdown`, `click`, …), so assert on a specific event name rather than the whole map.
 
 ### DON'T
 
@@ -130,6 +131,17 @@ A Tier 1 e2e spec for an interactive component should cover, as applicable:
 - Do NOT mock `ResizeObserver`, pointer capture, `scrollIntoView`, or `fetch` here. If you find yourself reaching for those mocks, the test belongs in the happy-dom tier, not here.
 - Do NOT share state across `it()` blocks. Each test renders and unmounts independently; call `unmount()` at the end of each `it()` even though `vitest-browser-vue` auto-cleans, to keep the DOM clean within a single test that renders multiple times.
 - Do NOT write `await nextTick()` chains to wait for render. `expect.element(...)` is retryable; let it wait.
+
+## Visual regression baselines
+
+Visual regression is available via `expect(locator).toMatchScreenshot()`, but it is opt-in and currently unused by the committed suite. Read this before adding the first one.
+
+- **Baselines live in `__vrt__/`, not `__screenshots__/`.** `browser.expect.toMatchScreenshot.screenshotDirectory` is set to `__vrt__` in `vitest.browser.config.ts`. The default `__screenshots__` name is gitignored repo-wide (it still catches legacy failure-artifact folders), so baselines placed there could never be committed. Keeping the two in separate folders separates committed references from disposable artifacts by path rather than by ignore-rule negation.
+- **The configured value is a folder name joined relative to each test file's directory**, not to the repo root. A spec at `test/browser/specs/components/x.e2e.spec.ts` writes to `test/browser/specs/components/__vrt__/x.e2e.spec.ts/`.
+- **Baseline filenames carry browser + platform** (`…-chromium-darwin.png`). A baseline generated on macOS is therefore NOT reused on Linux CI — CI generates its own and fails on the first run unless those baselines are also committed. This is the single biggest operational cost of VRT here; treat it as a deliberate trade, not a bug.
+- **Refresh with `pnpm --filter @soybeanjs/ui test:e2e:update`** (`vitest run --config vitest.browser.config.ts --update`) and review the diff before committing. Deleting or renaming a test leaves a stale baseline behind; clean it up by hand.
+- **Do not reach for VRT for everything.** It answers "did the pixels change", which is the right question for a design-system component's rendered geometry and the wrong question for interaction behavior. Prefer it for stable, presentational surfaces with theme-dependent styling; keep behavior in role-based assertions.
+- **CLI gotcha:** `--update` swallows the following positional argument, so `vitest run --config … --update some-spec` silently runs the WHOLE suite instead of filtering. Update first, then filter, or pass the filter before `--update`.
 
 ## Recommended describe structure
 
@@ -167,6 +179,7 @@ Tier 2 is out of scope for the initial e2e introduction. The Tier 1 suite curren
 ```bash
 pnpm test:e2e                                       # whole browser suite
 pnpm --filter @soybeanjs/ui test:e2e                # same, explicit
+pnpm --filter @soybeanjs/ui test:e2e:update         # refresh VRT baselines + snapshots
 pnpm --filter @soybeanjs/ui test:e2e:watch          # watch mode
 pnpm --filter @soybeanjs/ui test:e2e:ui             # Vitest UI
 # single file:

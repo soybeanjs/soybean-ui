@@ -19,6 +19,9 @@ coverage
 .vitest-attachments/
 .vitest/attachments
 packages/ui/.vitest/attachments
+# Failure screenshots and legacy artifacts — disposable, never committed.
+# Visual-regression baselines are the opposite: they live in `__vrt__/` and MUST
+# be committed (see packages/ui/vitest.browser.config.ts).
 __screenshots__/
 
 # Editor directories and files
