@@ -1,6 +1,6 @@
 import { colord } from '@soybeanjs/colord';
-import { tailwindPalette, simplePalette } from '@soybeanjs/colord/palette';
-import type { PaletteColorLevel, TailwindPaletteKey, TailwindPaletteLevelColorKey } from '@soybeanjs/colord/palette';
+import { parseTailwindColor, simplePalette } from '@soybeanjs/colord/palette';
+import type { PaletteColorLevel, TailwindPaletteLevelColorKey } from '@soybeanjs/colord/palette';
 import { DEFAULT_PRESET_OPTIONS } from './defaults';
 import { getRegistry } from './registry';
 import { THEME_SIZE, THEME_RADIUS } from './tokens';
@@ -55,12 +55,8 @@ export function resolveColorValue(colorValue: ColorValue, format: ColorFormat) {
     return colorValue;
   }
 
-  if (colorValue === 'black') {
-    return simplePalette.black[format];
-  }
-
-  if (colorValue === 'white') {
-    return simplePalette.white[format];
+  if (colorValue === 'black' || colorValue === 'white') {
+    return simplePalette[colorValue][format];
   }
 
   if (isTailwindPaletteLevelColorKey(colorValue)) {
@@ -68,14 +64,17 @@ export function resolveColorValue(colorValue: ColorValue, format: ColorFormat) {
 
     // custom palettes registered via `registerThemePresets` resolve from the
     // runtime registry first; built-in palettes fall back to the colord table.
+    // The own-property check keeps a prototype key such as `zinc.constructor`
+    // out of the registry result, so it reaches the colord table below and
+    // fails there with a descriptive error instead of resolving to `undefined`.
     const custom = getRegistry().base[paletteKey] ?? getRegistry().primary[paletteKey];
-    const customColor = custom?.colors[level];
+    const customColor = custom && Object.hasOwn(custom.colors, level) ? custom.colors[level] : undefined;
 
     if (customColor) {
       return customColor[format];
     }
 
-    return tailwindPalette[paletteKey as TailwindPaletteKey][level][format];
+    return parseTailwindColor(colorValue, format === 'hsl' ? 'hslString' : 'oklchString');
   }
 
   let color: string = colorValue;

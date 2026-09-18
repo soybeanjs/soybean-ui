@@ -1,4 +1,4 @@
-import { COLOR_VARIABLES, EXTENDED_THEME_VARIABLES } from '@soybeanjs/theme';
+import { ALPHA_COLOR_VARIABLES, COLOR_VARIABLES, PALETTE_COLOR_KEYS, paletteColorLevels } from '@soybeanjs/theme';
 import type { ColorFormat, ColorKey } from '@soybeanjs/theme';
 
 /** 'sidebarBorder' → 'sidebar-border'（camelCase token 键转 CSS 风格 kebab 键） */
@@ -21,17 +21,6 @@ function alphaColorRef(variable: string, alphaVariable: string, format: ColorFor
   return format === 'hsl' ? `hsl(var(${variable}) / ${alphaVariable})` : `var(${variable})`;
 }
 
-const ALPHA_VARIABLE_BY_KEY: Partial<Record<ColorKey, string>> = {
-  border: EXTENDED_THEME_VARIABLES.borderAlpha,
-  input: EXTENDED_THEME_VARIABLES.inputAlpha,
-  sidebarBorder: EXTENDED_THEME_VARIABLES.sidebarBorderAlpha
-};
-
-/** 输出 10 级色板的主题色（与 theme css 的 PALETTE_KEYS 对齐） */
-const PALETTE_LEVELS = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950] as const;
-
-const PALETTE_KEYS = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon'] as const;
-
 /**
  * 从 `@soybeanjs/theme` 的 `COLOR_VARIABLES` 派生 UnoCSS theme.colors（kebab-case 键）。
  *
@@ -43,7 +32,7 @@ export function buildThemeColors(format: ColorFormat): Record<string, string> {
 
   for (const key of Object.keys(COLOR_VARIABLES) as ColorKey[]) {
     const variable = COLOR_VARIABLES[key];
-    const alphaVariable = ALPHA_VARIABLE_BY_KEY[key];
+    const alphaVariable = ALPHA_COLOR_VARIABLES[key];
 
     // chart1 → chart-1（与 CSS 变量 `--chart-1` 对齐）
     colors[kebabCase(key).replace(/(\d)$/, '-$1')] = alphaVariable
@@ -51,8 +40,8 @@ export function buildThemeColors(format: ColorFormat): Record<string, string> {
       : colorRef(variable, format);
   }
 
-  for (const paletteKey of PALETTE_KEYS) {
-    for (const level of PALETTE_LEVELS) {
+  for (const paletteKey of PALETTE_COLOR_KEYS) {
+    for (const level of paletteColorLevels) {
       colors[`${paletteKey}-${level}`] = colorRef(`${COLOR_VARIABLES[paletteKey]}-${level}`, format);
     }
   }

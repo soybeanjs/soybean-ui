@@ -1,4 +1,4 @@
-import type { ColorKey, DarkSelector } from './types';
+import type { ColorKey, DarkSelector, ThemeColor } from './types';
 
 export const SIZE_VARIABLE = '--size';
 
@@ -58,6 +58,20 @@ export const COLOR_VARIABLES = {
 } as const satisfies Record<ColorKey, string>;
 
 /**
+ * the theme colors whose 10-level ramp is emitted as `--{key}-{level}`.
+ *
+ * Every other color token carries a single value and has no ramp.
+ */
+export const PALETTE_COLOR_KEYS = [
+  'primary',
+  'destructive',
+  'success',
+  'warning',
+  'info',
+  'carbon'
+] as const satisfies readonly ThemeColor[];
+
+/**
  * derived alpha variables for tokens that carry a translucent alpha channel
  */
 export const EXTENDED_THEME_VARIABLES = {
@@ -65,6 +79,17 @@ export const EXTENDED_THEME_VARIABLES = {
   inputAlpha: '--input-alpha',
   sidebarBorderAlpha: '--sidebar-border-alpha'
 } as const;
+
+/**
+ * the alpha-bearing color tokens, mapped to the derived variable exposing their
+ * alpha channel (see {@link EXTENDED_THEME_VARIABLES}). Tokens absent from this
+ * map have no alpha variable.
+ */
+export const ALPHA_COLOR_VARIABLES: Partial<Record<ColorKey, string>> = {
+  border: EXTENDED_THEME_VARIABLES.borderAlpha,
+  input: EXTENDED_THEME_VARIABLES.inputAlpha,
+  sidebarBorder: EXTENDED_THEME_VARIABLES.sidebarBorderAlpha
+};
 
 /**
  * dark mode selectors

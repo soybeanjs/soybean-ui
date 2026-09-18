@@ -1,5 +1,10 @@
-import { tailwindPalette } from '@soybeanjs/colord/palette';
-import type { PaletteColorLevel, TailwindNeutralPaletteKey, TailwindPaletteKey } from '@soybeanjs/colord/palette';
+import {
+  paletteColorLevels,
+  tailwindChromaticPaletteKeys,
+  tailwindNeutralPaletteKeys,
+  tailwindPalette
+} from '@soybeanjs/colord/palette';
+import type { TailwindPaletteKey } from '@soybeanjs/colord/palette';
 import type {
   BaseColorKey,
   ChartSchemeKey,
@@ -15,65 +20,42 @@ import type {
 } from './types';
 
 /**
- * the built-in neutral palette keys (used for `base`)
+ * whether a palette key belongs to the built-in neutral family
  */
-export const NEUTRAL_FAMILY: readonly PrimaryColorKey[] = [
-  'slate',
-  'mist',
-  'gray',
-  'zinc',
-  'neutral',
-  'stone',
-  'taupe',
-  'olive',
-  'mauve'
-] as const;
-
-/**
- * the built-in chromatic palette keys (used for `primary`)
- */
-export const CHROMATIC_FAMILY: readonly PrimaryColorKey[] = [
-  'red',
-  'orange',
-  'amber',
-  'yellow',
-  'lime',
-  'green',
-  'emerald',
-  'teal',
-  'cyan',
-  'sky',
-  'blue',
-  'indigo',
-  'violet',
-  'purple',
-  'fuchsia',
-  'pink',
-  'rose'
-] as const;
-
-const LEVELS: readonly PaletteColorLevel[] = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
+export function isNeutralFamily(key: string): boolean {
+  return (tailwindNeutralPaletteKeys as readonly string[]).includes(key);
+}
 
 /**
  * extract the hsl/oklch channel strings for every level of a colord palette.
  */
 function toPaletteColors(key: TailwindPaletteKey): ThemePalette['colors'] {
   return Object.fromEntries(
-    LEVELS.map(level => [level, { hsl: tailwindPalette[key][level].hsl, oklch: tailwindPalette[key][level].oklch }])
+    paletteColorLevels.map(level => [
+      level,
+      { hsl: tailwindPalette[key][level].hsl, oklch: tailwindPalette[key][level].oklch }
+    ])
   ) as ThemePalette['colors'];
 }
 
-const buildBasePalette = (key: PrimaryColorKey): ThemePalette => ({
+/**
+ * build a palette entry from a colord palette key. The family comes from which
+ * colord key list the palette was read from, so it is never re-derived.
+ */
+const buildPalette = (key: TailwindPaletteKey, family: ThemePalette['family']): ThemePalette => ({
   name: key,
-  family: 'neutral',
-  colors: toPaletteColors(key as TailwindNeutralPaletteKey)
+  family,
+  colors: toPaletteColors(key)
 });
 
-const buildPrimaryPalette = (key: PrimaryColorKey): ThemePalette => ({
-  name: key,
-  family: (NEUTRAL_FAMILY as readonly string[]).includes(key) ? 'neutral' : 'chromatic',
-  colors: toPaletteColors(key as TailwindPaletteKey)
-});
+/**
+ * the built-in primary palettes as `[key, family]`: the neutral family followed
+ * by the chromatic family, both taken straight from colord.
+ */
+const builtinPrimaryPalettes: ReadonlyArray<readonly [TailwindPaletteKey, ThemePalette['family']]> = [
+  ...tailwindNeutralPaletteKeys.map(key => [key, 'neutral'] as const),
+  ...tailwindChromaticPaletteKeys.map(key => [key, 'chromatic'] as const)
+];
 
 /**
  * the built-in schemes (identical to the previous hard-coded derivation).
@@ -228,9 +210,11 @@ const builtinSchemes = {
 } as const;
 
 const builtinRegistry: ThemePresetRegistry = {
-  base: Object.fromEntries(NEUTRAL_FAMILY.map(key => [key, buildBasePalette(key)])) as ThemePresetRegistry['base'],
+  base: Object.fromEntries(
+    tailwindNeutralPaletteKeys.map(key => [key, buildPalette(key, 'neutral')])
+  ) as ThemePresetRegistry['base'],
   primary: Object.fromEntries(
-    [...NEUTRAL_FAMILY, ...CHROMATIC_FAMILY].map(key => [key, buildPrimaryPalette(key)])
+    builtinPrimaryPalettes.map(([key, family]) => [key, buildPalette(key, family)])
   ) as ThemePresetRegistry['primary'],
   feedback: builtinSchemes.feedback,
   chart: builtinSchemes.chart,

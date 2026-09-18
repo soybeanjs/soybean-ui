@@ -1,8 +1,9 @@
 import { generatePalette } from '@soybeanjs/colord/palette';
 import {
-  resolveColorValue,
+  getDarkSelector,
   isUnTransformedColor,
   removeHslBrackets,
+  resolveColorValue,
   resolveRadiusValue,
   resolveSizeValue
 } from './shared';
@@ -13,18 +14,17 @@ import type {
   ColorKey,
   ColorTokens,
   ColorValue,
-  DarkSelector,
   FullThemePreset,
   StyleTarget,
   ThemeColor
 } from './types';
-import { COLOR_VARIABLES, DARK_SELECTOR, EXTENDED_THEME_VARIABLES, RADIUS_VARIABLE, SIZE_VARIABLE } from './variables';
-
-/**
- * the alpha-bearing tokens whose alpha channel is exposed as a separate
- * variable for runtime opacity tuning
- */
-const ALPHA_KEYS: ReadonlyArray<'border' | 'input' | 'sidebarBorder'> = ['border', 'input', 'sidebarBorder'];
+import {
+  ALPHA_COLOR_VARIABLES,
+  COLOR_VARIABLES,
+  PALETTE_COLOR_KEYS,
+  RADIUS_VARIABLE,
+  SIZE_VARIABLE
+} from './variables';
 
 /**
  * generate the full theme CSS (base tokens + light/dark color tokens) from a
@@ -82,8 +82,7 @@ export function generateColorCss(
   let lightPaletteCss = '';
   let darkPaletteCss = '';
 
-  const keys: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon'];
-  keys.forEach(key => {
+  PALETTE_COLOR_KEYS.forEach(key => {
     const lightValue = generatePaletteItemCss(light[key], key, format);
     const darkValue = generatePaletteItemCss(dark[key], key, format);
 
@@ -95,12 +94,7 @@ export function generateColorCss(
 
   let css = `${styleTarget} {\n${lightCss}\n${lightPaletteCss}\n}`;
 
-  let darkSelector = options.darkSelector;
-  if (darkSelector === 'class' || darkSelector === 'media') {
-    darkSelector = DARK_SELECTOR[darkSelector as DarkSelector];
-  }
-
-  css += `\n\n${darkSelector} {\n${darkCss}\n${darkPaletteCss}\n}`;
+  css += `\n\n${getDarkSelector(options.darkSelector)} {\n${darkCss}\n${darkPaletteCss}\n}`;
 
   return css;
 }
@@ -128,10 +122,10 @@ function getItemColorCss(key: ColorKey, format: ColorFormat, preset: Partial<Col
  * variable for `border`/`input`/`sidebarBorder` so runtime overlays can tune
  * opacity independently of the color channels.
  */
-function getAlphaCss(colorValue: string, format: ColorFormat, key: string, borderOpacity?: number) {
-  const untransformed = isUnTransformedColor(colorValue as ColorValue);
+function getAlphaCss(colorValue: string, format: ColorFormat, key: ColorKey, borderOpacity?: number) {
+  const alphaVariable = ALPHA_COLOR_VARIABLES[key];
 
-  if (untransformed || format === 'oklch' || !ALPHA_KEYS.includes(key as (typeof ALPHA_KEYS)[number])) {
+  if (!alphaVariable || format === 'oklch' || isUnTransformedColor(colorValue as ColorValue)) {
     return {
       color: colorValue,
       alphaCss: ''
@@ -152,23 +146,9 @@ function getAlphaCss(colorValue: string, format: ColorFormat, key: string, borde
   // border family (border / input / sidebar-border). Defaults to 1 (unchanged).
   const effectiveAlpha = (borderOpacity ?? 1) * alpha;
 
-  let alphaCss = '';
-
-  if (key === 'border') {
-    alphaCss = `${EXTENDED_THEME_VARIABLES.borderAlpha}: ${effectiveAlpha};\n`;
-  }
-
-  if (key === 'input') {
-    alphaCss += `${EXTENDED_THEME_VARIABLES.inputAlpha}: ${effectiveAlpha};\n`;
-  }
-
-  if (key === 'sidebarBorder') {
-    alphaCss += `${EXTENDED_THEME_VARIABLES.sidebarBorderAlpha}: ${effectiveAlpha};\n`;
-  }
-
   return {
     color,
-    alphaCss
+    alphaCss: `${alphaVariable}: ${effectiveAlpha};\n`
   };
 }
 

@@ -1,11 +1,11 @@
 import type { PaletteColorLevel } from '@soybeanjs/colord/palette';
 import {
+  chromaticDarkPrimary,
   createBaseCore,
   createChromaticPrimaryCore,
-  createNeutralPrimaryCore,
-  DARK_PRIMARY_600
+  createNeutralPrimaryCore
 } from './core-template';
-import { getRegistry, NEUTRAL_FAMILY } from './registry';
+import { getRegistry, isNeutralFamily } from './registry';
 import {
   DARK_BORDER,
   DARK_CARD,
@@ -116,16 +116,14 @@ export function deriveDarkFromLight(key: ColorKey, light: ColorValue, basePalett
       return light;
     }
 
-    const neutral = (NEUTRAL_FAMILY as readonly string[]).includes(palette);
+    const neutral = isNeutralFamily(palette);
 
     if (key === 'primary') {
       if (neutral && level === '800') {
         return `${palette}.200` as ColorValue;
       }
       if (!neutral && (level === '500' || level === '600')) {
-        return (
-          (DARK_PRIMARY_600 as ReadonlySet<string>).has(palette) ? `${palette}.600` : `${palette}.500`
-        ) as ColorValue;
+        return chromaticDarkPrimary(palette);
       }
       return light;
     }
@@ -236,7 +234,7 @@ function resolvePrimaryFamily(palette: PrimaryColorKey): 'neutral' | 'chromatic'
     return registered.family;
   }
 
-  return (NEUTRAL_FAMILY as readonly string[]).includes(palette) ? 'neutral' : 'chromatic';
+  return isNeutralFamily(palette) ? 'neutral' : 'chromatic';
 }
 
 /**

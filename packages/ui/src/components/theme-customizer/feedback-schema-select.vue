@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { paletteColorLevels } from '@soybeanjs/colord/palette';
 import { getRegistry, resolveColorValue } from '@soybeanjs/theme';
 import type { ColorValue, PaletteColorLevel, FeedbackSchemeKey } from '@soybeanjs/theme';
 import SSelect from '../select/select.vue';
@@ -21,8 +22,6 @@ const currentColors = computed(() => {
   return createColors(light);
 });
 
-const colorLevels: PaletteColorLevel[] = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
-
 const decorateLevels: PaletteColorLevel[] = [];
 
 const allColors = Object.entries(feedbackRegistry)
@@ -39,7 +38,7 @@ function createColors(value: Record<string, ColorValue>) {
   const colors: Partial<Record<PaletteColorLevel, string>> = {};
 
   Object.values(value).forEach((color, index) => {
-    const level = colorLevels[index];
+    const level = paletteColorLevels[index];
     colors[level] = resolveColorValue(color, 'hsl');
 
     if (!decorateLevels.includes(level)) {

@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from 'vue';
-import { generateNearestPalette, generatePalette, tailwindPalette } from '@soybeanjs/colord/palette';
+import {
+  generateNearestPalette,
+  generatePalette,
+  paletteColorLevels,
+  tailwindPalette
+} from '@soybeanjs/colord/palette';
 import type { PaletteColorLevel, SimplePaletteKey, TailwindPaletteKey } from '@soybeanjs/colord/palette';
 import type { ColorValue } from '@soybeanjs/theme';
 import SColorPicker from '../color-picker/color-picker.vue';
@@ -11,7 +16,6 @@ import { useThemeLocale } from '../theme-customizer/locale';
 import STooltip from '../tooltip/tooltip.vue';
 import {
   DEFAULT_LEVEL,
-  PALETTE_LEVELS,
   SIMPLE_KEYS,
   TAILWIND_KEYS,
   deriveNearestLevel,
@@ -125,7 +129,7 @@ const tailwindPaletteLevels = computed<Partial<Record<PaletteColorLevel, string>
     return {};
   }
 
-  return Object.fromEntries(PALETTE_LEVELS.map(level => [level, tailwindPalette[key][level][itemColorKey.value]]));
+  return Object.fromEntries(paletteColorLevels.map(level => [level, tailwindPalette[key][level][itemColorKey.value]]));
 });
 
 // —— 结果推导：提交到 modelValue ——
@@ -323,7 +327,7 @@ watch(
           />
         </div>
         <div v-if="isTailwind" class="mt-1.5 flex items-center gap-1">
-          <STooltip v-for="level in PALETTE_LEVELS" :key="level" :size="size">
+          <STooltip v-for="level in paletteColorLevels" :key="level" :size="size">
             <template #trigger>
               <button
                 type="button"
@@ -357,7 +361,7 @@ watch(
           <SSwitch v-model="recommended" data-palette-recommended-switch :size="size" />
         </div>
         <div class="flex items-center gap-1">
-          <STooltip v-for="level in PALETTE_LEVELS" :key="level" :size="size">
+          <STooltip v-for="level in paletteColorLevels" :key="level" :size="size">
             <template #trigger>
               <button
                 type="button"

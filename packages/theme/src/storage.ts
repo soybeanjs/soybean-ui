@@ -391,7 +391,10 @@ const isPaletteLevelColor = (value: string): boolean => {
 
   const levels = tailwindPalette[key as TailwindPaletteKey];
 
-  return levels != null && level != null && level in levels;
+  // `Object.hasOwn` rather than `in`: every level is an own property, so a
+  // prototype key such as `zinc.constructor` must not validate as a color —
+  // it would be persisted and then break CSS generation downstream.
+  return levels != null && level != null && Object.hasOwn(levels, level);
 };
 
 /**

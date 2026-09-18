@@ -17,7 +17,17 @@ export {
 } from './registry';
 export { generateThemePreset } from './preset';
 export { getDarkSelector, resolveColorValue } from './shared';
-export { SIZE_VARIABLE, RADIUS_VARIABLE, COLOR_VARIABLES, EXTENDED_THEME_VARIABLES } from './variables';
+// re-exported so packages that must not depend on `@soybeanjs/colord` directly
+// (e.g. `@soybeanjs/ui-uno`) can still read the palette ramp levels from one source.
+export { paletteColorLevels } from '@soybeanjs/colord/palette';
+export {
+  SIZE_VARIABLE,
+  RADIUS_VARIABLE,
+  COLOR_VARIABLES,
+  PALETTE_COLOR_KEYS,
+  EXTENDED_THEME_VARIABLES,
+  ALPHA_COLOR_VARIABLES
+} from './variables';
 
 export type {
   HSLColor,

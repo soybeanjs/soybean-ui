@@ -61,12 +61,6 @@ export const LEVEL_FLIP: Record<string, string> = {
 export const WHITE_TO_900_KEYS = new Set(['card', 'popover', 'sidebar']) as ReadonlySet<string>;
 
 /**
- * keys that use the fixed translucent dark border/input colors instead of a
- * palette level.
- */
-export const FIXED_BORDER_KEYS = new Set(['border', 'input', 'sidebarBorder']) as ReadonlySet<string>;
-
-/**
  * level tables for the light/dark surface offsets (§4.2).
  *
  * - `*_SURFACE` / `*_CARD` / `*_WEAK` / `*_MUTED_FG` declare the ordered

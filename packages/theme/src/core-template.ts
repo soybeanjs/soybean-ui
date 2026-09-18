@@ -1,4 +1,3 @@
-import { CHROMATIC_FAMILY, NEUTRAL_FAMILY } from './registry';
 import type { BaseColorKey, ColorValue, PrimaryColorKey } from './types';
 
 /**
@@ -26,13 +25,18 @@ export type BaseCore = {
 /**
  * the primary core keys (§3.1)
  *
- * `primary` + `ring` per palette; charts use the fixed templates below (D7).
+ * `primary` + `ring` per palette; chart colors come from the chart scheme (D7).
  */
 export type PrimaryCore = {
   light: { primary: ColorValue; ring: ColorValue };
   dark: { primary: ColorValue; ring: ColorValue };
 };
 
+/**
+ * the base core template (§3.1): the explicit "core 10 keys" for any palette,
+ * whose structure is identical across the neutral family — the factory only
+ * substitutes the palette prefix.
+ */
 export const createBaseCore = (p: BaseColorKey): BaseCore =>
   ({
     light: {
@@ -61,24 +65,6 @@ export const createBaseCore = (p: BaseColorKey): BaseCore =>
     }
   }) as BaseCore;
 
-/**
- * core templates for the 9 built-in base palettes
- *
- * values are the explicit "core 10 keys" from §3.1; the factory only
- * substitutes the palette prefix (identical structure across neutrals).
- */
-export const builtinBaseCoreTemplate: Record<BaseColorKey, BaseCore> = {
-  slate: createBaseCore('slate'),
-  mist: createBaseCore('mist'),
-  gray: createBaseCore('gray'),
-  zinc: createBaseCore('zinc'),
-  neutral: createBaseCore('neutral'),
-  stone: createBaseCore('stone'),
-  taupe: createBaseCore('taupe'),
-  olive: createBaseCore('olive'),
-  mauve: createBaseCore('mauve')
-};
-
 export const createNeutralPrimaryCore = (p: PrimaryColorKey): PrimaryCore =>
   ({
     light: { primary: `${p}.800`, ring: `${p}.400` },
@@ -94,24 +80,16 @@ export const createNeutralPrimaryCore = (p: PrimaryColorKey): PrimaryCore =>
  */
 const DARK_PRIMARY_600: ReadonlySet<PrimaryColorKey> = new Set(['lime', 'green', 'emerald']);
 
+/**
+ * the dark-mode primary level of a chromatic palette: `{p}.600` for the
+ * light-green family, `{p}.500` otherwise. Single source for the rule shared by
+ * the core template and the dark-token derivation of `primary` overrides.
+ */
+export const chromaticDarkPrimary = (p: PrimaryColorKey): ColorValue =>
+  (DARK_PRIMARY_600.has(p) ? `${p}.600` : `${p}.500`) as ColorValue;
+
 export const createChromaticPrimaryCore = (p: PrimaryColorKey): PrimaryCore =>
   ({
     light: { primary: `${p}.500`, ring: `${p}.400` },
-    dark: { primary: DARK_PRIMARY_600.has(p) ? `${p}.600` : `${p}.500`, ring: `${p}.900` }
+    dark: { primary: chromaticDarkPrimary(p), ring: `${p}.900` }
   }) as PrimaryCore;
-
-/**
- * core templates for the 26 built-in primary palettes
- *
- * neutral family: {p}.800/.200 + ring {p}.400/.500
- * chromatic family: {p}.500 (both modes) + ring {p}.400/.900
- */
-export const builtinPrimaryCoreTemplate = Object.fromEntries(
-  [...NEUTRAL_FAMILY, ...CHROMATIC_FAMILY].map(p => [
-    p,
-    NEUTRAL_FAMILY.includes(p) ? createNeutralPrimaryCore(p) : createChromaticPrimaryCore(p)
-  ])
-) as Record<PrimaryColorKey, PrimaryCore>;
-
-export { DARK_PRIMARY_600 };
-export { NEUTRAL_FAMILY, CHROMATIC_FAMILY, builtinBasePresetKeys, builtinPrimaryPresetKeys } from './registry';
