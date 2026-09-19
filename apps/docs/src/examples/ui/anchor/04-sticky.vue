@@ -19,7 +19,7 @@ const sections = createAnchorSections('sticky-');
           v-for="section in sections"
           :id="section.id"
           :key="section.id"
-          class="min-h-56 rounded-lg border border-border/80 bg-card p-4"
+          class="min-h-56 rounded-lg border border-border/80 bg-surface p-4"
         >
           <h4 class="text-base font-medium">{{ section.title }}</h4>
           <p class="mt-2 text-sm text-muted-foreground">The anchor stays pinned inside the scrolling container.</p>

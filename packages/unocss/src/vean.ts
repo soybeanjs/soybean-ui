@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { Preset } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
-import type { BaseTokens, ThemeOptions } from '@vean/theme';
+import type { ThemeOptions } from '@vean/theme';
 import type { UiUnocssOptions } from './options';
 import { presetUiUnocss } from './preset';
 
@@ -64,7 +64,7 @@ export interface VeanPresetOptions {
  * In a generated `vean.json`, `base`/`primary`/`size`/`radius` live in the
  * `uno` block; the bridge forwards them into this shape.
  */
-interface VeanUnoConfig extends Pick<ThemeOptions, 'base' | 'primary' | 'lightLevel' | 'darkLevel'>, BaseTokens {}
+type VeanUnoConfig = Pick<ThemeOptions, 'base' | 'primary' | 'lightLevel' | 'darkLevel' | 'size' | 'radius'>;
 
 interface VeanConfig {
   style?: string;

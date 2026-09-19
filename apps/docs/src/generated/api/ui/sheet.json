@@ -88,7 +88,7 @@
                 "kind": "typeAlias",
                 "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
                 "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
-                "description": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px",
+                "description": "the component size / density preset.",
                 "descriptionKey": "api.generated.packages_theme_src_types.themesize",
                 "sourcePath": "packages/theme/src/types.ts",
                 "typeParameters": [],

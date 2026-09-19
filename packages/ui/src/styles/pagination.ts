@@ -20,7 +20,7 @@ const paginationAction = cv({
     },
     variant: {
       pure: `data-[vean-pagination-action]:border data-[vean-pagination-action]:border-border data-[vean-pagination-action]:bg-background data-[vean-pagination-action]:text-accent-foreground data-[vean-pagination-action]:hover:bg-accent/60 data-[vean-pagination-action]:active:bg-accent`,
-      solid: `data-[vean-pagination-action]:border-transparent data-[vean-pagination-action]:bg-primary data-[vean-pagination-action]:text-primary-foreground data-[vean-pagination-action]:hover:bg-primary/80 data-[vean-pagination-action]:hover:text-primary-foreground data-[vean-pagination-action]:active:bg-primary-600`,
+      solid: `data-[vean-pagination-action]:border-transparent data-[vean-pagination-action]:bg-primary data-[vean-pagination-action]:text-primary-foreground data-[vean-pagination-action]:hover:bg-primary/80 data-[vean-pagination-action]:hover:text-primary-foreground data-[vean-pagination-action]:active:bg-primary-active`,
       outline: `data-[vean-pagination-action]:border data-[vean-pagination-action]:border-primary data-[vean-pagination-action]:bg-background data-[vean-pagination-action]:text-primary data-[vean-pagination-action]:hover:bg-transparent`,
       soft: `data-[vean-pagination-action]:bg-primary/10 data-[vean-pagination-action]:hover:bg-primary/10 data-[vean-pagination-action]:active:bg-primary/20`
     },
@@ -99,7 +99,7 @@ export const paginationVariants = scv({
         listItem: `data-[selected]:border data-[selected]:border-border data-[selected]:bg-background data-[selected]:text-accent-foreground data-[selected]:hover:bg-accent/60 data-[selected]:active:bg-accent`
       },
       solid: {
-        listItem: `data-[selected]:border-transparent data-[selected]:bg-primary data-[selected]:text-primary-foreground data-[selected]:hover:bg-primary/80 data-[selected]:hover:text-primary-foreground data-[selected]:active:bg-primary-600`
+        listItem: `data-[selected]:border-transparent data-[selected]:bg-primary data-[selected]:text-primary-foreground data-[selected]:hover:bg-primary/80 data-[selected]:hover:text-primary-foreground data-[selected]:active:bg-primary-active`
       },
       outline: {
         listItem: `data-[selected]:border data-[selected]:border-primary data-[selected]:bg-background data-[selected]:text-primary data-[selected]:hover:bg-transparent`

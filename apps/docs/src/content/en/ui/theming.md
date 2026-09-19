@@ -157,7 +157,7 @@ const items = [
     :items="items"
     :ui="{
       root: 'border-2 border-primary',
-      item: 'bg-card hover:bg-accent',
+      item: 'bg-surface hover:bg-accent',
       trigger: 'text-lg font-bold',
       content: 'text-sm text-muted-foreground'
     }"

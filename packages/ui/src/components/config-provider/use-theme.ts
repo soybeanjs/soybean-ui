@@ -1,43 +1,28 @@
-import { computed, onMounted, onUnmounted, reactive, ref, watch } from 'vue';
+import { computed, onUnmounted, reactive, ref, watch } from 'vue';
 import type { ComputedRef, Ref, ShallowRef } from 'vue';
 import { useContext } from '@vean/aria/composables';
+import { DEFAULT_OPTIONS } from '@vean/theme';
 import type {
-  ColorValue,
   DarkSelectorValue,
+  PaletteKey,
   ThemeMode,
   ThemeModePreference,
   ThemeOptions,
   ThemeOverrides,
-  ThemePreset,
   ThemeRadiusValue,
-  ThemeSizeValue,
-  BaseColorKey,
-  PrimaryColorKey
+  ThemeSizeValue
 } from '@vean/theme';
 import { isServerRuntime } from '@vean/theme/ssr';
-import {
-  getStoredThemeConfig,
-  getStoredThemePresets,
-  removeStoredThemePreset,
-  setStoredThemeConfig,
-  setStoredThemePreset
-} from '@vean/theme/storage';
-import type {
-  CustomThemeColorPreset,
-  StoredThemePreset,
-  ThemeConfigState,
-  ThemePresetInput
-} from '@vean/theme/storage';
+import { readThemeEnvelope } from '@vean/theme/storage';
+import type { ThemeEnvelopeInput } from '@vean/theme/storage';
+import type { ThemePresetColors, ThemePresetInput, ThemeSettingsState } from '@/theme';
 import type { ConfigProviderProps } from './types';
 
-const DEFAULT_BASE: BaseColorKey = 'zinc';
-const DEFAULT_PRIMARY: PrimaryColorKey = 'indigo';
-const DEFAULT_RADIUS: ThemeRadiusValue = 'md';
-const DEFAULT_SIZE: ThemeSizeValue = 'md';
+const DEFAULT_BASE: PaletteKey = DEFAULT_OPTIONS.base;
+const DEFAULT_PRIMARY: PaletteKey = DEFAULT_OPTIONS.primary;
+const DEFAULT_RADIUS: ThemeRadiusValue = DEFAULT_OPTIONS.radius;
+const DEFAULT_SIZE: ThemeSizeValue = DEFAULT_OPTIONS.size;
 const DEFAULT_MODE: ThemeModePreference = 'light';
-
-/** the localStorage key carrying the currently applied custom preset name */
-const APPLIED_PRESET_KEY = '__SOYBEAN_THEME_APPLIED_PRESET';
 
 /**
  * The reactive theme context exposed by `SConfigProvider`.
@@ -48,10 +33,10 @@ const APPLIED_PRESET_KEY = '__SOYBEAN_THEME_APPLIED_PRESET';
  * without prop drilling or app-level state stores.
  */
 export interface ThemeContext {
-  /** The base color preset key. */
-  base: ShallowRef<BaseColorKey>;
-  /** The primary color preset key. */
-  primary: ShallowRef<PrimaryColorKey>;
+  /** The base color palette key. */
+  base: ShallowRef<PaletteKey>;
+  /** The primary color palette key. */
+  primary: ShallowRef<PaletteKey>;
   /** The border radius. */
   radius: ShallowRef<ThemeRadiusValue>;
   /** The component size / density. */
@@ -67,7 +52,7 @@ export interface ThemeContext {
   /** Set the color scheme preference. */
   setMode: (value: ThemeModePreference) => void;
   /** The persisted custom theme presets table. */
-  customPresets: Ref<Record<string, StoredThemePreset>>;
+  customPresets: Ref<Record<string, ThemePresetColors>>;
   /** The currently applied custom preset name, if any. */
   appliedPresetName: ShallowRef<string | null>;
   /** Save the current primary color as a custom preset. */
@@ -78,8 +63,8 @@ export interface ThemeContext {
   applyPreset: (name: string) => void;
   /** Clear the applied custom preset. */
   resetPreset: () => void;
-  /** Overwrite the full persistable theme state (base/primary/radius/size/mode/…). */
-  setThemeState: (config: ThemeConfigState) => void;
+  /** Overwrite the full persistable theme state (options + mode). */
+  setThemeState: (config: ThemeSettingsState) => void;
   /** The effective theme merged from the internal state and the `theme` prop. */
   theme: ComputedRef<ThemeOptions>;
 }
@@ -92,17 +77,12 @@ export const useTheme = (consumerName?: string | null, defaultValue?: ThemeConte
 /** The internal theme context held by `SConfigProvider` (adds storage helpers). */
 export type ConfigProviderThemeContext = ThemeContext & {
   /** Overwrite the internal theme state (used by cross-tab sync and `commitThemeConfig`). */
-  setThemeState: (config: ThemeConfigState) => void;
-  /** Re-read the persisted theme config from storage and force a re-derive (cross-tab sync). */
+  setThemeState: (config: ThemeSettingsState) => void;
+  /**
+   * Re-read the persisted envelope (options / mode / presets / applied preset)
+   * from storage and force a re-derive (cross-tab sync).
+   */
   refreshThemeConfig: () => void;
-  /** Re-read the custom presets table from localStorage. */
-  refreshPresetsSnapshot: () => void;
-};
-
-const getStoredPresetColors = (presetName: string): CustomThemeColorPreset | undefined => {
-  const preset = getStoredThemePresets()?.presets[presetName];
-
-  return preset ? { light: preset.light, ...(preset.dark ? { dark: preset.dark } : {}) } : undefined;
 };
 
 /**
@@ -128,50 +108,54 @@ const getDarkClass = (selector: DarkSelectorValue): string | null => {
  * whether a preset input is an inline color preset (mode-split, carries
  * `light`). A reference-only input carries just `name` and no `light`.
  */
-const isInlineColorPreset = (preset: ThemePresetInput | undefined): preset is ThemePreset =>
+const isInlineColorPreset = (preset: ThemePresetInput | undefined): preset is ThemePresetColors =>
   !!preset && 'light' in preset;
 
 /**
  * Create the theme context for a `SConfigProvider` instance.
  *
  * The persistable theme state is initialized once from the persisted source
- * (the injected `themeConfig` on the server, localStorage on the client) and
- * kept in sync on every change, so the theme survives across refreshes and
+ * (the injected `themeConfig` on the server, the theme envelope on the client)
+ * and kept in sync on every change, so the theme survives across refreshes and
  * matches between server and client rendering.
+ *
+ * **Persistence**: the context itself writes nothing — the provider's single
+ * envelope writer (see `useConfigProviderTheme`) watches the derived state and
+ * owns every write to the one storage key.
  */
 export function createThemeContext(props: ConfigProviderProps): ConfigProviderThemeContext {
   const isServer = props.isServer ?? isServerRuntime();
 
   // —— 初始主题状态：persistTheme 关闭时不读任何存储；开启时优先注入的
-  //    themeConfig（SSR），否则客户端从 localStorage 解析。服务端没有
+  //    themeConfig（SSR），否则客户端从主题信封解析。服务端没有
   //    localStorage，首帧由内联脚本（createThemeInitScript）在客户端应用 ——
-  let persisted: ThemeConfigState | null = null;
+  let persisted: ThemeEnvelopeInput | null = null;
 
   if (props.persistTheme) {
     if (props.themeConfig) {
       // 显式注入的 themeConfig（SSR）优先，避免读取 localStorage
       persisted = props.themeConfig;
     } else if (!isServer) {
-      persisted = getStoredThemeConfig();
+      persisted = readThemeEnvelope();
     }
   }
 
-  const themeState = reactive<ThemeConfigState>({
-    ...persisted,
-    base: persisted?.base ?? DEFAULT_BASE,
-    primary: persisted?.primary ?? DEFAULT_PRIMARY,
-    radius: persisted?.radius ?? DEFAULT_RADIUS,
-    size: persisted?.size ?? DEFAULT_SIZE,
+  const themeState = reactive<ThemeSettingsState>({
+    ...persisted?.options,
+    base: persisted?.options?.base ?? DEFAULT_BASE,
+    primary: persisted?.options?.primary ?? DEFAULT_PRIMARY,
+    radius: persisted?.options?.radius ?? DEFAULT_RADIUS,
+    size: persisted?.options?.size ?? DEFAULT_SIZE,
     mode: persisted?.mode ?? DEFAULT_MODE
   });
 
-  const base = computed<BaseColorKey>({
+  const base = computed<PaletteKey>({
     get: () => themeState.base ?? DEFAULT_BASE,
     set: value => {
       themeState.base = value;
     }
   });
-  const primary = computed<PrimaryColorKey>({
+  const primary = computed<PaletteKey>({
     get: () => themeState.primary ?? DEFAULT_PRIMARY,
     set: value => {
       themeState.primary = value;
@@ -221,21 +205,8 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
     mode.value === 'auto' ? (systemDark.value ? 'dark' : 'light') : mode.value
   );
 
-  // —— 持久化：state 变化时写 localStorage，保证刷新后主题一致 ——
-  watch(
-    themeState,
-    value => {
-      if (!props.persistTheme) {
-        return;
-      }
-
-      setStoredThemeConfig(value);
-    },
-    { deep: true }
-  );
-
   // —— 暗色模式 class 同步（首帧前由 createThemeInitScript 应用，此处幂等并负责运行中切换）——
-  // class 名与新的 darkSelector 机制保持一致：'media' 不切换任何 class。
+  // class 名与 darkSelector 机制保持一致：'media' 不切换任何 class。
   //
   // 切换时临时禁用 CSS 过渡（复刻 @vueuse/core useColorMode 的 disableTransition
   // 手法）：注入 `*{transition:none!important}` → 切换 class → 强制 reflow → 移除。
@@ -273,21 +244,17 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
     { immediate: true }
   );
 
-  // —— 缓存失效版本：storage 事件触发后递增，强制主题重派生（createTheme）——
+  // —— 缓存失效版本：storage 事件触发后递增，强制主题重派生 ——
   const cacheVersion = ref(0);
 
-  // —— 自定义 preset ——
-  const customPresets = ref<Record<string, StoredThemePreset>>({});
-  const appliedPresetName = ref<string | null>(
-    typeof document !== 'undefined' ? localStorage.getItem(APPLIED_PRESET_KEY) : null
+  // —— 自定义 preset（随主题信封持久化；persistTheme 关闭时仅内存态）——
+  const customPresets = ref<Record<string, ThemePresetColors>>(
+    (persisted?.presets as Record<string, ThemePresetColors> | undefined) ?? {}
   );
-
-  const refreshPresets = (): void => {
-    customPresets.value = getStoredThemePresets()?.presets ?? {};
-  };
+  const appliedPresetName = ref<string | null>(persisted?.appliedPreset ?? null);
 
   /**
-   * 跨标签页同步：另开标签页写入 stored theme 后，重读并同步到内存状态，
+   * 跨标签页同步：另开标签页写入主题信封后，重读并同步到内存状态，
    * 递增缓存版本强制主题重派生。`themeConfig` 注入（SSR）时不重读 localStorage。
    */
   const refreshThemeConfig = (): void => {
@@ -295,65 +262,44 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
       return;
     }
 
-    const stored = getStoredThemeConfig();
+    const envelope = readThemeEnvelope();
 
-    if (stored) {
-      Object.assign(themeState, stored);
+    if (envelope) {
+      Object.assign(themeState, envelope.options, { mode: envelope.mode ?? themeState.mode });
+      customPresets.value = (envelope.presets as Record<string, ThemePresetColors> | undefined) ?? {};
+      appliedPresetName.value = envelope.appliedPreset ?? null;
     }
 
     cacheVersion.value++;
   };
 
-  onMounted(refreshPresets);
-
-  const setAppliedPreset = (name: string | null): void => {
-    appliedPresetName.value = name;
-
-    if (typeof document === 'undefined') {
-      return;
-    }
-
-    if (name) {
-      localStorage.setItem(APPLIED_PRESET_KEY, name);
-    } else {
-      localStorage.removeItem(APPLIED_PRESET_KEY);
-    }
-  };
-
   const savePreset = (name: string): boolean => {
-    const preset: StoredThemePreset = {
-      name,
-      version: '1.0.0',
-      light: {
-        primary: `${primary.value}.600` as ColorValue,
-        ring: `${primary.value}.500` as ColorValue
-      },
-      dark: {
-        primary: `${primary.value}.400` as ColorValue,
-        ring: `${primary.value}.300` as ColorValue
-      }
+    const preset: ThemePresetColors = {
+      light: { primary: `${primary.value}.600`, ring: `${primary.value}.500` },
+      dark: { primary: `${primary.value}.400`, ring: `${primary.value}.300` }
     };
 
-    const saved = setStoredThemePreset(preset);
+    customPresets.value = { ...customPresets.value, [name]: preset };
+    setAppliedPreset(name);
 
-    if (saved) {
-      refreshPresets();
-    }
-
-    return saved;
+    return true;
   };
 
   const removePreset = (name: string): boolean => {
-    const removed = removeStoredThemePreset(name);
-
-    if (removed) {
-      refreshPresets();
-      if (appliedPresetName.value === name) {
-        setAppliedPreset(null);
-      }
+    if (!(name in customPresets.value)) {
+      return false;
     }
 
-    return removed;
+    const next = { ...customPresets.value };
+
+    delete next[name];
+    customPresets.value = next;
+
+    if (appliedPresetName.value === name) {
+      setAppliedPreset(null);
+    }
+
+    return true;
   };
 
   const applyPreset = (name: string): void => {
@@ -364,8 +310,12 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
     setAppliedPreset(null);
   };
 
+  const setAppliedPreset = (name: string | null): void => {
+    appliedPresetName.value = name;
+  };
+
   // —— 有效主题：显式 theme prop 覆盖内部状态 ——
-  const resolvePreset = (): CustomThemeColorPreset | undefined => {
+  const resolvePreset = (): ThemePresetColors | undefined => {
     const input = props.theme?.preset;
 
     // 内联 mode-split preset（自定义颜色）直接使用，不受 persistTheme 限制
@@ -373,8 +323,8 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
       return input;
     }
 
-    // 具名 preset 引用（{ name }，复用引擎 ThemePreset.name）或当前应用的 preset
-    const presetName = input?.name ?? appliedPresetName.value;
+    // 具名 preset 引用（{ name }）或当前应用的 preset
+    const presetName = (input as { name?: string } | undefined)?.name ?? appliedPresetName.value;
 
     if (!presetName) {
       return undefined;
@@ -384,8 +334,8 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
       return undefined;
     }
 
-    // SSR：走注入的 presetProvider（应用层注册表）；客户端：读本地 presets 表。
-    const preset = isServer ? (props.presetProvider?.(presetName) ?? undefined) : getStoredPresetColors(presetName);
+    // SSR：走注入的 presetProvider（应用层注册表）；客户端：读内存 preset 表。
+    const preset = isServer ? (props.presetProvider?.(presetName) ?? undefined) : customPresets.value[presetName];
 
     if (!preset && isServer) {
       console.warn(`[SConfigProvider] theme preset "${presetName}" not found, falling back to built-in colors.`);
@@ -395,13 +345,13 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
   };
 
   const theme = computed<ThemeOptions>(() => {
-    // 依赖缓存版本：storage 事件置脏后强制重派生（createTheme 重新执行）
+    // 依赖缓存版本：storage 事件置脏后强制重派生（映射表重新解析）
     void cacheVersion.value;
 
     const t = props.theme ?? {};
 
-    // 内联颜色预设（原 preset 内联部分）→ overrides；具名 preset 引用在
-    // resolvePreset 中已解析为颜色。显式 `overrides` 优先于解析出的 preset。
+    // 内联颜色预设 → overrides；具名 preset 引用在 resolvePreset 中已解析为
+    // 颜色。显式 `overrides` 优先于解析出的 preset。
     const colorPreset = resolvePreset();
 
     const overrides: ThemeOverrides | undefined =
@@ -419,19 +369,18 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
       primary: t.primary ?? themeState.primary ?? DEFAULT_PRIMARY,
       feedback: t.feedback ?? themeState.feedback,
       chart: t.chart ?? themeState.chart,
-      sidebar: t.sidebar ?? themeState.sidebar,
-      sidebarDerive: t.sidebarDerive ?? themeState.sidebarDerive,
       overrides,
-      // size/radius 作为顶层 base tokens 传入，与新的 createTheme 签名保持一致：
-      // 来源为持久化状态 → size prop。
+      // size/radius 作为顶层选项传入：来源为持久化状态 → size prop。
       size: t.size ?? themeState.size ?? props.size ?? DEFAULT_SIZE,
       radius: t.radius ?? themeState.radius ?? DEFAULT_RADIUS,
       format: t.format ?? themeState.format,
       lightLevel: t.lightLevel ?? themeState.lightLevel,
       darkLevel: t.darkLevel ?? themeState.darkLevel,
+      surfaceStyle: t.surfaceStyle ?? themeState.surfaceStyle,
+      contrast: t.contrast ?? themeState.contrast,
       borderOpacity: t.borderOpacity ?? themeState.borderOpacity,
-      styleTarget: t.styleTarget,
-      darkSelector: t.darkSelector
+      styleTarget: t.styleTarget ?? themeState.styleTarget,
+      darkSelector: t.darkSelector ?? themeState.darkSelector
     };
   });
 
@@ -458,10 +407,9 @@ export function createThemeContext(props: ConfigProviderProps): ConfigProviderTh
     applyPreset,
     resetPreset,
     theme,
-    setThemeState: (config: ThemeConfigState) => {
+    setThemeState: (config: ThemeSettingsState) => {
       Object.assign(themeState, config);
     },
-    refreshThemeConfig,
-    refreshPresetsSnapshot: refreshPresets
+    refreshThemeConfig
   };
 }

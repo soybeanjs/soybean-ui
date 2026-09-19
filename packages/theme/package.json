@@ -1,7 +1,7 @@
 {
   "name": "@vean/theme",
   "version": "0.50.0-beta.1",
-  "description": "A lightweight theme engine for Vean: minimal core tokens, deterministic derivation, and light/dark level offsets.",
+  "description": "The Vean theme engine: static palette layer + semantic alias layer, ladder shift, and an engine-level contrast guard.",
   "homepage": "https://github.com/soybeanjs/vean",
   "bugs": {
     "url": "https://github.com/soybeanjs/vean/issues"
@@ -38,13 +38,15 @@
       "types": "./dist/ssr.d.ts",
       "import": "./dist/ssr.js",
       "require": "./dist/ssr.js"
-    }
+    },
+    "./palette.css": "./dist/palette.css"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "build": "vp pack",
+    "build": "vp pack && pnpm build:palette",
+    "build:palette": "tsx scripts/emit-palette.mts",
     "test": "vp test",
     "typecheck": "tsc --noEmit --skipLibCheck"
   },
@@ -53,6 +55,7 @@
   },
   "devDependencies": {
     "happy-dom": "^20.14.5",
+    "tsx": "^4.23.13",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
     "vitest": "5.0.1"

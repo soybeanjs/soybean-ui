@@ -8,7 +8,7 @@ const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'i
 
 <template>
   <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-    <div v-for="color in colors" :key="color" class="rounded-lg border border-border bg-card p-4">
+    <div v-for="color in colors" :key="color" class="rounded-lg border border-border bg-surface p-4">
       <p class="mb-3 text-sm font-medium capitalize">{{ color }}</p>
       <SAnchor :items="anchorItems" :color="color" model-value="#overview" :sticky="false" />
     </div>

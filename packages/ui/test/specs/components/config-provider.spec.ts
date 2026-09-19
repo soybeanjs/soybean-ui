@@ -1,22 +1,21 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
-import { createTheme } from '@vean/theme';
-import { THEME_INIT_STYLE_ID } from '@vean/theme/ssr';
-import { THEME_CSS_STORAGE_KEY, THEME_STORAGE_KEY, getStoredThemeConfig } from '@vean/theme/storage';
+import { resolveThemeMap } from '@vean/theme';
+import { THEME_STORAGE_KEY, readThemeEnvelope } from '@vean/theme/storage';
 import SAccordion from '@/components/accordion/accordion.vue';
 import SConfigProvider from '@/components/config-provider/config-provider.vue';
 import SIcon from '@/components/icon/icon.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
-// 部分 mock 主题引擎：保留真实实现，仅包装 createTheme / getStoredThemeConfig
+// 部分 mock 主题引擎：保留真实实现，仅包装 resolveThemeMap / readThemeEnvelope
 // 以便断言派生与存储读取的次数。
 vi.mock('@vean/theme', async importOriginal => {
   const actual = await importOriginal<typeof import('@vean/theme')>();
 
   return {
     ...actual,
-    createTheme: vi.fn(actual.createTheme)
+    resolveThemeMap: vi.fn(actual.resolveThemeMap)
   };
 });
 
@@ -25,7 +24,7 @@ vi.mock('@vean/theme/storage', async importOriginal => {
 
   return {
     ...actual,
-    getStoredThemeConfig: vi.fn(actual.getStoredThemeConfig)
+    readThemeEnvelope: vi.fn(actual.readThemeEnvelope)
   };
 });
 
@@ -37,13 +36,11 @@ function getStyleEl(id: string): HTMLStyleElement | null {
 
 describe('SConfigProvider', () => {
   afterEach(() => {
-    // useStyleTag (headless utilities) leaves style elements in <head>; the
-    // inline theme <style> is removed with the component tree on unmount. Clear
-    // leftovers between tests so assertions are not polluted by prior mounts.
-    getStyleEl('__Vean_theme')?.remove();
+    // the runtime theme <style> lives in <head> by design, so it is cleared
+    // between tests to keep assertions independent of earlier mounts.
+    getStyleEl('#vean-theme')?.remove();
     getStyleEl('__Vean Aria_Styles')?.remove();
     getStyleEl('__Vean_toastStyle')?.remove();
-    getStyleEl(THEME_INIT_STYLE_ID)?.remove();
   });
 
   describe('rendering', () => {
@@ -73,34 +70,41 @@ describe('SConfigProvider', () => {
   });
 
   describe('theme injection', () => {
-    it('renders inline theme CSS variables', () => {
+    it('owns a single runtime style element in <head>', () => {
+      document.head.querySelectorAll('#vean-theme').forEach(node => node.remove());
+
       const wrapper = mount(SConfigProvider, {
         props: { theme: { base: 'gray', primary: 'violet' } },
         slots: { default: '<div />' },
         attachTo: document.body
       });
 
-      const styleEl = getStyleEl('__Vean_theme');
+      // 运行时元素挂在 head、且只有一个（不渲染进组件树）
+      const styleEl = document.head.querySelector('#vean-theme');
       expect(styleEl).toBeTruthy();
       expect(styleEl!.textContent).toContain('--');
+      expect(styleEl!.textContent).toContain('--vean-background');
+      expect(wrapper.html()).not.toContain('<style');
 
       wrapper.unmount();
     });
 
-    it('updates theme CSS when theme prop changes', async () => {
+    it('updates the runtime style element when the theme prop changes', async () => {
       const wrapper = mount(SConfigProvider, {
         props: { theme: { base: 'gray', primary: 'violet' } },
         slots: { default: '<div />' },
         attachTo: document.body
       });
 
-      const firstCss = getStyleEl('__Vean_theme')?.textContent ?? '';
+      const firstCss = document.head.querySelector('#vean-theme')?.textContent ?? '';
 
       await wrapper.setProps({ theme: { base: 'slate', primary: 'blue' } });
 
-      const secondCss = getStyleEl('__Vean_theme')?.textContent ?? '';
+      const secondCss = document.head.querySelector('#vean-theme')?.textContent ?? '';
       expect(secondCss).toBeTruthy();
       expect(secondCss).not.toBe(firstCss);
+      // 仍是同一个元素（就地更新，不新增）
+      expect(document.head.querySelectorAll('#vean-theme').length).toBe(1);
 
       wrapper.unmount();
     });
@@ -227,12 +231,12 @@ describe('SConfigProvider', () => {
   });
 
   describe('theme persistence', () => {
-    const createThemeMock = vi.mocked(createTheme);
-    const getStoredThemeConfigMock = vi.mocked(getStoredThemeConfig);
+    const resolveThemeMapMock = vi.mocked(resolveThemeMap);
+    const readThemeEnvelopeMock = vi.mocked(readThemeEnvelope);
 
     beforeEach(() => {
-      createThemeMock.mockClear();
-      getStoredThemeConfigMock.mockClear();
+      resolveThemeMapMock.mockClear();
+      readThemeEnvelopeMock.mockClear();
       window.localStorage.clear();
     });
 
@@ -243,12 +247,12 @@ describe('SConfigProvider', () => {
         attachTo: document.body
       });
 
-      expect(createThemeMock).toHaveBeenCalledTimes(1);
+      expect(resolveThemeMapMock).toHaveBeenCalledTimes(1);
 
       // 无关 prop 变化触发重渲染，但不重新派生主题（内存缓存命中）
       await wrapper.setProps({ dir: 'rtl' });
 
-      expect(createThemeMock).toHaveBeenCalledTimes(1);
+      expect(resolveThemeMapMock).toHaveBeenCalledTimes(1);
 
       wrapper.unmount();
     });
@@ -260,11 +264,11 @@ describe('SConfigProvider', () => {
         attachTo: document.body
       });
 
-      expect(createThemeMock).toHaveBeenCalledTimes(1);
+      expect(resolveThemeMapMock).toHaveBeenCalledTimes(1);
 
       await wrapper.setProps({ theme: { base: 'slate' } });
 
-      expect(createThemeMock).toHaveBeenCalledTimes(2);
+      expect(resolveThemeMapMock).toHaveBeenCalledTimes(2);
 
       wrapper.unmount();
     });
@@ -276,14 +280,14 @@ describe('SConfigProvider', () => {
         attachTo: document.body
       });
 
-      expect(createThemeMock).toHaveBeenCalledTimes(1);
+      expect(resolveThemeMapMock).toHaveBeenCalledTimes(1);
 
       // 跨标签页写入：storage 事件置脏缓存，下一渲染重读存储并重新派生
       window.dispatchEvent(new StorageEvent('storage', { key: THEME_STORAGE_KEY }));
 
       await nextTick();
 
-      expect(createThemeMock).toHaveBeenCalledTimes(2);
+      expect(resolveThemeMapMock).toHaveBeenCalledTimes(2);
 
       wrapper.unmount();
     });
@@ -293,31 +297,30 @@ describe('SConfigProvider', () => {
         props: {
           persistTheme: true,
           theme: { base: 'gray' },
-          themeConfig: { base: 'slate', format: 'oklch' }
+          themeConfig: { options: { base: 'slate', format: 'oklch' } }
         },
         slots: { default: '<div />' },
         attachTo: document.body
       });
 
       // 显式 base 优先（gray）；themeConfig 的 format 补位（oklch）
-      const lastTheme = createThemeMock.mock.calls.at(-1)?.[0];
+      const lastTheme = resolveThemeMapMock.mock.calls.at(-1)?.[0];
       expect(lastTheme?.base).toBe('gray');
       expect(lastTheme?.format).toBe('oklch');
 
       // themeConfig 注入时无需读取 localStorage
-      expect(getStoredThemeConfigMock).not.toHaveBeenCalled();
+      expect(readThemeEnvelopeMock).not.toHaveBeenCalled();
 
       wrapper.unmount();
     });
 
     it('prefers an inline preset over a stored { name } reference', () => {
       window.localStorage.setItem(
-        'vean-theme-presets',
+        THEME_STORAGE_KEY,
         JSON.stringify({
-          version: 1,
-          presets: {
-            stored: { name: 'stored', version: '1.0.0', light: { primary: 'red.600' } }
-          }
+          v: 1,
+          options: {},
+          presets: { stored: { light: { primary: 'red.600' } } }
         })
       );
 
@@ -331,7 +334,7 @@ describe('SConfigProvider', () => {
       });
 
       // 内联 preset 直接使用，解析为 overrides；base tokens 取默认值回落到顶层字段
-      expect(createThemeMock.mock.calls.at(-1)?.[0]).toMatchObject({
+      expect(resolveThemeMapMock.mock.calls.at(-1)?.[0]).toMatchObject({
         base: 'zinc',
         primary: 'indigo',
         size: 'md',
@@ -358,8 +361,8 @@ describe('SConfigProvider', () => {
 
       expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('preset "missing" not found'));
 
-      // 回退内置：仍生成主题 CSS
-      expect(getStyleEl('__Vean_theme')?.textContent).toContain('--');
+      // 回退内置：仍生成主题 CSS（运行时元素在 head）
+      expect(document.head.querySelector('#vean-theme')?.textContent).toContain('--');
 
       warnSpy.mockRestore();
       wrapper.unmount();
@@ -370,42 +373,24 @@ describe('SConfigProvider', () => {
         props: {
           persistTheme: false,
           theme: { base: 'gray' },
-          themeConfig: { base: 'slate', format: 'oklch' }
+          themeConfig: { options: { base: 'slate', format: 'oklch' } }
         },
         slots: { default: '<div />' },
         attachTo: document.body
       });
 
-      const lastTheme = createThemeMock.mock.calls.at(-1)?.[0];
+      const lastTheme = resolveThemeMapMock.mock.calls.at(-1)?.[0];
       expect(lastTheme?.base).toBe('gray');
       expect(lastTheme?.format).toBeUndefined();
 
       // 持久化管道短路：不读取任何存储
-      expect(getStoredThemeConfigMock).not.toHaveBeenCalled();
+      expect(readThemeEnvelopeMock).not.toHaveBeenCalled();
 
       wrapper.unmount();
     });
 
-    it('persists the generated CSS snapshot for the pre-paint init script', () => {
-      const wrapper = mount(SConfigProvider, {
-        props: { persistTheme: true, theme: { base: 'gray' } },
-        slots: { default: '<div />' },
-        attachTo: document.body
-      });
-
-      const snapshot = window.localStorage.getItem(THEME_CSS_STORAGE_KEY);
-
-      expect(snapshot).toContain('--');
-      expect(snapshot).toBe(getStyleEl('__Vean_theme')?.textContent);
-
-      wrapper.unmount();
-    });
-
-    it('removes the pre-paint init style once the reactive theme style is applied', () => {
-      const initStyle = document.createElement('style');
-      initStyle.id = THEME_INIT_STYLE_ID;
-      initStyle.textContent = ':root { --primary: red !important; }';
-      document.head.appendChild(initStyle);
+    it('persists the derived payload in the theme envelope for the pre-paint script', async () => {
+      window.localStorage.removeItem(THEME_STORAGE_KEY);
 
       const wrapper = mount(SConfigProvider, {
         props: { persistTheme: true, theme: { base: 'gray' } },
@@ -413,9 +398,36 @@ describe('SConfigProvider', () => {
         attachTo: document.body
       });
 
-      expect(getStyleEl(THEME_INIT_STYLE_ID)).toBeNull();
+      // 单键 + 防抖：立即读为空，flush 后才有内容
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      const envelope = readThemeEnvelope();
+
+      expect(envelope?.options.base).toBe('gray');
+      expect(envelope?.style).toContain('--vean-background');
+      expect(window.localStorage.getItem(THEME_STORAGE_KEY)).toContain('"v":1');
 
       wrapper.unmount();
+    });
+
+    it('never creates a second runtime style element', () => {
+      document.head.querySelectorAll('#vean-theme').forEach(node => node.remove());
+
+      const first = mount(SConfigProvider, {
+        props: { persistTheme: true, theme: { base: 'gray' } },
+        slots: { default: '<div />' },
+        attachTo: document.body
+      });
+      const second = mount(SConfigProvider, {
+        props: { persistTheme: true, theme: { base: 'slate' } },
+        slots: { default: '<div />' },
+        attachTo: document.body
+      });
+
+      expect(document.head.querySelectorAll('#vean-theme').length).toBe(1);
+
+      first.unmount();
+      second.unmount();
     });
   });
 });

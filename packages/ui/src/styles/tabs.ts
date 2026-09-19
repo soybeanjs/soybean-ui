@@ -12,7 +12,7 @@ export const tabsVariants = scv({
       `disabled:cursor-not-allowed disabled:opacity-50`
     ],
     indicator: `absolute top-0 start-0 z-2 transition-[width,height,transform] duration-300`,
-    indicatorContent: `w-full h-full bg-background shadow`,
+    indicatorContent: `w-full h-full bg-surface shadow`,
     content: `flex-grow self-stretch transition-all-150 outline-none focus-visible:ring-3  focus-visible:ring-offset-background focus-visible:ring-primary/30`
   },
   variants: {

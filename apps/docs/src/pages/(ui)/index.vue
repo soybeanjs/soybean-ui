@@ -234,7 +234,7 @@ const featuredGroups = computed(() =>
     <div class="relative z-10 mx-auto flex max-w-screen-2xl flex-col gap-8">
       <section class="relative overflow-hidden px-6 py-8 sm:px-8 sm:py-10 xl:px-10">
         <div
-          class="absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_top_right,hsl(var(--primary-400)/0.12),transparent_28%),radial-gradient(circle_at_bottom_left,hsl(var(--primary-700)/0.07),transparent_26%)]"
+          class="absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_top_right,hsl(var(--vean-primary-400)/0.12),transparent_28%),radial-gradient(circle_at_bottom_left,hsl(var(--vean-primary-700)/0.07),transparent_26%)]"
         />
 
         <div class="relative grid gap-8 xl:grid-cols-[minmax(0,1.2fr)_22rem] xl:items-start">

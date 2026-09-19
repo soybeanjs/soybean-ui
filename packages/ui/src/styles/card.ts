@@ -3,7 +3,7 @@ import { scv } from '@soybeanjs/cva';
 
 export const cardVariants = scv({
   slots: {
-    root: 'flex flex-col items-stretch rounded-md border bg-card text-card-foreground shadow-sm',
+    root: 'flex flex-col items-stretch rounded-md border bg-surface text-foreground shadow-sm',
     header: 'flex items-center justify-between flex-wrap',
     content: [
       'grow transition will-change-auto outline-none data-[state=closed]:p-0',

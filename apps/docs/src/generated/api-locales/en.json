@@ -10060,30 +10060,19 @@
         "baseprops": ""
       },
       "packages_theme_src_storage": {
-        "customthemecolorpreset": "a custom theme color preset (light/dark color token overrides)",
-        "themeconfigstate": {
+        "themeenvelopeinput": {
           "members": {
-            "base": "the base color preset key",
-            "borderopacity": "the border opacity override (0 - 1)",
-            "chart": "the chart (data) semantic scheme key",
-            "darklevel": "dark mode brightening offset",
-            "feedback": "the feedback (status) semantic scheme key",
-            "format": "color output format",
-            "lightlevel": "light mode darkening offset",
-            "mode": "the color scheme preference (`light` / `dark` / `auto`)\n\n`'auto'` follows the OS `prefers-color-scheme`. The effective mode is\napplied as a class on `<html>` (default `'dark'`).",
-            "overrides": "inline color token overrides persisted alongside the config so a theme that\ndiffers only in `overrides` is still reconstructable during SSR.",
-            "primary": "the primary color preset key",
-            "radius": "the border radius",
-            "sidebar": "the sidebar skin semantic scheme key",
-            "sidebarderive": "whether to apply a separate sidebar skin from the `sidebar` scheme.",
-            "size": "the component size / density"
+            "appliedpreset": "the name of the currently applied custom preset, if any.",
+            "mode": "the light / dark / auto preference.",
+            "options": "the engine options.",
+            "presets": "custom theme presets (the theme customizer's saved color schemes).",
+            "style": "the style payload applied by the first-paint script (`#vean-theme`).\n\nThe snapshot is what removes the theme flash on refresh: the head script\napplies it before any stylesheet is parsed, then the runtime provider\npatches the same element in place."
           }
         }
       },
       "packages_theme_src_types": {
-        "colorformat": "Color format",
-        "themecolor": "Theme color",
-        "themesize": "the theme size key\n\nControls the root font-size, scaling all rem-based values proportionally.\n\n- xs: 12px\n- sm: 14px\n- md: 16px\n- lg: 18px\n- xl: 20px\n- 2xl: 24px"
+        "colorformat": "the color output format.",
+        "themesize": "the component size / density preset."
       },
       "packages_ui_src_components_accordion_types": {
         "accordionemits": {
@@ -11518,12 +11507,12 @@
             "locale": "The global locale of your application. This will be inherited by all components.",
             "messages": "Overrides for built-in component locale messages. Merged on top of the locale selected by the\n`locale` prop, so you only need to supply the keys you want to change.",
             "nonce": "The global `nonce` value of your application. This will be inherited by the related components.",
-            "persisttheme": "Whether to enable persisted theme reading from localStorage / cookie.\n\nWhen disabled (default), the ConfigProvider only consumes the explicit\n`theme` prop and never reads any storage, keeping the current behavior.\nWhen enabled, the persisted theme config fills in keys not explicitly\nprovided by `theme`.",
-            "presetprovider": "The server-side custom theme preset registry resolver.\n\nMaps a stored preset name to its definition so SSR can render custom\npresets without localStorage access. Only used when `persistTheme` is\nenabled on the server; on the client the presets table is the source of\ntruth.",
+            "persisttheme": "Whether to enable persisted theme reading from localStorage.\n\nWhen disabled (default), the ConfigProvider only consumes the explicit\n`theme` prop and never reads or writes any storage, keeping the current\nbehavior. When enabled, the persisted theme envelope fills in keys not\nexplicitly provided by `theme`, and changes are written back through a\nsingle debounced writer.",
+            "presetprovider": "The server-side custom theme preset registry resolver.\n\nMaps a stored preset name to its definition so SSR can render custom\npresets without localStorage access. Only used when `persistTheme` is\nenabled on the server; on the client the presets table (carried by the\ntheme envelope) is the source of truth.",
             "progress": "The global top progress configuration of your application.",
             "size": "The size options.",
             "theme": "The theme options.",
-            "themeconfig": "The persisted theme config injected from the server.\n\nUsed during SSR to render the same theme the client persisted; on the\nclient the localStorage is the source of truth.",
+            "themeconfig": "The persisted theme envelope injected from the server.\n\nUsed during SSR to render the same theme the client persisted; on the\nclient the localStorage envelope is the source of truth.",
             "toast": "The global toast configuration of your application. This will be inherited by the related components.",
             "tooltip": "The global tooltip configuration of your application. This will be inherited by the related components."
           },
@@ -11531,22 +11520,24 @@
         },
         "configproviderthemeoptions": {
           "members": {
-            "base": "the base color palette key",
-            "borderopacity": "the border (border / input / sidebar-border) opacity multiplier.\n\nScales the alpha channel of the border-family tokens, driving the\n`--border-alpha` / `--input-alpha` / `--sidebar-border-alpha` variables\n(effective alpha = token alpha × borderOpacity). Defaults to `1`, so the\ntoken's own alpha is preserved.",
-            "chart": "the chart (data) semantic scheme key",
-            "darklevel": "dark mode surface brightening offset",
-            "darkselector": "dark mode selector\n\n- class: \".dark\"\n- media: \"@media (prefers-color-scheme: dark)\"\n- custom: custom dark mode selector, e.g. \".custom-dark\"",
-            "feedback": "the feedback (status) semantic scheme key",
-            "format": "color output format\n\n- hsl: \"h s l [/ alpha]\", e.g. \"0 0% 100% / 0.1\"\n- oklch: \"oklch(l c h [/ alpha])\", e.g. \"oklch(0 0 0 / 0.1)\"",
-            "lightlevel": "light mode surface darkening offset",
-            "overrides": "inline color token overrides applied on top of the derived tokens",
-            "preset": "A custom color preset: either an inline mode-split override (light/dark\npartial tokens) or a `{ name }` reference to a stored preset. Resolved to\n`overrides` before `createTheme`.",
-            "primary": "the primary color palette key",
-            "radius": "the border radius",
-            "sidebar": "the sidebar skin semantic scheme key",
-            "sidebarderive": "whether to apply a separate sidebar skin from the `sidebar` scheme.\n\nWhen `false`, the sidebar tokens are not derived and fall back to the base\n`background`/`foreground`/`border` tokens (no dedicated sidebar skin).",
-            "size": "the component size / density",
-            "styletarget": "the style target"
+            "base": "the neutral palette (9 built-ins).",
+            "borderopacity": "multiplies the decorative border alpha (0 – 1).",
+            "chart": "the data visualisation scheme.",
+            "contrast": "",
+            "darklevel": "the dark-mode surface lift knob.",
+            "darkselector": "",
+            "feedback": "the status color scheme.",
+            "format": "the palette layer format.",
+            "lightlevel": "the light-mode surface tint knob.",
+            "overrides": "inline token overrides, applied last.",
+            "prefix": "",
+            "preset": "A custom color preset: either an inline mode-split override (light/dark\npartial tokens) or a `{ name }` reference to a stored preset. Resolved to\n`overrides` before the engine resolves the map.",
+            "primary": "the brand palette (any of the 26 built-ins).",
+            "radius": "the radius seed.",
+            "size": "the root font-size preset or length (the density zoom).",
+            "solidvars": "",
+            "styletarget": "",
+            "surfacestyle": ""
           }
         },
         "iconifyoptions": {
@@ -14719,6 +14710,10 @@
       },
       "packages_ui_src_styles_toggle_group": {
         "togglegroupvariant": ""
+      },
+      "packages_ui_src_theme_types": {
+        "themecolor": "the component `color` prop vocabulary — the v2 role families a component can\npaint with (fills, statuses, carbon). Maps 1:1 onto the style recipes.",
+        "themepresetcolors": "the color payload of a custom theme preset: light/dark token overrides in the\nengine's own vocabulary (`primary: 'indigo.600'`, complete colors, …)."
       }
     }
   }

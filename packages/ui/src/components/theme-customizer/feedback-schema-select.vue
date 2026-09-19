@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { paletteColorLevels } from '@soybeanjs/colord/palette';
-import { getRegistry, resolveColorValue } from '@vean/theme';
-import type { ColorValue, PaletteColorLevel, FeedbackSchemeKey } from '@vean/theme';
+import { FEEDBACK_SCHEMES, PALETTE_LEVELS, resolveColorRef } from '@vean/theme';
+import type { FeedbackScheme, FeedbackSchemeKey, PaletteLevel } from '@vean/theme';
 import SSelect from '../select/select.vue';
 import type { SelectOptionData } from '../select/types';
 import ColorDecorator from './color-decorator.vue';
@@ -14,43 +13,33 @@ const palette = defineModel<FeedbackSchemeKey>({
 
 const { resolveOption } = useThemeCustomizerLocale();
 
-const feedbackRegistry = getRegistry().feedback;
+const schemes = FEEDBACK_SCHEMES as Record<string, FeedbackScheme>;
 
-const currentColors = computed(() => {
-  const { light } = feedbackRegistry[palette.value];
-
-  return createColors(light);
-});
-
-const decorateLevels: PaletteColorLevel[] = [];
-
-const allColors = Object.entries(feedbackRegistry)
-  .map(([key, value]) => ({
-    key,
-    colors: createColors(value.light)
-  }))
-  .reduce(
-    (prev, cur) => ({ ...prev, [cur.key]: cur.colors }),
-    {} as Record<FeedbackSchemeKey, Record<PaletteColorLevel, string>>
-  );
-
-function createColors(value: Record<string, ColorValue>) {
-  const colors: Partial<Record<PaletteColorLevel, string>> = {};
+/** map a scheme's status colors onto palette levels for the swatch decorator. */
+function createColors(value: Record<string, string>) {
+  const colors: Partial<Record<PaletteLevel, string>> = {};
 
   Object.values(value).forEach((color, index) => {
-    const level = paletteColorLevels[index];
-    colors[level] = resolveColorValue(color, 'hsl');
+    const level = PALETTE_LEVELS[index];
 
-    if (!decorateLevels.includes(level)) {
-      decorateLevels.push(level);
+    if (level !== undefined) {
+      colors[level] = resolveColorRef(color, 'hsl');
     }
   });
 
   return colors;
 }
 
+const decorateLevels = Object.keys(schemes.classic.light).map((_, index) => PALETTE_LEVELS[index]);
+
+const currentColors = computed(() => createColors(schemes[palette.value]?.light ?? {}));
+
+const allColors = Object.fromEntries(
+  Object.entries(schemes).map(([key, scheme]) => [key, createColors(scheme.light)])
+) as Record<FeedbackSchemeKey, Partial<Record<PaletteLevel, string>>>;
+
 const items = computed<SelectOptionData<FeedbackSchemeKey>[]>(() =>
-  Object.keys(feedbackRegistry).map(key => ({
+  Object.keys(schemes).map(key => ({
     label: resolveOption('feedback', key),
     value: key
   }))

@@ -13,8 +13,8 @@ import type { UiUnocssOptions } from '../src/options';
  *
  * The self preset (`vean-uno`) carries the theme layer as a preflight
  * whose `getCSS()` returns the (unminified) CSS string produced by
- * `createTheme` (base tokens + light/dark color tokens). The preset does not
- * minify on purpose — the final bundle is minified at build time.
+ * `buildThemePreflight` (palette layer + light/dark token blocks). The preset
+ * does not minify on purpose — the final bundle is minified at build time.
  */
 function getThemeCss(presets: Preset<Theme>[]): string {
   const self = presets.find(p => p.name === 'vean-uno');
@@ -33,14 +33,14 @@ describe('presetUiUnocss', () => {
 
   it('applies size/radius base tokens to the generated theme CSS', () => {
     const css = getThemeCss(presetUiUnocss({ uiCSS: true, size: 'lg', radius: 'sm' }));
-    expect(css).toContain('--size: 18px');
-    expect(css).toContain('--radius: 0.5rem');
+    expect(css).toContain('--vean-size: 18px');
+    expect(css).toContain('--vean-radius: 0.5rem');
   });
 
   it('falls back to the engine defaults when no base tokens are given', () => {
     const css = getThemeCss(presetUiUnocss({ uiCSS: true }));
-    expect(css).toContain('--size: 16px');
-    expect(css).toContain('--radius: 0.625rem');
+    expect(css).toContain('--vean-size: 16px');
+    expect(css).toContain('--vean-radius: 0.625rem');
   });
 
   it('floors the field font size on coarse pointers so iOS does not zoom on focus', () => {
@@ -104,7 +104,8 @@ describe('presetScrollbar', () => {
 
   it('resolves thumb/track colors from the theme with the variant pseudo elements', async () => {
     const css = await generateCss(['scrollbar-thumb-color-primary', 'scrollbar-track-op-50']);
-    expect(css).toContain('--vean-scrollbar-thumb:hsl(var(--primary)');
+    // 迁移期：共享名（primary 等）已指向 v2 通道变量，故此处读 `--vean-primary`（P3）
+    expect(css).toContain('--vean-scrollbar-thumb:hsl(var(--vean-primary)');
     expect(css).toContain('--vean-scrollbar-track-opacity:0.5');
   });
 
@@ -171,8 +172,8 @@ describe('presetVean', () => {
     });
 
     const css = getThemeCss(presetVean({ cwd: dir }));
-    expect(css).toContain('--size: 18px');
-    expect(css).toContain('--radius: 0.5rem');
+    expect(css).toContain('--vean-size: 18px');
+    expect(css).toContain('--vean-radius: 0.5rem');
 
     fs.rmSync(dir, { recursive: true, force: true });
   });
@@ -180,8 +181,8 @@ describe('presetVean', () => {
   it('falls back to the default theme when vean.json is missing', () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'vean-empty-'));
     const css = getThemeCss(presetVean({ cwd: dir }));
-    expect(css).toContain('--size: 16px');
-    expect(css).toContain('--radius: 0.625rem');
+    expect(css).toContain('--vean-size: 16px');
+    expect(css).toContain('--vean-radius: 0.625rem');
     fs.rmSync(dir, { recursive: true, force: true });
   });
 
@@ -189,8 +190,8 @@ describe('presetVean', () => {
     const dir = withConfig({ uno: { base: 'zinc', primary: 'indigo', size: 'sm', radius: 'md' } });
 
     const css = getThemeCss(presetVean({ cwd: dir, overrides: { size: 'xl' } }));
-    expect(css).toContain('--size: 20px');
-    expect(css).toContain('--radius: 0.625rem');
+    expect(css).toContain('--vean-size: 20px');
+    expect(css).toContain('--vean-radius: 0.625rem');
 
     fs.rmSync(dir, { recursive: true, force: true });
   });

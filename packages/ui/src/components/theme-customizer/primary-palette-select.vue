@@ -1,31 +1,35 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { PaletteColorLevel } from '@soybeanjs/colord/palette';
-import { getRegistry } from '@vean/theme';
-import type { PrimaryColorKey } from '@vean/theme';
+import { PALETTE_KEYS, PALETTE_LEVELS, paletteColor } from '@vean/theme';
+import type { PaletteLevel, PaletteKey } from '@vean/theme';
 import SSelect from '../select/select.vue';
 import type { SelectOptionData } from '../select/types';
 import ColorDecorator from './color-decorator.vue';
 import { useThemeCustomizerLocale } from './use-locale';
 
 interface Props {
-  decorateLevels?: PaletteColorLevel[];
+  decorateLevels?: PaletteLevel[];
 }
 
 defineProps<Props>();
 
 const { resolveOption } = useThemeCustomizerLocale();
 
-const palette = defineModel<PrimaryColorKey>({
+const palette = defineModel<PaletteKey>({
   required: true
 });
 
-const primaryRegistry = getRegistry().primary;
+/** the palette swatch colors, resolved from the engine's own palette data. */
+const swatchOf = (key: PaletteKey): Record<PaletteLevel, string> =>
+  Object.fromEntries(PALETTE_LEVELS.map(level => [level, paletteColor(key, level, 'hsl') ?? ''])) as Record<
+    PaletteLevel,
+    string
+  >;
 
-const currentColors = computed(() => primaryRegistry[palette.value].colors);
+const currentColors = computed(() => swatchOf(palette.value));
 
-const items = computed<SelectOptionData<PrimaryColorKey>[]>(() =>
-  Object.keys(primaryRegistry).map(key => ({
+const items = computed<SelectOptionData<PaletteKey>[]>(() =>
+  PALETTE_KEYS.map(key => ({
     label: resolveOption('palette', key),
     value: key
   }))
@@ -38,7 +42,7 @@ const items = computed<SelectOptionData<PrimaryColorKey>[]>(() =>
       <ColorDecorator :colors="currentColors" :levels="decorateLevels" />
     </template>
     <template #item-leading="{ item }">
-      <ColorDecorator :colors="primaryRegistry[item.value].colors" :levels="decorateLevels" />
+      <ColorDecorator :colors="swatchOf(item.value)" :levels="decorateLevels" />
     </template>
   </SSelect>
 </template>

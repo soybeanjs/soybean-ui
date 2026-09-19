@@ -31,7 +31,7 @@ export const comboboxVariants = scv({
     cancel: 'shrink-0',
     positioner: '',
     popup: [
-      'relative z-50 min-w-32 w-[--vean-combobox-trigger-width]',
+      'relative z-base min-w-32 w-[--vean-combobox-trigger-width]',
       overlaySurface,
       overlayShadow,
       ...overlayMotion

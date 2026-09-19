@@ -21,7 +21,7 @@ export const buttonVariants = cv({
       accent: `focus-visible:ring-accent-foreground/20`
     },
     variant: {
-      solid: `bg-primary text-primary-foreground data-[normal]:hover:bg-primary/80 data-[normal]:active:bg-primary-600`,
+      solid: `bg-primary text-primary-foreground data-[normal]:hover:bg-primary/80 data-[normal]:active:bg-primary-active`,
       pure: 'border border-border bg-background text-accent-foreground data-[normal]:hover:bg-accent/60 data-[normal]:active:bg-accent',
       plain: 'border border-border bg-background text-foreground',
       outline: 'border bg-background',
@@ -59,27 +59,27 @@ export const buttonVariants = cv({
     {
       color: 'destructive',
       variant: 'solid',
-      class: `bg-destructive text-destructive-foreground data-[normal]:hover:bg-destructive/80 data-[normal]:active:bg-destructive-600`
+      class: `bg-destructive text-destructive-foreground data-[normal]:hover:bg-destructive/80 data-[normal]:active:bg-destructive-active`
     },
     {
       color: 'success',
       variant: 'solid',
-      class: `bg-success text-success-foreground data-[normal]:hover:bg-success/80 data-[normal]:active:bg-success-600`
+      class: `bg-success text-success-foreground data-[normal]:hover:bg-success/80 data-[normal]:active:bg-success-active`
     },
     {
       color: 'warning',
       variant: 'solid',
-      class: `bg-warning text-warning-foreground data-[normal]:hover:bg-warning/80 data-[normal]:active:bg-warning-600`
+      class: `bg-warning text-warning-foreground data-[normal]:hover:bg-warning/80 data-[normal]:active:bg-warning-active`
     },
     {
       color: 'info',
       variant: 'solid',
-      class: `bg-info text-info-foreground data-[normal]:hover:bg-info/80 data-[normal]:active:bg-info-600`
+      class: `bg-info text-info-foreground data-[normal]:hover:bg-info/80 data-[normal]:active:bg-info-active`
     },
     {
       color: 'carbon',
       variant: 'solid',
-      class: `bg-carbon text-carbon-foreground data-[normal]:hover:bg-carbon/80 data-[normal]:active:bg-carbon-600`
+      class: `bg-carbon text-carbon-foreground data-[normal]:hover:bg-carbon/80 data-[normal]:active:bg-carbon-active`
     },
     {
       color: 'secondary',

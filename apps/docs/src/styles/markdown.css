@@ -65,8 +65,8 @@
 
   code:not(pre code) {
     --uno: 'rounded-xl border px-2.5 py-1 font-semibold text-primary';
-    background: color-mix(in srgb, hsl(var(--primary) / 0.1) 72%, var(--docs-chip-bg));
-    border-color: color-mix(in srgb, hsl(var(--primary) / 0.16) 70%, transparent);
+    background: color-mix(in srgb, hsl(var(--vean-primary) / 0.1) 72%, var(--docs-chip-bg));
+    border-color: color-mix(in srgb, hsl(var(--vean-primary) / 0.16) 70%, transparent);
   }
 
   pre {
@@ -107,8 +107,8 @@
 
   blockquote {
     --uno: 'my-6 rounded-4 border px-5 py-4';
-    background: color-mix(in srgb, hsl(var(--primary) / 0.08) 68%, var(--docs-panel-bg));
-    border-color: color-mix(in srgb, hsl(var(--primary) / 0.2) 64%, transparent);
+    background: color-mix(in srgb, hsl(var(--vean-primary) / 0.08) 68%, var(--docs-panel-bg));
+    border-color: color-mix(in srgb, hsl(var(--vean-primary) / 0.2) 64%, transparent);
     box-shadow: var(--docs-panel-shadow), var(--docs-panel-inset);
 
     * {
@@ -169,8 +169,8 @@
 
   .code-btn {
     --uno: 'inline-flex items-center rounded-full border px-3 py-1 font-mono text-xs font-semibold text-primary text-center text-nowrap';
-    background: color-mix(in srgb, hsl(var(--primary) / 0.09) 72%, var(--docs-chip-bg));
-    border-color: color-mix(in srgb, hsl(var(--primary) / 0.18) 64%, transparent);
+    background: color-mix(in srgb, hsl(var(--vean-primary) / 0.09) 72%, var(--docs-chip-bg));
+    border-color: color-mix(in srgb, hsl(var(--vean-primary) / 0.18) 64%, transparent);
   }
 
   .code-btn-outline {

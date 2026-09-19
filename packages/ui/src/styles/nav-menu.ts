@@ -5,7 +5,7 @@ import { overlayArrow, overlayEnter, overlayLeave, overlaySurface } from './_ove
 export const navMenuVariants = scv({
   slots: {
     root: `group`,
-    viewport: [overlaySurface, 'z-50 shadow-lg will-change-transform', overlayEnter, overlayLeave],
+    viewport: [overlaySurface, 'z-base shadow-lg will-change-transform', overlayEnter, overlayLeave],
     content: `w-auto`,
     list: [
       `group grow flex items-center justify-center my-0 list-none`,
@@ -41,7 +41,7 @@ export const navMenuVariants = scv({
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     subTriggerIcon: 'ms-auto shrink-0',
-    subContent: ['min-w-8rem', overlaySurface, 'z-50 shadow-lg will-change-transform', overlayEnter],
+    subContent: ['min-w-8rem', overlaySurface, 'z-base shadow-lg will-change-transform', overlayEnter],
     linkIcon: 'shrink-0 self-start text-muted-foreground rtl:rotate-270',
     subLinkContent: `grow flex flex-col items-start`,
     subLinkLabel: `font-medium leading-none`,

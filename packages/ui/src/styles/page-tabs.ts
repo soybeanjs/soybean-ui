@@ -22,11 +22,11 @@ export const pageTabsVariants = scv({
     pin: 'outline-none',
     chromeBgLeft: [
       `absolute end-full bottom-0 fill-transparent size-0.5714em`, // 8/14 = 0.5714
-      `group-hover/item:fill-accent group-data-[selected=true]/item:fill-primary-50 dark:group-data-[selected=true]/item:fill-accent group-data-[selected=true]/item:z-2`
+      `group-hover/item:fill-accent group-data-[selected=true]/item:fill-primary/15 dark:group-data-[selected=true]/item:fill-accent group-data-[selected=true]/item:z-2`
     ],
     chromeBgRight: [
       `absolute start-full bottom-0 fill-transparent size-0.5714em`, // 8/14 = 0.5714
-      `group-hover/item:fill-accent group-data-[selected=true]/item:fill-primary-50 dark:group-data-[selected=true]/item:fill-accent group-data-[selected=true]/item:z-2`
+      `group-hover/item:fill-accent group-data-[selected=true]/item:fill-primary/15 dark:group-data-[selected=true]/item:fill-accent group-data-[selected=true]/item:z-2`
     ],
     sliderIndicator: `absolute bottom-0 start-0 w-full h-0.5 group-data-[selected=true]/item:bg-primary`
   },

@@ -4,7 +4,7 @@ import { buttonVariants } from './button';
 
 export const backtopVariants = cv({
   extend: [buttonVariants],
-  base: 'fixed z-50',
+  base: 'fixed z-base',
   variants: {
     size: {
       xs: 'bottom-4 end-4',

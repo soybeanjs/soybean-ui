@@ -29,7 +29,7 @@ if (!guide.value) {
       class="relative overflow-hidden px-6 py-7 border border-border/50 dark:border-border rounded-xl sm:px-8 sm:py-9 xl:px-10"
     >
       <div
-        class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary-400)/0.12),transparent_30%),radial-gradient(circle_at_bottom_left,hsl(var(--primary-700)/0.07),transparent_28%)]"
+        class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--vean-primary-400)/0.12),transparent_30%),radial-gradient(circle_at_bottom_left,hsl(var(--vean-primary-700)/0.07),transparent_28%)]"
       />
 
       <div class="relative space-y-4">

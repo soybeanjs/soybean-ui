@@ -11,15 +11,10 @@ import type { ColorFormat, ColorValue } from '@vean/theme';
 import type { PaletteSelectValue } from './types';
 
 /**
- * the simple palette keys.
+ * the simple palette keys — taken from colord's own table (same order), so the
+ * picker and the color library can never disagree about the set.
  */
-export const SIMPLE_KEYS: readonly SimplePaletteKey[] = [
-  'inherit',
-  'current',
-  'transparent',
-  'black',
-  'white'
-] as const;
+export const SIMPLE_KEYS = Object.keys(simplePalette) as readonly SimplePaletteKey[];
 
 /**
  * the tailwind palette keys.

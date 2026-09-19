@@ -1,5 +1,5 @@
 import * as v from 'valibot';
-import { themeSizeKeys, themeRadiusKeys, builtinBasePresetKeys, builtinPrimaryPresetKeys } from '@vean/theme';
+import { NEUTRAL_PALETTES, PALETTE_KEYS, themeSizeKeys, themeRadiusKeys } from '@vean/theme';
 
 // ---------------------------------------------------------------------------
 // Vean config (vean.json) — the user-facing project config
@@ -9,9 +9,9 @@ export const PRESET_ICON_LIBRARIES = ['lucide', 'material-symbols', 'ph', 'table
 
 export const PRESET_RADII = themeRadiusKeys;
 
-export const PRESET_BASE_COLORS = builtinBasePresetKeys;
+export const PRESET_BASE_COLORS = NEUTRAL_PALETTES;
 
-export const PRESET_PRIMARY_COLORS = builtinPrimaryPresetKeys;
+export const PRESET_PRIMARY_COLORS = PALETTE_KEYS;
 
 export const PRESET_SIZES = themeSizeKeys;
 

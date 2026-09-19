@@ -4,7 +4,7 @@ import { SScrollArea } from '@vean/ui';
 
 <template>
   <SScrollArea
-    class="h-48 rounded-xl border border-primary/30 bg-card"
+    class="h-48 rounded-xl border border-primary/30 bg-surface"
     :ui="{
       viewport: 'rounded-xl',
       scrollbar: 'data-[orientation=vertical]:w-3 data-[orientation=horizontal]:h-3',

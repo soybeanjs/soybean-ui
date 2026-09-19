@@ -4,7 +4,7 @@ import { computed } from 'vue';
 type PrimaryTone = 'primary' | '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | '950';
 
 function resolvePrimaryTone(tone: PrimaryTone, alpha: number) {
-  const variable = tone === 'primary' ? '--primary' : `--primary-${tone}`;
+  const variable = tone === 'primary' ? '--vean-primary' : `--vean-primary-${tone}`;
 
   return `hsl(var(${variable}) / ${alpha})`;
 }

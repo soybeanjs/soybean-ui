@@ -1,123 +1,76 @@
-import { colord } from '@soybeanjs/colord';
-import { parseTailwindColor, simplePalette } from '@soybeanjs/colord/palette';
-import type { PaletteColorLevel, TailwindPaletteLevelColorKey } from '@soybeanjs/colord/palette';
-import { DEFAULT_PRESET_OPTIONS } from './defaults';
-import { getRegistry } from './registry';
-import { THEME_SIZE, THEME_RADIUS } from './tokens';
-import type { ColorFormat, ColorValue, DarkSelector, DarkSelectorValue } from './types';
-import { DARK_SELECTOR } from './variables';
+import { THEME_RADIUS, THEME_SIZE, DARK_SELECTOR } from './defaults';
+import type { DarkSelectorValue, PaletteLevel, PaletteLevelRef, ThemeRadiusValue, ThemeSizeValue } from './types';
 
 /**
- * resolve a raw dark selector into the CSS rule it produces.
+ * Small pure helpers shared by the engine: base-token resolution, dark selector
+ * resolution and override parsing.
+ */
+
+/** resolve a size token into a CSS length. */
+export function resolveSizeValue(size: ThemeSizeValue | undefined, fallback: ThemeSizeValue = 'md'): string {
+  const value = size ?? fallback;
+
+  if (value in THEME_SIZE) {
+    return `${THEME_SIZE[value as keyof typeof THEME_SIZE]}px`;
+  }
+
+  return value;
+}
+
+/** resolve a radius token into a CSS length seed. */
+export function resolveRadiusValue(radius: ThemeRadiusValue | undefined, fallback: ThemeRadiusValue = 'md'): string {
+  const value = radius ?? fallback;
+
+  if (value in THEME_RADIUS) {
+    return THEME_RADIUS[value as keyof typeof THEME_RADIUS];
+  }
+
+  return value;
+}
+
+/**
+ * resolve a dark selector value into the CSS rule it produces.
  *
- * - 'class' → '.dark'
- * - 'media' → '@media (prefers-color-scheme: dark)'
- * - any other string is a custom selector used verbatim, e.g. '.custom-dark'
+ * - `class` → `.dark`
+ * - `media` → `@media (prefers-color-scheme: dark)`
+ * - anything else is used verbatim (e.g. `[data-theme="dark"]`)
  */
-export function getDarkSelector(darkSelector: DarkSelectorValue) {
-  if (darkSelector === 'class' || darkSelector === 'media') {
-    return DARK_SELECTOR[darkSelector as DarkSelector];
+export function getDarkSelector(value: DarkSelectorValue): string {
+  if (value === 'class' || value === 'media') {
+    return DARK_SELECTOR[value as 'class' | 'media'];
   }
 
-  return darkSelector;
+  return value;
 }
 
 /**
- * a color that is not expressed as an hsl()/oklch() string is a token
- * reference (a simple palette key or a tailwind `palette.level` key).
+ * resolve a dark selector into the **class name** the runtime should toggle.
+ *
+ * - `class` (the keyword) → `dark`
+ * - `media` → `null` (the media query follows the OS; toggling a class would be
+ *   a no-op at best and could misfire other `.dark` rules at worst)
+ * - any other selector is used verbatim with the leading dot stripped
  */
-export function isTailwindPaletteLevelColorKey(color: ColorValue): color is TailwindPaletteLevelColorKey {
-  return !color.startsWith('hsl(') && !color.startsWith('oklch(');
+export function darkClassName(selector: DarkSelectorValue): string | null {
+  if (selector === 'media') {
+    return null;
+  }
+
+  if (selector === 'class') {
+    return 'dark';
+  }
+
+  return selector.replace(/^\./, '');
 }
 
-/**
- * strip the `hsl(...)` wrapper so the value can be referenced as a bare
- * space-separated channel triple inside other hsl() composites.
- */
-export function removeHslBrackets(color: string) {
-  return color.replace(/hsl\(/g, '').replace(/\)/g, '');
+/** whether a string is a `palette.level` reference. */
+export function isPaletteLevelRef(value: string): value is PaletteLevelRef {
+  const [palette, level] = value.split('.');
+
+  return Boolean(palette && level) && /^\d+$/.test(level as string);
 }
 
-/**
- * special CSS-wide keywords that must pass through unchanged
- */
-export const isUnTransformedColor = (color: ColorValue) => {
-  return ['inherit', 'currentColor', 'transparent'].includes(color);
-};
-
-/**
- * resolve a `ColorValue` token into a normalized color string in the target
- * `format`. Palette references are looked up from the colord tables; literal
- * hsl()/oklch() strings are converted across formats as needed.
- */
-export function resolveColorValue(colorValue: ColorValue, format: ColorFormat) {
-  if (isUnTransformedColor(colorValue)) {
-    return colorValue;
-  }
-
-  if (colorValue === 'black' || colorValue === 'white') {
-    return simplePalette[colorValue][format];
-  }
-
-  if (isTailwindPaletteLevelColorKey(colorValue)) {
-    const [paletteKey, level] = colorValue.split('.') as [string, PaletteColorLevel];
-
-    // custom palettes registered via `registerThemePresets` resolve from the
-    // runtime registry first; built-in palettes fall back to the colord table.
-    // The own-property check keeps a prototype key such as `zinc.constructor`
-    // out of the registry result, so it reaches the colord table below and
-    // fails there with a descriptive error instead of resolving to `undefined`.
-    const custom = getRegistry().base[paletteKey] ?? getRegistry().primary[paletteKey];
-    const customColor = custom && Object.hasOwn(custom.colors, level) ? custom.colors[level] : undefined;
-
-    if (customColor) {
-      return customColor[format];
-    }
-
-    return parseTailwindColor(colorValue, format === 'hsl' ? 'hslString' : 'oklchString');
-  }
-
-  let color: string = colorValue;
-
-  if (format === 'hsl' && colorValue.startsWith('oklch(')) {
-    color = colord(colorValue).toHslString();
-  }
-
-  if (format === 'oklch' && colorValue.startsWith('hsl(')) {
-    color = colord(colorValue).toOklchString();
-  }
-
-  return color;
-}
-
-/**
- * resolve a size token into a CSS length. Named keys map to a fixed root
- * font-size; raw `px`/`rem` values pass through unchanged.
- */
-export function resolveSizeValue(size?: string) {
-  if (!size) {
-    return `${THEME_SIZE[DEFAULT_PRESET_OPTIONS.size]}px`;
-  }
-
-  if (Object.keys(THEME_SIZE).includes(size)) {
-    return `${THEME_SIZE[size as keyof typeof THEME_SIZE]}px`;
-  }
-
-  return size;
-}
-
-/**
- * resolve a radius token into a CSS length. Named keys map to a fixed value;
- * raw `px`/`rem` values pass through unchanged.
- */
-export function resolveRadiusValue(radius?: string): string {
-  if (!radius) {
-    return THEME_RADIUS[DEFAULT_PRESET_OPTIONS.radius];
-  }
-
-  if (Object.keys(THEME_RADIUS).includes(radius)) {
-    return THEME_RADIUS[radius as keyof typeof THEME_RADIUS];
-  }
-
-  return radius;
+/** the numeric level of a `palette.level` reference. */
+export function levelOf(ref: PaletteLevelRef): PaletteLevel {
+  return Number(ref.split('.')[1]) as PaletteLevel;
 }

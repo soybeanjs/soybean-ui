@@ -1,210 +1,185 @@
-import { colord } from '@soybeanjs/colord';
-import { tailwindPalette } from '@soybeanjs/colord/palette';
-import type { TailwindPaletteKey } from '@soybeanjs/colord/palette';
-import {
-  isBaseKey as isRegistryBaseKey,
-  isChartScheme as isRegistryChartScheme,
-  isFeedbackScheme as isRegistryFeedbackScheme,
-  isPrimaryKey as isRegistryPrimaryKey,
-  isSidebarScheme as isRegistrySidebarScheme
-} from './registry';
+import { PALETTE_KEYS, isPaletteKey } from './palette';
 import type {
-  BaseColorKey,
-  ChartSchemeKey,
-  ColorTokens,
-  ColorValue,
-  FeedbackSchemeKey,
-  PrimaryColorKey,
-  SidebarSchemeKey,
+  ContrastPolicy,
+  PaletteKey,
+  SemanticToken,
+  SurfaceStyle,
   ThemeModePreference,
-  ThemeRadiusValue,
-  ThemeSizeValue,
-  ThemePreset,
-  ColorFormat,
-  LightLevelOffset,
-  DarkLevelOffset,
+  ThemeOptions,
   ThemeOverrides
 } from './types';
-import { COLOR_VARIABLES } from './variables';
 
 /**
- * a custom theme color preset (light/dark color token overrides)
- */
-export type CustomThemeColorPreset = {
-  light: Partial<ColorTokens>;
-  dark?: Partial<ColorTokens>;
-};
-
-/**
- * theme preset input: reuses the engine's `ThemePreset`, so a name-carrying
- * preset is a first-class citizen instead of a parallel `{ presetName }` type.
+ * Persistence (docs/theme.md §9.3).
  *
- * - an inline color preset is a full `ThemePreset` (`light` present);
- * - a reference to a stored preset is a `ThemePreset` carrying only `name`.
+ * One key, one envelope, one writer:
  *
- * Consumers distinguish the two by checking whether `light` is present. The
- * same `name` field aligns with `ThemePreset` / `FullThemePreset` / stored
- * preset entries.
- */
-export type ThemePresetInput = ThemePreset | Pick<ThemePreset, 'name'>;
-
-/**
- * a persisted custom theme preset entry
- */
-export interface StoredThemePreset extends CustomThemeColorPreset {
-  /**
-   * the preset unique name (also the storage object key)
-   */
-  name: string;
-  /**
-   * the preset data version (semver, used for display and update decisions)
-   */
-  version: string;
-}
-
-/**
- * the persisted custom theme presets table
- */
-export interface StoredThemePresets {
-  /**
-   * the storage schema version
-   *
-   * @defaultValue 1
-   */
-  version: number;
-  presets: Record<string, StoredThemePreset>;
-}
-
-/**
- * the persistable theme config state
+ * - **one key** (`__VEAN_THEME`) removes the cross-key races the first
+ *   generation had (four keys, three writers, a cross-tab listener that watched
+ *   only two of them);
+ * - **one envelope** carries the validated options, the light/dark preference and
+ *   the style snapshot the first-paint script applies;
+ * - **one debounced writer** owns every write, so dragging a knob cannot produce
+ *   a write per frame.
  *
- * a subset of `ThemeOptions` that can be safely stored in localStorage, plus
- * the `mode` preference used to toggle the dark mode class before first paint.
- * Custom `preset` colors are intentionally not persisted.
+ * Everything here is SSR-safe: reads/writes are no-ops without `localStorage`,
+ * and every access is wrapped in `try/catch` because blocked storage throws on
+ * *access* (Firefox third-party contexts), not just on write.
  */
-export interface ThemeConfigState {
-  /**
-   * the base color preset key
-   */
-  base?: BaseColorKey;
-  /**
-   * the primary color preset key
-   */
-  primary?: PrimaryColorKey;
-  /**
-   * the feedback (status) semantic scheme key
-   */
-  feedback?: FeedbackSchemeKey;
-  /**
-   * the chart (data) semantic scheme key
-   */
-  chart?: ChartSchemeKey;
-  /**
-   * the sidebar skin semantic scheme key
-   */
-  sidebar?: SidebarSchemeKey;
-  /**
-   * whether to apply a separate sidebar skin from the `sidebar` scheme.
-   *
-   * @default true
-   */
-  sidebarDerive?: boolean;
-  /**
-   * the component size / density
-   */
-  size?: ThemeSizeValue;
-  /**
-   * the border radius
-   */
-  radius?: ThemeRadiusValue;
-  /**
-   * the color scheme preference (`light` / `dark` / `auto`)
-   *
-   * `'auto'` follows the OS `prefers-color-scheme`. The effective mode is
-   * applied as a class on `<html>` (default `'dark'`).
-   */
+
+/** the single storage key. */
+export const THEME_STORAGE_KEY = '__VEAN_THEME';
+
+/** the current envelope schema version. */
+export const THEME_ENVELOPE_VERSION = 1;
+
+/** the style element id the first-paint script patches in place. */
+export const THEME_STYLE_ID = 'vean-theme';
+
+/**
+ * an upper bound for the style snapshot: a runaway value must not fill the
+ * user's storage (the alias block is ~6 KB; during the migration the payload also
+ * carries the first-generation block, hence the headroom).
+ */
+const MAX_STYLE_LENGTH = 64 * 1024;
+
+/** the persisted envelope. */
+export interface ThemeEnvelope {
+  /** the schema version. */
+  v: number;
+  /** the engine options. */
+  options: ThemeOptions;
+  /** the light / dark / auto preference. */
   mode?: ThemeModePreference;
   /**
-   * color output format
+   * the style payload applied by the first-paint script (`#vean-theme`).
    *
-   * @default 'hsl'
+   * The snapshot is what removes the theme flash on refresh: the head script
+   * applies it before any stylesheet is parsed, then the runtime provider
+   * patches the same element in place.
    */
-  format?: ColorFormat;
-  /**
-   * light mode darkening offset
-   *
-   * @default 0
-   */
-  lightLevel?: LightLevelOffset;
-  /**
-   * dark mode brightening offset
-   *
-   * @default 0
-   */
-  darkLevel?: DarkLevelOffset;
-  /**
-   * the border opacity override (0 - 1)
-   */
-  borderOpacity?: number;
-  /**
-   * inline color token overrides persisted alongside the config so a theme that
-   * differs only in `overrides` is still reconstructable during SSR.
-   */
-  overrides?: ThemeOverrides;
+  style?: string;
+  /** custom theme presets (the theme customizer's saved color schemes). */
+  presets?: Record<string, unknown>;
+  /** the name of the currently applied custom preset, if any. */
+  appliedPreset?: string;
 }
 
-/**
- * the default localStorage key for the persisted theme config
- */
-export const THEME_STORAGE_KEY = '__SOYBEAN_THEME';
+/** what a caller hands to the writer; the version is added for them. */
+export type ThemeEnvelopeInput = Omit<ThemeEnvelope, 'v'>;
 
-const isBaseKey = (value: unknown): value is BaseColorKey => isRegistryBaseKey(value);
+/** SSR-safe `localStorage`, `null` when unavailable or blocked. */
+function getStorage(): Storage | null {
+  if (typeof window === 'undefined') {
+    return null;
+  }
 
-const isPrimaryKey = (value: unknown): value is PrimaryColorKey => isRegistryPrimaryKey(value);
+  try {
+    return window.localStorage ?? null;
+  } catch {
+    return null;
+  }
+}
 
-const isFeedbackScheme = (value: unknown): value is FeedbackSchemeKey => isRegistryFeedbackScheme(value);
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === 'object' && value !== null && !Array.isArray(value);
 
-const isChartScheme = (value: unknown): value is ChartSchemeKey => isRegistryChartScheme(value);
-
-const isSidebarScheme = (value: unknown): value is SidebarSchemeKey => isRegistrySidebarScheme(value);
-
-const isMode = (value: unknown): value is ThemeConfigState['mode'] =>
+const isMode = (value: unknown): value is ThemeModePreference =>
   value === 'light' || value === 'dark' || value === 'auto';
 
-const isFormat = (value: unknown): value is ThemeConfigState['format'] => value === 'hsl' || value === 'oklch';
+const isSurfaceStyle = (value: unknown): value is SurfaceStyle => value === 'layered' || value === 'flat';
 
-const isSidebarDerive = (value: unknown): value is boolean => typeof value === 'boolean';
-
-const isLightLevel = (value: unknown): value is ThemeConfigState['lightLevel'] =>
-  value === 0 || value === 1 || value === 2;
-
-const isDarkLevel = (value: unknown): value is ThemeConfigState['darkLevel'] =>
-  value === 0 || value === 1 || value === 2 || value === 3;
-
-const isBorderOpacity = (value: unknown): value is number => typeof value === 'number' && value >= 0 && value <= 1;
-
-const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
+const isContrastPolicy = (value: unknown): value is ContrastPolicy =>
+  value === 'off' || value === 'aa' || value === 'aaa';
 
 /**
- * serialize a theme config into a string for storage
+ * validate the override record: only known semantic tokens with string values
+ * survive, so a stale or hand-edited payload cannot reach the engine.
  */
-export function stringifyThemeConfig(config: ThemeConfigState): string {
-  return JSON.stringify(config);
+function parseOverrides(value: unknown): ThemeOverrides | undefined {
+  if (!isRecord(value)) {
+    return undefined;
+  }
+
+  const parseSide = (side: unknown): Partial<Record<SemanticToken, string>> | undefined => {
+    if (!isRecord(side)) {
+      return undefined;
+    }
+
+    const entries = Object.entries(side).filter(
+      (entry): entry is [SemanticToken, string] => typeof entry[1] === 'string' && entry[1].length > 0
+    );
+
+    return entries.length > 0 ? Object.fromEntries(entries) : undefined;
+  };
+
+  const light = parseSide(value.light);
+  const dark = parseSide(value.dark);
+
+  return light || dark ? { ...(light ? { light } : {}), ...(dark ? { dark } : {}) } : undefined;
 }
 
 /**
- * parse and validate a stored theme config string.
+ * validate and normalize engine options.
  *
- * Returns `null` when the value is missing, malformed, or carries an
- * unsupported `base` / `primary` preset key so callers can fall back to
- * their defaults safely.
+ * Invalid *fields* are dropped while the rest of the configuration survives —
+ * the first generation discarded the whole config as soon as one enum was
+ * unknown, which silently reset the user's colour scheme (audit P1-4).
  */
-export function parseThemeConfig(raw: string | null | undefined): ThemeConfigState | null {
+export function parseThemeOptions(value: unknown): ThemeOptions {
+  if (!isRecord(value)) {
+    return {};
+  }
+
+  const options: Record<string, unknown> = {};
+  const copy = (key: keyof ThemeOptions, valid: (input: unknown) => boolean): void => {
+    if (value[key] !== undefined && valid(value[key])) {
+      options[key] = value[key];
+    }
+  };
+
+  copy('base', input => isPaletteKey(input) && (PALETTE_KEYS as readonly string[]).includes(input as string));
+  copy('primary', input => isPaletteKey(input) && (PALETTE_KEYS as readonly string[]).includes(input as string));
+  copy('feedback', input => typeof input === 'string' && input.length > 0);
+  copy('chart', input => typeof input === 'string' && input.length > 0);
+  copy('lightLevel', input => input === 0 || input === 1 || input === 2);
+  copy('darkLevel', input => input === 0 || input === 1 || input === 2 || input === 3);
+  copy('surfaceStyle', isSurfaceStyle);
+  copy('contrast', isContrastPolicy);
+  copy('solidVars', input => input === 'none' || input === 'chart' || input === 'all');
+  copy('prefix', input => input === false || (typeof input === 'string' && input.length > 0));
+  copy('size', input => typeof input === 'string' && input.length > 0);
+  copy('radius', input => typeof input === 'string' && input.length > 0);
+  copy('borderOpacity', input => typeof input === 'number' && input >= 0 && input <= 1);
+  copy('format', input => input === 'hsl' || input === 'oklch');
+  copy('styleTarget', input => input === 'html' || input === ':root');
+  copy('darkSelector', input => typeof input === 'string' && input.length > 0);
+
+  const overrides = parseOverrides(value.overrides);
+
+  if (overrides) {
+    options.overrides = overrides;
+  }
+
+  return options as ThemeOptions;
+}
+
+/** whether a value looks like a palette key (used by the base/primary guard). */
+export const isKnownPalette = (value: unknown): value is PaletteKey => isPaletteKey(value);
+
+/**
+ * parse a stored envelope.
+ *
+ * Returns `null` for a missing, malformed or **future-versioned** payload: an
+ * unknown schema is never guessed (the version is bumped when the shape changes).
+ */
+export function parseThemeEnvelope(raw: string | null | undefined): ThemeEnvelope | null {
   if (!raw) {
     return null;
   }
 
   let data: unknown;
+
   try {
     data = JSON.parse(raw);
   } catch {
@@ -215,393 +190,130 @@ export function parseThemeConfig(raw: string | null | undefined): ThemeConfigSta
     return null;
   }
 
-  const {
-    base,
-    primary,
-    feedback,
-    chart,
-    sidebar,
-    sidebarDerive,
-    mode,
-    size,
-    radius,
-    format,
-    lightLevel,
-    darkLevel,
-    borderOpacity,
-    overrides
-  } = data;
+  const version = typeof data.v === 'number' && Number.isInteger(data.v) && data.v > 0 ? data.v : 0;
 
-  if (base !== undefined && !isBaseKey(base)) {
-    return null;
-  }
-  if (primary !== undefined && !isPrimaryKey(primary)) {
-    return null;
-  }
-  if (feedback !== undefined && !isFeedbackScheme(feedback)) {
-    return null;
-  }
-  if (chart !== undefined && !isChartScheme(chart)) {
-    return null;
-  }
-  if (sidebar !== undefined && !isSidebarScheme(sidebar)) {
-    return null;
-  }
-  if (sidebarDerive !== undefined && !isSidebarDerive(sidebarDerive)) {
+  if (version > THEME_ENVELOPE_VERSION) {
     return null;
   }
 
-  const config: ThemeConfigState = {};
+  const envelope: ThemeEnvelope = { v: THEME_ENVELOPE_VERSION, options: parseThemeOptions(data.options) };
 
-  if (base !== undefined) {
-    config.base = base;
-  }
-  if (primary !== undefined) {
-    config.primary = primary;
-  }
-  if (feedback !== undefined) {
-    config.feedback = feedback;
-  }
-  if (chart !== undefined) {
-    config.chart = chart;
-  }
-  if (sidebar !== undefined) {
-    config.sidebar = sidebar;
-  }
-  if (sidebarDerive !== undefined) {
-    config.sidebarDerive = sidebarDerive;
-  }
-  if (isMode(mode)) {
-    config.mode = mode;
-  }
-  if (typeof size === 'string') {
-    config.size = size as ThemeSizeValue;
-  }
-  if (typeof radius === 'string') {
-    config.radius = radius as ThemeRadiusValue;
-  }
-  if (isFormat(format)) {
-    config.format = format;
-  }
-  if (isLightLevel(lightLevel)) {
-    config.lightLevel = lightLevel;
-  }
-  if (isDarkLevel(darkLevel)) {
-    config.darkLevel = darkLevel;
-  }
-  if (isBorderOpacity(borderOpacity)) {
-    config.borderOpacity = borderOpacity;
-  }
-  if (isRecord(overrides)) {
-    const parsedOverrides = parseOverrides(overrides);
-
-    if (parsedOverrides) {
-      config.overrides = parsedOverrides;
-    }
+  if (isMode(data.mode)) {
+    envelope.mode = data.mode;
   }
 
-  return config;
+  if (typeof data.style === 'string' && data.style.length > 0 && data.style.length <= MAX_STYLE_LENGTH) {
+    envelope.style = data.style;
+  }
+
+  if (isRecord(data.presets)) {
+    envelope.presets = data.presets;
+  }
+
+  if (typeof data.appliedPreset === 'string' && data.appliedPreset.length > 0) {
+    envelope.appliedPreset = data.appliedPreset;
+  }
+
+  return envelope;
 }
 
-const getStorage = (): Storage | null => {
-  if (typeof window === 'undefined' || typeof window.localStorage === 'undefined') {
-    return null;
-  }
+/** read the persisted envelope (SSR-safe). */
+export function readThemeEnvelope(key: string = THEME_STORAGE_KEY): ThemeEnvelope | null {
+  let raw: string | null = null;
 
-  return window.localStorage;
-};
-
-/**
- * read the persisted theme config from localStorage (SSR-safe, returns `null` on the server)
- */
-export function getStoredThemeConfig(key: string = THEME_STORAGE_KEY): ThemeConfigState | null {
-  return parseThemeConfig(getStorage()?.getItem(key) ?? null);
-}
-
-/**
- * persist the theme config into localStorage (SSR-safe, no-op on the server)
- */
-export function setStoredThemeConfig(config: ThemeConfigState, key: string = THEME_STORAGE_KEY): void {
-  getStorage()?.setItem(key, stringifyThemeConfig(config));
-}
-
-/**
- * remove the persisted theme config from localStorage (SSR-safe, no-op on the server)
- */
-export function removeStoredThemeConfig(key: string = THEME_STORAGE_KEY): void {
-  getStorage()?.removeItem(key);
-}
-
-/**
- * the default localStorage key for the generated theme CSS snapshot.
- *
- * The full CSS string is persisted alongside the config so the inline init
- * script (`createThemeInitScript`) can apply the persisted theme before first
- * paint without re-running the engine in the browser.
- */
-export const THEME_CSS_STORAGE_KEY = '__SOYBEAN_THEME_CSS';
-
-/**
- * read the persisted theme CSS snapshot from localStorage
- * (SSR-safe, returns `null` on the server)
- */
-export function getStoredThemeCss(key: string = THEME_CSS_STORAGE_KEY): string | null {
-  return getStorage()?.getItem(key) || null;
-}
-
-/**
- * persist the generated theme CSS snapshot into localStorage
- * (SSR-safe, no-op on the server). An empty value is ignored so a failed
- * derivation never clears a valid snapshot.
- */
-export function setStoredThemeCss(css: string, key: string = THEME_CSS_STORAGE_KEY): void {
-  if (!css) {
-    return;
-  }
-
-  getStorage()?.setItem(key, css);
-}
-
-/**
- * remove the persisted theme CSS snapshot from localStorage
- * (SSR-safe, no-op on the server)
- */
-export function removeStoredThemeCss(key: string = THEME_CSS_STORAGE_KEY): void {
-  getStorage()?.removeItem(key);
-}
-
-/**
- * the default localStorage key for the persisted custom theme presets table
- */
-export const THEME_PRESETS_STORAGE_KEY = '__SOYBEAN_THEME_PRESETS';
-
-/**
- * the current storage schema version for the persisted presets table
- */
-export const THEME_PRESETS_SCHEMA_VERSION = 1;
-
-const SIMPLE_COLOR_KEYS: ReadonlySet<string> = new Set(['inherit', 'currentColor', 'transparent', 'black', 'white']);
-
-const THEME_COLOR_KEYS: ReadonlySet<string> = new Set(Object.keys(COLOR_VARIABLES));
-
-const isSimpleColor = (value: string): boolean => SIMPLE_COLOR_KEYS.has(value);
-
-const isPaletteLevelColor = (value: string): boolean => {
-  const [key, level] = value.split('.');
-
-  const levels = tailwindPalette[key as TailwindPaletteKey];
-
-  // `Object.hasOwn` rather than `in`: every level is an own property, so a
-  // prototype key such as `zinc.constructor` must not validate as a color —
-  // it would be persisted and then break CSS generation downstream.
-  return levels != null && level != null && Object.hasOwn(levels, level);
-};
-
-/**
- * whether a value is a valid theme color token value (`ColorValue`): a simple
- * keyword, a `palette.level` reference, or a valid hsl()/oklch() string.
- *
- * Exposed so UI-layer theme composables can reuse the same validation the
- * storage layer applies when persisting overrides.
- */
-export function isValidColorValue(value: unknown): value is ColorValue {
-  if (typeof value !== 'string' || !value) {
-    return false;
-  }
-
-  if (isSimpleColor(value)) {
-    return true;
-  }
-
-  if (value.includes('.')) {
-    return isPaletteLevelColor(value);
-  }
-
-  if (value.startsWith('hsl(') || value.startsWith('oklch(')) {
-    return colord(value).isValid();
-  }
-
-  return false;
-}
-
-const pickValidColors = (record: Record<string, unknown>): Record<string, ColorValue> =>
-  Object.entries(record).reduce<Record<string, ColorValue>>((acc, [key, value]) => {
-    if (THEME_COLOR_KEYS.has(key) && isValidColorValue(value)) {
-      acc[key] = value;
-    }
-
-    return acc;
-  }, {});
-
-/**
- * parse and validate a persisted `ThemeOverrides` record. Only known color
- * tokens with valid color values are kept.
- */
-const parseOverrides = (record: Record<string, unknown>): ThemeOverrides | null => {
-  const light = isRecord(record.light) ? pickValidColors(record.light) : undefined;
-  const dark = isRecord(record.dark) ? pickValidColors(record.dark) : undefined;
-
-  if (!light && !dark) {
-    return null;
-  }
-
-  const overrides: ThemeOverrides = {};
-
-  if (light && Object.keys(light).length > 0) {
-    overrides.light = light;
-  }
-
-  if (dark && Object.keys(dark).length > 0) {
-    overrides.dark = dark;
-  }
-
-  if (!overrides.light && !overrides.dark) {
-    return null;
-  }
-
-  return overrides;
-};
-
-const parseStoredThemePreset = (name: string, raw: unknown): StoredThemePreset | null => {
-  if (!isRecord(raw) || raw.name !== name || typeof raw.version !== 'string' || !raw.version) {
-    return null;
-  }
-
-  if (!isRecord(raw.light)) {
-    return null;
-  }
-
-  const light = pickValidColors(raw.light);
-
-  if (Object.keys(light).length === 0) {
-    return null;
-  }
-
-  const preset: StoredThemePreset = {
-    name,
-    version: raw.version,
-    light
-  };
-
-  if (isRecord(raw.dark)) {
-    const dark = pickValidColors(raw.dark);
-
-    if (Object.keys(dark).length > 0) {
-      preset.dark = dark;
-    }
-  }
-
-  return preset;
-};
-
-/**
- * parse and validate a stored custom theme presets string.
- *
- * - a malformed JSON payload, a missing `presets` table, or a schema version
- *   newer than the current one returns `null` (unknown future format is never
- *   guessed);
- * - entries are validated per item: an invalid entry is dropped while the rest
- *   of the table is kept; within an entry only keys with valid `ColorValue`s
- *   are kept, and an entry without any valid color key is dropped entirely;
- * - the returned table is always normalized to `THEME_PRESETS_SCHEMA_VERSION`.
- */
-export function parseThemePresets(raw: string | null | undefined): StoredThemePresets | null {
-  if (!raw) {
-    return null;
-  }
-
-  let data: unknown;
   try {
-    data = JSON.parse(raw);
+    raw = getStorage()?.getItem(key) ?? null;
   } catch {
     return null;
   }
 
-  if (!isRecord(data) || !isRecord(data.presets)) {
-    return null;
+  return parseThemeEnvelope(raw);
+}
+
+/** write the envelope (SSR-safe; returns whether the write landed). */
+export function writeThemeEnvelope(envelope: ThemeEnvelopeInput, key: string = THEME_STORAGE_KEY): boolean {
+  const storage = getStorage();
+
+  if (!storage) {
+    return false;
   }
 
-  const schemaVersion =
-    typeof data.version === 'number' && Number.isInteger(data.version) && data.version > 0 ? data.version : 0;
+  const payload: ThemeEnvelope = { v: THEME_ENVELOPE_VERSION, ...envelope };
 
-  if (schemaVersion > THEME_PRESETS_SCHEMA_VERSION) {
-    return null;
+  if (payload.style && payload.style.length > MAX_STYLE_LENGTH) {
+    delete payload.style;
   }
 
-  // v0 (no `version` field) and v1 share the same shape, so migration is a
-  // normalization; future schema versions add a step here.
-  const presets = Object.entries(data.presets).reduce<Record<string, StoredThemePreset>>((acc, [name, rawPreset]) => {
-    const preset = parseStoredThemePreset(name, rawPreset);
+  try {
+    storage.setItem(key, JSON.stringify(payload));
 
-    if (preset) {
-      acc[name] = preset;
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/** remove the envelope (SSR-safe). */
+export function clearThemeEnvelope(key: string = THEME_STORAGE_KEY): void {
+  try {
+    getStorage()?.removeItem(key);
+  } catch {
+    // 存储被禁用时无需处理：没有写入就没有需要清理的状态
+  }
+}
+
+/** the debounced single writer. */
+export interface ThemeWriter {
+  /** queue a write; the latest payload wins within the debounce window. */
+  write(envelope: ThemeEnvelopeInput): void;
+  /** write immediately (page hide, tests). */
+  flush(): void;
+  /** drop a queued write. */
+  cancel(): void;
+}
+
+/**
+ * create the single debounced writer for the theme envelope.
+ *
+ * One writer per application removes the "two watchers write two keys" race of
+ * the first generation, and the debounce keeps a slider drag from writing on
+ * every frame.
+ */
+export function createThemeWriter(options: { key?: string; delay?: number } = {}): ThemeWriter {
+  const { key = THEME_STORAGE_KEY, delay = 250 } = options;
+  let pending: ThemeEnvelopeInput | null = null;
+  let timer: ReturnType<typeof setTimeout> | null = null;
+
+  const flush = (): void => {
+    if (timer !== null) {
+      clearTimeout(timer);
+      timer = null;
     }
 
-    return acc;
-  }, {});
+    if (pending) {
+      writeThemeEnvelope(pending, key);
+      pending = null;
+    }
+  };
 
-  return { version: THEME_PRESETS_SCHEMA_VERSION, presets };
-}
+  return {
+    write: envelope => {
+      pending = envelope;
 
-/**
- * read the persisted custom theme presets table from localStorage
- * (SSR-safe, returns `null` on the server)
- */
-export function getStoredThemePresets(key: string = THEME_PRESETS_STORAGE_KEY): StoredThemePresets | null {
-  return parseThemePresets(getStorage()?.getItem(key) ?? null);
-}
+      if (timer !== null) {
+        return;
+      }
 
-/**
- * persist a single custom theme preset into the presets table
- * (SSR-safe, no-op on the server). Returns `false` when the preset is invalid
- * or the storage is unavailable.
- */
-export function setStoredThemePreset(preset: StoredThemePreset, key: string = THEME_PRESETS_STORAGE_KEY): boolean {
-  const storage = getStorage();
+      timer = setTimeout(flush, delay);
+    },
+    flush,
+    cancel: () => {
+      if (timer !== null) {
+        clearTimeout(timer);
+        timer = null;
+      }
 
-  if (!storage) {
-    return false;
-  }
-
-  const parsed = parseStoredThemePreset(preset.name, preset);
-
-  if (!parsed) {
-    return false;
-  }
-
-  const current = parseThemePresets(storage.getItem(key)) ?? { version: THEME_PRESETS_SCHEMA_VERSION, presets: {} };
-
-  storage.setItem(key, JSON.stringify({ ...current, presets: { ...current.presets, [parsed.name]: parsed } }));
-
-  return true;
-}
-
-/**
- * remove a custom theme preset from the presets table
- * (SSR-safe, no-op on the server). Returns whether an entry was removed.
- */
-export function removeStoredThemePreset(name: string, key: string = THEME_PRESETS_STORAGE_KEY): boolean {
-  const storage = getStorage();
-
-  if (!storage) {
-    return false;
-  }
-
-  const current = parseThemePresets(storage.getItem(key));
-
-  if (!current || !(name in current.presets)) {
-    return false;
-  }
-
-  const presets = Object.entries(current.presets)
-    .filter(([presetName]) => presetName !== name)
-    .reduce<Record<string, StoredThemePreset>>((acc, [presetName, preset]) => {
-      acc[presetName] = preset;
-
-      return acc;
-    }, {});
-
-  storage.setItem(key, JSON.stringify({ version: THEME_PRESETS_SCHEMA_VERSION, presets }));
-
-  return true;
+      pending = null;
+    }
+  };
 }

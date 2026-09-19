@@ -39,7 +39,7 @@ export const cascaderVariants = scv({
     ],
     searchInput: 'w-full grow bg-transparent outline-none placeholder:text-muted-foreground',
     positioner: '',
-    popup: ['relative z-50', overlaySurface, overlayShadow, ...overlayMotion],
+    popup: ['relative z-base', overlaySurface, overlayShadow, ...overlayMotion],
     panel: 'flex items-stretch',
     menu: ['overflow-y-auto overflow-x-hidden', 'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-muted'],
     option: [

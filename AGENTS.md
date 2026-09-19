@@ -47,7 +47,7 @@ from the styled wrapper to its nested aria parts via `provideXUi(ui)` and
 
 Other publishable modules:
 
-- **@vean/theme** (`packages/theme/`): theme engine — core tokens, deterministic derivation, light/dark levels, SSR/storage helpers.
+- **@vean/theme** (`packages/theme/`): theme engine — static palette layer + semantic alias layer, ladder shift + contrast guard, envelope storage + first-paint script. **Docs: [docs/theme.md](docs/theme.md) (§0 is the AI-agent handbook).**
 - **@vean/unocss** (`packages/unocss/`): UnoCSS preset over `@vean/theme`.
 - **@vean/cli** (`packages/cli/`, bin `vean`): source-distribution CLI, registry, schemas, templates, and MCP.
 - **@vean/skills** (`skills/`): generated consumer-facing agent skills.
@@ -62,28 +62,29 @@ Private packages and applications:
 
 ## WHERE TO LOOK
 
-| Task                     | Location                                                                  | Key Pattern                                                                          |
-| ------------------------ | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| New component (logic)    | `packages/aria/src/components/[name]/`                                    | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts         |
-| New component (styled)   | `packages/ui/src/components/[name]/` + `packages/ui/src/styles/[name].ts` | style recipe → types.ts → `*.vue` → index.ts                                         |
-| Variant definitions      | `packages/ui/src/styles/[name].ts`                                        | `cv()` / `scv()` with `// @unocss-include` at top                                    |
-| Shared hooks             | `packages/aria/src/composables/`                                          | `use-*.ts`, pure Vue composables (29 total)                                          |
-| Theme/sizing             | `packages/ui/src/theme/`                                                  | `ThemeColor` (8), `ThemeSize` (xs…2xl)                                               |
-| Theme CSS generation     | `packages/theme/`                                                         | `createTheme(options)` (returns CSS string)                                          |
-| UnoCSS adapter           | `packages/unocss/`                                                        | `presetUiUnocss()` / `presetVean()`                                                  |
-| Source-distribution CLI  | `packages/cli/`                                                           | commands → registry/schema/templates/MCP                                             |
-| Repo-service CLI (`sui`) | `packages/scripts/`                                                       | `gen` (offline) / `translate` (DeepL) / `check` groups, `stub`, `reorder-imports`    |
-| Utility functions        | `packages/aria/src/shared/`                                               | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                          |
-| Global types             | `packages/aria/src/types/`                                                | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                  |
-| Generated API data       | `apps/docs/src/generated/api/`                                            | `pnpm sui gen api` baseline + `pnpm sui translate api --locale <locale>` locale text |
-| Generated changelog data | `apps/docs/src/generated/changelog/`                                      | `pnpm sui gen changelog` baseline + `pnpm sui translate changelog` locale summaries  |
-| Docs content             | `apps/docs/src/docs/[en\|zh-CN]/`                                         | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`            |
-| Demo source              | `apps/docs/src/examples/[component]/`                                     | Vue SFCs referenced by docs                                                          |
-| Browser e2e tests        | `packages/ui/test/browser/`                                               | `vitest.browser.config.ts` + `vitest-browser-vue` + `axe-core` (color-contrast on)   |
-| Workspace architecture   | `docs/architecture.md`                                                    | Package/app map, dependency graph, generation/build/test/release flows               |
-| Architecture assessment  | `docs/optimize.md`                                                        | Evidence-ranked maintainability, scalability, and quality recommendations            |
-| Component dev skill      | `.agents/skills/vean-develop/`                                            | SKILL.md + layers.md (admission) + surfaces.md + e2e.md + process.md + audit.md      |
-| Aria admission gaps      | `docs/aria-admission-remediation.md`                                      | Anatomy shells, decorative slots, and parallel families to freeze or fix             |
+| Task                               | Location                                                                  | Key Pattern                                                                                    |
+| ---------------------------------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| New component (logic)              | `packages/aria/src/components/[name]/`                                    | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts                   |
+| New component (styled)             | `packages/ui/src/components/[name]/` + `packages/ui/src/styles/[name].ts` | style recipe → types.ts → `*.vue` → index.ts                                                   |
+| Variant definitions                | `packages/ui/src/styles/[name].ts`                                        | `cv()` / `scv()` with `// @unocss-include` at top                                              |
+| Shared hooks                       | `packages/aria/src/composables/`                                          | `use-*.ts`, pure Vue composables (29 total)                                                    |
+| Theme engine (design/API/handbook) | `docs/theme.md`                                                           | **单一权威**：三层架构 / token 契约 / 两机制 / API / 接入手册（§0）/ 验收 / 决议               |
+| Theme/sizing                       | `packages/ui/src/theme/`                                                  | `ThemeColor` (8 roles), `ThemeSize` (xs…2xl)                                                   |
+| Token CSS generation               | `packages/theme/src/`                                                     | `resolveThemeMap(options)` → `emitThemeCss(map)`（Layer 2）/ `generatePaletteCss()`（Layer 1） |
+| UnoCSS adapter                     | `packages/unocss/`                                                        | `presetUiUnocss()` / `presetVean()`                                                            |
+| Source-distribution CLI            | `packages/cli/`                                                           | commands → registry/schema/templates/MCP                                                       |
+| Repo-service CLI (`sui`)           | `packages/scripts/`                                                       | `gen` (offline) / `translate` (DeepL) / `check` groups, `stub`, `reorder-imports`              |
+| Utility functions                  | `packages/aria/src/shared/`                                               | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                                    |
+| Global types                       | `packages/aria/src/types/`                                                | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                            |
+| Generated API data                 | `apps/docs/src/generated/api/`                                            | `pnpm sui gen api` baseline + `pnpm sui translate api --locale <locale>` locale text           |
+| Generated changelog data           | `apps/docs/src/generated/changelog/`                                      | `pnpm sui gen changelog` baseline + `pnpm sui translate changelog` locale summaries            |
+| Docs content                       | `apps/docs/src/docs/[en\|zh-CN]/`                                         | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`                      |
+| Demo source                        | `apps/docs/src/examples/[component]/`                                     | Vue SFCs referenced by docs                                                                    |
+| Browser e2e tests                  | `packages/ui/test/browser/`                                               | `vitest.browser.config.ts` + `vitest-browser-vue` + `axe-core` (color-contrast on)             |
+| Workspace architecture             | `docs/architecture.md`                                                    | Package/app map, dependency graph, generation/build/test/release flows                         |
+| Architecture assessment            | `docs/optimize.md`                                                        | Evidence-ranked maintainability, scalability, and quality recommendations                      |
+| Component dev skill                | `.agents/skills/vean-develop/`                                            | SKILL.md + layers.md (admission) + surfaces.md + e2e.md + process.md + audit.md                |
+| Aria admission gaps                | `docs/aria-admission-remediation.md`                                      | Anatomy shells, decorative slots, and parallel families to freeze or fix                       |
 
 ## BUILD & CI
 
@@ -145,7 +146,7 @@ pnpm sui sync-template-versions  # Sync the @soybeanjs/* version constant used b
 
 - `packages/ui` → imports public `@vean/aria` entry points
 - `packages/aria` → MUST NOT import from `@vean/ui` (would create a circular dependency)
-- `packages/unocss` → imports `@vean/theme`; token ownership stays in the theme package
+- `packages/unocss` → imports `@vean/theme`; token ownership stays in the theme package (its `src/theme.ts` is the single UnoCSS adapter)
 - Components re-exported from barrel files: `packages/aria/src/index.ts`, `packages/ui/src/index.ts`
 
 ## KEY PATTERNS (verified from source)

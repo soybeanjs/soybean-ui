@@ -31,60 +31,73 @@ export interface ThemeLocaleMessages {
     lightLevel: string;
     darkLevel: string;
     borderOpacity: string;
+    surfaceStyle: string;
+    contrast: string;
     cssVars: string;
     reset: string;
   };
   /** Variant group labels (surfaces / hairlines / …). */
   groups: {
     surfaces: string;
-    palette: string;
+    fills: string;
     hairlines: string;
+    brand: string;
     sidebar: string;
-    charts: string;
     feedback: string;
+    charts: string;
   };
   /** Variant token labels (background / card / primary / …). */
   variants: {
     background: string;
+    surface: string;
+    elevated: string;
+    carbon: string;
     foreground: string;
-    card: string;
-    cardForeground: string;
-    popover: string;
-    popoverForeground: string;
-    primary: string;
-    primaryForeground: string;
-    ring: string;
-    secondary: string;
-    secondaryForeground: string;
-    muted: string;
     mutedForeground: string;
+    foregroundSubtle: string;
+    carbonForeground: string;
+    muted: string;
     accent: string;
     accentForeground: string;
+    secondary: string;
+    secondaryForeground: string;
     border: string;
+    borderStrong: string;
     input: string;
-    sidebar: string;
+    ring: string;
+    primary: string;
+    primaryForeground: string;
+    sidebarSurface: string;
     sidebarForeground: string;
-    sidebarPrimary: string;
-    sidebarPrimaryForeground: string;
+    sidebarBorder: string;
     sidebarAccent: string;
     sidebarAccentForeground: string;
-    sidebarBorder: string;
-    sidebarRing: string;
+    sidebarPrimary: string;
+    destructive: string;
+    destructiveForeground: string;
+    destructiveText: string;
+    destructiveSubtle: string;
+    destructiveBorder: string;
+    success: string;
+    successForeground: string;
+    successText: string;
+    successSubtle: string;
+    successBorder: string;
+    warning: string;
+    warningForeground: string;
+    warningText: string;
+    warningSubtle: string;
+    warningBorder: string;
+    info: string;
+    infoForeground: string;
+    infoText: string;
+    infoSubtle: string;
+    infoBorder: string;
     chart1: string;
     chart2: string;
     chart3: string;
     chart4: string;
     chart5: string;
-    destructive: string;
-    destructiveForeground: string;
-    success: string;
-    successForeground: string;
-    warning: string;
-    warningForeground: string;
-    info: string;
-    infoForeground: string;
-    carbon: string;
-    carbonForeground: string;
   };
   /** Select option labels (feedback / chart / sidebar schemes and menu settings). */
   options: {
@@ -153,6 +166,15 @@ export interface ThemeLocaleMessages {
       soft: string;
       contrast: string;
     };
+    surfaceStyle: {
+      layered: string;
+      flat: string;
+    };
+    contrast: {
+      off: string;
+      aa: string;
+      aaa: string;
+    };
   };
   /** Labels used by the `PalettePicker` component. */
   palettePicker: {
@@ -191,58 +213,71 @@ const themeLocaleEn: ThemeLocaleMessages = {
     lightLevel: 'Light Level',
     darkLevel: 'Dark Level',
     borderOpacity: 'Border Opacity',
+    surfaceStyle: 'Surface Style',
+    contrast: 'Contrast Policy',
     cssVars: 'CSS Variable Theme',
     reset: 'Reset'
   },
   groups: {
     surfaces: 'Surfaces',
-    palette: 'Palette',
+    fills: 'Fills',
     hairlines: 'Hairlines',
+    brand: 'Brand',
     sidebar: 'Sidebar',
-    charts: 'Charts',
-    feedback: 'Feedback'
+    feedback: 'Status',
+    charts: 'Charts'
   },
   variants: {
     background: 'Background',
+    surface: 'Surface',
+    elevated: 'Elevated',
+    carbon: 'Carbon',
     foreground: 'Foreground',
-    card: 'Card',
-    cardForeground: 'Card Foreground',
-    popover: 'Popover',
-    popoverForeground: 'Popover Foreground',
-    primary: 'Primary',
-    primaryForeground: 'Primary Foreground',
-    ring: 'Ring',
-    secondary: 'Secondary',
-    secondaryForeground: 'Secondary Foreground',
-    muted: 'Muted',
     mutedForeground: 'Muted Foreground',
+    foregroundSubtle: 'Foreground Subtle',
+    carbonForeground: 'Carbon Foreground',
+    muted: 'Muted',
     accent: 'Accent',
     accentForeground: 'Accent Foreground',
+    secondary: 'Secondary',
+    secondaryForeground: 'Secondary Foreground',
     border: 'Border',
+    borderStrong: 'Border Strong',
     input: 'Input',
-    sidebar: 'Sidebar',
+    ring: 'Ring',
+    primary: 'Primary',
+    primaryForeground: 'Primary Foreground',
+    sidebarSurface: 'Sidebar Surface',
     sidebarForeground: 'Sidebar Foreground',
-    sidebarPrimary: 'Sidebar Primary',
-    sidebarPrimaryForeground: 'Sidebar Primary Foreground',
+    sidebarBorder: 'Sidebar Border',
     sidebarAccent: 'Sidebar Accent',
     sidebarAccentForeground: 'Sidebar Accent Foreground',
-    sidebarBorder: 'Sidebar Border',
-    sidebarRing: 'Sidebar Ring',
+    sidebarPrimary: 'Sidebar Primary',
+    destructive: 'Destructive',
+    destructiveForeground: 'Destructive Foreground',
+    destructiveText: 'Destructive Text',
+    destructiveSubtle: 'Destructive Subtle',
+    destructiveBorder: 'Destructive Border',
+    success: 'Success',
+    successForeground: 'Success Foreground',
+    successText: 'Success Text',
+    successSubtle: 'Success Subtle',
+    successBorder: 'Success Border',
+    warning: 'Warning',
+    warningForeground: 'Warning Foreground',
+    warningText: 'Warning Text',
+    warningSubtle: 'Warning Subtle',
+    warningBorder: 'Warning Border',
+    info: 'Info',
+    infoForeground: 'Info Foreground',
+    infoText: 'Info Text',
+    infoSubtle: 'Info Subtle',
+    infoBorder: 'Info Border',
     chart1: 'Chart 1',
     chart2: 'Chart 2',
     chart3: 'Chart 3',
     chart4: 'Chart 4',
-    chart5: 'Chart 5',
-    destructive: 'Destructive',
-    destructiveForeground: 'Destructive Foreground',
-    success: 'Success',
-    successForeground: 'Success Foreground',
-    warning: 'Warning',
-    warningForeground: 'Warning Foreground',
-    info: 'Info',
-    infoForeground: 'Info Foreground',
-    carbon: 'Carbon',
-    carbonForeground: 'Carbon Foreground'
+    chart5: 'Chart 5'
   },
   options: {
     mode: {
@@ -309,6 +344,15 @@ const themeLocaleEn: ThemeLocaleMessages = {
       invertedDark: 'Inverted Dark',
       soft: 'Soft',
       contrast: 'Contrast'
+    },
+    surfaceStyle: {
+      layered: 'Layered',
+      flat: 'Flat'
+    },
+    contrast: {
+      off: 'Off',
+      aa: 'AA',
+      aaa: 'AAA'
     }
   },
   palettePicker: {
@@ -344,58 +388,71 @@ const themeLocaleZh: ThemeLocaleMessages = {
     lightLevel: '浅色层级',
     darkLevel: '深色层级',
     borderOpacity: '边框透明度',
+    surfaceStyle: '表面风格',
+    contrast: '对比度策略',
     cssVars: 'CSS变量主题',
     reset: '重置'
   },
   groups: {
     surfaces: '表面',
-    palette: '调色板',
+    fills: '填充',
     hairlines: '描边',
+    brand: '品牌',
     sidebar: '侧边栏',
-    charts: '图表',
-    feedback: '反馈'
+    feedback: '状态',
+    charts: '图表'
   },
   variants: {
     background: '背景',
-    foreground: '前景',
-    card: '卡片',
-    cardForeground: '卡片前景',
-    popover: '浮层',
-    popoverForeground: '浮层前景',
+    surface: '容器面',
+    elevated: '浮层面',
+    carbon: '反相面',
+    foreground: '前景文字',
+    mutedForeground: '次要文字',
+    foregroundSubtle: '三级文字',
+    carbonForeground: '反相文字',
+    muted: '弱化面',
+    accent: '交互面',
+    accentForeground: '交互面文字',
+    secondary: '次级',
+    secondaryForeground: '次级文字',
+    border: '分隔线',
+    borderStrong: '强调边界',
+    input: '输入框边界',
+    ring: '焦点环',
     primary: '主色',
     primaryForeground: '主色前景',
-    ring: '焦点环',
-    secondary: '次要',
-    secondaryForeground: '次要前景',
-    muted: '弱化',
-    mutedForeground: '弱化前景',
-    accent: '强调',
-    accentForeground: '强调前景',
-    border: '边框',
-    input: '输入框',
-    sidebar: '侧边栏',
-    sidebarForeground: '侧边栏前景',
-    sidebarPrimary: '侧边栏主色',
-    sidebarPrimaryForeground: '侧边栏主色前景',
-    sidebarAccent: '侧边栏强调',
-    sidebarAccentForeground: '侧边栏强调前景',
-    sidebarBorder: '侧边栏边框',
-    sidebarRing: '侧边栏焦点环',
+    sidebarSurface: '侧栏基底',
+    sidebarForeground: '侧栏文字',
+    sidebarBorder: '侧栏边界',
+    sidebarAccent: '侧栏交互面',
+    sidebarAccentForeground: '侧栏交互面文字',
+    sidebarPrimary: '侧栏强调色',
+    destructive: '危险',
+    destructiveForeground: '危险前景',
+    destructiveText: '危险文字',
+    destructiveSubtle: '危险软底',
+    destructiveBorder: '危险边框',
+    success: '成功',
+    successForeground: '成功前景',
+    successText: '成功文字',
+    successSubtle: '成功软底',
+    successBorder: '成功边框',
+    warning: '警告',
+    warningForeground: '警告前景',
+    warningText: '警告文字',
+    warningSubtle: '警告软底',
+    warningBorder: '警告边框',
+    info: '信息',
+    infoForeground: '信息前景',
+    infoText: '信息文字',
+    infoSubtle: '信息软底',
+    infoBorder: '信息边框',
     chart1: '图表 1',
     chart2: '图表 2',
     chart3: '图表 3',
     chart4: '图表 4',
-    chart5: '图表 5',
-    destructive: '危险',
-    destructiveForeground: '危险前景',
-    success: '成功',
-    successForeground: '成功前景',
-    warning: '警告',
-    warningForeground: '警告前景',
-    info: '信息',
-    infoForeground: '信息前景',
-    carbon: '炭黑',
-    carbonForeground: '炭黑前景'
+    chart5: '图表 5'
   },
   options: {
     mode: {
@@ -462,6 +519,15 @@ const themeLocaleZh: ThemeLocaleMessages = {
       invertedDark: '反转深色',
       soft: '柔和',
       contrast: '高对比'
+    },
+    surfaceStyle: {
+      layered: '层叠',
+      flat: '扁平'
+    },
+    contrast: {
+      off: '关闭',
+      aa: 'AA',
+      aaa: 'AAA'
     }
   },
   palettePicker: {

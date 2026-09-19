@@ -1,23 +1,22 @@
 import type { Preflight } from 'unocss';
 import type { WebFontsOptions } from 'unocss/preset-web-fonts';
 import type { PresetWind3Options } from 'unocss/preset-wind3';
-import type { BaseTokens, ThemeOptions } from '@vean/theme';
+import type { ThemeOptions } from '@vean/theme';
 import type { PresetAnimationsOptions } from './animations';
 import type { PresetScrollbarOptions } from './scrollbar';
 
 /**
  * Options for {@link presetUiUnocss}.
  *
- * Extends the theme options (`base`/`primary`/`lightLevel`/`darkLevel`/etc.)
- * with the base tokens (`size`/`radius`) so a single
- * options object can fully drive the generated theme. Base tokens are top-level
- * `ThemeOptions` fields that `createTheme` reads directly.
+ * Extends the engine's `ThemeOptions` (`base`/`primary`/`surfaceStyle`/`size`/
+ * `radius`/etc.) so a single options object can fully drive the generated
+ * theme — the preset forwards it to `@vean/theme` untouched.
  *
  * The built-in presets of the returned stack (`presetWind3` / `presetAnimations` /
  * `presetScrollbar` / `presetWebFonts`) can be configured via the `wind3` /
  * `animations` / `scrollbar` / `webFonts` injection options.
  */
-export interface UiUnocssOptions extends ThemeOptions, BaseTokens {
+export interface UiUnocssOptions extends ThemeOptions {
   /**
    * Whether to include the reset CSS preflight (box-sizing, border-width, etc.).
    *

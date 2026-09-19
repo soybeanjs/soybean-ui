@@ -26,12 +26,12 @@ export const layoutVariants = scv({
       'group-data-[state=collapsed]/layout:w-[--soybean-collapsed-sidebar-width] mt-[--soybean-layout-sidebar-top-gap] mb-[--soybean-layout-sidebar-bottom-gap]'
     ],
     sidebar: [
-      `flex flex-col w-full h-full bg-sidebar`,
+      `flex flex-col w-full h-full bg-sidebar-surface`,
       `group-data-[variant=floating]/layout:rounded-lg group-data-[variant=floating]/layout:border group-data-[variant=floating]/layout:border-border group-data-[variant=floating]/layout:border-solid group-data-[variant=floating]/layout:shadow`
     ],
-    mobileDrawer: 'w-[--vean-sidebar-width] bg-sidebar p-0',
+    mobileDrawer: 'w-[--vean-sidebar-width] bg-sidebar-surface p-0',
     mobileOverlay: [
-      `fixed inset-0 z-50 bg-black/80`,
+      `fixed inset-0 z-base bg-black/80`,
       `data-[state=open]:animate-in data-[state=open]:fade-in-0`,
       `data-[state=closed]:animate-out data-[state=closed]:fade-out-0`
     ],
@@ -126,7 +126,7 @@ export const layoutVariants = scv({
       },
       inset: {
         root: [
-          'py-[--sl-half-spacing] bg-sidebar',
+          'py-[--sl-half-spacing] bg-sidebar-surface',
           // data-[variant=inset] 前缀用于保证特异性高于 base 上的默认值
           'data-[variant=inset]:[--sl-main-gap:calc(var(--vean-layout-start-gap)+var(--sl-spacing))]',
           'data-[variant=inset]:[--sl-footer-gap:calc(var(--vean-layout-footer-start-gap)+var(--sl-spacing))]',
@@ -154,7 +154,7 @@ export const layoutVariants = scv({
     collapsible: {
       offcanvas: {
         sidebarWrapper: 'group-data-[state=collapsed]/layout:opacity-0 group-data-[state=collapsed]/layout:z-0',
-        rail: `translate-x-0 after:start-full hover:bg-sidebar`
+        rail: `translate-x-0 after:start-full hover:bg-sidebar-surface`
       },
       icon: {}
     },

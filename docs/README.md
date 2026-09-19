@@ -13,7 +13,7 @@ docs/
 ├── GOVERNANCE.md        # 文档治理：更新规范 / 命名 / 版本控制
 ├── architecture.md      # 工作区架构（唯一架构真相源）
 ├── optimize.md          # 工程质量评估（F1–F11 改进项与验收，2026-09-06 基线）
-├── theme.md             # 主题持久化与 FOUC 策略（SSG / SSR）
+├── theme.md      # 主题引擎唯一权威文档（架构规格 + token 契约 + 接入手册 + 验收 + 决议）
 ├── roadmap.md           # 总路线图 + 组件评估明细（核心组件 / 核心内领域 / 未来提案 / 优化）
 ├── ui-ai-roadmap.md     # AI/chat 组件路线图（核心 aria/ui 内实现）
 ├── ui-shell-roadmap.md  # 中后台壳组件路线图（核心 aria/ui 内实现）
@@ -31,17 +31,17 @@ docs/
 
 ## 文档分类速查
 
-| 分类           | 文件                                                                                  | 定位                                                        | 典型读者           |
-| :------------- | :------------------------------------------------------------------------------------ | :---------------------------------------------------------- | :----------------- |
-| **架构与质量** | [architecture.md](./architecture.md) · [optimize.md](./optimize.md)                   | 仓库现状真相源 + 工程质量评估                               | 架构师、新成员     |
-| **主题策略**   | [theme.md](./theme.md)                                                                | 主题持久化 / FOUC 策略（SSG vs SSR）                        | 主题维护者、架构师 |
-| **路线与规划** | [roadmap.md](./roadmap.md)                                                            | 总路线图 + 组件评估明细                                     | 规划者、贡献者     |
-| **核心内领域** | [ui-ai-roadmap.md](./ui-ai-roadmap.md) · [ui-shell-roadmap.md](./ui-shell-roadmap.md) | AI/chat 与中后台壳组件的回迁规划（aria 准入）               | 组件开发者         |
-| **准入整改**   | [aria-admission-remediation.md](./aria-admission-remediation.md)                      | aria 准入违规与处置记录（整改已随 v0.50.0 窗口完成）        | 组件开发者         |
-| **决策记录**   | [adr/](./adr/README.md)                                                               | 架构决策（含已 superseded 的外围包分层 ADR）                | 架构师             |
-| **未来提案**   | [ecosystem/](./ecosystem/README.md)（editor / table / form / ui-pro / cli / 商业化）  | 方向调研；落地形态（核心内 / 独立包 / vean 配方）立项时评估 | 规划者、生态开发者 |
-| **调研报告**   | [research/](./research/README.md)                                                     | 市场/竞品调研原始结论                                       | 规划者             |
-| **一次性报告** | [info/](./info/README.md)                                                             | 周期审计、同步/适配报告                                     | 维护者             |
+| 分类           | 文件                                                                                  | 定位                                                                                                  | 典型读者                     |
+| :------------- | :------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------- | :--------------------------- |
+| **架构与质量** | [architecture.md](./architecture.md) · [optimize.md](./optimize.md)                   | 仓库现状真相源 + 工程质量评估                                                                         | 架构师、新成员               |
+| **主题引擎**   | [theme.md](./theme.md)                                                                | 唯一权威：三层架构 / token 契约 / 两项机制 / 引擎 API / 运行时接线 / 验收 / 决议（含 FOUC 选型 §9.4） | 主题维护者、架构师、AI Agent |
+| **路线与规划** | [roadmap.md](./roadmap.md)                                                            | 总路线图 + 组件评估明细                                                                               | 规划者、贡献者               |
+| **核心内领域** | [ui-ai-roadmap.md](./ui-ai-roadmap.md) · [ui-shell-roadmap.md](./ui-shell-roadmap.md) | AI/chat 与中后台壳组件的回迁规划（aria 准入）                                                         | 组件开发者                   |
+| **准入整改**   | [aria-admission-remediation.md](./aria-admission-remediation.md)                      | aria 准入违规与处置记录（整改已随 v0.50.0 窗口完成）                                                  | 组件开发者                   |
+| **决策记录**   | [adr/](./adr/README.md)                                                               | 架构决策（含已 superseded 的外围包分层 ADR）                                                          | 架构师                       |
+| **未来提案**   | [ecosystem/](./ecosystem/README.md)（editor / table / form / ui-pro / cli / 商业化）  | 方向调研；落地形态（核心内 / 独立包 / vean 配方）立项时评估                                           | 规划者、生态开发者           |
+| **调研报告**   | [research/](./research/README.md)                                                     | 市场/竞品调研原始结论                                                                                 | 规划者                       |
+| **一次性报告** | [info/](./info/README.md)                                                             | 周期审计、同步/适配报告                                                                               | 维护者                       |
 
 ## 核心文档关系图
 
@@ -71,7 +71,10 @@ roadmap.md（组件路线图 + 评估明细）◄── optimize.md（工程质�
 - **「editor/table/form 等提案现状」** → [ecosystem/](./ecosystem/README.md)
 - **「竞品/市场依据」** → [research/](./research/README.md)
 - **「质量改进项」** → [optimize.md](./optimize.md)
-- **「刷新时主题闪一下怎么解决 / SSR 与 SSG 主题差异」** → [theme.md](./theme.md)
+- **「主题怎么改 / token 怎么加 / 代码在哪 / 有什么禁区」** → [theme.md](./theme.md)（§0 是 AI Agent 接入手册）
+- **「刷新时主题闪一下怎么解决 / SSR 与 SSG 主题差异」** → [theme.md §9.4](./theme.md)
+- **「主题 token 怎么设计 / 该参照哪个组件库 / 为什么这么分层」** → [theme.md](./theme.md)
+- **「主题系统现在有哪些问题 / 实测数据」** → [info/theme-system-audit.md](./info/theme-system-audit.md)
 
 ## 命名规范（摘要）
 

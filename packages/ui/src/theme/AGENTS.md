@@ -1,14 +1,16 @@
 # UI THEME SYSTEM
 
+> 本目录是主题引擎在 UI 层的接线（适配器 / 状态核心 / 面板元数据）。引擎本身的架构、token 契约与接入手册见 [docs/theme.md](../../../../docs/theme.md)（§0 是 AI Agent 速览）。
+
 Design tokens, class merging, and size context for the styled layer.
 
 ## FILES
 
-| File        | Role                                                                                                                                       |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `types.ts`  | `ThemeColor` (8 colors: primary, destructive, success, warning, info, carbon, secondary, accent) and `ThemeSize` (xs, sm, md, lg, xl, 2xl) |
-| `config.ts` | `themeSizeMap` (px values per size), `themeSizeRatio` (relative to md=16px)                                                                |
-| `index.ts`  | Barrel re-export                                                                                                                           |
+| File        | Role                                                                                                                                                                  |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `types.ts`  | `ThemeColor` (8 role colors: primary, secondary, accent, destructive, success, warning, info, carbon), `ThemeSize` (xs…2xl), `ThemePresetColors` / `ThemePresetInput` |
+| `config.ts` | `themeSizeMap` (px values per size), `themeSizeRatio` (relative to md=16px)                                                                                           |
+| `index.ts`  | Barrel re-export                                                                                                                                                      |
 
 ## KEY CONCEPTS
 

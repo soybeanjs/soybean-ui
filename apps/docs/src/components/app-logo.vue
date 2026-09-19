@@ -83,8 +83,8 @@
           y1="0"
           y2="0"
         >
-          <stop offset="0" stop-color="hsl(var(--primary-700))" />
-          <stop offset="1" stop-color="hsl(var(--primary-600))" />
+          <stop offset="0" stop-color="hsl(var(--vean-primary-700))" />
+          <stop offset="1" stop-color="hsl(var(--vean-primary-600))" />
         </linearGradient>
         <linearGradient
           id="LinearGradient_2"
@@ -95,8 +95,8 @@
           y1="0"
           y2="0"
         >
-          <stop offset="0" stop-color="hsl(var(--primary-300))" />
-          <stop offset="1" stop-color="hsl(var(--primary-500))" />
+          <stop offset="0" stop-color="hsl(var(--vean-primary-300))" />
+          <stop offset="1" stop-color="hsl(var(--vean-primary-500))" />
         </linearGradient>
         <linearGradient
           id="LinearGradient_3"
@@ -107,8 +107,8 @@
           y1="0"
           y2="0"
         >
-          <stop offset="0" stop-color="hsl(var(--primary-600))" />
-          <stop offset="1" stop-color="hsl(var(--primary-700))" />
+          <stop offset="0" stop-color="hsl(var(--vean-primary-600))" />
+          <stop offset="1" stop-color="hsl(var(--vean-primary-700))" />
         </linearGradient>
         <linearGradient
           id="LinearGradient_4"
@@ -119,8 +119,8 @@
           y1="0"
           y2="0"
         >
-          <stop offset="0" stop-color="hsl(var(--primary-400))" />
-          <stop offset="1" stop-color="hsl(var(--primary-600))" />
+          <stop offset="0" stop-color="hsl(var(--vean-primary-400))" />
+          <stop offset="1" stop-color="hsl(var(--vean-primary-600))" />
         </linearGradient>
         <linearGradient
           id="LinearGradient_5"
@@ -131,8 +131,8 @@
           y1="0"
           y2="0"
         >
-          <stop offset="0" stop-color="hsl(var(--primary-500))" />
-          <stop offset="1" stop-color="hsl(var(--primary-300))" />
+          <stop offset="0" stop-color="hsl(var(--vean-primary-500))" />
+          <stop offset="1" stop-color="hsl(var(--vean-primary-300))" />
         </linearGradient>
         <linearGradient
           id="LinearGradient_6"
@@ -143,8 +143,8 @@
           y1="0"
           y2="0"
         >
-          <stop offset="0" stop-color="hsl(var(--primary-300))" />
-          <stop offset="1" stop-color="hsl(var(--primary-500))" />
+          <stop offset="0" stop-color="hsl(var(--vean-primary-300))" />
+          <stop offset="1" stop-color="hsl(var(--vean-primary-500))" />
         </linearGradient>
         <linearGradient
           id="LinearGradient_7"
@@ -155,8 +155,8 @@
           y1="0"
           y2="0"
         >
-          <stop offset="0" stop-color="hsl(var(--primary-700))" />
-          <stop offset="1" stop-color="hsl(var(--primary-600))" />
+          <stop offset="0" stop-color="hsl(var(--vean-primary-700))" />
+          <stop offset="1" stop-color="hsl(var(--vean-primary-600))" />
         </linearGradient>
       </defs>
     </svg>

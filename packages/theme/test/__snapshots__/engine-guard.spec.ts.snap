@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`contrast guard — matrix acceptance > records the guard corrections of the default theme (snapshot) 1`] = `
+{
+  "corrections": [],
+  "nonTextThreshold": 3,
+  "policy": "aa",
+  "textThreshold": 4.5,
+}
+`;

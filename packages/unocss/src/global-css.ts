@@ -1,15 +1,19 @@
-import { COLOR_VARIABLES, EXTENDED_THEME_VARIABLES, SIZE_VARIABLE } from '@vean/theme';
 import type { ColorFormat } from '@vean/theme';
-import { alphaColorRef, colorRef } from './colors';
+import { cssAlphaColorRef, cssColorRef } from './theme';
 
-/** 全局基础样式：border 默认色、根字号、body 前景/背景、按钮背景重置、iOS 输入框字号下限 */
+/**
+ * 全局基础样式：border 默认色、根字号、body 前景/背景、按钮背景重置、iOS 输入框字号下限。
+ *
+ * 这些基础样式读 `--vean-*`（与工具类同源）：页面底色与 `bg-background`
+ * 永远取自同一套主题状态。
+ */
 export function buildGlobalCss(format: ColorFormat): string {
-  const border = alphaColorRef(COLOR_VARIABLES.border, `var(${EXTENDED_THEME_VARIABLES.borderAlpha}, 1)`, format);
+  const border = cssAlphaColorRef('--vean-border', 'var(--vean-border-alpha, 1)', format);
 
   return [
     `*,::before,::after{border-color:${border}}`,
-    `html{font-size:var(${SIZE_VARIABLE})}`,
-    `body{color:${colorRef(COLOR_VARIABLES.foreground, format)};background-color:${colorRef(COLOR_VARIABLES.background, format)}}`,
+    `html{font-size:var(--vean-size)}`,
+    `body{color:${cssColorRef('--vean-foreground', format)};background-color:${cssColorRef('--vean-background', format)}}`,
     `button{background-color:transparent}`,
     // iOS Safari zooms the page when a text field smaller than 16px takes focus,
     // and never zooms back out once the keyboard closes. Coarse pointers get a

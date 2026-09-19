@@ -17,7 +17,7 @@ export const toastVariants = scv({
       'max-[600px]:data-[y-position=top]:top-[--mobile-offset-top] max-[600px]:data-[y-position=bottom]:bottom-[--mobile-offset-bottom]'
     ],
     toast: [
-      'group absolute w-full rounded-md bg-popover text-popover-foreground border border-transparent opacity-0 outline-none touch-none',
+      'group absolute w-full rounded-md bg-elevated text-foreground border border-transparent opacity-0 outline-none touch-none',
       'z-[--z-index] break-anywhere [--y:translateY(100%)] [--lift:1] [--lift-amount:calc(var(--lift)*var(--gap))] [transform:var(--y)]',
       '[transition:transform_400ms,opacity_400ms,height_400ms,box-shadow_200ms] [box-shadow:0_4px_12px_hsl(var(--foreground)/0.1)]',
       'focus-visible:[box-shadow:0_4px_12px_hsl(var(--foreground)/0.1),0_0_0_2px_hsl(var(--foreground)/0.2)] [&>*]:[transition:opacity_400ms]',
@@ -42,10 +42,10 @@ export const toastVariants = scv({
       'data-[swipe-out=true]:data-[y-position=top]:[animation-timing-function:ease-out] data-[swipe-out=true]:data-[y-position=bottom]:[animation-timing-function:ease-out]',
       'data-[swipe-out=true]:data-[y-position=top]:[animation-fill-mode:forwards] data-[swipe-out=true]:data-[y-position=bottom]:[animation-fill-mode:forwards]',
       'data-[swipe-out=true]:data-[swipe-direction=left]:[animation-name:toast-swipe-out-left] data-[swipe-out=true]:data-[swipe-direction=right]:[animation-name:toast-swipe-out-right] data-[swipe-out=true]:data-[swipe-direction=up]:[animation-name:toast-swipe-out-up] data-[swipe-out=true]:data-[swipe-direction=down]:[animation-name:toast-swipe-out-down]',
-      'data-[rich-color=true]:data-[type=success]:bg-success-100 data-[rich-color=true]:data-[type=success]:border-success',
-      'data-[rich-color=true]:data-[type=info]:bg-info-100 data-[rich-color=true]:data-[type=info]:border-info',
-      'data-[rich-color=true]:data-[type=warning]:bg-warning-100 data-[rich-color=true]:data-[type=warning]:border-warning',
-      'data-[rich-color=true]:data-[type=error]:bg-destructive-100 data-[rich-color=true]:data-[type=error]:border-destructive',
+      'data-[rich-color=true]:data-[type=success]:bg-success-subtle data-[rich-color=true]:data-[type=success]:border-success',
+      'data-[rich-color=true]:data-[type=info]:bg-info-subtle data-[rich-color=true]:data-[type=info]:border-info',
+      'data-[rich-color=true]:data-[type=warning]:bg-warning-subtle data-[rich-color=true]:data-[type=warning]:border-warning',
+      'data-[rich-color=true]:data-[type=error]:bg-destructive-subtle data-[rich-color=true]:data-[type=error]:border-destructive',
       'data-[inverted=true]:bg-carbon data-[inverted=true]:border-carbon data-[inverted=true]:text-carbon-foreground'
     ],
     wrapper: 'flex flex-col items-stretch',

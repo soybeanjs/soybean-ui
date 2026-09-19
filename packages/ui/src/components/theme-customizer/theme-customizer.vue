@@ -2,15 +2,15 @@
 import { computed, ref, watch } from 'vue';
 import { THEME_RADIUS, themeRadiusKeys, themeSizeKeys } from '@vean/theme';
 import type {
-  BaseColorKey,
   ChartSchemeKey,
-  ColorKey,
   ColorValue,
+  ContrastPolicy,
   DarkLevelOffset,
   FeedbackSchemeKey,
   LightLevelOffset,
-  PrimaryColorKey,
-  SidebarSchemeKey,
+  PaletteKey,
+  SemanticToken,
+  SurfaceStyle,
   ThemeRadius,
   ThemeSize
 } from '@vean/theme';
@@ -32,7 +32,6 @@ import ChartSchemaSelect from './chart-schema-select.vue';
 import FeedbackSchemaSelect from './feedback-schema-select.vue';
 import PrimaryPaletteSelect from './primary-palette-select.vue';
 import SectionItem from './section-item.vue';
-import SidebarSchemaSelect from './sidebar-schema-select.vue';
 import type { ThemeCustomizerProps, ThemeCustomizerSection } from './types';
 import { useThemeCustomizerLocale } from './use-locale';
 
@@ -56,8 +55,9 @@ const resolveLabel = (key: string): string => (props.labelResolver ? props.label
 const theme = useTheme('ThemeCustomizer');
 
 // —— 状态核心：初始化自当前主题，改动即时 commit 到运行时 ——
+// 持久化由 SConfigProvider 的单一信封写入者负责（apply → setThemeState → 派生
+// 载荷写入 `__VEAN_THEME`），这里不再自行写存储，避免多写者竞争。
 const settings = useThemeSettings({
-  persist: props.persist,
   initial: {
     ...theme.theme.value,
     mode: theme.mode.value
@@ -69,12 +69,12 @@ const settings = useThemeSettings({
 
 // —— 基础 token 绑定 ——
 // mode 偏好由 <ThemeModeSelect> 直接绑定主题上下文，此处无需重复状态。
-const baseValue = computed<BaseColorKey>({
+const baseValue = computed<PaletteKey>({
   get: () => settings.state.value.base ?? 'zinc',
   set: value => settings.setState({ base: value })
 });
 
-const primaryValue = computed<PrimaryColorKey>({
+const primaryValue = computed<PaletteKey>({
   get: () => settings.state.value.primary ?? 'indigo',
   set: value => settings.setState({ primary: value })
 });
@@ -106,11 +106,6 @@ const chartValue = computed<ChartSchemeKey>({
   set: value => settings.setState({ chart: value })
 });
 
-const sidebarValue = computed<SidebarSchemeKey>({
-  get: () => settings.state.value.sidebar ?? 'derived',
-  set: value => settings.setState({ sidebar: value })
-});
-
 const lightLevelValue = computed<LightLevelOffset>({
   get: () => settings.state.value.lightLevel ?? 0,
   set: value => settings.setState({ lightLevel: value })
@@ -125,6 +120,27 @@ const borderOpacityValue = computed<number>({
   get: () => settings.state.value.borderOpacity ?? 1,
   set: value => settings.setState({ borderOpacity: value })
 });
+
+const surfaceStyleValue = computed<SurfaceStyle>({
+  get: () => settings.state.value.surfaceStyle ?? 'layered',
+  set: value => settings.setState({ surfaceStyle: value })
+});
+
+const surfaceStyleOptions = computed<SegmentOptionData<SurfaceStyle>[]>(() => [
+  { label: resolveOption('surfaceStyle', 'layered'), value: 'layered' },
+  { label: resolveOption('surfaceStyle', 'flat'), value: 'flat' }
+]);
+
+const contrastValue = computed<ContrastPolicy>({
+  get: () => settings.state.value.contrast ?? 'aa',
+  set: value => settings.setState({ contrast: value })
+});
+
+const contrastOptions = computed<SegmentOptionData<ContrastPolicy>[]>(() => [
+  { label: resolveOption('contrast', 'off'), value: 'off' },
+  { label: resolveOption('contrast', 'aa'), value: 'aa' },
+  { label: resolveOption('contrast', 'aaa'), value: 'aaa' }
+]);
 
 const sizeOptions = computed<SelectOptionData<ThemeSize>[]>(() =>
   themeSizeKeys.map(key => ({
@@ -151,8 +167,8 @@ const levelModeOptions = computed<SegmentOptionData<'light' | 'dark'>[]>(() => [
 const variants = useThemeVariants({ settings, mode: customMode });
 
 /** 写入某个 variant token 的 override（配合 `final` 值显示，反映当前派生结果） */
-const setVariant = (key: ColorKey, value: string): void => {
-  settings.setOverride(customMode.value, key, value as ColorValue);
+const setVariant = (key: SemanticToken, value: string): void => {
+  settings.setOverride(customMode.value, key, value);
 };
 
 // —— base 表面层级：lightLevel/darkLevel 由 Base 区域独立的 levelMode 分片决定 ——
@@ -248,9 +264,7 @@ watch(
             <SectionItem :label="resolveLabel('chart')">
               <ChartSchemaSelect v-model="chartValue" class="w-50" />
             </SectionItem>
-            <SectionItem :label="resolveLabel('sidebar')">
-              <SidebarSchemaSelect v-model="sidebarValue" class="w-50" />
-            </SectionItem>
+            <!-- 区域（侧栏）不再是 scheme：v2 中它由全局角色镜像而来，逐 token 覆盖在 Custom 面板 -->
           </SectionItem>
 
           <!-- size -->
@@ -289,6 +303,16 @@ watch(
               </span>
             </div>
           </SectionItem>
+
+          <!-- surface style -->
+          <SectionItem v-if="sectionVisible('advanced')" :label="resolveLabel('surfaceStyle')">
+            <SSegment v-model="surfaceStyleValue" :items="surfaceStyleOptions" size="sm" />
+          </SectionItem>
+
+          <!-- contrast policy -->
+          <SectionItem v-if="sectionVisible('advanced')" :label="resolveLabel('contrast')">
+            <SSegment v-model="contrastValue" :items="contrastOptions" size="sm" />
+          </SectionItem>
         </div>
 
         <!-- Custom 面板：各 variant 分组平铺，独立选择 light/dark 分片 -->
@@ -305,7 +329,7 @@ watch(
                 <span class="text-xs text-foreground">{{ resolveLabel(meta.i18n) }}</span>
                 <SPalettePicker
                   :size="size"
-                  :model-value="variants.final.value[meta.key]"
+                  :model-value="variants.final.value[meta.key] as ColorValue"
                   class="w-50"
                   @update:model-value="value => setVariant(meta.key, value)"
                 />

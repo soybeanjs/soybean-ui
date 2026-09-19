@@ -47,7 +47,7 @@ const cssVars = computed<CSSProperties>(() => {
 <template>
   <div
     :style="cssVars"
-    class="flex flex-col gap-6 rounded-[14px] border border-border bg-card px-6 py-6 text-card-foreground"
+    class="flex flex-col gap-6 rounded-[14px] border border-border bg-surface px-6 py-6 text-card-foreground"
   >
     <header v-if="title || description" class="grid gap-2">
       <h2 v-if="title" class="text-base font-semibold leading-none tracking-[-0.01em]">{{ title }}</h2>

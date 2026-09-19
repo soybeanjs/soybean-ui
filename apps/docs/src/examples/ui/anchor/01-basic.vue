@@ -13,7 +13,7 @@ const sections = createAnchorSections('basic-');
 <template>
   <div class="grid gap-4 md:grid-cols-[240px_minmax(0,1fr)]">
     <SAnchor :items="items" :get-container="getContainer" :offset-top="12" />
-    <div ref="containerRef" class="max-h-96 overflow-auto rounded-lg border border-border bg-card p-4">
+    <div ref="containerRef" class="max-h-96 overflow-auto rounded-lg border border-border bg-surface p-4">
       <section v-for="section in sections" :id="section.id" :key="section.id" class="mb-6 last:mb-0 scroll-mt-4">
         <div class="min-h-48 rounded-lg border border-dashed border-border/80 bg-muted/40 p-4">
           <h4 class="text-base font-medium">{{ section.title }}</h4>
