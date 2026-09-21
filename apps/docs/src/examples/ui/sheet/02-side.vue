@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButton, SSheet } from '@soybeanjs/ui';
-import type { Side } from '@soybeanjs/ui';
+import { SButton, SSheet } from '@vean/ui';
+import type { Side } from '@vean/ui';
 
 const sides: Side[] = ['left', 'right', 'top', 'bottom'];
 </script>

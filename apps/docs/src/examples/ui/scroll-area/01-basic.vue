@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SScrollArea } from '@soybeanjs/ui';
+import { SScrollArea } from '@vean/ui';
 
 const tags = Array.from({ length: 30 }, (_, index) => `Tag ${index + 1}`);
 </script>

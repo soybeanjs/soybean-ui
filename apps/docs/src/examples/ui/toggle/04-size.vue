@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SToggle } from '@soybeanjs/ui';
+import { SToggle } from '@vean/ui';
 import { themeSizeOptions } from '~/constants/theme';
 </script>
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { themeSizeKeys } from '@soybeanjs/theme';
+import { themeSizeKeys } from '@vean/theme';
 import {
   SAvatar,
   SBadge,
@@ -15,8 +15,8 @@ import {
   SSwitch,
   STag,
   STextarea
-} from '@soybeanjs/ui';
-import type { RadioGroupOptionData, SegmentOptionData, SelectOptionData } from '@soybeanjs/ui';
+} from '@vean/ui';
+import type { RadioGroupOptionData, SegmentOptionData, SelectOptionData } from '@vean/ui';
 
 defineOptions({
   name: 'ThemeEditorPreviewSize'
@@ -129,7 +129,7 @@ const textLadder = [
         v-for="size in sizes"
         :key="`avatar-${size}`"
         :size="size"
-        src="https://r2.soybeanjs.tech/soybeanjs/logo-soybean-ui.svg?v=202609141212"
+        src="https://r2.veanui.com/imgs/logo-vean-ui.svg?v=202609141212"
         fallback-label="V"
       />
     </div>

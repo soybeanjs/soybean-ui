@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButton } from '@soybeanjs/ui';
+import { SButton } from '@vean/ui';
 import { themeSizeOptions } from '~/constants/theme';
 </script>
 

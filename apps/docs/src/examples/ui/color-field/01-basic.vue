@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SColorField } from '@soybeanjs/ui';
+import { SColorField } from '@vean/ui';
 
 const color = ref('#0ea5e9');
 </script>

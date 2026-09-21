@@ -12,7 +12,7 @@ The playground lists the example SFCs bundled with the docs site and runs the se
 
 ## How it works
 
-- **Library** — the select in the card header switches between `Headless`, `UI`, `Admin` and `Chart`. Examples currently exist for `UI` and `Chart`; the remaining libraries show an empty state until their examples land.
+- **Library** — the select in the card header switches between `Aria`, `UI`, `Admin` and `Chart`. Examples currently exist for `UI` and `Chart`; the remaining libraries show an empty state until their examples land.
 - **Tabs** — one tab per example folder (`apps/docs/src/examples/<library>/<component>/index.vue`).
 - **Deep links** — the active tab is mirrored to the `?tab=` query parameter, so a specific example can be shared by URL.
 

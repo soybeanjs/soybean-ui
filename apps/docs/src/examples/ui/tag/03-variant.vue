@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { STag } from '@soybeanjs/ui';
-import type { TagVariant } from '@soybeanjs/ui';
+import { STag } from '@vean/ui';
+import type { TagVariant } from '@vean/ui';
 
 const variants: TagVariant[] = ['solid', 'pure', 'outline', 'soft', 'ghost', 'raw'];
 </script>

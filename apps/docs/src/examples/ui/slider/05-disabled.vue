@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SSlider } from '@soybeanjs/ui';
+import { SSlider } from '@vean/ui';
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButton, SDropdownMenuWrapper, SMenuOptions } from '@soybeanjs/ui';
-import type { MenuOptionData } from '@soybeanjs/ui';
+import { SButton, SDropdownMenuWrapper, SMenuOptions } from '@vean/ui';
+import type { MenuOptionData } from '@vean/ui';
 
 const items: MenuOptionData<string>[] = [
   { label: 'My Account', value: 'my-account', isGroupLabel: true },

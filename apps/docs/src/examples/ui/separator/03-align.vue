@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SSeparator } from '@soybeanjs/ui';
+import { SSeparator } from '@vean/ui';
 </script>
 
 <template>

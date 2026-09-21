@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SDateRangePicker } from '@soybeanjs/ui';
+import { SDateRangePicker } from '@vean/ui';
 
 const range = shallowRef();
 </script>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCheckbox } from '@soybeanjs/ui';
+import { SCheckbox } from '@vean/ui';
 </script>
 
 <template>

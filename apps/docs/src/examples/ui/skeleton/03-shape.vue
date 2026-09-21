@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SSkeleton } from '@soybeanjs/ui';
-import type { SkeletonShape } from '@soybeanjs/ui';
+import { SSkeleton } from '@vean/ui';
+import type { SkeletonShape } from '@vean/ui';
 
 const shapes: SkeletonShape[] = ['auto', 'rounded'];
 </script>

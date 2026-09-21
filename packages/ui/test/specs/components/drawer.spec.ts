@@ -97,7 +97,7 @@ describe('SDrawer', () => {
 
       await nextTick();
 
-      expect(wrapper.find('[data-soybean-handle]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-handle]').exists()).toBe(true);
 
       wrapper.unmount();
     });
@@ -111,11 +111,11 @@ describe('SDrawer', () => {
 
       await nextTick();
 
-      expect(wrapper.find('[data-soybean-drawer-trigger]').exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-drawer-header]').exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-drawer-title]').exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-drawer-content]').exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-drawer-close]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-drawer-trigger]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-drawer-header]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-drawer-title]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-drawer-content]').exists()).toBe(true);
+      expect(wrapper.find('[data-vean-drawer-close]').exists()).toBe(true);
 
       wrapper.unmount();
     });
@@ -182,7 +182,7 @@ describe('SDrawer', () => {
       await nextTick();
       await nextTick();
 
-      const popup = document.body.querySelector('[data-soybean-drawer-popup]') as HTMLElement | null;
+      const popup = document.body.querySelector('[data-vean-drawer-popup]') as HTMLElement | null;
 
       expect(popup).toBeTruthy();
 
@@ -246,11 +246,11 @@ describe('SDrawer', () => {
 
       await nextTick();
 
-      const popup = wrapper.find('[data-soybean-drawer-popup]');
+      const popup = wrapper.find('[data-vean-drawer-popup]');
 
       expect(popup.exists()).toBe(true);
-      expect(popup.attributes('data-soybean-snap-points')).toBe('true');
-      expect(popup.attributes('data-soybean-drawer-side')).toBe('bottom');
+      expect(popup.attributes('data-vean-snap-points')).toBe('true');
+      expect(popup.attributes('data-vean-drawer-side')).toBe('bottom');
 
       wrapper.unmount();
     });
@@ -264,7 +264,7 @@ describe('SDrawer', () => {
 
       await nextTick();
 
-      expect(wrapper.find('[data-soybean-drawer-popup]').attributes('data-soybean-snap-points')).toBe('false');
+      expect(wrapper.find('[data-vean-drawer-popup]').attributes('data-vean-snap-points')).toBe('false');
 
       wrapper.unmount();
     });
@@ -296,11 +296,11 @@ describe('SDrawer', () => {
         await nextTick();
         await nextTick();
 
-        const popup = wrapper.find('[data-soybean-drawer-popup]');
+        const popup = wrapper.find('[data-vean-drawer-popup]');
 
         // Box: min(1000, 1000 − 32) = 968; offset: 968 − 0.5 × 1000 = 468.
-        expect(popup.attributes('style') ?? '').toMatch(/--soybean-drawer-height:\s*968px/);
-        expect(popup.attributes('style') ?? '').toMatch(/--soybean-drawer-snap-point-offset:\s*468px/);
+        expect(popup.attributes('style') ?? '').toMatch(/--vean-drawer-height:\s*968px/);
+        expect(popup.attributes('style') ?? '').toMatch(/--vean-drawer-snap-point-offset:\s*468px/);
 
         // A viewport change while open re-measures the box in the same tick. The
         // published height and the viewport-derived offset must never disagree,
@@ -311,8 +311,8 @@ describe('SDrawer', () => {
         await nextTick();
 
         // Box: min(1000, 1200 − 32) = 1000; offset: 1000 − 0.5 × 1200 = 400.
-        expect(popup.attributes('style') ?? '').toMatch(/--soybean-drawer-height:\s*1000px/);
-        expect(popup.attributes('style') ?? '').toMatch(/--soybean-drawer-snap-point-offset:\s*400px/);
+        expect(popup.attributes('style') ?? '').toMatch(/--vean-drawer-height:\s*1000px/);
+        expect(popup.attributes('style') ?? '').toMatch(/--vean-drawer-snap-point-offset:\s*400px/);
 
         wrapper.unmount();
       } finally {
@@ -330,12 +330,12 @@ describe('SDrawer', () => {
       const descriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
 
       // Model the stylesheet: the box is its content height clamped by the cap the
-      // popup publishes, which is what `max-height: var(--soybean-drawer-max-height)`
+      // popup publishes, which is what `max-height: var(--vean-drawer-max-height)`
       // resolves to in a browser.
       Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
         configurable: true,
         get(this: HTMLElement) {
-          const cap = Number.parseFloat(this.style.getPropertyValue('--soybean-drawer-max-height'));
+          const cap = Number.parseFloat(this.style.getPropertyValue('--vean-drawer-max-height'));
 
           return Number.isFinite(cap)
             ? Math.min(cap, 1600)
@@ -361,7 +361,7 @@ describe('SDrawer', () => {
         await nextTick();
         await nextTick();
 
-        const style = wrapper.find('[data-soybean-drawer-popup]').attributes('style') ?? '';
+        const style = wrapper.find('[data-vean-drawer-popup]').attributes('style') ?? '';
 
         wrapper.unmount();
 
@@ -373,16 +373,16 @@ describe('SDrawer', () => {
         // the viewport edge (offset 0), so its whole scrolling window is on screen.
         const largest = await mountAt(0.75);
 
-        expect(largest).toMatch(/--soybean-drawer-max-height:\s*750px/);
-        expect(largest).toMatch(/--soybean-drawer-height:\s*750px/);
-        expect(largest).toMatch(/--soybean-drawer-snap-point-offset:\s*0px/);
+        expect(largest).toMatch(/--vean-drawer-max-height:\s*750px/);
+        expect(largest).toMatch(/--vean-drawer-height:\s*750px/);
+        expect(largest).toMatch(/--vean-drawer-snap-point-offset:\s*0px/);
 
         // A partial snap keeps the same visible extent as before the cap — it only
         // stops the box from hanging past the viewport edge: 750 − 250 = 0.5 × 1000.
         const half = await mountAt(0.5);
 
-        expect(half).toMatch(/--soybean-drawer-height:\s*750px/);
-        expect(half).toMatch(/--soybean-drawer-snap-point-offset:\s*250px/);
+        expect(half).toMatch(/--vean-drawer-height:\s*750px/);
+        expect(half).toMatch(/--vean-drawer-snap-point-offset:\s*250px/);
       } finally {
         innerHeightSpy.mockRestore();
 
@@ -413,10 +413,10 @@ describe('SDrawer', () => {
 
         await nextTick();
 
-        const style = wrapper.find('[data-soybean-drawer-popup]').attributes('style') ?? '';
+        const style = wrapper.find('[data-vean-drawer-popup]').attributes('style') ?? '';
 
-        expect(style).toMatch(/--soybean-drawer-max-width:\s*300px/);
-        expect(style).not.toMatch(/--soybean-drawer-max-height/);
+        expect(style).toMatch(/--vean-drawer-max-width:\s*300px/);
+        expect(style).not.toMatch(/--vean-drawer-max-height/);
 
         wrapper.unmount();
       } finally {

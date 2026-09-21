@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SThemeModeSwitch } from '@soybeanjs/ui';
+import { SThemeModeSwitch } from '@vean/ui';
 </script>
 
 <template>

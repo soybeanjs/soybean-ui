@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SContextMenu } from '@soybeanjs/ui';
-import type { MenuOptionData } from '@soybeanjs/ui';
+import { SContextMenu } from '@vean/ui';
+import type { MenuOptionData } from '@vean/ui';
 import ContextMenuTrigger from './_trigger.vue';
 
 const menus: MenuOptionData<string>[] = [

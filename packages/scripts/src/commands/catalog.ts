@@ -11,7 +11,7 @@ import {
 } from '../shared/catalog';
 import type { CatalogGroup, IsGroupExport } from '../shared/catalog';
 
-export type CatalogTarget = 'headless' | 'ui';
+export type CatalogTarget = 'aria' | 'ui';
 
 interface CatalogDocument {
   /** output file, relative to the package src dir */
@@ -27,8 +27,8 @@ interface CatalogTargetConfig {
 }
 
 const CONFIG: Record<CatalogTarget, CatalogTargetConfig> = {
-  headless: {
-    srcDir: 'packages/headless/src',
+  aria: {
+    srcDir: 'packages/aria/src',
     isGroupExport: isFamilyExport,
     buildDocuments: groups => [
       { file: 'constants/components.ts', code: emitComponentsModule(groups) },

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SEditable } from '@soybeanjs/ui';
-import type { EditableEventState } from '@soybeanjs/ui';
+import { SEditable } from '@vean/ui';
+import type { EditableEventState } from '@vean/ui';
 
 const value = ref('Click to edit your display name');
 const state = ref<EditableEventState | 'preview'>('preview');

@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { setLocale } from 'ubean/client';
-import { snakeCase } from '@soybeanjs/headless/shared';
-import type { MenuOptionData } from '@soybeanjs/ui';
+import { snakeCase } from '@vean/aria/shared';
+import type { MenuOptionData } from '@vean/ui';
 
 const { t, locale } = useI18n();
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SAnchor } from '@soybeanjs/ui';
-import type { ThemeColor } from '@soybeanjs/ui';
+import { SAnchor } from '@vean/ui';
+import type { ThemeColor } from '@vean/ui';
 import { anchorItems } from './shared';
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];

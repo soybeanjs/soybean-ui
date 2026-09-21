@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SNavMenu } from '@soybeanjs/ui';
-import type { NavMenuOptionData } from '@soybeanjs/ui';
+import { SNavMenu } from '@vean/ui';
+import type { NavMenuOptionData } from '@vean/ui';
 
 const menus: NavMenuOptionData[] = [
   {

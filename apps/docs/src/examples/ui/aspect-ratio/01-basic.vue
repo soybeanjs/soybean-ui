@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SAspectRatio } from '@soybeanjs/ui';
+import { SAspectRatio } from '@vean/ui';
 </script>
 
 <template>

@@ -10,26 +10,26 @@ export const layoutVariants = scv({
     mobileDrawer: sheetVariants({ size: props.size, side: props.side }).popup
   }),
   slots: {
-    // --sl-* 是本库的间距/gap 别名(headless 注入的 --layout-* 保持不变),在 root 上按状态计算,各槽位直接应用
+    // --sl-* 是本库的间距/gap 别名(aria 注入的 --layout-* 保持不变),在 root 上按状态计算,各槽位直接应用
     root: [
       'group/layout relative h-full transition-all-300',
       '[--sl-half-spacing:calc(var(--sl-spacing)/2)]',
-      '[--sl-main-gap:var(--soybean-layout-start-gap)]',
-      '[--sl-header-gap:var(--soybean-layout-header-start-gap)]',
-      '[--sl-footer-gap:var(--soybean-layout-footer-start-gap)]',
+      '[--sl-main-gap:var(--vean-layout-start-gap)]',
+      '[--sl-header-gap:var(--vean-layout-header-start-gap)]',
+      '[--sl-footer-gap:var(--vean-layout-footer-start-gap)]',
       '[--sl-end-gap:0px]'
     ],
     main: 'flex flex-col h-full group-data-[scroll-behavior=wrapper]/layout:overflow-y-auto transition-all-300',
     sidebarRoot: 'lt-md:hidden',
     sidebarWrapper: [
-      `absolute inset-y-0 z-[--soybean-layout-sidebar-z-index] flex h-[--soybean-layout-sidebar-height] w-[--soybean-sidebar-width] transition-[width,opacity] duration-200 ease-linear lt-md:hidden`,
-      'group-data-[state=collapsed]/layout:w-[--soybean-collapsed-sidebar-width] mt-[--soybean-layout-sidebar-top-gap] mb-[--soybean-layout-sidebar-bottom-gap]'
+      `absolute inset-y-0 z-[--vean-layout-sidebar-z-index] flex h-[--vean-layout-sidebar-height] w-[--vean-sidebar-width] transition-[width,opacity] duration-200 ease-linear lt-md:hidden`,
+      'group-data-[state=collapsed]/layout:w-[--vean-collapsed-sidebar-width] mt-[--vean-layout-sidebar-top-gap] mb-[--vean-layout-sidebar-bottom-gap]'
     ],
     sidebar: [
       `flex flex-col w-full h-full bg-sidebar`,
       `group-data-[variant=floating]/layout:rounded-lg group-data-[variant=floating]/layout:border group-data-[variant=floating]/layout:border-border group-data-[variant=floating]/layout:border-solid group-data-[variant=floating]/layout:shadow`
     ],
-    mobileDrawer: 'w-[--soybean-sidebar-width] bg-sidebar p-0',
+    mobileDrawer: 'w-[--vean-sidebar-width] bg-sidebar p-0',
     mobileOverlay: [
       // 移动端导航遮罩比模态遮罩更重：同一个 token，用修饰符覆盖浓度
       `fixed inset-0 z-base bg-mask/80`,
@@ -43,18 +43,18 @@ export const layoutVariants = scv({
     ],
     trigger: '',
     header: [
-      'shrink-0 flex items-center h-[--soybean-layout-header-height] transition-all-300',
-      'group-data-[fixed-top=true]/layout:absolute z-[--soybean-layout-header-z-index] top-0 inset-x-0'
+      'shrink-0 flex items-center h-[--vean-layout-header-height] transition-all-300',
+      'group-data-[fixed-top=true]/layout:absolute z-[--vean-layout-header-z-index] top-0 inset-x-0'
     ],
-    headerPlaceholder: 'shrink-0 h-[--soybean-layout-header-height] overflow-hidden',
-    tab: 'group-data-[fixed-top=true]/layout:absolute inset-x-0 top-[--soybean-layout-header-height] shrink-0 h-[--soybean-layout-tab-height] z-[--soybean-layout-tab-z-index] transition-all-300',
-    tabPlaceholder: 'shrink-0 h-[--soybean-layout-tab-height] overflow-hidden',
+    headerPlaceholder: 'shrink-0 h-[--vean-layout-header-height] overflow-hidden',
+    tab: 'group-data-[fixed-top=true]/layout:absolute inset-x-0 top-[--vean-layout-header-height] shrink-0 h-[--vean-layout-tab-height] z-[--vean-layout-tab-z-index] transition-all-300',
+    tabPlaceholder: 'shrink-0 h-[--vean-layout-tab-height] overflow-hidden',
     content: `relative grow bg-card group-data-[scroll-behavior=content]/layout:overflow-y-auto`,
     footer: [
-      'shrink-0 h-[--soybean-layout-footer-height] transition-all-300',
-      'group-data-[fixed-footer=true]/layout:absolute z-[--soybean-layout-footer-z-index] inset-x-0 bottom-0'
+      'shrink-0 h-[--vean-layout-footer-height] transition-all-300',
+      'group-data-[fixed-footer=true]/layout:absolute z-[--vean-layout-footer-z-index] inset-x-0 bottom-0'
     ],
-    footerPlaceholder: 'shrink-0 h-[--soybean-layout-footer-height] overflow-hidden'
+    footerPlaceholder: 'shrink-0 h-[--vean-layout-footer-height] overflow-hidden'
   },
   variants: {
     size: {
@@ -109,42 +109,42 @@ export const layoutVariants = scv({
     },
     variant: {
       sidebar: {
-        sidebarGapHandler: 'group-data-[collapsible=icon]/layout:w-[--soybean-collapsed-sidebar-width]',
-        sidebarWrapper: `group-data-[collapsible=icon]/layout:w-[--soybean-collapsed-sidebar-width] group-data-[side=left]/layout:border-e group-data-[side=right]/layout:border-s`
+        sidebarGapHandler: 'group-data-[collapsible=icon]/layout:w-[--vean-collapsed-sidebar-width]',
+        sidebarWrapper: `group-data-[collapsible=icon]/layout:w-[--vean-collapsed-sidebar-width] group-data-[side=left]/layout:border-e group-data-[side=right]/layout:border-s`
       },
       floating: {
         root: [
-          'data-[state=expanded]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
-          'data-[state=expanded]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
-          'data-[collapsible=icon]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
-          'data-[collapsible=icon]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
-          'data-[state=expanded]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
-          'data-[collapsible=icon]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
+          'data-[state=expanded]:[--sl-main-gap:calc(var(--vean-layout-start-gap)+var(--sl-spacing))]',
+          'data-[state=expanded]:[--sl-footer-gap:calc(var(--vean-layout-footer-start-gap)+var(--sl-spacing))]',
+          'data-[collapsible=icon]:[--sl-main-gap:calc(var(--vean-layout-start-gap)+var(--sl-spacing))]',
+          'data-[collapsible=icon]:[--sl-footer-gap:calc(var(--vean-layout-footer-start-gap)+var(--sl-spacing))]',
+          'data-[state=expanded]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--vean-layout-header-start-gap)+var(--sl-spacing))]',
+          'data-[collapsible=icon]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--vean-layout-header-start-gap)+var(--sl-spacing))]',
           'data-[orientation=vertical]:data-[stretch-footer=true]:[--sl-footer-gap:0px]'
         ],
-        sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))]`,
-        sidebarWrapper: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] p-[--sl-half-spacing] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))] border-e-0`
+        sidebarGapHandler: `w-[calc(var(--vean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--vean-collapsed-sidebar-width)+var(--sl-spacing))]`,
+        sidebarWrapper: `w-[calc(var(--vean-sidebar-width)+var(--sl-spacing))] p-[--sl-half-spacing] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--vean-collapsed-sidebar-width)+var(--sl-spacing))] border-e-0`
       },
       inset: {
         root: [
           'py-[--sl-half-spacing] bg-sidebar',
           // data-[variant=inset] 前缀用于保证特异性高于 base 上的默认值
-          'data-[variant=inset]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
-          'data-[variant=inset]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
-          'data-[variant=inset]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
+          'data-[variant=inset]:[--sl-main-gap:calc(var(--vean-layout-start-gap)+var(--sl-spacing))]',
+          'data-[variant=inset]:[--sl-footer-gap:calc(var(--vean-layout-footer-start-gap)+var(--sl-spacing))]',
+          'data-[variant=inset]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--vean-layout-header-start-gap)+var(--sl-spacing))]',
           'data-[variant=inset]:data-[orientation=vertical]:[--sl-header-gap:var(--sl-half-spacing)]',
           'data-[variant=inset]:[--sl-end-gap:var(--sl-half-spacing)]',
           'data-[variant=inset]:data-[orientation=vertical]:data-[stretch-footer=true]:[--sl-footer-gap:var(--sl-half-spacing)]'
         ],
-        sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))]`,
-        sidebarWrapper: `p-[--sl-half-spacing] w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))] border-e-0`,
+        sidebarGapHandler: `w-[calc(var(--vean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--vean-collapsed-sidebar-width)+var(--sl-spacing))]`,
+        sidebarWrapper: `p-[--sl-half-spacing] w-[calc(var(--vean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--vean-collapsed-sidebar-width)+var(--sl-spacing))] border-e-0`,
         main: `rounded-xl shadow`,
         header: [
           `top-[--sl-half-spacing] rounded-t-xl`,
           `group-data-[orientation=vertical]/layout:border-0`,
           `group-data-[orientation=vertical]/layout:shadow group-data-[orientation=vertical]/layout:rounded-xl`
         ],
-        tab: `top-[calc(var(--soybean-layout-header-height)+var(--sl-half-spacing))]`,
+        tab: `top-[calc(var(--vean-layout-header-height)+var(--sl-half-spacing))]`,
         footer: [
           'bottom-[--sl-half-spacing] rounded-b-xl',
           `group-data-[orientation=vertical]/layout:shadow group-data-[orientation=vertical]/layout:rounded-xl`,
@@ -161,8 +161,8 @@ export const layoutVariants = scv({
     },
     fullContent: {
       true: {
-        tab: ['fixed top-0 z-[--soybean-layout-base-z-index] rounded-none', 'group-data-[fixed-top=true]/layout:fixed'],
-        content: `fixed inset-0 z-[--soybean-layout-base-z-index] group-data-[tab-visible=true]/layout:mt-[--soybean-layout-tab-height] overflow-auto`
+        tab: ['fixed top-0 z-[--vean-layout-base-z-index] rounded-none', 'group-data-[fixed-top=true]/layout:fixed'],
+        content: `fixed inset-0 z-[--vean-layout-base-z-index] group-data-[tab-visible=true]/layout:mt-[--vean-layout-tab-height] overflow-auto`
       }
     }
   },

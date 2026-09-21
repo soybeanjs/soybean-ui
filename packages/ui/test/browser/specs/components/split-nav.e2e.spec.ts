@@ -107,9 +107,9 @@ describe('SSplitNav (e2e)', () => {
       });
 
       await expect.element(page.getByRole('menuitem', { name: 'Workspace' })).toBeVisible();
-      expect(sider.querySelector('[data-soybean-split-nav-dual-vertical]')).toBeTruthy();
-      expect(sider.querySelector('[data-soybean-split-nav-vertical-first-level]')).toBeTruthy();
-      expect(sider.querySelector('[data-soybean-split-nav-sub-vertical]')).toBeTruthy();
+      expect(sider.querySelector('[data-vean-split-nav-dual-vertical]')).toBeTruthy();
+      expect(sider.querySelector('[data-vean-split-nav-vertical-first-level]')).toBeTruthy();
+      expect(sider.querySelector('[data-vean-split-nav-sub-vertical]')).toBeTruthy();
 
       unmount();
       sider.remove();

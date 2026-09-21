@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SToggle } from '@soybeanjs/ui';
+import { SToggle } from '@vean/ui';
 import { themeColorOptions } from '~/constants/theme';
 
 const pressed = ref(false);

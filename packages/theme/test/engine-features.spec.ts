@@ -615,7 +615,7 @@ describe('palette layer formats and base tokens', () => {
     });
 
     // UnoCSS 定义过的档位保持它的取值；扩充档与它无缝相接
-    // （同名同值的上游守卫在 @soybeanjs/ui-uno 的适配器测试里）
+    // （同名同值的上游守卫在 @vean/unocss 的适配器测试里）
     expect(SPACING_GRID_COEFFICIENTS['2xs'] * 0.25).toBeCloseTo(0.625, 10);
     expect(SPACING_GRID_COEFFICIENTS.xs * 0.25).toBeCloseTo(0.75, 10);
     expect(SPACING_GRID_COEFFICIENTS.md * 0.25).toBeCloseTo(1, 10);

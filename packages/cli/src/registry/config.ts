@@ -1,8 +1,8 @@
-import { NEUTRAL_PALETTES, PALETTE_KEYS, themeSizeKeys, themeRadiusKeys, themeFontKeys } from '@soybeanjs/theme';
 import * as v from 'valibot';
+import { NEUTRAL_PALETTES, PALETTE_KEYS, themeSizeKeys, themeRadiusKeys, themeFontKeys } from '@vean/theme';
 
 // ---------------------------------------------------------------------------
-// SBean config (sbean.json) — the user-facing project config
+// Vean config (vean.json) — the user-facing project config
 // ---------------------------------------------------------------------------
 
 export const PRESET_ICON_LIBRARIES = ['lucide', 'material-symbols', 'ph', 'tabler', 'solar', 'radix-icons'] as const;

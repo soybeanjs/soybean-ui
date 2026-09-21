@@ -1,10 +1,10 @@
 {
-  "name": "soybean-ui",
-  "homepage": "https://ui.soybeanjs.cn",
+  "name": "vean",
+  "homepage": "https://veanui.com",
   "packages": [
     {
       "name": "ui",
-      "scope": "@soybeanjs/ui",
+      "scope": "@vean/ui",
       "prefix": "S"
     }
   ],
@@ -12,7 +12,7 @@
     {
       "name": "ui/accordion",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/accordion/accordion.vue",
@@ -32,7 +32,7 @@
     {
       "name": "ui/affix",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/affix/affix.vue",
@@ -52,7 +52,7 @@
     {
       "name": "ui/alert",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/alert/alert.vue",
@@ -72,7 +72,7 @@
     {
       "name": "ui/anchor",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/anchor/types.ts",
@@ -92,7 +92,7 @@
     {
       "name": "ui/aspect-ratio",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/aspect-ratio/index.ts",
@@ -104,7 +104,7 @@
     {
       "name": "ui/autocomplete",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/autocomplete/types.ts",
@@ -124,7 +124,7 @@
     {
       "name": "ui/avatar",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/avatar/types.ts",
@@ -144,7 +144,7 @@
     {
       "name": "ui/backtop",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "registryDependencies": ["ui/icon"],
       "files": [
         {
@@ -165,7 +165,7 @@
     {
       "name": "ui/badge",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/badge/types.ts",
@@ -185,7 +185,7 @@
     {
       "name": "ui/breadcrumb",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/breadcrumb/breadcrumb.vue",
@@ -205,7 +205,7 @@
     {
       "name": "ui/button",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "registryDependencies": ["ui/icon", "ui/link"],
       "files": [
         {
@@ -246,7 +246,7 @@
     {
       "name": "ui/calendar",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "registryDependencies": ["ui/icon", "ui/select"],
       "files": [
         {
@@ -267,7 +267,7 @@
     {
       "name": "ui/calendar-range",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "registryDependencies": ["ui/select"],
       "files": [
         {
@@ -288,7 +288,7 @@
     {
       "name": "ui/card",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "registryDependencies": ["ui/button"],
       "files": [
         {
@@ -313,7 +313,7 @@
     {
       "name": "ui/carousel",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/carousel/types.ts",
@@ -333,7 +333,7 @@
     {
       "name": "ui/checkbox",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/checkbox/checkbox-card.vue",
@@ -365,7 +365,7 @@
     {
       "name": "ui/clipboard",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/clipboard/clipboard.vue",
@@ -385,7 +385,7 @@
     {
       "name": "ui/collapsible",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/collapsible/types.ts",
@@ -405,7 +405,7 @@
     {
       "name": "ui/color-area",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/color-area/types.ts",
@@ -425,7 +425,7 @@
     {
       "name": "ui/color-field",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/color-field/types.ts",
@@ -445,7 +445,7 @@
     {
       "name": "ui/color-picker",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/color-picker/types.ts",
@@ -465,7 +465,7 @@
     {
       "name": "ui/color-slider",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/color-slider/color-slider.vue",
@@ -485,7 +485,7 @@
     {
       "name": "ui/color-swatch",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/color-swatch/types.ts",
@@ -505,7 +505,7 @@
     {
       "name": "ui/color-swatch-picker",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/color-swatch-picker/color-swatch-picker.vue",
@@ -525,7 +525,7 @@
     {
       "name": "ui/combobox",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/combobox/combobox.vue",
@@ -545,7 +545,7 @@
     {
       "name": "ui/command",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/command/types.ts",
@@ -565,7 +565,7 @@
     {
       "name": "ui/config-provider",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless", "@soybeanjs/theme"],
+      "dependencies": ["@vean/aria", "@vean/theme"],
       "registryDependencies": ["ui/dialog", "ui/icon", "ui/progress", "ui/toast"],
       "files": [
         {
@@ -590,7 +590,7 @@
     {
       "name": "ui/context-menu",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/context-menu/context-menu-wrapper.vue",
@@ -622,7 +622,7 @@
     {
       "name": "ui/date-field",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/date-field/date-field.vue",
@@ -642,7 +642,7 @@
     {
       "name": "ui/date-picker",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "registryDependencies": ["ui/calendar"],
       "files": [
         {
@@ -663,7 +663,7 @@
     {
       "name": "ui/date-range-field",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/date-range-field/types.ts",
@@ -683,7 +683,7 @@
     {
       "name": "ui/date-range-picker",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "registryDependencies": ["ui/calendar-range"],
       "files": [
         {
@@ -704,7 +704,7 @@
     {
       "name": "ui/dialog",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/dialog/dialog-provider.vue",
@@ -728,7 +728,7 @@
     {
       "name": "ui/drawer",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/drawer/drawer.vue",
@@ -748,7 +748,7 @@
     {
       "name": "ui/dropdown-menu",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/dropdown-menu/dropdown-menu-wrapper.vue",
@@ -780,7 +780,7 @@
     {
       "name": "ui/editable",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/editable/editable.vue",
@@ -800,7 +800,7 @@
     {
       "name": "ui/empty",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/empty/empty.vue",
@@ -820,7 +820,7 @@
     {
       "name": "ui/form",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/form/form-field.vue",
@@ -856,7 +856,7 @@
     {
       "name": "ui/hover-card",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/hover-card/hover-card.vue",
@@ -876,7 +876,7 @@
     {
       "name": "ui/icon",
       "type": "registry:ui",
-      "dependencies": ["@iconify/vue", "@soybeanjs/headless"],
+      "dependencies": ["@iconify/vue", "@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/icon/icon.vue",
@@ -896,7 +896,7 @@
     {
       "name": "ui/input",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/input/types.ts",
@@ -916,7 +916,7 @@
     {
       "name": "ui/input-number",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/input-number/types.ts",
@@ -936,7 +936,7 @@
     {
       "name": "ui/input-otp",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/input-otp/input-otp.vue",
@@ -956,7 +956,7 @@
     {
       "name": "ui/kbd",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/kbd/types.ts",
@@ -976,7 +976,7 @@
     {
       "name": "ui/label",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/label/label.vue",
@@ -996,7 +996,7 @@
     {
       "name": "ui/layout",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/layout/types.ts",
@@ -1020,7 +1020,7 @@
     {
       "name": "ui/link",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/link/link.vue",
@@ -1040,7 +1040,7 @@
     {
       "name": "ui/list",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/list/list.vue",
@@ -1064,7 +1064,7 @@
     {
       "name": "ui/menu",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/menu/context.ts",
@@ -1084,7 +1084,7 @@
     {
       "name": "ui/menubar",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/menubar/types.ts",
@@ -1104,7 +1104,7 @@
     {
       "name": "ui/page-tabs",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/page-tabs/types.ts",
@@ -1124,7 +1124,7 @@
     {
       "name": "ui/pagination",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/pagination/pagination.vue",
@@ -1144,7 +1144,7 @@
     {
       "name": "ui/password",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/password/types.ts",
@@ -1164,7 +1164,7 @@
     {
       "name": "ui/popconfirm",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/popconfirm/shared.ts",
@@ -1188,7 +1188,7 @@
     {
       "name": "ui/popover",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/popover/popover.vue",
@@ -1208,7 +1208,7 @@
     {
       "name": "ui/progress",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/progress/progress.vue",
@@ -1236,7 +1236,7 @@
     {
       "name": "ui/radio-group",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/radio-group/radio-group-card.vue",
@@ -1260,7 +1260,7 @@
     {
       "name": "ui/scroll-area",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/scroll-area/scroll-area.vue",
@@ -1280,7 +1280,7 @@
     {
       "name": "ui/segment",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/segment/segment.vue",
@@ -1300,7 +1300,7 @@
     {
       "name": "ui/select",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/select/types.ts",
@@ -1320,7 +1320,7 @@
     {
       "name": "ui/separator",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/separator/types.ts",
@@ -1340,7 +1340,7 @@
     {
       "name": "ui/skeleton",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/skeleton/types.ts",
@@ -1360,7 +1360,7 @@
     {
       "name": "ui/slider",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/slider/slider.vue",
@@ -1380,7 +1380,7 @@
     {
       "name": "ui/spinner",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "registryDependencies": ["ui/icon"],
       "files": [
         {
@@ -1401,7 +1401,7 @@
     {
       "name": "ui/splitter",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/splitter/splitter-group.vue",
@@ -1429,7 +1429,7 @@
     {
       "name": "ui/stepper",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/stepper/types.ts",
@@ -1449,7 +1449,7 @@
     {
       "name": "ui/switch",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/switch/switch.vue",
@@ -1469,7 +1469,7 @@
     {
       "name": "ui/table",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless", "@soybeanjs/hooks"],
+      "dependencies": ["@vean/aria", "@soybeanjs/hooks"],
       "registryDependencies": ["ui/button", "ui/checkbox", "ui/empty", "ui/input", "ui/popover"],
       "files": [
         {
@@ -1502,7 +1502,7 @@
     {
       "name": "ui/tabs",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/tabs/tabs.vue",
@@ -1522,7 +1522,7 @@
     {
       "name": "ui/tag",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "registryDependencies": ["ui/icon"],
       "files": [
         {
@@ -1543,7 +1543,7 @@
     {
       "name": "ui/tags-input",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/tags-input/types.ts",
@@ -1563,7 +1563,7 @@
     {
       "name": "ui/textarea",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/textarea/types.ts",
@@ -1583,7 +1583,7 @@
     {
       "name": "ui/time-field",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/time-field/time-field.vue",
@@ -1603,7 +1603,7 @@
     {
       "name": "ui/time-range-field",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/time-range-field/time-range-field.vue",
@@ -1623,7 +1623,7 @@
     {
       "name": "ui/toast",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless", "@vueuse/core"],
+      "dependencies": ["@vean/aria", "@vueuse/core"],
       "files": [
         {
           "path": "packages/ui/src/components/toast/toast-provider.vue",
@@ -1643,7 +1643,7 @@
     {
       "name": "ui/toggle",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/toggle/types.ts",
@@ -1663,7 +1663,7 @@
     {
       "name": "ui/toggle-group",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/toggle-group/types.ts",
@@ -1683,7 +1683,7 @@
     {
       "name": "ui/toolbar",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/toolbar/toolbar.vue",
@@ -1703,7 +1703,7 @@
     {
       "name": "ui/tooltip",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/tooltip/tooltip.vue",
@@ -1723,7 +1723,7 @@
     {
       "name": "ui/tree",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/tree/tree-virtualizer.vue",
@@ -1747,7 +1747,7 @@
     {
       "name": "ui/tree-menu",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/tree-menu/tree-menu.vue",
@@ -1771,7 +1771,7 @@
     {
       "name": "ui/virtualizer",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/virtualizer/types.ts",
@@ -1791,7 +1791,7 @@
     {
       "name": "ui/watermark",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@vean/aria"],
       "files": [
         {
           "path": "packages/ui/src/components/watermark/watermark.vue",

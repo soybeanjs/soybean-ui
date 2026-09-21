@@ -29,14 +29,14 @@ Use it when a layout needs a first-level switcher plus a nested tree or horizont
 - 🙈 Hidden options — `hidden` drops an entry and its subtree from the first-level rail and from the nested panes; a parent whose children are all hidden renders as a leaf
 - 🎨 6 sizes + style injection — `size` from xs to 2xl; `class` / `ui` overrides across named slots
 - ✏️ Customizable — `first-level-item` / `item` / `item-leading` / `item-trailing` slots
-- ♿ Accessibility — `role="menubar"` / `menuitem`, `data-soybean-split-nav-*` attributes, RTL-aware `dir`
+- ♿ Accessibility — `role="menubar"` / `menuitem`, `data-vean-split-nav-*` attributes, RTL-aware `dir`
 
 ## Component family
 
 - `SSplitNav` (styled) — entry wrapper; composes `SplitNavRoot` + `splitNavVariants` mode/size recipe + `provideSplitNavUi` slot-class injection
-- `SplitNavRoot` (headless) — compact aggregator; `useControllableState` for the active value, mode switch, slot forwarding
-- Internal mode components (headless) — `DualVerticalPane`, `VerticalHorizontalMenu`, `HorizontalVerticalMenu`, `HorizontalDualVerticalMenu`
-- Internal first-level menus (headless) — `VerticalFirstLevelMenu` / `HorizontalFirstLevelMenu` with shared RovingFocus items
+- `SplitNavRoot` (Aria) — compact aggregator; `useControllableState` for the active value, mode switch, slot forwarding
+- Internal mode components (Aria) — `DualVerticalPane`, `VerticalHorizontalMenu`, `HorizontalVerticalMenu`, `HorizontalDualVerticalMenu`
+- Internal first-level menus (Aria) — `VerticalFirstLevelMenu` / `HorizontalFirstLevelMenu` with shared RovingFocus items
 
 ## Demos
 
@@ -59,14 +59,14 @@ Use it when a layout needs a first-level switcher plus a nested tree or horizont
 
 ### Architecture
 
-`SSplitNav` is a thin styled wrapper. Headless `SplitNavRoot` owns mode switching, the active path (`findActivePath`), and leaf-vs-parent selection. First-level items are a dedicated RovingFocus list — not a TreeMenu — so parent nodes switch the nested pane instead of expanding in place, and they **do not** take on the selected-leaf style. Vertical first-level items stack icon above label in a compact rail (overflowing labels ellipsize); horizontal first-level items stay icon-then-label in a row. Nested vertical content is `TreeMenuCompact` styled with `treeMenuVariants`, including a dedicated pane width, `v-model:collapsed`, and the `expandStrategy` you pass to the root; nested horizontal content is `TreeNavCompact` styled with `treeNavVariants` so it matches `STreeNav`. `class` applies to the standalone `dual-vertical` pane; mixed modes render as independent teleported fragments.
+`SSplitNav` is a thin styled wrapper. Aria `SplitNavRoot` owns mode switching, the active path (`findActivePath`), and leaf-vs-parent selection. First-level items are a dedicated RovingFocus list — not a TreeMenu — so parent nodes switch the nested pane instead of expanding in place, and they **do not** take on the selected-leaf style. Vertical first-level items stack icon above label in a compact rail (overflowing labels ellipsize); horizontal first-level items stay icon-then-label in a row. Nested vertical content is `TreeMenuCompact` styled with `treeMenuVariants`, including a dedicated pane width, `v-model:collapsed`, and the `expandStrategy` you pass to the root; nested horizontal content is `TreeNavCompact` styled with `treeNavVariants` so it matches `STreeNav`. `class` applies to the standalone `dual-vertical` pane; mixed modes render as independent teleported fragments.
 
-| Capability                | SoybeanUI | Ant Design | Element Plus | Naive UI |
-| :------------------------ | :-------: | :--------: | :----------: | :------: |
-| Multiple layout modes     |    ✅     |     ⚠️     |      ⚠️      |    —     |
-| Teleport to external el   |    ✅     |     —      |      —       |    —     |
-| Headless/style separation |    ✅     |     —      |      —       |    —     |
-| First-level roving keys   |    ✅     |     ⚠️     |      ⚠️      |    —     |
+| Capability              | VeanUI | Ant Design | Element Plus | Naive UI |
+| :---------------------- | :----: | :--------: | :----------: | :------: |
+| Multiple layout modes   |   ✅   |     ⚠️     |      ⚠️      |    —     |
+| Teleport to external el |   ✅   |     —      |      —       |    —     |
+| Aria/style separation   |   ✅   |     —      |      —       |    —     |
+| First-level roving keys |   ✅   |     ⚠️     |      ⚠️      |    —     |
 
 ### Cautions
 
@@ -75,7 +75,7 @@ Use it when a layout needs a first-level switcher plus a nested tree or horizont
 - Clicking a parent item only opens the nested pane (`data-state="open"`); it does not change `v-model` or set `data-selected`. Clicking a leaf updates `v-model` and emits `select`; the selected leaf renders `data-selected="true"` and `data-state="closed"`. A parent whose descendant is selected also gets `data-child-selected`.
 - Activating a parent item (click or keyboard) emits `open` with the complete option data of that parent, children included; it fires only for parents with visible children and never for leaves.
 - The nested pane keeps its own expanded state while it stays mounted, so with the default `expandStrategy="keep"` a branch you expanded under one first-level item is still expanded when you come back to it. The state resets when the pane unmounts, which happens whenever the active first-level item has no visible children.
-- Flex layout per `mode` lives in the UI style recipe; the headless layer carries no layout classes.
+- Flex layout per `mode` lives in the UI style recipe; the Aria layer carries no layout classes.
 - The vertical columns of a sidebar only exist while the current state fills them. `resolveSplitNavSidebarColumns({ mode, items, modelValue, openPath })` answers which of them exist: `dual-vertical` and `horizontal-dual-vertical` use up to two columns (the latter's being the second and third level of the tree), `vertical-horizontal` keeps the rail alone in the sidebar, and `horizontal-vertical` the pane alone. A consumer that has to fix a container's width before rendering — `SAppShell` reserving its sidebar — derives it from there instead of measuring the DOM, which is unavailable during server rendering.
 
 ## FAQ
@@ -105,7 +105,7 @@ The pane is then rendered into `#app-header` / `#app-sider` through `Teleport` (
 
 ```ts
 import { computed } from 'vue';
-import { resolveSplitNavSidebarColumns } from '@soybeanjs/headless/split-nav';
+import { resolveSplitNavSidebarColumns } from '@vean/aria/split-nav';
 
 // `rail` and `pane` say whether each of the two sidebar columns exists.
 const columns = computed(() => resolveSplitNavSidebarColumns({ mode, items, modelValue: active.value }));
@@ -124,8 +124,8 @@ Listen to the `open` event: it carries the complete option data of the activated
 ```vue
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SSplitNav } from '@soybeanjs/ui';
-import type { SplitNavOptionData } from '@soybeanjs/ui';
+import { SSplitNav } from '@vean/ui';
+import type { SplitNavOptionData } from '@vean/ui';
 
 const active = shallowRef('');
 

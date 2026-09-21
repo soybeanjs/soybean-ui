@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { SButton, SDropdownMenuWrapper, SMenuOptions, SSwitch } from '@soybeanjs/ui';
-import type { MenuOptionData } from '@soybeanjs/ui';
+import { SButton, SDropdownMenuWrapper, SMenuOptions, SSwitch } from '@vean/ui';
+import type { MenuOptionData } from '@vean/ui';
 
 const canDelete = ref(false);
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { STag } from '@soybeanjs/ui';
-import type { TagShape } from '@soybeanjs/ui';
+import { STag } from '@vean/ui';
+import type { TagShape } from '@vean/ui';
 
 const shapes: TagShape[] = ['auto', 'rounded'];
 </script>

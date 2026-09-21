@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { formatColor } from '@soybeanjs/headless/shared';
-import type { ColorValue } from '@soybeanjs/headless/types';
-import { SColorSlider, SColorSwatch } from '@soybeanjs/ui';
+import { formatColor } from '@vean/aria/shared';
+import type { ColorValue } from '@vean/aria/types';
+import { SColorSlider, SColorSwatch } from '@vean/ui';
 
 const color = ref<ColorValue>('rgba(236, 72, 153, 0.85)');
 

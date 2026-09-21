@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SDrawer, SButton } from '@soybeanjs/ui';
-import type { Side } from '@soybeanjs/ui';
+import { SDrawer, SButton } from '@vean/ui';
+import type { Side } from '@vean/ui';
 
 const sides: Side[] = ['left', 'right', 'top', 'bottom'];
 

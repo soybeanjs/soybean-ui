@@ -1,7 +1,7 @@
 ---
 head:
   title: 品牌迁移指南 — SoybeanUI 更名为 Vean
-  description: SoybeanUI 更名为 Vean 的完整迁移指南：包名与 scope 变更、运行时契约（data-soybean-* / --soybean-*）改名、Nuxt 与 UnoCSS 配置调整、CLI 迁移，以及配套 codemod 用法。
+  description: SoybeanUI 更名为 VeanUI 的完整迁移指南：包名与 scope 变更、运行时契约（data-soybean-* / --soybean-*）改名、Nuxt 与 UnoCSS 配置调整、CLI 迁移，附全局替换清单与验收清单。
 ---
 
 # 升级指南：SoybeanUI → Vean
@@ -116,7 +116,7 @@ pnpm add @vean/ui @vean/aria @vean/theme @vean/unocss
 }
 ```
 
-如果你的项目大量依赖 `data-soybean-*` 或 `--soybean-*`，直接用下面的 codemod 加 `--runtime-contract` 一键替换。
+如果你的项目大量依赖 `data-soybean-*` 或 `--soybean-*`，用 §6 的 `--runtime-contract` 一次改完。
 
 ## 5. 明确不变的部分
 
@@ -137,42 +137,61 @@ pnpm add @vean/ui @vean/aria @vean/theme @vean/unocss
 >
 > 前缀与品牌无关，因此**本次不随品牌改名**。改成 `V` 会让所有下游项目为零收益付出一次全量重命名，也会与 Vuetify 的 `VBtn` / `VCard` 前缀混淆。
 
-## 6. 用 codemod 一键迁移
+## 6. 迁移：`vean migrate` 一键改写（或手工替换）
 
 ```bash
-# 预览改动，不写盘
-node path/to/vean-codemod/migrate.mjs .
+# 预览（默认不写盘）
+npx @vean/cli@latest migrate rebrand
 
-# 写入
-node path/to/vean-codemod/migrate.mjs . --write
+# 确认后落地
+npx @vean/cli@latest migrate rebrand --write
 
-# 如果你的代码里有 [data-soybean-*] 选择器或 var(--soybean-*)
-node path/to/vean-codemod/migrate.mjs . --write --runtime-contract
+# 代码里有 [data-soybean-*] 选择器或 var(--soybean-*)
+npx @vean/cli@latest migrate rebrand --write --runtime-contract
 
-# 同时迁移 sbean CLI 引用
-node path/to/vean-codemod/migrate.mjs . --write --cli
+# 同时迁移 sbean CLI 引用（含把 sbean.json 重命名为 vean.json）
+npx @vean/cli@latest migrate rebrand --write --cli
 
-# 如果你的代码/文档里写死过旧站点或 CDN 地址（ui.soybeanjs.cn、r2.soybeanjs.tech）
-node path/to/vean-codemod/migrate.mjs . --write --new-domain=veanui.com
+# 代码 / 文档里写死过旧站点、CDN 或仓库地址
+npx @vean/cli@latest migrate rebrand --write --new-domain veanui.com --repo-slug soybeanjs/vean-ui
 ```
 
-脚本特性：零依赖、Node 18+、默认 dry-run、幂等、跳过 `node_modules`/`dist`/lockfile。详细说明见脚本目录内的 `README.md`。
+命令是**规则式文本改写**（不是 AST 重写）：包名 / import 始终改写，运行时契约、CLI、域名三类需显式开启；默认 dry-run、幂等、跳过 `node_modules`、构建产物、lockfile 与 `CHANGELOG.md`。域名映射：`ui.soybeanjs.cn` → `--new-domain`，`r2.soybeanjs.tech` → `assets.<new-domain>`（可用 `--new-cdn` 覆盖），CDN 的对象路径前缀 `/soybeanjs/` 刻意保留（改它而不搬对象会 404）。完整选项见 [`vean migrate`](/cli#vean-migrate)。
 
-**脚本不会做的事**（需要你手工完成）：
+命令**只面向 SoybeanUI 时代的项目**：先做 preflight（`package.json` 里的 `@soybeanjs/*` 依赖、`sbean.json`、源码标识符、`data-soybean-*` / `--soybean-*` 契约、`sbean` 调用），全都没有就拒绝执行——退出码 1、不写任何文件；只匹配到旧域名链接时也拒绝，除非你明确传了域名类选项。确实需要强制运行用 `--force`。每次运行结束会打印两组按项目实际情况生成的提示：**Worth adding**（本次没开、但项目里仍有对应改动的开关）与 **Still manual**（真正适用的人工步骤）。
 
-1. 删除 `pnpm-lock.yaml` / `package-lock.json` 后重新安装依赖。
-2. 把配置文件 `sbean.json` 改名为 `vean.json`（脚本只改引用，不改文件名）。
-3. 检查 Nuxt 的 `imports.transform.exclude` 是否已改成 `/aria\/dist\//`。
-4. 更新自定义 registry / 镜像地址到新域名。
+**等价的手工替换**（不想跑命令时，按此表**从长到短**逐条替换即可；`@soybeanjs/ui` 是 `@soybeanjs/ui-uno` / `@soybeanjs/ui-skills` 的前缀，顺序不能反）：
+
+| 旧名                   | 新名           | 影响面                                           |
+| :--------------------- | :------------- | :----------------------------------------------- |
+| `@soybeanjs/headless`  | `@vean/aria`   | import、Nuxt `modules`、文档                     |
+| `@soybeanjs/ui-uno`    | `@vean/unocss` | import、UnoCSS 配置                              |
+| `@soybeanjs/ui-skills` | `@vean/skills` | import                                           |
+| `@soybeanjs/ui`        | `@vean/ui`     | import、`css`、Nuxt `modules` 与模块 `configKey` |
+| `@soybeanjs/theme`     | `@vean/theme`  | import                                           |
+| `data-soybean-`        | `data-vean-`   | 自定义 CSS 选择器、e2e 选择器、脚本（§4）        |
+| `--soybean-`           | `--vean-`      | 自定义 CSS 变量（§4）                            |
+| `sbean`                | `vean`         | CLI 命令与引用（配置文件名见下方手工项）         |
+
+> `@soybeanjs/cva` / `@soybeanjs/colord` 不动，仍在原 scope。
+
+**命令之外仍需手工完成：**
+
+1. 删除 `pnpm-lock.yaml` / `package-lock.json` 后重新安装依赖，并换包：`pnpm remove @soybeanjs/ui @soybeanjs/headless && pnpm add @vean/ui @vean/aria`。
+2. 确认 Nuxt 的 `imports.transform.exclude` 已是 `/aria\/dist\//`（命令会改写这个字符串，但配置本身请复核）。
+3. 更新自定义 registry / 镜像地址到新域名；旧域名在过渡期做路径保持型 301（§9）。
+4. `sbean.json`：加了 `--cli` 时命令会重命名为 `vean.json`；若目录里已经存在 `vean.json`，命令不会覆盖，需手工合并。
+
+完成后按 §8 的验收清单收尾。
 
 ## 7. CLI 迁移（`sbean` → `vean`）
 
 ```diff
 - npx sbean add button
-+ npx vean add button
++ npx @vean/cli@latest add button
 
 - pnpm sbean init
-+ pnpm vean init
++ pnpm dlx @vean/cli@latest init
 ```
 
 配置文件同步改名：

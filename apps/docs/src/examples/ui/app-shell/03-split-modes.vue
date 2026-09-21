@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, shallowRef } from 'vue';
-import { SAppShell, SIcon, SSelect, SSwitch } from '@soybeanjs/ui';
-import type { AppShellMode, SelectOptionData } from '@soybeanjs/ui';
+import { SAppShell, SIcon, SSelect, SSwitch } from '@vean/ui';
+import type { AppShellMode, SelectOptionData } from '@vean/ui';
 import { appShellItems } from './menu';
 
 const modes: SelectOptionData<AppShellMode>[] = [
@@ -15,7 +15,7 @@ const modes: SelectOptionData<AppShellMode>[] = [
 // independent panes, and the shell decides which region each pane mounts into.
 const mode = shallowRef<AppShellMode>('dual-vertical');
 
-const active = ref('soybean-ui');
+const active = ref('vean-ui');
 
 // Collapsing a split mode folds the nested pane with the sidebar: the rail
 // stays and the pane becomes its own icon rail, so the sidebar only reserves
@@ -38,7 +38,7 @@ const open = ref(true);
           <SIcon icon="lucide:hexagon" class="size-6 text-primary" />
         </template>
         <template #title>
-          <span class="truncate font-semibold">Soybean UI</span>
+          <span class="truncate font-semibold">Vean UI</span>
         </template>
         <template #header-end>
           <SIcon icon="lucide:bell" class="size-4.5 text-muted-foreground" />

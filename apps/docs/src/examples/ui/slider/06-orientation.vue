@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SSlider } from '@soybeanjs/ui';
+import { SSlider } from '@vean/ui';
 
 const horizontalValue = ref([45]);
 const verticalValue = ref([25, 70]);

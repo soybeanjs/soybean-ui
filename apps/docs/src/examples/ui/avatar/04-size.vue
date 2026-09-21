@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SAvatar } from '@soybeanjs/ui';
+import { SAvatar } from '@vean/ui';
 import { themeSizeOptions } from '~/constants/theme';
 </script>
 
@@ -9,7 +9,7 @@ import { themeSizeOptions } from '~/constants/theme';
       v-for="size in themeSizeOptions"
       :key="size.value"
       :size="size.value"
-      src="https://r2.soybeanjs.tech/soybeanjs/logo-soybean-ui.svg?v=202608192144"
+      src="https://r2.veanui.com/imgs/logo-vean-ui.svg?v=202609141212"
       fallback-label="S"
     />
   </div>

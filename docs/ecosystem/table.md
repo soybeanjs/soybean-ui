@@ -1,6 +1,6 @@
 # table — 高级数据网格 / ProTable 技术方案（提案）
 
-> **2026-09 前提变更：** 本文写于「外围包单包自治」时期，标题中的 `@soybeanjs/table` 是当时设想的包名；当前仓库无外围包，文中包结构、lockstep、跨包依赖等设定已不适用。**市场调研结论与能力设计仍然有效**；表格内核选型与 [v0.50.0.md](../v0.50.0.md) 引擎更换联动，立项时须先按 [README §立项时必须回答的问题](./README.md#立项时必须回答的问题) 确定落地形态（并入核心 headless/ui、独立包、或 sbean 源码配方）。
+> **2026-09 前提变更：** 本文写于「外围包单包自治」时期，标题中的 `@soybeanjs/table` 是当时设想的包名；当前仓库无外围包，文中包结构、lockstep、跨包依赖等设定已不适用。**市场调研结论与能力设计仍然有效**；表格内核已随 v0.50 落地为 `@tanstack/vue-table`，立项时须先按 [README §立项时必须回答的问题](./README.md#立项时必须回答的问题) 确定落地形态（并入核心 headless/ui、独立包、或 vean 源码配方）。
 
 > 定位（提案）：提供基于核心 `STable` 原语的**高级数据网格 / ProTable 级**组件——内置服务端数据源抽象、查询工具栏、分页一体化、可编辑单元格、列管理（显隐/固定/排序/偏好持久化）与导出等 Pro 级能力，对标 Ant Design `ProTable` / AG Grid Community，并保留「headless 逻辑层 + Styled UI 层」的招牌。
 >
@@ -38,7 +38,7 @@ AG Grid（社区 MIT / 企业版 $999/开发者）与 Handsontable（非商业�
 
 ## 2. 现状盘点：核心 STable 能力与局限
 
-> 基于 `packages/headless/src/components/table/` 与 `packages/ui/src/components/table/`（含 `TableCompact` 聚合），文档见 [apps/docs/src/content/zh/ui/components/table.md](../../apps/docs/src/content/zh/ui/components/table.md)。
+> 基于 `packages/aria/src/components/table/` 与 `packages/ui/src/components/table/`（含 `TableCompact` 聚合），文档见 [apps/docs/src/content/zh/ui/components/table.md](../../apps/docs/src/content/zh/ui/components/table.md)。
 
 ### 2.1 已具备（核心原语能力，全部保留在核心层）
 
@@ -80,7 +80,7 @@ AG Grid（社区 MIT / 企业版 $999/开发者）与 Handsontable（非商业�
 
 | 层         | 包                                                  | 角色                                                                                  |
 | :--------- | :-------------------------------------------------- | :------------------------------------------------------------------------------------ |
-| 原子原语   | 核心 `@soybeanjs/ui` `STable`                       | 配置式列模型、排序/筛选/选择/展开/树形/固定/缩放/虚拟滚动状态管线（**不新增**）       |
+| 原子原语   | 核心 `@vean/ui` `STable`                            | 配置式列模型、排序/筛选/选择/展开/树形/固定/缩放/虚拟滚动状态管线（**不新增**）       |
 | 复合层     | 中后台「查询列表页」装配（历史 admin 方向，已取消） | 壳路线已明确 ProTable 不进壳，任何列表页装配都应**包装**本提案的 Pro 能力而非重复实现 |
 | **本提案** | 高级数据网格内核                                    | 数据源抽象 + 查询/分页/编辑/列管理/导出等 Pro 能力                                    |
 
@@ -104,7 +104,7 @@ Layer 4  @soybeanjs/table ──► @soybeanjs/{ui, headless, theme}
 ```
 
 - **单包自治**（ADR-0001）：数据源/查询/编辑/列管理组合式与样式同居于包内，不建 `headless-table` 中间层。
-- 运行时依赖：`@soybeanjs/headless`、`@soybeanjs/ui`、`@soybeanjs/theme`；peer 依赖 `vue`、unplugin-vue-components（可选 nuxt / vue-router）。
+- 运行时依赖：`@vean/aria`、`@vean/ui`、`@vean/theme`；peer 依赖 `vue`、unplugin-vue-components（可选 nuxt / vue-router）。
 - 核心 `STable` 仍是唯一表格原语层；`@soybeanjs/table` 只做组合与领域胶水。
 
 ### 4.2 包结构（目标形态）
@@ -202,7 +202,7 @@ type TableDataSource<T = any> =
 ## 8. 兼容性考虑
 
 - **SSR / Nuxt**：数据源请求在服务端可预取首屏；客户端 hydrate 后接管；Nuxt module 与 resolver 对齐其他包。
-- **体积**：核心逻辑都在 `@soybeanjs/headless`/`ui`；`@soybeanjs/table` 主要增加组合式与复合组件，按需 tree-shaking。
+- **体积**：核心逻辑都在 `@vean/aria`/`ui`；`@soybeanjs/table` 主要增加组合式与复合组件，按需 tree-shaking。
 - **可访问性**：复用核心 `STable` 的 `aria-sort`/选择/展开/列宽本地化；新增的列设置面板、批量操作条、编辑单元格纳入 browser e2e 必测项。
 - **版本**：lockstep 同版本；与核心 `STable` API 保持向后兼容（若核心 API 变更需同步）。
 

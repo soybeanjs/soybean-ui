@@ -16,7 +16,7 @@ export const appShellVariants = scv({
     root: 'h-full',
     sidebar: 'flex flex-col w-full h-full min-h-0',
     logo: [
-      'flex shrink-0 items-center gap-2 h-[--soybean-layout-header-height] px-[--sl-spacing] overflow-hidden',
+      'flex shrink-0 items-center gap-2 h-[--vean-layout-header-height] px-[--sl-spacing] overflow-hidden',
       // Aligned to the sidebar's columns: the cells carry the width and the
       // centering, so the row contributes no gap or padding of its own.
       'data-[aligned=true]:gap-0 data-[aligned=true]:px-0',

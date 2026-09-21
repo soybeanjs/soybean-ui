@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SCommand } from '@soybeanjs/ui';
-import type { CommandOptionData, SelectEvent } from '@soybeanjs/ui';
+import { SCommand } from '@vean/ui';
+import type { CommandOptionData, SelectEvent } from '@vean/ui';
 
 const items: CommandOptionData[] = [
   {
