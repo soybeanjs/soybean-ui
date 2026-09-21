@@ -6,21 +6,21 @@ import type { TranslateOptionInput } from './shared/translate';
 import type { CatalogTarget } from './commands/catalog';
 
 /**
- * `sui` — SoybeanUI repo service CLI (private, never published).
+ * `sui` — Vean repo service CLI (private, never published).
  *
  * Three command groups: `gen` (deterministic, offline), `translate`
  * (DeepL-backed, needs DEEPL_API_KEY), and `check` (verification gates that
  * exit 1 on drift), plus one-off workspace commands (`stub`,
  * `reorder-imports`, `sync-template-versions`). Do not merge with the
- * consumer-facing `sbean` CLI.
+ * consumer-facing `vean` CLI.
  *
  * Commands are declared here, not hand-dispatched: each action receives parsed
  * options, so no command re-parses `process.argv`, and `--help` / `--version` /
  * unknown-option / missing-argument handling all come from one place.
  *
- * ADR-008 — schema generation lives in the sbean package (closer to the valibot
+ * ADR-008 — schema generation lives in the @vean/cli package (closer to the valibot
  * schemas it converts) and is imported directly so `gen schema` reuses the same
- * generator as `pnpm --filter sbean build:schema`.
+ * generator as `pnpm --filter @vean/cli build:schema`.
  */
 function readVersion(): string {
   const manifest = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')) as {
@@ -31,7 +31,7 @@ function readVersion(): string {
 }
 
 function toCatalogTarget(value: string | undefined): CatalogTarget | null {
-  return value === 'headless' || value === 'ui' ? value : null;
+  return value === 'aria' || value === 'ui' ? value : null;
 }
 
 export function createCli(): CAC {
@@ -50,7 +50,7 @@ export function createCli(): CAC {
       const catalogTarget = toCatalogTarget(name);
 
       if (name && !catalogTarget) {
-        throw new Error(`Unknown catalog target: ${name}. Expected headless | ui.`);
+        throw new Error(`Unknown catalog target: ${name}. Expected aria | ui.`);
       }
 
       const { resolveGenTargets, runGenTarget } = await import('./commands/gen');
@@ -85,7 +85,7 @@ export function createCli(): CAC {
     });
 
   cli
-    .command('stub', 'Switch headless development exports between src and dist')
+    .command('stub', 'Switch aria development exports between src and dist')
     .option('--reset', 'Restore the published dist exports')
     .action(async (options: { reset?: boolean }) => {
       const { runStub } = await import('./commands/stub');

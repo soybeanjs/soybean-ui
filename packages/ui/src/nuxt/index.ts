@@ -1,5 +1,5 @@
 import { addComponent, defineNuxtModule } from '@nuxt/kit';
-//---import { keysOf, kebabCase } from '@soybeanjs/headless/shared';
+//---import { keysOf, kebabCase } from '@vean/aria/shared';
 import { components } from '../constants/components';
 
 export interface ModuleOptions {
@@ -8,8 +8,8 @@ export interface ModuleOptions {
 
 export default defineNuxtModule({
   meta: {
-    name: '@soybeanjs/ui/nuxt',
-    configKey: '@soybeanjs/ui',
+    name: '@vean/ui/nuxt',
+    configKey: '@vean/ui',
     compatibility: {
       nuxt: '>=3.14'
     }
@@ -38,7 +38,7 @@ export default defineNuxtModule({
       addComponent({
         name: `${component}`,
         export: component,
-        filePath: '@soybeanjs/ui'
+        filePath: '@vean/ui'
       });
     }
   }
