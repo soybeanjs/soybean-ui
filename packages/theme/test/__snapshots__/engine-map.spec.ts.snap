@@ -1,0 +1,459 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`theme map — structure and invariants > snapshots the default theme map 1`] = `
+{
+  "alpha": {
+    "border": {
+      "dark": 0.1,
+      "light": 1,
+    },
+    "input": {
+      "dark": 0.15,
+      "light": 1,
+    },
+    "mask": {
+      "dark": 0.3,
+      "light": 0.25,
+    },
+    "sidebar-border": {
+      "dark": 0.1,
+      "light": 1,
+    },
+  },
+  "dark": {
+    "accent": {
+      "kind": "palette",
+      "level": 800,
+      "palette": "zinc",
+    },
+    "accent-foreground": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+    "background": {
+      "kind": "palette",
+      "level": 950,
+      "palette": "zinc",
+    },
+    "border": {
+      "kind": "simple",
+      "name": "white",
+    },
+    "carbon": {
+      "kind": "palette",
+      "level": 100,
+      "palette": "zinc",
+    },
+    "carbon-foreground": {
+      "kind": "palette",
+      "level": 900,
+      "palette": "zinc",
+    },
+    "card": {
+      "kind": "palette",
+      "level": 900,
+      "palette": "zinc",
+    },
+    "card-foreground": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+    "chart-1": {
+      "kind": "palette",
+      "level": 600,
+      "palette": "indigo",
+    },
+    "chart-2": {
+      "kind": "palette",
+      "level": 500,
+      "palette": "indigo",
+    },
+    "chart-3": {
+      "kind": "palette",
+      "level": 400,
+      "palette": "indigo",
+    },
+    "chart-4": {
+      "kind": "palette",
+      "level": 300,
+      "palette": "indigo",
+    },
+    "chart-5": {
+      "kind": "palette",
+      "level": 200,
+      "palette": "indigo",
+    },
+    "destructive": {
+      "kind": "palette",
+      "level": 400,
+      "palette": "red",
+    },
+    "destructive-foreground": {
+      "kind": "palette",
+      "level": 900,
+      "palette": "zinc",
+    },
+    "foreground": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+    "info": {
+      "kind": "palette",
+      "level": 400,
+      "palette": "blue",
+    },
+    "info-foreground": {
+      "kind": "palette",
+      "level": 900,
+      "palette": "zinc",
+    },
+    "input": {
+      "kind": "simple",
+      "name": "white",
+    },
+    "mask": {
+      "kind": "simple",
+      "name": "black",
+    },
+    "muted": {
+      "kind": "palette",
+      "level": 800,
+      "palette": "zinc",
+    },
+    "muted-foreground": {
+      "kind": "palette",
+      "level": 400,
+      "palette": "zinc",
+    },
+    "popover": {
+      "kind": "palette",
+      "level": 900,
+      "palette": "zinc",
+    },
+    "popover-foreground": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+    "primary": {
+      "kind": "palette",
+      "level": 500,
+      "palette": "indigo",
+    },
+    "primary-foreground": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+    "ring": {
+      "kind": "palette",
+      "level": 500,
+      "palette": "indigo",
+    },
+    "secondary": {
+      "kind": "palette",
+      "level": 800,
+      "palette": "zinc",
+    },
+    "secondary-foreground": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+    "sidebar": {
+      "kind": "palette",
+      "level": 900,
+      "palette": "zinc",
+    },
+    "sidebar-accent": {
+      "kind": "palette",
+      "level": 800,
+      "palette": "zinc",
+    },
+    "sidebar-accent-foreground": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+    "sidebar-border": {
+      "kind": "simple",
+      "name": "white",
+    },
+    "sidebar-foreground": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+    "sidebar-primary": {
+      "kind": "palette",
+      "level": 500,
+      "palette": "indigo",
+    },
+    "sidebar-primary-foreground": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+    "sidebar-ring": {
+      "kind": "palette",
+      "level": 500,
+      "palette": "indigo",
+    },
+    "success": {
+      "kind": "palette",
+      "level": 400,
+      "palette": "green",
+    },
+    "success-foreground": {
+      "kind": "palette",
+      "level": 900,
+      "palette": "zinc",
+    },
+    "warning": {
+      "kind": "palette",
+      "level": 400,
+      "palette": "amber",
+    },
+    "warning-foreground": {
+      "kind": "palette",
+      "level": 900,
+      "palette": "zinc",
+    },
+  },
+  "light": {
+    "accent": {
+      "kind": "palette",
+      "level": 100,
+      "palette": "zinc",
+    },
+    "accent-foreground": {
+      "kind": "palette",
+      "level": 900,
+      "palette": "zinc",
+    },
+    "background": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+    "border": {
+      "kind": "palette",
+      "level": 200,
+      "palette": "zinc",
+    },
+    "carbon": {
+      "kind": "palette",
+      "level": 800,
+      "palette": "zinc",
+    },
+    "carbon-foreground": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+    "card": {
+      "kind": "simple",
+      "name": "white",
+    },
+    "card-foreground": {
+      "kind": "palette",
+      "level": 950,
+      "palette": "zinc",
+    },
+    "chart-1": {
+      "kind": "palette",
+      "level": 600,
+      "palette": "indigo",
+    },
+    "chart-2": {
+      "kind": "palette",
+      "level": 500,
+      "palette": "indigo",
+    },
+    "chart-3": {
+      "kind": "palette",
+      "level": 400,
+      "palette": "indigo",
+    },
+    "chart-4": {
+      "kind": "palette",
+      "level": 300,
+      "palette": "indigo",
+    },
+    "chart-5": {
+      "kind": "palette",
+      "level": 200,
+      "palette": "indigo",
+    },
+    "destructive": {
+      "kind": "palette",
+      "level": 500,
+      "palette": "red",
+    },
+    "destructive-foreground": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+    "foreground": {
+      "kind": "palette",
+      "level": 950,
+      "palette": "zinc",
+    },
+    "info": {
+      "kind": "palette",
+      "level": 500,
+      "palette": "blue",
+    },
+    "info-foreground": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+    "input": {
+      "kind": "palette",
+      "level": 200,
+      "palette": "zinc",
+    },
+    "mask": {
+      "kind": "simple",
+      "name": "black",
+    },
+    "muted": {
+      "kind": "palette",
+      "level": 100,
+      "palette": "zinc",
+    },
+    "muted-foreground": {
+      "kind": "palette",
+      "level": 600,
+      "palette": "zinc",
+    },
+    "popover": {
+      "kind": "simple",
+      "name": "white",
+    },
+    "popover-foreground": {
+      "kind": "palette",
+      "level": 950,
+      "palette": "zinc",
+    },
+    "primary": {
+      "kind": "palette",
+      "level": 500,
+      "palette": "indigo",
+    },
+    "primary-foreground": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+    "ring": {
+      "kind": "palette",
+      "level": 500,
+      "palette": "indigo",
+    },
+    "secondary": {
+      "kind": "palette",
+      "level": 100,
+      "palette": "zinc",
+    },
+    "secondary-foreground": {
+      "kind": "palette",
+      "level": 900,
+      "palette": "zinc",
+    },
+    "sidebar": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+    "sidebar-accent": {
+      "kind": "palette",
+      "level": 100,
+      "palette": "zinc",
+    },
+    "sidebar-accent-foreground": {
+      "kind": "palette",
+      "level": 900,
+      "palette": "zinc",
+    },
+    "sidebar-border": {
+      "kind": "palette",
+      "level": 200,
+      "palette": "zinc",
+    },
+    "sidebar-foreground": {
+      "kind": "palette",
+      "level": 950,
+      "palette": "zinc",
+    },
+    "sidebar-primary": {
+      "kind": "palette",
+      "level": 500,
+      "palette": "indigo",
+    },
+    "sidebar-primary-foreground": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+    "sidebar-ring": {
+      "kind": "palette",
+      "level": 500,
+      "palette": "indigo",
+    },
+    "success": {
+      "kind": "palette",
+      "level": 500,
+      "palette": "green",
+    },
+    "success-foreground": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+    "warning": {
+      "kind": "palette",
+      "level": 500,
+      "palette": "amber",
+    },
+    "warning-foreground": {
+      "kind": "palette",
+      "level": 50,
+      "palette": "zinc",
+    },
+  },
+  "literal": {
+    "border-width": "1px",
+    "border-width-strong": "2px",
+    "font-heading": "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif",
+    "font-mono": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace",
+    "font-sans": "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif",
+    "font-serif": "ui-serif, Georgia, Cambria, "Times New Roman", Times, serif",
+    "radius": "0.5rem",
+    "radius-2xl": "calc(var(--radius) * 1.75)",
+    "radius-2xs": "calc(var(--radius) * 0.25)",
+    "radius-3xl": "calc(var(--radius) * 2)",
+    "radius-4xl": "calc(var(--radius) * 2.25)",
+    "radius-full": "9999px",
+    "radius-lg": "calc(var(--radius) * 1.25)",
+    "radius-md": "var(--radius)",
+    "radius-none": "0",
+    "radius-sm": "calc(var(--radius) * 0.75)",
+    "radius-xl": "calc(var(--radius) * 1.5)",
+    "radius-xs": "calc(var(--radius) * 0.5)",
+    "ring-offset-width": "2px",
+    "ring-width": "3px",
+    "size": "16px",
+    "spacing-unit": "0.25rem",
+    "z-base": "50",
+    "z-layout": "10",
+    "z-max": "2147483647",
+    "z-toast": "100",
+  },
+}
+`;

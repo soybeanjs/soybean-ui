@@ -1,32 +1,33 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { PaletteColorLevel } from '@soybeanjs/colord/palette';
-import { getRegistry } from '@soybeanjs/theme';
-import type { BaseColorKey } from '@soybeanjs/theme';
+import { NEUTRAL_PALETTES, PALETTE_LEVELS, paletteColor } from '@soybeanjs/theme';
+import type { PaletteLevel, PaletteKey } from '@soybeanjs/theme';
 import SSelect from '../select/select.vue';
 import type { SelectOptionData } from '../select/types';
 import ColorDecorator from './color-decorator.vue';
-import { useThemeCustomizerLocale } from './use-locale';
 
 interface Props {
-  decorateLevels?: PaletteColorLevel[];
+  decorateLevels?: PaletteLevel[];
 }
 
 defineProps<Props>();
 
-const { resolveOption } = useThemeCustomizerLocale();
-
-const palette = defineModel<BaseColorKey>({
+const palette = defineModel<PaletteKey>({
   required: true
 });
 
-const baseRegistry = getRegistry().base;
+/** the palette swatch colors, resolved from the engine's own palette data. */
+const swatchOf = (key: PaletteKey): Record<PaletteLevel, string> =>
+  Object.fromEntries(PALETTE_LEVELS.map(level => [level, paletteColor(key, level, 'hsl') ?? ''])) as Record<
+    PaletteLevel,
+    string
+  >;
 
-const currentColors = computed(() => baseRegistry[palette.value].colors);
+const currentColors = computed(() => swatchOf(palette.value));
 
-const items = computed<SelectOptionData<BaseColorKey>[]>(() =>
-  Object.keys(baseRegistry).map(key => ({
-    label: resolveOption('palette', key),
+const items = computed<SelectOptionData<PaletteKey>[]>(() =>
+  NEUTRAL_PALETTES.map(key => ({
+    label: key,
     value: key
   }))
 );
@@ -38,7 +39,7 @@ const items = computed<SelectOptionData<BaseColorKey>[]>(() =>
       <ColorDecorator :colors="currentColors" :levels="decorateLevels" />
     </template>
     <template #item-leading="{ item }">
-      <ColorDecorator :colors="baseRegistry[item.value].colors" :levels="decorateLevels" />
+      <ColorDecorator :colors="swatchOf(item.value)" :levels="decorateLevels" />
     </template>
   </SSelect>
 </template>

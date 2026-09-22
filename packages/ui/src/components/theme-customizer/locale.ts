@@ -19,62 +19,64 @@ export interface ThemeLocaleMessages {
     primary: string;
     radius: string;
     size: string;
+    spacing: string;
+    font: string;
+    fontSans: string;
+    fontHeading: string;
+    fontMono: string;
+    fontSerif: string;
     scheme: string;
     feedback: string;
-    chart: string;
     sidebar: string;
     advanced: string;
     theme: string;
     custom: string;
     menu: string;
-    levels: string;
-    lightLevel: string;
-    darkLevel: string;
     borderOpacity: string;
+    surfaceStyle: string;
     cssVars: string;
     reset: string;
   };
   /** Variant group labels (surfaces / hairlines / …). */
   groups: {
     surfaces: string;
-    palette: string;
+    fills: string;
     hairlines: string;
+    brand: string;
     sidebar: string;
-    charts: string;
     feedback: string;
+    charts: string;
   };
   /** Variant token labels (background / card / primary / …). */
   variants: {
     background: string;
-    foreground: string;
     card: string;
-    cardForeground: string;
     popover: string;
-    popoverForeground: string;
-    primary: string;
-    primaryForeground: string;
-    ring: string;
-    secondary: string;
-    secondaryForeground: string;
-    muted: string;
+    carbon: string;
+    mask: string;
+    foreground: string;
     mutedForeground: string;
+    cardForeground: string;
+    popoverForeground: string;
+    carbonForeground: string;
+    muted: string;
     accent: string;
     accentForeground: string;
+    secondary: string;
+    secondaryForeground: string;
     border: string;
     input: string;
+    ring: string;
+    primary: string;
+    primaryForeground: string;
     sidebar: string;
     sidebarForeground: string;
-    sidebarPrimary: string;
-    sidebarPrimaryForeground: string;
+    sidebarBorder: string;
     sidebarAccent: string;
     sidebarAccentForeground: string;
-    sidebarBorder: string;
+    sidebarPrimary: string;
+    sidebarPrimaryForeground: string;
     sidebarRing: string;
-    chart1: string;
-    chart2: string;
-    chart3: string;
-    chart4: string;
-    chart5: string;
     destructive: string;
     destructiveForeground: string;
     success: string;
@@ -83,19 +85,18 @@ export interface ThemeLocaleMessages {
     warningForeground: string;
     info: string;
     infoForeground: string;
-    carbon: string;
-    carbonForeground: string;
+    chart1: string;
+    chart2: string;
+    chart3: string;
+    chart4: string;
+    chart5: string;
   };
-  /** Select option labels (feedback / chart / sidebar schemes and menu settings). */
+  /** Select option labels (feedback scheme and menu settings). */
   options: {
     mode: {
       auto: string;
       light: string;
       dark: string;
-    };
-    level: {
-      lightness: string;
-      darkness: string;
     };
     size: {
       xs: string;
@@ -104,6 +105,49 @@ export interface ThemeLocaleMessages {
       lg: string;
       xl: string;
       xl2: string;
+    };
+    spacing: {
+      compact: string;
+      default: string;
+      relaxed: string;
+      spacious: string;
+    };
+    /**
+     * Font family labels, keyed by family (not by role).
+     *
+     * The four font roles (`sans` / `heading` / `mono` / `serif`) all draw from
+     * this one catalog — a heading may be any family, and the same family is
+     * spelled the same wherever it appears — so a family is labelled once
+     * instead of once per role.
+     */
+    fontFamilies: {
+      system: string;
+      geist: string;
+      inter: string;
+      notoSans: string;
+      nunitoSans: string;
+      figtree: string;
+      roboto: string;
+      raleway: string;
+      dmSans: string;
+      publicSans: string;
+      outfit: string;
+      oxanium: string;
+      manrope: string;
+      spaceGrotesk: string;
+      montserrat: string;
+      ibmPlexSans: string;
+      sourceSans3: string;
+      instrumentSans: string;
+      jetbrainsMono: string;
+      geistMono: string;
+      notoSerif: string;
+      robotoSlab: string;
+      merriweather: string;
+      lora: string;
+      playfairDisplay: string;
+      ebGaramond: string;
+      instrumentSerif: string;
     };
     palette: {
       slate: string;
@@ -140,18 +184,15 @@ export interface ThemeLocaleMessages {
       modern: string;
       professional: string;
     };
-    chart: {
-      vivid: string;
-      cool: string;
-      warm: string;
-      natural: string;
-      minimal: string;
-    };
     sidebar: {
       derived: string;
       invertedDark: string;
       soft: string;
       contrast: string;
+    };
+    surfaceStyle: {
+      layered: string;
+      flat: string;
     };
   };
   /** Labels used by the `PalettePicker` component. */
@@ -179,60 +220,62 @@ const themeLocaleEn: ThemeLocaleMessages = {
     primary: 'Primary',
     radius: 'Radius',
     size: 'Size',
+    spacing: 'Spacing',
+    font: 'Font',
+    fontSans: 'Sans',
+    fontHeading: 'Heading',
+    fontMono: 'Mono',
+    fontSerif: 'Serif',
     scheme: 'Scheme',
     feedback: 'Feedback',
-    chart: 'Chart',
     sidebar: 'Sidebar',
     advanced: 'Advanced',
     theme: 'Theme',
     custom: 'Custom',
     menu: 'Menu',
-    levels: 'Levels',
-    lightLevel: 'Light Level',
-    darkLevel: 'Dark Level',
     borderOpacity: 'Border Opacity',
+    surfaceStyle: 'Surface Style',
     cssVars: 'CSS Variable Theme',
     reset: 'Reset'
   },
   groups: {
     surfaces: 'Surfaces',
-    palette: 'Palette',
+    fills: 'Fills',
     hairlines: 'Hairlines',
+    brand: 'Brand',
     sidebar: 'Sidebar',
-    charts: 'Charts',
-    feedback: 'Feedback'
+    feedback: 'Status',
+    charts: 'Charts'
   },
   variants: {
     background: 'Background',
-    foreground: 'Foreground',
     card: 'Card',
-    cardForeground: 'Card Foreground',
     popover: 'Popover',
-    popoverForeground: 'Popover Foreground',
-    primary: 'Primary',
-    primaryForeground: 'Primary Foreground',
-    ring: 'Ring',
-    secondary: 'Secondary',
-    secondaryForeground: 'Secondary Foreground',
-    muted: 'Muted',
+    carbon: 'Carbon',
+    mask: 'Mask',
+    foreground: 'Foreground',
     mutedForeground: 'Muted Foreground',
+    cardForeground: 'Card Foreground',
+    popoverForeground: 'Popover Foreground',
+    carbonForeground: 'Carbon Foreground',
+    muted: 'Muted',
     accent: 'Accent',
     accentForeground: 'Accent Foreground',
+    secondary: 'Secondary',
+    secondaryForeground: 'Secondary Foreground',
     border: 'Border',
     input: 'Input',
+    ring: 'Ring',
+    primary: 'Primary',
+    primaryForeground: 'Primary Foreground',
     sidebar: 'Sidebar',
     sidebarForeground: 'Sidebar Foreground',
-    sidebarPrimary: 'Sidebar Primary',
-    sidebarPrimaryForeground: 'Sidebar Primary Foreground',
+    sidebarBorder: 'Sidebar Border',
     sidebarAccent: 'Sidebar Accent',
     sidebarAccentForeground: 'Sidebar Accent Foreground',
-    sidebarBorder: 'Sidebar Border',
+    sidebarPrimary: 'Sidebar Primary',
+    sidebarPrimaryForeground: 'Sidebar Primary Foreground',
     sidebarRing: 'Sidebar Ring',
-    chart1: 'Chart 1',
-    chart2: 'Chart 2',
-    chart3: 'Chart 3',
-    chart4: 'Chart 4',
-    chart5: 'Chart 5',
     destructive: 'Destructive',
     destructiveForeground: 'Destructive Foreground',
     success: 'Success',
@@ -241,26 +284,60 @@ const themeLocaleEn: ThemeLocaleMessages = {
     warningForeground: 'Warning Foreground',
     info: 'Info',
     infoForeground: 'Info Foreground',
-    carbon: 'Carbon',
-    carbonForeground: 'Carbon Foreground'
+    chart1: 'Chart 1',
+    chart2: 'Chart 2',
+    chart3: 'Chart 3',
+    chart4: 'Chart 4',
+    chart5: 'Chart 5'
   },
   options: {
     mode: {
-      auto: 'Auto',
-      light: 'Light',
-      dark: 'Dark'
-    },
-    level: {
-      lightness: 'Lightness',
-      darkness: 'Darkness'
+      auto: 'auto',
+      light: 'light',
+      dark: 'dark'
     },
     size: {
-      xs: 'XS',
-      sm: 'SM',
-      md: 'MD',
-      lg: 'LG',
-      xl: 'XL',
-      xl2: '2XL'
+      xs: 'xs',
+      sm: 'sm',
+      md: 'md',
+      lg: 'lg',
+      xl: 'xl',
+      xl2: '2xl'
+    },
+    spacing: {
+      compact: 'compact',
+      default: 'default',
+      relaxed: 'relaxed',
+      spacious: 'spacious'
+    },
+    fontFamilies: {
+      system: 'system',
+      geist: 'Geist',
+      inter: 'Inter',
+      notoSans: 'Noto Sans',
+      nunitoSans: 'Nunito Sans',
+      figtree: 'Figtree',
+      roboto: 'Roboto',
+      raleway: 'Raleway',
+      dmSans: 'DM Sans',
+      publicSans: 'Public Sans',
+      outfit: 'Outfit',
+      oxanium: 'Oxanium',
+      manrope: 'Manrope',
+      spaceGrotesk: 'Space Grotesk',
+      montserrat: 'Montserrat',
+      ibmPlexSans: 'IBM Plex Sans',
+      sourceSans3: 'Source Sans 3',
+      instrumentSans: 'Instrument Sans',
+      jetbrainsMono: 'JetBrains Mono',
+      geistMono: 'Geist Mono',
+      notoSerif: 'Noto Serif',
+      robotoSlab: 'Roboto Slab',
+      merriweather: 'Merriweather',
+      lora: 'Lora',
+      playfairDisplay: 'Playfair Display',
+      ebGaramond: 'EB Garamond',
+      instrumentSerif: 'Instrument Serif'
     },
     palette: {
       slate: 'Slate',
@@ -291,24 +368,21 @@ const themeLocaleEn: ThemeLocaleMessages = {
       rose: 'Rose'
     },
     feedback: {
-      classic: 'Classic',
-      vivid: 'Vivid',
-      subtle: 'Subtle',
-      modern: 'Modern',
-      professional: 'Professional'
-    },
-    chart: {
-      vivid: 'Vivid',
-      cool: 'Cool',
-      warm: 'Warm',
-      natural: 'Natural',
-      minimal: 'Minimal'
+      classic: 'classic',
+      vivid: 'vivid',
+      subtle: 'subtle',
+      modern: 'modern',
+      professional: 'professional'
     },
     sidebar: {
       derived: 'Derived',
       invertedDark: 'Inverted Dark',
       soft: 'Soft',
       contrast: 'Contrast'
+    },
+    surfaceStyle: {
+      layered: 'layered',
+      flat: 'flat'
     }
   },
   palettePicker: {
@@ -332,60 +406,62 @@ const themeLocaleZh: ThemeLocaleMessages = {
     primary: '主色',
     radius: '圆角',
     size: '尺寸',
+    spacing: '间距',
+    font: '字体',
+    fontSans: '无衬线',
+    fontHeading: '标题',
+    fontMono: '等宽',
+    fontSerif: '衬线',
     scheme: '配色方案',
     feedback: '反馈',
-    chart: '图表',
     sidebar: '侧边栏',
     advanced: '高级',
     theme: '主题',
     custom: '自定义',
     menu: '菜单',
-    levels: '层级',
-    lightLevel: '浅色层级',
-    darkLevel: '深色层级',
     borderOpacity: '边框透明度',
+    surfaceStyle: '表面风格',
     cssVars: 'CSS变量主题',
     reset: '重置'
   },
   groups: {
     surfaces: '表面',
-    palette: '调色板',
+    fills: '填充',
     hairlines: '描边',
+    brand: '品牌',
     sidebar: '侧边栏',
-    charts: '图表',
-    feedback: '反馈'
+    feedback: '状态',
+    charts: '图表'
   },
   variants: {
     background: '背景',
-    foreground: '前景',
-    card: '卡片',
-    cardForeground: '卡片前景',
-    popover: '浮层',
-    popoverForeground: '浮层前景',
+    card: '卡片面',
+    popover: '浮层面',
+    carbon: '反相面',
+    mask: '遮罩',
+    foreground: '前景文字',
+    mutedForeground: '次要文字',
+    cardForeground: '卡片文字',
+    popoverForeground: '浮层文字',
+    carbonForeground: '反相文字',
+    muted: '弱化面',
+    accent: '交互面',
+    accentForeground: '交互面文字',
+    secondary: '次级',
+    secondaryForeground: '次级文字',
+    border: '分隔线',
+    input: '输入框边界',
+    ring: '焦点环',
     primary: '主色',
     primaryForeground: '主色前景',
-    ring: '焦点环',
-    secondary: '次要',
-    secondaryForeground: '次要前景',
-    muted: '弱化',
-    mutedForeground: '弱化前景',
-    accent: '强调',
-    accentForeground: '强调前景',
-    border: '边框',
-    input: '输入框',
-    sidebar: '侧边栏',
-    sidebarForeground: '侧边栏前景',
-    sidebarPrimary: '侧边栏主色',
-    sidebarPrimaryForeground: '侧边栏主色前景',
-    sidebarAccent: '侧边栏强调',
-    sidebarAccentForeground: '侧边栏强调前景',
-    sidebarBorder: '侧边栏边框',
-    sidebarRing: '侧边栏焦点环',
-    chart1: '图表 1',
-    chart2: '图表 2',
-    chart3: '图表 3',
-    chart4: '图表 4',
-    chart5: '图表 5',
+    sidebar: '侧栏基底',
+    sidebarForeground: '侧栏文字',
+    sidebarBorder: '侧栏边界',
+    sidebarAccent: '侧栏交互面',
+    sidebarAccentForeground: '侧栏交互面文字',
+    sidebarPrimary: '侧栏强调色',
+    sidebarPrimaryForeground: '侧栏强调色前景',
+    sidebarRing: '侧栏焦点环',
     destructive: '危险',
     destructiveForeground: '危险前景',
     success: '成功',
@@ -394,18 +470,17 @@ const themeLocaleZh: ThemeLocaleMessages = {
     warningForeground: '警告前景',
     info: '信息',
     infoForeground: '信息前景',
-    carbon: '炭黑',
-    carbonForeground: '炭黑前景'
+    chart1: '图表 1',
+    chart2: '图表 2',
+    chart3: '图表 3',
+    chart4: '图表 4',
+    chart5: '图表 5'
   },
   options: {
     mode: {
       auto: '自动',
       light: '浅色',
       dark: '深色'
-    },
-    level: {
-      lightness: '亮度',
-      darkness: '暗度'
     },
     size: {
       xs: '特小',
@@ -414,6 +489,41 @@ const themeLocaleZh: ThemeLocaleMessages = {
       lg: '大',
       xl: '特大',
       xl2: '超大'
+    },
+    spacing: {
+      compact: '紧凑',
+      default: '默认',
+      relaxed: '宽松',
+      spacious: '宽敞'
+    },
+    fontFamilies: {
+      system: '系统',
+      geist: 'Geist',
+      inter: 'Inter',
+      notoSans: 'Noto Sans',
+      nunitoSans: 'Nunito Sans',
+      figtree: 'Figtree',
+      roboto: 'Roboto',
+      raleway: 'Raleway',
+      dmSans: 'DM Sans',
+      publicSans: 'Public Sans',
+      outfit: 'Outfit',
+      oxanium: 'Oxanium',
+      manrope: 'Manrope',
+      spaceGrotesk: 'Space Grotesk',
+      montserrat: 'Montserrat',
+      ibmPlexSans: 'IBM Plex Sans',
+      sourceSans3: 'Source Sans 3',
+      instrumentSans: 'Instrument Sans',
+      jetbrainsMono: 'JetBrains Mono',
+      geistMono: 'Geist Mono',
+      notoSerif: 'Noto Serif',
+      robotoSlab: 'Roboto Slab',
+      merriweather: 'Merriweather',
+      lora: 'Lora',
+      playfairDisplay: 'Playfair Display',
+      ebGaramond: 'EB Garamond',
+      instrumentSerif: 'Instrument Serif'
     },
     palette: {
       slate: '石板灰',
@@ -450,18 +560,15 @@ const themeLocaleZh: ThemeLocaleMessages = {
       modern: '现代',
       professional: '专业'
     },
-    chart: {
-      vivid: '鲜明',
-      cool: '冷色',
-      warm: '暖色',
-      natural: '自然',
-      minimal: '极简'
-    },
     sidebar: {
       derived: '派生',
       invertedDark: '反转深色',
       soft: '柔和',
       contrast: '高对比'
+    },
+    surfaceStyle: {
+      layered: '层叠',
+      flat: '扁平'
     }
   },
   palettePicker: {

@@ -28,7 +28,7 @@ export const treeMenuVariants = scv({
     };
   },
   slots: {
-    root: 'group flex-1 flex flex-col w-full h-full overflow-auto text-sidebar-foreground data-[state=collapsed]:w-[--soybean-tree-menu-collapsed-width] transition-[width,height]-200 ease-out',
+    root: 'group flex-1 flex flex-col w-full h-full overflow-auto text-sidebar-foreground data-[state=collapsed]:w-[--soybean-tree-menu-collapsed-width] transition-[width,height]-200 ease-[cubic-bezier(.16,1,.3,1)]',
     groupRoot: 'group-data-[state=collapsed]:mb-0',
     group: 'flex flex-col m-0 p-0 list-none',
     groupLabel: `flex items-center text-sidebar-foreground/70 group-data-[state=collapsed]:size-0 group-data-[state=collapsed]:p-0 group-data-[state=collapsed]:opacity-0 group-data-[state=collapsed]:overflow-hidden transition-[height,padding,opacity]-200`,

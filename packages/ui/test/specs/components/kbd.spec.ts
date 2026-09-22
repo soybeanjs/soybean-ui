@@ -108,7 +108,7 @@ describe('SKbd', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.get('kbd').classes()).toContain('bg-background');
+      expect(wrapper.get('kbd').classes()).toContain('bg-card');
       wrapper.unmount();
     });
 

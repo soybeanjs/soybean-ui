@@ -10,7 +10,7 @@ export const layoutVariants = scv({
     mobileDrawer: sheetVariants({ size: props.size, side: props.side }).popup
   }),
   slots: {
-    // --sl-* 是本库的间距/gap 别名(headless 注入的 --soybean-layout-* 保持不变),在 root 上按状态计算,各槽位直接应用
+    // --sl-* 是本库的间距/gap 别名(headless 注入的 --layout-* 保持不变),在 root 上按状态计算,各槽位直接应用
     root: [
       'group/layout relative h-full transition-all-300',
       '[--sl-half-spacing:calc(var(--sl-spacing)/2)]',
@@ -31,7 +31,8 @@ export const layoutVariants = scv({
     ],
     mobileDrawer: 'w-[--soybean-sidebar-width] bg-sidebar p-0',
     mobileOverlay: [
-      `fixed inset-0 z-50 bg-black/80`,
+      // 移动端导航遮罩比模态遮罩更重：同一个 token，用修饰符覆盖浓度
+      `fixed inset-0 z-base bg-mask/80`,
       `data-[state=open]:animate-in data-[state=open]:fade-in-0`,
       `data-[state=closed]:animate-out data-[state=closed]:fade-out-0`
     ],
@@ -48,7 +49,7 @@ export const layoutVariants = scv({
     headerPlaceholder: 'shrink-0 h-[--soybean-layout-header-height] overflow-hidden',
     tab: 'group-data-[fixed-top=true]/layout:absolute inset-x-0 top-[--soybean-layout-header-height] shrink-0 h-[--soybean-layout-tab-height] z-[--soybean-layout-tab-z-index] transition-all-300',
     tabPlaceholder: 'shrink-0 h-[--soybean-layout-tab-height] overflow-hidden',
-    content: `relative grow bg-background group-data-[scroll-behavior=content]/layout:overflow-y-auto`,
+    content: `relative grow bg-card group-data-[scroll-behavior=content]/layout:overflow-y-auto`,
     footer: [
       'shrink-0 h-[--soybean-layout-footer-height] transition-all-300',
       'group-data-[fixed-footer=true]/layout:absolute z-[--soybean-layout-footer-z-index] inset-x-0 bottom-0'

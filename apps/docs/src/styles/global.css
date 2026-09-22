@@ -2,7 +2,6 @@
 @import './frosted.css';
 
 html {
-  --docs-font-sans: ui-sans-serif, system-ui, sans-serif;
   --docs-page-bg-solid: rgb(244, 247, 255);
   --docs-page-bg: linear-gradient(
     180deg,
@@ -64,7 +63,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--docs-font-sans);
+  font-family: var(--font-heading);
 }
 
 * {

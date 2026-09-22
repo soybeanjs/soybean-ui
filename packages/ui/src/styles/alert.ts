@@ -53,10 +53,10 @@ export const alertVariants = scv({
         root: ''
       },
       pure: {
-        root: 'bg-background text-foreground border-border'
+        root: 'bg-card text-foreground border-border'
       },
       outline: {
-        root: 'bg-background'
+        root: 'bg-card'
       },
       soft: {
         root: 'border-transparent'

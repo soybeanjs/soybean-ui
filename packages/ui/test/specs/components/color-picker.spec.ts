@@ -148,7 +148,7 @@ describe('SColorPicker', () => {
       const indicatorContent = indicator?.firstElementChild;
 
       expect(indicator).toBeTruthy();
-      expect(indicatorContent?.className).toContain('bg-background');
+      expect(indicatorContent?.className).toContain('bg-card');
       expect(indicatorContent?.className).toContain('data-test-segment-indicator-content');
       wrapper.unmount();
     });

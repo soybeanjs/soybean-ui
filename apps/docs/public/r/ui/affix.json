@@ -21,7 +21,7 @@
     {
       "path": "packages/ui/src/styles/affix.ts",
       "type": "registry:style",
-      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const affixVariants = scv({\n  slots: {\n    root: '',\n    placeholder: '',\n    content: 'data-[state=fixed]:z-50'\n  }\n});\n"
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const affixVariants = scv({\n  slots: {\n    root: '',\n    placeholder: '',\n    content: 'data-[state=fixed]:z-base'\n  }\n});\n"
     }
   ],
   "type": "registry:ui"

@@ -5,7 +5,7 @@ import { overlayArrow, overlayEnter, overlayLeave, overlaySurface } from './_ove
 export const navMenuVariants = scv({
   slots: {
     root: `group`,
-    viewport: [overlaySurface, 'z-50 shadow-lg will-change-transform', overlayEnter, overlayLeave],
+    viewport: [overlaySurface, 'z-base shadow-lg will-change-transform', overlayEnter, overlayLeave],
     content: `w-auto`,
     list: [
       `group grow flex items-center justify-center my-0 list-none`,
@@ -15,7 +15,7 @@ export const navMenuVariants = scv({
     item: `list-none m-0`,
     itemIcon: 'shrink-0',
     trigger: [
-      `group inline-flex items-center rounded-md bg-background font-medium transition-colors-200 decoration-none outline-none`,
+      `group inline-flex items-center rounded-md bg-card font-medium transition-colors-200 decoration-none outline-none`,
       `hover:bg-accent hover:text-accent-foreground`,
       `focus:bg-accent focus:text-accent-foreground`,
       `disabled:pointer-events-none disabled:opacity-50`,
@@ -41,7 +41,7 @@ export const navMenuVariants = scv({
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     subTriggerIcon: 'ms-auto shrink-0',
-    subContent: ['min-w-8rem', overlaySurface, 'z-50 shadow-lg will-change-transform', overlayEnter],
+    subContent: ['min-w-8rem', overlaySurface, 'z-base shadow-lg will-change-transform', overlayEnter],
     linkIcon: 'shrink-0 self-start text-muted-foreground rtl:rotate-270',
     subLinkContent: `grow flex flex-col items-start`,
     subLinkLabel: `font-medium leading-none`,

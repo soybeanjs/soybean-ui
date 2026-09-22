@@ -13,8 +13,8 @@ import type { UiUnocssOptions } from '../src/options';
  *
  * The self preset (`soybean-ui-uno`) carries the theme layer as a preflight
  * whose `getCSS()` returns the (unminified) CSS string produced by
- * `createTheme` (base tokens + light/dark color tokens). The preset does not
- * minify on purpose — the final bundle is minified at build time.
+ * `buildThemePreflight` (palette layer + light/dark token blocks). The preset
+ * does not minify on purpose — the final bundle is minified at build time.
  */
 function getThemeCss(presets: Preset<Theme>[]): string {
   const self = presets.find(p => p.name === 'soybean-ui-uno');
@@ -34,13 +34,13 @@ describe('presetUiUnocss', () => {
   it('applies size/radius base tokens to the generated theme CSS', () => {
     const css = getThemeCss(presetUiUnocss({ uiCSS: true, size: 'lg', radius: 'sm' }));
     expect(css).toContain('--size: 18px');
-    expect(css).toContain('--radius: 0.5rem');
+    expect(css).toContain('--radius: 0.375rem');
   });
 
   it('falls back to the engine defaults when no base tokens are given', () => {
     const css = getThemeCss(presetUiUnocss({ uiCSS: true }));
     expect(css).toContain('--size: 16px');
-    expect(css).toContain('--radius: 0.625rem');
+    expect(css).toContain('--radius: 0.5rem');
   });
 
   it('floors the field font size on coarse pointers so iOS does not zoom on focus', () => {
@@ -59,6 +59,26 @@ describe('presetUiUnocss', () => {
 
   it('keeps the field font floor out of the stylesheet without globalCSS', () => {
     expect(getThemeCss(presetUiUnocss({ uiCSS: true }))).not.toContain('max(16px,1em)');
+  });
+
+  it('routes the reset default font families through the theme tokens', () => {
+    // `html` / `code` are where the page's default typeface comes from: a
+    // hard-coded stack there keeps the whole page on the system font no matter
+    // what `ThemeOptions.font` says, because nothing else sets a family on the
+    // root. The fallback chain stays inline so a consumer without the theme
+    // layer still gets the documented stack.
+    //
+    // Read from source: `?raw` resolves through the pack-time loader, which the
+    // vitest runner does not apply (it yields an empty module here).
+    const resetCss = fs.readFileSync(path.join(import.meta.dirname, '../src/reset.css'), 'utf8');
+    // 格式化器会把长栈折成多行，断言前先把空白折叠掉（含 `var(` 后的换行）
+    const flat = resetCss.replace(/\s+/g, ' ').replace(/var\( /g, 'var(');
+
+    expect(flat).toContain('var(--font-sans, ui-sans-serif, system-ui, sans-serif)');
+    expect(flat).toContain('var(--font-mono, ui-monospace');
+
+    // 主题层未装载时仍是完整栈：变量缺失不能把字族留空
+    expect(flat).toContain('monospace');
   });
 });
 
@@ -104,6 +124,7 @@ describe('presetScrollbar', () => {
 
   it('resolves thumb/track colors from the theme with the variant pseudo elements', async () => {
     const css = await generateCss(['scrollbar-thumb-color-primary', 'scrollbar-track-op-50']);
+    // 迁移期：共享名（primary 等）已指向 v2 通道变量，故此处读 `--primary`（P3）
     expect(css).toContain('--soybean-scrollbar-thumb:hsl(var(--primary)');
     expect(css).toContain('--soybean-scrollbar-track-opacity:0.5');
   });
@@ -127,6 +148,11 @@ describe('presetScrollbar', () => {
     expect(compatibleCss).toContain('scrollbar-color:red');
     expect(compatibleCss).toContain('scrollbar-width:thin');
 
+    // 默认命名空间是 `--soybean-`（组件/预设自己的变量，不随主题 token 去前缀）
+    const defaultCss = await generateCss(['scrollbar'], { scrollbar: { scrollbarWidth: '10px' } });
+    expect(defaultCss).toContain('--soybean-scrollbar-width:10px');
+
+    // `varPrefix` 仍可覆盖为空串（逃生舱）：此时变量回到裸名
     const customCss = await generateCss(['scrollbar'], { scrollbar: { scrollbarWidth: '10px', varPrefix: '' } });
     expect(customCss).toContain('--scrollbar-width:10px');
   });
@@ -172,7 +198,7 @@ describe('presetSbean', () => {
 
     const css = getThemeCss(presetSbean({ cwd: dir }));
     expect(css).toContain('--size: 18px');
-    expect(css).toContain('--radius: 0.5rem');
+    expect(css).toContain('--radius: 0.375rem');
 
     fs.rmSync(dir, { recursive: true, force: true });
   });
@@ -181,7 +207,7 @@ describe('presetSbean', () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'sbean-empty-'));
     const css = getThemeCss(presetSbean({ cwd: dir }));
     expect(css).toContain('--size: 16px');
-    expect(css).toContain('--radius: 0.625rem');
+    expect(css).toContain('--radius: 0.5rem');
     fs.rmSync(dir, { recursive: true, force: true });
   });
 
@@ -190,7 +216,7 @@ describe('presetSbean', () => {
 
     const css = getThemeCss(presetSbean({ cwd: dir, overrides: { size: 'xl' } }));
     expect(css).toContain('--size: 20px');
-    expect(css).toContain('--radius: 0.625rem');
+    expect(css).toContain('--radius: 0.5rem');
 
     fs.rmSync(dir, { recursive: true, force: true });
   });

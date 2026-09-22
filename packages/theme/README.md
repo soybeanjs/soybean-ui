@@ -1,210 +1,96 @@
 # @soybeanjs/theme
 
-Soybean UI 的轻量主题引擎：**最小核心 token → 确定性派生 → 确定性 CSS 生成 → 运行时注入 / SSR 同步**。
+> 完整设计规格、token 契约与 AI Agent 接入手册见 [docs/theme.md](../../docs/theme.md)（本文只覆盖包级用法）。
 
-它不依赖运行时魔法，也不做副作用的 DOM 操作。输入一组 `ThemeOptions`，输出一段可直接注入的 CSS 字符串，并附带一套可选的持久化 / SSR 工具，供 `@soybeanjs/ui` 的 `SConfigProvider` 在运行时注入主题。
+SoybeanUI 主题引擎：**静态调色板层 + 语义别名层**——一张声明式映射表，不含任何测量或修正。
 
-## 特性
+> 状态：✅ 已实施（第一代引擎已退役，本包是唯一实现；设计以 [docs/theme.md](../../docs/theme.md) 为准）。
+> 适配器与运行时（UnoCSS 预设、`SConfigProvider`、首帧脚本、持久化、定制面板）分别在 `@soybeanjs/ui-uno` 与 `@soybeanjs/ui`，不在本包内。
 
-- **最小核心 token**：只需 `base`（中性色）+ `primary`（主色）两个 Seed，即可派生出完整色板。
-- **确定性派生**：亮色 / 暗色模式、`lightLevel` / `darkLevel` 偏移、`menuColor` / `menuAccent` 均由同一套纯函数生成，结果可复现、可快照测试。
-- **多种输出格式**：`hsl` 与 `oklch`，适配不同设计体系。
-- **自定义 preset**：既支持内联写入自定义颜色，也支持 `{ name }` 引用持久化表。
-- **SSR 友好**：`/ssr` 子路径提供 cookie 解析、`createThemeInitScript`、`createThemeStore`，保证服务端与客户端首帧一致、无闪烁（FOUC）。
-- **零 UI 依赖**：纯逻辑 + 单依赖 `@soybeanjs/colord`，可独立使用。
+## 三层模型
 
-## 安装
+| 层           | 内容                                                    | 产物                                                                            |
+| :----------- | :------------------------------------------------------ | :------------------------------------------------------------------------------ |
+| **Palette**  | `@soybeanjs/colord` 的 26 色 × 11 级 + `white`/`black`  | `generatePaletteCss()` / `dist/palette.css`（静态、可永久缓存）                 |
+| **Semantic** | 41 个语义 token + 5 条角色 ramp，值是**调色板级别引用** | `resolveThemeMap()` → `emitThemeCss()`（159 条声明 ≈5.7 KB raw / gzip ≈1.2 KB） |
+| **Literal**  | 尺寸 / 圆角 / 间距单位 / 层次 / 线宽 / 字体族           | 随语义层一并产出                                                                |
 
-```bash
-pnpm add @soybeanjs/theme
-```
+颜色变量一律是**裸通道**（`--zinc-50: 0 0% 98%`）；语义 token 只做引用（`--background: var(--zinc-50)`），因此：
+
+- 调色板层可以做成静态产物（切主题不重算它）；
+- 语义层极小，切主题只是替换引用；
+- 需要完整色时用 `resolveTokenColor()`（纯函数，SSR / worker / canvas 均可用），与 CSS 走**同一个映射表**，不会分叉；
+- 消费端统一用函数包裹：`hsl(var(--primary) / 0.5)`（裸 `var()` 会静默丢掉透明度）。
+
+## 核心机制
+
+**没有对比度护栏**：每个 token 的档位都在 `CORE_RULES` 里声明，`overrides` 原样生效，引擎既不测量也不修正。可读性由主题作者负责——面板与 `axe` 是检查它的地方。
+
+表面级别是**固定声明**（`CORE_RULES`），没有"整体调暗一档"的运行时旋钮：需要微调某个 token 用 `overrides`，需要整体更暗/更亮就换 `base` 色板或 `surfaceStyle`。
+
+## 维度刻度
+
+两条字面值刻度（[space-control-scale.md](../../docs/space-control-scale.md)）：
+
+| 刻度             | 档位                                   | 值                                                                                                                                                                             |
+| :--------------- | :------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--spacing-unit` | —（唯一的间距变量）                    | 网格单位：`0.25rem`（默认）或 `calc(0.25rem * 倍率)`；18 档是这个单位的**系数**（在 UnoCSS 的 `theme.spacing` 映射里，不发 CSS 变量，默认单位下 = UnoCSS 同名同值 + 向下扩充） |
+| `--radius-*`     | `2xs` … `4xl`（9 档）+ `none` / `full` | 种子的**正系数倍**（`calc(var(--radius) * 0.25…2.25)`，`md` = 种子本身）；改种子整条一起变，且任何种子都不会算出负档——负 `border-radius` 是非法值，声明被丢弃后会静默变成直角  |
+
+UnoCSS 侧以具名 key 与数字 key 两条路暴露间距（`gap-md` / `p-2xl` / `mt-3xs`），圆角则整族接管（`rounded-2xs` … `rounded-4xl`、`none` / `full`，以及 `rounded` = 种子；`rounded-3xl` / `rounded-4xl` 也回主题，上游的固定长度不随种子移动，留在上游会让刻度在 `2xl` 处断链）。控件高度不由主题映射，用 UnoCSS 的数字 `h-*`（20–56px 即 `h-5`…`h-14`，随 `size` 缩放）。**具名档与数字类同源**（`gap-md` 与 `gap-4` 都产出 `calc(var(--spacing-unit) * 4)`），所以 `spacing` 一个选项同时带动两者；`w-*` / `h-*` / `size-*` 走 `theme.width` / `theme.height`，不受间距影响。
 
 ## 快速开始
 
-最直接的使用方式：调用 `createTheme` 生成 CSS 并注入。
+```ts
+import { resolveThemeMap, emitThemeCss, generatePaletteCss } from '@soybeanjs/theme';
+
+// 1) Layer 1（静态，构建期产出一次）
+const paletteCss = generatePaletteCss({ format: 'hsl' });
+
+// 2) Layer 2（随主题配置重算）
+const map = resolveThemeMap({ base: 'zinc', primary: 'indigo', surfaceStyle: 'layered' });
+const themeCss = emitThemeCss(map); // token 名默认不带前缀；需要命名空间时传 { prefix: 'acme' }
+
+// 3) 需要完整色时（canvas / 图表 / 颜色计算）
+import { resolveTokenColor } from '@soybeanjs/theme';
+const primary = resolveTokenColor({ primary: 'indigo' }, 'primary', 'dark');
+```
+
+UnoCSS 侧的颜色映射（通道 + `<alpha-value>`，这是 alpha 能生效的唯一形态）：
 
 ```ts
-import { createTheme } from '@soybeanjs/theme';
+const ref = (name: string, format: 'hsl' | 'oklch') => `${format}(var(${name}) / <alpha-value>)`;
 
-const css = createTheme({
-  base: 'zinc',
-  primary: 'indigo',
-  radius: 'md',
-  size: 'md',
-  darkSelector: 'class',
-  styleTarget: ':root',
-  format: 'hsl'
-});
-
-// → 返回一段 CSS 字符串，注入到 <style> 即可生效
-document.head.insertAdjacentHTML('beforeend', `<style>${css}</style>`);
+theme.colors = {
+  background: ref('--background', 'hsl'),
+  'muted-foreground': ref('--muted-foreground', 'hsl'),
+  'primary-500': ref('--primary-500', 'hsl'), // 角色 ramp（50–950，随主色板/方案换）
+  indigo: { 500: ref('--indigo-500', 'hsl') }
+};
 ```
 
-###### 在 `@soybeanjs/ui` 中使用
+## 选项
 
-大多数场景下你不需要手动调用 `createTheme`。`SConfigProvider` 已内置主题注入，只要你传入 `theme` 配置即可：
+| 选项                           | 默认                    | 说明                                                                                                                                                                                                                                                 |
+| :----------------------------- | :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `base` / `primary`             | `zinc` / `indigo`       | 26 个内置色板中任选（`primary` 取中性色板时切换为"亮色近黑 / 暗色近白"）                                                                                                                                                                             |
+| `feedback`                     | `classic`               | 状态色方案（见 `FEEDBACK_SCHEMES`）；图表色不设方案，由 `primary` 派生（`CHART_RAMP`）                                                                                                                                                               |
+| `overrides`                    | —                       | `{ light, dark }` 按 token 覆盖（`ColorValue`：`stone.950` / `white` / `hsl(...)` / `oklch(...)`），最高优先级；完整色发射时编码成主题格式的通道，alpha 落到边框族的伴生变量，无法表达的值被忽略                                                     |
+| `surfaceStyle`                 | `layered`               | `flat` 回到"页面与容器同色、靠边框与阴影分层"的形态                                                                                                                                                                                                  |
+| `prefix`                       | `false`                 | 语义变量前缀；token 名默认与 shadcn 一一对应（`--background` / `--card` / `--ring`…），需要命名空间的宿主传字符串                                                                                                                                    |
+| `size` / `radius` / `spacing`  | `md` / `md` / `default` | 根字号（密度缩放，全维度）/ 圆角种子（9 档刻度 `calc()` 推导自种子，`md` 即种子）/ **间距网格单位**（预设 `compact` 0.75 · `default` 1 · `relaxed` 1.25 · `spacious` 1.5 或任意倍率；只动 padding / margin / gap / inset，不动字号、控件高度与圆角） |
+| `borderOpacity`                | `1`                     | 装饰性边框 alpha 的倍数                                                                                                                                                                                                                              |
+| `format`                       | `hsl`                   | 调色板层格式（`oklch` 体积更小）                                                                                                                                                                                                                     |
+| `styleTarget` / `darkSelector` | `:root` / `class`       | 亮色块选择器 / 暗色表达（`media` → `@media (prefers-color-scheme: dark)`）                                                                                                                                                                           |
 
-```vue
-<script setup lang="ts">
-import { SConfigProvider } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SConfigProvider
-    :theme="{
-      base: 'zinc',
-      primary: 'indigo',
-      radius: 'md',
-      size: 'md'
-    }"
-  >
-    <slot />
-  </SConfigProvider>
-</template>
-```
-
-## 核心概念
-
-### Seed 派生
-
-引擎从两个 Seed 出发，派生出完整色板：
-
-- `base`：中性色（`zinc` / `neutral` / `stone` …），决定背景、前景、边框、input 等。
-- `primary`：品牌主色（`indigo` / `blue` / `emerald` …），决定 primary / ring / chart 等强调色。
-
-### 亮暗偏移
-
-- `lightLevel`（0–2）：亮色模式表面亮度偏移，数值越大表面越深。
-- `darkLevel`（0–3）：暗色模式背景亮度偏移，数值越大背景越浅。
-
-### 自定义 preset
-
-两种方式：
-
-```ts
-// 1) 内联自定义颜色（直接覆盖）
-createTheme({
-  base: 'zinc',
-  primary: 'indigo',
-  preset: {
-    light: { primary: 'blue.600', ring: 'blue.500' },
-    dark: { primary: 'blue.400', ring: 'blue.300' }
-  }
-});
-
-// 2) 引用持久化 preset（需配合 ConfigProvider 的 persistTheme）
-//    引擎内部只消费内联值；{ name } 由 ConfigProvider 解析后再传入。
-createTheme({
-  base: 'zinc',
-  primary: 'indigo',
-  preset: { name: 'my-brand' }
-});
-```
-
-## API 参考
-
-### 主入口 `@soybeanjs/theme`
-
-| 导出                                                 | 说明                                            |
-| ---------------------------------------------------- | ----------------------------------------------- |
-| `createTheme`                                        | 根据 `ThemeOptions` 生成 CSS 字符串（核心函数） |
-| `DEFAULT_PRESET_OPTIONS`                             | 默认主题选项（zinc / indigo / md / md）         |
-| `THEME_SIZE` / `themeSizeKeys`                       | 尺寸枚举与合法键列表（xs…2xl）                  |
-| `THEME_RADIUS` / `themeRadiusKeys`                   | 圆角枚举与合法键列表（2xs…2xl）                 |
-| `builtinBasePresetKeys` / `builtinPrimaryPresetKeys` | 内置 base / primary 色板键列表                  |
-
-类型：`ThemeOptions`、`ThemeConfigState`、`ThemeColor`、`ThemeSize`、`ThemeRadius`、`MenuColor`、`MenuAccent`、`CustomThemeColorPreset`、`StoredThemePreset`、`ThemePresetInput` … 等。
-
-### 子路径 `@soybeanjs/theme/storage`
-
-本地存储持久化（localStorage，SSR-safe）。
-
-| 导出                                                                        | 说明                                          |
-| --------------------------------------------------------------------------- | --------------------------------------------- |
-| `THEME_STORAGE_KEY`                                                         | 默认主题 localStorage 键（`__SOYBEAN_THEME`） |
-| `stringifyThemeConfig` / `parseThemeConfig`                                 | 主题配置序列化 / 反序列化（带校验）           |
-| `getStoredThemeConfig` / `setStoredThemeConfig` / `removeStoredThemeConfig` | 主题配置读写                                  |
-| `THEME_CSS_STORAGE_KEY`                                                     | 主题 CSS 快照键（`__SOYBEAN_THEME_CSS`）      |
-| `getStoredThemeCss` / `setStoredThemeCss` / `removeStoredThemeCss`          | 主题 CSS 快照读写（供首帧内联脚本使用）       |
-| `THEME_PRESETS_STORAGE_KEY`                                                 | 自定义 preset 表 localStorage 键              |
-| `getStoredThemePresets`                                                     | 读取 preset 表                                |
-| `setStoredThemePreset` / `removeStoredThemePreset`                          | 增删单个 preset                               |
-
-### 子路径 `@soybeanjs/theme/ssr`
-
-SSR/SSG 兼容工具。
-
-| 导出                    | 说明                                         |
-| ----------------------- | -------------------------------------------- |
-| `isServerRuntime`       | 运行时检测服务端（`window`/`document` 缺失） |
-| `createThemeInitScript` | 生成首帧前内联脚本，避免主题闪烁（FOUC）     |
-| `THEME_INIT_STYLE_ID`   | 首帧注入的 `<style>` 元素 id                 |
-
-## SSR 指南
-
-### 1. 客户端首帧前避免闪烁
-
-主题只持久化在 **localStorage**（不下发 cookie）。服务端首帧渲染默认主题，随后由内联脚本在浏览器首帧前读取 localStorage 并应用，因此无主题闪烁：
-
-```html
-<script>
-  // 由 createThemeInitScript() 生成，放在 <head> 最前
-  // 读取 localStorage 中持久化的主题，把 .dark 类与 data-theme 应用到 <html>
-</script>
-```
-
-内联脚本只能直接应用 `data-theme` 与暗色 class；颜色 / 圆角 / 尺寸等**派生 token** 无法在脚本里重算。需要连派生 token 也首帧生效时，开启 `injectCss`：应用会把 `createTheme()` 生成的 CSS 快照写入 localStorage（`SConfigProvider` 的 `persistTheme` 负责），脚本读取后以 `!important` 注入 `<style id="__SOYBEAN_THEME_INIT">`，压过 SSR 渲染的默认主题；客户端应用响应式主题样式后由 `SConfigProvider` 移除该样式，运行时切换不受影响。
-
-```ts
-createThemeInitScript({ injectCss: true });
-```
-
-### 2. 推荐：直接交给 `SConfigProvider`
-
-上述逻辑在 `@soybeanjs/ui` 的 `SConfigProvider` 中已全部封装。应用只需传入环境标志：
-
-```vue
-<template>
-  <SConfigProvider :is-server="import.meta.server" persist-theme>
-    <slot />
-  </SConfigProvider>
-</template>
-```
-
-设置持久化、CSS 注入、暗色 class 切换均由内部完成；如需首帧应用持久化主题，可在 `<head>` 内联 `createThemeInitScript()`。
-
-## 与 `@soybeanjs/ui` 集成
-
-- 运行时主题注入入口：`SConfigProvider`（唯一入口，不额外提供独立 `ThemeProvider`）。
-- 持久化：设置 `persist-theme` 后，主题状态写入 localStorage；`{ name }` 引用解析依赖 `persistTheme`。
-- 主题 UI 消费：在 `SConfigProvider` 后代中使用 `useTheme`（来自 `@soybeanjs/ui`）读取/修改 `base` / `primary` / `radius` / `size` / `mode` 与 preset，无需 prop drilling。
-
-## 目录结构
-
-```
-packages/theme/src/
-  index.ts        # 主入口：createTheme + 枚举 + 类型
-  core.ts         # createTheme：合并默认值 → 派生 → 生成 CSS
-  defaults.ts     # DEFAULT_PRESET_OPTIONS
-  preset.ts       # 色板派生（base / primary / feedback / sidebar）
-  derive.ts       # 色值派生工具
-  css.ts          # CSS 生成（base + color + 调色板）
-  tokens.ts       # 尺寸 / 圆角枚举
-  variables.ts    # CSS 变量集合
-  types.ts        # 全部公开类型
-  storage.ts      # /storage：localStorage 持久化
-  ssr.ts          # /ssr：服务端工具 + 首帧内联脚本
-  shared.ts       # 内部工具（merge / darkSelector）
-```
-
-## 测试
+## 命令
 
 ```bash
-pnpm --filter @soybeanjs/theme test
+pnpm --filter @soybeanjs/theme test        # 层级不变量、发射契约、JS↔CSS 同源、家族划分、维度刻度、预算
+pnpm --filter @soybeanjs/theme typecheck
+pnpm --filter @soybeanjs/theme build       # vp pack + dist/palette.css
 ```
 
-覆盖核心派生确定性、级别偏移、SSR 解析、存储读写等，含快照测试。
+## 尚未包含
 
-## License
-
-[MIT](https://github.com/soybeanjs/soybean-ui/blob/main/LICENSE)
+自定义色板注册（非内置 26 色）留待后续——目前用 `overrides` 覆盖单个 token。升级指南与文档站内容见 `apps/docs/src/content/{en,zh}/ui/migration/`。

@@ -59,7 +59,7 @@ export const sheetVariants = scv({
   extendIgnore: ['popup'],
   slots: {
     popup: [
-      `fixed z-50 flex flex-col justify-between items-stretch border bg-background outline-none`,
+      `fixed z-base flex flex-col justify-between items-stretch border bg-popover outline-none`,
       POPUP_TRANSITION,
       `data-[state=open]:animate-in data-[state=open]:duration-500`,
       `data-[state=closed]:animate-out data-[state=closed]:duration-300`

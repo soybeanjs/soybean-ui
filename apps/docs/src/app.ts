@@ -3,6 +3,7 @@ import { createThemeInitScript } from '@soybeanjs/theme/ssr';
 import { progress } from '@soybeanjs/ui';
 // import '@soybeanjs/ui/styles.css';
 import 'uno.css';
+import { docsFontLinks } from './shared/fonts';
 import './styles/global.css';
 
 export default defineApp({
@@ -11,7 +12,10 @@ export default defineApp({
     title: 'SoybeanUI Documentation',
     htmlAttrs: { lang: 'en' },
     meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
-    script: [{ innerHTML: createThemeInitScript({ injectCss: true }) }]
+    // The customizer swaps `--font-*` at runtime, so every family it can select
+    // has to be loaded up front — see `shared/fonts.ts`.
+    link: docsFontLinks,
+    script: [{ innerHTML: createThemeInitScript() }]
   },
   router: {
     setup(router) {

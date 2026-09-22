@@ -12,7 +12,7 @@ export const toggleGroupVariants = scv({
     ],
     item: [
       'inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-all-150',
-      'outline-none focus-visible:ring-3 focus-visible:ring-primary/30 focus-visible:ring-offset-background',
+      'outline-none focus-visible:ring-3 focus-visible:ring-primary/30 focus-visible:ring-offset-card',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       '[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4'
     ]
@@ -67,7 +67,7 @@ export const toggleGroupVariants = scv({
     variant: {
       outline: {
         item: [
-          'border border-border bg-background text-foreground',
+          'border border-border bg-card text-foreground',
           'data-[state=off]:hover:bg-accent data-[state=on]:bg-accent data-[state=on]:text-accent-foreground'
         ]
       },

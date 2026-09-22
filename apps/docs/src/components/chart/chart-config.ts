@@ -15,7 +15,7 @@ import { tooltip } from '@tanstack/charts/tooltip';
  * 主题图表面板色，值包裹为合法 CSS 颜色。
  *
  * 主题引擎把 `--chart-N` 存为原始 HSL 通道三元组（如 `20.5 90.2% 48.2%`），
- * 因此这里用 `hsl()` 包裹；引用时用本数组而不是直接写 `var(--chart-N)`。
+ * 因此这里用 `hsl()` 包裹；引用时用本数组而不是逐处手写单色 token。
  */
 export const chartColors = [
   'hsl(var(--chart-1))',
@@ -35,7 +35,7 @@ export type ChartConfig = Record<string, { label?: string; color?: string }>;
  */
 export const chartSvgTheme: Partial<ChartTheme> = {
   foreground: 'hsl(var(--muted-foreground))',
-  grid: 'hsl(var(--border))',
+  grid: 'hsl(var(--border) / var(--border-alpha, 1))',
   background: 'transparent'
 };
 

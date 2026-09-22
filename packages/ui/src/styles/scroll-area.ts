@@ -6,7 +6,7 @@ export const scrollAreaVariants = scv({
     root: 'relative overflow-hidden',
     viewport: `scrollbar-none size-full rounded-[inherit] outline-none focus-visible:outline-1 focus-visible:ring-3 focus-visible:ring-ring/50`,
     scrollbar: [
-      'absolute flex touch-none select-none p-px transition-opacity duration-200 ease-out',
+      'absolute flex touch-none select-none p-px transition-opacity duration-200 ease-[cubic-bezier(.16,1,.3,1)]',
       'data-[state=hidden]:pointer-events-none data-[state=hidden]:opacity-0',
       'data-[orientation=vertical]:inset-y-0 data-[orientation=vertical]:end-0 data-[orientation=vertical]:border-s data-[orientation=vertical]:border-s-transparent',
       'rtl:data-[orientation=vertical]:end-auto rtl:data-[orientation=vertical]:start-0',

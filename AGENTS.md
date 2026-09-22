@@ -47,9 +47,9 @@ from the styled wrapper to its nested headless parts via `provideXUi(ui)` and
 
 Other publishable modules:
 
-- **@soybeanjs/theme** (`packages/theme/`): theme engine — core tokens, deterministic derivation, light/dark levels, SSR/storage helpers.
+- **@soybeanjs/theme** (`packages/theme/`): theme engine — static palette layer + semantic alias layer (a declared mapping table, no measurement or correction), envelope storage + first-paint script. **Docs: [docs/theme.md](docs/theme.md) (§0 is the AI-agent handbook).**
 - **@soybeanjs/ui-uno** (`packages/unocss/`): UnoCSS preset over `@soybeanjs/theme`.
-- **sbean** (`packages/cli/`): source-distribution CLI, registry, schemas, templates, and MCP.
+- **sbean** (`packages/cli/`, bin `sbean`): source-distribution CLI, registry, schemas, templates, and MCP.
 - **@soybeanjs/ui-skills** (`skills/`): generated consumer-facing agent skills.
 
 > There is **no** `@soybeanjs/admin` or `@soybeanjs/chart` package, and no standalone AI package: AI/chat components ship inside headless + ui under the standard `S` prefix — the component plan lives in [docs/ui-ai-roadmap.md](docs/ui-ai-roadmap.md). The former admin direction returns as an in-core **shell domain** (headless `src/shell/` + ui composites such as `SLayoutShell`/`SPageHeader`), planned in [docs/ui-shell-roadmap.md](docs/ui-shell-roadmap.md). Charts are not part of the core library: the docs site shows shadcn-styled demos built directly on [TanStack Charts](https://tanstack.com/charts) (see `apps/docs/src/examples/chart/` + the docs-local `apps/docs/src/components/chart/` theming shell).
@@ -62,28 +62,30 @@ Private packages and applications:
 
 ## WHERE TO LOOK
 
-| Task                     | Location                                                                  | Key Pattern                                                                          |
-| ------------------------ | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| New component (logic)    | `packages/headless/src/components/[name]/`                                | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts         |
-| New component (styled)   | `packages/ui/src/components/[name]/` + `packages/ui/src/styles/[name].ts` | style recipe → types.ts → `*.vue` → index.ts                                         |
-| Variant definitions      | `packages/ui/src/styles/[name].ts`                                        | `cv()` / `scv()` with `// @unocss-include` at top                                    |
-| Shared hooks             | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (29 total)                                          |
-| Theme/sizing             | `packages/ui/src/theme/`                                                  | `ThemeColor` (8), `ThemeSize` (xs…2xl)                                               |
-| Theme CSS generation     | `packages/theme/`                                                         | `createTheme(options)` (returns CSS string)                                          |
-| UnoCSS adapter           | `packages/unocss/`                                                        | `presetUiUnocss()` / `presetSbean()`                                                 |
-| Source-distribution CLI  | `packages/cli/`                                                           | commands → registry/schema/templates/MCP                                             |
-| Repo-service CLI (`sui`) | `packages/scripts/`                                                       | `gen` (offline) / `translate` (DeepL) / `check` groups, `stub`, `reorder-imports`    |
-| Utility functions        | `packages/headless/src/shared/`                                           | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                          |
-| Global types             | `packages/headless/src/types/`                                            | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                  |
-| Generated API data       | `apps/docs/src/generated/api/`                                            | `pnpm sui gen api` baseline + `pnpm sui translate api --locale <locale>` locale text |
-| Generated changelog data | `apps/docs/src/generated/changelog/`                                      | `pnpm sui gen changelog` baseline + `pnpm sui translate changelog` locale summaries  |
-| Docs content             | `apps/docs/src/docs/[en\|zh-CN]/`                                         | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`            |
-| Demo source              | `apps/docs/src/examples/[component]/`                                     | Vue SFCs referenced by docs                                                          |
-| Browser e2e tests        | `packages/ui/test/browser/`                                               | `vitest.browser.config.ts` + `vitest-browser-vue` + `axe-core` (color-contrast on)   |
-| Workspace architecture   | `docs/architecture.md`                                                    | Package/app map, dependency graph, generation/build/test/release flows               |
-| Architecture assessment  | `docs/optimize.md`                                                        | Evidence-ranked maintainability, scalability, and quality recommendations            |
-| Component dev skill      | `.agents/skills/soybean-ui-develop/`                                      | SKILL.md + layers.md (admission) + surfaces.md + e2e.md + process.md + audit.md      |
-| Headless admission gaps  | `docs/headless-admission-remediation.md`                                  | Anatomy shells, decorative slots, and parallel families to freeze or fix             |
+| Task                               | Location                                                                  | Key Pattern                                                                                    |
+| ---------------------------------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| New component (logic)              | `packages/headless/src/components/[name]/`                                | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts                   |
+| New component (styled)             | `packages/ui/src/components/[name]/` + `packages/ui/src/styles/[name].ts` | style recipe → types.ts → `*.vue` → index.ts                                                   |
+| Variant definitions                | `packages/ui/src/styles/[name].ts`                                        | `cv()` / `scv()` with `// @unocss-include` at top                                              |
+| Shared hooks                       | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (29 total)                                                    |
+| Theme engine (design/API/handbook) | `docs/theme.md`                                                           | **单一权威**：新旧差异与优势 / token 契约 / 引擎 API / 接入手册（§0）/ 验收                    |
+| Theme dimension scale              | `docs/space-control-scale.md`                                             | spacing / radius 的取值与实测依据；什么不该成为刻度族（控件高度 / 图标 / 字号 / 阴影动效）     |
+| Theme/sizing                       | `packages/ui/src/theme/`                                                  | `ThemeColor` (8 roles), `ThemeSize` (xs…2xl)                                                   |
+| Token CSS generation               | `packages/theme/src/`                                                     | `resolveThemeMap(options)` → `emitThemeCss(map)`（Layer 2）/ `generatePaletteCss()`（Layer 1） |
+| UnoCSS adapter                     | `packages/unocss/`                                                        | `presetUiUnocss()` / `presetSbean()`                                                           |
+| Source-distribution CLI            | `packages/cli/`                                                           | commands → registry/schema/templates/MCP                                                       |
+| Repo-service CLI (`sui`)           | `packages/scripts/`                                                       | `gen` (offline) / `translate` (DeepL) / `check` groups, `stub`, `reorder-imports`              |
+| Utility functions                  | `packages/headless/src/shared/`                                           | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                                    |
+| Global types                       | `packages/headless/src/types/`                                            | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                            |
+| Generated API data                 | `apps/docs/src/generated/api/`                                            | `pnpm sui gen api` baseline + `pnpm sui translate api --locale <locale>` locale text           |
+| Generated changelog data           | `apps/docs/src/generated/changelog/`                                      | `pnpm sui gen changelog` baseline + `pnpm sui translate changelog` locale summaries            |
+| Docs content                       | `apps/docs/src/docs/[en\|zh-CN]/`                                         | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`                      |
+| Demo source                        | `apps/docs/src/examples/[component]/`                                     | Vue SFCs referenced by docs                                                                    |
+| Browser e2e tests                  | `packages/ui/test/browser/`                                               | `vitest.browser.config.ts` + `vitest-browser-vue` + `axe-core` (color-contrast on)             |
+| Workspace architecture             | `docs/architecture.md`                                                    | Package/app map, dependency graph, generation/build/test/release flows                         |
+| Architecture assessment            | `docs/optimize.md`                                                        | Evidence-ranked maintainability, scalability, and quality recommendations                      |
+| Component dev skill                | `.agents/skills/soybean-ui-develop/`                                      | SKILL.md + layers.md (admission) + surfaces.md + e2e.md + process.md + audit.md                |
+| Headless admission gaps            | `docs/headless-admission-remediation.md`                                  | Anatomy shells, decorative slots, and parallel families to freeze or fix                       |
 
 ## BUILD & CI
 
@@ -145,7 +147,7 @@ pnpm sui sync-template-versions  # Sync the @soybeanjs/* version constant used b
 
 - `packages/ui` → imports public `@soybeanjs/headless` entry points
 - `packages/headless` → MUST NOT import from `@soybeanjs/ui` (would create a circular dependency)
-- `packages/unocss` → imports `@soybeanjs/theme`; token ownership stays in the theme package
+- `packages/unocss` → imports `@soybeanjs/theme`; token ownership stays in the theme package (its `src/theme.ts` is the single UnoCSS adapter)
 - Components re-exported from barrel files: `packages/headless/src/index.ts`, `packages/ui/src/index.ts`
 
 ## KEY PATTERNS (verified from source)

@@ -62,7 +62,7 @@
           "default": "md"
         },
         "radius": {
-          "enum": ["2xs", "xs", "sm", "md", "lg", "xl", "2xl"],
+          "enum": ["2xs", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl"],
           "type": "string",
           "description": "Default border radius for components.",
           "default": "md"
@@ -76,6 +76,7 @@
       "properties": {
         "sans": {
           "enum": [
+            "geist",
             "inter",
             "noto-sans",
             "nunito-sans",
@@ -88,7 +89,6 @@
             "oxanium",
             "manrope",
             "space-grotesk",
-            "geist",
             "montserrat",
             "ibm-plex-sans",
             "source-sans-3",
@@ -106,9 +106,9 @@
           "type": "string",
           "description": "Sans-serif font family for body text. Set to a font key from the preset list to load it, or omit for system default."
         },
-        "heading": {
+        "serif": {
           "enum": [
-            "inherit",
+            "geist",
             "inter",
             "noto-sans",
             "nunito-sans",
@@ -121,7 +121,69 @@
             "oxanium",
             "manrope",
             "space-grotesk",
+            "montserrat",
+            "ibm-plex-sans",
+            "source-sans-3",
+            "instrument-sans",
+            "jetbrains-mono",
+            "geist-mono",
+            "noto-serif",
+            "roboto-slab",
+            "merriweather",
+            "lora",
+            "playfair-display",
+            "eb-garamond",
+            "instrument-serif"
+          ],
+          "type": "string"
+        },
+        "mono": {
+          "enum": [
             "geist",
+            "inter",
+            "noto-sans",
+            "nunito-sans",
+            "figtree",
+            "roboto",
+            "raleway",
+            "dm-sans",
+            "public-sans",
+            "outfit",
+            "oxanium",
+            "manrope",
+            "space-grotesk",
+            "montserrat",
+            "ibm-plex-sans",
+            "source-sans-3",
+            "instrument-sans",
+            "jetbrains-mono",
+            "geist-mono",
+            "noto-serif",
+            "roboto-slab",
+            "merriweather",
+            "lora",
+            "playfair-display",
+            "eb-garamond",
+            "instrument-serif"
+          ],
+          "type": "string"
+        },
+        "heading": {
+          "enum": [
+            "inherit",
+            "geist",
+            "inter",
+            "noto-sans",
+            "nunito-sans",
+            "figtree",
+            "roboto",
+            "raleway",
+            "dm-sans",
+            "public-sans",
+            "outfit",
+            "oxanium",
+            "manrope",
+            "space-grotesk",
             "montserrat",
             "ibm-plex-sans",
             "source-sans-3",

@@ -48,7 +48,7 @@ pnpm remove @soybeanjs/ui @soybeanjs/headless @soybeanjs/theme @soybeanjs/ui-uno
 pnpm add @vean/ui @vean/aria @vean/theme @vean/unocss
 ```
 
-> API names such as `presetUiUnocss()`, `UiUnocssOptions`, and `createTheme()` are **unchanged** — only their package of origin moves.
+> API names such as `presetUiUnocss()`, `UiUnocssOptions` and `resolveThemeMap()` are **unchanged** — only their package of origin moves.
 
 ## 2. Nuxt projects
 

@@ -1,5 +1,5 @@
 import { colord } from '@soybeanjs/colord';
-import { generateNearestPalette, simplePalette, tailwindPalette } from '@soybeanjs/colord/palette';
+import { generateNearestPalette, simplePalette, tailwindPalette, tailwindPaletteKeys } from '@soybeanjs/colord/palette';
 import type { PaletteColorLevel, SimplePaletteKey, TailwindPaletteKey } from '@soybeanjs/colord/palette';
 import type { ColorFormat, ColorValue } from '@soybeanjs/theme';
 import type { PaletteSelectValue } from './types';
@@ -12,27 +12,22 @@ export const PALETTE_LEVELS: readonly PaletteColorLevel[] = [
 ] as const;
 
 /**
- * the simple palette keys.
+ * the simple palette keys — taken from colord's own table (same order), so the
+ * picker and the color library can never disagree about the set.
  */
-export const SIMPLE_KEYS: readonly SimplePaletteKey[] = [
-  'inherit',
-  'current',
-  'transparent',
-  'black',
-  'white'
-] as const;
+export const SIMPLE_KEYS = Object.keys(simplePalette) as readonly SimplePaletteKey[];
 
 /**
  * the tailwind palette keys.
  */
-export const TAILWIND_KEYS: readonly TailwindPaletteKey[] = Object.keys(tailwindPalette) as TailwindPaletteKey[];
+export const TAILWIND_KEYS: readonly TailwindPaletteKey[] = tailwindPaletteKeys;
 
 /**
  * the default level used when a tailwind key is selected.
  */
 export const DEFAULT_LEVEL: PaletteColorLevel = 500;
 
-export const isTailwindKey = (value: string): value is TailwindPaletteKey => value in tailwindPalette;
+export const isTailwindKey = (value: string): value is TailwindPaletteKey => Object.hasOwn(tailwindPalette, value);
 
 export const isSimpleKey = (value: string): value is SimplePaletteKey =>
   (SIMPLE_KEYS as readonly string[]).includes(value);

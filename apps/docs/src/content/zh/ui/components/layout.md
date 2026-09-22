@@ -91,7 +91,7 @@ head:
 
 ### z-index 如何协调？
 
-`Layout` 接受 `baseZIndex`（默认 `50`）。sidebar、header、tab、footer 的 z-index 均由此基础值派生，确保堆叠可预测。派生值通过 `--soybean-layout-{sidebar|header|tab|footer}-z-index` CSS 变量暴露。
+`Layout` 接受 `baseZIndex`（默认 `50`）。sidebar、header、tab、footer 的 z-index 均由此基础值派生，确保堆叠可预测。派生值通过 `--layout-{sidebar|header|tab|footer}-z-index` CSS 变量暴露。
 
 ### 如何定制区域级属性？
 

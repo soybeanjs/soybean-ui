@@ -58,7 +58,7 @@ describe('config schema', () => {
       $schema: 'https://ui.soybeanjs.cn/schema.json',
       uno: {
         ...minimalConfig.uno,
-        chart: 'blue'
+        size: 'lg'
       },
       font: {
         sans: 'inter',

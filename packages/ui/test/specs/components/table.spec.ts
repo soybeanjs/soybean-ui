@@ -5,6 +5,7 @@ import { useTableEngine } from '@soybeanjs/headless/table';
 import SConfigProvider from '@/components/config-provider/config-provider.vue';
 import STable from '@/components/table/table.vue';
 import type { TableColumn } from '@/components/table/types';
+import { tableVariants } from '@/styles/table';
 import { MockResizeObserver, createMockResizeObserverEntry, delay, setupMock } from '../../shared';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -1300,5 +1301,49 @@ describe('STable', () => {
       expect(wrapper.text()).not.toContain('Age');
       wrapper.unmount();
     });
+  });
+});
+
+describe('STable rounded ladder', () => {
+  /**
+   * `rounded: true` 按 size 取**固定的圆角长度**，刻意不跟随主题半径种子：
+   * 表格的圆角是"外观"而不是"随主题缩放的刻度"，所以它与 `--radius-*` 脱钩，
+   * 改主题种子不会让表格变形。下面的映射就是这张策略表本身。
+   */
+  const fixedRadii = {
+    xs: '0.75rem',
+    sm: '1rem',
+    md: '1.125rem',
+    lg: '1.375rem',
+    xl: '1.625rem',
+    '2xl': '1.75rem'
+  } as const;
+
+  const sizes = Object.keys(fixedRadii) as (keyof typeof fixedRadii)[];
+
+  it('maps each size onto its fixed corner radius', () => {
+    for (const size of sizes) {
+      const { root } = tableVariants({ size, rounded: true });
+
+      expect(root, size).toContain(`[--rounded:${fixedRadii[size]}]`);
+      // 固定值就是字面量：不吃主题种子，任何主题下同一 size 的圆角一致
+      expect(root, `${size} must not read a theme rung`).not.toContain('--radius-');
+    }
+  });
+
+  it('keeps the default table on the theme seed', () => {
+    // 默认（`rounded: false`）跟随主题种子，因此与同一卡片里的圆角齐平；
+    // UnoCSS 把 `[--x:--y]` 规范化为 `var(--y)`，所以两者等价
+    expect(tableVariants({ size: 'md' }).root).toContain('[--rounded:--radius]');
+    expect(tableVariants({}).root).toContain('[--rounded:--radius]');
+  });
+
+  it('renders the mapped radius on the rounded table', () => {
+    const wrapper = mount(STable, {
+      props: { columns: [], data: [], rounded: true, size: 'xl' as const } as never
+    });
+
+    expect(wrapper.get('[data-soybean-table-root]').classes()).toContain('[--rounded:1.625rem]');
+    wrapper.unmount();
   });
 });

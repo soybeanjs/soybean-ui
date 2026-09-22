@@ -17,8 +17,8 @@ export const tagVariants = cv({
     },
     variant: {
       solid: '',
-      pure: 'bg-background text-foreground border-border',
-      outline: 'bg-background',
+      pure: 'bg-card text-foreground border-border',
+      outline: 'bg-card',
       soft: 'border-0',
       ghost: '',
       raw: 'bg-transparent border-0'

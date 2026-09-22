@@ -1,14 +1,13 @@
 import { presetWind3, presetWebFonts } from 'unocss';
 import type { Preflight, Preset } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
-import { createTheme, RADIUS_VARIABLE, SIZE_VARIABLE } from '@soybeanjs/theme';
 import { presetAnimations } from './animations';
-import { buildThemeColors } from './colors';
 import { buildGlobalCss } from './global-css';
 import type { UiUnocssOptions } from './options';
 import resetStyle from './reset.css?raw';
 import { presetScrollbar } from './scrollbar';
 import uiStyles from './styles.css?raw';
+import { buildThemeColors, buildThemeEntries, buildThemePreflight } from './theme';
 
 /**
  * The SoybeanUI unocss preset.
@@ -53,6 +52,8 @@ export function presetUiUnocss(options?: UiUnocssOptions): Preset<Theme>[] {
     ...themeOptions
   } = options ?? {};
 
+  const engineOptions = { ...themeOptions, format };
+
   // ---- ui-uno preflights --------------------------------------------
   const preflights: Preflight[] = [];
 
@@ -70,9 +71,9 @@ export function presetUiUnocss(options?: UiUnocssOptions): Preset<Theme>[] {
         }
 
         if (uiCSS) {
-          // The base tokens (`size`/`radius`) are top-level `ThemeOptions`
-          // fields, so `createTheme` reads them directly from the options.
-          css += createTheme({ ...themeOptions, format });
+          // The static token preflight: palette layer + the default theme's
+          // alias block, both derived from the same options the runtime reads.
+          css += buildThemePreflight(engineOptions);
         }
 
         // 不在 preset 内压缩：preflight CSS 体量小，最终产物在 Vite
@@ -105,20 +106,10 @@ export function presetUiUnocss(options?: UiUnocssOptions): Preset<Theme>[] {
           'collapsible-up': 'ease-out'
         }
       },
-      colors: buildThemeColors(format),
-      borderRadius: {
-        '2xl': `calc(var(${RADIUS_VARIABLE}) + 8px)`,
-        xl: `calc(var(${RADIUS_VARIABLE}) + 4px)`,
-        lg: `var(${RADIUS_VARIABLE})`,
-        md: `calc(var(${RADIUS_VARIABLE}) - 2px)`,
-        sm: `calc(var(${RADIUS_VARIABLE}) - 4px)`
-      },
-      fontSize: {
-        '4xs': ['0.375rem', '0.5rem'],
-        '3xs': ['0.5rem', '0.625rem'],
-        '2xs': ['0.625rem', '0.75rem'],
-        root: `var(${SIZE_VARIABLE})`
-      }
+      colors: buildThemeColors(format, themeOptions.prefix),
+      // The token contract owns the dimension / motion / layering keys
+      // (visually neutral subset, see `buildThemeEntries`).
+      ...buildThemeEntries(themeOptions.prefix)
     }
   };
 

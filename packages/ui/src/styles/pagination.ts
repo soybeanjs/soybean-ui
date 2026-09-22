@@ -6,7 +6,7 @@ const paginationAction = cv({
   base: [
     `inline-flex items-center justify-center shrink-0 font-medium transition-all-150 rtl:[&>svg]:rotate-180`,
     `hover:bg-accent hover:text-accent-foreground`,
-    `outline-none focus-visible:ring-3  focus-visible:ring-offset-background focus-visible:ring-primary/30`,
+    `outline-none focus-visible:ring-3 focus-visible:ring-offset-card focus-visible:ring-primary/30`,
     `disabled:cursor-not-allowed disabled:opacity-50`
   ],
   variants: {
@@ -19,9 +19,9 @@ const paginationAction = cv({
       '2xl': `h-12 px-2.875 gap-3`
     },
     variant: {
-      pure: `data-[soybean-pagination-action]:border data-[soybean-pagination-action]:border-border data-[soybean-pagination-action]:bg-background data-[soybean-pagination-action]:text-accent-foreground data-[soybean-pagination-action]:hover:bg-accent/60 data-[soybean-pagination-action]:active:bg-accent`,
+      pure: `data-[soybean-pagination-action]:border data-[soybean-pagination-action]:border-border data-[soybean-pagination-action]:bg-card data-[soybean-pagination-action]:text-accent-foreground data-[soybean-pagination-action]:hover:bg-accent/60 data-[soybean-pagination-action]:active:bg-accent`,
       solid: `data-[soybean-pagination-action]:border-transparent data-[soybean-pagination-action]:bg-primary data-[soybean-pagination-action]:text-primary-foreground data-[soybean-pagination-action]:hover:bg-primary/80 data-[soybean-pagination-action]:hover:text-primary-foreground data-[soybean-pagination-action]:active:bg-primary-600`,
-      outline: `data-[soybean-pagination-action]:border data-[soybean-pagination-action]:border-primary data-[soybean-pagination-action]:bg-background data-[soybean-pagination-action]:text-primary data-[soybean-pagination-action]:hover:bg-transparent`,
+      outline: `data-[soybean-pagination-action]:border data-[soybean-pagination-action]:border-primary data-[soybean-pagination-action]:bg-card data-[soybean-pagination-action]:text-primary data-[soybean-pagination-action]:hover:bg-transparent`,
       soft: `data-[soybean-pagination-action]:bg-primary/10 data-[soybean-pagination-action]:hover:bg-primary/10 data-[soybean-pagination-action]:active:bg-primary/20`
     },
     shape: {
@@ -53,7 +53,7 @@ export const paginationVariants = scv({
     listItem: [
       `inline-flex items-center justify-center shrink-0 font-medium transition-all-150`,
       `hover:bg-accent hover:text-accent-foreground`,
-      `outline-none focus-visible:ring-3  focus-visible:ring-offset-background focus-visible:ring-primary/30`,
+      `outline-none focus-visible:ring-3 focus-visible:ring-offset-card focus-visible:ring-primary/30`,
       `disabled:cursor-not-allowed disabled:opacity-50`
     ],
     first: '',
@@ -96,13 +96,13 @@ export const paginationVariants = scv({
     },
     variant: {
       pure: {
-        listItem: `data-[selected]:border data-[selected]:border-border data-[selected]:bg-background data-[selected]:text-accent-foreground data-[selected]:hover:bg-accent/60 data-[selected]:active:bg-accent`
+        listItem: `data-[selected]:border data-[selected]:border-border data-[selected]:bg-card data-[selected]:text-accent-foreground data-[selected]:hover:bg-accent/60 data-[selected]:active:bg-accent`
       },
       solid: {
         listItem: `data-[selected]:border-transparent data-[selected]:bg-primary data-[selected]:text-primary-foreground data-[selected]:hover:bg-primary/80 data-[selected]:hover:text-primary-foreground data-[selected]:active:bg-primary-600`
       },
       outline: {
-        listItem: `data-[selected]:border data-[selected]:border-primary data-[selected]:bg-background data-[selected]:text-primary data-[selected]:hover:bg-transparent`
+        listItem: `data-[selected]:border data-[selected]:border-primary data-[selected]:bg-card data-[selected]:text-primary data-[selected]:hover:bg-transparent`
       },
       soft: {
         listItem: `data-[selected]:bg-primary/10 data-[selected]:hover:bg-primary/10 data-[selected]:active:bg-primary/20`

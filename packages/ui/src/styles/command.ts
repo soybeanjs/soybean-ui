@@ -12,7 +12,7 @@ export const commandVariants = scv({
     inputClearable: miniButtonIconVariants({ size: props.size, shape: 'circle' })
   }),
   slots: {
-    root: `flex w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground`,
+    root: `flex w-full flex-col overflow-hidden rounded-md bg-popover text-foreground`,
     inputRoot: 'group flex items-center border-b',
     inputControl: `flex w-full rounded-md bg-transparent outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed`,
     inputIcon: fieldAffordanceIcon,

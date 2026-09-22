@@ -4,7 +4,15 @@ import type { ThemeSize } from '@/theme';
 /**
  * the selectable sections of the theme customizer.
  */
-export type ThemeCustomizerSection = 'mode' | 'palette' | 'radius' | 'size' | 'scheme' | 'advanced';
+export type ThemeCustomizerSection =
+  | 'mode'
+  | 'palette'
+  | 'radius'
+  | 'size'
+  | 'spacing'
+  | 'font'
+  | 'scheme'
+  | 'advanced';
 
 /**
  * Properties for the ThemeCustomizer component.

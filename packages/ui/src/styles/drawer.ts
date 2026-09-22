@@ -13,7 +13,7 @@ export const drawerVariants = scv({
       `data-[active]:scale-[calc(1_-_var(--soybean-drawer-swipe-progress,0)*0.05_-_0.02)]`,
       `data-[active]:rounded-b-2xl`
     ],
-    indentBackground: 'fixed inset-0 z-40 bg-background'
+    indentBackground: 'fixed inset-0 z-40 bg-popover'
   },
   variants: {
     size: {

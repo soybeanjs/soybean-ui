@@ -42,6 +42,13 @@ const menus = computed<NavMenuOptionData[]>(() => {
       selected: path.startsWith('/chart')
     },
     {
+      value: 'theme-editor',
+      label: t('layout.header.theme'),
+      icon: 'lucide:palette',
+      to: '/theme-editor',
+      selected: path.startsWith('/theme-editor')
+    },
+    {
       value: 'playground',
       label: t('layout.header.playground'),
       icon: 'lucide:flask-conical',

@@ -17,8 +17,8 @@ export const inputOtpVariants = scv({
     ],
     slot: [
       'relative inline-flex items-center justify-center overflow-hidden font-medium text-foreground',
-      'rounded-md border border-solid border-input bg-background transition-all-150',
-      'data-[state=active]:ring-3 data-[state=active]:ring-offset-background data-[state=active]:ring-primary/30'
+      'rounded-md border border-solid border-input bg-card transition-all-150',
+      'data-[state=active]:ring-3 data-[state=active]:ring-offset-card data-[state=active]:ring-primary/30'
     ],
     char: 'leading-none',
     placeholder: 'leading-none text-muted-foreground/45',

@@ -6,7 +6,7 @@ import { miniSizeMap } from '@/theme';
 export const buttonVariants = cv({
   base: [
     'inline-flex items-center justify-center font-medium transition-all-150',
-    'outline-none focus-visible:ring-3 focus-visible:ring-offset-background',
+    'outline-none focus-visible:ring-3 focus-visible:ring-offset-card',
     'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50'
   ],
   variants: {
@@ -22,10 +22,10 @@ export const buttonVariants = cv({
     },
     variant: {
       solid: `bg-primary text-primary-foreground data-[normal]:hover:bg-primary/80 data-[normal]:active:bg-primary-600`,
-      pure: 'border border-border bg-background text-accent-foreground data-[normal]:hover:bg-accent/60 data-[normal]:active:bg-accent',
-      plain: 'border border-border bg-background text-foreground',
-      outline: 'border bg-background',
-      dashed: 'border border-dashed bg-background',
+      pure: 'border border-border bg-card text-accent-foreground data-[normal]:hover:bg-accent/60 data-[normal]:active:bg-accent',
+      plain: 'border border-border bg-card text-foreground',
+      outline: 'border bg-card',
+      dashed: 'border border-dashed bg-card',
       soft: 'bg-primary/10 data-[normal]:hover:bg-primary/10 data-[normal]:active:bg-primary/20',
       ghost: 'bg-transparent',
       link: 'bg-transparent underline-offset-4 data-[normal]:hover:underline'
@@ -79,7 +79,7 @@ export const buttonVariants = cv({
     {
       color: 'carbon',
       variant: 'solid',
-      class: `bg-carbon text-carbon-foreground data-[normal]:hover:bg-carbon/80 data-[normal]:active:bg-carbon-600`
+      class: `bg-carbon text-carbon-foreground data-[normal]:hover:bg-carbon/80 data-[normal]:active:bg-carbon`
     },
     {
       color: 'secondary',

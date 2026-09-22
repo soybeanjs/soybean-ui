@@ -10060,30 +10060,19 @@
         "baseprops": ""
       },
       "packages_theme_src_storage": {
-        "customthemecolorpreset": "自定义主题颜色预设（浅色/深色颜色标记覆盖）",
-        "themeconfigstate": {
+        "themeenvelopeinput": {
           "members": {
-            "base": "基础颜色预设键",
-            "borderopacity": "边框不透明度覆盖值 (0 - 1)",
-            "chart": "图表（数据）语义方案键",
-            "darklevel": "深色模式亮度偏移量",
-            "feedback": "反馈（状态）语义方案键",
-            "format": "颜色输出格式",
-            "lightlevel": "浅色模式变暗偏移量",
-            "mode": "配色方案首选项（`light` / `dark` / `auto`）\n\n`'auto'` 遵循操作系统的 `prefers-color-scheme` 设置。实际模式将\n作为类应用于 `<html>`（默认值为 `'dark'`）。",
-            "overrides": "内联颜色标记的覆盖设置会与配置一同保留，因此即使主题\n仅在 `overrides` 方面有所不同，在服务器端渲染（SSR）过程中仍可重建。",
-            "primary": "主颜色预设键",
-            "radius": "边框半径",
-            "sidebar": "侧边栏皮肤语义方案键",
-            "sidebarderive": "是否应用与 `sidebar` 样式方案不同的侧边栏样式。",
-            "size": "组件尺寸/密度"
+            "appliedpreset": "",
+            "mode": "",
+            "options": "",
+            "presets": "",
+            "style": ""
           }
         }
       },
       "packages_theme_src_types": {
-        "colorformat": "颜色格式",
-        "themecolor": "主题颜色",
-        "themesize": "主题字号键\n\n控制根字体大小，并按比例缩放所有基于 rem 的值。\n\n- xs：12px\n- sm：14px\n- md：16px\n- lg：18px\n- xl：20px\n- 2xl：24px"
+        "colorformat": "",
+        "themesize": ""
       },
       "packages_ui_src_components_accordion_types": {
         "accordionemits": {
@@ -11518,12 +11507,12 @@
             "locale": "应用程序的全局语言环境。所有组件将继承此设置。",
             "messages": "对内置组件语言环境消息的覆盖。这些覆盖内容将叠加在由\n`locale` 属性选定的语言环境之上，因此您只需提供需要修改的键值即可。",
             "nonce": "应用程序的全局 `nonce` 值。相关组件将继承此值。",
-            "persisttheme": "是否启用从 localStorage / cookie 读取持久化主题。\n\n当禁用时（默认），ConfigProvider 仅使用显式的\n`theme` prop，绝不会读取任何存储，从而保持当前的行为。\n当启用时，持久化主题配置会填充 `theme` 未显式\n提供的键值。",
-            "presetprovider": "服务器端自定义主题预设注册表解析器。\n\n将存储的预设名称映射到其定义，以便 SSR 能够渲染自定义\n预设，而无需访问 localStorage。仅当服务器端启用了 `persistTheme` 时\n才使用；在客户端，预设表是\n权威数据源。",
+            "persisttheme": "",
+            "presetprovider": "",
             "progress": "应用程序的全局顶层进度配置。",
             "size": "大小选项。",
             "theme": "主题选项。",
-            "themeconfig": "从服务器注入的持久化主题配置。\n\n在服务器端渲染（SSR）期间用于呈现与客户端持久化主题相同的主题；在\n客户端，localStorage 是权威数据源。",
+            "themeconfig": "",
             "toast": "应用程序的全局提示配置。相关组件将继承此配置。",
             "tooltip": "应用程序的全局工具提示配置。相关组件将继承此配置。"
           },
@@ -11531,22 +11520,21 @@
         },
         "configproviderthemeoptions": {
           "members": {
-            "base": "基础配色方案键",
-            "borderopacity": "边框（border / input / sidebar-border）不透明度乘数。\n\n调整边框家族令牌的 alpha 通道，从而控制\n`--border-alpha` / `--input-alpha` / `--sidebar-border-alpha` 变量\n（实际透明度 = 令牌透明度 × borderOpacity）。默认值为 `1`，因此\n令牌本身的透明度将保持不变。",
-            "chart": "图表（数据）语义方案键",
-            "darklevel": "深色模式界面亮度偏移量",
-            "darkselector": "深色模式选择器\n\n- 类名：\".dark\"\n- 媒体查询：\"@media (prefers-color-scheme: dark)\"\n- 自定义：自定义深色模式选择器，例如 \".custom-dark\"",
-            "feedback": "反馈（状态）语义方案键",
-            "format": "颜色输出格式\n\n- hsl：\"h s l [/ alpha]\"，例如 \"0 0% 100% / 0.1\"\n- oklch：\"oklch(l c h [/ alpha])\"，例如 \"oklch(0 0 0 / 0.1)\"",
-            "lightlevel": "浅色模式表面变暗偏移量",
-            "overrides": "对派生令牌应用的内联颜色令牌覆盖规则",
-            "preset": "自定义颜色预设：可以是内联的模式分割覆盖（浅色/深色\n部分令牌），也可以是引用存储预设的 `{ name }`。在调用 `createTheme` 之前，该预设会被解析为\n`overrides`。",
-            "primary": "主配色方案键",
-            "radius": "边框半径",
-            "sidebar": "侧边栏皮肤语义方案键",
-            "sidebarderive": "是否应用与 `sidebar` 样式方案不同的侧边栏样式。\n\n当值为 `false` 时，不会生成侧边栏标记，而是回退到基础的\n`background`/`foreground`/`border` 标记（不使用专用的侧边栏样式）。",
-            "size": "组件尺寸/密度",
-            "styletarget": "目标风格"
+            "base": "",
+            "borderopacity": "",
+            "darkselector": "",
+            "feedback": "",
+            "font": "",
+            "format": "",
+            "overrides": "",
+            "prefix": "",
+            "preset": "",
+            "primary": "",
+            "radius": "",
+            "size": "",
+            "spacing": "",
+            "styletarget": "",
+            "surfacestyle": ""
           }
         },
         "iconifyoptions": {
@@ -14719,6 +14707,10 @@
       },
       "packages_ui_src_styles_toggle_group": {
         "togglegroupvariant": ""
+      },
+      "packages_ui_src_theme_types": {
+        "themecolor": "",
+        "themepresetcolors": ""
       }
     }
   }

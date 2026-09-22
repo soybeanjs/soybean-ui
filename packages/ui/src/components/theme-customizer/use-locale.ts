@@ -1,15 +1,27 @@
 import { computed } from 'vue';
 import { useThemeLocale } from './locale';
 
-export type OptionCategory = 'mode' | 'level' | 'size' | 'palette' | 'feedback' | 'chart' | 'sidebar';
+export type OptionCategory =
+  | 'mode'
+  | 'size'
+  | 'spacing'
+  | 'fontFamilies'
+  | 'palette'
+  | 'feedback'
+  | 'sidebar'
+  | 'surfaceStyle';
 
-/** 把 kebab-case 选项值（如 `inverted-dark`）转换为消息对象里的 camelCase 键（`invertedDark`）。 */
-const kebabToCamel = (key: string): string => key.replace(/-([a-z])/g, (_, c: string) => c.toUpperCase());
+/** 把 kebab-case 选项值（如 `inverted-dark` / `noto-sans`）转换为消息对象里的 camelCase 键（`invertedDark`）。 */
+const kebabToCamel = (key: string): string => key.replace(/-([a-z0-9])/g, (_, c: string) => c.toUpperCase());
 
 /** 消息键：kebab → camel；`2xl` 尺寸值映射为 `xl2` 键。 */
 const toMessageKey = (category: OptionCategory, value: string): string => {
   if (category === 'size') {
     return value === '2xl' ? 'xl2' : value;
+  }
+
+  if (value === 'system') {
+    return 'system';
   }
 
   return kebabToCamel(value);

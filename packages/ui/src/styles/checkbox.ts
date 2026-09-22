@@ -8,7 +8,7 @@ export const checkboxVariants = scv({
     root: 'flex items-center w-fit',
     control: [
       'peer shrink-0 border shadow transition-all-150',
-      'outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50'
+      'outline-none focus-visible:ring-3 focus-visible:ring-offset-card disabled:cursor-not-allowed disabled:opacity-50'
     ],
     indicator: 'w-full h-full flex items-center justify-center text-current',
     'indicator-icon': 'size-full',
@@ -109,7 +109,7 @@ export const checkboxCardVariants = scv({
     description: 'text-muted-foreground',
     control: [
       'peer shrink-0 border shadow transition-all-150',
-      'outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50',
+      'outline-none focus-visible:ring-3 focus-visible:ring-offset-card disabled:cursor-not-allowed disabled:opacity-50',
       'order-1 after:absolute after:inset-0 after:content-empty'
     ],
     indicator: 'w-full h-full flex items-center justify-center text-current',

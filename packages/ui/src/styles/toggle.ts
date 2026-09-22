@@ -5,7 +5,7 @@ import type { VariantProps } from '@soybeanjs/cva';
 export const toggleVariants = cv({
   base: [
     'inline-flex items-center justify-center rounded-md whitespace-nowrap font-medium transition-all-150',
-    'outline-none focus-visible:ring-3 focus-visible:ring-offset-background',
+    'outline-none focus-visible:ring-3 focus-visible:ring-offset-card',
     'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',
     '[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4'
   ],
@@ -21,7 +21,7 @@ export const toggleVariants = cv({
       accent: `focus-visible:ring-accent-foreground/20`
     },
     variant: {
-      outline: `border border-border bg-background text-foreground hover:bg-accent data-[state=on]:bg-accent`,
+      outline: `border border-border bg-card text-foreground hover:bg-accent data-[state=on]:bg-accent`,
       soft: 'bg-accent data-[state=off]:hover:bg-accent',
       ghost: 'bg-transparent data-[state=off]:hover:bg-accent'
     },

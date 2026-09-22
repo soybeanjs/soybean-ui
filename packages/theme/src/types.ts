@@ -1,641 +1,318 @@
 import type {
   PaletteColorLevel,
-  TailwindNeutralPaletteKey,
+  SimplePaletteKey,
   TailwindPaletteKey,
-  TailwindPaletteLevelColorKey,
-  SimplePaletteKey
+  TailwindPaletteLevelColorKey
 } from '@soybeanjs/colord/palette';
+import type {
+  AlphaToken,
+  ChartToken,
+  RoleRampRole,
+  CoreToken,
+  RegionToken,
+  SemanticToken,
+  StatusName,
+  StatusToken
+} from './semantic';
 
 /**
- * base color palette key
+ * The theme engine type surface (docs/theme.md §0.3, §3).
  *
- * a neutral-family palette key (e.g. `slate`/`zinc`/`neutral`), extended with
- * arbitrary strings supplied through the runtime registry. Built-in keys keep
- * literal autocomplete; custom keys are validated against the registry at
- * runtime.
- */
-export type BaseColorKey = TailwindNeutralPaletteKey | (string & {});
-
-/**
- * primary color palette key
+ * Three layers, three kinds of values:
+ * - **palette** (Layer 1): naked channels, `--zinc-100: 240 4.8% 95.9%`
+ * - **semantic** (Layer 2): references to palette levels, `--background: var(--zinc-50)`
+ * - **literal**: plain CSS values (radius scale, motion, z-index, typography)
  *
- * any palette key (neutral or chromatic, e.g. `indigo`/`blue`), extended with
- * arbitrary strings supplied through the runtime registry. Built-in keys keep
- * literal autocomplete; custom keys are validated against the registry at
- * runtime.
+ * Nothing in the semantic layer holds a color literal, which is what makes the
+ * palette layer static, the theme switch a reference swap, and `resolveTokenColor`
+ * able to return the very same color the CSS resolves to.
  */
-export type PrimaryColorKey = TailwindPaletteKey | (string & {});
+
+/** a built-in palette key of the palette layer (26 keys). */
+export type PaletteKey = TailwindPaletteKey;
+
+/** a built-in palette level (`50` … `950`). */
+export type PaletteLevel = PaletteColorLevel;
+
+/** a simple palette name shipped as a palette-layer variable (see `SimplePaletteKey`). */
+export type SimpleColorName = Extract<SimplePaletteKey, 'white' | 'black'>;
+
+/** a level rule value: a numeric level or the light extreme (`white`). */
+export type LevelOrSimple = PaletteLevel | 'white';
+
+/** which palette a token level is read from. */
+export type LevelSource = 'base' | 'primary';
 
 /**
- * HSL color
+ * the `palette.level` reference form used by rules and overrides, e.g. `zinc.200`
+ * — colord's level color key, so the engine and the palette library share one
+ * definition of the shape.
+ */
+export type PaletteLevelRef = TailwindPaletteLevelColorKey;
+
+/**
+ * an HSL color in the **one unified format** the engine emits and accepts:
+ * CSS Color 4 space-separated components, with `%` on saturation and lightness,
+ * and the alpha as a slash component.
+ *
+ * The `%` is required on purpose (the unitless spelling is not accepted): the palette layer stores
+ * the same two components with `%` (`240 4.8% 95.9%`), so a value written here is
+ * the channel triple plus the `hsl()` wrapper — one shape for input, output and
+ * documentation, with no unitless/percentage mix to normalize.
  *
  * @example
- * - hsl(240 50% 30% 50%)
+ * - hsl(238.732 83.529% 66.667%)
  * - hsl(240 50% 30% / 0.5)
  */
 export type HSLColor = `hsl(${number} ${number}% ${number}%)` | `hsl(${number} ${number}% ${number}% / ${number})`;
 
 /**
- * OKLCH color
+ * an OKLCH color in the same unified format: `%` on the lightness component,
+ * plain numbers for chroma and hue, slash alpha.
  *
  * @example
- * - oklch(50% 50 50)
- * - oklch(50% 50 50 / 0.5)
+ * - oklch(58.5% 0.204 277.117)
+ * - oklch(60% 0.2 250 / 0.5)
  */
 export type OKLCHColor = `oklch(${number}% ${number} ${number})` | `oklch(${number}% ${number} ${number} / ${number})`;
 
+/** the color output format. */
+export type ColorFormat = 'hsl' | 'oklch';
+
+/** the resolved color scheme. */
+export type ThemeMode = 'light' | 'dark';
+
+/** the style target of the light block. */
+export type StyleTarget = 'html' | ':root';
+
+/** how dark mode is expressed in the emitted CSS. */
+export type DarkSelectorValue = 'class' | 'media' | (string & {});
+
+/** the color scheme preference including the OS-following `auto`. */
+export type ThemeModePreference = ThemeMode | 'auto';
+
+/** the component size / density preset. */
+export type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+
+/** a size token value: a preset key or a raw `px` / `rem` length. */
+export type ThemeSizeValue = ThemeSize | `${number}px` | `${number}rem`;
+
+/** the border radius preset. */
+export type ThemeRadius = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
+
+/** a radius token value: a preset key or a raw `px` / `rem` length. */
+export type ThemeRadiusValue = ThemeRadius | `${number}px` | `${number}rem`;
+
+/** the spacing (grid unit) preset. */
+export type ThemeSpacing = 'compact' | 'default' | 'relaxed' | 'spacious';
+
 /**
- * Color value
+ * font family roles for the four literal typography tokens.
  *
- * - HSL color: hsl(240 50% 30% 50%)
- * - OKLCH color: oklch(50% 50 50)
- * - Simple palette key: 'white
- * - Tailwind palette level color key: 'blue.200
+ * Mirrors shadcn's own font model: three **root roles** (`sans` / `serif` /
+ * `mono`, each backing a root variable) plus an independent `heading` role that
+ * may point at any family. The serif role exists on its own rather than being
+ * folded into `heading`, so body copy can go serif while the heading stays sans
+ * (or the reverse) without ambiguity.
+ *
+ * Each arm is either a complete CSS `font-family` stack or a single family
+ * name (the engine appends the matching system fallback). `undefined` keeps
+ * the engine default from `LITERAL_DEFAULTS`.
+ */
+export interface ThemeFont {
+  /** body / UI font → `--font-sans`. */
+  sans?: string;
+  /** heading font → `--font-heading` (any family; independent of the root roles). */
+  heading?: string;
+  /** code font → `--font-mono`. */
+  mono?: string;
+  /** serif copy / pull quotes → `--font-serif`. */
+  serif?: string;
+}
+
+/**
+ * a spacing token value: a preset key or a raw multiplier on the `0.25rem` grid.
+ *
+ * The multiplier moves the grid *unit* (`--spacing-unit`), the one variable
+ * the family emits; the rungs themselves are coefficients on that unit and live
+ * in UnoCSS's `theme.spacing` mapping rather than in CSS variables
+ * (docs/theme.md §3.11).
+ */
+export type ThemeSpacingValue = ThemeSpacing | number;
+
+/**
+ * the surface style.
+ *
+ * - `layered` (default): the page is tinted so raised surfaces can sit above it
+ * - `flat`: every surface keeps the mode extreme (the pre-v2 look)
+ */
+export type SurfaceStyle = 'layered' | 'flat';
+
+/** the CSS variable prefix; `false` emits bare names. */
+export type TokenPrefix = string | false;
+
+/** the feedback (status) scheme key. */
+export type FeedbackSchemeKey = string;
+
+/**
+ * a color value as a user supplies it — the vocabulary of the override API
+ * (docs/theme.md §4.2):
+ *
+ * - a `palette.level` reference: `stone.950` / `indigo.600` (colord's level
+ *   color key, so the engine and the palette library agree on the shape);
+ * - a simple palette key: `white` / `black` / `transparent` / `inherit` /
+ *   `current`;
+ * - a complete HSL or OKLCH color in CSS Color 4 syntax:
+ *   `hsl(238.732 83.529% 66.667%)` / `oklch(58.5% 0.204 277.117)`.
+ *
+ * Raw channel triples stay out on purpose: they are format-ambiguous, so a JS
+ * consumer could not tell whether to wrap them in `hsl()` or `oklch()` (use the
+ * resolver functions from §0.2-3 instead). A *dynamic* string (e.g.
+ * `colord(x).toHslString()`, which types as `string`) needs an explicit cast or
+ * one of those helpers.
+ *
+ * The type advertises the supported formats; the runtime parser is deliberately
+ * more lenient — an unrecognised complete color still becomes a `kind: 'color'`
+ * value — so JavaScript callers and already-persisted envelopes keep working.
  */
 export type ColorValue = HSLColor | OKLCHColor | SimplePaletteKey | TailwindPaletteLevelColorKey;
 
-/**
- * shadcn colors
- */
-export interface ColorTokens {
-  /**
-   * background color
-   */
-  background?: ColorValue;
-  /**
-   * foreground color
-   */
-  foreground?: ColorValue;
-  /**
-   * card color
-   */
-  card?: ColorValue;
-  /**
-   * card foreground color
-   */
-  cardForeground?: ColorValue;
-  /**
-   * popover color
-   */
-  popover?: ColorValue;
-  /**
-   * popover foreground color
-   */
-  popoverForeground?: ColorValue;
-  /**
-   * primary color
-   */
-  primary?: ColorValue;
-  /**
-   * primary foreground color
-   */
-  primaryForeground?: ColorValue;
-  /**
-   * secondary color
-   */
-  secondary?: ColorValue;
-  /**
-   * secondary foreground color
-   */
-  secondaryForeground?: ColorValue;
-  /**
-   * muted color
-   */
-  muted?: ColorValue;
-  /**
-   * muted foreground color
-   */
-  mutedForeground?: ColorValue;
-  /**
-   * accent color
-   */
-  accent?: ColorValue;
-  /**
-   * accent foreground color
-   */
-  accentForeground?: ColorValue;
-  /**
-   * destructive color
-   */
-  destructive?: ColorValue;
-  /**
-   * destructive foreground color
-   */
-  destructiveForeground?: ColorValue;
-  /**
-   * border color
-   */
-  border?: ColorValue;
-  /**
-   * input color
-   */
-  input?: ColorValue;
-  /**
-   * ring color
-   */
-  ring?: ColorValue;
-  /**
-   * the sidebar background color
-   *
-   * if not set, will use the theme background color
-   */
-  sidebar?: ColorValue;
-  /**
-   * the sidebar foreground color
-   *
-   * if not set, will use the theme foreground color
-   */
-  sidebarForeground?: ColorValue;
-  /**
-   * the sidebar primary color
-   *
-   * if not set, will use the theme primary color
-   */
-  sidebarPrimary?: ColorValue;
-  /**
-   * the sidebar primary foreground color
-   *
-   * if not set, will use the theme primary foreground color
-   */
-  sidebarPrimaryForeground?: ColorValue;
-  /**
-   * the sidebar accent color
-   *
-   * if not set, will use the theme accent color
-   */
-  sidebarAccent?: ColorValue;
-  /**
-   * the sidebar accent foreground color
-   *
-   * if not set, will use the theme accent foreground color
-   */
-  sidebarAccentForeground?: ColorValue;
-  /**
-   * the sidebar border color
-   *
-   * if not set, will use the theme border color
-   */
-  sidebarBorder?: ColorValue;
-  /**
-   * the sidebar ring color
-   *
-   * if not set, will use the theme ring color
-   */
-  sidebarRing?: ColorValue;
-  /**
-   * the chart1 color
-   */
-  chart1?: ColorValue;
-  /**
-   * the chart2 color
-   */
-  chart2?: ColorValue;
-  /**
-   * the chart3 color
-   */
-  chart3?: ColorValue;
-  /**
-   * the chart4 color
-   */
-  chart4?: ColorValue;
-  /**
-   * the chart5 color
-   */
-  chart5?: ColorValue;
-  /**
-   * success color
-   */
-  success?: ColorValue;
-  /**
-   * success foreground color
-   */
-  successForeground?: ColorValue;
-  /**
-   * warning color
-   */
-  warning?: ColorValue;
-  /**
-   * warning foreground color
-   */
-  warningForeground?: ColorValue;
-  /**
-   * info color
-   */
-  info?: ColorValue;
-  /**
-   * info foreground color
-   */
-  infoForeground?: ColorValue;
-  /**
-   * carbon color
-   */
-  carbon?: ColorValue;
-  /**
-   * carbon foreground color
-   */
-  carbonForeground?: ColorValue;
+/** a semantic token override value — the same vocabulary as `ColorValue`. */
+export type TokenOverride = ColorValue;
+
+/** inline overrides applied on top of the resolved tokens (highest priority). */
+export interface ThemeOverrides {
+  light?: Partial<Record<SemanticToken, TokenOverride>>;
+  dark?: Partial<Record<SemanticToken, TokenOverride>>;
 }
 
 /**
- * Color key
+ * how a token gets its value: a palette level (with an optional neutral-palette
+ * variant), a mirror of another token, or a simple palette key. Every arm is
+ * *declared* — the engine never measures one value to decide another
+ * (docs/theme.md §4.3).
  */
-export type ColorKey = keyof ColorTokens;
+export type TokenRule =
+  | {
+      kind: 'level';
+      source: LevelSource;
+      light: LevelOrSimple;
+      dark: LevelOrSimple;
+      /** level override when the primary palette is a neutral family. */
+      neutral?: { light: LevelOrSimple; dark: LevelOrSimple };
+    }
+  | { kind: 'mirror'; light: SemanticToken; dark: SemanticToken }
+  | { kind: 'simple'; light: SimpleColorName; dark: SimpleColorName };
+
+/** the value a semantic token resolves to. */
+export type TokenValue =
+  | { kind: 'palette'; palette: PaletteKey; level: PaletteLevel }
+  | { kind: 'simple'; name: SimpleColorName }
+  | { kind: 'color'; value: string };
+
+/** a non-color token name. */
+export type LiteralToken =
+  | 'size'
+  | 'radius'
+  | 'radius-2xs'
+  | 'radius-xs'
+  | 'radius-sm'
+  | 'radius-md'
+  | 'radius-lg'
+  | 'radius-xl'
+  | 'radius-2xl'
+  | 'radius-3xl'
+  | 'radius-4xl'
+  | 'radius-none'
+  | 'radius-full'
+  | 'spacing-unit'
+  | 'z-layout'
+  | 'z-base'
+  | 'z-toast'
+  | 'z-max'
+  | 'border-width'
+  | 'border-width-strong'
+  | 'ring-width'
+  | 'ring-offset-width'
+  | 'font-sans'
+  | 'font-heading'
+  | 'font-mono'
+  | 'font-serif';
 
 /**
- * Theme color
- */
-export type ThemeColor = Extract<
-  ColorKey,
-  'primary' | 'secondary' | 'accent' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon'
->;
-
-/**
- * the theme size key
+ * the resolved theme: two mode maps, the alpha companions and the literal layer.
  *
- * Controls the root font-size, scaling all rem-based values proportionally.
- *
- * - xs: 12px
- * - sm: 14px
- * - md: 16px
- * - lg: 18px
- * - xl: 20px
- * - 2xl: 24px
+ * This is the single intermediate representation: the CSS emitter and the JS
+ * resolvers both read it, so they cannot disagree. There is no report field: the
+ * map holds the *declared* values and nothing measures or corrects them
+ * (docs/theme.md §2.2).
  */
-export type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+export interface ThemeMap {
+  light: Record<SemanticToken, TokenValue>;
+  dark: Record<SemanticToken, TokenValue>;
+  alpha: Record<AlphaToken, { light: number; dark: number }>;
+  literal: Record<LiteralToken, string>;
+}
 
-/**
- * the theme size value
- */
-export type ThemeSizeValue = ThemeSize | `${number}px` | `${number}rem`;
-
-/**
- * the theme radius
- *
- * - 2xs: 0.25rem
- * - xs: 0.375rem
- * - sm: 0.5rem
- * - md: 0.625rem
- * - lg: 0.75rem
- * - xl: 0.875rem
- * - 2xl: 1rem
- */
-export type ThemeRadius = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
-
-/**
- * the theme radius value
- */
-export type ThemeRadiusValue = ThemeRadius | `${number}px` | `${number}rem`;
-
-/**
- * light mode surface darkening offset
- *
- * - 0: unchanged
- * - 1: surfaces {p}.white → {p}.50, {p}.50 → {p}.100
- * - 2: surfaces {p}.50 → {p}.100, {p}.100 → {p}.200
- *
- * Only shiftable surface tokens are affected; text/foreground/border values
- * never shift (D8).
- */
-export type LightLevelOffset = 0 | 1 | 2;
-
-/**
- * dark mode surface brightening offset
- *
- * - 0: unchanged
- * - 1: background {p}.950 → {p}.900
- * - 2: background {p}.900 → {p}.800
- * - 3: background {p}.800 → {p}.700
- *
- * Only shiftable surface tokens are affected; text/foreground/border values
- * never shift (D8).
- */
-export type DarkLevelOffset = 0 | 1 | 2 | 3;
-
-/**
- * Base tokens
- */
-export interface BaseTokens {
-  /**
-   * the component size / density
-   *
-   * @default 'md'
-   */
+/** the engine options. */
+export interface ThemeOptions {
+  /** the neutral palette (9 built-ins). @default 'zinc' */
+  base?: PaletteKey;
+  /** the brand palette (any of the 26 built-ins). @default 'indigo' */
+  primary?: PaletteKey;
+  /** the status color scheme. @default 'classic' */
+  feedback?: FeedbackSchemeKey;
+  /** inline token overrides, applied last. */
+  overrides?: ThemeOverrides;
+  /** @default 'layered' */
+  surfaceStyle?: SurfaceStyle;
+  /** @default false */
+  prefix?: TokenPrefix;
+  /** the root font-size preset or length (the density zoom). @default 'md' */
   size?: ThemeSizeValue;
-  /**
-   * the border radius
-   *
-   * @default 'md'
-   */
+  /** the radius seed. @default 'md' */
   radius?: ThemeRadiusValue;
-}
-
-/**
- * The effective (resolved) color scheme. Always `'light'` or `'dark'` — this is
- * what drives CSS/token selection and the `.dark` class toggle.
- */
-export type ThemeMode = 'light' | 'dark';
-
-/**
- * The user's color scheme preference. Extends `ThemeMode` with `'auto'`, which
- * resolves to the OS `prefers-color-scheme` at runtime (see
- * `ThemeContext.effectiveMode` in the UI layer).
- */
-export type ThemeModePreference = ThemeMode | 'auto';
-
-/**
- * Theme tokens
- */
-export interface ThemeTokens extends BaseTokens, ColorTokens {}
-
-/**
- * Theme preset
- */
-export interface ThemePreset extends BaseTokens {
-  /**
-   * the theme name
-   */
-  name?: string;
-  /**
-   * the light mode tokens
-   */
-  light: Partial<ColorTokens>;
-  /**
-   * the dark mode tokens
-   */
-  dark?: Partial<ColorTokens>;
-}
-
-/**
- * Full theme preset
- */
-export interface FullThemePreset extends Required<BaseTokens> {
-  /**
-   * the theme name
-   */
-  name: string;
-  /**
-   * the light mode tokens
-   */
-  light: ColorTokens;
-  /**
-   * the dark mode tokens
-   */
-  dark: Partial<ColorTokens>;
-}
-
-/**
- * Style target
- */
-export type StyleTarget = 'html' | ':root';
-
-/**
- * Dark selector
- */
-export type DarkSelector = 'class' | 'media';
-
-/**
- * Dark selector value
- */
-export type DarkSelectorValue = DarkSelector | (string & {});
-
-/**
- * Color format
- */
-export type ColorFormat = 'hsl' | 'oklch';
-
-/**
- * Base generate CSS options
- */
-export interface BaseGenerateCSSOptions {
-  /**
-   * the style target
-   *
-   * @default ':root'
-   */
+  /** the spacing grid unit multiplier (padding / margin / gap / inset). @default 'default' */
+  spacing?: ThemeSpacingValue;
+  /** font family stacks for sans / heading / mono (runtime-swappable). */
+  font?: ThemeFont;
+  /** multiplies the decorative border alpha (0 – 1). @default 1 */
+  borderOpacity?: number;
+  /** the palette layer format. @default 'hsl' */
+  format?: ColorFormat;
+  /** @default ':root' */
   styleTarget?: StyleTarget;
-  /**
-   * dark mode selector
-   *
-   * - class: ".dark"
-   * - media: "@media (prefers-color-scheme: dark)"
-   * - custom: custom dark mode selector, e.g. ".custom-dark"
-   *
-   * @default 'class'
-   */
+  /** @default 'class' */
+  darkSelector?: DarkSelectorValue;
+}
+
+/** emit options of the semantic layer. */
+export interface EmitThemeOptions {
+  styleTarget?: StyleTarget;
   darkSelector?: DarkSelectorValue;
   /**
-   * color output format
-   *
-   * - hsl: "h s l [/ alpha]", e.g. "0 0% 100% / 0.1"
-   * - oklch: "oklch(l c h [/ alpha])", e.g. "oklch(0 0 0 / 0.1)"
+   * the format a **complete-colour override** is encoded into; the channel
+   * values themselves are format-free.
    *
    * @default 'hsl'
    */
   format?: ColorFormat;
+  /**
+   * wrap the block selectors in `:where(…)` (zero specificity).
+   *
+   * Used by the **static default block** that ships with the preset: it must be
+   * beatable by the runtime/snapshot block regardless of source order, and
+   * `:where()` achieves that without `!important` (a head inline script cannot
+   * be placed after the stylesheet, so order alone cannot decide).
+   *
+   * @default false
+   */
+  weakSelectors?: boolean;
+  /**
+   * the token name prefix; must match the prefix `resolveThemeMap` used, because
+   * the literal layer references other tokens (`var(--radius)`).
+   */
+  prefix?: TokenPrefix;
 }
 
-/**
- * Generate CSS options
- */
-export interface GenerateCSSOptions extends BaseGenerateCSSOptions {
-  /**
-   * theme preset
-   */
-  preset: FullThemePreset;
-}
-
-/**
- * Theme options
- */
-export interface ThemeOptions extends BaseGenerateCSSOptions {
-  /**
-   * the base color palette key
-   *
-   * @default 'zinc'
-   */
-  base?: BaseColorKey;
-  /**
-   * the primary color palette key
-   *
-   * @default 'indigo'
-   */
-  primary?: PrimaryColorKey;
-  /**
-   * the feedback (status) semantic scheme key
-   *
-   * @default 'classic'
-   */
-  feedback?: FeedbackSchemeKey;
-  /**
-   * the chart (data) semantic scheme key
-   *
-   * @default 'vivid'
-   */
-  chart?: ChartSchemeKey;
-  /**
-   * the sidebar skin semantic scheme key
-   *
-   * @default 'derived'
-   */
-  sidebar?: SidebarSchemeKey;
-  /**
-   * whether to apply a separate sidebar skin from the `sidebar` scheme.
-   *
-   * When `false`, the sidebar tokens are not derived and fall back to the base
-   * `background`/`foreground`/`border` tokens (no dedicated sidebar skin).
-   *
-   * @default true
-   */
-  sidebarDerive?: boolean;
-  /**
-   * inline color token overrides applied on top of the derived tokens
-   */
-  overrides?: ThemeOverrides;
-  /**
-   * the component size / density
-   *
-   * @default 'md'
-   */
-  size?: ThemeSizeValue;
-  /**
-   * the border radius
-   *
-   * @default 'md'
-   */
-  radius?: ThemeRadiusValue;
-  /**
-   * light mode surface darkening offset
-   *
-   * @default 0
-   */
-  lightLevel?: LightLevelOffset;
-  /**
-   * dark mode surface brightening offset
-   *
-   * @default 0
-   */
-  darkLevel?: DarkLevelOffset;
-  /**
-   * the border (border / input / sidebar-border) opacity multiplier.
-   *
-   * Scales the alpha channel of the border-family tokens, driving the
-   * `--border-alpha` / `--input-alpha` / `--sidebar-border-alpha` variables
-   * (effective alpha = token alpha × borderOpacity). Defaults to `1`, so the
-   * token's own alpha is preserved.
-   *
-   * @default 1
-   * - range: 0 - 1
-   */
-  borderOpacity?: number;
-}
-
-/**
- * feedback semantic scheme key
- *
- * selects a named status-color scheme (destructive / success / warning / info /
- * carbon). Extends the built-in `classic` key with arbitrary strings supplied
- * through the runtime registry.
- */
-export type FeedbackSchemeKey = 'classic' | 'vivid' | 'subtle' | 'modern' | 'professional' | (string & {});
-
-/**
- * chart semantic scheme key
- *
- * selects a named data-viz color scheme (chart1–chart5). Extends the built-in
- * `vivid` key with arbitrary strings supplied through the runtime registry.
- */
-export type ChartSchemeKey = 'vivid' | 'cool' | 'warm' | 'natural' | 'minimal' | (string & {});
-
-/**
- * sidebar color key
- */
-export type SidebarColorKey =
-  | 'sidebar'
-  | 'sidebarForeground'
-  | 'sidebarPrimary'
-  | 'sidebarPrimaryForeground'
-  | 'sidebarAccent'
-  | 'sidebarAccentForeground'
-  | 'sidebarBorder'
-  | 'sidebarRing';
-
-/**
- * a sidebar scheme value may reference an already-derived token instead of a
- * literal color, letting a scheme reuse the base⊕primary surface/brand tokens.
- */
-export type SidebarTokenRef =
-  | 'background'
-  | 'foreground'
-  | 'card'
-  | 'primary'
-  | 'primaryForeground'
-  | 'secondary'
-  | 'secondaryForeground'
-  | 'muted'
-  | 'mutedForeground'
-  | 'accent'
-  | 'accentForeground'
-  | 'border'
-  | 'ring';
-
-/**
- * the value slot of a sidebar scheme
- */
-export type SidebarColorValue = ColorValue | SidebarTokenRef;
-
-/**
- * sidebar semantic scheme key
- *
- * selects a named sidebar skin scheme. Extends the built-in `derived` key with
- * arbitrary strings supplied through the runtime registry.
- */
-export type SidebarSchemeKey = 'derived' | 'inverted-dark' | 'soft' | 'contrast' | (string & {});
-
-/**
- * a semantic color scheme: a named mapping of role keys to colors (light/dark).
- *
- * Used for the `feedback` (status) and `chart` (data) dimensions.
- */
-export interface SemanticScheme<V = ColorValue> {
-  light: Record<string, V>;
-  dark: Record<string, V>;
-}
-
-/**
- * a theme palette: a named family metadata + a 10-level ramp of colors.
- *
- * `family` drives which base/primary core template and dark derivation apply;
- * `colors` is normally produced by `generatePalette` from a single seed color.
- */
-export interface ThemePalette {
-  name: string;
-  family: 'neutral' | 'chromatic';
-  colors: Record<PaletteColorLevel, { hsl: string; oklch: string }>;
-}
-
-/**
- * the runtime theme preset registry.
- *
- * Built-in entries are the defaults; user entries are merged in by
- * `registerThemePresets`.
- */
-export interface ThemePresetRegistry {
-  base: Record<BaseColorKey, ThemePalette>;
-  primary: Record<PrimaryColorKey, ThemePalette>;
-  feedback: Record<FeedbackSchemeKey, SemanticScheme>;
-  chart: Record<ChartSchemeKey, SemanticScheme>;
-  sidebar: Record<SidebarSchemeKey, SemanticScheme<SidebarColorValue>>;
-}
-
-/**
- * inline color overrides applied on top of the derived tokens.
- *
- * Unlike a named preset, `overrides` is a lightweight per-token override with
- * no identity and no `name`.
- */
-export interface ThemeOverrides {
-  light?: Partial<ColorTokens>;
-  dark?: Partial<ColorTokens>;
-}
-
-export type { PaletteColorLevel };
+export type { AlphaToken, RoleRampRole, ChartToken, CoreToken, RegionToken, SemanticToken, StatusName, StatusToken };

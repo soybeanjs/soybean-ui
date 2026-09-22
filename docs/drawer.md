@@ -33,16 +33,16 @@
 
 三支柱:
 
-1. **CSS 变量驱动 transform**。拖拽全程 JS 只写变量,从不写 `transform` 字符串。popup 的 transform 由消费者 CSS 承担:`translateY(calc(var(--drawer-snap-point-offset) + var(--drawer-swipe-movement-y)))`。换吸附点 = 改一个变量,动画交给 CSS transition;拖拽中才冻结 `transition: none`。配套 `CSS.registerProperty({ inherits: false })` 优化重算。变量清单:`--drawer-snap-point-offset`、`--drawer-swipe-movement-x/y`、`--drawer-swipe-progress`、`--drawer-swipe-strength`、`--drawer-height`。
+1. **CSS 变量驱动 transform**。拖拽全程 JS 只写变量,从不写 `transform` 字符串。popup 的 transform 由消费者 CSS 承担:`translateY(calc(var(--soybean-drawer-snap-point-offset) + var(--soybean-drawer-swipe-movement-y)))`。换吸附点 = 改一个变量,动画交给 CSS transition;拖拽中才冻结 `transition: none`。配套 `CSS.registerProperty({ inherits: false })` 优化重算。变量清单:`--soybean-drawer-snap-point-offset`、`--soybean-drawer-swipe-movement-x/y`、`--soybean-drawer-swipe-progress`、`--drawer-swipe-strength`、`--soybean-drawer-height`。
 2. **统一手势引擎,两个消费者**。`useSwipeDismiss` 是单一状态机:指针/触摸双通道、带 bias 的轴锁定(6px slop)、方向 sqrt 阻尼、反向 10px「反悔取消」阈值、速度采样(尾样本 + 80ms 时效)、scroll-edge 起滑、跨轴滚动仲裁(`findScrollableTouchTarget` + 非 cancelable touchmove 让位 + 双指缩放豁免)、文本选区/range input 豁免。`DrawerViewport`(关闭手势)与 `DrawerSwipeArea`(打开手势)都消费它;触摸走原生 capture 阶段 touchmove 灌回同一管线。
 3. **Snap point 值模型**。snapPoints(≤1 为视口比例,>1 为 px,支持 `'30rem'`)解析为 `{ value, height, offset }`,基于 ResizeObserver 实测 popupHeight + viewportHeight,clamp + 去重。释放判定:`targetOffset = clamp(当前offset + dragDelta + velocity×300)`,取最近吸附点;离关闭更近或快扫则关闭(`activeSnapPoint = null`)。受控/非受控统一走可取消的 `onSnapPointChange(details)`。
 
-辅助机制:**Indent 效果(scale-background 的对位物)**——`Drawer.Provider` 持有 `visualStateStore`(swipeProgress + frontmostHeight,外部 store 订阅不触发重渲染);`Drawer.Indent` 包裹消费者应用主 UI,任意抽屉打开时挂 `data-active` 并同步 `--drawer-swipe-progress` / `--drawer-height` 两个 CSS 变量,缩进/缩放/圆角量由消费者 CSS 以 `calc(var(--drawer-swipe-progress) * Npx)` 自行声明;`Drawer.IndentBackground` 置于 Indent 之前作背景层。其余:嵌套抽屉栈(frontmostHeight / 嵌套 swipe progress 向父传播)、SwipeArea 防止松手 click 立即关掉刚打开抽屉的精确守卫、Android CloseWatcher、iOS 虚拟键盘 provider。Root 本身很薄,开关状态完全复用 Dialog store。
+辅助机制:**Indent 效果(scale-background 的对位物)**——`Drawer.Provider` 持有 `visualStateStore`(swipeProgress + frontmostHeight,外部 store 订阅不触发重渲染);`Drawer.Indent` 包裹消费者应用主 UI,任意抽屉打开时挂 `data-active` 并同步 `--soybean-drawer-swipe-progress` / `--soybean-drawer-height` 两个 CSS 变量,缩进/缩放/圆角量由消费者 CSS 以 `calc(var(--soybean-drawer-swipe-progress) * Npx)` 自行声明;`Drawer.IndentBackground` 置于 Indent 之前作背景层。其余:嵌套抽屉栈(frontmostHeight / 嵌套 swipe progress 向父传播)、SwipeArea 防止松手 click 立即关掉刚打开抽屉的精确守卫、Android CloseWatcher、iOS 虚拟键盘 provider。Root 本身很薄,开关状态完全复用 Dialog store。
 
 ## 3. 目标架构(本仓落地形态)
 
 - headless `drawer` 家族保留现有解剖(Root / Trigger / Portal / Overlay / Popup / Viewport / Handle / SwipeArea / Content / Header / Footer / Title / Description / Close / Nested),**内部逻辑整体换血**;新增 **Indent / IndentBackground** 两个原语(承接 scale-background 能力)。
-- popup transform 改为 CSS 变量驱动;UI 层 `styles/sheet.ts` 的 popup 槽声明 `transform: translateY(calc(var(--soybean-drawer-snap-point-offset) + var(--soybean-drawer-swipe-movement-y)))`(变量名沿用本仓 `--soybean-*` 命名空间)。
+- popup transform 改为 CSS 变量驱动;UI 层 `styles/sheet.ts` 的 popup 槽声明 `transform: translateY(calc(var(--soybean-drawer-snap-point-offset) + var(--soybean-drawer-swipe-movement-y)))`(变量名沿用本仓 `--*` 命名空间)。
 - `use-snap-points.ts` 删除,换 `use-drawer-snap-points.ts`(值解析 + 实测高度);`use-swipe-dismiss.ts` 扩展为全量手势引擎;`use-scale-background.ts` 删除,由 Indent 原语 + visualStateStore(`swipeProgress` / `frontmostHeight`)承接。
 - Overlay 透明度/scale 全部走 CSS 变量 + data 属性,不再命令式写。
 - headless 不默认渲染 handle;Compact 按 `side === 'bottom'` 决定是否渲染 handle(问题 1 的定论)。

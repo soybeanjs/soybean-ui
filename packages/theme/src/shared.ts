@@ -1,124 +1,159 @@
-import { colord } from '@soybeanjs/colord';
-import { tailwindPalette, simplePalette } from '@soybeanjs/colord/palette';
-import type { PaletteColorLevel, TailwindPaletteKey, TailwindPaletteLevelColorKey } from '@soybeanjs/colord/palette';
-import { DEFAULT_PRESET_OPTIONS } from './defaults';
-import { getRegistry } from './registry';
-import { THEME_SIZE, THEME_RADIUS } from './tokens';
-import type { ColorFormat, ColorValue, DarkSelector, DarkSelectorValue } from './types';
-import { DARK_SELECTOR } from './variables';
+import { SPACING_GRID, THEME_RADIUS, THEME_SIZE, THEME_SPACING, DARK_SELECTOR } from './defaults';
+import { isPaletteKey, isPaletteLevel } from './palette';
+import type {
+  DarkSelectorValue,
+  PaletteLevelRef,
+  ThemeMode,
+  ThemeRadiusValue,
+  ThemeSizeValue,
+  ThemeSpacing,
+  ThemeSpacingValue
+} from './types';
 
 /**
- * resolve a raw dark selector into the CSS rule it produces.
+ * Small pure helpers shared by the engine: base-token resolution, dark selector
+ * resolution and override parsing.
+ */
+
+/** resolve a size token into a CSS length. */
+export function resolveSizeValue(size: ThemeSizeValue | undefined, fallback: ThemeSizeValue = 'md'): string {
+  const value = size ?? fallback;
+
+  if (value in THEME_SIZE) {
+    return `${THEME_SIZE[value as keyof typeof THEME_SIZE]}px`;
+  }
+
+  return value;
+}
+
+/** resolve a radius token into a CSS length seed. */
+export function resolveRadiusValue(radius: ThemeRadiusValue | undefined, fallback: ThemeRadiusValue = 'md'): string {
+  const value = radius ?? fallback;
+
+  if (value in THEME_RADIUS) {
+    return THEME_RADIUS[value as keyof typeof THEME_RADIUS];
+  }
+
+  return value;
+}
+
+/** whether a value is a spacing preset key. */
+export function isThemeSpacing(value: unknown): value is ThemeSpacing {
+  return typeof value === 'string' && Object.hasOwn(THEME_SPACING, value);
+}
+
+/**
+ * resolve a spacing token into the CSS length of the grid unit.
  *
- * - 'class' → '.dark'
- * - 'media' → '@media (prefers-color-scheme: dark)'
- * - any other string is a custom selector used verbatim, e.g. '.custom-dark'
+ * `1` emits the bare grid (`0.25rem`), so the default alias block stays exactly
+ * what it was before the unit existed; anything else is a `calc()` on that same
+ * grid. Either way the value is a rem length, which is what keeps the family
+ * scaling with the density knob.
  */
-export function getDarkSelector(darkSelector: DarkSelectorValue) {
-  if (darkSelector === 'class' || darkSelector === 'media') {
-    return DARK_SELECTOR[darkSelector as DarkSelector];
+export function resolveSpacingValue(
+  spacing: ThemeSpacingValue | undefined,
+  fallback: ThemeSpacingValue = 'default'
+): string {
+  const value = spacing ?? fallback;
+  const scale = typeof value === 'number' ? value : isThemeSpacing(value) ? THEME_SPACING[value] : undefined;
+
+  if (scale === undefined || !Number.isFinite(scale) || scale <= 0) {
+    return SPACING_GRID;
   }
 
-  return darkSelector;
+  return scale === 1 ? SPACING_GRID : `calc(${SPACING_GRID} * ${scale})`;
 }
 
 /**
- * a color that is not expressed as an hsl()/oklch() string is a token
- * reference (a simple palette key or a tailwind `palette.level` key).
+ * resolve a dark selector value into the CSS rule it produces.
+ *
+ * - `class` → `.dark`
+ * - `media` → `@media (prefers-color-scheme: dark)`
+ * - anything else is used verbatim (e.g. `[data-theme="dark"]`)
  */
-export function isTailwindPaletteLevelColorKey(color: ColorValue): color is TailwindPaletteLevelColorKey {
-  return !color.startsWith('hsl(') && !color.startsWith('oklch(');
+export function getDarkSelector(value: DarkSelectorValue): string {
+  if (value === 'class' || value === 'media') {
+    return DARK_SELECTOR[value as 'class' | 'media'];
+  }
+
+  return value;
 }
 
 /**
- * strip the `hsl(...)` wrapper so the value can be referenced as a bare
- * space-separated channel triple inside other hsl() composites.
+ * resolve a dark selector into the **class name** the runtime should toggle.
+ *
+ * - `class` (the keyword) → `dark`
+ * - `media` → `null` (the media query follows the OS; toggling a class would be
+ *   a no-op at best and could misfire other `.dark` rules at worst)
+ * - any other selector is used verbatim with the leading dot stripped
  */
-export function removeHslBrackets(color: string) {
-  return color.replace(/hsl\(/g, '').replace(/\)/g, '');
+export function darkClassName(selector: DarkSelectorValue): string | null {
+  if (selector === 'media') {
+    return null;
+  }
+
+  if (selector === 'class') {
+    return 'dark';
+  }
+
+  return selector.replace(/^\./, '');
 }
 
 /**
- * special CSS-wide keywords that must pass through unchanged
+ * resolve the `color-scheme` a mode's block should advertise, or `null` when the
+ * block carries none.
+ *
+ * In `media` mode a single pinned value would be wrong: the dark tokens live
+ * under `@media (prefers-color-scheme: dark)`, so the light block advertises both
+ * schemes (`light dark`) and the UA picks, exactly as `color-scheme` intends. In
+ * class / custom-selector mode each block pins its own scheme.
+ *
+ * One function for three readers — the CSS emitter, the first-paint script and
+ * the runtime class watcher. They must agree: `color-scheme` drives the
+ * UA-drawn surfaces (canvas, scrollbars, form controls, autofill), and an
+ * **inline** style outranks every selector, so a stale inline value written at
+ * first paint silently wins over the `.dark` block forever after.
  */
-export const isUnTransformedColor = (color: ColorValue) => {
-  return ['inherit', 'currentColor', 'transparent'].includes(color);
-};
-
-/**
- * resolve a `ColorValue` token into a normalized color string in the target
- * `format`. Palette references are looked up from the colord tables; literal
- * hsl()/oklch() strings are converted across formats as needed.
- */
-export function resolveColorValue(colorValue: ColorValue, format: ColorFormat) {
-  if (isUnTransformedColor(colorValue)) {
-    return colorValue;
+export function resolveColorScheme(mode: ThemeMode, darkSelector: DarkSelectorValue): string | null {
+  if (darkSelector === 'media') {
+    return mode === 'light' ? 'light dark' : null;
   }
 
-  if (colorValue === 'black') {
-    return simplePalette.black[format];
-  }
-
-  if (colorValue === 'white') {
-    return simplePalette.white[format];
-  }
-
-  if (isTailwindPaletteLevelColorKey(colorValue)) {
-    const [paletteKey, level] = colorValue.split('.') as [string, PaletteColorLevel];
-
-    // custom palettes registered via `registerThemePresets` resolve from the
-    // runtime registry first; built-in palettes fall back to the colord table.
-    const custom = getRegistry().base[paletteKey] ?? getRegistry().primary[paletteKey];
-    const customColor = custom?.colors[level];
-
-    if (customColor) {
-      return customColor[format];
-    }
-
-    return tailwindPalette[paletteKey as TailwindPaletteKey][level][format];
-  }
-
-  let color: string = colorValue;
-
-  if (format === 'hsl' && colorValue.startsWith('oklch(')) {
-    color = colord(colorValue).toHslString();
-  }
-
-  if (format === 'oklch' && colorValue.startsWith('hsl(')) {
-    color = colord(colorValue).toOklchString();
-  }
-
-  return color;
+  return mode === 'light' ? 'light' : 'dark';
 }
 
 /**
- * resolve a size token into a CSS length. Named keys map to a fixed root
- * font-size; raw `px`/`rem` values pass through unchanged.
+ * the `color-scheme` the **document** should carry for a resolved mode.
+ *
+ * Deliberately not the same question as {@link resolveColorScheme}: that one
+ * answers "what does *this block* declare", and the media-mode dark block
+ * declares nothing because it already sits inside
+ * `@media (prefers-color-scheme: dark)`. The document has no such hole — in
+ * media mode it must advertise `light dark` for **both** resolved modes,
+ * otherwise the OS flipping while the app is open would leave a pinned inline
+ * value behind (and an inline style outranks the media query's own block).
+ *
+ * So the two must not be folded together: one is per-block, this is per-document.
  */
-export function resolveSizeValue(size?: string) {
-  if (!size) {
-    return `${THEME_SIZE[DEFAULT_PRESET_OPTIONS.size]}px`;
+export function resolveDocumentColorScheme(mode: ThemeMode, darkSelector: DarkSelectorValue): string {
+  if (darkSelector === 'media') {
+    return 'light dark';
   }
 
-  if (Object.keys(THEME_SIZE).includes(size)) {
-    return `${THEME_SIZE[size as keyof typeof THEME_SIZE]}px`;
-  }
-
-  return size;
+  return mode === 'light' ? 'light' : 'dark';
 }
 
 /**
- * resolve a radius token into a CSS length. Named keys map to a fixed value;
- * raw `px`/`rem` values pass through unchanged.
+ * whether a string is a `palette.level` reference.
+ *
+ * Membership, not just shape: a reference that names no built-in palette level
+ * (`not-a-palette.999`, `zinc.999`) has no channel to alias, so accepting it
+ * would emit a dangling `var(--zinc-999)` — and the JS resolver would return
+ * nothing for the same token, breaking the "JS and CSS never disagree"
+ * invariant (docs/theme.md §3.1). Both halves come from colord's tables.
  */
-export function resolveRadiusValue(radius?: string): string {
-  if (!radius) {
-    return THEME_RADIUS[DEFAULT_PRESET_OPTIONS.radius];
-  }
+export function isPaletteLevelRef(value: string): value is PaletteLevelRef {
+  const [palette, level] = value.split('.');
 
-  if (Object.keys(THEME_RADIUS).includes(radius)) {
-    return THEME_RADIUS[radius as keyof typeof THEME_RADIUS];
-  }
-
-  return radius;
+  return isPaletteKey(palette) && isPaletteLevel(Number(level));
 }

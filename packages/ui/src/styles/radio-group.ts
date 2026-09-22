@@ -8,7 +8,7 @@ export const radioGroupVariants = scv({
     item: 'flex items-center',
     control: [
       'peer relative shrink-0 rounded-full border border-solid shadow transition-all-150',
-      'outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50'
+      'outline-none focus-visible:ring-3 focus-visible:ring-offset-card disabled:cursor-not-allowed disabled:opacity-50'
     ],
     indicator: 'absolute top-1/2 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 -translate-y-1/2 size-1/2 rounded-full',
     label: ''
@@ -103,7 +103,7 @@ export const radioGroupVariants = scv({
       variant: 'outline',
       class: {
         control: 'data-[state=checked]:bg-primary',
-        indicator: 'bg-background'
+        indicator: 'bg-card'
       }
     },
     {
@@ -111,7 +111,7 @@ export const radioGroupVariants = scv({
       variant: 'outline',
       class: {
         control: 'data-[state=checked]:bg-destructive',
-        indicator: 'bg-background'
+        indicator: 'bg-card'
       }
     },
     {
@@ -119,7 +119,7 @@ export const radioGroupVariants = scv({
       variant: 'outline',
       class: {
         control: 'data-[state=checked]:bg-success',
-        indicator: 'bg-background'
+        indicator: 'bg-card'
       }
     },
     {
@@ -127,7 +127,7 @@ export const radioGroupVariants = scv({
       variant: 'outline',
       class: {
         control: 'data-[state=checked]:bg-warning',
-        indicator: 'bg-background'
+        indicator: 'bg-card'
       }
     },
     {
@@ -135,7 +135,7 @@ export const radioGroupVariants = scv({
       variant: 'outline',
       class: {
         control: 'data-[state=checked]:bg-info',
-        indicator: 'bg-background'
+        indicator: 'bg-card'
       }
     },
     {
@@ -143,7 +143,7 @@ export const radioGroupVariants = scv({
       variant: 'outline',
       class: {
         control: 'data-[state=checked]:bg-carbon',
-        indicator: 'bg-background'
+        indicator: 'bg-card'
       }
     },
     {
@@ -151,7 +151,7 @@ export const radioGroupVariants = scv({
       variant: 'outline',
       class: {
         control: 'data-[state=checked]:bg-secondary-foreground',
-        indicator: 'bg-background'
+        indicator: 'bg-card'
       }
     },
     {
@@ -159,7 +159,7 @@ export const radioGroupVariants = scv({
       variant: 'outline',
       class: {
         control: 'data-[state=checked]:bg-accent-foreground',
-        indicator: 'bg-background'
+        indicator: 'bg-card'
       }
     }
   ],
@@ -182,7 +182,7 @@ export const radioGroupCardVariants = scv({
     description: 'text-muted-foreground',
     control: [
       'peer shrink-0 inline-flex items-start justify-start rounded-full border border-solid shadow',
-      'outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50',
+      'outline-none focus-visible:ring-3 focus-visible:ring-offset-card disabled:cursor-not-allowed disabled:opacity-50',
       'order-1 after:absolute after:inset-0 after:content-empty'
     ],
     indicator: `relative top-1/2 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 -translate-y-1/2 inline-flex size-1/2 rounded-full`
@@ -301,7 +301,7 @@ export const radioGroupCardVariants = scv({
       variant: 'outline',
       class: {
         control: 'data-[state=checked]:bg-primary',
-        indicator: 'bg-background'
+        indicator: 'bg-card'
       }
     },
     {
@@ -309,7 +309,7 @@ export const radioGroupCardVariants = scv({
       variant: 'outline',
       class: {
         control: 'data-[state=checked]:bg-destructive',
-        indicator: 'bg-background'
+        indicator: 'bg-card'
       }
     },
     {
@@ -317,7 +317,7 @@ export const radioGroupCardVariants = scv({
       variant: 'outline',
       class: {
         control: 'data-[state=checked]:bg-success',
-        indicator: 'bg-background'
+        indicator: 'bg-card'
       }
     },
     {
@@ -325,7 +325,7 @@ export const radioGroupCardVariants = scv({
       variant: 'outline',
       class: {
         control: 'data-[state=checked]:bg-warning',
-        indicator: 'bg-background'
+        indicator: 'bg-card'
       }
     },
     {
@@ -333,7 +333,7 @@ export const radioGroupCardVariants = scv({
       variant: 'outline',
       class: {
         control: 'data-[state=checked]:bg-info',
-        indicator: 'bg-background'
+        indicator: 'bg-card'
       }
     },
     {
@@ -341,7 +341,7 @@ export const radioGroupCardVariants = scv({
       variant: 'outline',
       class: {
         control: 'data-[state=checked]:bg-carbon',
-        indicator: 'bg-background'
+        indicator: 'bg-card'
       }
     },
     {
@@ -349,7 +349,7 @@ export const radioGroupCardVariants = scv({
       variant: 'outline',
       class: {
         control: 'data-[state=checked]:bg-secondary-foreground',
-        indicator: 'bg-background'
+        indicator: 'bg-card'
       }
     },
     {
@@ -357,7 +357,7 @@ export const radioGroupCardVariants = scv({
       variant: 'outline',
       class: {
         control: 'data-[state=checked]:bg-accent-foreground',
-        indicator: 'bg-background'
+        indicator: 'bg-card'
       }
     }
   ],

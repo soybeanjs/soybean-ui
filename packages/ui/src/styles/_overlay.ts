@@ -1,12 +1,12 @@
 // @unocss-include
 
 /** Floating surface chrome. Width, padding, and overflow stay per component. */
-export const overlaySurface = 'rounded-md border bg-popover text-popover-foreground';
+export const overlaySurface = 'rounded-md border bg-popover text-foreground';
 
 export const overlayShadow = 'shadow-md';
 
 /** Stacking and transform hints used by floating popups. */
-export const overlayLayer = 'z-50 outline-none will-change-transform';
+export const overlayLayer = 'z-base outline-none will-change-transform';
 
 export const overlayEnter = 'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95';
 

@@ -8,12 +8,12 @@ export const tabsVariants = scv({
     list: 'relative inline-flex justify-center items-center bg-muted text-muted-foreground',
     trigger: [
       `relative z-3 inline-flex items-center justify-center flex-1 whitespace-nowrap rounded-md font-medium transition-all-200`,
-      `outline-none focus-visible:ring-3  focus-visible:ring-offset-background focus-visible:ring-primary/30`,
+      `outline-none focus-visible:ring-3 focus-visible:ring-offset-card focus-visible:ring-primary/30`,
       `disabled:cursor-not-allowed disabled:opacity-50`
     ],
     indicator: `absolute top-0 start-0 z-2 transition-[width,height,transform] duration-300`,
-    indicatorContent: `w-full h-full bg-background shadow`,
-    content: `flex-grow self-stretch transition-all-150 outline-none focus-visible:ring-3  focus-visible:ring-offset-background focus-visible:ring-primary/30`
+    indicatorContent: `w-full h-full bg-card shadow`,
+    content: `flex-grow self-stretch transition-all-150 outline-none focus-visible:ring-3 focus-visible:ring-offset-card focus-visible:ring-primary/30`
   },
   variants: {
     size: {
@@ -78,7 +78,7 @@ export const tabsVariants = scv({
     },
     enableIndicator: {
       false: {
-        trigger: `data-[selected=true]:bg-background data-[selected=true]:text-foreground data-[selected=true]:shadow`
+        trigger: `data-[selected=true]:bg-card data-[selected=true]:text-foreground data-[selected=true]:shadow`
       }
     }
   },

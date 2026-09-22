@@ -1117,5 +1117,76 @@
         "description": "Headless documentation is being written. Meanwhile, browse the styled API reference under Components."
       }
     }
+  },
+  "themeEditor": {
+    "title": "Theme editor",
+    "description": "Tune the theme on the left and every component below follows. The panel is the real SThemeCustomizer — colors, radius, size, spacing, fonts, surfaces, borders and the per-token overrides apply to this page as you change them.",
+    "mode": "Color mode",
+    "group": {
+      "all": "All",
+      "color": "Color",
+      "size": "Size",
+      "font": "Font",
+      "structure": "Structure",
+      "region": "Region"
+    },
+    "sections": {
+      "colors": {
+        "title": "Brand color",
+        "description": "primary, the fills derived from the base palette, and the role ramp"
+      },
+      "feedback": {
+        "title": "Status colors",
+        "description": "the feedback scheme: destructive, success, warning and info"
+      },
+      "forms": {
+        "title": "Form controls",
+        "description": "hairline tokens, control fills and the focus ring"
+      },
+      "data": {
+        "title": "Data display",
+        "description": "surfaces, muted fills and table borders"
+      },
+      "surfaces": {
+        "title": "Surfaces & shadows",
+        "description": "the elevation ladder, nested card / popover surfaces and surfaceStyle"
+      },
+      "borders": {
+        "title": "Borders & focus",
+        "description": "hairline tokens, the focus ring and the modal mask"
+      },
+      "overlay": {
+        "title": "Overlays",
+        "description": "dialogs and popups on the popover surface, plus the mask"
+      },
+      "size": {
+        "title": "Size",
+        "description": "the ladder every control and text rung reads"
+      },
+      "radius": {
+        "title": "Radius",
+        "description": "one seed drives the whole rung ladder"
+      },
+      "spacing": {
+        "title": "Spacing",
+        "description": "one unit drives padding, margin and gap"
+      },
+      "font": {
+        "title": "Font",
+        "description": "the three typography roles: sans, heading and mono stacks"
+      },
+      "sidebar": {
+        "title": "Region — sidebar",
+        "description": "the region skin, mirroring the global roles"
+      },
+      "charts": {
+        "title": "Chart colors",
+        "description": "chart-1 to chart-5, derived from primary"
+      },
+      "contrast": {
+        "title": "Contrast",
+        "description": "the fill to foreground pairs, side by side"
+      }
+    }
   }
 }

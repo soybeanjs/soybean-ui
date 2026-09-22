@@ -28,7 +28,7 @@ export const selectVariants = scv({
     value: 'grow truncate text-start',
     clear: fieldClearReveal,
     positioner: '',
-    popup: ['relative z-50 min-w-32', overlaySurface, overlayShadow, ...overlayMotion],
+    popup: ['relative z-base min-w-32', overlaySurface, overlayShadow, ...overlayMotion],
     viewport: '',
     group: '',
     groupLabel: `font-medium text-muted-foreground`,

@@ -1,20 +1,17 @@
 import path from 'path';
+import { THEME_RADIUS } from '@soybeanjs/theme';
 import * as v from 'valibot';
 import { Command } from 'commander';
 import { PRESET_BASE_COLORS, PRESET_PRIMARY_COLORS, PRESET_RADII, PRESET_ICON_LIBRARIES } from '../registry/config';
 import { getConfig } from '../utils/get-config';
 import { getProjectInfo } from '../utils/get-project-info';
 
-const RADIUS_LABEL_MAP: Record<string, string> = {
-  none: '0',
-  '2xs': '0.25rem',
-  xs: '0.375rem',
-  sm: '0.5rem',
-  md: '0.625rem',
-  lg: '0.75rem',
-  xl: '0.875rem',
-  '2xl': '1rem'
-};
+/**
+ * the preset seed → the length it resolves to, derived from the engine table so
+ * the CLI cannot drift from `THEME_RADIUS`. `none` is a CLI-only extra: it is a
+ * radius a project may set, but it is not a seed the engine's ladder knows.
+ */
+const RADIUS_LABEL_MAP: Record<string, string> = { none: '0', ...THEME_RADIUS };
 
 export const infoOptionsSchema = v.object({
   cwd: v.string(),

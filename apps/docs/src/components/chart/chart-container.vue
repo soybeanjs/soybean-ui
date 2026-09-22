@@ -20,16 +20,17 @@ const props = defineProps<Props>();
  *
  * 同时注入 TanStack tooltip 的主题变量（`--ts-chart-tooltip-*`）。
  * 取值对齐 UI 库 `STooltip` popup 的实际样式（`overlaySurface` + `shadow-md`,
- * md 尺寸）：`bg-popover` / `text-popover-foreground` / `border` /
- * `rounded-md`（preset 中解析为 `calc(var(--radius) - 2px)`）/ `shadow-md`，
- * 使图表浮层与 STooltip 共用同一组主题 token，明暗主题同步跟随。
+ * md 尺寸）：`bg-popover` / `text-foreground` / `border`（含 alpha 伴生变量）/
+ * `rounded-md` / `shadow-md`，使图表浮层与 STooltip 观感一致，
+ * 明暗主题同步跟随。变量名一律用引擎前缀 `--`（验收项 §7-14）。
  */
 const cssVars = computed<CSSProperties>(() => {
   const vars: Record<string, string> = {
     '--ts-chart-tooltip-background': 'hsl(var(--popover))',
-    '--ts-chart-tooltip-color': 'hsl(var(--popover-foreground))',
-    '--ts-chart-tooltip-border': '1px solid hsl(var(--border) / var(--border-alpha))',
-    '--ts-chart-tooltip-border-radius': 'calc(var(--radius) - 2px)',
+    '--ts-chart-tooltip-color': 'hsl(var(--foreground))',
+    '--ts-chart-tooltip-border': '1px solid hsl(var(--border) / var(--border-alpha, 1))',
+    '--ts-chart-tooltip-border-radius': 'var(--radius-md)',
+    // 阴影不再是主题 token（§5.3）：这里写 UnoCSS `shadow-md` 的同一条值
     '--ts-chart-tooltip-shadow': '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
     '--ts-chart-tooltip-padding': '0.4375rem 0.625rem'
   };

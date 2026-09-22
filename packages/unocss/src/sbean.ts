@@ -2,7 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { Preset } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
-import type { BaseTokens, ThemeOptions } from '@soybeanjs/theme';
+import { THEME_FONT_HEADING, THEME_FONT_MONO, THEME_FONT_SANS, THEME_FONT_SERIF } from '@soybeanjs/theme';
+import type { ThemeFont, ThemeOptions } from '@soybeanjs/theme';
 import type { UiUnocssOptions } from './options';
 import { presetUiUnocss } from './preset';
 
@@ -10,35 +11,18 @@ import { presetUiUnocss } from './preset';
 // SBean config → UnoCSS preset bridge
 // ---------------------------------------------------------------------------
 
-/** Web font name mapping: sbean preset name → web font family name. */
-const WEB_FONT_NAMES: Record<string, string> = {
-  inter: 'Inter',
-  'noto-sans': 'Noto Sans',
-  'nunito-sans': 'Nunito Sans',
-  figtree: 'Figtree',
-  roboto: 'Roboto',
-  raleway: 'Raleway',
-  'dm-sans': 'DM Sans',
-  'public-sans': 'Public Sans',
-  outfit: 'Outfit',
-  oxanium: 'Oxanium',
-  manrope: 'Manrope',
-  'space-grotesk': 'Space Grotesk',
-  geist: 'Geist',
-  montserrat: 'Montserrat',
-  'ibm-plex-sans': 'IBM Plex Sans',
-  'source-sans-3': 'Source Sans 3',
-  'instrument-sans': 'Instrument Sans',
-  'jetbrains-mono': 'JetBrains Mono',
-  'geist-mono': 'Geist Mono',
-  'noto-serif': 'Noto Serif',
-  'roboto-slab': 'Roboto Slab',
-  merriweather: 'Merriweather',
-  lora: 'Lora',
-  'playfair-display': 'Playfair Display',
-  'eb-garamond': 'EB Garamond',
-  'instrument-serif': 'Instrument Serif'
-};
+/**
+ * Web font family lookup: sbean preset key → CSS family name.
+ *
+ * Built from the engine's own tables (the four roles share one family catalog),
+ * so a family added to the engine resolves here without a second list to keep in
+ * sync — and `oxanium`, which the engine knows, no longer falls through.
+ */
+const WEB_FONT_NAMES: Record<string, string> = Object.fromEntries(
+  [THEME_FONT_SANS, THEME_FONT_SERIF, THEME_FONT_MONO, THEME_FONT_HEADING]
+    .flatMap(table => Object.entries(table) as [string, string | undefined][])
+    .filter((entry): entry is [string, string] => typeof entry[1] === 'string')
+);
 
 /** Options for {@link presetSbean}. */
 export interface SbeanPresetOptions {
@@ -58,18 +42,24 @@ export interface SbeanPresetOptions {
  * The full set of theme configuration items that a `sbean.json` `uno` block can
  * carry. It is the single source of truth the preset bridge must cover:
  *
- * - theme keys: `base`, `primary`, `lightLevel`, `darkLevel`
+ * - theme keys: `base`, `primary`
  * - base tokens: `size`, `radius`
  *
  * In a generated `sbean.json`, `base`/`primary`/`size`/`radius` live in the
  * `uno` block; the bridge forwards them into this shape.
  */
-interface SbeanUnoConfig extends Pick<ThemeOptions, 'base' | 'primary' | 'lightLevel' | 'darkLevel'>, BaseTokens {}
+type SbeanUnoConfig = Pick<ThemeOptions, 'base' | 'primary' | 'size' | 'radius'>;
 
 interface SbeanConfig {
   style?: string;
   uno?: SbeanUnoConfig;
-  font?: { sans?: string; heading?: string };
+  /**
+   * The four font roles, matching `ThemeOptions.font`.
+   *
+   * `heading` additionally accepts `'inherit'`, meaning "follow the sans arm" —
+   * the same sentinel shadcn's heading picker offers.
+   */
+  font?: Omit<Partial<ThemeFont>, 'heading'> & { heading?: string };
 }
 
 /**
@@ -89,8 +79,8 @@ interface SbeanConfig {
  * The preset reads `sbean.json` and forwards every {@link SbeanUnoConfig} item
  * to {@link presetUiUnocss}:
  *
- * - `uno.base`, `uno.primary`, `uno.radius`, `uno.size` and the optional
- *   `uno.lightLevel` / `uno.darkLevel` are passed through directly;
+ * - `uno.base`, `uno.primary`, `uno.radius` and `uno.size` are passed through
+ *   directly;
  * - `font.*` is resolved through the web font name map.
  *
  * If `sbean.json` is missing or unreadable, it falls back to the default
@@ -101,8 +91,8 @@ export function presetSbean(options?: SbeanPresetOptions): Preset<Theme>[] {
   const config = readSbeanConfig(cwd);
 
   // ---- 1. `uno` block → theme keys + base tokens ------------------------
-  // Spread the whole `uno` block so `base`/`primary`/`size`/`radius` and any
-  // optional `lightLevel`/`darkLevel` are captured together.
+  // Spread the whole `uno` block so `base`/`primary`/`size`/`radius` are
+  // captured together.
   const uiUnocssOptions: UiUnocssOptions = {
     ...config?.uno,
     // A `sbean` project is expected to render the generated theme (base tokens
@@ -112,12 +102,28 @@ export function presetSbean(options?: SbeanPresetOptions): Preset<Theme>[] {
   };
 
   // ---- 2. Fonts ---------------------------------------------------------
-  if (config?.font?.sans) {
-    const sansName = WEB_FONT_NAMES[config.font.sans] ?? config.font.sans;
-    const fonts: UiUnocssOptions['fonts'] = { sans: sansName };
-    if (config.font.heading && config.font.heading !== 'inherit') {
-      fonts.heading = WEB_FONT_NAMES[config.font.heading] ?? config.font.heading;
+  // `sbean.json` names the roles by preset key; UnoCSS's web-fonts preset needs
+  // the CSS family name, so each arm resolves through `WEB_FONT_NAMES`.
+  // `heading: 'inherit'` is the "follow sans" sentinel and loads nothing extra.
+  const font = config?.font;
+  const fonts: NonNullable<UiUnocssOptions['fonts']> = {};
+
+  if (font) {
+    const resolved: Record<string, string | undefined> = {
+      sans: font.sans,
+      serif: font.serif,
+      mono: font.mono,
+      heading: font.heading === 'inherit' ? undefined : font.heading
+    };
+
+    for (const [role, key] of Object.entries(resolved)) {
+      if (key) {
+        fonts[role as keyof typeof fonts] = WEB_FONT_NAMES[key] ?? key;
+      }
     }
+  }
+
+  if (Object.keys(fonts).length > 0) {
     uiUnocssOptions.fonts = fonts;
   }
 

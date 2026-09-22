@@ -7,11 +7,11 @@ export const stepperVariants = scv({
     item: 'group flex min-w-0 flex-1 data-[last]:flex-none',
     trigger: [
       'inline-flex rounded-md transition-colors',
-      'outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30',
+      'outline-none focus-visible:ring-3 focus-visible:ring-offset-card focus-visible:ring-primary/30',
       'data-[orientation=horizontal]:mt-0.25 data-[orientation=vertical]:ms-0.25 group-data-[disabled]:pointer-events-none'
     ],
     indicator: [
-      'inline-flex shrink-0 items-center justify-center rounded-full border bg-background font-medium transition-colors',
+      'inline-flex shrink-0 items-center justify-center rounded-full border bg-card font-medium transition-colors',
       'group-data-[disabled]:opacity-50'
     ],
     separator: 'shrink-0 bg-muted transition-colors group-data-[disabled]:opacity-50',

@@ -5,6 +5,6 @@ export const affixVariants = scv({
   slots: {
     root: '',
     placeholder: '',
-    content: 'data-[state=fixed]:z-50'
+    content: 'data-[state=fixed]:z-base'
   }
 });

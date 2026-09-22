@@ -6,8 +6,9 @@
  * - `animate-in` / `animate-out`（shortcut，含 `keyframes-soybean-in/out`）
  * - `fade-in/out[-n]`、`zoom-in/out[-n]`、`slide-in-from-*` / `slide-out-to-*`
  *
- * CSS 变量前缀 `--soybean` 与 keyframe 名 `soybean-in` / `soybean-out` 与项目
- * 品牌一致（对齐 `--soybean-*` token），行为上沿用 tailwindcss-animate 生态约定。
+ * CSS 变量（`--soybean-enter-opacity` / `--soybean-exit-scale` …）沿用 `--soybean-` 命名空间
+ * —— 前缀只从**主题 token 层**移除（`--background` / `--radius` 等），组件与预设自己的变量保留，
+ * keyframe 名 `soybean-in` / `soybean-out` 沿用 tailwindcss-animate 的生态约定。
  */
 import type { CSSObject, Preset, Rule, Shortcut } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
@@ -224,7 +225,7 @@ function buildShortcuts(options: PresetAnimationsOptions): Shortcut<Theme>[] {
 
 // ---- theme -----------------------------------------------------------------
 
-/** enter/exit 的 @keyframes 定义，与 `--soybean-*` 变量联动 */
+/** enter/exit 的 @keyframes 定义，与 `--soybean-enter-*` / `--soybean-exit-*` 变量联动 */
 const ANIMATION_THEME = {
   animation: {
     keyframes: {

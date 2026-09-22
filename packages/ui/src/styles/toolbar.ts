@@ -13,7 +13,7 @@ const sharedButtonClasses = [
 export const toolbarVariants = scv({
   slots: {
     root: [
-      'inline-flex items-center rounded-md border border-border bg-background shadow-xs',
+      'inline-flex items-center rounded-md border border-border bg-card shadow-xs',
       'data-[orientation=vertical]:h-auto data-[orientation=vertical]:w-fit data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch'
     ],
     button: sharedButtonClasses,

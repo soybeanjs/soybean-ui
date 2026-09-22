@@ -1,4 +1,4 @@
-import { themeSizeKeys, themeRadiusKeys, builtinBasePresetKeys, builtinPrimaryPresetKeys } from '@soybeanjs/theme';
+import { NEUTRAL_PALETTES, PALETTE_KEYS, themeSizeKeys, themeRadiusKeys, themeFontKeys } from '@soybeanjs/theme';
 import * as v from 'valibot';
 
 // ---------------------------------------------------------------------------
@@ -9,43 +9,21 @@ export const PRESET_ICON_LIBRARIES = ['lucide', 'material-symbols', 'ph', 'table
 
 export const PRESET_RADII = themeRadiusKeys;
 
-export const PRESET_BASE_COLORS = builtinBasePresetKeys;
+export const PRESET_BASE_COLORS = NEUTRAL_PALETTES;
 
-export const PRESET_PRIMARY_COLORS = builtinPrimaryPresetKeys;
+export const PRESET_PRIMARY_COLORS = PALETTE_KEYS;
 
 export const PRESET_SIZES = themeSizeKeys;
 
-export const PRESET_FONTS = [
-  // sans-serif
-  'inter',
-  'noto-sans',
-  'nunito-sans',
-  'figtree',
-  'roboto',
-  'raleway',
-  'dm-sans',
-  'public-sans',
-  'outfit',
-  'oxanium',
-  'manrope',
-  'space-grotesk',
-  'geist',
-  'montserrat',
-  'ibm-plex-sans',
-  'source-sans-3',
-  'instrument-sans',
-  // monospace
-  'jetbrains-mono',
-  'geist-mono',
-  // serif
-  'noto-serif',
-  'roboto-slab',
-  'merriweather',
-  'lora',
-  'playfair-display',
-  'eb-garamond',
-  'instrument-serif'
-] as const;
+/**
+ * The preset families `sbean.json` accepts, taken straight from the theme
+ * engine so a family added to the engine reaches the CLI without a second edit.
+ *
+ * The engine's `themeFontKeys` is the loadable catalog (sans → mono → serif,
+ * matching shadcn's declaration order); `system` is excluded there because it is
+ * a theme-only fallback rather than a family a consumer can load.
+ */
+export const PRESET_FONTS = themeFontKeys;
 
 export const rawConfigSchema = v.object({
   $schema: v.optional(v.string()),
@@ -58,6 +36,9 @@ export const rawConfigSchema = v.object({
   }),
   font: v.object({
     sans: v.optional(v.picklist(PRESET_FONTS)),
+    /** serif copy / pull quotes; `--font-serif`. */
+    serif: v.optional(v.picklist(PRESET_FONTS)),
+    mono: v.optional(v.picklist(PRESET_FONTS)),
     heading: v.optional(v.picklist(['inherit' as const, ...PRESET_FONTS]))
   }),
   /**

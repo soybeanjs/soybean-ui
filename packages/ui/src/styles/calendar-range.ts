@@ -31,7 +31,7 @@ export const calendarRangeVariants = scv({
     ],
     cellTrigger: [
       'inline-flex cursor-pointer items-center justify-center w-full h-full rounded-md font-normal transition-colors',
-      'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-ring focus-visible:ring-primary/30',
+      'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-offset-card focus-visible:ring-ring focus-visible:ring-primary/30',
       '[&[data-today]:not([data-selected])]:bg-accent [&[data-today]:not([data-selected])]:text-accent-foreground',
       'data-[selected]:text-foreground',
       'data-[selection-start]:bg-primary data-[selection-start]:text-primary-foreground',

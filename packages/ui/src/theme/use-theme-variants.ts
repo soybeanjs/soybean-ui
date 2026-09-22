@@ -1,20 +1,20 @@
 import { computed } from 'vue';
 import type { ComputedRef, Ref, WritableComputedRef } from 'vue';
-import { resolveTheme } from '@soybeanjs/theme';
-import type { ColorKey, ColorValue } from '@soybeanjs/theme';
+import { resolveThemeMap, valueRef } from '@soybeanjs/theme';
+import type { ColorValue, SemanticToken, TokenValue } from '@soybeanjs/theme';
 import type { UseThemeSettingsReturn } from './use-theme-settings';
 
 /**
  * the variant group keys a token can belong to.
  */
-export type VariantGroupKey = 'surfaces' | 'palette' | 'hairlines' | 'sidebar' | 'charts' | 'feedback';
+export type VariantGroupKey = 'surfaces' | 'fills' | 'hairlines' | 'brand' | 'sidebar' | 'feedback' | 'charts';
 
 /**
  * the metadata of a single variant token.
  */
 export interface VariantTokenMeta {
   /** the color token key. */
-  key: ColorKey;
+  key: SemanticToken;
   /** the group this token belongs to. */
   group: VariantGroupKey;
   /** the derivation source: base / primary / scheme. */
@@ -56,101 +56,109 @@ export interface UseThemeVariantsReturn {
   /** the variant groups (group → tokens). */
   groups: VariantGroupMeta[];
   /** the derived tokens from the left-column generator (the resolved preset). */
-  derived: ComputedRef<Record<ColorKey, ColorValue>>;
+  derived: ComputedRef<Record<SemanticToken, string>>;
   /** a writable ref bound to the override for a token key. */
-  getOverride: (key: ColorKey) => WritableComputedRef<ColorValue | ''>;
+  getOverride: (key: SemanticToken) => WritableComputedRef<string>;
   /** merge rule: override wins when present, otherwise falls back to derived. */
-  final: ComputedRef<Record<ColorKey, ColorValue>>;
+  final: ComputedRef<Record<SemanticToken, ColorValue>>;
   /** whether the active mode has any explicit override. */
   hasOverrides: ComputedRef<boolean>;
   /** clear the override for a token key. */
-  clearOverride: (key: ColorKey) => void;
+  clearOverride: (key: SemanticToken) => void;
 }
 
 const surfaces: VariantTokenMeta[] = [
   { key: 'background', group: 'surfaces', source: 'base', shadeLinked: true, i18n: 'theme.variant.background' },
-  { key: 'foreground', group: 'surfaces', source: 'base', i18n: 'theme.variant.foreground' },
   { key: 'card', group: 'surfaces', source: 'base', shadeLinked: true, i18n: 'theme.variant.card' },
-  { key: 'cardForeground', group: 'surfaces', source: 'base', i18n: 'theme.variant.cardForeground' },
   { key: 'popover', group: 'surfaces', source: 'base', shadeLinked: true, i18n: 'theme.variant.popover' },
-  { key: 'popoverForeground', group: 'surfaces', source: 'base', i18n: 'theme.variant.popoverForeground' }
+  { key: 'carbon', group: 'surfaces', source: 'base', shadeLinked: true, i18n: 'theme.variant.carbon' },
+  { key: 'foreground', group: 'surfaces', source: 'base', i18n: 'theme.variant.foreground' },
+  { key: 'muted-foreground', group: 'surfaces', source: 'base', i18n: 'theme.variant.mutedForeground' },
+  { key: 'card-foreground', group: 'surfaces', source: 'base', i18n: 'theme.variant.cardForeground' },
+  { key: 'popover-foreground', group: 'surfaces', source: 'base', i18n: 'theme.variant.popoverForeground' },
+  { key: 'carbon-foreground', group: 'surfaces', source: 'base', i18n: 'theme.variant.carbonForeground' }
 ];
 
-const palette: VariantTokenMeta[] = [
-  { key: 'primary', group: 'palette', source: 'primary', i18n: 'theme.variant.primary' },
-  { key: 'primaryForeground', group: 'palette', source: 'primary', i18n: 'theme.variant.primaryForeground' },
-  { key: 'ring', group: 'palette', source: 'primary', i18n: 'theme.variant.ring' },
-  { key: 'secondary', group: 'palette', source: 'base', shadeLinked: true, i18n: 'theme.variant.secondary' },
-  { key: 'secondaryForeground', group: 'palette', source: 'base', i18n: 'theme.variant.secondaryForeground' },
-  { key: 'muted', group: 'palette', source: 'base', shadeLinked: true, i18n: 'theme.variant.muted' },
-  {
-    key: 'mutedForeground',
-    group: 'palette',
-    source: 'base',
-    shadeLinked: true,
-    i18n: 'theme.variant.mutedForeground'
-  },
-  { key: 'accent', group: 'palette', source: 'base', shadeLinked: true, i18n: 'theme.variant.accent' },
-  { key: 'accentForeground', group: 'palette', source: 'base', i18n: 'theme.variant.accentForeground' }
+const mask: VariantTokenMeta[] = [{ key: 'mask', group: 'surfaces', source: 'base', i18n: 'theme.variant.mask' }];
+
+const fills: VariantTokenMeta[] = [
+  { key: 'muted', group: 'fills', source: 'base', shadeLinked: true, i18n: 'theme.variant.muted' },
+  { key: 'accent', group: 'fills', source: 'base', shadeLinked: true, i18n: 'theme.variant.accent' },
+  { key: 'accent-foreground', group: 'fills', source: 'base', i18n: 'theme.variant.accentForeground' },
+  { key: 'secondary', group: 'fills', source: 'base', shadeLinked: true, i18n: 'theme.variant.secondary' },
+  { key: 'secondary-foreground', group: 'fills', source: 'base', i18n: 'theme.variant.secondaryForeground' }
 ];
 
 const hairlines: VariantTokenMeta[] = [
   { key: 'border', group: 'hairlines', source: 'base', i18n: 'theme.variant.border' },
-  { key: 'input', group: 'hairlines', source: 'base', i18n: 'theme.variant.input' }
+  { key: 'input', group: 'hairlines', source: 'base', i18n: 'theme.variant.input' },
+  { key: 'ring', group: 'hairlines', source: 'primary', i18n: 'theme.variant.ring' }
+];
+
+const brand: VariantTokenMeta[] = [
+  { key: 'primary', group: 'brand', source: 'primary', i18n: 'theme.variant.primary' },
+  { key: 'primary-foreground', group: 'brand', source: 'primary', i18n: 'theme.variant.primaryForeground' }
 ];
 
 const sidebar: VariantTokenMeta[] = [
-  { key: 'sidebar', group: 'sidebar', source: 'scheme', shadeLinked: true, i18n: 'theme.variant.sidebar' },
-  { key: 'sidebarForeground', group: 'sidebar', source: 'scheme', i18n: 'theme.variant.sidebarForeground' },
-  { key: 'sidebarPrimary', group: 'sidebar', source: 'scheme', i18n: 'theme.variant.sidebarPrimary' },
+  { key: 'sidebar', group: 'sidebar', source: 'base', shadeLinked: true, i18n: 'theme.variant.sidebar' },
+  { key: 'sidebar-foreground', group: 'sidebar', source: 'base', i18n: 'theme.variant.sidebarForeground' },
+  { key: 'sidebar-border', group: 'sidebar', source: 'base', i18n: 'theme.variant.sidebarBorder' },
+  { key: 'sidebar-accent', group: 'sidebar', source: 'base', shadeLinked: true, i18n: 'theme.variant.sidebarAccent' },
   {
-    key: 'sidebarPrimaryForeground',
+    key: 'sidebar-accent-foreground',
     group: 'sidebar',
-    source: 'scheme',
+    source: 'base',
+    i18n: 'theme.variant.sidebarAccentForeground'
+  },
+  { key: 'sidebar-primary', group: 'sidebar', source: 'primary', i18n: 'theme.variant.sidebarPrimary' },
+  {
+    key: 'sidebar-primary-foreground',
+    group: 'sidebar',
+    source: 'primary',
     i18n: 'theme.variant.sidebarPrimaryForeground'
   },
-  { key: 'sidebarAccent', group: 'sidebar', source: 'scheme', i18n: 'theme.variant.sidebarAccent' },
-  { key: 'sidebarAccentForeground', group: 'sidebar', source: 'scheme', i18n: 'theme.variant.sidebarAccentForeground' },
-  { key: 'sidebarBorder', group: 'sidebar', source: 'scheme', i18n: 'theme.variant.sidebarBorder' },
-  { key: 'sidebarRing', group: 'sidebar', source: 'scheme', i18n: 'theme.variant.sidebarRing' }
+  { key: 'sidebar-ring', group: 'sidebar', source: 'primary', i18n: 'theme.variant.sidebarRing' }
 ];
 
 const charts: VariantTokenMeta[] = [1, 2, 3, 4, 5].map(index => ({
-  key: `chart${index}` as ColorKey,
+  key: `chart-${index}` as SemanticToken,
   group: 'charts' as const,
   source: 'scheme' as const,
   i18n: `theme.variant.chart${index}`
 }));
 
-const feedback: VariantTokenMeta[] = [
-  { key: 'destructive', group: 'feedback', source: 'scheme', i18n: 'theme.variant.destructive' },
-  { key: 'destructiveForeground', group: 'feedback', source: 'base', i18n: 'theme.variant.destructiveForeground' },
-  { key: 'success', group: 'feedback', source: 'scheme', i18n: 'theme.variant.success' },
-  { key: 'successForeground', group: 'feedback', source: 'base', i18n: 'theme.variant.successForeground' },
-  { key: 'warning', group: 'feedback', source: 'scheme', i18n: 'theme.variant.warning' },
-  { key: 'warningForeground', group: 'feedback', source: 'base', i18n: 'theme.variant.warningForeground' },
-  { key: 'info', group: 'feedback', source: 'scheme', i18n: 'theme.variant.info' },
-  { key: 'infoForeground', group: 'feedback', source: 'base', i18n: 'theme.variant.infoForeground' },
-  { key: 'carbon', group: 'feedback', source: 'base', i18n: 'theme.variant.carbon' },
-  { key: 'carbonForeground', group: 'feedback', source: 'base', i18n: 'theme.variant.carbonForeground' }
-];
+const feedback: VariantTokenMeta[] = (['destructive', 'success', 'warning', 'info'] as const).flatMap(name => [
+  { key: name, group: 'feedback' as const, source: 'scheme' as const, i18n: `theme.variant.${name}` },
+  {
+    key: `${name}-foreground` as SemanticToken,
+    group: 'feedback' as const,
+    source: 'scheme' as const,
+    i18n: `theme.variant.${name}Foreground`
+  }
+]);
 
 /**
  * the built-in variant groups.
  */
 export const DEFAULT_VARIANT_GROUPS: VariantGroupMeta[] = [
-  { key: 'surfaces', i18n: 'theme.group.surfaces', tokens: surfaces },
-  { key: 'palette', i18n: 'theme.group.palette', tokens: palette },
+  { key: 'surfaces', i18n: 'theme.group.surfaces', tokens: [...surfaces, ...mask] },
+  { key: 'fills', i18n: 'theme.group.fills', tokens: fills },
   { key: 'hairlines', i18n: 'theme.group.hairlines', tokens: hairlines },
+  { key: 'brand', i18n: 'theme.group.brand', tokens: brand },
   { key: 'sidebar', i18n: 'theme.group.sidebar', tokens: sidebar },
-  { key: 'charts', i18n: 'theme.group.charts', tokens: charts },
-  { key: 'feedback', i18n: 'theme.group.feedback', tokens: feedback }
+  { key: 'feedback', i18n: 'theme.group.feedback', tokens: feedback },
+  { key: 'charts', i18n: 'theme.group.charts', tokens: charts }
 ];
 
 const ALL_TOKENS: VariantTokenMeta[] = DEFAULT_VARIANT_GROUPS.flatMap(group => group.tokens);
 
 /**
- * The full-variants linkage model (§5.6).
+ * The full-variants linkage model (docs/theme.md §4).
+ *
+ * The groups mirror the v2 token families (surfaces / fills / hairlines / brand /
+ * region / status / charts); every entry is a v2 `SemanticToken`, so an override
+ * written here lands in the engine's own vocabulary.
  *
  * Derives the resolved token values from the left-column generator (the
  * settings `resolved` preset), exposes a per-token override channel bound to the
@@ -161,40 +169,29 @@ const ALL_TOKENS: VariantTokenMeta[] = DEFAULT_VARIANT_GROUPS.flatMap(group => g
 export function useThemeVariants(options: UseThemeVariantsOptions): UseThemeVariantsReturn {
   const { settings, mode, groups = DEFAULT_VARIANT_GROUPS } = options;
 
-  const derived = computed<Record<ColorKey, ColorValue>>(() => {
-    const resolved = settings.resolved.value;
+  const derived = computed<Record<SemanticToken, string>>(() => {
+    // 派生值来自引擎（与运行时同一套映射表），以 `palette.level` 形态展示 ——
+    // 与选择器接受的取值形态一致。
+    const map = resolveThemeMap(settings.resolved.value);
 
-    const preset = resolveTheme({
-      base: resolved.base ?? 'zinc',
-      primary: resolved.primary ?? 'indigo',
-      feedback: resolved.feedback,
-      chart: resolved.chart,
-      sidebar: resolved.sidebar,
-      sidebarDerive: resolved.sidebarDerive,
-      lightLevel: resolved.lightLevel,
-      darkLevel: resolved.darkLevel,
-      overrides: resolved.overrides,
-      size: resolved.size,
-      radius: resolved.radius
-    });
-
-    // dark 层在生成时会被裁剪（与 light 相同的 token 被移除，CSS 由 light 继承），
-    // 因此 dark 模式需将 light 作为基底、dark 覆盖其上，避免裁剪 token 变为 undefined。
-    const tokens = mode.value === 'light' ? preset.light : { ...preset.light, ...preset.dark };
-
-    return tokens as unknown as Record<ColorKey, ColorValue>;
+    return Object.fromEntries(
+      (Object.keys(map[mode.value]) as SemanticToken[]).map(token => [
+        token,
+        valueRef(map[mode.value][token] as TokenValue)
+      ])
+    ) as Record<SemanticToken, string>;
   });
 
   // 每个 token 的 override 引用只创建一次并缓存，保证模板重复调用 `getOverride`
   // 拿到的是同一个 ref（否则每次渲染都会新建 computed，v-model 失效）。
-  const overrideCache = new Map<ColorKey, WritableComputedRef<ColorValue | ''>>();
+  const overrideCache = new Map<SemanticToken, WritableComputedRef<string>>();
 
-  const getOverride = (key: ColorKey): WritableComputedRef<ColorValue | ''> => {
+  const getOverride = (key: SemanticToken): WritableComputedRef<string> => {
     let ref = overrideCache.get(key);
 
     if (!ref) {
-      ref = computed<ColorValue | ''>({
-        get: () => settings.state.value.overrides?.[mode.value]?.[key] ?? '',
+      ref = computed<string>({
+        get: () => overrideOf(key),
         set: value => settings.setOverride(mode.value, key, value)
       });
       overrideCache.set(key, ref);
@@ -203,16 +200,23 @@ export function useThemeVariants(options: UseThemeVariantsOptions): UseThemeVari
     return ref;
   };
 
-  const final = computed<Record<ColorKey, ColorValue>>(() => {
-    const result = ALL_TOKENS.reduce<Partial<Record<ColorKey, ColorValue>>>((acc, meta) => {
-      const override = settings.state.value.overrides?.[mode.value]?.[meta.key];
+  /**
+   * read the current override value of a token.
+   *
+   * The persisted overrides are keyed by token name; the vocabulary lives in the
+   * engine, so the read is typed loosely here.
+   */
+  const overrideOf = (key: SemanticToken): string =>
+    (settings.state.value.overrides?.[mode.value] as Record<string, string> | undefined)?.[key] ?? '';
 
-      acc[meta.key] = override ?? derived.value[meta.key];
+  const final = computed<Record<SemanticToken, ColorValue>>(() => {
+    const result = ALL_TOKENS.reduce<Partial<Record<SemanticToken, string>>>((acc, meta) => {
+      acc[meta.key] = overrideOf(meta.key) || derived.value[meta.key];
 
       return acc;
     }, {});
 
-    return result as Record<ColorKey, ColorValue>;
+    return result as Record<SemanticToken, ColorValue>;
   });
 
   const hasOverrides = computed<boolean>(() => {
@@ -221,7 +225,7 @@ export function useThemeVariants(options: UseThemeVariantsOptions): UseThemeVari
     return tokens != null && Object.keys(tokens).length > 0;
   });
 
-  const clearOverride = (key: ColorKey): void => {
+  const clearOverride = (key: SemanticToken): void => {
     settings.setOverride(mode.value, key, '');
   };
 

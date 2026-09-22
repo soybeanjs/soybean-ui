@@ -298,7 +298,7 @@ Yes — set `side="right"`. The layout uses RTL-aware logical properties (`start
 
 ### How are z-index values coordinated?
 
-`Layout` accepts a `baseZIndex` (default `50`). The sidebar, header, tab, and footer z-index values are derived from this base so they stack predictably. The derived values are exposed as `--soybean-layout-{sidebar|header|tab|footer}-z-index` CSS variables.
+`Layout` accepts a `baseZIndex` (default `50`). The sidebar, header, tab, and footer z-index values are derived from this base so they stack predictably. The derived values are exposed as `--layout-{sidebar|header|tab|footer}-z-index` CSS variables.
 
 ### How do I customize region-level attributes?
 

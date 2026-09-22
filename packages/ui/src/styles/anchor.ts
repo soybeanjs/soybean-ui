@@ -7,7 +7,7 @@ export const anchorVariants = scv({
     link: [
       'group inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-muted-foreground outline-none transition-colors',
       'hover:bg-accent/60 hover:text-accent-foreground',
-      'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+      'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       'data-[state=active]:bg-accent data-[state=active]:text-foreground'
     ],

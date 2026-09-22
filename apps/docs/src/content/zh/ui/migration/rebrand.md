@@ -48,7 +48,7 @@ pnpm remove @soybeanjs/ui @soybeanjs/headless @soybeanjs/theme @soybeanjs/ui-uno
 pnpm add @vean/ui @vean/aria @vean/theme @vean/unocss
 ```
 
-> `presetUiUnocss()`、`UiUnocssOptions`、`createTheme()` 等 **API 名称不变**，只换了包来源。
+> `presetUiUnocss()`、`UiUnocssOptions`、`resolveThemeMap()` 等 **API 名称不变**，只换了包来源。
 
 ## 2. Nuxt 项目
 

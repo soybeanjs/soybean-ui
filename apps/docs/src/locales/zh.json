@@ -1112,5 +1112,76 @@
         "description": "Headless 文档正在编写中，可先查阅组件（Components）下的样式化 API 参考。"
       }
     }
+  },
+  "themeEditor": {
+    "title": "主题编辑器",
+    "description": "左侧调整主题配置，下方组件实时跟随。面板即真实的 SThemeCustomizer：颜色、圆角、尺寸、间距、字体、表面、描边与逐 token 覆盖都会即时作用于当前页面。",
+    "mode": "明暗模式",
+    "group": {
+      "all": "全部",
+      "color": "颜色",
+      "size": "尺寸",
+      "font": "字体",
+      "structure": "结构",
+      "region": "区域"
+    },
+    "sections": {
+      "colors": {
+        "title": "品牌色",
+        "description": "primary、由中性基调派生的填充，以及角色色阶"
+      },
+      "feedback": {
+        "title": "状态色",
+        "description": "feedback 方案：destructive、success、warning、info"
+      },
+      "forms": {
+        "title": "表单控件",
+        "description": "细线 token、控件填充与焦点环"
+      },
+      "data": {
+        "title": "数据展示",
+        "description": "表面、弱化填充与表格描边"
+      },
+      "surfaces": {
+        "title": "表面与阴影",
+        "description": "层次阶梯、嵌套的 card / popover 表面与 surfaceStyle"
+      },
+      "borders": {
+        "title": "描边与焦点",
+        "description": "细线 token、焦点环与模态遮罩"
+      },
+      "overlay": {
+        "title": "浮层",
+        "description": "对话框与弹层所在的 popover 表面，以及遮罩"
+      },
+      "size": {
+        "title": "尺寸",
+        "description": "控件与文字档位共用的 size 刻度"
+      },
+      "radius": {
+        "title": "圆角",
+        "description": "一个种子驱动整条圆角刻度"
+      },
+      "spacing": {
+        "title": "间距",
+        "description": "一个变量驱动内外边距与 gap"
+      },
+      "font": {
+        "title": "字体",
+        "description": "三套字族角色：无衬线、标题与等宽 stack"
+      },
+      "sidebar": {
+        "title": "区域 · 侧栏",
+        "description": "镜像全局角色的区域皮肤"
+      },
+      "charts": {
+        "title": "图表色",
+        "description": "由 primary 派生的 chart-1 至 chart-5"
+      },
+      "contrast": {
+        "title": "对比度",
+        "description": "填充与其前景的配对一览"
+      }
+    }
   }
 }

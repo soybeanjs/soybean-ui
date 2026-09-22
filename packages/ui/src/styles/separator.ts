@@ -5,7 +5,7 @@ import type { VariantProps } from '@soybeanjs/cva';
 export const separatorVariants = scv({
   slots: {
     root: `relative shrink-0 border-border`,
-    label: `absolute top-1/2 -translate-x-1/2 rtl:translate-x-1/2 -translate-y-1/2 flex justify-center items-center text-muted-foreground bg-background`
+    label: `absolute top-1/2 -translate-x-1/2 rtl:translate-x-1/2 -translate-y-1/2 flex justify-center items-center text-muted-foreground bg-card`
   },
   variants: {
     size: {

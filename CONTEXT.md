@@ -4,63 +4,66 @@
 
 ## 主题（theme）
 
-一套完整的视觉令牌集合，覆盖全部 40 个 CSS 颜色语义变量（light/dark 各一份）。`@soybeanjs/theme` 是主题生成引擎；用户自定义预设（`CustomThemeColorPreset`）可经 ConfigProvider 持久化，覆盖内置派生结果。
+一套完整的视觉令牌（token）集合：47 个颜色 token 的亮色 / 暗色两份取值，加一层非颜色（字面量）token。`@soybeanjs/theme` 是主题生成引擎；用户自定义的颜色（`overrides` 与具名 preset）经 ConfigProvider 落进主题信封，叠加在内置契约之上。
 
 ## 引擎（engine）
 
-`@soybeanjs/theme` 包。持有内置基线（核心 token 模板 + 派生规则），消费外部传入的 preset 覆盖后输出 CSS。
+`@soybeanjs/theme` 包。持有一张**声明式契约**（`CORE_RULES` 的档位规则、镜像、按压态、字面量表），把选项解析成一张 `ThemeMap`（亮/暗各一份"每 token 一条调色板引用"的映射），再发射成 CSS。纯函数：不读 DOM、不测量颜色、不修正任何值。
+
+## 三层（three layers）
+
+- **调色板层**：26 个内置色板 × 11 档，以裸通道形态静态产出（构建期一次）；
+- **语义层**：每个 token 是对调色板层的引用，每次主题变更重新生成；
+- **字面量层**：尺寸、圆角刻度、间距网格单位、层级、线宽、字体族。
+
+切主题只换语义层的引用，因此不需要重算调色板。
 
 ## 内置（builtin）
 
-引擎内置的基线数据与规则：9 个中性 base 模板、26 个 primary 模板、固定 feedback（classic）与固定 chart 模板。
+引擎自带的选项表：9 个中性色板（`base` 可选）、26 个色板（`primary` 可选）、5 套 feedback 方案（默认 `classic`）。图表色由 `primary` 派生，不设方案。
 
 ## 预设（preset）
 
-预设体系的最小单位，一个可被 `createTheme({ preset })` 消费的 token 集合（引擎 `CustomThemeColorPreset` 的实例，light/dark 各一份、字段全可选）。
+一套可被用户重新应用的**具名颜色集**，随主题信封持久化。传入形式是 `theme.preset`：内联 `{ light, dark }`，或 `{ name }` 引用一个已保存的 preset。provider 在进入引擎前把它解析成 `overrides`，引擎只会收到已解析的选项。
 
 ## 维度（dimension）
 
-预设的分类标识（`base` / `feedback` / `chart` / `theme`），仅用于组织与文档，不约束预设的键集。
+token 的组织维度：`base` / `primary` / `feedback`；图表色随 `primary`。仅用于组织覆盖与面板分组，不改变 token 的扁平键契约。
 
 ## 核心 token（core token）
 
-需显式声明的少数键：base 维度 10 键、primary 维度 2 键。其余 token 由派生规则补全。
+`CORE_RULES` 里显式声明档位的 28 个 token：表面、填充、文本、描边与焦点、品牌、反相、区域皮肤、状态与遮罩。其余 token 由镜像、按压态与角色 ramp 补全。
 
 ## 派生 token（derived token）
 
-由核心 token 按确定性算法补全的键（secondary、border、chart 等），可被 preset 覆盖。
+不由规则逐条定档、而从别处推出的 token：`card-foreground` / `popover-foreground` 镜像 `foreground`；6 个 `-active` 是实心角色的按压态；`chart-1` … `chart-5` 与 5 条角色 ramp（`primary` + 4 个状态）从 `primary` / feedback 方案派生。
 
 ## 覆盖（override）
 
-外部 preset 对内置派生结果的替换，优先级最高。
-
-## 官方复刻（official replica）
-
-与引擎内置等值的预设，作为修改起点与基线测试锚点。
-
-## 基线等值（baseline equivalence）
-
-官方复刻预设与内置输出完全一致的性质，用作测试基准。
+逐 token、逐模式的替换（`overrides.{light, dark}`），优先级最高，**原样生效**——引擎不测量、不修正、不报告。取值必须是 `ColorValue`（`palette.level` 如 `stone.950`、简单键 `white` / `black`、或 CSS Color 4 的 `hsl()` / `oklch()`）；不是 token 的键、以及无法表达的值，一律被忽略。
 
 ## 档位（level）
 
-明暗调节的偏移量：`lightLevel`（0-2）调暗亮色、`darkLevel`（0-3）调亮暗色。预设可携带档位，引擎选项为全局覆盖。
+两个含义，不要混用：
+
+- **色板级别**：`indigo.500` 这类 `palette.level` 引用，是 token 取值的唯一引用形态；
+- **表面级别**：由 `CORE_RULES` 固定声明的一整套档位。**没有**"整体调暗一档"的运行时旋钮——微调某个 token 用 `overrides`，整体更暗 / 更亮就换 `base` 色板或 `surfaceStyle`。
 
 ## 持久化主题（persistTheme）
 
-ConfigProvider 上控制是否启用持久化主题读取（localStorage）的属性，默认关闭。关闭时只消费显式 `theme` props；开启后按「显式 props > 存储配置 > 内置默认」的解析管道合并存储配置，且为 `{ presetName }` 引用解析提供前提。存储读取在组件实例初始化时解析一次并写入内存状态，后续渲染复用该状态，无需额外缓存开关。
+ConfigProvider 上控制是否启用持久化主题读取（localStorage）的属性，默认关闭。关闭时只消费显式 `theme` prop；开启后按「显式 props > 存储信封 > 内置默认」合并，并由**单个防抖写入者**写回。
+
+## 主题信封（theme envelope）
+
+localStorage 里的单一条目（键 `__SOYBEAN_THEME`），携带 schema 版本、引擎选项、亮 / 暗偏好、首帧样式快照与已保存的 preset 表。旧版本信封会被迁移（词汇改名、丢弃无对应项），**未来**版本被拒绝。
 
 ## SSR 主题配置（themeConfig）
 
-由应用层解析后注入 ConfigProvider 的持久化配置。SSR 时作为存储配置参与合并（仅补位未显式声明的键），客户端以 localStorage 为权威源。主题不通过 cookie 传输：服务端首帧渲染默认主题，由 `createThemeInitScript()` 内联脚本在客户端首帧前从 localStorage 应用持久化主题，避免闪烁。
+由应用层解析后注入 ConfigProvider 的信封。SSR 时作为存储侧参与合并（仅补位未显式声明的键），客户端以 localStorage 为权威源。主题不通过 cookie 传输：服务端首帧渲染默认主题，由 `createThemeInitScript()` 内联脚本在客户端首帧前应用持久化主题，避免闪烁。
 
 ## 预设注册表（presetProvider）
 
-服务端自定义 preset 解析器：把 `{ presetName }` 引用映射为 `CustomThemeColorPreset` 定义，使 SSR 无需访问 localStorage 即可渲染自定义 preset；客户端忽略，以 localStorage 的 presets 表为准。
-
-## 持久化预设条目（StoredThemePreset）
-
-持久化 presets 表中的最小单位：`CustomThemeColorPreset` + `name`（唯一标识，同为存储对象键）+ `version`（semver）。整体以 `StoredThemePresets`（schema `version` + 条目表）存入 `__SOYBEAN_THEME_PRESETS`（localStorage）。
+服务端自定义 preset 解析器：把 `{ name }` 引用映射为颜色集，使 SSR 无需访问 localStorage 即可渲染已保存的 preset；客户端忽略，以信封里的 preset 表为准。
 
 ## 运行时环境判断（isServerRuntime）
 
@@ -68,19 +71,19 @@ ConfigProvider 上控制是否启用持久化主题读取（localStorage）的�
 
 ## 主题提供者（ConfigProvider）
 
-`@soybeanjs/ui` 的完整主题渲染组件（`SConfigProvider`）。接收 `tokens`（light/dark 部分语义 token 集合，或 `{ presetName }` 持久化预设引用）、`persistTheme`、`themeConfig`、`presetProvider`，将 tokens 与内置默认主题合并为完整主题后经 `createTheme` 派生并输出 CSS，以内联 `<style>` 注入（服务端与客户端都渲染以保证水合一致）。
+`@soybeanjs/ui` 的完整主题渲染组件（`SConfigProvider`）。接收 `theme`（引擎 `ThemeOptions` + UI 侧 `preset`）、`persistTheme`、`themeConfig`、`presetProvider`、`nonce`、`isServer`；把选项经 `buildThemeCss` 解析成 CSS，以内联 `<style id="soybean-theme">` 注入（服务端与客户端都渲染以保证水合一致）。它独占该样式元素与全部写入。
 
-## 主题 token（tokens）
+## 主题 token（theme prop）
 
-`SConfigProvider` 的 `tokens` 属性输入，`{ light: Partial<ThemeColors>; dark?: Partial<ThemeColors> }`（即 `CustomThemeColorPreset`）。字段全可选，缺失键回退内置默认主题。可为内联 token 集合，也可为按名引用的持久化 preset（`{ presetName }`）。
+`SConfigProvider` 的 `theme` 属性，即引擎的 `ThemeOptions`：`base` / `primary` / `feedback` / `surfaceStyle` / `size` / `radius` / `spacing` / `borderOpacity` / `overrides` / `prefix` / `format` / `styleTarget` / `darkSelector`，外加 UI 侧的 `preset`。缺省键回退内置默认。
 
 ## 主题定制面板（SThemeCustomizer）
 
-`@soybeanjs/ui` 的可视化主题定制组件。按 `base` / `primary` / `feedback` / `sidebar` / `chart` 分类选择内置模板与档位（`lightLevel` / `darkLevel`），产出 `CustomThemeColorPreset` 供 `SConfigProvider` 消费或持久化。
+`@soybeanjs/ui` 的可视化主题定制组件，分七个分区：`mode` / `palette` / `radius` / `size` / `spacing` / `scheme` / `advanced`。高级页按分组逐 token 覆盖（含 `chart-1…5`）。它不自带容器——由调用方决定 popover / drawer / sidebar 外壳。
 
-## token 分类（ThemeTokenGroup）
+## 定制面板分组（customizer group）
 
-主题 token 的组织维度：`base` / `primary` / `feedback` / `sidebar` / `chart`。仅用于组织覆盖与文档，不改变 `ThemeColors` 扁平键契约。feedback 为固定 classic 规则，不提供预设选择器，仅可按组覆盖。
+高级页里 token 的组织方式：`surfaces` / `fills` / `hairlines` / `brand` / `sidebar` / `feedback` / `charts`。它是**展示层**词汇，与引擎的 token 契约（扁平键）解耦，只影响面板的分段与标签。
 
 ## 文档站主题配置器（docs ThemeConfigurator）
 

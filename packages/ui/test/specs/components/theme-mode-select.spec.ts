@@ -84,7 +84,7 @@ describe('SThemeModeSelect', () => {
   describe('rendering', () => {
     it('renders a select trigger showing the current mode', () => {
       const wrapper = mountInProvider();
-      expect(wrapper.get('button').text()).toContain('Light');
+      expect(wrapper.get('button').text()).toContain('light');
       wrapper.unmount();
     });
 
@@ -95,9 +95,9 @@ describe('SThemeModeSelect', () => {
       const options = Array.from(document.body.querySelectorAll('[role="option"]'));
       const labels = options.map(node => node.textContent ?? '');
 
-      expect(labels.some(text => text.includes('Auto'))).toBe(true);
-      expect(labels.some(text => text.includes('Light'))).toBe(true);
-      expect(labels.some(text => text.includes('Dark'))).toBe(true);
+      expect(labels.some(text => text.includes('auto'))).toBe(true);
+      expect(labels.some(text => text.includes('light'))).toBe(true);
+      expect(labels.some(text => text.includes('dark'))).toBe(true);
 
       wrapper.unmount();
     });
@@ -108,10 +108,36 @@ describe('SThemeModeSelect', () => {
       const wrapper = mountInProvider();
       await openListbox(wrapper);
 
-      await selectOption('Dark');
+      await selectOption('dark');
 
       expect(document.documentElement.classList.contains('dark')).toBe(true);
-      expect(wrapper.get('button').text()).toContain('Dark');
+      expect(wrapper.get('button').text()).toContain('dark');
+
+      wrapper.unmount();
+    });
+
+    /**
+     * `color-scheme` must follow the toggle, not only the `.dark` class.
+     *
+     * The first-paint script writes it as an **inline** style on `<html>`, and an
+     * inline style outranks every selector — so if the runtime only toggles the
+     * class, the stale inline value wins over the `.dark` block forever and the
+     * UA-drawn surfaces (scrollbars, form controls, canvas) stay light. The
+     * emitted CSS is correct either way, which is why only a runtime test can
+     * catch this.
+     */
+    it('keeps the inline color-scheme in step with the class toggle', async () => {
+      const wrapper = mountInProvider();
+      await openListbox(wrapper);
+
+      await selectOption('dark');
+      expect(document.documentElement.style.colorScheme).toBe('dark');
+
+      await wrapper.get('button').trigger('pointerdown', mousePointerDown);
+      await nextTick();
+
+      await selectOption('light');
+      expect(document.documentElement.style.colorScheme).toBe('light');
 
       wrapper.unmount();
     });
@@ -119,15 +145,15 @@ describe('SThemeModeSelect', () => {
     it('switches back to light when Light is selected', async () => {
       const wrapper = mountInProvider();
       await openListbox(wrapper);
-      await selectOption('Dark');
+      await selectOption('dark');
 
       await wrapper.get('button').trigger('pointerdown', mousePointerDown);
       await nextTick();
 
-      await selectOption('Light');
+      await selectOption('light');
 
       expect(document.documentElement.classList.contains('dark')).toBe(false);
-      expect(wrapper.get('button').text()).toContain('Light');
+      expect(wrapper.get('button').text()).toContain('light');
 
       wrapper.unmount();
     });
@@ -135,9 +161,9 @@ describe('SThemeModeSelect', () => {
     it('supports auto mode selection', async () => {
       const wrapper = mountInProvider();
       await openListbox(wrapper);
-      await selectOption('Auto');
+      await selectOption('auto');
 
-      expect(wrapper.get('button').text()).toContain('Auto');
+      expect(wrapper.get('button').text()).toContain('auto');
       wrapper.unmount();
     });
 
@@ -167,10 +193,10 @@ describe('SThemeModeSelect', () => {
         expect(document.documentElement.classList.contains('dark')).toBe(false);
 
         await openListbox(wrapper);
-        await selectOption('Auto');
+        await selectOption('auto');
 
         // 系统仍为 light → 不应用 dark class
-        expect(wrapper.get('button').text()).toContain('Auto');
+        expect(wrapper.get('button').text()).toContain('auto');
         expect(document.documentElement.classList.contains('dark')).toBe(false);
 
         // 系统切换到 dark → auto 跟随解析

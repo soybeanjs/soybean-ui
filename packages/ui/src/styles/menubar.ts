@@ -3,7 +3,7 @@ import { scv } from '@soybeanjs/cva';
 
 export const menubarVariants = scv({
   slots: {
-    root: 'inline-flex items-center w-fit rounded-md border bg-background shadow-sm',
+    root: 'inline-flex items-center w-fit rounded-md border bg-card shadow-sm',
     trigger: [
       `flex cursor-pointer select-none items-center rounded-sm font-medium outline-none`,
       `focus:(bg-accent text-accent-foreground)`,

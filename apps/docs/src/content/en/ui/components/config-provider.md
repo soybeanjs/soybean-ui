@@ -170,27 +170,27 @@ Then pass `locale="custom"` to `SConfigProvider`. If you also need a custom disp
 
 #### `pagination`
 
-| Key         | Default (en)    | Description                                                   |
-| ----------- | --------------- | ------------------------------------------------------------- |
-| `firstPage` | `First page`    | Aria-label and default slot text for the first-page button    |
-| `prevPage`  | `Previous page` | Aria-label and default slot text for the previous-page button |
-| `nextPage`  | `Next page`     | Aria-label and default slot text for the next-page button     |
-| `lastPage`  | `Last page`     | Aria-label and default slot text for the last-page button     |
+| Key         | Default (en)    | Description                                                       |
+| ----------- | --------------- | ----------------------------------------------------------------- |
+| `firstPage` | `First page`    | Headless-label and default slot text for the first-page button    |
+| `prevPage`  | `Previous page` | Headless-label and default slot text for the previous-page button |
+| `nextPage`  | `Next page`     | Headless-label and default slot text for the next-page button     |
+| `lastPage`  | `Last page`     | Headless-label and default slot text for the last-page button     |
 
 #### `table`
 
-| Key                | Default (en)                             | Placeholders | Description                                     |
-| ------------------ | ---------------------------------------- | ------------ | ----------------------------------------------- |
-| `emptyTitle`       | `No data`                                | —            | Title in the default empty slot                 |
-| `emptyDescription` | `There is no data to display.`           | —            | Description in the default empty slot           |
-| `selectAllRows`    | `Select all rows`                        | —            | Aria-label for the header "select all" checkbox |
-| `sortByColumn`     | `Sort by {column}`                       | `{column}`   | Sort button label with no active sort           |
-| `sortByColumnAsc`  | `Sort by {column}, currently ascending`  | `{column}`   | Sort button label when ascending                |
-| `sortByColumnDesc` | `Sort by {column}, currently descending` | `{column}`   | Sort button label when descending               |
-| `resizeColumn`     | `Resize {column} column`                 | `{column}`   | Aria-label for the column resize handle         |
-| `expandRow`        | `Expand row {row}`                       | `{row}`      | Aria-label for expanding a row                  |
-| `collapseRow`      | `Collapse row {row}`                     | `{row}`      | Aria-label for collapsing a row                 |
-| `selectRow`        | `Select row {row}`                       | `{row}`      | Aria-label for the row selection checkbox       |
+| Key                | Default (en)                             | Placeholders | Description                                         |
+| ------------------ | ---------------------------------------- | ------------ | --------------------------------------------------- |
+| `emptyTitle`       | `No data`                                | —            | Title in the default empty slot                     |
+| `emptyDescription` | `There is no data to display.`           | —            | Description in the default empty slot               |
+| `selectAllRows`    | `Select all rows`                        | —            | Headless-label for the header "select all" checkbox |
+| `sortByColumn`     | `Sort by {column}`                       | `{column}`   | Sort button label with no active sort               |
+| `sortByColumnAsc`  | `Sort by {column}, currently ascending`  | `{column}`   | Sort button label when ascending                    |
+| `sortByColumnDesc` | `Sort by {column}, currently descending` | `{column}`   | Sort button label when descending                   |
+| `resizeColumn`     | `Resize {column} column`                 | `{column}`   | Headless-label for the column resize handle         |
+| `expandRow`        | `Expand row {row}`                       | `{row}`      | Headless-label for expanding a row                  |
+| `collapseRow`      | `Collapse row {row}`                     | `{row}`      | Headless-label for collapsing a row                 |
+| `selectRow`        | `Select row {row}`                       | `{row}`      | Headless-label for the row selection checkbox       |
 
 ### Fallback rules
 
@@ -217,19 +217,19 @@ Additional components will be added in future releases following the same patter
 
 SoybeanUI splits `ConfigProvider` into a headless layer (`@soybeanjs/headless/config-provider`) that owns locale, direction, tooltip, and message context, and a styled layer (`@soybeanjs/ui`) that owns theme CSS injection, icon rendering, and provider composition (toast / dialog / progress). This mirrors `shadcn/ui`'s headless/styled separation and differs from single-package providers such as Ant Design, Element Plus, MUI, Mantine, and Naive UI.
 
-| Aspect               | SoybeanUI                                                                                   | Ant Design / Element Plus / MUI / Mantine / Naive UI  |
-| :------------------- | :------------------------------------------------------------------------------------------ | :---------------------------------------------------- |
-| Architecture         | headless + styled split, dual `provide/inject` contexts                                     | single package, single ConfigProvider                 |
-| Theme injection      | `createTheme()` from `@soybeanjs/theme` inlined into a `<style id="__SoybeanUI_theme">` tag | CSS variables / theme object / `ConfigProvider.theme` |
-| Dark mode            | `theme.darkSelector` (`'class'` → `.dark`, `'media'` → OS, custom); toggle `.dark` class    | `theme.dark`, `dark-mode` class, `colorScheme`        |
-| RTL                  | `dir` prop + `useDirection`; auto-derived from `locale` with RTL prefix fallback            | `direction` prop, `dir` attribute, theme direction    |
-| i18n                 | `locale` + `messages` overrides; `registerLocale` for additional locales                    | `locale` prop / `LocalizationProvider`                |
-| Provider composition | renders `ToastProvider`, `DialogProvider`, `ProgressProvider` inside the default slot       | separate providers mounted by the user                |
+| Aspect               | SoybeanUI                                                                                                | Ant Design / Element Plus / MUI / Mantine / Naive UI  |
+| :------------------- | :------------------------------------------------------------------------------------------------------- | :---------------------------------------------------- |
+| Architecture         | headless + styled split, dual `provide/inject` contexts                                                  | single package, single ConfigProvider                 |
+| Theme injection      | `buildThemeCss()` (`@soybeanjs/ui` → `@soybeanjs/theme`) written into a `<style id="soybean-theme">` tag | CSS variables / theme object / `ConfigProvider.theme` |
+| Dark mode            | `theme.darkSelector` (`'class'` → `.dark`, `'media'` → OS, custom); toggle `.dark` class                 | `theme.dark`, `dark-mode` class, `colorScheme`        |
+| RTL                  | `dir` prop + `useDirection`; auto-derived from `locale` with RTL prefix fallback                         | `direction` prop, `dir` attribute, theme direction    |
+| i18n                 | `locale` + `messages` overrides; `registerLocale` for additional locales                                 | `locale` prop / `LocalizationProvider`                |
+| Provider composition | renders `ToastProvider`, `DialogProvider`, `ProgressProvider` inside the default slot                    | separate providers mounted by the user                |
 
 ### Runtime cautions
 
-- **SSR**: theme CSS is computed at render time via `createTheme()` from `@soybeanjs/theme` and inlined into the SSR HTML as a `<style id="__SoybeanUI_theme">` tag (no client-only style injection), so the first paint already carries the correct theme. `SIcon` receives `ssr: import.meta.env.SSR` so icon rendering is SSR-safe.
-- **Style tag lifecycle**: the `<style id="__SoybeanUI_theme">` and `<style id="__SoybeanHeadless_Styles">` tags persist in `<head>` for the lifetime of the page. They are reactive — changing the `theme` prop updates the CSS content in place. Unmounting the provider does not remove them (they are global by design).
+- **SSR**: the theme never renders into the component tree — the provider owns a real `<head>` element (`<style id="soybean-theme">`, created at mount or adopted from the first-paint script) and keeps its content in sync, so there is no server/client style-content mismatch. The first paint carries the correct theme because the static default block ships with the UnoCSS preset (zero-specificity `:where()` layers) and the init script applies the persisted snapshot before the browser paints. `SIcon` receives `ssr: import.meta.env.SSR` so icon rendering is SSR-safe.
+- **Style tag lifecycle**: the `<style id="soybean-theme">` (theme) and `<style id="__SoybeanHeadless_Styles">` (headless layer) tags persist in `<head>` for the lifetime of the page. They are reactive — changing the `theme` prop updates the CSS content in place. Unmounting the provider does not remove them (they are global by design).
 - **Locale registration**: only `en` and `zh-CN` are pre-registered. For any other locale (e.g. `ar`, `ja`, `fr`), import the locale file from `@soybeanjs/headless/locale/{code}` and call `registerLocale(...)` once during app setup. Direction (`dir`) falls back to a built-in RTL prefix map (`ar`, `he`, `fa`, `ur`, …) even before a locale is registered, so `locale="ar"` resolves to `dir="rtl"` out of the box.
 - **Nesting**: `SConfigProvider` can be nested. An inner provider overrides the outer context for its subtree. The headless and UI contexts are independent injection keys, so headless-only consumers (e.g. `useDirection`) read the headless context while UI consumers (e.g. `SIcon` iconify defaults) read the UI context.
 
@@ -237,8 +237,8 @@ SoybeanUI splits `ConfigProvider` into a headless layer (`@soybeanjs/headless/co
 
 The theme is persisted in `localStorage` only (no cookie). A client-only style injection would apply the saved theme only after hydration, flashing the default theme on refresh. `@soybeanjs/theme` ships an SSR-safe init script (under the `@soybeanjs/theme/ssr` subpath) that applies the saved theme before first paint:
 
-- **`createThemeInitScript()`** — returns a small IIFE to inline in `<head>`. Before first paint it reads the stored config from `localStorage`, sets `data-theme="<base>-<primary>"` and the dark-mode class on `<html>`. The server renders the default theme; the script corrects it before the browser paints, so there is no flash.
-- **`getStoredThemeConfig()` / `setStoredThemeConfig()` / `removeStoredThemeConfig()`** — explicit persistence helpers (under the `@soybeanjs/theme/storage` subpath).
+- **`createThemeInitScript()`** — returns a small IIFE to inline in `<head>`. Before first paint it reads the theme envelope from `localStorage`, toggles the dark class on `<html>` (resolving `mode: 'auto'` against `prefers-color-scheme`), sets `color-scheme`, and patches the snapshot into the `<style id="soybean-theme">` element. The server renders the default theme; the script corrects it before the browser paints, so there is no flash. A payload written by an older vocabulary is migrated on read, and its snapshot (engine output of that older vocabulary) is dropped — the provider re-emits it on mount.
+- **`readThemeEnvelope()` / `writeThemeEnvelope()` / `clearThemeEnvelope()`** — explicit persistence helpers, plus `parseThemeEnvelope()` (validate/migrate a raw string), `parseThemeOptions()` (validate just the options) and `createThemeWriter()` (the debounced single writer) — all under the `@soybeanjs/theme/storage` subpath.
 
 In Nuxt the wiring is minimal:
 
@@ -283,7 +283,7 @@ Wrap your application root once, typically in `App.vue` or the root layout. It m
 Import the locale file and register it once: `registerLocale(ar)` (full registry form) or `registerLocale('custom', messages)` (shorthand form). Then pass `locale="ar"` (or your custom key) to `SConfigProvider`. See the "Loading another supported locale" section above.
 
 **How does dark mode work?**
-`createTheme` always generates both light and dark CSS variable sets. The `theme.darkSelector` option controls how the dark set is scoped: `'class'` (default) emits the dark variables under a `.dark` selector, `'media'` emits them under `@media (prefers-color-scheme: dark)`, and any custom string is used verbatim as the selector. With the default `'class'` selector, toggle a `.dark` class on `<html>` (or any ancestor) to switch to dark mode; with `'media'`, the theme follows the user's OS preference automatically.
+The engine always generates both light and dark CSS variable sets. The `theme.darkSelector` option controls how the dark set is scoped: `'class'` (default) emits the dark variables under a `.dark` selector, `'media'` emits them under `@media (prefers-color-scheme: dark)`, and any custom string is used verbatim as the selector. With the default `'class'` selector, toggle a `.dark` class on `<html>` (or any ancestor) to switch to dark mode; with `'media'`, the theme follows the user's OS preference automatically.
 
 **Can I nest `SConfigProvider` instances?**
 Yes. Nesting is supported — the inner provider's context overrides the outer for its subtree. This is useful for embedding an RTL section inside an LTR app, or a differently-themed micro-frontend.

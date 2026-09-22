@@ -7,7 +7,7 @@ export const kbdVariants = cv({
   variants: {
     variant: {
       solid: 'border-muted-foreground bg-muted-foreground text-muted shadow-muted-foreground/50',
-      outline: 'border-border bg-background text-muted-foreground shadow-border',
+      outline: 'border-border bg-card text-muted-foreground shadow-border',
       ghost: 'border-border bg-muted text-muted-foreground shadow-border/50'
     },
     size: {
