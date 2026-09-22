@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useTemplateRef, watch } from 'vue';
-import { codeToHtml } from 'shiki';
+import { highlightToHtml } from '~/shared/highlight';
 
 interface Props {
   code: string;
@@ -11,14 +11,7 @@ const props = defineProps<Props>();
 const wrapper = useTemplateRef('wrapper');
 
 async function renderCode() {
-  const html = await codeToHtml(props.code, {
-    lang: 'ts',
-    defaultColor: false,
-    themes: {
-      light: 'one-light',
-      dark: 'one-dark-pro'
-    }
-  });
+  const html = await highlightToHtml(props.code, 'ts');
 
   if (wrapper.value) {
     wrapper.value.innerHTML = html;

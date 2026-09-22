@@ -2,8 +2,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'ubean';
 import UiResolver from '../../packages/ui/src/resolver';
+import { SHIKI_THEMES } from './src/shared/shiki-config';
 import { collectPrerenderRoutes } from './build/docs-routes';
-import { SHIKI_THEMES, createMarkdownHighlight } from './build/highlight';
+import { createMarkdownHighlight } from './build/highlight';
 
 const rootDir = path.dirname(fileURLToPath(import.meta.url));
 

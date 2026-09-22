@@ -1,26 +1,6 @@
 import { createHighlighter } from 'shiki';
 import { encodeBase64Utf8 } from '../src/shared/encode';
-
-/** shiki languages preloaded for docs code fences (unknown langs fall back to `text`). */
-const SHIKI_LANGS = [
-  'vue',
-  'ts',
-  'tsx',
-  'js',
-  'jsx',
-  'bash',
-  'json',
-  'jsonc',
-  'html',
-  'css',
-  'scss',
-  'yaml',
-  'markdown',
-  'text'
-];
-
-/** Dual-theme pair mirrored in `markdown.theme`; `defaultColor: false` emits --shiki-light/--shiki-dark css vars consumed by src/styles/global.css. */
-export const SHIKI_THEMES = { light: 'one-light', dark: 'one-dark-pro' } as const;
+import { SHIKI_LANGS, SHIKI_THEMES } from '../src/shared/shiki-config';
 
 /** markdown-it `highlight` hook signature (`str`, `lang`, `attrs`). */
 export type HighlightCode = (code: string, lang: string) => string;
@@ -33,11 +13,15 @@ export type HighlightCode = (code: string, lang: string) => string;
  * site used via @shikijs/markdown-exit). `codeToHtml` is sync once the
  * highlighter exists, so callers may top-level await this factory and then
  * use the returned hook synchronously.
+ *
+ * Runs in Node during SSG, so the bundled entry is fine here: its grammars and
+ * themes are only ever loaded on the build side and never reach the client
+ * bundle (see src/shared/highlight.ts for the browser-side counterpart).
  */
 export async function createMarkdownHighlight(): Promise<HighlightCode> {
   const highlighter = await createHighlighter({
     themes: Object.values(SHIKI_THEMES),
-    langs: SHIKI_LANGS
+    langs: [...SHIKI_LANGS]
   });
   const loadedLanguages = highlighter.getLoadedLanguages();
 
