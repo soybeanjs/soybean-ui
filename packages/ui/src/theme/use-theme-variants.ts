@@ -59,7 +59,7 @@ export interface UseThemeVariantsReturn {
   derived: ComputedRef<Record<SemanticToken, string>>;
   /** a writable ref bound to the override for a token key. */
   getOverride: (key: SemanticToken) => WritableComputedRef<string>;
-  /** merge rule: override wins when present, otherwise falls back to derived. */
+  /** merge rule: override wins when present, otherwise falls back to derived (`token.*` refs resolve to a colour form for the picker). */
   final: ComputedRef<Record<SemanticToken, ColorValue>>;
   /** whether the active mode has any explicit override. */
   hasOverrides: ComputedRef<boolean>;
@@ -210,8 +210,16 @@ export function useThemeVariants(options: UseThemeVariantsOptions): UseThemeVari
     (settings.state.value.overrides?.[mode.value] as Record<string, string> | undefined)?.[key] ?? '';
 
   const final = computed<Record<SemanticToken, ColorValue>>(() => {
+    // `token.*` 引用在引擎里已解析；面板选择器只吃 ColorValue，所以这里用
+    // 同一映射表的 valueRef 展示，而不是把 `token.primary` 字面量塞进 picker。
+    const map = resolveThemeMap(settings.resolved.value);
+
     const result = ALL_TOKENS.reduce<Partial<Record<SemanticToken, string>>>((acc, meta) => {
-      acc[meta.key] = overrideOf(meta.key) || derived.value[meta.key];
+      const raw = overrideOf(meta.key);
+
+      acc[meta.key] = raw.startsWith('token.')
+        ? valueRef(map[mode.value][meta.key] as TokenValue)
+        : raw || derived.value[meta.key];
 
       return acc;
     }, {});

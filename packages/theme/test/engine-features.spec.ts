@@ -226,6 +226,103 @@ describe('overrides win outright', () => {
   });
 });
 
+describe('token reference overrides', () => {
+  it('copies the target token value at resolve time', () => {
+    const options = {
+      base: 'zinc',
+      primary: 'indigo',
+      overrides: { light: { primary: 'violet.700', ring: 'token.primary', 'sidebar-primary': 'token.primary' } }
+    } as const;
+    const map = resolveThemeMap(options);
+    const primary = { kind: 'palette', palette: 'violet', level: 700 } as const;
+
+    expect(map.light.primary).toEqual(primary);
+    expect(map.light.ring).toEqual(primary);
+    expect(map.light['sidebar-primary']).toEqual(primary);
+    // 发射仍是通道/调色板引用，不是 `var(--primary)` 链——与颜色覆盖同一形态
+    expect(emitThemeCss(map)).toContain('--ring: var(--violet-700);');
+    expect(emitThemeCss(map)).toContain('--sidebar-primary: var(--violet-700);');
+    expect(resolveTokenColor(options, 'ring', 'light')).toBe(resolveTokenColor(options, 'primary', 'light'));
+  });
+
+  it('follows a chain of references to a non-reference end', () => {
+    const options = {
+      overrides: { light: { primary: 'zinc.800', ring: 'token.sidebar-ring', 'sidebar-ring': 'token.primary' } }
+    } as const;
+    const map = resolveThemeMap(options);
+    const expected = { kind: 'palette', palette: 'zinc', level: 800 } as const;
+
+    expect(map.light['sidebar-ring']).toEqual(expected);
+    expect(map.light.ring).toEqual(expected);
+  });
+
+  it('ignores self-references the same way as any other invalid value', () => {
+    // 自引用不是环的特例开关：与 `zinc.999` / `token.ghost` 一样，丢弃并保留名义值
+    const options = { overrides: { light: { primary: 'token.primary', ring: 'token.ghost' } } } as never;
+    const css = emitThemeCss(resolveThemeMap(options));
+
+    expect(css).toContain('--primary: var(--indigo-500);');
+    expect(css).toContain('--ring: var(--indigo-500);');
+    expect(resolveTokenColor(options, 'primary', 'light')).toBe('hsl(238.7 83.5% 66.7%)');
+  });
+
+  it('drops every token in a reference cycle', () => {
+    const options = {
+      overrides: { light: { border: 'token.input', input: 'token.border' } }
+    } as const;
+    const map = resolveThemeMap(options);
+    const nominalBorder = { kind: 'palette', palette: 'zinc', level: 200 } as const;
+
+    expect(map.light.border).toEqual(nominalBorder);
+    expect(map.light.input).toEqual(nominalBorder);
+    // 名义 alpha 不变（环上没有可拷贝的目标）
+    expect(map.alpha.border.light).toBe(1);
+    expect(map.alpha.input.light).toBe(1);
+    expect(map.alpha.input.dark).toBe(0.15);
+  });
+
+  it('copies the alpha companion when both ends own one', () => {
+    const options = {
+      overrides: { light: { border: 'oklch(100% 0 0 / 0.1)', input: 'token.border' } }
+    } as const;
+    const map = resolveThemeMap(options);
+    const css = emitThemeCss(map);
+
+    expect(map.light.input).toEqual(map.light.border);
+    expect(map.alpha.border.light).toBe(0.1);
+    expect(map.alpha.input.light).toBe(0.1);
+    expect(css).toContain('--input-alpha: 0.1;');
+    expect(resolveTokenColor(options, 'input', 'light')).toBe('hsl(180 100% 100% / 0.1)');
+  });
+
+  it('adopts the target design alpha when the target has no colour override', () => {
+    // dark 下 border 设计 alpha 0.1、input 是 0.15：引用后两者必须同浓度
+    const map = resolveThemeMap({ overrides: { dark: { input: 'token.border' } } });
+
+    expect(map.alpha.border.dark).toBe(0.1);
+    expect(map.alpha.input.dark).toBe(0.1);
+    expect(map.dark.input).toEqual(map.dark.border);
+  });
+
+  it('keeps the source alpha rules when the target owns no companion', () => {
+    const map = resolveThemeMap({ overrides: { light: { input: 'token.primary' } } });
+
+    expect(map.light.input).toEqual(map.light.primary);
+    // 非 alpha 目标不传染浓度：input 仍走自己的 ALPHA_RULES
+    expect(map.alpha.input.light).toBe(1);
+    expect(map.alpha.input.dark).toBe(0.15);
+  });
+
+  it('ignores reference values outside the token contract', () => {
+    const options = { overrides: { light: { ring: 'token.ghost', sidebar: 'token.' } } } as never;
+    const map = resolveThemeMap(options);
+    const nominalRing = { kind: 'palette', palette: 'indigo', level: 500 } as const;
+
+    expect(map.light.ring).toEqual(nominalRing);
+    expect(map.light.sidebar).toEqual(map.light.background);
+  });
+});
+
 describe('emission options', () => {
   const map = resolveThemeMap({ base: 'zinc', primary: 'indigo' });
 

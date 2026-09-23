@@ -177,8 +177,19 @@ export type FeedbackSchemeKey = string;
  */
 export type ColorValue = HSLColor | OKLCHColor | SimplePaletteKey | TailwindPaletteLevelColorKey;
 
-/** a semantic token override value — the same vocabulary as `ColorValue`. */
-export type TokenOverride = ColorValue;
+/**
+ * a semantic-token reference form used by overrides: `token.primary` /
+ * `token.background` …
+ *
+ * Resolved at map-build time by **copying** the target token's `TokenValue`
+ * (and, when both ends own one, the alpha companion). A self-reference or a
+ * cycle is an invalid override value and is dropped the same way as any other
+ * unrepresentable value — the nominal token stays in place.
+ */
+export type TokenRef = `token.${SemanticToken}`;
+
+/** a semantic token override value: a color vocabulary, or a token reference. */
+export type TokenOverride = ColorValue | TokenRef;
 
 /** inline overrides applied on top of the resolved tokens (highest priority). */
 export interface ThemeOverrides {

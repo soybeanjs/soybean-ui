@@ -71,6 +71,7 @@ FEEDBACK_SCHEMES / DEFAULT_OPTIONS / THEME_SIZE / THEME_RADIUS / THEME_SPACING /
 LITERAL_DEFAULTS / literalTokens({ size, radius, spacingUnit, prefix }) / SPACING_RUNGS / RADIUS_RUNG_KEYS
 SPACING_GRID / SPACING_GRID_COEFFICIENTS / resolveSpacingValue / isThemeSpacing
 valueRef(value) / isPaletteLevelRef(ref) / isSemanticToken(name)   // 显示引用 / 引用校验 / 契约成员判定
+// TokenOverride = ColorValue | `token.${SemanticToken}`           // 覆盖可引用另一语义 token（解析期拷贝）
 
 // 运行时
 readThemeEnvelope() / writeThemeEnvelope() / clearThemeEnvelope() / createThemeWriter()   // @soybeanjs/theme/storage
@@ -408,7 +409,8 @@ cd packages/theme && pnpm exec vitest run -u   # 有意识地更新映射快照
 - 每个语义 token 是**一条对调色板级别的引用**（`--background: var(--zinc-50)`），因此别名块极小（gzip 1.2 KB）且切换主题只是换引用。
 - 暗色块**只写与亮色不同的 token**（差异裁剪）：159 条声明里亮色 126、暗色差异 33。
 - 颜色 override 会被编码成**通道**（`hsl(var(--x) / <alpha>)` 的消费形态要求如此），值内 alpha 落到伴生变量；无法表达的值被忽略并保留名义值。
-- 校验：`overrides` 的 key 必须是契约成员，值必须是成员表内的 `palette.level` / 简单键，或能被 colord 解析的完整色。
+- **token 引用**：`TokenOverride` 还接受 `token.${SemanticToken}`（如 `ring: 'token.primary'`）。解析在映射表内完成——**拷贝目标 token 的 `TokenValue`**（两端都有 alpha 伴生时一并拷贝浓度），不发射 `var(--other)` 链。颜色值先落地，引用后落地，因此 `primary` 被覆盖后 `ring: 'token.primary'` 拿到的是覆盖后的值；链上任一环是环（含自引用）则整条引用无效。
+- 校验：`overrides` 的 key 必须是契约成员，值必须是成员表内的 `palette.level` / 简单键、能被 colord 解析的完整色，或指向契约成员的 `token.*` 引用；**自引用、未知 token 名、成环引用与其它非法值一样被忽略并保留名义值**。
 
 ### 4.3 为什么没有对比度护栏
 

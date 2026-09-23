@@ -101,9 +101,9 @@ export function useThemeSettings(options: UseThemeSettingsOptions = {}): UseThem
    * set or clear one override value.
    *
    * The value stays a plain `string`: this layer deliberately does not encode the
-   * `ColorValue` vocabulary (`stone.950` / `oklch(...)` / `white` …), because the
-   * values come from pickers and inputs, and the engine's own parser decides what
-   * a value means. The write therefore asserts into the narrower
+   * `TokenOverride` vocabulary (`stone.950` / `oklch(...)` / `white` / `token.primary` …),
+   * because the values come from pickers and inputs, and the engine's own parser
+   * decides what a value means. The write therefore asserts into the narrower
    * `ThemeOverrides` — validation lives in `parseOverrides`, not here.
    */
   const setOverride = (mode: 'light' | 'dark', key: string, value: string): void => {

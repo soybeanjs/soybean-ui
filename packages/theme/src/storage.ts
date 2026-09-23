@@ -154,10 +154,10 @@ function migrateTokenKey(key: string, version: number): SemanticToken | undefine
  * re-key a `token → value` record into the current vocabulary, values untouched.
  *
  * Only non-empty string values survive: this layer deliberately does not encode
- * the `ColorValue` vocabulary (`stone.950` / `oklch(...)` / …) — `parseOverride`
- * in the pipeline decides what a value means, and an unrecognised complete color
- * is still emitted as-is, so an envelope written before the type was narrowed
- * keeps working.
+ * the override vocabulary (`stone.950` / `oklch(...)` / `token.primary` / …) —
+ * `parseOverride` / `applyOverrides` in the pipeline decide what a value means,
+ * and an unrecognised complete color is still emitted as-is, so an envelope
+ * written before the type was narrowed keeps working.
  */
 function migrateTokenRecord(side: unknown, version: number): Record<string, string> | undefined {
   if (!isRecord(side)) {

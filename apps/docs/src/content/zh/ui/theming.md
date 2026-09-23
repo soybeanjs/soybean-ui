@@ -61,7 +61,7 @@ import { SConfigProvider } from '@soybeanjs/ui';
 | `radius`        | `2xs` … `2xl`，或长度                                                      | `'md'`      | 圆角**种子**：七档都是 `calc(var(--radius) * k)`，改种子即整条刻度一起变。                |
 | `spacing`       | `compact` / `default` / `relaxed` / `spacious`，或倍率（0 < k ≤ 4）        | `'default'` | 间距网格单位（`--spacing-unit`）：内外边距与 gap 工具类都是它的系数。                     |
 | `borderOpacity` | 数字（0 – 1）                                                              | `1`         | 缩放装饰性发丝线的 alpha（`--border-alpha` / `--input-alpha`）；不作用于 `--mask-alpha`。 |
-| `overrides`     | `{ light?: { [token]: ColorValue }, dark?: … }`                            | —           | 逐 token、逐模式的覆盖——最锋利的工具，见下。                                              |
+| `overrides`     | `{ light?: { [token]: TokenOverride }, dark?: … }`                         | —           | 逐 token、逐模式的覆盖——最锋利的工具，见下。可含 `token.*` 引用。                         |
 | `preset`        | 内联的 `{ light, dark }` 颜色集，或 `{ name }` 引用一个已保存的 preset     | —           | 可复用的颜色集；进入引擎前会被解析成 `overrides`。                                        |
 | `prefix`        | `false` / 字符串                                                           | `false`     | 给每个变量加命名空间（`--acme-background`）。只有页面内并存另一套设计系统时才需要。       |
 | `format`        | `'hsl'` / `'oklch'`                                                        | `'hsl'`     | 调色板层的通道格式（语义层只存引用，与格式无关）。                                        |
@@ -114,9 +114,9 @@ import { SConfigProvider } from '@soybeanjs/ui';
 </template>
 ```
 
-键就是 **token 名**（`background`、`card-foreground`、`sidebar-ring` …）——与工具类同名，kebab 写法。取值有四种形态（`ColorValue` 类型）：`palette.level` 引用（`stone.950`）、简单键（`white` / `black`），或 CSS Color 4 语法的 `hsl(...)` / `oklch(...)`（可带 `/ <alpha>`）。颜色分量一律带 `%`——`hsl(238.732 83.529% 66.667%)`、`oklch(60% 0.2 250)`——不用无单位写法（必须与调色板层的通道保持同一种形状）。裸通道三元组（`0 0% 100%`）与 hex / `rgb()` 不在类型内：前者格式有歧义，后者请先用 `colord(...).toHslString()` / `toOklchString()` 转换。
+键就是 **token 名**（`background`、`card-foreground`、`sidebar-ring` …）——与工具类同名，kebab 写法。取值有五种形态（`TokenOverride`）：`palette.level` 引用（`stone.950`）、简单键（`white` / `black`）、CSS Color 4 语法的 `hsl(...)` / `oklch(...)`（可带 `/ <alpha>`），以及 **token 引用** `token.${name}`（如 `ring: 'token.primary'`——解析时拷贝目标 token 的值，颜色覆盖先于引用落地）。颜色分量一律带 `%`——`hsl(238.732 83.529% 66.667%)`、`oklch(60% 0.2 250)`——不用无单位写法（必须与调色板层的通道保持同一种形状）。裸通道三元组（`0 0% 100%`）与 hex / `rgb()` 不在类型内：前者格式有歧义，后者请先用 `colord(...).toHslString()` / `toOklchString()` 转换。
 
-**完整色会被编码成本主题格式的通道**（token 的消费形态是 `hsl(var(--soybean-x) / <alpha>)`，直接塞完整色会让每条声明失效）：写 `border: 'oklch(100% 0 0 / 0.1)'` 时通道进 `--border`、`0.1` 进 `--border-alpha`。没有伴生变量的 token 里写的 alpha 会被丢弃（透明度请用工具类的 `/N` 修饰符）。既不是合法引用、也无法解析的值（`transparent` / `inherit` / 未知色板）会被**忽略**，该 token 保留名义值；**不是 token 的键同样被忽略**——陈旧或手写的键既进不了样式表，也不会把样式表弄坏。
+**完整色会被编码成本主题格式的通道**（token 的消费形态是 `hsl(var(--soybean-x) / <alpha>)`，直接塞完整色会让每条声明失效）：写 `border: 'oklch(100% 0 0 / 0.1)'` 时通道进 `--border`、`0.1` 进 `--border-alpha`。没有伴生变量的 token 里写的 alpha 会被丢弃（透明度请用工具类的 `/N` 修饰符）。既不是合法引用、也无法解析的值（`transparent` / `inherit` / 未知色板 / **自引用 `token.primary` 写在 `primary` 上** / `token.ghost` / 成环的 `token.*` 链）会被**忽略**，该 token 保留名义值；**不是 token 的键同样被忽略**——陈旧或手写的键既进不了样式表，也不会把样式表弄坏。
 
 **注意事项：**
 

@@ -206,6 +206,34 @@ function buildLiterals(options: ThemeOptions): Record<LiteralToken, string> {
 }
 
 /**
+ * whether an override value is the `token.${name}` reference form (docs/theme.md §4.2).
+ */
+function isTokenRefForm(value: string): boolean {
+  return value.startsWith('token.');
+}
+
+/**
+ * parse a `token.${name}` reference into the target semantic token, or
+ * `undefined` when the name is outside the contract (`token.ghost`).
+ *
+ * A **self-reference** (`token.primary` on `primary`) is rejected here so it
+ * never becomes a map entry — same path as any other unrepresentable value.
+ */
+function parseTokenRef(value: string, source: SemanticToken): SemanticToken | undefined {
+  if (!isTokenRefForm(value)) {
+    return undefined;
+  }
+
+  const name = value.slice('token.'.length);
+
+  if (!isSemanticToken(name) || name === source) {
+    return undefined;
+  }
+
+  return name as SemanticToken;
+}
+
+/**
  * parse an override value into a token value, or `undefined` when the value is
  * not part of the vocabulary (`ColorValue`, docs/theme.md §4.2).
  *
@@ -217,6 +245,8 @@ function buildLiterals(options: ThemeOptions): Record<LiteralToken, string> {
  *   into channels at emission time — a token is
  *   consumed as `hsl(var(--soybean-x) / <alpha>)`, so emitting a complete color
  *   verbatim makes every one of those declarations invalid;
+ * - `token.${name}` never reaches this function (handled as a reference in
+ *   `applyOverrides`);
  * - anything else (malformed refs, unparseable colors) is ignored: leaving the
  *   nominal value in place is the only non-destructive option, and the
  *   alternative — emitting a dangling `var(--…)` — is a silent failure.
@@ -236,15 +266,48 @@ function parseOverride(value: string): TokenValue | undefined {
 }
 
 /**
+ * follow a chain of `token.*` references to its non-reference end, or
+ * `undefined` when the chain closes on itself (self-ref is already filtered;
+ * this catches multi-token cycles).
+ */
+function resolveRefTarget(
+  start: SemanticToken,
+  refMap: ReadonlyMap<SemanticToken, SemanticToken>
+): SemanticToken | undefined {
+  const visited = new Set<SemanticToken>([start]);
+  let current = start;
+
+  for (;;) {
+    const nextHop = refMap.get(current);
+
+    if (nextHop === undefined) {
+      return current;
+    }
+
+    if (visited.has(nextHop)) {
+      return undefined;
+    }
+
+    visited.add(nextHop);
+    current = nextHop;
+  }
+}
+
+/**
  * apply explicit overrides on top of the declared map.
  *
  * An override is user intent and wins outright — with the guard gone there is
  * nothing to correct it against, and nothing to report either (a theme either
  * declares readable levels or it does not, docs/theme.md §4.3).
+ *
+ * Two passes: colour values first, then `token.*` references (snapshot copy of
+ * the target's `TokenValue`). Invalid refs — unknown name, self-reference, or a
+ * cycle — are dropped so the nominal (or colour-overridden) value stays.
  */
 function applyOverrides(
   map: Record<SemanticToken, TokenValue>,
-  overrides: Partial<Record<SemanticToken, string>> | undefined
+  overrides: Partial<Record<SemanticToken, string>> | undefined,
+  mode: ThemeMode
 ): {
   map: Record<SemanticToken, TokenValue>;
   alpha: Partial<Record<AlphaToken, number>>;
@@ -274,13 +337,17 @@ function applyOverrides(
    */
   const isAlphaToken = (token: string): boolean => (ALPHA_TOKENS as readonly string[]).includes(token);
 
+  const refEntries = entries
+    .map(([token, value]) => [token, parseTokenRef(value, token)] as const)
+    .filter((entry): entry is readonly [SemanticToken, SemanticToken] => entry[1] !== undefined);
+  const colourEntries = entries.filter(([, value]) => !isTokenRefForm(value));
+
   const overridden = Object.fromEntries(
-    entries
+    colourEntries
       .map(([token, value]) => [token, parseOverride(value)] as const)
       .filter((entry): entry is readonly [SemanticToken, TokenValue] => entry[1] !== undefined)
       .filter(([token, value]) => value.kind !== 'color' || isAlphaToken(token) || (colorAlpha(value.value) ?? 1) > 0)
   ) as Partial<Record<SemanticToken, TokenValue>>;
-  const next = { ...map, ...overridden };
 
   /**
    * An override that targets the border family and carries its own alpha
@@ -289,14 +356,48 @@ function applyOverrides(
    * documented `border` override in the theming guide means. Without the patch
    * the transparency would be silently dropped.
    */
-  const alpha = Object.fromEntries(
-    entries
+  const directAlpha = Object.fromEntries(
+    colourEntries
       .filter(([token]) => isAlphaToken(token))
       .map(([token, value]) => [token, colorAlpha(value)] as const)
       .filter((entry): entry is readonly [AlphaToken, number] => entry[1] !== undefined && entry[1] < 1)
   ) as Partial<Record<AlphaToken, number>>;
 
-  return { map: next, alpha };
+  const refMap = new Map(refEntries);
+  const resolvedRefs = refEntries.flatMap(([source]) => {
+    const target = resolveRefTarget(source, refMap);
+    const value = target === undefined ? undefined : (overridden[target] ?? map[target]);
+
+    return value === undefined ? [] : ([[source, value]] as const);
+  });
+
+  /**
+   * When the source owns an alpha companion, the ref copies the target's
+   * effective alpha (explicit colour override, else the target's design rule).
+   * A non-alpha target leaves the source on its own `ALPHA_RULES` default —
+   * `input: 'token.primary'` must not inherit mask/border concentration by
+   * accident.
+   */
+  const refAlpha = refEntries.flatMap(([source]) => {
+    if (!isAlphaToken(source)) {
+      return [];
+    }
+
+    const target = resolveRefTarget(source, refMap);
+
+    if (target === undefined || !isAlphaToken(target)) {
+      return [];
+    }
+
+    const alpha = target in directAlpha ? directAlpha[target as AlphaToken] : ALPHA_RULES[target as AlphaToken][mode];
+
+    return alpha === undefined ? [] : ([[source, alpha]] as const);
+  });
+
+  return {
+    map: { ...map, ...overridden, ...Object.fromEntries(resolvedRefs) },
+    alpha: { ...directAlpha, ...Object.fromEntries(refAlpha) }
+  };
 }
 
 /**
@@ -329,7 +430,8 @@ export function resolveThemeMap(options: ThemeOptions = {}): ThemeMap {
 
     const overridden = applyOverrides(
       requireComplete(mirrored),
-      mode === 'light' ? options.overrides?.light : options.overrides?.dark
+      mode === 'light' ? options.overrides?.light : options.overrides?.dark,
+      mode
     );
 
     return { map: overridden.map, alpha: overridden.alpha };
