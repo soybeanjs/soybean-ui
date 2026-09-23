@@ -24,6 +24,7 @@ import type {
   ThemeSize,
   ThemeSpacing
 } from '@soybeanjs/theme';
+import { themeCustomizerVariants } from '@/styles/theme-customizer';
 import { useThemeSettings } from '@/theme/use-theme-settings';
 import { useThemeVariants } from '@/theme/use-theme-variants';
 import SButton from '../button/button.vue';
@@ -54,6 +55,9 @@ const props = withDefaults(defineProps<ThemeCustomizerProps>(), {
   persist: true,
   showActions: true
 });
+
+// —— 外壳样式：单一 recipe 出全部 slot，`ui.root` 是外层盒子的唯一出口 ——
+const ui = computed(() => themeCustomizerVariants({}, props.ui, { root: props.class }));
 
 // —— 文案国际化：跟随 ConfigProvider.locale，切换语言即时刷新 ——
 const { resolveLabel: resolveBaseLabel, resolveOption } = useThemeCustomizerLocale();
@@ -225,6 +229,17 @@ const fontArms = computed(() =>
 const selectFontArm = (table: Record<string, string | undefined>, arm: keyof ThemeFont, key: string): void =>
   setFontArm(arm, toFontFamily(table, key));
 
+/** 模板绑定：把某一臂的选中值转交给 `selectFontArm`（避免在 template 里写闭包）。 */
+const onFontArmChange =
+  (item: { table: Record<string, string | undefined>; arm: keyof ThemeFont }) =>
+  (key: string): void =>
+    selectFontArm(item.table, item.arm, key);
+
+/** 模板绑定：边框浓度滑块（0 – 100 的百分数 → 0 – 1）。 */
+const onBorderOpacityChange = (values: number[]): void => {
+  borderOpacityValue.value = (values[0] ?? 0) / 100;
+};
+
 // —— 编辑分片：custom（variant 分组）独立选择 light/dark ——
 const customMode = ref<'light' | 'dark'>('light');
 
@@ -240,18 +255,27 @@ const setVariant = (key: SemanticToken, value: string): void => {
   settings.setOverride(customMode.value, key, value);
 };
 
+/** 模板绑定：某个 variant token 的 override 写回。 */
+const onVariantChange =
+  (key: SemanticToken) =>
+  (value: string): void =>
+    setVariant(key, value);
+
 // —— 顶层 Tabs：Theme（常规设置） / Custom（高级自定义）——
 // Custom 同步挂载约 41 个 SPalettePicker（各含完整 SSelect），单帧全量 mount 会卡顿：
 // 1) unmountOnHide=false：来回切换不再卸载重建；
 // 2) 按组分帧挂载：首屏只出第一组，其余 rAF 追加；
 // 3) 进入 Custom 前先触发 derived（resolveThemeMap），避免与 mount 挤在同一帧。
-const mainTab = ref<'theme' | 'custom'>('theme');
+const sectionVisible = (section: ThemeCustomizerSection): boolean => props.sections.includes(section);
+
+type MainTab = 'theme' | 'custom';
+
+const mainTab = ref<MainTab>('theme');
+
 const mainTabs = computed<TabsOptionData[]>(() => [
   { label: resolveLabel('theme'), value: 'theme' },
   { label: resolveLabel('custom'), value: 'custom' }
 ]);
-
-const sectionVisible = (section: ThemeCustomizerSection): boolean => props.sections.includes(section);
 
 const mountedGroupCount = shallowRef(0);
 let groupMountFrame = 0;
@@ -328,21 +352,18 @@ watch(
 </script>
 
 <template>
-  <div class="min-w-80 max-h-[70vh] flex flex-col gap-3">
+  <div data-soybean-theme-customizer :class="ui.root">
     <!-- 顶层 Tabs：Theme（常规设置） / Custom（高级自定义） -->
     <STabs
       v-model="mainTab"
       :items="mainTabs"
       :size="size"
       :unmount-on-hide="false"
-      :ui="{
-        root: 'grow overflow-auto',
-        content: 'overflow-auto'
-      }"
+      :ui="{ root: ui.tabs, content: ui.content }"
     >
       <template #content="{ value: mainValue }">
         <!-- Theme 面板：常规设置 + levels -->
-        <div v-if="mainValue === 'theme'" class="space-y-4 p-2">
+        <div v-if="mainValue === 'theme'" :class="ui.panel">
           <!-- mode -->
           <SectionItem v-if="sectionVisible('mode')" :title="resolveLabel('mode')">
             <ThemeModeSelect class="w-35" />
@@ -385,7 +406,7 @@ watch(
                 :model-value="item.value"
                 :items="item.options"
                 class="w-50"
-                @update:model-value="key => selectFontArm(item.table, item.arm, key)"
+                @update:model-value="onFontArmChange(item)"
               />
             </SectionItem>
           </SectionItem>
@@ -414,7 +435,7 @@ watch(
                 :max="100"
                 :step="5"
                 class="w-full"
-                @update:model-value="value => (borderOpacityValue = value[0] / 100)"
+                @update:model-value="onBorderOpacityChange"
               />
               <span class="w-10 shrink-0 text-right text-xs text-muted-foreground">
                 {{ Math.round(borderOpacityValue * 100) }}%
@@ -429,7 +450,7 @@ watch(
         </div>
 
         <!-- Custom 面板：各 variant 分组平铺，独立选择 light/dark 分片 -->
-        <div v-else class="space-y-4 p-2">
+        <div v-else :class="ui.panel">
           <template v-if="sectionVisible('advanced')">
             <div class="flex justify-between items-center">
               <span class="text-xs font-medium text-foreground">{{ resolveLabel('cssVars') }}</span>
@@ -444,7 +465,7 @@ watch(
                   :size="size"
                   :model-value="variants.final.value[meta.key]"
                   class="w-40"
-                  @update:model-value="value => setVariant(meta.key, value)"
+                  @update:model-value="onVariantChange(meta.key)"
                 />
               </div>
             </section>
@@ -454,7 +475,7 @@ watch(
     </STabs>
 
     <!-- actions -->
-    <section v-if="showActions" class="shrink-0 space-y-3 border-t pt-4">
+    <section v-if="showActions" :class="ui.actions">
       <SButton :size="size" color="destructive" variant="outline" class="w-full" @click="settings.reset">
         {{ resolveLabel('reset') }}
       </SButton>

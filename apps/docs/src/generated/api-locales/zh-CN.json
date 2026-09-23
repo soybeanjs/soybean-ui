@@ -14175,10 +14175,12 @@
             "persist": "是否将更改保存到存储中。",
             "sections": "要显示的章节（默认显示全部）。",
             "showactions": "是否显示底部操作行（保存预设/重置）。",
-            "size": "传递给底层控件的大小。"
+            "size": "传递给底层控件的大小。",
+            "ui": ""
           },
           "props": "ThemeCustomizer 组件的属性。\n\n一个可在真实应用中复用的主题设置主体。它不拥有任何容器\n（弹出框 / 抽屉 / 侧边栏）——调用方负责托管并决定其外壳。"
-        }
+        },
+        "themecustomizerui": ""
       },
       "packages_ui_src_components_theme_mode_select_types": {
         "thememodeselectprops": {

@@ -39,7 +39,9 @@ const sectionDescription = (key: string): string => t(`themeEditor.sections.${ke
     <header class="flex flex-wrap items-start justify-between gap-4">
       <div class="min-w-0">
         <h1 class="text-xl font-semibold text-foreground">{{ t('themeEditor.title') }}</h1>
-        <p class="mt-1 max-w-3xl text-sm text-muted-foreground">{{ t('themeEditor.description') }}</p>
+        <p class="mt-1 max-w-3xl text-sm text-muted-foreground">
+          {{ t('themeEditor.description') }}
+        </p>
       </div>
 
       <div class="flex items-center gap-3">
@@ -57,7 +59,7 @@ const sectionDescription = (key: string): string => t(`themeEditor.sections.${ke
                for every visitor whose saved theme is not the default.
 -->
           <ClientOnly>
-            <SThemeCustomizer />
+            <SThemeCustomizer :ui="{ root: 'w-full h-200' }" />
           </ClientOnly>
         </div>
       </aside>

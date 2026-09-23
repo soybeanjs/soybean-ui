@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "ThemeCustomizerProps",
         "type": "Interface ThemeCustomizerProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; sections?: ThemeCustomizerSection[]; size?: ThemeSize; persist?: boolean; showActions?: boolean; labelResolver?: ((key: string) => string) }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<ThemeCustomizerUi>; sections?: ThemeCustomizerSection[]; size?: ThemeSize; persist?: boolean; showActions?: boolean; labelResolver?: ((key: string) => string) }",
         "description": "Properties for the ThemeCustomizer component.\n\nA real-app reusable theme settings body. It does not own any container\n(popover / drawer / sidebar) — the caller hosts it and decides the shell.",
         "descriptionKey": "api.generated.packages_ui_src_components_theme_customizer_types.themecustomizerprops.props",
         "sourcePath": "packages/ui/src/components/theme-customizer/types.ts",
@@ -30,6 +30,31 @@
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
                 "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<ThemeCustomizerUi>",
+            "required": false,
+            "description": "Per-slot class overrides for the component shell.\n\n`ui.root` carries the outer box, so a host can drop the default fixed width\n/ height (`w-96 h-[70vh]`) when it already constrains the surface itself.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_customizer_types.themecustomizerprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/theme-customizer/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeCustomizerUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; content: ClassValue; panel: ClassValue; actions: ClassValue; tabs: ClassValue; }",
+                "resolvedType": null,
+                "description": "the slot-class map of the theme customizer shell.",
+                "descriptionKey": "api.generated.packages_ui_src_components_theme_customizer_types.themecustomizerui",
+                "sourcePath": "packages/ui/src/components/theme-customizer/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],

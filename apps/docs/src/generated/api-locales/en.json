@@ -14175,10 +14175,12 @@
             "persist": "Whether to persist changes to storage.",
             "sections": "The sections to show (defaults to all).",
             "showactions": "Whether to show the bottom action row (save preset / reset).",
-            "size": "The size forwarded to the underlying controls."
+            "size": "The size forwarded to the underlying controls.",
+            "ui": "Per-slot class overrides for the component shell.\n\n`ui.root` carries the outer box, so a host can drop the default fixed width\n/ height (`w-96 h-[70vh]`) when it already constrains the surface itself."
           },
           "props": "Properties for the ThemeCustomizer component.\n\nA real-app reusable theme settings body. It does not own any container\n(popover / drawer / sidebar) — the caller hosts it and decides the shell."
-        }
+        },
+        "themecustomizerui": "the slot-class map of the theme customizer shell."
       },
       "packages_ui_src_components_theme_mode_select_types": {
         "thememodeselectprops": {

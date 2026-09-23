@@ -12,6 +12,8 @@ Soybean UI provides a flexible theming system that allows you to customize the a
 
 Open the [theme editor](/theme-editor) to change every option against a live gallery of components — the panel there is the same `SThemeCustomizer` an application embeds for its users.
 
+`SThemeCustomizer` takes a `ui` slot map (plus `class`) so a host can restyle the shell: `:ui="{ root: 'w-full h-[70vh]' }"` fills a sidebar instead of using the default fixed box.
+
 ## How the theme is built
 
 The theme is **one static palette table plus one dynamic alias table**:
