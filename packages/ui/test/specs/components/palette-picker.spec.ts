@@ -2,13 +2,12 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { nextTick } from 'vue';
 import { DOMWrapper, flushPromises, mount } from '@vue/test-utils';
 import { colord } from '@soybeanjs/colord';
-import { tailwindPalette } from '@soybeanjs/colord/palette';
+import { tailwindPalette, paletteColorLevels } from '@soybeanjs/colord/palette';
 import SColorPicker from '@/components/color-picker/color-picker.vue';
 import SConfigProvider from '@/components/config-provider/config-provider.vue';
 import SPalettePicker from '@/components/palette-picker/palette-picker.vue';
 import {
   DEFAULT_LEVEL,
-  PALETTE_LEVELS,
   deriveNearestLevel,
   deriveSelectValue,
   deriveTailLevel,
@@ -239,7 +238,7 @@ describe('SPalettePicker', () => {
     await enableCustom(wrapper);
 
     const levelButtons = document.body.querySelectorAll('button[aria-label^="level"]');
-    expect(levelButtons.length).toBe(PALETTE_LEVELS.length);
+    expect(levelButtons.length).toBe(paletteColorLevels.length);
 
     // default active level is 500
     expect(levelButtons[5].classList).toContain('ring-primary');
