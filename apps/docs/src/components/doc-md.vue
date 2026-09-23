@@ -10,7 +10,7 @@ interface Props {
   /**
    * The path to the markdown file, relative to `src/content/{locale}/`
    *
-   * @example 'ui/components/button', 'ui/quick-start', 'sbean/index'
+   * @example 'ui/components/button', 'ui/quick-start', 'cli/index'
    */
   path: string;
 }
