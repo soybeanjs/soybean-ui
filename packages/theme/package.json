@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "happy-dom": "^20.14.5",
-    "tsx": "^4.23.13",
+    "tsx": "^4.23.15",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
     "vitest": "5.0.1"
