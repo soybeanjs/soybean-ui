@@ -99,7 +99,7 @@ const overviewMenus = computed<TreeMenuOptionData[]>(() => [
         label: t('sidebar.migration'),
         value: 'migration',
         children: getUpgradeGuides().map(guide => ({
-          label: guide.version,
+          label: guide.label,
           value: guide.docPath.split('/').pop() ?? guide.version,
           to: guide.path
         }))
