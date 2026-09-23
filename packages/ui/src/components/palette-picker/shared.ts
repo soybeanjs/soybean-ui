@@ -1,15 +1,14 @@
 import { colord } from '@soybeanjs/colord';
-import { generateNearestPalette, simplePalette, tailwindPalette, tailwindPaletteKeys } from '@soybeanjs/colord/palette';
+import {
+  generateNearestPalette,
+  paletteColorLevels,
+  simplePalette,
+  tailwindPalette,
+  tailwindPaletteKeys
+} from '@soybeanjs/colord/palette';
 import type { PaletteColorLevel, SimplePaletteKey, TailwindPaletteKey } from '@soybeanjs/colord/palette';
 import type { ColorFormat, ColorValue } from '@soybeanjs/theme';
 import type { PaletteSelectValue } from './types';
-
-/**
- * the palette color levels in ascending order.
- */
-export const PALETTE_LEVELS: readonly PaletteColorLevel[] = [
-  50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950
-] as const;
 
 /**
  * the simple palette keys — taken from colord's own table (same order), so the
@@ -44,7 +43,7 @@ export function parseTailwindValue(value: string): { key: TailwindPaletteKey; le
 
   const numeric = Number(level);
 
-  if (!PALETTE_LEVELS.includes(numeric as PaletteColorLevel)) {
+  if (!paletteColorLevels.includes(numeric as PaletteColorLevel)) {
     return null;
   }
 
