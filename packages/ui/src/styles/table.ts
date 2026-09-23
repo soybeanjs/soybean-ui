@@ -14,7 +14,7 @@ export const tableVariants = scv({
       '[&>tr:last-child>td:first-child]:rounded-bl-[--rounded] [&>tr:last-child>td:last-child]:rounded-br-[--rounded]'
     ],
     footer: `font-medium [&>tr:last-child]:border-b-0 [&>tr]:bg-transparent [&>tr]:hover:bg-transparent [&_td]:bg-transparent`,
-    row: 'bg-card border-b hover:bg-accent transition-colors',
+    row: 'bg-card border-b [&:not([data-empty-row])]:hover:bg-accent transition-colors',
     head: 'box-border bg-accent text-foreground relative font-medium',
     cell: 'box-border data-[fixed]:bg-card',
     fixed: [

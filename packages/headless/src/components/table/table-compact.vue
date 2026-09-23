@@ -230,7 +230,7 @@ defineExpose({
           </TableRow>
         </TableHeader>
         <TableBody v-bind="bodyProps">
-          <TableRow v-if="showEmpty" v-bind="rowProps">
+          <TableRow v-if="showEmpty" v-bind="rowProps" data-empty-row>
             <TableCell :colspan="columnSize" v-bind="cellProps">
               <slot name="empty" :column-size="columnSize" />
             </TableCell>
