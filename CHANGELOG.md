@@ -1,5 +1,20 @@
 # Changelog
 
+## [v0.50.0-beta.3](https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.2...v0.50.0-beta.3) (2026-09-24)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **packages**: rename presetUiUnocss to presetUi &nbsp;-&nbsp; by @soybeanjs [<samp>(096d0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/096d079e6)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **projects**: format code &nbsp;-&nbsp; by @soybeanjs [<samp>(17aa5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/17aa5485d)
+- **theme-editor**: update inline code display and improve readability &nbsp;-&nbsp; by @soybeanjs [<samp>(2fc5c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2fc5cecf4)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.50.0-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.1...v0.50.0-beta.2) (2026-09-24)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

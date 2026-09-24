@@ -2507,6 +2507,11 @@
               "baf58": "update sourcePath in generated JSON files for consistency",
               "fab4c": "update deps",
               "fba7c": "fix empty row hover style"
+            },
+            "3": {
+              "096d0": "rename presetUiUnocss to presetUi",
+              "17aa5": "format code",
+              "2fc5c": "update inline code display and improve readability"
             }
           }
         }
