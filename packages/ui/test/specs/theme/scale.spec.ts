@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { createGenerator } from 'unocss';
-import { presetUiUnocss } from '@soybeanjs/ui-uno';
+import { presetUi } from '@soybeanjs/ui-uno';
 import type { ThemeSize } from '@/theme';
 import { fieldMinSize, fieldSize } from '../../../src/styles/_field';
 
@@ -16,7 +16,7 @@ import { fieldMinSize, fieldSize } from '../../../src/styles/_field';
  */
 
 const generate = async (classes: string): Promise<string> => {
-  const uno = await createGenerator({ presets: presetUiUnocss({}) as never });
+  const uno = await createGenerator({ presets: presetUi({}) as never });
   const { css } = await uno.generate(classes, { preflights: false });
 
   return css.replace(/\n+/g, ' ');

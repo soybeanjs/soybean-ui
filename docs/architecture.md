@@ -218,13 +218,13 @@ The theme system has one core generator and two delivery paths:
 flowchart LR
   Options[Theme options] --> Generator[createTheme]
   Generator --> Runtime[SConfigProvider runtime style tag]
-  Generator --> Preset[presetUiUnocss preflight]
+  Generator --> Preset[presetUi preflight]
   Preset --> CSS["@soybeanjs/ui/styles.css and app uno.css"]
 ```
 
 - `createTheme` normalizes theme options and returns the generated CSS string.
 - `SConfigProvider` calls it at runtime and manages the generated style tag.
-- `presetUiUnocss` calls it at build time when generated UI CSS is enabled.
+- `presetUi` calls it at build time when generated UI CSS is enabled.
 - Apps and the UI CSS build share the same UnoCSS preset stack.
 
 CodeGraph reports ten affected symbols for `createTheme`, including the

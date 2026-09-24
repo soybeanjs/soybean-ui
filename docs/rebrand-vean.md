@@ -87,7 +87,7 @@
 | `packages/headless/`                                                                                   | `packages/aria/`              | 🟡 内部 |
 | namespaced `Headless.*`                                                                                | `Aria.*`                      | 🚨 破坏 |
 | `pnpm sui gen catalog headless`                                                                        | `pnpm sui gen catalog aria`   | 🟡 内部 |
-| `presetUiUnocss()` / `UiUnocssOptions`                                                                 | **不变**（函数名不含品牌）    | —       |
+| `presetUi()` / `UiUnocssOptions`                                                                       | **不变**（函数名不含品牌）    | —       |
 | docs content `content/{en,zh}/headless/`                                                               | `content/{en,zh}/aria/`       | 🟡 内部 |
 | `apps/docs` 包名 `@soybeanjs/ui-docs`                                                                  | `@vean/docs`（私有）          | —       |
 | `@soybeanjs/scripts`（私有）                                                                           | `@vean/scripts`（私有）       | —       |

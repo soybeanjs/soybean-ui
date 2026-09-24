@@ -171,7 +171,7 @@ resolveThemeColors({}, 'light'); // 某个模式的全部 token
 
 `map` 是唯一的中间表示：`light` / `dark` 各持一份"每 token 一条 `palette.level` 引用"的映射，`Object.keys(map.light)` 就是契约的 token 数量。
 
-配合 **[UnoCSS](/overview/installation)** 时，`presetUiUnocss()`（主题写在 `sbean.json` 里时用 `presetSbean()`）把调色板层与默认别名块作为 preflight 一起下发，token 无需任何运行时代码即可生效；`@soybeanjs/ui/styles.css` 是等价的预构建样式表。适配器把每个 token 映射成工具类（`bg-card`、`text-card-foreground`、`border-input`、`bg-chart-1`），把色板映射成 `bg-indigo-500` 这类档位，把角色映射成 `bg-primary-500` / `text-destructive-100` 这类色阶。
+配合 **[UnoCSS](/overview/installation)** 时，`presetUi()`（主题写在 `sbean.json` 里时用 `presetSbean()`）把调色板层与默认别名块作为 preflight 一起下发，token 无需任何运行时代码即可生效；`@soybeanjs/ui/styles.css` 是等价的预构建样式表。适配器把每个 token 映射成工具类（`bg-card`、`text-card-foreground`、`border-input`、`bg-chart-1`），把色板映射成 `bg-indigo-500` 这类档位，把角色映射成 `bg-primary-500` / `text-destructive-100` 这类色阶。
 
 ### 颜色
 

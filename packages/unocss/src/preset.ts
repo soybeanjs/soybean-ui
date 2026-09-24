@@ -18,10 +18,10 @@ import { buildThemeColors, buildThemeEntries, buildThemePreflight } from './them
  * ```ts
  * // uno.config.ts
  * import { defineConfig } from 'unocss'
- * import { presetUiUnocss } from '@soybeanjs/ui-uno'
+ * import { presetUi } from '@soybeanjs/ui-uno'
  *
  * export default defineConfig({
- *   presets: [presetUiUnocss({ base: 'zinc', primary: 'indigo', resetCSS: true, globalCSS: true, uiCSS: true })],
+ *   presets: [presetUi({ base: 'zinc', primary: 'indigo', resetCSS: true, globalCSS: true, uiCSS: true })],
  * })
  * ```
  *
@@ -37,7 +37,7 @@ import { buildThemeColors, buildThemeEntries, buildThemePreflight } from './them
  * The `wind3` / `animations` / `scrollbar` / `webFonts` options inject the
  * config into the corresponding preset (see {@link UiUnocssOptions}).
  */
-export function presetUiUnocss(options?: UiUnocssOptions): Preset<Theme>[] {
+export function presetUi(options?: UiUnocssOptions): Preset<Theme>[] {
   const {
     resetCSS = false,
     globalCSS = false,

@@ -243,7 +243,7 @@ const ANIMATION_THEME = {
 // ---- preset ----------------------------------------------------------------
 
 /**
- * 动画 preset，接入 `presetUiUnocss` 后提供 `animate-in/out`、`fade-*`、
+ * 动画 preset，接入 `presetUi` 后提供 `animate-in/out`、`fade-*`、
  * `zoom-*`、`slide-in-from-*` / `slide-out-to-*` 工具类。
  *
  * `animate-in` / `animate-out` 位于 `soybean-base` 层（低优先级），

@@ -10,7 +10,7 @@ import {
   ROLE_RAMP_ROLES,
   SEMANTIC_TOKENS
 } from '@soybeanjs/theme';
-import { presetUiUnocss } from '../src/preset';
+import { presetUi } from '../src/preset';
 
 /**
  * The utility-resolution contract, enforced across the authored surfaces.
@@ -113,7 +113,7 @@ describe('utility resolution contract', () => {
       })
     );
 
-    const uno = await createGenerator({ presets: presetUiUnocss({}) } as never);
+    const uno = await createGenerator({ presets: presetUi({}) } as never);
     const { css } = await uno.generate([...candidates].join(' '), { preflights: false });
     // 按选择器整体匹配（`.bg-card{`），不用子串：`text-destructive` 是
     // `text-destructive-foreground` 的子串，子串判定会让一条死类名蒙混过关

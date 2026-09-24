@@ -6,7 +6,7 @@ import type { PresetAnimationsOptions } from './animations';
 import type { PresetScrollbarOptions } from './scrollbar';
 
 /**
- * Options for {@link presetUiUnocss}.
+ * Options for {@link presetUi}.
  *
  * Extends the engine's `ThemeOptions` (`base`/`primary`/`surfaceStyle`/`size`/
  * `radius`/etc.) so a single options object can fully drive the generated

@@ -1386,7 +1386,7 @@ Layer 1  主题与样式引擎  @soybeanjs/theme · @soybeanjs/unocss
 | F3  | 生成物非原子批次，已有可复现漂移（Rating 半完成状态）                             |    Major    |  B   |   高   |
 | F4  | 私有 apps 双向与链式源码依赖（docs ↔ playground）——已随 playground 并入 docs 消除 |     Low     |  D   |   中   |
 | F5  | Docs 构建图一次性 eager 引入 582 demo + 735 源文件                                |  Moderate   |  D   |   中   |
-| F6  | 高影响 seam（createTheme / presetUiUnocss / useUiContext）缺契约测试              |  Moderate   |  C   |   高   |
+| F6  | 高影响 seam（createTheme / presetUi / useUiContext）缺契约测试                    |  Moderate   |  C   |   高   |
 | F7  | 构建图与 workspace 依赖图未对齐（theme 改动复用旧 dist 风险）                     |  Moderate   |  C   |   中   |
 | F8  | TypeScript 声明 7.0.2 与锁定 6.0.3 分裂                                           |    Minor    |  C   |   中   |
 | F9  | 类型逃逸（28 行 `as any` / `@ts-expect-error`）与书面约束不一致                   |    Minor    |  —   |   低   |

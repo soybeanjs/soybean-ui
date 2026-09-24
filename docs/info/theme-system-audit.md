@@ -122,7 +122,7 @@
             │                                                │
   ┌─────────┴──────────┐                        ┌────────────┴──────────────┐
   │ @soybeanjs/ui-uno       │                        │ @soybeanjs/ui                  │
-  │ presetUiUnocss()   │                        │ SConfigProvider           │
+  │ presetUi()   │                        │ SConfigProvider           │
   │  ├ buildThemeColors│◄─── COLOR_VARIABLES ───│  ├ theme = computed(...)  │
   │  ├ borderRadius{}  │      (token 单一权威)   │  ├ createTheme(theme)     │
   │  ├ fontSize{root}  │                        │  ├ <ThemeStyle> 注入      │

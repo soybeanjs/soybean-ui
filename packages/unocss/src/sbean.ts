@@ -5,7 +5,7 @@ import type { Theme } from 'unocss/preset-mini';
 import { THEME_FONT_HEADING, THEME_FONT_MONO, THEME_FONT_SANS, THEME_FONT_SERIF } from '@soybeanjs/theme';
 import type { ThemeFont, ThemeOptions } from '@soybeanjs/theme';
 import type { UiUnocssOptions } from './options';
-import { presetUiUnocss } from './preset';
+import { presetUi } from './preset';
 
 // ---------------------------------------------------------------------------
 // SBean config → UnoCSS preset bridge
@@ -77,7 +77,7 @@ interface SbeanConfig {
  * ```
  *
  * The preset reads `sbean.json` and forwards every {@link SbeanUnoConfig} item
- * to {@link presetUiUnocss}:
+ * to {@link presetUi}:
  *
  * - `uno.base`, `uno.primary`, `uno.radius` and `uno.size` are passed through
  *   directly;
@@ -132,7 +132,7 @@ export function presetSbean(options?: SbeanPresetOptions): Preset<Theme>[] {
     Object.assign(uiUnocssOptions, options.overrides);
   }
 
-  return presetUiUnocss(uiUnocssOptions);
+  return presetUi(uiUnocssOptions);
 }
 
 function readSbeanConfig(cwd: string): SbeanConfig | null {

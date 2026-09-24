@@ -84,7 +84,7 @@
 ### 3.2 主题只有一个生成核心
 
 **事实：** `createTheme` 同时被 UI `ConfigProvider` 与
-`presetUiUnocss` 使用；CodeGraph 影响范围为 10 个符号，覆盖四份 UnoCSS 配置。
+`presetUi` 使用；CodeGraph 影响范围为 10 个符号，覆盖四份 UnoCSS 配置。
 
 **判断：** 运行时与构建时共享生成器能降低 token 漂移。应补测试而非建立第二套
 主题适配层。

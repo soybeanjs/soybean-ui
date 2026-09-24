@@ -93,7 +93,7 @@ const SCROLLBAR_VARIANT_RE = /^(scrollbar(-track|-thumb)?):.+$/;
 // ---- preset -----------------------------------------------------------------
 
 /**
- * Scrollbar 样式 preset，经 `presetUiUnocss` 默认接入，也可单独使用：
+ * Scrollbar 样式 preset，经 `presetUi` 默认接入，也可单独使用：
  *
  * ```ts
  * // uno.config.ts

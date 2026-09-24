@@ -11,7 +11,7 @@
  *
  * 按功能拆分文件，这里统一汇总导出。
  */
-export { presetUiUnocss, resolveWind3Dark } from './preset';
+export { presetUi, resolveWind3Dark } from './preset';
 export { presetAnimations } from './animations';
 export type { PresetAnimationsOptions } from './animations';
 export { presetScrollbar } from './scrollbar';

@@ -5,7 +5,7 @@ import { describe, it, expect } from 'vitest';
 import { createGenerator } from 'unocss';
 import type { Preset } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
-import { presetSbean, presetUiUnocss } from '../src/index';
+import { presetSbean, presetUi } from '../src/index';
 import type { UiUnocssOptions } from '../src/options';
 
 /**
@@ -22,9 +22,9 @@ function getThemeCss(presets: Preset<Theme>[]): string {
   return preflights?.[0]?.getCSS() ?? '';
 }
 
-describe('presetUiUnocss', () => {
+describe('presetUi', () => {
   it('composes the expected preset stack', () => {
-    const presets = presetUiUnocss({ uiCSS: true });
+    const presets = presetUi({ uiCSS: true });
     const names = presets.map(p => p.name);
     // wind3 + animations + self theme
     expect(presets.length).toBeGreaterThanOrEqual(3);
@@ -32,19 +32,19 @@ describe('presetUiUnocss', () => {
   });
 
   it('applies size/radius base tokens to the generated theme CSS', () => {
-    const css = getThemeCss(presetUiUnocss({ uiCSS: true, size: 'lg', radius: 'sm' }));
+    const css = getThemeCss(presetUi({ uiCSS: true, size: 'lg', radius: 'sm' }));
     expect(css).toContain('--size: 18px');
     expect(css).toContain('--radius: 0.375rem');
   });
 
   it('falls back to the engine defaults when no base tokens are given', () => {
-    const css = getThemeCss(presetUiUnocss({ uiCSS: true }));
+    const css = getThemeCss(presetUi({ uiCSS: true }));
     expect(css).toContain('--size: 16px');
     expect(css).toContain('--radius: 0.5rem');
   });
 
   it('floors the field font size on coarse pointers so iOS does not zoom on focus', () => {
-    const css = getThemeCss(presetUiUnocss({ globalCSS: true, uiCSS: true }));
+    const css = getThemeCss(presetUi({ globalCSS: true, uiCSS: true }));
 
     expect(css).toContain('@media(hover:none) and (pointer:coarse)');
     expect(css).toContain('font-size:max(16px,1em)');
@@ -58,7 +58,7 @@ describe('presetUiUnocss', () => {
   });
 
   it('keeps the field font floor out of the stylesheet without globalCSS', () => {
-    expect(getThemeCss(presetUiUnocss({ uiCSS: true }))).not.toContain('max(16px,1em)');
+    expect(getThemeCss(presetUi({ uiCSS: true }))).not.toContain('max(16px,1em)');
   });
 
   it('routes the reset default font families through the theme tokens', () => {
@@ -84,13 +84,13 @@ describe('presetUiUnocss', () => {
 
 describe('presetScrollbar', () => {
   async function generateCss(tokens: string[], uiOptions?: UiUnocssOptions) {
-    const uno = await createGenerator({ presets: presetUiUnocss(uiOptions) });
+    const uno = await createGenerator({ presets: presetUi(uiOptions) });
     const { css } = await uno.generate(tokens, { preflights: false });
     return css;
   }
 
-  it('is included in the presetUiUnocss stack', () => {
-    const names = presetUiUnocss().map(p => p.name);
+  it('is included in the presetUi stack', () => {
+    const names = presetUi().map(p => p.name);
     expect(names).toContain('soybean-ui-uno-scrollbar');
   });
 
@@ -160,9 +160,9 @@ describe('presetScrollbar', () => {
   });
 });
 
-describe('presetUiUnocss preset injection', () => {
+describe('presetUi preset injection', () => {
   async function generate(tokens: string[], options: UiUnocssOptions) {
-    const uno = await createGenerator({ presets: presetUiUnocss(options) });
+    const uno = await createGenerator({ presets: presetUi(options) });
     const { css } = await uno.generate(tokens, { preflights: false });
     return css;
   }
@@ -181,7 +181,7 @@ describe('presetUiUnocss preset injection', () => {
   });
 
   it('injects full web fonts config via the `webFonts` option (wins over `fonts`)', async () => {
-    const presets = presetUiUnocss({
+    const presets = presetUi({
       fonts: { sans: 'Inter' },
       webFonts: { fonts: { mono: 'Fira Code' } }
     });

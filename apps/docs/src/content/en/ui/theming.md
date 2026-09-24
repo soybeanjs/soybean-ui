@@ -171,7 +171,7 @@ resolveThemeColors({}, 'light'); // every token of a mode
 
 `map` is the single intermediate representation: its `light` / `dark` maps hold one `palette.level` reference per token, and `Object.keys(map.light)` is the contract's token count.
 
-With **[UnoCSS](/overview/installation)**, `presetUiUnocss()` (or `presetSbean()` when the theme lives in `sbean.json`) ships the palette layer and the default alias block as its preflight, so the tokens resolve with no runtime JavaScript; `@soybeanjs/ui/styles.css` is the equivalent prebuilt stylesheet. The adapter maps every token to a utility (`bg-card`, `text-card-foreground`, `border-input`, `bg-chart-1`), the palettes to `bg-indigo-500`-style rungs, and the roles to `bg-primary-500` / `text-destructive-100` style ramps.
+With **[UnoCSS](/overview/installation)**, `presetUi()` (or `presetSbean()` when the theme lives in `sbean.json`) ships the palette layer and the default alias block as its preflight, so the tokens resolve with no runtime JavaScript; `@soybeanjs/ui/styles.css` is the equivalent prebuilt stylesheet. The adapter maps every token to a utility (`bg-card`, `text-card-foreground`, `border-input`, `bg-chart-1`), the palettes to `bg-indigo-500`-style rungs, and the roles to `bg-primary-500` / `text-destructive-100` style ramps.
 
 ### Colors
 

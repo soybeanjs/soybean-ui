@@ -32,13 +32,13 @@ SoybeanUI 更名为 **Vean**（**V**ue + Soy**bean**）。本次发布把 npm sc
 - import { useRovingFocusGroup } from '@soybeanjs/headless/composables';
 - import { createTheme } from '@soybeanjs/theme';
 - import { createThemeInitScript } from '@soybeanjs/theme/ssr';
-- import { presetUiUnocss } from '@soybeanjs/ui-uno';
+- import { presetUi } from '@soybeanjs/ui-uno';
 + import { SButton } from '@vean/ui';
 + import { AccordionRoot } from '@vean/aria/accordion';
 + import { useRovingFocusGroup } from '@vean/aria/composables';
 + import { createTheme } from '@vean/theme';
 + import { createThemeInitScript } from '@vean/theme/ssr';
-+ import { presetUiUnocss } from '@vean/unocss';
++ import { presetUi } from '@vean/unocss';
 ```
 
 安装：
@@ -48,7 +48,7 @@ pnpm remove @soybeanjs/ui @soybeanjs/headless @soybeanjs/theme @soybeanjs/ui-uno
 pnpm add @vean/ui @vean/aria @vean/theme @vean/unocss
 ```
 
-> `presetUiUnocss()`、`UiUnocssOptions`、`resolveThemeMap()` 等 **API 名称不变**，只换了包来源。
+> `presetUi()`、`UiUnocssOptions`、`resolveThemeMap()` 等 **API 名称不变**，只换了包来源。
 
 ## 2. Nuxt 项目
 
@@ -78,8 +78,8 @@ pnpm add @vean/ui @vean/aria @vean/theme @vean/unocss
 
 ```diff
   // uno.config.ts
-- import { presetUiUnocss } from '@soybeanjs/ui-uno';
-+ import { presetUiUnocss } from '@vean/unocss';
+- import { presetUi } from '@soybeanjs/ui-uno';
++ import { presetUi } from '@vean/unocss';
 
 - import { createTheme } from '@soybeanjs/theme';
 + import { createTheme } from '@vean/theme';

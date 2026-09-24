@@ -72,7 +72,7 @@ Private packages and applications:
 | Theme dimension scale              | `docs/space-control-scale.md`                                             | spacing / radius 的取值与实测依据；什么不该成为刻度族（控件高度 / 图标 / 字号 / 阴影动效）     |
 | Theme/sizing                       | `packages/ui/src/theme/`                                                  | `ThemeColor` (8 roles), `ThemeSize` (xs…2xl)                                                   |
 | Token CSS generation               | `packages/theme/src/`                                                     | `resolveThemeMap(options)` → `emitThemeCss(map)`（Layer 2）/ `generatePaletteCss()`（Layer 1） |
-| UnoCSS adapter                     | `packages/unocss/`                                                        | `presetUiUnocss()` / `presetSbean()`                                                           |
+| UnoCSS adapter                     | `packages/unocss/`                                                        | `presetUi()` / `presetSbean()`                                                                 |
 | Source-distribution CLI            | `packages/cli/`                                                           | commands → registry/schema/templates/MCP                                                       |
 | Repo-service CLI (`sui`)           | `packages/scripts/`                                                       | `gen` (offline) / `translate` (DeepL) / `check` groups, `stub`, `reorder-imports`              |
 | Utility functions                  | `packages/headless/src/shared/`                                           | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                                    |

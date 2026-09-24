@@ -1,6 +1,6 @@
 import { defineConfig } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
-import { presetUiUnocss } from '@soybeanjs/ui-uno';
+import { presetUi } from '@soybeanjs/ui-uno';
 
 export default defineConfig<Theme>({
   cli: {
@@ -12,7 +12,7 @@ export default defineConfig<Theme>({
     ]
   },
   presets: [
-    presetUiUnocss({
+    presetUi({
       resetCSS: true,
       globalCSS: true,
       uiCSS: true

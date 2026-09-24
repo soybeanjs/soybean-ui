@@ -1,6 +1,6 @@
 import { defineConfig, presetWind3, transformerDirectives, transformerVariantGroup } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
-import { presetUiUnocss } from '@soybeanjs/ui-uno';
+import { presetUi } from '@soybeanjs/ui-uno';
 import { presetSoybean } from '@soybeanjs/unocss-preset';
 
 export default defineConfig<Theme>({
@@ -13,7 +13,7 @@ export default defineConfig<Theme>({
   presets: [
     presetWind3({ dark: 'class' }),
     presetSoybean(),
-    presetUiUnocss({
+    presetUi({
       resetCSS: true,
       globalCSS: true
     })

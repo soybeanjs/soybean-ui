@@ -3,7 +3,7 @@ import { createGenerator } from 'unocss';
 import { theme as unoTheme } from '@unocss/preset-mini';
 import { SPACING_GRID_COEFFICIENTS, SPACING_RUNGS } from '@soybeanjs/theme';
 import type { SpacingRung } from '@soybeanjs/theme';
-import { presetUiUnocss } from '../src/preset';
+import { presetUi } from '../src/preset';
 import { buildThemeColors, buildThemeEntries } from '../src/theme';
 
 /**
@@ -17,15 +17,15 @@ import { buildThemeColors, buildThemeEntries } from '../src/theme';
  * - the dimension / motion / layering keys read the token literals.
  */
 
-const generate = async (options: Parameters<typeof presetUiUnocss>[0], classes: string): Promise<string> => {
-  const uno = await createGenerator({ presets: presetUiUnocss(options) } as never);
+const generate = async (options: Parameters<typeof presetUi>[0], classes: string): Promise<string> => {
+  const uno = await createGenerator({ presets: presetUi(options) } as never);
   const { css } = await uno.generate(classes, { preflights: false });
 
   return css;
 };
 
-const preflightOf = (options: Parameters<typeof presetUiUnocss>[0]): string => {
-  const preset = presetUiUnocss(options).find(item => item.name === 'soybean-ui-uno') as {
+const preflightOf = (options: Parameters<typeof presetUi>[0]): string => {
+  const preset = presetUi(options).find(item => item.name === 'soybean-ui-uno') as {
     preflights: { getCSS: () => string }[];
   };
 

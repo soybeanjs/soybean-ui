@@ -32,13 +32,13 @@ Subpaths map **one-to-one**: replace the package name, keep everything after `/`
 - import { useRovingFocusGroup } from '@soybeanjs/headless/composables';
 - import { createTheme } from '@soybeanjs/theme';
 - import { createThemeInitScript } from '@soybeanjs/theme/ssr';
-- import { presetUiUnocss } from '@soybeanjs/ui-uno';
+- import { presetUi } from '@soybeanjs/ui-uno';
 + import { SButton } from '@vean/ui';
 + import { AccordionRoot } from '@vean/aria/accordion';
 + import { useRovingFocusGroup } from '@vean/aria/composables';
 + import { createTheme } from '@vean/theme';
 + import { createThemeInitScript } from '@vean/theme/ssr';
-+ import { presetUiUnocss } from '@vean/unocss';
++ import { presetUi } from '@vean/unocss';
 ```
 
 Install:
@@ -48,7 +48,7 @@ pnpm remove @soybeanjs/ui @soybeanjs/headless @soybeanjs/theme @soybeanjs/ui-uno
 pnpm add @vean/ui @vean/aria @vean/theme @vean/unocss
 ```
 
-> API names such as `presetUiUnocss()`, `UiUnocssOptions` and `resolveThemeMap()` are **unchanged** — only their package of origin moves.
+> API names such as `presetUi()`, `UiUnocssOptions` and `resolveThemeMap()` are **unchanged** — only their package of origin moves.
 
 ## 2. Nuxt projects
 
@@ -78,8 +78,8 @@ The module `configKey` changes too: from `@soybeanjs/ui` to `@vean/ui`. If you p
 
 ```diff
   // uno.config.ts
-- import { presetUiUnocss } from '@soybeanjs/ui-uno';
-+ import { presetUiUnocss } from '@vean/unocss';
+- import { presetUi } from '@soybeanjs/ui-uno';
++ import { presetUi } from '@vean/unocss';
 
 - import { createTheme } from '@soybeanjs/theme';
 + import { createTheme } from '@vean/theme';
