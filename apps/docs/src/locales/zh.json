@@ -872,7 +872,7 @@
           "title": "两种使用方式",
           "description": "选择适合你工作流程的分发模式 — npm 包快速集成，或 CLI 复制粘贴完全掌控源码。",
           "npm": {
-            "title": "npm 包",
+            "title": "NPM 包",
             "subtitle": "传统依赖",
             "description": "将 {'@'}soybeanjs/ui 作为依赖安装。自动导入、Tree-shaking，通过包管理器无缝升级。",
             "feature_0": "一行命令安装",

@@ -873,7 +873,7 @@
           "title": "Two Ways to Use SoybeanUI",
           "description": "Choose the distribution mode that fits your workflow — npm package for quick integration, or CLI copy-paste for full source control.",
           "npm": {
-            "title": "npm Package",
+            "title": "NPM Package",
             "subtitle": "Traditional dependency",
             "description": "Install {'@'}soybeanjs/ui as a dependency. Auto-import, tree-shaking, and seamless updates via your package manager.",
             "feature_0": "One-command install",
