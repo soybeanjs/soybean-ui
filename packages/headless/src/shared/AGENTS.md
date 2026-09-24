@@ -1,6 +1,6 @@
 # HEADLESS SHARED UTILITIES
 
-**19 helper files** of mostly pure TypeScript utilities. Only `vue.ts` imports Vue.
+**21 helper files** of mostly pure TypeScript utilities. Only `vue.ts` imports Vue.
 
 ## MODULES
 
@@ -16,6 +16,8 @@
 | `guard.ts`           | Type guards: `isNullish`, `isString`, `isFunction`, etc.                                                                                  |
 | `object.ts`          | Object utilities (pick, omit, deep merge)                                                                                                 |
 | `array.ts`           | Array utilities: `filterNullish`, `arrayMove`                                                                                             |
+| `collapse-motion.ts` | `collapseMotion()` — Vue `TransitionProps` for measured enter/exit height, plus `COLLAPSE_MOTION_DEFAULTS`                                |
+| `number.ts`          | `createNumberFormatter` / `createNumberParser` — locale-aware `Intl.NumberFormat` wrappers                                                |
 | `string.ts`          | String manipulation helpers                                                                                                               |
 | `time-picker.ts`     | Shared time-picker normalization and segment helpers                                                                                      |
 | `value.ts`           | Value comparison, normalization                                                                                                           |

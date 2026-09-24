@@ -23,9 +23,8 @@ Load the component development skill for any task that creates, migrates, extend
 
 If a nearer scoped `AGENTS.md` exists for your target path, use it only to narrow which skill sections apply.
 
-**Generated:** 2026-09-06
-**Version:** 0.31.0
-**Monorepo:** pnpm workspaces (private root + 9 child workspaces: 6 packages + 2 apps + `skills/`; 5 publishable packages, 1 private package — `@soybeanjs/scripts` — and 2 private apps)
+**Version:** all workspaces are versioned in lockstep from the root `package.json` (currently `0.50.0-beta.3`)
+**Monorepo:** pnpm workspaces — private root + 8 members (6 packages + 2 apps): 5 publishable packages, 1 private package (`@soybeanjs/scripts`), 2 private apps. `skills/` is a **generated distribution**, not a workspace member.
 **Stack:** Vue 3 + TypeScript (strict) + UnoCSS + @soybeanjs/cva
 
 ## ARCHITECTURE
@@ -37,8 +36,10 @@ Prioritized structural findings and acceptance criteria live in
 
 Core Headless/Styled separation:
 
-- **@soybeanjs/headless** (`packages/headless/`): Logic, state, a11y. Zero styles. 96 component directories (94 publicly exported; `_common`/`_icon` are internal), 29 composables. Includes base primitives, date utilities, and Compact aggregations.
-- **@soybeanjs/ui** (`packages/ui/`): Styled wrappers. UnoCSS + `cv()` / `scv()`. 96 component directories / 144 S-prefixed exports.
+- **@soybeanjs/headless** (`packages/headless/`): Logic, state, a11y. Zero styles. ~90 component families (`_common`/`_icon` are internal) and ~30 composables. Includes base primitives, date utilities, and Compact aggregations.
+- **@soybeanjs/ui** (`packages/ui/`): Styled wrappers. UnoCSS + `cv()` / `scv()`. ~94 family directories / ~140 `S`-prefixed exports; a minority of families are UI-only because they fail headless admission (the list lives under COMPONENT DEVELOPMENT).
+
+The generated catalogs `packages/{headless,ui}/src/constants/components.ts` are the authority for names and counts — read them instead of hand-counting, and refresh with `pnpm sui gen catalog`.
 
 Compile-time dependency direction is **UI → Headless**: UI imports public
 headless entry points; headless MUST NOT import UI. Runtime class injection goes
@@ -62,30 +63,39 @@ Private packages and applications:
 
 ## WHERE TO LOOK
 
-| Task                               | Location                                                                  | Key Pattern                                                                                    |
-| ---------------------------------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| New component (logic)              | `packages/headless/src/components/[name]/`                                | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts                   |
-| New component (styled)             | `packages/ui/src/components/[name]/` + `packages/ui/src/styles/[name].ts` | style recipe → types.ts → `*.vue` → index.ts                                                   |
-| Variant definitions                | `packages/ui/src/styles/[name].ts`                                        | `cv()` / `scv()` with `// @unocss-include` at top                                              |
-| Shared hooks                       | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (29 total)                                                    |
-| Theme engine (design/API/handbook) | `docs/theme.md`                                                           | **单一权威**：新旧差异与优势 / token 契约 / 引擎 API / 接入手册（§0）/ 验收                    |
-| Theme dimension scale              | `docs/space-control-scale.md`                                             | spacing / radius 的取值与实测依据；什么不该成为刻度族（控件高度 / 图标 / 字号 / 阴影动效）     |
-| Theme/sizing                       | `packages/ui/src/theme/`                                                  | `ThemeColor` (8 roles), `ThemeSize` (xs…2xl)                                                   |
-| Token CSS generation               | `packages/theme/src/`                                                     | `resolveThemeMap(options)` → `emitThemeCss(map)`（Layer 2）/ `generatePaletteCss()`（Layer 1） |
-| UnoCSS adapter                     | `packages/unocss/`                                                        | `presetUi()` / `presetSbean()`                                                                 |
-| Source-distribution CLI            | `packages/cli/`                                                           | commands → registry/schema/templates/MCP                                                       |
-| Repo-service CLI (`sui`)           | `packages/scripts/`                                                       | `gen` (offline) / `translate` (DeepL) / `check` groups, `stub`, `reorder-imports`              |
-| Utility functions                  | `packages/headless/src/shared/`                                           | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                                    |
-| Global types                       | `packages/headless/src/types/`                                            | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                            |
-| Generated API data                 | `apps/docs/src/generated/api/`                                            | `pnpm sui gen api` baseline + `pnpm sui translate api --locale <locale>` locale text           |
-| Generated changelog data           | `apps/docs/src/generated/changelog/`                                      | `pnpm sui gen changelog` baseline + `pnpm sui translate changelog` locale summaries            |
-| Docs content                       | `apps/docs/src/docs/[en\|zh-CN]/`                                         | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`                      |
-| Demo source                        | `apps/docs/src/examples/[component]/`                                     | Vue SFCs referenced by docs                                                                    |
-| Browser e2e tests                  | `packages/ui/test/browser/`                                               | `vitest.browser.config.ts` + `vitest-browser-vue` + `axe-core` (color-contrast on)             |
-| Workspace architecture             | `docs/architecture.md`                                                    | Package/app map, dependency graph, generation/build/test/release flows                         |
-| Architecture assessment            | `docs/optimize.md`                                                        | Evidence-ranked maintainability, scalability, and quality recommendations                      |
-| Component dev skill                | `.agents/skills/soybean-ui-develop/`                                      | SKILL.md + layers.md (admission) + surfaces.md + e2e.md + process.md + audit.md                |
-| Headless admission gaps            | `docs/headless-admission-remediation.md`                                  | Anatomy shells, decorative slots, and parallel families to freeze or fix                       |
+| Task                               | Location                                                                  | Key Pattern                                                                                      |
+| ---------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| New component (logic)              | `packages/headless/src/components/[name]/`                                | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts                     |
+| New component (styled)             | `packages/ui/src/components/[name]/` + `packages/ui/src/styles/[name].ts` | style recipe → types.ts → `*.vue` → index.ts                                                     |
+| Variant definitions                | `packages/ui/src/styles/[name].ts`                                        | `cv()` / `scv()` with `// @unocss-include` at top                                                |
+| Shared hooks                       | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (~30 total)                                                     |
+| Theme engine (design/API/handbook) | `docs/theme.md`                                                           | **单一权威**：新旧差异与优势 / token 契约 / 引擎 API / 接入手册（§0）/ 验收                      |
+| Theme dimension scale              | `docs/space-control-scale.md`                                             | spacing / radius 的取值与实测依据；什么不该成为刻度族（控件高度 / 图标 / 字号 / 阴影动效）       |
+| Theme/sizing                       | `packages/ui/src/theme/`                                                  | `ThemeColor` (8 roles), `ThemeSize` (xs…2xl)                                                     |
+| Token CSS generation               | `packages/theme/src/`                                                     | `resolveThemeMap(options)` → `emitThemeCss(map)`（Layer 2）/ `generatePaletteCss()`（Layer 1）   |
+| UnoCSS adapter                     | `packages/unocss/`                                                        | `presetUi()` / `presetSbean()`                                                                   |
+| Source-distribution CLI            | `packages/cli/`                                                           | commands → registry/schema/templates/MCP                                                         |
+| Repo-service CLI (`sui`)           | `packages/scripts/`                                                       | `gen` (offline) / `translate` (DeepL) / `check` groups, `stub`, `reorder-imports`                |
+| Utility functions                  | `packages/headless/src/shared/`                                           | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                                      |
+| Global types                       | `packages/headless/src/types/`                                            | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                              |
+| Generated API data                 | `apps/docs/src/generated/api/`                                            | `pnpm sui gen api` baseline + `pnpm sui translate api --locale <locale>` locale text             |
+| Generated changelog data           | `apps/docs/src/generated/changelog/`                                      | `pnpm sui gen changelog` baseline + `pnpm sui translate changelog` locale summaries              |
+| Docs content                       | `apps/docs/src/content/{en,zh}/`                                          | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`                        |
+| Demo source                        | `apps/docs/src/examples/ui/[component]/`                                  | Vue SFCs referenced by docs (chart demos under `examples/chart/`)                                |
+| Browser e2e tests                  | `packages/ui/test/browser/`                                               | `vitest.browser.config.ts` + `vitest-browser-vue` + `axe-core` (color-contrast on)               |
+| Workspace architecture             | `docs/architecture.md`                                                    | Package/app map, dependency graph, generation/build/test/release flows                           |
+| Architecture assessment            | `docs/optimize.md`                                                        | Evidence-ranked maintainability, scalability, and quality recommendations                        |
+| Component dev skill                | `.agents/skills/soybean-ui-develop/`                                      | SKILL.md + layers.md (admission) + surfaces.md + e2e.md + process.md + audit.md                  |
+| Headless admission gaps            | `docs/headless-admission-remediation.md`                                  | Anatomy shells, decorative slots, and parallel families to freeze or fix                         |
+| Scoped agent rules                 | `packages/**/AGENTS.md`, `apps/*/AGENTS.md`, `skills/AGENTS.md`           | Routing bridges; the nearest file narrows the skill rules                                        |
+| Domain terms                       | `CONTEXT.md`                                                              | Canonical vocabulary; `_Avoid_` lines flag drift                                                 |
+| Docs index / governance / ADRs     | `docs/README.md`, `docs/GOVERNANCE.md`, `docs/adr/`                       | Which doc belongs where, how docs are maintained, decision record                                |
+| `sui` command sources              | `packages/scripts/src/cli.ts` + `src/commands/*.ts`                       | One file per command; surface pinned by `test/cli.spec.ts`                                       |
+| sbean registry & templates         | `packages/cli/registry.json` + `src/{registry,schema,templates,mcp}`      | Registry items, JSON schemas, scaffold templates, MCP server                                     |
+| Generated consumer skills          | `skills/skills-source/`                                                   | Hand-edit the source; `pnpm sui gen skills` emits `skills/skills/`                               |
+| Docs site wiring                   | `apps/docs/src/constants/menus.ts` + `apps/docs/src/components/`          | Sidebar entries + `<ComponentApi>` / `<UsageCode>` / `<PlaygroundGallery>` host components       |
+| Unit tests (headless / ui)         | `packages/headless/test/specs/`, `packages/ui/test/specs/`                | happy-dom specs; UI helpers: `test/shared/a11y.ts`, `test/browser/shared/render.ts`              |
+| Code navigation (optional)         | `.codegraph/` (gitignored, local)                                         | `codegraph explore`, `codegraph impact <symbol>`, `codegraph affected <files>`, `codegraph sync` |
 
 ## BUILD & CI
 
@@ -96,7 +106,7 @@ pnpm build:libs       # theme → ui-uno
 pnpm build:docs       # package build → sbean registry → docs SSG + SEO
 pnpm lint             # vp lint --fix && pnpm lint:vue (uses @soybeanjs/eslint-config-vue)
 pnpm fmt              # vp fmt (formatter)
-pnpm test             # recursive workspace unit tests (UI/headless + sbean)
+pnpm test             # recursive unit tests of every workspace that defines `test` (headless, ui, theme, unocss, sbean, scripts via `vp test`)
 pnpm test:e2e         # browser e2e (Vitest Browser Mode + playwright chromium; run `pnpm exec playwright install chromium` first)
 pnpm typecheck        # pnpm -r typecheck (per-workspace vue-tsc / tsc)
 pnpm release          # Generate changelog + sync templates + publish (soy release)
@@ -112,20 +122,33 @@ pnpm sui gen all               # Regenerate every surface above
 pnpm sui translate <api|changelog|locale|all> [--locale <locale>]  # Fill pending translations via DeepL (needs DEEPL_API_KEY)
 pnpm sui check generated       # Regenerate every surface and diff it against git (also a CI gate)
 pnpm sui check deps            # Enforce the dependency gate: banned import scan + runtime dependency whitelists
+pnpm check:deps                # CI alias of `pnpm sui check deps`
+pnpm check:generated           # CI alias of `pnpm sui check generated`
 pnpm sui reorder-imports [--check] [targets...]  # Reorder Props before Emits in .vue import type blocks
 pnpm sui sync-template-versions  # Sync the @soybeanjs/* version constant used by project templates
 ```
 
 - **Pre-commit hook** (Vite Plus, `.vite-hooks/pre-commit`): `vp staged`
-- **CI**: `ci.yml` runs `pnpm build` (all packages) then typecheck / lint / test, plus a separate `e2e` job for browser tests, on PRs and pushes to `main`/`master`; it does not currently build the docs site or check generated-output drift. `release.yml` handles tag-triggered build and release.
+- **CI** (`.github/workflows/ci.yml`, on PRs and pushes to `main`/`master`): install + `pnpm build` → `pnpm check:deps` → `pnpm check:generated` → typecheck → lint → test, plus a separate `e2e` job (Playwright chromium). It does not build the docs site; `release.yml` handles tag-triggered build and release.
 - **Formatter**: `vp fmt`
+
+**Release** (`pnpm release` → `soy release -e 'pnpm release-execute'`): versions are bumped across all workspaces in lockstep from the root `package.json`, then `release-execute` runs `soy changelog && sui gen skills && sui translate all && sync-template-versions`. Two consequences: never hand-edit a single package's version (they must stay equal), and `sui translate all` means a release **requires** `DEEPL_API_KEY` — the chain is not offline. `sync-template-versions` rewrites `packages/cli/src/templates/versions.ts`, a generated constant, so scaffolder versions follow the root bump automatically.
+
+## LOCAL DEVELOPMENT GOTCHAS
+
+- **Dev and published entry points differ per package.** `packages/{headless,ui,cli}/package.json` `exports` resolve to `./src/...` so the workspace consumes source directly, and `publishConfig.exports` swaps to `./dist/...`. `packages/{theme,unocss}` have **no** dev indirection — they always resolve from `dist/`.
+  - Consequence: after editing `packages/theme` or `packages/unocss`, run `pnpm build:libs` **before** any downstream `typecheck` / `test` / docs dev server, or consumers silently read a stale `dist`.
+  - For headless, `pnpm stub` rewrites its `exports` between the src map and the `publishConfig` dist map; `pnpm stub --reset` restores dist. Do not hand-edit that `exports` block.
+- **Focused test runs** take a positional path filter: `pnpm --filter @soybeanjs/ui test accordion`, `pnpm --filter @soybeanjs/headless test tree`. The filter matches spec paths, so a non-matching name exits 1 with "No test files found" instead of passing vacuously.
+- **The docs site aliases resolve to source, not dist**: in `apps/docs`, `~` → `apps/docs/src` and `@` → `packages/ui/src` (the UI source tree), so UI edits show up in `pnpm dev:docs` without a build. `apps/docs/uno.config.ts` calls `presetUi({ resetCSS, globalCSS, uiCSS })`, which is why the docs page carries the static token preflight.
+- **`apps/nuxt` is a fixture, not a shippable app**: it has no `version` field and no `test` script; it exists to prove `@soybeanjs/ui/nuxt` auto-registration and the `@soybeanjs/theme/ssr` first-paint script work.
 
 ## PACKAGE EXPORTS
 
 **@soybeanjs/headless** sub-path exports:
 
 - `.` → all components + types
-- `./composables` → 29 composables (useContext, useControllableState, useCollapseHeight, useUiContext, …)
+- `./composables` → ~30 composables (useContext, useControllableState, useCollapseHeight, useUiContext, …)
 - `./shared` → pure TS utilities
 - `./constants` → ARIA constants, component keys
 - `./date` → shared date utilities and calendar helpers
@@ -158,7 +181,7 @@ pnpm sui sync-template-versions  # Sync the @soybeanjs/* version constant used b
 - **ui() two forms**: `use{Name}Ui('root')` → `ComputedRef<ClassValue>` (single slot); `use{Name}Ui()` → full map
 - **Recipe merges**: For multi-slot wrappers, pass `props.ui` and `{ root: props.class }` directly into the `scv()` recipe call
 - **Multi-slot**: `provide{Name}Ui(ui)` pattern; only export `provide`, not `use`
-- **Compact aggregations**: For stable, data-driven composites, headless owns iteration, default content, and internal composition; UI wrappers stay thin and only handle variants, class injection, and prop/slot forwarding. Current examples span accordion, card, date-field, dialog, editable, hover-card, layout, navigation-menu, pagination, popover, stepper, and table flows.
+- **Compact aggregations**: For stable, data-driven composites, headless owns iteration, default content, and internal composition; UI wrappers stay thin and only handle variants, class injection, and prop/slot forwarding. A family has one when its directory contains `<name>-compact.vue` (~60 families today: accordion, dialog, table, select, menu, tree, date-field, pagination, …); the file, not a list here, is the authority.
 - **Single-class**: No UiContext; use `{name}Variants({...}, props.class)` directly
 - **index.ts re-exports**: UI component barrels re-export headless types from sub-path `@soybeanjs/headless/{component}`; `types.ts` should follow the established import style of neighboring components instead of mixing arbitrary paths
 - **Generated metadata**: after public export, API, or changelog mapping/docs-surface changes, rerun `pnpm sui gen all` (or the specific `gen` target) as needed; for non-English generated text also run `pnpm sui translate <api|changelog>`, and `pnpm sui check generated` proves the committed data matches the sources.
@@ -166,6 +189,21 @@ pnpm sui sync-template-versions  # Sync the @soybeanjs/* version constant used b
 - **Offline generation**: `gen` is deterministic and never touches the network; `translate` is the only networked group (DeepL) and the only one that needs `DEEPL_API_KEY`.
 - **Stable `generatedAt`**: generators compare the produced payload against the committed file and skip the write when only `generatedAt` would differ, so a no-op regeneration produces no diff and the field keeps meaning "when the data last changed". Never hand-edit generated timestamps.
 - **Fingerprint-guarded extraction**: `gen api` hashes its inputs (ui/headless/theme/scripts sources, tsconfigs, lockfile) plus the on-disk output, and skips the TypeDoc pass (~40s → ~0.15s) only when both match the recorded entry. The entry lives in `node_modules/.cache/sui/` and is never committed; `--force` bypasses the check.
+- **The drift set is declared, not discovered**: `generatedDataPaths` in `packages/scripts/src/commands/gen.ts` lists every committed path `gen` writes and `check generated` diffs exactly that set — `packages/{headless,ui}/src/constants/components.ts`, `packages/headless/src/namespaced/index.ts`, `apps/docs/src/generated`, `apps/docs/public/schema`, `skills`. A new generator that is not registered there is invisible to the CI gate.
+- **`gen api` output is consumed at runtime by the docs site**, not just rendered as Markdown: `apps/docs/build/llms.ts` reads the same generated API JSON to emit LLM-facing docs, so an un-regenerated API surface also drifts the `/llms.txt` output.
+
+## CHANGE-SENSITIVE SURFACES
+
+Highest fan-in in the repo, measured with the CodeGraph index (`.codegraph/` is local and gitignored). Edits here ripple across most families — run the broad `pnpm test` + `pnpm typecheck`, not one component's specs.
+
+- `packages/headless/src/types/common.ts` (`ClassValue`, `UiClass`, `Direction`) — ~700 dependents
+- `packages/theme/src/types.ts` (`ThemeSize`, `ThemeColor`) — ~340
+- `packages/headless/src/composables/use-props.ts` (`useOmitProps`) — ~260
+- `packages/headless/src/date/types.ts` (`DateValue`) — ~180
+- `packages/headless/src/components/{table,menu}/types.ts` — ~150 / ~140
+- `packages/headless/src/types/vue.ts`, `shared/guard.ts`, `shared/vue.ts` (`keysOf`, `toContext`) — ~140 / ~130 / ~80
+- `packages/headless/src/composables/{use-forward-listeners,use-forward-element,use-ui-context}.ts` — ~130 / ~120 / ~70 component contexts
+- `packages/headless/src/components/{primitive/primitive.ts,button/button.vue,_icon/icon.vue}` — ~115 each
 
 ## ANTI-PATTERNS
 
@@ -184,8 +222,9 @@ pnpm sui sync-template-versions  # Sync the @soybeanjs/* version constant used b
 
 Minimal flow: headless types → headless context → headless base SFCs → optional Compact SFCs/hooks → UI style recipe in `packages/ui/src/styles` → UI wrapper → barrel exports.
 
-Three component patterns:
+Component patterns:
 
-- **Multi-slot base components** (badge, accordion, dialog…): has `UiSlot` + `UiClass`, uses `scv()` results merged directly in the wrapper
+- **Multi-slot base components** (accordion, dialog, table…): has `UiSlot` + `UiClass`, uses `scv()` results merged directly in the wrapper
 - **Compact aggregations** (`AccordionCompact`, `TableCompact`): live in headless, compose base primitives, and expose `*CompactProps` / `*CompactEmits` / `*CompactSlots`
 - **Single-class** (button, link…): no UiContext, uses `{name}Variants({...}, props.class)` directly
+- **UI-only families** (badge, card, empty, icon, list, skeleton, spinner, tag, sheet, app-shell, palette-picker, `theme-*`): no headless counterpart — they compose headless composables directly. Confirm with the directory diff of `packages/headless/src/components/` vs `packages/ui/src/components/` before adding one.
