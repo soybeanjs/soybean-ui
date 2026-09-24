@@ -1,6 +1,6 @@
 {
   "name": "@soybeanjs/theme",
-  "version": "0.50.0-beta.1",
+  "version": "0.50.0-beta.2",
   "description": "The SoybeanUI theme engine: a static palette layer plus a declarative semantic alias layer (no measurement or correction).",
   "homepage": "https://github.com/soybeanjs/soybean-ui",
   "bugs": {

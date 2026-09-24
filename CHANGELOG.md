@@ -1,5 +1,52 @@
 # Changelog
 
+## [v0.50.0-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.1...v0.50.0-beta.2) (2026-09-24)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **theme**: allow TokenOverride to reference another semantic token &nbsp;-&nbsp; by @soybeanjs [<samp>(62b45)</samp>](https://github.com/soybeanjs/soybean-ui/commit/62b45f08f)
+- **theme-customizer**: stabilize shell and remove variable panel &nbsp;-&nbsp; by @soybeanjs [<samp>(78811)</samp>](https://github.com/soybeanjs/soybean-ui/commit/78811472d)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **docs**:
+  - standardize quotation marks in CLI documentation &nbsp;-&nbsp; by @soybeanjs [<samp>(5e51b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5e51b3a4c)
+  - update sourcePath in generated JSON files for consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(baf58)</samp>](https://github.com/soybeanjs/soybean-ui/commit/baf585885)
+- **i18n**:
+  - standardize "npm" to "NPM" in English and Chinese locale files &nbsp;-&nbsp; by @soybeanjs [<samp>(b6607)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b660720b4)
+- **table**:
+  - fix empty row hover style &nbsp;-&nbsp; by @soybeanjs [<samp>(fba7c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fba7c18d6)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **palette-picker**: replace PALETTE_LEVELS by paletteColorLevels in colord &nbsp;-&nbsp; by @soybeanjs [<samp>(4264c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4264c89f3)
+- **shiki**: move highlight logic to shared module and simplify code usage &nbsp;-&nbsp; by @soybeanjs [<samp>(9790e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9790ecda8)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **packages**: refactor theme engine &nbsp;-&nbsp; by @soybeanjs [<samp>(b0383)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b0383e6e3)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**:
+  - update docs api &nbsp;-&nbsp; by @soybeanjs [<samp>(34893)</samp>](https://github.com/soybeanjs/soybean-ui/commit/34893eeff)
+  - add label for update migration &nbsp;-&nbsp; by @soybeanjs [<samp>(94fd2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/94fd2038d)
+  - update docs demo path to "cli/index" &nbsp;-&nbsp; by @soybeanjs [<samp>(6862e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6862e8475)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(fab4c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fab4cbd69)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(0d96d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0d96d9975)
+
+### &nbsp;&nbsp;&nbsp;✅ Tests
+
+- **palette-picker**: replace PALETTE_LEVELS with paletteColorLevels in tests &nbsp;-&nbsp; by @soybeanjs [<samp>(a4eb4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a4eb43cd7)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.50.0-beta.1](https://github.com/soybeanjs/soybean-ui/compare/v0.40.1...v0.50.0-beta.1) (2026-09-17)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

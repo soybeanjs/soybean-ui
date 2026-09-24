@@ -10062,17 +10062,17 @@
       "packages_theme_src_storage": {
         "themeenvelopeinput": {
           "members": {
-            "appliedpreset": "",
-            "mode": "",
-            "options": "",
-            "presets": "",
-            "style": ""
+            "appliedpreset": "当前应用的自定义预设名称（如有）。",
+            "mode": "浅色 / 深色 / 自动模式。",
+            "options": "引擎选项。",
+            "presets": "自定义主题预设（主题自定义器中保存的配色方案）。",
+            "style": "由首次渲染脚本应用的样式负载（`#soybean-theme`）。\n\n该快照正是消除刷新时主题闪烁的关键：head 脚本\n在任何样式表被解析之前就应用了它，随后运行时提供程序\n对同一元素进行就地修补。"
           }
         }
       },
       "packages_theme_src_types": {
-        "colorformat": "",
-        "themesize": ""
+        "colorformat": "颜色输出格式。",
+        "themesize": "组件大小/密度预设。"
       },
       "packages_ui_src_components_accordion_types": {
         "accordionemits": {
@@ -11507,12 +11507,12 @@
             "locale": "应用程序的全局语言环境。所有组件将继承此设置。",
             "messages": "对内置组件语言环境消息的覆盖。这些覆盖内容将叠加在由\n`locale` 属性选定的语言环境之上，因此您只需提供需要修改的键值即可。",
             "nonce": "应用程序的全局 `nonce` 值。相关组件将继承此值。",
-            "persisttheme": "",
-            "presetprovider": "",
+            "persisttheme": "是否启用从 localStorage 读取持久化主题。\n\n当禁用时（默认），ConfigProvider 仅使用显式的\n`theme` 属性，绝不读取或写入任何存储，从而保持当前\n的行为。当启用时，持久化主题封装会填充 `theme` 未\n显式提供的键，并将更改通过\n单个防抖写入器写回存储。",
+            "presetprovider": "服务器端自定义主题预设注册表解析器。\n\n将存储的预设名称映射到其定义，以便 SSR 能够渲染自定义\n预设，而无需访问 localStorage。仅当服务器端启用了 `persistTheme` 时\n才使用；在客户端，预设表（由\n主题封装携带）是权威数据源。",
             "progress": "应用程序的全局顶层进度配置。",
             "size": "大小选项。",
             "theme": "主题选项。",
-            "themeconfig": "",
+            "themeconfig": "从服务器注入的持久化主题封装。\n\n在服务器端渲染（SSR）过程中用于呈现与客户端持久化主题相同的主题；在\n客户端，localStorage 封装是权威数据源。",
             "toast": "应用程序的全局提示配置。相关组件将继承此配置。",
             "tooltip": "应用程序的全局工具提示配置。相关组件将继承此配置。"
           },
@@ -11520,19 +11520,19 @@
         },
         "configproviderthemeoptions": {
           "members": {
-            "base": "",
-            "borderopacity": "",
+            "base": "中性配色方案（9种内置颜色）。",
+            "borderopacity": "将装饰边框的透明度（0 – 1）乘以该值。",
             "darkselector": "",
-            "feedback": "",
-            "font": "",
-            "format": "",
-            "overrides": "",
+            "feedback": "状态配色方案。",
+            "font": "无衬线字体、标题字体和等宽字体的字体家族堆栈（运行时可切换）。",
+            "format": "调色板图层格式。",
+            "overrides": "内联令牌覆盖规则，最后应用。",
             "prefix": "",
-            "preset": "",
-            "primary": "",
-            "radius": "",
-            "size": "",
-            "spacing": "",
+            "preset": "自定义颜色预设：可以是内联的模式拆分覆盖（浅色/深色\n部分令牌），也可以是引用存储预设的 `{ name }`。在引擎解析映射之前，将其解析为\n`overrides`。",
+            "primary": "品牌配色方案（26种内置颜色中的任意一种）。",
+            "radius": "半径初始值。",
+            "size": "根字体大小预设或长度（密度缩放）。",
+            "spacing": "间距网格单位倍数（padding / margin / gap / inset）。",
             "styletarget": "",
             "surfacestyle": ""
           }
@@ -14176,11 +14176,11 @@
             "sections": "要显示的章节（默认显示全部）。",
             "showactions": "是否显示底部操作行（保存预设/重置）。",
             "size": "传递给底层控件的大小。",
-            "ui": ""
+            "ui": "针对组件外壳的按槽位类覆盖。\n\n`ui.root` 承载外框，因此当宿主已对显示区域本身进行约束时，可省略默认的固定宽度\n/高度（`w-96 h-[70vh]`）。"
           },
           "props": "ThemeCustomizer 组件的属性。\n\n一个可在真实应用中复用的主题设置主体。它不拥有任何容器\n（弹出框 / 抽屉 / 侧边栏）——调用方负责托管并决定其外壳。"
         },
-        "themecustomizerui": ""
+        "themecustomizerui": "主题自定义器外壳的插槽类映射。"
       },
       "packages_ui_src_components_theme_mode_select_types": {
         "thememodeselectprops": {
@@ -14711,8 +14711,8 @@
         "togglegroupvariant": ""
       },
       "packages_ui_src_theme_types": {
-        "themecolor": "",
-        "themepresetcolors": ""
+        "themecolor": "组件 `color` 属性词汇表——v2 中组件可\n用于绘制的角色家族（fills、statuses、carbon）。与样式配方呈 1:1 映射关系。",
+        "themepresetcolors": "自定义主题预设的颜色有效载荷：light/dark 令牌在\n引擎自有词汇表中的覆盖项（`primary: 'indigo.600'`、完整颜色名称等）。"
       }
     }
   }

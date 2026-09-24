@@ -1,7 +1,192 @@
 {
-  "generatedAt": "2026-09-17T14:01:29.350Z",
+  "generatedAt": "2026-09-24T06:34:17.458Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.50.0-beta.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.1...v0.50.0-beta.2",
+      "date": "2026-09-24",
+      "entryCount": 15,
+      "componentCount": 3,
+      "components": ["palette-picker", "theme-customizer", "table"],
+      "newComponents": [],
+      "typeCounts": {
+        "feature": 2,
+        "fix": 4,
+        "optimization": 2,
+        "chore": 3,
+        "refactor": 1,
+        "docs": 3
+      },
+      "notes": [],
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "theme-customizer",
+          "summary": "stabilize shell and remove variable panel",
+          "summaryKey": "changelog.generated.v0.50.0-beta.2.78811",
+          "commitHash": "78811",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/78811472d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["theme-customizer"]
+        },
+        {
+          "type": "fix",
+          "scope": "table",
+          "summary": "fix empty row hover style",
+          "summaryKey": "changelog.generated.v0.50.0-beta.2.fba7c",
+          "commitHash": "fba7c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/fba7c18d6",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["table"]
+        },
+        {
+          "type": "optimization",
+          "scope": "palette-picker",
+          "summary": "replace PALETTE_LEVELS by paletteColorLevels in colord",
+          "summaryKey": "changelog.generated.v0.50.0-beta.2.4264c",
+          "commitHash": "4264c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4264c89f3",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["palette-picker"]
+        },
+        {
+          "type": "chore",
+          "scope": "palette-picker",
+          "summary": "replace PALETTE_LEVELS with paletteColorLevels in tests",
+          "summaryKey": "changelog.generated.v0.50.0-beta.2.a4eb4",
+          "commitHash": "a4eb4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a4eb43cd7",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["palette-picker"]
+        },
+        {
+          "type": "feature",
+          "scope": "theme",
+          "summary": "allow TokenOverride to reference another semantic token",
+          "summaryKey": "changelog.generated.v0.50.0-beta.2.62b45",
+          "commitHash": "62b45",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/62b45f08f",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "i18n",
+          "summary": "standardize \"npm\" to \"NPM\" in English and Chinese locale files",
+          "summaryKey": "changelog.generated.v0.50.0-beta.2.b6607",
+          "commitHash": "b6607",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b660720b4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "docs",
+          "summary": "standardize quotation marks in CLI documentation",
+          "summaryKey": "changelog.generated.v0.50.0-beta.2.5e51b",
+          "commitHash": "5e51b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5e51b3a4c",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "docs",
+          "summary": "update sourcePath in generated JSON files for consistency",
+          "summaryKey": "changelog.generated.v0.50.0-beta.2.baf58",
+          "commitHash": "baf58",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/baf585885",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "shiki",
+          "summary": "move highlight logic to shared module and simplify code usage",
+          "summaryKey": "changelog.generated.v0.50.0-beta.2.9790e",
+          "commitHash": "9790e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9790ecda8",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "packages",
+          "summary": "refactor theme engine",
+          "summaryKey": "changelog.generated.v0.50.0-beta.2.b0383",
+          "commitHash": "b0383",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b0383e6e3",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "projects",
+          "summary": "update docs api",
+          "summaryKey": "changelog.generated.v0.50.0-beta.2.34893",
+          "commitHash": "34893",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/34893eeff",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "projects",
+          "summary": "add label for update migration",
+          "summaryKey": "changelog.generated.v0.50.0-beta.2.94fd2",
+          "commitHash": "94fd2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/94fd2038d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "projects",
+          "summary": "update docs demo path to \"cli/index\"",
+          "summaryKey": "changelog.generated.v0.50.0-beta.2.6862e",
+          "commitHash": "6862e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6862e8475",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.50.0-beta.2.fab4c",
+          "commitHash": "fab4c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/fab4cbd69",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.50.0-beta.2.0d96d",
+          "commitHash": "0d96d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0d96d9975",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.50.0-beta.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.1...v0.50.0-beta.1",

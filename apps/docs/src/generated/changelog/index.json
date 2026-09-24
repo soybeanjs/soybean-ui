@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-17T14:01:29.350Z",
+  "generatedAt": "2026-09-24T06:34:17.458Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -404,9 +404,9 @@
     "palette-picker": {
       "component": "palette-picker",
       "file": "palette-picker.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.50.0-beta.2",
+      "versionCount": 1,
+      "entryCount": 2
     },
     "password": {
       "component": "password",
@@ -565,9 +565,9 @@
     "table": {
       "component": "table",
       "file": "table.json",
-      "latestVersion": "v0.50.0-beta.1",
-      "versionCount": 18,
-      "entryCount": 43
+      "latestVersion": "v0.50.0-beta.2",
+      "versionCount": 19,
+      "entryCount": 44
     },
     "tabs": {
       "component": "tabs",
@@ -600,9 +600,9 @@
     "theme-customizer": {
       "component": "theme-customizer",
       "file": "theme-customizer.json",
-      "latestVersion": "v0.40.0",
-      "versionCount": 3,
-      "entryCount": 3
+      "latestVersion": "v0.50.0-beta.2",
+      "versionCount": 4,
+      "entryCount": 4
     },
     "theme-mode-select": {
       "component": "theme-mode-select",

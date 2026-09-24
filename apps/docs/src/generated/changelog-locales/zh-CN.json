@@ -2490,6 +2490,23 @@
               "fc434": "与 admission-remediation 提交同步任务状态",
               "fd6bd": "在 ubean.config.ts 中添加开发环境主机配置",
               "fdf72": "将 T4.3.3/T4.3.5/T3.2 标记为已完成，并同步生成的 API 数据"
+            },
+            "2": {
+              "34893": "更新文档 API",
+              "78811": "稳定 shell 并移除变量面板",
+              "0d96d": "更新依赖项",
+              "4264c": "将 PALETTE_LEVELS 替换为 colord 中的 paletteColorLevels",
+              "5e51b": "在 CLI 文档中统一引号格式",
+              "62b45": "允许 TokenOverride 引用另一个语义标记",
+              "6862e": "将文档示例路径更新为“cli/index”",
+              "94fd2": "为更新迁移添加标签",
+              "9790e": "将高亮逻辑移至共享模块，并简化代码用法",
+              "a4eb4": "在测试中将 PALETTE_LEVELS 替换为 paletteColorLevels",
+              "b0383": "重构主题引擎",
+              "b6607": "在英文和中文语言文件中将“npm”统一为“NPM”",
+              "baf58": "为保持一致性，请更新生成的 JSON 文件中的 sourcePath",
+              "fab4c": "更新依赖项",
+              "fba7c": "修复空行的悬停样式"
             }
           }
         }
