@@ -48,7 +48,9 @@ describe('SDateRangePicker', () => {
     });
 
     it('renders the leading slot before the range segments', () => {
-      const wrapper = mountRangePicker(undefined, { leading: '<span data-test="leading">L</span>' });
+      const wrapper = mountRangePicker(undefined, {
+        leading: '<span data-test="leading">L</span>'
+      });
 
       expect(wrapper.find('[data-test="leading"]').exists()).toBe(true);
 
@@ -56,7 +58,9 @@ describe('SDateRangePicker', () => {
     });
 
     it('renders the separator slot between the segment groups', () => {
-      const wrapper = mountRangePicker(undefined, { separator: '<span data-test="separator">TO</span>' });
+      const wrapper = mountRangePicker(undefined, {
+        separator: '<span data-test="separator">TO</span>'
+      });
 
       expect(wrapper.find('[data-test="separator"]').text()).toBe('TO');
 

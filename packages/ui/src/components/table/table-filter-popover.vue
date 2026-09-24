@@ -37,7 +37,9 @@ const hasVisibleOptions = computed(() => filteredOptions.value.length > 0);
 
 const filterSummary = computed(() => {
   if (props.filterValues.length > 0) {
-    return interpolate(messages.value.table.filterSelected, { count: String(props.filterValues.length) });
+    return interpolate(messages.value.table.filterSelected, {
+      count: String(props.filterValues.length)
+    });
   }
 
   if (props.filterValue.trim().length > 0) {
@@ -45,7 +47,9 @@ const filterSummary = computed(() => {
   }
 
   return props.filterOptions.length > 0
-    ? interpolate(messages.value.table.filterOptionsCount, { count: String(props.filterOptions.length) })
+    ? interpolate(messages.value.table.filterOptionsCount, {
+        count: String(props.filterOptions.length)
+      })
     : messages.value.table.filterNoOptions;
 });
 
@@ -99,11 +103,15 @@ function updateKeyword(value: string | number | undefined) {
         :model-value="isFilterOptionSelected(option.value)"
         :label="option.label"
         :ui="{ label: ui.filterOptionLabel }"
-        :control-props="{ 'aria-label': interpolate(messages.table.filterSelect, { label: option.label }) }"
+        :control-props="{
+          'aria-label': interpolate(messages.table.filterSelect, { label: option.label })
+        }"
         @update:model-value="toggleFilterOption(option.value)"
       />
 
-      <div v-if="!hasVisibleOptions" :class="ui.filterEmpty">{{ messages.table.filterNoMatching }}</div>
+      <div v-if="!hasVisibleOptions" :class="ui.filterEmpty">
+        {{ messages.table.filterNoMatching }}
+      </div>
     </div>
 
     <div :class="ui.filterFooter">

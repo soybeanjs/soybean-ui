@@ -153,7 +153,9 @@ describe('presetScrollbar', () => {
     expect(defaultCss).toContain('--soybean-scrollbar-width:10px');
 
     // `varPrefix` 仍可覆盖为空串（逃生舱）：此时变量回到裸名
-    const customCss = await generateCss(['scrollbar'], { scrollbar: { scrollbarWidth: '10px', varPrefix: '' } });
+    const customCss = await generateCss(['scrollbar'], {
+      scrollbar: { scrollbarWidth: '10px', varPrefix: '' }
+    });
     expect(customCss).toContain('--scrollbar-width:10px');
   });
 });
@@ -166,7 +168,10 @@ describe('presetUiUnocss preset injection', () => {
   }
 
   it('injects wind3 options; `wind3.dark` overrides `darkSelector`', async () => {
-    const css = await generate(['dark:bg-black'], { darkSelector: 'class', wind3: { dark: 'media' } });
+    const css = await generate(['dark:bg-black'], {
+      darkSelector: 'class',
+      wind3: { dark: 'media' }
+    });
     expect(css).toContain('prefers-color-scheme');
   });
 
@@ -176,7 +181,10 @@ describe('presetUiUnocss preset injection', () => {
   });
 
   it('injects full web fonts config via the `webFonts` option (wins over `fonts`)', async () => {
-    const presets = presetUiUnocss({ fonts: { sans: 'Inter' }, webFonts: { fonts: { mono: 'Fira Code' } } });
+    const presets = presetUiUnocss({
+      fonts: { sans: 'Inter' },
+      webFonts: { fonts: { mono: 'Fira Code' } }
+    });
     expect(presets.map(p => p.name)).toContain('@unocss/preset-web-fonts');
 
     const uno = await createGenerator({ presets });

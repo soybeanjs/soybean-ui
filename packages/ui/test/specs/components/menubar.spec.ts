@@ -88,7 +88,12 @@ describe('SMenubar', () => {
                     { value: 'print', label: 'Print', hidden: true }
                   ]
                 },
-                { value: 'hidden-menu', label: 'Hidden Menu', children: [{ value: 'x', label: 'X' }], hidden: true },
+                {
+                  value: 'hidden-menu',
+                  label: 'Hidden Menu',
+                  children: [{ value: 'x', label: 'X' }],
+                  hidden: true
+                },
                 { value: 'edit', label: 'Edit', children: [{ value: 'undo', label: 'Undo' }] }
               ] satisfies MenuOptionData<string>[]
             };
@@ -154,7 +159,12 @@ describe('SMenubar', () => {
 
   describe('disabled triggers', () => {
     const disabledItems: MenuOptionData<string>[] = [
-      { value: 'disabled-menu', label: 'Disabled', disabled: true, children: [{ value: 'child', label: 'Child' }] },
+      {
+        value: 'disabled-menu',
+        label: 'Disabled',
+        disabled: true,
+        children: [{ value: 'child', label: 'Child' }]
+      },
       { value: 'active-menu', label: 'Active', children: [{ value: 'ok', label: 'OK' }] }
     ];
 

@@ -198,7 +198,11 @@ describe('STree', () => {
     });
 
     it('keeps a single value with the replace selection behavior', async () => {
-      const wrapper = mountTree({ multiple: true, selectionBehavior: 'replace', defaultExpanded: ['1'] });
+      const wrapper = mountTree({
+        multiple: true,
+        selectionBehavior: 'replace',
+        defaultExpanded: ['1']
+      });
 
       await wrapper.findAll('[data-soybean-tree-item]')[1].trigger('click');
       await wrapper.findAll('[data-soybean-tree-item]')[3].trigger('click');

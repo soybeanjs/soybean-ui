@@ -41,7 +41,13 @@ function splitFrontmatter(lines) {
 
 /** Parse only the keys we care about: head.title, head.description, title, description. */
 function parseExistingMeta(fmLines) {
-  const meta = { headTitle: null, headDescription: null, title: null, description: null, hasHead: false };
+  const meta = {
+    headTitle: null,
+    headDescription: null,
+    title: null,
+    description: null,
+    hasHead: false
+  };
   let section = null;
 
   for (const line of fmLines) {

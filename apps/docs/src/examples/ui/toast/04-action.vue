@@ -18,10 +18,18 @@ function openActionToast() {
 
 function openCustomToast() {
   toast.custom(
-    h('div', { class: 'flex items-center gap-3 rounded-lg border border-neutral-2 bg-white px-4 py-3 shadow-sm' }, [
-      h('div', { class: 'i-lucide-sparkles h-4 w-4 text-primary' }),
-      h('div', { class: 'flex-1' }, [h('div', { class: 'text-sm font-medium text-neutral-9' }, 'Custom VNode content')])
-    ])
+    h(
+      'div',
+      {
+        class: 'flex items-center gap-3 rounded-lg border border-neutral-2 bg-white px-4 py-3 shadow-sm'
+      },
+      [
+        h('div', { class: 'i-lucide-sparkles h-4 w-4 text-primary' }),
+        h('div', { class: 'flex-1' }, [
+          h('div', { class: 'text-sm font-medium text-neutral-9' }, 'Custom VNode content')
+        ])
+      ]
+    )
   );
 }
 </script>

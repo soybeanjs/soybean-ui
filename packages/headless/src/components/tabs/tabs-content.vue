@@ -24,7 +24,9 @@ const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentEleme
 
 const isMountAnimationPreventedRef = shallowRef(isSelected.value);
 
-const style = computed(() => ({ animationDuration: isMountAnimationPreventedRef.value ? '0s' : undefined }));
+const style = computed(() => ({
+  animationDuration: isMountAnimationPreventedRef.value ? '0s' : undefined
+}));
 
 onMounted(() => {
   registerContentId(contentId.value);

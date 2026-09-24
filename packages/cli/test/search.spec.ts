@@ -28,7 +28,12 @@ const FIXTURES: RegistryItem[] = [
     categories: ['form', 'layout'],
     meta: { tags: ['button', 'group'] }
   }),
-  makeItem({ name: 'dialog', type: 'registry:ui', description: 'A modal dialog', categories: ['overlay', 'feedback'] }),
+  makeItem({
+    name: 'dialog',
+    type: 'registry:ui',
+    description: 'A modal dialog',
+    categories: ['overlay', 'feedback']
+  }),
   makeItem({
     name: 'accordion',
     type: 'registry:ui',

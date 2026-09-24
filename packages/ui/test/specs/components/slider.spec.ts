@@ -232,7 +232,11 @@ describe('SSlider', () => {
 
     it('enforces minStepsBetweenThumbs when stepping', async () => {
       const wrapper = mount(SSlider, {
-        props: { modelValue: [50, 52], minStepsBetweenThumbs: 3, thumbProps: { 'aria-label': 'Volume' } },
+        props: {
+          modelValue: [50, 52],
+          minStepsBetweenThumbs: 3,
+          thumbProps: { 'aria-label': 'Volume' }
+        },
         attachTo: document.body
       });
 
@@ -324,7 +328,11 @@ describe('SSlider', () => {
   describe('orientation and direction', () => {
     it('increases the value with ArrowUp in vertical orientation', async () => {
       const wrapper = mount(SSlider, {
-        props: { orientation: 'vertical', modelValue: [20], thumbProps: { 'aria-label': 'Volume' } },
+        props: {
+          orientation: 'vertical',
+          modelValue: [20],
+          thumbProps: { 'aria-label': 'Volume' }
+        },
         attachTo: document.body
       });
 
@@ -360,7 +368,12 @@ describe('SSlider', () => {
 
     it('decreases the value with ArrowUp when inverted and vertical', async () => {
       const wrapper = mount(SSlider, {
-        props: { orientation: 'vertical', inverted: true, modelValue: [20], thumbProps: { 'aria-label': 'Volume' } },
+        props: {
+          orientation: 'vertical',
+          inverted: true,
+          modelValue: [20],
+          thumbProps: { 'aria-label': 'Volume' }
+        },
         attachTo: document.body
       });
 

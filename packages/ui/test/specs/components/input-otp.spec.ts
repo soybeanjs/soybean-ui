@@ -295,7 +295,12 @@ describe('SInputOtp', () => {
       const input = wrapper.find('input').element as HTMLInputElement;
 
       input.dispatchEvent(
-        new InputEvent('beforeinput', { inputType: 'insertText', data: 'a', bubbles: true, cancelable: true })
+        new InputEvent('beforeinput', {
+          inputType: 'insertText',
+          data: 'a',
+          bubbles: true,
+          cancelable: true
+        })
       );
 
       expect(wrapper.emitted('update:modelValue')).toBeFalsy();

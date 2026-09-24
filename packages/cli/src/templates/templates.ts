@@ -263,7 +263,11 @@ export function getTemplate(name: FrameworkType): ProjectTemplate | null {
   return TEMPLATES[name] ?? null;
 }
 
-export function listTemplates(): Array<{ name: string; description: string; framework: FrameworkType }> {
+export function listTemplates(): Array<{
+  name: string;
+  description: string;
+  framework: FrameworkType;
+}> {
   return Object.values(TEMPLATES).map(t => ({
     name: t.name,
     description: t.description,

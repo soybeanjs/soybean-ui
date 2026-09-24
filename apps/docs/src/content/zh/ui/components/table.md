@@ -201,7 +201,10 @@ tableRef.value.previousPage();
   :columns="columns"
   :data="data"
   :row-key="row => row.id"
-  :table-options="{ enableRowSelection: true, getFilteredSelectedRowModel: createFilteredSelectedRowModel() }"
+  :table-options="{
+    enableRowSelection: true,
+    getFilteredSelectedRowModel: createFilteredSelectedRowModel()
+  }"
 />
 ```
 

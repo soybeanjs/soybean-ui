@@ -436,7 +436,9 @@ describe('SConfigProvider', () => {
       document.head.querySelectorAll('#soybean-theme').forEach(node => node.remove());
 
       const wrapper = mount(SConfigProvider, {
-        props: { theme: { font: { sans: 'Inter', heading: 'Playfair Display', mono: 'JetBrains Mono' } } },
+        props: {
+          theme: { font: { sans: 'Inter', heading: 'Playfair Display', mono: 'JetBrains Mono' } }
+        },
         slots: { default: '<div />' },
         attachTo: document.body
       });

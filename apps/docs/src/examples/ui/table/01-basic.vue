@@ -26,7 +26,13 @@ const data: TableData[] = [
   { id: 2, name: 'Jane Smith', age: 25, address: '456 Elm St' },
   { id: 3, name: 'Bob Johnson', age: 40, address: '789 Oak St' },
   { id: 4, name: 'Alice Brown', age: 35, address: '321 Pine St' },
-  { id: 5, name: 'Charlie Davis', age: 28, address: '654 Maple', details: { description: 'Detail for Charlie Davis' } },
+  {
+    id: 5,
+    name: 'Charlie Davis',
+    age: 28,
+    address: '654 Maple',
+    details: { description: 'Detail for Charlie Davis' }
+  },
   { id: 6, name: 'Eve White', age: 32, address: '987 Cedar St' },
   { id: 7, name: 'Frank Green', age: 45, address: '246 Birch St' },
   { id: 8, name: 'Grace Lee', age: 27, address: '135 Spruce St' },

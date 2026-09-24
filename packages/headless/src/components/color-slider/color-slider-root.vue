@@ -119,7 +119,9 @@ watch(
   { immediate: true }
 );
 
-watch(() => [props.channel, props.colorSpace, props.format], syncColorFromModel, { immediate: true });
+watch(() => [props.channel, props.colorSpace, props.format], syncColorFromModel, {
+  immediate: true
+});
 
 provideColorSliderRootContext({
   color,

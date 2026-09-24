@@ -51,7 +51,12 @@ export function useDateFormatter(initialLocale: string, opts: DateFormatterOptio
   }
 
   function fullMonthAndYear(date: Date, options: DateFormatterOptions = {}) {
-    return new Intl.DateTimeFormat(locale.value, { ...opts, month: 'long', year: 'numeric', ...options }).format(date);
+    return new Intl.DateTimeFormat(locale.value, {
+      ...opts,
+      month: 'long',
+      year: 'numeric',
+      ...options
+    }).format(date);
   }
 
   function fullMonth(date: Date, options: DateFormatterOptions = {}) {

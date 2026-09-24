@@ -276,10 +276,22 @@ export const CORE_RULES: Record<CoreToken, TokenRule> = {
   ring: { kind: 'level', source: 'primary', light: 500, dark: 500 },
   // —— brand ——
   // 500 是 shadcn 谱系的习惯档位（旧引擎同为 500）。
-  primary: { kind: 'level', source: 'primary', light: 500, dark: 500, neutral: { light: 800, dark: 200 } },
+  primary: {
+    kind: 'level',
+    source: 'primary',
+    light: 500,
+    dark: 500,
+    neutral: { light: 800, dark: 200 }
+  },
   // 实心上的文字：亮暗都取 base 最浅档（贴白）。唯一的例外是 primary 选中性色板时——
   // 那一支的暗色填充会变成浅档（`{p}.200`），白字读不出来，所以取最深档。
-  'primary-foreground': { kind: 'level', source: 'base', light: 50, dark: 50, neutral: { light: 50, dark: 950 } },
+  'primary-foreground': {
+    kind: 'level',
+    source: 'base',
+    light: 50,
+    dark: 50,
+    neutral: { light: 50, dark: 950 }
+  },
   // —— carbon surface（反相表面，原 `inverse`，§12-9 复原旧名）——
   carbon: { kind: 'level', source: 'base', light: 800, dark: 100 },
   // —— region (mirrors global roles) ——
@@ -289,9 +301,17 @@ export const CORE_RULES: Record<CoreToken, TokenRule> = {
   'sidebar-foreground': { kind: 'mirror', light: 'foreground', dark: 'foreground' },
   'sidebar-border': { kind: 'mirror', light: 'border', dark: 'border' },
   'sidebar-accent': { kind: 'mirror', light: 'accent', dark: 'accent' },
-  'sidebar-accent-foreground': { kind: 'mirror', light: 'accent-foreground', dark: 'accent-foreground' },
+  'sidebar-accent-foreground': {
+    kind: 'mirror',
+    light: 'accent-foreground',
+    dark: 'accent-foreground'
+  },
   'sidebar-primary': { kind: 'mirror', light: 'primary', dark: 'primary' },
-  'sidebar-primary-foreground': { kind: 'mirror', light: 'primary-foreground', dark: 'primary-foreground' },
+  'sidebar-primary-foreground': {
+    kind: 'mirror',
+    light: 'primary-foreground',
+    dark: 'primary-foreground'
+  },
   'sidebar-ring': { kind: 'mirror', light: 'ring', dark: 'ring' }
 };
 

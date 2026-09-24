@@ -200,7 +200,12 @@ const FONT_ARMS: readonly {
   { arm: 'sans', labelKey: 'fontSans', table: THEME_FONT_SANS, keys: themeFontSansKeys },
   { arm: 'serif', labelKey: 'fontSerif', table: THEME_FONT_SERIF, keys: themeFontSerifKeys },
   { arm: 'mono', labelKey: 'fontMono', table: THEME_FONT_MONO, keys: themeFontMonoKeys },
-  { arm: 'heading', labelKey: 'fontHeading', table: THEME_FONT_HEADING, keys: themeFontHeadingKeys }
+  {
+    arm: 'heading',
+    labelKey: 'fontHeading',
+    table: THEME_FONT_HEADING,
+    keys: themeFontHeadingKeys
+  }
 ];
 
 /**

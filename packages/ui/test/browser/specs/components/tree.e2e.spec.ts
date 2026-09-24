@@ -39,7 +39,10 @@ const largeTreeItems: LabeledTreeItem[] = [
   {
     value: 'root',
     label: 'Root',
-    children: Array.from({ length: 2000 }, (_, index) => ({ value: `child-${index}`, label: `Child ${index}` }))
+    children: Array.from({ length: 2000 }, (_, index) => ({
+      value: `child-${index}`,
+      label: `Child ${index}`
+    }))
   },
   { value: 'other', label: 'Other' }
 ];

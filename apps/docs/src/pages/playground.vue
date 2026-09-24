@@ -178,7 +178,9 @@ onMounted(() => {
         >
           <template #content>
             <component :is="loadedComponent" v-if="loadedComponent" />
-            <div v-else class="py-12 text-center text-muted-foreground">{{ t('playground.loading') }}</div>
+            <div v-else class="py-12 text-center text-muted-foreground">
+              {{ t('playground.loading') }}
+            </div>
           </template>
         </STabs>
       </SCard>

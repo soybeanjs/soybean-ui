@@ -103,7 +103,9 @@ describe('registry loader', () => {
 
       await fs.writeFile(path.join(subDir, 'registry.json'), JSON.stringify(registry));
 
-      const result = await readRegistryWithIncludes(path.join('sub', 'nested', 'registry.json'), { cwd: tmpDir });
+      const result = await readRegistryWithIncludes(path.join('sub', 'nested', 'registry.json'), {
+        cwd: tmpDir
+      });
 
       expect(result.registry.name).toBe('nested-registry');
     });

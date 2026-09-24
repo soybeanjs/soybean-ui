@@ -217,7 +217,9 @@ onBeforeUnmount(() => {
           <template #default>
             <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
               <div v-for="stat in summaryStats" :key="stat.label" class="docs-subtle-card px-4 py-3">
-                <div class="text-2xl font-bold tracking-[-0.04em] text-foreground">{{ stat.value }}</div>
+                <div class="text-2xl font-bold tracking-[-0.04em] text-foreground">
+                  {{ stat.value }}
+                </div>
                 <div class="mt-1 text-sm text-muted-foreground">{{ stat.label }}</div>
               </div>
             </div>

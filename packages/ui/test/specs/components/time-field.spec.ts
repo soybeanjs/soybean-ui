@@ -17,7 +17,10 @@ describe('STimeField', () => {
 
   describe('rendering', () => {
     it('renders the default hour/minute segments and custom class', () => {
-      const wrapper = mountTimeField({ class: 'test-time-field', modelValue: new Date(2000, 0, 1, 9, 30) });
+      const wrapper = mountTimeField({
+        class: 'test-time-field',
+        modelValue: new Date(2000, 0, 1, 9, 30)
+      });
 
       expect(wrapper.classes()).toContain('test-time-field');
       expect(wrapper.find('[data-segment="hour"]').exists()).toBe(true);
@@ -27,7 +30,10 @@ describe('STimeField', () => {
     });
 
     it('renders second and day-period segments when needed', () => {
-      const wrapper = mountTimeField({ modelValue: new Date(2000, 0, 1, 9, 30, 15), granularity: 'second' });
+      const wrapper = mountTimeField({
+        modelValue: new Date(2000, 0, 1, 9, 30, 15),
+        granularity: 'second'
+      });
 
       expect(wrapper.find('[data-segment="second"]').exists()).toBe(true);
       expect(wrapper.find('[data-segment="dayPeriod"]').exists()).toBe(true);
@@ -56,7 +62,9 @@ describe('STimeField', () => {
     });
 
     it('renders the trailing slot after the time segments', () => {
-      const wrapper = mountTimeField(undefined, { trailing: '<span data-test="trailing">T</span>' });
+      const wrapper = mountTimeField(undefined, {
+        trailing: '<span data-test="trailing">T</span>'
+      });
 
       expect(wrapper.find('[data-test="trailing"]').exists()).toBe(true);
 
@@ -233,7 +241,11 @@ describe('STimeField', () => {
     });
 
     it('disables the hidden input and reflects required', () => {
-      const wrapper = mountTimeField({ disabled: true, required: true, modelValue: new Date(2000, 0, 1, 9, 30) });
+      const wrapper = mountTimeField({
+        disabled: true,
+        required: true,
+        modelValue: new Date(2000, 0, 1, 9, 30)
+      });
 
       const input = wrapper.find('input[type="time"]');
 

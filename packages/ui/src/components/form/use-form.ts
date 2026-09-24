@@ -25,7 +25,10 @@ export function useForm<S extends FormValuesSchema, Values extends FormValues = 
   options: Omit<UseFormOptions<Values>, 'schema'> & { schema: S }
 ): UseFormReturn<Values>;
 export function useForm<Values extends FormValues = FormValues>(
-  options: Omit<UseFormOptions<Values>, 'defaultValues'> & { schema?: undefined; defaultValues?: Values }
+  options: Omit<UseFormOptions<Values>, 'defaultValues'> & {
+    schema?: undefined;
+    defaultValues?: Values;
+  }
 ): UseFormReturn<Values>;
 export function useForm<Values extends FormValues = FormValues>(
   options: Omit<UseFormOptions<Values>, 'schema'> & { schema?: FormValuesSchema }

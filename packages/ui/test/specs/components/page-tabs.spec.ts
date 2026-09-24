@@ -403,7 +403,10 @@ describe('SPageTabs', () => {
       await wrapper.findAll('[data-soybean-page-tabs-item]')[1].trigger('pointerenter');
 
       expect(wrapper.emitted('contextmenu')).toBeTruthy();
-      expect(wrapper.emitted('contextmenu')![0][0]).toMatchObject({ value: 'profile', label: 'Profile' });
+      expect(wrapper.emitted('contextmenu')![0][0]).toMatchObject({
+        value: 'profile',
+        label: 'Profile'
+      });
 
       wrapper.unmount();
     });

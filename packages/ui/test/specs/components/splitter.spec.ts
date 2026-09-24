@@ -346,7 +346,11 @@ describe('Splitter', () => {
       const handle = wrapper.find('[data-splitter-resize-handle]');
 
       mockRect(groupElement.element, { x: 0, y: 0, width: 100, height: 40 });
-      dispatchPointerEvent(handle.element, 'pointerdown', { clientX: 50, clientY: 20, pointerId: 1 });
+      dispatchPointerEvent(handle.element, 'pointerdown', {
+        clientX: 50,
+        clientY: 20,
+        pointerId: 1
+      });
       dispatchPointerEvent(document, 'pointermove', { clientX: 0, clientY: 20, pointerId: 1 });
       dispatchPointerEvent(document, 'pointerup', { clientX: 0, clientY: 20, pointerId: 1 });
 
@@ -377,7 +381,11 @@ describe('Splitter', () => {
       const handle = wrapper.find('[data-splitter-resize-handle]');
 
       mockRect(groupElement.element, { x: 0, y: 0, width: 100, height: 40 });
-      dispatchPointerEvent(handle.element, 'pointerdown', { clientX: 50, clientY: 20, pointerId: 1 });
+      dispatchPointerEvent(handle.element, 'pointerdown', {
+        clientX: 50,
+        clientY: 20,
+        pointerId: 1
+      });
       dispatchPointerEvent(document, 'pointermove', { clientX: 100, clientY: 20, pointerId: 1 });
       dispatchPointerEvent(document, 'pointerup', { clientX: 100, clientY: 20, pointerId: 1 });
 
@@ -414,7 +422,11 @@ describe('Splitter', () => {
       const handle = wrapper.find('[data-splitter-resize-handle]');
 
       mockRect(groupElement.element, { x: 0, y: 0, width: 100, height: 40 });
-      dispatchPointerEvent(handle.element, 'pointerdown', { clientX: 50, clientY: 20, pointerId: 1 });
+      dispatchPointerEvent(handle.element, 'pointerdown', {
+        clientX: 50,
+        clientY: 20,
+        pointerId: 1
+      });
       dispatchPointerEvent(document, 'pointermove', { clientX: 60, clientY: 20, pointerId: 1 });
       dispatchPointerEvent(document, 'pointerup', { clientX: 60, clientY: 20, pointerId: 1 });
 
@@ -799,7 +811,11 @@ describe('Splitter', () => {
       const handle = wrapper.find('[data-splitter-resize-handle]');
 
       mockRect(groupElement.element, { x: 0, y: 0, width: 100, height: 40 });
-      dispatchPointerEvent(handle.element, 'pointerdown', { clientX: 50, clientY: 20, pointerId: 1 });
+      dispatchPointerEvent(handle.element, 'pointerdown', {
+        clientX: 50,
+        clientY: 20,
+        pointerId: 1
+      });
       // Drag right in RTL should shrink the first panel (delta inverted)
       dispatchPointerEvent(document, 'pointermove', { clientX: 70, clientY: 20, pointerId: 1 });
       dispatchPointerEvent(document, 'pointerup', { clientX: 70, clientY: 20, pointerId: 1 });

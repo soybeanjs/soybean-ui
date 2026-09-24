@@ -181,7 +181,12 @@ defineExpose({
     />
 
     <VisuallyHidden v-if="totalSteps > 0" as="span" role="status" aria-live="polite" aria-atomic="true">
-      {{ interpolate(messages.stepper.stepOf, { current: String(currentStep), total: String(totalSteps) }) }}
+      {{
+        interpolate(messages.stepper.stepOf, {
+          current: String(currentStep),
+          total: String(totalSteps)
+        })
+      }}
     </VisuallyHidden>
   </Primitive>
 </template>

@@ -37,7 +37,9 @@ export const build = new Command()
       process.exit(1);
     }
 
-    const registryResult = await readRegistryWithIncludes(resolvedRegistryFile, { cwd: options.cwd });
+    const registryResult = await readRegistryWithIncludes(resolvedRegistryFile, {
+      cwd: options.cwd
+    });
 
     const registryRootDir = registryResult.usesInclude
       ? path.dirname(path.resolve(options.cwd, options.registryFile))

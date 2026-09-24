@@ -142,7 +142,10 @@ export const [provideListboxRootContext, useListboxRootContext] = useContext(
     };
 
     const onEnter = (event: Event) => {
-      const entryFocusEvent = new CustomEvent('listbox.entryFocus', { bubbles: false, cancelable: true });
+      const entryFocusEvent = new CustomEvent('listbox.entryFocus', {
+        bubbles: false,
+        cancelable: true
+      });
       event.currentTarget?.dispatchEvent(entryFocusEvent);
       onEntryFocus(entryFocusEvent);
 

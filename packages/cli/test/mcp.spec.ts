@@ -114,7 +114,9 @@ describe('MCP handleToolCall (integration)', () => {
     });
 
     it('returns not-found message for unknown query', async () => {
-      const result = await handleToolCall('search_items_in_registries', { query: 'zzznonexistent' });
+      const result = await handleToolCall('search_items_in_registries', {
+        query: 'zzznonexistent'
+      });
       const text = textOf(result);
       expect(text).toContain('No items found');
     });
@@ -142,7 +144,9 @@ describe('MCP handleToolCall (integration)', () => {
 
   describe('get_add_command_for_items', () => {
     it('returns the add command', async () => {
-      const result = await handleToolCall('get_add_command_for_items', { items: ['button', 'dialog'] });
+      const result = await handleToolCall('get_add_command_for_items', {
+        items: ['button', 'dialog']
+      });
       const text = textOf(result);
       expect(text).toBe('npx sbean@latest add button dialog');
     });

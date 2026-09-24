@@ -196,7 +196,10 @@ describe('SLink', () => {
   describe('injected linkComponent', () => {
     const FakeLink = defineComponent({
       name: 'FakeLink',
-      props: { to: { type: [String, Object], default: undefined }, locale: { type: String, default: undefined } },
+      props: {
+        to: { type: [String, Object], default: undefined },
+        locale: { type: String, default: undefined }
+      },
       setup(_props, { slots }) {
         return () => h('a', { 'data-fake-link': '', href: '/fake' }, slots.default?.({ isActive: true }));
       }
@@ -206,7 +209,9 @@ describe('SLink', () => {
       const wrapper = mount(SLink, {
         props: { to: '/about' },
         slots: { default: 'About' },
-        global: { provide: { [CONFIG_PROVIDER_CONTEXT_KEY as symbol]: { linkComponent: FakeLink } } },
+        global: {
+          provide: { [CONFIG_PROVIDER_CONTEXT_KEY as symbol]: { linkComponent: FakeLink } }
+        },
         attachTo: document.body
       });
 
@@ -220,7 +225,9 @@ describe('SLink', () => {
     it('forwards undeclared props (e.g. locale) to the injected linkComponent', () => {
       const wrapper = mount(SLink, {
         props: { to: '/about', locale: 'zh' },
-        global: { provide: { [CONFIG_PROVIDER_CONTEXT_KEY as symbol]: { linkComponent: FakeLink } } },
+        global: {
+          provide: { [CONFIG_PROVIDER_CONTEXT_KEY as symbol]: { linkComponent: FakeLink } }
+        },
         attachTo: document.body
       });
 

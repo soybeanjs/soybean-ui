@@ -87,7 +87,10 @@ describe('theme envelope', () => {
       overrides: { light: { primary: 'zinc.800', card: 42 }, dark: { carbon: 'oklch(20% 0 0)' } }
     });
 
-    expect(options.overrides).toEqual({ light: { primary: 'zinc.800' }, dark: { carbon: 'oklch(20% 0 0)' } });
+    expect(options.overrides).toEqual({
+      light: { primary: 'zinc.800' },
+      dark: { carbon: 'oklch(20% 0 0)' }
+    });
   });
 
   it('drops override keys that are not tokens of the current contract', () => {
@@ -117,10 +120,15 @@ describe('theme envelope', () => {
         mode: 'dark',
         options: {
           base: 'zinc',
-          overrides: { light: { surface: 'stone.200', elevated: 'stone.100', 'sidebar-surface': 'stone.50' } }
+          overrides: {
+            light: { surface: 'stone.200', elevated: 'stone.100', 'sidebar-surface': 'stone.50' }
+          }
         },
         presets: {
-          mine: { light: { surface: 'stone.200', elevated: 'stone.100' }, dark: { scrim: 'black' } },
+          mine: {
+            light: { surface: 'stone.200', elevated: 'stone.100' },
+            dark: { scrim: 'black' }
+          },
           // 键全部属于已删除的 token：整条 preset 没有可迁移的内容
           dead: { light: { 'border-strong': 'zinc.600', 'destructive-subtle': 'red.50' } }
         },
@@ -142,10 +150,18 @@ describe('theme envelope', () => {
 
   it('drops a pre-v2 style snapshot but keeps a current one', () => {
     const v1 = parseThemeEnvelope(
-      JSON.stringify({ v: 1, options: {}, style: ':root {\n  --soybean-background: var(--zinc-50);\n}' })
+      JSON.stringify({
+        v: 1,
+        options: {},
+        style: ':root {\n  --soybean-background: var(--zinc-50);\n}'
+      })
     );
     const v2 = parseThemeEnvelope(
-      JSON.stringify({ v: THEME_ENVELOPE_VERSION, options: {}, style: ':root {\n  --background: var(--zinc-50);\n}' })
+      JSON.stringify({
+        v: THEME_ENVELOPE_VERSION,
+        options: {},
+        style: ':root {\n  --background: var(--zinc-50);\n}'
+      })
     );
 
     // 快照是引擎产物：旧词汇的快照会让首帧停在没有主题变量的静态默认层上，
@@ -235,7 +251,11 @@ describe('first-paint script', () => {
   it('patches the existing style element instead of adding one', () => {
     document.head.innerHTML = '';
     document.body.innerHTML = `<style id="${THEME_STYLE_ID}">:root{--background:var(--zinc-100)}</style>`;
-    writeThemeEnvelope({ options: {}, mode: 'dark', style: ':root{--background:var(--slate-900)}' });
+    writeThemeEnvelope({
+      options: {},
+      mode: 'dark',
+      style: ':root{--background:var(--slate-900)}'
+    });
 
     const stylesBefore = document.querySelectorAll('style').length;
     runScript(createThemeInitScript());
@@ -259,7 +279,10 @@ describe('first-paint script', () => {
   it('resolves auto against the OS preference and honours the media selector', () => {
     document.documentElement.classList.remove('dark');
     writeThemeEnvelope({ options: {}, mode: 'auto' });
-    vi.stubGlobal('matchMedia', (query: string) => ({ matches: query.includes('dark'), media: query }));
+    vi.stubGlobal('matchMedia', (query: string) => ({
+      matches: query.includes('dark'),
+      media: query
+    }));
     runScript(createThemeInitScript());
     expect(document.documentElement.classList.contains('dark')).toBe(true);
 
@@ -290,7 +313,11 @@ describe('first-paint script', () => {
 
   it('creates the runtime element only when the page has none, and never uses !important', () => {
     document.body.innerHTML = '';
-    writeThemeEnvelope({ options: {}, mode: 'light', style: ':root{--background:var(--slate-50)}' });
+    writeThemeEnvelope({
+      options: {},
+      mode: 'light',
+      style: ':root{--background:var(--slate-50)}'
+    });
 
     runScript(createThemeInitScript());
 

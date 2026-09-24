@@ -22,7 +22,9 @@ const pkgPath = 'packages/headless/package.json';
 
 async function handleStub(reset?: boolean) {
   const pkgExports = reset ? headlessPkg.publishConfig.exports : headlessExports;
-  const manifest = headlessPkg as Omit<typeof headlessPkg, 'exports'> & { exports: Record<string, unknown> };
+  const manifest = headlessPkg as Omit<typeof headlessPkg, 'exports'> & {
+    exports: Record<string, unknown>;
+  };
 
   manifest.exports = pkgExports;
 

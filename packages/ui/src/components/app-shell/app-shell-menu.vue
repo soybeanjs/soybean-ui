@@ -61,7 +61,10 @@ const treeProps = computed(() => ({
   ...props.menuProps?.tree
 }));
 
-const splitProps = computed(() => ({ expandStrategy: props.expandStrategy, ...props.menuProps?.split }));
+const splitProps = computed(() => ({
+  expandStrategy: props.expandStrategy,
+  ...props.menuProps?.split
+}));
 
 const treeNavProps = computed(() => props.menuProps?.treeNav ?? {});
 

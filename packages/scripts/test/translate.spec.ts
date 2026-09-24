@@ -333,7 +333,9 @@ describe('shared/translate', () => {
         const text = jsonBody(init).text as string[];
 
         return createMockResponse({
-          translations: text.map(item => ({ text: item === 'Hello' ? '你好' : '世界 SBPH0TOKEN' }))
+          translations: text.map(item => ({
+            text: item === 'Hello' ? '你好' : '世界 SBPH0TOKEN'
+          }))
         });
       });
 

@@ -67,14 +67,18 @@ function resolveLocaleDisplayName(locale: string): string {
     return 'English';
   }
 
-  const languageDisplayNames = new Intl.DisplayNames([normalizedLocale, languageCode, 'en'], { type: 'language' });
+  const languageDisplayNames = new Intl.DisplayNames([normalizedLocale, languageCode, 'en'], {
+    type: 'language'
+  });
   const languageName = languageDisplayNames.of(languageCode) ?? normalizedLocale;
 
   if (!regionCode) {
     return languageName;
   }
 
-  const regionDisplayNames = new Intl.DisplayNames([normalizedLocale, languageCode, 'en'], { type: 'region' });
+  const regionDisplayNames = new Intl.DisplayNames([normalizedLocale, languageCode, 'en'], {
+    type: 'region'
+  });
   const regionName = regionDisplayNames.of(regionCode.toUpperCase());
 
   if (!regionName) {

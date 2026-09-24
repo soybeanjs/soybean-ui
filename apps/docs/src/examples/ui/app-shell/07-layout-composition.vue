@@ -24,8 +24,10 @@ const breadcrumbs: BreadcrumbOptionData[] = [
 
 <template>
   <div class="h-120 w-full border border-border border-solid rounded-md overflow-hidden">
-    <!-- The same shell assembled by hand: layout regions, trigger, menu, breadcrumb,
-         widths, and region classes are all composed by the caller. -->
+    <!--
+ The same shell assembled by hand: layout regions, trigger, menu, breadcrumb,
+         widths, and region classes are all composed by the caller. 
+-->
     <SLayout
       v-model:open="open"
       :sidebar-width="240"

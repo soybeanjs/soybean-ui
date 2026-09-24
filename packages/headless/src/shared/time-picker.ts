@@ -57,7 +57,12 @@ export function createTimeOptions(props: CreateTimeOptionsProps): TimePickerOpti
     const hour = Math.floor(totalSeconds / 3600) % 24;
     const minute = Math.floor((totalSeconds % 3600) / 60);
     const second = totalSeconds % 60;
-    const value = set(props.reference, { hours: hour, minutes: minute, seconds: second, milliseconds: 0 });
+    const value = set(props.reference, {
+      hours: hour,
+      minutes: minute,
+      seconds: second,
+      milliseconds: 0
+    });
 
     return {
       value,

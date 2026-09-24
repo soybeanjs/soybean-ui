@@ -98,7 +98,14 @@ head:
 
 ```vue
 <SCommand
-  :items="[{ label: '建议', value: 'suggestions', separator: true, items: [{ label: '日历', value: 'calendar' }] }]"
+  :items="[
+    {
+      label: '建议',
+      value: 'suggestions',
+      separator: true,
+      items: [{ label: '日历', value: 'calendar' }]
+    }
+  ]"
 />
 ```
 

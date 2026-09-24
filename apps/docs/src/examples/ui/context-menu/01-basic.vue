@@ -12,7 +12,13 @@ const menus: MenuOptionData<string>[] = [
   { value: '01', label: 'Profile', icon: 'lucide:user', shortcut: ['command', 'shift', 'p'] },
   { value: '02', label: 'Billing', icon: 'lucide:credit-card', shortcut: ['command', 'b'] },
   { value: '03', label: 'Settings', icon: 'lucide:settings', shortcut: ['command', 's'] },
-  { value: '04', label: 'Keyboard shortcuts', icon: 'lucide:keyboard', shortcut: ['command', 'k'], separator: true },
+  {
+    value: '04',
+    label: 'Keyboard shortcuts',
+    icon: 'lucide:keyboard',
+    shortcut: ['command', 'k'],
+    separator: true
+  },
   { value: '05', label: 'Team', icon: 'lucide:users', shortcut: ['command', 'shift', 't'] },
   {
     value: '06',
@@ -21,13 +27,31 @@ const menus: MenuOptionData<string>[] = [
     separator: true,
     children: [
       { value: '0601', label: 'Email', icon: 'lucide:mail', shortcut: ['command', 'shift', 'e'] },
-      { value: '0602', label: 'Facebook', icon: 'simple-icons:facebook', shortcut: ['command', 'shift', 'f'] },
-      { value: '0603', label: 'Twitter', icon: 'simple-icons:x', shortcut: ['command', 'shift', 't'], separator: true },
+      {
+        value: '0602',
+        label: 'Facebook',
+        icon: 'simple-icons:facebook',
+        shortcut: ['command', 'shift', 'f']
+      },
+      {
+        value: '0603',
+        label: 'Twitter',
+        icon: 'simple-icons:x',
+        shortcut: ['command', 'shift', 't'],
+        separator: true
+      },
       {
         value: '0604',
         label: 'More',
         icon: 'lucide:circle-plus',
-        children: [{ value: '060401', label: 'Message', icon: 'lucide:message-circle', shortcut: ['command', 'm'] }]
+        children: [
+          {
+            value: '060401',
+            label: 'Message',
+            icon: 'lucide:message-circle',
+            shortcut: ['command', 'm']
+          }
+        ]
       }
     ]
   },

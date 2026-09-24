@@ -107,7 +107,12 @@ describe('SCheckboxCard', () => {
   describe('accessibility', () => {
     it('has no a11y violations', async () => {
       const wrapper = mount(SCheckboxCard, {
-        props: { label: 'Card', icon: 'lucide:star', description: 'Card description', modelValue: true },
+        props: {
+          label: 'Card',
+          icon: 'lucide:star',
+          description: 'Card description',
+          modelValue: true
+        },
         attachTo: document.body
       });
 

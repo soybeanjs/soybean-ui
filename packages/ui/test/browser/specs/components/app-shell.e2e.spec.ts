@@ -453,7 +453,12 @@ describe('SAppShell (e2e)', () => {
 
     it('shrinks the rail-less sidebar to the folded pane for horizontal-vertical', async () => {
       const { unmount } = await renderComponent(
-        createHarness({ items, mode: 'horizontal-vertical', modelValue: 'projects', defaultOpen: false })
+        createHarness({
+          items,
+          mode: 'horizontal-vertical',
+          modelValue: 'projects',
+          defaultOpen: false
+        })
       );
 
       await expect.element(page.getByRole('menuitem', { name: 'Workbench' })).toBeVisible();
@@ -675,7 +680,12 @@ describe('SAppShell (e2e)', () => {
 
     it('centers the collapsed trigger over the folded column of horizontal-dual-vertical', async () => {
       const { unmount } = await renderComponent(
-        createHarness({ items, mode: 'horizontal-dual-vertical', modelValue: 'soybean-ui', defaultOpen: false })
+        createHarness({
+          items,
+          mode: 'horizontal-dual-vertical',
+          modelValue: 'soybean-ui',
+          defaultOpen: false
+        })
       );
 
       await waitForStableGeometry();

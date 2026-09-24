@@ -40,14 +40,26 @@ describe('resolveSplitNavSidebarColumns', () => {
   });
 
   it('keeps only the rail in the sidebar of vertical-horizontal', () => {
-    expect(resolveSplitNavSidebarColumns({ mode: 'vertical-horizontal', items, modelValue: 'soybean-ui' })).toEqual({
+    expect(
+      resolveSplitNavSidebarColumns({
+        mode: 'vertical-horizontal',
+        items,
+        modelValue: 'soybean-ui'
+      })
+    ).toEqual({
       rail: true,
       pane: false
     });
   });
 
   it('takes the pane alone in the rail-less sidebar of horizontal-vertical', () => {
-    expect(resolveSplitNavSidebarColumns({ mode: 'horizontal-vertical', items, modelValue: 'soybean-ui' })).toEqual({
+    expect(
+      resolveSplitNavSidebarColumns({
+        mode: 'horizontal-vertical',
+        items,
+        modelValue: 'soybean-ui'
+      })
+    ).toEqual({
       rail: false,
       pane: true
     });
@@ -61,7 +73,11 @@ describe('resolveSplitNavSidebarColumns', () => {
   describe('horizontal-dual-vertical', () => {
     it('reserves nothing for a first-level leaf', () => {
       expect(
-        resolveSplitNavSidebarColumns({ mode: 'horizontal-dual-vertical', items, modelValue: 'overview' })
+        resolveSplitNavSidebarColumns({
+          mode: 'horizontal-dual-vertical',
+          items,
+          modelValue: 'overview'
+        })
       ).toEqual({ rail: false, pane: false });
     });
 
@@ -93,10 +109,20 @@ describe('resolveSplitNavSidebarColumns', () => {
       // `SplitNavRoot` rebuilds its path on every model change, so the columns
       // have to hold up with an empty path as well.
       expect(
-        resolveSplitNavSidebarColumns({ mode: 'horizontal-dual-vertical', items, modelValue: 'soybean-ui' })
+        resolveSplitNavSidebarColumns({
+          mode: 'horizontal-dual-vertical',
+          items,
+          modelValue: 'soybean-ui'
+        })
       ).toEqual({ rail: true, pane: true });
 
-      expect(resolveSplitNavSidebarColumns({ mode: 'horizontal-dual-vertical', items, modelValue: 'tasks' })).toEqual({
+      expect(
+        resolveSplitNavSidebarColumns({
+          mode: 'horizontal-dual-vertical',
+          items,
+          modelValue: 'tasks'
+        })
+      ).toEqual({
         rail: true,
         pane: false
       });
@@ -113,7 +139,11 @@ describe('resolveSplitNavSidebarColumns', () => {
     ];
 
     expect(
-      resolveSplitNavSidebarColumns({ mode: 'dual-vertical', items: hiddenLevel, modelValue: 'workbench' })
+      resolveSplitNavSidebarColumns({
+        mode: 'dual-vertical',
+        items: hiddenLevel,
+        modelValue: 'workbench'
+      })
     ).toEqual({ rail: true, pane: false });
   });
 
@@ -129,7 +159,13 @@ describe('resolveSplitNavSidebarColumns', () => {
 
     // The group node is not a rail item: the selected leaf stands for itself, so
     // the pane below it stays empty.
-    expect(resolveSplitNavSidebarColumns({ mode: 'dual-vertical', items: grouped, modelValue: 'overview' })).toEqual({
+    expect(
+      resolveSplitNavSidebarColumns({
+        mode: 'dual-vertical',
+        items: grouped,
+        modelValue: 'overview'
+      })
+    ).toEqual({
       rail: true,
       pane: false
     });

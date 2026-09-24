@@ -75,7 +75,12 @@ function slideLength(input: string): string | undefined {
 
 // ---- slide helpers ---------------------------------------------------------
 
-const DIRECTION_SHORTHAND: Record<string, string> = { t: 'top', b: 'bottom', l: 'left', r: 'right' };
+const DIRECTION_SHORTHAND: Record<string, string> = {
+  t: 'top',
+  b: 'bottom',
+  l: 'left',
+  r: 'right'
+};
 
 /** top/left 方向位移取负，与 tailwindcss-animate 约定一致 */
 function negateForDirection(value: string, direction: string): string {

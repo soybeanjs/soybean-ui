@@ -51,7 +51,9 @@ describe('SDrawer touch scroll arbitration (e2e)', () => {
 
     dispatchTouch('touchstart', box, [point], { timeStamp: 1000 });
 
-    const firstMove = dispatchTouch('touchmove', box, [{ ...point, y: point.y + 8 }], { timeStamp: 1010 });
+    const firstMove = dispatchTouch('touchmove', box, [{ ...point, y: point.y + 8 }], {
+      timeStamp: 1010
+    });
 
     expect(firstMove.defaultPrevented).toBe(true);
 
@@ -75,7 +77,9 @@ describe('SDrawer touch scroll arbitration (e2e)', () => {
 
     dispatchTouch('touchstart', box, [point], { timeStamp: 1000 });
 
-    const move = dispatchTouch('touchmove', box, [{ ...point, y: point.y + 30 }], { timeStamp: 1030 });
+    const move = dispatchTouch('touchmove', box, [{ ...point, y: point.y + 30 }], {
+      timeStamp: 1030
+    });
 
     expect(move.defaultPrevented).toBe(false);
     expect(popup.hasAttribute('data-soybean-swiping')).toBe(false);
@@ -152,7 +156,9 @@ describe('SDrawer touch scroll arbitration (e2e)', () => {
 
     dispatchTouch('touchstart', input, [point], { timeStamp: 1000 });
 
-    const move = dispatchTouch('touchmove', input, [{ ...point, y: point.y + 30 }], { timeStamp: 1030 });
+    const move = dispatchTouch('touchmove', input, [{ ...point, y: point.y + 30 }], {
+      timeStamp: 1030
+    });
 
     expect(move.defaultPrevented).toBe(false);
     expect(popup.hasAttribute('data-soybean-swiping')).toBe(false);

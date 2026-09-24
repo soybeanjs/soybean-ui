@@ -31,7 +31,7 @@
     "dev:docs": "pnpm --filter @soybeanjs/ui-docs dev",
     "fmt": "vp fmt",
     "lint": "vp lint --fix && pnpm lint:vue",
-    "lint:vue": "eslint packages/ --ext .vue --fix",
+    "lint:vue": "eslint --ext .vue --fix packages/ apps/docs/",
     "preview": "pnpm --filter @soybeanjs/ui-docs preview",
     "publish-pkg": "pnpm publish -r --access public",
     "release": "soy release -e 'pnpm release-execute'",

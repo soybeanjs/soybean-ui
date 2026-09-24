@@ -17,11 +17,17 @@ const openSuccess = () => {
 };
 
 const openInfo = () => {
-  dialog.info('Dialog Title', { description: 'Dialog Description', content: h('div', 'Dialog Content') });
+  dialog.info('Dialog Title', {
+    description: 'Dialog Description',
+    content: h('div', 'Dialog Content')
+  });
 };
 
 const openError = () => {
-  dialog.error('Dialog Title', { description: 'Dialog Description', content: h('div', 'Dialog Content') });
+  dialog.error('Dialog Title', {
+    description: 'Dialog Description',
+    content: h('div', 'Dialog Content')
+  });
 };
 
 const openCustomDialog = () => {

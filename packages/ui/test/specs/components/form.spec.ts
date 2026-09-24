@@ -69,7 +69,12 @@ function mountFieldForm(options: HarnessOptions = {}) {
           default: () => [
             h(
               this.SFormField,
-              { name: 'username', label: 'Username', description: 'Enter your username', validate: options.validate },
+              {
+                name: 'username',
+                label: 'Username',
+                description: 'Enter your username',
+                validate: options.validate
+              },
               { default: () => h(SInput, { placeholder: 'username' }) }
             ),
             h(
@@ -108,7 +113,12 @@ function mountArrayForm(options: HarnessOptions = {}) {
           default: () => [
             h(
               this.SFormFieldArray,
-              { name: 'emails', label: 'Emails', class: 'emails-array', 'data-probe': 'array-root' },
+              {
+                name: 'emails',
+                label: 'Emails',
+                class: 'emails-array',
+                'data-probe': 'array-root'
+              },
               {
                 label: (props: any) => h('span', { 'data-test': 'array-label' }, `Emails (${props.fields.length})`),
                 default: (props: any) => [
@@ -181,7 +191,9 @@ describe('SForm', () => {
     });
 
     it('does not leak name / validate to the field wrapper DOM', () => {
-      const { wrapper } = mountFieldForm({ validate: value => (value ? undefined : 'custom error') });
+      const { wrapper } = mountFieldForm({
+        validate: value => (value ? undefined : 'custom error')
+      });
       const attrs = wrapper.find('[data-soybean-form-field]').attributes();
 
       expect(attrs.name).toBeUndefined();
@@ -220,7 +232,11 @@ describe('SForm', () => {
               default: () => [
                 h(
                   this.SFormField,
-                  { name: 'username', label: 'Username', controlProps: { 'data-probe': 'ctrl', id: 'ctrl-probe' } },
+                  {
+                    name: 'username',
+                    label: 'Username',
+                    controlProps: { 'data-probe': 'ctrl', id: 'ctrl-probe' }
+                  },
                   { default: () => h(SInput) }
                 )
               ]
@@ -251,7 +267,11 @@ describe('SForm', () => {
               default: () => [
                 h(
                   this.SFormField,
-                  { name: 'username', label: 'Username', labelProps: { 'data-probe': 'label-probe' } },
+                  {
+                    name: 'username',
+                    label: 'Username',
+                    labelProps: { 'data-probe': 'label-probe' }
+                  },
                   { default: () => h(SInput) }
                 )
               ]
@@ -425,7 +445,9 @@ describe('SForm', () => {
     });
 
     it('accepts a Standard Schema as the field-level validate', async () => {
-      const { wrapper, invalidErrors } = mountFieldForm({ validate: z.string().min(5, 'Too short') });
+      const { wrapper, invalidErrors } = mountFieldForm({
+        validate: z.string().min(5, 'Too short')
+      });
 
       await wrapper.find('input[placeholder="username"]').setValue('ab');
       await wrapper.find('input[placeholder="age"]').setValue(18);
@@ -484,7 +506,9 @@ describe('SForm', () => {
 
   describe('field array', () => {
     it('renders array entries from initial values', () => {
-      const wrapper = mountArrayForm({ defaultValues: { emails: ['a@example.com', 'b@example.com'] } });
+      const wrapper = mountArrayForm({
+        defaultValues: { emails: ['a@example.com', 'b@example.com'] }
+      });
 
       expect(wrapper.findAll('[data-test="array-item"]')).toHaveLength(2);
       expect(wrapper.find('[data-test="array-label"]').text()).toBe('Emails (2)');
@@ -502,7 +526,9 @@ describe('SForm', () => {
     });
 
     it('removes an array entry', async () => {
-      const wrapper = mountArrayForm({ defaultValues: { emails: ['a@example.com', 'b@example.com'] } });
+      const wrapper = mountArrayForm({
+        defaultValues: { emails: ['a@example.com', 'b@example.com'] }
+      });
 
       await wrapper
         .findAll('button[type="button"]')
@@ -515,7 +541,9 @@ describe('SForm', () => {
     });
 
     it('keeps array entry keys stable across removal', async () => {
-      const wrapper = mountArrayForm({ defaultValues: { emails: ['a@example.com', 'b@example.com'] } });
+      const wrapper = mountArrayForm({
+        defaultValues: { emails: ['a@example.com', 'b@example.com'] }
+      });
 
       const keysBefore = wrapper.findAll('[data-test="array-item"]').map(item => item.attributes('data-key'));
 

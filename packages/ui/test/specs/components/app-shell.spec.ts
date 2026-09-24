@@ -1129,7 +1129,12 @@ describe('SAppShell', () => {
 
     it('centers the collapsed trigger inside the folded column', () => {
       const wrapper = mount(SAppShell, {
-        props: { items, mode: 'horizontal-dual-vertical', modelValue: 'soybean-ui', defaultOpen: false },
+        props: {
+          items,
+          mode: 'horizontal-dual-vertical',
+          modelValue: 'soybean-ui',
+          defaultOpen: false
+        },
         attachTo: document.body
       });
 
@@ -1222,7 +1227,12 @@ describe('SAppShell', () => {
 
     it('renders no sidebar trigger when the trigger is turned off', () => {
       const wrapper = mount(SAppShell, {
-        props: { items, mode: 'horizontal-vertical', modelValue: 'soybean-ui', triggerVisible: false },
+        props: {
+          items,
+          mode: 'horizontal-vertical',
+          modelValue: 'soybean-ui',
+          triggerVisible: false
+        },
         attachTo: document.body
       });
 
@@ -1237,7 +1247,10 @@ describe('SAppShell', () => {
     const rail = `${splitNavPaneMetrics.md.rail}rem`;
     const pane = `${splitNavPaneMetrics.md.tree}rem`;
 
-    const brandSlots = { logo: '<span data-mark>Mark</span>', title: '<span data-title>Title</span>' };
+    const brandSlots = {
+      logo: '<span data-mark>Mark</span>',
+      title: '<span data-title>Title</span>'
+    };
 
     it('aligns the mark to the rail and the title to the pane in dual-vertical', () => {
       const wrapper = mount(SAppShell, {

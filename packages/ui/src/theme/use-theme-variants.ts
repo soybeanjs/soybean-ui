@@ -68,25 +68,85 @@ export interface UseThemeVariantsReturn {
 }
 
 const surfaces: VariantTokenMeta[] = [
-  { key: 'background', group: 'surfaces', source: 'base', shadeLinked: true, i18n: 'theme.variant.background' },
+  {
+    key: 'background',
+    group: 'surfaces',
+    source: 'base',
+    shadeLinked: true,
+    i18n: 'theme.variant.background'
+  },
   { key: 'card', group: 'surfaces', source: 'base', shadeLinked: true, i18n: 'theme.variant.card' },
-  { key: 'popover', group: 'surfaces', source: 'base', shadeLinked: true, i18n: 'theme.variant.popover' },
-  { key: 'carbon', group: 'surfaces', source: 'base', shadeLinked: true, i18n: 'theme.variant.carbon' },
+  {
+    key: 'popover',
+    group: 'surfaces',
+    source: 'base',
+    shadeLinked: true,
+    i18n: 'theme.variant.popover'
+  },
+  {
+    key: 'carbon',
+    group: 'surfaces',
+    source: 'base',
+    shadeLinked: true,
+    i18n: 'theme.variant.carbon'
+  },
   { key: 'foreground', group: 'surfaces', source: 'base', i18n: 'theme.variant.foreground' },
-  { key: 'muted-foreground', group: 'surfaces', source: 'base', i18n: 'theme.variant.mutedForeground' },
-  { key: 'card-foreground', group: 'surfaces', source: 'base', i18n: 'theme.variant.cardForeground' },
-  { key: 'popover-foreground', group: 'surfaces', source: 'base', i18n: 'theme.variant.popoverForeground' },
-  { key: 'carbon-foreground', group: 'surfaces', source: 'base', i18n: 'theme.variant.carbonForeground' }
+  {
+    key: 'muted-foreground',
+    group: 'surfaces',
+    source: 'base',
+    i18n: 'theme.variant.mutedForeground'
+  },
+  {
+    key: 'card-foreground',
+    group: 'surfaces',
+    source: 'base',
+    i18n: 'theme.variant.cardForeground'
+  },
+  {
+    key: 'popover-foreground',
+    group: 'surfaces',
+    source: 'base',
+    i18n: 'theme.variant.popoverForeground'
+  },
+  {
+    key: 'carbon-foreground',
+    group: 'surfaces',
+    source: 'base',
+    i18n: 'theme.variant.carbonForeground'
+  }
 ];
 
 const mask: VariantTokenMeta[] = [{ key: 'mask', group: 'surfaces', source: 'base', i18n: 'theme.variant.mask' }];
 
 const fills: VariantTokenMeta[] = [
   { key: 'muted', group: 'fills', source: 'base', shadeLinked: true, i18n: 'theme.variant.muted' },
-  { key: 'accent', group: 'fills', source: 'base', shadeLinked: true, i18n: 'theme.variant.accent' },
-  { key: 'accent-foreground', group: 'fills', source: 'base', i18n: 'theme.variant.accentForeground' },
-  { key: 'secondary', group: 'fills', source: 'base', shadeLinked: true, i18n: 'theme.variant.secondary' },
-  { key: 'secondary-foreground', group: 'fills', source: 'base', i18n: 'theme.variant.secondaryForeground' }
+  {
+    key: 'accent',
+    group: 'fills',
+    source: 'base',
+    shadeLinked: true,
+    i18n: 'theme.variant.accent'
+  },
+  {
+    key: 'accent-foreground',
+    group: 'fills',
+    source: 'base',
+    i18n: 'theme.variant.accentForeground'
+  },
+  {
+    key: 'secondary',
+    group: 'fills',
+    source: 'base',
+    shadeLinked: true,
+    i18n: 'theme.variant.secondary'
+  },
+  {
+    key: 'secondary-foreground',
+    group: 'fills',
+    source: 'base',
+    i18n: 'theme.variant.secondaryForeground'
+  }
 ];
 
 const hairlines: VariantTokenMeta[] = [
@@ -97,21 +157,48 @@ const hairlines: VariantTokenMeta[] = [
 
 const brand: VariantTokenMeta[] = [
   { key: 'primary', group: 'brand', source: 'primary', i18n: 'theme.variant.primary' },
-  { key: 'primary-foreground', group: 'brand', source: 'primary', i18n: 'theme.variant.primaryForeground' }
+  {
+    key: 'primary-foreground',
+    group: 'brand',
+    source: 'primary',
+    i18n: 'theme.variant.primaryForeground'
+  }
 ];
 
 const sidebar: VariantTokenMeta[] = [
-  { key: 'sidebar', group: 'sidebar', source: 'base', shadeLinked: true, i18n: 'theme.variant.sidebar' },
-  { key: 'sidebar-foreground', group: 'sidebar', source: 'base', i18n: 'theme.variant.sidebarForeground' },
+  {
+    key: 'sidebar',
+    group: 'sidebar',
+    source: 'base',
+    shadeLinked: true,
+    i18n: 'theme.variant.sidebar'
+  },
+  {
+    key: 'sidebar-foreground',
+    group: 'sidebar',
+    source: 'base',
+    i18n: 'theme.variant.sidebarForeground'
+  },
   { key: 'sidebar-border', group: 'sidebar', source: 'base', i18n: 'theme.variant.sidebarBorder' },
-  { key: 'sidebar-accent', group: 'sidebar', source: 'base', shadeLinked: true, i18n: 'theme.variant.sidebarAccent' },
+  {
+    key: 'sidebar-accent',
+    group: 'sidebar',
+    source: 'base',
+    shadeLinked: true,
+    i18n: 'theme.variant.sidebarAccent'
+  },
   {
     key: 'sidebar-accent-foreground',
     group: 'sidebar',
     source: 'base',
     i18n: 'theme.variant.sidebarAccentForeground'
   },
-  { key: 'sidebar-primary', group: 'sidebar', source: 'primary', i18n: 'theme.variant.sidebarPrimary' },
+  {
+    key: 'sidebar-primary',
+    group: 'sidebar',
+    source: 'primary',
+    i18n: 'theme.variant.sidebarPrimary'
+  },
   {
     key: 'sidebar-primary-foreground',
     group: 'sidebar',
@@ -129,7 +216,12 @@ const charts: VariantTokenMeta[] = [1, 2, 3, 4, 5].map(index => ({
 }));
 
 const feedback: VariantTokenMeta[] = (['destructive', 'success', 'warning', 'info'] as const).flatMap(name => [
-  { key: name, group: 'feedback' as const, source: 'scheme' as const, i18n: `theme.variant.${name}` },
+  {
+    key: name,
+    group: 'feedback' as const,
+    source: 'scheme' as const,
+    i18n: `theme.variant.${name}`
+  },
   {
     key: `${name}-foreground` as SemanticToken,
     group: 'feedback' as const,

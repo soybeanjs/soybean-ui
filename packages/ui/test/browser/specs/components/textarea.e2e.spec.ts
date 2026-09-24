@@ -106,7 +106,13 @@ describe('STextarea (e2e)', () => {
         return () =>
           h('div', [
             h('label', { for: 'e2e-textarea' }, 'Description'),
-            h(STextarea, { id: 'e2e-textarea', clearable: true, showCounter: true, maxlength: 20, modelValue: 'hello' })
+            h(STextarea, {
+              id: 'e2e-textarea',
+              clearable: true,
+              showCounter: true,
+              maxlength: 20,
+              modelValue: 'hello'
+            })
           ]);
       }
     });

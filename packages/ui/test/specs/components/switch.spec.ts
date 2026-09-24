@@ -160,7 +160,13 @@ describe('SSwitch', () => {
 
     it('checks the hidden input only when modelValue equals trueValue', () => {
       const wrapper = mount(SSwitch, {
-        props: { name: 'dark-mode', trueValue: 'on', falseValue: 'off', modelValue: 'off', class: 'form' },
+        props: {
+          name: 'dark-mode',
+          trueValue: 'on',
+          falseValue: 'off',
+          modelValue: 'off',
+          class: 'form'
+        },
         attachTo: document.body
       });
       const input = wrapper.find('[data-soybean-visually-hidden-input]');
@@ -170,7 +176,13 @@ describe('SSwitch', () => {
 
     it('checks the hidden input when modelValue equals trueValue', () => {
       const wrapper = mount(SSwitch, {
-        props: { name: 'dark-mode', trueValue: 'on', falseValue: 'off', modelValue: 'on', class: 'form' },
+        props: {
+          name: 'dark-mode',
+          trueValue: 'on',
+          falseValue: 'off',
+          modelValue: 'on',
+          class: 'form'
+        },
         attachTo: document.body
       });
       const input = wrapper.find('[data-soybean-visually-hidden-input]');

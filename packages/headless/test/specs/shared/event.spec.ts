@@ -41,7 +41,9 @@ describe('handleAndDispatchCustomEvent', () => {
     Object.defineProperty(originalEvent, 'target', { value: null });
 
     expect(() => {
-      handleAndDispatchCustomEvent<CustomEvent, MouseEvent>('soybean:custom', undefined, { originalEvent });
+      handleAndDispatchCustomEvent<CustomEvent, MouseEvent>('soybean:custom', undefined, {
+        originalEvent
+      });
     }).not.toThrow();
   });
 });

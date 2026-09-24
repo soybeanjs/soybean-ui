@@ -24,7 +24,12 @@ describe('buildThemeCss', () => {
   });
 
   it('follows the theme state (base / primary / surfaceStyle)', () => {
-    const css = buildThemeCss({ ...state, base: 'slate', primary: 'emerald', surfaceStyle: 'flat' });
+    const css = buildThemeCss({
+      ...state,
+      base: 'slate',
+      primary: 'emerald',
+      surfaceStyle: 'flat'
+    });
 
     expect(css).toContain('--background: var(--white);');
     expect(css).toContain('--primary: var(--emerald-500);');

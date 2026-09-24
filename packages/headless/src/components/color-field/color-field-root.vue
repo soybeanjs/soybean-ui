@@ -201,7 +201,9 @@ function handleWheel(event: WheelEvent) {
   increment();
 }
 
-watch(() => [props.modelValue, props.channel, props.colorSpace, props.format], syncColor, { immediate: true });
+watch(() => [props.modelValue, props.channel, props.colorSpace, props.format], syncColor, {
+  immediate: true
+});
 
 provideColorFieldRootContext({
   color,

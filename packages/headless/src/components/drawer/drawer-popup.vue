@@ -510,7 +510,10 @@ const handleCapturedTouchMove = (event: TouchEvent) => {
   state.lastY = touch.clientY;
 };
 
-useEventListener(popupElement, 'touchmove', handleCapturedTouchMove, { passive: false, capture: true });
+useEventListener(popupElement, 'touchmove', handleCapturedTouchMove, {
+  passive: false,
+  capture: true
+});
 
 // --- outside press / escape --------------------------------------------------
 

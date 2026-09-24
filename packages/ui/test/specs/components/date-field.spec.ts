@@ -28,7 +28,11 @@ describe('SDateField', () => {
     });
 
     it('renders time segments when using date-time values', () => {
-      const wrapper = mountDateField({ modelValue: dateTime, granularity: 'second', 'aria-label': 'Meeting time' });
+      const wrapper = mountDateField({
+        modelValue: dateTime,
+        granularity: 'second',
+        'aria-label': 'Meeting time'
+      });
 
       expect(wrapper.find('[data-segment="hour"]').exists()).toBe(true);
       expect(wrapper.find('[data-segment="minute"]').exists()).toBe(true);
@@ -87,7 +91,10 @@ describe('SDateField', () => {
     });
 
     it('marks segments with data-placeholder when there is no value', () => {
-      const wrapper = mount(SDateField, { props: { 'aria-label': 'Empty date' }, attachTo: document.body });
+      const wrapper = mount(SDateField, {
+        props: { 'aria-label': 'Empty date' },
+        attachTo: document.body
+      });
 
       expect(wrapper.find('[data-segment="day"]').attributes('data-placeholder')).toBeDefined();
       expect(wrapper.find('[data-segment="year"]').attributes('data-placeholder')).toBeDefined();

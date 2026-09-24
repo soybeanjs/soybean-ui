@@ -26,7 +26,9 @@ describe('defu', () => {
   });
 
   it('merges nested plain objects recursively', () => {
-    expect(defu({ nested: { a: 1 } }, { nested: { a: 9, b: 2 } })).toEqual({ nested: { a: 1, b: 2 } });
+    expect(defu({ nested: { a: 1 } }, { nested: { a: 9, b: 2 } })).toEqual({
+      nested: { a: 1, b: 2 }
+    });
   });
 
   it('does not overwrite defined arrays on the left side', () => {

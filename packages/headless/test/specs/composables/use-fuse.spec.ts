@@ -43,7 +43,10 @@ describe('useFuse', () => {
 
   it('honors resultLimit', () => {
     const many = ['aa', 'ab', 'ac', 'ad'].map(label => ({ label }));
-    const { results } = useFuse(ref('a'), ref(many), { resultLimit: 2, fuseOptions: { keys: ['label'] } });
+    const { results } = useFuse(ref('a'), ref(many), {
+      resultLimit: 2,
+      fuseOptions: { keys: ['label'] }
+    });
 
     expect(results.value).toHaveLength(2);
   });

@@ -16,8 +16,16 @@ const menus: NavMenuOptionData[] = [
         icon: 'lucide:rocket',
         href: '/docs/getting-started',
         children: [
-          { value: 'installation', label: 'Installation', href: '/docs/getting-started/installation' },
-          { value: 'configuration', label: 'Configuration', href: '/docs/getting-started/configuration' }
+          {
+            value: 'installation',
+            label: 'Installation',
+            href: '/docs/getting-started/installation'
+          },
+          {
+            value: 'configuration',
+            label: 'Configuration',
+            href: '/docs/getting-started/configuration'
+          }
         ]
       },
       {
@@ -33,7 +41,11 @@ const menus: NavMenuOptionData[] = [
             href: '/docs/components/navigation',
             children: [
               { value: 'nav-menu', label: 'NavMenu', href: '/docs/components/nav-menu' },
-              { value: 'dropdown-menu', label: 'DropdownMenu', href: '/docs/components/dropdown-menu' }
+              {
+                value: 'dropdown-menu',
+                label: 'DropdownMenu',
+                href: '/docs/components/dropdown-menu'
+              }
             ]
           },
           { value: 'feedback', label: 'Feedback', href: '/docs/components/feedback' }
@@ -42,7 +54,12 @@ const menus: NavMenuOptionData[] = [
       { value: 'changelog', label: 'Changelog', href: '/docs/changelog' }
     ]
   },
-  { value: 'github', label: 'GitHub', icon: 'lucide:github', href: 'https://github.com/soybeanjs/soybean-ui' }
+  {
+    value: 'github',
+    label: 'GitHub',
+    icon: 'lucide:github',
+    href: 'https://github.com/soybeanjs/soybean-ui'
+  }
 ];
 </script>
 

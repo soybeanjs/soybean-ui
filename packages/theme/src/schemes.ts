@@ -31,16 +31,41 @@ export const FEEDBACK_SCHEMES = {
     dark: { destructive: 'red.400', success: 'green.400', warning: 'amber.400', info: 'blue.400' }
   },
   vivid: {
-    light: { destructive: 'red.500', success: 'emerald.500', warning: 'amber.500', info: 'sky.500' },
+    light: {
+      destructive: 'red.500',
+      success: 'emerald.500',
+      warning: 'amber.500',
+      info: 'sky.500'
+    },
     dark: { destructive: 'red.400', success: 'emerald.400', warning: 'amber.400', info: 'sky.400' }
   },
   subtle: {
-    light: { destructive: 'rose.500', success: 'emerald.500', warning: 'amber.500', info: 'indigo.500' },
-    dark: { destructive: 'rose.300', success: 'emerald.300', warning: 'amber.300', info: 'indigo.300' }
+    light: {
+      destructive: 'rose.500',
+      success: 'emerald.500',
+      warning: 'amber.500',
+      info: 'indigo.500'
+    },
+    dark: {
+      destructive: 'rose.300',
+      success: 'emerald.300',
+      warning: 'amber.300',
+      info: 'indigo.300'
+    }
   },
   modern: {
-    light: { destructive: 'red.500', success: 'emerald.500', warning: 'orange.500', info: 'sky.500' },
-    dark: { destructive: 'red.400', success: 'emerald.400', warning: 'orange.400', info: 'sky.400' }
+    light: {
+      destructive: 'red.500',
+      success: 'emerald.500',
+      warning: 'orange.500',
+      info: 'sky.500'
+    },
+    dark: {
+      destructive: 'red.400',
+      success: 'emerald.400',
+      warning: 'orange.400',
+      info: 'sky.400'
+    }
   },
   professional: {
     light: { destructive: 'red.500', success: 'green.600', warning: 'amber.600', info: 'blue.600' },

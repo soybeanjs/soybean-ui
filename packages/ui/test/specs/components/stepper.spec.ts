@@ -358,7 +358,9 @@ describe('SStepper', () => {
 
     it('renders a check icon for completed steps when ConfigProvider provides iconRender', () => {
       const wrapper = mount(SConfigProvider, {
-        props: { iconRender: (icon: unknown) => h('span', { 'data-testid': 'icon' }, String(icon)) },
+        props: {
+          iconRender: (icon: unknown) => h('span', { 'data-testid': 'icon' }, String(icon))
+        },
         slots: {
           default: h(SStepper, {
             items: [{ title: 'Account', completed: true }, { title: 'Profile' }],

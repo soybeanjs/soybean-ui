@@ -86,7 +86,9 @@ function release(init: PointerInit) {
 describe('useSwipeDismiss', () => {
   describe('axis locking', () => {
     it('ignores a gesture whose dominant axis is not permitted', async () => {
-      const { wrapper, root, onDismiss, swipingChanges } = await mountHarness({ directions: ['right'] });
+      const { wrapper, root, onDismiss, swipingChanges } = await mountHarness({
+        directions: ['right']
+      });
 
       press(root, { x: 0, y: 100, time: 0 });
       move({ x: 6, y: 220, time: 16 });
@@ -99,7 +101,9 @@ describe('useSwipeDismiss', () => {
     });
 
     it('tracks a gesture on the permitted axis', async () => {
-      const { wrapper, root, swipingChanges, progressValues } = await mountHarness({ directions: ['right'] });
+      const { wrapper, root, swipingChanges, progressValues } = await mountHarness({
+        directions: ['right']
+      });
 
       press(root, { x: 0, y: 0, time: 0 });
       move({ x: 40, y: 2, time: 16 });
@@ -139,7 +143,9 @@ describe('useSwipeDismiss', () => {
     });
 
     it('damps movement against the permitted direction', async () => {
-      const { wrapper, root, onDismiss, progressValues } = await mountHarness({ directions: ['right'] });
+      const { wrapper, root, onDismiss, progressValues } = await mountHarness({
+        directions: ['right']
+      });
 
       press(root, { x: 200, y: 0, time: 0 });
       move({ x: 100, y: 0, time: 400 });
@@ -168,7 +174,9 @@ describe('useSwipeDismiss', () => {
 
   describe('scroll yielding', () => {
     it('yields when an ancestor can still scroll along the gesture axis', async () => {
-      const { wrapper, scroller, onDismiss, swipingChanges } = await mountHarness({ directions: ['right'] });
+      const { wrapper, scroller, onDismiss, swipingChanges } = await mountHarness({
+        directions: ['right']
+      });
 
       scroller.style.overflowX = 'scroll';
       Object.defineProperty(scroller, 'scrollWidth', { configurable: true, value: 400 });

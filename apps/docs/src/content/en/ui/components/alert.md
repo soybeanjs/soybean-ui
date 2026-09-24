@@ -116,6 +116,8 @@ Use the `close` slot and read the close behavior from it (or provide your own `a
 
 ```vue
 <SAlert v-model:open="open" closable title="Custom close">
-  <template #close><button type="button" aria-label="Dismiss" @click="open = false">×</button></template>
+  <template #close>
+    <button type="button" aria-label="Dismiss" @click="open = false">×</button>
+  </template>
 </SAlert>
 ```

@@ -187,7 +187,13 @@ describe('SMenuOptions', () => {
 
     it('renders an item whose children are all hidden as a leaf', async () => {
       const wrapper = mountMenu({
-        items: [{ value: 'share', label: 'Share', children: [{ value: 'mail', label: 'Email', hidden: true }] }]
+        items: [
+          {
+            value: 'share',
+            label: 'Share',
+            children: [{ value: 'mail', label: 'Email', hidden: true }]
+          }
+        ]
       });
 
       await openMenu(wrapper);

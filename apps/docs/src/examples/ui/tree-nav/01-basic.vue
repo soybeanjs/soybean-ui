@@ -31,7 +31,12 @@ const items: TreeNavOptionData[] = [
     ]
   },
   { value: 'pricing', label: 'Pricing', icon: 'lucide:credit-card' },
-  { value: 'github', label: 'GitHub', icon: 'lucide:github', href: 'https://github.com/soybeanjs/soybean-ui' }
+  {
+    value: 'github',
+    label: 'GitHub',
+    icon: 'lucide:github',
+    href: 'https://github.com/soybeanjs/soybean-ui'
+  }
 ];
 </script>
 

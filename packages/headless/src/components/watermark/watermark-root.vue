@@ -24,9 +24,10 @@ const defense = computed(() => props.defense ?? false);
 const imageElement = shallowRef<HTMLImageElement | null>(null);
 
 /** Track the currently loading image and its config so we can detach listeners on cleanup. */
-const pendingLoad = shallowRef<{ img: HTMLImageElement; config: ReturnType<typeof resolveWatermarkConfig> } | null>(
-  null
-);
+const pendingLoad = shallowRef<{
+  img: HTMLImageElement;
+  config: ReturnType<typeof resolveWatermarkConfig>;
+} | null>(null);
 
 function detachPendingLoad() {
   const entry = pendingLoad.value;

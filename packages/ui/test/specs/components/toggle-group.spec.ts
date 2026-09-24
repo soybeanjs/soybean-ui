@@ -248,7 +248,11 @@ describe('SToggleGroup', () => {
     });
 
     it('has no a11y violations in vertical multiple mode', async () => {
-      const wrapper = mountToggleGroup({ orientation: 'vertical', multiple: true, modelValue: ['bold', 'italic'] });
+      const wrapper = mountToggleGroup({
+        orientation: 'vertical',
+        multiple: true,
+        modelValue: ['bold', 'italic']
+      });
       const violations = await getA11yViolations(wrapper.element);
       expect(violations).toHaveLength(0);
       wrapper.unmount();

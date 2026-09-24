@@ -290,7 +290,10 @@ function stepValue(index: number, direction: number, multiplier = 1) {
     return;
   }
 
-  updateValueAtIndex(currentValue + step.value * direction * multiplier, index, { commit: true, focus: true });
+  updateValueAtIndex(currentValue + step.value * direction * multiplier, index, {
+    commit: true,
+    focus: true
+  });
 }
 
 function setToLimit(index: number, limit: 'min' | 'max') {

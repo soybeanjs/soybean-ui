@@ -14,7 +14,10 @@ describe('shared/json generatedAt stability', () => {
 
       try {
         const filePath = path.join(rootDir, 'index.json');
-        const written = await writeJsonFile(filePath, { generatedAt: '2026-01-01T00:00:00.000Z', value: 'a' });
+        const written = await writeJsonFile(filePath, {
+          generatedAt: '2026-01-01T00:00:00.000Z',
+          value: 'a'
+        });
 
         expect(written).toBe(true);
         expect(JSON.parse(await readFile(filePath, 'utf8'))).toEqual({
@@ -131,7 +134,10 @@ describe('shared/json generatedAt stability', () => {
           outputDir,
           resetPaths: [retiredDir],
           documents: [
-            { fileName: 'accordion.json', value: { generatedAt: '2026-02-02T00:00:00.000Z', component: 'accordion' } },
+            {
+              fileName: 'accordion.json',
+              value: { generatedAt: '2026-02-02T00:00:00.000Z', component: 'accordion' }
+            },
             {
               fileName: 'alert.json',
               value: { generatedAt: '2026-02-02T00:00:00.000Z', component: 'alert', count: 2 }

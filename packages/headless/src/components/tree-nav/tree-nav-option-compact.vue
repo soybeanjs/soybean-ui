@@ -46,7 +46,10 @@ const linkBind = computed(() => buildTreeNavLinkProps(props.item, linkProps.valu
 // Stable collection data: a fresh template object would re-register the item
 // on every render. The three template branches are mutually exclusive, so a
 // single object serves the link, branch, and leaf cases.
-const itemData = { value: props.item.value, isBranch: !isLinkItem(props.item) && hasChildren(props.item) };
+const itemData = {
+  value: props.item.value,
+  isBranch: !isLinkItem(props.item) && hasChildren(props.item)
+};
 
 const branchPopupBind = createTreeNavBranchPopupBind(rootCtx, () => props.item.value);
 

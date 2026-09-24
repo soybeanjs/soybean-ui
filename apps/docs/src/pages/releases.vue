@@ -425,6 +425,12 @@ function syncRouteState(component: string, related: boolean) {
   });
 }
 
+const onKeydown = (event: KeyboardEvent) => {
+  if (event.key === 'Enter') {
+    handleFilterInputEnter();
+  }
+};
+
 watch(
   [routeComponentQuery, routeOnlyComponentRelated],
   ([component, related]) => {
@@ -489,11 +495,7 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                     :control-props="{
                       onBlur: handleFilterInputBlur,
                       onFocus: handleFilterInputFocus,
-                      onKeydown: (event: KeyboardEvent) => {
-                        if (event.key === 'Enter') {
-                          handleFilterInputEnter();
-                        }
-                      }
+                      onKeydown: onKeydown
                     }"
                     class="w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
                   />
@@ -746,7 +748,11 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                     variant="soft"
                     icon="lucide:triangle-alert"
                     :title="t('releases_page.breaking_banner.title')"
-                    :description="t('releases_page.breaking_banner.desc', { count: release.typeCounts.breaking })"
+                    :description="
+                      t('releases_page.breaking_banner.desc', {
+                        count: release.typeCounts.breaking
+                      })
+                    "
                   >
                     <SButtonLink
                       v-if="resolveReleaseDocLink(release)"
@@ -916,7 +922,11 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                         v-if="!isReleaseExpanded(release.version) && getRemainingEntryCount(release)"
                         class="text-sm text-muted-foreground"
                       >
-                        {{ t('releases_page.more_entries', { count: getRemainingEntryCount(release) }) }}
+                        {{
+                          t('releases_page.more_entries', {
+                            count: getRemainingEntryCount(release)
+                          })
+                        }}
                       </p>
 
                       <SButton

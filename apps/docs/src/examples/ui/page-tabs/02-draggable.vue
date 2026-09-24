@@ -12,7 +12,14 @@ import type {
 const modelValue = ref('home');
 
 const items: Ref<PageTabsOptionData[]> = ref([
-  { value: 'home', label: 'Home', icon: 'lucide:house', pinned: true, draggable: false, hidePinnedIcon: true },
+  {
+    value: 'home',
+    label: 'Home',
+    icon: 'lucide:house',
+    pinned: true,
+    draggable: false,
+    hidePinnedIcon: true
+  },
   { value: 'manage', label: 'Manage', icon: 'lucide:settings', pinned: true },
   { value: 'profile', label: 'Profile', icon: 'lucide:user' },
   { value: 'doc', label: 'Doc', icon: 'lucide:file-text' },

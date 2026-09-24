@@ -179,7 +179,9 @@ describe('SDrawer drag (e2e)', () => {
               },
               title: 'Controlled Snap'
             },
-            { default: () => Array.from({ length: 40 }, (_, index) => h('div', { key: index }, 'Item')) }
+            {
+              default: () => Array.from({ length: 40 }, (_, index) => h('div', { key: index }, 'Item'))
+            }
           );
       }
     });
@@ -271,7 +273,11 @@ describe('SDrawer drag (e2e)', () => {
               default: () => [
                 h(
                   'button',
-                  { type: 'button', 'data-child-opener': '', onClick: () => (nestedOpen.value = true) },
+                  {
+                    type: 'button',
+                    'data-child-opener': '',
+                    onClick: () => (nestedOpen.value = true)
+                  },
                   'Open Child'
                 ),
                 h(
@@ -319,7 +325,10 @@ describe('SDrawer drag (e2e)', () => {
     // value and the drawer never reopens.
     const { unmount } = await renderComponent(SDrawer, {
       props: { title: 'Reopen Drawer' },
-      slots: { trigger: '<button type="button">Open Reopen</button>', default: '<div>Reopen content</div>' }
+      slots: {
+        trigger: '<button type="button">Open Reopen</button>',
+        default: '<div>Reopen content</div>'
+      }
     });
 
     const trigger = document.querySelector<HTMLButtonElement>('[data-soybean-drawer-trigger]');
@@ -393,7 +402,11 @@ describe('SDrawer drag (e2e)', () => {
               default: () => [
                 h(
                   'button',
-                  { type: 'button', 'data-child-opener': '', onClick: () => (nestedOpen.value = true) },
+                  {
+                    type: 'button',
+                    'data-child-opener': '',
+                    onClick: () => (nestedOpen.value = true)
+                  },
                   'Open Child'
                 ),
                 h(
@@ -408,7 +421,11 @@ describe('SDrawer drag (e2e)', () => {
                     default: () =>
                       h(
                         'button',
-                        { type: 'button', 'data-child-closer': '', onClick: () => (nestedOpen.value = false) },
+                        {
+                          type: 'button',
+                          'data-child-closer': '',
+                          onClick: () => (nestedOpen.value = false)
+                        },
                         'Close Child'
                       )
                   }

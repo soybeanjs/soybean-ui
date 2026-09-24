@@ -179,7 +179,9 @@ export function presetScrollbar(options: PresetScrollbarOptions = {}): Preset<Th
       ],
       [
         /^scrollbar-(thumb|track)-op(?:acity)?-?(.+)$/,
-        ([, type, opacity]) => ({ [`${resolveVar(type)}-opacity`]: h.bracket.percent.cssvar(opacity) }),
+        ([, type, opacity]) => ({
+          [`${resolveVar(type)}-opacity`]: h.bracket.percent.cssvar(opacity)
+        }),
         { autocomplete: 'scrollbar-(thumb|track)-(op|opacity)-<percent>' }
       ],
       [

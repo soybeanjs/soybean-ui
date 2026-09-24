@@ -25,7 +25,9 @@ const listeners = useForwardListeners(emit);
 const slotNames = computed(() => keysOf(slots).filter(key => key !== 'trigger' && key !== 'more-trigger'));
 
 const ui = computed(() =>
-  menubarVariants({ size: props.size, collapsible: props.collapsible }, props.ui, { root: props.class })
+  menubarVariants({ size: props.size, collapsible: props.collapsible }, props.ui, {
+    root: props.class
+  })
 );
 
 provideMenubarUi(ui);

@@ -231,7 +231,9 @@ describe('SClipboard', () => {
     });
 
     it('honors ConfigProvider messages overrides for clipboard', () => {
-      const wrapper = mountWithProvider({ messages: { clipboard: { copy: 'Yank', copied: 'Yanked' } } });
+      const wrapper = mountWithProvider({
+        messages: { clipboard: { copy: 'Yank', copied: 'Yanked' } }
+      });
 
       expect(wrapper.text()).toContain('Yank');
       expect(wrapper.text()).not.toContain('Copy');

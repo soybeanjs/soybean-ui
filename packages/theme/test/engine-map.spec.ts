@@ -295,7 +295,9 @@ describe('semantic layer (Layer 2) emission', () => {
     const bare = emitThemeCss(resolveThemeMap(DEFAULTS));
     // 解析与发射必须用同一个前缀，否则字面量层的内部引用（`calc(var(--radius) * k)`）
     // 会指向不存在的变量
-    const prefixed = emitThemeCss(resolveThemeMap({ ...DEFAULTS, prefix: 'soybean' }), { prefix: 'soybean' });
+    const prefixed = emitThemeCss(resolveThemeMap({ ...DEFAULTS, prefix: 'soybean' }), {
+      prefix: 'soybean'
+    });
 
     expect(bare).toContain('--background: var(--zinc-50);');
     expect(bare).not.toContain('--soybean-background');

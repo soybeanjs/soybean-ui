@@ -192,7 +192,9 @@ describe('useBodyScrollLock', () => {
     it('should not inject CSS styles when already present', async () => {
       const { useBodyScrollLock } = await loadLock();
       vi.mocked(mockBody.hasAttribute).mockReturnValue(false);
-      vi.mocked(globalThis.document.getElementById).mockReturnValue({ id: 'scroll-lock-styles' } as any);
+      vi.mocked(globalThis.document.getElementById).mockReturnValue({
+        id: 'scroll-lock-styles'
+      } as any);
 
       const createElement = vi.fn();
       globalThis.document.createElement = createElement;

@@ -20,13 +20,31 @@ const menus: MenuOptionData<string>[] = [
     separator: true,
     children: [
       { value: '0601', label: 'Email', icon: 'lucide:mail', shortcut: ['command', 'shift', 'e'] },
-      { value: '0602', label: 'Facebook', icon: 'simple-icons:facebook', shortcut: ['command', 'shift', 'f'] },
-      { value: '0603', label: 'Twitter', icon: 'simple-icons:x', shortcut: ['command', 'shift', 't'], separator: true },
+      {
+        value: '0602',
+        label: 'Facebook',
+        icon: 'simple-icons:facebook',
+        shortcut: ['command', 'shift', 'f']
+      },
+      {
+        value: '0603',
+        label: 'Twitter',
+        icon: 'simple-icons:x',
+        shortcut: ['command', 'shift', 't'],
+        separator: true
+      },
       {
         value: '0604',
         label: 'More',
         icon: 'lucide:circle-plus',
-        children: [{ value: '060401', label: 'Message', icon: 'lucide:message-circle', shortcut: ['command', 'm'] }]
+        children: [
+          {
+            value: '060401',
+            label: 'Message',
+            icon: 'lucide:message-circle',
+            shortcut: ['command', 'm']
+          }
+        ]
       }
     ]
   }

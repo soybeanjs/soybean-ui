@@ -175,13 +175,28 @@ const FIRST_LEVEL_PANE_QUERY: Record<
 > = {
   vertical: {
     'dual-vertical': { mountedIdKey: 'verticalMountedId', paneSelector: SUB_VERTICAL_SELECTOR },
-    'vertical-horizontal': { mountedIdKey: 'horizontalMountedId', paneSelector: SUB_HORIZONTAL_SELECTOR },
-    'horizontal-dual-vertical': { mountedIdKey: 'verticalMountedId', paneSelector: SUB_VERTICAL_SELECTOR }
+    'vertical-horizontal': {
+      mountedIdKey: 'horizontalMountedId',
+      paneSelector: SUB_HORIZONTAL_SELECTOR
+    },
+    'horizontal-dual-vertical': {
+      mountedIdKey: 'verticalMountedId',
+      paneSelector: SUB_VERTICAL_SELECTOR
+    }
   },
   horizontal: {
-    'vertical-horizontal': { mountedIdKey: 'horizontalMountedId', paneSelector: SUB_HORIZONTAL_SELECTOR },
-    'horizontal-vertical': { mountedIdKey: 'verticalMountedId', paneSelector: SUB_VERTICAL_SELECTOR },
-    'horizontal-dual-vertical': { mountedIdKey: 'verticalMountedId', paneSelector: VERTICAL_FIRST_LEVEL_SELECTOR }
+    'vertical-horizontal': {
+      mountedIdKey: 'horizontalMountedId',
+      paneSelector: SUB_HORIZONTAL_SELECTOR
+    },
+    'horizontal-vertical': {
+      mountedIdKey: 'verticalMountedId',
+      paneSelector: SUB_VERTICAL_SELECTOR
+    },
+    'horizontal-dual-vertical': {
+      mountedIdKey: 'verticalMountedId',
+      paneSelector: VERTICAL_FIRST_LEVEL_SELECTOR
+    }
   }
 };
 
@@ -455,7 +470,12 @@ export function resolveSplitNavSidebarColumns<T extends SplitNavBaseOptionData =
   }
 
   if (mode === 'horizontal-dual-vertical') {
-    const nested = resolveSplitNavLevels({ items, levelItems: firstLevel.childItems, modelValue, openPath });
+    const nested = resolveSplitNavLevels({
+      items,
+      levelItems: firstLevel.childItems,
+      modelValue,
+      openPath
+    });
 
     return { rail: firstLevel.childItems.length > 0, pane: nested.childItems.length > 0 };
   }

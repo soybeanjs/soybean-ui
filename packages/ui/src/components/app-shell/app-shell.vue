@@ -181,7 +181,11 @@ const breadcrumbItems = computed<BreadcrumbOptionData[]>(() => {
     return props.breadcrumbs;
   }
 
-  return activeTrail.value.map(node => ({ value: node.value, label: node.label, icon: node.icon }));
+  return activeTrail.value.map(node => ({
+    value: node.value,
+    label: node.label,
+    icon: node.icon
+  }));
 });
 
 const currentCrumbValue = computed(() => breadcrumbItems.value.at(-1)?.value);

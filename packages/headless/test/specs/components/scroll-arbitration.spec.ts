@@ -190,7 +190,10 @@ describe('shouldYieldTouchMove', () => {
   });
 
   it('does not re-arbitrate after the drawer axis has won', () => {
-    const state = createTouchState({ hasCrossAxisScrollableContent: true, drawerAxisAttributed: true });
+    const state = createTouchState({
+      hasCrossAxisScrollableContent: true,
+      drawerAxisAttributed: true
+    });
 
     expect(shouldYieldTouchMove(state, createTouchEvent({ clientX: 20, clientY: 0 }), touch, true)).toBe(false);
   });

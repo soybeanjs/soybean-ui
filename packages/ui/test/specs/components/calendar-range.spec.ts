@@ -48,7 +48,10 @@ describe('SCalendarRange', () => {
     });
 
     it('renders a fixed number of weeks when fixedWeeks is enabled', () => {
-      const wrapper = mountRange({ fixedWeeks: true, defaultPlaceholder: new Date(2026, 2 - 1, 1) });
+      const wrapper = mountRange({
+        fixedWeeks: true,
+        defaultPlaceholder: new Date(2026, 2 - 1, 1)
+      });
 
       const bodyRows = wrapper.find('[data-soybean-calendar-range-grid-body]').findAll('tr');
 
@@ -58,7 +61,9 @@ describe('SCalendarRange', () => {
 
     it('marks today with the data-today attribute', () => {
       const now = new Date();
-      const wrapper = mountRange({ defaultPlaceholder: new Date(now.getFullYear(), now.getMonth(), now.getDate()) });
+      const wrapper = mountRange({
+        defaultPlaceholder: new Date(now.getFullYear(), now.getMonth(), now.getDate())
+      });
 
       expect(wrapper.find('[data-today]').exists()).toBe(true);
       wrapper.unmount();

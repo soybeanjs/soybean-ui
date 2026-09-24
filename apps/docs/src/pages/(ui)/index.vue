@@ -296,7 +296,9 @@ const featuredGroups = computed(() =>
             <template #default>
               <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
                 <div v-for="stat in heroStats" :key="stat.label" class="docs-subtle-card px-4 py-3">
-                  <div class="text-2xl font-bold tracking-[-0.04em] text-foreground">{{ stat.value }}</div>
+                  <div class="text-2xl font-bold tracking-[-0.04em] text-foreground">
+                    {{ stat.value }}
+                  </div>
                   <div class="mt-1 text-sm text-muted-foreground">{{ stat.label }}</div>
                 </div>
               </div>
@@ -380,7 +382,9 @@ const featuredGroups = computed(() =>
               <div class="mb-4 inline-flex rounded-2xl p-3 text-xl" :class="feature.iconClass">
                 <SIcon :icon="feature.icon" />
               </div>
-              <h3 class="text-lg leading-7 font-semibold tracking-[-0.02em] text-foreground">{{ feature.title }}</h3>
+              <h3 class="text-lg leading-7 font-semibold tracking-[-0.02em] text-foreground">
+                {{ feature.title }}
+              </h3>
               <p class="mt-2 text-sm leading-6 text-muted-foreground">{{ feature.description }}</p>
             </div>
           </div>
@@ -442,7 +446,9 @@ const featuredGroups = computed(() =>
                   <div class="rounded-2xl p-3 text-xl" :class="group.iconClass">
                     <SIcon :icon="group.icon" />
                   </div>
-                  <h3 class="text-lg leading-7 font-semibold tracking-[-0.02em] text-foreground">{{ group.label }}</h3>
+                  <h3 class="text-lg leading-7 font-semibold tracking-[-0.02em] text-foreground">
+                    {{ group.label }}
+                  </h3>
                 </div>
                 <span class="text-sm font-medium text-muted-foreground">{{ group.count }}</span>
               </div>

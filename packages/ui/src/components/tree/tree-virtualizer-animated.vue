@@ -138,7 +138,11 @@ const renderList = computed<RenderEntry[]>(() => {
 
     if (motion.type === 'hide' && !blockRendered && item.value === motion.key) {
       blockRendered = true;
-      entries.push({ key: `motion-${flat + 1}`, kind: 'block', blockItems: visibleBlockItems.value });
+      entries.push({
+        key: `motion-${flat + 1}`,
+        kind: 'block',
+        blockItems: visibleBlockItems.value
+      });
     }
   }
 
@@ -164,7 +168,13 @@ function motionVirtualItem(item: FlattenedItem<T>): VirtualItem {
 </script>
 
 <template>
-  <div :style="{ position: 'relative', paddingTop: `${topSpacer}px`, paddingBottom: `${bottomSpacer}px` }">
+  <div
+    :style="{
+      position: 'relative',
+      paddingTop: `${topSpacer}px`,
+      paddingBottom: `${bottomSpacer}px`
+    }"
+  >
     <template v-for="entry in renderList" :key="entry.key">
       <STreeMotionBlock
         v-if="entry.kind === 'block' && motion"

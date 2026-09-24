@@ -99,7 +99,12 @@ Nest `items` under a group object with a `separator`:
 ```vue
 <SCommand
   :items="[
-    { label: 'Suggestions', value: 'suggestions', separator: true, items: [{ label: 'Calendar', value: 'calendar' }] }
+    {
+      label: 'Suggestions',
+      value: 'suggestions',
+      separator: true,
+      items: [{ label: 'Calendar', value: 'calendar' }]
+    }
   ]"
 />
 ```

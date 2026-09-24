@@ -67,7 +67,10 @@ export async function startRegistryServer(port = 0, fixturesDir: string = FIXTUR
       });
       res.end(content);
     } catch {
-      res.writeHead(404, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+      res.writeHead(404, {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      });
       res.end(JSON.stringify({ error: 'Not found' }));
     }
   });

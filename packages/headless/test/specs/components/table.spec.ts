@@ -113,7 +113,10 @@ describe('table expanded state', () => {
 describe('table filter state', () => {
   it('normalizes compound filter values', () => {
     expect(normalizeTableFilterValue('lin')).toEqual({ keyword: 'lin', values: [] });
-    expect(normalizeTableFilterValue({ values: ['a', 'a', 'b'] })).toEqual({ keyword: '', values: ['a', 'b'] });
+    expect(normalizeTableFilterValue({ values: ['a', 'a', 'b'] })).toEqual({
+      keyword: '',
+      values: ['a', 'b']
+    });
   });
 
   it('adds, replaces, and removes filter entries', () => {

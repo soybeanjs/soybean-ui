@@ -235,5 +235,7 @@ Use the `icon` prop (via ConfigProvider `iconRender`) or the `leading` slot:
 Use the `close` slot and read the close behavior from it (or provide your own `aria-label`):
 
 ```vue
-<template #close><button type="button" aria-label="Dismiss" @click="open = false">×</button></template>
+<template #close>
+  <button type="button" aria-label="Dismiss" @click="open = false">×</button>
+</template>
 ```

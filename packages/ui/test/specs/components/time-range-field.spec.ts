@@ -155,7 +155,10 @@ describe('STimeRangeField', () => {
     it('uses defaultValue when uncontrolled', () => {
       const wrapper = mount(STimeRangeField, {
         props: {
-          defaultValue: { start: new Date(2000, 0, 1, 6, 30, 0), end: new Date(2000, 0, 1, 22, 0, 0) },
+          defaultValue: {
+            start: new Date(2000, 0, 1, 6, 30, 0),
+            end: new Date(2000, 0, 1, 22, 0, 0)
+          },
           'aria-label': 'Default range'
         },
         attachTo: document.body

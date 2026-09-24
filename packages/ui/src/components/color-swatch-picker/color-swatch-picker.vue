@@ -25,7 +25,9 @@ const listeners = useForwardListeners(emit);
 const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'shape']);
 
 const ui = computed(() =>
-  colorSwatchPickerVariants({ size: props.size, shape: props.shape }, props.ui, { root: props.class })
+  colorSwatchPickerVariants({ size: props.size, shape: props.shape }, props.ui, {
+    root: props.class
+  })
 );
 
 provideColorSwatchPickerUi(ui);

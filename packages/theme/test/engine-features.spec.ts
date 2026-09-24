@@ -77,7 +77,13 @@ describe('schemes drive the status and chart tokens', () => {
 
     // 五档取自 CHART_RAMP，且亮/暗两模式同值（色板层本身不区分模式）
     expect(CHART_TOKENS).toEqual(['chart-1', 'chart-2', 'chart-3', 'chart-4', 'chart-5']);
-    expect(CHART_RAMP).toEqual({ 'chart-1': 600, 'chart-2': 500, 'chart-3': 400, 'chart-4': 300, 'chart-5': 200 });
+    expect(CHART_RAMP).toEqual({
+      'chart-1': 600,
+      'chart-2': 500,
+      'chart-3': 400,
+      'chart-4': 300,
+      'chart-5': 200
+    });
 
     CHART_TOKENS.forEach(token => {
       const expected = { kind: 'palette', palette: 'indigo', level: CHART_RAMP[token] };
@@ -106,7 +112,11 @@ describe('schemes drive the status and chart tokens', () => {
 
 describe('overrides win outright', () => {
   it('applies a palette-level override to both the map and the CSS', () => {
-    const map = resolveThemeMap({ base: 'zinc', primary: 'indigo', overrides: { light: { primary: 'zinc.800' } } });
+    const map = resolveThemeMap({
+      base: 'zinc',
+      primary: 'indigo',
+      overrides: { light: { primary: 'zinc.800' } }
+    });
     const css = emitThemeCss(map);
 
     expect(map.light.primary).toEqual({ kind: 'palette', palette: 'zinc', level: 800 });
@@ -160,7 +170,9 @@ describe('overrides win outright', () => {
       { token: 'chart-1', value: '#6366f1' as ColorValue }
     ];
 
-    const options = { overrides: { light: Object.fromEntries(forms.map(form => [form.token, form.value])) } } as never;
+    const options = {
+      overrides: { light: Object.fromEntries(forms.map(form => [form.token, form.value])) }
+    } as never;
     const css = emitThemeCss(resolveThemeMap(options));
 
     forms.forEach(({ token, value }) => {
@@ -231,7 +243,9 @@ describe('token reference overrides', () => {
     const options = {
       base: 'zinc',
       primary: 'indigo',
-      overrides: { light: { primary: 'violet.700', ring: 'token.primary', 'sidebar-primary': 'token.primary' } }
+      overrides: {
+        light: { primary: 'violet.700', ring: 'token.primary', 'sidebar-primary': 'token.primary' }
+      }
     } as const;
     const map = resolveThemeMap(options);
     const primary = { kind: 'palette', palette: 'violet', level: 700 } as const;
@@ -247,7 +261,9 @@ describe('token reference overrides', () => {
 
   it('follows a chain of references to a non-reference end', () => {
     const options = {
-      overrides: { light: { primary: 'zinc.800', ring: 'token.sidebar-ring', 'sidebar-ring': 'token.primary' } }
+      overrides: {
+        light: { primary: 'zinc.800', ring: 'token.sidebar-ring', 'sidebar-ring': 'token.primary' }
+      }
     } as const;
     const map = resolveThemeMap(options);
     const expected = { kind: 'palette', palette: 'zinc', level: 800 } as const;
@@ -258,7 +274,9 @@ describe('token reference overrides', () => {
 
   it('ignores self-references the same way as any other invalid value', () => {
     // 自引用不是环的特例开关：与 `zinc.999` / `token.ghost` 一样，丢弃并保留名义值
-    const options = { overrides: { light: { primary: 'token.primary', ring: 'token.ghost' } } } as never;
+    const options = {
+      overrides: { light: { primary: 'token.primary', ring: 'token.ghost' } }
+    } as never;
     const css = emitThemeCss(resolveThemeMap(options));
 
     expect(css).toContain('--primary: var(--indigo-500);');

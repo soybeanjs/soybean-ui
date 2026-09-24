@@ -127,7 +127,11 @@ export function useDrawerSnapPoints({ snapPoints, activeSnapPoint, popupHeight, 
 
         const clampedHeight = Math.min(Math.max(height, 0), maxHeight);
 
-        return { value, height: clampedHeight, offset: Math.max(0, popupHeight.value - clampedHeight) };
+        return {
+          value,
+          height: clampedHeight,
+          offset: Math.max(0, popupHeight.value - clampedHeight)
+        };
       })
       .filter((point): point is ResolvedDrawerSnapPoint => point !== null);
 

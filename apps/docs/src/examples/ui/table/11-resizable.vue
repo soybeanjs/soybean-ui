@@ -113,7 +113,13 @@ const resizableColumns: TableColumn<EmployeeTableData>[] = [
   { header: 'Email', accessorKey: 'email', size: 240, resizable: true },
   { header: 'Phone', accessorKey: 'phone', size: 160, resizable: true },
   { header: 'Projects', accessorKey: 'projects', size: 120, align: 'center', resizable: true },
-  { header: 'Utilization', accessorKey: 'utilization', size: 140, align: 'center', resizable: true },
+  {
+    header: 'Utilization',
+    accessorKey: 'utilization',
+    size: 140,
+    align: 'center',
+    resizable: true
+  },
   { header: 'Last Updated', accessorKey: 'lastUpdated', size: 160, resizable: true },
   { header: 'Score', accessorKey: 'score', size: 120, align: 'center', resizable: true }
 ];

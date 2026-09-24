@@ -56,7 +56,10 @@ async function movePointerBetween(fromEl: Element, toEl: Element) {
 describe('SNavMenu (e2e)', () => {
   it('closes the menu when the pointer moves to a root-level leaf link', async () => {
     const { unmount } = await renderComponent(SNavMenu, {
-      props: { items: [...items, { value: 'help', label: 'Help', href: '/help' }], delayDuration: 0 }
+      props: {
+        items: [...items, { value: 'help', label: 'Help', href: '/help' }],
+        delayDuration: 0
+      }
     });
     const oneTrigger = page.getByRole('link', { name: 'One', exact: true });
     const helpLink = page.getByRole('link', { name: 'Help', exact: true });
@@ -182,7 +185,9 @@ describe('SNavMenu (e2e)', () => {
         ]
       }
     ];
-    const { unmount } = await renderComponent(SNavMenu, { props: { items: rtlItems, dir: 'rtl', delayDuration: 0 } });
+    const { unmount } = await renderComponent(SNavMenu, {
+      props: { items: rtlItems, dir: 'rtl', delayDuration: 0 }
+    });
     const oneTrigger = page.getByRole('link', { name: 'One' });
 
     await userEvent.hover(oneTrigger);
@@ -224,7 +229,9 @@ describe('SNavMenu (e2e)', () => {
       }
     ];
 
-    const { unmount } = await renderComponent(SNavMenu, { props: { items: nestedItems, delayDuration: 0 } });
+    const { unmount } = await renderComponent(SNavMenu, {
+      props: { items: nestedItems, delayDuration: 0 }
+    });
     const oneTrigger = page.getByRole('link', { name: 'One', exact: true });
     const oneATrigger = page.getByRole('button', { name: 'One A', exact: true });
     const oneA1 = page.getByText('One A 1', { exact: true });
@@ -264,7 +271,9 @@ describe('SNavMenu (e2e)', () => {
       }
     ];
 
-    const { unmount } = await renderComponent(SNavMenu, { props: { items: nestedItems, delayDuration: 0 } });
+    const { unmount } = await renderComponent(SNavMenu, {
+      props: { items: nestedItems, delayDuration: 0 }
+    });
     const oneTrigger = page.getByRole('link', { name: 'One', exact: true });
     const oneATrigger = page.getByRole('button', { name: 'One A', exact: true });
     const oneA1 = page.getByText('One A 1', { exact: true });

@@ -129,7 +129,11 @@ export async function timedSwipe(steps: TimedSwipeStep[]) {
   const events: PointerEvent[] = [];
 
   for (const step of steps) {
-    events.push(dispatchPointerStep(POINTER_TYPE_BY_STEP[step.type], step.x, step.y, { timeStamp: step.time }));
+    events.push(
+      dispatchPointerStep(POINTER_TYPE_BY_STEP[step.type], step.x, step.y, {
+        timeStamp: step.time
+      })
+    );
     await sleep(0);
   }
 

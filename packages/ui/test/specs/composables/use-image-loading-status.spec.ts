@@ -71,7 +71,10 @@ describe('useImageLoadingStatus', () => {
 
   it('should handle referrerPolicy option', async () => {
     const referrerPolicy = ref<'no-referrer' | undefined>('no-referrer');
-    const status = useImageLoadingStatus({ src: 'https://example.com/image.jpg', referrerpolicy: referrerPolicy });
+    const status = useImageLoadingStatus({
+      src: 'https://example.com/image.jpg',
+      referrerpolicy: referrerPolicy
+    });
 
     await nextTick();
     expect(status.value).toBe('loading');
@@ -79,7 +82,10 @@ describe('useImageLoadingStatus', () => {
 
   it('should handle crossOrigin option', async () => {
     const crossOrigin = ref<'anonymous' | undefined>('anonymous');
-    const status = useImageLoadingStatus({ src: 'https://example.com/image.jpg', crossorigin: crossOrigin });
+    const status = useImageLoadingStatus({
+      src: 'https://example.com/image.jpg',
+      crossorigin: crossOrigin
+    });
 
     await nextTick();
     expect(status.value).toBe('loading');

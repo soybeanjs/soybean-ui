@@ -93,7 +93,11 @@ export function createDecade(props: CreateDecadeOptions): Date[] {
   }
 
   return Array.from({ length: decadeLength }, (_, index) =>
-    setSegmentParts(dateObj, { year: dateObj.getFullYear() + startIndex + index, month: 1, day: 1 })
+    setSegmentParts(dateObj, {
+      year: dateObj.getFullYear() + startIndex + index,
+      month: 1,
+      day: 1
+    })
   );
 }
 

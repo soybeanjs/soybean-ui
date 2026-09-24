@@ -234,7 +234,9 @@ describe('SMenubar (e2e)', () => {
   });
 
   it('opens the menu on hover and ignores clicks in hover mode', async () => {
-    const { unmount } = await renderComponent(SMenubar, { props: { items, trigger: 'hover', delayDuration: 0 } });
+    const { unmount } = await renderComponent(SMenubar, {
+      props: { items, trigger: 'hover', delayDuration: 0 }
+    });
     const fileTrigger = page.getByRole('menuitem', { name: 'File' });
 
     await userEvent.hover(fileTrigger);
@@ -245,7 +247,9 @@ describe('SMenubar (e2e)', () => {
   });
 
   it('keeps the menu open when moving from the trigger onto the content in hover mode', async () => {
-    const { unmount } = await renderComponent(SMenubar, { props: { items, trigger: 'hover', delayDuration: 0 } });
+    const { unmount } = await renderComponent(SMenubar, {
+      props: { items, trigger: 'hover', delayDuration: 0 }
+    });
     const fileTrigger = page.getByRole('menuitem', { name: 'File' });
     const menu = page.getByRole('menu');
 

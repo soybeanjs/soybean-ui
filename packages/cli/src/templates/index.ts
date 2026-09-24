@@ -279,7 +279,11 @@ export function getTemplateConfig(_templateName: string): Record<string, any> {
 }
 
 /** List all available templates with descriptions. */
-export function listAllTemplates(): Array<{ name: string; description: string; framework: string }> {
+export function listAllTemplates(): Array<{
+  name: string;
+  description: string;
+  framework: string;
+}> {
   return listTemplates();
 }
 

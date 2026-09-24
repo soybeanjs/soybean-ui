@@ -127,7 +127,10 @@ export function useForm<S extends FormValuesSchema, Values extends FormValues = 
   options: Omit<UseFormOptions<Values>, 'schema'> & { schema: S }
 ): UseFormReturn<Values>;
 export function useForm<Values extends FormValues = FormValues>(
-  options: Omit<UseFormOptions<Values>, 'defaultValues'> & { schema?: undefined; defaultValues?: Values }
+  options: Omit<UseFormOptions<Values>, 'defaultValues'> & {
+    schema?: undefined;
+    defaultValues?: Values;
+  }
 ): UseFormReturn<Values>;
 export function useForm<Values extends FormValues = FormValues>(
   options: Omit<UseFormOptions<Values>, 'schema'> & { schema?: FormValuesSchema }
@@ -202,7 +205,11 @@ export function useForm<Values extends FormValues = FormValues>(
     opts?: FormFieldRegisterOptions<DeepValue<Values, Name>>
   ): ComputedRef<FormFieldState<Values, Name>> {
     const resolveValidate = () => resolveValidateOption(opts?.validate);
-    const field = useTanStackField({ form, name, validators: buildFieldValidators(validateMode, resolveValidate()) });
+    const field = useTanStackField({
+      form,
+      name,
+      validators: buildFieldValidators(validateMode, resolveValidate())
+    });
 
     // Ref / ComputedRef validate sources rebind the field validators on change; plain
     // functions resolve to the same reference and never trigger.

@@ -302,7 +302,10 @@ export function parseThemeEnvelope(raw: string | null | undefined): ThemeEnvelop
     return null;
   }
 
-  const envelope: ThemeEnvelope = { v: THEME_ENVELOPE_VERSION, options: parseThemeOptions(data.options, version) };
+  const envelope: ThemeEnvelope = {
+    v: THEME_ENVELOPE_VERSION,
+    options: parseThemeOptions(data.options, version)
+  };
 
   if (isMode(data.mode)) {
     envelope.mode = data.mode;

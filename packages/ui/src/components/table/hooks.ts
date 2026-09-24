@@ -74,7 +74,11 @@ function useTableState<
 
     columnChecks.value = getColumnChecks(columns()).map(check => {
       const stored = checksMap.get(check.key) || {};
-      return { ...check, checked: stored.checked ?? check.checked, fixed: stored.fixed ?? check.fixed };
+      return {
+        ...check,
+        checked: stored.checked ?? check.checked,
+        fixed: stored.fixed ?? check.fixed
+      };
     });
   }
 

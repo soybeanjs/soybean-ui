@@ -737,7 +737,13 @@ describe('STable', () => {
         { header: 'Name', accessorKey: 'name', size: 140, fixed: 'start' },
         { header: 'Age', accessorKey: 'age', size: 96, align: 'center' as const, fixed: 'start' },
         { header: 'Id', accessorKey: 'id', size: 120 },
-        { header: 'Name Copy', accessorFn: row => row.name, id: 'name-copy', size: 140, fixed: 'end' },
+        {
+          header: 'Name Copy',
+          accessorFn: row => row.name,
+          id: 'name-copy',
+          size: 140,
+          fixed: 'end'
+        },
         { header: 'Id Copy', accessorFn: row => row.id, id: 'id-copy', size: 120, fixed: 'end' }
       ];
 

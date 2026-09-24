@@ -206,7 +206,10 @@ describe('shared/generation-cache', () => {
 
         await writeGenerationFingerprint(cacheFilePath, { inputs: 'a', outputs: 'b' });
 
-        expect(await readGenerationFingerprint(cacheFilePath)).toEqual({ inputs: 'a', outputs: 'b' });
+        expect(await readGenerationFingerprint(cacheFilePath)).toEqual({
+          inputs: 'a',
+          outputs: 'b'
+        });
       } finally {
         await rm(rootDir, { recursive: true, force: true });
       }

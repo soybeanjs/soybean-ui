@@ -373,7 +373,9 @@ describe('SButtonGroup', () => {
   });
 
   it('does not leak style props to the DOM', () => {
-    const wrapper = mountGroup({ props: { color: 'destructive', fitContent: true, shape: 'circle' } });
+    const wrapper = mountGroup({
+      props: { color: 'destructive', fitContent: true, shape: 'circle' }
+    });
     const root = wrapper.find('.group-root');
     expect(root.attributes('color')).toBeUndefined();
     expect(root.attributes('fitcontent')).toBeUndefined();

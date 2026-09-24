@@ -128,7 +128,11 @@ describe('topologicallySortItems (ADR-006)', () => {
     const fullItem: ResolvedRegistryItem = {
       name: 'dialog',
       dependencies: ['utils'],
-      item: { type: 'registry:ui', name: 'dialog', files: [{ path: 'dialog.vue', type: 'registry:ui' }] },
+      item: {
+        type: 'registry:ui',
+        name: 'dialog',
+        files: [{ path: 'dialog.vue', type: 'registry:ui' }]
+      },
       expandedFiles: [{ path: 'dialog.vue', type: 'registry:ui' }]
     };
     const utils = makeItem('utils');
