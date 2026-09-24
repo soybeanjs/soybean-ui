@@ -31,6 +31,8 @@ const readFontVar = (name: string): string => {
 };
 
 const stacks = computed(() => TOKENS.map(token => ({ token, stack: readFontVar(token) })));
+
+const code = `:root {\n  --font-sans: …;\n  --font-serif: …;\n  --font-mono: …;\n  --font-heading: …;\n}`;
 </script>
 
 <template>
@@ -103,15 +105,15 @@ const stacks = computed(() => TOKENS.map(token => ({ token, stack: readFontVar(t
       <SCard title="Inline code" description="Code, kbd and token chips read --font-mono" class="p-0">
         <div class="space-y-2">
           <p class="text-sm text-foreground">
-            Resolve
+            <span>Resolve</span>
             <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">resolveThemeMap()</code>
-            and emit
+            <span>and emit</span>
             <code class="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">--font-sans</code>
-            from the literal layer.
+            <span>from the literal layer.</span>
           </p>
-          <pre class="overflow-x-auto rounded-lg bg-muted px-3 py-2 font-mono text-2xs text-foreground">{{
-            `:root {\n  --font-sans: …;\n  --font-serif: …;\n  --font-mono: …;\n  --font-heading: …;\n}`
-          }}</pre>
+          <pre class="overflow-x-auto rounded-lg bg-muted px-3 py-2 font-mono text-2xs text-foreground">
+            {{ code }}
+          </pre>
         </div>
       </SCard>
     </div>
