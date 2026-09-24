@@ -1,8 +1,14 @@
+<p align="center">
+  <a href="https://github.com/soybeanjs/soybean-ui">
+    <img src="https://r2.soybeanjs.tech/soybeanjs/logo-soybean-ui.svg?v=202608192144" alt="Logo" width="150" />
+  </a>
+</p>
+
 # @soybeanjs/ui
 
 [English](./README.md) | 中文
 
-[![license](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
+[![license](https://img.shields.io/badge/license-MIT-green.svg)](../../LICENSE)
 [![npm version](https://img.shields.io/npm/v/@soybeanjs/ui)](https://www.npmjs.com/package/@soybeanjs/ui)
 [![npm downloads](https://img.shields.io/npm/dt/@soybeanjs/ui)](https://www.npmjs.com/package/@soybeanjs/ui)
 [![github stars](https://img.shields.io/github/stars/soybeanjs/soybean-ui)](https://github.com/soybeanjs/soybean-ui)
@@ -207,7 +213,7 @@ import '@soybeanjs/ui/styles.css'; // 预构建 UnoCSS 样式表
 
 ## 📖 文档
 
-完整文档、Playground 示例和组件 API 参考，请访问 [SoybeanUI 文档站点](https://soybeanjs.github.io/soybean-ui)。
+完整文档、Playground 示例和组件 API 参考，请访问 [SoybeanUI 文档站点](https://ui.soybeanjs.cn)。
 
 ## 💝 致谢
 

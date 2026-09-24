@@ -1,8 +1,14 @@
+<p align="center">
+  <a href="https://github.com/soybeanjs/soybean-ui">
+    <img src="https://r2.soybeanjs.tech/soybeanjs/logo-soybean-ui.svg?v=202608192144" alt="Logo" width="150" />
+  </a>
+</p>
+
 # @soybeanjs/ui
 
 English | [中文](./README.zh-CN.md)
 
-[![license](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
+[![license](https://img.shields.io/badge/license-MIT-green.svg)](../../LICENSE)
 [![npm version](https://img.shields.io/npm/v/@soybeanjs/ui)](https://www.npmjs.com/package/@soybeanjs/ui)
 [![npm downloads](https://img.shields.io/npm/dt/@soybeanjs/ui)](https://www.npmjs.com/package/@soybeanjs/ui)
 [![github stars](https://img.shields.io/github/stars/soybeanjs/soybean-ui)](https://github.com/soybeanjs/soybean-ui)
@@ -207,7 +213,7 @@ Override individual slot classes via the `ui` prop:
 
 ## 📖 Documentation
 
-For full documentation, playground examples, and component API references, visit the [SoybeanUI docs site](https://soybeanjs.github.io/soybean-ui).
+For full documentation, playground examples, and component API references, visit the [SoybeanUI docs site](https://ui.soybeanjs.cn).
 
 ## 💝 Credits
 

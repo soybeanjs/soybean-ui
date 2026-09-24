@@ -1,6 +1,6 @@
 # CONTEXT
 
-> 主题体系领域术语表。仅收录术语与精确定义，不含实现细节。
+> SoybeanUI 领域术语表。仅收录术语与精确定义，不含实现细节。
 
 ## 主题（theme）
 
@@ -108,3 +108,17 @@ localStorage 里的单一条目（键 `__SOYBEAN_THEME`），携带 schema 版�
 ## 命名空间 registry item（namespaced registry item）
 
 sbean registry 中的条目形式：name 以 `包名/组件名` 命名（当前全部为核心包条目，如 `ui/button`；未来外围包同理，如 `<pkg>/<component>`），并附 `package` 字段标识归属。单一 `registry.json` 承载所有包条目，CLI 通过命名空间路径寻址（核心 `ui` 可省略前缀，`sbean add button`；其他包必须带前缀，`sbean add <pkg>/<component>`），文档站按 `package` 字段分组展示。
+
+## 工具链（tooling）
+
+**sbean**：
+消费端源码分发 CLI（`packages/cli`，npm 包名 `sbean`，bin `sbean`）：把 registry 里的组件源码复制进用户项目，附带脚手架、registry 管理与 MCP server；配置文件是 `sbean.json`。
+_Avoid_: `@soybeanjs/sbean`（文档中的旧写法；实际包名为 `sbean`）
+
+**sui**：
+本仓库私有的服务 CLI（`packages/scripts`，永不发布，bin `sui`）：分 `gen` / `translate` / `check` 三个命令组与若干工作区命令。与 `sbean` 是两个工具，不可合并。
+_Avoid_: 把 `sui` 当作 `sbean`；称其为“用户侧 CLI”
+
+**ui-uno**：
+npm 包 `@soybeanjs/ui-uno`，物理目录为 `packages/unocss`——theme token 与 UnoCSS 之间的唯一适配层。
+_Avoid_: `@soybeanjs/unocss`、简称为“unocss 包”

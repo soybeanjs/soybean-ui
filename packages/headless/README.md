@@ -8,7 +8,9 @@
 
 English | [中文](./README.zh-CN.md)
 
-[![license](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
+[![license](https://img.shields.io/badge/license-MIT-green.svg)](../../LICENSE)
+[![npm version](https://img.shields.io/npm/v/@soybeanjs/headless)](https://www.npmjs.com/package/@soybeanjs/headless)
+[![npm downloads](https://img.shields.io/npm/dt/@soybeanjs/headless)](https://www.npmjs.com/package/@soybeanjs/headless)
 [![github stars](https://img.shields.io/github/stars/soybeanjs/soybean-ui)](https://github.com/soybeanjs/soybean-ui)
 
 A collection of unstyled, accessible UI primitives for Vue 3.
