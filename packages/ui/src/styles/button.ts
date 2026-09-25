@@ -121,14 +121,11 @@ export const buttonVariants = cv({
       variant: ['outline', 'dashed', 'soft', 'ghost', 'link'],
       class: 'text-carbon'
     },
+    // 中性色的文字与交互面都由 `--accent*` 驱动：`color="secondary"` 与 `"accent"` 在无底色形态上
+    // 等价，`secondary` 的差异只留在 solid / soft 的静止填充上
     {
-      color: 'secondary',
-      variant: ['outline', 'dashed', 'soft', 'ghost', 'link'],
-      class: 'text-secondary-foreground'
-    },
-    {
-      color: 'accent',
-      variant: ['outline', 'dashed', 'soft', 'ghost', 'link'],
+      color: ['secondary', 'accent'],
+      variant: ['outline', 'dashed', 'ghost', 'link'],
       class: 'text-accent-foreground'
     },
     {
@@ -161,15 +158,12 @@ export const buttonVariants = cv({
       variant: ['outline', 'dashed', 'ghost'],
       class: 'data-[normal]:hover:bg-carbon/10 data-[normal]:active:bg-carbon/20'
     },
+    // 与 `pure` 变体、`anchor.link` 共用同一条中性阶梯：hover `bg-accent/60` → active `bg-accent`，
+    // 于是 `--accent` 一个旋钮同时驱动行 hover、pure 与 icon 按钮
     {
-      color: 'secondary',
+      color: ['secondary', 'accent'],
       variant: ['outline', 'dashed', 'ghost'],
-      class: 'data-[normal]:hover:bg-secondary-foreground/10 data-[normal]:active:bg-secondary-foreground/20'
-    },
-    {
-      color: 'accent',
-      variant: ['outline', 'dashed', 'ghost'],
-      class: 'data-[normal]:hover:bg-accent-foreground/10 data-[normal]:active:bg-accent-foreground/20'
+      class: 'data-[normal]:hover:bg-accent/60 data-[normal]:active:bg-accent'
     },
     {
       color: 'primary',
@@ -276,17 +270,11 @@ export const buttonVariants = cv({
       variant: 'soft',
       class: 'bg-carbon/10 data-[normal]:hover:bg-carbon/10 data-[normal]:active:bg-carbon/20'
     },
+    // 中性 soft：静止面是弱化块 `muted`，hover / active 才升到交互面（与 `toggle.soft` 同一套）
     {
-      color: 'secondary',
+      color: ['secondary', 'accent'],
       variant: 'soft',
-      class:
-        'bg-secondary-foreground/10 data-[normal]:hover:bg-secondary-foreground/10 data-[normal]:active:bg-secondary-foreground/20'
-    },
-    {
-      color: 'accent',
-      variant: 'soft',
-      class:
-        'bg-accent-foreground/10 data-[normal]:hover:bg-accent-foreground/10 data-[normal]:active:bg-accent-foreground/20'
+      class: 'bg-muted text-foreground data-[normal]:hover:bg-accent/60 data-[normal]:active:bg-accent'
     },
     {
       size: 'xs',

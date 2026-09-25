@@ -250,15 +250,13 @@ export const CORE_RULES: Record<CoreToken, TokenRule> = {
   popover: { kind: 'level', source: 'base', light: 'white', dark: 900 },
   mask: { kind: 'simple', light: 'black', dark: 'black' },
   // —— fills ——
-  // muted / accent / secondary 三者同档（重构前 secondary = muted，accent = muted）：
-  // hover 面与弱化块同色，靠边框与阴影表达交互，保持迁移前的观感
   muted: { kind: 'level', source: 'base', light: 100, dark: 800 },
-  accent: { kind: 'level', source: 'base', light: 100, dark: 800 },
+  accent: { kind: 'level', source: 'base', light: 200, dark: 700 },
   'accent-foreground': { kind: 'level', source: 'base', light: 900, dark: 50 },
   secondary: { kind: 'level', source: 'base', light: 100, dark: 800 },
   'secondary-foreground': { kind: 'level', source: 'base', light: 900, dark: 50 },
   // —— text ladder ——
-  foreground: { kind: 'level', source: 'base', light: 950, dark: 50 },
+  foreground: { kind: 'level', source: 'base', light: 900, dark: 50 },
   // 600 而非 500：`{b}.500` 在 `muted`（`{b}.100`）上只有 4.39:1，读不到 AA 的 4.5
   'muted-foreground': { kind: 'level', source: 'base', light: 600, dark: 400 },
   // 卡片 / 浮层文字 = 全局正文（shadcn 的同名 token 也是同一个值）：镜像而非独立定档，
@@ -295,9 +293,7 @@ export const CORE_RULES: Record<CoreToken, TokenRule> = {
   // —— carbon surface（反相表面，原 `inverse`，§12-9 复原旧名）——
   carbon: { kind: 'level', source: 'base', light: 800, dark: 100 },
   // —— region (mirrors global roles) ——
-  // 区域 = 全局角色的镜像，八条与 shadcn 的 sidebar 族一一对应；亮色基底取 `background`
-  // （与页面同调、靠边框区分），暗色取 `card`（比页面亮一档）
-  sidebar: { kind: 'mirror', light: 'background', dark: 'card' },
+  sidebar: { kind: 'mirror', light: 'background', dark: 'muted' },
   'sidebar-foreground': { kind: 'mirror', light: 'foreground', dark: 'foreground' },
   'sidebar-border': { kind: 'mirror', light: 'border', dark: 'border' },
   'sidebar-accent': { kind: 'mirror', light: 'accent', dark: 'accent' },

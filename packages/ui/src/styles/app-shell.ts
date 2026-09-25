@@ -57,10 +57,10 @@ export const appShellVariants = scv({
     tab: 'flex justify-between h-full',
     content: 'w-full',
     footer: 'flex items-center h-full w-full px-[--sl-spacing]',
-    layoutHeader: 'bg-card border-b border-border',
-    layoutTab: 'bg-card border-b border-border',
-    layoutContent: 'bg-card',
-    layoutFooter: 'bg-card border-t border-border'
+    layoutHeader: 'border-b border-border',
+    layoutTab: 'border-b border-border',
+    layoutContent: '',
+    layoutFooter: 'border-t border-border'
   },
   variants: {
     size: {

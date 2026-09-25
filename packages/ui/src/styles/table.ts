@@ -15,7 +15,7 @@ export const tableVariants = scv({
     ],
     footer: `font-medium [&>tr:last-child]:border-b-0 [&>tr]:bg-transparent [&>tr]:hover:bg-transparent [&_td]:bg-transparent`,
     row: 'bg-card border-b [&:not([data-empty-row])]:hover:bg-accent transition-colors',
-    head: 'box-border bg-accent text-foreground relative font-medium',
+    head: 'box-border bg-muted text-foreground relative font-medium',
     cell: 'box-border data-[fixed]:bg-card',
     fixed: [
       'relative',
@@ -168,7 +168,7 @@ export const tableVariants = scv({
     },
     variant: {
       default: {
-        root: 'bg-accent'
+        root: 'bg-muted'
       },
       simple: {
         header: [
@@ -192,7 +192,7 @@ export const tableVariants = scv({
     },
     striped: {
       true: {
-        row: 'data-[row]:even:bg-accent'
+        row: 'data-[row]:even:bg-muted'
       }
     }
   },

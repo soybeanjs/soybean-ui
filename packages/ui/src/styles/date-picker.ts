@@ -6,7 +6,7 @@ import { dateFieldVariants } from './date-field';
 export const datePickerVariants = scv({
   extend: [dateFieldVariants],
   slots: {
-    trigger: 'ms-auto data-[state=open]:bg-accent/50 data-[state=open]:text-accent-foreground',
+    trigger: 'ms-auto data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
     positioner: 'w-max',
     popup: ['w-auto', overlaySurface, overlayLayer, ...overlayMotion]
   },

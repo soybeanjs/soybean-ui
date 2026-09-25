@@ -201,7 +201,7 @@ cd packages/theme && pnpm exec vitest run -u   # 有意识地更新映射快照
 ### 2.4 区域皮肤：可整段删除 → 恒输出 8 条镜像
 
 - **旧版**：区域 8 条 token 由一个 `sidebar` **scheme** 提供（`derived` / `inverted-dark` / `soft` / `contrast` 四套），`sidebarDerive: false` 时**整段不输出**（产物里 `--sidebar*` 出现 0 次，体积 7,243 → 6,665 B）。
-- **新版**：8 条全部是**全局角色的镜像**（`sidebar` ← `background`/`card`、`sidebar-ring` ← `ring` …），无条件输出。
+- **新版**：8 条全部是**全局角色的镜像**（`sidebar` ← 亮 `background` / 暗 `muted`、`sidebar-ring` ← `ring` …），无条件输出。
 - **优势**：删掉了"一个开关能让整族变量消失"的失败模式（消费方拿到的是空值而不是报错）；区域与全局的对应关系写在规则里，一眼可查。
 
 ### 2.5 图表色：独立 scheme → 由 primary 派生
@@ -259,20 +259,22 @@ cd packages/theme && pnpm exec vitest run -u   # 有意识地更新映射快照
 | token                    | 角色                            | light     | dark      |
 | :----------------------- | :------------------------------ | :-------- | :-------- |
 | `--muted`                | 弱化块（badge / 内嵌井 / 表头） | `{b}.100` | `{b}.800` |
-| `--accent`               | hover / 选中面                  | `{b}.100` | `{b}.800` |
+| `--accent`               | hover / 选中面                  | `{b}.200` | `{b}.700` |
 | `--accent-foreground`    | 交互面文字                      | `{b}.900` | `{b}.50`  |
 | `--secondary`            | 次级填充                        | `{b}.100` | `{b}.800` |
 | `--secondary-foreground` | 次级填充文字                    | `{b}.900` | `{b}.50`  |
 
-三者默认同档（迁移期保留"hover 面与弱化块同色"的观感，交互反馈靠边框/阴影/前景色表达）；约束是**一旦分化必须 ≥1 档**。`muted` 不产出自己的前景——它的文字就是 `--muted-foreground`。
+**`muted` / `secondary` 同档，`accent` 比它们深/浅一档**（亮 `{b}.100` → `{b}.200`，暗 `{b}.800` → `{b}.700`）：弱化块与次级填充是**静态面**，`accent` 是**交互面**，所以 hover / 选中 / open 落地在 `accent`，静态井（表头、tracks、chips）落地在 `muted` / `secondary`；约束是三者**一旦分化必须 ≥1 档**（有测试守住）。`muted` 不产出自己的前景——它的文字就是 `--muted-foreground`。
+
+**组件层的读法（中性面阶梯）**：静止 `muted` / 透明 → hover `accent/60` → 选中 / 按压 `accent`。不带底色的中性交互面（icon 按钮、toggle、anchor 选中项）因此只由 `--accent` 驱动，改档位即整体跟随；需要中等灰度的标记（轨道、进度、指示点）不属于这个表面档位，不走 `--accent`。
 
 ### 3.3 内容色（文本 / 图标）
 
 | token                  | 角色     | light                            | dark      |
 | :--------------------- | :------- | :------------------------------- | :-------- |
-| `--foreground`         | 主文本   | `{b}.950`                        | `{b}.50`  |
+| `--foreground`         | 主文本   | `{b}.900`                        | `{b}.50`  |
 | `--muted-foreground`   | 次文本   | `{b}.600`                        | `{b}.400` |
-| `--card-foreground`    | 卡片文字 | `{b}.950`（`foreground` 的镜像） | `{b}.50`  |
+| `--card-foreground`    | 卡片文字 | `{b}.900`（`foreground` 的镜像） | `{b}.50`  |
 | `--popover-foreground` | 浮层文字 | 同上                             | 同上      |
 | `--carbon-foreground`  | 反相文本 | `{b}.50`                         | `{b}.900` |
 
@@ -333,18 +335,20 @@ cd packages/theme && pnpm exec vitest run -u   # 有意识地更新映射快照
 
 八条与 shadcn 的 `--sidebar-*` 一一对应，全部是**全局角色的镜像**：
 
-| token                          | 默认（= 全局层）                          |
-| :----------------------------- | :---------------------------------------- |
-| `--sidebar`                    | `--background`（light）/ `--card`（dark） |
-| `--sidebar-foreground`         | `--foreground`                            |
-| `--sidebar-border`             | `--border`（含 alpha 伴生）               |
-| `--sidebar-accent`             | `--accent`                                |
-| `--sidebar-accent-foreground`  | `--accent-foreground`                     |
-| `--sidebar-primary`            | `--primary`                               |
-| `--sidebar-primary-foreground` | `--primary-foreground`                    |
-| `--sidebar-ring`               | `--ring`                                  |
+| token                          | 默认（= 全局层）                           |
+| :----------------------------- | :----------------------------------------- |
+| `--sidebar`                    | `--background`（light）/ `--muted`（dark） |
+| `--sidebar-foreground`         | `--foreground`                             |
+| `--sidebar-border`             | `--border`（含 alpha 伴生）                |
+| `--sidebar-accent`             | `--accent`                                 |
+| `--sidebar-accent-foreground`  | `--accent-foreground`                      |
+| `--sidebar-primary`            | `--primary`                                |
+| `--sidebar-primary-foreground` | `--primary-foreground`                     |
+| `--sidebar-ring`               | `--ring`                                   |
 
-区域级差异只能来自 `overrides`；把侧栏做成反色皮肤时镜像会跟着走。次级文字直接用全局的 `--muted-foreground`（实测在 `sidebar` 的两种默认取值上都过 4.5:1）。
+区域级差异只能来自 `overrides`；把侧栏做成反色皮肤时镜像会跟着走。
+
+亮色 `--sidebar` 取 `background`（与页面同调，分界由 `--sidebar-border` 承担，差 1.04:1）；暗色取 `muted`（`{b}.800`，比主画布 `card` 的 `{b}.900` 亮一档）——暗色若也取 `card`，侧栏与主体**完全同色**，外壳读不出分界。`sidebar-accent` ← `accent` 因此在两种底色上都逐级可见；次级文字用全局 `--muted-foreground`（实测亮 7.41 / 暗 5.81，均过 4.5:1）。
 
 ### 3.10 alpha 伴生变量
 
@@ -516,7 +520,7 @@ token 名与 shadcn 完全同名且**不带前缀**，因此 shadcn 的片段、
 9. **格式等价**：`hsl` 与 `oklch` 下 token 数量、映射表完全一致（只有值写法不同）。
 10. **命名一致性**：语义 token 与字面量都是裸名；调色板 token 也是裸名；启用 `prefix` 时两者带**同一个**前缀。
 11. **z-index 纪律**：库内样式除 `--z-layout` / `--z-base` / `--z-toast` / `--z-max` 外不得出现字面量 z-index（可用静态扫描断言）。
-12. **sidebar 完整性**：8 个区域 token 在两种 `surfaceStyle`、两种模式、任意 scheme 下都存在，且八条默认值等于各自的全局镜像。
+12. **sidebar 完整性**：8 个区域 token 在两种 `surfaceStyle`、两种模式、任意 scheme 下都存在，且八条默认值等于各自的全局镜像；**暗色**的 `--sidebar` 还必须不等于主画布 `card`（一条断言，防"侧栏与主体同色"复发；亮色按设计取页面基底 `background`，由 `sidebar-border` 区分）。
 13. **通道约定**：库内与 docs 的样式/示例中不得出现以裸 `var(--*)` 作颜色值（正则可判）；产物里不得出现完整色变量。
 14. **无遗留命名**：全仓不得出现旧引擎的组件变量前缀（`--soybean-*`）或主题 token 被写成带前缀的形式（`--soybean-background`）；组件作用域变量则**必须**带 `--soybean-`。两条扫描守这条线：`@soybeanjs/theme` 的 `token-usage.spec.ts`（名字）与 `@soybeanjs/ui-uno` 的 `token-utilities.spec.ts`（能否解析出 CSS）。
 

@@ -334,6 +334,54 @@ describe('SLayout', () => {
     });
   });
 
+  describe('surface layering', () => {
+    it('gives the main column the raised canvas and the region its own surface', () => {
+      const wrapper = mount(SLayout, {
+        slots: {
+          header: '<div>Header</div>',
+          sidebar: '<div>Sidebar</div>',
+          default: '<div>Main</div>'
+        },
+        attachTo: document.body
+      });
+
+      const root = wrapper.find('[data-soybean-layout-root]');
+      const main = wrapper.find('[data-soybean-layout-main]');
+      const sidebar = wrapper.find('[data-sidebar="sidebar"]');
+      const content = wrapper.find('[data-soybean-layout-content]');
+
+      // 页面基底 → 主列抬升面 → 区域面，三级各自声明一次
+      expect(root.classes()).toContain('bg-background');
+      expect(main.classes()).toContain('bg-card');
+      expect(content.classes()).toContain('bg-card');
+      expect(sidebar.classes()).toContain('bg-sidebar');
+
+      // 区域面不能与主画布同色，否则侧栏与主体读不出分界
+      expect(sidebar.classes()).not.toContain('bg-card');
+
+      wrapper.unmount();
+    });
+
+    it('lets the inset variant own the root canvas instead of the page base', () => {
+      const wrapper = mount(SLayout, {
+        props: { variant: 'inset' },
+        slots: {
+          sidebar: '<div>Sidebar</div>',
+          default: '<div>Main</div>'
+        },
+        attachTo: document.body
+      });
+
+      const root = wrapper.find('[data-soybean-layout-root]');
+
+      // 变体的区域面必须压过 slot 上的页面基底（tailwind-merge 只留最后一个）
+      expect(root.classes()).toContain('bg-sidebar');
+      expect(root.classes()).not.toContain('bg-background');
+
+      wrapper.unmount();
+    });
+  });
+
   describe('sidebar visibility', () => {
     it('sidebar is visible by default', () => {
       const wrapper = mount(SLayout, {

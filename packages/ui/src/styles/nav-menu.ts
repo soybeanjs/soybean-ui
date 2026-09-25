@@ -19,7 +19,7 @@ export const navMenuVariants = scv({
       `hover:bg-accent hover:text-accent-foreground`,
       `focus:bg-accent focus:text-accent-foreground`,
       `disabled:pointer-events-none disabled:opacity-50`,
-      `data-[state=open]:bg-accent/50`
+      `data-[state=open]:bg-accent data-[state=open]:text-accent-foreground`
     ],
     triggerIcon: `ms-auto transition duration-200 group-data-[state=open]:rotate-180`,
     link: [
@@ -37,7 +37,7 @@ export const navMenuVariants = scv({
     subTrigger: [
       `w-full flex items-start gap-2 select-none rounded-md text-left outline-none transition-colors-200 cursor-pointer decoration-none`,
       `focus:bg-accent focus:text-accent-foreground hover:bg-accent hover:text-accent-foreground`,
-      `data-[state=open]:bg-accent/50`,
+      `data-[state=open]:bg-accent data-[state=open]:text-accent-foreground`,
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     subTriggerIcon: 'ms-auto shrink-0',

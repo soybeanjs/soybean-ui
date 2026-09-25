@@ -30,7 +30,7 @@ export const cascaderVariants = scv({
     ],
     value: 'grow truncate text-start',
     tag: [
-      'inline-flex shrink-0 items-center rounded-sm bg-accent text-accent-foreground',
+      'inline-flex shrink-0 items-center rounded-sm bg-secondary text-secondary-foreground',
       'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50'
     ],
     clear: [

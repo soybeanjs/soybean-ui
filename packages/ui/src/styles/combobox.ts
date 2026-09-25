@@ -48,7 +48,7 @@ export const comboboxVariants = scv({
     ],
     itemIndicator: 'ms-auto shrink-0 text-muted-foreground',
     empty: 'py-4 text-center text-sm text-muted-foreground',
-    separator: 'h-px bg-muted'
+    separator: 'h-px bg-border'
   },
   variants: {
     size: {

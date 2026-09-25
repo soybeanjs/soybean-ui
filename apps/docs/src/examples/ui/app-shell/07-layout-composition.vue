@@ -33,8 +33,7 @@ const breadcrumbs: BreadcrumbOptionData[] = [
       :sidebar-width="240"
       :collapsed-sidebar-width="50"
       :ui="{
-        header: 'bg-background border-b border-border',
-        content: 'bg-background'
+        header: 'border-b border-border'
       }"
     >
       <template #sidebar="{ open: sidebarOpen, collapsedSidebarWidth }">

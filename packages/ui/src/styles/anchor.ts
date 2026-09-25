@@ -44,11 +44,11 @@ export const anchorVariants = scv({
       },
       secondary: {
         indicator: 'bg-secondary-foreground/50',
-        link: 'data-[state=active]:bg-secondary-foreground/10 data-[state=active]:text-secondary-foreground'
+        link: 'data-[state=active]:bg-accent data-[state=active]:text-accent-foreground'
       },
       accent: {
         indicator: 'bg-accent-foreground/50',
-        link: 'data-[state=active]:bg-accent-foreground/10 data-[state=active]:text-accent-foreground'
+        link: 'data-[state=active]:bg-accent data-[state=active]:text-accent-foreground'
       }
     },
     orientation: {

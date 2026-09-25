@@ -14,7 +14,7 @@ export const stepperVariants = scv({
       'inline-flex shrink-0 items-center justify-center rounded-full border bg-card font-medium transition-colors',
       'group-data-[disabled]:opacity-50'
     ],
-    separator: 'shrink-0 bg-muted transition-colors group-data-[disabled]:opacity-50',
+    separator: 'shrink-0 bg-border transition-colors group-data-[disabled]:opacity-50',
     title: 'font-semibold whitespace-nowrap transition-colors',
     description: 'text-muted-foreground transition-colors',
     itemContent: 'flex min-w-0 flex-col',
@@ -150,20 +150,26 @@ export const stepperVariants = scv({
       secondary: {
         indicator: [
           'group-data-[state=active]:border-secondary group-data-[state=active]:bg-secondary group-data-[state=active]:text-secondary-foreground',
-          'group-data-[state=completed]:border-secondary/25 group-data-[state=completed]:bg-secondary/15 group-data-[state=completed]:text-secondary'
+          'group-data-[state=completed]:border-secondary/25 group-data-[state=completed]:bg-secondary/15 group-data-[state=completed]:text-secondary-foreground'
         ],
         separator: 'group-data-[state=completed]:bg-secondary',
-        title: 'group-data-[state=active]:text-secondary group-data-[state=completed]:text-secondary',
-        description: 'group-data-[state=active]:text-secondary/80 group-data-[state=completed]:text-secondary/80'
+        // 中性角色是**填充**，不是文字色：`text-secondary`（`{b}.100` 亮 / `{b}.800` 暗）
+        // 压在 card 上只有 1.09:1 / 1.18:1，读不到；文字取它的 `-foreground`
+        title:
+          'group-data-[state=active]:text-secondary-foreground group-data-[state=completed]:text-secondary-foreground',
+        description:
+          'group-data-[state=active]:text-secondary-foreground/80 group-data-[state=completed]:text-secondary-foreground/80'
       },
       accent: {
         indicator: [
           'group-data-[state=active]:border-accent group-data-[state=active]:bg-accent group-data-[state=active]:text-accent-foreground',
-          'group-data-[state=completed]:border-accent/25 group-data-[state=completed]:bg-accent/15 group-data-[state=completed]:text-accent'
+          'group-data-[state=completed]:border-accent/25 group-data-[state=completed]:bg-accent/15 group-data-[state=completed]:text-accent-foreground'
         ],
         separator: 'group-data-[state=completed]:bg-accent',
-        title: 'group-data-[state=active]:text-accent group-data-[state=completed]:text-accent',
-        description: 'group-data-[state=active]:text-accent/80 group-data-[state=completed]:text-accent/80'
+        // 同上：`text-accent` 在 card 上 1.26:1（暗 1.73:1），取 `-foreground` 才读得到
+        title: 'group-data-[state=active]:text-accent-foreground group-data-[state=completed]:text-accent-foreground',
+        description:
+          'group-data-[state=active]:text-accent-foreground/80 group-data-[state=completed]:text-accent-foreground/80'
       }
     }
   },

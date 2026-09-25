@@ -38,7 +38,7 @@ export const selectVariants = scv({
     ],
     itemText: '',
     itemIndicator: `ms-auto shrink-0 text-muted-foreground`,
-    separator: `-mx-1 my-1 h-px bg-muted`,
+    separator: `-mx-1 my-1 h-px bg-border`,
     scrollUpButton: `flex items-center justify-center cursor-default`,
     scrollDownButton: `flex items-center justify-center cursor-default`,
     arrow: overlayArrow

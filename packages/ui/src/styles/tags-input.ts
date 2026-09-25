@@ -18,7 +18,7 @@ export const tagsInputVariants = scv({
   slots: {
     root: ['group relative flex w-full flex-wrap items-center', ...fieldChrome, ...fieldDisabled],
     item: [
-      'inline-flex items-center rounded-md bg-accent ring-offset-card transition-[box-shadow,background-color]',
+      'inline-flex items-center rounded-md bg-secondary ring-offset-card transition-[box-shadow,background-color]',
       'data-[selected=true]:ring-2 data-[selected=true]:ring-primary/30 data-[selected=true]:ring-offset-2',
       'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 group-data-[disabled]:opacity-100'
     ],

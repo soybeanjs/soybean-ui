@@ -86,7 +86,10 @@ describe('theme map — structure and invariants', () => {
     const map = resolveThemeMap(DEFAULTS);
 
     expect(map.light.sidebar).toEqual(map.light.background);
-    expect(map.dark.sidebar).toEqual(map.dark.card);
+    expect(map.dark.sidebar).toEqual(map.dark.muted);
+    // 暗色必须与主画布 `card` 分开一档，否则侧栏与主体完全同色、读不出分界；
+    // 亮色按设计取页面基底 `background`（与页面同调），分界由 `sidebar-border` 承担
+    expect(map.dark.sidebar).not.toEqual(map.dark.card);
     expect(map.light['sidebar-foreground']).toEqual(map.light.foreground);
     expect(map.light['sidebar-accent']).toEqual(map.light.accent);
     expect(map.light['sidebar-accent-foreground']).toEqual(map.light['accent-foreground']);
@@ -94,6 +97,17 @@ describe('theme map — structure and invariants', () => {
     expect(map.light['sidebar-border']).toEqual(map.light.border);
     expect(map.light['sidebar-primary-foreground']).toEqual(map.light['primary-foreground']);
     expect(map.light['sidebar-ring']).toEqual(map.light.ring);
+  });
+
+  it('keeps the interaction fill distinct from the static weak fills', () => {
+    // `accent` 是 hover / 选中 / open 面，`muted` / `secondary` 是静态面：
+    // 一旦分化必须 ≥1 档，否则 hover 与静止面同色（toggle.soft / table 表头曾踩这条）
+    const map = resolveThemeMap(DEFAULTS);
+
+    (['light', 'dark'] as const).forEach(mode => {
+      expect(map[mode].accent, mode).not.toEqual(map[mode].muted);
+      expect(map[mode].accent, mode).not.toEqual(map[mode].secondary);
+    });
   });
 
   it('keeps the elevation ladder ordered in both modes', () => {

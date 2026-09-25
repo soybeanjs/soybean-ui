@@ -21,9 +21,10 @@ export const toggleVariants = cv({
       accent: `focus-visible:ring-accent-foreground/20`
     },
     variant: {
-      outline: `border border-border bg-card text-foreground hover:bg-accent data-[state=on]:bg-accent`,
-      soft: 'bg-accent data-[state=off]:hover:bg-accent',
-      ghost: 'bg-transparent data-[state=off]:hover:bg-accent'
+      // 中性阶梯统一：静止 `card` / `muted` / 透明 → hover `accent/60` → on `accent`
+      outline: `border border-border bg-card text-foreground hover:bg-accent/60 data-[state=on]:bg-accent`,
+      soft: 'bg-muted text-foreground data-[state=off]:hover:bg-accent/60',
+      ghost: 'bg-transparent text-foreground data-[state=off]:hover:bg-accent/60'
     },
     size: {
       xs: 'gap-1 h-6 px-1.5 text-2xs',
@@ -71,15 +72,11 @@ export const toggleVariants = cv({
       variant: 'soft',
       class: 'data-[state=on]:bg-carbon/20 data-[state=on]:text-carbon'
     },
+    // 中性 on 态 = 选中面，归 `--accent`；`color="secondary"` 与 `"accent"` 在 toggle 上等价
     {
-      color: 'secondary',
-      variant: 'soft',
-      class: 'data-[state=on]:bg-secondary-foreground/10 data-[state=on]:text-secondary-foreground'
-    },
-    {
-      color: 'accent',
-      variant: 'soft',
-      class: 'data-[state=on]:bg-accent-foreground/10 data-[state=on]:text-accent-foreground'
+      color: ['secondary', 'accent'],
+      variant: ['soft', 'ghost'],
+      class: 'data-[state=on]:bg-accent data-[state=on]:text-accent-foreground'
     },
     {
       color: 'primary',
@@ -110,16 +107,6 @@ export const toggleVariants = cv({
       color: 'carbon',
       variant: 'ghost',
       class: 'data-[state=on]:bg-carbon/20 data-[state=on]:text-carbon'
-    },
-    {
-      color: 'secondary',
-      variant: 'ghost',
-      class: 'data-[state=on]:bg-secondary-foreground/10 data-[state=on]:text-secondary-foreground'
-    },
-    {
-      color: 'accent',
-      variant: 'ghost',
-      class: 'data-[state=on]:bg-accent-foreground/10 data-[state=on]:text-accent-foreground'
     },
     {
       size: 'xs',

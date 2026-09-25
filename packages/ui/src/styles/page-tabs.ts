@@ -15,7 +15,7 @@ export const pageTabsVariants = scv({
     ],
     itemText: 'grow truncate',
     close: [
-      `outline-none rounded-full hover:text-muted group-data-[selected=true]/item:hover:bg-primary/50`,
+      `outline-none rounded-full hover:text-muted-foreground group-data-[selected=true]/item:hover:bg-primary/50`,
       `group-data-[selected=false]/item:hover:bg-accent-foreground/20`,
       `dark:hover:text-foreground dark:group-data-[selected=true]/item:hover:bg-accent-foreground/20`
     ],

@@ -12,14 +12,14 @@ export const layoutVariants = scv({
   slots: {
     // --sl-* 是本库的间距/gap 别名(headless 注入的 --layout-* 保持不变),在 root 上按状态计算,各槽位直接应用
     root: [
-      'group/layout relative h-full transition-all-300',
+      'group/layout relative h-full bg-background transition-all-300',
       '[--sl-half-spacing:calc(var(--sl-spacing)/2)]',
       '[--sl-main-gap:var(--soybean-layout-start-gap)]',
       '[--sl-header-gap:var(--soybean-layout-header-start-gap)]',
       '[--sl-footer-gap:var(--soybean-layout-footer-start-gap)]',
       '[--sl-end-gap:0px]'
     ],
-    main: 'flex flex-col h-full group-data-[scroll-behavior=wrapper]/layout:overflow-y-auto transition-all-300',
+    main: 'flex flex-col h-full bg-card group-data-[scroll-behavior=wrapper]/layout:overflow-y-auto transition-all-300',
     sidebarRoot: 'lt-md:hidden',
     sidebarWrapper: [
       `absolute inset-y-0 z-[--soybean-layout-sidebar-z-index] flex h-[--soybean-layout-sidebar-height] w-[--soybean-sidebar-width] transition-[width,opacity] duration-200 ease-linear lt-md:hidden`,

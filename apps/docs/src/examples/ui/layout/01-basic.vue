@@ -221,10 +221,10 @@ const fullContent = shallowRef(false);
         :fixed-footer="fixedFooter"
         :stretch-footer="stretchFooter"
         :ui="{
-          header: 'bg-background border-b border-border',
-          tab: 'bg-background border-b border-border',
-          content: 'px-[--sl-spacing] bg-background',
-          footer: 'bg-background border-t border-border'
+          header: 'border-b border-border',
+          tab: 'border-b border-border',
+          content: 'px-[--sl-spacing]',
+          footer: 'border-t border-border'
         }"
       >
         <template #sidebar="{ open, collapsedSidebarWidth }">

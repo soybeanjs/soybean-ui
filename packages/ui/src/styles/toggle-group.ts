@@ -68,14 +68,15 @@ export const toggleGroupVariants = scv({
       outline: {
         item: [
           'border border-border bg-card text-foreground',
-          'data-[state=off]:hover:bg-accent data-[state=on]:bg-accent data-[state=on]:text-accent-foreground'
+          'data-[state=off]:hover:bg-accent/60 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground'
         ]
       },
+      // 与 toggle 同一套中性阶梯
       soft: {
-        item: ['bg-accent text-foreground', 'data-[state=off]:hover:bg-accent']
+        item: ['bg-muted text-foreground', 'data-[state=off]:hover:bg-accent/60']
       },
       ghost: {
-        item: ['bg-transparent text-foreground', 'data-[state=off]:hover:bg-accent']
+        item: ['bg-transparent text-foreground', 'data-[state=off]:hover:bg-accent/60']
       }
     },
     size: {
@@ -142,18 +143,12 @@ export const toggleGroupVariants = scv({
         item: 'data-[state=on]:bg-carbon/20 data-[state=on]:text-carbon'
       }
     },
+    // 中性 on 态 = 选中面，归 `--accent`
     {
-      color: 'secondary',
+      color: ['secondary', 'accent'],
       variant: ['soft', 'ghost'],
       class: {
-        item: 'data-[state=on]:bg-secondary-foreground/10 data-[state=on]:text-secondary-foreground'
-      }
-    },
-    {
-      color: 'accent',
-      variant: ['soft', 'ghost'],
-      class: {
-        item: 'data-[state=on]:bg-accent-foreground/10 data-[state=on]:text-accent-foreground'
+        item: 'data-[state=on]:bg-accent data-[state=on]:text-accent-foreground'
       }
     }
   ],
