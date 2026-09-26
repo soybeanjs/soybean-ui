@@ -147,6 +147,7 @@
       "button": {
         "basic": "基础",
         "color": "颜色",
+        "customizer": "自定义器",
         "disabled": "禁用",
         "group": "分组",
         "icon": "图标",

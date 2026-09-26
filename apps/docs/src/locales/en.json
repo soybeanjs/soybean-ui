@@ -147,6 +147,7 @@
       "button": {
         "basic": "Basic",
         "color": "Color",
+        "customizer": "Customizer",
         "disabled": "Disabled",
         "group": "Group",
         "icon": "Icon",
