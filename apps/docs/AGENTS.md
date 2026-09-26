@@ -34,10 +34,10 @@ For any AI assistant editing files under `apps/docs/`:
 
 Examples live in `src/examples/ui/{component}/` (chart demos under `src/examples/chart/`) and are wired by `src/constants/globs.ts` via `import.meta.glob`, **not** by explicit imports. Naming is load-bearing:
 
-- `NN-name.vue` — the `NN` prefix sets display order; two digits are required by the pattern.
-- `basic.vue` always sorts **first**, ahead of any numbered file.
+- `NN-name.vue` — the `NN` prefix sets display order; two digits are required by the pattern. When both files carry a prefix the **lowest number wins**, so a `00-*` example is the first card and `01-basic` follows it.
+- `basic.vue` is the **fallback** first card: the pin only decides when the prefix cannot (an unprefixed `basic.vue` beats every unprefixed file, and every prefixed file beats every unprefixed one). `UsageCode` resolves `<UsageCode component="…" />` by that `basic` **name**, so always keep a `basic` example.
 - `index.vue` is **skipped**, and so is any file starting with `_`. Naming a demo `_wip.vue` therefore hides it from the site without deleting it.
-- Files with no numeric prefix get `order: null` and sort last, alphabetically.
+- Files with no numeric prefix get `order: null` and sort after the prefixed ones, alphabetically.
 
 `{component}/index.vue` is a thin `<PlaygroundGallery component="…" />` entry point; child demos must **not** carry their own title headings (the gallery supplies the title from locale keys under `playground.examples.<component>.<file>`).
 

@@ -52,6 +52,8 @@ Not every component needs every example, but each file demonstrates only one cap
 - Docs discovers all example SFCs through `import.meta.glob` in `apps/docs/src/constants/globs.ts`.
 - No manual registration after creating a component directory.
 - `PlaygroundGallery` looks up all example files in the same directory except `index.vue`, extracts `order` during glob, and displays in ascending `order`.
+- Ordering precedence: two prefixed files compare by number (lowest first), so a `00-*` example leads and `01-basic` follows; the `basic` name pin is only a fallback when the prefix cannot decide (unprefixed `basic.vue` first among unprefixed files, prefixed files before unprefixed ones). `UsageCode` resolves `<UsageCode component="…" />` by that `basic` **name**, so a `basic` example must always exist.
+- A cross-component "customizer" demo (`00-customizer.vue`) is the convention for the leading card: one control form per style prop above a preview body.
 - `UsageCode`, i18n title keys, and docs-side example lookup all use the prefix-stripped `name`, not the raw filename.
 
 ### Quality requirements

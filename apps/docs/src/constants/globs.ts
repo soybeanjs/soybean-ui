@@ -83,7 +83,19 @@ function parsePlaygroundExampleFileName(fileName: string) {
   };
 }
 
+/**
+ * 示例的展示顺序。
+ *
+ * 显式序号是最强信号：两个示例都带 `NN-` 前缀时按号升序，于是 `00-` 开头的示例
+ * （组件自定义器）排在 `01-basic` 前面。`basic` 的置顶规则降级为**兜底**——只在
+ * 序号无法裁决时生效（无前缀的 `basic.vue` 仍排在最前），这样现有的 `NN-basic`
+ * 示例顺序分毫不变，`UsageCode` 也只按 `name` 取代码，与顺序无关。
+ */
 function comparePlaygroundExamples(a: PlaygroundExampleInfo, b: PlaygroundExampleInfo) {
+  if (a.order !== null && b.order !== null && a.order !== b.order) {
+    return a.order - b.order;
+  }
+
   const aIsBasic = a.name === basicExampleName;
   const bIsBasic = b.name === basicExampleName;
 
@@ -98,10 +110,6 @@ function comparePlaygroundExamples(a: PlaygroundExampleInfo, b: PlaygroundExampl
 
     if (b.order === null) {
       return -1;
-    }
-
-    if (a.order !== b.order) {
-      return a.order - b.order;
     }
   }
 
