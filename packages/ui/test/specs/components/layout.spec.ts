@@ -335,7 +335,7 @@ describe('SLayout', () => {
   });
 
   describe('surface layering', () => {
-    it('gives the main column the raised canvas and the region its own surface', () => {
+    it('keeps the page base on the root and the raised canvas on the content region', () => {
       const wrapper = mount(SLayout, {
         slots: {
           header: '<div>Header</div>',
@@ -350,9 +350,9 @@ describe('SLayout', () => {
       const sidebar = wrapper.find('[data-sidebar="sidebar"]');
       const content = wrapper.find('[data-soybean-layout-content]');
 
-      // 页面基底 → 主列抬升面 → 区域面，三级各自声明一次
+      // 页面基底由 root 声明；主列是纯结构列，不自己着色，让基底在列间隙透出；区域面由各自槽位声明
       expect(root.classes()).toContain('bg-background');
-      expect(main.classes()).toContain('bg-card');
+      expect(main.classes()).not.toContain('bg-card');
       expect(content.classes()).toContain('bg-card');
       expect(sidebar.classes()).toContain('bg-sidebar');
 
