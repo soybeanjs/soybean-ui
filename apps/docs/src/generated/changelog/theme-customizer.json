@@ -1,8 +1,25 @@
 {
   "component": "theme-customizer",
-  "generatedAt": "2026-09-24T06:34:17.458Z",
+  "generatedAt": "2026-09-27T10:47:40.993Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.50.0-beta.4",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.3...v0.50.0-beta.4",
+      "date": "2026-09-27",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "theme-customizer",
+          "summary": "simplify event handling and add unit tests for runtime style updates",
+          "summaryKey": "changelog.generated.v0.50.0-beta.4.0a2d3",
+          "commitHash": "0a2d3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0a2d3d5ce",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.50.0-beta.2",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.1...v0.50.0-beta.2",

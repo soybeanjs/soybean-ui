@@ -2512,6 +2512,18 @@
               "096d0": "rename presetUiUnocss to presetUi",
               "17aa5": "format code",
               "2fc5c": "update inline code display and improve readability"
+            },
+            "4": {
+              "0a2d3": "simplify event handling and add unit tests for runtime style updates",
+              "0cbff": "adjust transition durations and add margin to layout triggers",
+              "46c1c": "adjust accent level in core rules and snapshot",
+              "4bd9c": "update deps",
+              "53cf7": "add bilingual READMEs for all workspace packages",
+              "81af7": "sort 00-prefixed examples ahead of basic",
+              "a83d9": "adjust accent light and dark values for consistency",
+              "acf3b": "add and optimize agents docs",
+              "c0de4": "unify muted and accent roles, ensuring consistent interaction visibility across components",
+              "d7d60": "update api docs"
             }
           }
         }

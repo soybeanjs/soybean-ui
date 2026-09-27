@@ -1,5 +1,38 @@
 # Changelog
 
+## [v0.50.0-beta.4](https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.3...v0.50.0-beta.4) (2026-09-27)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **theme-customizer**: simplify event handling and add unit tests for runtime style updates &nbsp;-&nbsp; by @soybeanjs [<samp>(0a2d3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0a2d3d5ce)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **layout**:
+  - adjust transition durations and add margin to layout triggers &nbsp;-&nbsp; by @soybeanjs [<samp>(0cbff)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0cbffca56)
+- **theme**:
+  - adjust accent level in core rules and snapshot &nbsp;-&nbsp; by @soybeanjs [<samp>(46c1c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/46c1c6275)
+  - adjust accent light and dark values for consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(a83d9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a83d93ac4)
+  - unify muted and accent roles, ensuring consistent interaction visibility across components &nbsp;-&nbsp; by @soybeanjs [<samp>(c0de4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c0de47638)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **AGENTS**:
+  - add and optimize agents docs &nbsp;-&nbsp; by @soybeanjs [<samp>(acf3b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/acf3b1775)
+- **examples**:
+  - sort 00-prefixed examples ahead of basic &nbsp;-&nbsp; by @soybeanjs [<samp>(81af7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/81af77443)
+- **projects**:
+  - add bilingual READMEs for all workspace packages &nbsp;-&nbsp; by @soybeanjs [<samp>(53cf7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/53cf73aa4)
+  - update api docs &nbsp;-&nbsp; by @soybeanjs [<samp>(d7d60)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d7d606d72)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(4bd9c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4bd9cd815)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.50.0-beta.3](https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.2...v0.50.0-beta.3) (2026-09-24)
 
 ### &nbsp;&nbsp;&nbsp;💅 Refactors

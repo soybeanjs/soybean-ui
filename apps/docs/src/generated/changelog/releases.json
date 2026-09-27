@@ -1,7 +1,135 @@
 {
-  "generatedAt": "2026-09-24T10:53:43.458Z",
+  "generatedAt": "2026-09-27T10:47:40.993Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.50.0-beta.4",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.3...v0.50.0-beta.4",
+      "date": "2026-09-27",
+      "entryCount": 10,
+      "componentCount": 2,
+      "components": ["theme-customizer", "layout"],
+      "newComponents": [],
+      "typeCounts": {
+        "fix": 1,
+        "optimization": 4,
+        "docs": 4,
+        "chore": 1
+      },
+      "notes": [],
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "theme-customizer",
+          "summary": "simplify event handling and add unit tests for runtime style updates",
+          "summaryKey": "changelog.generated.v0.50.0-beta.4.0a2d3",
+          "commitHash": "0a2d3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0a2d3d5ce",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["theme-customizer"]
+        },
+        {
+          "type": "optimization",
+          "scope": "layout",
+          "summary": "adjust transition durations and add margin to layout triggers",
+          "summaryKey": "changelog.generated.v0.50.0-beta.4.0cbff",
+          "commitHash": "0cbff",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0cbffca56",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["layout"]
+        },
+        {
+          "type": "optimization",
+          "scope": "theme",
+          "summary": "adjust accent level in core rules and snapshot",
+          "summaryKey": "changelog.generated.v0.50.0-beta.4.46c1c",
+          "commitHash": "46c1c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/46c1c6275",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "theme",
+          "summary": "adjust accent light and dark values for consistency",
+          "summaryKey": "changelog.generated.v0.50.0-beta.4.a83d9",
+          "commitHash": "a83d9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a83d93ac4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "theme",
+          "summary": "unify muted and accent roles, ensuring consistent interaction visibility across components",
+          "summaryKey": "changelog.generated.v0.50.0-beta.4.c0de4",
+          "commitHash": "c0de4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c0de47638",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "AGENTS",
+          "summary": "add and optimize agents docs",
+          "summaryKey": "changelog.generated.v0.50.0-beta.4.acf3b",
+          "commitHash": "acf3b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/acf3b1775",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "examples",
+          "summary": "sort 00-prefixed examples ahead of basic",
+          "summaryKey": "changelog.generated.v0.50.0-beta.4.81af7",
+          "commitHash": "81af7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/81af77443",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "projects",
+          "summary": "add bilingual READMEs for all workspace packages",
+          "summaryKey": "changelog.generated.v0.50.0-beta.4.53cf7",
+          "commitHash": "53cf7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/53cf73aa4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "projects",
+          "summary": "update api docs",
+          "summaryKey": "changelog.generated.v0.50.0-beta.4.d7d60",
+          "commitHash": "d7d60",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d7d606d72",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.50.0-beta.4.4bd9c",
+          "commitHash": "4bd9c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4bd9cd815",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.50.0-beta.3",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.2...v0.50.0-beta.3",
