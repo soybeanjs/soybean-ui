@@ -234,12 +234,6 @@ const fontArms = computed(() =>
 const selectFontArm = (table: Record<string, string | undefined>, arm: keyof ThemeFont, key: string): void =>
   setFontArm(arm, toFontFamily(table, key));
 
-/** 模板绑定：把某一臂的选中值转交给 `selectFontArm`（避免在 template 里写闭包）。 */
-const onFontArmChange =
-  (item: { table: Record<string, string | undefined>; arm: keyof ThemeFont }) =>
-  (key: string): void =>
-    selectFontArm(item.table, item.arm, key);
-
 /** 模板绑定：边框浓度滑块（0 – 100 的百分数 → 0 – 1）。 */
 const onBorderOpacityChange = (values: number[]): void => {
   borderOpacityValue.value = (values[0] ?? 0) / 100;
@@ -259,12 +253,6 @@ const variants = useThemeVariants({ settings, mode: customMode });
 const setVariant = (key: SemanticToken, value: string): void => {
   settings.setOverride(customMode.value, key, value);
 };
-
-/** 模板绑定：某个 variant token 的 override 写回。 */
-const onVariantChange =
-  (key: SemanticToken) =>
-  (value: string): void =>
-    setVariant(key, value);
 
 // —— 顶层 Tabs：Theme（常规设置） / Custom（高级自定义）——
 // Custom 同步挂载约 41 个 SPalettePicker（各含完整 SSelect），单帧全量 mount 会卡顿：
@@ -411,7 +399,7 @@ watch(
                 :model-value="item.value"
                 :items="item.options"
                 class="w-50"
-                @update:model-value="onFontArmChange(item)"
+                @update:model-value="selectFontArm(item.table, item.arm, $event)"
               />
             </SectionItem>
           </SectionItem>
@@ -470,7 +458,7 @@ watch(
                   :size="size"
                   :model-value="variants.final.value[meta.key]"
                   class="w-40"
-                  @update:model-value="onVariantChange(meta.key)"
+                  @update:model-value="setVariant(meta.key, $event)"
                 />
               </div>
             </section>
