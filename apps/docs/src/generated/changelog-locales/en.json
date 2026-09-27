@@ -2524,6 +2524,11 @@
               "acf3b": "add and optimize agents docs",
               "c0de4": "unify muted and accent roles, ensuring consistent interaction visibility across components",
               "d7d60": "update api docs"
+            },
+            "5": {
+              "94504": "update deps",
+              "20a8b": "remove completed v0.50 and rebrand docs and fold admission ledger into the skill",
+              "97a9d": "adjust root slot to prevent overflow in theme customizer"
             }
           }
         }

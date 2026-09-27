@@ -1,5 +1,23 @@
 # Changelog
 
+## [v0.50.0-beta.5](https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.4...v0.50.0-beta.5) (2026-09-27)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **theme**: adjust root slot to prevent overflow in theme customizer &nbsp;-&nbsp; by @soybeanjs [<samp>(97a9d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/97a9dcd1c)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**: remove completed v0.50 and rebrand docs and fold admission ledger into the skill &nbsp;-&nbsp; by @soybeanjs [<samp>(20a8b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/20a8bdfae)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(94504)</samp>](https://github.com/soybeanjs/soybean-ui/commit/94504d66e)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.50.0-beta.4](https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.3...v0.50.0-beta.4) (2026-09-27)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes

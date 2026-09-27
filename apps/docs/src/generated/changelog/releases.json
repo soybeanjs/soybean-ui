@@ -1,7 +1,57 @@
 {
-  "generatedAt": "2026-09-27T10:47:40.993Z",
+  "generatedAt": "2026-09-27T13:12:25.670Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.50.0-beta.5",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.4...v0.50.0-beta.5",
+      "date": "2026-09-27",
+      "entryCount": 3,
+      "componentCount": 0,
+      "components": [],
+      "newComponents": [],
+      "typeCounts": {
+        "fix": 1,
+        "docs": 1,
+        "chore": 1
+      },
+      "notes": [],
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "theme",
+          "summary": "adjust root slot to prevent overflow in theme customizer",
+          "summaryKey": "changelog.generated.v0.50.0-beta.5.97a9d",
+          "commitHash": "97a9d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/97a9dcd1c",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "projects",
+          "summary": "remove completed v0.50 and rebrand docs and fold admission ledger into the skill",
+          "summaryKey": "changelog.generated.v0.50.0-beta.5.20a8b",
+          "commitHash": "20a8b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/20a8bdfae",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.50.0-beta.5.94504",
+          "commitHash": "94504",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/94504d66e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.50.0-beta.4",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.3...v0.50.0-beta.4",
