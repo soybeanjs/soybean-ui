@@ -17,7 +17,7 @@ import { scv } from '@soybeanjs/cva';
  */
 export const themeCustomizerVariants = scv({
   slots: {
-    root: 'flex flex-col gap-3 w-96 max-w-[calc(100vw-2rem)] h-[70vh]',
+    root: 'flex flex-col gap-3 w-96 max-w-[calc(100vw-2rem)] max-h-fit h-[70vh]',
     tabs: 'grow min-h-0',
     content: 'min-h-0 overflow-auto [scrollbar-gutter:stable]',
     panel: 'space-y-4 p-2',
