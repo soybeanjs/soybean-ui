@@ -3,7 +3,7 @@ import { join, relative } from 'node:path';
 import process from 'node:process';
 
 /**
- * Dependency gate (v0.50.0 T8.5).
+ * Dependency gate.
  *
  * Enforces the v0.50.0 dependency-minimization contract:
  * 1. Banned imports — packages replaced by self-built implementations or removed engines
@@ -13,8 +13,8 @@ import process from 'node:process';
  *    Matching is restricted to import specifiers so self-built helpers that share a name
  *    (e.g. headless `shared/object.ts` exporting its own `defu`) do not trigger it.
  * 2. Runtime dependency allowlists — `@soybeanjs/headless` and `@soybeanjs/ui` may only
- *    take runtime dependencies from the §3.2 whitelist (docs/v0.50.0.md). Heavy engines
- *    must stay out of the UI package entirely.
+ *    take runtime dependencies from the `RUNTIME_DEP_ALLOWLISTS` table below. Heavy
+ *    engines must stay out of the UI package entirely.
  *
  * Run via `pnpm check:deps` (sui check deps). Exits non-zero and lists violations on failure.
  */

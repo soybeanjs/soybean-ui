@@ -3,7 +3,7 @@
 > 状态：**Accepted · 2026-09**（§11 为 2026-09 实施修订：四个 ui 复合组件收窄为一个 `SAppShell`）
 > 适用仓库：`@soybeanjs/headless` + `@soybeanjs/ui`（核心两层，不新增任何包）
 > 规范约束：组件开发 skill（[.agents/skills/soybean-ui-develop/](../.agents/skills/soybean-ui-develop/SKILL.md)），尤其是 [layers.md Headless admission（R1–R8）](../.agents/skills/soybean-ui-develop/layers.md#headless-admission)
-> 关联文档：[ui-ai-roadmap.md](./ui-ai-roadmap.md)（AI 域同款决策）· [v0.50.0.md](./v0.50.0.md)（table/form 引擎重构）· [roadmap.md](./roadmap.md)（原子组件评估）
+> 关联文档：[ui-ai-roadmap.md](./ui-ai-roadmap.md)（AI 域同款决策）· [roadmap.md](./roadmap.md)（原子组件评估）
 
 ## 1. 背景与目标
 
@@ -160,7 +160,7 @@ interface ShellNavNode {
 
 ### 4.7 范围边界（S7）：ProTable / ProForm 不进本路线
 
-schema 驱动的查询表格 / 表单依赖 table/form 引擎选型（[v0.50.0.md](./v0.50.0.md) 的表格引擎更换，以及 [ecosystem/table.md](./ecosystem/table.md)、[ecosystem/form.md](./ecosystem/form.md) 提案），不搭壳组件便车，避免 schema 过早固化。权限按钮含业务/指令语义，收录标准 S1–S5 不通过，列为范围外。
+schema 驱动的查询表格 / 表单依赖 table/form 引擎（v0.50.0 已完成 `@tanstack/vue-table` / `@tanstack/vue-form` 更换，另见 [ecosystem/table.md](./ecosystem/table.md)、[ecosystem/form.md](./ecosystem/form.md) 提案），不搭壳组件便车，避免 schema 过早固化。权限按钮含业务/指令语义，收录标准 S1–S5 不通过，列为范围外。
 
 ## 5. P0 — 主链路（5 项）
 
@@ -223,7 +223,7 @@ schema 驱动的查询表格 / 表单依赖 table/form 引擎选型（[v0.50.0.m
 
 ## 9. 实施顺序与里程碑
 
-> 只定依赖顺序，不预设发布月份（历史路线图因绑死日期迅速过期）。建议排在 [v0.50.0.md](./v0.50.0.md) 重构窗口之后启动。
+> 只定依赖顺序，不预设发布月份（历史路线图因绑死日期迅速过期）。v0.50.0 重构窗口已关闭，可按容量随时启动。
 
 - **M1（headless 先行）**：H1 `useMediaQuery` → H2 导航模型与纯函数（先纯函数单测驱动）→ H3 `useTabs`；子路径 `@soybeanjs/headless/shell` 打通 + catalog/namespaced 生成。
 - **M2（P0 组件）**：`SLayoutShell`（2 模式）→ `SShellMenu` → `SPageHeader`；playground + 双语 docs + Tier 1 e2e。

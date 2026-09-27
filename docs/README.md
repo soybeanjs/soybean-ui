@@ -18,8 +18,6 @@ docs/
 ├── roadmap.md           # 总路线图 + 组件评估明细（核心组件 / 核心内领域 / 未来提案 / 优化）
 ├── ui-ai-roadmap.md     # AI/chat 组件路线图（核心 headless/ui 内实现）
 ├── ui-shell-roadmap.md  # 中后台壳组件路线图（核心 headless/ui 内实现）
-├── v0.50.0.md           # v0.50.0 重构方案（aria 改名 / 依赖最小化 / 准入整改 / 引擎更换）
-├── headless-admission-remediation.md  # Headless 准入整改（组件级清单）
 ├── adr/                 # 架构决策记录（ADR）
 │   ├── README.md        # ADR 索引与模板
 │   └── NNNN-*.md
@@ -40,7 +38,6 @@ docs/
 | **维度刻度**   | [space-control-scale.md](./space-control-scale.md)                                     | ✅ 与代码同步：spacing / radius 两条刻度族的取值、与 UnoCSS 的关系、实测覆盖率，以及"什么不该成为刻度族"（字面量全表见 theme.md §3.11） | 主题维护者、组件作者         |
 | **路线与规划** | [roadmap.md](./roadmap.md)                                                             | 总路线图 + 组件评估明细                                                                                                                 | 规划者、贡献者               |
 | **核心内领域** | [ui-ai-roadmap.md](./ui-ai-roadmap.md) · [ui-shell-roadmap.md](./ui-shell-roadmap.md)  | AI/chat 与中后台壳组件的回迁规划（headless 准入）                                                                                       | 组件开发者                   |
-| **准入整改**   | [headless-admission-remediation.md](./headless-admission-remediation.md)               | headless 准入违规与处置记录（整改已随 v0.50.0 窗口完成）                                                                                | 组件开发者                   |
 | **决策记录**   | [adr/](./adr/README.md)                                                                | 架构决策（含已 superseded 的外围包分层 ADR）                                                                                            | 架构师                       |
 | **未来提案**   | [ecosystem/](./ecosystem/README.md)（editor / table / form / ui-pro / sbean / 商业化） | 方向调研；落地形态（核心内 / 独立包 / sbean 配方）立项时评估                                                                            | 规划者、生态开发者           |
 | **调研报告**   | [research/](./research/README.md)                                                      | 市场/竞品调研原始结论                                                                                                                   | 规划者                       |
@@ -49,7 +46,7 @@ docs/
 ## 核心文档关系图
 
 ```
-roadmap.md（组件路线图 + 评估明细）◄── optimize.md ──► v0.50.0.md（当前执行口径）
+roadmap.md（组件路线图 + 评估明细）◄──► optimize.md（工程质量评估）
                   ▲
                   │
     ui-ai-roadmap.md / ui-shell-roadmap.md（核心内领域，遵循 headless 准入）
@@ -67,8 +64,8 @@ roadmap.md（组件路线图 + 评估明细）◄── optimize.md ──► v0
 - **「某组件要不要做 / 排期如何」** → [roadmap.md](./roadmap.md)（高/中/低优先级 + 组件评估明细）
 - **「AI 对话组件怎么做」** → [ui-ai-roadmap.md](./ui-ai-roadmap.md)
 - **「后台壳 / 多模式布局 / 菜单 / 多页签怎么做」** → [ui-shell-roadmap.md](./ui-shell-roadmap.md)
-- **「下一版本重构什么 / aria 改名怎么落地」** → [v0.50.0.md](./v0.50.0.md)
-- **「这个组件该不该做 headless / 现有哪些违规」** → skill [layers.md Headless admission](../.agents/skills/soybean-ui-develop/layers.md#headless-admission) → [headless-admission-remediation.md](./headless-admission-remediation.md)
+- **「v0.50.0 升级怎么迁移 / 旧 API 对照」** → 文档站升级指南（`apps/docs/src/content/{en,zh}/ui/migration/v0.50.0.md`，入口在 `/releases` 页）
+- **「这个组件该不该做 headless / 哪些家族已判定合规」** → skill [layers.md Headless admission](../.agents/skills/soybean-ui-develop/layers.md#headless-admission)（含违规形态与已合规对照表）
 - **「为什么没有外围包了」** → [adr/0001](./adr/0001-peripheral-package-layering.md)（superseded 说明）+ 两份领域路线图
 - **「editor/table/form 等提案现状」** → [ecosystem/](./ecosystem/README.md)
 - **「竞品/市场依据」** → [research/](./research/README.md)

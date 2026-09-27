@@ -118,7 +118,7 @@
 | 触摸管线平台敏感(capture/滚动仲裁/iOS 起步偏移) | D3.4 真机矩阵;Base UI 测试场景作为合同先行移植;触摸路径与指针路径分阶段上线            |
 | 删 scale-background 引发视觉回退                | D3.3 Indent 原语 + backdrop 进度先行接线,与 scale-background 并存一版,验收后再删(D4.1) |
 | 与 Dialog 过渡生命周期的竞态(问题 3 病灶)       | 模型切换后 JS 不再写 overlay/transform 样式,竞态面消失;保留竞态专项用例                |
-| API breaking 面扩大                             | 全部 breaking 收敛在 v0.50.0 迁移文档(D4.2),不建兼容层(见 v0.50.0.md §11)              |
+| API breaking 面扩大                             | 全部 breaking 收敛在 v0.50.0 迁移文档(D4.2),不建兼容层                                 |
 
 ## 8. 工作量与排期
 

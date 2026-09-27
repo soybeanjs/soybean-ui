@@ -4,7 +4,7 @@
 >
 > 1. **核心组件路线**：按 **高 / 中 / 低** 三级优先级分类所有待实现组件，附「已实现组件参考」「延后至组件市场」与「范围外组件」清单；调研方法与调研库清单见「[调研方法与评估维度](#调研方法与评估维度)」与「[附录 A](#附录-a--调研的组件库14-个)」。
 > 2. **领域扩展路线**：AI/chat 与中后台壳均确定在核心 headless/ui 内实现，分别见 [ui-ai-roadmap.md](./ui-ai-roadmap.md) 与 [ui-shell-roadmap.md](./ui-shell-roadmap.md)；editor / table / form / ui-pro 保留为未来提案（落地形态待立项评估），见 [领域扩展路线](#领域扩展路线domains--proposals) 与 [docs/ecosystem/](./ecosystem/README.md)。
-> 3. **项目优化路线**：来自 [optimize.md](./optimize.md) 的 F1–F11 工程改进项及执行阶段，详见 [项目优化路线](#项目优化路线engineering-optimization)；当前执行口径以 [v0.50.0.md](./v0.50.0.md) 为准。
+> 3. **项目优化路线**：来自 [optimize.md](./optimize.md) 的 F1–F11 工程改进项及执行阶段，详见 [项目优化路线](#项目优化路线engineering-optimization)。
 
 ## 概述
 
@@ -1356,12 +1356,12 @@ Layer 1  主题与样式引擎  @soybeanjs/theme · @soybeanjs/unocss
 
 ### 未来提案（落地形态待评估）
 
-| 提案     | 方向                                                    | 现状                                                         | 技术方案                                                                                                |
-| :------- | :------------------------------------------------------ | :----------------------------------------------------------- | :------------------------------------------------------------------------------------------------------ |
-| `editor` | 富文本编辑器（Tiptap 内核，仅 MIT 免费边界，UI 层自建） | 2026-08 完成市场调研与收费边界核实                           | [ecosystem/editor.md](./ecosystem/editor.md)                                                            |
-| `table`  | 高级数据网格 / ProTable                                 | 2026-08 调研完成；内核选型随 [v0.50.0.md](./v0.50.0.md) 推进 | [ecosystem/table.md](./ecosystem/table.md)                                                              |
-| `form`   | Schema 驱动高级表单（协议驱动渲染 + 声明式联动）        | 2026-08 调研完成                                             | [ecosystem/form.md](./ecosystem/form.md)                                                                |
-| `ui-pro` | 增值 / 高级组件（探索性，与商业化一并评估）             | 无代码，仅方向预留                                           | [ecosystem/ui-pro.md](./ecosystem/ui-pro.md) · [commercialization.md](./ecosystem/commercialization.md) |
+| 提案     | 方向                                                    | 现状                                                            | 技术方案                                                                                                |
+| :------- | :------------------------------------------------------ | :-------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------ |
+| `editor` | 富文本编辑器（Tiptap 内核，仅 MIT 免费边界，UI 层自建） | 2026-08 完成市场调研与收费边界核实                              | [ecosystem/editor.md](./ecosystem/editor.md)                                                            |
+| `table`  | 高级数据网格 / ProTable                                 | 2026-08 调研完成；内核已于 v0.50.0 更换为 `@tanstack/vue-table` | [ecosystem/table.md](./ecosystem/table.md)                                                              |
+| `form`   | Schema 驱动高级表单（协议驱动渲染 + 声明式联动）        | 2026-08 调研完成                                                | [ecosystem/form.md](./ecosystem/form.md)                                                                |
+| `ui-pro` | 增值 / 高级组件（探索性，与商业化一并评估）             | 无代码，仅方向预留                                              | [ecosystem/ui-pro.md](./ecosystem/ui-pro.md) · [commercialization.md](./ecosystem/commercialization.md) |
 
 > 这些提案写于「外围包单包自治」时期，文中包结构、lockstep、跨包白名单依赖等前提**已不适用**，阅读时以本页为准；立项必须先产出形态决策（核心内实现 / 独立包 / sbean 配方三选一），必要时新立 ADR。市场调研原始结论见 [research/](./research/README.md)。
 
@@ -1414,7 +1414,7 @@ Layer 1  主题与样式引擎  @soybeanjs/theme · @soybeanjs/unocss
 | :------------------------ | :---------------------------------------------------------- | :---------------------------------------------- | :---------------------------------------- |
 | **M-AI** AI 核心组件      | P0–P3 批次，详见 [ui-ai-roadmap.md §11](./ui-ai-roadmap.md) | 以该路线图为准                                  | 每组件全交付面（源码/测试/文档/示例/API） |
 | **M-SH** 中后台壳         | M1–M4，详见 [ui-shell-roadmap.md §9](./ui-shell-roadmap.md) | 建议排在 v0.50 重构窗口之后                     | headless 逻辑单测 + shell Tier 2 冒烟 e2e |
-| **M-OPT** 工程优化        | F1–F11，阶段 A–D 见上节                                     | 当前执行口径以 [v0.50.0.md](./v0.50.0.md) 为准  | 见 [optimize.md](./optimize.md) 各 F 项   |
+| **M-OPT** 工程优化        | F1–F11，阶段 A–D 见上节                                     | F 项按需滚动推进                                | 见 [optimize.md](./optimize.md) 各 F 项   |
 | **M-CMP1** 核心组件第一批 | P0 组件 9 个（Upload / Timeline / Typography 等）           | 按「P0 → P1 → P2 → P3」顺序滚动，无既定官方时间 | 每组件全交付面                            |
 | **M-CMP2** 核心组件第二批 | P1 组件 13 个（含 `Result`，壳路线复用）                    | 同上                                            | 同上                                      |
 | **M-CMP3** 核心组件收尾   | P2 × 11 + P3 × 12，视容量穿插                               | 同上                                            | P2/P3 可转入组件市场                      |

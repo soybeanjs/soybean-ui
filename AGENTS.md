@@ -86,7 +86,7 @@ Private packages and applications:
 | Workspace architecture             | `docs/architecture.md`                                                    | Package/app map, dependency graph, generation/build/test/release flows                           |
 | Architecture assessment            | `docs/optimize.md`                                                        | Evidence-ranked maintainability, scalability, and quality recommendations                        |
 | Component dev skill                | `.agents/skills/soybean-ui-develop/`                                      | SKILL.md + layers.md (admission) + surfaces.md + e2e.md + process.md + audit.md                  |
-| Headless admission gaps            | `docs/headless-admission-remediation.md`                                  | Anatomy shells, decorative slots, and parallel families to freeze or fix                         |
+| Headless admission reference       | `.agents/skills/soybean-ui-develop/layers.md`                             | Violation shapes, known-compliant families, and pre-classified roadmap items                     |
 | Scoped agent rules                 | `packages/**/AGENTS.md`, `apps/*/AGENTS.md`, `skills/AGENTS.md`           | Routing bridges; the nearest file narrows the skill rules                                        |
 | Domain terms                       | `CONTEXT.md`                                                              | Canonical vocabulary; `_Avoid_` lines flag drift                                                 |
 | Docs index / governance / ADRs     | `docs/README.md`, `docs/GOVERNANCE.md`, `docs/adr/`                       | Which doc belongs where, how docs are maintained, decision record                                |

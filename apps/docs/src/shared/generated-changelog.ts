@@ -136,7 +136,7 @@ export interface UpgradeGuideEntry {
   /**
    * Display label. The release's main guide shows the version alone; secondary
    * guides append their slug so several guides for one release stay apart
-   * (e.g. `v0.50.0` / `v0.50.0 · date` / `v0.50.0 · rebrand`).
+   * (e.g. `v0.50.0` / `v0.50.0 · date`).
    */
   label: string;
 }

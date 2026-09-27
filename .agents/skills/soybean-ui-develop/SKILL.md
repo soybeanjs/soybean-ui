@@ -21,7 +21,7 @@ For detailed rules, see [layers.md](layers.md) (headless admission, implementati
 ## Quick start
 
 1. **Classify the task before editing.**
-   - Headless admission: behavioral family, frozen anatomy shell, UI-only, or compose an existing primitive. See [layers.md -> Headless admission](layers.md#headless-admission).
+   - Headless admission: behavioral family, UI-only (refused), or compose an existing primitive. See [layers.md -> Headless admission](layers.md#headless-admission).
    - Component pattern: multi-slot base, compact aggregation, or single-class.
    - Scenario: new component, migration or normalization, standards alignment, or audit and evaluation.
    - Delivery scope: headless only, UI only, or full surface.

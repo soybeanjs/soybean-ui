@@ -1,6 +1,6 @@
 # SoybeanUI Implementation Layer Rules
 
-Implementation rules for the headless and UI layers, plus cross-cutting a11y/RTL. [Headless admission](#headless-admission) is the gate for creating a new headless family. The companion [SKILL.md](SKILL.md) owns pattern classification, phase order, and guardrails; [surfaces.md](surfaces.md) owns delivery surface rules; [process.md](process.md) owns finish and commit rules. Existing admission violations are tracked in [docs/headless-admission-remediation.md](../../../docs/headless-admission-remediation.md).
+Implementation rules for the headless and UI layers, plus cross-cutting a11y/RTL. [Headless admission](#headless-admission) is the gate for creating a new headless family. The companion [SKILL.md](SKILL.md) owns pattern classification, phase order, and guardrails; [surfaces.md](surfaces.md) owns delivery surface rules; [process.md](process.md) owns finish and commit rules.
 
 ## Headless
 
@@ -17,7 +17,7 @@ Applies to `packages/headless/src/components/**/*.{ts,vue}`.
 
 ### Headless admission
 
-Gate for **creating a new headless family**. Apply in Phase 0, before `types.ts`. Existing violations are tracked in [docs/headless-admission-remediation.md](../../../docs/headless-admission-remediation.md); do not copy those families as templates.
+Gate for **creating a new headless family**. Apply in Phase 0, before `types.ts`. Known-compliant families and the violation shapes they get misread as are catalogued in [Violation shapes and known-compliant families](#violation-shapes-and-known-compliant-families).
 
 #### Deletion test
 
@@ -42,7 +42,7 @@ Delete the proposed headless module. If keyboard, focus, ARIA, positioning, form
 
 **R3 · Refuse a new family when:** the component is visual-only; it can be expressed with CSS and slots and has no state; it is a themed composition of an existing primitive (Card is Collapsible with chrome); or the only reason is that a styled library (Ant Design, Element) ships the same name. Note: a composed family that later grows its own domain state machine is re-admitted on its own merits (Drawer is an independent family from v0.50.0 — snap points / swipe dismiss / drag handle / nested scaling are not Dialog behavior).
 
-**R4 · Anatomy shell is not a template.** A thin headless shell (multi-slot `provideXUi` + Compact) is allowed only when the family already has one real semantic: dismissible state, a landmark/`role`, or a domain wrap of an admitted primitive. Empty and List fail this bar; freeze them, do not clone them.
+**R4 · Anatomy shell is not a template.** A thin headless shell (multi-slot `provideXUi` + Compact) is allowed only when the family already has one real semantic: dismissible state, a landmark/`role`, or a domain wrap of an admitted primitive. Badge, Tag, Skeleton, Empty and List fail this bar — all five are UI-only today, their headless families removed in v0.50.0.
 
 **R5 · Admission is per family; anatomy export follows Compact.** The two-gate rule: first judge whether the family needs headless at all (deletion test, R1–R3). If it passes, export every primitive its Compact composes, and let Compact compose only exported primitives — never re-declaring their markup — so hand-built and Compact composition share one DOM contract (`data-soybean-*` lives on the primitive). Additional anatomy primitives (items, portals, providers, arrows) may be exported beyond the Compact composition for hand-built use. Semantic slots keep `aria-labelledby` / `aria-describedby` / widget `role` on their own primitive (DialogTitle, DialogDescription); chrome that carries a real contract is a primitive too (DialogHeader is the drag handle, BottomSheetHandle is the gesture contract). If the family fails admission, it is UI-only: the UI layer composes admitted primitives and owns structure and assembly itself — Card is the exemplar (collapsible wiring from Collapsible primitives, chrome divs in `SCard`). Anatomy export is a consequence of admission, never a path to it (see R7).
 
@@ -53,6 +53,36 @@ Delete the proposed headless module. If keyboard, focus, ARIA, positioning, form
 #### R8 · Layout-is-behavior
 
 Geometric inline styles that implement the contract — aspect-ratio padding, affix placeholder size, watermark canvas `backgroundImage`, measured layout CSS variables — belong in headless. Visual tokens (color, font, shadow, radius, spacing utilities) do not.
+
+#### Violation shapes and known-compliant families
+
+Shipped families are audited against these shapes; the rule beside each one is what judges it.
+
+| Shape                  | Typical form                                                                 | Rule   |
+| :--------------------- | :--------------------------------------------------------------------------- | :----- |
+| Anatomy shell          | Multi-slot `provideXUi` + Compact with no widget behavior                    | R1, R4 |
+| Dismissible thin shell | A controlled `open` and nothing more                                         | R4     |
+| Decorative slot        | Exported primitive with no widget logic, kept for Compact and hand-built use | R5     |
+| Parallel family        | A second family beside one that already covers the domain                    | R6     |
+| Private Compact node   | Compact composes a node the family does not export                           | R5, R7 |
+
+The families below pass the deletion test or R8 and are frequently misjudged as violations — report one only with evidence that its listed contract is gone. Exports beyond the Compact composition (items, portals, providers, arrows) are compliant; see R5.
+
+| Family                                                      | Why it stays                                                                                      |
+| :---------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
+| `drawer`                                                    | Own state machine: snap points, swipe dismiss, drag handle, nested scaling                        |
+| `password`                                                  | Compact composes Input + visibility toggle (R6)                                                   |
+| `command`                                                   | Compact composes Listbox + filtering (R6)                                                         |
+| `button` / `link` / `label` / `separator`                   | Thin leaves with contracts: disabled/polymorphism, router, label double-click, `role="separator"` |
+| `avatar` / `progress` / `breadcrumb`                        | Loading fallback state machine, `progressbar` ARIA, `nav` landmark                                |
+| `aspect-ratio` / `affix` / `watermark` / `layout`           | R8 — geometry is the contract (padding, placeholder, canvas, measured CSS variables)              |
+| `listbox`                                                   | The APG selection list that `list` was mistaken for                                               |
+| `kbd`                                                       | Depth lives in `useKbd`; the component is a leaf                                                  |
+| `clipboard` / `segment` / `backtop`                         | Clipboard copy state machine, selection state + Tabs indicator, scroll threshold logic            |
+| `tree-nav` / `split-nav`                                    | Overflow measurement reflow (ResizeObserver), shell split-navigation composition                  |
+| `spinner` / `icon` / `theme-mode-switch` / `palette-picker` | UI-only, or composed from existing primitives (R3)                                                |
+
+Roadmap items expected to be UI-only or a composition — apply the deletion test before opening a headless directory: `Statistic`, `Result`, `Space`, `Banner`, `GradientText`, `Blockquote`, `Descriptions` (definition-list anatomy only), `Typography` (style convention only). `Upload`, `TreeSelect`, `Mention` and `Dropzone` carry real interaction and follow R2 normally. Component evaluation details: [docs/roadmap.md](../../../docs/roadmap.md).
 
 ### Implementation order
 
@@ -149,7 +179,7 @@ Typical headless-owned concerns:
 
 - Adding style classes (including `hidden`, `sr-only`) or visual token inline styles.
 - Opening a new headless family that fails the [deletion test](#deletion-test).
-- Using Empty, List, Badge, or Skeleton as the template for a new family.
+- Opening a headless family for a UI-only shape (Badge, Tag, Skeleton, Empty, List) or otherwise cloning a refused family as a template.
 - Adding Compact to an anatomy shell to justify a new family.
 - Direct DOM manipulation (e.g. `document.querySelector`).
 - Storing non-reactive raw values in context.
