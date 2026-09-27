@@ -92,6 +92,11 @@ describe('theme map — structure and invariants', () => {
     expect(map.dark.sidebar).not.toEqual(map.dark.card);
     expect(map.light['sidebar-foreground']).toEqual(map.light.foreground);
     expect(map.light['sidebar-accent']).toEqual(map.light.accent);
+    // 暗色 `sidebar` = `muted` = `accent` = `sidebar-accent`：镜像与折叠后的填充族同值，
+    // 因此侧栏交互面**不能**再用实心 `bg-sidebar-accent`（与静止面同色），
+    // 改由 `bg-sidebar-accent-foreground/10` 洗色表达（packages/ui/src/styles/tree-menu.ts）。
+    // 这一条同时是信号：若哪天 `sidebar-accent` 与 `sidebar` 重新分开，请回头复核该洗色。
+    expect(map.dark.sidebar).toEqual(map.dark['sidebar-accent']);
     expect(map.light['sidebar-accent-foreground']).toEqual(map.light['accent-foreground']);
     expect(map.light['sidebar-primary']).toEqual(map.light.primary);
     expect(map.light['sidebar-border']).toEqual(map.light.border);
@@ -99,14 +104,18 @@ describe('theme map — structure and invariants', () => {
     expect(map.light['sidebar-ring']).toEqual(map.light.ring);
   });
 
-  it('keeps the interaction fill distinct from the static weak fills', () => {
-    // `accent` 是 hover / 选中 / open 面，`muted` / `secondary` 是静态面：
-    // 一旦分化必须 ≥1 档，否则 hover 与静止面同色（toggle.soft / table 表头曾踩这条）
+  it('keeps the fill family on the collapsed shadcn-parity rung', () => {
+    // `muted` / `accent` / `secondary` **同档**（对齐 shadcn 默认，docs/theme.md §3.2）：
+    // 交互可见性不再由档差承担，而由配方的 alpha 阶梯承担
+    // （字符串层 `packages/ui/test/specs/styles/neutral-faces.spec.ts`，
+    // 实测色差层 `packages/ui/test/browser/specs/theme/neutral-faces.e2e.spec.ts`）。
+    // 同档是**有意**的：任何"静止实心 `muted` → 交互实心 `accent`"的配方都会 Δ = 0，
+    // 所以同档必须锁在这里，配方不能再假设两者有档差。
     const map = resolveThemeMap(DEFAULTS);
 
     (['light', 'dark'] as const).forEach(mode => {
-      expect(map[mode].accent, mode).not.toEqual(map[mode].muted);
-      expect(map[mode].accent, mode).not.toEqual(map[mode].secondary);
+      expect(map[mode].accent, mode).toEqual(map[mode].muted);
+      expect(map[mode].accent, mode).toEqual(map[mode].secondary);
     });
   });
 

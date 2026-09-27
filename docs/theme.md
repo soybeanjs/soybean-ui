@@ -259,14 +259,18 @@ cd packages/theme && pnpm exec vitest run -u   # 有意识地更新映射快照
 | token                    | 角色                            | light     | dark      |
 | :----------------------- | :------------------------------ | :-------- | :-------- |
 | `--muted`                | 弱化块（badge / 内嵌井 / 表头） | `{b}.100` | `{b}.800` |
-| `--accent`               | hover / 选中面                  | `{b}.200` | `{b}.700` |
+| `--accent`               | hover / 选中面                  | `{b}.100` | `{b}.800` |
 | `--accent-foreground`    | 交互面文字                      | `{b}.900` | `{b}.50`  |
 | `--secondary`            | 次级填充                        | `{b}.100` | `{b}.800` |
 | `--secondary-foreground` | 次级填充文字                    | `{b}.900` | `{b}.50`  |
 
-**`muted` / `secondary` 同档，`accent` 比它们深/浅一档**（亮 `{b}.100` → `{b}.200`，暗 `{b}.800` → `{b}.700`）：弱化块与次级填充是**静态面**，`accent` 是**交互面**，所以 hover / 选中 / open 落地在 `accent`，静态井（表头、tracks、chips）落地在 `muted` / `secondary`；约束是三者**一旦分化必须 ≥1 档**（有测试守住）。`muted` 不产出自己的前景——它的文字就是 `--muted-foreground`。
+**`muted` / `accent` / `secondary` 三者同档**（对齐 shadcn 默认）：角色语义仍然三分——弱化块与次级填充是**静态面**，`accent` 是**交互面**——但默认值不再有档差，所以**交互可见性改由同一填充的 alpha 阶梯承担**，而不是档差。`muted` 不产出自己的前景——它的文字就是 `--muted-foreground`。
 
-**组件层的读法（中性面阶梯）**：静止 `muted` / 透明 → hover `accent/60` → 选中 / 按压 `accent`。不带底色的中性交互面（icon 按钮、toggle、anchor 选中项）因此只由 `--accent` 驱动，改档位即整体跟随；需要中等灰度的标记（轨道、进度、指示点）不属于这个表面档位，不走 `--accent`。
+**组件层的读法（中性面阶梯）**：静止 `accent/40`（或 `card` / 透明）→ hover `accent/60` → 选中 / 按压 `accent`。不带底色的中性交互面（icon 按钮、toggle、anchor 选中项）因此只由 `--accent` 驱动，改档位即整体跟随；需要中等灰度的标记（轨道、进度、指示点）不属于这个表面档位，不走 `--accent`。
+
+**同档带来的硬约束**：任何"静止实心 `fill` → 交互实心 `fill`"的配方都是 **Δ = 0**（渲染成完全同色）。所以**静态面与交互面相邻时必须降为洗色**——`toggle.soft` / `toggle-group.soft` / `button.soft` 的静止面是 `bg-muted/40`、斑马纹表格行是 `even:bg-muted/40`、暗色侧栏的 hover / focus 是 `bg-sidebar-accent-foreground/10`（§3.9）。类名字符串由 `packages/ui/test/specs/styles/neutral-faces.spec.ts` 守，**实测色差**由 `packages/ui/test/browser/specs/theme/neutral-faces.e2e.spec.ts` 守（计算后的 `background-color` 之差不许为 0）。
+
+**刻度上限是有意接受的**：亮色页面底 `{b}.50` 与填充 `{b}.100` 只差 6 个 sRGB 单位，三档平分后不可能每档都 ≥3。实测（亮色，落在页面底上）`rest 247.6 → hover 246.4 → on 244`：**状态判据是 OFF → ON（Δ 3.6）**，hover 是细步（落在 `card` 白底上约 4.2）；e2e 因此只对 OFF → ON 要求 ≥ 3，对 hover 只要求不是 Δ = 0。
 
 ### 3.3 内容色（文本 / 图标）
 
@@ -348,7 +352,9 @@ cd packages/theme && pnpm exec vitest run -u   # 有意识地更新映射快照
 
 区域级差异只能来自 `overrides`；把侧栏做成反色皮肤时镜像会跟着走。
 
-亮色 `--sidebar` 取 `background`（与页面同调，分界由 `--sidebar-border` 承担，差 1.04:1）；暗色取 `muted`（`{b}.800`，比主画布 `card` 的 `{b}.900` 亮一档）——暗色若也取 `card`，侧栏与主体**完全同色**，外壳读不出分界。`sidebar-accent` ← `accent` 因此在两种底色上都逐级可见；次级文字用全局 `--muted-foreground`（实测亮 7.41 / 暗 5.81，均过 4.5:1）。
+亮色 `--sidebar` 取 `background`（与页面同调，分界由 `--sidebar-border` 承担，差 1.04:1）；暗色取 `muted`（`{b}.800`，比主画布 `card` 的 `{b}.900` 亮一档）——暗色若也取 `card`，侧栏与主体**完全同色**，外壳读不出分界。
+
+暗色因此出现一处**同值镜像**：`sidebar` = `muted` = `{b}.800`，而 `sidebar-accent` ← `accent` = `muted`（§3.2），所以 `--sidebar-accent` 与 `--sidebar` 在暗色下同值——实心 `bg-sidebar-accent` 的 hover / focus 会与静止面渲染成同色。侧栏的交互面因此改用**前景角色的 alpha 洗色** `bg-sidebar-accent-foreground/10`（`tree-menu.ts`），它在两种底色上都可见：亮色下 ≈ 重构前的 `accent` 档观感，暗色下是 `{b}.800` 上的一层浅色洗色。次级文字用全局 `--muted-foreground`（实测亮 7.41 / 暗 5.81，均过 4.5:1）。
 
 ### 3.10 alpha 伴生变量
 

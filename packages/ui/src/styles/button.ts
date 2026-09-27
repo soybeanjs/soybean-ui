@@ -270,11 +270,13 @@ export const buttonVariants = cv({
       variant: 'soft',
       class: 'bg-carbon/10 data-[normal]:hover:bg-carbon/10 data-[normal]:active:bg-carbon/20'
     },
-    // 中性 soft：静止面是弱化块 `muted`，hover / active 才升到交互面（与 `toggle.soft` 同一套）
+    // 中性 soft：静止面是弱化块 `muted` 的洗色，hover / active 才升到交互面（与 `toggle.soft` 同一套）。
+    // `/40` 不是装饰：`muted` 与 `accent` 同档（docs/theme.md §3.2），实心 `bg-muted` 的静止面
+    // 会与 `active:bg-accent` 同色，按压态直接消失（browser e2e 守这条色差）。
     {
       color: ['secondary', 'accent'],
       variant: 'soft',
-      class: 'bg-muted text-foreground data-[normal]:hover:bg-accent/60 data-[normal]:active:bg-accent'
+      class: 'bg-muted/40 text-foreground data-[normal]:hover:bg-accent/60 data-[normal]:active:bg-accent'
     },
     {
       size: 'xs',

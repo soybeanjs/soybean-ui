@@ -23,7 +23,7 @@ exports[`theme map — structure and invariants > snapshots the default theme ma
   "dark": {
     "accent": {
       "kind": "palette",
-      "level": 700,
+      "level": 800,
       "palette": "zinc",
     },
     "accent-foreground": {
@@ -170,7 +170,7 @@ exports[`theme map — structure and invariants > snapshots the default theme ma
     },
     "sidebar-accent": {
       "kind": "palette",
-      "level": 700,
+      "level": 800,
       "palette": "zinc",
     },
     "sidebar-accent-foreground": {
@@ -226,7 +226,7 @@ exports[`theme map — structure and invariants > snapshots the default theme ma
   "light": {
     "accent": {
       "kind": "palette",
-      "level": 200,
+      "level": 100,
       "palette": "zinc",
     },
     "accent-foreground": {
@@ -373,7 +373,7 @@ exports[`theme map — structure and invariants > snapshots the default theme ma
     },
     "sidebar-accent": {
       "kind": "palette",
-      "level": 200,
+      "level": 100,
       "palette": "zinc",
     },
     "sidebar-accent-foreground": {

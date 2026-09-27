@@ -32,11 +32,14 @@ export const treeMenuVariants = scv({
     groupRoot: 'group-data-[state=collapsed]:mb-0',
     group: 'flex flex-col m-0 p-0 list-none',
     groupLabel: `flex items-center text-sidebar-foreground/70 group-data-[state=collapsed]:size-0 group-data-[state=collapsed]:p-0 group-data-[state=collapsed]:opacity-0 group-data-[state=collapsed]:overflow-hidden transition-[height,padding,opacity]-200`,
-    item: 'relative m-0 p-0 group-data-[state=collapsed]:hover:bg-sidebar-accent group-data-[state=collapsed]:hover:rounded-sm',
+    // 侧栏交互面用 `--sidebar-accent-foreground` 的 alpha 洗色：暗色 `--sidebar` 与
+    // `--sidebar-accent` 同档（docs/theme.md §3.9），实心 `bg-sidebar-accent` 的 hover 会与
+    // 静止面渲染成同色（browser e2e 守这条色差）。
+    item: 'relative m-0 p-0 group-data-[state=collapsed]:hover:bg-sidebar-accent-foreground/10 group-data-[state=collapsed]:hover:rounded-sm',
     button: [
       `group/button relative flex items-center w-full rounded-sm outline-none cursor-pointer select-none group-data-[state=collapsed]:overflow-hidden`,
       `data-[selected=true]:bg-sidebar-primary/10 data-[selected=true]:text-sidebar-primary`,
-      `data-[selected=false]:hover:bg-sidebar-accent data-[selected=false]:focus:bg-sidebar-accent`,
+      `data-[selected=false]:hover:bg-sidebar-accent-foreground/10 data-[selected=false]:focus:bg-sidebar-accent-foreground/10`,
       `data-[child-selected]:text-sidebar-primary`,
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
@@ -50,10 +53,10 @@ export const treeMenuVariants = scv({
     sub: 'flex flex-col m-0 list-none ms-[--soybean-tree-menu-indent] border-s border-sidebar-border border-solid',
     itemLabel: 'truncate',
     itemLinkIcon: `shrink-0 self-start text-muted-foreground rtl:rotate-270`,
-    itemTag: `shrink-0 ms-auto inline-flex items-center rounded-sm bg-sidebar-accent/15 text-sidebar-accent-foreground`,
+    itemTag: `shrink-0 ms-auto inline-flex items-center rounded-sm bg-sidebar-accent-foreground/10 text-sidebar-accent-foreground`,
     itemAction: [
       `absolute end-0 top-1/2 -translate-y-1/2 z-2 inline-flex items-center justify-center rounded-sm text-muted-foreground outline-none transition-colors`,
-      `focus-visible:bg-sidebar-accent focus-visible:text-sidebar-foreground focus-visible:ring-3 focus-visible:ring-sidebar-accent-foreground/20`,
+      `focus-visible:bg-sidebar-accent-foreground/10 focus-visible:text-sidebar-foreground focus-visible:ring-3 focus-visible:ring-sidebar-accent-foreground/20`,
       `disabled:pointer-events-none disabled:opacity-50`
     ],
     itemAbsolute: `absolute inset-0 z-1 cursor-pointer`,

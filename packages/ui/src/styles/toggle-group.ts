@@ -71,9 +71,9 @@ export const toggleGroupVariants = scv({
           'data-[state=off]:hover:bg-accent/60 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground'
         ]
       },
-      // 与 toggle 同一套中性阶梯
+      // 与 toggle 同一套中性阶梯；`/40` 的理由见 toggle.ts（`muted` 与 `accent` 同档）
       soft: {
-        item: ['bg-muted text-foreground', 'data-[state=off]:hover:bg-accent/60']
+        item: ['bg-muted/40 text-foreground', 'data-[state=off]:hover:bg-accent/60']
       },
       ghost: {
         item: ['bg-transparent text-foreground', 'data-[state=off]:hover:bg-accent/60']

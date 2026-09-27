@@ -21,9 +21,11 @@ export const toggleVariants = cv({
       accent: `focus-visible:ring-accent-foreground/20`
     },
     variant: {
-      // 中性阶梯统一：静止 `card` / `muted` / 透明 → hover `accent/60` → on `accent`
+      // 中性阶梯统一：静止 `card` / `muted/40` / 透明 → hover `accent/60` → on `accent`。
+      // `muted` 与 `accent` 同档（docs/theme.md §3.2），所以静止面必须是**洗色**而不是实心 `muted`：
+      // 实心 `muted` 与 `on` 的 `accent` 同色，OFF / ON 会渲染成完全一致（browser e2e 守这条色差）。
       outline: `border border-border bg-card text-foreground hover:bg-accent/60 data-[state=on]:bg-accent`,
-      soft: 'bg-muted text-foreground data-[state=off]:hover:bg-accent/60',
+      soft: 'bg-muted/40 text-foreground data-[state=off]:hover:bg-accent/60',
       ghost: 'bg-transparent text-foreground data-[state=off]:hover:bg-accent/60'
     },
     size: {

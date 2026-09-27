@@ -26,7 +26,7 @@ const data: TableData[] = [
 <template>
   <STable :columns="columns" :data="data" :row-key="row => row.id">
     <template #expanded-row="{ row }">
-      <!-- 展开详情是静态弱化块：`accent` 是行 hover 面，用在这里会让详情看起来处于 hover 态 -->
+      <!-- 展开详情是静态弱化块：静态面用 `muted`，行 hover 的交互面才是 `accent` -->
       <div class="p-4 bg-muted">
         <p>
           <strong>Name:</strong>
