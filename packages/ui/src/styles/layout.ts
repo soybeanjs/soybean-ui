@@ -12,17 +12,17 @@ export const layoutVariants = scv({
   slots: {
     // --sl-* 是本库的间距/gap 别名(headless 注入的 --layout-* 保持不变),在 root 上按状态计算,各槽位直接应用
     root: [
-      'group/layout relative h-full bg-background transition-all-300',
+      'group/layout relative h-full bg-background transition-all-200',
       '[--sl-half-spacing:calc(var(--sl-spacing)/2)]',
       '[--sl-main-gap:var(--soybean-layout-start-gap)]',
       '[--sl-header-gap:var(--soybean-layout-header-start-gap)]',
       '[--sl-footer-gap:var(--soybean-layout-footer-start-gap)]',
       '[--sl-end-gap:0px]'
     ],
-    main: 'flex flex-col h-full bg-card group-data-[scroll-behavior=wrapper]/layout:overflow-y-auto transition-all-300',
+    main: 'flex flex-col h-full group-data-[scroll-behavior=wrapper]/layout:overflow-y-auto transition-all-200',
     sidebarRoot: 'lt-md:hidden',
     sidebarWrapper: [
-      `absolute inset-y-0 z-[--soybean-layout-sidebar-z-index] flex h-[--soybean-layout-sidebar-height] w-[--soybean-sidebar-width] transition-[width,opacity] duration-200 ease-linear lt-md:hidden`,
+      `absolute inset-y-0 z-[--soybean-layout-sidebar-z-index] flex h-[--soybean-layout-sidebar-height] w-[--soybean-sidebar-width] transition-[width,opacity]-200 lt-md:hidden`,
       'group-data-[state=collapsed]/layout:w-[--soybean-collapsed-sidebar-width] mt-[--soybean-layout-sidebar-top-gap] mb-[--soybean-layout-sidebar-bottom-gap]'
     ],
     sidebar: [
@@ -38,20 +38,20 @@ export const layoutVariants = scv({
     ],
     mobile: 'flex flex-col w-full h-full',
     rail: [
-      'absolute inset-y-0 z-20 flex w-[--sl-spacing] -translate-x-1/2 rtl:translate-x-1/2 transition-all ease-linear lt-sm:hidden',
+      'absolute inset-y-0 z-20 flex w-[--sl-spacing] -translate-x-1/2 rtl:translate-x-1/2 transition-all lt-sm:hidden',
       'after:absolute after:inset-y-0 after:start-1/2 after:content-empty after:w-[calc(var(--sl-spacing)/8)] hover:after:bg-sidebar-border'
     ],
     trigger: '',
     header: [
-      'shrink-0 flex items-center h-[--soybean-layout-header-height] transition-all-300',
+      'shrink-0 flex items-center h-[--soybean-layout-header-height] bg-card transition-all-200',
       'group-data-[fixed-top=true]/layout:absolute z-[--soybean-layout-header-z-index] top-0 inset-x-0'
     ],
     headerPlaceholder: 'shrink-0 h-[--soybean-layout-header-height] overflow-hidden',
-    tab: 'group-data-[fixed-top=true]/layout:absolute inset-x-0 top-[--soybean-layout-header-height] shrink-0 h-[--soybean-layout-tab-height] z-[--soybean-layout-tab-z-index] transition-all-300',
+    tab: 'group-data-[fixed-top=true]/layout:absolute inset-x-0 top-[--soybean-layout-header-height] shrink-0 h-[--soybean-layout-tab-height] bg-card z-[--soybean-layout-tab-z-index] transition-all-200',
     tabPlaceholder: 'shrink-0 h-[--soybean-layout-tab-height] overflow-hidden',
     content: `relative grow bg-card group-data-[scroll-behavior=content]/layout:overflow-y-auto`,
     footer: [
-      'shrink-0 h-[--soybean-layout-footer-height] transition-all-300',
+      'shrink-0 h-[--soybean-layout-footer-height] bg-card transition-all-200',
       'group-data-[fixed-footer=true]/layout:absolute z-[--soybean-layout-footer-z-index] inset-x-0 bottom-0'
     ],
     footerPlaceholder: 'shrink-0 h-[--soybean-layout-footer-height] overflow-hidden'
@@ -123,7 +123,7 @@ export const layoutVariants = scv({
           'data-[orientation=vertical]:data-[stretch-footer=true]:[--sl-footer-gap:0px]'
         ],
         sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))]`,
-        sidebarWrapper: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] p-[--sl-half-spacing] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))] border-e-0`
+        sidebarWrapper: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] p-[--sl-half-spacing] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))] bg-card border-e-0`
       },
       inset: {
         root: [

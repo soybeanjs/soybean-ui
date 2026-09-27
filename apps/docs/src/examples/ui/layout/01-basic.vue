@@ -271,7 +271,7 @@ const fullContent = shallowRef(false);
                 </div>
               </template>
             </SDropdownMenu>
-            <SLayoutTrigger v-if="side === 'left'" />
+            <SLayoutTrigger v-if="side === 'left'" class="ml-4" />
             <SSeparator orientation="vertical" class="h-4" />
             <SBreadcrumb :items="breadcrumbItems" :size="size" :ui="{ list: 'gap-2' }" />
             <SLayoutTrigger v-if="side === 'right'" class="ms-auto" />
