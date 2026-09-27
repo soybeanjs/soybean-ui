@@ -46,6 +46,6 @@
   "devDependencies": {
     "typescript": "catalog:",
     "vite-plus": "catalog:",
-    "vitest": "5.0.1"
+    "vitest": "5.0.2"
   }
 }
