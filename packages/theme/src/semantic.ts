@@ -251,7 +251,7 @@ export const CORE_RULES: Record<CoreToken, TokenRule> = {
   mask: { kind: 'simple', light: 'black', dark: 'black' },
   // —— fills ——
   muted: { kind: 'level', source: 'base', light: 100, dark: 800 },
-  accent: { kind: 'level', source: 'base', light: 200, dark: 700 },
+  accent: { kind: 'level', source: 'base', light: 100, dark: 800 },
   'accent-foreground': { kind: 'level', source: 'base', light: 900, dark: 50 },
   secondary: { kind: 'level', source: 'base', light: 100, dark: 800 },
   'secondary-foreground': { kind: 'level', source: 'base', light: 900, dark: 50 },
