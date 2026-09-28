@@ -4929,7 +4929,7 @@
         "kind": "props",
         "name": "TreeMenuStyledItemProps",
         "type": "Interface TreeMenuStyledItemProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<Record<'item' | 'button', ClassValue>> }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<Record<TreeMenuStyledItemUiSlot, ClassValue>>; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the TreeMenuStyledItem component.",
         "descriptionKey": "api.generated.packages_ui_src_components_tree_menu_types.treemenustyleditemprops.props",
         "sourcePath": "packages/ui/src/components/tree-menu/types.ts",
@@ -4987,7 +4987,7 @@
           },
           {
             "name": "ui",
-            "type": "Partial<Record<'item' | 'button', ClassValue>>",
+            "type": "Partial<Record<TreeMenuStyledItemUiSlot, ClassValue>>",
             "required": false,
             "description": "Per-slot class overrides for the component.",
             "descriptionKey": "api.generated.packages_ui_src_components_tree_menu_types.treemenustyleditemprops.members.ui",
@@ -5007,11 +5007,103 @@
                 "external": false,
                 "members": [],
                 "callables": []
+              },
+              {
+                "name": "TreeMenuStyledItemUiSlot",
+                "kind": "typeAlias",
+                "type": "'item' | 'button'",
+                "resolvedType": null,
+                "description": "Available UI slots for the TreeMenuStyledItem component.",
+                "descriptionKey": "api.generated.packages_ui_src_components_tree_menu_types.treemenustyleditemuislot",
+                "sourcePath": "packages/ui/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the row is disabled.\n\nThe row carries `data-disabled` — what the recipe's disabled styles key on —\nand `aria-disabled`. A native `button` row additionally gets the `disabled`\nattribute; every other element only declares the state, so nested content\n(for example a trigger inside the row) decides how it blocks itself.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_menu_types.treemenustyleditemprops.members.disabled",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_menu_types.treemenustyleditemprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_menu_types.treemenustyleditemprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.43/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
               }
             ]
           }
         ],
         "callables": [],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "TreeMenuStyledItemSlots",
+        "type": "Interface TreeMenuStyledItemSlots",
+        "resolvedType": "{ TreeMenuSub?: (() => any) }",
+        "description": "Slots for the TreeMenuStyledItem component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_tree_menu_types.treemenustyleditemslots.slots",
+        "sourcePath": "packages/ui/src/components/tree-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Content of the row.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_menu_types.treemenustyleditemslots.callables.default",
+            "sourcePath": "packages/ui/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          }
+        ],
         "referencedTypes": []
       }
     },

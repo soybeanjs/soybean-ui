@@ -31,6 +31,7 @@ head:
 ## 组件家族
 
 - `STreeMenu`（styled）— 入口包装；`TreeMenuCompact` 组合 + `treeMenuVariants` 尺寸配方 + `provideTreeMenuUi` 注入插槽类，`useForwardListeners` 合并事件
+- `STreeMenuStyledItem`（styled）— 用菜单项配方画出的单独一行，供非菜单节点的内容使用（品牌区、触发器、页脚行）；经 `Primitive` 渲染，因此 `as` / `asChild` 可指定元素、`disabled` 可标记禁用
 - `TreeMenuCompact`（headless）— 组合根；`TreeMenuRoot` 状态根 + `TreeMenuOptionsCompact` 分组/递归渲染 + `top`/`bottom` 插槽
 - `TreeMenuRoot`（headless）— 状态根；`useControllableState` 管理激活/展开/折叠，折叠时 `backupExpanded` 暂存展开状态并在恢复时还原
 - `TreeMenuOptionsCompact`（headless）— 分组/递归渲染；`expandStrategy="selected"` 时按选中菜单路径同步展开状态
@@ -160,6 +161,10 @@ console.log('select', action.value) }
 ### 如何禁用菜单项？
 
 节点设置 `disabled: true` 即不可激活/展开/操作；禁用项渲染 `data-disabled` 与原生 `disabled` 语义。
+
+### 如何让自定义行拥有菜单项的样式？
+
+渲染 `STreeMenuStyledItem` —— 菜单项本身就用这一行，因此它共享同一套尺寸配方、同一个图标列与同一种折叠：身处于折叠祖先（`group` + `data-state="collapsed"`）内时，该行会收窄到菜单项的图标宽度。传入 `size` 与菜单对齐；该行不是按钮时用 `as` / `asChild`（非交互品牌区用 `div`，`asChild` 则合并到你自己的链接上）；用 `disabled` 标记禁用。折叠后该行只放图标，因此请自行隐藏标签并居中图标——比折叠后内容盒更宽的标记图否则会贴着行尾：`:ui="{ button: 'group-data-[state=collapsed]:justify-center' }"`。
 
 ### 操作按钮的 aria-label 如何本地化？
 

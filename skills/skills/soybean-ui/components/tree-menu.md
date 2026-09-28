@@ -30,6 +30,7 @@ Usage examples for tree-menu are rendered on the site.
 ## Component family
 
 - `STreeMenu` (styled) — entry wrapper; composes `TreeMenuCompact` + the `treeMenuVariants` size recipe + `provideTreeMenuUi` slot-class injection, `useForwardListeners` event merging
+- `STreeMenuStyledItem` (styled) — one row drawn with the item recipe, for content that is not a menu node (a brand, a trigger, a footer row); renders through `Primitive`, so `as` / `asChild` pick the element and `disabled` marks the row
 - `TreeMenuCompact` (headless) — composite root; `TreeMenuRoot` state root + `TreeMenuOptionsCompact` grouping/recursive rendering + `top`/`bottom` slots
 - `TreeMenuRoot` (headless) — state root; `useControllableState` manages activation/expansion/collapse; `backupExpanded` stashes expansion while collapsed and restores it on recovery
 - `TreeMenuOptionsCompact` (headless) — grouping/recursive rendering; with `expandStrategy="selected"` it syncs the expanded state to the selected menu path
@@ -321,7 +322,16 @@ Properties for the TreeMenuStyledItem component.
 
 - `class`: Additional class names applied to the root element. (type `string | false | Record<string, any> | ClassValue[] | null`; optional)
 - `size`: Visual size of the component. (type `ThemeSize`; optional)
-- `ui`: Per-slot class overrides for the component. (type `Partial<Record<'item' | 'button', ClassValue>>`; optional)
+- `ui`: Per-slot class overrides for the component. (type `Partial<Record<TreeMenuStyledItemUiSlot, ClassValue>>`; optional)
+- `disabled`: Whether the row is disabled. The row carries `data-disabled` — what the recipe's disabled styles key on — and `aria-disabled`. A native `button` row additionally gets the `disabled` attribute; every other element only declares the state, so nested content (for example a trigger inside the row) decides how it blocks itself. (type `boolean`; default `false`; optional)
+- `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
+- `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
+
+#### Slots
+
+Slots for the TreeMenuStyledItem component.
+
+- `default`: Content of the row. (type `(() => any) | undefined`)
 
 ### TreeMenuSub
 
@@ -437,6 +447,10 @@ Built-in fields: `icon` (icon), `badge` + `badgeProps` (badge), `tag` + `tagProp
 ### How do I disable an item?
 
 Set `disabled: true` on the node to block activation/expansion/actions; disabled items render `data-disabled` and native `disabled` semantics.
+
+### How do I style a custom row like a menu item?
+
+Render `STreeMenuStyledItem` — it is the row the menu items themselves are drawn with, so it takes the same size recipe, the same icon column, and the same fold: inside a collapsed ancestor (`group` + `data-state="collapsed"`) the row narrows to the item's icon width. Pass `size` to match the menu, `as` / `asChild` when the row is not a button (a `div` for a non-interactive brand, `asChild` to merge into your own link), and `disabled` to mark it. When the row folds it is icon-only, so hide the label yourself and center the icon — a mark wider than the folded content box would otherwise sit against the row's trailing edge: `:ui="{ button: 'group-data-[state=collapsed]:justify-center' }"`.
 
 ### How is the action button aria-label localized?
 

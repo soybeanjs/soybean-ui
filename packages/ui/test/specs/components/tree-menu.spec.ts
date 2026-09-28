@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import type { VueWrapper } from '@vue/test-utils';
+import STreeMenuStyledItem from '@/components/tree-menu/tree-menu-styled-item.vue';
 import STreeMenu from '@/components/tree-menu/tree-menu.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -1078,5 +1079,116 @@ describe('STreeMenu', () => {
 
       wrapper.unmount();
     });
+  });
+});
+
+/**
+ * `STreeMenuStyledItem` is the row the menu's own items are drawn with, for content
+ * that is not a menu node: a brand, a trigger, a footer row.
+ */
+describe('STreeMenuStyledItem', () => {
+  const root = '[data-soybean-tree-menu-styled-item]';
+  const row = '[data-soybean-tree-menu-styled-item-button]';
+
+  const slots = { default: '<span data-row>Row</span>' };
+
+  it('renders a native button row by default', () => {
+    const wrapper = mount(STreeMenuStyledItem, { slots });
+
+    const rowElement = wrapper.find(row);
+
+    expect(wrapper.find(root).exists()).toBe(true);
+    expect(rowElement.element.tagName).toBe('BUTTON');
+    // A bare `button` submits the form it sits in.
+    expect(rowElement.attributes('type')).toBe('button');
+    expect(wrapper.find('[data-row]').exists()).toBe(true);
+
+    wrapper.unmount();
+  });
+
+  it('drops the button semantics for another element', () => {
+    const wrapper = mount(STreeMenuStyledItem, { props: { as: 'div' }, slots });
+
+    const rowElement = wrapper.find(row);
+
+    expect(rowElement.element.tagName).toBe('DIV');
+    expect(rowElement.attributes('type')).toBeUndefined();
+
+    wrapper.unmount();
+  });
+
+  it('merges the row into the consumer element with asChild', () => {
+    const wrapper = mount(STreeMenuStyledItem, {
+      props: { asChild: true },
+      slots: { default: '<a data-link href="#row">Row</a>' }
+    });
+
+    const link = wrapper.find('[data-link]');
+
+    expect(link.attributes('href')).toBe('#row');
+    expect(link.attributes('data-soybean-tree-menu-styled-item-button')).toBeDefined();
+    // The consumer's element keeps its own semantics.
+    expect(link.attributes('type')).toBeUndefined();
+
+    wrapper.unmount();
+  });
+
+  it('declares the disabled state on every element, and the attribute only on a button', () => {
+    const button = mount(STreeMenuStyledItem, { props: { disabled: true }, slots });
+    const buttonRow = button.find(row);
+
+    expect(buttonRow.attributes('data-disabled')).toBe('');
+    expect(buttonRow.attributes('aria-disabled')).toBe('true');
+    expect(buttonRow.attributes('disabled')).toBeDefined();
+
+    button.unmount();
+
+    const div = mount(STreeMenuStyledItem, { props: { as: 'div', disabled: true }, slots });
+    const divRow = div.find(row);
+
+    expect(divRow.attributes('data-disabled')).toBe('');
+    expect(divRow.attributes('aria-disabled')).toBe('true');
+    // A non-form element is not a disabled control: nested content decides.
+    expect(divRow.attributes('disabled')).toBeUndefined();
+
+    div.unmount();
+  });
+
+  it('leaves an enabled row unmarked', () => {
+    const wrapper = mount(STreeMenuStyledItem, { slots });
+    const rowElement = wrapper.find(row);
+
+    expect(rowElement.attributes('data-disabled')).toBeUndefined();
+    expect(rowElement.attributes('aria-disabled')).toBeUndefined();
+    expect(rowElement.attributes('disabled')).toBeUndefined();
+
+    wrapper.unmount();
+  });
+
+  it('sizes the row from the recipe and keeps slot overrides on their slots', () => {
+    const wrapper = mount(STreeMenuStyledItem, {
+      props: { size: 'lg', class: 'root-x', ui: { button: 'button-x' } },
+      slots
+    });
+
+    expect(wrapper.find(root).classes()).toContain('root-x');
+    // The row metrics come from the same size recipe the menu uses.
+    expect(wrapper.find(row).classes()).toContain('h-9');
+    expect(wrapper.find(row).classes()).toContain('button-x');
+
+    wrapper.unmount();
+  });
+
+  it('has no a11y violations for a themed row', async () => {
+    const wrapper = mount(STreeMenuStyledItem, {
+      slots,
+      attachTo: document.body
+    });
+
+    const violations = await getA11yViolations(wrapper.element);
+
+    expect(violations).toHaveLength(0);
+
+    wrapper.unmount();
   });
 });

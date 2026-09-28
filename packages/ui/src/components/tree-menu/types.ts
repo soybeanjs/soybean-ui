@@ -1,3 +1,4 @@
+import type { PrimitiveWithBaseProps } from '@soybeanjs/headless/primitive';
 import type {
   TreeMenuBaseOptionData,
   TreeMenuCompactEmits,
@@ -5,7 +6,7 @@ import type {
   TreeMenuCompactSlots,
   TreeMenuUiSlot
 } from '@soybeanjs/headless/tree-menu';
-import type { BaseProps, ClassValue } from '@soybeanjs/headless/types';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
@@ -41,7 +42,20 @@ export type TreeMenuSlots<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionD
 /**
  * Properties for the TreeMenuStyledItem component.
  */
-export interface TreeMenuStyledItemProps extends BaseProps {
+/**
+ * Available UI slots for the TreeMenuStyledItem component.
+ */
+export type TreeMenuStyledItemUiSlot = Extract<TreeMenuUiSlot, 'item' | 'button'>;
+
+/**
+ * UI class overrides for the TreeMenuStyledItem component.
+ */
+export type TreeMenuStyledItemUi = Partial<Record<TreeMenuStyledItemUiSlot, ClassValue>>;
+
+/**
+ * Properties for the TreeMenuStyledItem component.
+ */
+export interface TreeMenuStyledItemProps extends PrimitiveWithBaseProps {
   /**
    * Additional class names applied to the root element.
    */
@@ -53,5 +67,24 @@ export interface TreeMenuStyledItemProps extends BaseProps {
   /**
    * Per-slot class overrides for the component.
    */
-  ui?: Partial<Record<'button' | 'item', ClassValue>>;
+  ui?: TreeMenuStyledItemUi;
+  /**
+   * Whether the row is disabled.
+   *
+   * The row carries `data-disabled` — what the recipe's disabled styles key on —
+   * and `aria-disabled`. A native `button` row additionally gets the `disabled`
+   * attribute; every other element only declares the state, so nested content
+   * (for example a trigger inside the row) decides how it blocks itself.
+   *
+   * @defaultValue false
+   */
+  disabled?: boolean;
+}
+
+/**
+ * Slots for the TreeMenuStyledItem component.
+ */
+export interface TreeMenuStyledItemSlots {
+  /** Content of the row. */
+  default?: () => any;
 }

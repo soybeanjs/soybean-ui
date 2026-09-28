@@ -14509,12 +14509,22 @@
         },
         "treemenustyleditemprops": {
           "members": {
+            "as": "",
+            "aschild": "",
             "class": "应用于根元素的额外类名。",
+            "disabled": "",
             "size": "组件的视觉尺寸。",
             "ui": "针对该组件的按槽位类重写。"
           },
           "props": "TreeMenuStyledItem 组件的属性。"
-        }
+        },
+        "treemenustyleditemslots": {
+          "callables": {
+            "default": ""
+          },
+          "slots": ""
+        },
+        "treemenustyleditemuislot": ""
       },
       "packages_ui_src_components_tree_nav_types": {
         "treenavemits": {
