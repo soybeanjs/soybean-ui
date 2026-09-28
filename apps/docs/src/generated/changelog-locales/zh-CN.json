@@ -19,8 +19,8 @@
           },
           "50": {
             "0": {
-              "0": "",
-              "1": ""
+              "0": "本次发布更换了全部三个引擎，并重命名了两个组件系列。日期引擎从 @internationalized/date 迁移至 date-fns，并采用原生 Date 值；表格引擎基于 @tanstack/vue-table 重新构建（采用 TanStack 的列/状态命名规范，不再使用旧版别名）； 表单引擎基于 @tanstack/vue-form 重构（useForm 返回一个上下文对象，initialValues 改为 defaultValues）。移除了 NavigationMenu，改用 NavMenu； SDrawer 更名为 SSheet，而 SBottomSheet 则成为新的手势驱动型 SDrawer；仅用于展示的无头组件系列（card/empty/list/skeleton/badge/tag）已被移除，且 SPopper/SArrow 不再从 UI 包中导出。 请参阅升级指南以获取完整的迁移指南。",
+              "1": "日期组件（Calendar、DateField、DatePicker、TimeField 及其范围变体）现基于 date-fns 构建的原生 Date 值进行操作。专门的日期指南将 CalendarDate/Time/DateTime 值、日历运算以及格式化/解析映射到了新模型。"
             }
           }
         }
@@ -2535,6 +2535,23 @@
               "94504": "更新依赖项",
               "20a8b": "移除已完成的 v0.50，重新命名文档，并将“admission ledger”整合到该技能中",
               "97a9d": "调整根插槽以防止主题自定义器中发生溢出"
+            },
+            "6": {
+              "74349": "修正 trigger 中打开状态样式的语法",
+              "1ab80": "使“表面分层”的断言与当前教程保持一致",
+              "2d1b5": "将折叠后的品牌标识居中显示，而不是将其推向右侧",
+              "56bdb": "更新链接变体的 focus-visible 环形样式",
+              "6f9d8": "让宿主视口决定 isMobile 状态，并暴露抽屉状态",
+              "7a2dc": "将生成的技能与抽屉式常见问题解答（FAQ）保持同步",
+              "7c9c8": "在浅色模式下将次级填充上移一级",
+              "81dd2": "在加载 e2e 样式表之前提取所有食谱",
+              "83a4f": "使样式化项具有多态性并能感知状态",
+              "88af5": "将品牌行渲染为非交互式菜单行",
+              "8caa8": "将发布说明附加到该系列的最新版本中",
+              "989ca": "在移动端保持侧边导航栏展开状态",
+              "98bd3": "将侧边栏的品牌名称与树形菜单的行对齐",
+              "da8ef": "在移动端跟随视口并消除侧边栏间隙",
+              "e463b": "通过设备切换器控制预览视口"
             }
           }
         }

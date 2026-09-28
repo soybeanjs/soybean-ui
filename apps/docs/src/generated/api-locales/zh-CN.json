@@ -5040,7 +5040,7 @@
         "layoutcollapsible": "LayoutCollapsible 的类型信息。",
         "layoutcompactemits": {
           "callables": {
-            "update_mobileopen": "",
+            "update_mobileopen": "在移动端抽屉栏的打开状态发生变化时触发。",
             "update_open": "当打开状态发生变化时发出。"
           },
           "emits": "LayoutCompact 组件的事件。"
@@ -5051,7 +5051,7 @@
             "collapsedsidebarwidth": "侧边栏折叠时的宽度。（px）",
             "collapsible": "布局的可折叠状态。",
             "contentprops": "",
-            "defaultmobileopen": "",
+            "defaultmobileopen": "移动抽屉在初始渲染时的展开状态。",
             "defaultopen": "最初呈现布局时的打开状态。\n\n在不需要控制其打开状态时使用。",
             "fixedfooter": "页脚是否固定",
             "fixedtop": "当屏幕方向为纵向时，页眉和标签栏是否固定在布局顶部。如果为 true，则当屏幕方向为纵向时，页眉和标签栏将固定在布局顶部；当屏幕方向为横向时，它们将随内容一起滚动。",
@@ -5062,9 +5062,9 @@
             "headerheight": "标题的高度。像素",
             "headerprops": "",
             "headervisible": "是否显示页眉。",
-            "ismobile": "",
+            "ismobile": "当前是否处于移动视图布局。\n\n解析顺序：先检查此属性，然后根据通过\n`provideViewportContext` 提供的宿主视口决策（模拟视口——设备帧、嵌入式\nshell）），最后是 `useMediaQuery(mobileViewportQuery)` —— 即\n样式化桌面侧边栏被隐藏时的同一断点。传递一个显式的布尔值可强制\n模式（例如服务器端检测）；`false` 即使在断点以下也会重新启用\n内联侧边栏。",
             "mainprops": "",
-            "mobileopen": "",
+            "mobileopen": "移动端抽屉的受控打开状态。可与\n`v-model:mobileOpen` 绑定。\n\n该状态与控制桌面端侧边栏的 `open` 状态相互独立：在移动端，\n内联侧边栏会被抽屉取代，因此这两个状态绝不会\n同时生效。",
             "mobileprops": "",
             "mobilesidebarwidth": "移动视图中边栏的宽度。（px）",
             "open": "布局的受控打开状态。可与 `v-model` 绑定。",
@@ -5091,7 +5091,7 @@
             "default": "默认插槽的自定义内容。",
             "footer": "页脚槽的自定义内容。",
             "header": "标题槽的自定义内容。",
-            "sidebar": "",
+            "sidebar": "侧边栏插槽的自定义内容。\n\n`collapsed` 是用于渲染的模式感知状态：在移动端为 `false`，\n此时侧边栏为抽屉式设计，始终显示展开的导航，因此\n在桌面端选择的折叠状态不会随内容进入抽屉。\n`open` 仍表示桌面端状态。",
             "tab": "标签槽的自定义内容。"
           },
           "slots": "LayoutCompact 组件的插槽。"
@@ -5122,7 +5122,7 @@
         },
         "layoutrootemits": {
           "callables": {
-            "update_mobileopen": "",
+            "update_mobileopen": "在移动端抽屉栏的打开状态发生变化时触发。",
             "update_open": "当打开状态发生变化时发出。"
           },
           "emits": "LayoutRoot 组件的事件。"
@@ -5132,7 +5132,7 @@
             "basezindex": "布局的基准 z-index。侧边栏、页眉、标签页、页脚及其固定版本的 z-index 将基于此值进行计算。",
             "collapsedsidebarwidth": "侧边栏折叠时的宽度。（px）",
             "collapsible": "布局的可折叠状态。",
-            "defaultmobileopen": "",
+            "defaultmobileopen": "移动抽屉在初始渲染时的展开状态。",
             "defaultopen": "最初呈现布局时的打开状态。\n\n在不需要控制其打开状态时使用。",
             "fixedfooter": "页脚是否固定",
             "fixedtop": "当屏幕方向为纵向时，页眉和标签栏是否固定在布局顶部。如果为 true，则当屏幕方向为纵向时，页眉和标签栏将固定在布局顶部；当屏幕方向为横向时，它们将随内容一起滚动。",
@@ -5141,8 +5141,8 @@
             "fullcontent": "内容是否占满版面高度（包括）。",
             "headerheight": "标题的高度。像素",
             "headervisible": "是否显示页眉。",
-            "ismobile": "",
-            "mobileopen": "",
+            "ismobile": "当前是否处于移动视图布局。\n\n解析顺序：先检查此属性，然后根据通过\n`provideViewportContext` 提供的宿主视口决策（模拟视口——设备帧、嵌入式\nshell）），最后是 `useMediaQuery(mobileViewportQuery)` —— 即\n样式化桌面侧边栏被隐藏时的同一断点。传递一个显式的布尔值可强制\n模式（例如服务器端检测）；`false` 即使在断点以下也会重新启用\n内联侧边栏。",
+            "mobileopen": "移动端抽屉的受控打开状态。可与\n`v-model:mobileOpen` 绑定。\n\n该状态与控制桌面端侧边栏的 `open` 状态相互独立：在移动端，\n内联侧边栏会被抽屉取代，因此这两个状态绝不会\n同时生效。",
             "mobilesidebarwidth": "移动视图中边栏的宽度。（px）",
             "open": "布局的受控打开状态。可与 `v-model` 绑定。",
             "orientation": "组件的定位。",
@@ -10240,7 +10240,7 @@
             "tabdragstart": "在开始拖动选项卡时触发。",
             "tabpin": "在固定或取消固定标签页时触发。",
             "tabselectcontextmenu": "当选中“制表符”上下文菜单项时触发。",
-            "update_mobileopen": "",
+            "update_mobileopen": "在移动端抽屉栏的打开状态发生变化时触发。",
             "update_modelvalue": "当活动菜单值发生变化时触发。",
             "update_open": "当侧边栏的展开状态发生变化时触发。",
             "update_tabs": "当标签页集合发生变化时触发（关闭、固定、拖动重新排序）。",
@@ -10285,17 +10285,17 @@
             "breadcrumbui": "针对 `SBreadcrumb` 的按槽类重写。",
             "breadcrumbvisible": "当导航路径不为空时，是否渲染面包屑区域。",
             "class": "应用于 shell 根元素的额外类名。",
-            "defaultmobileopen": "",
+            "defaultmobileopen": "移动抽屉在初始渲染时的展开状态。",
             "defaultopen": "侧边栏在初次渲染时的展开状态。",
             "expandstrategy": "渲染菜单的展开策略。\n\n- `keep`：保持当前展开状态；手动展开或折叠的菜单不会因激活其他菜单而受影响。选中菜单的可折叠父菜单会在挂载时以及选中菜单从外部发生变化时（例如由外部路由驱动）展开，从而保持其可见性。\n- `selected`：仅展开当前选中的菜单及其所有父菜单；当选中菜单发生变化时，未选中的菜单将被折叠。\n\nShell 的默认行为是 `selected`：导航反映当前路由，\n因此一条路径保持展开状态，且活动条目会保留其位置，而非\n与会话中较早打开的分支相互竞争。\n\n适用于单个 `STreeMenu`（`sidebar` 模式）以及 `SSplitNav` 的嵌套垂直\n窗格（拆分模式）。`top` 模式渲染 `STreeNav`，该组件\n没有展开策略。 `menuProps.tree` / `menuProps.split` 的优先级\n高于此属性。",
-            "ismobile": "",
+            "ismobile": "外壳是否处于移动视图模式。\n\n若省略该参数，则将其作为未设置值传递，由 `SLayout` 解析模式：即\n主机通过 `provideViewportContext` 发布的视口，随后\n`useMediaQuery('(max-width: 767.9px)')`。传入显式的布尔值可强制\n设置该模式，例如用于服务器端检测。",
             "items": "由 shell 渲染的菜单树。",
             "layoutprops": "转发给 `SLayout` 的属性。\n\nShell 拥有的选项（`open`、`orientation`、`sidebarVisible`、`isMobile`、\n`pxToRem`）由 `mode` 衍生而来；`sidebarWidth` 和\n`collapsedSidebarWidth` 默认采用该模式所需的宽度——仅当菜单面板无需对齐时才覆盖\n这些值。",
             "layoutui": "针对内部 `SLayout` 的按插槽类重写。优先于\nshell 的 `layout*` UI 插槽。",
             "logoplacement": "品牌区域的位置。\n\n`auto` 遵循当前模式；`sidebar` 和 `sidebar-bottom` 需要一种模式，其\n侧边栏始终作为独立的一列显示——请参阅 `AppShellLogoPlacement` 以了解\n支持底部放置的模式。",
             "menuprops": "转发至渲染菜单的属性。",
             "menuui": "按槽位覆盖的类将转发至渲染后的菜单。",
-            "mobileopen": "",
+            "mobileopen": "移动端抽屉的受控打开状态。可通过 `v-model:mobileOpen` 进行绑定。\n\nShell 通过 `SLayout` 渲染抽屉，该抽屉是\n桌面侧边栏的移动端对应组件，并拥有独立的状态。",
             "mode": "Shell 骨架，同时控制布局区域和菜单形状。",
             "modelvalue": "受控的活动菜单值。可通过 `v-model` 进行绑定。\n\n活动菜单仅受控：壳层在渲染前会根据该值推导出侧边栏的几何尺寸\n和面包屑导航，因此它会读取给定的值\n，而非保留自己的值。",
             "open": "侧边栏的可控展开状态。可通过 `v-model:open` 进行绑定。",
@@ -12740,7 +12740,7 @@
       "packages_ui_src_components_layout_types": {
         "layoutemits": {
           "callables": {
-            "update_mobileopen": "",
+            "update_mobileopen": "在移动端抽屉栏的打开状态发生变化时触发。",
             "update_open": "在 open 状态发生变化时触发。"
           },
           "emits": "Layout 组件的事件。"
@@ -12752,7 +12752,7 @@
             "collapsedsidebarwidth": "侧边栏折叠时的宽度。（px）",
             "collapsible": "布局的可折叠状态。",
             "contentprops": "",
-            "defaultmobileopen": "",
+            "defaultmobileopen": "移动抽屉在初始渲染时的展开状态。",
             "defaultopen": "布局在初始渲染时的展开状态。\n\n当您无需控制其展开状态时使用。",
             "fixedfooter": "页脚是否固定",
             "fixedtop": "当屏幕方向为纵向时，页眉和标签栏是否固定在布局顶部。如果为 true，则当屏幕方向为纵向时，页眉和标签栏将固定在布局顶部；当屏幕方向为横向时，它们将随内容一起滚动。",
@@ -12763,9 +12763,9 @@
             "headerheight": "页眉的高度。（px）",
             "headerprops": "",
             "headervisible": "是否显示页眉。",
-            "ismobile": "",
+            "ismobile": "当前是否处于移动视图布局。\n\n解析顺序：先检查此属性，然后根据通过\n`provideViewportContext` 提供的宿主视口决策（模拟视口——设备帧、嵌入式\nshell）），最后是 `useMediaQuery(mobileViewportQuery)` —— 即\n样式化桌面侧边栏被隐藏时的同一断点。传递一个显式的布尔值可强制\n模式（例如服务器端检测）；`false` 即使在断点以下也会重新启用\n内联侧边栏。",
             "mainprops": "",
-            "mobileopen": "",
+            "mobileopen": "移动端抽屉的受控打开状态。可与\n`v-model:mobileOpen` 绑定。\n\n该状态与控制桌面端侧边栏的 `open` 状态相互独立：在移动端，\n内联侧边栏会被抽屉取代，因此这两个状态绝不会\n同时生效。",
             "mobileprops": "",
             "mobilesidebarwidth": "移动视图中侧边栏的宽度。（px）",
             "open": "布局的受控展开状态。可通过 `v-model` 进行绑定。",
@@ -12794,7 +12794,7 @@
             "default": "默认插槽的自定义内容。",
             "footer": "页脚位置的自定义内容。",
             "header": "用于 header 插槽的自定义内容。",
-            "sidebar": "",
+            "sidebar": "侧边栏插槽的自定义内容。\n\n`collapsed` 是用于渲染的模式感知状态：在移动端为 `false`，\n此时侧边栏为抽屉式设计，始终显示展开的导航，因此\n在桌面端选择的折叠状态不会随内容进入抽屉。\n`open` 仍表示桌面端状态。",
             "tab": "标签页槽位的自定义内容。"
           },
           "slots": "Layout 组件的插槽。"
@@ -14509,10 +14509,10 @@
         },
         "treemenustyleditemprops": {
           "members": {
-            "as": "",
-            "aschild": "",
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染元素替换为作为子元素传递的元素，并合并两者的属性与行为。",
             "class": "应用于根元素的额外类名。",
-            "disabled": "",
+            "disabled": "该行是否处于禁用状态。\n\n该行包含 `data-disabled`（即该示例中禁用样式的依据）\n以及 `aria-disabled`。原生 `button` 行还会额外获得 `disabled`\n属性；其他所有元素仅声明该状态，因此嵌套内容\n（例如行内的触发器）将决定其如何实现自我禁用。",
             "size": "组件的视觉尺寸。",
             "ui": "针对该组件的按槽位类重写。"
           },
@@ -14520,11 +14520,11 @@
         },
         "treemenustyleditemslots": {
           "callables": {
-            "default": ""
+            "default": "该行内容。"
           },
-          "slots": ""
+          "slots": "TreeMenuStyledItem 组件的插槽。"
         },
-        "treemenustyleditemuislot": ""
+        "treemenustyleditemuislot": "TreeMenuStyledItem 组件可用的 UI 插槽。"
       },
       "packages_ui_src_components_tree_nav_types": {
         "treenavemits": {

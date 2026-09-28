@@ -1,19 +1,21 @@
 {
-  "generatedAt": "2026-09-28T08:58:26.424Z",
+  "generatedAt": "2026-09-28T14:35:37.980Z",
   "schemaVersion": 1,
   "releases": [
     {
-      "version": "v0.50.0-beta.5",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.4...v0.50.0-beta.5",
-      "date": "2026-09-27",
-      "entryCount": 3,
-      "componentCount": 0,
-      "components": [],
+      "version": "v0.50.0-beta.6",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.5...v0.50.0-beta.6",
+      "date": "2026-09-28",
+      "entryCount": 15,
+      "componentCount": 5,
+      "components": ["layout", "app-shell", "tree-menu", "anchor", "menubar"],
       "newComponents": [],
       "typeCounts": {
-        "fix": 1,
-        "docs": 1,
-        "chore": 1
+        "feature": 4,
+        "fix": 5,
+        "refactor": 1,
+        "docs": 3,
+        "style": 2
       },
       "notes": [
         {
@@ -29,6 +31,188 @@
           "docPath": "ui/migration/v0.50.0-date"
         }
       ],
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "app-shell",
+          "summary": "align the sidebar brand with the tree menu rows",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.98bd3",
+          "commitHash": "98bd3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/98bd3e8fa",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["app-shell"]
+        },
+        {
+          "type": "feature",
+          "scope": "layout",
+          "summary": "let a host viewport decide isMobile and expose the drawer state",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.6f9d8",
+          "commitHash": "6f9d8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6f9d890bb",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["layout"]
+        },
+        {
+          "type": "feature",
+          "scope": "tree-menu",
+          "summary": "make the styled item polymorphic and state-aware",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.83a4f",
+          "commitHash": "83a4f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/83a4f380d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["tree-menu"]
+        },
+        {
+          "type": "fix",
+          "scope": "app-shell",
+          "summary": "center the folded brand mark instead of pushing it right",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.2d1b5",
+          "commitHash": "2d1b5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2d1b55fc4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["app-shell"]
+        },
+        {
+          "type": "fix",
+          "scope": "layout",
+          "summary": "follow the viewport and drop the sidebar gaps on mobile",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.da8ef",
+          "commitHash": "da8ef",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/da8efaa11",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["layout"]
+        },
+        {
+          "type": "fix",
+          "scope": "layout",
+          "summary": "keep the drawer navigation expanded on mobile",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.989ca",
+          "commitHash": "989ca",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/989ca79ea",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["layout"]
+        },
+        {
+          "type": "refactor",
+          "scope": "app-shell",
+          "summary": "render the brand row as a non-interactive menu row",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.88af5",
+          "commitHash": "88af5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/88af52fee",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["app-shell"]
+        },
+        {
+          "type": "docs",
+          "scope": "app-shell",
+          "summary": "sync the generated skill with the drawer FAQ",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.7a2dc",
+          "commitHash": "7a2dc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7a2dcce5e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["app-shell"]
+        },
+        {
+          "type": "docs",
+          "scope": "layout",
+          "summary": "align surface-layering assertions with the current recipe",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.1ab80",
+          "commitHash": "1ab80",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1ab804cd1",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["layout"]
+        },
+        {
+          "type": "style",
+          "scope": "anchor",
+          "summary": "update focus-visible ring styles for link variants",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.56bdb",
+          "commitHash": "56bdb",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/56bdba101",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["anchor"]
+        },
+        {
+          "type": "style",
+          "scope": "menubar",
+          "summary": "correct syntax for open state styles in trigger",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.74349",
+          "commitHash": "74349",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/743498d95",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["menubar"]
+        },
+        {
+          "type": "feature",
+          "scope": "playground",
+          "summary": "drive the preview viewport from the device switcher",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.e463b",
+          "commitHash": "e463b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e463bb5f0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "changelog",
+          "summary": "attach release notes to the newest release of their line",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.8caa8",
+          "commitHash": "8caa8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8caa8c32e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "theme",
+          "summary": "lift the secondary fill one rung in light mode",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.7c9c8",
+          "commitHash": "7c9c8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7c9c881e1",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "ui",
+          "summary": "extract every recipe before the e2e stylesheet loads",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.81dd2",
+          "commitHash": "81dd2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/81dd2c550",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
+    {
+      "version": "v0.50.0-beta.5",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.4...v0.50.0-beta.5",
+      "date": "2026-09-27",
+      "entryCount": 3,
+      "componentCount": 0,
+      "components": [],
+      "newComponents": [],
+      "typeCounts": {
+        "fix": 1,
+        "docs": 1,
+        "chore": 1
+      },
+      "notes": [],
       "entries": [
         {
           "type": "fix",

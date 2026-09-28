@@ -1,5 +1,48 @@
 # Changelog
 
+## [v0.50.0-beta.6](https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.5...v0.50.0-beta.6) (2026-09-28)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **app-shell**: align the sidebar brand with the tree menu rows &nbsp;-&nbsp; by @soybeanjs [<samp>(98bd3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/98bd3e8fa)
+- **layout**: let a host viewport decide isMobile and expose the drawer state &nbsp;-&nbsp; by @soybeanjs [<samp>(6f9d8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6f9d890bb)
+- **playground**: drive the preview viewport from the device switcher &nbsp;-&nbsp; by @soybeanjs [<samp>(e463b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e463bb5f0)
+- **tree-menu**: make the styled item polymorphic and state-aware &nbsp;-&nbsp; by @soybeanjs [<samp>(83a4f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/83a4f380d)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **app-shell**:
+  - center the folded brand mark instead of pushing it right &nbsp;-&nbsp; by @soybeanjs [<samp>(2d1b5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2d1b55fc4)
+- **changelog**:
+  - attach release notes to the newest release of their line &nbsp;-&nbsp; by @soybeanjs [<samp>(8caa8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8caa8c32e)
+- **layout**:
+  - follow the viewport and drop the sidebar gaps on mobile &nbsp;-&nbsp; by @soybeanjs [<samp>(da8ef)</samp>](https://github.com/soybeanjs/soybean-ui/commit/da8efaa11)
+  - keep the drawer navigation expanded on mobile &nbsp;-&nbsp; by @soybeanjs [<samp>(989ca)</samp>](https://github.com/soybeanjs/soybean-ui/commit/989ca79ea)
+- **theme**:
+  - lift the secondary fill one rung in light mode &nbsp;-&nbsp; by @soybeanjs [<samp>(7c9c8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7c9c881e1)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **app-shell**: render the brand row as a non-interactive menu row &nbsp;-&nbsp; by @soybeanjs [<samp>(88af5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/88af52fee)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **app-shell**: sync the generated skill with the drawer FAQ &nbsp;-&nbsp; by @soybeanjs [<samp>(7a2dc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7a2dcce5e)
+
+### &nbsp;&nbsp;&nbsp;✅ Tests
+
+- **layout**: align surface-layering assertions with the current recipe &nbsp;-&nbsp; by @soybeanjs [<samp>(1ab80)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1ab804cd1)
+- **ui**: extract every recipe before the e2e stylesheet loads &nbsp;-&nbsp; by @soybeanjs [<samp>(81dd2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/81dd2c550)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **anchor**: update focus-visible ring styles for link variants &nbsp;-&nbsp; by @soybeanjs [<samp>(56bdb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/56bdba101)
+- **menubar**: correct syntax for open state styles in trigger &nbsp;-&nbsp; by @soybeanjs [<samp>(74349)</samp>](https://github.com/soybeanjs/soybean-ui/commit/743498d95)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.50.0-beta.5](https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.4...v0.50.0-beta.5) (2026-09-27)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes

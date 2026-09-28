@@ -2535,6 +2535,23 @@
               "94504": "update deps",
               "20a8b": "remove completed v0.50 and rebrand docs and fold admission ledger into the skill",
               "97a9d": "adjust root slot to prevent overflow in theme customizer"
+            },
+            "6": {
+              "74349": "correct syntax for open state styles in trigger",
+              "1ab80": "align surface-layering assertions with the current recipe",
+              "2d1b5": "center the folded brand mark instead of pushing it right",
+              "56bdb": "update focus-visible ring styles for link variants",
+              "6f9d8": "let a host viewport decide isMobile and expose the drawer state",
+              "7a2dc": "sync the generated skill with the drawer FAQ",
+              "7c9c8": "lift the secondary fill one rung in light mode",
+              "81dd2": "extract every recipe before the e2e stylesheet loads",
+              "83a4f": "make the styled item polymorphic and state-aware",
+              "88af5": "render the brand row as a non-interactive menu row",
+              "8caa8": "attach release notes to the newest release of their line",
+              "989ca": "keep the drawer navigation expanded on mobile",
+              "98bd3": "align the sidebar brand with the tree menu rows",
+              "da8ef": "follow the viewport and drop the sidebar gaps on mobile",
+              "e463b": "drive the preview viewport from the device switcher"
             }
           }
         }

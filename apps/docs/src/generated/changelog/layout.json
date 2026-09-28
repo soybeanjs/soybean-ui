@@ -1,8 +1,55 @@
 {
   "component": "layout",
-  "generatedAt": "2026-09-27T10:47:40.993Z",
+  "generatedAt": "2026-09-28T14:35:37.980Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.50.0-beta.6",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.5...v0.50.0-beta.6",
+      "date": "2026-09-28",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "layout",
+          "summary": "let a host viewport decide isMobile and expose the drawer state",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.6f9d8",
+          "commitHash": "6f9d8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6f9d890bb",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "layout",
+          "summary": "follow the viewport and drop the sidebar gaps on mobile",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.da8ef",
+          "commitHash": "da8ef",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/da8efaa11",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "layout",
+          "summary": "keep the drawer navigation expanded on mobile",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.989ca",
+          "commitHash": "989ca",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/989ca79ea",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "docs",
+          "scope": "layout",
+          "summary": "align surface-layering assertions with the current recipe",
+          "summaryKey": "changelog.generated.v0.50.0-beta.6.1ab80",
+          "commitHash": "1ab80",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1ab804cd1",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.50.0-beta.4",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.3...v0.50.0-beta.4",
