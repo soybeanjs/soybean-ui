@@ -611,11 +611,18 @@ describe('SAppShell (e2e)', () => {
 
       const collapsedRow = element('[data-soybean-app-shell-logo-mark] button').getBoundingClientRect();
       const collapsedItem = element('[data-soybean-tree-menu-button]').getBoundingClientRect();
+      const collapsedMark = element('[data-shell-mark]').getBoundingClientRect();
 
       // The folded state is the one that used to center the mark in the narrow
       // sidebar: the row now keeps the menu's inset and icon width instead.
       expect(Math.abs(collapsedRow.left - collapsedItem.left)).toBeLessThanOrEqual(1);
       expect(Math.abs(collapsedRow.width - collapsedItem.width)).toBeLessThanOrEqual(1);
+
+      // The folded row is icon-width and keeps its own padding, so a mark wider
+      // than that content box runs to the row's trailing edge when start-aligned
+      // and reads as shifted right. The row centers it on the menu icons' axis.
+      expect(Math.abs(center(collapsedMark) - center(collapsedRow))).toBeLessThanOrEqual(1);
+      expect(Math.abs(center(collapsedMark) - center(collapsedItem))).toBeLessThanOrEqual(1);
       expect(query('[data-shell-title]')).toBeNull();
 
       collapsed.unmount();

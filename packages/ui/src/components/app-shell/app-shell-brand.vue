@@ -93,10 +93,17 @@ const showTitle = computed(() => Boolean(slots.title) && props.layout.titleVisib
     <!--
       A single-column sidebar: the brand is one menu row — mark and title in it —
       mirroring the items right below.
+
+      Once folded the row is the item's icon width, and the row's own padding
+      leaves a content box narrower than a brand mark usually is: start-aligned, a
+      larger mark runs to the row's trailing edge and reads as pushed to the right.
+      The row is icon-only there (the title is hidden below the fold), so centering
+      puts the mark on the same axis as the folded menu icons.
     -->
     <STreeMenuStyledItem
       v-if="inSidebar && !aligned"
       :size="size"
+      :ui="{ button: 'group-data-[state=collapsed]:justify-center' }"
       data-soybean-app-shell-logo-mark
       class="w-full min-w-0"
     >
