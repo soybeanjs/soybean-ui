@@ -7,7 +7,7 @@ export const menubarVariants = scv({
     trigger: [
       `flex cursor-pointer select-none items-center rounded-sm font-medium outline-none`,
       `focus:(bg-accent text-accent-foreground)`,
-      `data-[state=open]:(bg-accent text-accent-foreground)`
+      `data-[state=open]:bg-accent data-[state=open]:text-accent-foreground`
     ]
   },
   variants: {
