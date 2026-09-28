@@ -1289,7 +1289,7 @@ describe('SAppShell', () => {
       wrapper.unmount();
     });
 
-    it('centers the mark in a collapsed single-pane sidebar', () => {
+    it('folds the single-column brand row together with the menu', () => {
       const wrapper = mount(SAppShell, {
         props: { items, defaultOpen: false },
         slots: brandSlots,
@@ -1298,12 +1298,41 @@ describe('SAppShell', () => {
 
       const region = wrapper.find('[data-soybean-app-shell-logo]');
 
+      // The row mirrors a tree-menu item, so it folds to the item's icon width
+      // instead of centering an unstyled mark in the folded column.
       expect(region.attributes('data-aligned')).toBeUndefined();
-      expect(region.attributes('data-centered')).toBe('true');
+      expect(region.attributes('data-inset')).toBe('menu');
+      expect(region.attributes('data-state')).toBe('collapsed');
       expect(wrapper.find('[data-soybean-app-shell-logo-mark]').attributes('style')).toBeUndefined();
       expect(wrapper.find('[data-soybean-app-shell-logo-title]').exists()).toBe(false);
 
       wrapper.unmount();
+    });
+
+    it('keeps its own row shape outside a single-column sidebar', () => {
+      // A rail sidebar aligns the mark to the rail column, and the header brand is
+      // a header row: neither mirrors a menu row.
+      const railMode = mount(SAppShell, {
+        props: { items, mode: 'dual-vertical', modelValue: 'soybean-ui' },
+        slots: brandSlots,
+        attachTo: document.body
+      });
+
+      expect(railMode.find('[data-soybean-app-shell-logo]').attributes('data-inset')).toBeUndefined();
+      expect(railMode.find('[data-soybean-app-shell-logo] button').exists()).toBe(true);
+
+      railMode.unmount();
+
+      const header = mount(SAppShell, {
+        props: { items, logoPlacement: 'header' },
+        slots: brandSlots,
+        attachTo: document.body
+      });
+
+      expect(header.find('[data-soybean-app-shell-logo]').attributes('data-inset')).toBeUndefined();
+      expect(header.find('[data-soybean-app-shell-logo] button').exists()).toBe(false);
+
+      header.unmount();
     });
 
     it('drops the title while the sidebar has no pane column', () => {

@@ -20,8 +20,11 @@ export const appShellVariants = scv({
       // Aligned to the sidebar's columns: the cells carry the width and the
       // centering, so the row contributes no gap or padding of its own.
       'data-[aligned=true]:gap-0 data-[aligned=true]:px-0',
-      // A collapsed sidebar without a rail keeps room for the mark alone.
-      'data-[centered=true]:justify-center data-[centered=true]:px-0'
+      // A single-column sidebar brand mirrors a menu row: it takes the tree menu
+      // root's own inset (`data-inset=menu`, sized per variant below) and lets the
+      // mirrored item carry its padding, so the mark lands in the menu's icon
+      // column — expanded, and once collapsed on the item's icon-width fold.
+      'data-[aligned=true]:gap-0 data-[aligned=true]:px-0'
     ],
     logoMark: [
       'flex h-full shrink-0 items-center justify-center',
@@ -64,23 +67,32 @@ export const appShellVariants = scv({
   },
   variants: {
     size: {
+      // `logo` carries the mirrored menu row's inset: it equals the matching
+      // `treeMenuVariants` root padding for the size, which is what puts the brand
+      // mark in the menu's icon column. Keep the two in step.
       xs: {
-        root: 'text-2xs'
+        root: 'text-2xs',
+        logo: 'data-[inset=menu]:data-[placement=sidebar]:px-1.5 data-[inset=menu]:data-[placement=sidebar-bottom]:px-1.5'
       },
       sm: {
-        root: 'text-xs'
+        root: 'text-xs',
+        logo: 'data-[inset=menu]:data-[placement=sidebar]:px-1.75 data-[inset=menu]:data-[placement=sidebar-bottom]:px-1.75'
       },
       md: {
-        root: 'text-sm'
+        root: 'text-sm',
+        logo: 'data-[inset=menu]:data-[placement=sidebar]:px-2 data-[inset=menu]:data-[placement=sidebar-bottom]:px-2'
       },
       lg: {
-        root: 'text-base'
+        root: 'text-base',
+        logo: 'data-[inset=menu]:data-[placement=sidebar]:px-2.25 data-[inset=menu]:data-[placement=sidebar-bottom]:px-2.25'
       },
       xl: {
-        root: 'text-lg'
+        root: 'text-lg',
+        logo: 'data-[inset=menu]:data-[placement=sidebar]:px-2.5 data-[inset=menu]:data-[placement=sidebar-bottom]:px-2.5'
       },
       '2xl': {
-        root: 'text-xl'
+        root: 'text-xl',
+        logo: 'data-[inset=menu]:data-[placement=sidebar]:px-3 data-[inset=menu]:data-[placement=sidebar-bottom]:px-3'
       }
     }
   },

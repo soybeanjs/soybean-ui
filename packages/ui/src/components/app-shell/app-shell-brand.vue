@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { ClassValue } from '@soybeanjs/headless/types';
+import type { ThemeSize } from '@/theme';
+import STreeMenuStyledItem from '../tree-menu/tree-menu-styled-item.vue';
 import type { AppShellBrandLayout } from './shared';
 import type { AppShellBrandSlotProps, AppShellLogoPlacementResolved } from './types';
 
@@ -15,6 +17,8 @@ interface Props {
   collapsed: boolean;
   /** Cell geometry of the current mode and sidebar state. */
   layout: AppShellBrandLayout;
+  /** Visual size, shared with the menu the brand mirrors. */
+  size: ThemeSize;
   /** Class of the region. */
   regionClass: ClassValue;
   /** Class of the mark cell. */
@@ -51,13 +55,23 @@ const slotProps = computed<AppShellBrandSlotProps>(() => ({
 const aligned = computed(() => props.layout.markWidth !== undefined);
 
 /**
- * Whether the row centers its content.
+ * A brand rendered in the sidebar.
  *
- * A collapsed sidebar without a rail has room for the mark alone, and takes no
- * padding: centering it is what keeps the mark in the middle of the shrunken
- * column instead of leaving it against the start edge.
+ * It sits directly above (or below) the menu, so it mirrors a tree-menu item:
+ * same row height, padding and folded width. That is what keeps the mark in the
+ * menu's icon column — expanded, and above all once the sidebar collapses and the
+ * menu items fold to their icon width. A header brand is a header row, not a menu
+ * row, so it keeps its own shape.
  */
-const centered = computed(() => props.collapsed && !aligned.value);
+const inSidebar = computed(() => props.placement !== 'header');
+
+/**
+ * Collapsed state the mirrored item folds on.
+ *
+ * The rail keeps its column while the sidebar folds — the mark stays on it — so
+ * only a single-column sidebar folds its brand row together with the menu.
+ */
+const itemState = computed(() => (props.collapsed && !aligned.value ? 'collapsed' : 'expanded'));
 
 const markStyle = computed(() => toCellStyle(props.layout.markWidth));
 
@@ -68,23 +82,57 @@ const showTitle = computed(() => Boolean(slots.title) && props.layout.titleVisib
 
 <template>
   <div
-    :class="regionClass"
+    :class="[regionClass, inSidebar ? 'group' : undefined]"
     data-soybean-app-shell-logo
     :data-placement="placement"
     :data-aligned="aligned ? 'true' : undefined"
-    :data-centered="centered ? 'true' : undefined"
     :data-collapsed="collapsed ? 'true' : undefined"
+    :data-inset="inSidebar && !aligned ? 'menu' : undefined"
+    :data-state="inSidebar ? itemState : undefined"
   >
-    <div
-      :class="markClass"
-      :style="markStyle"
-      :data-divider="aligned ? 'true' : undefined"
+    <!--
+      A single-column sidebar: the brand is one menu row — mark and title in it —
+      mirroring the items right below.
+    -->
+    <STreeMenuStyledItem
+      v-if="inSidebar && !aligned"
+      :size="size"
       data-soybean-app-shell-logo-mark
+      class="w-full min-w-0"
     >
       <slot name="logo" v-bind="slotProps" />
-    </div>
-    <div v-if="showTitle" :class="titleClass" :style="titleStyle" data-soybean-app-shell-logo-title>
-      <slot name="title" v-bind="slotProps" />
-    </div>
+      <span v-if="showTitle" class="truncate" data-soybean-app-shell-logo-title>
+        <slot name="title" v-bind="slotProps" />
+      </span>
+    </STreeMenuStyledItem>
+
+    <!--
+      A rail sidebar: the mark keeps the rail column and the title the pane one, so
+      the divider below the brand continues through the mark cell.
+    -->
+    <template v-else-if="inSidebar">
+      <div
+        :class="markClass"
+        :style="markStyle"
+        :data-divider="aligned ? 'true' : undefined"
+        data-soybean-app-shell-logo-mark
+      >
+        <STreeMenuStyledItem :size="size" :ui="{ button: 'justify-center' }" class="w-full">
+          <slot name="logo" v-bind="slotProps" />
+        </STreeMenuStyledItem>
+      </div>
+      <div v-if="showTitle" :class="titleClass" :style="titleStyle" data-soybean-app-shell-logo-title>
+        <slot name="title" v-bind="slotProps" />
+      </div>
+    </template>
+
+    <template v-else>
+      <div :class="markClass" :style="markStyle" data-soybean-app-shell-logo-mark>
+        <slot name="logo" v-bind="slotProps" />
+      </div>
+      <div v-if="showTitle" :class="titleClass" :style="titleStyle" data-soybean-app-shell-logo-title>
+        <slot name="title" v-bind="slotProps" />
+      </div>
+    </template>
   </div>
 </template>

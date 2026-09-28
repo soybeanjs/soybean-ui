@@ -584,20 +584,64 @@ describe('SAppShell (e2e)', () => {
       unmount();
     });
 
-    it('centers the mark in a collapsed single-pane sidebar', async () => {
-      const { unmount } = await renderComponent(createHarness({ items, defaultOpen: false }, brandSlots));
+    /**
+     * A single-column sidebar brand mirrors the menu: its row is a tree-menu item
+     * row, so the box — and with it the mark's column — matches the item right
+     * below, expanded and once the sidebar folds to the item's icon width.
+     */
+    it('aligns the single-column brand row with the menu items', async () => {
+      const expanded = await renderComponent(createHarness({ items }, brandSlots));
 
-      // The collapsed tree shows icons only, so the brand is the visible anchor.
       await expect.element(page.getByText('Mark')).toBeVisible();
       await waitForStableGeometry();
 
-      const sidebar = element('[data-soybean-app-shell-sidebar]').getBoundingClientRect();
-      const mark = element('[data-shell-mark]').getBoundingClientRect();
+      const expandedRow = element('[data-soybean-app-shell-logo-mark] button').getBoundingClientRect();
+      const expandedItem = element('[data-soybean-tree-menu-button]').getBoundingClientRect();
 
-      expect(Math.abs(center(mark) - center(sidebar))).toBeLessThanOrEqual(1);
+      expect(Math.abs(expandedRow.left - expandedItem.left)).toBeLessThanOrEqual(1);
+      expect(Math.abs(expandedRow.width - expandedItem.width)).toBeLessThanOrEqual(1);
+      expect(Math.abs(expandedRow.height - expandedItem.height)).toBeLessThanOrEqual(1);
+
+      expanded.unmount();
+
+      const collapsed = await renderComponent(createHarness({ items, defaultOpen: false }, brandSlots));
+
+      await expect.element(page.getByText('Mark')).toBeVisible();
+      await waitForStableGeometry();
+
+      const collapsedRow = element('[data-soybean-app-shell-logo-mark] button').getBoundingClientRect();
+      const collapsedItem = element('[data-soybean-tree-menu-button]').getBoundingClientRect();
+
+      // The folded state is the one that used to center the mark in the narrow
+      // sidebar: the row now keeps the menu's inset and icon width instead.
+      expect(Math.abs(collapsedRow.left - collapsedItem.left)).toBeLessThanOrEqual(1);
+      expect(Math.abs(collapsedRow.width - collapsedItem.width)).toBeLessThanOrEqual(1);
       expect(query('[data-shell-title]')).toBeNull();
 
-      unmount();
+      collapsed.unmount();
+    });
+
+    /**
+     * The row inset is a per-size ladder that has to stay in step with the tree
+     * menu root's own padding, or the mark drifts out of the icon column. `xs` and
+     * `lg` are the two ends where the layout spacing scale and the menu's padding
+     * steps diverge.
+     */
+    it('keeps the brand row inset in step with the menu across sizes', async () => {
+      for (const size of ['xs', 'lg'] as const) {
+        const { unmount } = await renderComponent(createHarness({ items, size }, brandSlots));
+
+        await expect.element(page.getByText('Mark')).toBeVisible();
+        await waitForStableGeometry();
+
+        const brandRow = element('[data-soybean-app-shell-logo-mark] button').getBoundingClientRect();
+        const menuRow = element('[data-soybean-tree-menu-button]').getBoundingClientRect();
+
+        expect(Math.abs(brandRow.left - menuRow.left)).toBeLessThanOrEqual(1);
+        expect(Math.abs(brandRow.width - menuRow.width)).toBeLessThanOrEqual(1);
+
+        unmount();
+      }
     });
 
     it('pins the bottom brand to the sidebar bottom and the top one to its top', async () => {
