@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { nextTick } from 'vue';
+import { h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import SAppShell from '@/components/app-shell/app-shell.vue';
 import { appShellSkeletons, splitNavCollapsedPaneWidth, toMenuOptions } from '@/components/app-shell/shared';
@@ -1442,6 +1442,59 @@ describe('SAppShell', () => {
       await nextTick();
 
       expect(document.querySelector('[data-soybean-layout-mobile]')).not.toBeNull();
+
+      wrapper.unmount();
+    });
+
+    /**
+     * The drawer always shows the expanded navigation: a collapse is a desktop
+     * affordance, so picking it on desktop and then switching to mobile must not
+     * fold the brand or the menu inside the drawer.
+     */
+    it('renders the drawer expanded after a collapse picked on desktop', async () => {
+      const menuSlotProps: { collapsed?: boolean }[] = [];
+      const wrapper = mount(SAppShell, {
+        props: { items, modelValue: 'overview', isMobile: true, mobileOpen: true, open: false },
+        slots: {
+          logo: '<span>Logo</span>',
+          title: '<span>Soybean UI</span>',
+          menu: (slotProps: { collapsed?: boolean }) => {
+            menuSlotProps.push({ collapsed: slotProps.collapsed });
+
+            return h('div', { 'data-menu-slot': '' });
+          }
+        },
+        attachTo: document.body
+      });
+
+      await nextTick();
+      await nextTick();
+
+      const drawer = document.querySelector('[data-soybean-layout-mobile]');
+      const logo = drawer?.querySelector('[data-soybean-app-shell-logo]');
+
+      expect(logo).not.toBeNull();
+      expect(logo?.hasAttribute('data-collapsed')).toBe(false);
+      expect(drawer?.querySelector('[data-soybean-app-shell-logo-title]')).not.toBeNull();
+      expect(menuSlotProps.at(-1)?.collapsed).toBe(false);
+
+      wrapper.unmount();
+    });
+
+    it('keeps the header title while the sidebar is collapsed', async () => {
+      const wrapper = mount(SAppShell, {
+        props: { items, modelValue: 'overview', open: false, logoPlacement: 'header' },
+        slots: { logo: '<span>Logo</span>', title: '<span>Soybean UI</span>' },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      const logo = document.querySelector('[data-soybean-app-shell-logo][data-placement="header"]');
+
+      expect(logo).not.toBeNull();
+      expect(logo?.hasAttribute('data-collapsed')).toBe(false);
+      expect(logo?.querySelector('[data-soybean-app-shell-logo-title]')).not.toBeNull();
 
       wrapper.unmount();
     });

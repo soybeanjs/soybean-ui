@@ -981,6 +981,27 @@ describe('SAppShell (e2e)', () => {
 
       unmount();
     });
+
+    /**
+     * A collapse is a desktop affordance: the drawer always shows the expanded
+     * navigation, so a collapse picked on desktop must not ride along when the
+     * mode switches.
+     */
+    it('keeps the drawer expanded after a collapse picked on desktop', async () => {
+      const { unmount } = await renderComponent(
+        createHarness(
+          { items, isMobile: true, open: false, mobileOpen: true },
+          { logo: () => h('span', { 'data-shell-logo': '' }, 'Logo'), title: () => h('span', 'Soybean UI') }
+        )
+      );
+
+      await expect.element(page.getByRole('dialog')).toBeVisible();
+      expect(query('[data-soybean-layout-mobile] [data-soybean-app-shell-logo][data-collapsed]')).toBeNull();
+      await expect.element(page.getByText('Soybean UI')).toBeVisible();
+      await expect.element(page.getByRole('treeitem', { name: 'Overview' })).toBeVisible();
+
+      unmount();
+    });
   });
 
   describe('accessibility', () => {

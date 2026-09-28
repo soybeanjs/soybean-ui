@@ -36,16 +36,16 @@ const breadcrumbs: BreadcrumbOptionData[] = [
         header: 'border-b border-border'
       }"
     >
-      <template #sidebar="{ open: sidebarOpen, collapsedSidebarWidth }">
+      <template #sidebar="{ collapsed, collapsedSidebarWidth }">
         <div class="flex h-[--soybean-layout-header-height] shrink-0 items-center gap-2 px-[--sl-spacing]">
           <SIcon icon="lucide:hexagon" class="size-6 shrink-0 text-primary" />
-          <span v-if="sidebarOpen" class="truncate font-semibold">Soybean UI</span>
+          <span v-if="!collapsed" class="truncate font-semibold">Soybean UI</span>
         </div>
         <STreeMenu
           v-model="active"
           side="left"
           :items="appShellItems"
-          :collapsed="!sidebarOpen"
+          :collapsed="collapsed"
           :collapsed-width="collapsedSidebarWidth"
         />
       </template>

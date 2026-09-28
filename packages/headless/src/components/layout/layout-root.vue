@@ -110,6 +110,16 @@ const isMobileSource = computed<LayoutMobileSource>(() => (hostIsMobile.value ==
  */
 const hasInlineSidebar = computed(() => props.sidebarVisible && !isMobile.value);
 
+/**
+ * Whether the sidebar content renders collapsed in the current mode.
+ *
+ * Collapsing is a desktop affordance: on mobile the sidebar becomes a drawer that
+ * always shows the expanded navigation, so a collapse picked on desktop must not
+ * follow the content into it. `open` keeps holding the desktop state, so the
+ * collapse is back the moment the mode returns to desktop.
+ */
+const collapsed = computed(() => !isMobile.value && !open.value);
+
 const style = computed<CSSProperties>(() => {
   const sidebarWidth = props.pxToRem(props.sidebarWidth);
   const collapsedSidebarWidth = isOffcanvas.value ? '0' : props.pxToRem(props.collapsedSidebarWidth);
@@ -211,6 +221,6 @@ provideLayoutRootContext({
     :data-stretch-footer="Boolean(stretchFooter)"
     :style="style"
   >
-    <slot :open="open" :collapsed-sidebar-width="collapsedSidebarWidth" />
+    <slot :open="open" :collapsed-sidebar-width="collapsedSidebarWidth" :collapsed="collapsed" />
   </div>
 </template>

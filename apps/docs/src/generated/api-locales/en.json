@@ -5091,7 +5091,7 @@
             "default": "Custom content for the default slot.",
             "footer": "Custom content for the footer slot.",
             "header": "Custom content for the header slot.",
-            "sidebar": "Custom content for the sidebar slot.",
+            "sidebar": "Custom content for the sidebar slot.\n\n`collapsed` is the mode-aware state to render from: it is `false` on mobile,\nwhere the sidebar is a drawer that always shows the expanded navigation, so a\ncollapse chosen on desktop does not follow the content into the drawer.\n`open` still reports the desktop state.",
             "tab": "Custom content for the tab slot."
           },
           "slots": "Slots for the LayoutCompact component."
@@ -12794,7 +12794,7 @@
             "default": "Custom content for the default slot.",
             "footer": "Custom content for the footer slot.",
             "header": "Custom content for the header slot.",
-            "sidebar": "Custom content for the sidebar slot.",
+            "sidebar": "Custom content for the sidebar slot.\n\n`collapsed` is the mode-aware state to render from: it is `false` on mobile,\nwhere the sidebar is a drawer that always shows the expanded navigation, so a\ncollapse chosen on desktop does not follow the content into the drawer.\n`open` still reports the desktop state.",
             "tab": "Custom content for the tab slot."
           },
           "slots": "Slots for the Layout component."

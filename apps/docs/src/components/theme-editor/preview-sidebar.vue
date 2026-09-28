@@ -41,11 +41,11 @@ const regionTiles = [
         :tab-visible="false"
         :footer-visible="false"
       >
-        <template #sidebar="{ open, collapsedSidebarWidth }">
+        <template #sidebar="{ collapsed, collapsedSidebarWidth }">
           <STreeMenu
             :items="menuItems"
             default-value="analytics"
-            :collapsed="!open"
+            :collapsed="collapsed"
             :collapsed-width="collapsedSidebarWidth"
             class="p-2"
           />

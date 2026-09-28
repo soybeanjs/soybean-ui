@@ -63,9 +63,10 @@ head:
 1. **CSS 变量以 rem 为单位** — `sidebarWidth`、`collapsedSidebarWidth`、`headerHeight`、`tabHeight`、`footerHeight`、`mobileSidebarWidth` 通过 `pxToRem` 转换（默认 `px / 16`）。如根字号非 16px，请传入自定义 `pxToRem`。
 2. **`size` 缩放间距与字号** — UI 包装层将像素尺寸乘以 `themeSizeRatio[size] / themeSizeMap.md`，因此 `size="xs"` 会同时缩小文字与侧边栏宽度。
 3. **`isMobile` 分三级解析** — 依次是组件 prop、宿主通过 `provideViewportContext` 发布的视口（文档站的设备画框、被嵌入的外壳），最后是 `useMediaQuery(mobileViewportQuery)`；该断点与样式层隐藏桌面侧栏的 `lt-md` 规则共用同一个值（`767.9px`）。生效来源会以 `data-mobile-source="explicit|viewport"` 输出，样式层的 `lt-md` 兜底只对 `viewport` 生效：断点以下显式传 `isMobile="false"` 时，内联侧栏**连同它占用的宽度**都会保留，而不是「CSS 把侧栏藏了、布局却仍为它留出空槽」。抽屉会被传送到布局之外，因此移动端侧栏不占布局空间：起点间距（`--soybean-layout-start-gap`、`--soybean-layout-header-start-gap`、`--soybean-layout-footer-start-gap`）归零，各变体回落到自身的末端间距 —— `sidebar`/`floating` 变为通栏，`inset` 则前后两侧对称内嵌。
-4. **`LayoutTrigger` 与 `LayoutRail` 的区别** — `LayoutTrigger` 是头部中可聚焦的按钮，面向键盘用户；`LayoutRail` 是边缘拖拽热区，`tabindex="-1"`（仅可点击）。两者的 `aria-expanded` 反映的都是当前模式实际渲染的那个侧边栏 —— 移动端是抽屉状态，而不是桌面端的 `open`。
-5. **`Layout` 占位元素** — 启用 `fixedTop` 或 `fixedFooter` 时，`LayoutPlaceholder` 渲染空的占位 div（`data-soybean-layout-{header|tab|footer}-placeholder`），防止内容滑入固定区域下方。
-6. **`scrollId` 用于滚动恢复** — `Layout` 在滚动元素（wrapper 或 content，取决于 `scrollBehavior`）上生成稳定的 `soybean-layout-scroll-{id}`。传入 `scrollId` 可使其在 SSR/CSR 间确定一致。
+4. **`sidebar` 插槽按模式感知的 `collapsed` 渲染** — 该插槽除了 `open` 还会给出 `collapsed`：移动端为 `false`，因为此时的侧边栏是永远展示展开态导航的抽屉，桌面端选的折叠不会跟着内容进抽屉。侧栏内容请基于 `collapsed` 渲染（菜单的 `collapsed`、品牌标题的显隐）；`open` 仍报告桌面端状态，模式切回后折叠也会随之恢复。
+5. **`LayoutTrigger` 与 `LayoutRail` 的区别** — `LayoutTrigger` 是头部中可聚焦的按钮，面向键盘用户；`LayoutRail` 是边缘拖拽热区，`tabindex="-1"`（仅可点击）。两者的 `aria-expanded` 反映的都是当前模式实际渲染的那个侧边栏 —— 移动端是抽屉状态，而不是桌面端的 `open`。
+6. **`Layout` 占位元素** — 启用 `fixedTop` 或 `fixedFooter` 时，`LayoutPlaceholder` 渲染空的占位 div（`data-soybean-layout-{header|tab|footer}-placeholder`），防止内容滑入固定区域下方。
+7. **`scrollId` 用于滚动恢复** — `Layout` 在滚动元素（wrapper 或 content，取决于 `scrollBehavior`）上生成稳定的 `soybean-layout-scroll-{id}`。传入 `scrollId` 可使其在 SSR/CSR 间确定一致。
 
 ## 常见问题
 

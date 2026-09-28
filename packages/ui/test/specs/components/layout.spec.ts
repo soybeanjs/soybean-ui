@@ -813,6 +813,83 @@ describe('SLayout', () => {
     });
   });
 
+  /**
+   * The sidebar slot publishes the state its content has to render from. A
+   * collapse is a desktop affordance: the mobile drawer always shows the expanded
+   * navigation, so a collapse picked on desktop must not follow the content into
+   * it — while `open` keeps reporting the desktop state for anything that tracks
+   * it.
+   */
+  describe('sidebar slot collapsed state', () => {
+    function mountSidebarSlot(props: LayoutProps, simulatedMobile?: MaybeRefOrGetter<boolean | undefined>) {
+      const captured: { open: boolean | undefined; collapsed: boolean }[] = [];
+      const host = defineComponent({
+        name: 'LayoutSidebarSlotHost',
+        setup() {
+          if (simulatedMobile !== undefined) {
+            provideViewportContext({ isMobile: simulatedMobile });
+          }
+
+          return () =>
+            h(SLayout, props, {
+              sidebar: (slotProps: { open: boolean | undefined; collapsed: boolean }) => {
+                captured.push({ open: slotProps.open, collapsed: slotProps.collapsed });
+
+                return h('div', 'Sidebar');
+              },
+              default: () => h('div', 'Main')
+            });
+        }
+      });
+
+      const wrapper = mount(host, { attachTo: document.body });
+
+      // A drawer mounts its content through the dialog's presence state, one tick
+      // after the open state lands.
+      return nextTick().then(() => ({ wrapper, captured }));
+    }
+
+    it('reports collapsed on desktop when open is false', async () => {
+      const { wrapper, captured } = await mountSidebarSlot({ open: false });
+
+      expect(captured.at(-1)).toEqual({ open: false, collapsed: true });
+
+      wrapper.unmount();
+    });
+
+    it('stays expanded in the drawer after collapsing on desktop', async () => {
+      const { wrapper, captured } = await mountSidebarSlot({ isMobile: true, mobileOpen: true, open: false });
+
+      // The desktop state is still there for a consumer that tracks it …
+      expect(captured.at(-1)).toEqual({ open: false, collapsed: false });
+
+      wrapper.unmount();
+    });
+
+    it('stays expanded in a host-simulated drawer after collapsing on desktop', async () => {
+      const { wrapper, captured } = await mountSidebarSlot({ mobileOpen: true, open: false }, true);
+
+      expect(captured.at(-1)).toEqual({ open: false, collapsed: false });
+
+      wrapper.unmount();
+    });
+
+    it('follows the desktop state again when the mode returns to desktop', async () => {
+      const simulated = ref<boolean | undefined>(true);
+      const { wrapper, captured } = await mountSidebarSlot({ mobileOpen: true, open: false }, simulated);
+
+      expect(captured.at(-1)?.collapsed).toBe(false);
+
+      simulated.value = false;
+      await nextTick();
+      await nextTick();
+
+      expect(captured.at(-1)?.collapsed).toBe(true);
+
+      wrapper.unmount();
+    });
+  });
+
   describe('start gap CSS variable', () => {
     it('sets start gap to sidebar width when expanded', () => {
       const wrapper = mount(SLayout, {

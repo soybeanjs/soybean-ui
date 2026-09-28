@@ -225,18 +225,18 @@ const fullContent = shallowRef(false);
           footer: 'border-t border-border'
         }"
       >
-        <template #sidebar="{ open, collapsedSidebarWidth }">
+        <template #sidebar="{ collapsed, collapsedSidebarWidth }">
           <STreeMenu
             :size="size"
             :side="side"
-            :collapsed="!open"
+            :collapsed="collapsed"
             :items="treeMenuItems"
             :collapsed-width="collapsedSidebarWidth"
           >
             <template v-if="orientation === 'horizontal'" #top>
               <SDropdownMenu
                 :size="size"
-                :side="open ? 'bottom' : 'right'"
+                :side="collapsed ? 'right' : 'bottom'"
                 :items="frameworks"
                 :ui="{ popup: 'w-[var(--soybean-popper-anchor-width)]' }"
                 @select="setActiveFramework"

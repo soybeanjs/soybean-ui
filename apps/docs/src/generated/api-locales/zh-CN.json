@@ -5091,7 +5091,7 @@
             "default": "默认插槽的自定义内容。",
             "footer": "页脚槽的自定义内容。",
             "header": "标题槽的自定义内容。",
-            "sidebar": "侧边栏插槽的自定义内容。",
+            "sidebar": "",
             "tab": "标签槽的自定义内容。"
           },
           "slots": "LayoutCompact 组件的插槽。"
@@ -12794,7 +12794,7 @@
             "default": "默认插槽的自定义内容。",
             "footer": "页脚位置的自定义内容。",
             "header": "用于 header 插槽的自定义内容。",
-            "sidebar": "侧边栏插槽的自定义内容。",
+            "sidebar": "",
             "tab": "标签页槽位的自定义内容。"
           },
           "slots": "Layout 组件的插槽。"

@@ -25,7 +25,6 @@ import {
   findMenuItem,
   findMenuTrail,
   isPageTabsPayload,
-  isSidebarLogoPlacement,
   resolveBrandLayout,
   resolveLogoPlacement,
   resolveShellWidths,
@@ -137,18 +136,25 @@ const shellWidths = computed(() =>
 );
 
 /**
- * Cells of the brand region.
+ * Cells of the brand region of a sidebar placement.
  *
- * A sidebar placement aligns the mark and the title to the columns the menu
- * renders; the header placement passes no columns, so both share one row and the
- * title is never hidden.
+ * The shell cannot resolve the mobile mode itself — the layout owns that decision
+ * — so the collapsed state arrives from the sidebar slot and the geometry is
+ * derived on render. A sidebar placement aligns the mark and the title to the
+ * columns the menu renders.
  */
-const brandLayout = computed(() =>
-  resolveBrandLayout({
-    size: props.size,
-    columns: isSidebarLogoPlacement(brandPlacement.value) ? sidebarColumns.value : undefined,
-    collapsed: !open.value
-  })
+function resolveSidebarBrandLayout(collapsed: boolean) {
+  return resolveBrandLayout({ size: props.size, columns: sidebarColumns.value, collapsed });
+}
+
+/**
+ * Cells of the header brand region.
+ *
+ * The header spans the shell, so it is never collapsed: it keeps its title even
+ * while the sidebar folds to a rail.
+ */
+const headerBrandLayout = computed(() =>
+  resolveBrandLayout({ size: props.size, columns: undefined, collapsed: false })
 );
 
 const sidebarWidth = computed(() => shellWidths.value.sidebarWidth);
@@ -228,7 +234,23 @@ const sidebarTriggerVisible = computed(
 const headerTriggerVisible = computed(() => showTrigger.value && skeleton.value.triggerPlacement === 'header');
 
 /** Cells of the trigger row: the rail cell carries its divider, the trigger keeps its column. */
-const triggerLayout = computed(() => resolveTriggerLayout(props.size, sidebarColumns.value, !open.value));
+function resolveSidebarTriggerLayout(collapsed: boolean) {
+  return resolveTriggerLayout(props.size, sidebarColumns.value, collapsed);
+}
+
+/** Width of the trigger rail at a collapsed state; `undefined` when the sidebar has no rail. */
+function resolveSidebarTriggerRailStyle(collapsed: boolean) {
+  const { railWidth } = resolveSidebarTriggerLayout(collapsed);
+
+  return railWidth === undefined ? undefined : { width: `${railWidth}rem` };
+}
+
+/** Width of the trigger cell at a collapsed state; `undefined` lets the column size itself. */
+function resolveSidebarTriggerCellStyle(collapsed: boolean) {
+  const { width } = resolveSidebarTriggerLayout(collapsed);
+
+  return width === undefined ? undefined : { width: `${width}rem` };
+}
 
 function isCurrentCrumb(item: BreadcrumbOptionData) {
   return item.value === currentCrumbValue.value;
@@ -357,13 +379,13 @@ function handleBreadcrumbClick(item: BreadcrumbOptionData) {
     :class="ui.root"
     @update:mobile-open="emit('update:mobileOpen', $event)"
   >
-    <template #sidebar>
+    <template #sidebar="{ collapsed }">
       <div :class="ui.sidebar" data-soybean-app-shell-sidebar>
         <AppShellBrand
           v-if="slots.logo && brandPlacement === 'sidebar'"
           :placement="brandPlacement"
-          :collapsed="!open"
-          :layout="brandLayout"
+          :collapsed="collapsed"
+          :layout="resolveSidebarBrandLayout(collapsed)"
           :region-class="ui.logo"
           :mark-class="ui.logoMark"
           :title-class="ui.logoTitle"
@@ -382,7 +404,7 @@ function handleBreadcrumbClick(item: BreadcrumbOptionData) {
             v-if="skeleton.menuPlacement === 'sidebar'"
             name="menu"
             :mode="mode"
-            :collapsed="!open"
+            :collapsed="collapsed"
             :collapsed-width="menuCollapsedWidth"
             :side="side"
             :header-mount-id="headerMountId"
@@ -394,7 +416,7 @@ function handleBreadcrumbClick(item: BreadcrumbOptionData) {
               :items="items"
               :model-value="modelValue"
               :side="side"
-              :collapsed="!open"
+              :collapsed="collapsed"
               :collapsed-width="menuCollapsedWidth"
               :expand-strategy="expandStrategy"
               :header-mount-id="headerMountId"
@@ -411,8 +433,8 @@ function handleBreadcrumbClick(item: BreadcrumbOptionData) {
         <AppShellBrand
           v-if="slots.logo && brandPlacement === 'sidebar-bottom'"
           :placement="brandPlacement"
-          :collapsed="!open"
-          :layout="brandLayout"
+          :collapsed="collapsed"
+          :layout="resolveSidebarBrandLayout(collapsed)"
           :region-class="ui.logo"
           :mark-class="ui.logoMark"
           :title-class="ui.logoTitle"
@@ -426,15 +448,15 @@ function handleBreadcrumbClick(item: BreadcrumbOptionData) {
         </AppShellBrand>
         <div v-if="sidebarTriggerVisible" :class="ui.triggerRow" data-soybean-app-shell-trigger-row>
           <div
-            v-if="triggerLayout.railWidth !== undefined"
+            v-if="resolveSidebarTriggerRailStyle(collapsed)"
             :class="ui.triggerRail"
-            :style="{ width: `${triggerLayout.railWidth}rem` }"
+            :style="resolveSidebarTriggerRailStyle(collapsed)"
             data-soybean-app-shell-trigger-rail
           />
           <div
             :class="ui.triggerCell"
-            :style="triggerLayout.width === undefined ? undefined : { width: `${triggerLayout.width}rem` }"
-            :data-centered="triggerLayout.centered ? 'true' : undefined"
+            :style="resolveSidebarTriggerCellStyle(collapsed)"
+            :data-centered="resolveSidebarTriggerLayout(collapsed).centered ? 'true' : undefined"
             data-soybean-app-shell-trigger-cell
           >
             <LayoutTrigger :class="ui.trigger" />
@@ -451,7 +473,7 @@ function handleBreadcrumbClick(item: BreadcrumbOptionData) {
               v-if="slots.logo && brandPlacement === 'header'"
               placement="header"
               :collapsed="false"
-              :layout="brandLayout"
+              :layout="headerBrandLayout"
               :region-class="ui.logo"
               :mark-class="ui.logoMark"
               :title-class="ui.logoTitle"

@@ -283,8 +283,13 @@ export type LayoutCompactSlots = {
   default?: () => any;
   /**
    * Custom content for the sidebar slot.
+   *
+   * `collapsed` is the mode-aware state to render from: it is `false` on mobile,
+   * where the sidebar is a drawer that always shows the expanded navigation, so a
+   * collapse chosen on desktop does not follow the content into the drawer.
+   * `open` still reports the desktop state.
    */
-  sidebar?: (props: { open: boolean | undefined; collapsedSidebarWidth: number }) => any;
+  sidebar?: (props: { open: boolean | undefined; collapsedSidebarWidth: number; collapsed: boolean }) => any;
   /**
    * Custom content for the header slot.
    */

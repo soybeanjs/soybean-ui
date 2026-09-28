@@ -30,7 +30,7 @@ Usage examples for app-shell are rendered on the site.
 - 📑 **Tabs and footer** — `tabs` render in the tab region and the footer is a slot; both accept per-region props and `ui` overrides.
 - 🗂️ **A collapse that follows the panes** — a collapsed sidebar keeps its rail and folds the nested pane into its own icon rail, so the sidebar narrows to the columns it actually shows instead of leaving an expanded tree beside a shrunken rail; the trigger sits in the header, or in the sidebar's bottom corner for the modes whose first level is a top bar.
 - 🏷️ **Brand is a slot** — the shell renders no logo of its own: inject the mark through `#logo` and the app name through `#title`. The shell places them so they line up with the menu — the mark over the first-level rail, the title over the pane below it, centered while the sidebar is collapsed — and `logoPlacement` moves the region to the top of the sidebar, its bottom, or the header.
-- 📱 **Mobile drawer** — an unset `isMobile` follows the viewport, and the sidebar becomes the layout's dialog drawer, reusing the same brand and menu content.
+- 📱 **Mobile drawer** — an unset `isMobile` follows the viewport, and the sidebar becomes the layout's dialog drawer, reusing the same brand and menu content. The drawer always shows the expanded navigation: a collapse picked on desktop stays on desktop.
 - 🎛️ **Three override levels** — `ui` for the shell's own nodes, `layoutUi` for the layout regions it themes, `menuUi` for the menu renderer; each region also accepts a slot.
 - ♿ **Accessibility inherited** — keyboard, focus, ARIA, and RTL come from the composed families; the shell only adds structure and classes.
 
