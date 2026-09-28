@@ -358,7 +358,7 @@ exports[`theme map — structure and invariants > snapshots the default theme ma
     },
     "secondary": {
       "kind": "palette",
-      "level": 100,
+      "level": 200,
       "palette": "zinc",
     },
     "secondary-foreground": {

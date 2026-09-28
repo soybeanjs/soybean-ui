@@ -152,9 +152,12 @@ export const stepperVariants = scv({
           'group-data-[state=active]:border-secondary group-data-[state=active]:bg-secondary group-data-[state=active]:text-secondary-foreground',
           'group-data-[state=completed]:border-secondary/25 group-data-[state=completed]:bg-secondary/15 group-data-[state=completed]:text-secondary-foreground'
         ],
-        separator: 'group-data-[state=completed]:bg-secondary',
-        // 中性角色是**填充**，不是文字色：`text-secondary`（`{b}.100` 亮 / `{b}.800` 暗）
-        // 压在 card 上只有 1.09:1 / 1.18:1，读不到；文字取它的 `-foreground`
+        // 不能用 `bg-secondary`：`secondary` 定在强档 `{b}.200`，与 未完成态分隔线的 `bg-border`
+        // 同色（亮色 Δ = 0，完成度读不出来）。这一档取角色的**可读中性** `secondary-foreground`
+        // （亮 `{b}.900` / 暗 `{b}.50`），两模式都明显深/亮于发丝线。
+        separator: 'group-data-[state=completed]:bg-secondary-foreground',
+        // 中性角色是**填充**，不是文字色：`text-secondary`（`{b}.200` 亮 / `{b}.700` 暗）
+        // 压在 card 上只有 1.27:1 / 1.70:1，读不到；文字取它的 `-foreground`
         title:
           'group-data-[state=active]:text-secondary-foreground group-data-[state=completed]:text-secondary-foreground',
         description:

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { anchorVariants } from '@/styles/anchor';
 import { buttonVariants } from '@/styles/button';
+import { stepperVariants } from '@/styles/stepper';
 import { tableVariants } from '@/styles/table';
 import { toggleVariants } from '@/styles/toggle';
 import { toggleGroupVariants } from '@/styles/toggle-group';
@@ -8,14 +9,16 @@ import { toggleGroupVariants } from '@/styles/toggle-group';
 /**
  * 中性交互面的样式契约。
  *
- * `muted` / `accent` / `secondary` **同档**（对齐 shadcn 默认，docs/theme.md §3.2），角色语义不变：
- * `muted` 是静态面、`accent` 是交互面，但默认值没有档差。于是**不带底色 / 弱底**的中性交互面
- * 只能靠**同一填充的 alpha 阶梯**承担可见性：静止 `accent/40`（或 `card` / 透明）→ hover `accent/60`
+ * 填充族按 **角色 × 强弱** 分档：`muted`（静态弱化面）与 `accent`（瞬时交互面）**同档**
+ * （对齐 shadcn 默认，docs/theme.md §3.2），`secondary`（静态实心填充）定在强档
+ * （亮 `{b}.200` / 暗 `{b}.800`）。所以**不带底色 / 弱底**的中性交互面只能靠**同一填充的
+ * alpha 阶梯**承担可见性：静止 `accent/40`（或 `card` / 透明）→ hover `accent/60`
  * → 选中 / 按压 `accent`。
  *
- * 这组断言守住两件事：阶梯的类名形状稳定，以及**静止面与交互面相邻时必须是洗色**——
- * 一旦静止面退回实心 `bg-muted`，它与 `accent` 同色，交互 / 选中态会渲染成 Δ = 0
- * （实测色差由 `packages/ui/test/browser/specs/theme/neutral-faces.e2e.spec.ts` 守）。
+ * 这组断言守住三件事：阶梯的类名形状稳定；**静止面与交互面相邻时必须是洗色**——
+ * 一旦静止面退回实心 `bg-muted`，它与 `accent` 同色，交互态会渲染成 Δ = 0
+ * （实测色差由 `packages/ui/test/browser/specs/theme/neutral-faces.e2e.spec.ts` 守）；
+ * 以及**强档填充与它旁边的发丝线不能撞色**（`secondary` 与 `border` 同为 `{b}.200`）。
  * 同时守住 `bg-{accent,secondary}-foreground/10` 这套旧的中性 alpha 面不会回流。
  */
 describe('neutral interaction faces', () => {
@@ -121,6 +124,18 @@ describe('neutral interaction faces', () => {
           expect(cls, `${color}/${variant}`).not.toContain('hover:bg-secondary/');
         });
       });
+    });
+  });
+
+  describe('the strong static fill never doubles as a hairline', () => {
+    it('keeps the neutral completed separator off the secondary fill', () => {
+      // `secondary` 定在强档（亮 `{b}.200`），与未完成态分隔线的 `bg-border`（同为 `{b}.200`）
+      // **同值**：用 `bg-secondary` 会让 stepper 的完成度在亮色下 Δ = 0。
+      // 这一档取角色的可读中性色（与它的 title / description 同一个 token）。
+      const classes = stepperVariants({ color: 'secondary' }).separator.split(/\s+/);
+
+      expect(classes).toContain('group-data-[state=completed]:bg-secondary-foreground');
+      expect(classes).not.toContain('group-data-[state=completed]:bg-secondary');
     });
   });
 });

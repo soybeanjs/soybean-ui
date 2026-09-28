@@ -259,18 +259,24 @@ cd packages/theme && pnpm exec vitest run -u   # 有意识地更新映射快照
 | token                    | 角色                            | light     | dark      |
 | :----------------------- | :------------------------------ | :-------- | :-------- |
 | `--muted`                | 弱化块（badge / 内嵌井 / 表头） | `{b}.100` | `{b}.800` |
-| `--accent`               | hover / 选中面                  | `{b}.100` | `{b}.800` |
+| `--accent`               | 弱档交互面（hover / 选中面）    | `{b}.100` | `{b}.800` |
 | `--accent-foreground`    | 交互面文字                      | `{b}.900` | `{b}.50`  |
-| `--secondary`            | 次级填充                        | `{b}.100` | `{b}.800` |
+| `--secondary`            | 次级实心填充                    | `{b}.200` | `{b}.800` |
 | `--secondary-foreground` | 次级填充文字                    | `{b}.900` | `{b}.50`  |
 
-**`muted` / `accent` / `secondary` 三者同档**（对齐 shadcn 默认）：角色语义仍然三分——弱化块与次级填充是**静态面**，`accent` 是**交互面**——但默认值不再有档差，所以**交互可见性改由同一填充的 alpha 阶梯承担**，而不是档差。`muted` 不产出自己的前景——它的文字就是 `--muted-foreground`。
+**`muted` / `accent` 同档，`secondary` 只在亮色抬一档**——填充族按 **角色（静态面 / 交互面）× 强弱** 分档：静态弱面是 `muted`、静态强面是 `secondary`、交互面是 `accent`（弱档；本版没有强档交互面）。强弱档位按**模式独立声明**：两模式的表面阶梯本来就不同（亮色 `card` 是白、页面是 `{b}.50`；暗色 `card` 是 `{b}.900`、页面 `{b}.950`），所以"这一档在白底上够不够读得出"本来就不是同一个问题。
+
+`muted` 与 `accent` 同档是**有意**的（对齐 shadcn 默认）：一个是静态弱化面、一个是瞬时交互面，瞬时可见性改由同一填充的 alpha 阶梯承担，而不是档差。`muted` 不产出自己的前景——它的文字就是 `--muted-foreground`。
+
+`secondary`（次级按钮 / badge / tag / alert 的静止面）亮色**抬一档到 `{b}.200`**：它直接压在白 `card` 上，弱档在那里只有 Δ11（页面底上 Δ6），读不出"这是一个填充"；抬档后对白卡 Δ27、对页面 Δ22。**暗色保持 `{b}.800`**：弱档在 `card`（`{b}.900`）上已有 Δ15，chip 读得出来，再抬到 `{b}.700` 会变成 Δ43 的亮块，与暗色克制的表面阶梯不符（`primary` 选中性色板时的亮 `{b}.800` / 暗 `{b}.200` 是同一类两模式独立定档）。
+
+**代价（有意接受）**：亮色下 `secondary` = `border` / `input` = `{b}.200`，所以 `bg-secondary` 元素身上的 `border-border` 会与填充同色。库内的这类元素本来就用 `border-secondary-foreground/50`（tag / alert）或 `border-secondary`（stepper），只有"靠填充与发丝线的对比表达状态"的地方需要换 token：`stepper` 的 completed separator 已从 `bg-secondary` 改为 `bg-secondary-foreground`（亮 `{b}.900` / 暗 `{b}.50`），否则完成度在亮色下 Δ = 0；该约束由 `packages/ui/test/specs/styles/neutral-faces.spec.ts` 的 `the strong static fill never doubles as a hairline` 守。
 
 **组件层的读法（中性面阶梯）**：静止 `accent/40`（或 `card` / 透明）→ hover `accent/60` → 选中 / 按压 `accent`。不带底色的中性交互面（icon 按钮、toggle、anchor 选中项）因此只由 `--accent` 驱动，改档位即整体跟随；需要中等灰度的标记（轨道、进度、指示点）不属于这个表面档位，不走 `--accent`。
 
-**同档带来的硬约束**：任何"静止实心 `fill` → 交互实心 `fill`"的配方都是 **Δ = 0**（渲染成完全同色）。所以**静态面与交互面相邻时必须降为洗色**——`toggle.soft` / `toggle-group.soft` / `button.soft` 的静止面是 `bg-muted/40`、斑马纹表格行是 `even:bg-muted/40`、暗色侧栏的 hover / focus 是 `bg-sidebar-accent-foreground/10`（§3.9）。类名字符串由 `packages/ui/test/specs/styles/neutral-faces.spec.ts` 守，**实测色差**由 `packages/ui/test/browser/specs/theme/neutral-faces.e2e.spec.ts` 守（计算后的 `background-color` 之差不许为 0）。
+**弱档同档带来的硬约束**：任何"静止实心弱填充 → 交互实心弱填充"的配方都是 **Δ = 0**（渲染成完全同色）。所以**静态弱面与交互面相邻时必须降为洗色**——`toggle.soft` / `toggle-group.soft` / `button.soft` 的静止面是 `bg-muted/40`、斑马纹表格行是 `even:bg-muted/40`、暗色侧栏的 hover / focus 是 `bg-sidebar-accent-foreground/10`（§3.9）。类名字符串由 `packages/ui/test/specs/styles/neutral-faces.spec.ts` 守，**实测色差**由 `packages/ui/test/browser/specs/theme/neutral-faces.e2e.spec.ts` 守（计算后的 `background-color` 之差不许为 0）。
 
-**刻度上限是有意接受的**：亮色页面底 `{b}.50` 与填充 `{b}.100` 只差 6 个 sRGB 单位，三档平分后不可能每档都 ≥3。实测（亮色，落在页面底上）`rest 247.6 → hover 246.4 → on 244`：**状态判据是 OFF → ON（Δ 3.6）**，hover 是细步（落在 `card` 白底上约 4.2）；e2e 因此只对 OFF → ON 要求 ≥ 3，对 hover 只要求不是 Δ = 0。
+**弱档的刻度上限是有意接受的**：亮色页面底 `{b}.50` 与弱填充 `{b}.100` 只差 6 个 sRGB 单位，两档平分后不可能每档都 ≥3。实测（亮色，落在页面底上）`rest 247.6 → hover 246.4 → on 244`：**状态判据是 OFF → ON（Δ 3.6）**，hover 是细步（落在 `card` 白底上约 4.2）；e2e 因此只对 OFF → ON 要求 ≥ 3，对 hover 只要求不是 Δ = 0。
 
 ### 3.3 内容色（文本 / 图标）
 
@@ -389,7 +395,7 @@ cd packages/theme && pnpm exec vitest run -u   # 有意识地更新映射快照
 | 组别            | 旧版（`main`）                                                               | 今天                                                      | 关系                                                          |
 | :-------------- | :--------------------------------------------------------------------------- | :-------------------------------------------------------- | :------------------------------------------------------------ |
 | 表面 / 表面前景 | `background` / `card` / `popover` / `card-foreground` / `popover-foreground` | 同左                                                      | **同名**；`card-foreground` 等今天由 `mirror foreground` 保证 |
-| 填充            | `muted` / `accent` / `secondary` + 两个 `-foreground`                        | 同左                                                      | **同名同值**                                                  |
+| 填充            | `muted` / `accent` / `secondary` + 两个 `-foreground`                        | 同左（`secondary` 亮 `{b}.200` / 暗 `{b}.800`）           | 同名；`secondary` 亮色档位调整，其余同值                      |
 | 文本            | `foreground` / `muted-foreground`                                            | 同左（`muted-foreground` 亮色 `{b}.600`，旧版 `{b}.500`） | 同名；新版按实测定档                                          |
 | 描边与焦点      | `border` / `input` / `ring` + 三个 `-alpha`                                  | 同左                                                      | **同名**；`ring` 亮色 `{p}.500`（旧版 `{p}.400`）             |
 | 状态            | `destructive` / `success` / `warning` / `info` + `-foreground`               | 同左                                                      | **同名**；`-foreground` 今天与 primary 同取 `{b}.50`          |

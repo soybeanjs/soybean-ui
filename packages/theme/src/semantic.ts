@@ -250,10 +250,21 @@ export const CORE_RULES: Record<CoreToken, TokenRule> = {
   popover: { kind: 'level', source: 'base', light: 'white', dark: 900 },
   mask: { kind: 'simple', light: 'black', dark: 'black' },
   // —— fills ——
+  // 弱档（`{b}.100` / `{b}.800`）留给静态弱化面与瞬时交互面：`muted` 与 `accent` 同档是有意的
+  // （对齐 shadcn 默认），瞬时可见性由配方的 alpha 阶梯承担（docs/theme.md §3.2）。
   muted: { kind: 'level', source: 'base', light: 100, dark: 800 },
   accent: { kind: 'level', source: 'base', light: 100, dark: 800 },
   'accent-foreground': { kind: 'level', source: 'base', light: 900, dark: 50 },
-  secondary: { kind: 'level', source: 'base', light: 100, dark: 800 },
+  // 强档（亮 `{b}.200`）留给**静态实心填充**：`secondary` 是次级按钮 / badge / tag / alert
+  // 的静止面，亮色下直接压在白 `card` 上（弱档只有 Δ11，白底上读不出"这是个填充"），所以抬一档。
+  // **只抬亮色**：暗色的弱档（`{b}.800`）在 `card`（`{b}.900`）上已经有 Δ15，chip 读得出来，
+  // 再抬到 `{b}.700` 会跳成 Δ43 的亮块，与暗色克制的表面阶梯不符 —— 两模式独立定档有先例
+  // （`primary` 选中性色板时也是亮 800 / 暗 200）。
+  // 代价（亮色，有意接受）：与 `border` / `input` 同档，`bg-secondary` 元素身上的 `border-border`
+  // 会与填充同色；库内这类元素本来就用 `border-secondary-foreground/50`（tag / alert）或
+  // `border-secondary`（stepper），唯一需要跟着改的是"靠 `bg-border` 与 `bg-secondary` 对比表达
+  // 完成度"的地方（`stepper` 的 completed separator，已改用 `secondary-foreground`）。
+  secondary: { kind: 'level', source: 'base', light: 200, dark: 800 },
   'secondary-foreground': { kind: 'level', source: 'base', light: 900, dark: 50 },
   // —— text ladder ——
   foreground: { kind: 'level', source: 'base', light: 900, dark: 50 },

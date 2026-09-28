@@ -104,18 +104,47 @@ describe('theme map — structure and invariants', () => {
     expect(map.light['sidebar-ring']).toEqual(map.light.ring);
   });
 
-  it('keeps the fill family on the collapsed shadcn-parity rung', () => {
-    // `muted` / `accent` / `secondary` **同档**（对齐 shadcn 默认，docs/theme.md §3.2）：
-    // 交互可见性不再由档差承担，而由配方的 alpha 阶梯承担
+  it('keeps the weak fills on the collapsed shadcn-parity rung', () => {
+    // `muted` / `accent` **同档**（对齐 shadcn 默认，docs/theme.md §3.2）：一个是静态弱化面、
+    // 一个是瞬时交互面，交互可见性不再由档差承担，而由配方的 alpha 阶梯承担
     // （字符串层 `packages/ui/test/specs/styles/neutral-faces.spec.ts`，
     // 实测色差层 `packages/ui/test/browser/specs/theme/neutral-faces.e2e.spec.ts`）。
-    // 同档是**有意**的：任何"静止实心 `muted` → 交互实心 `accent`"的配方都会 Δ = 0，
+    // 同档是**有意**的：任何"静止实心 `muted` → 瞬时实心 `accent`"的配方都会 Δ = 0，
     // 所以同档必须锁在这里，配方不能再假设两者有档差。
+    // `secondary` **不在**这一档（见下一条）：它是静态**实心**填充，白底上要靠档差读出来。
     const map = resolveThemeMap(DEFAULTS);
 
     (['light', 'dark'] as const).forEach(mode => {
       expect(map[mode].accent, mode).toEqual(map[mode].muted);
-      expect(map[mode].accent, mode).toEqual(map[mode].secondary);
+    });
+  });
+
+  it('lifts the static strong fill one rung in light mode', () => {
+    // `secondary` 是次级按钮 / badge / tag / alert 的静止面，亮色下直接压在白 `card` 上：
+    // 弱档在那里只有 Δ11（页面底上 Δ6），读不出"这是个填充"，所以抬一档到 `{b}.200`。
+    // **暗色刻意不抬**：弱档 `{b}.800` 在 `card`（`{b}.900`）上已有 Δ15，chip 读得出来，
+    // 再抬会变成 Δ43 的亮块（`primary` 选中性色板时的亮 800 / 暗 200 是同一类"两模式独立定档"）。
+    const map = resolveThemeMap(DEFAULTS);
+
+    expect(map.light.secondary).toEqual({ kind: 'palette', palette: 'zinc', level: 200 });
+    expect(map.dark.secondary).toEqual({ kind: 'palette', palette: 'zinc', level: 800 });
+
+    // 亮色：比弱档更沉，且与弱档、瞬时面都不同值
+    expect(luminanceOf(map.light.secondary)).toBeLessThan(luminanceOf(map.light.muted));
+    expect(map.light.secondary).not.toEqual(map.light.muted);
+    expect(map.light.secondary).not.toEqual(map.light.accent);
+
+    // 暗色：仍留在弱档上（与 `muted` / `accent` 同值）——chip 在 `card` 上已有 Δ15，不需要抬档
+    expect(map.dark.secondary).toEqual(map.dark.muted);
+    expect(map.dark.secondary).toEqual(map.dark.accent);
+
+    // 填充上的文字必须读得到（同 status on-solid 的判据：断言对比度，不断言档位）
+    (['light', 'dark'] as const).forEach(mode => {
+      const fill = luminanceOf(map[mode].secondary);
+      const text = luminanceOf(map[mode]['secondary-foreground']);
+      const [hi, lo] = fill > text ? [fill, text] : [text, fill];
+
+      expect((hi + 0.05) / (lo + 0.05), `${mode}: secondary-foreground on secondary`).toBeGreaterThanOrEqual(4.5);
     });
   });
 
