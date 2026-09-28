@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { useMediaQuery } from '@vueuse/core';
+import { mobileViewportQuery } from '@soybeanjs/headless/shared';
 import { SButtonIcon, SPopover, SThemeCustomizer } from '@soybeanjs/ui';
 
-const isMobile = useMediaQuery('(max-width: 768px)');
+const isMobile = useMediaQuery(mobileViewportQuery);
 </script>
 
 <template>

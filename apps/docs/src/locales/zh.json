@@ -27,6 +27,13 @@
     },
     "preview": "预览",
     "code": "代码",
+    "device": {
+      "desktop": "桌面端",
+      "mobile": "移动端",
+      "ipad": "平板端",
+      "fullscreen": "全屏",
+      "exit_fullscreen": "退出全屏"
+    },
     "examples": {
       "accordion": {
         "always-one": "始终展开一项",

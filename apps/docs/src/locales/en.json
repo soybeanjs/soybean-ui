@@ -27,6 +27,13 @@
     },
     "preview": "Preview",
     "code": "Code",
+    "device": {
+      "desktop": "Desktop",
+      "mobile": "Mobile",
+      "ipad": "Tablet",
+      "fullscreen": "Fullscreen",
+      "exit_fullscreen": "Exit fullscreen"
+    },
     "examples": {
       "accordion": {
         "always-one": "Always One",
