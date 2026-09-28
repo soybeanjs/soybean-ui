@@ -1319,7 +1319,7 @@ describe('SAppShell', () => {
       });
 
       expect(railMode.find('[data-soybean-app-shell-logo]').attributes('data-inset')).toBeUndefined();
-      expect(railMode.find('[data-soybean-app-shell-logo] button').exists()).toBe(true);
+      expect(railMode.find('[data-soybean-tree-menu-styled-item-button]').exists()).toBe(true);
 
       railMode.unmount();
 
@@ -1330,7 +1330,8 @@ describe('SAppShell', () => {
       });
 
       expect(header.find('[data-soybean-app-shell-logo]').attributes('data-inset')).toBeUndefined();
-      expect(header.find('[data-soybean-app-shell-logo] button').exists()).toBe(false);
+      // The header brand is a plain header row, not a menu row.
+      expect(header.find('[data-soybean-tree-menu-styled-item-button]').exists()).toBe(false);
 
       header.unmount();
     });

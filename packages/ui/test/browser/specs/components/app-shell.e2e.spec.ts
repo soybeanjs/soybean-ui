@@ -595,7 +595,9 @@ describe('SAppShell (e2e)', () => {
       await expect.element(page.getByText('Mark')).toBeVisible();
       await waitForStableGeometry();
 
-      const expandedRow = element('[data-soybean-app-shell-logo-mark] button').getBoundingClientRect();
+      const expandedRow = element(
+        '[data-soybean-app-shell-logo-mark] [data-soybean-tree-menu-styled-item-button]'
+      ).getBoundingClientRect();
       const expandedItem = element('[data-soybean-tree-menu-button]').getBoundingClientRect();
 
       expect(Math.abs(expandedRow.left - expandedItem.left)).toBeLessThanOrEqual(1);
@@ -609,7 +611,9 @@ describe('SAppShell (e2e)', () => {
       await expect.element(page.getByText('Mark')).toBeVisible();
       await waitForStableGeometry();
 
-      const collapsedRow = element('[data-soybean-app-shell-logo-mark] button').getBoundingClientRect();
+      const collapsedRow = element(
+        '[data-soybean-app-shell-logo-mark] [data-soybean-tree-menu-styled-item-button]'
+      ).getBoundingClientRect();
       const collapsedItem = element('[data-soybean-tree-menu-button]').getBoundingClientRect();
       const collapsedMark = element('[data-shell-mark]').getBoundingClientRect();
 
@@ -641,7 +645,9 @@ describe('SAppShell (e2e)', () => {
         await expect.element(page.getByText('Mark')).toBeVisible();
         await waitForStableGeometry();
 
-        const brandRow = element('[data-soybean-app-shell-logo-mark] button').getBoundingClientRect();
+        const brandRow = element(
+          '[data-soybean-app-shell-logo-mark] [data-soybean-tree-menu-styled-item-button]'
+        ).getBoundingClientRect();
         const menuRow = element('[data-soybean-tree-menu-button]').getBoundingClientRect();
 
         expect(Math.abs(brandRow.left - menuRow.left)).toBeLessThanOrEqual(1);

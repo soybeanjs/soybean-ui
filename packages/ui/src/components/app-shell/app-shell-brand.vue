@@ -102,6 +102,7 @@ const showTitle = computed(() => Boolean(slots.title) && props.layout.titleVisib
     -->
     <STreeMenuStyledItem
       v-if="inSidebar && !aligned"
+      as="div"
       :size="size"
       :ui="{ button: 'group-data-[state=collapsed]:justify-center' }"
       data-soybean-app-shell-logo-mark
@@ -124,7 +125,7 @@ const showTitle = computed(() => Boolean(slots.title) && props.layout.titleVisib
         :data-divider="aligned ? 'true' : undefined"
         data-soybean-app-shell-logo-mark
       >
-        <STreeMenuStyledItem :size="size" :ui="{ button: 'justify-center' }" class="w-full">
+        <STreeMenuStyledItem as="div" :size="size" :ui="{ button: 'justify-center' }" class="w-full">
           <slot name="logo" v-bind="slotProps" />
         </STreeMenuStyledItem>
       </div>
