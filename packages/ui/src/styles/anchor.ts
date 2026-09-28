@@ -7,7 +7,7 @@ export const anchorVariants = scv({
     link: [
       'group inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-muted-foreground outline-none transition-colors',
       'hover:bg-accent/60 hover:text-accent-foreground',
-      'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card',
+      'focus-visible:ring-3 focus-visible:ring-ring focus-visible:ring-offset-card',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       'data-[state=active]:bg-accent data-[state=active]:text-foreground'
     ],
@@ -20,35 +20,35 @@ export const anchorVariants = scv({
     color: {
       primary: {
         indicator: 'bg-primary',
-        link: 'data-[state=active]:bg-primary/10 data-[state=active]:text-primary'
+        link: 'focus-visible:ring-primary/30 data-[state=active]:bg-primary/10 data-[state=active]:text-primary'
       },
       destructive: {
         indicator: 'bg-destructive',
-        link: 'data-[state=active]:bg-destructive/10 data-[state=active]:text-destructive'
+        link: 'focus-visible:ring-destructive/30 data-[state=active]:bg-destructive/10 data-[state=active]:text-destructive'
       },
       success: {
         indicator: 'bg-success',
-        link: 'data-[state=active]:bg-success/10 data-[state=active]:text-success'
+        link: 'focus-visible:ring-success/30 data-[state=active]:bg-success/10 data-[state=active]:text-success'
       },
       warning: {
         indicator: 'bg-warning',
-        link: 'data-[state=active]:bg-warning/10 data-[state=active]:text-warning'
+        link: 'focus-visible:ring-warning/30 data-[state=active]:bg-warning/10 data-[state=active]:text-warning'
       },
       info: {
         indicator: 'bg-info',
-        link: 'data-[state=active]:bg-info/10 data-[state=active]:text-info'
+        link: 'focus-visible:ring-info/30 data-[state=active]:bg-info/10 data-[state=active]:text-info'
       },
       carbon: {
         indicator: 'bg-carbon',
-        link: 'data-[state=active]:bg-carbon/10 data-[state=active]:text-carbon'
+        link: 'focus-visible:ring-carbon/30 data-[state=active]:bg-carbon/10 data-[state=active]:text-carbon'
       },
       secondary: {
         indicator: 'bg-secondary-foreground/50',
-        link: 'data-[state=active]:bg-accent data-[state=active]:text-accent-foreground'
+        link: 'focus-visible:ring-secondary-foreground/20 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground'
       },
       accent: {
         indicator: 'bg-accent-foreground/50',
-        link: 'data-[state=active]:bg-accent data-[state=active]:text-accent-foreground'
+        link: 'focus-visible:ring-accent-foreground/20 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground'
       }
     },
     orientation: {
