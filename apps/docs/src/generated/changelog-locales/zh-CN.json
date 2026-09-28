@@ -16,6 +16,12 @@
                 "0": "该版本移除了已发布的外围包 @soybeanjs/ui-x、@soybeanjs/admin 和 @soybeanjs/chart。在 headless 中，RovingFocusGroup/RovingFocusItem 组件被 useRovingFocusGroup/useRovingFocusGroupItem 组合式函数取代，PropsToContext 改名为 ToContext，transformPropsToContext 改为 toContext 且函数值不再需要调用。STable 默认不再带圆角，headless 组件也停止注入全局辅助类。完整迁移步骤请查看升级指南。"
               }
             }
+          },
+          "50": {
+            "0": {
+              "0": "",
+              "1": ""
+            }
           }
         }
       },

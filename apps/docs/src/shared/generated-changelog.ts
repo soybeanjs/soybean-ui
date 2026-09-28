@@ -127,7 +127,11 @@ export function getReleaseChangelogDocument(): GeneratedReleaseChangelogDocument
 }
 
 export interface UpgradeGuideEntry {
-  /** Release version the guide belongs to (e.g. `v0.40.0-beta.1`). */
+  /**
+   * Release the guide documents (e.g. `v0.40.0`). A prerelease suffix is
+   * stripped, so a guide attached to a release that is still a beta is titled by
+   * the release line it upgrades to, not by the beta build number.
+   */
   version: string;
   /** Content path relative to `src/content/{locale}/` (e.g. `ui/migration/v0.40.0`). */
   docPath: string;
@@ -139,6 +143,13 @@ export interface UpgradeGuideEntry {
    * (e.g. `v0.50.0` / `v0.50.0 · date`).
    */
   label: string;
+}
+
+/** `v0.40.0-beta.1` → `v0.40.0`: guides are titled by release line, never by beta build. */
+function resolveGuideVersion(releaseVersion: string): string {
+  const prereleaseIndex = releaseVersion.indexOf('-');
+
+  return prereleaseIndex === -1 ? releaseVersion : releaseVersion.slice(0, prereleaseIndex);
 }
 
 /** `ui/migration/v0.50.0-date` for release `v0.50.0` labels as `v0.50.0 · date`. */
@@ -163,16 +174,18 @@ export function getUpgradeGuides(): UpgradeGuideEntry[] {
   const guides = new Map<string, UpgradeGuideEntry>();
 
   for (const release of generatedReleaseDocument.releases) {
+    const version = resolveGuideVersion(release.version);
+
     for (const note of release.notes) {
       if (!note.docPath || guides.has(note.docPath)) {
         continue;
       }
 
       guides.set(note.docPath, {
-        version: release.version,
+        version,
         docPath: note.docPath,
         path: resolveContentRoutePath(note.docPath),
-        label: resolveGuideLabel(release.version, note.docPath)
+        label: resolveGuideLabel(version, note.docPath)
       });
     }
   }

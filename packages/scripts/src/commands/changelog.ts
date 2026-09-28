@@ -419,6 +419,11 @@ function createReleaseDocument(
   generatedAt: string,
   contentDir: string
 ): GeneratedReleaseChangelogDocument {
+  const notesByRelease = resolveReleaseNotes(
+    versionBlocks.map(versionBlock => versionBlock.version),
+    contentDir
+  );
+
   return {
     generatedAt,
     schemaVersion: 1,
@@ -487,7 +492,7 @@ function createReleaseDocument(
         components,
         newComponents: resolveIntroducedComponents(versionBlock.version),
         typeCounts,
-        notes: resolveReleaseNotes(versionBlock.version, contentDir),
+        notes: notesByRelease.get(versionBlock.version) ?? [],
         entries
       } satisfies GeneratedReleaseChangelogVersion;
     })
@@ -498,29 +503,86 @@ function resolveIntroducedComponents(version: string): string[] {
   return releaseIntroducedComponents[version] ?? [];
 }
 
-function resolveReleaseNotes(version: string, contentDir: string): GeneratedReleaseChangelogNote[] {
-  const notes = releaseChangelogNotes[version];
+/**
+ * The release line a version belongs to: `v0.40.0-beta.1` and `v0.40.0` both
+ * resolve to `v0.40.0`, while `v0.40.1` is a line of its own.
+ */
+export function resolveReleaseLine(version: string): string {
+  const prereleaseIndex = version.indexOf('-');
 
-  if (!notes?.length) {
-    return [];
-  }
+  return prereleaseIndex === -1 ? version : version.slice(0, prereleaseIndex);
+}
 
-  return notes.map((note, index) => {
-    const { docPath } = note;
+/**
+ * The release a maintainer note renders under: the newest published release of
+ * the note's own release line. `publishedVersions` follows `CHANGELOG.md` order
+ * (newest first), so the first match is the newest one.
+ *
+ * Notes are authored against the release line they document, which is what makes
+ * a note for an unreleased stable (`v0.50.0`) show up on the newest prerelease
+ * (`v0.50.0-beta.5`) and move to the stable release the moment it is published —
+ * without editing the key and without invalidating its translations. Returns
+ * `null` when the release line has no published release at all.
+ */
+export function resolveNoteReleaseVersion(noteVersion: string, publishedVersions: string[]): string | null {
+  const releaseLine = resolveReleaseLine(noteVersion);
 
-    if (docPath && !isExistingContentDoc(contentDir, docPath)) {
-      throw new Error(
-        `Release note "${version}[${index}]" points at missing upgrade guide: src/content/{locale}/${docPath}.md`
-      );
+  return publishedVersions.find(version => resolveReleaseLine(version) === releaseLine) ?? null;
+}
+
+/**
+ * Group `releaseChangelogNotes` by the release each note renders under, keeping
+ * the declaration order of the notes within one release.
+ */
+function resolveReleaseNotes(
+  publishedVersions: string[],
+  contentDir: string
+): Map<string, GeneratedReleaseChangelogNote[]> {
+  const notesByRelease = new Map<string, GeneratedReleaseChangelogNote[]>();
+
+  for (const [noteVersion, notes] of Object.entries(releaseChangelogNotes)) {
+    if (!notes.length) {
+      continue;
     }
 
-    return {
-      type: note.type,
-      summary: note.summary,
-      summaryKey: `changelog.generated.note.${version}.${index}`,
-      ...(docPath ? { docPath } : {})
-    };
-  });
+    const releaseVersion = resolveNoteReleaseVersion(noteVersion, publishedVersions);
+
+    if (!releaseVersion) {
+      console.warn(
+        `Release note "${noteVersion}" matches no release line in CHANGELOG.md; it is not rendered. ` +
+          'Give the note the version of a published release line.'
+      );
+      continue;
+    }
+
+    const releaseNotes = notes.map((note, index) => createReleaseNote(noteVersion, note, index, contentDir));
+
+    notesByRelease.set(releaseVersion, [...(notesByRelease.get(releaseVersion) ?? []), ...releaseNotes]);
+  }
+
+  return notesByRelease;
+}
+
+function createReleaseNote(
+  noteVersion: string,
+  note: ReleaseChangelogNoteSource,
+  index: number,
+  contentDir: string
+): GeneratedReleaseChangelogNote {
+  const { docPath } = note;
+
+  if (docPath && !isExistingContentDoc(contentDir, docPath)) {
+    throw new Error(
+      `Release note "${noteVersion}[${index}]" points at missing upgrade guide: src/content/{locale}/${docPath}.md`
+    );
+  }
+
+  return {
+    type: note.type,
+    summary: note.summary,
+    summaryKey: `changelog.generated.note.${noteVersion}.${index}`,
+    ...(docPath ? { docPath } : {})
+  };
 }
 
 /** A note docPath is valid only when the markdown exists for every content locale. */

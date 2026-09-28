@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T13:12:25.670Z",
+  "generatedAt": "2026-09-28T08:58:26.424Z",
   "schemaVersion": 1,
   "releases": [
     {
@@ -15,7 +15,20 @@
         "docs": 1,
         "chore": 1
       },
-      "notes": [],
+      "notes": [
+        {
+          "type": "breaking",
+          "summary": "This release swaps all three engines and renames two families. The date engine moves from @internationalized/date to date-fns with native Date values; the table engine is rebuilt on @tanstack/vue-table (TanStack column/state naming, no legacy aliases); the form engine is rebuilt on @tanstack/vue-form (useForm returns a context object, initialValues becomes defaultValues). NavigationMenu is removed in favor of NavMenu; SDrawer renames to SSheet while SBottomSheet becomes the new gesture-driven SDrawer; presentation-only headless families (card/empty/list/skeleton/badge/tag) are removed, and SPopper/SArrow are no longer exported from the UI package. See the upgrade guide for the full migration walkthrough.",
+          "summaryKey": "changelog.generated.note.v0.50.0.0",
+          "docPath": "ui/migration/v0.50.0"
+        },
+        {
+          "type": "info",
+          "summary": "Date components (Calendar, DateField, DatePicker, TimeField and their range variants) now operate on native Date values built on date-fns. The dedicated date guide maps CalendarDate/Time/DateTime values, calendar math and formatting/parsing to the new model.",
+          "summaryKey": "changelog.generated.note.v0.50.0.1",
+          "docPath": "ui/migration/v0.50.0-date"
+        }
+      ],
       "entries": [
         {
           "type": "fix",
@@ -1384,7 +1397,14 @@
         "optimization": 4,
         "chore": 24
       },
-      "notes": [],
+      "notes": [
+        {
+          "type": "breaking",
+          "summary": "This release removes the published peripheral packages @soybeanjs/ui-x, @soybeanjs/admin and @soybeanjs/chart. In headless, the RovingFocusGroup/RovingFocusItem components are replaced by the useRovingFocusGroup/useRovingFocusGroupItem composables, PropsToContext is renamed to ToContext, and transformPropsToContext becomes toContext with plain (non-invoked) function values. STable no longer rounds by default, and headless components stop injecting global helper classes. See the upgrade guide for the full migration walkthrough.",
+          "summaryKey": "changelog.generated.note.v0.40.0-beta.1.0",
+          "docPath": "ui/migration/v0.40.0"
+        }
+      ],
       "entries": [
         {
           "type": "feature",
@@ -3587,14 +3607,7 @@
         "breaking": 1,
         "docs": 30
       },
-      "notes": [
-        {
-          "type": "breaking",
-          "summary": "This release removes the published peripheral packages @soybeanjs/ui-x, @soybeanjs/admin and @soybeanjs/chart. In headless, the RovingFocusGroup/RovingFocusItem components are replaced by the useRovingFocusGroup/useRovingFocusGroupItem composables, PropsToContext is renamed to ToContext, and transformPropsToContext becomes toContext with plain (non-invoked) function values. STable no longer rounds by default, and headless components stop injecting global helper classes. See the upgrade guide for the full migration walkthrough.",
-          "summaryKey": "changelog.generated.note.v0.40.0-beta.1.0",
-          "docPath": "ui/migration/v0.40.0"
-        }
-      ],
+      "notes": [],
       "entries": [
         {
           "type": "feature",
@@ -6338,7 +6351,13 @@
         "refactor": 12,
         "chore": 14
       },
-      "notes": [],
+      "notes": [
+        {
+          "type": "breaking",
+          "summary": "This release ships a rebuilt theme system with renamed packages. @soybeanjs/shadcn-theme is now @soybeanjs/theme (createShadcnTheme → createTheme), and @soybeanjs/unocss-shadcn is now @soybeanjs/ui-uno (presetShadcn → presetUi, ShadcnPresetOptions → UiUnocssOptions). The theme menu config (menuColor / menuAccent) is removed, and custom color overrides now use `overrides: { light, dark }` instead of the legacy preset object (presets can also be passed through SConfigProvider `theme.preset`). Please update your dependencies and imports accordingly.",
+          "summaryKey": "changelog.generated.note.v0.30.0-beta.1.0"
+        }
+      ],
       "entries": [
         {
           "type": "feature",
@@ -7796,13 +7815,7 @@
         "refactor": 12,
         "chore": 14
       },
-      "notes": [
-        {
-          "type": "breaking",
-          "summary": "This release ships a rebuilt theme system with renamed packages. @soybeanjs/shadcn-theme is now @soybeanjs/theme (createShadcnTheme → createTheme), and @soybeanjs/unocss-shadcn is now @soybeanjs/ui-uno (presetShadcn → presetUi, ShadcnPresetOptions → UiUnocssOptions). The theme menu config (menuColor / menuAccent) is removed, and custom color overrides now use `overrides: { light, dark }` instead of the legacy preset object (presets can also be passed through SConfigProvider `theme.preset`). Please update your dependencies and imports accordingly.",
-          "summaryKey": "changelog.generated.note.v0.30.0-beta.1.0"
-        }
-      ],
+      "notes": [],
       "entries": [
         {
           "type": "feature",

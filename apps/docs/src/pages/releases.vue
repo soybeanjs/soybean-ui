@@ -184,6 +184,15 @@ function resolveReleaseDocLink(release: GeneratedReleaseChangelogVersion) {
   return release.notes.map(resolveNoteDocLink).find(Boolean) ?? '';
 }
 
+/**
+ * A curated breaking note already states what broke and links the upgrade guide,
+ * so the generated count banner would only repeat it. The banner stays for
+ * releases whose breaking changes carry no curated note.
+ */
+function hasCuratedBreakingNote(release: GeneratedReleaseChangelogVersion) {
+  return release.notes.some(note => note.type === 'breaking');
+}
+
 function isNewComponent(release: GeneratedReleaseChangelogVersion, component: string) {
   return release.newComponents.includes(component);
 }
@@ -743,7 +752,7 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
               <template #default>
                 <div class="space-y-5">
                   <SAlert
-                    v-if="release.typeCounts.breaking"
+                    v-if="release.typeCounts.breaking && !hasCuratedBreakingNote(release)"
                     color="destructive"
                     variant="soft"
                     icon="lucide:triangle-alert"

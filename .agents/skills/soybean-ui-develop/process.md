@@ -26,6 +26,8 @@ Check in reverse: validate first, then delivery surfaces, then exports, then lay
 - If changelog mapping, version log display, or release page was touched, `pnpm sui gen changelog` has run.
 - Non-English changelog copy synced via `pnpm sui translate changelog`, or the untranslated reason is stated.
 - For a release with breaking changes: add a `breaking` note with `docPath` in `packages/scripts/src/commands/changelog-notes.ts`, and write the upgrade guide at `apps/docs/src/content/{en,zh}/<docPath>.md` (the generator fails if either locale is missing). The sidebar and releases page pick the guide up automatically from `getUpgradeGuides()`.
+  - Key the note by the **release line** (`v0.50.0` covers `v0.50.0-beta.1` … `v0.50.0`): it renders on the newest published release of that line, so it goes live on the current prerelease and moves to the stable release the moment it is published — no key edit and no lost translation.
+  - One release shows one breaking notice: a curated `breaking` note replaces the generated count banner on the releases page, and the alert links the upgrade guide.
 - Component tests cover rendering, state, disabled, and accessibility core scenarios.
 
 ### Exports and generated files

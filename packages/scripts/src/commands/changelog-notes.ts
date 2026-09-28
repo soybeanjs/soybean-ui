@@ -5,11 +5,15 @@
  *
  * The CHANGELOG itself is generated from git commits, so it cannot carry
  * maintainer-authored guidance (for example "this release has breaking
- * changes"). Add such notes here, keyed by the version string, and they will be
- * attached to that release version and rendered on the `/releases` page.
+ * changes"). Add such notes here, keyed by the release line they document
+ * (`v0.50.0` covers `v0.50.0-beta.1` … `v0.50.0`), and they will be attached to
+ * the newest published release of that line and rendered on the `/releases`
+ * page. A note therefore goes live on the newest prerelease and moves to the
+ * stable release as soon as it is published, with no key edit and no lost
+ * translation.
  *
  * The `summary` field is written in the default locale (English) and is
- * translatable: a `summaryKey` is generated from the version + index and
+ * translatable: a `summaryKey` is generated from the note key + index and
  * registered in `apps/docs/src/generated/changelog-locales/*.json`, then
  * translated for non-English locales via `pnpm sui translate changelog`.
  */
@@ -44,6 +48,8 @@ export const releaseChangelogNotes: Record<string, ReleaseChangelogNoteSource[]>
         'Please update your dependencies and imports accordingly.'
     }
   ],
+  // Authored on the v0.40.0 line's first prerelease; it renders on the published
+  // stable `v0.40.0` while the key — and its translations — stay stable.
   'v0.40.0-beta.1': [
     {
       type: 'breaking',
