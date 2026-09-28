@@ -30,7 +30,7 @@ Usage examples for app-shell are rendered on the site.
 - 📑 **Tabs and footer** — `tabs` render in the tab region and the footer is a slot; both accept per-region props and `ui` overrides.
 - 🗂️ **A collapse that follows the panes** — a collapsed sidebar keeps its rail and folds the nested pane into its own icon rail, so the sidebar narrows to the columns it actually shows instead of leaving an expanded tree beside a shrunken rail; the trigger sits in the header, or in the sidebar's bottom corner for the modes whose first level is a top bar.
 - 🏷️ **Brand is a slot** — the shell renders no logo of its own: inject the mark through `#logo` and the app name through `#title`. The shell places them so they line up with the menu — the mark over the first-level rail, the title over the pane below it, centered while the sidebar is collapsed — and `logoPlacement` moves the region to the top of the sidebar, its bottom, or the header.
-- 📱 **Mobile drawer** — `isMobile` swaps the sidebar for the layout's dialog drawer, reusing the same brand and menu content.
+- 📱 **Mobile drawer** — an unset `isMobile` follows the viewport, and the sidebar becomes the layout's dialog drawer, reusing the same brand and menu content.
 - 🎛️ **Three override levels** — `ui` for the shell's own nodes, `layoutUi` for the layout regions it themes, `menuUi` for the menu renderer; each region also accepts a slot.
 - ♿ **Accessibility inherited** — keyboard, focus, ARIA, and RTL come from the composed families; the shell only adds structure and classes.
 
@@ -57,7 +57,7 @@ Properties for the AppShell component.
 - `side`: Side the sidebar is placed on. (type `import("@soybeanjs/headless").HorizontalSide`; default `'left'`; optional)
 - `open`: The controlled expanded state of the sidebar. Can be bound with `v-model:open`. (type `boolean`; optional)
 - `defaultOpen`: The expanded state of the sidebar when initially rendered. (type `boolean`; default `true`; optional)
-- `isMobile`: Whether the shell is in mobile view. Declarative — pair it with `useMediaQuery` from `@vueuse/core` or a server-side detection. (type `boolean`; default `false`; optional)
+- `isMobile`: Whether the shell is in mobile view. When omitted, it is forwarded unset and `SLayout` follows the viewport (`useMediaQuery('(max-width: 767.9px)')`). Pass an explicit boolean to override it, e.g. for a server-side detection. (type `boolean`; optional)
 - `layoutProps`: Properties forwarded to `SLayout`. Shell-owned options (`open`, `orientation`, `sidebarVisible`, `isMobile`, `pxToRem`) are derived from `mode`; `sidebarWidth` and `collapsedSidebarWidth` default to the widths the mode requires — override them only when the menu panes do not need to line up. (type `Omit<LayoutCompactProps, 'open' | 'defaultOpen' | 'class' | 'pxToRem' | 'orientation' | 'sidebarVisible' | 'isMobile'>`; optional)
 - `layoutUi`: Per-slot class overrides for the internal `SLayout`. Takes precedence over the shell's `layout*` UI slots. (type `Partial<LayoutUi>`; optional)
 - `logoPlacement`: Placement of the brand region. `auto` follows the mode; `sidebar` and `sidebar-bottom` need a mode whose sidebar is always a column of its own — see `AppShellLogoPlacement` for the modes that support the bottom placement. (type `AppShellLogoPlacement`; default `'auto'`; optional)
@@ -203,7 +203,7 @@ A sidebar placement also follows the menu's own dividers: the mark cell is as wi
 ### Cautions
 
 1. **The brand is yours.** There is no `logo` or `title` prop: the mark goes in `#logo`, the app name and any subtitle in `#title`. The shell renders the region and hands both slots the live `collapsed` state and the resolved `placement` so the injected content can adapt. `#title` is optional — it is hidden while the sidebar is collapsed, since the column it aligns to is folded away — and a brand without `#logo` renders no region at all.
-2. **`isMobile` is declarative.** The shell never reads `matchMedia`; pass `useMediaQuery` from `@vueuse/core` (or a server-side hint). The layout, the drawer, and the trigger all follow the prop.
+2. **`isMobile` defaults to the viewport.** The shell never reads `matchMedia` itself: it forwards the prop unset, and the layout's `useMediaQuery('(max-width: 767.9px)')` fallback decides. Pass an explicit boolean (e.g. a server-side hint) to override it.
 3. **Sidebar widths are derived — do not override them casually.** `layoutProps.sidebarWidth` / `collapsedSidebarWidth` win over the derived values, but in the split modes that breaks the alignment between the sidebar and the menu panes, and it also loses the dynamic behaviour below.
 4. **Switching modes re-creates the menu.** Each mode renders a different menu instance, so the panes' expanded state (which lives inside `SSplitNav` / `STreeMenu`) resets to the active path on a mode change.
 5. **The top bar is a `STreeNav`, not a plain menubar.** It selects through `modelValue` like the sidebar: activating a leaf emits `select` / `update:modelValue`, an entry with children only opens its popup, and an entry that carries `to` / `href` follows it as well. Set `menuProps.treeNav.collapsible` to fold the entries that no longer fit into a trailing "more" popup.

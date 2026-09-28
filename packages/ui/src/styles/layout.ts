@@ -17,7 +17,12 @@ export const layoutVariants = scv({
       '[--sl-main-gap:var(--soybean-layout-start-gap)]',
       '[--sl-header-gap:var(--soybean-layout-header-start-gap)]',
       '[--sl-footer-gap:var(--soybean-layout-footer-start-gap)]',
-      '[--sl-end-gap:0px]'
+      '[--sl-end-gap:0px]',
+      // 移动端侧栏是抽屉、不占布局流：起点间距与末端间距对齐，
+      // sidebar/floating 收紧为 0，inset 的前后内嵌间距则保持对称
+      'data-[mobile=true]:[--sl-main-gap:var(--sl-end-gap)]',
+      'data-[mobile=true]:[--sl-header-gap:var(--sl-end-gap)]',
+      'data-[mobile=true]:[--sl-footer-gap:var(--sl-end-gap)]'
     ],
     main: 'flex flex-col h-full group-data-[scroll-behavior=wrapper]/layout:overflow-y-auto transition-all-200',
     sidebarRoot: 'lt-md:hidden',
@@ -114,13 +119,14 @@ export const layoutVariants = scv({
       },
       floating: {
         root: [
-          'data-[state=expanded]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
-          'data-[state=expanded]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
-          'data-[collapsible=icon]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
-          'data-[collapsible=icon]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
-          'data-[state=expanded]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
-          'data-[collapsible=icon]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
-          'data-[orientation=vertical]:data-[stretch-footer=true]:[--sl-footer-gap:0px]'
+          // 以下间距都在侧栏宽度之外再加一个 spacing，属于"侧栏在布局流内"的桌面补偿；移动端侧栏是抽屉，由 root 的 data-[mobile=true] 规则接管
+          'data-[mobile=false]:data-[state=expanded]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
+          'data-[mobile=false]:data-[state=expanded]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
+          'data-[mobile=false]:data-[collapsible=icon]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
+          'data-[mobile=false]:data-[collapsible=icon]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
+          'data-[mobile=false]:data-[state=expanded]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
+          'data-[mobile=false]:data-[collapsible=icon]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
+          'data-[mobile=false]:data-[orientation=vertical]:data-[stretch-footer=true]:[--sl-footer-gap:0px]'
         ],
         sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))]`,
         sidebarWrapper: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] p-[--sl-half-spacing] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))] bg-card border-e-0`
@@ -128,13 +134,14 @@ export const layoutVariants = scv({
       inset: {
         root: [
           'py-[--sl-half-spacing] bg-sidebar',
-          // data-[variant=inset] 前缀用于保证特异性高于 base 上的默认值
-          'data-[variant=inset]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
-          'data-[variant=inset]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
-          'data-[variant=inset]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
-          'data-[variant=inset]:data-[orientation=vertical]:[--sl-header-gap:var(--sl-half-spacing)]',
+          // data-[variant=inset] 前缀用于保证特异性高于 base 上的默认值；
+          // 间距类规则再叠加 data-[mobile=false]，移动端改由 root 的对称内嵌间距接管
+          'data-[mobile=false]:data-[variant=inset]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
+          'data-[mobile=false]:data-[variant=inset]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
+          'data-[mobile=false]:data-[variant=inset]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
+          'data-[mobile=false]:data-[variant=inset]:data-[orientation=vertical]:[--sl-header-gap:var(--sl-half-spacing)]',
           'data-[variant=inset]:[--sl-end-gap:var(--sl-half-spacing)]',
-          'data-[variant=inset]:data-[orientation=vertical]:data-[stretch-footer=true]:[--sl-footer-gap:var(--sl-half-spacing)]'
+          'data-[mobile=false]:data-[variant=inset]:data-[orientation=vertical]:data-[stretch-footer=true]:[--sl-footer-gap:var(--sl-half-spacing)]'
         ],
         sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))]`,
         sidebarWrapper: `p-[--sl-half-spacing] w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))] border-e-0`,

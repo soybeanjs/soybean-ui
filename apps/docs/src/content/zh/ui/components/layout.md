@@ -16,7 +16,7 @@ head:
 - **三种变体** — `sidebar`（带边框）、`floating`（圆角阴影）、`inset`（内容带外边距和圆角）。
 - **可折叠侧边栏** — `collapsible="icon"` 折叠到 rail 宽度；`collapsible="offcanvas"` 滑出视口但保留布局占位。
 - **侧边控制** — `side="left"` 或 `side="right"` 翻转侧边栏位置，全量使用 RTL 友好的逻辑属性。
-- **移动端抽屉** — `isMobile` 将桌面侧边栏切换为基于 `Dialog` 的抽屉，自带遮罩与焦点陷阱。
+- **移动端抽屉** — `isMobile` 不传时跟随视口，将桌面侧边栏切换为基于 `Dialog` 的抽屉，自带遮罩与焦点陷阱；传入布尔值可覆盖断点。
 - **槽位级覆盖** — 每个区域（sidebar、header、tab、content、footer）都接受对应的 `*Props`，用于精细化的属性透传。
 - **CSS 变量驱动** — 尺寸（`sidebarWidth`、`headerHeight`、`tabHeight`、`footerHeight`）以 rem 形式输出 CSS 变量，便于运行时定制。
 - **尺寸缩放** — `size`（xs…2xl）通过 `themeSizeRatio` 缩放布局间距与基础字号。
@@ -49,7 +49,7 @@ head:
 | Headless / 样式分离 | ✅ `@soybeanjs/headless/layout` 提供逻辑 + 结构；`@soybeanjs/ui` 提供 `scv()` 配方 | ❌ 单一样式包                                           | ❌ 单一样式包                                                       |
 | 侧边栏变体          | `sidebar` / `floating` / `inset`                                                   | 仅 `sider`                                              | 仅 `aside`                                                          |
 | 折叠模式            | `icon`（rail）+ `offcanvas`（滑出）                                                | `collapsible` + `collapsedWidth`                        | —                                                                   |
-| 移动端抽屉          | 内置基于 `Dialog` 的抽屉（`isMobile` prop）                                        | 需要组合 `Drawer`                                       | 需要组合 `Drawer`                                                   |
+| 移动端抽屉          | 内置基于 `Dialog` 的抽屉（默认跟随视口）                                           | 需要组合 `Drawer`                                       | 需要组合 `Drawer`                                                   |
 | 固定头部/底部       | `Layout` 的 `fixedTop` / `fixedFooter` + 自动占位元素                              | 需要手动 sticky CSS                                     | 需要手动 sticky CSS                                                 |
 | 方向                | `Layout` `orientation="horizontal" \| "vertical"`                                  | —                                                       | —                                                                   |
 | 滚动行为            | `Layout` 的 `wrapper` / `content`                                                  | —                                                       | —                                                                   |
@@ -62,7 +62,7 @@ head:
 
 1. **CSS 变量以 rem 为单位** — `sidebarWidth`、`collapsedSidebarWidth`、`headerHeight`、`tabHeight`、`footerHeight`、`mobileSidebarWidth` 通过 `pxToRem` 转换（默认 `px / 16`）。如根字号非 16px，请传入自定义 `pxToRem`。
 2. **`size` 缩放间距与字号** — UI 包装层将像素尺寸乘以 `themeSizeRatio[size] / themeSizeMap.md`，因此 `size="xs"` 会同时缩小文字与侧边栏宽度。
-3. **移动端检测是声明式的** — `isMobile` 是 prop（非内部逻辑）。可搭配 `@vueuse/core` 的 `useMediaQuery` 或服务端检测来切换抽屉。
+3. **`isMobile` 默认跟随视口** — 不传（默认）时布局跟随 `useMediaQuery('(max-width: 767.9px)')`，与桌面侧栏被隐藏的断点（`lt-md`）一致；传入显式布尔值即可覆盖，例如服务端判断或宿主自己的断点。抽屉会被传送到布局之外，因此移动端侧栏不占布局空间：起点间距（`--soybean-layout-start-gap`、`--soybean-layout-header-start-gap`、`--soybean-layout-footer-start-gap`）归零，各变体回落到自身的末端间距 —— `sidebar`/`floating` 变为通栏，`inset` 则前后两侧对称内嵌。
 4. **`LayoutTrigger` 与 `LayoutRail` 的区别** — `LayoutTrigger` 是头部中可聚焦的按钮，面向键盘用户；`LayoutRail` 是边缘拖拽热区，`tabindex="-1"`（仅可点击）。两者都通过 `aria-expanded` 反映状态。
 5. **`Layout` 占位元素** — 启用 `fixedTop` 或 `fixedFooter` 时，`LayoutPlaceholder` 渲染空的占位 div（`data-soybean-layout-{header|tab|footer}-placeholder`），防止内容滑入固定区域下方。
 6. **`scrollId` 用于滚动恢复** — `Layout` 在滚动元素（wrapper 或 content，取决于 `scrollBehavior`）上生成稳定的 `soybean-layout-scroll-{id}`。传入 `scrollId` 可使其在 SSR/CSR 间确定一致。
@@ -83,7 +83,7 @@ head:
 
 ### 移动端模式如何工作？
 
-传入 `isMobile` 即可将桌面侧边栏切换为基于 `Dialog` 的抽屉。抽屉继承 `mobileSidebarWidth` 并复用同一个 `sidebar` slot 内容。遮罩与焦点陷阱由底层 `Dialog` 组件提供。
+不传 `isMobile`（默认）时布局跟随视口，自动把桌面侧边栏换成基于 `Dialog` 的抽屉；传入布尔值可自行固定模式。抽屉继承 `mobileSidebarWidth` 并复用同一个 `sidebar` slot 内容。遮罩与焦点陷阱由底层 `Dialog` 组件提供。
 
 ### 可以把侧边栏放在右侧吗？
 

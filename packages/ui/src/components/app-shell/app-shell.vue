@@ -46,7 +46,8 @@ const props = withDefaults(defineProps<AppShellProps>(), {
   side: 'left',
   open: undefined,
   defaultOpen: true,
-  isMobile: false,
+  // Unset on purpose: forwarded as-is so the layout follows the viewport.
+  isMobile: undefined,
   logoPlacement: 'auto',
   expandStrategy: 'selected',
   modelValue: undefined,

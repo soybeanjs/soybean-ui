@@ -182,10 +182,11 @@ export interface AppShellProps {
    */
   defaultOpen?: boolean;
   /**
-   * Whether the shell is in mobile view. Declarative — pair it with
-   * `useMediaQuery` from `@vueuse/core` or a server-side detection.
+   * Whether the shell is in mobile view.
    *
-   * @default false
+   * When omitted, it is forwarded unset and `SLayout` follows the viewport
+   * (`useMediaQuery('(max-width: 767.9px)')`). Pass an explicit boolean to
+   * override it, e.g. for a server-side detection.
    */
   isMobile?: boolean;
   /**

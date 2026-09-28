@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
 import type { CSSProperties } from 'vue';
+import { useMediaQuery } from '@vueuse/core';
 import { toContext } from '../../shared';
 import { useControllableState } from '../../composables';
-import { layoutCssVars } from './shared';
+import { layoutCssVars, layoutMobileQuery } from './shared';
 import { provideLayoutRootContext, useLayoutUi } from './context';
 import type { LayoutRootProps, LayoutRootEmits, LayoutSidebarState } from './types';
 
@@ -23,7 +24,7 @@ const props = withDefaults(defineProps<LayoutRootProps>(), {
   sidebarVisible: true,
   sidebarWidth: 240,
   collapsedSidebarWidth: 50,
-  isMobile: false,
+  isMobile: undefined,
   mobileSidebarWidth: 240,
   headerVisible: true,
   headerHeight: 56,
@@ -38,6 +39,8 @@ const props = withDefaults(defineProps<LayoutRootProps>(), {
 const emit = defineEmits<LayoutRootEmits>();
 
 const cls = useLayoutUi('root');
+
+const mediaIsMobile = useMediaQuery(layoutMobileQuery);
 
 const open = useControllableState(
   () => props.open,
@@ -61,6 +64,24 @@ const fixedFooter = computed(() => props.scrollBehavior === 'content' || Boolean
 const stretchFooter = computed(() => fixedFooter.value && props.stretchFooter);
 const isOffcanvas = computed(() => props.collapsible === 'offcanvas');
 
+/**
+ * Whether the component is in its mobile view.
+ *
+ * `isMobile` stays optional on purpose: leaving it unset follows the viewport,
+ * while an explicit boolean overrides that — the hook for a server-side
+ * detection or a breakpoint the host owns.
+ */
+const isMobile = computed(() => props.isMobile ?? mediaIsMobile.value);
+
+/**
+ * Whether the sidebar occupies layout flow.
+ *
+ * On mobile the sidebar is rendered as a `Dialog`-based drawer that is teleported
+ * out of the layout, so it reserves no space: every sidebar-derived offset
+ * collapses to zero and the sidebar region spans the full layout height.
+ */
+const hasInlineSidebar = computed(() => props.sidebarVisible && !isMobile.value);
+
 const style = computed<CSSProperties>(() => {
   const sidebarWidth = props.pxToRem(props.sidebarWidth);
   const collapsedSidebarWidth = isOffcanvas.value ? '0' : props.pxToRem(props.collapsedSidebarWidth);
@@ -70,11 +91,13 @@ const style = computed<CSSProperties>(() => {
   const tabHeight = props.pxToRem(props.tabHeight);
   const footerHeight = props.pxToRem(props.footerHeight);
 
-  const startGap = props.sidebarVisible ? `${currentSidebarWidth}rem` : '0px';
+  const startGap = hasInlineSidebar.value ? `${currentSidebarWidth}rem` : '0px';
   const headerStartGap = isHorizontal.value ? startGap : '0px';
   const footerStartGap = hasFooterStartGap() ? startGap : '0px';
-  const sidebarTopGap = props.headerVisible && !isHorizontal.value ? `${headerHeight}rem` : '0px';
-  const sidebarBottomGap = props.footerVisible && footerStartGap === '0px' ? `${footerHeight}rem` : '0px';
+  const sidebarTopGap =
+    hasInlineSidebar.value && props.headerVisible && !isHorizontal.value ? `${headerHeight}rem` : '0px';
+  const sidebarBottomGap =
+    hasInlineSidebar.value && props.footerVisible && footerStartGap === '0px' ? `${footerHeight}rem` : '0px';
   const sidebarHeight =
     sidebarTopGap === '0px' && sidebarBottomGap === '0px'
       ? '100%'
@@ -123,12 +146,12 @@ provideLayoutRootContext({
   ...toContext(props, [
     'sidebarWidth',
     'collapsedSidebarWidth',
-    'isMobile',
     'sidebarVisible',
     'headerVisible',
     'tabVisible',
     'footerVisible'
   ]),
+  isMobile,
   open,
   mobileOpen,
   mobileSidebarWidth,

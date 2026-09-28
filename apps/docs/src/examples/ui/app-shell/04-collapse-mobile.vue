@@ -6,9 +6,9 @@ import { appShellItems } from './menu';
 
 const open = ref(true);
 
-// Mobile detection is declarative: the shell receives it as a prop, so any
-// breakpoint strategy (media query, server hint, host state) works.
-const isMobile = useMediaQuery('(max-width: 768px)');
+// `isMobile` is optional: unset follows the viewport, so the switch only has to
+// pin it to `true` and hand `undefined` back to let the shell decide again.
+const isMobile = useMediaQuery('(max-width: 767.9px)');
 
 const forceMobile = ref(false);
 
@@ -34,7 +34,7 @@ const active = ref('overview');
         v-model:open="open"
         mode="sidebar"
         :items="appShellItems"
-        :is-mobile="forceMobile || isMobile"
+        :is-mobile="forceMobile ? true : undefined"
       >
         <template #logo>
           <SIcon icon="lucide:hexagon" class="size-6 text-primary" />

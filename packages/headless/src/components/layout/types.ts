@@ -60,7 +60,10 @@ export interface LayoutRootProps extends BaseProps {
   /**
    * Whether the layout is in mobile view.
    *
-   * @default false
+   * When omitted, the layout follows the viewport through
+   * `useMediaQuery('(max-width: 767.9px)')` — the same breakpoint the styled
+   * desktop sidebar is hidden at. Pass an explicit boolean to override it, e.g.
+   * for a server-side detection or a host-owned breakpoint.
    */
   isMobile?: boolean;
   /**
@@ -285,13 +288,17 @@ export interface LayoutRootContextParams extends ToContext<
   LayoutRootProps,
   | 'sidebarWidth'
   | 'collapsedSidebarWidth'
-  | 'isMobile'
   | 'sidebarVisible'
   | 'headerVisible'
   | 'tabVisible'
   | 'footerVisible'
   | 'fixedFooter'
 > {
+  /**
+   * Whether the layout is in its mobile view — the `isMobile` prop, or the
+   * viewport when that prop is unset.
+   */
+  isMobile: ComputedRef<boolean>;
   /**
    * Whether the component is open.
    */

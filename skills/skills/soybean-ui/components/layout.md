@@ -15,7 +15,7 @@ The layout component structure for admin dashboards or complex applications. It 
 - **Three variants** — `sidebar` (bordered), `floating` (rounded shadow), and `inset` (content with margin and rounded corners).
 - **Collapsible sidebar** — `collapsible="icon"` collapses the sidebar to a rail width; `collapsible="offcanvas"` slides it off-canvas while preserving layout space.
 - **Side control** — `side="left"` or `side="right"` flips the sidebar position with full RTL-aware logical properties.
-- **Mobile drawer** — `isMobile` swaps the desktop sidebar for a `Dialog`-based drawer with overlay and focus trap.
+- **Mobile drawer** — unset `isMobile` follows the viewport and swaps the desktop sidebar for a `Dialog`-based drawer with overlay and focus trap; pass a boolean to override the breakpoint.
 - **Slot-level overrides** — every region (sidebar, header, tab, content, footer) accepts per-slot `*Props` for granular attribute forwarding.
 - **CSS-variable driven** — dimensions (`sidebarWidth`, `headerHeight`, `tabHeight`, `footerHeight`) emit rem-based CSS variables for runtime customization.
 - **Size scaling** — `size` (xs…2xl) scales the layout spacing and base typography through `themeSizeRatio`.
@@ -25,7 +25,7 @@ The layout component structure for admin dashboards or complex applications. It 
 - **Fixed header/footer** — `fixedTop` and `fixedFooter` keep the header/footer pinned during content scroll, with automatic placeholder elements to prevent overlap.
 - **Base z-index control** — `baseZIndex` derives the stacking order of sidebar, header, tab, and footer so multiple layouts compose predictably.
 - **Headless composition** — every region (`LayoutRoot`, `LayoutSidebar`, `LayoutRail`, `LayoutHeader`, `LayoutTab`, `LayoutContent`, `LayoutFooter`, `LayoutMobile`, `LayoutTrigger`) is exported from `@soybeanjs/headless/layout` for custom styled builds.
-- **SSR safe** — no `window`/`document` access in setup; `useId()` generates stable scroll ids for server rendering.
+- **SSR safe** — no `window`/`document` access in setup; the viewport fallback is guarded, and `useId()` generates stable scroll ids for server rendering.
 
 ## Usage
 
@@ -58,7 +58,7 @@ Properties for the Layout component.
 - `sidebarVisible`: whether to show the sidebar. (type `boolean`; default `true`; optional)
 - `sidebarWidth`: The width of the sidebar. (px) (type `number`; default `240`; optional)
 - `collapsedSidebarWidth`: The width of the sidebar when it is collapsed. (px) (type `number`; default `50`; optional)
-- `isMobile`: Whether the layout is in mobile view. (type `boolean`; default `false`; optional)
+- `isMobile`: Whether the layout is in mobile view. When omitted, the layout follows the viewport through `useMediaQuery('(max-width: 767.9px)')` — the same breakpoint the styled desktop sidebar is hidden at. Pass an explicit boolean to override it, e.g. for a server-side detection or a host-owned breakpoint. (type `boolean`; optional)
 - `mobileSidebarWidth`: The width of the sidebar in the mobile view. (px) (type `number`; default `240`; optional)
 - `headerVisible`: whether to show the header. (type `boolean`; default `true`; optional)
 - `headerHeight`: The height of the header. (px) (type `number`; default `56`; optional)
@@ -115,7 +115,7 @@ Properties for the LayoutCompact component.
 - `sidebarVisible`: whether to show the sidebar. (type `boolean`; default `true`; optional)
 - `sidebarWidth`: The width of the sidebar. (px) (type `number`; default `240`; optional)
 - `collapsedSidebarWidth`: The width of the sidebar when it is collapsed. (px) (type `number`; default `50`; optional)
-- `isMobile`: Whether the layout is in mobile view. (type `boolean`; default `false`; optional)
+- `isMobile`: Whether the layout is in mobile view. When omitted, the layout follows the viewport through `useMediaQuery('(max-width: 767.9px)')` — the same breakpoint the styled desktop sidebar is hidden at. Pass an explicit boolean to override it, e.g. for a server-side detection or a host-owned breakpoint. (type `boolean`; optional)
 - `mobileSidebarWidth`: The width of the sidebar in the mobile view. (px) (type `number`; default `240`; optional)
 - `headerVisible`: whether to show the header. (type `boolean`; default `true`; optional)
 - `headerHeight`: The height of the header. (px) (type `number`; default `56`; optional)
@@ -204,7 +204,7 @@ Properties for the LayoutRoot component.
 - `sidebarVisible`: whether to show the sidebar. (type `boolean`; default `true`; optional)
 - `sidebarWidth`: The width of the sidebar. (px) (type `number`; default `240`; optional)
 - `collapsedSidebarWidth`: The width of the sidebar when it is collapsed. (px) (type `number`; default `50`; optional)
-- `isMobile`: Whether the layout is in mobile view. (type `boolean`; default `false`; optional)
+- `isMobile`: Whether the layout is in mobile view. When omitted, the layout follows the viewport through `useMediaQuery('(max-width: 767.9px)')` — the same breakpoint the styled desktop sidebar is hidden at. Pass an explicit boolean to override it, e.g. for a server-side detection or a host-owned breakpoint. (type `boolean`; optional)
 - `mobileSidebarWidth`: The width of the sidebar in the mobile view. (px) (type `number`; default `240`; optional)
 - `headerVisible`: whether to show the header. (type `boolean`; default `true`; optional)
 - `headerHeight`: The height of the header. (px) (type `number`; default `56`; optional)
@@ -256,7 +256,7 @@ Properties for the LayoutTrigger component.
 | Headless / styled separation | ✅ `@soybeanjs/headless/layout` ships logic + structure; `@soybeanjs/ui` ships `scv()` recipes | ❌ single styled package                                | ❌ single styled package                                            |
 | Sidebar variants             | `sidebar` / `floating` / `inset`                                                               | `sider` only                                            | `aside` only                                                        |
 | Collapsible modes            | `icon` (rail) + `offcanvas` (slide out)                                                        | `collapsible` + `collapsedWidth`                        | —                                                                   |
-| Mobile drawer                | built-in `Dialog`-based drawer (`isMobile` prop)                                               | requires `Drawer` composition                           | requires `Drawer` composition                                       |
+| Mobile drawer                | built-in `Dialog`-based drawer (follows the viewport)                                          | requires `Drawer` composition                           | requires `Drawer` composition                                       |
 | Fixed header/footer          | `Layout` with `fixedTop` / `fixedFooter` + automatic placeholders                              | requires manual sticky CSS                              | requires manual sticky CSS                                          |
 | Orientation                  | `Layout` `orientation="horizontal" \| "vertical"`                                              | —                                                       | —                                                                   |
 | Scroll behavior              | `wrapper` / `content` on `Layout`                                                              | —                                                       | —                                                                   |
@@ -269,7 +269,7 @@ Properties for the LayoutTrigger component.
 
 1. **CSS variables are rem-based** — `sidebarWidth`, `collapsedSidebarWidth`, `headerHeight`, `tabHeight`, `footerHeight`, and `mobileSidebarWidth` are converted via `pxToRem` (default `px / 16`). Pass a custom `pxToRem` to align with a non-default root font size.
 2. **`size` scales spacing and typography** — the UI wrapper multiplies pixel dimensions by `themeSizeRatio[size] / themeSizeMap.md`, so `size="xs"` shrinks both text and sidebar width proportionally.
-3. **Mobile detection is declarative** — `isMobile` is a prop (not internal logic). Pair it with `@vueuse/core`'s `useMediaQuery` or a server-side detection to toggle the drawer.
+3. **`isMobile` defaults to the viewport** — unset (the default) means the layout follows `useMediaQuery('(max-width: 767.9px)')`, the same breakpoint the desktop sidebar is hidden at (`lt-md`). Pass an explicit boolean to override it, e.g. from a server-side hint or a host-owned breakpoint. The drawer is teleported out of the layout, so on mobile the sidebar reserves no space: the start gaps (`--soybean-layout-start-gap`, `--soybean-layout-header-start-gap`, `--soybean-layout-footer-start-gap`) collapse to `0`, and each variant falls back to its own end gap — `sidebar`/`floating` become full-bleed, `inset` stays inset symmetrically on both edges.
 4. **`LayoutTrigger` vs `LayoutRail`** — `LayoutTrigger` is a focusable button in the header for keyboard users; `LayoutRail` is the edge drag affordance with `tabindex="-1"` (click-only). Both reflect `aria-expanded`.
 5. **`Layout` placeholder elements** — when `fixedTop` or `fixedFooter` is enabled, `LayoutPlaceholder` renders empty spacer divs (`data-soybean-layout-{header|tab|footer}-placeholder`) to prevent content from sliding under the fixed region.
 6. **`scrollId` for scroll restoration** — `Layout` generates a stable `soybean-layout-scroll-{id}` on the scrolling element (wrapper or content depending on `scrollBehavior`). Pass `scrollId` to make it deterministic across SSR/CSR.
@@ -290,7 +290,7 @@ Set `collapsible="icon"` (default) and `collapsedSidebarWidth` to the rail width
 
 ### How does mobile mode work?
 
-Pass `isMobile` to swap the desktop sidebar for a `Dialog`-based drawer. The drawer inherits `mobileSidebarWidth` and reuses the same `sidebar` slot content. The drawer overlay and focus trap are provided by the underlying `Dialog` component.
+Leave `isMobile` unset (the default) and the layout follows the viewport, swapping the desktop sidebar for a `Dialog`-based drawer; pass a boolean to pin the mode yourself. The drawer inherits `mobileSidebarWidth` and reuses the same `sidebar` slot content. The drawer overlay and focus trap are provided by the underlying `Dialog` component.
 
 ### Can I render the sidebar on the right?
 

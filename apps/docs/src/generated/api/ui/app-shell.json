@@ -176,9 +176,9 @@
             "name": "isMobile",
             "type": "boolean",
             "required": false,
-            "description": "Whether the shell is in mobile view. Declarative — pair it with\n`useMediaQuery` from `@vueuse/core` or a server-side detection.",
+            "description": "Whether the shell is in mobile view.\n\nWhen omitted, it is forwarded unset and `SLayout` follows the viewport\n(`useMediaQuery('(max-width: 767.9px)')`). Pass an explicit boolean to\noverride it, e.g. for a server-side detection.",
             "descriptionKey": "api.generated.packages_ui_src_components_app_shell_types.appshellprops.members.ismobile",
-            "default": "false",
+            "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/ui/src/components/app-shell/types.ts",
             "referencedTypes": []

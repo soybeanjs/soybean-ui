@@ -1,8 +1,36 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import { LayoutTrigger, LayoutRail } from '@soybeanjs/headless/layout';
 import SLayout from '@/components/layout/layout.vue';
+
+/** The breakpoint the headless root falls back to when `isMobile` is unset. */
+const LAYOUT_MOBILE_QUERY = '(max-width: 767.9px)';
+
+/**
+ * happy-dom reports a 1024px viewport, so the layout's viewport default resolves
+ * to the desktop path everywhere else in this suite. Swap `matchMedia` for a
+ * stub that always reports `matches` to pin the mobile branch.
+ */
+function mockMediaQuery(matches: boolean): () => void {
+  const originalMatchMedia = window.matchMedia;
+  const mediaQueryList = {
+    matches,
+    media: LAYOUT_MOBILE_QUERY,
+    onchange: null,
+    addEventListener: () => undefined,
+    removeEventListener: () => undefined,
+    addListener: () => undefined,
+    removeListener: () => undefined,
+    dispatchEvent: () => false
+  };
+
+  window.matchMedia = vi.fn().mockReturnValue(mediaQueryList) as unknown as typeof window.matchMedia;
+
+  return () => {
+    window.matchMedia = originalMatchMedia;
+  };
+}
 
 describe('SLayout', () => {
   describe('rendering', () => {
@@ -521,6 +549,151 @@ describe('SLayout', () => {
       expect(wrapper.find('[data-soybean-layout-root]').attributes('data-mobile')).toBe('true');
 
       wrapper.unmount();
+    });
+
+    /**
+     * The mobile sidebar is a `Dialog`-based drawer teleported out of the layout,
+     * so it reserves no space: the start gaps that push `main`, `header`, and
+     * `footer` beside the sidebar collapse, and the desktop sidebar offsets stop
+     * applying.
+     */
+    it('collapses every sidebar-derived offset on mobile', () => {
+      const wrapper = mount(SLayout, {
+        props: { isMobile: true },
+        slots: {
+          sidebar: '<div>Sidebar</div>',
+          default: '<div>Main</div>'
+        },
+        attachTo: document.body
+      });
+
+      const style = wrapper.find('[data-soybean-layout-root]').attributes('style') || '';
+
+      expect(style).toContain('--soybean-layout-start-gap: 0px');
+      expect(style).toContain('--soybean-layout-header-start-gap: 0px');
+      expect(style).toContain('--soybean-layout-footer-start-gap: 0px');
+      expect(style).toContain('--soybean-layout-sidebar-top-gap: 0px');
+      expect(style).toContain('--soybean-layout-sidebar-bottom-gap: 0px');
+      expect(style).toContain('--soybean-layout-sidebar-height: 100%');
+
+      wrapper.unmount();
+    });
+
+    /**
+     * A vertical layout offsets the sidebar below the header on desktop; on mobile
+     * the drawer spans the viewport, so the offset must drop even though the
+     * orientation is unchanged.
+     */
+    it('drops the vertical sidebar offset on mobile', () => {
+      const wrapper = mount(SLayout, {
+        props: { isMobile: true, orientation: 'vertical' },
+        slots: {
+          sidebar: '<div>Sidebar</div>',
+          default: '<div>Main</div>'
+        },
+        attachTo: document.body
+      });
+
+      const style = wrapper.find('[data-soybean-layout-root]').attributes('style') || '';
+
+      expect(style).toContain('--soybean-layout-sidebar-top-gap: 0px');
+      expect(style).toContain('--soybean-layout-sidebar-height: 100%');
+
+      wrapper.unmount();
+    });
+
+    it('collapses the start gap on mobile for every variant', () => {
+      for (const variant of ['sidebar', 'floating', 'inset'] as const) {
+        const wrapper = mount(SLayout, {
+          props: { isMobile: true, variant },
+          slots: {
+            sidebar: '<div>Sidebar</div>',
+            default: '<div>Main</div>'
+          },
+          attachTo: document.body
+        });
+
+        const style = wrapper.find('[data-soybean-layout-root]').attributes('style') || '';
+        expect(style).toContain('--soybean-layout-start-gap: 0px');
+
+        wrapper.unmount();
+      }
+    });
+
+    it('keeps the desktop offsets when isMobile is false', () => {
+      const wrapper = mount(SLayout, {
+        props: { isMobile: false },
+        slots: {
+          sidebar: '<div>Sidebar</div>',
+          default: '<div>Main</div>'
+        },
+        attachTo: document.body
+      });
+
+      const root = wrapper.find('[data-soybean-layout-root]');
+      const style = root.attributes('style') || '';
+
+      expect(root.attributes('data-mobile')).toBe('false');
+      expect(style).toContain('--soybean-layout-start-gap: 15rem');
+
+      wrapper.unmount();
+    });
+  });
+
+  /**
+   * `isMobile` is optional: unset follows the viewport, an explicit boolean wins.
+   * The viewport side is what the `SLayout` default now relies on, and the
+   * override is the hook for a server-side detection.
+   */
+  describe('viewport default', () => {
+    it('follows the viewport when isMobile is unset', () => {
+      const restore = mockMediaQuery(true);
+
+      try {
+        const wrapper = mount(SLayout, {
+          slots: {
+            sidebar: '<div>Sidebar</div>',
+            default: '<div>Main</div>'
+          },
+          attachTo: document.body
+        });
+
+        const root = wrapper.find('[data-soybean-layout-root]');
+
+        expect(root.attributes('data-mobile')).toBe('true');
+        expect(root.attributes('style') || '').toContain('--soybean-layout-start-gap: 0px');
+        // The desktop sidebar is replaced by the drawer, not merely styled away.
+        expect(wrapper.find('[data-soybean-layout-sidebar]').exists()).toBe(false);
+
+        wrapper.unmount();
+      } finally {
+        restore();
+      }
+    });
+
+    it('lets an explicit isMobile override the viewport', () => {
+      const restore = mockMediaQuery(true);
+
+      try {
+        const wrapper = mount(SLayout, {
+          props: { isMobile: false },
+          slots: {
+            sidebar: '<div>Sidebar</div>',
+            default: '<div>Main</div>'
+          },
+          attachTo: document.body
+        });
+
+        const root = wrapper.find('[data-soybean-layout-root]');
+
+        expect(root.attributes('data-mobile')).toBe('false');
+        expect(root.attributes('style') || '').toContain('--soybean-layout-start-gap: 15rem');
+        expect(wrapper.find('[data-soybean-layout-sidebar]').exists()).toBe(true);
+
+        wrapper.unmount();
+      } finally {
+        restore();
+      }
     });
   });
 

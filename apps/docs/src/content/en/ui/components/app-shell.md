@@ -31,7 +31,7 @@ Like `SLayout`, the shell is router-agnostic: it takes a menu tree, breadcrumb i
 - 📑 **Tabs and footer** — `tabs` render in the tab region and the footer is a slot; both accept per-region props and `ui` overrides.
 - 🗂️ **A collapse that follows the panes** — a collapsed sidebar keeps its rail and folds the nested pane into its own icon rail, so the sidebar narrows to the columns it actually shows instead of leaving an expanded tree beside a shrunken rail; the trigger sits in the header, or in the sidebar's bottom corner for the modes whose first level is a top bar.
 - 🏷️ **Brand is a slot** — the shell renders no logo of its own: inject the mark through `#logo` and the app name through `#title`. The shell places them so they line up with the menu — the mark over the first-level rail, the title over the pane below it, centered while the sidebar is collapsed — and `logoPlacement` moves the region to the top of the sidebar, its bottom, or the header.
-- 📱 **Mobile drawer** — `isMobile` swaps the sidebar for the layout's dialog drawer, reusing the same brand and menu content.
+- 📱 **Mobile drawer** — an unset `isMobile` follows the viewport, and the sidebar becomes the layout's dialog drawer, reusing the same brand and menu content.
 - 🎛️ **Three override levels** — `ui` for the shell's own nodes, `layoutUi` for the layout regions it themes, `menuUi` for the menu renderer; each region also accepts a slot.
 - ♿ **Accessibility inherited** — keyboard, focus, ARIA, and RTL come from the composed families; the shell only adds structure and classes.
 
@@ -102,7 +102,7 @@ A sidebar placement also follows the menu's own dividers: the mark cell is as wi
 ### Cautions
 
 1. **The brand is yours.** There is no `logo` or `title` prop: the mark goes in `#logo`, the app name and any subtitle in `#title`. The shell renders the region and hands both slots the live `collapsed` state and the resolved `placement` so the injected content can adapt. `#title` is optional — it is hidden while the sidebar is collapsed, since the column it aligns to is folded away — and a brand without `#logo` renders no region at all.
-2. **`isMobile` is declarative.** The shell never reads `matchMedia`; pass `useMediaQuery` from `@vueuse/core` (or a server-side hint). The layout, the drawer, and the trigger all follow the prop.
+2. **`isMobile` defaults to the viewport.** The shell never reads `matchMedia` itself: it forwards the prop unset, and the layout's `useMediaQuery('(max-width: 767.9px)')` fallback decides. Pass an explicit boolean (e.g. a server-side hint) to override it.
 3. **Sidebar widths are derived — do not override them casually.** `layoutProps.sidebarWidth` / `collapsedSidebarWidth` win over the derived values, but in the split modes that breaks the alignment between the sidebar and the menu panes, and it also loses the dynamic behaviour below.
 4. **Switching modes re-creates the menu.** Each mode renders a different menu instance, so the panes' expanded state (which lives inside `SSplitNav` / `STreeMenu`) resets to the active path on a mode change.
 5. **The top bar is a `STreeNav`, not a plain menubar.** It selects through `modelValue` like the sidebar: activating a leaf emits `select` / `update:modelValue`, an entry with children only opens its popup, and an entry that carries `to` / `href` follows it as well. Set `menuProps.treeNav.collapsible` to fold the entries that no longer fit into a trailing "more" popup.

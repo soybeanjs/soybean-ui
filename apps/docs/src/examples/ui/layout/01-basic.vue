@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { useMediaQuery } from '@vueuse/core';
 import {
   SBreadcrumb,
   SButton,
@@ -30,8 +29,8 @@ import type {
 import { themeSizeOptions } from '~/constants/theme';
 import { treeMenuItems } from '../tree-menu/data';
 
-const isMobile = useMediaQuery('(max-width: 768px)');
-
+// `isMobile` is left unset on purpose: the layout follows the viewport, so the
+// demo narrows into the drawer without any media-query wiring of its own.
 const orientation = shallowRef<DataOrientation>('horizontal');
 
 const orientations: SelectOptionData<DataOrientation>[] = [
@@ -215,7 +214,6 @@ const fullContent = shallowRef(false);
         :variant="variant"
         :collapsible="collapsible"
         :full-content="fullContent"
-        :is-mobile="isMobile"
         :scroll-behavior="scrollBehavior"
         :fixed-top="fixedTop"
         :fixed-footer="fixedFooter"

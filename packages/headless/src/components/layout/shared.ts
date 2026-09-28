@@ -1,3 +1,13 @@
+/**
+ * Viewport query that decides whether a layout is in its mobile view when
+ * `isMobile` is left unset.
+ *
+ * `767.9px` is the upper edge of the styled layer's `lt-md` breakpoint (UnoCSS
+ * `md` is `768px`), so the drawer and the `lt-md:hidden` desktop sidebar switch
+ * at the very same width instead of one pixel apart.
+ */
+export const layoutMobileQuery = '(max-width: 767.9px)';
+
 export const layoutCssVars = {
   sidebarWidth: '--soybean-sidebar-width',
   collapsedSidebarWidth: '--soybean-collapsed-sidebar-width',

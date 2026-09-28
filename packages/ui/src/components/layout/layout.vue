@@ -13,6 +13,8 @@ defineOptions({
 
 const props = withDefaults(defineProps<LayoutProps>(), {
   open: undefined,
+  // Unset on purpose: the headless root then follows the viewport.
+  isMobile: undefined,
   size: 'md',
   defaultOpen: true,
   sidebarVisible: true,

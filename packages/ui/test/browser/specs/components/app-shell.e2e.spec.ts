@@ -961,6 +961,26 @@ describe('SAppShell (e2e)', () => {
 
       unmount();
     });
+
+    /**
+     * `isMobile` is optional: at a phone viewport the shell follows the viewport
+     * on its own, so the host needs no media-query wiring to get the drawer.
+     */
+    it('follows the viewport when isMobile is unset', async () => {
+      await page.viewport(390, 800);
+
+      const { unmount } = await renderComponent(createHarness({ items }));
+
+      const trigger = page.getByRole('button', { name: 'Toggle Sidebar' });
+
+      await expect.element(trigger).toBeVisible();
+      await userEvent.click(trigger);
+
+      await expect.element(page.getByRole('dialog')).toBeVisible();
+      expect(query('[data-soybean-layout-mobile]')).not.toBeNull();
+
+      unmount();
+    });
   });
 
   describe('accessibility', () => {
