@@ -255,6 +255,10 @@ Because the title's cell is a sidebar column like any other: it takes the width 
 
 Set `layoutProps.sidebarWidth` / `collapsedSidebarWidth` for the `sidebar` mode. In the split modes leave them alone: the widths are computed from the pane metrics of the active `size`, and overriding them desynchronises the sidebar from the menu.
 
+### How do I open or close the mobile drawer?
+
+Bind `v-model:mobileOpen` (`default-mobile-open` when uncontrolled). On mobile the layout replaces the desktop sidebar with a drawer, so the drawer carries its own state next to `open`: `open` / `v-model:open` keeps controlling the desktop collapse, and the shell's trigger toggles whichever state the current mode renders. One binding cannot serve both — the desktop sidebar starts expanded while the drawer has to start closed.
+
 ### How do I keep the top bar in sync with the route?
 
 The same way as the sidebar: keep `v-model` in sync and the bar highlights the active entry, including through nested levels — an ancestor whose child is active is marked as well. Entries with `to` / `href` navigate as well as report, so a routed app can either let the router drive `v-model` or rely on the activation the shell reports.
