@@ -182,11 +182,25 @@ export interface AppShellProps {
    */
   defaultOpen?: boolean;
   /**
+   * The controlled open state of the mobile drawer. Can be bound with `v-model:mobileOpen`.
+   *
+   * The shell renders the drawer through `SLayout`, where the drawer is the
+   * mobile counterpart of the desktop sidebar and carries its own state.
+   */
+  mobileOpen?: boolean;
+  /**
+   * The open state of the mobile drawer when it is initially rendered.
+   *
+   * @default false
+   */
+  defaultMobileOpen?: boolean;
+  /**
    * Whether the shell is in mobile view.
    *
-   * When omitted, it is forwarded unset and `SLayout` follows the viewport
-   * (`useMediaQuery('(max-width: 767.9px)')`). Pass an explicit boolean to
-   * override it, e.g. for a server-side detection.
+   * When omitted, it is forwarded unset and `SLayout` resolves the mode: a
+   * viewport published by a host through `provideViewportContext`, then
+   * `useMediaQuery('(max-width: 767.9px)')`. Pass an explicit boolean to force
+   * it, e.g. for a server-side detection.
    */
   isMobile?: boolean;
   /**
@@ -199,7 +213,15 @@ export interface AppShellProps {
    */
   layoutProps?: Omit<
     LayoutCompactProps,
-    'open' | 'defaultOpen' | 'orientation' | 'sidebarVisible' | 'isMobile' | 'pxToRem' | 'class'
+    | 'open'
+    | 'defaultOpen'
+    | 'mobileOpen'
+    | 'defaultMobileOpen'
+    | 'orientation'
+    | 'sidebarVisible'
+    | 'isMobile'
+    | 'pxToRem'
+    | 'class'
   >;
   /**
    * Per-slot class overrides for the internal `SLayout`. Takes precedence over
@@ -310,6 +332,10 @@ export interface AppShellEmits {
    * Emitted when the sidebar expanded state changes.
    */
   'update:open': [open: boolean];
+  /**
+   * Emitted when the mobile drawer open state changes.
+   */
+  'update:mobileOpen': [open: boolean];
   /**
    * Emitted when the active menu value changes.
    */

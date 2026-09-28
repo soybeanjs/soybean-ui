@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "AppShellProps",
         "type": "Interface AppShellProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<UiClass<AppShellUiSlot>>; size?: ThemeSize; mode?: AppShellMode; side?: import(\"@soybeanjs/headless\").HorizontalSide; open?: boolean; defaultOpen?: boolean; isMobile?: boolean; layoutProps?: Omit<LayoutCompactProps, 'open' | 'defaultOpen' | 'class' | 'pxToRem' | 'orientation' | 'sidebarVisible' | 'isMobile'>; layoutUi?: Partial<LayoutUi>; logoPlacement?: AppShellLogoPlacement; expandStrategy?: TreeMenuExpandStrategy; items: AppShellMenuItem[]; modelValue?: string; menuProps?: AppShellMenuProps; menuUi?: AppShellMenuUi; breadcrumbs?: BreadcrumbOptionData[]; breadcrumbVisible?: boolean; breadcrumbProps?: Omit<BreadcrumbCompactProps<BreadcrumbOptionData>, 'items'>; breadcrumbUi?: Partial<BreadcrumbUi>; tabs?: PageTabsOptionData[]; tabValue?: string; tabProps?: Omit<PageTabsCompactProps<PageTabsOptionData>, 'modelValue' | 'defaultValue' | 'items'>; tabUi?: Partial<PageTabsUi>; triggerVisible?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<UiClass<AppShellUiSlot>>; size?: ThemeSize; mode?: AppShellMode; side?: import(\"@soybeanjs/headless\").HorizontalSide; open?: boolean; defaultOpen?: boolean; mobileOpen?: boolean; defaultMobileOpen?: boolean; isMobile?: boolean; layoutProps?: Omit<LayoutCompactProps, 'open' | 'defaultOpen' | 'class' | 'pxToRem' | 'mobileOpen' | 'defaultMobileOpen' | 'orientation' | 'sidebarVisible' | 'isMobile'>; layoutUi?: Partial<LayoutUi>; logoPlacement?: AppShellLogoPlacement; expandStrategy?: TreeMenuExpandStrategy; items: AppShellMenuItem[]; modelValue?: string; menuProps?: AppShellMenuProps; menuUi?: AppShellMenuUi; breadcrumbs?: BreadcrumbOptionData[]; breadcrumbVisible?: boolean; breadcrumbProps?: Omit<BreadcrumbCompactProps<BreadcrumbOptionData>, 'items'>; breadcrumbUi?: Partial<BreadcrumbUi>; tabs?: PageTabsOptionData[]; tabValue?: string; tabProps?: Omit<PageTabsCompactProps<PageTabsOptionData>, 'modelValue' | 'defaultValue' | 'items'>; tabUi?: Partial<PageTabsUi>; triggerVisible?: boolean }",
         "description": "Properties for the AppShell component.",
         "descriptionKey": "api.generated.packages_ui_src_components_app_shell_types.appshellprops.props",
         "sourcePath": "packages/ui/src/components/app-shell/types.ts",
@@ -173,10 +173,32 @@
             "referencedTypes": []
           },
           {
+            "name": "mobileOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled open state of the mobile drawer. Can be bound with `v-model:mobileOpen`.\n\nThe shell renders the drawer through `SLayout`, where the drawer is the\nmobile counterpart of the desktop sidebar and carries its own state.",
+            "descriptionKey": "api.generated.packages_ui_src_components_app_shell_types.appshellprops.members.mobileopen",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/app-shell/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultMobileOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "The open state of the mobile drawer when it is initially rendered.",
+            "descriptionKey": "api.generated.packages_ui_src_components_app_shell_types.appshellprops.members.defaultmobileopen",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/app-shell/types.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "isMobile",
             "type": "boolean",
             "required": false,
-            "description": "Whether the shell is in mobile view.\n\nWhen omitted, it is forwarded unset and `SLayout` follows the viewport\n(`useMediaQuery('(max-width: 767.9px)')`). Pass an explicit boolean to\noverride it, e.g. for a server-side detection.",
+            "description": "Whether the shell is in mobile view.\n\nWhen omitted, it is forwarded unset and `SLayout` resolves the mode: a\nviewport published by a host through `provideViewportContext`, then\n`useMediaQuery('(max-width: 767.9px)')`. Pass an explicit boolean to force\nit, e.g. for a server-side detection.",
             "descriptionKey": "api.generated.packages_ui_src_components_app_shell_types.appshellprops.members.ismobile",
             "default": null,
             "inheritedFrom": null,
@@ -185,7 +207,7 @@
           },
           {
             "name": "layoutProps",
-            "type": "Omit<LayoutCompactProps, 'open' | 'defaultOpen' | 'class' | 'pxToRem' | 'orientation' | 'sidebarVisible' | 'isMobile'>",
+            "type": "Omit<LayoutCompactProps, 'open' | 'defaultOpen' | 'class' | 'pxToRem' | 'mobileOpen' | 'defaultMobileOpen' | 'orientation' | 'sidebarVisible' | 'isMobile'>",
             "required": false,
             "description": "Properties forwarded to `SLayout`.\n\nShell-owned options (`open`, `orientation`, `sidebarVisible`, `isMobile`,\n`pxToRem`) are derived from `mode`; `sidebarWidth` and\n`collapsedSidebarWidth` default to the widths the mode requires — override\nthem only when the menu panes do not need to line up.",
             "descriptionKey": "api.generated.packages_ui_src_components_app_shell_types.appshellprops.members.layoutprops",
@@ -586,7 +608,7 @@
         "kind": "emits",
         "name": "AppShellEmits",
         "type": "Interface AppShellEmits",
-        "resolvedType": "{ \"update:open\": [open: boolean]; \"update:modelValue\": [value: string]; select: [key: string, event?: Event | undefined]; open: [item: AppShellMenuItem, event?: Event | undefined]; \"update:tabValue\": [value: string]; \"update:tabs\": [tabs: PageTabsOptionData[]]; tabClick: [tab: PageTabsOptionData]; tabClose: [tab: PageTabsOptionData]; tabPin: [tab: PageTabsOptionData]; tabContextmenu: [tab: PageTabsOptionData]; tabSelectContextMenu: [menu: PageTabsContextMenuOptionData, tab: PageTabsOptionData]; tabDragStart: [tab: PageTabsDragEvent<PageTabsOptionData>]; tabDragMove: [tab: PageTabsDragEvent<PageTabsOptionData>]; tabDragReorder: [tab: PageTabsDragEvent<PageTabsOptionData>]; tabDragEnd: [tab: PageTabsDragEvent<PageTabsOptionData>]; breadcrumbClick: [item: BreadcrumbOptionData] }",
+        "resolvedType": "{ \"update:open\": [open: boolean]; \"update:mobileOpen\": [open: boolean]; \"update:modelValue\": [value: string]; select: [key: string, event?: Event | undefined]; open: [item: AppShellMenuItem, event?: Event | undefined]; \"update:tabValue\": [value: string]; \"update:tabs\": [tabs: PageTabsOptionData[]]; tabClick: [tab: PageTabsOptionData]; tabClose: [tab: PageTabsOptionData]; tabPin: [tab: PageTabsOptionData]; tabContextmenu: [tab: PageTabsOptionData]; tabSelectContextMenu: [menu: PageTabsContextMenuOptionData, tab: PageTabsOptionData]; tabDragStart: [tab: PageTabsDragEvent<PageTabsOptionData>]; tabDragMove: [tab: PageTabsDragEvent<PageTabsOptionData>]; tabDragReorder: [tab: PageTabsDragEvent<PageTabsOptionData>]; tabDragEnd: [tab: PageTabsDragEvent<PageTabsOptionData>]; breadcrumbClick: [item: BreadcrumbOptionData] }",
         "description": "Events for the AppShell component.",
         "descriptionKey": "api.generated.packages_ui_src_components_app_shell_types.appshellemits.emits",
         "sourcePath": "packages/ui/src/components/app-shell/types.ts",
@@ -600,6 +622,16 @@
             "required": true,
             "description": "Emitted when the sidebar expanded state changes.",
             "descriptionKey": "api.generated.packages_ui_src_components_app_shell_types.appshellemits.callables.update_open",
+            "sourcePath": "packages/ui/src/components/app-shell/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:mobileOpen",
+            "type": "[open: boolean]",
+            "parameters": "open: boolean",
+            "required": true,
+            "description": "Emitted when the mobile drawer open state changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_app_shell_types.appshellemits.callables.update_mobileopen",
             "sourcePath": "packages/ui/src/components/app-shell/types.ts",
             "referencedTypes": []
           },

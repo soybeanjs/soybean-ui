@@ -23,6 +23,12 @@ export type LayoutCollapsible = 'offcanvas' | 'icon';
 export type LayoutSidebarState = 'expanded' | 'collapsed';
 
 /**
+ * Where the resolved mobile view came from: an explicit host decision, or the
+ * viewport itself.
+ */
+export type LayoutMobileSource = 'explicit' | 'viewport';
+
+/**
  * Properties for the LayoutRoot component.
  */
 export interface LayoutRootProps extends BaseProps {
@@ -60,12 +66,29 @@ export interface LayoutRootProps extends BaseProps {
   /**
    * Whether the layout is in mobile view.
    *
-   * When omitted, the layout follows the viewport through
-   * `useMediaQuery('(max-width: 767.9px)')` — the same breakpoint the styled
-   * desktop sidebar is hidden at. Pass an explicit boolean to override it, e.g.
-   * for a server-side detection or a host-owned breakpoint.
+   * Resolution order: this prop, then a host viewport decision provided through
+   * `provideViewportContext` (a simulated viewport — a device frame, an embedded
+   * shell), then `useMediaQuery(mobileViewportQuery)` — the same breakpoint the
+   * styled desktop sidebar is hidden at. Pass an explicit boolean to force the
+   * mode (e.g. a server-side detection); `false` re-enables the inline sidebar
+   * even below the breakpoint.
    */
   isMobile?: boolean;
+  /**
+   * The controlled open state of the mobile drawer. Can be bound with
+   * `v-model:mobileOpen`.
+   *
+   * Kept apart from `open`, which drives the desktop sidebar: on mobile the
+   * inline sidebar is replaced by a drawer, so the two states never apply at the
+   * same time.
+   */
+  mobileOpen?: boolean;
+  /**
+   * The open state of the mobile drawer when it is initially rendered.
+   *
+   * @default false
+   */
+  defaultMobileOpen?: boolean;
   /**
    * The width of the sidebar in the mobile view. (px)
    *
@@ -165,6 +188,10 @@ export type LayoutRootEmits = {
    * Emitted when the open state changes.
    */
   'update:open': [open: boolean];
+  /**
+   * Emitted when the mobile drawer open state changes.
+   */
+  'update:mobileOpen': [open: boolean];
 };
 
 /**
@@ -295,10 +322,16 @@ export interface LayoutRootContextParams extends ToContext<
   | 'fixedFooter'
 > {
   /**
-   * Whether the layout is in its mobile view — the `isMobile` prop, or the
-   * viewport when that prop is unset.
+   * Whether the layout is in its mobile view — the `isMobile` prop, a provided
+   * host viewport, or the viewport when neither is available.
    */
   isMobile: ComputedRef<boolean>;
+  /**
+   * Where the resolved mobile view came from. `viewport` keeps the styled layer's
+   * `lt-md` fallback in charge; `explicit` means a host asked for that mode, so an
+   * explicit desktop mode below the breakpoint keeps its inline sidebar.
+   */
+  isMobileSource: ComputedRef<LayoutMobileSource>;
   /**
    * Whether the component is open.
    */
@@ -306,7 +339,7 @@ export interface LayoutRootContextParams extends ToContext<
   /**
    * Whether mobile open.
    */
-  mobileOpen: ShallowRef<boolean>;
+  mobileOpen: ShallowRef<boolean | undefined>;
   /**
    * The width of the sidebar in the mobile view. (rem)
    */

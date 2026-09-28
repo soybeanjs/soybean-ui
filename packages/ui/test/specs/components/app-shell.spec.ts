@@ -1427,6 +1427,26 @@ describe('SAppShell', () => {
     });
   });
 
+  /**
+   * The drawer is the mobile counterpart of the desktop sidebar and carries its
+   * own state, so the shell forwards both channels: `open` for the collapse,
+   * `mobileOpen` for the drawer the layout renders instead of it.
+   */
+  describe('mobile drawer', () => {
+    it('forwards the mobileOpen state to the layout drawer', async () => {
+      const wrapper = mount(SAppShell, {
+        props: { items, isMobile: true, mobileOpen: true },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      expect(document.querySelector('[data-soybean-layout-mobile]')).not.toBeNull();
+
+      wrapper.unmount();
+    });
+  });
+
   describe('accessibility', () => {
     it('has no violations for the sidebar skeleton', async () => {
       const wrapper = mount(SAppShell, {

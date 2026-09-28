@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { defineComponent, h } from 'vue';
+import { provideViewportContext } from '@soybeanjs/headless/composables';
 import { page } from 'vitest/browser';
 import SLayout from '@/components/layout/layout.vue';
 import type { LayoutProps } from '@/components/layout/types';
@@ -24,10 +25,19 @@ const SIDEBAR_WIDTH_PX = 240;
 const SPACING_PX = 16;
 const HALF_SPACING_PX = SPACING_PX / 2;
 
-function createHarness(props: LayoutProps) {
+/**
+ * `simulatedMobile` stands for a host that publishes a viewport of its own — the
+ * documentation device frame is the reference case: the browser window may be
+ * wide while the component is told it is not.
+ */
+function createHarness(props: LayoutProps, simulatedMobile?: boolean) {
   return defineComponent({
-    name: 'LayoutGeometryHarness',
+    name: simulatedMobile === undefined ? 'LayoutGeometryHarness' : 'LayoutSimulatedViewportHarness',
     setup() {
+      if (simulatedMobile !== undefined) {
+        provideViewportContext({ isMobile: simulatedMobile });
+      }
+
       return () =>
         h(
           'div',
@@ -64,8 +74,8 @@ async function expectMainGap(startPx: number, endPx: number) {
   });
 }
 
-async function renderLayout(props: LayoutProps) {
-  const { unmount } = await renderComponent(createHarness(props));
+async function renderLayout(props: LayoutProps, simulatedMobile?: boolean) {
+  const { unmount } = await renderComponent(createHarness(props, simulatedMobile));
 
   return unmount;
 }
@@ -127,6 +137,48 @@ describe('SLayout geometry', () => {
     const unmount = await renderLayout({ isMobile: true });
 
     await expectMainGap(0, 0);
+
+    unmount();
+  });
+
+  /**
+   * The mirror scene of the one above: an explicit desktop mode below the
+   * breakpoint. The JS decision keeps the inline sidebar and reserves its width,
+   * so the styled `lt-md` fallback has to stand down — hiding the sidebar while
+   * the content still reserved room for it left a 240px gutter and no navigation.
+   */
+  it('keeps the inline sidebar when isMobile is false at a phone viewport', async () => {
+    await page.viewport(390, 800);
+
+    const unmount = await renderLayout({ isMobile: false });
+
+    await expectMainGap(SIDEBAR_WIDTH_PX, 0);
+    expect(getComputedStyle(element('[data-soybean-layout-sidebar]')).display).toBe('block');
+    expect(getComputedStyle(element('[data-soybean-layout-rail]')).display).toBe('flex');
+    expect(element('[data-soybean-layout-root]').dataset.mobileSource).toBe('explicit');
+
+    unmount();
+  });
+
+  /**
+   * A host-published viewport at a desktop width: the CSS fallback cannot see it
+   * either, so only the provided decision can turn the sidebar into a drawer —
+   * exactly what a documentation device frame relies on.
+   */
+  it('follows a host-provided viewport at a desktop width', async () => {
+    const unmount = await renderLayout({}, true);
+
+    await expectMainGap(0, 0);
+    expect(document.querySelector('[data-soybean-layout-sidebar]')).toBeNull();
+    expect(element('[data-soybean-layout-root]').dataset.mobileSource).toBe('explicit');
+
+    unmount();
+  });
+
+  it('reports the viewport as the source when no host publishes one', async () => {
+    const unmount = await renderLayout({});
+
+    expect(element('[data-soybean-layout-root]').dataset.mobileSource).toBe('viewport');
 
     unmount();
   });

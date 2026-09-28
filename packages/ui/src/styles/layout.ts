@@ -25,9 +25,12 @@ export const layoutVariants = scv({
       'data-[mobile=true]:[--sl-footer-gap:var(--sl-end-gap)]'
     ],
     main: 'flex flex-col h-full group-data-[scroll-behavior=wrapper]/layout:overflow-y-auto transition-all-200',
-    sidebarRoot: 'lt-md:hidden',
+    // `lt-md:hidden` 是首帧兜底：SSR 没有 matchMedia，手机必须先按桌面渲染再由 CSS 藏起来。
+    // 但宿主显式要求桌面模式（data-mobile-source=explicit）时兜底必须让位，否则侧栏被藏起来
+    // 而布局仍按桌面预留宽度，只剩一条空槽。
+    sidebarRoot: 'lt-md:hidden group-data-[mobile-source=explicit]/layout:block',
     sidebarWrapper: [
-      `absolute inset-y-0 z-[--soybean-layout-sidebar-z-index] flex h-[--soybean-layout-sidebar-height] w-[--soybean-sidebar-width] transition-[width,opacity]-200 lt-md:hidden`,
+      `absolute inset-y-0 z-[--soybean-layout-sidebar-z-index] flex h-[--soybean-layout-sidebar-height] w-[--soybean-sidebar-width] transition-[width,opacity]-200 lt-md:hidden group-data-[mobile-source=explicit]/layout:flex`,
       'group-data-[state=collapsed]/layout:w-[--soybean-collapsed-sidebar-width] mt-[--soybean-layout-sidebar-top-gap] mb-[--soybean-layout-sidebar-bottom-gap]'
     ],
     sidebar: [
@@ -43,7 +46,7 @@ export const layoutVariants = scv({
     ],
     mobile: 'flex flex-col w-full h-full',
     rail: [
-      'absolute inset-y-0 z-20 flex w-[--sl-spacing] -translate-x-1/2 rtl:translate-x-1/2 transition-all lt-sm:hidden',
+      'absolute inset-y-0 z-20 flex w-[--sl-spacing] -translate-x-1/2 rtl:translate-x-1/2 transition-all lt-sm:hidden group-data-[mobile-source=explicit]/layout:flex',
       'after:absolute after:inset-y-0 after:start-1/2 after:content-empty after:w-[calc(var(--sl-spacing)/8)] hover:after:bg-sidebar-border'
     ],
     trigger: '',

@@ -58,7 +58,9 @@ Properties for the Layout component.
 - `sidebarVisible`: whether to show the sidebar. (type `boolean`; default `true`; optional)
 - `sidebarWidth`: The width of the sidebar. (px) (type `number`; default `240`; optional)
 - `collapsedSidebarWidth`: The width of the sidebar when it is collapsed. (px) (type `number`; default `50`; optional)
-- `isMobile`: Whether the layout is in mobile view. When omitted, the layout follows the viewport through `useMediaQuery('(max-width: 767.9px)')` — the same breakpoint the styled desktop sidebar is hidden at. Pass an explicit boolean to override it, e.g. for a server-side detection or a host-owned breakpoint. (type `boolean`; optional)
+- `isMobile`: Whether the layout is in mobile view. Resolution order: this prop, then a host viewport decision provided through `provideViewportContext` (a simulated viewport — a device frame, an embedded shell), then `useMediaQuery(mobileViewportQuery)` — the same breakpoint the styled desktop sidebar is hidden at. Pass an explicit boolean to force the mode (e.g. a server-side detection); `false` re-enables the inline sidebar even below the breakpoint. (type `boolean`; optional)
+- `mobileOpen`: The controlled open state of the mobile drawer. Can be bound with `v-model:mobileOpen`. Kept apart from `open`, which drives the desktop sidebar: on mobile the inline sidebar is replaced by a drawer, so the two states never apply at the same time. (type `boolean`; optional)
+- `defaultMobileOpen`: The open state of the mobile drawer when it is initially rendered. (type `boolean`; default `false`; optional)
 - `mobileSidebarWidth`: The width of the sidebar in the mobile view. (px) (type `number`; default `240`; optional)
 - `headerVisible`: whether to show the header. (type `boolean`; default `true`; optional)
 - `headerHeight`: The height of the header. (px) (type `number`; default `56`; optional)
@@ -89,6 +91,7 @@ Properties for the Layout component.
 Events for the Layout component.
 
 - `update:open`: Emitted when the open state changes. (type `[open: boolean]`; parameters `open: boolean`)
+- `update:mobileOpen`: Emitted when the mobile drawer open state changes. (type `[open: boolean]`; parameters `open: boolean`)
 
 #### Slots
 
@@ -115,7 +118,9 @@ Properties for the LayoutCompact component.
 - `sidebarVisible`: whether to show the sidebar. (type `boolean`; default `true`; optional)
 - `sidebarWidth`: The width of the sidebar. (px) (type `number`; default `240`; optional)
 - `collapsedSidebarWidth`: The width of the sidebar when it is collapsed. (px) (type `number`; default `50`; optional)
-- `isMobile`: Whether the layout is in mobile view. When omitted, the layout follows the viewport through `useMediaQuery('(max-width: 767.9px)')` — the same breakpoint the styled desktop sidebar is hidden at. Pass an explicit boolean to override it, e.g. for a server-side detection or a host-owned breakpoint. (type `boolean`; optional)
+- `isMobile`: Whether the layout is in mobile view. Resolution order: this prop, then a host viewport decision provided through `provideViewportContext` (a simulated viewport — a device frame, an embedded shell), then `useMediaQuery(mobileViewportQuery)` — the same breakpoint the styled desktop sidebar is hidden at. Pass an explicit boolean to force the mode (e.g. a server-side detection); `false` re-enables the inline sidebar even below the breakpoint. (type `boolean`; optional)
+- `mobileOpen`: The controlled open state of the mobile drawer. Can be bound with `v-model:mobileOpen`. Kept apart from `open`, which drives the desktop sidebar: on mobile the inline sidebar is replaced by a drawer, so the two states never apply at the same time. (type `boolean`; optional)
+- `defaultMobileOpen`: The open state of the mobile drawer when it is initially rendered. (type `boolean`; default `false`; optional)
 - `mobileSidebarWidth`: The width of the sidebar in the mobile view. (px) (type `number`; default `240`; optional)
 - `headerVisible`: whether to show the header. (type `boolean`; default `true`; optional)
 - `headerHeight`: The height of the header. (px) (type `number`; default `56`; optional)
@@ -146,6 +151,7 @@ Properties for the LayoutCompact component.
 Events for the LayoutCompact component.
 
 - `update:open`: Emitted when the open state changes. (type `[open: boolean]`; parameters `open: boolean`)
+- `update:mobileOpen`: Emitted when the mobile drawer open state changes. (type `[open: boolean]`; parameters `open: boolean`)
 
 #### Slots
 
@@ -204,7 +210,9 @@ Properties for the LayoutRoot component.
 - `sidebarVisible`: whether to show the sidebar. (type `boolean`; default `true`; optional)
 - `sidebarWidth`: The width of the sidebar. (px) (type `number`; default `240`; optional)
 - `collapsedSidebarWidth`: The width of the sidebar when it is collapsed. (px) (type `number`; default `50`; optional)
-- `isMobile`: Whether the layout is in mobile view. When omitted, the layout follows the viewport through `useMediaQuery('(max-width: 767.9px)')` — the same breakpoint the styled desktop sidebar is hidden at. Pass an explicit boolean to override it, e.g. for a server-side detection or a host-owned breakpoint. (type `boolean`; optional)
+- `isMobile`: Whether the layout is in mobile view. Resolution order: this prop, then a host viewport decision provided through `provideViewportContext` (a simulated viewport — a device frame, an embedded shell), then `useMediaQuery(mobileViewportQuery)` — the same breakpoint the styled desktop sidebar is hidden at. Pass an explicit boolean to force the mode (e.g. a server-side detection); `false` re-enables the inline sidebar even below the breakpoint. (type `boolean`; optional)
+- `mobileOpen`: The controlled open state of the mobile drawer. Can be bound with `v-model:mobileOpen`. Kept apart from `open`, which drives the desktop sidebar: on mobile the inline sidebar is replaced by a drawer, so the two states never apply at the same time. (type `boolean`; optional)
+- `defaultMobileOpen`: The open state of the mobile drawer when it is initially rendered. (type `boolean`; default `false`; optional)
 - `mobileSidebarWidth`: The width of the sidebar in the mobile view. (px) (type `number`; default `240`; optional)
 - `headerVisible`: whether to show the header. (type `boolean`; default `true`; optional)
 - `headerHeight`: The height of the header. (px) (type `number`; default `56`; optional)
@@ -227,6 +235,7 @@ Properties for the LayoutRoot component.
 Events for the LayoutRoot component.
 
 - `update:open`: Emitted when the open state changes. (type `[open: boolean]`; parameters `open: boolean`)
+- `update:mobileOpen`: Emitted when the mobile drawer open state changes. (type `[open: boolean]`; parameters `open: boolean`)
 
 ### LayoutSidebar
 
@@ -269,8 +278,8 @@ Properties for the LayoutTrigger component.
 
 1. **CSS variables are rem-based** — `sidebarWidth`, `collapsedSidebarWidth`, `headerHeight`, `tabHeight`, `footerHeight`, and `mobileSidebarWidth` are converted via `pxToRem` (default `px / 16`). Pass a custom `pxToRem` to align with a non-default root font size.
 2. **`size` scales spacing and typography** — the UI wrapper multiplies pixel dimensions by `themeSizeRatio[size] / themeSizeMap.md`, so `size="xs"` shrinks both text and sidebar width proportionally.
-3. **`isMobile` defaults to the viewport** — unset (the default) means the layout follows `useMediaQuery('(max-width: 767.9px)')`, the same breakpoint the desktop sidebar is hidden at (`lt-md`). Pass an explicit boolean to override it, e.g. from a server-side hint or a host-owned breakpoint. The drawer is teleported out of the layout, so on mobile the sidebar reserves no space: the start gaps (`--soybean-layout-start-gap`, `--soybean-layout-header-start-gap`, `--soybean-layout-footer-start-gap`) collapse to `0`, and each variant falls back to its own end gap — `sidebar`/`floating` become full-bleed, `inset` stays inset symmetrically on both edges.
-4. **`LayoutTrigger` vs `LayoutRail`** — `LayoutTrigger` is a focusable button in the header for keyboard users; `LayoutRail` is the edge drag affordance with `tabindex="-1"` (click-only). Both reflect `aria-expanded`.
+3. **`isMobile` resolves through three levels** — the prop, then a viewport a host publishes with `provideViewportContext` (a documentation device frame, an embedded shell), then `useMediaQuery(mobileViewportQuery)`, the breakpoint shared with the styled sidebar's `lt-md` hiding rule (`767.9px`). The winning source is published as `data-mobile-source="explicit|viewport"`, and the styled `lt-md` fallback only applies to `viewport`: an explicit `isMobile="false"` below the breakpoint keeps the inline sidebar **and** its reserved width, instead of reserving space for a sidebar the CSS had hidden. The drawer is teleported out of the layout, so on mobile the sidebar reserves no space: the start gaps (`--soybean-layout-start-gap`, `--soybean-layout-header-start-gap`, `--soybean-layout-footer-start-gap`) collapse to `0`, and each variant falls back to its own end gap — `sidebar`/`floating` become full-bleed, `inset` stays inset symmetrically on both edges.
+4. **`LayoutTrigger` vs `LayoutRail`** — `LayoutTrigger` is a focusable button in the header for keyboard users; `LayoutRail` is the edge drag affordance with `tabindex="-1"` (click-only). Both reflect `aria-expanded` for whichever sidebar the current mode renders — on mobile that is the drawer, not the desktop `open` state.
 5. **`Layout` placeholder elements** — when `fixedTop` or `fixedFooter` is enabled, `LayoutPlaceholder` renders empty spacer divs (`data-soybean-layout-{header|tab|footer}-placeholder`) to prevent content from sliding under the fixed region.
 6. **`scrollId` for scroll restoration** — `Layout` generates a stable `soybean-layout-scroll-{id}` on the scrolling element (wrapper or content depending on `scrollBehavior`). Pass `scrollId` to make it deterministic across SSR/CSR.
 
@@ -284,6 +293,8 @@ Use `SLayout` for both modern application shells and admin dashboards. It handle
 
 Use `v-model:open` (controlled) or `default-open` (uncontrolled). The state is reflected on the root via `data-state="expanded|collapsed"` and on `LayoutTrigger`/`LayoutRail` via `aria-expanded`.
 
+On mobile the inline sidebar is replaced by a drawer, which carries its own state: bind `v-model:mobileOpen` (or `default-mobile-open` uncontrolled) to drive it. `open` keeps controlling the desktop sidebar, so a host that pins `isMobile` reaches what the user sees through `mobileOpen` — and the trigger reports that state. A single `open` binding cannot mean both, because the desktop sidebar defaults to expanded while the drawer has to start closed.
+
 ### How do I make the sidebar collapse to icons instead of sliding away?
 
 Set `collapsible="icon"` (default) and `collapsedSidebarWidth` to the rail width. The sidebar shrinks to the collapsed width and the `sidebarGapHandler` adjusts the main area accordingly. Use `collapsible="offcanvas"` to slide the sidebar off-canvas instead.
@@ -291,6 +302,10 @@ Set `collapsible="icon"` (default) and `collapsedSidebarWidth` to the rail width
 ### How does mobile mode work?
 
 Leave `isMobile` unset (the default) and the layout follows the viewport, swapping the desktop sidebar for a `Dialog`-based drawer; pass a boolean to pin the mode yourself. The drawer inherits `mobileSidebarWidth` and reuses the same `sidebar` slot content. The drawer overlay and focus trap are provided by the underlying `Dialog` component.
+
+### Can a host decide the mode for a whole subtree?
+
+Yes. A host that already knows the answer — a device preview frame rendering a phone, a shell embedded in a desktop app, an SSR pass with a device hint — publishes it once with `provideViewportContext({ isMobile })` from `@soybeanjs/headless/composables`; every layout below it follows, and an explicit `isMobile` prop still wins per instance. Publishing at the frame rather than per component is also what keeps a documentation preview honest: the frame can simulate a phone viewport while the browser window stays wide. Note that viewport-prefixed utilities (`lt-md:hidden`, `sm:`, `md:`) still key off the browser window, so a simulated viewport moves the JS structure (drawer vs. inline sidebar) and the prop-driven spacing, not those breakpoint classes.
 
 ### Can I render the sidebar on the right?
 

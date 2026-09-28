@@ -102,7 +102,7 @@ A sidebar placement also follows the menu's own dividers: the mark cell is as wi
 ### Cautions
 
 1. **The brand is yours.** There is no `logo` or `title` prop: the mark goes in `#logo`, the app name and any subtitle in `#title`. The shell renders the region and hands both slots the live `collapsed` state and the resolved `placement` so the injected content can adapt. `#title` is optional — it is hidden while the sidebar is collapsed, since the column it aligns to is folded away — and a brand without `#logo` renders no region at all.
-2. **`isMobile` defaults to the viewport.** The shell never reads `matchMedia` itself: it forwards the prop unset, and the layout's `useMediaQuery('(max-width: 767.9px)')` fallback decides. Pass an explicit boolean (e.g. a server-side hint) to override it.
+2. **`isMobile` defaults to the viewport.** The shell never reads `matchMedia` itself: it forwards the prop unset, and the layout resolves the mode — an explicit `isMobile` prop, a viewport published by a host through `provideViewportContext`, or `useMediaQuery(mobileViewportQuery)` (the `767.9px` breakpoint the styled sidebar hides at). Pass an explicit boolean (e.g. a server-side hint) to override it.
 3. **Sidebar widths are derived — do not override them casually.** `layoutProps.sidebarWidth` / `collapsedSidebarWidth` win over the derived values, but in the split modes that breaks the alignment between the sidebar and the menu panes, and it also loses the dynamic behaviour below.
 4. **Switching modes re-creates the menu.** Each mode renders a different menu instance, so the panes' expanded state (which lives inside `SSplitNav` / `STreeMenu`) resets to the active path on a mode change.
 5. **The top bar is a `STreeNav`, not a plain menubar.** It selects through `modelValue` like the sidebar: activating a leaf emits `select` / `update:modelValue`, an entry with children only opens its popup, and an entry that carries `to` / `href` follows it as well. Set `menuProps.treeNav.collapsible` to fold the entries that no longer fit into a trailing "more" popup.
@@ -150,6 +150,10 @@ Because the title's cell is a sidebar column like any other: it takes the width 
 ### How do I make the sidebar narrower or wider?
 
 Set `layoutProps.sidebarWidth` / `collapsedSidebarWidth` for the `sidebar` mode. In the split modes leave them alone: the widths are computed from the pane metrics of the active `size`, and overriding them desynchronises the sidebar from the menu.
+
+### How do I open or close the mobile drawer?
+
+Bind `v-model:mobileOpen` (`default-mobile-open` when uncontrolled). On mobile the layout replaces the desktop sidebar with a drawer, so the drawer carries its own state next to `open`: `open` / `v-model:open` keeps controlling the desktop collapse, and the shell's trigger toggles whichever state the current mode renders. One binding cannot serve both — the desktop sidebar starts expanded while the drawer has to start closed.
 
 ### How do I keep the top bar in sync with the route?
 

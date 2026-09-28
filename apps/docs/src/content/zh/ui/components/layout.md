@@ -62,8 +62,8 @@ head:
 
 1. **CSS 变量以 rem 为单位** — `sidebarWidth`、`collapsedSidebarWidth`、`headerHeight`、`tabHeight`、`footerHeight`、`mobileSidebarWidth` 通过 `pxToRem` 转换（默认 `px / 16`）。如根字号非 16px，请传入自定义 `pxToRem`。
 2. **`size` 缩放间距与字号** — UI 包装层将像素尺寸乘以 `themeSizeRatio[size] / themeSizeMap.md`，因此 `size="xs"` 会同时缩小文字与侧边栏宽度。
-3. **`isMobile` 默认跟随视口** — 不传（默认）时布局跟随 `useMediaQuery('(max-width: 767.9px)')`，与桌面侧栏被隐藏的断点（`lt-md`）一致；传入显式布尔值即可覆盖，例如服务端判断或宿主自己的断点。抽屉会被传送到布局之外，因此移动端侧栏不占布局空间：起点间距（`--soybean-layout-start-gap`、`--soybean-layout-header-start-gap`、`--soybean-layout-footer-start-gap`）归零，各变体回落到自身的末端间距 —— `sidebar`/`floating` 变为通栏，`inset` 则前后两侧对称内嵌。
-4. **`LayoutTrigger` 与 `LayoutRail` 的区别** — `LayoutTrigger` 是头部中可聚焦的按钮，面向键盘用户；`LayoutRail` 是边缘拖拽热区，`tabindex="-1"`（仅可点击）。两者都通过 `aria-expanded` 反映状态。
+3. **`isMobile` 分三级解析** — 依次是组件 prop、宿主通过 `provideViewportContext` 发布的视口（文档站的设备画框、被嵌入的外壳），最后是 `useMediaQuery(mobileViewportQuery)`；该断点与样式层隐藏桌面侧栏的 `lt-md` 规则共用同一个值（`767.9px`）。生效来源会以 `data-mobile-source="explicit|viewport"` 输出，样式层的 `lt-md` 兜底只对 `viewport` 生效：断点以下显式传 `isMobile="false"` 时，内联侧栏**连同它占用的宽度**都会保留，而不是「CSS 把侧栏藏了、布局却仍为它留出空槽」。抽屉会被传送到布局之外，因此移动端侧栏不占布局空间：起点间距（`--soybean-layout-start-gap`、`--soybean-layout-header-start-gap`、`--soybean-layout-footer-start-gap`）归零，各变体回落到自身的末端间距 —— `sidebar`/`floating` 变为通栏，`inset` 则前后两侧对称内嵌。
+4. **`LayoutTrigger` 与 `LayoutRail` 的区别** — `LayoutTrigger` 是头部中可聚焦的按钮，面向键盘用户；`LayoutRail` 是边缘拖拽热区，`tabindex="-1"`（仅可点击）。两者的 `aria-expanded` 反映的都是当前模式实际渲染的那个侧边栏 —— 移动端是抽屉状态，而不是桌面端的 `open`。
 5. **`Layout` 占位元素** — 启用 `fixedTop` 或 `fixedFooter` 时，`LayoutPlaceholder` 渲染空的占位 div（`data-soybean-layout-{header|tab|footer}-placeholder`），防止内容滑入固定区域下方。
 6. **`scrollId` 用于滚动恢复** — `Layout` 在滚动元素（wrapper 或 content，取决于 `scrollBehavior`）上生成稳定的 `soybean-layout-scroll-{id}`。传入 `scrollId` 可使其在 SSR/CSR 间确定一致。
 
@@ -77,6 +77,8 @@ head:
 
 使用 `v-model:open`（受控）或 `default-open`（非受控）。状态通过根元素的 `data-state="expanded|collapsed"` 以及 `LayoutTrigger`/`LayoutRail` 的 `aria-expanded` 反映。
 
+移动端的内联侧栏会换成抽屉，抽屉有自己的状态：用 `v-model:mobileOpen`（或非受控的 `default-mobile-open`）驱动它。`open` 始终只管桌面侧栏，因此把 `isMobile` 固定下来的宿主需要通过 `mobileOpen` 才能控制用户实际看到的东西 —— trigger 报的也是它。二者不能合成一个 `open` 绑定：桌面侧栏默认展开，而抽屉必须默认关闭。
+
 ### 如何让侧边栏折叠为图标而非滑出？
 
 设置 `collapsible="icon"`（默认）并将 `collapsedSidebarWidth` 设为 rail 宽度。侧边栏会收缩到折叠宽度，`sidebarGapHandler` 相应调整主区域。使用 `collapsible="offcanvas"` 可改为滑出视口。
@@ -84,6 +86,10 @@ head:
 ### 移动端模式如何工作？
 
 不传 `isMobile`（默认）时布局跟随视口，自动把桌面侧边栏换成基于 `Dialog` 的抽屉；传入布尔值可自行固定模式。抽屉继承 `mobileSidebarWidth` 并复用同一个 `sidebar` slot 内容。遮罩与焦点陷阱由底层 `Dialog` 组件提供。
+
+### 宿主可以替整棵子树决定模式吗？
+
+可以。已经知道答案的宿主 —— 按手机宽度渲染的设备预览画框、嵌在桌面应用里的外壳、带设备判断的 SSR —— 只需用 `@soybeanjs/headless/composables` 的 `provideViewportContext({ isMobile })` 发布一次，它下面的每个布局都会跟随，同时单个实例上的显式 `isMobile` 仍然优先。把决定发布在「画框」而不是每个组件上，也是让文档预览诚实的前提：画框可以模拟手机视口，而浏览器窗口仍然是宽屏。注意 `lt-md:hidden`、`sm:`、`md:` 这类视口前缀工具类仍然看浏览器窗口，所以模拟视口改变的是 JS 结构（抽屉 vs 内联侧栏）与 prop 驱动的间距，而不是这些断点类。
 
 ### 可以把侧边栏放在右侧吗？
 

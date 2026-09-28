@@ -46,6 +46,9 @@ const props = withDefaults(defineProps<AppShellProps>(), {
   side: 'left',
   open: undefined,
   defaultOpen: true,
+  // Unset on purpose: an absent boolean prop is cast to `false` downstream, which
+  // would turn the drawer into a controlled state that never opens.
+  mobileOpen: undefined,
   // Unset on purpose: forwarded as-is so the layout follows the viewport.
   isMobile: undefined,
   logoPlacement: 'auto',
@@ -337,6 +340,8 @@ function handleBreadcrumbClick(item: BreadcrumbOptionData) {
   <SLayout
     v-bind="layoutProps"
     v-model:open="open"
+    :mobile-open="mobileOpen"
+    :default-mobile-open="defaultMobileOpen"
     data-soybean-app-shell
     :data-mode="mode"
     :size="size"
@@ -350,6 +355,7 @@ function handleBreadcrumbClick(item: BreadcrumbOptionData) {
     :px-to-rem="pxToRem"
     :ui="layoutUi"
     :class="ui.root"
+    @update:mobile-open="emit('update:mobileOpen', $event)"
   >
     <template #sidebar>
       <div :class="ui.sidebar" data-soybean-app-shell-sidebar>

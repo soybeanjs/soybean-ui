@@ -15,6 +15,9 @@ const props = withDefaults(defineProps<LayoutProps>(), {
   open: undefined,
   // Unset on purpose: the headless root then follows the viewport.
   isMobile: undefined,
+  // Unset on purpose: an absent boolean prop is cast to `false` downstream, which
+  // would turn the drawer into a controlled state that never opens.
+  mobileOpen: undefined,
   size: 'md',
   defaultOpen: true,
   sidebarVisible: true,
@@ -58,7 +61,12 @@ provideLayoutUi(ui);
 </script>
 
 <template>
-  <LayoutCompact v-bind="forwardedProps" :px-to-rem="pxToRem" @update:open="emit('update:open', $event)">
+  <LayoutCompact
+    v-bind="forwardedProps"
+    :px-to-rem="pxToRem"
+    @update:open="emit('update:open', $event)"
+    @update:mobile-open="emit('update:mobileOpen', $event)"
+  >
     <template #sidebar="slotProps">
       <slot name="sidebar" v-bind="slotProps" />
     </template>

@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "LayoutProps",
         "type": "Interface LayoutProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<LayoutUi>; open?: boolean; defaultOpen?: boolean; side?: HorizontalSide; variant?: LayoutVariant; collapsible?: LayoutCollapsible; sidebarVisible?: boolean; sidebarWidth?: number; collapsedSidebarWidth?: number; isMobile?: boolean; mobileSidebarWidth?: number; headerVisible?: boolean; headerHeight?: number; tabVisible?: boolean; tabHeight?: number; footerVisible?: boolean; footerHeight?: number; fullContent?: boolean; pxToRem?: ((px: number) => number); orientation?: DataOrientation; scrollBehavior?: LayoutScrollBehavior; scrollId?: string; baseZIndex?: number; fixedTop?: boolean; fixedFooter?: boolean; stretchFooter?: boolean; sidebarProps?: LayoutSidebarProps; railProps?: LayoutRailProps; mainProps?: LayoutMainProps; headerProps?: LayoutHeaderProps; tabProps?: LayoutTabProps; contentProps?: LayoutContentProps; footerProps?: LayoutFooterProps; mobileProps?: LayoutMobileProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<LayoutUi>; open?: boolean; defaultOpen?: boolean; side?: HorizontalSide; variant?: LayoutVariant; collapsible?: LayoutCollapsible; sidebarVisible?: boolean; sidebarWidth?: number; collapsedSidebarWidth?: number; isMobile?: boolean; mobileOpen?: boolean; defaultMobileOpen?: boolean; mobileSidebarWidth?: number; headerVisible?: boolean; headerHeight?: number; tabVisible?: boolean; tabHeight?: number; footerVisible?: boolean; footerHeight?: number; fullContent?: boolean; pxToRem?: ((px: number) => number); orientation?: DataOrientation; scrollBehavior?: LayoutScrollBehavior; scrollId?: string; baseZIndex?: number; fixedTop?: boolean; fixedFooter?: boolean; stretchFooter?: boolean; sidebarProps?: LayoutSidebarProps; railProps?: LayoutRailProps; mainProps?: LayoutMainProps; headerProps?: LayoutHeaderProps; tabProps?: LayoutTabProps; contentProps?: LayoutContentProps; footerProps?: LayoutFooterProps; mobileProps?: LayoutMobileProps }",
         "description": "Properties for the Layout component.",
         "descriptionKey": "api.generated.packages_ui_src_components_layout_types.layoutprops.props",
         "sourcePath": "packages/ui/src/components/layout/types.ts",
@@ -221,10 +221,32 @@
             "name": "isMobile",
             "type": "boolean",
             "required": false,
-            "description": "Whether the layout is in mobile view.\n\nWhen omitted, the layout follows the viewport through\n`useMediaQuery('(max-width: 767.9px)')` — the same breakpoint the styled\ndesktop sidebar is hidden at. Pass an explicit boolean to override it, e.g.\nfor a server-side detection or a host-owned breakpoint.",
+            "description": "Whether the layout is in mobile view.\n\nResolution order: this prop, then a host viewport decision provided through\n`provideViewportContext` (a simulated viewport — a device frame, an embedded\nshell), then `useMediaQuery(mobileViewportQuery)` — the same breakpoint the\nstyled desktop sidebar is hidden at. Pass an explicit boolean to force the\nmode (e.g. a server-side detection); `false` re-enables the inline sidebar\neven below the breakpoint.",
             "descriptionKey": "api.generated.packages_ui_src_components_layout_types.layoutprops.members.ismobile",
             "default": null,
             "inheritedFrom": "isMobile",
+            "sourcePath": "packages/headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "mobileOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled open state of the mobile drawer. Can be bound with\n`v-model:mobileOpen`.\n\nKept apart from `open`, which drives the desktop sidebar: on mobile the\ninline sidebar is replaced by a drawer, so the two states never apply at the\nsame time.",
+            "descriptionKey": "api.generated.packages_ui_src_components_layout_types.layoutprops.members.mobileopen",
+            "default": null,
+            "inheritedFrom": "mobileOpen",
+            "sourcePath": "packages/headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultMobileOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "The open state of the mobile drawer when it is initially rendered.",
+            "descriptionKey": "api.generated.packages_ui_src_components_layout_types.layoutprops.members.defaultmobileopen",
+            "default": "false",
+            "inheritedFrom": "defaultMobileOpen",
             "sourcePath": "packages/headless/src/components/layout/types.ts",
             "referencedTypes": []
           },
@@ -640,7 +662,7 @@
         "kind": "emits",
         "name": "LayoutEmits",
         "type": "TypeAlias LayoutEmits: LayoutCompactEmits",
-        "resolvedType": "{ \"update:open\": [open: boolean] }",
+        "resolvedType": "{ \"update:open\": [open: boolean]; \"update:mobileOpen\": [open: boolean] }",
         "description": "Events for the Layout component.",
         "descriptionKey": "api.generated.packages_ui_src_components_layout_types.layoutemits.emits",
         "sourcePath": "packages/ui/src/components/layout/types.ts",
@@ -656,14 +678,24 @@
             "descriptionKey": "api.generated.packages_ui_src_components_layout_types.layoutemits.callables.update_open",
             "sourcePath": "packages/headless/src/components/layout/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "update:mobileOpen",
+            "type": "[open: boolean]",
+            "parameters": "open: boolean",
+            "required": true,
+            "description": "Emitted when the mobile drawer open state changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_layout_types.layoutemits.callables.update_mobileopen",
+            "sourcePath": "packages/headless/src/components/layout/types.ts",
+            "referencedTypes": []
           }
         ],
         "referencedTypes": [
           {
             "name": "LayoutRootEmits",
             "kind": "typeAlias",
-            "type": "{ 'update:open': [open: boolean]; }",
-            "resolvedType": "{ \"update:open\": [open: boolean] }",
+            "type": "{ 'update:open': [open: boolean]; 'update:mobileOpen': [open: boolean]; }",
+            "resolvedType": "{ \"update:open\": [open: boolean]; \"update:mobileOpen\": [open: boolean] }",
             "description": "Events for the LayoutRoot component.",
             "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutrootemits",
             "sourcePath": "packages/headless/src/components/layout/types.ts",
@@ -678,6 +710,16 @@
                 "required": true,
                 "description": "Emitted when the open state changes.",
                 "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutrootemits.callables.update_open",
+                "sourcePath": "packages/headless/src/components/layout/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "update:mobileOpen",
+                "type": "[open: boolean]",
+                "parameters": "open: boolean",
+                "required": true,
+                "description": "Emitted when the mobile drawer open state changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutrootemits.callables.update_mobileopen",
                 "sourcePath": "packages/headless/src/components/layout/types.ts",
                 "referencedTypes": []
               }
@@ -854,7 +896,7 @@
         "kind": "props",
         "name": "LayoutCompactProps",
         "type": "Interface LayoutCompactProps",
-        "resolvedType": "{ open?: boolean; defaultOpen?: boolean; side?: HorizontalSide; variant?: LayoutVariant; collapsible?: LayoutCollapsible; sidebarVisible?: boolean; sidebarWidth?: number; collapsedSidebarWidth?: number; isMobile?: boolean; mobileSidebarWidth?: number; headerVisible?: boolean; headerHeight?: number; tabVisible?: boolean; tabHeight?: number; footerVisible?: boolean; footerHeight?: number; fullContent?: boolean; pxToRem?: ((px: number) => number); orientation?: DataOrientation; scrollBehavior?: LayoutScrollBehavior; scrollId?: string; baseZIndex?: number; fixedTop?: boolean; fixedFooter?: boolean; stretchFooter?: boolean; sidebarProps?: LayoutSidebarProps; railProps?: LayoutRailProps; mainProps?: LayoutMainProps; headerProps?: LayoutHeaderProps; tabProps?: LayoutTabProps; contentProps?: LayoutContentProps; footerProps?: LayoutFooterProps; mobileProps?: LayoutMobileProps }",
+        "resolvedType": "{ open?: boolean; defaultOpen?: boolean; side?: HorizontalSide; variant?: LayoutVariant; collapsible?: LayoutCollapsible; sidebarVisible?: boolean; sidebarWidth?: number; collapsedSidebarWidth?: number; isMobile?: boolean; mobileOpen?: boolean; defaultMobileOpen?: boolean; mobileSidebarWidth?: number; headerVisible?: boolean; headerHeight?: number; tabVisible?: boolean; tabHeight?: number; footerVisible?: boolean; footerHeight?: number; fullContent?: boolean; pxToRem?: ((px: number) => number); orientation?: DataOrientation; scrollBehavior?: LayoutScrollBehavior; scrollId?: string; baseZIndex?: number; fixedTop?: boolean; fixedFooter?: boolean; stretchFooter?: boolean; sidebarProps?: LayoutSidebarProps; railProps?: LayoutRailProps; mainProps?: LayoutMainProps; headerProps?: LayoutHeaderProps; tabProps?: LayoutTabProps; contentProps?: LayoutContentProps; footerProps?: LayoutFooterProps; mobileProps?: LayoutMobileProps }",
         "description": "Properties for the LayoutCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutcompactprops.props",
         "sourcePath": "packages/headless/src/components/layout/types.ts",
@@ -994,10 +1036,32 @@
             "name": "isMobile",
             "type": "boolean",
             "required": false,
-            "description": "Whether the layout is in mobile view.\n\nWhen omitted, the layout follows the viewport through\n`useMediaQuery('(max-width: 767.9px)')` — the same breakpoint the styled\ndesktop sidebar is hidden at. Pass an explicit boolean to override it, e.g.\nfor a server-side detection or a host-owned breakpoint.",
+            "description": "Whether the layout is in mobile view.\n\nResolution order: this prop, then a host viewport decision provided through\n`provideViewportContext` (a simulated viewport — a device frame, an embedded\nshell), then `useMediaQuery(mobileViewportQuery)` — the same breakpoint the\nstyled desktop sidebar is hidden at. Pass an explicit boolean to force the\nmode (e.g. a server-side detection); `false` re-enables the inline sidebar\neven below the breakpoint.",
             "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutcompactprops.members.ismobile",
             "default": null,
             "inheritedFrom": "isMobile",
+            "sourcePath": "packages/headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "mobileOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled open state of the mobile drawer. Can be bound with\n`v-model:mobileOpen`.\n\nKept apart from `open`, which drives the desktop sidebar: on mobile the\ninline sidebar is replaced by a drawer, so the two states never apply at the\nsame time.",
+            "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutcompactprops.members.mobileopen",
+            "default": null,
+            "inheritedFrom": "mobileOpen",
+            "sourcePath": "packages/headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultMobileOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "The open state of the mobile drawer when it is initially rendered.",
+            "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutcompactprops.members.defaultmobileopen",
+            "default": "false",
+            "inheritedFrom": "defaultMobileOpen",
             "sourcePath": "packages/headless/src/components/layout/types.ts",
             "referencedTypes": []
           },
@@ -1413,7 +1477,7 @@
         "kind": "emits",
         "name": "LayoutCompactEmits",
         "type": "TypeAlias LayoutCompactEmits: LayoutRootEmits",
-        "resolvedType": "{ \"update:open\": [open: boolean] }",
+        "resolvedType": "{ \"update:open\": [open: boolean]; \"update:mobileOpen\": [open: boolean] }",
         "description": "Events for the LayoutCompact component.",
         "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutcompactemits.emits",
         "sourcePath": "packages/headless/src/components/layout/types.ts",
@@ -1429,14 +1493,24 @@
             "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutcompactemits.callables.update_open",
             "sourcePath": "packages/headless/src/components/layout/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "update:mobileOpen",
+            "type": "[open: boolean]",
+            "parameters": "open: boolean",
+            "required": true,
+            "description": "Emitted when the mobile drawer open state changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutcompactemits.callables.update_mobileopen",
+            "sourcePath": "packages/headless/src/components/layout/types.ts",
+            "referencedTypes": []
           }
         ],
         "referencedTypes": [
           {
             "name": "LayoutRootEmits",
             "kind": "typeAlias",
-            "type": "{ 'update:open': [open: boolean]; }",
-            "resolvedType": "{ \"update:open\": [open: boolean] }",
+            "type": "{ 'update:open': [open: boolean]; 'update:mobileOpen': [open: boolean]; }",
+            "resolvedType": "{ \"update:open\": [open: boolean]; \"update:mobileOpen\": [open: boolean] }",
             "description": "Events for the LayoutRoot component.",
             "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutrootemits",
             "sourcePath": "packages/headless/src/components/layout/types.ts",
@@ -1451,6 +1525,16 @@
                 "required": true,
                 "description": "Emitted when the open state changes.",
                 "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutrootemits.callables.update_open",
+                "sourcePath": "packages/headless/src/components/layout/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "update:mobileOpen",
+                "type": "[open: boolean]",
+                "parameters": "open: boolean",
+                "required": true,
+                "description": "Emitted when the mobile drawer open state changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutrootemits.callables.update_mobileopen",
                 "sourcePath": "packages/headless/src/components/layout/types.ts",
                 "referencedTypes": []
               }
@@ -1669,7 +1753,7 @@
         "kind": "props",
         "name": "LayoutRootProps",
         "type": "Interface LayoutRootProps",
-        "resolvedType": "{ open?: boolean; defaultOpen?: boolean; side?: HorizontalSide; variant?: LayoutVariant; collapsible?: LayoutCollapsible; sidebarVisible?: boolean; sidebarWidth?: number; collapsedSidebarWidth?: number; isMobile?: boolean; mobileSidebarWidth?: number; headerVisible?: boolean; headerHeight?: number; tabVisible?: boolean; tabHeight?: number; footerVisible?: boolean; footerHeight?: number; fullContent?: boolean; pxToRem?: ((px: number) => number); orientation?: DataOrientation; scrollBehavior?: LayoutScrollBehavior; scrollId?: string; baseZIndex?: number; fixedTop?: boolean; fixedFooter?: boolean; stretchFooter?: boolean }",
+        "resolvedType": "{ open?: boolean; defaultOpen?: boolean; side?: HorizontalSide; variant?: LayoutVariant; collapsible?: LayoutCollapsible; sidebarVisible?: boolean; sidebarWidth?: number; collapsedSidebarWidth?: number; isMobile?: boolean; mobileOpen?: boolean; defaultMobileOpen?: boolean; mobileSidebarWidth?: number; headerVisible?: boolean; headerHeight?: number; tabVisible?: boolean; tabHeight?: number; footerVisible?: boolean; footerHeight?: number; fullContent?: boolean; pxToRem?: ((px: number) => number); orientation?: DataOrientation; scrollBehavior?: LayoutScrollBehavior; scrollId?: string; baseZIndex?: number; fixedTop?: boolean; fixedFooter?: boolean; stretchFooter?: boolean }",
         "description": "Properties for the LayoutRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutrootprops.props",
         "sourcePath": "packages/headless/src/components/layout/types.ts",
@@ -1809,9 +1893,31 @@
             "name": "isMobile",
             "type": "boolean",
             "required": false,
-            "description": "Whether the layout is in mobile view.\n\nWhen omitted, the layout follows the viewport through\n`useMediaQuery('(max-width: 767.9px)')` — the same breakpoint the styled\ndesktop sidebar is hidden at. Pass an explicit boolean to override it, e.g.\nfor a server-side detection or a host-owned breakpoint.",
+            "description": "Whether the layout is in mobile view.\n\nResolution order: this prop, then a host viewport decision provided through\n`provideViewportContext` (a simulated viewport — a device frame, an embedded\nshell), then `useMediaQuery(mobileViewportQuery)` — the same breakpoint the\nstyled desktop sidebar is hidden at. Pass an explicit boolean to force the\nmode (e.g. a server-side detection); `false` re-enables the inline sidebar\neven below the breakpoint.",
             "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutrootprops.members.ismobile",
             "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "mobileOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled open state of the mobile drawer. Can be bound with\n`v-model:mobileOpen`.\n\nKept apart from `open`, which drives the desktop sidebar: on mobile the\ninline sidebar is replaced by a drawer, so the two states never apply at the\nsame time.",
+            "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutrootprops.members.mobileopen",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultMobileOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "The open state of the mobile drawer when it is initially rendered.",
+            "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutrootprops.members.defaultmobileopen",
+            "default": "false",
             "inheritedFrom": null,
             "sourcePath": "packages/headless/src/components/layout/types.ts",
             "referencedTypes": []
@@ -2028,7 +2134,7 @@
         "kind": "emits",
         "name": "LayoutRootEmits",
         "type": "TypeAlias LayoutRootEmits",
-        "resolvedType": "{ \"update:open\": [open: boolean] }",
+        "resolvedType": "{ \"update:open\": [open: boolean]; \"update:mobileOpen\": [open: boolean] }",
         "description": "Events for the LayoutRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutrootemits.emits",
         "sourcePath": "packages/headless/src/components/layout/types.ts",
@@ -2042,6 +2148,16 @@
             "required": true,
             "description": "Emitted when the open state changes.",
             "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutrootemits.callables.update_open",
+            "sourcePath": "packages/headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:mobileOpen",
+            "type": "[open: boolean]",
+            "parameters": "open: boolean",
+            "required": true,
+            "description": "Emitted when the mobile drawer open state changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_layout_types.layoutrootemits.callables.update_mobileopen",
             "sourcePath": "packages/headless/src/components/layout/types.ts",
             "referencedTypes": []
           }

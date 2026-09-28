@@ -1,7 +1,10 @@
 import { describe, expect, it, vi } from 'vitest';
-import { h, nextTick } from 'vue';
+import { defineComponent, h, nextTick, ref } from 'vue';
+import type { MaybeRefOrGetter } from 'vue';
 import { mount } from '@vue/test-utils';
+import { provideViewportContext } from '@soybeanjs/headless/composables';
 import { LayoutTrigger, LayoutRail } from '@soybeanjs/headless/layout';
+import type { LayoutProps } from '@/components/layout';
 import SLayout from '@/components/layout/layout.vue';
 
 /** The breakpoint the headless root falls back to when `isMobile` is unset. */
@@ -30,6 +33,28 @@ function mockMediaQuery(matches: boolean): () => void {
   return () => {
     window.matchMedia = originalMatchMedia;
   };
+}
+
+/**
+ * Renders `SLayout` under a host that publishes a simulated viewport, the way a
+ * documentation device frame does: the layout has to take that decision as the
+ * environment and keep its own prop as the stronger signal.
+ */
+function mountWithViewport(isMobile: MaybeRefOrGetter<boolean | undefined>, props: LayoutProps = {}) {
+  const host = defineComponent({
+    name: 'LayoutViewportHost',
+    setup() {
+      provideViewportContext({ isMobile });
+
+      return () =>
+        h(SLayout, props, {
+          sidebar: () => h('div', 'Sidebar'),
+          default: () => h('div', 'Main')
+        });
+    }
+  });
+
+  return mount(host, { attachTo: document.body });
 }
 
 describe('SLayout', () => {
@@ -638,6 +663,50 @@ describe('SLayout', () => {
 
       wrapper.unmount();
     });
+
+    /**
+     * The drawer is the mobile counterpart of `open` and carries its own state:
+     * `open` drives the desktop sidebar, so a host that pins `isMobile` can only
+     * reach what the user actually sees through `mobileOpen`.
+     */
+    it('opens the drawer from the mobileOpen prop', async () => {
+      const wrapper = mount(SLayout, {
+        props: { isMobile: true, mobileOpen: true },
+        slots: {
+          sidebar: '<div>Sidebar</div>',
+          default: '<div>Main</div>'
+        },
+        attachTo: document.body
+      });
+
+      // The drawer mounts through the dialog's presence state, one tick after the
+      // controlled prop lands.
+      await nextTick();
+
+      expect(document.querySelector('[data-soybean-layout-mobile]')).not.toBeNull();
+
+      wrapper.unmount();
+    });
+
+    it('emits update:mobileOpen when the trigger opens the drawer', async () => {
+      const wrapper = mount(SLayout, {
+        props: { isMobile: true },
+        slots: {
+          sidebar: '<div>Sidebar</div>',
+          header: () => h(LayoutTrigger),
+          default: '<div>Main</div>'
+        },
+        attachTo: document.body
+      });
+
+      await nextTick();
+      await wrapper.find('[data-soybean-layout-trigger]').trigger('click');
+      await nextTick();
+
+      expect(wrapper.emitted('update:mobileOpen')?.at(-1)).toEqual([true]);
+
+      wrapper.unmount();
+    });
   });
 
   /**
@@ -661,6 +730,8 @@ describe('SLayout', () => {
         const root = wrapper.find('[data-soybean-layout-root]');
 
         expect(root.attributes('data-mobile')).toBe('true');
+        // No host spoke, so the styled `lt-md` fallback stays in charge.
+        expect(root.attributes('data-mobile-source')).toBe('viewport');
         expect(root.attributes('style') || '').toContain('--soybean-layout-start-gap: 0px');
         // The desktop sidebar is replaced by the drawer, not merely styled away.
         expect(wrapper.find('[data-soybean-layout-sidebar]').exists()).toBe(false);
@@ -694,6 +765,51 @@ describe('SLayout', () => {
       } finally {
         restore();
       }
+    });
+  });
+
+  /**
+   * A host can hand the layout a viewport it simulated — a documentation device
+   * frame, an embedded shell. The provided value is the environment, the prop
+   * stays the stronger signal, and a missing provider changes nothing.
+   */
+  describe('provided viewport', () => {
+    it('follows a simulated mobile viewport when isMobile is unset', () => {
+      const wrapper = mountWithViewport(true);
+
+      const root = wrapper.find('[data-soybean-layout-root]');
+
+      expect(root.attributes('data-mobile')).toBe('true');
+      // A host asked for this mode, so the styled `lt-md` fallback has to stand down.
+      expect(root.attributes('data-mobile-source')).toBe('explicit');
+      expect(root.attributes('style') || '').toContain('--soybean-layout-start-gap: 0px');
+      expect(wrapper.find('[data-soybean-layout-sidebar]').exists()).toBe(false);
+
+      wrapper.unmount();
+    });
+
+    it('reacts when the simulated viewport changes', async () => {
+      const simulated = ref<boolean | undefined>(true);
+      const wrapper = mountWithViewport(simulated);
+
+      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-mobile')).toBe('true');
+
+      simulated.value = false;
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-mobile')).toBe('false');
+      expect(wrapper.find('[data-soybean-layout-sidebar]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+
+    it('lets an explicit isMobile override the simulated viewport', () => {
+      const wrapper = mountWithViewport(true, { isMobile: false });
+
+      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-mobile')).toBe('false');
+      expect(wrapper.find('[data-soybean-layout-sidebar]').exists()).toBe(true);
+
+      wrapper.unmount();
     });
   });
 
@@ -860,6 +976,34 @@ describe('LayoutTrigger', () => {
       props: { defaultOpen: false },
       slots: {
         sidebar: '<div data-sidebar>Sidebar</div>',
+        header: () => h(LayoutTrigger),
+        default: '<div>Main</div>'
+      },
+      attachTo: document.body
+    });
+
+    await nextTick();
+
+    const trigger = wrapper.find('[data-soybean-layout-trigger]');
+    expect(trigger.attributes('aria-expanded')).toBe('false');
+
+    await trigger.trigger('click');
+    await nextTick();
+
+    expect(trigger.attributes('aria-expanded')).toBe('true');
+
+    wrapper.unmount();
+  });
+
+  /**
+   * On mobile the trigger opens the drawer, not the desktop sidebar, so it has to
+   * report the drawer's state — the desktop `open` is a different control there.
+   */
+  it('reports the drawer state in mobile mode', async () => {
+    const wrapper = mount(SLayout, {
+      props: { isMobile: true, open: false },
+      slots: {
+        sidebar: '<div>Sidebar</div>',
         header: () => h(LayoutTrigger),
         default: '<div>Main</div>'
       },

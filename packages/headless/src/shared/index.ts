@@ -19,3 +19,4 @@ export * from './geometry';
 export * from './tree';
 export * from './tree-navigation';
 export * from './time-picker';
+export * from './viewport';

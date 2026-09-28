@@ -5040,6 +5040,7 @@
         "layoutcollapsible": "Type information for LayoutCollapsible.",
         "layoutcompactemits": {
           "callables": {
+            "update_mobileopen": "Emitted when the mobile drawer open state changes.",
             "update_open": "Emitted when the open state changes."
           },
           "emits": "Events for the LayoutCompact component."
@@ -5050,6 +5051,7 @@
             "collapsedsidebarwidth": "The width of the sidebar when it is collapsed. (px)",
             "collapsible": "The collapsible state of the layout.",
             "contentprops": "",
+            "defaultmobileopen": "The open state of the mobile drawer when it is initially rendered.",
             "defaultopen": "The open state of the layout when it is initially rendered.\n\nUse when you do not need to control its open state.",
             "fixedfooter": "Whether footer is fixed",
             "fixedtop": "Whether the header and tab are fixed to the top of the layout when the orientation is vertical. If true, the header and tab will be fixed to the top of the layout when the orientation is vertical, and will scroll with the content when the orientation is horizontal.",
@@ -5060,8 +5062,9 @@
             "headerheight": "The height of the header. (px)",
             "headerprops": "",
             "headervisible": "whether to show the header.",
-            "ismobile": "Whether the layout is in mobile view.\n\nWhen omitted, the layout follows the viewport through\n`useMediaQuery('(max-width: 767.9px)')` — the same breakpoint the styled\ndesktop sidebar is hidden at. Pass an explicit boolean to override it, e.g.\nfor a server-side detection or a host-owned breakpoint.",
+            "ismobile": "Whether the layout is in mobile view.\n\nResolution order: this prop, then a host viewport decision provided through\n`provideViewportContext` (a simulated viewport — a device frame, an embedded\nshell), then `useMediaQuery(mobileViewportQuery)` — the same breakpoint the\nstyled desktop sidebar is hidden at. Pass an explicit boolean to force the\nmode (e.g. a server-side detection); `false` re-enables the inline sidebar\neven below the breakpoint.",
             "mainprops": "",
+            "mobileopen": "The controlled open state of the mobile drawer. Can be bound with\n`v-model:mobileOpen`.\n\nKept apart from `open`, which drives the desktop sidebar: on mobile the\ninline sidebar is replaced by a drawer, so the two states never apply at the\nsame time.",
             "mobileprops": "",
             "mobilesidebarwidth": "The width of the sidebar in the mobile view. (px)",
             "open": "The controlled open state of the layout. Can be bound with `v-model`.",
@@ -5119,6 +5122,7 @@
         },
         "layoutrootemits": {
           "callables": {
+            "update_mobileopen": "Emitted when the mobile drawer open state changes.",
             "update_open": "Emitted when the open state changes."
           },
           "emits": "Events for the LayoutRoot component."
@@ -5128,6 +5132,7 @@
             "basezindex": "The base z-index of the layout. The z-index of the sidebar, header, tab, footer, and their fixed versions will be calculated based on this value.",
             "collapsedsidebarwidth": "The width of the sidebar when it is collapsed. (px)",
             "collapsible": "The collapsible state of the layout.",
+            "defaultmobileopen": "The open state of the mobile drawer when it is initially rendered.",
             "defaultopen": "The open state of the layout when it is initially rendered.\n\nUse when you do not need to control its open state.",
             "fixedfooter": "Whether footer is fixed",
             "fixedtop": "Whether the header and tab are fixed to the top of the layout when the orientation is vertical. If true, the header and tab will be fixed to the top of the layout when the orientation is vertical, and will scroll with the content when the orientation is horizontal.",
@@ -5136,7 +5141,8 @@
             "fullcontent": "whether the content takes the full height of the layout (include).",
             "headerheight": "The height of the header. (px)",
             "headervisible": "whether to show the header.",
-            "ismobile": "Whether the layout is in mobile view.\n\nWhen omitted, the layout follows the viewport through\n`useMediaQuery('(max-width: 767.9px)')` — the same breakpoint the styled\ndesktop sidebar is hidden at. Pass an explicit boolean to override it, e.g.\nfor a server-side detection or a host-owned breakpoint.",
+            "ismobile": "Whether the layout is in mobile view.\n\nResolution order: this prop, then a host viewport decision provided through\n`provideViewportContext` (a simulated viewport — a device frame, an embedded\nshell), then `useMediaQuery(mobileViewportQuery)` — the same breakpoint the\nstyled desktop sidebar is hidden at. Pass an explicit boolean to force the\nmode (e.g. a server-side detection); `false` re-enables the inline sidebar\neven below the breakpoint.",
+            "mobileopen": "The controlled open state of the mobile drawer. Can be bound with\n`v-model:mobileOpen`.\n\nKept apart from `open`, which drives the desktop sidebar: on mobile the\ninline sidebar is replaced by a drawer, so the two states never apply at the\nsame time.",
             "mobilesidebarwidth": "The width of the sidebar in the mobile view. (px)",
             "open": "The controlled open state of the layout. Can be bound with `v-model`.",
             "orientation": "Orientation of the component.",
@@ -10234,6 +10240,7 @@
             "tabdragstart": "Emitted when dragging a tab starts.",
             "tabpin": "Emitted when a tab is pinned or unpinned.",
             "tabselectcontextmenu": "Emitted when a tab context menu item is selected.",
+            "update_mobileopen": "Emitted when the mobile drawer open state changes.",
             "update_modelvalue": "Emitted when the active menu value changes.",
             "update_open": "Emitted when the sidebar expanded state changes.",
             "update_tabs": "Emitted when the tab collection changes (close, pin, drag reorder).",
@@ -10278,15 +10285,17 @@
             "breadcrumbui": "Per-slot class overrides for `SBreadcrumb`.",
             "breadcrumbvisible": "Whether the breadcrumb region renders when the trail is not empty.",
             "class": "Additional class names applied to the shell root element.",
+            "defaultmobileopen": "The open state of the mobile drawer when it is initially rendered.",
             "defaultopen": "The expanded state of the sidebar when initially rendered.",
             "expandstrategy": "The expand strategy of the rendered menu.\n\n- `keep`: keep the current expanded state; manually expanded or collapsed menus are not affected by activating other menus. The collapsible ancestors of the selected menu are expanded on mount and whenever the selected menu changes from outside (e.g. driven by an external route), so it stays visible.\n- `selected`: only expand the currently selected menu and all its ancestor menus; non-selected menus are collapsed when the selected menu changes.\n\nThe shell defaults to `selected`: the navigation mirrors the current route,\nso one path stays expanded and the active entry keeps its place instead of\ncompeting with the branches opened earlier in the session.\n\nApplies to the single `STreeMenu` (`sidebar` mode) and to the nested vertical\npanes of `SSplitNav` (the split modes). `top` mode renders `STreeNav`, which\nhas no expand strategy. `menuProps.tree` / `menuProps.split` take precedence\nover this prop.",
-            "ismobile": "Whether the shell is in mobile view.\n\nWhen omitted, it is forwarded unset and `SLayout` follows the viewport\n(`useMediaQuery('(max-width: 767.9px)')`). Pass an explicit boolean to\noverride it, e.g. for a server-side detection.",
+            "ismobile": "Whether the shell is in mobile view.\n\nWhen omitted, it is forwarded unset and `SLayout` resolves the mode: a\nviewport published by a host through `provideViewportContext`, then\n`useMediaQuery('(max-width: 767.9px)')`. Pass an explicit boolean to force\nit, e.g. for a server-side detection.",
             "items": "Menu tree rendered by the shell.",
             "layoutprops": "Properties forwarded to `SLayout`.\n\nShell-owned options (`open`, `orientation`, `sidebarVisible`, `isMobile`,\n`pxToRem`) are derived from `mode`; `sidebarWidth` and\n`collapsedSidebarWidth` default to the widths the mode requires — override\nthem only when the menu panes do not need to line up.",
             "layoutui": "Per-slot class overrides for the internal `SLayout`. Takes precedence over\nthe shell's `layout*` UI slots.",
             "logoplacement": "Placement of the brand region.\n\n`auto` follows the mode; `sidebar` and `sidebar-bottom` need a mode whose\nsidebar is always a column of its own — see `AppShellLogoPlacement` for the\nmodes that support the bottom placement.",
             "menuprops": "Properties forwarded to the rendered menu.",
             "menuui": "Per-slot class overrides forwarded to the rendered menu.",
+            "mobileopen": "The controlled open state of the mobile drawer. Can be bound with `v-model:mobileOpen`.\n\nThe shell renders the drawer through `SLayout`, where the drawer is the\nmobile counterpart of the desktop sidebar and carries its own state.",
             "mode": "Shell skeleton, driving both the layout regions and the menu shape.",
             "modelvalue": "The controlled active menu value. Can be bound with `v-model`.\n\nThe active menu is controlled only: the shell derives the sidebar geometry\nand the breadcrumb from it before rendering, so it reads the value it is\ngiven rather than keeping one of its own.",
             "open": "The controlled expanded state of the sidebar. Can be bound with `v-model:open`.",
@@ -12731,6 +12740,7 @@
       "packages_ui_src_components_layout_types": {
         "layoutemits": {
           "callables": {
+            "update_mobileopen": "Emitted when the mobile drawer open state changes.",
             "update_open": "Emitted when the open state changes."
           },
           "emits": "Events for the Layout component."
@@ -12742,6 +12752,7 @@
             "collapsedsidebarwidth": "The width of the sidebar when it is collapsed. (px)",
             "collapsible": "The collapsible state of the layout.",
             "contentprops": "",
+            "defaultmobileopen": "The open state of the mobile drawer when it is initially rendered.",
             "defaultopen": "The open state of the layout when it is initially rendered.\n\nUse when you do not need to control its open state.",
             "fixedfooter": "Whether footer is fixed",
             "fixedtop": "Whether the header and tab are fixed to the top of the layout when the orientation is vertical. If true, the header and tab will be fixed to the top of the layout when the orientation is vertical, and will scroll with the content when the orientation is horizontal.",
@@ -12752,8 +12763,9 @@
             "headerheight": "The height of the header. (px)",
             "headerprops": "",
             "headervisible": "whether to show the header.",
-            "ismobile": "Whether the layout is in mobile view.\n\nWhen omitted, the layout follows the viewport through\n`useMediaQuery('(max-width: 767.9px)')` — the same breakpoint the styled\ndesktop sidebar is hidden at. Pass an explicit boolean to override it, e.g.\nfor a server-side detection or a host-owned breakpoint.",
+            "ismobile": "Whether the layout is in mobile view.\n\nResolution order: this prop, then a host viewport decision provided through\n`provideViewportContext` (a simulated viewport — a device frame, an embedded\nshell), then `useMediaQuery(mobileViewportQuery)` — the same breakpoint the\nstyled desktop sidebar is hidden at. Pass an explicit boolean to force the\nmode (e.g. a server-side detection); `false` re-enables the inline sidebar\neven below the breakpoint.",
             "mainprops": "",
+            "mobileopen": "The controlled open state of the mobile drawer. Can be bound with\n`v-model:mobileOpen`.\n\nKept apart from `open`, which drives the desktop sidebar: on mobile the\ninline sidebar is replaced by a drawer, so the two states never apply at the\nsame time.",
             "mobileprops": "",
             "mobilesidebarwidth": "The width of the sidebar in the mobile view. (px)",
             "open": "The controlled open state of the layout. Can be bound with `v-model`.",

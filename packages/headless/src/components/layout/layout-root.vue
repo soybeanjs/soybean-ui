@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { computed, shallowRef } from 'vue';
+import { computed, toValue } from 'vue';
 import type { CSSProperties } from 'vue';
 import { useMediaQuery } from '@vueuse/core';
-import { toContext } from '../../shared';
-import { useControllableState } from '../../composables';
-import { layoutCssVars, layoutMobileQuery } from './shared';
+import { toContext, mobileViewportQuery } from '../../shared';
+import { useControllableState, useViewportContext } from '../../composables';
+import { layoutCssVars } from './shared';
 import { provideLayoutRootContext, useLayoutUi } from './context';
-import type { LayoutRootProps, LayoutRootEmits, LayoutSidebarState } from './types';
+import type { LayoutMobileSource, LayoutRootProps, LayoutRootEmits, LayoutSidebarState } from './types';
 
 defineOptions({
   name: 'LayoutRoot'
@@ -25,6 +25,8 @@ const props = withDefaults(defineProps<LayoutRootProps>(), {
   sidebarWidth: 240,
   collapsedSidebarWidth: 50,
   isMobile: undefined,
+  mobileOpen: undefined,
+  defaultMobileOpen: false,
   mobileSidebarWidth: 240,
   headerVisible: true,
   headerHeight: 56,
@@ -40,7 +42,7 @@ const emit = defineEmits<LayoutRootEmits>();
 
 const cls = useLayoutUi('root');
 
-const mediaIsMobile = useMediaQuery(layoutMobileQuery);
+const mediaIsMobile = useMediaQuery(mobileViewportQuery);
 
 const open = useControllableState(
   () => props.open,
@@ -50,7 +52,13 @@ const open = useControllableState(
   props.defaultOpen
 );
 
-const mobileOpen = shallowRef(false);
+const mobileOpen = useControllableState(
+  () => props.mobileOpen,
+  value => {
+    emit('update:mobileOpen', value);
+  },
+  props.defaultMobileOpen
+);
 
 const sidebarState = computed<LayoutSidebarState>(() => (open.value ? 'expanded' : 'collapsed'));
 
@@ -65,13 +73,33 @@ const stretchFooter = computed(() => fixedFooter.value && props.stretchFooter);
 const isOffcanvas = computed(() => props.collapsible === 'offcanvas');
 
 /**
+ * Host-owned viewport decision, when there is one.
+ *
+ * Consumption is optional: without a provider this stays `null` and the layout
+ * falls back to the real viewport.
+ */
+const viewport = useViewportContext();
+
+/**
  * Whether the component is in its mobile view.
  *
- * `isMobile` stays optional on purpose: leaving it unset follows the viewport,
- * while an explicit boolean overrides that — the hook for a server-side
- * detection or a breakpoint the host owns.
+ * Resolution order: the explicit `isMobile` prop, then a viewport a host
+ * simulated through `provideViewportContext` (a device frame, an embedded
+ * shell), then the real viewport. `undefined` at every level means "no opinion",
+ * which is what keeps the styled `lt-md` fallback in charge.
  */
-const isMobile = computed(() => props.isMobile ?? mediaIsMobile.value);
+const hostIsMobile = computed(() => props.isMobile ?? toValue(viewport?.isMobile));
+const isMobile = computed(() => hostIsMobile.value ?? mediaIsMobile.value);
+
+/**
+ * Where the resolved mode came from.
+ *
+ * The styled layer hides the inline sidebar below the breakpoint through `lt-md`
+ * so a phone never paints the desktop sidebar before hydration. That fallback
+ * must not override a host that explicitly asked for the desktop mode, so the
+ * source is published for the recipe to read.
+ */
+const isMobileSource = computed<LayoutMobileSource>(() => (hostIsMobile.value === undefined ? 'viewport' : 'explicit'));
 
 /**
  * Whether the sidebar occupies layout flow.
@@ -152,6 +180,7 @@ provideLayoutRootContext({
     'footerVisible'
   ]),
   isMobile,
+  isMobileSource,
   open,
   mobileOpen,
   mobileSidebarWidth,
@@ -170,6 +199,7 @@ provideLayoutRootContext({
     :data-state="sidebarState"
     :data-variant="variant"
     :data-mobile="Boolean(isMobile)"
+    :data-mobile-source="isMobileSource"
     :data-scroll-behavior="scrollBehavior"
     :data-full-content="Boolean(fullContent)"
     :data-sidebar-visible="Boolean(sidebarVisible)"

@@ -102,7 +102,7 @@ head:
 ### 注意事项
 
 1. **品牌区完全由你实现。** 没有 `logo` / `title` 属性：标记图放 `#logo`，应用名与副标题放 `#title`。外壳只渲染区域，并把实时的 `collapsed` 与解析后的 `placement` 传给两个插槽，让注入内容自行适配。`#title` 可省略——侧栏折叠时它会被隐藏，因为它对齐的那一列已经折起；没有 `#logo` 时整块品牌区都不渲染。
-2. **`isMobile` 默认跟随视口。** 外壳自己不读取 `matchMedia`：它把该属性原样（不传）透传，由布局的 `useMediaQuery('(max-width: 767.9px)')` 兜底决定。传入显式布尔值（例如服务端判断）即可覆盖。
+2. **`isMobile` 默认跟随视口。** 外壳自己不读取 `matchMedia`：它把该属性原样（不传）透传，由布局解析模式 —— 组件上的显式 `isMobile`、宿主通过 `provideViewportContext` 发布的视口，或 `useMediaQuery(mobileViewportQuery)`（即样式层隐藏侧栏的 `767.9px` 断点）。传入显式布尔值（例如服务端判断）即可覆盖。
 3. **侧栏宽度是推导值，不要随意覆盖。** `layoutProps.sidebarWidth` / `collapsedSidebarWidth` 的优先级高于推导值，但在分栏模式下既会导致侧栏与菜单面板失准，也会失去下面的动态行为。
 4. **切换模式会重建菜单。** 不同模式渲染不同的菜单实例，因此面板的展开状态（保存在 `SSplitNav` / `STreeMenu` 内部）会在模式切换时回到激活路径。
 5. **顶栏是 `STreeNav`，不是单纯的菜单条。** 它和侧栏一样由 `modelValue` 驱动选中：激活叶子会发出 `select` / `update:modelValue`，有子菜单的条目只展开弹层，带 `to` / `href` 的条目同时执行跳转。设置 `menuProps.treeNav.collapsible` 可把放不下的条目收进末尾的「更多」弹层。
@@ -150,6 +150,10 @@ head:
 ### 怎么调整侧栏宽度？
 
 `sidebar` 模式下设置 `layoutProps.sidebarWidth` / `collapsedSidebarWidth`。分栏模式下请保持默认：宽度由当前 `size` 的面板度量推导，覆盖会让侧栏与菜单错位。
+
+### 如何打开或关闭移动端抽屉？
+
+绑定 `v-model:mobileOpen`（非受控时用 `default-mobile-open`）。移动端布局会用抽屉替换桌面侧栏，因此抽屉在 `open` 之外有自己的状态：`open` / `v-model:open` 始终控制桌面折叠，外壳的 trigger 则切换当前模式实际渲染的那一个。单个绑定无法兼顾两者 —— 桌面侧栏默认展开，而抽屉必须默认关闭。
 
 ### 如何让顶栏与路由保持同步？
 

@@ -33,6 +33,7 @@ export type {
   LayoutSide,
   LayoutCollapsible,
   LayoutSidebarState,
+  LayoutMobileSource,
   LayoutScrollBehavior,
   LayoutUiSlot,
   LayoutUi

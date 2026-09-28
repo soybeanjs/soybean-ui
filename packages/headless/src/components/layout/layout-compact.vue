@@ -18,6 +18,9 @@ defineOptions({
 
 const props = withDefaults(defineProps<LayoutCompactProps>(), {
   open: undefined,
+  // Unset on purpose: an absent boolean prop is cast to `false` downstream, which
+  // would turn the drawer into a controlled state that never opens.
+  mobileOpen: undefined,
   defaultOpen: true,
   sidebarVisible: true,
   headerVisible: true,
@@ -46,7 +49,12 @@ const forwardedProps = useOmitProps(props, [
 </script>
 
 <template>
-  <LayoutRoot v-slot="slotProps" v-bind="forwardedProps" @update:open="emit('update:open', $event)">
+  <LayoutRoot
+    v-slot="slotProps"
+    v-bind="forwardedProps"
+    @update:open="emit('update:open', $event)"
+    @update:mobile-open="emit('update:mobileOpen', $event)"
+  >
     <LayoutSidebar v-bind="sidebarProps">
       <slot v-bind="slotProps" name="sidebar" />
       <LayoutRail v-bind="railProps" />
