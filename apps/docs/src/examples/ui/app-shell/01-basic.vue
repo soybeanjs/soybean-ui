@@ -181,103 +181,92 @@ const reset = (): void => {
     <!-- 控制区：属性表单排在框外，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
     <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
     <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-col gap-4">
-        <!-- 第一组：外壳自身的属性 -->
-        <div class="flex flex-wrap gap-4">
-          <FieldItem label="mode">
-            <SSelect v-model="mode" :items="modeItems" :trigger-props="{ 'aria-label': 'Mode' }" class="w-50" />
-          </FieldItem>
-          <FieldItem label="side">
-            <SSelect v-model="side" :items="sideItems" :trigger-props="{ 'aria-label': 'Side' }" class="w-25" />
-          </FieldItem>
-          <FieldItem label="size">
-            <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
-          </FieldItem>
-          <FieldItem label="logoPlacement">
-            <SSelect
-              v-model="logoPlacement"
-              :items="logoPlacementItems"
-              :trigger-props="{ 'aria-label': 'Logo placement' }"
-              class="w-40"
-            />
-          </FieldItem>
-          <FieldItem label="expandStrategy">
-            <SSelect
-              v-model="expandStrategy"
-              :items="expandStrategyItems"
-              :trigger-props="{ 'aria-label': 'Expand strategy' }"
-              class="w-30"
-            />
-          </FieldItem>
-          <FieldItem label="open">
-            <div class="h-8 flex items-center">
-              <SSwitch v-model="open" :control-props="{ 'aria-label': 'Open' }" />
-            </div>
-          </FieldItem>
-          <FieldItem label="triggerVisible">
-            <div class="h-8 flex items-center">
-              <SSwitch v-model="triggerVisible" :control-props="{ 'aria-label': 'Trigger visible' }" />
-            </div>
-          </FieldItem>
-          <FieldItem label="breadcrumbVisible">
-            <div class="h-8 flex items-center">
-              <SSwitch v-model="breadcrumbVisible" :control-props="{ 'aria-label': 'Breadcrumb visible' }" />
-            </div>
-          </FieldItem>
-        </div>
+      <div class="flex flex-wrap gap-4">
+        <FieldItem label="mode">
+          <SSelect v-model="mode" :items="modeItems" :trigger-props="{ 'aria-label': 'Mode' }" class="w-50" />
+        </FieldItem>
+        <FieldItem label="side">
+          <SSelect v-model="side" :items="sideItems" :trigger-props="{ 'aria-label': 'Side' }" class="w-25" />
+        </FieldItem>
+        <FieldItem label="size">
+          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+        </FieldItem>
+        <FieldItem label="variant">
+          <SSelect v-model="variant" :items="variantItems" :trigger-props="{ 'aria-label': 'Variant' }" class="w-25" />
+        </FieldItem>
+        <FieldItem label="scrollBehavior">
+          <SSelect
+            v-model="scrollBehavior"
+            :items="scrollBehaviorItems"
+            :trigger-props="{ 'aria-label': 'Scroll behavior' }"
+            class="w-30"
+          />
+        </FieldItem>
+        <FieldItem label="logoPlacement">
+          <SSelect
+            v-model="logoPlacement"
+            :items="logoPlacementItems"
+            :trigger-props="{ 'aria-label': 'Logo placement' }"
+            class="w-40"
+          />
+        </FieldItem>
+        <FieldItem label="expandStrategy">
+          <SSelect
+            v-model="expandStrategy"
+            :items="expandStrategyItems"
+            :trigger-props="{ 'aria-label': 'Expand strategy' }"
+            class="w-30"
+          />
+        </FieldItem>
+        <FieldItem label="open">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="open" :control-props="{ 'aria-label': 'Open' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="triggerVisible">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="triggerVisible" :control-props="{ 'aria-label': 'Trigger visible' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="breadcrumbVisible">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="breadcrumbVisible" :control-props="{ 'aria-label': 'Breadcrumb visible' }" />
+          </div>
+        </FieldItem>
 
-        <!-- 第二组：转发给内部 SLayout 的 layoutProps，布局形态、滚动方式与区域可见性在这里配置 -->
-        <div class="flex flex-wrap gap-4">
-          <FieldItem label="variant">
-            <SSelect
-              v-model="variant"
-              :items="variantItems"
-              :trigger-props="{ 'aria-label': 'Variant' }"
-              class="w-25"
-            />
-          </FieldItem>
-          <FieldItem label="scrollBehavior">
-            <SSelect
-              v-model="scrollBehavior"
-              :items="scrollBehaviorItems"
-              :trigger-props="{ 'aria-label': 'Scroll behavior' }"
-              class="w-30"
-            />
-          </FieldItem>
-          <FieldItem label="fixedTop">
-            <div class="h-8 flex items-center">
-              <SSwitch v-model="fixedTop" :control-props="{ 'aria-label': 'Fixed top' }" />
-            </div>
-          </FieldItem>
-          <FieldItem label="fixedFooter">
-            <div class="h-8 flex items-center">
-              <SSwitch v-model="fixedFooter" :control-props="{ 'aria-label': 'Fixed footer' }" />
-            </div>
-          </FieldItem>
-          <FieldItem label="stretchFooter">
-            <div class="h-8 flex items-center">
-              <SSwitch v-model="stretchFooter" :control-props="{ 'aria-label': 'Stretch footer' }" />
-            </div>
-          </FieldItem>
-          <FieldItem label="headerVisible">
-            <div class="h-8 flex items-center">
-              <SSwitch v-model="headerVisible" :control-props="{ 'aria-label': 'Header visible' }" />
-            </div>
-          </FieldItem>
-          <FieldItem label="tabVisible">
-            <div class="h-8 flex items-center">
-              <SSwitch v-model="tabVisible" :control-props="{ 'aria-label': 'Tab visible' }" />
-            </div>
-          </FieldItem>
-          <FieldItem label="footerVisible">
-            <div class="h-8 flex items-center">
-              <SSwitch v-model="footerVisible" :control-props="{ 'aria-label': 'Footer visible' }" />
-            </div>
-          </FieldItem>
-          <FieldItem :label="t('playground.reset')" class="ml-auto">
-            <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-          </FieldItem>
-        </div>
+        <FieldItem label="fixedTop">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="fixedTop" :control-props="{ 'aria-label': 'Fixed top' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="fixedFooter">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="fixedFooter" :control-props="{ 'aria-label': 'Fixed footer' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="stretchFooter">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="stretchFooter" :control-props="{ 'aria-label': 'Stretch footer' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="headerVisible">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="headerVisible" :control-props="{ 'aria-label': 'Header visible' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="tabVisible">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="tabVisible" :control-props="{ 'aria-label': 'Tab visible' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="footerVisible">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="footerVisible" :control-props="{ 'aria-label': 'Footer visible' }" />
+          </div>
+        </FieldItem>
+        <FieldItem :label="t('playground.reset')" class="ml-auto">
+          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+        </FieldItem>
       </div>
     </Teleport>
 

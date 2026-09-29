@@ -41,12 +41,9 @@
     "reset": "Reset",
     "examples": {
       "accordion": {
-        "always-one": "Always One",
         "basic": "Basic",
         "custom-icon": "Custom Icon",
-        "custom-styling": "Custom Styling",
-        "multiple": "Multiple",
-        "single": "Single"
+        "custom-styling": "Custom Styling"
       },
       "area": {
         "basic": "Basic",
@@ -75,41 +72,25 @@
       },
       "affix": {
         "basic": "Basic",
-        "custom-styling": "Custom Styling",
-        "offset-bottom": "Offset Bottom",
-        "target": "Target"
+        "custom-styling": "Custom Styling"
       },
       "alert": {
         "basic": "Basic",
-        "closable": "Closable",
-        "color": "Color",
-        "desc-icon": "Description Icon",
-        "description": "Description",
-        "icon": "Icon",
-        "size": "Size",
-        "slot": "Slot",
-        "variant": "Variant"
+        "slot": "Slot"
       },
       "anchor": {
         "basic": "Basic",
-        "color": "Color",
-        "custom-styling": "Custom Styling",
-        "size": "Size",
-        "sticky": "Sticky"
+        "custom-styling": "Custom Styling"
       },
       "arrow": {
         "basic": "Basic"
       },
       "app-shell": {
         "basic": "Basic",
-        "brand-placement": "Brand Placement",
         "collapse-mobile": "Collapse & Mobile",
         "custom-slots": "Custom Slots",
-        "expand-strategy": "Expand Strategy",
         "layout-composition": "Layout Composition",
-        "split-modes": "Split Modes",
-        "tabs-breadcrumb": "Tabs & Breadcrumb",
-        "top": "Top Menu"
+        "tabs-breadcrumb": "Tabs & Breadcrumb"
       },
       "aspect-ratio": {
         "basic": "Basic"
@@ -122,28 +103,19 @@
         "open-on-focus": "Open On Focus"
       },
       "avatar": {
-        "basic": "Basic",
-        "delay": "Delay",
-        "fallback": "Fallback",
-        "size": "Size"
+        "basic": "Basic"
       },
       "backtop": {
         "basic": "Basic",
         "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
         "target": "Target"
       },
       "badge": {
         "basic": "Basic",
-        "color": "Color",
-        "content": "Content",
-        "open": "Open",
-        "position": "Position",
         "slot": "Slot"
       },
       "drawer": {
         "basic": "Basic",
-        "side": "Side",
         "nested": "Nested",
         "snap-points": "Snap Points",
         "swipe": "Swipe",
@@ -158,36 +130,26 @@
       },
       "button": {
         "basic": "Basic",
-        "color": "Color",
-        "customizer": "Customizer",
-        "disabled": "Disabled",
         "group": "Group",
         "icon": "Icon",
         "link": "Link",
         "loading": "Loading",
-        "shadow": "Shadow",
-        "shape": "Shape",
-        "size": "Size",
-        "slot": "Slot",
-        "variant": "Variant"
+        "slot": "Slot"
       },
       "calendar": {
         "basic": "Basic",
         "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
-        "multiple": "Multiple"
+        "disabled": "Disabled"
       },
       "card": {
         "basic": "Basic",
         "collapsible": "Collapsible",
         "only-content": "Only Content",
-        "split": "Split",
         "title-slot": "Title Slot"
       },
       "carousel": {
         "basic": "Basic",
         "dot": "Dot",
-        "float": "Float",
         "multi": "Multi",
         "progress": "Progress",
         "snap": "Snap",
@@ -197,21 +159,13 @@
         "basic": "Basic",
         "card": "Card",
         "card-group": "Card Group",
-        "color": "Color",
         "group": "Group",
-        "icon": "Icon",
-        "shape": "Shape",
-        "single": "Single",
-        "size": "Size"
+        "icon": "Icon"
       },
       "clipboard": {
         "basic": "Basic",
-        "color": "Color",
         "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
-        "icon-only": "Icon Only",
-        "size": "Size",
-        "variant": "Variant"
+        "icon-only": "Icon Only"
       },
       "collapsible": {
         "basic": "Basic"
@@ -234,16 +188,12 @@
         "basic": "Basic"
       },
       "color-swatch-picker": {
-        "basic": "Basic",
-        "shape": "Shape"
+        "basic": "Basic"
       },
       "combobox": {
         "basic": "Basic",
-        "clearable": "Clearable",
         "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
-        "group": "Group",
-        "multiple": "Multiple"
+        "group": "Group"
       },
       "command": {
         "basic": "Basic",
@@ -253,32 +203,24 @@
         "basic": "Basic",
         "checkbox": "Checkbox",
         "mix": "Mixed",
-        "radio": "Radio",
-        "trigger": "Trigger"
+        "radio": "Radio"
       },
       "date-field": {
         "basic": "Basic",
         "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
         "with-time": "With Time"
       },
       "date-picker": {
         "basic": "Basic",
-        "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
-        "size": "Size"
+        "custom-styling": "Custom Styling"
       },
       "date-range-field": {
         "basic": "Basic",
-        "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
-        "with-time": "With Time"
+        "custom-styling": "Custom Styling"
       },
       "date-range-picker": {
         "basic": "Basic",
-        "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
-        "size": "Size"
+        "custom-styling": "Custom Styling"
       },
       "dialog": {
         "basic": "Basic",
@@ -287,91 +229,67 @@
         "footer": "Footer",
         "fullscreen": "Fullscreen",
         "prevent": "Prevent",
-        "pure": "Pure",
         "state": "State"
       },
       "sheet": {
-        "basic": "Basic",
-        "scroll": "Scroll",
-        "side": "Side"
+        "basic": "Basic"
       },
       "dropdown-menu": {
-        "arrow": "Arrow",
         "basic": "Basic",
         "checkbox": "Checkbox",
         "mix": "Mixed",
-        "radio": "Radio",
-        "trigger": "Trigger"
+        "radio": "Radio"
       },
       "editable": {
-        "activation-mode": "Activation Mode",
         "basic": "Basic",
-        "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
-        "size": "Size"
+        "custom-styling": "Custom Styling"
       },
       "empty": {
         "basic": "Basic",
         "custom-styling": "Custom Styling",
-        "icon": "Icon",
         "slot": "Slot"
       },
       "form": {
-        "basic": "Basic",
-        "horizontal": "Horizontal",
-        "zod": "Zod"
+        "basic": "Basic"
       },
       "hover-card": {
         "basic": "Basic",
-        "custom-styling": "Custom Styling",
-        "delay": "Delay"
+        "custom-styling": "Custom Styling"
       },
       "input": {
         "basic": "Basic",
-        "clearable": "Clearable",
-        "disabled": "Disabled",
         "slot": "Slot"
       },
       "input-number": {
         "basic": "Basic",
-        "center": "Center",
-        "clearable": "Clearable",
         "slot": "Slot"
       },
       "input-otp": {
         "basic": "Basic",
         "custom-slot": "Custom Slot",
-        "disabled": "Disabled",
         "placeholder": "Placeholder"
       },
       "kbd": {
-        "basic": "Basic",
-        "raised": "Raised",
-        "size": "Size",
-        "variant": "Variant"
+        "basic": "Basic"
       },
       "label": {
         "basic": "Basic"
       },
       "layout": {
-        "basic": "Basic",
-        "classic": "Classic"
+        "basic": "Basic"
       },
       "link": {
-        "basic": "Basic",
-        "href": "Href"
+        "basic": "Basic"
       },
       "list": {
         "basic": "Basic"
       },
       "menu": {
-        "basic": "Basic",
-        "hidden": "Hidden items"
+        "basic": "Basic"
       },
       "menubar": {
         "basic": "Basic",
-        "controlled": "Controlled",
-        "rtl": "RTL"
+        "controlled": "Controlled"
       },
       "navMenu": {
         "basic": "Basic",
@@ -388,16 +306,11 @@
       "pagination": {
         "action": "Action",
         "basic": "Basic",
-        "shape": "Shape",
         "show": "Show",
-        "size": "Size",
-        "slot": "Slot",
-        "variant": "Variant"
+        "slot": "Slot"
       },
       "password": {
         "basic": "Basic",
-        "clearable": "Clearable",
-        "disabled": "Disabled",
         "icon": "Icon"
       },
       "popconfirm": {
@@ -419,74 +332,48 @@
       "progress": {
         "basic": "Basic",
         "circle": "Circle",
-        "color": "Color",
         "provider": "Provider",
-        "size": "Size",
-        "slot": "Slot",
-        "state": "State"
+        "slot": "Slot"
       },
       "radio-group": {
         "basic": "Basic",
-        "card": "Card",
-        "color": "Color",
-        "size": "Size",
-        "variant": "Variant"
+        "card": "Card"
       },
       "calendar-range": {
         "basic": "Basic",
         "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
-        "two-months": "Two Months"
+        "disabled": "Disabled"
       },
       "scroll-area": {
         "basic": "Basic",
         "custom-styling": "Custom Styling",
-        "horizontal": "Horizontal",
-        "type": "Type"
+        "horizontal": "Horizontal"
       },
       "segment": {
         "basic": "Basic",
-        "icon": "Icon",
-        "shape": "Shape",
-        "vertical": "Vertical"
+        "icon": "Icon"
       },
       "select": {
         "basic": "Basic",
         "default-value": "Default Value",
         "disabled": "Disabled",
         "group": "Group",
-        "multiple": "Multiple",
         "separator": "Separator",
-        "single-clearable": "Single Clearable",
         "slots": "Top & Bottom Slots"
       },
       "separator": {
-        "align": "Align",
-        "basic": "Basic",
-        "border": "Border",
-        "orientation": "Orientation"
+        "basic": "Basic"
       },
       "skeleton": {
-        "animated": "Animated",
         "basic": "Basic",
-        "custom-size": "Custom Size",
-        "shape": "Shape",
-        "size": "Size"
+        "custom-size": "Custom Size"
       },
       "slider": {
-        "basic": "Basic",
-        "color": "Color",
-        "disabled": "Disabled",
-        "orientation": "Orientation",
-        "range": "Range",
-        "size": "Size"
+        "basic": "Basic"
       },
       "spinner": {
         "basic": "Basic",
-        "color": "Color",
-        "custom-styling": "Custom Styling",
-        "icon": "Icon",
-        "size": "Size"
+        "custom-styling": "Custom Styling"
       },
       "split-nav": {
         "basic": "Basic",
@@ -501,9 +388,7 @@
       "splitter": {
         "basic": "Basic",
         "collapsible": "Collapsible",
-        "custom-handle": "Custom Handle",
-        "disabled": "Disabled",
-        "vertical": "Vertical"
+        "custom-handle": "Custom Handle"
       },
       "stepper": {
         "basic": "Basic",
@@ -513,13 +398,10 @@
       },
       "switch": {
         "basic": "Basic",
-        "shape": "Shape",
-        "size": "Size",
         "slot": "Slot"
       },
       "table": {
         "basic": "Basic",
-        "bordered": "Bordered",
         "bottom": "Bottom",
         "empty": "Empty",
         "expandable": "Expandable",
@@ -530,85 +412,52 @@
         "multiple-selection": "Multiple Selection",
         "resizable": "Resizable",
         "row-events": "Row Events",
-        "rounded": "Rounded",
         "single-selection": "Single Selection",
-        "sizes": "Sizes",
         "sorting": "Sorting",
-        "striped": "Striped",
         "tree": "Tree",
-        "variant": "Variant",
         "virtualized": "Virtualized"
       },
       "tabs": {
         "basic": "Basic",
-        "custom": "Custom",
-        "fill": "Fill",
-        "horizontal": "Horizontal",
-        "vertical": "Vertical"
+        "custom": "Custom"
       },
       "tag": {
         "basic": "Basic",
-        "closable": "Closable",
-        "color": "Color",
-        "shape": "Shape",
-        "size": "Size",
-        "slot": "Slot",
-        "variant": "Variant"
+        "slot": "Slot"
       },
       "tags-input": {
-        "basic": "Basic",
-        "clear": "Clear",
-        "disabled": "Disabled",
-        "object-value": "Object Value"
+        "basic": "Basic"
       },
       "textarea": {
-        "autosize": "Autosize",
         "basic": "Basic",
-        "clearable": "Clearable",
-        "counter": "Counter",
-        "disabled": "Disabled",
         "footer": "Footer"
       },
       "time-field": {
         "basic": "Basic",
-        "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
-        "seconds": "Seconds"
+        "custom-styling": "Custom Styling"
       },
       "time-range-field": {
         "basic": "Basic",
-        "custom-styling": "Custom Styling",
-        "disabled": "Disabled",
-        "seconds": "Seconds"
+        "custom-styling": "Custom Styling"
       },
       "toast": {
         "action": "Action",
         "appearance": "Appearance",
         "basic": "Basic",
         "control": "Control",
-        "position": "Position",
         "promise": "Promise",
-        "stack": "Stack",
-        "types": "Types"
+        "stack": "Stack"
       },
       "toggle": {
-        "basic": "Basic",
-        "disabled": "Disabled",
-        "shape": "Shape",
-        "size": "Size",
-        "variant": "Variant"
+        "basic": "Basic"
       },
       "toggle-group": {
-        "basic": "Basic",
-        "multiple": "Multiple",
-        "variant": "Variant",
-        "vertical": "Vertical"
+        "basic": "Basic"
       },
       "toolbar": {
         "basic": "Basic",
         "link": "Link",
-        "toggle-group": "Toggle Group",
-        "vertical": "Vertical"
+        "toggle-group": "Toggle Group"
       },
       "tooltip": {
         "basic": "Basic"
@@ -621,8 +470,7 @@
         "virtualizer": "Virtualizer"
       },
       "tree-menu": {
-        "basic": "Basic",
-        "expand-strategy": "Expand Strategy"
+        "basic": "Basic"
       },
       "tree-nav": {
         "basic": "Basic",

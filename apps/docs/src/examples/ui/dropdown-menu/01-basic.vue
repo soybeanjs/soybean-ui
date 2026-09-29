@@ -1,6 +1,62 @@
 <script setup lang="ts">
-import { SButton, SDropdownMenu } from '@soybeanjs/ui';
-import type { MenuOptionData } from '@soybeanjs/ui';
+import { computed, shallowRef } from 'vue';
+import type { Placement } from '@soybeanjs/headless/types';
+import { SButton, SButtonIcon, SDropdownMenu, SInputNumber, SSelect, SSwitch } from '@soybeanjs/ui';
+import type { DropdownMenuTriggerType, MenuOptionData, SelectOptionData, ThemeSize } from '@soybeanjs/ui';
+import { themeSizeOptions } from '~/constants/theme';
+
+interface Props {
+  playgroundRegion?: string;
+}
+
+defineProps<Props>();
+
+const { t } = useI18n();
+
+/** 自定义器状态：只保存「怎么渲染」，预览完全由它派生，不存在第二份镜像状态。 */
+interface CustomizerState {
+  size: ThemeSize;
+  trigger: DropdownMenuTriggerType;
+  placement: Placement;
+  showArrow: boolean;
+  disabled: boolean;
+  modal: boolean;
+  delayDuration: number | null;
+}
+
+/** 默认形态：`reset` 回到这份快照，所以它是常量而不是状态。 */
+const DEFAULTS: CustomizerState = {
+  size: 'md',
+  trigger: 'click',
+  placement: 'bottom-start',
+  showArrow: false,
+  disabled: false,
+  modal: true,
+  delayDuration: 150
+};
+
+/** 选项表只有「值即文案」一种形态，用一个纯函数生成，避免四份复制粘贴。 */
+const toOptions = <T extends string>(values: readonly T[]): { value: T; label: T }[] =>
+  values.map(value => ({ value, label: value }));
+
+const TRIGGER_KEYS: readonly DropdownMenuTriggerType[] = ['click', 'hover'];
+const PLACEMENT_KEYS: readonly Placement[] = [
+  'top',
+  'right',
+  'bottom',
+  'left',
+  'top-start',
+  'top-end',
+  'right-start',
+  'right-end',
+  'bottom-start',
+  'bottom-end',
+  'left-start',
+  'left-end'
+];
+
+const triggerItems: SelectOptionData<DropdownMenuTriggerType>[] = toOptions(TRIGGER_KEYS);
+const placementItems: SelectOptionData<Placement>[] = toOptions(PLACEMENT_KEYS);
 
 const menus: MenuOptionData<string>[] = [
   {
@@ -64,12 +120,95 @@ const menus: MenuOptionData<string>[] = [
   { value: '09', label: 'API', icon: 'lucide:cloud', disabled: true, separator: true },
   { value: '10', label: 'Sign out', icon: 'lucide:log-out', shortcut: ['command', 'shift', 'Q'] }
 ];
+
+const size = shallowRef(DEFAULTS.size);
+const trigger = shallowRef(DEFAULTS.trigger);
+const placement = shallowRef(DEFAULTS.placement);
+const showArrow = shallowRef(DEFAULTS.showArrow);
+const disabled = shallowRef(DEFAULTS.disabled);
+const modal = shallowRef(DEFAULTS.modal);
+const delayDuration = shallowRef(DEFAULTS.delayDuration);
+
+/** 空输入回落到组件默认值 150（仅 hover 触发生效）。 */
+const resolvedDelayDuration = computed(() => delayDuration.value ?? 150);
+
+const reset = (): void => {
+  size.value = DEFAULTS.size;
+  trigger.value = DEFAULTS.trigger;
+  placement.value = DEFAULTS.placement;
+  showArrow.value = DEFAULTS.showArrow;
+  disabled.value = DEFAULTS.disabled;
+  modal.value = DEFAULTS.modal;
+  delayDuration.value = DEFAULTS.delayDuration;
+};
 </script>
 
 <template>
-  <SDropdownMenu :items="menus">
-    <template #trigger>
-      <SButton variant="pure">Open Dropdown</SButton>
-    </template>
-  </SDropdownMenu>
+  <div>
+    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
+    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
+    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+      <div class="flex flex-wrap gap-4">
+        <FieldItem label="size">
+          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+        </FieldItem>
+        <FieldItem label="trigger">
+          <SSelect v-model="trigger" :items="triggerItems" :trigger-props="{ 'aria-label': 'Trigger' }" class="w-28" />
+        </FieldItem>
+        <FieldItem label="placement">
+          <SSelect
+            v-model="placement"
+            :items="placementItems"
+            :trigger-props="{ 'aria-label': 'Placement' }"
+            class="w-35"
+          />
+        </FieldItem>
+        <FieldItem label="delayDuration">
+          <SInputNumber
+            v-model="delayDuration"
+            :min="0"
+            :step="50"
+            :control-props="{ 'aria-label': 'Delay duration' }"
+            class="w-28"
+          />
+        </FieldItem>
+        <FieldItem label="showArrow">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="showArrow" :control-props="{ 'aria-label': 'Show arrow' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="disabled">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="disabled" :control-props="{ 'aria-label': 'Disabled' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="modal">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="modal" :control-props="{ 'aria-label': 'Modal' }" />
+          </div>
+        </FieldItem>
+        <FieldItem :label="t('playground.reset')" class="ml-auto">
+          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+        </FieldItem>
+      </div>
+    </Teleport>
+
+    <!-- 预览区：白底主体只放触发按钮，菜单弹层由组件自身渲染 -->
+    <div class="relative flex min-h-56 items-center justify-center">
+      <SDropdownMenu
+        :items="menus"
+        :size="size"
+        :trigger="trigger"
+        :placement="placement"
+        :show-arrow="showArrow"
+        :disabled="disabled"
+        :modal="modal"
+        :delay-duration="resolvedDelayDuration"
+      >
+        <template #trigger>
+          <SButton variant="pure">Open Dropdown</SButton>
+        </template>
+      </SDropdownMenu>
+    </div>
+  </div>
 </template>

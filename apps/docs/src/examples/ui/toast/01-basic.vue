@@ -1,49 +1,177 @@
 <script setup lang="ts">
-import { SButton, toast } from '@soybeanjs/ui';
+import { shallowRef } from 'vue';
+import { SButton, SButtonIcon, SInput, SInputNumber, SSelect, SSwitch, toast } from '@soybeanjs/ui';
+import type { SelectOptionData, ToastPosition, ToastType } from '@soybeanjs/ui';
 
-function openDefaultToast() {
-  toast('Release created', {
-    icon: 'lucide:rocket',
-    description: 'The changelog and version tag are ready.',
-    duration: 3200
-  });
+interface Props {
+  playgroundRegion?: string;
 }
 
-function openSuccessToast() {
-  toast.success('Project published', {
-    description: 'The package has been pushed to the registry.',
-    duration: 3200
-  });
+defineProps<Props>();
+
+const { t } = useI18n();
+
+/** 自定义器状态：只保存「怎么发」，发出的 toast 完全由它派生，不存在第二份镜像状态。 */
+interface CustomizerState {
+  type: ToastType;
+  position: ToastPosition;
+  duration: number;
+  title: string;
+  description: string;
+  richColor: boolean;
+  inverted: boolean;
+  showClose: boolean;
+  dismissible: boolean;
 }
 
-function openErrorToast() {
-  toast.error('Deployment failed', {
-    description: 'The edge function returned a 500 response.',
-    duration: 4200
-  });
-}
+/** 默认形态：`reset` 回到这份快照，所以它是常量而不是状态。 */
+const DEFAULTS: CustomizerState = {
+  type: 'default',
+  position: 'bottom-right',
+  duration: 3200,
+  title: 'Release created',
+  description: 'The changelog and version tag are ready.',
+  richColor: false,
+  inverted: false,
+  showClose: false,
+  dismissible: true
+};
 
-function openLoadingToast() {
-  const id = toast.loading('Syncing workspace', {
-    description: 'Fetching the latest remote changes.',
-    duration: Infinity
-  });
+/** 选项表只有「值即文案」一种形态，用一个纯函数生成，避免四份复制粘贴。 */
+const toOptions = <T extends string>(values: readonly T[]): { value: T; label: T }[] =>
+  values.map(value => ({ value, label: value }));
 
-  window.setTimeout(() => {
-    toast.success('Sync complete', {
-      id,
-      description: 'All remote changes are now available locally.',
-      duration: 3200
-    });
-  }, 1600);
-}
+const TYPE_KEYS: readonly ToastType[] = ['default', 'success', 'info', 'warning', 'error', 'loading'];
+const POSITION_KEYS: readonly ToastPosition[] = [
+  'top-left',
+  'top-center',
+  'top-right',
+  'bottom-left',
+  'bottom-center',
+  'bottom-right'
+];
+
+const typeItems: SelectOptionData<ToastType>[] = toOptions(TYPE_KEYS);
+const positionItems: SelectOptionData<ToastPosition>[] = toOptions(POSITION_KEYS);
+
+const type = shallowRef(DEFAULTS.type);
+const position = shallowRef(DEFAULTS.position);
+/** 数值控件允许空输入：`SInputNumber` 的模型是 `number | null`，空值回落到默认快照。 */
+const duration = shallowRef<number | null>(DEFAULTS.duration);
+const title = shallowRef(DEFAULTS.title);
+const description = shallowRef(DEFAULTS.description);
+const richColor = shallowRef(DEFAULTS.richColor);
+const inverted = shallowRef(DEFAULTS.inverted);
+const showClose = shallowRef(DEFAULTS.showClose);
+const dismissible = shallowRef(DEFAULTS.dismissible);
+
+/** `toast()` 基础入口不收 `type`，类型由具名方法决定；按状态分发到对应入口。 */
+const openToast = (): void => {
+  const options = {
+    description: description.value,
+    position: position.value,
+    duration: duration.value ?? DEFAULTS.duration,
+    richColor: richColor.value,
+    inverted: inverted.value,
+    showClose: showClose.value,
+    dismissible: dismissible.value
+  };
+
+  switch (type.value) {
+    case 'success':
+      toast.success(title.value, options);
+      return;
+    case 'info':
+      toast.info(title.value, options);
+      return;
+    case 'warning':
+      toast.warning(title.value, options);
+      return;
+    case 'error':
+      toast.error(title.value, options);
+      return;
+    case 'loading':
+      toast.loading(title.value, options);
+      return;
+    default:
+      toast(title.value, options);
+  }
+};
+
+const reset = (): void => {
+  type.value = DEFAULTS.type;
+  position.value = DEFAULTS.position;
+  duration.value = DEFAULTS.duration;
+  title.value = DEFAULTS.title;
+  description.value = DEFAULTS.description;
+  richColor.value = DEFAULTS.richColor;
+  inverted.value = DEFAULTS.inverted;
+  showClose.value = DEFAULTS.showClose;
+  dismissible.value = DEFAULTS.dismissible;
+};
 </script>
 
 <template>
-  <div class="flex flex-wrap gap-2">
-    <SButton variant="pure" @click="openDefaultToast">Default</SButton>
-    <SButton color="success" variant="outline" @click="openSuccessToast">Success</SButton>
-    <SButton color="destructive" variant="outline" @click="openErrorToast">Error</SButton>
-    <SButton color="warning" variant="outline" @click="openLoadingToast">Loading</SButton>
+  <div>
+    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
+    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
+    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+      <div class="flex flex-wrap gap-4">
+        <FieldItem label="type">
+          <SSelect v-model="type" :items="typeItems" :trigger-props="{ 'aria-label': 'Type' }" class="w-30" />
+        </FieldItem>
+        <FieldItem label="position">
+          <SSelect
+            v-model="position"
+            :items="positionItems"
+            :trigger-props="{ 'aria-label': 'Position' }"
+            class="w-35"
+          />
+        </FieldItem>
+        <FieldItem label="duration">
+          <SInputNumber
+            v-model="duration"
+            :min="0"
+            :step="400"
+            :control-props="{ 'aria-label': 'Duration' }"
+            class="w-30"
+          />
+        </FieldItem>
+        <FieldItem label="title">
+          <SInput v-model="title" aria-label="Title" />
+        </FieldItem>
+        <FieldItem label="description">
+          <SInput v-model="description" aria-label="Description" />
+        </FieldItem>
+        <FieldItem label="richColor">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="richColor" :control-props="{ 'aria-label': 'Rich color' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="inverted">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="inverted" :control-props="{ 'aria-label': 'Inverted' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="showClose">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="showClose" :control-props="{ 'aria-label': 'Show close' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="dismissible">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="dismissible" :control-props="{ 'aria-label': 'Dismissible' }" />
+          </div>
+        </FieldItem>
+        <FieldItem :label="t('playground.reset')" class="ml-auto">
+          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+        </FieldItem>
+      </div>
+    </Teleport>
+
+    <!-- 预览区：toast 是命令式 API，白底主体放按当前配置触发一条 toast 的按钮 -->
+    <div class="relative flex min-h-56 items-center justify-center">
+      <SButton @click="openToast">Show toast</SButton>
+    </div>
   </div>
 </template>

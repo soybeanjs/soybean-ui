@@ -39,9 +39,26 @@ interface Props {
 
 defineProps<Props>();
 
+const { t } = useI18n();
+
+/** 默认形态：`reset` 回到这份快照，所以它是常量而不是状态。 */
+const DEFAULTS = {
+  orientation: 'horizontal' as DataOrientation,
+  side: 'left' as LayoutSide,
+  size: 'md' as ThemeSize,
+  scrollBehavior: 'wrapper' as LayoutScrollBehavior,
+  fixedTop: true,
+  fixedFooter: false,
+  stretchFooter: true,
+  framework: 'soybean-unify',
+  variant: 'sidebar' as LayoutVariant,
+  collapsible: 'icon' as LayoutCollapsible,
+  fullContent: false
+};
+
 // `isMobile` is left unset on purpose: the layout follows the viewport, so the
 // demo narrows into the drawer without any media-query wiring of its own.
-const orientation = shallowRef<DataOrientation>('horizontal');
+const orientation = shallowRef<DataOrientation>(DEFAULTS.orientation);
 
 const orientations: SelectOptionData<DataOrientation>[] = [
   {
@@ -54,7 +71,7 @@ const orientations: SelectOptionData<DataOrientation>[] = [
   }
 ];
 
-const side = shallowRef<LayoutSide>('left');
+const side = shallowRef<LayoutSide>(DEFAULTS.side);
 
 const sides: SelectOptionData<LayoutSide>[] = [
   {
@@ -67,9 +84,9 @@ const sides: SelectOptionData<LayoutSide>[] = [
   }
 ];
 
-const size = shallowRef<ThemeSize>('md');
+const size = shallowRef<ThemeSize>(DEFAULTS.size);
 
-const scrollBehavior = shallowRef<LayoutScrollBehavior>('wrapper');
+const scrollBehavior = shallowRef<LayoutScrollBehavior>(DEFAULTS.scrollBehavior);
 
 const scrollBehaviors: SelectOptionData<LayoutScrollBehavior>[] = [
   {
@@ -82,13 +99,13 @@ const scrollBehaviors: SelectOptionData<LayoutScrollBehavior>[] = [
   }
 ];
 
-const fixedTop = shallowRef(true);
+const fixedTop = shallowRef(DEFAULTS.fixedTop);
 
-const fixedFooter = shallowRef(false);
+const fixedFooter = shallowRef(DEFAULTS.fixedFooter);
 
-const stretchFooter = shallowRef(true);
+const stretchFooter = shallowRef(DEFAULTS.stretchFooter);
 
-const framework = shallowRef('soybean-unify');
+const framework = shallowRef(DEFAULTS.framework);
 
 const frameworks = [
   {
@@ -114,7 +131,7 @@ function setActiveFramework(item: MenuOptionData<string>) {
   framework.value = item.value;
 }
 
-const variant = shallowRef<LayoutVariant>('sidebar');
+const variant = shallowRef<LayoutVariant>(DEFAULTS.variant);
 
 const variants: SelectOptionData<LayoutVariant>[] = [
   {
@@ -131,7 +148,7 @@ const variants: SelectOptionData<LayoutVariant>[] = [
   }
 ];
 
-const collapsible = shallowRef<LayoutCollapsible>('icon');
+const collapsible = shallowRef<LayoutCollapsible>(DEFAULTS.collapsible);
 
 const collapsibleOptions: SelectOptionData<LayoutCollapsible>[] = [
   {
@@ -157,7 +174,21 @@ const breadcrumbItems: BreadcrumbOptionData[] = [
   }
 ];
 
-const fullContent = shallowRef(false);
+const fullContent = shallowRef(DEFAULTS.fullContent);
+
+const reset = (): void => {
+  orientation.value = DEFAULTS.orientation;
+  side.value = DEFAULTS.side;
+  size.value = DEFAULTS.size;
+  scrollBehavior.value = DEFAULTS.scrollBehavior;
+  fixedTop.value = DEFAULTS.fixedTop;
+  fixedFooter.value = DEFAULTS.fixedFooter;
+  stretchFooter.value = DEFAULTS.stretchFooter;
+  framework.value = DEFAULTS.framework;
+  variant.value = DEFAULTS.variant;
+  collapsible.value = DEFAULTS.collapsible;
+  fullContent.value = DEFAULTS.fullContent;
+};
 </script>
 
 <template>
@@ -212,6 +243,9 @@ const fullContent = shallowRef(false);
           <div class="h-8 flex items-center">
             <SSwitch v-model="stretchFooter" :control-props="{ 'aria-label': 'Stretch footer' }" />
           </div>
+        </FieldItem>
+        <FieldItem :label="t('playground.reset')" class="ml-auto">
+          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
         </FieldItem>
       </div>
     </Teleport>

@@ -1,24 +1,167 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { SEditable } from '@soybeanjs/ui';
-import type { EditableEventState } from '@soybeanjs/ui';
+import { shallowRef } from 'vue';
+import { SButtonIcon, SEditable, SInput, SSelect, SSwitch } from '@soybeanjs/ui';
+import type {
+  EditableActivationMode,
+  EditableEventState,
+  EditableSubmitMode,
+  SelectOptionData,
+  ThemeSize
+} from '@soybeanjs/ui';
+import { themeSizeOptions } from '~/constants/theme';
 
-const value = ref('Click to edit your display name');
-const state = ref<EditableEventState | 'preview'>('preview');
+interface Props {
+  playgroundRegion?: string;
+}
 
-function onStateChange(nextState: EditableEventState) {
+defineProps<Props>();
+
+const { t } = useI18n();
+
+/** 自定义器状态：只保存「怎么渲染」，预览完全由它派生，不存在第二份镜像状态。 */
+interface CustomizerState {
+  value: string;
+  placeholder: string;
+  size: ThemeSize;
+  activationMode: EditableActivationMode;
+  submitMode: EditableSubmitMode;
+  selectOnFocus: boolean;
+  autoResize: boolean;
+  disabled: boolean;
+  readonly: boolean;
+}
+
+/** 默认形态：`reset` 回到这份快照，所以它是常量而不是状态。 */
+const DEFAULTS: CustomizerState = {
+  value: 'Click to edit your display name',
+  placeholder: 'Enter your display name',
+  size: 'md',
+  activationMode: 'focus',
+  submitMode: 'blur',
+  selectOnFocus: false,
+  autoResize: false,
+  disabled: false,
+  readonly: false
+};
+
+/** 选项表只有「值即文案」一种形态，用一个纯函数生成，避免四份复制粘贴。 */
+const toOptions = <T extends string>(values: readonly T[]): { value: T; label: T }[] =>
+  values.map(value => ({ value, label: value }));
+
+const ACTIVATION_MODE_KEYS: readonly EditableActivationMode[] = ['focus', 'dblclick', 'none'];
+const SUBMIT_MODE_KEYS: readonly EditableSubmitMode[] = ['blur', 'enter', 'none', 'both'];
+
+const activationModeItems: SelectOptionData<EditableActivationMode>[] = toOptions(ACTIVATION_MODE_KEYS);
+const submitModeItems: SelectOptionData<EditableSubmitMode>[] = toOptions(SUBMIT_MODE_KEYS);
+
+const value = shallowRef(DEFAULTS.value);
+const placeholder = shallowRef(DEFAULTS.placeholder);
+const size = shallowRef(DEFAULTS.size);
+const activationMode = shallowRef(DEFAULTS.activationMode);
+const submitMode = shallowRef(DEFAULTS.submitMode);
+const selectOnFocus = shallowRef(DEFAULTS.selectOnFocus);
+const autoResize = shallowRef(DEFAULTS.autoResize);
+const disabled = shallowRef(DEFAULTS.disabled);
+const readonly = shallowRef(DEFAULTS.readonly);
+
+const state = shallowRef<EditableEventState | 'preview'>('preview');
+
+const handleStateChange = (nextState: EditableEventState): void => {
   state.value = nextState;
-}
+};
 
-function onSubmit() {
+const handleSubmit = (): void => {
   state.value = 'preview';
-}
+};
+
+const reset = (): void => {
+  value.value = DEFAULTS.value;
+  placeholder.value = DEFAULTS.placeholder;
+  size.value = DEFAULTS.size;
+  activationMode.value = DEFAULTS.activationMode;
+  submitMode.value = DEFAULTS.submitMode;
+  selectOnFocus.value = DEFAULTS.selectOnFocus;
+  autoResize.value = DEFAULTS.autoResize;
+  disabled.value = DEFAULTS.disabled;
+  readonly.value = DEFAULTS.readonly;
+};
 </script>
 
 <template>
-  <div class="flex-c gap-3 w-100 lt-md:w-auto">
-    <SEditable v-model="value" placeholder="Enter your display name" @submit="onSubmit" @update:state="onStateChange" />
-    <div class="text-sm text-muted-foreground">Value: {{ value }}</div>
-    <div class="text-xs text-muted-foreground">State: {{ state }}</div>
+  <div>
+    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
+    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
+    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+      <div class="flex flex-wrap gap-4">
+        <FieldItem label="value">
+          <SInput v-model="value" aria-label="Value" placeholder="Editable value" class="w-45" />
+        </FieldItem>
+        <FieldItem label="placeholder">
+          <SInput v-model="placeholder" aria-label="Placeholder" placeholder="Placeholder text" class="w-45" />
+        </FieldItem>
+        <FieldItem label="size">
+          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+        </FieldItem>
+        <FieldItem label="activationMode">
+          <SSelect
+            v-model="activationMode"
+            :items="activationModeItems"
+            :trigger-props="{ 'aria-label': 'Activation mode' }"
+            class="w-30"
+          />
+        </FieldItem>
+        <FieldItem label="submitMode">
+          <SSelect
+            v-model="submitMode"
+            :items="submitModeItems"
+            :trigger-props="{ 'aria-label': 'Submit mode' }"
+            class="w-28"
+          />
+        </FieldItem>
+        <FieldItem label="selectOnFocus">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="selectOnFocus" :control-props="{ 'aria-label': 'Select on focus' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="autoResize">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="autoResize" :control-props="{ 'aria-label': 'Auto resize' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="disabled">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="disabled" :control-props="{ 'aria-label': 'Disabled' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="readonly">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="readonly" :control-props="{ 'aria-label': 'Readonly' }" />
+          </div>
+        </FieldItem>
+        <FieldItem :label="t('playground.reset')" class="ml-auto">
+          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+        </FieldItem>
+      </div>
+    </Teleport>
+
+    <!-- 预览区：白底主体只放组件本身 -->
+    <div class="relative flex min-h-56 flex-col items-center justify-center gap-3">
+      <SEditable
+        v-model="value"
+        class="w-100 lt-md:w-auto"
+        :placeholder="placeholder"
+        :size="size"
+        :activation-mode="activationMode"
+        :submit-mode="submitMode"
+        :select-on-focus="selectOnFocus"
+        :auto-resize="autoResize"
+        :disabled="disabled"
+        :readonly="readonly"
+        @submit="handleSubmit"
+        @update:state="handleStateChange"
+      />
+      <p class="text-sm text-muted-foreground">Value: {{ value }}</p>
+      <p class="text-xs text-muted-foreground">State: {{ state }}</p>
+    </div>
   </div>
 </template>

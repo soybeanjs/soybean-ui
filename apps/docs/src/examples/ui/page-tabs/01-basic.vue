@@ -1,24 +1,48 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, shallowRef } from 'vue';
 import type { Ref } from 'vue';
-import { SPageTabs, SSelect, SButton } from '@soybeanjs/ui';
+import { SButtonIcon, SPageTabs, SSelect, SSwitch } from '@soybeanjs/ui';
 import type {
+  PageTabsContextMenuOptionData,
   PageTabsOptionData,
-  SelectOptionData,
-  PageTabsVariant,
   PageTabsState,
-  PageTabsContextMenuOptionData
+  PageTabsVariant,
+  SelectOptionData,
+  ThemeSize
 } from '@soybeanjs/ui';
+import { themeSizeOptions } from '~/constants/theme';
 
-const variant = ref<PageTabsVariant>('chrome');
+interface Props {
+  playgroundRegion?: string;
+}
 
-const variants: SelectOptionData<PageTabsVariant>[] = [
-  { value: 'chrome', label: 'Chrome' },
-  { value: 'card', label: 'Card' },
-  { value: 'slider', label: 'Slider' }
-];
+defineProps<Props>();
 
-const modelValue = ref<string>('home');
+const { t } = useI18n();
+
+/** 自定义器状态：只保存「怎么渲染」，预览完全由它派生，不存在第二份镜像状态。 */
+interface CustomizerState {
+  variant: PageTabsVariant;
+  size: ThemeSize;
+  draggable: boolean;
+  middleClickClose: boolean;
+}
+
+/** 默认形态：`reset` 回到这份快照，所以它是常量而不是状态。 */
+const DEFAULTS: CustomizerState = {
+  variant: 'chrome',
+  size: 'md',
+  draggable: false,
+  middleClickClose: true
+};
+
+/** 选项表只有「值即文案」一种形态，用一个纯函数生成，避免多份复制粘贴。 */
+const toOptions = <T extends string>(values: readonly T[]): { value: T; label: T }[] =>
+  values.map(value => ({ value, label: value }));
+
+const VARIANT_KEYS: readonly PageTabsVariant[] = ['chrome', 'card', 'slider'];
+
+const variantItems: SelectOptionData<PageTabsVariant>[] = toOptions(VARIANT_KEYS);
 
 const items: Ref<PageTabsOptionData[]> = ref([
   { value: 'home', label: 'Home', icon: 'lucide:house', pinned: true, hidePinnedIcon: true },
@@ -28,17 +52,15 @@ const items: Ref<PageTabsOptionData[]> = ref([
   { value: 'about', label: 'About', icon: 'lucide:info' }
 ]);
 
-const addTab = () => {
-  const newTab: PageTabsOptionData = {
-    value: `new-tab-${items.value.length + 1}`,
-    label: `New Tab ${items.value.length + 1}`,
-    icon: 'lucide:file-plus'
-  };
-  items.value.push(newTab);
-  modelValue.value = newTab.value;
-};
+const modelValue = shallowRef('home');
 
-const menuFactory = (tab: PageTabsOptionData, state: PageTabsState) => {
+const variant = shallowRef(DEFAULTS.variant);
+const size = shallowRef(DEFAULTS.size);
+const draggable = shallowRef(DEFAULTS.draggable);
+const middleClickClose = shallowRef(DEFAULTS.middleClickClose);
+
+/** 右键菜单：根据当前 tab 的 pin 状态与关闭能力动态生成。 */
+function menuFactory(tab: PageTabsOptionData, state: PageTabsState) {
   const {
     closable,
     close,
@@ -112,17 +134,56 @@ const menuFactory = (tab: PageTabsOptionData, state: PageTabsState) => {
   );
 
   return menus;
+}
+
+const reset = (): void => {
+  variant.value = DEFAULTS.variant;
+  size.value = DEFAULTS.size;
+  draggable.value = DEFAULTS.draggable;
+  middleClickClose.value = DEFAULTS.middleClickClose;
 };
 </script>
 
 <template>
-  <SSelect v-model="variant" :items="variants" class="w-30 mb-4" />
-  <SPageTabs
-    v-model="modelValue"
-    v-model:items="items"
-    :variant="variant"
-    :menu-factory="menuFactory"
-    class="h-12 border rounded-sm"
-  />
-  <SButton variant="pure" class="mt-4" @click="addTab">Add Tab</SButton>
+  <div>
+    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
+    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
+    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+      <div class="flex flex-wrap gap-4">
+        <FieldItem label="variant">
+          <SSelect v-model="variant" :items="variantItems" :trigger-props="{ 'aria-label': 'Variant' }" class="w-28" />
+        </FieldItem>
+        <FieldItem label="size">
+          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+        </FieldItem>
+        <FieldItem label="draggable">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="draggable" :control-props="{ 'aria-label': 'Draggable' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="middleClickClose">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="middleClickClose" :control-props="{ 'aria-label': 'Middle click close' }" />
+          </div>
+        </FieldItem>
+        <FieldItem :label="t('playground.reset')" class="ml-auto">
+          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+        </FieldItem>
+      </div>
+    </Teleport>
+
+    <!-- 预览区：白底主体只放组件本身，标签与右键菜单交互由组件自身渲染 -->
+    <div class="relative flex min-h-56 items-center justify-center">
+      <SPageTabs
+        v-model="modelValue"
+        v-model:items="items"
+        :variant="variant"
+        :size="size"
+        :draggable="draggable"
+        :middle-click-close="middleClickClose"
+        :menu-factory="menuFactory"
+        class="w-160 h-12 border border-border border-solid rounded-sm"
+      />
+    </div>
+  </div>
 </template>

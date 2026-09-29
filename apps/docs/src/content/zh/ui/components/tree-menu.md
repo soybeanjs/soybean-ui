@@ -43,8 +43,7 @@ head:
 
 <PlaygroundGallery component="tree-menu" />
 
-- 01 Basic — 可折叠侧边栏（`v-model:collapsed` + `size` 切换 + 分组/图标/badge/tag/操作菜单/链接项）
-- 02 Expand Strategy — 在 `keep` / `active` 展开策略间切换，观察菜单随激活路径收起
+- 01 Basic — 侧边栏自定义器：`expandStrategy` / `collapsed` / `collapsedWidth` / `indent` / `size` 控件，配分组/图标/badge/tag/操作菜单/链接项数据
 
 ## API
 

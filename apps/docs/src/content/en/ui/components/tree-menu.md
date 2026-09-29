@@ -43,8 +43,7 @@ A collapsible sidebar navigation tree-menu component. `STreeMenu` combines the h
 
 <PlaygroundGallery component="tree-menu" />
 
-- 01 Basic — a collapsible sidebar (`v-model:collapsed` + `size` switching + groups/icons/badge/tag/action menus/link items)
-- 02 Expand Strategy — switch between `keep` / `active` expansion strategies and watch the menu collapse to the active path
+- 01 Basic — customizer for the sidebar: `expandStrategy` / `collapsed` / `collapsedWidth` / `indent` / `size` controls over groups/icons/badge/tag/action menus/link items
 
 ## API
 
