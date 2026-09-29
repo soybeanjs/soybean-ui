@@ -1,8 +1,28 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
 import type { VariantProps } from '@soybeanjs/cva';
+import type { ThemeSize } from '@/theme';
 import { buttonIconVariants } from './button';
 import { sheetVariants } from './sheet';
+
+/**
+ * The layout's own spacing step, one declaration per size.
+ *
+ * The root declares it for every region to read; the mobile drawer repeats the
+ * declaration because it is teleported out of the root, and a portal is where
+ * custom-property inheritance stops.
+ */
+const layoutSpacing = {
+  xs: '[--sl-spacing:0.75rem]',
+  sm: '[--sl-spacing:0.875rem]',
+  md: '[--sl-spacing:1rem]',
+  lg: '[--sl-spacing:1.25rem]',
+  xl: '[--sl-spacing:1.5rem]',
+  '2xl': '[--sl-spacing:1.75rem]'
+} satisfies Record<ThemeSize, string>;
+
+/** Half of `--sl-spacing`: the tighter step of the inset pairs. Declared with the alias, for the same reason. */
+const layoutHalfSpacing = '[--sl-half-spacing:calc(var(--sl-spacing)/2)]';
 
 export const layoutVariants = scv({
   extendBase: props => ({
@@ -13,7 +33,7 @@ export const layoutVariants = scv({
     // --sl-* 是本库的间距/gap 别名(headless 注入的 --layout-* 保持不变),在 root 上按状态计算,各槽位直接应用
     root: [
       'group/layout relative h-full bg-background transition-all-200',
-      '[--sl-half-spacing:calc(var(--sl-spacing)/2)]',
+      layoutHalfSpacing,
       '[--sl-main-gap:var(--soybean-layout-start-gap)]',
       '[--sl-header-gap:var(--soybean-layout-header-start-gap)]',
       '[--sl-footer-gap:var(--soybean-layout-footer-start-gap)]',
@@ -37,7 +57,9 @@ export const layoutVariants = scv({
       `flex flex-col w-full h-full bg-sidebar`,
       `group-data-[variant=floating]/layout:rounded-lg group-data-[variant=floating]/layout:border group-data-[variant=floating]/layout:border-border group-data-[variant=floating]/layout:border-solid group-data-[variant=floating]/layout:shadow`
     ],
-    mobileDrawer: 'w-[--soybean-sidebar-width] bg-sidebar p-0',
+    // 抽屉被传送到 body 之外，root 上的自定义属性不再继承：间距别名与 `--soybean-sidebar-width`
+    // 一样要在抽屉上重新声明，否则侧栏内容里的 `px-[--sl-spacing]` 会解析为空
+    mobileDrawer: ['w-[--soybean-sidebar-width] bg-sidebar p-0', layoutHalfSpacing],
     mobileOverlay: [
       // 移动端导航遮罩比模态遮罩更重：同一个 token，用修饰符覆盖浓度
       `fixed inset-0 z-base bg-mask/80`,
@@ -67,22 +89,28 @@ export const layoutVariants = scv({
   variants: {
     size: {
       xs: {
-        root: 'text-2xs [--sl-spacing:0.75rem]'
+        root: `text-2xs ${layoutSpacing.xs}`,
+        mobileDrawer: layoutSpacing.xs
       },
       sm: {
-        root: 'text-xs [--sl-spacing:0.875rem]'
+        root: `text-xs ${layoutSpacing.sm}`,
+        mobileDrawer: layoutSpacing.sm
       },
       md: {
-        root: 'text-sm [--sl-spacing:1rem]'
+        root: `text-sm ${layoutSpacing.md}`,
+        mobileDrawer: layoutSpacing.md
       },
       lg: {
-        root: 'text-base [--sl-spacing:1.25rem]'
+        root: `text-base ${layoutSpacing.lg}`,
+        mobileDrawer: layoutSpacing.lg
       },
       xl: {
-        root: 'text-lg [--sl-spacing:1.5rem]'
+        root: `text-lg ${layoutSpacing.xl}`,
+        mobileDrawer: layoutSpacing.xl
       },
       '2xl': {
-        root: 'text-xl [--sl-spacing:1.75rem]'
+        root: `text-xl ${layoutSpacing['2xl']}`,
+        mobileDrawer: layoutSpacing['2xl']
       }
     },
     side: {

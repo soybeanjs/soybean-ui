@@ -1059,6 +1059,60 @@ describe('SAppShell (e2e)', () => {
 
       unmount();
     });
+
+    /**
+     * The drawer is teleported out of the layout root, and custom properties do
+     * not survive a portal: the brand row has to re-declare the header band it
+     * mirrors, or it sizes to its content instead.
+     */
+    it('keeps the brand row on the header band inside the portal', async () => {
+      const { unmount } = await renderComponent(
+        createHarness(
+          { items, isMobile: true, mobileOpen: true },
+          { logo: () => h('span', 'Logo'), title: () => h('span', 'Soybean UI') }
+        )
+      );
+
+      await expect.element(page.getByRole('dialog')).toBeVisible();
+
+      const brand = element('[data-soybean-layout-mobile] [data-soybean-app-shell-logo]');
+
+      // 3.5rem: the default header band (`--soybean-layout-header-height`) the brand mirrors.
+      expect(getComputedStyle(brand).height).toBe('56px');
+
+      unmount();
+    });
+
+    /**
+     * Sidebar content is the host's in the slots the shell exposes — the docs'
+     * custom sidebar header is written against both aliases — so the layout's
+     * spacing step has to reach it inside the portal too.
+     */
+    it('publishes the layout spacing to sidebar content inside the portal', async () => {
+      const { unmount } = await renderComponent(
+        createHarness(
+          { items, isMobile: true, mobileOpen: true },
+          {
+            'sidebar-start': () =>
+              h('div', {
+                'data-spacing-probe': '',
+                class: 'px-[--sl-spacing] pt-[--sl-half-spacing]'
+              })
+          }
+        )
+      );
+
+      await expect.element(page.getByRole('dialog')).toBeVisible();
+
+      const probe = element('[data-soybean-layout-mobile] [data-spacing-probe]');
+      const probeStyle = getComputedStyle(probe);
+
+      // `md`: the 1rem spacing step and its 0.5rem half.
+      expect(probeStyle.paddingInlineStart).toBe('16px');
+      expect(probeStyle.paddingTop).toBe('8px');
+
+      unmount();
+    });
   });
 
   describe('accessibility', () => {

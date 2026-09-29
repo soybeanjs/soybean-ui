@@ -15,13 +15,16 @@ defineProps<LayoutMobileProps>();
 
 const attrs = useAttrs();
 
-const { mobileOpen, mobileSidebarWidth, onMobileOpenChange } = useLayoutRootContext('LayoutMobile');
+const { mobileOpen, mobileSidebarWidth, headerHeightRem, onMobileOpenChange } = useLayoutRootContext('LayoutMobile');
 
 const ui = useLayoutUi();
 
 const style = computed<CSSProperties>(() => {
   return {
-    [layoutCssVars.sidebarWidth]: `${mobileSidebarWidth.value}rem`
+    [layoutCssVars.sidebarWidth]: `${mobileSidebarWidth.value}rem`,
+    // The drawer is teleported out of the root, so the root's own declarations do
+    // not reach this subtree: re-publish the geometry the sidebar content reads.
+    [layoutCssVars.headerHeight]: `${headerHeightRem.value}rem`
   };
 });
 </script>

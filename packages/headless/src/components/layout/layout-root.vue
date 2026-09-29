@@ -120,12 +120,21 @@ const hasInlineSidebar = computed(() => props.sidebarVisible && !isMobile.value)
  */
 const collapsed = computed(() => !isMobile.value && !open.value);
 
+/**
+ * Height of the header band, in rem.
+ *
+ * Published as a context value on top of the inline style: the mobile drawer is
+ * teleported out of this element, so it has to re-declare the geometry its
+ * content reads instead of inheriting it.
+ */
+const headerHeightRem = computed(() => props.pxToRem(props.headerHeight));
+
 const style = computed<CSSProperties>(() => {
   const sidebarWidth = props.pxToRem(props.sidebarWidth);
   const collapsedSidebarWidth = isOffcanvas.value ? '0' : props.pxToRem(props.collapsedSidebarWidth);
   const currentSidebarWidth = open.value ? sidebarWidth : collapsedSidebarWidth;
 
-  const headerHeight = props.pxToRem(props.headerHeight);
+  const headerHeight = headerHeightRem.value;
   const tabHeight = props.pxToRem(props.tabHeight);
   const footerHeight = props.pxToRem(props.footerHeight);
 
@@ -194,6 +203,7 @@ provideLayoutRootContext({
   open,
   mobileOpen,
   mobileSidebarWidth,
+  headerHeightRem,
   fixedTop,
   fixedFooter
 });

@@ -350,6 +350,14 @@ export interface LayoutRootContextParams extends ToContext<
    */
   mobileSidebarWidth: ComputedRef<number>;
   /**
+   * The height of the header band, in rem.
+   *
+   * The mobile drawer is teleported out of the root, where custom properties stop
+   * inheriting, so it re-publishes this to keep the header height readable by the
+   * sidebar content it portals.
+   */
+  headerHeightRem: ComputedRef<number>;
+  /**
    * Whether fixed top.
    */
   fixedTop: ComputedRef<boolean>;

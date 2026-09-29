@@ -1005,6 +1005,33 @@ describe('SLayout', () => {
 
       wrapper.unmount();
     });
+
+    /**
+     * The drawer is teleported out of the root, so the properties its sidebar
+     * content reads never inherit into it: the header band and the spacing step
+     * have to be declared on the drawer itself.
+     */
+    it('re-declares the layout variables on the mobile drawer', async () => {
+      const wrapper = mount(SLayout, {
+        props: { isMobile: true, mobileOpen: true },
+        slots: {
+          sidebar: '<div>Sidebar</div>',
+          default: '<div>Main</div>'
+        },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      const drawer = document.querySelector('[data-soybean-layout-mobile]');
+
+      expect(drawer).not.toBeNull();
+      expect(drawer?.getAttribute('style')).toContain('--soybean-layout-header-height: 3.5rem');
+      expect(drawer?.className).toContain('[--sl-spacing:1rem]');
+      expect(drawer?.className).toContain('[--sl-half-spacing:calc(var(--sl-spacing)/2)]');
+
+      wrapper.unmount();
+    });
   });
 });
 
