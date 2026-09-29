@@ -2558,6 +2558,20 @@
               "4a8ea": "update selected item color for better visibility",
               "c5b9b": "render the full menu tree in the mobile drawer",
               "fb1ad": "re-publish the layout variables inside the mobile drawer"
+            },
+            "8": {
+              "10109": "render part of an example outside the device frame",
+              "81940": "keep code panel overlays pinned while the code box scrolls",
+              "07dc8": "update breadcrumb visibility class for mobile layout",
+              "0851c": "keep query string and hash when switching locale",
+              "0c88d": "fold the customizer example into the basic example",
+              "36f67": "add a FieldItem host for example control rows",
+              "4959e": "update docs api",
+              "691e2": "apply the panel styles through the component's wrapper",
+              "744a2": "document the required defer on the region teleport",
+              "8ca38": "move example switchers into the card header",
+              "b3277": "update deps",
+              "fb019": "update button text and add ID for scroll target in affix"
             }
           }
         }

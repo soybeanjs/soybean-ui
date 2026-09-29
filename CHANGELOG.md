@@ -1,5 +1,45 @@
 # Changelog
 
+## [v0.50.0-beta.8](https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.7...v0.50.0-beta.8) (2026-09-29)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **playground**:
+  - render part of an example outside the device frame &nbsp;-&nbsp; by @soybeanjs [<samp>(10109)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1010973ba)
+  - add a FieldItem host for example control rows &nbsp;-&nbsp; by @soybeanjs [<samp>(36f67)</samp>](https://github.com/soybeanjs/soybean-ui/commit/36f67c421)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **code-block**: apply the panel styles through the component's wrapper &nbsp;-&nbsp; by @soybeanjs [<samp>(691e2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/691e2668e)
+- **docs**: keep code panel overlays pinned while the code box scrolls &nbsp;-&nbsp; by @soybeanjs [<samp>(81940)</samp>](https://github.com/soybeanjs/soybean-ui/commit/819400fa5)
+- **locale-toggler**: keep query string and hash when switching locale &nbsp;-&nbsp; by @soybeanjs [<samp>(0851c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0851ca484)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **example**: update button text and add ID for scroll target in affix &nbsp;-&nbsp; by @soybeanjs [<samp>(fb019)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fb019f9d1)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **button**: fold the customizer example into the basic example &nbsp;-&nbsp; by @soybeanjs [<samp>(0c88d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0c88d4332)
+- **playground**: move example switchers into the card header &nbsp;-&nbsp; by @soybeanjs [<samp>(8ca38)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8ca38e11c)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **playground**: document the required defer on the region teleport &nbsp;-&nbsp; by @soybeanjs [<samp>(744a2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/744a268cd)
+- **projects**: update docs api &nbsp;-&nbsp; by @soybeanjs [<samp>(4959e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4959efb70)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **packages**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(b3277)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b32776f0e)
+
+### &nbsp;&nbsp;&nbsp;✅ Tests
+
+- **app-shell**: update breadcrumb visibility class for mobile layout &nbsp;-&nbsp; by @soybeanjs [<samp>(07dc8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/07dc86eb8)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.50.0-beta.7](https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.6...v0.50.0-beta.7) (2026-09-29)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
