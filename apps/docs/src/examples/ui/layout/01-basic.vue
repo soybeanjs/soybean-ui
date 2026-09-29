@@ -2,9 +2,7 @@
 import { computed, shallowRef } from 'vue';
 import {
   SBreadcrumb,
-  SButton,
   SButtonIcon,
-  SButtonGroup,
   SDropdownMenu,
   SIcon,
   SLayout,
@@ -166,58 +164,55 @@ const fullContent = shallowRef(false);
   <div class="space-y-4">
     <!-- `to` needs a string even when unhosted: a missing target makes the server renderer drop the teleport instead of rendering it inline. -->
     <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex-y-center flex-wrap gap-4">
-        <SButtonGroup>
-          <SButton variant="pure" class="cursor-default">orientation</SButton>
+      <div class="flex flex-wrap gap-4">
+        <FieldItem label="orientation">
           <SSelect
             v-model="orientation"
             :items="orientations"
-            placeholder="Select orientation"
-            :ui="{ trigger: 'w-30' }"
+            :trigger-props="{ 'aria-label': 'Orientation' }"
+            class="w-30"
           />
-        </SButtonGroup>
-        <SButtonGroup>
-          <SButton variant="pure" class="cursor-default">side</SButton>
-          <SSelect v-model="side" :items="sides" placeholder="Select side" :ui="{ trigger: 'w-30' }" />
-        </SButtonGroup>
-        <SButtonGroup>
-          <SButton variant="pure" class="cursor-default">variant</SButton>
-          <SSelect v-model="variant" :items="variants" placeholder="Select variant" :ui="{ trigger: 'w-30' }" />
-        </SButtonGroup>
-        <SButtonGroup>
-          <SButton variant="pure" class="cursor-default">collapsible</SButton>
+        </FieldItem>
+        <FieldItem label="side">
+          <SSelect v-model="side" :items="sides" :trigger-props="{ 'aria-label': 'Side' }" class="w-30" />
+        </FieldItem>
+        <FieldItem label="variant">
+          <SSelect v-model="variant" :items="variants" :trigger-props="{ 'aria-label': 'Variant' }" class="w-30" />
+        </FieldItem>
+        <FieldItem label="collapsible">
           <SSelect
             v-model="collapsible"
             :items="collapsibleOptions"
-            placeholder="Select collapsible"
-            :ui="{ trigger: 'w-30' }"
+            :trigger-props="{ 'aria-label': 'Collapsible' }"
+            class="w-30"
           />
-        </SButtonGroup>
-        <SButtonGroup>
-          <SButton variant="pure" class="cursor-default">size</SButton>
-          <SSelect v-model="size" :items="themeSizeOptions" placeholder="Select size" :ui="{ trigger: 'w-30' }" />
-        </SButtonGroup>
-        <SButtonGroup>
-          <SButton variant="pure" class="cursor-default">scrollBehavior</SButton>
+        </FieldItem>
+        <FieldItem label="size">
+          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-30" />
+        </FieldItem>
+        <FieldItem label="scrollBehavior">
           <SSelect
             v-model="scrollBehavior"
             :items="scrollBehaviors"
-            placeholder="Select scroll behavior"
-            :ui="{ trigger: 'w-30' }"
+            :trigger-props="{ 'aria-label': 'Scroll behavior' }"
+            class="w-30"
           />
-        </SButtonGroup>
-        <div class="flex-y-center gap-2">
-          <span>fixedTop:</span>
-          <SSwitch v-model="fixedTop" class="items-center" />
-        </div>
-        <div class="flex-y-center gap-2">
-          <span>fixedFooter:</span>
-          <SSwitch v-model="fixedFooter" class="items-center" />
-        </div>
-        <div class="flex-y-center gap-2">
-          <span>stretchFooter:</span>
-          <SSwitch v-model="stretchFooter" class="items-center" />
-        </div>
+        </FieldItem>
+        <FieldItem label="fixedTop">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="fixedTop" :control-props="{ 'aria-label': 'Fixed top' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="fixedFooter">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="fixedFooter" :control-props="{ 'aria-label': 'Fixed footer' }" />
+          </div>
+        </FieldItem>
+        <FieldItem label="stretchFooter">
+          <div class="h-8 flex items-center">
+            <SSwitch v-model="stretchFooter" :control-props="{ 'aria-label': 'Stretch footer' }" />
+          </div>
+        </FieldItem>
       </div>
     </Teleport>
     <div class="h-120 w-full border border-border border-solid rounded-md">
