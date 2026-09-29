@@ -38,6 +38,7 @@
       "fullscreen": "Fullscreen",
       "exit_fullscreen": "Exit fullscreen"
     },
+    "reset": "Reset",
     "examples": {
       "accordion": {
         "always-one": "Always One",

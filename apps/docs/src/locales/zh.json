@@ -38,6 +38,7 @@
       "fullscreen": "全屏",
       "exit_fullscreen": "退出全屏"
     },
+    "reset": "重置",
     "examples": {
       "accordion": {
         "always-one": "始终展开一项",
