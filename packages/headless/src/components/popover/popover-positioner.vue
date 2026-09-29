@@ -8,7 +8,10 @@ defineOptions({
   name: 'PopoverPositioner'
 });
 
-const props = defineProps<PopoverPositionerProps>();
+const props = withDefaults(defineProps<PopoverPositionerProps>(), {
+  avoidCollisions: true,
+  prioritizePosition: true
+});
 
 const emit = defineEmits<PopoverPositionerEmits>();
 
