@@ -221,7 +221,9 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-soybean-breadcrumb-root]').classes()).toContain('lt-md:hidden');
+      expect(wrapper.find('[data-soybean-breadcrumb-root]').classes()).toContain(
+        'group-data-[mobile=true]/layout:hidden'
+      );
       expect(wrapper.find('[data-soybean-breadcrumb-list]').classes()).toContain('flex-nowrap');
       expect(wrapper.find('[data-soybean-breadcrumb-item]').classes()).toContain('min-w-0');
       expect(wrapper.find('[data-soybean-breadcrumb-page]').classes()).toContain('truncate');
