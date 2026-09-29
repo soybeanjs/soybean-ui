@@ -63,6 +63,30 @@ const items = [
   }
 ];
 
+/**
+ * A trail long enough to need more room than a narrow header has: the geometry
+ * assertions are only meaningful while the crumb is under that pressure.
+ */
+const longTrail = [
+  { value: 'home', label: 'Home' },
+  { value: 'admin', label: 'Soybean Admin Platform' },
+  { value: 'system', label: 'System Management' },
+  { value: 'iam', label: 'Identity And Access Management' },
+  { value: 'user', label: 'User Management' },
+  { value: 'role', label: 'Role And Permission' },
+  { value: 'detail', label: 'Role And Permission Detail' },
+  { value: 'edit', label: 'Edit Role And Permission Detail' }
+];
+
+/** Three fixed-width trailing actions: what a real header keeps beside the trail. */
+function trailingActions() {
+  return h('div', { 'data-header-actions': '', class: 'flex items-center gap-2' }, [
+    h('span', { class: 'size-8' }),
+    h('span', { class: 'size-8' }),
+    h('span', { class: 'size-8' })
+  ]);
+}
+
 const breadcrumbs = [
   {
     value: 'home',
@@ -998,6 +1022,69 @@ describe('SAppShell (e2e)', () => {
 
       unmount();
     });
+  });
+
+  /**
+   * A phone header has no room for a trail beside the trigger and the actions,
+   * and the crumb would outrank both: below the breakpoint it is hidden, so the
+   * header — and the page — never end up wider than the viewport.
+   */
+  it('hides the trail on a phone instead of pushing the header out', async () => {
+    await page.viewport(390, 800);
+
+    const { unmount } = await renderComponent(
+      createHarness({ items, modelValue: 'soybean-ui', breadcrumbs: longTrail }, { 'header-end': trailingActions })
+    );
+
+    await expect.element(page.getByRole('button', { name: 'Toggle Sidebar' })).toBeVisible();
+
+    const crumb = element('[data-soybean-breadcrumb-root]');
+    const actions = element('[data-header-actions]');
+    const header = element('[data-soybean-app-shell-header]');
+
+    expect(getComputedStyle(crumb).display).toBe('none');
+    expect(actions.getBoundingClientRect().right).toBeLessThanOrEqual(window.innerWidth);
+    expect(header.scrollWidth).toBeLessThanOrEqual(header.clientWidth + 1);
+    expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(window.innerWidth);
+
+    unmount();
+  });
+
+  /**
+   * The same trail on a header that does have room for it: it truncates inside
+   * its own region instead of taking the trailing actions' share, and the crumb
+   * label is what gets ellipsized — never the actions that get pushed out.
+   */
+  it('truncates a deep trail on a narrow header', async () => {
+    await page.viewport(768, 900);
+
+    const { unmount } = await renderComponent(
+      createHarness({ items, modelValue: 'soybean-ui', breadcrumbs: longTrail }, { 'header-end': trailingActions })
+    );
+
+    // The rail carries the same label as the trigger on this width, so the crumb
+    // itself is the thing to wait for.
+    await expect.element(page.getByRole('navigation', { name: 'breadcrumb' })).toBeVisible();
+    // The label is text, so measure with the font the assertion was written against.
+    await document.fonts.ready;
+
+    const crumb = element('[data-soybean-breadcrumb-root]');
+    const actions = element('[data-header-actions]');
+    const header = element('[data-soybean-app-shell-header]');
+    const pages = document.querySelectorAll<HTMLElement>('[data-soybean-breadcrumb-page]');
+    const current = pages[pages.length - 1];
+
+    // Rendered here, unlike on a phone.
+    expect(getComputedStyle(crumb).display).not.toBe('none');
+    expect(actions.getBoundingClientRect().right).toBeLessThanOrEqual(window.innerWidth);
+    expect(header.scrollWidth).toBeLessThanOrEqual(header.clientWidth + 1);
+    expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(window.innerWidth);
+    // Last on purpose: it proves the scene really was under pressure, i.e. that the
+    // assertions above passed because the trail gave way — not because it fit. The
+    // trail is several times the header's width, so no font can absorb it.
+    expect(current.scrollWidth).toBeGreaterThan(current.clientWidth * 1.5);
+
+    unmount();
   });
 
   describe('mobile drawer', () => {

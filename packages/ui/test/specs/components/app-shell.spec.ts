@@ -209,6 +209,40 @@ describe('SAppShell', () => {
       wrapper.unmount();
     });
 
+    /**
+     * The header crumb is one truncating line that hides itself on a phone. The
+     * family wraps its items and keeps its content width by default, which is what
+     * pushed the trailing actions out of the header — so the shell has to be the
+     * one that brings the rules.
+     */
+    it('keeps the header crumb on one truncating line', () => {
+      const wrapper = mount(SAppShell, {
+        props: { items, modelValue: 'soybean-ui' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-breadcrumb-root]').classes()).toContain('lt-md:hidden');
+      expect(wrapper.find('[data-soybean-breadcrumb-list]').classes()).toContain('flex-nowrap');
+      expect(wrapper.find('[data-soybean-breadcrumb-item]').classes()).toContain('min-w-0');
+      expect(wrapper.find('[data-soybean-breadcrumb-page]').classes()).toContain('truncate');
+
+      wrapper.unmount();
+    });
+
+    it('lets breadcrumbUi override the header crumb defaults', () => {
+      const wrapper = mount(SAppShell, {
+        props: { items, modelValue: 'soybean-ui', breadcrumbUi: { list: 'flex-wrap' } },
+        attachTo: document.body
+      });
+
+      const list = wrapper.find('[data-soybean-breadcrumb-list]');
+
+      expect(list.classes()).toContain('flex-wrap');
+      expect(list.classes()).not.toContain('flex-nowrap');
+
+      wrapper.unmount();
+    });
+
     it('renders the tabs region only when tabs are provided', () => {
       const withoutTabs = mount(SAppShell, {
         props: { items },

@@ -299,6 +299,10 @@ export interface AppShellProps {
   /**
    * Whether the breadcrumb region renders when the trail is not empty.
    *
+   * The region is hidden below the `md` breakpoint either way: a phone header
+   * keeps its trigger and its trailing actions. Bind `ui.breadcrumb` (e.g.
+   * `lt-md:flex`) to bring it back there.
+   *
    * @default true
    */
   breadcrumbVisible?: boolean;

@@ -10283,7 +10283,7 @@
             "breadcrumbprops": "属性已转发至 `SBreadcrumb`。",
             "breadcrumbs": "在页眉中渲染的面包屑导航项。\n\n若需省略，可从 `items` 和当前选中项推导出面包屑路径：该\n路径从根菜单延伸至当前选中项，其中每个祖先\n菜单若包含子项，将展开包含这些子项的下拉菜单——其嵌套结构\n与菜单本身一致，因此包含子项的条目会保留自己的子菜单。\n提供此选项可改用您自己的数据渲染普通面包屑导航。",
             "breadcrumbui": "针对 `SBreadcrumb` 的按槽类重写。",
-            "breadcrumbvisible": "当导航路径不为空时，是否渲染面包屑区域。",
+            "breadcrumbvisible": "",
             "class": "应用于 shell 根元素的额外类名。",
             "defaultmobileopen": "移动抽屉在初始渲染时的展开状态。",
             "defaultopen": "侧边栏在初次渲染时的展开状态。",

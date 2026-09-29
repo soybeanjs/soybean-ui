@@ -10283,7 +10283,7 @@
             "breadcrumbprops": "Properties forwarded to `SBreadcrumb`.",
             "breadcrumbs": "Breadcrumb items rendered in the header.\n\nOmit it to derive the breadcrumb from `items` and the active value: the\ntrail from the root menu down to the active item, where every ancestor\nwhose menu has children opens a dropdown of those children — nested like\nthe menu itself, so an entry that has children keeps its own submenu.\nProvide it to render a plain breadcrumb from your own data instead.",
             "breadcrumbui": "Per-slot class overrides for `SBreadcrumb`.",
-            "breadcrumbvisible": "Whether the breadcrumb region renders when the trail is not empty.",
+            "breadcrumbvisible": "Whether the breadcrumb region renders when the trail is not empty.\n\nThe region is hidden below the `md` breakpoint either way: a phone header\nkeeps its trigger and its trailing actions. Bind `ui.breadcrumb` (e.g.\n`lt-md:flex`) to bring it back there.",
             "class": "Additional class names applied to the shell root element.",
             "defaultmobileopen": "The open state of the mobile drawer when it is initially rendered.",
             "defaultopen": "The expanded state of the sidebar when initially rendered.",

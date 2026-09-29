@@ -49,13 +49,18 @@ export const appShellVariants = scv({
       'data-[centered=true]:justify-center data-[centered=true]:px-0'
     ],
     header: 'flex items-center w-full h-full gap-2 px-[--sl-spacing]',
-    headerStart: 'flex items-center gap-2 min-w-0 shrink-0',
+    // The start region yields to the trailing one: its crumb is the only child that
+    // may shrink, so a deep trail truncates instead of pushing the actions out.
+    headerStart: 'flex items-center gap-2 min-w-0',
     // A menu bar that does not fit is clipped instead of overlapping the
     // trailing actions; its flyouts are portaled, so clipping is safe.
     headerCenter: 'flex items-center gap-2 min-w-0 flex-1 overflow-hidden',
     headerEnd: 'flex items-center gap-2 min-w-0 shrink-0',
-    breadcrumb: 'min-w-0',
-    breadcrumbTrigger: 'inline-flex items-center gap-1',
+    // Phones have no room for a trail next to the trigger and the actions, and the
+    // crumb would outrank both; the desktop header keeps it. A host that wants it
+    // back passes `ui.breadcrumb` (e.g. `lt-md:flex`).
+    breadcrumb: 'min-w-0 overflow-hidden group-data-[mobile=true]/layout:hidden',
+    breadcrumbTrigger: 'inline-flex min-w-0 items-center gap-1 [&>span]:truncate',
     breadcrumbTriggerIcon: 'size-3 shrink-0 opacity-70',
     tab: 'flex justify-between h-full',
     content: 'w-full',

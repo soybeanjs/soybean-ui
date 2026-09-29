@@ -70,7 +70,11 @@ The rule behind the orientation column: a vertical first level keeps the sidebar
 
 ### Mobile view
 
-On a phone the sidebar is the layout's drawer, and a drawer is a single column: a top bar, a rail, or a pane has nowhere to go in it. So the shell renders the **`sidebar` skeleton** there for every mode — brand on top, one nested `STreeMenu` under it holding the full menu tree, opened from the header trigger. The other regions stay where they are: the header keeps the trigger and the breadcrumb — a mobile header carries neither the menu nor the brand, so it is one of the headers with room for one — and the tabs, content, and footer are untouched. A `top` mode therefore still has navigation on a phone: its bar moves into the drawer instead of unfolding across a header that cannot hold it.
+On a phone the sidebar is the layout's drawer, and a drawer is a single column: a top bar, a rail, or a pane has nowhere to go in it. So the shell renders the **`sidebar` skeleton** there for every mode — brand on top, one nested `STreeMenu` under it holding the full menu tree, opened from the header trigger. The other regions stay where they are, and the tabs, content, and footer are untouched. A `top` mode therefore still has navigation on a phone: its bar moves into the drawer instead of unfolding across a header that cannot hold it.
+
+The header gives up the breadcrumb there. A trail beside the trigger and the trailing actions has no room on a phone, and it outranks both: it would take its own content width and push the actions outside the viewport — the page with it. So the crumb is hidden below the `md` breakpoint, which is the same `767.9px` the shell switches views on. It is a styled rule, not a rendered one: the region is still in the markup on a phone, invisible, so the first paint on a server-rendered page never shows the trail either. Pass `ui.breadcrumb` (e.g. `lt-md:flex`) to bring it back, or `breadcrumbVisible` to drop it everywhere.
+
+On a header that does have room, a deep trail **truncates** instead of wrapping or pushing: the crumb region is the only part of the leading region that shrinks, its items stay on one line, and each label is ellipsized — the trailing actions keep their share whatever the trail length.
 
 The `mode` prop is never overwritten: it describes the desktop shape, `data-mode` keeps reporting what you bound, and the `menu` slot keeps receiving it. Leaving the mobile view is all it takes to get that shape back.
 
@@ -131,7 +135,7 @@ A sidebar placement also follows the menu's own dividers: the mark cell is as wi
 
 ### How do I keep the breadcrumb in sync with the route?
 
-Keep `v-model` in sync with the route and the breadcrumb follows on its own: it is derived from `items` plus the active value, so the trail, the labels, and the dropdowns all come from one menu tree. When the trail has to differ from the menu — permission-trimmed routes, a title that is not the menu label — pass your own `breadcrumbs` and the shell renders that data instead. `breadcrumbClick` reports crumb activation, while picking an entry in an ancestor dropdown behaves exactly like that entry in the menu: one with children opens its own submenu, and a leaf emits `select` / `update:modelValue`.
+Keep `v-model` in sync with the route and the breadcrumb follows on its own: it is derived from `items` plus the active value, so the trail, the labels, and the dropdowns all come from one menu tree. It renders in the header where that header has room for it, and is hidden on a phone — see [Mobile view](#mobile-view). When the trail has to differ from the menu — permission-trimmed routes, a title that is not the menu label — pass your own `breadcrumbs` and the shell renders that data instead. `breadcrumbClick` reports crumb activation, while picking an entry in an ancestor dropdown behaves exactly like that entry in the menu: one with children opens its own submenu, and a leaf emits `select` / `update:modelValue`.
 
 ### Why does the sidebar change width when I open another menu?
 

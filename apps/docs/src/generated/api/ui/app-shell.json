@@ -460,7 +460,7 @@
             "name": "breadcrumbVisible",
             "type": "boolean",
             "required": false,
-            "description": "Whether the breadcrumb region renders when the trail is not empty.",
+            "description": "Whether the breadcrumb region renders when the trail is not empty.\n\nThe region is hidden below the `md` breakpoint either way: a phone header\nkeeps its trigger and its trailing actions. Bind `ui.breadcrumb` (e.g.\n`lt-md:flex`) to bring it back there.",
             "descriptionKey": "api.generated.packages_ui_src_components_app_shell_types.appshellprops.members.breadcrumbvisible",
             "default": "true",
             "inheritedFrom": null,

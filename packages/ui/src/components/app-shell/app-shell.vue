@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, shallowRef, useId, watch } from 'vue';
 import { BreadcrumbLink, BreadcrumbPage } from '@soybeanjs/headless/breadcrumb';
-import type { BreadcrumbOptionData } from '@soybeanjs/headless/breadcrumb';
+import type { BreadcrumbOptionData, BreadcrumbUi } from '@soybeanjs/headless/breadcrumb';
 import { useControllableState, useIsMobile } from '@soybeanjs/headless/composables';
 import { LayoutTrigger } from '@soybeanjs/headless/layout';
 import type { LayoutUi } from '@soybeanjs/headless/layout';
@@ -236,6 +236,26 @@ const showBreadcrumb = computed(
     skeleton.value.menuPlacement === 'sidebar' &&
     skeleton.value.logoPlacement === 'sidebar'
 );
+
+/**
+ * Breadcrumb slot defaults for the shell's header.
+ *
+ * One line that truncates instead of a trail that wraps: the family wraps its
+ * items by default, and a wrapped crumb either overflows the fixed header band or
+ * takes the room the trailing actions need. The host's `breadcrumbUi` still wins —
+ * it is spread after these.
+ */
+const shellBreadcrumbUi = {
+  list: 'flex-nowrap',
+  item: 'min-w-0',
+  link: 'truncate',
+  page: 'truncate'
+} satisfies Partial<BreadcrumbUi>;
+
+const resolvedBreadcrumbUi = computed<Partial<BreadcrumbUi>>(() => ({
+  ...shellBreadcrumbUi,
+  ...props.breadcrumbUi
+}));
 
 const showTabs = computed(() => Boolean(props.tabs?.length));
 
@@ -518,7 +538,7 @@ function handleBreadcrumbClick(item: BreadcrumbOptionData) {
               :class="ui.breadcrumb"
               :size="size"
               :items="breadcrumbItems"
-              :ui="breadcrumbUi"
+              :ui="resolvedBreadcrumbUi"
               @click="handleBreadcrumbClick"
             >
               <template #default="{ item }">
