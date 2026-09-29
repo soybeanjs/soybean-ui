@@ -26,7 +26,7 @@
     "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
     "@tanstack/charts": "^0.18.0",
-    "@ubean/content": "0.5.2",
+    "@ubean/content": "^0.6.0-beta.5",
     "@unhead/vue": "^3.4.1",
     "@vueuse/core": "^15.0.0",
     "d3-shape": "^3.2.0",
