@@ -77,11 +77,15 @@
     --uno: 'font-medium text-primary decoration-primary/40 underline underline-offset-4 transition-colors duration-200 hover:text-primary/80';
   }
 
-  /* Fence panels are the shiki <pre> itself (see wrapFenceWithCopyButton in
-     ubean.config.ts): the badge/copy button pin to the pre while horizontal
-     scrolling happens on the inner <code>. */
+  /* The frame must not scroll: an absolutely positioned overlay inside its own
+     scroll container belongs to the scrollable overflow region and scrolls away
+     with the content. Both DOM shapes the panel takes are handled — the fence
+     path (highlight.ts puts the class on shiki's <pre>, so the content box is
+     `> code`) and the CodeBlock path (code-block.vue, `> pre`); the content box
+     scrolls, while the badge (::before), the sheen (::after) and the copy button
+     (a child of the <pre> in the fence path) stay pinned to the frame. */
   .md-code-block {
-    --uno: 'relative my-8 max-w-full overflow-hidden border border-border rounded-xl p-0';
+    --uno: 'relative flex max-w-full flex-col overflow-hidden border border-border rounded-xl p-0';
     background: color-mix(in srgb, var(--docs-surface-strong) 96%, transparent);
     box-shadow: var(--docs-shadow), var(--docs-panel-inset);
     -webkit-backdrop-filter: saturate(170%) blur(var(--docs-panel-blur));
@@ -101,8 +105,9 @@
     --uno: 'absolute left-3 top-3 z-1 border border-border bg-accent rounded-full px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.2em] text-muted-foreground';
   }
 
+  .md-code-block > pre,
   .md-code-block > code {
-    --uno: 'block max-w-full overflow-x-auto px-5 pt-12 pb-5';
+    --uno: 'block min-h-0 max-w-full max-h-150 overflow-auto px-5 pt-12 pb-5';
   }
 
   blockquote {
