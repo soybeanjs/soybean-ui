@@ -33,7 +33,9 @@ const virtualItems = computed(() => virtualizer.value.getVirtualItems());
 
 const totalSize = computed(() => virtualizer.value.getTotalSize());
 
-const style = computed(() => `height:${props.height};overflow:auto;`);
+const height = computed(() => (typeof props.height === 'number' ? `${props.height}px` : props.height));
+
+const style = computed(() => `height:${height.value};overflow:auto;`);
 
 const isHorizontal = computed(() => props.options?.horizontal ?? false);
 
