@@ -29,6 +29,18 @@ import type {
 import { themeSizeOptions } from '~/constants/theme';
 import { treeMenuItems } from '../tree-menu/data';
 
+/**
+ * Opt in to the gallery's out-of-frame region: these controls configure the demo,
+ * they are not part of the viewport being simulated. Left inside the frame they
+ * wrap into twice as many rows on the mobile device and crowd out the layout
+ * itself.
+ */
+interface Props {
+  playgroundRegion?: string;
+}
+
+defineProps<Props>();
+
 // `isMobile` is left unset on purpose: the layout follows the viewport, so the
 // demo narrows into the drawer without any media-query wiring of its own.
 const orientation = shallowRef<DataOrientation>('horizontal');
@@ -152,59 +164,62 @@ const fullContent = shallowRef(false);
 
 <template>
   <div class="space-y-4">
-    <div class="flex-y-center flex-wrap gap-4">
-      <SButtonGroup>
-        <SButton variant="pure" class="cursor-default">orientation</SButton>
-        <SSelect
-          v-model="orientation"
-          :items="orientations"
-          placeholder="Select orientation"
-          :ui="{ trigger: 'w-30' }"
-        />
-      </SButtonGroup>
-      <SButtonGroup>
-        <SButton variant="pure" class="cursor-default">side</SButton>
-        <SSelect v-model="side" :items="sides" placeholder="Select side" :ui="{ trigger: 'w-30' }" />
-      </SButtonGroup>
-      <SButtonGroup>
-        <SButton variant="pure" class="cursor-default">variant</SButton>
-        <SSelect v-model="variant" :items="variants" placeholder="Select variant" :ui="{ trigger: 'w-30' }" />
-      </SButtonGroup>
-      <SButtonGroup>
-        <SButton variant="pure" class="cursor-default">collapsible</SButton>
-        <SSelect
-          v-model="collapsible"
-          :items="collapsibleOptions"
-          placeholder="Select collapsible"
-          :ui="{ trigger: 'w-30' }"
-        />
-      </SButtonGroup>
-      <SButtonGroup>
-        <SButton variant="pure" class="cursor-default">size</SButton>
-        <SSelect v-model="size" :items="themeSizeOptions" placeholder="Select size" :ui="{ trigger: 'w-30' }" />
-      </SButtonGroup>
-      <SButtonGroup>
-        <SButton variant="pure" class="cursor-default">scrollBehavior</SButton>
-        <SSelect
-          v-model="scrollBehavior"
-          :items="scrollBehaviors"
-          placeholder="Select scroll behavior"
-          :ui="{ trigger: 'w-30' }"
-        />
-      </SButtonGroup>
-      <div class="flex-y-center gap-2">
-        <span>fixedTop:</span>
-        <SSwitch v-model="fixedTop" class="items-center" />
+    <!-- `to` needs a string even when unhosted: a missing target makes the server renderer drop the teleport instead of rendering it inline. -->
+    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+      <div class="flex-y-center flex-wrap gap-4">
+        <SButtonGroup>
+          <SButton variant="pure" class="cursor-default">orientation</SButton>
+          <SSelect
+            v-model="orientation"
+            :items="orientations"
+            placeholder="Select orientation"
+            :ui="{ trigger: 'w-30' }"
+          />
+        </SButtonGroup>
+        <SButtonGroup>
+          <SButton variant="pure" class="cursor-default">side</SButton>
+          <SSelect v-model="side" :items="sides" placeholder="Select side" :ui="{ trigger: 'w-30' }" />
+        </SButtonGroup>
+        <SButtonGroup>
+          <SButton variant="pure" class="cursor-default">variant</SButton>
+          <SSelect v-model="variant" :items="variants" placeholder="Select variant" :ui="{ trigger: 'w-30' }" />
+        </SButtonGroup>
+        <SButtonGroup>
+          <SButton variant="pure" class="cursor-default">collapsible</SButton>
+          <SSelect
+            v-model="collapsible"
+            :items="collapsibleOptions"
+            placeholder="Select collapsible"
+            :ui="{ trigger: 'w-30' }"
+          />
+        </SButtonGroup>
+        <SButtonGroup>
+          <SButton variant="pure" class="cursor-default">size</SButton>
+          <SSelect v-model="size" :items="themeSizeOptions" placeholder="Select size" :ui="{ trigger: 'w-30' }" />
+        </SButtonGroup>
+        <SButtonGroup>
+          <SButton variant="pure" class="cursor-default">scrollBehavior</SButton>
+          <SSelect
+            v-model="scrollBehavior"
+            :items="scrollBehaviors"
+            placeholder="Select scroll behavior"
+            :ui="{ trigger: 'w-30' }"
+          />
+        </SButtonGroup>
+        <div class="flex-y-center gap-2">
+          <span>fixedTop:</span>
+          <SSwitch v-model="fixedTop" class="items-center" />
+        </div>
+        <div class="flex-y-center gap-2">
+          <span>fixedFooter:</span>
+          <SSwitch v-model="fixedFooter" class="items-center" />
+        </div>
+        <div class="flex-y-center gap-2">
+          <span>stretchFooter:</span>
+          <SSwitch v-model="stretchFooter" class="items-center" />
+        </div>
       </div>
-      <div class="flex-y-center gap-2">
-        <span>fixedFooter:</span>
-        <SSwitch v-model="fixedFooter" class="items-center" />
-      </div>
-      <div class="flex-y-center gap-2">
-        <span>stretchFooter:</span>
-        <SSwitch v-model="stretchFooter" class="items-center" />
-      </div>
-    </div>
+    </Teleport>
     <div class="h-120 w-full border border-border border-solid rounded-md">
       <SLayout
         :default-open="true"

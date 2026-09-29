@@ -44,6 +44,8 @@ Not every component needs every example, but each file demonstrates only one cap
 - Do not write local titles like `<h3 class="playground-title">` inside sub-example files.
 - Do not wrap a root node in an extra `<div>` for layout alone; render components directly when possible.
 - Layout containers, scroll containers, width constraints, or multi-node grouping may use minimal wrapping.
+- An example's own controls configure the demo; they are **not** part of the viewport the device frame simulates. Keep that part out of the frame by declaring the gallery region (`interface Props { playgroundRegion?: string }` + `defineProps<Props>()`) and rendering it through `<Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">`. The gallery reads the declaration, renders a target above the frame (inside the element that also becomes the fullscreen layer) and passes its selector; examples that do not declare the prop are never touched.
+- `to` keeps a string fallback (`?? 'body'`) even when unhosted: the server renderer drops a teleport whose target is missing instead of rendering it inline, which would desync the client from the prerendered HTML.
 - Controlled state uses `ref` or `shallowRef`.
 - Static data uses `const`.
 

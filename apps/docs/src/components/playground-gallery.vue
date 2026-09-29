@@ -6,6 +6,7 @@ import { isClient, pascalCase } from '@soybeanjs/headless/shared';
 import { getOrderedPlaygroundExamples } from '~/constants/globs';
 import { defaultPlaygroundDevice } from '~/constants/playground';
 import type { PlaygroundDevice, PlaygroundTab } from '~/constants/playground';
+import { acceptsPlaygroundRegion } from '~/shared/playground-region';
 import CodeBlock from './code-block.vue';
 import PlaygroundControls from './playground-controls.vue';
 import PlaygroundViewport from './playground-viewport.vue';
@@ -30,7 +31,9 @@ const components = computed(() =>
     file: item.name,
     rawFileName: item.rawFileName,
     code: item.code,
-    component: item.component
+    component: item.component,
+    /** Opt-in target of the example's out-of-frame part, or `undefined` for the vast majority. */
+    region: acceptsPlaygroundRegion(item.component) ? `playground-${props.component}-${item.name}` : undefined
   }))
 );
 
@@ -66,6 +69,19 @@ function resolveViewportClass(file: string): string {
 
 function isFullscreenPreview(file: string): boolean {
   return resolveDevice(file) === 'fullscreen';
+}
+
+/**
+ * Selector of the region an example teleports its out-of-frame part into.
+ *
+ * No target switching is needed for fullscreen: the element holding this region
+ * is the same one that becomes the lifted layer, so the escaped part stays inside
+ * whichever layer is currently on screen. (Switching the target instead resolves
+ * against an element the same patch has not inserted yet, and Vue keeps the
+ * teleport where it was.)
+ */
+function bindRegion(region?: string) {
+  return region ? { playgroundRegion: `#${region}` } : {};
 }
 
 function handleDeviceChange(file: string, value: PlaygroundDevice) {
@@ -135,8 +151,14 @@ onUnmounted(() => {
                   @exit="exitFullscreen"
                 />
               </div>
+              <!--
+                Out-of-frame region, for the part of an example that is not the thing being
+                simulated (its own controls). It sits above the frame, outside `PlaygroundViewport`
+                and inside the element that turns into the fullscreen layer.
+              -->
+              <div v-if="item.region" :id="item.region" class="empty:hidden" />
               <PlaygroundViewport :device="resolveDevice(item.file)">
-                <component :is="item.component" />
+                <component :is="item.component" v-bind="bindRegion(item.region)" />
               </PlaygroundViewport>
             </div>
             <CodeBlock v-else :code="item.code" lang="vue" />
