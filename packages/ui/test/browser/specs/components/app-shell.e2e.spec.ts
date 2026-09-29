@@ -1040,6 +1040,58 @@ describe('SAppShell (e2e)', () => {
     });
 
     /**
+     * The mobile view is the shell's own: it is entered with the viewport and left
+     * with it, and the sidebar skeleton stands in for whatever mode is bound — so
+     * the split panes give way to the drawer's single tree, and come back.
+     */
+    it('switches to the drawer skeleton with the viewport and back', async () => {
+      const { unmount } = await renderComponent(createHarness({ items, mode: 'dual-vertical' }));
+
+      const mobile = () => document.querySelector('[data-soybean-app-shell]')?.getAttribute('data-mobile');
+
+      expect(mobile()).toBe('false');
+      expect(query('[data-soybean-split-nav-root]')).not.toBeNull();
+
+      await page.viewport(390, 800);
+      await expect.poll(mobile).toBe('true');
+      await expect.poll(() => query('[data-soybean-split-nav-root]')).toBeNull();
+
+      await page.viewport(1280, 900);
+      await expect.poll(mobile).toBe('false');
+      await expect.poll(() => query('[data-soybean-split-nav-root]')).not.toBeNull();
+
+      unmount();
+    });
+
+    /**
+     * At a phone viewport every mode is the drawer shape: a header-first mode has
+     * to give up its top bar, or the drawer would carry no navigation at all.
+     */
+    it('renders the full menu tree in the drawer for a header-first mode', async () => {
+      await page.viewport(390, 800);
+
+      const { unmount } = await renderComponent(createHarness({ items, mode: 'top' }));
+
+      const trigger = page.getByRole('button', { name: 'Toggle Sidebar' });
+
+      await expect.element(trigger).toBeVisible();
+      await userEvent.click(trigger);
+
+      await expect.element(page.getByRole('dialog')).toBeVisible();
+
+      // The shape is the shell's business; the mode stays the host's.
+      expect(document.querySelector('[data-soybean-app-shell]')?.getAttribute('data-mode')).toBe('top');
+      expect(query('[data-soybean-tree-nav]')).toBeNull();
+      expect(query('[data-soybean-layout-mobile] [data-soybean-tree-menu-root]')).not.toBeNull();
+      expect(query('[data-soybean-layout-mobile] [data-soybean-split-nav-root]')).toBeNull();
+      await expect.element(page.getByRole('treeitem', { name: 'Overview' })).toBeVisible();
+      await expect.element(page.getByRole('treeitem', { name: 'Workbench' })).toBeVisible();
+      await expect.element(page.getByRole('treeitem', { name: 'Settings' })).toBeVisible();
+
+      unmount();
+    });
+
+    /**
      * A collapse is a desktop affordance: the drawer always shows the expanded
      * navigation, so a collapse picked on desktop must not ride along when the
      * mode switches.

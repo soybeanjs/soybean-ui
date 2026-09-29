@@ -29,6 +29,11 @@ import type { ThemeSize } from '@/theme';
  * layout orientation is derived from the mode: a vertical first level makes the
  * sidebar span the full height (`orientation="horizontal"`), a horizontal first
  * level puts the header across the top (`orientation="vertical"`).
+ *
+ * The mode describes the **desktop** shape. In the mobile view the shell renders
+ * the `sidebar` skeleton for every mode — the sidebar is the layout's drawer
+ * there, and a drawer holds one nested tree — while this prop keeps reporting
+ * what the host bound. See the AppShell docs, "Mobile view".
  */
 export type AppShellMode = 'sidebar' | 'top' | SplitNavMode;
 
@@ -162,6 +167,9 @@ export interface AppShellProps {
   /**
    * Shell skeleton, driving both the layout regions and the menu shape.
    *
+   * The **desktop** skeleton: in the mobile view the shell renders the `sidebar`
+   * one instead, so the drawer holds one nested tree holding the full menu.
+   *
    * @default 'sidebar'
    */
   mode?: AppShellMode;
@@ -231,9 +239,11 @@ export interface AppShellProps {
   /**
    * Placement of the brand region.
    *
-   * `auto` follows the mode; `sidebar` and `sidebar-bottom` need a mode whose
-   * sidebar is always a column of its own — see `AppShellLogoPlacement` for the
-   * modes that support the bottom placement.
+   * `auto` follows the skeleton the shell renders; `sidebar` and `sidebar-bottom`
+   * need a skeleton whose sidebar is always a column of its own — see
+   * `AppShellLogoPlacement` for the modes that support the bottom placement. In
+   * the mobile view that skeleton is the `sidebar` one, so `auto` puts the brand
+   * in the drawer whatever mode is bound.
    *
    * @default 'auto'
    */
@@ -417,7 +427,10 @@ export interface AppShellBrandSlotProps {
  */
 export interface AppShellMenuSlotProps {
   /**
-   * Current shell mode.
+   * Shell mode the menu renders for.
+   *
+   * The mode the host bound, reported as-is: the shell renders the `sidebar`
+   * skeleton in the mobile view whatever this says.
    */
   mode: AppShellMode;
   /**

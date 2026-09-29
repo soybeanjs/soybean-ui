@@ -10264,7 +10264,7 @@
             "collapsed": "Whether the sidebar is collapsed.",
             "collapsedwidth": "Collapsed width of the sidebar, in pixels.",
             "headermountid": "Id of the header element the horizontal pane mounts into, when the mode teleports it.",
-            "mode": "Current shell mode.",
+            "mode": "Shell mode the menu renders for.\n\nThe mode the host bound, reported as-is: the shell renders the `sidebar`\nskeleton in the mobile view whatever this says.",
             "side": "Side the sidebar is placed on.",
             "sidebarmountid": "Id of the sidebar element the vertical pane mounts into, when the mode teleports it."
           },
@@ -10277,7 +10277,7 @@
             "treenav": "Slot classes for `STreeNav` (`top` mode)."
           }
         },
-        "appshellmode": "Shell skeleton of the `SAppShell` component.\n\nThe four `SplitNavMode` literals are forwarded to `SSplitNav` unchanged — the\nshell only decides where each pane is mounted. `sidebar` and `top` are the\nsingle-pane shells (one nested `STreeMenu`, or one horizontal `STreeNav`).\n\nMode names describe the **menu shape**, not the layout orientation. The\nlayout orientation is derived from the mode: a vertical first level makes the\nsidebar span the full height (`orientation=\"horizontal\"`), a horizontal first\nlevel puts the header across the top (`orientation=\"vertical\"`).",
+        "appshellmode": "Shell skeleton of the `SAppShell` component.\n\nThe four `SplitNavMode` literals are forwarded to `SSplitNav` unchanged — the\nshell only decides where each pane is mounted. `sidebar` and `top` are the\nsingle-pane shells (one nested `STreeMenu`, or one horizontal `STreeNav`).\n\nMode names describe the **menu shape**, not the layout orientation. The\nlayout orientation is derived from the mode: a vertical first level makes the\nsidebar span the full height (`orientation=\"horizontal\"`), a horizontal first\nlevel puts the header across the top (`orientation=\"vertical\"`).\n\nThe mode describes the **desktop** shape. In the mobile view the shell renders\nthe `sidebar` skeleton for every mode — the sidebar is the layout's drawer\nthere, and a drawer holds one nested tree — while this prop keeps reporting\nwhat the host bound. See the AppShell docs, \"Mobile view\".",
         "appshellprops": {
           "members": {
             "breadcrumbprops": "Properties forwarded to `SBreadcrumb`.",
@@ -10292,11 +10292,11 @@
             "items": "Menu tree rendered by the shell.",
             "layoutprops": "Properties forwarded to `SLayout`.\n\nShell-owned options (`open`, `orientation`, `sidebarVisible`, `isMobile`,\n`pxToRem`) are derived from `mode`; `sidebarWidth` and\n`collapsedSidebarWidth` default to the widths the mode requires — override\nthem only when the menu panes do not need to line up.",
             "layoutui": "Per-slot class overrides for the internal `SLayout`. Takes precedence over\nthe shell's `layout*` UI slots.",
-            "logoplacement": "Placement of the brand region.\n\n`auto` follows the mode; `sidebar` and `sidebar-bottom` need a mode whose\nsidebar is always a column of its own — see `AppShellLogoPlacement` for the\nmodes that support the bottom placement.",
+            "logoplacement": "Placement of the brand region.\n\n`auto` follows the skeleton the shell renders; `sidebar` and `sidebar-bottom`\nneed a skeleton whose sidebar is always a column of its own — see\n`AppShellLogoPlacement` for the modes that support the bottom placement. In\nthe mobile view that skeleton is the `sidebar` one, so `auto` puts the brand\nin the drawer whatever mode is bound.",
             "menuprops": "Properties forwarded to the rendered menu.",
             "menuui": "Per-slot class overrides forwarded to the rendered menu.",
             "mobileopen": "The controlled open state of the mobile drawer. Can be bound with `v-model:mobileOpen`.\n\nThe shell renders the drawer through `SLayout`, where the drawer is the\nmobile counterpart of the desktop sidebar and carries its own state.",
-            "mode": "Shell skeleton, driving both the layout regions and the menu shape.",
+            "mode": "Shell skeleton, driving both the layout regions and the menu shape.\n\nThe **desktop** skeleton: in the mobile view the shell renders the `sidebar`\none instead, so the drawer holds one nested tree holding the full menu.",
             "modelvalue": "The controlled active menu value. Can be bound with `v-model`.\n\nThe active menu is controlled only: the shell derives the sidebar geometry\nand the breadcrumb from it before rendering, so it reads the value it is\ngiven rather than keeping one of its own.",
             "open": "The controlled expanded state of the sidebar. Can be bound with `v-model:open`.",
             "side": "Side the sidebar is placed on.",

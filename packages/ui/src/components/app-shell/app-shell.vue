@@ -2,7 +2,7 @@
 import { computed, shallowRef, useId, watch } from 'vue';
 import { BreadcrumbLink, BreadcrumbPage } from '@soybeanjs/headless/breadcrumb';
 import type { BreadcrumbOptionData } from '@soybeanjs/headless/breadcrumb';
-import { useControllableState } from '@soybeanjs/headless/composables';
+import { useControllableState, useIsMobile } from '@soybeanjs/headless/composables';
 import { LayoutTrigger } from '@soybeanjs/headless/layout';
 import type { LayoutUi } from '@soybeanjs/headless/layout';
 import type { MenuOptionData } from '@soybeanjs/headless/menu';
@@ -66,9 +66,29 @@ const slots = defineSlots<AppShellSlots>();
 
 const ui = computed(() => appShellVariants({ size: props.size }, props.ui, { root: props.class }));
 
-const skeleton = computed(() => appShellSkeletons[props.mode]);
+/**
+ * Whether the view is the mobile one.
+ *
+ * The resolution chain is the layout's own — explicit `isMobile`, a host
+ * viewport from `provideViewportContext`, then the shared breakpoint — so the
+ * shell and the layout it renders can never disagree about which view they are
+ * in. The raw prop is still what reaches `SLayout`: an absent `isMobile` has to
+ * stay absent there, or the styled `lt-md` first-paint fallback loses its turn.
+ */
+const { isMobile: mobileView } = useIsMobile(() => props.isMobile);
 
-const brandPlacement = computed(() => resolveLogoPlacement(props.mode, props.logoPlacement));
+/**
+ * Skeleton of the current view.
+ *
+ * The mobile view renders the `sidebar` skeleton whatever mode is bound: the
+ * sidebar is the layout's drawer there, and a drawer is a single column — brand,
+ * then one nested tree holding the full menu — so a top bar, a rail, or a pane
+ * has nowhere to go in it. The bound mode is never overwritten: it keeps driving
+ * the desktop view, and `data-mode` keeps reporting it.
+ */
+const skeleton = computed(() => (mobileView.value ? appShellSkeletons.sidebar : appShellSkeletons[props.mode]));
+
+const brandPlacement = computed(() => resolveLogoPlacement(skeleton.value, props.logoPlacement));
 
 const pxToRem = computed(() => createPxToRem(props.size));
 
@@ -102,7 +122,7 @@ const activeTrail = computed(() => findMenuTrail(props.items, props.modelValue))
  */
 const openPath = shallowRef<string[]>([]);
 
-watch([() => props.modelValue, () => props.mode], () => {
+watch([() => props.modelValue, skeleton], () => {
   openPath.value = [];
 });
 
@@ -138,10 +158,11 @@ const shellWidths = computed(() =>
 /**
  * Cells of the brand region of a sidebar placement.
  *
- * The shell cannot resolve the mobile mode itself — the layout owns that decision
- * — so the collapsed state arrives from the sidebar slot and the geometry is
- * derived on render. A sidebar placement aligns the mark and the title to the
- * columns the menu renders.
+ * The collapsed state arrives from the sidebar slot — the layout owns that state,
+ * and it is the only place that knows it once the sidebar is a drawer — while
+ * the columns are derived from the resolved skeleton. A sidebar placement aligns
+ * the mark and the title to the columns the menu renders; the mobile drawer is a
+ * single column, so the two share one row there.
  */
 function resolveSidebarBrandLayout(collapsed: boolean) {
   return resolveBrandLayout({ size: props.size, columns: sidebarColumns.value, collapsed });
@@ -201,17 +222,19 @@ const breadcrumbItems = computed<BreadcrumbOptionData[]>(() => {
 const currentCrumbValue = computed(() => breadcrumbItems.value.at(-1)?.value);
 
 /**
- * Breadcrumb visibility is mode-scoped by design: it renders only in the two
- * modes whose header carries neither the menu nor the brand — `sidebar` and
- * `dual-vertical`. `top` puts the whole menu tree in the header, and every
- * split mode puts the brand there; see `appShellSkeletons` in `./shared` for
- * the per-mode header contents.
+ * Breadcrumb visibility is skeleton-scoped by design: it renders only where the
+ * header carries neither the menu nor the brand, so the crumb has the room —
+ * `sidebar`, `dual-vertical`, and the mobile view, whose header keeps the trigger
+ * and the trailing actions while the brand and the full menu live in the drawer.
+ * `top` puts the whole menu tree in the header, and every split mode puts the
+ * brand there; see `appShellSkeletons` in `./shared` for the header contents.
  */
 const showBreadcrumb = computed(
   () =>
     props.breadcrumbVisible &&
     breadcrumbItems.value.length > 0 &&
-    (props.mode === 'sidebar' || props.mode === 'dual-vertical')
+    skeleton.value.menuPlacement === 'sidebar' &&
+    skeleton.value.logoPlacement === 'sidebar'
 );
 
 const showTabs = computed(() => Boolean(props.tabs?.length));
@@ -412,7 +435,8 @@ function handleBreadcrumbClick(item: BreadcrumbOptionData) {
             :sidebar-mount-id="sidebarMountId"
           >
             <AppShellMenu
-              :mode="mode"
+              :renderer="skeleton.renderer"
+              :split-nav-mode="skeleton.splitNavMode"
               :size="size"
               :items="items"
               :model-value="modelValue"
@@ -534,7 +558,8 @@ function handleBreadcrumbClick(item: BreadcrumbOptionData) {
               :sidebar-mount-id="sidebarMountId"
             >
               <AppShellMenu
-                :mode="mode"
+                :renderer="skeleton.renderer"
+                :split-nav-mode="skeleton.splitNavMode"
                 :size="size"
                 :items="items"
                 :model-value="modelValue"

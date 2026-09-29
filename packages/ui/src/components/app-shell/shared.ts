@@ -264,17 +264,19 @@ export function isSidebarLogoPlacement(placement: AppShellLogoPlacementResolved)
 /**
  * Resolve the placement of the brand region.
  *
- * `auto` takes the mode's own default. Both sidebar placements need a sidebar
- * region, and the bottom one additionally needs a sidebar that is always a
- * column of its own (`stableSidebar`): every other mode keeps its default
+ * `auto` takes the skeleton's own default. Both sidebar placements need a
+ * sidebar region, and the bottom one additionally needs a sidebar that is always
+ * a column of its own (`stableSidebar`): every other skeleton keeps its default
  * placement, so the brand never ends up pinned where it would disappear.
+ *
+ * The skeleton rather than the mode: the shell renders the sidebar skeleton in
+ * the mobile view, whatever mode is bound, and the brand follows what is
+ * actually rendered.
  */
 export function resolveLogoPlacement(
-  mode: AppShellMode,
+  skeleton: AppShellSkeleton,
   placement: AppShellLogoPlacement
 ): AppShellLogoPlacementResolved {
-  const skeleton = appShellSkeletons[mode];
-
   if (placement === 'auto' || !skeleton.sidebarVisible) {
     return skeleton.logoPlacement;
   }

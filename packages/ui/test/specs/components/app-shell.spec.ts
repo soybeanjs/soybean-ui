@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { h, nextTick } from 'vue';
+import { defineComponent, h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
+import { provideViewportContext } from '@soybeanjs/headless/composables';
 import SAppShell from '@/components/app-shell/app-shell.vue';
 import { appShellSkeletons, splitNavCollapsedPaneWidth, toMenuOptions } from '@/components/app-shell/shared';
 import type { AppShellMode } from '@/components/app-shell/types';
@@ -1530,6 +1531,133 @@ describe('SAppShell', () => {
     });
   });
 
+  /**
+   * The mobile view renders the `sidebar` skeleton whatever mode is bound: the
+   * sidebar is the layout's drawer there, and a drawer holds one nested tree, so
+   * a top bar, a rail, or a pane has nowhere to go in it. The bound mode is never
+   * overwritten, so the desktop shape is back the moment the view is.
+   */
+  describe('mobile view', () => {
+    /**
+     * The view is resolved the way `SLayout` resolves it, so a host that
+     * simulates a viewport (a device frame, an embedded shell) gets the shape the
+     * layout renders — without binding `isMobile` itself.
+     */
+    it('follows a viewport published by the host', async () => {
+      const host = defineComponent({
+        name: 'AppShellViewportHost',
+        setup() {
+          provideViewportContext({ isMobile: true });
+
+          return () => h(SAppShell, { items, mobileOpen: true });
+        }
+      });
+
+      const wrapper = mount(host, { attachTo: document.body });
+
+      await nextTick();
+      await nextTick();
+
+      const shell = wrapper.find('[data-soybean-app-shell]');
+
+      expect(shell.attributes('data-mobile')).toBe('true');
+      expect(document.querySelector('[data-soybean-layout-mobile] [data-soybean-tree-menu-root]')).not.toBeNull();
+
+      wrapper.unmount();
+    });
+
+    it('renders the full menu tree in the drawer for a top-bar mode', async () => {
+      const wrapper = mount(SAppShell, {
+        props: { items, mode: 'top', isMobile: true, mobileOpen: true },
+        attachTo: document.body
+      });
+
+      await nextTick();
+      await nextTick();
+
+      const drawer = document.querySelector('[data-soybean-layout-mobile]');
+
+      // The bound mode is still reported: the shape is the shell's business, the
+      // mode stays the host's.
+      expect(wrapper.find('[data-soybean-app-shell]').attributes('data-mode')).toBe('top');
+      // A top-bar-first mode has no sidebar on desktop; on mobile the drawer is the
+      // only navigation there is, so the trigger has to exist.
+      expect(wrapper.find('[data-soybean-layout-trigger]').exists()).toBe(true);
+      expect(wrapper.findComponent(STreeNav).exists()).toBe(false);
+      expect(drawer?.querySelector('[data-soybean-tree-menu-root]')).not.toBeNull();
+      expect(drawer?.textContent).toContain('Overview');
+      expect(drawer?.textContent).toContain('Workbench');
+
+      wrapper.unmount();
+    });
+
+    it('renders one tree instead of the split panes for a split mode', async () => {
+      const wrapper = mount(SAppShell, {
+        props: { items, mode: 'horizontal-dual-vertical', modelValue: 'overview', isMobile: true, mobileOpen: true },
+        attachTo: document.body
+      });
+
+      await nextTick();
+      await nextTick();
+
+      const drawer = document.querySelector('[data-soybean-layout-mobile]');
+
+      expect(wrapper.findComponent(SSplitNav).exists()).toBe(false);
+      expect(drawer?.querySelector('[data-soybean-tree-menu-root]')).not.toBeNull();
+      expect(drawer?.querySelector('[data-soybean-split-nav-root]')).toBeNull();
+
+      wrapper.unmount();
+    });
+
+    it('gives the desktop shape back when the view is not mobile', async () => {
+      const wrapper = mount(SAppShell, {
+        props: { items, mode: 'dual-vertical', modelValue: 'projects', isMobile: true },
+        attachTo: document.body
+      });
+
+      await nextTick();
+      await nextTick();
+
+      expect(wrapper.findComponent(SSplitNav).exists()).toBe(false);
+      expect(wrapper.find('[data-soybean-app-shell]').attributes('data-mode')).toBe('dual-vertical');
+
+      await wrapper.setProps({ isMobile: false });
+      await nextTick();
+
+      expect(wrapper.findComponent(SSplitNav).exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+
+    /**
+     * The mode is not overridden while the mobile view is up, so a mode the host
+     * binds in between is rendered as soon as the desktop shape is: no record, no
+     * mode waiting to be re-applied.
+     */
+    it('renders the mode bound while the mobile view is up', async () => {
+      const wrapper = mount(SAppShell, {
+        props: { items, mode: 'dual-vertical', isMobile: true, mobileOpen: true },
+        attachTo: document.body
+      });
+
+      await nextTick();
+      await nextTick();
+
+      await wrapper.setProps({ mode: 'top' });
+
+      expect(wrapper.findComponent(STreeNav).exists()).toBe(false);
+      expect(wrapper.findComponent(SSplitNav).exists()).toBe(false);
+      expect(document.querySelector('[data-soybean-layout-mobile] [data-soybean-tree-menu-root]')).not.toBeNull();
+
+      await wrapper.setProps({ isMobile: false });
+      await nextTick();
+
+      expect(wrapper.findComponent(SSplitNav).exists()).toBe(false);
+      expect(wrapper.findComponent(STreeNav).exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+  });
   describe('accessibility', () => {
     it('has no violations for the sidebar skeleton', async () => {
       const wrapper = mount(SAppShell, {

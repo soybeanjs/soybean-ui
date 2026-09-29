@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, shallowRef } from 'vue';
 import { useMediaQuery } from '@vueuse/core';
-import { SAppShell, SIcon, SSwitch } from '@soybeanjs/ui';
+import { SAppShell, SIcon, SSelect, SSwitch } from '@soybeanjs/ui';
+import type { AppShellMode, SelectOptionData } from '@soybeanjs/ui';
 import { appShellItems } from './menu';
 
 const open = ref(true);
@@ -12,12 +13,23 @@ const isMobile = useMediaQuery('(max-width: 767.9px)');
 
 const forceMobile = ref(false);
 
+// The mobile view renders the sidebar skeleton whatever mode is bound: flip the
+// switch with either mode selected and the menu still lands in the drawer, in
+// full.
+const modes: SelectOptionData<AppShellMode>[] = [
+  { value: 'sidebar', label: 'sidebar' },
+  { value: 'top', label: 'top' }
+];
+
+const mode = shallowRef<AppShellMode>('sidebar');
+
 const active = ref('overview');
 </script>
 
 <template>
   <div class="space-y-4">
     <div class="flex-y-center flex-wrap gap-4">
+      <SSelect v-model="mode" :items="modes" class="w-40" />
       <div class="flex-y-center gap-2">
         <span>open:</span>
         <SSwitch v-model="open" class="items-center" />
@@ -32,7 +44,7 @@ const active = ref('overview');
       <SAppShell
         v-model="active"
         v-model:open="open"
-        mode="sidebar"
+        :mode="mode"
         :items="appShellItems"
         :is-mobile="forceMobile ? true : undefined"
       >
@@ -44,7 +56,8 @@ const active = ref('overview');
         </template>
         <div class="p-4">
           <p class="text-muted-foreground">
-            On mobile the sidebar becomes a drawer; the header trigger opens it instead of collapsing.
+            On mobile the shell renders the sidebar skeleton whatever mode is bound: the sidebar becomes a dialog and
+            the drawer holds the full menu tree, so a top bar moves into it. The header keeps the trigger.
           </p>
         </div>
       </SAppShell>

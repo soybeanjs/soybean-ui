@@ -1,22 +1,25 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { LayoutSide } from '@soybeanjs/headless/layout';
-import type { SplitNavOptionData } from '@soybeanjs/headless/split-nav';
+import type { SplitNavMode, SplitNavOptionData } from '@soybeanjs/headless/split-nav';
 import type { TreeMenuExpandStrategy } from '@soybeanjs/headless/tree-menu';
 import type { ThemeSize } from '@/theme';
 import SSplitNav from '../split-nav/split-nav.vue';
 import STreeMenu from '../tree-menu/tree-menu.vue';
 import STreeNav from '../tree-nav/tree-nav.vue';
-import { appShellSkeletons, splitNavCollapsedPaneWidth } from './shared';
-import type { AppShellMenuItem, AppShellMenuProps, AppShellMenuUi, AppShellMode } from './types';
+import { splitNavCollapsedPaneWidth } from './shared';
+import type { AppShellMenuRenderer } from './shared';
+import type { AppShellMenuItem, AppShellMenuProps, AppShellMenuUi } from './types';
 
 defineOptions({
   name: 'AppShellMenu'
 });
 
 interface Props {
-  /** Shell mode the menu renders for. */
-  mode: AppShellMode;
+  /** Renderer the shell resolved for the current view. */
+  renderer: AppShellMenuRenderer;
+  /** Mode forwarded to `SSplitNav`, only when `renderer` is `split`. */
+  splitNavMode: SplitNavMode | undefined;
   /** Visual size forwarded to the renderer. */
   size: ThemeSize;
   /** Menu tree rendered by the renderer. */
@@ -50,8 +53,6 @@ interface Emits {
 }
 
 const emit = defineEmits<Emits>();
-
-const skeleton = computed(() => appShellSkeletons[props.mode]);
 
 // The shell-level strategy applies to the renderers that have one; the
 // per-renderer `menuProps` entry is spread last so it still wins.
@@ -96,7 +97,7 @@ function handleSplitOpen(item: SplitNavOptionData<AppShellMenuItem>, event?: Eve
 
 <template>
   <STreeMenu
-    v-if="skeleton.renderer === 'tree'"
+    v-if="renderer === 'tree'"
     v-bind="treeProps"
     :size="size"
     :items="items"
@@ -107,7 +108,7 @@ function handleSplitOpen(item: SplitNavOptionData<AppShellMenuItem>, event?: Eve
     @update:model-value="handleTreeSelect"
   />
   <STreeNav
-    v-else-if="skeleton.renderer === 'tree-nav'"
+    v-else-if="renderer === 'tree-nav'"
     v-bind="treeNavProps"
     :size="size"
     :items="items"
@@ -119,7 +120,7 @@ function handleSplitOpen(item: SplitNavOptionData<AppShellMenuItem>, event?: Eve
     v-else
     v-bind="splitProps"
     :size="size"
-    :mode="skeleton.splitNavMode"
+    :mode="splitNavMode"
     :items="items"
     :model-value="modelValue"
     :collapsed="collapsed"

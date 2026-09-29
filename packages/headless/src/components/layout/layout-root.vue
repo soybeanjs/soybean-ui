@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { computed, toValue } from 'vue';
+import { computed } from 'vue';
 import type { CSSProperties } from 'vue';
-import { useMediaQuery } from '@vueuse/core';
-import { toContext, mobileViewportQuery } from '../../shared';
-import { useControllableState, useViewportContext } from '../../composables';
+import { toContext } from '../../shared';
+import { useControllableState, useIsMobile } from '../../composables';
 import { layoutCssVars } from './shared';
 import { provideLayoutRootContext, useLayoutUi } from './context';
 import type { LayoutMobileSource, LayoutRootProps, LayoutRootEmits, LayoutSidebarState } from './types';
@@ -42,8 +41,6 @@ const emit = defineEmits<LayoutRootEmits>();
 
 const cls = useLayoutUi('root');
 
-const mediaIsMobile = useMediaQuery(mobileViewportQuery);
-
 const open = useControllableState(
   () => props.open,
   value => {
@@ -73,23 +70,15 @@ const stretchFooter = computed(() => fixedFooter.value && props.stretchFooter);
 const isOffcanvas = computed(() => props.collapsible === 'offcanvas');
 
 /**
- * Host-owned viewport decision, when there is one.
- *
- * Consumption is optional: without a provider this stays `null` and the layout
- * falls back to the real viewport.
- */
-const viewport = useViewportContext();
-
-/**
- * Whether the component is in its mobile view.
+ * Whether the component is in its mobile view, and where that decision came from.
  *
  * Resolution order: the explicit `isMobile` prop, then a viewport a host
  * simulated through `provideViewportContext` (a device frame, an embedded
  * shell), then the real viewport. `undefined` at every level means "no opinion",
- * which is what keeps the styled `lt-md` fallback in charge.
+ * which is what keeps the styled `lt-md` fallback in charge. The chain is shared
+ * with everything that has to agree on the view — see `useIsMobile`.
  */
-const hostIsMobile = computed(() => props.isMobile ?? toValue(viewport?.isMobile));
-const isMobile = computed(() => hostIsMobile.value ?? mediaIsMobile.value);
+const { isMobile, hostIsMobile } = useIsMobile(() => props.isMobile);
 
 /**
  * Where the resolved mode came from.
