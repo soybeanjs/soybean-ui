@@ -25,6 +25,10 @@
       "docs": "文档",
       "playground": "演练场"
     },
+    "switcher": {
+      "device": "预览设备",
+      "view": "示例视图"
+    },
     "preview": "预览",
     "code": "代码",
     "device": {

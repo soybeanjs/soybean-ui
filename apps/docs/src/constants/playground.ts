@@ -11,10 +11,21 @@ export const playgroundDevices = ['desktop', 'mobile', 'ipad', 'fullscreen'] as 
 
 export type PlaygroundDevice = (typeof playgroundDevices)[number];
 
+/**
+ * Views of one example card.
+ *
+ * `preview` renders the demo inside the device frame, `code` renders its source.
+ * Kept beside the devices so the gallery (per-example state) and the control
+ * strip (switcher) read one description instead of mirroring the values twice.
+ */
+export const playgroundTabs = ['preview', 'code'] as const;
+
+export type PlaygroundTab = (typeof playgroundTabs)[number];
+
 export interface PlaygroundDeviceMeta {
   /** Iconify name rendered by the switcher item. */
   icon: string;
-  /** Static viewport hint shown in the preview toolbar. */
+  /** Static viewport hint shown by the control strip. */
   hint: string;
   /** Classes sizing the preview frame for this device. */
   frame: string;

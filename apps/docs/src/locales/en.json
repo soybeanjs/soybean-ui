@@ -25,6 +25,10 @@
       "docs": "Docs",
       "playground": "Playground"
     },
+    "switcher": {
+      "device": "Preview device",
+      "view": "Example view"
+    },
     "preview": "Preview",
     "code": "Code",
     "device": {
