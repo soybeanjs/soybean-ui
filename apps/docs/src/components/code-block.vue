@@ -28,7 +28,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="relative">
+  <div class="markdown-wrapper">
     <div ref="wrapper" class="md-code-block" :data-lang="lang" />
     <CopyButton :code-base64="result" />
   </div>
