@@ -10264,7 +10264,7 @@
             "collapsed": "侧边栏是否已折叠。",
             "collapsedwidth": "侧边栏折叠后的宽度（单位：像素）。",
             "headermountid": "当模式将其传送时，水平面板挂载到的标题元素的 ID。",
-            "mode": "",
+            "mode": "菜单渲染所采用的 Shell 模式。\n\n主机绑定的模式，按原样报告：无论此处显示什么，Shell 都会在移动视图中渲染 `sidebar`\n骨架。",
             "side": "侧边栏所在的侧边。",
             "sidebarmountid": "当模式将其传送时，垂直窗格挂载到的侧边栏元素的 ID。"
           },
@@ -10277,13 +10277,13 @@
             "treenav": "`STreeNav` 的插槽类（`top` 模式）。"
           }
         },
-        "appshellmode": "",
+        "appshellmode": "`SAppShell` 组件的壳体框架。\n\n四个 `SplitNavMode` 字面量会原样传递给 `SSplitNav` ——\n壳体仅决定每个窗格的挂载位置。 `sidebar` 和 `top` 是\n单窗格外壳（一个嵌套的 `STreeMenu`，或一个水平排列的 `STreeNav`）。\n\n模式名称描述的是 **菜单形状**，而非布局方向。 布局方向由模式决定：若第一级为垂直布局，则\n侧边栏将占据整个高度（`orientation=\"horizontal\"`）；若第一级为\n水平布局，则标题栏位于顶部（`orientation=\"vertical\"`）。\n\n该模式描述的是**桌面**形态。 在移动视图中，外壳会为每种模式渲染\n`sidebar` 骨架——此时侧边栏是布局的抽屉\n，而一个抽屉包含一棵嵌套树——同时该属性会持续报告\n宿主绑定的内容。请参阅 AppShell 文档中的“移动视图”部分。",
         "appshellprops": {
           "members": {
             "breadcrumbprops": "属性已转发至 `SBreadcrumb`。",
             "breadcrumbs": "在页眉中渲染的面包屑导航项。\n\n若需省略，可从 `items` 和当前选中项推导出面包屑路径：该\n路径从根菜单延伸至当前选中项，其中每个祖先\n菜单若包含子项，将展开包含这些子项的下拉菜单——其嵌套结构\n与菜单本身一致，因此包含子项的条目会保留自己的子菜单。\n提供此选项可改用您自己的数据渲染普通面包屑导航。",
             "breadcrumbui": "针对 `SBreadcrumb` 的按槽类重写。",
-            "breadcrumbvisible": "",
+            "breadcrumbvisible": "当导航路径不为空时，面包屑区域是否显示。\n\n无论哪种情况，该区域都会隐藏在 `md` 断点下方：手机页眉\n会保留其触发条件及其后续操作。绑定 `ui.breadcrumb`（例如\n`lt-md:flex`）即可将其恢复至该位置。",
             "class": "应用于 shell 根元素的额外类名。",
             "defaultmobileopen": "移动抽屉在初始渲染时的展开状态。",
             "defaultopen": "侧边栏在初次渲染时的展开状态。",
@@ -10292,11 +10292,11 @@
             "items": "由 shell 渲染的菜单树。",
             "layoutprops": "转发给 `SLayout` 的属性。\n\nShell 拥有的选项（`open`、`orientation`、`sidebarVisible`、`isMobile`、\n`pxToRem`）由 `mode` 衍生而来；`sidebarWidth` 和\n`collapsedSidebarWidth` 默认采用该模式所需的宽度——仅当菜单面板无需对齐时才覆盖\n这些值。",
             "layoutui": "针对内部 `SLayout` 的按插槽类重写。优先于\nshell 的 `layout*` UI 插槽。",
-            "logoplacement": "",
+            "logoplacement": "品牌区域的放置位置。\n\n`auto` 遵循 Shell 渲染的骨架；`sidebar` 和 `sidebar-bottom`\n需要侧边栏始终作为独立一列的骨架——参见\n`AppShellLogoPlacement` 以了解支持底部放置的模式。在\n移动视图中，该骨架为 `sidebar` 类型，因此无论绑定何种模式，`auto` 都会将品牌\n放置在抽屉中。",
             "menuprops": "转发至渲染菜单的属性。",
             "menuui": "按槽位覆盖的类将转发至渲染后的菜单。",
             "mobileopen": "移动端抽屉的受控打开状态。可通过 `v-model:mobileOpen` 进行绑定。\n\nShell 通过 `SLayout` 渲染抽屉，该抽屉是\n桌面侧边栏的移动端对应组件，并拥有独立的状态。",
-            "mode": "",
+            "mode": "Shell 骨架，同时控制布局区域和菜单结构。\n\n**桌面** 骨架：在移动端视图中，Shell 会渲染 `sidebar`\n，因此抽屉中包含一个嵌套树，其中存放着完整的菜单。",
             "modelvalue": "受控的活动菜单值。可通过 `v-model` 进行绑定。\n\n活动菜单仅受控：壳层在渲染前会根据该值推导出侧边栏的几何尺寸\n和面包屑导航，因此它会读取给定的值\n，而非保留自己的值。",
             "open": "侧边栏的可控展开状态。可通过 `v-model:open` 进行绑定。",
             "side": "侧边栏所在的侧边。",

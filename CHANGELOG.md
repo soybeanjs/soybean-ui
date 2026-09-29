@@ -1,5 +1,24 @@
 # Changelog
 
+## [v0.50.0-beta.7](https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.6...v0.50.0-beta.7) (2026-09-29)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **app-shell**: render the full menu tree in the mobile drawer &nbsp;-&nbsp; by @soybeanjs [<samp>(c5b9b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c5b9bf002)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **app-shell**: keep a deep breadcrumb trail from pushing the header out &nbsp;-&nbsp; by @soybeanjs [<samp>(69162)</samp>](https://github.com/soybeanjs/soybean-ui/commit/691620b7d)
+- **layout**: re-publish the layout variables inside the mobile drawer &nbsp;-&nbsp; by @soybeanjs [<samp>(fb1ad)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fb1adf826)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **page-tabs**: update selected item color for better visibility &nbsp;-&nbsp; by @soybeanjs [<samp>(4a8ea)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4a8ea1f65)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.50.0-beta.6](https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.5...v0.50.0-beta.6) (2026-09-28)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

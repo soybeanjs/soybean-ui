@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T14:35:37.980Z",
+  "generatedAt": "2026-09-29T08:47:45.371Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -33,9 +33,9 @@
     "app-shell": {
       "component": "app-shell",
       "file": "app-shell.json",
-      "latestVersion": "v0.50.0-beta.6",
-      "versionCount": 1,
-      "entryCount": 4
+      "latestVersion": "v0.50.0-beta.7",
+      "versionCount": 2,
+      "entryCount": 6
     },
     "arrow": {
       "component": "arrow",
@@ -341,9 +341,9 @@
     "layout": {
       "component": "layout",
       "file": "layout.json",
-      "latestVersion": "v0.50.0-beta.6",
-      "versionCount": 18,
-      "entryCount": 22
+      "latestVersion": "v0.50.0-beta.7",
+      "versionCount": 19,
+      "entryCount": 23
     },
     "link": {
       "component": "link",
@@ -390,9 +390,9 @@
     "page-tabs": {
       "component": "page-tabs",
       "file": "page-tabs.json",
-      "latestVersion": "v0.50.0-beta.1",
-      "versionCount": 11,
-      "entryCount": 11
+      "latestVersion": "v0.50.0-beta.7",
+      "versionCount": 12,
+      "entryCount": 12
     },
     "pagination": {
       "component": "pagination",

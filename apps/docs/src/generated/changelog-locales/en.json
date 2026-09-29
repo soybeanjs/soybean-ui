@@ -2552,6 +2552,12 @@
               "98bd3": "align the sidebar brand with the tree menu rows",
               "da8ef": "follow the viewport and drop the sidebar gaps on mobile",
               "e463b": "drive the preview viewport from the device switcher"
+            },
+            "7": {
+              "69162": "keep a deep breadcrumb trail from pushing the header out",
+              "4a8ea": "update selected item color for better visibility",
+              "c5b9b": "render the full menu tree in the mobile drawer",
+              "fb1ad": "re-publish the layout variables inside the mobile drawer"
             }
           }
         }
