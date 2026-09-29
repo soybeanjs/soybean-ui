@@ -24,6 +24,13 @@ import type { Component } from 'vue';
  * <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">…</Teleport>
  * ```
  *
+ * `defer` is required, not a style choice: the target is mounted by the same
+ * subtree as the example, and Vue mounts a subtree detached — the element only
+ * reaches the document once every child is mounted. A synchronous target lookup
+ * therefore runs while the region is still off-document, and the teleport is left
+ * behind with "Failed to locate Teleport target". `defer` moves that lookup to a
+ * post-render job, after the tree is in the document.
+ *
  * `to` must fall back to a string: the server renderer drops a teleport whose
  * target is missing instead of rendering it inline, which would leave the client
  * and the prerendered HTML disagreeing.
