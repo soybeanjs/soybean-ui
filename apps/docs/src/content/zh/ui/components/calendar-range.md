@@ -47,7 +47,7 @@ CalendarRange 会渲染一个或多个按月排列的日期网格，用户可直
 
 ### 架构与对标差异
 
-`CalendarRangeRoot` 经 `useControllableState` 持有值（`DateRange` = `{ start, end }`），placeholder 驱动网格翻页，网格生成委托给与 `calendar` 共享的 `useCalendar`。`useCalendarRangeState` 派生选中/高亮状态，并暴露 `isRangeInvalid(start, end)`——候选范围校验器，同时供派生 `data-invalid` 状态与 `onDateChange` 提交新范围时使用（因此「非连续范围拒绝」基于**候选范围**判定，而非此前已提交的状态）。`CalendarRangeCellTrigger` 是唯一交互部件：读取共享 context，计算 `data-selection-start`/`data-selection-end`/`data-highlighted`/`data-selected`/`data-today`/`data-unavailable`/`data-outside-view`，处理方向键（`dir` 感知方向，RTL 反转 ArrowLeft/ArrowRight）与 Enter/Space，并在导航跨越网格边界时翻页到相邻月份。多数对标库提供的是整体式范围面板；headless/styled 分离、逐部件 `*Props` 透传、悬停预览与候选范围校验是本组件差异点。
+`CalendarRangeRoot` 经 `useControllableState` 持有值（`DateRange` = `{ start, end }`），placeholder 驱动网格翻页，网格生成委托给与 `calendar` 共享的 `useCalendar`。`useCalendarRangeState` 派生选中/高亮状态，并暴露 `isRangeInvalid(start, end)`——候选范围校验器，同时供派生 `data-invalid` 状态与 `onDateChange` 提交新范围时使用（因此「非连续范围拒绝」基于**候选范围**判定，而非此前已提交的状态）。`CalendarRangeCellTrigger` 是唯一交互部件：读取共享 context，计算 `data-selection-start`/`data-selection-end`/`data-highlighted`/`data-selected`/`data-today`/`data-unavailable`/`data-outside-view`，处理方向键（`dir` 感知方向，RTL 反转 ArrowLeft/ArrowRight）与 Enter/Space，并在导航跨越网格边界时翻页到相邻月份。`CalendarRangeCell` 为已完成范围内的日期带上 `data-in-range`，样式条带正是以它为锚点——仅选中起点时只有 `data-selected`、不绘制条带，因此条带只会在两端都选定后出现。多数对标库提供的是整体式范围面板；headless/styled 分离、逐部件 `*Props` 透传、悬停预览与候选范围校验是本组件差异点。
 
 | 能力                       | SoybeanUI | Ant Design | Element Plus | Mantine | Naive UI | shadcn |
 | :------------------------- | :-------: | :--------: | :----------: | :-----: | :------: | :----: |
@@ -74,6 +74,7 @@ CalendarRange 会渲染一个或多个按月排列的日期网格，用户可直
 - `fixedDate` 固定一端：`fixedDate="start"` 时重新选择总是更新结束端；`fixedDate="end"` 时总是更新开始端。
 - prev/next 的 `aria-label` 默认为 locale 消息；可通过 `prevProps`/`nextProps` 逐按钮覆盖。
 - 每个日期按钮的 `aria-label` 默认为完整本地化日期；可通过 `cellTriggerProps` 逐格覆盖。
+- 范围条带由单元格承载：已完成范围内的日期带 `data-in-range`（仅选中起点时只有 `data-selected`，不绘制条带）。自定义条带样式请作用于 `ui.cell` + `data-in-range`，不要用 `data-selected`。
 
 ## 常见问题
 
