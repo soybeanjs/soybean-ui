@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { nextTick } from 'vue';
-import { mount } from '@vue/test-utils';
+import { flushPromises, mount } from '@vue/test-utils';
 import SConfigProvider from '@/components/config-provider/config-provider.vue';
 import { STreeNav } from '@/components/tree-nav';
 import type { TreeNavOptionData } from '@/components/tree-nav';
@@ -304,6 +304,46 @@ describe('STreeNav', () => {
       const wrapper = mountTreeNav();
 
       expect(wrapper.find('[data-soybean-tree-nav-overflow]').exists()).toBe(false);
+
+      wrapper.unmount();
+    });
+
+    it('drops the trailing "more" branch when collapsible is turned off', async () => {
+      const wrapper = mount(STreeNav, {
+        props: {
+          trigger: 'click',
+          portalProps: { disabled: true },
+          collapsible: true,
+          moreLabel: 'More',
+          items: items.slice(0, 2)
+        },
+        attachTo: document.body
+      });
+
+      const container = wrapper.find('[data-soybean-tree-nav-overflow]').element as HTMLElement;
+      const root = wrapper.find('[data-soybean-tree-nav]').element as HTMLElement;
+
+      // happy-dom performs no layout, so force the measured overflow the reflow
+      // loop reads: the bar always overflows its container.
+      Object.defineProperty(container, 'clientWidth', { configurable: true, get: () => 80 });
+      Object.defineProperty(root, 'scrollWidth', { configurable: true, get: () => 800 });
+
+      // A new items array re-runs the reflow, which now sees an overflowing bar.
+      await wrapper.setProps({ items });
+      await flushPromises();
+
+      expect(wrapper.text()).toContain('More');
+
+      await wrapper.setProps({ collapsible: false });
+      await flushPromises();
+
+      // Regression guard: the measured overflow count leaked out of collapsible
+      // mode and kept rendering the "more" branch over a bar that now holds
+      // every entry.
+      expect(wrapper.find('[data-soybean-tree-nav-overflow]').exists()).toBe(false);
+      expect(wrapper.text()).not.toContain('More');
+      expect(findLeafButton(wrapper, 'Pricing')).toBeTruthy();
+      expect(wrapper.findAll('[data-soybean-dropdown-menu-trigger]')).toHaveLength(2);
 
       wrapper.unmount();
     });
