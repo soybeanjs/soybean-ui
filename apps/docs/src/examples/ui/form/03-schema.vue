@@ -63,42 +63,44 @@ const citiesItems: SelectOptionData<string>[] = [
 </script>
 
 <template>
-  <SForm class="w-90 gap-3" @submit="handleSubmit">
-    <SFormField name="username" label="Username" description="This is FormField description">
-      <SInput placeholder="Please input username" />
-    </SFormField>
-    <SFormField name="gender" label="Gender">
-      <SRadioGroup :items="genderItems" />
-    </SFormField>
-    <SFormField name="remember" label="Remember">
-      <SSwitch />
-    </SFormField>
-    <SFormField name="hobbies" label="Hobbies">
-      <SCheckboxGroup :items="hobbiesItems" />
-    </SFormField>
-    <SFormField name="city" label="City">
-      <SSelect :items="citiesItems" />
-    </SFormField>
-    <SFormFieldArray name="social">
-      <template #label="{ fields, append }">
-        <span>Social</span>
-        <SButtonIcon v-if="!fields.length" icon="lucide:plus" @click="append({ name: '', url: '' })" />
-      </template>
-      <template #default="{ fields, append, remove }">
-        <div v-for="(field, index) in fields" :key="index" class="flex gap-12px">
-          <SFormField :name="`${field.name}[${index}].name`" label="Name">
-            <SInput />
-          </SFormField>
-          <SFormField :name="`${field.name}[${index}].url`" label="URL">
-            <SInput />
-          </SFormField>
-          <SButtonIcon icon="lucide:minus" class="shrink-0" @click="remove(index)" />
-          <SButtonIcon icon="lucide:plus" class="shrink-0" @click="append({ name: '', url: '' })" />
-        </div>
-      </template>
-    </SFormFieldArray>
-    <SFormFieldBase>
-      <SButton type="submit">Submit</SButton>
-    </SFormFieldBase>
-  </SForm>
+  <div class="flex justify-center w-full">
+    <SForm class="w-90 gap-3" @submit="handleSubmit">
+      <SFormField name="username" label="Username" description="This is FormField description">
+        <SInput placeholder="Please input username" />
+      </SFormField>
+      <SFormField name="gender" label="Gender">
+        <SRadioGroup :items="genderItems" />
+      </SFormField>
+      <SFormField name="remember" label="Remember">
+        <SSwitch />
+      </SFormField>
+      <SFormField name="hobbies" label="Hobbies">
+        <SCheckboxGroup :items="hobbiesItems" />
+      </SFormField>
+      <SFormField name="city" label="City">
+        <SSelect :items="citiesItems" />
+      </SFormField>
+      <SFormFieldArray name="social">
+        <template #label="{ fields, append }">
+          <span>Social</span>
+          <SButtonIcon v-if="!fields.length" icon="lucide:plus" @click="append({ name: '', url: '' })" />
+        </template>
+        <template #default="{ fields, append, remove }">
+          <div v-for="(field, index) in fields" :key="index" class="flex gap-12px">
+            <SFormField :name="`${field.name}[${index}].name`" label="Name">
+              <SInput />
+            </SFormField>
+            <SFormField :name="`${field.name}[${index}].url`" label="URL">
+              <SInput />
+            </SFormField>
+            <SButtonIcon icon="lucide:minus" class="shrink-0" @click="remove(index)" />
+            <SButtonIcon icon="lucide:plus" class="shrink-0" @click="append({ name: '', url: '' })" />
+          </div>
+        </template>
+      </SFormFieldArray>
+      <SFormFieldBase>
+        <SButton type="submit">Submit</SButton>
+      </SFormFieldBase>
+    </SForm>
+  </div>
 </template>

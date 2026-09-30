@@ -3,10 +3,13 @@ import { SDateRangePicker } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SDateRangePicker
-    :ui="{
-      trigger: 'border-primary hover:bg-primary/10',
-      popup: 'border-primary/20'
-    }"
-  />
+  <div class="flex justify-center w-full">
+    <SDateRangePicker
+      class="max-w-2xl"
+      :ui="{
+        trigger: 'border-primary hover:bg-primary/10',
+        popup: 'border-primary/20'
+      }"
+    />
+  </div>
 </template>

@@ -95,88 +95,83 @@ const items: DemoTree[] = [
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="selectionBehavior">
-          <SSelect
-            v-model="selectionBehavior"
-            :items="selectionBehaviorItems"
-            :trigger-props="{ 'aria-label': 'Selection behavior' }"
-            class="w-30"
-          />
-        </FieldItem>
-        <FieldItem label="toggleBehavior">
-          <SSelect
-            v-model="toggleBehavior"
-            :items="toggleBehaviorItems"
-            :trigger-props="{ 'aria-label': 'Toggle behavior' }"
-            class="w-30"
-          />
-        </FieldItem>
-        <FieldItem label="propagateSelect">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="propagateSelect" :control-props="{ 'aria-label': 'Propagate select' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="bubbleSelect">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="bubbleSelect" :control-props="{ 'aria-label': 'Bubble select' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="allowParentSelect">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="allowParentSelect" :control-props="{ 'aria-label': 'Allow parent select' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="disabled">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="disabled" :control-props="{ 'aria-label': 'Disabled' }" />
-          </div>
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-
-    <!-- 预览区：白底主体只放组件本身 -->
-    <div class="relative flex min-h-56 items-center justify-center">
-      <STree
-        class="list-none select-none w-56 bg-white text-stone-700 rounded-lg border shadow-sm p-2 text-sm font-medium"
-        :items="items"
-        :selection-behavior="selectionBehavior"
-        :toggle-behavior="toggleBehavior"
-        :propagate-select="propagateSelect"
-        :bubble-select="bubbleSelect"
-        :allow-parent-select="allowParentSelect"
-        :disabled="disabled"
-        :default-expanded="['components']"
-      >
-        <template #top>
-          <h2 class="font-semibold text-sm text-stone-400 m-0 px-2 pt-1 pb-3">Directory Structure</h2>
-        </template>
-        <template #item="{ item }">
-          <STreeItem
-            v-slot="{ isExpanded }"
-            :style="{ 'padding-left': `${item.level - 0.5}rem` }"
-            :value="item.value"
-            :level="item.level"
-            class="flex items-center py-1 px-2 rounded outline-none focus:ring-primary/50 focus:ring-2 data-[selected]:bg-primary/15"
-          >
-            <template v-if="item.hasChildren">
-              <SIcon v-if="!isExpanded" icon="lucide:folder" />
-              <SIcon v-else icon="lucide:folder-open" />
-            </template>
-            <SIcon v-else :icon="item.data.icon || 'lucide:file'" />
-            <div class="ps-2">
-              {{ item.data.title }}
-            </div>
-          </STreeItem>
-        </template>
-      </STree>
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="selectionBehavior">
+        <SSelect
+          v-model="selectionBehavior"
+          :items="selectionBehaviorItems"
+          :trigger-props="{ 'aria-label': 'Selection behavior' }"
+          class="w-30"
+        />
+      </FieldItem>
+      <FieldItem label="toggleBehavior">
+        <SSelect
+          v-model="toggleBehavior"
+          :items="toggleBehaviorItems"
+          :trigger-props="{ 'aria-label': 'Toggle behavior' }"
+          class="w-30"
+        />
+      </FieldItem>
+      <FieldItem label="propagateSelect">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="propagateSelect" :control-props="{ 'aria-label': 'Propagate select' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="bubbleSelect">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="bubbleSelect" :control-props="{ 'aria-label': 'Bubble select' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="allowParentSelect">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="allowParentSelect" :control-props="{ 'aria-label': 'Allow parent select' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="disabled">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="disabled" :control-props="{ 'aria-label': 'Disabled' }" />
+        </div>
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
     </div>
+  </Teleport>
+
+  <div class="flex justify-center w-full">
+    <STree
+      class="list-none select-none w-56 bg-white text-stone-700 rounded-lg border shadow-sm p-2 text-sm font-medium"
+      :items="items"
+      :selection-behavior="selectionBehavior"
+      :toggle-behavior="toggleBehavior"
+      :propagate-select="propagateSelect"
+      :bubble-select="bubbleSelect"
+      :allow-parent-select="allowParentSelect"
+      :disabled="disabled"
+      :default-expanded="['components']"
+    >
+      <template #top>
+        <h2 class="font-semibold text-sm text-stone-400 m-0 px-2 pt-1 pb-3">Directory Structure</h2>
+      </template>
+      <template #item="{ item }">
+        <STreeItem
+          v-slot="{ isExpanded }"
+          :style="{ 'padding-left': `${item.level - 0.5}rem` }"
+          :value="item.value"
+          :level="item.level"
+          class="flex items-center py-1 px-2 rounded outline-none focus:ring-primary/50 focus:ring-2 data-[selected]:bg-primary/15"
+        >
+          <template v-if="item.hasChildren">
+            <SIcon v-if="!isExpanded" icon="lucide:folder" />
+            <SIcon v-else icon="lucide:folder-open" />
+          </template>
+          <SIcon v-else :icon="item.data.icon || 'lucide:file'" />
+          <div class="ps-2">
+            {{ item.data.title }}
+          </div>
+        </STreeItem>
+      </template>
+    </STree>
   </div>
 </template>

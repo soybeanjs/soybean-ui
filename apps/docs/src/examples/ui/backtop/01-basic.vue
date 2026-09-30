@@ -115,80 +115,73 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="variant">
-          <SSelect v-model="variant" :items="variantItems" :trigger-props="{ 'aria-label': 'Variant' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="color">
-          <SSelect v-model="color" :items="colorItems" :trigger-props="{ 'aria-label': 'Color' }" class="w-40">
-            <template #trigger-leading>
-              <span class="w-3 h-3 rounded-full" :style="{ backgroundColor: colorValues[color] }"></span>
-            </template>
-            <template #item-leading="{ item }">
-              <span class="w-3 h-3 rounded-full" :style="{ backgroundColor: colorValues[item.value] }"></span>
-            </template>
-          </SSelect>
-        </FieldItem>
-        <FieldItem label="size">
-          <SSelect v-model="size" :items="sizeItems" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="shape">
-          <SSelect v-model="shape" :items="shapeItems" :trigger-props="{ 'aria-label': 'Shape' }" class="w-30" />
-        </FieldItem>
-        <FieldItem label="shadow">
-          <SSelect v-model="shadow" :items="shadowItems" :trigger-props="{ 'aria-label': 'Shadow' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="icon">
-          <SInput v-model="icon" aria-label="Icon" placeholder="e.g. lucide:arrow-up" />
-        </FieldItem>
-        <FieldItem label="visibilityHeight">
-          <SInputNumber
-            v-model="visibilityHeight"
-            :min="0"
-            :step="40"
-            :control-props="{ 'aria-label': 'Visibility height' }"
-            class="w-30"
-          />
-        </FieldItem>
-        <FieldItem label="fitContent">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="fitContent" :control-props="{ 'aria-label': 'Fit content' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="disabled">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="disabled" :control-props="{ 'aria-label': 'Disabled' }" />
-          </div>
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-
-    <!-- 预览区：白底主体只放组件本身，滚动容器触发显隐 -->
-    <div class="relative flex min-h-56 items-center justify-center">
-      <div ref="scrollTarget" class="relative h-64 w-full max-w-2xl overflow-auto rounded-md border bg-muted/20 p-4">
-        <p class="text-sm text-muted-foreground">Scroll inside the container to reveal the Backtop button.</p>
-        <div class="h-80" />
-        <SBacktop
-          :target="scrollTarget ?? undefined"
-          :visibility-height="visibilityHeightValue"
-          :variant="variant"
-          :color="color"
-          :size="size"
-          :shape="shape"
-          :shadow="shadow"
-          :fit-content="fitContent"
-          :disabled="disabled"
-          :icon="iconValue"
-          class="absolute bottom-4 end-4"
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="variant">
+        <SSelect v-model="variant" :items="variantItems" :trigger-props="{ 'aria-label': 'Variant' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="color">
+        <SSelect v-model="color" :items="colorItems" :trigger-props="{ 'aria-label': 'Color' }" class="w-40">
+          <template #trigger-leading>
+            <span class="w-3 h-3 rounded-full" :style="{ backgroundColor: colorValues[color] }"></span>
+          </template>
+          <template #item-leading="{ item }">
+            <span class="w-3 h-3 rounded-full" :style="{ backgroundColor: colorValues[item.value] }"></span>
+          </template>
+        </SSelect>
+      </FieldItem>
+      <FieldItem label="size">
+        <SSelect v-model="size" :items="sizeItems" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="shape">
+        <SSelect v-model="shape" :items="shapeItems" :trigger-props="{ 'aria-label': 'Shape' }" class="w-30" />
+      </FieldItem>
+      <FieldItem label="shadow">
+        <SSelect v-model="shadow" :items="shadowItems" :trigger-props="{ 'aria-label': 'Shadow' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="icon">
+        <SInput v-model="icon" aria-label="Icon" placeholder="e.g. lucide:arrow-up" />
+      </FieldItem>
+      <FieldItem label="visibilityHeight">
+        <SInputNumber
+          v-model="visibilityHeight"
+          :min="0"
+          :step="40"
+          :control-props="{ 'aria-label': 'Visibility height' }"
+          class="w-30"
         />
-      </div>
+      </FieldItem>
+      <FieldItem label="fitContent">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="fitContent" :control-props="{ 'aria-label': 'Fit content' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="disabled">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="disabled" :control-props="{ 'aria-label': 'Disabled' }" />
+        </div>
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
     </div>
+  </Teleport>
+
+  <div ref="scrollTarget" class="relative h-64 overflow-auto rounded-md border bg-muted/20 p-4">
+    <p class="text-sm text-muted-foreground">Scroll inside the container to reveal the Backtop button.</p>
+    <div class="h-80" />
+    <SBacktop
+      :target="scrollTarget ?? undefined"
+      :visibility-height="visibilityHeightValue"
+      :variant="variant"
+      :color="color"
+      :size="size"
+      :shape="shape"
+      :shadow="shadow"
+      :fit-content="fitContent"
+      :disabled="disabled"
+      :icon="iconValue"
+      class="absolute bottom-4 end-4"
+    />
   </div>
 </template>

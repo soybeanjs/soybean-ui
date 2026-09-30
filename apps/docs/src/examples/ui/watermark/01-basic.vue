@@ -66,94 +66,87 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="content">
-          <SInput v-model="content" aria-label="Content" placeholder="Watermark text" />
-        </FieldItem>
-        <FieldItem label="fontSize">
-          <SInputNumber
-            v-model="fontSize"
-            :min="8"
-            :max="48"
-            :step="2"
-            :control-props="{ 'aria-label': 'Font size' }"
-            class="w-28"
-          />
-        </FieldItem>
-        <FieldItem label="fontColor">
-          <SInput v-model="fontColor" aria-label="Font color" placeholder="rgba(0, 0, 0, 0.15)" />
-        </FieldItem>
-        <FieldItem label="fontWeight">
-          <SSelect
-            v-model="fontWeight"
-            :items="fontWeightItems"
-            :trigger-props="{ 'aria-label': 'Font weight' }"
-            class="w-30"
-          />
-        </FieldItem>
-        <FieldItem label="rotate">
-          <SInputNumber
-            v-model="rotate"
-            :min="-90"
-            :max="90"
-            :step="1"
-            :control-props="{ 'aria-label': 'Rotate' }"
-            class="w-28"
-          />
-        </FieldItem>
-        <FieldItem label="gapX">
-          <SInputNumber
-            v-model="gapX"
-            :min="20"
-            :max="300"
-            :step="10"
-            :control-props="{ 'aria-label': 'Gap X' }"
-            class="w-28"
-          />
-        </FieldItem>
-        <FieldItem label="gapY">
-          <SInputNumber
-            v-model="gapY"
-            :min="20"
-            :max="300"
-            :step="10"
-            :control-props="{ 'aria-label': 'Gap Y' }"
-            class="w-28"
-          />
-        </FieldItem>
-        <FieldItem label="cross">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="cross" :control-props="{ 'aria-label': 'Cross' }" />
-          </div>
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-
-    <!-- 预览区：白底主体只放组件本身；固定高度的水印容器 -->
-    <div class="relative flex min-h-56 items-center justify-center">
-      <div class="relative h-72 w-full overflow-hidden rounded-md border bg-muted/20">
-        <SWatermark
-          :content="content"
-          :font-size="fontSize"
-          :font-color="fontColor"
-          :font-weight="fontWeight"
-          :rotate="rotate"
-          :gap="[gapX, gapY]"
-          :cross="cross"
-          class="h-full"
-        >
-          <div class="flex items-center justify-center h-full">
-            <p class="text-sm text-muted-foreground">This content is protected by a repeating text watermark.</p>
-          </div>
-        </SWatermark>
-      </div>
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="content">
+        <SInput v-model="content" aria-label="Content" placeholder="Watermark text" />
+      </FieldItem>
+      <FieldItem label="fontSize">
+        <SInputNumber
+          v-model="fontSize"
+          :min="8"
+          :max="48"
+          :step="2"
+          :control-props="{ 'aria-label': 'Font size' }"
+          class="w-28"
+        />
+      </FieldItem>
+      <FieldItem label="fontColor">
+        <SInput v-model="fontColor" aria-label="Font color" placeholder="rgba(0, 0, 0, 0.15)" />
+      </FieldItem>
+      <FieldItem label="fontWeight">
+        <SSelect
+          v-model="fontWeight"
+          :items="fontWeightItems"
+          :trigger-props="{ 'aria-label': 'Font weight' }"
+          class="w-30"
+        />
+      </FieldItem>
+      <FieldItem label="rotate">
+        <SInputNumber
+          v-model="rotate"
+          :min="-90"
+          :max="90"
+          :step="1"
+          :control-props="{ 'aria-label': 'Rotate' }"
+          class="w-28"
+        />
+      </FieldItem>
+      <FieldItem label="gapX">
+        <SInputNumber
+          v-model="gapX"
+          :min="20"
+          :max="300"
+          :step="10"
+          :control-props="{ 'aria-label': 'Gap X' }"
+          class="w-28"
+        />
+      </FieldItem>
+      <FieldItem label="gapY">
+        <SInputNumber
+          v-model="gapY"
+          :min="20"
+          :max="300"
+          :step="10"
+          :control-props="{ 'aria-label': 'Gap Y' }"
+          class="w-28"
+        />
+      </FieldItem>
+      <FieldItem label="cross">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="cross" :control-props="{ 'aria-label': 'Cross' }" />
+        </div>
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
     </div>
+  </Teleport>
+
+  <div class="relative h-72 overflow-hidden rounded-md border bg-muted/20">
+    <SWatermark
+      :content="content"
+      :font-size="fontSize"
+      :font-color="fontColor"
+      :font-weight="fontWeight"
+      :rotate="rotate"
+      :gap="[gapX, gapY]"
+      :cross="cross"
+      class="h-full"
+    >
+      <div class="flex items-center justify-center h-full">
+        <p class="text-sm text-muted-foreground">This content is protected by a repeating text watermark.</p>
+      </div>
+    </SWatermark>
   </div>
 </template>

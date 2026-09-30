@@ -22,7 +22,9 @@ const items = [
 </script>
 
 <template>
-  <SBreadcrumb :items="items">
-    <template #separator>&nbsp;/&nbsp;</template>
-  </SBreadcrumb>
+  <div class="flex justify-center w-full">
+    <SBreadcrumb class="max-w-2xl" :items="items">
+      <template #separator>&nbsp;/&nbsp;</template>
+    </SBreadcrumb>
+  </div>
 </template>

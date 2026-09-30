@@ -114,80 +114,76 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="type">
-          <SSelect v-model="type" :items="typeItems" :trigger-props="{ 'aria-label': 'Type' }" class="w-30" />
-        </FieldItem>
-        <FieldItem label="placement">
-          <SSelect
-            v-model="placement"
-            :items="placementItems"
-            :trigger-props="{ 'aria-label': 'Placement' }"
-            class="w-33"
-          />
-        </FieldItem>
-        <FieldItem label="size">
-          <SSelect v-model="size" :items="sizeItems" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="title">
-          <SInput v-model="title" aria-label="Title" class="w-40" />
-        </FieldItem>
-        <FieldItem label="description">
-          <SInput v-model="description" aria-label="Description" class="w-50" />
-        </FieldItem>
-        <FieldItem label="confirmText">
-          <SInput v-model="confirmText" aria-label="Confirm text" class="w-33" />
-        </FieldItem>
-        <FieldItem label="cancelText">
-          <SInput v-model="cancelText" aria-label="Cancel text" class="w-33" />
-        </FieldItem>
-        <FieldItem label="showArrow">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="showArrow" :control-props="{ 'aria-label': 'Show arrow' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="showIcon">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="showIcon" :control-props="{ 'aria-label': 'Show icon' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="showCancel">
-          <SSelect
-            v-model="showCancel"
-            :items="showCancelItems"
-            :trigger-props="{ 'aria-label': 'Show cancel' }"
-            class="w-38"
-          />
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-
-    <!-- 预览区：白底主体只放组件本身，overlay 类组件放触发按钮 -->
-    <div class="relative flex min-h-56 items-center justify-center">
-      <SPopconfirm
-        :type="type"
-        :placement="placement"
-        :size="size"
-        :title="title"
-        :description="description"
-        :confirm-text="confirmText"
-        :cancel-text="cancelText"
-        :show-arrow="showArrow"
-        :show-icon="showIcon"
-        :show-cancel="showCancelValue"
-        :ui="{ description: 'max-w-50' }"
-      >
-        <template #trigger>
-          <SButton color="destructive">Delete</SButton>
-        </template>
-      </SPopconfirm>
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="type">
+        <SSelect v-model="type" :items="typeItems" :trigger-props="{ 'aria-label': 'Type' }" class="w-30" />
+      </FieldItem>
+      <FieldItem label="placement">
+        <SSelect
+          v-model="placement"
+          :items="placementItems"
+          :trigger-props="{ 'aria-label': 'Placement' }"
+          class="w-33"
+        />
+      </FieldItem>
+      <FieldItem label="size">
+        <SSelect v-model="size" :items="sizeItems" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="title">
+        <SInput v-model="title" aria-label="Title" class="w-40" />
+      </FieldItem>
+      <FieldItem label="description">
+        <SInput v-model="description" aria-label="Description" class="w-50" />
+      </FieldItem>
+      <FieldItem label="confirmText">
+        <SInput v-model="confirmText" aria-label="Confirm text" class="w-33" />
+      </FieldItem>
+      <FieldItem label="cancelText">
+        <SInput v-model="cancelText" aria-label="Cancel text" class="w-33" />
+      </FieldItem>
+      <FieldItem label="showArrow">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="showArrow" :control-props="{ 'aria-label': 'Show arrow' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="showIcon">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="showIcon" :control-props="{ 'aria-label': 'Show icon' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="showCancel">
+        <SSelect
+          v-model="showCancel"
+          :items="showCancelItems"
+          :trigger-props="{ 'aria-label': 'Show cancel' }"
+          class="w-38"
+        />
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
     </div>
+  </Teleport>
+
+  <div class="flex justify-center w-full">
+    <SPopconfirm
+      class="max-w-2xl"
+      :type="type"
+      :placement="placement"
+      :size="size"
+      :title="title"
+      :description="description"
+      :confirm-text="confirmText"
+      :cancel-text="cancelText"
+      :show-arrow="showArrow"
+      :show-icon="showIcon"
+      :show-cancel="showCancelValue"
+      :ui="{ description: 'max-w-50' }"
+    >
+      <template #trigger>
+        <SButton color="destructive">Delete</SButton>
+      </template>
+    </SPopconfirm>
   </div>
 </template>

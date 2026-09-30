@@ -27,15 +27,17 @@ function validateUsernameAvailability(value: unknown) {
 </script>
 
 <template>
-  <SForm class="w-80 gap-4" @submit="handleSubmit">
-    <SFormField name="username" label="Username" :validate="validateUsernameAvailability">
-      <SInput placeholder="Type 'taken' to trigger async error" />
-    </SFormField>
-    <SFormField name="email" label="Email">
-      <SInput type="email" placeholder="Async submit demo" />
-    </SFormField>
-    <SFormFieldBase>
-      <SButton type="submit" :loading="isSubmitting">Submit async</SButton>
-    </SFormFieldBase>
-  </SForm>
+  <div class="flex justify-center w-full">
+    <SForm class="w-80 gap-4" @submit="handleSubmit">
+      <SFormField name="username" label="Username" :validate="validateUsernameAvailability">
+        <SInput placeholder="Type 'taken' to trigger async error" />
+      </SFormField>
+      <SFormField name="email" label="Email">
+        <SInput type="email" placeholder="Async submit demo" />
+      </SFormField>
+      <SFormFieldBase>
+        <SButton type="submit" :loading="isSubmitting">Submit async</SButton>
+      </SFormFieldBase>
+    </SForm>
+  </div>
 </template>

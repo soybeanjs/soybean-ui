@@ -120,23 +120,25 @@ const handleDragEnd = (tab: PageTabsDragEvent<PageTabsOptionData>) => {
 </script>
 
 <template>
-  <SPageTabs
-    v-model="modelValue"
-    v-model:items="items"
-    draggable
-    :menu-factory="menuFactory"
-    class="h-12 px-2 border rounded-sm"
-    @tab-drag-start="handleDragStart"
-    @tab-drag-move="handleDragMove"
-    @tab-drag-end="handleDragEnd"
-  />
-  <p class="mt-4 text-xs text-muted-foreground">
-    Drag tabs to reorder them within their own zone: pinned tabs reorder among themselves at the front, and unpinned
-    tabs cannot be dragged past the pinned group — they halt at the boundary. The first tab sets
-    <code>draggable: false</code>
-    , so it is locked in place and no other tab can be dropped before it.
-  </p>
-  <ul v-if="logs.length" class="mt-2 space-y-1">
-    <li v-for="(log, index) in logs" :key="index" class="text-xs">{{ log }}</li>
-  </ul>
+  <div class="flex flex-col items-center w-full">
+    <SPageTabs
+      v-model="modelValue"
+      v-model:items="items"
+      draggable
+      :menu-factory="menuFactory"
+      class="h-12 px-2 border rounded-sm"
+      @tab-drag-start="handleDragStart"
+      @tab-drag-move="handleDragMove"
+      @tab-drag-end="handleDragEnd"
+    />
+    <p class="mt-4 text-xs text-muted-foreground">
+      Drag tabs to reorder them within their own zone: pinned tabs reorder among themselves at the front, and unpinned
+      tabs cannot be dragged past the pinned group — they halt at the boundary. The first tab sets
+      <code>draggable: false</code>
+      , so it is locked in place and no other tab can be dropped before it.
+    </p>
+    <ul v-if="logs.length" class="mt-2 space-y-1">
+      <li v-for="(log, index) in logs" :key="index" class="text-xs">{{ log }}</li>
+    </ul>
+  </div>
 </template>

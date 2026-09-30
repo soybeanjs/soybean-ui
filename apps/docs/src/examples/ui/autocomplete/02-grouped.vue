@@ -23,5 +23,7 @@ const items: AutocompleteOptionData[] = [
 </script>
 
 <template>
-  <SAutocomplete :items="items" placeholder="Search foods" class="w-72 lt-md:w-auto" />
+  <div class="flex justify-center w-full">
+    <SAutocomplete :items="items" placeholder="Search foods" class="w-72 lt-md:w-auto" />
+  </div>
 </template>

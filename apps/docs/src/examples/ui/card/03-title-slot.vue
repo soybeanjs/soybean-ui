@@ -3,13 +3,15 @@ import { SCard, SIcon } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Title">
-    <template #title-leading>
-      <SIcon icon="lucide:rocket" />
-    </template>
-    <template #title-trailing>
-      <span>Trailing</span>
-    </template>
-    <div class="text-gray-500 dark:text-neutral-400">Card content</div>
-  </SCard>
+  <div class="flex justify-center w-full">
+    <SCard class="max-w-2xl" title="Title">
+      <template #title-leading>
+        <SIcon icon="lucide:rocket" />
+      </template>
+      <template #title-trailing>
+        <span>Trailing</span>
+      </template>
+      <div class="text-gray-500 dark:text-neutral-400">Card content</div>
+    </SCard>
+  </div>
 </template>

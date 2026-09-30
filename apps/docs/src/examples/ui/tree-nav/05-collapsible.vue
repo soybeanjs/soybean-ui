@@ -14,7 +14,9 @@ const items: TreeNavOptionData[] = [
 </script>
 
 <template>
-  <div class="w-100 overflow-hidden rounded-md border p-2">
-    <STreeNav :items="items" collapsible size="sm" trigger="click" more-label="More links" />
+  <div class="flex justify-center w-full">
+    <div class="w-100 overflow-hidden rounded-md border p-2">
+      <STreeNav :items="items" collapsible size="sm" trigger="click" more-label="More links" />
+    </div>
   </div>
 </template>

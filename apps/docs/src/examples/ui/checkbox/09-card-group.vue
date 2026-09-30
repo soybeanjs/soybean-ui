@@ -27,8 +27,10 @@ const checked = computed<CheckedState>({
 </script>
 
 <template>
-  <div class="flex flex-col gap-4">
-    <SCheckbox v-model="checked" color="warning">Check All</SCheckbox>
-    <SCheckboxCardGroup v-model="selected" :items="items" color="warning" shape="rounded" />
+  <div class="flex justify-center w-full">
+    <div class="flex flex-col gap-4">
+      <SCheckbox v-model="checked" color="warning">Check All</SCheckbox>
+      <SCheckboxCardGroup v-model="selected" :items="items" color="warning" shape="rounded" />
+    </div>
   </div>
 </template>

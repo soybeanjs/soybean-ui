@@ -11,5 +11,12 @@ const isDateDisabled = (date: Date) => date.getDate() === 20;
 </script>
 
 <template>
-  <SCalendarRange :model-value="value" :default-placeholder="value.start" :is-date-disabled="isDateDisabled" />
+  <div class="flex justify-center w-full">
+    <SCalendarRange
+      class="max-w-2xl"
+      :model-value="value"
+      :default-placeholder="value.start"
+      :is-date-disabled="isDateDisabled"
+    />
+  </div>
 </template>

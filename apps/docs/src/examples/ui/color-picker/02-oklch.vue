@@ -6,5 +6,13 @@ const color = ref('oklch(62% 0.22 312)');
 </script>
 
 <template>
-  <SColorPicker v-model="color" placement="bottom-start" color-space="oklch" default-format="oklch" />
+  <div class="flex justify-center w-full">
+    <SColorPicker
+      v-model="color"
+      class="max-w-2xl"
+      placement="bottom-start"
+      color-space="oklch"
+      default-format="oklch"
+    />
+  </div>
 </template>

@@ -74,12 +74,14 @@ const radios: MenuRadioOptionData<string>[] = [
 </script>
 
 <template>
-  <SContextMenuWrapper>
-    <template #trigger>
-      <ContextMenuTrigger />
-    </template>
-    <SMenuOptions :items="menus" />
-    <SMenuCheckboxOptions v-model="checkbox" :items="checkboxes" />
-    <SMenuRadioOptions v-model="radio" :items="radios" />
-  </SContextMenuWrapper>
+  <div class="flex justify-center w-full">
+    <SContextMenuWrapper class="max-w-2xl">
+      <template #trigger>
+        <ContextMenuTrigger />
+      </template>
+      <SMenuOptions :items="menus" />
+      <SMenuCheckboxOptions v-model="checkbox" :items="checkboxes" />
+      <SMenuRadioOptions v-model="radio" :items="radios" />
+    </SContextMenuWrapper>
+  </div>
 </template>

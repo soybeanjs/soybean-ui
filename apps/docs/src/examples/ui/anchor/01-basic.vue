@@ -93,76 +93,66 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="orientation">
-          <SSelect
-            v-model="orientation"
-            :items="orientationItems"
-            :trigger-props="{ 'aria-label': 'Orientation' }"
-            class="w-30"
-          />
-        </FieldItem>
-        <FieldItem label="color">
-          <SSelect v-model="color" :items="colorItems" :trigger-props="{ 'aria-label': 'Color' }" class="w-40">
-            <template #trigger-leading>
-              <span class="w-3 h-3 rounded-full" :style="{ backgroundColor: colorValues[color] }"></span>
-            </template>
-            <template #item-leading="{ item }">
-              <span class="w-3 h-3 rounded-full" :style="{ backgroundColor: colorValues[item.value] }"></span>
-            </template>
-          </SSelect>
-        </FieldItem>
-        <FieldItem label="size">
-          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="sticky">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="sticky" :control-props="{ 'aria-label': 'Sticky' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="offsetTop">
-          <SInputNumber v-model="offsetTop" :min="0" :control-props="{ 'aria-label': 'Offset top' }" class="w-25" />
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-
-    <!-- 预览区：白底主体只放组件本身，滚动容器承载 sticky 定位 -->
-    <div class="relative flex min-h-56 items-start justify-center">
-      <div
-        ref="containerRef"
-        class="max-h-120 w-full max-w-2xl overflow-auto rounded-lg border border-border bg-background p-4"
-      >
-        <div class="grid items-start gap-4 lg:grid-cols-[240px_minmax(0,1fr)]">
-          <SAnchor
-            :items="items"
-            :get-container="getContainer"
-            :orientation="orientation"
-            :color="color"
-            :size="size"
-            :sticky="sticky"
-            :offset-top="offsetTopValue"
-          />
-          <div class="space-y-6">
-            <section
-              v-for="section in sections"
-              :id="section.id"
-              :key="section.id"
-              class="min-h-32 rounded-lg border border-border/80 bg-card p-4"
-            >
-              <h4 class="text-base font-medium">{{ section.title }}</h4>
-              <p class="mt-2 text-sm text-muted-foreground">
-                Scroll the content area to watch the active anchor update automatically.
-              </p>
-            </section>
-          </div>
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="orientation">
+        <SSelect
+          v-model="orientation"
+          :items="orientationItems"
+          :trigger-props="{ 'aria-label': 'Orientation' }"
+          class="w-30"
+        />
+      </FieldItem>
+      <FieldItem label="color">
+        <SSelect v-model="color" :items="colorItems" :trigger-props="{ 'aria-label': 'Color' }" class="w-40">
+          <template #trigger-leading>
+            <span class="w-3 h-3 rounded-full" :style="{ backgroundColor: colorValues[color] }"></span>
+          </template>
+          <template #item-leading="{ item }">
+            <span class="w-3 h-3 rounded-full" :style="{ backgroundColor: colorValues[item.value] }"></span>
+          </template>
+        </SSelect>
+      </FieldItem>
+      <FieldItem label="size">
+        <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="sticky">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="sticky" :control-props="{ 'aria-label': 'Sticky' }" />
         </div>
+      </FieldItem>
+      <FieldItem label="offsetTop">
+        <SInputNumber v-model="offsetTop" :min="0" :control-props="{ 'aria-label': 'Offset top' }" class="w-25" />
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
+    </div>
+  </Teleport>
+
+  <div ref="containerRef" class="max-h-100 overflow-auto rounded-lg border border-border bg-background p-4">
+    <div class="grid items-start gap-4 lg:grid-cols-[240px_minmax(0,1fr)]">
+      <SAnchor
+        :items="items"
+        :get-container="getContainer"
+        :orientation="orientation"
+        :color="color"
+        :size="size"
+        :sticky="sticky"
+        :offset-top="offsetTopValue"
+      />
+      <div class="space-y-6">
+        <section
+          v-for="section in sections"
+          :id="section.id"
+          :key="section.id"
+          class="min-h-100 rounded-lg border border-border/80 bg-card p-4"
+        >
+          <h4 class="text-base font-medium">{{ section.title }}</h4>
+          <p class="mt-2 text-sm text-muted-foreground">
+            Scroll the content area to watch the active anchor update automatically.
+          </p>
+        </section>
       </div>
     </div>
   </div>

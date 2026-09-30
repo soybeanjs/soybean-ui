@@ -19,9 +19,11 @@ function set() {
 </script>
 
 <template>
-  <div class="flex flex-wrap gap-3">
-    <SButton @click="start">Start</SButton>
-    <SButton variant="outline" @click="set">Set 60%</SButton>
-    <SButton variant="outline" color="destructive" @click="progress.done()">Done</SButton>
+  <div class="flex justify-center w-full">
+    <div class="flex flex-wrap gap-3">
+      <SButton @click="start">Start</SButton>
+      <SButton variant="outline" @click="set">Set 60%</SButton>
+      <SButton variant="outline" color="destructive" @click="progress.done()">Done</SButton>
+    </div>
   </div>
 </template>

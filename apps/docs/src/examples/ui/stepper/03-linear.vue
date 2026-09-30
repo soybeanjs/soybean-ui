@@ -15,11 +15,13 @@ const canGoNext = computed(() => value.value < items.length);
 </script>
 
 <template>
-  <div class="flex-c gap-4">
-    <SStepper v-model="value" :items="items" linear />
-    <div class="flex items-center gap-2">
-      <SButton :disabled="!canGoPrev" @click="value -= 1">Previous</SButton>
-      <SButton :disabled="!canGoNext" @click="value += 1">Next</SButton>
+  <div class="flex justify-center w-full">
+    <div class="flex-c gap-4">
+      <SStepper v-model="value" :items="items" linear />
+      <div class="flex items-center gap-2">
+        <SButton :disabled="!canGoPrev" @click="value -= 1">Previous</SButton>
+        <SButton :disabled="!canGoNext" @click="value += 1">Next</SButton>
+      </div>
     </div>
   </div>
 </template>

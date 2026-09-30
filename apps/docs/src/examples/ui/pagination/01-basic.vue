@@ -97,85 +97,76 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="variant">
-          <SSelect v-model="variant" :items="variantItems" :trigger-props="{ 'aria-label': 'Variant' }" class="w-28" />
-        </FieldItem>
-        <FieldItem label="shape">
-          <SSelect v-model="shape" :items="shapeItems" :trigger-props="{ 'aria-label': 'Shape' }" class="w-30" />
-        </FieldItem>
-        <FieldItem label="size">
-          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="total">
-          <SInputNumber v-model="total" :min="1" :step="50" :control-props="{ 'aria-label': 'Total' }" class="w-30" />
-        </FieldItem>
-        <FieldItem label="pageSize">
-          <SInputNumber
-            v-model="pageSize"
-            :min="1"
-            :step="5"
-            :control-props="{ 'aria-label': 'Page size' }"
-            class="w-25"
-          />
-        </FieldItem>
-        <FieldItem label="siblingCount">
-          <SInputNumber
-            v-model="siblingCount"
-            :min="0"
-            :control-props="{ 'aria-label': 'Sibling count' }"
-            class="w-25"
-          />
-        </FieldItem>
-        <FieldItem label="page">
-          <SInputNumber v-model="page" :min="1" :control-props="{ 'aria-label': 'Page' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="showEdges">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="showEdges" :control-props="{ 'aria-label': 'Show edges' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="showFirstOrLast">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="showFirstOrLast" :control-props="{ 'aria-label': 'Show first or last' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="actionAsSelected">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="actionAsSelected" :control-props="{ 'aria-label': 'Action as selected' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="disabled">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="disabled" :control-props="{ 'aria-label': 'Disabled' }" />
-          </div>
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-
-    <!-- 预览区：白底主体只放组件本身 -->
-    <div class="relative flex min-h-56 items-center justify-center">
-      <SPagination
-        :page="resolvedPage"
-        :total="resolvedTotal"
-        :page-size="resolvedPageSize"
-        :sibling-count="resolvedSiblingCount"
-        :variant="variant"
-        :shape="shape"
-        :size="size"
-        :show-edges="showEdges"
-        :show-first-or-last="showFirstOrLast"
-        :action-as-selected="actionAsSelected"
-        :disabled="disabled"
-        @update:page="handlePageUpdate"
-      />
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="variant">
+        <SSelect v-model="variant" :items="variantItems" :trigger-props="{ 'aria-label': 'Variant' }" class="w-28" />
+      </FieldItem>
+      <FieldItem label="shape">
+        <SSelect v-model="shape" :items="shapeItems" :trigger-props="{ 'aria-label': 'Shape' }" class="w-30" />
+      </FieldItem>
+      <FieldItem label="size">
+        <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="total">
+        <SInputNumber v-model="total" :min="1" :step="50" :control-props="{ 'aria-label': 'Total' }" class="w-30" />
+      </FieldItem>
+      <FieldItem label="pageSize">
+        <SInputNumber
+          v-model="pageSize"
+          :min="1"
+          :step="5"
+          :control-props="{ 'aria-label': 'Page size' }"
+          class="w-25"
+        />
+      </FieldItem>
+      <FieldItem label="siblingCount">
+        <SInputNumber v-model="siblingCount" :min="0" :control-props="{ 'aria-label': 'Sibling count' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="page">
+        <SInputNumber v-model="page" :min="1" :control-props="{ 'aria-label': 'Page' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="showEdges">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="showEdges" :control-props="{ 'aria-label': 'Show edges' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="showFirstOrLast">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="showFirstOrLast" :control-props="{ 'aria-label': 'Show first or last' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="actionAsSelected">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="actionAsSelected" :control-props="{ 'aria-label': 'Action as selected' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="disabled">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="disabled" :control-props="{ 'aria-label': 'Disabled' }" />
+        </div>
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
     </div>
+  </Teleport>
+
+  <div class="flex justify-center w-full">
+    <SPagination
+      class="max-w-2xl"
+      :page="resolvedPage"
+      :total="resolvedTotal"
+      :page-size="resolvedPageSize"
+      :sibling-count="resolvedSiblingCount"
+      :variant="variant"
+      :shape="shape"
+      :size="size"
+      :show-edges="showEdges"
+      :show-first-or-last="showFirstOrLast"
+      :action-as-selected="actionAsSelected"
+      :disabled="disabled"
+      @update:page="handlePageUpdate"
+    />
   </div>
 </template>

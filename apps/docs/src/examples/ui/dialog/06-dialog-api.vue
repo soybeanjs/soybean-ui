@@ -46,11 +46,13 @@ const openCustomDialog = () => {
 </script>
 
 <template>
-  <div class="flex flex-wrap gap-3">
-    <SButton color="warning" @click="openWarning">Warning</SButton>
-    <SButton color="info" @click="openInfo">Info</SButton>
-    <SButton color="success" @click="openSuccess">Success</SButton>
-    <SButton color="destructive" @click="openError">Error</SButton>
-    <SButton @click="openCustomDialog">Custom Text and Styled</SButton>
+  <div class="flex justify-center w-full">
+    <div class="flex flex-wrap gap-3">
+      <SButton color="warning" @click="openWarning">Warning</SButton>
+      <SButton color="info" @click="openInfo">Info</SButton>
+      <SButton color="success" @click="openSuccess">Success</SButton>
+      <SButton color="destructive" @click="openError">Error</SButton>
+      <SButton @click="openCustomDialog">Custom Text and Styled</SButton>
+    </div>
   </div>
 </template>

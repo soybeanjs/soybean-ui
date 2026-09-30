@@ -55,19 +55,21 @@ const items: MenuOptionData<string>[] = [
 </script>
 
 <template>
-  <div class="space-y-2">
-    <div class="flex items-center gap-2 text-muted-foreground">
-      <span>Collapsible</span>
-      <button
-        class="cursor-pointer rounded-sm px-1.5 py-0.5 text-sm transition"
-        :class="collapsible ? 'bg-accent text-accent-foreground' : 'hover:bg-accent/50'"
-        @click="collapsible = !collapsible"
-      >
-        {{ collapsible ? 'on' : 'off' }}
-      </button>
-    </div>
-    <div class="max-w-105">
-      <SMenubar :collapsible="collapsible" :items="items" />
+  <div class="flex justify-center w-full">
+    <div class="space-y-2">
+      <div class="flex items-center gap-2 text-muted-foreground">
+        <span>Collapsible</span>
+        <button
+          class="cursor-pointer rounded-sm px-1.5 py-0.5 text-sm transition"
+          :class="collapsible ? 'bg-accent text-accent-foreground' : 'hover:bg-accent/50'"
+          @click="collapsible = !collapsible"
+        >
+          {{ collapsible ? 'on' : 'off' }}
+        </button>
+      </div>
+      <div class="max-w-105">
+        <SMenubar :collapsible="collapsible" :items="items" />
+      </div>
     </div>
   </div>
 </template>

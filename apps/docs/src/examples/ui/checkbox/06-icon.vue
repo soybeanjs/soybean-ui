@@ -3,9 +3,11 @@ import { SCheckbox, SIcon } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCheckbox :default-value="true" shape="rounded" label="Rounded">
-    <template #indicator>
-      <SIcon icon="mdi:check-bold" class="size-full" />
-    </template>
-  </SCheckbox>
+  <div class="flex justify-center w-full">
+    <SCheckbox class="max-w-2xl" :default-value="true" shape="rounded" label="Rounded">
+      <template #indicator>
+        <SIcon icon="mdi:check-bold" class="size-full" />
+      </template>
+    </SCheckbox>
+  </div>
 </template>

@@ -12,15 +12,18 @@ const items = [
 </script>
 
 <template>
-  <SStepper
-    v-model="value"
-    color="success"
-    :items="items"
-    :ui="{
-      root: 'rounded-lg border p-4',
-      indicator: 'shadow-sm',
-      itemContent: 'gap-1',
-      title: 'uppercase tracking-wide'
-    }"
-  />
+  <div class="flex justify-center w-full">
+    <SStepper
+      v-model="value"
+      class="max-w-2xl"
+      color="success"
+      :items="items"
+      :ui="{
+        root: 'rounded-lg border p-4',
+        indicator: 'shadow-sm',
+        itemContent: 'gap-1',
+        title: 'uppercase tracking-wide'
+      }"
+    />
+  </div>
 </template>

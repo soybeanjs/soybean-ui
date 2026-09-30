@@ -44,14 +44,16 @@ const dropdownItems: DropdownItem[] = [
 </script>
 
 <template>
-  <SBreadcrumb :items="dropdownItems">
-    <template #default="{ item }">
-      <SDropdownMenu v-if="item.items" :items="item.items" :modal="false" trigger="hover">
-        <template #trigger>
-          <SBreadcrumbPage class="cursor-pointer">{{ item.label }}</SBreadcrumbPage>
-        </template>
-      </SDropdownMenu>
-      <SBreadcrumbPage v-else>{{ item.label }}</SBreadcrumbPage>
-    </template>
-  </SBreadcrumb>
+  <div class="flex justify-center w-full">
+    <SBreadcrumb class="max-w-2xl" :items="dropdownItems">
+      <template #default="{ item }">
+        <SDropdownMenu v-if="item.items" :items="item.items" :modal="false" trigger="hover">
+          <template #trigger>
+            <SBreadcrumbPage class="cursor-pointer">{{ item.label }}</SBreadcrumbPage>
+          </template>
+        </SDropdownMenu>
+        <SBreadcrumbPage v-else>{{ item.label }}</SBreadcrumbPage>
+      </template>
+    </SBreadcrumb>
+  </div>
 </template>

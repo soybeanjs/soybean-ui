@@ -61,68 +61,64 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="size">
-          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="numberOfMonths">
-          <SInputNumber
-            v-model="numberOfMonths"
-            :min="1"
-            :max="3"
-            :control-props="{ 'aria-label': 'Number of months' }"
-            class="w-25"
-          />
-        </FieldItem>
-        <FieldItem label="disabled">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="disabled" :control-props="{ 'aria-label': 'Disabled' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="readonly">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="readonly" :control-props="{ 'aria-label': 'Readonly' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="pagedNavigation">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="pagedNavigation" :control-props="{ 'aria-label': 'Paged navigation' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="preventDeselect">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="preventDeselect" :control-props="{ 'aria-label': 'Prevent deselect' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="fixedWeeks">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="fixedWeeks" :control-props="{ 'aria-label': 'Fixed weeks' }" />
-          </div>
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-
-    <!-- 预览区：白底主体只放组件本身 -->
-    <div class="relative flex min-h-56 flex-col items-center justify-center gap-3">
-      <SDatePicker
-        v-model="selectedDate"
-        :default-placeholder="createDate(2024, 1, 1)"
-        :size="size"
-        :disabled="disabled"
-        :readonly="readonly"
-        :paged-navigation="pagedNavigation"
-        :prevent-deselect="preventDeselect"
-        :fixed-weeks="fixedWeeks"
-        :number-of-months="numberOfMonthsValue"
-      />
-      <p v-if="selectedDate" class="text-sm text-muted-foreground">Selected: {{ selectedDate.toString() }}</p>
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="size">
+        <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="numberOfMonths">
+        <SInputNumber
+          v-model="numberOfMonths"
+          :min="1"
+          :max="3"
+          :control-props="{ 'aria-label': 'Number of months' }"
+          class="w-25"
+        />
+      </FieldItem>
+      <FieldItem label="disabled">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="disabled" :control-props="{ 'aria-label': 'Disabled' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="readonly">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="readonly" :control-props="{ 'aria-label': 'Readonly' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="pagedNavigation">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="pagedNavigation" :control-props="{ 'aria-label': 'Paged navigation' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="preventDeselect">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="preventDeselect" :control-props="{ 'aria-label': 'Prevent deselect' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="fixedWeeks">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="fixedWeeks" :control-props="{ 'aria-label': 'Fixed weeks' }" />
+        </div>
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
     </div>
+  </Teleport>
+
+  <div class="flex flex-col items-center justify-center w-full gap-3">
+    <SDatePicker
+      v-model="selectedDate"
+      class="max-w-2xl"
+      :default-placeholder="createDate(2024, 1, 1)"
+      :size="size"
+      :disabled="disabled"
+      :readonly="readonly"
+      :paged-navigation="pagedNavigation"
+      :prevent-deselect="preventDeselect"
+      :fixed-weeks="fixedWeeks"
+      :number-of-months="numberOfMonthsValue"
+    />
+    <p v-if="selectedDate" class="text-sm text-muted-foreground">Selected: {{ selectedDate.toString() }}</p>
   </div>
 </template>

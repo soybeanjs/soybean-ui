@@ -35,8 +35,10 @@ function openCustomToast() {
 </script>
 
 <template>
-  <div class="flex flex-wrap gap-2">
-    <SButton variant="pure" @click="openActionToast">Action Toast</SButton>
-    <SButton color="primary" variant="outline" @click="openCustomToast">Custom Content</SButton>
+  <div class="flex justify-center w-full">
+    <div class="flex flex-wrap gap-2">
+      <SButton variant="pure" @click="openActionToast">Action Toast</SButton>
+      <SButton color="primary" variant="outline" @click="openCustomToast">Custom Content</SButton>
+    </div>
   </div>
 </template>

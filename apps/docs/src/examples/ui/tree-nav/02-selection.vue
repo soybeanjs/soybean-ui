@@ -23,12 +23,14 @@ const handleSelect = (item: TreeNavOptionData) => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-3">
-    <p class="text-muted-foreground text-sm">
-      Selected:
-      <span class="font-medium text-primary">{{ selected }}</span>
-      — opening a popup never marks a branch active; only selection does.
-    </p>
-    <STreeNav v-model="selected" :items="items" @select="handleSelect" />
+  <div class="flex justify-center w-full">
+    <div class="flex flex-col gap-3">
+      <p class="text-muted-foreground text-sm">
+        Selected:
+        <span class="font-medium text-primary">{{ selected }}</span>
+        — opening a popup never marks a branch active; only selection does.
+      </p>
+      <STreeNav v-model="selected" :items="items" @select="handleSelect" />
+    </div>
   </div>
 </template>

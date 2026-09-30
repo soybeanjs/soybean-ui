@@ -24,9 +24,11 @@ const placements: MenuRadioOptionData<string>[] = [
 </script>
 
 <template>
-  <SContextMenuRadio v-model="placement" :items="placements">
-    <template #trigger>
-      <ContextMenuTrigger />
-    </template>
-  </SContextMenuRadio>
+  <div class="flex justify-center w-full">
+    <SContextMenuRadio v-model="placement" class="max-w-2xl" :items="placements">
+      <template #trigger>
+        <ContextMenuTrigger />
+      </template>
+    </SContextMenuRadio>
+  </div>
 </template>

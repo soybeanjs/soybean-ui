@@ -23,10 +23,12 @@ const onUpdateModelValue = (value: string | number) => {
 </script>
 
 <template>
-  <SSelect
-    :items="groups"
-    placeholder="Please select a fruit or vegetable"
-    class="w-60 lt-md:w-auto"
-    @update:model-value="onUpdateModelValue"
-  />
+  <div class="flex justify-center w-full">
+    <SSelect
+      :items="groups"
+      placeholder="Please select a fruit or vegetable"
+      class="w-60 lt-md:w-auto"
+      @update:model-value="onUpdateModelValue"
+    />
+  </div>
 </template>

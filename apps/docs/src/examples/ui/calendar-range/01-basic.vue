@@ -86,90 +86,86 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="size">
-          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="numberOfMonths">
-          <SInputNumber
-            v-model="numberOfMonths"
-            :min="1"
-            :max="4"
-            :control-props="{ 'aria-label': 'Number of months' }"
-            class="w-27.5"
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="size">
+        <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="numberOfMonths">
+        <SInputNumber
+          v-model="numberOfMonths"
+          :min="1"
+          :max="4"
+          :control-props="{ 'aria-label': 'Number of months' }"
+          class="w-27.5"
+        />
+      </FieldItem>
+      <FieldItem label="weekStartsOn">
+        <SSelect
+          v-model="weekStartsOn"
+          :items="weekStartsOnItems"
+          :trigger-props="{ 'aria-label': 'Week starts on' }"
+          class="w-25"
+        />
+      </FieldItem>
+      <FieldItem label="weekdayFormat">
+        <SSelect
+          v-model="weekdayFormat"
+          :items="weekdayFormatItems"
+          :trigger-props="{ 'aria-label': 'Weekday format' }"
+          class="w-30"
+        />
+      </FieldItem>
+      <FieldItem label="pagedNavigation">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="pagedNavigation" :control-props="{ 'aria-label': 'Paged navigation' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="fixedWeeks">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="fixedWeeks" :control-props="{ 'aria-label': 'Fixed weeks' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="allowNonContiguousRanges">
+        <div class="h-8 flex items-center">
+          <SSwitch
+            v-model="allowNonContiguousRanges"
+            :control-props="{ 'aria-label': 'Allow non contiguous ranges' }"
           />
-        </FieldItem>
-        <FieldItem label="weekStartsOn">
-          <SSelect
-            v-model="weekStartsOn"
-            :items="weekStartsOnItems"
-            :trigger-props="{ 'aria-label': 'Week starts on' }"
-            class="w-25"
-          />
-        </FieldItem>
-        <FieldItem label="weekdayFormat">
-          <SSelect
-            v-model="weekdayFormat"
-            :items="weekdayFormatItems"
-            :trigger-props="{ 'aria-label': 'Weekday format' }"
-            class="w-30"
-          />
-        </FieldItem>
-        <FieldItem label="pagedNavigation">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="pagedNavigation" :control-props="{ 'aria-label': 'Paged navigation' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="fixedWeeks">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="fixedWeeks" :control-props="{ 'aria-label': 'Fixed weeks' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="allowNonContiguousRanges">
-          <div class="h-8 flex items-center">
-            <SSwitch
-              v-model="allowNonContiguousRanges"
-              :control-props="{ 'aria-label': 'Allow non contiguous ranges' }"
-            />
-          </div>
-        </FieldItem>
-        <FieldItem label="disabled">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="disabled" :control-props="{ 'aria-label': 'Disabled' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="readonly">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="readonly" :control-props="{ 'aria-label': 'Readonly' }" />
-          </div>
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-
-    <!-- 预览区：大体量组件用固定高度容器，只放组件本身 -->
-    <div class="relative flex flex-col min-h-100 items-center justify-center gap-3">
-      <SCalendarRange
-        v-model="value"
-        :size="size"
-        :number-of-months="numberOfMonths"
-        :week-starts-on="weekStartsOn"
-        :weekday-format="weekdayFormat"
-        :paged-navigation="pagedNavigation"
-        :fixed-weeks="fixedWeeks"
-        :allow-non-contiguous-ranges="allowNonContiguousRanges"
-        :disabled="disabled"
-        :readonly="readonly"
-      />
-      <p class="text-sm text-muted-foreground">
-        Range: {{ value.start?.toString() ?? '-' }} ~ {{ value.end?.toString() ?? '-' }}
-      </p>
+        </div>
+      </FieldItem>
+      <FieldItem label="disabled">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="disabled" :control-props="{ 'aria-label': 'Disabled' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="readonly">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="readonly" :control-props="{ 'aria-label': 'Readonly' }" />
+        </div>
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
     </div>
+  </Teleport>
+
+  <div class="flex flex-col items-center justify-center w-full gap-3">
+    <SCalendarRange
+      v-model="value"
+      class="max-w-2xl"
+      :size="size"
+      :number-of-months="numberOfMonths"
+      :week-starts-on="weekStartsOn"
+      :weekday-format="weekdayFormat"
+      :paged-navigation="pagedNavigation"
+      :fixed-weeks="fixedWeeks"
+      :allow-non-contiguous-ranges="allowNonContiguousRanges"
+      :disabled="disabled"
+      :readonly="readonly"
+    />
+    <p class="text-sm text-muted-foreground">
+      Range: {{ value.start?.toString() ?? '-' }} ~ {{ value.end?.toString() ?? '-' }}
+    </p>
   </div>
 </template>

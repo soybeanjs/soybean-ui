@@ -64,5 +64,7 @@ const menus: NavMenuOptionData[] = [
 </script>
 
 <template>
-  <SNavMenu :items="menus" class="w-max" />
+  <div class="flex justify-center w-full">
+    <SNavMenu :items="menus" class="w-max" />
+  </div>
 </template>

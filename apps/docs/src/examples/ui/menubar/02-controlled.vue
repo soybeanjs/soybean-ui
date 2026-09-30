@@ -42,8 +42,10 @@ const items: MenuOptionData<string>[] = [
 </script>
 
 <template>
-  <div>
-    <div class="pb-2 text-muted-foreground">Active menu: {{ currentMenu }}</div>
-    <SMenubar v-model="currentMenu" :items="items" />
+  <div class="flex justify-center w-full">
+    <div>
+      <div class="pb-2 text-muted-foreground">Active menu: {{ currentMenu }}</div>
+      <SMenubar v-model="currentMenu" :items="items" />
+    </div>
   </div>
 </template>

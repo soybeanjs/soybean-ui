@@ -16,5 +16,7 @@ const items: TreeNavOptionData[] = [
 </script>
 
 <template>
-  <STreeNav :items="items" default-value="home" />
+  <div class="flex justify-center w-full">
+    <STreeNav class="max-w-2xl" :items="items" default-value="home" />
+  </div>
 </template>

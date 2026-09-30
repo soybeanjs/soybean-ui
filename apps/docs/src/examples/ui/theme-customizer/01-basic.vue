@@ -42,38 +42,33 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="size">
-          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="showActions">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="showActions" :control-props="{ 'aria-label': 'Show actions' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="persist">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="persist" :control-props="{ 'aria-label': 'Persist' }" />
-          </div>
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-
-    <!-- 预览区：SThemeCustomizer 不自带容器，由调用方决定宿主，这里用 Popover 演示真实接入形态 -->
-    <div class="relative flex min-h-56 items-center justify-center">
-      <SPopover :modal="false" :placement="isMobile ? 'left' : 'bottom-start'">
-        <template #trigger>
-          <SButtonIcon icon="lucide:settings-2" size="lg" />
-        </template>
-        <SThemeCustomizer :size="size" :show-actions="showActions" :persist="persist" />
-      </SPopover>
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="size">
+        <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="showActions">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="showActions" :control-props="{ 'aria-label': 'Show actions' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="persist">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="persist" :control-props="{ 'aria-label': 'Persist' }" />
+        </div>
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
     </div>
+  </Teleport>
+
+  <div class="flex justify-center w-full">
+    <SPopover class="max-w-2xl" :modal="false" :placement="isMobile ? 'left' : 'bottom-start'">
+      <template #trigger>
+        <SButtonIcon icon="lucide:settings-2" size="lg" />
+      </template>
+      <SThemeCustomizer :size="size" :show-actions="showActions" :persist="persist" />
+    </SPopover>
   </div>
 </template>

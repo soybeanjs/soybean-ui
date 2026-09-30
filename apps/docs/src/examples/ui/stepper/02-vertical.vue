@@ -12,5 +12,7 @@ const items = [
 </script>
 
 <template>
-  <SStepper v-model="value" orientation="vertical" :items="items" class="max-w-md" />
+  <div class="flex justify-center w-full">
+    <SStepper v-model="value" orientation="vertical" :items="items" class="max-w-md" />
+  </div>
 </template>

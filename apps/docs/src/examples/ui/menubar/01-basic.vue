@@ -110,49 +110,45 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="size">
-          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="trigger">
-          <SSelect v-model="trigger" :items="triggerItems" :trigger-props="{ 'aria-label': 'Trigger' }" class="w-28" />
-        </FieldItem>
-        <FieldItem label="dir">
-          <SSelect v-model="dir" :items="dirItems" :trigger-props="{ 'aria-label': 'Direction' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="indicatorPosition">
-          <SSelect
-            v-model="indicatorPosition"
-            :items="indicatorPositionItems"
-            :trigger-props="{ 'aria-label': 'Indicator position' }"
-            class="w-25"
-          />
-        </FieldItem>
-        <FieldItem label="showArrow">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="showArrow" :control-props="{ 'aria-label': 'Show arrow' }" />
-          </div>
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-
-    <!-- 预览区：白底主体只放组件本身，菜单弹层由组件自身渲染 -->
-    <div class="relative flex min-h-56 items-center justify-center">
-      <SMenubar
-        :items="items"
-        :size="size"
-        :trigger="trigger"
-        :dir="dir"
-        :indicator-position="indicatorPosition"
-        :show-arrow="showArrow"
-      />
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="size">
+        <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="trigger">
+        <SSelect v-model="trigger" :items="triggerItems" :trigger-props="{ 'aria-label': 'Trigger' }" class="w-28" />
+      </FieldItem>
+      <FieldItem label="dir">
+        <SSelect v-model="dir" :items="dirItems" :trigger-props="{ 'aria-label': 'Direction' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="indicatorPosition">
+        <SSelect
+          v-model="indicatorPosition"
+          :items="indicatorPositionItems"
+          :trigger-props="{ 'aria-label': 'Indicator position' }"
+          class="w-25"
+        />
+      </FieldItem>
+      <FieldItem label="showArrow">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="showArrow" :control-props="{ 'aria-label': 'Show arrow' }" />
+        </div>
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
     </div>
+  </Teleport>
+
+  <div class="flex justify-center w-full">
+    <SMenubar
+      class="max-w-2xl"
+      :items="items"
+      :size="size"
+      :trigger="trigger"
+      :dir="dir"
+      :indicator-position="indicatorPosition"
+      :show-arrow="showArrow"
+    />
   </div>
 </template>

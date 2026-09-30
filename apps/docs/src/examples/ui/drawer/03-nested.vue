@@ -10,32 +10,38 @@ function closeNestedSheet() {
 </script>
 
 <template>
-  <SDrawer title="Parent Drawer" description="Open a nested sheet from inside the current bottom sheet.">
-    <template #trigger>
-      <SButton variant="pure">Open Parent</SButton>
-    </template>
+  <div class="flex justify-center w-full">
+    <SDrawer
+      class="max-w-2xl"
+      title="Parent Drawer"
+      description="Open a nested sheet from inside the current bottom sheet."
+    >
+      <template #trigger>
+        <SButton variant="pure">Open Parent</SButton>
+      </template>
 
-    <div class="flex flex-col gap-3 py-2">
-      <p class="text-sm text-muted-foreground">
-        The inner sheet uses DrawerRootNested so drag, release, and open state stay coordinated with the parent.
-      </p>
+      <div class="flex flex-col gap-3 py-2">
+        <p class="text-sm text-muted-foreground">
+          The inner sheet uses DrawerRootNested so drag, release, and open state stay coordinated with the parent.
+        </p>
 
-      <SDrawer v-model:open="nestedOpen" nested>
-        <template #trigger>
-          <SButton variant="outline" class="w-fit">Open Nested</SButton>
-        </template>
+        <SDrawer v-model:open="nestedOpen" nested>
+          <template #trigger>
+            <SButton variant="outline" class="w-fit">Open Nested</SButton>
+          </template>
 
-        <div class="flex flex-col gap-3 px-4 pb-4 pt-2">
-          <div class="flex flex-col gap-1">
-            <p class="text-sm font-medium">Nested Drawer</p>
-            <p class="text-sm text-muted-foreground">
-              Use the handle to drag between snap points, or jump directly with the quick actions below.
-            </p>
+          <div class="flex flex-col gap-3 px-4 pb-4 pt-2">
+            <div class="flex flex-col gap-1">
+              <p class="text-sm font-medium">Nested Drawer</p>
+              <p class="text-sm text-muted-foreground">
+                Use the handle to drag between snap points, or jump directly with the quick actions below.
+              </p>
+            </div>
+
+            <SButton size="sm" class="w-fit" @click="closeNestedSheet">Close Nested Sheet</SButton>
           </div>
-
-          <SButton size="sm" class="w-fit" @click="closeNestedSheet">Close Nested Sheet</SButton>
-        </div>
-      </SDrawer>
-    </div>
-  </SDrawer>
+        </SDrawer>
+      </div>
+    </SDrawer>
+  </div>
 </template>

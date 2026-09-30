@@ -3,11 +3,13 @@ import { SProgress } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SProgress :model-value="66" size="xl">
-    <template #default="{ valuePercent }">
-      <div class="flex h-full items-center justify-end px-2 text-xs font-medium text-primary-foreground">
-        {{ Math.round(valuePercent ?? 0) }}%
-      </div>
-    </template>
-  </SProgress>
+  <div class="flex justify-center w-full">
+    <SProgress class="max-w-2xl" :model-value="66" size="xl">
+      <template #default="{ valuePercent }">
+        <div class="flex h-full items-center justify-end px-2 text-xs font-medium text-primary-foreground">
+          {{ Math.round(valuePercent ?? 0) }}%
+        </div>
+      </template>
+    </SProgress>
+  </div>
 </template>

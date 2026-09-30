@@ -34,19 +34,21 @@ const items: MenuOptionData<string>[] = [
 </script>
 
 <template>
-  <div class="space-y-2">
-    <div class="flex items-center gap-2 text-muted-foreground">
-      <span>Trigger</span>
-      <span
-        v-for="option in ['click', 'hover'] as const"
-        :key="option"
-        class="cursor-pointer rounded-sm px-1.5 py-0.5 text-sm transition"
-        :class="trigger === option ? 'bg-accent text-accent-foreground' : 'hover:bg-accent/50'"
-        @click="trigger = option"
-      >
-        {{ option }}
-      </span>
+  <div class="flex justify-center w-full">
+    <div class="space-y-2">
+      <div class="flex items-center gap-2 text-muted-foreground">
+        <span>Trigger</span>
+        <span
+          v-for="option in ['click', 'hover'] as const"
+          :key="option"
+          class="cursor-pointer rounded-sm px-1.5 py-0.5 text-sm transition"
+          :class="trigger === option ? 'bg-accent text-accent-foreground' : 'hover:bg-accent/50'"
+          @click="trigger = option"
+        >
+          {{ option }}
+        </span>
+      </div>
+      <SMenubar :trigger="trigger" :items="items" />
     </div>
-    <SMenubar :trigger="trigger" :items="items" />
   </div>
 </template>

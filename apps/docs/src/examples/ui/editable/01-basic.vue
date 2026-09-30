@@ -88,80 +88,75 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="value">
-          <SInput v-model="value" aria-label="Value" placeholder="Editable value" class="w-45" />
-        </FieldItem>
-        <FieldItem label="placeholder">
-          <SInput v-model="placeholder" aria-label="Placeholder" placeholder="Placeholder text" class="w-45" />
-        </FieldItem>
-        <FieldItem label="size">
-          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="activationMode">
-          <SSelect
-            v-model="activationMode"
-            :items="activationModeItems"
-            :trigger-props="{ 'aria-label': 'Activation mode' }"
-            class="w-30"
-          />
-        </FieldItem>
-        <FieldItem label="submitMode">
-          <SSelect
-            v-model="submitMode"
-            :items="submitModeItems"
-            :trigger-props="{ 'aria-label': 'Submit mode' }"
-            class="w-28"
-          />
-        </FieldItem>
-        <FieldItem label="selectOnFocus">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="selectOnFocus" :control-props="{ 'aria-label': 'Select on focus' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="autoResize">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="autoResize" :control-props="{ 'aria-label': 'Auto resize' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="disabled">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="disabled" :control-props="{ 'aria-label': 'Disabled' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="readonly">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="readonly" :control-props="{ 'aria-label': 'Readonly' }" />
-          </div>
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-
-    <!-- 预览区：白底主体只放组件本身 -->
-    <div class="relative flex min-h-56 flex-col items-center justify-center gap-3">
-      <SEditable
-        v-model="value"
-        class="w-100 lt-md:w-auto"
-        :placeholder="placeholder"
-        :size="size"
-        :activation-mode="activationMode"
-        :submit-mode="submitMode"
-        :select-on-focus="selectOnFocus"
-        :auto-resize="autoResize"
-        :disabled="disabled"
-        :readonly="readonly"
-        @submit="handleSubmit"
-        @update:state="handleStateChange"
-      />
-      <p class="text-sm text-muted-foreground">Value: {{ value }}</p>
-      <p class="text-xs text-muted-foreground">State: {{ state }}</p>
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="value">
+        <SInput v-model="value" aria-label="Value" placeholder="Editable value" class="w-45" />
+      </FieldItem>
+      <FieldItem label="placeholder">
+        <SInput v-model="placeholder" aria-label="Placeholder" placeholder="Placeholder text" class="w-45" />
+      </FieldItem>
+      <FieldItem label="size">
+        <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="activationMode">
+        <SSelect
+          v-model="activationMode"
+          :items="activationModeItems"
+          :trigger-props="{ 'aria-label': 'Activation mode' }"
+          class="w-30"
+        />
+      </FieldItem>
+      <FieldItem label="submitMode">
+        <SSelect
+          v-model="submitMode"
+          :items="submitModeItems"
+          :trigger-props="{ 'aria-label': 'Submit mode' }"
+          class="w-28"
+        />
+      </FieldItem>
+      <FieldItem label="selectOnFocus">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="selectOnFocus" :control-props="{ 'aria-label': 'Select on focus' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="autoResize">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="autoResize" :control-props="{ 'aria-label': 'Auto resize' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="disabled">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="disabled" :control-props="{ 'aria-label': 'Disabled' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="readonly">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="readonly" :control-props="{ 'aria-label': 'Readonly' }" />
+        </div>
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
     </div>
+  </Teleport>
+
+  <div class="flex flex-col items-center justify-center w-full gap-3">
+    <SEditable
+      v-model="value"
+      class="w-100 lt-md:w-auto"
+      :placeholder="placeholder"
+      :size="size"
+      :activation-mode="activationMode"
+      :submit-mode="submitMode"
+      :select-on-focus="selectOnFocus"
+      :auto-resize="autoResize"
+      :disabled="disabled"
+      :readonly="readonly"
+      @submit="handleSubmit"
+      @update:state="handleStateChange"
+    />
+    <p class="text-sm text-muted-foreground">Value: {{ value }}</p>
+    <p class="text-xs text-muted-foreground">State: {{ state }}</p>
   </div>
 </template>

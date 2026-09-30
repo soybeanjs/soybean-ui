@@ -7,11 +7,14 @@ const model = ref<CheckedState | null>(null);
 </script>
 
 <template>
-  <SCheckboxCard
-    v-model="model"
-    color="carbon"
-    icon="lucide:swatch-book"
-    label="Label"
-    description="this is a description"
-  />
+  <div class="flex justify-center w-full">
+    <SCheckboxCard
+      v-model="model"
+      class="max-w-2xl"
+      color="carbon"
+      icon="lucide:swatch-book"
+      label="Label"
+      description="this is a description"
+    />
+  </div>
 </template>

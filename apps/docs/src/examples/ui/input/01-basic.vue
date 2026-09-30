@@ -50,51 +50,46 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="size">
-          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="placeholder">
-          <SInput v-model="placeholder" aria-label="Placeholder" placeholder="Input placeholder" />
-        </FieldItem>
-        <FieldItem label="clearable">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="clearable" :control-props="{ 'aria-label': 'Clearable' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="readonly">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="readonly" :control-props="{ 'aria-label': 'Readonly' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="disabled">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="disabled" :control-props="{ 'aria-label': 'Disabled' }" />
-          </div>
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="size">
+        <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="placeholder">
+        <SInput v-model="placeholder" aria-label="Placeholder" placeholder="Input placeholder" />
+      </FieldItem>
+      <FieldItem label="clearable">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="clearable" :control-props="{ 'aria-label': 'Clearable' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="readonly">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="readonly" :control-props="{ 'aria-label': 'Readonly' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="disabled">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="disabled" :control-props="{ 'aria-label': 'Disabled' }" />
+        </div>
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
+    </div>
+  </Teleport>
 
-    <!-- 预览区：白底主体只放组件本身 -->
-    <div class="relative flex min-h-56 flex-col items-center justify-center gap-3">
-      <div class="leading-loose text-sm text-gray-500">modelValue: {{ modelValue }}</div>
-      <div class="w-60 lt-md:w-auto">
-        <SInput
-          v-model="modelValue"
-          :size="size"
-          :clearable="clearable"
-          :disabled="disabled"
-          :readonly="readonly"
-          :placeholder="placeholder"
-        />
-      </div>
+  <div class="flex flex-col items-center justify-center w-full gap-3">
+    <div class="leading-loose text-sm text-gray-500">modelValue: {{ modelValue }}</div>
+    <div class="w-60 lt-md:w-auto">
+      <SInput
+        v-model="modelValue"
+        :size="size"
+        :clearable="clearable"
+        :disabled="disabled"
+        :readonly="readonly"
+        :placeholder="placeholder"
+      />
     </div>
   </div>
 </template>

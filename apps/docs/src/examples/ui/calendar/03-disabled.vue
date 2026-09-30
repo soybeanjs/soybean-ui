@@ -7,5 +7,7 @@ const isDateDisabled = (date: Date) => date.getDate() % 2 === 0;
 </script>
 
 <template>
-  <SCalendar :default-placeholder="today" :is-date-disabled="isDateDisabled" />
+  <div class="flex justify-center w-full">
+    <SCalendar class="max-w-2xl" :default-placeholder="today" :is-date-disabled="isDateDisabled" />
+  </div>
 </template>

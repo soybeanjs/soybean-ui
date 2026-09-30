@@ -61,64 +61,52 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="orientation">
-          <SSelect
-            v-model="orientation"
-            :items="orientationItems"
-            :trigger-props="{ 'aria-label': 'Orientation' }"
-            class="w-30"
-          />
-        </FieldItem>
-        <FieldItem label="align">
-          <SSelect v-model="align" :items="alignItems" :trigger-props="{ 'aria-label': 'Align' }" class="w-30" />
-        </FieldItem>
-        <FieldItem label="border">
-          <SSelect v-model="border" :items="borderItems" :trigger-props="{ 'aria-label': 'Border' }" class="w-30" />
-        </FieldItem>
-        <FieldItem label="size">
-          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="label">
-          <SInput v-model="label" aria-label="Label" placeholder="Separator label" />
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-
-    <!-- 预览区：白底主体只放组件本身，包裹内容用真实排版衬托分隔线 -->
-    <div class="relative flex min-h-56 items-center justify-center">
-      <div v-if="orientation === 'vertical'" class="h-40 flex items-center gap-4 text-sm">
-        <span>Blog</span>
-        <SSeparator :orientation="orientation" :align="align" :border="border" :size="size" :label="label" />
-        <span>Docs</span>
-        <SSeparator :orientation="orientation" :align="align" :border="border" :size="size" :label="label" />
-        <span>Source</span>
-      </div>
-      <div v-else class="w-3/4">
-        <div class="space-y-1">
-          <h4 class="text-sm font-medium leading-none">Radix Primitives</h4>
-          <p class="text-sm text-muted-foreground">An open-source UI component library.</p>
-        </div>
-        <SSeparator
-          :orientation="orientation"
-          :align="align"
-          :border="border"
-          :size="size"
-          :label="label"
-          class="my-4"
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="orientation">
+        <SSelect
+          v-model="orientation"
+          :items="orientationItems"
+          :trigger-props="{ 'aria-label': 'Orientation' }"
+          class="w-30"
         />
-        <div class="flex h-5 items-center gap-4 text-sm">
-          <div>Blog</div>
-          <div>Docs</div>
-          <div>Source</div>
-        </div>
+      </FieldItem>
+      <FieldItem label="align">
+        <SSelect v-model="align" :items="alignItems" :trigger-props="{ 'aria-label': 'Align' }" class="w-30" />
+      </FieldItem>
+      <FieldItem label="border">
+        <SSelect v-model="border" :items="borderItems" :trigger-props="{ 'aria-label': 'Border' }" class="w-30" />
+      </FieldItem>
+      <FieldItem label="size">
+        <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="label">
+        <SInput v-model="label" aria-label="Label" placeholder="Separator label" />
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
+    </div>
+  </Teleport>
+
+  <div class="flex items-center justify-center w-full">
+    <div v-if="orientation === 'vertical'" class="h-40 flex items-center gap-4 text-sm">
+      <span>Blog</span>
+      <SSeparator :orientation="orientation" :align="align" :border="border" :size="size" :label="label" />
+      <span>Docs</span>
+      <SSeparator :orientation="orientation" :align="align" :border="border" :size="size" :label="label" />
+      <span>Source</span>
+    </div>
+    <div v-else class="w-3/4">
+      <div class="space-y-1">
+        <h4 class="text-sm font-medium leading-none">Radix Primitives</h4>
+        <p class="text-sm text-muted-foreground">An open-source UI component library.</p>
+      </div>
+      <SSeparator :orientation="orientation" :align="align" :border="border" :size="size" :label="label" class="my-4" />
+      <div class="flex h-5 items-center gap-4 text-sm">
+        <div>Blog</div>
+        <div>Docs</div>
+        <div>Source</div>
       </div>
     </div>
   </div>

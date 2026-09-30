@@ -87,75 +87,71 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="title">
-          <SInput v-model="title" aria-label="Title" placeholder="Drawer title" class="w-35" />
-        </FieldItem>
-        <FieldItem label="description">
-          <SInput v-model="description" aria-label="Description" placeholder="Drawer description" class="w-45" />
-        </FieldItem>
-        <FieldItem label="size">
-          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="side">
-          <SSelect v-model="side" :items="sideItems" :trigger-props="{ 'aria-label': 'Side' }" class="w-30" />
-        </FieldItem>
-        <FieldItem label="modal">
-          <SSelect v-model="modal" :items="modalItems" :trigger-props="{ 'aria-label': 'Modal' }" class="w-33" />
-        </FieldItem>
-        <FieldItem label="closeThreshold">
-          <SInputNumber
-            v-model="closeThreshold"
-            :min="0"
-            :max="1"
-            :step="0.05"
-            :control-props="{ 'aria-label': 'Close threshold' }"
-            class="w-28"
-          />
-        </FieldItem>
-        <FieldItem label="dismissible">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="dismissible" :control-props="{ 'aria-label': 'Dismissible' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="handleOnly">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="handleOnly" :control-props="{ 'aria-label': 'Handle only' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="swipeable">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="swipeable" :control-props="{ 'aria-label': 'Swipeable' }" />
-          </div>
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-
-    <!-- 预览区：白底主体只放触发按钮，抽屉由组件自身渲染 -->
-    <div class="relative flex min-h-56 items-center justify-center">
-      <SDrawer
-        :title="title"
-        :description="description"
-        :size="size"
-        :side="side"
-        :modal="resolvedModal"
-        :dismissible="dismissible"
-        :handle-only="handleOnly"
-        :swipeable="swipeable"
-        :close-threshold="resolvedCloseThreshold"
-      >
-        <template #trigger>
-          <SButton variant="pure">Open</SButton>
-        </template>
-        <div>Drawer Content</div>
-      </SDrawer>
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="title">
+        <SInput v-model="title" aria-label="Title" placeholder="Drawer title" class="w-35" />
+      </FieldItem>
+      <FieldItem label="description">
+        <SInput v-model="description" aria-label="Description" placeholder="Drawer description" class="w-45" />
+      </FieldItem>
+      <FieldItem label="size">
+        <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="side">
+        <SSelect v-model="side" :items="sideItems" :trigger-props="{ 'aria-label': 'Side' }" class="w-30" />
+      </FieldItem>
+      <FieldItem label="modal">
+        <SSelect v-model="modal" :items="modalItems" :trigger-props="{ 'aria-label': 'Modal' }" class="w-33" />
+      </FieldItem>
+      <FieldItem label="closeThreshold">
+        <SInputNumber
+          v-model="closeThreshold"
+          :min="0"
+          :max="1"
+          :step="0.05"
+          :control-props="{ 'aria-label': 'Close threshold' }"
+          class="w-28"
+        />
+      </FieldItem>
+      <FieldItem label="dismissible">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="dismissible" :control-props="{ 'aria-label': 'Dismissible' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="handleOnly">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="handleOnly" :control-props="{ 'aria-label': 'Handle only' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="swipeable">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="swipeable" :control-props="{ 'aria-label': 'Swipeable' }" />
+        </div>
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
     </div>
+  </Teleport>
+
+  <div class="flex justify-center w-full">
+    <SDrawer
+      class="max-w-2xl"
+      :title="title"
+      :description="description"
+      :size="size"
+      :side="side"
+      :modal="resolvedModal"
+      :dismissible="dismissible"
+      :handle-only="handleOnly"
+      :swipeable="swipeable"
+      :close-threshold="resolvedCloseThreshold"
+    >
+      <template #trigger>
+        <SButton variant="pure">Open</SButton>
+      </template>
+      <div>Drawer Content</div>
+    </SDrawer>
   </div>
 </template>

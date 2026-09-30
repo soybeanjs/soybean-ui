@@ -14,5 +14,7 @@ const items: RadioGroupCardOptionData<string>[] = [
 </script>
 
 <template>
-  <SRadioGroupCard v-model="selected" :items="items" color="destructive" shape="rounded" />
+  <div class="flex justify-center w-full">
+    <SRadioGroupCard v-model="selected" class="max-w-2xl" :items="items" color="destructive" shape="rounded" />
+  </div>
 </template>

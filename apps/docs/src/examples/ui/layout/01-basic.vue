@@ -192,146 +192,144 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div class="space-y-4">
-    <!-- `to` needs a string even when unhosted: a missing target makes the server renderer drop the teleport instead of rendering it inline. -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="orientation">
-          <SSelect
-            v-model="orientation"
-            :items="orientations"
-            :trigger-props="{ 'aria-label': 'Orientation' }"
-            class="w-30"
-          />
-        </FieldItem>
-        <FieldItem label="side">
-          <SSelect v-model="side" :items="sides" :trigger-props="{ 'aria-label': 'Side' }" class="w-30" />
-        </FieldItem>
-        <FieldItem label="variant">
-          <SSelect v-model="variant" :items="variants" :trigger-props="{ 'aria-label': 'Variant' }" class="w-30" />
-        </FieldItem>
-        <FieldItem label="collapsible">
-          <SSelect
-            v-model="collapsible"
-            :items="collapsibleOptions"
-            :trigger-props="{ 'aria-label': 'Collapsible' }"
-            class="w-30"
-          />
-        </FieldItem>
-        <FieldItem label="size">
-          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-30" />
-        </FieldItem>
-        <FieldItem label="scrollBehavior">
-          <SSelect
-            v-model="scrollBehavior"
-            :items="scrollBehaviors"
-            :trigger-props="{ 'aria-label': 'Scroll behavior' }"
-            class="w-30"
-          />
-        </FieldItem>
-        <FieldItem label="fixedTop">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="fixedTop" :control-props="{ 'aria-label': 'Fixed top' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="fixedFooter">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="fixedFooter" :control-props="{ 'aria-label': 'Fixed footer' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="stretchFooter">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="stretchFooter" :control-props="{ 'aria-label': 'Stretch footer' }" />
-          </div>
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-    <div class="h-120 w-full border border-border border-solid rounded-md">
-      <SLayout
-        :default-open="true"
-        :size="size"
-        :orientation="orientation"
-        :side="side"
-        :variant="variant"
-        :collapsible="collapsible"
-        :full-content="fullContent"
-        :scroll-behavior="scrollBehavior"
-        :fixed-top="fixedTop"
-        :fixed-footer="fixedFooter"
-        :stretch-footer="stretchFooter"
-        :ui="{
-          header: 'border-b border-border',
-          tab: 'border-b border-border',
-          content: 'px-[--sl-spacing]',
-          footer: 'border-t border-border'
-        }"
-      >
-        <template #sidebar="{ collapsed, collapsedSidebarWidth }">
-          <STreeMenu
-            :size="size"
-            :side="side"
-            :collapsed="collapsed"
-            :items="treeMenuItems"
-            :collapsed-width="collapsedSidebarWidth"
-          >
-            <template v-if="orientation === 'horizontal'" #top>
-              <SDropdownMenu
-                :size="size"
-                :side="collapsed ? 'right' : 'bottom'"
-                :items="frameworks"
-                :ui="{ popup: 'w-[var(--soybean-popper-anchor-width)]' }"
-                @select="setActiveFramework"
-              >
-                <template #trigger>
-                  <STreeMenuStyledItem>
-                    <SIcon :icon="activeFramework.icon" class="text-primary" />
-                    <span class="truncate font-medium">{{ activeFramework.label }}</span>
-                    <SIcon icon="lucide:chevrons-up-down" class="ms-auto" />
-                  </STreeMenuStyledItem>
-                </template>
-              </SDropdownMenu>
-            </template>
-          </STreeMenu>
-        </template>
-        <template #header>
-          <div class="w-full flex items-center gap-2">
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="orientation">
+        <SSelect
+          v-model="orientation"
+          :items="orientations"
+          :trigger-props="{ 'aria-label': 'Orientation' }"
+          class="w-30"
+        />
+      </FieldItem>
+      <FieldItem label="side">
+        <SSelect v-model="side" :items="sides" :trigger-props="{ 'aria-label': 'Side' }" class="w-30" />
+      </FieldItem>
+      <FieldItem label="variant">
+        <SSelect v-model="variant" :items="variants" :trigger-props="{ 'aria-label': 'Variant' }" class="w-30" />
+      </FieldItem>
+      <FieldItem label="collapsible">
+        <SSelect
+          v-model="collapsible"
+          :items="collapsibleOptions"
+          :trigger-props="{ 'aria-label': 'Collapsible' }"
+          class="w-30"
+        />
+      </FieldItem>
+      <FieldItem label="size">
+        <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-30" />
+      </FieldItem>
+      <FieldItem label="scrollBehavior">
+        <SSelect
+          v-model="scrollBehavior"
+          :items="scrollBehaviors"
+          :trigger-props="{ 'aria-label': 'Scroll behavior' }"
+          class="w-30"
+        />
+      </FieldItem>
+      <FieldItem label="fixedTop">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="fixedTop" :control-props="{ 'aria-label': 'Fixed top' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="fixedFooter">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="fixedFooter" :control-props="{ 'aria-label': 'Fixed footer' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="stretchFooter">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="stretchFooter" :control-props="{ 'aria-label': 'Stretch footer' }" />
+        </div>
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
+    </div>
+  </Teleport>
+
+  <div class="h-120 border border-border border-solid rounded-md">
+    <SLayout
+      :default-open="true"
+      :size="size"
+      :orientation="orientation"
+      :side="side"
+      :variant="variant"
+      :collapsible="collapsible"
+      :full-content="fullContent"
+      :scroll-behavior="scrollBehavior"
+      :fixed-top="fixedTop"
+      :fixed-footer="fixedFooter"
+      :stretch-footer="stretchFooter"
+      :ui="{
+        header: 'border-b border-border',
+        tab: 'border-b border-border',
+        content: 'px-[--sl-spacing]',
+        footer: 'border-t border-border'
+      }"
+    >
+      <template #sidebar="{ collapsed, collapsedSidebarWidth }">
+        <STreeMenu
+          :size="size"
+          :side="side"
+          :collapsed="collapsed"
+          :items="treeMenuItems"
+          :collapsed-width="collapsedSidebarWidth"
+        >
+          <template v-if="orientation === 'horizontal'" #top>
             <SDropdownMenu
-              v-if="orientation === 'vertical'"
               :size="size"
-              side="bottom"
+              :side="collapsed ? 'right' : 'bottom'"
               :items="frameworks"
+              :ui="{ popup: 'w-[var(--soybean-popper-anchor-width)]' }"
               @select="setActiveFramework"
             >
               <template #trigger>
-                <div class="flex-y-center gap-3 w-[--soybean-sidebar-width] px-[--sl-spacing] cursor-pointer">
+                <STreeMenuStyledItem>
                   <SIcon :icon="activeFramework.icon" class="text-primary" />
                   <span class="truncate font-medium">{{ activeFramework.label }}</span>
                   <SIcon icon="lucide:chevrons-up-down" class="ms-auto" />
-                </div>
+                </STreeMenuStyledItem>
               </template>
             </SDropdownMenu>
-            <SLayoutTrigger v-if="side === 'left'" class="ml-4" />
-            <SSeparator orientation="vertical" class="h-4" />
-            <SBreadcrumb :items="breadcrumbItems" :size="size" :ui="{ list: 'gap-2' }" />
-            <SLayoutTrigger v-if="side === 'right'" class="ms-auto" />
-          </div>
-        </template>
-        <template #tab>
-          <div class="flex-y-center justify-between h-full px-[--sl-spacing]">
-            <span>This is Tab</span>
-            <SButtonIcon :icon="fullContent ? 'lucide:shrink' : 'lucide:expand'" @click="fullContent = !fullContent" />
-          </div>
-        </template>
-        <div>
-          <p v-for="i in 100" :key="i">This is Content {{ i }}</p>
+          </template>
+        </STreeMenu>
+      </template>
+      <template #header>
+        <div class="w-full flex items-center gap-2">
+          <SDropdownMenu
+            v-if="orientation === 'vertical'"
+            :size="size"
+            side="bottom"
+            :items="frameworks"
+            @select="setActiveFramework"
+          >
+            <template #trigger>
+              <div class="flex-y-center gap-3 w-[--soybean-sidebar-width] px-[--sl-spacing] cursor-pointer">
+                <SIcon :icon="activeFramework.icon" class="text-primary" />
+                <span class="truncate font-medium">{{ activeFramework.label }}</span>
+                <SIcon icon="lucide:chevrons-up-down" class="ms-auto" />
+              </div>
+            </template>
+          </SDropdownMenu>
+          <SLayoutTrigger v-if="side === 'left'" class="ml-4" />
+          <SSeparator orientation="vertical" class="h-4" />
+          <SBreadcrumb :items="breadcrumbItems" :size="size" :ui="{ list: 'gap-2' }" />
+          <SLayoutTrigger v-if="side === 'right'" class="ms-auto" />
         </div>
-        <template #footer>
-          <div class="flex-y-center h-full px-[--sl-spacing]">This is Footer</div>
-        </template>
-      </SLayout>
-    </div>
+      </template>
+      <template #tab>
+        <div class="flex-y-center justify-between h-full px-[--sl-spacing]">
+          <span>This is Tab</span>
+          <SButtonIcon :icon="fullContent ? 'lucide:shrink' : 'lucide:expand'" @click="fullContent = !fullContent" />
+        </div>
+      </template>
+      <div>
+        <p v-for="i in 100" :key="i">This is Content {{ i }}</p>
+      </div>
+      <template #footer>
+        <div class="flex-y-center h-full px-[--sl-spacing]">This is Footer</div>
+      </template>
+    </SLayout>
   </div>
 </template>

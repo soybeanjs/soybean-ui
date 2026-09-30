@@ -112,66 +112,56 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="type">
-          <SSelect v-model="type" :items="typeItems" :trigger-props="{ 'aria-label': 'Type' }" class="w-30" />
-        </FieldItem>
-        <FieldItem label="position">
-          <SSelect
-            v-model="position"
-            :items="positionItems"
-            :trigger-props="{ 'aria-label': 'Position' }"
-            class="w-35"
-          />
-        </FieldItem>
-        <FieldItem label="duration">
-          <SInputNumber
-            v-model="duration"
-            :min="0"
-            :step="400"
-            :control-props="{ 'aria-label': 'Duration' }"
-            class="w-30"
-          />
-        </FieldItem>
-        <FieldItem label="title">
-          <SInput v-model="title" aria-label="Title" />
-        </FieldItem>
-        <FieldItem label="description">
-          <SInput v-model="description" aria-label="Description" />
-        </FieldItem>
-        <FieldItem label="richColor">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="richColor" :control-props="{ 'aria-label': 'Rich color' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="inverted">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="inverted" :control-props="{ 'aria-label': 'Inverted' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="showClose">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="showClose" :control-props="{ 'aria-label': 'Show close' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="dismissible">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="dismissible" :control-props="{ 'aria-label': 'Dismissible' }" />
-          </div>
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-
-    <!-- 预览区：toast 是命令式 API，白底主体放按当前配置触发一条 toast 的按钮 -->
-    <div class="relative flex min-h-56 items-center justify-center">
-      <SButton @click="openToast">Show toast</SButton>
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="type">
+        <SSelect v-model="type" :items="typeItems" :trigger-props="{ 'aria-label': 'Type' }" class="w-30" />
+      </FieldItem>
+      <FieldItem label="position">
+        <SSelect v-model="position" :items="positionItems" :trigger-props="{ 'aria-label': 'Position' }" class="w-35" />
+      </FieldItem>
+      <FieldItem label="duration">
+        <SInputNumber
+          v-model="duration"
+          :min="0"
+          :step="400"
+          :control-props="{ 'aria-label': 'Duration' }"
+          class="w-30"
+        />
+      </FieldItem>
+      <FieldItem label="title">
+        <SInput v-model="title" aria-label="Title" />
+      </FieldItem>
+      <FieldItem label="description">
+        <SInput v-model="description" aria-label="Description" />
+      </FieldItem>
+      <FieldItem label="richColor">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="richColor" :control-props="{ 'aria-label': 'Rich color' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="inverted">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="inverted" :control-props="{ 'aria-label': 'Inverted' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="showClose">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="showClose" :control-props="{ 'aria-label': 'Show close' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="dismissible">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="dismissible" :control-props="{ 'aria-label': 'Dismissible' }" />
+        </div>
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
     </div>
+  </Teleport>
+
+  <div class="flex justify-center w-full">
+    <SButton class="max-w-2xl" @click="openToast">Show toast</SButton>
   </div>
 </template>

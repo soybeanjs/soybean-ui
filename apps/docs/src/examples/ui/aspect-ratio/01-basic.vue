@@ -37,30 +37,25 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="ratio">
-          <SSelect v-model="ratio" :items="ratioItems" :trigger-props="{ 'aria-label': 'Ratio' }" class="w-30" />
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="ratio">
+        <SSelect v-model="ratio" :items="ratioItems" :trigger-props="{ 'aria-label': 'Ratio' }" class="w-30" />
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
+    </div>
+  </Teleport>
 
-    <!-- 预览区：白底主体只放组件本身 -->
-    <div class="relative flex min-h-56 items-center justify-center">
-      <div class="w-100 bg-muted lt-md:w-full">
-        <SAspectRatio :ratio="ratio">
-          <img
-            src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
-            class="h-full w-full rounded-md object-cover m-0"
-          />
-        </SAspectRatio>
-      </div>
+  <div class="flex justify-center w-full">
+    <div class="w-100 bg-muted lt-md:w-full">
+      <SAspectRatio :ratio="ratio">
+        <img
+          src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+          class="h-full w-full rounded-md object-cover m-0"
+        />
+      </SAspectRatio>
     </div>
   </div>
 </template>

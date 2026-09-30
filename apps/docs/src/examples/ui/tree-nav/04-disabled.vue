@@ -29,10 +29,12 @@ const toggleDisabled = () => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-3">
-    <div class="w-fit">
-      <SButton size="sm" variant="outline" @click="toggleDisabled">Toggle bar disabled</SButton>
+  <div class="flex justify-center w-full">
+    <div class="flex flex-col gap-3">
+      <div class="w-fit">
+        <SButton size="sm" variant="outline" @click="toggleDisabled">Toggle bar disabled</SButton>
+      </div>
+      <STreeNav :items="items" :disabled="disabled" trigger="click" />
     </div>
-    <STreeNav :items="items" :disabled="disabled" trigger="click" />
   </div>
 </template>

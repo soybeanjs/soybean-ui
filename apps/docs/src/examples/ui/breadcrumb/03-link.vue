@@ -19,5 +19,7 @@ const items = [
 </script>
 
 <template>
-  <SBreadcrumb :items="items" />
+  <div class="flex justify-center w-full">
+    <SBreadcrumb class="max-w-2xl" :items="items" />
+  </div>
 </template>

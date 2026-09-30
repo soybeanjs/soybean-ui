@@ -67,72 +67,68 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="placement">
-          <SSelect
-            v-model="placement"
-            :items="placementItems"
-            :trigger-props="{ 'aria-label': 'Placement' }"
-            class="w-35"
-          />
-        </FieldItem>
-        <FieldItem label="size">
-          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="openDelay">
-          <SInputNumber
-            v-model="openDelay"
-            :min="0"
-            :step="100"
-            :control-props="{ 'aria-label': 'Open delay' }"
-            class="w-27.5"
-          />
-        </FieldItem>
-        <FieldItem label="closeDelay">
-          <SInputNumber
-            v-model="closeDelay"
-            :min="0"
-            :step="100"
-            :control-props="{ 'aria-label': 'Close delay' }"
-            class="w-27.5"
-          />
-        </FieldItem>
-        <FieldItem label="showArrow">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="showArrow" :control-props="{ 'aria-label': 'Show arrow' }" />
-          </div>
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-
-    <!-- 预览区：白底主体只放组件本身 -->
-    <div class="relative flex min-h-56 items-center justify-center">
-      <SHoverCard
-        :placement="placement"
-        :size="size"
-        :open-delay="openDelay"
-        :close-delay="closeDelay"
-        :show-arrow="showArrow"
-      >
-        <template #trigger>
-          <SLink href="https://github.com/soybeanjs" target="_blank" rel="noopener noreferrer">@soybeanjs</SLink>
-        </template>
-        <div class="flex gap-4">
-          <SAvatar src="https://github.com/soybeanjs.png" fallback="SB" class="size-10 rounded-full" />
-          <div class="space-y-1">
-            <h4 class="text-sm font-semibold">SoybeanUI</h4>
-            <p class="text-sm text-muted-foreground">A Vue 3 component library built on top of SoybeanHeadless.</p>
-            <p class="text-xs text-muted-foreground">@soybeanjs • GitHub</p>
-          </div>
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="placement">
+        <SSelect
+          v-model="placement"
+          :items="placementItems"
+          :trigger-props="{ 'aria-label': 'Placement' }"
+          class="w-35"
+        />
+      </FieldItem>
+      <FieldItem label="size">
+        <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="openDelay">
+        <SInputNumber
+          v-model="openDelay"
+          :min="0"
+          :step="100"
+          :control-props="{ 'aria-label': 'Open delay' }"
+          class="w-27.5"
+        />
+      </FieldItem>
+      <FieldItem label="closeDelay">
+        <SInputNumber
+          v-model="closeDelay"
+          :min="0"
+          :step="100"
+          :control-props="{ 'aria-label': 'Close delay' }"
+          class="w-27.5"
+        />
+      </FieldItem>
+      <FieldItem label="showArrow">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="showArrow" :control-props="{ 'aria-label': 'Show arrow' }" />
         </div>
-      </SHoverCard>
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
     </div>
+  </Teleport>
+
+  <div class="flex justify-center w-full">
+    <SHoverCard
+      class="max-w-2xl"
+      :placement="placement"
+      :size="size"
+      :open-delay="openDelay"
+      :close-delay="closeDelay"
+      :show-arrow="showArrow"
+    >
+      <template #trigger>
+        <SLink href="https://github.com/soybeanjs" target="_blank" rel="noopener noreferrer">@soybeanjs</SLink>
+      </template>
+      <div class="flex gap-4">
+        <SAvatar src="https://github.com/soybeanjs.png" fallback="SB" class="size-10 rounded-full" />
+        <div class="space-y-1">
+          <h4 class="text-sm font-semibold">SoybeanUI</h4>
+          <p class="text-sm text-muted-foreground">A Vue 3 component library built on top of SoybeanHeadless.</p>
+          <p class="text-xs text-muted-foreground">@soybeanjs • GitHub</p>
+        </div>
+      </div>
+    </SHoverCard>
   </div>
 </template>

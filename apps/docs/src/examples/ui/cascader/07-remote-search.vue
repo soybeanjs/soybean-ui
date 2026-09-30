@@ -56,8 +56,10 @@ const onSearch = (pattern: string) => {
 </script>
 
 <template>
-  <div class="w-80 lt-md:w-auto flex-c gap-2">
-    <SCascader v-model="value" filterable remote :options="options" :on-search="onSearch" placeholder="远程搜索" />
-    <p class="text-sm text-muted-foreground">Selected: {{ value ?? 'None' }}</p>
+  <div class="flex justify-center w-full">
+    <div class="w-80 lt-md:w-auto flex-c gap-2">
+      <SCascader v-model="value" filterable remote :options="options" :on-search="onSearch" placeholder="远程搜索" />
+      <p class="text-sm text-muted-foreground">Selected: {{ value ?? 'None' }}</p>
+    </div>
   </div>
 </template>

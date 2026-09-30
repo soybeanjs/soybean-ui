@@ -31,27 +31,29 @@ const multipleValue = ref<string[]>(['banana', 'carrot']);
 </script>
 
 <template>
-  <div class="flex flex-col gap-4">
-    <SCombobox v-model="singleValue" :items="items" placeholder="Select a fruit" search-placeholder="Search...">
-      <template #trigger-leading>
-        <span class="i-lucide-cookie text-muted-foreground" />
-      </template>
-      <template #trigger-value>
-        <ComboboxValue :items="items" class="font-medium" />
-      </template>
-    </SCombobox>
+  <div class="flex justify-center w-full">
+    <div class="flex flex-col gap-4">
+      <SCombobox v-model="singleValue" :items="items" placeholder="Select a fruit" search-placeholder="Search...">
+        <template #trigger-leading>
+          <span class="i-lucide-cookie text-muted-foreground" />
+        </template>
+        <template #trigger-value>
+          <ComboboxValue :items="items" class="font-medium" />
+        </template>
+      </SCombobox>
 
-    <SCombobox
-      v-model="multipleValue"
-      multiple
-      :items="items"
-      placeholder="Select fruits"
-      search-placeholder="Search..."
-    >
-      <template #trigger-value="{ selectedLabels }">
-        <ComboboxValue :items="items" separator=" · " class="font-medium" />
-        <span v-if="selectedLabels.length" class="text-xs text-muted-foreground">({{ selectedLabels.length }})</span>
-      </template>
-    </SCombobox>
+      <SCombobox
+        v-model="multipleValue"
+        multiple
+        :items="items"
+        placeholder="Select fruits"
+        search-placeholder="Search..."
+      >
+        <template #trigger-value="{ selectedLabels }">
+          <ComboboxValue :items="items" separator=" · " class="font-medium" />
+          <span v-if="selectedLabels.length" class="text-xs text-muted-foreground">({{ selectedLabels.length }})</span>
+        </template>
+      </SCombobox>
+    </div>
   </div>
 </template>

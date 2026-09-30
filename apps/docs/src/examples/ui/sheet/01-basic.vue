@@ -64,64 +64,60 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div>
-    <!-- 控制区：灰底卡片上排属性表单，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="side">
-          <SSelect v-model="side" :items="sideItems" :trigger-props="{ 'aria-label': 'Side' }" class="w-30" />
-        </FieldItem>
-        <FieldItem label="size">
-          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="title">
-          <SInput v-model="title" aria-label="Title" placeholder="Drawer title" />
-        </FieldItem>
-        <FieldItem label="description">
-          <SInput v-model="description" aria-label="Description" placeholder="Drawer description" />
-        </FieldItem>
-        <FieldItem label="modal">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="modal" :control-props="{ 'aria-label': 'Modal' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="showClose">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="showClose" :control-props="{ 'aria-label': 'Show close' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="showFullscreen">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="showFullscreen" :control-props="{ 'aria-label': 'Show fullscreen' }" />
-          </div>
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-
-    <!-- 预览区：白底主体只放组件本身，长内容顺带演示面板内滚动 -->
-    <div class="relative flex min-h-56 items-center justify-center">
-      <SSheet
-        :side="side"
-        :size="size"
-        :modal="modal"
-        :show-close="showClose"
-        :show-fullscreen="showFullscreen"
-        :title="title"
-        :description="description"
-      >
-        <template #trigger>
-          <SButton variant="pure">Open Sheet</SButton>
-        </template>
-        <div v-for="item in items" :key="item" class="h-10">{{ item }}</div>
-
-        <template #footer="{ close }">
-          <SButton @click="close">Confirm</SButton>
-        </template>
-      </SSheet>
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="side">
+        <SSelect v-model="side" :items="sideItems" :trigger-props="{ 'aria-label': 'Side' }" class="w-30" />
+      </FieldItem>
+      <FieldItem label="size">
+        <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="title">
+        <SInput v-model="title" aria-label="Title" placeholder="Drawer title" />
+      </FieldItem>
+      <FieldItem label="description">
+        <SInput v-model="description" aria-label="Description" placeholder="Drawer description" />
+      </FieldItem>
+      <FieldItem label="modal">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="modal" :control-props="{ 'aria-label': 'Modal' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="showClose">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="showClose" :control-props="{ 'aria-label': 'Show close' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="showFullscreen">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="showFullscreen" :control-props="{ 'aria-label': 'Show fullscreen' }" />
+        </div>
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
     </div>
+  </Teleport>
+
+  <div class="flex justify-center w-full">
+    <SSheet
+      class="max-w-2xl"
+      :side="side"
+      :size="size"
+      :modal="modal"
+      :show-close="showClose"
+      :show-fullscreen="showFullscreen"
+      :title="title"
+      :description="description"
+    >
+      <template #trigger>
+        <SButton variant="pure">Open Sheet</SButton>
+      </template>
+      <div v-for="item in items" :key="item" class="h-10">{{ item }}</div>
+
+      <template #footer="{ close }">
+        <SButton @click="close">Confirm</SButton>
+      </template>
+    </SSheet>
   </div>
 </template>

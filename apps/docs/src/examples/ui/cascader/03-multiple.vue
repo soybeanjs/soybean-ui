@@ -47,19 +47,21 @@ const options: CascaderOptionData<string>[] = [
 </script>
 
 <template>
-  <div class="flex flex-col gap-2">
-    <div class="w-80 lt-md:w-auto flex-c gap-2">
-      <SCascader v-model="value" multiple :options="options" placeholder="多选（回填叶子）" />
-    </div>
-    <div class="w-80 lt-md:w-auto flex-c gap-2">
-      <SCascader
-        v-model="value2"
-        multiple
-        check-strictly
-        show-checked-strategy="parent"
-        :options="options"
-        placeholder="多选（父级策略）"
-      />
+  <div class="flex justify-center w-full">
+    <div class="flex flex-col gap-2">
+      <div class="w-80 lt-md:w-auto flex-c gap-2">
+        <SCascader v-model="value" multiple :options="options" placeholder="多选（回填叶子）" />
+      </div>
+      <div class="w-80 lt-md:w-auto flex-c gap-2">
+        <SCascader
+          v-model="value2"
+          multiple
+          check-strictly
+          show-checked-strategy="parent"
+          :options="options"
+          placeholder="多选（父级策略）"
+        />
+      </div>
     </div>
   </div>
 </template>

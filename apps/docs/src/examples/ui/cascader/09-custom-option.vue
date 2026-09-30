@@ -26,15 +26,17 @@ const options: CascaderOptionData<string>[] = [
 </script>
 
 <template>
-  <div class="w-80 lt-md:w-auto flex-c gap-2">
-    <SCascader v-model="value" multiple check-strictly :options="options" placeholder="自定义选项内容">
-      <template #option="{ node, checked, highlighted }">
-        <span :class="highlighted ? 'text-primary' : ''" class="flex items-center gap-1">
-          <span class="size-1.5 rounded-full bg-primary/60" />
-          {{ node.label }}
-        </span>
-        <span v-if="checked" class="text-primary">✓</span>
-      </template>
-    </SCascader>
+  <div class="flex justify-center w-full">
+    <div class="w-80 lt-md:w-auto flex-c gap-2">
+      <SCascader v-model="value" multiple check-strictly :options="options" placeholder="自定义选项内容">
+        <template #option="{ node, checked, highlighted }">
+          <span :class="highlighted ? 'text-primary' : ''" class="flex items-center gap-1">
+            <span class="size-1.5 rounded-full bg-primary/60" />
+            {{ node.label }}
+          </span>
+          <span v-if="checked" class="text-primary">✓</span>
+        </template>
+      </SCascader>
+    </div>
   </div>
 </template>

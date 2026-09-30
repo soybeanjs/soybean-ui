@@ -10,14 +10,16 @@ const items: AutocompleteOptionData[] = [
 </script>
 
 <template>
-  <SAutocomplete
-    :items="items"
-    placeholder="Custom styled"
-    :ui="{
-      anchor: 'border-primary/40 bg-primary/5',
-      popup: 'border-primary/30',
-      item: 'data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground'
-    }"
-    class="w-72 lt-md:w-auto"
-  />
+  <div class="flex justify-center w-full">
+    <SAutocomplete
+      :items="items"
+      placeholder="Custom styled"
+      :ui="{
+        anchor: 'border-primary/40 bg-primary/5',
+        popup: 'border-primary/30',
+        item: 'data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground'
+      }"
+      class="w-72 lt-md:w-auto"
+    />
+  </div>
 </template>

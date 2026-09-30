@@ -5,5 +5,7 @@ const value = 'icon-only-example';
 </script>
 
 <template>
-  <SClipboard :value="value" only-icon color="accent" variant="soft" shape="square" />
+  <div class="flex justify-center w-full">
+    <SClipboard class="max-w-2xl" :value="value" only-icon color="accent" variant="soft" shape="square" />
+  </div>
 </template>

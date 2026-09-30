@@ -32,15 +32,17 @@ const items = [
 </script>
 
 <template>
-  <SBreadcrumb :items="items" ellipsis>
-    <template #ellipsis="{ ellipsisItems }">
-      <SDropdownMenu :items="ellipsisItems" :modal="false" trigger="hover">
-        <template #trigger>
-          <SBreadcrumbEllipsis class="cursor-pointer">
-            <SIcon icon="lucide:ellipsis" />
-          </SBreadcrumbEllipsis>
-        </template>
-      </SDropdownMenu>
-    </template>
-  </SBreadcrumb>
+  <div class="flex justify-center w-full">
+    <SBreadcrumb class="max-w-2xl" :items="items" ellipsis>
+      <template #ellipsis="{ ellipsisItems }">
+        <SDropdownMenu :items="ellipsisItems" :modal="false" trigger="hover">
+          <template #trigger>
+            <SBreadcrumbEllipsis class="cursor-pointer">
+              <SIcon icon="lucide:ellipsis" />
+            </SBreadcrumbEllipsis>
+          </template>
+        </SDropdownMenu>
+      </template>
+    </SBreadcrumb>
+  </div>
 </template>

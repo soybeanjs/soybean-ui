@@ -177,131 +177,126 @@ const reset = (): void => {
 </script>
 
 <template>
-  <div class="space-y-4">
-    <!-- 控制区：属性表单排在框外，改动即时反映到下面的预览；容器变窄时自动降列，控件不会被压到溢出 -->
-    <!-- defer 不能省：宿主区域和示例在同一棵子树里挂载，同步解析时它还没被插进文档 -->
-    <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
-      <div class="flex flex-wrap gap-4">
-        <FieldItem label="mode">
-          <SSelect v-model="mode" :items="modeItems" :trigger-props="{ 'aria-label': 'Mode' }" class="w-50" />
-        </FieldItem>
-        <FieldItem label="side">
-          <SSelect v-model="side" :items="sideItems" :trigger-props="{ 'aria-label': 'Side' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="size">
-          <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="variant">
-          <SSelect v-model="variant" :items="variantItems" :trigger-props="{ 'aria-label': 'Variant' }" class="w-25" />
-        </FieldItem>
-        <FieldItem label="scrollBehavior">
-          <SSelect
-            v-model="scrollBehavior"
-            :items="scrollBehaviorItems"
-            :trigger-props="{ 'aria-label': 'Scroll behavior' }"
-            class="w-30"
-          />
-        </FieldItem>
-        <FieldItem label="logoPlacement">
-          <SSelect
-            v-model="logoPlacement"
-            :items="logoPlacementItems"
-            :trigger-props="{ 'aria-label': 'Logo placement' }"
-            class="w-40"
-          />
-        </FieldItem>
-        <FieldItem label="expandStrategy">
-          <SSelect
-            v-model="expandStrategy"
-            :items="expandStrategyItems"
-            :trigger-props="{ 'aria-label': 'Expand strategy' }"
-            class="w-30"
-          />
-        </FieldItem>
-        <FieldItem label="open">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="open" :control-props="{ 'aria-label': 'Open' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="triggerVisible">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="triggerVisible" :control-props="{ 'aria-label': 'Trigger visible' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="breadcrumbVisible">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="breadcrumbVisible" :control-props="{ 'aria-label': 'Breadcrumb visible' }" />
-          </div>
-        </FieldItem>
-
-        <FieldItem label="fixedTop">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="fixedTop" :control-props="{ 'aria-label': 'Fixed top' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="fixedFooter">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="fixedFooter" :control-props="{ 'aria-label': 'Fixed footer' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="stretchFooter">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="stretchFooter" :control-props="{ 'aria-label': 'Stretch footer' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="headerVisible">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="headerVisible" :control-props="{ 'aria-label': 'Header visible' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="tabVisible">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="tabVisible" :control-props="{ 'aria-label': 'Tab visible' }" />
-          </div>
-        </FieldItem>
-        <FieldItem label="footerVisible">
-          <div class="h-8 flex items-center">
-            <SSwitch v-model="footerVisible" :control-props="{ 'aria-label': 'Footer visible' }" />
-          </div>
-        </FieldItem>
-        <FieldItem :label="t('playground.reset')" class="ml-auto">
-          <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
-        </FieldItem>
-      </div>
-    </Teleport>
-
-    <!-- 预览区：框内只放外壳本身；内容故意高于框高，滚动相关的属性才有得看 -->
-    <div class="h-120 w-full border border-border border-solid rounded-md overflow-hidden">
-      <SAppShell
-        v-model="active"
-        v-model:open="open"
-        :mode="mode"
-        :side="side"
-        :size="size"
-        :logo-placement="logoPlacement"
-        :expand-strategy="expandStrategy"
-        :trigger-visible="triggerVisible"
-        :breadcrumb-visible="breadcrumbVisible"
-        :layout-props="layoutConfig"
-        :items="appShellItems"
-        :tabs="tabs"
-      >
-        <template #logo>
-          <SIcon icon="lucide:hexagon" class="size-6 text-primary" />
-        </template>
-        <template #title>
-          <span class="truncate font-semibold">Soybean UI</span>
-        </template>
-        <template #header-end>
-          <SButtonIcon icon="lucide:bell" />
-          <SButtonIcon icon="lucide:sun-medium" />
-        </template>
-        <template #footer>© 2026 Soybean UI</template>
-        <div class="p-4">
-          <p class="text-muted-foreground">Active menu: {{ active }}</p>
-          <p v-for="row in CONTENT_ROWS" :key="row" class="mt-2 text-muted-foreground text-sm">Content row {{ row }}</p>
+  <Teleport defer :to="playgroundRegion ?? 'body'" :disabled="!playgroundRegion">
+    <div class="flex flex-wrap gap-4">
+      <FieldItem label="mode">
+        <SSelect v-model="mode" :items="modeItems" :trigger-props="{ 'aria-label': 'Mode' }" class="w-50" />
+      </FieldItem>
+      <FieldItem label="side">
+        <SSelect v-model="side" :items="sideItems" :trigger-props="{ 'aria-label': 'Side' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="size">
+        <SSelect v-model="size" :items="themeSizeOptions" :trigger-props="{ 'aria-label': 'Size' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="variant">
+        <SSelect v-model="variant" :items="variantItems" :trigger-props="{ 'aria-label': 'Variant' }" class="w-25" />
+      </FieldItem>
+      <FieldItem label="scrollBehavior">
+        <SSelect
+          v-model="scrollBehavior"
+          :items="scrollBehaviorItems"
+          :trigger-props="{ 'aria-label': 'Scroll behavior' }"
+          class="w-30"
+        />
+      </FieldItem>
+      <FieldItem label="logoPlacement">
+        <SSelect
+          v-model="logoPlacement"
+          :items="logoPlacementItems"
+          :trigger-props="{ 'aria-label': 'Logo placement' }"
+          class="w-40"
+        />
+      </FieldItem>
+      <FieldItem label="expandStrategy">
+        <SSelect
+          v-model="expandStrategy"
+          :items="expandStrategyItems"
+          :trigger-props="{ 'aria-label': 'Expand strategy' }"
+          class="w-30"
+        />
+      </FieldItem>
+      <FieldItem label="open">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="open" :control-props="{ 'aria-label': 'Open' }" />
         </div>
-      </SAppShell>
+      </FieldItem>
+      <FieldItem label="triggerVisible">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="triggerVisible" :control-props="{ 'aria-label': 'Trigger visible' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="breadcrumbVisible">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="breadcrumbVisible" :control-props="{ 'aria-label': 'Breadcrumb visible' }" />
+        </div>
+      </FieldItem>
+
+      <FieldItem label="fixedTop">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="fixedTop" :control-props="{ 'aria-label': 'Fixed top' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="fixedFooter">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="fixedFooter" :control-props="{ 'aria-label': 'Fixed footer' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="stretchFooter">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="stretchFooter" :control-props="{ 'aria-label': 'Stretch footer' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="headerVisible">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="headerVisible" :control-props="{ 'aria-label': 'Header visible' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="tabVisible">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="tabVisible" :control-props="{ 'aria-label': 'Tab visible' }" />
+        </div>
+      </FieldItem>
+      <FieldItem label="footerVisible">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="footerVisible" :control-props="{ 'aria-label': 'Footer visible' }" />
+        </div>
+      </FieldItem>
+      <FieldItem :label="t('playground.reset')" class="ml-auto">
+        <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
+      </FieldItem>
     </div>
+  </Teleport>
+
+  <div class="h-120 border border-border border-solid rounded-md overflow-hidden">
+    <SAppShell
+      v-model="active"
+      v-model:open="open"
+      :mode="mode"
+      :side="side"
+      :size="size"
+      :logo-placement="logoPlacement"
+      :expand-strategy="expandStrategy"
+      :trigger-visible="triggerVisible"
+      :breadcrumb-visible="breadcrumbVisible"
+      :layout-props="layoutConfig"
+      :items="appShellItems"
+      :tabs="tabs"
+    >
+      <template #logo>
+        <SIcon icon="lucide:hexagon" class="size-6 text-primary" />
+      </template>
+      <template #title>
+        <span class="truncate font-semibold">Soybean UI</span>
+      </template>
+      <template #header-end>
+        <SButtonIcon icon="lucide:bell" />
+        <SButtonIcon icon="lucide:sun-medium" />
+      </template>
+      <template #footer>© 2026 Soybean UI</template>
+      <div class="p-4">
+        <p class="text-muted-foreground">Active menu: {{ active }}</p>
+        <p v-for="row in CONTENT_ROWS" :key="row" class="mt-2 text-muted-foreground text-sm">Content row {{ row }}</p>
+      </div>
+    </SAppShell>
   </div>
 </template>

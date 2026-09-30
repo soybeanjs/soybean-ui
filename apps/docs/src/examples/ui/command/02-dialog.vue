@@ -78,13 +78,15 @@ watch(CmdJ, v => {
 </script>
 
 <template>
-  <SKbd :value="['command', 'j']" />
-  <SDialog v-model:open="open" pure>
-    <SCommand
-      class="border rounded-lg shadow-md"
-      :items="items"
-      :input-props="{ placeholder: 'Type a command or search...' }"
-      empty-label="No command founded, please try again"
-    />
-  </SDialog>
+  <div class="flex flex-col items-center w-full">
+    <SKbd :value="['command', 'j']" />
+    <SDialog v-model:open="open" pure>
+      <SCommand
+        class="border rounded-lg shadow-md"
+        :items="items"
+        :input-props="{ placeholder: 'Type a command or search...' }"
+        empty-label="No command founded, please try again"
+      />
+    </SDialog>
+  </div>
 </template>

@@ -13,5 +13,12 @@ const defaultFruit: string = 'strawberry';
 </script>
 
 <template>
-  <SSelect :items="items" :default-value="defaultFruit" placeholder="Please select a fruit" class="w-60 lt-md:w-auto" />
+  <div class="flex justify-center w-full">
+    <SSelect
+      :items="items"
+      :default-value="defaultFruit"
+      placeholder="Please select a fruit"
+      class="w-60 lt-md:w-auto"
+    />
+  </div>
 </template>
