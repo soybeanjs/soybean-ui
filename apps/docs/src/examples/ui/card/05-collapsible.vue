@@ -4,7 +4,7 @@ import { SCard, SCardCollapsibleTrigger } from '@soybeanjs/ui';
 
 <template>
   <div class="flex justify-center w-full">
-    <SCard class="max-w-2xl" title="Title">
+    <SCard class="w-100 max-w-full" title="Title">
       <template #extra>
         <SCardCollapsibleTrigger aria-label="Toggle card content" />
       </template>

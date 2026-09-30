@@ -4,7 +4,7 @@ import { SCard } from '@soybeanjs/ui';
 
 <template>
   <div class="flex justify-center w-full">
-    <SCard class="max-w-2xl">
+    <SCard class="w-100 max-w-full">
       <div class="text-gray-500 dark:text-neutral-400">Card content</div>
     </SCard>
   </div>
